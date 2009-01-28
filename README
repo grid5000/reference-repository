@@ -1,0 +1,12 @@
+# Synopsis
+This repository contains the reference data of Grid5000. The raw data is located in the "data" directory. You may change or add files by hand, but you could also use a specific generator called "grid5000.rb", which is available in the "generators" directory. Given one or more input files that describe in Ruby the data you want to add, it will generate the raw json files, directories and hard links needed.
+
+# Getting started
+Right now, the easiest way to get started is to look at some existing input files in the "genrators/input" directory. There you can see how you define sites, clusters, nodes and environments programmatically. Then you can create or change an existing input file and run it in simulation mode (your changes won't be applied but you'll see what will be changed).
+
+Run the "grid5000.rb" script without options ($ ruby grid5000.rb) to see how to use it.
+
+After each modification to the repository, you should commit your changes with a meaningful message, so that people can easily track them. Your commits should also be site-specific, or even cluster-specific. Try to avoid putting a lot of changes in only one commit.
+
+# Authors
+Cyril Rohr, cyril.rohr@irisa.fr
