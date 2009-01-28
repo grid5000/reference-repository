@@ -27,5 +27,5 @@ else
   puts "[Simulation mode:\t #{simulation_mode}]"
   generator = G5K::ReferenceGenerator.new({:uid => "grid5000", :type => "grid"}, *description_files)
   data = generator.generate
-  generator.write('../data', :simulate => simulation_mode)
+  generator.write(File.expand_path(File.dirname(__FILE__), "../data"), :simulate => simulation_mode)
 end
