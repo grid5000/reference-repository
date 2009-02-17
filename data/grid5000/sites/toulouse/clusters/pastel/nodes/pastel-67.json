@@ -1,71 +1,71 @@
 {
   "architecture": {
+    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 4,
-    "platform_type": "x86_64"
+    "smt_size": 4
+  },
+  "main_memory": {
+    "ram_size": 8589934592,
+    "virtual_size": null
+  },
+  "network_adapters": [
+    {
+      "driver": "forcedeth",
+      "enabled": true,
+      "interface": "Ethernet",
+      "rate": 1000000000,
+      "vendor": "NVIDIA",
+      "version": "MCP55 Pro"
+    },
+    {
+      "driver": "forcedeth",
+      "enabled": false,
+      "interface": "Ethernet",
+      "rate": 1000000000,
+      "vendor": "NVIDIA",
+      "version": "MCP55 Pro"
+    },
+    {
+      "driver": "tg3",
+      "enabled": false,
+      "interface": "Ethernet",
+      "rate": 1000000000,
+      "vendor": "Broadcom",
+      "version": "BCM5715c"
+    },
+    {
+      "driver": "tg3",
+      "enabled": false,
+      "interface": "Ethernet",
+      "rate": 1000000000,
+      "vendor": "Broadcom",
+      "version": "BCM5715c"
+    }
+  ],
+  "operating_system": {
+    "name": null,
+    "release": null,
+    "version": null
   },
   "processor": {
     "cache_l1": 1048576,
-    "model": "AMD Opteron",
-    "cache_l1i": null,
-    "vendor": "AMD",
     "cache_l1d": null,
-    "clock_speed": 2600000000.0,
-    "version": "2218",
+    "cache_l1i": null,
     "cache_l2": null,
+    "clock_speed": 2600000000.0,
     "instruction_set": "",
-    "other_description": ""
+    "model": "AMD Opteron",
+    "other_description": "",
+    "vendor": "AMD",
+    "version": "2218"
   },
   "storage_devices": [
     {
       "driver": "sata_nv",
-      "size": 232830643653.87,
-      "interface": "SATA"
+      "interface": "SATA",
+      "size": 232830643653.87
     }
   ],
-  "main_memory": {
-    "virtual_size": null,
-    "ram_size": 8589934592
-  },
   "type": "node",
-  "uid": "pastel-67",
-  "network_adapters": [
-    {
-      "driver": "forcedeth",
-      "vendor": "NVIDIA",
-      "rate": 1000000000,
-      "version": "MCP55 Pro",
-      "enabled": true,
-      "interface": "Ethernet"
-    },
-    {
-      "driver": "forcedeth",
-      "vendor": "NVIDIA",
-      "rate": 1000000000,
-      "version": "MCP55 Pro",
-      "enabled": false,
-      "interface": "Ethernet"
-    },
-    {
-      "driver": "tg3",
-      "vendor": "Broadcom",
-      "rate": 1000000000,
-      "version": "BCM5715c",
-      "enabled": false,
-      "interface": "Ethernet"
-    },
-    {
-      "driver": "tg3",
-      "vendor": "Broadcom",
-      "rate": 1000000000,
-      "version": "BCM5715c",
-      "enabled": false,
-      "interface": "Ethernet"
-    }
-  ],
-  "operating_system": {
-    "version": null,
-    "release": null,
-    "name": null
-  }
+  "uid": "pastel-67"
 }

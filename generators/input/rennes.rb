@@ -55,7 +55,7 @@ site :rennes do
       end
     end
   end
-  
+
   cluster :paramount do
     model "Dell PowerEdge 1950"
     created_at Time.parse("2007-09-01").to_i

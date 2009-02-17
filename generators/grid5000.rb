@@ -1,7 +1,7 @@
 require 'pp'
 require 'rubygems'
 require 'fileutils'
-require 'json'
+require 'json/pure'
 require 'time'
 require File.dirname(__FILE__)+'/lib/core_extensions'
 require File.dirname(__FILE__)+'/lib/g5k_generator'
@@ -19,8 +19,10 @@ usage = %{
 simulation_mode = !$*.delete("-s").nil?
 if $*.empty?
   puts usage
+  exit 1
 elsif ($*.map{|file| File.exists?(file) && File.extname(file) == ".rb"}.include? false)
   puts "Error: your input files do not exist or are not ruby files (.rb extension)."
+  exit 1
 else
   description_files = $*
   puts "[Input files:\t\t #{description_files.join(", ")}]"
@@ -29,4 +31,5 @@ else
   data = generator.generate
   directory_to_write = File.expand_path File.join(File.dirname(__FILE__), "../data")
   generator.write(directory_to_write, :simulate => simulation_mode)
+  exit 0
 end

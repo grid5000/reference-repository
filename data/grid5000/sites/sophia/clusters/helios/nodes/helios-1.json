@@ -1,47 +1,47 @@
 {
   "architecture": {
+    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 4,
-    "platform_type": "x86_64"
+    "smt_size": 4
   },
-  "processor": {
-    "cache_l1": 1048576,
-    "model": "AMD Opteron",
-    "cache_l1i": null,
-    "vendor": "AMD",
-    "cache_l1d": null,
-    "clock_speed": 2200000000.0,
-    "version": "275",
-    "cache_l2": null,
-    "instruction_set": "",
-    "other_description": ""
-  },
-  "storage_devices": [
-    {
-      "driver": "mptsas",
-      "raid": "0",
-      "size": 67986547946.9299,
-      "interface": "SAS"
-    },
-    {
-      "driver": "mptsas",
-      "raid": "0",
-      "size": 67986547946.9299,
-      "interface": "SAS"
-    }
-  ],
   "main_memory": {
-    "virtual_size": null,
-    "ram_size": 4294967296
+    "ram_size": 4294967296,
+    "virtual_size": null
   },
-  "type": "node",
-  "uid": "helios-1",
   "network_adapters": [
 
   ],
   "operating_system": {
-    "version": null,
+    "name": null,
     "release": null,
-    "name": null
-  }
+    "version": null
+  },
+  "processor": {
+    "cache_l1": 1048576,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": null,
+    "clock_speed": 2200000000.0,
+    "instruction_set": "",
+    "model": "AMD Opteron",
+    "other_description": "",
+    "vendor": "AMD",
+    "version": "275"
+  },
+  "storage_devices": [
+    {
+      "driver": "mptsas",
+      "interface": "SAS",
+      "raid": "0",
+      "size": 67986547946.9299
+    },
+    {
+      "driver": "mptsas",
+      "interface": "SAS",
+      "raid": "0",
+      "size": 67986547946.9299
+    }
+  ],
+  "type": "node",
+  "uid": "helios-1"
 }

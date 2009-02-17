@@ -1,65 +1,65 @@
 {
-  "processor": {
-    "instruction_set": "",
-    "other_description": "",
-    "model": "AMD Opteron",
-    "cache_l1": null,
-    "cache_l1i": null,
-    "version": "2218",
-    "vendor": "AMD",
-    "cache_l1d": null,
-    "clock_speed": 2600000000.0,
-    "cache_l2": 2097152
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 4,
+    "smt_size": 8
   },
-  "storage_devices": [
-    {
-      "interface": "SAS",
-      "driver": null,
-      "size": 558793544769.287
-    }
-  ],
   "main_memory": {
     "ram_size": 34359738368,
     "virtual_size": null
   },
   "network_adapters": [
     {
+      "enabled": true,
       "interface": "Myri-10G",
-      "version": "10G-PCIE-8A-C",
+      "rate": 10000000000,
       "vendor": "Myrinet",
-      "rate": 10000000000,
-      "enabled": true
+      "version": "10G-PCIE-8A-C"
     },
     {
+      "enabled": true,
       "interface": "InfiniBand",
-      "version": "MT25408",
-      "vendor": "InfiniHost",
       "rate": 10000000000,
-      "enabled": true
+      "vendor": "InfiniHost",
+      "version": "MT25408"
     },
     {
-      "interface": "Ethernet",
       "driver": "e1000",
-      "rate": 1000000000,
-      "enabled": true
+      "enabled": true,
+      "interface": "Ethernet",
+      "rate": 1000000000
     },
     {
-      "interface": "Ethernet",
       "driver": "e1000",
-      "rate": 1000000000,
-      "enabled": false
+      "enabled": false,
+      "interface": "Ethernet",
+      "rate": 1000000000
     }
   ],
   "operating_system": {
-    "version": null,
     "name": null,
-    "release": null
+    "release": null,
+    "version": null
   },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": 2097152,
+    "clock_speed": 2600000000.0,
+    "instruction_set": "",
+    "model": "AMD Opteron",
+    "other_description": "",
+    "vendor": "AMD",
+    "version": "2218"
+  },
+  "storage_devices": [
+    {
+      "driver": null,
+      "interface": "SAS",
+      "size": 558793544769.287
+    }
+  ],
   "type": "node",
-  "uid": "borderline-4",
-  "architecture": {
-    "smt_size": 8,
-    "platform_type": "x86_64",
-    "smp_size": 4
-  }
+  "uid": "borderline-4"
 }

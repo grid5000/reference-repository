@@ -1,45 +1,45 @@
 {
-  "processor": {
-    "instruction_set": "",
-    "other_description": "",
-    "model": "AMD Opteron",
-    "cache_l1": 1048576,
-    "cache_l1i": null,
-    "version": "248",
-    "vendor": "AMD",
-    "cache_l1d": null,
-    "clock_speed": 2200000000.0,
-    "cache_l2": null
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 2
   },
-  "storage_devices": [
-    {
-      "interface": "SATA",
-      "driver": "sata_sil",
-      "size": 74505805969.2383
-    }
-  ],
   "main_memory": {
     "ram_size": 4294967296,
     "virtual_size": null
   },
   "network_adapters": [
     {
-      "interface": "Ethernet",
       "driver": "tg3",
-      "rate": 1000000000,
-      "enabled": true
+      "enabled": true,
+      "interface": "Ethernet",
+      "rate": 1000000000
     }
   ],
   "operating_system": {
-    "version": null,
     "name": null,
-    "release": null
+    "release": null,
+    "version": null
   },
+  "processor": {
+    "cache_l1": 1048576,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": null,
+    "clock_speed": 2200000000.0,
+    "instruction_set": "",
+    "model": "AMD Opteron",
+    "other_description": "",
+    "vendor": "AMD",
+    "version": "248"
+  },
+  "storage_devices": [
+    {
+      "driver": "sata_sil",
+      "interface": "SATA",
+      "size": 74505805969.2383
+    }
+  ],
   "type": "node",
-  "uid": "chuque-16",
-  "architecture": {
-    "smt_size": 2,
-    "platform_type": "x86_64",
-    "smp_size": 2
-  }
+  "uid": "chuque-16"
 }
