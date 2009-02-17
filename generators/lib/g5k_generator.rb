@@ -121,10 +121,10 @@ class ReferenceGenerator
     groups.has_key?(G5K::Link) and groups[G5K::Link].each do |link|      
       from = File.join(repository, "#{link.from}.json")
       to = File.join(repository, link.path)
-      # Hard links will always be regenerated
-      # TODO: find a way to detect if a link has to be regenerated
-      puts "Hard link to be written = \t#{to} -> #{from}"
-      FileUtils.link(from, to, :force => true) unless options[:simulate]
+      unless File.exists?(to)
+        puts "Hard link to be written = \t#{to} -> #{from}"
+        FileUtils.link(from, to, :force => true) unless options[:simulate]
+      end
     end  
   end
   
