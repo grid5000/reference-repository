@@ -29,10 +29,10 @@ site :lille do
           :clock_speed => 2.2.giga,
           :instruction_set => "",
           :other_description => "",
-          :cache_l1 => 1.MB,
+          :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil
+          :cache_l2 => 1.MB
         })
         main_memory({
           :ram_size => 4.GB(true), # bytes
@@ -71,10 +71,10 @@ site :lille do
           :clock_speed => 2.6.giga,
           :instruction_set => "",
           :other_description => "",
-          :cache_l1 => 1.MB,
+          :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil
+          :cache_l2 => 1.MB
         })
         main_memory({
           :ram_size => 4.GB(true), # bytes
@@ -112,10 +112,10 @@ site :lille do
           :clock_speed => 2.6.giga,
           :instruction_set => "",
           :other_description => "",
-          :cache_l1 => 1.MB,
+          :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil
+          :cache_l2 => 1.MB
         })
         main_memory({
           :ram_size => 4.GB(true), # bytes
@@ -153,10 +153,10 @@ site :lille do
           :clock_speed => 2.83.giga,
           :instruction_set => "",
           :other_description => "",
-          :cache_l1 => 4.MB,
+          :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil
+          :cache_l2 => 4.MB
         })
         main_memory({
           :ram_size => 8.GB(true), # bytes

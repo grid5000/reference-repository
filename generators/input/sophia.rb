@@ -30,10 +30,10 @@ site :sophia do
           :clock_speed => 2.giga,
           :instruction_set => "",
           :other_description => "",
-          :cache_l1 => 1.MB,
+          :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil          
+          :cache_l2 => 1.MB          
         })
         main_memory({
           :ram_size => 2.GB(true), # bytes
@@ -69,10 +69,10 @@ site :sophia do
           :clock_speed => 2.2.giga,
           :instruction_set => "",
           :other_description => "",
-          :cache_l1 => 1.MB,
+          :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil          
+          :cache_l2 => 1.MB          
         })
         main_memory({
           :ram_size => 4.GB(true), # bytes
@@ -109,10 +109,10 @@ site :sophia do
           :clock_speed => 2.6.giga,
           :instruction_set => "",
           :other_description => "",
-          :cache_l1 => 1.MB,
+          :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil          
+          :cache_l2 => 1.MB
         })
         main_memory({
           :ram_size => 4.GB(true), # bytes
