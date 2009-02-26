@@ -1,4 +1,6 @@
 module G5K
+  SITES = %w{rennes grenoble bordeaux toulouse sophia orsay nancy lille lyon}
+  
   class Tree < Hash
     attr_reader :contents, :path
     def write(repository, &block)
@@ -48,14 +50,14 @@ module G5K
     end
   end
 
-class ReferenceGenerator
+class ReferenceGenerator  
   attr_reader :data
   
   def method_missing(method, *args)
     @context.recursive_merge!(method.to_sym => args.first)
   end
   
-  %w{site cluster environment node}.each do |method|
+  %w{site cluster environment node service}.each do |method|
     define_method(method) do |uid, *options, &block|
       key = method.pluralize.to_sym
       uid = uid.to_s

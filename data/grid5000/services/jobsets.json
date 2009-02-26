@@ -1,0 +1,30 @@
+{
+  "description": "Manages the creation\/deletion and update of job sets.",
+  "doc": "\/jobsets\/doc",
+  "name": "Jobsets",
+  "policies": {
+    "DELETE": {
+      "admin_groups": "CT",
+      "authorized_groups": "rennes,grenoble,bordeaux,toulouse,sophia,orsay,nancy,lille,lyon",
+      "user_must_be_owner": true
+    },
+    "GET": {
+      "admin_groups": "CT",
+      "authorized_groups": "rennes,grenoble,bordeaux,toulouse,sophia,orsay,nancy,lille,lyon",
+      "user_must_be_owner": true
+    },
+    "POST": {
+      "admin_groups": "CT",
+      "authorized_groups": "rennes,grenoble,bordeaux,toulouse,sophia,orsay,nancy,lille,lyon",
+      "user_must_be_owner": true
+    },
+    "PUT": {
+      "admin_groups": "CT",
+      "authorized_groups": "rennes,grenoble,bordeaux,toulouse,sophia,orsay,nancy,lille,lyon",
+      "user_must_be_owner": true
+    }
+  },
+  "type": "service",
+  "uid": "jobsets",
+  "uri": "\/jobsets"
+}
