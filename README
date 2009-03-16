@@ -11,12 +11,12 @@ The general overview of the workflow between git repositories is as follows:
                                               / \
                                              /   \
                                             |     |
-                          API REPOSITORY <--|     |--> API REPOSITORY
+                   API REPOSITORY SITE X <--|     |--> API REPOSITORY SITE Y
 
 Each site administrator must first clone the remote MASTER REPOSITORY located on the wsdev3.rennes.grid5000.fr server and store it on a local machine (this is what I call the ADMIN REPOSITORY and has to be done once):
   g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@wsdev3.rennes.grid5000.fr/srv/git/reference-repository.git
 When there is a need for change, the site administrator PULLs from the MASTER REPOSITORY to get the latest changes:
-  g5kadmin@reference-repository: git pull
+  g5kadmin@host:/somewhere/reference-repository$ git pull
 Then she manually adds/edits/removes the raw JSON files or uses the generator (more on that later). When she's done, she COMMITs her changes and PUSHes them to the MASTER REPOSITORY:
   ... editing ...
   g5kadmin@host:/somewhere/reference-repository$ git commit -a -m "list of modifications"
@@ -37,13 +37,23 @@ Your changes won't be applied but you'll see what would have been changed. Thus,
 When you are happy with your changes, you can then run the command without the -s flag:
   g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/*.rb
 
-== Apply your changes to the master repository ==
-After each modification to the repository, you should immediately commit your changes with a meaningful message, so that people can easily understand what has changed. Your commits should also be site-specific, or even cluster-specific to avoid merge conflicts. Try to avoid putting a lot of changes in only one commit.
+== Resources ==
+* [http://cheat.errtheblog.com/s/git Git Cheat Sheet]
 
+== FAQ ==
+=== What kind of commit message ? ===
+After each modification to the repository, you should immediately commit your changes with a meaningful message, so that people can easily understand what has changed (latest changes will be displayed in a syndication feed). Your commits should also be site-specific, or even cluster-specific to avoid merge conflicts. Try to avoid putting a lot of changes in only one commit.
+
+You should also check that your name and email are correctly configured in your Git configuration:
+  $ git config --get user.name
+  $ git config --get user.email
+Otherwise you can set them by issuing:
+  $ git config --global user.name 'John Doe'
+  $ git config --global user.email johndoe@example.com
+
+=== My commit has been rejected, why ? ===
 Since users will make queries such as: "give me the description of that site at this date", the time between the date of the commit and the effective replication of the changes to the APIs must be as low as possible. 
-That's why, right after your commit, you should push your changes to the remote master repository. Please not that commits whose committed date is older than 60 seconds will be rejected (please check that your system clock is correctly synchronized with a time server). 
-
-Currently, modifications are replicated every minute to the APIs.
+That's why, right after your commit, you should push your changes to the remote MASTER REPOSITORY. Please not that commits whose committed date is older than 60 seconds will be rejected (if you encounter an error, check that your system clock is correctly synchronized with a time server).
 
 == Authors ==
 Cyril Rohr, cyril.rohr@irisa.fr
