@@ -13,7 +13,7 @@ site :nancy do
   
   cluster :grillon do
     model "HP ProLiant DL145G2"
-    date_of_arrival Time.parse("2005-11-01 12:00 GMT").to_i
+    created_at Time.parse("2005-11-01 12:00 GMT").httpdate
     47.times do |i|
       node "grillon-#{i+1}" do
         architecture({
@@ -55,7 +55,7 @@ site :nancy do
   
   cluster :grelon do
     model "HP ProLiant DL140G3"
-    date_of_arrival Time.parse("2007-02-27 12:00 GMT").to_i
+    created_at Time.parse("2007-02-27 12:00 GMT").httpdate
     120.times do |i|
       node "grelon-#{i+1}" do
         architecture({

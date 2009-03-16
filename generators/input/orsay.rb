@@ -13,7 +13,7 @@ site :orsay do
 
   cluster :netgdx do
     model "IBM eServer 326m"
-    date_of_arrival nil
+    created_at nil
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
     30.times do |i|
       node "netgdx-#{i+1}" do
@@ -57,7 +57,7 @@ site :orsay do
   
   cluster :gdx do
     model "IBM eServer 326m"
-    date_of_arrival nil
+    created_at nil
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
     
     (186+126).times do |i|

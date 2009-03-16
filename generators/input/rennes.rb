@@ -58,7 +58,7 @@ site :rennes do
 
   cluster :paramount do
     model "Dell PowerEdge 1950"
-    created_at Time.parse("2007-09-01").to_i
+    created_at Time.parse("2007-09-01").httpdate
     33.times do |i|
       node "paramount-#{i+1}" do
         architecture({
@@ -103,7 +103,7 @@ site :rennes do
   
   cluster(:paraquad) do
     model "Dell PowerEdge 1950"
-    created_at Time.parse("2006-12-01").to_i
+    created_at Time.parse("2006-12-01").httpdate
     
     64.times do |i|
       node "paraquad-#{i+1}" do

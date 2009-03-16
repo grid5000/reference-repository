@@ -15,7 +15,7 @@ site :sophia do
   
   cluster :azur do
     model "IBM eServer 325"
-    created_at Time.parse("2005-02-18").to_i
+    created_at Time.parse("2005-02-18").httpdate
     72.times do |i|
       node "azur-#{i+1}" do
         architecture({
@@ -54,7 +54,7 @@ site :sophia do
     
   cluster :helios do
     model "Sun Fire X4100"
-    created_at Time.parse("2006-06-02").to_i
+    created_at Time.parse("2006-06-02").httpdate
     56.times do |i|
       node "helios-#{i+1}" do
         architecture({
@@ -94,7 +94,7 @@ site :sophia do
     
   cluster :sol do
     model "Sun Fire X2200 M2"
-    created_at Time.parse("2007-02-23").to_i
+    created_at Time.parse("2007-02-23").httpdate
     50.times do |i|
       node "sol-#{i+1}" do
         architecture({
@@ -135,47 +135,4 @@ site :sophia do
       end
     end
   end
-  #   
-  # cluster :storage do
-  #   model "Sun X4100"
-  #   node "storage-1" do
-  #     architecture({
-  #       :smp_size => 2,
-  #       :smt_size => 2,
-  #       :platform_type => ""
-  #     })
-  #     processor({
-  #       :vendor => "AMD",
-  #       :model => "AMD Opteron",
-  #       :version => "275",
-  #       :clock_speed => 2.2.giga,
-  #       :instruction_set => "",
-  #       :other_description => "",
-  #       :cache_l1 => nil,
-  #       :cache_l1i => nil,
-  #       :cache_l1d => nil,
-  #       :cache_l2 => nil          
-  #     })
-  #     main_memory({
-  #       :ram_size => 4.GB(true), # bytes
-  #       :virtual_size => nil
-  #     })
-  #     operating_system({
-  #       :name => nil,
-  #       :release => nil,
-  #       :version => nil
-  #     })
-  #     storage_devices [
-  #       {:interface => 'SAS', :size => 73.GB(false), :rpm => 10_000, :raid => "1 'Mirroring'"},
-  #       {:interface => 'SATA II', :size => 2.TB(false), :raid => "5", :name => "Sun StorEdge 3511 FC Array"}
-  #       ]
-  #     network_adapters [
-  #       {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :vendor => "Intel", :version => "e1000"},
-  #       {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :vendor => "Intel", :version => "e1000"},
-  #       {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :vendor => "Intel", :version => "e1000"},
-  #       {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :vendor => "Intel", :version => "e1000"},
-  #       {:interface => 'Fibre Channel', :rate => 2.giga, :enabled => true, :vendor => "QLogic", :version => "QLA2342"}           
-  #       ]        
-  #   end
-  # end
 end

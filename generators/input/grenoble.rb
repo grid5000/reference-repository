@@ -13,7 +13,7 @@ site :grenoble do
 
   cluster :genepi do
     model "Bull R422-E1"
-    date_of_arrival Time.parse("2008-10-01").to_i
+    created_at Time.parse("2008-10-01").httpdate
     
     34.times do |i|
       node "genepi-#{i+1}" do

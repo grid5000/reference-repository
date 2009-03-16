@@ -13,7 +13,7 @@ site :lyon do
   
   cluster :capricorne do
     model "IBM eServer 325"
-    date_of_arrival Time.parse("2004-12-01 12:00 GMT").to_i
+    created_at Time.parse("2004-12-01 12:00 GMT").httpdate
     misc "bios: 1.36 / bcm: 1.20.9 / bmc: 1.46"
     56.times do |i|
       node "capricorne-#{i+1}" do
@@ -56,7 +56,7 @@ site :lyon do
   
   cluster :sagittaire do
     model "Sun Fire V20z"
-    date_of_arrival Time.parse("2006-07-01 12:00 GMT").to_i
+    created_at Time.parse("2006-07-01 12:00 GMT").httpdate
     79.times do |i|
       node "sagittaire-#{i+1}" do
         architecture({

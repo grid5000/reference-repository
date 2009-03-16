@@ -13,7 +13,7 @@ site :lille do
   
   cluster :chuque do
     model "IBM eServer 326"
-    date_of_arrival nil
+    created_at nil
     misc "deployment unavailable because reboot instruments are not enough dependable."
     53.times do |i|
       node "chuque-#{i+1}" do
@@ -55,7 +55,7 @@ site :lille do
   
   cluster :chti do
     model "IBM eServer 326m"
-    date_of_arrival nil
+    created_at nil
     
     20.times do |i|
       node "chti-#{i+1}" do
@@ -97,7 +97,7 @@ site :lille do
   
   cluster :chicon do
     model "IBM eServer 326m"
-    date_of_arrival nil
+    created_at nil
     26.times do |i|
       node "chicon-#{i+1}" do
         architecture({
@@ -138,7 +138,7 @@ site :lille do
   
   cluster :chinqchint do
     model "Altix Xe 310"
-    date_of_arrival nil
+    created_at nil
     46.times do |i|
       node "chinqchint-#{i+1}" do        
         architecture({
