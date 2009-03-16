@@ -1,3 +1,5 @@
+require 'resolv'
+
 module G5K
   SITES = %w{rennes grenoble bordeaux toulouse sophia orsay nancy lille lyon}
   
@@ -57,6 +59,10 @@ class ReferenceGenerator
     @context.recursive_merge!(method.to_sym => args.first)
   end
   
+  def dns_lookup(network_address)
+    Resolv.getaddress(network_address)
+  end
+  
   %w{site cluster environment node service}.each do |method|
     define_method(method) do |uid, *options, &block|
       key = method.pluralize.to_sym
@@ -74,7 +80,7 @@ class ReferenceGenerator
           @context[key] << G5K::Tree.new.replace({:uid => uid, :type => method})
           @context = @context[key].last
         end
-        block.call if block
+        block.call(uid) if block
       end
       @context = old_context
     end

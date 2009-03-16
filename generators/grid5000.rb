@@ -16,8 +16,9 @@ usage = %{
     
 }
 
-# true if we want to simulate, else false.
+# true if we want to simulate:
 simulation_mode = !$*.delete("-s").nil?
+
 if $*.empty?
   puts usage
   exit -1

@@ -1,4 +1,4 @@
-site :rennes do
+site :rennes do |site_uid|
   name "Rennes"
   location "Rennes, France"
   web "http://www.irisa.fr"
@@ -17,7 +17,7 @@ site :rennes do
     model "HP ProLiant DL145G2"
     created_at nil
     99.times do |i|
-      node "paravent-#{i+1}" do
+      node "paravent-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2,
           :smt_size => 2,
@@ -48,7 +48,9 @@ site :rennes do
           {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_nv"}
           ]
         network_adapters [
-          {:interface => 'InfiniBand 10G', :rate => 10.giga, :vendor => "InfiniHost", :version => "MT23108", :enabled => true},
+          {:interface => 'InfiniBand 10G', :rate => 10.giga, 
+            :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
+            :vendor => "InfiniHost", :version => "MT23108", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
           ]        
@@ -60,7 +62,7 @@ site :rennes do
     model "Dell PowerEdge 1950"
     created_at Time.parse("2007-09-01").httpdate
     33.times do |i|
-      node "paramount-#{i+1}" do
+      node "paramount-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2,
           :smt_size => 4,
@@ -93,7 +95,9 @@ site :rennes do
           {:interface => 'SATA', :size => 300.GB(false), :driver => "megaraid_sas", :raid => "0"}
           ]
         network_adapters [
-          {:interface => 'Myri-10G', :rate => 10.giga, :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
+          {:interface => 'Myri-10G', :rate => 10.giga, 
+            :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
+            :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
           ]
@@ -106,7 +110,7 @@ site :rennes do
     created_at Time.parse("2006-12-01").httpdate
     
     64.times do |i|
-      node "paraquad-#{i+1}" do
+      node "paraquad-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 4,
@@ -137,7 +141,9 @@ site :rennes do
           {:interface => 'SATA', :size => 160.GB(false), :driver => "mptsas"}
           ]
         network_adapters [
-            {:interface => 'Myri-10G', :rate => 10.giga, :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
+            {:interface => 'Myri-10G', :rate => 10.giga, 
+              :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
+              :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
             {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
             {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
           ]        
