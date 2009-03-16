@@ -110,7 +110,6 @@ class ReferenceGenerator
         FileUtils.mkdir_p(full_path) unless options[:simulate]
       end
     end
-    require 'pp'
     groups.has_key?(G5K::Tree) and groups[G5K::Tree].each do |file|
       full_path = File.join(repository, file.path)
       new_content = JSON.pretty_generate(file.contents)

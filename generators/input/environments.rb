@@ -1,4 +1,3 @@
-# SITES = %{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
 environment 'sid-x64-base-1.0' do
   state "stable"
   file({:path => "/home/nancy/xdelaruelle/images/sid-x64-base-1.0.tgz", :md5 => "e39be32c087f0c9777fd0b0ad7d12050"})

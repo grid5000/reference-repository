@@ -1,18 +1,46 @@
 === Synopsis ===
-This repository contains the reference data of Grid5000. The raw data is located in the "data" directory. You may change or add files by hand, but you could also use a specific generator called "grid5000.rb", which is available in the "generators" directory. Given one or more input files that describe (using the Ruby language) the data you want to add, it will generate the raw json files, directories and hard links needed.
+The reference data is stored in a Git repository as JSON files, organized into hierarchical folders. These files can be manually written but the Git repository comes with a "/generators" folder which contains a script to ease their generation, based on high-level description files written in Ruby. Given one or more input files that describe the data you want to add, it will generate the required JSON files, directories and hard links.
+
+The general overview of the workflow between git repositories is as follows:
+
+    ADMIN REPOSITORY <-- pull/push -->  MASTER REPOSITORY
+                                               |
+                                               |
+                                              pull 
+                                         (every minute)
+                                              / \
+                                             /   \
+                                            |     |
+                          API REPOSITORY <--|     |--> API REPOSITORY
+
+Each site administrator must first clone the remote MASTER REPOSITORY located on the wsdev3.rennes.grid5000.fr server and store it on a local machine (this has to be done once):
+  g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@wsdev3.rennes.grid5000.fr/srv/git/reference-repository.git
+When there is a need for change, the site administrator PULLs from the MASTER REPOSITORY to get the latest changes:
+  g5kadmin@reference-repository:  git pull
+Then she manually adds/edits/removes the raw JSON files or uses the generator (more on that later). When she's done, she COMMITs her changes and PUSHes them to the MASTER REPOSITORY:
+  ... editing ...
+  g5kadmin@host:/somewhere/reference-repository$ git commit -a -m "list of modifications"
+  g5kadmin@host:/somewhere/reference-repository$ git push
+
+Finally, these changes are automatically replicated every minute to the repositories used by the Reference API.
 
 === Getting started ===
+First, clone the remote MASTER REPOSITORY if it is not already done:
+  g5kadmin@host:/somewhere/reference-repository$ git clone ssh://g5kadmin@wsdev3.rennes.grid5000.fr/srv/git/reference-repository.git
+  
 Right now, the easiest way to get started is to look at some existing input files in the "generators/input" directory. There you can see how you can define sites, clusters, nodes and environments programmatically. Then you can create a new file or change an existing one and run it in simulation mode:
-  $ ruby grid5000.rb input/*.rb -s
-Your changes won't be applied but you'll see what would have been changed. Thus, the simulation mode is useful to review your changes before committing and check the ruby syntax of the input files.
+  g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/*.rb -s
 
-Run the "grid5000.rb" script (in /generators) without options ($ ruby grid5000.rb) to see how to use it.
+Your changes won't be applied but you'll see what would have been changed. Thus, the simulation mode is useful to review your changes before committing and check the ruby syntax of the input files.
+When you are happy with your changes, you can then run the command without the -s flag:
+  g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/*.rb
 
 === Apply your changes to the master repository ===
 After each modification to the repository, you should immediately commit your changes with a meaningful message, so that people can easily understand what has changed. Your commits should also be site-specific, or even cluster-specific to avoid merge conflicts. Try to avoid putting a lot of changes in only one commit.
 
 Since users will make queries such as: "give me the description of that site at this date", the time between the date of the commit and the effective replication of the changes to the APIs must be as low as possible. 
-That's why, right after your commit, you should push your changes to the remote master repository. Please not that commits whose committed date is older than 60 seconds will be rejected (please check that your system clock is correctly synchronized with a time server). Modifications are replicated every minute to the APIs.
+That's why, right after your commit, you should push your changes to the remote master repository. Please not that commits whose committed date is older than 60 seconds will be rejected (please check that your system clock is correctly synchronized with a time server). 
+Modifications are replicated every minute to the APIs.
 
-# Authors
+=== Authors ===
 Cyril Rohr, cyril.rohr@irisa.fr
