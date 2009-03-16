@@ -20,10 +20,10 @@ usage = %{
 simulation_mode = !$*.delete("-s").nil?
 if $*.empty?
   puts usage
-  exit 1
+  exit -1
 elsif ($*.map{|file| File.exists?(file) && File.extname(file) == ".rb"}.include? false)
   puts "Error: your input files do not exist or are not ruby files (.rb extension)."
-  exit 1
+  exit -1
 else
   description_files = $*
   puts "[Input files:\t\t #{description_files.join(", ")}]"
