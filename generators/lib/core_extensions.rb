@@ -92,3 +92,21 @@ class Hash
   end
   
 end
+
+
+# for versions of ruby < 1.8.7
+module Enumerable
+  def index_by
+    inject({}) do |accum, elem|
+      accum[yield(elem)] = elem
+      accum
+    end
+  end
+
+  def group_by #:yield:
+    #h = k = e = nil
+    r = Hash.new
+    each{ |e| (r[yield(e)] ||= []) << e }
+    r
+  end  
+end

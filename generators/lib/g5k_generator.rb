@@ -63,27 +63,65 @@ class ReferenceGenerator
     Resolv.getaddress(network_address)
   end
   
-  %w{site cluster environment node service}.each do |method|
-    define_method(method) do |uid, *options, &block|
-      key = method.pluralize.to_sym
-      uid = uid.to_s
-      options = options.first || Hash.new
-      old_context = @context
-      @context[key] ||= G5K::Folder.new
-      if options.has_key? :refer_to
-        @context[key] << G5K::Link.new(uid, options[:refer_to])
-      else    
-        # if the same object already exists, we return it for completion/modification
-        if (same_trees = @context[key].select{|tree| tree[:uid] == uid}).size > 0
-          @context = same_trees.first
-        else
-          @context[key] << G5K::Tree.new.replace({:uid => uid, :type => method})
-          @context = @context[key].last
-        end
-        block.call(uid) if block
+  # This doesn't work with Ruby < 1.8.7. Replaced by a call to build_context (see below).
+  #
+  # %w{site cluster environment node service}.each do |method|
+  #   define_method(method) do |uid, *options, &block|
+  #     key = method.pluralize.to_sym
+  #     uid = uid.to_s
+  #     options = options.first || Hash.new
+  #     old_context = @context
+  #     @context[key] ||= G5K::Folder.new
+  #     if options.has_key? :refer_to
+  #       @context[key] << G5K::Link.new(uid, options[:refer_to])
+  #     else    
+  #       # if the same object already exists, we return it for completion/modification
+  #       if (same_trees = @context[key].select{|tree| tree[:uid] == uid}).size > 0
+  #         @context = same_trees.first
+  #       else
+  #         @context[key] << G5K::Tree.new.replace({:uid => uid, :type => method})
+  #         @context = @context[key].last
+  #       end
+  #       block.call(uid) if block
+  #     end
+  #     @context = old_context
+  #   end
+  # end
+  
+  def site(uid, *options, &block)
+    build_context(:sites, uid, *options, &block)
+  end
+  def cluster(uid, *options, &block)
+    build_context(:clusters, uid, *options, &block)
+  end
+  def environment(uid, *options, &block)
+    build_context(:environments, uid, *options, &block)
+  end
+  def node(uid, *options, &block)
+    build_context(:nodes, uid, *options, &block)
+  end
+  def service(uid, *options, &block)
+    build_context(:services, uid, *options, &block)
+  end
+  def build_context(key, uid, *options, &block)
+    type = key.to_s.chop
+    uid = uid.to_s
+    options = options.first || Hash.new
+    old_context = @context
+    @context[key] ||= G5K::Folder.new
+    if options.has_key? :refer_to
+      @context[key] << G5K::Link.new(uid, options[:refer_to])
+    else    
+      # if the same object already exists, we return it for completion/modification
+      if (same_trees = @context[key].select{|tree| tree[:uid] == uid}).size > 0
+        @context = same_trees.first
+      else
+        @context[key] << G5K::Tree.new.replace({:uid => uid, :type => type})
+        @context = @context[key].last
       end
-      @context = old_context
+      block.call(uid) if block
     end
+    @context = old_context
   end
   
   # Initializes a new generator that will generates data files in a hierachical way. 
