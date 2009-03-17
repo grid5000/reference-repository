@@ -11,50 +11,6 @@ site :nancy do |site_uid|
   user_support_contact
   %w{sid-x64-base-1.0}.each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
   
-  cluster :grillon do |cluster_uid|
-    model "HP ProLiant DL145G2"
-    created_at Time.parse("2005-11-01 12:00 GMT").httpdate
-    47.times do |i|
-      node "#{cluster_uid}-#{i+1}" do |node_uid|
-        architecture({
-          :smp_size => 2, 
-          :smt_size => 2,
-          :platform_type => "x86_64"
-          })
-        processor({
-          :vendor => "AMD",
-          :model => "AMD Opteron",
-          :version => "246",
-          :clock_speed => 2.giga,
-          :instruction_set => "",
-          :other_description => "",
-          :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
-          :cache_l2 => 1.MB
-        })
-        main_memory({
-          :ram_size => 2.GB(true), # bytes
-          :virtual_size => nil
-        })
-        operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
-        })
-        storage_devices [
-          {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_nv"}
-          ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
-            :switch => "sgrillon1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"}
-          ]        
-      end
-    end
-  end #cluster grillon
-  
   cluster :grelon do |cluster_uid|
     model "HP ProLiant DL140G3"
     created_at Time.parse("2007-02-27 12:00 GMT").httpdate

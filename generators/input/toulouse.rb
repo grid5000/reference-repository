@@ -56,7 +56,7 @@ site :toulouse do |site_uid|
     end
   end
   
-  cluster :pastel do
+  cluster :pastel do |cluster_uid|
     model "Sun Fire X2200 M2"
     created_at Time.parse("2007-11-29").httpdate
     
