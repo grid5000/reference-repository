@@ -62,7 +62,8 @@ site :orsay do |site_uid|
     created_at nil
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
     
-    (186+126).times do |i|
+    # WARN: 2 nodes are missing (gdx-311 and gdx-312) and won't appear in the reference
+    (186+126-2).times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
@@ -104,8 +105,8 @@ site :orsay do |site_uid|
     end
     
     # extension specifics, starting at node 187
-    126.times do |i|
-      node "#{cluster_uid}-#{186+i+1}" do
+    (126-2).times do |i|
+      node "#{cluster_uid}-#{187+i}" do
         processor({
           :version => "250",
           :clock_speed => 2.4.giga
