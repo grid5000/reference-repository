@@ -13,11 +13,11 @@ site :rennes do |site_uid|
     environment env_id, :refer_to => "grid5000/environments/#{env_id}"
   end
   
-  cluster :paravent do
+  cluster :paravent do |cluster_uid|
     model "HP ProLiant DL145G2"
     created_at nil
     99.times do |i|
-      node "paravent-#{i+1}" do |node_uid|
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2,
           :smt_size => 2,
@@ -58,11 +58,11 @@ site :rennes do |site_uid|
     end
   end
 
-  cluster :paramount do
+  cluster :paramount do |cluster_uid|
     model "Dell PowerEdge 1950"
     created_at Time.parse("2007-09-01").httpdate
     33.times do |i|
-      node "paramount-#{i+1}" do |node_uid|
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2,
           :smt_size => 4,
@@ -105,12 +105,12 @@ site :rennes do |site_uid|
     end
   end
   
-  cluster(:paraquad) do
+  cluster :paraquad do |cluster_uid|
     model "Dell PowerEdge 1950"
     created_at Time.parse("2006-12-01").httpdate
     
     64.times do |i|
-      node "paraquad-#{i+1}" do |node_uid|
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 4,

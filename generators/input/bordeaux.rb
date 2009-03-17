@@ -1,4 +1,4 @@
-site :bordeaux do
+site :bordeaux do |site_uid|
   name "Bordeaux"
   location "Bordeaux, France"
   web
@@ -11,12 +11,12 @@ site :bordeaux do
   user_support_contact
   %w{sid-x64-base-1.0}.each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
   
-  cluster :bordemer do
+  cluster :bordemer do |cluster_uid|
     model "IBM eServer 325"
-    date_of_arrival nil
+    created_at nil
     misc "Motherboard Bios Version 1.33;IPMI version 1.5: Firware version 1.46"
     48.times do |i|
-      node "bordemer-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -47,7 +47,9 @@ site :bordeaux do
           {:interface => 'IDE', :size => 80.GB(false), :driver => "amd74xx"}
           ]
         network_adapters [
-          {:interface => 'Myri-2000', :rate => 2.giga, :vendor => 'Myrinet', :version => "M3F-PCIXD-2", :enabled => true},
+          {:interface => 'Myri-2000', :rate => 2.giga, 
+            :switch => "sbdm", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :vendor => 'Myrinet', :version => "M3F-PCIXD-2", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "tg3"}
           ]
@@ -55,12 +57,12 @@ site :bordeaux do
     end
   end # cluster bordemer
   
-  cluster :bordeplage do
+  cluster :bordeplage do |cluster_uid|
     model "Dell PowerEdge 1855"
-    date_of_arrival nil
+    created_at nil
     misc "Motherboard Bios version: A03 (05/12/2005);IPMI version 1.5: Firware revision 1.6"
     51.times do |i|
-      node "bordeplage-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -91,7 +93,9 @@ site :bordeaux do
           {:interface => 'SCSI', :size => 70.GB(false), :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'InfiniBand', :rate => 10.giga, :vendor => 'InfiniHost', :version => "MT25208", :enabled => true},
+          {:interface => 'InfiniBand', :rate => 10.giga, 
+            :switch => "sbdp", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :vendor => 'InfiniHost', :version => "MT25208", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "e1000"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000"}
           ]
@@ -99,12 +103,12 @@ site :bordeaux do
     end
   end # cluster bordeplage
   
-  cluster :bordereau do
+  cluster :bordereau do |cluster_uid|
     model "IBM System x3455"
-    date_of_arrival Time.parse("2007-10-01 12:00 GMT").to_i
+    created_at Time.parse("2007-10-01 12:00 GMT").httpdate
     misc "IPMI 2.0"
     93.times do |i|
-      node "bordereau-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 4,
@@ -135,19 +139,21 @@ site :bordeaux do
           {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_svw", :vendor => "Hitachi", :version => "HDS72168"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5704"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :driver => "tg3", :vendor => "Broadcom", :version => "BCM5704"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5704"}
           ]
       end
     end
   end # cluster bordereau
   
-  cluster :borderline do
+  cluster :borderline do |cluster_uid|
     model "IBM System x3755"
-    date_of_arrival Time.parse("2007-10-01 12:00 GMT").to_i
+    created_at Time.parse("2007-10-01 12:00 GMT").httpdate
     misc "IPMI 2.0"
     10.times do |i|
-      node "borderline-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 4, 
           :smt_size => 8,
@@ -178,7 +184,9 @@ site :bordeaux do
           {:interface => 'SAS', :size => 600.GB(false), :driver => nil}
           ]
         network_adapters [
-          {:interface => 'Myri-10G', :rate => 10.giga, :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
+          {:interface => 'Myri-10G', :rate => 10.giga, 
+            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
           {:interface => 'InfiniBand', :rate => 10.giga, :vendor => 'InfiniHost', :version => "MT25408", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "e1000"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000"}

@@ -1,4 +1,4 @@
-site :lyon do
+site :lyon do |site_uid|
   name "Lyon"
   location "Lyon, France"
   web
@@ -11,12 +11,12 @@ site :lyon do
   user_support_contact
   %w{sid-x64-base-1.0}.each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
   
-  cluster :capricorne do
+  cluster :capricorne do |cluster_uid|
     model "IBM eServer 325"
     created_at Time.parse("2004-12-01 12:00 GMT").httpdate
     misc "bios: 1.36 / bcm: 1.20.9 / bmc: 1.46"
     56.times do |i|
-      node "capricorne-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -47,18 +47,20 @@ site :lyon do
           {:interface => 'IDE', :size => 80.GB(false), :driver => "amd74xx"}
           ]
         network_adapters [
-          {:interface => 'Myri-2000', :rate => 2.giga, :vendor => 'Myrinet', :version => "M3F-PCIXF-2", :enabled => true},
+          {:interface => 'Myri-2000', :rate => 2.giga, 
+            :switch => "little-ego", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :vendor => 'Myrinet', :version => "M3F-PCIXF-2", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"}
           ]        
       end
     end    
   end # cluster capricorne
   
-  cluster :sagittaire do
+  cluster :sagittaire do |cluster_uid|
     model "Sun Fire V20z"
     created_at Time.parse("2006-07-01 12:00 GMT").httpdate
     79.times do |i|
-      node "sagittaire-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -89,7 +91,9 @@ site :lyon do
           {:interface => 'SCSI', :size => 73.GB(false), :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"}
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+            :switch => "little-ego", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :driver => "tg3"}
           ]        
       end
     end    

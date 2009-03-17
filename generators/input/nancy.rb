@@ -1,4 +1,4 @@
-site :nancy do
+site :nancy do |site_uid|
   name "Nancy"
   location "Nancy, France"
   web
@@ -11,11 +11,11 @@ site :nancy do
   user_support_contact
   %w{sid-x64-base-1.0}.each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
   
-  cluster :grillon do
+  cluster :grillon do |cluster_uid|
     model "HP ProLiant DL145G2"
     created_at Time.parse("2005-11-01 12:00 GMT").httpdate
     47.times do |i|
-      node "grillon-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -46,18 +46,20 @@ site :nancy do
           {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_nv"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+            :switch => "sgrillon1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"}
           ]        
       end
     end
   end #cluster grillon
   
-  cluster :grelon do
+  cluster :grelon do |cluster_uid|
     model "HP ProLiant DL140G3"
     created_at Time.parse("2007-02-27 12:00 GMT").httpdate
     120.times do |i|
-      node "grelon-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 4,
@@ -88,7 +90,9 @@ site :nancy do
           {:interface => 'SATA', :size => 80.GB(false), :driver => "ata_piix"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+            :switch => "sgrelon1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"}
           ]
       end

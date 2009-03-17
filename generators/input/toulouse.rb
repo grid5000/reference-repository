@@ -1,4 +1,4 @@
-site :toulouse do
+site :toulouse do |site_uid|
   name "Toulouse"
   location "Toulouse, France"
   web
@@ -11,12 +11,12 @@ site :toulouse do
   user_support_contact
   %w{sid-x64-base-1.0}.each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
 
-  cluster :violette do
+  cluster :violette do |cluster_uid|
     model "Sun Fire V20z"
-    date_of_arrival Time.parse("2004-09-01").to_i
+    created_at Time.parse("2004-09-01").httpdate
     
     57.times do |i|
-      node "violette-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -47,7 +47,9 @@ site :toulouse do
           {:interface => 'SCSI', :size => 73.GB(false), :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+            :switch => "cict-switch", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :driver => "tg3"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "tg3"}
           ]  
       end      
@@ -56,10 +58,10 @@ site :toulouse do
   
   cluster :pastel do
     model "Sun Fire X2200 M2"
-    date_of_arrival Time.parse("2007-11-29").to_i
+    created_at Time.parse("2007-11-29").httpdate
     
     80.times do |i|
-      node "pastel-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 4,
@@ -90,7 +92,9 @@ site :toulouse do
           {:interface => 'SATA', :size => 250.GB(false), :driver => "sata_nv"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+            :switch => "r4", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3"}

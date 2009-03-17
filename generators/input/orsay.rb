@@ -1,4 +1,4 @@
-site :orsay do
+site :orsay do |site_uid|
   name "Orsay"
   location "Orsay, France"
   web
@@ -11,12 +11,12 @@ site :orsay do
   user_support_contact
   %w{sid-x64-base-1.0}.each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
 
-  cluster :netgdx do
+  cluster :netgdx do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
     30.times do |i|
-      node "netgdx-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -47,7 +47,9 @@ site :orsay do
           {:interface => 'SATA', :size => 80.GB(false), :driver => nil}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => nil},          
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :driver => nil},          
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => nil},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => nil}
           ]  
@@ -55,13 +57,13 @@ site :orsay do
     end
   end # cluster net-gdx
   
-  cluster :gdx do
+  cluster :gdx do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
     
     (186+126).times do |i|
-      node "gdx-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -91,17 +93,19 @@ site :orsay do
         storage_devices [
           {:interface => 'SATA', :size => 80.GB(false), :driver => nil}
           ]
-        network_adapters [
+        network_adapters [  
+          {:interface => 'Myri-10G', :rate => 10.giga, :enabled => true, 
+            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :vendor => "Myrinet", :version => "10G-PCIE-8A-C"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false},
-          {:interface => 'Myri-10G', :rate => 10.giga, :enabled => true, :vendor => "Myrinet", :version => "10G-PCIE-8A-C"}
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
           ]
       end        
     end
     
     # extension specifics, starting at node 187
     126.times do |i|
-      node "gdx-#{186+i+1}" do
+      node "#{cluster_uid}-#{186+i+1}" do
         processor({
           :version => "250",
           :clock_speed => 2.4.giga

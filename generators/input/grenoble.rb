@@ -1,4 +1,4 @@
-site :grenoble do
+site :grenoble do |site_uid|
   name "Grenoble"
   location "Grenoble, France"
   web
@@ -11,12 +11,12 @@ site :grenoble do
   user_support_contact
   %w{sid-x64-base-1.0}.each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
 
-  cluster :genepi do
+  cluster :genepi do |cluster_uid|
     model "Bull R422-E1"
     created_at Time.parse("2008-10-01").httpdate
     
     34.times do |i|
-      node "genepi-#{i+1}" do
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
         architecture({
           :smp_size => 2, 
           :smt_size => 8,

@@ -13,7 +13,7 @@ The general overview of the workflow between git repositories is as follows:
                                             |     |
                    API REPOSITORY SITE X <--|     |--> API REPOSITORY SITE Y
 
-Each site administrator must first clone the remote MASTER REPOSITORY located on the wsdev3.rennes.grid5000.fr server and store it on a local machine (this is what I call the ADMIN REPOSITORY and has to be done once):
+Each site administrator must first clone the remote MASTER REPOSITORY located on the wsdev3.rennes.grid5000.fr server and store it on a machine located within Grid5000 (this is what I call the ADMIN REPOSITORY and has to be done once):
   g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@wsdev3.rennes.grid5000.fr/srv/git/reference-repository.git
 When there is a need for change, the site administrator PULLs from the MASTER REPOSITORY to get the latest changes:
   g5kadmin@host:/somewhere/reference-repository$ git pull
@@ -36,6 +36,8 @@ Your changes won't be applied but you'll see what would have been changed. Thus,
 
 When you are happy with your changes, you can then run the command without the -s flag:
   g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/*.rb
+
+Finally, commit your changes with a meaningful message and push them immediately to the MASTER REPOSITORY.
 
 == Resources ==
 * [http://cheat.errtheblog.com/s/git Git Cheat Sheet]
