@@ -47,7 +47,13 @@ site :sophia do |site_uid|
         storage_devices [
           {:interface => 'IDE', :size => 80.GB(false), :driver => "amd74xx"}
           ]
-        network_adapters []        
+        network_adapters [
+          {:interface => 'Myri-2000', :rate => 2.giga, :enabled => true, 
+            :switch => "cisco1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :vendor => 'Myrinet', :version => "M3F-PCIXF-2"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "tg3"}
+          ]        
       end
     end
   end
@@ -87,7 +93,15 @@ site :sophia do |site_uid|
           {:interface => 'SAS', :size => 73.GB(false), :driver => "mptsas", :raid => "0"},
           {:interface => 'SAS', :size => 73.GB(false), :driver => "mptsas", :raid => "0"}
           ]
-        network_adapters []          
+        network_adapters [
+          {:interface => 'Myri-2000', :rate => 2.giga, :enabled => true, 
+            :switch => "edgeiron48gs", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :vendor => 'Myrinet', :version => "M3F-PCIXF-2"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "e1000"},  
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000"}
+          ]          
       end
     end
   end
