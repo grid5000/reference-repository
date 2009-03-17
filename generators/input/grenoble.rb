@@ -47,6 +47,9 @@ site :grenoble do |site_uid|
           {:interface => 'SATA', :size => 160.GB(false), :driver => nil}
           ]
         network_adapters [
+          {:interface => 'InfiniBand 10G', :rate => 10.giga, :enabled => true,
+            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
           ]  
       end      
     end
