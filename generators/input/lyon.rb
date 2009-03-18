@@ -17,6 +17,7 @@ site :lyon do |site_uid|
     misc "bios: 1.36 / bcm: 1.20.9 / bmc: 1.46"
     56.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -61,6 +62,7 @@ site :lyon do |site_uid|
     created_at Time.parse("2006-07-01 12:00 GMT").httpdate
     79.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,

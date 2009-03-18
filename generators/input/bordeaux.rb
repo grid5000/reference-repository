@@ -17,6 +17,7 @@ site :bordeaux do |site_uid|
     misc "Motherboard Bios Version 1.33;IPMI version 1.5: Firware version 1.46"
     48.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -63,6 +64,7 @@ site :bordeaux do |site_uid|
     misc "Motherboard Bios version: A03 (05/12/2005);IPMI version 1.5: Firware revision 1.6"
     51.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -109,6 +111,7 @@ site :bordeaux do |site_uid|
     misc "IPMI 2.0"
     93.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 4,
@@ -154,6 +157,7 @@ site :bordeaux do |site_uid|
     misc "IPMI 2.0"
     10.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => false, :besteffort => true, :virtual => "amd-v"})
         architecture({
           :smp_size => 4, 
           :smt_size => 8,

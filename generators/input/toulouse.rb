@@ -17,6 +17,7 @@ site :toulouse do |site_uid|
     
     57.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => false, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -62,6 +63,7 @@ site :toulouse do |site_uid|
     
     80.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
         architecture({
           :smp_size => 2, 
           :smt_size => 4,

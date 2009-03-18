@@ -18,6 +18,7 @@ site :sophia do |site_uid|
     created_at Time.parse("2005-02-18").httpdate
     72.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2,
           :smt_size => 2,
@@ -53,7 +54,7 @@ site :sophia do |site_uid|
             :vendor => 'Myrinet', :version => "M3F-PCIXF-2"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"},
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "tg3"}
-          ]        
+          ]   
       end
     end
   end
@@ -63,6 +64,7 @@ site :sophia do |site_uid|
     created_at Time.parse("2006-06-02").httpdate
     56.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2,
           :smt_size => 4,
@@ -111,6 +113,7 @@ site :sophia do |site_uid|
     created_at Time.parse("2007-02-23").httpdate
     50.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
         architecture({
           :smp_size => 2,
           :smt_size => 4,

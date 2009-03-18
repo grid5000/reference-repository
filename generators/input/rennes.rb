@@ -18,6 +18,7 @@ site :rennes do |site_uid|
     created_at nil
     99.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2,
           :smt_size => 2,
@@ -63,6 +64,7 @@ site :rennes do |site_uid|
     created_at Time.parse("2007-09-01").httpdate
     33.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2,
           :smt_size => 4,
@@ -111,6 +113,7 @@ site :rennes do |site_uid|
     
     64.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2, 
           :smt_size => 4,

@@ -17,6 +17,7 @@ site :lille do |site_uid|
     misc "deployment unavailable because reboot instruments are not enough dependable."
     53.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -61,6 +62,7 @@ site :lille do |site_uid|
     
     20.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -104,6 +106,7 @@ site :lille do |site_uid|
     created_at nil
     26.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 4,
@@ -147,6 +150,7 @@ site :lille do |site_uid|
     created_at nil
     46.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|    
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2, 
           :smt_size => 8,

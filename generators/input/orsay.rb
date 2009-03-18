@@ -17,6 +17,7 @@ site :orsay do |site_uid|
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
     30.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -65,6 +66,7 @@ site :orsay do |site_uid|
     # WARN: 2 nodes are missing (gdx-311 and gdx-312) and won't appear in the reference
     (186+126-2).times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
