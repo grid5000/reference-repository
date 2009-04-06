@@ -158,10 +158,6 @@ class ReferenceGenerator
       full_path = File.join(repository, file.path)
       new_content = JSON.pretty_generate(file.contents)
       existing_content = File.exists?(full_path) ? File.open(full_path, "r").read : ""
-      require 'pp'
-      pp existing_content
-      pp new_content
-      exit
       if new_content.hash != existing_content.hash
         puts "File to be written      = \t#{full_path}"
         File.open(full_path, "w+"){ |f| f << new_content  } unless options[:simulate]
