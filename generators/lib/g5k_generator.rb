@@ -124,7 +124,7 @@ class ReferenceGenerator
     @context = old_context
   end
   
-  # Initializes a new generator that will generates data files in a hierachical way. 
+  # Initializes a new generator that will generate data files in a hierachical way. 
   # The root of the tree will be named with the value of <tt>data_description[:uid]</tt>.
   def initialize(data_description = {:uid => ""}, *files)
     @files = files
@@ -158,6 +158,10 @@ class ReferenceGenerator
       full_path = File.join(repository, file.path)
       new_content = JSON.pretty_generate(file.contents)
       existing_content = File.exists?(full_path) ? File.open(full_path, "r").read : ""
+      require 'pp'
+      pp existing_content
+      pp new_content
+      exit
       if new_content.hash != existing_content.hash
         puts "File to be written      = \t#{full_path}"
         File.open(full_path, "w+"){ |f| f << new_content  } unless options[:simulate]
