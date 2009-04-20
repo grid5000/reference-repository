@@ -1,0 +1,72 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 8
+  },
+  "main_memory": {
+    "ram_size": 17179869184,
+    "virtual_size": null
+  },
+  "network_adapters": [
+    {
+      "driver": "e1000e",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.28.54.46",
+      "network_address": "griffon-46.nancy.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "sgriffon1",
+      "vendor": "intel",
+      "version": "80003ES2LAN"
+    },
+    {
+      "driver": "e1000e",
+      "enabled": false,
+      "interface": "Ethernet",
+      "rate": 1000000000,
+      "vendor": "intel",
+      "version": "BCM5721"
+    },
+    {
+      "driver": "mlx4_core",
+      "enabled": true,
+      "interface": "Infiniband 20G",
+      "rate": 20000000000,
+      "switch": "ib_switch",
+      "vendor": "Mellanox",
+      "version": "MT26418"
+    }
+  ],
+  "operating_system": {
+    "name": null,
+    "release": null,
+    "version": null
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": 12582912,
+    "clock_speed": 2500000000.0,
+    "instruction_set": "",
+    "model": "Intel Xeon",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "L5420"
+  },
+  "storage_devices": [
+    {
+      "driver": "ata_piix",
+      "interface": "SATA II",
+      "size": 298023223876.953
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "griffon-46"
+}
