@@ -1,14 +1,14 @@
 site :bordeaux do |site_uid|
   name "Bordeaux"
   location "Bordeaux, France"
-  web
-  description ""
-  latitude
-  longitude
-  email_contact
-  sys_admin_contact
-  security_contact
-  user_support_contact
+  web "http://www.grid5000.fr/mediawiki/index.php/Bordeaux:Home"
+  description "Grid5000 Bordeaux site"
+  latitude "44° 50’ 18’’ Nord"
+  longitude "Nord 0° 34’ 41’’ Ouest"
+  email_contact "bordeaux-staff@lists.grid5000.fr"
+  sys_admin_contact "bordeaux-staff@lists.grid5000.fr"
+  security_contact "bordeaux-staff@lists.grid5000.fr"
+  user_support_contact "bordeaux-staff@lists.grid5000.fr"
   ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} + 
     %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1} +
     %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9}  ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
@@ -16,7 +16,8 @@ site :bordeaux do |site_uid|
   cluster :bordemer do |cluster_uid|
     model "IBM eServer 325"
     created_at nil
-    misc "Motherboard Bios Version 1.33;IPMI version 1.5: Firware version 1.46"
+    misc "Motherboard Bios Version 1.33;IPMI version 1.5: Firmware
+version 1.48"
     48.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
@@ -63,7 +64,7 @@ site :bordeaux do |site_uid|
   cluster :bordeplage do |cluster_uid|
     model "Dell PowerEdge 1855"
     created_at nil
-    misc "Motherboard Bios version: A03 (05/12/2005);IPMI version 1.5: Firware revision 1.6"
+    misc "Motherboard Bios version: A05 ;IPMI version 1.5: Firware revision 1.6"
     51.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
@@ -110,7 +111,7 @@ site :bordeaux do |site_uid|
   cluster :bordereau do |cluster_uid|
     model "IBM System x3455"
     created_at Time.parse("2007-10-01 12:00 GMT").httpdate
-    misc "IPMI 2.0"
+    misc "IPMI 2.0, BIOS Version 1.32"
     93.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
@@ -182,9 +183,9 @@ site :bordeaux do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "ClusterVision OS",
+          :release => "Boron",
+          :version => "5.0"
         })
         storage_devices [
           {:interface => 'SAS', :size => 600.GB(false), :driver => nil}
