@@ -124,7 +124,7 @@ class ReferenceGenerator
     @context = old_context
   end
   
-  # Initializes a new generator that will generates data files in a hierachical way. 
+  # Initializes a new generator that will generate data files in a hierachical way. 
   # The root of the tree will be named with the value of <tt>data_description[:uid]</tt>.
   def initialize(data_description = {:uid => ""}, *files)
     @files = files
