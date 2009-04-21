@@ -16,7 +16,7 @@ site :rennes do |site_uid|
   cluster :paravent do |cluster_uid|
     model "HP ProLiant DL145G2"
     created_at nil
-    99.times do |i|
+    32.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
@@ -41,9 +41,10 @@ site :rennes do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Ubuntu",
+          :release => "6.10",
+          :version => nil,
+          :kernel => "2.6.19.1"
         })
         storage_devices [
           {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_nv"}
@@ -52,8 +53,8 @@ site :rennes do |site_uid|
           {:interface => 'InfiniBand 10G', :rate => 10.giga, 
             :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
             :vendor => "InfiniHost", :version => "MT23108", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "tg3"}
           ]        
       end
     end
@@ -88,9 +89,10 @@ site :rennes do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Ubuntu",
+          :release => "6.10",
+          :version => nil,
+          :kernel => "2.6.19.1"
         })
         storage_devices [
           {:interface => 'SATA', :size => 300.GB(false), :driver => "megaraid_sas", :raid => "0"},
@@ -100,8 +102,8 @@ site :rennes do |site_uid|
           {:interface => 'Myri-10G', :rate => 10.giga, 
             :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
             :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "bnx2"},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "bnx2"}
           ]
       end
     end
@@ -136,9 +138,10 @@ site :rennes do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Ubuntu",
+          :release => "6.10",
+          :version => nil,
+          :kernel => "2.6.19.1"
         })
         storage_devices [
           {:interface => 'SATA', :size => 160.GB(false), :driver => "mptsas"}
@@ -147,10 +150,56 @@ site :rennes do |site_uid|
             {:interface => 'Myri-10G', :rate => 10.giga, 
               :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
               :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-            {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
-            {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
+            {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "bnx2"},
+            {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "bnx2"}
           ]        
       end
     end
   end
+  
+  cluster :paradent do |cluster_uid|
+    model "Carry System"
+    created_at Time.parse("2009-02-01").httpdate
+    
+    64.times do |i|
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+        architecture({
+          :smp_size => 2, 
+          :smt_size => 8,
+          :platform_type => "x86_64"
+          })
+        processor({
+          :vendor => "Intel",
+          :model => "Intel Xeon",
+          :version => "L5420",
+          :clock_speed => 2.5.giga,
+          :instruction_set => "",
+          :other_description => "",
+          :cache_l1 => nil,
+          :cache_l1i => nil,
+          :cache_l1d => nil,
+          :cache_l2 => nil
+        })
+        main_memory({
+          :ram_size => 32.GB(true), # bytes
+          :virtual_size => nil
+        })
+        operating_system({
+          :name => "Ubuntu",
+          :release => "6.10",
+          :version => nil,
+          :kernel => "2.6.28"
+        })
+        storage_devices [
+          {:interface => 'SATA', :size => 160.GB(false), :driver => "ata_piix"}
+          ]
+        network_adapters [
+            {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "e1000e"},
+            {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000e"}
+          ]        
+      end
+    end
+  end
+  
 end
