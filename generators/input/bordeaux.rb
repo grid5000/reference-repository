@@ -34,8 +34,8 @@ version 1.48"
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
+          :cache_l1i => "64K",
+          :cache_l1d => "64K",
           :cache_l2 => 1.MB
         })
         main_memory({
@@ -82,7 +82,7 @@ version 1.48"
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
-          :cache_l1d => nil,
+          :cache_l1d => "16K",
           :cache_l2 => 1.MB
         })
         main_memory({
@@ -122,15 +122,15 @@ version 1.48"
           })
         processor({
           :vendor => "AMD",
-          :model => "AMD Opteron",
+          :model => "Dual-Core AMD Opteron Processor",
           :version => "2218",
           :clock_speed => 2.6.giga,
-          :instruction_set => "",
+          :instruction_set => "x86-64",
           :other_description => "",
           :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
-          :cache_l2 => 2.MB
+          :cache_l1i => "64K",
+          :cache_l1d => "64K",
+          :cache_l2 => 1.MB
         })
         main_memory({
           :ram_size => 4.GB(true), # bytes
@@ -168,16 +168,16 @@ version 1.48"
           })
         processor({
           :vendor => "AMD",
-          :model => "AMD Opteron",
+          :model => "Dual-Core AMD Opteron Processor 8218",
           :version => "2218",
           :clock_speed => 2.6.giga,
-          :instruction_set => "",
+          :instruction_set => "x86-64",
           :other_description => "",
           :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
+          :cache_l1i => "64K",
+          :cache_l1d => "64K",
           :cache_l2 => 2.MB
-        })
+	})
         main_memory({
           :ram_size => 32.GB(true), # bytes
           :virtual_size => nil
