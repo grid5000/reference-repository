@@ -164,11 +164,13 @@ class ReferenceGenerator
       end
     end
     groups.has_key?(G5K::Link) and groups[G5K::Link].each do |link|      
-      from = File.join(repository, "#{link.from}.json")
-      to = File.join(repository, link.path)
-      unless File.exists?(to)
-        puts "Hard link to be written = \t#{to} -> #{from}"
-        FileUtils.link(from, to, :force => true) unless options[:simulate]
+      FileUtils.cd(repository) do |dir|
+        to = File.join(".", link.path)
+        from = File.join([".."]*(to.count(File::SEPARATOR)-1), "#{link.from}.json")
+        unless File.exists?(to)
+          puts "Symbolic link to be written = \t#{to} -> #{from}"
+          FileUtils.ln_s(from, to, :force => true) unless options[:simulate]
+        end
       end
     end  
   end
