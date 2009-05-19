@@ -53,8 +53,12 @@ site :orsay do |site_uid|
           {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => nil},          
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => nil},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => nil}
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true,
+            :switch => nil, :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
+            :driver => nil},
+          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true,
+            :switch => nil, :network_address => "#{node_uid}-eth2.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth2.#{site_uid}.grid5000.fr"),
+            :driver => nil}
           ]  
       end      
     end
