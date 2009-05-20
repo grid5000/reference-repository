@@ -1,7 +1,7 @@
 class Numeric
 
   def TB(correct = true)
-    if correct then self*1024**4; else self.tera/(1024**4); end
+    if correct then self*1024**4; else self.tera/(1.024**4); end
   end
   # Returns the number of bytes.
   #
@@ -11,7 +11,7 @@ class Numeric
     if correct then self*1024**3; else self.giga/(1.024**3); end
   end
   def MB(correct = true)
-    if correct then self*1024**2; else self.mega/(1024**2); end
+    if correct then self*1024**2; else self.mega/(1.024**2); end
   end
   def mega; self*1_000_000; end
   def giga; self*1_000_000_000; end
