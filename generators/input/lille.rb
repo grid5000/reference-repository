@@ -29,16 +29,16 @@ site :lille do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "248",
-          :clock_speed => 2.2.giga,
+          :clock_speed => 2.2.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 1.MB
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 4.GB(true), # bytes
+          :ram_size => 4.GiB,
           :virtual_size => nil
         })
         operating_system({
@@ -47,10 +47,10 @@ site :lille do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_sil"}
+          {:interface => 'SATA', :size => 80.GB, :driver => "sata_sil"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "switch1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3"}
           ]  
@@ -74,16 +74,16 @@ site :lille do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "252",
-          :clock_speed => 2.6.giga,
+          :clock_speed => 2.6.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 1.MB
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 4.GB(true), # bytes
+          :ram_size => 4.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -92,10 +92,10 @@ site :lille do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_svw"}
+          {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "switch1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3"}
           ]        
@@ -118,16 +118,16 @@ site :lille do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "285",
-          :clock_speed => 2.6.giga,
+          :clock_speed => 2.6.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 1.MB
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 4.GB(true), # bytes
+          :ram_size => 4.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -136,10 +136,10 @@ site :lille do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_svw"}
+          {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "switch1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3"}
           ]        
@@ -162,16 +162,16 @@ site :lille do |site_uid|
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "E5440 QC",
-          :clock_speed => 2.83.giga,
+          :clock_speed => 2.83.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 4.MB
+          :cache_l2 => 4.MiB
         })
         main_memory({
-          :ram_size => 8.GB(true), # bytes
+          :ram_size => 8.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -180,10 +180,10 @@ site :lille do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA II', :size => 250.GB(false), :driver => "ahci"}
+          {:interface => 'SATA II', :size => 250.GB, :driver => "ahci"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "e1000"}
           ]

@@ -29,7 +29,7 @@ site :rennes do |site_uid|      # General description of the site.
         # describes the architecture of the node
         architecture({
           :smp_size => 2, # number of physical CPUs
-          :smt_size => 4, # number of logical CPUs (cores)
+          :smt_size => 4, # total number of logical CPUs (cores)
           :platform_type => "x86_64"
           })
         # describes the processors
@@ -37,7 +37,7 @@ site :rennes do |site_uid|      # General description of the site.
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "5148 LV",
-          :clock_speed => 2.33.giga,  # giga = 10^9
+          :clock_speed => 2.33.G,     # G = 10^9, M = 10^6, etc.
           :instruction_set => "",     # x86-64, IA-64, ...
           :other_description => "",   
           :cache_l1 => nil,           # first-level unified cache size of the processor
@@ -46,7 +46,7 @@ site :rennes do |site_uid|      # General description of the site.
           :cache_l2 => nil            # second-level unified cache size of the processor
         })
         main_memory({
-          :ram_size => 4.GB(true),    # the amount of RAM (indicating true means "true bytes" (multiple of 2^10))
+          :ram_size => 4.GiB,         # the amount of RAM. MAKE SURE YOU USE GiB or MiB or KiB, and not GB, MB, KB...
           :virtual_size => nil        # the amount of virtual memory (RAM+Swap)
         })
         # Information about the default operating system of the node 
@@ -62,21 +62,22 @@ site :rennes do |site_uid|      # General description of the site.
           :version => nil             # version of the operating system
         })
         # Describes the list of storage devices available on the node
+        # Notice the use of ***GB*** (and not GiB)
         # Required properties include: :interface, :size
         # You may add the :driver property, or a :raid property (e.g. :raid => "0") if needed.
         storage_devices [
-          {:interface => 'SATA', :size => 160.GB(false), :driver => "mptsas"}
+          {:interface => 'SATA', :size => 160.GB, :driver => "mptsas"}
           ]
         # Describes the list of network adapters available on the node
         # Required properties include: :interface, :rate, :switch, :network_address, :ip, :enabled
         # You may add properties such as: :driver, :vendor, :version
         # You may include adapters reserved for management (in this case, set enabled to false)
         network_adapters [
-            {:interface => 'Myri-10G', :rate => 10.giga, 
+            {:interface => 'Myri-10G', :rate => 10.G, 
               :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
               :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-            {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
-            {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
+            {:interface => 'Ethernet', :rate => 1.G, :enabled => true},
+            {:interface => 'Ethernet', :rate => 1.G, :enabled => false}
           ]        
       end
     end

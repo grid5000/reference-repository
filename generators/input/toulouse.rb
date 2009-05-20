@@ -29,7 +29,7 @@ site :toulouse do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "248",
-          :clock_speed => 2.2.giga,
+          :clock_speed => 2.2.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
@@ -38,7 +38,7 @@ site :toulouse do |site_uid|
           :cache_l2 => nil
         })
         main_memory({
-          :ram_size => 2.GB(true), # bytes
+          :ram_size => 2.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -47,13 +47,13 @@ site :toulouse do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SCSI', :size => 73.GB(false), :driver => "mptspi"}
+          {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "cict-switch", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "tg3"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "tg3"}
           ]  
       end      
     end
@@ -75,16 +75,16 @@ site :toulouse do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "2218",
-          :clock_speed => 2.6.giga,
+          :clock_speed => 2.6.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 1.MB
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 8.GB(true), # bytes
+          :ram_size => 8.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -93,15 +93,15 @@ site :toulouse do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 250.GB(false), :driver => "sata_nv"}
+          {:interface => 'SATA', :size => 250.GB, :driver => "sata_nv"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "r4", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3"}
           ]  
       end      
     end

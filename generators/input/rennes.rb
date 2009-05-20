@@ -30,7 +30,7 @@ site :rennes do |site_uid|
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "5148 LV",
-          :clock_speed => 2.33.giga,
+          :clock_speed => 2.33.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
@@ -39,7 +39,7 @@ site :rennes do |site_uid|
           :cache_l2 => nil          
         })
         main_memory({
-          :ram_size => 8.GB(true), # bytes
+          :ram_size => 8.GiB,
           :virtual_size => nil
         })
         operating_system({
@@ -49,15 +49,15 @@ site :rennes do |site_uid|
           :kernel => "2.6.19.1"
         })
         storage_devices [
-          {:interface => 'SATA', :size => 300.GB(false), :driver => "megaraid_sas", :raid => "0"},
-          {:interface => 'SATA', :size => 300.GB(false), :driver => "megaraid_sas", :raid => "0"}
+          {:interface => 'SATA', :size => 300.GB, :driver => "megaraid_sas", :raid => "0"},
+          {:interface => 'SATA', :size => 300.GB, :driver => "megaraid_sas", :raid => "0"}
           ]
         network_adapters [
-          {:interface => 'Myri-10G', :rate => 10.giga, 
+          {:interface => 'Myri-10G', :rate => 10.G, 
             :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
             :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "bnx2"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "bnx2"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "bnx2"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "bnx2"}
           ]
       end
     end
@@ -79,7 +79,7 @@ site :rennes do |site_uid|
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "5148 LV",
-          :clock_speed => 2.33.giga,
+          :clock_speed => 2.33.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
@@ -88,7 +88,7 @@ site :rennes do |site_uid|
           :cache_l2 => nil
         })
         main_memory({
-          :ram_size => 4.GB(true), # bytes
+          :ram_size => 4.GiB,
           :virtual_size => nil
         })
         operating_system({
@@ -98,14 +98,14 @@ site :rennes do |site_uid|
           :kernel => "2.6.19.1"
         })
         storage_devices [
-          {:interface => 'SATA', :size => 160.GB(false), :driver => "mptsas"}
+          {:interface => 'SATA', :size => 160.GB, :driver => "mptsas"}
           ]
         network_adapters [
-            {:interface => 'Myri-10G', :rate => 10.giga, 
+            {:interface => 'Myri-10G', :rate => 10.G, 
               :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
               :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-            {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "bnx2"},
-            {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "bnx2"}
+            {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "bnx2"},
+            {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "bnx2"}
           ]        
       end
     end
@@ -127,7 +127,7 @@ site :rennes do |site_uid|
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "L5420",
-          :clock_speed => 2.5.giga,
+          :clock_speed => 2.5.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
@@ -136,7 +136,7 @@ site :rennes do |site_uid|
           :cache_l2 => nil
         })
         main_memory({
-          :ram_size => 32.GB(true), # bytes
+          :ram_size => 32.GiB,
           :virtual_size => nil
         })
         operating_system({
@@ -146,11 +146,11 @@ site :rennes do |site_uid|
           :kernel => "2.6.28"
         })
         storage_devices [
-          {:interface => 'SATA', :size => 160.GB(false), :driver => "ata_piix"}
+          {:interface => 'SATA', :size => 160.GB, :driver => "ata_piix"}
           ]
         network_adapters [
-            {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "e1000e"},
-            {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000e"}
+            {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000e"},
+            {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000e"}
           ]        
       end
     end

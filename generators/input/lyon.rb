@@ -29,16 +29,16 @@ site :lyon do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "246",
-          :clock_speed => 2.giga,
+          :clock_speed => 2.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 1.MB
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 2.GB(true), # bytes
+          :ram_size => 2.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -47,13 +47,13 @@ site :lyon do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'IDE', :size => 80.GB(false), :driver => "amd74xx"}
+          {:interface => 'IDE', :size => 80.GB, :driver => "amd74xx"}
           ]
         network_adapters [
-          {:interface => 'Myri-2000', :rate => 2.giga, 
+          {:interface => 'Myri-2000', :rate => 2.G, 
             :switch => "little-ego", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => 'Myrinet', :version => "M3F-PCIXF-2", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3"}
           ]        
       end
     end    
@@ -74,16 +74,16 @@ site :lyon do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "250",
-          :clock_speed => 2.4.giga,
+          :clock_speed => 2.4.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 1.MB
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 2.GB(true), # bytes
+          :ram_size => 2.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -92,10 +92,10 @@ site :lyon do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SCSI', :size => 73.GB(false), :driver => "mptspi"}
+          {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "little-ego", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3"}
           ]        

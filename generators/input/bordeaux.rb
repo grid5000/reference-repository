@@ -3,8 +3,8 @@ site :bordeaux do |site_uid|
   location "Bordeaux, France"
   web "http://www.grid5000.fr/mediawiki/index.php/Bordeaux:Home"
   description "Grid5000 Bordeaux site"
-  latitude "44° 50’ 18’’ Nord"
-  longitude "Nord 0° 34’ 41’’ Ouest"
+  latitude 44.833333
+  longitude -0.566667
   email_contact "bordeaux-staff@lists.grid5000.fr"
   sys_admin_contact "bordeaux-staff@lists.grid5000.fr"
   security_contact "bordeaux-staff@lists.grid5000.fr"
@@ -30,16 +30,16 @@ version 1.48"
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "248",
-          :clock_speed => 2.2.giga,
+          :clock_speed => 2.2.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
-          :cache_l1i => "64K",
-          :cache_l1d => "64K",
-          :cache_l2 => 1.MB
+          :cache_l1i => 64.KiB,
+          :cache_l1d => 64.KiB,
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 2.GB(true), # bytes
+          :ram_size => 2.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -48,14 +48,14 @@ version 1.48"
           :version => nil
         })
         storage_devices [
-          {:interface => 'IDE', :size => 80.GB(false), :driver => "amd74xx"}
+          {:interface => 'IDE', :size => 80.GB, :driver => "amd74xx"}
           ]
         network_adapters [
-          {:interface => 'Myri-2000', :rate => 2.giga, 
+          {:interface => 'Myri-2000', :rate => 2.G, 
             :switch => "sbdm", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => 'Myrinet', :version => "M3F-PCIXD-2", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "tg3"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "tg3"}
           ]
       end
     end
@@ -77,16 +77,16 @@ version 1.48"
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "EM64T",
-          :clock_speed => 3.giga,
+          :clock_speed => 3.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
-          :cache_l1d => "16K",
-          :cache_l2 => 1.MB
+          :cache_l1d => 16.KiB,
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 2.GB(true), # bytes
+          :ram_size => 2.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -95,14 +95,14 @@ version 1.48"
           :version => nil
         })
         storage_devices [
-          {:interface => 'SCSI', :size => 70.GB(false), :driver => "mptspi"}
+          {:interface => 'SCSI', :size => 70.GB, :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'InfiniBand', :rate => 10.giga, 
+          {:interface => 'InfiniBand', :rate => 10.G, 
             :switch => "sbdp", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => 'InfiniHost', :version => "MT25208", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "e1000"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
           ]
       end
     end
@@ -124,16 +124,16 @@ version 1.48"
           :vendor => "AMD",
           :model => "Dual-Core AMD Opteron Processor",
           :version => "2218",
-          :clock_speed => 2.6.giga,
+          :clock_speed => 2.6.G,
           :instruction_set => "x86-64",
           :other_description => "",
           :cache_l1 => nil,
-          :cache_l1i => "64K",
-          :cache_l1d => "64K",
-          :cache_l2 => 1.MB
+          :cache_l1i => 64.KiB,
+          :cache_l1d => 64.KiB,
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 4.GB(true), # bytes
+          :ram_size => 4.GiB,
           :virtual_size => nil
         })
         operating_system({
@@ -142,13 +142,13 @@ version 1.48"
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 80.GB(false), :driver => "sata_svw", :vendor => "Hitachi", :version => "HDS72168"}
+          {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw", :vendor => "Hitachi", :version => "HDS72168"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3", :vendor => "Broadcom", :version => "BCM5704"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5704"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5704"}
           ]
       end
     end
@@ -170,16 +170,16 @@ version 1.48"
           :vendor => "AMD",
           :model => "Dual-Core AMD Opteron Processor 8218",
           :version => "2218",
-          :clock_speed => 2.6.giga,
+          :clock_speed => 2.6.G,
           :instruction_set => "x86-64",
           :other_description => "",
           :cache_l1 => nil,
-          :cache_l1i => "64K",
-          :cache_l1d => "64K",
-          :cache_l2 => 2.MB
+          :cache_l1i => 64.KiB,
+          :cache_l1d => 64.KiB,
+          :cache_l2 => 2.MiB
 	})
         main_memory({
-          :ram_size => 32.GB(true), # bytes
+          :ram_size => 32.GiB,
           :virtual_size => nil
         })
         operating_system({
@@ -188,15 +188,15 @@ version 1.48"
           :version => "5.0"
         })
         storage_devices [
-          {:interface => 'SAS', :size => 600.GB(false), :driver => nil}
+          {:interface => 'SAS', :size => 600.GB, :driver => nil}
           ]
         network_adapters [
-          {:interface => 'Myri-10G', :rate => 10.giga, 
+          {:interface => 'Myri-10G', :rate => 10.G, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-          {:interface => 'InfiniBand', :rate => 10.giga, :vendor => 'InfiniHost', :version => "MT25408", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "e1000"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000"}
+          {:interface => 'InfiniBand', :rate => 10.G, :vendor => 'InfiniHost', :version => "MT25408", :enabled => true},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
           ]
       end
     end

@@ -10,7 +10,7 @@ environment 'sid-x64-base-1.0' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'sid-x64-base-1.1' do
@@ -25,7 +25,7 @@ environment 'sid-x64-base-1.1' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'sid-x64-nfs-1.0' do
@@ -40,7 +40,7 @@ environment 'sid-x64-nfs-1.0' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'sid-x64-nfs-1.1' do
@@ -55,7 +55,7 @@ environment 'sid-x64-nfs-1.1' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'sid-x64-big-1.1' do
@@ -70,7 +70,7 @@ environment 'sid-x64-big-1.1' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'etch-x64-base-1.0' do
@@ -85,7 +85,7 @@ environment 'etch-x64-base-1.0' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'etch-x64-base-1.1' do
@@ -100,7 +100,7 @@ environment 'etch-x64-base-1.1' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'etch-x64-nfs-1.0' do
@@ -115,7 +115,7 @@ environment 'etch-x64-nfs-1.0' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'etch-x64-nfs-1.1' do
@@ -130,7 +130,7 @@ environment 'etch-x64-nfs-1.1' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'etch-x64-big-1.0' do
@@ -145,7 +145,7 @@ environment 'etch-x64-big-1.0' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'etch-x64-big-1.1' do
@@ -160,7 +160,7 @@ environment 'etch-x64-big-1.1' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'etch-x64-xen-1.0' do
@@ -175,7 +175,7 @@ environment 'etch-x64-xen-1.0' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'lenny-x64-base-0.9' do
@@ -190,7 +190,7 @@ environment 'lenny-x64-base-0.9' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'lenny-x64-base-1.0' do
@@ -205,7 +205,7 @@ environment 'lenny-x64-base-1.0' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'lenny-x64-nfs-0.9' do
@@ -220,7 +220,7 @@ environment 'lenny-x64-nfs-0.9' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end
 
 environment 'lenny-x64-big-0.9' do
@@ -235,5 +235,5 @@ environment 'lenny-x64-big-0.9' do
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
   max_open_files 8192
-  tcp_bandwidth 1.giga
+  tcp_bandwidth 1.G
 end

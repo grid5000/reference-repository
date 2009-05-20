@@ -29,7 +29,7 @@ site :grenoble do |site_uid|
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "E5420 QC",
-          :clock_speed => 2.5.giga,
+          :clock_speed => 2.5.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
@@ -38,7 +38,7 @@ site :grenoble do |site_uid|
           :cache_l2 => nil
         })
         main_memory({
-          :ram_size => 8.GB(true), # bytes
+          :ram_size => 8.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -47,12 +47,12 @@ site :grenoble do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 160.GB(false), :driver => nil}
+          {:interface => 'SATA', :size => 160.GB, :driver => nil}
           ]
         network_adapters [
-          {:interface => 'InfiniBand 10G', :rate => 10.giga, :enabled => true,
+          {:interface => 'InfiniBand 10G', :rate => 10.G, :enabled => true,
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false}
           ]  
       end      
     end

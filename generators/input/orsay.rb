@@ -29,16 +29,16 @@ site :orsay do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "246",
-          :clock_speed => 2.giga,
+          :clock_speed => 2.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 1.MB
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 2.GB(true), # bytes
+          :ram_size => 2.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -47,16 +47,16 @@ site :orsay do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 80.GB(false), :driver => nil}
+          {:interface => 'SATA', :size => 80.GB, :driver => nil}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => nil},          
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true,
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
             :switch => nil, :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
             :driver => nil},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true,
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
             :switch => nil, :network_address => "#{node_uid}-eth2.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth2.#{site_uid}.grid5000.fr"),
             :driver => nil}
           ]  
@@ -82,16 +82,16 @@ site :orsay do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "246",
-          :clock_speed => 2.giga,
+          :clock_speed => 2.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 1.MB
+          :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 2.GB(true), # bytes
+          :ram_size => 2.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -100,14 +100,14 @@ site :orsay do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 80.GB(false), :driver => nil}
+          {:interface => 'SATA', :size => 80.GB, :driver => nil}
           ]
         network_adapters [  
-          {:interface => 'Myri-10G', :rate => 10.giga, :enabled => true, 
+          {:interface => 'Myri-10G', :rate => 10.G, :enabled => true, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => "Myrinet", :version => "10G-PCIE-8A-C"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false}
           ]
       end        
     end
@@ -117,7 +117,7 @@ site :orsay do |site_uid|
       node "#{cluster_uid}-#{182+i}" do
         processor({
           :version => "250",
-          :clock_speed => 2.4.giga
+          :clock_speed => 2.4.G
         })
       end
     end

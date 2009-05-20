@@ -28,16 +28,16 @@ site :nancy do |site_uid|
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "5110",
-          :clock_speed => 1.6.giga,
+          :clock_speed => 1.6.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 4.MB
+          :cache_l2 => 4.MiB
         })
         main_memory({
-          :ram_size => 2.GB(true), # bytes
+          :ram_size => 2.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
@@ -46,13 +46,13 @@ site :nancy do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA', :size => 80.GB(false), :driver => "ata_piix"}
+          {:interface => 'SATA', :size => 80.GB, :driver => "ata_piix"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "sgrelon1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"}
           ]
       end
     end
@@ -73,16 +73,16 @@ site :nancy do |site_uid|
           :vendor => "Intel",
           :model => "Intel Xeon",
           :version => "L5420",
-          :clock_speed => 2.5.giga,
+          :clock_speed => 2.5.G,
           :instruction_set => "",
           :other_description => "",
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => 12.MB
+          :cache_l2 => 12.MiB
         })
         main_memory({
-          :ram_size => 16.GB(true), # bytes
+          :ram_size => 16.GiB,
           :virtual_size => nil
         })
         operating_system({
@@ -91,14 +91,14 @@ site :nancy do |site_uid|
           :version => nil
         })
         storage_devices [
-          {:interface => 'SATA II', :size => 320.GB(false), :driver => "ata_piix"}
+          {:interface => 'SATA II', :size => 320.GB, :driver => "ata_piix"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "sgriffon1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "e1000e", :vendor => "intel", :version => "80003ES2LAN"},
-          {:interface => 'Ethernet', :rate => 1.giga, :enabled => false, :driver => "e1000e", :vendor => "intel", :version => "BCM5721"},
-	  {:interface => 'Infiniband 20G', :rate => 20.giga, :enabled => true,
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000e", :vendor => "intel", :version => "BCM5721"},
+	  {:interface => 'Infiniband 20G', :rate => 20.G, :enabled => true,
 	    :switch => "ib_switch", :driver => "mlx4_core", :vendor => "Mellanox", :version => "MT26418" }
           ]
       end
