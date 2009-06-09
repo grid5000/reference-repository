@@ -10,10 +10,12 @@ usage = %{
   A tool to generate the Grid5000 reference data.
   
   Usage:
-    ruby grid5000.rb [input files] [options]
+    ruby grid5000.rb [input files] [config files] [options]
   Options:
     -s : simulation mode
-    
+  Notes:
+    input files must be RUBY files and end with a .rb extension.
+    config files mst be YAML files and end with a .yaml extension.
 }
 
 # true if we want to simulate:
@@ -21,10 +23,10 @@ simulation_mode = !$*.delete("-s").nil?
 
 if $*.empty?
   puts usage
-  exit -1
-elsif ($*.map{|file| File.exists?(file) && (File.extname(file) == ".rb" || File.extname(file) == ".yaml")}.include? false)
-  puts "Error: your input files do not exist or are not ruby files (.rb extension) or config files (.yaml extension)."
-  exit -1
+  exit 1
+elsif ($*.map{|file| File.exists?(file)}.include? false)
+  puts "Error: one of your input file do not exist."
+  exit 2
 else
   description_files = $*
   input = {}

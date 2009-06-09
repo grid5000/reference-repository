@@ -65,8 +65,9 @@ class ReferenceGenerator
     Resolv.getaddress(network_address)
   end
   
+  # Lookup a key in one of the configuration files passed to the generator
   #
-  # usage:
+  # Usage:
   #   lookup('nancy', 'nodes', 'paramount-1', 'property_name')
   # or
   #   lookup('nancy', 'nodes') { |result| result['paramount-1']['property_name'] }
@@ -158,7 +159,8 @@ class ReferenceGenerator
   # Initializes a new generator that will generate data files in a hierachical way. 
   # The root of the tree will be named with the value of <tt>data_description[:uid]</tt>.
   def initialize(data_description = {:uid => ""}, options = {:input => {}, :config => {}})
-    @input = options[:input] || raise(ArgumentError, "INPUT cannot be null.")
+    @input = options[:input]
+    raise(ArgumentError, "INPUT cannot be null or empty.") if input.nil? || input.empty?
     @config = options[:config] || {}
     @data = G5K::Tree.new.replace(data_description)
     @context = @data
