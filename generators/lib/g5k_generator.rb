@@ -54,6 +54,8 @@ module G5K
 
 class ReferenceGenerator  
   attr_reader :data
+  attr_reader :config
+  attr_reader :input
   
   def method_missing(method, *args)
     @context.recursive_merge!(method.to_sym => args.first)
@@ -63,6 +65,35 @@ class ReferenceGenerator
     Resolv.getaddress(network_address)
   end
   
+  #
+  # usage:
+  #   lookup('nancy', 'nodes', 'paramount-1', 'property_name')
+  # or
+  #   lookup('nancy', 'nodes') { |result| result['paramount-1']['property_name'] }
+  # or
+  #   lookup('nancy') { |result| result['nodes']['paramount-1']['property_name'] }
+  # 
+  # assuming you passed a <tt>nancy.yaml</tt> file to the generator
+  # Be careful with null values!
+  #
+  def lookup(filename, *keys, &block)
+    if config.has_key?(filename)
+      result = config[filename]
+      if !keys.empty?
+        while !keys.empty? do
+          result = result[keys.shift]
+          break if result.nil?
+        end
+      end  
+      if block
+        block.call(result) 
+      else
+        result
+      end
+    else
+      nil
+    end
+  end
   # This doesn't work with Ruby < 1.8.7. Replaced by a call to build_context (see below).
   #
   # %w{site cluster environment node service}.each do |method|
@@ -126,17 +157,16 @@ class ReferenceGenerator
   
   # Initializes a new generator that will generate data files in a hierachical way. 
   # The root of the tree will be named with the value of <tt>data_description[:uid]</tt>.
-  def initialize(data_description = {:uid => ""}, *files)
-    @files = files
+  def initialize(data_description = {:uid => ""}, options = {:input => {}, :config => {}})
+    @input = options[:input] || raise(ArgumentError, "INPUT cannot be null.")
+    @config = options[:config] || {}
     @data = G5K::Tree.new.replace(data_description)
     @context = @data
   end
   
   def generate
-    @files.each do |file|
-      File.open(file, 'r') do |f|
-        eval(f.read)
-      end
+    input.each do |filename, content|
+      eval(content)
     end
     @data
   end

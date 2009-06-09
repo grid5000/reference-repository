@@ -22,14 +22,23 @@ simulation_mode = !$*.delete("-s").nil?
 if $*.empty?
   puts usage
   exit -1
-elsif ($*.map{|file| File.exists?(file) && File.extname(file) == ".rb"}.include? false)
-  puts "Error: your input files do not exist or are not ruby files (.rb extension)."
+elsif ($*.map{|file| File.exists?(file) && (File.extname(file) == ".rb" || File.extname(file) == ".yaml")}.include? false)
+  puts "Error: your input files do not exist or are not ruby files (.rb extension) or config files (.yaml extension)."
   exit -1
 else
   description_files = $*
-  puts "[Input files:\t\t #{description_files.join(", ")}]"
+  input = {}
+  config = {}
+  description_files.each do |filename|
+    case File.extname(filename)
+    when ".rb"    then input[File.basename(filename, ".rb")] = File.read(filename)
+    when ".yaml"  then config[File.basename(filename, ".yaml")] = YAML.load_file(filename)
+    end
+  end
+  puts "[Input files:\t\t #{input.keys.join(", ")}]"
+  puts "[Config files:\t\t #{config.keys.join(", ")}]"
   puts "[Simulation mode:\t #{simulation_mode}]"
-  generator = G5K::ReferenceGenerator.new({:uid => "grid5000", :type => "grid"}, *description_files)
+  generator = G5K::ReferenceGenerator.new({:uid => "grid5000", :type => "grid"}, :input => input, :config => config)
   data = generator.generate
   directory_to_write = File.expand_path File.join(File.dirname(__FILE__), "../data")
   generator.write(directory_to_write, :simulate => simulation_mode)
