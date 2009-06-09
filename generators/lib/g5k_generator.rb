@@ -1,7 +1,6 @@
 require 'resolv'
 
 module G5K
-  SITES = %w{rennes grenoble bordeaux toulouse sophia orsay nancy lille lyon}
   
   class Tree < Hash
     attr_reader :contents, :path
