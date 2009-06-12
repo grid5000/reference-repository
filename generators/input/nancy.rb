@@ -11,7 +11,7 @@ site :nancy do |site_uid|
   user_support_contact
   ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} + 
     %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1} +
-    %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9}  ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
+    %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9 lenny-x64-base-1.0 lenny-x64-nfs-1.0 lenny-x64-big-1.0 lenny-x64-xen-1.0} ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
   
   cluster :grelon do |cluster_uid|
     model "HP ProLiant DL140G3"
@@ -49,10 +49,14 @@ site :nancy do |site_uid|
           {:interface => 'SATA', :size => 80.GB, :driver => "ata_piix"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
-            :switch => "sgrelon1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721"}
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :mac => lookup('nancy', "#{node_uid}", 'mac_eth0'),
+            :switch => lookup('nancy', "#{node_uid}", 'switch_eth0'), :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721", :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth0') },
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721", :mac => lookup('nancy', "#{node_uid}", 'mac_eth1'), 
+            :switch => lookup('nancy', "#{node_uid}", 'switch_eth1'), :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth1'), :ip => lookup('nancy', "#{node_uid}", 'ip_eth1') },
+          {:interface => 'Ipmi', :rate => 100.M, :enabled => true, :vendor => "hp_ilo", :version => "no", :ip => lookup('nancy', "#{node_uid}", 'ip_ipmi'),
+            :switch => lookup('nancy', "#{node_uid}", 'switch_ipmi'), :switch_port => lookup('nancy', "#{node_uid}", 'switch_ipmi_pos'),
+            :pdu => lookup('nancy', "#{node_uid}", 'pdu'), :pdu_port => lookup('nancy', "#{node_uid}", 'pdu_pos')  }
           ]
       end
     end
@@ -95,11 +99,16 @@ site :nancy do |site_uid|
           ]
         network_adapters [
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
-            :switch => "sgriffon1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => lookup('nancy', "#{node_uid}", 'switch_eth0'), :mac => lookup('nancy', "#{node_uid}", 'mac_eth0'),
+            :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth0'), 
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "e1000e", :vendor => "intel", :version => "80003ES2LAN"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000e", :vendor => "intel", :version => "BCM5721"},
 	  {:interface => 'Infiniband 20G', :rate => 20.G, :enabled => true,
-	    :switch => "ib_switch", :driver => "mlx4_core", :vendor => "Mellanox", :version => "MT26418" }
+	    :switch => "ib_switch", :driver => "mlx4_core", :vendor => "Mellanox", :version => "MT26418" },
+          {:interface => 'Ipmi', :rate => 100.M, :enabled => true, :vendor => "tyan", :version => "no", :ip => lookup('nancy', "#{node_uid}", 'ip_ipmi'),
+            :switch => lookup('nancy', "#{node_uid}", 'switch_ipmi'), :switch_port => lookup('nancy', "#{node_uid}", 'switch_ipmi_pos'),
+            :pdu => lookup('nancy', "#{node_uid}", 'pdu'), :pdu_port => lookup('nancy', "#{node_uid}", 'pdu_pos')  }
           ]
       end
     end

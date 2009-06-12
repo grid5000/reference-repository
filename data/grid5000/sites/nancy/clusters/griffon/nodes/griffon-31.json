@@ -14,9 +14,11 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.28.54.31",
+      "mac": "00:E0:81:B2:C2:24",
       "network_address": "griffon-31.nancy.grid5000.fr",
       "rate": 1000000000,
-      "switch": "sgriffon1",
+      "switch": "sgriffon2",
+      "switch_port": "2",
       "vendor": "intel",
       "version": "80003ES2LAN"
     },
@@ -36,6 +38,18 @@
       "switch": "ib_switch",
       "vendor": "Mellanox",
       "version": "MT26418"
+    },
+    {
+      "enabled": true,
+      "interface": "Ipmi",
+      "ip": "172.28.154.31",
+      "pdu": "pdu4",
+      "pdu_port": "D2",
+      "rate": 100000000,
+      "switch": "sgriffon2-ipmi",
+      "switch_port": "2",
+      "vendor": "tyan",
+      "version": "no"
     }
   ],
   "operating_system": {

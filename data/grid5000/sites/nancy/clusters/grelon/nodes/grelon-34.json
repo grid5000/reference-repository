@@ -14,9 +14,11 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.28.54.134",
+      "mac": "00:18:FE:FA:53:1A",
       "network_address": "grelon-34.nancy.grid5000.fr",
       "rate": 1000000000,
-      "switch": "sgrelon1",
+      "switch": "sgrelon2",
+      "switch_port": "10",
       "vendor": "Broadcom",
       "version": "BCM5721"
     },
@@ -24,9 +26,25 @@
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
+      "ip": "172.28.55.134",
+      "mac": "00:18:FE:FA:53:1B",
       "rate": 1000000000,
+      "switch": "sgrelon2",
+      "switch_port": "34",
       "vendor": "Broadcom",
       "version": "BCM5721"
+    },
+    {
+      "enabled": true,
+      "interface": "Ipmi",
+      "ip": "172.28.154.134",
+      "pdu": "pdu62",
+      "pdu_port": "X2",
+      "rate": 100000000,
+      "switch": "sgrenade2",
+      "switch_port": "10",
+      "vendor": "hp_ilo",
+      "version": "no"
     }
   ],
   "operating_system": {
