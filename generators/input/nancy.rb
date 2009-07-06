@@ -18,6 +18,7 @@ site :nancy do |site_uid|
     created_at Time.parse("2007-02-27 12:00 GMT").httpdate
     120.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        serial lookup('nancy', node_uid, 'serial')
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2, 
@@ -67,6 +68,7 @@ site :nancy do |site_uid|
     created_at Time.parse("2009-04-10 12:00 GMT").httpdate
     92.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+        serial lookup('nancy', node_uid, 'serial')
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2, 
