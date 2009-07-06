@@ -125,6 +125,9 @@ class ReferenceGenerator
   def cluster(uid, *options, &block)
     build_context(:clusters, uid, *options, &block)
   end
+  def server(uid, *options, &block)
+    build_context(:servers, uid, *options, &block)
+  end
   def environment(uid, *options, &block)
     build_context(:environments, uid, *options, &block)
   end
