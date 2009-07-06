@@ -1,6 +1,15 @@
+{{Maintainer|Cyril Rohr}}
+{{Status|Draft}}
+{{Portal|Admin}}
 == Synopsis ==
 The reference data is stored in a Git repository as JSON files, organized into hierarchical folders. These files can be manually written but the Git repository comes with a "/generators" folder which contains a script to ease their generation, based on high-level description files written in Ruby. Given one or more input files that describe the data you want to add, it will generate the required JSON files, directories and hard links.
 
+== Requirements ==
+* Ruby >= 1.8.6
+* Git
+* g5kadmin account
+
+== Workflow ==
 The general overview of the workflow between git repositories is as follows:
 
     ADMIN REPOSITORY <-- pull/push -->  MASTER REPOSITORY
@@ -13,8 +22,8 @@ The general overview of the workflow between git repositories is as follows:
                                             |     |
                    API REPOSITORY SITE X <--|     |--> API REPOSITORY SITE Y
 
-Each site administrator must first clone the remote MASTER REPOSITORY located on the wsdev3.rennes.grid5000.fr server and store it on a machine located within Grid5000 (this is what I call the ADMIN REPOSITORY and has to be done once):
-  g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@wsdev3.rennes.grid5000.fr/srv/git/reference-repository.git
+Each site administrator must first clone the remote MASTER REPOSITORY located on the git.grid5000.fr server and store it on a local machine (this is what I call the ADMIN REPOSITORY and has to be done once):
+  g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git
 When there is a need for change, the site administrator PULLs from the MASTER REPOSITORY to get the latest changes:
   g5kadmin@host:/somewhere/reference-repository$ git pull
 Then she manually adds/edits/removes the raw JSON files or uses the generator (more on that later). When she's done, she COMMITs her changes and PUSHes them to the MASTER REPOSITORY:
@@ -24,14 +33,16 @@ Then she manually adds/edits/removes the raw JSON files or uses the generator (m
 
 Finally, these changes are automatically replicated every minute to each API REPOSITORY (one per site), that are used by the Reference API.
 
+{{Warning|text=Please note that manually edited files may be overwritten by a generator if it contains instructions on how to generate them. The recommended way of editing the data is to use the generators.}}
+
 == Getting started ==
 First, clone the remote MASTER REPOSITORY if it is not already done:
-  g5kadmin@host:/somewhere/reference-repository$ git clone ssh://g5kadmin@wsdev3.rennes.grid5000.fr/srv/git/reference-repository.git
+  g5kadmin@host:/somewhere/reference-repository$ git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git
 
 Right now, the easiest way to get started is to look at some existing input files in the "generators/input" directory. There you can see how you can define sites, clusters, nodes and environments programmatically. Then you may create a new input file or change an existing one and run it in simulation mode:
   g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/*.rb -s
 or, if you want to explicitly specify the input files:
-  g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/input-file1.rb generators/grid5000.rb generators/input/input-file2.rb -s
+  g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/input-file1.rb generators/input/input-file2.rb -s
 Your changes won't be applied but you'll see what would have been changed. Thus, the simulation mode is useful to review your changes before committing and check the ruby syntax of the input files.
 
 When you are happy with your changes, you can then run the command without the -s flag:
@@ -43,6 +54,9 @@ Finally, commit your changes with a meaningful message and push them immediately
 * [http://cheat.errtheblog.com/s/git Git Cheat Sheet]
 
 == FAQ ==
+=== Resolv::ResolvError occurred when I tried to generate ===
+At runtime, the generator resolves the hostname of each node to obtain its IP address. As a consequence it shoud be run from within Grid5000 so that it can query the Grid5000 DNS.
+
 === What kind of commit message ? ===
 After each modification to the repository, you should immediately commit your changes with a meaningful message, so that people can easily understand what has changed (latest changes will be displayed in a syndication feed). Your commits should also be site-specific, or even cluster-specific to avoid merge conflicts. Try to avoid putting a lot of changes in only one commit.
 
@@ -55,7 +69,4 @@ Otherwise you can set them by issuing:
 
 === My commit has been rejected, why ? ===
 Since users will make queries such as: "give me the description of that site at this date", the time between the date of the commit and the effective replication of the changes to the APIs must be as low as possible. 
-That's why, right after your commit, you should push your changes to the remote MASTER REPOSITORY. Please not that commits whose committed date is older than 60 seconds will be rejected (if you encounter an error, check that your system clock is correctly synchronized with a time server).
-
-== Authors ==
-Cyril Rohr, cyril.rohr@irisa.fr
+That's why, right after your commit, you should push your changes to the remote MASTER REPOSITORY. Please note that commits whose committed date is older than 60 seconds will be rejected (if you encounter an error, check that your system clock is correctly synchronized with a time server).
