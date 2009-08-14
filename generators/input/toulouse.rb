@@ -3,8 +3,8 @@ site :toulouse do |site_uid|
   location "Toulouse, France"
   web
   description ""
-  latitude
-  longitude
+  latitude 43.6167
+  longitude 1.4333
   email_contact
   sys_admin_contact
   security_contact
