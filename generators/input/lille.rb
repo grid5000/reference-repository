@@ -3,8 +3,8 @@ site :lille do |site_uid|
   location "Lille, France"
   web
   description ""
-  latitude
-  longitude
+  latitude 50.6500
+  longitude 3.0833
   email_contact
   sys_admin_contact
   security_contact
