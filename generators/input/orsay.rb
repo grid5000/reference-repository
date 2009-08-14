@@ -3,8 +3,8 @@ site :orsay do |site_uid|
   location "Orsay, France"
   web
   description ""
-  latitude
-  longitude
+  latitude 48.7000
+  longitude 2.2000
   email_contact
   sys_admin_contact
   security_contact
