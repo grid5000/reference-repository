@@ -3,8 +3,8 @@ site :rennes do |site_uid|
   location "Rennes, France"
   web "http://www.irisa.fr"
   description ""
-  latitude 48.114722
-  longitude -1.679444
+  latitude 48.1000
+  longitude -1.6667
   email_contact
   sys_admin_contact
   security_contact
