@@ -3,8 +3,8 @@ site :lyon do |site_uid|
   location "Lyon, France"
   web
   description ""
-  latitude
-  longitude
+  latitude 45.7667
+  longitude 4.8333
   email_contact
   sys_admin_contact
   security_contact
