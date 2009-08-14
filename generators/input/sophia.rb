@@ -3,8 +3,8 @@ site :sophia do |site_uid|
   location "Sophia-Antipolis, France"
   web
   description ""
-  latitude
-  longitude
+  latitude 43.6161
+  longitude 7.0678
   email_contact
   sys_admin_contact
   security_contact
