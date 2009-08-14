@@ -3,9 +3,8 @@ site :nancy do |site_uid|
   location "Nancy, France"
   web
   description ""
-  latitude
-  longitude
-  email_contact
+  latitude 48.7000
+  longitude 6.2000
   sys_admin_contact
   security_contact
   user_support_contact
