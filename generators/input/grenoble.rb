@@ -3,8 +3,8 @@ site :grenoble do |site_uid|
   location "Grenoble, France"
   web
   description ""
-  latitude
-  longitude
+  latitude 45.1833
+  longitude 5.7167
   email_contact
   sys_admin_contact
   security_contact
