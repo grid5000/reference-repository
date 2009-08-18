@@ -5,13 +5,14 @@ site :sophia do |site_uid|
   description ""
   latitude 43.6161
   longitude 7.0678
-  email_contact
-  sys_admin_contact
-  security_contact
-  user_support_contact
+  email_contact "sophia-staff@lists.grid5000.fr"
+  sys_admin_contact "sophia-staff@lists.grid5000.fr"
+  security_contact "sophia-staff@lists.grid5000.fr"
+  user_support_contact "sophia-staff@lists.grid5000.fr"
   ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} + 
     %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1} +
     %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9}  ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
+  compilation_server true
   
   cluster :azur do |cluster_uid|
     model "IBM eServer 325"
