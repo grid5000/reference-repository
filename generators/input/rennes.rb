@@ -5,14 +5,14 @@ site :rennes do |site_uid|
   description ""
   latitude 48.1000
   longitude -1.6667
-  email_contact
-  sys_admin_contact
-  security_contact
-  user_support_contact
+  email_contact "rennes-staff@lists.grid5000.fr"
+  sys_admin_contact "rennes-staff@lists.grid5000.fr"
+  security_contact "rennes-staff@lists.grid5000.fr"
+  user_support_contact "rennes-staff@lists.grid5000.fr"
   ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} + 
     %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1} +
     %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9}  ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
-  
+ compilation_server false 
   
   cluster :paramount do |cluster_uid|
     model "Dell PowerEdge 1950"
