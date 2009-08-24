@@ -70,7 +70,7 @@ site :orsay do |site_uid|
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
     
     # WARN: 2 nodes are missing (gdx-311 and gdx-312) and won't appear in the reference
-    (181+131-2).times do |i|
+    (180+132-2).times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
@@ -112,9 +112,9 @@ site :orsay do |site_uid|
       end        
     end
     
-    # extension specifics, starting at node 187
-    (131-2).times do |i|
-      node "#{cluster_uid}-#{182+i}" do
+    # extension specifics, starting at node 181
+    (132-2).times do |i|
+      node "#{cluster_uid}-#{181+i}" do
         processor({
           :version => "250",
           :clock_speed => 2.4.G
