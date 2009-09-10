@@ -1,6 +1,6 @@
 environment 'sid-x64-base-1.0' do
   state "stable"
-  file({:path => "/home/nancy/xdelaruelle/images/sid-x64-base-1.0.tgz", :md5 => "e39be32c087f0c9777fd0b0ad7d12050"})
+  file({:path => "/grid5000/images/sid-x64-base-1.0.tgz", :md5 => "e39be32c087f0c9777fd0b0ad7d12050"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.18-8"
   based_on "Debian version sid for amd64"
@@ -30,7 +30,7 @@ end
 
 environment 'sid-x64-nfs-1.0' do
   state "stable"
-  file({:path => "/home/nancy/xdelaruelle/images/sid-x64-nfs-1.0.tgz", :md5 => "6e004d1ac25e86a1dadc09d28f968eb5"})
+  file({:path => "/grid5000/images/sid-x64-nfs-1.0.tgz", :md5 => "6e004d1ac25e86a1dadc09d28f968eb5"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.18-4"
   based_on "Debian version sid for amd64"
@@ -165,7 +165,7 @@ end
 
 environment 'etch-x64-xen-1.0' do
   state "testing"
-  file({:path => "/grid5000/images/etch-x64-xen-1.0.tgz", :md5 => nil})
+  file({:path => "/grid5000/images/etch-x64-xen-1.0.tgz", :md5 => "42cd6233ff42d0c343a4a93ed6017d97"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310"
   kernel "2.6.18-6-xen-amd64"
   based_on "Debian version etch for amd64"
@@ -194,8 +194,8 @@ environment 'lenny-x64-base-0.9' do
 end
 
 environment 'lenny-x64-base-1.0' do
-  state "build"
-  file({:path => "/grid5000/images/lenny-x64-base-1.0.tgz", :md5 => nil})
+  state "stable"
+  file({:path => "/grid5000/images/lenny-x64-base-1.0.tgz", :md5 => "1b60d38c016b844024bc541efb212573"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310"
   kernel "2.6.26.2"
   based_on "Debian version lenny for amd64"
@@ -276,6 +276,96 @@ environment 'lenny-x64-xen-1.0' do
   based_on "Debian version etch for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'etch-x64-base-2.0' do
+  state "stable"
+  file({:path => "/grid5000/images/etch-x64-base-2.0.tgz", :md5 => "97ec1fa027e597ee54d7e38f6cd70472"})
+  valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310i, Carri CS-5393B"
+  kernel "2.6.18-6-amd64"
+  based_on "Debian version etch for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services []
+  accounts [{:login => "root", :password => "grid5000"}, {:login => "g5k", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'etch-x64-nfs-2.0' do
+  state "stable"
+  file({:path => "/grid5000/images/etch-x64-nfs-2.0.tgz", :md5 => "e564f3b80ba37eb01d967507a05dd5ca"})
+  valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310, Carri CS-5393B"
+  kernel "2.6.18-6-amd64"
+  based_on "Debian version etch for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services ['ldap', 'nfs']
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'etch-x64-big-2.0' do
+  state "stable"
+  file({:path => "/grid5000/images/etch-x64-big-2.0.tgz", :md5 => "b406634f4d0e0e5859c5ba7936064c2c"})
+  valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310, Carri CS-5393B"
+  kernel "2.6.18-6-amd64"
+  based_on "Debian version etch for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services ['ldap', 'nfs']
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'lenny-x64-base-2.0' do
+  state "stable"
+  file({:path => "/grid5000/images/lenny-x64-base-2.0.tgz", :md5 => "43217a044daf45368231f405f7d63b59"})
+  kernel "2.6.26.2"
+  valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310, Carri CS-5393B"
+  based_on "Debian version lenny for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services []
+  accounts [{:login => "root", :password => "grid5000"}, {:login => "g5k", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'lenny-x64-nfs-2.0' do
+  state "stable"
+  file({:path => "/grid5000/images/lenny-x64-nfs-2.0.tgz", :md5 => "995f0dad8a0462b47e4fc22ae4e32369"})
+  valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310, Carri CS-5393B"
+  kernel "2.6.26.2"
+  based_on "Debian version lenny for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services ['ldap', 'nfs']
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'lenny-x64-big-2.0' do
+  state "stable"
+  file({:path => "/grid5000/images/lenny-x64-big-2.0.tgz", :md5 => "70a31ddd4db68c63b8364393dd379b75"})
+  valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310, Carri CS-5393B"
+  kernel "2.6.26.2"
+  based_on "Debian version lenny for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services ['ldap', 'nfs']
   accounts [{:login => "root", :password => "grid5000"}]
   applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
   x11_forwarding true
