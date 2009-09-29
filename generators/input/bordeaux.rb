@@ -185,7 +185,7 @@ version 1.48"
         operating_system({
           :name => "ClusterVision OS",
           :release => "Boron",
-          :version => "5.0"
+          :version => "3.1"
         })
         storage_devices [
           {:interface => 'SAS', :size => 600.GB, :driver => nil}
