@@ -1,8 +1,9 @@
 {{Maintainer|Cyril Rohr}}
+{{Author|Cyril Rohr}}
 {{Status|Draft}}
 {{Portal|Admin}}
 == Synopsis ==
-The reference data is stored in a Git repository as JSON files, organized into hierarchical folders. These files can be manually written but the Git repository comes with a "/generators" folder which contains a script to ease their generation, based on high-level description files written in Ruby. Given one or more input files that describe the data you want to add, it will generate the required JSON files, directories and hard links.
+The reference data is stored in a Git repository as JSON files, organized into hierarchical folders. These files can be manually written but the Git repository comes with a "/generators" folder which contains a script to ease their generation, based on high-level description files written in Ruby. Given one or more input files that describe the data you want to add, it will generate the required JSON files, directories and sym links.
 
 == Requirements ==
 * Ruby >= 1.8.6
@@ -23,10 +24,15 @@ The general overview of the workflow between git repositories is as follows:
                    API REPOSITORY SITE X <--|     |--> API REPOSITORY SITE Y
 
 Each site administrator must first clone the remote MASTER REPOSITORY located on the git.grid5000.fr server and store it on a local machine (this is what I call the ADMIN REPOSITORY and has to be done once):
+
   g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git
+
 When there is a need for change, the site administrator PULLs from the MASTER REPOSITORY to get the latest changes:
+
   g5kadmin@host:/somewhere/reference-repository$ git pull
+
 Then she manually adds/edits/removes the raw JSON files or uses the generator (more on that later). When she's done, she COMMITs her changes and PUSHes them to the MASTER REPOSITORY:
+
   ... editing ...
   g5kadmin@host:/somewhere/reference-repository$ git commit -a -m "list of modifications"
   g5kadmin@host:/somewhere/reference-repository$ git push
@@ -37,18 +43,35 @@ Finally, these changes are automatically replicated every minute to each API REP
 
 == Getting started ==
 First, clone the remote MASTER REPOSITORY if it is not already done:
+
   g5kadmin@host:/somewhere/reference-repository$ git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git
 
-Right now, the easiest way to get started is to look at some existing input files in the "generators/input" directory. There you can see how you can define sites, clusters, nodes and environments programmatically. Then you may create a new input file or change an existing one and run it in simulation mode:
-  g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/*.rb -s
+Right now, the easiest way to get started is to look at some existing input files in the "generators/input" directory. There you can see how you can define sites, clusters, nodes and environments programmatically. 
+Then you may create a new input file or change an existing one and run it in simulation mode:
+
+  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/*.rb -s
+
 or, if you want to explicitly specify the input files:
-  g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/input-file1.rb generators/input/input-file2.rb -s
+
+  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/input-file1.rb generators/input/input-file2.rb -s
+
+For more information about the available options and usage of the <code>grid5000</code> generator, run:
+
+  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 --help
+
 Your changes won't be applied but you'll see what would have been changed. Thus, the simulation mode is useful to review your changes before committing and check the ruby syntax of the input files.
 
 When you are happy with your changes, you can then run the command without the -s flag:
-  g5kadmin@host:/somewhere/reference-repository$ ruby generators/grid5000.rb generators/input/*.rb
 
-Finally, commit your changes with a meaningful message and push them immediately to the MASTER REPOSITORY.
+  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/*.rb
+
+Please be aware that config files (YAML format) may be passed on the command line, so that the values can be used in the input files via the <code>lookup(config_filename, key)</code> function. To tell the generator to include one or more config files, you must pass them in your command arguments:
+
+  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/*.rb generators/input/*.yaml
+
+Note that the extension of config files MUST be <code>.yaml</code> or <code>.yml</code>, otherwise they won't be included.
+
+Finally, commit your changes with a meaningful message (you SHOULD first review the changes that will be committed by running the <code>git diff</code> command) and push them immediately to the MASTER REPOSITORY.
 
 == Resources ==
 * [http://cheat.errtheblog.com/s/git Git Cheat Sheet]
@@ -61,9 +84,12 @@ At runtime, the generator resolves the hostname of each node to obtain its IP ad
 After each modification to the repository, you should immediately commit your changes with a meaningful message, so that people can easily understand what has changed (latest changes will be displayed in a syndication feed). Your commits should also be site-specific, or even cluster-specific to avoid merge conflicts. Try to avoid putting a lot of changes in only one commit.
 
 You should also check that your name and email are correctly configured in your Git configuration:
+
   $ git config --get user.name
   $ git config --get user.email
+
 Otherwise you can set them by issuing:
+
   $ git config --global user.name 'John Doe'
   $ git config --global user.email johndoe@example.com
 

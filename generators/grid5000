@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+
+require 'pp'
+require 'rubygems'
+require 'fileutils'
+require 'json/pure'
+require 'yaml'
+require 'time'
+require 'optparse'
+require File.dirname(__FILE__)+'/lib/core_extensions'
+require File.dirname(__FILE__)+'/lib/g5k_generator'
+
+options = {:simulate => false}
+option_parser = OptionParser.new do |opts|
+  opts.banner = %{
+  A tool to generate the Grid5000 reference data.
+  
+  Usage:
+    ./grid5000 input_files [config_files] [options]
+  
+  Notes:
+    * input_files   MUST be .rb files.
+    * config_files  MUST be .yml or .yaml files.
+  
+  Examples:
+    ./grid5000 input/*.rb input/*.yaml -s
+    ./grid5000 input/nancy.rb input/nancy.yaml
+    ./grid5000 input/rennes.rb input/lille.rb -s
+    
+  Options:}
+  opts.on("-s", "--simulate", "Run in simulation mode (do not write changes). Default to false.") do |v|
+    options[:simulate] = v
+  end
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+  
+end
+
+option_parser.parse!
+files = ARGV
+if files.empty?
+  $stderr.puts option_parser.help
+  exit 1
+elsif (files.map{|file| File.exists?(file)}.include? false)
+  $stderr.puts "Error: one of your input or config file does not exist."
+  exit 2
+else
+  input = {}
+  config = {}
+  files.each do |filename|
+    case (ext = File.extname(filename))
+    when ".rb"
+      input[File.basename(filename, ext)] = File.read(filename)
+    when ".yml", ".yaml"
+      config[File.basename(filename, ext)] = YAML.load_file(filename)
+    else
+      raise ArgumentError, "The file #{filename} is neither an input file nor a config file."
+    end
+  end
+  puts "[Input files:\t\t #{input.keys.join(", ")}]"
+  puts "[Config files:\t\t #{config.keys.join(", ")}]"
+  puts "[Simulation mode:\t #{options[:simulate]}]"
+  generator = G5K::ReferenceGenerator.new({:uid => "grid5000", :type => "grid"}, :input => input, :config => config)
+  data = generator.generate
+  directory_to_write = File.expand_path File.join(File.dirname(__FILE__), "../data")
+  generator.write(directory_to_write, options)
+  exit 0
+end
