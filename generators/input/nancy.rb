@@ -105,7 +105,7 @@ site :nancy do |site_uid|
             :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "e1000e", :vendor => "intel", :version => "80003ES2LAN"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000e", :vendor => "intel", :version => "BCM5721"},
-	  {:interface => 'Infiniband 20G', :rate => 20.G, :enabled => true, :mac => lookup('nancy', "#{node_uid}", 'mac_ib'),
+	  {:interface => 'Infiniband DDR', :rate => 20.G, :enabled => true, :mac => lookup('nancy', "#{node_uid}", 'mac_ib'),
 	    :switch => "ib_switch", :ib_switch_card => lookup('nancy',"#{node_uid}", 'switch_ib_card'), :ib_switch_card_pos => lookup('nancy',"#{node_uid}", 'switch_ib_card_pos'), :driver => "mlx4_core", :vendor => "Mellanox", :version => "MT26418" },
           {:interface => 'Ipmi', :rate => 100.M, :enabled => true, :vendor => "tyan", :version => "no", :ip => lookup('nancy', "#{node_uid}", 'ip_ipmi'),
             :switch => lookup('nancy', "#{node_uid}", 'switch_ipmi'), :switch_port => lookup('nancy', "#{node_uid}", 'switch_ipmi_pos'),

@@ -98,7 +98,7 @@ version 1.48"
           {:interface => 'SCSI', :size => 70.GB, :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'InfiniBand', :rate => 10.G, 
+          {:interface => 'InfiniBand SDR', :rate => 10.G, 
             :switch => "sbdp", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => 'InfiniHost', :version => "MT25208", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
@@ -122,7 +122,7 @@ version 1.48"
           })
         processor({
           :vendor => "AMD",
-          :model => "Dual-Core AMD Opteron Processor",
+          :model => "AMD Opteron",
           :version => "2218",
           :clock_speed => 2.6.G,
           :instruction_set => "x86-64",
@@ -168,8 +168,8 @@ version 1.48"
           })
         processor({
           :vendor => "AMD",
-          :model => "Dual-Core AMD Opteron Processor 8218",
-          :version => "2218",
+          :model => "AMD Opteron",
+          :version => "8218",
           :clock_speed => 2.6.G,
           :instruction_set => "x86-64",
           :other_description => "",
@@ -191,10 +191,10 @@ version 1.48"
           {:interface => 'SAS', :size => 600.GB, :driver => nil}
           ]
         network_adapters [
-          {:interface => 'Myri-10G', :rate => 10.G, 
+          {:interface => 'Myrinet 10G', :rate => 10.G, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-          {:interface => 'InfiniBand', :rate => 10.G, :vendor => 'InfiniHost', :version => "MT25408", :enabled => true},
+          {:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'InfiniHost', :version => "MT25408", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
           ]
