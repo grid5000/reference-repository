@@ -100,7 +100,7 @@ version 1.48"
         network_adapters [
           {:interface => 'InfiniBand SDR', :rate => 10.G, 
             :switch => "sbdp", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :vendor => 'InfiniHost', :version => "MT25208", :enabled => true},
+            :vendor => 'Mellanox', :version => "InfiniHost MT25208", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
           ]
@@ -194,7 +194,7 @@ version 1.48"
           {:interface => 'Myrinet 10G', :rate => 10.G, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-          {:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'InfiniHost', :version => "MT25408", :enabled => true},
+          {:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MT25408", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
           ]
