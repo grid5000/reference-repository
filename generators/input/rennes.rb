@@ -101,7 +101,7 @@ site :rennes do |site_uid|
           {:interface => 'SATA', :size => 160.GB, :driver => "mptsas"}
           ]
         network_adapters [
-            {:interface => 'Myri-10G', :rate => 10.G, 
+            {:interface => 'Myrinet 10G', :rate => 10.G, 
               :switch => "c6509-grid", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
               :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
             {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "bnx2"},
