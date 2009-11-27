@@ -95,6 +95,9 @@ site :lille do |site_uid|
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
           ]
         network_adapters [
+          {:interface => 'Myrinet 10G', :rate => 10.G, :enabled => true,
+            :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :vendor => "Myrinet", :version => "10G-PCIE-8A-C"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "switch1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3"}
@@ -139,6 +142,9 @@ site :lille do |site_uid|
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
           ]
         network_adapters [
+          {:interface => 'Myrinet 10G', :rate => 10.G, :enabled => true,
+            :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :vendor => "Myrinet", :version => "10G-PCIE-8A-C"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => "switch1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "tg3"}
@@ -183,6 +189,9 @@ site :lille do |site_uid|
           {:interface => 'SATA II', :size => 250.GB, :driver => "ahci"}
           ]
         network_adapters [
+          {:interface => 'Myrinet 10G', :rate => 10.G, :enabled => true,
+            :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :vendor => "Myrinet", :version => "10G-PCIE-8A-C"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
             :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :driver => "e1000"}
