@@ -2,6 +2,7 @@
 {{Author|Cyril Rohr}}
 {{Status|Draft}}
 {{Portal|Admin}}
+
 == Synopsis ==
 The reference data is stored in a Git repository as JSON files, organized into hierarchical folders. These files can be manually written but the Git repository comes with a "/generators" folder which contains a script to ease their generation, based on high-level description files written in Ruby. Given one or more input files that describe the data you want to add, it will generate the required JSON files, directories and sym links.
 
@@ -69,9 +70,15 @@ Please be aware that config files (YAML format) may be passed on the command lin
 
   g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/*.rb generators/input/*.yaml
 
-Note that the extension of config files MUST be <code>.yaml</code> or <code>.yml</code>, otherwise they won't be included.
+{{Note|text=Note that the extension of config files MUST be <code>.yaml</code> or <code>.yml</code>, otherwise they won't be included.}}
 
-Finally, commit your changes with a meaningful message (you SHOULD first review the changes that will be committed by running the <code>git diff</code> command) and push them immediately to the MASTER REPOSITORY.
+Finally, commit your changes with a meaningful message (you SHOULD first review the changes that will be committed by running the <code>git diff</code> command) and push them immediately to the MASTER REPOSITORY:
+  
+  g5kadmin@host:/somewhere/reference-repository$ git commit -a -m "[<code class="replace">TAGS</code>] message"
+
+{{Note|text=<code>TAGS</code> is a comma-separated list of tags (e.g. <code class="replace">[rennes,lyon]</code>) that add parseable semantics to the commit message.}}
+
+  g5kadmin@host:/somewhere/reference-repository$ git push
 
 == Resources ==
 * [http://cheat.errtheblog.com/s/git Git Cheat Sheet]
