@@ -43,7 +43,9 @@ version 1.48"
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
+          :kadeploy_name => "debian-prod-bol",
+	  :kadeploy_version => "2",	  
+	  :name => "Debian Sid",
           :release => nil,
           :version => nil
         })
@@ -90,7 +92,9 @@ version 1.48"
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
+	  :kadeploy_name => "debian-prod-bol",    
+          :kadeploy_version => "2",       
+          :name => "Debian Sid",
           :release => nil,
           :version => nil
         })
@@ -137,10 +141,12 @@ version 1.48"
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
+	  :kadeploy_name => "debian-prod-bol",
+          :kadeploy_version => "2",
+          :name => "Debian Sid",
           :release => nil,
-          :version => nil
-        })
+          :version => nil        
+	})
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw", :vendor => "Hitachi", :version => "HDS72168"}
           ]
