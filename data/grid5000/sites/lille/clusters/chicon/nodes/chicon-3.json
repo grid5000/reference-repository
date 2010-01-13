@@ -10,6 +10,16 @@
   },
   "network_adapters": [
     {
+      "driver": "tg3",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.159.76",
+      "network_address": "chicon-3.lille.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw",
+      "switch_port": "Gi3\/36"
+    },
+    {
       "enabled": true,
       "interface": "Myrinet 10G",
       "ip": "192.168.162.76",
@@ -18,15 +28,6 @@
       "switch": null,
       "vendor": "Myrinet",
       "version": "10G-PCIE-8A-C"
-    },
-    {
-      "driver": "tg3",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "192.168.159.76",
-      "network_address": "chicon-3.lille.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "switch1"
     }
   ],
   "operating_system": {
