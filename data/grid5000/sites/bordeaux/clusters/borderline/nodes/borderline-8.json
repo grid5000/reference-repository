@@ -11,6 +11,13 @@
   "network_adapters": [
     {
       "enabled": true,
+      "interface": "InfiniBand SDR",
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "InfiniHost MT25408"
+    },
+    {
+      "enabled": true,
       "interface": "Myrinet 10G",
       "ip": "172.16.1.203",
       "network_address": "borderline-8.bordeaux.grid5000.fr",
@@ -18,25 +25,6 @@
       "switch": null,
       "vendor": "Myrinet",
       "version": "10G-PCIE-8A-C"
-    },
-    {
-      "enabled": true,
-      "interface": "InfiniBand SDR",
-      "rate": 10000000000,
-      "vendor": "Mellanox",
-      "version": "InfiniHost MT25408"
-    },
-    {
-      "driver": "e1000",
-      "enabled": true,
-      "interface": "Ethernet",
-      "rate": 1000000000
-    },
-    {
-      "driver": "e1000",
-      "enabled": false,
-      "interface": "Ethernet",
-      "rate": 1000000000
     }
   ],
   "operating_system": {

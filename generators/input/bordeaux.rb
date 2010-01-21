@@ -197,13 +197,29 @@ version 1.48"
           {:interface => 'SAS', :size => 600.GB, :driver => nil}
           ]
         network_adapters [
-          {:interface => 'Myrinet 10G', :rate => 10.G, 
-            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-          {:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MT25408", :enabled => true},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
           ]
+#some cards have been swapped between hosts - refer to bug 2681 for explanations
+	  if i == 0 or i == 1
+	  network_adapters [
+		{:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MT25408", :enabled => true},
+		  {:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MT25408", :enabled => true}]
+	  elsif i == 2 or i == 3
+	  network_adapters [
+		  {:interface => 'Myrinet 10G', :rate => 10.G, 
+		    :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
+		  {:interface => 'Myrinet 10G', :rate => 10.G, 
+		    :switch => nil, :network_address => "#{cluster_uid}-#{(i-2)-(i-3)*2}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true}]
+	    else
+	    network_adapters [
+		{:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MT25408", :enabled => true},
+		  {:interface => 'Myrinet 10G', :rate => 10.G, 
+		    :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true}]
+	    end
       end
     end
   end # cluster borderline
