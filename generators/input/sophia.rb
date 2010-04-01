@@ -42,20 +42,37 @@ site :sophia do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
+          :name => Debian,
+          :release => 5.0,
           :version => nil
         })
-        storage_devices [
-          {:interface => 'IDE', :size => 80.GB, :driver => "amd74xx"}
-          ]
-        network_adapters [
-          {:interface => 'Myri-2000', :rate => 2.G, :enabled => true, 
-            :switch => "cisco1", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :vendor => 'Myrinet', :version => "M3F-PCIXF-2"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "tg3"}
-          ]   
+        storage_devices [{
+          :interface => 'IDE',
+          :size => 80.GB,
+          :driver => "amd74xx"
+        }]
+        network_adapters [{
+          :interface => 'Myri-2000',
+          :rate => 2.G,
+          :enabled => true, 
+          :switch => "cisco1",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :vendor => 'Myrinet',
+          :version => "M3F-PCIXF-2"
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :enabled => true,
+          :driver => "tg3"
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :enabled => false,
+          :driver => "tg3"
+        }]   
       end
     end
   end
