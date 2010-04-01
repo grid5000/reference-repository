@@ -42,8 +42,8 @@ site :sophia do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => Debian,
-          :release => 5.0,
+          :name => "Debian",
+          :release => "5.0",
           :version => nil
         })
         storage_devices [{
