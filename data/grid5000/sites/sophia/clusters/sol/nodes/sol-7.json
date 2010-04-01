@@ -10,6 +10,7 @@
   },
   "network_adapters": [
     {
+      "driver": "forcedeth",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "138.96.22.7",
@@ -20,13 +21,15 @@
       "version": "MCP55 Pro"
     },
     {
-      "enabled": true,
+      "driver": "forcedeth",
+      "enabled": false,
       "interface": "Ethernet",
       "rate": 1000000000,
       "vendor": "NVIDIA",
       "version": "MCP55 Pro"
     },
     {
+      "driver": "tg3",
       "enabled": false,
       "interface": "Ethernet",
       "rate": 1000000000,
@@ -34,6 +37,7 @@
       "version": "BCM5715c"
     },
     {
+      "driver": "tg3",
       "enabled": false,
       "interface": "Ethernet",
       "rate": 1000000000,
@@ -42,8 +46,8 @@
     }
   ],
   "operating_system": {
-    "name": null,
-    "release": null,
+    "name": "Debian",
+    "release": "5.0",
     "version": null
   },
   "processor": {
