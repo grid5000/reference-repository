@@ -248,8 +248,8 @@ site :sophia do |site_uid|
         })
         processor({
           :vendor => "Intel",
-          :model => "Intel Xeon E5520",
-          :version => "2218",
+          :model => "Intel Xeon",
+          :version => "E5520",
           :clock_speed => 2.26.G,
           :instruction_set => "",
           :other_description => "",
