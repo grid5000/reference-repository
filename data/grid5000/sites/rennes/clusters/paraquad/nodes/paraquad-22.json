@@ -10,32 +10,38 @@
   },
   "network_adapters": [
     {
-      "enabled": true,
-      "interface": "Myrinet 10G",
-      "ip": "131.254.202.42",
-      "network_address": "paraquad-22.rennes.grid5000.fr",
-      "rate": 10000000000,
-      "switch": "c6509-grid",
-      "vendor": "Myrinet",
-      "version": "10G-PCIE-8A-C"
-    },
-    {
       "driver": "bnx2",
       "enabled": true,
       "interface": "Ethernet",
-      "rate": 1000000000
+      "ip": "131.254.202.42",
+      "network_address": "paraquad-22.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "vendor": "Broadcom",
+      "version": "NetXtreme II BCM5708"
     },
     {
       "driver": "bnx2",
       "enabled": false,
       "interface": "Ethernet",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Broadcom",
+      "version": "NetXtreme II BCM5708"
+    },
+    {
+      "enabled": true,
+      "interface": "Myrinet 10G",
+      "ip": "192.168.200.42",
+      "network_address": "paraquad-22-myri0.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "c6509-grid",
+      "vendor": "Myrinet",
+      "version": "10G-PCIE-8A-C"
     }
   ],
   "operating_system": {
-    "kernel": "2.6.19.1",
-    "name": "Ubuntu",
-    "release": "6.10",
+    "kernel": "2.6.26",
+    "name": "Debian",
+    "release": "5.0",
     "version": null
   },
   "processor": {
