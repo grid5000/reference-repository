@@ -1,0 +1,67 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 4
+  },
+  "main_memory": {
+    "ram_size": 34359738368,
+    "virtual_size": null
+  },
+  "network_adapters": [
+    {
+      "driver": "bnx2",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "138.96.21.132",
+      "network_address": "suno-32.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "fastiron",
+      "vendor": "Broadcom",
+      "version": "NetXtremeII BCM5716"
+    },
+    {
+      "driver": "bnx2",
+      "enabled": false,
+      "interface": "Ethernet",
+      "ip": "138.96.21.132",
+      "network_address": "suno-32.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "fastiron",
+      "vendor": "Broadcom",
+      "version": "NetXtremeII BCM5716"
+    }
+  ],
+  "operating_system": {
+    "name": "Debian",
+    "release": "5.0",
+    "version": null
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": 8388608,
+    "clock_speed": 2260000000.0,
+    "instruction_set": "",
+    "model": "Intel Xeon E5520",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "2218"
+  },
+  "storage_devices": [
+    {
+      "driver": "megaraid_sas",
+      "interface": "SATA",
+      "raid": "0",
+      "size": 557675957679.749
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "suno-32"
+}
