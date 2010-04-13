@@ -90,7 +90,7 @@ site :rennes do |site_uid|
     model "Dell PowerEdge 1950"
     created_at Time.parse("2006-12-01").httpdate
     
-    64.times do |i|
+    32.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
