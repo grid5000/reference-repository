@@ -48,7 +48,7 @@ site :rennes do |site_uid|
           :version => nil,
           :kernel => "2.6.26"
         })
-        storage_devices[{
+        storage_devices [{
           :interface => 'SATA',
           :size => 600.GB,
           :driver => "megaraid_sas",
