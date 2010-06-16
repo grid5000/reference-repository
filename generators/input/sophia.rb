@@ -243,7 +243,7 @@ site :sophia do |site_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2,
-          :smt_size => 4,
+          :smt_size => 8,
           :platform_type => "x86_64"
         })
         processor({
