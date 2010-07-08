@@ -104,9 +104,10 @@ site :orsay do |site_uid|
           ]
         network_adapters [  
           {:interface => 'Myrinet 10G', :rate => 10.G, :enabled => true, 
-            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :vendor => "Myrinet", :version => "10G-PCIE-8A-C"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true},
+           :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+           :vendor => "Myrinet", :version => "10G-PCIE-8A-C"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
+           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => false}
           ]
       end        
