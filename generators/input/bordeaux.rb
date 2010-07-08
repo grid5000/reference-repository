@@ -53,9 +53,11 @@ site :bordeaux do |site_uid|
           ]
         network_adapters [
           {:interface => 'InfiniBand SDR', :rate => 10.G, 
-            :switch => "sbdp", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => "sbdp", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
             :vendor => 'Mellanox', :version => "InfiniHost MT25208", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
+          {:interface => 'Ethernet', :rate => 1.G, 
+	    :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
+	    :enabled => true, :driver => "e1000"},
           {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
           ]
       end
