@@ -13,56 +13,6 @@ site :bordeaux do |site_uid|
     %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1 etch-x64-base-2.0 etch-x64-nfs-2.0 etch-x64-big-2.0} +
     %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9 lenny-x64-base-1.0 lenny-x64-nfs-1.0 lenny-x64-big-1.0 lenny-x64-base-2.0 lenny-x64-nfs-2.0 lenny-x64-big-2.0}  ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
   
-  cluster :bordemer do |cluster_uid|
-    model "IBM eServer 325"
-    created_at nil
-    misc "Motherboard Bios Version 1.33;IPMI version 1.5: Firmware
-version 1.48"
-    48.times do |i|
-      node "#{cluster_uid}-#{i+1}" do |node_uid|
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
-        architecture({
-          :smp_size => 2, 
-          :smt_size => 2,
-          :platform_type => "x86_64"
-          })
-        processor({
-          :vendor => "AMD",
-          :model => "AMD Opteron",
-          :version => "248",
-          :clock_speed => 2.2.G,
-          :instruction_set => "",
-          :other_description => "",
-          :cache_l1 => nil,
-          :cache_l1i => 64.KiB,
-          :cache_l1d => 64.KiB,
-          :cache_l2 => 1.MiB
-        })
-        main_memory({
-          :ram_size => 2.GiB, # bytes
-          :virtual_size => nil
-        })
-        operating_system({
-          :kadeploy_name => "debian-prod-bol",
-	  :kadeploy_version => "2",	  
-	  :name => "Debian Sid",
-          :release => nil,
-          :version => nil
-        })
-        storage_devices [
-          {:interface => 'IDE', :size => 80.GB, :driver => "amd74xx"}
-          ]
-        network_adapters [
-          {:interface => 'Myri-2000', :rate => 2.G, 
-            :switch => "sbdm", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :vendor => 'Myrinet', :version => "M3F-PCIXD-2", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "tg3"}
-          ]
-      end
-    end
-  end # cluster bordemer
-  
   cluster :bordeplage do |cluster_uid|
     model "Dell PowerEdge 1855"
     created_at nil
