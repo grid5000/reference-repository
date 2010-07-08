@@ -42,9 +42,9 @@ site :bordeaux do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-	  :kadeploy_name => "debian-prod-bol",    
-          :kadeploy_version => "2",       
-          :name => "Debian Sid",
+	  :kadeploy_name => "debian-x64-5-prod",    
+          :kadeploy_version => "1",       
+          :name => "Debian Lenny",
           :release => nil,
           :version => nil
         })
@@ -93,9 +93,9 @@ site :bordeaux do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-	  :kadeploy_name => "debian-prod-bol",
-          :kadeploy_version => "2",
-          :name => "Debian Sid",
+	  :kadeploy_name => "debian-x64-5-prod",
+          :kadeploy_version => "1",
+          :name => "Debian Lenny",
           :release => nil,
           :version => nil        
 	})
