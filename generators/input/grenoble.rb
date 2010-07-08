@@ -51,8 +51,9 @@ site :grenoble do |site_uid|
           ]
         network_adapters [
           {:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MHGH29-XTC", :enabled => true,
-            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false}
+           :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
+           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")}
           ]  
       end      
     end
