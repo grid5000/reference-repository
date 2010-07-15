@@ -17,9 +17,13 @@ site :toulouse do |site_uid|
     model "Sun Fire V20z"
     created_at Time.parse("2004-09-01").httpdate
     
-    57.times do |i|
+    52.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-        supported_job_types({:deploy => false, :besteffort => true, :virtual => false})
+        if i == 0
+          supported_job_types({:deploy => false, :besteffort => true, :virtual => false})
+        else
+          supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
+        end
         architecture({
           :smp_size => 2, 
           :smt_size => 2,
@@ -50,10 +54,21 @@ site :toulouse do |site_uid|
           {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
-            :switch => "cict-switch", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "tg3"}
+          { :interface => 'Ethernet', :rate => 1.G,
+            :vendor => "Broadcom", :version => "BCM5703X", :driver => "tg3",
+            :enabled => true, :switch => "cict-switch", :mountable => true, :mounted => true,
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :mac => lookup('toulouse-violette', node_uid, 'mac_eth0')},
+          { :interface => 'Ethernet', :rate => 1.G,
+            :vendor => "Broadcom", :version => "BCM5703X", :driver => "tg3",
+            :enabled => false, :switch => nil,
+            :mac => lookup('toulouse-violette', node_uid, 'mac_eth1')},
+          { :interface => 'IPMI', :rate => 1.G,
+            :enabled => true, :switch => 'cict-switch', :mountable => false, :mounted => false,
+            :network_address => "sp0"+`printf "%.2d" #{i+3}`+".gridmip.cict.fr",
+            :ip => lookup('toulouse-violette', node_uid, 'ip_ipmi'),
+            :mac => lookup('toulouse-violette', node_uid, 'mac_ipmi')}
           ]  
       end      
     end
@@ -96,12 +111,22 @@ site :toulouse do |site_uid|
           {:interface => 'SATA', :size => 250.GB, :driver => "sata_nv"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
-            :switch => "r4", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3"}
+          { :interface => 'Ethernet', :rate => 1.G,
+            :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth",
+            :enabled => true, :switch => "r4", :mountable => true, :mounted => true,
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :mac => lookup('toulouse-pastel', node_uid, 'mac_eth0')},
+          { :interface => 'Ethernet', :rate => 1.G,
+            :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth",
+            :enabled => false, :switch => nil,
+            :mac => lookup('toulouse-pastel', node_uid, 'mac_eth1')},
+          { :interface => 'Ethernet', :rate => 1.G,
+            :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3",
+            :enabled => true, :switch => '<unknown>', :mountable => false, :mounted => false,
+            :network_address => "pas#{i+1}.gridmip.cict.fr",
+            :ip => lookup('toulouse-pastel', node_uid, 'ip_ipmi'),
+            :mac => lookup('toulouse-pastel', node_uid, 'mac_ipmi')}
           ]  
       end      
     end

@@ -14,15 +14,35 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.22.51",
+      "mac": "00:09:3D:12:8D:D5",
+      "mountable": true,
+      "mounted": true,
       "network_address": "violette-49.toulouse.grid5000.fr",
       "rate": 1000000000,
-      "switch": "cict-switch"
+      "switch": "cict-switch",
+      "vendor": "Broadcom",
+      "version": "BCM5703X"
     },
     {
       "driver": "tg3",
       "enabled": false,
       "interface": "Ethernet",
-      "rate": 1000000000
+      "mac": "00:09:3D:12:8D:D6",
+      "rate": 1000000000,
+      "switch": null,
+      "vendor": "Broadcom",
+      "version": "BCM5703X"
+    },
+    {
+      "enabled": true,
+      "interface": "IPMI",
+      "ip": null,
+      "mac": "00:09:3D:12:8D:D7",
+      "mountable": false,
+      "mounted": false,
+      "network_address": "sp051.gridmip.cict.fr",
+      "rate": 1000000000,
+      "switch": "cict-switch"
     }
   ],
   "operating_system": {
@@ -51,7 +71,7 @@
   ],
   "supported_job_types": {
     "besteffort": true,
-    "deploy": false,
+    "deploy": true,
     "virtual": false
   },
   "type": "node",
