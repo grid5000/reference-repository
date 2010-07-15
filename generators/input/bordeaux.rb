@@ -163,7 +163,7 @@ site :bordeaux do |site_uid|
 		    :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
 		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
 		  {:interface => 'Myrinet 10G', :rate => 10.G, 
-		    :switch => nil, :network_address => "#{cluster_uid}-#{(i-2)-(i-3)*2}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+		    :switch => nil, :network_address => "#{cluster_uid}-#{(i-2)-(i-3)*2}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{cluster_uid}-#{(i-2)-(i-3)*2}.#{site_uid}.grid5000.fr"),
 		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true}]
 	    else
 	    network_adapters [
