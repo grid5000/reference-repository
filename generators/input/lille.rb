@@ -16,7 +16,6 @@ site :lille do |site_uid|
   cluster :chuque do |cluster_uid|
     model "IBM eServer 326"
     created_at nil
-    misc "deployment unavailable because reboot instruments are not enough dependable."
     53.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
@@ -57,7 +56,6 @@ site :lille do |site_uid|
       end
     end
   end # cluster chuque
-  
   cluster :chti do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil
