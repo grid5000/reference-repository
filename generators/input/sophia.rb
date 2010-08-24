@@ -17,8 +17,8 @@ site :sophia do |site_uid|
   cluster :azur do |cluster_uid|
     model "IBM eServer 325"
     created_at Time.parse("2005-02-18").httpdate
-    72.times do |i|
-      node "#{cluster_uid}-#{i+1}" do |node_uid|
+    ((1..18).to_a + (37..64).to_a).each do |i|
+      node "#{cluster_uid}-#{i}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2,
