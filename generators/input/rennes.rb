@@ -58,101 +58,39 @@ site :rennes do |site_uid|
           :interface => 'Ethernet',
           :rate => 1.G,
           :enabled => true,
+          :mountable => true,
+          :mounted => true,
+          :device => "eth0",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
           :vendor => "Broadcom",
           :version => "NetXtreme II BCM5708",
           :driver => "bnx2",
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          :switch => "c6509-grid"
         },
         {
           :interface => 'Ethernet',
           :rate => 1.G,
           :enabled => false,
+          :mountable => false,
+          :mounted => false,
+          :device => "eth1",
           :vendor => "Broadcom",
           :version => "NetXtreme II BCM5708",
           :driver => "bnx2"
         },
         {
-          :interface => 'Myrinet 10G',
+          :interface => 'Myrinet',
           :rate => 10.G,
-          :switch => "c6509-grid",
-          :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"), 
-          :vendor => 'Myrinet',
-          :version => "10G-PCIE-8A-C",
-          :enabled => true
-        }]
-      end
-    end
-  end
-  
-  cluster :paraquad do |cluster_uid|
-    model "Dell PowerEdge 1950"
-    created_at Time.parse("2006-12-01").httpdate
-    
-    32.times do |i|
-      node "#{cluster_uid}-#{i+1}" do |node_uid|
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
-        architecture({
-          :smp_size => 2, 
-          :smt_size => 4,
-          :platform_type => "x86_64"
-          })
-        processor({
-          :vendor => "Intel",
-          :model => "Intel Xeon",
-          :version => "5148 LV",
-          :clock_speed => 2.33.G,
-          :instruction_set => "",
-          :other_description => "",
-          :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
-          :cache_l2 => nil
-        })
-        main_memory({
-          :ram_size => 4.GiB,
-          :virtual_size => nil
-        })
-        operating_system({
-          :name => "Debian",
-          :release => "5.0",
-          :version => nil,
-          :kernel => "2.6.26"
-        })
-        storage_devices [{
-          :interface => 'SATA',
-          :size => 160.GB,
-          :driver => "mptsas"
-        }]
-        network_adapters [{
-          :interface => 'Ethernet',
-          :rate => 1.G,
           :enabled => true,
-          :vendor => "Broadcom",
-          :version => "NetXtreme II BCM5708",
-          :driver => "bnx2",
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
-        },
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :vendor => "Broadcom",
-          :version => "NetXtreme II BCM5708",
-          :driver => "bnx2"
-        },
-        {
-          :interface => 'Myrinet 10G',
-          :rate => 10.G, 
-          :switch => "c6509-grid",
+          :mountable => true,
+          :mounted => true,
+          :device => "myri0"
           :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"), 
           :vendor => 'Myrinet',
-          :version => "10G-PCIE-8A-C",
-          :enabled => true
-        }]        
+          :version => "10G-PCIE-8A-C"
+        }]
       end
     end
   end
@@ -200,14 +138,21 @@ site :rennes do |site_uid|
           :interface => 'Ethernet',
           :rate => 1.G,
           :enabled => true,
+          :mountable => true,
+          :mounted => true,
+          :device = "eth0",
           :driver => "e1000e",
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :switch => "c6509-grid"
         },
         {
           :interface => 'Ethernet',
           :rate => 1.G,
           :enabled => false,
+          :mountable => false,
+          :mounted => false,
+          :device => "eth1",
           :driver => "e1000e"
         }]        
       end
@@ -257,20 +202,30 @@ site :rennes do |site_uid|
           :interface => 'Ethernet',
           :rate => 1.G,
           :enabled => true,
+          :mountable => true,
+          :mounted => true,
+          :device => "eth0",
           :driver => "igb",
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :switch => "c6509-grid"
         },
         {
           :interface => 'Ethernet',
           :rate => 1.G,
           :enabled => false,
+          :mountable => false,
+          :mounted => false,
+          :device => "eth1",
           :driver => "igb"
         },
         {
-          :interface => 'Infiniband SDR',
+          :interface => 'Infiniband',
           :rate => 10.G,
           :enabled => true,
+          :mountable => true,
+          :mounted => true,
+          :device => "ib0",
           :driver => "mlx4_core",
           :vendor => "Mellanox",
           :version => "MT25418",
