@@ -1,5 +1,7 @@
 module Grid5000
-  class Node    
+  class Node
+    MiB = 1024**2
+    
     attr_reader :properties, :cluster
     
     MAPPINGS = {
@@ -33,9 +35,9 @@ module Grid5000
         myri2g               = properties['network_adapters'].detect{|na| na['interface'] =~ /myri/i && na['rate'] == 2_000_000_000}
         h['myri2g']          = myri2g.nil? ? "NO" : "YES"
         h['myri2gmodel']     = myri2g.nil? ? "none" : myri2g['version']
-        h['memcore']         = properties['main_memory']['ram_size']/properties['architecture']['smt_size']
-        h['memcpu']          = properties['main_memory']['ram_size']/properties['architecture']['smp_size']
-        h['memnode']         = properties['main_memory']['ram_size']
+        h['memcore']         = properties['main_memory']['ram_size']/properties['architecture']['smt_size']/MiB
+        h['memcpu']          = properties['main_memory']['ram_size']/properties['architecture']['smp_size']/MiB
+        h['memnode']         = properties['main_memory']['ram_size']/MiB
         h
       }
     }
