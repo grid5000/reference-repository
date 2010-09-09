@@ -10,26 +10,41 @@
   },
   "network_adapters": [
     {
-      "enabled": true,
-      "interface": "Myri-2000",
-      "ip": "138.96.20.16",
-      "network_address": "azur-16.sophia.grid5000.fr",
-      "rate": 2000000000,
-      "switch": "cisco1",
-      "vendor": "Myrinet",
-      "version": "M3F-PCIXF-2"
-    },
-    {
+      "device": "eth0",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
-      "rate": 1000000000
+      "ip": "138.96.20.16",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "azur-16.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "vendor": "Broadcom Corporation",
+      "version": "NetXtreme BCM5704"
     },
     {
       "driver": "tg3",
       "enabled": false,
       "interface": "Ethernet",
-      "rate": 1000000000
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Broadcom Corporation",
+      "version": "NetXtreme BCM5704"
+    },
+    {
+      "device": "myri0",
+      "driver": "mx",
+      "enabled": true,
+      "interface": "Myrinet",
+      "ip": "192.168.7.16",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "azur-16-myri0.sophia.grid5000.fr",
+      "rate": 2000000000,
+      "switch": "cisco1",
+      "vendor": "Myrinet",
+      "version": "M3F-PCIXF-2"
     }
   ],
   "operating_system": {

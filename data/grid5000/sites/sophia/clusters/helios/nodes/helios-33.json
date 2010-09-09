@@ -10,38 +10,61 @@
   },
   "network_adapters": [
     {
+      "device": "eth0",
+      "driver": "e1000",
       "enabled": true,
-      "interface": "Myri-2000",
+      "interface": "Ethernet",
       "ip": "138.96.21.33",
+      "mountable": true,
+      "mounted": true,
       "network_address": "helios-33.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "vendor": "Intel Corporation",
+      "version": "82546EB"
+    },
+    {
+      "driver": "e1000",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel Corporation",
+      "version": "82546EB"
+    },
+    {
+      "driver": "e1000",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel Corporation",
+      "version": "82546EB"
+    },
+    {
+      "driver": "e1000",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel Corporation",
+      "version": "82546EB"
+    },
+    {
+      "device": "myri0",
+      "driver": "mx",
+      "enabled": true,
+      "interface": "Myrinet",
+      "ip": "192.168.7.105",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "helios-33-myri0.sophia.grid5000.fr",
       "rate": 2000000000,
       "switch": "edgeiron48gs",
       "vendor": "Myrinet",
       "version": "M3F-PCIXF-2"
-    },
-    {
-      "driver": "e1000",
-      "enabled": true,
-      "interface": "Ethernet",
-      "rate": 1000000000
-    },
-    {
-      "driver": "e1000",
-      "enabled": false,
-      "interface": "Ethernet",
-      "rate": 1000000000
-    },
-    {
-      "driver": "e1000",
-      "enabled": false,
-      "interface": "Ethernet",
-      "rate": 1000000000
-    },
-    {
-      "driver": "e1000",
-      "enabled": false,
-      "interface": "Ethernet",
-      "rate": 1000000000
     }
   ],
   "operating_system": {
