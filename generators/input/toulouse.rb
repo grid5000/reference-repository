@@ -54,22 +54,49 @@ site :toulouse do |site_uid|
           {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
           ]
         network_adapters [
-          { :interface => 'Ethernet', :rate => 1.G,
-            :vendor => "Broadcom", :version => "BCM5703X", :driver => "tg3",
-            :enabled => true, :switch => "cict-switch", :mountable => true, :mounted => true,
+          { :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('toulouse-violette', node_uid, 'mac_eth0'),
+            :vendor => "Broadcom",
+            :version => "BCM5703X",
+            :driver => "tg3",
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :mounted => true,
+            :device => "eth0", 
             :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
             :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :mac => lookup('toulouse-violette', node_uid, 'mac_eth0')},
-          { :interface => 'Ethernet', :rate => 1.G,
-            :vendor => "Broadcom", :version => "BCM5703X", :driver => "tg3",
-            :enabled => false, :switch => nil,
-            :mac => lookup('toulouse-violette', node_uid, 'mac_eth1')},
-          { :interface => 'IPMI', :rate => 1.G,
-            :enabled => true, :switch => 'cict-switch', :mountable => false, :mounted => false,
+            :ip6 => nil,
+            :switch => "cict-switch"
+          },
+          { :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('toulouse-violette', node_uid, 'mac_eth1'),
+            :vendor => "Broadcom",
+            :version => "BCM5703X",
+            :enabled => false,
+            :management => false,
+            :mountable => false,
+            :mounted => false,
+            :device => "eth1",
+            :switch => nil
+          },
+          { :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('toulouse-violette', node_uid, 'mac_ipmi'),
+            :vendor => "?",
+            :version => "?",
+            :enabled => true,
+            :management => true,
+            :mountable => false,
+            :mounted => false,
             :network_address => "sp0"+`printf "%.2d" #{i+3}`+".gridmip.cict.fr",
             :ip => lookup('toulouse-violette', node_uid, 'ip_ipmi'),
-            :mac => lookup('toulouse-violette', node_uid, 'mac_ipmi')}
-          ]  
+            :ip6 => nil,
+            :switch => 'cict-switch'
+           }
+        ]
       end      
     end
   end
@@ -109,25 +136,51 @@ site :toulouse do |site_uid|
         })
         storage_devices [
           {:interface => 'SATA', :size => 250.GB, :driver => "sata_nv"}
-          ]
+        ]
         network_adapters [
-          { :interface => 'Ethernet', :rate => 1.G,
-            :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth",
-            :enabled => true, :switch => "r4", :mountable => true, :mounted => true,
+          { :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('toulouse-pastel', node_uid, 'mac_eth0'),
+            :vendor => "NVIDIA",
+            :version => "MCP55 Pro",
+            :driver => "forcedeth",
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :mounted => true,
+            :device => "eth0",
             :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
             :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :mac => lookup('toulouse-pastel', node_uid, 'mac_eth0')},
-          { :interface => 'Ethernet', :rate => 1.G,
-            :vendor => "NVIDIA", :version => "MCP55 Pro", :driver => "forcedeth",
-            :enabled => false, :switch => nil,
-            :mac => lookup('toulouse-pastel', node_uid, 'mac_eth1')},
-          { :interface => 'Ethernet', :rate => 1.G,
-            :vendor => "Broadcom", :version => "BCM5715c", :driver => "tg3",
-            :enabled => true, :switch => '<unknown>', :mountable => false, :mounted => false,
+            :ip6 => nil,
+            :switch => "r4"
+          },
+          { :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('toulouse-pastel', node_uid, 'mac_eth1'),
+            :vendor => "NVIDIA",
+            :version => "MCP55 Pro",
+            :enabled => false,
+            :management => false,
+            :mountable => false,
+            :mounted => false,
+            :device => "eth1",
+            :switch => nil
+          },
+          { :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('toulouse-pastel', node_uid, 'mac_ipmi'),
+            :vendor => "Broadcom",
+            :version => "BCM5715c",
+            :enabled => true,
+            :management => true,
+            :mountable => false,
+            :mounted => false,
             :network_address => "pas#{i+1}.gridmip.cict.fr",
             :ip => lookup('toulouse-pastel', node_uid, 'ip_ipmi'),
-            :mac => lookup('toulouse-pastel', node_uid, 'mac_ipmi')}
-          ]  
+            :ip6 => nil,
+            :switch => '<unknown>'
+          }
+        ]
       end      
     end
   end

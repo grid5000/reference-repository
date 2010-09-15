@@ -10,11 +10,14 @@
   },
   "network_adapters": [
     {
+      "device": "eth0",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.22.12",
+      "ip6": null,
       "mac": "00:09:3D:10:35:FB",
+      "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "violette-10.toulouse.grid5000.fr",
@@ -24,10 +27,13 @@
       "version": "BCM5703X"
     },
     {
-      "driver": "tg3",
+      "device": "eth1",
       "enabled": false,
       "interface": "Ethernet",
       "mac": "00:09:3D:10:35:FC",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000,
       "switch": null,
       "vendor": "Broadcom",
@@ -35,14 +41,18 @@
     },
     {
       "enabled": true,
-      "interface": "IPMI",
+      "interface": "Ethernet",
       "ip": "192.168.23.12",
+      "ip6": null,
       "mac": "00:09:3D:10:35:FD",
+      "management": true,
       "mountable": false,
       "mounted": false,
       "network_address": "sp012.gridmip.cict.fr",
       "rate": 1000000000,
-      "switch": "cict-switch"
+      "switch": "cict-switch",
+      "vendor": "?",
+      "version": "?"
     }
   ],
   "operating_system": {
