@@ -49,12 +49,29 @@ site :grenoble do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 160.GB, :driver => nil}
           ]
-        network_adapters [
-          {:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MHGH29-XTC", :enabled => true,
-           :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
-           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")}
-          ]  
+        network_adapters [{
+          :interface => 'InfiniBand SDR',
+          :rate => 10.G,
+          :device => "ib0",
+          :enabled => true,
+          :mountable => true,
+          :mounted => true,
+          :management => false,
+          :vendor => 'Mellanox', :version => "InfiniHost MHGH29-XTC",
+          :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :device => "eth0",
+          :enabled => true,
+          :mountable => true,
+          :mounted => true,
+          :management => false,
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+        }]
       end      
     end
   end
