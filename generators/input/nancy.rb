@@ -45,26 +45,61 @@ site :nancy do |site_uid|
           :release => nil,
           :version => nil
         })
-        storage_devices [
-          {:interface => 'SATA', :size => 80.GB, :driver => "ata_piix"}
-          ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :mac => lookup('nancy', "#{node_uid}", 'mac_eth0'),
-            :switch => lookup('nancy', "#{node_uid}", 'switch_eth0'), :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721", :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth0') },
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721", :mac => lookup('nancy', "#{node_uid}", 'mac_eth1'), 
-            :switch => lookup('nancy', "#{node_uid}", 'switch_eth1'), :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth1'), :ip => lookup('nancy', "#{node_uid}", 'ip_eth1') },
-          {:interface => 'Ipmi', :rate => 100.M, :enabled => false, :vendor => "hp_ilo", :version => "no", :ip => lookup('nancy', "#{node_uid}", 'ip_ipmi'),
-            :switch => lookup('nancy', "#{node_uid}", 'switch_ipmi'), :switch_port => lookup('nancy', "#{node_uid}", 'switch_ipmi_pos'), :mac => lookup('nancy', "#{node_uid}", 'mac_ipmi'),
-            :pdu => lookup('nancy', "#{node_uid}", 'pdu'), :pdu_port => lookup('nancy', "#{node_uid}", 'pdu_pos')  }
-          ]
+        storage_devices [{
+          :interface => 'SATA',
+          :size => 80.GB,
+          :driver => "ata_piix"
+        }]
+        network_adapters [{
+          :interface => 'Ethernet',
+          :rate => 1000000000,
+          :device => "eth0",
+          :enabled => true,
+          :mounted => true,
+          :mountable => true,
+          :management => false,
+          :mac => lookup('nancy', "#{node_uid}", 'mac_eth0'),
+          :switch => lookup('nancy', "#{node_uid}", 'switch_eth0'),
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721",
+          :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth0')
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1000000000,
+          :device => "eth1",
+          :enabled => true,
+          :mounted => false,
+          :mountable => true,
+          :management => false,
+          :driver => "tg3", :vendor => "Broadcom", :version => "BCM5721",
+          :mac => lookup('nancy', "#{node_uid}", 'mac_eth1'), 
+          :switch => lookup('nancy', "#{node_uid}", 'switch_eth1'),
+          :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth1'),
+          :ip => lookup('nancy', "#{node_uid}", 'ip_eth1')
+        },
+        {
+          :interface => 'IPMI',
+          :rate => 100000000,
+          :enabled => true,
+          :mounted => false,
+          :mountable => false,
+          :management => true,
+          :vendor => "hp_ilo", :version => "no", :ip => lookup('nancy', "#{node_uid}", 'ip_ipmi'),
+          :switch => lookup('nancy', "#{node_uid}", 'switch_ipmi'),
+          :switch_port => lookup('nancy', "#{node_uid}", 'switch_ipmi_pos'),
+          :mac => lookup('nancy', "#{node_uid}", 'mac_ipmi'),
+          :pdu => lookup('nancy', "#{node_uid}", 'pdu'),
+          :pdu_port => lookup('nancy', "#{node_uid}", 'pdu_pos')
+        }]
       end
     end
-  end # cluster grelon
+  end
 
   cluster :griffon do |cluster_uid|
     model "Carri System CS-5393B"
-    created_at Time.parse("2009-04-10 12:00 GMT").httpdate
+    created_at Time.parse("2009-04-10").httpdate
     92.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         serial lookup('nancy', node_uid, 'serial')
@@ -95,23 +130,63 @@ site :nancy do |site_uid|
           :release => nil,
           :version => nil
         })
-        storage_devices [
-          {:interface => 'SATA II', :size => 320.GB, :driver => "ata_piix"}
-          ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
-            :switch => lookup('nancy', "#{node_uid}", 'switch_eth0'), :mac => lookup('nancy', "#{node_uid}", 'mac_eth0'),
-            :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth0'), 
-            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "e1000e", :vendor => "intel", :version => "80003ES2LAN"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000e", :vendor => "intel", :version => "BCM5721"},
-	  {:interface => 'Infiniband DDR', :rate => 20.G, :enabled => true, :mac => lookup('nancy', "#{node_uid}", 'mac_ib'),
-	    :switch => "ib_switch", :ib_switch_card => lookup('nancy',"#{node_uid}", 'switch_ib_card'), :ib_switch_card_pos => lookup('nancy',"#{node_uid}", 'switch_ib_card_pos'), :driver => "mlx4_core", :vendor => "Mellanox", :version => " InfiniHost MT26418" },
-          {:interface => 'Ipmi', :rate => 100.M, :enabled => false, :vendor => "tyan", :version => "no", :ip => lookup('nancy', "#{node_uid}", 'ip_ipmi'),
-            :switch => lookup('nancy', "#{node_uid}", 'switch_ipmi'), :switch_port => lookup('nancy', "#{node_uid}", 'switch_ipmi_pos'),
-            :mac => lookup('nancy', "#{node_uid}", 'mac_ipmi'),
-            :pdu => lookup('nancy', "#{node_uid}", 'pdu'), :pdu_port => lookup('nancy', "#{node_uid}", 'pdu_pos')  }
-          ]
+        storage_devices [{
+          :interface => 'SATA II',
+          :size => 320.GB,
+          :driver => "ata_piix"
+        }]
+        network_adapters [{
+          :interface => 'Ethernet',
+          :rate => 1000000000,
+          :device => "eth0",
+          :enabled => true,
+          :mounted => true,
+          :mountable => true,
+          :management => false,
+          :switch => lookup('nancy', "#{node_uid}", 'switch_eth0'),
+          :mac => lookup('nancy', "#{node_uid}", 'mac_eth0'),
+          :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth0'), 
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :driver => "e1000e", :vendor => "intel", :version => "80003ES2LAN"
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1000000000,
+          :enabled => false,
+          :mounted => false,
+          :mountable => false,
+          :management => false,
+          :driver => "e1000e", :vendor => "intel", :version => "BCM5721"
+        },
+	{
+          :interface => 'Infiniband DDR',
+          :rate => 20000000000,
+          :device => "ib0",
+          :enabled => true,
+          :mounted => true,
+          :mountable => true,
+          :maangement => false,
+          :mac => lookup('nancy', "#{node_uid}", 'mac_ib'),
+	  :switch => "ib_switch",
+          :ib_switch_card => lookup('nancy',"#{node_uid}", 'switch_ib_card'),
+          :ib_switch_card_pos => lookup('nancy',"#{node_uid}", 'switch_ib_card_pos'),
+          :driver => "mlx4_core", :vendor => "Mellanox", :version => " InfiniHost MT26418"
+        },
+        {
+          :interface => 'IPMI',
+          :rate => 100000000,
+          :enabled => true,
+          :mounted => false,
+          :mountable => false,
+          :management => true,
+          :vendor => "tyan", :version => "no",
+          :ip => lookup('nancy', "#{node_uid}", 'ip_ipmi'),
+          :switch => lookup('nancy', "#{node_uid}", 'switch_ipmi'),
+          :switch_port => lookup('nancy', "#{node_uid}", 'switch_ipmi_pos'),
+          :mac => lookup('nancy', "#{node_uid}", 'mac_ipmi'),
+          :pdu => lookup('nancy', "#{node_uid}", 'pdu'), :pdu_port => lookup('nancy', "#{node_uid}", 'pdu_pos')
+        }]
       end
     end
   end # cluster grelon

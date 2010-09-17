@@ -10,11 +10,15 @@
   },
   "network_adapters": [
     {
+      "device": "eth0",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.28.54.155",
       "mac": "00:19:BB:EB:03:AE",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
       "network_address": "grelon-55.nancy.grid5000.fr",
       "rate": 1000000000,
       "switch": "sgrelon3",
@@ -23,11 +27,15 @@
       "version": "BCM5721"
     },
     {
+      "device": "eth1",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.28.55.155",
       "mac": "00:19:BB:EB:03:AF",
+      "management": false,
+      "mountable": true,
+      "mounted": false,
       "rate": 1000000000,
       "switch": "sgrelon3",
       "switch_port": "31",
@@ -35,10 +43,13 @@
       "version": "BCM5721"
     },
     {
-      "enabled": false,
-      "interface": "Ipmi",
+      "enabled": true,
+      "interface": "IPMI",
       "ip": "172.28.154.155",
       "mac": "00:19:BB:EB:06:99",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
       "pdu": "pdu51",
       "pdu_port": "X1",
       "rate": 100000000,
