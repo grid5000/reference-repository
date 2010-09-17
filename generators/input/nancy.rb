@@ -80,7 +80,7 @@ site :nancy do |site_uid|
           :ip => lookup('nancy', "#{node_uid}", 'ip_eth1')
         },
         {
-          :interface => 'IPMI',
+          :interface => 'Ethernet',
           :rate => 100000000,
           :enabled => true,
           :mounted => false,
@@ -166,7 +166,7 @@ site :nancy do |site_uid|
           :enabled => true,
           :mounted => true,
           :mountable => true,
-          :maangement => false,
+          :management => false,
           :mac => lookup('nancy', "#{node_uid}", 'mac_ib'),
 	  :switch => "ib_switch",
           :ib_switch_card => lookup('nancy',"#{node_uid}", 'switch_ib_card'),
@@ -174,7 +174,7 @@ site :nancy do |site_uid|
           :driver => "mlx4_core", :vendor => "Mellanox", :version => " InfiniHost MT26418"
         },
         {
-          :interface => 'IPMI',
+          :interface => 'Ethernet',
           :rate => 100000000,
           :enabled => true,
           :mounted => false,
