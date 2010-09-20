@@ -163,7 +163,7 @@ site :nancy do |site_uid|
           :driver => "e1000e", :vendor => "intel", :version => "BCM5721"
         },
 	{
-          :interface => 'Infiniband',
+          :interface => 'InfiniBand',
           :rate => 20000000000,
           :device => "ib0",
           :enabled => true,
@@ -179,7 +179,7 @@ site :nancy do |site_uid|
           :driver => "mlx4_core", :vendor => "Mellanox", :version => " InfiniHost MT26418"
         },
         {
-          :interface => 'Infiniband',
+          :interface => 'InfiniBand',
           :rate => 20000000000,
           :enabled => false,
           :mountable => false,
