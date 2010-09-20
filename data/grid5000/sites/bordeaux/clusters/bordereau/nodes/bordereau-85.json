@@ -10,20 +10,31 @@
   },
   "network_adapters": [
     {
+      "device": "eth0",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.1.186",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
       "network_address": "bordereau-85.bordeaux.grid5000.fr",
       "rate": 1000000000,
-      "switch": null,
       "vendor": "Broadcom",
       "version": "BCM5704"
     },
     {
+      "device": "eth1",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
+      "ip": "192.168.133.186",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": false,
+      "network_address": "bordereau-85-eth1.bordeaux.grid5000.fr",
       "rate": 1000000000,
       "vendor": "Broadcom",
       "version": "BCM5704"
@@ -31,8 +42,8 @@
   ],
   "operating_system": {
     "kadeploy_name": "debian-x64-5-prod",
-    "kadeploy_version": "2",
-    "name": "Debian Sid",
+    "kadeploy_version": "1",
+    "name": "Debian Lenny",
     "release": null,
     "version": null
   },
