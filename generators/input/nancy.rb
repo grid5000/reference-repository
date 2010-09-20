@@ -157,12 +157,13 @@ site :nancy do |site_uid|
           :rate => 1000000000,
           :enabled => false,
           :mounted => false,
+          :mac => lookup('nancy', "#{node_uid}", 'mac_eth1'),
           :mountable => false,
           :management => false,
           :driver => "e1000e", :vendor => "intel", :version => "BCM5721"
         },
 	{
-          :interface => 'Infiniband DDR',
+          :interface => 'Infiniband',
           :rate => 20000000000,
           :device => "ib0",
           :enabled => true,
@@ -176,6 +177,14 @@ site :nancy do |site_uid|
           :ib_switch_card => lookup('nancy',"#{node_uid}", 'switch_ib_card'),
           :ib_switch_card_pos => lookup('nancy',"#{node_uid}", 'switch_ib_card_pos'),
           :driver => "mlx4_core", :vendor => "Mellanox", :version => " InfiniHost MT26418"
+        },
+        {
+          :interface => 'Infiniband',
+          :rate => 20000000000,
+          :enabled => false,
+          :mountable => false,
+          :mounted => false,
+          :management => false
         },
         {
           :interface => 'Ethernet',
