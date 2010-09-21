@@ -167,7 +167,8 @@ site :bordeaux do |site_uid|
         storage_devices [
           {:interface => 'SAS', :size => 600.GB, :driver => nil}
           ]
-        network_adapters [
+	 ifs = Array.new
+         ifs += [
           {:interface => 'Ethernet', :rate => 1.G, 
 	    :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
 	    :vendor => "Broadcom", :version => "NetXtreme II BCM5708",
@@ -181,7 +182,7 @@ site :bordeaux do |site_uid|
           ]
 #some cards have been swapped between hosts - refer to bug 2681 for explanations
 	  if i == 2 or i == 3
-	  network_adapters [
+	  ifs += [
 	{:interface => 'InfiniBand', :rate => 10.G, 
 		    :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
 		    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
@@ -193,7 +194,7 @@ site :bordeaux do |site_uid|
 		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib1",
 		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")}]
 	  elsif i == 0 or i == 1
-	  network_adapters [
+	  ifs += [
 	  	{:interface => 'Myrinet', :rate => 10.G, 
 		    :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
 		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C",
@@ -205,7 +206,7 @@ site :bordeaux do |site_uid|
 		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri1",
 		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri1")}]
 	    else
-	    network_adapters [
+	    ifs += [
 	  	{:interface => 'InfiniBand', :rate => 10.G, 
 		    :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
 		    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
@@ -217,6 +218,7 @@ site :bordeaux do |site_uid|
 		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri0",
 		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri0")}]
 	    end
+	network_adapters ifs
       end
     end
   end # cluster borderline
