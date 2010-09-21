@@ -91,8 +91,8 @@ site :toulouse do |site_uid|
             :management => true,
             :mountable => false,
             :mounted => false,
-            :network_address => "sp0"+`printf "%.2d" #{i+3}`+".gridmip.cict.fr",
-            :ip => lookup('toulouse-violette', node_uid, 'ip_ipmi'),
+            :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
             :ip6 => nil,
             :switch => 'cict-switch'
            }
@@ -175,8 +175,8 @@ site :toulouse do |site_uid|
             :management => true,
             :mountable => false,
             :mounted => false,
-            :network_address => "pas#{i+1}.gridmip.cict.fr",
-            :ip => lookup('toulouse-pastel', node_uid, 'ip_ipmi'),
+            :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
             :ip6 => nil,
             :switch => '<unknown>'
           }
