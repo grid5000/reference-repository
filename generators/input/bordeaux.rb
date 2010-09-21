@@ -1,3 +1,7 @@
+def get_macaddr(node,interf)
+return ""
+end
+
 site :bordeaux do |site_uid|
   name "Bordeaux"
   location "Bordeaux, France"
@@ -52,13 +56,21 @@ site :bordeaux do |site_uid|
           {:interface => 'SCSI', :size => 70.GB, :driver => "mptspi"}
           ]
         network_adapters [
-          {:interface => 'InfiniBand SDR', :rate => 10.G, 
-            :switch => "sbdp", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
-            :vendor => 'Mellanox', :version => "InfiniHost MT25208", :enabled => true},
+          {:interface => 'InfiniBand', :rate => 10.G, 
+            :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
+            :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
+            :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib0",
+            :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")},
           {:interface => 'Ethernet', :rate => 1.G, 
-	    :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
-	    :enabled => true, :driver => "e1000"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
+            :vendor => "Intel", :version => "82546GB Gigabit Ethernet Controller",
+            :enabled => true, :mounted => true, :mountable => true, :driver => "e1000", :management => false, :device => "eth0",
+            :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","eth0")},
+          {:interface => 'Ethernet', :rate => 1.G,
+            :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
+            :vendor => "Intel", :version => "82546GB Gigabit Ethernet Controller",
+            :enabled => true, :mounted => false, :mountable => true, :driver => "e1000", :management => false, :device => "eth1",
+            :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","eth1")}
           ]
       end
     end
@@ -103,10 +115,17 @@ site :bordeaux do |site_uid|
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw", :vendor => "Hitachi", :version => "HDS72168"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
-            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :vendor => "Broadcom", :version => "BCM5704"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3", :vendor => "Broadcom", :version => "BCM5704"}
+          {:interface => 'Ethernet', :rate => 1.G,
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+	    :vendor => "Broadcom", :version => "BCM5704",
+            :enabled => true, :mounted => true, :mountable => true, :driver => "tg3", :management => false, :device => "eth0",
+	    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","eth0")},
+          {:interface => 'Ethernet', :rate => 1.G,
+            :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
+	    :vendor => "Broadcom", :version => "BCM5704",
+            :enabled => true, :mounted => false, :mountable => true, :driver => "tg3", :management => false, :device => "eth1",
+	    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","eth1")}
+
           ]
       end
     end
@@ -148,30 +167,58 @@ site :bordeaux do |site_uid|
         storage_devices [
           {:interface => 'SAS', :size => 600.GB, :driver => nil}
           ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "e1000"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false, :driver => "e1000"}
+	 ifs = Array.new
+         ifs += [
+          {:interface => 'Ethernet', :rate => 1.G, 
+	    :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
+	    :vendor => "Broadcom", :version => "NetXtreme II BCM5708",
+	    :enabled => true, :mounted => true, :mountable => true, :driver => "bnx2", :management => false, :device => "eth0",
+	    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","eth0")},
+          {:interface => 'Ethernet', :rate => 1.G,
+            :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
+	    :vendor => "Broadcom", :version => "NetXtreme II BCM5708",
+            :enabled => true, :mounted => false, :mountable => true, :driver => "bnx2", :management => false, :device => "eth1",
+	    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","eth1")}
           ]
 #some cards have been swapped between hosts - refer to bug 2681 for explanations
 	  if i == 2 or i == 3
-	  network_adapters [
-		{:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MT25408", :enabled => true},
-		  {:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MT25408", :enabled => true}]
+	  ifs += [
+	{:interface => 'InfiniBand', :rate => 10.G, 
+		    :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
+		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib0",
+		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")},
+	{:interface => 'InfiniBand', :rate => 10.G, 
+		    :network_address => "#{cluster_uid}-#{i-1}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{cluster_uid}-#{i-1}-ib0.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
+		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib1",
+		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")}]
 	  elsif i == 0 or i == 1
-	  network_adapters [
-		  {:interface => 'Myrinet 10G', :rate => 10.G, 
-		    :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true},
-		  {:interface => 'Myrinet 10G', :rate => 10.G, 
-		    :switch => nil, :network_address => "#{cluster_uid}-#{(i-2)-(i-3)*2}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{cluster_uid}-#{(i-2)-(i-3)*2}.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true}]
+	  ifs += [
+	  	{:interface => 'Myrinet', :rate => 10.G, 
+		    :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C",
+		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri0",
+		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri0")},
+	  	{:interface => 'Myrinet', :rate => 10.G, 
+		    :network_address => "#{cluster_uid}-#{(i-2)-(i-3)*2}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{cluster_uid}-#{(i-2)-(i-3)*2}-myri0.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C",
+		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri1",
+		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri1")}]
 	    else
-	    network_adapters [
-		{:interface => 'InfiniBand SDR', :rate => 10.G, :vendor => 'Mellanox', :version => "InfiniHost MT25408", :enabled => true},
-		  {:interface => 'Myrinet 10G', :rate => 10.G, 
-		    :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C", :enabled => true}]
+	    ifs += [
+	  	{:interface => 'InfiniBand', :rate => 10.G, 
+		    :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
+		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib0",
+		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")},
+	  	{:interface => 'Myrinet', :rate => 10.G, 
+		    :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C",
+		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri0",
+		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri0")}]
 	    end
+	network_adapters ifs
       end
     end
   end # cluster borderline

@@ -10,34 +10,55 @@
   },
   "network_adapters": [
     {
+      "device": "ib0",
+      "driver": "ib_mthca",
       "enabled": true,
-      "interface": "InfiniBand SDR",
+      "interface": "InfiniBand",
       "ip": "192.168.132.7",
-      "network_address": "bordeplage-7.bordeaux.grid5000.fr",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "bordeplage-7-ib0.bordeaux.grid5000.fr",
       "rate": 10000000000,
-      "switch": "sbdp",
       "vendor": "Mellanox",
       "version": "InfiniHost MT25208"
     },
     {
+      "device": "eth0",
       "driver": "e1000",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.1.57",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
       "network_address": "bordeplage-7.bordeaux.grid5000.fr",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82546GB Gigabit Ethernet Controller"
     },
     {
+      "device": "eth1",
       "driver": "e1000",
-      "enabled": false,
+      "enabled": true,
       "interface": "Ethernet",
-      "rate": 1000000000
+      "ip": "192.168.133.57",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": false,
+      "network_address": "bordeplage-7-eth1.bordeaux.grid5000.fr",
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82546GB Gigabit Ethernet Controller"
     }
   ],
   "operating_system": {
     "kadeploy_name": "debian-x64-5-prod",
-    "kadeploy_version": "2",
-    "name": "Debian Sid",
+    "kadeploy_version": "1",
+    "name": "Debian Lenny",
     "release": null,
     "version": null
   },
