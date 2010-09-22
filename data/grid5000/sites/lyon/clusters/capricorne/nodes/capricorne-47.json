@@ -10,20 +10,44 @@
   },
   "network_adapters": [
     {
-      "enabled": true,
-      "interface": "Myri-2000",
-      "ip": "10.69.0.47",
-      "network_address": "capricorne-47.lyon.grid5000.fr",
-      "rate": 2000000000,
-      "switch": "little-ego",
-      "vendor": "Myrinet",
-      "version": "M3F-PCIXF-2"
-    },
-    {
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
+      "ip": "",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": false,
       "rate": 1000000000
+    },
+    {
+      "device": "eth1",
+      "driver": "tg3",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "10.69.0.47",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "capricorne-47.lyon.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "little-ego"
+    },
+    {
+      "device": "myri0",
+      "driver": "",
+      "enabled": true,
+      "interface": "Myrinet",
+      "ip": "10.69.8.47",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "capricorne-47-myri0.lyon.grid5000.fr",
+      "rate": 2000000000,
+      "vendor": "Myrinet",
+      "version": "M3F-PCIXF-2"
     }
   ],
   "operating_system": {

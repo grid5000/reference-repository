@@ -49,12 +49,44 @@ site :lyon do |site_uid|
         storage_devices [
           {:interface => 'IDE', :size => 80.GB, :driver => "amd74xx"}
           ]
-        network_adapters [
-          {:interface => 'Myri-2000', :rate => 2.G, 
-            :switch => "little-ego", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :vendor => 'Myrinet', :version => "M3F-PCIXF-2", :enabled => true},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :driver => "tg3"}
-          ]        
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => '',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3', 
+            :mounted => false,
+            :ip => ''
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => '',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :device => 'eth1',
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
+            :switch => 'little-ego'
+          },{       
+            :interface => 'Myrinet',
+            :rate => 2.G,
+            :mac => '',
+            :vendor => 'Myrinet',
+            :version => "M3F-PCIXF-2",
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => '',
+            :mounted => true,
+            :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+            :device => 'myri0',
+            :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr")
+          }]        
       end
     end    
   end # cluster capricorne
@@ -94,11 +126,30 @@ site :lyon do |site_uid|
         storage_devices [
           {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
           ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
-            :switch => "little-ego", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3"}
-          ]        
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => '',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3', 
+            :mounted => false,
+            :ip => ''
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => '',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :device => 'eth1',
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
+            :switch => 'little-ego'
+          }]        
       end
     end    
   end # cluster sagittaire
