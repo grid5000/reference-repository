@@ -10,24 +10,34 @@
   },
   "network_adapters": [
     {
+      "device": "eth0",
       "driver": "igb",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "131.254.202.236",
+      "mountable": true,
+      "mounted": true,
       "network_address": "parapide-16.rennes.grid5000.fr",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "switch": "c6509-grid"
     },
     {
+      "device": "eth1",
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000
     },
     {
+      "device": "ib0",
       "driver": "mlx4_core",
       "enabled": true,
-      "interface": "Infiniband SDR",
+      "interface": "Infiniband",
       "ip": "192.168.200.236",
+      "mountable": true,
+      "mounted": true,
       "network_address": "parapide-16-ib0.rennes.grid5000.fr",
       "rate": 10000000000,
       "vendor": "Mellanox",

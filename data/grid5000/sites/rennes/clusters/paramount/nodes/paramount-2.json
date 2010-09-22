@@ -10,16 +10,22 @@
   },
   "network_adapters": [
     {
+      "device": "eth0",
       "driver": "bnx2",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "131.254.202.172",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
       "network_address": "paramount-2.rennes.grid5000.fr",
       "rate": 1000000000,
+      "switch": "c6509-grid",
       "vendor": "Broadcom",
       "version": "NetXtreme II BCM5708"
     },
     {
+      "device": "eth1",
       "driver": "bnx2",
       "enabled": false,
       "interface": "Ethernet",
@@ -28,12 +34,15 @@
       "version": "NetXtreme II BCM5708"
     },
     {
+      "device": "myri0",
       "enabled": true,
-      "interface": "Myrinet 10G",
+      "interface": "Myrinet",
       "ip": "192.168.200.172",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
       "network_address": "paramount-2-myri0.rennes.grid5000.fr",
       "rate": 10000000000,
-      "switch": "c6509-grid",
       "vendor": "Myrinet",
       "version": "10G-PCIE-8A-C"
     }
