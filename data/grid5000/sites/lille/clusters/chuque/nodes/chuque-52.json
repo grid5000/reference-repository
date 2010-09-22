@@ -10,11 +10,39 @@
   },
   "network_adapters": [
     {
+      "device": "eth0",
+      "driver": "tg3",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.160.52",
+      "management": true,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "chuque-52-eth0.lille.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw"
+    },
+    {
+      "device": "eth1",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.159.52",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
       "network_address": "chuque-52.lille.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw"
+    },
+    {
+      "driver": "tg3",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.158.52",
+      "management": true,
+      "mountable": false,
+      "network_address": "chuque-52-rsa.lille.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw"
     }

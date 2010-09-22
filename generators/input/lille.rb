@@ -49,9 +49,15 @@ site :lille do |site_uid|
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_sil"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true, 
+            :switch => "gw", :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :driver => "tg3", :mountable => true, :mounted => true, :device => "eth0"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => false,
             :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3"}
+            :driver => "tg3", :mountable => true, :mounted => true, :device => "eth1"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true,
+            :switch => "gw", :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
+            :driver => "tg3",:mountable => false}
           ]  
       end
     end
@@ -93,12 +99,18 @@ site :lille do |site_uid|
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true, 
+            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :driver => "tg3", :mountable => true, :mounted => true, :device => "eth0"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => false, 
             :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :switch_port => lookup('lille', "#{node_uid}", 'switch_port')},
-          {:interface => 'Myrinet 10G', :rate => 10.G, :enabled => true,
+            :driver => "tg3", :switch_port => lookup('lille', "#{node_uid}", 'switch_port'), :mountable => true, :mounted => true, :device => "eth1"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true,
+            :switch => "gw", :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
+            :driver => "tg3",:mountable => false},
+          {:interface => 'Myrinet', :rate => 10.G, :enabled => true, :management => true,
             :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-            :vendor => "Myrinet", :version => "10G-PCIE-8A-C"}
+            :vendor => "Myrinet", :version => "10G-PCIE-8A-C", :mountable => true, :mounted => true, :device => "myri0"}
           ]        
       end
     end
@@ -140,12 +152,18 @@ site :lille do |site_uid|
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true, 
+            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :driver => "tg3", :mountable => true, :mounted => true, :device => "eth0"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => false, 
             :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :switch_port => lookup('lille', "#{node_uid}", 'switch_port')},
-          {:interface => 'Myrinet 10G', :rate => 10.G, :enabled => true,
+            :driver => "tg3", :switch_port => lookup('lille', "#{node_uid}", 'switch_port'), :mountable => true, :mounted => true, :device => "eth1"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true,
+            :switch => "gw", :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
+            :driver => "tg3",:mountable => false},
+          {:interface => 'Myrinet', :rate => 10.G, :enabled => true, :management => true,
             :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-            :vendor => "Myrinet", :version => "10G-PCIE-8A-C"}
+            :vendor => "Myrinet", :version => "10G-PCIE-8A-C", :mountable => true, :mounted => true, :device => "myri0"}
           ]        
       end
     end
@@ -187,12 +205,18 @@ site :lille do |site_uid|
           {:interface => 'SATA II', :size => 250.GB, :driver => "ahci"}
           ]
         network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true, 
+            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :driver => "e1000", :mountable => true, :mounted => true, :device => "eth0"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => false, 
             :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "e1000", :switch_port => lookup('lille', "#{node_uid}", 'switch_port')},
-          {:interface => 'Myrinet 10G', :rate => 10.G, :enabled => true,
+            :driver => "e1000", :switch_port => lookup('lille', "#{node_uid}", 'switch_port'), :mountable => true, :mounted => true, :device => "eth1"},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true,
+            :switch => "gw", :network_address => "#{node_uid}-ipmi.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ipmi.#{site_uid}.grid5000.fr"),
+            :driver => "e1000",:mountable => false},
+          {:interface => 'Myrinet', :rate => 10.G, :enabled => true, :management => true,
             :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-            :vendor => "Myrinet", :version => "10G-PCIE-8A-C"}
+            :vendor => "Myrinet", :version => "10G-PCIE-8A-C", :mountable => true, :mounted => true, :device => "myri0"}
           ]
       end
     end
