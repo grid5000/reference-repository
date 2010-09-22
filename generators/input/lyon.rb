@@ -55,10 +55,7 @@ site :lyon do |site_uid|
             :mac => '',
             :enabled => true,
             :management => false,
-            :mountable => true,
-            :driver => 'tg3', 
-            :mounted => false,
-            :ip => ''
+            :mountable => false
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
@@ -82,7 +79,7 @@ site :lyon do |site_uid|
             :management => false,
             :mountable => true,
             :driver => '',
-            :mounted => true,
+            :mounted => false,
             :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
             :device => 'myri0',
             :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr")
@@ -132,10 +129,11 @@ site :lyon do |site_uid|
             :mac => '',
             :enabled => true,
             :management => false,
-            :mountable => true,
+            :mountable => false,
             :driver => 'tg3', 
             :mounted => false,
-            :ip => ''
+            :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
