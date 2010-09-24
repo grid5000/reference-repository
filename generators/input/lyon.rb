@@ -131,7 +131,6 @@ site :lyon do |site_uid|
             :management => false,
             :mountable => false,
             :driver => 'tg3', 
-            :mounted => false,
             :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
             :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
           },{

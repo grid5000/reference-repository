@@ -53,8 +53,8 @@ site :toulouse do |site_uid|
         storage_devices [
           {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
           ]
-        network_adapters [
-          { :interface => 'Ethernet',
+        network_adapters [{
+            :interface => 'Ethernet',
             :rate => 1.G,
             :mac => lookup('toulouse-violette', node_uid, 'mac_eth0'),
             :vendor => "Broadcom",
@@ -69,8 +69,8 @@ site :toulouse do |site_uid|
             :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
             :ip6 => nil,
             :switch => "cict-switch"
-          },
-          { :interface => 'Ethernet',
+          },{
+            :interface => 'Ethernet',
             :rate => 1.G,
             :mac => lookup('toulouse-violette', node_uid, 'mac_eth1'),
             :vendor => "Broadcom",
@@ -81,8 +81,8 @@ site :toulouse do |site_uid|
             :mounted => false,
             :device => "eth1",
             :switch => nil
-          },
-          { :interface => 'Ethernet',
+          },{
+            :interface => 'Ethernet',
             :rate => 1.G,
             :mac => lookup('toulouse-violette', node_uid, 'mac_ipmi'),
             :vendor => "?",
@@ -95,8 +95,7 @@ site :toulouse do |site_uid|
             :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
             :ip6 => nil,
             :switch => 'cict-switch'
-           }
-        ]
+          }]
       end      
     end
   end
