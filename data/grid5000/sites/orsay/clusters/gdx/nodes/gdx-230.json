@@ -10,25 +10,52 @@
   },
   "network_adapters": [
     {
+      "device": "myri0",
+      "driver": null,
       "enabled": true,
-      "interface": "Myrinet 10G",
+      "interface": "Myrinet",
       "ip": "172.24.87.14",
+      "mac": null,
+      "management": false,
+      "mountable": true,
+      "mounted": true,
       "network_address": "gdx-230-myri0.orsay.grid5000.fr",
       "rate": 10000000000,
+      "switch": null,
       "vendor": "Myrinet",
       "version": "10G-PCIE-8A-C"
     },
     {
+      "device": "eth0",
+      "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.24.20.14",
+      "mac": null,
+      "management": false,
+      "mountable": true,
+      "mounted": true,
       "network_address": "gdx-230.orsay.grid5000.fr",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "switch": null,
+      "vendor": "Broadcom",
+      "version": "NetXtreme BCM5780"
     },
     {
-      "enabled": false,
+      "device": "eth1",
+      "driver": "tg3",
+      "enabled": true,
       "interface": "Ethernet",
-      "rate": 1000000000
+      "ip": "172.24.147.14",
+      "mac": null,
+      "management": false,
+      "mountable": true,
+      "mounted": false,
+      "network_address": "gdx-230-eth1.orsay.grid5000.fr",
+      "rate": 1000000000,
+      "switch": null,
+      "vendor": "Broadcom",
+      "version": "NetXtreme BCM5780"
     }
   ],
   "operating_system": {

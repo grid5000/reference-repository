@@ -49,17 +49,52 @@ site :orsay do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => nil}
           ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, 
-            :switch => nil, :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => nil},          
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
-            :switch => nil, :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
-            :driver => nil},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
-            :switch => nil, :network_address => "#{node_uid}-eth2.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth2.#{site_uid}.grid5000.fr"),
-            :driver => nil}
-          ]  
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5780',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :device => 'eth0',
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5780',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr",
+            :device => 'eth1',
+            :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5703',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :network_address => "#{node_uid}-eth2.#{site_uid}.grid5000.fr",
+            :device => 'eth2',
+            :ip => dns_lookup("#{node_uid}-eth2.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          }]  
       end      
     end
   end # cluster net-gdx
@@ -102,14 +137,52 @@ site :orsay do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => nil}
           ]
-        network_adapters [  
-          {:interface => 'Myrinet 10G', :rate => 10.G, :enabled => true, 
-           :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-           :vendor => "Myrinet", :version => "10G-PCIE-8A-C"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
-           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => false}
-          ]
+        network_adapters [{
+            :interface => 'Myrinet',
+            :rate => 10.G,
+            :mac => nil,
+            :vendor => 'Myrinet',
+            :version => '10G-PCIE-8A-C',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => nil,
+            :mounted => true,
+            :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+            :device => 'myri0',
+            :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5780',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :device => 'eth0',
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5780',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => false,
+            :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr",
+            :device => 'eth1',
+            :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          }]
       end        
     end
     
