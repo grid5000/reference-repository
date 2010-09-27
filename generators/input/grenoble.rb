@@ -127,12 +127,48 @@ site :grenoble do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 250.GB, :driver => nil}
           ]
-        network_adapters [
-          {:interface => 'InfiniBand QDR', :rate => 40.G, :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s", :enabled => true,
-           :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
-           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")}
-          ]  
+        network_adapters [{
+          :interface => 'InfiniBand',
+          :rate => 40.G,
+          :device => "ib0",
+          :enabled => true,
+          :mounted => true,
+          :mountable => true,
+          :management => false,
+          :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :device => "eth0",
+          :enabled => true,
+          :mounted => true,
+          :mountable => true,
+          :management => false,
+          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :device => "eth1",
+          :enabled => false,
+          :mountable => false,
+          :mounted => false,
+          :management => false
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :enabled => true,
+          :mounted => false,
+          :mountable => false,
+          :management => true,
+          :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr")
+        }]
       end
     end
     2.times do |i|
@@ -168,12 +204,27 @@ site :grenoble do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 250.GB, :driver => nil}
           ]
-        network_adapters [
-          {:interface => 'InfiniBand QDR', :rate => 40.G, :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s", :enabled => true,
-           :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
-           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")}
-          ]  
+        network_adapters [{
+          :interface => 'InfiniBand',
+          :rate => 40.G,
+          :enabled => true,
+          :mounted => true,
+          :mountable => false,
+          :management => false,
+          :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :enabled => true,
+          :mountable => true,
+          :mounted => true,
+          :management => false,
+          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
+        }]
       end
     end    
   end
@@ -214,12 +265,47 @@ site :grenoble do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 60.GB, :driver => nil}
           ]
-        network_adapters [
-          {:interface => 'InfiniBand QDR', :rate => 40.G, :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s", :enabled => true,
-           :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
-           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth.#{site_uid}.grid5000.fr")}
-          ]  
+        network_adapters [{
+          :interface => 'InfiniBand',
+          :rate => 40.G,
+          :enabled => true,
+          :device => "ib0",
+          :mounted => true,
+          :mountable => true,
+          :management => false,
+          :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :enabled => true,
+          :device => "eth0",
+          :mounted => true,
+          :mountable => true,
+          :management => false,
+          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :enabled => false,
+          :mounted => false,
+          :mountable => false,
+          :management => false
+        },
+        {
+          :interface => 'Ethernet',
+          :rate => 100.M,
+          :enabled => true,
+          :mounted => false,
+          :mountable => false,
+          :management => true,
+          :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr")
+        }]
       end      
     end
   end

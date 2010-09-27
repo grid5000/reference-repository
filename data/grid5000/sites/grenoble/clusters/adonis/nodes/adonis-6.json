@@ -10,19 +10,46 @@
   },
   "network_adapters": [
     {
+      "device": "ib0",
       "enabled": true,
-      "interface": "InfiniBand QDR",
+      "interface": "InfiniBand",
       "ip": "172.16.18.136",
-      "network_address": "adonis-6-ib.grenoble.grid5000.fr",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "adonis-6.grenoble.grid5000.fr",
       "rate": 40000000000,
       "vendor": "Mellanox",
       "version": "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT\/s"
     },
     {
+      "device": "eth0",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.16.18.136",
-      "network_address": "adonis-6.grenoble.grid5000.fr",
+      "ip": "172.16.16.136",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "adonis-6-eth0.grenoble.grid5000.fr",
+      "rate": 1000000000
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "interface": "Ethernet",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000
+    },
+    {
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.2.136",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "adonis-6-bmc.grenoble.grid5000.fr",
       "rate": 1000000000
     }
   ],
