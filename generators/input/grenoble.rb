@@ -91,4 +91,136 @@ site :grenoble do |site_uid|
       end      
     end
   end
+
+ cluster :adonis do |cluster_uid|
+    created_at Time.parse("2010-09-02").httpdate
+    10.times do |i|
+      model "Bull R422-E2 dual mobo + Tesla S1070"
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+        architecture({
+          :smp_size => 2, 
+          :smt_size => 8,
+          :platform_type => "x86_64"
+          })
+        processor({
+          :vendor => "Intel",
+          :model => "Intel Xeon",
+          :version => "E5520",
+          :clock_speed => 2.26.G,
+          :instruction_set => "",
+          :other_description => "",
+          :cache_l1 => nil,
+          :cache_l1i => nil,
+          :cache_l1d => nil,
+          :cache_l2 => nil
+        })
+        main_memory({
+          :ram_size => 24.GiB, # bytes
+          :virtual_size => nil
+        })
+        operating_system({
+          :name => nil,
+          :release => nil,
+          :version => nil
+        })
+        storage_devices [
+          {:interface => 'SATA', :size => 250.GB, :driver => nil}
+          ]
+        network_adapters [
+          {:interface => 'InfiniBand QDR', :rate => 40.G, :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s", :enabled => true,
+           :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
+           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")}
+          ]  
+      end
+    end
+    2.times do |i|
+      model "Bull R425-E2 4U + Tesla C2050"
+      node "#{cluster_uid}-#{i+11}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+        architecture({
+          :smp_size => 2, 
+          :smt_size => 8,
+          :platform_type => "x86_64"
+          })
+        processor({
+          :vendor => "Intel",
+          :model => "Intel Xeon",
+          :version => "E5620",
+          :clock_speed => 2.4.G,
+          :instruction_set => "",
+          :other_description => "",
+          :cache_l1 => nil,
+          :cache_l1i => nil,
+          :cache_l1d => nil,
+          :cache_l2 => nil
+        })
+        main_memory({
+          :ram_size => 24.GiB, # bytes
+          :virtual_size => nil
+        })
+        operating_system({
+          :name => nil,
+          :release => nil,
+          :version => nil
+        })
+        storage_devices [
+          {:interface => 'SATA', :size => 250.GB, :driver => nil}
+          ]
+        network_adapters [
+          {:interface => 'InfiniBand QDR', :rate => 40.G, :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s", :enabled => true,
+           :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
+           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")}
+          ]  
+      end
+    end    
+  end
+
+  cluster :edel do |cluster_uid|
+    model "Bull bullx B500 compute blades"
+    created_at Time.parse("2008-10-03").httpdate
+    
+    72.times do |i|
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+        architecture({
+          :smp_size => 2, 
+          :smt_size => 8,
+          :platform_type => "x86_64"
+          })
+        processor({
+          :vendor => "Intel",
+          :model => "Intel Xeon",
+          :version => "E5520",
+          :clock_speed => 2.27.G,
+          :instruction_set => "",
+          :other_description => "",
+          :cache_l1 => nil,
+          :cache_l1i => nil,
+          :cache_l1d => nil,
+          :cache_l2 => nil
+        })
+        main_memory({
+          :ram_size => 24.GiB, # bytes
+          :virtual_size => nil
+        })
+        operating_system({
+          :name => nil,
+          :release => nil,
+          :version => nil
+        })
+        storage_devices [
+          {:interface => 'SATA', :size => 60.GB, :driver => nil}
+          ]
+        network_adapters [
+          {:interface => 'InfiniBand QDR', :rate => 40.G, :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s", :enabled => true,
+           :network_address => "#{node_uid}-ib.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib.#{site_uid}.grid5000.fr")},
+          {:interface => 'Ethernet', :rate => 1.G, :enabled => true,
+           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth.#{site_uid}.grid5000.fr")}
+          ]  
+      end      
+    end
+  end
 end
