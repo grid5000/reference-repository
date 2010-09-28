@@ -147,6 +147,7 @@ site :grenoble do |site_uid|
           :mounted => true,
           :mountable => true,
           :management => false,
+	  :vendor => 'Intel', :version => "Device 10c9 (rev 01)",
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
         },
@@ -207,9 +208,10 @@ site :grenoble do |site_uid|
         network_adapters [{
           :interface => 'InfiniBand',
           :rate => 40.G,
+          :device => "ib0",
           :enabled => true,
           :mounted => true,
-          :mountable => false,
+          :mountable => true,
           :management => false,
           :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
@@ -218,10 +220,12 @@ site :grenoble do |site_uid|
         {
           :interface => 'Ethernet',
           :rate => 1.G,
+          :device => "eth0",
           :enabled => true,
           :mountable => true,
           :mounted => true,
           :management => false,
+	  :vendor => 'Intel', :version => "Device 10c9 (rev 01)",
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
         }]
