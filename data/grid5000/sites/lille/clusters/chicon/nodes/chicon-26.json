@@ -15,12 +15,15 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.160.99",
-      "management": true,
+      "mac": null,
+      "management": false,
       "mountable": true,
       "mounted": true,
-      "network_address": "chicon-26.lille.grid5000.fr",
+      "network_address": "chicon-26-eth0.lille.grid5000.fr",
       "rate": 1000000000,
-      "switch": "gw"
+      "switch": "gw",
+      "vendor": "Broadcom",
+      "version": "NetXtreme BCM5780"
     },
     {
       "device": "eth1",
@@ -28,37 +31,44 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.159.99",
+      "mac": null,
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "chicon-26.lille.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw",
-      "switch_port": "Gi4\/19"
+      "switch_port": "Gi4\/19",
+      "vendor": "Broadcom",
+      "version": "NetXtreme BCM5780"
     },
     {
-      "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.158.99",
+      "mac": null,
       "management": true,
       "mountable": false,
       "network_address": "chicon-26-rsa.lille.grid5000.fr",
       "rate": 1000000000,
-      "switch": "gw"
+      "switch": "gw",
+      "vendor": null,
+      "version": null
     },
     {
       "device": "myri0",
+      "driver": "mx",
       "enabled": true,
       "interface": "Myrinet",
       "ip": "192.168.162.99",
-      "management": true,
+      "mac": null,
+      "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "chicon-26-myri0.lille.grid5000.fr",
       "rate": 10000000000,
       "switch": null,
-      "vendor": "Myrinet",
+      "vendor": "Myricom",
       "version": "10G-PCIE-8A-C"
     }
   ],
