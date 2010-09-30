@@ -167,8 +167,7 @@ site :bordeaux do |site_uid|
         storage_devices [
           {:interface => 'SAS', :size => 600.GB, :driver => nil}
           ]
-	 ifs = Array.new
-         ifs += [
+         network_adapters [
           {:interface => 'Ethernet', :rate => 1.G, 
 	    :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"), 
 	    :vendor => "Broadcom", :version => "NetXtreme II BCM5708",
@@ -178,48 +177,18 @@ site :bordeaux do |site_uid|
             :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
 	    :vendor => "Broadcom", :version => "NetXtreme II BCM5708",
             :enabled => true, :mounted => false, :mountable => true, :driver => "bnx2", :management => false, :device => "eth1",
-	    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","eth1")}
-          ]
-#some cards have been swapped between hosts - refer to bug 2681 for explanations
-	  if i == 2 or i == 3
-	  ifs += [
-	{:interface => 'InfiniBand', :rate => 10.G, 
-		    :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
-		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib0",
-		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")},
-	{:interface => 'InfiniBand', :rate => 10.G, 
-		    :network_address => "#{cluster_uid}-#{i-1}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{cluster_uid}-#{i-1}-ib0.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
-		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib1",
-		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")}]
-	  elsif i == 0 or i == 1
-	  ifs += [
-	  	{:interface => 'Myrinet', :rate => 10.G, 
-		    :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C",
-		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri0",
-		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri0")},
-	  	{:interface => 'Myrinet', :rate => 10.G, 
-		    :network_address => "#{cluster_uid}-#{(i-2)-(i-3)*2}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{cluster_uid}-#{(i-2)-(i-3)*2}-myri0.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C",
-		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri1",
-		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri1")}]
-	    else
-	    ifs += [
-	  	{:interface => 'InfiniBand', :rate => 10.G, 
-		    :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
-		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib0",
-		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")},
-	  	{:interface => 'Myrinet', :rate => 10.G, 
-		    :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-		    :vendor => 'Myrinet', :version => "10G-PCIE-8A-C",
-		    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri0",
-		    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri0")}]
-	    end
-	network_adapters ifs
-      end
-    end
+	    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","eth1")},
+	  {:interface => 'InfiniBand', :rate => 10.G, 
+	    :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
+	    :vendor => 'Mellanox', :version => "InfiniHost MT25208", 
+	    :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "ib0",
+	    :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","ib0")},
+	  {:interface => 'Myrinet', :rate => 10.G, 
+	     :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+	     :vendor => 'Myrinet', :version => "10G-PCIE-8A-C",
+	     :enabled => true, :mountable => true, :mounted => true, :driver => "ib_mthca", :management => false, :device => "myri0",
+	     :mac => get_macaddr("#{node_uid}.#{site_uid}.grid5000.fr","myri0")}]
+	  end 
+	end 
   end # cluster borderline
 end
