@@ -52,42 +52,43 @@ site :sophia do |site_uid|
           :driver => "amd74xx"
         }]
         network_adapters [{
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => true,
-          :mountable => true,
-          :mounted => true,
-          :device => "eth0",
-          :driver => "tg3",
-          :vendor => 'Broadcom Corporation',
-          :version => 'NetXtreme BCM5704',
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
-        },
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :mountable => false,
-          :mounted => false,
-          :driver => "tg3",
-          :vendor => 'Broadcom Corporation',
-          :version => 'NetXtreme BCM5704'
-        },
-        {
-          :interface => 'Myrinet',
-          :rate => 2.G,
-          :enabled => true, 
-          :mountable => true,
-          :mounted => true,
-          :device => "myri0",
-          :switch => "cisco1",
-          :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-          :vendor => 'Myrinet',
-          :version => "M3F-PCIXF-2",
-          :driver => 'mx'
-        }]   
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom Corporation',
+            :version => 'NetXtreme BCM5704',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom Corporation',
+            :version => 'NetXtreme BCM5704',
+            :enabled => false,
+            :driver => 'tg3'
+          },{
+            :interface => 'Myrinet',
+            :rate => 2.G,
+            :mac => nil,
+            :vendor => 'Myricom',
+            :version => 'M3F-PCIXF-2',
+            :enabled => true, 
+            :management => false,
+            :mountable => true,
+            :driver => 'mx',
+            :mounted => true,
+            :device => 'myri0',
+            :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :switch => 'cisco1'
+          }]   
       end
     end
   end
@@ -137,62 +138,62 @@ site :sophia do |site_uid|
           :raid => "0"
         }]
         network_adapters [{
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => true,
-          :mountable => true,
-          :mounted => true,
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-          :device => "eth0",
-          :driver => "e1000",
-          :vendor => 'Intel Corporation',
-          :version => '82546EB'
-        },  
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :mountable => false,
-          :mounted => false,
-          :driver => "e1000",
-          :vendor => 'Intel Corporation',
-          :version => '82546EB'
-        },
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :mountable => false,
-          :mounted => false,
-          :driver => "e1000",
-          :vendor => 'Intel Corporation',
-          :version => '82546EB'
-        },
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :mountable => false,
-          :mounted => false,
-          :driver => "e1000",
-          :vendor => 'Intel Corporation',
-          :version => '82546EB'
-        },
-        {
-          :interface => 'Myrinet',
-          :rate => 2.G,
-          :enabled => true,
-          :mountable => true,
-          :mounted => true,
-          :device => "myri0",
-          :switch => "edgeiron48gs",
-          :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-          :vendor => 'Myrinet',
-          :version => "M3F-PCIXF-2",
-          :driver => 'mx'
-        }]          
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Intel Corporation',
+            :version => '82546EB',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => "e1000",
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Intel Corporation',
+            :version => '82546EB',
+            :enabled => false,
+            :driver => 'e1000',
+            :device => 'eth1'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Intel Corporation',
+            :version => '82546EB',
+            :enabled => false,
+            :driver => 'e1000',
+            :device => 'eth2'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Intel Corporation',
+            :version => '82546EB',
+            :enabled => false,
+            :driver => 'e1000',
+            :device => 'eth3'
+          },{
+            :interface => 'Myrinet',
+            :rate => 2.G,
+            :mac => nil,
+            :vendor => 'Myricom',
+            :version => 'M3F-PCIXF-2',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'mx',
+            :mounted => true,
+            :device => 'myri0',
+            :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :switch => "edgeiron48gs"
+          }] 
       end
     end
   end
@@ -235,49 +236,46 @@ site :sophia do |site_uid|
           :driver => "sata_nv"
         }]
         network_adapters [{
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => true,
-          :mountable => true,
-          :mounted => true,
-          :device => "eth0",
-          :switch => "fastiron",
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-          :vendor => "NVIDIA",
-          :version => "MCP55 Pro",
-          :driver => "forcedeth"
-        },
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :mountable => false,
-          :mounted => false,
-          :vendor => "NVIDIA",
-          :version => "MCP55 Pro",
-          :driver => "forcedeth"
-        },
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :mountable => false,
-          :mounted => false,
-          :vendor => "Broadcom",
-          :version => "BCM5715c",
-          :driver => "tg3"
-        },
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :mountable => false,
-          :mounted => false,
-          :vendor => "Broadcom",
-          :version => "BCM5715c",
-          :driver => "tg3"
-        }]          
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'nVidia',
+            :version => 'MCP55 Pro',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'forcedeth',
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => 'fastiron'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'nVidia',
+            :version => 'MCP55 Pro',
+            :enabled => false,
+            :driver => 'forcedeth',
+            :device => 'eth1'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'BCM5715c',
+            :enabled => false,
+            :driver => 'tg3'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'BCM5715c',
+            :enabled => false,
+            :driver => 'tg3'
+          }]
       end
     end
   end
@@ -321,29 +319,30 @@ site :sophia do |site_uid|
           :raid => "0"
         }]
         network_adapters [{
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => true,
-          :mountable => true,
-          :mounted => true,
-          :device => "eth0",
-          :switch => "fastiron",
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-          :vendor => "Broadcom",
-          :version => "NetXtremeII BCM5716",
-          :driver => "bnx2"
-        },
-        {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :enabled => false,
-          :mountable => false,
-          :mounted => false,
-          :vendor => "Broadcom",
-          :version => "NetXtremeII BCM5716",
-          :driver => "bnx2"
-        }]          
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtremeII BCM5716',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'bnx2',
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => 'fastiron'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtremeII BCM5716',
+            :enabled => false,
+            :driver => 'bnx2',
+            :device => 'eth1'
+          }]
       end
     end
   end

@@ -48,17 +48,49 @@ site :lille do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_sil"}
           ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true, 
-            :switch => "gw", :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :mountable => true, :mounted => true, :device => "eth0"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => false,
-            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :mountable => true, :mounted => true, :device => "eth1"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true,
-            :switch => "gw", :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
-            :driver => "tg3",:mountable => false}
-          ]  
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5704',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :device => "eth0",
+            :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :switch => "gw"
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5704',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :mounted => true,
+            :device => "eth1",
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :driver => "tg3",
+            :switch => "gw"
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => nil,
+            :version => nil,
+            :enabled => true,
+            :management => true,
+            :mountable => false,
+            :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
+            :switch => "gw"
+          }]  
       end
     end
   end # cluster chuque
@@ -98,20 +130,65 @@ site :lille do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
           ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true, 
-            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :mountable => true, :mounted => true, :device => "eth0"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => false, 
-            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :switch_port => lookup('lille', "#{node_uid}", 'switch_port'), :mountable => true, :mounted => true, :device => "eth1"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true,
-            :switch => "gw", :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
-            :driver => "tg3",:mountable => false},
-          {:interface => 'Myrinet', :rate => 10.G, :enabled => true, :management => true,
-            :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-            :vendor => "Myrinet", :version => "10G-PCIE-8A-C", :mountable => true, :mounted => true, :device => "myri0"}
-          ]        
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5780',
+            :enabled => true,
+            :management => false, 
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5780',
+            :enabled => true,
+            :management => false, 
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :device => 'eth1',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => "gw",
+            :switch_port => lookup('lille', "#{node_uid}", 'switch_port')
+          },{
+            :interface => 'Ethernet', 
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => nil,
+            :version => nil,
+            :enabled => true,
+            :management => true,
+            :mountable => false,
+            :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          },{
+            :interface => 'Myrinet',
+            :rate => 10.G,
+            :mac => nil,
+            :vendor => "Myricom",
+            :version => "10G-PCIE-8A-C",
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'mx',
+            :mounted => true, 
+            :device => 'myri0',
+            :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          }]
       end
     end
   end # cluster chti   
@@ -151,20 +228,65 @@ site :lille do |site_uid|
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
           ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true, 
-            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :mountable => true, :mounted => true, :device => "eth0"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => false, 
-            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "tg3", :switch_port => lookup('lille', "#{node_uid}", 'switch_port'), :mountable => true, :mounted => true, :device => "eth1"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true,
-            :switch => "gw", :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
-            :driver => "tg3",:mountable => false},
-          {:interface => 'Myrinet', :rate => 10.G, :enabled => true, :management => true,
-            :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-            :vendor => "Myrinet", :version => "10G-PCIE-8A-C", :mountable => true, :mounted => true, :device => "myri0"}
-          ]        
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5780',
+            :enabled => true,
+            :management => false, 
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme BCM5780',
+            :enabled => true,
+            :management => false, 
+            :mountable => true,
+            :driver => 'tg3',
+            :mounted => true,
+            :device => 'eth1',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => 'gw',
+            :switch_port => lookup('lille', "#{node_uid}", 'switch_port')
+          },{
+            :interface => 'Ethernet', 
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => nil,
+            :version => nil,
+            :enabled => true,
+            :management => true,
+            :mountable => false,
+            :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+         },{
+            :interface => 'Myrinet',
+            :rate => 10.G,
+            :mac => nil,
+            :vendor => "Myricom",
+            :version => "10G-PCIE-8A-C",
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'mx',
+            :mounted => true, 
+            :device => 'myri0',
+            :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          }]
       end
     end
   end # cluster chicon
@@ -204,20 +326,65 @@ site :lille do |site_uid|
         storage_devices [
           {:interface => 'SATA II', :size => 250.GB, :driver => "ahci"}
           ]
-        network_adapters [
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true, 
-            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
-            :driver => "e1000", :mountable => true, :mounted => true, :device => "eth0"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => false, 
-            :switch => "gw", :network_address => "#{node_uid}.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-            :driver => "e1000", :switch_port => lookup('lille', "#{node_uid}", 'switch_port'), :mountable => true, :mounted => true, :device => "eth1"},
-          {:interface => 'Ethernet', :rate => 1.G, :enabled => true, :management => true,
-            :switch => "gw", :network_address => "#{node_uid}-ipmi.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-ipmi.#{site_uid}.grid5000.fr"),
-            :driver => "e1000",:mountable => false},
-          {:interface => 'Myrinet', :rate => 10.G, :enabled => true, :management => true,
-            :switch => nil, :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr", :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
-            :vendor => "Myrinet", :version => "10G-PCIE-8A-C", :mountable => true, :mounted => true, :device => "myri0"}
-          ]
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Intel',
+            :version => '80003ES2LAN',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'e1000e',
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => 'Intel',
+            :version => '80003ES2LAN',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'e1000e',
+            :mounted => true,
+            :device => 'eth1',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => 'gw',
+            :switch_port => lookup('lille', "#{node_uid}", 'switch_port')
+         },{
+            :interface => 'Ethernet', 
+            :rate => 1.G,
+            :mac => nil,
+            :vendor => nil,
+            :version => nil,
+            :enabled => true,
+            :management => true,
+            :mountable => false,
+            :network_address => "#{node_uid}-ipmi.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-ipmi.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          },{
+            :interface => 'Myrinet',
+            :rate => 10.G,
+            :mac => nil,
+            :vendor => 'Myricom',
+            :version => '10G-PCIE-8A-C',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'mx',
+            :mounted => true,
+            :device => 'myri0',
+            :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+            :switch => nil
+          }]
       end
     end
   end
