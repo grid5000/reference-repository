@@ -67,6 +67,7 @@ site :grenoble do |site_uid|
           :device => "eth0",
           :enabled => false,
           :management => false,
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0')
         },
         {
           :interface => 'Ethernet',
@@ -77,7 +78,8 @@ site :grenoble do |site_uid|
           :mounted => true,
           :management => false,
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_eth1')
         },
         {
           :interface => 'Ethernet',
@@ -86,9 +88,10 @@ site :grenoble do |site_uid|
           :mountable => false,
           :management => true,
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt')
         }]
-      end      
+      end
     end
   end
 
@@ -149,7 +152,8 @@ site :grenoble do |site_uid|
           :management => false,
 	  :vendor => 'Intel', :version => "Device 10c9 (rev 01)",
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0')
         },
         {
           :interface => 'Ethernet',
@@ -158,7 +162,8 @@ site :grenoble do |site_uid|
           :enabled => false,
           :mountable => false,
           :mounted => false,
-          :management => false
+          :management => false,
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_eth1')
         },
         {
           :interface => 'Ethernet',
@@ -168,7 +173,8 @@ site :grenoble do |site_uid|
           :mountable => false,
           :management => true,
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt')
         }]
       end
     end
@@ -227,10 +233,11 @@ site :grenoble do |site_uid|
           :management => false,
 	  :vendor => 'Intel', :version => "Device 10c9 (rev 01)",
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0')
         }]
       end
-    end    
+    end
   end
 
   cluster :edel do |cluster_uid|
@@ -290,7 +297,8 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0')
         },
         {
           :interface => 'Ethernet',
@@ -308,7 +316,8 @@ site :grenoble do |site_uid|
           :mountable => false,
           :management => true,
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt')
         }]
       end      
     end
