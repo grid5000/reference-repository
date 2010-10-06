@@ -170,7 +170,6 @@ site :nancy do |site_uid|
           :mounted => true,
           :mountable => true,
           :management => false,
-          :mac => lookup('nancy', "#{node_uid}", 'mac_ib'),
           :ip => lookup('nancy', "#{node_uid}", 'ip_ib'),
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
 	  :switch => "ib_switch",
