@@ -8,7 +8,12 @@ module Grid5000
       "oar-2.4" => Proc.new{ |cluster, properties|
         # see https://www.grid5000.fr/mediawiki/index.php/OAR2_properties for list of properties
         h = {}
-        main_network_adapter = properties["network_adapters"].find{|na| na['enabled'] == true}
+        main_network_adapter = properties["network_adapters"].find{|na|
+          na['enabled'] && 
+          na['mounted'] && 
+          na['interface'] =~ /ethernet/i && 
+          !na['management']
+        }
         h['host']            = main_network_adapter['network_address']
         raise MissingProperty, "Node has no network_address" unless h['host']
         h['ip']              = main_network_adapter['ip']
