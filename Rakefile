@@ -85,13 +85,18 @@ namespace :oar do
         if action == "M"  # modification of a file
           command.concat(" -s node=#{host} ")
         else              # new file
-          command.concat(" -a node=#{host}/cpu={#{node.properties['architecture']['smp_size']}}/core={#{export['cpucore']}} ")
+          command.concat(" -a /node=#{host}/cpu={#{node.properties['architecture']['smp_size']}}/core={#{export['cpucore']}}")
+          command.concat(" --auto-offset")
+          if ENV['MAINTENANCE'] && ENV['MAINTENANCE']=='NO'
+            command.concat(' -p maintenance="NO"')
+          else
+            # by default, maintenance is YES when creating new resources
+            command.concat(' -p maintenance="YES"')
+          end
         end
         command.concat(" -p ").concat( export.to_a.map{|(k,v)|
           if v.nil?
             nil
-          elsif v.kind_of?(String) && v =~ / / # to remove after oaradmin correctly parses options
-            [k, v.inspect.inspect].join("=")
           else
             [k, v.inspect].join("=")
           end
@@ -102,6 +107,11 @@ namespace :oar do
         @logger.warn "Don't know what to do with #{line.inspect}. Ignoring."
         next
       end
+      
+      if ENV['COMMIT'] && ENV['COMMIT']=='YES'
+        command.concat(' -c')
+      end
+      
       commands << command
     end
     commands.each do |command|
