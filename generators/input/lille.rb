@@ -51,7 +51,7 @@ site :lille do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Broadcom',
             :version => 'NetXtreme BCM5704',
             :enabled => true,
@@ -66,7 +66,7 @@ site :lille do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_eth1'),
             :vendor => 'Broadcom',
             :version => 'NetXtreme BCM5704',
             :enabled => true,
@@ -81,7 +81,7 @@ site :lille do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_mgt'),
             :vendor => nil,
             :version => nil,
             :enabled => true,
@@ -133,7 +133,7 @@ site :lille do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Broadcom',
             :version => 'NetXtreme BCM5780',
             :enabled => true,
@@ -148,7 +148,7 @@ site :lille do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_eth1'),
             :vendor => 'Broadcom',
             :version => 'NetXtreme BCM5780',
             :enabled => true,
@@ -164,7 +164,7 @@ site :lille do |site_uid|
           },{
             :interface => 'Ethernet', 
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_mgt'),
             :vendor => nil,
             :version => nil,
             :enabled => true,
@@ -231,7 +231,7 @@ site :lille do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Broadcom',
             :version => 'NetXtreme BCM5780',
             :enabled => true,
@@ -246,7 +246,7 @@ site :lille do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_eth1'),
             :vendor => 'Broadcom',
             :version => 'NetXtreme BCM5780',
             :enabled => true,
@@ -262,7 +262,7 @@ site :lille do |site_uid|
           },{
             :interface => 'Ethernet', 
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_mgt'),
             :vendor => nil,
             :version => nil,
             :enabled => true,
@@ -329,7 +329,7 @@ site :lille do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Intel',
             :version => '80003ES2LAN',
             :enabled => true,
@@ -344,7 +344,7 @@ site :lille do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_eth1'),
             :vendor => 'Intel',
             :version => '80003ES2LAN',
             :enabled => true,
@@ -360,7 +360,7 @@ site :lille do |site_uid|
          },{
             :interface => 'Ethernet', 
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('lille',"#{node_uid}", 'mac_mgt'),
             :vendor => nil,
             :version => nil,
             :enabled => true,
