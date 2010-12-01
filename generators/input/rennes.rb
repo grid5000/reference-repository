@@ -250,7 +250,7 @@ site :rennes do |site_uid|
           })
         processor({
           :vendor             => "AMD",
-          :model              => "AMD Opteron(tm)",
+          :model              => "AMD Opteron",
           :version            => "6164 HE",
           :clock_speed        => 1.7.G,
           :instruction_set    => "",
