@@ -10,12 +10,16 @@
   },
   "network_adapters": [
     {
+      "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
-      "mac": "",
+      "mac": null,
       "management": false,
-      "mountable": false,
-      "rate": 1000000000
+      "model": "BCM5704",
+      "mountable": true,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Broadcom"
     },
     {
       "device": "eth1",
@@ -23,13 +27,15 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "10.69.0.5",
-      "mac": "",
+      "mac": null,
       "management": false,
+      "model": "BCM5704",
       "mountable": true,
       "mounted": true,
       "network_address": "capricorne-5.lyon.grid5000.fr",
       "rate": 1000000000,
-      "switch": "little-ego"
+      "switch": "little-ego",
+      "vendor": "Broadcom"
     },
     {
       "device": "myri0",
