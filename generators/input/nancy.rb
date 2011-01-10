@@ -64,7 +64,7 @@ site :nancy do |site_uid|
           :switch_port => lookup('nancy', "#{node_uid}", 'switch_pos_eth0'),
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           #:ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-          :ip => lookup('nancyipgrif', node_uid, 'ip_eth0'),
+          :ip => lookup('nancy', node_uid, 'ip_eth0'),
           :driver => "e1000e", :vendor => "intel", :version => "80003ES2LAN"
         },
         {

@@ -1,0 +1,132 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 1,
+    "smt_size": 4
+  },
+  "bios": {
+    "release_date": "06/01/2011",
+    "vendor": "American Megatrends Inc.",
+    "version": 7.02
+  },
+  "main_memory": {
+    "ram_size": 17179869184,
+    "virtual_size": null
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "e1000e",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.28.55.45",
+      "mac": "00:e0:81:d5:06:88",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "graphene-45.nancy.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "sgraphene2",
+      "switch_port": "Gi1/0/6",
+      "vendor": "intel",
+      "version": "82574L"
+    },
+    {
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "00:e0:81:d5:06:89",
+      "rate": 1000000000,
+      "vendor": "intel",
+      "version": "82574L"
+    },
+    {
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "00:e0:81:d5:06:8a",
+      "rate": 1000000000,
+      "vendor": "intel",
+      "version": "82574L"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "interface": "InfiniBand",
+      "ip": "192.168.211.45",
+      "mac": "20:00:55:00:41:00:00:00:00:00:00:00:02:c9:03:00:0b:93:21",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "graphene-45-ib0.nancy.grid5000.fr",
+      "rate": 20000000000,
+      "switch": "sgrapheneib",
+      "vendor": "Mellanox",
+      "version": "MT26418"
+    },
+    {
+      "enabled": false,
+      "interface": "InfiniBand",
+      "mac": "20:00:55:00:41:00:00:00:00:00:00:00:02:c9:03:00:0b:93:22",
+      "rate": 20000000000,
+      "vendor": "Mellanox",
+      "version": "MT26418"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.28.155.45",
+      "mac": "00:e0:81:d5:06:8b",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "graphene-45-bmc.nancy.grid5000.fr",
+      "rate": 100000000,
+      "switch": "sgraphene2-ipmi",
+      "switch_port": "1/0/30",
+      "vendor": "Tyan",
+      "version": "AST2050"
+    }
+  ],
+  "operating_system": {
+    "kernel": "2.6.26",
+    "name": "Debian",
+    "release": "5.0",
+    "version": null
+  },
+  "pdu": {
+    "pdu": "graphene-pdu4",
+    "pdu_port": 3,
+    "vendor": "American Power Convertion"
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": 8388608,
+    "clock_speed": 2530000000.0,
+    "instruction_set": "",
+    "model": "Intel Xeon",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "X3440"
+  },
+  "serial": 1009390047,
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "ahci",
+      "interface": "SATA II",
+      "model": "Hitachi HDS72103",
+      "rev": "JPFO",
+      "size": 298023223876.953
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "graphene-45"
+}
