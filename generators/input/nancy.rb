@@ -81,7 +81,9 @@ site :nancy do |site_uid|
           :mac => lookup('nancy', "#{node_uid}", 'mac_eth1'),
           #:mountable => false,
           #:management => false,
-          :driver => "e1000e", :vendor => "intel", :version => "BCM5721"
+          #:driver => "e1000e",
+	  :vendor => "intel",
+	  :version => "BCM5721"
         },
 	{
           :interface => 'InfiniBand',
