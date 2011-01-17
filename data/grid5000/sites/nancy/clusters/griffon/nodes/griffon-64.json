@@ -4,6 +4,11 @@
     "smp_size": 2,
     "smt_size": 8
   },
+  "bios": {
+    "release_date": "08/21/2009",
+    "vendor": "Phoenix Technologies LTD",
+    "version": "V1.05"
+  },
   "main_memory": {
     "ram_size": 17179869184,
     "virtual_size": null
@@ -31,9 +36,6 @@
       "enabled": false,
       "interface": "Ethernet",
       "mac": "00:E0:81:B2:C2:49",
-      "management": false,
-      "mountable": false,
-      "mounted": false,
       "rate": 1000000000,
       "vendor": "intel",
       "version": "BCM5721"
@@ -46,22 +48,23 @@
       "ib_switch_card_pos": "10",
       "interface": "InfiniBand",
       "ip": "192.168.210.64",
+      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:13",
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "griffon-64-ib0.nancy.grid5000.fr",
       "rate": 20000000000,
-      "switch": "ib_switch",
+      "switch": "sgriffonib",
       "vendor": "Mellanox",
-      "version": " InfiniHost MT26418"
+      "version": "MT26418"
     },
     {
       "enabled": false,
       "interface": "InfiniBand",
-      "management": false,
-      "mountable": false,
-      "mounted": false,
-      "rate": 20000000000
+      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:14",
+      "rate": 20000000000,
+      "vendor": "Mellanox",
+      "version": "MT26418"
     },
     {
       "enabled": true,
@@ -72,19 +75,23 @@
       "mountable": false,
       "mounted": false,
       "network_address": "griffon-64-ipmi.nancy.grid5000.fr",
-      "pdu": "pdu6",
-      "pdu_port": "B3",
       "rate": 100000000,
       "switch": "sgriffon3-ipmi",
       "switch_port": "7",
-      "vendor": "tyan",
-      "version": "no"
+      "vendor": "Tyan",
+      "version": "M3296"
     }
   ],
   "operating_system": {
-    "name": null,
-    "release": null,
+    "kernel": "2.6.26",
+    "name": "Debian",
+    "release": "5.0",
     "version": null
+  },
+  "pdu": {
+    "pdu": "pdu6",
+    "pdu_port": "B3",
+    "vendor": "American Power Conversion"
   },
   "processor": {
     "cache_l1": null,
@@ -101,8 +108,11 @@
   "serial": "812530069",
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "ata_piix",
       "interface": "SATA II",
+      "model": "Hitachi HDP72503",
+      "rev": "GM3O",
       "size": 298023223876.953
     }
   ],
