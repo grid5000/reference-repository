@@ -1,8 +1,34 @@
 {
+  "type": "node",
+  "operating_system": {
+    "version": null,
+    "name": "Debian",
+    "release": "5.0"
+  },
+  "uid": "helios-51",
   "architecture": {
-    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 4
+    "smt_size": 4,
+    "platform_type": "x86_64"
+  },
+  "storage_devices": [
+    {
+      "interface": "SAS",
+      "raid": "0",
+      "driver": "mptsas",
+      "size": 67986547946.9299
+    },
+    {
+      "interface": "SAS",
+      "raid": "0",
+      "driver": "mptsas",
+      "size": 67986547946.9299
+    }
+  ],
+  "supported_job_types": {
+    "virtual": false,
+    "deploy": true,
+    "besteffort": true
   },
   "main_memory": {
     "ram_size": 4294967296,
@@ -10,103 +36,77 @@
   },
   "network_adapters": [
     {
+      "rate": 1000000000,
       "device": "eth0",
-      "driver": "e1000",
-      "enabled": true,
-      "interface": "Ethernet",
+      "vendor": "Intel Corporation",
+      "mac": null,
       "ip": "138.96.21.51",
-      "mac": null,
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "helios-51.sophia.grid5000.fr",
-      "rate": 1000000000,
-      "vendor": "Intel Corporation",
-      "version": "82546EB"
-    },
-    {
-      "device": "eth1",
-      "driver": "e1000",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": null,
-      "rate": 1000000000,
-      "vendor": "Intel Corporation",
-      "version": "82546EB"
-    },
-    {
-      "device": "eth2",
-      "driver": "e1000",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": null,
-      "rate": 1000000000,
-      "vendor": "Intel Corporation",
-      "version": "82546EB"
-    },
-    {
-      "device": "eth3",
-      "driver": "e1000",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": null,
-      "rate": 1000000000,
-      "vendor": "Intel Corporation",
-      "version": "82546EB"
-    },
-    {
-      "device": "myri0",
-      "driver": "mx",
       "enabled": true,
-      "interface": "Myrinet",
-      "ip": "192.168.7.123",
-      "mac": null,
+      "version": "82546EB",
+      "interface": "Ethernet",
       "management": false,
+      "driver": "e1000",
+      "network_address": "helios-51.sophia.grid5000.fr",
       "mountable": true,
-      "mounted": true,
-      "network_address": "helios-51-myri0.sophia.grid5000.fr",
-      "rate": 2000000000,
-      "switch": "edgeiron48gs",
-      "vendor": "Myricom",
-      "version": "M3F-PCIXF-2"
-    }
-  ],
-  "operating_system": {
-    "name": "Debian",
-    "release": "5.0",
-    "version": null
-  },
-  "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 1048576,
-    "clock_speed": 2200000000.0,
-    "instruction_set": "",
-    "model": "AMD Opteron",
-    "other_description": "",
-    "vendor": "AMD",
-    "version": "275"
-  },
-  "storage_devices": [
-    {
-      "driver": "mptsas",
-      "interface": "SAS",
-      "raid": "0",
-      "size": 67986547946.9299
+      "mounted": true
     },
     {
-      "driver": "mptsas",
-      "interface": "SAS",
-      "raid": "0",
-      "size": 67986547946.9299
+      "rate": 1000000000,
+      "device": "eth1",
+      "vendor": "Intel Corporation",
+      "mac": null,
+      "enabled": false,
+      "version": "82546EB",
+      "interface": "Ethernet",
+      "driver": "e1000"
+    },
+    {
+      "rate": 1000000000,
+      "device": "eth2",
+      "vendor": "Intel Corporation",
+      "mac": null,
+      "enabled": false,
+      "version": "82546EB",
+      "interface": "Ethernet",
+      "driver": "e1000"
+    },
+    {
+      "rate": 1000000000,
+      "device": "eth3",
+      "vendor": "Intel Corporation",
+      "mac": null,
+      "enabled": false,
+      "version": "82546EB",
+      "interface": "Ethernet",
+      "driver": "e1000"
+    },
+    {
+      "rate": 2000000000,
+      "device": "myri0",
+      "vendor": "Myricom",
+      "mac": null,
+      "ip": "192.168.7.123",
+      "enabled": true,
+      "version": "M3F-PCIXF-2",
+      "interface": "Myrinet",
+      "management": false,
+      "switch": "edgeiron48gs",
+      "driver": "mx",
+      "network_address": "helios-51-myri0.sophia.grid5000.fr",
+      "mountable": true,
+      "mounted": true
     }
   ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": false
-  },
-  "type": "node",
-  "uid": "helios-51"
+  "processor": {
+    "cache_l1i": null,
+    "vendor": "AMD",
+    "cache_l1d": null,
+    "clock_speed": 2200000000.0,
+    "cache_l2": 1048576,
+    "version": "275",
+    "instruction_set": "",
+    "other_description": "",
+    "cache_l1": null,
+    "model": "AMD Opteron"
+  }
 }

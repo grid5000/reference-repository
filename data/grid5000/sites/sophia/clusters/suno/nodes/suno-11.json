@@ -1,8 +1,28 @@
 {
+  "type": "node",
+  "operating_system": {
+    "version": null,
+    "name": "Debian",
+    "release": "5.0"
+  },
+  "uid": "suno-11",
   "architecture": {
-    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 8
+    "smt_size": 8,
+    "platform_type": "x86_64"
+  },
+  "storage_devices": [
+    {
+      "interface": "SATA",
+      "raid": "0",
+      "driver": "megaraid_sas",
+      "size": 557675957679.749
+    }
+  ],
+  "supported_job_types": {
+    "virtual": "ivt",
+    "deploy": true,
+    "besteffort": true
   },
   "main_memory": {
     "ram_size": 34359738368,
@@ -10,62 +30,42 @@
   },
   "network_adapters": [
     {
-      "device": "eth0",
-      "driver": "bnx2",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "138.96.21.111",
-      "mac": null,
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "suno-11.sophia.grid5000.fr",
       "rate": 1000000000,
-      "switch": "fastiron",
+      "device": "eth0",
       "vendor": "Broadcom",
-      "version": "NetXtremeII BCM5716"
+      "mac": null,
+      "ip": "138.96.21.111",
+      "enabled": true,
+      "version": "NetXtremeII BCM5716",
+      "interface": "Ethernet",
+      "management": false,
+      "switch": "fastiron",
+      "driver": "bnx2",
+      "network_address": "suno-11.sophia.grid5000.fr",
+      "mountable": true,
+      "mounted": true
     },
     {
-      "device": "eth1",
-      "driver": "bnx2",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": null,
       "rate": 1000000000,
+      "device": "eth1",
       "vendor": "Broadcom",
-      "version": "NetXtremeII BCM5716"
+      "mac": null,
+      "enabled": false,
+      "version": "NetXtremeII BCM5716",
+      "interface": "Ethernet",
+      "driver": "bnx2"
     }
   ],
-  "operating_system": {
-    "name": "Debian",
-    "release": "5.0",
-    "version": null
-  },
   "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
     "cache_l1i": null,
-    "cache_l2": 8388608,
-    "clock_speed": 2260000000.0,
-    "instruction_set": "",
-    "model": "Intel Xeon",
-    "other_description": "",
     "vendor": "Intel",
-    "version": "E5520"
-  },
-  "storage_devices": [
-    {
-      "driver": "megaraid_sas",
-      "interface": "SATA",
-      "raid": "0",
-      "size": 557675957679.749
-    }
-  ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": "ivt"
-  },
-  "type": "node",
-  "uid": "suno-11"
+    "cache_l1d": null,
+    "clock_speed": 2260000000.0,
+    "cache_l2": 8388608,
+    "version": "E5520",
+    "instruction_set": "",
+    "other_description": "",
+    "cache_l1": null,
+    "model": "Intel Xeon"
+  }
 }

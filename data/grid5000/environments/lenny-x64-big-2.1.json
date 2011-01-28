@@ -1,10 +1,9 @@
 {
-  "accounts": [
-    {
-      "login": "root",
-      "password": "grid5000"
-    }
-  ],
+  "type": "environment",
+  "file": {
+    "md5": "b85027090ace01bb5fc34c951ec5d5b4",
+    "path": "/grid5000/images/lenny-x64-big-2.1.tgz"
+  },
   "applications": [
     "Vim",
     "XEmacs",
@@ -15,27 +14,28 @@
     "Python",
     "Ruby"
   ],
-  "based_on": "Debian version lenny for amd64",
   "consoles": [
     {
       "bps": 34800,
       "port": "ttyS0"
     }
   ],
-  "file": {
-    "md5": "b85027090ace01bb5fc34c951ec5d5b4",
-    "path": "\/grid5000\/images\/lenny-x64-big-2.1.tgz"
-  },
-  "kernel": "2.6.26.2",
+  "uid": "lenny-x64-big-2.1",
+  "x11_forwarding": true,
   "max_open_files": 8192,
   "services": [
     "ldap",
     "nfs"
   ],
-  "state": "stable",
-  "tcp_bandwidth": 1000000000,
-  "type": "environment",
-  "uid": "lenny-x64-big-2.1",
+  "accounts": [
+    {
+      "login": "root",
+      "password": "grid5000"
+    }
+  ],
   "valid_on": "griffon , grelon , sagittaire , capricorne , netgdx , gdx , bordeplage , bordereau , parapide , paramount , paraquad , paradent , azur , helios , sol , suno , edel , genepi , adonis , chuque , chinqchint , chicon , chti",
-  "x11_forwarding": true
+  "tcp_bandwidth": 1000000000,
+  "state": "stable",
+  "kernel": "2.6.26.2",
+  "based_on": "Debian version lenny for amd64"
 }

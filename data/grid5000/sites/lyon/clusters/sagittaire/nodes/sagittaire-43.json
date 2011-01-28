@@ -1,8 +1,27 @@
 {
+  "type": "node",
+  "operating_system": {
+    "version": null,
+    "name": null,
+    "release": null
+  },
+  "uid": "sagittaire-43",
   "architecture": {
-    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 2
+    "smt_size": 2,
+    "platform_type": "x86_64"
+  },
+  "storage_devices": [
+    {
+      "interface": "SCSI",
+      "driver": "mptspi",
+      "size": 67986547946.9299
+    }
+  ],
+  "supported_job_types": {
+    "virtual": false,
+    "deploy": true,
+    "besteffort": true
   },
   "main_memory": {
     "ram_size": 2147483648,
@@ -10,64 +29,45 @@
   },
   "network_adapters": [
     {
-      "driver": "tg3",
+      "rate": 1000000000,
+      "vendor": "Broadcom",
+      "mac": "00:09:3d:12:28:4f",
+      "ip": "10.69.1.143",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "10.69.1.143",
-      "mac": "00:09:3d:12:28:4f",
       "management": false,
-      "model": "BCM5704",
+      "driver": "tg3",
       "mountable": true,
-      "mounted": false,
-      "rate": 1000000000,
-      "vendor": "Broadcom"
+      "model": "BCM5704",
+      "mounted": false
     },
     {
+      "rate": 1000000000,
       "device": "eth1",
-      "driver": "tg3",
+      "vendor": "Broadcom",
+      "mac": "00:09:3d:12:28:50",
+      "ip": "10.69.1.43",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "10.69.1.43",
-      "mac": "00:09:3d:12:28:50",
       "management": false,
-      "model": "BCM5704",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "sagittaire-43.lyon.grid5000.fr",
-      "rate": 1000000000,
       "switch": "little-ego",
-      "vendor": "Broadcom"
+      "driver": "tg3",
+      "network_address": "sagittaire-43.lyon.grid5000.fr",
+      "mountable": true,
+      "model": "BCM5704",
+      "mounted": true
     }
   ],
-  "operating_system": {
-    "name": null,
-    "release": null,
-    "version": null
-  },
   "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
     "cache_l1i": null,
-    "cache_l2": 1048576,
-    "clock_speed": 2400000000.0,
-    "instruction_set": "",
-    "model": "AMD Opteron",
-    "other_description": "",
     "vendor": "AMD",
-    "version": "250"
-  },
-  "storage_devices": [
-    {
-      "driver": "mptspi",
-      "interface": "SCSI",
-      "size": 67986547946.9299
-    }
-  ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": false
-  },
-  "type": "node",
-  "uid": "sagittaire-43"
+    "cache_l1d": null,
+    "clock_speed": 2400000000.0,
+    "cache_l2": 1048576,
+    "version": "250",
+    "instruction_set": "",
+    "other_description": "",
+    "model": "AMD Opteron",
+    "cache_l1": null
+  }
 }

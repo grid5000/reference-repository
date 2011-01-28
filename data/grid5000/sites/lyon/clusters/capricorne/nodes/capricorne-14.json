@@ -1,8 +1,27 @@
 {
+  "type": "node",
+  "operating_system": {
+    "version": null,
+    "name": null,
+    "release": null
+  },
+  "uid": "capricorne-14",
   "architecture": {
-    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 2
+    "smt_size": 2,
+    "platform_type": "x86_64"
+  },
+  "storage_devices": [
+    {
+      "interface": "IDE",
+      "driver": "amd74xx",
+      "size": 74505805969.2383
+    }
+  ],
+  "supported_job_types": {
+    "virtual": false,
+    "deploy": true,
+    "besteffort": true
   },
   "main_memory": {
     "ram_size": 2147483648,
@@ -10,78 +29,59 @@
   },
   "network_adapters": [
     {
-      "driver": "tg3",
-      "enabled": true,
-      "interface": "Ethernet",
+      "rate": 1000000000,
+      "vendor": "Broadcom",
       "mac": "00:0d:60:14:a0:f0",
-      "management": false,
-      "model": "BCM5704",
-      "mountable": true,
-      "mounted": false,
-      "rate": 1000000000,
-      "vendor": "Broadcom"
-    },
-    {
-      "device": "eth1",
-      "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "10.69.0.14",
-      "mac": "00:0d:60:14:a0:f1",
       "management": false,
-      "model": "BCM5704",
+      "driver": "tg3",
       "mountable": true,
-      "mounted": true,
-      "network_address": "capricorne-14.lyon.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "little-ego",
-      "vendor": "Broadcom"
+      "model": "BCM5704",
+      "mounted": false
     },
     {
-      "device": "myri0",
-      "driver": "",
+      "rate": 1000000000,
+      "device": "eth1",
+      "vendor": "Broadcom",
+      "mac": "00:0d:60:14:a0:f1",
+      "ip": "10.69.0.14",
       "enabled": true,
-      "interface": "Myrinet",
-      "ip": "10.69.8.14",
-      "mac": "",
+      "interface": "Ethernet",
       "management": false,
+      "switch": "little-ego",
+      "driver": "tg3",
+      "network_address": "capricorne-14.lyon.grid5000.fr",
       "mountable": true,
-      "mounted": false,
-      "network_address": "capricorne-14-myri0.lyon.grid5000.fr",
-      "rate": 2000000000,
-      "vendor": "Myrinet",
-      "version": "M3F-PCIXF-2"
-    }
-  ],
-  "operating_system": {
-    "name": null,
-    "release": null,
-    "version": null
-  },
-  "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 1048576,
-    "clock_speed": 2000000000,
-    "instruction_set": "",
-    "model": "AMD Opteron",
-    "other_description": "",
-    "vendor": "AMD",
-    "version": "246"
-  },
-  "storage_devices": [
+      "model": "BCM5704",
+      "mounted": true
+    },
     {
-      "driver": "amd74xx",
-      "interface": "IDE",
-      "size": 74505805969.2383
+      "rate": 2000000000,
+      "device": "myri0",
+      "vendor": "Myrinet",
+      "mac": "",
+      "ip": "10.69.8.14",
+      "enabled": true,
+      "version": "M3F-PCIXF-2",
+      "interface": "Myrinet",
+      "management": false,
+      "driver": "",
+      "network_address": "capricorne-14-myri0.lyon.grid5000.fr",
+      "mountable": true,
+      "mounted": false
     }
   ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": false
-  },
-  "type": "node",
-  "uid": "capricorne-14"
+  "processor": {
+    "cache_l1i": null,
+    "vendor": "AMD",
+    "cache_l1d": null,
+    "clock_speed": 2000000000,
+    "cache_l2": 1048576,
+    "version": "246",
+    "instruction_set": "",
+    "other_description": "",
+    "model": "AMD Opteron",
+    "cache_l1": null
+  }
 }

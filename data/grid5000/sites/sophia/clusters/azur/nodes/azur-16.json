@@ -1,8 +1,27 @@
 {
+  "type": "node",
+  "operating_system": {
+    "version": null,
+    "name": "Debian",
+    "release": "5.0"
+  },
+  "uid": "azur-16",
   "architecture": {
-    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 2
+    "smt_size": 2,
+    "platform_type": "x86_64"
+  },
+  "storage_devices": [
+    {
+      "interface": "IDE",
+      "driver": "amd74xx",
+      "size": 74505805969.2383
+    }
+  ],
+  "supported_job_types": {
+    "virtual": false,
+    "deploy": true,
+    "besteffort": true
   },
   "main_memory": {
     "ram_size": 2147483648,
@@ -10,75 +29,56 @@
   },
   "network_adapters": [
     {
+      "rate": 1000000000,
       "device": "eth0",
-      "driver": "tg3",
-      "enabled": true,
-      "interface": "Ethernet",
+      "vendor": "Broadcom Corporation",
+      "mac": null,
       "ip": "138.96.20.16",
-      "mac": null,
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "azur-16.sophia.grid5000.fr",
-      "rate": 1000000000,
-      "vendor": "Broadcom Corporation",
-      "version": "NetXtreme BCM5704"
-    },
-    {
-      "driver": "tg3",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": null,
-      "rate": 1000000000,
-      "vendor": "Broadcom Corporation",
-      "version": "NetXtreme BCM5704"
-    },
-    {
-      "device": "myri0",
-      "driver": "mx",
       "enabled": true,
-      "interface": "Myrinet",
-      "ip": "192.168.7.16",
-      "mac": null,
+      "version": "NetXtreme BCM5704",
+      "interface": "Ethernet",
       "management": false,
+      "driver": "tg3",
+      "network_address": "azur-16.sophia.grid5000.fr",
       "mountable": true,
-      "mounted": true,
-      "network_address": "azur-16-myri0.sophia.grid5000.fr",
-      "rate": 2000000000,
-      "switch": "cisco1",
-      "vendor": "Myricom",
-      "version": "M3F-PCIXF-2"
-    }
-  ],
-  "operating_system": {
-    "name": "Debian",
-    "release": "5.0",
-    "version": null
-  },
-  "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 1048576,
-    "clock_speed": 2000000000,
-    "instruction_set": "",
-    "model": "AMD Opteron",
-    "other_description": "",
-    "vendor": "AMD",
-    "version": "246"
-  },
-  "storage_devices": [
+      "mounted": true
+    },
     {
-      "driver": "amd74xx",
-      "interface": "IDE",
-      "size": 74505805969.2383
+      "rate": 1000000000,
+      "vendor": "Broadcom Corporation",
+      "mac": null,
+      "enabled": false,
+      "version": "NetXtreme BCM5704",
+      "interface": "Ethernet",
+      "driver": "tg3"
+    },
+    {
+      "rate": 2000000000,
+      "device": "myri0",
+      "vendor": "Myricom",
+      "mac": null,
+      "ip": "192.168.7.16",
+      "enabled": true,
+      "version": "M3F-PCIXF-2",
+      "interface": "Myrinet",
+      "management": false,
+      "switch": "cisco1",
+      "driver": "mx",
+      "network_address": "azur-16-myri0.sophia.grid5000.fr",
+      "mountable": true,
+      "mounted": true
     }
   ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": false
-  },
-  "type": "node",
-  "uid": "azur-16"
+  "processor": {
+    "cache_l1i": null,
+    "vendor": "AMD",
+    "cache_l1d": null,
+    "clock_speed": 2000000000,
+    "cache_l2": 1048576,
+    "version": "246",
+    "instruction_set": "",
+    "other_description": "",
+    "cache_l1": null,
+    "model": "AMD Opteron"
+  }
 }

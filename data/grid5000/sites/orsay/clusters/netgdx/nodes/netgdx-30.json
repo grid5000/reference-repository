@@ -1,8 +1,27 @@
 {
+  "type": "node",
+  "operating_system": {
+    "version": null,
+    "name": null,
+    "release": null
+  },
+  "uid": "netgdx-30",
   "architecture": {
-    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 2
+    "smt_size": 2,
+    "platform_type": "x86_64"
+  },
+  "storage_devices": [
+    {
+      "interface": "SATA",
+      "driver": null,
+      "size": 74505805969.2383
+    }
+  ],
+  "supported_job_types": {
+    "virtual": false,
+    "deploy": true,
+    "besteffort": true
   },
   "main_memory": {
     "ram_size": 2147483648,
@@ -10,83 +29,64 @@
   },
   "network_adapters": [
     {
+      "rate": 1000000000,
       "device": "eth0",
-      "driver": "tg3",
-      "enabled": true,
-      "interface": "Ethernet",
+      "vendor": "Broadcom",
+      "mac": null,
       "ip": "172.24.110.30",
-      "mac": null,
+      "enabled": true,
+      "version": "NetXtreme BCM5780",
+      "interface": "Ethernet",
       "management": false,
-      "mountable": true,
-      "mounted": true,
+      "switch": null,
+      "driver": "tg3",
       "network_address": "netgdx-30.orsay.grid5000.fr",
-      "rate": 1000000000,
-      "switch": null,
-      "vendor": "Broadcom",
-      "version": "NetXtreme BCM5780"
+      "mountable": true,
+      "mounted": true
     },
     {
+      "rate": 1000000000,
       "device": "eth1",
-      "driver": "tg3",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.24.240.30",
-      "mac": null,
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "netgdx-30-eth1.orsay.grid5000.fr",
-      "rate": 1000000000,
-      "switch": null,
       "vendor": "Broadcom",
-      "version": "NetXtreme BCM5780"
+      "mac": null,
+      "ip": "172.24.240.30",
+      "enabled": true,
+      "version": "NetXtreme BCM5780",
+      "interface": "Ethernet",
+      "management": false,
+      "switch": null,
+      "driver": "tg3",
+      "network_address": "netgdx-30-eth1.orsay.grid5000.fr",
+      "mountable": true,
+      "mounted": true
     },
     {
-      "device": "eth2",
-      "driver": "tg3",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.24.190.30",
-      "mac": null,
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "netgdx-30-eth2.orsay.grid5000.fr",
       "rate": 1000000000,
-      "switch": null,
+      "device": "eth2",
       "vendor": "Broadcom",
-      "version": "NetXtreme BCM5703"
+      "mac": null,
+      "ip": "172.24.190.30",
+      "enabled": true,
+      "version": "NetXtreme BCM5703",
+      "interface": "Ethernet",
+      "management": false,
+      "switch": null,
+      "driver": "tg3",
+      "network_address": "netgdx-30-eth2.orsay.grid5000.fr",
+      "mountable": true,
+      "mounted": true
     }
   ],
-  "operating_system": {
-    "name": null,
-    "release": null,
-    "version": null
-  },
   "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
     "cache_l1i": null,
-    "cache_l2": 1048576,
-    "clock_speed": 2000000000,
-    "instruction_set": "",
-    "model": "AMD Opteron",
-    "other_description": "",
     "vendor": "AMD",
-    "version": "246"
-  },
-  "storage_devices": [
-    {
-      "driver": null,
-      "interface": "SATA",
-      "size": 74505805969.2383
-    }
-  ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": false
-  },
-  "type": "node",
-  "uid": "netgdx-30"
+    "cache_l1d": null,
+    "clock_speed": 2000000000,
+    "cache_l2": 1048576,
+    "version": "246",
+    "instruction_set": "",
+    "other_description": "",
+    "model": "AMD Opteron",
+    "cache_l1": null
+  }
 }

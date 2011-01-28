@@ -1,8 +1,22 @@
 {
+  "type": "node",
   "architecture": {
-    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 8
+    "smt_size": 8,
+    "platform_type": "x86_64"
+  },
+  "storage_devices": [
+    {
+      "interface": "SATA",
+      "driver": null,
+      "size": 232830643653.87
+    }
+  ],
+  "uid": "adonis-2",
+  "supported_job_types": {
+    "deploy": true,
+    "besteffort": true,
+    "virtual": "ivt"
   },
   "main_memory": {
     "ram_size": 25769803776,
@@ -13,80 +27,66 @@
       "device": "ib0",
       "enabled": true,
       "interface": "InfiniBand",
-      "ip": "172.16.18.132",
-      "management": false,
+      "version": "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
       "mountable": true,
       "mounted": true,
       "network_address": "adonis-2.grenoble.grid5000.fr",
+      "management": false,
       "rate": 40000000000,
-      "vendor": "Mellanox",
-      "version": "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT\/s"
+      "ip": "172.16.18.132",
+      "vendor": "Mellanox"
     },
     {
       "device": "eth0",
+      "mac": "00:30:48:cc:7f:da",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.16.16.132",
-      "mac": "00:30:48:cc:7f:da",
-      "management": false,
+      "version": "Device 10c9 (rev 01)",
       "mountable": true,
       "mounted": true,
       "network_address": "adonis-2-eth0.grenoble.grid5000.fr",
+      "management": false,
       "rate": 1000000000,
-      "vendor": "Intel",
-      "version": "Device 10c9 (rev 01)"
+      "ip": "172.16.16.132",
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
+      "mac": "00:30:48:cc:7f:db",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "00:30:48:cc:7f:db",
-      "management": false,
       "mountable": false,
       "mounted": false,
+      "management": false,
       "rate": 1000000000
     },
     {
+      "mac": "00:30:48:cc:b0:59",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "192.168.2.132",
-      "mac": "00:30:48:cc:b0:59",
-      "management": true,
       "mountable": false,
       "mounted": false,
       "network_address": "adonis-2-bmc.grenoble.grid5000.fr",
-      "rate": 1000000000
+      "management": true,
+      "rate": 1000000000,
+      "ip": "192.168.2.132"
     }
   ],
-  "operating_system": {
-    "name": null,
-    "release": null,
-    "version": null
-  },
   "processor": {
-    "cache_l1": null,
     "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
     "clock_speed": 2260000000.0,
+    "cache_l2": null,
     "instruction_set": "",
-    "model": "Intel Xeon",
+    "version": "E5520",
     "other_description": "",
-    "vendor": "Intel",
-    "version": "E5520"
+    "cache_l1": null,
+    "model": "Intel Xeon",
+    "cache_l1i": null,
+    "vendor": "Intel"
   },
-  "storage_devices": [
-    {
-      "driver": null,
-      "interface": "SATA",
-      "size": 232830643653.87
-    }
-  ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": "ivt"
-  },
-  "type": "node",
-  "uid": "adonis-2"
+  "operating_system": {
+    "version": null,
+    "name": null,
+    "release": null
+  }
 }

@@ -1,78 +1,78 @@
 {
+  "type": "node",
+  "storage_devices": [
+    {
+      "interface": "SATA",
+      "version": "HDS72168",
+      "driver": "sata_svw",
+      "vendor": "Hitachi",
+      "size": 74505805969.2383
+    }
+  ],
+  "uid": "bordereau-30",
+  "processor": {
+    "other_description": "",
+    "model": "AMD Opteron",
+    "cache_l1": null,
+    "cache_l1i": 65536,
+    "version": "2218",
+    "vendor": "AMD",
+    "cache_l1d": 65536,
+    "clock_speed": 2600000000.0,
+    "cache_l2": 1048576,
+    "instruction_set": "x86-64"
+  },
+  "operating_system": {
+    "version": null,
+    "kadeploy_name": "debian-x64-5-prod",
+    "name": "Debian Lenny",
+    "release": null,
+    "kadeploy_version": "1"
+  },
   "architecture": {
     "platform_type": "x86_64",
     "smp_size": 2,
     "smt_size": 4
   },
-  "main_memory": {
-    "ram_size": 4294967296,
-    "virtual_size": null
-  },
   "network_adapters": [
     {
-      "device": "eth0",
-      "driver": "tg3",
+      "mac": "",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.16.1.131",
-      "mac": "",
-      "management": false,
       "mountable": true,
+      "driver": "tg3",
+      "version": "BCM5704",
       "mounted": true,
+      "vendor": "Broadcom",
+      "management": false,
       "network_address": "bordereau-30.bordeaux.grid5000.fr",
       "rate": 1000000000,
-      "vendor": "Broadcom",
-      "version": "BCM5704"
+      "device": "eth0",
+      "ip": "172.16.1.131"
     },
     {
-      "device": "eth1",
-      "driver": "tg3",
+      "mac": "",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "192.168.133.131",
-      "mac": "",
-      "management": false,
       "mountable": true,
+      "driver": "tg3",
+      "version": "BCM5704",
       "mounted": false,
+      "vendor": "Broadcom",
+      "management": false,
       "network_address": "bordereau-30-eth1.bordeaux.grid5000.fr",
       "rate": 1000000000,
-      "vendor": "Broadcom",
-      "version": "BCM5704"
-    }
-  ],
-  "operating_system": {
-    "kadeploy_name": "debian-x64-5-prod",
-    "kadeploy_version": "1",
-    "name": "Debian Lenny",
-    "release": null,
-    "version": null
-  },
-  "processor": {
-    "cache_l1": null,
-    "cache_l1d": 65536,
-    "cache_l1i": 65536,
-    "cache_l2": 1048576,
-    "clock_speed": 2600000000.0,
-    "instruction_set": "x86-64",
-    "model": "AMD Opteron",
-    "other_description": "",
-    "vendor": "AMD",
-    "version": "2218"
-  },
-  "storage_devices": [
-    {
-      "driver": "sata_svw",
-      "interface": "SATA",
-      "size": 74505805969.2383,
-      "vendor": "Hitachi",
-      "version": "HDS72168"
+      "device": "eth1",
+      "ip": "192.168.133.131"
     }
   ],
   "supported_job_types": {
-    "besteffort": true,
     "deploy": true,
+    "besteffort": true,
     "virtual": false
   },
-  "type": "node",
-  "uid": "bordereau-30"
+  "main_memory": {
+    "ram_size": 4294967296,
+    "virtual_size": null
+  }
 }

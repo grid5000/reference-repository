@@ -1,10 +1,9 @@
 {
-  "accounts": [
-    {
-      "login": "root",
-      "password": "grid5000"
-    }
-  ],
+  "type": "environment",
+  "file": {
+    "md5": "b2e48586472579ac2b908816175e4aa6",
+    "path": "/grid5000/images/lenny-x64-big-1.0.tgz"
+  },
   "applications": [
     "Vim",
     "XEmacs",
@@ -15,27 +14,28 @@
     "Python",
     "Ruby"
   ],
-  "based_on": "Debian version lenny for amd64",
   "consoles": [
     {
       "bps": 34800,
       "port": "ttyS0"
     }
   ],
-  "file": {
-    "md5": "b2e48586472579ac2b908816175e4aa6",
-    "path": "\/grid5000\/images\/lenny-x64-big-1.0.tgz"
-  },
-  "kernel": "2.6.26.2",
+  "uid": "lenny-x64-big-1.0",
+  "x11_forwarding": true,
   "max_open_files": 8192,
   "services": [
     "ldap",
     "nfs"
   ],
-  "state": "stable",
-  "tcp_bandwidth": 1000000000,
-  "type": "environment",
-  "uid": "lenny-x64-big-1.0",
+  "accounts": [
+    {
+      "login": "root",
+      "password": "grid5000"
+    }
+  ],
   "valid_on": "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310",
-  "x11_forwarding": true
+  "tcp_bandwidth": 1000000000,
+  "state": "stable",
+  "kernel": "2.6.26.2",
+  "based_on": "Debian version lenny for amd64"
 }
