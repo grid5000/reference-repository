@@ -8,7 +8,7 @@ The reference data is stored in a Git repository as JSON files, organized into h
 
 == Requirements ==
 * Ruby >= 1.8.6
-* JSON (<code>apt-get install libjson-ruby</code> or <code>gem install json</code>)
+* Bundler (<code>gem install bundler</code>)
 * Git
 * g5kadmin account
 
@@ -46,7 +46,11 @@ Finally, these changes are automatically replicated every minute to each API REP
 == Getting started ==
 First, clone the remote MASTER REPOSITORY if it is not already done:
 
-  g5kadmin@host:/somewhere/reference-repository$ git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git
+  g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git
+
+From the newly created reference-repository folder, run the following command to install the required dependencies:
+
+  g5kadmin@host:/somewhere/reference-repository$ bundle install
 
 Right now, the easiest way to get started is to look at some existing input files in the "generators/input" directory. There you can see how you can define sites, clusters, nodes and environments programmatically. 
 Then you may create a new input file or change an existing one and run it in simulation mode:
