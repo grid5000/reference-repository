@@ -1,83 +1,83 @@
 {
-  "architecture": {
-    "platform_type": "x86_64",
-    "smp_size": 2,
-    "smt_size": 4
+  "type": "node",
+  "operating_system": {
+    "kernel": "2.6.26",
+    "version": null,
+    "name": "Debian",
+    "release": "5.0"
   },
+  "uid": "paramount-5",
+  "architecture": {
+    "smp_size": 2,
+    "smt_size": 4,
+    "platform_type": "x86_64"
+  },
+  "network_adapters": [
+    {
+      "vendor": "Broadcom",
+      "mounted": true,
+      "device": "eth0",
+      "version": "NetXtreme II BCM5708",
+      "rate": 1000000000,
+      "ip": "131.254.202.175",
+      "enabled": true,
+      "switch": "c6509-grid",
+      "interface": "Ethernet",
+      "network_address": "paramount-5.rennes.grid5000.fr",
+      "management": false,
+      "driver": "bnx2",
+      "mountable": true
+    },
+    {
+      "vendor": "Broadcom",
+      "device": "eth1",
+      "version": "NetXtreme II BCM5708",
+      "rate": 1000000000,
+      "enabled": false,
+      "interface": "Ethernet",
+      "driver": "bnx2"
+    },
+    {
+      "vendor": "Myrinet",
+      "mounted": true,
+      "device": "myri0",
+      "version": "10G-PCIE-8A-C",
+      "rate": 10000000000,
+      "ip": "192.168.200.175",
+      "enabled": true,
+      "interface": "Myrinet",
+      "network_address": "paramount-5-myri0.rennes.grid5000.fr",
+      "management": false,
+      "mountable": true
+    }
+  ],
+  "supported_job_types": {
+    "virtual": "ivt",
+    "deploy": true,
+    "besteffort": true
+  },
+  "storage_devices": [
+    {
+      "raid": "0",
+      "size": 558793544769.287,
+      "interface": "SATA",
+      "driver": "megaraid_sas"
+    }
+  ],
   "main_memory": {
     "ram_size": 8589934592,
     "virtual_size": null
   },
-  "network_adapters": [
-    {
-      "device": "eth0",
-      "driver": "bnx2",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "131.254.202.175",
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "paramount-5.rennes.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "c6509-grid",
-      "vendor": "Broadcom",
-      "version": "NetXtreme II BCM5708"
-    },
-    {
-      "device": "eth1",
-      "driver": "bnx2",
-      "enabled": false,
-      "interface": "Ethernet",
-      "rate": 1000000000,
-      "vendor": "Broadcom",
-      "version": "NetXtreme II BCM5708"
-    },
-    {
-      "device": "myri0",
-      "enabled": true,
-      "interface": "Myrinet",
-      "ip": "192.168.200.175",
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "paramount-5-myri0.rennes.grid5000.fr",
-      "rate": 10000000000,
-      "vendor": "Myrinet",
-      "version": "10G-PCIE-8A-C"
-    }
-  ],
-  "operating_system": {
-    "kernel": "2.6.26",
-    "name": "Debian",
-    "release": "5.0",
-    "version": null
-  },
   "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
     "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 2330000000.0,
-    "instruction_set": "",
-    "model": "Intel Xeon",
-    "other_description": "",
     "vendor": "Intel",
-    "version": "5148 LV"
-  },
-  "storage_devices": [
-    {
-      "driver": "megaraid_sas",
-      "interface": "SATA",
-      "raid": "0",
-      "size": 558793544769.287
-    }
-  ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": "ivt"
-  },
-  "type": "node",
-  "uid": "paramount-5"
+    "cache_l1d": null,
+    "clock_speed": 2330000000.0,
+    "cache_l2": null,
+    "version": "5148 LV",
+    "instruction_set": "",
+    "other_description": "",
+    "cache_l1": null,
+    "model": "Intel Xeon"
+  }
 }

@@ -1,8 +1,22 @@
 {
+  "type": "node",
   "architecture": {
-    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 4
+    "smt_size": 4,
+    "platform_type": "x86_64"
+  },
+  "storage_devices": [
+    {
+      "interface": "SATA",
+      "driver": "sata_nv",
+      "size": 232830643653.87
+    }
+  ],
+  "uid": "pastel-6",
+  "supported_job_types": {
+    "deploy": true,
+    "besteffort": true,
+    "virtual": "amd-v"
   },
   "main_memory": {
     "ram_size": 8589934592,
@@ -10,80 +24,66 @@
   },
   "network_adapters": [
     {
-      "device": "eth0",
-      "driver": "forcedeth",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.16.113.6",
-      "ip6": null,
       "mac": "00:16:36:D2:EE:F8",
+      "ip": "172.16.113.6",
+      "enabled": true,
+      "ip6": null,
+      "interface": "Ethernet",
       "management": false,
+      "version": "MCP55 Pro",
+      "driver": "forcedeth",
       "mountable": true,
-      "mounted": true,
-      "network_address": "pastel-6.toulouse.grid5000.fr",
-      "rate": 1000000000,
       "switch": "r4",
-      "vendor": "NVIDIA",
-      "version": "MCP55 Pro"
+      "network_address": "pastel-6.toulouse.grid5000.fr",
+      "mounted": true,
+      "rate": 1000000000,
+      "device": "eth0",
+      "vendor": "NVIDIA"
     },
     {
-      "device": "eth1",
+      "mac": "00:16:36:D2:EE:F9",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "00:16:36:D2:EE:F9",
       "management": false,
+      "version": "MCP55 Pro",
       "mountable": false,
+      "switch": null,
       "mounted": false,
       "rate": 1000000000,
-      "switch": null,
-      "vendor": "NVIDIA",
-      "version": "MCP55 Pro"
+      "device": "eth1",
+      "vendor": "NVIDIA"
     },
     {
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "192.168.24.6",
-      "ip6": null,
       "mac": "00:16:36:D2:F7:DD",
+      "ip": "192.168.24.6",
+      "enabled": true,
+      "ip6": null,
+      "interface": "Ethernet",
       "management": true,
+      "version": "BCM5715c",
       "mountable": false,
-      "mounted": false,
-      "network_address": "pastel-6-bmc.toulouse.grid5000.fr",
-      "rate": 1000000000,
       "switch": "<unknown>",
-      "vendor": "Broadcom",
-      "version": "BCM5715c"
+      "network_address": "pastel-6-bmc.toulouse.grid5000.fr",
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Broadcom"
     }
   ],
-  "operating_system": {
-    "name": null,
-    "release": null,
-    "version": null
-  },
   "processor": {
-    "cache_l1": null,
     "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 1048576,
     "clock_speed": 2613000000,
+    "cache_l2": 1048576,
     "instruction_set": "",
-    "model": "AMD Opteron",
+    "version": "2218",
     "other_description": "",
-    "vendor": "AMD",
-    "version": "2218"
+    "cache_l1": null,
+    "model": "AMD Opteron",
+    "cache_l1i": null,
+    "vendor": "AMD"
   },
-  "storage_devices": [
-    {
-      "driver": "sata_nv",
-      "interface": "SATA",
-      "size": 232830643653.87
-    }
-  ],
-  "supported_job_types": {
-    "besteffort": true,
-    "deploy": true,
-    "virtual": "amd-v"
-  },
-  "type": "node",
-  "uid": "pastel-6"
+  "operating_system": {
+    "version": null,
+    "name": null,
+    "release": null
+  }
 }
