@@ -1,22 +1,8 @@
 {
-  "type": "node",
   "architecture": {
+    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 4,
-    "platform_type": "x86_64"
-  },
-  "storage_devices": [
-    {
-      "interface": "SATA",
-      "driver": "sata_nv",
-      "size": 232830643653.87
-    }
-  ],
-  "uid": "pastel-66",
-  "supported_job_types": {
-    "deploy": true,
-    "besteffort": true,
-    "virtual": "amd-v"
+    "smt_size": 4
   },
   "main_memory": {
     "ram_size": 8589934592,
@@ -24,66 +10,80 @@
   },
   "network_adapters": [
     {
-      "mac": "00:1B:24:2D:F7:9F",
-      "ip": "172.16.113.66",
-      "enabled": true,
-      "ip6": null,
-      "interface": "Ethernet",
-      "management": false,
-      "version": "MCP55 Pro",
-      "driver": "forcedeth",
-      "mountable": true,
-      "switch": "r4",
-      "network_address": "pastel-66.toulouse.grid5000.fr",
-      "mounted": true,
-      "rate": 1000000000,
       "device": "eth0",
-      "vendor": "NVIDIA"
+      "driver": "forcedeth",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.113.66",
+      "ip6": null,
+      "mac": "00:1B:24:2D:F7:9F",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "pastel-66.toulouse.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "r4",
+      "vendor": "NVIDIA",
+      "version": "MCP55 Pro"
     },
     {
-      "mac": "00:1B:24:2D:F7:A0",
+      "device": "eth1",
       "enabled": false,
       "interface": "Ethernet",
+      "mac": "00:1B:24:2D:F7:A0",
       "management": false,
-      "version": "MCP55 Pro",
       "mountable": false,
-      "switch": null,
       "mounted": false,
       "rate": 1000000000,
-      "device": "eth1",
-      "vendor": "NVIDIA"
+      "switch": null,
+      "vendor": "NVIDIA",
+      "version": "MCP55 Pro"
     },
     {
-      "mac": "00:1B:24:2D:FC:98",
-      "ip": "192.168.24.66",
       "enabled": true,
-      "ip6": null,
       "interface": "Ethernet",
+      "ip": "192.168.24.66",
+      "ip6": null,
+      "mac": "00:1B:24:2D:FC:98",
       "management": true,
-      "version": "BCM5715c",
       "mountable": false,
-      "switch": "<unknown>",
-      "network_address": "pastel-66-bmc.toulouse.grid5000.fr",
       "mounted": false,
+      "network_address": "pastel-66-bmc.toulouse.grid5000.fr",
       "rate": 1000000000,
-      "vendor": "Broadcom"
+      "switch": "<unknown>",
+      "vendor": "Broadcom",
+      "version": "BCM5715c"
     }
   ],
-  "processor": {
-    "cache_l1d": null,
-    "clock_speed": 2613000000,
-    "cache_l2": 1048576,
-    "instruction_set": "",
-    "version": "2218",
-    "other_description": "",
-    "cache_l1": null,
-    "model": "AMD Opteron",
-    "cache_l1i": null,
-    "vendor": "AMD"
-  },
   "operating_system": {
-    "version": null,
     "name": null,
-    "release": null
-  }
+    "release": null,
+    "version": null
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": 1048576,
+    "clock_speed": 2613000000,
+    "instruction_set": "",
+    "model": "AMD Opteron",
+    "other_description": "",
+    "vendor": "AMD",
+    "version": "2218"
+  },
+  "storage_devices": [
+    {
+      "driver": "sata_nv",
+      "interface": "SATA",
+      "size": 232830643653.87
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "amd-v"
+  },
+  "type": "node",
+  "uid": "pastel-66"
 }

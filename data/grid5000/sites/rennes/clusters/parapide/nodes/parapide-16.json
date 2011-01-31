@@ -1,79 +1,79 @@
 {
-  "type": "node",
-  "operating_system": {
-    "kernel": "2.6.26",
-    "version": null,
-    "name": "Debian",
-    "release": "5.0"
-  },
-  "uid": "parapide-16",
   "architecture": {
+    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 8,
-    "platform_type": "x86_64"
+    "smt_size": 8
   },
-  "network_adapters": [
-    {
-      "mounted": true,
-      "device": "eth0",
-      "rate": 1000000000,
-      "ip": "131.254.202.236",
-      "enabled": true,
-      "switch": "c6509-grid",
-      "interface": "Ethernet",
-      "network_address": "parapide-16.rennes.grid5000.fr",
-      "driver": "igb",
-      "mountable": true
-    },
-    {
-      "mounted": false,
-      "device": "eth1",
-      "rate": 1000000000,
-      "enabled": false,
-      "interface": "Ethernet",
-      "driver": "igb",
-      "mountable": false
-    },
-    {
-      "vendor": "Mellanox",
-      "mounted": true,
-      "device": "ib0",
-      "version": "MT25418",
-      "rate": 10000000000,
-      "ip": "192.168.200.236",
-      "enabled": true,
-      "interface": "Infiniband",
-      "network_address": "parapide-16-ib0.rennes.grid5000.fr",
-      "driver": "mlx4_core",
-      "mountable": true
-    }
-  ],
-  "supported_job_types": {
-    "virtual": "ivt",
-    "deploy": true,
-    "besteffort": true
-  },
-  "storage_devices": [
-    {
-      "size": 465661287307.739,
-      "interface": "SATA",
-      "driver": "ahci"
-    }
-  ],
   "main_memory": {
     "ram_size": 25769803776,
     "virtual_size": null
   },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "131.254.202.236",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "parapide-16.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "c6509-grid"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "interface": "Infiniband",
+      "ip": "192.168.200.236",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "parapide-16-ib0.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "MT25418"
+    }
+  ],
+  "operating_system": {
+    "kernel": "2.6.26",
+    "name": "Debian",
+    "release": "5.0",
+    "version": null
+  },
   "processor": {
-    "cache_l1i": null,
-    "vendor": "Intel",
-    "cache_l1d": null,
-    "clock_speed": 2930000000.0,
-    "cache_l2": null,
-    "version": "X5570",
-    "instruction_set": "",
-    "other_description": "",
     "cache_l1": null,
-    "model": "Intel Xeon"
-  }
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": null,
+    "clock_speed": 2930000000.0,
+    "instruction_set": "",
+    "model": "Intel Xeon",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "X5570"
+  },
+  "storage_devices": [
+    {
+      "driver": "ahci",
+      "interface": "SATA",
+      "size": 465661287307.739
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "parapide-16"
 }

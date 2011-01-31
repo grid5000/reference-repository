@@ -1,91 +1,91 @@
 {
-  "type": "node",
-  "storage_devices": [
-    {
-      "interface": "SCSI",
-      "driver": "mptspi",
-      "size": 65192580223.0835
-    }
-  ],
-  "uid": "bordeplage-8",
-  "processor": {
-    "other_description": "",
-    "model": "Intel Xeon",
-    "cache_l1": null,
-    "cache_l1i": null,
-    "version": "EM64T",
-    "vendor": "Intel",
-    "cache_l1d": 16384,
-    "clock_speed": 3000000000,
-    "cache_l2": 1048576,
-    "instruction_set": ""
-  },
-  "operating_system": {
-    "version": null,
-    "kadeploy_name": "debian-x64-5-prod",
-    "name": "Debian Lenny",
-    "release": null,
-    "kadeploy_version": "1"
-  },
   "architecture": {
     "platform_type": "x86_64",
     "smp_size": 2,
     "smt_size": 2
   },
-  "network_adapters": [
-    {
-      "mac": "",
-      "enabled": true,
-      "interface": "InfiniBand",
-      "mountable": true,
-      "driver": "ib_mthca",
-      "version": "InfiniHost MT25208",
-      "mounted": true,
-      "vendor": "Mellanox",
-      "management": false,
-      "network_address": "bordeplage-8-ib0.bordeaux.grid5000.fr",
-      "rate": 10000000000,
-      "device": "ib0",
-      "ip": "192.168.132.8"
-    },
-    {
-      "mac": "",
-      "enabled": true,
-      "interface": "Ethernet",
-      "mountable": true,
-      "driver": "e1000",
-      "version": "82546GB Gigabit Ethernet Controller",
-      "mounted": true,
-      "vendor": "Intel",
-      "management": false,
-      "network_address": "bordeplage-8.bordeaux.grid5000.fr",
-      "rate": 1000000000,
-      "device": "eth0",
-      "ip": "172.16.1.58"
-    },
-    {
-      "mac": "",
-      "enabled": true,
-      "interface": "Ethernet",
-      "mountable": true,
-      "driver": "e1000",
-      "version": "82546GB Gigabit Ethernet Controller",
-      "mounted": false,
-      "vendor": "Intel",
-      "management": false,
-      "network_address": "bordeplage-8-eth1.bordeaux.grid5000.fr",
-      "rate": 1000000000,
-      "device": "eth1",
-      "ip": "192.168.133.58"
-    }
-  ],
-  "supported_job_types": {
-    "deploy": true,
-    "besteffort": true,
-    "virtual": false
-  },
   "main_memory": {
     "ram_size": 2147483648,
     "virtual_size": null
-  }
+  },
+  "network_adapters": [
+    {
+      "device": "ib0",
+      "driver": "ib_mthca",
+      "enabled": true,
+      "interface": "InfiniBand",
+      "ip": "192.168.132.8",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "bordeplage-8-ib0.bordeaux.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "InfiniHost MT25208"
+    },
+    {
+      "device": "eth0",
+      "driver": "e1000",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.1.58",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "bordeplage-8.bordeaux.grid5000.fr",
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82546GB Gigabit Ethernet Controller"
+    },
+    {
+      "device": "eth1",
+      "driver": "e1000",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.133.58",
+      "mac": "",
+      "management": false,
+      "mountable": true,
+      "mounted": false,
+      "network_address": "bordeplage-8-eth1.bordeaux.grid5000.fr",
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82546GB Gigabit Ethernet Controller"
+    }
+  ],
+  "operating_system": {
+    "kadeploy_name": "debian-x64-5-prod",
+    "kadeploy_version": "1",
+    "name": "Debian Lenny",
+    "release": null,
+    "version": null
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 16384,
+    "cache_l1i": null,
+    "cache_l2": 1048576,
+    "clock_speed": 3000000000,
+    "instruction_set": "",
+    "model": "Intel Xeon",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "EM64T"
+  },
+  "storage_devices": [
+    {
+      "driver": "mptspi",
+      "interface": "SCSI",
+      "size": 65192580223.0835
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": false
+  },
+  "type": "node",
+  "uid": "bordeplage-8"
 }

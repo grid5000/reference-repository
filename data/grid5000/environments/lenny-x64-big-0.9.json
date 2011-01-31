@@ -1,9 +1,10 @@
 {
-  "type": "environment",
-  "file": {
-    "md5": "ead20673233d0b9162ba56481d596add",
-    "path": "/grid5000/images/lenny-x64-big-0.9.tgz"
-  },
+  "accounts": [
+    {
+      "login": "root",
+      "password": "grid5000"
+    }
+  ],
   "applications": [
     "Vim",
     "XEmacs",
@@ -14,28 +15,27 @@
     "Python",
     "Ruby"
   ],
+  "based_on": "Debian version lenny for amd64",
   "consoles": [
     {
       "bps": 34800,
       "port": "ttyS0"
     }
   ],
-  "uid": "lenny-x64-big-0.9",
-  "x11_forwarding": true,
+  "file": {
+    "md5": "ead20673233d0b9162ba56481d596add",
+    "path": "/grid5000/images/lenny-x64-big-0.9.tgz"
+  },
+  "kernel": "2.6.24.3",
   "max_open_files": 8192,
   "services": [
     "ldap",
     "nfs"
   ],
-  "accounts": [
-    {
-      "login": "root",
-      "password": "grid5000"
-    }
-  ],
-  "valid_on": "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310",
-  "tcp_bandwidth": 1000000000,
   "state": "stable",
-  "kernel": "2.6.24.3",
-  "based_on": "Debian version lenny for amd64"
+  "tcp_bandwidth": 1000000000,
+  "type": "environment",
+  "uid": "lenny-x64-big-0.9",
+  "valid_on": "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM x3455, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100, Altix Xe 310",
+  "x11_forwarding": true
 }

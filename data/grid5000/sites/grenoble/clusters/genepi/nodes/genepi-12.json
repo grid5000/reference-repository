@@ -1,22 +1,8 @@
 {
-  "type": "node",
   "architecture": {
+    "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 8,
-    "platform_type": "x86_64"
-  },
-  "storage_devices": [
-    {
-      "interface": "SATA",
-      "driver": null,
-      "size": 149011611938.477
-    }
-  ],
-  "uid": "genepi-12",
-  "supported_job_types": {
-    "deploy": true,
-    "besteffort": true,
-    "virtual": "ivt"
+    "smt_size": 8
   },
   "main_memory": {
     "ram_size": 8589934592,
@@ -27,61 +13,75 @@
       "device": "ib0",
       "enabled": true,
       "interface": "InfiniBand",
-      "version": "InfiniHost MHGH29-XTC",
+      "ip": "172.16.18.12",
+      "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "genepi-12-ib0.grenoble.grid5000.fr",
-      "management": false,
       "rate": 10000000000,
-      "ip": "172.16.18.12",
-      "vendor": "Mellanox"
+      "vendor": "Mellanox",
+      "version": "InfiniHost MHGH29-XTC"
     },
     {
       "device": "eth0",
-      "mac": "00:30:48:7e:a3:d4",
       "enabled": false,
       "interface": "Ethernet",
+      "mac": "00:30:48:7e:a3:d4",
       "management": false,
       "rate": 1000000000
     },
     {
       "device": "eth1",
-      "mac": "00:30:48:7e:a3:d5",
       "enabled": true,
       "interface": "Ethernet",
+      "ip": "172.16.16.12",
+      "mac": "00:30:48:7e:a3:d5",
+      "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "genepi-12.grenoble.grid5000.fr",
-      "management": false,
-      "rate": 1000000000,
-      "ip": "172.16.16.12"
+      "rate": 1000000000
     },
     {
-      "mac": "",
       "enabled": true,
       "interface": "Ethernet",
+      "ip": "192.168.1.112",
+      "mac": "",
+      "management": true,
       "mountable": false,
       "network_address": "genepi-12-bmc.grenoble.grid5000.fr",
-      "management": true,
-      "rate": 1000000000,
-      "ip": "192.168.1.112"
+      "rate": 1000000000
     }
   ],
-  "processor": {
-    "cache_l1d": null,
-    "clock_speed": 2500000000.0,
-    "cache_l2": null,
-    "instruction_set": "",
-    "version": "E5420 QC",
-    "other_description": "",
-    "cache_l1": null,
-    "model": "Intel Xeon",
-    "cache_l1i": null,
-    "vendor": "Intel"
-  },
   "operating_system": {
-    "version": null,
     "name": null,
-    "release": null
-  }
+    "release": null,
+    "version": null
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": null,
+    "clock_speed": 2500000000.0,
+    "instruction_set": "",
+    "model": "Intel Xeon",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "E5420 QC"
+  },
+  "storage_devices": [
+    {
+      "driver": null,
+      "interface": "SATA",
+      "size": 149011611938.477
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "genepi-12"
 }
