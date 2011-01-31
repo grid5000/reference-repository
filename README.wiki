@@ -102,6 +102,7 @@ The oaradmin lines are sent to STDOUT, the logging data to STDERR.
 
 == Filling the reference - Guidelines ==
 
+
 === <code>network_adapters</code> ===
 
 Many machines have several network interfaces, which are not always all configured. We have identified 4 cases in G5K clusters:
@@ -110,30 +111,61 @@ Many machines have several network interfaces, which are not always all configur
 # The interface is not mounted in the production environment, but users may use it in their own deployed environment.
 # The interface is mounted in the production environment.
 
-After several discussions inside the PS team, we have fixed some attributes but some still require a decision (those with a leading *). We cannot change the names of the fixed attributes for backward compatibility reasons, only their role if necessary. <u>'''Underlined attributes'''</u> would always have to be defined.
-* <u>'''interface'''</u>: the type of network interface, &isin; {"Ethernet", "Myrinet", "InfiniBand"}
+After several discussions inside the PS team, we have fixed some attributes. All of them are mandatory, but the ones between square brackets are only <font color="#FF0000">mandatory under conditions</font>. Those conditions follow the field name, in  <font color="#FF0000">red</font>.
+* '''interface''': the type of network interface, &isin; {"Ethernet", "Myrinet", "InfiniBand"}
 :: NB: It is useless to define "Myrinet 10G" or "Myri-2000" values, because the '''rate''' will differentiate them.
-* <u>'''rate'''</u>: speed of the interface in b/s
-* * <u>'''mac'''</u>: the MAC address of this interface
-:: Alternate propositions: '''mac_address'''
+* '''rate''': speed of the interface in b/s
+* '''mac''':
+:if '''interface''' &isin; {"Ethernet", "Myrinet"}, the MAC address of this interface,
+:if '''interface'''=="InfiniBand", its GUID.
 * '''vendor''': the company which made the device
 * '''version''': its version according to the company nomenclatura
-* '''driver''': name of the driver for the device in the linux kernel
-* <u>'''enabled'''</u>: <code>true</code> if there is any cable connected to this interface
-* * <u>'''management'''</u>: <code>true</code> if this interface is on the administration network (IPMI,...)
-* * <u>'''mountable'''</u>: <code>true</code> if it is usable by any user (even if it possibly requires a customized environment)
-:: NB: ('''enabled'''==false) => ('''mountable'''==false)
-:: Alternate propositions: '''usable''', '''available'''
-* * <u>'''mounted'''</u>: <code>true</code> if the production environment mounts, configures this interface
-:: NB: ('''mountable'''==false) => ('''mounted'''==false)
-:: Alternate propositions: '''used''', '''production'''
-* * <u>'''device'''</u>: name of this interface in the production environment (would be <u>'''mandatory'''</u> if '''mounted'''==true)
-* '''network_address''': the DNS entry of the machine by this interface (<u>'''mandatory'''</u> if '''mounted'''==true)
-* '''ip''': the IP of this interface (<u>'''mandatory'''</u> if '''enabled'''==true)
-* * '''ip6''': the IPv6 of this interface, for future use...
-:: Alternate propositions: '''ipv6_address'''
+* '''enabled''': <code>true</code> if there is any cable connected to this interface
+:* ['''management''']''<font color="#FF0000">(if '''enabled'''==true)</font>'': <code>true</code> if this interface is on the administration network (IPMI,...)
+::* ['''network_address''']''<font color="#FF0000">(if '''mounted'''==true or '''management'''==true)</font>'': the DNS entry of the machine by this interface
+:* ['''mountable''']''<font color="#FF0000">(if '''enabled'''==true)</font>'': <code>true</code> if it is usable by any user (even if it possibly requires a customized environment)
+::* ['''driver''']''<font color="#FF0000">(if '''mountable'''==true)</font>'': name of the driver for the device in the linux kernel
+::* ['''mounted''']''<font color="#FF0000">(if '''mountable'''==true)</font>'': <code>true</code> if the production environment mounts, configures this interface
+:::* ['''network_address''']''<font color="#FF0000">(if '''mounted'''==true or '''management'''==true)</font>'': the DNS entry of the machine by this interface
+:::* ['''device''']''<font color="#FF0000">(if '''mounted'''==true)</font>'': name of this interface in the production environment
+:* ['''ip''']''<font color="#FF0000">(if '''enabled'''==true)</font>'': the IP of this interface
+:* ['''ip6''']: the IPv6 of this interface, for future use...
 
-There is also a proposition where '''mounted''' is renamed as '''enabled''', which preserves the backward compatibility on the attribute name, but the role of '''enabled''' would be given to an attribute '''connected''', or '''wired'''.
+[ EDIT - 2010-09-13 ] No contestation, no more votes for the alternate propositions and no other entry proposed => the base version is validated.
+
+==== script reaching IP/MAC addresses of cluster ====
+
+Some scripts have been created to ease the retrieving of MAC/IP addresses on cluster. Get them
+[https://scm.gforge.inria.fr/svn/grid5000/admin/trunk/refapi_fillers/fill-api-nw/?root=grid5000 here]
+
+==== how to retrieve the guid on Infiniband card ====
+
+Here a sample of an ohai plugin (included on the useful gem [https://helpdesk.grid5000.fr/redmine/projects/reference-helper/wiki/Wiki reference-helper] ! ) :
+
+<pre class="brush: ruby">
+#
+# Author:: Pascal Morillon <pascal.morillon@irisa.fr>
+
+provides "infiniband"
+
+infiniband Mash.new
+
+interfaces = Dir['/sys/class/net/*'].collect { |c| File.basename(c) }.select { |s| s =~ /ib.*/ }
+interfaces.each do |interface|
+  infiniband[:"#{interface}"] = Mash.new
+  if File.exist?(File.join('/sys/class/net', interface, 'address'))
+    if File.exist?('/sys/class/infiniband/mthca0/ports')
+      guid_prefix = "20:00:55:04:01:"
+    elsif File.exist?('/sys/class/infiniband/mlx4_0/ports')
+      guid_prefix = "20:00:55:00:41:"
+    end
+    guid_part2 = File.read(File.join('/sys/class/net', interface, 'address')).chomp
+    infiniband[:"#{interface}"][:guid] = guid_prefix + guid_part2.split(":")[5..20].join(":") 
+  else
+    exit 1
+  end
+end
+</pre>
 
 == Resources ==
 * [http://cheat.errtheblog.com/s/git Git Cheat Sheet]
