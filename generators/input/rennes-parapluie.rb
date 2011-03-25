@@ -72,7 +72,9 @@ site :rennes do |site_uid|
            :driver           => "igb",
            :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
            :ip               => lookup('rennes-parapluie', node_uid, 'network_interfaces', 'eth1', 'ip'),
-           :mac              => lookup('rennes-parapluie', node_uid, 'network_interfaces', 'eth1', 'mac')
+           :mac              => lookup('rennes-parapluie', node_uid, 'network_interfaces', 'eth1', 'mac'),
+           :switch           => "c6509-grid",
+           :switch_port      => lookup('rennes-parapluie', node_uid, 'network_interfaces', 'eth1', 'switch_port')
          },
          {
            :interface        => 'Ethernet',
