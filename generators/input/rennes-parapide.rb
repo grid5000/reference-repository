@@ -48,8 +48,9 @@ site :rennes do |site_uid|
           :device => "eth0",
           :driver => "igb",
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-          :switch => "c6509-grid"
+          :ip => lookup('rennes-parapide', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :switch => "c6509-grid",
+          :switch_port => lookup('rennes-parapide', node_uid, 'network_interfaces', 'eth0', 'switch_port')
         },
         {
           :interface => 'Ethernet',
@@ -71,7 +72,7 @@ site :rennes do |site_uid|
           :vendor => "Mellanox",
           :version => "MT25418",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
+          :ip => lookup('rennes-parapide', node_uid, 'network_interfaces', 'ib0', 'ip')
         }]
       end
     end
