@@ -50,7 +50,8 @@ site :rennes do |site_uid|
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('rennes-parapide', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :switch => "c6509-grid",
-          :switch_port => lookup('rennes-parapide', node_uid, 'network_interfaces', 'eth0', 'switch_port')
+          :switch_port => lookup('rennes-parapide', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :mac => lookup('rennes-parapide', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
           :interface => 'Ethernet',

@@ -49,8 +49,10 @@ site :rennes do |site_uid|
           :device => "eth0",
           :driver => "e1000e",
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-          :switch => "c6509-grid"
+          :ip => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :switch => "c6509-grid",
+          :switch_port => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :mac => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
           :interface => 'Ethernet',
