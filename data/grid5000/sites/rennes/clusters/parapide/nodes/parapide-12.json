@@ -4,11 +4,31 @@
     "smp_size": 2,
     "smt_size": 8
   },
+  "bios": {
+    "release_date": "08/04/2009",
+    "vendor": "American Megatrends Inc.",
+    "version": "1.14"
+  },
+  "chassis": {
+    "serial_number": "0935XEF042"
+  },
   "main_memory": {
     "ram_size": 25769803776,
     "virtual_size": null
   },
   "network_adapters": [
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.202.232",
+      "mac": "00:14:4f:ca:99:26",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "parapide-12-bmc.rennes.grid5000.fr",
+      "rate": 1000000000
+    },
     {
       "device": "eth0",
       "driver": "igb",
@@ -28,6 +48,7 @@
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
+      "mac": "00:14:4f:ca:99:25",
       "mountable": false,
       "mounted": false,
       "rate": 1000000000
@@ -38,9 +59,20 @@
       "enabled": true,
       "interface": "Infiniband",
       "ip": "192.168.200.232",
+      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:55",
       "mountable": true,
       "mounted": true,
       "network_address": "parapide-12-ib0.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "MT25418"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx4_core",
+      "enabled": false,
+      "interface": "Infiniband",
+      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:56",
       "rate": 10000000000,
       "vendor": "Mellanox",
       "version": "MT25418"
@@ -66,8 +98,11 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "ahci",
       "interface": "SATA",
+      "model": "HITACHI HUA7250S",
+      "rev": "GK6O",
       "size": 465661287307.739
     }
   ],
