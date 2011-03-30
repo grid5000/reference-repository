@@ -4,11 +4,28 @@
     "smp_size": 2,
     "smt_size": 8
   },
+  "bios": {
+    "release_date": "12/02/2008",
+    "vendor": "Phoenix Technologies LTD",
+    "version": "V1.04B"
+  },
   "main_memory": {
     "ram_size": 34359738368,
     "virtual_size": null
   },
   "network_adapters": [
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.202.113",
+      "mac": "00:e0:81:4f:e3:01",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "paradent-13-bmc.rennes.grid5000.fr",
+      "rate": 1000000000
+    },
     {
       "device": "eth0",
       "driver": "e1000e",
@@ -29,6 +46,7 @@
       "driver": "e1000e",
       "enabled": false,
       "interface": "Ethernet",
+      "mac": "00:e0:81:b2:c5:79",
       "rate": 1000000000
     }
   ],
@@ -52,8 +70,11 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "ata_piix",
       "interface": "SATA",
+      "model": "Hitachi HDP72503",
+      "rev": "GM3O",
       "size": 149011611938.477
     }
   ],
