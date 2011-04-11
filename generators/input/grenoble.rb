@@ -140,8 +140,8 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
         {
           :interface => 'Ethernet',
@@ -221,8 +221,8 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
         {
           :interface => 'Ethernet',
@@ -287,8 +287,8 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :vendor => 'Mellanox', :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr")
+          :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
         {
           :interface => 'Ethernet',
