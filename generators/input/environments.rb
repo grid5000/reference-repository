@@ -526,7 +526,7 @@ end
 
 environment 'lenny-x64-xen-2.3' do
   state "stable"
-  file({:path => "/grid5000/images/lenny-x64-xen-2.3.tgz", :md5 => "8e4f0eff055c61ed8a51265c1c9afd58"})
+  file({:path => "/grid5000/images/lenny-x64-xen-2.3.tgz", :md5 => "7ba173eb6b339fe0110d458d987ef10f"})
   kernel "2.6.26.2"
   valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
