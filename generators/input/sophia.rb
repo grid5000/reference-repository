@@ -62,7 +62,7 @@ site :sophia do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Intel Corporation',
             :version => '82546EB',
             :enabled => true,
@@ -76,7 +76,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth1'),
             :vendor => 'Intel Corporation',
             :version => '82546EB',
             :enabled => false,
@@ -85,7 +85,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth2'),
             :vendor => 'Intel Corporation',
             :version => '82546EB',
             :enabled => false,
@@ -94,7 +94,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth3'),
             :vendor => 'Intel Corporation',
             :version => '82546EB',
             :enabled => false,
@@ -160,7 +160,7 @@ site :sophia do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth0'),
             :vendor => 'nVidia',
             :version => 'MCP55 Pro',
             :enabled => true,
@@ -175,7 +175,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth1'),
             :vendor => 'nVidia',
             :version => 'MCP55 Pro',
             :enabled => false,
@@ -243,7 +243,7 @@ site :sophia do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Broadcom',
             :version => 'NetXtremeII BCM5716',
             :enabled => true,
@@ -258,7 +258,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Broadcom',
             :version => 'NetXtremeII BCM5716',
             :enabled => false,
