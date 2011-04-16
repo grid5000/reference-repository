@@ -188,6 +188,9 @@ module G5K
     def environment(uid, *options, &block)
       build_context(:environments, uid, *options, &block)
     end
+    def network_equipment(uid, *options, &block)
+      build_context(:network_equipments, uid, *options, &block)
+    end
     def node(uid, *options, &block)
       build_context(:nodes, uid, *options, &block)
     end

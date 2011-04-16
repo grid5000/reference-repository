@@ -12,7 +12,11 @@ We need:
 # You can overwrite later on, to add networks, etc.
 %w{lille nancy lyon}.each do |site_uid|
   site site_uid.to_sym do
+<<<<<<< HEAD
     lookup("#{site_uid}-network-equipments").each do |equipment_uid, properties|
+=======
+    lookup("#{site_uid}-network-equipments-transformed").each do |equipment_uid, properties|
+>>>>>>> [admin] Preliminary files for network equipments description.
       network_equipment equipment_uid do |equiment_uid|
         model properties['model']
         mac properties['mac']
