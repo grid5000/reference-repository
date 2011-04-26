@@ -9,7 +9,7 @@ site :grenoble do |site_uid|
   sys_admin_contact
   security_contact
   user_support_contact
-  ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} + 
+  ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} +
     %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1 etch-x64-base-2.0 etch-x64-nfs-2.0 etch-x64-big-2.0} +
     %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9 lenny-x64-base-1.0 lenny-x64-nfs-1.0 lenny-x64-big-1.0 lenny-x64-base-2.0 lenny-x64-nfs-2.0 lenny-x64-big-2.0} +
     %w{lenny-x64-base-2.3 lenny-x64-big-2.3 lenny-x64-min-0.8 lenny-x64-nfs-2.3 lenny-x64-xen-2.3} ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
@@ -17,12 +17,12 @@ site :grenoble do |site_uid|
   cluster :genepi do |cluster_uid|
     model "Bull R422-E1"
     created_at Time.parse("2008-10-01").httpdate
-    
+
     34.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size => 2, 
+          :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
           })
@@ -103,7 +103,7 @@ site :grenoble do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size => 2, 
+          :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
           })
@@ -184,7 +184,7 @@ site :grenoble do |site_uid|
       node "#{cluster_uid}-#{i+11}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size => 2, 
+          :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
           })
@@ -244,13 +244,12 @@ site :grenoble do |site_uid|
   cluster :edel do |cluster_uid|
     model "Bull bullx B500 compute blades"
     created_at Time.parse("2008-10-03").httpdate
-    
+
     72.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-#        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => "false"})
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size => 2, 
+          :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
           })
@@ -321,7 +320,7 @@ site :grenoble do |site_uid|
           :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt')
         }]
-      end      
+      end
     end
   end
 end
