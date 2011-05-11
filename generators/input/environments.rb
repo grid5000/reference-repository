@@ -1,5 +1,5 @@
 environment 'sid-x64-base-1.0' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-base-1.0.tgz", :md5 => "e39be32c087f0c9777fd0b0ad7d12050"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.18-8"
@@ -14,7 +14,7 @@ environment 'sid-x64-base-1.0' do
 end
 
 environment 'sid-x64-base-1.1' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-base-1.1.tgz", :md5 => "756ccc2096e9feacde85500d33683dba"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, HP DL385G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.24"
@@ -29,7 +29,7 @@ environment 'sid-x64-base-1.1' do
 end
 
 environment 'sid-x64-nfs-1.0' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-nfs-1.0.tgz", :md5 => "6e004d1ac25e86a1dadc09d28f968eb5"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.18-4"
@@ -44,7 +44,7 @@ environment 'sid-x64-nfs-1.0' do
 end
 
 environment 'sid-x64-nfs-1.1' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-nfs-1.1.tgz", :md5 => "4218f5a9bfea4a759fa684db1ec4d89c"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.24.3"
@@ -59,7 +59,7 @@ environment 'sid-x64-nfs-1.1' do
 end
 
 environment 'sid-x64-big-1.1' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-big-1.1.tgz", :md5 => "d514bee74404ed5f64ff41b2f60c4f7f"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.24.3"
