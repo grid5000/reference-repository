@@ -583,7 +583,7 @@ environment 'squeeze-x64-min-0.8' do
   tcp_bandwidth 1.G
 end
 
-environment 'squeeze-x64-nfs-2.3' do
+environment 'squeeze-x64-nfs-0.8' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-nfs-0.8.tgz", :md5 => "49642989fa205b8f8e3366aaa149cf29"})
   kernel "2.6.26.2"
@@ -598,7 +598,7 @@ environment 'squeeze-x64-nfs-2.3' do
   tcp_bandwidth 1.G
 end
 
-environment 'squeeze-x64-xen-2.3' do
+environment 'squeeze-x64-xen-0.8' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-xen-0.8.tgz", :md5 => "351284d43d4a3687b3198cbd1d34738f"})
   kernel "2.6.26.2"
