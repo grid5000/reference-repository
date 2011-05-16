@@ -45,7 +45,8 @@ site :orsay do |site_uid|
         operating_system({
           :name => nil,
           :release => nil,
-          :version => nil
+          :version => nil,
+          :kernel   => "2.6.26"
         })
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => nil}

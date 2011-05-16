@@ -600,7 +600,7 @@ end
 
 environment 'squeeze-x64-xen-0.8' do
   state "stable"
-  file({:path => "/grid5000/images/squeeze-x64-xen-0.8.tgz", :md5 => "351284d43d4a3687b3198cbd1d34738f"})
+  file({:path => "/grid5000/images/squeeze-x64-xen-0.8.tgz", :md5 => "243961b600246379b1257b57c5905c68"})
   kernel "2.6.26.2"
   valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
