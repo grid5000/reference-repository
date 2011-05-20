@@ -150,7 +150,7 @@ site :grenoble do |site_uid|
           :management => false,
           :vendor => 'Mellanox',
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
-          :driver => "mlx4_core"
+          :driver => "mlx4_core",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
@@ -239,7 +239,7 @@ site :grenoble do |site_uid|
           :management => false,
           :vendor => 'Mellanox',
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
-          :driver => "mlx4_core"
+          :driver => "mlx4_core",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
