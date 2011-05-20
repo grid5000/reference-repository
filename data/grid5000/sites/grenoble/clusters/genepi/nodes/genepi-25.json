@@ -11,6 +11,7 @@
   "network_adapters": [
     {
       "device": "ib0",
+      "driver": "mlx4_core",
       "enabled": true,
       "interface": "InfiniBand",
       "ip": "172.16.18.25",
@@ -28,10 +29,13 @@
       "interface": "Ethernet",
       "mac": "00:30:48:7f:41:5a",
       "management": false,
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)"
     },
     {
       "device": "eth1",
+      "driver": "e1000e",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.16.25",
@@ -40,7 +44,9 @@
       "mountable": true,
       "mounted": true,
       "network_address": "genepi-25.grenoble.grid5000.fr",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)"
     },
     {
       "enabled": true,
@@ -50,7 +56,9 @@
       "management": true,
       "mountable": false,
       "network_address": "genepi-25-bmc.grenoble.grid5000.fr",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Peppercon AG (10437)",
+      "version": "1.50"
     }
   ],
   "operating_system": {
