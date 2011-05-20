@@ -9,11 +9,184 @@ site :lille do |site_uid|
   sys_admin_contact
   security_contact
   user_support_contact
-  ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} + 
-    %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1 etch-x64-xen-1.0 etch-x64-base-2.0 etch-x64-nfs-2.0 etch-x64-big-2.0} +
+  ( %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1 etch-x64-xen-1.0 etch-x64-base-2.0 etch-x64-nfs-2.0 etch-x64-big-2.0} +
     %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9 lenny-x64-base-1.0 lenny-x64-nfs-1.0 lenny-x64-big-1.0 lenny-x64-xen-1.0 lenny-x64-base-2.0 lenny-x64-nfs-2.0 lenny-x64-big-2.0}  +
-    %w{lenny-x64-base-2.3 lenny-x64-big-2.3 lenny-x64-min-0.8 lenny-x64-nfs-2.3 lenny-x64-xen-2.3} ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
-  
+    %w{lenny-x64-base-2.3 lenny-x64-big-2.3 lenny-x64-min-0.8 lenny-x64-nfs-2.3 lenny-x64-xen-2.3} +
+    %w{squeeze-x64-base-0.8 squeeze-x64-big-0.8 squeeze-x64-min-0.8 squeeze-x64-nfs-0.8 squeeze-x64-xen-0.8} ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
+
+cluster :chirloute do |cluster_uid|
+    model "Dell PowerEdge C6100"
+    created_at Time.parse("2011-03-25").httpdate
+    8.times do |i|
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
+        architecture({
+          :smp_size => 2,
+          :smt_size => 8,
+          :platform_type => "x86_64"
+          })                                                                                  
+        processor({
+          :vendor => "Intel",
+          :model => "Intel Xeon", 
+          :version => "E5620",
+          :clock_speed => 2.4.G,
+          :instruction_set => "",
+          :other_description => "",
+          :cache_l1 => nil, 
+          :cache_l1i => nil,
+          :cache_l1d => nil,
+          :cache_l2 => 12.MiB
+        })
+        main_memory({ 
+          :ram_size => 8.GiB, # bytes
+          :virtual_size => nil
+        })
+        operating_system({
+          :name => nil,
+          :release => nil,
+          :version => nil
+        })
+        storage_devices [
+          {:interface => 'SATA',
+           :size => 300.GB,
+           :driver => "mptsas",
+           :raid => "0"}
+          ]
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('lille', node_uid, 'network_interfaces', 'eth0', 'mac'),
+            :vendor => 'Intel',
+            :version => '82576EB',
+            :enabled => true, 
+            :management => false,
+            :mountable => true,
+            :driver => 'igb',
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('lille', node_uid, 'network_interfaces', 'eth1', 'mac'),
+            :vendor => 'Intel',
+            :version => '82576EB',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'igb',
+            :mounted => true,
+            :device => 'eth1',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => 'gw',
+            :switch_port => lookup('lille', node_uid, 'network_interfaces', 'eth1', 'switch_port')
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('lille', node_uid, 'network_interfaces', 'bmc', 'mac'),
+            :vendor => nil,
+            :version => nil,
+            :enabled => true,
+            :management => true,
+            :mountable => false,
+            :network_address => "#{node_uid}-ipmi.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-ipmi.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          }]
+      end
+    end
+  end # cluster chirloute
+
+  cluster :chimint do |cluster_uid|
+    model "Dell PowerEdge R410"
+    created_at Time.parse("2011-03-25").httpdate
+    20.times do |i|
+      node "#{cluster_uid}-#{i+1}" do |node_uid|
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
+        architecture({
+          :smp_size => 2,
+          :smt_size => 8,
+          :platform_type => "x86_64"
+          })
+        processor({
+          :vendor => "Intel",
+          :model => "Intel Xeon",
+          :version => "E5620",
+          :clock_speed => 2.4.G,
+          :instruction_set => "",
+          :other_description => "",
+          :cache_l1 => nil,
+          :cache_l1i => nil,
+          :cache_l1d => nil,
+          :cache_l2 => 12.MiB
+        })
+        main_memory({
+          :ram_size => 16.GiB, # bytes
+          :virtual_size => nil
+        })
+        operating_system({
+          :name => nil,
+          :release => nil,
+          :version => nil
+        })
+        storage_devices [
+          {:interface => 'SATA', 
+	   :size => 300.GB, 
+	   :driver => "megaraid_sas",
+	   :raid => "0"}
+          ]
+        network_adapters [{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('lille', node_uid, 'network_interfaces', 'eth0', 'mac'),
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme II BCM5716',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'bnx2',
+            :mounted => true,
+            :device => 'eth0',
+            :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('lille', node_uid, 'network_interfaces', 'eth1', 'mac'),
+            :vendor => 'Broadcom',
+            :version => 'NetXtreme II BCM5716',
+            :enabled => true,
+            :management => false,
+            :mountable => true,
+            :driver => 'bnx2',
+            :mounted => true,
+            :device => 'eth1',
+            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+            :switch => 'gw',
+	    :switch_port => lookup('lille', node_uid, 'network_interfaces', 'eth1', 'switch_port')
+          },{
+            :interface => 'Ethernet',
+            :rate => 1.G,
+            :mac => lookup('lille', node_uid, 'network_interfaces', 'bmc', 'mac'),
+            :vendor => nil,
+            :version => nil,
+            :enabled => true,
+            :management => true,
+            :mountable => false,
+            :network_address => "#{node_uid}-ipmi.#{site_uid}.grid5000.fr",
+            :ip => dns_lookup("#{node_uid}-ipmi.#{site_uid}.grid5000.fr"),
+            :switch => 'gw'
+          }]
+      end
+    end
+  end # cluster chimint
+
+
   cluster :chicon do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil

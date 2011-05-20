@@ -1,0 +1,91 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 8
+  },
+  "main_memory": {
+    "ram_size": 17179869184,
+    "virtual_size": null
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "bnx2",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.160.15",
+      "mac": "84:2b:2b:72:d7:7a",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "chimint-15-eth0.lille.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw",
+      "vendor": "Broadcom",
+      "version": "NetXtreme II BCM5716"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnx2",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.159.15",
+      "mac": "84:2b:2b:72:d7:7b",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "chimint-15.lille.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw",
+      "switch_port": null,
+      "vendor": "Broadcom",
+      "version": "NetXtreme II BCM5716"
+    },
+    {
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.158.15",
+      "mac": "84:2b:2b:72:d7:7c",
+      "management": true,
+      "mountable": false,
+      "network_address": "chimint-15-ipmi.lille.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw",
+      "vendor": null,
+      "version": null
+    }
+  ],
+  "operating_system": {
+    "name": null,
+    "release": null,
+    "version": null
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": 12582912,
+    "clock_speed": 2400000000.0,
+    "instruction_set": "",
+    "model": "Intel Xeon",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "E5620"
+  },
+  "storage_devices": [
+    {
+      "driver": "megaraid_sas",
+      "interface": "SATA",
+      "raid": "0",
+      "size": 279396772384.644
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": false
+  },
+  "type": "node",
+  "uid": "chimint-15"
+}

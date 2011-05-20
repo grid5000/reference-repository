@@ -9,10 +9,10 @@ site :sophia do |site_uid|
   sys_admin_contact "sophia-staff@lists.grid5000.fr"
   security_contact "sophia-staff@lists.grid5000.fr"
   user_support_contact "sophia-staff@lists.grid5000.fr"
-  ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} + 
-    %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1 etch-x64-base-2.0 etch-x64-nfs-2.0 etch-x64-big-2.0} +
+  ( %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1 etch-x64-base-2.0 etch-x64-nfs-2.0 etch-x64-big-2.0} +
     %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9 lenny-x64-base-1.0 lenny-x64-nfs-1.0 lenny-x64-big-1.0 lenny-x64-base-2.0 lenny-x64-nfs-2.0 lenny-x64-big-2.0} +
-    %w{lenny-x64-base-2.3 lenny-x64-big-2.3 lenny-x64-min-0.8 lenny-x64-nfs-2.3 lenny-x64-xen-2.3}  ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
+    %w{lenny-x64-base-2.3 lenny-x64-big-2.3 lenny-x64-min-0.8 lenny-x64-nfs-2.3 lenny-x64-xen-2.3} +
+    %w{squeeze-x64-base-0.8 squeeze-x64-big-0.8 squeeze-x64-min-0.8 squeeze-x64-nfs-0.8 squeeze-x64-xen-0.8}  ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
   compilation_server false
     
   cluster :helios do |cluster_uid|
@@ -62,7 +62,7 @@ site :sophia do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Intel Corporation',
             :version => '82546EB',
             :enabled => true,
@@ -76,7 +76,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth1'),
             :vendor => 'Intel Corporation',
             :version => '82546EB',
             :enabled => false,
@@ -85,7 +85,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth2'),
             :vendor => 'Intel Corporation',
             :version => '82546EB',
             :enabled => false,
@@ -94,7 +94,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth3'),
             :vendor => 'Intel Corporation',
             :version => '82546EB',
             :enabled => false,
@@ -160,7 +160,7 @@ site :sophia do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth0'),
             :vendor => 'nVidia',
             :version => 'MCP55 Pro',
             :enabled => true,
@@ -175,7 +175,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth1'),
             :vendor => 'nVidia',
             :version => 'MCP55 Pro',
             :enabled => false,
@@ -243,7 +243,7 @@ site :sophia do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Broadcom',
             :version => 'NetXtremeII BCM5716',
             :enabled => true,
@@ -258,7 +258,7 @@ site :sophia do |site_uid|
           },{
             :interface => 'Ethernet',
             :rate => 1.G,
-            :mac => nil,
+            :mac => lookup('sophia',"#{node_uid}", 'mac_eth0'),
             :vendor => 'Broadcom',
             :version => 'NetXtremeII BCM5716',
             :enabled => false,

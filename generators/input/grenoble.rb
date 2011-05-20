@@ -9,20 +9,20 @@ site :grenoble do |site_uid|
   sys_admin_contact
   security_contact
   user_support_contact
-  ( %w{sid-x64-base-1.0 sid-x64-base-1.1 sid-x64-nfs-1.0 sid-x64-nfs-1.1 sid-x64-big-1.1} + 
-    %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1 etch-x64-base-2.0 etch-x64-nfs-2.0 etch-x64-big-2.0} +
+  ( %w{etch-x64-base-1.0 etch-x64-base-1.1 etch-x64-nfs-1.0 etch-x64-nfs-1.1 etch-x64-big-1.0 etch-x64-big-1.1 etch-x64-base-2.0 etch-x64-nfs-2.0 etch-x64-big-2.0} +
     %w{lenny-x64-base-0.9 lenny-x64-nfs-0.9 lenny-x64-big-0.9 lenny-x64-base-1.0 lenny-x64-nfs-1.0 lenny-x64-big-1.0 lenny-x64-base-2.0 lenny-x64-nfs-2.0 lenny-x64-big-2.0} +
-    %w{lenny-x64-base-2.3 lenny-x64-big-2.3 lenny-x64-min-0.8 lenny-x64-nfs-2.3 lenny-x64-xen-2.3} ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
+    %w{lenny-x64-base-2.3 lenny-x64-big-2.3 lenny-x64-min-0.8 lenny-x64-nfs-2.3 lenny-x64-xen-2.3} +
+    %w{squeeze-x64-base-0.8 squeeze-x64-big-0.8 squeeze-x64-min-0.8 squeeze-x64-nfs-0.8 squeeze-x64-xen-0.8} ).each{|env_uid| environment env_uid, :refer_to => "grid5000/environments/#{env_uid}"}
 
   cluster :genepi do |cluster_uid|
     model "Bull R422-E1"
     created_at Time.parse("2008-10-01").httpdate
-    
+
     34.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size => 2, 
+          :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
           })
@@ -59,10 +59,10 @@ site :grenoble do |site_uid|
           :mounted => true,
           :management => false,
           :vendor => 'Mellanox',
-			 :version => "InfiniHost MHGH29-XTC",
+          :version => "InfiniHost MHGH29-XTC",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
-			 :driver => "mlx4_core"
+          :driver => "mlx4_core"
         },
         {
           :interface => 'Ethernet',
@@ -71,8 +71,8 @@ site :grenoble do |site_uid|
           :enabled => false,
           :management => false,
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0'),
-			 :vendor => "Intel",
-			 :version => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)"
+          :vendor => "Intel",
+          :version => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)"
         },
         {
           :interface => 'Ethernet',
@@ -85,9 +85,9 @@ site :grenoble do |site_uid|
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth1'),
-			 :vendor => "Intel",
-			 :version => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)",
-			 :driver => "e1000e"
+          :vendor => "Intel",
+          :version => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)",
+          :driver => "e1000e"
         },
         {
           :interface => 'Ethernet',
@@ -98,8 +98,8 @@ site :grenoble do |site_uid|
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt'),
-			 :vendor => "Peppercon AG (10437)",
-			 :version => "1.50"
+          :vendor => "Peppercon AG (10437)",
+          :version => "1.50"
         }]
       end
     end
@@ -112,7 +112,7 @@ site :grenoble do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size => 2, 
+          :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
           })
@@ -149,10 +149,10 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :vendor => 'Mellanox',
-			 :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
+          :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
+          :driver => "mlx4_core"
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
-			 :driver => "mlx4_core"
+          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
         {
           :interface => 'Ethernet',
@@ -162,12 +162,12 @@ site :grenoble do |site_uid|
           :mounted => true,
           :mountable => true,
           :management => false,
-	  		 :vendor => 'Intel',
-			 :version => "Device 10c9 (rev 01)",
+          :vendor => 'Intel',
+          :version => "Device 10c9 (rev 01)",
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0'),
-			 :driver => "igb"
+          :driver => "igb"
         },
         {
           :interface => 'Ethernet',
@@ -177,8 +177,8 @@ site :grenoble do |site_uid|
           :mountable => false,
           :mounted => false,
           :management => false,
-	  		 :vendor => 'Intel',
-			 :version => "Device 10c9 (rev 01)",
+          :vendor => 'Intel',
+          :version => "Device 10c9 (rev 01)",
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth1')
         },
         {
@@ -191,8 +191,8 @@ site :grenoble do |site_uid|
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt'),
-	  		 :vendor => 'Super Micro Computer Inc.',
-			 :version => "1.15"
+          :vendor => 'Super Micro Computer Inc.',
+          :version => "1.15"
         }]
       end
     end
@@ -201,7 +201,7 @@ site :grenoble do |site_uid|
       node "#{cluster_uid}-#{i+11}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size => 2, 
+          :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
           })
@@ -238,10 +238,10 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :vendor => 'Mellanox',
-			 :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-			 :driver => "mlx4_core"
+          :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
+          :driver => "mlx4_core"
+          :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
+          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
         {
           :interface => 'Ethernet',
@@ -251,8 +251,8 @@ site :grenoble do |site_uid|
           :mountable => true,
           :mounted => true,
           :management => false,
-	  		 :vendor => 'Intel',
-			 :version => "Device 10c9 (rev 01)",
+          :vendor => 'Intel',
+          :version => "Device 10c9 (rev 01)",
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0'),
@@ -266,8 +266,8 @@ site :grenoble do |site_uid|
           :mountable => false,
           :mounted => false,
           :management => false,
-	  		 :vendor => 'Intel',
-			 :version => "Device 10c9 (rev 01)",
+          :vendor => 'Intel',
+          :version => "Device 10c9 (rev 01)",
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth1')
         },
         {
@@ -279,9 +279,9 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :vendor => 'Mellanox',
-			 :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s  (rev a0)",
+          :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s  (rev a0)",
           :ip => "",
-			 :driver => "mlx4_core"
+          :driver => "mlx4_core"
         },
         {
           :interface => 'Ethernet',
@@ -304,13 +304,12 @@ site :grenoble do |site_uid|
   cluster :edel do |cluster_uid|
     model "Bull bullx B500 compute blades"
     created_at Time.parse("2008-10-03").httpdate
-    
+
     72.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-#        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => "false"})
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size => 2, 
+          :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
           })
@@ -347,10 +346,10 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :vendor => 'Mellanox',
-			 :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
+          :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
-			 :driver => "mlx4_core"
+          :driver => "mlx4_core"
         },
         {
           :interface => 'InfiniBand',
@@ -361,9 +360,10 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :vendor => 'Mellanox',
-			 :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
-			 :driver => "mlx4_core",
-			 :ip => ""
+          :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
+          :driver => "mlx4_core",
+          :ip => ""
+
         },
         {
           :interface => 'Ethernet',
@@ -376,21 +376,21 @@ site :grenoble do |site_uid|
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0'),
-			 :vendor => "Intel",
-			 :version => "Device 10e7 (rev 01)",
-			 :driver => "igb"
+          :vendor => "Intel",
+          :version => "Device 10e7 (rev 01)",
+          :driver => "igb"
         },
         {
           :interface => 'Ethernet',
           :rate => 1.G,
-			 :device => "eth1",
+          :device => "eth1",
           :enabled => false,
           :mounted => false,
           :mountable => false,
           :management => false,
-			 :vendor => "Intel",
-			 :version => "Device 10e7 (rev 01)",
-			 :mac => lookup('grenoble', "#{node_uid}", 'mac_eth1')
+          :vendor => "Intel",
+          :version => "Device 10e7 (rev 01)",
+          :mac => lookup('grenoble', "#{node_uid}", 'mac_eth1')
         },
         {
           :interface => 'Ethernet',
@@ -402,10 +402,10 @@ site :grenoble do |site_uid|
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
           :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt'),
-			 :vendor => "Unknown",
-			 :version => "1.7"
+          :vendor => "Unknown",
+          :version => "1.7"
         }]
-      end      
+      end
     end
   end
 end

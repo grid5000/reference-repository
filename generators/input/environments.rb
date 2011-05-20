@@ -1,5 +1,5 @@
 environment 'sid-x64-base-1.0' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-base-1.0.tgz", :md5 => "e39be32c087f0c9777fd0b0ad7d12050"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.18-8"
@@ -14,7 +14,7 @@ environment 'sid-x64-base-1.0' do
 end
 
 environment 'sid-x64-base-1.1' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-base-1.1.tgz", :md5 => "756ccc2096e9feacde85500d33683dba"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, HP DL385G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.24"
@@ -29,7 +29,7 @@ environment 'sid-x64-base-1.1' do
 end
 
 environment 'sid-x64-nfs-1.0' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-nfs-1.0.tgz", :md5 => "6e004d1ac25e86a1dadc09d28f968eb5"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.18-4"
@@ -44,7 +44,7 @@ environment 'sid-x64-nfs-1.0' do
 end
 
 environment 'sid-x64-nfs-1.1' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-nfs-1.1.tgz", :md5 => "4218f5a9bfea4a759fa684db1ec4d89c"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.24.3"
@@ -59,7 +59,7 @@ environment 'sid-x64-nfs-1.1' do
 end
 
 environment 'sid-x64-big-1.1' do
-  state "stable"
+  state "deprecated"
   file({:path => "/grid5000/images/sid-x64-big-1.1.tgz", :md5 => "d514bee74404ed5f64ff41b2f60c4f7f"})
   valid_on "Dell PE1855, Dell PE1950, HP DL140G3, HP DL145G2, IBM e325, IBM e326, IBM e326m, Sun V20z, Sun X2200 M2, Sun X4100"
   kernel "2.6.24.3"
@@ -469,7 +469,7 @@ environment 'lenny-x64-base-2.3' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-base-2.3.tgz", :md5 => "3c255364f601fc19271783269ef541c2"})
   kernel "2.6.26.2"
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , helios , sol , suno, pastel , violette"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -484,7 +484,7 @@ environment 'lenny-x64-big-2.3' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-big-2.3.tgz", :md5 => "e5870c72c1a5386c287935dcf39a8a23"})
   kernel "2.6.26.2"
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -499,7 +499,7 @@ environment 'lenny-x64-min-0.8' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-min-0.8.tgz", :md5 => "a39dcad30821b7404d8eb5ac1388f650"})
   kernel "2.6.26.2"
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , helios , sol , suno, pastel , violette"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -513,7 +513,7 @@ environment 'lenny-x64-nfs-2.3' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-nfs-2.3.tgz", :md5 => "12522a436a2790df866f1ecd63680eff"})
   kernel "2.6.26.2"
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , helios , sol , suno, pastel , violette"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -526,9 +526,9 @@ end
 
 environment 'lenny-x64-xen-2.3' do
   state "stable"
-  file({:path => "/grid5000/images/lenny-x64-xen-2.3.tgz", :md5 => "8e4f0eff055c61ed8a51265c1c9afd58"})
+  file({:path => "/grid5000/images/lenny-x64-xen-2.3.tgz", :md5 => "7ba173eb6b339fe0110d458d987ef10f"})
   kernel "2.6.26.2"
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , helios , sol , suno, pastel , violette"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -539,3 +539,76 @@ environment 'lenny-x64-xen-2.3' do
   tcp_bandwidth 1.G
 end
 
+environment 'squeeze-x64-base-0.8' do
+  state "stable"
+  file({:path => "/grid5000/images/squeeze-x64-base-0.8.tgz", :md5 => "105bd08ea3f3bf4888d371c9a3241ee5"})
+  kernel "2.6.26.2"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  based_on "Debian version lenny for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services []
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'squeeze-x64-big-0.8' do
+  state "stable"
+  file({:path => "/grid5000/images/squeeze-x64-big-0.8.tgz", :md5 => "bf7dcdf526d4cda8a2d23d116e9b08fc"})
+  kernel "2.6.26.2"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  based_on "Debian version lenny for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services []
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'squeeze-x64-min-0.8' do
+  state "stable"
+  file({:path => "/grid5000/images/squeeze-x64-min-0.8.tgz", :md5 => "8aaaf11cb65279f0d747d2dd300fb3ce"})
+  kernel "2.6.26.2"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  based_on "Debian version lenny for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services []
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, nano, Perl".split(", ")
+  x11_forwarding true
+  tcp_bandwidth 1.G
+end
+
+environment 'squeeze-x64-nfs-0.8' do
+  state "stable"
+  file({:path => "/grid5000/images/squeeze-x64-nfs-0.8.tgz", :md5 => "49642989fa205b8f8e3366aaa149cf29"})
+  kernel "2.6.26.2"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  based_on "Debian version lenny for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services []
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
+
+environment 'squeeze-x64-xen-0.8' do
+  state "stable"
+  file({:path => "/grid5000/images/squeeze-x64-xen-0.8.tgz", :md5 => "243961b600246379b1257b57c5905c68"})
+  kernel "2.6.26.2"
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  based_on "Debian version lenny for amd64"
+  consoles [{:port => "ttyS0", :bps => 34800}]
+  services []
+  accounts [{:login => "root", :password => "grid5000"}]
+  applications "Vim, XEmacs, JED, nano, JOE, Perl, Python, Ruby".split(", ")
+  x11_forwarding true
+  max_open_files 8192
+  tcp_bandwidth 1.G
+end
