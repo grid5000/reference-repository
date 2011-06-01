@@ -10,8 +10,28 @@
   },
   "network_adapters": [
     {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.26.132.14",
+      "mac": "00:11:25:91:49:3C",
+      "management": true,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "gdx-50-bmc.orsay.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "netgear02.orsay.grid5000.fr",
+      "switch_console": "mrv02.orsay.grid5000.fr",
+      "switch_console_ip": "172.26.120.202",
+      "switch_console_mac": "00:a0:9c:00:16:41",
+      "switch_ip": "172.26.120.152",
+      "switch_mac": "00:22:3f:e6:f8:ce",
+      "vendor": "Broadcom",
+      "version": "NetXtreme BCM5780"
+    },
+    {
       "device": "myri0",
-      "driver": null,
+      "driver": "mx_driver",
       "enabled": true,
       "interface": "Myrinet",
       "ip": "172.24.72.14",
@@ -21,7 +41,9 @@
       "mounted": true,
       "network_address": "gdx-50-myri0.orsay.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
+      "switch": "switch-mx.orsay.grid5000.fr",
+      "switch_ip": "1.1.1.1",
+      "switch_mac": "aa:aa:aa:aa:aa:aa",
       "vendor": "Myrinet",
       "version": "10G-PCIE-8A-C"
     },
@@ -31,37 +53,42 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.24.5.14",
-      "mac": "00:11:25:c4:33:92",
+      "mac": "00:11:25:C4:33:92",
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "gdx-50.orsay.grid5000.fr",
       "rate": 1000000000,
-      "switch": null,
+      "switch": "switch09.orsay.grid5000.fr",
+      "switch_ip": "172.26.120.109",
+      "switch_mac": "00:24:F9:3E:81:42",
       "vendor": "Broadcom",
       "version": "NetXtreme BCM5780"
     },
     {
       "device": "eth1",
       "driver": "tg3",
-      "enabled": true,
+      "enabled": false,
       "interface": "Ethernet",
       "ip": "172.24.132.14",
-      "mac": "00:11:25:c4:33:93",
+      "mac": "00:11:25:C4:33:93",
       "management": false,
-      "mountable": true,
+      "mountable": false,
       "mounted": false,
       "network_address": "gdx-50-eth1.orsay.grid5000.fr",
-      "rate": 1000000000,
+      "rate": 0,
       "switch": null,
+      "switch_ip": null,
+      "switch_mac": null,
       "vendor": "Broadcom",
       "version": "NetXtreme BCM5780"
     }
   ],
   "operating_system": {
-    "name": null,
-    "release": null,
-    "version": null
+    "kernel": "2.6.26",
+    "name": "debian-x64-5-prod",
+    "release": "5.1.2",
+    "version": "5"
   },
   "processor": {
     "cache_l1": null,
@@ -77,7 +104,7 @@
   },
   "storage_devices": [
     {
-      "driver": null,
+      "driver": "sata_svw",
       "interface": "SATA",
       "size": 74505805969.2383
     }
