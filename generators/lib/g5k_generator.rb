@@ -63,7 +63,49 @@ module G5K
     def dns_lookup(network_address)
       Resolv.getaddress(network_address)
     end
+    
+    # Remotly execute commands, and retrieve stdout, stderr and exit code.
+  def ssh_exec!(ssh, command)
+    stdout_data = ""
+    stderr_data = ""
+    exit_code = nil
+    exit_signal = nil
+    ssh.open_channel do |channel|
+      channel.exec(command) do |ch, success|
+        unless success
+          abort "FAILED: couldn't execute command (ssh.channel.exec)"
+        end
+        channel.on_data do |ch,data|
+          stdout_data+=data
+        end
+        
+        channel.on_extended_data do |ch,type,data|
+          stderr_data+=data
+        end
+        
+        channel.on_request("exit-status") do |ch,data|
+          exit_code = data.read_long
+        end
+        
+        channel.on_request("exit-signal") do |ch, data|
+          exit_signal = data.read_long
+        end
+      end
+    end
+    ssh.loop
+    [stdout_data, stderr_data, exit_code, exit_signal]
+  end  
   
+  # Get the IP address corresponding to the host fqdn throught ssh channel
+    def dns_lookup_through_ssh(ssh,fqdn)
+      results = ssh_exec! ssh, "host #{fqdn}"
+      if results[2] == 0
+        results[0].split(" ").reverse[0]
+      else
+        fail "Failed to get ip address of '#{fqdn}' : #{results[1]}"
+      end
+    end
+    
     # Lookup a key in one of the configuration files passed to the generator
     #
     # Usage:
