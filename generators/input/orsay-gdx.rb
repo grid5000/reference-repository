@@ -10,9 +10,8 @@ def get_switch_for_node(switches,id)
   lookup('orsay-network',"switch-nil").merge({:nodes=>[0,0]})
 end
 
-site :orsay do |site_uid|
+site :orsay, {:discard_content => true} do |site_uid|
   ssh = Net::SSH.start("frontend.#{site_uid}.grid5000.fr","g5kadmin")
-  
   cluster :gdx do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil

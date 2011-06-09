@@ -1,6 +1,6 @@
 site :orsay do |site_uid|
   name "Orsay"
-  location "Orsay, France"
+  location "Orsay, France" 
   web
   description ""
   latitude 48.7000

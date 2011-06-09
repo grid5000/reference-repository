@@ -59,6 +59,48 @@ module G5K
     def method_missing(method, *args)
       @context.recursive_merge!(method.to_sym => args.first)
     end
+
+    # Remotly execute commands, and retrieve stdout, stderr, exit code and exit signal.
+    def ssh_exec!(ssh, command)
+      stdout_data = ""
+      stderr_data = ""
+      exit_code = nil
+      exit_signal = nil
+      ssh.open_channel do |channel|
+        channel.exec(command) do |ch, success|
+          unless success
+            abort "FAILED: couldn't execute command (ssh.channel.exec)"
+          end
+          channel.on_data do |ch,data|
+            stdout_data+=data
+          end
+          
+          channel.on_extended_data do |ch,type,data|
+            stderr_data+=data
+          end
+          
+          channel.on_request("exit-status") do |ch,data|
+            exit_code = data.read_long
+          end
+          
+          channel.on_request("exit-signal") do |ch, data|
+            exit_signal = data.read_long
+          end
+        end
+      end
+      ssh.loop
+      [stdout_data, stderr_data, exit_code, exit_signal]
+    end  
+  
+    # Get the IP address corresponding to the host fqdn throught ssh channel
+    def dns_lookup_through_ssh(ssh,fqdn)
+      results = ssh_exec! ssh, "host #{fqdn}"
+      if results[2] == 0
+        results[0].split(" ").reverse[0]
+      else
+        fail "Failed to get ip address of '#{fqdn}' : #{results[1]}"
+      end
+    end
   
     def dns_lookup(network_address)
       Resolv.getaddress(network_address)
@@ -92,6 +134,22 @@ module G5K
       else
         raise ArgumentError, "Cannot fetch the values for '#{keys.inspect}' in the input file '#{filename}'. The config files you gave to me are: '#{config.keys.inspect}'."
       end
+    end
+    
+    # This method is used exclusivly for environments. Example:
+    # environment 'squeeze-x64-xen-0.8' do
+    #  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
+    # end    
+    def available_on(sites_uid)
+      env_uid = @context[:uid]
+      old_context = @context 
+      @context = @data
+      sites_uid.each{|site_uid|
+        site site_uid.to_sym, {:discard_content => true} do
+          environment "#{env_uid}", :refer_to => "grid5000/environments/#{env_uid}"    
+        end
+      }
+      @context = old_context
     end
     # This doesn't work with Ruby < 1.8.7. Replaced by a call to build_context (see below).
     #
@@ -135,17 +193,6 @@ module G5K
     end
     def service(uid, *options, &block)
       build_context(:services, uid, *options, &block)
-    end
-    def available_on(sites_uid)
-      env_uid = @context[:uid]
-      old_context = @context 
-      @context = @data
-      sites_uid.each{|site_uid|
-        site site_uid.to_sym, {:discard_content => true} do
-          environment "#{env_uid}", :refer_to => "grid5000/environments/#{env_uid}"    
-        end
-      }
-      @context = old_context
     end
     def build_context(key, uid, *options, &block)
       type = key.to_s.chop

@@ -1,5 +1,16 @@
 require 'net/ssh'
-site :orsay do |site_uid|
+
+def switch_match_node(switch,id); switch != nil and (switch[:nodes][0] <= id and id <= switch[:nodes][1]); end
+def get_switch_for_node(switches,id)
+  switches.each{|k,v| 
+    arr = v.split(",").map{|s| s.to_i}
+    next if id < arr[0] or arr[1] < id
+    return lookup('orsay-network',k).merge({:nodes=>arr})
+  }
+  lookup('orsay-network',"switch-nil").merge({:nodes=>[0,0]})
+end
+
+site :orsay, {:discard_content => true} do |site_uid|
   ssh = Net::SSH.start("frontend.#{site_uid}.grid5000.fr","g5kadmin")
   
   cluster :netgdx do |cluster_uid|
