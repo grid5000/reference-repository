@@ -10,14 +10,21 @@ def get_switch_for_node(switches,id)
   lookup('orsay-network',"switch-nil").merge({:nodes=>[0,0]})
 end
 
-site :orsay, {:discard_content => true} do |site_uid|
+site :orsay do |site_uid|
   ssh = Net::SSH.start("frontend.#{site_uid}.grid5000.fr","g5kadmin")
   
   cluster :netgdx do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
+    
     1.upto(30) do |i|
+      switch_eth0 = get_switch_for_node lookup("orsay-links","links-eth0","netgdx"), i unless switch_match_node switch_eth0, i
+      switch_eth1 = get_switch_for_node lookup("orsay-links","links-eth1","netgdx"), i unless switch_match_node switch_eth1, i
+      switch_eth2 = get_switch_for_node lookup("orsay-links","links-eth2","netgdx"), i unless switch_match_node switch_eth2, i
+      switch_bmc = get_switch_for_node lookup("orsay-links","links-bmc","netgdx"), i unless switch_match_node switch_bmc, i
+      switch_rsa = get_switch_for_node lookup("orsay-links","links-rsa","netgdx"), i unless switch_match_node switch_rsa, i
+      
       node "#{cluster_uid}-#{i}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
@@ -63,12 +70,12 @@ site :orsay, {:discard_content => true} do |site_uid|
             :mounted => false,
             :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
             :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
-            :switch => (lookup('orsay-network', "switch-bmc-netgdx", 'name')+".#{site_uid}.grid5000.fr"),
-            :switch_ip => lookup('orsay-network', "switch-bmc-netgdx", 'ip'),
-            :switch_mac => lookup('orsay-network', "switch-bmc-netgdx", 'mac'),
-            :switch_console => (lookup('orsay-network', "switch-rsa-netgdx", 'name')+".#{site_uid}.grid5000.fr"),
-            :switch_console_ip => lookup('orsay-network', "switch-rsa-netgdx", 'ip'),
-            :switch_console_mac => lookup('orsay-network', "switch-rsa-netgdx", 'mac'),
+            :switch => (switch_bmc["name-admin"]+".#{site_uid}.grid5000.fr"),
+            :switch_ip => switch_bmc["ip-admin"],
+            :switch_mac => switch_bmc["mac-admin"],
+            :switch_console => (switch_rsa["name"]+".#{site_uid}.grid5000.fr"),
+            :switch_console_ip => switch_rsa["ip"],
+            :switch_console_mac => switch_rsa["mac"]
           },{
             :interface => 'Ethernet',
             :device => 'eth0',
@@ -83,9 +90,9 @@ site :orsay, {:discard_content => true} do |site_uid|
             :mounted => true,
             :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
             :ip => dns_lookup_through_ssh(ssh,"#{node_uid}.#{site_uid}.grid5000.fr"),
-            :switch => (lookup('orsay-network', "switch-gw", 'name-prod')+".#{site_uid}.grid5000.fr"),
-            :switch_ip => lookup('orsay-network', "switch-gw", 'ip-prod'),
-            :switch_mac => lookup('orsay-network', "switch-gw", 'mac-prod'),
+            :switch => (switch_eth0["name-prod"]+".#{site_uid}.grid5000.fr"),
+            :switch_ip => switch_eth0["ip-prod"],
+            :switch_mac => switch_eth0["mac-prod"]
           },{
             :interface => 'Ethernet',
             :device => 'eth1',
@@ -100,9 +107,9 @@ site :orsay, {:discard_content => true} do |site_uid|
             :mounted => true, 
             :network_address => "#{node_uid}-eth1.#{site_uid}.grid5000.fr",
             :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-eth1.#{site_uid}.grid5000.fr"),
-            :switch => (lookup('orsay-network', "switch-gw", 'name-prod')+".#{site_uid}.grid5000.fr"),
-            :switch_ip => lookup('orsay-network', "switch-gw", 'ip-prod'),
-            :switch_mac => lookup('orsay-network', "switch-gw", 'mac-prod'),
+            :switch => (switch_eth1["name-prod"]+".#{site_uid}.grid5000.fr"),
+            :switch_ip => switch_eth1["ip-prod"],
+            :switch_mac => switch_eth1["mac-prod"]
           },{
             :interface => 'Ethernet',
             :device => 'eth2',
@@ -117,9 +124,9 @@ site :orsay, {:discard_content => true} do |site_uid|
             :mounted => true,
             :network_address => "#{node_uid}-eth2.#{site_uid}.grid5000.fr",
             :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-eth2.#{site_uid}.grid5000.fr"),
-            :switch => (lookup('orsay-network', "switch-gw", 'name-prod')+".#{site_uid}.grid5000.fr"),
-            :switch_ip => lookup('orsay-network', "switch-gw", 'ip-prod'),
-            :switch_mac => lookup('orsay-network', "switch-gw", 'mac-prod'),
+            :switch => (switch_eth2["name-prod"]+".#{site_uid}.grid5000.fr"),
+            :switch_ip => switch_eth2["ip-prod"],
+            :switch_mac => switch_eth2["mac-prod"]
           }]  
       end      
     end

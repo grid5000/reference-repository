@@ -10,8 +10,9 @@ def get_switch_for_node(switches,id)
   lookup('orsay-network',"switch-nil").merge({:nodes=>[0,0]})
 end
 
-site :orsay, {:discard_content => true} do |site_uid|
+site :orsay do |site_uid|
   ssh = Net::SSH.start("frontend.#{site_uid}.grid5000.fr","g5kadmin")
+  
   cluster :gdx do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil
@@ -19,10 +20,10 @@ site :orsay, {:discard_content => true} do |site_uid|
     
     # WARN: 2 nodes are missing (gdx-311 and gdx-312) and won't appear in the reference
     1.upto(180+132-2) do |i| 
-      switch_eth0 = get_switch_for_node lookup("orsay-links","links-eth0","gdx"), i if not switch_match_node switch_eth0, i
-      switch_bmc = get_switch_for_node lookup("orsay-links","links-bmc","gdx"), i if not switch_match_node switch_bmc, i
-      switch_rsa = get_switch_for_node lookup("orsay-links","links-rsa","gdx"), i if not switch_match_node switch_rsa, i
-      switch_mx = get_switch_for_node lookup("orsay-links","links-mx","gdx"), i if not switch_match_node switch_mx, i
+      switch_eth0 = get_switch_for_node lookup("orsay-links","links-eth0","gdx"), i unless switch_match_node switch_eth0, i
+      switch_bmc = get_switch_for_node lookup("orsay-links","links-bmc","gdx"), i unless switch_match_node switch_bmc, i
+      switch_rsa = get_switch_for_node lookup("orsay-links","links-rsa","gdx"), i unless switch_match_node switch_rsa, i
+      switch_mx = get_switch_for_node lookup("orsay-links","links-mx","gdx"), i unless switch_match_node switch_mx, i
       
       node "#{cluster_uid}-#{i}" do |node_uid|
     
@@ -73,9 +74,6 @@ site :orsay, {:discard_content => true} do |site_uid|
             :switch => (switch_bmc["name"]+".#{site_uid}.grid5000.fr"),
             :switch_ip => switch_bmc["ip"],
             :switch_mac => switch_bmc["mac"],
-#            :switch => (lookup('orsay-network', "switch-bmc-#{rack_uid/2}", 'name')+".#{site_uid}.grid5000.fr"),
-#            :switch_ip => lookup('orsay-network', "switch-bmc-#{rack_uid/2}", 'ip'),
-#            :switch_mac => lookup('orsay-network', "switch-bmc-#{rack_uid/2}", 'mac'),
             :switch_console => (switch_rsa["name"]+".#{site_uid}.grid5000.fr"),
             :switch_console_ip => switch_rsa["ip"],
             :switch_console_mac => switch_rsa["mac"]
