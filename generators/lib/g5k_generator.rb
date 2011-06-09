@@ -63,49 +63,7 @@ module G5K
     def dns_lookup(network_address)
       Resolv.getaddress(network_address)
     end
-    
-    # Remotly execute commands, and retrieve stdout, stderr and exit code.
-  def ssh_exec!(ssh, command)
-    stdout_data = ""
-    stderr_data = ""
-    exit_code = nil
-    exit_signal = nil
-    ssh.open_channel do |channel|
-      channel.exec(command) do |ch, success|
-        unless success
-          abort "FAILED: couldn't execute command (ssh.channel.exec)"
-        end
-        channel.on_data do |ch,data|
-          stdout_data+=data
-        end
-        
-        channel.on_extended_data do |ch,type,data|
-          stderr_data+=data
-        end
-        
-        channel.on_request("exit-status") do |ch,data|
-          exit_code = data.read_long
-        end
-        
-        channel.on_request("exit-signal") do |ch, data|
-          exit_signal = data.read_long
-        end
-      end
-    end
-    ssh.loop
-    [stdout_data, stderr_data, exit_code, exit_signal]
-  end  
   
-  # Get the IP address corresponding to the host fqdn throught ssh channel
-    def dns_lookup_through_ssh(ssh,fqdn)
-      results = ssh_exec! ssh, "host #{fqdn}"
-      if results[2] == 0
-        results[0].split(" ").reverse[0]
-      else
-        fail "Failed to get ip address of '#{fqdn}' : #{results[1]}"
-      end
-    end
-    
     # Lookup a key in one of the configuration files passed to the generator
     #
     # Usage:
@@ -178,6 +136,17 @@ module G5K
     def service(uid, *options, &block)
       build_context(:services, uid, *options, &block)
     end
+    def available_on(sites_uid)
+      env_uid = @context[:uid]
+      old_context = @context 
+      @context = @data
+      sites_uid.each{|site_uid|
+        site site_uid.to_sym, {:discard_content => true} do
+          environment "#{env_uid}", :refer_to => "grid5000/environments/#{env_uid}"    
+        end
+      }
+      @context = old_context
+    end
     def build_context(key, uid, *options, &block)
       type = key.to_s.chop
       uid = uid.to_s
@@ -191,7 +160,7 @@ module G5K
         if (same_trees = @context[key].select{|tree| tree[:uid] == uid}).size > 0
           @context = same_trees.first
         else
-          @context[key] << G5K::Tree.new.replace({:uid => uid, :type => type})
+          @context[key] << G5K::Tree.new.replace({:uid => uid, :type => type}.merge((options[:discard_content]) ? {:discard_content => true} : {}))
           @context = @context[key].last
         end
         block.call(uid) if block
@@ -234,8 +203,10 @@ module G5K
         new_content = JSON.pretty_generate(file.contents)
         existing_content = File.exists?(full_path) ? File.open(full_path, "r").read : ""
         if new_content.hash != existing_content.hash
-          puts "File to be written      = \t#{full_path}"
-          File.open(full_path, "w+"){ |f| f << new_content  } unless options[:simulate]
+          unless file.has_key? :discard_content and file[:discard_content]
+            puts "File to be written      = \t#{full_path}"
+            File.open(full_path, "w+"){ |f| f << new_content  } unless options[:simulate]
+          end
         end
       end
       groups.has_key?(G5K::Link) and groups[G5K::Link].each do |link|      
