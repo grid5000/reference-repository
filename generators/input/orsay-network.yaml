@@ -1,0 +1,326 @@
+--- 
+switch-nil:
+  name: nil
+  rate: 0
+  ip: nil
+  mac: nil
+  next_switch : nil
+  next_switch_rate : 0
+switch-eth0-0:
+  name: "switch11"
+  nodes: "gdx-[1-18]"
+  rate: 1.G
+  ip: 172.26.120.111
+  mac: 00:12:01:73:21:C2
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-1:
+  name: "switch12"
+  nodes: "gdx-[19-36]"
+  rate: 1.G  
+  ip: 172.26.120.112
+  mac: 00:12:01:73:27:C2
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-2:
+  name: "switch09"
+  nodes: "gdx-[37-54]"
+  rate: 1.G  
+  ip: 172.26.120.109
+  mac: 00:24:F9:3E:81:42
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-3:
+  name: "switch08"
+  nodes: "gdx-[55-72]"
+  rate: 1.G  
+  ip: 172.26.120.108
+  mac: 00:11:BB:3E:FD:C2
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-4:
+  name: "switch06"
+  nodes: "gdx-[73-90]"
+  rate: 1.G  
+  ip: 172.26.120.106
+  mac: 00:24:f9:3e:e7:42
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-5:
+  name: "switch05"
+  nodes: "gdx-[91-108]"
+  rate: 1.G  
+  ip: 172.26.120.105
+  mac: 00:12:00:44:53:42
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-6:
+  name: "switch03"
+  nodes: "gdx-[109-126]"
+  rate: 1.G  
+  ip: 172.26.120.103
+  mac: 00:24:f9:3e:a7:42
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-7:
+  name: "switch02"
+  nodes: "gdx-[127-144]"
+  rate: 1.G  
+  ip: 172.26.120.102
+  mac: 00:12:00:4c:f5:c2
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-8:
+  name: "procurve17"
+  nodes: "gdx-[145-162]"
+  rate: 100.M  
+  ip: 172.26.120.197
+  mac: nil
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-9:
+  name: "procurve18"
+  nodes: "gdx-[163-180]"
+  rate: 100.M  
+  ip: 172.26.120.198
+  mac: nil
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-10:
+  name: "switch14"
+  nodes: "gdx-[181-198]"
+  rate: 1.G  
+  ip: 172.26.120.114
+  mac: 00:11:bb:17:e8:c2
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-11:
+  name: "switch15"
+  nodes: "gdx-[199-216]"
+  rate: 1.G  
+  ip: 172.26.120.115
+  mac: 00:12:00:4c:a7:c2
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-12:
+  name: "procurve-04-07"
+  nodes: "gdx-[217-234]"
+  rate: 1.G  
+  ip: 172.26.120.107
+  mac: nil
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-13:
+  name: "procurve-04-07"
+  nodes: "gdx-[235-252]"
+  rate: 1.G  
+  ip: 172.26.120.104
+  mac: nil
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-14:
+  name: "switch10"
+  nodes: "gdx-[253-270]"
+  rate: 1.G  
+  ip: 172.26.120.110
+  mac: 00:12:01:72:cd:42
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-15:
+  name: "switch16"
+  nodes: "gdx-[271-288]"
+  rate: 1.G  
+  ip: 172.26.120.116
+  mac: 00:12:01:5b:af:42
+  next_switch : "switch-gw"
+  next_switch_rate : 3.G
+switch-eth0-16:
+  name: "switch07"
+  nodes: "gdx-[289-306]"
+  rate: 1.G  
+  ip: 172.26.120.107
+  mac: 00:12:00:44:68:42
+  next_switch : "switch-gw"
+  next_switch_rate : 3.G
+switch-eth0-17:
+  name: "switch13"
+  nodes: "gdx-[307-310]"
+  rate: 1.G  
+  ip: 172.26.120.113
+  mac: 00:24:f9:2a:0e:41
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-bmc-0:
+  name: "netgear01"
+  nodes: "gdx-[1-36]"
+  rate: 1.G  
+  ip: 172.26.120.151
+  mac: 00:0f:b5:fc:0d:26
+  next_switch : "switch-eth0-1"
+  next_switch_rate : 1.G
+switch-bmc-1:
+  name: "netgear02"
+  nodes: "gdx-[37-72]"
+  rate: 1.G  
+  ip: 172.26.120.152
+  mac: 00:22:3f:e6:f8:ce
+  next_switch : "switch-eth0-3"
+  next_switch_rate : 1.G
+switch-bmc-2:
+  name: "netgear03"
+  nodes: "gdx-[73-108]"
+  rate: 1.G  
+  ip: 172.26.120.153
+  mac: 00:0f:b5:fb:70:89
+  next_switch : "switch-eth0-5"
+  next_switch_rate : 1.G
+switch-bmc-3:
+  name: "netgear04"
+  nodes: "gdx-[109-144]"
+  rate: 1.G  
+  ip: 172.26.120.154
+  mac: 00:0f:b5:f5:79:2a
+  next_switch : "switch-eth0-7"
+  next_switch_rate : 1.G
+switch-bmc-4:
+  name: "netgear05"
+  nodes: "gdx-[145-180]"
+  rate: 1.G  
+  ip: 172.26.120.155
+  mac: 00:0f:b5:fb:70:a5
+  next_switch : "switch-eth0-9"
+  next_switch_rate : 1.G
+switch-bmc-5:
+  name: "netgear06"
+  nodes: "gdx-[181-216]"
+  rate: 1.G  
+  ip: 172.26.120.156
+  mac: nil
+  next_switch : "switch-eth0-11"
+  next_switch_rate : 1.G
+switch-bmc-6:
+  name: "netgear07"
+  nodes: "gdx-[216-252]"
+  rate: 1.G  
+  ip: 172.26.120.157
+  mac: nil
+  next_switch : "switch-eth0-13"
+  next_switch_rate : 1.G
+switch-bmc-7:
+  name: "netgear08"
+  nodes: "gdx-[253-288]"
+  rate: 1.G  
+  ip: 172.26.120.158
+  mac: 00:0f:b5:fc:0d:aa
+  next_switch : "switch-eth0-15"
+  next_switch_rate : 1.G
+switch-bmc-8:
+  name: "procurve-bmc-09"
+  nodes: "gdx-[289-310]"
+  rate: 100.M  
+  ip: 172.26.120.159
+  mac: nil
+  next_switch : "switch-eth0-17"
+  next_switch_rate : 1.G
+switch-bmc-netgdx:
+  name: "netgearxy"
+  nodes: "netgdx-[1-30]"
+  rate: 1.G  
+  ip: 172.26.120.150
+  mac: nil
+  next_switch : "switch-gw"
+  next_switch_rate : 1.G
+switch-rsa-0:
+  name: "mrv01"
+  nodes: "gdx-[1-36]"
+  rate: 1.G  
+  ip: 172.26.120.201
+  mac: nil
+  next_switch : "switch-eth0-1"
+  next_switch_rate : 1.G
+switch-rsa-1:
+  name: "mrv02"
+  nodes: "gdx-[37-72]"
+  rate: 1.G  
+  ip: 172.26.120.202
+  mac: 00:a0:9c:00:16:41
+  next_switch : "switch-eth0-3"
+  next_switch_rate : 1.G
+switch-rsa-2:
+  name: "mrv03"
+  nodes: "gdx-[73-108]"
+  rate: 1.G  
+  ip: 172.26.120.203
+  mac: 00:a0:9c:00:12:dd
+  next_switch : "switch-eth0-5"
+  next_switch_rate : 1.G
+switch-rsa-3:
+  name: "mrv04"
+  nodes: "gdx-[109-144]"
+  rate: 1.G  
+  ip: 172.26.120.204
+  mac: 00:a0:9c:00:12:e4
+  next_switch : "switch-eth0-7"
+  next_switch_rate : 1.G
+switch-rsa-4:
+  name: "mrv05"
+  nodes: "gdx-[145-180]"
+  rate: 1.G  
+  ip: 172.26.120.205
+  mac: 00:a0:9c:00:10:ae
+  next_switch : "switch-eth0-9"
+  next_switch_rate : 1.G
+switch-rsa-5:
+  name: "mrv06"
+  nodes: "gdx-[181-216]"
+  rate: 1.G  
+  ip: 172.26.120.206
+  mac: 00:a0:9c:00:16:42
+  next_switch : "switch-eth0-11"
+  next_switch_rate : 1.G
+switch-rsa-6:
+  name: "mrv07"
+  nodes: "gdx-[217-252]"
+  rate: 1.G  
+  ip: 172.26.120.207
+  mac: nil
+  next_switch : "switch-eth0-13"
+  next_switch_rate : 1.G
+switch-rsa-7:
+  name: "mrv08"
+  nodes: "gdx-[253-288]"
+  rate: 1.G  
+  ip: 172.26.120.208
+  mac: nil
+  next_switch : "switch-eth0-15"
+  next_switch_rate : 1.G
+switch-rsa-8:
+  name: "mrv09"
+  nodes: "gdx-[289-310]"
+  rate: 1.G  
+  ip: 172.26.120.209
+  mac: 00:a0:9c:00:25:4a
+  next_switch : "switch-eth0-17"
+  next_switch_rate : 1.G
+switch-rsa-netgdx:
+  name: "mrv00"
+  nodes: "netgdx-[1-30]"
+  rate: 1.G 
+  ip: 172.26.120.200
+  mac: nil
+switch-mx:
+  name: "switch-mx"
+  nodes: "gdx-[1-310]"
+  rate: 10.G  
+  ip: nil
+  mac: nil
+switch-gw:
+  name-prod: "gw"
+  name-admin: "cisco"
+  nodes: "netgdx-[1-30]"
+  rate: 1.G 
+  ip-prod: 172.24.120.10
+  mac-prod: 00:11:5d:3d:50:00
+  ip-admin: 172.26.120.100
+  mac-admin: 00:11:5d:3d:50:00  
+  

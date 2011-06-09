@@ -11,6 +11,7 @@
   "network_adapters": [
     {
       "device": "ib0",
+      "driver": "mlx4_core",
       "enabled": true,
       "interface": "InfiniBand",
       "ip": "172.16.18.131",
@@ -24,6 +25,7 @@
     },
     {
       "device": "eth0",
+      "driver": "igb",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.16.131",
@@ -44,7 +46,9 @@
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "Device 10c9 (rev 01)"
     },
     {
       "enabled": true,
@@ -55,7 +59,9 @@
       "mountable": false,
       "mounted": false,
       "network_address": "adonis-1-bmc.grenoble.grid5000.fr",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Super Micro Computer Inc.",
+      "version": "1.15"
     }
   ],
   "operating_system": {

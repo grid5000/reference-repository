@@ -11,6 +11,7 @@
   "network_adapters": [
     {
       "device": "ib0",
+      "driver": "mlx4_core",
       "enabled": true,
       "interface": "InfiniBand",
       "ip": "172.16.18.72",
@@ -20,10 +21,24 @@
       "network_address": "edel-22-ib0.grenoble.grid5000.fr",
       "rate": 40000000000,
       "vendor": "Mellanox",
-      "version": "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s"
+      "version": "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "interface": "InfiniBand",
+      "ip": "",
+      "management": false,
+      "mountable": true,
+      "mounted": false,
+      "rate": 40000000000,
+      "vendor": "Mellanox",
+      "version": "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)"
     },
     {
       "device": "eth0",
+      "driver": "igb",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.16.72",
@@ -32,15 +47,21 @@
       "mountable": true,
       "mounted": true,
       "network_address": "edel-22-eth0.grenoble.grid5000.fr",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "Device 10e7 (rev 01)"
     },
     {
+      "device": "eth1",
       "enabled": false,
       "interface": "Ethernet",
+      "mac": "08:00:38:35:ab:9d",
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 1000000000
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "Device 10e7 (rev 01)"
     },
     {
       "enabled": true,
@@ -51,7 +72,9 @@
       "mountable": false,
       "mounted": false,
       "network_address": "edel-22-bmc.grenoble.grid5000.fr",
-      "rate": 100000000
+      "rate": 100000000,
+      "vendor": "Unknown",
+      "version": "1.7"
     }
   ],
   "operating_system": {
