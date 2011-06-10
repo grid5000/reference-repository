@@ -60,7 +60,7 @@ site :orsay do |site_uid|
         network_adapters [{
             :interface => 'Ethernet',
             :device => 'bmc',
-            :rate => (eval lookup('orsay-network', "switch-bmc-netgdx", 'rate')),
+            :rate => (eval lookup('orsay-network', "switch-bmc-9", 'rate')),
             :mac => lookup('orsay-netgdx', "#{node_uid}", 'mac_bmc'),
             :vendor => 'Broadcom',
             :version => 'NetXtreme BCM5780',
@@ -70,9 +70,9 @@ site :orsay do |site_uid|
             :mounted => false,
             :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
             :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
-            :switch => (switch_bmc["name-admin"]+".#{site_uid}.grid5000.fr"),
-            :switch_ip => switch_bmc["ip-admin"],
-            :switch_mac => switch_bmc["mac-admin"],
+            :switch => (switch_bmc["name"]+".#{site_uid}.grid5000.fr"),
+            :switch_ip => switch_bmc["ip"],
+            :switch_mac => switch_bmc["mac"],
             :switch_console => (switch_rsa["name"]+".#{site_uid}.grid5000.fr"),
             :switch_console_ip => switch_rsa["ip"],
             :switch_console_mac => switch_rsa["mac"]

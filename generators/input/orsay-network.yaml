@@ -200,7 +200,6 @@ switch-bmc-5:
   next_switch_rate : 1.G
 switch-bmc-6:
   name: "netgear07"
-  nodes: "gdx-[216-252]"
   rate: 1.G  
   ip: 172.26.120.157
   mac: nil
@@ -208,7 +207,6 @@ switch-bmc-6:
   next_switch_rate : 1.G
 switch-bmc-7:
   name: "netgear08"
-  nodes: "gdx-[253-288]"
   rate: 1.G  
   ip: 172.26.120.158
   mac: 00:0f:b5:fc:0d:aa
@@ -216,23 +214,20 @@ switch-bmc-7:
   next_switch_rate : 1.G
 switch-bmc-8:
   name: "procurve-bmc-09"
-  nodes: "gdx-[289-310]"
   rate: 100.M  
   ip: 172.26.120.159
   mac: nil
   next_switch : "switch-eth0-17"
   next_switch_rate : 1.G
-switch-bmc-netgdx:
-  name: "netgearxy"
-  nodes: "netgdx-[1-30]"
-  rate: 1.G  
-  ip: 172.26.120.150
-  mac: nil
+switch-bmc-9:
+  name: "netgear10"
+  rate: 1.G
+  ip: 172.26.120.160
+  mac: 00:0f:b5:fc:0d:a8
   next_switch : "switch-gw"
   next_switch_rate : 1.G
 switch-rsa-0:
   name: "mrv01"
-  nodes: "gdx-[1-36]"
   rate: 1.G  
   ip: 172.26.120.201
   mac: nil
@@ -302,22 +297,21 @@ switch-rsa-8:
   mac: 00:a0:9c:00:25:4a
   next_switch : "switch-eth0-17"
   next_switch_rate : 1.G
-switch-rsa-netgdx:
+switch-rsa-9:
   name: "mrv00"
-  nodes: "netgdx-[1-30]"
   rate: 1.G 
   ip: 172.26.120.200
-  mac: nil
+  mac: 00:a0:9c:00:12:fa
+  next_switch : "switch-gw"
+  next_switch_rate : 1.G
 switch-mx:
   name: "switch-mx"
-  nodes: "gdx-[1-310]"
   rate: 10.G  
   ip: nil
   mac: nil
 switch-gw:
   name-prod: "gw"
   name-admin: "cisco"
-  nodes: "netgdx-[1-30]"
   rate: 1.G 
   ip-prod: 172.24.120.10
   mac-prod: 00:11:5d:3d:50:00
