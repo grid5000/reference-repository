@@ -133,7 +133,7 @@ site :orsay do |site_uid|
     end
     
     # extension specifics, starting at node 181
-    (181).upto(312-2) do |i|
+    (181).upto(306) do |i|
       node "#{cluster_uid}-#{i}" do
         processor({
           :version => "250",
