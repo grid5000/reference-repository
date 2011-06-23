@@ -71,19 +71,19 @@ switch-eth0-7:
   next_switch : "switch-gw"
   next_switch_rate : 2.G
 switch-eth0-8:
-  name: "procurve17"
-  nodes: "gdx-[145-162]"
-  rate: 100.M  
-  ip: 172.26.120.197
-  mac: nil
+  name: "switch07"
+  nodes: "gdx-[289-306]"
+  rate: 1.G  
+  ip: 172.26.120.107
+  mac: 00:12:00:44:68:42
   next_switch : "switch-gw"
-  next_switch_rate : 2.G
+  next_switch_rate : 3.G
 switch-eth0-9:
-  name: "procurve18"
-  nodes: "gdx-[163-180]"
-  rate: 100.M  
-  ip: 172.26.120.198
-  mac: nil
+  name: "switch13"
+  nodes: "gdx-[307-310]"
+  rate: 1.G  
+  ip: 172.26.120.113
+  mac: 00:24:f9:2a:0e:41
   next_switch : "switch-gw"
   next_switch_rate : 2.G
 switch-eth0-10:
@@ -103,22 +103,6 @@ switch-eth0-11:
   next_switch : "switch-gw"
   next_switch_rate : 2.G
 switch-eth0-12:
-  name: "procurve-04-07"
-  nodes: "gdx-[217-234]"
-  rate: 1.G  
-  ip: 172.26.120.107
-  mac: nil
-  next_switch : "switch-gw"
-  next_switch_rate : 2.G
-switch-eth0-13:
-  name: "procurve-04-07"
-  nodes: "gdx-[235-252]"
-  rate: 1.G  
-  ip: 172.26.120.104
-  mac: nil
-  next_switch : "switch-gw"
-  next_switch_rate : 2.G
-switch-eth0-14:
   name: "switch10"
   nodes: "gdx-[253-270]"
   rate: 1.G  
@@ -126,7 +110,7 @@ switch-eth0-14:
   mac: 00:12:01:72:cd:42
   next_switch : "switch-gw"
   next_switch_rate : 2.G
-switch-eth0-15:
+switch-eth0-13:
   name: "switch16"
   nodes: "gdx-[271-288]"
   rate: 1.G  
@@ -134,20 +118,35 @@ switch-eth0-15:
   mac: 00:12:01:5b:af:42
   next_switch : "switch-gw"
   next_switch_rate : 3.G
+switch-eth0-14:
+  name: "procurve17"
+  rate: 100.M  
+  ip: 172.26.120.197
+  mac: nil
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-15:
+  name: "procurve18"
+  nodes: "gdx-[163-180]"
+  rate: 100.M  
+  ip: 172.26.120.198
+  mac: nil
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
 switch-eth0-16:
-  name: "switch07"
-  nodes: "gdx-[289-306]"
+  name: "procurve-04-07"
+  nodes: "gdx-[235-252]"
+  rate: 1.G  
+  ip: 172.26.120.104
+  mac: nil
+  next_switch : "switch-gw"
+  next_switch_rate : 2.G
+switch-eth0-17:
+  name: "procurve-04-07"
+  nodes: "gdx-[217-234]"
   rate: 1.G  
   ip: 172.26.120.107
-  mac: 00:12:00:44:68:42
-  next_switch : "switch-gw"
-  next_switch_rate : 3.G
-switch-eth0-17:
-  name: "switch13"
-  nodes: "gdx-[307-310]"
-  rate: 1.G  
-  ip: 172.26.120.113
-  mac: 00:24:f9:2a:0e:41
+  mac: nil
   next_switch : "switch-gw"
   next_switch_rate : 2.G
 switch-bmc-0:
