@@ -4,6 +4,15 @@
     "smp_size": 4,
     "smt_size": 8
   },
+  "bios": {
+    "release_date": "02/23/2007",
+    "vendor": "IBM",
+    "version": "ZYE133AUS-1.08"
+  },
+  "chassis": {
+    "name": "IBM System x3755 -[88774RG]-",
+    "serial": "99A3258"
+  },
   "main_memory": {
     "ram_size": 34359738368,
     "virtual_size": null
@@ -15,7 +24,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.1.205",
-      "mac": "",
+      "mac": "00:14:5e:57:cb:f6",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -30,7 +39,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.133.205",
-      "mac": "",
+      "mac": "00:14:5e:57:cb:f4",
       "management": false,
       "mountable": true,
       "mounted": false,
@@ -43,9 +52,9 @@
       "device": "ib0",
       "driver": "ib_mthca",
       "enabled": true,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:00:1d:fd",
       "interface": "InfiniBand",
       "ip": "172.16.4.205",
-      "mac": "",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -55,12 +64,21 @@
       "version": "InfiniHost MT25208"
     },
     {
+      "device": "ib1",
+      "enabled": false,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:00:1d:fe",
+      "interface": "InfiniBand",
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "InfiniHost MT25208"
+    },
+    {
       "device": "myri0",
-      "driver": "ib_mthca",
+      "driver": "mx_driver",
       "enabled": true,
       "interface": "Myrinet",
       "ip": "172.16.3.205",
-      "mac": "",
+      "mac": "00:60:dd:47:b7:28",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -68,12 +86,25 @@
       "rate": 10000000000,
       "vendor": "Myrinet",
       "version": "10G-PCIE-8A-C"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.7.251",
+      "mac": "00:14:5e:57:cb:f8",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "borderline-10-bmc.bordeaux.grid5000.fr",
+      "rate": 100000000
     }
   ],
   "operating_system": {
-    "name": "ClusterVision OS",
-    "release": "Boron",
-    "version": "3.1"
+    "kernel": "2.6.26",
+    "name": "Debian",
+    "release": "Lenny",
+    "version": "5.0"
   },
   "processor": {
     "cache_l1": null,
@@ -89,14 +120,17 @@
   },
   "storage_devices": [
     {
-      "driver": null,
+      "device": "sda",
+      "driver": "aacraid",
       "interface": "SAS",
+      "model": "8k-l Stripe",
+      "rev": "V1.0",
       "size": 558793544769.287
     }
   ],
   "supported_job_types": {
     "besteffort": true,
-    "deploy": false,
+    "deploy": true,
     "virtual": "amd-v"
   },
   "type": "node",

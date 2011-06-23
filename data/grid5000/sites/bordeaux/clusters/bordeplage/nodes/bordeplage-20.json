@@ -4,33 +4,27 @@
     "smp_size": 2,
     "smt_size": 2
   },
+  "bios": {
+    "release_date": "(05/12/2005)",
+    "vendor": "Dell Computer Corporation",
+    "version": "A03"
+  },
+  "chassis": {
+    "name": "PowerEdge 1855",
+    "serial": "331KV1J"
+  },
   "main_memory": {
     "ram_size": 2147483648,
     "virtual_size": null
   },
   "network_adapters": [
     {
-      "device": "ib0",
-      "driver": "ib_mthca",
-      "enabled": true,
-      "interface": "InfiniBand",
-      "ip": "192.168.132.20",
-      "mac": "",
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "bordeplage-20-ib0.bordeaux.grid5000.fr",
-      "rate": 10000000000,
-      "vendor": "Mellanox",
-      "version": "InfiniHost MT25208"
-    },
-    {
       "device": "eth0",
       "driver": "e1000",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.1.70",
-      "mac": "",
+      "mac": "00:14:22:0c:b3:1c",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -45,7 +39,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.133.70",
-      "mac": "",
+      "mac": "00:14:22:0c:b3:1d",
       "management": false,
       "mountable": true,
       "mounted": false,
@@ -53,14 +47,49 @@
       "rate": 1000000000,
       "vendor": "Intel",
       "version": "82546GB Gigabit Ethernet Controller"
+    },
+    {
+      "device": "ib0",
+      "driver": "ib_mthca",
+      "enabled": true,
+      "guid": "20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:b9",
+      "interface": "InfiniBand",
+      "ip": "192.168.132.20",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "bordeplage-20-ib0.bordeaux.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "InfiniHost MT25208"
+    },
+    {
+      "device": "ib1",
+      "enabled": false,
+      "guid": "20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:ba",
+      "interface": "InfiniBand",
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "InfiniHost MT25208"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "guid": "00:14:22:0c:b3:1c",
+      "interface": "Ethernet",
+      "ip": "172.16.7.70",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "bordeplage-20-bmc.bordeaux.grid5000.fr",
+      "rate": 100000000
     }
   ],
   "operating_system": {
-    "kadeploy_name": "debian-x64-5-prod",
-    "kadeploy_version": "1",
-    "name": "Debian Lenny",
-    "release": null,
-    "version": null
+    "kernel": "2.6.26",
+    "name": "Debian",
+    "release": "Lenny",
+    "version": "5.0"
   },
   "processor": {
     "cache_l1": null,
@@ -76,8 +105,11 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "mptspi",
       "interface": "SCSI",
+      "model": "ST373207LC",
+      "rev": "D7013KT2N397",
       "size": 65192580223.0835
     }
   ],
