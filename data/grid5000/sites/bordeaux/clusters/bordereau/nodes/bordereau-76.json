@@ -4,6 +4,15 @@
     "smp_size": 2,
     "smt_size": 4
   },
+  "bios": {
+    "release_date": "(01/04/2007)",
+    "vendor": "IBM",
+    "version": "1.32-[C0E132AUS-1.32]-"
+  },
+  "chassis": {
+    "name": "IBM System x3455-[7986Z1J]-",
+    "serial": "KDDDTAF"
+  },
   "main_memory": {
     "ram_size": 4294967296,
     "virtual_size": null
@@ -15,7 +24,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.1.177",
-      "mac": "",
+      "mac": "00:14:5e:55:5d:08",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -30,7 +39,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "192.168.133.177",
-      "mac": "",
+      "mac": "00:14:5e:55:5d:09",
       "management": false,
       "mountable": true,
       "mounted": false,
@@ -38,14 +47,25 @@
       "rate": 1000000000,
       "vendor": "Broadcom",
       "version": "BCM5704"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.7.178",
+      "mac": "00:14:5e:55:5d:0a",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "bordereau-76-bmc.bordeaux.grid5000.fr",
+      "rate": 100000000
     }
   ],
   "operating_system": {
-    "kadeploy_name": "debian-x64-5-prod",
-    "kadeploy_version": "1",
-    "name": "Debian Lenny",
-    "release": null,
-    "version": null
+    "Kernel": "2.6.26",
+    "name": "Debian",
+    "release": "Lenny",
+    "version": "5.0"
   },
   "processor": {
     "cache_l1": null,
@@ -61,11 +81,12 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "sata_svw",
       "interface": "SATA",
-      "size": 74505805969.2383,
-      "vendor": "Hitachi",
-      "version": "HDS72168"
+      "model": "HDS721680PLA380",
+      "rev": "P21OAB1A",
+      "size": 74505805969.2383
     }
   ],
   "supported_job_types": {
