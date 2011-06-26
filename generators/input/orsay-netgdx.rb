@@ -24,8 +24,11 @@ site :orsay do |site_uid|
       switch_eth2 = get_switch_for_node lookup("orsay-links","links-eth2","netgdx"), i unless switch_match_node switch_eth2, i
       switch_bmc = get_switch_for_node lookup("orsay-links","links-bmc","netgdx"), i unless switch_match_node switch_bmc, i
       switch_rsa = get_switch_for_node lookup("orsay-links","links-rsa","netgdx"), i unless switch_match_node switch_rsa, i
-      
+
       node "#{cluster_uid}-#{i}" do |node_uid|
+        cmts = lookup('orsay-netgdx', "#{node_uid}", 'comments')
+        comments cmts unless cmts.nil?
+        
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 

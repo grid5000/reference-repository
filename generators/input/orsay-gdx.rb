@@ -26,7 +26,9 @@ site :orsay do |site_uid|
       switch_mx = get_switch_for_node lookup("orsay-links","links-mx","gdx"), i unless switch_match_node switch_mx, i
       
       node "#{cluster_uid}-#{i}" do |node_uid|
-    
+        cmts = lookup('orsay-gdx', "#{node_uid}", 'comments')
+        comments cmts unless cmts.nil?
+            
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         architecture({
           :smp_size => 2, 
