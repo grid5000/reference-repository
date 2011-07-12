@@ -83,7 +83,7 @@ site :orsay do |site_uid|
             :interface => 'Myrinet',
             :device => 'myri0',
             :rate => (eval switch_mx["rate"]),
-            :mac => lookup('orsay-gdx', "#{node_uid}", 'mac_mx'),
+            :mac => lookup('orsay-gdx', "#{node_uid}", 'mac_myri0'),
             :vendor => 'Myrinet',
             :version => '10G-PCIE-8A-C',
             :enabled => true,
