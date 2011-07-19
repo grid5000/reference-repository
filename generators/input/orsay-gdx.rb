@@ -1,23 +1,24 @@
-require 'net/ssh'
 
-def switch_match_node(switch,id); switch != nil and (switch[:nodes][0] <= id and id <= switch[:nodes][1]); end
-def get_switch_for_node(switches,id)
-  switches.each{|k,v| 
-    arr = v.split(",").map{|s| s.to_i}
-    next if id < arr[0] or arr[1] < id
-    return lookup('orsay-network',k).merge({:nodes=>arr})
-  }
-  lookup('orsay-network',"switch-nil").merge({:nodes=>[0,0]})
-end
 
 site :orsay do |site_uid|
-  ssh = Net::SSH.start("frontend.#{site_uid}.grid5000.fr","g5kadmin")
+#  ssh = Net::SSH.start("frontend.#{site_uid}.grid5000.fr","g5kadmin")
   
   cluster :gdx do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil
     misc "bios:1.28/bcm:1.20.17/bmc:1.10/rsaII:1.00"
-    
+#    switches = Hash[["eth0","bmc","rsa","mx"].map{|iface| [iface,{"name"=>"switch"}]}]
+#    switches = Hash[["eth0","bmc","rsa","mx"].map{|iface| [iface,{}]}]
+
+    switches = {}
+    @clusters["gdx"].each.each_with_index {|ifaces, id|
+      ifaces.each{|iface,sw_name| update_switch switches, iface, sw_name }
+      
+      fail "switches = #{switches.inspect}"
+#      switch_eth0 = lookup('orsay-network',ifaces["eth0"])  unless switch_eth0["name"] == ifaces["eth0"]
+      
+    }
+    return
     # WARN: 2 nodes are missing (gdx-311 and gdx-312) and won't appear in the reference
     1.upto(180+132-2) do |i| 
       switch_eth0 = get_switch_for_node lookup("orsay-links","links-eth0","gdx"), i unless switch_match_node switch_eth0, i
