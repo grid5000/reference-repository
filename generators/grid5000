@@ -10,7 +10,7 @@ begin
   Bundler.setup
 rescue LoadError => e
   STDERR.puts e.message
-  STDERR.puts "Try installing bundler: `gem install bundler`"
+  STDERR.puts "Try installing bundler: `sudo gem install bundler`"
   exit!
 rescue Bundler::GemNotFound => e
   STDERR.puts e.message

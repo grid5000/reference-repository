@@ -1,196 +1,143 @@
 --- 
-nodes-eth0-switch: 
-  gdx:
-    switch11: "1,18"
-    switch12: "19,36"
-    switch09: "37,54"
-    switch08: "55,72"
-    switch06: "73,90"
-    switch05: "91,108"
-    switch02: "109,126"
-    switch03: "127,144"
-    switch07: "145,162"
-    switch13: "163,180"
-    switch15: "181,198"
-    switch14: "199,216"
-    switch16: "217,234"
-    switch10: "235,252"
-    procurve17: "253,270"
-    procurve18: "271,288"
-    procurve-04-07: "289,310"
-  netgdx:
-    gw: "1,30"
-nodes-eth1-switch: 
-  netgdx:
-    gw: "1,30"
-nodes-eth2-switch: 
-  netgdx:
-    gw: "1,30"
-nodes-bmc-switch:
-  gdx:
-    netgear01: "1,36"
-    netgear02: "37,72"
-    netgear03: "73,108"
-    netgear04: "109,144"
-    netgear05: "145,180"
-    netgear06: "181,216"
-    netgear07: "217,252"
-    procurve-bmc-06: "253,271"
-    procurve-bmc-09: "272,288"
-    procurve-04-07: "289,310"
-  netgdx:
-    gw: "1,30"
-nodes-rsa-switch:
-  gdx:
-    mrv01: "1,36"
-    mrv02: "37,72"
-    mrv03: "73,108"
-    mrv04: "109,144"
-    mrv05: "145,180"
-    mrv06: "181,216"
-    mrv07: "217,252"
-    mrv08: "253,288"
-    mrv09: "289,310"
-  netgdx:
-    mrv00: "1,30"
-nodes-mx-switch:
-  gdx:
-    switch-mx: "1,310"
 switch-to-switch: 
   switch-nil: 
     nodes: "gdx-1,310-eth1"
+  myri:
+    nodes : "gdx-1,310-myri0"
   gw:
     nodes : 
-      - "netgdx-1,3-eth0"
-      - "netgdx-1,3-eth1"
-      - "netgdx-1,3-eth2"
+      - "netgdx-1,30-eth0"
+      - "netgdx-1,30-eth1"
+      - "netgdx-1,30-eth2"
     next : 
-     - switch11: 
-        width: 2
-        nodes: "gdx-1,18-eth0"
-        next: 
-          - netgear01: 
-             width: 1
-             nodes: "gdx-1,36-bmc"
-     - switch12:
-        width: 2
-        nodes: "gdx-19,36-eth0"
-        next: 
-          - mrv01: 
-             width: 1
-             nodes: "gdx-1,36-rsa"
-     - switch09: 
-        width: 2
-        nodes: "gdx-37,54-eth0"
-        next: 
-          - netgear02: 
-             width: 1
-             nodes: "gdx-37,72-bmc"
-     - switch08:
-        width: 2
-        nodes: "gdx-55,72-eth0"
-        next: 
-          - mrv02: 
-             width: 1
-             nodes: "gdx-37,72-rsa"
-     - switch06: 
-        width: 2
-        nodes: "gdx-73,90-eth0"
-        next: 
-          - netgear03: 
-             width: 1
-             nodes: "gdx-73,108-bmc"
-     - switch05:
-        width: 2
-        nodes: "gdx-91,108-eth0"
-        next: 
-          - mrv03: 
-             width: 1
-             nodes: "gdx-73,108-rsa"
-     - switch03: 
-        width: 2
-        nodes: "gdx-109,126-eth0"
-        next: 
-          - netgear04: 
-             width: 1
-             nodes: "gdx-109,144-bmc"
-     - switch02:
-        width: 2
-        nodes: "gdx-127,144-eth0"
-        next: 
-          - mrv04: 
-             width: 1
-             nodes: "gdx-109,144-rsa"
-     - switch18: 
-        width: 2
-        nodes: "gdx-145,162-eth0"
-        next: 
-          - netgear05: 
-             width: 1
-             nodes: "gdx-145,180-bmc"
-     - switch17:
-        width: 2
-        nodes: "gdx-163,180-eth0"
-        next: 
-          - mrv05: 
-             width: 1
-             nodes: "gdx-145,180-rsa"
-     - switch15: 
-        width: 2
-        nodes: "gdx-181,198-eth0"
-        next: 
-          - netgear06: 
-             width: 1
-             nodes: "gdx-181,216-bmc"
-     - switch14:
-        width: 2
-        nodes: "gdx-199,216-eth0"
-        next: 
-          - mrv06: 
-             width: 1
-             nodes: "gdx-181,216-rsa"
-     - switch07: 
-        width: 2
-        nodes: "gdx-217,234-eth0"
-        next: 
-          - netgear07: 
-             width: 1
-             nodes: "gdx-217,252-bmc"
-     - switch04:
-        width: 2
-        nodes: "gdx-235,252-eth0"
-        next: 
-          - mrv07: 
-             width: 1
-             nodes: "gdx-217,252-rsa"
-     - switch10: 
-        width: 2
-        nodes: "gdx-253,270-eth0"
-        next: 
-          - netgear08: 
-             width: 1
-             nodes: "gdx-253,288-bmc"
-     - switch11:
-        width: 2
-        nodes: "gdx-271,288-eth0"
-        next: 
-          - mrv08: 
-             width: 1
-             nodes: "gdx-253,288-rsa"
-     - switch01: 
-        width: 2
-        nodes: "gdx-298,306-eth0"
-        next: 
-          - netgear09: 
-             width: 1
-             nodes: "gdx-298,310-bmc"
-     - switch13:
-        width: 2
-        nodes: "gdx-307,310-eth0"
-        next: 
-          - mrv09: 
-             width: 1
-             nodes: "gdx-298,310-rsa"
-  switch-mx:
-    nodes : "gdx-1,4-myri0"
+      - netgear10:
+          width: 1
+          nodes: "netgdx-1,30-bmc"
+      - mrv00:
+          width: 1
+          nodes: "netgdx-1,30-rsa"
+      - switch01: 
+          width: 2
+          nodes: "gdx-1,18-eth0"
+          next: 
+            - netgear01: 
+               width: 1
+               nodes: "gdx-1,36-bmc"
+      - switch02:
+          width: 2
+          nodes: "gdx-19,36-eth0"
+          next: 
+            - mrv01: 
+               width: 1
+               nodes: "gdx-1,36-rsa"
+      - switch03: 
+          width: 2
+          nodes: "gdx-37,54-eth0"
+          next: 
+            - netgear02: 
+               width: 1
+               nodes: "gdx-37,72-bmc"
+      - switch04:
+          width: 2
+          nodes: "gdx-55,72-eth0"
+          next: 
+            - mrv02: 
+               width: 1
+               nodes: "gdx-37,72-rsa"
+      - switch05: 
+          width: 2
+          nodes: "gdx-73,90-eth0"
+          next: 
+            - netgear03: 
+               width: 1
+               nodes: "gdx-73,108-bmc"
+      - switch06:
+          width: 2
+          nodes: "gdx-91,108-eth0"
+          next: 
+            - mrv03: 
+               width: 1
+               nodes: "gdx-73,108-rsa"
+      - switch07: 
+          width: 2
+          nodes: "gdx-109,126-eth0"
+          next: 
+            - netgear04: 
+               width: 1
+               nodes: "gdx-109,144-bmc"
+      - switch08:
+          width: 2
+          nodes: "gdx-127,144-eth0"
+          next: 
+            - mrv04: 
+               width: 1
+               nodes: "gdx-109,144-rsa"
+      - switch09: 
+          width: 2
+          nodes: "gdx-145,162-eth0"
+          next: 
+            - netgear05: 
+               width: 1
+               nodes: "gdx-145,180-bmc"
+      - switch10:
+          width: 2
+          nodes: "gdx-163,180-eth0"
+          next: 
+            - mrv05: 
+               width: 1
+               nodes: "gdx-145,180-rsa"
+      - switch11: 
+          width: 2
+          nodes: "gdx-181,198-eth0"
+          next: 
+            - netgear08:
+               width: 1
+               nodes: "gdx-181,216-bmc"
+      - switch12:
+          width: 2
+          nodes: "gdx-199,216-eth0"
+          next: 
+            - mrv06: 
+               width: 1
+               nodes: "gdx-181,216-rsa"
+      - switch13: 
+          width: 2
+          nodes: "gdx-217,234-eth0"
+          next: 
+            - netgear07: 
+               width: 1
+               nodes: "gdx-217,252-bmc"
+      - switch14:
+          width: 2
+          nodes: "gdx-235,252-eth0"
+          next: 
+            - mrv07: 
+               width: 1
+               nodes: "gdx-217,252-rsa"
+      - procurve15:
+          width: 2
+          nodes: "gdx-253,270-eth0"
+          next: 
+            - procurve06: 
+               width: 1
+               nodes: "gdx-253,270-bmc"
+      - procurve16:
+          width: 2
+          nodes: "gdx-271,288-eth0"
+          next: 
+            - procurve09: 
+               width: 1
+               nodes: "gdx-271,288-bmc"
+            - mrv08: 
+               width: 1
+               nodes: "gdx-253,288-rsa"
+      - procurve17:
+          width: 2
+          nodes: 
+            - "gdx-298,310-eth0"
+            - "gdx-298,310-bmc"
+          next: 
+            - mrv09: 
+                width: 1
+                nodes: "gdx-298,310-rsa"
     
