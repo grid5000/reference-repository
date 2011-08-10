@@ -10,6 +10,27 @@
   },
   "network_adapters": [
     {
+      "device": "bmc",
+      "driver": "tg3",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.26.152.8",
+      "mac": "00:11:25:91:47:AB",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "gdx-296-bmc.orsay.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "procurve17.orsay.grid5000.fr",
+      "switch_console": "mrv09.orsay.grid5000.fr",
+      "switch_console_ip": "172.26.120.209",
+      "switch_console_mac": "00:A0:9C:00:25:4A",
+      "switch_ip": "172.26.120.117",
+      "switch_mac": "00:17:A4:80:81:80",
+      "vendor": "Broadcom",
+      "version": "NetXtreme BCM5780"
+    },
+    {
       "device": "myri0",
       "driver": "mx_driver",
       "enabled": true,
@@ -26,6 +47,24 @@
       "switch_mac": "00:60:DD:47:1E:66",
       "vendor": "Myrinet",
       "version": "10G-PCIE-8A-C"
+    },
+    {
+      "device": "eth0",
+      "driver": "tg3",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.24.25.8",
+      "mac": "00:11:25:C4:20:06",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "gdx-296.orsay.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "procurve17.orsay.grid5000.fr",
+      "switch_ip": "172.26.120.117",
+      "switch_mac": "00:17:A4:80:81:80",
+      "vendor": "Broadcom",
+      "version": "NetXtreme BCM5780"
     },
     {
       "device": "eth1",

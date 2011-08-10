@@ -14,7 +14,7 @@ rescue LoadError => e
   exit!
 rescue Bundler::GemNotFound => e
   STDERR.puts e.message
-  STDERR.puts "Try running `bundle install`."
+  STDERR.puts "Try running `sudo bundle install`."
   exit!
 end
 
