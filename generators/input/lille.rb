@@ -15,7 +15,7 @@ cluster :chirloute do |cluster_uid|
     created_at Time.parse("2011-03-25").httpdate
     8.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2,
           :smt_size => 8,
@@ -101,7 +101,7 @@ cluster :chirloute do |cluster_uid|
     created_at Time.parse("2011-03-25").httpdate
     20.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2,
           :smt_size => 8,
