@@ -499,8 +499,8 @@ environment 'lenny-x64-base-2.3' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-base-2.3.tgz", :md5 => "3c255364f601fc19271783269ef541c2"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -515,8 +515,8 @@ environment 'lenny-x64-big-2.3' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-big-2.3.tgz", :md5 => "e5870c72c1a5386c287935dcf39a8a23"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -531,8 +531,8 @@ environment 'lenny-x64-min-0.8' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-min-0.8.tgz", :md5 => "a39dcad30821b7404d8eb5ac1388f650"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -546,8 +546,8 @@ environment 'lenny-x64-nfs-2.3' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-nfs-2.3.tgz", :md5 => "12522a436a2790df866f1ecd63680eff"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -562,8 +562,8 @@ environment 'lenny-x64-xen-2.3' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-xen-2.3.tgz", :md5 => "7ba173eb6b339fe0110d458d987ef10f"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -577,8 +577,8 @@ environment 'lenny-x64-xen-2.4' do
   state "stable"
   file({:path => "/grid5000/images/lenny-x64-xen-2.4.tgz", :md5 => "f22dcbba88a5d61ae3f4aad6c3222614"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -593,8 +593,8 @@ environment 'squeeze-x64-base-0.8' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-base-0.8.tgz", :md5 => "105bd08ea3f3bf4888d371c9a3241ee5"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squeeze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -609,8 +609,8 @@ environment 'squeeze-x64-big-0.8' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-big-0.8.tgz", :md5 => "bf7dcdf526d4cda8a2d23d116e9b08fc"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squeeze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -625,8 +625,8 @@ environment 'squeeze-x64-min-0.8' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-min-0.8.tgz", :md5 => "8aaaf11cb65279f0d747d2dd300fb3ce"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squeeze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -640,8 +640,8 @@ environment 'squeeze-x64-nfs-0.8' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-nfs-0.8.tgz", :md5 => "49642989fa205b8f8e3366aaa149cf29"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squeeze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -656,8 +656,8 @@ environment 'squeeze-x64-xen-0.8' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-xen-0.8.tgz", :md5 => "243961b600246379b1257b57c5905c68"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squeeze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -672,8 +672,8 @@ environment 'squeeze-x64-big-0.9' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-big-0.9.tgz", :md5 => "85b290c1faa2c61df0c9747789d41e94"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squeeze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -688,8 +688,8 @@ environment 'squeeze-x64-nfs-0.9' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-nfs-0.9.tgz", :md5 => "2f232b7d2982bf2623bbde22675d3050"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline , adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squeeze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
@@ -703,8 +703,8 @@ environment 'squeeze-x64-xen-0.9' do
   state "stable"
   file({:path => "/grid5000/images/squeeze-x64-xen-0.9.tgz", :md5 => "9aecdf5ed5c5c07996c66840c0220f24"})
   kernel "2.6.26.2"
-  available_on %w{bordeaux grenoble lille lyon nancy orsay rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
+  valid_on "bordeplage , bordereau , borderline ,  adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squezze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
