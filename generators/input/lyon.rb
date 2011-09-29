@@ -39,9 +39,10 @@ site :lyon do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Debian",
+          :release => "6.0",
+          :version => nil,
+          :kernel => "2.6.32"
         })
         storage_devices [
           {:interface => 'IDE', :size => 80.GB, :driver => "amd74xx"}
@@ -119,9 +120,10 @@ site :lyon do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Debian",
+          :release => "6.0",
+          :version => nil,
+          :kernel => "2.6.32"
         })
         storage_devices [
           {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
