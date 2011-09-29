@@ -30,9 +30,9 @@ site :bordeaux do |site_uid|
         })
         operating_system({
           :name 	=> "Debian",
-          :release 	=> "Lenny",
-          :version 	=> "5.0",
-	  :kernel   	=> "2.6.26"
+          :release 	=> "Squeeze",
+          :version 	=> "6.0",
+	  :kernel   	=> "2.6.32"
         })
         storage_devices [{
       	  :interface 	=> 'SCSI',
