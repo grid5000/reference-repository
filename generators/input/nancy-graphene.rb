@@ -31,9 +31,9 @@ site :nancy do |site_uid|
         })
         operating_system({
           :name => "Debian",
-          :release => "5.0",
+          :release => "6.0",
           :version => nil,
-          :kernel => "2.6.26"
+          :kernel => "2.6.32"
         })
         storage_devices [{
           :interface => 'SATA II',
