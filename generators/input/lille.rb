@@ -38,9 +38,10 @@ cluster :chirloute do |cluster_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Debian",
+          :release => "6.0",
+          :version => nil,
+          :kernel => "2.6.32"
         })
         storage_devices [
           {:interface => 'SATA',
@@ -124,9 +125,10 @@ cluster :chirloute do |cluster_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Debian",
+          :release => "6.0",
+          :version => nil,
+          :kernel => "2.6.32"
         })
         storage_devices [
           {:interface => 'SATA', 
@@ -211,9 +213,10 @@ cluster :chirloute do |cluster_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Debian",
+          :release => "6.0",
+          :version => nil,
+          :kernel => "2.6.32"
         })
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
@@ -309,9 +312,10 @@ cluster :chirloute do |cluster_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "Debian",
+          :release => "6.0",
+          :version => nil,
+          :kernel => "2.6.32"
         })
         storage_devices [
           {:interface => 'SATA II', :size => 250.GB, :driver => "ahci"}
