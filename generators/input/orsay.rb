@@ -83,6 +83,7 @@ def fill_net_ifaces(site_uid,cluster_uid,node_uid,ifaces,switches)
   net_ifaces
 end
 
+# Site description
 site :orsay do |site_uid|
   name "Orsay"
   location "Orsay, France" 
