@@ -30,8 +30,8 @@ end
 
 def update_switch(switches,iface,sw_name)
   unless switches.has_key? iface and switches[iface]["name"] == sw_name
-    sw = lookup('orsay-network',sw_name) 
-    fail "Switch '#{sw_name}' not found in 'orsay-network'" if sw.nil?
+    sw = lookup('orsay-switches',sw_name) 
+    fail "Switch '#{sw_name}' not found in 'orsay-switches'" if sw.nil?
     if sw["rate-in"].nil? 
       fail "Switch '#{sw_name}' input rate must be defined : 'rate' or 'rate-in'" if sw["rate"].nil?
       sw["rate-in"] = sw["rate"]
@@ -83,7 +83,6 @@ def fill_net_ifaces(site_uid,cluster_uid,node_uid,ifaces,switches)
   net_ifaces
 end
 
-# Site description
 site :orsay do |site_uid|
   name "Orsay"
   location "Orsay, France" 
