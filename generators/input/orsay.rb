@@ -138,10 +138,10 @@ site :orsay do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => "debian-x64-5-prod",
-          :release => "5.1.2",
-          :version => "5",
-          :kernel   => "2.6.26"
+          :name => "Debian",
+          :release => "6.0",
+          :version => "1.0",
+          :kernel   => "2.6.32"
         })
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
