@@ -30,8 +30,8 @@ end
 
 def update_switch(switches,iface,sw_name)
   unless switches.has_key? iface and switches[iface]["name"] == sw_name
-    sw = lookup('orsay-network',sw_name) 
-    fail "Switch '#{sw_name}' not found in 'orsay-network'" if sw.nil?
+    sw = lookup('orsay-switches',sw_name) 
+    fail "Switch '#{sw_name}' not found in 'orsay-switches'" if sw.nil?
     if sw["rate-in"].nil? 
       fail "Switch '#{sw_name}' input rate must be defined : 'rate' or 'rate-in'" if sw["rate"].nil?
       sw["rate-in"] = sw["rate"]
@@ -138,10 +138,10 @@ site :orsay do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => "debian-x64-5-prod",
-          :release => "5.1.2",
-          :version => "5",
-          :kernel   => "2.6.26"
+          :name => "Debian",
+          :release => "6.0",
+          :version => "1.0",
+          :kernel   => "2.6.32"
         })
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
@@ -189,10 +189,10 @@ site :orsay do |site_uid|
           :virtual_size => nil
         })
         operating_system({
-          :name => "debian-x64-5-prod",
-          :release => "5.1.2",
-          :version => "5",
-          :kernel   => "2.6.26"
+          :name => "Debian",
+          :release => "6.0",
+          :version => "1.0",
+          :kernel   => "2.6.32"
         })
         storage_devices [
           {:interface => 'SATA', :size => 80.GB, :driver => "sata_svw"}
