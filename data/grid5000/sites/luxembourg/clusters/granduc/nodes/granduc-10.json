@@ -1,0 +1,97 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 4
+  },
+  "bios": {
+    "release_date": "08/10/2007",
+    "vendor": "Dell Inc.",
+    "version": "1.5.1"
+  },
+  "main_memory": {
+    "ram_size": 17179869184,
+    "virtual_size": null
+  },
+  "network_adapters": [
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.176.10",
+      "mac": "00:1c:23:d3:42:56",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "granduc-10-bmc.luxembourg.grid5000.fr",
+      "rate": 1000000000
+    },
+    {
+      "device": "eth0",
+      "driver": "bnx2",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.176.10",
+      "mac": "00:19:b9:f2:0f:50",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "granduc-10.luxembourg.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "C6506E",
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "driver": "bnx2",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "00:19:b9:f2:0f:52",
+      "rate": 1000000000
+    },
+    {
+      "device": "eth2",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "00:1b:21:34:e1:3d",
+      "rate": 10000000000
+    }
+  ],
+  "operating_system": {
+    "kernel": "2.6.32",
+    "name": "Debian",
+    "release": "6.0",
+    "version": null
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": null,
+    "clock_speed": 2000000000,
+    "instruction_set": "",
+    "model": "Intel Xeon",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "L5335"
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "mptsas",
+      "interface": "SATA",
+      "model": "ST9146802SS",
+      "rev": "S207",
+      "size": 149011611938.477,
+      "vendor": "SEAGATE"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": null
+  },
+  "type": "node",
+  "uid": "granduc-10"
+}
