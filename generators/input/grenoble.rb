@@ -1,4 +1,12 @@
+require 'net/ssh'
+
 site :grenoble do |site_uid|
+  host = "adminfront.#{site_uid}.grid5000.fr"
+  user = "g5kadmin"
+  ssh = Net::SSH.start(host,user)
+#    nn = dns_lookup_through_ssh(ssh,"gdx-1.orsay.grid5000.fr")
+#    puts "from dns = #{nn}"
+#  end
   name "Grenoble"
   location "Grenoble, France"
   web
@@ -57,7 +65,7 @@ site :grenoble do |site_uid|
           :vendor => 'Mellanox',
           :version => "InfiniHost MHGH29-XTC",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
           :driver => "mlx4_core"
         },
         {
@@ -79,7 +87,7 @@ site :grenoble do |site_uid|
           :mounted => true,
           :management => false,
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth1'),
           :vendor => "Intel",
           :version => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)",
@@ -92,7 +100,7 @@ site :grenoble do |site_uid|
           :mountable => false,
           :management => true,
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt'),
           :vendor => "Peppercon AG (10437)",
           :version => "1.50"
@@ -148,7 +156,7 @@ site :grenoble do |site_uid|
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
           :driver => "mlx4_core",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup_through_ssh(ssh, "#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
         {
           :interface => 'Ethernet',
@@ -161,7 +169,7 @@ site :grenoble do |site_uid|
           :vendor => 'Intel',
           :version => "Device 10c9 (rev 01)",
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0'),
           :driver => "igb"
         },
@@ -185,7 +193,7 @@ site :grenoble do |site_uid|
           :mountable => false,
           :management => true,
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt'),
           :vendor => 'Super Micro Computer Inc.',
           :version => "1.15"
@@ -237,7 +245,7 @@ site :grenoble do |site_uid|
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
           :driver => "mlx4_core",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-ib0.#{site_uid}.grid5000.fr")
         },
         {
           :interface => 'Ethernet',
@@ -250,7 +258,7 @@ site :grenoble do |site_uid|
           :vendor => 'Intel',
           :version => "Device 10c9 (rev 01)",
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0'),
 			 :driver => "igb"
         },
@@ -287,7 +295,7 @@ site :grenoble do |site_uid|
           :mountable => false,
           :management => true,
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt'),
 	  		 :vendor => 'Super Micro Computer Inc.',
 			 :version => "1.33"
@@ -344,7 +352,7 @@ site :grenoble do |site_uid|
           :vendor => 'Mellanox',
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
           :driver => "mlx4_core"
         },
         {
@@ -370,7 +378,7 @@ site :grenoble do |site_uid|
           :mountable => true,
           :management => false,
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_eth0'),
           :vendor => "Intel",
           :version => "Device 10e7 (rev 01)",
@@ -396,7 +404,7 @@ site :grenoble do |site_uid|
           :mountable => false,
           :management => true,
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-bmc.#{site_uid}.grid5000.fr"),
           :mac => lookup('grenoble', "#{node_uid}", 'mac_mgt'),
           :vendor => "Unknown",
           :version => "1.7"
@@ -404,4 +412,5 @@ site :grenoble do |site_uid|
       end
     end
   end
+  ssh.close
 end
