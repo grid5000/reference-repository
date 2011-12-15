@@ -66,7 +66,8 @@ site :grenoble do |site_uid|
           :version => "InfiniHost MHGH29-XTC",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
-          :driver => "mlx4_core"
+          :driver => "mlx4_core",
+          :ib_guid => lookup('grenoble', "#{node_uid}", 'ib_guid')
         },
         {
           :interface => 'Ethernet',
@@ -156,7 +157,8 @@ site :grenoble do |site_uid|
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
           :driver => "mlx4_core",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup_through_ssh(ssh, "#{node_uid}-ib0.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup_through_ssh(ssh, "#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
+          :ib_guid => lookup('grenoble', "#{node_uid}", 'ib_guid')
         },
         {
           :interface => 'Ethernet',
@@ -245,7 +247,8 @@ site :grenoble do |site_uid|
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
           :driver => "mlx4_core",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-ib0.#{site_uid}.grid5000.fr")
+          :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
+          :ib_guid => lookup('grenoble', "#{node_uid}", 'ib_guid')
         },
         {
           :interface => 'Ethernet',
@@ -285,7 +288,8 @@ site :grenoble do |site_uid|
           :vendor => 'Mellanox',
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s  (rev a0)",
           :ip => "",
-          :driver => "mlx4_core"
+          :driver => "mlx4_core",
+          :ib_guid => lookup('grenoble', "#{node_uid}", 'ib_guid')
         },
         {
           :interface => 'Ethernet',
@@ -353,7 +357,8 @@ site :grenoble do |site_uid|
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip => dns_lookup_through_ssh(ssh,"#{node_uid}-ib0.#{site_uid}.grid5000.fr"),
-          :driver => "mlx4_core"
+          :driver => "mlx4_core",
+          :ib_guid => lookup('grenoble', "#{node_uid}", 'ib_guid')
         },
         {
           :interface => 'InfiniBand',
@@ -365,9 +370,9 @@ site :grenoble do |site_uid|
           :management => false,
           :vendor => 'Mellanox',
           :version => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
+          :ip => "",
           :driver => "mlx4_core",
-          :ip => ""
-
+          :ib_guid => lookup('grenoble', "#{node_uid}", 'ib_guid')
         },
         {
           :interface => 'Ethernet',
