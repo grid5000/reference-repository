@@ -93,7 +93,8 @@ site :rennes do |site_uid|
           :network_address  => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
           :ip               => lookup('rennes-paramount', node_uid, 'network_interfaces', 'myri0', 'ip'), 
           :vendor           => 'Myrinet',
-          :version          => "10G-PCIE-8A-C"
+          :version          => "10G-PCIE-8A-C",
+          :driver           => "mx"
         }]
         bios({
            :version      => lookup('rennes-paramount', node_uid, 'bios', 'version'),

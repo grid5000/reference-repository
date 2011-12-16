@@ -67,7 +67,9 @@ site :rennes do |site_uid|
           :ip               => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :switch           => "c6509-grid",
           :switch_port      => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
-          :mac              => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'mac')
+          :mac              => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'mac'),
+          :vendor           => "Intel",
+          :version          => "80003ES2LAN"
         },
         {
           :interface  => 'Ethernet',

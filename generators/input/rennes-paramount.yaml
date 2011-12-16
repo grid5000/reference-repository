@@ -1,73 +1,36 @@
 --- 
-paramount-33: 
+paramount-1: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:ce
-      ip: 192.168.200.203
     bmc: 
-      mac: 00:19:b9:dc:f9:c4
-      ip: 192.168.202.203
+      mac: 00:19:b9:dc:c0:66
+      ip: 172.17.96.1
+    myri0: 
+      mac: 00:60:dd:47:e4:c2
+      ip: 172.18.96.1
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi3/16
-      mac: 00:19:b9:e9:0f:d4
-      ip: 131.254.202.203
+      switch_port: Gi2/26
+      mac: 00:19:b9:e9:0e:f8
+      ip: 172.16.96.1
     eth1: 
-      mac: 00:19:b9:e9:0f:d6
+      mac: 00:19:b9:e9:0e:fa
   chassis: 
-    serial_number: GFH913J
+    serial_number: 959813J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
     hda: 
       model: HL-DT-ST GCR-8240N
       size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
-    sdb: 
-      model: Virtual  Floppy
-      size: "0"
-      rev: "123"
-      vendor: Dell
-paramount-22: 
-  bios: 
-    version: 1.3.7
-    release_date: 03/26/2007
-    vendor: Dell Inc.
-  network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:c6
-      ip: 192.168.200.192
-    bmc: 
-      mac: 00:19:b9:dd:00:cc
-      ip: 192.168.202.192
-    eth0: 
-      switch_name: c6509-grid
-      switch_port: Gi3/3
-      mac: 00:19:b9:e9:0f:25
-      ip: 131.254.202.192
-    eth1: 
-      mac: 00:19:b9:e9:0f:27
-  chassis: 
-    serial_number: GKF813J
-    manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
-  block_device: 
-    hda: 
-      model: TEAC CD-ROM CD-224E-N
-      size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -76,20 +39,20 @@ paramount-22:
 paramount-11: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:f1
-      ip: 192.168.200.181
     bmc: 
       mac: 00:19:b9:d3:d4:7e
-      ip: 192.168.202.181
+      ip: 172.17.96.11
+    myri0: 
+      mac: 00:60:dd:47:e4:f1
+      ip: 172.18.96.11
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/4
       mac: 00:19:b9:e9:09:30
-      ip: 131.254.202.181
+      ip: 172.16.96.11
     eth1: 
       mac: 00:19:b9:e9:09:32
   chassis: 
@@ -97,125 +60,88 @@ paramount-11:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-1: 
+paramount-22: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:c2
-      ip: 192.168.200.171
     bmc: 
-      mac: 00:19:b9:dc:c0:66
-      ip: 192.168.202.171
+      mac: 00:19:b9:dd:00:cc
+      ip: 172.17.96.22
+    myri0: 
+      mac: 00:60:dd:47:e4:c6
+      ip: 172.18.96.22
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi2/26
-      mac: 00:19:b9:e9:0e:f8
-      ip: 131.254.202.171
+      switch_port: Gi3/3
+      mac: 00:19:b9:e9:0f:25
+      ip: 172.16.96.22
     eth1: 
-      mac: 00:19:b9:e9:0e:fa
+      mac: 00:19:b9:e9:0f:27
   chassis: 
-    serial_number: 959813J
+    serial_number: GKF813J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
-    sdb: 
-      model: Virtual  Floppy
-      size: "0"
-      rev: "123"
-      vendor: Dell
-paramount-23: 
-  bios: 
-    version: 1.3.7
-    release_date: 03/26/2007
-    vendor: Dell Inc.
-  network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:da
-      ip: 192.168.200.193
-    bmc: 
-      mac: 00:19:b9:dd:00:aa
-      ip: 192.168.202.193
-    eth0: 
-      switch_name: c6509-grid
-      switch_port: Gi3/2
-      mac: 00:19:b9:e9:0f:75
-      ip: 131.254.202.193
-    eth1: 
-      mac: 00:19:b9:e9:0f:77
-  chassis: 
-    serial_number: 2LF813J
-    manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
-  block_device: 
     hda: 
       model: TEAC CD-ROM CD-224E-N
       size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-12: 
+paramount-33: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:f7
-      ip: 192.168.200.182
     bmc: 
-      mac: 00:19:b9:dc:f9:a8
-      ip: 192.168.202.182
+      mac: 00:19:b9:dc:f9:c4
+      ip: 172.17.96.33
+    myri0: 
+      mac: 00:60:dd:47:e4:ce
+      ip: 172.18.96.33
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi3/12
-      mac: 00:19:b9:e9:08:a1
-      ip: 131.254.202.182
+      switch_port: Gi3/16
+      mac: 00:19:b9:e9:0f:d4
+      ip: 172.16.96.33
     eth1: 
-      mac: 00:19:b9:e9:08:a3
+      mac: 00:19:b9:e9:0f:d6
   chassis: 
-    serial_number: 5GH913J
+    serial_number: GFH913J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -224,20 +150,20 @@ paramount-12:
 paramount-2: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:e9
-      ip: 192.168.200.172
     bmc: 
       mac: 00:19:b9:dc:c0:88
-      ip: 192.168.202.172
+      ip: 172.17.96.2
+    myri0: 
+      mac: 00:60:dd:47:e4:e9
+      ip: 172.18.96.2
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/23
       mac: 00:19:b9:e9:0b:a6
-      ip: 131.254.202.172
+      ip: 172.16.96.2
     eth1: 
       mac: 00:19:b9:e9:0b:a8
   chassis: 
@@ -245,88 +171,88 @@ paramount-2:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-24: 
+paramount-12: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:eb
-      ip: 192.168.200.194
     bmc: 
-      mac: 00:19:b9:dd:00:b4
-      ip: 192.168.202.194
+      mac: 00:19:b9:dc:f9:a8
+      ip: 172.17.96.12
+    myri0: 
+      mac: 00:60:dd:47:e4:f7
+      ip: 172.18.96.12
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi3/7
-      mac: 00:19:b9:e9:0e:03
-      ip: 131.254.202.194
+      switch_port: Gi3/12
+      mac: 00:19:b9:e9:08:a1
+      ip: 172.16.96.12
     eth1: 
-      mac: 00:19:b9:e9:0e:05
+      mac: 00:19:b9:e9:08:a3
   chassis: 
-    serial_number: DKF813J
+    serial_number: 5GH913J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
+    sdb: 
+      model: Virtual  Floppy
+      size: "0"
+      rev: "123"
+      vendor: Dell
+paramount-23: 
+  bios: 
+    version: 1.3.7
+    vendor: Dell Inc.
+    release_date: 03/26/2007
+  network_interfaces: 
+    bmc: 
+      mac: 00:19:b9:dd:00:aa
+      ip: 172.17.96.23
+    myri0: 
+      mac: 00:60:dd:47:e4:da
+      ip: 172.18.96.23
+    eth0: 
+      switch_name: c6509-grid
+      switch_port: Gi3/2
+      mac: 00:19:b9:e9:0f:75
+      ip: 172.16.96.23
+    eth1: 
+      mac: 00:19:b9:e9:0f:77
+  chassis: 
+    serial_number: 2LF813J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
     hda: 
       model: TEAC CD-ROM CD-224E-N
       size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
-    sdb: 
-      model: Virtual  Floppy
-      size: "0"
-      rev: "123"
-      vendor: Dell
-paramount-13: 
-  bios: 
-    version: 1.3.7
-    release_date: 03/26/2007
-    vendor: Dell Inc.
-  network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:c0
-      ip: 192.168.200.183
-    bmc: 
-      mac: 00:19:b9:dc:f9:d2
-      ip: 192.168.202.183
-    eth0: 
-      switch_name: c6509-grid
-      switch_port: Gi3/13
-      mac: 00:19:b9:e9:11:19
-      ip: 131.254.202.183
-    eth1: 
-      mac: 00:19:b9:e9:11:1b
-  chassis: 
-    serial_number: DFH913J
-    manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
-  block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -335,20 +261,20 @@ paramount-13:
 paramount-3: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:e4
-      ip: 192.168.200.173
     bmc: 
       mac: 00:19:b9:dc:c0:64
-      ip: 192.168.202.173
+      ip: 172.17.96.3
+    myri0: 
+      mac: 00:60:dd:47:e4:e4
+      ip: 172.18.96.3
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/27
       mac: 00:19:b9:e9:0c:cd
-      ip: 131.254.202.173
+      ip: 172.16.96.3
     eth1: 
       mac: 00:19:b9:e9:0c:cf
   chassis: 
@@ -356,51 +282,88 @@ paramount-3:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-25: 
+paramount-13: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:c8
-      ip: 192.168.200.195
     bmc: 
-      mac: 00:19:b9:dd:03:b9
-      ip: 192.168.202.195
+      mac: 00:19:b9:dc:f9:d2
+      ip: 172.17.96.13
+    myri0: 
+      mac: 00:60:dd:47:e4:c0
+      ip: 172.18.96.13
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi3/9
-      mac: 00:19:b9:e9:0d:e0
-      ip: 131.254.202.195
+      switch_port: Gi3/13
+      mac: 00:19:b9:e9:11:19
+      ip: 172.16.96.13
     eth1: 
-      mac: 00:19:b9:e9:0d:e2
+      mac: 00:19:b9:e9:11:1b
   chassis: 
-    serial_number: FKF813J
+    serial_number: DFH913J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: TEAC CD-ROM CD-224E-N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
+    sdb: 
+      model: Virtual  Floppy
+      size: "0"
+      rev: "123"
+      vendor: Dell
+paramount-24: 
+  bios: 
+    version: 1.3.7
+    vendor: Dell Inc.
+    release_date: 03/26/2007
+  network_interfaces: 
+    bmc: 
+      mac: 00:19:b9:dd:00:b4
+      ip: 172.17.96.24
+    myri0: 
+      mac: 00:60:dd:47:e4:eb
+      ip: 172.18.96.24
+    eth0: 
+      switch_name: c6509-grid
+      switch_port: Gi3/7
+      mac: 00:19:b9:e9:0e:03
+      ip: 172.16.96.24
+    eth1: 
+      mac: 00:19:b9:e9:0e:05
+  chassis: 
+    serial_number: DKF813J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
+    hda: 
+      model: TEAC CD-ROM CD-224E-N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -409,20 +372,20 @@ paramount-25:
 paramount-14: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:f5
-      ip: 192.168.200.184
     bmc: 
       mac: 00:19:b9:dc:f9:e0
-      ip: 192.168.202.184
+      ip: 172.17.96.14
+    myri0: 
+      mac: 00:60:dd:47:e4:f5
+      ip: 172.18.96.14
     eth0: 
       switch_name: c6509-grid
       switch_port: 
       mac: 00:19:b9:e9:08:97
-      ip: 131.254.202.184
+      ip: 172.16.96.14
     eth1: 
       mac: 00:19:b9:e9:08:99
   chassis: 
@@ -430,83 +393,46 @@ paramount-14:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
-paramount-26: 
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
+paramount-25: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:c7
-      ip: 192.168.200.196
     bmc: 
-      mac: 00:19:b9:dd:03:75
-      ip: 192.168.202.196
+      mac: 00:19:b9:dd:03:b9
+      ip: 172.17.96.25
+    myri0: 
+      mac: 00:60:dd:47:e4:c8
+      ip: 172.18.96.25
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi3/5
-      mac: 00:19:b9:e9:0e:e9
-      ip: 131.254.202.196
+      switch_port: Gi3/9
+      mac: 00:19:b9:e9:0d:e0
+      ip: 172.16.96.25
     eth1: 
-      mac: 00:19:b9:e9:0e:eb
+      mac: 00:19:b9:e9:0d:e2
   chassis: 
-    serial_number: JKF813J
+    serial_number: FKF813J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
     hda: 
       model: TEAC CD-ROM CD-224E-N
       size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
-    sdb: 
-      model: Virtual  Floppy
-      size: "0"
-      rev: "123"
-      vendor: Dell
-paramount-15: 
-  bios: 
-    version: 1.3.7
-    release_date: 03/26/2007
-    vendor: Dell Inc.
-  network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:c3
-      ip: 192.168.200.185
-    bmc: 
-      mac: 00:19:b9:dc:f9:ee
-      ip: 192.168.202.185
-    eth0: 
-      switch_name: c6509-grid
-      switch_port: Gi3/8
-      mac: 00:19:b9:e9:08:7e
-      ip: 131.254.202.185
-    eth1: 
-      mac: 00:19:b9:e9:08:80
-  chassis: 
-    serial_number: 4GH913J
-    manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
-  block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -515,20 +441,20 @@ paramount-15:
 paramount-4: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:d2
-      ip: 192.168.200.174
     bmc: 
       mac: 00:19:b9:dc:c0:6e
-      ip: 192.168.202.174
+      ip: 172.17.96.4
+    myri0: 
+      mac: 00:60:dd:47:e4:d2
+      ip: 172.18.96.4
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/24
       mac: 00:19:b9:e9:0e:6c
-      ip: 131.254.202.174
+      ip: 172.16.96.4
     eth1: 
       mac: 00:19:b9:e9:0e:6e
   chassis: 
@@ -536,88 +462,88 @@ paramount-4:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-27: 
+paramount-15: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:ca
-      ip: 192.168.200.197
     bmc: 
-      mac: 00:19:b9:dd:00:c8
-      ip: 192.168.202.197
+      mac: 00:19:b9:dc:f9:ee
+      ip: 172.17.96.15
+    myri0: 
+      mac: 00:60:dd:47:e4:c3
+      ip: 172.18.96.15
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi2/2
-      mac: 00:19:b9:e9:0f:d9
-      ip: 131.254.202.197
+      switch_port: Gi3/8
+      mac: 00:19:b9:e9:08:7e
+      ip: 172.16.96.15
     eth1: 
-      mac: 00:19:b9:e9:0f:db
+      mac: 00:19:b9:e9:08:80
   chassis: 
-    serial_number: HKF813J
+    serial_number: 4GH913J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
+    sdb: 
+      model: Virtual  Floppy
+      size: "0"
+      rev: "123"
+      vendor: Dell
+paramount-26: 
+  bios: 
+    version: 1.3.7
+    vendor: Dell Inc.
+    release_date: 03/26/2007
+  network_interfaces: 
+    bmc: 
+      mac: 00:19:b9:dd:03:75
+      ip: 172.17.96.26
+    myri0: 
+      mac: 00:60:dd:47:e4:c7
+      ip: 172.18.96.26
+    eth0: 
+      switch_name: c6509-grid
+      switch_port: Gi3/5
+      mac: 00:19:b9:e9:0e:e9
+      ip: 172.16.96.26
+    eth1: 
+      mac: 00:19:b9:e9:0e:eb
+  chassis: 
+    serial_number: JKF813J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
     hda: 
       model: TEAC CD-ROM CD-224E-N
       size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
-    sdb: 
-      model: Virtual  Floppy
-      size: "0"
-      rev: "123"
-      vendor: Dell
-paramount-16: 
-  bios: 
-    version: 1.3.7
-    release_date: 03/26/2007
-    vendor: Dell Inc.
-  network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:68:c2
-      ip: 192.168.200.186
-    bmc: 
-      mac: 00:19:b9:dc:fc:a9
-      ip: 192.168.202.186
-    eth0: 
-      switch_name: c6509-grid
-      switch_port: Gi2/6
-      mac: 00:19:b9:e9:08:2e
-      ip: 131.254.202.186
-    eth1: 
-      mac: 00:19:b9:e9:08:30
-  chassis: 
-    serial_number: 2GH913J
-    manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
-  block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -626,20 +552,20 @@ paramount-16:
 paramount-5: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e5:00
-      ip: 192.168.200.175
     bmc: 
       mac: 00:19:b9:dc:c0:8e
-      ip: 192.168.202.175
+      ip: 172.17.96.5
+    myri0: 
+      mac: 00:60:dd:47:e5:00
+      ip: 172.18.96.5
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/25
       mac: 00:19:b9:e9:0f:11
-      ip: 131.254.202.175
+      ip: 172.16.96.5
     eth1: 
       mac: 00:19:b9:e9:0f:13
   chassis: 
@@ -647,88 +573,88 @@ paramount-5:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-28: 
+paramount-16: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:d0
-      ip: 192.168.200.198
     bmc: 
-      mac: 00:19:b9:dc:c0:40
-      ip: 192.168.202.198
+      mac: 00:19:b9:dc:fc:a9
+      ip: 172.17.96.16
+    myri0: 
+      mac: 00:60:dd:47:68:c2
+      ip: 172.18.96.16
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi3/14
-      mac: 00:19:b9:e9:0e:cb
-      ip: 131.254.202.198
+      switch_port: Gi2/6
+      mac: 00:19:b9:e9:08:2e
+      ip: 172.16.96.16
     eth1: 
-      mac: 00:19:b9:e9:0e:cd
+      mac: 00:19:b9:e9:08:30
   chassis: 
-    serial_number: 4QD813J
+    serial_number: 2GH913J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-17: 
+paramount-27: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:d3
-      ip: 192.168.200.187
     bmc: 
-      mac: 00:19:b9:dc:f9:e6
-      ip: 192.168.202.187
+      mac: 00:19:b9:dd:00:c8
+      ip: 172.17.96.27
+    myri0: 
+      mac: 00:60:dd:47:e4:ca
+      ip: 172.18.96.27
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi3/4
-      mac: 00:19:b9:e9:08:4c
-      ip: 131.254.202.187
+      switch_port: Gi2/2
+      mac: 00:19:b9:e9:0f:d9
+      ip: 172.16.96.27
     eth1: 
-      mac: 00:19:b9:e9:08:4e
+      mac: 00:19:b9:e9:0f:db
   chassis: 
-    serial_number: 1GH913J
+    serial_number: HKF813J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: TEAC CD-ROM CD-224E-N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -737,20 +663,20 @@ paramount-17:
 paramount-6: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:ec
-      ip: 192.168.200.176
     bmc: 
       mac: 00:19:b9:dc:c0:5a
-      ip: 192.168.202.176
+      ip: 172.17.96.6
+    myri0: 
+      mac: 00:60:dd:47:e4:ec
+      ip: 172.18.96.6
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/28
       mac: 00:19:b9:e9:0d:40
-      ip: 131.254.202.176
+      ip: 172.16.96.6
     eth1: 
       mac: 00:19:b9:e9:0d:42
   chassis: 
@@ -758,88 +684,88 @@ paramount-6:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-29: 
+paramount-17: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:c9
-      ip: 192.168.200.199
     bmc: 
-      mac: 00:19:b9:dd:00:c4
-      ip: 192.168.202.199
+      mac: 00:19:b9:dc:f9:e6
+      ip: 172.17.96.17
+    myri0: 
+      mac: 00:60:dd:47:e4:d3
+      ip: 172.18.96.17
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi2/8
-      mac: 00:19:b9:e9:0e:80
-      ip: 131.254.202.199
+      switch_port: Gi3/4
+      mac: 00:19:b9:e9:08:4c
+      ip: 172.16.96.17
     eth1: 
-      mac: 00:19:b9:e9:0e:82
+      mac: 00:19:b9:e9:08:4e
   chassis: 
-    serial_number: 9QD813J
+    serial_number: 1GH913J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-18: 
+paramount-28: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:cc
-      ip: 192.168.200.188
     bmc: 
-      mac: 00:19:b9:dc:f9:da
-      ip: 192.168.202.188
+      mac: 00:19:b9:dc:c0:40
+      ip: 172.17.96.28
+    myri0: 
+      mac: 00:60:dd:47:e4:d0
+      ip: 172.18.96.28
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi3/1
-      mac: 00:19:b9:e9:11:a5
-      ip: 131.254.202.188
+      switch_port: Gi3/14
+      mac: 00:19:b9:e9:0e:cb
+      ip: 172.16.96.28
     eth1: 
-      mac: 00:19:b9:e9:11:a7
+      mac: 00:19:b9:e9:0e:cd
   chassis: 
-    serial_number: FFH913J
+    serial_number: 4QD813J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -848,20 +774,20 @@ paramount-18:
 paramount-7: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:e6
-      ip: 192.168.200.177
     bmc: 
       mac: 00:19:b9:dc:c4:29
-      ip: 192.168.202.177
+      ip: 172.17.96.7
+    myri0: 
+      mac: 00:60:dd:47:e4:e6
+      ip: 172.18.96.7
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/19
       mac: 00:19:b9:e9:0d:77
-      ip: 131.254.202.177
+      ip: 172.16.96.7
     eth1: 
       mac: 00:19:b9:e9:0d:79
   chassis: 
@@ -869,88 +795,88 @@ paramount-7:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
-    sdb: 
-      model: Virtual  Floppy
-      size: "0"
-      rev: "123"
-      vendor: Dell
-paramount-30: 
-  bios: 
-    version: 2.3.1
-    release_date: 04/29/2008
-    vendor: Dell Inc.
-  network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:c1
-      ip: 192.168.200.200
-    bmc: 
-      mac: 00:19:b9:dd:03:bb
-      ip: 192.168.202.200
-    eth0: 
-      switch_name: c6509-grid
-      switch_port: Gi2/1
-      mac: 00:19:b9:f3:e4:65
-      ip: 131.254.202.200
-    eth1: 
-      mac: 00:19:b9:f3:e4:67
-  chassis: 
-    serial_number: DELL
-    manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
-  block_device: 
     hda: 
       model: HL-DT-ST GCR-8240N
       size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-19: 
+paramount-18: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:de
-      ip: 192.168.200.189
     bmc: 
-      mac: 00:19:b9:dc:fc:af
-      ip: 192.168.202.189
+      mac: 00:19:b9:dc:f9:da
+      ip: 172.17.96.18
+    myri0: 
+      mac: 00:60:dd:47:e4:cc
+      ip: 172.18.96.18
     eth0: 
       switch_name: c6509-grid
-      switch_port: Gi2/3
-      mac: 00:19:b9:e9:11:5f
-      ip: 131.254.202.189
+      switch_port: Gi3/1
+      mac: 00:19:b9:e9:11:a5
+      ip: 172.16.96.18
     eth1: 
-      mac: 00:19:b9:e9:11:61
+      mac: 00:19:b9:e9:11:a7
   chassis: 
-    serial_number: JFH913J
+    serial_number: FFH913J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
+    sdb: 
+      model: Virtual  Floppy
+      size: "0"
+      rev: "123"
+      vendor: Dell
+paramount-29: 
+  bios: 
+    version: 1.3.7
+    vendor: Dell Inc.
+    release_date: 03/26/2007
+  network_interfaces: 
+    bmc: 
+      mac: 00:19:b9:dd:00:c4
+      ip: 172.17.96.29
+    myri0: 
+      mac: 00:60:dd:47:e4:c9
+      ip: 172.18.96.29
+    eth0: 
+      switch_name: c6509-grid
+      switch_port: Gi2/8
+      mac: 00:19:b9:e9:0e:80
+      ip: 172.16.96.29
+    eth1: 
+      mac: 00:19:b9:e9:0e:82
+  chassis: 
+    serial_number: 9QD813J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
@@ -959,20 +885,20 @@ paramount-19:
 paramount-8: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:f6
-      ip: 192.168.200.178
     bmc: 
       mac: 00:19:b9:dc:c0:62
-      ip: 192.168.202.178
+      ip: 172.17.96.8
+    myri0: 
+      mac: 00:60:dd:47:e4:f6
+      ip: 172.18.96.8
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/21
       mac: 00:19:b9:e9:0e:30
-      ip: 131.254.202.178
+      ip: 172.16.96.8
     eth1: 
       mac: 00:19:b9:e9:0e:32
   chassis: 
@@ -980,40 +906,114 @@ paramount-8:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-31: 
+paramount-19: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:e3
-      ip: 192.168.200.201
     bmc: 
-      mac: 00:19:b9:dd:03:b5
-      ip: 192.168.202.201
+      mac: 00:19:b9:dc:fc:af
+      ip: 172.17.96.19
+    myri0: 
+      mac: 00:60:dd:47:e4:de
+      ip: 172.18.96.19
     eth0: 
       switch_name: c6509-grid
-      switch_port: 
-      mac: 00:19:b9:e9:0f:16
-      ip: 131.254.202.201
+      switch_port: Gi2/3
+      mac: 00:19:b9:e9:11:5f
+      ip: 172.16.96.19
     eth1: 
-      mac: 00:19:b9:e9:0f:18
+      mac: 00:19:b9:e9:11:61
   chassis: 
-    serial_number: 5QD813J
+    serial_number: JFH913J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
+    sdb: 
+      model: Virtual  Floppy
+      size: "0"
+      rev: "123"
+      vendor: Dell
+paramount-30: 
+  bios: 
+    version: 2.3.1
+    vendor: Dell Inc.
+    release_date: 04/29/2008
+  network_interfaces: 
+    bmc: 
+      mac: 00:19:b9:dd:03:bb
+      ip: 172.17.96.30
+    myri0: 
+      mac: 00:60:dd:47:e4:c1
+      ip: 172.18.96.30
+    eth0: 
+      switch_name: c6509-grid
+      switch_port: Gi2/1
+      mac: 00:19:b9:f3:e4:65
+      ip: 172.16.96.30
+    eth1: 
+      mac: 00:19:b9:f3:e4:67
+  chassis: 
+    serial_number: DELL
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
+    sdb: 
+      model: Virtual  Floppy
+      size: "0"
+      rev: "123"
+      vendor: Dell
+paramount-9: 
+  bios: 
+    version: 1.3.7
+    vendor: Dell Inc.
+    release_date: 03/26/2007
+  network_interfaces: 
+    bmc: 
+      mac: 00:19:b9:dc:c0:6c
+      ip: 172.17.96.9
+    myri0: 
+      mac: 00:60:dd:47:e4:e5
+      ip: 172.18.96.9
+    eth0: 
+      switch_name: c6509-grid
+      switch_port: Gi2/5
+      mac: 00:19:b9:e9:0c:dc
+      ip: 172.16.96.9
+    eth1: 
+      mac: 00:19:b9:e9:0c:de
+  chassis: 
+    serial_number: 759813J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
@@ -1033,20 +1033,20 @@ paramount-31:
 paramount-20: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:f2
-      ip: 192.168.200.190
     bmc: 
       mac: 00:19:b9:dd:00:ba
-      ip: 192.168.202.190
+      ip: 172.17.96.20
+    myri0: 
+      mac: 00:60:dd:47:e4:f2
+      ip: 172.18.96.20
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/22
       mac: 00:19:b9:e9:10:56
-      ip: 131.254.202.190
+      ip: 172.16.96.20
     eth1: 
       mac: 00:19:b9:e9:10:58
   chassis: 
@@ -1054,119 +1054,45 @@ paramount-20:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
     hda: 
       model: TEAC CD-ROM CD-224E-N
       size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
     sdb: 
       model: Virtual  Floppy
       size: "0"
       rev: "123"
       vendor: Dell
-paramount-9: 
+paramount-31: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
-  network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:e5
-      ip: 192.168.200.179
-    bmc: 
-      mac: 00:19:b9:dc:c0:6c
-      ip: 192.168.202.179
-    eth0: 
-      switch_name: c6509-grid
-      switch_port: Gi2/5
-      mac: 00:19:b9:e9:0c:dc
-      ip: 131.254.202.179
-    eth1: 
-      mac: 00:19:b9:e9:0c:de
-  chassis: 
-    serial_number: 759813J
-    manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
-  block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
-    sdb: 
-      model: Virtual  Floppy
-      size: "0"
-      rev: "123"
-      vendor: Dell
-paramount-32: 
-  bios: 
-    version: 1.3.7
     release_date: 03/26/2007
-    vendor: Dell Inc.
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:d9
-      ip: 192.168.200.202
     bmc: 
-      mac: 00:19:b9:dc:c0:3c
-      ip: 192.168.202.202
-    eth0: 
-      switch_name: c6509-grid
-      switch_port: Gi8/44
-      mac: 00:19:b9:e9:0e:62
-      ip: 131.254.202.202
-    eth1: 
-      mac: 00:19:b9:e9:0e:64
-  chassis: 
-    serial_number: 1QD813J
-    manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
-  block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
-    sda: 
-      model: PERC 5/i
-      size: "1169686528"
-      rev: "1.03"
-      vendor: DELL
-    sdb: 
-      model: Virtual  Floppy
-      size: "0"
-      rev: "123"
-      vendor: Dell
-paramount-21: 
-  bios: 
-    version: 1.3.7
-    release_date: 03/26/2007
-    vendor: Dell Inc.
-  network_interfaces: 
+      mac: 00:19:b9:dd:03:b5
+      ip: 172.17.96.31
     myri0: 
-      mac: 00:60:dd:47:e4:f8
-      ip: 192.168.200.191
-    bmc: 
-      mac: 00:19:b9:dd:00:b6
-      ip: 192.168.202.191
+      mac: 00:60:dd:47:e4:e3
+      ip: 172.18.96.31
     eth0: 
       switch_name: c6509-grid
       switch_port: 
-      mac: 00:19:b9:e9:03:5b
-      ip: 131.254.202.191
+      mac: 00:19:b9:e9:0f:16
+      ip: 172.16.96.31
     eth1: 
-      mac: 00:19:b9:e9:03:5d
+      mac: 00:19:b9:e9:0f:18
   chassis: 
-    serial_number: 1LF813J
+    serial_number: 5QD813J
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
     hda: 
-      model: TEAC CD-ROM CD-224E-N
+      model: HL-DT-ST GCR-8240N
       size: "8388604"
     sda: 
       model: PERC 5/i
@@ -1181,20 +1107,20 @@ paramount-21:
 paramount-10: 
   bios: 
     version: 1.3.7
-    release_date: 03/26/2007
     vendor: Dell Inc.
+    release_date: 03/26/2007
   network_interfaces: 
-    myri0: 
-      mac: 00:60:dd:47:e4:cb
-      ip: 192.168.200.180
     bmc: 
       mac: 00:19:b9:dc:7d:08
-      ip: 192.168.202.180
+      ip: 172.17.96.10
+    myri0: 
+      mac: 00:60:dd:47:e4:cb
+      ip: 172.18.96.10
     eth0: 
       switch_name: c6509-grid
       switch_port: Gi2/10
       mac: 00:19:b9:e9:0c:d2
-      ip: 131.254.202.180
+      ip: 172.16.96.10
     eth1: 
       mac: 00:19:b9:e9:0c:d4
   chassis: 
@@ -1202,14 +1128,88 @@ paramount-10:
     manufacturer: Dell Inc.
     product_name: PowerEdge 1950
   block_device: 
-    hda: 
-      model: HL-DT-ST GCR-8240N
-      size: "8388604"
     sda: 
       model: PERC 5/i
       size: "1169686528"
       rev: "1.03"
       vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
+    sdb: 
+      model: Virtual  Floppy
+      size: "0"
+      rev: "123"
+      vendor: Dell
+paramount-21: 
+  bios: 
+    version: 1.3.7
+    vendor: Dell Inc.
+    release_date: 03/26/2007
+  network_interfaces: 
+    bmc: 
+      mac: 00:19:b9:dd:00:b6
+      ip: 172.17.96.21
+    myri0: 
+      mac: 00:60:dd:47:e4:f8
+      ip: 172.18.96.21
+    eth0: 
+      switch_name: c6509-grid
+      switch_port: 
+      mac: 00:19:b9:e9:03:5b
+      ip: 172.16.96.21
+    eth1: 
+      mac: 00:19:b9:e9:03:5d
+  chassis: 
+    serial_number: 1LF813J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
+    hda: 
+      model: TEAC CD-ROM CD-224E-N
+      size: "8388604"
+    sdb: 
+      model: Virtual  Floppy
+      size: "0"
+      rev: "123"
+      vendor: Dell
+paramount-32: 
+  bios: 
+    version: 1.3.7
+    vendor: Dell Inc.
+    release_date: 03/26/2007
+  network_interfaces: 
+    bmc: 
+      mac: 00:19:b9:dc:c0:3c
+      ip: 172.17.96.32
+    myri0: 
+      mac: 00:60:dd:47:e4:d9
+      ip: 172.18.96.32
+    eth0: 
+      switch_name: c6509-grid
+      switch_port: Gi8/44
+      mac: 00:19:b9:e9:0e:62
+      ip: 172.16.96.32
+    eth1: 
+      mac: 00:19:b9:e9:0e:64
+  chassis: 
+    serial_number: 1QD813J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  block_device: 
+    sda: 
+      model: PERC 5/i
+      size: "1169686528"
+      rev: "1.03"
+      vendor: DELL
+    hda: 
+      model: HL-DT-ST GCR-8240N
+      size: "8388604"
     sdb: 
       model: Virtual  Floppy
       size: "0"
