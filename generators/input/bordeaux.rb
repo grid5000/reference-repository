@@ -9,5 +9,6 @@ site :bordeaux do |site_uid|
   sys_admin_contact "bordeaux-staff@lists.grid5000.fr"
   security_contact "bordeaux-staff@lists.grid5000.fr"
   user_support_contact "bordeaux-staff@lists.grid5000.fr"
+  compilation_server false
 
 end
