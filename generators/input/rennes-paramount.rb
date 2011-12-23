@@ -1,5 +1,5 @@
 site :rennes do |site_uid|
-  
+
   cluster :paramount do |cluster_uid|
     model "Dell PowerEdge 1950"
     created_at Time.parse("2007-09-01").httpdate
@@ -11,7 +11,7 @@ site :rennes do |site_uid|
           :smt_size       => 4,
           :platform_type  => "x86_64"
         })
-        
+
         processor({
           :vendor             => "Intel",
           :model              => "Intel Xeon",
@@ -22,7 +22,7 @@ site :rennes do |site_uid|
           :cache_l1           => nil,
           :cache_l1i          => nil,
           :cache_l1d          => nil,
-          :cache_l2           => nil          
+          :cache_l2           => nil
         })
         main_memory({
           :ram_size     => 8.GiB,
@@ -91,10 +91,22 @@ site :rennes do |site_uid|
           :mounted          => true,
           :device           => "myri0",
           :network_address  => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
-          :ip               => lookup('rennes-paramount', node_uid, 'network_interfaces', 'myri0', 'ip'), 
+          :ip               => lookup('rennes-paramount', node_uid, 'network_interfaces', 'myri0', 'ip'),
           :vendor           => 'Myrinet',
           :version          => "10G-PCIE-8A-C",
           :driver           => "mx"
+        },
+         {
+          :interface        => 'Ethernet',
+          :rate             => 100.M,
+          :enabled          => true,
+          :management       => true,
+          :mountable        => false,
+          :mounted          => false,
+          :device           => "bmc",
+          :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+          :ip               => lookup('rennes-paramount', node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :mac              => lookup('rennes-paramount', node_uid, 'network_interfaces', 'bmc', 'mac'),
         }]
         bios({
            :version      => lookup('rennes-paramount', node_uid, 'bios', 'version'),
@@ -105,5 +117,5 @@ site :rennes do |site_uid|
       end
     end
   end
-  
+
 end

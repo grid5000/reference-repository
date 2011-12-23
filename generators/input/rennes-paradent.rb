@@ -1,14 +1,14 @@
 site :rennes do |site_uid|
-  
+
   cluster :paradent do |cluster_uid|
     model "Carry System"
     created_at Time.parse("2009-02-01").httpdate
-    
+
     64.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
-          :smp_size       => 2, 
+          :smp_size       => 2,
           :smt_size       => 8,
           :platform_type  => "x86_64"
           })
@@ -77,16 +77,32 @@ site :rennes do |site_uid|
           :enabled    => false,
           :device     => "eth1",
           :driver     => "e1000e",
+          :vendor           => "Intel",
+          :version          => "80003ES2LAN",
           :mac        => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth1', 'mac')
+        },
+         {
+          :interface        => 'Ethernet',
+          :rate             => 100.M,
+          :enabled          => true,
+          :management       => true,
+          :mountable        => false,
+          :mounted          => false,
+          :device           => "bmc",
+          :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+          :ip               => lookup('rennes-paradent', node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :mac              => lookup('rennes-paradent', node_uid, 'network_interfaces', 'bmc', 'mac'),
+          :vendor           => "Tyan",
+          :version          => "M3296"
         }]
         bios({
            :version      => lookup('rennes-paradent', node_uid, 'bios', 'version'),
            :vendor       => lookup('rennes-paradent', node_uid, 'bios', 'vendor'),
            :release_date => lookup('rennes-paradent', node_uid, 'bios', 'release_date')
          })
-         #chassis({:serial_number => lookup('rennes-paradent', node_uid, 'chassis', 'serial_number')})        
+         #chassis({:serial_number => lookup('rennes-paradent', node_uid, 'chassis', 'serial_number')})
       end
     end
   end
-  
+
 end
