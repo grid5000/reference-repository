@@ -4,6 +4,15 @@
     "smp_size": 2,
     "smt_size": 4
   },
+  "bios": {
+    "release_date": null,
+    "vendor": null,
+    "version": null
+  },
+  "chassis": {
+    "name": "Sun Fire X2200 M2",
+    "serial": "0650QBT135"
+  },
   "main_memory": {
     "ram_size": 4294967296,
     "virtual_size": null
@@ -21,7 +30,8 @@
       "mounted": true,
       "network_address": "sol-45.sophia.grid5000.fr",
       "rate": 1000000000,
-      "switch": "fastiron",
+      "switch": "FastIron",
+      "switch_port": "4/18",
       "vendor": "nVidia",
       "version": "MCP55 Pro"
     },
@@ -36,28 +46,23 @@
       "version": "MCP55 Pro"
     },
     {
-      "driver": "tg3",
-      "enabled": false,
+      "device": "bmc",
+      "enabled": true,
       "interface": "Ethernet",
-      "mac": null,
-      "rate": 1000000000,
-      "vendor": "Broadcom",
-      "version": "BCM5715c"
-    },
-    {
-      "driver": "tg3",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": null,
-      "rate": 1000000000,
-      "vendor": "Broadcom",
-      "version": "BCM5715c"
+      "ip": "10.96.22.45",
+      "mac": "00:16:36:c5:93:12",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "sol-45-bmc.sophia.grid5000.fr",
+      "rate": 100000000
     }
   ],
   "operating_system": {
+    "kernel": "2.6.32",
     "name": "Debian",
-    "release": "5.0",
-    "version": null
+    "release": "Squeeze",
+    "version": "6.0"
   },
   "processor": {
     "cache_l1": null,
@@ -73,8 +78,10 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "sata_nv",
       "interface": "SATA",
+      "model": "HDS7225S",
       "size": 232830643653.87
     }
   ],

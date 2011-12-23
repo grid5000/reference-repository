@@ -4,6 +4,15 @@
     "smp_size": 2,
     "smt_size": 8
   },
+  "bios": {
+    "release_date": null,
+    "vendor": null,
+    "version": null
+  },
+  "chassis": {
+    "name": "PowerEdge R410",
+    "serial": "C3JPH4J"
+  },
   "main_memory": {
     "ram_size": 34359738368,
     "virtual_size": null
@@ -21,7 +30,8 @@
       "mounted": true,
       "network_address": "suno-8.sophia.grid5000.fr",
       "rate": 1000000000,
-      "switch": "fastiron",
+      "switch": "FastIron",
+      "switch_port": "5/12",
       "vendor": "Broadcom",
       "version": "NetXtremeII BCM5716"
     },
@@ -34,12 +44,25 @@
       "rate": 1000000000,
       "vendor": "Broadcom",
       "version": "NetXtremeII BCM5716"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "192.168.30.40",
+      "mac": "00:26:b9:3f:4a:3f",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "suno-8-bmc.sophia.grid5000.fr",
+      "rate": 100000000
     }
   ],
   "operating_system": {
+    "kernel": "2.6.32",
     "name": "Debian",
-    "release": "5.0",
-    "version": null
+    "release": "Squeeze",
+    "version": "6.0"
   },
   "processor": {
     "cache_l1": null,
@@ -55,8 +78,10 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "megaraid_sas",
       "interface": "SATA",
+      "model": "SCSI Disk Perc6/i",
       "raid": "0",
       "size": 557675957679.749
     }
