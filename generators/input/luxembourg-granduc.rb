@@ -6,7 +6,7 @@ site :luxembourg do |site_uid|
 
     22.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => ivt})
+        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size       => 2,
           :smt_size       => 8,
