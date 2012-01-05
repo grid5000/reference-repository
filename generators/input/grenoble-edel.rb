@@ -108,6 +108,15 @@ site :grenoble do |site_uid|
           :vendor => "Unknown",
           :version => "1.7"
         }]
+        bios({
+          :version      => lookup('grenoble-edel', node_uid, 'bios', 'version'),
+          :vendor       => lookup('grenoble-edel', node_uid, 'bios', 'vendor'),
+          :release_date => lookup('grenoble-edel', node_uid, 'bios', 'release_date')
+        })
+        chassis({
+          :serial       => lookup('grenoble-edel', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('grenoble-edel', node_uid, 'chassis', 'product_name')
+        })
       end
     end
   end
