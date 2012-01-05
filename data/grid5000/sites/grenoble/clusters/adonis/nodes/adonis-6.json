@@ -4,6 +4,15 @@
     "smp_size": 2,
     "smt_size": 8
   },
+  "bios": {
+    "release_date": "(09/23/2009)",
+    "vendor": "American Megatrends Inc.",
+    "version": "R4222X52"
+  },
+  "chassis": {
+    "name": "bullx R422E2-IBQ",
+    "serial": "XAN-SMJS-00253"
+  },
   "main_memory": {
     "ram_size": 25769803776,
     "virtual_size": null
@@ -13,7 +22,7 @@
       "device": "ib0",
       "driver": "mlx4_core",
       "enabled": true,
-      "ib_guid": "0x003048ffffcc4265",
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:42:65",
       "interface": "InfiniBand",
       "ip": "172.16.18.136",
       "management": false,
@@ -66,9 +75,10 @@
     }
   ],
   "operating_system": {
-    "name": null,
-    "release": null,
-    "version": null
+    "kernel": "2.6.32",
+    "name": "Debian",
+    "release": "Squeeze",
+    "version": "6.0"
   },
   "processor": {
     "cache_l1": null,
@@ -84,9 +94,10 @@
   },
   "storage_devices": [
     {
-      "driver": null,
+      "driver": "ahci",
       "interface": "SATA",
-      "size": 232830643653.86963
+      "model": "WD2502ABYS-0",
+      "size": 232830643653.87
     }
   ],
   "supported_job_types": {
