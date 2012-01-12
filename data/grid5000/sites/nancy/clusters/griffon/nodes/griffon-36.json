@@ -5,7 +5,7 @@
     "smt_size": 8
   },
   "bios": {
-    "release_date": "08/21/2009",
+    "release_date": "(08/21/2009)",
     "vendor": "Phoenix Technologies LTD",
     "version": "V1.05"
   },
@@ -43,11 +43,12 @@
       "device": "ib0",
       "driver": "mlx4_core",
       "enabled": true,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:1b",
+      "hwid": "0xC9030003301A",
       "ib_switch_card": "0x000b8cffff003055",
       "ib_switch_card_pos": "1/0/7",
       "interface": "InfiniBand",
       "ip": "172.18.65.36",
-      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:1b",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -59,8 +60,8 @@
     },
     {
       "enabled": false,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:1c",
       "interface": "InfiniBand",
-      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:1c",
       "rate": 20000000000,
       "vendor": "Mellanox",
       "version": "MT26418"
@@ -76,7 +77,7 @@
       "network_address": "griffon-36-ipmi.nancy.grid5000.fr",
       "rate": 100000000,
       "switch": "sgriffon2-ipmi",
-      "switch_port": "7",
+      "switch_port": 7,
       "vendor": "Tyan",
       "version": "M3296"
     }
@@ -88,7 +89,7 @@
     "version": null
   },
   "pdu": {
-    "pdu": "griffon-pdu4",
+    "pdu": "griffon-pdu4.nancy.grid5000.fr",
     "pdu_port": 7,
     "vendor": "American Power Conversion"
   },
@@ -104,17 +105,15 @@
     "vendor": "Intel",
     "version": "L5420"
   },
-  "serial": "812530041",
-  "storage_devices": [
-    {
-      "device": "sda",
-      "driver": "ata_piix",
-      "interface": "SATA II",
-      "model": "HDP725032GLA360",
-      "rev": "GM3OA5CA",
-      "size": 298023223876.953
-    }
-  ],
+  "serial": 812530041,
+  "storage_devices": {
+    "device": "sda",
+    "driver": "ata_piix",
+    "interface": "SATA II",
+    "model": "HDP725032GLA360",
+    "rev": "GM3OA5CA",
+    "size": 298023223876.953
+  },
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
