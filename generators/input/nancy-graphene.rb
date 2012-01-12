@@ -6,7 +6,7 @@ site :nancy do |site_uid|
 
     144.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-        serial lookup('nancy-graphene', node_uid, 'serial')
+        serial lookup('nancy-graphene', node_uid, 'chassis', 'serial_number')
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 1,
@@ -35,14 +35,14 @@ site :nancy do |site_uid|
           :version => nil,
           :kernel => "2.6.32"
         })
-        storage_devices [{
+        storage_devices ({
           :interface => 'SATA II',
           :size => 320.GB,
           :driver => "ahci",
           :device => "sda",
-          :model => lookup('nancy-graphene', node_uid, 'disk_model'),
-          :rev => lookup('nancy-graphene', node_uid, 'disk_rev')
-        }]
+          :model => lookup('nancy-graphene', node_uid, 'block_devices' ,'sda',  'model'),
+          :rev => lookup('nancy-graphene', node_uid, 'block_devices', 'sda', 'rev'),
+        })
         network_adapters [{
           :interface => 'Ethernet',
           :rate => 1.G,
@@ -51,12 +51,11 @@ site :nancy do |site_uid|
           :mounted => true,
           :mountable => true,
           :management => false,
-          :switch => lookup('nancy-graphene', "#{node_uid}", 'switch_eth0'),
-          :mac => lookup('nancy-graphene', "#{node_uid}", 'mac_eth0'),
-          :switch_port => lookup('nancy-graphene', "#{node_uid}", 'switch_pos_eth0'),
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          #:ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
-          :ip => lookup('nancy-graphene', node_uid, 'ip_eth0'),
+          :ip => lookup('nancy-graphene', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :mac => lookup('nancy-graphene', node_uid, 'network_interfaces', 'eth0', 'mac'),
+          :switch => lookup('nancy-graphene', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
+          :switch_port => lookup('nancy-graphene', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
           :driver => "e1000e",
           :vendor => "intel",
           :version => "82574L"
@@ -67,7 +66,7 @@ site :nancy do |site_uid|
           #:device => "eth1",
           :enabled => false,
           #:mounted => false,
-          :mac => lookup('nancy-graphene', "#{node_uid}", 'mac_eth1'),
+          :mac => lookup('nancy-graphene', node_uid, 'network_interfaces', 'eth1', 'mac'),
           #:management => false,
           #:driver => "e1000e",
           :vendor => "intel",
@@ -79,7 +78,7 @@ site :nancy do |site_uid|
           #:device => "eth2",
           :enabled => false,
           #:mounted => false,
-          :mac => lookup('nancy-graphene', "#{node_uid}", 'mac_eth2'),
+          :mac => lookup('nancy-graphene', node_uid, 'network_interfaces', 'eth2', 'mac'),
           #:management => false,
           #:driver => "e1000e",
           :vendor => "intel",
@@ -93,15 +92,15 @@ site :nancy do |site_uid|
           :mounted => true,
           :mountable => true,
           :management => false,
-          :ip => lookup('nancy-graphene', "#{node_uid}", 'ip_ib'),
+          :ip => lookup('nancy-graphene', node_uid, 'network_interfaces', 'ib0', 'ip'),
+          :guid => lookup('nancy-graphene', node_uid, 'network_interfaces', 'ib0', 'guid'),
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
 	  :switch => "sgrapheneib",
           #:ib_switch_card => lookup('nancy',"#{node_uid}", 'switch_ib_card'),
           #:ib_switch_card_pos => lookup('nancy',"#{node_uid}", 'switch_ib_card_pos'),
           :driver => "mlx4_core",
           :vendor => "Mellanox",
-          :version => "MT26418",
-	  :mac  => lookup('nancy-graphene', node_uid, 'guidib0')
+          :version => "MT26418"
         },
         {
           :interface => 'InfiniBand',
@@ -114,7 +113,7 @@ site :nancy do |site_uid|
           #:mountable => false,
           #:mounted => false,
           #:management => false
-          :mac	=> lookup('nancy-graphene', node_uid, 'guidib1')
+          :guid => lookup('nancy-graphene', node_uid, 'network_interfaces', 'ib1', 'guid')
         },
         {
           :interface => 'Ethernet',
@@ -126,21 +125,21 @@ site :nancy do |site_uid|
           :vendor => "Tyan",
           :version => "AST2050",
           :device => "bmc",
-          :ip => lookup('nancy-graphene', "#{node_uid}", 'ip_mgt'),
+          :ip => lookup('nancy-graphene', node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :mac => lookup('nancy-graphene', node_uid, 'network_interfaces', 'bmc', 'mac'),
           :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :switch => lookup('nancy-graphene', "#{node_uid}", 'switch_ipmi'),
-          :switch_port => lookup('nancy-graphene', "#{node_uid}", 'switch_ipmi_pos'),
-          :mac => lookup('nancy-graphene', "#{node_uid}", 'mac_mgt'),
+          :switch => lookup('nancy-graphene', node_uid, 'network_interfaces', 'bmc', 'switch_name'),
+          :switch_port => lookup('nancy-graphene', node_uid, 'network_interfaces', 'bmc', 'switch_port')
         }]
         pdu({
           :vendor => "American Power Conversion",
-          :pdu => lookup('nancy-graphene', "#{node_uid}", 'pdu'),
-          :pdu_port => lookup('nancy-graphene', "#{node_uid}", 'pdu_pos')
+          :pdu => lookup('nancy-graphene', node_uid, 'pdu', 'pdu_name'),
+          :pdu_port => lookup('nancy-graphene', node_uid, 'pdu', 'pdu_position')
         })
         bios({
-          :version	=> lookup('nancy-graphene', node_uid, 'bios_ver'),
+          :version	=> lookup('nancy-graphene', node_uid, 'bios', 'version'),
           :vendor	=> "American Megatrends Inc.",
-          :release_date	=> lookup('nancy-graphene', node_uid, 'bios_release')
+          :release_date	=> lookup('nancy-graphene', node_uid, 'bios', 'release_date')
         })
 
       end
