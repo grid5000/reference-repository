@@ -34,14 +34,14 @@ site :nancy do |site_uid|
           :version => nil,
 	  :kernel => "2.6.32"
         })
-        storage_devices ({
+        storage_devices [{
           :interface => 'SATA II',
           :size => 320.GB,
           :driver => "ata_piix",
 	  :device => "sda",
 	  :model => lookup('nancy-griffon', node_uid, 'block_devices', 'sda', 'model'),
 	  :rev => lookup('nancy-griffon', node_uid, 'block_devices', 'sda', 'rev')
-        })
+        }]
         network_adapters [{
           :interface => 'Ethernet',
           :rate => 1.G,
