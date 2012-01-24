@@ -68,7 +68,7 @@ site :rennes do |site_uid|
           :vendor           => "Broadcom",
           :version          => "NetXtreme II BCM5708",
           :driver           => "bnx2",
-          :switch           => "c6509-grid",
+          :switch           => lookup('rennes-paramount', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
           :switch_port      => lookup('rennes-paramount', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
           :mac              => lookup('rennes-paramount', node_uid, 'network_interfaces', 'eth0', 'mac')
         },

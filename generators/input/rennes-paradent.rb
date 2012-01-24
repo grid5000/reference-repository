@@ -65,7 +65,7 @@ site :rennes do |site_uid|
           :driver           => "e1000e",
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'ip'),
-          :switch           => "c6509-grid",
+          :switch           => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
           :switch_port      => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
           :mac              => lookup('rennes-paradent', node_uid, 'network_interfaces', 'eth0', 'mac'),
           :vendor           => "Intel",
