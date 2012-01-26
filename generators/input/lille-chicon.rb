@@ -39,7 +39,7 @@ site :lille do |site_uid|
         network_adapters [{
           :interface => 'Ethernet',
           :rate => 1.G,
-          :mac => lookup('lille',"#{node_uid}", 'mac_eth0'),
+          :mac => lookup('lille-chicon',"#{node_uid}", 'mac_eth0'),
           :vendor => 'Broadcom',
           :version => 'NetXtreme BCM5780',
           :enabled => true,
@@ -49,12 +49,12 @@ site :lille do |site_uid|
           :mounted => true,
           :device => 'eth0',
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+          :ip => lookup('lille-chicon',"#{node_uid}", 'ip_eth0'),
           :switch => 'gw'
         },{
           :interface => 'Ethernet',
           :rate => 1.G,
-          :mac => lookup('lille',"#{node_uid}", 'mac_eth1'),
+          :mac => lookup('lille-chicon',"#{node_uid}", 'mac_eth1'),
           :vendor => 'Broadcom',
           :version => 'NetXtreme BCM5780',
           :enabled => true,
@@ -64,20 +64,20 @@ site :lille do |site_uid|
           :mounted => true,
           :device => 'eth1',
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :ip => lookup('lille-chicon',"#{node_uid}", 'ip_eth1'),
           :switch => 'gw',
-          :switch_port => lookup('lille', "#{node_uid}", 'switch_port')
+          :switch_port => lookup('lille-chicon', "#{node_uid}", 'switch_port')
         },{
           :interface => 'Ethernet',
           :rate => 1.G,
-          :mac => lookup('lille',"#{node_uid}", 'mac_mgt'),
+          :mac => lookup('lille-chicon',"#{node_uid}", 'mac_mgt'),
           :vendor => 'IBM',
           :version => '1.18',
           :enabled => true,
           :management => true,
           :mountable => false,
           :network_address => "#{node_uid}-rsa.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-rsa.#{site_uid}.grid5000.fr"),
+          :ip => lookup('lille-chicon',"#{node_uid}", 'ip_mgt'),
           :switch => 'gw'
         },{
           :interface => 'Myrinet',
@@ -92,7 +92,7 @@ site :lille do |site_uid|
           :mounted => true,
           :device => 'myri0',
           :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-myri0.#{site_uid}.grid5000.fr"),
+          :ip => lookup('lille-chicon',"#{node_uid}", 'ip_myri0'),
           :switch => nil
         }]
       end

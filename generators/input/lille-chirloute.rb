@@ -42,7 +42,7 @@ site :lille do |site_uid|
         network_adapters [{
           :interface => 'Ethernet',
           :rate => 1.G,
-          :mac => lookup('lille', node_uid, 'network_interfaces', 'eth0', 'mac'),
+          :mac => lookup('lille-chirloute', node_uid, 'network_interfaces', 'eth0', 'mac'),
           :vendor => 'Intel',
           :version => '82576EB',
           :enabled => true,
@@ -52,12 +52,12 @@ site :lille do |site_uid|
           :mounted => true,
           :device => 'eth0',
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-eth0.#{site_uid}.grid5000.fr"),
+          :ip => lookup('lille-chirloute', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :switch => 'gw'
         },{
           :interface => 'Ethernet',
           :rate => 1.G,
-          :mac => lookup('lille', node_uid, 'network_interfaces', 'eth1', 'mac'),
+          :mac => lookup('lille-chirloute', node_uid, 'network_interfaces', 'eth1', 'mac'),
           :vendor => 'Intel',
           :version => '82576EB',
           :enabled => true,
@@ -67,20 +67,20 @@ site :lille do |site_uid|
           :mounted => true,
           :device => 'eth1',
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}.#{site_uid}.grid5000.fr"),
+          :ip => lookup('lille-chirloute', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :switch => 'gw',
-          :switch_port => lookup('lille', node_uid, 'network_interfaces', 'eth1', 'switch_port')
+          :switch_port => lookup('lille-chirloute', node_uid, 'network_interfaces', 'eth1', 'switch_port')
         },{
           :interface => 'Ethernet',
           :rate => 1.G,
-          :mac => lookup('lille', node_uid, 'network_interfaces', 'bmc', 'mac'),
+          :mac => lookup('lille-chirloute', node_uid, 'network_interfaces', 'bmc', 'mac'),
           :vendor => 'Inventec',
           :version => 1.14,
           :enabled => true,
           :management => true,
           :mountable => false,
           :network_address => "#{node_uid}-ipmi.#{site_uid}.grid5000.fr",
-          :ip => dns_lookup("#{node_uid}-ipmi.#{site_uid}.grid5000.fr"),
+          :ip => lookup('lille-chirloute', node_uid, 'network_interfaces', 'bmc', 'ip'),
           :switch => 'gw'
         }]
       end
