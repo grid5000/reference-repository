@@ -43,7 +43,7 @@ site :grenoble do |site_uid|
         }]
         network_adapters [{
           :interface => 'InfiniBand',
-          :rate => 10.G,
+          :rate => 20.G,
           :device => "ib0",
           :enabled => true,
           :mountable => true,
