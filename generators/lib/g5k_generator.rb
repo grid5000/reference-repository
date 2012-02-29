@@ -194,6 +194,9 @@ module G5K
     def service(uid, *options, &block)
       build_context(:services, uid, *options, &block)
     end
+    def network_equipment(uid, *options, &block)
+      build_context(:network_equipments, uid, *options, &block)
+    end
     def build_context(key, uid, *options, &block)
       type = key.to_s.chop
       uid = uid.to_s
