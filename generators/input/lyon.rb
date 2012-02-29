@@ -10,5 +10,4 @@ site :lyon do |site_uid|
   security_contact "lyon-staff@lists.grid5000.fr"
   user_support_contact "lyon-staff@lists.grid5000.fr"
   compilation_server false
-
 end
