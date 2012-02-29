@@ -107,7 +107,7 @@ site :grenoble do |site_uid|
     end
     2.times do |i|
       model "Bull R425-E2 4U + Tesla C2050"
-      node "#{cluster_uid}-#{i+11}" do |node_uid|
+      node "#{cluster_uid}-#{i+9}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         architecture({
           :smp_size => 2,
