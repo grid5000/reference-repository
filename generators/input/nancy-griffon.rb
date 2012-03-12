@@ -49,6 +49,7 @@ site :nancy do |site_uid|
           :enabled => true,
           :mounted => true,
           :mountable => true,
+          :bridged => true,
           :management => false,
           :switch => lookup('nancy-griffon', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
           :switch_port => lookup('nancy-griffon', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
