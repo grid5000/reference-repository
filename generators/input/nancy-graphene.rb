@@ -50,6 +50,7 @@ site :nancy do |site_uid|
           :enabled => true,
           :mounted => true,
           :mountable => true,
+          :bridged => true,
           :management => false,
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('nancy-graphene', node_uid, 'network_interfaces', 'eth0', 'ip'),
