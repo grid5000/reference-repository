@@ -37,7 +37,7 @@ site :nancy do |site_uid|
         storage_devices [{
           :interface => 'SATA II',
           :size => 320.GB,
-          :driver => "ata_piix",
+          :driver => "ahci",
 	  :device => "sda",
 	  :model => lookup('nancy-griffon', node_uid, 'block_devices', 'sda', 'model'),
 	  :rev => lookup('nancy-griffon', node_uid, 'block_devices', 'sda', 'rev')
