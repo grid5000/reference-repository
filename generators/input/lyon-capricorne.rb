@@ -11,7 +11,7 @@ site :lyon do |site_uid|
           :smp_size => 2,
           :smt_size => 2,
           :platform_type => "x86_64"
-          })
+        })
         processor({
           :vendor => "AMD",
           :model => "AMD Opteron",
@@ -36,48 +36,48 @@ site :lyon do |site_uid|
         })
         storage_devices [
           {:interface => 'IDE', :size => 80.GB, :driver => "amd74xx"}
-          ]
+        ]
         network_adapters [{
-            :interface => 'Ethernet',
-            :rate => 1.G,
-            :mac => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','eth0','mac'),
-	    :vendor => 'Broadcom',
-	    :model => 'BCM5704',
-            :enabled => true,
-   	    :management => false,
-            :mountable => true,
-	    :driver => 'tg3',
-	    :mounted => false,
-          },{
-            :interface => 'Ethernet',
-            :rate => 1.G,
-            :mac => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','eth1','mac'),
-	    :vendor => 'Broadcom',
-	    :model => 'BCM5704',
-            :enabled => true,
-            :management => false,
-            :mountable => true,
-            :driver => 'tg3',
-            :mounted => true,
-            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-            :device => 'eth1',
-            :ip => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','eth1','ip'),
-            :switch => 'little-ego'
-          },{
-            :interface => 'Myrinet',
-            :rate => 2.G,
-            :mac => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','myri0','mac'),
-            :vendor => 'Myrinet',
-            :version => "M3F-PCIXF-2",
-            :enabled => true,
-            :management => false,
-            :mountable => true,
-            :driver => 'mx',
-            :mounted => false,
-            :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
-            :device => 'myri0',
-            :ip => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','myri0','ip'),
-          }]
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :mac => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','eth0','mac'),
+          :vendor => 'Broadcom',
+          :model => 'BCM5704',
+          :enabled => true,
+          :management => false,
+          :mountable => true,
+          :driver => 'tg3',
+          :mounted => false,
+        },{
+          :interface => 'Ethernet',
+          :rate => 1.G,
+          :mac => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','eth1','mac'),
+          :vendor => 'Broadcom',
+          :model => 'BCM5704',
+          :enabled => true,
+          :management => false,
+          :mountable => true,
+          :driver => 'tg3',
+          :mounted => true,
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :device => 'eth1',
+          :ip => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','eth1','ip'),
+          :switch => 'little-ego'
+        },{
+          :interface => 'Myrinet',
+          :rate => 2.G,
+          :mac => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','myri0','mac'),
+          :vendor => 'Myrinet',
+          :version => "M3F-PCIXF-2",
+          :enabled => true,
+          :management => false,
+          :mountable => true,
+          :driver => 'mx',
+          :mounted => false,
+          :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+          :device => 'myri0',
+          :ip => lookup('lyon-capricorne',"#{node_uid}",'network_interfaces','myri0','ip'),
+        }]
       end
     end
   end # cluster capricorne
