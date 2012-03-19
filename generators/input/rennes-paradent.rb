@@ -58,6 +58,7 @@ site :rennes do |site_uid|
           :interface        => 'Ethernet',
           :rate             => 1.G,
           :enabled          => true,
+          :bridged 	    => true,
           :management       => false,
           :mountable        => true,
           :mounted          => true,

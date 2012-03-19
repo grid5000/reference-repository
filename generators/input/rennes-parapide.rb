@@ -60,6 +60,7 @@ site :rennes do |site_uid|
           :enabled          => true,
           :mountable        => true,
           :mounted          => true,
+          :bridged          => true,
           :device           => "eth0",
           :driver           => "igb",
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
