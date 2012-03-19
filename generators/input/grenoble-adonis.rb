@@ -61,6 +61,7 @@ site :grenoble do |site_uid|
           :enabled => true,
           :mounted => true,
           :mountable => true,
+          :bridged => true,
           :management => false,
           :vendor => 'Intel',
           :version => "Device 10c9 (rev 01)",

@@ -75,6 +75,7 @@ site :grenoble do |site_uid|
           :device => "eth0",
           :mounted => true,
           :mountable => true,
+          :bridged => true,   
           :management => false,
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => lookup('grenoble-edel', node_uid, 'network_interfaces', 'eth0', 'ip'),

@@ -86,6 +86,7 @@ site :grenoble do |site_uid|
           :enabled => true,
           :mountable => true,
           :mounted => true,
+          :bridged => true,
           :management => false,
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('grenoble-genepi', node_uid, 'network_interfaces', 'eth1', 'ip'),
