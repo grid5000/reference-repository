@@ -40,7 +40,24 @@ site :sophia do |site_uid|
           :model  => lookup('sophia-sol', node_uid, 'block_devices', 'sda', 'model'),
           :driver => "sata_nv"
         }]
-        network_adapters [{
+        network_adapters [{ 
+             :interface => 'Myrinet',
+             :rate => 10.G,
+             :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
+             :ip => lookup('sophia-sol', node_uid, 'network_interfaces','myri0', 'ip'),
+             :mac => nil,
+             :mac => lookup('sophia-sol', node_uid, 'network_interfaces','myri0', 'mac'),
+             :enabled => true,
+             :mounted => true,
+             :mountable => true,
+             :management => false,
+             :vendor => 'Myricom',
+             :version => "M3F-PCIXF-2",
+             :driver => "mx",
+             :switch => "edgeiron48gs",
+             :device => 'myri0',
+             },
+            {
             :interface => 'Ethernet',
             :rate => 1.G,
             :mac => lookup('sophia-sol', node_uid, 'network_interfaces', 'eth0', 'mac'),
@@ -81,8 +98,9 @@ site :sophia do |site_uid|
          #   :vendor => 'Broadcom',
          #   :version => 'BCM5715c',
          #   :enabled => false,
-         #   :driver => 'tg3'
+         #   :driver => 'tg3
          # }
+          
           {
             :interface => 'Ethernet',
             :rate => 100.M,
@@ -97,7 +115,7 @@ site :sophia do |site_uid|
           }]
           bios({
             :version => lookup('sophia-sol', node_uid, 'network_interfaces','version'),
-            :vendor => lookup('sophia-sol', node_uid, 'network_interfaces','vendor'),
+             :vendor => lookup('sophia-sol', node_uid, 'network_interfaces','vendor'),
             :release_date => lookup('sophia-sol', node_uid, 'network_interfaces','release_date')
           })
           chassis({
