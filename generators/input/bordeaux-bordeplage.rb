@@ -53,6 +53,7 @@ site :bordeaux do |site_uid|
           :enabled 	=> true,
 	  :mounted 	=> true,
 	  :mountable 	=> true,
+          :bridged      => true,
 	  :driver 	=> "e1000",
 	  :management 	=> false,
 	  :device 	=> "eth0"

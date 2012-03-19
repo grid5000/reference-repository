@@ -53,6 +53,7 @@ site :bordeaux do |site_uid|
 	  :enabled 		=> true,
 	  :mounted 		=> true,
 	  :mountable 		=> true,
+          :bridged 		=> true,
 	  :driver 		=> "bnx2",
 	  :management 		=> false,
 	  :device 		=> "eth0"

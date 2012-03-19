@@ -53,6 +53,7 @@ site :bordeaux do |site_uid|
           :enabled 		=> true,
 	  :mounted 		=> true,
 	  :mountable 		=> true,
+          :bridged 		=> true,
 	  :driver 		=> "tg3",
 	  :management 		=> false,
 	  :device 		=> "eth0"
