@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'json'
 require 'logger'
+require 'restfully'
 
 ROOT_DIR = File.expand_path File.dirname(__FILE__)
 LIB_DIR = File.join(ROOT_DIR, "generators", "lib")
@@ -12,6 +13,20 @@ task :environment do
   Dir.chdir(ROOT_DIR)
   @logger = Logger.new(STDERR)
   @logger.level = Logger.const_get((ENV['DEBUG'] || 'INFO').upcase)
+end
+
+task :api_sites  do
+  api_logger = Logger.new("/dev/null")
+  api_logger.level = Logger::FATAL
+  @api = Restfully::Session.new(:configuration_file => File.expand_path("~/.restfully/api.grid5000.fr.yml"),:logger => api_logger)
+  @api_sites = if ENV['SITE']
+    [@api.root.sites[ENV['SITE'].to_sym]]
+  else
+    @api.root.sites.reject{|site| site['uid'] == "orsay" or site['uid'] == "reims"}
+  end
+end
+def comment_ok?(comment)
+  comment.nil? or comment == "OK"
 end
 
 namespace :g5k do
@@ -26,6 +41,46 @@ namespace :g5k do
     command << " -s" if ENV['DRY'] && ENV['DRY'] != "0"
     @logger.info "Executing #{command.inspect}..."
     system command
+  end
+end
+
+# rake dead:list
+# rake dead:error
+namespace :dead do
+  desc "List all dead nodes and the reason why they are dead. (SITE=)"
+  task :list => [:environment,:api_sites] do
+    @api_sites.each do |site|
+      site.status["nodes"].each do |uid,status|
+        comment = status["comment"]
+        state = status["hard"].downcase
+        if !comment_ok?(comment) and  state == "dead"
+          @logger.info "Node '#{uid}' is dead because '#{comment}'"
+        end
+      end
+    end
+  end
+  desc "List all nodes which have they state not in synch with they comment"
+  task :error => [:environment,:api_sites] do
+    @api_sites.each do |site|
+      site.status["nodes"].each do |uid,status|
+        comment = status["comment"]
+        state = status["hard"].downcase
+        if comment_ok?(comment)
+          if state == "dead"
+            @logger.error "Node '#{uid}' has comment 'OK', so its state should not be 'Dead' "
+          else
+            # nothing, good state
+          end
+        else
+          if state == "dead"
+            # uncomment this to print also nodes comments
+            #@logger.info "Node '#{uid}' is dead because '#{comment}'"
+          else
+            @logger.error "Node '#{uid}' has comment not 'OK'. so its state should be 'Dead'. Instead its state is '#{state}'"
+          end
+        end
+      end
+    end
   end
 end
 
