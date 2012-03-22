@@ -51,6 +51,7 @@ site :sophia do |site_uid|
             :enabled => true,
             :management => false,
             :mountable => true,
+            :bridged => true,
             :driver => 'bnx2',
             :mounted => true,
             :device => 'eth0',

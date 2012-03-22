@@ -63,6 +63,7 @@ site :sophia do |site_uid|
             :enabled => true,
             :management => false,
             :mountable => true,
+            :bridged => true,
             :driver => "e1000",
             :mounted => true,
             :device => 'eth0',
