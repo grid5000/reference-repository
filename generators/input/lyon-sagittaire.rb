@@ -57,6 +57,7 @@ site :lyon do |site_uid|
           :enabled => true,
           :management => false,
           :mountable => true,
+          :bridged => true,
           :driver => 'tg3',
           :mounted => true,
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",

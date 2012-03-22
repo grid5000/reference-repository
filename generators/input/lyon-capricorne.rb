@@ -56,6 +56,7 @@ site :lyon do |site_uid|
           :model => 'BCM5704',
           :enabled => true,
           :management => false,
+          :bridged => true,
           :mountable => true,
           :driver => 'tg3',
           :mounted => true,
