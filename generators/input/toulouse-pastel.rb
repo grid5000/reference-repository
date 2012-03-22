@@ -46,6 +46,7 @@ site :toulouse do |site_uid|
             :management => false,
             :mountable => true,
             :mounted => true,
+            :bridged => true,
             :device => "eth0",
             :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
             :ip => lookup('toulouse-pastel', node_uid,'network_interfaces','eth0','ip'),
