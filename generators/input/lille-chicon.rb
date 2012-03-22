@@ -62,6 +62,7 @@ site :lille do |site_uid|
           :mountable => true,
           :driver => 'tg3',
           :mounted => true,
+          :bridged => true,
           :device => 'eth1',
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('lille-chicon',"#{node_uid}", 'network_interfaces', 'eth1', 'ip'),

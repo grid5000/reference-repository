@@ -65,6 +65,7 @@ site :lille do |site_uid|
           :mountable => true,
           :driver => 'bnx2',
           :mounted => true,
+          :bridged => true,
           :device => 'eth1',
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('lille-chimint', node_uid, 'network_interfaces', 'eth1', 'ip'),
