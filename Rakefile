@@ -25,9 +25,6 @@ task :api_sites  do
     @api.root.sites.reject{|site| site['uid'] == "orsay" or site['uid'] == "reims"}
   end
 end
-def comment_ok?(comment)
-  comment.nil? or comment == "OK"
-end
 
 namespace :g5k do
   desc "Generates the JSON files based on the generators, for all sites.\nUse SITE=<SITE-NAME> if you wish to restrict the generation to a specific site.\nUse DRY=1 to simulate the execution."
@@ -44,39 +41,42 @@ namespace :g5k do
   end
 end
 
-# rake dead:list
-# rake dead:error
-namespace :dead do
+# rake deadnodes:reasons
+# rake deadnodes:tofix
+namespace :deadnodes do
+
   desc "List all dead nodes and the reason why they are dead. (SITE=)"
-  task :list => [:environment,:api_sites] do
-    @api_sites.each do |site|
-      site.status["nodes"].each do |uid,status|
-        comment = status["comment"]
-        state = status["hard"].downcase
-        if !comment_ok?(comment) and  state == "dead"
-          @logger.info "Node '#{uid}' is dead because '#{comment}'"
-        end
-      end
-    end
+  task :reasons => [:environment,:api_sites] do
+    @logger.level = Logger::INFO
+    @reasons = true
+    Rake::Task["deadnodes:browse"].execute
   end
-  desc "List all nodes which have they state not in synch with they comment"
-  task :error => [:environment,:api_sites] do
+  desc "List all nodes which have they state not in synch with they comment. (SITE=)"
+  task :tofix => [:environment,:api_sites] do
+    @logger.level = Logger::ERROR
+    @tofix = true
+    Rake::Task["deadnodes:browse"].execute
+  end
+
+  task :browse do
+    def comment_ok?(comment)
+      comment.nil? or comment == "OK"
+    end
     @api_sites.each do |site|
       site.status["nodes"].each do |uid,status|
         comment = status["comment"]
         state = status["hard"].downcase
         if comment_ok?(comment)
           if state == "dead"
-            @logger.error "Node '#{uid}' has comment 'OK', so its state should not be 'Dead' "
+            @logger.error "Node '#{uid}' has comment 'OK', so its state should not be 'Dead' " if @tofix
           else
             # nothing, good state
           end
         else
           if state == "dead"
-            # uncomment this to print also nodes comments
-            #@logger.info "Node '#{uid}' is dead because '#{comment}'"
+            @logger.info "Node '#{uid}' is dead because '#{comment}'" if @reasons
           else
-            @logger.error "Node '#{uid}' has comment not 'OK'. so its state should be 'Dead'. Instead its state is '#{state}'"
+            @logger.error "Node '#{uid}' has comment not 'OK'. so its state should be 'Dead'. Instead its state is '#{state}'" if @tofix
           end
         end
       end
