@@ -62,6 +62,7 @@ site :luxembourg do |site_uid|
           :management       => false,
           :mountable        => true,
           :mounted          => true,
+          :bridged 	    => true,
           :device           => "eth0",
           :driver           => "bnx2",
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
