@@ -43,6 +43,7 @@ module Grid5000
         h['memcore']         = properties['main_memory']['ram_size']/properties['architecture']['smt_size']/MiB
         h['memcpu']          = properties['main_memory']['ram_size']/properties['architecture']['smp_size']/MiB
         h['memnode']         = properties['main_memory']['ram_size']/MiB
+        h['comment']         = properties['comment'] || "OK"
         h
       }
     }

@@ -60,7 +60,8 @@ namespace :deadnodes do
 
   task :browse do
     def comment_ok?(comment)
-      comment.nil? or comment == "OK"
+#      comment.nil? or comment == "OK"
+      comment == "OK" 
     end
     @api_sites.each do |site|
       site.status["nodes"].each do |uid,status|
@@ -68,15 +69,15 @@ namespace :deadnodes do
         state = status["hard"].downcase
         if comment_ok?(comment)
           if state == "dead"
-            @logger.error "Node '#{uid}' has comment 'OK', so its state should not be 'Dead' " if @tofix
+            @logger.error "Node '#{uid}' of state '#{state}' should not have comment '#{comment.inspect}'" if @tofix
           else
             # nothing, good state
           end
         else
           if state == "dead"
-            @logger.info "Node '#{uid}' is dead because '#{comment}'" if @reasons
+            @logger.info "Node '#{uid}' is dead because '#{comment.inspect}'" if @reasons
           else
-            @logger.error "Node '#{uid}' has comment not 'OK'. so its state should be 'Dead'. Instead its state is '#{state}'" if @tofix
+            @logger.error "Node '#{uid}' should have the not-dead-comment 'OK', since its state is '#{state}'. Instead, it has comment '#{comment.inspect}'." if @tofix
           end
         end
       end
