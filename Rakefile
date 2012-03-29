@@ -1,13 +1,22 @@
+require 'rubygems'
 require 'fileutils'
 require 'json'
 require 'logger'
-require 'restfully'
+require 'yaml'
+require 'pp'
 
 ROOT_DIR = File.expand_path File.dirname(__FILE__)
 LIB_DIR = File.join(ROOT_DIR, "generators", "lib")
 $LOAD_PATH.unshift(LIB_DIR) unless $LOAD_PATH.include?(LIB_DIR)
 
+EXTRA_DIR = File.join(ROOT_DIR, "extra", "lib")
+$LOAD_PATH.unshift(EXTRA_DIR) unless $LOAD_PATH.include?(EXTRA_DIR)
+
+Rake.application.options.trace = true
+
+
 require 'grid5000'
+require 'naming-pattern'
 
 task :environment do
   Dir.chdir(ROOT_DIR)
@@ -15,14 +24,133 @@ task :environment do
   @logger.level = Logger.const_get((ENV['DEBUG'] || 'INFO').upcase)
 end
 
-task :api_sites  do
-  api_logger = Logger.new("/dev/null")
-  api_logger.level = Logger::FATAL
-  @api = Restfully::Session.new(:configuration_file => File.expand_path("~/.restfully/api.grid5000.fr.yml"),:logger => api_logger)
-  @api_sites = if ENV['SITE']
-    [@api.root.sites[ENV['SITE'].to_sym]]
-  else
-    @api.root.sites
+namespace :netlinks do
+  desc "Probe a remote network equipement and retrieve its neighbors in a yaml file. HOST is its grid5000 FQDN."
+  task :probe do 
+    host = ENV['HOST']
+    abort "You must provide HOST= the network equipment FQDN within grid5000" if host.nil?
+    scan = host.scan(/^([^.]+)\.([^.]+)$/)
+    scan = host.scan(/^([^.]+)\.([^.]+)\.grid5000\.fr$/) if scan.empty?
+    abort "HOST is on the form 'gw.lille' or 'gw.lille.grid5000.fr'" if scan.empty?
+    uid,site = scan.flatten
+    # copy the 'extra' dir on the site,
+    # execute the probing
+    # retrieve the result
+    prober = "weathermap.#{site}.grid5000.fr"
+    sh "rsync -av extra #{prober}:"
+    sh "ssh #{prober} 'cd extra && bundle install && ./bin/net-links.rb --host #{uid} --community public'"
+    sh "rsync -av #{prober}:/tmp/#{uid}.yaml generators/input/#{site}/net-links/"
+
+    message = "Network links saved into file generators/input/#{site}/net-links/#{uid}.yaml"
+    puts "+-#{"-" * message.size}-+"
+    puts "| #{message} |"
+    puts "+-#{"-" * message.size}-+"
+  end
+  def format_vlan(coord,raw_port,linecards)
+        puts "Vlan : #{coord.inspect} #{raw_port.inspect}"
+  end
+  def format_channel(coord,raw_port,linecards)
+#        puts "Channel : #{coord.inspect} #{raw_port.inspect}"
+  end
+  def format_port(coord,raw_port,linecards)
+#    puts "#{coord.inspect} #{raw_port.inspect}"
+    return unless raw_port.has_key? :fqdn
+    neighbor,site = raw_port[:fqdn].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/).flatten
+    return if neighbor.nil?
+
+    l = coord["linecard"]
+    p = coord["port"]
+    linecards[l] = {"ports"=>{}} unless linecards.has_key? l
+    ports = linecards[l]["ports"]
+    formated_port = ports[p]
+    if formated_port.nil?
+      ports[p] = neighbor
+    elsif formated_port.is_a? Hash
+      ports[p]["uid"] = neighbor
+    else
+      ports[p] = neighbor
+    end
+  end
+  def browse_naming_patterns(dico,cb,patterns)
+    dico.each do |key,value|
+      if value.is_a? Hash
+        browse_naming_patterns(value,cb,patterns)
+      else
+        if key == "naming_pattern"
+          pattern = value
+          if patterns.has_key? pattern
+            @logger.warn "Naming Pattern already defined '#{pattern}'. No redefinition possible." 
+          else
+            patterns[pattern] = cb
+          end
+        end
+      end
+    end
+  end
+
+  desc "Updated formated net-links with the raw information gathered from network equipments."
+  task :format => :environment do
+    # Read the network links fresh out of network equipment
+    # Read the configuration formated
+    # update the formated configuration with raw information from the net-links yaml file
+    site = ENV['SITE']
+    abort "You must provide SITE= " if site.nil?
+    formated_file = "generators/input/#{site}/net-links.yaml"
+    formated_all = YAML::load_file(formated_file)
+    Dir.glob("generators/input/#{site}/net-links/*.yaml").each do |raw_file|
+      uid = File.basename(raw_file).scan(/(\S+).yaml$/).first.first
+      next unless uid == "gw"
+      formated = formated_all[uid]
+      if formated.nil?
+        @logger.warn "Network Equipment '#{uid}' was not found in formated network links file '#{formated_file}'. Skiping"
+        next
+      end
+      raw = YAML::load_file(raw_file)
+
+      # Go through all formated config, and register a call back that will encode the naming_pattern
+      naming_patterns = {}
+      vlans = formated["vlans"]
+      vlans_cb = proc { |dict,raw_port|
+            format_vlan(dict,raw_port,vlans)
+          }
+      browse_naming_patterns(vlans,vlans_cb,naming_patterns)
+      channels = formated["channels"]
+      channels_cb = proc { |dict,raw_port|
+            format_channel(dict,raw_port,channels)
+          }
+      browse_naming_patterns(channels,channels_cb,naming_patterns)
+
+      linecards = formated["linecards"]
+      linecards_cb = proc { |dict,raw_port|
+            format_port(dict,raw_port,linecards)
+          }
+      browse_naming_patterns(linecards,linecards_cb,naming_patterns)
+
+      # Go through all ports to find they linecard and port index, 
+      raw.each do |port|
+        ifname = port[:ifname]
+        next if ifname.nil?
+        # find the naming_pattern that correspond to this ifname
+        naming_patterns.each do |np,cb|
+          # scan the ifname with each naming_pattern
+          dict = NamingPattern.encode(np,ifname)
+          unless dict.empty?
+            # Found the naming_pattern for this ifname
+            # So Place it where it belongs
+            cb.call(dict,port)
+            break
+          end
+        end
+        #
+      end
+    end
+    File.open(formated_file,'w'){|f| YAML::dump(formated_all,f)}
+#    pp formated_all
+    message = "Formated Network links saved into file generators/input/#{site}/net-links.yaml"
+    puts "+-#{"-" * message.size}-+"
+    puts "| #{message} |"
+    puts "+-#{"-" * message.size}-+"
+
   end
 end
 
@@ -38,50 +166,6 @@ namespace :g5k do
     command << " -s" if ENV['DRY'] && ENV['DRY'] != "0"
     @logger.info "Executing #{command.inspect}..."
     system command
-  end
-end
-
-# rake deadnodes:reasons
-# rake deadnodes:tofix
-namespace :deadnodes do
-
-  desc "List all dead nodes and the reason why they are dead. (SITE=)"
-  task :reasons => [:environment,:api_sites] do
-    @logger.level = Logger::INFO
-    @reasons = true
-    Rake::Task["deadnodes:browse"].execute
-  end
-  desc "List all nodes which have they state not in synch with they comment. (SITE=)"
-  task :tofix => [:environment,:api_sites] do
-    @logger.level = Logger::ERROR
-    @tofix = true
-    Rake::Task["deadnodes:browse"].execute
-  end
-
-  task :browse do
-    def comment_ok?(comment)
-#      comment.nil? or comment == "OK"
-      comment == "OK" 
-    end
-    @api_sites.each do |site|
-      site.status["nodes"].each do |uid,status|
-        comment = status["comment"]
-        state = status["hard"].downcase
-        if comment_ok?(comment)
-          if state == "dead"
-            @logger.error "Node '#{uid}' of state '#{state}' should not have comment '#{comment}'" if @tofix
-          else
-            # nothing, good state
-          end
-        else
-          if state == "dead"
-            @logger.info "Node '#{uid}' is dead because '#{comment}'" if @reasons
-          else
-            @logger.error "Node '#{uid}' should have the not-dead-comment 'OK', since its state is '#{state}'. Instead, it has comment '#{comment}'." if @tofix
-          end
-        end
-      end
-    end
   end
 end
 

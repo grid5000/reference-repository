@@ -1,0 +1,88 @@
+--- 
+gw: 
+  kind: router
+  model: cisco
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  linecards: 
+    2: 
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1G
+      ports: 
+        27: chinqchint-27
+        33: chinqchint-33
+        11: chinqchint-11
+        39: chinqchint-39
+        6: chinqchint-6
+        17: chinqchint-17
+        12: chinqchint-12
+        1: chinqchint-1
+        40: chinqchint-40
+        18: chinqchint-18
+        29: chinqchint-29
+        13: chinqchint-13
+        2: chinqchint-2
+        24: chinqchint-24
+        41: chinqchint-5
+        19: chinqchint-19
+        8: chinqchint-8
+        30: chinqchint-30
+        3: chinqchint-3
+        14: chinqchint-14
+        25: chinqchint-25
+        20: chinqchint-20
+        42: chimint-srv
+        31: chinqchint-31
+        9: chinqchint-9
+        26: chinqchint-26
+        15: chinqchint-15
+        4: chinqchint-4
+        32: chinqchint-32
+        21: chinqchint-21
+        10: chinqchint-10
+    3: 
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1G
+      ports: 
+        5: chinqchint-45
+        16: chimint-10
+        33: chirloute-5
+        17: chimint-11
+        1: chinqchint-41
+        12: chimint-6
+        23: chimint-15
+        7: chimint-1
+        18: chimint-12
+        24: chimint-18
+        13: chimint-8
+        19: chimint-13
+        30: chirloute-3
+        41: chinqchint-46
+        3: chinqchint-43
+        25: chirloute-2
+        20: chimint-14
+        31: chirloute-6
+        9: chimint-2
+        26: chirloute-4
+        4: chinqchint-44
+        32: chirloute-8
+    4: 
+      kind: server
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1G
+      ports: 
+        38: groarr
+        33: conman
+        47: bugzilla-global
+        31: syslog-dmz
+        48: 
+          kind: node
+          uid: chirloute-7
+        32: jabber-global
+  channels: 
+    naming_pattern: Po%CHANNELID%
