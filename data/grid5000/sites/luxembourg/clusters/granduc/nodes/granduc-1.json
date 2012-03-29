@@ -9,6 +9,9 @@
     "vendor": "Dell Inc.",
     "version": "1.5.1"
   },
+  "chassis": {
+    "serial_number": "2QV963J"
+  },
   "main_memory": {
     "ram_size": 17179869184,
     "virtual_size": null
@@ -53,10 +56,16 @@
     {
       "device": "eth2",
       "driver": "ixgbe",
-      "enabled": false,
+      "enabled": true,
       "interface": "Ethernet",
+      "ip": "192.168.14.1",
       "mac": "00:1b:21:34:e1:4b",
-      "rate": 10000000000
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "granduc-1-eth2.luxembourg.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "C5020"
     }
   ],
   "operating_system": {
@@ -83,7 +92,7 @@
       "driver": "mptsas",
       "interface": "SATA",
       "model": "MBB2147RC",
-      "rev": "S207",
+      "rev": "D406",
       "size": 149011611938.477,
       "vendor": "FUJITSU"
     }

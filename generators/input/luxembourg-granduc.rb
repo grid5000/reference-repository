@@ -62,7 +62,7 @@ site :luxembourg do |site_uid|
           :management       => false,
           :mountable        => true,
           :mounted          => true,
-          :bridged 	    => true,
+          :bridged 	        => true,
           :device           => "eth0",
           :driver           => "bnx2",
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
@@ -72,27 +72,33 @@ site :luxembourg do |site_uid|
           :mac              => lookup('luxembourg-granduc', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
-          :interface  => 'Ethernet',
-          :rate       => 1.G,
-          :enabled    => false,
-          :device     => "eth1",
-          :driver     => "bnx2",
-          :mac        => lookup('luxembourg-granduc', node_uid, 'network_interfaces', 'eth1', 'mac')
+          :interface        => 'Ethernet',
+          :rate             => 1.G,
+          :enabled          => false,
+          :device           => "eth1",
+          :driver           => "bnx2",
+          :mac              => lookup('luxembourg-granduc', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
-          :interface  => 'Ethernet',
-          :rate       => 10.G,
-          :enabled    => false,
-          :device     => "eth2",
-          :driver     => "ixgbe",
-          :mac        => lookup('luxembourg-granduc', node_uid, 'network_interfaces', 'eth2', 'mac')
+          :interface        => 'Ethernet',
+          :rate             => 10.G,
+          :enabled          => true,
+          :management       => false,
+          :mountable        => true,
+          :mounted          => true,
+          :device           => "eth2",
+          :driver           => "ixgbe",
+          :switch           => "C5020",
+          :network_address  => "#{node_uid}-eth2.#{site_uid}.grid5000.fr",
+          :ip               => lookup('luxembourg-granduc', node_uid, 'network_interfaces', 'eth2', 'ip'),
+          :mac              => lookup('luxembourg-granduc', node_uid, 'network_interfaces', 'eth2', 'mac')
         }]
         bios({
            :version      => lookup('luxembourg-granduc', node_uid, 'bios', 'version'),
            :vendor       => lookup('luxembourg-granduc', node_uid, 'bios', 'vendor'),
            :release_date => lookup('luxembourg-granduc', node_uid, 'bios', 'release_date')
-         })
-         #chassis({:serial_number => lookup('luxembourg-granduc', node_uid, 'chassis', 'serial_number')})
+        })
+        chassis({:serial_number => lookup('luxembourg-granduc', node_uid, 'chassis', 'serial_number')})
       end
     end
   end
