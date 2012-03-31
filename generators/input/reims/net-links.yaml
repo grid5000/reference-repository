@@ -1,0 +1,27 @@
+--- 
+gw: 
+  model: cisco
+  kind: switch
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  linecards: 
+    0: 
+      kind: switch
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000
+      ports: 
+        44: sw-admin4
+        45: sw-admin3
+        46: sw-admin2
+        47: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+        48: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+  channels: 
+    naming_pattern: Po%CHANNELID%
+

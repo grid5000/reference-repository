@@ -1,12 +1,18 @@
 {
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
   "kind": "switch",
   "linecards": [
     {
+      "kind": "switch",
+      "naming_pattern": "Gi%LINECARD%/%PORT%",
       "ports": [
         {
 
         },
         {
+<<<<<<< HEAD
           "device": "eth0",
           "kind": "node",
 <<<<<<< HEAD
@@ -145,11 +151,54 @@
           "rate": 1000000,
 >>>>>>> [lille,lyon,nancy] First pass at a network equipment description.
           "uid": "chirloute-8"
+=======
+
         },
         {
 
         },
         {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+>>>>>>> network API generator scripts revisited and improved.
+        },
+        {
+
+        },
+        {
+<<<<<<< HEAD
           "device": "eth0",
           "kind": "node",
 <<<<<<< HEAD
@@ -268,11 +317,48 @@
           "rate": 1000000,
 >>>>>>> [lille,lyon,nancy] First pass at a network equipment description.
           "uid": "chimint-13"
+=======
+
         },
         {
 
         },
         {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+>>>>>>> network API generator scripts revisited and improved.
+        },
+        {
+
+        },
+        {
+<<<<<<< HEAD
           "device": "eth0",
           "kind": "node",
 <<<<<<< HEAD
@@ -421,6 +507,14 @@
           "rate": 1000000,
 >>>>>>> [lille,lyon,nancy] First pass at a network equipment description.
           "uid": "chimint-19"
+=======
+
+        },
+        {
+
+        },
+        {
+
         },
         {
 
@@ -430,9 +524,47 @@
         },
         {
 
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+>>>>>>> network API generator scripts revisited and improved.
+        },
+        {
+          "uid": "sw-admin4"
+        },
+        {
+          "uid": "sw-admin3"
+        },
+        {
+          "uid": "sw-admin1"
         },
         {
           "kind": "router",
+<<<<<<< HEAD
 <<<<<<< HEAD
           "rate": 1000000000,
 =======
@@ -450,24 +582,26 @@
 >>>>>>> [lille,lyon,nancy] First pass at a network equipment description.
           "trunked": true,
           "uid": "gw"
+=======
+          "uid": "gw-lille-6k.grid5000.fr"
+        },
+        {
+          "kind": "router",
+          "uid": "gw-lille-6k.grid5000.fr"
+>>>>>>> network API generator scripts revisited and improved.
         }
-      ]
+      ],
+      "rate": 1000000
     }
   ],
-  "mac": "00:1e:f6:11:5c:80",
-  "model": "Cisco WS-C2960G-48TC-L",
-  "trunks": [
-    [
-      {
-        "linecard": 0,
-        "port": 47
-      },
-      {
-        "linecard": 0,
-        "port": 48
-      }
-    ]
-  ],
+  "model": "cisco",
+  "routes": {
+
+  },
+  "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "sw-admin2"
+  "uid": "sw-admin2",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
+  }
 }

@@ -23,39 +23,93 @@ task :environment do
   @logger = Logger.new(STDERR)
   @logger.level = Logger.const_get((ENV['DEBUG'] || 'INFO').upcase)
 end
+task :hosts do
+  # HOSTS=gw.lille 
+  # HOSTS=*.lille
+  # SITES=lille => HOSTS=*.lille
+  # SITES=* => HOSTS=*.*
+  site = ENV['SITE']
+  host = ENV['HOST']
+  if site != nil 
+    host = "*.#{site}"
+  elsif host != nil
+    abort "HOST must be on the form <hostname>.<site>. You provided '#{host}'." if host.scan(/^(\S+)\.(\S+)$/).empty?
+  else
+    abort "You must provide SITE= , (SITE=lille, or SITE=*), or a HOST, (HOST=gw.lille, or HOST=*.lille, or HOST=sw-*.lille)"
+  end
+  abort "You must provide HOST= , (HOST=gw.lille, or HOST=*.lille, or HOST=sw-*.lille)" if host.nil?
+  @host = host
+end
 
 namespace :netlinks do
   desc "Probe a remote network equipement and retrieve its neighbors in a yaml file. HOST is its grid5000 FQDN."
-  task :probe do 
-    host = ENV['HOST']
-    abort "You must provide HOST= the network equipment FQDN within grid5000" if host.nil?
-    scan = host.scan(/^([^.]+)\.([^.]+)$/)
-    scan = host.scan(/^([^.]+)\.([^.]+)\.grid5000\.fr$/) if scan.empty?
-    abort "HOST is on the form 'gw.lille' or 'gw.lille.grid5000.fr'" if scan.empty?
-    uid,site = scan.flatten
-    # copy the 'extra' dir on the site,
-    # execute the probing
-    # retrieve the result
-    prober = "weathermap.#{site}.grid5000.fr"
-    sh "rsync -av extra #{prober}:"
-    sh "ssh #{prober} 'cd extra && bundle install && ./bin/net-links.rb --host #{uid} --community public'"
-    sh "rsync -av #{prober}:/tmp/#{uid}.yaml generators/input/#{site}/net-links/"
+  task :probe => [:environment,:hosts] do 
+    # Scan the site net-links yaml file to find properties about this host (snmp community,...)
+    # These properties are going to be used to probe the given host
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    dirs = Dir.glob("generators/input/#{site}/")
+    if dirs.empty?
+      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
+      next
+    end
+    message = []
+    dirs.each do |dir|
+      site = File.basename(dir)
+      net_links_file = File.join(dir,"net-links.yaml")
+      net_links_dir = File.join(dir,"net-links")
+      probes = []
 
-    message = "Network links saved into file generators/input/#{site}/net-links/#{uid}.yaml"
-    puts "+-#{"-" * message.size}-+"
-    puts "| #{message} |"
-    puts "+-#{"-" * message.size}-+"
+      net_links = YAML::load_file(net_links_file)
+      net_links.each do |host_uid,properties|
+        next if host_uid.match(Regexp.new(host.gsub(/\*/,'\S+'))).nil?
+        # gather information about this host
+        probes.push({:uid=>host_uid, :snmp_community => properties["snmp_community"]})
+      end
+      if probes.empty?
+        @logger.warn "Failed to find any host described within the file #{net_links_file}."
+      else
+        # copy the 'extra' dir on the site,
+        # execute all the probing on all hosts
+        # retrieve the result from all hosts
+        prober = "weathermap.#{site}.grid5000.fr"
+        sh "rsync -av extra #{prober}:"
+        sh "ssh #{prober} 'cd extra && bundle install'"
+
+        probes.each do |info|
+          sh "ssh #{prober} 'cd extra && ./bin/net-links.rb --host #{info[:uid]} --community #{info[:snmp_community]} --logger stdout:warn'"
+        end
+        probes.each do |info|
+          sh "rsync -av #{prober}:/tmp/#{info[:uid]}.yaml #{net_links_dir}/"
+          message.push "* #{net_links_dir}/#{info[:uid]}.yaml"
+        end
+      end
+    end
+    # Print the result on a pretty message
+    if message.empty?
+      @logger.warn "No host net-link has been download locally. Please correct warnings first."
+    else
+      message.unshift "Network links were saved into the following files : "
+      message_size = message.max{|a,b|a.size <=> b.size}.size
+      puts "+-#{"-" * message_size}-+"
+      puts message.map{|m| "| #{m} "}.join("\n")
+      puts "+-#{"-" * message_size}-+"
+    end
   end
   def format_vlan(coord,raw_port,linecards)
-        puts "Vlan : #{coord.inspect} #{raw_port.inspect}"
+#        puts "Vlan : #{coord.inspect} #{raw_port.inspect}"
   end
   def format_channel(coord,raw_port,linecards)
 #        puts "Channel : #{coord.inspect} #{raw_port.inspect}"
   end
   def format_port(coord,raw_port,linecards)
 #    puts "#{coord.inspect} #{raw_port.inspect}"
-    return unless raw_port.has_key? :fqdn
-    neighbor,site = raw_port[:fqdn].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/).flatten
+    neighbor,site = nil
+    if raw_port.has_key? :fqdn
+      neighbor,site = raw_port[:fqdn].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/).flatten
+    elsif raw_port.has_key? :uid
+      neighbor,site = raw_port[:uid].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/).flatten
+      neighbor = raw_port[:uid] if neighbor.nil?
+    end
     return if neighbor.nil?
 
     l = coord["linecard"]
@@ -71,17 +125,17 @@ namespace :netlinks do
       ports[p] = neighbor
     end
   end
-  def browse_naming_patterns(dico,cb,patterns)
+  def browse_naming_patterns(dico,patterns,&block)
     dico.each do |key,value|
       if value.is_a? Hash
-        browse_naming_patterns(value,cb,patterns)
+        browse_naming_patterns(value,patterns,&block)
       else
         if key == "naming_pattern"
           pattern = value
           if patterns.has_key? pattern
-            @logger.warn "Naming Pattern already defined '#{pattern}'. No redefinition possible." 
+            @logger.warn "Naming Pattern already defined '#{pattern}'. Skipping this redefinition." 
           else
-            patterns[pattern] = cb
+            patterns[pattern] = block
           end
         end
       end
@@ -89,69 +143,104 @@ namespace :netlinks do
   end
 
   desc "Updated formated net-links with the raw information gathered from network equipments."
-  task :format => :environment do
+  task :format => [:environment,:hosts] do
     # Read the network links fresh out of network equipment
     # Read the configuration formated
     # update the formated configuration with raw information from the net-links yaml file
-    site = ENV['SITE']
-    abort "You must provide SITE= " if site.nil?
-    formated_file = "generators/input/#{site}/net-links.yaml"
-    formated_all = YAML::load_file(formated_file)
-    Dir.glob("generators/input/#{site}/net-links/*.yaml").each do |raw_file|
-      uid = File.basename(raw_file).scan(/(\S+).yaml$/).first.first
-      next unless uid == "gw"
-      formated = formated_all[uid]
-      if formated.nil?
-        @logger.warn "Network Equipment '#{uid}' was not found in formated network links file '#{formated_file}'. Skiping"
-        next
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    dirs = Dir.glob("generators/input/#{site}/")
+    if dirs.empty?
+      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
+      next
+    end
+    message = []
+    dirs.each do |dir|
+      site = File.basename(dir)
+      net_links_file = File.join(dir,"net-links.yaml")
+      net_links_dir = File.join(dir,"net-links")
+
+      net_links = YAML::load_file(net_links_file)
+      hosts = {}
+      net_links.each do |uid,properties|
+        hosts[uid] = properties unless uid.match(Regexp.new(host.gsub(/\*/,'\S+'))).nil?
       end
-      raw = YAML::load_file(raw_file)
+      if hosts.empty?
+        @logger.warn "Failed to find any host described within the file #{net_links_file}."
+      else
+        # Read the network links fresh out of network equipment
+        # Read the configuration formated
+        # update the formated configuration with raw information from the net-links yaml file
+        hosts.each do |uid,properties|
+          raw_file = File.join(net_links_dir,"#{uid}.yaml")
+          raw = YAML::load_file(raw_file)
 
-      # Go through all formated config, and register a call back that will encode the naming_pattern
-      naming_patterns = {}
-      vlans = formated["vlans"]
-      vlans_cb = proc { |dict,raw_port|
-            format_vlan(dict,raw_port,vlans)
-          }
-      browse_naming_patterns(vlans,vlans_cb,naming_patterns)
-      channels = formated["channels"]
-      channels_cb = proc { |dict,raw_port|
-            format_channel(dict,raw_port,channels)
-          }
-      browse_naming_patterns(channels,channels_cb,naming_patterns)
+          # Go through all formated config, and register a call back that will encode the naming_pattern
+          patterns = {}
+          browse_naming_patterns(properties["vlans"],patterns) do  |dict,raw_port|
+            format_vlan(dict,raw_port,properties["vlans"])
+          end
+          browse_naming_patterns(properties["channels"],patterns) do  |dict,raw_port|
+            format_channel(dict,raw_port,properties["channels"])
+          end
+          browse_naming_patterns(properties["linecards"],patterns) do |dict,raw_port|
+            format_port(dict,raw_port,properties["linecards"])
+          end
 
-      linecards = formated["linecards"]
-      linecards_cb = proc { |dict,raw_port|
-            format_port(dict,raw_port,linecards)
-          }
-      browse_naming_patterns(linecards,linecards_cb,naming_patterns)
-
-      # Go through all ports to find they linecard and port index, 
-      raw.each do |port|
-        ifname = port[:ifname]
-        next if ifname.nil?
-        # find the naming_pattern that correspond to this ifname
-        naming_patterns.each do |np,cb|
-          # scan the ifname with each naming_pattern
-          dict = NamingPattern.encode(np,ifname)
-          unless dict.empty?
-            # Found the naming_pattern for this ifname
-            # So Place it where it belongs
-            cb.call(dict,port)
-            break
+          # Go through all ports to find they linecard and port index, 
+          raw.each do |port|
+            ifname = port[:ifname]
+            next if ifname.nil?
+            # find the naming_pattern that correspond to this ifname
+            patterns.each do |np,cb|
+              # scan the ifname with each naming_pattern
+              dict = NamingPattern.encode(np,ifname)
+              unless dict.empty?
+                # Found the naming_pattern for this ifname
+                # So Place it where it belongs
+                cb.call(dict,port)
+                break
+              end
+            end
+            #
           end
         end
-        #
+        # When all net links in a site are formated, we write them in they file.
+        File.open(net_links_file,'w'){|f| YAML::dump(net_links,f)}
+        message.push "#{net_links_file} hosts=#{hosts.keys.inspect}"
       end
     end
-    File.open(formated_file,'w'){|f| YAML::dump(formated_all,f)}
-#    pp formated_all
-    message = "Formated Network links saved into file generators/input/#{site}/net-links.yaml"
-    puts "+-#{"-" * message.size}-+"
-    puts "| #{message} |"
-    puts "+-#{"-" * message.size}-+"
+    # Print the result on a pretty message
+    if message.empty?
+      @logger.warn "No host net-link has been formated. Please correct warnings first and your cli parameters."
+    else
+      message.map!{|m| "* #{m}"}
+      message.unshift "Formated Network links were saved into the following files : "
+      message_size = message.max{|a,b|a.size <=> b.size}.size
+      puts "+-#{"-" * message_size}-+"
+      puts message.map{|m| "| #{m} "}.join("\n")
+      puts "+-#{"-" * message_size}-+"
+    end
+  end
+  desc "Generates The JSON files that will be used for network API.\nUse DRY=1 to simulate the execution. "
+  task :generate => [:environment,:hosts] do
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    dirs = Dir.glob("generators/input/#{site}/")
+    if dirs.empty?
+      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
+      next
+    end
+    generator = "#{File.join(ROOT_DIR, "generators", "grid5000")}"
+    net_link_generator = "#{File.join(ROOT_DIR, "generators", "input", "net-links-generator.rb")}"
+    dirs.each do |dir|
+      site = File.basename(dir)
+      net_links_file = File.expand_path(File.join(dir,"net-links.yaml"))
+      command = "#{generator}  #{net_link_generator} #{net_links_file}"
+      command << " -s" if ENV['DRY'] && ENV['DRY'] != "0"
+      sh command
+    end
 
   end
+
 end
 
 namespace :g5k do

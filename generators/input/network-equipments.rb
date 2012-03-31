@@ -65,19 +65,50 @@ end
 
 site "lille" do
   network_equipment "gw" do
-    networks [
+    admin_ip "192.168.159.254"
+    snmp_version "1"
+    snmp_community "public"
+    vlans({
+      "naming_pattern" => 'Vlan%VLANID%' ,
+      "101" => {
+        "description" =>  "ADMIN",
+        "address" =>  "172.17.95.254/20",
+      },
+      "550" => {
+        "description" =>  "Grid5000 Backbone",
+        "address" =>  "192.168.4.10/24",
+      }
+    })
+    channels({
+      "naming_pattern" =>  "Po%CHANNELID%" ,
+      "200" => [
+        {
+          "linecard" =>  8,
+          "port" =>  0
+        },
+        {
+          "linecard" =>  8,
+          "port" =>  1
+        }
+      ]
+    })
+
+    routes [
       {
-        :kind     => 'default',
-        :cidr    => '192.168.159.0/24'
+        "network" => "172.16.47.254/20",
+        "status" =>  "connected",
+        "interface" => "Vlan100"
       },
       {
-        :kind     => 'virtual',
-        :cidr    => '10.136.0.0/14'
+        "network" => "172.28.152.0/22",
+        "status" => "static",
+        "via" => "192.168.4.14",
+        "interface" => "Vlan550"
       }
-      # TODO:kavlan, add gateway
-    ]
+    ] 
   end
 
+  # TODO:kavlan, add gateway
   # switch myrinet 10G?
 end
 

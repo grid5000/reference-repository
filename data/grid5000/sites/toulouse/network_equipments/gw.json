@@ -5,6 +5,25 @@
   "kind": "switch",
   "linecards": [
     {
+
+    },
+    {
+      "kind": "switch",
+      "naming_pattern": "Te%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "uid": "gw-g5k"
+        }
+      ],
+      "rate": 1000000
+    },
+    {
+
+    },
+    {
       "kind": "switch",
       "naming_pattern": "Gi%LINECARD%/%PORT%",
       "ports": [
@@ -141,41 +160,19 @@
 
         },
         {
-          "uid": "sw-admin3"
+
         },
         {
-          "uid": "sw-admin2"
+
         },
         {
-          "uid": "sw-admin1"
+
         },
         {
-          "kind": "router",
-<<<<<<< HEAD
-<<<<<<< HEAD
-          "rate": 1000000000,
-=======
-          "rate": 1000000,
->>>>>>> [lille,lyon,nancy] First pass at a network equipment description.
-          "trunked": true,
-          "uid": "gw"
+
         },
         {
-          "kind": "router",
-<<<<<<< HEAD
-          "rate": 1000000000,
-=======
-          "rate": 1000000,
->>>>>>> [lille,lyon,nancy] First pass at a network equipment description.
-          "trunked": true,
-          "uid": "gw"
-=======
-          "uid": "gw-lille-6k.grid5000.fr"
-        },
-        {
-          "kind": "router",
-          "uid": "gw-lille-6k.grid5000.fr"
->>>>>>> network API generator scripts revisited and improved.
+          "uid": "nfs-violette"
         }
       ],
       "rate": 1000000
@@ -187,7 +184,7 @@
   },
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "sw-admin4",
+  "uid": "gw",
   "vlans": {
     "naming_pattern": "Vlan%VLANID%"
   }

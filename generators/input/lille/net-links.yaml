@@ -1,88 +1,245 @@
 --- 
-gw: 
-  kind: router
+sw-admin1: 
   model: cisco
+  kind: switch
   snmp_community: public
   routes: {}
 
   vlans: 
     naming_pattern: Vlan%VLANID%
   linecards: 
+    0: 
+      kind: switch
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000
+      ports: 
+        44: sw-admin4
+        45: sw-admin3
+        46: sw-admin2
+        47: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+        48: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sw-admin2: 
+  model: cisco
+  kind: switch
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  linecards: 
+    0: 
+      kind: switch
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000
+      ports: 
+        44: sw-admin4
+        45: sw-admin3
+        46: sw-admin1
+        47: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+        48: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sw-admin3: 
+  model: cisco
+  kind: switch
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  linecards: 
+    0: 
+      kind: switch
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000
+      ports: 
+        44: sw-admin4
+        45: sw-admin2
+        46: sw-admin1
+        47: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+        48: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sw-admin4: 
+  model: cisco
+  kind: switch
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  linecards: 
+    0: 
+      kind: switch
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000
+      ports: 
+        44: sw-admin3
+        45: sw-admin2
+        46: sw-admin1
+        47: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+        48: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sw-admin5: 
+  model: cisco
+  kind: switch
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  linecards: 
+    0: 
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000
+      ports: 
+        44: 
+          kind: server
+          uid: tilt
+        48: 
+          kind: router
+          uid: gw-lille-6k.grid5000.fr
+  channels: 
+    naming_pattern: Po%CHANNELID%
+gw: 
+  model: cisco
+  kind: router
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  linecards: 
+    6: 
+      kind: router
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000
+      ports: 
+        1: sw1-core-lil.net-admin.lille.inria.fr
+    1: 
+      kind: renater
+      naming_pattern: Te%LINECARD%/%PORT%
+      rate: 10000000
+      ports: 
+        1: UL_GRID5000_SW01.uni.lu
     2: 
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
-      rate: 1G
+      rate: 1000000
       ports: 
         27: chinqchint-27
-        33: chinqchint-33
         11: chinqchint-11
-        39: chinqchint-39
-        6: chinqchint-6
+        33: chinqchint-33
         17: chinqchint-17
-        12: chinqchint-12
+        6: chinqchint-6
+        39: chinqchint-39
+        34: chinqchint-34
         1: chinqchint-1
-        40: chinqchint-40
-        18: chinqchint-18
+        12: chinqchint-12
         29: chinqchint-29
-        13: chinqchint-13
-        2: chinqchint-2
+        18: chinqchint-18
+        40: chinqchint-40
         24: chinqchint-24
-        41: chinqchint-5
-        19: chinqchint-19
-        8: chinqchint-8
+        2: chinqchint-2
+        13: chinqchint-13
         30: chinqchint-30
-        3: chinqchint-3
-        14: chinqchint-14
+        8: chinqchint-8
+        19: chinqchint-19
+        41: chinqchint-5
         25: chinqchint-25
-        20: chinqchint-20
-        42: chimint-srv
-        31: chinqchint-31
+        14: chinqchint-14
+        3: chinqchint-3
         9: chinqchint-9
-        26: chinqchint-26
-        15: chinqchint-15
+        31: chinqchint-31
+        42: 
+          kind: server
+          uid: chimint-srv
+        20: chinqchint-20
         4: chinqchint-4
-        32: chinqchint-32
-        21: chinqchint-21
+        15: chinqchint-15
+        26: chinqchint-26
         10: chinqchint-10
+        21: chinqchint-21
+        32: chinqchint-32
     3: 
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
-      rate: 1G
+      rate: 1000000
       ports: 
-        5: chinqchint-45
+        27: chimint-20
         16: chimint-10
+        5: chinqchint-45
         33: chirloute-5
         17: chimint-11
-        1: chinqchint-41
-        12: chimint-6
         23: chimint-15
-        7: chimint-1
+        12: chimint-6
+        1: chinqchint-41
         18: chimint-12
-        24: chimint-18
+        7: chimint-1
         13: chimint-8
-        19: chimint-13
-        30: chirloute-3
+        24: chimint-18
+        8: chimint-3
         41: chinqchint-46
-        3: chinqchint-43
+        30: chirloute-3
+        19: chimint-13
+        14: chimint-7
         25: chirloute-2
-        20: chimint-14
-        31: chirloute-6
+        3: chinqchint-43
         9: chimint-2
-        26: chirloute-4
+        31: chirloute-6
+        20: chimint-14
+        15: chimint-9
         4: chinqchint-44
+        26: chirloute-4
         32: chirloute-8
     4: 
-      kind: server
+      kind: switch
       naming_pattern: Gi%LINECARD%/%PORT%
-      rate: 1G
+      rate: 1000000
       ports: 
-        38: groarr
-        33: conman
-        47: bugzilla-global
-        31: syslog-dmz
+        27: sw-admin3
+        38: 
+          kind: server
+          uid: groarr
+        33: 
+          kind: server
+          uid: conman
+        28: sw-admin3
+        23: sw-admin1
+        29: sw-admin4
+        24: sw-admin1
+        30: sw-admin4
+        25: sw-admin2
+        47: sw-admin5
+        31: 
+          kind: server
+          uid: syslog-dmz
+        26: sw-admin2
         48: 
           kind: node
           uid: chirloute-7
-        32: jabber-global
+        32: 
+          kind: server
+          uid: jabber-global
   channels: 
     naming_pattern: Po%CHANNELID%

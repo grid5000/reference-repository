@@ -1,7 +1,12 @@
 {
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
   "kind": "switch",
   "linecards": [
     {
+      "kind": "node",
+      "naming_pattern": "Gi%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -136,22 +141,43 @@
 
         },
         {
+          "kind": "server",
+          "uid": "tilt"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
           "kind": "router",
+<<<<<<< HEAD
 <<<<<<< HEAD
           "rate": 1000000000,
 =======
           "rate": 1000000,
 >>>>>>> [lille,lyon,nancy] First pass at a network equipment description.
           "uid": "gw"
+=======
+          "uid": "gw-lille-6k.grid5000.fr"
+>>>>>>> network API generator scripts revisited and improved.
         }
-      ]
+      ],
+      "rate": 1000000
     }
   ],
-  "mac": "00:1e:f6:11:7c:00",
-  "model": "Cisco WS-C2960G-48TC-L",
-  "trunks": [
+  "model": "cisco",
+  "routes": {
 
-  ],
+  },
+  "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "sw-admin5"
+  "uid": "sw-admin5",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
+  }
 }

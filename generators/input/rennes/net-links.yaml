@@ -1,0 +1,20 @@
+--- 
+gw: 
+  model: cisco
+  kind: switch
+  snmp_community: g5ksub
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  linecards: 
+    0: 
+      kind: switch
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000
+      ports: 
+        44: sw-admin4
+        45: sw-admin3
+  channels: 
+    naming_pattern: Po%CHANNELID%
+
