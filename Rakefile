@@ -14,7 +14,6 @@ $LOAD_PATH.unshift(EXTRA_DIR) unless $LOAD_PATH.include?(EXTRA_DIR)
 
 Rake.application.options.trace = true
 
-
 require 'grid5000'
 require 'naming-pattern'
 
@@ -112,7 +111,7 @@ namespace :netlinks do
     end
     return if neighbor.nil?
 
-    l = coord["linecard"]
+    l = (coord["linecard"]||0)
     p = coord["port"]
     linecards[l] = {"ports"=>{}} unless linecards.has_key? l
     ports = linecards[l]["ports"]
@@ -211,7 +210,84 @@ namespace :netlinks do
     end
     # Print the result on a pretty message
     if message.empty?
-      @logger.warn "No host net-link has been formated. Please correct warnings first and your cli parameters."
+      @logger.warn "No host net-link has been formated. Please correct warnings and your cli parameters."
+    else
+      message.map!{|m| "* #{m}"}
+      message.unshift "Formated Network links were saved into the following files : "
+      message_size = message.max{|a,b|a.size <=> b.size}.size
+      puts "+-#{"-" * message_size}-+"
+      puts message.map{|m| "| #{m} "}.join("\n")
+      puts "+-#{"-" * message_size}-+"
+    end
+  end
+  desc "Update net-links.yaml with the kavlan like config file."
+  task :kavlan => [:environment,:hosts] do
+    config_file = ENV['CONF']
+    abort "You must provide a CONF=, which is the path to the kavlan like config file." if config_file.nil?
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    dirs = Dir.glob("generators/input/#{site}/")
+    if dirs.empty?
+      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
+      next
+    end
+    message = []
+    dirs.each do |dir|
+      site = File.basename(dir)
+      net_links_file = File.join(dir,"net-links.yaml")
+      net_links_dir = File.join(dir,"net-links")
+
+      net_links = YAML::load_file(net_links_file)
+      net_links.keep_if do |uid,properties|
+        uid.match(Regexp.new(host.gsub(/\*/,'\S+'))) != nil
+      end
+      if net_links.empty?
+        @logger.warn "Failed to find any host described within the file #{net_links_file}."
+      else
+        # parse the kavlan like config file
+        config = {}
+        File.read(config_file).lines.each do |line|
+          if ((scan = line.strip.scan(/^([^.]+)\.([^.]+)\.grid5000\.fr\s+(\S+)\s+(\S+)$/)).size > 0)
+            uid,site,ifname,router = scan.flatten
+            config[router] = [] unless config.has_key? router
+            config[router].push({:uid=>uid,:ifname=>ifname})
+          end
+        end
+
+        updated = []
+        # Update the net-links with kavlan config file
+        net_links.each do |uid,properties|
+          router = config[uid]
+          next if router.nil?
+          updated.push uid
+          # register interfaces naming patterns
+          patterns = {}
+          browse_naming_patterns(properties["linecards"],patterns) do |dict,raw_port|
+            format_port(dict,raw_port,properties["linecards"])
+          end
+          # parse the ifname
+          router.each do |neighbor|
+            ifname = neighbor[:ifname]
+            # find the naming_pattern that correspond to this ifname
+            patterns.each do |np,cb|
+              # scan the ifname with each naming_pattern
+              dict = NamingPattern.encode(np,ifname)
+              unless dict.empty?
+                # Found the naming_pattern for this ifname
+                # So Place it where it belongs
+                cb.call(dict,neighbor)
+                break
+              end
+            end
+          end
+        end
+        # When all net links in a site are formated, we write them in they file.
+        File.open(net_links_file,'w'){|f| YAML::dump(net_links,f)}
+        message.push "#{net_links_file} hosts=#{updated.inspect}"
+      end
+    end
+    # Print the result on a pretty message
+    if message.empty?
+      @logger.warn "No host net-link has been formated. Please correct warnings and/or your cli parameters."
     else
       message.map!{|m| "* #{m}"}
       message.unshift "Formated Network links were saved into the following files : "

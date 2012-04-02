@@ -1,206 +1,150 @@
 {
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
   "kind": "switch",
   "linecards": [
     {
+      "kind": "node",
+      "naming_pattern": "%PORT%",
       "ports": [
         {
 
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-40"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-41"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-42"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-43"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-44"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-45"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-46"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-47"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-48"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-49"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-50"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-51"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-52"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-53"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-54"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-55"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-56"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-57"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-58"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-59"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-60"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-61"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-62"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-63"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-64"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-65"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-66"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-67"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-68"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-69"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-70"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-71"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-72"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-73"
         },
         {
-          "kind": "node",
-          "rate": 1000000000,
           "uid": "graphene-74"
         }
-      ]
+      ],
+      "rate": 1000
     },
     {
+      "kind": "router",
+      "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
 
         },
         {
-          "kind": "switch",
-          "rate": 10000000000,
-          "uid": "sgravillon1"
+
+        },
+        {
+          "uid": "gw"
         }
-      ]
+      ],
+      "rate": 10000
     }
   ],
-  "mac": "40:01:c6:8c:06:01",
   "model": "3com 4500g",
-  "trunks": [
+  "routes": {
 
-  ],
+  },
+  "site_uid": "nancy",
+  "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "sgraphene2"
+  "uid": "sgraphene2",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
+  }
 }

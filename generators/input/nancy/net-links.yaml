@@ -1,0 +1,589 @@
+--- 
+gw: 
+  model: HP Procurve 5406zl
+  kind: router
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: switch
+      rate: 10000
+      ports: 
+        3: sgraphene3
+        4: sgriffon2
+    2: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: switch
+      rate: 10000
+      ports: 
+        1: sgraphene1
+        2: sgraphene2
+        4: sgraphene4
+    3: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: switch
+      rate: 10000
+      ports: 
+        3: sgriffon3
+        4: sgriffon1
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sgraphene1: 
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        2: graphene-1
+        1: graphene-2
+        4: graphene-3
+        3: graphene-4
+        6: graphene-5
+        5: graphene-6
+        8: graphene-7
+        12: graphene-8
+        11: graphene-9
+        7: graphene-10
+        10: graphene-11
+        9: graphene-12
+        14: graphene-13
+        13: graphene-14
+        16: graphene-15
+        15: graphene-16
+        18: graphene-17
+        17: graphene-18
+        20: graphene-19
+        19: graphene-20
+        22: graphene-21
+        21: graphene-22
+        24: graphene-23
+        23: graphene-24
+        26: graphene-25
+        25: graphene-26
+        28: graphene-27
+        27: graphene-28
+        30: graphene-29
+        29: graphene-30
+        32: graphene-31
+        31: graphene-32
+        34: graphene-33
+        33: graphene-34
+        36: graphene-35
+        35: graphene-36
+        38: graphene-37
+        37: graphene-38
+        40: graphene-39
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: router
+      rate: 10000
+      ports: 
+        2: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sgraphene2: 
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        2: graphene-41
+        1: graphene-40
+        3: graphene-42
+        4: graphene-43
+        5: graphene-44
+        6: graphene-45
+        7: graphene-46
+        8: graphene-47
+        9: graphene-48
+        10: graphene-49
+        11: graphene-50
+        12: graphene-51
+        13: graphene-52
+        14: graphene-53
+        15: graphene-54
+        16: graphene-55
+        17: graphene-56
+        18: graphene-57
+        19: graphene-58
+        20: graphene-59
+        21: graphene-60
+        22: graphene-61
+        23: graphene-62
+        24: graphene-63
+        25: graphene-64
+        26: graphene-65
+        27: graphene-66
+        28: graphene-67
+        29: graphene-68
+        30: graphene-69
+        31: graphene-70
+        32: graphene-71
+        33: graphene-72
+        34: graphene-73
+        35: graphene-74
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: router
+      rate: 10000
+      ports: 
+        2: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sgraphene3: 
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        2: graphene-75
+        1: graphene-76
+        4: graphene-77
+        3: graphene-78
+        6: graphene-79
+        5: graphene-80
+        8: graphene-81
+        7: graphene-82
+        10: graphene-83
+        9: graphene-84
+        12: graphene-85
+        11: graphene-86
+        14: graphene-87
+        13: graphene-88
+        16: graphene-89
+        15: graphene-90
+        18: graphene-91
+        17: graphene-92
+        20: graphene-93
+        19: graphene-94
+        22: graphene-95
+        21: graphene-96
+        24: graphene-97
+        23: graphene-98
+        26: graphene-99
+        25: graphene-100
+        28: graphene-101
+        27: graphene-102
+        30: graphene-103
+        29: graphene-104
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: router
+      rate: 10000
+      ports: 
+        2: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sgraphene4: 
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        2: graphene-106
+        1: graphene-105
+        3: graphene-107
+        4: graphene-108
+        5: graphene-109
+        6: graphene-110
+        7: graphene-111
+        8: graphene-112
+        9: graphene-113
+        10: graphene-114
+        11: graphene-115
+        12: graphene-116
+        13: graphene-117
+        14: graphene-118
+        15: graphene-119
+        16: graphene-120
+        17: graphene-121
+        18: graphene-122
+        19: graphene-123
+        20: graphene-124
+        21: graphene-125
+        22: graphene-126
+        23: graphene-127
+        24: graphene-128
+        25: graphene-129
+        26: graphene-130
+        27: graphene-131
+        28: graphene-132
+        29: graphene-133
+        30: graphene-134
+        31: graphene-135
+        32: graphene-136
+        33: graphene-137
+        34: graphene-138
+        35: graphene-139
+        36: graphene-140
+        37: graphene-141
+        38: graphene-142
+        39: graphene-143
+        40: graphene-144
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: router
+      rate: 10000
+      ports: 
+        1: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sgriffon1: 
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        2: griffon-2
+        1: griffon-1
+        3: griffon-3
+        4: griffon-4
+        5: griffon-5
+        6: griffon-6
+        7: griffon-7
+        8: griffon-8
+        10: griffon-9
+        9: griffon-10
+        25: griffon-11
+        26: griffon-12
+        27: griffon-13
+        28: griffon-14
+        29: griffon-15
+        30: griffon-16
+        31: griffon-17
+        32: griffon-18
+        33: griffon-19
+        34: griffon-20
+        35: griffon-21
+        36: griffon-22
+        37: griffon-23
+        38: griffon-24
+        39: griffon-25
+        40: griffon-26
+        41: griffon-27
+        42: griffon-28
+        43: griffon-29
+        11: griffon-58
+        12: griffon-59
+        13: griffon-60
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: router
+      rate: 10000
+      ports: 
+        2: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sgriffon2: 
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        2: griffon-31
+        1: griffon-30
+        3: griffon-32
+        4: griffon-33
+        5: griffon-34
+        6: griffon-35
+        7: griffon-36
+        8: griffon-37
+        9: griffon-38
+        25: griffon-39
+        26: griffon-40
+        27: griffon-41
+        28: griffon-42
+        29: griffon-43
+        30: griffon-44
+        31: griffon-45
+        32: griffon-46
+        33: griffon-47
+        34: griffon-48
+        35: griffon-49
+        37: griffon-50
+        36: griffon-51
+        38: griffon-52
+        39: griffon-53
+        40: griffon-54
+        41: griffon-55
+        42: griffon-56
+        43: griffon-57
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: router
+      rate: 10000
+      ports: 
+        1: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sgriffon3: 
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        4: griffon-61
+        5: griffon-62
+        6: griffon-63
+        7: griffon-64
+        8: griffon-65
+        9: griffon-66
+        10: griffon-67
+        11: griffon-68
+        12: griffon-69
+        13: griffon-70
+        14: griffon-71
+        15: griffon-72
+        25: griffon-73
+        26: griffon-74
+        27: griffon-75
+        28: griffon-76
+        29: griffon-77
+        30: griffon-78
+        31: griffon-79
+        32: griffon-80
+        33: griffon-81
+        34: griffon-82
+        35: griffon-83
+        36: griffon-84
+        37: griffon-85
+        38: griffon-86
+        39: griffon-87
+        40: griffon-88
+        41: griffon-89
+        42: griffon-90
+        43: griffon-91
+        44: griffon-92
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: router
+      rate: 10000
+      ports: 
+        1: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%
+stalc1: 
+  model: hp procurve
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        1: talc-1
+        3: talc-2
+        6: talc-3
+        7: talc-4
+        8: talc-5
+        9: talc-6
+        10: talc-7
+        11: talc-8
+        12: talc-9
+        13: talc-10
+        14: talc-11
+        15: talc-12
+        16: talc-13
+        17: talc-14
+        18: talc-15
+        19: talc-16
+        20: talc-17
+        21: talc-18
+        25: talc-19
+        26: talc-20
+        27: talc-21
+        28: talc-22
+        29: talc-23
+        30: talc-24
+        31: talc-25
+        32: talc-26
+        33: talc-27
+        34: talc-28
+        35: talc-29
+        36: talc-30
+        37: talc-31
+        38: talc-32
+        39: talc-33
+        40: talc-34
+        41: talc-35
+        42: talc-36
+        43: talc-37
+        5: talc-134
+  channels: 
+    naming_pattern: Po%CHANNELID%
+stalc2: 
+  model: hp procurve
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        3: talc-38
+        4: talc-39
+        5: talc-40
+        6: talc-41
+        7: talc-42
+        8: talc-43
+        9: talc-44
+        10: talc-45
+        11: talc-46
+        12: talc-47
+        13: talc-48
+        14: talc-49
+        25: talc-50
+        26: talc-51
+        27: talc-52
+        28: talc-53
+        29: talc-54
+        30: talc-55
+        31: talc-56
+        32: talc-57
+        33: talc-58
+        34: talc-59
+        35: talc-60
+        36: talc-61
+        37: talc-62
+        38: talc-63
+        39: talc-64
+        40: talc-65
+        41: talc-66
+        42: talc-67
+  channels: 
+    naming_pattern: Po%CHANNELID%
+stalc3: 
+  model: hp procurve
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 1000
+      ports: 
+        2: talc-69
+        1: talc-68
+        3: talc-70
+        4: talc-71
+        5: talc-72
+        6: talc-73
+        7: talc-74
+        8: talc-75
+        9: talc-76
+        10: talc-77
+        11: talc-78
+        12: talc-79
+        13: talc-80
+        14: talc-81
+        15: talc-82
+        16: talc-83
+        17: talc-84
+        18: talc-85
+        19: talc-86
+        20: talc-87
+        25: talc-88
+        26: talc-89
+        27: talc-90
+        28: talc-91
+        29: talc-92
+        30: talc-93
+        31: talc-94
+        32: talc-95
+        33: talc-96
+        34: talc-97
+        35: talc-98
+        36: talc-99
+        37: talc-100
+        38: talc-101
+        39: talc-102
+        40: talc-103
+        41: talc-104
+        42: talc-133
+  channels: 
+    naming_pattern: Po%CHANNELID%
