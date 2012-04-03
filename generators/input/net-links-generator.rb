@@ -2,12 +2,12 @@
 # Find the net-links yaml file passed as argument
 lookup("net-links").each do |equipment_uid, properties|
   site_name = properties["site"]
-  site site_name.to_sym do 
+  site site_name.to_sym do |site|
     network_equipment equipment_uid do |uid|
       # Most properties are directly written as they are from the net-links YAML file to the the JSON file
       model properties["model"]
       kind properties["kind"]
-      site_uid properties["site"]
+      @context.recursive_merge!(:site => site)
       snmp_community properties["snmp_community"]
       vlans properties["vlans"]
       routes properties["routes"]

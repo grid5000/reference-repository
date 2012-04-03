@@ -14,13 +14,13 @@ gw:
     1: 
       naming_pattern: Te%LINECARD%/%PORT%
       kind: virtual
-      rate: 10G
+      rate: 10000
       ports: {}
 
     2: 
       naming_pattern: Gi%LINECARD%/%PORT%
       kind: node
-      rate: 1G
+      rate: 1000
       ports: {}
 
   channels: 
@@ -39,7 +39,7 @@ switch01:
     1: 
       naming_pattern: Te%LINECARD%/%PORT%
       kind: virtual
-      rate: 1G
+      rate: 1000
       ports: 
         2: renater-lille
         3: 
@@ -48,7 +48,7 @@ switch01:
     3: 
       naming_pattern: Gi%LINECARD%/%PORT%
       kind: node
-      rate: 1G
+      rate: 1000
       ports: 
         2: chimint-14
         3: chimint-14
@@ -57,7 +57,7 @@ switch01:
     4: 
       naming_pattern: Gi%LINECARD%/%PORT%
       kind: server
-      rate: 1G
+      rate: 1000
       ports: 
         0: srv-stock
         1:

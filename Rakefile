@@ -248,8 +248,14 @@ namespace :netlinks do
         File.read(config_file).lines.each do |line|
           if ((scan = line.strip.scan(/^([^.]+)\.([^.]+)\.grid5000\.fr\s+(\S+)\s+(\S+)$/)).size > 0)
             uid,site,ifname,router = scan.flatten
+            router = router.downcase
             config[router] = [] unless config.has_key? router
-            config[router].push({:uid=>uid,:ifname=>ifname})
+#            if ((scan = uid.scan(/^(\S+-\d+)-(\S+)$/)).size > 0)
+#              uid,port = scan.flatten
+#              config[router].push({:uid=>uid,:ifname=>ifname,:port=>port})
+#            else
+              config[router].push({:uid=>uid,:ifname=>ifname})
+#            end
           end
         end
 
