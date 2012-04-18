@@ -22,7 +22,7 @@ task :api_sites  do
   @api_sites = if ENV['SITE']
     [@api.root.sites[ENV['SITE'].to_sym]]
   else
-    @api.root.sites.reject{|site| site['uid'] == "orsay" or site['uid'] == "reims"}
+    @api.root.sites
   end
 end
 
