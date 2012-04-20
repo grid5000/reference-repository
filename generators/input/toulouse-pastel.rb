@@ -3,7 +3,7 @@ site :toulouse do |site_uid|
     model "Sun Fire X2200 M2"
     created_at Time.parse("2007-11-29").httpdate
 
-    80.times do |i|
+    140.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
         architecture({
