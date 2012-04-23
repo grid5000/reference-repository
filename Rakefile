@@ -74,7 +74,7 @@ namespace :netlinks do
         extra_dir_basename = File.basename(EXTRA_DIR)
         prober = "weathermap.#{site}.grid5000.fr"
         sh "rsync -av #{EXTRA_DIR} #{prober}:"
-        sh "ssh #{prober} 'cd #{extra_dir_basename} && bundle install'"
+        sh "ssh #{prober} 'cd #{extra_dir_basename} && http_proxy=http://proxy:3128 bundle install'"
 
         probes.each do |info|
           sh "ssh #{prober} 'cd #{extra_dir_basename} && ./bin/net-links.rb --host #{info[:uid]} --community #{info[:snmp_community]} --logger stdout:warn'"
