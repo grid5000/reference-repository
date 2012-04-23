@@ -11,14 +11,26 @@
 
     },
     {
-      "kind": "node",
+      "kind": "router",
       "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
+        {
 
+        },
+        {
+          "port": "0/1",
+          "uid": "edgeiron"
+        },
+        {
+          "port": "0/2",
+          "uid": "edgeiron"
+        }
       ],
-      "rate": 1000
+      "rate": 10000
     },
     {
+      "kind": "node",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -95,9 +107,12 @@
         {
           "uid": "sol-36"
         }
-      ]
+      ],
+      "rate": 1000
     },
     {
+      "kind": "node",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -174,9 +189,12 @@
         {
           "uid": "sol-48"
         }
-      ]
+      ],
+      "rate": 1000
     },
     {
+      "kind": "node",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -244,9 +262,12 @@
         {
           "uid": "suno-16"
         }
-      ]
+      ],
+      "rate": 1000
     },
     {
+      "kind": "node",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -304,8 +325,39 @@
         },
         {
           "uid": "suno-35"
+        },
+        {
+          "kind": "other",
+          "port": "eth2",
+          "uid": "srv-stock"
+        },
+        {
+          "kind": "other",
+          "port": "eth1",
+          "uid": "srv"
+        },
+        {
+          "kind": "other",
+          "port": "eth3",
+          "uid": "srv"
+        },
+        {
+          "kind": "other",
+          "port": "eth2",
+          "uid": "srv"
+        },
+        {
+          "kind": "other",
+          "port": "eth3",
+          "uid": "srv-stock"
+        },
+        {
+          "kind": "other",
+          "port": "eth1",
+          "uid": "srv-stock"
         }
-      ]
+      ],
+      "rate": 1000
     },
     {
       "kind": "node",
@@ -343,6 +395,52 @@
         },
         {
           "uid": "suno-45"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "kind": "other",
+          "port": "eth0",
+          "uid": "srv"
+        },
+        {
+          "kind": "other",
+          "port": "eth0",
+          "uid": "srv-stock"
         }
       ],
       "rate": 1000
@@ -351,20 +449,57 @@
 
     },
     {
+      "kind": "other",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
 
         },
         {
+          "kind": "node",
           "uid": "sol-49"
         },
         {
-
+          "uid": "newservices"
         },
         {
+          "kind": "node",
           "uid": "sol-50"
+        },
+        {
+          "uid": "services2"
+        },
+        {
+          "kind": "switch",
+          "port": "1/0/1",
+          "uid": "ciscosol"
+        },
+        {
+          "uid": "sw-myrinet"
+        },
+        {
+          "port": "eth1",
+          "uid": "services2"
+        },
+        {
+          "uid": "front-sop"
+        },
+        {
+          "uid": "renater-1g"
+        },
+        {
+          "port": "eth0",
+          "uid": "stock"
+        },
+        {
+          "uid": "services"
+        },
+        {
+          "port": "eth1",
+          "uid": "stock"
         }
-      ]
+      ],
+      "rate": 1000
     }
   ],
   "model": "Foundry",
