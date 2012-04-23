@@ -9,8 +9,9 @@ ROOT_DIR = File.expand_path File.dirname(__FILE__)
 LIB_DIR = File.join(ROOT_DIR, "generators", "lib")
 $LOAD_PATH.unshift(LIB_DIR) unless $LOAD_PATH.include?(LIB_DIR)
 
-EXTRA_DIR = File.join(ROOT_DIR, "extra", "lib")
-$LOAD_PATH.unshift(EXTRA_DIR) unless $LOAD_PATH.include?(EXTRA_DIR)
+EXTRA_DIR = File.join(ROOT_DIR, "extras")
+EXTRA_DIR_LIB = File.join(EXTRA_DIR, "lib")
+$LOAD_PATH.unshift(EXTRA_DIR_LIB) unless $LOAD_PATH.include?(EXTRA_DIR_LIB)
 
 Rake.application.options.trace = true
 
@@ -70,12 +71,13 @@ namespace :netlinks do
         # copy the 'extra' dir on the site,
         # execute all the probing on all hosts
         # retrieve the result from all hosts
+        extra_dir_basename = File.basename(EXTRA_DIR)
         prober = "weathermap.#{site}.grid5000.fr"
-        sh "rsync -av extra #{prober}:"
-        sh "ssh #{prober} 'cd extra && bundle install'"
+        sh "rsync -av #{EXTRA_DIR} #{prober}:"
+        sh "ssh #{prober} 'cd #{extra_dir_basename} && bundle install'"
 
         probes.each do |info|
-          sh "ssh #{prober} 'cd extra && ./bin/net-links.rb --host #{info[:uid]} --community #{info[:snmp_community]} --logger stdout:warn'"
+          sh "ssh #{prober} 'cd #{extra_dir_basename} && ./bin/net-links.rb --host #{info[:uid]} --community #{info[:snmp_community]} --logger stdout:warn'"
         end
         probes.each do |info|
           sh "rsync -av #{prober}:/tmp/#{info[:uid]}.yaml #{net_links_dir}/"
@@ -102,12 +104,16 @@ namespace :netlinks do
   end
   def format_port(coord,raw_port,linecards)
 #    puts "#{coord.inspect} #{raw_port.inspect}"
-    neighbor,site = nil
+    neighbor,port,site = nil
     if raw_port.has_key? :fqdn
       neighbor,site = raw_port[:fqdn].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/).flatten
     elsif raw_port.has_key? :uid
-      neighbor,site = raw_port[:uid].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/).flatten
-      neighbor = raw_port[:uid] if neighbor.nil?
+      if ((scan = raw_port[:uid].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/)).size > 0)
+        neighbor,site = scan.flatten
+      else
+        neighbor = raw_port[:uid]
+      end
+      port = raw_port[:port]
     end
     return if neighbor.nil?
 
@@ -116,12 +122,17 @@ namespace :netlinks do
     linecards[l] = {"ports"=>{}} unless linecards.has_key? l
     ports = linecards[l]["ports"]
     formated_port = ports[p]
-    if formated_port.nil?
+    if formated_port.nil? and port.nil?
       ports[p] = neighbor
     elsif formated_port.is_a? Hash
       ports[p]["uid"] = neighbor
+      ports[p]["port"] = port unless port.nil?
     else
-      ports[p] = neighbor
+      if port.nil?
+        ports[p] = neighbor
+      else
+        ports[p] = {"uid"=>neighbor,"port"=>port}
+      end
     end
   end
   def browse_naming_patterns(dico,patterns,&block)
@@ -236,26 +247,31 @@ namespace :netlinks do
       net_links_file = File.join(dir,"net-links.yaml")
       net_links_dir = File.join(dir,"net-links")
 
-      net_links = YAML::load_file(net_links_file)
-      net_links.keep_if do |uid,properties|
+      net_links_orig = YAML::load_file(net_links_file)
+      net_links = net_links_orig.select do |uid,properties|
         uid.match(Regexp.new(host.gsub(/\*/,'\S+'))) != nil
       end
       if net_links.empty?
         @logger.warn "Failed to find any host described within the file #{net_links_file}."
       else
         # parse the kavlan like config file
+        # #newservices 9/2 FastIron
         config = {}
         File.read(config_file).lines.each do |line|
           if ((scan = line.strip.scan(/^([^.]+)\.([^.]+)\.grid5000\.fr\s+(\S+)\s+(\S+)$/)).size > 0)
+              
             uid,site,ifname,router = scan.flatten
             router = router.downcase
             config[router] = [] unless config.has_key? router
-#            if ((scan = uid.scan(/^(\S+-\d+)-(\S+)$/)).size > 0)
-#              uid,port = scan.flatten
-#              config[router].push({:uid=>uid,:ifname=>ifname,:port=>port})
-#            else
-              config[router].push({:uid=>uid,:ifname=>ifname})
-#            end
+            port = {:ifname=>ifname}
+            if ((scan = uid.scan(/^([^-]+)-([^-]+)-(\S+)$/)).size>0)
+              cluster,node_id,iface = scan.flatten
+              port[:uid] = "#{cluster}-#{node_id}"
+              port[:port] = iface
+            else
+              port[:uid] = uid
+            end
+            config[router].push(port)
           end
         end
 
@@ -287,7 +303,7 @@ namespace :netlinks do
           end
         end
         # When all net links in a site are formated, we write them in they file.
-        File.open(net_links_file,'w'){|f| YAML::dump(net_links,f)}
+        File.open(net_links_file,'w'){|f| YAML::dump(net_links_orig.merge(net_links),f)}
         message.push "#{net_links_file} hosts=#{updated.inspect}"
       end
     end
