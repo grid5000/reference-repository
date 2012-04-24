@@ -1,0 +1,129 @@
+{
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
+  "kind": "switch",
+  "linecards": [
+    {
+
+    },
+    {
+      "kind": "router",
+      "naming_pattern": "%LINECARD%:%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "port": 18840,
+          "uid": "gw"
+        }
+      ],
+      "rate": 1000000000
+    },
+    {
+      "kind": "node",
+      "naming_pattern": "%LINECARD%:%PORT%",
+      "port": "bmc",
+      "ports": [
+        {
+
+        },
+        {
+          "uid": "capricorne-41"
+        },
+        {
+          "uid": "capricorne-42"
+        },
+        {
+          "uid": "capricorne-43"
+        },
+        {
+          "uid": "capricorne-44"
+        },
+        {
+          "uid": "capricorne-45"
+        },
+        {
+          "uid": "capricorne-46"
+        },
+        {
+          "uid": "capricorne-47"
+        },
+        {
+          "uid": "capricorne-48"
+        },
+        {
+          "uid": "capricorne-49"
+        },
+        {
+          "uid": "capricorne-50"
+        },
+        {
+          "uid": "capricorne-51"
+        },
+        {
+          "uid": "capricorne-52"
+        },
+        {
+          "uid": "capricorne-53"
+        },
+        {
+          "uid": "capricorne-54"
+        },
+        {
+          "uid": "capricorne-55"
+        },
+        {
+          "uid": "capricorne-56"
+        },
+        {
+          "kind": "other",
+          "uid": "capricorne"
+        },
+        {
+          "kind": "other",
+          "uid": "rork"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "kind": "switch",
+          "port": 9900,
+          "uid": "chris"
+        },
+        {
+          "kind": "switch",
+          "port": 9960,
+          "uid": "chris"
+        },
+        {
+          "kind": "switch",
+          "port": 10020,
+          "uid": "chris"
+        },
+        {
+          "kind": "switch",
+          "port": 10080,
+          "uid": "chris"
+        }
+      ],
+      "rate": 100000000
+    }
+  ],
+  "model": "Foundry",
+  "routes": {
+
+  },
+  "site": "lyon",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "pat",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
+  }
+}
