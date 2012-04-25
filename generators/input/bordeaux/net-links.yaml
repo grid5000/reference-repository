@@ -1,0 +1,340 @@
+--- 
+gw: 
+  model: HP Procurve 5406zl
+  kind: router
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 10000000000
+      ports: 
+        1: storage
+        2: mx
+        3: sborderline
+        4: renater
+        5: 
+          uid: labri
+          rate: 1000000000
+        6: ib
+        7: st-bordemer
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 100000000
+      ports: 
+        1: bordereau-1
+        2: bordereau-2
+        3: bordereau-3
+        4: bordereau-4
+        5: bordereau-5
+        6: bordereau-6
+        7: bordereau-7
+        8: bordereau-8
+        9: bordereau-9
+        10: bordereau-10
+        11: bordereau-11
+        12: bordereau-12
+        13: bordereau-13
+        14: bordereau-14
+        15: bordereau-15
+        16: bordereau-16
+        17: bordereau-17
+        18: bordereau-18
+        19: bordereau-19
+        20: bordereau-20
+        21: bordereau-21
+        22: bordereau-22
+        23: bordereau-23
+        24: bordereau-24
+        25: bordereau-25
+        26: bordereau-26
+        27: bordereau-27
+        28: bordereau-28
+        29: bordereau-29
+        30: bordereau-30
+        31: bordereau-31
+        32: bordereau-32
+        33: bordereau-33
+        34: bordereau-34
+        35: bordereau-35
+        36: bordereau-36
+        37: bordereau-37
+        38: bordereau-38
+        39: bordereau-39
+        40: bordereau-40
+        41: bordereau-41
+        42: bordereau-42
+        43: bordereau-43
+        44: bordereau-44
+        45: bordereau-45
+        46: bordereau-46
+        47: bordereau-47
+        48: bordereau-48
+        49: bordereau-49
+        50: bordereau-50
+        51: bordereau-51
+        52: bordereau-52
+        53: bordereau-53
+        54: bordereau-54
+        55: bordereau-55
+        56: bordereau-56
+        57: bordereau-57
+        58: bordereau-58
+        59: bordereau-59
+        60: bordereau-60
+        61: bordereau-61
+        62: bordereau-62
+        63: bordereau-63
+        64: bordereau-64
+        65: bordereau-65
+        66: bordereau-66
+        67: bordereau-67
+        68: bordereau-68
+        69: bordereau-69
+        70: bordereau-70
+        71: bordereau-71
+        72: bordereau-72
+        73: bordereau-73
+        74: bordereau-74
+        75: bordereau-75
+        76: bordereau-76
+        77: bordereau-77
+        78: bordereau-78
+        79: bordereau-79
+        80: bordereau-80
+        81: bordereau-81
+        82: bordereau-82
+        83: bordereau-83
+        84: bordereau-84
+        85: bordereau-85
+        86: bordereau-86
+        87: bordereau-87
+        88: bordereau-88
+        89: bordereau-89
+        90: bordereau-90
+        91: bordereau-91
+        92: bordereau-92
+        93: bordereau-93
+    2: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: other
+      rate: 100000000
+      ports: 
+        1: 
+          uid: xen-srv1
+          port: eth0
+        2: 
+          uid: xen-srv1
+          port: eth1
+        3: 
+          uid: xen-srv2
+          port: eth0
+        4: 
+          uid: xen-srv2
+          port: eth1
+        5: 
+          uid: borderline
+          port: eth0
+        6: 
+          uid: borderline
+          port: eth1
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sborderline: 
+  model: Nortel 5530
+  kind: switch
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: router
+      rate: 10000000000
+      ports: 
+        0: gw
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: borderline-1
+        2: borderline-2
+        3: borderline-3
+        4: borderline-4
+        5: borderline-5
+        6: borderline-6
+        7: borderline-7
+        8: borderline-8
+        9: borderline-9
+        10: borderline-10
+  channels: 
+    naming_pattern: Po%CHANNELID%
+st-bordemer: 
+  model: Cisco 3750
+  kind: switch
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: router
+      rate: 10000000000
+      ports: 
+        0: gw
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 1000000000
+      ports: 
+        1: sbordeplage-1
+        2: sbordeplage-2
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sbordeplage-1: 
+  model: Dell Proconnect 2024
+  kind: switch
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 1000000000
+      ports: 
+        0: st-bordemer
+        1: dinkum-thinkum
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: bordeplage-1
+        2: bordeplage-2
+        3: bordeplage-3
+        4: bordeplage-4
+        5: bordeplage-5
+        6: bordeplage-6
+        7: bordeplage-7
+        8: bordeplage-8
+        9: bordeplage-9
+        10: bordeplage-10
+  channels: 
+    naming_pattern: Po%CHANNELID%
+sbordeplage-2: 
+  model: Dell Proconnect 2024
+  kind: switch
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 1000000000
+      ports: 
+        0: st-bordemer
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: bordeplage-11
+        2: bordeplage-12
+        3: bordeplage-13
+        4: bordeplage-14
+        5: bordeplage-15
+        6: bordeplage-16
+        7: bordeplage-17
+        8: bordeplage-18
+        9: bordeplage-19
+        10: bordeplage-20
+        11: bordeplage-21
+        12: bordeplage-22
+        13: bordeplage-23
+        14: bordeplage-24
+        15: bordeplage-25
+        16: bordeplage-26
+        17: bordeplage-27
+        18: bordeplage-28
+        19: bordeplage-29
+        20: bordeplage-30
+        21: bordeplage-31
+        22: bordeplage-32
+        23: bordeplage-33
+        24: bordeplage-34
+        25: bordeplage-35
+        26: bordeplage-36
+        27: bordeplage-37
+        28: bordeplage-38
+        29: bordeplage-39
+        30: bordeplage-40
+        31: bordeplage-41
+        32: bordeplage-42
+        33: bordeplage-43
+        34: bordeplage-44
+        35: bordeplage-45
+        36: bordeplage-46
+        37: bordeplage-47
+        38: bordeplage-48
+        39: bordeplage-49
+        40: bordeplage-50
+        41: bordeplage-51
+  channels: 
+    naming_pattern: Po%CHANNELID%
+ib: 
+  model: Infiniband
+  kind: switch
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 100000000
+      ports: 
+        0: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%
+mx: 
+  model: Infiniband
+  kind: switch
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 100000000
+      ports: 
+        0: gw
+  channels: 
+    naming_pattern: Po%CHANNELID%

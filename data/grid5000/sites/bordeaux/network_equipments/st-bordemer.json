@@ -1,0 +1,45 @@
+{
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
+  "kind": "switch",
+  "linecards": [
+    {
+      "kind": "router",
+      "naming_pattern": "%LINECARD%/%PORT%",
+      "ports": [
+        {
+          "uid": "gw"
+        }
+      ],
+      "rate": 10000000000
+    },
+    {
+      "kind": "switch",
+      "naming_pattern": "%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "uid": "sbordeplage-1"
+        },
+        {
+          "uid": "sbordeplage-2"
+        }
+      ],
+      "rate": 1000000000
+    }
+  ],
+  "model": "Cisco 3750",
+  "routes": {
+
+  },
+  "site": "bordeaux",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "st-bordemer",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
+  }
+}
