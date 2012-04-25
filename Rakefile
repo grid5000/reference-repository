@@ -22,7 +22,7 @@ task :api_sites  do
   @api_sites = if ENV['SITE']
     [@api.root.sites[ENV['SITE'].to_sym]]
   else
-    @api.root.sites.reject{|site| site['uid'] == "orsay" or site['uid'] == "reims"}
+    @api.root.sites
   end
 end
 
@@ -69,15 +69,15 @@ namespace :deadnodes do
         state = status["hard"].downcase
         if comment_ok?(comment)
           if state == "dead"
-            @logger.error "Node '#{uid}' of state '#{state}' should not have comment '#{comment.inspect}'" if @tofix
+            @logger.error "Node '#{uid}' of state '#{state}' should not have comment '#{comment}'" if @tofix
           else
             # nothing, good state
           end
         else
           if state == "dead"
-            @logger.info "Node '#{uid}' is dead because '#{comment.inspect}'" if @reasons
+            @logger.info "Node '#{uid}' is dead because '#{comment}'" if @reasons
           else
-            @logger.error "Node '#{uid}' should have the not-dead-comment 'OK', since its state is '#{state}'. Instead, it has comment '#{comment.inspect}'." if @tofix
+            @logger.error "Node '#{uid}' should have the not-dead-comment 'OK', since its state is '#{state}'. Instead, it has comment '#{comment}'." if @tofix
           end
         end
       end

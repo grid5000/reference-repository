@@ -3,7 +3,7 @@ site :toulouse do |site_uid|
     model "Sun Fire X2200 M2"
     created_at Time.parse("2007-11-29").httpdate
 
-    80.times do |i|
+    140.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
         architecture({
@@ -51,7 +51,7 @@ site :toulouse do |site_uid|
             :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
             :ip => lookup('toulouse-pastel', node_uid,'network_interfaces','eth0','ip'),
             :ip6 => nil,
-            :switch => "r4"
+            :switch_name => lookup('toulouse-pastel', node_uid,'network_interfaces','eth0','switch_name')
           },
           { :interface => 'Ethernet',
             :rate => 1.G,
@@ -63,7 +63,7 @@ site :toulouse do |site_uid|
             :mountable => false,
             :mounted => false,
             :device => "eth1",
-            :switch => nil
+            :switch_name => nil
           },
           { :interface => 'Ethernet',
             :rate => 1.G,
@@ -77,7 +77,7 @@ site :toulouse do |site_uid|
             :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
             :ip => lookup('toulouse-pastel', node_uid,'network_interfaces','bmc','ip'),
             :ip6 => nil,
-            :switch => '<unknown>'
+            :switch_name => '<unknown>'
           }
         ]
       end
