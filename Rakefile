@@ -231,6 +231,47 @@ namespace :netlinks do
       puts "+-#{"-" * message_size}-+"
     end
   end
+  task :net_links => [:environment,:hosts] do
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    dirs = Dir.glob("generators/input/#{site}/")
+    if dirs.empty?
+      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
+      next
+    end
+    @equipments = dirs.map do |dir|
+      site = File.basename(dir)
+      net_links_file = File.join(dir,"net-links.yaml")
+      net_links_dir = File.join(dir,"net-links")
+
+      net_links_orig = YAML::load_file(net_links_file)
+      net_links = net_links_orig.select do |uid,properties|
+        uid.match(Regexp.new(host.gsub(/\*/,'\S+'))) != nil
+      end
+      if net_links.empty?
+        @logger.warn "Failed to find any host described within the file #{net_links_file}."
+      else
+        {:net_links => net_links,:net_links_orig => net_links_orig,:net_links_file=>net_links_file}
+      end
+    end
+  end
+  desc "Manually modify net-links.yaml with custumized script."
+  task :manual => :net_links do
+#    puts @net_links.inspect
+    # gw.grenoble
+    gw = @equipments[0]
+    puts gw[:net_links]
+    linecards = gw[:net_links]["sbordeplage-2"]["linecards"][1]
+    linecards["ports"] = {} if linecards["ports"].nil?
+    ports = linecards["ports"]
+    11.upto(51) do |i|
+      ports[i-10] = "bordeplage-#{i}"
+    end
+    # When all net links in a site are formated, we write them in they file.
+    File.open(gw[:net_links_file],'w'){|f| YAML::dump(gw[:net_links_orig].merge(gw[:net_links]),f)}
+    puts "updated #{gw[:net_links_file]}"
+
+  end
+
   desc "Update net-links.yaml with the kavlan like config file."
   task :kavlan => [:environment,:hosts] do
     config_file = ENV['CONF']
