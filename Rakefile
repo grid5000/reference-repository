@@ -1,27 +1,31 @@
-require 'rubygems'
 require 'fileutils'
 require 'json'
 require 'logger'
-require 'yaml'
-require 'pp'
+require 'restfully'
 
 ROOT_DIR = File.expand_path File.dirname(__FILE__)
 LIB_DIR = File.join(ROOT_DIR, "generators", "lib")
 $LOAD_PATH.unshift(LIB_DIR) unless $LOAD_PATH.include?(LIB_DIR)
 
-EXTRA_DIR = File.join(ROOT_DIR, "extra", "lib")
-$LOAD_PATH.unshift(EXTRA_DIR) unless $LOAD_PATH.include?(EXTRA_DIR)
-
-Rake.application.options.trace = true
-
 require 'grid5000'
-#require 'naming-pattern'
 
 task :environment do
   Dir.chdir(ROOT_DIR)
   @logger = Logger.new(STDERR)
   @logger.level = Logger.const_get((ENV['DEBUG'] || 'INFO').upcase)
 end
+
+task :api_sites  do
+  api_logger = Logger.new("/dev/null")
+  api_logger.level = Logger::FATAL
+  @api = Restfully::Session.new(:configuration_file => File.expand_path("~/.restfully/api.grid5000.fr.yml"),:logger => api_logger)
+  @api_sites = if ENV['SITE']
+    [@api.root.sites[ENV['SITE'].to_sym]]
+  else
+    @api.root.sites
+  end
+end
+
 task :hosts do
   # HOSTS=gw.lille 
   # HOSTS=*.lille
@@ -40,305 +44,64 @@ task :hosts do
   @host = host
 end
 
-namespace :netlinks do
-  desc "Probe a remote network equipement and retrieve its neighbors in a yaml file. HOST is its grid5000 FQDN."
-  task :probe => [:environment,:hosts] do 
-    # Scan the site net-links yaml file to find properties about this host (snmp community,...)
-    # These properties are going to be used to probe the given host
-    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
-    dirs = Dir.glob("generators/input/#{site}/")
-    if dirs.empty?
-      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
-      next
-    end
-    message = []
-    dirs.each do |dir|
-      site = File.basename(dir)
-      net_links_file = File.join(dir,"net-links.yaml")
-      net_links_dir = File.join(dir,"net-links")
-      probes = []
-
-      net_links = YAML::load_file(net_links_file)
-      net_links.each do |host_uid,properties|
-        next if host_uid.match(Regexp.new(host.gsub(/\*/,'\S+'))).nil?
-        # gather information about this host
-        probes.push({:uid=>host_uid, :snmp_community => properties["snmp_community"]})
-      end
-      if probes.empty?
-        @logger.warn "Failed to find any host described within the file #{net_links_file}."
-      else
-        # copy the 'extra' dir on the site,
-        # execute all the probing on all hosts
-        # retrieve the result from all hosts
-        prober = "weathermap.#{site}.grid5000.fr"
-        sh "rsync -av extra #{prober}:"
-        sh "ssh #{prober} 'cd extra && bundle install'"
-
-        probes.each do |info|
-          sh "ssh #{prober} 'cd extra && ./bin/net-links.rb --host #{info[:uid]} --community #{info[:snmp_community]} --logger stdout:warn'"
-        end
-        probes.each do |info|
-          sh "rsync -av #{prober}:/tmp/#{info[:uid]}.yaml #{net_links_dir}/"
-          message.push "* #{net_links_dir}/#{info[:uid]}.yaml"
-        end
-      end
-    end
-    # Print the result on a pretty message
-    if message.empty?
-      @logger.warn "No host net-link has been download locally. Please correct warnings first."
-    else
-      message.unshift "Network links were saved into the following files : "
-      message_size = message.max{|a,b|a.size <=> b.size}.size
-      puts "+-#{"-" * message_size}-+"
-      puts message.map{|m| "| #{m} "}.join("\n")
-      puts "+-#{"-" * message_size}-+"
-    end
-  end
-  def format_vlan(coord,raw_port,linecards)
-#        puts "Vlan : #{coord.inspect} #{raw_port.inspect}"
-  end
-  def format_channel(coord,raw_port,linecards)
-#        puts "Channel : #{coord.inspect} #{raw_port.inspect}"
-  end
-  def format_port(coord,raw_port,linecards)
-#    puts "#{coord.inspect} #{raw_port.inspect}"
-    neighbor,site = nil
-    if raw_port.has_key? :fqdn
-      neighbor,site = raw_port[:fqdn].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/).flatten
-    elsif raw_port.has_key? :uid
-      neighbor,site = raw_port[:uid].scan(/([^.]+)\.([^.]+)\.grid5000\.fr/).flatten
-      neighbor = raw_port[:uid] if neighbor.nil?
-    end
-    return if neighbor.nil?
-
-    l = (coord["linecard"]||0)
-    p = coord["port"]
-    linecards[l] = {"ports"=>{}} unless linecards.has_key? l
-    ports = linecards[l]["ports"]
-    formated_port = ports[p]
-    if formated_port.nil?
-      ports[p] = neighbor
-    elsif formated_port.is_a? Hash
-      ports[p]["uid"] = neighbor
-    else
-      ports[p] = neighbor
-    end
-  end
-  def browse_naming_patterns(dico,patterns,&block)
-    dico.each do |key,value|
-      if value.is_a? Hash
-        browse_naming_patterns(value,patterns,&block)
-      else
-        if key == "naming_pattern"
-          pattern = value
-          if patterns.has_key? pattern
-            @logger.warn "Naming Pattern already defined '#{pattern}'. Skipping this redefinition." 
-          else
-            patterns[pattern] = block
-          end
-        end
-      end
-    end
-  end
-
-  desc "Updated formated net-links with the raw information gathered from network equipments."
-  task :format => [:environment,:hosts] do
-    # Read the network links fresh out of network equipment
-    # Read the configuration formated
-    # update the formated configuration with raw information from the net-links yaml file
-    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
-    dirs = Dir.glob("generators/input/#{site}/")
-    if dirs.empty?
-      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
-      next
-    end
-    message = []
-    dirs.each do |dir|
-      site = File.basename(dir)
-      net_links_file = File.join(dir,"net-links.yaml")
-      net_links_dir = File.join(dir,"net-links")
-
-      net_links = YAML::load_file(net_links_file)
-      hosts = {}
-      net_links.each do |uid,properties|
-        hosts[uid] = properties unless uid.match(Regexp.new(host.gsub(/\*/,'\S+'))).nil?
-      end
-      if hosts.empty?
-        @logger.warn "Failed to find any host described within the file #{net_links_file}."
-      else
-        # Read the network links fresh out of network equipment
-        # Read the configuration formated
-        # update the formated configuration with raw information from the net-links yaml file
-        hosts.each do |uid,properties|
-          raw_file = File.join(net_links_dir,"#{uid}.yaml")
-          raw = YAML::load_file(raw_file)
-
-          # Go through all formated config, and register a call back that will encode the naming_pattern
-          patterns = {}
-          browse_naming_patterns(properties["vlans"],patterns) do  |dict,raw_port|
-            format_vlan(dict,raw_port,properties["vlans"])
-          end
-          browse_naming_patterns(properties["channels"],patterns) do  |dict,raw_port|
-            format_channel(dict,raw_port,properties["channels"])
-          end
-          browse_naming_patterns(properties["linecards"],patterns) do |dict,raw_port|
-            format_port(dict,raw_port,properties["linecards"])
-          end
-
-          # Go through all ports to find they linecard and port index, 
-          raw.each do |port|
-            ifname = port[:ifname]
-            next if ifname.nil?
-            # find the naming_pattern that correspond to this ifname
-            patterns.each do |np,cb|
-              # scan the ifname with each naming_pattern
-              dict = NamingPattern.encode(np,ifname)
-              unless dict.empty?
-                # Found the naming_pattern for this ifname
-                # So Place it where it belongs
-                cb.call(dict,port)
-                break
-              end
-            end
-            #
-          end
-        end
-        # When all net links in a site are formated, we write them in they file.
-        File.open(net_links_file,'w'){|f| YAML::dump(net_links,f)}
-        message.push "#{net_links_file} hosts=#{hosts.keys.inspect}"
-      end
-    end
-    # Print the result on a pretty message
-    if message.empty?
-      @logger.warn "No host net-link has been formated. Please correct warnings and your cli parameters."
-    else
-      message.map!{|m| "* #{m}"}
-      message.unshift "Formated Network links were saved into the following files : "
-      message_size = message.max{|a,b|a.size <=> b.size}.size
-      puts "+-#{"-" * message_size}-+"
-      puts message.map{|m| "| #{m} "}.join("\n")
-      puts "+-#{"-" * message_size}-+"
-    end
-  end
-  desc "Update net-links.yaml with the kavlan like config file."
-  task :kavlan => [:environment,:hosts] do
-    config_file = ENV['CONF']
-    abort "You must provide a CONF=, which is the path to the kavlan like config file." if config_file.nil?
-    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
-    dirs = Dir.glob("generators/input/#{site}/")
-    if dirs.empty?
-      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
-      next
-    end
-    message = []
-    dirs.each do |dir|
-      site = File.basename(dir)
-      net_links_file = File.join(dir,"net-links.yaml")
-      net_links_dir = File.join(dir,"net-links")
-
-      net_links = YAML::load_file(net_links_file)
-      net_links.keep_if do |uid,properties|
-        uid.match(Regexp.new(host.gsub(/\*/,'\S+'))) != nil
-      end
-      if net_links.empty?
-        @logger.warn "Failed to find any host described within the file #{net_links_file}."
-      else
-        # parse the kavlan like config file
-        config = {}
-        File.read(config_file).lines.each do |line|
-          if ((scan = line.strip.scan(/^([^.]+)\.([^.]+)\.grid5000\.fr\s+(\S+)\s+(\S+)$/)).size > 0)
-            uid,site,ifname,router = scan.flatten
-            router = router.downcase
-            config[router] = [] unless config.has_key? router
-#            if ((scan = uid.scan(/^(\S+-\d+)-(\S+)$/)).size > 0)
-#              uid,port = scan.flatten
-#              config[router].push({:uid=>uid,:ifname=>ifname,:port=>port})
-#            else
-              config[router].push({:uid=>uid,:ifname=>ifname})
-#            end
-          end
-        end
-
-        updated = []
-        # Update the net-links with kavlan config file
-        net_links.each do |uid,properties|
-          router = config[uid]
-          next if router.nil?
-          updated.push uid
-          # register interfaces naming patterns
-          patterns = {}
-          browse_naming_patterns(properties["linecards"],patterns) do |dict,raw_port|
-            format_port(dict,raw_port,properties["linecards"])
-          end
-          # parse the ifname
-          router.each do |neighbor|
-            ifname = neighbor[:ifname]
-            # find the naming_pattern that correspond to this ifname
-            patterns.each do |np,cb|
-              # scan the ifname with each naming_pattern
-              dict = NamingPattern.encode(np,ifname)
-              unless dict.empty?
-                # Found the naming_pattern for this ifname
-                # So Place it where it belongs
-                cb.call(dict,neighbor)
-                break
-              end
-            end
-          end
-        end
-        # When all net links in a site are formated, we write them in they file.
-        File.open(net_links_file,'w'){|f| YAML::dump(net_links,f)}
-        message.push "#{net_links_file} hosts=#{updated.inspect}"
-      end
-    end
-    # Print the result on a pretty message
-    if message.empty?
-      @logger.warn "No host net-link has been formated. Please correct warnings and/or your cli parameters."
-    else
-      message.map!{|m| "* #{m}"}
-      message.unshift "Formated Network links were saved into the following files : "
-      message_size = message.max{|a,b|a.size <=> b.size}.size
-      puts "+-#{"-" * message_size}-+"
-      puts message.map{|m| "| #{m} "}.join("\n")
-      puts "+-#{"-" * message_size}-+"
-    end
-  end
-  desc "Generates The JSON files that will be used for network API.\nUse DRY=1 to simulate the execution. "
-  task :generate => [:environment,:hosts] do
-    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
-    dirs = Dir.glob("generators/input/#{site}/")
-    if dirs.empty?
-      @logger.error "Failed to find a directory containing the net-links yaml file for your site '#{site}'"
-      next
-    end
-
-    generator = "#{File.join(ROOT_DIR, "generators", "grid5000")}"
-    net_link_generator = "#{File.join(ROOT_DIR, "generators", "input", "net-links-generator.rb")}"
-    dirs.each do |dir|
-      site = File.basename(dir)
-      net_links_file = File.expand_path(File.join(dir,"net-links.yaml"))
-      site_file = File.expand_path(File.join(dir,"..","#{site}.rb"))
-      command = "#{generator} #{site_file} #{net_link_generator} #{net_links_file}"
-      command << " -s" if ENV['DRY'] && ENV['DRY'] != "0"
-      sh command
-    end
-
-  end
-
-end
 
 namespace :g5k do
   desc "Generates the JSON files based on the generators, for all sites.\nUse SITE=<SITE-NAME> if you wish to restrict the generation to a specific site.\nUse DRY=1 to simulate the execution."
-  task :generate => :environment do
-    site = if ENV['SITE']
-      ENV['SITE']
-    else
-      "*"
+  task :generate => [:environment,:hosts] do
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    root_dir_input = "#{ROOT_DIR}/generators/input/sites"
+    command = File.join(ROOT_DIR, "generators", "grid5000")
+    command += " " + File.join(root_dir_input, site,"#{site}.rb")
+    command += " " + File.join(root_dir_input, site,"clusters","#{host}.rb")
+    command += " " + File.join(root_dir_input, site,"clusters","#{host}.yaml")
+
+    command << " -s" if ENV['DRY'] == "yes"
+#    puts command
+    sh command
+  end
+end
+
+# rake deadnodes:reasons
+# rake deadnodes:tofix
+namespace :deadnodes do
+
+  desc "List all dead nodes and the reason why they are dead. (SITE=)"
+  task :reasons => [:environment,:api_sites] do
+    @logger.level = Logger::INFO
+    @reasons = true
+    Rake::Task["deadnodes:browse"].execute
+  end
+  desc "List all nodes which have they state not in synch with they comment. (SITE=)"
+  task :tofix => [:environment,:api_sites] do
+    @logger.level = Logger::ERROR
+    @tofix = true
+    Rake::Task["deadnodes:browse"].execute
+  end
+
+  task :browse do
+    def comment_ok?(comment)
+#      comment.nil? or comment == "OK"
+      comment == "OK" 
     end
-    command = "#{File.join(ROOT_DIR, "generators", "grid5000")} #{File.join(ROOT_DIR, "generators", "input", "#{site}.rb")} #{File.join(ROOT_DIR, "generators", "input", "#{site}.yaml")}"
-    command << " -s" if ENV['DRY'] && ENV['DRY'] != "0"
-    @logger.info "Executing #{command.inspect}..."
-    system command
+    @api_sites.each do |site|
+      site.status["nodes"].each do |uid,status|
+        comment = status["comment"]
+        state = status["hard"].downcase
+        if comment_ok?(comment)
+          if state == "dead"
+            @logger.error "Node '#{uid}' of state '#{state}' should not have comment '#{comment}'" if @tofix
+          else
+            # nothing, good state
+          end
+        else
+          if state == "dead"
+            @logger.info "Node '#{uid}' is dead because '#{comment}'" if @reasons
+          else
+            @logger.error "Node '#{uid}' should have the not-dead-comment 'OK', since its state is '#{state}'. Instead, it has comment '#{comment}'." if @tofix
+          end
+        end
+      end
+    end
   end
 end
 
@@ -432,3 +195,56 @@ namespace :oar do
     end
   end
 end
+
+namespace :netlinks do
+  desc "Generates network API JSON files based on net-links yaml files.\nUse DRY=yes to simulate the execution. "
+  task :generate => [:environment,:hosts] do
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    root_dir_input = "#{ROOT_DIR}/generators/input/sites"
+    command = File.join(ROOT_DIR, "generators", "grid5000")
+    command += " " + File.join(root_dir_input, "net-links.rb")
+    command += " " + File.join(root_dir_input, site,"#{site}.rb")
+    command += " " + File.join(root_dir_input, site,"net-links","#{host}.yaml")
+
+    command << " -s" if ENV['DRY'] == "yes"
+#    puts command
+    sh command
+  end
+end
+namespace :env do
+  desc "Generates environment JSON files .\nUse DRY=yes to simulate the execution. "
+  task :generate => [:environment] do
+    env_name = ENV["ENV_NAME"]
+    abort "You must provide ENV_NAME=" if env_name.nil?
+    root_dir_input = "#{ROOT_DIR}/generators/input"
+    command = File.join(ROOT_DIR, "generators", "grid5000")
+    command += " " + File.join(root_dir_input, "environments","#{env_name}")
+
+    command << " -s" if ENV['DRY'] == "yes"
+    sh command
+  end
+end
+
+=begin
+task :mm => [:environment,:hosts] do
+  host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+  root_dir_input = "#{ROOT_DIR}/generators/input"
+  Dir.glob("#{root_dir_input}/#{site}*").each do |file|
+    filename = File.basename(file)
+    if ((scan = filename.scan(/(\S+)-(\S+)\.(rb|yaml)/)).size > 0)
+      site,cluster = scan.flatten
+      cmd = "mkdir -p #{root_dir_input}/#{site}/clusters"
+      cmd += " && mv #{file} #{root_dir_input}/#{site}/clusters/#{cluster}#{File.extname(filename)}"
+      sh cmd
+#      puts cmd
+    elsif ((scan = filename.scan(/(\S+)\.rb/)).size > 0)
+      site = scan.first.first
+      cmd = "mkdir -p #{root_dir_input}/#{site}/clusters"
+      cmd += " && mv #{file} #{root_dir_input}/#{site}/#{site}.rb"
+      sh cmd
+    end
+
+  end
+ 
+end
+=end

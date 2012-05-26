@@ -1,0 +1,48 @@
+--- 
+stalc2: 
+  model: hp procurve
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 10000000
+      ports: 
+        3: talc-38
+        4: talc-39
+        5: talc-40
+        6: talc-41
+        7: talc-42
+        8: talc-43
+        9: talc-44
+        10: talc-45
+        11: talc-46
+        12: talc-47
+        13: talc-48
+        14: talc-49
+        25: talc-50
+        26: talc-51
+        27: talc-52
+        28: talc-53
+        29: talc-54
+        30: talc-55
+        31: talc-56
+        32: talc-57
+        33: talc-58
+        34: talc-59
+        35: talc-60
+        36: talc-61
+        37: talc-62
+        38: talc-63
+        39: talc-64
+        40: talc-65
+        41: talc-66
+        42: talc-67
+  channels: 
+    naming_pattern: Po%CHANNELID%

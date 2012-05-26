@@ -1,0 +1,104 @@
+--- 
+sgravillon1: 
+  model: HP Procurve 5406zl
+  kind: router
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: other
+      rate: 100000000
+      ports: 
+        1: 
+          kind: other
+          uid: sgrapheneib
+        2: 
+          port: bmc
+          uid: fgriffon2
+        3: 
+          uid: TALC-adm
+        4: 
+          uid: TALC-prod
+        6: 
+          uid: sgriffonib
+        7: grimoire
+        8: 
+          port: eth0
+          uid: grog
+        9: 
+          port: eth1
+          uid: grog
+        10: 
+          port: bmc
+          uid: fgriffon1
+        11: 
+          port: eth0
+          uid: fgriffon1
+        13: 
+          uid: sgraphene1-ipmi
+        14: 
+          uid: sgraphene2-ipmi
+        15: 
+          uid: sgraphene3-ipmi
+        16: 
+          uid: sgraphene4-ipmi
+        18: 
+          uid: loria
+        19: 
+          uid: sgriffon2-ipmi
+        20: 
+          uid: sgriffon1-ipmi
+        21: 
+          uid: sgriffon3-ipmi
+        22: 
+          port: eth0
+          uid: fgrelon1
+        23: 
+          port: eth1
+          uid: fgriffon1
+        24: 
+          port: eth1
+          uid: fgrelon1
+    2: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: switch
+      rate: 100000000
+      ports: 
+        3: sgriffon3
+        4: sgriffon1
+    3: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: switch
+      rate: 100000000
+      ports: 
+        1: sgraphene1
+        2: sgraphene2
+        4: sgraphene4
+    4: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: switch
+      rate: 100000000
+      ports: 
+        1: 
+          kind: other
+          uid: fgriffon1
+        2: 
+          kind: other
+          uid: fgriffon2
+        3: 
+          uid: sgriffon3
+        4: 
+          uid: sgriffon1
+    5: 
+      naming_pattern: "%LINECARD:A%%PORT%"
+      kind: virtual
+      rate: 100000000
+      ports: 
+        4: renater-nancy
+  channels: 
+    naming_pattern: Po%CHANNELID%

@@ -1,0 +1,19 @@
+--- 
+stalc4: 
+  model: hp procurve
+  kind: switch
+  site: nancy
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%PORT%"
+      kind: node
+      rate: 10000000
+      ports: {} 
+
+  channels: 
+    naming_pattern: Po%CHANNELID%
