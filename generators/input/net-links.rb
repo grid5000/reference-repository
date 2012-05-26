@@ -9,7 +9,7 @@
       # Most properties are directly written as they are from the net-links YAML file to the the JSON file
       model properties["model"]
       kind properties["kind"]
-#      @context.recursive_merge!(:site => site)
+      @context.recursive_merge!(:site => site)
       snmp_community properties["snmp_community"]
       vlans properties["vlans"]
       routes properties["routes"]

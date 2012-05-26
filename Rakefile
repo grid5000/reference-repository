@@ -200,11 +200,11 @@ namespace :netlinks do
   desc "Generates network API JSON files based on net-links yaml files.\nUse DRY=yes to simulate the execution. "
   task :generate => [:environment,:hosts] do
     host,site = @host.scan(/(\S+)\.(\S+)/).flatten
-    root_dir_input = "#{ROOT_DIR}/generators/input/sites"
+    root_dir_input = File.join(ROOT_DIR, "generators","input")
     command = File.join(ROOT_DIR, "generators", "grid5000")
     command += " " + File.join(root_dir_input, "net-links.rb")
-    command += " " + File.join(root_dir_input, site,"#{site}.rb")
-    command += " " + File.join(root_dir_input, site,"net-links","#{host}.yaml")
+    command += " " + File.join(root_dir_input,"sites", site,"#{site}.rb")
+    command += " " + File.join(root_dir_input,"sites", site,"net-links","#{host}.yaml")
 
     command << " -s" if ENV['DRY'] == "yes"
 #    puts command

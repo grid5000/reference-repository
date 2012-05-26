@@ -8,14 +8,14 @@ stalc1:
     naming_pattern: Vlan%VLANID%
   routes: {}
   linecards: 
-
     0: 
-      naming_pattern: "%PORT%"
+      naming_pattern: "T%LINECARD%/%PORT%"
       kind: node
-      rate: 10000000
+      rate: 1000000000
       ports: 
         1: talc-1
         3: talc-2
+        5: talc-134
         6: talc-3
         7: talc-4
         8: talc-5
@@ -51,6 +51,22 @@ stalc1:
         41: talc-35
         42: talc-36
         43: talc-37
-        5: talc-134
+    1: 
+      naming_pattern: "T%LINECARD%/%PORT%"
+      kind: switch
+      rate: 10000000000
+      ports: 
+        2: stalc3
+    2: 
+      naming_pattern: "T%LINECARD%/%PORT%"
+      kind: switch
+      rate: 10000000000
+      ports: 
+        1: sgravillon1
+        2: 
+          kind: other
+          rate: 10000000000
+          uid: talc-srv
   channels: 
     naming_pattern: Po%CHANNELID%
+

@@ -6,7 +6,7 @@
   "linecards": [
     {
       "kind": "node",
-      "naming_pattern": "%PORT%",
+      "naming_pattern": "T%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -141,7 +141,41 @@
           "uid": "talc-37"
         }
       ],
-      "rate": 1000
+      "rate": 1000000000
+    },
+    {
+      "kind": "switch",
+      "naming_pattern": "T%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+
+        },
+        {
+          "uid": "stalc3"
+        }
+      ],
+      "rate": 10000000000
+    },
+    {
+      "kind": "switch",
+      "naming_pattern": "T%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "uid": "sgravillon1"
+        },
+        {
+          "kind": "other",
+          "rate": 10000000000,
+          "uid": "talc-srv"
+        }
+      ],
+      "rate": 10000000000
     }
   ],
   "model": "hp procurve",

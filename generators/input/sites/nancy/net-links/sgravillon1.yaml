@@ -12,7 +12,7 @@ sgravillon1:
     1: 
       naming_pattern: "%LINECARD:A%%PORT%"
       kind: other
-      rate: 100000000
+      rate: 1000000000
       ports: 
         1: 
           kind: other
@@ -23,7 +23,8 @@ sgravillon1:
         3: 
           uid: TALC-adm
         4: 
-          uid: TALC-prod
+          kind: switch
+          uid: stalc1
         6: 
           uid: sgriffonib
         7: grimoire
@@ -67,14 +68,14 @@ sgravillon1:
     2: 
       naming_pattern: "%LINECARD:A%%PORT%"
       kind: switch
-      rate: 100000000
+      rate: 1000000000
       ports: 
-        3: sgriffon3
-        4: sgriffon1
+        3: sgraphene3
+        4: sgriffon2
     3: 
       naming_pattern: "%LINECARD:A%%PORT%"
       kind: switch
-      rate: 100000000
+      rate: 1000000000
       ports: 
         1: sgraphene1
         2: sgraphene2
@@ -82,7 +83,7 @@ sgravillon1:
     4: 
       naming_pattern: "%LINECARD:A%%PORT%"
       kind: switch
-      rate: 100000000
+      rate: 1000000000
       ports: 
         1: 
           kind: other
@@ -97,7 +98,7 @@ sgravillon1:
     5: 
       naming_pattern: "%LINECARD:A%%PORT%"
       kind: virtual
-      rate: 100000000
+      rate: 10000000000
       ports: 
         4: renater-nancy
   channels: 
