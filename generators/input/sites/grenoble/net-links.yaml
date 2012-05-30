@@ -1,0 +1,356 @@
+--- 
+gw: 
+  model: ExtremeNetwork
+  kind: switch
+  site: grenoble
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: genepi-1
+        2: genepi-2
+        3: genepi-3
+        4: genepi-4
+        5: genepi-5
+        6: genepi-6
+        7: genepi-7
+        8: genepi-8
+        9: genepi-9
+        10: genepi-10
+        11: genepi-11
+        12: genepi-12
+        13: genepi-13
+        14: genepi-14
+        15: genepi-15
+        16: genepi-16
+        17: genepi-17
+        18: genepi-18
+        19: genepi-19
+        20: genepi-20
+        21: genepi-21
+        22: genepi-22
+        23: genepi-23
+        24: genepi-24
+        25: genepi-25
+        26: genepi-26
+        27: genepi-27
+        28: genepi-28
+        29: genepi-29
+        30: genepi-30
+        31: genepi-31
+        32: genepi-32
+        33: genepi-33
+        34: genepi-34
+    3: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: adonis-1
+        2: adonis-2
+        3: adonis-3
+        4: adonis-4
+        5: adonis-5
+        6: adonis-6
+        7: adonis-7
+        8: adonis-8
+        9: adonis-9
+        10: adonis-10
+    4: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: other
+      rate: 1000000000
+      ports: 
+        1: 
+          uid: digmgt
+          port: eth0
+        2: 
+          uid: digmgt
+          port: eth4
+        3: 
+          uid: digmgt
+          port: eth5
+          rate: 100000000
+        4: 
+          uid: digmgt
+          port: bmc
+        5: 
+          uid: dignfs
+          port: eth1
+          rate: 100000000
+        6: 
+          uid: dignfs
+          port: eth0
+        7: 
+          uid: dignfs
+          port: bmc
+        8: 
+          uid: alpes
+          port: eth0
+        9: 
+          uid: alpes
+          port: bmc
+    2: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 1000000000
+      ports: 
+        1: 
+          uid: blade-1
+          port: 0/1
+        2: 
+          uid: blade-1
+          port: 0/2
+        3: 
+          uid: blade-1
+          port: 0/3
+        4: 
+          uid: blade-2
+          port: 0/1
+        5: 
+          uid: blade-2
+          port: 0/2
+        6: 
+          uid: blade-2
+          port: 0/3
+        7: 
+          uid: blade-3
+          port: 0/1
+        8: 
+          uid: blade-3
+          port: 0/2
+        9: 
+          uid: blade-3
+          port: 0/3
+        10: 
+          uid: blade-4
+          port: 0/1
+        11: 
+          uid: blade-4
+          port: 0/2
+        12: 
+          uid: blade-4
+          port: 0/3
+  channels: 
+    naming_pattern: Po%CHANNELID%
+blade-1: 
+  model: Blade
+  kind: switch
+  site: grenoble
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: router
+      rate: 1000000000
+      ports: 
+        1: 
+          uid: gw
+          port: 2/1
+        2: 
+          uid: gw
+          port: 2/2
+        3: 
+          uid: gw
+          port: 2/3
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: edel-1
+        2: edel-2
+        3: edel-3
+        4: edel-4
+        5: edel-5
+        6: edel-6
+        7: edel-7
+        8: edel-8
+        9: edel-9
+        10: edel-10
+        11: edel-11
+        12: edel-12
+        13: edel-13
+        14: edel-14
+        15: edel-15
+        16: edel-16
+        17: edel-17
+        18: edel-18
+  channels: 
+    naming_pattern: Po%CHANNELID%
+blade-2: 
+  model: Blade
+  kind: switch
+  site: grenoble
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: router
+      rate: 1000000000
+      ports: 
+        1: 
+          uid: gw
+          port: 2/4
+        2: 
+          uid: gw
+          port: 2/5
+        3: 
+          uid: gw
+          port: 2/6
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: edel-19
+        2: edel-20
+        3: edel-21
+        4: edel-22
+        5: edel-23
+        6: edel-24
+        7: edel-25
+        8: edel-26
+        9: edel-27
+        10: edel-28
+        11: edel-29
+        12: edel-30
+        13: edel-31
+        14: edel-32
+        15: edel-33
+        16: edel-34
+        17: edel-35
+        18: edel-36
+  channels: 
+    naming_pattern: Po%CHANNELID%
+blade-3: 
+  model: Blade
+  kind: switch
+  site: grenoble
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: router
+      rate: 1000000000
+      ports: 
+        1: 
+          uid: gw
+          port: 2/7
+        2: 
+          uid: gw
+          port: 2/8
+        3: 
+          uid: gw
+          port: 2/9
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: edel-37
+        2: edel-38
+        3: edel-39
+        4: edel-40
+        5: edel-41
+        6: edel-42
+        7: edel-43
+        8: edel-44
+        9: edel-45
+        10: edel-46
+        11: edel-47
+        12: edel-48
+        13: edel-49
+        14: edel-50
+        15: edel-51
+        16: edel-52
+        17: edel-53
+        18: edel-54
+  channels: 
+    naming_pattern: Po%CHANNELID%
+blade-4: 
+  model: Blade
+  kind: switch
+  site: grenoble
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: router
+      rate: 1000000000
+      ports: 
+        1: 
+          uid: gw
+          port: 2/10
+        2: 
+          uid: gw
+          port: 2/11
+        3: 
+          uid: gw
+          port: 2/12
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: edel-55
+        2: edel-56
+        3: edel-57
+        4: edel-58
+        5: edel-59
+        6: edel-60
+        7: edel-61
+        8: edel-62
+        9: edel-63
+        10: edel-64
+        11: edel-65
+        12: edel-66
+        13: edel-67
+        14: edel-68
+        15: edel-69
+        16: edel-70
+        17: edel-71
+        18: edel-72
+  channels: 
+    naming_pattern: Po%CHANNELID%
+ib: 
+  model: Infiniband
+  kind: switch
+  site: grenoble
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 100000000
+      ports: {}
+
+  channels: 
+    naming_pattern: Po%CHANNELID%

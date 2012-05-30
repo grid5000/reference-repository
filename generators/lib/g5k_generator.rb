@@ -188,11 +188,17 @@ module G5K
     def environment(uid, *options, &block)
       build_context(:environments, uid, *options, &block)
     end
+    def network_equipment(uid, *options, &block)
+      build_context(:network_equipments, uid, *options, &block)
+    end
     def node(uid, *options, &block)
       build_context(:nodes, uid, *options, &block)
     end
     def service(uid, *options, &block)
       build_context(:services, uid, *options, &block)
+    end
+    def network_equipment(uid, *options, &block)
+      build_context(:network_equipments, uid, *options, &block)
     end
     def build_context(key, uid, *options, &block)
       type = key.to_s.chop

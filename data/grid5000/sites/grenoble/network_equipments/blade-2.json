@@ -1,0 +1,105 @@
+{
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
+  "kind": "switch",
+  "linecards": [
+    {
+      "kind": "router",
+      "naming_pattern": "%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "port": "2/4",
+          "uid": "gw"
+        },
+        {
+          "port": "2/5",
+          "uid": "gw"
+        },
+        {
+          "port": "2/6",
+          "uid": "gw"
+        }
+      ],
+      "rate": 1000000000
+    },
+    {
+      "kind": "node",
+      "naming_pattern": "%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "uid": "edel-19"
+        },
+        {
+          "uid": "edel-20"
+        },
+        {
+          "uid": "edel-21"
+        },
+        {
+          "uid": "edel-22"
+        },
+        {
+          "uid": "edel-23"
+        },
+        {
+          "uid": "edel-24"
+        },
+        {
+          "uid": "edel-25"
+        },
+        {
+          "uid": "edel-26"
+        },
+        {
+          "uid": "edel-27"
+        },
+        {
+          "uid": "edel-28"
+        },
+        {
+          "uid": "edel-29"
+        },
+        {
+          "uid": "edel-30"
+        },
+        {
+          "uid": "edel-31"
+        },
+        {
+          "uid": "edel-32"
+        },
+        {
+          "uid": "edel-33"
+        },
+        {
+          "uid": "edel-34"
+        },
+        {
+          "uid": "edel-35"
+        },
+        {
+          "uid": "edel-36"
+        }
+      ],
+      "rate": 1000000000
+    }
+  ],
+  "model": "Blade",
+  "routes": {
+
+  },
+  "site": "grenoble",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "blade-2",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
+  }
+}

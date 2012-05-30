@@ -26,18 +26,38 @@ task :api_sites  do
   end
 end
 
+task :hosts do
+  # HOSTS=gw.lille 
+  # HOSTS=*.lille
+  # SITES=lille => HOSTS=*.lille
+  # SITES=* => HOSTS=*.*
+  site = ENV['SITE']
+  host = ENV['HOST']
+  if site != nil 
+    host = "*.#{site}"
+  elsif host != nil
+    abort "HOST must be on the form <hostname>.<site>. You provided '#{host}'." if host.scan(/^(\S+)\.(\S+)$/).empty?
+  else
+    abort "You must provide SITE= , (SITE=lille, or SITE=*), or a HOST, (HOST=gw.lille, or HOST=*.lille, or HOST=sw-*.lille)"
+  end
+  abort "You must provide HOST= , (HOST=gw.lille, or HOST=*.lille, or HOST=sw-*.lille)" if host.nil?
+  @host = host
+end
+
+
 namespace :g5k do
   desc "Generates the JSON files based on the generators, for all sites.\nUse SITE=<SITE-NAME> if you wish to restrict the generation to a specific site.\nUse DRY=1 to simulate the execution."
-  task :generate => :environment do
-    site = if ENV['SITE']
-      ENV['SITE']
-    else
-      "*"
-    end
-    command = "#{File.join(ROOT_DIR, "generators", "grid5000")} #{File.join(ROOT_DIR, "generators", "input", "#{site}.rb")} #{File.join(ROOT_DIR, "generators", "input", "#{site}.yaml")}"
-    command << " -s" if ENV['DRY'] && ENV['DRY'] != "0"
-    @logger.info "Executing #{command.inspect}..."
-    system command
+  task :generate => [:environment,:hosts] do
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    root_dir_input = "#{ROOT_DIR}/generators/input/sites"
+    command = File.join(ROOT_DIR, "generators", "grid5000")
+    command += " " + File.join(root_dir_input, site,"#{site}.rb")
+    command += " " + File.join(root_dir_input, site,"clusters","#{host}.rb")
+    command += " " + File.join(root_dir_input, site,"clusters","#{host}.yaml")
+
+    command << " -s" if ENV['DRY'] == "yes"
+#    puts command
+    sh command
   end
 end
 
@@ -175,3 +195,56 @@ namespace :oar do
     end
   end
 end
+
+namespace :netlinks do
+  desc "Generates network API JSON files based on net-links yaml files.\nUse DRY=yes to simulate the execution. "
+  task :generate => [:environment,:hosts] do
+    host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+    root_dir_input = File.join(ROOT_DIR, "generators","input")
+    command = File.join(ROOT_DIR, "generators", "grid5000")
+    command += " " + File.join(root_dir_input, "net-links.rb")
+    command += " " + File.join(root_dir_input,"sites", site,"#{site}.rb")
+    command += " " + File.join(root_dir_input,"sites", site,"net-links","#{host}.yaml")
+
+    command << " -s" if ENV['DRY'] == "yes"
+#    puts command
+    sh command
+  end
+end
+namespace :env do
+  desc "Generates environment JSON files .\nUse DRY=yes to simulate the execution. "
+  task :generate => [:environment] do
+    env_name = ENV["ENV_NAME"]
+    abort "You must provide ENV_NAME=" if env_name.nil?
+    root_dir_input = "#{ROOT_DIR}/generators/input"
+    command = File.join(ROOT_DIR, "generators", "grid5000")
+    command += " " + File.join(root_dir_input, "environments","#{env_name}")
+
+    command << " -s" if ENV['DRY'] == "yes"
+    sh command
+  end
+end
+
+=begin
+task :mm => [:environment,:hosts] do
+  host,site = @host.scan(/(\S+)\.(\S+)/).flatten
+  root_dir_input = "#{ROOT_DIR}/generators/input"
+  Dir.glob("#{root_dir_input}/#{site}*").each do |file|
+    filename = File.basename(file)
+    if ((scan = filename.scan(/(\S+)-(\S+)\.(rb|yaml)/)).size > 0)
+      site,cluster = scan.flatten
+      cmd = "mkdir -p #{root_dir_input}/#{site}/clusters"
+      cmd += " && mv #{file} #{root_dir_input}/#{site}/clusters/#{cluster}#{File.extname(filename)}"
+      sh cmd
+#      puts cmd
+    elsif ((scan = filename.scan(/(\S+)\.rb/)).size > 0)
+      site = scan.first.first
+      cmd = "mkdir -p #{root_dir_input}/#{site}/clusters"
+      cmd += " && mv #{file} #{root_dir_input}/#{site}/#{site}.rb"
+      sh cmd
+    end
+
+  end
+ 
+end
+=end
