@@ -27,13 +27,13 @@ task :api_sites  do
 end
 
 task :hosts do
-  # HOSTS=gw.lille 
+  # HOSTS=gw.lille
   # HOSTS=*.lille
   # SITES=lille => HOSTS=*.lille
   # SITES=* => HOSTS=*.*
   site = ENV['SITE']
   host = ENV['HOST']
-  if site != nil 
+  if site != nil
     host = "*.#{site}"
   elsif host != nil
     abort "HOST must be on the form <hostname>.<site>. You provided '#{host}'." if host.scan(/^(\S+)\.(\S+)$/).empty?
@@ -46,7 +46,7 @@ end
 
 
 namespace :g5k do
-  desc "Generates the JSON files based on the generators, for all sites.\nUse SITE=<SITE-NAME> if you wish to restrict the generation to a specific site.\nUse DRY=1 to simulate the execution."
+  desc "Generates the JSON files based on the generators, for all sites.\nUse SITE=<SITE-NAME> if you wish to restrict the generation to a specific site.\nUse DRY=yes to simulate the execution."
   task :generate => [:environment,:hosts] do
     host,site = @host.scan(/(\S+)\.(\S+)/).flatten
     root_dir_input = "#{ROOT_DIR}/generators/input/sites"
@@ -81,7 +81,7 @@ namespace :deadnodes do
   task :browse do
     def comment_ok?(comment)
 #      comment.nil? or comment == "OK"
-      comment == "OK" 
+      comment == "OK"
     end
     @api_sites.each do |site|
       site.status["nodes"].each do |uid,status|
@@ -106,46 +106,46 @@ namespace :deadnodes do
 end
 
 # TESTS
-# Deletion: 
+# Deletion:
 #   rake -s oar:generate FROM=4cfebf92e9cce05315782b51e05eded4ab4f0e7e TO=7d2648eaad7dbbc6f1fdb9c0279f73d374ccd47a
 #
-# Update: 
+# Update:
 # rake -s oar:generate FROM=7d2648eaad7dbbc6f1fdb9c0279f73d374ccd47a TO=bb528643003757942521942eaeab74b15aaa976d
 #
-# Add: 
+# Add:
 #   rake -s oar:generate FROM=be9f7338b9750ce675447c13d172157992041ec1 TO=7dc3a4101a657230b7ad0534025a7ca93c905411
 #
-# All: 
+# All:
 #   rake -s oar:generate FROM=be9f7338b9750ce675447c13d172157992041ec1 TO=7d2648eaad7dbbc6f1fdb9c0279f73d374ccd47a
-# 
+#
 namespace :oar do
   desc "Generates the oaradmin lines to update the OAR database after a change in the reference repository.\nUse FROM=<SHA-ID> and TO=<SHA-ID> to specify the starting and ending commits.\nUse -s to suppress the 'in directory' announcement."
   task :generate => :environment do
     if ENV['FROM'].nil? || ENV['FROM'].empty?
-      @logger.fatal "You MUST specify a commit id from where to start using the FROM=<SHA-ID> argument. Ex: rake -s oar:generate FROM=be9f7338b9750ce675447c13d172157992041ec1 TO=7dc3a4101a657230b7ad0534025a7ca93c905411 2> /dev/null" 
+      @logger.fatal "You MUST specify a commit id from where to start using the FROM=<SHA-ID> argument. Ex: rake -s oar:generate FROM=be9f7338b9750ce675447c13d172157992041ec1 TO=7dc3a4101a657230b7ad0534025a7ca93c905411 2> /dev/null"
       exit(1)
     end
     ENV['TO'] ||= 'HEAD'
     @logger.info "Analysing changes between #{ENV['FROM']}..#{ENV['TO']}..."
-    
+
     commands = []
     diff = `git diff --name-status #{ENV['FROM']}..#{ENV['TO']}`
-    
+
     diff.split("\n").each do |line|
       action, filename = line.split("\t")
       next unless filename =~ %r{.+/nodes/.+}
-      
+
       node_uid, site_uid, grid_uid = filename.gsub(/\.json/,'').split("/").values_at(-1, -5, -7)
       cluster_uid = node_uid.split("-")[0]
       host = [node_uid, site_uid, grid_uid, "fr"].flatten.join(".")
-      
+
       if ENV['SITE'] && !ENV['SITE'].split(",").include?(site_uid)
         @logger.info "Skipping #{host} since you only want changes that occured on #{ENV['SITE'].inspect}"
         next
       end
-      
+
       command = "oaradmin resources"
-      
+
       case action
       when "A", "C", "M"
         node_properties = JSON.parse(File.read(filename))
@@ -176,18 +176,18 @@ namespace :oar do
           else
             [k, v.inspect].join("=")
           end
-        }.compact.join(" -p ") )          
+        }.compact.join(" -p ") )
       when "D"            # deletion of a file
         command.concat(" -d node=#{host}")
-      else 
+      else
         @logger.warn "Don't know what to do with #{line.inspect}. Ignoring."
         next
       end
-      
+
       if ENV['COMMIT'] && ENV['COMMIT']=='YES'
         command.concat(' -c')
       end
-      
+
       commands << command
     end
     commands.each do |command|
@@ -245,6 +245,6 @@ task :mm => [:environment,:hosts] do
     end
 
   end
- 
+
 end
 =end
