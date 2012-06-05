@@ -5,6 +5,7 @@ site :toulouse do |site_uid|
   description "Toulouse Grid'5000 Site"
   latitude 43.6167
   longitude 1.4333
+  email_contact "toulouse-staff@lists.grid5000.fr"
   sys_admin_contact "toulouse-staff@lists.grid5000.fr"
   security_contact "toulouse-staff@lists.grid5000.fr"
   user_support_contact "toulouse-staff@lists.grid5000.fr"
