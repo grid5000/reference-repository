@@ -84,6 +84,14 @@ site :lille do |site_uid|
           :ip => lookup('chirloute', node_uid, 'network_interfaces', 'bmc', 'ip'),
           :switch => 'gw'
         }]
+         bios({
+           :version       => lookup('chirloute', node_uid, 'bios', 'version'),
+           :vendor        => lookup('chirloute', node_uid, 'bios', 'vendor'),
+           :release_date  => lookup('chirloute', node_uid, 'bios', 'release_date'),
+         })
+
+
+
       end
     end
   end # cluster chirloute
