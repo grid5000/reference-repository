@@ -51,7 +51,7 @@ site :toulouse do |site_uid|
             :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
             :ip => lookup('pastel', node_uid,'network_interfaces','eth0','ip'),
             :ip6 => nil,
-            :switch_name => lookup('pastel', node_uid,'network_interfaces','eth0','switch_name')
+            :switch => lookup('pastel', node_uid,'network_interfaces','eth0','switch_name')
           },
           { :interface => 'Ethernet',
             :rate => 1.G,
@@ -63,7 +63,7 @@ site :toulouse do |site_uid|
             :mountable => false,
             :mounted => false,
             :device => "eth1",
-            :switch_name => nil
+            :switch => nil
           },
           { :interface => 'Ethernet',
             :rate => 1.G,
@@ -77,7 +77,7 @@ site :toulouse do |site_uid|
             :network_address => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
             :ip => lookup('pastel', node_uid,'network_interfaces','bmc','ip'),
             :ip6 => nil,
-            :switch_name => '<unknown>'
+            :switch => '<unknown>'
           }
         ]
       end
