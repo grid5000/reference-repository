@@ -18,7 +18,7 @@ end
 task :api_sites  do
   api_logger = Logger.new("/dev/null")
   api_logger.level = Logger::FATAL
-  @api = Restfully::Session.new(:configuration_file => File.expand_path("~/.restfully/api.grid5000.fr.yml"),:logger => api_logger)
+  @api = Restfully::Session.new(:configuration_file => File.expand_path("~/.restfully/api.grid5000.fr.yml"),:logger => api_logger,:base_uri => 'https://api.grid5000.fr/sid')
   @api_sites = if ENV['SITE']
     [@api.root.sites[ENV['SITE'].to_sym]]
   else
