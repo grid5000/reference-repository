@@ -10,16 +10,15 @@
     {
       "kind": "node",
       "naming_pattern": "Gi%LINECARD%/%PORT%",
+      "port": "bmc",
       "ports": [
         {
 
         },
         {
-          "port": "bmc",
-          "uid": "granduc-2"
+          "uid": "granduc-1"
         },
         {
-          "port": "bmc",
           "uid": "granduc-2"
         },
         {
@@ -44,7 +43,6 @@
           "uid": "granduc-9"
         },
         {
-          "port": "bmc",
           "uid": "granduc-10"
         },
         {
@@ -272,6 +270,12 @@
   "type": "network_equipment",
   "uid": "gw",
   "vlans": {
+    "100": {
+      "addresses": [
+        "172.16.191.254"
+      ],
+      "administrative": true
+    },
     "naming_pattern": "Vlan%VLANID%"
   }
 }
