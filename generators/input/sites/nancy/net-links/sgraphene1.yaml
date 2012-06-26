@@ -5,12 +5,16 @@ sgraphene1:
   site: nancy
   snmp_community: public
   vlans: 
-    naming_pattern: Vlan%VLANID%
+    naming_pattern: Vlan-interface%VLANID%
+    "1": 
+      administrative: yes
+      addresses: 
+        - 172.16.79.201
   routes: {}
 
   linecards: 
-    1: 
-      naming_pattern: "%LINECARD:A%%PORT%"
+    0: 
+      naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       kind: node
       rate: 10000000000
       ports: 
@@ -53,8 +57,8 @@ sgraphene1:
         38: graphene-37
         37: graphene-38
         40: graphene-39
-    2: 
-      naming_pattern: "%LINECARD:A%%PORT%"
+    1: 
+      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: router
       rate: 100000000
       ports: 

@@ -6,7 +6,7 @@
   "linecards": [
     {
       "kind": "node",
-      "naming_pattern": "G%LINECARD%/%PORT%",
+      "naming_pattern": "GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -142,7 +142,7 @@
     },
     {
       "kind": "switch",
-      "naming_pattern": "T%LINECARD%/%PORT%",
+      "naming_pattern": "Ten-GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -158,7 +158,7 @@
     },
     {
       "kind": "other",
-      "naming_pattern": "T%LINECARD%/%PORT%",
+      "naming_pattern": "Ten-GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -182,6 +182,12 @@
   "type": "network_equipment",
   "uid": "stalc2",
   "vlans": {
-    "naming_pattern": "Vlan%VLANID%"
+    "1": {
+      "addresses": [
+        "172.16.79.225"
+      ],
+      "administrative": true
+    },
+    "naming_pattern": "Vlan-interface%VLANID%"
   }
 }

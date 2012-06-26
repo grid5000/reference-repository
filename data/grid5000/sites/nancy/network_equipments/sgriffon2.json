@@ -5,11 +5,8 @@
   "kind": "switch",
   "linecards": [
     {
-
-    },
-    {
       "kind": "node",
-      "naming_pattern": "%LINECARD:A%%PORT%",
+      "naming_pattern": "GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -148,7 +145,7 @@
     },
     {
       "kind": "router",
-      "naming_pattern": "%LINECARD:A%%PORT%",
+      "naming_pattern": "Ten-GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -169,6 +166,12 @@
   "type": "network_equipment",
   "uid": "sgriffon2",
   "vlans": {
-    "naming_pattern": "Vlan%VLANID%"
+    "1": {
+      "addresses": [
+        "172.16.79.206"
+      ],
+      "administrative": true
+    },
+    "naming_pattern": "Vlan-interface%VLANID%"
   }
 }

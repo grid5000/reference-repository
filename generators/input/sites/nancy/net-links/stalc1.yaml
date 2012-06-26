@@ -5,11 +5,16 @@ stalc1:
   site: nancy
   snmp_community: public
   vlans: 
-    naming_pattern: Vlan%VLANID%
+    naming_pattern: Vlan-interface%VLANID%
+    "1": 
+      administrative: yes
+      addresses: 
+        - 172.16.79.224
   routes: {}
+
   linecards: 
     0: 
-      naming_pattern: "T%LINECARD%/%PORT%"
+      naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
       ports: 
@@ -52,13 +57,13 @@ stalc1:
         42: talc-36
         43: talc-37
     1: 
-      naming_pattern: "T%LINECARD%/%PORT%"
+      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: switch
       rate: 10000000000
       ports: 
         2: stalc3
     2: 
-      naming_pattern: "T%LINECARD%/%PORT%"
+      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: router
       rate: 10000000000
       ports: 

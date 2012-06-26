@@ -9,7 +9,7 @@
     },
     {
       "kind": "switch",
-      "naming_pattern": "T%LINECARD%/%PORT%",
+      "naming_pattern": "Ten-GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -33,6 +33,12 @@
   "type": "network_equipment",
   "uid": "stalc4",
   "vlans": {
+    "100": {
+      "addresses": [
+        "172.16.79.227"
+      ],
+      "administrative": true
+    },
     "naming_pattern": "Vlan%VLANID%"
   }
 }
