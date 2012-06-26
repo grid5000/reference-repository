@@ -1,0 +1,67 @@
+---
+zybline: 
+  model: Cisco 2950
+  kind: switch
+  site: lyon
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "Gi%LINECARD%/%PORT%"
+      kind: node
+      rate: 100000000 
+      port: bmc
+      ports: 
+        1: sagittaire-1
+        2: sagittaire-2
+        3: sagittaire-3
+        4: sagittaire-4
+        5: sagittaire-5
+        6: sagittaire-6
+        7: sagittaire-7
+        8: sagittaire-8
+        9: sagittaire-9
+        10: sagittaire-10
+        11: sagittaire-11
+        12: sagittaire-12
+        13: sagittaire-13
+        14: sagittaire-14
+        15: sagittaire-15
+        16: sagittaire-16
+        17: sagittaire-17
+        18: sagittaire-18
+        19: sagittaire-19
+        20: sagittaire-20
+        21: sagittaire-21
+        22: sagittaire-22
+        23: sagittaire-23
+        24: sagittaire-24
+        25: sagittaire-25
+        26: sagittaire-26
+        27: sagittaire-27
+        28: sagittaire-28
+        29: sagittaire-29
+        30: sagittaire-30
+        31: sagittaire-31
+        32: sagittaire-32
+        33: sagittaire-33
+        34: sagittaire-34
+        35: sagittaire-70
+        36: sagittaire-71
+        37: sagittaire-72
+        38: sagittaire-73
+        39: sagittaire-74
+        47: 
+          uid: gw
+          kind: router
+          port: 5:15
+        48: 
+          uid: gw
+          kind: router
+          port: 5:16
+  channels: 
+    naming_pattern: Po%CHANNELID%
+

@@ -1,0 +1,66 @@
+---
+pat: 
+  model: Foundry
+  kind: switch
+  site: lyon
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: router
+      rate: 1000000000 
+      ports: 
+        1: 
+          uid: gw
+          port: 5:14
+    2: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: node
+      rate: 100000000 
+      port: bmc
+      ports: 
+        1: capricorne-41
+        2: capricorne-42
+        3: capricorne-43
+        4: capricorne-44
+        5: capricorne-45
+        6: capricorne-46
+        7: capricorne-47
+        8: capricorne-48
+        9: capricorne-49
+        10: capricorne-50
+        11: capricorne-51
+        12: capricorne-52
+        13: capricorne-53
+        14: capricorne-54
+        15: capricorne-55
+        16: capricorne-56
+        17: 
+          uid: capricorne
+          kind: other
+        18: 
+          uid: rork
+          kind: other
+        21: 
+          uid: chris
+          kind: switch
+          port: 2:45
+        22: 
+          uid: chris
+          kind: switch
+          port: 2:46
+        23: 
+          uid: chris
+          kind: switch
+          port: 2:47
+        24: 
+          uid: chris
+          kind: switch
+          port: 2:48
+  channels: 
+    naming_pattern: Po%CHANNELID%
+

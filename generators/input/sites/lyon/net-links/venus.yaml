@@ -1,0 +1,26 @@
+---
+venus: 
+  model: Foundry FES-X 448
+  kind: switch
+  site: lyon
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: router
+      rate: 1000000000 
+      ports: 
+        1: gw
+    2: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: node
+      rate: 1000000000 
+      ports: {}
+
+  channels: 
+    naming_pattern: Po%CHANNELID%
+
