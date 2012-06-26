@@ -1,0 +1,92 @@
+---
+chris: 
+  model: Foundry
+  kind: switch
+  site: lyon
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: router
+      rate: 1000000000 
+      ports: {} 
+
+    2: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: node
+      rate: 100000000 
+      port: bmc
+      ports: 
+        1: capricorne-1
+        2: capricorne-2
+        3: capricorne-3
+        4: capricorne-4
+        5: capricorne-5
+        6: capricorne-6
+        7: capricorne-7
+        8: capricorne-8
+        9: capricorne-9
+        10: capricorne-10
+        11: capricorne-11
+        12: capricorne-12
+        13: capricorne-13
+        14: capricorne-14
+        15: capricorne-15
+        16: capricorne-16
+        17: capricorne-17
+        18: capricorne-18
+        19: capricorne-19
+        20: capricorne-20
+        21: capricorne-21
+        22: capricorne-22
+        23: capricorne-23
+        24: capricorne-24
+        25: capricorne-25
+        26: capricorne-26
+        27: capricorne-27
+        28: capricorne-28
+        29: capricorne-29
+        30: capricorne-30
+        31: capricorne-31
+        32: capricorne-32
+        33: capricorne-33
+        34: capricorne-34
+        35: capricorne-35
+        36: capricorne-36
+        37: capricorne-37
+        38: capricorne-38
+        39: capricorne-39
+        40: capricorne-40
+        41: 
+          uid: nebula
+          kind: other
+        42: 
+          uid: andromede
+          kind: other
+        44: 
+          uid: yumi
+          kind: switch
+          port: 0:0
+        45: 
+          uid: pat
+          kind: switch
+          port: 2:21
+        46: 
+          uid: pat
+          kind: switch
+          port: 2:22
+        47: 
+          uid: pat
+          kind: switch
+          port: 2:23
+        48: 
+          uid: pat
+          kind: switch
+          port: 2:24
+  channels: 
+    naming_pattern: Po%CHANNELID%
+
