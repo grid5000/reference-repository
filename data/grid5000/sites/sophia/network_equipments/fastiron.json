@@ -12,7 +12,7 @@
     },
     {
       "kind": "router",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -26,11 +26,11 @@
           "uid": "edgeiron"
         }
       ],
-      "rate": 10000
+      "rate": 10000000000
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -108,11 +108,11 @@
           "uid": "sol-36"
         }
       ],
-      "rate": 1000
+      "rate": 1000000000
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -190,11 +190,11 @@
           "uid": "sol-48"
         }
       ],
-      "rate": 1000
+      "rate": 1000000000
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -263,11 +263,11 @@
           "uid": "suno-16"
         }
       ],
-      "rate": 1000
+      "rate": 1000000000
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -357,11 +357,11 @@
           "uid": "srv-stock"
         }
       ],
-      "rate": 1000
+      "rate": 1000000000
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -443,14 +443,14 @@
           "uid": "srv-stock"
         }
       ],
-      "rate": 1000
+      "rate": 1000000000
     },
     {
 
     },
     {
       "kind": "other",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -499,7 +499,7 @@
           "uid": "stock"
         }
       ],
-      "rate": 1000
+      "rate": 1000000000
     }
   ],
   "model": "Foundry",
@@ -511,6 +511,12 @@
   "type": "network_equipment",
   "uid": "fastiron",
   "vlans": {
+    "100": {
+      "addresses": [
+        "138.96.20.250"
+      ],
+      "administrative": true
+    },
     "naming_pattern": "Vlan%VLANID%"
   }
 }
