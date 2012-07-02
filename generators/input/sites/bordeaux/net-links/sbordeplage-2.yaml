@@ -1,0 +1,65 @@
+--- 
+sbordeplage-2: 
+  model: Dell Proconnect 2024
+  kind: switch
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 1000000000
+      ports: 
+        0: st-bordemer
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: bordeplage-11
+        2: bordeplage-12
+        3: bordeplage-13
+        4: bordeplage-14
+        5: bordeplage-15
+        6: bordeplage-16
+        7: bordeplage-17
+        8: bordeplage-18
+        9: bordeplage-19
+        10: bordeplage-20
+        11: bordeplage-21
+        12: bordeplage-22
+        13: bordeplage-23
+        14: bordeplage-24
+        15: bordeplage-25
+        16: bordeplage-26
+        17: bordeplage-27
+        18: bordeplage-28
+        19: bordeplage-29
+        20: bordeplage-30
+        21: bordeplage-31
+        22: bordeplage-32
+        23: bordeplage-33
+        24: bordeplage-34
+        25: bordeplage-35
+        26: bordeplage-36
+        27: bordeplage-37
+        28: bordeplage-38
+        29: bordeplage-39
+        30: bordeplage-40
+        31: bordeplage-41
+        32: bordeplage-42
+        33: bordeplage-43
+        34: bordeplage-44
+        35: bordeplage-45
+        36: bordeplage-46
+        37: bordeplage-47
+        38: bordeplage-48
+        39: bordeplage-49
+        40: bordeplage-50
+        41: bordeplage-51
+  channels: 
+    naming_pattern: Po%CHANNELID%

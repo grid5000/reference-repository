@@ -1,0 +1,26 @@
+--- 
+st-bordemer: 
+  model: Cisco 3750
+  kind: switch
+  site: bordeaux
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    0: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: router
+      rate: 10000000000
+      ports: 
+        0: gw
+    1: 
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 1000000000
+      ports: 
+        1: sbordeplage-1
+        2: sbordeplage-2
+  channels: 
+    naming_pattern: Po%CHANNELID%
