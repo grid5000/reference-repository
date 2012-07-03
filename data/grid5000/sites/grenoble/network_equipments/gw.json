@@ -2,14 +2,14 @@
   "channels": {
     "naming_pattern": "Po%CHANNELID%"
   },
-  "kind": "switch",
+  "kind": "router",
   "linecards": [
     {
 
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
         {
 
@@ -121,7 +121,7 @@
     },
     {
       "kind": "switch",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
         {
 
@@ -179,7 +179,7 @@
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
         {
 
@@ -219,7 +219,7 @@
     },
     {
       "kind": "other",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
         {
 
@@ -261,12 +261,15 @@
         {
           "port": "bmc",
           "uid": "alpes"
+        },
+        {
+          "uid": "ib"
         }
       ],
       "rate": 1000000000
     }
   ],
-  "model": "ExtremeNetwork",
+  "model": "ExtremeNetworks",
   "routes": {
 
   },
@@ -275,6 +278,13 @@
   "type": "network_equipment",
   "uid": "gw",
   "vlans": {
+    "1": {
+      "addresses": [
+        "172.16.16.254"
+      ],
+      "administrative": true
+    },
     "naming_pattern": "Vlan%VLANID%"
-  }
+  },
+  "weathermap": null
 }

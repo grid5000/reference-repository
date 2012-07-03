@@ -1,0 +1,147 @@
+--- 
+gw: 
+  model: ExtremeNetworks
+  kind: router
+  site: grenoble
+  snmp_community: public
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+    "1": 
+      administrative: yes
+      addresses: 
+        - 172.16.16.254
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: genepi-1
+        2: genepi-2
+        3: genepi-3
+        4: genepi-4
+        5: genepi-5
+        6: genepi-6
+        7: genepi-7
+        8: genepi-8
+        9: genepi-9
+        10: genepi-10
+        11: genepi-11
+        12: genepi-12
+        13: genepi-13
+        14: genepi-14
+        15: genepi-15
+        16: genepi-16
+        17: genepi-17
+        18: genepi-18
+        19: genepi-19
+        20: genepi-20
+        21: genepi-21
+        22: genepi-22
+        23: genepi-23
+        24: genepi-24
+        25: genepi-25
+        26: genepi-26
+        27: genepi-27
+        28: genepi-28
+        29: genepi-29
+        30: genepi-30
+        31: genepi-31
+        32: genepi-32
+        33: genepi-33
+        34: genepi-34
+    3: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        1: adonis-1
+        2: adonis-2
+        3: adonis-3
+        4: adonis-4
+        5: adonis-5
+        6: adonis-6
+        7: adonis-7
+        8: adonis-8
+        9: adonis-9
+        10: adonis-10
+    4: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: other
+      rate: 1000000000
+      ports: 
+        1: 
+          uid: digmgt
+          port: eth0
+        2: 
+          uid: digmgt
+          port: eth4
+        3: 
+          uid: digmgt
+          port: eth5
+          rate: 100000000
+        4: 
+          uid: digmgt
+          port: bmc
+        5: 
+          uid: dignfs
+          port: eth1
+          rate: 100000000
+        6: 
+          uid: dignfs
+          port: eth0
+        7: 
+          uid: dignfs
+          port: bmc
+        8: 
+          uid: alpes
+          port: eth0
+        9: 
+          uid: alpes
+          port: bmc
+        10: ib
+    2: 
+      naming_pattern: "%LINECARD%:%PORT%"
+      kind: switch
+      rate: 1000000000
+      ports: 
+        1: 
+          uid: blade-1
+          port: 0/1
+        2: 
+          uid: blade-1
+          port: 0/2
+        3: 
+          uid: blade-1
+          port: 0/3
+        4: 
+          uid: blade-2
+          port: 0/1
+        5: 
+          uid: blade-2
+          port: 0/2
+        6: 
+          uid: blade-2
+          port: 0/3
+        7: 
+          uid: blade-3
+          port: 0/1
+        8: 
+          uid: blade-3
+          port: 0/2
+        9: 
+          uid: blade-3
+          port: 0/3
+        10: 
+          uid: blade-4
+          port: 0/1
+        11: 
+          uid: blade-4
+          port: 0/2
+        12: 
+          uid: blade-4
+          port: 0/3
+  channels: 
+    naming_pattern: Po%CHANNELID%
