@@ -93,7 +93,9 @@ site :grenoble do |site_uid|
           :mac => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'mac'),
           :vendor => "Intel",
           :version => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)",
-          :driver => "e1000e"
+          :driver => "e1000e",
+          :switch => lookup('genepi', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
+          :switch_port => lookup('genepi', node_uid, 'network_interfaces', 'eth0', 'switch_port')
         },
         {
           :interface => 'Ethernet',
