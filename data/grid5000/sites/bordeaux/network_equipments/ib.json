@@ -5,14 +5,14 @@
   "kind": "switch",
   "linecards": [
     {
-      "kind": "node",
+      "kind": "router",
       "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
           "uid": "gw"
         }
       ],
-      "rate": 100000000
+      "rate": 10000000000
     }
   ],
   "model": "Infiniband",
@@ -25,5 +25,8 @@
   "uid": "ib",
   "vlans": {
     "naming_pattern": "Vlan%VLANID%"
+  },
+  "weathermap": {
+
   }
 }
