@@ -5,43 +5,28 @@
   "kind": "switch",
   "linecards": [
     {
-
-    },
-    {
-      "kind": "switch",
-      "naming_pattern": "Ten-GigabitEthernet1/%LINECARD%/%PORT%",
+      "kind": "router",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
-
-        },
-        {
-          "uid": "stalc3"
-        },
-        {
-          "uid": "stalc2"
+          "uid": "sgravillon1"
         }
       ],
       "rate": 10000000000
     }
   ],
-  "model": "3com 4500G",
+  "model": "Infiniband",
   "routes": {
 
   },
   "site": "nancy",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "stalc4",
+  "uid": "sgrapheneib",
   "vlans": {
-    "100": {
-      "addresses": [
-        "172.16.79.227"
-      ],
-      "administrative": true
-    },
     "naming_pattern": "Vlan%VLANID%"
   },
   "weathermap": {
-
+    "use_cacti": "no"
   }
 }
