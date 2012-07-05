@@ -151,14 +151,16 @@
         },
         {
           "kind": "router",
-          "uid": "gw-lille-6k.grid5000.fr"
+          "port": "Gi4/29",
+          "uid": "gw-lille-6k"
         },
         {
           "kind": "router",
-          "uid": "gw-lille-6k.grid5000.fr"
+          "port": "Gi4/30",
+          "uid": "gw-lille-6k"
         }
       ],
-      "rate": 1000000
+      "rate": 1000000000
     }
   ],
   "model": "cisco",
@@ -170,6 +172,15 @@
   "type": "network_equipment",
   "uid": "sw-admin4",
   "vlans": {
+    "100": {
+      "addresses": [
+        "192.168.163.4"
+      ],
+      "administrative": true
+    },
     "naming_pattern": "Vlan%VLANID%"
+  },
+  "weathermap": {
+
   }
 }

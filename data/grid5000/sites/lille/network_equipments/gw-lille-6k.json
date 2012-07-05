@@ -18,7 +18,7 @@
           "uid": "UL_GRID5000_SW01.uni.lu"
         }
       ],
-      "rate": 10000000
+      "rate": 10000000000
     },
     {
       "kind": "node",
@@ -151,11 +151,11 @@
           "uid": "chinqchint-5"
         },
         {
-          "kind": "server",
+          "kind": "other",
           "uid": "chimint-srv"
         }
       ],
-      "rate": 1000000
+      "rate": 1000000000
     },
     {
       "kind": "node",
@@ -288,7 +288,7 @@
           "uid": "chinqchint-46"
         }
       ],
-      "rate": 1000000
+      "rate": 1000000000
     },
     {
       "kind": "switch",
@@ -364,39 +364,47 @@
 
         },
         {
+          "port": "Gi0/47",
           "uid": "sw-admin1"
         },
         {
+          "port": "Gi0/48",
           "uid": "sw-admin1"
         },
         {
+          "port": "Gi0/47",
           "uid": "sw-admin2"
         },
         {
+          "port": "Gi0/48",
           "uid": "sw-admin2"
         },
         {
+          "port": "Gi0/47",
           "uid": "sw-admin3"
         },
         {
+          "port": "Gi0/48",
           "uid": "sw-admin3"
         },
         {
+          "port": "Gi0/47",
           "uid": "sw-admin4"
         },
         {
+          "port": "Gi0/48",
           "uid": "sw-admin4"
         },
         {
-          "kind": "server",
+          "kind": "other",
           "uid": "syslog-dmz"
         },
         {
-          "kind": "server",
+          "kind": "other",
           "uid": "jabber-global"
         },
         {
-          "kind": "server",
+          "kind": "other",
           "uid": "conman"
         },
         {
@@ -412,7 +420,7 @@
 
         },
         {
-          "kind": "server",
+          "kind": "other",
           "uid": "groarr"
         },
         {
@@ -447,7 +455,7 @@
           "uid": "chirloute-7"
         }
       ],
-      "rate": 1000000
+      "rate": 1000000000
     },
     {
 
@@ -463,7 +471,7 @@
           "uid": "sw1-core-lil.net-admin.lille.inria.fr"
         }
       ],
-      "rate": 1000000
+      "rate": 1000000000
     }
   ],
   "model": "cisco",
@@ -473,8 +481,17 @@
   "site": "lille",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "gw",
+  "uid": "gw-lille-6k",
   "vlans": {
+    "100": {
+      "addresses": [
+        "192.168.159.254"
+      ],
+      "administrative": true
+    },
     "naming_pattern": "Vlan%VLANID%"
+  },
+  "weathermap": {
+
   }
 }

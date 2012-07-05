@@ -1,0 +1,144 @@
+--- 
+gw-lille-6k: 
+  model: cisco
+  kind: router
+  site: lille
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+    "100": 
+      administrative: yes
+      addresses: 
+        - 192.168.159.254
+  linecards: 
+    6: 
+      kind: router
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      ports: 
+        1: sw1-core-lil.net-admin.lille.inria.fr
+    1: 
+      kind: renater
+      naming_pattern: Te%LINECARD%/%PORT%
+      rate: 10000000000
+      ports: 
+        1: UL_GRID5000_SW01.uni.lu
+    2: 
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      ports: 
+        27: chinqchint-27
+        11: chinqchint-11
+        33: chinqchint-33
+        17: chinqchint-17
+        6: chinqchint-6
+        39: chinqchint-39
+        34: chinqchint-34
+        1: chinqchint-1
+        12: chinqchint-12
+        29: chinqchint-29
+        18: chinqchint-18
+        40: chinqchint-40
+        24: chinqchint-24
+        2: chinqchint-2
+        13: chinqchint-13
+        30: chinqchint-30
+        8: chinqchint-8
+        19: chinqchint-19
+        41: chinqchint-5
+        25: chinqchint-25
+        14: chinqchint-14
+        3: chinqchint-3
+        9: chinqchint-9
+        31: chinqchint-31
+        42: 
+          kind: other
+          uid: chimint-srv
+        20: chinqchint-20
+        4: chinqchint-4
+        15: chinqchint-15
+        26: chinqchint-26
+        10: chinqchint-10
+        21: chinqchint-21
+        32: chinqchint-32
+    3: 
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      ports: 
+        27: chimint-20
+        16: chimint-10
+        5: chinqchint-45
+        33: chirloute-5
+        17: chimint-11
+        23: chimint-15
+        12: chimint-6
+        1: chinqchint-41
+        18: chimint-12
+        7: chimint-1
+        13: chimint-8
+        24: chimint-18
+        8: chimint-3
+        41: chinqchint-46
+        30: chirloute-3
+        19: chimint-13
+        14: chimint-7
+        25: chirloute-2
+        3: chinqchint-43
+        9: chimint-2
+        31: chirloute-6
+        20: chimint-14
+        15: chimint-9
+        4: chinqchint-44
+        26: chirloute-4
+        32: chirloute-8
+    4: 
+      kind: switch
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      ports: 
+        27: 
+          uid: sw-admin3
+          port: Gi0/47
+        38: 
+          kind: other
+          uid: groarr
+        33: 
+          kind: other
+          uid: conman
+        28: 
+          uid: sw-admin3
+          port: Gi0/48
+        23: 
+          uid: sw-admin1
+          port: Gi0/47
+        24: 
+          uid: sw-admin1
+          port: Gi0/48
+        29: 
+          uid: sw-admin4
+          port: Gi0/47
+        30: 
+          uid: sw-admin4
+          port: Gi0/48
+        25: 
+          uid: sw-admin2
+          port: Gi0/47
+        47: sw-admin5
+        31: 
+          kind: other
+          uid: syslog-dmz
+        26: 
+          uid: sw-admin2
+          port: Gi0/48
+        48: 
+          kind: node
+          uid: chirloute-7
+        32: 
+          kind: other
+          uid: jabber-global
+  channels: 
+    naming_pattern: Po%CHANNELID%

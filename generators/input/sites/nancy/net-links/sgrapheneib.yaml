@@ -1,9 +1,11 @@
 --- 
-st-bordemer: 
-  model: Cisco 3750
+sgrapheneib: 
+  model: Infiniband
   kind: switch
-  site: bordeaux
+  site: nancy
   snmp_community: public
+  weathermap: 
+    use_cacti: "no"
   vlans: 
     naming_pattern: Vlan%VLANID%
   routes: {}
@@ -14,13 +16,6 @@ st-bordemer:
       kind: router
       rate: 10000000000
       ports: 
-        0: gw-bdx
-    1: 
-      naming_pattern: "%LINECARD%/%PORT%"
-      kind: switch
-      rate: 1000000000
-      ports: 
-        1: sbordeplage-1
-        2: sbordeplage-2
+        0: sgravillon1
   channels: 
     naming_pattern: Po%CHANNELID%

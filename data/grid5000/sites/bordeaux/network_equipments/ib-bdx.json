@@ -5,42 +5,28 @@
   "kind": "switch",
   "linecards": [
     {
-
-    },
-    {
       "kind": "router",
-      "naming_pattern": "%LINECARD%:%PORT%",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
-
-        },
-        {
-          "uid": "aspen-8810"
+          "uid": "gw-bdx"
         }
       ],
-      "rate": 1000000000
-    },
-    {
-      "kind": "node",
-      "naming_pattern": "%LINECARD%:%PORT%",
-      "ports": [
-
-      ],
-      "rate": 1000000000
+      "rate": 10000000000
     }
   ],
-  "model": "Foundry FES-X 448",
+  "model": "Infiniband",
   "routes": {
 
   },
-  "site": "lyon",
+  "site": "bordeaux",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "venus",
+  "uid": "ib-bdx",
   "vlans": {
     "naming_pattern": "Vlan%VLANID%"
   },
   "weathermap": {
-
+    "use_cacti": "no"
   }
 }

@@ -1,7 +1,7 @@
 --- 
 ciscosol: 
   model: cisco
-  kind: router
+  kind: switch
   site: sophia
   snmp_community: public
   vlans: 
@@ -9,10 +9,10 @@ ciscosol:
   routes: {}
 
   linecards: 
-    0: 
+    1: 
       naming_pattern: "%LINECARD%/0/%PORT%"
       kind: router
-      rate: 1000
+      rate: 1000000000
       ports: 
         1: 
           uid: fastiron
@@ -20,7 +20,7 @@ ciscosol:
     2: 
       naming_pattern: "%LINECARD%/0/%PORT%"
       kind: node
-      rate: 1000
+      rate: 1000000000
       ports: 
         18: 
           uid: sol-1
@@ -91,7 +91,7 @@ ciscosol:
     7: 
       naming_pattern: "%LINECARD%/0/%PORT%"
       kind: node
-      rate: 1000
+      rate: 1000000000
       ports: 
         7: 
           uid: sol-15

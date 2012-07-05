@@ -11,7 +11,7 @@
       kind properties["kind"]
       @context.recursive_merge!(:site => site)
       snmp_community properties["snmp_community"]
-      weathermap properties["weathermap"]
+      weathermap properties["weathermap"] || {}
       vlans properties["vlans"]
       routes properties["routes"]
       channels properties["channels"]
