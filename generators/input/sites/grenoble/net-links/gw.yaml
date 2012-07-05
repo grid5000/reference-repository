@@ -13,135 +13,278 @@ gw:
   routes: {}
 
   linecards: 
-    1: 
+    2: 
       naming_pattern: "%LINECARD%:%PORT%"
       kind: node
       rate: 1000000000
       ports: 
-        1: genepi-1
-        2: genepi-2
-        3: genepi-3
-        4: genepi-4
-        5: genepi-5
-        6: genepi-6
-        7: genepi-7
-        8: genepi-8
-        9: genepi-9
-        10: genepi-10
-        11: genepi-11
-        12: genepi-12
-        13: genepi-13
-        14: genepi-14
-        15: genepi-15
-        16: genepi-16
-        17: genepi-17
-        18: genepi-18
-        19: genepi-19
-        20: genepi-20
-        21: genepi-21
-        22: genepi-22
-        23: genepi-23
-        24: genepi-24
-        25: genepi-25
-        26: genepi-26
-        27: genepi-27
-        28: genepi-28
-        29: genepi-29
-        30: genepi-30
-        31: genepi-31
-        32: genepi-32
-        33: genepi-33
-        34: genepi-34
+        1:
+          uid: blade-2
+          port: 0/1
+        2:
+          uid: blade-2
+          port: 0/2
+        3:
+          uid: blade-2
+          port: 0/3
+        4:
+          uid: blade-1
+          port: 0/1
+        5:
+          uid: blade-1
+          port: 0/2
+        6:
+          uid: blade-1
+          port: 0/3
+        7:
+          uid: blade-3
+          port: 0/1
+        8:
+          uid: blade-3
+          port: 0/2
+        9:
+          uid: blade-3
+          port: 0/3
+        10:
+          uid: blade-4
+          port: 0/1
+        11:
+          uid: blade-4
+          port: 0/2
+        12:
+          uid: blade-4
+          port: 0/3
+        23:
+          uid: voltaire-1
+          kind: switch
+        24:
+          uid: voltaire-2
+          kind: switch
+        32:
+          uid: grimage-9
+          port: bmc
+        33:
+          uid: grimage-10
+          port: bmc
     3: 
       naming_pattern: "%LINECARD%:%PORT%"
-      kind: node
+      kind: other
       rate: 1000000000
       ports: 
-        1: adonis-1
-        2: adonis-2
-        3: adonis-3
-        4: adonis-4
-        5: adonis-5
-        6: adonis-6
-        7: adonis-7
-        8: adonis-8
-        9: adonis-9
-        10: adonis-10
+        1:
+          uid: digmgt
+          port: eth0
+        2:
+          uid: digmgt
+          port: eth1
+        3:
+          uid: digmgt
+          port: eth2
+        4:
+          uid: digmgt
+          port: eth3
+        5:
+          uid: grimage-9
+          port: eth0
+        6:
+          uid: grimage-9
+          port: eth1
+        7:
+          uid: grimage-10
+          port: eth0
+        8:
+          uid: grimage-10
+          port: eth1
+        9:
+          uid: dignfs
+          port: eth0
+        10:
+          uid: fastiron-switch-ipmi
+          kind: switch
+        11:
+          uid: adonis-1
+          port: eth0
+        12:
+          uid: adonis-2
+          port: eth0
+        13:
+          uid: adonis-3
+          port: eth0
+        14:
+          uid: adonis-4
+          port: eth0
+        15:
+          uid: adonis-5
+          port: eth0
+        16:
+          uid: adonis-6
+          port: eth0
+        17:
+          uid: adonis-7
+          port: eth0
+        18:
+          uid: adonis-8
+          port: eth0
+        19:
+          uid: adonis-9
+          port: eth0
+        20:
+          uid: adonis-10
+          port: eth0
+        21:
+          uid: voltaire-3
+          kind: switch
+        25:
+          uid: genepi-16
+          port: eth1
+        26:
+          uid: genepi-34
+          port: eth1
+        27:
+          uid: genepi-18
+          port: eth1
+        28:
+          uid: genepi-30
+          port: eth1
+        29:
+          uid: genepi-14
+          port: eth1
+        30:
+          uid: genepi-24
+          port: eth1
+        31:
+          uid: genepi-20
+          port: eth1
+        32:
+          uid: genepi-22
+          port: eth1
+        33:
+          uid: genepi-28
+          port: eth1
+        34:
+          uid: genepi-32
+          port: eth1
+        37:
+          uid: genepi-10
+          port: eth1
+        38:
+          uid: genepi-12
+          port: eth1
+        39:
+          uid: genepi-8
+          port: eth1
+        40:
+          uid: genepi-4
+          port: eth1
+        42:
+          uid: genepi-2
+          port: eth1
     4: 
       naming_pattern: "%LINECARD%:%PORT%"
       kind: other
       rate: 1000000000
       ports: 
         1: 
-          uid: digmgt
-          port: eth0
-        2: 
+          uid: alpes
+          port: eth1
+        1: 
+          uid: summit-grimage
+          kind: switch
+        3:
+          uid: genepi-29
+          port: eth1
+        4:
+          uid: genepi-27
+          port: eth1
+        5:
+          uid: genepi-33
+          port: eth1
+        6:
+          uid: genepi-17
+          port: eth1
+        7:
+          uid: genepi-15
+          port: eth1
+        8:
+          uid: genepi-26
+          port: eth1
+        9:
+          uid: genepi-11
+          port: eth1
+        10:
+          uid: genepi-21
+          port: eth1
+        13:
+          uid: genepi-31
+          port: eth1
+        14:
+          uid: genepi-23
+          port: eth1
+        15:
+          uid: genepi-25
+          port: eth1
+        16:
+          uid: genepi-19
+          port: eth1
+        17:
+          uid: genepi-13
+          port: eth1
+        18:
+          uid: genepi-9
+          port: eth1
+        19:
+          uid: genepi-5
+          port: eth1
+        20:
+          uid: genepi-7
+          port: eth1
+        21:
+          uid: genepi-3
+          port: eth1
+        22:
+          uid: genepi-1
+          port: eth1
+        23:
           uid: digmgt
           port: eth4
-        3: 
-          uid: digmgt
-          port: eth5
-          rate: 100000000
-        4: 
-          uid: digmgt
-          port: bmc
-        5: 
-          uid: dignfs
-          port: eth1
-          rate: 100000000
-        6: 
-          uid: dignfs
-          port: eth0
-        7: 
-          uid: dignfs
-          port: bmc
-        8: 
+        24: 
           uid: alpes
           port: eth0
-        9: 
-          uid: alpes
-          port: bmc
-        10: ib
-    2: 
+        25: 
+          uid: grimage-1
+          port: eth0
+        26: 
+          uid: grimage-2
+          port: eth0
+        27: 
+          uid: grimage-3
+          port: eth0
+        28: 
+          uid: grimage-4
+          port: eth0
+        29: 
+          uid: grimage-5
+          port: eth0
+        30: 
+          uid: grimage-6
+          port: eth0
+        31: 
+          uid: grimage-7
+          port: eth0
+        32: 
+          uid: grimage-8
+          port: eth0
+    10: 
       naming_pattern: "%LINECARD%:%PORT%"
-      kind: switch
+      kind: other
       rate: 1000000000
       ports: 
         1: 
-          uid: blade-1
-          port: 0/1
+          uid: dignfs
+          port: eth2
+          rate: 10000000000
         2: 
-          uid: blade-1
-          port: 0/2
-        3: 
-          uid: blade-1
-          port: 0/3
-        4: 
-          uid: blade-2
-          port: 0/1
-        5: 
-          uid: blade-2
-          port: 0/2
-        6: 
-          uid: blade-2
-          port: 0/3
-        7: 
-          uid: blade-3
-          port: 0/1
-        8: 
-          uid: blade-3
-          port: 0/2
-        9: 
-          uid: blade-3
-          port: 0/3
-        10: 
-          uid: blade-4
-          port: 0/1
-        11: 
-          uid: blade-4
-          port: 0/2
-        12: 
-          uid: blade-4
-          port: 0/3
+          uid: summit-idpot
+          kind: switch
   channels: 
     naming_pattern: Po%CHANNELID%
