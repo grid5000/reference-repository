@@ -10,10 +10,10 @@ $LOAD_PATH.unshift(LIB_DIR) unless $LOAD_PATH.include?(LIB_DIR)
 REFERENCE_REPOSITORY_DIR = File.expand_path(File.dirname(__FILE__))
 
 # Import dependency rake file
-IMPORTED_RAKEFILES ||= []
+IMPORTED_RAKEFILES = Array.new
 IMPORTED_RAKEFILES.push File.expand_path(__FILE__)
 %w(weathermap).each do |dependency|
-  Dir.glob(File.expand_path(File.join(REFERENCE_REPOSITORY_DIR,"..",dependency,"Rakefile"))).each do |rakefile| 
+  Dir.glob(File.expand_path(File.join(REFERENCE_REPOSITORY_DIR,"..",dependency,"Rakefile"))).each do |rakefile|
     import rakefile unless IMPORTED_RAKEFILES.include? rakefile
   end
 end
@@ -223,7 +223,7 @@ namespace :netlinks do
     sh command
   end
   desc "Display network links description amongst network equipments."
-  task :display do 
+  task :display do
     host=ENV["HOST"]
     abort "You must provide the HOST=" if host.nil?
     cmd = File.join(WEATHERMAP_DIR,"bin","weathermap-app.rb")
