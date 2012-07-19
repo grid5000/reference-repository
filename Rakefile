@@ -92,11 +92,15 @@ namespace :deadnodes do
 
   task :browse do
     def comment_ok?(comment)
-#      comment.nil? or comment == "OK"
       comment == "OK"
     end
     @api_sites.each do |site|
-      site.status["nodes"].each do |uid,status|
+      reg = /^([^-]+)-(\d+)/
+      site.status["nodes"].sort{|a,b| 
+        a_cluster,a_id = a[0].scan(reg).flatten
+        b_cluster,b_id = b[0].scan(reg).flatten
+        [a_cluster,a_id.to_i] <=> [b_cluster,b_id.to_i]
+      }.each do |uid,status|
         comment = status["comment"]
         state = status["hard"].downcase
         if comment_ok?(comment)
