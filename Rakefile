@@ -94,6 +94,7 @@ namespace :deadnodes do
     def comment_ok?(comment)
       comment == "OK"
     end
+    phoenix = []
     @api_sites.each do |site|
       reg = /^([^-]+)-(\d+)/
       site.status["nodes"].sort{|a,b| 
@@ -114,10 +115,12 @@ namespace :deadnodes do
             @logger.info "Node '#{uid}' is dead because '#{comment}'" if @reasons
           else
             @logger.error "Node '#{uid}' should have the not-dead-comment 'OK', since its state is '#{state}'. Instead, it has comment '#{comment}'." if @tofix
+            phoenix.push uid if comment.match(/^\[phoenix\]/) != nil
           end
         end
       end
     end
+    puts phoenix if ENV["PHOENIX"] == "yes"
   end
 end
 
