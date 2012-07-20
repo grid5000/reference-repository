@@ -16,7 +16,7 @@
         {
           "kind": "router",
           "port": "Gi5/2",
-          "uid": "gw"
+          "uid": "ul-grid5000-sw01"
         },
         {
           "kind": "node",
@@ -181,31 +181,20 @@
         }
       ],
       "rate": 10000000000
-    },
-    {
-      "naming_pattern": "mgmt%PORT%",
-      "ports": [
-        {
-          "kind": "router",
-          "port": "Gi1/46",
-          "uid": "gw"
-        }
-      ],
-      "rate": 1000000000
     }
   ],
-  "model": "Cisco C5020",
+  "model": "Nexus 5000",
   "routes": {
 
   },
   "site": "luxembourg",
   "snmp_community": null,
   "type": "network_equipment",
-  "uid": "nexus",
+  "uid": "ul-grid5000-sw02",
   "vlans": {
     "50": {
       "addresses": [
-        "192.168.15.254"
+        "172.17.191.253"
       ],
       "administrative": true
     },

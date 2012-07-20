@@ -1,14 +1,15 @@
 ---
-nexus: 
-  model: Cisco C5020
+ul-grid5000-sw02: 
+  model: Nexus 5000
   kind: switch
   site: luxembourg
+  snmp_community: public
   vlans: 
     naming_pattern: Vlan%VLANID%
     "50":
       administrative: yes 
       addresses:
-        - 192.168.15.254
+        - 172.17.191.253
   routes: {}
 
   linecards: 
@@ -17,7 +18,7 @@ nexus:
       rate: 10000000000
       ports: 
         1:
-          uid: gw
+          uid: ul-grid5000-sw01
           port: Gi5/2
           kind: router
         2:
@@ -125,14 +126,6 @@ nexus:
         38:
         39:
         40:
-    2: 
-      naming_pattern: "mgmt%PORT%"
-      rate: 1000000000
-      ports:
-        0: 
-          uid: gw
-          kind: router
-          port: Gi1/46
   channels: 
     naming_pattern: Po%CHANNELID%
 
