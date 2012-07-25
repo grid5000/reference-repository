@@ -1,3 +1,4 @@
+#
 require 'fileutils'
 require 'json'
 require 'logger'
@@ -97,7 +98,7 @@ namespace :deadnodes do
     phoenix = []
     @api_sites.each do |site|
       reg = /^([^-]+)-(\d+)/
-      site.status["nodes"].sort{|a,b| 
+      site.status["nodes"].sort{|a,b|
         a_cluster,a_id = a[0].scan(reg).flatten
         b_cluster,b_id = b[0].scan(reg).flatten
         [a_cluster,a_id.to_i] <=> [b_cluster,b_id.to_i]
