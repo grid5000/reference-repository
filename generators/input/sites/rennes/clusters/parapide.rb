@@ -105,6 +105,12 @@ site :rennes do |site_uid|
           :version          => "MT25418",
           :mac              => lookup('parapide', node_uid, 'network_interfaces', 'ib1', 'guid')
         }]
+addressing_plan({
+            :kavlan => "10.24.0.0/14",
+            :virt   => "10.156.0.0/14"
+            })
+
+
         bios({
            :version      => lookup('parapide', node_uid, 'bios', 'version'),
            :vendor       => lookup('parapide', node_uid, 'bios', 'vendor'),
