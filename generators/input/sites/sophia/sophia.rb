@@ -10,5 +10,6 @@ site :sophia do |site_uid|
   security_contact "sophia-staff@lists.grid5000.fr"
   user_support_contact "sophia-staff@lists.grid5000.fr"
   compilation_server false
-
+  kavlan_ip_range "10.32.0.0/14"
+  virt_ip_range "10.164.0.0/14"
 end
