@@ -96,10 +96,6 @@ site :rennes do |site_uid|
           :vendor           => "Tyan",
           :version          => "M3296"
         }]
-        addressing_plan({
-                    :kavlan => "10.24.0.0/14",
-                    :virt   => "10.156.0.0/14"
-                   })
         bios({
            :version      => lookup('paradent', node_uid, 'bios', 'version'),
            :vendor       => lookup('paradent', node_uid, 'bios', 'vendor'),
