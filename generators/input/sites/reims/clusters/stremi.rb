@@ -90,6 +90,12 @@ site :reims do |site_uid|
            :driver           => "igb",
            :mac              => lookup('stremi', node_uid, 'network_interfaces', 'eth3', 'mac')
          }]
+ addressing_plan({
+            :kavlan => "10.36.0.0/14",
+            :virt   => "10.168.0.0/14"
+             })
+
+
        end
      end
   end
