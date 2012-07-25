@@ -80,11 +80,6 @@ site :toulouse do |site_uid|
             :switch => '<unknown>'
           }
         ]
-        addressing_plan({
-              :kavlan => "10.28.0.0/14",
-              :virt   => "10.160.0.0/14"
-               })
-
       end
     end
   end
