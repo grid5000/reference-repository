@@ -103,10 +103,6 @@ site :luxembourg do |site_uid|
           :ip               => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'ip'),
           :mac              => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'mac')
         }]
-addressing_plan({
-                :kavlan => "10.40.0.0/14",
-                :virt   => "10.172.0.0/14"
-                 })
         bios({
            :version      => lookup('granduc', node_uid, 'bios', 'version'),
            :vendor       => lookup('granduc', node_uid, 'bios', 'vendor'),
