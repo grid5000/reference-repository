@@ -10,6 +10,6 @@ site :lille do |site_uid|
   security_contact "lille-staff@lists.grid5000.fr"
   user_support_contact "lille-staff@lists.grid5000.fr"
   compilation_server false
-  kavlan_plage "10.8.0.0/14"
-  virt_plage "10.136.0.0/14"
+  kavlan_ip_range "10.8.0.0/14"
+  virt_ip_range "10.136.0.0/14"
 end
