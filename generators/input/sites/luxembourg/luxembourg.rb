@@ -10,4 +10,6 @@ site :luxembourg do |site_uid|
   security_contact "luxembourg-staff@lists.grid5000.fr"
   user_support_contact "luxembourg-staff@lists.grid5000.fr"
   compilation_server false
+  kavlan_plage "10.40.0.0/14"
+  virt_plage "10.172.0.0/14"
 end
