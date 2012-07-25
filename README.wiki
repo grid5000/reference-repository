@@ -1,4 +1,5 @@
-{{Maintainer|Cyril Rohr}}
+{{See also|[[Network_Description]] &#124; [[Reference_Repository]] &#124; [[OAR_properties_2.0]]}}
+{{Maintainer|Sebastien Badia}}
 {{Author|Cyril Rohr}}
 {{Status|Draft}}
 {{Portal|Admin}}
@@ -18,7 +19,7 @@ The general overview of the workflow between git repositories is as follows:
     ADMIN REPOSITORY <-- pull/push -->  MASTER REPOSITORY
                                                |
                                                |
-                                              pull 
+                                              pull
                                          (every minute)
                                               / \
                                              /   \
@@ -26,18 +27,17 @@ The general overview of the workflow between git repositories is as follows:
                    API REPOSITORY SITE X <--|     |--> API REPOSITORY SITE Y
 
 Each site administrator must first clone the remote MASTER REPOSITORY located on the git.grid5000.fr server and store it on a local machine (this is what I call the ADMIN REPOSITORY and has to be done once):
-
-  g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git
+{{Term|location=g5kadminlaptop|cmd=<code class="command">git</code> clone <code class="file">ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git</code>}}
 
 When there is a need for change, the site administrator PULLs from the MASTER REPOSITORY to get the latest changes:
 
-  g5kadmin@host:/somewhere/reference-repository$ git pull
+{{Term|location=reference-repo|cmd=<code class="command">git</code> pull}}
 
 Then she manually adds/edits/removes the raw JSON files or uses the generator (more on that later). When she's done, she COMMITs her changes and PUSHes them to the MASTER REPOSITORY:
 
   ... editing ...
-  g5kadmin@host:/somewhere/reference-repository$ git commit -a -m "list of modifications"
-  g5kadmin@host:/somewhere/reference-repository$ git push
+{{Term|location=reference-repo|cmd=<code class="command">git</code> commit -a -m "<code class="replace">list of modifications</code>"}}
+{{Term|location=reference-repo|cmd=<code class="command">git</code> push}}
 
 Finally, these changes are automatically replicated every minute to each API REPOSITORY (one per site), that are used by the Reference API.
 
@@ -46,59 +46,63 @@ Finally, these changes are automatically replicated every minute to each API REP
 == Getting started ==
 First, clone the remote MASTER REPOSITORY if it is not already done:
 
-  g5kadmin@host:/somewhere$ git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git
-
+{{Term|location=g5kadminlaptop|cmd=<code class="command">git</code> clone <code class="file">ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git</code>}}
 From the newly created reference-repository folder, run the following command to install the required dependencies:
+=== RVM Users ===
+{{Term|location=reference-repo|cmd=<code class="command">rvm</code> use 1.8.7}}
+{{Term|location=reference-repo|cmd=<code class="command">rvm</code> create gemset reference-repository}}
+{{Term|location=reference-repo|cmd=<code class="command">rvm</code> gemset use reference-repository}}
+=== Others Users ===
+{{Term|location=reference-repo|cmd=<code class="command">bundle</code> install}}
 
-  g5kadmin@host:/somewhere/reference-repository$ bundle install
-
-Right now, the easiest way to get started is to look at some existing input files in the "generators/input" directory. There you can see how you can define sites, clusters, nodes and environments programmatically. 
-Then you may create a new input file or change an existing one and run it in simulation mode:
-
-  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/*.rb -s
-
-or, if you want to explicitly specify the input files:
-
-  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/input-file1.rb generators/input/input-file2.rb -s
-
-For more information about the available options and usage of the <code>grid5000</code> generator, run:
-
-  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 --help
-
-You may also use the rake task available (run <code>$ rake -D</code> to see the list of available tasks):
-
-  g5kadmin@host:/somewhere/reference-repository$ rake g5k:generate
+== g5k-generator ==
+Right now, the easiest way to get started is to look at some existing input files in the "generators/input" directory. There you can see how you can define sites, clusters, nodes and environments programmatically.
+Then you may create a new input file or change an existing one and run it in simulation mode: (run <code class="command">rake -T</code> to see the list of available tasks):
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> g5k:generate DRY=yes}}
 
 Your changes won't be applied but you'll see what would have been changed. Thus, the simulation mode is useful to review your changes before committing and check the ruby syntax of the input files.
 
-When you are happy with your changes, you can then run the command without the -s flag:
-
-  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/*.rb
+When you are happy with your changes, you can then run the command without the DRY flag:
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> g5k:generate SITE=*}}
 
 Please be aware that config files (YAML format) may be passed on the command line, so that the values can be used in the input files via the <code>lookup(config_filename, key)</code> function. To tell the generator to include one or more config files, you must pass them in your command arguments:
 
-  g5kadmin@host:/somewhere/reference-repository$ ./generators/grid5000 generators/input/*.rb generators/input/*.yaml
-
-{{Note|text=Note that the extension of config files MUST be <code>.yaml</code> or <code>.yml</code>, otherwise they won't be included.}}
-
 Finally, commit your changes with a meaningful message in ENGLISH (you SHOULD first review the changes that will be committed by running the <code>git diff</code> command) and push them immediately to the MASTER REPOSITORY:
-  
-  g5kadmin@host:/somewhere/reference-repository$ git commit -a -m "[<code class="replace">TAGS</code>] message"
+{{Term|location=reference-repo|cmd=<code class="command">git</code> commit -a -m "[<code class="replace">TAGS</code>] message"}}
 
-{{Note|text=<code>TAGS</code> is a comma-separated list of tags (e.g. <code class="replace">[rennes,lyon]</code>) that add parseable semantics to the commit message.}}
-
-  g5kadmin@host:/somewhere/reference-repository$ git push
+{{Note|text=<code class="replace">TAGS</code> is a comma-separated list of tags (e.g. <code class="replace">[rennes,lyon]</code>) that add parseable semantics to the commit message.}}
+{{Term|location=reference-repo|cmd=<code class="command">git</code> push}}
 
 == Synchronizing the OAR database ==
 As of 2010/09/08, a synchronization task has been added that allows you to generate the diff between 2 commits (not necessarily consecutive).
 
 Once you've committed your changes, run the <code>oar:generate</code> rake task to generate the corresponding oaradmin lines (run <code>$ rake -D</code> to see the list of available tasks):
+{{Term|location=g5kadminlaptop|cmd=<code class="command">rake</code> oar:generate -s FROM=<PREVIOUS-COMMIT-ID> TO=<LATEST-COMMIT-ID>}}
 
-  g5kadmin@host:/somewhere/reference-repository$ rake oar:generate -s FROM=<PREVIOUS-COMMIT-ID> TO=<LATEST-COMMIT-ID>
-
-By default, <code>TO</code> is set to <code>HEAD</code>.
+By default, <code class="replace">TO</code> is set to <code class="replace">HEAD</code>.
 
 The oaradmin lines are sent to STDOUT, the logging data to STDERR.
+
+== Environments generator ==
+To generate the environments descriptions of Grid5000 a rake task is available
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> env:generate DRY=<code class="replace">yes</code> ENV_NAME=<code class="replace">lenny-x64-base-2.5.rb</code>}}
+
+
+== Manage deadnodes ==
+=== Deadnodes to fix ===
+Check the comments of nodes, (comment if dead, 'ok' il alive).
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> deadnodes:tofix SITE=<code class="replace">nancy</code>}}
+
+=== Deadnodes reasons ===
+Check comments of nodes (including phoenix).
+
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> deadnodes:reasons SITE=<code class="replace">reims</code>}}
+ I, [2012-07-25T17:05:58.997802 #8056]  INFO -- : Node 'stremi-14.reims.grid5000.fr' is dead because 'Attente d une intervention de HP : Soucis BIOS'
+
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> deadnodes:reasons SITE=<code class="replace">sophia</code>}}
+ I, [2012-07-25T17:06:57.985664 #8081]  INFO -- : Node 'sol-36.sophia.grid5000.fr' is dead because '[phoenix] Could not respawn this node at Wed Jul 25 12:30:02 +0200 2012'
+ I, [2012-07-25T17:06:57.985794 #8081]  INFO -- : Node 'sol-40.sophia.grid5000.fr' is dead because '[phoenix] Could not respawn this node at Wed Jul 25 12:30:01 +0200 2012'
+ I, [2012-07-25T17:06:57.986003 #8081]  INFO -- : Node 'suno-21.sophia.grid5000.fr' is dead because 'Chassis is on, but the node never get up. No dhcp request received.'
 
 == Filling the reference - Guidelines ==
 
@@ -128,10 +132,11 @@ After several discussions inside the PS team, we have fixed some attributes. All
 ::* ['''mounted''']''<font color="#FF0000">(if '''mountable'''==true)</font>'': <code>true</code> if the production environment mounts, configures this interface
 :::* ['''network_address''']''<font color="#FF0000">(if '''mounted'''==true or '''management'''==true)</font>'': the DNS entry of the machine by this interface
 :::* ['''device''']''<font color="#FF0000">(if '''mounted'''==true)</font>'': name of this interface in the production environment
-:* ['''ip''']''<font color="#FF0000">(if '''enabled'''==true)</font>'': the IP of this interface
+:* ['''ip''']''<font color="#FF0000">(if '''enabled'''==true)</font>'': the IP of this interface.
+::*''<font color="#FF0000">(if '''enabled'''==true AND '''ip''' is empty)</font>'' : The dhcp provides no ip adress for this interface
 :* ['''ip6''']: the IPv6 of this interface, for future use...
+* '''bridged''': is the interface used for the KVM bridge in the production environment ? (true | false)
 
-[ EDIT - 2010-09-13 ] No contestation, no more votes for the alternate propositions and no other entry proposed => the base version is validated.
 
 ==== script reaching IP/MAC addresses of cluster ====
 
@@ -160,7 +165,7 @@ interfaces.each do |interface|
       guid_prefix = "20:00:55:00:41:"
     end
     guid_part2 = File.read(File.join('/sys/class/net', interface, 'address')).chomp
-    infiniband[:"#{interface}"][:guid] = guid_prefix + guid_part2.split(":")[5..20].join(":") 
+    infiniband[:"#{interface}"][:guid] = guid_prefix + guid_part2.split(":")[5..20].join(":")
   else
     exit 1
   end
@@ -188,5 +193,5 @@ Otherwise you can set them by issuing:
   $ git config --global user.email johndoe@example.com
 
 === My commit has been rejected, why ? ===
-Since users will make queries such as: "give me the description of that site at this date", the time between the date of the commit and the effective replication of the changes to the APIs must be as low as possible. 
+Since users will make queries such as: "give me the description of that site at this date", the time between the date of the commit and the effective replication of the changes to the APIs must be as low as possible.
 That's why, right after your commit, you should push your changes to the remote MASTER REPOSITORY. Please note that commits whose committed date is older than 60 seconds will be rejected (if you encounter an error, check that your system clock is correctly synchronized with a time server).
