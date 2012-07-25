@@ -119,11 +119,7 @@ site :nancy do |site_uid|
           :pdu => lookup('griffon', node_uid, 'pdu', 'pdu_name'),
           :pdu_port => lookup('griffon', node_uid, 'pdu', 'pdu_position'),
 	})
-  addressing_plan({
-        :kavlan => "10.16.0.0/14",
-        :virt => "10.144.0.0/14"
-  })
-	 bios({
+	bios({
 	  :version	=> lookup('griffon', node_uid, 'bios', 'version'),
 	  :vendor	=> lookup('griffon', node_uid, 'bios', 'vendor'),
 	  :release_date	=> lookup('griffon', node_uid, 'bios', 'release_date'),

@@ -137,10 +137,6 @@ site :nancy do |site_uid|
           :pdu => lookup('graphene', node_uid, 'pdu', 'pdu_name'),
           :pdu_port => lookup('graphene', node_uid, 'pdu', 'pdu_position')
         })
-        addressing_plan({
-          :kavlan => "10.16.0.0/14",
-          :virt   => "10.144.0.0/14"
-        })
         bios({
           :version	=> lookup('graphene', node_uid, 'bios', 'version'),
           :vendor	=> "American Megatrends Inc.",
