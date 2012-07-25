@@ -125,12 +125,6 @@ site :bordeaux do |site_uid|
 	  :management 		=> true,
 	  :device 		=> "bmc"
 	}]
-addressing_plan({
-            :kavlan => "10.0.0.0/14",
-            :virt   => "10.128.0.0/14"
-             })
-
-
         bios({
           :version      	=> lookup('borderline', node_uid, 'bios', 'version'),
           :vendor       	=> lookup('borderline', node_uid, 'bios', 'vendor'),

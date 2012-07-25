@@ -10,5 +10,6 @@ site :bordeaux do |site_uid|
   security_contact "bordeaux-staff@lists.grid5000.fr"
   user_support_contact "bordeaux-staff@lists.grid5000.fr"
   compilation_server false
-
+  kavlan_plage "10.0.0.0/14"
+  virt_plage "10.128.0.0/14"
 end
