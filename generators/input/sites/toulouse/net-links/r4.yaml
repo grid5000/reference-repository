@@ -1,0 +1,28 @@
+---
+r4:
+  model: Cisco 7606
+  kind: switch
+  site: toulouse
+  snmp_community: public
+  routes: {}
+
+  vlans:
+    naming_pattern: Vlan%VLANID%
+  linecards:
+    2:
+      kind: router
+      naming_pattern: Te%LINECARD%/%PORT%
+      rate: 1000000000
+      ports:
+        1: gw-g5k
+    3:
+      kind: switch
+      naming_pattern: Te%LINECARD%/%PORT%
+      rate: 1000000000
+      ports:
+        1: bb1
+        2: r1
+        3: r2
+        4: r3
+  channels:
+    naming_pattern: Po%CHANNELID%
