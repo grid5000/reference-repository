@@ -8,18 +8,6 @@ ROOT_DIR = File.expand_path File.dirname(__FILE__)
 LIB_DIR = File.join(ROOT_DIR, "generators", "lib")
 $LOAD_PATH.unshift(LIB_DIR) unless $LOAD_PATH.include?(LIB_DIR)
 
-REFERENCE_REPOSITORY_DIR = File.expand_path(File.dirname(__FILE__))
-
-# Import dependency rake file
-IMPORTED_RAKEFILES = Array.new
-IMPORTED_RAKEFILES.push File.expand_path(__FILE__)
-%w(weathermap).each do |dependency|
-  Dir.glob(File.expand_path(File.join(REFERENCE_REPOSITORY_DIR,"..",dependency,"Rakefile"))).each do |rakefile|
-    import rakefile unless IMPORTED_RAKEFILES.include? rakefile
-  end
-end
-
-
 require 'grid5000'
 
 task :environment do
@@ -230,15 +218,6 @@ namespace :netlinks do
 #    puts command
     sh command
   end
-  desc "Display network links description amongst network equipments."
-  task :display do
-    host=ENV["HOST"]
-    abort "You must provide the HOST=" if host.nil?
-    cmd = File.join(WEATHERMAP_DIR,"bin","weathermap-app.rb")
-    cmd += " --host '#{host}' --action display"
-    sh cmd
-  end
-
 end
 namespace :env do
   desc "Generates environment JSON files .\nUse DRY=yes to simulate the execution. "
@@ -253,27 +232,33 @@ namespace :env do
     sh command
   end
 end
-
-=begin
-task :mm => [:environment,:hosts] do
-  host,site = @host.scan(/(\S+)\.(\S+)/).flatten
-  root_dir_input = "#{ROOT_DIR}/generators/input"
-  Dir.glob("#{root_dir_input}/#{site}*").each do |file|
-    filename = File.basename(file)
-    if ((scan = filename.scan(/(\S+)-(\S+)\.(rb|yaml)/)).size > 0)
-      site,cluster = scan.flatten
-      cmd = "mkdir -p #{root_dir_input}/#{site}/clusters"
-      cmd += " && mv #{file} #{root_dir_input}/#{site}/clusters/#{cluster}#{File.extname(filename)}"
-      sh cmd
-#      puts cmd
-    elsif ((scan = filename.scan(/(\S+)\.rb/)).size > 0)
-      site = scan.first.first
-      cmd = "mkdir -p #{root_dir_input}/#{site}/clusters"
-      cmd += " && mv #{file} #{root_dir_input}/#{site}/#{site}.rb"
-      sh cmd
-    end
-
+namespace :weathermap do
+  @weathermap_options = ""
+  task :hosts do
+    @weathermap_site = ENV['SITE']
+    @weathermap_host = ENV['HOST']
+    abort "You must provide the SITE= " if @weathermap_site.nil?
+    abort "You must provide the HOST= name (uid) in its site " if @weathermap_host.nil? or @weathermap_host.match(/\.grid5000\.fr/) != nil
   end
-
+  task :execute => ["weathermap:hosts"]  do
+    cmd = "bundle exec weathermap"
+    cmd += " --site '#{@weathermap_site}' --host '#{@weathermap_host}' --api-path #{ROOT_DIR} #{@weathermap_options}"
+    sh cmd
+  end
+  desc "Create weathermaps for host HOST without data."
+  task :testing => ["weathermap:hosts"]  do
+    @weathermap_options.replace("--action write --use-cacti no")
+    Rake::Task['weathermap:execute'].invoke
+  end
+  desc "Create weathermaps for host HOST with RRD from cacti."
+  task :production => ["weathermap:hosts"]  do
+    @weathermap_options.replace("--action write --use-cacti yes")
+    Rake::Task['weathermap:execute'].invoke
+  end
+  desc "Display network links description amongst network equipments."
+  task :display do
+    @weathermap_options.replace("--action display")
+    Rake::Task['weathermap:execute'].invoke
+  end
 end
-=end
+

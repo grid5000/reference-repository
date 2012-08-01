@@ -15,7 +15,7 @@ aspen:
   linecards: 
     2: 
       naming_pattern: "%LINECARD%:%PORT%"
-      kind: node
+      kind: switch
       rate: 1000000000
       ports: 
         1:
@@ -56,33 +56,37 @@ aspen:
           port: 0/3
         23:
           uid: voltaire-1
-          kind: switch
         24:
           uid: voltaire-2
-          kind: switch
         32:
           uid: grimage-9
           port: bmc
+          kind: node
         33:
           uid: grimage-10
           port: bmc
+          kind: node
     3: 
       naming_pattern: "%LINECARD%:%PORT%"
-      kind: other
+      kind: node
       rate: 1000000000
       ports: 
         1:
           uid: digmgt
           port: eth0
+          kin: other
         2:
           uid: digmgt
           port: eth1
+          kin: other
         3:
           uid: digmgt
           port: eth2
+          kin: other
         4:
           uid: digmgt
           port: eth3
+          kin: other
         5:
           uid: grimage-9
           port: eth0
@@ -181,7 +185,7 @@ aspen:
           port: eth1
     4: 
       naming_pattern: "%LINECARD%:%PORT%"
-      kind: other
+      kind: node
       rate: 1000000000
       ports: 
         1: 
@@ -244,9 +248,11 @@ aspen:
         23:
           uid: digmgt
           port: eth4
+          kin: other
         24: 
           uid: alpes
           port: eth0
+          kin: other
         25: 
           uid: grimage-1
           port: eth0

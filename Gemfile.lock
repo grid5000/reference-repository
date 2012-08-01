@@ -1,13 +1,50 @@
+GIT
+  remote: ssh://g5kadmin@git.grid5000.fr/srv/git/repos/cacti-play
+  revision: 1912fcc73ba790370b62d8b9792a35485bb498f6
+  tag: 2.4
+  specs:
+    cacti-play (2.4)
+      net-admin-common (>= 2.2)
+
+GIT
+  remote: ssh://g5kadmin@git.grid5000.fr/srv/git/repos/net-admin-common
+  revision: a0335cc1d5cb7fcd79b6fc3fb11d5f0bc34bd596
+  tag: 2.2
+  specs:
+    net-admin-common (2.2)
+      net-ssh (>= 2.3.0)
+      net-ssh-multi (>= 1.1)
+      rest-client (>= 1.6.7)
+
+GIT
+  remote: ssh://g5kadmin@git.grid5000.fr/srv/git/repos/weathermap
+  revision: 288a5dd149ba01de7a70207ecc992a0a3ae43ca3
+  tag: 5.5
+  specs:
+    weathermap (5.5)
+      cacti-play (>= 2.3)
+      interpolator (>= 0.15)
+      ipaddress (>= 0.8.0)
+      json (>= 1.7.0)
+      net-admin-common (>= 2.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.8)
     backports (2.5.1)
     bond (0.4.2)
+    interpolator (0.15)
+    ipaddress (0.8.0)
     json (1.7.0)
     json_pure (1.5.1)
     mime-types (1.18)
-    net-ssh (2.1.0)
+    net-ssh (2.5.2)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
+    net-ssh-multi (1.1)
+      net-ssh (>= 2.1.4)
+      net-ssh-gateway (>= 0.99.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -45,6 +82,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cacti-play!
   json_pure (~> 1.5)
-  net-ssh
+  net-admin-common!
   restfully (= 1.0.5)
+  weathermap!
