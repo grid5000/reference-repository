@@ -15,6 +15,14 @@ ul-grid5000-sw02:
   routes: {}
 
   linecards: 
+    0: 
+      naming_pattern: "mgmt%LINECARD%"
+      rate: 100000000
+      ports: 
+        1:
+          uid: ul-grid5000-sw01
+          port: Gi1/46
+          kind: router
     1: 
       naming_pattern: "Eth%LINECARD%/%PORT%"
       rate: 10000000000
