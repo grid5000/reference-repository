@@ -94,7 +94,7 @@ site :grenoble do |site_uid|
           :vendor => "Intel",
           :version => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)",
           :driver => "e1000e",
-          :switch_name => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'switch_name'),
+          :switch => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'switch_name'),
           :switch_port => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'switch_port')
         },
         {

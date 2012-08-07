@@ -82,7 +82,9 @@ site :grenoble do |site_uid|
           :mac => lookup('edel', node_uid, 'network_interfaces', 'eth0', 'mac'),
           :vendor => "Intel",
           :version => "82576 Gigabit Network Connection",
-          :driver => "igb"
+          :driver => "igb",
+          :switch => lookup('edel', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
+          :switch_port => lookup('edel', node_uid, 'network_interfaces', 'eth0', 'switch_port')
         },
         {
           :interface => 'Ethernet',
