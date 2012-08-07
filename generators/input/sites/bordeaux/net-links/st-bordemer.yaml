@@ -6,21 +6,18 @@ st-bordemer:
   snmp_community: public
   vlans: 
     naming_pattern: Vlan%VLANID%
+    "100": 
+      administrative: yes
+      addresses: 
+        - 172.16.15.200
   routes: {}
 
   linecards: 
-    0: 
-      naming_pattern: "%LINECARD%/%PORT%"
-      kind: router
-      rate: 10000000000
-      ports: 
-        0: gw-bdx
     1: 
-      naming_pattern: "%LINECARD%/%PORT%"
-      kind: switch
+      naming_pattern: "Gi%LINECARD%/0/%PORT%"
+      kind: router
       rate: 1000000000
       ports: 
-        1: sbordeplage1
-        2: sbordeplage2
+        25: gw-bdx
   channels: 
     naming_pattern: Po%CHANNELID%
