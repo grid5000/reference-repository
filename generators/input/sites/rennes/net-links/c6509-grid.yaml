@@ -4,10 +4,14 @@ c6509-grid:
   kind: router
   site: rennes
   snmp_community: privkavlan
-  routes: {}
-
   vlans: 
     naming_pattern: Vlan%VLANID%
+    "100": 
+      administrative: yes
+      addresses: 
+        - 172.16.111.254
+  routes: {}
+
   linecards: 
     2: 
       kind: node
