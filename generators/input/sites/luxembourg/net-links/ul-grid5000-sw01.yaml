@@ -1,69 +1,351 @@
---- 
-ul-grid5000-sw01: 
+---
+ul-grid5000-sw01:
   model: cisco WS-C6506-E
   kind: router
   site: luxembourg
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
-    "100": 
+    "30":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.16.191.254
+    "10":
+      administrative: yes
+      addresses:
+        - 172.17.191.254
+    "50":
+      administrative: yes
+      addresses:
+        - 192.168.15.254
+    "103":
+      administrative: yes
+      addresses:
+        - 192.168.69.1
+    "550":
+      administrative: yes
+      addresses:
+        - 192.168.4.21
   routes: {}
 
-  linecards: 
-    1: 
+  linecards:
+    1:
       naming_pattern: Gi%LINECARD%/%PORT%
-      kind: node
       rate: 1000000000
-      port: bmc
-      ports: 
-        2: 
-          uid: granduc-2
-        1: 
+      ports:
+        1:
           uid: granduc-1
-        8: granduc-8
-        7: granduc-7
-        5: granduc-5
-        19: granduc-19
-        10: 
+          port: bmc
+          kind: node
+        2:
+          uid: granduc-2
+          port: bmc
+          kind: node
+        3:
+          uid: granduc-3
+          port: bmc
+          kind: node
+        4:
+          uid: granduc-4
+          port: bmc
+          kind: node
+        5:
+          uid: granduc-5
+          port: bmc
+          kind: node
+        6:
+          uid: granduc-6
+          port: bmc
+          kind: node
+        7:
+          uid: granduc-7
+          port: bmc
+          kind: node
+        8:
+          uid: granduc-8
+          port: bmc
+          kind: node
+        9:
+          uid: granduc-9
+          port: bmc
+          kind: node
+        10:
           uid: granduc-10
-        20: granduc-20
-        9: granduc-9
-        15: granduc-15
-        14: granduc-14
-        11: granduc-11
-        12: granduc-12
-        16: granduc-16
-        13: granduc-13
-        17: granduc-17
-        6: granduc-6
-        3: granduc-3
-        21: granduc-21
-        22: granduc-22
-        18: granduc-18
-        46: 
+          port: bmc
+          kind: node
+        11:
+          uid: granduc-11
+          port: bmc
+          kind: node
+        12:
+          uid: granduc-12
+          port: bmc
+          kind: node
+        13:
+          uid: granduc-13
+          port: bmc
+          kind: node
+        14:
+          uid: granduc-14
+          port: bmc
+          kind: node
+        15:
+          uid: granduc-15
+          port: bmc
+          kind: node
+        16:
+          uid: granduc-16
+          port: bmc
+          kind: node
+        17:
+          uid: granduc-17
+          port: bmc
+          kind: node
+        18:
+          uid: granduc-18
+          port: bmc
+          kind: node
+        19:
+          uid: granduc-19
+          port: bmc
+          kind: node
+        20:
+          uid: granduc-20
+          port: bmc
+          kind: node
+        21:
+          uid: granduc-21
+          port: bmc
+          kind: node
+        22:
+          uid: granduc-22
+          port: bmc
+          kind: node
+        23:
+          uid: nfs
+          kind: other
+          port: eth1
+        24:
+          uid: granduc-1
+          port: eth1
+          kind: node
+        25:
+          uid: granduc-2
+          port: eth1
+          kind: node
+        26:
+          uid: granduc-3
+          port: eth1
+          kind: node
+        27:
+          uid: granduc-4
+          port: eth1
+          kind: node
+        28:
+          uid: granduc-5
+          port: eth1
+          kind: node
+        29:
+          uid: granduc-6
+          port: eth1
+          kind: node
+        30:
+          uid: granduc-7
+          port: eth1
+          kind: node
+        31:
+          uid: granduc-8
+          port: eth1
+          kind: node
+        32:
+          uid: granduc-9
+          port: eth1
+          kind: node
+        33:
+          uid: granduc-10
+          port: eth1
+          kind: node
+        34:
+          uid: granduc-11
+          port: eth1
+          kind: node
+        35:
+          uid: cronos
+          port: eth1
+          kind: other
+        37:
+          uid: cronos
+          port: eth2
+          kind: other
+        46:
           uid: ul-grid5000-sw02
-          kind: switch
           port: mgmt0
-    5: 
-      naming_pattern: Te%LINECARD%/%PORT%
-      kind: router
-      rate: 10000000000
-      ports: 
-        2: 
-          naming_pattern: Gi%LINECARD%/%PORT%
-          uid: ul-grid5000-sw02
           kind: switch
-          port: Eth1/1
-        4: renater-luxembourg
-    2: 
+        48:
+    2:
       naming_pattern: Gi%LINECARD%/%PORT%
-      kind: other
       rate: 1000000000
-      ports: 
-        44: cronos
-        46: nfs
-  channels: 
+      ports:
+        1:
+          uid: granduc-1
+          port: eth0
+          kind: node
+        2:
+          uid: granduc-2
+          port: eth0
+          kind: node
+        3:
+          uid: granduc-3
+          port: eth0
+          kind: node
+        4:
+          uid: granduc-4
+          port: eth0
+          kind: node
+        5:
+          uid: granduc-5
+          port: eth0
+          kind: node
+        6:
+          uid: granduc-6
+          port: eth0
+          kind: node
+        7:
+          uid: granduc-7
+          port: eth0
+          kind: node
+        8:
+          uid: granduc-8
+          port: eth0
+          kind: node
+        9:
+          uid: granduc-9
+          port: eth0
+          kind: node
+        10:
+          uid: granduc-10
+          port: eth0
+          kind: node
+        11:
+          uid: granduc-11
+          port: eth0
+          kind: node
+        12:
+          uid: granduc-12
+          port: eth0
+          kind: node
+        13:
+          uid: granduc-13
+          port: eth0
+          kind: node
+        14:
+          uid: granduc-14
+          port: eth0
+          kind: node
+        15:
+          uid: granduc-15
+          port: eth0
+          kind: node
+        16:
+          uid: granduc-16
+          port: eth0
+          kind: node
+        17:
+          uid: granduc-17
+          port: eth0
+          kind: node
+        18:
+          uid: granduc-18
+          port: eth0
+          kind: node
+        19:
+          uid: granduc-19
+          port: eth0
+          kind: node
+        20:
+          uid: granduc-20
+          port: eth0
+          kind: node
+        21:
+          uid: granduc-21
+          port: eth0
+          kind: node
+        22:
+          uid: granduc-22
+          port: eth0
+          kind: node
+        24:
+          uid: granduc-12
+          port: eth1
+          kind: node
+        25:
+          uid: granduc-13
+          port: eth1
+          kind: node
+        26:
+          uid: granduc-14
+          port: eth1
+          kind: node
+        27:
+          uid: granduc-15
+          port: eth1
+          kind: node
+        28:
+          uid: granduc-16
+          port: eth1
+          kind: node
+        29:
+          uid: granduc-17
+          port: eth1
+          kind: node
+        30:
+          uid: granduc-18
+          port: eth1
+          kind: node
+        31:
+          uid: granduc-19
+          port: eth1
+          kind: node
+        32:
+          uid: granduc-20
+          port: eth1
+          kind: node
+        33:
+          uid: granduc-21
+          port: eth1
+          kind: node
+        34:
+          uid: granduc-22
+          port: eth1
+          kind: node
+        44:
+          uid: cronos
+          port: eth0
+          kind: other
+        46:
+          uid: nfs
+          port: eth0
+          kind: other
+        48:
+    5:
+      rate: 1000000000
+      ports:
+        1:
+          naming_pattern: Gi%LINECARD%/%PORT%
+        2:
+          uid: ul-grid5000-sw02
+          port: Eth1/1
+          kind: switch
+          naming_pattern: Gi%LINECARD%/%PORT%
+        3:
+          naming_pattern: Gi%LINECARD%/%PORT%
+        4:
+          uid: renater-luxembourg
+          kind: router
+          naming_pattern: Te%LINECARD%/%PORT%
+          rate: 10000000000
+        5:
+          naming_pattern: Te%LINECARD%/%PORT%
+          rate: 10000000000
+  channels:
     naming_pattern: Po%CHANNELID%
