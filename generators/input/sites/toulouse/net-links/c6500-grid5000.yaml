@@ -8,6 +8,10 @@ c6500-grid5000:
 
   vlans: 
     naming_pattern: Vlan%VLANID%
+    "100":
+      administrative: yes
+      addresses:
+        - 172.16.127.254
   linecards: 
     1: 
       kind: switch
