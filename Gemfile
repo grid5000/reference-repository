@@ -6,11 +6,11 @@ gem "rake", ">= 0.9.2.2"
 
 gem "net-admin-common",
   :git => "ssh://g5kadmin@git.grid5000.fr/srv/git/repos/net-admin-common",
-  :tag => "2.3"
+  :tag => "2.5.2"
 gem "cacti-play",
   :git => "ssh://g5kadmin@git.grid5000.fr/srv/git/repos/cacti-play",
-  :tag => "2.6"
+  :tag => "2.7.3"
 gem "weathermap",
   :git => "ssh://g5kadmin@git.grid5000.fr/srv/git/repos/weathermap",
-  :tag => "5.7"
+  :tag => "5.7.3"
 
