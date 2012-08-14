@@ -1,0 +1,39 @@
+{
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
+  "kind": "virtual",
+  "linecards": [
+    {
+
+    },
+    {
+      "naming_pattern": "Te%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "kind": "router",
+          "port": "Te5/4",
+          "uid": "ul-grid5000-sw01"
+        }
+      ],
+      "rate": 10000000000
+    }
+  ],
+  "model": "Cisco",
+  "routes": {
+
+  },
+  "site": "luxembourg",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "renater-luxembourg",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
+  },
+  "weathermap": {
+    "use_cacti": "no"
+  }
+}

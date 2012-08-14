@@ -329,22 +329,15 @@ ul-grid5000-sw01:
         48:
     5:
       rate: 1000000000
+      naming_pattern: Gi%LINECARD%/%PORT%
       ports:
-        1:
-          naming_pattern: Gi%LINECARD%/%PORT%
         2:
           uid: ul-grid5000-sw02
           port: Eth1/1
           kind: switch
-          naming_pattern: Gi%LINECARD%/%PORT%
-        3:
-          naming_pattern: Gi%LINECARD%/%PORT%
         4:
           uid: renater-luxembourg
-          kind: router
-          naming_pattern: Te%LINECARD%/%PORT%
-          rate: 10000000000
-        5:
+          kind: virtual
           naming_pattern: Te%LINECARD%/%PORT%
           rate: 10000000000
   channels:
