@@ -5,7 +5,7 @@ ul-grid5000-sw02:
   site: luxembourg
   snmp_community: public
   weathermap: 
-    use_cacti: "no"
+    use_cacti: "yes"
   vlans: 
     naming_pattern: Vlan%VLANID%
     "50":
@@ -24,7 +24,7 @@ ul-grid5000-sw02:
           port: Gi1/46
           kind: router
     1: 
-      naming_pattern: "Eth%LINECARD%/%PORT%"
+      naming_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
       ports: 
         1:
