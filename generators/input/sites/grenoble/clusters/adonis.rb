@@ -107,10 +107,10 @@ site :grenoble do |site_uid|
           :serial       => lookup('adonis', node_uid, 'chassis', 'serial_number'),
           :name         => lookup('adonis', node_uid, 'chassis', 'product_name')
        })
-        graphics({
-          :gpu         =>  lookup('adonis', node_uid , 'graphics', 'gpu'),
-          :gpu_count   =>  lookup('adonis', node_uid, 'graphics', 'gpu_count'),
-          :gpu_model   =>  lookup('adonis', node_uid, 'graphics', 'gpu_model'),
+        gpu({
+          :gpu         =>  lookup('adonis', node_uid , 'gpu', 'gpu'),
+          :gpu_count   =>  lookup('adonis', node_uid, 'gpu', 'gpu_count'),
+          :gpu_model   =>  lookup('adonis', node_uid, 'gpu', 'gpu_model'),
            })
       end
     end
