@@ -35,8 +35,8 @@ site :luxembourg do |site_uid|
           :kernel   => "2.6.32"
         })
         storage_devices [{
-          :interface  => 'SATA',
-          :size       => 160.GB,
+          :interface  => 'SAS',
+          :size       => lookup('granduc', node_uid, 'block_devices', 'sda', 'size'),
           :driver     => "mptsas",
           :device     => "sda",
           :model      => lookup('granduc', node_uid, 'block_devices', 'sda', 'model'),
