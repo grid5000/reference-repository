@@ -90,10 +90,10 @@ site :lille do |site_uid|
            :release_date  => lookup('chirloute', node_uid, 'bios', 'release_date'),
          })
 
-         graphics({
-           :gpu   => lookup('chirloute', node_uid , 'graphics', 'gpu'),
-           :gpu_count  => lookup('chirloute', node_uid, 'graphics', 'gpu_count'),
-           :gpu_model => lookup('chirloute', node_uid, 'graphics', 'gpu_model'),
+         gpu({
+           :gpu   => lookup('chirloute', node_uid , 'gpu', 'gpu'),
+           :gpu_count  => lookup('chirloute', node_uid, 'gpu', 'gpu_count'),
+           :gpu_model => lookup('chirloute', node_uid, 'gpu', 'gpu_model'),
          })
 
       end
