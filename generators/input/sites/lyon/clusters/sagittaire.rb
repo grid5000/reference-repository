@@ -23,19 +23,33 @@ site :lyon do |site_uid|
           :cache_l1d => nil,
           :cache_l2 => 1.MiB
         })
-        main_memory({
-          :ram_size => 2.GiB, # bytes
-          :virtual_size => nil
-        })
+        if (i<69) then
+          main_memory({
+            :ram_size => 2.GiB, # bytes
+            :virtual_size => nil
+          })
+        else
+          main_memory({
+            :ram_size => 16.GiB, # bytes
+            :virtual_size => nil
+          })
+        end
         operating_system({
           :name => "Debian",
           :release => "6.0",
           :version => nil,
           :kernel => "2.6.32"
         })
-        storage_devices [
-          {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
-        ]
+        if (i<69) then
+          storage_devices [
+            {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
+          ]
+        else
+          storage_devices [
+            {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"},
+            {:interface => 'SCSI', :size => 73.GB, :driver => "mptspi"}
+          ]
+        end
         network_adapters [{
           :interface => 'Ethernet',
           :rate => 1.G,
