@@ -173,9 +173,17 @@ ul-grid5000-sw01:
           uid: cronos
           port: eth1
           kind: other
+        36:
+          uid: zeus
+          port: eth0
+          kind: other
         37:
           uid: cronos
           port: eth2
+          kind: other
+        40:
+          uid: zeus
+          port: eth1
           kind: other
         46:
           uid: ul-grid5000-sw02
@@ -322,6 +330,10 @@ ul-grid5000-sw01:
           uid: cronos
           port: eth0
           kind: other
+        45:
+          uid: zeus
+          port: bmc
+          kind: other
         46:
           uid: nfs
           port: eth0
@@ -347,3 +359,8 @@ ul-grid5000-sw01:
           port: 35
         - linecard: 2
           port: 44
+    "2":
+        - linecard: 1
+          port: 36
+        - linecard: 1
+          port: 40
