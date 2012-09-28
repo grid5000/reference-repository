@@ -102,7 +102,7 @@ site :rennes do |site_uid|
            :release_date => lookup('paradent', node_uid, 'bios', 'release_date')
          })
         monitoring({
-          :wattmeter    => true,
+          :wattmeter    => false,
           :temperature  => true
         })
          #chassis({:serial_number => lookup('paradent', node_uid, 'chassis', 'serial_number')})
