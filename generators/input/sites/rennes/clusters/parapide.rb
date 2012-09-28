@@ -110,6 +110,9 @@ site :rennes do |site_uid|
            :vendor       => lookup('parapide', node_uid, 'bios', 'vendor'),
            :release_date => lookup('parapide', node_uid, 'bios', 'release_date')
          })
+        monitoring({
+          :temperature  => true
+        })
          chassis({:serial_number => lookup('parapide', node_uid, 'chassis', 'serial_number')})
       end
     end
