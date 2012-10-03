@@ -134,6 +134,9 @@ site :bordeaux do |site_uid|
 	  :serial		=> lookup('borderline', node_uid, 'chassis', 'serial_number'),
 	  :name			=> lookup('borderline', node_uid, 'chassis', 'product_name')
 	})
+    monitoring({
+      :wattmeter  => false
+    })
       end
     end
   end # cluster borderline

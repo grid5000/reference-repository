@@ -96,6 +96,9 @@ site :lille do |site_uid|
           :ip => lookup('chicon',"#{node_uid}", 'network_interfaces', 'myri0', 'ip'),
           :switch => nil
         }]
+        monitoring({
+          :wattmeter  => false
+        })
       end
     end
   end # cluster chicon

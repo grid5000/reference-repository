@@ -124,6 +124,9 @@ site :nancy do |site_uid|
 	  :vendor	=> lookup('griffon', node_uid, 'bios', 'vendor'),
 	  :release_date	=> lookup('griffon', node_uid, 'bios', 'release_date'),
 	})
+    monitoring({
+      :wattmeter  => false
+    })
       end
     end
   end # cluster griffon

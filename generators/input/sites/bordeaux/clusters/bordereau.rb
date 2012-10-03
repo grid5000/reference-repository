@@ -96,6 +96,9 @@ site :bordeaux do |site_uid|
                   :serial               => lookup('bordereau', node_uid, 'chassis', 'serial_number'),
                   :name                 => lookup('bordereau', node_uid, 'chassis', 'product_name')
                 })
+    monitoring({
+                  :wattmeter  => false
+                })      
       end
     end
   end # cluster bordereau

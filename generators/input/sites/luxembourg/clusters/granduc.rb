@@ -113,6 +113,9 @@ addressing_plan({
            :release_date => lookup('granduc', node_uid, 'bios', 'release_date')
         })
         chassis({:serial_number => lookup('granduc', node_uid, 'chassis', 'serial_number')})
+        monitoring({
+          :wattmeter  => false
+        })
       end
     end
   end

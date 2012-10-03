@@ -125,6 +125,7 @@ site :rennes do |site_uid|
            :release_date => lookup('parapluie', node_uid, 'bios', 'release_date')
          })
           monitoring({
+            :wattmeter    => false,
             :temperature  => true
           })
          chassis({:serial_number => lookup('parapluie', node_uid, 'chassis', 'serial_number')})

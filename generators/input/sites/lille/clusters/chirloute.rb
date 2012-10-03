@@ -94,7 +94,9 @@ site :lille do |site_uid|
            :gpu_count  => lookup('chirloute', node_uid, 'gpu', 'gpu_count'),
            :gpu_model => lookup('chirloute', node_uid, 'gpu', 'gpu_model'),
          })
-
+         monitoring({
+           :wattmeter  => false
+         })      
       end
     end
   end # cluster chirloute

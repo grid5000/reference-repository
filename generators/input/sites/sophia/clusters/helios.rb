@@ -134,6 +134,9 @@ site :sophia do |site_uid|
             :serial => lookup('helios', node_uid, 'chassis','serial_number'),
             :name => lookup('helios', node_uid, 'chassis','product_name'),
           })
+          monitoring({
+            :wattmeter  => false
+          })
       end
     end
   end

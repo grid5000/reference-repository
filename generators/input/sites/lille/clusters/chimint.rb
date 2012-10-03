@@ -84,6 +84,9 @@ site :lille do |site_uid|
           :ip => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'ip'),
           :switch => 'gw'
         }]
+        monitoring({
+          :wattmeter  => false
+        })
       end
     end
   end # cluster chimint

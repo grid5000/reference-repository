@@ -90,6 +90,9 @@ site :reims do |site_uid|
            :driver           => "igb",
            :mac              => lookup('stremi', node_uid, 'network_interfaces', 'eth3', 'mac')
          }]
+         monitoring({
+           :wattmeter  => true 
+         })
        end
      end
   end

@@ -81,6 +81,9 @@ site :toulouse do |site_uid|
             :switch => '<unknown>'
           }
         ]
+        monitoring({
+          :wattmeter  => false
+        })
       end
     end
   end
