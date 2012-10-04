@@ -77,7 +77,7 @@ site :grenoble do |site_uid|
           :mountable => true,
           :bridged => true,   
           :management => false,
-          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('edel', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :mac => lookup('edel', node_uid, 'network_interfaces', 'eth0', 'mac'),
           :vendor => "Intel",

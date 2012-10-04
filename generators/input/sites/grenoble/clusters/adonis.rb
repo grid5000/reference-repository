@@ -65,7 +65,7 @@ site :grenoble do |site_uid|
           :management => false,
           :vendor => 'Intel',
           :version => "Device 10c9 (rev 01)",
-          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('adonis', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :mac => lookup('adonis', node_uid, 'network_interfaces', 'eth0', 'mac'),
           :driver => "igb",
