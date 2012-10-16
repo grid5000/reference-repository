@@ -36,7 +36,7 @@ site :luxembourg do |site_uid|
         })
         storage_devices [{
           :interface  => 'SAS',
-          :size       => lookup('granduc', node_uid, 'block_devices', 'sda', 'size'),
+          :size       => lookup('granduc', node_uid, 'block_devices', 'sda', 'size').GB,
           :driver     => "mptsas",
           :device     => "sda",
           :model      => lookup('granduc', node_uid, 'block_devices', 'sda', 'model'),
