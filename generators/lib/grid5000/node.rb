@@ -45,7 +45,7 @@ module Grid5000
         h['memnode']         = properties['main_memory']['ram_size']/MiB
         h['comment']         = properties['comment'] || "OK"
         properties["gpu"]  ||= {}
-        h['gpu']             = properties['gpu']['gpu'] ? "NO" : "YES"
+        h['gpu']             = properties['gpu']['gpu'] ? "YES" : "NO"
         properties["monitoring"] ||= {}
         h['wattmeter']       = properties['monitoring']['wattmeter'] ? "YES" : "NO"
         h
