@@ -79,6 +79,10 @@ site :lyon do |site_uid|
           :ip => lookup('sagittaire',"#{node_uid}",'network_interfaces','eth1','ip'),
           :switch => 'little-ego'
         }]
+        gpu({
+          :gpu  => false
+           })
+
         monitoring({
           :wattmeter  => true
         })

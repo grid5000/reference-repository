@@ -118,6 +118,10 @@ site :grenoble do |site_uid|
           :serial       => lookup('genepi', node_uid, 'chassis', 'serial_number'),
           :name         => lookup('genepi', node_uid, 'chassis', 'product_name')
         })
+         gpu({
+           :gpu  => false
+           })
+
         monitoring({
           :wattmeter  => false
         })      

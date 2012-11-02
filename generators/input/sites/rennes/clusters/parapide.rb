@@ -110,6 +110,11 @@ site :rennes do |site_uid|
            :vendor       => lookup('parapide', node_uid, 'bios', 'vendor'),
            :release_date => lookup('parapide', node_uid, 'bios', 'release_date')
          })
+
+         gpu({
+            :gpu  => false
+             })
+
         monitoring({
           :wattmeter    => false,
           :temperature  => true

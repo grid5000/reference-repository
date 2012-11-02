@@ -81,6 +81,10 @@ site :toulouse do |site_uid|
             :switch => '<unknown>'
           }
         ]
+        gpu({
+           :gpu  => false
+            })
+
         monitoring({
           :wattmeter  => false
         })

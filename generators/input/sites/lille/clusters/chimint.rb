@@ -84,6 +84,10 @@ site :lille do |site_uid|
           :ip => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'ip'),
           :switch => 'gw'
         }]
+          gpu({
+          :gpu  => false
+           })
+
         monitoring({
           :wattmeter  => false
         })

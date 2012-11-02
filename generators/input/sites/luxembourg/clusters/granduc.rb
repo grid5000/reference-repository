@@ -112,6 +112,11 @@ addressing_plan({
            :vendor       => lookup('granduc', node_uid, 'bios', 'vendor'),
            :release_date => lookup('granduc', node_uid, 'bios', 'release_date')
         })
+        gpu({
+           :gpu  => false
+            })
+
+
         chassis({:serial_number => lookup('granduc', node_uid, 'chassis', 'serial_number')})
         monitoring({
           :wattmeter  => false

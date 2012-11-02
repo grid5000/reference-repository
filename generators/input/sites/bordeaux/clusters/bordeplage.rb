@@ -119,6 +119,11 @@ site :bordeaux do |site_uid|
 	  :serial       => lookup('bordeplage', node_uid, 'chassis', 'serial_number'),
 	  :name		=> lookup('bordeplage', node_uid, 'chassis', 'product_name')
 	})
+
+  gpu({
+    :gpu  => false
+     })
+
     monitoring({
       :wattmeter  => false
     })

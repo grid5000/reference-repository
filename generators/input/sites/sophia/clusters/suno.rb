@@ -88,6 +88,10 @@ site :sophia do |site_uid|
             :serial => lookup('suno', node_uid, 'chassis','serial_number'),
             :name => lookup('suno', node_uid, 'chassis','product_name'),
           })
+          gpu({
+            :gpu  => false
+             })
+
           monitoring({
             :wattmeter  => false
           })

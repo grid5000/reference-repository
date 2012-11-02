@@ -96,7 +96,11 @@ site :lille do |site_uid|
           :ip => lookup('chicon',"#{node_uid}", 'network_interfaces', 'myri0', 'ip'),
           :switch => nil
         }]
-        monitoring({
+          gpu({
+          :gpu  => false
+          })
+
+         monitoring({
           :wattmeter  => false
         })
       end

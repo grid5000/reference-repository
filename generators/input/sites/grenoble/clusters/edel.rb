@@ -120,6 +120,10 @@ site :grenoble do |site_uid|
           :serial       => lookup('edel', node_uid, 'chassis', 'serial_number'),
           :name         => lookup('edel', node_uid, 'chassis', 'product_name')
         })
+         gpu({
+           :gpu  => false
+             })
+
         monitoring({
           :wattmeter  => true
         })

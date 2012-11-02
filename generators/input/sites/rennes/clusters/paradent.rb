@@ -101,7 +101,10 @@ site :rennes do |site_uid|
            :vendor       => lookup('paradent', node_uid, 'bios', 'vendor'),
            :release_date => lookup('paradent', node_uid, 'bios', 'release_date')
          })
-        monitoring({
+           gpu({
+            :gpu  => false
+             })
+             monitoring({
           :wattmeter    => false,
           :temperature  => true
         })

@@ -142,6 +142,10 @@ site :nancy do |site_uid|
           :vendor	=> "American Megatrends Inc.",
           :release_date	=> lookup('graphene', node_uid, 'bios', 'release_date')
         })
+        gpu({
+          :gpu  => false
+           })
+
         if (105<=i+1 and i+1<=144) then
         monitoring({
           :wattmeter  => true

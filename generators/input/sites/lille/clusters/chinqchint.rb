@@ -96,6 +96,10 @@ site :lille do |site_uid|
           :ip => lookup('chinqchint',"#{node_uid}",'network_interfaces', 'myri0', 'ip'),
           :switch => nil
         }]
+         gpu({
+          :gpu  => false
+          })
+
         monitoring({
           :wattmeter  => false
         })      
