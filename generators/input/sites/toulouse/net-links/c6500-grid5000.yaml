@@ -12,14 +12,14 @@ c6500-grid5000:
       administrative: yes
       addresses:
         - 172.16.127.254
-  linecards: 
-    1: 
+  linecards:
+    1:
       kind: renater
       naming_pattern: Te%LINECARD%/%PORT%
       rate: 10000000000
-      ports: 
-        1: RENATER
-        2: 
+      ports:
+        1: renater-toulouse
+        2:
           kind: router
           uid: r4.toulouse.grid5000.fr
     2:
