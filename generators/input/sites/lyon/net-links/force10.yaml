@@ -1,6 +1,6 @@
----
-chris: 
-  model: Foundry
+--- 
+force10: 
+  model: Force10 S4810P
   kind: switch
   site: lyon
   snmp_community: public
@@ -9,11 +9,11 @@ chris:
   routes: {}
 
   linecards: 
-    1: 
-      naming_pattern: "%LINECARD%:%PORT%"
+    0: 
+      naming_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
       kind: node
-      rate: 100000000
-      port: bmc
+      rate: 10000000000 
+      port: eth0 
       ports: 
         1: taurus-1
         2: taurus-2
@@ -39,32 +39,24 @@ chris:
         25: hercule-25
         26: hercule-26
         27: hercule-27
-        34: 
-          uid: castor
-          kind: other
-          port: eth2 
-        35: 
-          uid: pollux
-          kind: other
-          port: eth2
         36: 
           uid: castor
           kind: other
         37: 
           uid: pollux
           kind: other
-        38: 
-          uid: nebula 
-          kind: other
-        39: 
-          uid: force10 
-          kind: switch
-          port: "1:0"
-        49: 
+        42: 
           uid: aspen-8810 
           kind: router
-          port: "4:47"
-          rate: 1000000000
+          port: "9:2"
+    1: 
+      naming_pattern: "ManagementEthernet 0/%PORT%"
+      kind: other 
+      rate: 1000000000
+      ports:
+        0: 
+          uid: chris 
+          kind: switch
+          port: "1:39"
   channels: 
     naming_pattern: Po%CHANNELID%
-

@@ -5,12 +5,9 @@
   "kind": "switch",
   "linecards": [
     {
-
-    },
-    {
       "kind": "node",
-      "naming_pattern": "%LINECARD%:%PORT%",
-      "port": "bmc",
+      "naming_pattern": "TenGigabitEthernet %LINECARD%/%PORT%",
+      "port": "eth0",
       "ports": [
         {
 
@@ -115,14 +112,10 @@
 
         },
         {
-          "kind": "other",
-          "port": "eth2",
-          "uid": "castor"
+
         },
         {
-          "kind": "other",
-          "port": "eth2",
-          "uid": "pollux"
+
         },
         {
           "kind": "other",
@@ -131,30 +124,6 @@
         {
           "kind": "other",
           "uid": "pollux"
-        },
-        {
-          "kind": "other",
-          "uid": "nebula"
-        },
-        {
-          "kind": "switch",
-          "port": "1:0",
-          "uid": "force10"
-        },
-        {
-
-        },
-        {
-
-        },
-        {
-
-        },
-        {
-
-        },
-        {
-
         },
         {
 
@@ -170,22 +139,33 @@
         },
         {
           "kind": "router",
-          "port": "4:47",
-          "rate": 1000000000,
+          "port": "9:2",
           "uid": "aspen-8810"
         }
       ],
-      "rate": 100000000
+      "rate": 10000000000
+    },
+    {
+      "kind": "other",
+      "naming_pattern": "ManagementEthernet 0/%PORT%",
+      "ports": [
+        {
+          "kind": "switch",
+          "port": "1:39",
+          "uid": "chris"
+        }
+      ],
+      "rate": 1000000000
     }
   ],
-  "model": "Foundry",
+  "model": "Force10 S4810P",
   "routes": {
 
   },
   "site": "lyon",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "chris",
+  "uid": "force10",
   "vlans": {
     "naming_pattern": "Vlan%VLANID%"
   },
