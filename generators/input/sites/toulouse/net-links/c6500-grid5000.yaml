@@ -14,18 +14,102 @@ c6500-grid5000:
         - 172.16.127.254
   linecards: 
     1: 
-      kind: switch
+      kind: renater
       naming_pattern: Te%LINECARD%/%PORT%
-      rate: 1000000000
+      rate: 10000000000
       ports: 
-        1: gw-g5k
+        1: RENATER
+        2: 
+          kind: router
+          uid: r4.toulouse.grid5000.fr
+    2:
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      ports:
+        1: pastel-81
+        2: pastel-82
+        3: pastel-83
+        4: pastel-84
+        5: pastel-85
+        6: pastel-86
+        7: pastel-87
+        8: pastel-88
+        9: pastel-89
+        10: pastel-90
+        11: pastel-91
+        12: pastel-92
+        13: pastel-93
+        14: pastel-94
+        15: pastel-95
+        16: pastel-96
+        17: pastel-97
+        18: pastel-98
+        19: pastel-99
+        20: pastel-100
+        21: pastel-121
+        22: pastel-122
+        23: pastel-123
+        24: pastel-124
+        25: pastel-125
+        26: pastel-126
+        27: pastel-127
+        28: pastel-128
+        29: pastel-129
+        30: pastel-101
+        31: pastel-102
+        32: pastel-103
+        33: pastel-104
+        34: pastel-105
+        35: pastel-106
+        36: pastel-107
+        37: pastel-108
+        38: pastel-109
+        39: pastel-110
+        40: pastel-111
+        41: pastel-112
+        42: pastel-113
+        43: pastel-114
+        44: pastel-115
+        45: pastel-116
+        46: pastel-117
+        47: pastel-118
+        48: pastel-119
     3: 
-      kind: switch
+      kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       ports: 
+        36:
+          kind: switch
+          uid: CICT
+        1: pastel-120
+        2: pastel-130
+        3: pastel-131
+        4: pastel-132
+        5: pastel-133
+        6: pastel-134
+        7: pastel-135
+        8: pastel-136
+        9: pastel-137
+        10: pastel-138
+        11: pastel-139
+        12: pastel-140
+        37: 
+          uid: spastel1-ipmi
+          port: bmc
+          kind: switch
+        45: 
+          uid: g5kservices2
+          kind: other
+        46: 
+          uid: g5kservices3
+          kind: other
+        47: 
+          uid: g5kservices1
+          kind: other
         48: 
-          uid: nfs-violette
+          uid: nfs-g5k
           kind: other
   channels: 
     naming_pattern: Po%CHANNELID%
