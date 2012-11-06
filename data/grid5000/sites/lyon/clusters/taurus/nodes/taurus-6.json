@@ -1,0 +1,132 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 12
+  },
+  "main_memory": {
+    "ram_size": 34359738368,
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": true
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "10.69.0.6",
+      "mac": "A0:36:9F:08:FB:08",
+      "management": false,
+      "model": "Intel X520 DP 10Gb DA/SFP+ Server Adapter",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "taurus-6.lyon.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "Force10",
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "BC:30:5B:EF:00:B4",
+      "management": false,
+      "model": "Intel X520 DP 10Gb DA/SFP+ Server Adapter",
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "BC:30:5B:EF:00:B4",
+      "management": false,
+      "model": "Intel Ethernet I350 QP 1Gb",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "BC:30:5B:EF:00:B5",
+      "management": false,
+      "model": "Intel Ethernet I350 QP 1Gb",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth4",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "BC:30:5B:EF:00:B6",
+      "management": false,
+      "model": "Intel Ethernet I350 QP 1Gb",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth5",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "BC:30:5B:EF:00:B7",
+      "management": false,
+      "model": "Intel Ethernet I350 QP 1Gb",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel"
+    }
+  ],
+  "operating_system": {
+    "kernel": "2.6.32",
+    "name": "Debian",
+    "release": "6.0",
+    "version": null
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": null,
+    "cache_l1i": null,
+    "cache_l2": null,
+    "clock_speed": 2300000000.0,
+    "instruction_set": "",
+    "model": "Intel Xeon",
+    "other_description": "",
+    "vendor": "Intel",
+    "version": "E5-2630"
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "interface": "SCSI",
+      "size": 556930899620.056
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "taurus-6"
+}
