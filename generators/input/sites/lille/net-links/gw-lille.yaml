@@ -1,0 +1,255 @@
+--- 
+gw-lille:
+  model: cisco
+  kind: router
+  site: lille
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+    "100": 
+      administrative: yes
+      addresses: 
+        - 192.168.159.254
+  linecards: 
+    6: 
+      kind: router
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      ports: 
+        1: labo-inria
+    1: 
+      kind: renater
+      naming_pattern: Te%LINECARD%/%PORT%
+      rate: 10000000000
+      ports: 
+        1: renater-lille
+    2: 
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      port: eth1
+      ports: 
+        27: chinqchint-27
+        11: chinqchint-11
+        33: chinqchint-33
+        17: chinqchint-17
+        6: chinqchint-6
+        39: chinqchint-39
+        34: chinqchint-34
+        1: chinqchint-1
+        12: chinqchint-12
+        29: chinqchint-29
+        18: chinqchint-18
+        40: chinqchint-40
+        24: chinqchint-24
+        2: chinqchint-2
+        13: chinqchint-13
+        30: chinqchint-30
+        8: chinqchint-8
+        7: chinqchint-7
+        19: chinqchint-19
+        41: chinqchint-5
+        25: chinqchint-25
+        14: chinqchint-14
+        3: chinqchint-3
+        9: chinqchint-9
+        31: chinqchint-31
+        42: 
+          kind: other
+          uid: chimint-srv
+          port: eth2
+        43:
+          kind: other
+          uid: caulier
+          port: eth0
+        20: chinqchint-20
+        4:  chinqchint-4
+        15: chinqchint-15
+        16: chinqchint-16
+        26: chinqchint-26
+        10: chinqchint-10
+        21: chinqchint-21
+        22: chinqchint-22
+        23: chinqchint-23
+        28: chinqchint-28
+        35: chinqchint-35
+        36: chinqchint-36
+        37: chinqchint-37
+        38: chinqchint-38
+        32: chinqchint-32
+    3: 
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      port: eth1
+      ports: 
+        27: chimint-20
+        16: chimint-10
+        5: chinqchint-45
+        33: chirloute-5
+        17: chimint-11
+        23: chimint-15
+        12: chimint-6
+        1: chinqchint-41
+        18: chimint-12
+        7: chimint-1
+        13: chimint-8
+        24: chimint-18
+        8: chimint-3
+        41: chinqchint-46
+        30: chirloute-3
+        19: chimint-13
+        14: chimint-7
+        38: chicon-5
+        25: chirloute-2
+        3: chinqchint-43
+        9: chimint-2
+        10: chimint-5
+        22: chimint-16
+        21: chimint-17
+        8: chimint-19
+        34: chicon-1
+        35: chicon-2
+        36: chicon-3
+        37: chicon-4
+        31: chirloute-6
+        20: chimint-14
+        15: chimint-9
+        4: chinqchint-44
+        26: chirloute-4
+        29: chirloute-1
+        32: chirloute-8
+        43:
+           kind: other
+           uid: fives
+           port: eth0
+
+    4: 
+      kind: switch
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      ports: 
+        27: 
+          uid: sw-admin3
+          port: Gi0/47
+        38: 
+          kind: other
+          uid: bourdon
+          port: eth0
+        33: 
+          kind: other
+          uid: zed
+          port: eth0
+        28: 
+          uid: sw-admin3
+          port: Gi0/48
+        23: 
+          uid: sw-admin1
+          port: Gi0/47
+        24: 
+          uid: sw-admin1
+          port: Gi0/48
+        29: 
+          uid: sw-admin4
+          port: Gi0/47
+        30: 
+          uid: sw-admin4
+          port: Gi0/48
+        25: 
+          uid: sw-admin2
+          port: Gi0/47
+        47: sw-admin5
+        31: 
+          kind: other
+          uid: tilt
+          port: eth0
+        26: 
+          uid: sw-admin2
+          port: Gi0/48
+        48: 
+          kind: node
+          uid: chirloute-7
+          port: eth1
+        3:
+          kind: node
+          uid: chicon-10
+          port: eth1
+        15:
+          kind: node
+          uid: chicon-12
+          port: eth1
+        7:
+          kind: node
+          uid: chicon-14
+          port: eth1
+        8:
+          kind: node
+          uid: chicon-15
+          port: eth1
+        9:
+          kind: node
+          uid: chicon-16
+          port: eth1
+        10:
+          kind: node
+          uid: chicon-17
+          port: eth1
+        15:
+          kind: node
+          uid: chicon-22
+          port: eth1
+        16:
+          kind: node
+          uid: chicon-23
+          port: eth1
+        18:
+          kind: node
+          uid: chicon-25
+          port: eth1
+        2:
+          kind: node
+          uid: chicon-9
+          port: eth1
+        1:
+          kind: node
+          uid: chicon-8
+          port: eth1
+        4:
+          kind: node
+          uid: chicon-11
+          port: eth1
+        6:
+          kind: node
+          uid: chicon-13
+          port: eth1
+        11:
+          kind: node
+          uid: chicon-18
+          port: eth1
+        12:
+          kind: node
+          uid: chicon-19
+          port: eth1
+        13:
+          kind: node
+          uid: chicon-20
+          port: eth1
+        14:
+          kind: node
+          uid: chicon-21
+          port: eth1
+        17:
+          kind: node
+          uid: chicon-24
+          port: eth1
+        19:
+          kind: node
+          uid: chicon-26
+          port: eth1
+        32:
+          kind: other
+          uid: jiminy
+  channels: 
+    naming_pattern: Po%CHANNELID%
