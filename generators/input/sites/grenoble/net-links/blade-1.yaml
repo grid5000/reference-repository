@@ -15,11 +15,17 @@ blade-1:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: router
       rate: 1000000000
-      ports: 
-        1: 
+      ports:
+        1:
           uid: gw-grenoble
           port: "2:1"
-    1: 
+        2:
+          uid: gw-grenoble
+          port: "2:2"
+        3:
+          uid: gw-grenoble
+          port: "2:3"
+    1:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
