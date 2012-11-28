@@ -1,11 +1,15 @@
 --- 
 force10: 
-  model: cisco
+  model: Force10 S4810
   kind: switch
   site: lyon
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
+    "1":
+      administrative: yes
+      addresses:
+        - 10.69.143.253
   routes: {}
 
   linecards: 
@@ -31,14 +35,14 @@ force10:
         14: taurus-14
         15: taurus-15
         16: taurus-16
-        18: orion-18
-        19: orion-19
-        20: orion-20
-        21: orion-21
-        24: hercule-24
-        25: hercule-25
-        26: hercule-26
-        27: hercule-27
+        18: orion-1
+        19: orion-2
+        20: orion-3
+        21: orion-4
+        24: hercule-1
+        25: hercule-2
+        26: hercule-3
+        27: hercule-4
         36: 
           uid: castor
           kind: other
@@ -46,17 +50,8 @@ force10:
           uid: pollux
           kind: other
         42: 
-          uid: gw-lyon 
+          uid: gw-lyon
           kind: router
           port: "9:2"
-    1: 
-      naming_pattern: "ManagementEthernet 0/%PORT%"
-      kind: other 
-      rate: 1000000000
-      ports:
-        0: 
-          uid: chris 
-          kind: switch
-          port: "1:39"
   channels: 
     naming_pattern: Po%CHANNELID%

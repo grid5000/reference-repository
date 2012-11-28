@@ -6,6 +6,10 @@ salome:
   snmp_community: public
   vlans: 
     naming_pattern: Vlan%VLANID%
+    "690":
+      administrative: yes
+      addresses:
+        - 10.69.7.194
   routes: {}
 
   linecards: 
@@ -17,12 +21,10 @@ salome:
         49: 
             uid: gw-lyon
             rate: 10000000000
-        47: 
-            uid: mizar
-            port: bmc
         48: 
             uid: mizar
             port: eth0
+            kind: other
   channels: 
     naming_pattern: Po%CHANNELID%
 

@@ -4,10 +4,13 @@ gw-lyon:
   kind: router
   site: lyon
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
+    "690":
+      administrative: yes
+      addresses:
+        - 10.69.7.254
   routes: {}
-
   linecards: 
     1: 
       naming_pattern: "%LINECARD%:%PORT%"
@@ -102,10 +105,6 @@ gw-lyon:
       kind: switch
       rate: 1000000000 
       ports: 
-        5: 
-          uid: cyrrus
-          port: eth0
-          kind: other
         6: 
           uid: cyrrus
           port: eth1
@@ -114,34 +113,18 @@ gw-lyon:
           uid: flow
           port: eth1
           kind: other
-        15: 
-          uid: zybline
-          port: "Gi1/47"
-        16: 
-          uid: zybline
-          port: "Gi1/48"
-        17: 
-          uid: bettie
-          port: "1:48"
         21: 
           uid: nebula
-          port: eth1
-          kind: other
-        22: 
-          uid: andromede
           port: eth1
           kind: other
         36: 
           uid: wattmetre
           port: eth1
           kind: other
-        47: 
-          uid: chris
-          port: "1:49"
         48: 
           uid: castor
           port: eth3
-          kind: other
+          kind: other # To NAT and ENS-Lyon network
     9: 
       naming_pattern: "%LINECARD%:%PORT%"
       kind: switch
