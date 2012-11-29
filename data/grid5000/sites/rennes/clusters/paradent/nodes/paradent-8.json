@@ -16,10 +16,6 @@
     "ram_size": 34359738368,
     "virtual_size": null
   },
-  "monitoring": {
-    "temperature": true,
-    "wattmeter": false
-  },
   "network_adapters": [
     {
       "device": "bmc",
@@ -93,6 +89,29 @@
     "other_description": "",
     "vendor": "Intel",
     "version": "L5420"
+  },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "pdu": {
+          "uid": "paradent-pdu-1"
+        }
+      }
+    },
+    "temperature": {
+      "available": true,
+      "via": {
+        "ganglia": {
+          "metric": "ambient_temp"
+        },
+        "impi": {
+          "sensors": {
+            "ambient": "Thermistor2 TEMP"
+          }
+        }
+      }
+    }
   },
   "storage_devices": [
     {

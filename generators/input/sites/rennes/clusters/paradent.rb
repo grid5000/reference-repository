@@ -6,12 +6,15 @@ site :rennes do |site_uid|
 
     64.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+
         architecture({
           :smp_size       => 2,
           :smt_size       => 8,
           :platform_type  => "x86_64"
-          })
+        })
+
         processor({
           :vendor             => "Intel",
           :model              => "Intel Xeon",
@@ -24,16 +27,19 @@ site :rennes do |site_uid|
           :cache_l1d          => nil,
           :cache_l2           => nil
         })
+
         main_memory({
           :ram_size     => 32.GiB,
           :virtual_size => nil
         })
+
         operating_system({
           :name     => "Debian",
           :release  => "5.0",
           :version  => nil,
           :kernel   => "2.6.26"
         })
+
         storage_devices [{
           :interface  => 'SATA',
           :size       => 160.GB,
@@ -42,19 +48,20 @@ site :rennes do |site_uid|
           :model      => lookup('paradent', node_uid, 'block_device', 'sda', 'model'),
           :rev        => lookup('paradent', node_uid, 'block_device', 'sda', 'rev')
         }]
+
         network_adapters [{
-           :interface        => 'Ethernet',
-           :rate             => 1.G,
-           :enabled          => true,
-           :management       => true,
-           :mountable        => false,
-           :mounted          => false,
-           :device           => "bmc",
-           :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-           :ip               => lookup('paradent', node_uid, 'network_interfaces', 'bmc', 'ip'),
-           :mac              => lookup('paradent', node_uid, 'network_interfaces', 'bmc', 'mac')
-         },
-         {
+          :interface        => 'Ethernet',
+          :rate             => 1.G,
+          :enabled          => true,
+          :management       => true,
+          :mountable        => false,
+          :mounted          => false,
+          :device           => "bmc",
+          :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+          :ip               => lookup('paradent', node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :mac              => lookup('paradent', node_uid, 'network_interfaces', 'bmc', 'mac')
+        },
+        {
           :interface        => 'Ethernet',
           :rate             => 1.G,
           :enabled          => true,
@@ -82,7 +89,7 @@ site :rennes do |site_uid|
           :version          => "80003ES2LAN",
           :mac        => lookup('paradent', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
-         {
+        {
           :interface        => 'Ethernet',
           :rate             => 100.M,
           :enabled          => true,
@@ -96,21 +103,34 @@ site :rennes do |site_uid|
           :vendor           => "Tyan",
           :version          => "M3296"
         }]
+
         bios({
-           :version      => lookup('paradent', node_uid, 'bios', 'version'),
-           :vendor       => lookup('paradent', node_uid, 'bios', 'vendor'),
-           :release_date => lookup('paradent', node_uid, 'bios', 'release_date')
-         })
-           gpu({
-            :gpu  => false
-             })
-             monitoring({
-          :wattmeter    => false,
-          :temperature  => true
+          :version      => lookup('paradent', node_uid, 'bios', 'version'),
+          :vendor       => lookup('paradent', node_uid, 'bios', 'vendor'),
+          :release_date => lookup('paradent', node_uid, 'bios', 'release_date')
         })
-         #chassis({:serial_number => lookup('paradent', node_uid, 'chassis', 'serial_number')})
+
+        gpu({
+          :gpu  => false
+        })
+
+        sensors({
+          :power => {
+            :available => true,
+            :via => {
+              :pdu      => { :uid => lookup('paradent', node_uid, 'pdu', 'pdu_name') }
+            }
+          },
+          :temperature => {
+            :available => true,
+            :via => {
+              :ganglia  => { :metric => "ambient_temp" },
+              :impi     => { :sensors => { :ambient => "Thermistor2 TEMP" } }
+            }
+          }
+        })
+
       end
     end
   end
-
 end

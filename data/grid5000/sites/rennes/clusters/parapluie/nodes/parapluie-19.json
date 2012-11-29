@@ -120,6 +120,32 @@
     "vendor": "AMD",
     "version": "6164 HE"
   },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "ganglia": {
+          "metric": "shared_pdu"
+        },
+        "pdu": {
+          "uid": "parapluie-pdu-2"
+        }
+      }
+    },
+    "temperature": {
+      "available": true,
+      "via": {
+        "ganglia": {
+          "metric": "ambient_temp"
+        },
+        "impi": {
+          "sensors": {
+            "ambient": "Inlet Ambient"
+          }
+        }
+      }
+    }
+  },
   "storage_devices": [
     {
       "device": "sda",

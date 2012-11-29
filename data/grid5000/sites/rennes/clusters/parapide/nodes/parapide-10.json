@@ -106,6 +106,29 @@
     "vendor": "Intel",
     "version": "X5570"
   },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "pdu": {
+          "uid": "parapide-pdu-3"
+        }
+      }
+    },
+    "temperature": {
+      "available": true,
+      "via": {
+        "ganglia": {
+          "metric": "ambient_temp"
+        },
+        "impi": {
+          "sensors": {
+            "ambient": "/MB/T_AMB"
+          }
+        }
+      }
+    }
+  },
   "storage_devices": [
     {
       "device": "sda",
