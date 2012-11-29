@@ -62,6 +62,18 @@ namespace :g5k do
   end
 end
 
+namespace :pdus do
+  desc "Generates the JSON files for PDUs informations"
+  task :generate do
+    raise "Need SITE=" unless site = ENV['SITE']
+    root_dir_input = "#{ROOT_DIR}/generators/input/sites"
+    command = File.join(ROOT_DIR, "generators", "grid5000")
+    command += " " + File.join(root_dir_input, site,"pdus.rb")
+    command << " -s" if ENV['DRY'] == "yes"
+    sh command
+  end
+end
+
 # rake deadnodes:reasons
 # rake deadnodes:tofix
 namespace :deadnodes do
