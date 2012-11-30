@@ -9,8 +9,8 @@ gem "net-admin-common",
   :tag => "2.5.3"
 gem "cacti-play",
   :git => "ssh://g5kadmin@git.grid5000.fr/srv/git/repos/cacti-play",
-  :tag => "2.7.4"
+  :tag => "2.8"
 gem "weathermap",
   :git => "ssh://g5kadmin@git.grid5000.fr/srv/git/repos/weathermap",
-  :tag => "5.7.9"
+  :tag => "5.8.3"
 
