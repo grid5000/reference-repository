@@ -147,7 +147,7 @@ site :rennes do |site_uid|
             :available => true,
             :via => {
               :pdu      => { :uid => lookup('parapluie', node_uid, 'pdu', 'pdu_name') },
-              :ganglia  => { :metric => "shared_pdu" }
+              :ganglia  => { :metric => "pdu_shared" }
             }
           },
           :temperature => {
