@@ -150,9 +150,24 @@ site :nancy do |site_uid|
         monitoring({
           :wattmeter  => true
         })
+
+        sensors({
+          :power => {
+            :available => true,
+            :via => {
+              :ganglia => { :metric => 'pdu' }
+            }
+          }
+        })
         else
         monitoring({
-          :wattmeter  => false 
+          :wattmeter  => false
+        })
+
+        sensors({
+          :power => {
+            :available => false
+          }
         })
         end
       end

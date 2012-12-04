@@ -133,6 +133,12 @@ site :nancy do |site_uid|
     monitoring({
       :wattmeter  => false
     })
+
+    sensors({
+      :power => {
+        :available => false
+      }
+    })
       end
     end
   end # cluster griffon
