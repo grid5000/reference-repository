@@ -189,6 +189,8 @@ namespace :oar do
             # by default, maintenance is YES when creating new resources
             command.concat(' -p maintenance="YES"')
           end
+          # by default, an Alive node has comment "OK"
+          command.concat(' -p comment="OK"')
         end
         command.concat(" -p ").concat( export.to_a.map{|(k,v)|
           if v.nil?
