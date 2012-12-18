@@ -132,11 +132,11 @@ site :nancy do |site_uid|
           :switch => lookup('graphene', node_uid, 'network_interfaces', 'bmc', 'switch_name'),
           :switch_port => lookup('graphene', node_uid, 'network_interfaces', 'bmc', 'switch_port')
         }]
-        pdu({
-          :vendor => "American Power Conversion",
-          :pdu => lookup('graphene', node_uid, 'pdu', 'pdu_name'),
-          :pdu_port => lookup('graphene', node_uid, 'pdu', 'pdu_position')
-        })
+        # pdu({
+        #   :vendor => "American Power Conversion",
+        #   :pdu => lookup('graphene', node_uid, 'pdu', 'pdu_name'),
+        #   :pdu_port => lookup('graphene', node_uid, 'pdu', 'pdu_position')
+        # })
         bios({
           :version	=> lookup('graphene', node_uid, 'bios', 'version'),
           :vendor	=> "American Megatrends Inc.",
@@ -147,29 +147,29 @@ site :nancy do |site_uid|
            })
 
         if (105<=i+1 and i+1<=144) then
-        monitoring({
-          :wattmeter  => true
-        })
-
-        sensors({
-          :power => {
-            :available => true,
-            :via => {
-              :ganglia => { :metric => 'pdu' }
+          sensors({
+            :power => {
+              :available => true,
+              :via => {
+                :api => { :metric => 'pdu' },
+                :pdu => {
+                  :uid  => lookup('graphene', node_uid, 'pdu', 'pdu_name'),
+                  :port => lookup('graphene', node_uid, 'pdu', 'pdu_position'),
+                }
+              }
             }
-          }
-        })
+          })
         else
-        monitoring({
-          :wattmeter  => false
-        })
-
-        sensors({
-          :power => {
-            :available => false
-          }
-        })
+          sensors({
+            :power => {
+              :available => false, # Set to true when pdu resources will be declared
+              :via => {
+                :pdu => { :uid  => lookup('graphene', node_uid, 'pdu', 'pdu_name') }
+              }
+            }
+          })
         end
+
       end
     end
   end # cluster graphene

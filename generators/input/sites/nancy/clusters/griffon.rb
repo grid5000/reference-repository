@@ -114,12 +114,13 @@ site :nancy do |site_uid|
           :switch => lookup('griffon', node_uid, 'network_interfaces', 'bmc', 'switch_name'),
           :switch_port => lookup('griffon', node_uid, 'network_interfaces', 'bmc', 'switch_port')
         }]
-	pdu({
-	  :vendor => "American Power Conversion",
-          :pdu => lookup('griffon', node_uid, 'pdu', 'pdu_name'),
-          :pdu_port => lookup('griffon', node_uid, 'pdu', 'pdu_position'),
-	})
-	bios({
+	# pdu({
+	#   :vendor => "American Power Conversion",
+  #        :pdu => lookup('griffon', node_uid, 'pdu', 'pdu_name'),
+  #        :pdu_port => lookup('griffon', node_uid, 'pdu', 'pdu_position'),
+	# })
+	
+  bios({
 	  :version	=> lookup('griffon', node_uid, 'bios', 'version'),
 	  :vendor	=> lookup('griffon', node_uid, 'bios', 'vendor'),
 	  :release_date	=> lookup('griffon', node_uid, 'bios', 'release_date'),
@@ -128,15 +129,12 @@ site :nancy do |site_uid|
        :gpu  => false
         })
 
-
-
-    monitoring({
-      :wattmeter  => false
-    })
-
     sensors({
       :power => {
-        :available => false
+        :available => false, # Set to true when pdu resources will be declared
+        :via => {
+          :pdu => { :uid => lookup('griffon', node_uid, 'pdu', 'pdu_name') }
+        }
       }
     })
       end
