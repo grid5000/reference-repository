@@ -147,14 +147,14 @@ site :rennes do |site_uid|
             :available => true,
             :via => {
               :pdu      => { :uid => lookup('parapluie', node_uid, 'pdu', 'pdu_name') },
-              :ganglia  => { :metric => "pdu_shared" }
+              :api      => { :metric => "pdu_shared" }
             }
           },
           :temperature => {
             :available => true,
             :via => {
-              :ganglia  => { :metric => "ambient_temp" },
-              :impi     => { :sensors => { :ambient => "Inlet Ambient" } }
+              :api      => { :metric => "ambient_temp" },
+              :ipmi     => { :sensors => { :ambient => "Inlet Ambient" } }
             }
           }
         })

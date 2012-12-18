@@ -137,8 +137,8 @@ site :rennes do |site_uid|
           :temperature => {
             :available => true,
             :via => {
-              :ganglia  => { :metric => "ambient_temp" },
-              :impi     => { :sensors => { :ambient => "/MB/T_AMB" } }
+              :api  => { :metric => "ambient_temp" },
+              :ipmi     => { :sensors => { :ambient => "/MB/T_AMB" } }
             }
           }
         })

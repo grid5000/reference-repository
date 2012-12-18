@@ -125,7 +125,7 @@ site :rennes do |site_uid|
             :available => true,
             :via => {
               :ganglia  => { :metric => "ambient_temp" },
-              :impi     => { :sensors => { :ambient => "Thermistor2 TEMP" } }
+              :ipmi     => { :sensors => { :ambient => "Thermistor2 TEMP" } }
             }
           }
         })
