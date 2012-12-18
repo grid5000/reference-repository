@@ -16,9 +16,6 @@
     "ram_size": 17179869184,
     "virtual_size": null
   },
-  "monitoring": {
-    "wattmeter": true
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -101,11 +98,6 @@
     "release": "6.0",
     "version": null
   },
-  "pdu": {
-    "pdu": "graphene-pdu7.nancy.grid5000.fr",
-    "pdu_port": 22,
-    "vendor": "American Power Conversion"
-  },
   "processor": {
     "cache_l1": null,
     "cache_l1d": null,
@@ -122,8 +114,12 @@
     "power": {
       "available": true,
       "via": {
-        "ganglia": {
+        "api": {
           "metric": "pdu"
+        },
+        "pdu": {
+          "port": 22,
+          "uid": "graphene-pdu7.nancy.grid5000.fr"
         }
       }
     }
