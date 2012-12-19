@@ -3,6 +3,7 @@ site :sophia do |site_uid|
   cluster :suno do |cluster_uid|
     model "Dell PowerEdge R410"
     created_at Time.parse("2010-01-27").httpdate
+    kavlan true
     45.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})

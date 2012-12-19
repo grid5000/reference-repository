@@ -3,6 +3,7 @@ site :lille do |site_uid|
   cluster :chicon do |cluster_uid|
     model "IBM eServer 326m"
     created_at nil
+    kavlan true
     26.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})

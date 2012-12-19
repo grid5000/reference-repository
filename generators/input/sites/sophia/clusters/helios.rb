@@ -3,6 +3,7 @@ site :sophia do |site_uid|
   cluster :helios do |cluster_uid|
     model "Sun Fire X4100"
     created_at Time.parse("2006-06-02").httpdate
+    kavlan true
 
     56.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

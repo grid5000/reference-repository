@@ -3,6 +3,7 @@ site :lille do |site_uid|
   cluster :chinqchint do |cluster_uid|
     model "Altix Xe 310"
     created_at nil
+    kavlan true
     46.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
@@ -102,7 +103,7 @@ site :lille do |site_uid|
 
         monitoring({
           :wattmeter  => false
-        })      
+        })
       end
     end
   end

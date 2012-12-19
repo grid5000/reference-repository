@@ -3,6 +3,7 @@ site :lyon do |site_uid|
   cluster :sagittaire do |cluster_uid|
     model "Sun Fire V20z"
     created_at Time.parse("2006-07-01 12:00 GMT").httpdate
+    kavlan true
     79.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})

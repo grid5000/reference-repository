@@ -3,6 +3,7 @@ site :nancy do |site_uid|
   cluster :griffon do |cluster_uid|
     model "Carri System CS-5393B"
     created_at Time.parse("2009-04-10").httpdate
+    kavlan true
     92.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         serial lookup('griffon', node_uid, 'chassis', 'serial_number')
@@ -119,7 +120,7 @@ site :nancy do |site_uid|
   #        :pdu => lookup('griffon', node_uid, 'pdu', 'pdu_name'),
   #        :pdu_port => lookup('griffon', node_uid, 'pdu', 'pdu_position'),
 	# })
-	
+
   bios({
 	  :version	=> lookup('griffon', node_uid, 'bios', 'version'),
 	  :vendor	=> lookup('griffon', node_uid, 'bios', 'vendor'),

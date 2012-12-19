@@ -1,9 +1,10 @@
 site :bordeaux do |site_uid|
-  
+
   cluster :bordereau do |cluster_uid|
     model "IBM System x3455"
     created_at Time.parse("2007-10-01 12:00 GMT").httpdate
     misc "IPMI 2.0"
+    kavlan false
     93.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
@@ -102,7 +103,7 @@ site :bordeaux do |site_uid|
 
     monitoring({
                   :wattmeter  => false
-                })      
+                })
       end
     end
   end # cluster bordereau

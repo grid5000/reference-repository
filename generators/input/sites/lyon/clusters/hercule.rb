@@ -3,6 +3,7 @@ site :lyon do |site_uid|
   cluster :hercule do |cluster_uid|
     model "Dell C6220"
     created_at Time.parse("2012-10-02 12:00 GMT").httpdate
+    kavlan false
     4.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
@@ -21,7 +22,7 @@ site :lyon do |site_uid|
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil 
+          :cache_l2 => nil
         })
         main_memory({
           :ram_size => 32.GiB,
@@ -34,18 +35,18 @@ site :lyon do |site_uid|
           :kernel => "2.6.32"
         })
         storage_devices [{
-           :interface => 'SATA', 
-           :size      => 2.TB, 
+           :interface => 'SATA',
+           :size      => 2.TB,
            :driver    => "ahci",
            :device    => "sda"
         },{
-           :interface => 'SATA', 
-           :size      => 2.TB, 
+           :interface => 'SATA',
+           :size      => 2.TB,
            :driver    => "ahci",
            :device    => "sdb"
         },{
-           :interface => 'SATA', 
-           :size      => 2.TB, 
+           :interface => 'SATA',
+           :size      => 2.TB,
            :driver    => "ahci",
            :device    => "sdc"
         },
@@ -112,5 +113,5 @@ site :lyon do |site_uid|
         })
       end
     end
-  end # cluster hercule 
+  end # cluster hercule
 end

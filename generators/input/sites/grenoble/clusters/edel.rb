@@ -3,6 +3,7 @@ site :grenoble do |site_uid|
   cluster :edel do |cluster_uid|
     model "Bull bullx B500 compute blades"
     created_at Time.parse("2008-10-03").httpdate
+    kavlan false
 
     72.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
@@ -75,7 +76,7 @@ site :grenoble do |site_uid|
           :device => "eth0",
           :mounted => true,
           :mountable => true,
-          :bridged => true,   
+          :bridged => true,
           :management => false,
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('edel', node_uid, 'network_interfaces', 'eth0', 'ip'),

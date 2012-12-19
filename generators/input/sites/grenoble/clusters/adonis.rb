@@ -2,6 +2,7 @@ site :grenoble do |site_uid|
 
  cluster :adonis do |cluster_uid|
     created_at Time.parse("2010-09-02").httpdate
+    kavlan false
     10.times do |i|
       model "Bull R422-E2 dual mobo + Tesla S1070"
       node "#{cluster_uid}-#{i+1}" do |node_uid|
@@ -114,7 +115,7 @@ site :grenoble do |site_uid|
            })
         monitoring({
           :wattmeter  => false
-        })      
+        })
       end
     end
   end

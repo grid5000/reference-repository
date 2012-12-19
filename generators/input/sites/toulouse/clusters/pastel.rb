@@ -2,6 +2,7 @@ site :toulouse do |site_uid|
   cluster :pastel do |cluster_uid|
     model "Sun Fire X2200 M2"
     created_at Time.parse("2007-11-29").httpdate
+    kavlan true
 
     140.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

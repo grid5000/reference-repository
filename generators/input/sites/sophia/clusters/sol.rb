@@ -3,6 +3,7 @@ site :sophia do |site_uid|
   cluster :sol do |cluster_uid|
     model "Sun Fire X2200 M2"
     created_at Time.parse("2007-02-23").httpdate
+    kavlan true
     50.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
@@ -40,7 +41,7 @@ site :sophia do |site_uid|
           :model  => lookup('sol', node_uid, 'block_devices', 'sda', 'model'),
           :driver => "sata_nv"
         }]
-        network_adapters [{ 
+        network_adapters [{
              :interface => 'Myrinet',
              :rate => 10.G,
              :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
@@ -101,7 +102,7 @@ site :sophia do |site_uid|
          #   :enabled => false,
          #   :driver => 'tg3
          # }
-          
+
           {
             :interface => 'Ethernet',
             :rate => 100.M,

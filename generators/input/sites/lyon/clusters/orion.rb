@@ -3,6 +3,7 @@ site :lyon do |site_uid|
   cluster :orion do |cluster_uid|
     model "Dell R720"
     created_at Time.parse("2012-09-14 12:00 GMT").httpdate
+    kalvan false
     4.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
@@ -21,7 +22,7 @@ site :lyon do |site_uid|
           :cache_l1 => nil,
           :cache_l1i => nil,
           :cache_l1d => nil,
-          :cache_l2 => nil 
+          :cache_l2 => nil
         })
         main_memory({
           :ram_size => 32.GiB,
@@ -34,8 +35,8 @@ site :lyon do |site_uid|
           :kernel => "2.6.32"
         })
         storage_devices [{
-           :interface => 'SCSI', 
-           :size      => 598.GB, 
+           :interface => 'SCSI',
+           :size      => 598.GB,
            :driver    => "megaraid_sas",
            :device    => "sda"
         }]
@@ -132,5 +133,5 @@ site :lyon do |site_uid|
         })
       end
     end
-  end # cluster orion 
+  end # cluster orion
 end

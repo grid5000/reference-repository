@@ -2,6 +2,7 @@ site :bordeaux do |site_uid|
 
   cluster :bordeplage do |cluster_uid|
     model "Dell PowerEdge 1855"
+    kavlan false
     created_at nil
 
     51.times do |i|
@@ -51,7 +52,7 @@ site :bordeaux do |site_uid|
           :vendor 	=> "Intel",
 	  :version 	=> "82546GB Gigabit Ethernet Controller",
           :enabled 	=> true,
-          :switch => "gw Pro-Curve-HP", 
+          :switch => "gw Pro-Curve-HP",
           :mounted 	=> true,
 	  :mountable 	=> true,
           :bridged      => true,

@@ -3,6 +3,7 @@ site :rennes do |site_uid|
   cluster :parapide do |cluster_uid|
     model "SUN FIRE X2270"
     created_at Time.parse("2010-01-25").httpdate
+    kavlan true
 
     25.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

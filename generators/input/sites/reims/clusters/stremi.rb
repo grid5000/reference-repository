@@ -2,6 +2,7 @@ site :reims do |site_uid|
   cluster :stremi do |cluster_uid|
      model "HP ProLiant DL165 G7"
      created_at Time.parse("2011-04-18").httpdate
+     kavlan true
 
      44.times do |i|
        node "#{cluster_uid}-#{i+1}" do |node_uid|
@@ -95,7 +96,7 @@ site :reims do |site_uid|
             })
 
          monitoring({
-           :wattmeter  => true 
+           :wattmeter  => true
          })
        end
      end
