@@ -4,7 +4,7 @@ site :bordeaux do |site_uid|
     model "IBM System x3755"
     created_at Time.parse("2007-10-01 12:00 GMT").httpdate
     misc "IPMI 2.0"
-    kavla false
+    kavlan false
     10.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
