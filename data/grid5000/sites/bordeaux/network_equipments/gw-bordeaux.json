@@ -5,42 +5,35 @@
   "kind": "router",
   "linecards": [
     {
+
+    },
+    {
       "kind": "switch",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
 
         },
         {
-          "kind": "other",
-          "uid": "storage"
-        },
-        {
-          "uid": "mx-bdx"
-        },
-        {
           "uid": "sborderline"
+        },
+        {
+
         },
         {
           "kind": "virtual",
           "uid": "renater-bordeaux"
         },
         {
-          "rate": 1000000000,
-          "uid": "labri"
-        },
-        {
-          "uid": "ib-bdx"
-        },
-        {
-          "uid": "st-bordemer"
+          "kind": "other",
+          "uid": "storage"
         }
       ],
       "rate": 10000000000
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
 
@@ -116,6 +109,16 @@
         },
         {
           "uid": "bordereau-24"
+        }
+      ],
+      "rate": 100000000
+    },
+    {
+      "kind": "node",
+      "naming_pattern": "%LINECARD:A%%PORT%",
+      "ports": [
+        {
+
         },
         {
           "uid": "bordereau-25"
@@ -188,6 +191,16 @@
         },
         {
           "uid": "bordereau-48"
+        }
+      ],
+      "rate": 100000000
+    },
+    {
+      "kind": "node",
+      "naming_pattern": "%LINECARD:A%%PORT%",
+      "ports": [
+        {
+
         },
         {
           "uid": "bordereau-49"
@@ -260,6 +273,16 @@
         },
         {
           "uid": "bordereau-72"
+        }
+      ],
+      "rate": 100000000
+    },
+    {
+      "kind": "node",
+      "naming_pattern": "%LINECARD:A%%PORT%",
+      "ports": [
+        {
+
         },
         {
           "uid": "bordereau-73"
@@ -329,7 +352,7 @@
     },
     {
       "kind": "other",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
 
@@ -357,6 +380,43 @@
         {
           "port": "eth1",
           "uid": "borderline"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "kind": "switch",
+          "uid": "mx-bdx"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "rate": 1000000000,
+          "uid": "labri"
+        },
+        {
+          "kind": "switch",
+          "uid": "ib-bdx"
+        },
+        {
+          "kind": "switch",
+          "uid": "st-bordemer"
         }
       ],
       "rate": 100000000
