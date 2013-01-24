@@ -70,7 +70,7 @@ site :lille do |site_uid|
           :device => 'eth1',
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('chirloute', node_uid, 'network_interfaces', 'eth1', 'ip'),
-          :switch => 'gw',
+          :switch => 'sw-admin5',
           :switch_port => lookup('chirloute', node_uid, 'network_interfaces', 'eth1', 'switch_port')
         },{
           :interface => 'Ethernet',
