@@ -1,6 +1,6 @@
 site :nancy do |site_uid|
   2.times do |i|
-    pdu "graphene-pdu#{i+5}" do |pdu_uid|
+    pdu "graphene-pdu#{i+7}" do |pdu_uid|
       vendor "Eaton Corporation"
       model ""
       sensors [
