@@ -194,9 +194,9 @@ module G5K
     def node(uid, *options, &block)
       build_context(:nodes, uid, *options, &block)
     end
-    # def pdu(uid, *options, &block)
-    #   build_context(:pdus, uid, *options, &block)
-    # end
+    def pdu(uid, *options, &block)
+      build_context(:pdus, uid, *options, &block)
+    end
     def service(uid, *options, &block)
       build_context(:services, uid, *options, &block)
     end

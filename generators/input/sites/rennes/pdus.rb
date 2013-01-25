@@ -10,8 +10,8 @@ site :rennes do |site_uid|
             :per_outlets => false,
             :snmp => {
               :available => true,
-              :total_oid => "iso.3.6.1.4.1.17420.1.2.9.1.11.0",
-              :total_unit => "dA"
+              :total_oids => ["iso.3.6.1.4.1.17420.1.2.9.1.11.0"],
+              :unit => "dA"
             }
           }
         }
@@ -29,8 +29,8 @@ site :rennes do |site_uid|
             :per_outlets => false,
             :snmp => {
               :available => true,
-              :total_oid => "iso.3.6.1.4.1.318.1.1.12.1.16.0",
-              :total_unit => "W"
+              :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
+              :unit => "W"
             }
           }
         }
@@ -48,8 +48,8 @@ site :rennes do |site_uid|
             :per_outlets => false,
             :snmp => {
               :available => true,
-              :total_oid => "iso.3.6.1.4.1.318.1.1.12.1.16.0",
-              :total_unit => "W"
+              :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
+              :unit => "W"
             }
           }
         }
