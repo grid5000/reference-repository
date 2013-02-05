@@ -16,25 +16,32 @@ site :toulouse do |site_uid|
           :vendor => "AMD",
           :model => "AMD Opteron",
           :version => "2218",
-          :clock_speed => 2613.M,
-          :instruction_set => "",
-          :other_description => "",
-          :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
+          :clock_speed => 2600000000,
+          :instruction_set => "x86-64",
+          :other_description => "Dual-Core AMD Opteron(tm) Processor 2218",
+          :cache_l1 => 65536,
+          :cache_l1i => 65536,
+          :cache_l1d => 65536,
+          :cache_l3 => 0,
           :cache_l2 => 1.MiB
         })
         main_memory({
-          :ram_size => 8.GiB, # bytes
+          :ram_size => 8395284480,#8.GiB, # bytes
           :virtual_size => nil
         })
         operating_system({
-          :name => nil,
-          :release => nil,
-          :version => nil
+          :name => "debian",
+          :release => "Squeeze",
+          :version => "6.0",
+          :kernel  => "#1 SMP Debian 3.2.35-2"
         })
         storage_devices [
-          {:interface => 'SATA', :size => 250.GB, :driver => "sata_nv"}
+          {:interface => 'SATA',
+           :size => 250056000000,#250.GB, #bytes
+           :driver => "sata_nv",
+           :device => "sda",
+           :version => "V5DO"
+          }
         ]
         network_adapters [
           { :interface => 'Ethernet',
@@ -60,6 +67,7 @@ site :toulouse do |site_uid|
             :mac => lookup('pastel', node_uid, 'network_interfaces','eth1','mac'),
             :vendor => "NVIDIA",
             :version => "MCP55 Pro",
+            :driver => "forcedeth",
             :enabled => false,
             :management => false,
             :mountable => false,
@@ -82,6 +90,16 @@ site :toulouse do |site_uid|
             :switch => '<unknown>'
           }
         ]
+        bios({
+          :version	=> lookup('pastel', node_uid, 'bios', 'version'),
+          :vendor	=> lookup('pastel', node_uid, 'bios', 'vendor'),
+          :release_date	=> lookup('pastel', node_uid, 'bios', 'release_date')
+        })
+        chassis({
+          :serial       => lookup('pastel', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('pastel', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('pastel', node_uid, 'chassis', 'manufacturer')
+        })
         gpu({
            :gpu  => false
             })

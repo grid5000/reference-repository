@@ -31,19 +31,19 @@ options = {:simulate => false}
 option_parser = OptionParser.new do |opts|
   opts.banner = %{
   A tool to generate the Grid5000 reference data.
-  
+
   Usage:
     ./grid5000 input_files [config_files] [options]
-  
+
   Notes:
     * input_files   MUST be .rb files.
     * config_files  MUST be .yml or .yaml files.
-  
+
   Examples:
     ./grid5000 input/*.rb input/*.yaml -s
     ./grid5000 input/nancy.rb input/nancy.yaml
     ./grid5000 input/rennes.rb input/lille.rb -s
-    
+
   Options:}
   opts.on("-s", "--simulate", "Run in simulation mode (do not write changes). Default to false.") do |v|
     options[:simulate] = v
@@ -52,7 +52,7 @@ option_parser = OptionParser.new do |opts|
     puts opts
     exit
   end
-  
+
 end
 
 option_parser.parse!
