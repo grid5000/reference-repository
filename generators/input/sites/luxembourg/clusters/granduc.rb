@@ -22,8 +22,9 @@ site :luxembourg do |site_uid|
           :other_description  => "Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz",
           :cache_l1           => 32768,
           :cache_l1i          => 32768,
-          :cache_l1d          => 4194304,
-          :cache_l2           => 0
+          :cache_l1d          => 32768,
+          :cache_l2           => 4194304,
+          :cache_l3           => 0
         })
         main_memory({
           :ram_size     => 16864227328,
