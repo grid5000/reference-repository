@@ -4,11 +4,21 @@
     "smp_size": 2,
     "smt_size": 4
   },
+  "bios": {
+    "release_date": "12/13/2006",
+    "vendor": "Sun Microsystems",
+    "version": "S39_3B13"
+  },
+  "chassis": {
+    "manufacturer": "Sun Microsystems",
+    "name": "Sun Fire X2200 M2",
+    "serial": "0723QBT063"
+  },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 8589934592,
+    "ram_size": 8395284480,
     "virtual_size": null
   },
   "monitoring": {
@@ -23,7 +33,7 @@
       "interface": "Ethernet",
       "ip": "172.16.112.56",
       "ip6": null,
-      "mac": "00:1B:24:2D:B9:DB",
+      "mac": "00:1b:24:2d:b9:db",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -36,9 +46,10 @@
     },
     {
       "device": "eth1",
+      "driver": "forcedeth",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "00:1B:24:2D:B9:DC",
+      "mac": "00:1b:24:2d:b9:dc",
       "management": false,
       "mountable": false,
       "mounted": false,
@@ -52,7 +63,7 @@
       "interface": "Ethernet",
       "ip": "172.17.112.56",
       "ip6": null,
-      "mac": "00:1B:24:2D:C1:2D",
+      "mac": "00:1b:24:2d:c1:2d",
       "management": true,
       "mountable": false,
       "mounted": false,
@@ -64,27 +75,31 @@
     }
   ],
   "operating_system": {
-    "name": null,
-    "release": null,
-    "version": null
+    "kernel": "#1 SMP Debian 3.2.35-2",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0"
   },
   "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
+    "cache_l1": 65536,
+    "cache_l1d": 65536,
+    "cache_l1i": 65536,
     "cache_l2": 1048576,
-    "clock_speed": 2613000000,
-    "instruction_set": "",
+    "cache_l3": 0,
+    "clock_speed": 2600000000,
+    "instruction_set": "x86-64",
     "model": "AMD Opteron",
-    "other_description": "",
+    "other_description": "Dual-Core AMD Opteron(tm) Processor 2218",
     "vendor": "AMD",
     "version": "2218"
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "sata_nv",
       "interface": "SATA",
-      "size": 232830643653.87
+      "size": 250056000000,
+      "version": "V5DO"
     }
   ],
   "supported_job_types": {
