@@ -100,6 +100,7 @@ site :luxembourg do |site_uid|
           :mounted          => false,
           :device           => "eth3",
           :driver           => "ixgbe",
+          :mac              => lookup('granduc', node_uid, 'network_interfaces', 'eth3', 'mac')
         },
         {
           :interface        => 'Ethernet',
