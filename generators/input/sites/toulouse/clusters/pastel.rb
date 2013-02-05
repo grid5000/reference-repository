@@ -40,7 +40,8 @@ site :toulouse do |site_uid|
            :size => 250056000000,#250.GB, #bytes
            :driver => "sata_nv",
            :device => "sda",
-           :version => "V5DO"
+           :rev => "V5DO",
+           :model => "HITACHI HDS7225S"
           }
         ]
         network_adapters [
