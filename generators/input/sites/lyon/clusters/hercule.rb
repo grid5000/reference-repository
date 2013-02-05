@@ -111,6 +111,15 @@ site :lyon do |site_uid|
         monitoring({
           :wattmeter  => 'shared',
         })
+        sensors({
+          :power => {
+            :available => true,
+            :via => {
+              :api => { :metric => 'pdu_shared' },
+              :www => { :url => 'https://helpdesk.grid5000.fr/supervision/lyon/wattmetre/' },
+            }
+          }
+        })
       end
     end
   end # cluster hercule

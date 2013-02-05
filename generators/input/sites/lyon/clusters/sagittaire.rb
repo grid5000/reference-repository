@@ -87,6 +87,15 @@ site :lyon do |site_uid|
         monitoring({
           :wattmeter  => true
         })
+        sensors({
+          :power => {
+            :available => true,
+            :via => {
+              :api => { :metric => 'pdu' },
+              :www => { :url => 'https://helpdesk.grid5000.fr/supervision/lyon/wattmetre/' },
+            }
+          }
+        })
       end
     end
   end # cluster sagittaire
