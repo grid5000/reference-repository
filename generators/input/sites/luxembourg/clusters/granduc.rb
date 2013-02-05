@@ -17,27 +17,27 @@ site :luxembourg do |site_uid|
           :vendor             => "Intel",
           :model              => "Intel Xeon",
           :version            => "L5335",
-          :clock_speed        => 2.G,
-          :instruction_set    => "",
-          :other_description  => "",
-          :cache_l1           => nil,
-          :cache_l1i          => nil,
-          :cache_l1d          => nil,
-          :cache_l2           => nil
+          :clock_speed        => 1995000000,
+          :instruction_set    => "x86-64",
+          :other_description  => "Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz",
+          :cache_l1           => 32768,
+          :cache_l1i          => 32768,
+          :cache_l1d          => 4194304,
+          :cache_l2           => 0
         })
         main_memory({
-          :ram_size     => 16.GiB,
+          :ram_size     => 16864227328,
           :virtual_size => nil
         })
         operating_system({
-          :name     => "Debian",
-          :release  => "6.0",
-          :version  => nil,
-          :kernel   => "2.6.32"
+          :name     => "debian",
+          :release  => "Squeeze",
+          :version  => "6.0",
+          :kernel   => "#1 SMP Debian 3.2.35-2"
         })
         storage_devices [{
           :interface  => 'SAS',
-          :size       => lookup('granduc', node_uid, 'block_devices', 'sda', 'size').GB,
+          :size       => 146815733760,
           :driver     => "mptsas",
           :device     => "sda",
           :model      => lookup('granduc', node_uid, 'block_devices', 'sda', 'model'),
@@ -45,20 +45,6 @@ site :luxembourg do |site_uid|
           :rev        => lookup('granduc', node_uid, 'block_devices', 'sda', 'rev')
         }]
         network_adapters [{
-          :interface        => 'Ethernet',
-          :rate             => 1.G,
-          :enabled          => true,
-          :management       => true,
-          :mountable        => false,
-          :mounted          => false,
-          :device           => "bmc",
-          :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip               => lookup('granduc', node_uid, 'network_interfaces', 'bmc', 'ip'),
-          :switch           => "C6506E",
-          :switch_port      => lookup('granduc', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
-          :mac              => lookup('granduc', node_uid, 'network_interfaces', 'bmc', 'mac')
-         },
-         {
           :interface        => 'Ethernet',
           :rate             => 1.G,
           :enabled          => true,
@@ -103,8 +89,33 @@ site :luxembourg do |site_uid|
           :network_address  => "#{node_uid}-eth2.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'ip'),
           :mac              => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'mac')
-        }]
-addressing_plan({
+        },
+        {
+          :interface        => 'Ethernet',
+          :rate             => 10.G,
+          :enabled          => false,
+          :management       => false,
+          :mountable        => false,
+          :mounted          => false,
+          :device           => "eth3",
+          :driver           => "ixgbe",
+        },
+        {
+          :interface        => 'Ethernet',
+          :rate             => 1.G,
+          :enabled          => true,
+          :management       => true,
+          :mountable        => false,
+          :mounted          => false,
+          :device           => "bmc",
+          :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+          :ip               => lookup('granduc', node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :switch           => "C6506E",
+          :switch_port      => lookup('granduc', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :mac              => lookup('granduc', node_uid, 'network_interfaces', 'bmc', 'mac'),
+          :driver           => "bnx2"
+         }]
+        addressing_plan({
                 :kavlan => "10.40.0.0/14",
                 :virt   => "10.172.0.0/14"
                  })
@@ -116,9 +127,12 @@ addressing_plan({
         gpu({
            :gpu  => false
             })
+        chassis({
+          :serial       => lookup('granduc', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('granduc', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('granduc', node_uid, 'chassis', 'manufacturer')
+        })
 
-
-        chassis({:serial_number => lookup('granduc', node_uid, 'chassis', 'serial_number')})
         monitoring({
           :wattmeter  => false
         })
