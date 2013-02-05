@@ -14,33 +14,21 @@
     "version": "2.7.0"
   },
   "chassis": {
-    "serial_number": "60W883J"
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge 1950",
+    "serial": "60W883J"
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 17179869184,
+    "ram_size": 16864227328,
     "virtual_size": null
   },
   "monitoring": {
     "wattmeter": false
   },
   "network_adapters": [
-    {
-      "device": "bmc",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.17.176.15",
-      "mac": "00:1c:23:d3:57:37",
-      "management": true,
-      "mountable": false,
-      "mounted": false,
-      "network_address": "granduc-15-bmc.luxembourg.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "C6506E",
-      "switch_port": "Gi2/15"
-    },
     {
       "bridged": true,
       "device": "eth0",
@@ -86,23 +74,48 @@
       "rate": 10000000000,
       "switch": "C5020",
       "switch_port": "Eth1/16"
+    },
+    {
+      "device": "eth3",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000
+    },
+    {
+      "device": "bmc",
+      "driver": "bnx2",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.176.15",
+      "mac": "00:1c:23:d3:57:37",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "granduc-15-bmc.luxembourg.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "C6506E",
+      "switch_port": "Gi2/15"
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "#1 SMP Debian 3.2.35-2",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0"
   },
   "processor": {
-    "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 2000000000,
-    "instruction_set": "",
+    "cache_l1": 32768,
+    "cache_l1d": 4194304,
+    "cache_l1i": 32768,
+    "cache_l2": 0,
+    "clock_speed": 1995000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz",
     "vendor": "Intel",
     "version": "L5335"
   },
@@ -113,7 +126,7 @@
       "interface": "SAS",
       "model": "MBB2147RC",
       "rev": "D406",
-      "size": 135973095893.86,
+      "size": 146815733760,
       "vendor": "FUJITSU"
     }
   ],
