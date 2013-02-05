@@ -109,7 +109,7 @@ site :lyon do |site_uid|
           :mac => lookup('hercule',"#{node_uid}",'network_interfaces','eth3','mac'),
         }]
         monitoring({
-          :wattmeter  => true
+          :wattmeter  => 'shared',
         })
       end
     end
