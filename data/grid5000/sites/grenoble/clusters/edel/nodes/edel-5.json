@@ -114,6 +114,21 @@
     "vendor": "Intel",
     "version": "E5520"
   },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "pdu"
+        },
+        "ipmi": {
+          "sensors": {
+            "Power": "Power"
+          }
+        }
+      }
+    }
+  },
   "storage_devices": [
     {
       "driver": "ahci",

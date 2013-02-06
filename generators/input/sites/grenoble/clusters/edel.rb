@@ -128,6 +128,16 @@ site :grenoble do |site_uid|
         monitoring({
           :wattmeter  => true
         })
+
+        sensors({
+          :power => {
+            :available => true,
+            :via => {
+              :api  => { :metric => "pdu" },
+              :ipmi     => { :sensors => { :Power => "Power" } }
+            }
+          }
+        })
       end
     end
   end
