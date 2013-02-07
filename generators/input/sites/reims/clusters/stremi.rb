@@ -94,9 +94,20 @@ site :reims do |site_uid|
          gpu({
            :gpu  => false
             })
-
          monitoring({
            :wattmeter  => true
+         })
+         sensors({
+           :power => {
+           :available => true,
+           :via => {
+             :api => { :metric => 'pdu' },
+             :pdu => {
+               :uid  => lookup('stremi', node_uid, 'pdu', 'pdu_name'),
+               :port => lookup('stremi', node_uid, 'pdu', 'pdu_position'),
+               }
+             }
+           }
          })
        end
      end

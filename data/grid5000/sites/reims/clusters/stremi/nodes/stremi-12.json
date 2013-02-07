@@ -19,7 +19,7 @@
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.17.160.12",
+      "ip": "stremi-pdu",
       "mac": "1c:c1:de:7b:26:c9",
       "management": true,
       "mountable": false,
@@ -84,6 +84,20 @@
     "other_description": "",
     "vendor": "AMD",
     "version": "6164 HE"
+  },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "pdu"
+        },
+        "pdu": {
+          "port": 11,
+          "uid": "stremi-pdu2.reims.grid5000.fr"
+        }
+      }
+    }
   },
   "storage_devices": [
     {
