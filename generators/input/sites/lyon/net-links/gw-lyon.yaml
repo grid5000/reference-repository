@@ -122,9 +122,8 @@ gw-lyon:
           port: eth1
           kind: other
         48: 
-          uid: castor
-          port: eth3
-          kind: other # To NAT and ENS-Lyon network
+          uid: ENS-Lyon
+          kind: virtual # Through castor, nat VM to ENS-Lyon network
     9: 
       naming_pattern: "%LINECARD%:%PORT%"
       kind: switch
