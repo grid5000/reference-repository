@@ -1,12 +1,12 @@
---- 
-gw-toulouse: 
+---
+gw-toulouse:
   model: Cisco WS-C6506-E
   kind: router
   site: toulouse
   snmp_community: public
   routes: {}
 
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
     "100":
       administrative: yes
@@ -21,7 +21,7 @@ gw-toulouse:
         1: renater-toulouse
         2:
           kind: router
-          uid: r4.toulouse.grid5000.fr
+          uid: r4
     2:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
@@ -75,11 +75,11 @@ gw-toulouse:
         46: pastel-117
         47: pastel-118
         48: pastel-119
-    3: 
+    3:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
-      ports: 
+      ports:
         36:
           kind: switch
           uid: CICT
@@ -95,21 +95,21 @@ gw-toulouse:
         10: pastel-138
         11: pastel-139
         12: pastel-140
-        37: 
+        37:
           uid: spastel1-ipmi
           port: bmc
           kind: switch
-        45: 
+        45:
           uid: g5kservices2
           kind: other
-        46: 
+        46:
           uid: g5kservices3
           kind: other
-        47: 
+        47:
           uid: g5kservices1
           kind: other
-        48: 
+        48:
           uid: nfs-g5k
           kind: other
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
