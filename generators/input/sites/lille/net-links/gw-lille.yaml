@@ -11,14 +11,14 @@ gw-lille:
     "100": 
       administrative: yes
       addresses: 
-        - 192.168.159.254
+        - 172.16.47.254
   linecards: 
     6: 
       kind: router
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       ports: 
-        1: labo-inria
+        2: interco-NR-Lille
     1: 
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
@@ -56,6 +56,10 @@ gw-lille:
         3: chinqchint-3
         9: chinqchint-9
         31: chinqchint-31
+        36: 
+          kind: other
+          uid: maya-nfs
+          port: eth0
         42: 
           kind: other
           uid: chimint-srv
@@ -63,6 +67,10 @@ gw-lille:
         43:
           kind: other
           uid: caulier
+          port: eth0
+        44:
+          kind: other
+          uid: flandres
           port: eth0
         20: chinqchint-20
         4:  chinqchint-4
@@ -93,20 +101,23 @@ gw-lille:
         23: chimint-15
         12: chimint-6
         1: chinqchint-41
+        2: chinqchint-42
         18: chimint-12
         7: chimint-1
         13: chimint-8
         24: chimint-18
-        8: chimint-3
+        8:  chimint-3
         41: chinqchint-46
         30: chirloute-3
         19: chimint-13
         14: chimint-7
+        39: chicon-6
         38: chicon-5
         25: chirloute-2
         3: chinqchint-43
         9: chimint-2
         10: chimint-5
+        11: chimint-4
         22: chimint-16
         21: chimint-17
         8: chimint-19
@@ -121,53 +132,32 @@ gw-lille:
         26: chirloute-4
         29: chirloute-1
         32: chirloute-8
+        40: chicon-7
+        42: 
+           kind: other
+           uid: jiminy
+           port: eth0
         43:
            kind: other
            uid: fives
            port: eth0
-
+        45:
+           kind: other
+           uid: tilt
+           port: eth0
+        46:
+           kind: other
+           uid: zed
+           port: eth0
     4: 
       kind: switch
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       ports: 
-        27: 
-          uid: sw-admin3
-          port: Gi0/47
-        38: 
+        40: 
           kind: other
-          uid: bourdon
-          port: eth0
-        33: 
-          kind: other
-          uid: zed
-          port: eth0
-        28: 
-          uid: sw-admin3
-          port: Gi0/48
-        23: 
-          uid: sw-admin1
-          port: Gi0/47
-        24: 
-          uid: sw-admin1
-          port: Gi0/48
-        29: 
-          uid: sw-admin4
-          port: Gi0/47
-        30: 
-          uid: sw-admin4
-          port: Gi0/48
-        25: 
-          uid: sw-admin2
-          port: Gi0/47
-        47: sw-admin5
-        31: 
-          kind: other
-          uid: tilt
-          port: eth0
-        26: 
-          uid: sw-admin2
-          port: Gi0/48
+          uid: chimint-srv2
+          port: eth1
         48: 
           kind: node
           uid: chirloute-7
@@ -220,6 +210,10 @@ gw-lille:
           kind: node
           uid: chicon-11
           port: eth1
+        5: 
+          kind: node
+          uid: chicon-12
+          port: eth1
         6:
           kind: node
           uid: chicon-13
@@ -248,8 +242,6 @@ gw-lille:
           kind: node
           uid: chicon-26
           port: eth1
-        32:
-          kind: other
-          uid: jiminy
+
   channels: 
     naming_pattern: Po%CHANNELID%
