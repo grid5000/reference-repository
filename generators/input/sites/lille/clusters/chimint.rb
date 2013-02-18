@@ -51,8 +51,9 @@ site :lille do |site_uid|
           :mountable => true,
           :driver => 'bnx2',
           :mounted => true,
+          :bridged => true,
           :device => 'eth0',
-          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :switch => 'gw'
         },{
@@ -65,10 +66,9 @@ site :lille do |site_uid|
           :management => false,
           :mountable => true,
           :driver => 'bnx2',
-          :mounted => true,
-          :bridged => true,
+          :mounted => false,
           :device => 'eth1',
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :switch => 'gw',
           :switch_port => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'switch_port')

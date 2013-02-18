@@ -47,7 +47,7 @@ site :lille do |site_uid|
           :management => false,
           :mountable => true,
           :driver => 'e1000e',
-          :mounted => true,
+          :mounted => false,
           :device => 'eth0',
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => lookup('chinqchint',"#{node_uid}",'network_interfaces', 'eth0', 'ip'),
