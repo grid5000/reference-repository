@@ -1,4 +1,5 @@
 {
+  "backplane_bps": 800000000000,
   "channels": {
     "naming_pattern": "Po%CHANNELID%"
   },
@@ -8,6 +9,7 @@
 
     },
     {
+      "backplane_bps": 48000000000,
       "kind": "node",
       "naming_pattern": "%LINECARD%:%PORT%",
       "port": "eth1",
@@ -163,6 +165,7 @@
       "rate": 1000000000
     },
     {
+      "backplane_bps": 48000000000,
       "kind": "node",
       "naming_pattern": "%LINECARD%:%PORT%",
       "port": "eth1",
@@ -270,6 +273,7 @@
 
     },
     {
+      "backplane_bps": 48000000000,
       "kind": "switch",
       "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
@@ -426,9 +430,8 @@
 
         },
         {
-          "kind": "other",
-          "port": "eth3",
-          "uid": "castor"
+          "kind": "virtual",
+          "uid": "ENS-Lyon"
         }
       ],
       "rate": 1000000000
@@ -446,6 +449,7 @@
 
     },
     {
+      "backplane_bps": 48000000000,
       "kind": "switch",
       "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
