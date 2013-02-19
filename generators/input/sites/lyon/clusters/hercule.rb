@@ -116,7 +116,7 @@ site :lyon do |site_uid|
             :available => true,
             :via => {
               :api => { :metric => 'pdu_shared' },
-              :www => { :url => 'https://helpdesk.grid5000.fr/supervision/lyon/wattmetre/' },
+              :www => { :url => 'https://helpdesk.grid5000.fr/supervision/lyon/wattmetre/GetWatts.php' },
             }
           }
         })
