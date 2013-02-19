@@ -1,11 +1,11 @@
 --- 
 gw-lille:
-  model: cisco
+  model: cisco WS-C6506-E
   kind: router
   site: lille
   snmp_community: public
   routes: {}
-
+  backplane_bps: 
   vlans: 
     naming_pattern: Vlan%VLANID%
     "100": 
@@ -87,6 +87,10 @@ gw-lille:
         37: chinqchint-37
         38: chinqchint-38
         32: chinqchint-32
+        14: 
+          kind: switch
+          uid: myrinet
+          rate: 1000000000
     3: 
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%

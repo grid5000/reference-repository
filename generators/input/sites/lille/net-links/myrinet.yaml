@@ -1,0 +1,24 @@
+--- 
+myrinet:
+  model: myricom
+  kind: switch
+  site: lille
+  snmp_community: public
+  routes: {}
+
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+    "103": 
+      administrative: yes
+      addresses: 
+        - 172.18.47.200
+  linecards: 
+    0: 
+      kind: router
+      naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      ports: 
+        1: gw-lille
+  channels: 
+    naming_pattern: Po%CHANNELID%
+

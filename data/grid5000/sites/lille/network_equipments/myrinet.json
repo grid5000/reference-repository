@@ -1,0 +1,42 @@
+{
+  "backplane_bps": null,
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
+  "kind": "switch",
+  "linecards": [
+    {
+      "kind": "router",
+      "naming_pattern": "Gi%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "uid": "gw-lille"
+        }
+      ],
+      "rate": 1000000000
+    }
+  ],
+  "model": "myricom",
+  "routes": {
+
+  },
+  "site": "lille",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "myrinet",
+  "vlans": {
+    "103": {
+      "addresses": [
+        "172.18.47.200"
+      ],
+      "administrative": true
+    },
+    "naming_pattern": "Vlan%VLANID%"
+  },
+  "weathermap": {
+
+  }
+}
