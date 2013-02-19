@@ -48,7 +48,8 @@ module Grid5000
         h['gpu_count']       = properties['gpu']['gpu_count']
         h['gpu_model']       = properties['gpu']['gpu_model']
         properties["monitoring"] ||= {}
-        h['wattmeter']       = properties['monitoring']['wattmeter'] ? properties['monitoring']['wattmeter'].upcase == "SHARED" ? "SHARED" : "YES" : "NO"
+        h['wattmeter']       = (properties['monitoring']['wattmeter'].is_a?(String) and properties['monitoring']['wattmeter'].upcase == "SHARED") ? "SHARED" \
+                                : properties['monitoring']['wattmeter'] ? "YES" : "NO"
         h['rconsole']        = properties['monitoring']['rconsole'] == false ? "NO" : "YES"
         h
       }
