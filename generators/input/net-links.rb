@@ -15,6 +15,7 @@
       vlans properties["vlans"]
       routes properties["routes"]
       channels properties["channels"]
+      backplane_bps properties["backplane_bps"]
 
       # Change the format of linecard from Hash to Array
       linecards_array = []
