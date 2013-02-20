@@ -1,23 +1,23 @@
---- 
-sgriffon3: 
+---
+sgriffon3:
   model: 3com 4500g
   kind: switch
   site: nancy
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan-interface%VLANID%
-    "1": 
+    "1":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.16.79.207
   routes: {}
-
-  linecards: 
-    0: 
+  backplane_bps: 176000000000
+  linecards:
+    0:
       naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       kind: node
       rate: 10000000000
-      ports: 
+      ports:
         4: griffon-61
         5: griffon-62
         6: griffon-63
@@ -50,11 +50,11 @@ sgriffon3:
         42: griffon-90
         43: griffon-91
         44: griffon-92
-    1: 
+    1:
       naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: router
       rate: 10000000000
-      ports: 
+      ports:
         1: gw-nancy
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%

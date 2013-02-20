@@ -1,23 +1,23 @@
---- 
-stalc3: 
+---
+stalc3:
   model: 3com 4500G
   kind: switch
   site: nancy
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan-interface%VLANID%
-    "1": 
+    "1":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.16.79.226
   routes: {}
-
-  linecards: 
-    0: 
+  backplane_bps: 176000000000
+  linecards:
+    0:
       naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       kind: node
       rate: 10000000000
-      ports: 
+      ports:
         2: talc-69
         1: talc-68
         3: talc-70
@@ -56,12 +56,12 @@ stalc3:
         40: talc-103
         41: talc-104
         42: talc-133
-    1: 
+    1:
       naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: switch
       rate: 10000000000
-      ports: 
+      ports:
         1: stalc1
         2: stalc4
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%

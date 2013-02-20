@@ -1,23 +1,23 @@
---- 
-sgraphene4: 
+---
+sgraphene4:
   model: 3com 4510G
   kind: switch
   site: nancy
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan-interface%VLANID%
-    "1": 
+    "1":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.16.79.204
   routes: {}
-
-  linecards: 
-    0: 
+  backplane_bps: 176000000000
+  linecards:
+    0:
       naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       kind: node
       rate: 10000000000
-      ports: 
+      ports:
         2: graphene-106
         1: graphene-105
         3: graphene-107
@@ -58,11 +58,11 @@ sgraphene4:
         38: graphene-142
         39: graphene-143
         40: graphene-144
-    1: 
+    1:
       naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: router
       rate: 100000000
-      ports: 
+      ports:
         1: gw-nancy
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%

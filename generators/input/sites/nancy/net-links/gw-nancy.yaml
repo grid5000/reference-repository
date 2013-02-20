@@ -1,6 +1,6 @@
 ---
 gw-nancy:
-  model: HP Procurve 5406zl
+  model: HP Procurve 5406zl J8697A
   kind: router
   site: nancy
   snmp_community: public
@@ -11,10 +11,12 @@ gw-nancy:
       addresses:
         - 172.16.79.254
   routes: {}
-
+  backplane_bps: 346000000000
   linecards:
     1:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8702A
       kind: other
       rate: 1000000000
       ports:
@@ -98,6 +100,8 @@ gw-nancy:
           uid: fgrelon1
     2:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8708A
       kind: switch
       rate: 1000000000
       ports:
@@ -105,6 +109,8 @@ gw-nancy:
         4: sgriffon2
     3:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8708A
       kind: switch
       rate: 1000000000
       ports:
@@ -113,6 +119,8 @@ gw-nancy:
         4: sgraphene4
     4:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8708A
       kind: switch
       rate: 1000000000
       ports:
@@ -130,9 +138,13 @@ gw-nancy:
           uid: sgriffon1
     5:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8707A
       kind: virtual
       rate: 10000000000
       ports:
-        4: renater-nancy
+        4:
+          uid: renater-nancy
+          kind: virtual
   channels:
     naming_pattern: Po%CHANNELID%
