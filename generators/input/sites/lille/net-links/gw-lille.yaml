@@ -5,7 +5,7 @@ gw-lille:
   site: lille
   snmp_community: public
   routes: {}
-  backplane_bps: 
+  backplane_bps: 720000000000
   vlans: 
     naming_pattern: Vlan%VLANID%
     "100": 
@@ -16,18 +16,21 @@ gw-lille:
     6: 
       kind: router
       naming_pattern: Gi%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 1000000000
       ports: 
         2: interco-NR-Lille
     1: 
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 10000000000
       ports: 
         1: renater-lille
     2: 
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 1000000000
       port: eth1
       ports: 
@@ -94,6 +97,7 @@ gw-lille:
     3: 
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 1000000000
       port: eth1
       ports: 
@@ -156,6 +160,7 @@ gw-lille:
     4: 
       kind: switch
       naming_pattern: Gi%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 1000000000
       ports: 
         40: 
