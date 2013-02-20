@@ -11,11 +11,13 @@ gw-sophia:
       addresses: 
         - 138.96.20.250
   routes: {}
+  backplane_bps: 900000000000
 
   linecards: 
     2: 
       naming_pattern: "ethernet%LINECARD%/%PORT%"
       kind: switch
+      backplane_bps: 20000000000
       rate: 10000000000
       ports: 
         1: 
@@ -27,6 +29,7 @@ gw-sophia:
     7: 
       naming_pattern: "ethernet%LINECARD%/%PORT%"
       kind: node
+      backplane_bps: 24000000000
       rate: 1000000000
       ports: 
         1: suno-36
@@ -54,6 +57,7 @@ gw-sophia:
     3: 
       naming_pattern: "ethernet%LINECARD%/%PORT%"
       kind: node
+      backplane_bps: 24000000000
       rate: 1000000000
       ports: 
         1: sol-1
@@ -83,6 +87,7 @@ gw-sophia:
     4: 
       naming_pattern: "ethernet%LINECARD%/%PORT%"
       kind: node
+      backplane_bps: 24000000000
       rate: 1000000000
       ports: 
         1: sol-13
@@ -112,6 +117,7 @@ gw-sophia:
     9: 
       naming_pattern: "ethernet%LINECARD%/%PORT%"
       kind: other
+      backplane_bps: 12000000000
       rate: 1000000000
       ports: 
         1: 
@@ -142,6 +148,7 @@ gw-sophia:
     5: 
       naming_pattern: "ethernet%LINECARD%/%PORT%"
       kind: node
+      backplane_bps: 24000000000
       rate: 1000000000
       ports: 
         10: suno-1
@@ -164,6 +171,7 @@ gw-sophia:
     6: 
       naming_pattern: "ethernet%LINECARD%/%PORT%"
       kind: node
+      backplane_bps: 24000000000
       rate: 1000000000
       ports: 
         1: suno-18
