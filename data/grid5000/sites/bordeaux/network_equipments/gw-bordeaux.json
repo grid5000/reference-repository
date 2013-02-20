@@ -1,4 +1,5 @@
 {
+  "backplane_bps": 346000000000,
   "channels": {
     "naming_pattern": "Po%CHANNELID%"
   },
@@ -8,13 +9,16 @@
 
     },
     {
+      "backplane_bps": 14400000000,
       "kind": "switch",
+      "model": "J8707A",
       "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
 
         },
         {
+          "kind": "switch",
           "uid": "sborderline"
         },
         {
@@ -26,13 +30,16 @@
         },
         {
           "kind": "other",
+          "port": "eth0",
           "uid": "storage"
         }
       ],
       "rate": 10000000000
     },
     {
+      "backplane_bps": 14400000000,
       "kind": "node",
+      "model": "J8705A",
       "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
@@ -114,7 +121,9 @@
       "rate": 100000000
     },
     {
+      "backplane_bps": 14400000000,
       "kind": "node",
+      "model": "J8702A",
       "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
@@ -196,7 +205,9 @@
       "rate": 100000000
     },
     {
+      "backplane_bps": 14400000000,
       "kind": "node",
+      "model": "J8702A",
       "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
@@ -278,7 +289,9 @@
       "rate": 100000000
     },
     {
+      "backplane_bps": 14400000000,
       "kind": "node",
+      "model": "J8702A",
       "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
@@ -351,7 +364,9 @@
       "rate": 100000000
     },
     {
+      "backplane_bps": 14400000000,
       "kind": "other",
+      "model": "J8702A",
       "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
@@ -398,7 +413,7 @@
         },
         {
           "kind": "switch",
-          "uid": "mx-bdx"
+          "uid": "mx-borderline"
         },
         {
 
@@ -407,12 +422,13 @@
 
         },
         {
+          "kind": "virtual",
           "rate": 1000000000,
-          "uid": "labri"
+          "uid": "LaBRI"
         },
         {
           "kind": "switch",
-          "uid": "ib-bdx"
+          "uid": "ib-borderline"
         },
         {
           "kind": "switch",
@@ -422,7 +438,7 @@
       "rate": 100000000
     }
   ],
-  "model": "HP Procurve 5406zl",
+  "model": "HP Procurve 5406zl J8697A",
   "routes": {
 
   },

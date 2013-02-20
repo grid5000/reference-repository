@@ -1,21 +1,21 @@
---- 
-ib-bdx: 
+---
+ib-borderline:
   model: Infiniband
   kind: switch
   site: bordeaux
   snmp_community: public
-  weathermap: 
+  weathermap:
     use_cacti: "no"
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
   routes: {}
 
-  linecards: 
-    0: 
+  linecards:
+    0:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: router
       rate: 10000000000
-      ports: 
+      ports:
         0: gw-bordeaux
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%

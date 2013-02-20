@@ -1,35 +1,42 @@
---- 
-gw-bordeaux: 
-  model: HP Procurve 5406zl
+---
+gw-bordeaux:
+  model: HP Procurve 5406zl J8697A
   kind: router
   site: bordeaux
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
-    "1": 
+    "1":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.16.15.254
   routes: {}
-
-  linecards: 
-    1: 
+  backplane_bps: 346000000000
+  linecards:
+    1:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8707A
       kind: switch
       rate: 10000000000
-      ports: 
-        1: sborderline
-        3: 
+      ports:
+        1:
+          uid: sborderline
+          kind: switch
+        3:
           kind: virtual
           uid: renater-bordeaux
-        4: 
+        4:
           uid: storage
           kind: other
-    2: 
+          port: eth0
+    2:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8705A
       kind: node
       rate: 100000000
-      ports: 
+      ports:
         1: bordereau-1
         2: bordereau-2
         3: bordereau-3
@@ -54,11 +61,13 @@ gw-bordeaux:
         22: bordereau-22
         23: bordereau-23
         24: bordereau-24
-    3: 
+    3:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8702A
       kind: node
       rate: 100000000
-      ports: 
+      ports:
         1: bordereau-25
         2: bordereau-26
         3: bordereau-27
@@ -83,11 +92,13 @@ gw-bordeaux:
         22: bordereau-46
         23: bordereau-47
         24: bordereau-48
-    4: 
+    4:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8702A
       kind: node
       rate: 100000000
-      ports: 
+      ports:
         1: bordereau-49
         2: bordereau-50
         3: bordereau-51
@@ -112,11 +123,13 @@ gw-bordeaux:
         22: bordereau-70
         23: bordereau-71
         24: bordereau-72
-    5: 
+    5:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8702A
       kind: node
       rate: 100000000
-      ports: 
+      ports:
         1: bordereau-73
         2: bordereau-74
         3: bordereau-75
@@ -138,41 +151,44 @@ gw-bordeaux:
         19: bordereau-91
         20: bordereau-92
         21: bordereau-93
-    6: 
+    6:
       naming_pattern: "%LINECARD:A%%PORT%"
+      backplane_bps: 14400000000
+      model: J8702A
       kind: other
       rate: 100000000
-      ports: 
-        1: 
+      ports:
+        1:
           uid: xen-srv1
           port: eth0
-        2: 
+        2:
           uid: xen-srv1
           port: eth1
-        3: 
+        3:
           uid: xen-srv2
           port: eth0
-        4: 
+        4:
           uid: xen-srv2
           port: eth1
-        5: 
+        5:
           uid: borderline
           port: eth0
-        6: 
+        6:
           uid: borderline
           port: eth1
-        12: 
-          uid: mx-bdx
+        12:
+          uid: mx-borderline
           kind: switch
-        15: 
-          uid: labri
+        15:
+          uid: LaBRI
+          kind: virtual
           rate: 1000000000
         16:
-          uid: ib-bdx
+          uid: ib-borderline
           kind: switch
         17:
           uid: st-bordemer
           kind: switch
 
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
