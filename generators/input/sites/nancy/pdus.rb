@@ -18,4 +18,40 @@ site :nancy do |site_uid|
       ]
     end
   end
+  6.times do |i|
+    pdu "graphene-pdu#{i+1}" do |pdu_uid|
+      vendor "APC"
+      model "AP7953"
+      sensors [
+        {
+          :power => {
+            :per_outlets => false,
+            :snmp => {
+              :available => true,
+              :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
+              :unit => "W"
+            }
+          }
+        }
+      ]
+    end
+  end
+  6.times do |i|
+    pdu "griffon-pdu#{i+1}" do |pdu_uid|
+      vendor "APC"
+      model "AP7953"
+      sensors [
+        {
+          :power => {
+            :per_outlets => false,
+            :snmp => {
+              :available => true,
+              :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
+              :unit => "W"
+            }
+          }
+        }
+      ]
+    end
+  end
 end
