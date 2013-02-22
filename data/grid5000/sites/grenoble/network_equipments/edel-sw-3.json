@@ -1,37 +1,32 @@
 {
+  "backplane_bps": null,
   "channels": {
     "naming_pattern": "Po%CHANNELID%"
   },
   "kind": "switch",
   "linecards": [
     {
-      "kind": "router",
-      "naming_pattern": "%LINECARD%/%PORT%",
-      "ports": [
-        {
 
-        },
-        {
-          "port": "2:7",
-          "uid": "gw-grenoble"
-        },
-        {
-          "port": "2:8",
-          "uid": "gw-grenoble"
-        },
-        {
-          "port": "2:9",
-          "uid": "gw-grenoble"
-        }
-      ],
-      "rate": 1000000000
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
+      "naming_pattern": "%LINECARD%/0/%PORT%",
       "ports": [
         {
 
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "kind": "other",
+          "uid": "blade-3"
         },
         {
           "uid": "edel-37"
@@ -86,19 +81,40 @@
         },
         {
           "uid": "edel-54"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "kind": "router",
+          "port": "2:7",
+          "uid": "gw-grenoble"
+        },
+        {
+          "kind": "router",
+          "port": "2:8",
+          "uid": "gw-grenoble"
+        },
+        {
+          "kind": "router",
+          "port": "2:9",
+          "uid": "gw-grenoble"
         }
       ],
       "rate": 1000000000
     }
   ],
-  "model": "Blade",
+  "model": "Broadcom",
   "routes": {
 
   },
   "site": "grenoble",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "blade-3",
+  "uid": "edel-sw-3",
   "vlans": {
     "naming_pattern": "Vlan%VLANID%"
   },

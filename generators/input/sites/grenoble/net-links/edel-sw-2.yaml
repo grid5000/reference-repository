@@ -1,0 +1,53 @@
+--- 
+edel-sw-2: 
+  model: Broadcom
+  kind: switch
+  site: grenoble
+  snmp_community: public
+  weathermap: 
+    use_cacti: "no"
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1: 
+      naming_pattern: "%LINECARD%/0/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports: 
+        4: 
+          uid: blade-2
+          kind: other
+        5: edel-19
+        6: edel-20
+        7: edel-21
+        8: edel-22
+        9: edel-23
+        10: edel-24
+        11: edel-25
+        12: edel-26
+        13: edel-27
+        14: edel-28
+        15: edel-29
+        16: edel-30
+        17: edel-31
+        18: edel-32
+        19: edel-33
+        20: edel-34
+        21: edel-35
+        22: edel-36
+        25:
+          uid: gw-grenoble
+          port: "2:1"
+          kind: router
+        26:
+          uid: gw-grenoble
+          port: "2:2"
+          kind: router
+        27:
+          uid: gw-grenoble
+          port: "2:3"
+          kind: router
+  channels: 
+    naming_pattern: Po%CHANNELID%
