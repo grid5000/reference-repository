@@ -52,7 +52,7 @@ site :bordeaux do |site_uid|
           :vendor 	=> "Intel",
 	  :version 	=> "82546GB Gigabit Ethernet Controller",
           :enabled 	=> true,
-          :switch => "gw Pro-Curve-HP",
+          :switch       => lookup('bordeplage', node_uid, 'network_interfaces', 'eth0', 'switch'),
           :mounted 	=> true,
 	  :mountable 	=> true,
           :bridged      => true,

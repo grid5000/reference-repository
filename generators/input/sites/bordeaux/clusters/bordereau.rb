@@ -53,7 +53,7 @@ site :bordeaux do |site_uid|
                             :vendor 		=> "Broadcom",
                             :version 		=> "BCM5704",
                             :enabled 		=> true,
-                            :switch     => "gw Pro-Curve-HP",
+                            :switch             => "gw-bordeaux",
                             :mounted 		=> true,
                             :mountable 	=> true,
                             :bridged 		=> true,
