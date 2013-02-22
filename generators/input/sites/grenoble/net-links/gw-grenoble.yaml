@@ -3,6 +3,7 @@ gw-grenoble:
   model: ExtremeNetworks
   kind: router
   site: grenoble
+  backplane_bps: 800000000000
   snmp_community: public
   vlans: 
     naming_pattern: Vlan%VLANID%
@@ -15,6 +16,7 @@ gw-grenoble:
   linecards: 
     2: 
       naming_pattern: "%LINECARD%:%PORT%"
+      backplane_bps: 48000000000
       kind: switch
       rate: 1000000000
       ports: 
@@ -69,6 +71,7 @@ gw-grenoble:
     3: 
       naming_pattern: "%LINECARD%:%PORT%"
       kind: node
+      backplane_bps: 48000000000
       rate: 1000000000
       ports: 
         1:
@@ -189,6 +192,7 @@ gw-grenoble:
           port: eth1
     4: 
       naming_pattern: "%LINECARD%:%PORT%"
+      backplane_bps: 48000000000
       kind: node
       rate: 1000000000
       ports: 
@@ -283,6 +287,7 @@ gw-grenoble:
           port: eth0
     10: 
       naming_pattern: "%LINECARD%:%PORT%"
+      backplane_bps: 48000000000
       kind: other
       rate: 1000000000
       ports: 
