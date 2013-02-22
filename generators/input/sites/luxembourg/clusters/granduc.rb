@@ -57,7 +57,7 @@ site :luxembourg do |site_uid|
           :driver           => "bnx2",
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc', node_uid, 'network_interfaces', 'eth0', 'ip'),
-          :switch           => "C6506E",
+          :switch           => "gw-luxembourg",
           :switch_port      => lookup('granduc', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
           :mac              => lookup('granduc', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
@@ -72,7 +72,7 @@ site :luxembourg do |site_uid|
           :driver           => "bnx2",
           :network_address  => "#{node_uid}-eth1.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc', node_uid, 'network_interfaces', 'eth1', 'ip'),
-          :switch           => "C6506E",
+          :switch           => "gw-luxembourg",
           :switch_port      => lookup('granduc', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
           :mac              => lookup('granduc', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
@@ -85,7 +85,7 @@ site :luxembourg do |site_uid|
           :mounted          => true,
           :device           => "eth2",
           :driver           => "ixgbe",
-          :switch           => "C5020",
+          :switch           => "ul-grid5000-sw02",
           :switch_port      => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'switch_port'),
           :network_address  => "#{node_uid}-eth2.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'ip'),
@@ -112,7 +112,7 @@ site :luxembourg do |site_uid|
           :device           => "bmc",
           :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc', node_uid, 'network_interfaces', 'bmc', 'ip'),
-          :switch           => "C6506E",
+          :switch           => "gw-luxembourg",
           :switch_port      => lookup('granduc', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
           :mac              => lookup('granduc', node_uid, 'network_interfaces', 'bmc', 'mac'),
           :driver           => "bnx2"
