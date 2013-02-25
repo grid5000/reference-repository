@@ -97,7 +97,7 @@ site :nancy do |site_uid|
           :ip => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'ip'),
           :guid => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'guid'),
           :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-	  :switch => "sgrapheneib",
+          :switch => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'switch_name'),
           #:ib_switch_card => lookup('nancy',"#{node_uid}", 'switch_ib_card'),
           #:ib_switch_card_pos => lookup('nancy',"#{node_uid}", 'switch_ib_card_pos'),
           :driver => "mlx4_core",
