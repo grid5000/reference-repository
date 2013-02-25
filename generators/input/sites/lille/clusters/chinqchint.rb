@@ -51,7 +51,7 @@ site :lille do |site_uid|
           :device => 'eth0',
           :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => lookup('chinqchint',"#{node_uid}",'network_interfaces', 'eth0', 'ip'),
-          :switch => 'gw'
+          :switch => 'gw-lille'
         },{
           :interface => 'Ethernet',
           :rate => 1.G,
@@ -67,7 +67,7 @@ site :lille do |site_uid|
           :device => 'eth1',
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('chinqchint',"#{node_uid}",'network_interfaces', 'eth1', 'ip'),
-          :switch => 'gw',
+          :switch => 'gw-lille',
           :switch_port => lookup('chinqchint',"#{node_uid}",'network_interfaces', 'eth1', 'switch_port'),
         },{
           :interface => 'Ethernet',
@@ -80,7 +80,7 @@ site :lille do |site_uid|
           :mountable => false,
           :network_address => "#{node_uid}-ipmi.#{site_uid}.grid5000.fr",
           :ip => lookup('chinqchint',"#{node_uid}",'network_interfaces', 'bmc', 'ip'),
-          :switch => 'gw'
+          :switch => 'gw-lille'
         },{
           :interface => 'Myrinet',
           :rate => 10.G,
@@ -95,7 +95,7 @@ site :lille do |site_uid|
           :device => 'myri0',
           :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
           :ip => lookup('chinqchint',"#{node_uid}",'network_interfaces', 'myri0', 'ip'),
-          :switch => nil
+          :switch => 'switch-myri'
         }]
          gpu({
           :gpu  => false
