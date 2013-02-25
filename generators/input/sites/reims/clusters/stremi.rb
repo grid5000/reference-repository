@@ -64,7 +64,7 @@ site :reims do |site_uid|
            :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
            :ip               => lookup('stremi', node_uid, 'network_interfaces', 'eth0', 'ip'),
            :mac              => lookup('stremi', node_uid, 'network_interfaces', 'eth0', 'mac'),
-           :switch           => "gw",
+           :switch           => lookup('stremi', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
            :switch_port      => lookup('stremi', node_uid, 'network_interfaces', 'eth0', 'switch_port')
          },
          {
