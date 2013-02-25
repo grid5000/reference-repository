@@ -113,7 +113,7 @@ site :sophia do |site_uid|
             :device => 'myri0',
             :network_address => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
             :ip => lookup('helios', node_uid, 'network_interfaces','myri0', 'ip'),
-            :switch => "edgeiron48gs"
+            :switch => "sw-myrinet"
           },{
             :interface => 'Ethernet',
             :rate => 100.M,

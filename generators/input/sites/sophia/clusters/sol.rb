@@ -55,7 +55,7 @@ site :sophia do |site_uid|
              :vendor => 'Myricom',
              :version => "M3F-PCIXF-2",
              :driver => "mx",
-             :switch => "edgeiron48gs",
+             :switch => "sw-myrinet",
              :device => 'myri0',
              },
             {
