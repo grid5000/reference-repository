@@ -4,6 +4,7 @@ gw-rennes:
   kind: router
   site: rennes
   snmp_community: privkavlan
+  backplane_bps: 720000000000
   vlans: 
     naming_pattern: Vlan%VLANID%
     "100": 
@@ -17,12 +18,16 @@ gw-rennes:
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
       rate: 10000000000
+      backplane_bps: 40000000000
+      model: WS-X6704-10GE
       ports:
         1: renater-rennes
     2: 
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
+      backplane_bps: 40000000000
+      model: WS-X6748-GE-TX
       ports: 
         31: parapluie-10
         40: parapluie-11
@@ -48,6 +53,8 @@ gw-rennes:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
+      backplane_bps: 40000000000
+      model: WS-X6748-GE-TX
       ports: 
         42: parapluie-1
         47: parapluie-21
@@ -60,12 +67,15 @@ gw-rennes:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
+      backplane_bps: 40000000000
+      model: WS-X6748-GE-TX
       ports: 
         16: paradent-41
     7: 
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
+      model: WS-X6748-GE-TX
       ports: 
         47: parapide-1
         43: parapide-10
@@ -104,6 +114,8 @@ gw-rennes:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
+      backplane_bps: 40000000000
+      model: WS-X6748-GE-TX
       ports: 
         45: parapide-11
         48: parapide-12
@@ -143,6 +155,8 @@ gw-rennes:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
+      backplane_bps: 40000000000
+      model: WS-X6748-GE-TX
       ports: 
         46: parapluie-26
         32: parapluie-27
