@@ -7,6 +7,10 @@ site :toulouse do |site_uid|
     140.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
+        performance({
+          :node_flops => 4.463,
+          :core_flops => 17.37
+        })
         architecture({
           :smp_size => 2,
           :smt_size => 4,
