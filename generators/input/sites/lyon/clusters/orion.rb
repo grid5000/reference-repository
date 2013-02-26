@@ -54,7 +54,7 @@ site :lyon do |site_uid|
           :driver => 'ixgbe',
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('orion', node_uid, 'network_interfaces', 'eth0', 'ip'),
-          :switch           => "Force10",
+          :switch           => "force10",
           :switch_port      => lookup('orion', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
           :mac => lookup('orion',"#{node_uid}",'network_interfaces','eth0','mac'),
         },

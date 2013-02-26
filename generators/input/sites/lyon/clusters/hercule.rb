@@ -65,7 +65,7 @@ site :lyon do |site_uid|
           :driver => 'ixgbe',
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('hercule', node_uid, 'network_interfaces', 'eth1', 'ip'),
-          :switch           => "Force10",
+          :switch           => "force10",
           :switch_port      => lookup('hercule', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
           :mac => lookup('hercule',"#{node_uid}",'network_interfaces','eth1','mac'),
         },

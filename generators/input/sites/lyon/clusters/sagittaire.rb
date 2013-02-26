@@ -78,7 +78,7 @@ site :lyon do |site_uid|
           :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :device => 'eth1',
           :ip => lookup('sagittaire',"#{node_uid}",'network_interfaces','eth1','ip'),
-          :switch => 'little-ego'
+          :switch => 'gw-lyon'
         }]
         gpu({
           :gpu  => false
