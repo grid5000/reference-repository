@@ -9,6 +9,10 @@ site :nancy do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         serial lookup('graphene', node_uid, 'chassis', 'serial_number')
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+        performance({
+          :node_flops => 8.024,
+          :core_flops => 31.01
+        })
         architecture({
           :smp_size => 1,
           :smt_size => 4,

@@ -8,6 +8,10 @@ site :nancy do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         serial lookup('griffon', node_uid, 'chassis', 'serial_number')
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+        performance({
+          :node_flops => 7.963,
+          :core_flops => 52.5
+        })
         architecture({
           :smp_size => 2,
           :smt_size => 8,
