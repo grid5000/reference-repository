@@ -9,8 +9,8 @@ site :nancy do |site_uid|
         serial lookup('griffon', node_uid, 'chassis', 'serial_number')
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         performance({
-          :node_flops => 7.963,
-          :core_flops => 52.5
+          :node_flops => 7.963.G,
+          :core_flops => 52.5.G
         })
         architecture({
           :smp_size => 2,

@@ -10,8 +10,8 @@ site :nancy do |site_uid|
         serial lookup('graphene', node_uid, 'chassis', 'serial_number')
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         performance({
-          :node_flops => 8.024,
-          :core_flops => 31.01
+          :node_flops => 8.024.G,
+          :core_flops => 31.01.G
         })
         architecture({
           :smp_size => 1,
