@@ -8,8 +8,8 @@ site :lille do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         performance({
-          :node_flops => 2804838709.67,
-          :core_flops => 16854838709.67
+          :node_flops => 8695000000,
+          :core_flops => 52250000000
         })
         architecture({
           :smp_size => 2,
