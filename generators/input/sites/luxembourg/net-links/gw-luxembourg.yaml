@@ -4,6 +4,7 @@ gw-luxembourg:
   kind: router
   site: luxembourg
   snmp_community: public
+  backplane_bps: 720000000000
   vlans:
     naming_pattern: Vlan%VLANID%
     "30":
@@ -31,6 +32,7 @@ gw-luxembourg:
   linecards:
     1:
       naming_pattern: Gi%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 1000000000
       ports:
         1:
@@ -192,6 +194,7 @@ gw-luxembourg:
         48:
     2:
       naming_pattern: Gi%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 1000000000
       ports:
         1:
@@ -339,9 +342,17 @@ gw-luxembourg:
           port: eth0
           kind: other
         48:
+    3:
+      naming_pattern: Te%LINECARD%/%PORT%
+      rate: 10000000000
+      backplane_bps: 40000000000
+      ports:
+        1:
+        2:
     5:
-      rate: 1000000000
       naming_pattern: Gi%LINECARD%/%PORT%
+      rate: 1000000000
+      backplane_bps: 40000000000
       ports:
         2:
           uid: ul-grid5000-sw02

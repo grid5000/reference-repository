@@ -1,32 +1,33 @@
 ---
-ul-grid5000-sw02: 
-  model: Nexus 5000
+ul-grid5000-sw02:
+  model: cisco N5K-C5020P-BF
   kind: switch
   site: luxembourg
   snmp_community: public
-  weathermap: 
+  backplane_bps: 1040000000000
+  weathermap:
     use_cacti: "yes"
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
     "50":
-      administrative: yes 
+      administrative: yes
       addresses:
         - 172.17.191.253
   routes: {}
 
-  linecards: 
-    0: 
+  linecards:
+    0:
       naming_pattern: "mgmt%PORT%"
       rate: 100000000
-      ports: 
+      ports:
         0:
           uid: gw-luxembourg
           port: Gi1/46
           kind: router
-    1: 
+    1:
       naming_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
-      ports: 
+      ports:
         1:
           uid: gw-luxembourg
           port: Gi5/2
@@ -136,6 +137,6 @@ ul-grid5000-sw02:
         38:
         39:
         40:
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
 
