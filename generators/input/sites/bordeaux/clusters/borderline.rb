@@ -8,6 +8,10 @@ site :bordeaux do |site_uid|
     10.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
+        performance({
+          :core_flops => 4424000000,
+          :node_flops => 34880000000
+        })
         architecture({
           :smp_size 	 	=> 4,
           :smt_size 	 	=> 8,
