@@ -7,11 +7,15 @@ site :grenoble do |site_uid|
       model "Bull R422-E2 dual mobo + Tesla S1070"
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+        performance({
+          :core_flops => 7139000000,
+          :node_flops => 55510000000
+        })
         architecture({
           :smp_size => 2,
           :smt_size => 8,
           :platform_type => "x86_64"
-          })
+        })
         processor({
           :vendor => "Intel",
           :model => "Intel Xeon",
