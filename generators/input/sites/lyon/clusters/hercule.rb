@@ -7,6 +7,10 @@ site :lyon do |site_uid|
     4.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+        performance({
+          :node_flops => 10170000000,
+          :core_flops => 127100000000
+        })
         architecture({
           :smp_size => 2,
           :smt_size => 12,
