@@ -7,6 +7,11 @@ site :sophia do |site_uid|
     50.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
+        performance({
+          :node_flops => 4337000000,
+          :core_flops => 16800000000
+        })
+
         architecture({
           :smp_size => 2,
           :smt_size => 4,
