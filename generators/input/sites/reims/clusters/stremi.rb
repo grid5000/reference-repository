@@ -7,6 +7,10 @@ site :reims do |site_uid|
      44.times do |i|
        node "#{cluster_uid}-#{i+1}" do |node_uid|
          supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
+         performance({
+           :node_flops => 4931000000,
+           :core_flops => 121300000000
+         })
          architecture({
            :smp_size       => 2,
            :smt_size       => 24,
