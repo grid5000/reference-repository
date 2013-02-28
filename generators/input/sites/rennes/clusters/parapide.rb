@@ -9,7 +9,10 @@ site :rennes do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
-
+        performance({
+          :core_flops => 9170000000,
+          :node_flops => 71150000000
+        })
         architecture({
           :smp_size       => 2,
           :smt_size       => 8,
