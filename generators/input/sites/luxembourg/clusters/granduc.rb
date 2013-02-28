@@ -9,8 +9,8 @@ site :luxembourg do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
         performance({
-         :node_flops => 6.409.G,
-         :core_flops => 44.07.G
+         :core_flops => 6.409.G,
+         :node_flops => 44.07.G
         })
         architecture({
           :smp_size       => 2,
