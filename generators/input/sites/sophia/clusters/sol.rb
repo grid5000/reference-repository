@@ -8,8 +8,8 @@ site :sophia do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => "amd-v"})
         performance({
-          :node_flops => 4337000000,
-          :core_flops => 16800000000
+          :core_flops => 4337000000,
+          :node_flops => 16800000000
         })
 
         architecture({

@@ -9,8 +9,8 @@ site :sophia do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
         supported_job_types({:deploy => true, :besteffort => true, :virtual => false})
         performance({
-          :node_flops => 3686000000,
-          :core_flops => 14260000000
+          :core_flops => 3686000000,
+          :node_flops => 14260000000
         })
         architecture({
           :smp_size => 2,
