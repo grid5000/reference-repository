@@ -1,4 +1,4 @@
---- 
+---
 myrinet:
   model: myricom
   kind: switch
@@ -6,19 +6,19 @@ myrinet:
   snmp_community: public
   routes: {}
 
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
-    "103": 
+    "vlan103":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.18.47.200
-  linecards: 
-    0: 
+  linecards:
+    0:
       kind: router
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
-      ports: 
+      ports:
         1: gw-lille
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
 

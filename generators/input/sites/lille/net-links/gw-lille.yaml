@@ -1,4 +1,4 @@
---- 
+---
 gw-lille:
   model: cisco WS-C6506-E
   kind: router
@@ -6,34 +6,34 @@ gw-lille:
   snmp_community: public
   routes: {}
   backplane_bps: 720000000000
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
-    "100": 
+    "vlan100":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.16.47.254
-  linecards: 
-    6: 
+  linecards:
+    6:
       kind: router
       naming_pattern: Gi%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
-      ports: 
+      ports:
         2: interco-NR-Lille
-    1: 
+    1:
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 10000000000
-      ports: 
+      ports:
         1: renater-lille
-    2: 
+    2:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       port: eth1
-      ports: 
+      ports:
         27: chinqchint-27
         11: chinqchint-11
         33: chinqchint-33
@@ -59,11 +59,11 @@ gw-lille:
         3: chinqchint-3
         9: chinqchint-9
         31: chinqchint-31
-        36: 
+        36:
           kind: other
           uid: maya-nfs
           port: eth0
-        42: 
+        42:
           kind: other
           uid: chimint-srv
           port: eth2
@@ -90,17 +90,17 @@ gw-lille:
         37: chinqchint-37
         38: chinqchint-38
         32: chinqchint-32
-        14: 
+        14:
           kind: switch
           uid: myrinet
           rate: 1000000000
-    3: 
+    3:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       port: eth1
-      ports: 
+      ports:
         27: chimint-20
         16: chimint-10
         5: chinqchint-45
@@ -141,7 +141,7 @@ gw-lille:
         29: chirloute-1
         32: chirloute-8
         40: chicon-7
-        42: 
+        42:
            kind: other
            uid: jiminy
            port: eth0
@@ -157,17 +157,17 @@ gw-lille:
            kind: other
            uid: zed
            port: eth0
-    4: 
+    4:
       kind: switch
       naming_pattern: Gi%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
-      ports: 
-        40: 
+      ports:
+        40:
           kind: other
           uid: chimint-srv2
           port: eth1
-        48: 
+        48:
           kind: node
           uid: chirloute-7
           port: eth1
@@ -219,7 +219,7 @@ gw-lille:
           kind: node
           uid: chicon-11
           port: eth1
-        5: 
+        5:
           kind: node
           uid: chicon-12
           port: eth1
@@ -252,5 +252,5 @@ gw-lille:
           uid: chicon-26
           port: eth1
 
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
