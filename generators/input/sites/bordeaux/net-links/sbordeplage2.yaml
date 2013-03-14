@@ -1,27 +1,31 @@
---- 
-sbordeplage2: 
+---
+sbordeplage2:
   model: PowerConnect 3424
   kind: switch
   site: bordeaux
   snmp_community: public
-  weathermap: 
+  weathermap:
     use_cacti: "no"
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
+    "vlan100":
+      administrative: yes
+      addresses:
+        - 172.16.15.202
   routes: {}
 
-  linecards: 
-    0: 
+  linecards:
+    0:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: switch
       rate: 1000000000
-      ports: 
+      ports:
         0: st-bordemer
-    1: 
+    1:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
-      ports: 
+      ports:
         1: bordeplage-11
         2: bordeplage-12
         3: bordeplage-13
@@ -63,5 +67,5 @@ sbordeplage2:
         39: bordeplage-49
         40: bordeplage-50
         41: bordeplage-51
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%

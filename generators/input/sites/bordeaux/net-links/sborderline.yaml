@@ -1,27 +1,27 @@
---- 
-sborderline: 
+---
+sborderline:
   model: Nortel 5530
   kind: switch
   site: bordeaux
   snmp_community: public
-  weathermap: 
+  weathermap:
     use_cacti: "no"
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
   routes: {}
 
-  linecards: 
-    0: 
+  linecards:
+    0:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: router
       rate: 10000000000
-      ports: 
+      ports:
         0: gw-bordeaux
-    1: 
+    1:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
-      ports: 
+      ports:
         1: borderline-1
         2: borderline-2
         3: borderline-3
@@ -32,5 +32,5 @@ sborderline:
         8: borderline-8
         9: borderline-9
         10: borderline-10
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
