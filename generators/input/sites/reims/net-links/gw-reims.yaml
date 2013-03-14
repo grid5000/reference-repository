@@ -1,23 +1,23 @@
---- 
-gw-reims: 
+---
+gw-reims:
   model: Cisco C3560E-48TD-S
   kind: router
   site: reims
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
-    "100": 
+    "vlan100":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.16.175.254
   routes: {}
   backplane_bps: 128000000000,
-  linecards: 
-    0: 
+  linecards:
+    0:
       naming_pattern: Gi%LINECARD%/%PORT%
       kind: node
       rate: 1000000000
-      ports: 
+      ports:
         1: stremi-1
         2: stremi-2
         3: stremi-3
@@ -65,5 +65,5 @@ gw-reims:
         49:
           kind: virtual
           uid: renater-reims
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
