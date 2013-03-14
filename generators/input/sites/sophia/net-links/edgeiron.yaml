@@ -1,37 +1,37 @@
---- 
-edgeiron: 
+---
+edgeiron:
   model: Foundry
   kind: switch
   site: sophia
   snmp_community: public
-  weathermap: 
+  weathermap:
     use_cacti: "no"
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
-    "100": 
+    "vlan100":
       administrative: yes
-      addresses: 
+      addresses:
         - 138.96.20.252
   routes: {}
   backplane_bps: 40000000000
 
-  linecards: 
-    0: 
+  linecards:
+    0:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: router
       rate: 1000000000
-      ports: 
-        1: 
+      ports:
+        1:
           uid: gw-sophia
           port: ethernet2/1
-        2: 
+        2:
           uid: gw-sophia
           port: ethernet2/2
-    1: 
+    1:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
-      ports: 
+      ports:
         48: helios-1
         47: helios-2
         46: helios-3
@@ -76,11 +76,11 @@ edgeiron:
         19: helios-46
         18: helios-47
         21: helios-48
-    3: 
+    3:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
-      ports: 
+      ports:
         13: helios-19
         29: helios-20
         1: helios-37
@@ -93,5 +93,5 @@ edgeiron:
         7: helios-54
         6: helios-55
         5: helios-56
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
