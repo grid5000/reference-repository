@@ -1,20 +1,20 @@
---- 
-gw-rennes: 
+---
+gw-rennes:
   model: Cisco WS-C6509-E
   kind: router
   site: rennes
   snmp_community: privkavlan
   backplane_bps: 720000000000
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
-    "100": 
+    "vlan100":
       administrative: yes
-      addresses: 
+      addresses:
         - 172.16.111.254
   routes: {}
 
-  linecards: 
-    1: 
+  linecards:
+    1:
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
       rate: 10000000000
@@ -22,13 +22,13 @@ gw-rennes:
       model: WS-X6704-10GE
       ports:
         1: renater-rennes
-    2: 
+    2:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
-      ports: 
+      ports:
         31: parapluie-10
         40: parapluie-11
         41: parapluie-12
@@ -49,13 +49,13 @@ gw-rennes:
         33: parapluie-8
         35: parapluie-9
         11: paradent-46
-    3: 
+    3:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
-      ports: 
+      ports:
         42: parapluie-1
         47: parapluie-21
         48: parapluie-22
@@ -63,20 +63,20 @@ gw-rennes:
         45: parapluie-4
         44: parapluie-7
         15: paradent-42
-    8: 
+    8:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
-      ports: 
+      ports:
         16: paradent-41
-    7: 
+    7:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       model: WS-X6748-GE-TX
-      ports: 
+      ports:
         47: parapide-1
         43: parapide-10
         48: parapide-2
@@ -110,13 +110,13 @@ gw-rennes:
         13: paradent-38
         12: paradent-39
         14: paradent-40
-    6: 
+    6:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
-      ports: 
+      ports:
         45: parapide-11
         48: parapide-12
         47: parapide-13
@@ -151,13 +151,13 @@ gw-rennes:
         7: paradent-53
         21: paradent-63
         22: paradent-64
-    4: 
+    4:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
-      ports: 
+      ports:
         46: parapluie-26
         32: parapluie-27
         31: parapluie-28
@@ -192,5 +192,5 @@ gw-rennes:
         10: paradent-7
         8: paradent-8
         4: paradent-9
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
