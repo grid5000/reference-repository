@@ -7,23 +7,23 @@ gw-luxembourg:
   backplane_bps: 720000000000
   vlans:
     naming_pattern: Vlan%VLANID%
-    "30":
+    "vlan30":
       administrative: yes
       addresses:
         - 172.16.191.254
-    "10":
+    "vlan10":
       administrative: yes
       addresses:
         - 172.17.191.254
-    "50":
+    "vlan50":
       administrative: yes
       addresses:
         - 192.168.15.254
-    "103":
+    "vlan103":
       administrative: yes
       addresses:
         - 192.168.69.1
-    "550":
+    "vlan550":
       administrative: yes
       addresses:
         - 192.168.4.21
@@ -365,17 +365,17 @@ gw-luxembourg:
           rate: 10000000000
   channels:
     naming_pattern: Po%CHANNELID%
-    "1":
+    "lacp1":
         - linecard: 1
           port: 35
         - linecard: 2
           port: 44
-    "2":
+    "lacp2":
         - linecard: 1
           port: 36
         - linecard: 1
           port: 40
-    "3":
+    "lacp3":
         - linecard: 1
           port: 23
         - linecard: 2

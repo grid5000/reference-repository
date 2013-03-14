@@ -1,7 +1,7 @@
 {
   "backplane_bps": 720000000000,
   "channels": {
-    "1": [
+    "lacp1": [
       {
         "linecard": 1,
         "port": 35
@@ -11,7 +11,7 @@
         "port": 44
       }
     ],
-    "2": [
+    "lacp2": [
       {
         "linecard": 1,
         "port": 36
@@ -21,7 +21,7 @@
         "port": 40
       }
     ],
-    "3": [
+    "lacp3": [
       {
         "linecard": 1,
         "port": 23
@@ -552,37 +552,37 @@
   "type": "network_equipment",
   "uid": "gw-luxembourg",
   "vlans": {
-    "10": {
+    "naming_pattern": "Vlan%VLANID%",
+    "vlan10": {
       "addresses": [
         "172.17.191.254"
       ],
       "administrative": true
     },
-    "103": {
+    "vlan103": {
       "addresses": [
         "192.168.69.1"
       ],
       "administrative": true
     },
-    "30": {
+    "vlan30": {
       "addresses": [
         "172.16.191.254"
       ],
       "administrative": true
     },
-    "50": {
+    "vlan50": {
       "addresses": [
         "192.168.15.254"
       ],
       "administrative": true
     },
-    "550": {
+    "vlan550": {
       "addresses": [
         "192.168.4.21"
       ],
       "administrative": true
-    },
-    "naming_pattern": "Vlan%VLANID%"
+    }
   },
   "weathermap": {
 
