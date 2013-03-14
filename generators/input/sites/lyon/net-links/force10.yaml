@@ -1,24 +1,24 @@
---- 
-force10: 
+---
+force10:
   model: Force10 S4810
   kind: switch
   site: lyon
   snmp_community: public
   vlans:
     naming_pattern: Vlan%VLANID%
-    "1":
+    "vlan1":
       administrative: yes
       addresses:
         - 10.69.143.253
   routes: {}
   backplane_bps: 1280000000000,
-  linecards: 
-    0: 
+  linecards:
+    0:
       naming_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
       kind: node
-      rate: 10000000000 
-      port: eth0 
-      ports: 
+      rate: 10000000000
+      port: eth0
+      ports:
         1: taurus-1
         2: taurus-2
         3: taurus-3
@@ -43,15 +43,15 @@ force10:
         25: hercule-2
         26: hercule-3
         27: hercule-4
-        36: 
+        36:
           uid: castor
           kind: other
-        37: 
+        37:
           uid: pollux
           kind: other
-        42: 
+        42:
           uid: gw-lyon
           kind: router
           port: "9:2"
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%

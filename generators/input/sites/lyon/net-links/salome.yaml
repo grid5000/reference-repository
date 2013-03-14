@@ -1,30 +1,30 @@
 ---
-salome: 
+salome:
   model: Foundry FES-X 448
   kind: switch
   site: lyon
   snmp_community: public
-  vlans: 
+  vlans:
     naming_pattern: Vlan%VLANID%
-    "690":
+    "vlan690":
       administrative: yes
       addresses:
         - 10.69.7.194
   routes: {}
   backplane_bps: 136000000000,
-  linecards: 
-    0: 
+  linecards:
+    0:
       naming_pattern: "ethernet%PORT%"
       kind: router
       rate: 1000000000
-      ports: 
-        49: 
+      ports:
+        49:
             uid: gw-lyon
             rate: 10000000000
-        48: 
+        48:
             uid: mizar
             port: eth0
             kind: other
-  channels: 
+  channels:
     naming_pattern: Po%CHANNELID%
 
