@@ -50,10 +50,9 @@ site :lille do |site_uid|
           :management => false,
           :mountable => true,
           :driver => 'igb',
-          :mounted => true,
-          :bridged => true,
+          :mounted => false,
           :device => 'eth0',
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
           :ip => lookup('chirloute', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :switch => 'gw-lille'
         },{
@@ -66,9 +65,10 @@ site :lille do |site_uid|
           :management => false,
           :mountable => true,
           :driver => 'igb',
-          :mounted => false,
+          :mounted => true,
+          :bridged => true,
           :device => 'eth1',
-          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
+          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip => lookup('chirloute', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :switch => 'gw-lille',
           :switch_port => lookup('chirloute', node_uid, 'network_interfaces', 'eth1', 'switch_port')
@@ -92,7 +92,7 @@ site :lille do |site_uid|
          })
 
          gpu({
-           :gpu        => true,
+           :gpu        => false,
            :gpu_count  => lookup('chirloute', node_uid, 'gpu', 'gpu_count'),
            :gpu_model => lookup('chirloute', node_uid, 'gpu', 'gpu_model'),
          })
