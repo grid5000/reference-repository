@@ -16,7 +16,7 @@
       routes properties["routes"]
       channels properties["channels"]
       backplane_bps properties["backplane_bps"]
-
+      mtu  properties["mtu"]
       # Change the format of linecard from Hash to Array
       linecards_array = []
       properties["linecards"].each do |linecard_index,linecard|
