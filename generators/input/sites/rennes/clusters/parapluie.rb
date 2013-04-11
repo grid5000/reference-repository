@@ -150,8 +150,11 @@ site :rennes do |site_uid|
           :power => {
             :available => true,
             :via => {
-              :pdu      => { :uid => lookup('parapluie', node_uid, 'pdu', 'pdu_name') },
-              :api      => { :metric => "pdu_shared" }
+              :pdu      => { 
+                :uid  => lookup('parapluie', node_uid, 'pdu', 'pdu_name'),
+                :port => lookup('parapluie', node_uid, 'pdu', 'pdu_position'),
+             },
+              :api      => { :metric => "pdu" }
             }
           },
           :temperature => {
