@@ -99,16 +99,17 @@ gw-nancy:
           kind: other
           uid: fgrelon1
     2:
-      naming_pattern: "%LINECARD:A%%PORT%"
+      naming_pattern: "%LINECARD:B%%PORT%"
       backplane_bps: 14400000000
       model: J8708A
       kind: switch
       rate: 1000000000
       ports:
-        3: sgraphene3
+        1: sgriffon1
+        3: sgriffon3
         4: sgriffon2
     3:
-      naming_pattern: "%LINECARD:A%%PORT%"
+      naming_pattern: "%LINECARD:C%%PORT%"
       backplane_bps: 14400000000
       model: J8708A
       kind: switch
@@ -118,7 +119,7 @@ gw-nancy:
         2: sgraphene2
         4: sgraphene4
     4:
-      naming_pattern: "%LINECARD:A%%PORT%"
+      naming_pattern: "%LINECARD:D%%PORT%"
       backplane_bps: 14400000000
       model: J8708A
       kind: switch
@@ -133,11 +134,11 @@ gw-nancy:
           uid: fgriffon2
           port: eth2
         3:
-          uid: sgriffon3
+          uid: sgrelon1
         4:
-          uid: sgriffon1
+          uid: sgraphene3
     5:
-      naming_pattern: "%LINECARD:A%%PORT%"
+      naming_pattern: "%LINECARD:E%%PORT%"
       backplane_bps: 14400000000
       model: J8707A
       kind: virtual
