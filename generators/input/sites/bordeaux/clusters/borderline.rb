@@ -105,7 +105,7 @@ site :bordeaux do |site_uid|
           :mountable        => lookup('borderline', node_uid, 'network_interfaces', 'ib0', 'mountable'),
           :mounted          => lookup('borderline', node_uid, 'network_interfaces', 'ib0', 'mounted'),
           :vendor           => 'Mellanox',
-          :version 	    => "InfiniHost MT25208",
+          :version 	    => lookup('borderline', node_uid, 'network_interfaces', 'ib0', 'version'),
           :driver           => lookup('borderline', node_uid, 'network_interfaces', 'ib0', 'driver'),
           :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip               => lookup('borderline', node_uid, 'network_interfaces', 'ib0', 'ip'),
@@ -120,7 +120,7 @@ site :bordeaux do |site_uid|
           :mountable        => lookup('borderline', node_uid, 'network_interfaces', 'ib1', 'mountable'),
           :mounted          => lookup('borderline', node_uid, 'network_interfaces', 'ib1', 'mounted'),
           :vendor           => 'Mellanox',
-          :version 	    => "InfiniHost MT25208",
+          :version 	    => lookup('borderline', node_uid, 'network_interfaces', 'ib1', 'version'),
           :driver           => lookup('borderline', node_uid, 'network_interfaces', 'ib1', 'driver'),
           :guid             => lookup('borderline', node_uid, 'network_interfaces', 'ib1', 'guid')
         },
