@@ -18,7 +18,7 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 8395284480,
+    "ram_size": 8395124736,
     "virtual_size": null
   },
   "monitoring": {
@@ -32,7 +32,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.112.86",
-      "ip6": null,
+      "ip6": "fe80::21b:24ff:fe2d:faa3",
       "mac": "00:1b:24:2d:f7:bb",
       "management": false,
       "mountable": true,
@@ -45,6 +45,7 @@
       "version": "MCP55 Pro"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "forcedeth",
       "enabled": false,
@@ -53,6 +54,7 @@
       "management": false,
       "mountable": false,
       "mounted": false,
+      "network_address": "pastel-86-eth1.toulouse.grid5000.fr",
       "rate": 1000000000,
       "switch": null,
       "vendor": "NVIDIA",
@@ -75,36 +77,37 @@
     }
   ],
   "operating_system": {
-    "kernel": "#1 SMP Debian 3.2.35-2",
+    "kernel": "2.6.32-5-amd64",
     "name": "debian",
     "release": "Squeeze",
-    "version": "6.0"
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 4463000000.0,
     "node_flops": 17370000000.0
   },
   "processor": {
-    "cache_l1": 65536,
+    "cache_l1": null,
     "cache_l1d": 65536,
     "cache_l1i": 65536,
     "cache_l2": 1048576,
     "cache_l3": 0,
-    "clock_speed": 2600000000,
+    "clock_speed": 2613000000,
     "instruction_set": "x86-64",
     "model": "AMD Opteron",
     "other_description": "Dual-Core AMD Opteron(tm) Processor 2218",
     "vendor": "AMD",
-    "version": "2218"
+    "version": 2218
   },
   "storage_devices": [
     {
       "device": "sda",
       "driver": "sata_nv",
       "interface": "SATA",
-      "model": "HITACHI HDS7225S",
+      "model": "HDS7225S",
       "rev": "V5DO",
-      "size": 250056000000
+      "size": "2500560000OO",
+      "vendor": "Hitachi"
     }
   ],
   "supported_job_types": {
