@@ -88,10 +88,6 @@ site :luxembourg do |site_uid|
           :bridged 	    => false,
           :device           => "eth1",
           :driver           => lookup('granduc', node_uid, 'network_interfaces', 'eth1', 'driver'),
-          :network_address  => "#{node_uid}-eth1.#{site_uid}.grid5000.fr",
-          :ip               => lookup('granduc', node_uid, 'network_interfaces', 'eth1', 'ip'),
-          :switch           => "gw-luxembourg",
-          :switch_port      => lookup('granduc', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
           :mac              => lookup('granduc', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
@@ -108,6 +104,7 @@ site :luxembourg do |site_uid|
           :switch_port      => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'switch_port'),
           :network_address  => "#{node_uid}-eth2.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'ip'),
+          :ip6              => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'ip6'),
           :mac              => lookup('granduc', node_uid, 'network_interfaces', 'eth2', 'mac')
         },
         {
