@@ -36,6 +36,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.176.7",
+      "ip6": "fe80::219:b9ff:fef0:1d7",
       "mac": "00:19:b9:f2:0e:6f",
       "management": false,
       "mountable": true,
@@ -46,6 +47,7 @@
       "switch_port": "Gi2/7"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "bnx2",
       "enabled": false,
@@ -61,6 +63,7 @@
       "switch_port": "Gi1/30"
     },
     {
+      "bridged": false,
       "device": "eth2",
       "driver": "ixgbe",
       "enabled": true,
@@ -76,6 +79,7 @@
       "switch_port": "Eth1/8"
     },
     {
+      "bridged": false,
       "device": "eth3",
       "driver": "ixgbe",
       "enabled": false,
@@ -103,17 +107,17 @@
     }
   ],
   "operating_system": {
-    "kernel": "#1 SMP Debian 3.2.35-2",
+    "kernel": "2.6.32-5-amd64",
     "name": "debian",
     "release": "Squeeze",
-    "version": "6.0"
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 6409000000.0,
     "node_flops": 44070000000.0
   },
   "processor": {
-    "cache_l1": 32768,
+    "cache_l1": null,
     "cache_l1d": 32768,
     "cache_l1i": 32768,
     "cache_l2": 4194304,
