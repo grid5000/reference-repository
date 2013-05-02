@@ -92,7 +92,7 @@ site :lille do |site_uid|
          })
 
          gpu({
-           :gpu        => false,
+           :gpu        => true,
            :gpu_count  => lookup('chirloute', node_uid, 'gpu', 'gpu_count'),
            :gpu_model => lookup('chirloute', node_uid, 'gpu', 'gpu_model'),
          })
