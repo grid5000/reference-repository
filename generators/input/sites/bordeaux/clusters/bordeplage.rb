@@ -109,6 +109,7 @@ site :bordeaux do |site_uid|
           :driver           => lookup('bordeplage', node_uid, 'network_interfaces', 'ib0', 'driver'),
           :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip               => lookup('bordeplage', node_uid, 'network_interfaces', 'ib0', 'ip'),
+          :ip6              => lookup('bordeplage', node_uid, 'network_interfaces', 'ib0', 'ip6'),
           :guid             => lookup('bordeplage', node_uid, 'network_interfaces', 'ib0', 'guid')
         },
         {
