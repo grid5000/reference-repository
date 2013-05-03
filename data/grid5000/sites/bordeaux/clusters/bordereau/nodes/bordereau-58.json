@@ -10,6 +10,7 @@
     "version": "1.35-[C0E135AUS-1.35]-"
   },
   "chassis": {
+    "manufacturer": "IBM",
     "name": "IBM System x3455-[7986Z1J]-",
     "serial": "KDDDRZC"
   },
@@ -17,7 +18,7 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 4294967296,
+    "ram_size": 4157911040,
     "virtual_size": null
   },
   "monitoring": {
@@ -31,10 +32,11 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.1.58",
+      "ip6": "fe80::214:5eff:fe55:6ca8",
       "mac": "00:14:5e:55:5e:a6",
       "management": false,
       "mountable": true,
-      "mounted": true,
+      "mounted": false,
       "network_address": "bordereau-58.bordeaux.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw-bordeaux",
@@ -43,11 +45,13 @@
       "version": "BCM5704"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.4.58",
+      "ip6": "fe80::214:5eff:fe55:6ca8",
       "mac": "00:14:5e:55:5e:a7",
       "management": false,
       "mountable": true,
@@ -71,10 +75,10 @@
     }
   ],
   "operating_system": {
-    "Kernel": "2.6.32",
-    "name": "Debian",
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
     "release": "Squeeze",
-    "version": "6.0"
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 4433200000,
@@ -85,27 +89,29 @@
     "cache_l1d": 65536,
     "cache_l1i": 65536,
     "cache_l2": 1048576,
-    "clock_speed": 2600000000.0,
+    "cache_l3": 0,
+    "clock_speed": 2593000000,
     "instruction_set": "x86-64",
     "model": "AMD Opteron",
-    "other_description": "",
+    "other_description": "Dual-Core AMD Opteron(tm) Processor 2218",
     "vendor": "AMD",
-    "version": "2218"
+    "version": 2218
   },
   "storage_devices": [
     {
       "device": "sda",
       "driver": "sata_svw",
       "interface": "SATA",
-      "model": "HDS721680PLA380",
-      "rev": "P21OAB1A",
-      "size": 74505805969.2383
+      "model": "Hitachi HDS72168",
+      "rev": "P21O",
+      "size": 80032038912,
+      "vendor": "Hitachi"
     }
   ],
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "virtual": false
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "bordereau-58"

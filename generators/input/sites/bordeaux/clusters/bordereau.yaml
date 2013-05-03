@@ -6,25 +6,66 @@ bordereau-1:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac:
-      ip: 172.17.4.1
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
-      mac:
+      mounted: false
+      rate: 1000000000
+      mac: 
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.1
       switch_port: Gi/C1
     eth1:
-      mac:
+      mounted: false
+      mac: 
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.1
+    bmc:
+      mac: 
+      ip: 172.17.4.1
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-2:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -32,25 +73,66 @@ bordereau-2:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5d:2e
-      ip: 172.17.4.2
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5d:2c
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.2
       switch_port: Gi/C2
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5d:2d
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.2
+    bmc:
+      mac: 00:14:5e:55:5d:2e
+      ip: 172.17.4.2
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-3:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -58,25 +140,66 @@ bordereau-3:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZH
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:44
-      ip: 172.17.4.3
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:42
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.3
       switch_port: Gi/C3
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:43
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.3
+    bmc:
+      mac: 00:14:5e:55:5c:44
+      ip: 172.17.4.3
+  chassis:
+    serial_number: KDDDRZH
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-4:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -84,25 +207,66 @@ bordereau-4:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5E:55:68:C9
-      ip: 172.17.4.4
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:68:c7
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.4
       switch_port: Gi/C4
     eth1:
+      mounted: false
       mac: 00:14:5e:55:68:c8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.4
+    bmc:
+      mac: 00:14:5E:55:68:C9
+      ip: 172.17.4.4
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-5:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -110,25 +274,66 @@ bordereau-5:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXT
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:61:96
-      ip: 172.17.4.5
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:61:94
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.5
       switch_port: Gi/C5
     eth1:
+      mounted: false
       mac: 00:14:5e:55:61:95
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.5
+    bmc:
+      mac: 00:14:5e:55:61:96
+      ip: 172.17.4.5
+  chassis:
+    serial_number: KDDDRXT
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-6:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -136,25 +341,66 @@ bordereau-6:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZM
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:58:f0
-      ip: 172.17.4.6
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:58:ee
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.6
       switch_port: Gi/C6
     eth1:
+      mounted: false
       mac: 00:14:5e:55:58:ef
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.6
+    bmc:
+      mac: 00:14:5e:55:58:f0
+      ip: 172.17.4.6
+  chassis:
+    serial_number: KDDDRZM
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-7:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -162,25 +408,66 @@ bordereau-7:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRVP
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:7e
-      ip: 172.17.4.7
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:7c
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.7
       switch_port: Gi/C7
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:7d
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.7
+    bmc:
+      mac: 00:14:5e:55:5e:7e
+      ip: 172.17.4.7
+  chassis:
+    serial_number: KDDDRVP
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-8:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -188,51 +475,133 @@ bordereau-8:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRVT
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:60:fa
-      ip: 172.17.4.8
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:60:f8
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.8
       switch_port: Gi/C8
     eth1:
+      mounted: false
       mac: 00:14:5e:55:60:f9
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.8
+    bmc:
+      mac: 00:14:5e:55:60:fa
+      ip: 172.17.4.8
+  chassis:
+    serial_number: KDDDRVT
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-9:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXX
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:ea
-      ip: 172.17.4.9
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:e8
+      ip6: fe80::214:5eff:fe55:5ee8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.9
       switch_port: Gi/C9
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:e9
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.9
+    bmc:
+      mac: 00:14:5e:55:5e:ea
+      ip: 172.17.4.9
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRXX
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-10:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -240,51 +609,133 @@ bordereau-10:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWH
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6b:cc
-      ip: 172.17.4.10
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6b:ca
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.10
       switch_port: Gi/C10
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6b:cb
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.10
+    bmc:
+      mac: 00:14:5e:55:6b:cc
+      ip: 172.17.4.10
+  chassis:
+    serial_number: KDDDRWH
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-11:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
     release_date: (09/15/2008)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXW
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:83
-      ip: 172.17.4.11
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:81
+      ip6: fe80::214:5eff:fe55:5c81
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.11
       switch_port: Gi/C11
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:82
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.11
+    bmc:
+      mac: 00:14:5e:55:5c:83
+      ip: 172.17.4.11
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRXW
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-12:
   bios:
     version: 1.30-[C0E140AUS-1.40]-
@@ -292,25 +743,66 @@ bordereau-12:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZR
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:58:f9
-      ip: 172.17.4.12
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:58:f7
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.12
       switch_port: Gi/C12
     eth1:
+      mounted: false
       mac: 00:14:5e:55:58:f8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.12
+    bmc:
+      mac: 00:14:5e:55:58:f9
+      ip: 172.17.4.12
+  chassis:
+    serial_number: KDDDRZR
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-13:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -318,25 +810,66 @@ bordereau-13:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXK
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:65
-      ip: 172.17.4.13
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:63
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.13
       switch_port: Gi/C13
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:64
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.13
+    bmc:
+      mac: 00:14:5e:55:59:65
+      ip: 172.17.4.13
+  chassis:
+    serial_number: KDDDRXK
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-14:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -344,25 +877,66 @@ bordereau-14:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZF
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:5f
-      ip: 172.17.4.14
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:5d
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.14
       switch_port: Gi/C14
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:5e
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.14
+    bmc:
+      mac: 00:14:5e:55:59:5f
+      ip: 172.17.4.14
+  chassis:
+    serial_number: KDDDRZF
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-15:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -370,25 +944,66 @@ bordereau-15:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWB
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6a:f4
-      ip: 172.17.4.15
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6a:f2
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.15
       switch_port: Gi/C15
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6a:f3
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.15
+    bmc:
+      mac: 00:14:5e:55:6a:f4
+      ip: 172.17.4.15
+  chassis:
+    serial_number: KDDDRWB
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-16:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -396,51 +1011,133 @@ bordereau-16:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXD
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5d:ee
-      ip: 172.17.4.16
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5d:ec
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.16
       switch_port: Gi/C16
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5d:ed
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.16
+    bmc:
+      mac: 00:14:5e:55:5d:ee
+      ip: 172.17.4.16
+  chassis:
+    serial_number: KDDDRXD
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-17:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYW
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:ab
-      ip: 172.17.4.17
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:a9
+      ip6: fe80::214:5eff:fe55:5ea9
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.17
       switch_port: Gi/C17
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:aa
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.17
+    bmc:
+      mac: 00:14:5e:55:5e:ab
+      ip: 172.17.4.17
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: KDDDRYW
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-18:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -448,25 +1145,66 @@ bordereau-18:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYN
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:64:0f
-      ip: 172.17.4.18
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:64:0d
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.18
       switch_port: Gi/C18
     eth1:
+      mounted: false
       mac: 00:14:5e:55:64:0e
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.18
+    bmc:
+      mac: 00:14:5e:55:64:0f
+      ip: 172.17.4.18
+  chassis:
+    serial_number: KDDDRYN
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-19:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -474,25 +1212,66 @@ bordereau-19:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXN
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:68:69
-      ip: 172.17.4.19
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:68:67
+      ip6: fe80::214:5eff:fe55:6867
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.19
       switch_port: Gi/C19
     eth1:
+      mounted: false
       mac: 00:14:5e:55:68:68
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.19
+    bmc:
+      mac: 00:14:5e:55:68:69
+      ip: 172.17.4.19
+  chassis:
+    serial_number: KDDDRXN
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-20:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -500,25 +1279,66 @@ bordereau-20:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXB
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:62:b3
-      ip: 172.17.4.20
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:62:b1
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.20
       switch_port: Gi/C20
     eth1:
+      mounted: false
       mac: 00:14:5e:55:62:b2
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.20
+    bmc:
+      mac: 00:14:5e:55:62:b3
+      ip: 172.17.4.20
+  chassis:
+    serial_number: KDDDRXB
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-21:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -526,25 +1346,66 @@ bordereau-21:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXV
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5a:9a
-      ip: 172.17.4.21
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5a:98
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.21
       switch_port: Gi/C21
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5a:99
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.21
+    bmc:
+      mac: 00:14:5e:55:5a:9a
+      ip: 172.17.4.21
+  chassis:
+    serial_number: KDDDRXV
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-22:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -552,25 +1413,66 @@ bordereau-22:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWY
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:86
-      ip: 172.17.4.22
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:84
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.22
       switch_port: Gi/C22
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:85
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.22
+    bmc:
+      mac: 00:14:5e:55:59:86
+      ip: 172.17.4.22
+  chassis:
+    serial_number: KDDDRWY
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-23:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -578,25 +1480,66 @@ bordereau-23:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWM
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:62:98
-      ip: 172.17.4.23
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:62:96
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.23
       switch_port: Gi/C23
     eth1:
+      mounted: false
       mac: 00:14:5e:55:62:97
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.23
+    bmc:
+      mac: 00:14:5e:55:62:98
+      ip: 172.17.4.23
+  chassis:
+    serial_number: KDDDRWM
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-24:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -604,25 +1547,66 @@ bordereau-24:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAA
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    br0:
+      rate: 0
+      interface: Bridge
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:14:5e:55:5d:da
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.1.24
+      switch_port: 
+    eth1:
+      mounted: false
+      mac: 00:14:5e:55:5d:db
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.4.24
     bmc:
       mac: 00:14:5e:55:5d:dc
       ip: 172.17.4.24
-    eth0:
-      mac: 00:14:5e:55:5d:da
-      ip: 172.16.1.24
-      switch_port:
-    eth1:
-      mac: 00:14:5e:55:5d:db
-      ip: 172.16.4.24
+  chassis:
+    serial_number: KDDDTAA
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-25:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -630,25 +1614,66 @@ bordereau-25:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYT
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    br0:
+      rate: 0
+      interface: Bridge
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:14:5e:55:5d:b9
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.1.25
+      switch_port: 
+    eth1:
+      mounted: false
+      mac: 00:14:5e:55:5d:ba
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.4.25
     bmc:
       mac: 00:14:5e:55:5d:bb
       ip: 172.17.4.25
-    eth0:
-      mac: 00:14:5e:55:5d:b9
-      ip: 172.16.1.25
-      switch_port:
-    eth1:
-      mac: 00:14:5e:55:5d:ba
-      ip: 172.16.4.25
+  chassis:
+    serial_number: KDDDRYT
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-26:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -656,25 +1681,66 @@ bordereau-26:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRVW
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    br0:
+      rate: 0
+      interface: Bridge
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:14:5e:55:6d:2f
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.1.26
+      switch_port: 
+    eth1:
+      mounted: false
+      mac: 00:14:5e:55:6d:30
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.4.26
     bmc:
       mac: 00:14:5e:55:6d:31
       ip: 172.17.4.26
-    eth0:
-      mac: 00:14:5e:55:6d:2f
-      ip: 172.16.1.26
-      switch_port:
-    eth1:
-      mac: 00:14:5e:55:6d:30
-      ip: 172.16.4.26
+  chassis:
+    serial_number: KDDDRVW
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-27:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -682,25 +1748,66 @@ bordereau-27:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAG
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
+    br0:
+      rate: 0
+      interface: Bridge
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:14:5e:55:5c:69
+      ip6: fe80::214:5eff:fe55:5c69
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.1.27
+      switch_port: 
+    eth1:
+      mounted: false
+      mac: 00:14:5e:55:5c:6a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.4.27
     bmc:
       mac: 00:14:5e:55:5d:6b
       ip: 172.17.4.27
-    eth0:
-      mac: 00:14:5e:55:5c:69
-      ip: 172.16.1.27
-      switch_port:
-    eth1:
-      mac: 00:14:5e:55:5c:6a
-      ip: 172.16.4.27
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: KDDDTAG
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2592000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-28:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -708,51 +1815,133 @@ bordereau-28:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYZ
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:8a
-      ip: 172.17.4.28
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:88
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.28
       switch_port: Gi/E4
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:89
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.28
+    bmc:
+      mac: 00:14:5e:55:5e:8a
+      ip: 172.17.4.28
+  chassis:
+    serial_number: KDDDRYZ
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-29:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAH
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:c5
-      ip: 172.17.4.29
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:c3
+      ip6: fe80::214:5eff:fe55:5cc3
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.29
       switch_port: Gi/E5
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:c4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.29
+    bmc:
+      mac: 00:14:5e:55:5c:c5
+      ip: 172.17.4.29
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: KDDDTAH
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-30:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -760,51 +1949,133 @@ bordereau-30:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:d8
-      ip: 172.17.4.30
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:d6
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.30
       switch_port: Gi/E6
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:d7
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.30
+    bmc:
+      mac: 00:14:5e:55:5e:d8
+      ip: 172.17.4.30
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-31:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWL
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:b9
-      ip: 172.17.4.31
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:b7
+      ip6: fe80::214:5eff:fe55:59b7
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.31
       switch_port: Gi/E7
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:b8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.31
+    bmc:
+      mac: 00:14:5e:55:59:b9
+      ip: 172.17.4.31
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRWL
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2592000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-32:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -812,25 +2083,66 @@ bordereau-32:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXA
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:bf
-      ip: 172.17.4.32
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:bd
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.32
       switch_port: Gi/E8
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:be
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.32
+    bmc:
+      mac: 00:14:5e:55:59:bf
+      ip: 172.17.4.32
+  chassis:
+    serial_number: KDDDRXA
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-33:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -838,25 +2150,66 @@ bordereau-33:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYH
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:b4
-      ip: 172.17.4.33
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:b2
+      ip6: fe80::214:5eff:fe55:5eb2
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.33
       switch_port: Gi/E9
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:b3
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.33
+    bmc:
+      mac: 00:14:5e:55:5e:b4
+      ip: 172.17.4.33
+  chassis:
+    serial_number: KDDDRYH
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2592000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-34:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -864,51 +2217,133 @@ bordereau-34:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5d:04
-      ip: 172.17.4.34
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5d:02
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.34
       switch_port: Gi/E10
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5d:03
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.34
+    bmc:
+      mac: 00:14:5e:55:5d:04
+      ip: 172.17.4.34
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-35:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZZ
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:24
-      ip: 172.17.4.35
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:22
+      ip6: fe80::214:5eff:fe55:5e22
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.35
       switch_port: Gi/E11
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:23
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.35
+    bmc:
+      mac: 00:14:5e:55:5e:24
+      ip: 172.17.4.35
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: KDDDRZZ
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-36:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -916,25 +2351,66 @@ bordereau-36:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAC
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:69:f2
-      ip: 172.17.4.36
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:69:f0
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.36
       switch_port: Gi/E12
     eth1:
+      mounted: false
       mac: 00:14:5e:55:69:f1
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.36
+    bmc:
+      mac: 00:14:5e:55:69:f2
+      ip: 172.17.4.36
+  chassis:
+    serial_number: KDDDTAC
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-37:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -942,25 +2418,66 @@ bordereau-37:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZL
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5f:d4
-      ip: 172.17.4.37
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5f:d2
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.37
       switch_port: Gi/E13
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5f:d3
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.37
+    bmc:
+      mac: 00:14:5e:55:5f:d4
+      ip: 172.17.4.37
+  chassis:
+    serial_number: KDDDRZL
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-38:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -968,51 +2485,133 @@ bordereau-38:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZP
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5f:11
-      ip: 172.17.4.38
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5f:0f
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.38
       switch_port: Gi/E14
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5f:10
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.38
+    bmc:
+      mac: 00:14:5e:55:5f:11
+      ip: 172.17.4.38
+  chassis:
+    serial_number: KDDDRZP
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-39:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYG
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:63:31
-      ip: 172.17.4.39
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:63:2f
+      ip6: fe80::214:5eff:fe55:632f
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.39
       switch_port: Gi/B1
     eth1:
+      mounted: false
       mac: 00:14:5e:55:63:30
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.39
+    bmc:
+      mac: 00:14:5e:55:63:31
+      ip: 172.17.4.39
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: KDDDRYG
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-40:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1020,181 +2619,468 @@ bordereau-40:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac:
-      ip: 172.17.4.40
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
-      mac:
+      mounted: false
+      rate: 1000000000
+      mac: 
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.40
       switch_port: Gi/B2
     eth1:
-      mac:
+      mounted: false
+      mac: 
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.40
+    bmc:
+      mac: 
+      ip: 172.17.4.40
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-41:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:02
-      ip: 172.17.4.41
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:00
+      ip6: fe80::214:5eff:fe55:5900
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.41
       switch_port: Gi/B3
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:01
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.41
+    bmc:
+      mac: 00:14:5e:55:59:02
+      ip: 172.17.4.41
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-42:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYF
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:60:97
-      ip: 172.17.4.42
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:60:95
+      ip6: fe80::214:5eff:fe55:6095
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.42
       switch_port: Gi/B4
     eth1:
+      mounted: false
       mac: 00:14:5e:55:60:96
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.42
+    bmc:
+      mac: 00:14:5e:55:60:97
+      ip: 172.17.4.42
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: KDDDRYF
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-43:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWD
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6c:02
-      ip: 172.17.4.43
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6c:00
+      ip6: fe80::214:5eff:fe55:6c00
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.43
       switch_port: Gi/B5
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6c:01
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.43
+    bmc:
+      mac: 00:14:5e:55:6c:02
+      ip: 172.17.4.43
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: KDDDRWD
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-44:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXL
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:d4
-      ip: 172.17.4.44
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:d2
+      ip6: fe80::214:5eff:fe55:59d2
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.44
       switch_port: Gi/B6
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:d3
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.44
+    bmc:
+      mac: 00:14:5e:55:59:d4
+      ip: 172.17.4.44
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: KDDDRXL
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-45:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWZ
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:bf
-      ip: 172.17.4.45
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:bd
+      ip6: fe80::214:5eff:fe55:5cbd
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.45
       switch_port: Gi/B7
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:be
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.45
+    bmc:
+      mac: 00:14:5e:55:5c:bf
+      ip: 172.17.4.45
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRWZ
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-46:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYY
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:62
-      ip: 172.17.4.46
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:60
+      ip6: fe80::214:5eff:fe55:5c60
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.46
       switch_port: Gi/B8
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:61
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.46
+    bmc:
+      mac: 00:14:5e:55:5c:62
+      ip: 172.17.4.46
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRYY
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-47:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1202,51 +3088,133 @@ bordereau-47:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWA
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6c:aa
-      ip: 172.17.4.47
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6c:a8
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.47
       switch_port: Gi/B9
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6c:a9
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.47
+    bmc:
+      mac: 00:14:5e:55:6c:aa
+      ip: 172.17.4.47
+  chassis:
+    serial_number: KDDDRWA
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-48:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
     release_date: (09/15/2008)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZV
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:58:ff
-      ip: 172.17.4.48
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:58:fd
+      ip6: fe80::214:5eff:fe55:58fd
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.48
       switch_port: Gi/B10
     eth1:
+      mounted: false
       mac: 00:14:5e:55:58:fe
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.48
+    bmc:
+      mac: 00:14:5e:55:58:ff
+      ip: 172.17.4.48
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRZV
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-49:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1254,25 +3222,66 @@ bordereau-49:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZA
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:62:d9
-      ip: 172.17.4.49
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:62:e7
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.49
       switch_port: Gi/B11
     eth1:
+      mounted: false
       mac: 00:14:5e:55:62:e8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.49
+    bmc:
+      mac: 00:14:5e:55:62:d9
+      ip: 172.17.4.49
+  chassis:
+    serial_number: KDDDRZA
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-50:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -1280,25 +3289,66 @@ bordereau-50:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYR
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:ae
-      ip: 172.17.4.50
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:ac
+      ip6: fe80::214:5eff:fe55:5eac
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.50
       switch_port: Gi/B12
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:ad
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.50
+    bmc:
+      mac: 00:14:5e:55:5e:ae
+      ip: 172.17.4.50
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRYR
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-51:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1306,103 +3356,267 @@ bordereau-51:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYA
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:d7
-      ip: 172.17.4.51
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:d5
+      ip6: fe80::214:5eff:fe55:5cd5
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.51
       switch_port: Gi/B13
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:d6
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.51
+    bmc:
+      mac: 00:14:5e:55:5c:d7
+      ip: 172.17.4.51
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRYA
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-52:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYP
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5d:b5
-      ip: 172.17.4.52
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5d:b3
+      ip6: fe80::214:5eff:fe55:5db3
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.52
       switch_port: Gi/B14
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5d:b4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.52
+    bmc:
+      mac: 00:14:5e:55:5d:b5
+      ip: 172.17.4.52
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: KDDDRYP
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2592000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-53:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRVV
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6c:1d
-      ip: 172.17.4.53
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6c:1b
+      ip6: fe80::214:5eff:fe55:6c1b
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.53
       switch_port: Gi/B15
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6c:1c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.53
+    bmc:
+      mac: 00:14:5e:55:6c:1d
+      ip: 172.17.4.53
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRVV
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-54:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
-  block_devices:
-    sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
-      vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZX
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:63:b8
-      ip: 172.17.4.54
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:63:b6
+      ip6: fe80::214:5eff:fe55:63b6
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.54
       switch_port: Gi/B16
     eth1:
+      mounted: false
       mac: 00:14:5e:55:63:b7
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.54
+    bmc:
+      mac: 00:14:5e:55:63:b8
+      ip: 172.17.4.54
+  block_devices:
+    sda:
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
+      vendor: Hitachi
+  chassis:
+    serial_number: KDDDRZX
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-55:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1410,25 +3624,66 @@ bordereau-55:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZY
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    br0:
+      rate: 0
+      interface: Bridge
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:14:5e:55:5c:ed
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.1.55
+      switch_port: 
+    eth1:
+      mounted: false
+      mac: 00:14:5e:55:5c:ee
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.4.55
     bmc:
       mac: 00:14:5e:55:5c:ef
       ip: 172.17.4.55
-    eth0:
-      mac: 00:14:5e:55:5c:ed
-      ip: 172.16.1.55
-      switch_port:
-    eth1:
-      mac: 00:14:5e:55:5c:ee
-      ip: 172.16.4.55
+  chassis:
+    serial_number: KDDDRZY
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-56:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1436,25 +3691,66 @@ bordereau-56:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZT
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:60:cd
-      ip: 172.17.4.56
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:60:cb
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.56
       switch_port: Gi/D1
     eth1:
+      mounted: false
       mac: 00:14:5e:55:60:cc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.56
+    bmc:
+      mac: 00:14:5e:55:60:cd
+      ip: 172.17.4.56
+  chassis:
+    serial_number: KDDDRZT
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-57:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1462,25 +3758,66 @@ bordereau-57:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac:
-      ip: 172.17.4.57
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
-      mac:
+      mounted: false
+      rate: 1000000000
+      mac: 
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.57
       switch_port: Gi/D2
     eth1:
-      mac:
+      mounted: false
+      mac: 
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.57
+    bmc:
+      mac: 
+      ip: 172.17.4.57
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-58:
   bios:
     version: 1.35-[C0E135AUS-1.35]-
@@ -1488,25 +3825,66 @@ bordereau-58:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZC
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:a8
-      ip: 172.17.4.58
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:a6
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.58
       switch_port: Gi/D3
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:a7
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.58
+    bmc:
+      mac: 00:14:5e:55:5e:a8
+      ip: 172.17.4.58
+  chassis:
+    serial_number: KDDDRZC
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-59:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1514,25 +3892,66 @@ bordereau-59:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZD
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:da
-      ip: 172.17.4.59
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:d8
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.59
       switch_port: Gi/D4
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:d9
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.59
+    bmc:
+      mac: 00:14:5e:55:5c:da
+      ip: 172.17.4.59
+  chassis:
+    serial_number: KDDDRZD
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-60:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -1540,25 +3959,66 @@ bordereau-60:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZN
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5b:5d
-      ip: 172.17.4.60
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5b:5b
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.60
       switch_port: Gi/D5
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5b:5c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.60
+    bmc:
+      mac: 00:14:5e:55:5b:5d
+      ip: 172.17.4.60
+  chassis:
+    serial_number: KDDDRZN
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-61:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -1566,25 +4026,66 @@ bordereau-61:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAL
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:58:4b
-      ip: 172.17.4.61
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:58:49
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.61
       switch_port: Gi/D6
     eth1:
+      mounted: false
       mac: 00:14:5e:55:58:4a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.61
+    bmc:
+      mac: 00:14:5e:55:58:4b
+      ip: 172.17.4.61
+  chassis:
+    serial_number: KDDDTAL
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-62:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1592,25 +4093,66 @@ bordereau-62:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWT
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:63:28
-      ip: 172.17.4.62
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:63:26
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.62
       switch_port: Gi/D7
     eth1:
+      mounted: false
       mac: 00:14:5e:55:63:27
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.62
+    bmc:
+      mac: 00:14:5e:55:63:28
+      ip: 172.17.4.62
+  chassis:
+    serial_number: KDDDRWT
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-63:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1618,25 +4160,66 @@ bordereau-63:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZB
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:6e
-      ip: 172.17.4.63
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:6c
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.63
       switch_port: Gi/D8
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:6d
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.63
+    bmc:
+      mac: 00:14:5e:55:5c:6e
+      ip: 172.17.4.63
+  chassis:
+    serial_number: KDDDRZB
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-64:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1644,25 +4227,66 @@ bordereau-64:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAD
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:d1
-      ip: 172.17.4.64
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:cf
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.64
       switch_port: Gi/D9
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:d0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.64
+    bmc:
+      mac: 00:14:5e:55:5c:d1
+      ip: 172.17.4.64
+  chassis:
+    serial_number: KDDDTAD
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-65:
   bios:
     version: 1.35-[C0E135AUS-1.35]-
@@ -1670,25 +4294,66 @@ bordereau-65:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWX
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:fb
-      ip: 172.17.4.65
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:f9
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.65
       switch_port: Gi/D10
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:fa
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.65
+    bmc:
+      mac: 00:14:5e:55:59:fb
+      ip: 172.17.4.65
+  chassis:
+    serial_number: KDDDRWX
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-66:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1696,25 +4361,66 @@ bordereau-66:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYX
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:1b
-      ip: 172.17.4.66
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:19
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.66
       switch_port: Gi/D11
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:1a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.66
+    bmc:
+      mac: 00:14:5e:55:5e:1b
+      ip: 172.17.4.66
+  chassis:
+    serial_number: KDDDRYX
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-67:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1722,25 +4428,66 @@ bordereau-67:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZW
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:1d
-      ip: 172.17.4.67
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:1b
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.67
       switch_port: Gi/D12
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:1c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.67
+    bmc:
+      mac: 00:14:5e:55:5c:1d
+      ip: 172.17.4.67
+  chassis:
+    serial_number: KDDDRZW
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-68:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1748,25 +4495,66 @@ bordereau-68:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXZ
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:57:8b
-      ip: 172.17.4.68
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:57:89
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.68
       switch_port: Gi/D13
     eth1:
+      mounted: false
       mac: 00:14:5e:55:57:8a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.68
+    bmc:
+      mac: 00:14:5e:55:57:8b
+      ip: 172.17.4.68
+  chassis:
+    serial_number: KDDDRXZ
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-69:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1774,25 +4562,66 @@ bordereau-69:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWW
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:63:d0
-      ip: 172.17.4.69
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:63:ce
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.69
       switch_port: Gi/D14
     eth1:
+      mounted: false
       mac: 00:14:5e:55:63:cf
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.69
+    bmc:
+      mac: 00:14:5e:55:63:d0
+      ip: 172.17.4.69
+  chassis:
+    serial_number: KDDDRWW
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-70:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1800,25 +4629,66 @@ bordereau-70:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWC
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6b:00
-      ip: 172.17.4.70
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6a:fe
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.70
       switch_port: Gi/D15
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6a:ff
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.70
+    bmc:
+      mac: 00:14:5e:55:6b:00
+      ip: 172.17.4.70
+  chassis:
+    serial_number: KDDDRWC
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-71:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1826,25 +4696,66 @@ bordereau-71:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRZK
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:46
-      ip: 172.17.4.71
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:44
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.71
       switch_port: Gi/D16
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:45
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.71
+    bmc:
+      mac: 00:14:5e:55:59:46
+      ip: 172.17.4.71
+  chassis:
+    serial_number: KDDDRZK
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-72:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1852,25 +4763,66 @@ bordereau-72:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXM
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5a:40
-      ip: 172.17.4.72
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5a:3e
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.72
       switch_port: Gi/D17
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5a:3f
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.72
+    bmc:
+      mac: 00:14:5e:55:5a:40
+      ip: 172.17.4.72
+  chassis:
+    serial_number: KDDDRXM
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-73:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1878,25 +4830,66 @@ bordereau-73:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAK
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6a:1c
-      ip: 172.17.4.73
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6a:1a
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.73
       switch_port: Gi/D18
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6a:1b
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.73
+    bmc:
+      mac: 00:14:5e:55:6a:1c
+      ip: 172.17.4.73
+  chassis:
+    serial_number: KDDDTAK
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-74:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1904,25 +4897,66 @@ bordereau-74:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYM
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:64:06
-      ip: 172.17.4.74
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:64:04
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.74
       switch_port: Gi/D19
     eth1:
+      mounted: false
       mac: 00:14:5e:55:64:05
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.74
+    bmc:
+      mac: 00:14:5e:55:64:06
+      ip: 172.17.4.74
+  chassis:
+    serial_number: KDDDRYM
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-75:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1930,25 +4964,66 @@ bordereau-75:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWV
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:b1
-      ip: 172.17.4.75
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:af
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.75
       switch_port: Gi/D20
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:b0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.75
+    bmc:
+      mac: 00:14:5e:55:5e:b1
+      ip: 172.17.4.75
+  chassis:
+    serial_number: KDDDRWV
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-76:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1956,25 +5031,66 @@ bordereau-76:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAF
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5d:0a
-      ip: 172.17.4.76
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5d:08
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.76
       switch_port: Gi/D21
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5d:09
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.76
+    bmc:
+      mac: 00:14:5e:55:5d:0a
+      ip: 172.17.4.76
+  chassis:
+    serial_number: KDDDTAF
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-77:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -1982,25 +5098,66 @@ bordereau-77:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWN
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:63:61
-      ip: 172.17.4.77
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:63:5f
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.77
       switch_port: Gi/D22
     eth1:
+      mounted: false
       mac: 00:14:5e:55:63:60
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.77
+    bmc:
+      mac: 00:14:5e:55:63:61
+      ip: 172.17.4.77
+  chassis:
+    serial_number: KDDDRWN
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-78:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2008,25 +5165,66 @@ bordereau-78:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXP
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:63:fd
-      ip: 172.17.4.78
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:63:fb
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.78
       switch_port: Gi/D23
     eth1:
+      mounted: false
       mac: 00:14:5e:55:63:fc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.78
+    bmc:
+      mac: 00:14:5e:55:63:fd
+      ip: 172.17.4.78
+  chassis:
+    serial_number: KDDDRXP
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-79:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2034,25 +5232,66 @@ bordereau-79:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number:
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:62:ef
-      ip: 172.17.4.79
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:62:ed
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.79
       switch_port: 
     eth1:
+      mounted: false
       mac: 00:14:5e:55:62:ee
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.79
+    bmc:
+      mac: 00:14:5e:55:62:ef
+      ip: 172.17.4.79
+  chassis:
+    serial_number: 
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-80:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2060,25 +5299,66 @@ bordereau-80:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYL
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:b0
-      ip: 172.17.1.80
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:ae
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.80
       switch_port: Gi/F1
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:af
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.80
+    bmc:
+      mac: 00:14:5e:55:5c:b0
+      ip: 172.17.1.80
+  chassis:
+    serial_number: KDDDRYL
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-81:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -2086,25 +5366,66 @@ bordereau-81:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYV
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:58:a8
-      ip: 172.17.1.81
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:58:a6
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.81
       switch_port: Gi/F2
     eth1:
+      mounted: false
       mac: 00:14:5e:55:58:a7
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.81
+    bmc:
+      mac: 00:14:5e:55:58:a8
+      ip: 172.17.1.81
+  chassis:
+    serial_number: KDDDRYV
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-82:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2112,25 +5433,66 @@ bordereau-82:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRVZ
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:68:87
-      ip: 172.17.1.82
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:68:85
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.82
       switch_port: Gi/F3
     eth1:
+      mounted: false
       mac: 00:14:5e:55:68:86
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.82
+    bmc:
+      mac: 00:14:5e:55:68:87
+      ip: 172.17.1.82
+  chassis:
+    serial_number: KDDDRVZ
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-83:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2138,25 +5500,66 @@ bordereau-83:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRVY
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6d:25
-      ip: 172.17.1.83
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6d:23
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.83
       switch_port: Gi/F4
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6d:24
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.83
+    bmc:
+      mac: 00:14:5e:55:6d:25
+      ip: 172.17.1.83
+  chassis:
+    serial_number: KDDDRVY
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-84:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2164,25 +5567,66 @@ bordereau-84:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWR
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:4a
-      ip: 172.17.1.84
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:48
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.84
       switch_port: Gi/F5
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:49
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.84
+    bmc:
+      mac: 00:14:5e:55:5c:4a
+      ip: 172.17.1.84
+  chassis:
+    serial_number: KDDDRWR
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-85:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2190,25 +5634,66 @@ bordereau-85:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYC
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:59:43
-      ip: 172.17.1.85
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:59:41
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.85
       switch_port: Gi/F6
     eth1:
+      mounted: false
       mac: 00:14:5e:55:59:42
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.85
+    bmc:
+      mac: 00:14:5e:55:59:43
+      ip: 172.17.1.85
+  chassis:
+    serial_number: KDDDRYC
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-86:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2216,25 +5701,66 @@ bordereau-86:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYK
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:68:cc
-      ip: 172.17.1.86
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:68:ca
+      ip6: fe80::214:5eff:fe55:68ca
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.86
       switch_port: Gi/F8
     eth1:
+      mounted: false
       mac: 00:14:5e:55:68:cb
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.86
+    bmc:
+      mac: 00:14:5e:55:68:cc
+      ip: 172.17.1.86
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: KDDDRYK
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-87:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2242,51 +5768,133 @@ bordereau-87:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXC
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5e:2a
-      ip: 172.17.1.87
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5e:28
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.87
       switch_port: Gi/F8
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5e:29
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.87
+    bmc:
+      mac: 00:14:5e:55:5e:2a
+      ip: 172.17.1.87
+  chassis:
+    serial_number: KDDDRXC
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-88:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
     release_date: (01/04/2007)
     vendor: IBM
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRXF
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5d:6d
-      ip: 172.17.1.88
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5d:6b
+      ip6: fe80::214:5eff:fe55:5d6b
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.88
       switch_port: Gi/F9
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5d:6c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.88
+    bmc:
+      mac: 00:14:5e:55:5d:6d
+      ip: 172.17.1.88
+  chassis:
+    serial_number: KDDDRXF
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4157911040
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-89:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2294,25 +5902,66 @@ bordereau-89:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWF
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6d:07
-      ip: 172.17.1.89
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6d:05
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.89
       switch_port: Gi/F10
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6d:06
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.89
+    bmc:
+      mac: 00:14:5e:55:6d:07
+      ip: 172.17.1.89
+  chassis:
+    serial_number: KDDDRWF
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-90:
   bios:
     version: 1.40-[C0E140AUS-1.40]-
@@ -2320,25 +5969,66 @@ bordereau-90:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWG
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6d:2b
-      ip: 172.17.1.90
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6d:29
+      ip6: fe80::214:5eff:fe55:6d29
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.90
       switch_port: Gi/F11
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6d:2a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.90
+    bmc:
+      mac: 00:14:5e:55:6d:2b
+      ip: 172.17.1.90
+  chassis:
+    serial_number: KDDDRWG
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-91:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2346,25 +6036,66 @@ bordereau-91:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDTAB
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:5c:c8
-      ip: 172.17.1.91
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:5c:c6
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.91
       switch_port: Gi/F12
     eth1:
+      mounted: false
       mac: 00:14:5e:55:5c:c7
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.91
+    bmc:
+      mac: 00:14:5e:55:5c:c8
+      ip: 172.17.1.91
+  chassis:
+    serial_number: KDDDTAB
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-92:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2372,25 +6103,66 @@ bordereau-92:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRYD
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6a:4c
-      ip: 172.17.1.92
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6a:4a
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.92
       switch_port: Gi/F13
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6a:4b
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.92
+    bmc:
+      mac: 00:14:5e:55:6a:4c
+      ip: 172.17.1.92
+  chassis:
+    serial_number: KDDDRYD
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 bordereau-93:
   bios:
     version: 1.32-[C0E132AUS-1.32]-
@@ -2398,22 +6170,63 @@ bordereau-93:
     vendor: IBM
   block_devices:
     sda:
-      model: HDS721680PLA380
-      size:
-      rev: P21OAB1A
+      model: Hitachi HDS72168
+      device: sda
+      size: 80032038912
+      rev: P21O
       vendor: Hitachi
-  chassis:
-      serial_number: KDDDRWP
-      manufacturer: IBM
-      product_name: IBM System x3455-[7986Z1J]-
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
-    bmc:
-      mac: 00:14:5e:55:6d:16
-      ip: 172.17.1.93
+    br0:
+      rate: 0
+      interface: Bridge
     eth0:
+      mounted: false
+      rate: 1000000000
       mac: 00:14:5e:55:6d:14
+      ip6: fe80::214:5eff:fe55:6ca8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.1.93
       switch_port: Gi/F14
     eth1:
+      mounted: false
       mac: 00:14:5e:55:6d:15
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
       ip: 172.16.4.93
+    bmc:
+      mac: 00:14:5e:55:6d:16
+      ip: 172.17.1.93
+  chassis:
+    serial_number: KDDDRWP
+    manufacturer: IBM
+    product_name: IBM System x3455-[7986Z1J]-
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2593000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4157911040
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
