@@ -2,7 +2,7 @@
 bordeplage-1:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
   operating_system:
     kernel: 2.6.32-5-amd64
@@ -17,7 +17,7 @@ bordeplage-1:
       vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:9d:56
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -39,7 +39,7 @@ bordeplage-1:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:d9:ec
       ip6: fe80::214:22ff:fe0c:da94
@@ -87,23 +87,12 @@ bordeplage-1:
     smt_size: 2
 bordeplage-2:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2K2PG
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:25
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -125,7 +114,7 @@ bordeplage-2:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:46
       ip6: fe80::214:22ff:fe0c:da94
@@ -149,12 +138,23 @@ bordeplage-2:
     bmc:
       mac: 00:14:22:0c:da:46
       ip: 172.17.0.2
-  chassis:
-    serial_number: 8PFGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2K2PG
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -174,11 +174,11 @@ bordeplage-2:
 bordeplage-3:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:b4:72
       rate: 10000000000
       ip6: fe80::205:ad00:2:b472
@@ -200,7 +200,7 @@ bordeplage-3:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:66
       ip6: fe80::214:22ff:fe0c:e166
@@ -224,6 +224,10 @@ bordeplage-3:
     bmc:
       mac: 00:14:22:0c:e1:66
       ip: 172.17.0.3
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -231,10 +235,6 @@ bordeplage-3:
       size: 73407820800
       rev: D7013KT2JR3S
       vendor: SEAGATE
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   supported_job_types:
     virtual: false
   chassis:
@@ -260,12 +260,8 @@ bordeplage-3:
 bordeplage-4:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -275,7 +271,7 @@ bordeplage-4:
       vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:e9
       rate: 10000000000
       ip6: fe80::205:ad00:1:61e9
@@ -297,7 +293,7 @@ bordeplage-4:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:d9:fa
       ip6: fe80::214:22ff:fe0c:d9fa
@@ -321,6 +317,10 @@ bordeplage-4:
     bmc:
       mac: 00:14:22:0c:d9:fa
       ip: 172.17.0.4
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
   chassis:
@@ -345,23 +345,12 @@ bordeplage-4:
     smt_size: 2
 bordeplage-5:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2H8A6
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:b5
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -383,7 +372,7 @@ bordeplage-5:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:74
       ip6: fe80::214:22ff:fe0c:da94
@@ -407,12 +396,23 @@ bordeplage-5:
     bmc:
       mac: 00:14:22:0c:e1:74
       ip: 172.17.0.5
-  chassis:
-    serial_number: JKMGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2H8A6
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -431,23 +431,12 @@ bordeplage-5:
     smt_size: 2
 bordeplage-6:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2H2FP
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:39
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -469,7 +458,7 @@ bordeplage-6:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:6e
       ip6: fe80::214:22ff:fe0c:da94
@@ -493,12 +482,23 @@ bordeplage-6:
     bmc:
       mac: 00:14:22:0c:da:6e
       ip: 172.17.0.6
-  chassis:
-    serial_number: 5D5GV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2H2FP
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -517,23 +517,12 @@ bordeplage-6:
     smt_size: 2
 bordeplage-7:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2HKSX
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:4e
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -555,7 +544,7 @@ bordeplage-7:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:44
       ip6: fe80::214:22ff:fe0c:da94
@@ -579,12 +568,23 @@ bordeplage-7:
     bmc:
       mac: 00:14:22:0c:e1:44
       ip: 172.17.0.7
-  chassis:
-    serial_number: FKMGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2HKSX
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -603,26 +603,15 @@ bordeplage-7:
     smt_size: 2
 bordeplage-8:
   bios:
-    version: A05
-    release_date: (01/09/2006)
+    version: A03
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev:
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
-      guid:
+      mounted: true
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:aa:80
       rate: 10000000000
-      ip6: fe80::205:ad00:1:5a76
+      ip6: fe80::205:ad00:2:aa80
       management: false
       enabled: true
       interface: InfiniBand
@@ -632,7 +621,7 @@ bordeplage-8:
       mountable: true
     ib1:
       mounted: false
-      guid:
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:aa:81
       rate: 10000000000
       management: false
       enabled: false
@@ -641,10 +630,10 @@ bordeplage-8:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:40
-      ip6: fe80::214:22ff:fe0c:da94
+      ip6: fe80::214:22ff:fe0c:da40
       management: false
       enabled: true
       interface: Ethernet
@@ -665,12 +654,23 @@ bordeplage-8:
     bmc:
       mac: 00:14:22:0c:da:40
       ip: 172.17.0.8
-  chassis:
-    serial_number:
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D701
+      vendor: SEAGATE
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 5PFGV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -690,12 +690,12 @@ bordeplage-8:
 bordeplage-9:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
   network_interfaces:
     ib0:
-      mounted: false
-      guid:
+      mounted: true
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:a5:80
       rate: 10000000000
       ip6: fe80::205:ad00:2:a580
       management: false
@@ -707,7 +707,7 @@ bordeplage-9:
       mountable: true
     ib1:
       mounted: false
-      guid:
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:a5:81
       rate: 10000000000
       management: false
       enabled: false
@@ -716,7 +716,7 @@ bordeplage-9:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:50
       ip6: fe80::214:22ff:fe0c:da50
@@ -749,12 +749,12 @@ bordeplage-9:
       model: ST373207LC
       device: sda
       size: 73407820800
-      rev:
+      rev: D701
       vendor: SEAGATE
   supported_job_types:
     virtual: false
   chassis:
-    serial_number:
+    serial_number: 2QFGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
   main_memory:
@@ -776,23 +776,12 @@ bordeplage-9:
 bordeplage-10:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2K4G7
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
-      guid:
+      mounted: true
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:76
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
       management: false
@@ -804,7 +793,7 @@ bordeplage-10:
       mountable: true
     ib1:
       mounted: false
-      guid:
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:77
       rate: 10000000000
       management: false
       enabled: false
@@ -813,7 +802,7 @@ bordeplage-10:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac:
       ip6: fe80::214:22ff:fe0c:da94
@@ -837,12 +826,23 @@ bordeplage-10:
     bmc:
       mac: 00:14:22:0c:da:76
       ip: 172.17.0.10
-  chassis:
-    serial_number: 6PFGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2K4G7
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -862,12 +862,8 @@ bordeplage-10:
 bordeplage-11:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -877,7 +873,7 @@ bordeplage-11:
       vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:2a
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -899,7 +895,7 @@ bordeplage-11:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:d9:bc
       ip6: fe80::214:22ff:fe0c:da94
@@ -923,12 +919,16 @@ bordeplage-11:
     bmc:
       mac: 00:14:22:0c:d9:bc
       ip: 172.17.0.11
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: false
   chassis:
     serial_number: FC5GV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  supported_job_types:
-    virtual: false
   main_memory:
     ram_size: 2109562880
   processor:
@@ -948,7 +948,7 @@ bordeplage-11:
 bordeplage-12:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
   block_devices:
     sda:
@@ -963,7 +963,7 @@ bordeplage-12:
     version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:3e
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a3e
@@ -985,7 +985,7 @@ bordeplage-12:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:74
       ip6: fe80::214:22ff:fe0c:da74
@@ -1009,12 +1009,12 @@ bordeplage-12:
     bmc:
       mac: 00:14:22:0c:da:74
       ip: 172.17.0.12
-  supported_job_types:
-    virtual: false
   chassis:
     serial_number: 2D5GV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
+  supported_job_types:
+    virtual: false
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -1033,23 +1033,12 @@ bordeplage-12:
     smt_size: 2
 bordeplage-13:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2JD77
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:b6:7b
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -1071,7 +1060,7 @@ bordeplage-13:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:82
       ip6: fe80::214:22ff:fe0c:da94
@@ -1095,12 +1084,23 @@ bordeplage-13:
     bmc:
       mac: 00:14:22:0c:da:82
       ip: 172.17.0.13
-  chassis:
-    serial_number: 9D5GV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2JD77
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -1120,15 +1120,18 @@ bordeplage-13:
 bordeplage-14:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2HSD8
+      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:52
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a52
@@ -1150,7 +1153,7 @@ bordeplage-14:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:90
       ip6: fe80::214:22ff:fe0c:da90
@@ -1174,21 +1177,16 @@ bordeplage-14:
     bmc:
       mac: 00:14:22:0c:da:90
       ip: 172.17.0.14
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2HSD8
-      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
   chassis:
     serial_number: HC5GV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  main_memory:
-    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -1200,13 +1198,15 @@ bordeplage-14:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
+  main_memory:
+    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-15:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
   operating_system:
     kernel: 2.6.32-5-amd64
@@ -1221,7 +1221,7 @@ bordeplage-15:
       vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:41
       rate: 10000000000
       ip6: fe80::205:ad00:1:6241
@@ -1243,7 +1243,7 @@ bordeplage-15:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:c0
       ip6: fe80::214:22ff:fe0c:dac0
@@ -1291,23 +1291,12 @@ bordeplage-15:
     smt_size: 2
 bordeplage-16:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2HS2A
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:a5:74
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -1329,7 +1318,7 @@ bordeplage-16:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:44
       ip6: fe80::214:22ff:fe0c:da94
@@ -1353,12 +1342,23 @@ bordeplage-16:
     bmc:
       mac: 00:14:22:0c:da:44
       ip: 172.17.0.16
-  chassis:
-    serial_number: JPFGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2HS2A
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -1377,23 +1377,12 @@ bordeplage-16:
     smt_size: 2
 bordeplage-17:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2K4E4
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:c5
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -1415,7 +1404,7 @@ bordeplage-17:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:62
       ip6: fe80::214:22ff:fe0c:da94
@@ -1439,12 +1428,23 @@ bordeplage-17:
     bmc:
       mac: 00:14:22:0c:da:62
       ip: 172.17.0.17
-  chassis:
-    serial_number: GPFGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2K4E4
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -1464,12 +1464,8 @@ bordeplage-17:
 bordeplage-18:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -1479,7 +1475,7 @@ bordeplage-18:
       vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:09
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -1501,7 +1497,7 @@ bordeplage-18:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:a2
       ip6: fe80::214:22ff:fe0c:da94
@@ -1525,14 +1521,16 @@ bordeplage-18:
     bmc:
       mac: 00:14:22:0c:da:a2
       ip: 172.17.0.18
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 335GV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
   supported_job_types:
     virtual: false
-  main_memory:
-    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -1544,13 +1542,15 @@ bordeplage-18:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
+  main_memory:
+    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-19:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
   block_devices:
     sda:
@@ -1565,7 +1565,7 @@ bordeplage-19:
     version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:b5
       rate: 10000000000
       ip6: fe80::205:ad00:1:62b5
@@ -1587,7 +1587,7 @@ bordeplage-19:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:b4:00
       ip6: fe80::214:22ff:fe0c:b400
@@ -1636,22 +1636,11 @@ bordeplage-19:
 bordeplage-20:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2N397
-      vendor: SEAGATE
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:b9
       rate: 10000000000
       ip6: fe80::205:ad00:1:62b9
@@ -1673,7 +1662,7 @@ bordeplage-20:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:b3:1c
       ip6: fe80::214:22ff:fe0c:b31c
@@ -1697,14 +1686,23 @@ bordeplage-20:
     bmc:
       mac: 00:14:22:0c:b3:1c
       ip: 172.17.0.20
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2N397
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 331KV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
   supported_job_types:
     virtual: false
-  main_memory:
-    ram_size: 2110054400
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -1716,28 +1714,19 @@ bordeplage-20:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
+  main_memory:
+    ram_size: 2110054400
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-21:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2JNMQ
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:1a
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a1a
@@ -1759,7 +1748,7 @@ bordeplage-21:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:48
       ip6: fe80::214:22ff:fe0c:e148
@@ -1783,12 +1772,23 @@ bordeplage-21:
     bmc:
       mac: 00:14:22:0c:e1:48
       ip: 172.17.0.21
-  supported_job_types:
-    virtual: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2JNMQ
+      vendor: SEAGATE
   chassis:
     serial_number: DKMGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
+  supported_job_types:
+    virtual: false
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -1808,11 +1808,11 @@ bordeplage-21:
 bordeplage-22:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:42
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a42
@@ -1834,7 +1834,7 @@ bordeplage-22:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:dd:02
       ip6: fe80::214:22ff:fe0c:dd02
@@ -1893,23 +1893,12 @@ bordeplage-22:
     smt_size: 2
 bordeplage-23:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2K4K3
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:89
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -1931,7 +1920,7 @@ bordeplage-23:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:4c
       ip6: fe80::214:22ff:fe0c:da94
@@ -1955,12 +1944,23 @@ bordeplage-23:
     bmc:
       mac: 00:14:22:0c:e1:4c
       ip: 172.17.0.23
-  chassis:
-    serial_number: HLZGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2K4K3
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -1980,11 +1980,11 @@ bordeplage-23:
 bordeplage-24:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:ed
       rate: 10000000000
       ip6: fe80::205:ad00:1:61ed
@@ -2006,7 +2006,7 @@ bordeplage-24:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e0:e0
       ip6: fe80::214:22ff:fe0c:e0e0
@@ -2030,10 +2030,6 @@ bordeplage-24:
     bmc:
       mac: 00:14:22:0c:e0:e0
       ip: 172.17.0.24
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -2041,12 +2037,16 @@ bordeplage-24:
       size: 73407820800
       rev: D7013KT2K3TT
       vendor: SEAGATE
-  supported_job_types:
-    virtual: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 1NZGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
+  supported_job_types:
+    virtual: false
   main_memory:
     ram_size: 2110054400
   processor:
@@ -2066,7 +2066,7 @@ bordeplage-24:
 bordeplage-25:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
   block_devices:
     sda:
@@ -2081,7 +2081,7 @@ bordeplage-25:
     version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:a4:4b
       rate: 10000000000
       ip6: fe80::205:ad00:2:a44b
@@ -2103,7 +2103,7 @@ bordeplage-25:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:76
       ip6: fe80::214:22ff:fe0c:e176
@@ -2152,11 +2152,22 @@ bordeplage-25:
 bordeplage-26:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2JP96
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:95
       rate: 10000000000
       ip6: fe80::205:ad00:1:6295
@@ -2178,7 +2189,7 @@ bordeplage-26:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:52
       ip6: fe80::214:22ff:fe0c:e152
@@ -2202,23 +2213,12 @@ bordeplage-26:
     bmc:
       mac: 00:14:22:0c:e1:52
       ip: 172.17.0.26
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2JP96
-      vendor: SEAGATE
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
+  supported_job_types:
+    virtual: false
   chassis:
     serial_number: 3MZGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  supported_job_types:
-    virtual: false
   main_memory:
     ram_size: 2110054400
   processor:
@@ -2237,23 +2237,12 @@ bordeplage-26:
     smt_size: 2
 bordeplage-27:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2H3BS
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:56
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -2275,7 +2264,7 @@ bordeplage-27:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:7e
       ip6: fe80::214:22ff:fe0c:da94
@@ -2299,12 +2288,23 @@ bordeplage-27:
     bmc:
       mac: 00:14:22:0c:e1:7e
       ip: 172.17.0.27
-  chassis:
-    serial_number: 6MZGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2H3BS
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -2324,7 +2324,7 @@ bordeplage-27:
 bordeplage-28:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
   block_devices:
     sda:
@@ -2339,7 +2339,7 @@ bordeplage-28:
     version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:99
       rate: 10000000000
       ip6: fe80::205:ad00:1:6299
@@ -2361,7 +2361,7 @@ bordeplage-28:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:8c
       ip6: fe80::214:22ff:fe0c:e18c
@@ -2409,23 +2409,12 @@ bordeplage-28:
     smt_size: 2
 bordeplage-29:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2JMGF
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:3a
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -2447,7 +2436,7 @@ bordeplage-29:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:0a
       ip6: fe80::214:22ff:fe0c:da94
@@ -2471,12 +2460,23 @@ bordeplage-29:
     bmc:
       mac: 00:14:22:0c:e1:0a
       ip: 172.17.0.29
-  chassis:
-    serial_number: FMZGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2JMGF
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -2496,22 +2496,11 @@ bordeplage-29:
 bordeplage-30:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2JQL0
-      vendor: SEAGATE
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:fd
       rate: 10000000000
       ip6: fe80::205:ad00:1:61fd
@@ -2533,7 +2522,7 @@ bordeplage-30:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:92
       ip6: fe80::214:22ff:fe0c:e192
@@ -2557,14 +2546,23 @@ bordeplage-30:
     bmc:
       mac: 00:14:22:0c:e1:92
       ip: 172.17.0.30
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2JQL0
+      vendor: SEAGATE
+  supported_job_types:
+    virtual: false
   chassis:
     serial_number: GMZGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  supported_job_types:
-    virtual: false
-  main_memory:
-    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -2576,29 +2574,20 @@ bordeplage-30:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
+  main_memory:
+    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-31:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev:
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
-      guid:
+      mounted: true
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:76
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
       management: false
@@ -2610,7 +2599,7 @@ bordeplage-31:
       mountable: true
     ib1:
       mounted: false
-      guid:
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:77
       rate: 10000000000
       management: false
       enabled: false
@@ -2619,7 +2608,7 @@ bordeplage-31:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:ba
       ip6: fe80::214:22ff:fe0c:da94
@@ -2643,12 +2632,23 @@ bordeplage-31:
     bmc:
       mac: 00:14:22:0c:e1:ba
       ip: 172.17.0.31
-  chassis:
-    serial_number:
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D701
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -2668,8 +2668,12 @@ bordeplage-31:
 bordeplage-32:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -2677,13 +2681,9 @@ bordeplage-32:
       size: 73407820800
       rev: D7013KT1XVC4
       vendor: SEAGATE
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:a5:98
       rate: 10000000000
       ip6: fe80::205:ad00:2:a598
@@ -2705,7 +2705,7 @@ bordeplage-32:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:b6
       ip6: fe80::214:22ff:fe0c:dab6
@@ -2729,12 +2729,12 @@ bordeplage-32:
     bmc:
       mac: 00:14:22:0c:da:b6
       ip: 172.17.0.32
+  supported_job_types:
+    virtual: false
   chassis:
     serial_number: 635GV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  supported_job_types:
-    virtual: false
   main_memory:
     ram_size: 2109562880
   processor:
@@ -2754,22 +2754,11 @@ bordeplage-32:
 bordeplage-33:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2HG5S
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:76
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -2791,7 +2780,7 @@ bordeplage-33:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:94
       ip6: fe80::214:22ff:fe0c:da94
@@ -2815,12 +2804,23 @@ bordeplage-33:
     bmc:
       mac: 00:14:22:0c:da:94
       ip: 172.17.0.33
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2HG5S
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: false
   chassis:
     serial_number: 725GV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  supported_job_types:
-    virtual: false
   main_memory:
     ram_size: 2109562880
   processor:
@@ -2840,11 +2840,11 @@ bordeplage-33:
 bordeplage-34:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:69
       rate: 10000000000
       ip6: fe80::205:ad00:1:6269
@@ -2866,7 +2866,7 @@ bordeplage-34:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:12
       ip6: fe80::214:22ff:fe0c:da12
@@ -2907,6 +2907,8 @@ bordeplage-34:
     product_name: PowerEdge 1855
   supported_job_types:
     virtual: false
+  main_memory:
+    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -2918,23 +2920,17 @@ bordeplage-34:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
-  main_memory:
-    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-35:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:b6:37
       rate: 10000000000
       ip6: fe80::205:ad00:2:b637
@@ -2956,7 +2952,7 @@ bordeplage-35:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:36
       ip6: fe80::214:22ff:fe0c:e136
@@ -2987,12 +2983,18 @@ bordeplage-35:
       size: 73407820800
       rev: D7013KT2JBZM
       vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
   chassis:
     serial_number: BKMGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
+  main_memory:
+    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -3004,15 +3006,13 @@ bordeplage-35:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
-  main_memory:
-    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-36:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
   operating_system:
     kernel: 2.6.32-5-amd64
@@ -3027,7 +3027,7 @@ bordeplage-36:
       vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:22
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -3049,7 +3049,7 @@ bordeplage-36:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:6a
       ip6: fe80::214:22ff:fe0c:da94
@@ -3098,12 +3098,8 @@ bordeplage-36:
 bordeplage-37:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -3113,7 +3109,7 @@ bordeplage-37:
       vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:f1
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -3135,7 +3131,7 @@ bordeplage-37:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:b1:7a
       ip6: fe80::214:22ff:fe0c:da94
@@ -3159,6 +3155,10 @@ bordeplage-37:
     bmc:
       mac: 00:14:22:0c:b1:7a
       ip: 172.17.0.37
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: H25GV1J
     manufacturer: Dell Computer Corporation
@@ -3184,22 +3184,11 @@ bordeplage-37:
 bordeplage-38:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2K4EP
-      vendor: SEAGATE
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:e1
       rate: 10000000000
       ip6: fe80::205:ad00:1:61e1
@@ -3221,7 +3210,7 @@ bordeplage-38:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:13:72:69:a8:b6
       ip6: fe80::213:72ff:fe69:a8b6
@@ -3245,12 +3234,23 @@ bordeplage-38:
     bmc:
       mac: 00:13:72:69:a8:b6
       ip: 172.17.0.38
-  supported_job_types:
-    virtual: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2K4EP
+      vendor: SEAGATE
   chassis:
     serial_number: FWRJZ91
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
+  supported_job_types:
+    virtual: false
   main_memory:
     ram_size: 2109562880
   processor:
@@ -3270,11 +3270,11 @@ bordeplage-38:
 bordeplage-39:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:05
       rate: 10000000000
       ip6: fe80::205:ad00:1:6205
@@ -3296,7 +3296,7 @@ bordeplage-39:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:7c
       ip6: fe80::214:22ff:fe0c:da7c
@@ -3356,7 +3356,7 @@ bordeplage-39:
 bordeplage-40:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
   block_devices:
     sda:
@@ -3365,13 +3365,9 @@ bordeplage-40:
       size: 73407820800
       rev: D7013KT2JNWF
       vendor: SEAGATE
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:b3:8f
       rate: 10000000000
       ip6: fe80::205:ad00:2:b38f
@@ -3393,7 +3389,7 @@ bordeplage-40:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:13:72:69:86:4c
       ip6: fe80::213:72ff:fe69:864c
@@ -3417,14 +3413,16 @@ bordeplage-40:
     bmc:
       mac: 00:13:72:69:86:4c
       ip: 172.17.0.40
-  supported_job_types:
-    virtual: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
-    serial_number: 8XXGV1J
+    serial_number: ''
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  main_memory:
-    ram_size: 2109562880
+  supported_job_types:
+    virtual: false
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -3436,28 +3434,19 @@ bordeplage-40:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
+  main_memory:
+    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-41:
   bios:
     version: A03
-    release_date: (05/12/2005)
+    release_date: 05/12/2005
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT21F0M
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:5e
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a5e
@@ -3479,7 +3468,7 @@ bordeplage-41:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:b3:92
       ip6: fe80::214:22ff:fe0c:b392
@@ -3503,6 +3492,17 @@ bordeplage-41:
     bmc:
       mac: 00:14:22:0c:b3:92
       ip: 172.17.0.41
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT21F0M
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
   chassis:
@@ -3528,7 +3528,7 @@ bordeplage-41:
 bordeplage-42:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
   block_devices:
     sda:
@@ -3537,9 +3537,13 @@ bordeplage-42:
       size: 73407820800
       rev: D7013KT2K38Q
       vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:81
       rate: 10000000000
       ip6: fe80::205:ad00:1:6281
@@ -3561,7 +3565,7 @@ bordeplage-42:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:a4
       ip6: fe80::214:22ff:fe0c:e1a4
@@ -3585,16 +3589,14 @@ bordeplage-42:
     bmc:
       mac: 00:14:22:0c:e1:a4
       ip: 172.17.0.42
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
+  supported_job_types:
+    virtual: false
   chassis:
     serial_number: 4KMGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  supported_job_types:
-    virtual: false
+  main_memory:
+    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -3606,30 +3608,21 @@ bordeplage-42:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
-  main_memory:
-    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-43:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2JNLS
-      vendor: SEAGATE
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:75
       rate: 10000000000
       ip6: fe80::205:ad00:1:6275
@@ -3651,7 +3644,7 @@ bordeplage-43:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:8c
       ip6: fe80::214:22ff:fe0c:da8c
@@ -3675,12 +3668,21 @@ bordeplage-43:
     bmc:
       mac: 00:14:22:0c:da:8c
       ip: 172.17.0.43
-  supported_job_types:
-    virtual: false
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2JNLS
+      vendor: SEAGATE
   chassis:
     serial_number: GC5GV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
+  supported_job_types:
+    virtual: false
+  main_memory:
+    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -3692,20 +3694,14 @@ bordeplage-43:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
-  main_memory:
-    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-44:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -3713,9 +3709,13 @@ bordeplage-44:
       size: 73407820800
       rev: D7013KT2EA4V
       vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:b4:92
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -3737,7 +3737,7 @@ bordeplage-44:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:b1:1c
       ip6: fe80::214:22ff:fe0c:da94
@@ -3767,8 +3767,6 @@ bordeplage-44:
     product_name: PowerEdge 1855
   supported_job_types:
     virtual: false
-  main_memory:
-    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -3780,28 +3778,19 @@ bordeplage-44:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
+  main_memory:
+    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-45:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2K25Q
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:61:89
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -3823,7 +3812,7 @@ bordeplage-45:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:88
       ip6: fe80::214:22ff:fe0c:da94
@@ -3847,12 +3836,23 @@ bordeplage-45:
     bmc:
       mac: 00:14:22:0c:da:88
       ip: 172.17.0.45
-  chassis:
-    serial_number: 3D5GV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2K25Q
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -3871,23 +3871,12 @@ bordeplage-45:
     smt_size: 2
 bordeplage-46:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2H8ET
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:62
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -3909,7 +3898,7 @@ bordeplage-46:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:e1:7c
       ip6: fe80::214:22ff:fe0c:da94
@@ -3933,12 +3922,23 @@ bordeplage-46:
     bmc:
       mac: 00:14:22:0c:e1:7c
       ip: 172.17.0.46
-  chassis:
-    serial_number: 2LMGV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2H8ET
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -3958,12 +3958,8 @@ bordeplage-46:
 bordeplage-47:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: ST373207LC
@@ -3973,7 +3969,7 @@ bordeplage-47:
       vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:b0:2c
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -3995,7 +3991,7 @@ bordeplage-47:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:de:34
       ip6: fe80::214:22ff:fe0c:da94
@@ -4019,12 +4015,16 @@ bordeplage-47:
     bmc:
       mac: 00:14:22:0c:de:34
       ip: 172.17.0.47
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: false
   chassis:
     serial_number: 6LZGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
-  supported_job_types:
-    virtual: false
   main_memory:
     ram_size: 2109562880
   processor:
@@ -4044,22 +4044,15 @@ bordeplage-47:
 bordeplage-48:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2H2ZB
-      vendor: SEAGATE
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:62:59
       rate: 10000000000
       ip6: fe80::205:ad00:1:6259
@@ -4081,7 +4074,7 @@ bordeplage-48:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:db:ca
       ip6: fe80::214:22ff:fe0c:dbca
@@ -4105,6 +4098,13 @@ bordeplage-48:
     bmc:
       mac: 00:14:22:0c:db:ca
       ip: 172.17.0.48
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2H2ZB
+      vendor: SEAGATE
   supported_job_types:
     virtual: false
   chassis:
@@ -4130,23 +4130,12 @@ bordeplage-48:
 bordeplage-49:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev:
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
-      guid:
+      mounted: true
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:b4:04
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
       management: false
@@ -4158,7 +4147,7 @@ bordeplage-49:
       mountable: true
     ib1:
       mounted: false
-      guid:
+      guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:b4:05
       rate: 10000000000
       management: false
       enabled: false
@@ -4167,7 +4156,7 @@ bordeplage-49:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:30
       ip6: fe80::214:22ff:fe0c:da94
@@ -4191,14 +4180,23 @@ bordeplage-49:
     bmc:
       mac:
       ip: 172.17.0.49
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D701
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
-    serial_number:
+    serial_number: JNFGV1J
     manufacturer: Dell Computer Corporation
     product_name: PowerEdge 1855
   supported_job_types:
     virtual: false
-  main_memory:
-    ram_size: 2109562880
   processor:
     model: Intel Xeon
     cache_l1d: 16384
@@ -4210,28 +4208,19 @@ bordeplage-49:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 0
+  main_memory:
+    ram_size: 2109562880
   architecture:
     platform_type: x86_64
     smt_size: 2
 bordeplage-50:
   bios:
-    version: A03
-    release_date: (05/12/2005)
+    version: A05
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2DQFZ
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:32
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -4253,7 +4242,7 @@ bordeplage-50:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:a6
       ip6: fe80::214:22ff:fe0c:da94
@@ -4277,12 +4266,23 @@ bordeplage-50:
     bmc:
       mac: 00:14:22:0c:da:a6
       ip: 172.17.0.50
-  chassis:
-    serial_number: 135GV1J
-    manufacturer: Dell Computer Corporation
-    product_name: PowerEdge 1855
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2DQFZ
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: false
+  chassis:
+    serial_number: 725GV1J
+    manufacturer: Dell Computer Corporation
+    product_name: PowerEdge 1855
   main_memory:
     ram_size: 2109562880
   processor:
@@ -4302,22 +4302,11 @@ bordeplage-50:
 bordeplage-51:
   bios:
     version: A05
-    release_date: (01/09/2006)
+    release_date: 01/09/2006
     vendor: Dell Computer Corporation
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: ST373207LC
-      device: sda
-      size: 73407820800
-      rev: D7013KT2JLQ5
-      vendor: SEAGATE
   network_interfaces:
     ib0:
-      mounted: false
+      mounted: true
       guid: 20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:02:4f:03
       rate: 10000000000
       ip6: fe80::205:ad00:1:5a76
@@ -4339,7 +4328,7 @@ bordeplage-51:
       driver: mlx4_core
       mountable: false
     eth0:
-      mounted: false
+      mounted: true
       rate: 1000000000
       mac: 00:14:22:0c:da:7e
       ip6: fe80::214:22ff:fe0c:da94
@@ -4363,6 +4352,17 @@ bordeplage-51:
     bmc:
       mac: 00:14:22:0c:da:7e
       ip: 172.17.0.51
+  block_devices:
+    sda:
+      model: ST373207LC
+      device: sda
+      size: 73407820800
+      rev: D7013KT2JLQ5
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: FPFGV1J
     manufacturer: Dell Computer Corporation
