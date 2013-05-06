@@ -92,6 +92,7 @@ site :lille do |site_uid|
           :switch           => 'gw-lille',
           :switch_port      => lookup('chinqchint',"#{node_uid}",'network_interfaces', 'eth1', 'switch_port'),
           :ip               => lookup('chinqchint', node_uid, 'network_interfaces', 'eth1', 'ip'),
+          :ip6              => lookup('chinqchint', node_uid, 'network_interfaces', 'eth1', 'ip6'),
           :driver           => lookup('chinqchint', node_uid, 'network_interfaces', 'eth1', 'driver'),
           :mac              => lookup('chinqchint', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
