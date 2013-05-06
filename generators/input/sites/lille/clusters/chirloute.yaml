@@ -1,232 +1,545 @@
+---
 chirloute-1:
   bios:
     version: 1.66.00
-    vendor: Dell Inc.
     release_date: 04/05/2012
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:26:6c:f9:18:e4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.17.35.1
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:6c:f9:18:e5
+      ip6: fe80::226:6cff:fef9:18e5
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.35.1
+      switch_port: Gi4/25
     bmc:
       mac: 00:26:6c:f9:18:e6
       ip: 172.17.35.101
-    eth0:
-      mac: 00:26:6c:f9:18:e4
-      ip: 172.17.35.1
-    eth1:
-      mac: 00:26:6c:f9:18:e5
-      ip: 172.16.35.1
-      switch_port: Gi4/25
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST3300657SS
+      device: sda
+      size: 300000000000
+      rev: ES64
+      vendor: SEAGATE
   chassis:
     serial_number: D385Z4J
     manufacturer: Dell
     product_name: C6100
-  block_devices:
-    sda:
-      model: ST3300657SS
-      size: 585937500
-      rev: ES64
-      vendor: SEAGATE
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 8385187840
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2400000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 4
     gpu_model: Tesla-S2050
 chirloute-2:
   bios:
     version: 1.66.00
-    vendor: Dell Inc.
     release_date: 04/05/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST3300657SS
+      device: sda
+      size: 300000000000
+      rev: ES64
+      vendor: SEAGATEi
   network_interfaces:
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:26:6c:f9:17:e8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.17.35.2
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:6c:f9:17:e9
+      ip6: fe80::226:6cff:fef9:1609
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.35.2
+      switch_port: Gi3/25
     bmc:
       mac: 00:26:6c:f9:17:ea
       ip: 172.17.35.102
-    eth0:
-      mac: 00:26:6c:f9:17:e8
-      ip: 172.17.35.2
-    eth1:
-      mac: 00:26:6c:f9:17:e9
-      ip: 172.16.35.2
-      switch_port: Gi3/25
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: D385Z4J
     manufacturer: Dell
     product_name: C6100
-  block_devices:
-    sda:
-      model: ST3300657SS
-      size: 585937500
-      rev: ES64
-      vendor: SEAGATEi
+  main_memory:
+    ram_size: 8385175552
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2400000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 4
     gpu_model: Tesla-S2050
 chirloute-3:
   bios:
     version: 1.66.00
-    vendor: Dell Inc.
     release_date: 04/05/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST3300657SS
+      device: sda
+      size: 300000000000
+      rev: ES64
+      vendor: SEAGATE
   network_interfaces:
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:26:6c:f9:15:70
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.17.35.3
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:6c:f9:15:71
+      ip6: fe80::226:6cff:fef9:1571
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.35.3
+      switch_port: Gi4/44
     bmc:
       mac: 00:26:6c:f9:15:72
       ip: 172.17.35.103
-    eth0:
-      mac: 00:26:6c:f9:15:70
-      ip: 172.17.35.3
-    eth1:
-      mac: 00:26:6c:f9:15:71
-      ip: 172.16.35.3
-      switch_port: Gi4/44	
   chassis:
     serial_number: D385Z4J
     manufacturer: Dell
     product_name: C6100
-  block_devices:
-    sda:
-      model: ST3300657SS
-      size: 585937500
-      rev: ES64
-      vendor: SEAGATE
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 6267150336
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2400000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 4
     gpu_model: Tesla-S2050
 chirloute-4:
   bios:
     version: 1.66.00
-    vendor: Dell Inc.
     release_date: 04/05/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST3300657SS
+      device: sda
+      size: 300000000000
+      rev: ES64
+      vendor: SEAGATE
   network_interfaces:
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:26:6c:f9:19:60
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.17.35.4
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:6c:f9:19:61
+      ip6: fe80::226:6cff:fef9:1609
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.35.4
+      switch_port: Gi3/26
     bmc:
       mac: 00:26:6c:f9:19:62
       ip: 172.17.35.104
-    eth0:
-      mac: 00:26:6c:f9:19:60
-      ip: 172.17.35.4
-    eth1:
-      mac: 00:26:6c:f9:19:61
-      ip: 172.16.35.4
-      switch_port: Gi3/26	
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: D385Z4J
     manufacturer: Dell
     product_name: C6100
-  block_devices:
-    sda:
-      model: ST3300657SS
-      size: 585937500
-      rev: ES64
-      vendor: SEAGATE
+  main_memory:
+    ram_size: 8385175552
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2400000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 4
     gpu_model: Tesla-S2050
 chirloute-5:
   bios:
     version: 1.66.00
-    vendor: Dell Inc.
     release_date: 04/05/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST3300657SS
+      device: sda
+      size: 300000000000
+      rev: ES64
+      vendor: SEAGATE
   network_interfaces:
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:26:6c:f9:16:08
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.17.35.5
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:6c:f9:16:09
+      ip6: fe80::226:6cff:fef9:1609
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.35.5
+      switch_port: Gi4/23
     bmc:
       mac: 00:26:6c:f9:16:0a
       ip: 172.17.35.105
-    eth0:
-      mac: 00:26:6c:f9:16:08
-      ip: 172.17.35.5
-    eth1:
-      mac: 00:26:6c:f9:16:09
-      ip: 172.16.35.5
-      switch_port: Gi4/23
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: F385Z4J
     manufacturer: Dell
     product_name: C6100
-  block_devices:
-    sda:
-      model: ST3300657SS
-      size: 585937500
-      rev: ES64
-      vendor: SEAGATE
+  main_memory:
+    ram_size: 8385175552
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2400000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 4
     gpu_model: Tesla-S2050
 chirloute-6:
   bios:
     version: 1.66.00
-    vendor: Dell Inc.
     release_date: 04/05/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST3300657SS
+      device: sda
+      size: 300000000000
+      rev: ES64
+      vendor: SEAGATE
   network_interfaces:
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:26:6c:f9:17:20
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.17.35.6
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:6c:f9:17:21
+      ip6: fe80::226:6cff:fef9:1609
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.35.6
+      switch_port: Gi3/31
     bmc:
       mac: 00:26:6c:f9:17:22
       ip: 172.17.35.106
-    eth0:
-      mac: 00:26:6c:f9:17:20
-      ip: 172.17.35.6
-    eth1:
-      mac: 00:26:6c:f9:17:21
-      ip: 172.16.35.6
-      switch_port: Gi3/31
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: F385Z4J
     manufacturer: Dell
     product_name: C6100
-  block_devices:
-    sda:
-      model: ST3300657SS
-      size: 585937500
-      rev: ES64
-      vendor: SEAGATE
+  main_memory:
+    ram_size: 8385175552
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2400000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 4
     gpu_model: Tesla-S2050
 chirloute-7:
   bios:
     version: 1.66.00
-    vendor: Dell Inc.
     release_date: 04/05/2012
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:26:6c:f9:17:b8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.17.35.7
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:6c:f9:17:b9
+      ip6: fe80::226:6cff:fef9:17b9
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.35.7
+      switch_port: Gi2/41
     bmc:
       mac: 00:26:6c:f9:17:b9
       ip: 172.17.35.107
-    eth0:
-      mac: 00:26:6c:f9:17:b8
-      ip: 172.17.35.7
-    eth1:
-      mac: 00:26:6c:f9:17:b9
-      ip: 172.16.35.7
-      switch_port: Gi2/41
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST3300657SS
+      device: sda
+      size: 300000000000
+      rev: ES64
+      vendor: SEAGATE
   chassis:
     serial_number: F385Z4J
     manufacturer: Dell
     product_name: C6100
-  block_devices:
-    sda:
-      model: ST3300657SS
-      size: 585937500
-      rev: ES64
-      vendor: SEAGATE
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2400000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 8385175552
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 4
     gpu_model: Tesla-S2050
 chirloute-8:
   bios:
     version: 1.66.00
-    vendor: Dell Inc.
     release_date: 04/05/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: ST3300657SS
+      device: sda
+      size: 300000000000
+      rev: ES64
+      vendor: SEAGATE
   network_interfaces:
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:26:6c:f9:19:80
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.17.35.8
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:6c:f9:19:81
+      ip6: fe80::226:6cff:fef9:1609
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.35.8
+      switch_port: Gi3/32
     bmc:
       mac: 00:26:6c:f9:19:82
       ip: 172.17.35.108
-    eth0:
-      mac: 00:26:6c:f9:19:80
-      ip: 172.17.35.8
-    eth1:
-      mac: 00:26:6c:f9:19:81
-      ip: 172.16.35.8
-      switch_port: Gi3/32
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: F385Z4J
     manufacturer: Dell
     product_name: C6100
-  block_devices:
-    sda:
-      model: ST3300657SS
-      size: 585937500
-      rev: ES64
-      vendor: SEAGATE
+  main_memory:
+    ram_size: 8385175552
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2400000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 4
     gpu_model: Tesla-S2050
