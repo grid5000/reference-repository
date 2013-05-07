@@ -10,16 +10,16 @@ hercule-1:
       interface: Bridge
     eth0:
       mounted: false
-      mac: 00:8C:FA:0B:B9:C2
+      mac: 00:8c:fa:0b:b9:c2
       management: false
       enabled: false
       interface: Ethernet
       driver: ixgbe
       mountable: false
     eth1:
-      mounted: false
+      mounted: true
       rate: 10000000000
-      mac: 00:8C:FA:0B:B9:C3
+      mac: 00:8c:fa:0b:b9:c3
       ip6: fe80::28c:faff:fe0b:b9c3
       management: false
       enabled: true
@@ -44,7 +44,7 @@ hercule-1:
       driver: igb
       mountable: false
     bmc:
-      mac: 84:8F:69:FD:4D:38
+      mac: 84:8f:69:fd:4d:38
       ip: 172.17.51.1
   block_devices:
     sda:
@@ -111,7 +111,7 @@ hercule-2:
       driver: ixgbe
       mountable: false
     eth1:
-      mounted: false
+      mounted: true
       rate: 10000000000
       mac: 00:8c:fa:0b:b4:bd
       ip6: fe80::28c:faff:fe0b:b4bd
@@ -138,7 +138,7 @@ hercule-2:
       driver: igb
       mountable: false
     bmc:
-      mac: 84:8F:69:FD:4F:3F
+      mac: 84:8f:69:fd:4f:3f
       ip: 172.17.51.2
   block_devices:
     sda:
@@ -213,7 +213,7 @@ hercule-3:
       driver: ixgbe
       mountable: false
     eth1:
-      mounted: false
+      mounted: true
       rate: 10000000000
       mac: 00:8c:fa:0b:e1:79
       ip6: fe80::28c:faff:fe0b:e179
@@ -240,7 +240,7 @@ hercule-3:
       driver: igb
       mountable: false
     bmc:
-      mac: 84:8F:69:FD:4C:21
+      mac: 84:8f:69:fd:4c:21
       ip: 172.17.51.3
   operating_system:
     kernel: 2.6.32-5-amd64
@@ -307,7 +307,7 @@ hercule-4:
       driver: ixgbe
       mountable: false
     eth1:
-      mounted: false
+      mounted: true
       rate: 10000000000
       mac: 00:8c:fa:0b:d8:53
       ip6: fe80::28c:faff:fe0b:d853
@@ -334,7 +334,7 @@ hercule-4:
       driver: igb
       mountable: false
     bmc:
-      mac: 84:8F:69:FD:4A:53
+      mac: 84:8f:69:fd:4a:53
       ip: 172.17.51.4
   chassis:
     serial_number: GQ3HD5J
