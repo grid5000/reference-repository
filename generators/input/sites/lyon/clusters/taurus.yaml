@@ -34,7 +34,7 @@ taurus-1:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:22:e9
+      mac: bc:30:5b:ef:22:e8
       management: false
       enabled: false
       interface: Ethernet
@@ -42,7 +42,7 @@ taurus-1:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:22:ea
+      mac: bc:30:5b:ef:22:e9
       management: false
       enabled: false
       interface: Ethernet
@@ -50,7 +50,7 @@ taurus-1:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:22:eb
+      mac: bc:30:5b:ef:22:e8
       management: false
       enabled: false
       interface: Ethernet
@@ -69,12 +69,14 @@ taurus-1:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 8HTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
-  supported_job_types:
-    virtual: ivt
+  main_memory:
+    ram_size: 33761566720
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -86,8 +88,6 @@ taurus-1:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
-  main_memory:
-    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64
@@ -97,12 +97,6 @@ taurus-2:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  block_devices:
-    sda:
-      model: PERC H710
-      device: sda
-      size: 598879502336
-      rev: 3.13
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -137,7 +131,7 @@ taurus-2:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:21:bd
+      mac: bc:30:5b:ef:21:bc
       management: false
       enabled: false
       interface: Ethernet
@@ -145,7 +139,7 @@ taurus-2:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:21:be
+      mac: bc:30:5b:ef:21:bd
       management: false
       enabled: false
       interface: Ethernet
@@ -153,7 +147,7 @@ taurus-2:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:21:bf
+      mac: bc:30:5b:ef:21:bc
       management: false
       enabled: false
       interface: Ethernet
@@ -162,6 +156,12 @@ taurus-2:
     bmc:
       mac: d4:be:d9:f9:a3:ea
       ip: 172.17.48.2
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
   chassis:
     serial_number: 6HTHD5J
     manufacturer: Dell Inc.
@@ -220,7 +220,7 @@ taurus-3:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:31:39
+      mac: bc:30:5b:ef:31:38
       management: false
       enabled: false
       interface: Ethernet
@@ -228,7 +228,7 @@ taurus-3:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:31:3a
+      mac: bc:30:5b:ef:31:39
       management: false
       enabled: false
       interface: Ethernet
@@ -236,7 +236,7 @@ taurus-3:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:31:3b
+      mac: bc:30:5b:ef:31:38
       management: false
       enabled: false
       interface: Ethernet
@@ -261,8 +261,6 @@ taurus-3:
     serial_number: 7HTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
-  main_memory:
-    ram_size: 33761566720
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -274,6 +272,8 @@ taurus-3:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64
@@ -313,7 +313,7 @@ taurus-4:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:23:2d
+      mac: bc:30:5b:ef:23:2c
       management: false
       enabled: false
       interface: Ethernet
@@ -321,7 +321,7 @@ taurus-4:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:23:2e
+      mac: bc:30:5b:ef:23:2d
       management: false
       enabled: false
       interface: Ethernet
@@ -329,7 +329,7 @@ taurus-4:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:23:2f
+      mac: bc:30:5b:ef:23:2c
       management: false
       enabled: false
       interface: Ethernet
@@ -338,16 +338,16 @@ taurus-4:
     bmc:
       mac: d4:be:d9:fb:e7:96
       ip: 172.17.48.4
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: PERC H710
       device: sda
       size: 598879502336
       rev: 3.13
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: ivt
   chassis:
@@ -376,16 +376,6 @@ taurus-5:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: PERC H710
-      device: sda
-      size: 598879502336
-      rev: 3.13
   network_interfaces:
     eth0:
       mounted: true
@@ -416,7 +406,7 @@ taurus-5:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:22:81
+      mac: bc:30:5b:ef:22:80
       management: false
       enabled: false
       interface: Ethernet
@@ -424,7 +414,7 @@ taurus-5:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:22:82
+      mac: bc:30:5b:ef:22:81
       management: false
       enabled: false
       interface: Ethernet
@@ -432,7 +422,7 @@ taurus-5:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:22:83
+      mac: bc:30:5b:ef:22:80
       management: false
       enabled: false
       interface: Ethernet
@@ -441,6 +431,16 @@ taurus-5:
     bmc:
       mac: d4:be:d9:fb:ed:38
       ip: 172.17.48.5
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   supported_job_types:
     virtual: ivt
   chassis:
@@ -469,6 +469,10 @@ taurus-6:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     eth0:
       mounted: true
@@ -499,7 +503,7 @@ taurus-6:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:00:b5
+      mac: bc:30:5b:ef:00:b4
       management: false
       enabled: false
       interface: Ethernet
@@ -507,7 +511,7 @@ taurus-6:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:00:b6
+      mac: bc:30:5b:ef:00:b5
       management: false
       enabled: false
       interface: Ethernet
@@ -515,7 +519,7 @@ taurus-6:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:00:b7
+      mac: bc:30:5b:ef:00:b4
       management: false
       enabled: false
       interface: Ethernet
@@ -524,10 +528,6 @@ taurus-6:
     bmc:
       mac: d4:be:d9:fb:ed:fe
       ip: 172.17.48.6
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: PERC H710
@@ -540,8 +540,6 @@ taurus-6:
     product_name: PowerEdge R720
   supported_job_types:
     virtual: ivt
-  main_memory:
-    ram_size: 33761566720
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -553,6 +551,8 @@ taurus-6:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64
@@ -562,16 +562,6 @@ taurus-7:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  block_devices:
-    sda:
-      model: PERC H710
-      device: sda
-      size: 598879502336
-      rev: 3.13
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     eth0:
       mounted: true
@@ -602,7 +592,7 @@ taurus-7:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:31:35
+      mac: bc:30:5b:ef:31:34
       management: false
       enabled: false
       interface: Ethernet
@@ -610,7 +600,7 @@ taurus-7:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:31:36
+      mac: bc:30:5b:ef:31:35
       management: false
       enabled: false
       interface: Ethernet
@@ -618,7 +608,7 @@ taurus-7:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:31:37
+      mac: bc:30:5b:ef:31:34
       management: false
       enabled: false
       interface: Ethernet
@@ -627,14 +617,22 @@ taurus-7:
     bmc:
       mac: d4:be:d9:fb:ef:c8
       ip: 172.17.48.7
-  supported_job_types:
-    virtual: ivt
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
   chassis:
     serial_number: 2HTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
-  main_memory:
-    ram_size: 33761566720
+  supported_job_types:
+    virtual: ivt
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -646,6 +644,8 @@ taurus-7:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64
@@ -655,21 +655,11 @@ taurus-8:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  block_devices:
-    sda:
-      model: PERC H710
-      device: sda
-      size: 598879502336
-      rev: 3.13
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     eth0:
       mounted: true
       rate: 10000000000
-      mac: a0:36:9f:09:c0:14
+      mac: a0:36:9f:09:c2:f8
       ip6: fe80::a236:9fff:fe09:c2f8
       management: false
       enabled: true
@@ -679,7 +669,7 @@ taurus-8:
       ip: 172.16.48.8
     eth1:
       mounted: false
-      mac: a0:36:9f:09:c0:16
+      mac: a0:36:9f:09:c2:fa
       management: false
       enabled: false
       interface: Ethernet
@@ -687,7 +677,7 @@ taurus-8:
       mountable: false
     eth2:
       mounted: false
-      mac: bc:30:5b:ef:22:b8
+      mac: bc:30:5b:ef:31:34
       management: false
       enabled: false
       interface: Ethernet
@@ -695,7 +685,7 @@ taurus-8:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:22:b9
+      mac: bc:30:5b:ef:31:34
       management: false
       enabled: false
       interface: Ethernet
@@ -703,7 +693,7 @@ taurus-8:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:22:ba
+      mac: bc:30:5b:ef:31:35
       management: false
       enabled: false
       interface: Ethernet
@@ -711,7 +701,7 @@ taurus-8:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:22:bb
+      mac: bc:30:5b:ef:31:34
       management: false
       enabled: false
       interface: Ethernet
@@ -720,14 +710,22 @@ taurus-8:
     bmc:
       mac: d4:be:d9:fa:78:88
       ip: 172.17.48.8
-  supported_job_types:
-    virtual: ivt
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
   chassis:
     serial_number: 2HTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
-  main_memory:
-    ram_size: 33761566720
+  supported_job_types:
+    virtual: ivt
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -739,6 +737,8 @@ taurus-8:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64
@@ -748,10 +748,6 @@ taurus-9:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     eth0:
       mounted: true
@@ -782,7 +778,7 @@ taurus-9:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ee:fd:f9
+      mac: bc:30:5b:ee:fd:f8
       management: false
       enabled: false
       interface: Ethernet
@@ -790,7 +786,7 @@ taurus-9:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ee:fd:fa
+      mac: bc:30:5b:ee:fd:f9
       management: false
       enabled: false
       interface: Ethernet
@@ -798,7 +794,7 @@ taurus-9:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ee:fd:fb
+      mac: bc:30:5b:ee:fd:f8
       management: false
       enabled: false
       interface: Ethernet
@@ -807,6 +803,10 @@ taurus-9:
     bmc:
       mac: d4:be:d9:fb:50:78
       ip: 172.17.48.9
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
       model: PERC H710
@@ -819,6 +819,8 @@ taurus-9:
     product_name: PowerEdge R720
   supported_job_types:
     virtual: ivt
+  main_memory:
+    ram_size: 33761566720
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -830,8 +832,6 @@ taurus-9:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
-  main_memory:
-    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64
@@ -841,12 +841,6 @@ taurus-10:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  block_devices:
-    sda:
-      model: PERC H710
-      device: sda
-      size: 598879502336
-      rev: 3.13
   network_interfaces:
     eth0:
       mounted: true
@@ -877,7 +871,7 @@ taurus-10:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ee:f6:91
+      mac: bc:30:5b:ee:f6:90
       management: false
       enabled: false
       interface: Ethernet
@@ -885,7 +879,7 @@ taurus-10:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ee:f6:92
+      mac: bc:30:5b:ee:f6:91
       management: false
       enabled: false
       interface: Ethernet
@@ -893,7 +887,7 @@ taurus-10:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ee:f6:93
+      mac: bc:30:5b:ee:f6:90
       management: false
       enabled: false
       interface: Ethernet
@@ -902,6 +896,12 @@ taurus-10:
     bmc:
       mac: d4:be:d9:fb:50:b2
       ip: 172.17.48.10
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -968,7 +968,7 @@ taurus-11:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ee:ff:9d
+      mac: bc:30:5b:ee:ff:9c
       management: false
       enabled: false
       interface: Ethernet
@@ -976,7 +976,7 @@ taurus-11:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ee:ff:9e
+      mac: bc:30:5b:ee:ff:9d
       management: false
       enabled: false
       interface: Ethernet
@@ -984,7 +984,7 @@ taurus-11:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ee:ff:9f
+      mac: bc:30:5b:ee:ff:9c
       management: false
       enabled: false
       interface: Ethernet
@@ -1027,6 +1027,16 @@ taurus-12:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
   network_interfaces:
     eth0:
       mounted: true
@@ -1057,7 +1067,7 @@ taurus-12:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:04:29
+      mac: bc:30:5b:ef:04:28
       management: false
       enabled: false
       interface: Ethernet
@@ -1065,7 +1075,7 @@ taurus-12:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:04:2a
+      mac: bc:30:5b:ef:04:29
       management: false
       enabled: false
       interface: Ethernet
@@ -1073,7 +1083,7 @@ taurus-12:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:04:2b
+      mac: bc:30:5b:ef:04:28
       management: false
       enabled: false
       interface: Ethernet
@@ -1082,24 +1092,12 @@ taurus-12:
     bmc:
       mac: d4:be:d9:fb:ed:b8
       ip: 172.17.48.12
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
-  block_devices:
-    sda:
-      model: PERC H710
-      device: sda
-      size: 598879502336
-      rev: 3.13
-  supported_job_types:
-    virtual: ivt
   chassis:
     serial_number: GHTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
-  main_memory:
-    ram_size: 33761566720
+  supported_job_types:
+    virtual: ivt
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -1111,6 +1109,8 @@ taurus-12:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64
@@ -1120,10 +1120,6 @@ taurus-13:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   network_interfaces:
     eth0:
       mounted: true
@@ -1154,7 +1150,7 @@ taurus-13:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:33:fd
+      mac: bc:30:5b:ef:33:fc
       management: false
       enabled: false
       interface: Ethernet
@@ -1162,7 +1158,7 @@ taurus-13:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:33:fe
+      mac: bc:30:5b:ef:33:fd
       management: false
       enabled: false
       interface: Ethernet
@@ -1170,7 +1166,7 @@ taurus-13:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:33:ff
+      mac: bc:30:5b:ef:33:fc
       management: false
       enabled: false
       interface: Ethernet
@@ -1179,6 +1175,10 @@ taurus-13:
     bmc:
       mac: d4:be:d9:fb:ec:40
       ip: 172.17.48.13
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
       model: PERC H710
@@ -1191,8 +1191,6 @@ taurus-13:
     serial_number: CHTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
-  main_memory:
-    ram_size: 33761566720
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -1204,6 +1202,8 @@ taurus-13:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64
@@ -1253,7 +1253,7 @@ taurus-14:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:30:65
+      mac: bc:30:5b:ef:30:64
       management: false
       enabled: false
       interface: Ethernet
@@ -1261,7 +1261,7 @@ taurus-14:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:30:66
+      mac: bc:30:5b:ef:30:65
       management: false
       enabled: false
       interface: Ethernet
@@ -1269,7 +1269,7 @@ taurus-14:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:30:67
+      mac: bc:30:5b:ef:30:64
       management: false
       enabled: false
       interface: Ethernet
@@ -1278,12 +1278,12 @@ taurus-14:
     bmc:
       mac: d4:be:d9:f9:a3:4c
       ip: 172.17.48.14
-  supported_job_types:
-    virtual: ivt
   chassis:
     serial_number: DHTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
   main_memory:
     ram_size: 33761566720
   processor:
@@ -1342,7 +1342,7 @@ taurus-15:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:22:11
+      mac: bc:30:5b:ef:22:10
       management: false
       enabled: false
       interface: Ethernet
@@ -1350,7 +1350,7 @@ taurus-15:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:22:12
+      mac: bc:30:5b:ef:22:11
       management: false
       enabled: false
       interface: Ethernet
@@ -1358,7 +1358,7 @@ taurus-15:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:22:13
+      mac: bc:30:5b:ef:22:10
       management: false
       enabled: false
       interface: Ethernet
@@ -1371,12 +1371,12 @@ taurus-15:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 9HTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
-  supported_job_types:
-    virtual: ivt
   main_memory:
     ram_size: 33761566720
   processor:
@@ -1399,10 +1399,6 @@ taurus-16:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  operating_system:
-    kernel: 2.6.32-5-amd64
-    name: debian
-    version: 6.0.6
   block_devices:
     sda:
       model: PERC H710
@@ -1439,7 +1435,7 @@ taurus-16:
       mountable: false
     eth3:
       mounted: false
-      mac: bc:30:5b:ef:32:15
+      mac: bc:30:5b:ef:32:14
       management: false
       enabled: false
       interface: Ethernet
@@ -1447,7 +1443,7 @@ taurus-16:
       mountable: false
     eth4:
       mounted: false
-      mac: bc:30:5b:ef:32:16
+      mac: bc:30:5b:ef:32:15
       management: false
       enabled: false
       interface: Ethernet
@@ -1455,7 +1451,7 @@ taurus-16:
       mountable: false
     eth5:
       mounted: false
-      mac: bc:30:5b:ef:32:17
+      mac: bc:30:5b:ef:32:14
       management: false
       enabled: false
       interface: Ethernet
@@ -1464,12 +1460,18 @@ taurus-16:
     bmc:
       mac: d4:be:d9:fb:f1:54
       ip: 172.17.48.16
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: BHTHD5J
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
   supported_job_types:
     virtual: ivt
+  main_memory:
+    ram_size: 33761566720
   processor:
     model: Intel Xeon
     cache_l1d: 32768
@@ -1481,8 +1483,6 @@ taurus-16:
     vendor: Intel
     instruction_set: x86-64
     cache_l1i: 32768
-  main_memory:
-    ram_size: 33761566720
   architecture:
     smp_size: 2
     platform_type: x86_64

@@ -145,8 +145,8 @@ site :lyon do |site_uid|
           :mounted          => lookup('taurus', node_uid, 'network_interfaces', 'eth5', 'mounted'),
           :device           => "eth5",
           :bridged          => false,
-          :vendor => 'Intel',
-          :model => 'Intel Ethernet I350 QP 1Gb',
+          :vendor           => 'Intel',
+          :model            => 'Intel Ethernet I350 QP 1Gb',
           :driver           => lookup('taurus', node_uid, 'network_interfaces', 'eth5', 'driver'),
           :mac              => lookup('taurus', node_uid, 'network_interfaces', 'eth5', 'mac')
         },
