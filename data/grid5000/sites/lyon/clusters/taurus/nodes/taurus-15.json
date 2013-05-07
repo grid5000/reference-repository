@@ -2,10 +2,23 @@
   "architecture": {
     "platform_type": "x86_64",
     "smp_size": 2,
-    "smt_size": 12
+    "smt_size": 24
+  },
+  "bios": {
+    "release_date": "05/10/2012",
+    "vendor": "Dell Inc.",
+    "version": "1.2.6"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R720",
+    "serial": "9HTHD5J"
+  },
+  "gpu": {
+    "gpu": false
   },
   "main_memory": {
-    "ram_size": 34359738368,
+    "ram_size": 33761566720,
     "virtual_size": null
   },
   "monitoring": {
@@ -19,7 +32,8 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.48.15",
-      "mac": "A0:36:9F:09:C1:58",
+      "ip6": "fe80::a236:9fff:fe09:c158",
+      "mac": "a0:36:9f:09:c1:58",
       "management": false,
       "model": "Intel X520 DP 10Gb DA/SFP+ Server Adapter",
       "mountable": true,
@@ -31,24 +45,26 @@
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "ixgbe",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "BC:30:5B:EF:22:10",
+      "mac": "a0:36:9f:09:c1:5a",
       "management": false,
       "model": "Intel X520 DP 10Gb DA/SFP+ Server Adapter",
       "mountable": false,
       "mounted": false,
-      "rate": 10000000000,
+      "rate": 1000000000,
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth2",
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "BC:30:5B:EF:22:10",
+      "mac": "bc:30:5b:ef:22:10",
       "management": false,
       "model": "Intel Ethernet I350 QP 1Gb",
       "mountable": false,
@@ -57,11 +73,12 @@
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth3",
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "BC:30:5B:EF:22:11",
+      "mac": "bc:30:5b:ef:22:11",
       "management": false,
       "model": "Intel Ethernet I350 QP 1Gb",
       "mountable": false,
@@ -70,11 +87,12 @@
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth4",
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "BC:30:5B:EF:22:12",
+      "mac": "bc:30:5b:ef:22:12",
       "management": false,
       "model": "Intel Ethernet I350 QP 1Gb",
       "mountable": false,
@@ -83,24 +101,37 @@
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth5",
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "BC:30:5B:EF:22:13",
+      "mac": "bc:30:5b:ef:22:13",
       "management": false,
       "model": "Intel Ethernet I350 QP 1Gb",
       "mountable": false,
       "mounted": false,
       "rate": 1000000000,
       "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.48.15",
+      "mac": "d4:be:d9:f9:a3:6c",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "taurus-15-bmc.lyon.grid5000.fr",
+      "rate": 1000000000
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 11770000000,
@@ -108,13 +139,14 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 2300000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 15728640,
+    "clock_speed": 2300000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz",
     "vendor": "Intel",
     "version": "E5-2630"
   },
@@ -136,7 +168,10 @@
       "device": "sda",
       "driver": "megaraid_sas",
       "interface": "SCSI",
-      "size": 556930899620.056
+      "model": "PERC H710",
+      "rev": 3.13,
+      "size": 598879502336,
+      "vendor": null
     }
   ],
   "supported_job_types": {

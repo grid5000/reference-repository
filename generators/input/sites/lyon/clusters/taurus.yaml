@@ -1,288 +1,1489 @@
+---
 taurus-1:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
   network_interfaces:
-    bmc:
-      mac: D4:BE:D9:FB:EC:F4
-      ip: 172.17.48.1
     eth0:
-      mac: A0:36:9F:09:C2:44
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c2:44
+      ip6: fe80::a236:9fff:fe09:c244
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.1
     eth1:
-      mac: A0:36:9F:09:C2:46
+      mounted: false
+      mac: a0:36:9f:09:c2:46
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:22:E8
+      mounted: false
+      mac: bc:30:5b:ef:22:e8
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:22:E9
+      mounted: false
+      mac: bc:30:5b:ef:22:e9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:22:EA
+      mounted: false
+      mac: bc:30:5b:ef:22:ea
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:22:EB
-taurus-2:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:22:eb
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:F9:A3:EA
-      ip: 172.17.48.2
+      mac: d4:be:d9:fb:ec:f4
+      ip: 172.17.48.1
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 8HTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-2:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:09:C2:60
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c2:60
+      ip6: fe80::a236:9fff:fe09:c260
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.2
     eth1:
-      mac: A0:36:9F:09:C2:62
+      mounted: false
+      mac: a0:36:9f:09:c2:62
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:21:BC
+      mounted: false
+      mac: bc:30:5b:ef:21:bc
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:21:BD
+      mounted: false
+      mac: bc:30:5b:ef:21:bd
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:21:BE
+      mounted: false
+      mac: bc:30:5b:ef:21:be
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:21:BF
-taurus-3:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:21:bf
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:ED:04
-      ip: 172.17.48.3
+      mac: d4:be:d9:f9:a3:ea
+      ip: 172.17.48.2
+  chassis:
+    serial_number: 6HTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-3:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:09:C3:F8
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c3:f8
+      ip6: fe80::a236:9fff:fe09:c3f8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.3
     eth1:
-      mac: A0:36:9F:09:C3:FA
+      mounted: false
+      mac: a0:36:9f:09:c3:fa
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:31:38
+      mounted: false
+      mac: bc:30:5b:ef:31:38
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:31:39
+      mounted: false
+      mac: bc:30:5b:ef:31:39
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:31:3A
+      mounted: false
+      mac: bc:30:5b:ef:31:3a
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:31:3B
-taurus-4:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:31:3b
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:E7:96
-      ip: 172.17.48.4
+      mac: d4:be:d9:fb:ed:04
+      ip: 172.17.48.3
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: 7HTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2300000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-4:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:08:F8:6C
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:08:f8:6c
+      ip6: fe80::a236:9fff:fe08:f86c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.4
     eth1:
-      mac: A0:36:9F:08:F8:6E
+      mounted: false
+      mac: a0:36:9f:08:f8:6e
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:23:2C
+      mounted: false
+      mac: bc:30:5b:ef:23:2c
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:23:2D
+      mounted: false
+      mac: bc:30:5b:ef:23:2d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:23:2E
+      mounted: false
+      mac: bc:30:5b:ef:23:2e
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:23:2F
-taurus-5:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:23:2f
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:ED:38
-      ip: 172.17.48.5
+      mac: d4:be:d9:fb:e7:96
+      ip: 172.17.48.4
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: FHTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-5:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:09:C3:24
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c3:24
+      ip6: fe80::a236:9fff:fe09:c324
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.5
     eth1:
-      mac: A0:36:9F:09:C3:26
+      mounted: false
+      mac: a0:36:9f:09:c3:26
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:22:80
+      mounted: false
+      mac: bc:30:5b:ef:22:80
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:22:81
+      mounted: false
+      mac: bc:30:5b:ef:22:81
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:22:82
+      mounted: false
+      mac: bc:30:5b:ef:22:82
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:22:83
-taurus-6:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:22:83
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:ED:FE
-      ip: 172.17.48.6
+      mac: d4:be:d9:fb:ed:38
+      ip: 172.17.48.5
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: 5HTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2300000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-6:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:08:FB:08
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:08:fb:08
+      ip6: fe80::a236:9fff:fe08:fb08
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.6
     eth1:
-      mac: A0:36:9F:08:FB:0A
+      mounted: false
+      mac: a0:36:9f:08:fb:0a
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:00:B4
+      mounted: false
+      mac: bc:30:5b:ef:00:b4
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:00:B5
+      mounted: false
+      mac: bc:30:5b:ef:00:b5
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:00:B6
+      mounted: false
+      mac: bc:30:5b:ef:00:b6
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:00:B7
-taurus-7:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:00:b7
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:EF:C8
-      ip: 172.17.48.7
+      mac: d4:be:d9:fb:ed:fe
+      ip: 172.17.48.6
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  chassis:
+    serial_number: HHTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-7:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:09:C2:F8
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c2:f8
+      ip6: fe80::a236:9fff:fe09:c2f8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.7
     eth1:
-      mac: A0:36:9F:09:C2:FA
+      mounted: false
+      mac: a0:36:9f:09:c2:fa
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:31:34
+      mounted: false
+      mac: bc:30:5b:ef:31:34
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:31:35
+      mounted: false
+      mac: bc:30:5b:ef:31:35
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:31:36
+      mounted: false
+      mac: bc:30:5b:ef:31:36
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:31:37
-taurus-8:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:31:37
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FA:78:88
-      ip: 172.17.48.8
+      mac: d4:be:d9:fb:ef:c8
+      ip: 172.17.48.7
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: 2HTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-8:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:09:C0:14
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c0:14
+      ip6: fe80::a236:9fff:fe09:c2f8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.8
     eth1:
-      mac: A0:36:9F:09:C0:16
+      mounted: false
+      mac: a0:36:9f:09:c0:16
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:22:B8
+      mounted: false
+      mac: bc:30:5b:ef:22:b8
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:22:B9
+      mounted: false
+      mac: bc:30:5b:ef:22:b9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:22:BA
+      mounted: false
+      mac: bc:30:5b:ef:22:ba
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:22:BB
-taurus-9:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:22:bb
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:50:78
-      ip: 172.17.48.9
+      mac: d4:be:d9:fa:78:88
+      ip: 172.17.48.8
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: 2HTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-9:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:08:F8:48
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:08:f8:48
+      ip6: fe80::a236:9fff:fe08:f848
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.9
     eth1:
-      mac: A0:36:9F:08:F8:4A
+      mounted: false
+      mac: a0:36:9f:08:f8:4a
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EE:FD:F8
+      mounted: false
+      mac: bc:30:5b:ee:fd:f8
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EE:FD:F9
+      mounted: false
+      mac: bc:30:5b:ee:fd:f9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EE:FD:FA
+      mounted: false
+      mac: bc:30:5b:ee:fd:fa
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EE:FD:FB
-taurus-10:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ee:fd:fb
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:50:B2
-      ip: 172.17.48.10
+      mac: d4:be:d9:fb:50:78
+      ip: 172.17.48.9
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  chassis:
+    serial_number: 1JTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-10:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:09:C2:F0
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c2:f0
+      ip6: fe80::a236:9fff:fe09:c2f0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.10
     eth1:
-      mac: A0:36:9F:09:C2:F2
+      mounted: false
+      mac: a0:36:9f:09:c2:f2
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EE:F6:90
+      mounted: false
+      mac: bc:30:5b:ee:f6:90
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EE:F6:91
+      mounted: false
+      mac: bc:30:5b:ee:f6:91
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EE:F6:92
+      mounted: false
+      mac: bc:30:5b:ee:f6:92
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EE:F6:93
-taurus-11:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ee:f6:93
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:4A:A4
-      ip: 172.17.48.11
+      mac: d4:be:d9:fb:50:b2
+      ip: 172.17.48.10
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 4HTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-11:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:09:C2:30
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c2:30
+      ip6: fe80::a236:9fff:fe09:c230
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.11
     eth1:
-      mac: A0:36:9F:09:C2:32
+      mounted: false
+      mac: a0:36:9f:09:c2:32
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EE:FF:9C
+      mounted: false
+      mac: bc:30:5b:ee:ff:9c
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EE:FF:9D
+      mounted: false
+      mac: bc:30:5b:ee:ff:9d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EE:FF:9E
+      mounted: false
+      mac: bc:30:5b:ee:ff:9e
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EE:FF:9F
-taurus-12:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ee:ff:9f
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:ED:B8
-      ip: 172.17.48.12
+      mac: d4:be:d9:fb:4a:a4
+      ip: 172.17.48.11
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  chassis:
+    serial_number: JHTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-12:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:08:F8:F4
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:08:f8:f4
+      ip6: fe80::a236:9fff:fe08:f8f4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.12
     eth1:
-      mac: A0:36:9F:08:F8:F6
+      mounted: false
+      mac: a0:36:9f:08:f8:f6
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:04:28
+      mounted: false
+      mac: bc:30:5b:ef:04:28
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:04:29
+      mounted: false
+      mac: bc:30:5b:ef:04:29
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:04:2A
+      mounted: false
+      mac: bc:30:5b:ef:04:2a
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:04:2B
-taurus-13:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:04:2b
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:EC:40
-      ip: 172.17.48.13
+      mac: d4:be:d9:fb:ed:b8
+      ip: 172.17.48.12
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: GHTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-13:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:08:F9:24
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:08:f9:24
+      ip6: fe80::a236:9fff:fe08:f924
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.13
     eth1:
-      mac: A0:36:9F:08:F9:26
+      mounted: false
+      mac: a0:36:9f:08:f9:26
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:33:FC
+      mounted: false
+      mac: bc:30:5b:ef:33:fc
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:33:FD
+      mounted: false
+      mac: bc:30:5b:ef:33:fd
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:33:FE
+      mounted: false
+      mac: bc:30:5b:ef:33:fe
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:33:FF
-taurus-14:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:33:ff
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:F9:A3:4C
-      ip: 172.17.48.14
+      mac: d4:be:d9:fb:ec:40
+      ip: 172.17.48.13
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: CHTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-14:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:08:F8:4C
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:08:f8:4c
+      ip6: fe80::a236:9fff:fe08:f84c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.14
     eth1:
-      mac: A0:36:9F:08:F8:4E
+      mounted: false
+      mac: a0:36:9f:08:f8:4e
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:30:64
+      mounted: false
+      mac: bc:30:5b:ef:30:64
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:30:65
+      mounted: false
+      mac: bc:30:5b:ef:30:65
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:30:66
+      mounted: false
+      mac: bc:30:5b:ef:30:66
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:30:67
-taurus-15:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:30:67
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:F9:A3:6C
-      ip: 172.17.48.15
+      mac: d4:be:d9:f9:a3:4c
+      ip: 172.17.48.14
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: DHTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2300000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
+taurus-15:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:09:C1:58
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:09:c1:58
+      ip6: fe80::a236:9fff:fe09:c158
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.15
     eth1:
-      mac: A0:36:9F:09:C1:5A
+      mounted: false
+      mac: a0:36:9f:09:c1:5a
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:22:10
+      mounted: false
+      mac: bc:30:5b:ef:22:10
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:22:11
+      mounted: false
+      mac: bc:30:5b:ef:22:11
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:22:12
+      mounted: false
+      mac: bc:30:5b:ef:22:12
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:22:13
-taurus-16:
-  network_interfaces:
+      mounted: false
+      mac: bc:30:5b:ef:22:13
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     bmc:
-      mac: D4:BE:D9:FB:F1:54
-      ip: 172.17.48.16
+      mac: d4:be:d9:f9:a3:6c
+      ip: 172.17.48.15
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 9HTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 33761566720
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2300000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 24
+taurus-16:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  network_interfaces:
     eth0:
-      mac: A0:36:9F:08:F7:00
+      mounted: true
+      rate: 10000000000
+      mac: a0:36:9f:08:f7:00
+      ip6: fe80::a236:9fff:fe08:f700
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
       ip: 172.16.48.16
     eth1:
-      mac: A0:36:9F:08:F7:02
+      mounted: false
+      mac: a0:36:9f:08:f7:02
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
     eth2:
-      mac: BC:30:5B:EF:32:14
+      mounted: false
+      mac: bc:30:5b:ef:32:14
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth3:
-      mac: BC:30:5B:EF:32:15
+      mounted: false
+      mac: bc:30:5b:ef:32:15
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth4:
-      mac: BC:30:5B:EF:32:16
+      mounted: false
+      mac: bc:30:5b:ef:32:16
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
     eth5:
-      mac: BC:30:5B:EF:32:17
+      mounted: false
+      mac: bc:30:5b:ef:32:17
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: d4:be:d9:fb:f1:54
+      ip: 172.17.48.16
+  chassis:
+    serial_number: BHTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2299000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 33761566720
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12
