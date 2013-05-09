@@ -103,10 +103,11 @@ site :grenoble do |site_uid|
           :mountable        => lookup('adonis', node_uid, 'network_interfaces', 'ib0', 'mountable'),
           :mounted          => lookup('adonis', node_uid, 'network_interfaces', 'ib0', 'mounted'),
           :vendor           => 'Mellanox',
-          :version          => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s",
+          :version          => lookup('adonis', node_uid, 'network_interfaces', 'ib0', 'version'),
           :driver           => lookup('adonis', node_uid, 'network_interfaces', 'ib0', 'driver'),
           :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip               => lookup('adonis', node_uid, 'network_interfaces', 'ib0', 'ip'),
+          :ip6              => lookup('adonis', node_uid, 'network_interfaces', 'ib0', 'ip6'),
           :guid             => lookup('adonis', node_uid, 'network_interfaces', 'ib0', 'guid')
         },
         {
