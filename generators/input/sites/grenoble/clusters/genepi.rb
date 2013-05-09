@@ -54,18 +54,11 @@ site :grenoble do |site_uid|
         storage_devices [{
           :interface  => 'SATA',
           :size       => lookup('genepi', node_uid, 'block_devices', 'sda', 'size'),
-          :driver     => "ahci",
+          :driver     => "ata_piix",
           :device     => lookup('genepi', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('genepi', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('genepi', node_uid, 'block_devices', 'sda', 'vendor'),
           :rev        => lookup('genepi', node_uid, 'block_devices', 'sda', 'rev')
-        }]
-        storage_devices [{
-          :interface  => 'SATA',
-          :size       => lookup('genepi', node_uid, 'block_devices', 'sda', 'size'),
-          :model      => lookup('genepi', node_uid, 'block_devices', 'sda', 'model'),
-          :vendor     => lookup('genepi', node_uid, 'block_devices', 'sda', 'vendor'),
-          :driver     => "ata_piix"
         }]
 
         network_adapters [{
@@ -110,10 +103,11 @@ site :grenoble do |site_uid|
           :mountable        => lookup('genepi', node_uid, 'network_interfaces', 'ib0', 'mountable'),
           :mounted          => lookup('genepi', node_uid, 'network_interfaces', 'ib0', 'mounted'),
           :vendor           => 'Mellanox',
-          :version          => "InfiniHost MHGH29-XTC",
+          :version          => lookup('genepi', node_uid, 'network_interfaces', 'ib0', 'version'),
           :driver           => lookup('genepi', node_uid, 'network_interfaces', 'ib0', 'driver'),
           :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip               => lookup('genepi', node_uid, 'network_interfaces', 'ib0', 'ip'),
+          :ip6              => lookup('genepi', node_uid, 'network_interfaces', 'ib0', 'ip6'),
           :guid             => lookup('genepi', node_uid, 'network_interfaces', 'ib0', 'guid')
         },
         {
@@ -126,7 +120,7 @@ site :grenoble do |site_uid|
           :mountable        => lookup('genepi', node_uid, 'network_interfaces', 'ib1', 'mountable'),
           :mounted          => lookup('genepi', node_uid, 'network_interfaces', 'ib1', 'mounted'),
           :vendor           => 'Mellanox',
-          :version          => "InfiniHost MHGH29-XTC",
+          :version          => lookup('genepi', node_uid, 'network_interfaces', 'ib1', 'version'),
           :driver           => lookup('genepi', node_uid, 'network_interfaces', 'ib1', 'driver'),
           :guid             => lookup('genepi', node_uid, 'network_interfaces', 'ib1', 'guid')
         },

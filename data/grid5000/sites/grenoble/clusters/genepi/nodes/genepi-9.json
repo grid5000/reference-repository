@@ -5,7 +5,7 @@
     "smt_size": 8
   },
   "bios": {
-    "release_date": "(04/30/2008)",
+    "release_date": "04/30/2008",
     "vendor": "Phoenix Technologies LTD",
     "version": "1.1a"
   },
@@ -65,13 +65,14 @@
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:01:5b:15",
       "interface": "InfiniBand",
       "ip": "172.18.16.9",
+      "ip6": null,
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "genepi-9-ib0.grenoble.grid5000.fr",
       "rate": 20000000000,
       "vendor": "Mellanox",
-      "version": "InfiniHost MHGH29-XTC"
+      "version": "MT26418"
     },
     {
       "device": "ib1",
@@ -84,7 +85,7 @@
       "mounted": false,
       "rate": 10000000000,
       "vendor": "Mellanox",
-      "version": "InfiniHost MHGH29-XTC"
+      "version": "MT26418"
     },
     {
       "device": "bmc",
@@ -126,9 +127,11 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "ata_piix",
       "interface": "SATA",
-      "model": "WD1600YS-01S",
+      "model": "WDC WD1600YS-01S",
+      "rev": 20.0,
       "size": 164696555520,
       "vendor": "Western Digital"
     }
