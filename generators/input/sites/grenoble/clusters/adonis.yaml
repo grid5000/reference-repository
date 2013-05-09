@@ -1,3 +1,4 @@
+---
 adonis-1:
   bios:
     version: R4222X52
@@ -6,26 +7,74 @@ adonis-1:
   block_devices:
     sda:
       model: WD2502ABYS-0
-      size: 251.GB
+      device: sda
+      size: 251059544064B
+      rev: 2.0
       vendor: Western Digital
-  chassis:
-    serial_number: XAN-SMJP-00251
-    manufacturer: Bull SAS
-    product_name: bullx R422E2-IBQ
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:17:55
+      rate: 40000000000
+      ip6: fe80::230:48ff:ffcc:1755
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
       ip: 172.18.18.1
-    bmc:
-      mac: 00:30:48:cc:b0:58
-      ip: 172.17.18.1
+      driver: mlx4_core
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:30:48:cc:7f:d8
+      ip6: fe80::230:48ff:fecc:7fd8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       ip: 172.16.18.1
       switch_name: gw-grenoble
       switch_port: Gi3/11
     eth1:
+      mounted: false
       mac: 00:30:48:cc:7f:d9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:b0:58
+      ip: 172.17.18.1
+  chassis:
+    serial_number: XAN-SMJP-00251
+    manufacturer: Bull SAS
+    product_name: bullx R422E2-IBQ
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2266000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25330180096
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -37,26 +86,74 @@ adonis-2:
   block_devices:
     sda:
       model: WD2502ABYS-0
-      size: 251.GB
+      device: sda
+      size: 251059544064B
+      rev: 2.0
       vendor: Western Digital
-  chassis:
-    serial_number: XAN-SMJS-00251
-    manufacturer: Bull SAS
-    product_name: bullx R422E2-IBQ
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:17:59
+      rate: 40000000000
+      ip6: fe80::230:48ff:ffcc:1759
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
       ip: 172.18.18.2
-    bmc:
-      mac: 00:30:48:cc:b0:59
-      ip: 172.17.18.2
+      driver: mlx4_core
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:30:48:cc:7f:da
+      ip6: fe80::230:48ff:fecc:7fda
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       ip: 172.16.18.2
       switch_name: gw-grenoble
       switch_port: Gi3/12
     eth1:
+      mounted: false
       mac: 00:30:48:cc:7f:db
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:b0:59
+      ip: 172.17.18.2
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: XAN-SMJS-00251
+    manufacturer: Bull SAS
+    product_name: bullx R422E2-IBQ
+  main_memory:
+    ram_size: 25330180096
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2266000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -65,29 +162,77 @@ adonis-3:
     version: R4222X52
     release_date: (09/23/2009)
     vendor: American Megatrends Inc.
-  block_devices:
-    sda:
-      model: WD2502ABYS-0
-      size: 251.GB
-      vendor: Western Digital
-  chassis:
-    serial_number: XAN-SMJP-00252
-    manufacturer: Bull SAS
-    product_name: bullx R422E2-IBQ
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:3d:49
+      rate: 40000000000
+      ip6: fe80::230:48ff:ffcc:3d49
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
       ip: 172.18.18.3
-    bmc:
-      mac: 00:30:48:cc:b5:f6
-      ip: 172.17.18.3
+      driver: mlx4_core
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:30:48:cd:c6:a4
+      ip6: fe80::230:48ff:fecd:c6a4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       ip: 172.16.18.3
       switch_name: gw-grenoble
       switch_port: Gi3/13
     eth1:
+      mounted: false
       mac: 00:30:48:cd:c6:a5
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:b5:f6
+      ip: 172.17.18.3
+  block_devices:
+    sda:
+      model: WD2502ABYS-0
+      device: sda
+      size: 251059544064B
+      rev: 2.0
+      vendor: Western Digital
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: XAN-SMJP-00252
+    manufacturer: Bull SAS
+    product_name: bullx R422E2-IBQ
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2266000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25330180096
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -99,26 +244,73 @@ adonis-4:
   block_devices:
     sda:
       model: WD2502ABYS-0
-      size: 251.GB
+      device: sda
+      size: 251059544064B
+      rev: 2.0
       vendor: Western Digital
-  chassis:
-    serial_number: XAN-SMJS-00252
-    manufacturer: Bull SAS
-    product_name: bullx R422E2-IBQ
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:3d:45
+      rate: 40000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT26428
       ip: 172.18.18.4
-    bmc:
-      mac: 00:30:48:cc:b6:6c
-      ip: 172.17.18.4
+      driver: mlx4_core
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:30:48:cd:c0:ac
+      ip6: fe80::230:48ff:fecd:c0ac
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       ip: 172.16.18.4
       switch_name: gw-grenoble
       switch_port: Gi3/14
     eth1:
+      mounted: false
       mac: 00:30:48:cd:c0:ad
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:b6:6c
+      ip: 172.17.18.4
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: XAN-SMJS-00252
+    manufacturer: Bull SAS
+    product_name: bullx R422E2-IBQ
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2266000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25330180096
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -127,29 +319,77 @@ adonis-5:
     version: R4222X52
     release_date: (09/23/2009)
     vendor: American Megatrends Inc.
-  block_devices:
-    sda:
-      model: WD2502ABYS-0
-      size: 251.GB
-      vendor: Western Digital
-  chassis:
-    serial_number: XAN-SMJP-00253
-    manufacturer: Bull SAS
-    product_name: bullx R422E2-IBQ
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:14:65
+      rate: 40000000000
+      ip6: fe80::230:48ff:ffcc:1465
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
       ip: 172.18.18.5
-    bmc:
-      mac: 00:30:48:cc:af:61
-      ip: 172.17.18.5
+      driver: mlx4_core
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:30:48:cc:7e:0a
+      ip6: fe80::230:48ff:fecc:7e0a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       ip: 172.16.18.5
       switch_name: gw-grenoble
       switch_port: Gi3/15
     eth1:
+      mounted: false
       mac: 00:30:48:cc:7e:0b
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:af:61
+      ip: 172.17.18.5
+  block_devices:
+    sda:
+      model: WD2502ABYS-0
+      device: sda
+      size: 251059544064B
+      rev: 2.0
+      vendor: Western Digital
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: XAN-SMJP-00253
+    manufacturer: Bull SAS
+    product_name: bullx R422E2-IBQ
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2267000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25330180096
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -158,29 +398,77 @@ adonis-6:
     version: R4222X52
     release_date: (09/23/2009)
     vendor: American Megatrends Inc.
+  network_interfaces:
+    ib0:
+      mounted: true
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:42:65
+      rate: 40000000000
+      ip6: fe80::230:48ff:ffcc:4265
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
+      ip: 172.18.18.6
+      driver: mlx4_core
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:30:48:cc:7a:bc
+      ip6: fe80::230:48ff:fecc:7abc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.18.6
+      switch_name: gw-grenoble
+      switch_port: Gi3/16
+    eth1:
+      mounted: false
+      mac: 00:30:48:cc:7a:bd
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:ad:f2
+      ip: 172.17.18.6
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
       model: WD2502ABYS-0
-      size: 251.GB
+      device: sda
+      size: 251059544064B
+      rev: 2.0
       vendor: Western Digital
   chassis:
     serial_number: XAN-SMJS-00253
     manufacturer: Bull SAS
     product_name: bullx R422E2-IBQ
-  network_interfaces:
-    ib0:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:42:65
-      ip: 172.18.18.6
-    bmc:
-      mac: 00:30:48:cc:ad:f2
-      ip: 172.17.18.6
-    eth0:
-      mac: 00:30:48:cc:7a:bc
-      ip: 172.16.18.6
-      switch_name: gw-grenoble
-      switch_port: Gi3/16
-    eth1:
-      mac: 00:30:48:cc:7a:bd
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25330180096
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2266000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -192,26 +480,74 @@ adonis-7:
   block_devices:
     sda:
       model: WD2502ABYS-0
-      size: 251.GB
+      device: sda
+      size: 251059544064B
+      rev: 2.0
       vendor: Western Digital
-  chassis:
-    serial_number: XAN-SMJP-00254
-    manufacturer: Bull SAS
-    product_name: bullx R422E2-IBQ
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:3d:41
+      rate: 40000000000
+      ip6: fe80::230:48ff:ffcc:3d41
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
       ip: 172.18.18.7
-    bmc:
-      mac: 00:30:48:cc:b5:e4
-      ip: 172.17.18.7
+      driver: mlx4_core
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:30:48:cd:c6:80
+      ip6: fe80::230:48ff:fecd:c680
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       ip: 172.16.18.7
       switch_name: gw-grenoble
       switch_port: Gi3/17
     eth1:
+      mounted: false
       mac: 00:30:48:cd:c6:81
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:b5:e4
+      ip: 172.17.18.7
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: XAN-SMJP-00254
+    manufacturer: Bull SAS
+    product_name: bullx R422E2-IBQ
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25330180096
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2266000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -220,29 +556,77 @@ adonis-8:
     version: R4222X52
     release_date: (09/23/2009)
     vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
       model: WD2502ABYS-0
-      size: 251.GB
+      device: sda
+      size: 251059544064B
+      rev: 2.0
       vendor: Western Digital
-  chassis:
-    serial_number: XAN-SMJS-00254
-    manufacturer: Bull SAS
-    product_name: bullx R422E2-IBQ
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:3d:51
+      rate: 40000000000
+      ip6: fe80::230:48ff:ffcc:3d51
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
       ip: 172.18.18.8
-    bmc:
-      mac: 00:30:48:cc:b6:6d
-      ip: 172.17.18.8
+      driver: mlx4_core
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:30:48:cd:c0:ae
+      ip6: fe80::230:48ff:fecd:c0ae
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       ip: 172.16.18.8
       switch_name: gw-grenoble
       switch_port: Gi3/18
     eth1:
+      mounted: false
       mac: 00:30:48:cd:c0:af
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:b6:6d
+      ip: 172.17.18.8
+  chassis:
+    serial_number: XAN-SMJS-00254
+    manufacturer: Bull SAS
+    product_name: bullx R422E2-IBQ
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2267000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25330180096
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -251,29 +635,77 @@ adonis-9:
     version: R4222X52
     release_date: (09/23/2009)
     vendor: American Megatrends Inc.
+  network_interfaces:
+    ib0:
+      mounted: true
+      guid:
+      rate: 40000000000
+      ip6: fe80::225:90ff:ff2f:f149
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
+      ip: 172.18.18.9
+      driver: mlx4_core
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:25:90:4c:e9:84
+      ip6: fe80::225:90ff:fe4c:e984
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.18.9
+      switch_name: gw-grenoble
+      switch_port: Gi3/19
+    eth1:
+      mounted: false
+      mac: 00:30:48:cb:cf:7f
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:25:90:4b:bd:b1
+      ip: 172.17.18.9
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
       model: WD2502ABYS-0
-      size: 251.GB
+      device: sda
+      size: 251059544064B
+      rev: 2.0
       vendor: Western Digital
   chassis:
     serial_number:
     manufacturer: Bull SAS
     product_name: bullx R422E2-IBQ
-  network_interfaces:
-    ib0:
-      guid:
-      ip: 172.18.18.9
-    bmc:
-      mac: 00:25:90:4b:bd:b1
-      ip: 172.17.18.9
-    eth0:
-      mac: 00:25:90:4c:e9:84
-      ip: 172.16.18.9
-      switch_name: gw-grenoble
-      switch_port: Gi3/19
-    eth1:
-      mac: 00:30:48:cb:cf:7f
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25330180096
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2266000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
@@ -282,29 +714,77 @@ adonis-10:
     version: R4222X52
     release_date: (09/23/2009)
     vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
+    ib0:
+      mounted: true
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:17:69
+      rate: 40000000000
+      ip6: fe80::230:48ff:ffcc:1769
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
+      ip: 172.18.18.10
+      driver: mlx4_core
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:30:48:cc:83:10
+      ip6: fe80::230:48ff:fecc:8310
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.18.10
+      switch_name: gw-grenoble
+      switch_port: Gi3/20
+    eth1:
+      mounted: false
+      mac: 00:30:48:cc:83:11
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:ad:df
+      ip: 172.17.18.10
   block_devices:
     sda:
       model: WD2502ABYS-0
-      size: 251.GB
+      device: sda
+      size: 251059544064B
+      rev: 2.0
       vendor: Western Digital
   chassis:
     serial_number: XAN-SMJS-00255
     manufacturer: Bull SAS
     product_name: bullx R422E2-IBQ
-  network_interfaces:
-    ib0:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:17:69
-      ip: 172.18.18.10
-    bmc:
-      mac: 00:30:48:cc:ad:df
-      ip: 172.17.18.10
-    eth0:
-      mac: 00:30:48:cc:83:10
-      ip: 172.16.18.10
-      switch_name: gw-grenoble
-      switch_port: Gi3/20
-    eth1:
-      mac: 00:30:48:cc:83:11
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25330180096
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2266000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   gpu:
     gpu_count: 2
     gpu_model: Tesla-C1060
