@@ -9,11 +9,16 @@
     "vendor": "Phoenix Technologies LTD",
     "version": "V1.05"
   },
+  "chassis": {
+    "manufacturer": "TYAN Computer Corporation",
+    "name": "S5393",
+    "serial": 812530029
+  },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 17179869184,
+    "ram_size": 16867946496,
     "virtual_size": null
   },
   "network_adapters": [
@@ -24,7 +29,8 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.65.24",
-      "mac": "00:E0:81:B2:C2:2E",
+      "ip6": "fe80::2e0:81ff:feb2:c4ac",
+      "mac": "00:e0:81:b2:c2:2e",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -36,9 +42,14 @@
       "version": "80003ES2LAN"
     },
     {
+      "bridged": false,
+      "driver": "e1000e",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "00:E0:81:B2:C2:2F",
+      "mac": "00:e0:81:b2:c2:2f",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000,
       "vendor": "intel",
       "version": "BCM5721"
@@ -63,22 +74,28 @@
       "version": "MT26418"
     },
     {
+      "device": "ib1",
+      "driver": "mlx4_core",
       "enabled": false,
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:2f:d8",
       "interface": "InfiniBand",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 20000000000,
       "vendor": "Mellanox",
       "version": "MT26418"
     },
     {
+      "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.65.24",
-      "mac": "00:E0:81:4F:CA:7F",
+      "mac": "00:e0:81:4f:ca:7f",
       "management": true,
       "mountable": false,
       "mounted": false,
-      "network_address": "griffon-24-ipmi.nancy.grid5000.fr",
+      "network_address": "griffon-24-bmc.nancy.grid5000.fr",
       "rate": 100000000,
       "switch": "sgriffon1-ipmi",
       "switch_port": "1/0/38",
@@ -87,10 +104,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "#1 SMP Debian 3.2.35-2",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": 7.0
   },
   "performance": {
     "core_flops": 7963000000.0,
@@ -98,13 +115,14 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 12582912,
-    "clock_speed": 2500000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 6291456,
+    "cache_l3": 0,
+    "clock_speed": 2500000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           L5420  @ 2.50GHz",
     "vendor": "Intel",
     "version": "L5420"
   },
@@ -118,7 +136,6 @@
       }
     }
   },
-  "serial": 812530029,
   "storage_devices": [
     {
       "device": "sda",
@@ -126,7 +143,8 @@
       "interface": "SATA II",
       "model": "HDP725032GLA360",
       "rev": "GM3OA5CA",
-      "size": 298023223876.953
+      "size": 320072933376,
+      "vendor": "Hitachi"
     }
   ],
   "supported_job_types": {
