@@ -87,6 +87,7 @@ site :nancy do |site_uid|
           :mountable        => lookup('griffon', node_uid, 'network_interfaces', 'eth1', 'mountable'),
           :mounted          => lookup('griffon', node_uid, 'network_interfaces', 'eth1', 'mounted'),
           :bridged          => false,
+          :device           => "eth1",
           :vendor           => "intel",
           :version          => "BCM5721",
           :driver           => lookup('griffon', node_uid, 'network_interfaces', 'eth1', 'driver'),
