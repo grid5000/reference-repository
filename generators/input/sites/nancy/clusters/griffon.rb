@@ -105,6 +105,7 @@ site :nancy do |site_uid|
           :driver           => lookup('griffon', node_uid, 'network_interfaces', 'ib0', 'driver'),
           :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip               => lookup('griffon', node_uid, 'network_interfaces', 'ib0', 'ip'),
+          :ip6               => lookup('griffon', node_uid, 'network_interfaces', 'ib0', 'ip6'),
           :guid             => lookup('griffon', node_uid, 'network_interfaces', 'ib0', 'guid'),
           :switch           => "sgriffonib",
           :ib_switch_card   => lookup('griffon', node_uid, 'network_interfaces', 'ib0', 'line_card'),
