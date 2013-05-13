@@ -63,7 +63,7 @@ site :rennes do |site_uid|
 
         network_adapters [{
           :interface        => lookup('parapluie', node_uid, 'network_interfaces', 'eth0', 'interface'),
-          :rate             => 1.G,
+          :rate             => lookup('parapluie', node_uid, 'network_interfaces', 'eth0', 'rate'),
           :enabled          => lookup('parapluie', node_uid, 'network_interfaces', 'eth0', 'enabled'),
           :management       => lookup('parapluie', node_uid, 'network_interfaces', 'eth0', 'management'),
           :mountable        => lookup('parapluie', node_uid, 'network_interfaces', 'eth0', 'mountable'),
