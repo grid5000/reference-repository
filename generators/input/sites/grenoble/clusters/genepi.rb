@@ -73,7 +73,6 @@ site :grenoble do |site_uid|
           :vendor           => 'Intel',
           :version          => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)",
           :driver           => lookup('genepi', node_uid, 'network_interfaces', 'eth0', 'driver'),
-          :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :mac              => lookup('genepi', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
@@ -89,6 +88,7 @@ site :grenoble do |site_uid|
           :version          => "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)",
           :ip               => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :ip6              => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'ip6'),
+          :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :switch           => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'switch_name'),
           :switch_port      => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
           :driver           => lookup('genepi', node_uid, 'network_interfaces', 'eth1', 'driver'),
