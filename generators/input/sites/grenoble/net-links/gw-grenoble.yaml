@@ -6,14 +6,13 @@ gw-grenoble:
   backplane_bps: 800000000000
   mtu: 9216
   snmp_community: public
+  routes: {}
   vlans:
     naming_pattern: Vlan%VLANID%
-    "vlan1":
+    "vlan100":
       administrative: yes
       addresses: 
         - 172.16.31.254
-  routes: {}
-
   linecards:
     2:
       naming_pattern: "%LINECARD%:%PORT%"
