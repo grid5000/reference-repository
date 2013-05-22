@@ -1,20 +1,83 @@
 {
   "architecture": {
-    "platform_type": "amd64",
+    "platform_type": "x86_64",
     "smp_size": 2,
     "smt_size": 24
+  },
+  "bios": {
+    "release_date": "01/26/2011",
+    "vendor": "HP",
+    "version": "O37"
+  },
+  "chassis": {
+    "manufacturer": "HP",
+    "name": "ProLiant DL165 G7",
+    "serial": "GB804391EK"
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 51539607552,
+    "ram_size": 50755485696,
     "virtual_size": null
   },
   "monitoring": {
     "wattmeter": true
   },
   "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.160.7",
+      "ip6": "fe80::d685:64ff:fe45:954c",
+      "mac": "d4:85:64:45:95:4c",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "stremi-7.reims.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw-reims",
+      "switch_port": "Gi0/7"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "d4:85:64:45:95:4d",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000
+    },
+    {
+      "bridged": false,
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "d4:85:64:45:95:4a",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": null
+    },
+    {
+      "bridged": false,
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "d4:85:64:45:95:4b",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": null
+    },
     {
       "device": "bmc",
       "enabled": true,
@@ -26,52 +89,13 @@
       "mounted": false,
       "network_address": "stremi-7-bmc.reims.grid5000.fr",
       "rate": 1000000000
-    },
-    {
-      "bridged": true,
-      "device": "eth0",
-      "driver": "igb",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.16.160.7",
-      "mac": "d4:85:64:45:95:4c",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "stremi-7.reims.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "gw-reims",
-      "switch_port": "Gi0/7"
-    },
-    {
-      "device": "eth1",
-      "driver": "igb",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "d4:85:64:45:95:4d",
-      "rate": 1000000000
-    },
-    {
-      "device": "eth2",
-      "driver": "igb",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "d4:85:64:45:95:4a",
-      "rate": 1000000000
-    },
-    {
-      "device": "eth3",
-      "driver": "igb",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "d4:85:64:45:95:4b",
-      "rate": 1000000000
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 4931000000,
@@ -79,15 +103,16 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 1700000000.0,
-    "instruction_set": "",
+    "cache_l1d": 65536,
+    "cache_l1i": 65536,
+    "cache_l2": 524288,
+    "cache_l3": 5240832,
+    "clock_speed": 1700000000,
+    "instruction_set": "x86-64",
     "model": "AMD Opteron",
-    "other_description": "",
+    "other_description": "AMD Opteron(tm) Processor 6164 HE",
     "vendor": "AMD",
-    "version": "6164 HE"
+    "version": 6164
   },
   "sensors": {
     "power": {
@@ -108,7 +133,10 @@
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA",
-      "size": 232830643653.87
+      "model": "GB0250EAFYK",
+      "rev": "HPG2",
+      "size": 250059350016,
+      "vendor": null
     }
   ],
   "supported_job_types": {

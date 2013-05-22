@@ -1,520 +1,1301 @@
+---
 chimint-1:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:d4:7f
+      ip6: fe80::862b:2bff:fe72:d47f
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.1
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/7
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:d4:80
+      ip6: fe80::862b:2bff:fe72:d480
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:d4:81
       ip: 172.17.33.101
-    eth0:
-      mac: 84:2b:2b:72:d4:7f
-      ip: 172.16.33.1
-    eth1:
-      mac: 84:2b:2b:72:d4:80
-      ip: 172.17.33.1
-      switch_port: Gi3/7
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: DQM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-2:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:70:4f:4c
+      ip6: fe80::862b:2bff:fe70:4f4c
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.2
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/9
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:70:4f:4d
+      ip6: fe80::862b:2bff:fe70:4f4d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:70:4f:4e
       ip: 172.17.33.102
-    eth0:
-      mac: 84:2b:2b:70:4f:4c
-      ip: 172.16.33.2
-    eth1:
-      mac: 84:2b:2b:70:4f:4d
-      ip: 172.17.33.2
-      switch_port: Gi3/9
   chassis:
     serial_number: 8RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 16850722816
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-3:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:70:4e:1e
+      ip6: fe80::862b:2bff:fe70:c621
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.3
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/8
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:70:4e:1f
+      ip6: fe80::862b:2bff:fe70:c622
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:70:4e:20
       ip: 172.17.33.103
-    eth0:
-      mac: 84:2b:2b:70:4e:1e
-      ip: 172.16.33.3
-    eth1:
-      mac: 84:2b:2b:70:4e:1f
-      ip: 172.17.33.3
-      switch_port: Gi3/8
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 2RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-4:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:70:cc:89
+      ip6: fe80::862b:2bff:fe70:c621
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.4
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/11
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:70:cc:8a
+      ip6: fe80::862b:2bff:fe70:c622
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:70:cc:8b
       ip: 172.17.33.104
-    eth0:
-      mac: 84:2b:2b:70:cc:89
-      ip: 172.16.33.4
-    eth1:
-      mac: 84:2b:2b:70:cc:8a
-      ip: 172.17.33.4
-      switch_port: Gi3/11
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 3RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-5:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:70:cc:92
+      ip6: fe80::862b:2bff:fe70:cc92
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.5
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/10
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:70:cc:93
+      ip6: fe80::862b:2bff:fe70:cc93
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:70:cc:94
       ip: 172.17.33.105
-    eth0:
-      mac: 84:2b:2b:70:cc:92
-      ip: 172.16.33.5
-    eth1:
-      mac: 84:2b:2b:70:cc:93
-      ip: 172.17.33.5
-      switch_port: Gi3/10
   chassis:
     serial_number: 6RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-6:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:d5:9e
+      ip6: fe80::862b:2bff:fe72:d59e
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.6
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/12
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:d5:9f
+      ip6: fe80::862b:2bff:fe72:d59f
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:d5:a0
       ip: 172.17.33.106
-    eth0:
-      mac: 84:2b:2b:72:d5:9e
-      ip: 172.16.33.6
-    eth1:
-      mac: 84:2b:2b:72:d5:9f
-      ip: 172.17.33.6 
-      switch_port: Gi3/12
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: FQM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 16850722816
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-7:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:b3:44
+      ip6: fe80::862b:2bff:fe72:b344
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.7
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/14
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:b3:45
+      ip6: fe80::862b:2bff:fe72:b345
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:b3:46
       ip: 172.17.33.107
-    eth0:
-      mac: 84:2b:2b:72:b3:44
-      ip: 172.16.33.7
-    eth1:
-      mac: 84:2b:2b:72:b3:45
-      ip: 172.17.33.7
-      switch_port: Gi3/14
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
   chassis:
     serial_number: 5RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 16850722816
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-8:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:da:c3
+      ip6: fe80::862b:2bff:fe72:dac3
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.8
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/13
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:da:c4
+      ip6: fe80::862b:2bff:fe72:dac4
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:da:c5
       ip: 172.17.33.108
-    eth0:
-      mac: 84:2b:2b:72:da:c3
-      ip: 172.16.33.8
-    eth1:
-      mac: 84:2b:2b:72:da:c4
-      ip: 172.17.33.8
-      switch_port: Gi3/13
   chassis:
     serial_number: CRM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-9:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:cb:e3
+      ip6: fe80::862b:2bff:fe70:c621
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.9
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/15
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:cb:e4
+      ip6: fe80::862b:2bff:fe70:c622
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:cb:e5
       ip: 172.17.33.109
-    eth0:
-      mac: 84:2b:2b:72:cb:e3
-      ip: 172.16.33.9
-    eth1:
-      mac: 84:2b:2b:72:cb:e4
-      ip: 172.17.33.9  
-      switch_port: Gi3/15
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 4RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-10:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:d4:49
+      ip6: fe80::862b:2bff:fe72:d449
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.10
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/16
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:d4:4a
+      ip6: fe80::862b:2bff:fe72:d44a
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:d4:4b
       ip: 172.17.33.110
-    eth0:
-      mac: 84:2b:2b:72:d4:49
-      ip: 172.16.33.10
-    eth1:
-      mac: 84:2b:2b:72:d4:4a
-      ip: 172.17.33.10
-      switch_port: Gi3/16
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 9QM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-11:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:70:c9:9d
+      ip6: fe80::862b:2bff:fe70:c99d
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.11
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/17
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:70:c9:9e
+      ip6: fe80::862b:2bff:fe70:c99e
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:70:c9:9f
       ip: 172.17.33.111
-    eth0:
-      mac: 84:2b:2b:70:c9:9d
-      ip: 172.16.33.11
-    eth1:
-      mac: 84:2b:2b:70:c9:9e
-      ip: 172.17.33.11
-      switch_port: Gi3/17
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: BRM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 16850722816
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-12:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:d5:ea
+      ip6: fe80::862b:2bff:fe70:c621
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.12
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/18
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:d5:eb
+      ip6: fe80::862b:2bff:fe70:c622
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:d5:ec
       ip: 172.17.33.112
-    eth0:
-      mac: 84:2b:2b:72:d5:ea
-      ip: 172.16.33.12
-    eth1:
-      mac: 84:2b:2b:72:d5:eb
-      ip: 172.17.33.12
-      switch_port: Gi3/18
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: BQM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-13:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:71:f1:24
+      ip6: fe80::862b:2bff:fe70:c621
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.13
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/19
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:71:f1:25
+      ip6: fe80::862b:2bff:fe70:c622
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:71:f1:26
       ip: 172.17.33.113
-    eth0:
-      mac: 84:2b:2b:71:f1:24
-      ip: 172.16.33.13
-    eth1:
-      mac: 84:2b:2b:71:f1:25
-      ip: 172.17.33.13
-      switch_port: Gi3/19
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 9RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-14:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:d5:67
+      ip6: fe80::862b:2bff:fe72:d567
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.14
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/20
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:d5:68
+      ip6: fe80::862b:2bff:fe72:d568
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:d5:69
       ip: 172.17.33.114
-    eth0:
-      mac: 84:2b:2b:72:d5:67
-      ip: 172.16.33.14
-    eth1:
-      mac: 84:2b:2b:72:d5:68
-      ip: 172.17.33.14
-      switch_port: Gi3/20
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: CQM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 16850722816
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-15:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:d7:7a
+      ip6: fe80::862b:2bff:fe72:d77a
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.15
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/23
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:d7:7b
+      ip6: fe80::862b:2bff:fe72:d77b
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:d7:7c
       ip: 172.17.33.115
-    eth0:
-      mac: 84:2b:2b:72:d7:7a
-      ip: 172.16.33.15
-    eth1:
-      mac: 84:2b:2b:72:d7:7b
-      ip: 172.17.33.15
-      switch_port: Gi3/23
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: HQM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-16:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:d5:db
+      ip6: fe80::862b:2bff:fe72:d5db
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.16
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/22
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:d5:dc
+      ip6: fe80::862b:2bff:fe72:d5dc
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:d5:dd
       ip: 172.17.33.116
-    eth0:
-      mac: 84:2b:2b:72:d5:db
-      ip: 172.16.33.16
-    eth1:
-      mac: 84:2b:2b:72:d5:dc
-      ip: 172.17.33.16
-      switch_port: Gi3/22
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: JQM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 16850722816
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-17:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:70:f6:92
+      ip6: fe80::862b:2bff:fe70:f692
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.17
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/21
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:70:f6:93
+      ip6: fe80::862b:2bff:fe70:f693
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:70:f6:94
       ip: 172.17.33.117
-    eth0:
-      mac: 84:2b:2b:70:f6:92
-      ip: 172.16.33.17
-    eth1:
-      mac: 84:2b:2b:70:f6:93
-      ip: 172.17.33.17
-      switch_port: Gi3/21
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 8QM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-18:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:72:d7:89
+      ip6: fe80::862b:2bff:fe72:d789
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.18
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/24
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:72:d7:8a
+      ip6: fe80::862b:2bff:fe72:d78a
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:72:d7:8b
       ip: 172.17.33.118
-    eth0:
-      mac: 84:2b:2b:72:d7:89
-      ip: 172.16.33.18
-    eth1:
-      mac: 84:2b:2b:72:d7:8a
-      ip: 172.17.33.18
-      switch_port: Gi3/24
   chassis:
     serial_number: GQM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 16850722816
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-19:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:70:c6:21
+      ip6: fe80::862b:2bff:fe70:c621
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.19
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/28
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:70:c6:22
+      ip6: fe80::862b:2bff:fe70:c622
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:70:c6:23
       ip: 172.17.33.119
-    eth0:
-      mac: 84:2b:2b:70:c6:21
-      ip: 172.16.33.19
-    eth1:
-      mac: 84:2b:2b:70:c6:22
-      ip: 172.17.33.19
-      switch_port:  Gi3/28
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 1RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 16850722816
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2393000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
 chimint-20:
   bios:
     version: 1.5.3
-    vendor: Dell Inc.
     release_date: 10/22/2010
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 84:2b:2b:70:c3:d5
+      ip6: fe80::862b:2bff:fe70:c3d5
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.33.20
+      driver: bnx2
+      mountable: true
+      switch_port: Gi3/27
+    eth1:
+      mounted: false
+      rate: 1000000000
+      mac: 84:2b:2b:70:c3:d6
+      ip6: fe80::862b:2bff:fe70:c3d6
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
     bmc:
       mac: 84:2b:2b:70:c3:d7
       ip: 172.17.33.120
-    eth0:
-      mac: 84:2b:2b:70:c3:d5
-      ip: 172.16.33.20
-    eth1:
-      mac: 84:2b:2b:70:c3:d6
-      ip: 172.17.33.20
-      switch_port: Gi3/27
+  block_devices:
+    sda:
+      model: PERC H700
+      device: sda
+      size: 292326211584
+      rev: 2.1
+      vendor: DELL
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 7RM1Z4J
     manufacturer: Dell Inc.
     product_name: PowerEdge R410
-  block_devices:
-    sda:
-      model: PERC H700
-      size: 570949632
-      rev: 2.10
-      vendor: DELL
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2394000000
+    other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+    version: E5620
+    cache_l2: 262144
+    cache_l3: 12582912
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 16850722816
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8

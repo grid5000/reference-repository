@@ -5,17 +5,22 @@
     "smt_size": 8
   },
   "bios": {
-    "release_date": "04/05/2012",
+    "release_date": "12/23/2011",
     "vendor": "Dell Inc.",
-    "version": "1.66.00"
+    "version": 1.66
+  },
+  "chassis": {
+    "manufacturer": "Dell",
+    "name": "C6100",
+    "serial": "F385Z4J"
   },
   "gpu": {
-    "gpu": false,
+    "gpu": true,
     "gpu_count": 4,
     "gpu_model": "Tesla-S2050"
   },
   "main_memory": {
-    "ram_size": 8589934592,
+    "ram_size": 8385171456,
     "virtual_size": null
   },
   "monitoring": {
@@ -23,6 +28,7 @@
   },
   "network_adapters": [
     {
+      "bridged": false,
       "device": "eth0",
       "driver": "igb",
       "enabled": true,
@@ -45,6 +51,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.35.5",
+      "ip6": "fe80::226:6cff:fef9:1609",
       "mac": "00:26:6c:f9:16:09",
       "management": false,
       "mountable": true,
@@ -57,12 +64,14 @@
       "version": "82576EB"
     },
     {
+      "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.35.105",
       "mac": "00:26:6c:f9:16:0a",
       "management": true,
       "mountable": false,
+      "mounted": false,
       "network_address": "chirloute-5-ipmi.lille.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw-lille",
@@ -71,29 +80,34 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 12582912,
-    "clock_speed": 2400000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 12582912,
+    "clock_speed": 2399000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz",
     "vendor": "Intel",
     "version": "E5620"
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "mptsas",
       "interface": "SATA",
+      "model": "ST3300657SS",
       "raid": "0",
-      "size": 279396772384.644
+      "rev": "ES64",
+      "size": 300000000000,
+      "vendor": "SEAGATE"
     }
   ],
   "supported_job_types": {

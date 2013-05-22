@@ -5,11 +5,12 @@
     "smt_size": 8
   },
   "bios": {
-    "release_date": "(04/30/2008)",
+    "release_date": "04/30/2008",
     "vendor": "Phoenix Technologies LTD",
     "version": "1.1a"
   },
   "chassis": {
+    "manufacturer": "Bull SAS",
     "name": "R422E1/R422E1INF",
     "serial": null
   },
@@ -17,7 +18,7 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 8589934592,
+    "ram_size": 8393322496,
     "virtual_size": null
   },
   "monitoring": {
@@ -25,39 +26,15 @@
   },
   "network_adapters": [
     {
-      "device": "ib0",
-      "driver": "mlx4_core",
+      "bridged": false,
+      "device": "eth0",
+      "driver": "e1000e",
       "enabled": true,
-      "guid": null,
-      "interface": "InfiniBand",
-      "ip": "172.18.16.6",
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "genepi-6-ib0.grenoble.grid5000.fr",
-      "rate": 20000000000,
-      "vendor": "Mellanox",
-      "version": "InfiniHost MHGH29-XTC"
-    },
-    {
-      "device": "ib1",
-      "driver": "mlx4_core",
-      "enabled": false,
-      "guid": null,
-      "interface": "InfiniBand",
+      "interface": "Ethernet",
+      "mac": "00:30:48:7f:29:f2",
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 10000000000,
-      "vendor": "Mellanox",
-      "version": "InfiniHost MHGH29-XTC"
-    },
-    {
-      "device": "eth0",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": null,
-      "management": false,
       "rate": 1000000000,
       "vendor": "Intel",
       "version": "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)"
@@ -69,24 +46,56 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.16.6",
-      "mac": "00:30:48:7F:29:F3",
+      "ip6": "fe80::230:48ff:fe7f:415d",
+      "mac": "00:30:48:7f:29:f3",
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "genepi-6.grenoble.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw-grenoble",
-      "switch_port": "Gi",
+      "switch_port": null,
       "vendor": "Intel",
       "version": "Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)"
     },
     {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:01:57:fd",
+      "interface": "InfiniBand",
+      "ip": "172.18.16.6",
+      "ip6": "fe80::202:c903:1:57fd",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "genepi-6-ib0.grenoble.grid5000.fr",
+      "rate": 20000000000,
+      "vendor": "Mellanox",
+      "version": "MT26418"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx4_core",
+      "enabled": false,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:01:57:fe",
+      "interface": "InfiniBand",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "MT26418"
+    },
+    {
+      "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.16.6",
       "mac": null,
       "management": true,
       "mountable": false,
+      "mounted": false,
       "network_address": "genepi-6-bmc.grenoble.grid5000.fr",
       "rate": 1000000000,
       "vendor": "Peppercon AG (10437)",
@@ -94,10 +103,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
     "release": "Squeeze",
-    "version": "6.0"
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 7651000000,
@@ -105,22 +114,25 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 2500000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 6291456,
+    "cache_l3": 0,
+    "clock_speed": 2500000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           E5420  @ 2.50GHz",
     "vendor": "Intel",
-    "version": "E5420 QC"
+    "version": "E5420"
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "ata_piix",
       "interface": "SATA",
-      "model": "WD1600YS-01S",
-      "size": 149011611938.477,
+      "model": "WDC WD1600YS-01S",
+      "rev": 20.0,
+      "size": 164696555520,
       "vendor": "Western Digital"
     }
   ],

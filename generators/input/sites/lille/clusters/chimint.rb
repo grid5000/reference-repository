@@ -4,100 +4,133 @@ site :lille do |site_uid|
     model "Dell PowerEdge R410"
     created_at Time.parse("2011-03-25").httpdate
     kavlan true
+
     20.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+
         performance({
-         :core_flops => 7456000000,
-         :node_flops => 55610000000
+        :core_flops => 7456000000,
+        :node_flops => 55610000000
+      })
+
+        supported_job_types({
+          :deploy       => true,
+          :besteffort   => true,
+          :virtual      => lookup('chimint', node_uid, 'supported_job_types', 'virtual')
         })
+
         architecture({
-          :smp_size => 2,
-          :smt_size => 8,
-          :platform_type => "x86_64"
+          :smp_size       => lookup('chimint', node_uid, 'architecture', 'smp_size'),
+          :smt_size       => lookup('chimint', node_uid, 'architecture', 'smt_size'),
+          :platform_type  => lookup('chimint', node_uid, 'architecture', 'platform_type')
         })
+
         processor({
-          :vendor => "Intel",
-          :model => "Intel Xeon",
-          :version => "E5620",
-          :clock_speed => 2.4.G,
-          :instruction_set => "",
-          :other_description => "",
-          :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
-          :cache_l2 => 12.MiB
+          :vendor             => lookup('chimint', node_uid, 'processor', 'vendor'),
+          :model              => lookup('chimint', node_uid, 'processor', 'model'),
+          :version            => lookup('chimint', node_uid, 'processor', 'version'),
+          :clock_speed        => lookup('chimint', node_uid, 'processor', 'clock_speed'),
+          :instruction_set    => lookup('chimint', node_uid, 'processor', 'instruction_set'),
+          :other_description  => lookup('chimint', node_uid, 'processor', 'other_description'),
+          :cache_l1           => lookup('chimint', node_uid, 'processor', 'cache_l1'),
+          :cache_l1i          => lookup('chimint', node_uid, 'processor', 'cache_l1i'),
+          :cache_l1d          => lookup('chimint', node_uid, 'processor', 'cache_l1d'),
+          :cache_l2           => lookup('chimint', node_uid, 'processor', 'cache_l2'),
+          :cache_l3           => lookup('chimint', node_uid, 'processor', 'cache_l3')
         })
+
         main_memory({
-          :ram_size => 16.GiB, # bytes
+          :ram_size     => lookup('chimint', node_uid, 'main_memory', 'ram_size'),
           :virtual_size => nil
         })
+
         operating_system({
-          :name => "Debian",
-          :release => "6.0",
-          :version => nil,
-          :kernel => "2.6.32"
+          :name     => lookup('chimint', node_uid, 'operating_system', 'name'),
+          :release  => "Squeeze",
+          :version  => lookup('chimint', node_uid, 'operating_system', 'version'),
+          :kernel   => lookup('chimint', node_uid, 'operating_system', 'kernel')
         })
-        storage_devices [
-          {:interface => 'SATA',
-            :size => 300.GB,
-            :driver => "megaraid_sas",
-          :raid => "0"}
-        ]
-        network_adapters [{
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :mac => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'mac'),
-          :vendor => 'Broadcom',
-          :version => 'NetXtreme II BCM5716',
-          :enabled => true,
-          :management => false,
-          :mountable => true,
-          :driver => 'bnx2',
-          :mounted => true,
-          :bridged => true,
-          :device => 'eth0',
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'ip'),
-          :switch => 'gw-lille'
-        },{
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :mac => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'mac'),
-          :vendor => 'Broadcom',
-          :version => 'NetXtreme II BCM5716',
-          :enabled => true,
-          :management => false,
-          :mountable => true,
-          :driver => 'bnx2',
-          :mounted => false,
-          :device => 'eth1',
-          :network_address => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :ip => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'ip'),
-          :switch => 'gw-lille',
-          :switch_port => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'switch_port')
-        },{
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :mac => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'mac'),
-          :vendor => 'Dell',
-          :version => '1.54',
-          :enabled => true,
-          :management => true,
-          :mountable => false,
-          :network_address => "#{node_uid}-ipmi.#{site_uid}.grid5000.fr",
-          :ip => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'ip'),
-          :switch => 'gw-lille'
+
+        storage_devices [{
+          :interface  => 'SATA',
+          :size       => lookup('chimint', node_uid, 'block_devices', 'sda', 'size'),
+          :driver     => "megaraid_sas",
+          :device     => lookup('chimint', node_uid, 'block_devices', 'sda', 'device'),
+          :model      => lookup('chimint', node_uid, 'block_devices', 'sda', 'model'),
+          :vendor     => lookup('chimint', node_uid, 'block_devices', 'sda', 'vendor'),
+          :rev        => lookup('chimint', node_uid, 'block_devices', 'sda', 'rev'),
+          :raid       => "0"
         }]
-          gpu({
+
+        network_adapters [{
+          :interface        => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'interface'),
+          :rate             => 1.G,
+          :enabled          => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'enabled'),
+          :management       => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'management'),
+          :mountable        => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'mountable'),
+          :mounted          => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'mounted'),
+          :bridged          => true,
+          :device           => "eth0",
+          :vendor           => 'Broadcom',
+          :version          => 'NetXtreme II BCM5716',
+          :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :switch           => 'gw-lille',
+          :ip               => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :ip6              => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'ip6'),
+          :switch_port      => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :driver           => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'driver'),
+          :mac              => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'mac')
+        },
+        {
+          :interface        => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :rate             => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'rate'),
+          :enabled          => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'enabled'),
+          :management       => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'management'),
+          :mountable        => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'mountable'),
+          :mounted          => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'mounted'),
+          :bridged          => false,
+          :device           => "eth1",
+          :vendor           => 'Broadcom',
+          :version          => 'NetXtreme II BCM5716',
+          :driver           => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :mac              => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'mac')
+        },
+        {
+          :interface            => 'Ethernet',
+          :rate                 => 1.G,
+          :network_address      => "#{node_uid}-impi.#{site_uid}.grid5000.fr",
+          :ip                   => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :mac                  => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'mac'),
+          :switch               => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'switch_name'),
+          :switch_port          => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'switch_port'),
+          :enabled              => true,
+          :mounted              => false,
+          :mountable            => false,
+          :management           => true,
+          :device               => "bmc",
+        }]
+
+        chassis({
+          :serial       => lookup('chimint', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('chimint', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('chimint', node_uid, 'chassis', 'manufacturer')
+        })
+
+        bios({
+          :version      => lookup('chimint', node_uid, 'bios', 'version'),
+          :vendor       => lookup('chimint', node_uid, 'bios', 'vendor'),
+          :release_date => lookup('chimint', node_uid, 'bios', 'release_date')
+        })
+
+        gpu({
           :gpu  => false
-           })
+        })
 
         monitoring({
           :wattmeter  => false
         })
+
       end
     end
   end # cluster chimint
-
 end

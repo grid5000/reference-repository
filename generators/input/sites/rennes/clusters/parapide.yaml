@@ -2,28 +2,88 @@
 parapide-1:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:ad
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9ead
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.1
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:ae
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:97:0e
       ip: 172.17.98.1
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:ae
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:97:0c
+      ip6: fe80::214:4fff:feca:970c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/47
-      mac: 00:14:4f:ca:97:0c
       ip: 172.16.98.1
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:97:0d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF04D
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -35,28 +95,88 @@ parapide-1:
 parapide-2:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:71
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9471
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.2
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:72
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:99:7e
       ip: 172.17.98.2
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:72
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:99:7c
+      ip6: fe80::214:4fff:feca:997c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/48
-      mac: 00:14:4f:ca:99:7c
       ip: 172.16.98.2
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:99:7d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF052
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -68,28 +188,88 @@ parapide-2:
 parapide-3:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:dd
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9edd
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.3
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:de
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:92:6e
       ip: 172.17.98.3
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:de
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:92:6c
+      ip6: fe80::214:4fff:feca:926c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/34
-      mac: 00:14:4f:ca:92:6c
       ip: 172.16.98.3
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:92:6d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
   chassis:
     serial_number: 0935XEF041
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -101,28 +281,88 @@ parapide-3:
 parapide-4:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:69:b5
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:69b5
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.4
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:97:7a
       ip: 172.17.98.4
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:69:b6
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:97:78
+      ip6: fe80::214:4fff:feca:9778
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/46
-      mac: 00:14:4f:ca:97:78
       ip: 172.16.98.4
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:97:79
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
   chassis:
     serial_number: 0935XEF047
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -134,28 +374,88 @@ parapide-4:
 parapide-5:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:6d:a1
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:6da1
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.5
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:6d:a2
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:94:72
       ip: 172.17.98.5
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:6d:a2
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:94:70
+      ip6: fe80::214:4fff:feca:9470
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/44
-      mac: 00:14:4f:ca:94:70
       ip: 172.16.98.5
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:94:71
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
   chassis:
     serial_number: 0935XEF051
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -167,28 +467,88 @@ parapide-5:
 parapide-6:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:bd
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9fbd
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.6
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:be
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:92:32
       ip: 172.17.98.6
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:be
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:92:30
+      ip6: fe80::214:4fff:feca:9230
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/39
-      mac: 00:14:4f:ca:92:30
       ip: 172.16.98.6
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:92:31
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 0935XEF04B
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -200,28 +560,88 @@ parapide-6:
 parapide-7:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:80:f1
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:80f1
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.7
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:a7:2a
       ip: 172.17.98.7
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:80:f2
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:a7:28
+      ip6: fe80::214:4fff:feca:a728
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/40
-      mac: 00:14:4f:ca:a7:28
       ip: 172.16.98.7
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:a7:29
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 0935XEF050
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -233,28 +653,88 @@ parapide-7:
 parapide-8:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:55
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9455
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.8
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:56
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:92:b6
       ip: 172.17.98.8
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:56
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:92:b4
+      ip6: fe80::214:4fff:feca:92b4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/42
-      mac: 00:14:4f:ca:92:b4
       ip: 172.16.98.8
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:92:b5
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   chassis:
     serial_number: 0935XEF045
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -266,28 +746,88 @@ parapide-8:
 parapide-9:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:b1
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9eb1
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.9
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:98:a2
       ip: 172.17.98.9
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:b2
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:98:a0
+      ip6: fe80::214:4fff:feca:98a0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/41
-      mac: 00:14:4f:ca:98:a0
       ip: 172.16.98.9
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:98:a1
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF04A
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -299,28 +839,88 @@ parapide-9:
 parapide-10:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:6d:45
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:6d45
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.10
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:98:4e
       ip: 172.17.98.10
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:6d:46
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:98:4c
+      ip6: fe80::214:4fff:feca:984c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/43
-      mac: 00:14:4f:ca:98:4c
       ip: 172.16.98.10
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:98:4d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   chassis:
     serial_number: 0935XEF046
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -332,28 +932,88 @@ parapide-10:
 parapide-11:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:75
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9475
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.11
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:76
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:9a:e2
       ip: 172.17.98.11
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:76
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:9a:e0
+      ip6: fe80::214:4fff:feca:9ae0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/45
-      mac: 00:14:4f:ca:9a:e0
       ip: 172.16.98.11
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:9a:e1
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF055
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -365,28 +1025,88 @@ parapide-11:
 parapide-12:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:55
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9f55
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.12
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:56
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:99:26
       ip: 172.17.98.12
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:56
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:99:24
+      ip6: fe80::214:4fff:feca:9924
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/48
-      mac: 00:14:4f:ca:99:24
       ip: 172.16.98.12
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:99:25
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 0935XEF042
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2934000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -398,28 +1118,88 @@ parapide-12:
 parapide-13:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:61
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9461
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.13
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:62
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:9a:82
       ip: 172.17.98.13
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:62
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:9a:80
+      ip6: fe80::214:4fff:feca:9a80
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/47
-      mac: 00:14:4f:ca:9a:80
       ip: 172.16.98.13
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:9a:81
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF059
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2932000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -431,28 +1211,88 @@ parapide-13:
 parapide-14:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:95:11
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9511
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.14
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:95:12
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:99:be
       ip: 172.17.98.14
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:95:12
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:99:bc
+      ip6: fe80::214:4fff:feca:99bc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/44
-      mac: 00:14:4f:ca:99:bc
       ip: 172.16.98.14
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:99:bd
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF054
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -464,28 +1304,88 @@ parapide-14:
 parapide-15:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:e9
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:94e9
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.15
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:8f:02
       ip: 172.17.98.15
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:ea
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:8f:00
+      ip6: fe80::214:4fff:feca:8f00
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/46
-      mac: 00:14:4f:ca:8f:00
       ip: 172.16.98.15
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:8f:01
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
   chassis:
     serial_number: 0935XEF058
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -497,28 +1397,88 @@ parapide-15:
 parapide-16:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:aa:d9
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:aad9
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.16
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:aa:da
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:94:b6
       ip: 172.17.98.16
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:aa:da
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:94:b4
+      ip6: fe80::214:4fff:feca:94b4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/42
-      mac: 00:14:4f:ca:94:b4
       ip: 172.16.98.16
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:94:b5
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   chassis:
     serial_number: 0935XEF04F
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -530,28 +1490,88 @@ parapide-16:
 parapide-17:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:59
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:6739
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.17
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:98:6e
       ip: 172.17.98.17
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:5a
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:98:6c
+      ip6: fe80::221:28ff:fe40:3c3a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/41
-      mac: 00:14:4f:ca:98:6c
       ip: 172.16.98.17
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:98:6d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   chassis:
     serial_number: 0935XEF048
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -563,28 +1583,88 @@ parapide-17:
 parapide-18:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:e9
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9ee9
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.18
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:99:aa
       ip: 172.17.98.18
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:ea
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:99:a8
+      ip6: fe80::214:4fff:feca:99a8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/39
-      mac: 00:14:4f:ca:99:a8
       ip: 172.16.98.18
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:99:a9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   chassis:
     serial_number: 0935XEF044
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -596,28 +1676,88 @@ parapide-18:
 parapide-19:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:67:39
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:6739
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.19
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:21:28:40:3c:3c
       ip: 172.17.98.19
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:67:3a
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:21:28:40:3c:3a
+      ip6: fe80::221:28ff:fe40:3c3a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/40
-      mac: 00:21:28:40:3c:3a
       ip: 172.16.98.19
     eth1:
+      mounted: false
       mac: 00:21:28:40:3c:3b
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   chassis:
     serial_number: 0935XEF04E
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -629,28 +1769,88 @@ parapide-19:
 parapide-20:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:e5
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9fe5
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.20
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:e6
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:92:2e
       ip: 172.17.98.20
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:e6
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:92:2c
+      ip6: fe80::214:4fff:feca:922c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/43
-      mac: 00:14:4f:ca:92:2c
       ip: 172.16.98.20
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:92:2d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF053
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -662,28 +1862,88 @@ parapide-20:
 parapide-21:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:ab:c5
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:abc5
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.21
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:4d:7a
       ip: 172.17.98.21
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:ab:c6
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:4d:78
+      ip6: fe80::214:4fff:feca:4d78
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/36
-      mac: 00:14:4f:ca:4d:78
       ip: 172.16.98.21
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:4d:79
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
   chassis:
     serial_number: 0935XEF049
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -695,28 +1955,88 @@ parapide-21:
 parapide-22:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:e1
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:6739
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.22
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:8e:f6
       ip: 172.17.98.22
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:e2
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:8e:f4
+      ip6: fe80::221:28ff:fe40:3c3a
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/38
-      mac: 00:14:4f:ca:8e:f4
       ip: 172.16.98.22
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:8e:f5
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   chassis:
     serial_number: 0935XEF043
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -728,28 +2048,88 @@ parapide-22:
 parapide-23:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:ab:99
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:ab99
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.23
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:ab:9a
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:99:de
       ip: 172.17.98.23
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:ab:9a
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:99:dc
+      ip6: fe80::214:4fff:feca:99dc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/37
-      mac: 00:14:4f:ca:99:dc
       ip: 172.16.98.23
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:99:dd
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF057
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -761,28 +2141,88 @@ parapide-23:
 parapide-24:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:fd
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:94fd
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.24
+      driver: mlx4_core
+      mountable: true
     bmc:
       mac: 00:14:4f:ca:92:3a
       ip: 172.17.98.24
     ib1:
+      mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:94:fe
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:92:38
+      ip6: fe80::214:4fff:feca:9238
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi6/37
-      mac: 00:14:4f:ca:92:38
       ip: 172.16.98.24
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:92:39
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: ivt
   chassis:
     serial_number: 0935XEF056
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25331101696
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S
@@ -794,28 +2234,88 @@ parapide-24:
 parapide-25:
   bios:
     version: '1.14'
-    vendor: American Megatrends Inc.
     release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: GK6O
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     ib0:
+      mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:49
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:9f49
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
       ip: 172.18.98.25
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:4a
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
     bmc:
       mac: 00:14:4f:ca:91:62
       ip: 172.17.98.25
-    ib1:
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9f:4a
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:91:60
+      ip6: fe80::214:4fff:feca:9160
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
       switch_name: gw-rennes
       switch_port: Gi7/38
-      mac: 00:14:4f:ca:91:60
       ip: 172.16.98.25
     eth1:
+      mounted: false
       mac: 00:14:4f:ca:91:61
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
   chassis:
     serial_number: 0935XEF04C
     manufacturer: Sun Microsystems
     product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25331101696
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2933000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
   block_device:
     sda:
       model: HITACHI HUA7250S

@@ -4,8 +4,18 @@
     "smp_size": 2,
     "smt_size": 12
   },
+  "bios": {
+    "release_date": "04/26/2012",
+    "vendor": "Dell Inc.",
+    "version": "1.0.21"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6220",
+    "serial": "FQ3HD5J"
+  },
   "main_memory": {
-    "ram_size": 34359738368,
+    "ram_size": 33768730624,
     "virtual_size": null
   },
   "monitoring": {
@@ -13,68 +23,84 @@
   },
   "network_adapters": [
     {
+      "bridged": false,
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "00:8c:fa:0b:e1:78",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82599EB 10-Gigabit SFI/SFP+ Network Connection"
+    },
+    {
       "bridged": true,
       "device": "eth1",
       "driver": "ixgbe",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.51.3",
+      "ip6": "fe80::28c:faff:fe0b:e179",
       "mac": "00:8c:fa:0b:e1:79",
       "management": false,
-      "model": "82599EB 10-Gigabit SFI/SFP+ Network Connection",
-      "mountable": true,
+      "mountable": false,
       "mounted": true,
       "network_address": "hercule-3.lyon.grid5000.fr",
       "rate": 10000000000,
       "switch": "force10",
       "switch_port": null,
-      "vendor": "Intel"
+      "vendor": "Intel",
+      "version": "82599EB 10-Gigabit SFI/SFP+ Network Connection"
     },
     {
-      "device": "eth1",
-      "driver": "ixgbe",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "00:8c:fa:0b:e1:78",
-      "management": false,
-      "model": "82599EB 10-Gigabit SFI/SFP+ Network Connection",
-      "mountable": false,
-      "mounted": false,
-      "rate": 10000000000,
-      "vendor": "Intel"
-    },
-    {
+      "bridged": false,
       "device": "eth2",
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
       "mac": "84:8f:69:fd:4c:1f",
       "management": false,
-      "model": "Intel Corporation",
       "mountable": false,
       "mounted": false,
       "rate": 1000000000,
-      "vendor": "Intel"
+      "vendor": "Intel",
+      "version": "Intel Corporation"
     },
     {
+      "bridged": false,
       "device": "eth3",
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
       "mac": "84:8f:69:fd:4c:1f",
       "management": false,
-      "model": "Intel Corporation",
       "mountable": false,
       "mounted": false,
       "rate": 1000000000,
-      "vendor": "Intel"
+      "vendor": "Intel",
+      "version": "Intel Corporation"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.51.3",
+      "mac": "84:8f:69:fd:4c:21",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "hercule-3-bmc.lyon.grid5000.fr",
+      "rate": 1000000000
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 10170000000,
@@ -82,13 +108,14 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 2000000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 15728640,
+    "clock_speed": 2000000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2620 0 @ 2.00GHz",
     "vendor": "Intel",
     "version": "E5-2620"
   },
@@ -110,19 +137,25 @@
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA",
-      "size": 1818989403545.86
+      "model": "WDC WD2003FYYS-1",
+      "rev": 1.0,
+      "size": 2000398934016
     },
     {
       "device": "sdb",
       "driver": "ahci",
       "interface": "SATA",
-      "size": 1818989403545.86
+      "model": "WDC WD2003FYYS-1",
+      "rev": 1.0,
+      "size": 2000398934016
     },
     {
       "device": "sdc",
       "driver": "ahci",
       "interface": "SATA",
-      "size": 1818989403545.86
+      "model": "WDC WD2003FYYS-1",
+      "rev": 1.0,
+      "size": 2000398934016
     }
   ],
   "supported_job_types": {

@@ -4,6 +4,7 @@ edel-sw-3:
   kind: switch
   site: grenoble
   snmp_community: public
+  mtu: 9216
   weathermap: 
     use_cacti: "no"
   vlans: 
@@ -17,7 +18,7 @@ edel-sw-3:
       rate: 1000000000
       ports: 
         4: 
-          uid: blade-3
+          uid: edel-cmc-3
           kind: other
         5: edel-37
         6: edel-38

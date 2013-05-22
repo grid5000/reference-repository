@@ -1,23 +1,24 @@
 {
   "architecture": {
     "platform_type": "x86_64",
-    "smp_size": 2,
+    "smp_size": null,
     "smt_size": 2
   },
   "bios": {
-    "release_date": "(01/09/2006)",
+    "release_date": "01/09/2006",
     "vendor": "Dell Computer Corporation",
     "version": "A05"
   },
   "chassis": {
+    "manufacturer": "Dell Computer Corporation",
     "name": "PowerEdge 1855",
-    "serial": "6PFGV1J"
+    "serial": "725GV1J"
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 2147483648,
+    "ram_size": 2109562880,
     "virtual_size": null
   },
   "monitoring": {
@@ -31,20 +32,23 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.0.10",
+      "ip6": "fe80::214:22ff:fe0c:da94",
       "mac": null,
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "bordeplage-10.bordeaux.grid5000.fr",
       "rate": 1000000000,
-      "switch": "sbordeplage-1",
+      "switch": "sbordeplage",
+      "switch_port": null,
       "vendor": "Intel",
       "version": "82546GB Gigabit Ethernet Controller"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "e1000",
-      "enabled": true,
+      "enabled": false,
       "interface": "Ethernet",
       "ip": "172.16.3.10",
       "mac": null,
@@ -58,34 +62,39 @@
     },
     {
       "device": "ib0",
-      "driver": "ib_mthca",
+      "driver": "mlx4_core",
       "enabled": true,
-      "guid": null,
+      "guid": "20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:76",
       "interface": "InfiniBand",
       "ip": "172.18.0.10",
+      "ip6": "fe80::205:ad00:1:5a76",
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "bordeplage-10-ib0.bordeaux.grid5000.fr",
       "rate": 10000000000,
       "vendor": "Mellanox",
-      "version": "InfiniHost MT25208"
+      "version": "MT25208 (MT23108 compat mode)"
     },
     {
       "device": "ib1",
+      "driver": "mlx4_core",
       "enabled": false,
-      "guid": null,
+      "guid": "20:00:55:04:01:80:00:00:00:00:00:00:00:05:ad:00:00:01:5a:77",
       "interface": "InfiniBand",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 10000000000,
       "vendor": "Mellanox",
-      "version": "InfiniHost MT25208"
+      "version": "MT25208 (MT23108 compat mode)"
     },
     {
       "device": "bmc",
       "enabled": true,
-      "guid": "00:14:22:0c:da:76",
       "interface": "Ethernet",
       "ip": "172.17.0.10",
+      "mac": "00:14:22:0c:da:76",
       "management": true,
       "mountable": false,
       "mounted": false,
@@ -94,10 +103,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
     "release": "Squeeze",
-    "version": "6.0"
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 4820000000,
@@ -106,14 +115,15 @@
   "processor": {
     "cache_l1": null,
     "cache_l1d": 16384,
-    "cache_l1i": null,
+    "cache_l1i": 0,
     "cache_l2": 1048576,
+    "cache_l3": 0,
     "clock_speed": 3000000000,
-    "instruction_set": "",
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(TM) CPU 3.00GHz",
     "vendor": "Intel",
-    "version": "EM64T"
+    "version": "3.00GHz"
   },
   "storage_devices": [
     {
@@ -121,8 +131,9 @@
       "driver": "mptspi",
       "interface": "SCSI",
       "model": "ST373207LC",
-      "rev": "D7013KT2K4G7",
-      "size": 65192580223.0835
+      "rev": "D701",
+      "size": 73407820800,
+      "vendor": "SEAGATE"
     }
   ],
   "supported_job_types": {

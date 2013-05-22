@@ -10,13 +10,16 @@
     "version": "1.14"
   },
   "chassis": {
+    "manufacturer": "Sun Microsystems",
+    "name": "SUN FIRE X2270",
+    "serial": "0935XEF044",
     "serial_number": "0935XEF044"
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 25769803776,
+    "ram_size": 25331101696,
     "virtual_size": null
   },
   "monitoring": {
@@ -24,6 +27,68 @@
     "wattmeter": false
   },
   "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.98.18",
+      "ip6": "fe80::214:4fff:feca:99a8",
+      "mac": "00:14:4f:ca:99:a8",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "parapide-18.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw-rennes",
+      "switch_port": "Gi6/39",
+      "vendor": "Intel",
+      "version": "82575EB"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "00:14:4f:ca:99:a9",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82575EB"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:e9",
+      "interface": "InfiniBand",
+      "ip": "172.18.98.18",
+      "ip6": "fe80::203:ba00:100:9ee9",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "parapide-18-ib0.rennes.grid5000.fr",
+      "rate": 20000000000,
+      "vendor": "Mellanox",
+      "version": "MT25418"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx4_core",
+      "enabled": false,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:ea",
+      "interface": "InfiniBand",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "MT25418"
+    },
     {
       "device": "bmc",
       "enabled": true,
@@ -35,64 +100,13 @@
       "mounted": false,
       "network_address": "parapide-18-bmc.rennes.grid5000.fr",
       "rate": 1000000000
-    },
-    {
-      "bridged": true,
-      "device": "eth0",
-      "driver": "igb",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.16.98.18",
-      "mac": "00:14:4f:ca:99:a8",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "parapide-18.rennes.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "gw-rennes",
-      "switch_port": "Gi6/39",
-      "vendor": "Intel",
-      "version": "82575EB"
-    },
-    {
-      "device": "eth1",
-      "driver": "igb",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "00:14:4f:ca:99:a9",
-      "mountable": false,
-      "mounted": false,
-      "rate": 1000000000
-    },
-    {
-      "device": "ib0",
-      "driver": "mlx4_core",
-      "enabled": true,
-      "interface": "Infiniband",
-      "ip": "172.18.98.18",
-      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:e9",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "parapide-18-ib0.rennes.grid5000.fr",
-      "rate": 10000000000,
-      "vendor": "Mellanox",
-      "version": "MT25418"
-    },
-    {
-      "device": "ib1",
-      "driver": "mlx4_core",
-      "enabled": false,
-      "interface": "Infiniband",
-      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:ea",
-      "rate": 10000000000,
-      "vendor": "Mellanox",
-      "version": "MT25418"
     }
   ],
   "operating_system": {
-    "kernel": "2.6.26",
-    "name": "Debian",
-    "release": "5.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 9170000000,
@@ -100,13 +114,14 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 2930000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 8388608,
+    "clock_speed": 2933000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz",
     "vendor": "Intel",
     "version": "X5570"
   },
@@ -140,7 +155,8 @@
       "interface": "SATA",
       "model": "HITACHI HUA7250S",
       "rev": "GK6O",
-      "size": 465661287307.739
+      "size": 500107862016,
+      "vendor": null
     }
   ],
   "supported_job_types": {

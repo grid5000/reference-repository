@@ -4,11 +4,21 @@
     "smp_size": 2,
     "smt_size": 2
   },
+  "bios": {
+    "release_date": "04/25/2006",
+    "vendor": "Phoenix Technologies Ltd.",
+    "version": "V1.35.2.2"
+  },
+  "chassis": {
+    "manufacturer": "Sun Microsystems",
+    "name": "Sun Fire V20z",
+    "serial": "XG052422764"
+  },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 2147483648,
+    "ram_size": 2109751296,
     "virtual_size": null
   },
   "monitoring": {
@@ -16,6 +26,8 @@
   },
   "network_adapters": [
     {
+      "bridged": false,
+      "device": "eth0",
       "driver": "tg3",
       "enabled": true,
       "interface": "Ethernet",
@@ -23,7 +35,7 @@
       "mac": "00:09:3d:12:7f:da",
       "management": false,
       "model": "BCM5704",
-      "mountable": true,
+      "mountable": false,
       "mounted": false,
       "rate": 1000000000,
       "vendor": "Broadcom"
@@ -35,6 +47,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.49.9",
+      "ip6": "fe80::209:3dff:fe12:7fdb",
       "mac": "00:09:3d:12:7f:db",
       "management": false,
       "model": "BCM5704",
@@ -43,14 +56,28 @@
       "network_address": "sagittaire-9.lyon.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw-lyon",
+      "switch_port": null,
       "vendor": "Broadcom"
+    },
+    {
+      "device": "bmc",
+      "driver": "bnx2",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.49.9",
+      "mac": "00:09:3d:12:7f:dc",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "sagittaire-9-bmc.lyon.grid5000.fr",
+      "rate": 1000000000
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 3929000000,
@@ -58,15 +85,16 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
+    "cache_l1d": 65536,
+    "cache_l1i": 65536,
     "cache_l2": 1048576,
-    "clock_speed": 2400000000.0,
-    "instruction_set": "",
+    "cache_l3": 0,
+    "clock_speed": 2390000000,
+    "instruction_set": "x86-64",
     "model": "AMD Opteron",
-    "other_description": "",
+    "other_description": "AMD Opteron(tm) Processor 250",
     "vendor": "AMD",
-    "version": "250"
+    "version": 250
   },
   "sensors": {
     "power": {
@@ -83,9 +111,12 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "mptspi",
       "interface": "SCSI",
-      "size": 67986547946.9299
+      "model": "MAT3073NC",
+      "rev": 104,
+      "size": 73543163904
     }
   ],
   "supported_job_types": {

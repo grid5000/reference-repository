@@ -5,15 +5,20 @@
     "smt_size": 8
   },
   "bios": {
-    "release_date": "(08/21/2009)",
+    "release_date": "08/21/2009",
     "vendor": "Phoenix Technologies LTD",
     "version": "V1.05"
+  },
+  "chassis": {
+    "manufacturer": "TYAN Computer Corporation",
+    "name": "S5393",
+    "serial": 812530074
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 17179869184,
+    "ram_size": 16867737600,
     "virtual_size": null
   },
   "network_adapters": [
@@ -24,7 +29,8 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.65.69",
-      "mac": "00:E0:81:B2:C1:3A",
+      "ip6": "fe80::2e0:81ff:feb2:c4ac",
+      "mac": "00:e0:81:b2:c1:3a",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -36,9 +42,15 @@
       "version": "80003ES2LAN"
     },
     {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "e1000e",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "00:E0:81:B2:C1:3B",
+      "mac": "00:e0:81:b2:c1:3b",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000,
       "vendor": "intel",
       "version": "BCM5721"
@@ -53,9 +65,10 @@
       "ib_switch_card_pos": 3,
       "interface": "InfiniBand",
       "ip": "172.18.65.69",
+      "ip6": "fe80::202:c903:2:8055",
       "management": false,
       "mountable": true,
-      "mounted": true,
+      "mounted": false,
       "network_address": "griffon-69-ib0.nancy.grid5000.fr",
       "rate": 20000000000,
       "switch": "sgriffonib",
@@ -63,22 +76,28 @@
       "version": "MT26418"
     },
     {
+      "device": "ib1",
+      "driver": "mlx4_core",
       "enabled": false,
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:17:b2",
       "interface": "InfiniBand",
-      "rate": 20000000000,
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 30000000000,
       "vendor": "Mellanox",
       "version": "MT26418"
     },
     {
+      "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.65.69",
-      "mac": "00:E0:81:4F:B5:DC",
+      "mac": "00:e0:81:4f:b5:dc",
       "management": true,
       "mountable": false,
       "mounted": false,
-      "network_address": "griffon-69-ipmi.nancy.grid5000.fr",
+      "network_address": "griffon-69-bmc.nancy.grid5000.fr",
       "rate": 100000000,
       "switch": "sgriffon3-ipmi",
       "switch_port": "1/0/12",
@@ -87,10 +106,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 7963000000.0,
@@ -98,13 +117,14 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 12582912,
-    "clock_speed": 2500000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 6291456,
+    "cache_l3": 0,
+    "clock_speed": 2494000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           L5420  @ 2.50GHz",
     "vendor": "Intel",
     "version": "L5420"
   },
@@ -118,15 +138,15 @@
       }
     }
   },
-  "serial": 812530074,
   "storage_devices": [
     {
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA II",
-      "model": "HDP725032GLA360",
-      "rev": "GM3OA5CA",
-      "size": 298023223876.953
+      "model": "Hitachi HDP72503",
+      "rev": "GM3O",
+      "size": 320072933376,
+      "vendor": "Hitachi"
     }
   ],
   "supported_job_types": {

@@ -4,11 +4,21 @@
     "smp_size": 2,
     "smt_size": 8
   },
+  "bios": {
+    "release_date": "09/10/2007",
+    "vendor": "Phoenix Technologies LTD",
+    "version": 6.0
+  },
+  "chassis": {
+    "manufacturer": "SGI.COM",
+    "name": "AltixXE310",
+    "serial": "X0004750"
+  },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 8589934592,
+    "ram_size": 8393711616,
     "virtual_size": null
   },
   "monitoring": {
@@ -16,6 +26,7 @@
   },
   "network_adapters": [
     {
+      "bridged": false,
       "device": "eth0",
       "driver": "e1000e",
       "enabled": true,
@@ -25,7 +36,6 @@
       "management": false,
       "mountable": true,
       "mounted": false,
-      "network_address": "chinqchint-1-eth0.lille.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw-lille",
       "vendor": "Intel",
@@ -38,6 +48,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.34.1",
+      "ip6": "fe80::230:48ff:fe7c:66ed",
       "mac": "00:30:48:7c:7c:87",
       "management": false,
       "mountable": true,
@@ -50,25 +61,13 @@
       "version": "80003ES2LAN"
     },
     {
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.17.34.101",
-      "mac": "00:30:48:96:07:E5",
-      "management": true,
-      "mountable": false,
-      "network_address": "chinqchint-1-ipmi.lille.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "gw-lille",
-      "vendor": "Peppercon",
-      "version": "1.46"
-    },
-    {
       "device": "myri0",
-      "driver": "mx",
+      "driver": "mx ethernet (myri)",
       "enabled": true,
       "interface": "Myrinet",
       "ip": "172.18.47.101",
-      "mac": null,
+      "ip6": "fe80::260:ddff:fe47:4bb6",
+      "mac": "00:60:dd:47:4b:b6",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -77,13 +76,26 @@
       "switch": "switch-myri",
       "vendor": "Myricom",
       "version": "10G-PCIE-8A-C"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.34.101",
+      "mac": "00:30:48:96:07:e5",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "chinqchint-1-ipmi.lille.grid5000.fr",
+      "rate": 100000000,
+      "switch": "gw-lille"
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 8695000000,
@@ -91,21 +103,26 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 4194304,
-    "clock_speed": 2830000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 6291456,
+    "cache_l3": 0,
+    "clock_speed": 2825000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           E5440  @ 2.83GHz",
     "vendor": "Intel",
-    "version": "E5440 QC"
+    "version": "E5440"
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "ahci",
       "interface": "SATA II",
-      "size": 232830643653.87
+      "model": "Hitachi HDT72502",
+      "rev": "V5DO",
+      "size": 250059350016,
+      "vendor": null
     }
   ],
   "supported_job_types": {

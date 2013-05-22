@@ -1,6 +1,6 @@
 {
   "architecture": {
-    "platform_type": "amd64",
+    "platform_type": "x86_64",
     "smp_size": 2,
     "smt_size": 24
   },
@@ -10,13 +10,16 @@
     "version": "O37"
   },
   "chassis": {
+    "manufacturer": "HP",
+    "name": "ProLiant DL165 G7",
+    "serial": "GB803651MC",
     "serial_number": "GB803651MC"
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 51539607552,
+    "ram_size": 16864071680,
     "virtual_size": null
   },
   "monitoring": {
@@ -24,6 +27,96 @@
     "wattmeter": false
   },
   "network_adapters": [
+    {
+      "bridged": false,
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "interface": "Ethernet",
+      "mac": "78:e7:d1:f9:4e:c8",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 100000000,
+      "vendor": "Intel",
+      "version": "82576"
+    },
+    {
+      "bridged": true,
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.99.12",
+      "ip6": "fe80::7ae7:d1ff:fef9:4ec9",
+      "mac": "78:e7:d1:f9:4e:c9",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "parapluie-12.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw-rennes",
+      "switch_port": "Gi2/41",
+      "vendor": "Intel",
+      "version": "82576"
+    },
+    {
+      "bridged": false,
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "78:e7:d1:f9:4e:d2",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82576"
+    },
+    {
+      "bridged": false,
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "78:e7:d1:f9:4e:d3",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82576"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:a2:61",
+      "interface": "InfiniBand",
+      "ip": "172.18.99.12",
+      "ip6": "fe80::223:7dff:ff94:a261",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "parapluie-12-ib0.rennes.grid5000.fr",
+      "rate": 20000000000,
+      "vendor": "Mellanox",
+      "version": "MT25418"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx4_core",
+      "enabled": false,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:a2:62",
+      "interface": "InfiniBand",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000,
+      "vendor": "Mellanox",
+      "version": "MT25418"
+    },
     {
       "device": "bmc",
       "enabled": true,
@@ -35,78 +128,13 @@
       "mounted": false,
       "network_address": "parapluie-12-bmc.rennes.grid5000.fr",
       "rate": 1000000000
-    },
-    {
-      "device": "eth0",
-      "driver": "igb",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "78:e7:d1:f9:4e:c8",
-      "rate": 1000000000
-    },
-    {
-      "bridged": true,
-      "device": "eth1",
-      "driver": "igb",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.16.99.12",
-      "mac": "78:e7:d1:f9:4e:c9",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "parapluie-12.rennes.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "gw-rennes",
-      "switch_port": "Gi2/41",
-      "vendor": "Intel",
-      "version": "82576"
-    },
-    {
-      "device": "eth2",
-      "driver": "igb",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "78:e7:d1:f9:4e:d2",
-      "rate": 1000000000
-    },
-    {
-      "device": "eth3",
-      "driver": "igb",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "78:e7:d1:f9:4e:d3",
-      "rate": 1000000000
-    },
-    {
-      "device": "ib0",
-      "driver": "mlx4_core",
-      "enabled": true,
-      "interface": "Infiniband",
-      "ip": "172.18.99.12",
-      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:a2:61",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "parapluie-12-ib0.rennes.grid5000.fr",
-      "rate": 10000000000,
-      "vendor": "Mellanox",
-      "version": "MT25418"
-    },
-    {
-      "device": "ib1",
-      "driver": "mlx4_core",
-      "enabled": false,
-      "interface": "Infiniband",
-      "mac": "20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:a2:62",
-      "rate": 10000000000,
-      "vendor": "Mellanox",
-      "version": "MT25418"
     }
   ],
   "operating_system": {
-    "kernel": "2.6.26",
-    "name": "Debian",
-    "release": "5.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 4932000000,
@@ -114,15 +142,16 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 1700000000.0,
-    "instruction_set": "",
+    "cache_l1d": 65536,
+    "cache_l1i": 65536,
+    "cache_l2": 524288,
+    "cache_l3": 5240832,
+    "clock_speed": 800000000,
+    "instruction_set": "x86-64",
     "model": "AMD Opteron",
-    "other_description": "",
+    "other_description": "AMD Opteron(tm) Processor 6164 HE",
     "vendor": "AMD",
-    "version": "6164 HE"
+    "version": 6164
   },
   "sensors": {
     "power": {
@@ -157,7 +186,8 @@
       "interface": "SATA",
       "model": "VB0250EAVER",
       "rev": "HPG0",
-      "size": 250059350016
+      "size": 250059350016,
+      "vendor": "ATA"
     }
   ],
   "supported_job_types": {

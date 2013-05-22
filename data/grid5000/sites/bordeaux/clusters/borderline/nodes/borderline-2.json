@@ -7,9 +7,10 @@
   "bios": {
     "release_date": "02/23/2007",
     "vendor": "IBM",
-    "version": "ZYE133AUS-1.08"
+    "version": "-[ZYE129AUS-1.08]-"
   },
   "chassis": {
+    "manufacturer": "IBM",
     "name": "IBM System x3755 -[88774RG]-",
     "serial": "99A3255"
   },
@@ -17,7 +18,7 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 34359738368,
+    "ram_size": 31760584704,
     "virtual_size": null
   },
   "monitoring": {
@@ -31,6 +32,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.2.2",
+      "ip6": "fe80::214:5eff:fe57:cc3e",
       "mac": "00:14:5e:57:cc:3e",
       "management": false,
       "mountable": true,
@@ -38,13 +40,15 @@
       "network_address": "borderline-2.bordeaux.grid5000.fr",
       "rate": 1000000000,
       "switch": "sborderline",
+      "switch_port": null,
       "vendor": "Broadcom",
       "version": "NetXtreme II BCM5708"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "bnx2",
-      "enabled": true,
+      "enabled": false,
       "interface": "Ethernet",
       "ip": "172.16.5.2",
       "mac": "00:14:5e:57:cc:3c",
@@ -58,7 +62,7 @@
     },
     {
       "device": "ib0",
-      "driver": "ib_mthca",
+      "driver": "mlx4_core",
       "enabled": true,
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:00:1d:85",
       "interface": "InfiniBand",
@@ -67,25 +71,30 @@
       "mountable": true,
       "mounted": true,
       "network_address": "borderline-2-ib0.bordeaux.grid5000.fr",
-      "rate": 10000000000,
+      "rate": 20000000000,
       "vendor": "Mellanox",
-      "version": "InfiniHost MT25208"
+      "version": "MT25418"
     },
     {
       "device": "ib1",
+      "driver": "mlx4_core",
       "enabled": false,
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:00:1d:86",
       "interface": "InfiniBand",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 10000000000,
       "vendor": "Mellanox",
-      "version": "InfiniHost MT25208"
+      "version": "MT25418"
     },
     {
       "device": "myri0",
-      "driver": "mx_driver",
+      "driver": "mx ethernet (myri)",
       "enabled": true,
       "interface": "Myrinet",
       "ip": "172.18.2.12",
+      "ip6": "fe80::260:ddff:fe47:b67a",
       "mac": "00:60:dd:47:b6:7a",
       "management": false,
       "mountable": true,
@@ -109,10 +118,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
     "release": "Squeeze",
-    "version": "6.0"
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 4424000000,
@@ -122,13 +131,14 @@
     "cache_l1": null,
     "cache_l1d": 65536,
     "cache_l1i": 65536,
-    "cache_l2": 2097152,
-    "clock_speed": 2600000000.0,
+    "cache_l2": 1048576,
+    "cache_l3": 0,
+    "clock_speed": 2599000000,
     "instruction_set": "x86-64",
     "model": "AMD Opteron",
-    "other_description": "",
+    "other_description": "Dual-Core AMD Opteron(tm) Processor 8218",
     "vendor": "AMD",
-    "version": "8218"
+    "version": 8218
   },
   "storage_devices": [
     {
@@ -137,7 +147,8 @@
       "interface": "SAS",
       "model": "8k-l Stripe",
       "rev": "V1.0",
-      "size": 558793544769.287
+      "size": 586772643840,
+      "vendor": "ServeRA"
     }
   ],
   "supported_job_types": {
