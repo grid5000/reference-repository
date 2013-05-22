@@ -34,71 +34,77 @@ site :grenoble do |site_uid|
                   }
                 }
               ]
-            },
-						#à faire 2 x
-            {
-            :uid => "block-1",
-              :measures => [
-                {
-                  :currentW => {
-                    :unit => "W",
-                    :shared => true,
-                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.1"],
-                    :api => "block-1-currentW"
+            }
+      ].concat(
+            (1..2).map { |j|
+              {
+              :uid => "block-#{j}",
+                :measures => [
+                  {
+                    :currentW => {
+                      :unit => "W",
+                      :shared => true,
+                      :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.#{j}"],
+                      :api => "block-#{j}-currentW"
+                    }
+                  },
+                  {
+                    :current => {
+                      :unit => "VA",
+                      :shared => "true",
+                      :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.#{j}"],
+                      :api => "block-#{j}-current"
+                    }
+                  },
+                  {
+                    :total => {
+                      :unit => "W.h",
+                      :shared => "true",
+                      :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.#{j}",],
+                      :api => "block-#{j}-total"
+                    }
                   }
-                },
-                {
-                  :current => {
-                    :unit => "VA",
-                    :shared => "true",
-                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.1"],
-                    :api => "block-1-current"
-                  }
-                },
-                {
-                  :total => {
-                    :unit => "W.h",
-                    :shared => "true",
-                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.1",],
-                    :api => "block-1-total"
-                  }
-                }
-              ],
-            :parent => "global"
-            },
+                ],
+              :parent => "global"
+              }
+      }).concat(
+          (0..1).collect { |k|
+            (1..12).map { |j|
             #à faire 12 fois par block
             {
-            :uid => "outlet-1",
+            :uid => "outlet-#{k*12+j}",
               :measures => [
                 {
                   :currentW => {
                     :unit => "W",
                     :shared => true,
-                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.1"],
-                    :api => "outlet-1-currentW"
+                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.#{k*12+j}"],
+                    :api => "outlet-#{k*12+j}-currentW"
                   }
                 },
                 {
                   :current => {
                     :unit => "VA",
                     :shared => "true",
-                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.1"],
-                    :api => "outlet-1-current"
+                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.#{k*12+j}"],
+                    :api => "outlet-#{k*12+j}-current"
                   }
                 },
                 {
                   :total => {
                     :unit => "W.h",
                     :shared => "true",
-                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.1",
-                    :api => "outlet-1-total"
+                    :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.#{k*12+j}"],
+                    :api => "outlet-#{k*12+j}-total"
                   }
                 }
               ],
-            :parent => "block-X"
-            },
-          ]
-        }
+            :parent => "block-#{k+1}"
+            }
+            }
+        }.flatten
+      )
+      }
       ]
     end
   end
