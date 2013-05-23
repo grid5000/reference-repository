@@ -7,6 +7,11 @@ site :lille do |site_uid|
 
     8.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
+       
+        performance({
+        :core_flops => 7593000000,
+        :node_flops => 58460000000
+       })
 
         architecture({
         :smp_size => 2,
