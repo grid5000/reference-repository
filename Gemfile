@@ -12,5 +12,5 @@ gem "cacti-play",
   :tag => "2.8"
 gem "weathermap",
   :git => "ssh://g5kadmin@git.grid5000.fr/srv/git/repos/weathermap",
-  :tag => "5.8.3"
+  :tag => "5.8.4"
 
