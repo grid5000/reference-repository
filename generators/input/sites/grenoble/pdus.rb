@@ -27,7 +27,7 @@ site :grenoble do |site_uid|
                 },
                 {
                   :total => {
-                    :unit => "W.h",
+                    :unit => "Wh",
                     :shared => "true",
                     :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.1"],
                     :api => "total"
@@ -58,7 +58,7 @@ site :grenoble do |site_uid|
                   },
                   {
                     :total => {
-                      :unit => "W.h",
+                      :unit => "Wh",
                       :shared => "true",
                       :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.#{j}",],
                       :api => "block-#{j}-total"
@@ -92,7 +92,7 @@ site :grenoble do |site_uid|
                 },
                 {
                   :total => {
-                    :unit => "W.h",
+                    :unit => "Wh",
                     :shared => "true",
                     :oid => ["iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.#{k*12+j}"],
                     :api => "outlet-#{k*12+j}-total"

@@ -143,8 +143,22 @@ site :grenoble do |site_uid|
           :gpu_model   =>  lookup('adonis', node_uid, 'gpu', 'gpu_model'),
         })
 
-        monitoring({
-          :wattmeter  => false
+        sensors({
+          :power => {
+            :available => true,
+            :via => {
+              :pdu  => [
+                [ { :measure 	=>  lookup('adonis', node_uid, 'sensors', 'measure1'), 
+                    :uid			=>  lookup('adonis', node_uid, 'sensors', 'pdu')},
+                  { :measure	=> 	lookup('adonis', node_uid, 'sensors', 'measure2'), 
+                    :uid			=>  lookup('adonis', node_uid, 'sensors', 'pdu')}
+                ],
+                [ { :measure	=> 	"global", 
+                    :uid			=>	lookup('adonis', node_uid, 'sensors', 'block')}
+                ]
+              ]
+            }
+          }
         })
 
       end

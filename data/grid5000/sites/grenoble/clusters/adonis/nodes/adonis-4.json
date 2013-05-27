@@ -23,9 +23,6 @@
     "ram_size": 25330180096,
     "virtual_size": null
   },
-  "monitoring": {
-    "wattmeter": false
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -113,6 +110,31 @@
     "other_description": "Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz",
     "vendor": "Intel",
     "version": "E5520"
+  },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "pdu": [
+          [
+            {
+              "measure": "outlet-13",
+              "uid": "adonis-pdu-1.grenoble.grid5000.fr"
+            },
+            {
+              "measure": "outlet-14",
+              "uid": "adonis-pdu-1.grenoble.grid5000.fr"
+            }
+          ],
+          [
+            {
+              "measure": "global",
+              "uid": "block-2"
+            }
+          ]
+        ]
+      }
+    }
   },
   "storage_devices": [
     {
