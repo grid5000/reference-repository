@@ -3,7 +3,7 @@ site :grenoble do |site_uid|
   cluster :adonis do |cluster_uid|
     model "Bull R422-E2 dual mobo + Tesla S1070"
     created_at Time.parse("2010-09-02").httpdate
-    kavlan false
+    kavlan true
 
     10.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

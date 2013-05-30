@@ -3,7 +3,7 @@ site :grenoble do |site_uid|
   cluster :genepi do |cluster_uid|
     model "Bull R422-E1"
     created_at Time.parse("2008-10-01").httpdate
-    kavlan false
+    kavlan true
 
     34.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

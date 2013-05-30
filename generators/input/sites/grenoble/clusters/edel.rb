@@ -3,7 +3,7 @@ site :grenoble do |site_uid|
   cluster :edel do |cluster_uid|
     model "Bull bullx B500 compute blades"
     created_at Time.parse("2008-10-03").httpdate
-    kavlan false
+    kavlan true
 
     72.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
