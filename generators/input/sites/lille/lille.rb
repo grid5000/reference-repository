@@ -5,10 +5,10 @@ site :lille do |site_uid|
   description "Grid5000 Lille site"
   latitude 50.6500
   longitude 3.0833
-  email_contact "lille-staff@lists.grid5000.fr"
-  sys_admin_contact "lille-staff@lists.grid5000.fr"
-  security_contact "lille-staff@lists.grid5000.fr"
-  user_support_contact "lille-staff@lists.grid5000.fr"
+  email_contact "support-staff@lists.grid5000.fr"
+  sys_admin_contact "support-staff@lists.grid5000.fr"
+  security_contact "support-staff@lists.grid5000.fr"
+  user_support_contact "support-staff@lists.grid5000.fr"
   compilation_server false
   kavlan_ip_range "10.8.0.0/14"
   virt_ip_range "10.136.0.0/14"

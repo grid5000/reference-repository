@@ -5,10 +5,10 @@ site :grenoble do |site_uid|
   description "Grid'5000 Grenoble site"
   latitude 45.1833
   longitude 5.7167
-  email_contact "grenoble-staff@lists.grid5000.fr"
-  sys_admin_contact "grenoble-staff@lists.grid5000.fr"
-  security_contact "grenoble-staff@lists.grid5000.fr"
-  user_support_contact "grenoble-staff@lists.grid5000.fr"
+  email_contact "support-staff@lists.grid5000.fr"
+  sys_admin_contact "support-staff@lists.grid5000.fr"
+  security_contact "support-staff@lists.grid5000.fr"
+  user_support_contact "support-staff@lists.grid5000.fr"
   compilation_server false
   kavlan_ip_range "10.4.0.0/14"
   virt_ip_range "10.132.0.0/14"
