@@ -187,8 +187,7 @@
           "uid": "dignfs"
         },
         {
-          "kind": "switch",
-          "uid": "fastiron-switch-ipmi"
+
         },
         {
           "port": "eth0",
@@ -410,9 +409,8 @@
           "uid": "genepi-1"
         },
         {
-          "kind": "other",
-          "port": "eth4",
-          "uid": "digmgt"
+          "kind": "virtual",
+          "uid": "vthd-inria"
         },
         {
           "kind": "other",
@@ -483,8 +481,7 @@
           "uid": "dignfs"
         },
         {
-          "kind": "switch",
-          "uid": "summit-idpot"
+
         },
         {
           "kind": "virtual",
@@ -508,6 +505,18 @@
     "vlan100": {
       "addresses": [
         "172.16.31.254"
+      ],
+      "administrative": true
+    },
+    "vlan101": {
+      "addresses": [
+        "172.17.31.254"
+      ],
+      "administrative": true
+    },
+    "vlan550": {
+      "addresses": [
+        "192.168.4.15"
       ],
       "administrative": true
     }

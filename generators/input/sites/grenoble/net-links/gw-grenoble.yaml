@@ -13,6 +13,14 @@ gw-grenoble:
       administrative: yes
       addresses: 
         - 172.16.31.254
+    "vlan101":
+      administrative: yes
+      addresses:
+        - 172.17.31.254
+    "vlan550":
+      administrative: yes
+      addresses:
+        - 192.168.4.15
   linecards:
     2:
       naming_pattern: "%LINECARD%:%PORT%"
@@ -106,9 +114,6 @@ gw-grenoble:
           uid: dignfs
           kind: other
           port: eth0
-        10:
-          uid: fastiron-switch-ipmi
-          kind: switch
         11:
           uid: adonis-1
           port: eth0
@@ -254,9 +259,8 @@ gw-grenoble:
           uid: genepi-1
           port: eth1
         23:
-          uid: digmgt
-          port: eth4
-          kind: other
+          uid: vthd-inria
+          kind: virtual
         24:
           uid: alpes
           port: eth0
@@ -295,9 +299,6 @@ gw-grenoble:
           uid: dignfs
           port: eth2
           rate: 10000000000
-        2:
-          uid: summit-idpot
-          kind: switch
         3:
           kind: virtual
           uid: renater-grenoble
