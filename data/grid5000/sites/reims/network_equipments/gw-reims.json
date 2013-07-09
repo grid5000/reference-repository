@@ -1,6 +1,12 @@
 {
   "backplane_bps": 128000000000,
   "channels": {
+    "lacp1": [
+      {
+        "linecard": 0,
+        "port": 46
+      }
+    ],
     "naming_pattern": "Po%CHANNELID%"
   },
   "kind": "router",
@@ -145,10 +151,14 @@
           "uid": "stremi-44"
         },
         {
-
+          "kind": "other",
+          "port": "eth0",
+          "uid": "stremi-srv"
         },
         {
-
+          "kind": "other",
+          "port": "eth2",
+          "uid": "stremi-srv"
         },
         {
 
@@ -162,6 +172,22 @@
         }
       ],
       "rate": 1000000000
+    },
+    {
+      "kind": "other",
+      "naming_pattern": "TenGigabitEthernet0/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+
+        },
+        {
+          "uid": "stremi-data"
+        }
+      ],
+      "rate": 10000000000
     }
   ],
   "model": "Cisco C3560E-48TD-S",
