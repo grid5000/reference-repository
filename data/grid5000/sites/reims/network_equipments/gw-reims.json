@@ -1,12 +1,6 @@
 {
   "backplane_bps": 128000000000,
   "channels": {
-    "lacp1": [
-      {
-        "linecard": 0,
-        "port": 46
-      }
-    ],
     "naming_pattern": "Po%CHANNELID%"
   },
   "kind": "router",
@@ -151,14 +145,10 @@
           "uid": "stremi-44"
         },
         {
-          "kind": "other",
-          "port": "eth0",
-          "uid": "stremi-srv"
+
         },
         {
-          "kind": "other",
-          "port": "eth2",
-          "uid": "stremi-srv"
+
         },
         {
 
@@ -172,22 +162,6 @@
         }
       ],
       "rate": 1000000000
-    },
-    {
-      "kind": "other",
-      "naming_pattern": "TenGigabitEthernet0/%PORT%",
-      "ports": [
-        {
-
-        },
-        {
-
-        },
-        {
-          "uid": "stremi-data"
-        }
-      ],
-      "rate": 10000000000
     }
   ],
   "model": "Cisco C3560E-48TD-S",
@@ -206,6 +180,71 @@
         "172.16.175.254"
       ],
       "administrative": true
+    },
+    "vlan101": {
+      "addresses": [
+        "172.17.175.254"
+      ]
+    },
+    "vlan540": {
+      "addresses": [
+        "192.168.69.9"
+      ]
+    },
+    "vlan541": {
+      "addresses": [
+        "192.168.69.1"
+      ]
+    },
+    "vlan701": {
+      "addresses": [
+        "192.168.192.0/20"
+      ]
+    },
+    "vlan702": {
+      "addresses": [
+        "192.168.208.0/20"
+      ]
+    },
+    "vlan703": {
+      "addresses": [
+        "192.168.224.0/20"
+      ]
+    },
+    "vlan704": {
+      "addresses": [
+        "10.36.0.0/18"
+      ]
+    },
+    "vlan705": {
+      "addresses": [
+        "10.36.64.0/18"
+      ]
+    },
+    "vlan706": {
+      "addresses": [
+        "10.36.128.0/18"
+      ]
+    },
+    "vlan707": {
+      "addresses": [
+        "10.36.192.0/18"
+      ]
+    },
+    "vlan708": {
+      "addresses": [
+        "10.37.0.0/18"
+      ]
+    },
+    "vlan709": {
+      "addresses": [
+        "10.37.64.0/18"
+      ]
+    },
+    "vlan719": {
+      "addresses": [
+        "10.39.192.0/18"
+      ]
     }
   },
   "weathermap": {
