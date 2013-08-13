@@ -113,7 +113,7 @@ site :rennes do |site_uid|
         {
           :interface        => lookup('parapide', node_uid, 'network_interfaces', 'ib1', 'interface'),
           :rate             => lookup('parapide', node_uid, 'network_interfaces', 'ib1', 'rate'),
-          :device           => "ib1",
+          :rate             => lookup('parapide', node_uid, 'network_interfaces', 'ib1', 'rate'),
           :enabled          => lookup('parapide', node_uid, 'network_interfaces', 'ib1', 'enabled'),
           :management       => lookup('parapide', node_uid, 'network_interfaces', 'ib1', 'management'),
           :mountable        => lookup('parapide', node_uid, 'network_interfaces', 'ib1', 'mountable'),
