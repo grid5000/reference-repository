@@ -82,7 +82,7 @@ site :nancy do |site_uid|
         },
         {
           :interface        => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'interface'),
-          :rate             => 1.G,
+          :rate             => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'rate'),
           :enabled          => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'enabled'),
           :management       => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'management'),
           :mountable        => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mountable'),
