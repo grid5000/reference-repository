@@ -95,6 +95,19 @@ site :nancy do |site_uid|
           :mac              => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
+          :interface        => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :enabled          => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'enabled'),
+          :management       => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'management'),
+          :mountable        => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mountable'),
+          :mounted          => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mounted'),
+          :bridged          => false,
+          :device           => "eth2",
+          :vendor           => "intel",
+          :version          => "82574L",
+          :driver           => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :mac              => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mac')
+        },
+        {
           :interface        => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'interface'),
           :rate             => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'rate'),
           :device           => "ib0",
