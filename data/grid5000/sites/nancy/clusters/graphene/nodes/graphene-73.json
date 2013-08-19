@@ -9,11 +9,16 @@
     "vendor": "American Megatrends Inc.",
     "version": 7.02
   },
+  "chassis": {
+    "manufacturer": "TYAN Computer Corporation",
+    "name": "S5393",
+    "serial": 1009390075
+  },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 17179869184,
+    "ram_size": 16860139520,
     "virtual_size": null
   },
   "network_adapters": [
@@ -24,6 +29,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.64.73",
+      "ip6": "fe80::2e0:81ff:fed5:740",
       "mac": "00:e0:81:d5:07:40",
       "management": false,
       "mountable": true,
@@ -36,17 +42,15 @@
       "version": "82574L"
     },
     {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "e1000e",
       "enabled": false,
       "interface": "Ethernet",
       "mac": "00:e0:81:d5:07:41",
-      "rate": 1000000000,
-      "vendor": "intel",
-      "version": "82574L"
-    },
-    {
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "00:e0:81:d5:07:42",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000,
       "vendor": "intel",
       "version": "82574L"
@@ -58,6 +62,7 @@
       "guid": "20:00:55:00:41:00:00:00:00:00:00:00:02:c9:03:00:0b:92:fd",
       "interface": "InfiniBand",
       "ip": "172.18.64.73",
+      "ip6": "fe80::202:c903:b:92fd",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -68,10 +73,15 @@
       "version": "MT26418"
     },
     {
+      "device": "ib1",
+      "driver": "mlx4_core",
       "enabled": false,
       "guid": "20:00:55:00:41:00:00:00:00:00:00:00:02:c9:03:00:0b:92:fe",
       "interface": "InfiniBand",
-      "rate": 20000000000,
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 28000000000,
       "vendor": "Mellanox",
       "version": "MT26418"
     },
@@ -93,10 +103,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 8024000000.0,
@@ -104,13 +114,14 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": 8388608,
-    "clock_speed": 2530000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 8388608,
+    "clock_speed": 2527000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           X3440  @ 2.53GHz",
     "vendor": "Intel",
     "version": "X3440"
   },
@@ -124,7 +135,6 @@
       }
     }
   },
-  "serial": 1009390075,
   "storage_devices": [
     {
       "device": "sda",
@@ -132,7 +142,8 @@
       "interface": "SATA II",
       "model": "Hitachi HDS72103",
       "rev": "JPFO",
-      "size": 298023223876.953
+      "size": 320072933376,
+      "vendor": "Hitachi"
     }
   ],
   "supported_job_types": {

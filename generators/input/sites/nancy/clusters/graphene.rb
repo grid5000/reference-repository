@@ -7,119 +7,122 @@ site :nancy do |site_uid|
 
     144.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-        serial lookup('graphene', node_uid, 'chassis', 'serial_number')
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+
         performance({
           :core_flops => 8.024.G,
           :node_flops => 31.01.G
         })
-        architecture({
-          :smp_size => 1,
-          :smt_size => 4,
-          :platform_type => "x86_64"
-          })
-        processor({
-          :vendor => "Intel",
-          :model => "Intel Xeon",
-          :version => "X3440",
-          :clock_speed => 2.53.G,
-          :instruction_set => "",
-          :other_description => "",
-          :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
-          :cache_l2 => 8.MiB
+
+        supported_job_types({
+          :deploy       => true,
+          :besteffort   => true,
+          :virtual      => lookup('graphene', node_uid, 'supported_job_types', 'virtual')
         })
+
+        architecture({
+          :smp_size       => lookup('graphene', node_uid, 'architecture', 'smp_size'),
+          :smt_size       => lookup('graphene', node_uid, 'architecture', 'smt_size'),
+          :platform_type  => lookup('graphene', node_uid, 'architecture', 'platform_type')
+        })
+
+        processor({
+          :vendor             => lookup('graphene', node_uid, 'processor', 'vendor'),
+          :model              => lookup('graphene', node_uid, 'processor', 'model'),
+          :version            => lookup('graphene', node_uid, 'processor', 'version'),
+          :clock_speed        => lookup('graphene', node_uid, 'processor', 'clock_speed'),
+          :instruction_set    => lookup('graphene', node_uid, 'processor', 'instruction_set'),
+          :other_description  => lookup('graphene', node_uid, 'processor', 'other_description'),
+          :cache_l1           => lookup('graphene', node_uid, 'processor', 'cache_l1'),
+          :cache_l1i          => lookup('graphene', node_uid, 'processor', 'cache_l1i'),
+          :cache_l1d          => lookup('graphene', node_uid, 'processor', 'cache_l1d'),
+          :cache_l2           => lookup('graphene', node_uid, 'processor', 'cache_l2'),
+          :cache_l3           => lookup('graphene', node_uid, 'processor', 'cache_l3')
+        })
+
         main_memory({
-          :ram_size => 16.GiB,
+          :ram_size     => lookup('graphene', node_uid, 'main_memory', 'ram_size'),
           :virtual_size => nil
         })
+
         operating_system({
-          :name => "Debian",
-          :release => "6.0",
-          :version => nil,
-          :kernel => "2.6.32"
+          :name     => lookup('graphene', node_uid, 'operating_system', 'name'),
+          :release  => "Squeeze",
+          :version  => lookup('graphene', node_uid, 'operating_system', 'version'),
+          :kernel   => lookup('graphene', node_uid, 'operating_system', 'kernel')
         })
+
         storage_devices [{
-          :interface => 'SATA II',
-          :size => 320.GB,
-          :driver => "ahci",
-          :device => "sda",
-          :model => lookup('graphene', node_uid, 'block_devices' ,'sda',  'model'),
-          :rev => lookup('graphene', node_uid, 'block_devices', 'sda', 'rev'),
+          :interface  => 'SATA II',
+          :size       => lookup('graphene', node_uid, 'block_devices', 'sda', 'size'),
+          :driver     => "ahci",
+          :device     => lookup('graphene', node_uid, 'block_devices', 'sda', 'device'),
+          :model      => lookup('graphene', node_uid, 'block_devices', 'sda', 'model'),
+          :vendor     => lookup('graphene', node_uid, 'block_devices', 'sda', 'vendor'),
+          :rev        => lookup('graphene', node_uid, 'block_devices', 'sda', 'rev')
         }]
+
         network_adapters [{
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          :device => "eth0",
-          :enabled => true,
-          :mounted => true,
-          :mountable => true,
-          :bridged => true,
-          :management => false,
-          :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'ip'),
-          :mac => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'mac'),
-          :switch => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
-          :switch_port => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
-          :driver => "e1000e",
-          :vendor => "intel",
-          :version => "82574L"
+          :interface        => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'interface'),
+          :rate             => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'rate'),
+          :enabled          => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'enabled'),
+          :management       => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'management'),
+          :mountable        => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'mountable'),
+          :mounted          => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'mounted'),
+          :bridged          => true,
+          :device           => "eth0",
+          :vendor           => "intel",
+          :version          => "82574L",
+          :driver           => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'driver'),
+          :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip               => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :ip6              => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'ip6'),
+          :switch           => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
+          :switch_port      => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :mac              => lookup('graphene', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          #:device => "eth1",
-          :enabled => false,
-          #:mounted => false,
-          :mac => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mac'),
-          #:management => false,
-          #:driver => "e1000e",
-          :vendor => "intel",
-          :version => "82574L"
+          :interface        => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :rate             => 1.G,
+          :enabled          => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'enabled'),
+          :management       => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'management'),
+          :mountable        => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mountable'),
+          :mounted          => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mounted'),
+          :bridged          => false,
+          :device           => "eth1",
+          :vendor           => "intel",
+          :version          => "82574L",
+          :driver           => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :mac              => lookup('graphene', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
-          :interface => 'Ethernet',
-          :rate => 1.G,
-          #:device => "eth2",
-          :enabled => false,
-          #:mounted => false,
-          :mac => lookup('graphene', node_uid, 'network_interfaces', 'eth2', 'mac'),
-          #:management => false,
-          #:driver => "e1000e",
-          :vendor => "intel",
-          :version => "82574L"
-        },
-	{
-          :interface => 'InfiniBand',
-          :rate => 20.G,
-          :device => "ib0",
-          :enabled => true,
-          :mounted => true,
-          :mountable => true,
-          :management => false,
-          :ip => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'ip'),
-          :guid => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'guid'),
-          :network_address => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
-          :switch => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'switch_name'),
-          #:ib_switch_card => lookup('nancy',"#{node_uid}", 'switch_ib_card'),
-          #:ib_switch_card_pos => lookup('nancy',"#{node_uid}", 'switch_ib_card_pos'),
-          :driver => "mlx4_core",
-          :vendor => "Mellanox",
-          :version => "MT26418"
+          :interface        => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'interface'),
+          :rate             => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'rate'),
+          :device           => "ib0",
+          :enabled          => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'enabled'),
+          :management       => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'management'),
+          :mountable        => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'mountable'),
+          :mounted          => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'mounted'),
+          :vendor           => 'Mellanox',
+          :version          => "MT26418",
+          :driver           => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'driver'),
+          :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
+          :ip               => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'ip'),
+          :ip6              => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'ip6'),
+          :guid             => lookup('graphene', node_uid, 'network_interfaces', 'ib0', 'guid'),
+          :switch           => "sgrapheneib",
         },
         {
-          :interface => 'InfiniBand',
-          :rate => 20.G,
-          :enabled => false,
-          #:device => "ib1",
-          #:driver => "mlx4_core",
-          :vendor => "Mellanox",
-          :version => "MT26418",
-          #:mountable => false,
-          #:mounted => false,
-          #:management => false
-          :guid => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'guid')
+          :interface        => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'interface'),
+          :rate             => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'rate'),
+          :device           => "ib1",
+          :enabled          => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'enabled'),
+          :management       => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'management'),
+          :mountable        => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'mountable'),
+          :mounted          => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'mounted'),
+          :vendor           => 'Mellanox',
+          :version          => "MT26418",
+          :driver           => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'driver'),
+          :guid             => lookup('graphene', node_uid, 'network_interfaces', 'ib1', 'guid')
         },
         {
           :interface => 'Ethernet',
@@ -137,19 +140,22 @@ site :nancy do |site_uid|
           :switch => lookup('graphene', node_uid, 'network_interfaces', 'bmc', 'switch_name'),
           :switch_port => lookup('graphene', node_uid, 'network_interfaces', 'bmc', 'switch_port')
         }]
-        # pdu({
-        #   :vendor => "American Power Conversion",
-        #   :pdu => lookup('graphene', node_uid, 'pdu', 'pdu_name'),
-        #   :pdu_port => lookup('graphene', node_uid, 'pdu', 'pdu_position')
-        # })
-        bios({
-          :version	=> lookup('graphene', node_uid, 'bios', 'version'),
-          :vendor	=> "American Megatrends Inc.",
-          :release_date	=> lookup('graphene', node_uid, 'bios', 'release_date')
+
+        chassis({
+          :serial       => lookup('graphene', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('graphene', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('graphene', node_uid, 'chassis', 'manufacturer')
         })
+
+        bios({
+          :version      => lookup('graphene', node_uid, 'bios', 'version'),
+          :vendor       => lookup('graphene', node_uid, 'bios', 'vendor'),
+          :release_date => lookup('graphene', node_uid, 'bios', 'release_date')
+        })
+
         gpu({
           :gpu  => false
-           })
+        })
 
         if (105<=i+1 and i+1<=144) then
           sensors({
