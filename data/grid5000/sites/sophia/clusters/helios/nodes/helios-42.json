@@ -5,19 +5,20 @@
     "smt_size": 4
   },
   "bios": {
-    "release_date": null,
-    "vendor": null,
-    "version": null
+    "release_date": "08/10/2005",
+    "vendor": "American Megatrends Inc.",
+    "version": "080010"
   },
   "chassis": {
+    "manufacturer": "Sun Microsystems",
     "name": "Sun Fire X4100 Server",
-    "serial": "0609AN1160"
+    "serial": "0606AN1290"
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 4294967296,
+    "ram_size": 4093943808,
     "virtual_size": null
   },
   "monitoring": {
@@ -31,6 +32,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.128.42",
+      "ip6": "fe80::214:4fff:fe1f:c3b8",
       "mac": "00:14:4f:20:03:88",
       "management": false,
       "mountable": true,
@@ -39,46 +41,59 @@
       "rate": 1000000000,
       "switch": "edgeiron",
       "switch_port": "1/5",
-      "vendor": "Intel Corporation",
+      "vendor": "Intel",
       "version": "82546EB"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "e1000",
       "enabled": false,
       "interface": "Ethernet",
       "mac": "00:14:4f:20:03:89",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000,
-      "vendor": "Intel Corporation",
+      "vendor": "Intel",
       "version": "82546EB"
     },
     {
+      "bridged": false,
       "device": "eth2",
       "driver": "e1000",
       "enabled": false,
       "interface": "Ethernet",
       "mac": "00:14:4f:20:03:8a",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000,
-      "vendor": "Intel Corporation",
+      "vendor": "Intel",
       "version": "82546EB"
     },
     {
+      "bridged": false,
       "device": "eth3",
       "driver": "e1000",
       "enabled": false,
       "interface": "Ethernet",
       "mac": "00:14:4f:20:03:8b",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000,
-      "vendor": "Intel Corporation",
+      "vendor": "Intel",
       "version": "82546EB"
     },
     {
       "device": "myri0",
-      "driver": "mx",
+      "driver": "mx ethernet (myri)",
       "enabled": true,
       "interface": "Myrinet",
       "ip": "172.18.128.42",
-      "mac": null,
+      "ip6": "fe80::260:ddff:fe47:7f0b",
+      "mac": "00:60:DD:47:7F:0B",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -102,10 +117,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
     "release": "Squeeze",
-    "version": "6.0"
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 3686000000,
@@ -113,36 +128,26 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
+    "cache_l1d": 65536,
+    "cache_l1i": 65536,
     "cache_l2": 1048576,
-    "clock_speed": 2200000000.0,
-    "instruction_set": "",
+    "cache_l3": 0,
+    "clock_speed": 2193000000,
+    "instruction_set": "x86-64",
     "model": "AMD Opteron",
-    "other_description": "",
+    "other_description": "Dual Core AMD Opteron(tm) Processor 275",
     "vendor": "AMD",
-    "version": "275"
+    "version": 275
   },
   "storage_devices": [
-    {
-      "driver": "mptsas",
-      "interface": "SAS",
-      "raid": "0",
-      "size": 67986547946.9299
-    },
-    {
-      "driver": "mptsas",
-      "interface": "SAS",
-      "raid": "0",
-      "size": 67986547946.9299
-    },
     {
       "device": "sda",
       "driver": "mptsas",
       "interface": "SAS",
-      "model": "SAS1064-IR",
-      "rev": 1.04,
-      "size": "139236MB"
+      "model": "Logical Volume",
+      "rev": 3000,
+      "size": 145999527936,
+      "vendor": "LSILogic"
     }
   ],
   "supported_job_types": {
