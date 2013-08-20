@@ -4,102 +4,133 @@ site :sophia do |site_uid|
     model "Dell PowerEdge R410"
     created_at Time.parse("2010-01-27").httpdate
     kavlan true
+
     45.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
-        supported_job_types({:deploy => true, :besteffort => true, :virtual => "ivt"})
+
         performance({
-         :core_flops => 7140000000,
-         :node_flops => 55460000000
+          :core_flops => 7140000000,
+          :node_flops => 55460000000
         })
+
+
+
+        supported_job_types({
+          :deploy       => true,
+          :besteffort   => true,
+          :virtual      => lookup('suno', node_uid, 'supported_job_types', 'virtual')
+        })
+
         architecture({
-          :smp_size => 2,
-          :smt_size => 8,
-          :platform_type => "x86_64"
+          :smp_size       => lookup('suno', node_uid, 'architecture', 'smp_size'),
+          :smt_size       => lookup('suno', node_uid, 'architecture', 'smt_size'),
+          :platform_type  => lookup('suno', node_uid, 'architecture', 'platform_type')
         })
+
         processor({
-          :vendor => "Intel",
-          :model => "Intel Xeon",
-          :version => "E5520",
-          :clock_speed => 2.26.G,
-          :instruction_set => "",
-          :other_description => "",
-          :cache_l1 => nil,
-          :cache_l1i => nil,
-          :cache_l1d => nil,
-          :cache_l2 => 8.MiB
+          :vendor             => lookup('suno', node_uid, 'processor', 'vendor'),
+          :model              => lookup('suno', node_uid, 'processor', 'model'),
+          :version            => lookup('suno', node_uid, 'processor', 'version'),
+          :clock_speed        => lookup('suno', node_uid, 'processor', 'clock_speed'),
+          :instruction_set    => lookup('suno', node_uid, 'processor', 'instruction_set'),
+          :other_description  => lookup('suno', node_uid, 'processor', 'other_description'),
+          :cache_l1           => lookup('suno', node_uid, 'processor', 'cache_l1'),
+          :cache_l1i          => lookup('suno', node_uid, 'processor', 'cache_l1i'),
+          :cache_l1d          => lookup('suno', node_uid, 'processor', 'cache_l1d'),
+          :cache_l2           => lookup('suno', node_uid, 'processor', 'cache_l2'),
+          :cache_l3           => lookup('suno', node_uid, 'processor', 'cache_l3')
         })
+
         main_memory({
-          :ram_size => 32.GiB, # bytes
+          :ram_size     => lookup('suno', node_uid, 'main_memory', 'ram_size'),
           :virtual_size => nil
         })
+
         operating_system({
-          :name => "Debian",
-          :release => "Squeeze",
-          :version => "6.0",
-          :kernel => "2.6.32"
+          :name     => lookup('suno', node_uid, 'operating_system', 'name'),
+          :release  => "Squeeze",
+          :version  => lookup('suno', node_uid, 'operating_system', 'version'),
+          :kernel   => lookup('suno', node_uid, 'operating_system', 'kernel')
         })
+
         storage_devices [{
-          :interface => 'SATA',
-          :size => 598.8.GB,
-          :device => "sda",
-          :model  => lookup('suno', node_uid, 'block_devices', 'sda', 'model'),
-          :driver => "megaraid_sas",
+          :interface  => 'SATA',
+          :size       => lookup('suno', node_uid, 'block_devices', 'sda', 'size'),
+          :driver     => "megaraid_sas",
+          :device     => lookup('suno', node_uid, 'block_devices', 'sda', 'device'),
+          :model      => lookup('suno', node_uid, 'block_devices', 'sda', 'model'),
+          :vendor     => lookup('suno', node_uid, 'block_devices', 'sda', 'vendor'),
+          :rev        => lookup('suno', node_uid, 'block_devices', 'sda', 'rev'),
           :raid => "0"
         }]
         network_adapters [{
-            :interface => 'Ethernet',
-            :rate => 1.G,
-            :mac => lookup('suno', node_uid, 'network_interfaces','eth0', 'mac'),
-            :ip => lookup('suno', node_uid, 'network_interfaces','eth0', 'ip'),
-            :vendor => 'Broadcom',
-            :version => 'NetXtremeII BCM5716',
-            :enabled => true,
-            :management => false,
-            :mountable => true,
-            :bridged => true,
-            :driver => 'bnx2',
-            :mounted => true,
-            :device => 'eth0',
-            :network_address => "#{node_uid}.#{site_uid}.grid5000.fr",
-            :switch => lookup('suno', node_uid, 'network_interfaces','eth0', 'switch_name'),
-            :switch_port => lookup('suno', node_uid, 'network_interfaces','eth0', 'switch_port')
-          },{
-            :interface => 'Ethernet',
-            :rate => 1.G,
-            :mac => lookup('suno', node_uid, 'network_interfaces','eth0', 'mac'),
-            :vendor => 'Broadcom',
-            :version => 'NetXtremeII BCM5716',
-            :enabled => false,
-            :driver => 'bnx2',
-            :device => 'eth1'
-          },{
-            :interface => 'Ethernet',
-            :rate => 100.M,
-            :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-            :ip => lookup('suno', node_uid, 'network_interfaces','bmc', 'ip'),
-            :mac => lookup('suno', node_uid, 'network_interfaces','bmc', 'mac'),
-            :enabled  => true,
-            :mounted => false,
-            :mountable => false,
-            :management => true,
-            :device => "bmc"
-          }]
-          bios({
-            :version => lookup('suno', node_uid, 'network_interfaces','version'),
-            :vendor => lookup('suno', node_uid, 'network_interfaces','vendor'),
-            :release_date => lookup('suno', node_uid, 'network_interfaces','release_date'),
-          })
-          chassis({
-            :serial => lookup('suno', node_uid, 'chassis','serial_number'),
-            :name => lookup('suno', node_uid, 'chassis','product_name'),
-          })
-          gpu({
-            :gpu  => false
-             })
+          :interface        => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'interface'),
+          :rate             => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'rate'),
+          :enabled          => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'enabled'),
+          :management       => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'management'),
+          :mountable        => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'mountable'),
+          :mounted          => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'mounted'),
+          :bridged          => true,
+          :device           => "eth0",
+          :vendor           => 'Broadcom',
+          :version          => 'NetXtremeII BCM5716',
+          :driver           => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'driver'),
+          :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
+          :ip               => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :ip6              => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'ip6'),
+          :switch           => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
+          :switch_port      => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :mac              => lookup('suno', node_uid, 'network_interfaces', 'eth0', 'mac')
+        },
+        {
+          :interface        => lookup('suno', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :rate             => 1.G,
+          :enabled          => lookup('suno', node_uid, 'network_interfaces', 'eth1', 'enabled'),
+          :management       => lookup('suno', node_uid, 'network_interfaces', 'eth1', 'management'),
+          :mountable        => lookup('suno', node_uid, 'network_interfaces', 'eth1', 'mountable'),
+          :mounted          => lookup('suno', node_uid, 'network_interfaces', 'eth1', 'mounted'),
+          :bridged          => false,
+          :device           => "eth1",
+          :vendor           => 'Broadcom',
+          :version          => 'NetXtremeII BCM5716',
+          :driver           => lookup('suno', node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :ip               => lookup('suno', node_uid, 'network_interfaces', 'eth1', 'ip'),
+          :mac              => lookup('suno', node_uid, 'network_interfaces', 'eth1', 'mac')
+        },
+        {
+          :interface        => 'Ethernet',
+          :rate             => 100.M,
+          :enabled          => true,
+          :management       => true,
+          :mountable        => false,
+          :mounted          => false,
+          :device           => "bmc",
+          :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
+          :ip               => lookup('suno', node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :vendor           => "Unknown",
+          :version          => "1.7",
+          :mac              => lookup('suno', node_uid, 'network_interfaces', 'bmc', 'mac')
+        }]
 
-          monitoring({
-            :wattmeter  => false
-          })
+        chassis({
+          :serial       => lookup('suno', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('suno', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('suno', node_uid, 'chassis', 'manufacturer')
+        })
+
+        bios({
+          :version      => lookup('suno', node_uid, 'bios', 'version'),
+          :vendor       => lookup('suno', node_uid, 'bios', 'vendor'),
+          :release_date => lookup('suno', node_uid, 'bios', 'release_date')
+        })
+
+        gpu({
+          :gpu  => false
+        })
+
+        monitoring({
+          :wattmeter  => false
+        })
       end
     end
   end
