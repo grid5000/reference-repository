@@ -5,11 +5,12 @@
     "smt_size": 8
   },
   "bios": {
-    "release_date": "(10/26/2011)",
-    "vendor": "Thurley",
-    "version": "3.60.18.0037_BUILD_NCB_N00021"
+    "release_date": "10/26/2011",
+    "vendor": "INSYDE",
+    "version": "Thurley.3.60.18.0037_BUILD_NCB_N00021"
   },
   "chassis": {
+    "manufacturer": "Bull SAS",
     "name": "bullx B500 blade",
     "serial": "K00936ER"
   },
@@ -17,7 +18,7 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 25769803776,
+    "ram_size": 25329115136,
     "virtual_size": null
   },
   "monitoring": {
@@ -25,10 +26,43 @@
   },
   "network_adapters": [
     {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.17.45",
+      "ip6": "fe80::a00:38ff:fe36:f33a",
+      "mac": "08:00:38:35:ac:22",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "edel-45.grenoble.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "edel-sw-3",
+      "switch_port": "Gi1/0/13",
+      "vendor": "Intel",
+      "version": "82576 Gigabit Network Connection"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "08:00:38:35:ac:23",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "82576 Gigabit Network Connection"
+    },
+    {
       "device": "ib0",
       "driver": "mlx4_core",
       "enabled": true,
-      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:35:ca:34",
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:5e:d8",
       "interface": "InfiniBand",
       "ip": "172.18.17.45",
       "management": false,
@@ -48,41 +82,12 @@
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 40000000000,
+      "rate": 10000000000,
       "vendor": "Mellanox",
       "version": "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)"
     },
     {
-      "bridged": true,
-      "device": "eth0",
-      "driver": "igb",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.16.17.45",
-      "mac": "08:00:38:35:ac:22",
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "edel-45.grenoble.grid5000.fr",
-      "rate": 1000000000,
-      "switch": "edel-sw-3",
-      "switch_port": "Gi1/0/13",
-      "vendor": "Intel",
-      "version": "82576 Gigabit Network Connection"
-    },
-    {
-      "device": "eth1",
-      "enabled": false,
-      "interface": "Ethernet",
-      "mac": "08:00:38:35:ac:23",
-      "management": false,
-      "mountable": false,
-      "mounted": false,
-      "rate": 1000000000,
-      "vendor": "Intel",
-      "version": "82576 Gigabit Network Connection"
-    },
-    {
+      "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.17.45",
@@ -97,10 +102,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
+    "kernel": null,
+    "name": null,
     "release": "Squeeze",
-    "version": "6.0"
+    "version": null
   },
   "performance": {
     "core_flops": 71394000000,
@@ -108,13 +113,14 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 2270000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 8388608,
+    "clock_speed": null,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz",
     "vendor": "Intel",
     "version": "E5520"
   },
@@ -135,10 +141,13 @@
   },
   "storage_devices": [
     {
+      "device": "sda",
       "driver": "ahci",
       "interface": "SATA",
       "model": "C200-MTFDBAA060M",
-      "size": 55879354476.9287
+      "rev": 5.0,
+      "size": 60022480896,
+      "vendor": null
     }
   ],
   "supported_job_types": {
