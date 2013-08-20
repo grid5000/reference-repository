@@ -2,1464 +2,3462 @@
 sol-1:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT132
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e7:d0
+      ip6: fe80::216:36ff:fe91:e7d0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.1
       switch_name: gw-sophia
       switch_port: 3/1
     eth1:
+      mounted: false
       mac: 00:16:36:91:e7:d1
-      ip: 
-      switch_name: CiscoSol
-      switch_port: 2/0/18
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:92:c8
       ip: 172.17.129.1
+  chassis:
+    serial_number: 0650QBT132
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-2:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT108
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:84
+      ip6: fe80::216:36ff:fe91:eb84
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.2
       switch_name: gw-sophia
       switch_port: 3/3
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:85
-      ip: 172.16.128.2
-      switch_name: CiscoSol
-      switch_port: 2/0/22
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:97
       ip: 172.17.129.2
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT108
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-3:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT137
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:DD:47:4C:45
+      ip6: fe80::260:ddff:fe47:4c45
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.44
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:24
+      ip6: fe80::216:36ff:fe91:e918
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.3
       switch_name: gw-sophia
       switch_port: 3/5
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:25
-      ip: 172.16.128.3
-      switch_name: CiscoSol
-      switch_port: 2/0/3
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:91:f6:f4
       ip: 172.17.129.3
+  chassis:
+    serial_number: 0650QBT10B
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-4:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT12C
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:d4
+      ip6: fe80::216:36ff:fe91:e9d4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.4
       switch_name: gw-sophia
       switch_port: 3/7
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:d5
-      ip: 172.16.128.4
-      switch_name: CiscoSol
-      switch_port: 2/0/12
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:41
       ip: 172.17.129.4
+  chassis:
+    serial_number: 0650QBT12C
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-5:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:91:e8:e8
+      ip6: fe80::216:36ff:fe91:e8e8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.5
+      switch_name: gw-sophia
+      switch_port: 3/9
+    eth1:
+      mounted: false
+      mac: 00:16:36:91:e8:e9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:c5:93:2a
+      ip: 172.17.129.5
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
   chassis:
     serial_number: 0650QBT107
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:91:e8:e8
-      ip: 172.16.129.5
-      switch_name: gw-sophia
-      switch_port: 3/9
-    eth1:
-      mac: 00:16:36:91:e8:e9
-      ip: 172.16.128.5
-      switch_name: CiscoSol
-      switch_port: 2/0/5
-    bmc:
-      mac: 00:16:36:c5:93:2a
-      ip: 172.17.129.5
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-6:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT130
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e8:70
+      ip6: fe80::216:36ff:fe91:e870
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.6
       switch_name: gw-sophia
       switch_port: 3/11
     eth1:
+      mounted: false
       mac: 00:16:36:91:e8:71
-      ip: 172.16.128.6
-      switch_name: CiscoSol
-      switch_port: 2/0/2
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:92:e3
       ip: 172.17.129.6
+  chassis:
+    serial_number: 0650QBT130
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-7:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT109
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:ea:d4
+      ip6: fe80::216:36ff:fe91:ead4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.7
       switch_name: gw-sophia
       switch_port: 3/13
     eth1:
+      mounted: false
       mac: 00:16:36:91:ea:d5
-      ip: 172.16.128.7
-      switch_name: CiscoSol
-      switch_port: 2/0/1
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:7c
       ip: 172.17.129.7
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 0650QBT109
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-8:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT115
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:c5:8a:87
+      ip6: fe80::216:36ff:fec5:8a87
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.8
       switch_name: gw-sophia
       switch_port: 3/15
     eth1:
+      mounted: false
       mac: 00:16:36:c5:8a:88
-      ip: 172.16.128.8
-      switch_name: CiscoSol
-      switch_port: 2/0/6
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:ee
       ip: 172.17.129.8
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT115
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-9:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT128
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:90
+      ip6: fe80::216:36ff:fe91:e990
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.9
       switch_name: gw-sophia
       switch_port: 3/17
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:91
-      ip: 172.16.128.9
-      switch_name: CiscoSol
-      switch_port: 2/0/11
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:07
       ip: 172.17.129.9
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT128
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-10:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT12E
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:d0
+      ip6: fe80::216:36ff:fe91:ebd0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.10
       switch_name: gw-sophia
       switch_port: 3/19
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:d1
-      ip: 0
-      switch_name: CiscoSol
-      switch_port: 2/0/9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:9a
       ip: 172.17.129.10
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 0650QBT12E
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-11:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:91:e9:dc
+      ip6: fe80::216:36ff:fe91:e9dc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.11
+      switch_name: gw-sophia
+      switch_port: 3/21
+    eth1:
+      mounted: false
+      mac: 00:16:36:91:e9:dd
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:c5:93:42
+      ip: 172.17.129.11
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
   chassis:
     serial_number: 0650QBT134
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:91:e9:dc
-      ip: 172.16.129.11
-      switch_name: gw-sophia
-      switch_port: 3/21
-    eth1:
-      mac: 00:16:36:91:e9:dd
-      ip: 1
-      switch_name: CiscoSol
-      switch_port: 2/0/10
-    bmc:
-      mac: 00:16:36:c5:93:42
-      ip: 172.17.129.11
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-12:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT10A
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:60
+      ip6: fe80::216:36ff:fe91:eb60
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.12
       switch_name: gw-sophia
       switch_port: 3/23
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:61
-      ip: 2
-      switch_name: CiscoSol
-      switch_port: 2/0/4
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:8e
       ip: 172.17.129.12
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT10A
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-13:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT111
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e8:5c
+      ip6: fe80::216:36ff:fe91:e85c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.13
       switch_name: gw-sophia
       switch_port: 4/1
     eth1:
+      mounted: false
       mac: 00:16:36:91:e8:5d
-      ip: 3
-      switch_name: CiscoSol
-      switch_port: 2/0/8
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:92:d9
       ip: 172.17.129.13
+  chassis:
+    serial_number: 0650QBT111
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-14:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:c9:fb:e4
+      ip6: fe80::216:36ff:fec9:fbe4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.14
+      switch_name: gw-sophia
+      switch_port: 4/3
+    eth1:
+      mounted: false
+      mac: 00:16:36:c9:fb:e5
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:ca:0b:1a
+      ip: 172.17.129.14
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
   chassis:
     serial_number: 0650QBT119
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:c9:fb:e4
-      ip: 172.16.129.14
-      switch_name: gw-sophia
-      switch_port: 4/3
-    eth1:
-      mac: 00:16:36:c9:fb:e5
-      ip: 4
-      switch_name: CiscoSol
-      switch_port: 2/0/7
-    bmc:
-      mac: 00:16:36:ca:0b:1a
-      ip: 172.17.129.14
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-15:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:c9:fb:34
+      ip6: fe80::216:36ff:fec9:fb34
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.15
+      switch_name: gw-sophia
+      switch_port: 4/5
+    eth1:
+      mounted: false
+      mac: 00:16:36:c9:fb:35
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:ca:0a:cb
+      ip: 172.17.129.15
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
   chassis:
     serial_number: 0650QBT11A
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:c9:fb:34
-      ip: 172.16.129.15
-      switch_name: gw-sophia
-      switch_port: 4/5
-    eth1:
-      mac: 00:16:36:c9:fb:35
-      ip: 5
-      switch_name: CiscoSol
-      switch_port: 7/0/7
-    bmc:
-      mac: 00:16:36:ca:0a:cb
-      ip: 172.17.129.15
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-16:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT10F
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:c9:fb:94
+      ip6: fe80::216:36ff:fec9:fb94
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.16
       switch_name: gw-sophia
       switch_port: 4/7
     eth1:
+      mounted: false
       mac: 00:16:36:c9:fb:95
-      ip: 6
-      switch_name: CiscoSol
-      switch_port: 7/0/2
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:ca:0b:06
       ip: 172.17.129.16
+  chassis:
+    serial_number: 0650QBT10F
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-17:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT113
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:c5:8a:83
+      ip6: fe80::216:36ff:fec5:8a83
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.17
       switch_name: gw-sophia
       switch_port: 4/9
     eth1:
+      mounted: false
       mac: 00:16:36:c5:8a:84
-      ip: 7
-      switch_name: CiscoSol
-      switch_port: 7/0/4
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:ed
       ip: 172.17.129.17
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 0650QBT113
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-18:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:91:ec:14
+      ip6: fe80::216:36ff:fe91:ec14
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.18
+      switch_name: gw-sophia
+      switch_port: 4/11
+    eth1:
+      mounted: false
+      mac: 00:16:36:91:ec:15
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:c5:93:b9
+      ip: 172.17.129.18
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
   chassis:
     serial_number: 0650QBT118
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:91:ec:14
-      ip: 172.16.129.18
-      switch_name: gw-sophia
-      switch_port: 4/11
-    eth1:
-      mac: 00:16:36:91:ec:15
-      ip: 8
-      switch_name: CiscoSol
-      switch_port: 7/0/1
-    bmc:
-      mac: 00:16:36:c5:93:b9
-      ip: 172.17.129.18
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-19:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT126
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:ea:c0
+      ip6: fe80::216:36ff:fe91:eac0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.19
       switch_name: gw-sophia
       switch_port: 4/13
     eth1:
+      mounted: false
       mac: 00:16:36:91:ea:c1
-      ip: 9
-      switch_name: CiscoSol
-      switch_port: 7/0/3
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:73
       ip: 172.17.129.19
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT126
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-20:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT11B
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:74
+      ip6: fe80::216:36ff:fe91:e974
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.20
       switch_name: gw-sophia
       switch_port: 4/15
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:75
-      ip: 172.16.128.20
-      switch_name: CiscoSol
-      switch_port: 7/0/5
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:19
       ip: 172.17.129.20
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT11B
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-21:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT11C
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:DD:47:4C:45
+      ip6: fe80::260:ddff:fe47:4c45
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.44
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:ec:24
+      ip6: fe80::216:36ff:fe91:e918
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.21
       switch_name: gw-sophia
       switch_port: 4/17
     eth1:
+      mounted: false
       mac: 00:16:36:91:ec:25
-      ip: 172.16.128.21
-      switch_name: CiscoSol
-      switch_port: 7/0/14
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac:
       ip: 172.17.129.21
+  chassis:
+    serial_number: 0650QBT10B
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-22:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT12B
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:d8
+      ip6: fe80::216:36ff:fe91:e9d8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.22
       switch_name: gw-sophia
       switch_port: 4/19
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:d9
-      ip: 172.16.128.22
-      switch_name: CiscoSol
-      switch_port: 7/0/15
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:43
       ip: 172.17.129.22
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT12B
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-23:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT116
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:1c
+      ip6: fe80::216:36ff:fe91:eb1c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.23
       switch_name: gw-sophia
       switch_port: 4/21
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:1d
-      ip: 172.16.128.23
-      switch_name: CiscoSol
-      switch_port: 7/0/24
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac:
       ip: 172.17.129.23
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT116
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-24:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT129
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:ec
+      ip6: fe80::216:36ff:fe91:e9ec
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.24
       switch_name: gw-sophia
       switch_port: 4/23
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:ed
-      ip: 172.16.128.24
-      switch_name: CiscoSol
-      switch_port: 7/0/23
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:47
       ip: 172.17.129.24
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT129
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-25:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: ST32500N
-      size: 232G
-      vendor: Seagate
-  chassis:
-    serial_number: 0650QBT11F
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:2c
+      ip6: fe80::216:36ff:fe91:eb2c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.25
       switch_name: gw-sophia
       switch_port: 3/2
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:2d
-      ip: 172.16.128.25
-      switch_name: CiscoSol
-      switch_port: 7/0/8
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:91:f6:f6
       ip: 172.17.129.25
+  block_devices:
+    sda:
+      model: SEAGATE ST32500N
+      device: sda
+      size: 250059350016
+      rev: n/a
+      vendor: Seagate
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT11F
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-26:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT124
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:d4
+      ip6: fe80::216:36ff:fe91:ebd4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.26
       switch_name: gw-sophia
       switch_port: 3/4
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:d5
-      ip: 172.16.128.26
-      switch_name: CiscoSol
-      switch_port: 7/0/11
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:99
       ip: 172.17.129.26
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT124
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-27:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT106
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:f0
+      ip6: fe80::216:36ff:fe91:e9f0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.27
       switch_name: gw-sophia
       switch_port: 3/6
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:f1
-      ip: 172.16.128.27
-      switch_name: CiscoSol
-      switch_port: 7/0/9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:48
       ip: 172.17.129.27
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT106
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-28:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT12A
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e8:2c
+      ip6: fe80::216:36ff:fe91:e82c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.28
       switch_name: gw-sophia
       switch_port: 3/8
     eth1:
+      mounted: false
       mac: 00:16:36:91:e8:2d
-      ip: 172.16.128.28
-      switch_name: CiscoSol
-      switch_port: 7/0/6
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:92:df
       ip: 172.17.129.28
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT12A
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-29:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT127
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:49:87
+      ip6: fe80::260:ddff:fe47:4987
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.29
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e8:dc
+      ip6: fe80::216:36ff:fe91:e8dc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.29
       switch_name: gw-sophia
       switch_port: 3/10
     eth1:
+      mounted: false
       mac: 00:16:36:91:e8:dd
-      ip: 172.16.128.29
-      switch_name: CiscoSol
-      switch_port: 7/0/12
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:27
       ip: 172.17.129.29
-    myri0:
-      mac: 00:60:dd:47:49:87
-      ip: 172.18.129.29
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 0650QBT127
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-30:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:0d:c3
+      ip6: fe80::260:ddff:fe47:dc3
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.30
+      driver: mx ethernet (myri)
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:91:ea:94
+      ip6: fe80::216:36ff:fe91:ea94
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.30
+      switch_name: gw-sophia
+      switch_port: 3/12
+    eth1:
+      mounted: false
+      mac: 00:16:36:91:ea:95
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:c5:93:7b
+      ip: 172.17.129.30
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
-    sda: 
-      model: HDS7225S
-      size: 232G
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
   chassis:
     serial_number: 0650QBT136
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:91:ea:94
-      ip: 172.16.129.30
-      switch_name: gw-sophia
-      switch_port: 3/12
-    eth1:
-      mac: 00:16:36:91:ea:95
-      ip: 172.16.128.30
-      switch_name: CiscoSol
-      switch_port: 7/0/10
-    bmc:
-      mac: 00:16:36:c5:93:7b
-      ip: 172.17.129.30
-    myri0:
-      mac: 00:60:dd:47:0d:c3
-      ip: 172.18.129.30
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-31:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT10D
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:0d:bf
+      ip6: fe80::260:ddff:fe47:dbf
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.31
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:c9:f9:80
+      ip6: fe80::216:36ff:fec9:f980
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.31
       switch_name: gw-sophia
       switch_port: 3/14
     eth1:
+      mounted: false
       mac: 00:16:36:c9:f9:81
-      ip: 172.16.128.31
-      switch_name: CiscoSol
-      switch_port: 7/0/22
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:ca:0a:7e
       ip: 172.17.129.31
-    myri0:
-      mac: 00:60:dd:47:0d:bf
-      ip: 172.18.129.31
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT10D
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-32:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT122
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:43
+      ip6: fe80::260:ddff:fe47:4c43
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.32
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:94
+      ip6: fe80::216:36ff:fe91:e994
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.32
       switch_name: gw-sophia
       switch_port: 3/16
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:95
-      ip: 172.16.128.32
-      switch_name: CiscoSol
-      switch_port: 2/0/21
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:08
       ip: 172.17.129.32
-    myri0:
-      mac: 00:60:dd:47:4c:43
-      ip: 172.18.129.32
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT122
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-33:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number:
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:44
+      ip6: fe80::260:ddff:fe47:4c44
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.33
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:ea:84
+      ip6: fe80::216:36ff:fe91:ea84
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.33
       switch_name: gw-sophia
       switch_port: 3/18
     eth1:
+      mounted: false
       mac: 00:16:36:91:ea:85
-      ip: 172.16.128.33
-      switch_name: CiscoSol
-      switch_port: 2/0/19
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:72
       ip: 172.17.129.33
-    myri0:
-      mac: 00:60:dd:47:4c:44
-      ip: 172.18.129.33
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 0650QBT125
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-34:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:42
+      ip6: fe80::260:ddff:fe47:4c42
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.34
+      driver: mx ethernet (myri)
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:91:eb:dc
+      ip6: fe80::216:36ff:fe91:ebdc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.34
+      switch_name: gw-sophia
+      switch_port: 3/20
+    eth1:
+      mounted: false
+      mac: 00:16:36:91:eb:dd
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:c5:93:9f
+      ip: 172.17.129.34
   block_devices:
     sda:
-      model: ST32500N
-      size: 232G
+      model: SEAGATE ST32500N
+      device: sda
+      size: 250056000000
+      rev: n/a
       vendor: Seagate
   chassis:
     serial_number: 0650QBT114
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:91:eb:dc
-      ip: 172.16.129.34
-      switch_name: gw-sophia
-      switch_port: 3/20
-    eth1:
-      mac: 00:16:36:91:eb:dd
-      ip: 172.16.128.34
-      switch_name: CiscoSol
-      switch_port: 7/0/13
-    bmc:
-      mac: 00:16:36:c5:93:9f
-      ip: 172.17.129.34
-    myri0:
-      mac: 00:60:dd:47:4c:42
-      ip: 172.18.129.34
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-35:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT112
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:69
+      ip6: fe80::260:ddff:fe47:4c69
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.35
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:ea:08
+      ip6: fe80::216:36ff:fe91:ea08
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.35
       switch_name: gw-sophia
       switch_port: 3/22
     eth1:
+      mounted: false
       mac: 00:16:36:91:ea:09
-      ip: 172.16.128.35
-      switch_name: CiscoSol
-      switch_port: 7/0/18
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:91:f6:f1
       ip: 172.17.129.35
-    myri0:
-      mac: 00:60:dd:47:4c:69
-      ip: 172.18.129.35
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 0650QBT112
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-36:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number:
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:DD:47:4C:45
+      ip6: fe80::260:ddff:fe47:4c45
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.36
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:ea:08
+      ip6: fe80::216:36ff:fe91:e918
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.36
       switch_name: gw-sophia
       switch_port: 3/24
     eth1:
+      mounted: false
       mac: 00:16:36:91:ea:09
-      ip: 172.16.128.36
-      switch_name: CiscoSol
-      switch_port: 7/0/21
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:91:f6:f7
       ip: 172.17.129.36
-    myri0:
-      ip: 172.18.129.36
+  chassis:
+    serial_number: 0650QBT10B
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-37:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT120
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:6d
+      ip6: fe80::260:ddff:fe47:4c6d
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.37
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:a4
+      ip6: fe80::216:36ff:fe91:e9a4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.37
       switch_name: gw-sophia
       switch_port: 4/2
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:a5
-      ip: 172.16.128.37
-      switch_name: CiscoSol
-      switch_port: 7/0/20
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:0c
       ip: 172.17.129.37
-    myri0:
-      mac: 00:60:dd:47:4c:6d
-      ip: 172.18.129.37
+  chassis:
+    serial_number: 0650QBT120
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-38:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT123
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:49
+      ip6: fe80::260:ddff:fe47:4c49
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.38
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e8:6c
+      ip6: fe80::216:36ff:fe91:e86c
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.38
       switch_name: gw-sophia
       switch_port: 4/4
     eth1:
+      mounted: false
       mac: 00:16:36:91:e8:6d
-      ip: 172.16.128.38
-      switch_name: CiscoSol
-      switch_port: 7/0/19
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:92:e1
       ip: 172.17.129.38
-    myri0:
-      mac: 00:60:dd:47:4c:49
-      ip: 172.18.129.38
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT123
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-39:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT10C
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:33
+      ip6: fe80::260:ddff:fe47:4c33
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.39
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:ec:20
+      ip6: fe80::216:36ff:fe91:ec20
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.39
       switch_name: gw-sophia
       switch_port: 4/6
     eth1:
+      mounted: false
       mac: 00:16:36:91:ec:21
-      ip: 172.16.128.39
-      switch_name: CiscoSol
-      switch_port: 7/0/17
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:bf
       ip: 172.17.129.39
-    myri0:
-      mac: 00:60:dd:47:4c:33
-      ip: 172.18.129.39
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT10C
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-40:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number:
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:DD:47:4C:6E
+      ip6: fe80::260:ddff:fe47:4c6e
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.40
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:08
+      ip6: fe80::216:36ff:fe91:eb08
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.40
       switch_name: gw-sophia
       switch_port: 4/8
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:09
-      ip: 172.16.128.40
-      switch_name: CiscoSol
-      switch_port: 7/0/16
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:91:f6:eb
       ip: 172.17.129.40
-    myri0:
-      ip: 172.18.129.40
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT11D
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-41:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4d:2d
+      ip6: fe80::260:ddff:fe47:4d2d
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.41
+      driver: mx ethernet (myri)
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:91:ea:f8
+      ip6: fe80::216:36ff:fe91:eaf8
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.41
+      switch_name: gw-sophia
+      switch_port: 4/10
+    eth1:
+      mounted: false
+      mac: 00:16:36:91:ea:f9
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:91:f6:e7
+      ip: 172.17.129.41
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
   chassis:
     serial_number: 0650QBT12D
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:91:ea:f8
-      ip: 172.16.129.41
-      switch_name: gw-sophia
-      switch_port: 4/10
-    eth1:
-      mac: 00:16:36:91:ea:f9
-      ip: 172.16.128.41
-      switch_name: CiscoSol
-      switch_port: 2/0/17
-    bmc:
-      mac: 00:16:36:91:f6:e7
-      ip: 172.17.129.41
-    myri0:
-      mac: 00:60:dd:47:4d:2d
-      ip: 172.18.129.41
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-42:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT117
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:34
+      ip6: fe80::260:ddff:fe47:4c45
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.42
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:ea:90
+      ip6: fe80::216:36ff:fe91:e918
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.42
       switch_name: gw-sophia
       switch_port: 4/14
     eth1:
+      mounted: false
       mac: 00:16:36:91:ea:91
-      ip: 172.16.128.42
-      switch_name: CiscoSol
-      switch_port: 2/0/24
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:79
       ip: 172.17.129.42
-    myri0:
-      mac: 00:60:dd:47:4c:34
-      ip: 172.18.129.42
-sol-43:
-  bios:
-    version: S39_3B13
-    release_date: (12/13/2006)
-    vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT12F
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:91:ea:fc
-      ip: 172.16.129.43
-      switch_name: gw-sophia
-      switch_port: 4/12
-    eth1:
-      mac: 00:16:36:91:ea:fd
-      ip: 172.16.128.43
-      switch_name: CiscoSol
-      switch_port: 2/0/20
-    bmc:
-      mac: 00:16:36:91:f6:e8
-      ip: 172.17.129.43
-    myri0:
-      mac: 00:60:dd:47:4c:48
-      ip: 172.18.129.43
-sol-44:
-  bios:
-    version: S39_3B13
-    release_date: (12/13/2006)
-    vendor: Sun Microsystems
-  block_devices:
-    sda:
-      model: HDS7225S
-      size: 232G
-      vendor: Hitachi
   chassis:
     serial_number: 0650QBT10B
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
+sol-43:
+  bios:
+    version: S39_3B13
+    release_date: 12/13/2006
+    vendor: Sun Microsystems
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:48
+      ip6: fe80::260:ddff:fe47:4c48
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.43
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:91:ea:fc
+      ip6: fe80::216:36ff:fe91:eafc
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.43
+      switch_name: gw-sophia
+      switch_port: 4/12
+    eth1:
+      mounted: false
+      mac: 00:16:36:91:ea:fd
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:91:f6:e8
+      ip: 172.17.129.43
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT12F
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
+sol-44:
+  bios:
+    version: S39_3B13
+    release_date: 12/13/2006
+    vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
+      vendor: Hitachi
+  network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:45
+      ip6: fe80::260:ddff:fe47:4c45
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.44
+      driver: mx ethernet (myri)
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:18
+      ip6: fe80::216:36ff:fe91:e918
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.44
       switch_name: gw-sophia
       switch_port: 4/16
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:19
-      ip: 172.16.128.44
-      switch_name: CiscoSol
-      switch_port: 2/0/14
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:33
       ip: 172.17.129.44
-    myri0:
-      mac: 00:60:dd:47:4c:45
-      ip: 172.18.129.44
+  chassis:
+    serial_number: 0650QBT10B
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-45:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT135
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:35
+      ip6: fe80::260:ddff:fe47:4c35
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.45
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:58
+      ip6: fe80::216:36ff:fe91:e958
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.45
       switch_name: gw-sophia
       switch_port: 4/18
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:59
-      ip: 172.16.128.45
-      switch_name: CiscoSol
-      switch_port: 2/0/15
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:12
       ip: 172.17.129.45
-    myri0:
-      mac: 00:60:dd:47:4c:35
-      ip: 172.18.129.45
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 0650QBT135
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-46:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:47
+      ip6: fe80::260:ddff:fe47:4c47
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.46
+      driver: mx ethernet (myri)
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:16:36:91:eb:80
+      ip6: fe80::216:36ff:fe91:eb80
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
+      ip: 172.16.129.46
+      switch_name: gw-sophia
+      switch_port: 4/20
+    eth1:
+      mounted: false
+      mac: 00:16:36:91:eb:81
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+    bmc:
+      mac: 00:16:36:c5:93:96
+      ip: 172.17.129.46
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
   chassis:
     serial_number: 0650QBT131
     manufacturer: Sun Microsystems
     product_name: Sun Fire X2200 M2
-  network_interfaces:
-    eth0:
-      mac: 00:16:36:91:eb:80
-      ip: 172.16.129.46
-      switch_name: gw-sophia
-      switch_port: 4/20
-    eth1:
-      mac: 00:16:36:91:eb:81
-      ip: 172.16.128.46
-      switch_name: CiscoSol
-      switch_port: 2/0/16
-    bmc:
-      mac: 00:16:36:c5:93:96
-      ip: 172.17.129.46
-    myri0:
-      mac: 00:60:dd:47:4c:47
-      ip: 172.18.129.46
+  supported_job_types:
+    virtual: amd-v
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-47:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number:
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:32
+      ip6: fe80::260:ddff:fe47:4c32
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.47
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:e9:26:c6
+      ip6: fe80::216:36ff:fee9:26c6
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.47
       switch_name: gw-sophia
       switch_port: 4/22
     eth1:
+      mounted: false
       mac: 00:16:36:e9:26:c7
-      ip: 172.16.128.47
-      switch_name:
-      switch_port:
+      management: false
+      enabled: false
+      interface: Ethernet
     bmc:
       mac: 00:16:36:e9:2f:a2
       ip: 172.17.129.47
-    myri0:
-      mac: 00:60:dd:47:4c:32 
-      ip: 172.18.129.47
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: xxxxxxxxxx
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-48:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT133
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:46
+      ip6: fe80::260:ddff:fe47:4c46
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.48
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:eb:28
+      ip6: fe80::216:36ff:fe91:eb28
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.48
       switch_name: gw-sophia
       switch_port: 4/24
     eth1:
+      mounted: false
       mac: 00:16:36:91:eb:29
-      ip:
-      switch_name:
-      switch_port:
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:91:f6:f5
       ip: 172.17.129.48
-    myri0:
-      mac: 00:60:dd:47:4c:46
-      ip: 172.18.129.48
+  chassis:
+    serial_number: 0650QBT133
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 4158902272
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-49:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number: 0650QBT110
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:6a
+      ip6: fe80::260:ddff:fe47:4c6a
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.49
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:c5:89:17
+      ip6: fe80::216:36ff:fec5:8917
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.49
       switch_name: gw-sophia
       switch_port: 9/1
     eth1:
+      mounted: false
       mac: 00:16:36:c5:89:18
-      ip:
-      switch_name:
-      switch_port:
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:92:7f
       ip: 172.17.129.49
-    myri0:
-      mac: 00:60:dd:47:4c:6a
-      ip: 172.18.129.49
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0650QBT110
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4
 sol-50:
   bios:
     version: S39_3B13
-    release_date: (12/13/2006)
+    release_date: 12/13/2006
     vendor: Sun Microsystems
   block_devices:
     sda:
-      model: HDS7225S
-      size: 232G
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V44O
       vendor: Hitachi
-  chassis:
-    serial_number:
-    manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
   network_interfaces:
+    myri0:
+      mounted: true
+      rate: 10000000000
+      mac: 00:60:dd:47:4c:30
+      ip6: fe80::260:ddff:fe47:4c30
+      management: false
+      enabled: true
+      interface: Myrinet
+      ip: 172.18.129.50
+      driver: mx ethernet (myri)
+      mountable: true
     eth0:
+      mounted: true
+      rate: 1000000000
       mac: 00:16:36:91:e9:e0
+      ip6: fe80::216:36ff:fe91:e9e0
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: forcedeth
+      mountable: true
       ip: 172.16.129.50
       switch_name: gw-sophia
       switch_port: 9/3
     eth1:
+      mounted: false
       mac: 00:16:36:91:e9:e1
-      ip:
-      switch_name:
-      switch_port:
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
     bmc:
       mac: 00:16:36:c5:93:44
       ip: 172.17.129.50
-    myri0:
-      mac: 00:60:dd:47:4c:30
-      ip: 172.18.129.50
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: xxxxxxxxxx
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 4158902272
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2613000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4

@@ -5,11 +5,12 @@
     "smt_size": 4
   },
   "bios": {
-    "release_date": null,
-    "vendor": null,
-    "version": null
+    "release_date": "12/13/2006",
+    "vendor": "Sun Microsystems",
+    "version": "S39_3B13"
   },
   "chassis": {
+    "manufacturer": "Sun Microsystems",
     "name": "Sun Fire X2200 M2",
     "serial": "0650QBT111"
   },
@@ -17,7 +18,7 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 4294967296,
+    "ram_size": 4158902272,
     "virtual_size": null
   },
   "monitoring": {
@@ -25,28 +26,13 @@
   },
   "network_adapters": [
     {
-      "device": "myri0",
-      "driver": "mx",
-      "enabled": true,
-      "interface": "Myrinet",
-      "ip": null,
-      "mac": null,
-      "management": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "sol-13-myri0.sophia.grid5000.fr",
-      "rate": 10000000000,
-      "switch": "sw-myrinet",
-      "vendor": "Myricom",
-      "version": "M3F-PCIXF-2"
-    },
-    {
       "bridged": true,
       "device": "eth0",
       "driver": "forcedeth",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.129.13",
+      "ip6": "fe80::216:36ff:fe91:e85c",
       "mac": "00:16:36:91:e8:5c",
       "management": false,
       "mountable": true,
@@ -59,11 +45,16 @@
       "version": "MCP55 Pro"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "forcedeth",
       "enabled": false,
       "interface": "Ethernet",
+      "ip": null,
       "mac": "00:16:36:91:e8:5d",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
       "rate": 1000000000,
       "vendor": "nVidia",
       "version": "MCP55 Pro"
@@ -79,13 +70,30 @@
       "mounted": false,
       "network_address": "sol-13-bmc.sophia.grid5000.fr",
       "rate": 100000000
+    },
+    {
+      "device": "myri0",
+      "driver": null,
+      "enabled": null,
+      "interface": null,
+      "ip": null,
+      "ip6": null,
+      "mac": null,
+      "management": false,
+      "mountable": null,
+      "mounted": null,
+      "network_address": "sol-13-myri0.sophia.grid5000.fr",
+      "rate": null,
+      "switch": "sw-myrinet",
+      "vendor": "Myricom",
+      "version": "M3F-PCIXF-2"
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
     "release": "Squeeze",
-    "version": "6.0"
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 4337000000,
@@ -93,23 +101,26 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
+    "cache_l1d": 65536,
+    "cache_l1i": 65536,
     "cache_l2": 1048576,
-    "clock_speed": 2600000000.0,
-    "instruction_set": "",
+    "cache_l3": 0,
+    "clock_speed": 2613000000,
+    "instruction_set": "x86-64",
     "model": "AMD Opteron",
-    "other_description": "",
+    "other_description": "Dual-Core AMD Opteron(tm) Processor 2218",
     "vendor": "AMD",
-    "version": "2218"
+    "version": 2218
   },
   "storage_devices": [
     {
       "device": "sda",
       "driver": "sata_nv",
       "interface": "SATA",
-      "model": "HDS7225S",
-      "size": 232830643653.87
+      "model": "HITACHI HDS7225S",
+      "rev": "V44O",
+      "size": 250056000000,
+      "vendor": "Hitachi"
     }
   ],
   "supported_job_types": {
