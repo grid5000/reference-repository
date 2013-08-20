@@ -103,10 +103,11 @@ site :grenoble do |site_uid|
           :mountable        => lookup('edel', node_uid, 'network_interfaces', 'ib0', 'mountable'),
           :mounted          => lookup('edel', node_uid, 'network_interfaces', 'ib0', 'mounted'),
           :vendor           => 'Mellanox',
-          :version          => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
+          :version          => lookup('edel', node_uid, 'network_interfaces', 'ib0', 'version'),
           :driver           => lookup('edel', node_uid, 'network_interfaces', 'ib0', 'driver'),
           :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip               => lookup('edel', node_uid, 'network_interfaces', 'ib0', 'ip'),
+          :ip6              => lookup('edel', node_uid, 'network_interfaces', 'ib0', 'ip6'),
           :guid             => lookup('edel', node_uid, 'network_interfaces', 'ib0', 'guid')
         },
         {
@@ -119,7 +120,7 @@ site :grenoble do |site_uid|
           :mountable        => lookup('edel', node_uid, 'network_interfaces', 'ib1', 'mountable'),
           :mounted          => lookup('edel', node_uid, 'network_interfaces', 'ib1', 'mounted'),
           :vendor           => 'Mellanox',
-          :version          => "MT26428 ConnectX IB QDR, PCIe 2.0 5.0GT/s (rev a0)",
+          :version          => lookup('edel', node_uid, 'network_interfaces', 'ib1', 'version'),
           :driver           => lookup('edel', node_uid, 'network_interfaces', 'ib1', 'driver'),
           :guid             => lookup('edel', node_uid, 'network_interfaces', 'ib1', 'guid')
         },
