@@ -115,7 +115,7 @@ site :nancy do |site_uid|
         },
         {
           :interface        => lookup('griffon', node_uid, 'network_interfaces', 'ib1', 'interface'),
-          :rate             => 30.G,
+          :rate             => lookup('griffon', node_uid, 'network_interfaces', 'ib1', 'rate'),
           :device           => "ib1",
           :enabled          => lookup('griffon', node_uid, 'network_interfaces', 'ib1', 'enabled'),
           :management       => lookup('griffon', node_uid, 'network_interfaces', 'ib1', 'management'),
