@@ -4,13 +4,23 @@
     "smp_size": 2,
     "smt_size": 12
   },
+  "bios": {
+    "release_date": "05/10/2012",
+    "vendor": "Dell Inc.",
+    "version": "1.2.6"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R720",
+    "serial": "C3MJD5J"
+  },
   "gpu": {
     "gpu": true,
     "gpu_count": 1,
     "gpu_model": "Tesla-M2075"
   },
   "main_memory": {
-    "ram_size": 34359738368,
+    "ram_size": 33763672064,
     "virtual_size": null
   },
   "monitoring": {
@@ -24,6 +34,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.50.3",
+      "ip6": "fe80::a236:9fff:fe08:fa44",
       "mac": "A0:36:9F:08:FA:44",
       "management": false,
       "model": "Intel X520 DP 10Gb DA/SFP+ Server Adapter",
@@ -36,19 +47,21 @@
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth1",
       "driver": "ixgbe",
       "enabled": false,
       "interface": "Ethernet",
-      "mac": "BC:30:5B:EF:2C:3C",
+      "mac": "A0:36:9F:08:FA:46",
       "management": false,
       "model": "Intel X520 DP 10Gb DA/SFP+ Server Adapter",
       "mountable": false,
       "mounted": false,
-      "rate": 10000000000,
+      "rate": 1000000000,
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth2",
       "driver": "igb",
       "enabled": false,
@@ -62,6 +75,7 @@
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth3",
       "driver": "igb",
       "enabled": false,
@@ -75,6 +89,7 @@
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth4",
       "driver": "igb",
       "enabled": false,
@@ -88,6 +103,7 @@
       "vendor": "Intel"
     },
     {
+      "bridged": false,
       "device": "eth5",
       "driver": "igb",
       "enabled": false,
@@ -99,13 +115,25 @@
       "mounted": false,
       "rate": 1000000000,
       "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.50.3",
+      "mac": "D4:BE:D9:F9:A3:24",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "orion-3-bmc.lyon.grid5000.fr",
+      "rate": 1000000000
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32",
-    "name": "Debian",
-    "release": "6.0",
-    "version": null
+    "kernel": "2.6.32-5-amd64",
+    "name": "debian",
+    "release": "Squeeze",
+    "version": "6.0.6"
   },
   "performance": {
     "core_flops": 11900000000,
@@ -113,13 +141,14 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": null,
-    "cache_l1i": null,
-    "cache_l2": null,
-    "clock_speed": 2300000000.0,
-    "instruction_set": "",
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 15728640,
+    "clock_speed": 2300000000,
+    "instruction_set": "x86-64",
     "model": "Intel Xeon",
-    "other_description": "",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz",
     "vendor": "Intel",
     "version": "E5-2630"
   },
@@ -141,7 +170,10 @@
       "device": "sda",
       "driver": "megaraid_sas",
       "interface": "SCSI",
-      "size": 556930899620.056
+      "model": "PERC H710",
+      "rev": 3.13,
+      "size": 598879502336,
+      "vendor": null
     }
   ],
   "supported_job_types": {
