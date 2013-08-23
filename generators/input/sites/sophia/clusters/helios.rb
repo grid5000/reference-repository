@@ -22,126 +22,126 @@ site :sophia do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup('helios', node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup('helios_generated', node_uid, 'supported_job_types', 'virtual')
         })
 
         architecture({
-          :smp_size       => lookup('helios', node_uid, 'architecture', 'smp_size'),
-          :smt_size       => lookup('helios', node_uid, 'architecture', 'smt_size'),
-          :platform_type  => lookup('helios', node_uid, 'architecture', 'platform_type')
+          :smp_size       => lookup('helios_generated', node_uid, 'architecture', 'smp_size'),
+          :smt_size       => lookup('helios_generated', node_uid, 'architecture', 'smt_size'),
+          :platform_type  => lookup('helios_generated', node_uid, 'architecture', 'platform_type')
         })
 
         processor({
-          :vendor             => lookup('helios', node_uid, 'processor', 'vendor'),
-          :model              => lookup('helios', node_uid, 'processor', 'model'),
-          :version            => lookup('helios', node_uid, 'processor', 'version'),
-          :clock_speed        => lookup('helios', node_uid, 'processor', 'clock_speed'),
-          :instruction_set    => lookup('helios', node_uid, 'processor', 'instruction_set'),
-          :other_description  => lookup('helios', node_uid, 'processor', 'other_description'),
-          :cache_l1           => lookup('helios', node_uid, 'processor', 'cache_l1'),
-          :cache_l1i          => lookup('helios', node_uid, 'processor', 'cache_l1i'),
-          :cache_l1d          => lookup('helios', node_uid, 'processor', 'cache_l1d'),
-          :cache_l2           => lookup('helios', node_uid, 'processor', 'cache_l2'),
-          :cache_l3           => lookup('helios', node_uid, 'processor', 'cache_l3')
+          :vendor             => lookup('helios_generated', node_uid, 'processor', 'vendor'),
+          :model              => lookup('helios_generated', node_uid, 'processor', 'model'),
+          :version            => lookup('helios_generated', node_uid, 'processor', 'version'),
+          :clock_speed        => lookup('helios_generated', node_uid, 'processor', 'clock_speed'),
+          :instruction_set    => lookup('helios_generated', node_uid, 'processor', 'instruction_set'),
+          :other_description  => lookup('helios_generated', node_uid, 'processor', 'other_description'),
+          :cache_l1           => lookup('helios_generated', node_uid, 'processor', 'cache_l1'),
+          :cache_l1i          => lookup('helios_generated', node_uid, 'processor', 'cache_l1i'),
+          :cache_l1d          => lookup('helios_generated', node_uid, 'processor', 'cache_l1d'),
+          :cache_l2           => lookup('helios_generated', node_uid, 'processor', 'cache_l2'),
+          :cache_l3           => lookup('helios_generated', node_uid, 'processor', 'cache_l3')
         })
 
         main_memory({
-          :ram_size     => lookup('helios', node_uid, 'main_memory', 'ram_size'),
+          :ram_size     => lookup('helios_generated', node_uid, 'main_memory', 'ram_size'),
           :virtual_size => nil
         })
 
         operating_system({
-          :name     => lookup('helios', node_uid, 'operating_system', 'name'),
+          :name     => lookup('helios_generated', node_uid, 'operating_system', 'name'),
           :release  => "Squeeze",
-          :version  => lookup('helios', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('helios', node_uid, 'operating_system', 'kernel')
+          :version  => lookup('helios_generated', node_uid, 'operating_system', 'version'),
+          :kernel   => lookup('helios_generated', node_uid, 'operating_system', 'kernel')
         })
 
         storage_devices [{
           :interface  => 'SAS',
-          :size       => lookup('helios', node_uid, 'block_devices', 'sda', 'size'),
+          :size       => lookup('helios_generated', node_uid, 'block_devices', 'sda', 'size'),
           :driver     => "mptsas",
-          :device     => lookup('helios', node_uid, 'block_devices', 'sda', 'device'),
-          :model      => lookup('helios', node_uid, 'block_devices', 'sda', 'model'),
-          :vendor     => lookup('helios', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('helios', node_uid, 'block_devices', 'sda', 'rev')
+          :device     => lookup('helios_generated', node_uid, 'block_devices', 'sda', 'device'),
+          :model      => lookup('helios_generated', node_uid, 'block_devices', 'sda', 'model'),
+          :vendor     => lookup('helios_generated', node_uid, 'block_devices', 'sda', 'vendor'),
+          :rev        => lookup('helios_generated', node_uid, 'block_devices', 'sda', 'rev')
         }]
 
         network_adapters [{
-          :interface        => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'interface'),
-          :rate             => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'rate'),
-          :enabled          => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'enabled'),
-          :management       => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'management'),
-          :mountable        => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'mountable'),
-          :mounted          => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'mounted'),
+          :interface        => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'interface'),
+          :rate             => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'rate'),
+          :enabled          => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'enabled'),
+          :management       => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'management'),
+          :mountable        => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'mountable'),
+          :mounted          => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'mounted'),
           :bridged          => true,
           :device           => "eth0",
           :vendor           => 'Intel',
           :version          => "82546EB",
-          :driver           => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'driver'),
+          :driver           => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip               => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'ip'),
-            :ip6              => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-            :switch           => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
-            :switch_port      => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
-            :mac              => lookup('helios', node_uid, 'network_interfaces', 'eth0', 'mac')
+          :ip               => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :ip6              => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
+          :switch           => lookup('helios_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
+          :switch_port      => lookup('helios_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :mac              => lookup('helios_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
-          :interface        => lookup('helios', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :interface        => lookup('helios_generated', node_uid, 'network_interfaces', 'eth1', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('helios', node_uid, 'network_interfaces', 'eth1', 'enabled'),
-          :management       => lookup('helios', node_uid, 'network_interfaces', 'eth1', 'management'),
-          :mountable        => lookup('helios', node_uid, 'network_interfaces', 'eth1', 'mountable'),
-          :mounted          => lookup('helios', node_uid, 'network_interfaces', 'eth1', 'mounted'),
+          :enabled          => lookup('helios_generated', node_uid, 'network_interfaces', 'eth1', 'enabled'),
+          :management       => lookup('helios_generated', node_uid, 'network_interfaces', 'eth1', 'management'),
+          :mountable        => lookup('helios_generated', node_uid, 'network_interfaces', 'eth1', 'mountable'),
+          :mounted          => lookup('helios_generated', node_uid, 'network_interfaces', 'eth1', 'mounted'),
           :bridged          => false,
           :device           => "eth1",
           :vendor           => 'Intel',
           :version          => "82546EB",
-          :driver           => lookup('helios', node_uid, 'network_interfaces', 'eth1', 'driver'),
-          :mac              => lookup('helios', node_uid, 'network_interfaces', 'eth1', 'mac')
+          :driver           => lookup('helios_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :mac              => lookup('helios_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
-          :interface        => lookup('helios', node_uid, 'network_interfaces', 'eth2', 'interface'),
+          :interface        => lookup('helios_generated', node_uid, 'network_interfaces', 'eth2', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('helios', node_uid, 'network_interfaces', 'eth2', 'enabled'),
-          :management       => lookup('helios', node_uid, 'network_interfaces', 'eth2', 'management'),
-          :mountable        => lookup('helios', node_uid, 'network_interfaces', 'eth2', 'mountable'),
-          :mounted          => lookup('helios', node_uid, 'network_interfaces', 'eth2', 'mounted'),
+          :enabled          => lookup('helios_generated', node_uid, 'network_interfaces', 'eth2', 'enabled'),
+          :management       => lookup('helios_generated', node_uid, 'network_interfaces', 'eth2', 'management'),
+          :mountable        => lookup('helios_generated', node_uid, 'network_interfaces', 'eth2', 'mountable'),
+          :mounted          => lookup('helios_generated', node_uid, 'network_interfaces', 'eth2', 'mounted'),
           :bridged          => false,
           :device           => "eth2",
           :vendor           => 'Intel',
           :version          => "82546EB",
-          :driver           => lookup('helios', node_uid, 'network_interfaces', 'eth2', 'driver'),
-          :mac              => lookup('helios', node_uid, 'network_interfaces', 'eth2', 'mac')
+          :driver           => lookup('helios_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
+          :mac              => lookup('helios_generated', node_uid, 'network_interfaces', 'eth2', 'mac')
         },
         {
-          :interface        => lookup('helios', node_uid, 'network_interfaces', 'eth3', 'interface'),
+          :interface        => lookup('helios_generated', node_uid, 'network_interfaces', 'eth3', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('helios', node_uid, 'network_interfaces', 'eth3', 'enabled'),
-          :management       => lookup('helios', node_uid, 'network_interfaces', 'eth3', 'management'),
-          :mountable        => lookup('helios', node_uid, 'network_interfaces', 'eth3', 'mountable'),
-          :mounted          => lookup('helios', node_uid, 'network_interfaces', 'eth3', 'mounted'),
+          :enabled          => lookup('helios_generated', node_uid, 'network_interfaces', 'eth3', 'enabled'),
+          :management       => lookup('helios_generated', node_uid, 'network_interfaces', 'eth3', 'management'),
+          :mountable        => lookup('helios_generated', node_uid, 'network_interfaces', 'eth3', 'mountable'),
+          :mounted          => lookup('helios_generated', node_uid, 'network_interfaces', 'eth3', 'mounted'),
           :bridged          => false,
           :device           => "eth3",
           :vendor           => 'Intel',
           :version          => "82546EB",
-          :driver           => lookup('helios', node_uid, 'network_interfaces', 'eth3', 'driver'),
-          :mac              => lookup('helios', node_uid, 'network_interfaces', 'eth3', 'mac')
+          :driver           => lookup('helios_generated', node_uid, 'network_interfaces', 'eth3', 'driver'),
+          :mac              => lookup('helios_generated', node_uid, 'network_interfaces', 'eth3', 'mac')
         },
         {
-          :interface            => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'interface'),
-          :rate                 => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'rate'),
+          :interface            => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'interface'),
+          :rate                 => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'rate'),
           :network_address      => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
-          :ip                   => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'ip'),
-          :ip6                  => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'ip6'),
-          :mac                  => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'mac'),
+          :ip                   => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'ip'),
+          :ip6                  => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'ip6'),
+          :mac                  => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'mac'),
           :vendor               => 'Myricom',
           :version              => "M3F-PCIXF-2",
-          :driver               => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'driver'),
-          :enabled              => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'enabled'),
-          :management           => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'management'),
-          :mountable            => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'mountable'),
-          :mounted              => lookup('helios', node_uid, 'network_interfaces', 'myri0', 'mounted'),
+          :driver               => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'driver'),
+          :enabled              => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'enabled'),
+          :management           => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'management'),
+          :mountable            => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'mountable'),
+          :mounted              => lookup('helios_generated', node_uid, 'network_interfaces', 'myri0', 'mounted'),
           :management           => false,
           :device               => "myri0",
           :switch               => 'sw-myrinet'
@@ -150,25 +150,25 @@ site :sophia do |site_uid|
           :interface => 'Ethernet',
           :rate => 100.M,
           :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => lookup('helios', node_uid, 'network_interfaces','bmc', 'ip'),
-            :mac => lookup('helios', node_uid, 'network_interfaces','bmc', 'mac'),
-            :enabled  => true,
-            :mounted => false,
-            :mountable => false,
-            :management => true,
-            :device => "bmc"
+          :ip => lookup('helios_generated', node_uid, 'network_interfaces','bmc', 'ip'),
+          :mac => lookup('helios_generated', node_uid, 'network_interfaces','bmc', 'mac'),
+          :enabled  => true,
+          :mounted => false,
+          :mountable => false,
+          :management => true,
+          :device => "bmc"
         }]
 
         chassis({
-          :serial       => lookup('helios', node_uid, 'chassis', 'serial_number'),
-          :name         => lookup('helios', node_uid, 'chassis', 'product_name'),
-          :manufacturer => lookup('helios', node_uid, 'chassis', 'manufacturer')
+          :serial       => lookup('helios_generated', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('helios_generated', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('helios_generated', node_uid, 'chassis', 'manufacturer')
         })
 
         bios({
-          :version      => lookup('helios', node_uid, 'bios', 'version'),
-          :vendor       => lookup('helios', node_uid, 'bios', 'vendor'),
-          :release_date => lookup('helios', node_uid, 'bios', 'release_date')
+          :version      => lookup('helios_generated', node_uid, 'bios', 'version'),
+          :vendor       => lookup('helios_generated', node_uid, 'bios', 'vendor'),
+          :release_date => lookup('helios_generated', node_uid, 'bios', 'release_date')
         })
 
         gpu({

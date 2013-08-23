@@ -4,8 +4,6 @@ griffon-1:
     bmc:
       ip: 172.17.65.1
       mac: 00:e0:81:4f:e3:13
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/1
     eth0:
       interface: Ethernet
       ip: 172.16.65.1
@@ -17,8 +15,6 @@ griffon-1:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/1
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -39,9 +35,6 @@ griffon-1:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000318F0'
-      line_card: '0x000b8cffff003106'
-      position: 1
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -90,9 +83,6 @@ griffon-1:
     serial_number: 812530006
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 4
 griffon-2:
   architecture:
     smp_size: 2
@@ -140,8 +130,6 @@ griffon-2:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/2
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -162,9 +150,6 @@ griffon-2:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300028064'
-      line_card: '0x000b8cffff003106'
-      position: 2
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -178,15 +163,10 @@ griffon-2:
     bmc:
       ip: 172.17.65.2
       mac: 00:e0:81:4f:e2:fc
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/2
   chassis:
     serial_number: 812530007
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 3
 griffon-3:
   processor:
     clock_speed: 2494000000
@@ -218,8 +198,6 @@ griffon-3:
     bmc:
       ip: 172.17.65.3
       mac: 00:e0:81:4f:cb:0a
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/3
     eth0:
       interface: Ethernet
       ip: 172.16.65.3
@@ -231,8 +209,6 @@ griffon-3:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/3
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -253,9 +229,6 @@ griffon-3:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300027F60'
-      line_card: '0x000b8cffff003106'
-      position: 3
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -278,16 +251,11 @@ griffon-3:
     serial_number: 812530008
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 2
 griffon-4:
   network_interfaces:
     bmc:
       ip: 172.17.65.4
       mac: 00:e0:81:4f:e3:7a
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/4
     eth0:
       interface: Ethernet
       ip: 172.16.65.4
@@ -299,8 +267,6 @@ griffon-4:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/4
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -321,9 +287,6 @@ griffon-4:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300028068'
-      line_card: '0x000b8cffff003106'
-      position: 4
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -372,16 +335,11 @@ griffon-4:
     serial_number: 812530009
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 1
 griffon-5:
   network_interfaces:
     bmc:
       ip: 172.17.65.5
       mac: 00:e0:81:4f:e3:8d
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/5
     eth0:
       interface: Ethernet
       ip: 172.16.65.5
@@ -393,8 +351,6 @@ griffon-5:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/5
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -415,9 +371,6 @@ griffon-5:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280C0'
-      line_card: '0x000b8cffff003106'
-      position: 5
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -466,9 +419,6 @@ griffon-5:
     serial_number: 812530010
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 3
 griffon-6:
   main_memory:
     ram_size: 16867737600
@@ -496,8 +446,6 @@ griffon-6:
     bmc:
       ip: 172.17.65.6
       mac: 00:e0:81:4f:e3:74
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/6
     eth0:
       interface: Ethernet
       ip: 172.16.65.6
@@ -509,8 +457,6 @@ griffon-6:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/O/6
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -531,9 +477,6 @@ griffon-6:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280AC'
-      line_card: '0x000b8cffff003106'
-      position: 6
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -560,9 +503,6 @@ griffon-6:
     serial_number: 812530011
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 4
 griffon-7:
   main_memory:
     ram_size: 16867737600
@@ -590,8 +530,6 @@ griffon-7:
     bmc:
       ip: 172.17.65.7
       mac: 00:e0:81:4f:ca:90
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/7
     eth0:
       interface: Ethernet
       ip: 172.16.65.7
@@ -603,8 +541,6 @@ griffon-7:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/7
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -625,9 +561,6 @@ griffon-7:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300028054'
-      line_card: '0x000b8cffff003106'
-      position: 7
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -654,9 +587,6 @@ griffon-7:
     serial_number: 812530012
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 5
 griffon-8:
   supported_job_types:
     virtual: ivt
@@ -664,8 +594,6 @@ griffon-8:
     bmc:
       ip: 172.17.65.8
       mac: 00:e0:81:4f:e3:c2
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/8
     eth0:
       interface: Ethernet
       ip: 172.16.65.8
@@ -677,8 +605,6 @@ griffon-8:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/8
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -699,9 +625,6 @@ griffon-8:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280C8'
-      line_card: '0x000b8cffff003106'
-      position: 8
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -748,9 +671,6 @@ griffon-8:
     serial_number: 812530013
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 6
 griffon-9:
   main_memory:
     ram_size: 16867737600
@@ -775,8 +695,6 @@ griffon-9:
     bmc:
       ip: 172.17.65.9
       mac: 00:e0:81:4f:e2:fe
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/9
     eth0:
       interface: Ethernet
       ip: 172.16.65.9
@@ -788,8 +706,6 @@ griffon-9:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/10
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -810,9 +726,6 @@ griffon-9:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030002805C'
-      line_card: '0x000b8cffff003106'
-      position: 9
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -842,9 +755,6 @@ griffon-9:
     serial_number: 812530014
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 10
 griffon-10:
   supported_job_types:
     virtual: ivt
@@ -879,8 +789,6 @@ griffon-10:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/O/9
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -894,20 +802,17 @@ griffon-10:
       ip: 172.18.65.10
       ip6: fe80::202:c903:2:7f59
       driver: mlx4_core
-      guid:
+      guid: 
       rate: 20000000000
       version: MT26418
       enabled: true
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300027F58'
-      line_card: '0x000b8cffff003106'
-      position: 10
     ib1:
       interface: InfiniBand
       driver: mlx4_core
-      guid:
+      guid: 
       rate: 28000000000
       version: MT26418
       enabled: false
@@ -917,8 +822,6 @@ griffon-10:
     bmc:
       ip: 172.17.65.10
       mac: 00:e0:81:4f:ca:9e
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/10
   block_devices:
     sda:
       device: sda
@@ -936,9 +839,6 @@ griffon-10:
     serial_number: 812530015
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 11
 griffon-11:
   bios:
     vendor: Phoenix Technologies LTD
@@ -967,8 +867,6 @@ griffon-11:
     bmc:
       ip: 172.17.65.11
       mac: 00:e0:81:4f:e3:70
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/25
     eth0:
       interface: Ethernet
       ip: 172.16.65.11
@@ -980,8 +878,6 @@ griffon-11:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/25
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1002,9 +898,6 @@ griffon-11:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300028008'
-      line_card: '0x000b8cffff003106'
-      position: 11
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1030,9 +923,6 @@ griffon-11:
     serial_number: 812530016
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 12
 griffon-12:
   block_devices:
     sda:
@@ -1072,8 +962,6 @@ griffon-12:
     bmc:
       ip: 172.17.65.12
       mac: 00:e0:81:4f:ca:8b
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/26
     eth0:
       interface: Ethernet
       ip: 172.16.65.12
@@ -1085,8 +973,6 @@ griffon-12:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/26
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1107,9 +993,6 @@ griffon-12:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280DC'
-      line_card: '0x000b8cffff003106'
-      position: 12
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1124,9 +1007,6 @@ griffon-12:
     serial_number: 812530017
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 13
 griffon-13:
   operating_system:
     name: debian
@@ -1142,8 +1022,6 @@ griffon-13:
     bmc:
       ip: 172.17.65.13
       mac: 00:e0:81:4f:e2:d4
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/27
     eth0:
       interface: Ethernet
       ip: 172.16.65.13
@@ -1155,8 +1033,6 @@ griffon-13:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/27
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1177,9 +1053,6 @@ griffon-13:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280BC'
-      line_card: '0x000b8cffff003054'
-      position: 1
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1218,9 +1091,6 @@ griffon-13:
     serial_number: 812530018
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 14
 griffon-14:
   operating_system:
     name: debian
@@ -1245,8 +1115,6 @@ griffon-14:
     bmc:
       ip: 172.17.65.14
       mac: 00:e0:81:4f:e2:c5
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/28
     eth0:
       interface: Ethernet
       ip: 172.16.65.14
@@ -1258,8 +1126,6 @@ griffon-14:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/28
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1280,9 +1146,6 @@ griffon-14:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280CC'
-      line_card: '0x000b8cffff003054'
-      position: 2
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1312,9 +1175,6 @@ griffon-14:
     serial_number: 812530019
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 15
 griffon-15:
   supported_job_types:
     virtual: ivt
@@ -1349,8 +1209,6 @@ griffon-15:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/29
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1371,9 +1229,6 @@ griffon-15:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280B4'
-      line_card: '0x000b8cffff003054'
-      position: 3
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1387,8 +1242,6 @@ griffon-15:
     bmc:
       ip: 172.17.65.15
       mac: 00:e0:81:4f:e3:87
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/29
   main_memory:
     ram_size: 16867737600
   processor:
@@ -1406,9 +1259,6 @@ griffon-15:
     serial_number: 812530020
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 17
 griffon-16:
   main_memory:
     ram_size: 16867737600
@@ -1427,8 +1277,6 @@ griffon-16:
     bmc:
       ip: 172.17.65.16
       mac: 00:e0:81:4f:e2:d8
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/30
     eth0:
       interface: Ethernet
       ip: 172.16.65.16
@@ -1440,8 +1288,6 @@ griffon-16:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/30
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1462,9 +1308,6 @@ griffon-16:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003303E'
-      line_card: '0x000b8cffff003054'
-      position: 4
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1500,16 +1343,11 @@ griffon-16:
     serial_number: 812530021
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 18
 griffon-17:
   network_interfaces:
     bmc:
       ip: 172.17.65.17
       mac: 00:e0:81:4f:e3:6a
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/31
     eth0:
       interface: Ethernet
       ip: 172.16.65.17
@@ -1521,8 +1359,6 @@ griffon-17:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/31
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1543,9 +1379,6 @@ griffon-17:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033016'
-      line_card: '0x000b8cffff003054'
-      position: 5
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1594,9 +1427,6 @@ griffon-17:
     serial_number: 812530022
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 19
 griffon-18:
   operating_system:
     name: debian
@@ -1616,8 +1446,6 @@ griffon-18:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/32
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1638,9 +1466,6 @@ griffon-18:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003302A'
-      line_card: '0x000b8cffff003054'
-      position: 6
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1654,8 +1479,6 @@ griffon-18:
     bmc:
       ip: 172.17.65.18
       mac: 00:e0:81:4f:cb:0e
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/32
   bios:
     vendor: Phoenix Technologies LTD
     version: V1.05
@@ -1688,9 +1511,6 @@ griffon-18:
     serial_number: 812530023
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 20
 griffon-19:
   operating_system:
     name: debian
@@ -1700,8 +1520,6 @@ griffon-19:
     bmc:
       ip: 172.17.65.19
       mac: 00:e0:81:4f:e3:00
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/33
     eth0:
       interface: Ethernet
       ip: 172.16.65.19
@@ -1713,8 +1531,6 @@ griffon-19:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/33
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1735,9 +1551,6 @@ griffon-19:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033036'
-      line_card: '0x000b8cffff003054'
-      position: 7
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1782,9 +1595,6 @@ griffon-19:
     serial_number: 812530024
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 21
 griffon-20:
   operating_system:
     name: debian
@@ -1811,8 +1621,6 @@ griffon-20:
     bmc:
       ip: 172.17.65.20
       mac: 00:e0:81:4f:ca:8e
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/34
     eth0:
       interface: Ethernet
       ip: 172.16.65.20
@@ -1824,8 +1632,6 @@ griffon-20:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/34
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1846,9 +1652,6 @@ griffon-20:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300032FCA'
-      line_card: '0x000b8cffff003101'
-      position: 2
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1876,9 +1679,6 @@ griffon-20:
     serial_number: 812530025
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 22
 griffon-21:
   operating_system:
     name: debian
@@ -1903,8 +1703,6 @@ griffon-21:
     bmc:
       ip: 172.17.65.21
       mac: 00:e0:81:4f:e2:fb
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/35
     eth0:
       interface: Ethernet
       ip: 172.16.65.21
@@ -1916,8 +1714,6 @@ griffon-21:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/35
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -1938,9 +1734,6 @@ griffon-21:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003304E'
-      line_card: '0x000b8cffff003101'
-      position: 1
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -1970,9 +1763,6 @@ griffon-21:
     serial_number: 812530026
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 23
 griffon-22:
   architecture:
     smp_size: 2
@@ -1984,8 +1774,6 @@ griffon-22:
     bmc:
       ip: 172.17.65.22
       mac: 00:e0:81:4f:cb:02
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/36
     eth0:
       interface: Ethernet
       ip: 172.16.65.22
@@ -1997,8 +1785,6 @@ griffon-22:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/36
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2019,9 +1805,6 @@ griffon-22:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033032'
-      line_card: '0x000b8cffff003101'
-      position: 3
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2064,9 +1847,6 @@ griffon-22:
     serial_number: 812530027
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 21
 griffon-23:
   block_devices:
     sda:
@@ -2079,8 +1859,6 @@ griffon-23:
     bmc:
       ip: 172.17.65.23
       mac: 00:e0:81:4f:ca:7e
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/O/37
     eth0:
       interface: Ethernet
       ip: 172.16.65.23
@@ -2092,8 +1870,6 @@ griffon-23:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/37
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2114,9 +1890,6 @@ griffon-23:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003302F'
-      line_card: '0x000b8cffff003101'
-      position: 4
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2158,9 +1931,6 @@ griffon-23:
     serial_number: 812530028
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 20
 griffon-24:
   main_memory:
     ram_size: 16867737600
@@ -2188,8 +1958,6 @@ griffon-24:
     bmc:
       ip: 172.17.65.24
       mac: 00:e0:81:4f:ca:7f
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/38
     eth0:
       interface: Ethernet
       ip: 172.16.65.24
@@ -2201,8 +1969,6 @@ griffon-24:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/38
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2223,9 +1989,6 @@ griffon-24:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300032FD6'
-      line_card: '0x000b8cffff003101'
-      position: 5
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2252,16 +2015,11 @@ griffon-24:
     serial_number: 812530029
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 19
 griffon-25:
   network_interfaces:
     bmc:
       ip: 172.17.65.25
       mac: 00:e0:81:4f:e3:ba
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/39
     eth0:
       interface: Ethernet
       ip: 172.16.65.25
@@ -2273,8 +2031,6 @@ griffon-25:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/39
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2295,9 +2051,6 @@ griffon-25:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033022'
-      line_card: '0x000b8cffff003101'
-      position: 6
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2346,16 +2099,11 @@ griffon-25:
     serial_number: 812530030
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 18
 griffon-26:
   network_interfaces:
     bmc:
       ip: 172.17.65.26
       mac: 00:e0:81:4f:b5:da
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/40
     eth0:
       interface: Ethernet
       ip: 172.16.65.26
@@ -2367,8 +2115,6 @@ griffon-26:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/40
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2389,9 +2135,6 @@ griffon-26:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300032FD2'
-      line_card: '0x000b8cffff003101'
-      position: 7
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2440,9 +2183,6 @@ griffon-26:
     serial_number: 812530031
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 17
 griffon-27:
   block_devices:
     sda:
@@ -2463,8 +2203,6 @@ griffon-27:
     bmc:
       ip: 172.17.65.27
       mac: 00:e0:81:4f:e2:cb
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/41
     eth0:
       interface: Ethernet
       ip: 172.16.65.27
@@ -2476,8 +2214,6 @@ griffon-27:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/41
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2498,9 +2234,6 @@ griffon-27:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003301E'
-      line_card: '0x000b8cffff003101'
-      position: 8
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2534,9 +2267,6 @@ griffon-27:
     serial_number: 812530032
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 15
 griffon-28:
   processor:
     clock_speed: 2494000000
@@ -2555,8 +2285,6 @@ griffon-28:
     bmc:
       ip: 172.17.65.28
       mac: 00:e0:81:4f:ca:8d
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/42
     eth0:
       interface: Ethernet
       ip: 172.16.65.28
@@ -2568,8 +2296,6 @@ griffon-28:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/42
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2590,9 +2316,6 @@ griffon-28:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300032FDA'
-      line_card: '0x000b8cffff003101'
-      position: 9
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2628,9 +2351,6 @@ griffon-28:
     serial_number: 812530033
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 14
 griffon-29:
   main_memory:
     ram_size: 16867737600
@@ -2658,8 +2378,6 @@ griffon-29:
     bmc:
       ip: 172.17.65.29
       mac: 00:e0:81:4f:e3:71
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/43
     eth0:
       interface: Ethernet
       ip: 172.16.65.29
@@ -2671,8 +2389,6 @@ griffon-29:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/43
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2693,9 +2409,6 @@ griffon-29:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033042'
-      line_card: '0x000b8cffff003101'
-      position: 10
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2722,9 +2435,6 @@ griffon-29:
     serial_number: 812530034
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 13
 griffon-30:
   block_devices:
     sda:
@@ -2747,8 +2457,6 @@ griffon-30:
     bmc:
       ip: 172.17.65.30
       mac: 00:e0:81:4f:e3:10
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/1
     eth0:
       interface: Ethernet
       ip: 172.16.65.30
@@ -2760,8 +2468,6 @@ griffon-30:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/1
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2782,9 +2488,6 @@ griffon-30:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003303A'
-      line_card: '0x000b8cffff003055'
-      position: 1
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2816,9 +2519,6 @@ griffon-30:
     serial_number: 812530035
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 1
 griffon-31:
   bios:
     vendor: Phoenix Technologies LTD
@@ -2847,8 +2547,6 @@ griffon-31:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/2
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2869,9 +2567,6 @@ griffon-31:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003305E'
-      line_card: '0x000b8cffff003055'
-      position: 2
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -2885,8 +2580,6 @@ griffon-31:
     bmc:
       ip: 172.17.65.31
       mac: 00:e0:81:4f:cb:03
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/2
   block_devices:
     sda:
       device: sda
@@ -2910,9 +2603,6 @@ griffon-31:
     serial_number: 812530036
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 2
 griffon-32:
   processor:
     clock_speed: 2494000000
@@ -2939,8 +2629,6 @@ griffon-32:
     bmc:
       ip: 172.17.65.32
       mac: 00:e0:81:4f:e3:8b
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/3
     eth0:
       interface: Ethernet
       ip: 172.16.65.32
@@ -2952,8 +2640,6 @@ griffon-32:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/3
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -2974,9 +2660,6 @@ griffon-32:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003305A'
-      line_card: '0x000b8cffff003055'
-      position: 3
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3004,9 +2687,6 @@ griffon-32:
     serial_number: 812530037
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 3
 griffon-33:
   block_devices:
     sda:
@@ -3033,8 +2713,6 @@ griffon-33:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/4
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3055,9 +2733,6 @@ griffon-33:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033056'
-      line_card: '0x000b8cffff003055'
-      position: 4
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3071,8 +2746,6 @@ griffon-33:
     bmc:
       ip: 172.17.65.33
       mac: 00:e0:81:4f:ca:7a
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/4
   processor:
     clock_speed: 2494000000
     instruction_set: x86-64
@@ -3098,9 +2771,6 @@ griffon-33:
     serial_number: 812530038
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 4
 griffon-34:
   processor:
     clock_speed: 2494000000
@@ -3125,8 +2795,6 @@ griffon-34:
     bmc:
       ip: 172.17.65.34
       mac: 00:e0:81:4f:cb:20
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/5
     eth0:
       interface: Ethernet
       ip: 172.16.65.34
@@ -3138,8 +2806,6 @@ griffon-34:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/5
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3160,9 +2826,6 @@ griffon-34:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033052'
-      line_card: '0x000b8cffff003055'
-      position: 5
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3192,9 +2855,6 @@ griffon-34:
     serial_number: 812530039
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 5
 griffon-35:
   bios:
     vendor: Phoenix Technologies LTD
@@ -3234,8 +2894,6 @@ griffon-35:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/6
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3256,9 +2914,6 @@ griffon-35:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003304A'
-      line_card: '0x000b8cffff003055'
-      position: 6
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3272,8 +2927,6 @@ griffon-35:
     bmc:
       ip: 172.17.65.35
       mac: 00:e0:81:4f:b5:ea
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/6
   operating_system:
     name: debian
     kernel: 2.6.32-5-amd64
@@ -3286,9 +2939,6 @@ griffon-35:
     serial_number: 812530040
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 6
 griffon-36:
   main_memory:
     ram_size: 16867737600
@@ -3316,8 +2966,6 @@ griffon-36:
     bmc:
       ip: 172.17.65.36
       mac: 00:e0:81:4f:b5:e8
-      switch_name: sgriffon2-ipmi
-      switch_port: 7
     eth0:
       interface: Ethernet
       ip: 172.16.65.36
@@ -3329,8 +2977,6 @@ griffon-36:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/7
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3351,9 +2997,6 @@ griffon-36:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003301A'
-      line_card: '0x000b8cffff003055'
-      position: 1/0/7
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3380,9 +3023,6 @@ griffon-36:
     serial_number: 812530041
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 7
 griffon-37:
   processor:
     clock_speed: 2494000000
@@ -3403,8 +3043,6 @@ griffon-37:
     bmc:
       ip: 172.17.65.37
       mac: 00:e0:81:4f:e2:d7
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/8
     eth0:
       interface: Ethernet
       ip: 172.16.65.37
@@ -3416,8 +3054,6 @@ griffon-37:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/8
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3438,9 +3074,6 @@ griffon-37:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300028058'
-      line_card: '0x000b8cffff003055'
-      position: 8
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3474,9 +3107,6 @@ griffon-37:
     serial_number: 812530042
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 8
 griffon-38:
   supported_job_types:
     virtual: ivt
@@ -3484,8 +3114,6 @@ griffon-38:
     bmc:
       ip: 172.17.65.38
       mac: 00:e0:81:4f:e3:68
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/9
     eth0:
       interface: Ethernet
       ip: 172.16.65.38
@@ -3497,8 +3125,6 @@ griffon-38:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/9
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3519,9 +3145,6 @@ griffon-38:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000318DC'
-      line_card: '0x000b8cffff003055'
-      position: 9
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3568,9 +3191,6 @@ griffon-38:
     serial_number: 812530043
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 2
 griffon-39:
   block_devices:
     sda:
@@ -3591,8 +3211,6 @@ griffon-39:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/25
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3613,9 +3231,6 @@ griffon-39:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000318E8'
-      line_card: '0x000b8cffff003055'
-      position: 10
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3629,8 +3244,6 @@ griffon-39:
     bmc:
       ip: 172.17.65.39
       mac: 00:e0:81:4f:e2:bf
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/25
   operating_system:
     name: debian
     kernel: 2.6.32-5-amd64
@@ -3662,16 +3275,11 @@ griffon-39:
     serial_number: 812530044
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 3
 griffon-40:
   network_interfaces:
     bmc:
       ip: 172.17.65.40
       mac: 00:e0:81:4f:e2:c6
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/26
     eth0:
       interface: Ethernet
       ip: 172.16.65.40
@@ -3683,8 +3291,6 @@ griffon-40:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/26
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3705,9 +3311,6 @@ griffon-40:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031780'
-      line_card: '0x000b8cffff003055'
-      position: 11
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3756,9 +3359,6 @@ griffon-40:
     serial_number: 812530045
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 4
 griffon-41:
   operating_system:
     name: debian
@@ -3783,8 +3383,6 @@ griffon-41:
     bmc:
       ip: 172.17.65.41
       mac: 00:e0:81:4f:b5:e1
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/27
     eth0:
       interface: Ethernet
       ip: 172.16.65.41
@@ -3796,8 +3394,6 @@ griffon-41:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/27
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3818,9 +3414,6 @@ griffon-41:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000317D4'
-      line_card: '0x000b8cffff003055'
-      position: 12
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3850,9 +3443,6 @@ griffon-41:
     serial_number: 812530046
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 5
 griffon-42:
   bios:
     vendor: Phoenix Technologies LTD
@@ -3883,8 +3473,6 @@ griffon-42:
     bmc:
       ip: 172.17.65.42
       mac: 00:e0:81:4f:e3:65
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/28
     eth0:
       interface: Ethernet
       ip: 172.16.65.42
@@ -3896,8 +3484,6 @@ griffon-42:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/28
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3918,9 +3504,6 @@ griffon-42:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280D0'
-      line_card: '0x000b8cffff0030ff'
-      position: 1
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -3944,16 +3527,11 @@ griffon-42:
     serial_number: 812530047
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 6
 griffon-43:
   network_interfaces:
     bmc:
       ip: 172.17.65.43
       mac: 00:e0:81:4f:b5:e4
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/29
     eth0:
       interface: Ethernet
       ip: 172.16.65.43
@@ -3965,8 +3543,6 @@ griffon-43:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/29
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -3987,9 +3563,6 @@ griffon-43:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280B8'
-      line_card: '0x000b8cffff0030ff'
-      position: 2
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4038,9 +3611,6 @@ griffon-43:
     serial_number: 812530048
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 7
 griffon-44:
   main_memory:
     ram_size: 16867737600
@@ -4068,8 +3638,6 @@ griffon-44:
     bmc:
       ip: 172.17.65.44
       mac: 00:e0:81:4f:e2:b7
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/30
     eth0:
       interface: Ethernet
       ip: 172.16.65.44
@@ -4081,8 +3649,6 @@ griffon-44:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/30
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4103,9 +3669,6 @@ griffon-44:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280D4'
-      line_card: '0x000b8cffff0030ff'
-      position: 3
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4132,16 +3695,11 @@ griffon-44:
     serial_number: 812530049
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 17
 griffon-45:
   network_interfaces:
     bmc:
       ip: 172.17.65.45
       mac: 00:e0:81:4f:e2:c4
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/31
     eth0:
       interface: Ethernet
       ip: 172.16.65.45
@@ -4153,8 +3711,6 @@ griffon-45:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/31
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4175,9 +3731,6 @@ griffon-45:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280B0'
-      line_card: '0x000b8cffff0030ff'
-      position: 4
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4226,9 +3779,6 @@ griffon-45:
     serial_number: 812530050
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 18
 griffon-46:
   supported_job_types:
     virtual: ivt
@@ -4240,8 +3790,6 @@ griffon-46:
     bmc:
       ip: 172.17.65.46
       mac: 00:e0:81:4f:ca:79
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/32
     eth0:
       interface: Ethernet
       ip: 172.16.65.46
@@ -4253,8 +3801,6 @@ griffon-46:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/32
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4275,9 +3821,6 @@ griffon-46:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280A8'
-      line_card: '0x000b8cffff0030ff'
-      position: 5
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4320,9 +3863,6 @@ griffon-46:
     serial_number: 812530051
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 19
 griffon-47:
   main_memory:
     ram_size: 16867737600
@@ -4338,8 +3878,6 @@ griffon-47:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/33
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4360,9 +3898,6 @@ griffon-47:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000318E0'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4376,8 +3911,6 @@ griffon-47:
     bmc:
       ip: 172.17.65.47
       mac: 00:e0:81:4f:e3:0a
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/33
   operating_system:
     name: debian
     kernel: 2.6.32-5-amd64
@@ -4414,9 +3947,6 @@ griffon-47:
     serial_number: 812530052
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 20
 griffon-48:
   main_memory:
     ram_size: 16867737600
@@ -4444,8 +3974,6 @@ griffon-48:
     bmc:
       ip: 172.17.65.48
       mac: 00:e0:81:4f:ca:80
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/34
     eth0:
       interface: Ethernet
       ip: 172.16.65.48
@@ -4457,8 +3985,6 @@ griffon-48:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/34
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4479,9 +4005,6 @@ griffon-48:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000317A4'
-      line_card: '0x000b8cffff0030ff'
-      position: 7
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4508,16 +4031,11 @@ griffon-48:
     serial_number: 812530053
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 21
 griffon-49:
   network_interfaces:
     bmc:
       ip: 172.17.65.49
       mac: 00:e0:81:4f:e2:c9
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/35
     eth0:
       interface: Ethernet
       ip: 172.16.65.49
@@ -4529,8 +4047,6 @@ griffon-49:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/35
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4551,9 +4067,6 @@ griffon-49:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033026'
-      line_card: '0x000b8cffff0030ff'
-      position: 8
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4602,9 +4115,6 @@ griffon-49:
     serial_number: 812530054
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 22
 griffon-50:
   main_memory:
     ram_size: 16867737600
@@ -4632,8 +4142,6 @@ griffon-50:
     bmc:
       ip: 172.17.65.50
       mac: 00:e0:81:4f:e2:fa
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/36
     eth0:
       interface: Ethernet
       ip: 172.16.65.50
@@ -4645,8 +4153,6 @@ griffon-50:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/37
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4667,9 +4173,6 @@ griffon-50:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000318D0'
-      line_card: '0x000b8cffff0030ff'
-      position: 9
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4696,9 +4199,6 @@ griffon-50:
     serial_number: 812530055
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu3.nancy.grid5000.fr
-    pdu_position: 23
 griffon-51:
   operating_system:
     name: debian
@@ -4728,8 +4228,6 @@ griffon-51:
     bmc:
       ip: 172.17.65.51
       mac: 00:e0:81:4f:e3:92
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/37
     eth0:
       interface: Ethernet
       ip: 172.16.65.51
@@ -4741,8 +4239,6 @@ griffon-51:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/36
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4763,9 +4259,6 @@ griffon-51:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000318EC'
-      line_card: '0x000b8cffff0030ff'
-      position: 10
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4790,9 +4283,6 @@ griffon-51:
     serial_number: 812530056
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 21
 griffon-52:
   main_memory:
     ram_size: 16867737600
@@ -4800,8 +4290,6 @@ griffon-52:
     bmc:
       ip: 172.17.65.52
       mac: 00:e0:81:4f:e3:7e
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/38
     eth0:
       interface: Ethernet
       ip: 172.16.65.52
@@ -4813,8 +4301,6 @@ griffon-52:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/38
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4835,9 +4321,6 @@ griffon-52:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300027F84'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4884,9 +4367,6 @@ griffon-52:
     serial_number: 812530057
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 20
 griffon-53:
   operating_system:
     name: debian
@@ -4904,8 +4384,6 @@ griffon-53:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/39
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -4926,9 +4404,6 @@ griffon-53:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000280C4'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -4942,8 +4417,6 @@ griffon-53:
     bmc:
       ip: 172.17.65.53
       mac: 00:e0:81:4f:e3:56
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/39
   bios:
     vendor: Phoenix Technologies LTD
     version: V1.05
@@ -4978,9 +4451,6 @@ griffon-53:
     serial_number: 812530058
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 19
 griffon-54:
   main_memory:
     ram_size: 16867737600
@@ -4988,8 +4458,6 @@ griffon-54:
     bmc:
       ip: 172.17.65.54
       mac: 00:e0:81:4f:e2:cf
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/40
     eth0:
       interface: Ethernet
       ip: 172.16.65.54
@@ -5001,8 +4469,6 @@ griffon-54:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/40
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5023,9 +4489,6 @@ griffon-54:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000318C4'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5072,9 +4535,6 @@ griffon-54:
     serial_number: 812530059c
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 18
 griffon-55:
   network_interfaces:
     eth0:
@@ -5088,8 +4548,6 @@ griffon-55:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/41
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5110,9 +4568,6 @@ griffon-55:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031784'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5126,8 +4581,6 @@ griffon-55:
     bmc:
       ip: 172.17.65.55
       mac: 00:e0:81:4f:e2:f8
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/41
   bios:
     vendor: Phoenix Technologies LTD
     version: V1.05
@@ -5166,9 +4619,6 @@ griffon-55:
     serial_number: 812530060
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 17
 griffon-56:
   block_devices:
     sda:
@@ -5185,8 +4635,6 @@ griffon-56:
     bmc:
       ip: 172.17.65.56
       mac: 00:e0:81:4f:ca:89
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/42
     eth0:
       interface: Ethernet
       ip: 172.16.65.56
@@ -5198,8 +4646,6 @@ griffon-56:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/42
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5220,9 +4666,6 @@ griffon-56:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003176C'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5260,9 +4703,6 @@ griffon-56:
     serial_number: 812530061
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 15
 griffon-57:
   main_memory:
     ram_size: 16867737600
@@ -5304,8 +4744,6 @@ griffon-57:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon2
-      switch_port: Gi1/0/43
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5326,9 +4764,6 @@ griffon-57:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003173C'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5342,8 +4777,6 @@ griffon-57:
     bmc:
       ip: 172.17.65.57
       mac: 00:e0:81:4f:e2:de
-      switch_name: sgriffon2-ipmi
-      switch_port: 1/0/43
   supported_job_types:
     virtual: ivt
   operating_system:
@@ -5354,9 +4787,6 @@ griffon-57:
     serial_number: 812530062
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu4.nancy.grid5000.fr
-    pdu_position: 14
 griffon-58:
   main_memory:
     ram_size: 16867737600
@@ -5384,8 +4814,6 @@ griffon-58:
     bmc:
       ip: 172.17.65.58
       mac: 00:e0:81:4f:e2:f3
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/12
     eth0:
       interface: Ethernet
       ip: 172.16.65.58
@@ -5397,8 +4825,6 @@ griffon-58:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/11
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5419,9 +4845,6 @@ griffon-58:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003179C'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5448,9 +4871,6 @@ griffon-58:
     serial_number: 812530063
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 1
 griffon-59:
   processor:
     clock_speed: 2494000000
@@ -5486,8 +4906,6 @@ griffon-59:
     bmc:
       ip: 172.17.65.59
       mac: 00:e0:81:4f:e3:05
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/11
     eth0:
       interface: Ethernet
       ip: 172.16.65.59
@@ -5499,8 +4917,6 @@ griffon-59:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/12
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5521,9 +4937,6 @@ griffon-59:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031730'
-      line_card: '0x000b8cffff00304d'
-      position: 5
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5542,9 +4955,6 @@ griffon-59:
     serial_number: 812530064
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu1.nancy.grid5000.fr
-    pdu_position: 2
 griffon-60:
   architecture:
     smp_size: 2
@@ -5590,8 +5000,6 @@ griffon-60:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon1
-      switch_port: Gi1/0/13
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5612,9 +5020,6 @@ griffon-60:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031740'
-      line_card: '0x000b8cffff00304d'
-      position: 6
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5628,17 +5033,12 @@ griffon-60:
     bmc:
       ip: 172.17.65.60
       mac: 00:e0:81:4f:e3:90
-      switch_name: sgriffon1-ipmi
-      switch_port: 1/0/13
   supported_job_types:
     virtual: ivt
   chassis:
     serial_number: 812530065
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu2.nancy.grid5000.fr
-    pdu_position: 5
 griffon-61:
   architecture:
     smp_size: 2
@@ -5667,8 +5067,6 @@ griffon-61:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/4
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5689,9 +5087,6 @@ griffon-61:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031804'
-      line_card: '0x000b8cffff00304d'
-      position: 7
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5705,8 +5100,6 @@ griffon-61:
     bmc:
       ip: 172.17.65.61
       mac: 00:e0:81:4b:fc:d2
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/4
   main_memory:
     ram_size: 16867737600
   supported_job_types:
@@ -5730,9 +5123,6 @@ griffon-61:
     serial_number: 812530066
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 3
 griffon-62:
   block_devices:
     sda:
@@ -5745,8 +5135,6 @@ griffon-62:
     bmc:
       ip: 172.17.65.62
       mac: 00:e0:81:4f:e2:b8
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/5
     eth0:
       interface: Ethernet
       ip: 172.16.65.62
@@ -5758,8 +5146,6 @@ griffon-62:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/5
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5780,9 +5166,6 @@ griffon-62:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003185C'
-      line_card: '0x000b8cffff00304d'
-      position: 8
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5824,9 +5207,6 @@ griffon-62:
     serial_number: 812530067
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 2
 griffon-63:
   supported_job_types:
     virtual: ivt
@@ -5861,8 +5241,6 @@ griffon-63:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/6
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5883,9 +5261,6 @@ griffon-63:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000317B4'
-      line_card: '0x000b8cffff00304d'
-      position: 9
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -5899,8 +5274,6 @@ griffon-63:
     bmc:
       ip: 172.17.65.63
       mac: 00:e0:81:4f:e3:0b
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/6
   main_memory:
     ram_size: 16867737600
   processor:
@@ -5918,9 +5291,6 @@ griffon-63:
     serial_number: 812530068
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 1
 griffon-64:
   processor:
     clock_speed: 2494000000
@@ -5939,8 +5309,6 @@ griffon-64:
     bmc:
       ip: 172.17.65.64
       mac: 00:e0:81:4f:e2:cd
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/7
     eth0:
       interface: Ethernet
       ip: 172.16.65.64
@@ -5952,8 +5320,6 @@ griffon-64:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/7
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -5974,9 +5340,6 @@ griffon-64:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300033012'
-      line_card: '0x000b8cffff00304d'
-      position: 10
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6012,9 +5375,6 @@ griffon-64:
     serial_number: 812530069
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 8
 griffon-65:
   supported_job_types:
     virtual: ivt
@@ -6058,8 +5418,6 @@ griffon-65:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/8
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6080,9 +5438,6 @@ griffon-65:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031750'
-      line_card: '0x000b8cffff00304d'
-      position: 11
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6096,8 +5451,6 @@ griffon-65:
     bmc:
       ip: 172.17.65.65
       mac: 00:e0:81:4f:e2:bc
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/8
   architecture:
     smp_size: 2
     smt_size: 8
@@ -6106,9 +5459,6 @@ griffon-65:
     serial_number: 812530070
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 2
 griffon-66:
   processor:
     clock_speed: 2494000000
@@ -6146,8 +5496,6 @@ griffon-66:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/9
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6168,9 +5516,6 @@ griffon-66:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031968'
-      line_card: '0x000b8cffff00304d'
-      position: 12
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6184,8 +5529,6 @@ griffon-66:
     bmc:
       ip: 172.17.65.66
       mac: 00:e0:81:4f:ca:78
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/9
   operating_system:
     name: debian
     kernel: 2.6.32-5-amd64
@@ -6200,9 +5543,6 @@ griffon-66:
     serial_number: 812530071
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 3
 griffon-67:
   supported_job_types:
     virtual: ivt
@@ -6210,8 +5550,6 @@ griffon-67:
     bmc:
       ip: 172.17.65.67
       mac: 00:e0:81:4f:b5:f0
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/10
     eth0:
       interface: Ethernet
       ip: 172.16.65.67
@@ -6223,8 +5561,6 @@ griffon-67:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/10
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6245,9 +5581,6 @@ griffon-67:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000317DC'
-      line_card: '0x000b8cffff003107'
-      position: 1
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6294,9 +5627,6 @@ griffon-67:
     serial_number: 812530072
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 4
 griffon-68:
   supported_job_types:
     virtual: ivt
@@ -6312,8 +5642,6 @@ griffon-68:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/11
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6334,9 +5662,6 @@ griffon-68:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031858'
-      line_card: '0x000b8cffff003107'
-      position: 2
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6350,8 +5675,6 @@ griffon-68:
     bmc:
       ip: 172.17.65.68
       mac: 00:e0:81:4f:ca:8f
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/11
   block_devices:
     sda:
       device: sda
@@ -6388,9 +5711,6 @@ griffon-68:
     serial_number: 812530073
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 5
 griffon-69:
   main_memory:
     ram_size: 16867737600
@@ -6418,8 +5738,6 @@ griffon-69:
     bmc:
       ip: 172.17.65.69
       mac: 00:e0:81:4f:b5:dc
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/12
     eth0:
       interface: Ethernet
       ip: 172.16.65.69
@@ -6431,8 +5749,6 @@ griffon-69:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/12
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6453,9 +5769,6 @@ griffon-69:
       mountable: true
       mounted: false
       management: false
-      hwid: '0xC903000317B0'
-      line_card: '0x000b8cffff003107'
-      position: 3
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6482,9 +5795,6 @@ griffon-69:
     serial_number: 812530074
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 6
 griffon-70:
   main_memory:
     ram_size: 16867737600
@@ -6509,8 +5819,6 @@ griffon-70:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/13
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6531,9 +5839,6 @@ griffon-70:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031810'
-      line_card: '0x000b8cffff003107'
-      position: 4
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6547,8 +5852,6 @@ griffon-70:
     bmc:
       ip: 172.17.65.70
       mac: 00:e0:81:4f:ca:77
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/13
   bios:
     vendor: Phoenix Technologies LTD
     version: V1.05
@@ -6576,9 +5879,6 @@ griffon-70:
     serial_number: 812530075
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 7
 griffon-71:
   bios:
     vendor: Phoenix Technologies LTD
@@ -6596,8 +5896,6 @@ griffon-71:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/14
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6618,9 +5916,6 @@ griffon-71:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031824'
-      line_card: '0x000b8cffff003107'
-      position: 5
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6634,8 +5929,6 @@ griffon-71:
     bmc:
       ip: 172.17.65.71
       mac: 00:e0:81:4f:cb:05
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/14
   main_memory:
     ram_size: 16867737600
   architecture:
@@ -6670,16 +5963,11 @@ griffon-71:
     serial_number: 812530076
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 8
 griffon-72:
   network_interfaces:
     bmc:
       ip: 172.17.65.72
       mac: 00:e0:81:4f:b5:f1
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/15
     eth0:
       interface: Ethernet
       ip: 172.16.65.72
@@ -6691,8 +5979,6 @@ griffon-72:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/15
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6713,9 +5999,6 @@ griffon-72:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300032FCE'
-      line_card: '0x000b8cffff003107'
-      position: 6
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6764,9 +6047,6 @@ griffon-72:
     serial_number: 812530077
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 9
 griffon-73:
   operating_system:
     name: debian
@@ -6778,8 +6058,6 @@ griffon-73:
     bmc:
       ip: 172.17.65.73
       mac: 00:e0:81:4f:cb:0d
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/25
     eth0:
       interface: Ethernet
       ip: 172.16.65.73
@@ -6791,8 +6069,6 @@ griffon-73:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/25
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6813,9 +6089,6 @@ griffon-73:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000319FC'
-      line_card: '0x000b8cffff003107'
-      position: 7
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6858,16 +6131,11 @@ griffon-73:
     serial_number: 812530078
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 10
 griffon-74:
   network_interfaces:
     bmc:
       ip: 172.17.65.74
       mac: 00:e0:81:4f:cb:00
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/26
     eth0:
       interface: Ethernet
       ip: 172.16.65.74
@@ -6879,8 +6147,6 @@ griffon-74:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/26
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -6901,9 +6167,6 @@ griffon-74:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031890'
-      line_card: '0x000b8cffff003107'
-      position: 8
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -6952,9 +6215,6 @@ griffon-74:
     serial_number: 812530079
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 11
 griffon-75:
   main_memory:
     ram_size: 16867737600
@@ -6982,8 +6242,6 @@ griffon-75:
     bmc:
       ip: 172.17.65.75
       mac: 00:e0:81:4f:e3:75
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/27
     eth0:
       interface: Ethernet
       ip: 172.16.65.75
@@ -6995,8 +6253,6 @@ griffon-75:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/27
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7017,9 +6273,6 @@ griffon-75:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031874'
-      line_card: '0x000b8cffff003107'
-      position: 9
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7046,9 +6299,6 @@ griffon-75:
     serial_number: 812530080
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 13
 griffon-76:
   bios:
     vendor: Phoenix Technologies LTD
@@ -7069,8 +6319,6 @@ griffon-76:
     bmc:
       ip: 172.17.65.76
       mac: 00:e0:81:4f:b5:e3
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/28
     eth0:
       interface: Ethernet
       ip: 172.16.65.76
@@ -7082,8 +6330,6 @@ griffon-76:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/28
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7104,9 +6350,6 @@ griffon-76:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031974'
-      line_card: '0x000b8cffff003107'
-      position: 10
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7140,9 +6383,6 @@ griffon-76:
     serial_number: 812530081
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 14
 griffon-77:
   main_memory:
     ram_size: 16867737600
@@ -7169,8 +6409,6 @@ griffon-77:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/29
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7191,9 +6429,6 @@ griffon-77:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000318B8'
-      line_card: '0x000b8cffff003107'
-      position: 11
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7207,8 +6442,6 @@ griffon-77:
     bmc:
       ip: 172.17.65.77
       mac: 00:e0:81:4f:e2:e0
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/29
   processor:
     clock_speed: 2494000000
     instruction_set: x86-64
@@ -7234,9 +6467,6 @@ griffon-77:
     serial_number: 812530082
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 15
 griffon-78:
   architecture:
     smp_size: 2
@@ -7265,8 +6495,6 @@ griffon-78:
     bmc:
       ip: 172.17.65.78
       mac: 00:e0:81:4f:e2:e8
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/30
     eth0:
       interface: Ethernet
       ip: 172.16.65.78
@@ -7278,8 +6506,6 @@ griffon-78:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/30
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7300,9 +6526,6 @@ griffon-78:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000317AC'
-      line_card: '0x000b8cffff003107'
-      position: 12
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7328,9 +6551,6 @@ griffon-78:
     serial_number: 812530083
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 17
 griffon-79:
   network_interfaces:
     eth0:
@@ -7344,8 +6564,6 @@ griffon-79:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/31
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7366,9 +6584,6 @@ griffon-79:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031808'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7382,8 +6597,6 @@ griffon-79:
     bmc:
       ip: 172.17.65.79
       mac: 00:e0:81:4f:e2:b2
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/31
   main_memory:
     ram_size: 16867737600
   block_devices:
@@ -7422,9 +6635,6 @@ griffon-79:
     serial_number: 812530084
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 18
 griffon-80:
   supported_job_types:
     virtual: ivt
@@ -7440,8 +6650,6 @@ griffon-80:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/32
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7462,9 +6670,6 @@ griffon-80:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031800'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7478,8 +6683,6 @@ griffon-80:
     bmc:
       ip: 172.17.65.80
       mac: 00:e0:81:4f:b5:af
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/32
   operating_system:
     name: debian
     kernel: 2.6.32-5-amd64
@@ -7516,9 +6719,6 @@ griffon-80:
     serial_number: 812530085
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 19
 griffon-81:
   operating_system:
     name: debian
@@ -7528,8 +6728,6 @@ griffon-81:
     bmc:
       ip: 172.17.65.81
       mac: 00:e0:81:4f:ca:7d
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/33
     eth0:
       interface: Ethernet
       ip: 172.16.65.81
@@ -7541,8 +6739,6 @@ griffon-81:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/33
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7563,9 +6759,6 @@ griffon-81:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031860'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7610,9 +6803,6 @@ griffon-81:
     serial_number: 812530086
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 20
 griffon-82:
   main_memory:
     ram_size: 16867737600
@@ -7640,8 +6830,6 @@ griffon-82:
     bmc:
       ip: 172.17.65.82
       mac: 00:e0:81:4f:cb:08
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/34
     eth0:
       interface: Ethernet
       ip: 172.16.65.82
@@ -7653,8 +6841,6 @@ griffon-82:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/34
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7675,9 +6861,6 @@ griffon-82:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000319F8'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7704,9 +6887,6 @@ griffon-82:
     serial_number: 812530087
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 21
 griffon-83:
   supported_job_types:
     virtual: ivt
@@ -7742,8 +6922,6 @@ griffon-83:
     bmc:
       ip: 172.17.65.83
       mac: 00:e0:81:4f:ca:9f
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/35
     eth0:
       interface: Ethernet
       ip: 172.16.65.83
@@ -7755,8 +6933,6 @@ griffon-83:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/35
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7777,9 +6953,6 @@ griffon-83:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000319F4'
-      line_card: '0x000b8cffff003101'
-      position: 12
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7798,9 +6971,6 @@ griffon-83:
     serial_number: 812530088
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 22
 griffon-84:
   main_memory:
     ram_size: 16867737600
@@ -7828,8 +6998,6 @@ griffon-84:
     bmc:
       ip: 172.17.65.84
       mac: 00:e0:81:4f:e2:d9
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/36
     eth0:
       interface: Ethernet
       ip: 172.16.65.84
@@ -7841,8 +7009,6 @@ griffon-84:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/36
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7863,9 +7029,6 @@ griffon-84:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC9030003180C'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7892,9 +7055,6 @@ griffon-84:
     serial_number: 812530089
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu5.nancy.grid5000.fr
-    pdu_position: 23
 griffon-85:
   supported_job_types:
     virtual: ivt
@@ -7925,8 +7085,6 @@ griffon-85:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/37
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -7947,9 +7105,6 @@ griffon-85:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC903000319F0'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -7963,8 +7118,6 @@ griffon-85:
     bmc:
       ip: 172.17.65.85
       mac: 00:e0:81:4f:b5:e7
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/37
   bios:
     vendor: Phoenix Technologies LTD
     version: V1.05
@@ -7986,9 +7139,6 @@ griffon-85:
     serial_number: 812530090
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 21
 griffon-86:
   main_memory:
     ram_size: 16867737600
@@ -8016,8 +7166,6 @@ griffon-86:
     bmc:
       ip: 172.17.65.86
       mac: 00:e0:81:4f:cb:0f
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/39
     eth0:
       interface: Ethernet
       ip: 172.16.65.86
@@ -8029,8 +7177,6 @@ griffon-86:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/38
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -8051,9 +7197,6 @@ griffon-86:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031A00'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -8080,9 +7223,6 @@ griffon-86:
     serial_number: 812530091
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 20
 griffon-87:
   architecture:
     smp_size: 2
@@ -8113,8 +7253,6 @@ griffon-87:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/39
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -8135,9 +7273,6 @@ griffon-87:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031A04'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -8151,8 +7286,6 @@ griffon-87:
     bmc:
       ip: 172.17.65.87
       mac: 00:e0:81:4f:e2:bd
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/40
   main_memory:
     ram_size: 16867737600
   bios:
@@ -8174,9 +7307,6 @@ griffon-87:
     serial_number: 812530092
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 19
 griffon-88:
   processor:
     clock_speed: 2494000000
@@ -8208,8 +7338,6 @@ griffon-88:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/40
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -8230,9 +7358,6 @@ griffon-88:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031A18'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -8246,8 +7371,6 @@ griffon-88:
     bmc:
       ip: 172.17.65.88
       mac: 00:e0:81:4f:e3:8c
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/41
   bios:
     vendor: Phoenix Technologies LTD
     version: V1.05
@@ -8268,9 +7391,6 @@ griffon-88:
     serial_number: 812530093
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 18
 griffon-89:
   block_devices:
     sda:
@@ -8304,8 +7424,6 @@ griffon-89:
     bmc:
       ip: 172.17.65.89
       mac: 00:e0:81:4f:e3:81
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/42
     eth0:
       interface: Ethernet
       ip: 172.16.65.89
@@ -8317,8 +7435,6 @@ griffon-89:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/41
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -8339,9 +7455,6 @@ griffon-89:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031A64'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -8362,9 +7475,6 @@ griffon-89:
     serial_number: 812530094
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 17
 griffon-90:
   supported_job_types:
     virtual: ivt
@@ -8380,8 +7490,6 @@ griffon-90:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/42
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -8402,9 +7510,6 @@ griffon-90:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031A20'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -8418,8 +7523,6 @@ griffon-90:
     bmc:
       ip: 172.17.65.90
       mac: 00:e0:81:4f:ca:fc
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/43
   operating_system:
     name: debian
     kernel: 2.6.32-5-amd64
@@ -8456,9 +7559,6 @@ griffon-90:
     serial_number: 812530095
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 15
 griffon-91:
   network_interfaces:
     eth0:
@@ -8472,8 +7572,6 @@ griffon-91:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/43
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -8494,9 +7592,6 @@ griffon-91:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031A0C'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -8510,8 +7605,6 @@ griffon-91:
     bmc:
       ip: 172.17.65.91
       mac: 00:e0:81:4f:28:b8
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/44
   bios:
     vendor: Phoenix Technologies LTD
     version: V1.05
@@ -8550,9 +7643,6 @@ griffon-91:
     serial_number: 812530096
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 14
 griffon-92:
   supported_job_types:
     virtual: ivt
@@ -8566,8 +7656,6 @@ griffon-92:
     bmc:
       ip: 172.17.65.92
       mac: 00:e0:81:4f:e3:5d
-      switch_name: sgriffon3-ipmi
-      switch_port: 1/0/45
     eth0:
       interface: Ethernet
       ip: 172.16.65.92
@@ -8579,8 +7667,6 @@ griffon-92:
       mountable: true
       mounted: true
       management: false
-      switch_name: sgriffon3
-      switch_port: Gi1/0/44
     eth1:
       interface: Ethernet
       driver: e1000e
@@ -8601,9 +7687,6 @@ griffon-92:
       mountable: true
       mounted: true
       management: false
-      hwid: '0xC90300031A08'
-      line_card:
-      position:
     ib1:
       interface: InfiniBand
       driver: mlx4_core
@@ -8644,6 +7727,3 @@ griffon-92:
     serial_number: 812530097
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: griffon-pdu6.nancy.grid5000.fr
-    pdu_position: 13

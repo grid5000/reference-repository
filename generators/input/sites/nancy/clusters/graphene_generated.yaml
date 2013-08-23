@@ -24,7 +24,6 @@ graphene-1:
       ip: 172.18.64.1
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:82
@@ -46,8 +45,6 @@ graphene-1:
       driver: e1000e
       mountable: true
       ip: 172.16.64.1
-      switch_name: sgraphene1
-      switch_port: Gi1/0/2
     eth1:
       mounted: false
       rate: 100000000
@@ -68,8 +65,6 @@ graphene-1:
     bmc:
       mac: 00:e0:81:d5:06:83
       ip: 172.17.64.1
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/25
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -97,9 +92,6 @@ graphene-1:
     serial_number: 1009390003
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 2
 graphene-2:
   bios:
     version: V7.01e
@@ -125,7 +117,6 @@ graphene-2:
       ip: 172.18.64.2
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:5e
@@ -147,8 +138,6 @@ graphene-2:
       driver: e1000e
       mountable: true
       ip: 172.16.64.2
-      switch_name: sgraphene1
-      switch_port: Gi1/0/1
     eth1:
       mounted: false
       rate: 100000000
@@ -169,8 +158,6 @@ graphene-2:
     bmc:
       mac: 00:e0:81:d5:07:73
       ip: 172.17.64.2
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/26
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -198,9 +185,6 @@ graphene-2:
     serial_number: 1009390004
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 3
 graphene-3:
   bios:
     version: V7.01e
@@ -230,7 +214,6 @@ graphene-3:
       ip: 172.18.64.3
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:5a
@@ -252,8 +235,6 @@ graphene-3:
       driver: e1000e
       mountable: true
       ip: 172.16.64.3
-      switch_name: sgraphene1
-      switch_port: Gi1/0/4
     eth1:
       mounted: false
       rate: 100000000
@@ -274,8 +255,6 @@ graphene-3:
     bmc:
       mac: 00:e0:81:d5:08:73
       ip: 172.17.64.3
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/27
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -299,9 +278,6 @@ graphene-3:
     serial_number: 605634005
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 4
 graphene-4:
   bios:
     version: V7.01e
@@ -324,7 +300,6 @@ graphene-4:
       ip: 172.18.64.4
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:92:be
@@ -346,8 +321,6 @@ graphene-4:
       driver: e1000e
       mountable: true
       ip: 172.16.64.4
-      switch_name: sgraphene1
-      switch_port: Gi1/0/3
     eth1:
       mounted: false
       rate: 100000000
@@ -368,8 +341,6 @@ graphene-4:
     bmc:
       mac: 00:e0:81:d5:08:57
       ip: 172.17.64.4
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/28
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -400,9 +371,6 @@ graphene-4:
     serial_number: 1009390096b
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 5
 graphene-5:
   bios:
     version: V7.01e
@@ -421,7 +389,6 @@ graphene-5:
       ip: 172.18.64.5
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:7a
@@ -443,8 +410,6 @@ graphene-5:
       driver: e1000e
       mountable: true
       ip: 172.16.64.5
-      switch_name: sgraphene1
-      switch_port: Gi1/0/6
     eth1:
       mounted: false
       rate: 100000000
@@ -465,8 +430,6 @@ graphene-5:
     bmc:
       mac: 00:e0:81:d5:08:bb
       ip: 172.17.64.5
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/29
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -501,9 +464,6 @@ graphene-5:
     serial_number: 1009390007
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 1
 graphene-6:
   bios:
     version: V7.01e
@@ -529,7 +489,6 @@ graphene-6:
       ip: 172.18.64.6
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:7e
@@ -551,8 +510,6 @@ graphene-6:
       driver: e1000e
       mountable: true
       ip: 172.16.64.6
-      switch_name: sgraphene1
-      switch_port: Gi1/0/5
     eth1:
       mounted: false
       rate: 100000000
@@ -573,8 +530,6 @@ graphene-6:
     bmc:
       mac: 00:e0:81:d5:06:ef
       ip: 172.17.64.6
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/30
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -602,9 +557,6 @@ graphene-6:
     serial_number: 1009390008
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 2
 graphene-7:
   bios:
     version: V7.01e
@@ -634,7 +586,6 @@ graphene-7:
       ip: 172.18.64.7
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:62
@@ -656,8 +607,6 @@ graphene-7:
       driver: e1000e
       mountable: true
       ip: 172.16.64.7
-      switch_name: sgraphene1
-      switch_port: Gi1/0/8
     eth1:
       mounted: false
       rate: 100000000
@@ -678,8 +627,6 @@ graphene-7:
     bmc:
       mac: 00:e0:81:d5:07:3f
       ip: 172.17.64.7
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/31
   supported_job_types:
     virtual: ivt
   processor:
@@ -703,9 +650,6 @@ graphene-7:
     serial_number: 1009390009
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 3
 graphene-8:
   bios:
     version: V7.01e
@@ -724,7 +668,6 @@ graphene-8:
       ip: 172.18.64.8
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:76
@@ -746,8 +689,6 @@ graphene-8:
       driver: e1000e
       mountable: true
       ip: 172.16.64.8
-      switch_name: sgraphene1
-      switch_port: Gi1/0/12
     eth1:
       mounted: false
       rate: 100000000
@@ -768,8 +709,6 @@ graphene-8:
     bmc:
       mac: 00:e0:81:d5:08:0b
       ip: 172.17.64.8
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/32
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -804,9 +743,6 @@ graphene-8:
     serial_number: 1009390010
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 4
 graphene-9:
   bios:
     version: V7.01e
@@ -836,7 +772,6 @@ graphene-9:
       ip: 172.18.64.9
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:6a
@@ -858,8 +793,6 @@ graphene-9:
       driver: e1000e
       mountable: true
       ip: 172.16.64.9
-      switch_name: sgraphene1
-      switch_port: Gi1/0/11
     eth1:
       mounted: false
       rate: 100000000
@@ -880,8 +813,6 @@ graphene-9:
     bmc:
       mac: 00:e0:81:d5:08:87
       ip: 172.17.64.9
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/33
   supported_job_types:
     virtual: ivt
   processor:
@@ -905,9 +836,6 @@ graphene-9:
     serial_number: 1009390011
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 5
 graphene-10:
   bios:
     version: V7.01e
@@ -937,7 +865,6 @@ graphene-10:
       ip: 172.18.64.10
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:6e
@@ -959,8 +886,6 @@ graphene-10:
       driver: e1000e
       mountable: true
       ip: 172.16.64.10
-      switch_name: sgraphene1
-      switch_port: Gi1/0/7
     eth1:
       mounted: false
       rate: 100000000
@@ -981,8 +906,6 @@ graphene-10:
     bmc:
       mac: 00:e0:81:d5:06:d3
       ip: 172.17.64.10
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/34
   supported_job_types:
     virtual: ivt
   processor:
@@ -1006,9 +929,6 @@ graphene-10:
     serial_number: 1009390012
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 6
 graphene-11:
   bios:
     version: V7.01e
@@ -1038,7 +958,6 @@ graphene-11:
       ip: 172.18.64.11
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:72
@@ -1060,8 +979,6 @@ graphene-11:
       driver: e1000e
       mountable: true
       ip: 172.16.64.11
-      switch_name: sgraphene1
-      switch_port: Gi1/0/10
     eth1:
       mounted: false
       rate: 100000000
@@ -1082,8 +999,6 @@ graphene-11:
     bmc:
       mac: 00:e0:81:d5:08:7f
       ip: 172.17.64.11
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/35
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -1107,9 +1022,6 @@ graphene-11:
     serial_number: 1009390013
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 7
 graphene-12:
   bios:
     version: V7.01e
@@ -1139,7 +1051,6 @@ graphene-12:
       ip: 172.18.64.12
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:82
@@ -1161,8 +1072,6 @@ graphene-12:
       driver: e1000e
       mountable: true
       ip: 172.16.64.12
-      switch_name: sgraphene1
-      switch_port: Gi1/0/9
     eth1:
       mounted: false
       rate: 100000000
@@ -1183,8 +1092,6 @@ graphene-12:
     bmc:
       mac: 00:e0:81:d5:07:8f
       ip: 172.17.64.12
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/36
   supported_job_types:
     virtual: ivt
   processor:
@@ -1208,9 +1115,6 @@ graphene-12:
     serial_number: 1009390014
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 9
 graphene-13:
   bios:
     version: V7.01e
@@ -1229,7 +1133,6 @@ graphene-13:
       ip: 172.18.64.13
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:86
@@ -1251,8 +1154,6 @@ graphene-13:
       driver: e1000e
       mountable: true
       ip: 172.16.64.13
-      switch_name: sgraphene1
-      switch_port: Gi1/0/14
     eth1:
       mounted: false
       rate: 100000000
@@ -1273,8 +1174,6 @@ graphene-13:
     bmc:
       mac: 00:e0:81:d5:06:ff
       ip: 172.17.64.13
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/37
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -1309,9 +1208,6 @@ graphene-13:
     serial_number: 1009390015
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 10
 graphene-14:
   bios:
     version: V7.01e
@@ -1334,7 +1230,6 @@ graphene-14:
       ip: 172.18.64.14
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:e2
@@ -1356,8 +1251,6 @@ graphene-14:
       driver: e1000e
       mountable: true
       ip: 172.16.64.14
-      switch_name: sgraphene1
-      switch_port: Gi1/0/13
     eth1:
       mounted: false
       rate: 100000000
@@ -1378,8 +1271,6 @@ graphene-14:
     bmc:
       mac: 00:e0:81:d5:06:d7
       ip: 172.17.64.14
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/38
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -1410,9 +1301,6 @@ graphene-14:
     serial_number: 1009390016
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 11
 graphene-15:
   bios:
     version: V7.01e
@@ -1435,7 +1323,6 @@ graphene-15:
       ip: 172.18.64.15
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:ca
@@ -1457,8 +1344,6 @@ graphene-15:
       driver: e1000e
       mountable: true
       ip: 172.16.64.15
-      switch_name: sgraphene1
-      switch_port: Gi1/0/16
     eth1:
       mounted: false
       rate: 100000000
@@ -1479,8 +1364,6 @@ graphene-15:
     bmc:
       mac: 00:e0:81:d5:07:eb
       ip: 172.17.64.15
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/39
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -1511,9 +1394,6 @@ graphene-15:
     serial_number: 1009390017
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 12
 graphene-16:
   bios:
     version: V7.01e
@@ -1543,7 +1423,6 @@ graphene-16:
       ip: 172.18.64.16
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:76
@@ -1565,8 +1444,6 @@ graphene-16:
       driver: e1000e
       mountable: true
       ip: 172.16.64.16
-      switch_name: sgraphene1
-      switch_port: Gi1/0/15
     eth1:
       mounted: false
       rate: 100000000
@@ -1587,8 +1464,6 @@ graphene-16:
     bmc:
       mac: 00:e0:81:d5:07:c3
       ip: 172.17.64.16
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/40
   supported_job_types:
     virtual: ivt
   processor:
@@ -1612,9 +1487,6 @@ graphene-16:
     serial_number: 1009390018
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 13
 graphene-17:
   bios:
     version: V7.01e
@@ -1637,7 +1509,6 @@ graphene-17:
       ip: 172.18.64.17
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:72
@@ -1659,8 +1530,6 @@ graphene-17:
       driver: e1000e
       mountable: true
       ip: 172.16.64.17
-      switch_name: sgraphene1
-      switch_port: Gi1/0/18
     eth1:
       mounted: false
       rate: 100000000
@@ -1681,8 +1550,6 @@ graphene-17:
     bmc:
       mac: 00:e0:81:d5:08:ab
       ip: 172.17.64.17
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/41
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -1713,9 +1580,6 @@ graphene-17:
     serial_number: 1009390019
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 14
 graphene-18:
   bios:
     version: V7.01e
@@ -1734,7 +1598,6 @@ graphene-18:
       ip: 172.18.64.18
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:7e
@@ -1756,8 +1619,6 @@ graphene-18:
       driver: e1000e
       mountable: true
       ip: 172.16.64.18
-      switch_name: sgraphene1
-      switch_port: Gi1/0/17
     eth1:
       mounted: false
       rate: 100000000
@@ -1778,8 +1639,6 @@ graphene-18:
     bmc:
       mac: 00:e0:81:d5:08:3f
       ip: 172.17.64.18
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/42
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -1814,9 +1673,6 @@ graphene-18:
     serial_number: 1009390020
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 15
 graphene-19:
   bios:
     version: V7.01e
@@ -1839,7 +1695,6 @@ graphene-19:
       ip: 172.18.64.19
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:56
@@ -1861,8 +1716,6 @@ graphene-19:
       driver: e1000e
       mountable: true
       ip: 172.16.64.19
-      switch_name: sgraphene1
-      switch_port: Gi1/0/20
     eth1:
       mounted: false
       rate: 100000000
@@ -1883,8 +1736,6 @@ graphene-19:
     bmc:
       mac: 00:e0:81:d5:08:b7
       ip: 172.17.64.19
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/43
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -1915,9 +1766,6 @@ graphene-19:
     serial_number: 1009390021
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 9
 graphene-20:
   bios:
     version: V7.01e
@@ -1936,7 +1784,6 @@ graphene-20:
       ip: 172.18.64.20
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:46
@@ -1958,8 +1805,6 @@ graphene-20:
       driver: e1000e
       mountable: true
       ip: 172.16.64.20
-      switch_name: sgraphene1
-      switch_port: Gi1/0/19
     eth1:
       mounted: false
       rate: 100000000
@@ -1980,8 +1825,6 @@ graphene-20:
     bmc:
       mac: 00:e0:81:d5:07:6b
       ip: 172.17.64.20
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/44
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -2016,9 +1859,6 @@ graphene-20:
     serial_number: 1009390022
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 10
 graphene-21:
   bios:
     version: V7.01e
@@ -2037,7 +1877,6 @@ graphene-21:
       ip: 172.18.64.21
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:0004:53:6e
@@ -2059,8 +1898,6 @@ graphene-21:
       driver: e1000e
       mountable: true
       ip: 172.16.64.21
-      switch_name: sgraphene1
-      switch_port: Gi1/0/22
     eth1:
       mounted: false
       rate: 100000000
@@ -2081,8 +1918,6 @@ graphene-21:
     bmc:
       mac: 00:e0:81:d2:59:fb
       ip: 172.17.64.21
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/1
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -2117,9 +1952,6 @@ graphene-21:
     serial_number: 1009390023b
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 11
 graphene-22:
   bios:
     version: V7.01e
@@ -2149,7 +1981,6 @@ graphene-22:
       ip: 172.18.64.22
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:7a
@@ -2171,8 +2002,6 @@ graphene-22:
       driver: e1000e
       mountable: true
       ip: 172.16.64.22
-      switch_name: sgraphene1
-      switch_port: Gi1/0/21
     eth1:
       mounted: false
       rate: 100000000
@@ -2193,8 +2022,6 @@ graphene-22:
     bmc:
       mac: 00:e0:81:d5:07:db
       ip: 172.17.64.22
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/2
   supported_job_types:
     virtual: ivt
   processor:
@@ -2218,9 +2045,6 @@ graphene-22:
     serial_number: 1009390024
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 12
 graphene-23:
   bios:
     version: V7.01e
@@ -2250,7 +2074,6 @@ graphene-23:
       ip: 172.18.64.23
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:66
@@ -2272,8 +2095,6 @@ graphene-23:
       driver: e1000e
       mountable: true
       ip: 172.16.64.23
-      switch_name: sgraphene1
-      switch_port: Gi1/0/24
     eth1:
       mounted: false
       rate: 100000000
@@ -2294,8 +2115,6 @@ graphene-23:
     bmc:
       mac: 00:e0:81:d5:06:c7
       ip: 172.17.64.23
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/3
   supported_job_types:
     virtual: ivt
   processor:
@@ -2319,9 +2138,6 @@ graphene-23:
     serial_number: 1009390025
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 13
 graphene-24:
   bios:
     version: V7.01e
@@ -2340,7 +2156,6 @@ graphene-24:
       ip: 172.18.64.24
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:ce
@@ -2362,8 +2177,6 @@ graphene-24:
       driver: e1000e
       mountable: true
       ip: 172.16.64.24
-      switch_name: sgraphene1
-      switch_port: Gi1/0/23
     eth1:
       mounted: false
       rate: 100000000
@@ -2384,8 +2197,6 @@ graphene-24:
     bmc:
       mac: 00:e0:81:d5:07:13
       ip: 172.17.64.24
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/4
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -2420,9 +2231,6 @@ graphene-24:
     serial_number: 1009390026
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 14
 graphene-25:
   bios:
     version: V7.01e
@@ -2441,7 +2249,6 @@ graphene-25:
       ip: 172.18.64.25
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:a6
@@ -2463,8 +2270,6 @@ graphene-25:
       driver: e1000e
       mountable: true
       ip: 172.16.64.25
-      switch_name: sgraphene1
-      switch_port: Gi1/0/26
     eth1:
       mounted: false
       rate: 100000000
@@ -2485,8 +2290,6 @@ graphene-25:
     bmc:
       mac: 00:e0:81:d5:07:53
       ip: 172.17.64.25
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/5
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -2521,9 +2324,6 @@ graphene-25:
     serial_number: 1009390027
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 15
 graphene-26:
   bios:
     version: V7.01e
@@ -2549,7 +2349,6 @@ graphene-26:
       ip: 172.18.64.26
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:9e
@@ -2571,8 +2370,6 @@ graphene-26:
       driver: e1000e
       mountable: true
       ip: 172.16.64.26
-      switch_name: sgraphene1
-      switch_port: Gi1/0/25
     eth1:
       mounted: false
       rate: 100000000
@@ -2593,8 +2390,6 @@ graphene-26:
     bmc:
       mac: 00:e0:81:d5:08:6f
       ip: 172.17.64.26
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/6
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -2622,9 +2417,6 @@ graphene-26:
     serial_number: 1009390028
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 17
 graphene-27:
   bios:
     version: V7.01e
@@ -2643,7 +2435,6 @@ graphene-27:
       ip: 172.18.64.27
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:8a
@@ -2665,8 +2456,6 @@ graphene-27:
       driver: e1000e
       mountable: true
       ip: 172.16.64.27
-      switch_name: sgraphene1
-      switch_port: Gi1/0/28
     eth1:
       mounted: false
       rate: 100000000
@@ -2687,8 +2476,6 @@ graphene-27:
     bmc:
       mac: 00:e0:81:d5:07:5f
       ip: 172.17.64.27
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/7
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -2723,9 +2510,6 @@ graphene-27:
     serial_number: 1009390029
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 18
 graphene-28:
   bios:
     version: V7.01e
@@ -2744,7 +2528,6 @@ graphene-28:
       ip: 172.18.64.28
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:8e
@@ -2766,8 +2549,6 @@ graphene-28:
       driver: e1000e
       mountable: true
       ip: 172.16.64.28
-      switch_name: sgraphene1
-      switch_port: Gi1/0/27
     eth1:
       mounted: false
       rate: 100000000
@@ -2788,8 +2569,6 @@ graphene-28:
     bmc:
       mac: 00:E0:81:d5:06:5f
       ip: 172.17.64.28
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/8
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -2824,9 +2603,6 @@ graphene-28:
     serial_number: 1009390030
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 19
 graphene-29:
   bios:
     version: V7.01e
@@ -2856,7 +2632,6 @@ graphene-29:
       ip: 172.18.64.29
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:90:de
@@ -2878,8 +2653,6 @@ graphene-29:
       driver: e1000e
       mountable: true
       ip: 172.16.64.29
-      switch_name: sgraphene1
-      switch_port: Gi1/0/30
     eth1:
       mounted: false
       rate: 100000000
@@ -2900,8 +2673,6 @@ graphene-29:
     bmc:
       mac: 00:e0:81:d5:07:f3
       ip: 172.17.64.29
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/9
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -2925,9 +2696,6 @@ graphene-29:
     serial_number: 1009390031
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 20
 graphene-30:
   bios:
     version: V7.01e
@@ -2957,7 +2725,6 @@ graphene-30:
       ip: 172.18.64.30
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:7a
@@ -2979,8 +2746,6 @@ graphene-30:
       driver: e1000e
       mountable: true
       ip: 172.16.64.30
-      switch_name: sgraphene1
-      switch_port: Gi1/0/29
     eth1:
       mounted: false
       rate: 100000000
@@ -3001,8 +2766,6 @@ graphene-30:
     bmc:
       mac: 00:e0:81:d5:08:ef
       ip: 172.17.64.30
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/10
   supported_job_types:
     virtual: ivt
   processor:
@@ -3026,9 +2789,6 @@ graphene-30:
     serial_number: 1009390032
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 21
 graphene-31:
   bios:
     version: V7.01e
@@ -3047,7 +2807,6 @@ graphene-31:
       ip: 172.18.64.31
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:1e
@@ -3069,8 +2828,6 @@ graphene-31:
       driver: e1000e
       mountable: true
       ip: 172.16.64.31
-      switch_name: sgraphene1
-      switch_port: Gi1/0/32
     eth1:
       mounted: false
       rate: 100000000
@@ -3091,8 +2848,6 @@ graphene-31:
     bmc:
       mac: 00:e0:81:d5:06:63
       ip: 172.17.64.31
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/11
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -3127,9 +2882,6 @@ graphene-31:
     serial_number: 1009390033
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 22
 graphene-32:
   bios:
     version: V7.01e
@@ -3148,7 +2900,6 @@ graphene-32:
       ip: 172.18.64.32
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:7e
@@ -3170,8 +2921,6 @@ graphene-32:
       driver: e1000e
       mountable: true
       ip: 172.16.64.32
-      switch_name: sgraphene1
-      switch_port: Gi1/0/31
     eth1:
       mounted: false
       rate: 100000000
@@ -3192,8 +2941,6 @@ graphene-32:
     bmc:
       mac: 00:e0:81:d5:06:cb
       ip: 172.17.64.32
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/12
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -3228,9 +2975,6 @@ graphene-32:
     serial_number: 1009390034
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu1.nancy.grid5000.fr
-    pdu_position: 23
 graphene-33:
   bios:
     version: V7.01e
@@ -3256,7 +3000,6 @@ graphene-33:
       ip: 172.18.64.33
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:90:da
@@ -3278,8 +3021,6 @@ graphene-33:
       driver: e1000e
       mountable: true
       ip: 172.16.64.33
-      switch_name: sgraphene1
-      switch_port: Gi1/0/34
     eth1:
       mounted: false
       rate: 100000000
@@ -3300,8 +3041,6 @@ graphene-33:
     bmc:
       mac: 00:e0:81:d5:06:6f
       ip: 172.17.64.33
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/13
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -3329,9 +3068,6 @@ graphene-33:
     serial_number: 1009390035
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 17
 graphene-34:
   bios:
     version: V7.01e
@@ -3361,7 +3097,6 @@ graphene-34:
       ip: 172.18.64.34
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:66
@@ -3383,8 +3118,6 @@ graphene-34:
       driver: e1000e
       mountable: true
       ip: 172.16.64.34
-      switch_name: sgraphene1
-      switch_port: Gi1/0/33
     eth1:
       mounted: false
       rate: 100000000
@@ -3405,8 +3138,6 @@ graphene-34:
     bmc:
       mac: 00:e0:81:d5:08:9f
       ip: 172.17.64.34
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/14
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -3430,9 +3161,6 @@ graphene-34:
     serial_number: 1009390036
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 18
 graphene-35:
   bios:
     version: V7.01e
@@ -3461,7 +3189,6 @@ graphene-35:
       ip: 172.18.64.35
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:ca
@@ -3483,8 +3210,6 @@ graphene-35:
       driver: e1000e
       mountable: true
       ip: 172.16.64.35
-      switch_name: sgraphene1
-      switch_port: Gi1/0/36
     eth1:
       mounted: false
       rate: 100000000
@@ -3505,8 +3230,6 @@ graphene-35:
     bmc:
       mac: 00:e0:81:d5:08:1f
       ip: 172.17.64.35
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/15
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -3530,9 +3253,6 @@ graphene-35:
     serial_number: 1009390037
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 19
 graphene-36:
   bios:
     version: V7.01e
@@ -3562,7 +3282,6 @@ graphene-36:
       ip: 172.18.64.36
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:ba
@@ -3584,8 +3303,6 @@ graphene-36:
       driver: e1000e
       mountable: true
       ip: 172.16.64.36
-      switch_name: sgraphene1
-      switch_port: Gi1/0/35
     eth1:
       mounted: false
       rate: 100000000
@@ -3606,8 +3323,6 @@ graphene-36:
     bmc:
       mac: 00:e0:81:d5:06:4b
       ip: 172.17.64.36
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/16
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -3631,9 +3346,6 @@ graphene-36:
     serial_number: 1009390038
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 20
 graphene-37:
   bios:
     version: V7.01e
@@ -3663,7 +3375,6 @@ graphene-37:
       ip: 172.18.64.37
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:c6
@@ -3685,8 +3396,6 @@ graphene-37:
       driver: e1000e
       mountable: true
       ip: 172.16.64.37
-      switch_name: sgraphene1
-      switch_port: Gi1/0/38
     eth1:
       mounted: false
       rate: 100000000
@@ -3707,8 +3416,6 @@ graphene-37:
     bmc:
       mac: 00:e0:81:d5:08:a7
       ip: 172.17.64.37
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/17
   supported_job_types:
     virtual: ivt
   processor:
@@ -3732,9 +3439,6 @@ graphene-37:
     serial_number: 1009390039
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 21
 graphene-38:
   bios:
     version: V7.01e
@@ -3757,7 +3461,6 @@ graphene-38:
       ip: 172.18.64.38
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:b2
@@ -3779,8 +3482,6 @@ graphene-38:
       driver: e1000e
       mountable: true
       ip: 172.16.64.38
-      switch_name: sgraphene1
-      switch_port: Gi1/0/37
     eth1:
       mounted: false
       rate: 100000000
@@ -3801,8 +3502,6 @@ graphene-38:
     bmc:
       mac: 00:e0:81:d5:07:33
       ip: 172.17.64.38
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/18
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -3833,9 +3532,6 @@ graphene-38:
     serial_number: 1009390040
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 22
 graphene-39:
   bios:
     version: V7.01e
@@ -3858,7 +3554,6 @@ graphene-39:
       ip: 172.18.64.39
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:c2
@@ -3880,8 +3575,6 @@ graphene-39:
       driver: e1000e
       mountable: true
       ip: 172.16.64.39
-      switch_name: sgraphene1
-      switch_port: Gi1/0/40
     eth1:
       mounted: false
       rate: 100000000
@@ -3902,8 +3595,6 @@ graphene-39:
     bmc:
       mac: 00:e0:81:d5:07:df
       ip: 172.17.64.39
-      switch_name: sgraphene1-ipmi
-      switch_port: 1/0/19
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -3934,9 +3625,6 @@ graphene-39:
     serial_number: 1009390041
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu2.nancy.grid5000.fr
-    pdu_position: 23
 graphene-40:
   bios:
     version: V7.01e
@@ -3959,7 +3647,6 @@ graphene-40:
       ip: 172.18.64.40
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:93:ce
@@ -3981,8 +3668,6 @@ graphene-40:
       driver: e1000e
       mountable: true
       ip: 172.16.64.40
-      switch_name: sgraphene2
-      switch_port: Gi1/0/1
     eth1:
       mounted: false
       rate: 100000000
@@ -4003,8 +3688,6 @@ graphene-40:
     bmc:
       mac: 00:10:20:3d:40:5f
       ip: 172.17.64.40
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/25
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -4035,9 +3718,6 @@ graphene-40:
     serial_number: 1009390042
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 3
 graphene-41:
   bios:
     version: V7.01e
@@ -4056,7 +3736,6 @@ graphene-41:
       ip: 172.18.64.41
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:9a
@@ -4078,8 +3757,6 @@ graphene-41:
       driver: e1000e
       mountable: true
       ip: 172.16.64.41
-      switch_name: sgraphene2
-      switch_port: Gi1/0/2
     eth1:
       mounted: false
       rate: 100000000
@@ -4100,8 +3777,6 @@ graphene-41:
     bmc:
       mac: 00:e0:81:d5:07:af
       ip: 172.17.64.41
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/26
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -4136,9 +3811,6 @@ graphene-41:
     serial_number: 1009390043
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 4
 graphene-42:
   bios:
     version: V7.01e
@@ -4157,7 +3829,6 @@ graphene-42:
       ip: 172.18.64.42
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:aa
@@ -4179,8 +3850,6 @@ graphene-42:
       driver: e1000e
       mountable: true
       ip: 172.16.64.42
-      switch_name: sgraphene2
-      switch_port: Gi1/0/3
     eth1:
       mounted: false
       rate: 100000000
@@ -4201,8 +3870,6 @@ graphene-42:
     bmc:
       mac: 00:e0:81:d5:07:8b
       ip: 172.17.64.42
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/27
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -4237,9 +3904,6 @@ graphene-42:
     serial_number: 1009390044
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 5
 graphene-43:
   bios:
     version: V7.01e
@@ -4265,7 +3929,6 @@ graphene-43:
       ip: 172.18.64.43
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:ae
@@ -4287,8 +3950,6 @@ graphene-43:
       driver: e1000e
       mountable: true
       ip: 172.16.64.43
-      switch_name: sgraphene2
-      switch_port: Gi1/0/4
     eth1:
       mounted: false
       rate: 100000000
@@ -4309,8 +3970,6 @@ graphene-43:
     bmc:
       mac: 00:e0:81:d5:08:27
       ip: 172.17.64.43
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/28
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -4338,9 +3997,6 @@ graphene-43:
     serial_number: 1009390045
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 1
 graphene-44:
   bios:
     version: V7.01e
@@ -4359,7 +4015,6 @@ graphene-44:
       ip: 172.18.64.44
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:b6
@@ -4381,8 +4036,6 @@ graphene-44:
       driver: e1000e
       mountable: true
       ip: 172.16.64.44
-      switch_name: sgraphene2
-      switch_port: Gi1/0/5
     eth1:
       mounted: false
       rate: 100000000
@@ -4403,8 +4056,6 @@ graphene-44:
     bmc:
       mac: 00:e0:81:d5:06:e3
       ip: 172.17.64.44
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/29
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -4439,9 +4090,6 @@ graphene-44:
     serial_number: 1009390046
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 2
 graphene-45:
   bios:
     version: V7.01e
@@ -4464,7 +4112,6 @@ graphene-45:
       ip: 172.18.64.45
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:22
@@ -4486,8 +4133,6 @@ graphene-45:
       driver: e1000e
       mountable: true
       ip: 172.16.64.45
-      switch_name: sgraphene2
-      switch_port: Gi1/0/6
     eth1:
       mounted: false
       rate: 100000000
@@ -4508,8 +4153,6 @@ graphene-45:
     bmc:
       mac: 00:e0:81:d5:06:8b
       ip: 172.17.64.45
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/30
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -4540,9 +4183,6 @@ graphene-45:
     serial_number: 1009390047
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 3
 graphene-46:
   bios:
     version: V7.01e
@@ -4561,7 +4201,6 @@ graphene-46:
       ip: 172.18.64.46
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:d6
@@ -4583,8 +4222,6 @@ graphene-46:
       driver: e1000e
       mountable: true
       ip: 172.16.64.46
-      switch_name: sgraphene2
-      switch_port: Gi1/0/7
     eth1:
       mounted: false
       rate: 100000000
@@ -4605,8 +4242,6 @@ graphene-46:
     bmc:
       mac: 00:e0:81:d5:06:97
       ip: 172.17.64.46
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/31
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -4641,9 +4276,6 @@ graphene-46:
     serial_number: 1009390048
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 4
 graphene-47:
   bios:
     version: V7.01e
@@ -4669,7 +4301,6 @@ graphene-47:
       ip: 172.18.64.47
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:e6
@@ -4691,8 +4322,6 @@ graphene-47:
       driver: e1000e
       mountable: true
       ip: 172.16.64.47
-      switch_name: sgraphene2
-      switch_port: Gi1/0/8
     eth1:
       mounted: false
       rate: 100000000
@@ -4713,8 +4342,6 @@ graphene-47:
     bmc:
       mac: 00:e0:81:d5:08:97
       ip: 172.17.64.47
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/32
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -4742,9 +4369,6 @@ graphene-47:
     serial_number: 1009390049
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 9
 graphene-48:
   bios:
     version: V7.01e
@@ -4763,7 +4387,6 @@ graphene-48:
       ip: 172.18.64.48
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:de
@@ -4785,8 +4408,6 @@ graphene-48:
       driver: e1000e
       mountable: true
       ip: 172.16.64.48
-      switch_name: sgraphene2
-      switch_port: Gi1/0/9
     eth1:
       mounted: false
       rate: 100000000
@@ -4807,8 +4428,6 @@ graphene-48:
     bmc:
       mac: 00:e0:81:d5:06:eb
       ip: 172.17.64.48
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/33
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -4843,9 +4462,6 @@ graphene-48:
     serial_number: 1009390050
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 10
 graphene-49:
   bios:
     version: V7.01e
@@ -4871,7 +4487,6 @@ graphene-49:
       ip: 172.18.64.49
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:d2
@@ -4893,8 +4508,6 @@ graphene-49:
       driver: e1000e
       mountable: true
       ip: 172.16.64.49
-      switch_name: sgraphene2
-      switch_port: Gi1/0/10
     eth1:
       mounted: false
       rate: 100000000
@@ -4915,8 +4528,6 @@ graphene-49:
     bmc:
       mac: 00:e0:81:d5:08:5f
       ip: 172.17.64.49
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/34
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -4944,9 +4555,6 @@ graphene-49:
     serial_number: 1009390051
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 11
 graphene-50:
   bios:
     version: V7.01e
@@ -4976,7 +4584,6 @@ graphene-50:
       ip: 172.18.64.50
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:f2
@@ -4998,8 +4605,6 @@ graphene-50:
       driver: e1000e
       mountable: true
       ip: 172.16.64.50
-      switch_name: sgraphene2
-      switch_port: Gi1/0/11
     eth1:
       mounted: false
       rate: 100000000
@@ -5020,8 +4625,6 @@ graphene-50:
     bmc:
       mac: 00:e0:81:d5:06:77
       ip: 172.17.64.50
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/35
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -5045,9 +4648,6 @@ graphene-50:
     serial_number: 1009390052
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 12
 graphene-51:
   bios:
     version: V7.01e
@@ -5077,7 +4677,6 @@ graphene-51:
       ip: 172.18.64.51
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:ea
@@ -5099,8 +4698,6 @@ graphene-51:
       driver: e1000e
       mountable: true
       ip: 172.16.64.51
-      switch_name: sgraphene2
-      switch_port: Gi1/0/12
     eth1:
       mounted: false
       rate: 100000000
@@ -5121,8 +4718,6 @@ graphene-51:
     bmc:
       mac: 00:e0:81:d5:07:63
       ip: 172.17.64.51
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/36
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -5146,9 +4741,6 @@ graphene-51:
     serial_number: 1009390053
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 13
 graphene-52:
   bios:
     version: V7.01e
@@ -5178,7 +4770,6 @@ graphene-52:
       ip: 172.18.64.52
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:fa
@@ -5200,8 +4791,6 @@ graphene-52:
       driver: e1000e
       mountable: true
       ip: 172.16.64.52
-      switch_name: sgraphene2
-      switch_port: Gi1/0/13
     eth1:
       mounted: false
       rate: 100000000
@@ -5222,8 +4811,6 @@ graphene-52:
     bmc:
       mac: 00:e0:81:d5:07:0f
       ip: 172.17.64.52
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/37
   supported_job_types:
     virtual: ivt
   processor:
@@ -5247,9 +4834,6 @@ graphene-52:
     serial_number: 1009390054
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 14
 graphene-53:
   bios:
     version: V7.01e
@@ -5275,7 +4859,6 @@ graphene-53:
       ip: 172.18.64.53
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:0a
@@ -5297,8 +4880,6 @@ graphene-53:
       driver: e1000e
       mountable: true
       ip: 172.16.64.53
-      switch_name: sgraphene2
-      switch_port: Gi1/0/14
     eth1:
       mounted: false
       rate: 100000000
@@ -5319,8 +4900,6 @@ graphene-53:
     bmc:
       mac: 00:e0:81:d5:07:fb
       ip: 172.17.64.53
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/38
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -5348,9 +4927,6 @@ graphene-53:
     serial_number: 1009390055
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 15
 graphene-54:
   bios:
     version: V7.01e
@@ -5369,7 +4945,6 @@ graphene-54:
       ip: 172.18.64.54
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:16
@@ -5391,8 +4966,6 @@ graphene-54:
       driver: e1000e
       mountable: true
       ip: 172.16.64.54
-      switch_name: sgraphene2
-      switch_port: Gi1/0/15
     eth1:
       mounted: false
       rate: 100000000
@@ -5413,8 +4986,6 @@ graphene-54:
     bmc:
       mac: 00:e0:81:d5:07:ab
       ip: 172.17.64.54
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/39
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -5449,9 +5020,6 @@ graphene-54:
     serial_number: 1009390056
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 5
 graphene-55:
   bios:
     version: V7.01e
@@ -5474,7 +5042,6 @@ graphene-55:
       ip: 172.18.64.55
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:0e
@@ -5496,8 +5063,6 @@ graphene-55:
       driver: e1000e
       mountable: true
       ip: 172.16.64.55
-      switch_name: sgraphene2
-      switch_port: Gi1/0/16
     eth1:
       mounted: false
       rate: 100000000
@@ -5518,8 +5083,6 @@ graphene-55:
     bmc:
       mac: 00:e0:81:d5:08:93
       ip: 172.17.64.55
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/40
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -5550,9 +5113,6 @@ graphene-55:
     serial_number: 1009390057
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 6
 graphene-56:
   bios:
     version: V7.01e
@@ -5571,7 +5131,6 @@ graphene-56:
       ip: 172.18.64.56
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:8a
@@ -5593,8 +5152,6 @@ graphene-56:
       driver: e1000e
       mountable: true
       ip: 172.16.64.56
-      switch_name: sgraphene2
-      switch_port: Gi1/0/17
     eth1:
       mounted: false
       rate: 100000000
@@ -5615,8 +5172,6 @@ graphene-56:
     bmc:
       mac: 00:e0:81:d5:06:7b
       ip: 172.17.64.56
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/1
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -5651,9 +5206,6 @@ graphene-56:
     serial_number: 1009390058
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 11
 graphene-57:
   bios:
     version: V7.01e
@@ -5676,7 +5228,6 @@ graphene-57:
       ip: 172.18.64.57
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:8e
@@ -5698,8 +5249,6 @@ graphene-57:
       driver: e1000e
       mountable: true
       ip: 172.16.64.57
-      switch_name: sgraphene2
-      switch_port: Gi1/0/18
     eth1:
       mounted: false
       rate: 100000000
@@ -5720,8 +5269,6 @@ graphene-57:
     bmc:
       mac: 00:e0:81:d5:08:a3
       ip: 172.17.64.57
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/2
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -5752,9 +5299,6 @@ graphene-57:
     serial_number: 1009390059
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 12
 graphene-58:
   bios:
     version: V7.01e
@@ -5773,7 +5317,6 @@ graphene-58:
       ip: 172.18.64.58
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:9e
@@ -5795,8 +5338,6 @@ graphene-58:
       driver: e1000e
       mountable: true
       ip: 172.16.64.58
-      switch_name: sgraphene2
-      switch_port: Gi1/0/19
     eth1:
       mounted: false
       rate: 100000000
@@ -5817,8 +5358,6 @@ graphene-58:
     bmc:
       mac: 00:e0:81:d5:07:37
       ip: 172.17.64.58
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/3
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -5853,9 +5392,6 @@ graphene-58:
     serial_number: 1009390060
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 13
 graphene-59:
   bios:
     version: V7.01e
@@ -5885,7 +5421,6 @@ graphene-59:
       ip: 172.18.64.59
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:96
@@ -5907,8 +5442,6 @@ graphene-59:
       driver: e1000e
       mountable: true
       ip: 172.16.64.59
-      switch_name: sgraphene2
-      switch_port: Gi1/0/20
     eth1:
       mounted: false
       rate: 100000000
@@ -5929,8 +5462,6 @@ graphene-59:
     bmc:
       mac: 00:e0:81:d5:07:2f
       ip: 172.17.64.59
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/4
   supported_job_types:
     virtual: ivt
   processor:
@@ -5954,9 +5485,6 @@ graphene-59:
     serial_number: 1009390061
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 14
 graphene-60:
   bios:
     version: V7.01e
@@ -5975,7 +5503,6 @@ graphene-60:
       ip: 172.18.64.60
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:86
@@ -5997,8 +5524,6 @@ graphene-60:
       driver: e1000e
       mountable: true
       ip: 172.16.64.60
-      switch_name: sgraphene2
-      switch_port: Gi1/0/21
     eth1:
       mounted: false
       rate: 100000000
@@ -6019,8 +5544,6 @@ graphene-60:
     bmc:
       mac: 00:e0:81:d5:08:4f
       ip: 172.17.64.60
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/5
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -6055,9 +5578,6 @@ graphene-60:
     serial_number: 1009390062
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 15
 graphene-61:
   bios:
     version: V7.01e
@@ -6087,7 +5607,6 @@ graphene-61:
       ip: 172.18.64.61
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:92
@@ -6109,8 +5628,6 @@ graphene-61:
       driver: e1000e
       mountable: true
       ip: 172.16.64.61
-      switch_name: sgraphene2
-      switch_port: Gi1/0/22
     eth1:
       mounted: false
       rate: 100000000
@@ -6131,8 +5648,6 @@ graphene-61:
     bmc:
       mac: 00:e0:81:d5:07:03
       ip: 172.17.64.61
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/6
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -6156,9 +5671,6 @@ graphene-61:
     serial_number: 1009390063
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 17
 graphene-62:
   bios:
     version: V7.01e
@@ -6181,7 +5693,6 @@ graphene-62:
       ip: 172.18.64.62
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:9a
@@ -6203,8 +5714,6 @@ graphene-62:
       driver: e1000e
       mountable: true
       ip: 172.16.64.62
-      switch_name: sgraphene2
-      switch_port: Gi1/0/23
     eth1:
       mounted: false
       rate: 100000000
@@ -6225,8 +5734,6 @@ graphene-62:
     bmc:
       mac: 00:e0:81:d5:07:c7
       ip: 172.17.64.62
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/7
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -6257,9 +5764,6 @@ graphene-62:
     serial_number: 1009390064
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 18
 graphene-63:
   bios:
     version: V7.01e
@@ -6289,7 +5793,6 @@ graphene-63:
       ip: 172.18.64.63
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:82
@@ -6311,8 +5814,6 @@ graphene-63:
       driver: e1000e
       mountable: true
       ip: 172.16.64.63
-      switch_name: sgraphene2
-      switch_port: Gi1/0/24
     eth1:
       mounted: false
       rate: 100000000
@@ -6333,8 +5834,6 @@ graphene-63:
     bmc:
       mac: 00:e0:81:d5:06:6b
       ip: 172.17.64.63
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/8
   supported_job_types:
     virtual: ivt
   processor:
@@ -6358,9 +5857,6 @@ graphene-63:
     serial_number: 1009390065
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 19
 graphene-64:
   bios:
     version: V7.01e
@@ -6386,7 +5882,6 @@ graphene-64:
       ip: 172.18.64.64
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:a2
@@ -6408,8 +5903,6 @@ graphene-64:
       driver: e1000e
       mountable: true
       ip: 172.16.64.64
-      switch_name: sgraphene2
-      switch_port: Gi1/0/25
     eth1:
       mounted: false
       rate: 100000000
@@ -6430,8 +5923,6 @@ graphene-64:
     bmc:
       mac: 00:e0:81:d5:08:8b
       ip: 172.17.64.64
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/9
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -6459,9 +5950,6 @@ graphene-64:
     serial_number: 1009390066
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 20
 graphene-65:
   bios:
     version: V7.01e
@@ -6484,7 +5972,6 @@ graphene-65:
       ip: 172.18.64.65
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:da
@@ -6506,8 +5993,6 @@ graphene-65:
       driver: e1000e
       mountable: true
       ip: 172.16.64.65
-      switch_name: sgraphene2
-      switch_port: Gi1/0/26
     eth1:
       mounted: false
       rate: 100000000
@@ -6528,8 +6013,6 @@ graphene-65:
     bmc:
       mac: 00:e0:81:d5:07:47
       ip: 172.17.64.65
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/10
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -6560,9 +6043,6 @@ graphene-65:
     serial_number: 1009390067
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 21
 graphene-66:
   bios:
     version: V7.01e
@@ -6581,7 +6061,6 @@ graphene-66:
       ip: 172.18.64.66
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:4a
@@ -6603,8 +6082,6 @@ graphene-66:
       driver: e1000e
       mountable: true
       ip: 172.16.64.66
-      switch_name: sgraphene2
-      switch_port: Gi1/0/27
     eth1:
       mounted: false
       rate: 100000000
@@ -6625,8 +6102,6 @@ graphene-66:
     bmc:
       mac: 00:e0:81:d5:08:17
       ip: 172.17.64.66
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/11
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -6661,9 +6136,6 @@ graphene-66:
     serial_number: 1009390068
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 22
 graphene-67:
   bios:
     version: V7.01e
@@ -6682,7 +6154,6 @@ graphene-67:
       ip: 172.18.64.67
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:ba
@@ -6704,8 +6175,6 @@ graphene-67:
       driver: e1000e
       mountable: true
       ip: 172.16.64.67
-      switch_name: sgraphene2
-      switch_port: Gi1/0/28
     eth1:
       mounted: false
       rate: 100000000
@@ -6726,8 +6195,6 @@ graphene-67:
     bmc:
       mac: 00:e0:81:d5:07:b3
       ip: 172.17.64.67
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/12
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -6762,9 +6229,6 @@ graphene-67:
     serial_number: 1009390069
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu3.nancy.grid5000.fr
-    pdu_position: 23
 graphene-68:
   bios:
     version: V7.01e
@@ -6794,7 +6258,6 @@ graphene-68:
       ip: 172.18.64.68
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:92
@@ -6816,8 +6279,6 @@ graphene-68:
       driver: e1000e
       mountable: true
       ip: 172.16.64.68
-      switch_name: sgraphene2
-      switch_port: Gi1/0/29
     eth1:
       mounted: false
       rate: 100000000
@@ -6838,8 +6299,6 @@ graphene-68:
     bmc:
       mac: 00:e0:81:d5:06:53
       ip: 172.17.64.68
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/13
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -6863,9 +6322,6 @@ graphene-68:
     serial_number: 1009390070
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 17
 graphene-69:
   bios:
     version: V7.01e
@@ -6895,7 +6351,6 @@ graphene-69:
       ip: 172.18.64.69
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:c2
@@ -6917,8 +6372,6 @@ graphene-69:
       driver: e1000e
       mountable: true
       ip: 172.16.64.69
-      switch_name: sgraphene2
-      switch_port: Gi1/0/30
     eth1:
       mounted: false
       rate: 100000000
@@ -6939,8 +6392,6 @@ graphene-69:
     bmc:
       mac: 00:e0:81:d5:06:9b
       ip: 172.17.64.69
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/14
   supported_job_types:
     virtual: ivt
   processor:
@@ -6964,9 +6415,6 @@ graphene-69:
     serial_number: 1009390071
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 18
 graphene-70:
   bios:
     version: V7.01e
@@ -6985,7 +6433,6 @@ graphene-70:
       ip: 172.18.64.70
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:12
@@ -7007,8 +6454,6 @@ graphene-70:
       driver: e1000e
       mountable: true
       ip: 172.16.64.70
-      switch_name: sgraphene2
-      switch_port: Gi1/0/31
     eth1:
       mounted: false
       rate: 100000000
@@ -7029,8 +6474,6 @@ graphene-70:
     bmc:
       mac: 00:e0:81:d5:07:4f
       ip: 172.17.64.70
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/15
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -7065,9 +6508,6 @@ graphene-70:
     serial_number: 1009390072
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 19
 graphene-71:
   bios:
     version: V7.01e
@@ -7086,7 +6526,6 @@ graphene-71:
       ip: 172.18.64.71
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:ee
@@ -7108,8 +6547,6 @@ graphene-71:
       driver: e1000e
       mountable: true
       ip: 172.16.64.71
-      switch_name: sgraphene2
-      switch_port: Gi1/0/32
     eth1:
       mounted: false
       rate: 100000000
@@ -7130,8 +6567,6 @@ graphene-71:
     bmc:
       mac: 00:e0:81:d5:07:2b
       ip: 172.17.64.71
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/16
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -7166,9 +6601,6 @@ graphene-71:
     serial_number: 1009390073
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 20
 graphene-72:
   bios:
     version: V7.01e
@@ -7194,7 +6626,6 @@ graphene-72:
       ip: 172.18.64.72
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:96
@@ -7216,8 +6647,6 @@ graphene-72:
       driver: e1000e
       mountable: true
       ip: 172.16.64.72
-      switch_name: sgraphene2
-      switch_port: Gi1/0/33
     eth1:
       mounted: false
       rate: 100000000
@@ -7238,8 +6667,6 @@ graphene-72:
     bmc:
       mac: 00:e0:81:d5:07:e7
       ip: 172.17.64.72
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/17
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -7267,9 +6694,6 @@ graphene-72:
     serial_number: 1009390074
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 21
 graphene-73:
   bios:
     version: V7.01e
@@ -7288,7 +6712,6 @@ graphene-73:
       ip: 172.18.64.73
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:fe
@@ -7310,8 +6733,6 @@ graphene-73:
       driver: e1000e
       mountable: true
       ip: 172.16.64.73
-      switch_name: sgraphene2
-      switch_port: Gi1/0/34
     eth1:
       mounted: false
       rate: 100000000
@@ -7332,8 +6753,6 @@ graphene-73:
     bmc:
       mac: 00:e0:81:d5:07:43
       ip: 172.17.64.73
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/18
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -7368,9 +6787,6 @@ graphene-73:
     serial_number: 1009390075
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 22
 graphene-74:
   bios:
     version: V7.01e
@@ -7396,7 +6812,6 @@ graphene-74:
       ip: 172.18.64.74
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:de
@@ -7418,8 +6833,6 @@ graphene-74:
       driver: e1000e
       mountable: true
       ip: 172.16.64.74
-      switch_name: sgraphene2
-      switch_port: Gi1/0/35
     eth1:
       mounted: false
       rate: 100000000
@@ -7440,8 +6853,6 @@ graphene-74:
     bmc:
       mac: 00:e0:81:d5:08:83
       ip: 172.17.64.74
-      switch_name: sgraphene2-ipmi
-      switch_port: 1/0/19
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -7469,9 +6880,6 @@ graphene-74:
     serial_number: 1009390076
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu4.nancy.grid5000.fr
-    pdu_position: 23
 graphene-75:
   bios:
     version: V7.01e
@@ -7501,7 +6909,6 @@ graphene-75:
       ip: 172.18.64.75
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:e6
@@ -7523,8 +6930,6 @@ graphene-75:
       driver: e1000e
       mountable: true
       ip: 172.16.64.75
-      switch_name: sgraphene3
-      switch_port: Gi1/0/2
     eth1:
       mounted: false
       rate: 100000000
@@ -7545,8 +6950,6 @@ graphene-75:
     bmc:
       mac: 00:e0:81:d5:07:07
       ip: 172.17.64.75
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/25
   supported_job_types:
     virtual: ivt
   processor:
@@ -7570,9 +6973,6 @@ graphene-75:
     serial_number: 1009390077
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 6
 graphene-76:
   bios:
     version: V7.01e
@@ -7602,7 +7002,6 @@ graphene-76:
       ip: 172.18.64.76
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:d6
@@ -7624,8 +7023,6 @@ graphene-76:
       driver: e1000e
       mountable: true
       ip: 172.16.64.76
-      switch_name: sgraphene3
-      switch_port: Gi1/0/1
     eth1:
       mounted: false
       rate: 100000000
@@ -7646,8 +7043,6 @@ graphene-76:
     bmc:
       mac: 00:e0:81:d5:07:23
       ip: 172.17.64.76
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/26
   supported_job_types:
     virtual: ivt
   processor:
@@ -7671,9 +7066,6 @@ graphene-76:
     serial_number: 1009390078
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 7
 graphene-77:
   bios:
     version: V7.01e
@@ -7692,7 +7084,6 @@ graphene-77:
       ip: 172.18.64.77
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:e2
@@ -7714,8 +7105,6 @@ graphene-77:
       driver: e1000e
       mountable: true
       ip: 172.16.64.77
-      switch_name: sgraphene3
-      switch_port: Gi1/0/4
     eth1:
       mounted: false
       rate: 100000000
@@ -7736,8 +7125,6 @@ graphene-77:
     bmc:
       mac: 00:e0:81:d5:07:a3
       ip: 172.17.64.77
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/27
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -7772,9 +7159,6 @@ graphene-77:
     serial_number: 1009390079
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 9
 graphene-78:
   bios:
     version: V7.01e
@@ -7793,7 +7177,6 @@ graphene-78:
       ip: 172.18.64.78
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:02
@@ -7815,8 +7198,6 @@ graphene-78:
       driver: e1000e
       mountable: true
       ip: 172.16.64.78
-      switch_name: sgraphene3
-      switch_port: Gi1/0/3
     eth1:
       mounted: false
       rate: 100000000
@@ -7837,8 +7218,6 @@ graphene-78:
     bmc:
       mac: 00:e0:81:d5:08:53
       ip: 172.17.64.78
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/28
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -7873,9 +7252,6 @@ graphene-78:
     serial_number: 1009390080
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 10
 graphene-79:
   bios:
     version: V7.01e
@@ -7894,7 +7270,6 @@ graphene-79:
       ip: 172.18.64.79
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:f6
@@ -7916,8 +7291,6 @@ graphene-79:
       driver: e1000e
       mountable: true
       ip: 172.16.64.79
-      switch_name: sgraphene3
-      switch_port: Gi1/0/6
     eth1:
       mounted: false
       rate: 100000000
@@ -7938,8 +7311,6 @@ graphene-79:
     bmc:
       mac: 00:e0:81:d5:08:7b
       ip: 172.17.64.79
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/29
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -7974,9 +7345,6 @@ graphene-79:
     serial_number: 1009390081
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 11
 graphene-80:
   bios:
     version: V7.01e
@@ -7995,7 +7363,6 @@ graphene-80:
       ip: 172.18.64.80
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:d2
@@ -8017,8 +7384,6 @@ graphene-80:
       driver: e1000e
       mountable: true
       ip: 172.16.64.80
-      switch_name: sgraphene3
-      switch_port: Gi1/0/5
     eth1:
       mounted: false
       rate: 100000000
@@ -8039,8 +7404,6 @@ graphene-80:
     bmc:
       mac: 00:e0:81:d5:06:db
       ip: 172.17.64.80
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/30
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -8075,9 +7438,6 @@ graphene-80:
     serial_number: 1009390082
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 12
 graphene-81:
   bios:
     version: V7.01e
@@ -8100,7 +7460,6 @@ graphene-81:
       ip: 172.18.64.81
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:aa
@@ -8122,8 +7481,6 @@ graphene-81:
       driver: e1000e
       mountable: true
       ip: 172.16.64.81
-      switch_name: sgraphene3
-      switch_port: Gi1/0/8
     eth1:
       mounted: false
       rate: 100000000
@@ -8144,8 +7501,6 @@ graphene-81:
     bmc:
       mac: 00:e0:81:d5:07:27
       ip: 172.17.64.81
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/31
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -8176,9 +7531,6 @@ graphene-81:
     serial_number: 1009390083
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 13
 graphene-82:
   bios:
     version: V7.01e
@@ -8197,7 +7549,6 @@ graphene-82:
       ip: 172.18.64.82
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:96
@@ -8219,8 +7570,6 @@ graphene-82:
       driver: e1000e
       mountable: true
       ip: 172.16.64.82
-      switch_name: sgraphene3
-      switch_port: Gi1/0/7
     eth1:
       mounted: false
       rate: 100000000
@@ -8241,8 +7590,6 @@ graphene-82:
     bmc:
       mac: 00:e0:81:d5:07:b7
       ip: 172.17.64.82
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/32
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -8277,9 +7624,6 @@ graphene-82:
     serial_number: 1009390084
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 14
 graphene-83:
   bios:
     version: V7.01e
@@ -8309,7 +7653,6 @@ graphene-83:
       ip: 172.18.64.83
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a6
@@ -8331,8 +7674,6 @@ graphene-83:
       driver: e1000e
       mountable: true
       ip: 172.16.64.83
-      switch_name: sgraphene3
-      switch_port: Gi1/0/10
     eth1:
       mounted: false
       rate: 100000000
@@ -8353,8 +7694,6 @@ graphene-83:
     bmc:
       mac: 00:e0:81:d5:06:93
       ip: 172.17.64.83
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/33
   supported_job_types:
     virtual: ivt
   processor:
@@ -8378,9 +7717,6 @@ graphene-83:
     serial_number: 1009390085
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 15
 graphene-84:
   bios:
     version: V7.01e
@@ -8402,7 +7738,6 @@ graphene-84:
       ip: 172.18.64.84
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:9e
@@ -8424,8 +7759,6 @@ graphene-84:
       driver: e1000e
       mountable: true
       ip: 172.16.64.84
-      switch_name: sgraphene3
-      switch_port: Gi1/0/9
     eth1:
       mounted: false
       rate: 100000000
@@ -8446,8 +7779,6 @@ graphene-84:
     bmc:
       mac: 00:e0:81:d5:07:1b
       ip: 172.17.64.84
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/34
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -8478,9 +7809,6 @@ graphene-84:
     serial_number: 1009390086
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 9
 graphene-85:
   bios:
     version: V7.01e
@@ -8499,7 +7827,6 @@ graphene-85:
       ip: 172.18.64.85
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:9a
@@ -8521,8 +7848,6 @@ graphene-85:
       driver: e1000e
       mountable: true
       ip: 172.16.64.85
-      switch_name: sgraphene3
-      switch_port: Gi1/0/12
     eth1:
       mounted: false
       rate: 100000000
@@ -8543,8 +7868,6 @@ graphene-85:
     bmc:
       mac: 00:e0:81:d5:07:ef
       ip: 172.17.64.85
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/1
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -8579,9 +7902,6 @@ graphene-85:
     serial_number: 1009390087
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 10
 graphene-86:
   bios:
     version: V7.01e
@@ -8600,7 +7920,6 @@ graphene-86:
       ip: 172.18.64.86
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a2
@@ -8622,8 +7941,6 @@ graphene-86:
       driver: e1000e
       mountable: true
       ip: 172.16.64.86
-      switch_name: sgraphene3
-      switch_port: Gi1/0/11
     eth1:
       mounted: false
       rate: 100000000
@@ -8644,8 +7961,6 @@ graphene-86:
     bmc:
       mac: 00:e0:81:d5:08:0f
       ip: 172.17.64.86
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/2
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -8680,9 +7995,6 @@ graphene-86:
     serial_number: 1009390088
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 11
 graphene-87:
   bios:
     version: V7.01e
@@ -8701,7 +8013,6 @@ graphene-87:
       ip: 172.18.64.87
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:ae
@@ -8723,8 +8034,6 @@ graphene-87:
       driver: e1000e
       mountable: true
       ip: 172.16.64.87
-      switch_name: sgraphene3
-      switch_port: Gi1/0/14
     eth1:
       mounted: false
       rate: 100000000
@@ -8745,8 +8054,6 @@ graphene-87:
     bmc:
       mac: 00:e0:81:d5:07:5b
       ip: 172.17.64.87
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/3
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -8781,9 +8088,6 @@ graphene-87:
     serial_number: 1009390089
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 12
 graphene-88:
   bios:
     version: V7.01e
@@ -8809,7 +8113,6 @@ graphene-88:
       ip: 172.18.64.88
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:b2
@@ -8831,8 +8134,6 @@ graphene-88:
       driver: e1000e
       mountable: true
       ip: 172.16.64.88
-      switch_name: sgraphene3
-      switch_port: Gi1/0/13
     eth1:
       mounted: false
       rate: 100000000
@@ -8853,8 +8154,6 @@ graphene-88:
     bmc:
       mac: 00:e0:81:d5:08:63
       ip: 172.17.64.88
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/4
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -8882,9 +8181,6 @@ graphene-88:
     serial_number: 1009390090
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 13
 graphene-89:
   bios:
     version: V7.01e
@@ -8903,7 +8199,6 @@ graphene-89:
       ip: 172.18.64.89
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5c:ee
@@ -8925,8 +8220,6 @@ graphene-89:
       driver: e1000e
       mountable: true
       ip: 172.16.64.89
-      switch_name: sgraphene3
-      switch_port: Gi1/0/16
     eth1:
       mounted: false
       rate: 100000000
@@ -8947,8 +8240,6 @@ graphene-89:
     bmc:
       mac: 00:e0:81:d5:08:9b
       ip: 172.17.64.89
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/5
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -8983,9 +8274,6 @@ graphene-89:
     serial_number: 1009390091
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 14
 graphene-90:
   bios:
     version: V7.01e
@@ -9011,7 +8299,6 @@ graphene-90:
       ip: 172.18.64.90
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:0a
@@ -9033,8 +8320,6 @@ graphene-90:
       driver: e1000e
       mountable: true
       ip: 172.16.64.90
-      switch_name: sgraphene3
-      switch_port: Gi1/0/15
     eth1:
       mounted: false
       rate: 100000000
@@ -9055,8 +8340,6 @@ graphene-90:
     bmc:
       mac: 00:e0:81:d5:06:67
       ip: 172.17.64.90
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/6
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -9084,9 +8367,6 @@ graphene-90:
     serial_number: 1009390092
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 15
 graphene-91:
   bios:
     version: V7.01e
@@ -9105,7 +8385,6 @@ graphene-91:
       ip: 172.18.64.91
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5c:d2
@@ -9127,8 +8406,6 @@ graphene-91:
       driver: e1000e
       mountable: true
       ip: 172.16.64.91
-      switch_name: sgraphene3
-      switch_port: Gi1/0/18
     eth1:
       mounted: false
       rate: 100000000
@@ -9149,8 +8426,6 @@ graphene-91:
     bmc:
       mac: 00:e0:81:d5:06:df
       ip: 172.17.64.91
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/7
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -9185,9 +8460,6 @@ graphene-91:
     serial_number: 1009390093
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 17
 graphene-92:
   bios:
     version: V7.01e
@@ -9217,7 +8489,6 @@ graphene-92:
       ip: 172.18.64.92
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5c:e6
@@ -9239,8 +8510,6 @@ graphene-92:
       driver: e1000e
       mountable: true
       ip: 172.16.64.92
-      switch_name: sgraphene3
-      switch_port: Gi1/0/17
     eth1:
       mounted: false
       rate: 100000000
@@ -9261,8 +8530,6 @@ graphene-92:
     bmc:
       mac: 00:e0:81:d5:07:a7
       ip: 172.17.64.92
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/8
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -9286,9 +8553,6 @@ graphene-92:
     serial_number: 1009390094
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 18
 graphene-93:
   bios:
     version: V7.01e
@@ -9307,7 +8571,6 @@ graphene-93:
       ip: 172.18.64.93
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:ae
@@ -9329,8 +8592,6 @@ graphene-93:
       driver: e1000e
       mountable: true
       ip: 172.16.64.93
-      switch_name: sgraphene3
-      switch_port: Gi1/0/20
     eth1:
       mounted: false
       rate: 100000000
@@ -9351,8 +8612,6 @@ graphene-93:
     bmc:
       mac: 00:e0:81:d5:06:4f
       ip: 172.17.64.93
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/9
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -9387,9 +8646,6 @@ graphene-93:
     serial_number: 1009390095
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 19
 graphene-94:
   bios:
     version: V7.01e
@@ -9412,7 +8668,6 @@ graphene-94:
       ip: 172.18.64.94
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5c:96
@@ -9434,8 +8689,6 @@ graphene-94:
       driver: e1000e
       mountable: true
       ip: 172.16.64.94
-      switch_name: sgraphene3
-      switch_port: Gi1/0/19
     eth1:
       mounted: false
       rate: 100000000
@@ -9456,8 +8709,6 @@ graphene-94:
     bmc:
       mac: 00:e0:81:d5:07:93
       ip: 172.17.64.94
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/10
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -9488,9 +8739,6 @@ graphene-94:
     serial_number: 1009390096
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 20
 graphene-95:
   bios:
     version: V7.01e
@@ -9509,7 +8757,6 @@ graphene-95:
       ip: 172.18.64.95
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:96
@@ -9531,8 +8778,6 @@ graphene-95:
       driver: e1000e
       mountable: true
       ip: 172.16.64.95
-      switch_name: sgraphene3
-      switch_port: Gi1/0/22
     eth1:
       mounted: false
       rate: 100000000
@@ -9553,8 +8798,6 @@ graphene-95:
     bmc:
       mac: 00:e0:81:d5:06:c3
       ip: 172.17.64.95
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/11
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -9589,9 +8832,6 @@ graphene-95:
     serial_number: 1009390097
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 21
 graphene-96:
   bios:
     version: V7.01e
@@ -9617,7 +8857,6 @@ graphene-96:
       ip: 172.18.64.96
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:9e
@@ -9639,8 +8878,6 @@ graphene-96:
       driver: e1000e
       mountable: true
       ip: 172.16.64.96
-      switch_name: sgraphene3
-      switch_port: Gi1/0/21
     eth1:
       mounted: false
       rate: 100000000
@@ -9661,8 +8898,6 @@ graphene-96:
     bmc:
       mac: 00:e0:81:d5:08:37
       ip: 172.17.64.96
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/12
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -9690,9 +8925,6 @@ graphene-96:
     serial_number: 1009390098
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 22
 graphene-97:
   bios:
     version: V7.01e
@@ -9722,7 +8954,6 @@ graphene-97:
       ip: 172.18.64.97
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:d6
@@ -9744,8 +8975,6 @@ graphene-97:
       driver: e1000e
       mountable: true
       ip: 172.16.64.97
-      switch_name: sgraphene3
-      switch_port: Gi1/0/24
     eth1:
       mounted: false
       rate: 100000000
@@ -9766,8 +8995,6 @@ graphene-97:
     bmc:
       mac: 00:e0:81:d5:08:03
       ip: 172.17.64.97
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/13
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -9791,9 +9018,6 @@ graphene-97:
     serial_number: 1009390099
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu5.nancy.grid5000.fr
-    pdu_position: 23
 graphene-98:
   bios:
     version: V7.01e
@@ -9823,7 +9047,6 @@ graphene-98:
       ip: 172.18.64.98
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:9a
@@ -9845,8 +9068,6 @@ graphene-98:
       driver: e1000e
       mountable: true
       ip: 172.16.64.98
-      switch_name: sgraphene3
-      switch_port: Gi1/0/23
     eth1:
       mounted: false
       rate: 100000000
@@ -9867,8 +9088,6 @@ graphene-98:
     bmc:
       mac: 00:e0:81:d5:07:d7
       ip: 172.17.64.98
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/14
   supported_job_types:
     virtual: ivt
   processor:
@@ -9892,9 +9111,6 @@ graphene-98:
     serial_number: 1009390100
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 17
 graphene-99:
   bios:
     version: V7.01e
@@ -9913,7 +9129,6 @@ graphene-99:
       ip: 172.18.64.99
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:b2
@@ -9935,8 +9150,6 @@ graphene-99:
       driver: e1000e
       mountable: true
       ip: 172.16.64.99
-      switch_name: sgraphene3
-      switch_port: Gi1/0/26
     eth1:
       mounted: false
       rate: 100000000
@@ -9957,8 +9170,6 @@ graphene-99:
     bmc:
       mac: 00:e0:81:d5:08:d7
       ip: 172.17.64.99
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/15
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -9993,9 +9204,6 @@ graphene-99:
     serial_number: 1009390101
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 18
 graphene-100:
   bios:
     version: V7.01e
@@ -10025,7 +9233,6 @@ graphene-100:
       ip: 172.18.64.100
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:0e
@@ -10047,8 +9254,6 @@ graphene-100:
       driver: e1000e
       mountable: true
       ip: 172.16.64.100
-      switch_name: sgraphene3
-      switch_port: Gi1/0/25
     eth1:
       mounted: false
       rate: 100000000
@@ -10069,8 +9274,6 @@ graphene-100:
     bmc:
       mac: 00:e0:81:d5:07:cf
       ip: 172.17.64.100
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/16
   supported_job_types:
     virtual: ivt
   processor:
@@ -10094,9 +9297,6 @@ graphene-100:
     serial_number: 1009390102
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 19
 graphene-101:
   bios:
     version: V7.01e
@@ -10119,7 +9319,6 @@ graphene-101:
       ip: 172.18.64.101
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5c:da
@@ -10141,8 +9340,6 @@ graphene-101:
       driver: e1000e
       mountable: true
       ip: 172.16.64.101
-      switch_name: sgraphene3
-      switch_port: Gi1/0/28
     eth1:
       mounted: false
       rate: 100000000
@@ -10163,8 +9360,6 @@ graphene-101:
     bmc:
       mac: 00:e0:81:d5:06:a3
       ip: 172.17.64.101
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/17
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -10195,9 +9390,6 @@ graphene-101:
     serial_number: 1009390103
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 20
 graphene-102:
   bios:
     version: V7.01e
@@ -10216,7 +9408,6 @@ graphene-102:
       ip: 172.18.64.102
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:72
@@ -10238,8 +9429,6 @@ graphene-102:
       driver: e1000e
       mountable: true
       ip: 172.16.64.102
-      switch_name: sgraphene3
-      switch_port: Gi1/0/27
     eth1:
       mounted: false
       rate: 100000000
@@ -10260,8 +9449,6 @@ graphene-102:
     bmc:
       mac: 00:e0:81:d5:08:bf
       ip: 172.17.64.102
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/18
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -10296,9 +9483,6 @@ graphene-102:
     serial_number: 1009390104
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 21
 graphene-103:
   bios:
     version: V7.01e
@@ -10328,7 +9512,6 @@ graphene-103:
       ip: 172.18.64.103
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:4a
@@ -10350,8 +9533,6 @@ graphene-103:
       driver: e1000e
       mountable: true
       ip: 172.16.64.103
-      switch_name: sgraphene3
-      switch_port: Gi1/0/30
     eth1:
       mounted: false
       rate: 100000000
@@ -10372,8 +9553,6 @@ graphene-103:
     bmc:
       mac: 00:e0:81:d5:08:cb
       ip: 172.17.64.103
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/19
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -10397,9 +9576,6 @@ graphene-103:
     serial_number: 1009390105
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 22
 graphene-104:
   bios:
     version: V7.01e
@@ -10422,7 +9598,6 @@ graphene-104:
       ip: 172.18.64.104
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:16
@@ -10444,8 +9619,6 @@ graphene-104:
       driver: e1000e
       mountable: true
       ip: 172.16.64.104
-      switch_name: sgraphene3
-      switch_port: Gi1/0/29
     eth1:
       mounted: false
       rate: 100000000
@@ -10466,8 +9639,6 @@ graphene-104:
     bmc:
       mac: 00:e0:81:d5:07:67
       ip: 172.17.64.104
-      switch_name: sgraphene3-ipmi
-      switch_port: 1/0/20
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -10498,9 +9669,6 @@ graphene-104:
     serial_number: 1009390106
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu6.nancy.grid5000.fr
-    pdu_position: 23
 graphene-105:
   bios:
     version: V7.01e
@@ -10530,7 +9698,6 @@ graphene-105:
       ip: 172.18.64.105
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:1a
@@ -10552,8 +9719,6 @@ graphene-105:
       driver: e1000e
       mountable: true
       ip: 172.16.64.105
-      switch_name: sgraphene4
-      switch_port: Gi1/0/1
     eth1:
       mounted: false
       rate: 100000000
@@ -10574,8 +9739,6 @@ graphene-105:
     bmc:
       mac: 00:e0:81:d5:06:bf
       ip: 172.17.64.105
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/25
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -10599,9 +9762,6 @@ graphene-105:
     serial_number: 1009390107
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 1
 graphene-106:
   bios:
     version: V7.01e
@@ -10627,7 +9787,6 @@ graphene-106:
       ip: 172.18.64.106
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5c:ae
@@ -10649,8 +9808,6 @@ graphene-106:
       driver: e1000e
       mountable: true
       ip: 172.16.64.106
-      switch_name: sgraphene4
-      switch_port: Gi1/0/2
     eth1:
       mounted: false
       rate: 100000000
@@ -10671,8 +9828,6 @@ graphene-106:
     bmc:
       mac: 00:e0:81:d5:07:f7
       ip: 172.17.64.106
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/26
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -10700,9 +9855,6 @@ graphene-106:
     serial_number: 1009390108
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 2
 graphene-107:
   bios:
     version: V7.01e
@@ -10732,7 +9884,6 @@ graphene-107:
       ip: 172.18.64.107
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:3e
@@ -10754,8 +9905,6 @@ graphene-107:
       driver: e1000e
       mountable: true
       ip: 172.16.64.107
-      switch_name: sgraphene4
-      switch_port: Gi1/0/3
     eth1:
       mounted: false
       rate: 100000000
@@ -10776,8 +9925,6 @@ graphene-107:
     bmc:
       mac: 00:e0:81:d5:07:cb
       ip: 172.17.64.107
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/27
   supported_job_types:
     virtual: ivt
   processor:
@@ -10801,9 +9948,6 @@ graphene-107:
     serial_number: 1009390109
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 3
 graphene-108:
   bios:
     version: V7.01e
@@ -10822,7 +9966,6 @@ graphene-108:
       ip: 172.18.64.108
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:22
@@ -10844,8 +9987,6 @@ graphene-108:
       driver: e1000e
       mountable: true
       ip: 172.16.64.108
-      switch_name: sgraphene4
-      switch_port: Gi1/0/4
     eth1:
       mounted: false
       rate: 100000000
@@ -10866,8 +10007,6 @@ graphene-108:
     bmc:
       mac: 00:e0:81:d5:07:17
       ip: 172.17.64.108
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/28
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -10902,9 +10041,6 @@ graphene-108:
     serial_number: 1009390110
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 4
 graphene-109:
   bios:
     version: V7.01e
@@ -10934,7 +10070,6 @@ graphene-109:
       ip: 172.18.64.109
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:26
@@ -10956,8 +10091,6 @@ graphene-109:
       driver: e1000e
       mountable: true
       ip: 172.16.64.109
-      switch_name: sgraphene4
-      switch_port: Gi1/0/5
     eth1:
       mounted: false
       rate: 100000000
@@ -10978,8 +10111,6 @@ graphene-109:
     bmc:
       mac: 00:e0:81:d5:08:33
       ip: 172.17.64.109
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/29
   supported_job_types:
     virtual: ivt
   processor:
@@ -11003,9 +10134,6 @@ graphene-109:
     serial_number: 1009390111
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 5
 graphene-110:
   bios:
     version: V7.01e
@@ -11024,7 +10152,6 @@ graphene-110:
       ip: 172.18.64.110
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5c:aa
@@ -11046,8 +10173,6 @@ graphene-110:
       driver: e1000e
       mountable: true
       ip: 172.16.64.110
-      switch_name: sgraphene4
-      switch_port: Gi1/0/6
     eth1:
       mounted: false
       rate: 100000000
@@ -11068,8 +10193,6 @@ graphene-110:
     bmc:
       mac: 00:e0:81:d5:07:6f
       ip: 172.17.64.110
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/30
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -11104,9 +10227,6 @@ graphene-110:
     serial_number: 1009390112
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 1
 graphene-111:
   bios:
     version: V7.01e
@@ -11136,7 +10256,6 @@ graphene-111:
       ip: 172.18.64.111
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:000c:559:2
@@ -11158,8 +10277,6 @@ graphene-111:
       driver: e1000e
       mountable: true
       ip: 172.16.64.111
-      switch_name: sgraphene4
-      switch_port: Gi1/0/7
     eth1:
       mounted: false
       rate: 100000000
@@ -11180,8 +10297,6 @@ graphene-111:
     bmc:
       mac: 00:e0:81:d5:08:5b
       ip: 172.17.64.111
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/31
   supported_job_types:
     virtual: ivt
   processor:
@@ -11205,9 +10320,6 @@ graphene-111:
     serial_number: 1009390113b
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 2
 graphene-112:
   bios:
     version: V7.01e
@@ -11237,7 +10349,6 @@ graphene-112:
       ip: 172.18.64.112
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:7e:9e
@@ -11259,8 +10370,6 @@ graphene-112:
       driver: e1000e
       mountable: true
       ip: 172.16.64.112
-      switch_name: sgraphene4
-      switch_port: Gi1/0/8
     eth1:
       mounted: false
       rate: 100000000
@@ -11281,8 +10390,6 @@ graphene-112:
     bmc:
       mac: 00:e0:81:d5:08:13
       ip: 172.17.64.112
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/32
   supported_job_types:
     virtual: ivt
   processor:
@@ -11306,9 +10413,6 @@ graphene-112:
     serial_number: 1009390114
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 3
 graphene-113:
   bios:
     version: V7.01e
@@ -11327,7 +10431,6 @@ graphene-113:
       ip: 172.18.64.113
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:b6
@@ -11349,8 +10452,6 @@ graphene-113:
       driver: e1000e
       mountable: true
       ip: 172.16.64.113
-      switch_name: sgraphene4
-      switch_port: Gi1/0/9
     eth1:
       mounted: false
       rate: 100000000
@@ -11371,8 +10472,6 @@ graphene-113:
     bmc:
       mac: 00:e0:81:d5:07:bf
       ip: 172.17.64.113
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/33
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -11407,9 +10506,6 @@ graphene-113:
     serial_number: 1009390115
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 4
 graphene-114:
   bios:
     version: V7.01e
@@ -11432,7 +10528,6 @@ graphene-114:
       ip: 172.18.64.114
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:c6
@@ -11454,8 +10549,6 @@ graphene-114:
       driver: e1000e
       mountable: true
       ip: 172.16.64.114
-      switch_name: sgraphene4
-      switch_port: Gi1/0/10
     eth1:
       mounted: false
       rate: 100000000
@@ -11476,8 +10569,6 @@ graphene-114:
     bmc:
       mac: 00:e0:81:d5:06:b3
       ip: 172.17.64.114
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/34
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -11508,9 +10599,6 @@ graphene-114:
     serial_number: 1009390116
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 5
 graphene-115:
   bios:
     version: V7.01e
@@ -11529,7 +10617,6 @@ graphene-115:
       ip: 172.18.64.115
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:06
@@ -11551,8 +10638,6 @@ graphene-115:
       driver: e1000e
       mountable: true
       ip: 172.16.64.115
-      switch_name: sgraphene4
-      switch_port: Gi1/0/11
     eth1:
       mounted: false
       rate: 100000000
@@ -11573,8 +10658,6 @@ graphene-115:
     bmc:
       mac: 00:e0:81:d5:08:07
       ip: 172.17.64.115
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/35
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -11609,9 +10692,6 @@ graphene-115:
     serial_number: 1009390117
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 6
 graphene-116:
   bios:
     version: V7.01e
@@ -11641,7 +10721,6 @@ graphene-116:
       ip: 172.18.64.116
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:1e
@@ -11663,8 +10742,6 @@ graphene-116:
       driver: e1000e
       mountable: true
       ip: 172.16.64.116
-      switch_name: sgraphene4
-      switch_port: Gi1/0/12
     eth1:
       mounted: false
       rate: 100000000
@@ -11685,8 +10762,6 @@ graphene-116:
     bmc:
       mac: 00:e0:81:d5:08:2b
       ip: 172.17.64.116
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/36
   supported_job_types:
     virtual: ivt
   processor:
@@ -11710,9 +10785,6 @@ graphene-116:
     serial_number: 1009390118
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 7
 graphene-117:
   bios:
     version: V7.01e
@@ -11742,7 +10814,6 @@ graphene-117:
       ip: 172.18.64.117
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:26
@@ -11764,8 +10835,6 @@ graphene-117:
       driver: e1000e
       mountable: true
       ip: 172.16.64.117
-      switch_name: sgraphene4
-      switch_port: Gi1/0/13
     eth1:
       mounted: false
       rate: 100000000
@@ -11786,8 +10855,6 @@ graphene-117:
     bmc:
       mac: 00:e0:81:d5:06:e7
       ip: 172.17.64.117
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/37
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -11811,9 +10878,6 @@ graphene-117:
     serial_number: 1009390119
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 9
 graphene-118:
   bios:
     version: V7.01e
@@ -11843,7 +10907,6 @@ graphene-118:
       ip: 172.18.64.118
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:da
@@ -11865,8 +10928,6 @@ graphene-118:
       driver: e1000e
       mountable: true
       ip: 172.16.64.118
-      switch_name: sgraphene4
-      switch_port: Gi1/0/14
     eth1:
       mounted: false
       rate: 100000000
@@ -11887,8 +10948,6 @@ graphene-118:
     bmc:
       mac: 00:e0:81:d5:07:bb
       ip: 172.17.64.118
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/38
   supported_job_types:
     virtual: ivt
   processor:
@@ -11912,9 +10971,6 @@ graphene-118:
     serial_number: 1009390120
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 10
 graphene-119:
   bios:
     version: V7.01e
@@ -11937,7 +10993,6 @@ graphene-119:
       ip: 172.18.64.119
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:1a
@@ -11959,8 +11014,6 @@ graphene-119:
       driver: e1000e
       mountable: true
       ip: 172.16.64.119
-      switch_name: sgraphene4
-      switch_port: Gi1/0/15
     eth1:
       mounted: false
       rate: 100000000
@@ -11981,8 +11034,6 @@ graphene-119:
     bmc:
       mac: 00:e0:81:d5:06:f3
       ip: 172.17.64.119
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/39
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -12013,9 +11064,6 @@ graphene-119:
     serial_number: 1009390121
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 11
 graphene-120:
   bios:
     version: V7.01e
@@ -12034,7 +11082,6 @@ graphene-120:
       ip: 172.18.64.120
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:2a
@@ -12056,8 +11103,6 @@ graphene-120:
       driver: e1000e
       mountable: true
       ip: 172.16.64.120
-      switch_name: sgraphene4
-      switch_port: Gi1/0/16
     eth1:
       mounted: false
       rate: 100000000
@@ -12078,8 +11123,6 @@ graphene-120:
     bmc:
       mac: 00:e0:81:d5:08:af
       ip: 172.17.64.120
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/40
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -12114,9 +11157,6 @@ graphene-120:
     serial_number: 1009390122
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 12
 graphene-121:
   bios:
     version: V7.01e
@@ -12135,7 +11175,6 @@ graphene-121:
       ip: 172.18.64.121
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:2e
@@ -12157,8 +11196,6 @@ graphene-121:
       driver: e1000e
       mountable: true
       ip: 172.16.64.121
-      switch_name: sgraphene4
-      switch_port: Gi1/0/17
     eth1:
       mounted: false
       rate: 100000000
@@ -12179,8 +11216,6 @@ graphene-121:
     bmc:
       mac: 00:e0:81:d5:07:3b
       ip: 172.17.64.121
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/41
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -12215,9 +11250,6 @@ graphene-121:
     serial_number: 1009390123
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 13
 graphene-122:
   bios:
     version: V7.01e
@@ -12247,7 +11279,6 @@ graphene-122:
       ip: 172.18.64.122
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:86
@@ -12269,8 +11300,6 @@ graphene-122:
       driver: e1000e
       mountable: true
       ip: 172.16.64.122
-      switch_name: sgraphene4
-      switch_port: Gi1/0/18
     eth1:
       mounted: false
       rate: 100000000
@@ -12291,8 +11320,6 @@ graphene-122:
     bmc:
       mac: 00:e0:81:d5:08:3b
       ip: 172.17.64.122
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/42
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -12316,9 +11343,6 @@ graphene-122:
     serial_number: 1009390124
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 14
 graphene-123:
   bios:
     version: V7.01e
@@ -12348,7 +11372,6 @@ graphene-123:
       ip: 172.18.64.123
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:1a
@@ -12370,8 +11393,6 @@ graphene-123:
       driver: e1000e
       mountable: true
       ip: 172.16.64.123
-      switch_name: sgraphene4
-      switch_port: Gi1/0/19
     eth1:
       mounted: false
       rate: 100000000
@@ -12392,8 +11413,6 @@ graphene-123:
     bmc:
       mac: 00:e0:81:d5:06:af
       ip: 172.17.64.123
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/43
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -12417,9 +11436,6 @@ graphene-123:
     serial_number: 1009390125
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 15
 graphene-124:
   bios:
     version: V7.01e
@@ -12437,7 +11453,6 @@ graphene-124:
       ip: 172.18.64.124
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:be
@@ -12459,8 +11474,6 @@ graphene-124:
       driver: e1000e
       mountable: true
       ip: 172.16.64.124
-      switch_name: sgraphene4
-      switch_port: Gi1/0/20
     eth1:
       mounted: false
       rate: 100000000
@@ -12481,8 +11494,6 @@ graphene-124:
     bmc:
       mac: 00:e0:81:d5:06:a7
       ip: 172.17.64.124
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/44
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -12517,9 +11528,6 @@ graphene-124:
     serial_number: 1009390126
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 9
 graphene-125:
   bios:
     version: V7.01e
@@ -12549,7 +11557,6 @@ graphene-125:
       ip: 172.18.64.125
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:92
@@ -12571,8 +11578,6 @@ graphene-125:
       driver: e1000e
       mountable: true
       ip: 172.16.64.125
-      switch_name: sgraphene4
-      switch_port: Gi1/0/21
     eth1:
       mounted: false
       rate: 100000000
@@ -12593,8 +11598,6 @@ graphene-125:
     bmc:
       mac: 00:e0:81:d5:08:6b
       ip: 172.17.64.125
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/1
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -12618,9 +11621,6 @@ graphene-125:
     serial_number: 1009390127
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 10
 graphene-126:
   bios:
     version: V7.01e
@@ -12646,7 +11646,6 @@ graphene-126:
       ip: 172.18.64.126
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:52
@@ -12668,8 +11667,6 @@ graphene-126:
       driver: e1000e
       mountable: true
       ip: 172.16.64.126
-      switch_name: sgraphene4
-      switch_port: Gi1/0/22
     eth1:
       mounted: false
       rate: 100000000
@@ -12690,8 +11687,6 @@ graphene-126:
     bmc:
       mac: 00:e0:81:d5:08:d3
       ip: 172.17.64.126
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/2
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -12719,9 +11714,6 @@ graphene-126:
     serial_number: 1009390128
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 0
 graphene-127:
   bios:
     version: V7.01e
@@ -12740,7 +11732,6 @@ graphene-127:
       ip: 172.18.64.127
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:86
@@ -12762,8 +11753,6 @@ graphene-127:
       driver: e1000e
       mountable: true
       ip: 172.16.64.127
-      switch_name: sgraphene4
-      switch_port: Gi1/0/23
     eth1:
       mounted: false
       rate: 100000000
@@ -12784,8 +11773,6 @@ graphene-127:
     bmc:
       mac: 00:e0:81:d5:08:43
       ip: 172.17.64.127
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/3
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -12820,9 +11807,6 @@ graphene-127:
     serial_number: 1009390129
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 12
 graphene-128:
   bios:
     version: V7.01e
@@ -12845,7 +11829,6 @@ graphene-128:
       ip: 172.18.64.128
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:16
@@ -12867,8 +11850,6 @@ graphene-128:
       driver: e1000e
       mountable: true
       ip: 172.16.64.128
-      switch_name: sgraphene4
-      switch_port: Gi1/0/24
     eth1:
       mounted: false
       rate: 100000000
@@ -12889,8 +11870,6 @@ graphene-128:
     bmc:
       mac: 00:e0:81:d5:08:e7
       ip: 172.17.64.128
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/4
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -12921,9 +11900,6 @@ graphene-128:
     serial_number: 1009390130
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 13
 graphene-129:
   bios:
     version: V7.01e
@@ -12953,7 +11929,6 @@ graphene-129:
       ip: 172.18.64.129
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:06
@@ -12975,8 +11950,6 @@ graphene-129:
       driver: e1000e
       mountable: true
       ip: 172.16.64.129
-      switch_name: sgraphene4
-      switch_port: Gi1/0/25
     eth1:
       mounted: false
       rate: 100000000
@@ -12997,8 +11970,6 @@ graphene-129:
     bmc:
       mac: 00:e0:81:d5:07:1f
       ip: 172.17.64.129
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/5
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -13022,9 +11993,6 @@ graphene-129:
     serial_number: 1009390131
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 14
 graphene-130:
   bios:
     version: V7.01e
@@ -13050,7 +12018,6 @@ graphene-130:
       ip: 172.18.64.130
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:0a
@@ -13072,8 +12039,6 @@ graphene-130:
       driver: e1000e
       mountable: true
       ip: 172.16.64.130
-      switch_name: sgraphene4
-      switch_port: Gi1/0/26
     eth1:
       mounted: false
       rate: 100000000
@@ -13094,8 +12059,6 @@ graphene-130:
     bmc:
       mac: 00:e0:81:d2:5a:37
       ip: 172.17.64.130
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/6
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -13123,9 +12086,6 @@ graphene-130:
     serial_number: 1009390132b
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 15
 graphene-131:
   bios:
     version: V7.01e
@@ -13151,7 +12111,6 @@ graphene-131:
       ip: 172.18.64.131
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:91:4e
@@ -13173,8 +12132,6 @@ graphene-131:
       driver: e1000e
       mountable: true
       ip: 172.16.64.131
-      switch_name: sgraphene4
-      switch_port: Gi1/0/27
     eth1:
       mounted: false
       rate: 100000000
@@ -13195,8 +12152,6 @@ graphene-131:
     bmc:
       mac: 00:e0:81:d5:06:fb
       ip: 172.17.64.131
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/7
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -13224,9 +12179,6 @@ graphene-131:
     serial_number: 1009390133b
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 17
 graphene-132:
   bios:
     version: V7.01e
@@ -13256,7 +12208,6 @@ graphene-132:
       ip: 172.18.64.132
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:0e
@@ -13278,8 +12229,6 @@ graphene-132:
       driver: e1000e
       mountable: true
       ip: 172.16.64.132
-      switch_name: sgraphene4
-      switch_port: Gi1/0/28
     eth1:
       mounted: false
       rate: 100000000
@@ -13300,8 +12249,6 @@ graphene-132:
     bmc:
       mac: 00:e0:81:d5:08:8f
       ip: 172.17.64.132
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/8
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -13325,9 +12272,6 @@ graphene-132:
     serial_number: 1009390134
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 18
 graphene-133:
   bios:
     version: V7.01e
@@ -13353,7 +12297,6 @@ graphene-133:
       ip: 172.18.64.133
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f7:b4
@@ -13375,8 +12318,6 @@ graphene-133:
       driver: e1000e
       mountable: true
       ip: 172.16.64.133
-      switch_name: sgraphene4
-      switch_port: Gi1/0/29
     eth1:
       mounted: false
       rate: 100000000
@@ -13397,8 +12338,6 @@ graphene-133:
     bmc:
       mac: 00:e0:81:d5:07:e3
       ip: 172.17.64.133
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/9
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -13426,9 +12365,6 @@ graphene-133:
     serial_number: 1009390135
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 19
 graphene-134:
   bios:
     version: V7.01e
@@ -13447,7 +12383,6 @@ graphene-134:
       ip: 172.18.64.134
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f4:50
@@ -13469,8 +12404,6 @@ graphene-134:
       driver: e1000e
       mountable: true
       ip: 172.16.64.134
-      switch_name: sgraphene4
-      switch_port: Gi1/0/30
     eth1:
       mounted: false
       rate: 100000000
@@ -13491,8 +12424,6 @@ graphene-134:
     bmc:
       mac: 00:e0:81:d5:08:eb
       ip: 172.17.64.134
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/10
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -13527,9 +12458,6 @@ graphene-134:
     serial_number: 1009390136
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 20
 graphene-135:
   bios:
     version: V7.01e
@@ -13555,7 +12483,6 @@ graphene-135:
       ip: 172.18.64.135
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f4:c8
@@ -13577,8 +12504,6 @@ graphene-135:
       driver: e1000e
       mountable: true
       ip: 172.16.64.135
-      switch_name: sgraphene4
-      switch_port: Gi1/0/31
     eth1:
       mounted: false
       rate: 100000000
@@ -13599,8 +12524,6 @@ graphene-135:
     bmc:
       mac: 00:e0:81:d5:06:73
       ip: 172.17.64.135
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/11
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -13628,9 +12551,6 @@ graphene-135:
     serial_number: 1009390137
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 21
 graphene-136:
   bios:
     version: V7.01e
@@ -13660,7 +12580,6 @@ graphene-136:
       ip: 172.18.64.136
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f8:48
@@ -13682,8 +12601,6 @@ graphene-136:
       driver: e1000e
       mountable: true
       ip: 172.16.64.136
-      switch_name: sgraphene4
-      switch_port: Gi1/0/32
     eth1:
       mounted: false
       rate: 100000000
@@ -13704,8 +12621,6 @@ graphene-136:
     bmc:
       mac: 00:e0:81:d5:07:7f
       ip: 172.17.64.136
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/12
   supported_job_types:
     virtual: ivt
   processor:
@@ -13729,9 +12644,6 @@ graphene-136:
     serial_number: 1009390138
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 22
 graphene-137:
   bios:
     version: V7.01e
@@ -13757,7 +12669,6 @@ graphene-137:
       ip: 172.18.64.137
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f6:48
@@ -13779,8 +12690,6 @@ graphene-137:
       driver: e1000e
       mountable: true
       ip: 172.16.64.137
-      switch_name: sgraphene4
-      switch_port: Gi1/0/33
     eth1:
       mounted: false
       rate: 100000000
@@ -13801,8 +12710,6 @@ graphene-137:
     bmc:
       mac: 00:e0:81:d5:08:47
       ip: 172.17.64.137
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/13
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -13830,9 +12737,6 @@ graphene-137:
     serial_number: 1009390139
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu7.nancy.grid5000.fr
-    pdu_position: 23
 graphene-138:
   bios:
     version: V7.01e
@@ -13851,7 +12755,6 @@ graphene-138:
       ip: 172.18.64.138
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f4:c4
@@ -13873,8 +12776,6 @@ graphene-138:
       driver: e1000e
       mountable: true
       ip: 172.16.64.138
-      switch_name: sgraphene4
-      switch_port: Gi1/0/34
     eth1:
       mounted: false
       rate: 100000000
@@ -13895,8 +12796,6 @@ graphene-138:
     bmc:
       mac: 00:e0:81:d5:08:c7
       ip: 172.17.64.138
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/14
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -13931,9 +12830,6 @@ graphene-138:
     serial_number: 1009390140b
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 17
 graphene-139:
   bios:
     version: V7.01e
@@ -13956,7 +12852,6 @@ graphene-139:
       ip: 172.18.64.139
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f8:00
@@ -13978,8 +12873,6 @@ graphene-139:
       driver: e1000e
       mountable: true
       ip: 172.16.64.139
-      switch_name: sgraphene4
-      switch_port: Gi1/0/35
     eth1:
       mounted: false
       rate: 100000000
@@ -14000,8 +12893,6 @@ graphene-139:
     bmc:
       mac: 00:e0:81:d5:07:83
       ip: 172.17.64.139
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/15
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -14032,9 +12923,6 @@ graphene-139:
     serial_number: 1009390141
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 18
 graphene-140:
   bios:
     version: V7.01e
@@ -14053,7 +12941,6 @@ graphene-140:
       ip: 172.18.64.140
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f7:a0
@@ -14075,8 +12962,6 @@ graphene-140:
       driver: e1000e
       mountable: true
       ip: 172.16.64.140
-      switch_name: sgraphene4
-      switch_port: Gi1/0/36
     eth1:
       mounted: false
       rate: 100000000
@@ -14097,8 +12982,6 @@ graphene-140:
     bmc:
       mac: 00:e0:81:d5:07:7b
       ip: 172.17.64.140
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/16
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -14133,9 +13016,6 @@ graphene-140:
     serial_number: 1009390142
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 19
 graphene-141:
   bios:
     version: V7.01e
@@ -14165,7 +13045,6 @@ graphene-141:
       ip: 172.18.64.141
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f7:94
@@ -14187,8 +13066,6 @@ graphene-141:
       driver: e1000e
       mountable: true
       ip: 172.16.64.141
-      switch_name: sgraphene4
-      switch_port: Gi1/0/37
     eth1:
       mounted: false
       rate: 100000000
@@ -14209,8 +13086,6 @@ graphene-141:
     bmc:
       mac: 00:e0:81:d5:08:77
       ip: 172.17.64.141
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/17
   supported_job_types:
     virtual: ivt
   processor:
@@ -14234,9 +13109,6 @@ graphene-141:
     serial_number: 1009390143
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 20
 graphene-142:
   bios:
     version: V7.01e
@@ -14255,7 +13127,6 @@ graphene-142:
       ip: 172.18.64.142
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f7:a8
@@ -14277,8 +13148,6 @@ graphene-142:
       driver: e1000e
       mountable: true
       ip: 172.16.64.142
-      switch_name: sgraphene4
-      switch_port: Gi1/0/38
     eth1:
       mounted: false
       rate: 100000000
@@ -14299,8 +13168,6 @@ graphene-142:
     bmc:
       mac: 00:e0:81:d5:06:8f
       ip: 172.17.64.142
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/18
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
@@ -14335,9 +13202,6 @@ graphene-142:
     serial_number: 1009390144
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 21
 graphene-143:
   bios:
     version: V7.01e
@@ -14360,7 +13224,6 @@ graphene-143:
       ip: 172.18.64.143
       driver: mlx4_core
       mountable: true
-      switch_name: sgrapheneib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f4:98
@@ -14382,8 +13245,6 @@ graphene-143:
       driver: e1000e
       mountable: true
       ip: 172.16.64.143
-      switch_name: sgraphene4
-      switch_port: Gi1/0/39
     eth1:
       mounted: false
       rate: 100000000
@@ -14404,8 +13265,6 @@ graphene-143:
     bmc:
       mac: 00:e0:81:d5:07:97
       ip: 172.17.64.143
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/19
   block_devices:
     sda:
       model: Hitachi HDS72103
@@ -14436,9 +13295,6 @@ graphene-143:
     serial_number: 1009390145
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 22
 graphene-144:
   bios:
     version: V7.01e
@@ -14468,7 +13324,6 @@ graphene-144:
       ip: 172.18.64.144
       driver: mlx4_core
       mountable: true
-      switch_name: sgriffonib
     ib1:
       mounted: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f8:5c
@@ -14490,8 +13345,6 @@ graphene-144:
       driver: e1000e
       mountable: true
       ip: 172.16.64.144
-      switch_name: sgraphene4
-      switch_port: Gi1/0/40
     eth1:
       mounted: false
       rate: 100000000
@@ -14512,8 +13365,6 @@ graphene-144:
     bmc:
       mac: 00:e0:81:d5:06:bb
       ip: 172.17.64.144
-      switch_name: sgraphene4-ipmi
-      switch_port: 1/0/20
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -14537,6 +13388,3 @@ graphene-144:
     serial_number: 1009390146
     manufacturer: TYAN Computer Corporation
     product_name: S5393
-  pdu:
-    pdu_name: graphene-pdu8.nancy.grid5000.fr
-    pdu_position: 23

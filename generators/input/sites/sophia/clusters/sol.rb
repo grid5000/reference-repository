@@ -16,91 +16,91 @@ site :sophia do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup('sol', node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup('sol_generated', node_uid, 'supported_job_types', 'virtual')
         })
 
         architecture({
-          :smp_size       => lookup('sol', node_uid, 'architecture', 'smp_size'),
-          :smt_size       => lookup('sol', node_uid, 'architecture', 'smt_size'),
-          :platform_type  => lookup('sol', node_uid, 'architecture', 'platform_type')
+          :smp_size       => lookup('sol_generated', node_uid, 'architecture', 'smp_size'),
+          :smt_size       => lookup('sol_generated', node_uid, 'architecture', 'smt_size'),
+          :platform_type  => lookup('sol_generated', node_uid, 'architecture', 'platform_type')
         })
 
         processor({
-          :vendor             => lookup('sol', node_uid, 'processor', 'vendor'),
-          :model              => lookup('sol', node_uid, 'processor', 'model'),
-          :version            => lookup('sol', node_uid, 'processor', 'version'),
-          :clock_speed        => lookup('sol', node_uid, 'processor', 'clock_speed'),
-          :instruction_set    => lookup('sol', node_uid, 'processor', 'instruction_set'),
-          :other_description  => lookup('sol', node_uid, 'processor', 'other_description'),
-          :cache_l1           => lookup('sol', node_uid, 'processor', 'cache_l1'),
-          :cache_l1i          => lookup('sol', node_uid, 'processor', 'cache_l1i'),
-          :cache_l1d          => lookup('sol', node_uid, 'processor', 'cache_l1d'),
-          :cache_l2           => lookup('sol', node_uid, 'processor', 'cache_l2'),
-          :cache_l3           => lookup('sol', node_uid, 'processor', 'cache_l3')
+          :vendor             => lookup('sol_generated', node_uid, 'processor', 'vendor'),
+          :model              => lookup('sol_generated', node_uid, 'processor', 'model'),
+          :version            => lookup('sol_generated', node_uid, 'processor', 'version'),
+          :clock_speed        => lookup('sol_generated', node_uid, 'processor', 'clock_speed'),
+          :instruction_set    => lookup('sol_generated', node_uid, 'processor', 'instruction_set'),
+          :other_description  => lookup('sol_generated', node_uid, 'processor', 'other_description'),
+          :cache_l1           => lookup('sol_generated', node_uid, 'processor', 'cache_l1'),
+          :cache_l1i          => lookup('sol_generated', node_uid, 'processor', 'cache_l1i'),
+          :cache_l1d          => lookup('sol_generated', node_uid, 'processor', 'cache_l1d'),
+          :cache_l2           => lookup('sol_generated', node_uid, 'processor', 'cache_l2'),
+          :cache_l3           => lookup('sol_generated', node_uid, 'processor', 'cache_l3')
         })
 
         main_memory({
-          :ram_size     => lookup('sol', node_uid, 'main_memory', 'ram_size'),
+          :ram_size     => lookup('sol_generated', node_uid, 'main_memory', 'ram_size'),
           :virtual_size => nil
         })
 
         operating_system({
-          :name     => lookup('sol', node_uid, 'operating_system', 'name'),
+          :name     => lookup('sol_generated', node_uid, 'operating_system', 'name'),
           :release  => "Squeeze",
-          :version  => lookup('sol', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('sol', node_uid, 'operating_system', 'kernel')
+          :version  => lookup('sol_generated', node_uid, 'operating_system', 'version'),
+          :kernel   => lookup('sol_generated', node_uid, 'operating_system', 'kernel')
         })
 
         storage_devices [{
           :interface  => 'SATA',
-          :size       => lookup('sol', node_uid, 'block_devices', 'sda', 'size'),
+          :size       => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'size'),
           :driver     => "sata_nv",
-          :device     => lookup('sol', node_uid, 'block_devices', 'sda', 'device'),
-          :model      => lookup('sol', node_uid, 'block_devices', 'sda', 'model'),
-          :vendor     => lookup('sol', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('sol', node_uid, 'block_devices', 'sda', 'rev')
+          :device     => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'device'),
+          :model      => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'model'),
+          :vendor     => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'vendor'),
+          :rev        => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'rev')
         }]
 
         network_adapters [{
-          :interface        => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'interface'),
-          :rate             => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'rate'),
-          :enabled          => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'enabled'),
-          :management       => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'management'),
-          :mountable        => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'mountable'),
-          :mounted          => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'mounted'),
+          :interface        => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'interface'),
+          :rate             => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'rate'),
+          :enabled          => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'enabled'),
+          :management       => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'management'),
+          :mountable        => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'mountable'),
+          :mounted          => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'mounted'),
           :bridged          => true,
           :device           => "eth0",
           :vendor           => 'nVidia',
           :version          => "MCP55 Pro",
-          :driver           => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'driver'),
+          :driver           => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip               => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'ip'),
-          :ip6              => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => "gw-sophia",
-          :switch_port      => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
-          :mac              => lookup('sol', node_uid, 'network_interfaces', 'eth0', 'mac')
+          :ip               => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :ip6              => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
+          :switch           => lookup('sol_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
+          :switch_port      => lookup('sol_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :mac              => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
-          :interface        => lookup('sol', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :interface        => lookup('sol_generated', node_uid, 'network_interfaces', 'eth1', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('sol', node_uid, 'network_interfaces', 'eth1', 'enabled'),
-          :management       => lookup('sol', node_uid, 'network_interfaces', 'eth1', 'management'),
-          :mountable        => lookup('sol', node_uid, 'network_interfaces', 'eth1', 'mountable'),
-          :mounted          => lookup('sol', node_uid, 'network_interfaces', 'eth1', 'mounted'),
+          :enabled          => lookup('sol_generated', node_uid, 'network_interfaces', 'eth1', 'enabled'),
+          :management       => lookup('sol_generated', node_uid, 'network_interfaces', 'eth1', 'management'),
+          :mountable        => lookup('sol_generated', node_uid, 'network_interfaces', 'eth1', 'mountable'),
+          :mounted          => lookup('sol_generated', node_uid, 'network_interfaces', 'eth1', 'mounted'),
           :bridged          => false,
           :device           => "eth1",
           :vendor           => 'nVidia',
           :version          => "MCP55 Pro",
-          :driver           => lookup('sol', node_uid, 'network_interfaces', 'eth1', 'driver'),
-          :ip               => lookup('sol', node_uid, 'network_interfaces', 'eth1', 'ip'),
-          :mac              => lookup('sol', node_uid, 'network_interfaces', 'eth1', 'mac')
+          :driver           => lookup('sol_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :ip               => lookup('sol_generated', node_uid, 'network_interfaces', 'eth1', 'ip'),
+          :mac              => lookup('sol_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
           :interface => 'Ethernet',
           :rate => 100.M,
           :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip => lookup('sol', node_uid, 'network_interfaces','bmc', 'ip'),
-          :mac => lookup('sol', node_uid, 'network_interfaces','bmc', 'mac'),
+          :ip => lookup('sol_generated', node_uid, 'network_interfaces','bmc', 'ip'),
+          :mac => lookup('sol_generated', node_uid, 'network_interfaces','bmc', 'mac'),
           :enabled  => true,
           :mounted => false,
           :mountable => false,
@@ -108,34 +108,34 @@ site :sophia do |site_uid|
           :device => "bmc"
         },
         {
-          :interface            => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'interface'),
-          :rate                 => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'rate'),
+          :interface            => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'interface'),
+          :rate                 => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'rate'),
           :network_address      => "#{node_uid}-myri0.#{site_uid}.grid5000.fr",
-          :ip                   => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'ip'),
-          :ip6                  => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'ip6'),
-          :mac                  => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'mac'),
+          :ip                   => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'ip'),
+          :ip6                  => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'ip6'),
+          :mac                  => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'mac'),
           :vendor               => 'Myricom',
           :version              => "M3F-PCIXF-2",
-          :driver               => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'driver'),
-          :enabled              => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'enabled'),
-          :management           => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'management'),
-          :mountable            => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'mountable'),
-          :mounted              => lookup('sol', node_uid, 'network_interfaces', 'myri0', 'mounted'),
+          :driver               => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'driver'),
+          :enabled              => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'enabled'),
+          :management           => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'management'),
+          :mountable            => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'mountable'),
+          :mounted              => lookup('sol_generated', node_uid, 'network_interfaces', 'myri0', 'mounted'),
           :management           => false,
           :device               => "myri0",
           :switch               => 'sw-myrinet'
         }]
 
         chassis({
-          :serial       => lookup('sol', node_uid, 'chassis', 'serial_number'),
-          :name         => lookup('sol', node_uid, 'chassis', 'product_name'),
-          :manufacturer => lookup('sol', node_uid, 'chassis', 'manufacturer')
+          :serial       => lookup('sol_generated', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('sol_generated', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('sol_generated', node_uid, 'chassis', 'manufacturer')
         })
 
         bios({
-          :version      => lookup('sol', node_uid, 'bios', 'version'),
-          :vendor       => lookup('sol', node_uid, 'bios', 'vendor'),
-          :release_date => lookup('sol', node_uid, 'bios', 'release_date')
+          :version      => lookup('sol_generated', node_uid, 'bios', 'version'),
+          :vendor       => lookup('sol_generated', node_uid, 'bios', 'vendor'),
+          :release_date => lookup('sol_generated', node_uid, 'bios', 'release_date')
         })
 
         gpu({

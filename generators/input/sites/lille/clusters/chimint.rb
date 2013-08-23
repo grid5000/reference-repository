@@ -16,93 +16,93 @@ site :lille do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup('chimint', node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup('chimint_generated', node_uid, 'supported_job_types', 'virtual')
         })
 
         architecture({
-          :smp_size       => lookup('chimint', node_uid, 'architecture', 'smp_size'),
-          :smt_size       => lookup('chimint', node_uid, 'architecture', 'smt_size'),
-          :platform_type  => lookup('chimint', node_uid, 'architecture', 'platform_type')
+          :smp_size       => lookup('chimint_generated', node_uid, 'architecture', 'smp_size'),
+          :smt_size       => lookup('chimint_generated', node_uid, 'architecture', 'smt_size'),
+          :platform_type  => lookup('chimint_generated', node_uid, 'architecture', 'platform_type')
         })
 
         processor({
-          :vendor             => lookup('chimint', node_uid, 'processor', 'vendor'),
-          :model              => lookup('chimint', node_uid, 'processor', 'model'),
-          :version            => lookup('chimint', node_uid, 'processor', 'version'),
-          :clock_speed        => lookup('chimint', node_uid, 'processor', 'clock_speed'),
-          :instruction_set    => lookup('chimint', node_uid, 'processor', 'instruction_set'),
-          :other_description  => lookup('chimint', node_uid, 'processor', 'other_description'),
-          :cache_l1           => lookup('chimint', node_uid, 'processor', 'cache_l1'),
-          :cache_l1i          => lookup('chimint', node_uid, 'processor', 'cache_l1i'),
-          :cache_l1d          => lookup('chimint', node_uid, 'processor', 'cache_l1d'),
-          :cache_l2           => lookup('chimint', node_uid, 'processor', 'cache_l2'),
-          :cache_l3           => lookup('chimint', node_uid, 'processor', 'cache_l3')
+          :vendor             => lookup('chimint_generated', node_uid, 'processor', 'vendor'),
+          :model              => lookup('chimint_generated', node_uid, 'processor', 'model'),
+          :version            => lookup('chimint_generated', node_uid, 'processor', 'version'),
+          :clock_speed        => lookup('chimint_generated', node_uid, 'processor', 'clock_speed'),
+          :instruction_set    => lookup('chimint_generated', node_uid, 'processor', 'instruction_set'),
+          :other_description  => lookup('chimint_generated', node_uid, 'processor', 'other_description'),
+          :cache_l1           => lookup('chimint_generated', node_uid, 'processor', 'cache_l1'),
+          :cache_l1i          => lookup('chimint_generated', node_uid, 'processor', 'cache_l1i'),
+          :cache_l1d          => lookup('chimint_generated', node_uid, 'processor', 'cache_l1d'),
+          :cache_l2           => lookup('chimint_generated', node_uid, 'processor', 'cache_l2'),
+          :cache_l3           => lookup('chimint_generated', node_uid, 'processor', 'cache_l3')
         })
 
         main_memory({
-          :ram_size     => lookup('chimint', node_uid, 'main_memory', 'ram_size'),
+          :ram_size     => lookup('chimint_generated', node_uid, 'main_memory', 'ram_size'),
           :virtual_size => nil
         })
 
         operating_system({
-          :name     => lookup('chimint', node_uid, 'operating_system', 'name'),
+          :name     => lookup('chimint_generated', node_uid, 'operating_system', 'name'),
           :release  => "Squeeze",
-          :version  => lookup('chimint', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('chimint', node_uid, 'operating_system', 'kernel')
+          :version  => lookup('chimint_generated', node_uid, 'operating_system', 'version'),
+          :kernel   => lookup('chimint_generated', node_uid, 'operating_system', 'kernel')
         })
 
         storage_devices [{
           :interface  => 'SATA',
-          :size       => lookup('chimint', node_uid, 'block_devices', 'sda', 'size'),
+          :size       => lookup('chimint_generated', node_uid, 'block_devices', 'sda', 'size'),
           :driver     => "megaraid_sas",
-          :device     => lookup('chimint', node_uid, 'block_devices', 'sda', 'device'),
-          :model      => lookup('chimint', node_uid, 'block_devices', 'sda', 'model'),
-          :vendor     => lookup('chimint', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('chimint', node_uid, 'block_devices', 'sda', 'rev'),
+          :device     => lookup('chimint_generated', node_uid, 'block_devices', 'sda', 'device'),
+          :model      => lookup('chimint_generated', node_uid, 'block_devices', 'sda', 'model'),
+          :vendor     => lookup('chimint_generated', node_uid, 'block_devices', 'sda', 'vendor'),
+          :rev        => lookup('chimint_generated', node_uid, 'block_devices', 'sda', 'rev'),
           :raid       => "0"
         }]
 
         network_adapters [{
-          :interface        => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'interface'),
+          :interface        => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'enabled'),
-          :management       => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'management'),
-          :mountable        => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'mountable'),
-          :mounted          => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'mounted'),
+          :enabled          => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'enabled'),
+          :management       => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'management'),
+          :mountable        => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'mountable'),
+          :mounted          => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'mounted'),
           :bridged          => true,
           :device           => "eth0",
           :vendor           => 'Broadcom',
           :version          => 'NetXtreme II BCM5716',
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :switch           => 'gw-lille',
-          :ip               => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'ip'),
-          :ip6              => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch_port      => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
-          :driver           => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'driver'),
-          :mac              => lookup('chimint', node_uid, 'network_interfaces', 'eth0', 'mac')
+          :ip               => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :ip6              => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
+          :switch_port      => lookup('chimint_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :driver           => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
+          :mac              => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
-          :interface        => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'interface'),
-          :rate             => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'rate'),
-          :enabled          => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'enabled'),
-          :management       => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'management'),
-          :mountable        => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'mountable'),
-          :mounted          => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'mounted'),
+          :interface        => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :rate             => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth1', 'rate'),
+          :enabled          => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth1', 'enabled'),
+          :management       => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth1', 'management'),
+          :mountable        => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth1', 'mountable'),
+          :mounted          => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth1', 'mounted'),
           :bridged          => false,
           :device           => "eth1",
           :vendor           => 'Broadcom',
           :version          => 'NetXtreme II BCM5716',
-          :driver           => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'driver'),
-          :mac              => lookup('chimint', node_uid, 'network_interfaces', 'eth1', 'mac')
+          :driver           => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :mac              => lookup('chimint_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
           :interface            => 'Ethernet',
           :rate                 => 1.G,
           :network_address      => "#{node_uid}-impi.#{site_uid}.grid5000.fr",
-          :ip                   => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'ip'),
-          :mac                  => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'mac'),
-          :switch               => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'switch_name'),
-          :switch_port          => lookup('chimint', node_uid, 'network_interfaces', 'bmc', 'switch_port'),
+          :ip                   => lookup('chimint_generated', node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :mac                  => lookup('chimint_generated', node_uid, 'network_interfaces', 'bmc', 'mac'),
+          :switch               => lookup('chimint_generated', node_uid, 'network_interfaces', 'bmc', 'switch_name'),
+          :switch_port          => lookup('chimint_generated', node_uid, 'network_interfaces', 'bmc', 'switch_port'),
           :enabled              => true,
           :mounted              => false,
           :mountable            => false,
@@ -111,15 +111,15 @@ site :lille do |site_uid|
         }]
 
         chassis({
-          :serial       => lookup('chimint', node_uid, 'chassis', 'serial_number'),
-          :name         => lookup('chimint', node_uid, 'chassis', 'product_name'),
-          :manufacturer => lookup('chimint', node_uid, 'chassis', 'manufacturer')
+          :serial       => lookup('chimint_generated', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('chimint_generated', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('chimint_generated', node_uid, 'chassis', 'manufacturer')
         })
 
         bios({
-          :version      => lookup('chimint', node_uid, 'bios', 'version'),
-          :vendor       => lookup('chimint', node_uid, 'bios', 'vendor'),
-          :release_date => lookup('chimint', node_uid, 'bios', 'release_date')
+          :version      => lookup('chimint_generated', node_uid, 'bios', 'version'),
+          :vendor       => lookup('chimint_generated', node_uid, 'bios', 'vendor'),
+          :release_date => lookup('chimint_generated', node_uid, 'bios', 'release_date')
         })
 
         gpu({
