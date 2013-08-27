@@ -179,8 +179,6 @@ site :rennes do |site_uid|
           }
         })
 
-        chassis({:serial_number => lookup('parapide', node_uid, 'chassis', 'serial_number')})
-
       end
     end
   end
