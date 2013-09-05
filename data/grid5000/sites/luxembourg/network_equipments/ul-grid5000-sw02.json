@@ -1,20 +1,48 @@
 {
   "backplane_bps": 1040000000000,
   "channels": {
+    "lacp5": [
+      {
+        "linecard": 1,
+        "port": 33
+      },
+      {
+        "linecard": 1,
+        "port": 34
+      },
+      {
+        "linecard": 1,
+        "port": 35
+      },
+      {
+        "linecard": 1,
+        "port": 36
+      }
+    ],
+    "lacp6": [
+      {
+        "linecard": 1,
+        "port": 37
+      },
+      {
+        "linecard": 1,
+        "port": 38
+      },
+      {
+        "linecard": 1,
+        "port": 39
+      },
+      {
+        "linecard": 1,
+        "port": 40
+      }
+    ],
     "naming_pattern": "Po%CHANNELID%"
   },
   "kind": "switch",
   "linecards": [
     {
-      "naming_pattern": "mgmt%PORT%",
-      "ports": [
-        {
-          "kind": "router",
-          "port": "Gi1/46",
-          "uid": "gw-luxembourg"
-        }
-      ],
-      "rate": 100000000
+
     },
     {
       "naming_pattern": "Ethernet%LINECARD%/%PORT%",
@@ -23,9 +51,7 @@
 
         },
         {
-          "kind": "router",
-          "port": "Gi5/2",
-          "uid": "gw-luxembourg"
+
         },
         {
           "kind": "node",
@@ -156,37 +182,57 @@
 
         },
         {
-
+          "kind": "router",
+          "port": "Te3/1",
+          "uid": "gw-luxembourg"
         },
         {
 
         },
         {
-
+          "kind": "router",
+          "port": "Te3/2",
+          "uid": "gw-luxembourg"
         },
         {
-
+          "kind": "switch",
+          "port": "Te0/33",
+          "uid": "mxl1"
         },
         {
-
+          "kind": "switch",
+          "port": "Te0/34",
+          "uid": "mxl1"
         },
         {
-
+          "kind": "switch",
+          "port": "Te0/35",
+          "uid": "mxl1"
         },
         {
-
+          "kind": "switch",
+          "port": "Te0/36",
+          "uid": "mxl1"
         },
         {
-
+          "kind": "switch",
+          "port": "Te0/33",
+          "uid": "mxl2"
         },
         {
-
+          "kind": "switch",
+          "port": "Te0/34",
+          "uid": "mxl2"
         },
         {
-
+          "kind": "switch",
+          "port": "Te0/35",
+          "uid": "mxl2"
         },
         {
-
+          "kind": "switch",
+          "port": "Te0/36",
+          "uid": "mxl2"
         }
       ],
       "rate": 10000000000
@@ -203,7 +249,7 @@
   "uid": "ul-grid5000-sw02",
   "vlans": {
     "naming_pattern": "Vlan%VLANID%",
-    "vlan50": {
+    "vlan101": {
       "addresses": [
         "172.17.191.253"
       ],

@@ -31,6 +31,16 @@
         "port": 46
       }
     ],
+    "lacp4": [
+      {
+        "linecard": 3,
+        "port": 1
+      },
+      {
+        "linecard": 3,
+        "port": 2
+      }
+    ],
     "naming_pattern": "Po%CHANNELID%"
   },
   "kind": "router",
@@ -46,114 +56,70 @@
 
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-1"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-2"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-3"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-4"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-5"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-6"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-7"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-8"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-9"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-10"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-11"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-12"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-13"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-14"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-15"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-16"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-17"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-18"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-19"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-20"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-21"
+
         },
         {
-          "kind": "node",
-          "port": "bmc",
-          "uid": "granduc-22"
+
         },
         {
           "kind": "other",
@@ -257,9 +223,7 @@
 
         },
         {
-          "kind": "switch",
-          "port": "mgmt0",
-          "uid": "ul-grid5000-sw02"
+
         },
         {
 
@@ -478,9 +442,7 @@
           "uid": "cronos"
         },
         {
-          "kind": "other",
-          "port": "bmc",
-          "uid": "zeus"
+
         },
         {
           "kind": "other",
@@ -504,10 +466,14 @@
 
         },
         {
-
+          "kind": "switch",
+          "port": "Ethernet1/30",
+          "uid": "ul-grid5000-sw02"
         },
         {
-
+          "kind": "switch",
+          "port": "Ethernet1/32",
+          "uid": "ul-grid5000-sw02"
         }
       ],
       "rate": 10000000000
@@ -517,7 +483,7 @@
     },
     {
       "backplane_bps": 40000000000,
-      "naming_pattern": "Gi%LINECARD%/%PORT%",
+      "naming_pattern": "Te%LINECARD%/%PORT%",
       "ports": [
         {
 
@@ -526,16 +492,13 @@
 
         },
         {
-          "kind": "switch",
-          "port": "Ethernet1/1",
-          "uid": "ul-grid5000-sw02"
+
         },
         {
 
         },
         {
           "kind": "virtual",
-          "naming_pattern": "Te%LINECARD%/%PORT%",
           "rate": 10000000000,
           "uid": "renater-luxembourg"
         }
@@ -557,13 +520,13 @@
     "vlan100": {
       "addresses": [
         "172.16.191.254"
-      ],
-      "administrative": true
+      ]
     },
     "vlan101": {
       "addresses": [
         "172.17.191.254"
-      ]
+      ],
+      "administrative": true
     },
     "vlan103": {
       "addresses": [

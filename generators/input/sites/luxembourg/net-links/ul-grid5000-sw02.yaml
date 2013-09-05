@@ -10,29 +10,26 @@ ul-grid5000-sw02:
     use_cacti: "yes"
   vlans:
     naming_pattern: Vlan%VLANID%
-    "vlan50":
+    "vlan101":
       administrative: yes
       addresses:
         - 172.17.191.253
   routes: {}
 
   linecards:
-    0:
-      naming_pattern: "mgmt%PORT%"
-      rate: 100000000
-      ports:
-        0:
-          uid: gw-luxembourg
-          port: Gi1/46
-          kind: router
+#    0:
+#      naming_pattern: "mgmt%PORT%"
+#      rate: 100000000
+#      ports:
+#        0:
+#          uid: gw-luxembourg
+#          port: Gi1/46
+#          kind: router
     1:
       naming_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
       ports:
         1:
-          uid: gw-luxembourg
-          port: Gi5/2
-          kind: router
         2:
           uid: granduc-1
           port: eth2
@@ -128,16 +125,63 @@ ul-grid5000-sw02:
         28:
         29:
         30:
+          uid: gw-luxembourg
+          port: Te3/1
+          kind: router
         31:
         32:
+          uid: gw-luxembourg
+          port: Te3/2
+          kind: router
         33:
+          uid: mxl1
+          port: Te0/33
+          kind: switch
         34:
+          uid: mxl1
+          port: Te0/34
+          kind: switch
         35:
+          uid: mxl1
+          port: Te0/35
+          kind: switch
         36:
+          uid: mxl1
+          port: Te0/36
+          kind: switch
         37:
+          uid: mxl2
+          port: Te0/33
+          kind: switch
         38:
+          uid: mxl2
+          port: Te0/34
+          kind: switch
         39:
+          uid: mxl2
+          port: Te0/35
+          kind: switch
         40:
+          uid: mxl2
+          port: Te0/36
+          kind: switch
   channels:
     naming_pattern: Po%CHANNELID%
-
+    "lacp5":
+        - linecard: 1
+          port: 33
+        - linecard: 1
+          port: 34
+        - linecard: 1
+          port: 35
+        - linecard: 1
+          port: 36
+    "lacp6":
+        - linecard: 1
+          port: 37
+        - linecard: 1
+          port: 38
+        - linecard: 1
+          port: 39
+        - linecard: 1
+          port: 40
