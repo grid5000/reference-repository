@@ -56,7 +56,9 @@
       "management": false,
       "mountable": true,
       "mounted": false,
-      "rate": 1000000000
+      "rate": 1000000000,
+      "switch": "gw-luxembourg",
+      "switch_port": "Gi2/24"
     },
     {
       "bridged": false,
@@ -89,7 +91,6 @@
     },
     {
       "device": "bmc",
-      "driver": "bnx2",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.176.12",
@@ -100,7 +101,7 @@
       "network_address": "granduc-12-bmc.luxembourg.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw-luxembourg",
-      "switch_port": "Gi2/12"
+      "switch_port": "Gi1/12"
     }
   ],
   "operating_system": {

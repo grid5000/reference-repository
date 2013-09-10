@@ -68,7 +68,7 @@ site :luxembourg do |site_uid|
           :management       => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth0', 'management'),
           :mountable        => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth0', 'mountable'),
           :mounted          => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth0', 'mounted'),
-          :bridged 	    => true,
+          :bridged          => true,
           :device           => "eth0",
           :driver           => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
@@ -85,9 +85,11 @@ site :luxembourg do |site_uid|
           :management       => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth1', 'management'),
           :mountable        => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth1', 'mountable'),
           :mounted          => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth1', 'mounted'),
-          :bridged 	    => false,
+          :bridged          => false,
           :device           => "eth1",
           :driver           => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :switch           => "gw-luxembourg",
+          :switch_port      => lookup('granduc_manual', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
           :mac              => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
@@ -97,7 +99,7 @@ site :luxembourg do |site_uid|
           :management       => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth2', 'management'),
           :mountable        => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth2', 'mountable'),
           :mounted          => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth2', 'mounted'),
-          :bridged 	    => false,
+          :bridged          => false,
           :device           => "eth2",
           :driver           => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
           :switch           => "ul-grid5000-sw02",
@@ -114,7 +116,7 @@ site :luxembourg do |site_uid|
           :management       => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth3', 'management'),
           :mountable        => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth3', 'mountable'),
           :mounted          => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth3', 'mounted'),
-          :bridged 	    => false,
+          :bridged          => false,
           :device           => "eth3",
           :driver           => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth3', 'driver'),
           :mac              => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth3', 'mac')
@@ -130,9 +132,8 @@ site :luxembourg do |site_uid|
           :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc_generated', node_uid, 'network_interfaces', 'bmc', 'ip'),
           :switch           => "gw-luxembourg",
-          :switch_port      => lookup('granduc_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch_port      => lookup('granduc_manual', node_uid, 'network_interfaces', 'bmc', 'switch_port'),
           :mac              => lookup('granduc_generated', node_uid, 'network_interfaces', 'bmc', 'mac'),
-          :driver           => "bnx2"
         }]
 
         chassis({
