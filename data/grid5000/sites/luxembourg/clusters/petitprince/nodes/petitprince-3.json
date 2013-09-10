@@ -1,0 +1,119 @@
+{
+  "addressing_plan": {
+    "kavlan": "10.40.0.0/14",
+    "virt": "10.172.0.0/14"
+  },
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 12
+  },
+  "bios": {
+    "release_date": "09/12/2012",
+    "vendor": "Dell Inc.",
+    "version": 1.3
+  },
+  "chassis": {
+    "manufacturer": null,
+    "name": null,
+    "serial": null
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+    "ram_size": 33761955840,
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": false
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "bnx2x",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.177.3",
+      "ip6": null,
+      "mac": "90:b1:1c:ac:d2:db",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "petitprince-3.luxembourg.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "mxl1",
+      "switch_port": "Te0/3"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "bnx2x",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "90:b1:1c:ac:d2:de",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "switch": "mxl2",
+      "switch_port": "Te0/3"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.177.3",
+      "mac": "00:25:84:e2:eb:c0",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "petitprince-3-bmc.luxembourg.grid5000.fr",
+      "rate": 1000000000,
+      "switch": "gw-luxembourg",
+      "switch_port": "Gi2/36"
+    }
+  ],
+  "operating_system": {
+    "kernel": "3.2.0-4-amd64",
+    "name": "debian",
+    "release": "Wheezy",
+    "version": 7.1
+  },
+  "performance": {
+    "core_flops": 16000000000,
+    "node_flops": 192000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 15728640,
+    "clock_speed": 2000000000,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630L 0 @ 2.00GHz",
+    "vendor": "Intel",
+    "version": "E5-2630L"
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "ahci",
+      "interface": "SATA",
+      "model": "ST9250610NS",
+      "rev": "n/a",
+      "size": 250059350016,
+      "vendor": "SEAGATE"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "petitprince-3"
+}
