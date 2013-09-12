@@ -80,7 +80,7 @@ site :luxembourg do |site_uid|
         },
         {
           :interface        => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth1', 'interface'),
-          :rate             => 1.G,
+          :rate             => 10.G,
           :enabled          => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth1', 'enabled'),
           :management       => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth1', 'management'),
           :mountable        => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth1', 'mountable'),
@@ -108,9 +108,9 @@ site :luxembourg do |site_uid|
         }]
 
         chassis({
-          :serial       => lookup('petitprince_generated', node_uid, 'chassis', 'serial_number'),
-          :name         => lookup('petitprince_generated', node_uid, 'chassis', 'product_name'),
-          :manufacturer => lookup('petitprince_generated', node_uid, 'chassis', 'manufacturer')
+          :serial       => lookup('petitprince_manual', node_uid, 'chassis', 'serial_number'),
+          :name         => lookup('petitprince_manual', node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup('petitprince_manual', node_uid, 'chassis', 'manufacturer')
         })
 
         bios({
