@@ -290,7 +290,7 @@ graphene-4:
   network_interfaces:
     ib0:
       mounted: true
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:92:bd
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:bd 
       rate: 20000000000
       ip6: fe80::202:c903:b:92bd
       management: false
@@ -302,7 +302,7 @@ graphene-4:
       mountable: true
     ib1:
       mounted: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:92:be
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:be 
       rate: 28000000000
       management: false
       enabled: false
@@ -1867,7 +1867,7 @@ graphene-21:
   network_interfaces:
     ib0:
       mounted: true
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:0004:53:6d
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:04:53:6d 
       rate: 20000000000
       ip6: fe80::202:c903:4:536d
       management: false
@@ -1879,7 +1879,7 @@ graphene-21:
       mountable: true
     ib1:
       mounted: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:0004:53:6e
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:04:53:6e 
       rate: 28000000000
       management: false
       enabled: false
@@ -3180,8 +3180,8 @@ graphene-35:
   network_interfaces:
     ib0:
       mounted: true
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:c9
-      rate: 30000000000
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:11 
+      rate: 28000000000
       management: false
       enabled: false
       interface: InfiniBand
@@ -3191,7 +3191,7 @@ graphene-35:
       mountable: true
     ib1:
       mounted: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:ca
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:12
       rate: 28000000000
       management: false
       enabled: false
@@ -3637,7 +3637,7 @@ graphene-40:
   network_interfaces:
     ib0:
       mounted: true
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:93:cd
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:cd 
       rate: 20000000000
       ip6: fe80::202:c903:b:93cd
       management: false
@@ -3649,7 +3649,7 @@ graphene-40:
       mountable: true
     ib1:
       mounted: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:93:ce
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:ce 
       rate: 28000000000
       management: false
       enabled: false
@@ -7730,12 +7730,13 @@ graphene-84:
     ib0:
       mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:9d
-      rate: 30000000000
+      rate: 20000000000 
       management: false
-      enabled: false
+      enabled: true 
       interface: InfiniBand
       version: MT26418
       ip: 172.18.64.84
+      ip6: fe80::202:c903:b:939d 
       driver: mlx4_core
       mountable: true
     ib1:
@@ -7904,8 +7905,8 @@ graphene-85:
     product_name: S5393
 graphene-86:
   bios:
-    version: V7.01e
-    release_date: 02/18/2011
+    version: V7.04
+    release_date: 02/10/2011
     vendor: American Megatrends Inc.
   network_interfaces:
     ib0:
@@ -11444,18 +11445,19 @@ graphene-124:
   network_interfaces:
     ib0:
       mounted: true
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:bd
-      rate: 2000000000
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:02:7f:61 
+      rate: 20000000000
       management: false
       enabled: true
       interface: InfiniBand
       version: MT26418
       ip: 172.18.64.124
+      ip6: fe80::202:c903:2:7f61
       driver: mlx4_core
       mountable: true
     ib1:
       mounted: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:be
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:02:7f:62 
       rate: 28000000000
       management: false
       enabled: false
@@ -12101,7 +12103,7 @@ graphene-131:
   network_interfaces:
     ib0:
       mounted: true
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:91:4d
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:4d 
       rate: 20000000000
       ip6: fe80::202:c903:b:914d
       management: false
@@ -12113,7 +12115,7 @@ graphene-131:
       mountable: true
     ib1:
       mounted: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:02:c9:03:00:0b:91:4e
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:4e
       rate: 28000000000
       management: false
       enabled: false
