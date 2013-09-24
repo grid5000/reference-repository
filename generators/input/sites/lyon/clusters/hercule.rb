@@ -53,16 +53,16 @@ site :lyon do |site_uid|
 
         storage_devices [{
           :interface => 'SATA',
-          :size => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'size'),
           :driver => "ahci",
-          :device => "sda",
+          :device => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'device'),
+          :size => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'size'),
           :model => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'model'),
           :rev => lookup('hercule_generated', node_uid, 'block_devices', 'sda', 'rev'),
         },
         {
           :interface => 'SATA',
           :driver => "ahci",
-          :device => "sdb",
+          :device => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'device'),
           :size => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'size'),
           :model => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'model'),
           :rev => lookup('hercule_generated', node_uid, 'block_devices', 'sdb', 'rev'),
@@ -70,7 +70,7 @@ site :lyon do |site_uid|
         {
           :interface => 'SATA',
           :driver => "ahci",
-          :device => "sdc",
+          :device => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'device'),
           :size => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'size'),
           :model => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'model'),
           :rev => lookup('hercule_generated', node_uid, 'block_devices', 'sdc', 'rev'),
