@@ -102,7 +102,7 @@ site :nancy do |site_uid|
           :mountable        => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib0', 'mountable'),
           :mounted          => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib0', 'mounted'),
           :vendor           => 'Mellanox',
-          :version          => "MT26418",
+          :version          => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib0', 'version'),
           :driver           => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib0', 'driver'),
           :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
           :ip               => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib0', 'ip'),
@@ -122,7 +122,7 @@ site :nancy do |site_uid|
           :mountable        => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib1', 'mountable'),
           :mounted          => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib1', 'mounted'),
           :vendor           => 'Mellanox',
-          :version          => "MT26418",
+          :version          => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib1', 'version'),
           :driver           => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib1', 'driver'),
           :guid             => lookup('griffon_generated', node_uid, 'network_interfaces', 'ib1', 'guid')
         },
