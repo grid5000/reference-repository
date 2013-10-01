@@ -3805,8 +3805,22 @@ paradent-63:
     eth0:
       mac: 00:e0:81:b2:c1:da
       ip: 172.16.97.63
+      ip6: fe80::2e0:81ff:feb2:c1da
+      mounted: true
+      rate: 1000000000
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: e1000e
+      mountable: true
     eth1:
       mac: 00:e0:81:b2:c1:db
+      mounted: false
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: e1000e
+      mountable: false
   operating_system:
     kernel: 2.6.32-5-amd64
     name: debian
