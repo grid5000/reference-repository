@@ -71,6 +71,7 @@ gw-luxembourg:
       naming_pattern: Gi%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
+      kind: node
       ports:
 #        1:
 #          uid: granduc-1
@@ -167,47 +168,36 @@ gw-luxembourg:
         24:
           uid: granduc-1
           port: eth1
-          kind: node
         25:
           uid: granduc-2
           port: eth1
-          kind: node
         26:
           uid: granduc-3
           port: eth1
-          kind: node
         27:
           uid: granduc-4
           port: eth1
-          kind: node
         28:
           uid: granduc-5
           port: eth1
-          kind: node
         29:
           uid: granduc-6
           port: eth1
-          kind: node
         30:
           uid: granduc-7
           port: eth1
-          kind: node
         31:
           uid: granduc-8
           port: eth1
-          kind: node
         32:
           uid: granduc-9
           port: eth1
-          kind: node
         33:
           uid: granduc-10
           port: eth1
-          kind: node
         34:
           uid: granduc-11
           port: eth1
-          kind: node
         35:
           uid: cronos
           port: eth1
@@ -233,139 +223,107 @@ gw-luxembourg:
       naming_pattern: Gi%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
+      kind: node
       ports:
         1:
           uid: granduc-1
           port: eth0
-          kind: node
         2:
           uid: granduc-2
           port: eth0
-          kind: node
         3:
           uid: granduc-3
           port: eth0
-          kind: node
         4:
           uid: granduc-4
           port: eth0
-          kind: node
         5:
           uid: granduc-5
           port: eth0
-          kind: node
         6:
           uid: granduc-6
           port: eth0
-          kind: node
         7:
           uid: granduc-7
           port: eth0
-          kind: node
         8:
           uid: granduc-8
           port: eth0
-          kind: node
         9:
           uid: granduc-9
           port: eth0
-          kind: node
         10:
           uid: granduc-10
           port: eth0
-          kind: node
         11:
           uid: granduc-11
           port: eth0
-          kind: node
         12:
           uid: granduc-12
           port: eth0
-          kind: node
         13:
           uid: granduc-13
           port: eth0
-          kind: node
         14:
           uid: granduc-14
           port: eth0
-          kind: node
         15:
           uid: granduc-15
           port: eth0
-          kind: node
         16:
           uid: granduc-16
           port: eth0
-          kind: node
         17:
           uid: granduc-17
           port: eth0
-          kind: node
         18:
           uid: granduc-18
           port: eth0
-          kind: node
         19:
           uid: granduc-19
           port: eth0
-          kind: node
         20:
           uid: granduc-20
           port: eth0
-          kind: node
         21:
           uid: granduc-21
           port: eth0
-          kind: node
         22:
           uid: granduc-22
           port: eth0
-          kind: node
         24:
           uid: granduc-12
           port: eth1
-          kind: node
         25:
           uid: granduc-13
           port: eth1
-          kind: node
         26:
           uid: granduc-14
           port: eth1
-          kind: node
         27:
           uid: granduc-15
           port: eth1
-          kind: node
         28:
           uid: granduc-16
           port: eth1
-          kind: node
         29:
           uid: granduc-17
           port: eth1
-          kind: node
         30:
           uid: granduc-18
           port: eth1
-          kind: node
         31:
           uid: granduc-19
           port: eth1
-          kind: node
         32:
           uid: granduc-20
           port: eth1
-          kind: node
         33:
           uid: granduc-21
           port: eth1
-          kind: node
         34:
           uid: granduc-22
           port: eth1
-          kind: node
         44:
           uid: cronos
           port: eth0
@@ -383,23 +341,22 @@ gw-luxembourg:
       naming_pattern: Te%LINECARD%/%PORT%
       rate: 10000000000
       backplane_bps: 40000000000
+      kind: switch
       ports:
         1:
           uid: ul-grid5000-sw02
           port: Ethernet1/30
-          kind: switch
         2:
           uid: ul-grid5000-sw02
           port: Ethernet1/32
-          kind: switch
     5:
       naming_pattern: Te%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
+      kind: virtual
       ports:
         4:
           uid: renater-luxembourg
-          kind: virtual
           rate: 10000000000
   channels:
     naming_pattern: Po%CHANNELID%
