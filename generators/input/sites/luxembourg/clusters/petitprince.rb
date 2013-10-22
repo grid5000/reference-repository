@@ -3,7 +3,7 @@ site :luxembourg do |site_uid|
   cluster :petitprince do |cluster_uid|
     model "PowerEdge M620"
     created_at Time.parse("2013-09-10").httpdate
-    kavlan false
+    kavlan true
 
     16.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
