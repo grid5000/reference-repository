@@ -135,8 +135,9 @@ site :lille do |site_uid|
         })
 
         gpu({
-          :gpu        => true,
+          :gpu        => 'shared',
           :gpu_count  => lookup('chirloute_manual', node_uid, 'gpu', 'gpu_count'),
+          :gpu_vendor => lookup('chirloute_manual', node_uid, 'gpu', 'gpu_vendor'),
           :gpu_model => lookup('chirloute_manual', node_uid, 'gpu', 'gpu_model'),
         })
 
