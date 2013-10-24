@@ -44,7 +44,8 @@ module Grid5000
         h['memcpu']          = properties['main_memory']['ram_size']/properties['architecture']['smp_size']/MiB
         h['memnode']         = properties['main_memory']['ram_size']/MiB
         properties["gpu"]  ||= {}
-        h['gpu']             = properties['gpu']['gpu'] ? "YES" : "NO"
+        h['gpu']             = (properties['gpu']['gpu'].is_a?(String) and properties['gpu']['gpu'].upcase == "SHARED") ? "SHARED" \
+                                : properties['gpu']['gpu'] ? "YES" : "NO"
         h['gpu_count']       = properties['gpu']['gpu_count']
         h['gpu_model']       = properties['gpu']['gpu_model']
         properties["monitoring"] ||= {}
