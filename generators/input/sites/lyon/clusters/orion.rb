@@ -191,6 +191,7 @@ site :lyon do |site_uid|
         gpu({
           :gpu         =>  true,
           :gpu_count   =>  1,
+          :gpu_vendor  =>  "Nvidia",
           :gpu_model   =>  "Tesla-M2075",
         })
 
