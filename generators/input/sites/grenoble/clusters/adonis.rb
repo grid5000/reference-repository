@@ -140,6 +140,7 @@ site :grenoble do |site_uid|
         gpu({
           :gpu         => true,
           :gpu_count   =>  lookup('adonis_manual', node_uid, 'gpu', 'gpu_count'),
+          :gpu_vendor  =>  lookup('adonis_manual', node_uid, 'gpu', 'gpu_vendor'),
           :gpu_model   =>  lookup('adonis_manual', node_uid, 'gpu', 'gpu_model'),
         })
 
