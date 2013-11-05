@@ -9,8 +9,8 @@ site :luxembourg do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
         performance({
-        :node_flops     => 192.G,
-        :core_flops     => 16.G
+        :node_flops     => 130.6.G,
+        :core_flops     => 12.14.G
         })
 
         supported_job_types({
