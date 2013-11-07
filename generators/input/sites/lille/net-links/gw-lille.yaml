@@ -208,12 +208,14 @@ gw-lille:
            uid: zed
            port: eth0
     4:
-      kind: switch
+      kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       ports:
-        23: chirloute-7
+        23: 
+          uid: chirloute-7
+          port: eth1
         40:
           kind: other
           uid: chimint-srv2
