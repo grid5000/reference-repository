@@ -9,8 +9,8 @@ site :nancy do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
         performance({
-          :core_flops => 0.G,
-          :node_flops => 0.G
+          :core_flops => 13.17.G,
+          :node_flops => 187.90.G
         })
 
         supported_job_types({
