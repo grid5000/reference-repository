@@ -160,9 +160,28 @@ site :nancy do |site_uid|
           :release_date => lookup('graphite_generated', node_uid, 'bios', 'release_date')
         })
 
+        mic({
+          :mic        => true,
+          :mic_count  => lookup('graphite_manual', node_uid, 'mic', 'mic_count'),
+          :mic_model => lookup('graphite_manual', node_uid, 'mic', 'mic_model'),
+        })
+
         gpu({
           :gpu  => false
         })
+
+       sensors({
+              :power => {
+                :available => true,
+                :via => {
+                  :api => { :metric => 'pdu' },
+                  :pdu => {
+                    :uid  => lookup('graphite_manual', node_uid, 'pdu', 'pdu_name'),
+                    :port => lookup('graphite_manual', node_uid, 'pdu', 'pdu_position'),
+                  }
+                }
+              }
+            })
 
       end
     end
