@@ -176,10 +176,10 @@ site :nancy do |site_uid|
               :available => true,
               :via => {
                 :api => { :metric => 'pdu' },
-                :pdu => {
+                :pdu => [ {
                   :uid  => lookup('graphene_manual', node_uid, 'pdu', 'pdu_name'),
                   :port => lookup('graphene_manual', node_uid, 'pdu', 'pdu_position'),
-                }
+                } ]
               }
             }
           })
@@ -188,7 +188,7 @@ site :nancy do |site_uid|
             :power => {
               :available => false, # Set to true when pdu resources will be declared
               :via => {
-                :pdu => { :uid  => lookup('graphene_manual', node_uid, 'pdu', 'pdu_name') }
+                :pdu => [ { :uid  => lookup('graphene_manual', node_uid, 'pdu', 'pdu_name') } ]
               }
             }
           })
