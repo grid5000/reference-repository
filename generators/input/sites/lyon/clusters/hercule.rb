@@ -169,6 +169,7 @@ site :lyon do |site_uid|
         sensors({
           :power => {
             :available => true,
+            :per_outlets => false,
             :via => {
               :api => { :metric => 'pdu_shared' },
               :www => { :url => 'http://wattmetre.lyon.grid5000.fr/GetWatts-json.php' },
