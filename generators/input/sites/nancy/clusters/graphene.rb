@@ -186,7 +186,7 @@ site :nancy do |site_uid|
         else
           sensors({
             :power => {
-              :available => false, # Set to true when pdu resources will be declared
+              :available => true, # Set to true when pdu resources will be declared
               :via => {
                 :pdu => [ { :uid  => lookup('graphene_manual', node_uid, 'pdu', 'pdu_name') } ]
               }
