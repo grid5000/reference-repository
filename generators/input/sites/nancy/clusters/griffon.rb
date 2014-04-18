@@ -161,7 +161,7 @@ site :nancy do |site_uid|
 
         sensors({
           :power => {
-            :available => false, # Set to true when pdu resources will be declared
+            :available => true, # Set to true when pdu resources will be declared
             :via => [ {
               :pdu => { :uid => lookup('griffon_manual', node_uid, 'pdu', 'pdu_name') }
             } ]
