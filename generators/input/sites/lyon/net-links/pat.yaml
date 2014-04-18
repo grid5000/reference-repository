@@ -1,0 +1,53 @@
+---
+edgeiron:
+  model: Foundry
+  kind: switch
+  site: lyon
+  snmp_community: public
+  weathermap:
+    use_cacti: "no"
+  mtu: 1500
+  vlans:
+    naming_pattern: Vlan%VLANID%
+    "vlan1":
+      administrative: yes
+      addresses:
+        - 172.17.63.250
+  routes: {}
+  backplane_bps: 40000000000
+
+  linecards:
+    0:
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: router
+      rate: 1000000000
+      ports:
+        1:
+          uid: gw-sophia
+          port: ethernet2/1
+        2:
+          uid: gw-sophia
+          port: ethernet2/2
+    1:
+      naming_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 100000000
+      ports:
+        1: hercule-1-eth2
+        2: hercule-2-eth2
+        3: hercule-3-eth2
+        4: hercule-4-eth2
+        21: hercule-1-eth3
+        22: hercule-2-eth3
+        23: hercule-3-eth3
+        24: hercule-4-eth3
+        25: 
+          uid: force10
+          port: "0:47"
+          kind: switch
+        26:
+          uid: chris
+          port: "0:37"
+          kind: switch
+  channels:
+    naming_pattern: Po%CHANNELID%
