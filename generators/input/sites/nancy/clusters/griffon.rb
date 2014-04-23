@@ -90,6 +90,8 @@ site :nancy do |site_uid|
           :device           => "eth1",
           :vendor           => "intel",
           :version          => "BCM5721",
+          :switch           => lookup('griffon_manual', node_uid, 'network_interfaces', 'eth1', 'switch_name'),
+          :switch_port      => lookup('griffon_manual', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
           :driver           => lookup('griffon_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
           :mac              => lookup('griffon_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
