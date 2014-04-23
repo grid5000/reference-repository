@@ -111,7 +111,7 @@ site :lyon do |site_uid|
         },
         {
           :interface        => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'interface'),
-          :rate             => 1.G,
+          :rate             => 100.M,
           :enabled          => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'enabled'),
           :management       => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'management'),
           :mountable        => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'mountable'),
@@ -127,7 +127,7 @@ site :lyon do |site_uid|
         },
         {
           :interface        => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'interface'),
-          :rate             => 1.G,
+          :rate             => 100.M,
           :enabled          => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'enabled'),
           :management       => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'management'),
           :mountable        => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'mountable'),
