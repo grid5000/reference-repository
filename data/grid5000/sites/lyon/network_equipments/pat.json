@@ -1,0 +1,125 @@
+{
+  "backplane_bps": 40000000000,
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
+  "kind": "switch",
+  "linecards": [
+    {
+
+    },
+    {
+      "kind": "node",
+      "naming_pattern": "%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "uid": "hercule-1-eth2"
+        },
+        {
+          "uid": "hercule-2-eth2"
+        },
+        {
+          "uid": "hercule-3-eth2"
+        },
+        {
+          "uid": "hercule-4-eth2"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "uid": "hercule-1-eth3"
+        },
+        {
+          "uid": "hercule-2-eth3"
+        },
+        {
+          "uid": "hercule-3-eth3"
+        },
+        {
+          "uid": "hercule-4-eth3"
+        },
+        {
+          "kind": "switch",
+          "port": "0:47",
+          "uid": "force10"
+        },
+        {
+          "kind": "switch",
+          "port": "0:37",
+          "uid": "chris"
+        }
+      ],
+      "rate": 100000000
+    }
+  ],
+  "model": "Foundry EdgeIron",
+  "mtu": 1500,
+  "routes": {
+
+  },
+  "site": "lyon",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "pat",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%",
+    "vlan1": {
+      "addresses": [
+        "172.17.63.250"
+      ],
+      "administrative": true
+    }
+  },
+  "weathermap": {
+    "use_cacti": "no"
+  }
+}

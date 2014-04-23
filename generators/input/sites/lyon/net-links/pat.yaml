@@ -1,6 +1,6 @@
 ---
-edgeiron:
-  model: Foundry
+pat:
+  model: Foundry EdgeIron
   kind: switch
   site: lyon
   snmp_community: public
@@ -17,17 +17,6 @@ edgeiron:
   backplane_bps: 40000000000
 
   linecards:
-    0:
-      naming_pattern: "%LINECARD%/%PORT%"
-      kind: router
-      rate: 1000000000
-      ports:
-        1:
-          uid: gw-sophia
-          port: ethernet2/1
-        2:
-          uid: gw-sophia
-          port: ethernet2/2
     1:
       naming_pattern: "%LINECARD%/%PORT%"
       kind: node
