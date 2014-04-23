@@ -114,6 +114,8 @@ site :nancy do |site_uid|
           :device           => "eth2",
           :vendor           => "intel",
           :version          => "I350",
+          :switch           => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth2', 'switch_name'),
+          :switch_port      => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth2', 'switch_port'),
           :driver           => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
           :mac              => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth2', 'mac')
         },
@@ -128,6 +130,8 @@ site :nancy do |site_uid|
           :device           => "eth3",
           :vendor           => "intel",
           :version          => "I350",
+          :switch           => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth3', 'switch_name'),
+          :switch_port      => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth3', 'switch_port'),
           :driver           => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth3', 'driver'),
           :mac              => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth3', 'mac')
         },
