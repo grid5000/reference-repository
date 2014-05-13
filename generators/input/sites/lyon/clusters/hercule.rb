@@ -122,7 +122,7 @@ site :lyon do |site_uid|
           :version          => "Intel Corporation",
           :driver           => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
           :switch           => "pat",
-          :switch_port      => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch_port      => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'switch_port'),
           :mac              => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'mac')
         },
         {
@@ -138,7 +138,7 @@ site :lyon do |site_uid|
           :version          => "Intel Corporation",
           :driver           => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'driver'),
           :switch           => "pat",
-          :switch_port      => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch_port      => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'switch_port'),
           :mac              => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'mac')
         },
         {
