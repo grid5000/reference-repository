@@ -4,6 +4,7 @@ site :lyon do |site_uid|
     model "Dell R720"
     created_at Time.parse("2012-09-14 12:00 GMT").httpdate
     kavlan true
+    production true
 
     4.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

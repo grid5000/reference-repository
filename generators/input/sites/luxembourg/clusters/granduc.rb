@@ -4,6 +4,7 @@ site :luxembourg do |site_uid|
     model "PowerEdge 1950"
     created_at Time.parse("2011-12-01").httpdate
     kavlan true
+    production true
 
     22.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

@@ -12,4 +12,5 @@ site :luxembourg do |site_uid|
   compilation_server false
   kavlan_ip_range "10.40.0.0/14"
   virt_ip_range "10.172.0.0/14"
+  production true
 end

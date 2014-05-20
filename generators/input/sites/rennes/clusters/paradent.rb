@@ -4,6 +4,7 @@ site :rennes do |site_uid|
     model "Carry System"
     created_at Time.parse("2009-02-01").httpdate
     kavlan true
+    production true
 
     64.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

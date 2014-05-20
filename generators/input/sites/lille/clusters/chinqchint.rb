@@ -4,6 +4,7 @@ site :lille do |site_uid|
     model "Altix Xe 310"
     created_at nil
     kavlan true
+    production true
 
     46.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

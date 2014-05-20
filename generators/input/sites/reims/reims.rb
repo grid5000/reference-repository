@@ -12,4 +12,5 @@ site :reims do |site_uid|
   compilation_server false
   kavlan_ip_range "10.36.0.0/14"
   virt_ip_range "10.168.0.0/14"
+  production true
 end

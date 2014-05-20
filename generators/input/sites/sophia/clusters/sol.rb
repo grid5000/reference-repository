@@ -4,6 +4,7 @@ site :sophia do |site_uid|
     model "Sun Fire X2200 M2"
     created_at Time.parse("2007-02-23").httpdate
     kavlan true
+    production true
 
     50.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

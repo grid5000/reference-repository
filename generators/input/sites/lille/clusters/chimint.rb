@@ -4,6 +4,7 @@ site :lille do |site_uid|
     model "Dell PowerEdge R410"
     created_at Time.parse("2011-03-25").httpdate
     kavlan true
+    production true
 
     20.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

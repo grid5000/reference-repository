@@ -4,6 +4,7 @@ site :rennes do |site_uid|
     model "HP ProLiant DL165 G7"
     created_at Time.parse("2010-11-02").httpdate
     kavlan true
+    production true
 
     40.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

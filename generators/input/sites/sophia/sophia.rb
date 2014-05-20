@@ -12,4 +12,5 @@ site :sophia do |site_uid|
   compilation_server false
   kavlan_ip_range "10.32.0.0/14"
   virt_ip_range "10.164.0.0/14"
+  production true
 end

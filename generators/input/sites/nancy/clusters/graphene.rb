@@ -4,6 +4,7 @@ site :nancy do |site_uid|
     model "Carri System 5393"
     created_at Time.parse("2011-01-20").httpdate
     kavlan true
+    production true
 
     144.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
