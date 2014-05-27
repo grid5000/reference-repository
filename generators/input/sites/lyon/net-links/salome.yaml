@@ -16,11 +16,13 @@ salome:
   linecards:
     0:
       naming_pattern: "ethernet%PORT%"
+      snmp_pattern: "GigabitEthernet%PORT%"
       kind: router
       rate: 1000000000
       ports:
         49:
             uid: gw-lyon
+            snmp_pattern: "GigabitEthernet%PORT%"
             rate: 10000000000
         48:
             uid: mizar

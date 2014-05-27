@@ -65,6 +65,7 @@ gw-rennes:
     1:
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
+      snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       rate: 10000000000
       backplane_bps: 40000000000
       model: WS-X6704-10GE
@@ -73,6 +74,7 @@ gw-rennes:
     2:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
@@ -100,6 +102,7 @@ gw-rennes:
     3:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
@@ -114,6 +117,7 @@ gw-rennes:
     8:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
@@ -122,6 +126,7 @@ gw-rennes:
     7:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       model: WS-X6748-GE-TX
       ports:
@@ -161,6 +166,7 @@ gw-rennes:
     6:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
@@ -202,6 +208,7 @@ gw-rennes:
     4:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
@@ -242,3 +249,4 @@ gw-rennes:
         4: paradent-9
   channels:
     naming_pattern: Po%CHANNELID%
+    snmp_pattern: Port-channel%CHANNELID%

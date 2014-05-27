@@ -69,6 +69,7 @@ gw-luxembourg:
   linecards:
     1:
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       kind: node
@@ -221,6 +222,7 @@ gw-luxembourg:
         48:
     2:
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       kind: node
@@ -339,6 +341,7 @@ gw-luxembourg:
         48:
     3:
       naming_pattern: Te%LINECARD%/%PORT%
+      snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       rate: 10000000000
       backplane_bps: 40000000000
       kind: switch
@@ -351,6 +354,7 @@ gw-luxembourg:
           port: Ethernet1/32
     5:
       naming_pattern: Te%LINECARD%/%PORT%
+      snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       kind: virtual
@@ -360,6 +364,7 @@ gw-luxembourg:
           rate: 10000000000
   channels:
     naming_pattern: Po%CHANNELID%
+    snmp_pattern: Port-channel%CHANNELID%
     "lacp1":
         - linecard: 1
           port: 35

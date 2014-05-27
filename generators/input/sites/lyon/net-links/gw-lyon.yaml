@@ -62,6 +62,7 @@ gw-lyon:
   linecards:
     1:
       naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
       kind: node
       rate: 1000000000
@@ -116,6 +117,7 @@ gw-lyon:
         9: sagittaire-9
     2:
       naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
       kind: node
       rate: 1000000000
@@ -152,6 +154,7 @@ gw-lyon:
         31: sagittaire-79
     4:
       naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
       kind: switch
       rate: 1000000000
@@ -177,6 +180,7 @@ gw-lyon:
           kind: virtual # Through castor, nat VM to ENS-Lyon network
     9:
       naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
       kind: switch
       rate: 10000000000

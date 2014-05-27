@@ -8,6 +8,7 @@ gw-toulouse:
   mtu: 9216
   vlans:
     naming_pattern: Vlan%VLANID%
+    snmp_pattern: Vlan%VLANID%
     "vlan100":
       administrative: yes
       addresses:
@@ -66,6 +67,7 @@ gw-toulouse:
     1:
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
+      snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       rate: 10000000000
       ports:
         1: renater-toulouse
@@ -75,6 +77,7 @@ gw-toulouse:
     2:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       ports:
         1: pastel-81
@@ -128,6 +131,7 @@ gw-toulouse:
     3:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       ports:
         36:

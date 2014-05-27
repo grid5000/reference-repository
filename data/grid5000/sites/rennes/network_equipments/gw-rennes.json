@@ -1,7 +1,8 @@
 {
   "backplane_bps": 720000000000,
   "channels": {
-    "naming_pattern": "Po%CHANNELID%"
+    "naming_pattern": "Po%CHANNELID%",
+    "snmp_pattern": "Port-channel%CHANNELID%"
   },
   "kind": "router",
   "linecards": [
@@ -21,7 +22,8 @@
           "uid": "renater-rennes"
         }
       ],
-      "rate": 10000000000
+      "rate": 10000000000,
+      "snmp_pattern": "TenGigabitEthernet%LINECARD%/%PORT%"
     },
     {
       "backplane_bps": 40000000000,
@@ -177,7 +179,8 @@
           "uid": "parapluie-24"
         }
       ],
-      "rate": 1000000000
+      "rate": 1000000000,
+      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     },
     {
       "backplane_bps": 40000000000,
@@ -333,7 +336,8 @@
           "uid": "parapluie-22"
         }
       ],
-      "rate": 1000000000
+      "rate": 1000000000,
+      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     },
     {
       "backplane_bps": 40000000000,
@@ -489,7 +493,8 @@
           "uid": "parapluie-29"
         }
       ],
-      "rate": 1000000000
+      "rate": 1000000000,
+      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     },
     {
 
@@ -648,7 +653,8 @@
           "uid": "parapide-12"
         }
       ],
-      "rate": 1000000000
+      "rate": 1000000000,
+      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     },
     {
       "kind": "node",
@@ -803,7 +809,8 @@
           "uid": "parapide-2"
         }
       ],
-      "rate": 1000000000
+      "rate": 1000000000,
+      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     },
     {
       "backplane_bps": 40000000000,
@@ -863,7 +870,8 @@
           "uid": "paradent-41"
         }
       ],
-      "rate": 1000000000
+      "rate": 1000000000,
+      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     }
   ],
   "model": "Cisco WS-C6509-E",

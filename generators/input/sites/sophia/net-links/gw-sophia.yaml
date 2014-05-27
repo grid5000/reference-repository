@@ -7,6 +7,7 @@ gw-sophia:
   mtu: 10240
   vlans:
     naming_pattern: Vlan%VLANID%
+    snmp_pattern: v%VLANID%
     "vlan100":
       administrative: yes
       addresses:
@@ -78,6 +79,7 @@ gw-sophia:
   linecards:
     2:
       naming_pattern: "ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "10GigabitEthernet%LINECARD%/%PORT%"
       kind: switch
       backplane_bps: 20000000000
       rate: 10000000000
@@ -90,6 +92,7 @@ gw-sophia:
           port: 0/2
     7:
       naming_pattern: "ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       backplane_bps: 24000000000
       rate: 1000000000
@@ -118,6 +121,7 @@ gw-sophia:
           kind: other
     3:
       naming_pattern: "ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       backplane_bps: 24000000000
       rate: 1000000000
@@ -148,6 +152,7 @@ gw-sophia:
         24: sol-36
     4:
       naming_pattern: "ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       backplane_bps: 24000000000
       rate: 1000000000
@@ -178,6 +183,7 @@ gw-sophia:
         24: sol-48
     9:
       naming_pattern: "ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: other
       backplane_bps: 12000000000
       rate: 1000000000
@@ -201,6 +207,7 @@ gw-sophia:
           port: eth1
     5:
       naming_pattern: "ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       backplane_bps: 24000000000
       rate: 1000000000
@@ -224,6 +231,7 @@ gw-sophia:
         15: suno-17
     6:
       naming_pattern: "ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       backplane_bps: 24000000000
       rate: 1000000000

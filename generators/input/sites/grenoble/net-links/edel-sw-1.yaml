@@ -11,9 +11,10 @@ edel-sw-1:
     naming_pattern: Vlan%VLANID%
   routes: {}
 
-  linecards: 
+  linecards:
     1:
       naming_pattern: "%LINECARD%/0/%PORT%"
+      snmp_pattern: "Unit: %LINECARD% Slot: 0 Port: %PORT% Gigabit - Level"
       kind: node
       rate: 1000000000
       ports:

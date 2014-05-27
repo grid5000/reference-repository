@@ -16,6 +16,7 @@ sgriffon3:
   linecards:
     0:
       naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
       ports:
@@ -53,6 +54,7 @@ sgriffon3:
         44: griffon-92
     1:
       naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: router
       rate: 10000000000
       ports:

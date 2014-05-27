@@ -65,6 +65,7 @@ gw-reims:
   linecards:
     0:
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       kind: node
       rate: 1000000000
       ports:
@@ -117,3 +118,4 @@ gw-reims:
           uid: renater-reims
   channels:
     naming_pattern: Po%CHANNELID%
+    snmp_pattern: Port-channel%CHANNELID%

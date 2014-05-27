@@ -136,7 +136,8 @@
           "uid": "pastel-40"
         }
       ],
-      "rate": 1000000000
+      "rate": 1000000000,
+      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     },
     {
       "kind": "router",
@@ -149,7 +150,8 @@
           "uid": "gw-toulouse"
         }
       ],
-      "rate": 10000000000
+      "rate": 10000000000,
+      "snmp_pattern": "TenGigabitEthernet%LINECARD%/%PORT%"
     },
     {
 
@@ -282,7 +284,8 @@
           "uid": "pastel-80"
         }
       ],
-      "rate": 1000000000
+      "rate": 1000000000,
+      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     }
   ],
   "model": "Cisco 7606",
@@ -296,6 +299,7 @@
   "uid": "r4",
   "vlans": {
     "naming_pattern": "Vlan%VLANID%",
+    "snmp_pattern": "Vlan-%VLANID%",
     "vlan100": {
       "addresses": [
         "172.16.127.201"

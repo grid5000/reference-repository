@@ -27,6 +27,7 @@ ul-grid5000-sw02:
 #          kind: router
     1:
       naming_pattern: "Ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
       kind: node
       ports:
@@ -146,6 +147,7 @@ ul-grid5000-sw02:
           kind: switch
   channels:
     naming_pattern: Po%CHANNELID%
+    snmp_pattern: port-channel%CHANNELID%
     "lacp5":
         - linecard: 1
           port: 33

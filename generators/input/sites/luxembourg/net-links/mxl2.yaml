@@ -19,6 +19,7 @@ mxl2:
   linecards:
     0:
       naming_pattern: "Te%LINECARD%/%PORT%"
+      snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
       rate: 10000000000
       kind: node
       ports:
@@ -88,6 +89,7 @@ mxl2:
           kind: switch
   channels:
     naming_pattern: Po%CHANNELID%
+    snmp_pattern: Port-channel%CHANNELID%
     "lacp6":
         - linecard: 1
           port: 33

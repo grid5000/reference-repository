@@ -73,6 +73,7 @@ gw-lille:
     6:
       kind: router
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       ports:
@@ -80,6 +81,7 @@ gw-lille:
     1:
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
+      snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 10000000000
       ports:
@@ -87,6 +89,7 @@ gw-lille:
     2:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       port: eth1
@@ -154,6 +157,7 @@ gw-lille:
     3:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       port: eth1
@@ -210,6 +214,7 @@ gw-lille:
     4:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       ports:
@@ -222,3 +227,4 @@ gw-lille:
           port: eth1
   channels:
     naming_pattern: Po%CHANNELID%
+    snmp_pattern: Port-channel%CHANNELID%

@@ -37,7 +37,8 @@
         "port": 40
       }
     ],
-    "naming_pattern": "Po%CHANNELID%"
+    "naming_pattern": "Po%CHANNELID%",
+    "snmp_pattern": "port-channel%CHANNELID%"
   },
   "kind": "switch",
   "linecards": [
@@ -214,7 +215,8 @@
           "uid": "mxl2"
         }
       ],
-      "rate": 10000000000
+      "rate": 10000000000,
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
     }
   ],
   "model": "cisco N5K-C5020P-BF",
