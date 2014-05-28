@@ -9,6 +9,7 @@ edgeiron:
   mtu: 10240
   vlans:
     naming_pattern: Vlan%VLANID%
+    snmp_pattern: v%VLANID%
     "vlan100":
       administrative: yes
       addresses:
@@ -19,6 +20,7 @@ edgeiron:
   linecards:
     0:
       naming_pattern: "%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: router
       rate: 1000000000
       ports:
@@ -30,6 +32,7 @@ edgeiron:
           port: ethernet2/2
     1:
       naming_pattern: "%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
       ports:
@@ -79,6 +82,7 @@ edgeiron:
         21: helios-48
     3:
       naming_pattern: "%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
       ports:
