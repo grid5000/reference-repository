@@ -47,7 +47,7 @@ gw-lille:
     "vlan705":
       name: kavlan-5
       addresses:
-        - 10.8.64.0/18	
+        - 10.8.64.0/18
     "vlan706":
       name: kavlan-6
       addresses:
@@ -55,11 +55,11 @@ gw-lille:
     "vlan707":
       name: kavlan-7
       addresses:
-        - 10.8.192.0/18	
+        - 10.8.192.0/18
     "vlan708":
       name: kavlan-8
       addresses:
-        - 10.9.0.0/18	
+        - 10.9.0.0/18
     "vlan709":
       name: kavlan-9
       addresses:
@@ -94,31 +94,45 @@ gw-lille:
       rate: 1000000000
       port: eth1
       ports:
-        27: chinqchint-27
-        11: chinqchint-11
-        33: chinqchint-33
-        17: chinqchint-17
-        6: chinqchint-6
-        39: chinqchint-39
-        34: chinqchint-34
         1: chinqchint-1
-        12: chinqchint-12
-        29: chinqchint-29
-        18: chinqchint-18
-        40: chinqchint-40
-        24: chinqchint-24
         2: chinqchint-2
-        13: chinqchint-13
-        30: chinqchint-30
-        8: chinqchint-8
-        7: chinqchint-7
-        19: chinqchint-19
-        41: chinqchint-5
-        25: chinqchint-25
-        14: chinqchint-14
         3: chinqchint-3
+        4: chinqchint-4
+        6: chinqchint-6
+        7: chinqchint-7
+        8: chinqchint-8
         9: chinqchint-9
+        10: chinqchint-10
+        11: chinqchint-11
+        12: chinqchint-12
+        13: chinqchint-13
+        14: chinqchint-14
+        15: chinqchint-15
+        16: chinqchint-16
+        17: chinqchint-17
+        18: chinqchint-18
+        19: chinqchint-19
+        20: chinqchint-20
+        21: chinqchint-21
+        22: chinqchint-22
+        23: chinqchint-23
+        24: chinqchint-24
+        25: chinqchint-25
+        26: chinqchint-26
+        27: chinqchint-27
+        28: chinqchint-28
+        29: chinqchint-29
+        30: chinqchint-30
         31: chinqchint-31
+        32: chinqchint-32
+        33: chinqchint-33
+        34: chinqchint-34
+        35: chinqchint-35
+        37: chinqchint-37
+        38: chinqchint-38
+        39: chinqchint-39
+        40: chinqchint-40
+        41: chinqchint-5
         36:
           kind: other
           uid: maya-nfs
@@ -135,21 +149,6 @@ gw-lille:
           kind: other
           uid: flandres
           port: eth0
-        20: chinqchint-20
-        4:  chinqchint-4
-        15: chinqchint-15
-        16: chinqchint-16
-        26: chinqchint-26
-        10: chinqchint-10
-        21: chinqchint-21
-        22: chinqchint-22
-        23: chinqchint-23
-        28: chinqchint-28
-        35: chinqchint-35
-        36: chinqchint-36
-        37: chinqchint-37
-        38: chinqchint-38
-        32: chinqchint-32
         14:
           kind: switch
           uid: myrinet
@@ -162,39 +161,39 @@ gw-lille:
       rate: 1000000000
       port: eth1
       ports:
-        27: chimint-20
-        16: chimint-10
-        5: chinqchint-45
-        33: chirloute-5
-        17: chimint-11
-        23: chimint-15
-        12: chimint-6
         1: chinqchint-41
         2: chinqchint-42
-        18: chimint-12
-        7: chimint-1
-        13: chimint-8
-        24: chimint-18
-        8:  chimint-3
-        41: chinqchint-46
-        30: chirloute-3
-        19: chimint-13
-        14: chimint-7
-        25: chirloute-2
         3: chinqchint-43
+        4: chinqchint-44
+        5: chinqchint-45
+        7: chimint-1
+        8: chimint-3
         9: chimint-2
         10: chimint-5
         11: chimint-4
-        22: chimint-16
-        21: chimint-17
-        8: chimint-19
-        31: chirloute-6
-        20: chimint-14
+        12: chimint-6
+        13: chimint-8
+        14: chimint-7
         15: chimint-9
-        4: chinqchint-44
+        16: chimint-10
+        17: chimint-11
+        18: chimint-12
+        19: chimint-13
+        20: chimint-14
+        21: chimint-17
+        22: chimint-16
+        23: chimint-15
+        24: chimint-18
+        25: chirloute-2
         26: chirloute-4
+        27: chimint-20
+        28: chimint-19
         29: chirloute-1
+        30: chirloute-3
+        31: chirloute-6
         32: chirloute-8
+        33: chirloute-5
+        41: chinqchint-46
         42:
            kind: other
            uid: jiminy
@@ -218,9 +217,11 @@ gw-lille:
       backplane_bps: 40000000000
       rate: 1000000000
       ports:
-        23: 
+        23:
           uid: chirloute-7
           port: eth1
+        28: chinqchint-36
+        29: chinqchint-14
         40:
           kind: other
           uid: chimint-srv2
