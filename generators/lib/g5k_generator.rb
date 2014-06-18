@@ -136,21 +136,34 @@ module G5K
       end
     end
 
-    # Build snmp_naming_pattern Example:
-    # '3 2 GigabitEthernet%LINECARD%/%PORT%' -> 'GigabitEthernet3/2'
+    # Build portname from snmp_naming_pattern
+    # Example: '3 2 GigabitEthernet%LINECARD%/%PORT%' -> 'GigabitEthernet3/2'
     def get_portname(lc_num,port_num,pattern)
       return pattern.sub("%LINECARD%",lc_num.to_s).sub("%PORT%",port_num.to_s)
     end
  
+    # Load information from network description yaml files
+    def get_net_equipment(site)
+      if $net_equipment.nil?
+        $net_equipment={}
+      end
+      if $net_equipment[site].nil?
+        $net_equipment[site]={}
+        Pathname.glob("generators/input/sites/#{site}/net-links/*.yaml").map  {  |i| i.basename.to_s.sub!(".yaml","") }.each do |equipment_name|
+          netlinks = File.open("generators/input/sites/#{site}/net-links/#{equipment_name}.yaml")
+          $net_equipment[site][equipment_name] = YAML::load_stream ( netlinks )
+        end
+      end
+      return $net_equipment[site]
+    end
+
+    # Parse network equipment description and print switch connected to given node
     def net_switch_lookup(site, cluster, node_uid, interface='')
-      # Build the cluster_node_uid from argv1+argv2 
       if interface != ""
         node_uid = node_uid+"-"+interface
       end
-      Pathname.glob("generators/input/sites/#{site}/net-links/*.yaml").map  {  |i| i.basename.to_s.sub!(".yaml","") }.each do |equipment_name|
-        netlinks = File.open("generators/input/sites/#{site}/net-links/#{equipment_name}.yaml")
-        tab = YAML::load_stream ( netlinks )
-        tab[0][equipment_name]["linecards"].each do |(lc_num,lc_content)|
+      get_net_equipment(site).keys.each do |equipment_name|
+        get_net_equipment(site)[equipment_name][0][equipment_name]["linecards"].each do |(lc_num,lc_content)|
           lc_content["ports"].each do |(port_num,port_content)|
             if port_content.is_a?(Hash)
               if port_content["uid"] == node_uid
@@ -164,17 +177,14 @@ module G5K
       end
       return nil
     end
- 
+
     # Parse network equipment description and print switch port connected to given node
     def net_port_lookup(site, cluster, node_uid, interface='')
-      # Build the cluster_node_uid from argv1+argv2
       if interface != ""
         node_uid = node_uid+"-"+interface
       end
-      Pathname.glob("generators/input/sites/#{site}/net-links/*.yaml").map { |i| i.basename.to_s.sub!(".yaml","") }.each do |equipment_name|
-        netlinks = File.open("generators/input/sites/#{site}/net-links/#{equipment_name}.yaml")
-        tab = YAML::load_stream ( netlinks )
-        tab[0][equipment_name]["linecards"].each do |(lc_num,lc_content)|
+      get_net_equipment(site).keys.each do |equipment_name|
+        get_net_equipment(site)[equipment_name][0][equipment_name]["linecards"].each do |(lc_num,lc_content)|
           lc_content["ports"].each do |(port_num,port_content)|
             if port_content.is_a?(Hash)
               if port_content["uid"] == node_uid
