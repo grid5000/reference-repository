@@ -1,0 +1,41 @@
+---
+bigdata-sw:
+  model: Force10 S4810
+  kind: switch
+  site: rennes
+  snmp_community: public
+  vlans:
+    naming_pattern: Vlan%VLANID%
+    "vlan101":
+      administrative: yes
+      addresses:
+        - 172.17.111.203
+  routes: {}
+  backplane_bps: 1280000000000
+  mtu: 1500
+  linecards:
+    0:
+      naming_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
+      kind: node
+      rate: 10000000000
+      port: eth0
+      ports:
+        0:
+          uid: gw-rennes
+          kind: router
+          port: "1:3"
+        11: srv-bigdata
+        18: ceph3
+        19: ceph2
+        20: paranoia-8
+        21: paranoia-7
+        22: paranoia-4
+        23: paranoia-3
+        42: ceph1
+        43: ceph0
+        44: paranoia-6
+        45: paranoia-5
+        46: paranoia-2
+        47: paranoia-1
+  channels:
+    naming_pattern: Po%CHANNELID%
