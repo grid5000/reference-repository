@@ -90,8 +90,8 @@ site :lille do |site_uid|
           :vendor           => 'Intel',
           :version          => '80003ES2LAN',
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :switch           => 'gw-lille',
-          :switch_port      => lookup('chinqchint_manual',"#{node_uid}",'network_interfaces', 'eth1', 'switch_port'),
+          :switch           => net_switch_lookup('lille', 'chinqchint', node_uid, 'eth1'),
+          :switch_port      => net_port_lookup('lille', 'chinqchint', node_uid, 'eth1'),
           :ip               => lookup('chinqchint_generated', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :ip6              => lookup('chinqchint_generated', node_uid, 'network_interfaces', 'eth1', 'ip6'),
           :driver           => lookup('chinqchint_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
@@ -126,7 +126,6 @@ site :lille do |site_uid|
           :mountable            => false,
           :management           => true,
           :device               => "bmc",
-          :switch               => 'gw-lille'
         }]
 
         chassis({

@@ -81,7 +81,7 @@ site :lille do |site_uid|
           :bridged          => false,
           :device           => "eth0",
           :network_address  => "#{node_uid}-eth0.#{site_uid}.grid5000.fr",
-          :switch           => 'gw-lille',
+          :switch           => "gw-lille",
           :driver           => lookup('chirloute_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
           :ip               => lookup('chirloute_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :mac              => lookup('chirloute_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
@@ -101,8 +101,8 @@ site :lille do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('chirloute_generated', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :ip6              => lookup('chirloute_generated', node_uid, 'network_interfaces', 'eth1', 'ip6'),
-          :switch           => 'gw-lille',
-          :switch_port      => lookup('chirloute_manual', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch           => net_switch_lookup('lille', 'chirloute', node_uid, 'eth1'),
+          :switch_port      => net_port_lookup('lille', 'chirloute', node_uid, 'eth1'),
           :mac              => lookup('chirloute_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
@@ -116,10 +116,9 @@ site :lille do |site_uid|
           :mounted              => false,
           :mountable            => false,
           :management           => true,
-          :switch               => 'gw-lille',
           :device               => "bmc",
-          :vendor                => "Inventec",
-          :version               => 1.14
+          :vendor               => "Inventec",
+          :version              => 1.14
 
         }]
 
