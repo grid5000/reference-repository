@@ -76,8 +76,8 @@ site :nantes do |site_uid|
           :version          => '82599EB 10-Gigabit SFI/SFP+ Network Connection',
           :driver           => lookup('econome_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
           :mac              => lookup('econome_generated', node_uid, 'network_interfaces', 'eth0', 'mac'),
-          :switch_port      => lookup('econome_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
-          :switch           => lookup('econome_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name')
+          :switch_port      => net_port_lookup('nantes', 'econome', node_uid, 'eth0'),
+          :switch           => net_switch_lookup('nantes', 'econome', node_uid, 'eth0'),
         },
         {
           :interface        => lookup('econome_generated', node_uid, 'network_interfaces', 'eth1', 'interface'),
