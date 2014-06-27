@@ -77,8 +77,8 @@ site :toulouse do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('pastel_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup('pastel_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => lookup('pastel_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
-          :switch_port      => lookup('pastel_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch           => net_switch_lookup('toulouse', 'pastel', node_uid),
+          :switch_port      => net_port_lookup('toulouse', 'pastel', node_uid),
           :mac              => lookup('pastel_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
