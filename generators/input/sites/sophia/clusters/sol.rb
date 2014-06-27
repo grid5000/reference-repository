@@ -77,8 +77,8 @@ site :sophia do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => lookup('sol_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
-          :switch_port      => lookup('sol_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch           => net_switch_lookup('sophia', 'sol', node_uid),
+          :switch_port      => net_port_lookup('sophia', 'sol', node_uid),
           :mac              => lookup('sol_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
