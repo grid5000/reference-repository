@@ -79,7 +79,7 @@ site :lyon do |site_uid|
 
         network_adapters [        {
           :interface        => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth0', 'interface'),
-          :rate             => 1.G,
+          :rate             => 10.G,
           :device           => "eth0",
           :enabled          => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth0', 'enabled'),
           :management       => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth0', 'management'),
