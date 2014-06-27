@@ -77,8 +77,8 @@ site :nancy do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('graphene_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup('graphene_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => lookup('graphene_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
-          :switch_port      => lookup('graphene_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch           => net_switch_lookup('nancy', 'graphene', node_uid),
+          :switch_port      => net_port_lookup('nancy', 'graphene', node_uid),
           :mac              => lookup('graphene_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {

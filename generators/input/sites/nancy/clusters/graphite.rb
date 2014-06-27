@@ -86,8 +86,8 @@ site :nancy do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
-          :switch_port      => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch           => net_switch_lookup('nancy','graphite', node_uid),
+          :switch_port      => net_port_lookup('nancy','graphite', node_uid),
           :mac              => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
@@ -115,8 +115,8 @@ site :nancy do |site_uid|
           :device           => "eth2",
           :vendor           => "intel",
           :version          => "I350",
-          :switch           => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth2', 'switch_name'),
-          :switch_port      => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth2', 'switch_port'),
+          :switch           => net_switch_lookup('nancy','graphite', node_uid, 'eth2'),
+          :switch_port      => net_port_lookup('nancy','graphite', node_uid, 'eth2'),
           :driver           => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
           :mac              => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth2', 'mac')
         },
@@ -131,8 +131,8 @@ site :nancy do |site_uid|
           :device           => "eth3",
           :vendor           => "intel",
           :version          => "I350",
-          :switch           => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth3', 'switch_name'),
-          :switch_port      => lookup('graphite_manual', node_uid, 'network_interfaces', 'eth3', 'switch_port'),
+          :switch           => net_switch_lookup('nancy','graphite', node_uid, 'eth3'),
+          :switch_port      => net_port_lookup('nancy','graphite', node_uid, 'eth3'),
           :driver           => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth3', 'driver'),
           :mac              => lookup('graphite_generated', node_uid, 'network_interfaces', 'eth3', 'mac')
         },
