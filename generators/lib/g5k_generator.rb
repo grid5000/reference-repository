@@ -141,7 +141,7 @@ module G5K
     def get_portname(lc_num,port_num,pattern)
       return pattern.sub("%LINECARD%",lc_num.to_s).sub("%PORT%",port_num.to_s)
     end
- 
+
     # Load information from network description yaml files
     def get_net_equipment(site)
       if $net_equipment.nil?
@@ -157,41 +157,47 @@ module G5K
       return $net_equipment[site]
     end
 
-    # Parse network equipment description and print switch connected to given node
-    def net_switch_lookup(site, cluster, node_uid, interface='')
-      if interface != ""
-        node_uid = node_uid+"-"+interface
-      end
+    # Parse network equipment description and return switch name connected to given node
+    #  In the network description, if the node interface is given (using "port" attribute),
+    #  the interface parameter must be used.
+    def net_switch_lookup(site, cluster, node, interface='')
       get_net_equipment(site).keys.each do |equipment_name|
         get_net_equipment(site)[equipment_name][0][equipment_name]["linecards"].each do |(lc_num,lc_content)|
+          netdesc_rport = lc_content["port"] || ""
           lc_content["ports"].each do |(port_num,port_content)|
             if port_content.is_a?(Hash)
-              if port_content["uid"] == node_uid
+              netdesc_rport = port_content["port"] || netdesc_rport
+              if port_content["uid"] == node and netdesc_rport == interface
                 return equipment_name
               end
-            elsif port_content == node_uid
-              return equipment_name
+            elsif port_content
+              if port_content == node and netdesc_rport == interface
+                return equipment_name
+              end
             end
-          end 
+          end
         end
       end
       return nil
     end
 
-    # Parse network equipment description and print switch port connected to given node
-    def net_port_lookup(site, cluster, node_uid, interface='')
-      if interface != ""
-        node_uid = node_uid+"-"+interface
-      end
+    # Parse network equipment description and return switch port connected to given node
+    #  In the network description, if the node interface is given (using "port" attribute),
+    #  the interface parameter must be used.
+    def net_port_lookup(site, cluster, node, interface='')
       get_net_equipment(site).keys.each do |equipment_name|
         get_net_equipment(site)[equipment_name][0][equipment_name]["linecards"].each do |(lc_num,lc_content)|
+          netdesc_rport = lc_content["port"] || ""
           lc_content["ports"].each do |(port_num,port_content)|
             if port_content.is_a?(Hash)
-              if port_content["uid"] == node_uid
+              netdesc_rport = port_content["port"] || netdesc_rport
+              if port_content["uid"] == node and netdesc_rport == interface
                 return get_portname(lc_num,port_num,lc_content["snmp_pattern"])
               end
-            elsif port_content == node_uid 
-              return get_portname(lc_num,port_num,lc_content["snmp_pattern"])
+            elsif port_content
+              if port_content == node and netdesc_rport == interface
+                return get_portname(lc_num,port_num,lc_content["snmp_pattern"])
+              end
             end
           end
         end
