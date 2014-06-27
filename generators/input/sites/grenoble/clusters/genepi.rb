@@ -90,8 +90,8 @@ site :grenoble do |site_uid|
           :ip               => lookup('genepi_generated', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :ip6              => lookup('genepi_generated', node_uid, 'network_interfaces', 'eth1', 'ip6'),
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :switch           => lookup('genepi_manual', node_uid, 'network_interfaces', 'eth1', 'switch_name'),
-          :switch_port      => lookup('genepi_manual', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch           => net_switch_lookup('grenoble', 'genepi', node_uid, 'eth1'),
+          :switch_port      => net_port_lookup('grenoble', 'genepi', node_uid, 'eth1'),
           :driver           => lookup('genepi_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
           :mac              => lookup('genepi_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },

@@ -77,8 +77,8 @@ site :grenoble do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('adonis_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup('adonis_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => lookup('adonis_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name'),
-          :switch_port      => lookup('adonis_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch           => net_switch_lookup('grenoble', 'adonis', node_uid, 'eth0'),
+          :switch_port      => net_port_lookup('grenoble', 'adonis', node_uid, 'eth0'),
           :mac              => lookup('adonis_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
