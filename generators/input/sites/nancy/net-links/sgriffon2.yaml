@@ -55,5 +55,15 @@ sgriffon2:
       rate: 10000000000
       ports:
         1: gw-nancy
+    2:
+      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: node
+      rate: 10000000000
+      ports:
+        1:
+          uid: griffon-13
+          port: eth2
+
   channels:
     naming_pattern: Po%CHANNELID%
