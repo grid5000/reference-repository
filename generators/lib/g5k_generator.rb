@@ -163,14 +163,14 @@ module G5K
     def net_switch_lookup(site, cluster, node, interface='')
       get_net_equipment(site).keys.each do |equipment_name|
         get_net_equipment(site)[equipment_name][0][equipment_name]["linecards"].each do |(lc_num,lc_content)|
-          netdesc_rport = lc_content["port"] || ""
           lc_content["ports"].each do |(port_num,port_content)|
             if port_content.is_a?(Hash)
-              netdesc_rport = port_content["port"] || netdesc_rport
+              netdesc_rport = port_content["port"] || lc_content["port"] || ""
               if port_content["uid"] == node and netdesc_rport == interface
                 return equipment_name
               end
             elsif port_content
+              netdesc_rport = lc_content["port"] || ""
               if port_content == node and netdesc_rport == interface
                 return equipment_name
               end
@@ -187,14 +187,14 @@ module G5K
     def net_port_lookup(site, cluster, node, interface='')
       get_net_equipment(site).keys.each do |equipment_name|
         get_net_equipment(site)[equipment_name][0][equipment_name]["linecards"].each do |(lc_num,lc_content)|
-          netdesc_rport = lc_content["port"] || ""
           lc_content["ports"].each do |(port_num,port_content)|
             if port_content.is_a?(Hash)
-              netdesc_rport = port_content["port"] || netdesc_rport
+              netdesc_rport = port_content["port"] || lc_content["port"] || ""
               if port_content["uid"] == node and netdesc_rport == interface
                 return get_portname(lc_num,port_num,lc_content["snmp_pattern"])
               end
             elsif port_content
+              netdesc_rport = lc_content["port"] || ""
               if port_content == node and netdesc_rport == interface
                 return get_portname(lc_num,port_num,lc_content["snmp_pattern"])
               end
