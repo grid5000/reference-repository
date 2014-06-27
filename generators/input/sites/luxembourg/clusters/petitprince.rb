@@ -75,8 +75,8 @@ site :luxembourg do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => "mxl1",
-          :switch_port      => lookup('petitprince_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch           => net_switch_lookup('luxembourg', 'petitprince', node_uid, 'eth0'),
+          :switch_port      => net_port_lookup('luxembourg', 'petitprince', node_uid, 'eth0'),
           :mac              => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
@@ -90,8 +90,8 @@ site :luxembourg do |site_uid|
           :device           => "eth1",
           :driver           => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
           :mac              => lookup('petitprince_generated', node_uid, 'network_interfaces', 'eth1', 'mac'),
-          :switch           => "mxl2",
-          :switch_port      => lookup('petitprince_manual', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch           => net_switch_lookup('luxembourg', 'petitprince', node_uid, 'eth1'),
+          :switch_port      => net_port_lookup('luxembourg', 'petitprince', node_uid, 'eth1'),
         },
         {
           :interface        => 'Ethernet',

@@ -75,8 +75,8 @@ site :luxembourg do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => "gw-luxembourg",
-          :switch_port      => lookup('granduc_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch           => net_switch_lookup('luxembourg', 'granduc', node_uid, 'eth0'),
+          :switch_port      => net_port_lookup('luxembourg', 'granduc', node_uid, 'eth0'),
           :mac              => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
@@ -89,8 +89,8 @@ site :luxembourg do |site_uid|
           :bridged          => false,
           :device           => "eth1",
           :driver           => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
-          :switch           => "gw-luxembourg",
-          :switch_port      => lookup('granduc_manual', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch           => net_switch_lookup('luxembourg', 'granduc', node_uid, 'eth1'),
+          :switch_port      => net_port_lookup('luxembourg', 'granduc', node_uid, 'eth1'),
           :mac              => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
@@ -103,8 +103,8 @@ site :luxembourg do |site_uid|
           :bridged          => false,
           :device           => "eth2",
           :driver           => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
-          :switch           => "ul-grid5000-sw02",
-          :switch_port      => lookup('granduc_manual', node_uid, 'network_interfaces', 'eth2', 'switch_port'),
+          :switch           => net_switch_lookup('luxembourg', 'granduc', node_uid, 'eth2'),
+          :switch_port      => net_port_lookup('luxembourg', 'granduc', node_uid, 'eth2'),
           :network_address  => "#{node_uid}-eth2.#{site_uid}.grid5000.fr",
           :ip               => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth2', 'ip'),
           :ip6              => lookup('granduc_generated', node_uid, 'network_interfaces', 'eth2', 'ip6'),
