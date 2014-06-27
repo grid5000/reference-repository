@@ -109,8 +109,8 @@ site :lyon do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('sagittaire_generated', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :ip6              => lookup('sagittaire_generated', node_uid, 'network_interfaces', 'eth1', 'ip6'),
-          :switch           => "gw-lyon",
-          :switch_port      => lookup('sagittaire_generated', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch           => net_switch_lookup('lyon', 'sagittaire', node_uid, 'eth1'),
+          :switch_port      => net_port_lookup('lyon', 'sagittaire', node_uid, 'eth1'),
           :mac              => lookup('sagittaire_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {

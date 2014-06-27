@@ -106,8 +106,8 @@ site :lyon do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :ip6              => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth1', 'ip6'),
-          :switch           => "force10",
-          :switch_port      => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch           => net_switch_lookup('lyon', 'hercule', node_uid, 'eth1'),
+          :switch_port      => net_port_lookup('lyon', 'hercule', node_uid, 'eth1'),
           :mac              => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
@@ -122,8 +122,8 @@ site :lyon do |site_uid|
           :vendor           => "Intel",
           :version          => "Intel Corporation",
           :driver           => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
-          :switch           => "pat",
-          :switch_port      => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'switch_port'),
+          :switch           => net_switch_lookup('lyon', 'hercule', node_uid, 'eth2'),
+          :switch_port      => net_port_lookup('lyon', 'hercule', node_uid, 'eth2'),
           :mac              => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth2', 'mac')
         },
         {
@@ -138,8 +138,8 @@ site :lyon do |site_uid|
           :vendor           => "Intel",
           :version          => "Intel Corporation",
           :driver           => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'driver'),
-          :switch           => "pat",
-          :switch_port      => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'switch_port'),
+          :switch           => net_switch_lookup('lyon', 'hercule', node_uid, 'eth3'),
+          :switch_port      => net_port_lookup('lyon', 'hercule', node_uid, 'eth3'),
           :mac              => lookup('hercule_generated', node_uid, 'network_interfaces', 'eth3', 'mac')
         },
         {

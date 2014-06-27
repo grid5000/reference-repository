@@ -77,8 +77,8 @@ site :lyon do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :switch           => "force10",
-          :switch_port      => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
+          :switch           => net_switch_lookup('lyon', 'taurus', node_uid, 'eth0'),
+          :switch_port      => net_port_lookup('lyon', 'taurus', node_uid, 'eth0'),
           :mac              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
