@@ -91,8 +91,8 @@ site :rennes do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup('parapluie_generated', node_uid, 'network_interfaces', 'eth1', 'ip'),
           :ip6              => lookup('parapluie_generated', node_uid, 'network_interfaces', 'eth1', 'ip6'),
-          :switch           => lookup('parapluie_manual', node_uid, 'network_interfaces', 'eth1', 'switch_name'),
-          :switch_port      => lookup('parapluie_manual', node_uid, 'network_interfaces', 'eth1', 'switch_port'),
+          :switch           => net_switch_lookup('rennes', 'parapluie', node_uid),
+          :switch_port      => net_port_lookup('rennes', 'parapluie', node_uid),
           :mac              => lookup('parapluie_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {

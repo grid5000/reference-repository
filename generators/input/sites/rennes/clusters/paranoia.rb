@@ -108,8 +108,8 @@ site :rennes do |site_uid|
           :version          => '82599EB 10-Gigabit SFI/SFP+ Network Connection',
           :driver           => lookup('paranoia_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
           :mac              => lookup('paranoia_generated', node_uid, 'network_interfaces', 'eth0', 'mac'),
-          :switch_port      => lookup('paranoia_manual', node_uid, 'network_interfaces', 'eth0', 'switch_port'),
-          :switch           => lookup('paranoia_manual', node_uid, 'network_interfaces', 'eth0', 'switch_name')
+          :switch_port      => net_port_lookup('rennes', 'paranoia', node_uid, 'eth0'),
+          :switch           => net_switch_lookup('rennes', 'paranoia', node_uid, 'eth0')
         },
         {
           :interface        => lookup('paranoia_generated', node_uid, 'network_interfaces', 'eth1', 'interface'),
@@ -139,8 +139,8 @@ site :rennes do |site_uid|
           :version          => "Intel Corporation",
           :driver           => lookup('paranoia_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
           :mac              => lookup('paranoia_generated', node_uid, 'network_interfaces', 'eth2', 'mac'),
-          :switch_port      => lookup('paranoia_manual', node_uid, 'network_interfaces', 'eth2', 'switch_port'),
-          :switch           => lookup('paranoia_manual', node_uid, 'network_interfaces', 'eth2', 'switch_name')
+          :switch_port      => net_port_lookup('rennes', 'paranoia', node_uid, 'eth2'),
+          :switch           => net_switch_lookup('rennes', 'paranoia', node_uid, 'eth2')
         },
         {
           :interface        => lookup('paranoia_generated', node_uid, 'network_interfaces', 'eth3', 'interface'),
