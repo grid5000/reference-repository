@@ -2,7 +2,7 @@ environment 'lenny-x64-nfs-2.2' do
   state "deprecated"
   file({:path => "/grid5000/images/lenny-x64-nfs-2.2.tgz", :md5 => "bd1ba75d86c226ba7e0e7153d892cc93"})
   available_on %w{}
-  valid_on "griffon , grelon , sagittaire , capricorne , netgdx , gdx , bordeplage , bordereau , parapide , paramount , paraquad , paradent , azur , helios , sol , suno , edel , genepi , adonis , chuque , chinqchint , chicon , chti"
+  valid_on "griffon , grelon , sagittaire , capricorne , netgdx , gdx , bordeplage , bordereau , parapide , paramount , paraquad , azur , helios , sol , suno , edel , genepi , adonis , chuque , chinqchint , chicon , chti"
   kernel "2.6.26.2"
   based_on "Debian version lenny for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]

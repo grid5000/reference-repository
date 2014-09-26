@@ -3,7 +3,7 @@ environment 'squeeze-x64-nfs-0.9' do
   file({:path => "/grid5000/images/squeeze-x64-nfs-0.9.tgz", :md5 => "2f232b7d2982bf2623bbde22675d3050"})
   kernel "2.6.32-5"
   available_on %w{bordeaux grenoble lille lyon nancy orsay reims rennes sophia toulouse}
-  valid_on "bordeplage , bordereau , borderline , adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paradent , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
+  valid_on "bordeplage , bordereau , borderline , adonis , edel , genepi , chicon , chimint , chinqchint , chirloute , capricorne , sagittaire , graphene , griffon , gdx , netgdx , stremi , paramount , parapide , parapluie , helios , sol , suno, pastel , violette"
   based_on "Debian version squeeze for amd64"
   consoles [{:port => "ttyS0", :bps => 34800}]
   services []
