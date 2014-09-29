@@ -71,7 +71,9 @@ gw-rennes:
       model: WS-X6704-10GE
       ports:
         1: renater-rennes
-        3: bigdata-sw
+        3:
+          uid: bigdata-sw
+          kind: switch
     2:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
