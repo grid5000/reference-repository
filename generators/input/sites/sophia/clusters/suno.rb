@@ -48,10 +48,10 @@ site :sophia do |site_uid|
         })
 
         operating_system({
-          :name     => lookup('suno_generated', node_uid, 'operating_system', 'name'),
-          :release  => "Squeeze",
-          :version  => lookup('suno_generated', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('suno_generated', node_uid, 'operating_system', 'kernel')
+          :name     => "debian",
+          :release  => "Wheezy",
+          :version  => "7",
+          :kernel   => "3.2.0-4-amd64"
         })
 
         storage_devices [{
