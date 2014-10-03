@@ -46,10 +46,10 @@ site :nantes do |site_uid|
         })
 
         operating_system({
-          :name     => lookup('econome_generated', node_uid, 'operating_system', 'name'),
-          :release  => 'Wheezy',
-          :version  => lookup('econome_generated', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('econome_generated', node_uid, 'operating_system', 'kernel')
+          :name     => "debian",
+          :release  => "Wheezy",
+          :version  => "7",
+          :kernel   => "3.2.0-4-amd64"
         })
 
         storage_devices [{
