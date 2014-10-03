@@ -46,10 +46,10 @@ site :lyon do |site_uid|
         })
 
         operating_system({
-          :name     => lookup('taurus_generated', node_uid, 'operating_system', 'name'),
-          :release  => "Squeeze",
-          :version  => lookup('taurus_generated', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('taurus_generated', node_uid, 'operating_system', 'kernel')
+          :name     => "debian",
+          :release  => "Wheezy",
+          :version  => "7",
+          :kernel   => "3.2.0-4-amd64"
         })
 
         storage_devices [{

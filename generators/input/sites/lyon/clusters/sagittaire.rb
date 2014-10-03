@@ -46,10 +46,10 @@ site :lyon do |site_uid|
         })
 
         operating_system({
-          :name     => lookup('sagittaire_generated', node_uid, 'operating_system', 'name'),
-          :release  => "Squeeze",
-          :version  => lookup('sagittaire_generated', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('sagittaire_generated', node_uid, 'operating_system', 'kernel')
+          :name     => "debian",
+          :release  => "Wheezy",
+          :version  => "7",
+          :kernel   => "3.2.0-4-amd64"
         })
 
         if (i<69) then
