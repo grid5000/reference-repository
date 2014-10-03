@@ -46,10 +46,10 @@ site :luxembourg do |site_uid|
         })
 
         operating_system({
-          :name     => lookup('petitprince_generated', node_uid, 'operating_system', 'name'),
+          :name     => "debian",
           :release  => "Wheezy",
-          :version  => lookup('petitprince_generated', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('petitprince_generated', node_uid, 'operating_system', 'kernel')
+          :version  => "7",
+          :kernel   => "3.2.0-4-amd64"
         })
 
         storage_devices [{
