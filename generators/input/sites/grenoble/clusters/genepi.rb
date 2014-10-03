@@ -10,9 +10,9 @@ site :grenoble do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
         performance({
-        :core_flops => 7651000000,
-        :node_flops => 49650000000
-      })
+          :core_flops => 7651000000,
+          :node_flops => 49650000000
+        })
 
         supported_job_types({
           :deploy       => true,
@@ -46,10 +46,10 @@ site :grenoble do |site_uid|
         })
 
         operating_system({
-          :name     => lookup('genepi_generated', node_uid, 'operating_system', 'name'),
-          :release  => "Squeeze",
-          :version  => lookup('genepi_generated', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('genepi_generated', node_uid, 'operating_system', 'kernel')
+          :name     => "debian",
+          :release  => "Wheezy",
+          :version  => "7",
+          :kernel   => "3.2.0-4-amd64"
         })
 
         storage_devices [{
