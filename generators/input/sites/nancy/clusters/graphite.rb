@@ -46,10 +46,10 @@ site :nancy do |site_uid|
         })
 
         operating_system({
-          :name     => lookup('graphite_generated', node_uid, 'operating_system', 'name'),
-          :release  => "Squeeze",
-          :version  => lookup('graphite_generated', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('graphite_generated', node_uid, 'operating_system', 'kernel')
+          :name     => "debian",
+          :release  => "Wheezy",
+          :version  => "7",
+          :kernel   => "3.2.0-4-amd64"
         })
 
         storage_devices [{
@@ -61,7 +61,7 @@ site :nancy do |site_uid|
           :vendor     => lookup('graphite_generated', node_uid, 'block_devices', 'sda', 'vendor'),
           :rev        => lookup('graphite_generated', node_uid, 'block_devices', 'sda', 'rev')
         },
-	{
+        {
           :interface  => 'SATA II',
           :size       => lookup('graphite_generated', node_uid, 'block_devices', 'sdb', 'size'),
           :driver     => "megaraid_sas",
