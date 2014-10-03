@@ -46,10 +46,10 @@ site :reims do |site_uid|
         })
 
         operating_system({
-          :name     => lookup('stremi_generated', node_uid, 'operating_system', 'name'),
-          :release  => "Squeeze",
-          :version  => lookup('stremi_generated', node_uid, 'operating_system', 'version'),
-          :kernel   => lookup('stremi_generated', node_uid, 'operating_system', 'kernel')
+          :name     => "debian",
+          :release  => "Wheezy",
+          :version  => "7",
+          :kernel   => "3.2.0-4-amd64"
         })
 
         storage_devices [{
