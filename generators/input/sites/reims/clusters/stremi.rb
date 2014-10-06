@@ -59,7 +59,8 @@ site :reims do |site_uid|
           :device     => lookup('stremi_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('stremi_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('stremi_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('stremi_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('stremi_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

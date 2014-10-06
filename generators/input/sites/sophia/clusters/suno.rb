@@ -62,7 +62,8 @@ site :sophia do |site_uid|
           :model      => lookup('suno_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('suno_generated', node_uid, 'block_devices', 'sda', 'vendor'),
           :rev        => lookup('suno_generated', node_uid, 'block_devices', 'sda', 'rev'),
-          :raid => "0"
+          :raid       => "0",
+          :storage    => 'HDD'
         }]
         network_adapters [{
           :interface        => lookup('suno_generated', node_uid, 'network_interfaces', 'eth0', 'interface'),

@@ -58,7 +58,8 @@ site :nancy do |site_uid|
           :device     => lookup('griffon_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('griffon_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('griffon_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('griffon_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('griffon_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         if (11<=i+1 and i+1<=14) then

@@ -59,7 +59,8 @@ site :luxembourg do |site_uid|
           :device     => lookup('petitprince_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('petitprince_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('petitprince_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('petitprince_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('petitprince_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

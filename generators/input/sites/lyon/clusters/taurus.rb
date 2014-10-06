@@ -59,7 +59,8 @@ site :lyon do |site_uid|
           :device     => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

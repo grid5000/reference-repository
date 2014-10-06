@@ -54,27 +54,30 @@ site :lyon do |site_uid|
 
         storage_devices [{
           :interface => 'SATA',
-          :driver => "ahci",
-          :device => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'device'),
-          :size => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'size'),
-          :model => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'model'),
-          :rev => lookup('hercule_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :driver    => "ahci",
+          :device    => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'device'),
+          :size      => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'size'),
+          :model     => lookup('hercule_generated', node_uid, 'block_devices' ,'sda',  'model'),
+          :rev       => lookup('hercule_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
-          :driver => "ahci",
-          :device => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'device'),
-          :size => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'size'),
-          :model => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'model'),
-          :rev => lookup('hercule_generated', node_uid, 'block_devices', 'sdb', 'rev'),
+          :driver    => "ahci",
+          :device    => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'device'),
+          :size      => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'size'),
+          :model     => lookup('hercule_generated', node_uid, 'block_devices' ,'sdb',  'model'),
+          :rev       => lookup('hercule_generated', node_uid, 'block_devices', 'sdb', 'rev'),
+          :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
-          :driver => "ahci",
-          :device => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'device'),
-          :size => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'size'),
-          :model => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'model'),
-          :rev => lookup('hercule_generated', node_uid, 'block_devices', 'sdc', 'rev'),
+          :driver    => "ahci",
+          :device    => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'device'),
+          :size      => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'size'),
+          :model     => lookup('hercule_generated', node_uid, 'block_devices' ,'sdc',  'model'),
+          :rev       => lookup('hercule_generated', node_uid, 'block_devices', 'sdc', 'rev'),
+          :storage   => 'HDD'
         }]
 
         network_adapters [        {

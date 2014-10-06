@@ -59,7 +59,8 @@ site :luxembourg do |site_uid|
           :device     => lookup('granduc_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('granduc_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('granduc_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('granduc_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('granduc_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

@@ -59,7 +59,8 @@ site :toulouse do |site_uid|
           :device     => lookup('pastel_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('pastel_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('pastel_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('pastel_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('pastel_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

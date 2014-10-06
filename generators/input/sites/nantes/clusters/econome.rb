@@ -59,6 +59,7 @@ site :nantes do |site_uid|
           :size      => lookup('econome_generated', node_uid, 'block_devices' ,'sda', 'size'),
           :model     => lookup('econome_generated', node_uid, 'block_devices' ,'sda', 'model'),
           :rev       => lookup('econome_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage   => 'HDD'
         }]
 
         network_adapters [        {

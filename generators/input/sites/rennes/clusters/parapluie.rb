@@ -59,7 +59,8 @@ site :rennes do |site_uid|
           :device     => lookup('parapluie_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('parapluie_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('parapluie_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('parapluie_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('parapluie_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

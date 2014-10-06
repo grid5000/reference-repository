@@ -60,7 +60,8 @@ site :lille do |site_uid|
           :model      => lookup('chimint_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('chimint_generated', node_uid, 'block_devices', 'sda', 'vendor'),
           :rev        => lookup('chimint_generated', node_uid, 'block_devices', 'sda', 'rev'),
-          :raid       => "0"
+          :raid       => "0",
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

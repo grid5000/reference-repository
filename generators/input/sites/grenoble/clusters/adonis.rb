@@ -59,7 +59,8 @@ site :grenoble do |site_uid|
           :device     => lookup('adonis_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('adonis_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('adonis_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('adonis_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('adonis_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

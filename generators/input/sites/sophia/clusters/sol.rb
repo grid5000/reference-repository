@@ -60,7 +60,8 @@ site :sophia do |site_uid|
           :device     => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('sol_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

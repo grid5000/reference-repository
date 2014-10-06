@@ -59,7 +59,8 @@ site :nancy do |site_uid|
           :device     => lookup('graphite_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('graphite_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('graphite_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('graphite_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('graphite_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'SSD'
         },
         {
           :interface  => 'SATA II',
@@ -68,7 +69,8 @@ site :nancy do |site_uid|
           :device     => lookup('graphite_generated', node_uid, 'block_devices', 'sdb', 'device'),
           :model      => lookup('graphite_generated', node_uid, 'block_devices', 'sdb', 'model'),
           :vendor     => lookup('graphite_generated', node_uid, 'block_devices', 'sdb', 'vendor'),
-          :rev        => lookup('graphite_generated', node_uid, 'block_devices', 'sdb', 'rev')
+          :rev        => lookup('graphite_generated', node_uid, 'block_devices', 'sdb', 'rev'),
+          :storage    => 'SSD'
         }]
 
         network_adapters [{

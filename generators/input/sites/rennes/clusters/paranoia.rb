@@ -59,6 +59,7 @@ site :rennes do |site_uid|
           :size      => lookup('paranoia_generated', node_uid, 'block_devices' ,'sda',  'size'),
           :model     => lookup('paranoia_generated', node_uid, 'block_devices' ,'sda',  'model'),
           :rev       => lookup('paranoia_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
@@ -67,6 +68,7 @@ site :rennes do |site_uid|
           :size      => lookup('paranoia_generated', node_uid, 'block_devices' ,'sdb',  'size'),
           :model     => lookup('paranoia_generated', node_uid, 'block_devices' ,'sdb',  'model'),
           :rev       => lookup('paranoia_generated', node_uid, 'block_devices', 'sdb', 'rev'),
+          :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
@@ -75,6 +77,7 @@ site :rennes do |site_uid|
           :size      => lookup('paranoia_generated', node_uid, 'block_devices' ,'sdc',  'size'),
           :model     => lookup('paranoia_generated', node_uid, 'block_devices' ,'sdc',  'model'),
           :rev       => lookup('paranoia_generated', node_uid, 'block_devices', 'sdc', 'rev'),
+          :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
@@ -83,6 +86,7 @@ site :rennes do |site_uid|
           :size      => lookup('paranoia_generated', node_uid, 'block_devices' ,'sdd',  'size'),
           :model     => lookup('paranoia_generated', node_uid, 'block_devices' ,'sdd',  'model'),
           :rev       => lookup('paranoia_generated', node_uid, 'block_devices', 'sdd', 'rev'),
+          :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
@@ -91,6 +95,7 @@ site :rennes do |site_uid|
           :size      => lookup('paranoia_generated', node_uid, 'block_devices' ,'sde',  'size'),
           :model     => lookup('paranoia_generated', node_uid, 'block_devices' ,'sde',  'model'),
           :rev       => lookup('paranoia_generated', node_uid, 'block_devices', 'sde', 'rev'),
+          :storage   => 'HDD'
         }]
 
         network_adapters [        {

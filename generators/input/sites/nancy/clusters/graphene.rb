@@ -59,7 +59,8 @@ site :nancy do |site_uid|
           :device     => lookup('graphene_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('graphene_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('graphene_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('graphene_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('graphene_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

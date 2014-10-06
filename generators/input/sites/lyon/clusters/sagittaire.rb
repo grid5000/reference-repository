@@ -59,7 +59,8 @@ site :lyon do |site_uid|
             :driver     => "mptspi",
             :device     => lookup('sagittaire_generated', node_uid, 'block_devices', 'sda', 'device'),
             :model      => lookup('sagittaire_generated', node_uid, 'block_devices', 'sda', 'model'),
-            :rev        => lookup('sagittaire_generated', node_uid, 'block_devices', 'sda', 'rev')
+            :rev        => lookup('sagittaire_generated', node_uid, 'block_devices', 'sda', 'rev'),
+            :storage    => 'HDD'
           }]
         else
           storage_devices [{
@@ -68,7 +69,8 @@ site :lyon do |site_uid|
             :driver     => "mptspi",
             :device     => lookup('sagittaire_generated', node_uid, 'block_devices', 'sda', 'device'),
             :model      => lookup('sagittaire_generated', node_uid, 'block_devices', 'sda', 'model'),
-            :rev        => lookup('sagittaire_generated', node_uid, 'block_devices', 'sda', 'rev')
+            :rev        => lookup('sagittaire_generated', node_uid, 'block_devices', 'sda', 'rev'),
+            :storage    => 'HDD'
           },
           {
             :interface  => 'SCSI',
@@ -76,7 +78,8 @@ site :lyon do |site_uid|
             :driver     => "mptspi",
             :device     => lookup('sagittaire_generated', node_uid, 'block_devices', 'sdb', 'device'),
             :model      => lookup('sagittaire_generated', node_uid, 'block_devices', 'sdb', 'model'),
-            :rev        => lookup('sagittaire_generated', node_uid, 'block_devices', 'sdb', 'rev')
+            :rev        => lookup('sagittaire_generated', node_uid, 'block_devices', 'sdb', 'rev'),
+            :storage    => 'HDD'
           }]
         end
         network_adapters [{

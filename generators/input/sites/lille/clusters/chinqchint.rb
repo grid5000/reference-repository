@@ -59,7 +59,8 @@ site :lille do |site_uid|
           :device     => lookup('chinqchint_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('chinqchint_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('chinqchint_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('chinqchint_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('chinqchint_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{

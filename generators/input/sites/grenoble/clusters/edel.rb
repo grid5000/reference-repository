@@ -59,7 +59,8 @@ site :grenoble do |site_uid|
           :device     => lookup('edel_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('edel_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('edel_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('edel_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('edel_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'SSD'
         }]
 
         network_adapters [{

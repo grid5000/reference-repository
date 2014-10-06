@@ -59,7 +59,8 @@ site :lyon do |site_uid|
           :device     => lookup('orion_generated', node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup('orion_generated', node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup('orion_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('orion_generated', node_uid, 'block_devices', 'sda', 'rev')
+          :rev        => lookup('orion_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{
