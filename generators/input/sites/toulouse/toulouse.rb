@@ -12,5 +12,6 @@ site :toulouse do |site_uid|
   compilation_server false
   kavlan_ip_range "10.28.0.0/14"
   virt_ip_range "10.160.0.0/14"
+  storage5k false
   production true
 end

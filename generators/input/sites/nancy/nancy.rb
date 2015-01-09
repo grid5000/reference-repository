@@ -12,5 +12,6 @@ site :nancy do |site_uid|
   compilation_server false
   kavlan_ip_range "10.16.0.0/14"
   virt_ip_range "10.144.0.0/14"
+  storage5k true
   production true
 end

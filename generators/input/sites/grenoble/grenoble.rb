@@ -12,5 +12,6 @@ site :grenoble do |site_uid|
   compilation_server false
   kavlan_ip_range "10.4.0.0/14"
   virt_ip_range "10.132.0.0/14"
+  storage5k false
   production true
 end
