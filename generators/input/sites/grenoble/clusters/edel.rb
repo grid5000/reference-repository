@@ -10,7 +10,7 @@ site :grenoble do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
         performance({
-        :core_flops => 71394000000,
+        :core_flops => 7134000000,
         :node_flops => 55450000000
       })
 
