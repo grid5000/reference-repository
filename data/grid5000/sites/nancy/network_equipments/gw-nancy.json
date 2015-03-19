@@ -259,7 +259,7 @@
     },
     {
       "backplane_bps": 14400000000,
-      "kind": "virtual",
+      "kind": "node",
       "model": "J9538A",
       "naming_pattern": "%LINECARD:F%%PORT%",
       "ports": [
@@ -279,10 +279,12 @@
           "uid": "graphite-4"
         },
         {
+          "kind": "virtual",
           "uid": "srv"
         },
         {
-          "uid": "srv-data"
+          "kind": "virtual",
+          "uid": "srv"
         }
       ],
       "rate": 10000000000,

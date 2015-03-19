@@ -204,15 +204,19 @@ gw-nancy:
       snmp_pattern: "F%PORT%"
       backplane_bps: 14400000000
       model: J9538A
-      kind: virtual
+      kind: node
       rate: 10000000000
       ports:
         1: graphite-1
         2: graphite-2
         3: graphite-3
         4: graphite-4
-        5: srv
-        6: srv-data
+        5:
+          uid: srv
+          kind: virtual
+        6:
+          uid: srv
+          kind: virtual
   channels:
     naming_pattern: Po%CHANNELID%
     snmp_pattern: Trk%CHANNELID%
