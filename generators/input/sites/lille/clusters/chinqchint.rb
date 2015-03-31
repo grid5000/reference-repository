@@ -3,6 +3,7 @@ site :lille do |site_uid|
   cluster :chinqchint do |cluster_uid|
     model "Altix Xe 310"
     created_at nil
+    created_at Time.parse("2007-09-10").httpdate
     kavlan true
     production true
 
