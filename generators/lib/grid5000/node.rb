@@ -52,6 +52,7 @@ module Grid5000
         h['wattmeter']       = (properties['monitoring']['wattmeter'].is_a?(String) and properties['monitoring']['wattmeter'].upcase == "SHARED") ? "SHARED" \
                                 : properties['monitoring']['wattmeter'] ? "YES" : "NO"
         h['rconsole']        = properties['monitoring']['rconsole'] == false ? "NO" : "YES"
+        h['cluster_priority'] = cluster.properties['priority'] || Time.httpdate(cluster.properties['created_at']).strftime("%Y%m")
         h
       }
     }
