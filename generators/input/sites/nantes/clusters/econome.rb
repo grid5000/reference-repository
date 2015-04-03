@@ -10,8 +10,8 @@ site :nantes do |site_uid|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
         performance({
-          :core_flops => 0,
-          :node_flops => 0
+          :core_flops => 14040000000,
+          :node_flops => 207400000000,
         })
 
         supported_job_types({
