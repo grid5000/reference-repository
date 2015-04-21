@@ -1,0 +1,166 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 16
+  },
+  "bios": {
+    "release_date": "08/28/2014",
+    "vendor": "Dell Inc.",
+    "version": 1.0
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R630",
+    "serial": "DDXGG42"
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+    "ram_size": 135230791680,
+    "virtual_size": null
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.96.47",
+      "mac": "ec:f4:bb:d1:01:98",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "paravance-47.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "paravance-sw-2",
+      "switch_port": "Ethernet1/22",
+      "vendor": "Intel",
+      "version": "82599EB 10-Gigabit SFI/SFP+ Network Connection"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": true,
+      "interface": "Ethernet",
+      "mac": "ec:f4:bb:d1:01:9a",
+      "management": false,
+      "mountable": true,
+      "mounted": false,
+      "rate": 10000000000,
+      "switch": "paravance-sw-2",
+      "switch_port": "Ethernet1/21",
+      "vendor": "Intel",
+      "version": "82599EB 10-Gigabit SFI/SFP+ Network Connection"
+    },
+    {
+      "bridged": false,
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "ec:f4:bb:d1:01:9c",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "Intel Corporation"
+    },
+    {
+      "bridged": false,
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "ec:f4:bb:d1:01:9d",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "vendor": "Intel",
+      "version": "Intel Corporation"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": null,
+      "mac": null,
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "paravance-47-bmc.rennes.grid5000.fr",
+      "rate": 100000000
+    }
+  ],
+  "operating_system": {
+    "kernel": "3.2.0-4-amd64",
+    "name": "debian",
+    "release": "Wheezy",
+    "version": "7"
+  },
+  "performance": {
+    "core_flops": 0,
+    "node_flops": 0
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 20971520,
+    "clock_speed": 2400000000,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
+    "vendor": "Intel",
+    "version": "E5-2630"
+  },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "pdu"
+        },
+        "pdu": [
+          {
+            "port": 7,
+            "uid": "paravance-pdu-7"
+          }
+        ]
+      }
+    }
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "ahci",
+      "interface": "SATA",
+      "model": "ST600MM0006",
+      "rev": "LS0A",
+      "size": 600127266816,
+      "storage": "HDD"
+    },
+    {
+      "device": "sdb",
+      "driver": "ahci",
+      "interface": "SATA",
+      "model": "ST600MM0006",
+      "rev": "LS0A",
+      "size": 600127266816,
+      "storage": "HDD"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "paravance-47"
+}

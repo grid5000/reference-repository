@@ -39,4 +39,44 @@ site :rennes do |site_uid|
     end
   end
 
+  8.times do |i|
+    pdu "paravance-pdu-#{i+1}" do |pdu_uid|
+      vendor "APC"
+      model "AP8659"
+      sensors [
+        {
+          :power => {
+            :per_outlets => true,
+            :snmp => {
+              :available => true,
+              :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
+              :unit => "W",
+              :outlet_prefix_oid => "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7"
+            }
+          }
+        }
+      ]
+    end
+  end
+
+  4.times do |i|
+    pdu "parasilo-pdu-#{i+1}" do |pdu_uid|
+      vendor "APC"
+      model "AP8659"
+      sensors [
+        {
+          :power => {
+            :per_outlets => true,
+            :snmp => {
+              :available => true,
+              :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
+              :unit => "W",
+              :outlet_prefix_oid => "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7"
+            }
+          }
+        }
+      ]
+    end
+  end
+
 end
