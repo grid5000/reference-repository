@@ -60,7 +60,45 @@ gw-lyon:
   backplane_bps: 800000000000
   mtu: 9216
   linecards:
-    1:
+    2:
+      naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      backplane_bps: 48000000000,
+      kind: node
+      rate: 1000000000
+      port: eth1
+      ports:
+        1: sagittaire-49
+        2: sagittaire-50
+        3: sagittaire-51
+        4: sagittaire-52
+        5: sagittaire-53
+        6: sagittaire-54
+        7: sagittaire-55
+        8: sagittaire-56
+        9: sagittaire-57
+        10: sagittaire-58
+        11: sagittaire-59
+        12: sagittaire-60
+        13: sagittaire-61
+        15: sagittaire-63
+        16: sagittaire-64
+        17: sagittaire-65
+        18: sagittaire-66
+        19: sagittaire-67
+        20: sagittaire-68
+        21: sagittaire-69
+        23: sagittaire-71
+        24: sagittaire-72
+        25: sagittaire-73
+        26: sagittaire-74
+        27: sagittaire-75
+        28: sagittaire-76
+        29: sagittaire-77
+        30: sagittaire-78
+        31: sagittaire-79
+        34: cyrrus-adm
+    3:
       naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
@@ -115,44 +153,6 @@ gw-lyon:
         7: sagittaire-7
         8: sagittaire-8
         9: sagittaire-9
-    2:
-      naming_pattern: "%LINECARD%:%PORT%"
-      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
-      backplane_bps: 48000000000,
-      kind: node
-      rate: 1000000000
-      port: eth1
-      ports:
-        1: sagittaire-49
-        2: sagittaire-50
-        3: sagittaire-51
-        4: sagittaire-52
-        5: sagittaire-53
-        6: sagittaire-54
-        7: sagittaire-55
-        8: sagittaire-56
-        9: sagittaire-57
-        10: sagittaire-58
-        11: sagittaire-59
-        12: sagittaire-60
-        13: sagittaire-61
-        15: sagittaire-63
-        16: sagittaire-64
-        17: sagittaire-65
-        18: sagittaire-66
-        19: sagittaire-67
-        20: sagittaire-68
-        21: sagittaire-69
-        23: sagittaire-71
-        24: sagittaire-72
-        25: sagittaire-73
-        26: sagittaire-74
-        27: sagittaire-75
-        28: sagittaire-76
-        29: sagittaire-77
-        30: sagittaire-78
-        31: sagittaire-79
-        34: cyrrus-adm
     4:
       naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
