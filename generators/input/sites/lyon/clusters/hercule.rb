@@ -3,6 +3,7 @@ site :lyon do |site_uid|
   cluster :hercule do |cluster_uid|
     model "Dell C6220"
     created_at Time.parse("2012-10-02 12:00 GMT").httpdate
+    priority "201299"
     kavlan true
     production true
 
