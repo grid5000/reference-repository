@@ -3,6 +3,7 @@ site :lille do |site_uid|
   cluster :chirloute do |cluster_uid|
     model "Dell PowerEdge C6100"
     created_at Time.parse("2011-03-25").httpdate
+    priority "201199"
     kavlan true
     production true
 
