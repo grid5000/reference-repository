@@ -1,0 +1,126 @@
+{
+  "backplane_bps": null,
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
+  "kind": "switch",
+  "linecards": [
+    {
+
+    },
+    {
+      "kind": "node",
+      "naming_pattern": "%LINECARD%/0/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "kind": "other",
+          "uid": "edel-cmc-1"
+        },
+        {
+          "uid": "edel-1"
+        },
+        {
+          "uid": "edel-2"
+        },
+        {
+          "uid": "edel-3"
+        },
+        {
+          "uid": "edel-4"
+        },
+        {
+          "uid": "edel-5"
+        },
+        {
+          "uid": "edel-6"
+        },
+        {
+          "uid": "edel-7"
+        },
+        {
+          "uid": "edel-8"
+        },
+        {
+          "uid": "edel-9"
+        },
+        {
+          "uid": "edel-10"
+        },
+        {
+          "uid": "edel-11"
+        },
+        {
+          "uid": "edel-12"
+        },
+        {
+          "uid": "edel-13"
+        },
+        {
+          "uid": "edel-14"
+        },
+        {
+          "uid": "edel-15"
+        },
+        {
+          "uid": "edel-16"
+        },
+        {
+          "uid": "edel-17"
+        },
+        {
+          "uid": "edel-18"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "kind": "router",
+          "port": "2:4",
+          "uid": "gw-grenoble"
+        },
+        {
+          "kind": "router",
+          "port": "2:5",
+          "uid": "gw-grenoble"
+        },
+        {
+          "kind": "router",
+          "port": "2:6",
+          "uid": "gw-grenoble"
+        }
+      ],
+      "rate": 1000000000,
+      "snmp_pattern": "Unit: %LINECARD% Slot: 0 Port: %PORT% Gigabit - Level"
+    }
+  ],
+  "model": "Broadcom",
+  "mtu": 9216,
+  "routes": {
+
+  },
+  "site": "grenoble",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "sw-edel-1",
+  "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
+  },
+  "weathermap": {
+    "use_cacti": "no"
+  }
+}
