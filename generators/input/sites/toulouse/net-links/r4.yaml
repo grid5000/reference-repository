@@ -4,6 +4,7 @@ r4:
   kind: switch
   site: toulouse
   snmp_community: public
+  backplane_bps: 480000000000
   routes: {}
   mtu: 9216
   vlans:
@@ -18,6 +19,7 @@ r4:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 1000000000
       ports:
         1: pastel-1
@@ -64,6 +66,7 @@ r4:
       kind: router
       naming_pattern: Te%LINECARD%/%PORT%
       snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 10000000000
       ports:
         1:
@@ -72,6 +75,7 @@ r4:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
+      backplane_bps: 40000000000
       rate: 1000000000
       ports:
         1: pastel-41
