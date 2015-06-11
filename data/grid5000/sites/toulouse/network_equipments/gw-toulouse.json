@@ -1,5 +1,5 @@
 {
-  "backplane_bps": null,
+  "backplane_bps": 2000000000000,
   "channels": {
     "naming_pattern": "Po%CHANNELID%"
   },
@@ -9,6 +9,7 @@
 
     },
     {
+      "backplane_bps": 80000000000,
       "kind": "virtual",
       "naming_pattern": "Te%LINECARD%/%PORT%",
       "ports": [
@@ -27,6 +28,7 @@
       "snmp_pattern": "TenGigabitEthernet%LINECARD%/%PORT%"
     },
     {
+      "backplane_bps": 80000000000,
       "kind": "node",
       "naming_pattern": "Gi%LINECARD%/%PORT%",
       "ports": [
@@ -182,6 +184,7 @@
       "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
     },
     {
+      "backplane_bps": 80000000000,
       "kind": "node",
       "naming_pattern": "Gi%LINECARD%/%PORT%",
       "ports": [

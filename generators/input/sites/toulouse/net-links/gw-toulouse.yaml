@@ -4,6 +4,7 @@ gw-toulouse:
   kind: router
   site: toulouse
   snmp_community: public
+  backplane_bps: 2000000000000
   routes: {}
   mtu: 9216
   vlans:
@@ -68,6 +69,7 @@ gw-toulouse:
       kind: virtual
       naming_pattern: Te%LINECARD%/%PORT%
       snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
+      backplane_bps: 80000000000
       rate: 10000000000
       ports:
         1: renater-toulouse
@@ -78,6 +80,7 @@ gw-toulouse:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
+      backplane_bps: 80000000000
       rate: 1000000000
       ports:
         1: pastel-81
@@ -132,6 +135,7 @@ gw-toulouse:
       kind: node
       naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
+      backplane_bps: 80000000000
       rate: 1000000000
       ports:
         36:
