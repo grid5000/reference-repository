@@ -1,7 +1,7 @@
 ---
-gw-rennes:
+c6509:
   model: Cisco WS-C6509-E
-  kind: router
+  kind: switch
   site: rennes
   snmp_community: privkavlan
   backplane_bps: 720000000000
@@ -70,10 +70,9 @@ gw-rennes:
       backplane_bps: 40000000000
       model: WS-X6704-10GE
       ports:
-        1: renater-rennes
         2:
           uid: parasilo-sw-1
-          kind: switch
+          kind: router
         3:
           uid: bigdata-sw
           kind: switch

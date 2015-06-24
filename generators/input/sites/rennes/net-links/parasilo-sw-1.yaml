@@ -1,7 +1,7 @@
 ---
 parasilo-sw-1:
   model: Nexus 56128P
-  kind: switch
+  kind: router
   site: rennes
   snmp_community: public
   routes: {}
@@ -259,8 +259,11 @@ parasilo-sw-1:
           kind: node
           port: eth0
         23:
-          uid: gw-rennes
+          uid: c6509
           kind: router
+        24:
+          uid: renater-rennes
+          kind: virtual
   channels:
     naming_pattern: Po%CHANNELID%
     snmp_pattern: port-channel%CHANNELID%
