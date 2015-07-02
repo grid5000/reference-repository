@@ -6,7 +6,7 @@ site :nantes do |site_uid|
     kavlan true
     production true
 
-    18.times do |i|
+    22.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
         performance({
