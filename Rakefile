@@ -54,7 +54,8 @@ namespace :g5k do
     command = File.join(ROOT_DIR, "generators", "grid5000")
     command += " " + File.join(root_dir_input, site,"#{site}.rb")
     command += " " + File.join(root_dir_input, site,"clusters","#{host}.rb")
-    command += " " + File.join(root_dir_input, site,"clusters","#{host}.yaml")
+    command += " " + File.join(root_dir_input, site,"clusters","#{host}_generated.yaml")
+    command += " " + File.join(root_dir_input, site,"clusters","#{host}_manual.yaml")
     command += " " + File.join(root_dir_input, site,"pdus.rb")
 
     command << " -s" if ENV['DRY'] == "yes"
@@ -153,7 +154,7 @@ namespace :oar do
         next
       end
 
-      command = "oaradmin resources"
+      command = ""
 
       case action
       when "A", "C", "M"
@@ -168,28 +169,39 @@ namespace :oar do
           next
         end
         if action == "M"  # modification of a file
-          command.concat(" -s node=#{host} ")
+          command.concat("oarnodesetting -h #{host} ")
+          command.concat(" -p ").concat( export.to_a.map{|(k,v)|
+            if v.nil?
+              nil
+            else
+              "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}"
+            end
+          }.compact.join(" -p ") )
         else              # new file
-          command.concat(" -a /node=#{host}/cpu={#{node.properties['architecture']['smp_size']}}/core={#{export['cpucore']}}")
-          command.concat(" --auto-offset")
+          node_number = node_uid.split("-")[1]
+          command.concat("oar_resources_add -H 1 --host0 #{node_number} --host-prefix #{cluster_uid}- --host-suffix .#{site_uid}.#{grid_uid}.fr -C #{node.properties['architecture']['smp_size']} -c #{export['cpucore']}")
+          command.concat(" -a")
+          # Add other properties
+          command.concat(' -A "')
           if ENV['MAINTENANCE'] && ENV['MAINTENANCE']=='NO'
-            command.concat(' -p maintenance="NO"')
+            command.concat(' -p maintenance=\'NO\'')
           else
             # by default, maintenance is YES when creating new resources
-            command.concat(' -p maintenance="YES"')
+            command.concat(' -p maintenance=\'YES\'')
           end
           # by default, an Alive node has comment "OK"
-          command.concat(' -p comment="OK"')
+          command.concat(' -p comment=\'OK\'')
+          command.concat(" -p ").concat( export.to_a.map{|(k,v)|
+            if v.nil?
+              nil
+            else
+              "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}"
+            end
+          }.compact.join(" -p ") )
+          command.concat('"')
         end
-        command.concat(" -p ").concat( export.to_a.map{|(k,v)|
-          if v.nil?
-            nil
-          else
-            [k, v.inspect].join("=")
-          end
-        }.compact.join(" -p ") )
       when "D"            # deletion of a file
-        command.concat(" -d node=#{host}")
+        command.concat("oarnodesetting -s Dead -h #{host}")
       else
         @logger.warn "Don't know what to do with #{line.inspect}. Ignoring."
         next
@@ -264,4 +276,3 @@ namespace :weathermap do
     Rake::Task['weathermap:execute'].invoke
   end
 end
-

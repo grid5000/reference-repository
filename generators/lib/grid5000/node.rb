@@ -21,14 +21,14 @@ module Grid5000
         h['cluster']         = cluster.properties['uid']
         h['nodemodel']       = cluster.properties['model']
         h['switch']          = main_network_adapter['switch']
-        #h['besteffort']      = properties['supported_job_types']['besteffort'] ? "YES" : "NO"
-        #h['deploy']          = properties['supported_job_types']['deploy'] ? "YES" : "NO"
+        h['besteffort']      = properties['supported_job_types']['besteffort'] ? "YES" : "NO"
+        h['deploy']          = properties['supported_job_types']['deploy'] ? "YES" : "NO"
         h['ip_virtual']      = properties['supported_job_types']['virtual'] ? "YES" : "NO"
         h['virtual']         = properties['supported_job_types']['virtual']
         h['cpuarch']         = properties['architecture']['platform_type']
         h['cpucore']         = properties['architecture']['smt_size']/properties['architecture']['smp_size']
         h['cputype']         = [properties['processor']['model'], properties['processor']['version']].join(" ")
-        h['cpufreq']         = properties['processor']['clock_speed']/1_000_000_000
+        h['cpufreq']         = properties['processor']['clock_speed']/1_000_000_000.0
         h['disktype']        = (properties['storage_devices'].first || {})['interface']
         h['ethnb']           = properties["network_adapters"].select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mountable'] == true}.length
         ib10g                = properties['network_adapters'].detect{|na| na['interface'] =~ /infiniband/i && na['rate'] == 10_000_000_000}
