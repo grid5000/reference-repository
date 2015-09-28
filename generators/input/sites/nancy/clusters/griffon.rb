@@ -17,7 +17,9 @@ site :nancy do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup('griffon_generated', node_uid, 'supported_job_types', 'virtual')
+          :max_walltime => 0,
+          :virtual      => lookup('griffon_generated', node_uid, 'supported_job_types', 'virtual'),
+          :queues       => ['admin', 'default']
         })
 
         architecture({

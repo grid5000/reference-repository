@@ -17,7 +17,9 @@ site :nancy do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup('graphite_generated', node_uid, 'supported_job_types', 'virtual')
+          :max_walltime => 0,
+          :virtual      => lookup('graphite_generated', node_uid, 'supported_job_types', 'virtual'),
+          :queues       => ['default', 'admin']
         })
 
         architecture({
@@ -186,7 +188,7 @@ site :nancy do |site_uid|
                     :uid  => lookup('graphite_manual', node_uid, 'pdu1', 'pdu_name'),
                     :port => lookup('graphite_manual', node_uid, 'pdu1', 'pdu_position'),
                   },
- 		  {
+ 		          {
                     :uid  => lookup('graphite_manual', node_uid, 'pdu2', 'pdu_name'),
                     :port => lookup('graphite_manual', node_uid, 'pdu2', 'pdu_position'),
                   } ]

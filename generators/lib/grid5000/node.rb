@@ -53,6 +53,13 @@ module Grid5000
                                 : properties['monitoring']['wattmeter'] ? "YES" : "NO"
         h['rconsole']        = properties['monitoring']['rconsole'] == false ? "NO" : "YES"
         h['cluster_priority'] = cluster.properties['priority'] || Time.httpdate(cluster.properties['created_at']).strftime("%Y%m")
+        begin
+          h['production'] = properties['supported_job_types']['queues'].include?("production") ? "YES" : "NO"
+        rescue
+          # Set as NO by default
+          h['production'] = "NO"
+        end
+        h['max_walltime'] = properties['supported_job_types']['max_walltime'] || 0
         h
       }
     }
