@@ -1,0 +1,135 @@
+---
+smbi1:
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  mtu: 9216
+  vlans:
+    naming_pattern: Vlan-interface%VLANID%
+    "vlan1":
+      administrative: yes
+      addresses:
+        - 172.16.79.208
+  routes: {}
+  backplane_bps: 176000000000
+  linecards:
+    0:
+      naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports:
+        1:
+          uid: mbi-1
+          port: eth0
+        2:
+          uid: mbi-2
+          port: eth0
+        3:
+          uid: mbi-3
+          port: eth0
+        4:
+          uid: mbi-4
+          port: eth0
+        5:
+          uid: mbi-5
+          port: eth0
+        6:
+          uid: mbi-6
+          port: eth0
+        7:
+          uid: mbi-7
+          port: eth0
+        8:
+          uid: mbi-8
+          port: eth0
+        9:
+          uid: mbi-9
+          port: eth0
+        10:
+          uid: mbi-10
+          port: eth0
+        11:
+          uid: mbi-11
+          port: eth0
+        25:
+          uid: mbi-12
+          port: eth0
+        26:
+          uid: mbi-13
+          port: eth0
+        27:
+          uid: mbi-14
+          port: eth0
+        28:
+          uid: mbi-15
+          port: eth0
+        29:
+          uid: mbi-16
+          port: eth0
+        30:
+          uid: mbi-17
+          port: eth0
+        31:
+          uid: mbi-18
+          port: eth0
+        32:
+          uid: mbi-19
+          port: eth0
+        33:
+          uid: mbi-20
+          port: eth0
+        34:
+          uid: mbi-21
+          port: eth0
+        35:
+          uid: mbi-22
+          port: eth0
+        36:
+          uid: mbi-23
+          port: eth0
+        37:
+          uid: mbi-24
+          port: eth0
+        38:
+          uid: mbi-25
+          port: eth0
+        39:
+          uid: mbi-26
+          port: eth0
+        40:
+          uid: mbi-27
+          port: eth0
+        41:
+          uid: mbi-28
+          port: eth0
+        42:
+          uid: mbi-29
+          port: eth0
+        43:
+          uid: mbi-30
+          port: eth0
+        44:
+          uid: mbi-31
+          port: eth0
+        45:
+          uid: mbi-32
+          port: eth0
+        23:
+          kind: other
+          uid: fmbi1
+        24:
+          kind: other
+          uid: fmbi2
+        20:
+          kind: other
+          uid:  mbi-pdu1
+        21:
+          kind: other
+          uid:  mbi-pdu2
+        52:
+          kind: switch
+          uid: sgriffon3
+  channels:
+    naming_pattern: Po%CHANNELID%
