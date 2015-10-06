@@ -9,10 +9,9 @@ site :rennes do |site_uid|
     72.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
-        # TODO: retrieve and update these values
         performance({
-         :core_flops => 0,
-         :node_flops => 0
+         :core_flops => 14600000000,
+         :node_flops => 245300000000
         })
 
         supported_job_types({
