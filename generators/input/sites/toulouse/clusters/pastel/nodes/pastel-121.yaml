@@ -1,0 +1,63 @@
+---
+pastel-121:
+  bios:
+    version: S39_3B13
+    release_date: 12/13/2006
+    vendor: Sun Microsystems
+  network_interfaces:
+    bmc:
+      mac: 00:1b:24:2d:fb:f8
+      ip: 172.17.112.121
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:1b:24:3d:ca:a1
+      ip6: fe80::21b:24ff:fe2d:faa3
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.112.121
+      driver: forcedeth
+      mountable: true
+    eth1:
+      mounted: false
+      mac: 00:1b:24:2d:fa:a4
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: forcedeth
+      mountable: false
+  block_devices:
+    sda:
+      model: HITACHI HDS7225S
+      device: sda
+      size: 250056000000
+      rev: V5DO
+      vendor: Hitachi
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: amd-v
+  chassis:
+    serial_number: 0723QBT0C8
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire X2200 M2
+  main_memory:
+    ram_size: 8588886016
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2600000000
+    other_description: Dual-Core AMD Opteron(tm) Processor 2218
+    version: 2218
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 4

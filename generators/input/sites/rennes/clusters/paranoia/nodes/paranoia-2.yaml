@@ -1,0 +1,93 @@
+---
+paranoia-2:
+  processor:
+    clock_speed: 2200000000
+    instruction_set: x86-64
+    model: Intel Xeon
+    version: E5-2660 v2
+    vendor: Intel
+    other_description: Intel(R) Xeon(R) CPU E5-2660 v2 @ 2.20GHz
+    cache_l1i: 32768
+    cache_l1d: 32768
+    cache_l2: 262144
+    cache_l3: 26214400
+  block_devices:
+    sdc:
+      device: sdc
+      size: 600127266816
+      model: WD6001BKHG
+      rev: D1S6
+    sdd:
+      device: sdd
+      size: 600127266816
+      model: WD6001BKHG
+      rev: D1S6
+    sda:
+      device: sda
+      size: 600127266816
+      model: WD6001BKHG
+      rev: D1S6
+    sdb:
+      device: sdb
+      size: 600127266816
+      model: WD6001BKHG
+      rev: D1S6
+    sde:
+      device: sde
+      size: 600127266816
+      model: WD6001BKHG
+      rev: D1S6
+  architecture:
+    smp_size: 2
+    smt_size: 20
+    platform_type: x86_64
+  network_interfaces:
+    bmc:
+      ip: 172.17.100.2
+      mac: f0:4d:a2:73:cc:7a
+    eth2:
+      interface: Ethernet
+      driver: igb
+      mac: f0:4d:a2:73:cc:78
+      enabled: false
+      mountable: false
+      mounted: false
+      management: false
+    eth3:
+      interface: Ethernet
+      driver: igb
+      mac: f0:4d:a2:73:cc:79
+      enabled: false
+      mountable: false
+      mounted: false
+      management: false
+    eth0:
+      interface: Ethernet
+      ip: 172.16.100.2
+      driver: ixgbe
+      mac: a0:36:9f:28:a8:80
+      rate: 10000000000
+      enabled: true
+      mountable: true
+      mounted: true
+      management: false
+    eth1:
+      interface: Ethernet
+      driver: ixgbe
+      mac: a0:36:9f:28:a8:82
+      enabled: false
+      mountable: false
+      mounted: false
+      management: false
+  chassis:
+    serial_number: DB12LZ1
+    manufacturer: Dell Inc.
+    product_name: PowerEdge C6220 II
+  main_memory:
+    ram_size: 137438953472
+  supported_job_types:
+    virtual: ivt
+  bios:
+    vendor: Dell Inc.
+    version: 2.1
+    release_date: 09/06/2013

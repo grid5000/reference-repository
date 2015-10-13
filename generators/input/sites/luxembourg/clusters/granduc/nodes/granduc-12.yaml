@@ -1,0 +1,83 @@
+---
+granduc-12:
+  bios:
+    version: 2.7.0
+    release_date: 10/30/2010
+    vendor: Dell Inc.
+  network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:19:b9:f2:0e:10
+      ip6: fe80::219:b9ff:fef2:e10
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
+      ip: 172.16.176.12
+    eth1:
+      mounted: false
+      mac: 00:19:b9:f2:0e:12
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
+      ip: 172.16.176.112
+    eth2:
+      mounted: true
+      rate: 10000000000
+      mac: 00:1b:21:34:e1:1c
+      ip6: fe80::21b:21ff:fe34:e11c
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 192.168.14.12
+      driver: ixgbe
+      mountable: true
+    eth3:
+      mounted: false
+      mac: 00:1b:21:34:e1:1d
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
+    bmc:
+      ip: 172.17.176.12
+      mac: 00:1c:23:d3:57:5f
+  block_devices:
+    sda:
+      model: ST9146802SS
+      device: sda
+      size: 146815733760
+      rev: S207
+      vendor: SEAGATE
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: 50W883J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge 1950
+  main_memory:
+    ram_size: 17179869184
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2000000000
+    other_description: Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz
+    version: L5335
+    cache_l2: 4194304
+    cache_l3: 0
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8

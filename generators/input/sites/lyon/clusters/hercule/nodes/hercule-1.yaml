@@ -1,0 +1,89 @@
+---
+hercule-1:
+  bios:
+    version: 1.0.21
+    release_date: 04/26/2012
+    vendor: Dell Inc.
+  network_interfaces:
+    eth0:
+      mounted: false
+      mac: 00:8c:fa:0b:b9:c2
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
+    eth1:
+      mounted: true
+      switch_port: TenGigabitEthernet 0/24
+      rate: 10000000000
+      mac: 00:8c:fa:0b:b9:c3
+      ip6: fe80::28c:faff:fe0b:b9c3
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
+      ip: 172.16.51.1
+    eth2:
+      mounted: false
+      mac: 84:8f:69:fd:4d:36
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+    eth3:
+      mounted: false
+      mac: 84:8f:69:fd:4d:37
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+    bmc:
+      mac: 84:8f:69:fd:4d:38
+      ip: 172.17.51.1
+  block_devices:
+    sda:
+      model: WDC WD2003FYYS-1
+      device: sda
+      size: 2000398934016
+      rev: 1.0
+    sdb:
+      model: WDC WD2003FYYS-1
+      device: sdb
+      size: 2000398934016
+      rev: 1.0
+    sdc:
+      model: WDC WD2003FYYS-1
+      device: sdc
+      size: 2000398934016
+      rev: 1.0
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: JQ3HD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge C6220
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 34359738368
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2000000000
+    other_description: Intel(R) Xeon(R) CPU E5-2620 0 @ 2.00GHz
+    version: E5-2620
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12

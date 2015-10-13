@@ -1,0 +1,95 @@
+---
+taurus-12:
+  bios:
+    version: 1.2.6
+    release_date: 05/10/2012
+    vendor: Dell Inc.
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC H710
+      device: sda
+      size: 598879502336
+      rev: 3.13
+  network_interfaces:
+    eth0:
+      mounted: true
+      switch_port: TenGigabitEthernet 0/12
+      rate: 10000000000
+      mac: a0:36:9f:08:f8:f4
+      ip6: fe80::a236:9fff:fe08:f8f4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: ixgbe
+      mountable: true
+      ip: 172.16.48.12
+    eth1:
+      mounted: false
+      mac: a0:36:9f:08:f8:f6
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: ixgbe
+      mountable: false
+    eth2:
+      mounted: false
+      mac: bc:30:5b:ef:04:28
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    eth3:
+      mounted: false
+      mac: bc:30:5b:ef:04:29
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    eth4:
+      mounted: false
+      mac: bc:30:5b:ef:04:2a
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    eth5:
+      mounted: false
+      mac: bc:30:5b:ef:04:2b
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: d4:be:d9:fb:ed:b8
+      ip: 172.17.48.12
+  chassis:
+    serial_number: GHTHD5J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R720
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2300000000
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    version: E5-2630
+    cache_l2: 262144
+    cache_l3: 15728640
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 34359738368
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 12

@@ -1,0 +1,75 @@
+---
+adonis-4:
+  bios:
+    version: R4222X80
+    release_date: 05/20/2010
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: WDC WD2502ABYS-0
+      device: sda
+      size: 251059544064
+      rev: 2.0
+      vendor: Western Digital
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
+    ib0:
+      mounted: true
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:3d:45
+      rate: 40000000000
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26428
+      ip: 172.18.18.4
+      ip6: fe80::230:48ff:ffcc:3d45
+      driver: mlx4_core
+      mountable: true
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:30:48:cd:c0:ac
+      ip6: fe80::230:48ff:fecd:c0ac
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.18.4
+    eth1:
+      mounted: false
+      mac: 00:30:48:cd:c0:ad
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 00:30:48:cc:b6:6c
+      ip: 172.17.18.4
+  supported_job_types:
+    virtual: ivt
+  chassis:
+    serial_number: "1234567890"
+    manufacturer: Bull SAS
+    product_name: bullx
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2270000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 25769803776
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
