@@ -17,31 +17,31 @@ site :rennes do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup('parasilo_generated', node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
         })
 
         architecture({
-          :smp_size       => lookup('parasilo_generated', node_uid, 'architecture', 'smp_size'),
-          :smt_size       => lookup('parasilo_generated', node_uid, 'architecture', 'smt_size'),
-          :platform_type  => lookup('parasilo_generated', node_uid, 'architecture', 'platform_type')
+          :smp_size       => lookup(node_uid, node_uid, 'architecture', 'smp_size'),
+          :smt_size       => lookup(node_uid, node_uid, 'architecture', 'smt_size'),
+          :platform_type  => lookup(node_uid, node_uid, 'architecture', 'platform_type')
         })
 
         processor({
-          :vendor             => lookup('parasilo_generated', node_uid, 'processor', 'vendor'),
-          :model              => lookup('parasilo_generated', node_uid, 'processor', 'model'),
-          :version            => lookup('parasilo_generated', node_uid, 'processor', 'version'),
-          :clock_speed        => lookup('parasilo_generated', node_uid, 'processor', 'clock_speed'),
-          :instruction_set    => lookup('parasilo_generated', node_uid, 'processor', 'instruction_set'),
-          :other_description  => lookup('parasilo_generated', node_uid, 'processor', 'other_description'),
-          :cache_l1           => lookup('parasilo_generated', node_uid, 'processor', 'cache_l1'),
-          :cache_l1i          => lookup('parasilo_generated', node_uid, 'processor', 'cache_l1i'),
-          :cache_l1d          => lookup('parasilo_generated', node_uid, 'processor', 'cache_l1d'),
-          :cache_l2           => lookup('parasilo_generated', node_uid, 'processor', 'cache_l2'),
-          :cache_l3           => lookup('parasilo_generated', node_uid, 'processor', 'cache_l3')
+          :vendor             => lookup(node_uid, node_uid, 'processor', 'vendor'),
+          :model              => lookup(node_uid, node_uid, 'processor', 'model'),
+          :version            => lookup(node_uid, node_uid, 'processor', 'version'),
+          :clock_speed        => lookup(node_uid, node_uid, 'processor', 'clock_speed'),
+          :instruction_set    => lookup(node_uid, node_uid, 'processor', 'instruction_set'),
+          :other_description  => lookup(node_uid, node_uid, 'processor', 'other_description'),
+          :cache_l1           => lookup(node_uid, node_uid, 'processor', 'cache_l1'),
+          :cache_l1i          => lookup(node_uid, node_uid, 'processor', 'cache_l1i'),
+          :cache_l1d          => lookup(node_uid, node_uid, 'processor', 'cache_l1d'),
+          :cache_l2           => lookup(node_uid, node_uid, 'processor', 'cache_l2'),
+          :cache_l3           => lookup(node_uid, node_uid, 'processor', 'cache_l3')
         })
 
         main_memory({
-          :ram_size     => lookup('parasilo_generated', node_uid, 'main_memory', 'ram_size'),
+          :ram_size     => lookup(node_uid, node_uid, 'main_memory', 'ram_size'),
           :virtual_size => nil
         })
 
@@ -55,63 +55,63 @@ site :rennes do |site_uid|
         storage_devices [{
           :interface => 'SATA',
           :driver    => "ahci",
-          :device    => lookup('parasilo_generated', node_uid, 'block_devices' ,'sda',  'device'),
-          :size      => lookup('parasilo_generated', node_uid, 'block_devices' ,'sda',  'size'),
-          :model     => lookup('parasilo_generated', node_uid, 'block_devices' ,'sda',  'model'),
-          :rev       => lookup('parasilo_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :device    => lookup(node_uid, node_uid, 'block_devices' ,'sda',  'device'),
+          :size      => lookup(node_uid, node_uid, 'block_devices' ,'sda',  'size'),
+          :model     => lookup(node_uid, node_uid, 'block_devices' ,'sda',  'model'),
+          :rev       => lookup(node_uid, node_uid, 'block_devices', 'sda', 'rev'),
           :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
           :driver    => "ahci",
-          :device    => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdb',  'device'),
-          :size      => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdb',  'size'),
-          :model     => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdb',  'model'),
-          :rev       => lookup('parasilo_generated', node_uid, 'block_devices', 'sdb', 'rev'),
+          :device    => lookup(node_uid, node_uid, 'block_devices' ,'sdb',  'device'),
+          :size      => lookup(node_uid, node_uid, 'block_devices' ,'sdb',  'size'),
+          :model     => lookup(node_uid, node_uid, 'block_devices' ,'sdb',  'model'),
+          :rev       => lookup(node_uid, node_uid, 'block_devices', 'sdb', 'rev'),
           :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
           :driver    => "ahci",
-          :device    => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdc',  'device'),
-          :size      => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdc',  'size'),
-          :model     => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdc',  'model'),
-          :rev       => lookup('parasilo_generated', node_uid, 'block_devices', 'sdc', 'rev'),
+          :device    => lookup(node_uid, node_uid, 'block_devices' ,'sdc',  'device'),
+          :size      => lookup(node_uid, node_uid, 'block_devices' ,'sdc',  'size'),
+          :model     => lookup(node_uid, node_uid, 'block_devices' ,'sdc',  'model'),
+          :rev       => lookup(node_uid, node_uid, 'block_devices', 'sdc', 'rev'),
           :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
           :driver    => "ahci",
-          :device    => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdd',  'device'),
-          :size      => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdd',  'size'),
-          :model     => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdd',  'model'),
-          :rev       => lookup('parasilo_generated', node_uid, 'block_devices', 'sdd', 'rev'),
+          :device    => lookup(node_uid, node_uid, 'block_devices' ,'sdd',  'device'),
+          :size      => lookup(node_uid, node_uid, 'block_devices' ,'sdd',  'size'),
+          :model     => lookup(node_uid, node_uid, 'block_devices' ,'sdd',  'model'),
+          :rev       => lookup(node_uid, node_uid, 'block_devices', 'sdd', 'rev'),
           :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
           :driver    => "ahci",
-          :device    => lookup('parasilo_generated', node_uid, 'block_devices' ,'sde',  'device'),
-          :size      => lookup('parasilo_generated', node_uid, 'block_devices' ,'sde',  'size'),
-          :model     => lookup('parasilo_generated', node_uid, 'block_devices' ,'sde',  'model'),
-          :rev       => lookup('parasilo_generated', node_uid, 'block_devices', 'sde', 'rev'),
+          :device    => lookup(node_uid, node_uid, 'block_devices' ,'sde',  'device'),
+          :size      => lookup(node_uid, node_uid, 'block_devices' ,'sde',  'size'),
+          :model     => lookup(node_uid, node_uid, 'block_devices' ,'sde',  'model'),
+          :rev       => lookup(node_uid, node_uid, 'block_devices', 'sde', 'rev'),
           :storage   => 'HDD'
         },
         {
           :interface => 'SATA',
           :driver    => "ahci",
-          :device    => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdf',  'device'),
-          :size      => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdf',  'size'),
-          :model     => lookup('parasilo_generated', node_uid, 'block_devices' ,'sdf',  'model'),
-          :rev       => lookup('parasilo_generated', node_uid, 'block_devices', 'sdf', 'rev'),
+          :device    => lookup(node_uid, node_uid, 'block_devices' ,'sdf',  'device'),
+          :size      => lookup(node_uid, node_uid, 'block_devices' ,'sdf',  'size'),
+          :model     => lookup(node_uid, node_uid, 'block_devices' ,'sdf',  'model'),
+          :rev       => lookup(node_uid, node_uid, 'block_devices', 'sdf', 'rev'),
           :storage   => 'SSD'
         }
         ]
 
         network_adapters [        {
-          :interface        => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth0', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'interface'),
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip               => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :ip               => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'ip'),
           :rate             => 10.G,
           :device           => "eth0",
           :enabled          => true,
@@ -121,15 +121,15 @@ site :rennes do |site_uid|
           :bridged          => true,
           :vendor           => "Intel",
           :version          => '82599EB 10-Gigabit SFI/SFP+ Network Connection',
-          :driver           => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
-          :mac              => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth0', 'mac'),
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'mac'),
           :switch_port      => net_port_lookup('rennes', 'parasilo', node_uid, 'eth0'),
           :switch           => net_switch_lookup('rennes', 'parasilo', node_uid, 'eth0')
         },
         {
-          :interface        => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'interface'),
           :rate             => 10.G,
-          :rate             => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth1', 'rate'),
+          :rate             => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'rate'),
           :enabled          => true,
           :management       => false,
           :mountable        => true,
@@ -138,13 +138,13 @@ site :rennes do |site_uid|
           :device           => "eth1",
           :vendor           => "Intel",
           :version          => '82599EB 10-Gigabit SFI/SFP+ Network Connection',
-          :driver           => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
-          :mac              => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth1', 'mac'),
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'mac'),
           :switch_port      => net_port_lookup('rennes', 'parasilo', node_uid, 'eth1'),
           :switch           => net_switch_lookup('rennes', 'parasilo', node_uid, 'eth1')
         },
         {
-          :interface        => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth2', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'interface'),
           :rate             => 1.G,
           :enabled          => false,
           :management       => false,
@@ -154,11 +154,11 @@ site :rennes do |site_uid|
           :device           => "eth2",
           :vendor           => "Intel",
           :version          => "Intel Corporation",
-          :driver           => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
-          :mac              => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth2', 'mac'),
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'mac'),
         },
         {
-          :interface        => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth3', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'interface'),
           :rate             => 1.G,
           :enabled          => false,
           :management       => false,
@@ -168,16 +168,16 @@ site :rennes do |site_uid|
           :device           => "eth3",
           :vendor           => "Intel",
           :version          => "Intel Corporation",
-          :driver           => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth3', 'driver'),
-          :mac              => lookup('parasilo_generated', node_uid, 'network_interfaces', 'eth3', 'mac')
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'mac')
         },
         {
           :interface            => 'Ethernet',
           :network_address  => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
           :rate                 => 100.M,
           :network_address      => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip                   => lookup('parasilo_generated', node_uid, 'network_interfaces', 'bmc', 'ip'),
-          :mac                  => lookup('parasilo_generated', node_uid, 'network_interfaces', 'bmc', 'mac'),
+          :ip                   => lookup(node_uid, node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :mac                  => lookup(node_uid, node_uid, 'network_interfaces', 'bmc', 'mac'),
           :enabled              => true,
           :mounted              => false,
           :mountable            => false,
@@ -187,15 +187,15 @@ site :rennes do |site_uid|
 
 
         chassis({
-          :serial       => lookup('parasilo_generated', node_uid, 'chassis', 'serial_number'),
-          :name         => lookup('parasilo_generated', node_uid, 'chassis', 'product_name'),
-          :manufacturer => lookup('parasilo_generated', node_uid, 'chassis', 'manufacturer')
+          :serial       => lookup(node_uid, node_uid, 'chassis', 'serial_number'),
+          :name         => lookup(node_uid, node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup(node_uid, node_uid, 'chassis', 'manufacturer')
         })
 
         bios({
-          :version      => lookup('parasilo_generated', node_uid, 'bios', 'version'),
-          :vendor       => lookup('parasilo_generated', node_uid, 'bios', 'vendor'),
-          :release_date => lookup('parasilo_generated', node_uid, 'bios', 'release_date')
+          :version      => lookup(node_uid, node_uid, 'bios', 'version'),
+          :vendor       => lookup(node_uid, node_uid, 'bios', 'vendor'),
+          :release_date => lookup(node_uid, node_uid, 'bios', 'release_date')
         })
 
         gpu({

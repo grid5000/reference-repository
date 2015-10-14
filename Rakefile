@@ -53,9 +53,9 @@ namespace :g5k do
     root_dir_input = "#{ROOT_DIR}/generators/input/sites"
     command = File.join(ROOT_DIR, "generators", "grid5000")
     command += " " + File.join(root_dir_input, site,"#{site}.rb")
-    command += " " + File.join(root_dir_input, site,"clusters","#{host}.rb")
-    command += " " + File.join(root_dir_input, site,"clusters","#{host}_generated.yaml")
-    command += " " + File.join(root_dir_input, site,"clusters","#{host}_manual.yaml")
+    command += " " + File.join(root_dir_input, site,"clusters", "*", "#{host}.rb")
+    command += " " + File.join(root_dir_input, site,"clusters", "*", "nodes", "#{host}*.yaml")
+    command += " " + File.join(root_dir_input, site,"clusters", "*", "#{host}_manual.yaml")
     command += " " + File.join(root_dir_input, site,"pdus.rb")
 
     command << " -s" if ENV['DRY'] == "yes"

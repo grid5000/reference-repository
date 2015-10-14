@@ -17,31 +17,31 @@ site :lyon do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup('taurus_generated', node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
         })
 
         architecture({
-          :smp_size       => lookup('taurus_generated', node_uid, 'architecture', 'smp_size'),
-          :smt_size       => lookup('taurus_generated', node_uid, 'architecture', 'smt_size'),
-          :platform_type  => lookup('taurus_generated', node_uid, 'architecture', 'platform_type')
+          :smp_size       => lookup(node_uid, node_uid, 'architecture', 'smp_size'),
+          :smt_size       => lookup(node_uid, node_uid, 'architecture', 'smt_size'),
+          :platform_type  => lookup(node_uid, node_uid, 'architecture', 'platform_type')
         })
 
         processor({
-          :vendor             => lookup('taurus_generated', node_uid, 'processor', 'vendor'),
-          :model              => lookup('taurus_generated', node_uid, 'processor', 'model'),
-          :version            => lookup('taurus_generated', node_uid, 'processor', 'version'),
-          :clock_speed        => lookup('taurus_generated', node_uid, 'processor', 'clock_speed'),
-          :instruction_set    => lookup('taurus_generated', node_uid, 'processor', 'instruction_set'),
-          :other_description  => lookup('taurus_generated', node_uid, 'processor', 'other_description'),
-          :cache_l1           => lookup('taurus_generated', node_uid, 'processor', 'cache_l1'),
-          :cache_l1i          => lookup('taurus_generated', node_uid, 'processor', 'cache_l1i'),
-          :cache_l1d          => lookup('taurus_generated', node_uid, 'processor', 'cache_l1d'),
-          :cache_l2           => lookup('taurus_generated', node_uid, 'processor', 'cache_l2'),
-          :cache_l3           => lookup('taurus_generated', node_uid, 'processor', 'cache_l3')
+          :vendor             => lookup(node_uid, node_uid, 'processor', 'vendor'),
+          :model              => lookup(node_uid, node_uid, 'processor', 'model'),
+          :version            => lookup(node_uid, node_uid, 'processor', 'version'),
+          :clock_speed        => lookup(node_uid, node_uid, 'processor', 'clock_speed'),
+          :instruction_set    => lookup(node_uid, node_uid, 'processor', 'instruction_set'),
+          :other_description  => lookup(node_uid, node_uid, 'processor', 'other_description'),
+          :cache_l1           => lookup(node_uid, node_uid, 'processor', 'cache_l1'),
+          :cache_l1i          => lookup(node_uid, node_uid, 'processor', 'cache_l1i'),
+          :cache_l1d          => lookup(node_uid, node_uid, 'processor', 'cache_l1d'),
+          :cache_l2           => lookup(node_uid, node_uid, 'processor', 'cache_l2'),
+          :cache_l3           => lookup(node_uid, node_uid, 'processor', 'cache_l3')
         })
 
         main_memory({
-          :ram_size     => lookup('taurus_generated', node_uid, 'main_memory', 'ram_size'),
+          :ram_size     => lookup(node_uid, node_uid, 'main_memory', 'ram_size'),
           :virtual_size => nil
         })
 
@@ -54,110 +54,110 @@ site :lyon do |site_uid|
 
         storage_devices [{
           :interface  => 'SCSI',
-          :size       => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'size'),
+          :size       => lookup(node_uid, node_uid, 'block_devices', 'sda', 'size'),
           :driver     => "megaraid_sas",
-          :device     => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'device'),
-          :model      => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'model'),
-          :vendor     => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'vendor'),
-          :rev        => lookup('taurus_generated', node_uid, 'block_devices', 'sda', 'rev'),
+          :device     => lookup(node_uid, node_uid, 'block_devices', 'sda', 'device'),
+          :model      => lookup(node_uid, node_uid, 'block_devices', 'sda', 'model'),
+          :vendor     => lookup(node_uid, node_uid, 'block_devices', 'sda', 'vendor'),
+          :rev        => lookup(node_uid, node_uid, 'block_devices', 'sda', 'rev'),
           :storage    => 'HDD'
         }]
 
         network_adapters [{
-          :interface        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'interface'),
-          :rate             => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'rate'),
-          :enabled          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'enabled'),
-          :management       => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'management'),
-          :mountable        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'mountable'),
-          :mounted          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'mounted'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'interface'),
+          :rate             => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'rate'),
+          :enabled          => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'enabled'),
+          :management       => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'management'),
+          :mountable        => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'mountable'),
+          :mounted          => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'mounted'),
           :bridged          => true,
           :device           => "eth0",
           :vendor           => 'Intel',
           :model            => 'Intel X520 DP 10Gb DA/SFP+ Server Adapter',
-          :driver           => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'driver'),
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'driver'),
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
-          :ip               => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'ip'),
-          :ip6              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'ip6'),
+          :ip               => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'ip'),
+          :ip6              => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'ip6'),
           :switch           => net_switch_lookup('lyon', 'taurus', node_uid, 'eth0'),
           :switch_port      => net_port_lookup('lyon', 'taurus', node_uid, 'eth0'),
-          :mac              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth0', 'mac')
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'mac')
         },
         {
-          :interface        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth1', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth1', 'enabled'),
-          :management       => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth1', 'management'),
-          :mountable        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth1', 'mountable'),
-          :mounted          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth1', 'mounted'),
+          :enabled          => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'enabled'),
+          :management       => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'management'),
+          :mountable        => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'mountable'),
+          :mounted          => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'mounted'),
           :device           => "eth1",
           :bridged          => false,
           :vendor           => 'Intel',
           :model            => 'Intel X520 DP 10Gb DA/SFP+ Server Adapter',
-          :driver           => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth1', 'driver'),
-          :mac              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth1', 'mac')
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'mac')
         },
         {
-          :interface        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth2', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth2', 'enabled'),
-          :management       => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth2', 'management'),
-          :mountable        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth2', 'mountable'),
-          :mounted          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth2', 'mounted'),
+          :enabled          => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'enabled'),
+          :management       => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'management'),
+          :mountable        => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'mountable'),
+          :mounted          => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'mounted'),
           :device           => "eth2",
           :bridged          => false,
           :vendor           => 'Intel',
           :model            => 'Intel Ethernet I350 QP 1Gb',
-          :driver           => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth2', 'driver'),
-          :mac              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth2', 'mac')
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'mac')
         },
         {
-          :interface        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth3', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth3', 'enabled'),
-          :management       => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth3', 'management'),
-          :mountable        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth3', 'mountable'),
-          :mounted          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth3', 'mounted'),
+          :enabled          => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'enabled'),
+          :management       => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'management'),
+          :mountable        => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'mountable'),
+          :mounted          => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'mounted'),
           :device           => "eth3",
           :bridged          => false,
           :vendor           => 'Intel',
           :model            => 'Intel Ethernet I350 QP 1Gb',
-          :driver           => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth3', 'driver'),
-          :mac              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth3', 'mac')
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'mac')
         },
         {
-          :interface        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth4', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth4', 'enabled'),
-          :management       => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth4', 'management'),
-          :mountable        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth4', 'mountable'),
-          :mounted          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth4', 'mounted'),
+          :enabled          => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'enabled'),
+          :management       => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'management'),
+          :mountable        => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'mountable'),
+          :mounted          => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'mounted'),
           :device           => "eth4",
           :bridged          => false,
           :vendor           => 'Intel',
           :model            => 'Intel Ethernet I350 QP 1Gb',
-          :driver           => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth4', 'driver'),
-          :mac              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth4', 'mac')
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'mac')
         },
         {
-          :interface        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth5', 'interface'),
+          :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'interface'),
           :rate             => 1.G,
-          :enabled          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth5', 'enabled'),
-          :management       => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth5', 'management'),
-          :mountable        => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth5', 'mountable'),
-          :mounted          => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth5', 'mounted'),
+          :enabled          => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'enabled'),
+          :management       => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'management'),
+          :mountable        => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'mountable'),
+          :mounted          => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'mounted'),
           :device           => "eth5",
           :bridged          => false,
           :vendor           => 'Intel',
           :model            => 'Intel Ethernet I350 QP 1Gb',
-          :driver           => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth5', 'driver'),
-          :mac              => lookup('taurus_generated', node_uid, 'network_interfaces', 'eth5', 'mac')
+          :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'driver'),
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'mac')
         },
         {
           :interface            => 'Ethernet',
           :rate                 => 1.G,
           :network_address      => "#{node_uid}-bmc.#{site_uid}.grid5000.fr",
-          :ip                   => lookup('taurus_generated', node_uid, 'network_interfaces', 'bmc', 'ip'),
-          :mac                  => lookup('taurus_generated', node_uid, 'network_interfaces', 'bmc', 'mac'),
+          :ip                   => lookup(node_uid, node_uid, 'network_interfaces', 'bmc', 'ip'),
+          :mac                  => lookup(node_uid, node_uid, 'network_interfaces', 'bmc', 'mac'),
           :enabled              => true,
           :mounted              => false,
           :mountable            => false,
@@ -166,15 +166,15 @@ site :lyon do |site_uid|
         }]
 
         chassis({
-          :serial       => lookup('taurus_generated', node_uid, 'chassis', 'serial_number'),
-          :name         => lookup('taurus_generated', node_uid, 'chassis', 'product_name'),
-          :manufacturer => lookup('taurus_generated', node_uid, 'chassis', 'manufacturer')
+          :serial       => lookup(node_uid, node_uid, 'chassis', 'serial_number'),
+          :name         => lookup(node_uid, node_uid, 'chassis', 'product_name'),
+          :manufacturer => lookup(node_uid, node_uid, 'chassis', 'manufacturer')
         })
 
         bios({
-          :version      => lookup('taurus_generated', node_uid, 'bios', 'version'),
-          :vendor       => lookup('taurus_generated', node_uid, 'bios', 'vendor'),
-          :release_date => lookup('taurus_generated', node_uid, 'bios', 'release_date')
+          :version      => lookup(node_uid, node_uid, 'bios', 'version'),
+          :vendor       => lookup(node_uid, node_uid, 'bios', 'vendor'),
+          :release_date => lookup(node_uid, node_uid, 'bios', 'release_date')
         })
 
         gpu({
