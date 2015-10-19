@@ -1,0 +1,63 @@
+---
+model: Sun Fire V20z
+created_at: "Sat, 01 Jul 2006 12:00:00 GMT"
+kavlan: true
+production: true
+type: cluster
+uid: pomme
+
+nodes:
+  pomme-<->:
+    type: node
+    performance:
+      core_flops: 3929000000
+      node_flops: 7440000000
+    main_memory:
+      virtual_size: null
+    processor:
+      cache_l1: null
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      virtual: true
+    storage_devices:
+      - interface: SCSI
+        driver: mptspi
+        storage: HDD
+    network_adapters:
+      - rate: 1000000000
+        bridged: false
+        device: eth0
+        vendor: Broadcom
+        model: BCM5704
+      - rate: 1000000000
+        bridged: false
+        device: eth1
+        vendor: Broadcom
+        model: BCM5704
+      - rate: 100000000
+        device: bmc
+        enabled: true
+        management: true
+        mountable: false
+        mounted: false
+        interface: Ethernet
+        driver: bnx2
+    gpu:
+      gpu: false
+    monitoring:
+      wattmeter: true
+    sensors:
+      power:
+        available: true
+        per_outlets: true
+        via:
+          api:
+            metric: pdu
+          www:
+            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php
+
+  pomme-2:
+    sensors:
+      power:
+        available: false
