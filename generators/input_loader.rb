@@ -30,22 +30,22 @@ class ::Hash
     self.merge(other_hash, &merger)
   end
 
-  # Merge keys that match "PREFIX-<a-b>" with others keys that begins by "PREFIX-" 
+  # Merge keys that match "PREFIX-[a-b]" with others keys that begins by "PREFIX-" 
   # and that ends with x, where a<=x<=b.
   # - This is done recursively (for this Hash and every Hashes it may contain).
-  # - PREFIX-<a-b> values have lower priority on existing PREFIX-x keys.
-  # - "a" and/or "b" may be omited (ie. "PREFIX-<a->", "PREFIX-<-b>" or "PREFIX-<->"), meaning that there are no lower and/or upper bound for x.
+  # - PREFIX-[a-b] values have lower priority on existing PREFIX-x keys.
+  # - "a" and/or "b" may be omited (ie. "PREFIX-[a-]", "PREFIX-[-b]" or "PREFIX-[-]"), meaning that there are no lower and/or upper bound for x.
   #   * If only a is omited, a == 1.
-  #   * If b is omited, only existing keys are modified (no keys are created). Otherwise, PREFIX-<a> to PREFIX-<b> entries are created (if missing).
+  #   * If b is omited, only existing keys are modified (no keys are created). Otherwise, PREFIX-[a] to PREFIX-[b] entries are created (if missing).
   # Example:
-  # {"foo-1": {a: 0}, "foo-2": {a: 0}, "foo-3": {a: 0}, "foo-<2->": {b: 1}}.expand_angle_brackets()
+  # {"foo-1": {a: 0}, "foo-2": {a: 0}, "foo-3": {a: 0}, "foo-[2-]": {b: 1}}.expand_angle_brackets()
   #  -> {"foo-1": {a: 0}, "foo-2": {a: 0, b:1},  "foo-3": {a: 0, b: 0}}
   def expand_angle_brackets()
     dup = self.clone # because can't add a new key into hash during iteration
 
-    # Looking up for PREFIX-<a-b> keys
+    # Looking up for PREFIX-[a-b] keys
     dup.each { |key_ab, value_ab|
-      prefix, a, b = key_ab.to_s.scan(/^(.*)-<(\d*)-(\d*)>$/).first
+      prefix, a, b = key_ab.to_s.scan(/^(.*)-\[(\d*)-(\d*)\]$/).first
       next if not a and not b # not found
       a != "" ? a = a.to_i : a = 1
       b != "" ? b = b.to_i : b
@@ -74,7 +74,7 @@ class ::Hash
         }
       end
           
-      # Delete entry "PREFIX-<a-b>"
+      # Delete entry "PREFIX-[a-b]"
       self.delete(key_ab)
     }
 
