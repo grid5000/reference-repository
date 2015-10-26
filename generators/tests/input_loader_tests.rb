@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 require_relative "input_loader"
 require "test/unit"
 require "hashdiff"
