@@ -1,0 +1,28 @@
+---
+# Network interfaces
+network_interfaces:
+  bmc:
+    ip: 172.17.65.0
+  eth0:
+    ip: 172.16.64.0
+
+# Admin laptops
+laptops:
+  grosminet:
+    user: emorel
+    network_interfaces:
+      eth0:
+        ip: 172.16.79.6
+        mac: D4:BE:D9:73:E2:D4
+  grimoire:
+    user: sbadia
+    network_interfaces:
+      eth0:
+        ip: 172.16.79.5
+        mac: 5C:26:0A:23:20:96
+  cacahuete:
+    user: cparisot
+    network_interfaces:
+      eth0:
+        ip: 172.16.79.18
+        mac: EC:B1:D7:99:11:68
