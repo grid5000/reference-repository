@@ -207,7 +207,7 @@ module G5K
 
     # This method is used exclusivly for environments. Example:
     # environment 'squeeze-x64-xen-0.8' do
-    #  available_on %w{grenoble lille lyon nancy rennes sophia toulouse}
+    #  available_on %w{grenoble lille lyon nancy rennes sophia}
     # end    
     def available_on(sites_uid)
       env_uid = @context[:uid]
