@@ -12,7 +12,8 @@ site :nancy do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
+          :queues       => ['admin', 'production']
         })
 
         architecture({
