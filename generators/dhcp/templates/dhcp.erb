@@ -3,18 +3,3 @@
 # File:: puppet:///modules/dhcpg5k/nancy/dhcpd.conf.d/
 #
 
-<%= dhcp_node_entries(site_uid, network_interface, site_hash["net-links"], "Switchs", false) %>
-<%= dhcp_node_entries(site_uid, network_interface, site_hash["laptops"],   "Admin laptop's") %>
-<%= dhcp_node_entries(site_uid, network_interface, site_hash["dom0"],      "Dom0")           %>
-<%=
-  StringIO.open { |s|
-    # For each clusters
-    site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
-      s << dhcp_node_entries(site_uid, network_interface, cluster_hash.fetch("nodes"), "#{cluster_uid} production network")
-      s << "\n\n"
-    }
-  
-    s.string
-  }
-%>
-
