@@ -35,12 +35,12 @@ end
 
 def write_dhcp_file(data)
   if data["nodes"].nil?
-    puts "Error in #{__method__}: no entry for \"#{data['description']}\" at #{data['site_uid']} (#{data['network_interfaces']})."
+    puts "Error in #{__method__}: no entry for \"#{data['filename']}\" at #{data['site_uid']} (#{data['network_interfaces']})."
     return "" 
   end
 
   erb = ERB.new(File.read("templates/dhcp.erb"))
-  output_file = "output/puppet-repo/modules/dhcpg5k/files/" + data.fetch("site_uid") + "/dhcpd.conf.d/" + data.fetch('filename') + ".conf"
+  output_file = "output/puppet-repo/modules/dhcpg5k/files/" + data.fetch("site_uid") + "/dhcpd.conf.d/" + data.fetch('filename')
 
   # Create directory hierarchy
   dirname = File.dirname(output_file)
@@ -58,18 +58,21 @@ global_hash["sites"].each { |site_uid, site_hash|
   # On file for each clusters
   site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
     write_dhcp_file({
-                      "filename"            => "cluster-" + cluster_uid,
-                      "description"         => cluster_uid,
+                      "filename"            => "cluster-" + cluster_uid + ".conf",
                       "site_uid"            => site_uid,
-                      "nodes"               => cluster_hash["nodes"],
+                      "nodes"               => cluster_hash.fetch('nodes'),
                       "network_interfaces"  => ["eth", "bmc"],
-                      "hostname"            => true
                     })
   }
   
   # Other dhcp files
-#  write_dhcp_file(site_uid, site_hash["net-links"], "eth", "switchs", "Switchs", false)
-#  write_dhcp_file(site_uid, site_hash["laptops"],   "eth", "laptops", "Admin laptop's")
-#  write_dhcp_file(site_uid, site_hash["dom0"],      "eth", "dom0",    "Dom0")
+  ["net-links", "laptops", "dom0"].each { |key|
+    write_dhcp_file({
+                      "filename"            => key + ".conf",
+                      "site_uid"            => site_uid,
+                      "nodes"               => site_hash['nodes'],
+                      "network_interfaces"  => ["eth"],
+                    })
+  }
 
 }
