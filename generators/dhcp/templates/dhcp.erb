@@ -6,6 +6,9 @@
   site_uid = data.fetch('site_uid')
 
   data.fetch('network_interfaces').each { |network_interface|
+%>
+group {
+<%
     data.fetch('nodes').sort_by { |item| item.to_s.split(/(\d+)/).map { |e| [e.to_i, e] } }.each { |node_uid, node_hash| 
       network_interface != 'bmc' ? node_uid_net = node_uid : node_uid_net = node_uid + '-bmc'
 
@@ -19,9 +22,10 @@
       end
 
 %>
-host <%= node_uid_net %>.<%= site_uid %>.grid5000.fr {
-  hardware ethernet       <%= node_mac.upcase %>;
-  fixed-address           <%= node_ip         %>;
-}
+  host <%= node_uid_net %>.<%= site_uid %>.grid5000.fr {
+    hardware ethernet       <%= node_mac.upcase %>;
+    fixed-address           <%= node_ip         %>;
+  }
 <%   } %>
+}
 <% }   %>
