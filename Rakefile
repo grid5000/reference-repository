@@ -143,7 +143,7 @@ namespace :oar do
 
     diff.split("\n").each do |line|
       action, filename = line.split("\t")
-      next unless filename =~ %r{.+/nodes/.+}
+      next unless filename =~ %r{.+/nodes/.+json}
 
       node_uid, site_uid, grid_uid = filename.gsub(/\.json/,'').split("/").values_at(-1, -5, -7)
       cluster_uid = node_uid.split("-")[0]
