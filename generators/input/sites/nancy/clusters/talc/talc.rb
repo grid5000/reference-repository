@@ -72,7 +72,9 @@ site :nancy do |site_uid|
           :network_address  => "#{node_uid}.#{site_uid}.grid5000.fr",
           :ip               => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'ip'),
           :ip6              => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'ip6'),
-          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'mac')
+          :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth0', 'mac'),
+          :switch           => net_switch_lookup('nancy', 'talc', node_uid, 'eth0'),
+          :switch_port      => net_port_lookup('nancy', 'talc', node_uid, 'eth0'),
         },
         {
           :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'interface'),
