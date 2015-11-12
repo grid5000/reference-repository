@@ -33,13 +33,14 @@ class ::Hash
   #   * If only a is omited, a == 1.
   #   * If b is omited, only existing keys are modified (no keys are created). Otherwise, PREFIX-[a] to PREFIX-[b] entries are created (if missing).
   # Example:
-  # {"foo-1": {a: 0}, "foo-2": {a: 0}, "foo-3": {a: 0}, "foo-[2-]": {b: 1}}.expand_angle_brackets()
+  # {"foo-1": {a: 0}, "foo-2": {a: 0}, "foo-3": {a: 0}, "foo-[2-]": {b: 1}}.expand_square_brackets()
   #  -> {"foo-1": {a: 0}, "foo-2": {a: 0, b:1},  "foo-3": {a: 0, b: 0}}
-  def expand_angle_brackets()
+  def expand_square_brackets()
     dup = self.clone # because can't add a new key into hash during iteration
 
     # Looking up for PREFIX-[a-b] keys
     dup.each { |key_ab, value_ab|
+
       prefix, a, b = key_ab.to_s.scan(/^(.*)-\[(\d*)-(\d*)\]$/).first
       next if not a and not b # not found
       a != "" ? a = a.to_i : a = 1
@@ -76,7 +77,7 @@ class ::Hash
     # Do it recursivly
     self.each { |key, value|
       if value.is_a?(Hash)
-        value.expand_angle_brackets()
+        value.expand_square_brackets()
       end
     }
   end

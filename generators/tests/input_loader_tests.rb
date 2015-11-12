@@ -12,8 +12,8 @@ end
 
 # Helper test routine. Test if the hashes are equal after having been expanded.
 def assert_equal_expanded_hash(hash1, hash2)
-  expanded_hash1 = hash1.clone.expand_angle_brackets()
-  expanded_hash2 = hash2.clone.expand_angle_brackets()
+  expanded_hash1 = hash1.clone.expand_square_brackets()
+  expanded_hash2 = hash2.clone.expand_square_brackets()
   assert_equal_hash(expanded_hash1, expanded_hash2)
 end
 
@@ -53,7 +53,7 @@ class TestInputLoader < Test::Unit::TestCase
   end
 
   # Test the example given in documentation
-  def test__expand_angle_brackets__doc_example
+  def test__expand_square_brackets__doc_example
     hash = {
       "foo-1": {a: 0}, 
       "foo-2": {a: 0}, 
@@ -71,12 +71,12 @@ class TestInputLoader < Test::Unit::TestCase
   end
 
   # The 'a' parameter
-  def test__expand_angle_brackets__a_values
+  def test__expand_square_brackets__a_values
     assert_equal_expanded_hash({"foo-[-3]": 0},  {"foo-1": 0, "foo-2": 0, "foo-3": 0}) # Default 'a' value is 1
     assert_equal_expanded_hash({"foo-[2-3]": 0}, {"foo-2": 0, "foo-3": 0})             # Simply check if the value of 'a' is taken into account
   end
 
-  def test__expand_angle_brackets__create_keys
+  def test__expand_square_brackets__create_keys
     #
     # If 'b' is given, create missing keys. Also, the keys must be of the same type (Symbol or String).
     #
@@ -105,7 +105,7 @@ class TestInputLoader < Test::Unit::TestCase
 
   end
 
-  def test__expand_angle_brackets__keep_existing_keys
+  def test__expand_square_brackets__keep_existing_keys
     #
     # Do not modify existing keys
     #
@@ -117,7 +117,7 @@ class TestInputLoader < Test::Unit::TestCase
   end
   
   # Some tests with nil values (=> nil values are created, existing nil values are overriden)
-  def test__expand_angle_brackets__nil
+  def test__expand_square_brackets__nil
     assert_equal_expanded_hash({"foo-[2-3]": nil},              {"foo-2": nil, "foo-3": nil})  # PREFIX-[a-b] is nil
     assert_equal_expanded_hash({"foo-[2-3]": 0, "foo-2": nil},  {"foo-2": 0, "foo-3": 0})      # PREFIX-x     is nil
     assert_equal_expanded_hash({"foo-[2-]": nil, "foo-3": 0},   {"foo-3": 0})                  # PREFIX-[a-]  is nil
