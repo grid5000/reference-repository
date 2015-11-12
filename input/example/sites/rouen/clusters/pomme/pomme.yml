@@ -7,7 +7,7 @@ type: cluster
 uid: pomme
 
 nodes:
-  pomme-<->:
+  pomme-[-]:
     type: node
     performance:
       core_flops: 3929000000
@@ -20,8 +20,9 @@ nodes:
       deploy: true
       besteffort: true
       virtual: true
-    storage_devices:
-      - interface: SCSI
+    block_devices:
+      sda:
+        interface: SCSI
         driver: mptspi
         storage: HDD
     network_adapters:

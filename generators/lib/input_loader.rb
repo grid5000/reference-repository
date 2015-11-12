@@ -23,13 +23,15 @@ def load_yaml_file_hierarchy(directory)
         next
       end
       
-      # Expand the hash
-      file_hash.expand_angle_brackets()
-      
       # Inject the file content into the global_hash, at the right place
       path_hierarchy = File.dirname(filename).split('/')     # Split the file path (path relative to input/)
       file_hash = Hash.from_array(path_hierarchy, file_hash) # Build the nested hash hierarchy according to the file path
       global_hash = global_hash.deep_merge(file_hash)        # Merge global_hash and file_hash. The value for entries with duplicate keys will be that of file_hash
+
+      # Expand the hash. Done at each iteration for enforcing priorities between duplicate entries:
+      # ie. keys to be expanded have lowest priority on existing entries but higher priority on the entries found in the next files
+      global_hash.expand_angle_brackets()
+
     }
 
   }
