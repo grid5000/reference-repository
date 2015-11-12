@@ -1,10 +1,18 @@
 #!/usr/bin/ruby
 
+require 'pp'
+require 'erb'
+require 'fileutils'
 require 'pathname'
 require 'json'
 
+require '../lib/input_loader'
+
+# Output directory
 refapi_path = "/tmp/data"
-data = JSON.parse(STDIN.read)
+
+#global_hash = JSON.parse(STDIN.read)
+global_hash = load_yaml_file_hierarchy("../../input/example/")
 
 # Write pretty and sorted JSON files
 def write_json(filepath, data)
@@ -49,7 +57,7 @@ def net_switch_port_lookup(site, node_uid, interface='')
   return nil
 end
 
-data["sites"].each do |site_uid, site|
+global_hash["sites"].each do |site_uid, site|
 
   site["clusters"].each do |cluster_uid, cluster|
 
@@ -60,49 +68,45 @@ data["sites"].each do |site_uid, site|
     write_json(cluster_path.join("#{cluster_uid}.json"),
                cluster.reject {|k, v| k == "nodes"})
 
+    # Write node info
     cluster["nodes"].each do |node_uid, node|
 
       node["uid"] = node_uid
 
-      # TODO: fix inconsistency?
-      node["storage_devices"].each {|s| s.update(node["block_devices"].values.at(node["storage_devices"].index(s)))}
-      node.delete("block_devices")
-
-      # TODO: fix inconsistency?
-      node["chassis"]["name"] = node["chassis"]["product_name"]
-      node["chassis"]["serial"] = node["chassis"]["serial_number"]
-      node["chassis"].delete("product_name")
-      node["chassis"].delete("serial_number")
-
-      # TODO: fix inconsistency?
-      node["network_adapters"].each do |iface|
-        node["network_interfaces"].select {|k| k.to_s == iface["device"]}.each do |k, v|
-          iface.update(v)
-        end
+      # Rename keys
+      node["storage_devices"] = node.delete("block_devices")
+      node["network_adapters"] = node.delete("network_interfaces")
+      if node.key?("chassis")
+        node["chassis"]["name"]   = node["chassis"].delete("product_name")
+        node["chassis"]["serial"] = node["chassis"].delete("serial_number")
       end
-      node.delete("network_interfaces")
+      
+      # Convert hashes to arrays
+      node["storage_devices"] = node["storage_devices"].values
+      node["network_adapters"] = node["network_adapters"].values
 
-      # Network Reference
-      node["network_adapters"].each do |iface|
-        if iface["enabled"]
-          if iface["management"]
-            # Managment iface
-            iface["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr"
-          elsif iface["mounted"]
-            # Primary iface
-            iface["bridged"] = true
-            iface["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr"
-            # Interface may not be specified in Network Reference for primary iface
-            iface["switch"], iface["port"] = \
-              net_switch_port_lookup(site, node_uid) || net_switch_port_lookup(site, node_uid, iface["device"])
+      # Populate "network_address", "switch" and "port" from the network equipment description for each network adapters
+      node["network_adapters"].each { |network_adapter|
+        if network_adapter["enabled"]
+          if network_adapter["management"]
+            # Management network_adapter
+            network_adapter["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr"
+          elsif network_adapter["mounted"]
+            # Primary network_adapter
+            network_adapter["bridged"] = true
+            network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr"
+            # Interface may not be specified in Network Reference for primary network_adapter
+            network_adapter["switch"], network_adapter["port"] = \
+              net_switch_port_lookup(site, node_uid) || net_switch_port_lookup(site, node_uid, network_adapter["device"])
           else
-            # Secondary iface(s)
-            iface["network_address"] = "#{node_uid}-#{iface["device"]}.#{site}.grid5000.fr"
-            iface["switch"], iface["port"] = net_switch_port_lookup(site, node_uid, iface["device"])
+            # Secondary network_adapter(s)
+            network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site}.grid5000.fr"
+            network_adapter["switch"], network_adapter["port"] = net_switch_port_lookup(site, node_uid, network_adapter["device"])
           end
         end
-      end
+      }
 
+      #pp cluster_path.join("nodes","#{node_uid}.json")
       write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
     end
   end
