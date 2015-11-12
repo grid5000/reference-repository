@@ -25,19 +25,22 @@ nodes:
         interface: SCSI
         driver: mptspi
         storage: HDD
-    network_adapters:
-      - rate: 1000000000
-        bridged: false
+    network_interfaces:
+      eth0:
         device: eth0
-        vendor: Broadcom
-        model: BCM5704
-      - rate: 1000000000
+        rate: 1000000000
         bridged: false
-        device: eth1
         vendor: Broadcom
         model: BCM5704
-      - rate: 100000000
+      eth1:
+        device: eth1
+        rate: 1000000000
+        bridged: true
+        vendor: Broadcom
+        model: BCM5704
+      bmc:	
         device: bmc
+        rate: 100000000
         enabled: true
         management: true
         mountable: false
