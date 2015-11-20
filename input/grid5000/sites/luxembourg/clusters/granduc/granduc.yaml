@@ -1,0 +1,56 @@
+model: PowerEdge 1950
+created_at: 2011-12-01
+kavlan: true
+production: true
+
+nodes:
+  granduc-[1-22]:
+    performance:
+      node_flops: 44.07e+9
+      core_flops: 6.409e+9
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SAS
+        driver: mptsas
+        storage: HDD
+    network_interfaces:
+      eth0:
+        bridged: true
+        device: eth0
+      eth1:
+        rate: 1000000000
+        bridged: false
+        device: eth1
+      eth2:
+        bridged: false
+        device: eth2
+      eth3:
+        rate: 10.0e+9
+        bridged: false
+        device: eth3
+      bmc:
+        interface: Ethernet
+        rate: 1000000000
+        enabled: true
+        management: true
+        mountable: false
+        mounted: false
+        device: bmc
+        switch: gw-luxembourg
+    gpu:
+      gpu: false
+    monitoring:
+      wattmeter: false
+    addressing_plan:
+      kavlan: 10.40.0.0/14
+      virt: 10.172.0.0/14

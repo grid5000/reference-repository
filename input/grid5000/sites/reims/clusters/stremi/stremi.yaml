@@ -1,0 +1,59 @@
+---
+model: HP ProLiant DL165 G7
+created_at: 2011-04-18
+kavlan: true
+production: true
+
+nodes:
+  stremi-[1-44]:
+    performance:
+      core_flops: 4931000000
+      node_flops: 121300000000
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+    network_interfaces:
+      eth0:
+        bridged: true
+        device: eth0
+      eth1:
+        rate: 1000000000
+        bridged: false
+        device: eth1
+      eth2:
+        bridged: false
+        device: eth2
+      eth3:
+        bridged: false
+        device: eth3
+      bmc:
+        interface: Ethernet
+        rate: 1000000000
+        enabled: true
+        management: true
+        mountable: false
+        mounted: false
+        device: bmc
+    gpu:
+      gpu: false
+    monitoring:
+      wattmeter: true
+    sensors:
+      power:
+        available: true
+        via:
+          api:
+            metric: pdu 
+          pdu:

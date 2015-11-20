@@ -1,0 +1,78 @@
+---
+model: Dell C6220
+created_at: 2012-10-02
+priority: 201299
+kavlan: true
+production: true
+
+nodes:
+  hercule-[1-4]:
+    performance:
+        core_flops: 10170000000
+        node_flops: 127100000000
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+      sdb:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+      sdc:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+    network_interfaces:
+      eth0:
+        rate: 10.0+e9
+        device: eth0
+        bridged: false
+        vendor: Intel
+        version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
+      eth1:
+        bridged: true
+        device: eth1
+        vendor: Intel
+        version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
+      eth2:
+        rate: 100.0+e6
+        bridged: false
+        device: eth2
+        vendor: Intel
+        version: Intel Corporation
+      eth3:
+        rate: 100.M
+        bridged: false
+        device: eth3
+        vendor: Intel
+        version: Intel Corporation
+      bmc:
+        interface: Ethernet
+        rate: 1.0e+9
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+    monitoring:
+      wattmeter: shared
+    sensors:
+      power:
+        available: true
+        per_outlets: false
+        via:
+          api: 
+            metric: pdu_shared 
+          www: 
+            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 

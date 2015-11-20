@@ -1,0 +1,86 @@
+model: Dell R720
+created_at: 2012-09-14
+priority: 201299
+kavlan: true
+production: true
+
+nodes:
+  orion-[1-4]:
+    performance:
+      core_flops: 11900000000
+      node_flops: 147200000000
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SCSI
+        driver: megaraid_sas
+        storage: HDD
+    network_interfaces:
+      eth0:
+        bridged: true
+        device: eth0
+        vendor: Intel
+        model: Intel X520 DP 1000000000b DA/SFP+ Server Adapter
+      eth1:
+        rate: 1000000000
+        device: eth1
+        bridged: false
+        vendor: Intel
+        model: Intel X520 DP 1000000000b DA/SFP+ Server Adapter
+      eth2:
+        rate: 1000000000
+        device: eth2
+        bridged: false
+        vendor: Intel
+        model: Intel Ethernet I350 QP 1Gb
+      eth3:
+        rate: 1000000000
+        device: eth3
+        bridged: false
+        vendor: Intel
+        model: Intel Ethernet I350 QP 1Gb
+      eth4:
+        rate: 1000000000
+        device: eth4
+        bridged: false
+        vendor: Intel
+        model: Intel Ethernet I350 QP 1Gb
+      eth5:
+        rate: 1000000000
+        device: eth5
+        bridged: false
+        vendor: Intel
+        model: Intel Ethernet I350 QP 1Gb
+      bmc:
+        interface: Ethernet
+        rate: 1000000000
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+    monitoring:
+      wattmeter: true
+    sensors:
+      power:
+        available: true
+        per_outlets: true
+        via:
+        api:
+          metric: pdu 
+        www: 
+          url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
+    gpu:
+      gpu:  true
+      gpu_count:  1
+      gpu_vendor:  Nvidia
+      gpu_model:  Tesla-M2075

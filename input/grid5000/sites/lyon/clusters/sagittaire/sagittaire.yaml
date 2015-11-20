@@ -1,6 +1,72 @@
 ---
-# Retired nodes
+model: Sun Fire V20z
+created_at: 2006-07-01
+kavlan: true
+production: true
+
 nodes:
+  sagittaire-[1-79]:
+    performance:
+      core_flops: 3929000000
+      node_flops: 7440000000
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SCSI
+        driver: mptspi
+        storage: HDD
+    network_interfaces:
+      eth0:
+        rate: 1000000000
+        bridged: false
+        device: eth0
+        vendor: Broadcom
+        model: BCM5704
+      eth1:
+        bridged: true
+        device: eth1
+        vendor: Broadcom
+        model: BCM5704
+      bmc:    
+        interface: Ethernet
+        rate: 1000000000
+        enabled: true
+        management: true
+        mountable: false
+        mounted: false
+        device: bmc
+        driver: bnx2
+    gpu:
+      gpu: false
+    monitoring:
+      wattmeter: true
+    sensors:
+      power:
+        available: true
+        per_outlets: true
+        via:
+          api:
+            metric: pdu 
+          www:
+            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
+
+  sagittaire-[69-79]:
+    block_devices:
+      sdb:
+        interface: SCSI
+        driver: mptspi
+        storage: HDD
+
+# Retired nodes
   sagittaire-21:
     status: retired
   sagittaire-36:

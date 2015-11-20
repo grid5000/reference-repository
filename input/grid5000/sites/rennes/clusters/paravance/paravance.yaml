@@ -1,0 +1,88 @@
+---
+model: Dell PowerEdge R630
+created_at: 2015-01-13
+kavlan: true
+production: true
+
+nodes:
+  paravance-[1-72]:
+    performance:
+      core_flops: 14600000000
+      node_flops: 245300000000
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+      sdb:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+    network_interfaces:
+      eth0:
+        rate: 10.0e+9
+        device: eth0
+        enabled: true
+        management: false
+        mountable: true
+        mounted: true
+        bridged: true
+        vendor: Intel
+        version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
+      eth1:
+        rate: 10.0e+9
+        enabled: true
+        management: false
+        mountable: true
+        mounted: false
+        bridged: false
+        device: eth1
+        vendor: Intel
+        version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
+      eth2:
+        rate: 1.0e+9
+        enabled: false
+        management: false
+        mountable: false
+        mounted: false
+        bridged: false
+        device: eth2
+        vendor: Intel
+        version: Intel Corporation
+      eth3:
+        rate: 1.0e+9
+        enabled: false
+        management: false
+        mountable: false
+        mounted: false
+        bridged: false
+        device: eth3
+        vendor: Intel
+        version: Intel Corporation
+      bmc:
+        interface: Ethernet
+        rate: 100.M
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+    gpu:
+      gpu: false
+    sensors:
+      power:
+        available: true
+        via:
+          pdu:
+          api:
+            metric: pdu 

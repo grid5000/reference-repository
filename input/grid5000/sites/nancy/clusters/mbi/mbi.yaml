@@ -1,5 +1,70 @@
 ---
-# Retired nodes
+# Cluster description
+model: Carri System CS-5393B
+created_at: 2015-09-21
+kavlan: true
+queues:
+  - admin
+  - production
+
 nodes:
+# Global node properties
+  mbi-[1-32]:
+    performance:
+        core_flops: 7.963e+9
+        node_flops: 52.5e+9
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 86400
+    main_memory:
+      virtual_size: null
+    operating_system:
+      release: Wheezy # FAIL
+    block_devices:
+      sda:
+        interface: SATA II
+        driver: ahci
+    network_interfaces:
+      eth0:
+        mountable: true #FAIL
+        bridged: true
+        device: eth0
+        vendor: intel
+        version: 80003ES2LAN
+      eth1:    
+        rate: 1000000000
+        mountable: true
+        bridged: false
+        device: eth1
+        vendor: intel
+        version: BCM5721
+      ib0:
+        device: ib0
+        mountable: true
+        vendor: Mellanox
+        switch: sgriffonib
+      ib1:
+        device: ib1
+        mountable: false
+        vendor: Mellanox
+      bmc:
+        interface: Ethernet
+        rate: 100.M
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+        vendor: Tyan
+        version: M3296
+    gpu:
+      gpu: false
+    sensors:
+      power: 
+        available: false
+        via:
+
+# Retired nodes
   mbi-29:
     status: retired

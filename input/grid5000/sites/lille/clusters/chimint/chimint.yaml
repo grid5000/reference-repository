@@ -1,0 +1,53 @@
+---
+model: Dell PowerEdge R410
+created_at: 2011-03-25
+kavlan: true
+production: true
+
+nodes:
+
+# Global node properties
+  chimint-[1-20]:
+    performance:
+        core_flops: 7456000000
+        node_flops: 55610000000
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SATA
+        driver: megaraid_sas
+        raid: 0
+        storage: HDD
+    network_interfaces:
+      eth0:
+        rate: 1000000000
+        bridged: true
+        device: eth0
+        vendor: Broadcom
+        version: NetXtreme II BCM5716
+      eth1:
+        bridged: false
+        device: eth1
+        vendor: Broadcom
+        version: NetXtreme II BCM5716
+      bmc:
+        interface: Ethernet
+        rate: 1000000000
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+    gpu:
+      gpu: false
+    monitoring:
+      wattmeter: false

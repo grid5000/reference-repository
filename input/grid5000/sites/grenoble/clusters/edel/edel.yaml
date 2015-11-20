@@ -1,0 +1,70 @@
+---
+# Cluster description
+model: Bull bullx B500 compute blades
+created_at: 2008-10-03
+kavlan: true
+production: true
+
+nodes:
+
+# Global node properties
+  edel-[1-72]:
+    performance:
+        core_flops: 7134000000
+        node_flops: 55450000000
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      interface: SATA
+      driver: ahci
+      storage: SSD
+    network_interfaces:
+      eth0:
+        bridged: true
+        device: eth0
+        vendor: Intel
+        version: 82576 Gigabit Network Connection
+      eth1:
+        rate: 1.0e+9
+        bridged: false
+        device: eth1
+        vendor: Intel
+        version: 82576 Gigabit Network Connection
+      ib0:
+        device: ib0
+        vendor: Mellanox
+      ib1:
+        rate: 40.0e+9
+        device: ib1
+        vendor: Mellanox
+      bmc:
+        interface: Ethernet
+        rate: 100.M
+        enabled: true
+        management: true
+        mountable: false
+        mounted: false
+        device: bmc
+        vendor: Unknown
+        version: 1.7
+    gpu:
+      gpu: false
+    monitoring:
+      wattmeter: true
+    sensors:
+      power:
+        available: true
+        via:
+          api:
+            metric: pdu 
+          ipmi: 
+            sensors: 
+              Power: Power  

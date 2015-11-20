@@ -1,0 +1,62 @@
+---
+# Cluster description
+model: Bull R422-E2 dual mobo + Tesla S1070
+created_at: 2010-09-02
+kavlan: true
+production: true
+
+nodes:
+
+# Global node properties
+  adonis-[1-10]:
+    performance:
+      core_flops: 7139000000
+      node_flops: 55510000000
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+    network_interfaces:
+      eth0:
+        bridged: true
+        device: eth0
+        vendor: Intel
+        version: Device 10c9 (rev 01)
+      eth1:
+        rate: 1000000000
+        bridged: false
+        device: eth1
+        vendor: Intel
+        version: Device 10c9 (rev 01)
+      ib0:
+        device: ib0
+        vendor: Mellanox
+      bmc:
+        interface: Ethernet
+        rate: 1000000000
+        enabled: true
+        management: true
+        mountable: false
+        mounted: false
+        device: bmc
+        vendor: Super Micro Computer Inc.
+        version: "1.15"
+    gpu:
+      gpu: true
+    sensors:
+      power:
+        available: true
+        via:
+          pdu:
+          

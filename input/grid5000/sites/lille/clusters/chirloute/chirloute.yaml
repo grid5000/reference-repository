@@ -1,0 +1,59 @@
+model: Dell PowerEdge C6100
+created_at: 2011-03-25
+priority: 201199
+kavlan: true
+production: true
+
+nodes:
+  chirloute-[1-8]:
+    performance:
+        core_flops: 7593000000
+        node_flops: 58460000000
+    architecture:
+        smp_size: 2
+        smt_size: 8
+        platform_type: x86_64
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    main_memory:
+      virtual_size: null
+    operating_system:
+      name: debian
+      release: Wheezy
+      version: 7
+      kernel: 3.2.0-4-amd64
+    block_devices:
+      sda:
+        interface: SATA
+        driver: mptsas
+        raid: 0
+        storage: HDD
+    network_interfaces:
+      eth0:
+        rate: 1000000000
+        vendor: Intel
+        version: 82576EB
+        bridged: false
+        device: eth0
+        switch: gw-lille
+      eth1:
+        bridged: true
+        device: eth1
+        vendor: Intel
+        version: 82576EB
+      bmc:
+        interface: Ethernet
+        rate: 1000000000
+        vendor: Inventec
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+        vendor: Inventec
+        version: 1.14
+    gpu:
+      gpu: shared
+    monitoring:
+      wattmeter: false
