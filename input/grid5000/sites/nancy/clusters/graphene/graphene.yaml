@@ -28,9 +28,10 @@ nodes:
      version: 7
      kernel: 3.2.0-4-amd64
     block_devices:
-     interface: SATA II
-     driver: ahci
-     storage: HDD
+      sda:
+        interface: SATA II
+        driver: ahci
+        storage: HDD
     network_interfaces:
       eth0:
         bridged: true
@@ -70,8 +71,5 @@ nodes:
     sensors:
       power:
         available: true
-        via:
-          pdu:
-          - uid:
   graphene-96:
     status: retired

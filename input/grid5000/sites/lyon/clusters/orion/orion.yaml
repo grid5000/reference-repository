@@ -17,25 +17,26 @@ nodes:
     operating_system:
       name: debian
       release: Wheezy
-      version: 7
+      version: "7"
       kernel: 3.2.0-4-amd64
     block_devices:
       sda:
         interface: SCSI
         driver: megaraid_sas
         storage: HDD
+        vendor: null
     network_interfaces:
       eth0:
         bridged: true
         device: eth0
         vendor: Intel
-        model: Intel X520 DP 1000000000b DA/SFP+ Server Adapter
+        model: Intel X520 DP 10Gb DA/SFP+ Server Adapter
       eth1:
         rate: 1000000000
         device: eth1
         bridged: false
         vendor: Intel
-        model: Intel X520 DP 1000000000b DA/SFP+ Server Adapter
+        model: Intel X520 DP 10Gb DA/SFP+ Server Adapter
       eth2:
         rate: 1000000000
         device: eth2
@@ -75,10 +76,10 @@ nodes:
         available: true
         per_outlets: true
         via:
-        api:
-          metric: pdu 
-        www: 
-          url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
+          api:
+            metric: pdu
+          www: 
+            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
     gpu:
       gpu:  true
       gpu_count:  1

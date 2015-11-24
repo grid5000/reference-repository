@@ -23,9 +23,10 @@ nodes:
       version: 7
       kernel: 3.2.0-4-amd64
     block_devices:
-      interface: SATA
-      driver: ahci
-      storage: SSD
+      sda:
+        interface: SATA
+        driver: ahci
+        storage: SSD
     network_interfaces:
       eth0:
         bridged: true

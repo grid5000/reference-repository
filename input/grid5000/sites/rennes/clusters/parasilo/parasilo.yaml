@@ -13,92 +13,93 @@ nodes:
       deploy: true
       besteffort: true
     main_memory:
-      virtual_size: null
+      virtual_size: null #TODO
     operating_system:
       name: debian
       release: Wheezy
-      version: 7
+      version: "7"
       kernel: 3.2.0-4-amd64
-    # block_devices:
-    #   sda:
-    #     interface: SATA
-    #     driver: ahci
-    #     storage: HDD
-    #   sdb:
-    #     interface: SATA
-    #     driver: ahci
-    #     storage: HDD
-    #   sdc:
-    #     interface: SATA
-    #     driver: ahci
-    #     storage: HDD
-    #   sdd:
-    #     interface: SATA
-    #     driver: ahci
-    #     storage: HDD
-    #   sde:
-    #     interface: SATA
-    #     driver: ahci
-    #     storage: HDD
-    #   sdf:
-    #     interface: SATA
-    #     driver: ahci
-    #     storage: SSD
-    # network_interfaces:
-    #   eth0:
-    #     rate: 10.0e+9
-    #     device: eth0
-    #     enabled: true
-    #     management: false
-    #     mountable: true
-    #     mounted: true
-    #     bridged: true
-    #     vendor: Intel
-    #     version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
-    #   eth1:
-    #     rate: 10.0e+9
-    #     enabled: true
-    #     management: false
-    #     mountable: true
-    #     mounted: false
-    #     bridged: false
-    #     device: eth1
-    #     vendor: Intel
-    #     version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
-    #   eth2:
-    #     rate: 1.0e+9
-    #     enabled: false
-    #     management: false
-    #     mountable: false
-    #     mounted: false
-    #     bridged: false
-    #     device: eth2
-    #     vendor: Intel
-    #     version: Intel Corporation
-    #   eth3:
-    #     rate: 1.0e+9
-    #     enabled: false
-    #     management: false
-    #     mountable: false
-    #     mounted: false
-    #     bridged: false
-    #     device: eth3
-    #     vendor: Intel
-    #     version: Intel Corporation
-    #   bmc:
-    #     interface: Ethernet
-    #     rate: 100.0e+6
-    #     enabled: true
-    #     mounted: false
-    #     mountable: false
-    #     management: true
-    #     device: bmc
-    # gpu:
-    #   gpu: false
-    # sensors:
-    #   power:
-    #     available: true
-    #     via:
-    #       pdu:
-    #         api:
-    #           metric: pdu
+    block_devices:
+      sda:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+      sdb:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+      sdc:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+      sdd:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+      sde:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+      sdf:
+        interface: SATA
+        driver: ahci
+        storage: SSD
+    network_interfaces:
+      eth0:
+        rate: 10.0e+9
+        device: eth0
+        enabled: true
+        management: false
+        mountable: true
+        mounted: true
+        bridged: true
+        vendor: Intel
+        version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
+      eth1:
+        rate: 10.0e+9
+        enabled: true
+        management: false
+        mountable: true
+        mounted: false
+        bridged: false
+        device: eth1
+        vendor: Intel
+        version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
+      eth2:
+        rate: 1.0e+9
+        enabled: false
+        management: false
+        mountable: false
+        mounted: false
+        bridged: false
+        device: eth2
+        vendor: Intel
+        version: Intel Corporation
+      eth3:
+        rate: 1.0e+9
+        enabled: false
+        management: false
+        mountable: false
+        mounted: false
+        bridged: false
+        device: eth3
+        vendor: Intel
+        version: Intel Corporation
+      bmc:
+        interface: Ethernet
+        rate: 100.0e+6
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+        ip: null #TODO
+        mac: null #TODO
+    gpu:
+      gpu: false
+    sensors:
+      power:
+        available: true
+        via:
+          api:
+            metric: pdu
