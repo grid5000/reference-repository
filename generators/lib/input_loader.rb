@@ -30,7 +30,7 @@ def load_yaml_file_hierarchy(directory)
 
       # Expand the hash. Done at each iteration for enforcing priorities between duplicate entries:
       # ie. keys to be expanded have lowest priority on existing entries but higher priority on the entries found in the next files
-      global_hash.expand_square_brackets()
+      global_hash.expand_square_brackets(file_hash)
 
     }
 

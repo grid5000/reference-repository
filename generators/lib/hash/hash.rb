@@ -35,11 +35,11 @@ class ::Hash
   # Example:
   # {"foo-1": {a: 0}, "foo-2": {a: 0}, "foo-3": {a: 0}, "foo-[2-]": {b: 1}}.expand_square_brackets()
   #  -> {"foo-1": {a: 0}, "foo-2": {a: 0, b:1},  "foo-3": {a: 0, b: 0}}
-  def expand_square_brackets()
-    dup = self.clone # because can't add a new key into hash during iteration
+  def expand_square_brackets(keys=self.clone)
 
     # Looking up for PREFIX-[a-b] keys
-    dup.each { |key_ab, value_ab|
+    # (using .clone because cannot add/remove a key from hash during iteration)
+    keys.clone.each { |key_ab, value_ab|
 
       prefix, a, b = key_ab.to_s.scan(/^(.*)-\[(\d*)-(\d*)\]$/).first
       next if not a and not b # not found
@@ -54,30 +54,32 @@ class ::Hash
           key = key.to_sym if key_ab.is_a?(Symbol)
 
           # For duplicate entries, the value of PREFIX-x is kept.
-          self[key] = deep_merge_entries(value_ab, self[key])
+          self[key] = deep_merge_entries(value_ab, self[key]).clone
         }
 
       else
+
         # Modify only existing keys. Looking up for PREFIX-x keys.
-        dup.each { |key_x, value_x|
+        self.clone.each { |key_x, value_x|
           next if key_x.class != key_ab.class
           x = key_x.to_s.scan(/^#{prefix}-(\d*)$/).first
           x = x.first if x
           next if not x or x.to_i < a
 
           # For duplicate entries, the value of PREFIX-x is kept.
-          self[key_x] = deep_merge_entries(value_ab, value_x)
+          self[key_x] = deep_merge_entries(value_ab, value_x).clone
         }
       end
           
       # Delete entry "PREFIX-[a-b]"
       self.delete(key_ab)
+      keys.delete(key_ab)
     }
 
     # Do it recursivly
-    self.each { |key, value|
+    keys.each { |key, value|
       if value.is_a?(Hash)
-        value.expand_square_brackets()
+        self[key].expand_square_brackets(value)
       end
     }
   end
