@@ -17,7 +17,7 @@ nodes:
     operating_system:
       name: debian
       release: Wheezy
-      version: 7
+      version: "7"
       kernel: 3.2.0-4-amd64
     block_devices:
       sda:
@@ -39,14 +39,14 @@ nodes:
         version: NetXtremeII BCM5716
       bmc:
         interface: Ethernet
-        rate: 100.M
+        rate: 100.0e+6
         enabled: true
         management: true
         mountable: false
         mounted: false
         device: bmc
         vendor: Unknown
-        version: 1.7
+        version: "1.7"
     gpu:
       gpu: false
     monitoring:

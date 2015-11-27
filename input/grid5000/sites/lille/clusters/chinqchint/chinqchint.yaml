@@ -18,7 +18,7 @@ nodes:
     operating_system:
       name: debian
       release: Wheezy
-      version: 7
+      version: "7"
       kernel: 3.2.0-4-amd64
     block_devices:
       sda:    
@@ -46,7 +46,7 @@ nodes:
         switch: switch-myri
       bmc:
         interface: Ethernet
-        rate: 100.M
+        rate: 100.0e+6
         enabled: true
         mounted: false
         mountable: false
