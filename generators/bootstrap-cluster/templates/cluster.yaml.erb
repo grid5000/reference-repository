@@ -1,0 +1,13 @@
+---
+
+nodes:
+<% eth0_list.each_with_index{|eth0, i| %>
+  <%= cluster_name %>-<%= i+1 %>:
+    network_interfaces:
+      eth0:
+        ip:
+        mac: <%= eth0_list[i] %>
+      bmc:
+        ip:
+        mac: <%= bmc_list[i] %>
+<% } %>
