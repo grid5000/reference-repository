@@ -43,7 +43,7 @@ site :nancy do |site_uid|
 
         operating_system({
           :name     => lookup(node_uid, node_uid, 'operating_system', 'name'),
-          :release  => "Squeeze",
+          :release  => "Jessie",
           :version  => lookup(node_uid, node_uid, 'operating_system', 'version'),
           :kernel   => lookup(node_uid, node_uid, 'operating_system', 'kernel')
         })

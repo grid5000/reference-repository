@@ -49,9 +49,9 @@ site :nancy do |site_uid|
 
         operating_system({
           :name     => "debian",
-          :release  => "Wheezy",
-          :version  => "7",
-          :kernel   => "3.2.0-4-amd64"
+          :release  => "Jessie",
+          :version  => "8.2",
+          :kernel   => "3.16.0-4-amd64"
         })
 
         storage_devices [{
