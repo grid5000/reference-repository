@@ -47,9 +47,9 @@ site :nantes do |site_uid|
 
         operating_system({
           :name     => "debian",
-          :release  => "Wheezy",
-          :version  => "7",
-          :kernel   => "3.2.0-4-amd64"
+          :release  => "jessie",
+          :version  => "8",
+          :kernel   => "3.16.0-4-amd64"
         })
 
         storage_devices [{
