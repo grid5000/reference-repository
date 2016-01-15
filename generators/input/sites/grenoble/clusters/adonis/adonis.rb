@@ -151,13 +151,13 @@ site :grenoble do |site_uid|
             :available => true,
             :via => {
               :pdu  => [
-                [ { :measure 	=>  lookup('adonis_manual', node_uid, 'sensors', 'measure1'),
+                [ { :port 	=>  lookup('adonis_manual', node_uid, 'sensors', 'measure1'),
                     :uid			=>  lookup('adonis_manual', node_uid, 'sensors', 'pdu')},
-                  { :measure	=> 	lookup('adonis_manual', node_uid, 'sensors', 'measure2'),
+                  { :port	=> 	lookup('adonis_manual', node_uid, 'sensors', 'measure2'),
                     :uid			=>  lookup('adonis_manual', node_uid, 'sensors', 'pdu')}
                 ],
-                [ { :measure	=> 	"global",
-                    :uid			=>	lookup('adonis_manual', node_uid, 'sensors', 'block')}
+                [ { :measure	=> 	lookup('adonis_manual', node_uid, 'sensors', 'block'),
+                    :uid			=>	lookup('adonis_manual', node_uid, 'sensors', 'pdu')}
                 ]
               ]
             }
