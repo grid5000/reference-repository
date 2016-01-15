@@ -9,6 +9,11 @@ site :nancy do |site_uid|
     134.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 
+        performance({
+        :core_flops => 0.G,
+        :node_flops => 0.G
+      })
+
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
