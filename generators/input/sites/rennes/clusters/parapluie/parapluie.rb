@@ -201,7 +201,7 @@ site :rennes do |site_uid|
                 :uid  => lookup('parapluie_manual', node_uid, 'pdu', 'pdu_name'),
                 :port => lookup('parapluie_manual', node_uid, 'pdu', 'pdu_position'),
              }],
-              :api      => { :metric => "pdu" }
+              :api      => { :metric => "power" }
             }
           },
           :temperature => {

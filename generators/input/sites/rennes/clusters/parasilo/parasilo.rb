@@ -210,7 +210,7 @@ site :rennes do |site_uid|
                 :uid  => lookup('parasilo_manual', node_uid, 'pdu', 'pdu_name'),
                 :port => lookup('parasilo_manual', node_uid, 'pdu', 'pdu_position'),
              }],
-              :api      => { :metric => "pdu" }
+              :api      => { :metric => "power" }
             }
           }
         })
