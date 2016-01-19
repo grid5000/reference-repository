@@ -169,6 +169,7 @@ site :rennes do |site_uid|
           :power => {
             :available => true,
             :via => {
+              :api      => { :metric => 'power' },
               :pdu      => [{ :uid => lookup('parapide_manual', node_uid, 'pdu', 'pdu_name') }],
             }
           },
