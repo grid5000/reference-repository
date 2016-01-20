@@ -31,6 +31,8 @@ module Grid5000
         h['cpufreq']         = properties['processor']['clock_speed']/1_000_000_000.0
         h['disktype']        = (properties['storage_devices'].first || {})['interface']
         h['ethnb']           = properties["network_adapters"].select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mountable'] == true}.length
+        eth10g               = properties['network_adapters'].select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mountable'] == true}
+        h['eth10g']          = eth10g.detect{|na| na['rate'] == 10_000_000_000}.nil? ? "NO" : "YES"
         ib10g                = properties['network_adapters'].detect{|na| na['interface'] =~ /infiniband/i && na['rate'] == 10_000_000_000}
         h['ib10g']           = ib10g.nil? ? "NO" : "YES"
         h['ib10gmodel']      = ib10g.nil? ? "none" : ib10g['version']
