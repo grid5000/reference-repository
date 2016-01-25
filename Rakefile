@@ -129,13 +129,16 @@ end
 #   rake -s oar:generate FROM=be9f7338b9750ce675447c13d172157992041ec1 TO=7d2648eaad7dbbc6f1fdb9c0279f73d374ccd47a
 #
 namespace :oar do
-  desc "Generates the oaradmin lines to update the OAR database after a change in the reference repository.\nUse FROM=<SHA-ID> and TO=<SHA-ID> to specify the starting and ending commits.\nUse -s to suppress the 'in directory' announcement."
+  desc "Generates the oaradmin lines to update the OAR database after a change in the reference repository.\nUse FROM=<SHA-ID> and TO=<SHA-ID> to specify the starting and ending commits.\n  Use -s to suppress the 'in directory' announcement.\n  Use SUDO=sudo to prefix the commandes.\n  use PROPS=<comma-separated-list> to limit the update to some properties"
   task :generate => :environment do
     if ENV['FROM'].nil? || ENV['FROM'].empty?
       @logger.fatal "You MUST specify a commit id from where to start using the FROM=<SHA-ID> argument. Ex: rake -s oar:generate FROM=be9f7338b9750ce675447c13d172157992041ec1 TO=7dc3a4101a657230b7ad0534025a7ca93c905411 2> /dev/null"
       exit(1)
     end
     ENV['TO'] ||= 'HEAD'
+    ENV['SUDO'] ||= ''
+    ENV['PROPS'] ||= ''
+    properties = ENV['PROPS'].split(',')
     @logger.info "Analysing changes between #{ENV['FROM']}..#{ENV['TO']}..."
 
     commands = []
@@ -169,11 +172,17 @@ namespace :oar do
           next
         end
         if action == "M"  # modification of a file
-          command.concat("oarnodesetting -h #{host} ")
+          command.concat("#{ENV["SUDO"]} oarnodesetting -h #{host} ")
           command.concat(" -p ").concat( export.to_a.map{|(k,v)|
             if v.nil?
               nil
-            else
+            elsif properties.size > 0
+						  if properties.include?(k)
+                 "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}"
+							else 
+							  nil
+              end							
+            else				
               "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}"
             end
           }.compact.join(" -p ") )
