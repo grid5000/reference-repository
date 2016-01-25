@@ -366,7 +366,7 @@ module G5K
         unless site[:pdus].nil?
           site[:pdus].each do |pdu|
             site_pdus[pdu[:uid]]=pdu[:sensors][0][:power][:per_outlets] rescue nil
-            puts pdu if site_pdus[pdu[:uid]].nil?
+            pp pdu if site_pdus[pdu[:uid]].nil?
           end
           site[:clusters].each do |cluster|
             cluster[:nodes].each do |node|
