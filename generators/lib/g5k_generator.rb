@@ -151,7 +151,7 @@ module G5K
         $net_equipment[site]={}
         Pathname.glob("generators/input/sites/#{site}/net-links/*.yaml").map  {  |i| i.basename.to_s.sub!(".yaml","") }.each do |equipment_name|
           netlinks = File.open("generators/input/sites/#{site}/net-links/#{equipment_name}.yaml")
-          $net_equipment[site][equipment_name] = YAML::load_stream ( netlinks )
+          $net_equipment[site][equipment_name] = YAML::load_stream( netlinks )
         end
       end
       return $net_equipment[site]
