@@ -130,9 +130,6 @@ site :sophia do |site_uid|
           :gpu  => false
         })
 
-        monitoring({
-          :wattmeter  => false
-        })
       end
     end
   end

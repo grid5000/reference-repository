@@ -171,10 +171,6 @@ site :lyon do |site_uid|
           :release_date => lookup(node_uid, node_uid, 'bios', 'release_date')
         })
 
-        monitoring({
-          :wattmeter  => 'shared',
-        })
-
         sensors({
           :power => {
             :available => true,

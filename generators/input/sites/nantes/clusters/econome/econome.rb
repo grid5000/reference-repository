@@ -154,10 +154,6 @@ site :nantes do |site_uid|
           :gpu => false
         })
 
-        monitoring({
-          :wattmeter => false,
-        })
-
         sensors({
           :power => {
             :available => false,

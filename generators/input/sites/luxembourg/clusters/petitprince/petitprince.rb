@@ -125,10 +125,6 @@ site :luxembourg do |site_uid|
           :gpu  => false
         })
 
-        monitoring({
-          :wattmeter  => false
-        })
-
         addressing_plan({
           :kavlan => "10.40.0.0/14",
           :virt   => "10.172.0.0/14"

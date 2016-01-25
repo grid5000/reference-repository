@@ -51,8 +51,8 @@ module Grid5000
         h['gpu_count']       = properties['gpu']['gpu_count']
         h['gpu_model']       = properties['gpu']['gpu_model']
         properties["monitoring"] ||= {}
-        h['wattmeter']       = (properties['monitoring']['wattmeter'].is_a?(String) and properties['monitoring']['wattmeter'].upcase == "SHARED") ? "SHARED" \
-                                : properties['monitoring']['wattmeter'] ? "YES" : "NO"
+        h['wattmeter']       = !["true","false"].include?(properties['monitoring']['wattmeter']) ? properties['monitoring']['wattmeter'].upcase \
+                                : properties['monitoring']['wattmeter']=="true" ? "YES" : "NO"
         h['rconsole']        = properties['monitoring']['rconsole'] == false ? "NO" : "YES"
         h['cluster_priority'] = cluster.properties['priority'] || Time.httpdate(cluster.properties['created_at']).strftime("%Y%m")
         begin

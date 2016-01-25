@@ -157,10 +157,6 @@ site :grenoble do |site_uid|
           :gpu  => false
         })
 
-        monitoring({
-          :wattmeter  => true
-        })
-
         sensors({
           :power => {
             :available => true,

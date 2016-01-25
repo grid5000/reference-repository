@@ -127,9 +127,6 @@ site :sophia do |site_uid|
           :gpu  => false
         })
 
-        monitoring({
-          :wattmeter  => false
-        })
       end
     end
     # Nodes 29 -> 50 : myri0 interfaces
@@ -270,9 +267,6 @@ site :sophia do |site_uid|
           :gpu  => false
         })
 
-        monitoring({
-          :wattmeter  => false
-        })
       end
     end
 

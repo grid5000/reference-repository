@@ -189,7 +189,6 @@ site :rennes do |site_uid|
         })
 
         monitoring({
-          :wattmeter    => false,
           :temperature  => true,
         })
 
