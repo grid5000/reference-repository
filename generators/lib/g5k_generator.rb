@@ -363,6 +363,9 @@ module G5K
         site_pdu_outlets={}
         metric_nodes={}
         node_monitoring_wattmeter={}
+        if site[:clusters].nil?
+          return
+        end
         unless site[:pdus].nil?
           site[:pdus].each do |pdu|
             site_pdus[pdu[:uid]]=pdu[:sensors][0][:power][:per_outlets] rescue nil
