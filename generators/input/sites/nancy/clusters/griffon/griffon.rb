@@ -4,7 +4,7 @@ site :nancy do |site_uid|
     model "Carri System CS-5393B"
     created_at Time.parse("2009-04-10").httpdate
     kavlan true
-    production true
+    queues ['admin', 'default']
     ([*0..28]+[*57..59]).each do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
 

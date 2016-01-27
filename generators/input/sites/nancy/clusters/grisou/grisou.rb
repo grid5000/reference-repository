@@ -4,7 +4,7 @@ site :nancy do |site_uid|
     model "Dell PowerEdge R630"
     created_at Time.parse("2016-01-04").httpdate
     kavlan false
-    production false
+    queues ['admin', 'testing']
 
     51.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|

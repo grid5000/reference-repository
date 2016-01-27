@@ -18,7 +18,15 @@ site :nancy do |site_uid|
           :deploy       => true,
           :besteffort   => true,
           :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
-          :queues       => ['admin', 'production']
+          :queues       => ['admin', 'production'],
+          :max_walltime => {
+              1=>86400,
+              2=>86400,
+              3=>172800,
+              4=>172800,
+              5=>0,
+              6=>0,
+          }[i+1]
         })
 
         architecture({
