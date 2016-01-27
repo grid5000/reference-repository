@@ -109,8 +109,8 @@ site :nancy do |site_uid|
           :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'driver'),
           :ip               => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'ip'),
           #:ip6              => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'ip6'),
-          #:switch           => net_switch_lookup('nancy', 'graphique', node_uid, 'eth2'),
-          #:switch_port      => net_port_lookup('nancy', 'graphique', node_uid, 'eth2'),
+          :switch           => net_switch_lookup('nancy', 'graphique', node_uid, 'eth2'),
+          :switch_port      => net_port_lookup('nancy', 'graphique', node_uid, 'eth2'),
           :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'mac')
         },
         {

@@ -1,238 +1,190 @@
 {
-  "backplane_bps": 346000000000,
-  "channels": {
-    "lacp1": [
-      {
-        "linecard": 1,
-        "port": 24
-      }
-    ],
-    "lacp2": [
-      {
-        "linecard": 1,
-        "port": 9
-      }
-    ],
-    "lacp3": [
-      {
-        "linecard": 1,
-        "port": 23
-      }
-    ],
-    "lacp4": [
-      {
-        "linecard": 1,
-        "port": 17
-      }
-    ],
-    "naming_pattern": "Po%CHANNELID%",
-    "snmp_pattern": "Trk%CHANNELID%"
-  },
+  "backplane_bps": 1280000000000,
+  "channels": null,
   "kind": "router",
   "linecards": [
     {
 
     },
     {
-      "backplane_bps": 14400000000,
+      "backplane_bps": 1280000000000,
       "kind": "other",
-      "model": "J8702A",
-      "naming_pattern": "%LINECARD:A%%PORT%",
+      "model": "N9K-X9464PX",
+      "naming_pattern": "E%LINECARD%/%PORT%",
       "ports": [
         {
 
         },
         {
-          "kind": "other",
-          "uid": "sgrapheneib"
+          "kind": "node",
+          "uid": "graoully-1"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-2"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-3"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-4"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-5"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-6"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-7"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-8"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-9"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-10"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-11"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-12"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-13"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-14"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-15"
+        },
+        {
+          "kind": "node",
+          "uid": "graoully-16"
+        },
+        {
+          "kind": "node",
+          "uid": "graphite-1"
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-41"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-42"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-43"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-44"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-45"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-46"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-47"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-48"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-49"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-50"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-51"
+        },
+        {
+
         },
         {
           "kind": "other",
-          "port": "bmc",
-          "uid": "fgriffon2"
+          "uid": "grigri"
         },
         {
-          "kind": "virtual",
-          "port": "stalc1-ipmi",
-          "uid": "TALC-adm"
+
+        },
+        {
+          "kind": "other",
+          "uid": "talc-data"
+        },
+        {
+
+        },
+        {
+
         },
         {
           "kind": "switch",
-          "port": "stalc1",
-          "uid": "stalc1"
+          "uid": "sbaie1-adm"
         },
         {
-
+          "kind": "switch",
+          "uid": "sbaie2-adm"
         },
         {
-
-        },
-        {
-
-        },
-        {
-          "kind": "other",
-          "port": "eth0",
-          "uid": "grog"
-        },
-        {
-          "kind": "other",
-          "port": "eth1",
-          "uid": "grog"
-        },
-        {
-          "kind": "other",
-          "port": "bmc",
-          "uid": "fgriffon1"
-        },
-        {
-          "kind": "other",
-          "port": "eth0",
-          "uid": "fgriffon1"
-        },
-        {
-          "kind": "other",
-          "port": "eth0",
-          "uid": "fgrelon2"
-        },
-        {
-          "kind": "other",
-          "uid": "sgraphene1-ipmi"
-        },
-        {
-          "kind": "other",
-          "uid": "sgraphene2-ipmi"
-        },
-        {
-          "kind": "other",
-          "uid": "sgraphene3-ipmi"
-        },
-        {
-          "kind": "other",
-          "uid": "sgraphene4-ipmi"
-        },
-        {
-          "kind": "other",
-          "port": "eth1",
-          "uid": "fgrelon2"
-        },
-        {
-          "kind": "virtual",
-          "uid": "LORIA"
-        },
-        {
-
-        },
-        {
-          "kind": "other",
-          "uid": "sgriffon1-ipmi"
-        },
-        {
-
-        },
-        {
-          "kind": "other",
-          "port": "eth0",
-          "uid": "fgrelon1"
-        },
-        {
-          "kind": "other",
-          "port": "eth1",
-          "uid": "fgriffon1"
-        },
-        {
-          "kind": "other",
-          "port": "eth1",
-          "uid": "fgrelon1"
-        }
-      ],
-      "rate": 1000000000,
-      "snmp_pattern": "A%PORT%"
-    },
-    {
-      "backplane_bps": 14400000000,
-      "kind": "switch",
-      "model": "J8708A",
-      "naming_pattern": "%LINECARD:B%%PORT%",
-      "ports": [
-        {
-
-        },
-        {
-          "uid": "sgriffon1"
-        }
-      ],
-      "rate": 10000000000,
-      "snmp_pattern": "B%PORT%"
-    },
-    {
-      "backplane_bps": 14400000000,
-      "kind": "switch",
-      "model": "J8708A",
-      "naming_pattern": "%LINECARD:C%%PORT%",
-      "ports": [
-        {
-
-        },
-        {
-          "uid": "sgraphene1"
-        },
-        {
-          "uid": "sgraphene2"
-        },
-        {
-
-        },
-        {
-          "uid": "sgraphene4"
-        }
-      ],
-      "rate": 10000000000,
-      "snmp_pattern": "C%PORT%"
-    },
-    {
-      "backplane_bps": 14400000000,
-      "kind": "switch",
-      "model": "J8708A",
-      "naming_pattern": "%LINECARD:D%%PORT%",
-      "ports": [
-        {
-
-        },
-        {
-          "kind": "other",
-          "port": "eth2",
-          "uid": "fgriffon1"
-        },
-        {
-          "kind": "other",
-          "port": "eth2",
-          "uid": "fgriffon2"
-        },
-        {
-          "uid": "sgrelon1"
-        },
-        {
-          "uid": "sgraphene3"
-        }
-      ],
-      "rate": 10000000000,
-      "snmp_pattern": "D%PORT%"
-    },
-    {
-      "backplane_bps": 14400000000,
-      "kind": "virtual",
-      "model": "J8707A",
-      "naming_pattern": "%LINECARD:E%%PORT%",
-      "ports": [
-        {
-
-        },
-        {
-
-        },
-        {
-
+          "kind": "switch",
+          "uid": "sgravillon1"
         },
         {
 
@@ -243,43 +195,974 @@
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "E%PORT%"
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
     },
     {
-      "backplane_bps": 14400000000,
+      "backplane_bps": 1280000000000,
       "kind": "node",
-      "model": "J9538A",
-      "naming_pattern": "%LINECARD:F%%PORT%",
+      "model": "N9K-X9464PX",
+      "naming_pattern": "E%LINECARD%/%PORT%",
       "ports": [
         {
 
         },
         {
-          "uid": "graphite-1"
+          "kind": "node",
+          "uid": "grisou-1"
         },
         {
-          "uid": "graphite-2"
+          "kind": "node",
+          "uid": "grisou-2"
         },
         {
-          "uid": "graphite-3"
+          "kind": "node",
+          "uid": "grisou-3"
         },
         {
-          "uid": "graphite-4"
+          "kind": "node",
+          "uid": "grisou-4"
         },
         {
-          "kind": "virtual",
-          "uid": "srv"
+          "kind": "node",
+          "uid": "grisou-5"
         },
         {
-          "kind": "virtual",
-          "uid": "srv"
+          "kind": "node",
+          "uid": "grisou-6"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-7"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-8"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-9"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-10"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-11"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-12"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-13"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-14"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-15"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-16"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-17"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-18"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-19"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-20"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-21"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-22"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-23"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-24"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-25"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-26"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-27"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-28"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-29"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-30"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-31"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-32"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-33"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-34"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-35"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-36"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-37"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-38"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-39"
+        },
+        {
+          "kind": "node",
+          "uid": "grisou-40"
+        },
+        {
+          "kind": "node",
+          "uid": "grimoire-1"
+        },
+        {
+          "kind": "node",
+          "uid": "grimoire-2"
+        },
+        {
+          "kind": "node",
+          "uid": "grimoire-3"
+        },
+        {
+          "kind": "node",
+          "uid": "grimoire-4"
+        },
+        {
+          "kind": "node",
+          "uid": "grimoire-5"
+        },
+        {
+          "kind": "node",
+          "uid": "grimoire-6"
+        },
+        {
+          "kind": "node",
+          "uid": "grimoire-7"
+        },
+        {
+          "kind": "node",
+          "uid": "grimoire-8"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "F%PORT%"
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+    },
+    {
+      "backplane_bps": 1280000000000,
+      "kind": "node",
+      "model": "N9K-X9464PX",
+      "naming_pattern": "E%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-8"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-9"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-10"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-11"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-12"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-13"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-14"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-15"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-16"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-17"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-18"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-19"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-20"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-21"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-22"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-23"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-24"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-25"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-26"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-27"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-28"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-29"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-30"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-31"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-32"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-33"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-34"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-35"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-36"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-37"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-38"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-39"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grisou-40"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grimoire-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grimoire-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grimoire-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grimoire-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grimoire-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grimoire-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grimoire-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "uid": "grimoire-8"
+        }
+      ],
+      "rate": 10000000000,
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+    },
+    {
+      "backplane_bps": 1280000000000,
+      "kind": "node",
+      "model": "N9K-X9464PX",
+      "naming_pattern": "E%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-8"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-9"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-10"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-11"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-12"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-13"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-14"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-15"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-16"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-17"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-18"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-19"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-20"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-21"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-22"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-23"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-24"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-25"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-26"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-27"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-28"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-29"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-30"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-31"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-32"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-33"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-34"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-35"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-36"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-37"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-38"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-39"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grisou-40"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grimoire-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grimoire-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grimoire-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grimoire-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grimoire-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grimoire-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grimoire-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "uid": "grimoire-8"
+        }
+      ],
+      "rate": 10000000000,
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+    },
+    {
+      "backplane_bps": 1280000000000,
+      "kind": "node",
+      "model": "N9K-X9464PX",
+      "naming_pattern": "E%LINECARD%/%PORT%",
+      "ports": [
+        {
+
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-8"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-9"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-10"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-11"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-12"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-13"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-14"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-15"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-16"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-17"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-18"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-19"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-20"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-21"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-22"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-23"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-24"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-25"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-26"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-27"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-28"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-29"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-30"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-31"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-32"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-33"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-34"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-35"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-36"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-37"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-38"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-39"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grisou-40"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grimoire-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grimoire-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grimoire-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grimoire-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grimoire-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grimoire-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grimoire-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "uid": "grimoire-8"
+        }
+      ],
+      "rate": 10000000000,
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
     }
   ],
-  "model": "HP Procurve 5406zl J8697A",
+  "model": "Cisco Nexus 9508",
   "mtu": 9220,
   "routes": {
 
