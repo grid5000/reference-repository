@@ -178,7 +178,7 @@ site :nancy do |site_uid|
           :enabled          => true, 
           :management       => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'management'),
           :mountable        => true,
-          :mounted          => true,
+          :mounted          => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'mounted'),
           :bridged          => true,
           :device           => "ib0",
           :vendor           => 'Mellanox',
