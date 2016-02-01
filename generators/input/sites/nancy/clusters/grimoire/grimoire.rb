@@ -72,6 +72,46 @@ site :nancy do |site_uid|
           :vendor     => 'LSI Logic / Symbios Logic',
           :rev        => lookup(node_uid, node_uid, 'block_devices', 'sdb', 'rev'),
           :storage    => 'HDD'
+        },
+        {
+          :interface  => 'SCSI',
+          :size       => lookup(node_uid, node_uid, 'block_devices', 'sdc', 'size'),
+          :driver     => "megaraid_sas",
+          :device     => lookup(node_uid, node_uid, 'block_devices', 'sdc', 'device'),
+          :model      => lookup(node_uid, node_uid, 'block_devices', 'sdc', 'model'),
+          :vendor     => 'LSI Logic / Symbios Logic',
+          :rev        => lookup(node_uid, node_uid, 'block_devices', 'sdc', 'rev'),
+          :storage    => 'HDD'
+        },
+        {
+          :interface  => 'SCSI',
+          :size       => lookup(node_uid, node_uid, 'block_devices', 'sdd', 'size'),
+          :driver     => "megaraid_sas",
+          :device     => lookup(node_uid, node_uid, 'block_devices', 'sdd', 'device'),
+          :model      => lookup(node_uid, node_uid, 'block_devices', 'sdd', 'model'),
+          :vendor     => 'LSI Logic / Symbios Logic',
+          :rev        => lookup(node_uid, node_uid, 'block_devices', 'sdd', 'rev'),
+          :storage    => 'HDD'
+        },
+        {
+          :interface  => 'SCSI',
+          :size       => lookup(node_uid, node_uid, 'block_devices', 'sde', 'size'),
+          :driver     => "megaraid_sas",
+          :device     => lookup(node_uid, node_uid, 'block_devices', 'sde', 'device'),
+          :model      => lookup(node_uid, node_uid, 'block_devices', 'sde', 'model'),
+          :vendor     => 'LSI Logic / Symbios Logic',
+          :rev        => lookup(node_uid, node_uid, 'block_devices', 'sde', 'rev'),
+          :storage    => 'HDD'
+        },
+        {
+          :interface  => 'SCSI',
+          :size       => lookup(node_uid, node_uid, 'block_devices', 'sdf', 'size'),
+          :driver     => "megaraid_sas",
+          :device     => lookup(node_uid, node_uid, 'block_devices', 'sdf', 'device'),
+          :model      => lookup(node_uid, node_uid, 'block_devices', 'sdf', 'model'),
+          :vendor     => 'LSI Logic / Symbios Logic',
+          :rev        => lookup(node_uid, node_uid, 'block_devices', 'sdf', 'rev'),
+          :storage    => 'HDD'
         }]
 
         network_adapters [{
