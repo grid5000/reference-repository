@@ -4,7 +4,7 @@ site :grenoble do |site_uid|
     model "Bull R422-E1"
     created_at Time.parse("2008-10-01").httpdate
     kavlan true
-    production true
+    queues ['default', 'admin']
 
     34.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
@@ -17,7 +17,9 @@ site :grenoble do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
+          :max_walltime => 0,
+          :queues       => ['default', 'admin']
         })
 
         architecture({

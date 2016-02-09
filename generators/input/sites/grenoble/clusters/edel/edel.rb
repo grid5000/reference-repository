@@ -4,7 +4,7 @@ site :grenoble do |site_uid|
     model "Bull bullx B500 compute blades"
     created_at Time.parse("2008-10-03").httpdate
     kavlan true
-    production true
+    queues ['default', 'admin']
 
     72.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
@@ -17,7 +17,9 @@ site :grenoble do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
+          :max_walltime => 0,
+          :queues       => ['default', 'admin']
         })
 
         architecture({

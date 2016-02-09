@@ -5,7 +5,7 @@ site :lille do |site_uid|
     created_at Time.parse("2011-03-25").httpdate
     priority "201199"
     kavlan true
-    production true
+    queues ['default', 'admin']
 
     8.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
@@ -24,7 +24,9 @@ site :lille do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
+          :max_walltime => 0,
+          :queues       => ['default', 'admin']
         })
 
         architecture({

@@ -4,7 +4,7 @@ site :sophia do |site_uid|
     model "Sun Fire X2200 M2"
     created_at Time.parse("2007-02-23").httpdate
     kavlan true
-    production true
+    queues ['default', 'admin']
 
     # Nodes 1 -> 28 : No myri0 interface
     28.times do |i|
@@ -18,7 +18,9 @@ site :sophia do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
+          :max_walltime => 0,
+          :queues       => ['default', 'admin']
         })
 
         architecture({
@@ -141,7 +143,7 @@ site :sophia do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
         })
 
         architecture({

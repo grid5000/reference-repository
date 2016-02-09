@@ -4,7 +4,7 @@ site :lyon do |site_uid|
     model "Sun Fire V20z"
     created_at Time.parse("2006-07-01 12:00 GMT").httpdate
     kavlan true
-    production true
+    queues ['default', 'admin']
 
     79.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
@@ -17,7 +17,9 @@ site :lyon do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual')
+          :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
+          :max_walltime => 0,
+          :queues       => ['default', 'admin']
         })
 
         architecture({
