@@ -15,11 +15,11 @@ grimoire-1:
   block_devices:
     sda:
       device: sda
-      size: 200049647616
-      model: PX02SSF020
-      rev: A4AF
-      timeread: 266
-      timewrite: 1242
+      size: 600127266816
+      model: ST600MM0088
+      rev: TT31
+      timeread: 1277
+      timewrite: 2800
     sdb:
       device: sdb
       size: 600127266816
@@ -42,20 +42,14 @@ grimoire-1:
       rev: TT31
     sdf:
       device: sdf
-      size: 600127266816
-      model: ST600MM0088
-      rev: TT31
+      size: 200049647616
+      model: PX02SSF020
+      rev: A4AF
   supported_job_types:
     virtual: ivt
   main_memory:
     ram_size: 135291469824
   network_interfaces:
-    eth4:
-      interface: Ethernet
-      driver: igb
-      mac: 24:6e:96:03:0c:cc
-      mounted: false
-      management: false
     eth0:
       interface: Ethernet
       ip: 172.16.71.1
@@ -70,16 +64,22 @@ grimoire-1:
       mac: 24:6e:96:03:0c:ca
       mounted: false
       management: false
-    eth5:
-      interface: Ethernet
-      driver: igb
-      mac: 24:6e:96:03:0c:cd
-      mounted: false
-      management: false
     eth2:
       interface: Ethernet
       driver: ixgbe
       mac: a0:36:9f:7f:35:b8
+      mounted: false
+      management: false
+    eth4:
+      interface: Ethernet
+      driver: igb
+      mac: 24:6e:96:03:0c:cc
+      mounted: false
+      management: false
+    eth5:
+      interface: Ethernet
+      driver: igb
+      mac: 24:6e:96:03:0c:cd
       mounted: false
       management: false
     eth3:

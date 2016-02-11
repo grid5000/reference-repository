@@ -109,9 +109,9 @@ site :nancy do |site_uid|
           :driver     => "megaraid_sas",
           :device     => lookup(node_uid, node_uid, 'block_devices', 'sdf', 'device'),
           :model      => lookup(node_uid, node_uid, 'block_devices', 'sdf', 'model'),
-          :vendor     => 'LSI Logic / Symbios Logic',
+          :vendor     => 'TOSHIBA',
           :rev        => lookup(node_uid, node_uid, 'block_devices', 'sdf', 'rev'),
-          :storage    => 'HDD'
+          :storage    => 'SSD'
         }]
 
         network_adapters [{
