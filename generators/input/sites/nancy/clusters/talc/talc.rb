@@ -60,6 +60,7 @@ site :nancy do |site_uid|
           :device     => lookup(node_uid, node_uid, 'block_devices', 'sda', 'device'),
           :model      => lookup(node_uid, node_uid, 'block_devices', 'sda', 'model'),
           :vendor     => lookup(node_uid, node_uid, 'block_devices', 'sda', 'vendor'),
+          :storage    => 'HDD',
           :rev        => lookup(node_uid, node_uid, 'block_devices', 'sda', 'rev')
         }]
 
