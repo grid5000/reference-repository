@@ -42,6 +42,9 @@ module Grid5000
         ib40g                = properties['network_adapters'].detect{|na| na['interface'] =~ /infiniband/i && na['rate'] == 40_000_000_000}
         h['ib40g']           = ib40g.nil? ? "NO" : "YES"
         h['ib40gmodel']      = ib40g.nil? ? "none" : ib40g['version']
+        ib56g                = properties['network_adapters'].detect{|na| na['interface'] =~ /infiniband/i && na['rate'] == 56_000_000_000}
+        h['ib56g']           = ib56g.nil? ? "NO" : "YES"
+        h['ib56gmodel']      = ib56g.nil? ? "none" : ib56g['version']
         myri10g              = properties['network_adapters'].detect{|na| na['interface'] =~ /myri/i && na['rate'] == 10_000_000_000}
         h['myri10g']         = myri10g.nil? ? "NO" : "YES"
         h['myri10gmodel']    = myri10g.nil? ? "none" : myri10g['version']
