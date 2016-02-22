@@ -101,10 +101,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "3.2.0-4-amd64",
+    "kernel": "3.16.0-4-amd64",
     "name": "debian",
-    "release": "Wheezy",
-    "version": "7"
+    "release": "jessie",
+    "version": "8"
   },
   "performance": {
     "core_flops": 13800000000,
@@ -133,8 +133,8 @@
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA",
-      "model": "WD6001BKHG",
-      "rev": "D1S6",
+      "model": "WD6002BKTG",
+      "rev": "D1P3",
       "size": 600127266816,
       "storage": "HDD"
     },
@@ -178,6 +178,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

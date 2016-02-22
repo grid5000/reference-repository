@@ -22,7 +22,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": false
+    "wattmeter": "false"
   },
   "network_adapters": [
     {
@@ -63,14 +63,14 @@
     {
       "device": "myri0",
       "driver": "mx ethernet (myri)",
-      "enabled": true,
+      "enabled": false,
       "interface": "Myrinet",
       "ip": "172.18.47.120",
       "ip6": "fe80::260:ddff:fe47:4986",
       "mac": "00:60:dd:47:49:86",
       "management": false,
       "mountable": true,
-      "mounted": true,
+      "mounted": false,
       "network_address": "chinqchint-20-myri0.lille.grid5000.fr",
       "rate": 10000000000,
       "switch": "switch-myri",
@@ -119,7 +119,7 @@
       "driver": "ahci",
       "interface": "SATA II",
       "model": "Hitachi HDT72502",
-      "rev": "V5DO",
+      "rev": "A7EA",
       "size": 250059350016,
       "storage": "HDD",
       "vendor": null
@@ -128,6 +128,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

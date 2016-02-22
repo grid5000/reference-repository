@@ -23,7 +23,7 @@
   },
   "monitoring": {
     "temperature": true,
-    "wattmeter": false
+    "wattmeter": "true"
   },
   "network_adapters": [
     {
@@ -112,7 +112,7 @@
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 8000000000,
+      "rate": 10000000000,
       "vendor": "Mellanox",
       "version": "MT25418"
     },
@@ -130,10 +130,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "3.2.0-4-amd64",
+    "kernel": "3.16.0-4-amd64",
     "name": "debian",
-    "release": "Wheezy",
-    "version": "7"
+    "release": "jessie",
+    "version": "8"
   },
   "performance": {
     "core_flops": 4932000000,
@@ -157,7 +157,7 @@
       "available": true,
       "via": {
         "api": {
-          "metric": "pdu"
+          "metric": "power"
         },
         "pdu": [
           {
@@ -196,6 +196,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "amd-v"
   },
   "type": "node",

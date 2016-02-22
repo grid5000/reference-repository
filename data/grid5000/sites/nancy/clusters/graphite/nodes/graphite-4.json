@@ -26,6 +26,9 @@
     "mic_count": 1,
     "mic_model": "7120P"
   },
+  "monitoring": {
+    "wattmeter": "multiple"
+  },
   "network_adapters": [
     {
       "bridged": true,
@@ -42,7 +45,7 @@
       "network_address": "graphite-4.nancy.grid5000.fr",
       "rate": 10000000000,
       "switch": "gw-nancy",
-      "switch_port": "F4",
+      "switch_port": "Ethernet1/20",
       "vendor": "intel",
       "version": "82599EB"
     },
@@ -71,8 +74,8 @@
       "mountable": true,
       "mounted": false,
       "rate": null,
-      "switch": "sgraphene4",
-      "switch_port": "GigabitEthernet1/0/41",
+      "switch": null,
+      "switch_port": null,
       "vendor": "intel",
       "version": "I350"
     },
@@ -87,8 +90,8 @@
       "mountable": true,
       "mounted": false,
       "rate": null,
-      "switch": "sgraphene4",
-      "switch_port": "GigabitEthernet1/0/42",
+      "switch": null,
+      "switch_port": null,
       "vendor": "intel",
       "version": "I350"
     },
@@ -110,10 +113,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "3.2.0-4-amd64",
+    "kernel": "3.16.0-4-amd64",
     "name": "debian",
-    "release": "Wheezy",
-    "version": "7"
+    "release": "Jessie",
+    "version": "8.2"
   },
   "performance": {
     "core_flops": 13170000000.0,
@@ -125,7 +128,7 @@
     "cache_l1i": 32768,
     "cache_l2": 262144,
     "cache_l3": 20971520,
-    "clock_speed": 2000000000,
+    "clock_speed": 2800000000,
     "instruction_set": "x86-64",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU E5-2650 0 @ 2.00GHz",
@@ -137,16 +140,16 @@
       "available": true,
       "via": {
         "api": {
-          "metric": "pdu"
+          "metric": "power"
         },
         "pdu": [
           {
             "port": 5,
-            "uid": "graphene-pdu9.nancy.grid5000.fr"
+            "uid": "graphene-pdu9"
           },
           {
             "port": 6,
-            "uid": "graphene-pdu9.nancy.grid5000.fr"
+            "uid": "graphene-pdu9"
           }
         ]
       }

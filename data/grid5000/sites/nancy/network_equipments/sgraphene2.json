@@ -122,7 +122,7 @@
       "snmp_pattern": "GigabitEthernet1/%LINECARD%/%PORT%"
     },
     {
-      "kind": "router",
+      "kind": "switch",
       "naming_pattern": "Ten-GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
@@ -132,7 +132,8 @@
 
         },
         {
-          "uid": "gw-nancy"
+          "kind": "switch",
+          "uid": "sgravillon1"
         }
       ],
       "rate": 10000000000,

@@ -22,7 +22,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": false
+    "wattmeter": "false"
   },
   "network_adapters": [
     {
@@ -101,7 +101,7 @@
       "driver": "sata_nv",
       "interface": "SATA",
       "model": "HITACHI HDS7225S",
-      "rev": "V44O",
+      "rev": "A9CA",
       "size": 250056000000,
       "storage": "HDD",
       "vendor": "Hitachi"
@@ -110,6 +110,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "amd-v"
   },
   "type": "node",

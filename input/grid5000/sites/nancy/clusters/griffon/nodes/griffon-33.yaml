@@ -5,7 +5,7 @@ griffon-33:
       device: sda
       size: 320072933376
       model: Hitachi HDP72503
-      rev: GM3O
+      rev: A5CA
       vendor: Hitachi
   bios:
     vendor: Phoenix Technologies LTD
@@ -20,7 +20,7 @@ griffon-33:
       ip6: fe80::2e0:81ff:feb2:bffa
       driver: e1000e
       mac: 00:e0:81:b2:bf:fa
-      rate: 1000000000
+      rate: 100000000
       enabled: true
       mountable: true
       mounted: true
@@ -39,17 +39,17 @@ griffon-33:
       ip6: fe80::202:c903:3:3057
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:57
-      rate: 20000000000
+      rate: 10000000000
       version: MT26418
-      enabled: true
-      mountable: true
+      enabled: false
+      mountable: false
       mounted: true
       management: false
     ib1:
       interface: InfiniBand
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:58
-      rate: 28000000000
+      rate: 10000000000
       version: MT26418
       enabled: false
       mountable: false
@@ -77,8 +77,8 @@ griffon-33:
     platform_type: x86_64
   operating_system:
     name: debian
-    kernel: 2.6.32-5-amd64
-    version: 6.0.6
+    kernel: 3.16.0-4-amd64
+    version: 8.2
   chassis:
     serial_number: 812530038
     manufacturer: TYAN Computer Corporation

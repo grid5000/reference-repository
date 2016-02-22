@@ -69,7 +69,9 @@ else
   files.each do |filename|
     case (ext = File.extname(filename))
     when ".rb"
-      input[File.basename(filename, ext)] = File.read(filename)
+      # all sites have a pdus.rb file. Breaks generation if all sites are generated at the same time
+      input[File.basename(filename, ext)]="" unless input.has_key?(File.basename(filename, ext))
+      input[File.basename(filename, ext)] += File.read(filename)
     when ".yml", ".yaml"
       config[File.basename(filename, ext)] = YAML.load_file(filename)
     else
@@ -81,6 +83,8 @@ else
   puts "[Simulation mode:\t #{options[:simulate]}]"
   generator = G5K::ReferenceGenerator.new({:uid => "grid5000", :type => "grid"}, :input => input, :config => config)
   data = generator.generate
+  puts "[Add to the raw data for derived properties:\ #{true}]"
+  data = generator.annotate
   directory_to_write = File.expand_path File.join(File.dirname(__FILE__), "../data")
   generator.write(directory_to_write, options)
   exit 0

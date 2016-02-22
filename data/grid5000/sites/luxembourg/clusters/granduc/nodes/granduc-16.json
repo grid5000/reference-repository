@@ -26,7 +26,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": false
+    "wattmeter": "false"
   },
   "network_adapters": [
     {
@@ -66,12 +66,12 @@
       "driver": "ixgbe",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "192.168.14.16",
+      "ip": "172.16.179.16",
       "ip6": "fe80::21b:21ff:fe34:e11a",
       "mac": "00:1b:21:34:e1:1a",
       "management": false,
       "mountable": true,
-      "mounted": true,
+      "mounted": false,
       "network_address": "granduc-16-eth2.luxembourg.grid5000.fr",
       "rate": 10000000000,
       "switch": "ul-grid5000-sw02",
@@ -142,6 +142,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

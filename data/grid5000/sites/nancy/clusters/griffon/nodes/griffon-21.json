@@ -21,6 +21,9 @@
     "ram_size": 17179869184,
     "virtual_size": null
   },
+  "monitoring": {
+    "wattmeter": "shared"
+  },
   "network_adapters": [
     {
       "bridged": true,
@@ -35,7 +38,7 @@
       "mountable": true,
       "mounted": true,
       "network_address": "griffon-21.nancy.grid5000.fr",
-      "rate": 1000000000,
+      "rate": 100000000,
       "switch": "sgriffon1",
       "switch_port": "GigabitEthernet1/0/35",
       "vendor": "intel",
@@ -60,7 +63,7 @@
     {
       "device": "ib0",
       "driver": "mlx4_core",
-      "enabled": true,
+      "enabled": false,
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:4f",
       "hwid": "0xC9030003304E",
       "ib_switch_card": "0x000b8cffff003101",
@@ -69,10 +72,10 @@
       "ip": "172.18.65.21",
       "ip6": "fe80::202:c903:3:304f",
       "management": false,
-      "mountable": true,
+      "mountable": false,
       "mounted": true,
       "network_address": "griffon-21-ib0.nancy.grid5000.fr",
-      "rate": 20000000000,
+      "rate": 10000000000,
       "switch": "sgriffonib",
       "vendor": "Mellanox",
       "version": "MT26418"
@@ -86,7 +89,7 @@
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 28000000000,
+      "rate": 10000000000,
       "vendor": "Mellanox",
       "version": "MT26418"
     },
@@ -108,10 +111,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "2.6.32-5-amd64",
+    "kernel": "3.16.0-4-amd64",
     "name": "debian",
-    "release": "Squeeze",
-    "version": "6.0.6"
+    "release": "Jessie",
+    "version": 8.2
   },
   "performance": {
     "core_flops": 7963000000.0,
@@ -136,7 +139,7 @@
       "via": {
         "pdu": [
           {
-            "uid": "griffon-pdu1.nancy.grid5000.fr"
+            "uid": "griffon-pdu1"
           }
         ]
       }
@@ -148,7 +151,7 @@
       "driver": "ahci",
       "interface": "SATA II",
       "model": "Hitachi HDP72503",
-      "rev": "GM3O",
+      "rev": "A5CA",
       "size": 320072933376,
       "storage": "HDD",
       "vendor": "Hitachi"

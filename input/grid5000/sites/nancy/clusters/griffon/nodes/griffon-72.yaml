@@ -10,7 +10,7 @@ griffon-72:
       ip6: fe80::2e0:81ff:feb2:c4d6
       driver: e1000e
       mac: 00:e0:81:b2:c4:d6
-      rate: 1000000000
+      rate: 100000000
       enabled: true
       mountable: true
       mounted: true
@@ -29,17 +29,17 @@ griffon-72:
       ip6: fe80::202:c903:3:2fcf
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:2f:cf
-      rate: 20000000000
+      rate: 10000000000
       version: MT26418
-      enabled: true
-      mountable: true
+      enabled: false
+      mountable: false
       mounted: true
       management: false
     ib1:
       interface: InfiniBand
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:2f:d0
-      rate: 28000000000
+      rate: 10000000000
       version: MT26418
       enabled: false
       mountable: false
@@ -51,8 +51,8 @@ griffon-72:
     release_date: 08/21/2009
   operating_system:
     name: debian
-    kernel: 2.6.32-5-amd64
-    version: 6.0.6
+    kernel: 3.16.0-4-amd64
+    version: 8.2
   supported_job_types:
     virtual: ivt
   main_memory:
@@ -77,7 +77,7 @@ griffon-72:
       device: sda
       size: 320072933376
       model: Hitachi HDP72503
-      rev: GM3O
+      rev: A5CA
       vendor: Hitachi
   chassis:
     serial_number: 812530077

@@ -24,6 +24,9 @@
     "ram_size": 25769803776,
     "virtual_size": null
   },
+  "monitoring": {
+    "wattmeter": "shared"
+  },
   "network_adapters": [
     {
       "bridged": true,
@@ -119,18 +122,18 @@
         "pdu": [
           [
             {
-              "measure": "outlet-1",
-              "uid": "adonis-pdu-2.grenoble.grid5000.fr"
+              "port": "outlet-1",
+              "uid": "adonis-pdu-2"
             },
             {
-              "measure": "outlet-2",
-              "uid": "adonis-pdu-2.grenoble.grid5000.fr"
+              "port": "outlet-2",
+              "uid": "adonis-pdu-2"
             }
           ],
           [
             {
-              "measure": "global",
-              "uid": "block-1"
+              "measure": "block-1",
+              "uid": "adonis-pdu-2"
             }
           ]
         ]
@@ -143,7 +146,7 @@
       "driver": "ahci",
       "interface": "SATA",
       "model": "WDC WD2502ABYS-0",
-      "rev": 2.0,
+      "rev": 3.0,
       "size": 251059544064,
       "storage": "HDD",
       "vendor": "Western Digital"
@@ -152,6 +155,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

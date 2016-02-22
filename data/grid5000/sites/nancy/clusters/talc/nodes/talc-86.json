@@ -20,6 +20,9 @@
     "ram_size": 17179869184,
     "virtual_size": null
   },
+  "monitoring": {
+    "wattmeter": "false"
+  },
   "network_adapters": [
     {
       "bridged": true,
@@ -34,7 +37,9 @@
       "mountable": true,
       "mounted": true,
       "network_address": "talc-86.nancy.grid5000.fr",
-      "rate": 1000000000,
+      "rate": 100000000,
+      "switch": "stalc3",
+      "switch_port": "GigabitEthernet1/0/19",
       "vendor": "intel",
       "version": "80003ES2LAN"
     },
@@ -70,8 +75,12 @@
   "operating_system": {
     "kernel": "3.2.0-4-amd64",
     "name": "debian",
-    "release": "Squeeze",
-    "version": 7.2
+    "release": "Jessie",
+    "version": 8.2
+  },
+  "performance": {
+    "core_flops": 0,
+    "node_flops": 0
   },
   "processor": {
     "cache_l1": null,
@@ -92,14 +101,20 @@
       "driver": "ahci",
       "interface": "SATA II",
       "model": "Hitachi HDS72103",
-      "rev": "JPFO",
+      "rev": "A39C",
       "size": 320072933376,
+      "storage": "HDD",
       "vendor": null
     }
   ],
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 172800,
+    "queues": [
+      "admin",
+      "production"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

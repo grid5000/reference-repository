@@ -131,52 +131,21 @@
         },
         {
           "uid": "graphene-144"
-        },
-        {
-          "port": "eth2",
-          "uid": "graphite-4"
-        },
-        {
-          "port": "eth3",
-          "uid": "graphite-4"
-        },
-        {
-          "port": "eth2",
-          "uid": "graphite-3"
-        },
-        {
-          "port": "eth3",
-          "uid": "graphite-3"
-        },
-        {
-          "port": "eth2",
-          "uid": "graphite-2"
-        },
-        {
-          "port": "eth3",
-          "uid": "graphite-2"
-        },
-        {
-          "port": "eth2",
-          "uid": "graphite-1"
-        },
-        {
-          "port": "eth3",
-          "uid": "graphite-1"
         }
       ],
       "rate": 1000000000,
       "snmp_pattern": "GigabitEthernet1/%LINECARD%/%PORT%"
     },
     {
-      "kind": "router",
+      "kind": "switch",
       "naming_pattern": "Ten-GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
 
         },
         {
-          "uid": "gw-nancy"
+          "kind": "switch",
+          "uid": "sgravillon1"
         }
       ],
       "rate": 10000000000,

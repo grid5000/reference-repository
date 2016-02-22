@@ -2,8 +2,8 @@
 griffon-73:
   operating_system:
     name: debian
-    kernel: 2.6.32-5-amd64
-    version: 6.0.6
+    kernel: 3.16.0-4-amd64
+    version: 8.2
   main_memory:
     ram_size: 17179869184
   network_interfaces:
@@ -16,7 +16,7 @@ griffon-73:
       ip6: fe80::2e0:81ff:feb2:c4ba
       driver: e1000e
       mac: 00:e0:81:b2:c4:ba
-      rate: 1000000000
+      rate: 100000000
       enabled: true
       mountable: true
       mounted: true
@@ -35,17 +35,17 @@ griffon-73:
       ip6: fe80::202:c903:3:19fd
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:19:fd
-      rate: 20000000000
+      rate: 10000000000
       version: MT26418
-      enabled: true
-      mountable: true
+      enabled: false
+      mountable: false
       mounted: true
       management: false
     ib1:
       interface: InfiniBand
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:19:fe
-      rate: 28000000000
+      rate: 10000000000
       version: MT26418
       enabled: false
       mountable: false
@@ -58,7 +58,7 @@ griffon-73:
       device: sda
       size: 320072933376
       model: Hitachi HDP72503
-      rev: GM3O
+      rev: A5CA
       vendor: Hitachi
   architecture:
     smp_size: 2

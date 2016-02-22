@@ -21,6 +21,9 @@
     "ram_size": 17179869184,
     "virtual_size": null
   },
+  "monitoring": {
+    "wattmeter": "shared"
+  },
   "network_adapters": [
     {
       "bridged": true,
@@ -94,7 +97,7 @@
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 28000000000,
+      "rate": 10000000000,
       "vendor": "Mellanox",
       "version": "MT26418"
     },
@@ -116,10 +119,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "3.2.0-4-amd64",
+    "kernel": "3.16.0-4-amd64",
     "name": "debian",
-    "release": "Wheezy",
-    "version": "7"
+    "release": "Jessie",
+    "version": "8.2"
   },
   "performance": {
     "core_flops": 8024000000.0,
@@ -142,9 +145,12 @@
     "power": {
       "available": true,
       "via": {
+        "api": {
+          "metric": "power"
+        },
         "pdu": [
           {
-            "uid": "graphene-pdu2.nancy.grid5000.fr"
+            "uid": "graphene-pdu2"
           }
         ]
       }
@@ -156,7 +162,7 @@
       "driver": "ahci",
       "interface": "SATA II",
       "model": "Hitachi HDS72103",
-      "rev": "JPFO",
+      "rev": "A3EA",
       "size": 320072933376,
       "storage": "HDD",
       "vendor": "Hitachi"

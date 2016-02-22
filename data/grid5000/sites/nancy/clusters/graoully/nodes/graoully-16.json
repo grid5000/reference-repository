@@ -1,0 +1,235 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 16
+  },
+  "bios": {
+    "release_date": "06/03/2015",
+    "vendor": "Dell Inc.",
+    "version": 1.3
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R630",
+    "serial": "3F4ZH82"
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+    "ram_size": 135291469824,
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": "true"
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.70.16",
+      "mac": "24:6e:96:03:0f:50",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "graoully-16.nancy.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "gw-nancy",
+      "switch_port": "Ethernet1/16",
+      "vendor": "Intel Corporation"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "24:6e:96:03:0f:52",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel Corporation"
+    },
+    {
+      "bridged": false,
+      "device": "eth2",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "a0:36:9f:7e:4a:d4",
+      "management": false,
+      "model": "Ethernet 10G 2P X520 Adapter",
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel Corporation"
+    },
+    {
+      "bridged": false,
+      "device": "eth3",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "a0:36:9f:7e:4a:d6",
+      "management": false,
+      "model": "Ethernet 10G 2P X520 Adapter",
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel Corporation"
+    },
+    {
+      "bridged": false,
+      "device": "eth4",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "24:6e:96:03:0f:54",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel Corporation"
+    },
+    {
+      "bridged": false,
+      "device": "eth5",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "24:6e:96:03:0f:55",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel Corporation"
+    },
+    {
+      "bridged": true,
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:e4:1d:2d:03:00:bf:50:81",
+      "hwid": null,
+      "ib_switch_card": null,
+      "ib_switch_card_pos": null,
+      "interface": "InfiniBand",
+      "ip": "172.18.70.16",
+      "ip6": null,
+      "mac": null,
+      "management": false,
+      "model": "MT27500 Family [ConnectX-3]",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "graoully-16-ib0.nancy.grid5000.fr",
+      "rate": 56000000000,
+      "switch": "sgraoullyib",
+      "vendor": "Mellanox",
+      "version": "MT4099"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.70.16",
+      "mac": null,
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "graoully-16-bmc.nancy.grid5000.fr",
+      "rate": 1000000000
+    }
+  ],
+  "operating_system": {
+    "kernel": "3.16.0-4-amd64",
+    "name": "debian",
+    "release": "Jessie",
+    "version": 8.2
+  },
+  "performance": {
+    "core_flops": 0,
+    "node_flops": 0
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 20971520,
+    "clock_speed": 3200000000,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
+    "vendor": "Intel",
+    "version": "E5-2630 v3"
+  },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 21,
+            "uid": "graoully-pdu2"
+          }
+        ]
+      }
+    }
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "interface": "SCSI",
+      "model": "ST600MM0088",
+      "rev": "TT31",
+      "size": 600127266816,
+      "storage": "HDD",
+      "vendor": "LSI Logic / Symbios Logic"
+    },
+    {
+      "device": "sdb",
+      "driver": "megaraid_sas",
+      "interface": "SCSI",
+      "model": "ST600MM0088",
+      "rev": "TT31",
+      "size": 600127266816,
+      "storage": "HDD",
+      "vendor": "LSI Logic / Symbios Logic"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "graoully-16"
+}

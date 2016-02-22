@@ -21,6 +21,9 @@
     "ram_size": 137438953472,
     "virtual_size": null
   },
+  "monitoring": {
+    "wattmeter": "true"
+  },
   "network_adapters": [
     {
       "bridged": true,
@@ -98,10 +101,10 @@
     }
   ],
   "operating_system": {
-    "kernel": "3.2.0-4-amd64",
+    "kernel": "3.16.0-4-amd64",
     "name": "debian",
-    "release": "Wheezy",
-    "version": "7"
+    "release": "jessie",
+    "version": "8"
   },
   "performance": {
     "core_flops": 18720000000,
@@ -125,7 +128,7 @@
       "available": true,
       "via": {
         "api": {
-          "metric": "pdu"
+          "metric": "power"
         },
         "pdu": [
           {
@@ -195,6 +198,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

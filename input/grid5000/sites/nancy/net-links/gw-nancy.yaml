@@ -1,6 +1,6 @@
 ---
 gw-nancy:
-  model: HP Procurve 5406zl J8697A
+  model: Cisco Nexus 9508
   kind: router
   site: nancy
   snmp_community: public
@@ -58,181 +58,876 @@ gw-nancy:
       addresses:
         - 10.19.192.0/18
   routes: {}
-  backplane_bps: 346000000000
+  backplane_bps: 1280000000000
   linecards:
     1:
-      naming_pattern: "%LINECARD:A%%PORT%"
-      snmp_pattern: "A%PORT%"
-      backplane_bps: 14400000000
-      model: J8702A
+      naming_pattern: "E%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      backplane_bps: 1280000000000
+      model: N9K-X9464PX
       kind: other
-      rate: 1000000000
+      rate: 10000000000
       ports:
         1:
-          kind: other
-          uid: sgrapheneib
+          uid: graoully-1
+          kind: node
         2:
-          port: bmc
-          uid: fgriffon2
-          kind: other
+          uid: graoully-2
+          kind: node
         3:
-          uid: TALC-adm
-          port: stalc1-ipmi
-          kind: virtual
+          uid: graoully-3
+          kind: node
         4:
-          kind: switch
-          uid: stalc1
-          port: stalc1
+          uid: graoully-4
+          kind: node
+        5:
+          uid: graoully-5
+          kind: node
         6:
-          kind: other
-          uid: sgriffonib
+          uid: graoully-6
+          kind: node
+        7:
+          uid: graoully-7
+          kind: node
         8:
-          port: eth0
-          uid: grog
-          kind: other
+          uid: graoully-8
+          kind: node
         9:
-          port: eth1
-          uid: grog
-          kind: other
+          uid: graoully-9
+          kind: node
         10:
-          port: bmc
-          kind: other
-          uid: fgriffon1
+          uid: graoully-10
+          kind: node
         11:
-          port: eth0
-          uid: fgriffon1
-          kind: other
+          uid: graoully-11
+          kind: node
         12:
-          port: eth0
-          uid: fgrelon2
-          kind: other
+          uid: graoully-12
+          kind: node
         13:
-          uid: sgraphene1-ipmi
-          kind: other
+          uid: graoully-13
+          kind: node
         14:
-          uid: sgraphene2-ipmi
-          kind: other
+          uid: graoully-14
+          kind: node
         15:
-          uid: sgraphene3-ipmi
-          kind: other
+          uid: graoully-15
+          kind: node
         16:
-          uid: sgraphene4-ipmi
-          kind: other
+          uid: graoully-16
+          kind: node
         17:
-          port: eth1
-          uid: fgrelon2
-          kind: other
+          uid: graphite-1
+          kind: node
         18:
-          uid: LORIA
-          kind: virtual
+          uid: graphite-2
+          kind: node
         19:
-          uid: sgriffon2-ipmi
-          kind: other
+          uid: graphite-3
+          kind: node
         20:
-          uid: sgriffon1-ipmi
+          uid: graphite-4
+          kind: node
+        27:
+          uid: grisou-41
+          kind: node
+        28:
+          uid: grisou-42
+          kind: node
+        29:
+          uid: grisou-43
+          kind: node
+        30:
+          uid: grisou-44
+          kind: node
+        31:
+          uid: grisou-45
+          kind: node
+        32:
+          uid: grisou-46
+          kind: node
+        33:
+          uid: grisou-47
+          kind: node
+        34:
+          uid: grisou-48
+          kind: node
+        35:
+          uid: grisou-49
+          kind: node
+        36:
+          uid: grisou-50
+          kind: node
+        37:
+          uid: grisou-51
+          kind: node
+        39:
+          uid: grigri
           kind: other
-        21:
-          uid: sgriffon3-ipmi
+        41:
+          uid: talc-data
           kind: other
-        22:
-          port: eth0
-          kind: other
-          uid: fgrelon1
-        23:
-          port: eth1
-          uid: fgriffon1
-          kind: other
-        24:
-          port: eth1
-          kind: other
-          uid: fgrelon1
-    2:
-      naming_pattern: "%LINECARD:B%%PORT%"
-      snmp_pattern: "B%PORT%"
-      backplane_bps: 14400000000
-      model: J8708A
-      kind: switch
-      rate: 10000000000
-      ports:
-        1: sgriffon1
-        3: sgriffon3
-        4: sgriffon2
-    3:
-      naming_pattern: "%LINECARD:C%%PORT%"
-      snmp_pattern: "C%PORT%"
-      backplane_bps: 14400000000
-      model: J8708A
-      kind: switch
-      rate: 10000000000
-      ports:
-        1: sgraphene1
-        2: sgraphene2
-        4: sgraphene4
-    4:
-      naming_pattern: "%LINECARD:D%%PORT%"
-      snmp_pattern: "D%PORT%"
-      backplane_bps: 14400000000
-      model: J8708A
-      kind: switch
-      rate: 10000000000
-      ports:
-        1:
-          kind: other
-          uid: fgriffon1
-          port: eth2
-        2:
-          kind: other
-          uid: fgriffon2
-          port: eth2
-        3:
-          uid: sgrelon1
-        4:
-          uid: sgraphene3
-    5:
-      naming_pattern: "%LINECARD:E%%PORT%"
-      snmp_pattern: "E%PORT%"
-      backplane_bps: 14400000000
-      model: J8707A
-      kind: virtual
-      rate: 10000000000
-      ports:
-        4:
+        44:
+          uid: sbaie1-adm
+          kind: switch
+        45:
+          uid: sbaie2-adm
+          kind: switch
+        46:
+          uid: sgravillon1
+          kind: switch
+        48:
           uid: renater-nancy
           kind: virtual
-    6:
-      naming_pattern: "%LINECARD:F%%PORT%"
-      snmp_pattern: "F%PORT%"
-      backplane_bps: 14400000000
-      model: J9538A
+    2:
+      naming_pattern: "E%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      backplane_bps: 1280000000000
+      model: N9K-X9464PX
       kind: node
       rate: 10000000000
       ports:
-        1: graphite-1
-        2: graphite-2
-        3: graphite-3
-        4: graphite-4
+        1:
+          uid: grisou-1
+          kind: node
+        2:
+          uid: grisou-2
+          kind: node
+        3:
+          uid: grisou-3
+          kind: node
+        4:
+          uid: grisou-4
+          kind: node
         5:
-          uid: srv
-          kind: virtual
+          uid: grisou-5
+          kind: node
         6:
-          uid: srv
-          kind: virtual
-  channels:
-    naming_pattern: Po%CHANNELID%
-    snmp_pattern: Trk%CHANNELID%
-    "lacp1":
-        - linecard: 1
-          port: 22
-          port: 24
-    "lacp2":
-        - linecard: 1
-          port: 8
-          port: 9
-    "lacp3":
-        - linecard: 1
-          port: 11
-          port: 23
-    "lacp4":
-        - linecard: 1
-          port: 12
-          port: 17
+          uid: grisou-6
+          kind: node
+        7:
+          uid: grisou-7
+          kind: node
+        8:
+          uid: grisou-8
+          kind: node
+        9:
+          uid: grisou-9
+          kind: node
+        10:
+          uid: grisou-10
+          kind: node
+        11:
+          uid: grisou-11
+          kind: node
+        12:
+          uid: grisou-12
+          kind: node
+        13:
+          uid: grisou-13
+          kind: node
+        14:
+          uid: grisou-14
+          kind: node
+        15:
+          uid: grisou-15
+          kind: node
+        16:
+          uid: grisou-16
+          kind: node
+        17:
+          uid: grisou-17
+          kind: node
+        18:
+          uid: grisou-18
+          kind: node
+        19:
+          uid: grisou-19
+          kind: node
+        20:
+          uid: grisou-20
+          kind: node
+        21:
+          uid: grisou-21
+          kind: node
+        22:
+          uid: grisou-22
+          kind: node
+        23:
+          uid: grisou-23
+          kind: node
+        24:
+          uid: grisou-24
+          kind: node
+        25:
+          uid: grisou-25
+          kind: node
+        26:
+          uid: grisou-26
+          kind: node
+        27:
+          uid: grisou-27
+          kind: node
+        28:
+          uid: grisou-28
+          kind: node
+        29:
+          uid: grisou-29
+          kind: node
+        30:
+          uid: grisou-30
+          kind: node
+        31:
+          uid: grisou-31
+          kind: node
+        32:
+          uid: grisou-32
+          kind: node
+        33:
+          uid: grisou-33
+          kind: node
+        34:
+          uid: grisou-34
+          kind: node
+        35:
+          uid: grisou-35
+          kind: node
+        36:
+          uid: grisou-36
+          kind: node
+        37:
+          uid: grisou-37
+          kind: node
+        38:
+          uid: grisou-38
+          kind: node
+        39:
+          uid: grisou-39
+          kind: node
+        40:
+          uid: grisou-40
+          kind: node
+        41:
+          uid: grimoire-1
+          kind: node
+        42:
+          uid: grimoire-2
+          kind: node
+        43:
+          uid: grimoire-3
+          kind: node
+        44:
+          uid: grimoire-4
+          kind: node
+        45:
+          uid: grimoire-5
+          kind: node
+        46:
+          uid: grimoire-6
+          kind: node
+        47:
+          uid: grimoire-7
+          kind: node
+        48:
+          uid: grimoire-8
+          kind: node
+    3:
+      naming_pattern: "E%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      backplane_bps: 1280000000000
+      model: N9K-X9464PX
+      kind: node
+      rate: 10000000000
+      ports:
+        1:
+          uid: grisou-1
+          kind: node
+          port: eth1
+        2:
+          uid: grisou-2
+          kind: node
+          port: eth1
+        3:
+          uid: grisou-3
+          kind: node
+          port: eth1
+        4:
+          uid: grisou-4
+          kind: node
+          port: eth1
+        5:
+          uid: grisou-5
+          kind: node
+          port: eth1
+        6:
+          uid: grisou-6
+          kind: node
+          port: eth1
+        7:
+          uid: grisou-7
+          kind: node
+          port: eth1
+        8:
+          uid: grisou-8
+          kind: node
+          port: eth1
+        9:
+          uid: grisou-9
+          kind: node
+          port: eth1
+        10:
+          uid: grisou-10
+          kind: node
+          port: eth1
+        11:
+          uid: grisou-11
+          kind: node
+          port: eth1
+        12:
+          uid: grisou-12
+          kind: node
+          port: eth1
+        13:
+          uid: grisou-13
+          kind: node
+          port: eth1
+        14:
+          uid: grisou-14
+          kind: node
+          port: eth1
+        15:
+          uid: grisou-15
+          kind: node
+          port: eth1
+        16:
+          uid: grisou-16
+          kind: node
+          port: eth1
+        17:
+          uid: grisou-17
+          kind: node
+          port: eth1
+        18:
+          uid: grisou-18
+          kind: node
+          port: eth1
+        19:
+          uid: grisou-19
+          kind: node
+          port: eth1
+        20:
+          uid: grisou-20
+          kind: node
+          port: eth1
+        21:
+          uid: grisou-21
+          kind: node
+          port: eth1
+        22:
+          uid: grisou-22
+          kind: node
+          port: eth1
+        23:
+          uid: grisou-23
+          kind: node
+          port: eth1
+        24:
+          uid: grisou-24
+          kind: node
+          port: eth1
+        25:
+          uid: grisou-25
+          kind: node
+          port: eth1
+        26:
+          uid: grisou-26
+          kind: node
+          port: eth1
+        27:
+          uid: grisou-27
+          kind: node
+          port: eth1
+        28:
+          uid: grisou-28
+          kind: node
+          port: eth1
+        29:
+          uid: grisou-29
+          kind: node
+          port: eth1
+        30:
+          uid: grisou-30
+          kind: node
+          port: eth1
+        31:
+          uid: grisou-31
+          kind: node
+          port: eth1
+        32:
+          uid: grisou-32
+          kind: node
+          port: eth1
+        33:
+          uid: grisou-33
+          kind: node
+          port: eth1
+        34:
+          uid: grisou-34
+          kind: node
+          port: eth1
+        35:
+          uid: grisou-35
+          kind: node
+          port: eth1
+        36:
+          uid: grisou-36
+          kind: node
+          port: eth1
+        37:
+          uid: grisou-37
+          kind: node
+          port: eth1
+        38:
+          uid: grisou-38
+          kind: node
+          port: eth1
+        39:
+          uid: grisou-39
+          kind: node
+          port: eth1
+        40:
+          uid: grisou-40
+          kind: node
+          port: eth1
+        41:
+          uid: grimoire-1
+          kind: node
+          port: eth1
+        42:
+          uid: grimoire-2
+          kind: node
+          port: eth1
+        43:
+          uid: grimoire-3
+          kind: node
+          port: eth1
+        44:
+          uid: grimoire-4
+          kind: node
+          port: eth1
+        45:
+          uid: grimoire-5
+          kind: node
+          port: eth1
+        46:
+          uid: grimoire-6
+          kind: node
+          port: eth1
+        47:
+          uid: grimoire-7
+          kind: node
+          port: eth1
+        48:
+          uid: grimoire-8
+          kind: node
+          port: eth1
+    4:
+      naming_pattern: "E%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      backplane_bps: 1280000000000
+      model: N9K-X9464PX
+      kind: node
+      rate: 10000000000
+      ports:
+        1:
+          uid: grisou-1
+          kind: node
+          port: eth2
+        2:
+          uid: grisou-2
+          kind: node
+          port: eth2
+        3:
+          uid: grisou-3
+          kind: node
+          port: eth2
+        4:
+          uid: grisou-4
+          kind: node
+          port: eth2
+        5:
+          uid: grisou-5
+          kind: node
+          port: eth2
+        6:
+          uid: grisou-6
+          kind: node
+          port: eth2
+        7:
+          uid: grisou-7
+          kind: node
+          port: eth2
+        8:
+          uid: grisou-8
+          kind: node
+          port: eth2
+        9:
+          uid: grisou-9
+          kind: node
+          port: eth2
+        10:
+          uid: grisou-10
+          kind: node
+          port: eth2
+        11:
+          uid: grisou-11
+          kind: node
+          port: eth2
+        12:
+          uid: grisou-12
+          kind: node
+          port: eth2
+        13:
+          uid: grisou-13
+          kind: node
+          port: eth2
+        14:
+          uid: grisou-14
+          kind: node
+          port: eth2
+        15:
+          uid: grisou-15
+          kind: node
+          port: eth2
+        16:
+          uid: grisou-16
+          kind: node
+          port: eth2
+        17:
+          uid: grisou-17
+          kind: node
+          port: eth2
+        18:
+          uid: grisou-18
+          kind: node
+          port: eth2
+        19:
+          uid: grisou-19
+          kind: node
+          port: eth2
+        20:
+          uid: grisou-20
+          kind: node
+          port: eth2
+        21:
+          uid: grisou-21
+          kind: node
+          port: eth2
+        22:
+          uid: grisou-22
+          kind: node
+          port: eth2
+        23:
+          uid: grisou-23
+          kind: node
+          port: eth2
+        24:
+          uid: grisou-24
+          kind: node
+          port: eth2
+        25:
+          uid: grisou-25
+          kind: node
+          port: eth2
+        26:
+          uid: grisou-26
+          kind: node
+          port: eth2
+        27:
+          uid: grisou-27
+          kind: node
+          port: eth2
+        28:
+          uid: grisou-28
+          kind: node
+          port: eth2
+        29:
+          uid: grisou-29
+          kind: node
+          port: eth2
+        30:
+          uid: grisou-30
+          kind: node
+          port: eth2
+        31:
+          uid: grisou-31
+          kind: node
+          port: eth2
+        32:
+          uid: grisou-32
+          kind: node
+          port: eth2
+        33:
+          uid: grisou-33
+          kind: node
+          port: eth2
+        34:
+          uid: grisou-34
+          kind: node
+          port: eth2
+        35:
+          uid: grisou-35
+          kind: node
+          port: eth2
+        36:
+          uid: grisou-36
+          kind: node
+          port: eth2
+        37:
+          uid: grisou-37
+          kind: node
+          port: eth2
+        38:
+          uid: grisou-38
+          kind: node
+          port: eth2
+        39:
+          uid: grisou-39
+          kind: node
+          port: eth2
+        40:
+          uid: grisou-40
+          kind: node
+          port: eth2
+        41:
+          uid: grimoire-1
+          kind: node
+          port: eth2
+        42:
+          uid: grimoire-2
+          kind: node
+          port: eth2
+        43:
+          uid: grimoire-3
+          kind: node
+          port: eth2
+        44:
+          uid: grimoire-4
+          kind: node
+          port: eth2
+        45:
+          uid: grimoire-5
+          kind: node
+          port: eth2
+        46:
+          uid: grimoire-6
+          kind: node
+          port: eth2
+        47:
+          uid: grimoire-7
+          kind: node
+          port: eth2
+        48:
+          uid: grimoire-8
+          kind: node
+          port: eth2
+    5:
+      naming_pattern: "E%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      backplane_bps: 1280000000000
+      model: N9K-X9464PX
+      kind: node
+      rate: 10000000000
+      ports:
+        1:
+          uid: grisou-1
+          kind: node
+          port: eth3
+        2:
+          uid: grisou-2
+          kind: node
+          port: eth3
+        3:
+          uid: grisou-3
+          kind: node
+          port: eth3
+        4:
+          uid: grisou-4
+          kind: node
+          port: eth3
+        5:
+          uid: grisou-5
+          kind: node
+          port: eth3
+        6:
+          uid: grisou-6
+          kind: node
+          port: eth3
+        7:
+          uid: grisou-7
+          kind: node
+          port: eth3
+        8:
+          uid: grisou-8
+          kind: node
+          port: eth3
+        9:
+          uid: grisou-9
+          kind: node
+          port: eth3
+        10:
+          uid: grisou-10
+          kind: node
+          port: eth3
+        11:
+          uid: grisou-11
+          kind: node
+          port: eth3
+        12:
+          uid: grisou-12
+          kind: node
+          port: eth3
+        13:
+          uid: grisou-13
+          kind: node
+          port: eth3
+        14:
+          uid: grisou-14
+          kind: node
+          port: eth3
+        15:
+          uid: grisou-15
+          kind: node
+          port: eth3
+        16:
+          uid: grisou-16
+          kind: node
+          port: eth3
+        17:
+          uid: grisou-17
+          kind: node
+          port: eth3
+        18:
+          uid: grisou-18
+          kind: node
+          port: eth3
+        19:
+          uid: grisou-19
+          kind: node
+          port: eth3
+        20:
+          uid: grisou-20
+          kind: node
+          port: eth3
+        21:
+          uid: grisou-21
+          kind: node
+          port: eth3
+        22:
+          uid: grisou-22
+          kind: node
+          port: eth3
+        23:
+          uid: grisou-23
+          kind: node
+          port: eth3
+        24:
+          uid: grisou-24
+          kind: node
+          port: eth3
+        25:
+          uid: grisou-25
+          kind: node
+          port: eth3
+        26:
+          uid: grisou-26
+          kind: node
+          port: eth3
+        27:
+          uid: grisou-27
+          kind: node
+          port: eth3
+        28:
+          uid: grisou-28
+          kind: node
+          port: eth3
+        29:
+          uid: grisou-29
+          kind: node
+          port: eth3
+        30:
+          uid: grisou-30
+          kind: node
+          port: eth3
+        31:
+          uid: grisou-31
+          kind: node
+          port: eth3
+        32:
+          uid: grisou-32
+          kind: node
+          port: eth3
+        33:
+          uid: grisou-33
+          kind: node
+          port: eth3
+        34:
+          uid: grisou-34
+          kind: node
+          port: eth3
+        35:
+          uid: grisou-35
+          kind: node
+          port: eth3
+        36:
+          uid: grisou-36
+          kind: node
+          port: eth3
+        37:
+          uid: grisou-37
+          kind: node
+          port: eth3
+        38:
+          uid: grisou-38
+          kind: node
+          port: eth3
+        39:
+          uid: grisou-39
+          kind: node
+          port: eth3
+        40:
+          uid: grisou-40
+          kind: node
+          port: eth3
+        41:
+          uid: grimoire-1
+          kind: node
+          port: eth3
+        42:
+          uid: grimoire-2
+          kind: node
+          port: eth3
+        43:
+          uid: grimoire-3
+          kind: node
+          port: eth3
+        44:
+          uid: grimoire-4
+          kind: node
+          port: eth3
+        45:
+          uid: grimoire-5
+          kind: node
+          port: eth3
+        46:
+          uid: grimoire-6
+          kind: node
+          port: eth3
+        47:
+          uid: grimoire-7
+          kind: node
+          port: eth3
+        48:
+          uid: grimoire-8
+          kind: node
+          port: eth3

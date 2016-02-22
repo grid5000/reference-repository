@@ -26,7 +26,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": false
+    "wattmeter": "false"
   },
   "network_adapters": [
     {
@@ -104,7 +104,7 @@
       "driver": "ahci",
       "interface": "SATA",
       "model": "ST9250610NS",
-      "rev": "n/a",
+      "rev": "AA08",
       "size": 250059350016,
       "storage": "HDD",
       "vendor": "SEAGATE"
@@ -113,6 +113,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

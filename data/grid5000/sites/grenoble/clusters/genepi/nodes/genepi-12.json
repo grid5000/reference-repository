@@ -22,7 +22,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": false
+    "wattmeter": "false"
   },
   "network_adapters": [
     {
@@ -83,7 +83,7 @@
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 8000000000,
+      "rate": 10000000000,
       "vendor": "Mellanox",
       "version": "MT26418"
     },
@@ -131,7 +131,7 @@
       "driver": "ata_piix",
       "interface": "SATA",
       "model": "WDC WD1600YS-01S",
-      "rev": 20.0,
+      "rev": 6.0,
       "size": 164696555520,
       "storage": "HDD",
       "vendor": "Western Digital"
@@ -140,6 +140,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

@@ -36,7 +36,7 @@ site :nancy do |site_uid|
       ]
     end
   end
-  6.times do |i|
+  2.times do |i|
     pdu "griffon-pdu#{i+1}" do |pdu_uid|
       vendor "APC"
       model "AP7953"
@@ -55,17 +55,56 @@ site :nancy do |site_uid|
     end
   end
   2.times do |i|
-    pdu "mbi-pdu#{i+1}" do |pdu_uid|
+    pdu "graoully-pdu#{i+1}" do |pdu_uid|
       vendor "APC"
-      model "AP7953"
+      model "AP8653"
       sensors [
         {
           :power => {
-            :per_outlets => false,
+            :per_outlets => true,
             :snmp => {
               :available => true,
               :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
-              :unit => "W"
+              :unit => "W",
+              :outlet_prefix_oid => "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7"
+            }
+          }
+        }
+      ]
+    end
+  end
+  2.times do |i|
+    pdu "grimoire-pdu#{i+1}" do |pdu_uid|
+      vendor "APC"
+      model "AP8653"
+      sensors [
+        {
+          :power => {
+            :per_outlets => true,
+            :snmp => {
+              :available => true,
+              :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
+              :unit => "W",
+              :outlet_prefix_oid => "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7"
+            }
+          }
+        }
+      ]
+    end
+  end
+  2.times do |i|
+    pdu "grisou-pdu#{i+1}" do |pdu_uid|
+      vendor "APC"
+      model "AP8653"
+      sensors [
+        {
+          :power => {
+            :per_outlets => true,
+            :snmp => {
+              :available => true,
+              :total_oids => ["iso.3.6.1.4.1.318.1.1.12.1.16.0"],
+              :unit => "W",
+              :outlet_prefix_oid => "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7"
             }
           }
         }

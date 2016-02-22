@@ -22,7 +22,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": true
+    "wattmeter": "true"
   },
   "network_adapters": [
     {
@@ -119,12 +119,12 @@
       "available": true,
       "via": {
         "api": {
-          "metric": "pdu"
+          "metric": "power"
         },
         "pdu": [
           {
             "port": 15,
-            "uid": "stremi-pdu2.reims.grid5000.fr"
+            "uid": "stremi-pdu2"
           }
         ]
       }
@@ -145,6 +145,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "amd-v"
   },
   "type": "node",

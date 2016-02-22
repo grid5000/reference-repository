@@ -22,7 +22,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": true
+    "wattmeter": "outofband"
   },
   "network_adapters": [
     {
@@ -83,7 +83,7 @@
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 8000000000,
+      "rate": 10000000000,
       "vendor": "Mellanox",
       "version": "MT26428"
     },
@@ -155,6 +155,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "ivt"
   },
   "type": "node",

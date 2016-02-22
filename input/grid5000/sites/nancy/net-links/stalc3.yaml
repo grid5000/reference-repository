@@ -20,44 +20,120 @@ stalc3:
       kind: node
       rate: 1000000000
       ports:
-        2: talc-69
-        1: talc-68
-        3: talc-70
-        4: talc-71
-        5: talc-72
-        6: talc-73
-        7: talc-74
-        8: talc-75
-        9: talc-76
-        10: talc-77
-        11: talc-78
-        12: talc-79
-        13: talc-80
-        14: talc-81
-        15: talc-82
-        16: talc-83
-        17: talc-84
-        18: talc-85
-        19: talc-86
-        20: talc-87
-        25: talc-88
-        26: talc-89
-        27: talc-90
-        28: talc-91
-        29: talc-92
-        30: talc-93
-        31: talc-94
-        32: talc-95
-        33: talc-96
-        34: talc-97
-        35: talc-98
-        36: talc-99
-        37: talc-100
-        38: talc-101
-        39: talc-102
-        40: talc-103
-        41: talc-104
-        42: talc-133
+        2:
+          uid: talc-69
+          port: eth0
+        1:
+          uid: talc-68
+          port: eth0
+        3:
+          uid: talc-70
+          port: eth0
+        4:
+          uid: talc-71
+          port: eth0
+        5:
+          uid: talc-72
+          port: eth0
+        6:
+          uid: talc-73
+          port: eth0
+        7:
+          uid: talc-74
+          port: eth0
+        8:
+          uid: talc-75
+          port: eth0
+        9:
+          uid: talc-76
+          port: eth0
+        10:
+          uid: talc-77
+          port: eth0
+        11:
+          uid: talc-78
+          port: eth0
+        12:
+          uid: talc-79
+          port: eth0
+        13:
+          uid: talc-80
+          port: eth0
+        14:
+          uid: talc-81
+          port: eth0
+        15:
+          uid: talc-82
+          port: eth0
+        16:
+          uid: talc-83
+          port: eth0
+        17:
+          uid: talc-84
+          port: eth0
+        18:
+          uid: talc-85
+          port: eth0
+        19:
+          uid: talc-86
+          port: eth0
+        20:
+          uid: talc-87
+          port: eth0
+        25:
+          uid: talc-88
+          port: eth0
+        26:
+          uid: talc-89
+          port: eth0
+        27:
+          uid: talc-90
+          port: eth0
+        28:
+          uid: talc-91
+          port: eth0
+        29:
+          uid: talc-92
+          port: eth0
+        30:
+          uid: talc-93
+          port: eth0
+        31:
+          uid: talc-94
+          port: eth0
+        32:
+          uid: talc-95
+          port: eth0
+        33:
+          uid: talc-96
+          port: eth0
+        34:
+          uid: talc-97
+          port: eth0
+        35:
+          uid: talc-98
+          port: eth0
+        36:
+          uid: talc-99
+          port: eth0
+        37:
+          uid: talc-100
+          port: eth0
+        38:
+          uid: talc-101
+          port: eth0
+        39:
+          uid: talc-102
+          port: eth0
+        40:
+          uid: talc-103
+          port: eth0
+        41:
+          uid: talc-104
+          port: eth0
+        42:
+          uid: talc-133
+          port: eth0
     1:
       naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
@@ -65,6 +141,6 @@ stalc3:
       rate: 10000000000
       ports:
         1: stalc1
-        2: stalc4
+        2: stalc2
   channels:
     naming_pattern: Po%CHANNELID%
