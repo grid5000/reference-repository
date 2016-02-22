@@ -3,7 +3,7 @@ site :nancy do |site_uid|
   cluster :graoully do |cluster_uid|
     model "Dell PowerEdge R630"
     created_at Time.parse("2016-01-04").httpdate
-    kavlan false
+    kavlan true
     queues ['admin', 'testing']
 
     16.times do |i|
