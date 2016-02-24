@@ -4,7 +4,7 @@ site :nancy do |site_uid|
     model "Dell PowerEdge R630"
     created_at Time.parse("2016-01-04").httpdate
     kavlan true
-    queues ['admin', 'testing']
+    queues ['admin', 'production']
 
     16.times do |i|
       node "#{cluster_uid}-#{i+1}" do |node_uid|
@@ -17,9 +17,9 @@ site :nancy do |site_uid|
         supported_job_types({
           :deploy       => true,
           :besteffort   => true,
-          :max_walltime => 0,
+          :max_walltime => (31536000 if i >= 12) || (172800 if i >= 9) || (86400 if i >= 6) || (7200 if i >= 3) || (3600 if i >= 0),
           :virtual      => lookup(node_uid, node_uid, 'supported_job_types', 'virtual'),
-          :queues       => ['admin', 'testing']
+          :queues       => ['admin', 'production']
         })
 
         architecture({
