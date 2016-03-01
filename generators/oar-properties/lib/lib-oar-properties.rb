@@ -92,7 +92,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   end
   h['max_walltime'] = node['supported_job_types']['max_walltime'] || 0
   
-  h
+  return h
 end
   
 #
@@ -190,11 +190,42 @@ def oarcmd_set_node_properties(host, properties)
   
   return command
 end
+# '
 
-def oarcmd_get_nodelist_properties()
-  # Get the current OAR properties from the OAR scheduler
-  h = YAML.load_file('../../JG/nancy-oarnodes.yaml')
+# Get the OAR properties from the OAR scheduler
+# This is only needed for the -d option
+def oarcmd_get_nodelist_properties(site_uid, filename=nil)
+  oarnodes_yaml = ""
+
+  if filename and File.exist?(filename)
+    # Read oar properties from file
+    puts "Read 'oarnodes -Y' from #{filename}"
+    oarnodes_yaml = File.open(filename, 'rb') { |f| f.read }
+  else
+    # Download the oar properties from the oar server
+    puts "Downloading 'oarnodes -Y' from oar.#{site_uid}.g5kadmin ..."
+
+    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => ['~/.ssh/id_rsa_g5k', '~/.ssh/id_rsa_g5kadmin.pub']) do |ssh|
+      # capture all stderr and stdout output from a remote process
+      oarnodes_yaml = ssh.exec!('oarnodes -Y')
+      
+      #  puts output  
+    end
+    puts "... done"
+
+    if filename
+      # Cache the file
+      puts "Save 'oarnodes -Y' as #{filename}"
+      File.write(filename, oarnodes_yaml)
+    end
+  end
+
+  # Load the YAML file into an hashtable
+  h = YAML.load(oarnodes_yaml)
+
+  # Format convertion: use host as keys of the hash (instead of id)
   h = h.map {|k, v| v['type'] == 'default' ? [v['host'].split('.').first, v] : [nil, nil] }.to_h
+
   return h
 end
 
