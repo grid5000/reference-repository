@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+# Generator for the OAR properties
+
 require 'pp'
 require 'erb'
 require 'fileutils'
@@ -87,46 +89,70 @@ end.parse!
 
 pp options
 
-# Option
-site_uid = 'nancy'
-
-nodelist_properties = {}
+nodelist_properties = {} # ["ref"]  : properties from the reference-repo
+                         # ["oar"]  : properties from the OAR server
+                         # ["diff"] : diff between "ref" and "oar"
 
 #
-# Get the OAR properties from the reference-repo
+# Get the OAR properties from the reference-repo (["ref"])
 #
 
+nodelist_properties["ref"] = {}
 global_hash = load_yaml_file_hierarchy('../../input/grid5000/')
-nodelist_properties["ref"] = get_nodelist_properties(site_uid, global_hash["sites"][site_uid])
+options[:sites].each { |site_uid| 
+  nodelist_properties["ref"][site_uid] = get_nodelist_properties(site_uid, global_hash["sites"][site_uid]) 
+}
 
 #
-# Get the current OAR properties from the OAR scheduler
-# This is only needed for the -d option
+# Get the current OAR properties from the OAR scheduler (["oar"])
 #
 
 nodelist_properties["oar"] = {}
+options[:sites].each { |site_uid| 
+  nodelist_properties["oar"][site_uid] = {}
 
-if options[:diff]
-  filename = options[:diff].is_a?(String) ? options[:diff].gsub("%s", site_uid) : nil
-  nodelist_properties["oar"] = oarcmd_get_nodelist_properties(site_uid, filename)
-end
-
+  # This is only needed for the -d option  
+  if options[:diff]
+    filename = options[:diff].is_a?(String) ? options[:diff].gsub("%s", site_uid) : nil
+    nodelist_properties["oar"][site_uid] = oarcmd_get_nodelist_properties(site_uid, filename)
+  end
+}
 
 #
 # Diff
 #
 
-node_properties = {}
-node_properties["ref"] = nodelist_properties["ref"]["graphene-1"]
-node_properties["oar"] = nodelist_properties["oar"]["graphene-1"]
+nodelist_properties["to_be_updated"] = {}
 
-diff      = diff_node_properties(node_properties["ref"], node_properties["oar"])
-diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
+nodelist_properties["ref"].each { |site_uid, site_properties| 
+  
+  site_properties.sort_by { |item| item.to_s.split(/(\d+)/).map { |e| [e.to_i, e] } }.each { |node_uid, node_properties_ref|
+    cluster_uid = node_uid.split(/-/).first
 
-node_properties["to_be_updated"] = node_properties["ref"].select { |key, value| diff_keys.include?(key) }
+    if (! options[:clusters] || options[:clusters].include?(cluster_uid)) &&
+        (! options[:nodes] || options[:nodes].include?(node_uid))
+      
+      node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
+      
+      diff      = diff_node_properties(node_properties_ref, node_properties_oar)
+      diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
+
+      nodelist_properties["to_be_updated"][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
+      
+      if (options[:verbose])
+        #puts "#{node_uid}: #{diff}"
+        puts "#{node_uid}: #{diff_keys}"
+      end
+
+    end
+
+    }
+  
+}
+
 
 #
 # Example
 #
-puts oarcmd_set_node_properties("graphene-1", node_properties["oar"])
-puts oarcmd_set_node_properties("graphene-1", node_properties["to_be_updated"])
+#puts oarcmd_set_node_properties("graphene-1", node_properties["oar"])
+#puts oarcmd_set_node_properties("graphene-1", node_properties["to_be_updated"])
