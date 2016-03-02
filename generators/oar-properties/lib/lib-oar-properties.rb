@@ -84,13 +84,11 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
 
   h['cluster_priority'] = (cluster['priority'] || Time.parse(cluster['created_at'].to_s).strftime('%Y%m')).to_i
   
-  begin
-    h['production'] = node['supported_job_types']['queues'].include?('production') ? true : false
-  rescue
-    # Set as NO by default
-    h['production'] = 'NO'
-  end
-  h['max_walltime'] = node['supported_job_types']['max_walltime'] || 0
+  h['production'] = false # default
+  h['production'] = node['supported_job_types']['queues'].include?('production') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
+
+  h['max_walltime'] = 0 # default
+  h['max_walltime'] = node['supported_job_types']['max_walltime'] if node['supported_job_types'] && node['supported_job_types'].has_key?('max_walltime')
   
   return h
 end
@@ -140,6 +138,7 @@ def diff_node_properties(a, b)
                  "finaud_decision",
                  "grub",
                  "host", # TODO
+                 "jobs", # This property exists when a job is running
                  "last_available_upto",
                  "last_job_date",
                  "maintenance",
@@ -152,6 +151,7 @@ def diff_node_properties(a, b)
                  "scheduler_priority",
                  "state",
                  "state_num",
+                 "switch", # TODO
                  "subnet_address",
                  "subnet_prefix",
                  "suspended_jobs",
