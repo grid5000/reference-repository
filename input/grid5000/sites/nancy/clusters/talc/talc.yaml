@@ -11,6 +11,8 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      queues: 
+       - production
     main_memory:
       virtual_size: null
     operating_system:
@@ -43,6 +45,23 @@ nodes:
         version: M3296
     gpu:
       gpu: false
+
+# Walltime
+  talc-[1-27]:
+    supported_job_types:
+      max_walltime: 3600
+  talc-[28-60]:
+    supported_job_types:
+      max_walltime: 7200
+  talc-[61-74]:
+    supported_job_types:
+      max_walltime: 86400
+  talc-[75-93]:
+    supported_job_types:
+      max_walltime: 172800
+  talc-[94-]:
+    supported_job_types:
+      max_walltime: 31536000
 
 # Retired nodes
   talc-11:
