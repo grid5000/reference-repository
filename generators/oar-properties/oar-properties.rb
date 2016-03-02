@@ -17,7 +17,7 @@ require '../oar-properties/lib/lib-oar-properties'
 require '../lib/input_loader'
 
 options = {}
-options[:sites] = %w{grenoble lille luxembourg lyon nantes reims rennes sophia}
+options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
 options[:diff]  = false
 
 OptionParser.new do |opts|
@@ -33,6 +33,7 @@ OptionParser.new do |opts|
 
   opts.on('-s', '--sites a,b,c', Array, 'Select site(s)',
                                         "Default: "+options[:sites].join(", ")) do |s|
+    raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
     options[:sites] = s
   end
 
@@ -67,17 +68,14 @@ OptionParser.new do |opts|
     options[:diff] = d
   end
     
-#  opts.on("-n", "--dry-run", "Perform a trial run with no changes made") do |n|
-#    options[:dryrun] = n
-#  end
-
   ###
 
   opts.separator ""
   opts.separator "Common options:"
 
-  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
-    options[:verbose] = v
+  opts.on("-v", "--[no-]verbose", "Run verbosely", "Multiple -v options increase the verbosity. The maximum is 3.") do |v|
+    options[:verbose] ||= 0
+    options[:verbose] = options[:verbose] + 1
   end
   
   # Print an options summary.
@@ -87,7 +85,7 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-pp options
+puts "Options: #{options}" if options[:verbose]
 
 nodelist_properties = {} # ["ref"]  : properties from the reference-repo
                          # ["oar"]  : properties from the OAR server
@@ -121,6 +119,8 @@ options[:sites].each { |site_uid|
 #
 # Diff
 #
+header ||= false
+prev_diff = {}
 
 nodelist_properties["to_be_updated"] = {}
 
@@ -130,23 +130,48 @@ nodelist_properties["ref"].each { |site_uid, site_properties|
       
     node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
       
-    diff      = diff_node_properties(node_properties_ref, node_properties_oar)
+    diff      = diff_node_properties(node_properties_oar, node_properties_ref)
     diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
     
     nodelist_properties["to_be_updated"][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
     
-    if (options[:verbose])
-      #puts "#{node_uid}: #{diff}"
+    case options[:verbose]
+    when 1
       puts "#{node_uid}: #{diff_keys}"
+    when 2
+      # Give more details
+      # puts "#{node_uid}: #{diff}"
+      if !header
+        header=true
+        puts "Output format: ['~', 'key', 'old value', 'new value']"
+      end
+      if diff.size==0
+        puts "  #{node_uid}: OK"
+      elsif diff == prev_diff
+        puts "  #{node_uid}: as above"
+      else
+        puts "  #{node_uid}:"
+        diff.each { |d| puts "    #{d}" } 
+      end
+      prev_diff = diff
+    when 3
+      # Even more details
+      puts JSON.pretty_generate({node_uid => {"old values" => node_properties_oar, "new values" => node_properties_oar}})
     end
-    
   }
   
 }
 
+#
+# Output commands
+#
 
-#
-# Example
-#
-#puts oarcmd_set_node_properties("graphene-1", node_properties["oar"])
-#puts oarcmd_set_node_properties("graphene-1", node_properties["to_be_updated"])
+# nodelist_properties["ref"].each { |site_uid, site_properties| 
+  
+#   site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
+      
+#     puts oarcmd_set_node_properties("graphene-1", node_properties["oar"])
+#     puts oarcmd_set_node_properties("graphene-1", node_properties["to_be_updated"])
+
+#   }
+# }
