@@ -90,4 +90,23 @@ class ::Hash
     return array.reverse.inject(value) { |a, n| { n => a } }
   end
 
+  # Custom iterator. Same as "each" but it sorts keys by node_uid (ie. graphene-10 after graphene-9)
+  def each_sort_by_node_uid
+    self.sort_by { |item| item.to_s.split(/(\d+)/).map { |e| [e.to_i, e] } }.each { |key, value|
+      yield key, value
+    }
+  end
+
+  # Custom iterator. Only consider entries corresponding to cluster_list and node_list. Sorted by node_uid.
+  def each_filtered_node_uid(cluster_list, node_list)
+    self.each_sort_by_node_uid { |node_uid, properties| 
+      cluster_uid = node_uid.split(/-/).first
+      
+      if (! cluster_list || cluster_list.include?(cluster_uid)) &&
+          (! node_list || node_list.include?(node_uid))
+        yield node_uid, properties
+      end
+    }
+  end
+
 end

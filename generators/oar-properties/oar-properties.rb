@@ -126,27 +126,21 @@ nodelist_properties["to_be_updated"] = {}
 
 nodelist_properties["ref"].each { |site_uid, site_properties| 
   
-  site_properties.sort_by { |item| item.to_s.split(/(\d+)/).map { |e| [e.to_i, e] } }.each { |node_uid, node_properties_ref|
-    cluster_uid = node_uid.split(/-/).first
-
-    if (! options[:clusters] || options[:clusters].include?(cluster_uid)) &&
-        (! options[:nodes] || options[:nodes].include?(node_uid))
+  site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
       
-      node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
+    node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
       
-      diff      = diff_node_properties(node_properties_ref, node_properties_oar)
-      diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
-
-      nodelist_properties["to_be_updated"][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
-      
-      if (options[:verbose])
-        #puts "#{node_uid}: #{diff}"
-        puts "#{node_uid}: #{diff_keys}"
-      end
-
+    diff      = diff_node_properties(node_properties_ref, node_properties_oar)
+    diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
+    
+    nodelist_properties["to_be_updated"][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
+    
+    if (options[:verbose])
+      #puts "#{node_uid}: #{diff}"
+      puts "#{node_uid}: #{diff_keys}"
     end
-
-    }
+    
+  }
   
 }
 

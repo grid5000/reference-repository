@@ -36,7 +36,7 @@ global_hash["sites"].each { |site_uid, site_hash|
 
   site_hash.fetch("clusters").sort.each { |cluster_uid, cluster_hash|
 
-    cluster_hash.fetch('nodes').sort_by { |item| item.to_s.split(/(\d+)/).map { |e| [e.to_i, e] } }.each { |node_uid, node_hash|
+    cluster_hash.fetch('nodes').each_sort_by_node_uid { |node_uid, node_hash|
 
       network_interfaces = {}
       node_hash.fetch('network_interfaces').each { |net_uid, net_hash|

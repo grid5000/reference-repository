@@ -9,7 +9,7 @@
 %>
 group {
 <%
-    data.fetch('nodes').sort_by { |item| item.to_s.split(/(\d+)/).map { |e| [e.to_i, e] } }.each { |node_uid, node_hash| 
+    data.fetch('nodes').each_sort_by_node_uid { |node_uid, node_hash| 
       network_interface != 'bmc' ? node_uid_net = node_uid : node_uid_net = node_uid + '-bmc'
 
       # Get ip and mac addresses
