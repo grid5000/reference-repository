@@ -18,7 +18,7 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 274877906944,
+    "ram_size": 270582939648,
     "virtual_size": null
   },
   "mic": {
@@ -37,7 +37,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.68.2",
-      "ip6": "fe80::baca:3aff:fe69:1e88",
+      "ip6": null,
       "mac": "b8:ca:3a:69:1e:88",
       "management": false,
       "mountable": true,
@@ -89,11 +89,33 @@
       "management": false,
       "mountable": false,
       "mounted": false,
-      "rate": 1000000000,
+      "rate": null,
       "switch": null,
       "switch_port": null,
       "vendor": "intel",
       "version": "I350"
+    },
+    {
+      "bridged": true,
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f2:11",
+      "hwid": null,
+      "ib_switch_card": null,
+      "ib_switch_card_pos": null,
+      "interface": "InfiniBand",
+      "ip": "172.16.68.10",
+      "ip6": null,
+      "mac": null,
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "graphite-2-ib0.nancy.grid5000.fr",
+      "rate": 56000000000,
+      "switch": "sgraoullyib",
+      "vendor": "Mellanox",
+      "version": "MT4099"
     },
     {
       "device": "bmc",
