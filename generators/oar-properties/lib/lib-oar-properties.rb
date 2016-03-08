@@ -158,8 +158,6 @@ def diff_node_properties(a, b)
                  "thread",
                  "type", # TODO
                  "vlan",
-                 "ib56g", # TODO
-                 "ib56gmodel", # TODO
                  "wattmeter" # TODO
                 ]
   
