@@ -175,7 +175,8 @@ end
 #end
 
 def oarcmd_set_node_properties(host, properties)
-  return "# #{host}: OK" if properties.size == 0
+  #return "# #{host}: OK" if properties.size == 0
+  return "" if properties.size == 0
 
   # command = "# #{host}:\n"
   # command += "#{ENV["SUDO"]} oarnodesetting -h #{host} -p "
@@ -206,12 +207,10 @@ def oarcmd_get_nodelist_properties(site_uid, filename=nil)
     # Download the oar properties from the oar server
     puts "Downloading 'oarnodes -Y' from oar.#{site_uid}.g5kadmin ..."
 
-    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => ['~/.ssh/id_rsa_g5k', '~/.ssh/id_rsa_g5kadmin.pub']) do |ssh|
+    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => ['~/.ssh/id_rsa_g5kadmin.pub']) { |ssh|
       # capture all stderr and stdout output from a remote process
       oarnodes_yaml = ssh.exec!('oarnodes -Y')
-      
-      #  puts output  
-    end
+    }
     puts "... done"
 
     if filename

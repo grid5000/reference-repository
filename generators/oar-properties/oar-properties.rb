@@ -119,59 +119,88 @@ options[:sites].each { |site_uid|
 #
 # Diff
 #
-header ||= false
-prev_diff = {}
-
-nodelist_properties["to_be_updated"] = {}
-
-nodelist_properties["ref"].each { |site_uid, site_properties| 
+if options[:diff]
+  header ||= false
+  prev_diff = {}
   
-  site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
+  nodelist_properties["diff"] = {}
+  
+  nodelist_properties["ref"].each { |site_uid, site_properties| 
+    nodelist_properties["diff"][site_uid] = {}
+
+    site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
       
-    node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
+      node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
       
-    diff      = diff_node_properties(node_properties_oar, node_properties_ref)
-    diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
-    
-    nodelist_properties["to_be_updated"][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
-    
-    case options[:verbose]
-    when 1
-      puts "#{node_uid}: #{diff_keys}"
-    when 2
-      # Give more details
-      # puts "#{node_uid}: #{diff}"
-      if !header
-        header=true
-        puts "Output format: ['~', 'key', 'old value', 'new value']"
+      diff      = diff_node_properties(node_properties_oar, node_properties_ref)
+      diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
+      
+      nodelist_properties["diff"][site_uid][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
+      
+      case options[:verbose]
+      when 1
+        puts "#{node_uid}: #{diff_keys}"
+      when 2
+        # Give more details
+        # puts "#{node_uid}: #{diff}"
+        if !header
+          header=true
+          puts "Output format: ['~', 'key', 'old value', 'new value']"
+        end
+        if diff.size==0
+          puts "  #{node_uid}: OK"
+        elsif diff == prev_diff
+          puts "  #{node_uid}: same as above"
+        else
+          puts "  #{node_uid}:"
+          diff.each { |d| puts "    #{d}" } 
+        end
+        prev_diff = diff
+      when 3
+        # Even more details
+        puts JSON.pretty_generate({node_uid => {"old values" => node_properties_oar, "new values" => node_properties_ref}})
       end
-      if diff.size==0
-        puts "  #{node_uid}: OK"
-      elsif diff == prev_diff
-        puts "  #{node_uid}: as above"
-      else
-        puts "  #{node_uid}:"
-        diff.each { |d| puts "    #{d}" } 
-      end
-      prev_diff = diff
-    when 3
-      # Even more details
-      puts JSON.pretty_generate({node_uid => {"old values" => node_properties_oar, "new values" => node_properties_oar}})
-    end
+    }
+    
   }
-  
-}
+end # if options[:diff]
 
 #
 # Output commands
 #
+if options[:output]
+  opt = options[:diff] ? 'diff' : 'ref'
+  nodelist_properties[opt].each { |site_uid, site_properties| 
+    
+    options[:output] ? o = File.open(options[:output].gsub("%s", site_uid),'w') : o = $stdout.dup
+    
+    site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
+      o.write(oarcmd_set_node_properties(node_uid, node_properties) + "\n")
+    }
+    
+    o.close
+    
+  }
+end
 
-# nodelist_properties["ref"].each { |site_uid, site_properties| 
-  
-#   site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
-      
-#     puts oarcmd_set_node_properties("graphene-1", node_properties["oar"])
-#     puts oarcmd_set_node_properties("graphene-1", node_properties["to_be_updated"])
-
-#   }
-# }
+#
+# Execute commands
+#
+if options[:exec]
+  opt = options[:diff] ? 'diff' : 'ref'
+  nodelist_properties[opt].each { |site_uid, site_properties| 
+    
+    puts "Connecting #{site_uid} ..."
+    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => ['~/.ssh/id_rsa_g5kadmin.pub']) { |ssh|
+    
+      site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
+        cmd = oarcmd_set_node_properties(node_uid, node_properties)
+        if cmd.size>0
+          puts "#{cmd}" if options[:verbose]
+          ssh_output = ssh.exec!('echo ' + cmd) 
+          puts "#{ssh_output}" if options[:verbose]
+        end
+      }
+    }
+  }
+end
