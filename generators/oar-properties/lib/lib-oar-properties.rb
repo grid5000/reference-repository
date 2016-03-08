@@ -177,8 +177,9 @@ end
 def oarcmd_set_node_properties(host, properties)
   return "# #{host}: OK" if properties.size == 0
 
-  command = "# #{host}:\n"
-  command += "#{ENV["SUDO"]} oarnodesetting -h #{host} -p "
+  # command = "# #{host}:\n"
+  # command += "#{ENV["SUDO"]} oarnodesetting -h #{host} -p "
+  command = "oarnodesetting -h #{host} -p "
 
   command +=
     properties.to_a.map{ |(k,v)|

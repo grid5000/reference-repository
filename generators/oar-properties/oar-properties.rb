@@ -50,7 +50,7 @@ OptionParser.new do |opts|
   opts.separator ""
   opts.separator "Output options:"
 
-  opts.on('-o', '--output', 'Output oarnodesetting command into a file. Default: stdout') do |o|
+  opts.on('-o FILE', '--output=FILE', 'Output oarnodesetting command into a file. Default: stdout') do |o|
     options[:output] = o
   end
 
