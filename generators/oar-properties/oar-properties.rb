@@ -51,7 +51,8 @@ OptionParser.new do |opts|
   opts.separator ""
   opts.separator "Output options:"
 
-  opts.on('-o FILE', '--output=FILE', 'Output oarnodesetting command into a file. Default: stdout') do |o|
+  opts.on('-o', '--output [FILE]', 'Output oarnodesetting commands to a file. Default FILE is stdout.') do |o|
+    o = true if o == nil
     options[:output] = o
   end
 
@@ -110,16 +111,15 @@ options[:sites].each { |site_uid|
 # Get the current OAR properties from the OAR scheduler (["oar"])
 #
 
-nodelist_properties["oar"] = {}
-options[:sites].each { |site_uid| 
-  nodelist_properties["oar"][site_uid] = {}
-
-  # This is only needed for the -d option  
-  if options[:diff]
+# This is only needed for the -d option  
+if options[:diff]
+  nodelist_properties["oar"] = {}
+  options[:sites].each { |site_uid| 
+    nodelist_properties["oar"][site_uid] = {}
     filename = options[:diff].is_a?(String) ? options[:diff].gsub("%s", site_uid) : nil
     nodelist_properties["oar"][site_uid] = oarcmd_get_nodelist_properties(site_uid, filename, options[:sshkeys])
-  end
-}
+  }
+end
 
 #
 # Diff
@@ -177,7 +177,7 @@ if options[:output]
   opt = options[:diff] ? 'diff' : 'ref'
   nodelist_properties[opt].each { |site_uid, site_properties| 
     
-    options[:output] ? o = File.open(options[:output].gsub("%s", site_uid),'w') : o = $stdout.dup
+    options[:output].is_a?(String) ? o = File.open(options[:output].gsub("%s", site_uid),'w') : o = $stdout.dup
     
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
       o.write(oarcmd_set_node_properties(node_uid, node_properties) + "\n")
