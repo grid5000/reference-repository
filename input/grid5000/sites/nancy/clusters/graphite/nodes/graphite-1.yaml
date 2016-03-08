@@ -2,82 +2,91 @@
 graphite-1:
   architecture:
     smp_size: 2
-    platform_type: x86_64
     smt_size: 16
-  block_devices:
-    sda:
-      device: sda
-      model: INTEL SSDSC2BB30
-      size: 300069052416
-      rev: DL10
-    sdb:
-      device: sdb
-      model: INTEL SSDSC2BB30
-      size: 300069052416
-      rev: DL10
+    platform_type: x86_64
   bios:
-    release_date: 01/28/2015
     vendor: Dell Inc.
     version: 2.5
-  supported_job_types:
-    virtual: ivt
-  processor:
-    cache_l3: 20971520
-    cache_l2: 262144
-    instruction_set: x86-64
-    model: Intel Xeon
-    clock_speed: 2800000000
-    other_description: Intel(R) Xeon(R) CPU E5-2650 0 @ 2.00GHz
-    vendor: Intel
-    cache_l1d: 32768
-    cache_l1i: 32768
-    version: E5-2650
-  main_memory:
-    ram_size: 274877906944
-  network_interfaces:
-    eth1:
-      management: false
-      mounted: false
-      mac: b8:ca:3a:69:12:6a
-      driver: ixgbe
-      enabled: false
-      mountable: false
-      interface: Ethernet
-    eth3:
-      management: false
-      mounted: false
-      mac: b8:ca:3a:69:12:6d
-      driver: igb
-      enabled: true
-      mountable: true
-      interface: Ethernet
-    eth2:
-      management: false
-      mounted: false
-      mac: b8:ca:3a:69:12:6c
-      driver: igb
-      enabled: true
-      mountable: true
-      interface: Ethernet
-    eth0:
-      management: false
-      mounted: true
-      ip: 172.16.68.1
-      ip6: fe80::baca:3aff:fe69:1268
-      mac: b8:ca:3a:69:12:68
-      driver: ixgbe
-      enabled: true
-      mountable: true
-      rate: 10000000000
-      interface: Ethernet
-    bmc:
-      ip: 172.17.68.1
-      mac: f0:1f:af:e1:9a:0c
-  operating_system:
-    kernel: 3.16.0-4-amd64
-    name: debian
-    version: 8.2
+    release_date: 01/28/2015
   chassis:
     serial_number: 27Q7NZ1
     manufacturer: Dell Inc.
     product_name: PowerEdge R720
+  block_devices:
+    sda:
+      device: sda
+      size: 300069052416
+      model: INTEL SSDSC2BB30
+      rev: DL10
+      timeread: 959
+      timewrite: 2205
+    sdb:
+      device: sdb
+      size: 300069052416
+      model: INTEL SSDSC2BB30
+      rev: DL10
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 270582939648
+  network_interfaces:
+    eth2:
+      interface: Ethernet
+      driver: igb
+      mac: b8:ca:3a:69:12:6c
+      mounted: false
+      management: false
+      mountable: false
+      enabled: false
+    eth0:
+      interface: Ethernet
+      ip: 172.16.68.1
+      driver: ixgbe
+      mac: b8:ca:3a:69:12:68
+      rate: 10000000000
+      mounted: true
+      management: false
+      mountable: true
+      enabled: true
+    eth3:
+      interface: Ethernet
+      driver: igb
+      mac: b8:ca:3a:69:12:6d
+      mounted: false
+      management: false
+      mountable: false
+      enabled: false
+    eth1:
+      interface: Ethernet
+      driver: ixgbe
+      mac: b8:ca:3a:69:12:6a
+      mounted: false
+      management: false
+      mountable: false
+      enabled: false
+    ib0:
+      interface: InfiniBand
+      driver: mlx4_core
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f2:d1
+      rate: 56000000000
+      version: MT4099
+      mounted: true
+      management: false
+    bmc:
+      ip: 172.17.68.1
+      mac: f0:1f:af:e1:9a:0c
+  operating_system:
+    name: debian
+    kernel: 3.16.0-4-amd64
+    version: 8.2
+  processor:
+    clock_speed: 2800000000
+    instruction_set: x86-64
+    model: Intel Xeon
+    version: E5-2650
+    vendor: Intel
+    other_description: Intel(R) Xeon(R) CPU E5-2650 0 @ 2.00GHz
+    cache_l1i: 32768
+    cache_l1d: 32768
+    cache_l2: 262144
+    cache_l3: 20971520
