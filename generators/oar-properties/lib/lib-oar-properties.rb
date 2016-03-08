@@ -78,7 +78,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
 
   node['monitoring'] ||= {}
 
-  h['wattmeter'] = case node['monitoring']['wattmeter'] when true; 'YES'; when false; 'NO' when nil; 'NO'; else node['monitoring']['wattmeter'].upcase end
+  h['wattmeter'] = case node['monitoring']['wattmeter'] when true; true; when false; false when nil; false; else node['monitoring']['wattmeter'].upcase end
 
   # h['rconsole'] = node['monitoring']['rconsole']
 
