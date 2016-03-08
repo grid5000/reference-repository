@@ -19,6 +19,7 @@ require '../lib/input_loader'
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
 options[:diff]  = false
+options[:sshkeys]  = []
 
 OptionParser.new do |opts|
   opts.banner = "Usage: oar-properties.rb [options]"
@@ -56,6 +57,10 @@ OptionParser.new do |opts|
 
   opts.on('-e', '--exec', 'Directly apply the changes to the OAR server') do |e|
     options[:exec] = e
+  end
+
+  opts.on('-k', '--ssh-keys k1,k2,k3', Array, 'SSH keys') do |k|
+    options[:sshkeys] = k
   end
   
   opts.on("-d", "--diff [YAML filename]", 
@@ -112,7 +117,7 @@ options[:sites].each { |site_uid|
   # This is only needed for the -d option  
   if options[:diff]
     filename = options[:diff].is_a?(String) ? options[:diff].gsub("%s", site_uid) : nil
-    nodelist_properties["oar"][site_uid] = oarcmd_get_nodelist_properties(site_uid, filename)
+    nodelist_properties["oar"][site_uid] = oarcmd_get_nodelist_properties(site_uid, filename, options[:sshkeys])
   end
 }
 
@@ -191,7 +196,7 @@ if options[:exec]
   nodelist_properties[opt].each { |site_uid, site_properties| 
     
     puts "Connecting #{site_uid} ..."
-    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => ['~/.ssh/id_rsa_g5kadmin.pub']) { |ssh|
+    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => options[:sshkeys]) { |ssh|
     
       site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
         cmd = oarcmd_set_node_properties(node_uid, node_properties)

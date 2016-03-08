@@ -196,7 +196,7 @@ end
 
 # Get the OAR properties from the OAR scheduler
 # This is only needed for the -d option
-def oarcmd_get_nodelist_properties(site_uid, filename=nil)
+def oarcmd_get_nodelist_properties(site_uid, filename=nil, sshkeys=[])
   oarnodes_yaml = ""
 
   if filename and File.exist?(filename)
@@ -207,7 +207,7 @@ def oarcmd_get_nodelist_properties(site_uid, filename=nil)
     # Download the oar properties from the oar server
     puts "Downloading 'oarnodes -Y' from oar.#{site_uid}.g5kadmin ..."
 
-    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => ['~/.ssh/id_rsa_g5kadmin.pub']) { |ssh|
+    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => sshkeys) { |ssh|
       # capture all stderr and stdout output from a remote process
       oarnodes_yaml = ssh.exec!('oarnodes -Y')
     }
