@@ -43,27 +43,27 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   eth10g               = node['network_interfaces'].values.select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mountable'] == true}
   h['eth10g']          = eth10g.detect{|na| na['rate'] == 10_000_000_000}.nil? ? false : true
 
-  ib10g                = node['network_interfaces'].values.detect{|na| na['interface'] =~ /infiniband/i && na['rate'] == 10_000_000_000}
+  ib10g                = node['network_interfaces'].values.detect{|na| na['interface'] =~ /infiniband/i && na['mountable'] == true && na['rate'] == 10_000_000_000}
   h['ib10g']           = ib10g ? true : false
   h['ib10gmodel']      = ib10g ? ib10g['version'] : 'none'
 
-  ib20g                = node['network_interfaces'].values.detect{|na| na['interface'] =~ /infiniband/i && na['rate'] == 20_000_000_000}
+  ib20g                = node['network_interfaces'].values.detect{|na| na['interface'] =~ /infiniband/i && na['mountable'] == true && na['rate'] == 20_000_000_000}
   h['ib20g']           = ib20g ? true : false
   h['ib20gmodel']      = ib20g ? ib20g['version'] : 'none'
 
-  ib40g                = node['network_interfaces'].values.detect{|na| na['interface'] =~ /infiniband/i && na['rate'] == 40_000_000_000}
+  ib40g                = node['network_interfaces'].values.detect{|na| na['interface'] =~ /infiniband/i && na['mountable'] == true && na['rate'] == 40_000_000_000}
   h['ib40g']           = ib40g ? true : false
   h['ib40gmodel']      = ib40g ? ib40g['version'] : 'none'
 
-  ib56g                = node['network_interfaces'].values.detect{|na| na['interface'] =~ /infiniband/i && na['rate'] == 56_000_000_000}
+  ib56g                = node['network_interfaces'].values.detect{|na| na['interface'] =~ /infiniband/i && na['mountable'] == true && na['rate'] == 56_000_000_000}
   h['ib56g']           = ib56g ? true : false
   h['ib56gmodel']      = ib56g ? ib56g['version'] : 'none'
 
-  myri10g              = node['network_interfaces'].values.detect{|na| na['interface'] =~ /myri/i && na['rate'] == 10_000_000_000}
+  myri10g              = node['network_interfaces'].values.detect{|na| na['interface'] =~ /myri/i && na['mountable'] == true && na['rate'] == 10_000_000_000}
   h['myri10g']         = myri10g ? true : false
   h['myri10gmodel']    = myri10g ? myri10g['version'] : 'none'
 
-  myri2g               = node['network_interfaces'].values.detect{|na| na['interface'] =~ /myri/i && na['rate'] == 2_000_000_000}
+  myri2g               = node['network_interfaces'].values.detect{|na| na['interface'] =~ /myri/i && na['mountable'] == true && na['rate'] == 2_000_000_000}
   h['myri2g']          = myri2g ? true : false
   h['myri2gmodel']     = myri2g ? myri2g['version'] : 'none'
 

@@ -178,9 +178,9 @@ if options[:output]
   nodelist_properties[opt].each { |site_uid, site_properties| 
     
     options[:output].is_a?(String) ? o = File.open(options[:output].gsub("%s", site_uid),'w') : o = $stdout.dup
-    
+
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
-      o.write(oarcmd_set_node_properties(node_uid, node_properties) + "\n")
+      o.write(oarcmd_set_node_properties(node_uid + "." + site_uid + ".grid5000.fr", node_properties) + "\n")
     }
     
     o.close
@@ -192,6 +192,10 @@ end
 # Execute commands
 #
 if options[:exec]
+  printf "Apply changes to the OAR servers ? (y/n)"
+  prompt = STDIN.gets.chomp
+  exit unless prompt == 'y'
+
   opt = options[:diff] ? 'diff' : 'ref'
   nodelist_properties[opt].each { |site_uid, site_properties| 
     
@@ -199,11 +203,11 @@ if options[:exec]
     Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => options[:sshkeys]) { |ssh|
     
       site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
-        cmd = oarcmd_set_node_properties(node_uid, node_properties)
+        cmd = oarcmd_set_node_properties(node_uid + "." + site_uid + ".grid5000.fr", node_properties)
         if cmd.size>0
           puts "#{cmd}" if options[:verbose]
-          ssh_output = ssh.exec!('echo ' + cmd) 
-          puts "#{ssh_output}" if options[:verbose]
+          ssh_output = ssh.exec!('sudo ' + cmd) 
+          puts "#{ssh_output}\n" if options[:verbose]
         end
       }
     }
