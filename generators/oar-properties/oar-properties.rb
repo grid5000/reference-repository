@@ -18,8 +18,6 @@ require '../lib/input_loader'
 
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
-options[:diff]  = false
-options[:sshkeys]  = []
 
 OptionParser.new do |opts|
   opts.banner = "Usage: oar-properties.rb [options]"
@@ -60,10 +58,23 @@ OptionParser.new do |opts|
     options[:exec] = e
   end
 
-  opts.on('-k', '--ssh-keys k1,k2,k3', Array, 'SSH keys') do |k|
-    options[:sshkeys] = k
+  opts.on('--ssh-keys k1,k2,k3', Array, 'SSH keys') do |k|
+    options[:ssh] ||= {}
+    options[:ssh][:params] ||= {}
+    options[:ssh][:params][:keys] ||= []
+    options[:ssh][:params][:keys] << k
   end
   
+  opts.on('--vagrant', 'This option modifies the SSH parameters to use a vagrant box instead of Grid5000 servers.') do |v|
+    options[:ssh] ||= {}
+    options[:ssh][:host] = '127.0.0.1' unless options[:ssh][:host]
+    options[:ssh][:user] = 'vagrant'   unless options[:ssh][:user]
+    options[:ssh][:params] ||= {}
+    options[:ssh][:params][:keys] ||= []
+    options[:ssh][:params][:keys] << '~/.vagrant.d/insecure_private_key'
+    options[:ssh][:params][:port] = 2222 unless options[:ssh][:params][:port]
+  end
+
   opts.on("-d", "--diff [YAML filename]", 
           "Only generates the minimal list of commands needed to update the site configuration",
           "The optional YAML file is suppose to be the output of the 'oarnodes -Y' command.",
@@ -73,7 +84,7 @@ OptionParser.new do |opts|
     d = true if d == nil
     options[:diff] = d
   end
-    
+  
   ###
 
   opts.separator ""
@@ -90,6 +101,11 @@ OptionParser.new do |opts|
     exit
   end
 end.parse!
+
+options[:ssh] ||= {}
+options[:ssh][:host] = 'oar.%s.g5kadmin' unless options[:ssh][:host]
+options[:ssh][:user] = 'g5kadmin'        unless options[:ssh][:user]
+options[:diff] = false unless options[:diff]
 
 puts "Options: #{options}" if options[:verbose]
 
@@ -117,15 +133,15 @@ if options[:diff]
   options[:sites].each { |site_uid| 
     nodelist_properties["oar"][site_uid] = {}
     filename = options[:diff].is_a?(String) ? options[:diff].gsub("%s", site_uid) : nil
-    nodelist_properties["oar"][site_uid] = oarcmd_get_nodelist_properties(site_uid, filename, options[:sshkeys])
+    nodelist_properties["oar"][site_uid] = oarcmd_get_nodelist_properties(site_uid, filename, options)
   }
 end
 
 #
-# Diff
+# Diff (-d option)
 #
 if options[:diff]
-  header ||= false
+  header = false
   prev_diff = {}
   
   nodelist_properties["diff"] = {}
@@ -136,33 +152,36 @@ if options[:diff]
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
       
       node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
-      
+
       diff      = diff_node_properties(node_properties_oar, node_properties_ref)
       diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
       
       nodelist_properties["diff"][site_uid][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
-      
+
+      info = (nodelist_properties["oar"][site_uid][node_uid] == nil ? " new node !" : "")      
       case options[:verbose]
       when 1
+        puts "#{node_uid}:#{info}" if info != ""
         puts "#{node_uid}: #{diff_keys}"
       when 2
         # Give more details
         # puts "#{node_uid}: #{diff}"
         if !header
-          header=true
+          header = true
           puts "Output format: ['~', 'key', 'old value', 'new value']"
         end
         if diff.size==0
-          puts "  #{node_uid}: OK"
+          puts "  #{node_uid}: OK#{info}"
         elsif diff == prev_diff
-          puts "  #{node_uid}: same as above"
+          puts "  #{node_uid}:#{info} same modifications as above"
         else
-          puts "  #{node_uid}:"
+          puts "  #{node_uid}:#{info}"
           diff.each { |d| puts "    #{d}" } 
         end
         prev_diff = diff
       when 3
         # Even more details
+        puts "#{node_uid}:#{info}" if info != ""
         puts JSON.pretty_generate({node_uid => {"old values" => node_properties_oar, "new values" => node_properties_ref}})
       end
     }
@@ -171,45 +190,55 @@ if options[:diff]
 end # if options[:diff]
 
 #
-# Output commands
+# Build and execute commands
 #
-if options[:output]
+if options[:output] || options[:exec]
   opt = options[:diff] ? 'diff' : 'ref'
   nodelist_properties[opt].each { |site_uid, site_properties| 
     
+    # Init
     options[:output].is_a?(String) ? o = File.open(options[:output].gsub("%s", site_uid),'w') : o = $stdout.dup
+    ssh_cmd = []
 
+    create_node_header = false
+    cmd = []
+    cmd << oarcmd_script_header()
+
+    #
+    # Build and output commands
+    #
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
-      o.write(oarcmd_set_node_properties(node_uid + "." + site_uid + ".grid5000.fr", node_properties) + "\n")
+      # Create new nodes
+      if (opt == 'ref' || nodelist_properties['oar'][site_uid][node_uid] == nil)
+        if !create_node_header
+          create_node_header = true
+          cmd << oarcmd_create_node_header()
+        end
+
+        cluster_uid = node_uid.split('-')[0]
+        node_hash = global_hash['sites'][site_uid]['clusters'][cluster_uid]['nodes'][node_uid]
+        cmd << oarcmd_create_node(node_uid + '.' + site_uid + '.grid5000.fr', node_properties, node_hash) + "\n"
+      end
+
+      # Update properties
+      cmd << oarcmd_set_node_properties(node_uid + '.' + site_uid + '.grid5000.fr', node_properties) + "\n"
+
+      cmd << "echo '================================================================================'\n\n"
+      ssh_cmd += cmd        if options[:exec]
+      o.write(cmd.join('')) if options[:output]
+      cmd = []
     }
     
     o.close
     
-  }
-end
+    #
+    # Execute commands
+    #
+    if options[:exec]
+      printf "Apply changes to the OAR server " + options[:ssh][:host].gsub("%s", site_uid) + " ? (y/N) "
+      prompt = STDIN.gets.chomp
+      ssh_exec(site_uid, ssh_cmd, options) if prompt == 'y'
+    end
+  } # site loop
+end # if options[:output] || options[:exec]
 
-#
-# Execute commands
-#
-if options[:exec]
-  printf "Apply changes to the OAR servers ? (y/n)"
-  prompt = STDIN.gets.chomp
-  exit unless prompt == 'y'
-
-  opt = options[:diff] ? 'diff' : 'ref'
-  nodelist_properties[opt].each { |site_uid, site_properties| 
-    
-    puts "Connecting #{site_uid} ..."
-    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => options[:sshkeys]) { |ssh|
-    
-      site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
-        cmd = oarcmd_set_node_properties(node_uid + "." + site_uid + ".grid5000.fr", node_properties)
-        if cmd.size>0
-          puts "#{cmd}" if options[:verbose]
-          ssh_output = ssh.exec!('sudo ' + cmd) 
-          puts "#{ssh_output}\n" if options[:verbose]
-        end
-      }
-    }
-  }
-end

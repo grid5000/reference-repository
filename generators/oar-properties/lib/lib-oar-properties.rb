@@ -14,6 +14,7 @@ class MissingProperty <  StandardError; end
 MiB = 1024**2
 
 # Get node properties from the reference repo hash
+# See also: https://www.grid5000.fr/mediawiki/index.php/Reference_Repository
 def get_node_properties(cluster_uid, cluster, node_uid, node)
   h = {} # ouput
 
@@ -117,6 +118,32 @@ def get_nodelist_properties(site_uid, site)
 end
 
 def diff_node_properties(a, b)
+  a ||= {}
+  b ||= {}
+
+  # default OAR at resource creation:
+  #  available_upto: '2147483647'
+  #  besteffort: 'YES'
+  #  core: ~
+  #  cpu: ~
+  #  cpuset: 0
+  #  deploy: 'NO'
+  #  desktop_computing: 'NO'
+  #  drain: 'NO'
+  #  expiry_date: 0
+  #  finaud_decision: 'YES'
+  #  host: ~
+  #  last_available_upto: 0
+  #  last_job_date: 0
+  #  network_address: server
+  #  next_finaud_decision: 'NO'
+  #  next_state: UnChanged
+  #  resource_id: 9
+  #  scheduler_priority: 0
+  #  state: Suspected
+  #  state_num: 3
+  #  suspended_jobs: 'NO'
+  #  type: default
 
   ignore_keys = [
                  "slash_16",
@@ -168,17 +195,47 @@ def diff_node_properties(a, b)
 
 end
 
-#def cmd_set_oarnodesetting(properties)
-#  properties.each
-#end
+def oarcmd_script_header()
+  return <<EOF
+set -eu
+
+echo '================================================================================'
+
+EOF
+end
+
+def oarcmd_create_node_header()
+  return <<EOF
+nodelist=$(oarnodes -l)
+
+list_contains () { 
+    [[ "$1" =~ (^|[[:space:]])"$2"($|[[:space:]]) ]] && return 0 || return 1
+}
+
+EOF
+
+end
+
+def oarcmd_create_node(host, properties, node_hash) # host = grifffon-1.nancy.grid5000.fr; properties, node_hash: input of the reference API for the node
+  node_uid, site_uid, grid_uid = host.split(".")
+  cluster_uid, node_number     = node_uid.split("-")
+
+  command  = "echo; echo 'Adding host #{host}:'\n"
+  command += 'list_contains "$nodelist" "' + host + '" && '
+  command += "echo '=> host already exist'\n"
+  command += 'list_contains "$nodelist" "' + host + '" || '
+  command += "sudo oar_resources_add -a --hosts 1 --host0 #{node_number} --host-prefix #{cluster_uid}- --host-suffix .#{site_uid}.#{grid_uid}.fr --cpus #{node_hash['architecture']['smp_size']} --cores #{properties['cpucore']}"
+  command += ' | sudo bash'
+  
+  return command + "\n"
+end
 
 def oarcmd_set_node_properties(host, properties)
   #return "# #{host}: OK" if properties.size == 0
   return "" if properties.size == 0
 
-  # command = "# #{host}:\n"
-  # command += "#{ENV["SUDO"]} oarnodesetting -h #{host} -p "
-  command = "oarnodesetting -h #{host} -p "
+  command  = "echo; echo 'Setting properties for #{host}:'; echo\n"
+  command += "sudo oarnodesetting -h #{host} -p "
 
   command +=
     properties.to_a.map{ |(k,v)|
@@ -188,32 +245,32 @@ def oarcmd_set_node_properties(host, properties)
     ! v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
   }.compact.join(' -p ')
   
-  return command
+  return command + "\n"
 end
 # '
 
 # Get the OAR properties from the OAR scheduler
 # This is only needed for the -d option
-def oarcmd_get_nodelist_properties(site_uid, filename=nil, sshkeys=[])
+def oarcmd_get_nodelist_properties(site_uid, filename=nil, options)
   oarnodes_yaml = ""
 
   if filename and File.exist?(filename)
     # Read oar properties from file
-    puts "Read 'oarnodes -Y' from #{filename}"
+    puts "Read 'oarnodes -Y' from #{filename}" if options[:verbose]
     oarnodes_yaml = File.open(filename, 'rb') { |f| f.read }
   else
     # Download the oar properties from the oar server
-    puts "Downloading 'oarnodes -Y' from oar.#{site_uid}.g5kadmin ..."
+    puts "Downloading 'oarnodes -Y' from " + options[:ssh][:host].gsub("%s", site_uid) + "..." if options[:verbose]
 
-    Net::SSH.start("oar.#{site_uid}.g5kadmin", 'g5kadmin', :keys => sshkeys) { |ssh|
+    Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params]) { |ssh|
       # capture all stderr and stdout output from a remote process
       oarnodes_yaml = ssh.exec!('oarnodes -Y')
     }
-    puts "... done"
+    puts "... done" if options[:verbose]
 
     if filename
       # Cache the file
-      puts "Save 'oarnodes -Y' as #{filename}"
+      puts "Save 'oarnodes -Y' as #{filename}" if options[:verbose]
       File.write(filename, oarnodes_yaml)
     end
   end
@@ -227,3 +284,22 @@ def oarcmd_get_nodelist_properties(site_uid, filename=nil, sshkeys=[])
   return h
 end
 
+
+def ssh_exec(site_uid, cmds, options)
+  # The following is equivalent to : "cat cmds | bash"
+  #res = ""
+  c = Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params])
+  c.open_channel { |channel|
+    channel.exec('bash') { |ch, success|
+      channel.on_data { |ch, data|
+        puts data #if options[:verbose] # ssh cmd output
+      }
+      
+      cmds.each { |cmd| 
+        channel.send_data cmd 
+      }
+      channel.eof!
+    }
+  }
+  c.loop
+end
