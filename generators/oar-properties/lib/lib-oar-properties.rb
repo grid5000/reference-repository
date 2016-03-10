@@ -253,8 +253,8 @@ def oarcmd_create_node(host, properties, node_hash) # host = grifffon-1.nancy.gr
   command += 'list_contains "$nodelist" "' + host + '" && '
   command += "echo '=> host already exist'\n"
   command += 'list_contains "$nodelist" "' + host + '" || '
-  command += "sudo oar_resources_add -a --hosts 1 --host0 #{node_number} --host-prefix #{cluster_uid}- --host-suffix .#{site_uid}.#{grid_uid}.fr --cpus #{node_hash['architecture']['smp_size']} --cores #{properties['cpucore']}"
-  command += ' | sudo bash'
+  command += "oar_resources_add -a --hosts 1 --host0 #{node_number} --host-prefix #{cluster_uid}- --host-suffix .#{site_uid}.#{grid_uid}.fr --cpus #{node_hash['architecture']['smp_size']} --cores #{properties['cpucore']}"
+  command += ' | bash'
   
   return command + "\n"
 end
@@ -264,7 +264,7 @@ def oarcmd_set_node_properties(host, properties)
   return "" if properties.size == 0
 
   command  = "echo; echo 'Setting properties for #{host}:'; echo\n"
-  command += "sudo oarnodesetting -h #{host} -p "
+  command += "oarnodesetting -h #{host} -p "
 
   command +=
     properties.to_a.map{ |(k,v)|
@@ -321,12 +321,13 @@ def oarcmd_create_properties(properties_keys)
   return command
 end
 
+# sudo exec
 def ssh_exec(site_uid, cmds, options)
   # The following is equivalent to : "cat cmds | bash"
   #res = ""
   c = Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params])
   c.open_channel { |channel|
-    channel.exec('bash') { |ch, success|
+    channel.exec('sudo bash') { |ch, success|
       channel.on_data { |ch, data|
         puts data #if options[:verbose] # ssh cmd output
       }
