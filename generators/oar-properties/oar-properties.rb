@@ -266,10 +266,13 @@ if options[:output] || options[:exec]
     create_node_header = false
     cmd = []
     cmd << oarcmd_script_header()
+    cmd << "echo '================================================================================'\n\n"
 
     # Create properties keys
-    cmd << oarcmd_create_properties(properties_keys[opt]) + "\n"
-    # cmd << "echo '================================================================================'\n\n"
+    unless properties_keys[opt].empty?
+      cmd << oarcmd_create_properties(properties_keys[opt]) + "\n"
+      cmd << "echo '================================================================================'\n\n"
+    end
 
     #
     # Build and output commands
@@ -290,9 +293,11 @@ if options[:output] || options[:exec]
       end
 
       # Update properties
-      cmd << oarcmd_set_node_properties(node_uid + '.' + site_uid + '.grid5000.fr', node_properties) + "\n"
+      unless node_properties.empty?
+        cmd << oarcmd_set_node_properties(node_uid + '.' + site_uid + '.grid5000.fr', node_properties) + "\n"
+        cmd << "echo '================================================================================'\n\n"
+      end
 
-      cmd << "echo '================================================================================'\n\n"
       ssh_cmd += cmd        if options[:exec]
       o.write(cmd.join('')) if options[:output]
       cmd = []
