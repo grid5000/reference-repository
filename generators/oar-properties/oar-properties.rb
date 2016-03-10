@@ -9,12 +9,17 @@ require 'pathname'
 require 'json'
 require 'time'
 require 'yaml'
+require 'set'
 require 'hashdiff'
 require 'optparse'
 require 'net/ssh'
 
 require '../oar-properties/lib/lib-oar-properties'
 require '../lib/input_loader'
+
+#
+# Parse command line parameters
+#
 
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
@@ -31,7 +36,7 @@ OptionParser.new do |opts|
   ###
 
   opts.on('-s', '--sites a,b,c', Array, 'Select site(s)',
-                                        "Default: "+options[:sites].join(", ")) do |s|
+          "Default: "+options[:sites].join(", ")) do |s|
     raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
     options[:sites] = s
   end
@@ -139,41 +144,52 @@ options[:sites].each { |site_uid|
   nodelist_properties["ref"][site_uid] = get_nodelist_properties(site_uid, global_hash["sites"][site_uid]) 
 }
 
+# Get the list of property keys from the reference-repo (["ref"])
+properties_keys = {}
+properties_keys["ref"] = get_property_keys(nodelist_properties["ref"])
+
 #
 # Get the current OAR properties from the OAR scheduler (["oar"])
 #
 
 # This is only needed for the -d option  
 if options[:diff]
+
   nodelist_properties["oar"] = {}
   options[:sites].each { |site_uid| 
     nodelist_properties["oar"][site_uid] = {}
     filename = options[:diff].is_a?(String) ? options[:diff].gsub("%s", site_uid) : nil
     nodelist_properties["oar"][site_uid] = oarcmd_get_nodelist_properties(site_uid, filename, options)
   }
+
 end
 
 #
 # Checks
 #
 
-# Build the list of nodes that are listed in nodelist_properties["oar"] but does not exist in nodelist_properties["ref"]
-missings_alive = []
-missings_dead = []
-nodelist_properties["oar"].each { |site_uid, site_properties| 
-  site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_oar|
-    unless nodelist_properties["ref"][site_uid][node_uid]
-      node_properties_oar['state'] != 'Dead' ? missings_alive << node_uid : missings_dead << node_uid
-    end
+if options[:diff]
+  # Build the list of nodes that are listed in nodelist_properties["oar"] but does not exist in nodelist_properties["ref"]
+  # We distinguish 'Dead' nodes and 'Alive'/'Absent'/etc. nodes
+  missings_alive = []
+  missings_dead = []
+  nodelist_properties["oar"].each { |site_uid, site_properties| 
+    site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_oar|
+      unless nodelist_properties["ref"][site_uid][node_uid]
+        node_properties_oar['state'] != 'Dead' ? missings_alive << node_uid : missings_dead << node_uid
+      end
+    }
   }
-}
-puts "*** Error: The following nodes exist in the OAR server but are missing in the reference-repo: #{missings_alive.join(', ')}.\n" if missings_alive.size > 0
-puts "*** Warning: The following 'Dead' nodes exist in the OAR server but are missing in the reference-repo: #{missings_dead.join(', ')}.
+  puts "*** Error: The following nodes exist in the OAR server but are missing in the reference-repo: #{missings_alive.join(', ')}.\n" if missings_alive.size > 0
+  puts "*** Warning: The following 'Dead' nodes exist in the OAR server but are missing in the reference-repo: #{missings_dead.join(', ')}.
 Those nodes should be marked as 'retired' in the reference-repo.\n" if missings_dead.size > 0 && options[:check]
+  
+end
 
 #
 # Diff (-d option)
 #
+
 if options[:diff]
 
   #
@@ -183,15 +199,15 @@ if options[:diff]
   prev_diff = {}
   
   nodelist_properties["diff"] = {}
-  
+  properties_keys["oar"] = Set.new []
+
   nodelist_properties["ref"].each { |site_uid, site_properties| 
     nodelist_properties["diff"][site_uid] = {}
 
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
 
       node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
-
-      diff = diff_node_properties(node_properties_oar, node_properties_ref)
+      diff = diff_node_properties(node_properties_oar, node_properties_ref) # Note: this delete some properties from the input parameters
 
       diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
       nodelist_properties["diff"][site_uid][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
@@ -226,6 +242,14 @@ if options[:diff]
     }
     
   }
+
+  # Build the list of properties that must be created in the OAR server
+
+  # Get the list of property keys from the OAR scheduler (["oar"])
+  properties_keys["oar"] = get_property_keys(nodelist_properties["oar"])
+
+  properties_keys["diff"] = properties_keys["ref"] - properties_keys["oar"]
+  puts "Properties that need to be created on the server: #{properties_keys["diff"].to_a.join(', ')}" if options[:verbose] && properties_keys["diff"].size>0
 end # if options[:diff]
 
 #
@@ -243,11 +267,17 @@ if options[:output] || options[:exec]
     cmd = []
     cmd << oarcmd_script_header()
 
+    # Create properties keys
+    cmd << oarcmd_create_properties(properties_keys[opt]) + "\n"
+    # cmd << "echo '================================================================================'\n\n"
+
     #
     # Build and output commands
     #
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
-      # Create new nodes
+      next if node_properties.size == 1
+
+      # Create new nodes.
       if (opt == 'ref' || nodelist_properties['oar'][site_uid][node_uid] == nil)
         if !create_node_header
           create_node_header = true
@@ -280,4 +310,3 @@ if options[:output] || options[:exec]
     end
   } # site loop
 end # if options[:output] || options[:exec]
-

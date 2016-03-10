@@ -8,6 +8,7 @@ require 'json'
 require 'time'
 require 'yaml'
 require 'hashdiff'
+require 'set'
 
 class MissingProperty <  StandardError; end
 
@@ -27,8 +28,8 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   main_network_adapter = node['network_interfaces'].values.find{ |na| na['enabled'] && na['mounted'] }
   raise MissingProperty, "Node #{node_uid} does not have a main network_adapter" unless main_network_adapter
 
-#  h['host']            = main_network_adapter['network_address']
-#TODO  raise MissingProperty, "Node #{node_uid} has no network_address" unless h['host']
+  #  h['host']            = main_network_adapter['network_address']
+  #TODO  raise MissingProperty, "Node #{node_uid} has no network_address" unless h['host']
 
   h['ip']              = main_network_adapter['ip']
   raise MissingProperty, "Node #{node_uid} has no IP" unless h['ip']
@@ -98,7 +99,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   
   return h
 end
-  
+
 #
 #
 #
@@ -210,6 +211,19 @@ def diff_node_properties(node_properties_oar, node_properties_ref)
 
 end
 
+# Return a list of properties
+def get_property_keys(nodelist_properties)
+  properties_keys = Set.new []
+  nodelist_properties.each { |site_uid, site_properties| 
+    # We do not use site/cluster/node filters here as we want the same list of properties across OAR servers
+    site_properties.each { |node_uid, node_properties| 
+      next if node_uid == nil
+      properties_keys.merge(node_properties.keys)
+    }
+  }
+  return properties_keys
+end
+
 def oarcmd_script_header()
   return <<EOF
 set -eu
@@ -232,6 +246,8 @@ EOF
 end
 
 def oarcmd_create_node(host, properties, node_hash) # host = grifffon-1.nancy.grid5000.fr; properties, node_hash: input of the reference API for the node
+  #return "# Cannot create #{host} : not enough information about it (node_hash['architecture']['smp_size'], properties['cpucore'])" if node_hash['architecture'].nil? || properties['cpucore'].nil?
+
   node_uid, site_uid, grid_uid = host.split(".")
   cluster_uid, node_number     = node_uid.split("-")
 
@@ -268,7 +284,7 @@ end
 # This is only needed for the -d option
 def oarcmd_get_nodelist_properties(site_uid, filename=nil, options)
   oarnodes_yaml = ""
-
+  
   if filename and File.exist?(filename)
     # Read oar properties from file
     puts "Read 'oarnodes -Y' from #{filename}" if options[:verbose]
@@ -299,6 +315,13 @@ def oarcmd_get_nodelist_properties(site_uid, filename=nil, options)
   return h
 end
 
+def oarcmd_create_properties(properties_keys)
+  command = ""
+  properties_keys.each { |key|
+    command += "oarproperty -a #{key} || true\n"
+  }
+  return command
+end
 
 def ssh_exec(site_uid, cmds, options)
   # The following is equivalent to : "cat cmds | bash"
