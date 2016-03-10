@@ -156,16 +156,20 @@ end
 #
 # Checks
 #
-if options[:check]
-  # Build the list of nodes that are listed in nodelist_properties["oar"] but does not exist in nodelist_properties["ref"]
-  missings = []
-  nodelist_properties["oar"].each { |site_uid, site_properties| 
-    site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_oar|
-      missings << node_uid unless nodelist_properties["ref"][site_uid][node_uid]
-    }
+
+# Build the list of nodes that are listed in nodelist_properties["oar"] but does not exist in nodelist_properties["ref"]
+missings_alive = []
+missings_dead = []
+nodelist_properties["oar"].each { |site_uid, site_properties| 
+  site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_oar|
+    unless nodelist_properties["ref"][site_uid][node_uid]
+      node_properties_oar['state'] != 'Dead' ? missings_alive << node_uid : missings_dead << node_uid
+    end
   }
-  puts "*** Warning: The following nodes are missing in the reference-repo: #{missings.join(', ')}.\nThose nodes should be marked as 'retired' is the reference-repo." if missings.size > 0
-end # if options[:check]
+}
+puts "*** Error: The following nodes exist in the OAR server but are missing in the reference-repo: #{missings_alive.join(', ')}.\n" if missings_alive.size > 0
+puts "*** Warning: The following 'Dead' nodes exist in the OAR server but are missing in the reference-repo: #{missings_dead.join(', ')}.
+Those nodes should be marked as 'retired' in the reference-repo.\n" if missings_dead.size > 0 && options[:check]
 
 #
 # Diff (-d option)
