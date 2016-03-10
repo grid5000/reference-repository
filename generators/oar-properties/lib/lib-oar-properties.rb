@@ -18,6 +18,11 @@ MiB = 1024**2
 def get_node_properties(cluster_uid, cluster, node_uid, node)
   h = {} # ouput
 
+  if node['status'] == 'retired'
+    h['state'] = 'Dead'
+    return h if node.size == 1 # for dead nodes, additional information is most likely missing from the ref-repository.
+  end
+
   main_network_adapter = node['network_interfaces'].values.find{ |na| na['enabled'] && na['mounted'] && na['interface'] =~ /ethernet/i && !na['management'] }
   main_network_adapter = node['network_interfaces'].values.find{ |na| na['enabled'] && na['mounted'] }
   raise MissingProperty, "Node #{node_uid} does not have a main network_adapter" unless main_network_adapter
@@ -106,9 +111,9 @@ def get_nodelist_properties(site_uid, site)
 
       begin
         properties[node_uid] = get_node_properties(cluster_uid, cluster, node_uid, node)
-
       rescue MissingProperty => e
-        # puts "Error while processing node #{node_uid}: #{e}"
+        # TODO
+        #puts "Error while processing node #{node_uid}: #{e}"
       end
 
     end
@@ -117,9 +122,9 @@ def get_nodelist_properties(site_uid, site)
   return properties
 end
 
-def diff_node_properties(a, b)
-  a ||= {}
-  b ||= {}
+def diff_node_properties(node_properties_oar, node_properties_ref)
+  node_properties_oar ||= {}
+  node_properties_ref ||= {}
 
   # default OAR at resource creation:
   #  available_upto: '2147483647'
@@ -176,7 +181,6 @@ def diff_node_properties(a, b)
                  "rconsole", # TODO
                  "resource_id",
                  "scheduler_priority",
-                 "state",
                  "state_num",
                  "switch", # TODO
                  "subnet_address",
@@ -187,11 +191,22 @@ def diff_node_properties(a, b)
                  "vlan",
                  "wattmeter" # TODO
                 ]
-  
-  ignore_keys.each { |key| a.delete(key) }
-  ignore_keys.each { |key| b.delete(key) }
 
-  return HashDiff.diff(a, b)
+  ignore_keys.each { |key| node_properties_oar.delete(key) }
+  ignore_keys.each { |key| node_properties_ref.delete(key) }
+
+  # Ignore the 'state' property only if the node is not 'Dead' according to the reference-repo.
+  # Otherwise, we must enforce that the node state is also 'Dead' on the OAR server.
+  # On the OAR server, the 'state' property can be modified by phoenix. We ignore that.
+  if node_properties_ref['state'] != 'Dead'
+    node_properties_oar.delete('state')
+    node_properties_ref.delete('state')
+  elsif node_properties_ref.size == 1
+    # For dead nodes, when information is missing from the reference-repo, only enforce the 'state' property and ignore other differences.
+    return HashDiff.diff({'state' => node_properties_oar['state']}, {'state' => node_properties_ref['state']})
+  end
+
+  return HashDiff.diff(node_properties_oar, node_properties_ref)
 
 end
 

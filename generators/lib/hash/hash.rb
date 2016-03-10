@@ -93,7 +93,7 @@ class ::Hash
   # Custom iterator. Same as "each" but it sorts keys by node_uid (ie. graphene-10 after graphene-9)
   def each_sort_by_node_uid
     self.sort_by { |item| item.to_s.split(/(\d+)/).map { |e| [e.to_i, e] } }.each { |key, value|
-      yield key, value
+      yield key, value if key != nil
     }
   end
 

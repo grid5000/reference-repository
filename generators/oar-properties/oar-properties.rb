@@ -58,6 +58,21 @@ OptionParser.new do |opts|
     options[:exec] = e
   end
 
+  opts.on("-d", "--diff [YAML filename]", 
+          "Only generates the minimal list of commands needed to update the site configuration",
+          "The optional YAML file is suppose to be the output of the 'oarnodes -Y' command.",
+          "If the file does not exist, the script will get the data from the OAR server and save the result on disk for future use.",
+          "If no filename is specified, the script will simply connect to the OAR server.",
+          "You can use the '%s' placeholder for 'site'. Ex: oarnodes-%s.yaml") do |d|
+    d = true if d == nil
+    options[:diff] = d
+  end
+  
+  ###
+
+  opts.separator ""
+  opts.separator "SSH options:"
+
   opts.on('--ssh-keys k1,k2,k3', Array, 'SSH keys') do |k|
     options[:ssh] ||= {}
     options[:ssh][:params] ||= {}
@@ -75,16 +90,16 @@ OptionParser.new do |opts|
     options[:ssh][:params][:port] = 2222 unless options[:ssh][:params][:port]
   end
 
-  opts.on("-d", "--diff [YAML filename]", 
-          "Only generates the minimal list of commands needed to update the site configuration",
-          "The optional YAML file is suppose to be the output of the 'oarnodes -Y' command.",
-          "If the file does not exist, the script will get the data from the OAR server and save the result on disk for future use.",
-          "If no filename is specified, the script will simply connect to the OAR server.",
-          "You can use the '%s' placeholder for 'site'. Ex: oarnodes-%s.yaml") do |d|
-    d = true if d == nil
-    options[:diff] = d
+  ###
+
+  opts.separator ''
+  opts.separator 'Misc:'
+
+  opts.on('--check', 'Perform extra checks.', 'Compare the node list of the OAR server with the reference-repo.') do |c|
+    puts "*** Warning: --check requires --diff." unless options[:diff]
+    options[:check] = c
   end
-  
+
   ###
 
   opts.separator ""
@@ -103,8 +118,9 @@ OptionParser.new do |opts|
 end.parse!
 
 options[:ssh] ||= {}
-options[:ssh][:host] = 'oar.%s.g5kadmin' unless options[:ssh][:host]
 options[:ssh][:user] = 'g5kadmin'        unless options[:ssh][:user]
+options[:ssh][:host] = 'oar.%s.g5kadmin' unless options[:ssh][:host]
+options[:ssh][:params] ||= {}
 options[:diff] = false unless options[:diff]
 
 puts "Options: #{options}" if options[:verbose]
@@ -138,9 +154,27 @@ if options[:diff]
 end
 
 #
+# Checks
+#
+if options[:check]
+  # Build the list of nodes that are listed in nodelist_properties["oar"] but does not exist in nodelist_properties["ref"]
+  missings = []
+  nodelist_properties["oar"].each { |site_uid, site_properties| 
+    site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_oar|
+      missings << node_uid unless nodelist_properties["ref"][site_uid][node_uid]
+    }
+  }
+  puts "*** Warning: The following nodes are missing in the reference-repo: #{missings.join(', ')}.\nThose nodes should be marked as 'retired' is the reference-repo." if missings.size > 0
+end # if options[:check]
+
+#
 # Diff (-d option)
 #
 if options[:diff]
+
+  #
+  # Diff OAR properties between reference-repo and OAR servers
+  #
   header = false
   prev_diff = {}
   
@@ -150,19 +184,20 @@ if options[:diff]
     nodelist_properties["diff"][site_uid] = {}
 
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
-      
+
       node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
 
-      diff      = diff_node_properties(node_properties_oar, node_properties_ref)
+      diff = diff_node_properties(node_properties_oar, node_properties_ref)
+
       diff_keys = diff.map{ |hashdiff_array| hashdiff_array[1] }
-      
       nodelist_properties["diff"][site_uid][node_uid] = node_properties_ref.select { |key, value| diff_keys.include?(key) }
 
+      # Verbose output
       info = (nodelist_properties["oar"][site_uid][node_uid] == nil ? " new node !" : "")      
       case options[:verbose]
       when 1
         puts "#{node_uid}:#{info}" if info != ""
-        puts "#{node_uid}: #{diff_keys}"
+        puts "#{node_uid}: #{diff_keys}" if diff.size != 0
       when 2
         # Give more details
         # puts "#{node_uid}: #{diff}"
