@@ -105,8 +105,6 @@ site :nancy do |site_uid|
           :model            => '82599ES 10-Gigabit SFI/SFP+ Network Connection',
           :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'driver'),
           :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth1', 'mac'),
-          :switch           => net_switch_lookup('nancy', 'graoully', node_uid, 'eth1'),
-          :switch_port      => net_port_lookup('nancy', 'graoully', node_uid, 'eth1'),
         },
         {
           :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'interface'),
@@ -121,8 +119,6 @@ site :nancy do |site_uid|
           :model            => 'Ethernet 10G 2P X520 Adapter',
           :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'driver'),
           :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth2', 'mac'),
-          :switch           => net_switch_lookup('nancy', 'graoully', node_uid, 'eth2'),
-          :switch_port      => net_port_lookup('nancy', 'graoully', node_uid, 'eth2'),
         },
         {
           :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'interface'),
@@ -137,8 +133,6 @@ site :nancy do |site_uid|
           :model            => 'Ethernet 10G 2P X520 Adapter',
           :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'driver'),
           :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth3', 'mac'),
-          :switch           => net_switch_lookup('nancy', 'graoully', node_uid, 'eth3'),
-          :switch_port      => net_port_lookup('nancy', 'graoully', node_uid, 'eth3'),
         },
         {
           :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'interface'),
@@ -153,8 +147,6 @@ site :nancy do |site_uid|
           :model            => 'I350 Gigabit Network Connection',
           :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'driver'),
           :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'mac'),
-          :switch           => net_switch_lookup('nancy', 'graoully', node_uid, 'eth4'),
-          :switch_port      => net_port_lookup('nancy', 'graoully', node_uid, 'eth4'),
         },
         {
           :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'interface'),
@@ -169,8 +161,6 @@ site :nancy do |site_uid|
           :model            => 'I350 Gigabit Network Connection',
           :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'driver'),
           :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'mac'),
-          :switch           => net_switch_lookup('nancy', 'graoully', node_uid, 'eth5'),
-          :switch_port      => net_port_lookup('nancy', 'graoully', node_uid, 'eth5'),
         },
         {
           :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'interface'),
