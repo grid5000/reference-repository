@@ -106,8 +106,8 @@ global_hash["sites"].each do |site_uid, site|
       node["main_memory"] = {} unless node.key?("main_memory")
       node["main_memory"]["virtual_size"] = nil unless node["main_memory"].key?("virtual_size")
 
-#     node["monitoring"] = {}   unless node.key?("monitoring")
-#     node["monitoring"]["wattmeter"] = false unless node["monitoring"].key?("wattmeter")
+      node["monitoring"] = {}   unless node.key?("monitoring")
+      node["monitoring"]["wattmeter"] = false unless node["monitoring"].key?("wattmeter")
 
       # Rename keys
       node["storage_devices"] = node.delete("block_devices")
@@ -116,6 +116,12 @@ global_hash["sites"].each do |site_uid, site|
         node["chassis"]["name"]   = node["chassis"].delete("product_name")
         node["chassis"]["serial"] = node["chassis"].delete("serial_number")
       end
+
+      # Delete keys
+      node["storage_devices"].keys.each { |key| 
+        node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")
+        node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
+      }
       
       # Type conversion
       node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
@@ -125,7 +131,7 @@ global_hash["sites"].each do |site_uid, site|
       node["storage_devices"] = node["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde"]).values
 
       node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
-      node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "ib0", "ib1", "ib2", "ib3", "bmc"]).values
+      node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc"]).values
 
       # Populate "network_address", "switch" and "switch_port" from the network equipment description for each network adapters
       node["network_adapters"].each { |network_adapter|
@@ -177,6 +183,8 @@ global_hash["sites"].each do |site_uid, site|
 
         node.delete("pdu")
       end
+
+      node.delete("kavlan")
 
       #pp cluster_path.join("nodes","#{node_uid}.json")
       write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
