@@ -1,0 +1,216 @@
+---
+# Cluster description
+model: Dell PowerEdge R630
+created_at: 2016-01-04
+kavlan: true
+queues:
+  - admin
+  - default
+
+nodes:
+# Global node properties
+  grisou-[1-51]:
+    performance:
+      core_flops: 0
+      node_flops: 0
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    max_walltime: 0
+    queues:
+      - admin
+      - default
+    main_memory:
+      virtual_size: nil
+    operating_system:
+      name: debian
+      release: Jessie
+    block_devices:
+      sda:
+        interface: SCSI
+        driver: megaraid_sas
+        vendor: LSI Logic / Symbios Logic
+        storage: HDD
+      sdb:
+        interface: SCSI
+        driver: megaraid_sas
+        vendor: LSI Logic / Symbios Logic
+        storage: HDD
+    gpu:
+      gpu: false
+    sensors:
+      power:
+        available: true
+        via: 
+          api:
+            metric: power
+
+# Nodes with 4 interfaces
+  grisou-[1-39]:
+    network_adapters:
+      eth0:
+        enabled: true 
+        mountable: true
+        bridged: true
+        device: eth0
+        vendor: Intel Corporation
+        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      eth1:
+        rate: 1.0e+9
+        enabled: false 
+        mountable: true
+        bridged: true
+        device: eth1
+        vendor: Intel Corporation
+        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      eth2:
+        rate: 1.0e+9
+        enabled: false
+        mountable: true
+        bridged: true
+        device: eth2
+        vendor: Intel Corporation
+        model: Ethernet 10G 2P X520 Adapter
+      eth3:
+        rate: 1.0e+9
+        enabled: false 
+        mountable: true
+        bridged: true
+        device: eth3
+        vendor: Intel Corporation
+        model: Ethernet 10G 2P X520 Adapter
+      eth4:
+        rate: 1.0e+6
+        enabled: false 
+        mountable: false
+        bridged: false
+        device: eth4
+        vendor: Intel Corporation
+        model: I350 Gigabit Network Connection
+      eth5:
+        rate: 1.0e+6
+        enabled: false 
+        mountable: false
+        bridged: false
+        device: eth5
+        vendor: Intel Corporation
+        model: I350 Gigabit Network Connection
+      bmc:
+        interface: Ethernet
+        rate: 1.0e+6
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+
+# Node with 1 mounted interface
+  grisou-[40-48]:
+    network_adapters:
+      eth0:
+        enabled: true 
+        mountable: true
+        bridged: true
+        device: eth0
+        vendor: Intel Corporation
+        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      eth1:
+        rate: 1.0e+9
+        enabled: false 
+        mountable: false
+        bridged: false
+        device: eth1
+        vendor: Intel Corporation
+        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      eth1: 
+        rate: 1.0e+9
+        enabled: false
+        mountable: false
+        bridged: false
+        device: eth2
+        vendor: Intel Corporation
+        model: Ethernet 10G 2P X520 Adapter
+      eth3: 
+        rate: 1.0e+9
+        enabled: false 
+        mountable: false
+        bridged: false
+        device: eth3
+        vendor: Intel Corporation
+        model: Ethernet 10G 2P X520 Adapter
+      eth4: 
+        rate: 1.0e+6
+        enabled: false 
+        mountable: false
+        bridged: false
+        device: eth4
+        vendor: Intel Corporation
+        model: I350 Gigabit Network Connection
+      eth5: 
+        rate: 1.0e+6
+        enabled: false 
+        mountable: false
+        bridged: false
+        device: eth5
+        vendor: Intel Corporation
+        model: I350 Gigabit Network Connection
+      bmc:
+        interface: Ethernet
+        rate: 1.0e+6
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+
+# Node with infiniband
+  grisou-[49-51]:
+    network_adapters:
+      eth0:
+        enabled: true 
+        mountable: true
+        bridged: true
+        device: eth0
+        vendor: Intel Corporation
+        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      eth1:
+        rate: 1.0e+9
+        enabled: false 
+        mountable: false
+        bridged: false
+        device: eth1
+        vendor: Intel Corporation
+        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      eth4:
+        rate: 1.0e+9
+        enabled: false
+        mountable: false
+        bridged: false
+        device: eth4
+        vendor: Intel Corporation
+        model: Ethernet 10G 2P X520 Adapter
+      eth5: 
+        rate: 1.0e+9
+        enabled: false 
+        mountable: false
+        bridged: false
+        device: eth5
+        vendor: Intel Corporation
+        model: Ethernet 10G 2P X520 Adapter
+      bmc: 
+        interface: Ethernet
+        rate: 1.0e+6
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+        device: bmc
+      eth2: 
+        enabled: true 
+        mountable: true
+        mounted: true
+        bridged: true
+        device: eth2
+        vendor: Mellanox
+        model: MT27500 Family [ConnectX-3]
+        switch: sgraoullyib
