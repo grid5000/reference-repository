@@ -194,7 +194,7 @@ site :rennes do |site_uid|
           :gpu => false
         })
 
-        monitorint({
+        monitoring({
           :wattmeter => false,
         })
 
