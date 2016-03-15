@@ -214,7 +214,7 @@ site :rennes do |site_uid|
           }
         })
 
-        chassis({:serial_number => lookup(node_uid, node_uid, 'chassis', 'serial_number')})
+#        chassis({:serial_number => lookup(node_uid, node_uid, 'chassis', 'serial_number')})
 
       end
     end
