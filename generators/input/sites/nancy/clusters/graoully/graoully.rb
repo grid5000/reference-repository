@@ -179,7 +179,7 @@ site :nancy do |site_uid|
           :management       => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'management'),
           :mountable        => true,
           :mounted          => true,
-          :bridged          => true,
+          :bridged          => false,
           :device           => "ib0",
           :vendor           => 'Mellanox',
           :model            => 'MT27500 Family [ConnectX-3]',
