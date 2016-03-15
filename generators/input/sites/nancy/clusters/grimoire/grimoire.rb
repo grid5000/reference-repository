@@ -193,8 +193,6 @@ site :nancy do |site_uid|
           :model            => 'I350 Gigabit Network Connection',
           :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'driver'),
           :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth4', 'mac'),
-          :switch           => net_switch_lookup('nancy', 'grimoire', node_uid, 'eth4'),
-          :switch_port      => net_port_lookup('nancy', 'grimoire', node_uid, 'eth4'),
         },
         {
           :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'interface'),
@@ -209,8 +207,6 @@ site :nancy do |site_uid|
           :model            => 'I350 Gigabit Network Connection',
           :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'driver'),
           :mac              => lookup(node_uid, node_uid, 'network_interfaces', 'eth5', 'mac'),
-          :switch           => net_switch_lookup('nancy', 'grimoire', node_uid, 'eth5'),
-          :switch_port      => net_port_lookup('nancy', 'grimoire', node_uid, 'eth5'),
         },
         {
           :interface        => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'interface'),
