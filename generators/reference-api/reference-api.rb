@@ -146,7 +146,7 @@ global_hash["sites"].each do |site_uid, site|
         #   pp "#{network_adapter["network_address"]}, #{network_adapter["switch"]} or #{network_adapter["switch_port"]}"
         # end
         
-        if network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"])
+        if network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"]) && ! network_adapter.key?("switch")
           # Primary network_adapter
           network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr"
          

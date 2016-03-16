@@ -57,7 +57,7 @@ nodes:
         rate: 10.0e+9
         enabled: false 
         mountable: true
-        bridged: true
+        bridged: false
         device: eth1
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
@@ -65,7 +65,7 @@ nodes:
         rate: 10.0e+9
         enabled: false
         mountable: true
-        bridged: true
+        bridged: false
         device: eth2
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
@@ -73,7 +73,7 @@ nodes:
         rate: 10.0e+9
         enabled: false 
         mountable: true
-        bridged: true
+        bridged: false
         device: eth3
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
@@ -103,7 +103,7 @@ nodes:
         device: bmc
 
 # Node with 1 mounted interface
-  grisou-[41-48]:
+  grisou-[41-49]:
     network_adapters:
       eth0:
         enabled: true 
@@ -162,7 +162,7 @@ nodes:
         device: bmc
 
 # Node with infiniband
-  grisou-[49-50]:
+  grisou-[50-51]:
     network_adapters:
       eth0:
         enabled: true 
@@ -207,8 +207,14 @@ nodes:
         enabled: true 
         mountable: true
         mounted: true
-        bridged: true
+        bridged: false
         device: eth2
         vendor: Mellanox
         model: MT27500 Family [ConnectX-3]
         switch: sgraoullyib
+        guid: null
+        hwid: null
+        ib_switch_card: null
+        ib_switch_card_pos: null
+        version: null
+        ip6: null
