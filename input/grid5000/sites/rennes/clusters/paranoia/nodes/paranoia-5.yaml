@@ -1,6 +1,6 @@
 ---
 paranoia-5:
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.100.5
       mac: f0:4d:a2:73:cc:71
@@ -55,7 +55,7 @@ paranoia-5:
     cache_l1d: 32768
     cache_l2: 262144
     cache_l3: 26214400
-  block_devices:
+  storage_devices:
     sdd:
       device: sdd
       size: 600127266816
@@ -88,6 +88,6 @@ paranoia-5:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: 9912LZ1
+    serial: 9912LZ1
     manufacturer: Dell Inc.
-    product_name: PowerEdge C6220 II
+    name: PowerEdge C6220 II

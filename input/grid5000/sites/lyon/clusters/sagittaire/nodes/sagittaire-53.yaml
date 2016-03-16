@@ -8,7 +8,7 @@ sagittaire-53:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: false
       mac: 00:09:3d:12:9d:8b
@@ -33,16 +33,16 @@ sagittaire-53:
     bmc:
       mac: 00:09:3d:12:9d:8d
       ip: 172.17.49.53
-  block_devices:
+  storage_devices:
     sda:
       model: MAT3073NC
       device: sda
       size: 73543163904
       rev: 104
   chassis:
-    serial_number: XG052536172
+    serial: XG052536172
     manufacturer: Sun Microsystems
-    product_name: Sun Fire V20z
+    name: Sun Fire V20z
   supported_job_types:
     virtual: false
   processor:

@@ -4,7 +4,7 @@ chinqchint-39:
     version: 6.0
     release_date: 09/10/2007
     vendor: Phoenix Technologies LTD
-  network_interfaces:
+  network_adapters:
     myri0:
       mounted: false
       rate: 10000000000
@@ -44,7 +44,7 @@ chinqchint-39:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  block_devices:
+  storage_devices:
     sda:
       model: Hitachi HDT72502
       device: sda
@@ -55,9 +55,9 @@ chinqchint-39:
       device: sdb
       rev: 0.01
   chassis:
-    serial_number: X0004738
+    serial: X0004738
     manufacturer: SGI.COM
-    product_name: AltixXE310
+    name: AltixXE310
   supported_job_types:
     virtual: ivt
   processor:

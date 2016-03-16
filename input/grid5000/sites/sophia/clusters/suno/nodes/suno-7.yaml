@@ -8,14 +8,14 @@ suno-7:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  block_devices:
+  storage_devices:
     sda:
       model: PERC 6/i Adapter
       device: sda
       size: 598879502336
       rev: 1.22
       vendor: Dell
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -41,9 +41,9 @@ suno-7:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: 64JPH4J
+    serial: 64JPH4J
     manufacturer: Dell Inc.
-    product_name: PowerEdge R410
+    name: PowerEdge R410
   main_memory:
     ram_size: 34359738368
   processor:

@@ -8,13 +8,13 @@ stremi-27:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  block_devices:
+  storage_devices:
     sda:
       model: GB0250EAFYK
       device: sda
       size: 250059350016
       rev: HPG2
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -56,9 +56,9 @@ stremi-27:
   supported_job_types:
     virtual: amd-v
   chassis:
-    serial_number: GB8043917X
+    serial: GB8043917X
     manufacturer: HP
-    product_name: ProLiant DL165 G7
+    name: ProLiant DL165 G7
   main_memory:
     ram_size: 51539607552
   processor:

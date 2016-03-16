@@ -1,6 +1,6 @@
 ---
 econome-17:
-  network_interfaces:
+  network_adapters:
     eth2:
       interface: Ethernet
       driver: igb
@@ -53,7 +53,7 @@ econome-17:
     cache_l1d: 32768
     cache_l2: 262144
     cache_l3: 20971520
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 2000398934016
@@ -62,9 +62,9 @@ econome-17:
   main_memory:
     ram_size: 68719476736
   chassis:
-    serial_number: 1Q2YG5J
+    serial: 1Q2YG5J
     manufacturer: Dell Inc.
-    product_name: PowerEdge C6220
+    name: PowerEdge C6220
   bios:
     vendor: Dell Inc.
     version: 2.1

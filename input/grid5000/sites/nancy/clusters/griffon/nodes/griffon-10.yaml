@@ -21,7 +21,7 @@ griffon-10:
     smp_size: 2
     smt_size: 8
     platform_type: x86_64
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       ip: 172.16.65.10
@@ -66,7 +66,7 @@ griffon-10:
     bmc:
       ip: 172.17.65.10
       mac: 00:e0:81:4f:ca:9e
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-10:
     version: V1.05
     release_date: 08/21/2009
   chassis:
-    serial_number: 812530015
+    serial: 812530015
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

@@ -1,6 +1,6 @@
 ---
 econome-11:
-  network_interfaces:
+  network_adapters:
     eth2:
       interface: Ethernet
       driver: igb
@@ -59,7 +59,7 @@ econome-11:
     smp_size: 2
     smt_size: 16
     platform_type: x86_64
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 2000398934016
@@ -68,6 +68,6 @@ econome-11:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: J9GYG5J
+    serial: J9GYG5J
     manufacturer: Dell Inc.
-    product_name: PowerEdge C6220
+    name: PowerEdge C6220

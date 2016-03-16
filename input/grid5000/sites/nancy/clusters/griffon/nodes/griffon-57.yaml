@@ -2,7 +2,7 @@
 griffon-57:
   main_memory:
     ram_size: 17179869184
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -28,7 +28,7 @@ griffon-57:
     cache_l1d: 32768
     cache_l2: 6291456
     cache_l3: 0
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       ip: 172.16.65.57
@@ -80,6 +80,6 @@ griffon-57:
     kernel: 3.16.0-4-amd64
     version: 8.2
   chassis:
-    serial_number: 812530062
+    serial: 812530062
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

@@ -4,7 +4,7 @@ sol-9:
     version: S39_3B13
     release_date: 12/13/2006
     vendor: Sun Microsystems
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -27,7 +27,7 @@ sol-9:
     bmc:
       mac: 00:16:36:c5:93:07
       ip: 172.17.129.9
-  block_devices:
+  storage_devices:
     sda:
       model: HITACHI HDS7225S
       device: sda
@@ -41,9 +41,9 @@ sol-9:
   supported_job_types:
     virtual: amd-v
   chassis:
-    serial_number: 0650QBT128
+    serial: 0650QBT128
     manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+    name: Sun Fire X2200 M2
   main_memory:
     ram_size: 4293918720
   processor:

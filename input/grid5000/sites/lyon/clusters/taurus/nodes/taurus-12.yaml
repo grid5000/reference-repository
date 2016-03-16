@@ -8,13 +8,13 @@ taurus-12:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  block_devices:
+  storage_devices:
     sda:
       model: PERC H710
       device: sda
       size: 598879502336
       rev: 3.13
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       switch_port: TenGigabitEthernet 0/12
@@ -71,9 +71,9 @@ taurus-12:
       mac: d4:be:d9:fb:ed:b8
       ip: 172.17.48.12
   chassis:
-    serial_number: GHTHD5J
+    serial: GHTHD5J
     manufacturer: Dell Inc.
-    product_name: PowerEdge R720
+    name: PowerEdge R720
   supported_job_types:
     virtual: ivt
   processor:

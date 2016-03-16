@@ -26,7 +26,7 @@ nodes:
       release: Jessie
       version: "8.2"
       kernel: 3.2.0-4-amd64
-    block_devices:
+    storage_devices:
       sda:
         interface: SATA II
         driver: megaraid_sas
@@ -37,7 +37,7 @@ nodes:
         driver: megaraid_sas
         storage: SSD
         vendor: null
-    network_interfaces:
+    network_adapters:
       eth0:
         bridged: true
         device: eth0

@@ -8,7 +8,7 @@ griffon-92:
     platform_type: x86_64
   main_memory:
     ram_size: 17179869184
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.92
       mac: 00:e0:81:4f:e3:5d
@@ -72,7 +72,7 @@ griffon-92:
     name: debian
     kernel: 3.16.0-4-amd64
     version: 8.2
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-92:
       rev: A5CA
       vendor: Hitachi
   chassis:
-    serial_number: 812530097
+    serial: 812530097
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

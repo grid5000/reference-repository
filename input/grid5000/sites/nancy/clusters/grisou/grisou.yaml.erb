@@ -1,7 +1,7 @@
 nodes:
 <% (1..51).each { |i| %>
   grisou-<%= i %>:
-    network_interfaces:
+    network_adapters:
       eth0: 
         mounted: true
         ip: 172.16.72.<%= i %>

@@ -4,7 +4,7 @@ griffon-21:
     name: debian
     kernel: 3.16.0-4-amd64
     version: 8.2
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -19,7 +19,7 @@ griffon-21:
     ram_size: 17179869184
   supported_job_types:
     virtual: ivt
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.21
       mac: 00:e0:81:4f:e2:fb
@@ -80,6 +80,6 @@ griffon-21:
     smt_size: 8
     platform_type: x86_64
   chassis:
-    serial_number: 812530026
+    serial: 812530026
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

@@ -4,7 +4,7 @@ chinqchint-25:
     version: 6.0
     release_date: 09/10/2007
     vendor: Phoenix Technologies LTD
-  network_interfaces:
+  network_adapters:
     myri0:
       mounted: false
       rate: 10000000000
@@ -40,7 +40,7 @@ chinqchint-25:
     bmc:
       mac: 00:30:48:9b:1a:cf
       ip: 172.17.34.125
-  block_devices:
+  storage_devices:
     sda:
       model: Hitachi HDT72502
       device: sda
@@ -53,9 +53,9 @@ chinqchint-25:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: X0004755
+    serial: X0004755
     manufacturer: SGI.COM
-    product_name: AltixXE310
+    name: AltixXE310
   processor:
     model: Intel Xeon
     cache_l1d: 32768

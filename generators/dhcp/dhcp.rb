@@ -10,22 +10,22 @@ global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 
 # Get the mac and ip of a node. Throw exception if error.
 def get_network_info(node_hash, network_interface)
-  # Get node_hash["network_interfaces"][network_interface]["ip"] and node_hash["network_interfaces"][network_interface]["mac"]
-  node_network_interfaces = node_hash.fetch("network_interfaces")
+  # Get node_hash["network_adapters"][network_interface]["ip"] and node_hash["network_adapters"][network_interface]["mac"]
+  node_network_adapters = node_hash.fetch("network_adapters")
   
   # For the production network, find the mounted interface (either eth0 or eth1)
   neti = network_interface
   if neti == "eth" then
-    if node_network_interfaces.fetch("eth0").fetch("mounted")
+    if node_network_adapters.fetch("eth0").fetch("mounted")
       neti = "eth0"
-    elsif node_network_interfaces.fetch("eth1").fetch("mounted")
+    elsif node_network_adapters.fetch("eth1").fetch("mounted")
       neti = "eth1"
     else
       raise 'neither eth0 nor eth1 have the property "mounted" set to "true"'
       end
   end
   
-  node_network_interface = node_network_interfaces.fetch(neti)
+  node_network_interface = node_network_adapters.fetch(neti)
   
   raise '"mac" is nil' unless node_mac = node_network_interface.fetch("mac")
   raise '"ip" is nil'  unless node_ip  = node_network_interface.fetch("ip")
@@ -35,7 +35,7 @@ end
 
 def write_dhcp_file(data)
   if data["nodes"].nil?
-    puts "Error in #{__method__}: no entry for \"#{data['filename']}\" at #{data['site_uid']} (#{data['network_interfaces']})."
+    puts "Error in #{__method__}: no entry for \"#{data['filename']}\" at #{data['site_uid']} (#{data['network_adapters']})."
     return "" 
   end
 
@@ -61,7 +61,7 @@ global_hash["sites"].each { |site_uid, site_hash|
                       "filename"            => "cluster-" + cluster_uid + ".conf",
                       "site_uid"            => site_uid,
                       "nodes"               => cluster_hash.fetch('nodes'),
-                      "network_interfaces"  => ["eth", "bmc"],
+                      "network_adapters"  => ["eth", "bmc"],
                     })
   }
   
@@ -71,7 +71,7 @@ global_hash["sites"].each { |site_uid, site_hash|
                       "filename"            => key + ".conf",
                       "site_uid"            => site_uid,
                       "nodes"               => site_hash['nodes'],
-                      "network_interfaces"  => ["eth"],
+                      "network_adapters"  => ["eth"],
                     })
   }
 

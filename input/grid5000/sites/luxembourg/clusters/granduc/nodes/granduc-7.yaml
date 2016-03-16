@@ -4,7 +4,7 @@ granduc-7:
     version: 2.7.0
     release_date: 10/30/2010
     vendor: Dell Inc.
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -47,7 +47,7 @@ granduc-7:
     bmc:
       ip: 172.17.176.7
       mac: 00:1c:23:d3:42:2c
-  block_devices:
+  storage_devices:
     sda:
       model: ST9146802SS
       device: sda
@@ -59,9 +59,9 @@ granduc-7:
     name: debian
     version: 6.0.6
   chassis:
-    serial_number: 49N983J
+    serial: 49N983J
     manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
+    name: PowerEdge 1950
   supported_job_types:
     virtual: ivt
   main_memory:

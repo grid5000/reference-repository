@@ -38,15 +38,15 @@ global_hash["sites"].each { |site_uid, site_hash|
 
     cluster_hash.fetch('nodes').each_sort_by_node_uid { |node_uid, node_hash|
 
-      network_interfaces = {}
-      node_hash.fetch('network_interfaces').each { |net_uid, net_hash|
-        network_interfaces[net_uid] = {"ip"=>net_hash["ip"], "mounted"=>net_hash["mounted"]}
+      network_adapters = {}
+      node_hash.fetch('network_adapters').each { |net_uid, net_hash|
+        network_adapters[net_uid] = {"ip"=>net_hash["ip"], "mounted"=>net_hash["mounted"]}
       }
       node_hash.fetch('kavlan').each { |net_uid, ip|
-        network_interfaces[net_uid] = {"ip"=>ip, "mounted"=>nil}
+        network_adapters[net_uid] = {"ip"=>ip, "mounted"=>nil}
       } if node_hash['kavlan']
 
-      network_interfaces.each { |net_uid, net_hash|
+      network_adapters.each { |net_uid, net_hash|
 
         entries[cluster_uid] = {}          unless entries[cluster_uid]
         entries[cluster_uid][net_uid] = [] unless entries[cluster_uid][net_uid]

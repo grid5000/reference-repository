@@ -8,7 +8,7 @@ chinqchint-23:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  network_interfaces:
+  network_adapters:
     myri0:
       mounted: false
       rate: 10000000000
@@ -44,7 +44,7 @@ chinqchint-23:
     bmc:
       mac: 00:30:48:94:2c:9c
       ip: 172.17.34.123
-  block_devices:
+  storage_devices:
     sda:
       model: Hitachi HDT72502
       device: sda
@@ -53,9 +53,9 @@ chinqchint-23:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: X0004752
+    serial: X0004752
     manufacturer: SGI.COM
-    product_name: AltixXE310
+    name: AltixXE310
   main_memory:
     ram_size: 8393850880
   processor:

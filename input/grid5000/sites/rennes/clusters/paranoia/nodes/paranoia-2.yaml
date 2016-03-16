@@ -11,7 +11,7 @@ paranoia-2:
     cache_l1d: 32768
     cache_l2: 262144
     cache_l3: 26214400
-  block_devices:
+  storage_devices:
     sdc:
       device: sdc
       size: 600127266816
@@ -41,7 +41,7 @@ paranoia-2:
     smp_size: 2
     smt_size: 20
     platform_type: x86_64
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.100.2
       mac: f0:4d:a2:73:cc:7a
@@ -80,9 +80,9 @@ paranoia-2:
       mounted: false
       management: false
   chassis:
-    serial_number: DB12LZ1
+    serial: DB12LZ1
     manufacturer: Dell Inc.
-    product_name: PowerEdge C6220 II
+    name: PowerEdge C6220 II
   main_memory:
     ram_size: 137438953472
   supported_job_types:

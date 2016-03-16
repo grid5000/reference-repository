@@ -6,7 +6,7 @@ griffon-22:
     platform_type: x86_64
   main_memory:
     ram_size: 17179869184
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.22
       mac: 00:e0:81:4f:cb:02
@@ -64,7 +64,7 @@ griffon-22:
     cache_l1d: 32768
     cache_l2: 6291456
     cache_l3: 0
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-22:
     version: V1.05
     release_date: 08/21/2009
   chassis:
-    serial_number: 812530027
+    serial: 812530027
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

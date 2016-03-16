@@ -13,7 +13,7 @@ griffon-6:
     cache_l1d: 32768
     cache_l2: 6291456
     cache_l3: 0
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -22,7 +22,7 @@ griffon-6:
       vendor: Hitachi
   supported_job_types:
     virtual: ivt
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.6
       mac: 00:e0:81:4f:e3:74
@@ -80,6 +80,6 @@ griffon-6:
     smt_size: 8
     platform_type: x86_64
   chassis:
-    serial_number: 812530011
+    serial: 812530011
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

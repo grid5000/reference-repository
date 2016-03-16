@@ -6,7 +6,7 @@ griffon-18:
     version: 8.2
   main_memory:
     ram_size: 17179869184
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       ip: 172.16.65.18
@@ -72,7 +72,7 @@ griffon-18:
     cache_l1d: 32768
     cache_l2: 6291456
     cache_l3: 0
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-18:
       rev: A5CA
       vendor: Hitachi
   chassis:
-    serial_number: 812530023
+    serial: 812530023
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

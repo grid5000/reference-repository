@@ -2,7 +2,7 @@
 paravance-7:
   main_memory:
     ram_size: 137438953472
-  network_interfaces:
+  network_adapters:
     eth2:
       interface: Ethernet
       driver: igb
@@ -34,7 +34,7 @@ paravance-7:
     vendor: Dell Inc.
     version: 1.0
     release_date: 08/28/2014
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 600127266816
@@ -48,9 +48,9 @@ paravance-7:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: 6SQGG42
+    serial: 6SQGG42
     manufacturer: Dell Inc.
-    product_name: PowerEdge R630
+    name: PowerEdge R630
   architecture:
     smp_size: 2
     smt_size: 16

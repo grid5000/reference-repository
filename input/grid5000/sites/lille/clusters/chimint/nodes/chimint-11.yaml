@@ -8,7 +8,7 @@ chimint-11:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -33,7 +33,7 @@ chimint-11:
     bmc:
       mac: 84:2b:2b:70:c9:9f
       ip: 172.17.33.111
-  block_devices:
+  storage_devices:
     sda:
       model: PERC H700
       device: sda
@@ -43,9 +43,9 @@ chimint-11:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: BRM1Z4J
+    serial: BRM1Z4J
     manufacturer: Dell Inc.
-    product_name: PowerEdge R410
+    name: PowerEdge R410
   processor:
     model: Intel Xeon
     cache_l1d: 32768

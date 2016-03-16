@@ -8,7 +8,7 @@ sagittaire-14:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: false
       mac: 00:09:3d:12:7a:bc
@@ -33,7 +33,7 @@ sagittaire-14:
     bmc:
       mac: 00:09:3d:12:7a:be
       ip: 172.17.49.14
-  block_devices:
+  storage_devices:
     sda:
       model: ST373207LC
       device: sda
@@ -42,9 +42,9 @@ sagittaire-14:
   supported_job_types:
     virtual: false
   chassis:
-    serial_number: XG052080114
+    serial: XG052080114
     manufacturer: Sun Microsystems
-    product_name: Sun Fire V20z
+    name: Sun Fire V20z
   processor:
     model: AMD Opteron
     cache_l1d: 65536

@@ -8,14 +8,14 @@ granduc-15:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  block_devices:
+  storage_devices:
     sda:
       model: ST9146802SS
       device: sda
       size: 146815733760
       rev: S207
       vendor: FUJITSU
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -61,9 +61,9 @@ granduc-15:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: 60W883J
+    serial: 60W883J
     manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
+    name: PowerEdge 1950
   main_memory:
     ram_size: 17179869184
   processor:

@@ -1,6 +1,6 @@
 ---
 griffon-40:
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.40
       mac: 00:e0:81:4f:e2:c6
@@ -66,7 +66,7 @@ griffon-40:
     name: debian
     kernel: 3.16.0-4-amd64
     version: 8.2
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-40:
   main_memory:
     ram_size: 17179869184
   chassis:
-    serial_number: 812530045
+    serial: 812530045
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

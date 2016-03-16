@@ -1,6 +1,6 @@
 ---
 griffon-4:
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.4
       mac: 00:e0:81:4f:e3:7a
@@ -55,7 +55,7 @@ griffon-4:
     version: 8.2
   supported_job_types:
     virtual: ivt
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-4:
     cache_l2: 6291456
     cache_l3: 0
   chassis:
-    serial_number: 812530009
+    serial: 812530009
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

@@ -8,7 +8,7 @@ graphene-119:
     kernel: 3.16.0-4-amd64
     name: debian
     version: "8.2"
-  network_interfaces:
+  network_adapters:
     ib0:
       mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:19
@@ -62,7 +62,7 @@ graphene-119:
     bmc:
       mac: 00:e0:81:d5:06:f3
       ip: 172.17.64.119
-  block_devices:
+  storage_devices:
     sda:
       model: Hitachi HDS72103
       device: sda
@@ -89,6 +89,6 @@ graphene-119:
     platform_type: x86_64
     smt_size: 4
   chassis:
-    serial_number: 1009390121
+    serial: 1009390121
     manufacturer: TYAN
-    product_name: S5501
+    name: S5501

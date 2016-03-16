@@ -1,6 +1,6 @@
 ---
 griffon-43:
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.43
       mac: 00:e0:81:4f:b5:e4
@@ -72,7 +72,7 @@ griffon-43:
     cache_l1d: 32768
     cache_l2: 6291456
     cache_l3: 0
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-43:
       rev: A5CA
       vendor: Hitachi
   chassis:
-    serial_number: 812530048
+    serial: 812530048
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

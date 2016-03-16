@@ -23,7 +23,7 @@ nodes:
       virtual_size: null
     operating_system:
       release: "Squeeze"
-    block_devices:
+    storage_devices:
       sda:
         interface: 'SATA II'
         driver : "ahci"
@@ -33,7 +33,7 @@ nodes:
     sensors:
       power:
         available: true
-    network_interfaces:
+    network_adapters:
       eth0:
         device: eth0
         bridged: true
@@ -66,7 +66,7 @@ nodes:
         version: M3296
 
   griffon-[11-14]:
-    network_interfaces:
+    network_adapters:
       eth2:
         device: eth2
         bridged: false

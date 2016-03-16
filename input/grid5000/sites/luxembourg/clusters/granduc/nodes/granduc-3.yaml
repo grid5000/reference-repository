@@ -8,14 +8,14 @@ granduc-3:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  block_devices:
+  storage_devices:
     sda:
       model: MBB2147RC
       device: sda
       size: 146815733760
       rev: D406
       vendor: FUJITSU
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -59,9 +59,9 @@ granduc-3:
       ip: 172.17.176.3
       mac: 00:1c:23:d6:c3:0a
   chassis:
-    serial_number: 3R2593J
+    serial: 3R2593J
     manufacturer: Dell Inc.
-    product_name: PowerEdge 1950
+    name: PowerEdge 1950
   supported_job_types:
     virtual: ivt
   main_memory:

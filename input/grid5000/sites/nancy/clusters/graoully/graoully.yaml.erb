@@ -1,7 +1,7 @@
 nodes:
 <% (1..16).each { |i| %>
   graoully-<%= i %>:
-    network_interfaces:
+    network_adapters:
       eth0: 
         mounted: true
         ip: 172.16.70.<%= i %>

@@ -1,6 +1,6 @@
 ---
 econome-20:
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       ip: 172.16.192.20
@@ -28,9 +28,9 @@ econome-20:
       mounted: false
       management: false
   chassis:
-    serial_number: HN30D5J
+    serial: HN30D5J
     manufacturer: Dell Inc.
-    product_name: PowerEdge C6220
+    name: PowerEdge C6220
   supported_job_types:
     virtual: ivt
   processor:
@@ -46,7 +46,7 @@ econome-20:
     cache_l3: 20971520
   main_memory:
     ram_size: 68719476736
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 2000398934016

@@ -10,7 +10,7 @@ griffon-15:
     name: debian
     kernel: 3.16.0-4-amd64
     version: 8.2
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -21,7 +21,7 @@ griffon-15:
     vendor: Phoenix Technologies LTD
     version: V1.05
     release_date: 08/21/2009
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       ip: 172.16.65.15
@@ -80,6 +80,6 @@ griffon-15:
     cache_l2: 6291456
     cache_l3: 0
   chassis:
-    serial_number: 812530020
+    serial: 812530020
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

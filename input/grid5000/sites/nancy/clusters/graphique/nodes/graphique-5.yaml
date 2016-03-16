@@ -2,7 +2,7 @@
 graphique-5:
   supported_job_types:
     virtual: ivt
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       driver: bnx2x
@@ -58,16 +58,16 @@ graphique-5:
     smp_size: 2
     smt_size: 12
     platform_type: x86_64
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 299439751168
       model: PERC H330
       rev: 4.24
   chassis:
-    serial_number: BXTRV42
+    serial: BXTRV42
     manufacturer: Dell Inc.
-    product_name: PowerEdge R730
+    name: PowerEdge R730
   main_memory:
     ram_size: 68719476736
   bios:

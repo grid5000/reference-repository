@@ -21,7 +21,7 @@ nodes:
         - production
     operating_system:
       release: Jessie
-    block_devices:
+    storage_devices:
       sda:
         interface: SCSI
         driver: megaraid_sas
@@ -32,7 +32,7 @@ nodes:
         driver: megaraid_sas
         vendor: LSI Logic / Symbios Logic
         storage: HDD
-    network_interfaces:
+    network_adapters:
       eth0:
         enabled: true 
         mountable: true

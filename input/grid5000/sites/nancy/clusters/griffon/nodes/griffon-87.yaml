@@ -4,7 +4,7 @@ griffon-87:
     smp_size: 2
     smt_size: 8
     platform_type: x86_64
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -17,7 +17,7 @@ griffon-87:
     name: debian
     kernel: 3.16.0-4-amd64
     version: 8.2
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       ip: 172.16.65.87
@@ -80,6 +80,6 @@ griffon-87:
     cache_l2: 6291456
     cache_l3: 0
   chassis:
-    serial_number: 812530092
+    serial: 812530092
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

@@ -2,7 +2,7 @@
 griffon-8:
   supported_job_types:
     virtual: ivt
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.8
       mac: 00:e0:81:4f:e3:c2
@@ -55,7 +55,7 @@ griffon-8:
     smp_size: 2
     smt_size: 8
     platform_type: x86_64
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-8:
     kernel: 3.16.0-4-amd64
     version: 8.2
   chassis:
-    serial_number: 812530013
+    serial: 812530013
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

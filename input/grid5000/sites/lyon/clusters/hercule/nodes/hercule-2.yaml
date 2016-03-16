@@ -8,7 +8,7 @@ hercule-2:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: false
       mac: 00:8c:fa:0b:b4:bc
@@ -48,7 +48,7 @@ hercule-2:
     bmc:
       mac: 84:8f:69:fd:4f:3f
       ip: 172.17.51.2
-  block_devices:
+  storage_devices:
     sda:
       model: WDC WD2003FYYS-1
       device: sda
@@ -67,9 +67,9 @@ hercule-2:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: HQ3HD5J
+    serial: HQ3HD5J
     manufacturer: Dell Inc.
-    product_name: PowerEdge C6220
+    name: PowerEdge C6220
   main_memory:
     ram_size: 34359738368
   processor:

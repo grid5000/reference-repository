@@ -8,14 +8,14 @@ sol-47:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  block_devices:
+  storage_devices:
     sda:
       model: HITACHI HDS7225S
       device: sda
       size: 250056000000
       rev: A9CA
       vendor: Hitachi
-  network_interfaces:
+  network_adapters:
     myri0:
       mounted: true
       rate: 10000000000
@@ -52,9 +52,9 @@ sol-47:
   supported_job_types:
     virtual: amd-v
   chassis:
-    serial_number: xxxxxxxxxx
+    serial: xxxxxxxxxx
     manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+    name: Sun Fire X2200 M2
   processor:
     model: AMD Opteron
     cache_l1d: 65536

@@ -5,7 +5,7 @@
 <%
   site_uid = data.fetch('site_uid')
 
-  data.fetch('network_interfaces').each { |network_interface|
+  data.fetch('network_adapters').each { |network_interface|
 %>
 group {
 <%

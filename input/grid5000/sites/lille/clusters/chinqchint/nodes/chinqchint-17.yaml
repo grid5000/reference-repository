@@ -4,7 +4,7 @@ chinqchint-17:
     version: 6.0
     release_date: 09/10/2007
     vendor: Phoenix Technologies LTD
-  network_interfaces:
+  network_adapters:
     myri0:
       mounted: false
       rate: 10000000000
@@ -40,7 +40,7 @@ chinqchint-17:
     bmc:
       mac: 00:30:48:96:26:5a
       ip: 172.17.34.117
-  block_devices:
+  storage_devices:
     sda:
       model: Hitachi HDT72502
       device: sda
@@ -53,9 +53,9 @@ chinqchint-17:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: X0004746
+    serial: X0004746
     manufacturer: SGI.COM
-    product_name: AltixXE310
+    name: AltixXE310
   main_memory:
     ram_size: 8393850880
   processor:

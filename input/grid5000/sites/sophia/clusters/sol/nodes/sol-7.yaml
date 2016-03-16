@@ -4,7 +4,7 @@ sol-7:
     version: S39_3B13
     release_date: 12/13/2006
     vendor: Sun Microsystems
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -27,7 +27,7 @@ sol-7:
     bmc:
       mac: 00:16:36:c5:93:7c
       ip: 172.17.129.7
-  block_devices:
+  storage_devices:
     sda:
       model: HITACHI HDS7225S
       device: sda
@@ -39,9 +39,9 @@ sol-7:
     name: debian
     version: 6.0.6
   chassis:
-    serial_number: 0650QBT109
+    serial: 0650QBT109
     manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+    name: Sun Fire X2200 M2
   supported_job_types:
     virtual: amd-v
   main_memory:

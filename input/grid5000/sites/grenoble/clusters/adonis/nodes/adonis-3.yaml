@@ -4,7 +4,7 @@ adonis-3:
     version: R4222X80
     release_date: 05/20/2010
     vendor: American Megatrends Inc.
-  network_interfaces:
+  network_adapters:
     ib0:
       mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:3d:49
@@ -39,7 +39,7 @@ adonis-3:
     bmc:
       mac: 00:30:48:cc:b5:f6
       ip: 172.17.18.3
-  block_devices:
+  storage_devices:
     sda:
       model: WDC WD2502ABYS-0
       device: sda
@@ -53,9 +53,9 @@ adonis-3:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: "1234567890"
+    serial: "1234567890"
     manufacturer: Bull SAS
-    product_name: bullx
+    name: bullx
   processor:
     model: Intel Xeon
     cache_l1d: 32768

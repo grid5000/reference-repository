@@ -6,7 +6,7 @@ griffon-73:
     version: 8.2
   main_memory:
     ram_size: 17179869184
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.73
       mac: 00:e0:81:4f:cb:0d
@@ -53,7 +53,7 @@ griffon-73:
       management: false
   supported_job_types:
     virtual: ivt
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-73:
     version: V1.05
     release_date: 08/21/2009
   chassis:
-    serial_number: 812530078
+    serial: 812530078
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

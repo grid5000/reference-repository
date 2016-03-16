@@ -2,7 +2,7 @@
 griffon-70:
   main_memory:
     ram_size: 17179869184
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -11,7 +11,7 @@ griffon-70:
       vendor: Hitachi
   supported_job_types:
     virtual: ivt
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       ip: 172.16.65.70
@@ -80,6 +80,6 @@ griffon-70:
     cache_l2: 6291456
     cache_l3: 0
   chassis:
-    serial_number: 812530075
+    serial: 812530075
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

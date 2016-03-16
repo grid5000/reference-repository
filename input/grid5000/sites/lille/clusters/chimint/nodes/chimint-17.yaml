@@ -4,7 +4,7 @@ chimint-17:
     version: 1.5.3
     release_date: 10/22/2010
     vendor: Dell Inc.
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -29,7 +29,7 @@ chimint-17:
     bmc:
       mac: 84:2b:2b:70:f6:94
       ip: 172.17.33.117
-  block_devices:
+  storage_devices:
     sda:
       model: PERC H700
       device: sda
@@ -43,9 +43,9 @@ chimint-17:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: 8QM1Z4J
+    serial: 8QM1Z4J
     manufacturer: Dell Inc.
-    product_name: PowerEdge R410
+    name: PowerEdge R410
   main_memory:
     ram_size: 17179869184
   processor:

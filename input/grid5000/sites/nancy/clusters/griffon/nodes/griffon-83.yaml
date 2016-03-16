@@ -2,7 +2,7 @@
 griffon-83:
   supported_job_types:
     virtual: ivt
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -30,7 +30,7 @@ griffon-83:
     name: debian
     kernel: 3.16.0-4-amd64
     version: 8.2
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.83
       mac: 00:e0:81:4f:ca:9f
@@ -80,6 +80,6 @@ griffon-83:
     version: V1.05
     release_date: 08/21/2009
   chassis:
-    serial_number: 812530088
+    serial: 812530088
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

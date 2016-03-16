@@ -1,6 +1,6 @@
 ---
 parasilo-24:
-  network_interfaces:
+  network_adapters:
     eth1:
       interface: Ethernet
       management: false
@@ -29,9 +29,9 @@ parasilo-24:
       mac: ec:f4:bb:d1:10:1c
       mounted: false
   chassis:
-    serial_number: 50RGG42
+    serial: 50RGG42
     manufacturer: Dell Inc.
-    product_name: PowerEdge R630
+    name: PowerEdge R630
   bios:
     version: 1.0
     vendor: Dell Inc.
@@ -55,7 +55,7 @@ parasilo-24:
     smt_size: 16
     smp_size: 2
     platform_type: x86_64
-  block_devices:
+  storage_devices:
     sdf:
       device: sdf
       rev: A4AE

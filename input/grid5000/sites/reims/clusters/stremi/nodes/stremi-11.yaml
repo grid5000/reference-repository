@@ -4,7 +4,7 @@ stremi-11:
     version: O37
     release_date: 03/01/2012
     vendor: HP
-  block_devices:
+  storage_devices:
     sda:
       model: GB0250EAFYK
       device: sda
@@ -14,7 +14,7 @@ stremi-11:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -54,9 +54,9 @@ stremi-11:
       mac: 1c:c1:de:7a:67:f0
       ip: 172.17.160.11
   chassis:
-    serial_number: T421NP0120
+    serial: T421NP0120
     manufacturer: HP
-    product_name: ProLiant DL165 G7
+    name: ProLiant DL165 G7
   supported_job_types:
     virtual: amd-v
   main_memory:

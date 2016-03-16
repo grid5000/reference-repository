@@ -8,7 +8,7 @@ sol-14:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -31,7 +31,7 @@ sol-14:
     bmc:
       mac: 00:16:36:ca:0b:1a
       ip: 172.17.129.14
-  block_devices:
+  storage_devices:
     sda:
       model: HITACHI HDS7225S
       device: sda
@@ -39,9 +39,9 @@ sol-14:
       rev: A9CA
       vendor: Hitachi
   chassis:
-    serial_number: 0650QBT119
+    serial: 0650QBT119
     manufacturer: Sun Microsystems
-    product_name: Sun Fire X2200 M2
+    name: Sun Fire X2200 M2
   supported_job_types:
     virtual: amd-v
   processor:

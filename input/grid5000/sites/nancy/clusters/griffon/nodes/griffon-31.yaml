@@ -15,7 +15,7 @@ griffon-31:
     cache_l1d: 32768
     cache_l2: 6291456
     cache_l3: 0
-  network_interfaces:
+  network_adapters:
     eth0:
       interface: Ethernet
       ip: 172.16.65.31
@@ -60,7 +60,7 @@ griffon-31:
     bmc:
       ip: 172.17.65.31
       mac: 00:e0:81:4f:cb:03
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-31:
   main_memory:
     ram_size: 17179869184
   chassis:
-    serial_number: 812530036
+    serial: 812530036
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

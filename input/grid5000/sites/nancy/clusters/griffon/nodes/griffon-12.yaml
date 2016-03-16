@@ -1,6 +1,6 @@
 ---
 griffon-12:
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -34,7 +34,7 @@ griffon-12:
     platform_type: x86_64
   main_memory:
     ram_size: 17179869184
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.12
       mac: 00:e0:81:4f:ca:8b
@@ -80,6 +80,6 @@ griffon-12:
       mounted: false
       management: false
   chassis:
-    serial_number: 812530017
+    serial: 812530017
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

@@ -4,7 +4,7 @@ taurus-4:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       switch_port: TenGigabitEthernet 0/4
@@ -60,7 +60,7 @@ taurus-4:
     bmc:
       mac: d4:be:d9:fb:e7:96
       ip: 172.17.48.4
-  block_devices:
+  storage_devices:
     sda:
       model: PERC H710
       device: sda
@@ -73,9 +73,9 @@ taurus-4:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: FHTHD5J
+    serial: FHTHD5J
     manufacturer: Dell Inc.
-    product_name: PowerEdge R720
+    name: PowerEdge R720
   main_memory:
     ram_size: 34359738368
   processor:

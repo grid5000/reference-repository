@@ -110,14 +110,6 @@ global_hash["sites"].each do |site_uid, site|
       node["monitoring"] = {}   unless node.key?("monitoring")
       node["monitoring"]["wattmeter"] = false unless node["monitoring"].key?("wattmeter")
 
-      # Rename keys
-      node["storage_devices"] = node.delete("block_devices")
-      node["network_adapters"] = node.delete("network_interfaces")
-      if node.key?("chassis")
-        node["chassis"]["name"]   = node["chassis"].delete("product_name")
-        node["chassis"]["serial"] = node["chassis"].delete("serial_number")
-      end
-
       # Delete keys
       node["storage_devices"].keys.each { |key| 
         node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")

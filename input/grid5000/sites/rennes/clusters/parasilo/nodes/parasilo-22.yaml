@@ -1,6 +1,6 @@
 ---
 parasilo-22:
-  network_interfaces:
+  network_adapters:
     eth1:
       interface: Ethernet
       management: false
@@ -29,9 +29,9 @@ parasilo-22:
       mac: ec:f4:bb:d1:00:64
       mounted: false
   chassis:
-    serial_number: 4KZGG42
+    serial: 4KZGG42
     manufacturer: Dell Inc.
-    product_name: PowerEdge R630
+    name: PowerEdge R630
   bios:
     version: 1.0
     vendor: Dell Inc.
@@ -51,7 +51,7 @@ parasilo-22:
     clock_speed: 2400000000
   supported_job_types:
     virtual: ivt
-  block_devices:
+  storage_devices:
     sdf:
       device: sdf
       rev: A4AE

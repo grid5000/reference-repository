@@ -1,7 +1,7 @@
 nodes:
 <% (1..8).each { |i| %>
   grimoire-<%= i %>:
-    network_interfaces:
+    network_adapters:
       eth0: 
         mounted: true
         ip: 172.16.71.<%= i %>

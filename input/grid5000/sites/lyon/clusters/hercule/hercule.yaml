@@ -20,7 +20,7 @@ nodes:
       release: Wheezy
       version: "7"
       kernel: 3.2.0-4-amd64
-    block_devices:
+    storage_devices:
       sda:
         interface: SATA
         driver: ahci
@@ -33,7 +33,7 @@ nodes:
         interface: SATA
         driver: ahci
         storage: HDD
-    network_interfaces:
+    network_adapters:
       eth0:
         rate: 10.0+e9
         device: eth0

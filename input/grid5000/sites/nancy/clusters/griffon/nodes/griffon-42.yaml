@@ -25,7 +25,7 @@ griffon-42:
     name: debian
     kernel: 3.16.0-4-amd64
     version: 8.2
-  network_interfaces:
+  network_adapters:
     bmc:
       ip: 172.17.65.42
       mac: 00:e0:81:4f:e3:65
@@ -72,7 +72,7 @@ griffon-42:
       management: false
   supported_job_types:
     virtual: ivt
-  block_devices:
+  storage_devices:
     sda:
       device: sda
       size: 320072933376
@@ -80,6 +80,6 @@ griffon-42:
       rev: A5CA
       vendor: Hitachi
   chassis:
-    serial_number: 812530047
+    serial: 812530047
     manufacturer: TYAN Computer Corporation
-    product_name: S5393
+    name: S5393

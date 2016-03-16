@@ -4,7 +4,7 @@ chimint-4:
     version: 1.5.3
     release_date: 10/22/2010
     vendor: Dell Inc.
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -29,7 +29,7 @@ chimint-4:
     bmc:
       mac: 84:2b:2b:48:31:45
       ip: 172.17.33.104
-  block_devices:
+  storage_devices:
     sda:
       model: PERC H700
       device: sda
@@ -41,9 +41,9 @@ chimint-4:
     name: debian
     version: 6.0.6
   chassis:
-    serial_number: 3RM1Z4J
+    serial: 3RM1Z4J
     manufacturer: Dell Inc.
-    product_name: PowerEdge R410
+    name: PowerEdge R410
   supported_job_types:
     virtual: ivt
   main_memory:

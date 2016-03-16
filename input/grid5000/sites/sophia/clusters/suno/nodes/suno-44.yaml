@@ -4,7 +4,7 @@ suno-44:
     version: 1.1.5
     release_date: 07/29/2009
     vendor: Dell Inc.
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       rate: 1000000000
@@ -27,7 +27,7 @@ suno-44:
     bmc:
       mac: 00:26:b9:3f:45:30
       ip: 172.17.130.44
-  block_devices:
+  storage_devices:
     sda:
       model: PERC 6/i Adapter
       device: sda
@@ -39,9 +39,9 @@ suno-44:
     name: debian
     version: 6.0.6
   chassis:
-    serial_number: B3JPH4J
+    serial: B3JPH4J
     manufacturer: Dell Inc.
-    product_name: PowerEdge R410
+    name: PowerEdge R410
   supported_job_types:
     virtual: ivt
   processor:

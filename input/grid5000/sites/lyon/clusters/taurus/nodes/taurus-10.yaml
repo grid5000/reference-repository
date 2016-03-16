@@ -4,7 +4,7 @@ taurus-10:
     version: 1.2.6
     release_date: 05/10/2012
     vendor: Dell Inc.
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: true
       switch_port: TenGigabitEthernet 0/10
@@ -60,7 +60,7 @@ taurus-10:
     bmc:
       mac: d4:be:d9:fb:50:b2
       ip: 172.17.48.10
-  block_devices:
+  storage_devices:
     sda:
       model: PERC H710
       device: sda
@@ -71,9 +71,9 @@ taurus-10:
     name: debian
     version: 6.0.6
   chassis:
-    serial_number: 4HTHD5J
+    serial: 4HTHD5J
     manufacturer: Dell Inc.
-    product_name: PowerEdge R720
+    name: PowerEdge R720
   supported_job_types:
     virtual: ivt
   main_memory:

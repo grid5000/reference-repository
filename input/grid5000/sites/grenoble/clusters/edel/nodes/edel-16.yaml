@@ -8,7 +8,7 @@ edel-16:
       model: Virtual Floppy
       device: sdb
       rev: 1.0
-  block_devices:
+  storage_devices:
     sda:
       model: C400-MTFDDAA128M
       device: sda
@@ -18,7 +18,7 @@ edel-16:
       model: Virtual Floppy
       device: sdb
       rev: 1.0
-  network_interfaces:
+  network_adapters:
     ib0:
       mounted: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:5e:c3
@@ -66,9 +66,9 @@ edel-16:
   supported_job_types:
     virtual: ivt
   chassis:
-    serial_number: "123456789"
+    serial: "123456789"
     manufacturer: INSYDE
-    product_name: Thurley
+    name: Thurley
   processor:
     model: Intel Xeon
     cache_l1d: 32768

@@ -8,7 +8,7 @@ sagittaire-71:
     kernel: 2.6.32-5-amd64
     name: debian
     version: 6.0.6
-  network_interfaces:
+  network_adapters:
     eth0:
       mounted: false
       mac: 00:09:3d:11:db:b1
@@ -33,7 +33,7 @@ sagittaire-71:
     bmc:
       mac: 00:09:3d:11:db:b3
       ip: 172.17.49.71
-  block_devices:
+  storage_devices:
     sda:
       model: ST373207LC
       device: sda
@@ -47,9 +47,9 @@ sagittaire-71:
   supported_job_types:
     virtual: false
   chassis:
-    serial_number: XG052083258
+    serial: XG052083258
     manufacturer: Sun Microsystems
-    product_name: Sun Fire V20z
+    name: Sun Fire V20z
   main_memory:
     ram_size: 17179869184
   processor:
