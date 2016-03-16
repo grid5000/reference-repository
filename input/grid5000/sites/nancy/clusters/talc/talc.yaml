@@ -12,19 +12,26 @@ nodes:
       deploy: true
       besteffort: true
       queues: 
+       - admin
        - production
+    performance:
+      core_flops: 0
+      node_flops: 0
     operating_system:
       release: Jessie
     storage_devices:
       sda:
         interface: SATA II
         driver: ahci
+        storage: HDD
+        vendor: null
     network_adapters:
       eth0:
         bridged: true
         device: eth0
         vendor: intel
         version: 80003ES2LAN
+        ip6: null
       eth1:
         rate: 1000000000
         bridged: false
@@ -41,6 +48,8 @@ nodes:
         device: bmc
         vendor: Tyan
         version: M3296
+        ip: null
+        mac: null
     gpu:
       gpu: false
 
