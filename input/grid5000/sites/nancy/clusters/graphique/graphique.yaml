@@ -1,0 +1,74 @@
+---
+# Cluster description
+model: Dell R720
+created_at: 2015-05-12
+kavlan: true
+queues:
+- admin
+- production
+
+nodes:
+
+# Global node properties
+  graphique-[1-6]:
+    performance:
+     core_flops: 0
+     node_flops: 0
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      queues: 
+      - admin
+      - production
+    operating_system:
+      name: debian
+      release: Jessie
+      version: 8.2
+      kernel: 3.16.0-4-amd64
+    storage_devices:
+      sda:
+        interface: SCSI
+        driver: megaraid_sas
+        storage: HDD
+    network_adapters:
+      eth0:
+        bridged: false
+        vendor: Broadcom
+        model: Broadcom 57800 10 GB DA/SFP+
+      eth1:
+        bridged: false
+        vendor: Broadcom
+        model: Broadcom 57800 10 GB DA/SFP+
+      eth2:
+        enabled: true
+        bridged: true
+        vendor: Broadcom
+        model: Broadcom 57800 1 GB Base-T
+      eth3:
+        bridged: false
+        vendor: Broadcom
+        model: Broadcom 57800 1 GB Base-T
+      bmc:
+        interface: Ethernet
+        rate: 1.G
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+    gpu:
+        gpu: true
+        gpu_count: 2
+        gpu_vendor: Nvidia
+        gpu_model: GTX 980
+
+  graphique-[1-2]:
+    supported_job_types:
+      max_walltime: 86400
+
+  graphique-[3-4]:
+    supported_job_types:
+      max_walltime: 172800
+
+  graphique-[5-6]:
+    supported_job_types:
+      max_walltime: 31536000
