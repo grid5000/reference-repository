@@ -17,9 +17,9 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-      queues: [admin default]
-    main_memory:
-      virtual_size: nil
+      queues:
+      - admin
+      - default
     operating_system:
       release: Jessie
     storage_devices:
@@ -62,7 +62,7 @@ nodes:
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth1:
-        rate: 10.G
+        rate: 10000000000
         enabled: false 
         mountable: false
         bridged: false
@@ -70,7 +70,7 @@ nodes:
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth2:
-        rate: 10.G
+        rate: 10000000000
         enabled: false
         mountable: false
         bridged: false
@@ -78,7 +78,7 @@ nodes:
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
       eth3:
-        rate: 10.G
+        rate: 10000000000
         enabled: false 
         mountable: false
         bridged: false
@@ -86,7 +86,7 @@ nodes:
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
       eth4:
-        rate: 1.G
+        rate: 1000000000
         enabled: false 
         mountable: false
         bridged: false
@@ -94,7 +94,7 @@ nodes:
         vendor: Intel Corporation
         model: I350 Gigabit Network Connection
       eth5:
-        rate: 1.G
+        rate: 1000000000
         enabled: false 
         mountable: false
         bridged: false
@@ -104,14 +104,19 @@ nodes:
       ib0:
         enabled: true 
         mountable: true
-        bridged: true
+        bridged: false
         device: ib0
         vendor: Mellanox
         model: MT27500 Family [ConnectX-3]
         switch: sgraoullyib
+        hwid: null
+        ib_switch_card: null
+        ib_switch_card_pos: null
+        ip6: null
+        mac: null
       bmc:
         interface: Ethernet
-        rate: 1.G
+        rate: 1000000000
         enabled: true
         mounted: false
         mountable: false
