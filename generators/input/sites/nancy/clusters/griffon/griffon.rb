@@ -124,7 +124,6 @@ site :nancy do |site_uid|
             :vendor           => 'Mellanox',
             :version          => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'version'),
             :driver           => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'driver'),
-            :network_address  => "#{node_uid}-ib0.#{site_uid}.grid5000.fr",
             :ip               => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'ip'),
             :ip6               => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'ip6'),
             :guid             => lookup(node_uid, node_uid, 'network_interfaces', 'ib0', 'guid'),
