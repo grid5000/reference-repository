@@ -16,10 +16,10 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-    max_walltime: 0
-    queues:
+      queues:
       - admin
       - default
+      max_walltime: 0
     operating_system:
       name: debian
       release: Jessie
@@ -44,7 +44,7 @@ nodes:
             metric: power
 
 # Nodes with 4 interfaces
-  grisou-[1-39]:
+  grisou-[1-40]:
     network_adapters:
       eth0:
         enabled: true 
@@ -54,7 +54,7 @@ nodes:
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth1:
-        rate: 1.0e+9
+        rate: 10.0e+9
         enabled: false 
         mountable: true
         bridged: true
@@ -62,7 +62,7 @@ nodes:
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth2:
-        rate: 1.0e+9
+        rate: 10.0e+9
         enabled: false
         mountable: true
         bridged: true
@@ -70,7 +70,7 @@ nodes:
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
       eth3:
-        rate: 1.0e+9
+        rate: 10.0e+9
         enabled: false 
         mountable: true
         bridged: true
@@ -78,7 +78,7 @@ nodes:
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
       eth4:
-        rate: 1.0e+6
+        rate: 1.0e+9
         enabled: false 
         mountable: false
         bridged: false
@@ -86,7 +86,7 @@ nodes:
         vendor: Intel Corporation
         model: I350 Gigabit Network Connection
       eth5:
-        rate: 1.0e+6
+        rate: 1.0e+9
         enabled: false 
         mountable: false
         bridged: false
@@ -95,7 +95,7 @@ nodes:
         model: I350 Gigabit Network Connection
       bmc:
         interface: Ethernet
-        rate: 1.0e+6
+        rate: 1.0e+9
         enabled: true
         mounted: false
         mountable: false
@@ -103,7 +103,7 @@ nodes:
         device: bmc
 
 # Node with 1 mounted interface
-  grisou-[40-48]:
+  grisou-[41-48]:
     network_adapters:
       eth0:
         enabled: true 
@@ -113,15 +113,15 @@ nodes:
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth1:
-        rate: 1.0e+9
+        rate: 10.0e+9
         enabled: false 
         mountable: false
         bridged: false
         device: eth1
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      eth1: 
-        rate: 1.0e+9
+      eth2: 
+        rate: 10.0e+9
         enabled: false
         mountable: false
         bridged: false
@@ -129,7 +129,7 @@ nodes:
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
       eth3: 
-        rate: 1.0e+9
+        rate: 10.0e+9
         enabled: false 
         mountable: false
         bridged: false
@@ -137,7 +137,7 @@ nodes:
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
       eth4: 
-        rate: 1.0e+6
+        rate: 1.0e+9
         enabled: false 
         mountable: false
         bridged: false
@@ -145,7 +145,7 @@ nodes:
         vendor: Intel Corporation
         model: I350 Gigabit Network Connection
       eth5: 
-        rate: 1.0e+6
+        rate: 1.0e+9
         enabled: false 
         mountable: false
         bridged: false
@@ -154,7 +154,7 @@ nodes:
         model: I350 Gigabit Network Connection
       bmc:
         interface: Ethernet
-        rate: 1.0e+6
+        rate: 1.0e+9
         enabled: true
         mounted: false
         mountable: false
@@ -162,7 +162,7 @@ nodes:
         device: bmc
 
 # Node with infiniband
-  grisou-[49-51]:
+  grisou-[49-50]:
     network_adapters:
       eth0:
         enabled: true 
@@ -172,7 +172,7 @@ nodes:
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth1:
-        rate: 1.0e+9
+        rate: 10.0e+9
         enabled: false 
         mountable: false
         bridged: false
@@ -180,7 +180,7 @@ nodes:
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth4:
-        rate: 1.0e+9
+        rate: 10.0e+9
         enabled: false
         mountable: false
         bridged: false
@@ -188,7 +188,7 @@ nodes:
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
       eth5: 
-        rate: 1.0e+9
+        rate: 10.0e+9
         enabled: false 
         mountable: false
         bridged: false
@@ -197,7 +197,7 @@ nodes:
         model: Ethernet 10G 2P X520 Adapter
       bmc: 
         interface: Ethernet
-        rate: 1.0e+6
+        rate: 1.0e+9
         enabled: true
         mounted: false
         mountable: false
