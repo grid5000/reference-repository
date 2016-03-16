@@ -1,0 +1,8 @@
+nodes:
+<% (1..4).each { |i| %>
+  graphite-<%= i %>:
+    network_adapters:
+      ib0: 
+        mounted: true
+        ip: 172.16.68.<%= i + 8 %>
+<% } %>
