@@ -23,40 +23,57 @@ nodes:
       virtual_size: null
     operating_system:
       name: debian
-      release: Wheezy
-      version: "7"
+      release: Jessie
+      version: "8.2"
       kernel: 3.2.0-4-amd64
     block_devices:
       sda:
         interface: SATA II
         driver: megaraid_sas
         storage: SSD
+        vendor: null
       sdb:
         interface: SATA II
         driver: megaraid_sas
         storage: SSD
+        vendor: null
     network_interfaces:
       eth0:
         bridged: true
         device: eth0
         vendor: intel
         version: 82599EB
-        network_address: #{node_uid}.#{site_uid}.grid5000.fr
+        ip6: null
       eth1:
         bridged: false
         device: eth1
         vendor: intel
         version: 82599EB
+        rate: null
       eth2:
         bridged: false
         device: eth2
         vendor: intel
         version: I350
+        rate: null
+        switch: null
+        switch_port: null
       eth3:
         bridged: false
         device: eth3
         vendor: intel
         version: I350
+        rate: null
+        switch: null
+        switch_port: null
+      ib0:
+        enabled: true 
+        mountable: true
+        mounted: true
+        bridged: true
+        device: ib0
+        vendor: Mellanox
+        switch: sgraoullyib
       bmc:
         interface: Ethernet
         rate: 100.0e+6

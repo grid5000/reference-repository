@@ -3,7 +3,10 @@
 model: "Carri System 5393"
 created_at: 2011-01-20
 kavlan: true
-production: true
+#production: true
+queues:
+  - default
+  - admin
 
 # Retired nodes
 nodes:
@@ -24,8 +27,8 @@ nodes:
      virtual_size: null
     operating_system:
      name: debian
-     release: Wheezy
-     version: "7"
+     release: Jessie
+     version: "8.2"
      kernel: 3.2.0-4-amd64
     block_devices:
       sda:
@@ -43,6 +46,11 @@ nodes:
         device: eth1
         vendor: intel
         version: 82574L
+        bridged: false
+        device: eth2
+        vendor: intel
+        version: 82574L
+      eth2:
         bridged: false
         device: eth2
         vendor: intel

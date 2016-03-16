@@ -91,6 +91,7 @@ global_hash["sites"].each do |site_uid, site|
     # Write node info
     cluster["nodes"].each do |node_uid, node|
       pp node_uid
+      # pp node if node_uid == "graphique-1"
 
 #     next unless node_uid == "griffon-1"
       node["uid"] = node_uid
@@ -170,7 +171,10 @@ global_hash["sites"].each do |site_uid, site|
           network_adapter["switch"] = switch if switch
           network_adapter["switch_port"] = port if port
 #        end
+
       }
+
+      node["sensors"] ||= {}
 
       if node.key?("sensors") and node.key?("pdu") and node["pdu"].key?("pdu_name")
         node["sensors"]["power"] = {}                  unless node["sensors"].key?("power")
