@@ -1,5 +1,13 @@
 ---
 nodes:
+  graphene-[1-104]:
+    monitoring:
+      wattmeter: shared
+
+  graphene-[105-144]:
+    monitoring:
+      wattmeter: true
+
   graphene-1:
     network_adapters:
       eth0:
@@ -1865,7 +1873,7 @@ nodes:
         switch: sgraphene4
         switch_port: Gi1/0/40
       ib0:
-        switch: sgriffonib
+        switch: sgrapheneib
       bmc:
         switch: sgraphene4-ipmi
         switch_port: 1/0/20
