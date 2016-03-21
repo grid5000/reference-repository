@@ -84,6 +84,11 @@ class ::Hash
     }
   end
 
+  # sort a hash according to the position of the key in the array
+  def sort_by_array(array)
+    Hash[sort_by{|key, _| array.index(key) || length}] 
+  end
+
   # Add an element composed of nested Hashes made from elements found in "array" argument
   # i.e.: from_array([a, b, c],"foo") -> {a: {b: {c: "foo"}}}
   def self.from_array(array, value)

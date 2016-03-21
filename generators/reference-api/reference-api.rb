@@ -16,13 +16,6 @@ refapi_path = "/tmp/data"
 #global_hash = load_yaml_file_hierarchy("../../input/example/")
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 
-class Hash
-  # sort a hash according to the position of the key in the array
-  def sort_by_array(array)
-    Hash[sort_by{|key, _| array.index(key) || length}] 
-  end
-end
-
 # Write pretty and sorted JSON files
 def write_json(filepath, data)
   def rec_sort(h)
@@ -91,24 +84,25 @@ global_hash["sites"].each do |site_uid, site|
     # Write node info
     cluster["nodes"].each do |node_uid, node|
       pp node_uid
-      # pp node if node_uid == "graphique-1"
 
-#     next unless node_uid == "griffon-1"
+      #pp node if node_uid == "graoully-1"
+      #next unless node_uid == "griffon-1"
+      
       node["uid"] = node_uid
       node["type"] = "node"
       if node.key?("processor")
-        node["processor"]["cache_l1"] = nil unless node["processor"].key?("cache_l1")
+        node["processor"]["cache_l1"] ||= nil
       end
       
       # Add default keys
       node["gpu"] = {} unless node.key?("gpu")
-      node["gpu"]["gpu"] = false unless node["gpu"].key?("gpu")
+      node["gpu"]["gpu"] ||= false
       
       node["main_memory"] = {} unless node.key?("main_memory")
-      node["main_memory"]["virtual_size"] = nil unless node["main_memory"].key?("virtual_size")
+      node["main_memory"]["virtual_size"] ||= nil
 
-      node["monitoring"] = {}   unless node.key?("monitoring")
-      node["monitoring"]["wattmeter"] = false unless node["monitoring"].key?("wattmeter")
+      node["monitoring"] = {} unless node.key?("monitoring")
+      node["monitoring"]["wattmeter"] ||= "false"
 
       # Delete keys
       node["storage_devices"].keys.each { |key| 
@@ -146,7 +140,7 @@ global_hash["sites"].each do |site_uid, site|
         #   pp "#{network_adapter["network_address"]}, #{network_adapter["switch"]} or #{network_adapter["switch_port"]}"
         # end
         
-        if network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"]) && ! network_adapter.key?("switch")
+        if network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"])
           # Primary network_adapter
           network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr"
          
@@ -168,14 +162,27 @@ global_hash["sites"].each do |site_uid, site|
 
       node["sensors"] ||= {}
 
-      if node.key?("sensors") and node.key?("pdu") and node["pdu"].key?("pdu_name")
-        node["sensors"]["power"] = {}                  unless node["sensors"].key?("power")
-        node["sensors"]["power"]["via"] = {}           unless node["sensors"]["power"].key?("via")
-        node["sensors"]["power"]["via"]["pdu"] = []    unless node["sensors"]["power"]["via"].key?("pdu")
-        node["sensors"]["power"]["via"]["pdu"][0] = {} unless node["sensors"]["power"]["via"]["pdu"].size > 0
+      if node.key?("pdu") and node["pdu"].key?("pdu_name")
+        pdu_name     = node["pdu"]["pdu_name"]
+        pdu_position = node["pdu"]["pdu_position"]
         
-        node["sensors"]["power"]["via"]["pdu"][0]["uid"]  = node["pdu"]["pdu_name"]
-        node["sensors"]["power"]["via"]["pdu"][0]["port"] = node["pdu"]["pdu_position"] if  node["pdu"].key?("pdu_position")
+        if cluster_uid == "graphene"
+          pp "aa #{pdu_name} #{pdu_position} : #{pdu_info[pdu_name][pdu_position]}"
+        end
+
+#        if pdu_info[pdu_name][pdu_position] == 1
+#          node["monitoring"]["wattmeter"] = "true"
+#        else
+#          node["monitoring"]["wattmeter"] = "shared"
+#        end    
+
+        node["sensors"]["power"] ||= {}
+        node["sensors"]["power"]["via"] ||= {}
+        node["sensors"]["power"]["via"]["pdu"] ||= []
+        node["sensors"]["power"]["via"]["pdu"][0] ||= {}
+        
+        node["sensors"]["power"]["via"]["pdu"][0]["uid"]  = pdu_name
+        node["sensors"]["power"]["via"]["pdu"][0]["port"] = pdu_position
 
         node.delete("pdu")
       end
