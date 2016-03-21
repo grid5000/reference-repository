@@ -37,7 +37,7 @@ end
 #  In the network description, if the node interface is given (using "port" attribute),
 #  the interface parameter must be used.
 def net_switch_port_lookup(site, node_uid, interface='')
-  site["net-links"].each do |switch_uid, switch| # TODO: rename net-links<->network
+  site["networks"].each do |switch_uid, switch|
     #pp switch_uid
     switch["linecards"].each do |lc_uid,lc|
       lc["ports"].each do |port_uid,port|
@@ -82,7 +82,7 @@ global_hash["sites"].each do |site_uid, site|
                cluster.reject {|k, v| k == "nodes"})
     
     # Write node info
-    cluster["nodes"].each do |node_uid, node|
+    cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
       pp node_uid
 
       #pp node if node_uid == "graoully-1"
@@ -101,15 +101,13 @@ global_hash["sites"].each do |site_uid, site|
       node["main_memory"] = {} unless node.key?("main_memory")
       node["main_memory"]["virtual_size"] ||= nil
 
-      node["monitoring"] = {} unless node.key?("monitoring")
-      node["monitoring"]["wattmeter"] ||= "false"
-
       # Delete keys
       node["storage_devices"].keys.each { |key| 
         node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")
         node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
       }
-      
+      node.delete("status")
+
       # Type conversion
       node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
 
@@ -162,29 +160,47 @@ global_hash["sites"].each do |site_uid, site|
 
       node["sensors"] ||= {}
 
-      if node.key?("pdu") and node["pdu"].key?("pdu_name")
-        pdu_name     = node["pdu"]["pdu_name"]
-        pdu_position = node["pdu"]["pdu_position"]
-        
-        if cluster_uid == "graphene"
-          pp "aa #{pdu_name} #{pdu_position} : #{pdu_info[pdu_name][pdu_position]}"
-        end
+      node["monitoring"] = {} unless node.key?("monitoring")
+      node["monitoring"]["wattmeter"] ||= false
+      node["monitoring"]["wattmeter"] = "true"  if node["monitoring"]["wattmeter"] == true
+      node["monitoring"]["wattmeter"] = "false" if node["monitoring"]["wattmeter"] == false
+      if (node.key?("pdu") && node["pdu"].key?("pdu_name")) ||
+          (node.key?("pdu1") && node["pdu1"].key?("pdu_name"))
 
-#        if pdu_info[pdu_name][pdu_position] == 1
-#          node["monitoring"]["wattmeter"] = "true"
-#        else
-#          node["monitoring"]["wattmeter"] = "shared"
-#        end    
+        #if cluster_uid == "graphene"
+        #  pp "#{pdu_name} #{pdu_position} : #{pdu_info[pdu_name][pdu_position]}"
+        #end
+
+#       if pdu_info[pdu_name][pdu_position] == 1
+#         node["monitoring"]["wattmeter"] = "true"
+#       else
+#         node["monitoring"]["wattmeter"] = "shared"
+#       end
 
         node["sensors"]["power"] ||= {}
+        node["sensors"]["power"]["available"] = true if node["monitoring"]["wattmeter"] != "false"
+
         node["sensors"]["power"]["via"] ||= {}
         node["sensors"]["power"]["via"]["pdu"] ||= []
-        node["sensors"]["power"]["via"]["pdu"][0] ||= {}
-        
-        node["sensors"]["power"]["via"]["pdu"][0]["uid"]  = pdu_name
-        node["sensors"]["power"]["via"]["pdu"][0]["port"] = pdu_position
+        i=0
+        ['pdu', 'pdu1', 'pdu2'].each { |key|
+          if (node.key?(key) and node[key].key?("pdu_name"))
+            node["sensors"]["power"]["via"]["pdu"][i] ||= {}            
+            node["sensors"]["power"]["via"]["pdu"][i]["uid"]  = node[key]["pdu_name"]
+            node["sensors"]["power"]["via"]["pdu"][i]["port"] = node[key]["pdu_position"] unless node["monitoring"]["wattmeter"] == "shared"
+            node["sensors"]["power"]["via"]["pdu"][i].delete("port") if node["monitoring"]["wattmeter"] == "shared"
+            node.delete(key)
+            i = i+1
+          end
+        }
+       
+        pp node["monitoring"]["wattmeter"]
 
-        node.delete("pdu")
+        if node["monitoring"]["wattmeter"] != "false"
+          node["sensors"]["power"]["via"]["api"] ||= {}
+          node["sensors"]["power"]["via"]["api"]["metric"] = "power"
+        end
+
       end
 
       node.delete("kavlan")

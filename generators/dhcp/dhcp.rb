@@ -66,7 +66,7 @@ global_hash["sites"].each { |site_uid, site_hash|
   }
   
   # Other dhcp files
-  ["net-links", "laptops", "dom0"].each { |key|
+  ["networks", "laptops", "dom0"].each { |key|
     write_dhcp_file({
                       "filename"            => key + ".conf",
                       "site_uid"            => site_uid,

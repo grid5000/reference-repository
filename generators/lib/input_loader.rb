@@ -43,6 +43,8 @@ def load_yaml_file_hierarchy(directory)
 
   }
 
+#  pp global_hash
+
   return global_hash
 
 end
