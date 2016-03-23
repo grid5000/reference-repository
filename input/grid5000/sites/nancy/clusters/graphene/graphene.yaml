@@ -1,6 +1,6 @@
 ---
 # Cluster description
-model: "Carri System 5393"
+model: Carri System 5393
 created_at: 2011-01-20
 kavlan: true
 #production: true
@@ -10,9 +10,24 @@ queues:
 
 # Retired nodes
 nodes:
-  
+
 # Global node properties
   graphene-[1-144]:
+    operating_system:
+      kernel: 3.16.0-4-amd64
+      name: debian
+      version: '8.2'
+    processor:
+      cache_l1d: 32768
+      cache_l1i: 32768
+      cache_l2: 262144
+      cache_l3: 8388608
+      clock_speed: 2530000000
+      instruction_set: x86-64
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) CPU           X3440  @ 2.53GHz
+      vendor: Intel
+      version: X3440
     performance:
       core_flops: 8.024e+9
       node_flops: 31.01e+9
@@ -33,32 +48,39 @@ nodes:
         interface: SATA II
         driver: ahci
         storage: HDD
+        vendor: Hitachi
     network_adapters:
       eth0:
+        enabled: true
+        mountable: true
         bridged: true
-        device: eth0
         vendor: intel
         version: 82574L
       eth1:
+        enabled: false
+        mountable: false
         bridged: false
         device: eth1
         vendor: intel
         version: 82574L
         bridged: false
-        device: eth2
         vendor: intel
         version: 82574L
       eth2:
+        enabled: false
+        mountable: false
         bridged: false
-        device: eth2
         vendor: intel
         version: 82574L
       ib0:
-        device: ib0
+        enabled: true
+        mountable: true
         vendor: Mellanox
         version: MT26418
         switch: sgrapheneib
       ib1:
+        enabled: false
+        mountable: false
         device: ib1
         vendor: Mellanox
         version: MT26418
@@ -71,11 +93,1309 @@ nodes:
         management: true
         vendor: Tyan
         version: AST2050
-        device: bmc
     gpu:
      gpu: false
     sensors:
       power:
         available: true
+
+
+  graphene-[26-]:
+    ib0:
+      driver: mlx4_core
+      interface: InfiniBand
+      management: false
+      mounted: true
+      rate: 20000000000
+      version: MT26418
+    ib1:
+      driver: mlx4_core
+      enabled: false
+      interface: InfiniBand
+      management: false
+      mountable: false
+      mounted: false
+      rate: 10000000000
+      version: MT26418
+
   graphene-96:
     status: retired
+
+  graphene-1:
+    chassis:
+      serial: 1009390003
+    network_adapters:
+      bmc:
+        ip: 172.17.64.1
+        mac: 00:e0:81:d5:06:83
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:680
+  graphene-10:
+    chassis:
+      serial: 1009390012
+    network_adapters:
+      bmc:
+        ip: 172.17.64.10
+        mac: 00:e0:81:d5:06:d3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6d0
+  graphene-100:
+    chassis:
+      serial: 1009390102
+    network_adapters:
+      bmc:
+        ip: 172.17.64.100
+        mac: 00:e0:81:d5:07:cf
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7cc
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:0d
+        ip: 172.18.64.100
+        ip6: fe80::202:c903:b:5d0d
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5d:0e
+  graphene-101:
+    chassis:
+      serial: 1009390103
+    network_adapters:
+      bmc:
+        ip: 172.17.64.101
+        mac: 00:e0:81:d5:06:a3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6a0
+  graphene-102:
+    chassis:
+      serial: 1009390104
+    network_adapters:
+      bmc:
+        ip: 172.17.64.102
+        mac: 00:e0:81:d5:08:bf
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8bc
+  graphene-103:
+    chassis:
+      serial: 1009390105
+    network_adapters:
+      bmc:
+        ip: 172.17.64.103
+        mac: 00:e0:81:d5:08:cb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8c8
+  graphene-104:
+    chassis:
+      serial: 1009390106
+    network_adapters:
+      bmc:
+        ip: 172.17.64.104
+        mac: 00:e0:81:d5:07:67
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:764
+  graphene-105:
+    chassis:
+      serial: 1009390107
+    network_adapters:
+      bmc:
+        ip: 172.17.64.105
+        mac: 00:e0:81:d5:06:bf
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6bc
+  graphene-106:
+    chassis:
+      serial: 1009390108
+    network_adapters:
+      bmc:
+        ip: 172.17.64.106
+        mac: 00:e0:81:d5:07:f7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7f4
+  graphene-107:
+    chassis:
+      serial: 1009390109
+    network_adapters:
+      bmc:
+        ip: 172.17.64.107
+        mac: 00:e0:81:d5:07:cb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7c8
+  graphene-108:
+    chassis:
+      serial: 1009390110
+    network_adapters:
+      bmc:
+        ip: 172.17.64.108
+        mac: 00:e0:81:d5:07:17
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:714
+  graphene-109:
+    chassis:
+      serial: 1009390111
+    network_adapters:
+      bmc:
+        ip: 172.17.64.109
+        mac: 00:e0:81:d5:08:33
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:830
+  graphene-11:
+    chassis:
+      serial: 1009390013
+    network_adapters:
+      bmc:
+        ip: 172.17.64.11
+        mac: 00:e0:81:d5:08:7f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:87c
+  graphene-110:
+    chassis:
+      serial: 1009390112
+    network_adapters:
+      bmc:
+        ip: 172.17.64.110
+        mac: 00:e0:81:d5:07:6f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:76c
+  graphene-111:
+    chassis:
+      serial: 1009390113b
+    network_adapters:
+      bmc:
+        ip: 172.17.64.111
+        mac: 00:e0:81:d5:08:5b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:858
+  graphene-112:
+    chassis:
+      serial: 1009390114
+    network_adapters:
+      bmc:
+        ip: 172.17.64.112
+        mac: 00:e0:81:d5:08:13
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:810
+  graphene-113:
+    chassis:
+      serial: 1009390115
+    network_adapters:
+      bmc:
+        ip: 172.17.64.113
+        mac: 00:e0:81:d5:07:bf
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7bc
+  graphene-114:
+    chassis:
+      serial: 1009390116
+    network_adapters:
+      bmc:
+        ip: 172.17.64.114
+        mac: 00:e0:81:d5:06:b3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6b0
+  graphene-115:
+    chassis:
+      serial: 1009390117
+    network_adapters:
+      bmc:
+        ip: 172.17.64.115
+        mac: 00:e0:81:d5:08:07
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:804
+  graphene-116:
+    chassis:
+      serial: 1009390118
+    network_adapters:
+      bmc:
+        ip: 172.17.64.116
+        mac: 00:e0:81:d5:08:2b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:828
+  graphene-117:
+    chassis:
+      serial: 1009390119
+    network_adapters:
+      bmc:
+        ip: 172.17.64.117
+        mac: 00:e0:81:d5:06:e7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6e4
+  graphene-118:
+    chassis:
+      serial: 1009390120
+    network_adapters:
+      bmc:
+        ip: 172.17.64.118
+        mac: 00:e0:81:d5:07:bb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7b8
+  graphene-119:
+    chassis:
+      serial: 1009390121
+    network_adapters:
+      bmc:
+        ip: 172.17.64.119
+        mac: 00:e0:81:d5:06:f3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6f0
+  graphene-12:
+    chassis:
+      serial: 1009390014
+    network_adapters:
+      bmc:
+        ip: 172.17.64.12
+        mac: 00:e0:81:d5:07:8f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:78c
+  graphene-120:
+    chassis:
+      serial: 1009390122
+    network_adapters:
+      bmc:
+        ip: 172.17.64.120
+        mac: 00:e0:81:d5:08:af
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8ac
+  graphene-121:
+    chassis:
+      serial: 1009390123
+    network_adapters:
+      bmc:
+        ip: 172.17.64.121
+        mac: 00:e0:81:d5:07:3b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:738
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:2d
+        ip: 172.18.64.121
+        ip6: fe80::202:c903:b:932d
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:2e
+  graphene-122:
+    chassis:
+      serial: 1009390124
+    network_adapters:
+      bmc:
+        ip: 172.17.64.122
+        mac: 00:e0:81:d5:08:3b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:838
+  graphene-124:
+    chassis:
+      serial: 1009390126
+    network_adapters:
+      bmc:
+        ip: 172.17.64.124
+        mac: 00:e0:81:d5:06:a7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6a4
+  graphene-125:
+    chassis:
+      serial: 1009390127
+    network_adapters:
+      bmc:
+        ip: 172.17.64.125
+        mac: 00:e0:81:d5:08:6b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:868
+  graphene-126:
+    chassis:
+      serial: 1009390128
+    network_adapters:
+      bmc:
+        ip: 172.17.64.126
+        mac: 00:e0:81:d5:08:d3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8d0
+  graphene-127:
+    chassis:
+      serial: 1009390129
+    network_adapters:
+      bmc:
+        ip: 172.17.64.127
+        mac: 00:e0:81:d5:08:43
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:840
+  graphene-128:
+    chassis:
+      serial: 1009390130
+    network_adapters:
+      bmc:
+        ip: 172.17.64.128
+        mac: 00:e0:81:d5:08:e7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8e4
+  graphene-129:
+    chassis:
+      serial: 1009390131
+    network_adapters:
+      bmc:
+        ip: 172.17.64.129
+        mac: 00:e0:81:d5:07:1f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:71c
+  graphene-13:
+    chassis:
+      serial: 1009390015
+    network_adapters:
+      bmc:
+        ip: 172.17.64.13
+        mac: 00:e0:81:d5:06:ff
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6fc
+  graphene-130:
+    chassis:
+      serial: 1009390132b
+    network_adapters:
+      bmc:
+        ip: 172.17.64.130
+        mac: 00:e0:81:d2:5a:37
+      eth0:
+        ip6: fe80::2e0:81ff:fed2:5a34
+  graphene-131:
+    chassis:
+      serial: 1009390133b
+    network_adapters:
+      bmc:
+        ip: 172.17.64.131
+        mac: 00:e0:81:d5:06:fb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6f8
+  graphene-132:
+    chassis:
+      serial: 1009390134
+    network_adapters:
+      bmc:
+        ip: 172.17.64.132
+        mac: 00:e0:81:d5:08:8f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:88c
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:0d
+        ip: 172.18.64.132
+        ip6: fe80::202:c903:b:920d
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:0e
+  graphene-133:
+    chassis:
+      serial: 1009390135
+    network_adapters:
+      bmc:
+        ip: 172.17.64.133
+        mac: 00:e0:81:d5:07:e3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7e0
+  graphene-134:
+    chassis:
+      serial: 1009390136
+    network_adapters:
+      bmc:
+        ip: 172.17.64.134
+        mac: 00:e0:81:d5:08:eb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8e8
+  graphene-135:
+    chassis:
+      serial: 1009390137
+    network_adapters:
+      bmc:
+        ip: 172.17.64.135
+        mac: 00:e0:81:d5:06:73
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:670
+  graphene-136:
+    chassis:
+      serial: 1009390138
+    network_adapters:
+      bmc:
+        ip: 172.17.64.136
+        mac: 00:e0:81:d5:07:7f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:77c
+  graphene-137:
+    chassis:
+      serial: 1009390139
+    network_adapters:
+      bmc:
+        ip: 172.17.64.137
+        mac: 00:e0:81:d5:08:47
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:844
+  graphene-138:
+    chassis:
+      serial: 1009390140b
+    network_adapters:
+      bmc:
+        ip: 172.17.64.138
+        mac: 00:e0:81:d5:08:c7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8c4
+  graphene-139:
+    chassis:
+      serial: 1009390141
+    network_adapters:
+      bmc:
+        ip: 172.17.64.139
+        mac: 00:e0:81:d5:07:83
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:780
+  graphene-14:
+    chassis:
+      serial: 1009390016
+    network_adapters:
+      bmc:
+        ip: 172.17.64.14
+        mac: 00:e0:81:d5:06:d7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6d4
+  graphene-140:
+    chassis:
+      serial: 1009390142
+    network_adapters:
+      bmc:
+        ip: 172.17.64.140
+        mac: 00:e0:81:d5:07:7b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:778
+  graphene-141:
+    chassis:
+      serial: 1009390143
+    network_adapters:
+      bmc:
+        ip: 172.17.64.141
+        mac: 00:e0:81:d5:08:77
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:874
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f7:93
+        ip: 172.18.64.141
+        ip6: fe80::202:c903:5:f793
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f7:94
+  graphene-142:
+    chassis:
+      serial: 1009390144
+    network_adapters:
+      bmc:
+        ip: 172.17.64.142
+        mac: 00:e0:81:d5:06:8f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:68c
+  graphene-143:
+    chassis:
+      serial: 1009390145
+    network_adapters:
+      bmc:
+        ip: 172.17.64.143
+        mac: 00:e0:81:d5:07:97
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:794
+  graphene-15:
+    chassis:
+      serial: 1009390017
+    network_adapters:
+      bmc:
+        ip: 172.17.64.15
+        mac: 00:e0:81:d5:07:eb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7e8
+  graphene-16:
+    chassis:
+      serial: 1009390018
+    network_adapters:
+      bmc:
+        ip: 172.17.64.16
+        mac: 00:e0:81:d5:07:c3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7c0
+  graphene-17:
+    chassis:
+      serial: 1009390019
+    network_adapters:
+      bmc:
+        ip: 172.17.64.17
+        mac: 00:e0:81:d5:08:ab
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8a8
+  graphene-18:
+    chassis:
+      serial: 1009390020
+    network_adapters:
+      bmc:
+        ip: 172.17.64.18
+        mac: 00:e0:81:d5:08:3f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:83c
+  graphene-19:
+    chassis:
+      serial: 1009390021
+    network_adapters:
+      bmc:
+        ip: 172.17.64.19
+        mac: 00:e0:81:d5:08:b7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8b4
+  graphene-2:
+    chassis:
+      serial: 1009390004
+    network_adapters:
+      bmc:
+        ip: 172.17.64.2
+        mac: 00:e0:81:d5:07:73
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:770
+  graphene-20:
+    chassis:
+      serial: 1009390022
+    network_adapters:
+      bmc:
+        ip: 172.17.64.20
+        mac: 00:e0:81:d5:07:6b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:768
+  graphene-21:
+    chassis:
+      serial: 1009390023b
+    network_adapters:
+      bmc:
+        ip: 172.17.64.21
+        mac: 00:e0:81:d2:59:fb
+      eth0:
+        ip6: fe80::2e0:81ff:fed2:59f8
+  graphene-22:
+    chassis:
+      serial: 1009390024
+    network_adapters:
+      bmc:
+        ip: 172.17.64.22
+        mac: 00:e0:81:d5:07:db
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7d8
+  graphene-23:
+    chassis:
+      serial: 1009390025
+    network_adapters:
+      bmc:
+        ip: 172.17.64.23
+        mac: 00:e0:81:d5:06:c7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6c4
+  graphene-25:
+    chassis:
+      serial: 1009390027
+    network_adapters:
+      bmc:
+        ip: 172.17.64.25
+        mac: 00:e0:81:d5:07:53
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:750
+  graphene-26:
+    chassis:
+      serial: 1009390028
+    network_adapters:
+      bmc:
+        ip: 172.17.64.26
+        mac: 00:e0:81:d5:08:6f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:86c
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:9d
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:9e
+        management: false
+        mountable: false
+        mounted: false
+        rate: 10000000000
+        version: MT26418
+  graphene-27:
+    chassis:
+      serial: 1009390029
+    network_adapters:
+      bmc:
+        ip: 172.17.64.27
+        mac: 00:e0:81:d5:07:5f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:75c
+  graphene-29:
+    chassis:
+      serial: 1009390031
+    network_adapters:
+      bmc:
+        ip: 172.17.64.29
+        mac: 00:e0:81:d5:06:57
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:654
+  graphene-30:
+    chassis:
+      serial: 1009390032
+    network_adapters:
+      bmc:
+        ip: 172.17.64.30
+        mac: 00:e0:81:d5:08:ef
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8ec
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:79
+        ip: 172.18.64.30
+        ip6: fe80::202:c903:b:9279
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:7a
+  graphene-31:
+    chassis:
+      serial: 1009390033
+    network_adapters:
+      bmc:
+        ip: 172.17.64.31
+        mac: 00:e0:81:d5:06:63
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:660
+  graphene-32:
+    chassis:
+      serial: 1009390034
+    network_adapters:
+      bmc:
+        ip: 172.17.64.32
+        mac: 00:e0:81:d5:06:cb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6c8
+  graphene-33:
+    chassis:
+      serial: 1009390035
+    network_adapters:
+      bmc:
+        ip: 172.17.64.33
+        mac: 00:e0:81:d5:06:6f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:66c
+  graphene-34:
+    chassis:
+      serial: 1009390036
+    network_adapters:
+      bmc:
+        ip: 172.17.64.34
+        mac: 00:e0:81:d5:08:9f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:89c
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:65
+        ip: 172.18.64.34
+        ip6: fe80::202:c903:b:9165
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:66
+  graphene-35:
+    chassis:
+      serial: 1009390037
+    network_adapters:
+      bmc:
+        ip: 172.17.64.35
+        mac: 00:e0:81:d5:08:1f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:81c
+  graphene-36:
+    chassis:
+      serial: 1009390038
+    network_adapters:
+      bmc:
+        ip: 172.17.64.36
+        mac: 00:e0:81:d5:06:4b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:648
+  graphene-37:
+    chassis:
+      serial: 1009390039
+    network_adapters:
+      bmc:
+        ip: 172.17.64.37
+        mac: 00:e0:81:d5:08:a7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8a4
+  graphene-38:
+    chassis:
+      serial: 1009390040
+    network_adapters:
+      bmc:
+        ip: 172.17.64.38
+        mac: 00:e0:81:d5:07:33
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:730
+  graphene-4:
+    chassis:
+      serial: 1009390096b
+    network_adapters:
+      bmc:
+        ip: 172.17.64.4
+        mac: 00:e0:81:d5:08:57
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:854
+  graphene-40:
+    chassis:
+      serial: 1009390042
+    network_adapters:
+      bmc:
+        ip: 172.17.64.40
+        mac: 00:e0:81:d5:06:f7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6f4
+  graphene-41:
+    chassis:
+      serial: 1009390043
+    network_adapters:
+      bmc:
+        ip: 172.17.64.41
+        mac: 00:e0:81:d5:07:af
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7ac
+  graphene-42:
+    chassis:
+      serial: 1009390044
+    network_adapters:
+      bmc:
+        ip: 172.17.64.42
+        mac: 00:e0:81:d5:07:8b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:788
+  graphene-43:
+    chassis:
+      serial: 1009390045
+    network_adapters:
+      bmc:
+        ip: 172.17.64.43
+        mac: 00:e0:81:d5:08:27
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:824
+  graphene-44:
+    chassis:
+      serial: 1009390046
+    network_adapters:
+      bmc:
+        ip: 172.17.64.44
+        mac: 00:e0:81:d5:06:e3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6e0
+  graphene-46:
+    chassis:
+      serial: 1009390048
+    network_adapters:
+      bmc:
+        ip: 172.17.64.46
+        mac: 00:e0:81:d5:06:97
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:694
+  graphene-47:
+    chassis:
+      serial: 1009390049
+    network_adapters:
+      bmc:
+        ip: 172.17.64.47
+        mac: 00:e0:81:d5:08:97
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:894
+  graphene-48:
+    chassis:
+      serial: 1009390050
+    network_adapters:
+      bmc:
+        ip: 172.17.64.48
+        mac: 00:e0:81:d5:06:eb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6e8
+  graphene-49:
+    chassis:
+      serial: 1009390051
+    network_adapters:
+      bmc:
+        ip: 172.17.64.49
+        mac: 00:e0:81:d5:08:5f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:85c
+  graphene-5:
+    chassis:
+      serial: 1009390007
+    network_adapters:
+      bmc:
+        ip: 172.17.64.5
+        mac: 00:e0:81:d5:08:bb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8b8
+  graphene-50:
+    chassis:
+      serial: 1009390052
+    network_adapters:
+      bmc:
+        ip: 172.17.64.50
+        mac: 00:e0:81:d5:06:77
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:674
+  graphene-51:
+    chassis:
+      serial: 1009390053
+    network_adapters:
+      bmc:
+        ip: 172.17.64.51
+        mac: 00:e0:81:d5:07:63
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:760
+  graphene-53:
+    chassis:
+      serial: 1009390055
+    network_adapters:
+      bmc:
+        ip: 172.17.64.53
+        mac: 00:e0:81:d5:07:fb
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7f8
+  graphene-54:
+    chassis:
+      serial: 1009390056
+    network_adapters:
+      bmc:
+        ip: 172.17.64.54
+        mac: 00:e0:81:d5:07:ab
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7a8
+  graphene-55:
+    chassis:
+      serial: 1009390057
+    network_adapters:
+      bmc:
+        ip: 172.17.64.55
+        mac: 00:e0:81:d5:08:93
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:890
+  graphene-56:
+    chassis:
+      serial: 1009390058
+    network_adapters:
+      bmc:
+        ip: 172.17.64.56
+        mac: 00:e0:81:d5:06:7b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:678
+  graphene-57:
+    chassis:
+      serial: 1009390059
+    network_adapters:
+      bmc:
+        ip: 172.17.64.57
+        mac: 00:e0:81:d5:08:a3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8a0
+  graphene-58:
+    chassis:
+      serial: 1009390060
+    network_adapters:
+      bmc:
+        ip: 172.17.64.58
+        mac: 00:e0:81:d5:07:37
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:734
+  graphene-59:
+    chassis:
+      serial: 1009390061
+    network_adapters:
+      bmc:
+        ip: 172.17.64.59
+        mac: 00:e0:81:d5:07:2f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:72c
+  graphene-6:
+    chassis:
+      serial: 1009390008
+    network_adapters:
+      bmc:
+        ip: 172.17.64.6
+        mac: 00:e0:81:d5:06:ef
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6ec
+  graphene-60:
+    chassis:
+      serial: 1009390062
+    network_adapters:
+      bmc:
+        ip: 172.17.64.60
+        mac: 00:e0:81:d5:08:4f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:84c
+  graphene-61:
+    chassis:
+      serial: 1009390063
+    network_adapters:
+      bmc:
+        ip: 172.17.64.61
+        mac: 00:e0:81:d5:07:03
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:700
+  graphene-62:
+    chassis:
+      serial: 1009390064
+    network_adapters:
+      bmc:
+        ip: 172.17.64.62
+        mac: 00:e0:81:d5:07:c7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7c4
+  graphene-63:
+    chassis:
+      serial: 1009390065
+    network_adapters:
+      bmc:
+        ip: 172.17.64.63
+        mac: 00:e0:81:d5:06:6b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:668
+  graphene-64:
+    chassis:
+      serial: 1009390066
+    network_adapters:
+      bmc:
+        ip: 172.17.64.64
+        mac: 00:e0:81:d5:08:8b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:888
+  graphene-65:
+    chassis:
+      serial: 1009390067
+    network_adapters:
+      bmc:
+        ip: 172.17.64.65
+        mac: 00:e0:81:d5:07:47
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:744
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:d9
+        ip: 172.18.64.65
+        ip6: fe80::202:c903:b:93d9
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:da
+  graphene-66:
+    chassis:
+      serial: 1009390068
+    network_adapters:
+      bmc:
+        ip: 172.17.64.66
+        mac: 00:e0:81:d5:08:17
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:814
+  graphene-67:
+    chassis:
+      serial: 1009390069
+    network_adapters:
+      bmc:
+        ip: 172.17.64.67
+        mac: 00:e0:81:d5:07:b3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7b0
+  graphene-68:
+    chassis:
+      serial: 1009390070
+    network_adapters:
+      bmc:
+        ip: 172.17.64.68
+        mac: 00:e0:81:d5:06:53
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:650
+  graphene-69:
+    chassis:
+      serial: 1009390071
+    network_adapters:
+      bmc:
+        ip: 172.17.64.69
+        mac: 00:e0:81:d5:06:9b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:698
+  graphene-7:
+    chassis:
+      serial: 1009390009
+    network_adapters:
+      bmc:
+        ip: 172.17.64.7
+        mac: 00:e0:81:d5:07:3f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:73c
+  graphene-70:
+    chassis:
+      serial: 1009390072
+    network_adapters:
+      bmc:
+        ip: 172.17.64.70
+        mac: 00:e0:81:d5:07:4f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:74c
+  graphene-71:
+    chassis:
+      serial: 1009390073
+    network_adapters:
+      bmc:
+        ip: 172.17.64.71
+        mac: 00:e0:81:d5:07:2b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:728
+  graphene-72:
+    chassis:
+      serial: 1009390074
+    network_adapters:
+      bmc:
+        ip: 172.17.64.72
+        mac: 00:e0:81:d5:07:e7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7e4
+  graphene-73:
+    chassis:
+      serial: 1009390075
+    network_adapters:
+      bmc:
+        ip: 172.17.64.73
+        mac: 00:e0:81:d5:07:43
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:740
+  graphene-74:
+    chassis:
+      serial: 1009390076
+    network_adapters:
+      bmc:
+        ip: 172.17.64.74
+        mac: 00:e0:81:d5:08:83
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:880
+  graphene-75:
+    chassis:
+      serial: 1009390077
+    network_adapters:
+      bmc:
+        ip: 172.17.64.75
+        mac: 00:e0:81:d5:07:07
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:704
+  graphene-76:
+    chassis:
+      serial: 1009390078
+    network_adapters:
+      bmc:
+        ip: 172.17.64.76
+        mac: 00:e0:81:d5:07:23
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:720
+  graphene-77:
+    chassis:
+      serial: 1009390079
+    network_adapters:
+      bmc:
+        ip: 172.17.64.77
+        mac: 00:e0:81:d5:07:a3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7a0
+  graphene-78:
+    chassis:
+      serial: 1009390080
+    network_adapters:
+      bmc:
+        ip: 172.17.64.78
+        mac: 00:e0:81:d5:08:53
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:850
+  graphene-79:
+    chassis:
+      serial: 1009390081
+    network_adapters:
+      bmc:
+        ip: 172.17.64.79
+        mac: 00:e0:81:d5:08:7b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:878
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:f5
+        ip: 172.18.64.79
+        ip6: fe80::202:c903:b:92f5
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:f6
+  graphene-8:
+    chassis:
+      serial: 1009390010
+    network_adapters:
+      bmc:
+        ip: 172.17.64.8
+        mac: 00:e0:81:d5:08:0b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:808
+  graphene-80:
+    chassis:
+      serial: 1009390082
+    network_adapters:
+      bmc:
+        ip: 172.17.64.80
+        mac: 00:e0:81:d5:06:db
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6d8
+  graphene-81:
+    chassis:
+      serial: 1009390083
+    network_adapters:
+      bmc:
+        ip: 172.17.64.81
+        mac: 00:e0:81:d5:07:27
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:724
+  graphene-82:
+    chassis:
+      serial: 1009390084
+    network_adapters:
+      bmc:
+        ip: 172.17.64.82
+        mac: 00:e0:81:d5:07:b7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7b4
+  graphene-83:
+    chassis:
+      serial: 1009390085
+    network_adapters:
+      bmc:
+        ip: 172.17.64.83
+        mac: 00:e0:81:d5:06:93
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:690
+  graphene-84:
+    chassis:
+      serial: 1009390086
+    network_adapters:
+      bmc:
+        ip: 172.17.64.84
+        mac: 00:e0:81:d5:07:1b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:718
+  graphene-85:
+    chassis:
+      serial: 1009390087
+    network_adapters:
+      bmc:
+        ip: 172.17.64.85
+        mac: 00:e0:81:d5:07:ef
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7ec
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:99
+        ip: 172.18.64.85
+        ip6: fe80::202:c903:b:9399
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:9a
+  graphene-86:
+    chassis:
+      serial: 1009390088
+    network_adapters:
+      bmc:
+        ip: 172.17.64.86
+        mac: 00:e0:81:d5:08:0f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:80c
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a1
+        ip: 172.18.64.86
+        ip6: fe80::202:c903:b:93a1
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a2
+  graphene-87:
+    chassis:
+      serial: 1009390089
+    network_adapters:
+      bmc:
+        ip: 172.17.64.87
+        mac: 00:e0:81:d5:07:5b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:758
+  graphene-88:
+    chassis:
+      serial: 1009390090
+    network_adapters:
+      bmc:
+        ip: 172.17.64.88
+        mac: 00:e0:81:d5:08:63
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:860
+  graphene-89:
+    chassis:
+      serial: 1009390091
+    network_adapters:
+      bmc:
+        ip: 172.17.64.89
+        mac: 00:e0:81:d5:08:9b
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:898
+  graphene-9:
+    chassis:
+      serial: 1009390011
+    network_adapters:
+      bmc:
+        ip: 172.17.64.9
+        mac: 00:e0:81:d5:08:87
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:884
+  graphene-90:
+    chassis:
+      serial: 1009390092
+    network_adapters:
+      bmc:
+        ip: 172.17.64.90
+        mac: 00:e0:81:d5:06:67
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:664
+  graphene-91:
+    chassis:
+      serial: 1009390093
+    network_adapters:
+      bmc:
+        ip: 172.17.64.91
+        mac: 00:e0:81:d5:06:df
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6dc
+  graphene-92:
+    chassis:
+      serial: 1009390094
+    network_adapters:
+      bmc:
+        ip: 172.17.64.92
+        mac: 00:e0:81:d5:07:a7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:7a4
+  graphene-93:
+    chassis:
+      serial: 1009390095
+    network_adapters:
+      bmc:
+        ip: 172.17.64.93
+        mac: 00:e0:81:d5:06:4f
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:64c
+  graphene-95:
+    chassis:
+      serial: 1009390097
+    network_adapters:
+      bmc:
+        ip: 172.17.64.95
+        mac: 00:e0:81:d5:06:c3
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:6c0
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:95
+        ip: 172.18.64.95
+        ip6: fe80::202:c903:b:5e95
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:96
+  graphene-97:
+    chassis:
+      serial: 1009390099
+    network_adapters:
+      bmc:
+        ip: 172.17.64.97
+        mac: 00:e0:81:d5:08:03
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:800
+  graphene-99:
+    chassis:
+      serial: 1009390101
+    network_adapters:
+      bmc:
+        ip: 172.17.64.99
+        mac: 00:e0:81:d5:08:d7
+      eth0:
+        ip6: fe80::2e0:81ff:fed5:8d4
+      ib0:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:b1
+        ip: 172.18.64.99
+        ip6: fe80::202:c903:b:5eb1
+      ib1:
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:b2

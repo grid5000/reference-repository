@@ -8,6 +8,21 @@ queues:
 
 nodes:
   sol-[1-28]:
+    operating_system:
+      kernel: 2.6.32-5-amd64
+      name: debian
+      version: 6.0.6
+    processor:
+      cache_l1d: 65536
+      cache_l1i: 65536
+      cache_l2: 1048576
+      cache_l3: 0
+      clock_speed: 2600000000
+      instruction_set: x86-64
+      model: AMD Opteron
+      other_description: Dual-Core AMD Opteron(tm) Processor 2218
+      vendor: AMD
+      version: 2218
     performance:
       core_flops: 4337000000
       node_flops: 16800000000
@@ -24,13 +39,18 @@ nodes:
         interface: SATA
         driver: sata_nv
         storage: HDD
+        vendor: Hitachi
     network_adapters:
       eth0:
+        enabled: true
+        mountable: true
         bridged: true
         device: eth0
         vendor: nVidia
         version: MCP55 Pro
       eth1:
+        enabled: false
+        mountable: false
         rate: 1000000000
         bridged: false
         device: eth1
@@ -99,3 +119,576 @@ nodes:
   sol-36:
     status: retired
 
+  sol-1:
+    chassis:
+      serial: 0650QBT132
+    network_adapters:
+      bmc:
+        ip: 172.17.129.1
+        mac: 00:16:36:c5:92:c8
+      eth0:
+        ip6: fe80::216:36ff:fe91:e7d0
+  sol-10:
+    chassis:
+      serial: 0650QBT12E
+    network_adapters:
+      bmc:
+        ip: 172.17.129.10
+        mac: 00:16:36:c5:93:9a
+      eth0:
+        ip6: fe80::216:36ff:fe91:ebd0
+  sol-11:
+    chassis:
+      serial: 0650QBT134
+    network_adapters:
+      bmc:
+        ip: 172.17.129.11
+        mac: 00:16:36:c5:93:42
+      eth0:
+        ip6: fe80::216:36ff:fe91:e9dc
+  sol-12:
+    chassis:
+      serial: 0650QBT10A
+    network_adapters:
+      bmc:
+        ip: 172.17.129.12
+        mac: 00:16:36:c5:93:8e
+      eth0:
+        ip6: fe80::216:36ff:fe91:eb60
+  sol-13:
+    chassis:
+      serial: 0650QBT111
+    network_adapters:
+      bmc:
+        ip: 172.17.129.13
+        mac: 00:16:36:c5:92:d9
+      eth0:
+        ip6: fe80::216:36ff:fe91:e85c
+  sol-14:
+    chassis:
+      serial: 0650QBT119
+    network_adapters:
+      bmc:
+        ip: 172.17.129.14
+        mac: 00:16:36:ca:0b:1a
+      eth0:
+        ip6: fe80::216:36ff:fec9:fbe4
+  sol-15:
+    chassis:
+      serial: 0650QBT11A
+    network_adapters:
+      bmc:
+        ip: 172.17.129.15
+        mac: 00:16:36:ca:0a:cb
+      eth0:
+        ip6: fe80::216:36ff:fec9:fb34
+  sol-16:
+    chassis:
+      serial: 0650QBT10F
+    network_adapters:
+      bmc:
+        ip: 172.17.129.16
+        mac: 00:16:36:ca:0b:06
+      eth0:
+        ip6: fe80::216:36ff:fec9:fb94
+  sol-17:
+    chassis:
+      serial: 0650QBT113
+    network_adapters:
+      bmc:
+        ip: 172.17.129.17
+        mac: 00:16:36:c5:93:ed
+      eth0:
+        ip6: fe80::216:36ff:fec5:8a83
+  sol-18:
+    chassis:
+      serial: 0650QBT118
+    network_adapters:
+      bmc:
+        ip: 172.17.129.18
+        mac: 00:16:36:c5:93:b9
+      eth0:
+        ip6: fe80::216:36ff:fe91:ec14
+  sol-19:
+    chassis:
+      serial: 0650QBT126
+    network_adapters:
+      bmc:
+        ip: 172.17.129.19
+        mac: 00:16:36:c5:93:73
+      eth0:
+        ip6: fe80::216:36ff:fe91:eac0
+  sol-2:
+    chassis:
+      serial: 0650QBT108
+    network_adapters:
+      bmc:
+        ip: 172.17.129.2
+        mac: 00:16:36:c5:93:97
+      eth0:
+        ip6: fe80::216:36ff:fe91:eb84
+  sol-20:
+    chassis:
+      serial: 0650QBT11B
+    network_adapters:
+      bmc:
+        ip: 172.17.129.20
+        mac: 00:16:36:c5:93:19
+      eth0:
+        ip6: fe80::216:36ff:fe91:e974
+  sol-21:
+    chassis:
+      serial: 0650QBT11C
+    network_adapters:
+      bmc:
+        ip: 172.17.129.21
+        mac: 
+      eth0:
+        ip6: fe80::216:36ff:fe91:e918
+  sol-22:
+    chassis:
+      serial: 0650QBT12B
+    network_adapters:
+      bmc:
+        ip: 172.17.129.22
+        mac: 00:16:36:c5:93:43
+      eth0:
+        ip6: fe80::216:36ff:fe91:e9d8
+  sol-23:
+    chassis:
+      serial: 0650QBT116
+    network_adapters:
+      bmc:
+        ip: 172.17.129.23
+        mac: 
+      eth0:
+        ip6: fe80::216:36ff:fe91:eb1c
+  sol-24:
+    chassis:
+      serial: 0650QBT129
+    network_adapters:
+      bmc:
+        ip: 172.17.129.24
+        mac: 00:16:36:c5:93:47
+      eth0:
+        ip6: fe80::216:36ff:fe91:e9ec
+  sol-25:
+    chassis:
+      serial: 0650QBT11F
+    network_adapters:
+      bmc:
+        ip: 172.17.129.25
+        mac: 00:16:36:91:f6:f6
+      eth0:
+        ip6: fe80::216:36ff:fe91:eb2c
+    storage_devices:
+      sda:
+        vendor: Seagate
+  sol-26:
+    chassis:
+      serial: 0650QBT124
+    network_adapters:
+      bmc:
+        ip: 172.17.129.26
+        mac: 00:16:36:c5:93:99
+      eth0:
+        ip6: fe80::216:36ff:fe91:ebd4
+  sol-27:
+    chassis:
+      serial: 0650QBT106
+    network_adapters:
+      bmc:
+        ip: 172.17.129.27
+        mac: 00:16:36:c5:93:48
+      eth0:
+        ip6: fe80::216:36ff:fe91:e9f0
+  sol-28:
+    chassis:
+      serial: 0650QBT12A
+    network_adapters:
+      bmc:
+        ip: 172.17.129.28
+        mac: 00:16:36:c5:92:df
+      eth0:
+        ip6: fe80::216:36ff:fe91:e82c
+  sol-29:
+    chassis:
+      serial: 0650QBT127
+    network_adapters:
+      bmc:
+        ip: 172.17.129.29
+        mac: 00:16:36:c5:93:27
+      eth0:
+        ip6: fe80::216:36ff:fe91:e8dc
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.29
+        ip6: fe80::260:ddff:fe47:4987
+        mac: 00:60:dd:47:49:87
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-30:
+    chassis:
+      serial: 0650QBT136
+    network_adapters:
+      bmc:
+        ip: 172.17.129.30
+        mac: 00:16:36:c5:93:7b
+      eth0:
+        ip6: fe80::216:36ff:fe91:ea94
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.30
+        ip6: fe80::260:ddff:fe47:dc3
+        mac: 00:60:dd:47:0d:c3
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-31:
+    chassis:
+      serial: 0650QBT10D
+    network_adapters:
+      bmc:
+        ip: 172.17.129.31
+        mac: 00:16:36:ca:0a:7e
+      eth0:
+        ip6: fe80::216:36ff:fec9:f980
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.31
+        ip6: fe80::260:ddff:fe47:dbf
+        mac: 00:60:dd:47:0d:bf
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-32:
+    chassis:
+      serial: 0650QBT122
+    network_adapters:
+      bmc:
+        ip: 172.17.129.32
+        mac: 00:16:36:c5:93:08
+      eth0:
+        ip6: fe80::216:36ff:fe91:e994
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.32
+        ip6: fe80::260:ddff:fe47:4c43
+        mac: 00:60:dd:47:4c:43
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-33:
+    chassis:
+      serial: 0650QBT125
+    network_adapters:
+      bmc:
+        ip: 172.17.129.33
+        mac: 00:16:36:c5:93:72
+      eth0:
+        ip6: fe80::216:36ff:fe91:ea84
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.33
+        ip6: fe80::260:ddff:fe47:4c44
+        mac: 00:60:dd:47:4c:44
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-34:
+    chassis:
+      serial: 0650QBT114
+    network_adapters:
+      bmc:
+        ip: 172.17.129.34
+        mac: 00:16:36:c5:93:9f
+      eth0:
+        ip6: fe80::216:36ff:fe91:ebdc
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.34
+        ip6: fe80::260:ddff:fe47:4c42
+        mac: 00:60:dd:47:4c:42
+        management: false
+        mounted: true
+        rate: 10000000000
+    storage_devices:
+      sda:
+        vendor: Seagate
+  sol-35:
+    chassis:
+      serial: 0650QBT112
+    network_adapters:
+      bmc:
+        ip: 172.17.129.35
+        mac: 00:16:36:91:f6:f1
+      eth0:
+        ip6: fe80::216:36ff:fe91:ea08
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.35
+        ip6: fe80::260:ddff:fe47:4c69
+        mac: 00:60:dd:47:4c:69
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-37:
+    chassis:
+      serial: 0650QBT120
+    network_adapters:
+      bmc:
+        ip: 172.17.129.37
+        mac: 00:16:36:c5:93:0c
+      eth0:
+        ip6: fe80::216:36ff:fe91:e9a4
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.37
+        ip6: fe80::260:ddff:fe47:4c6d
+        mac: 00:60:dd:47:4c:6d
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-38:
+    chassis:
+      serial: 0650QBT123
+    network_adapters:
+      bmc:
+        ip: 172.17.129.38
+        mac: 00:16:36:c5:92:e1
+      eth0:
+        ip6: fe80::216:36ff:fe91:e86c
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.38
+        ip6: fe80::260:ddff:fe47:4c49
+        mac: 00:60:dd:47:4c:49
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-39:
+    chassis:
+      serial: 0650QBT10C
+    network_adapters:
+      bmc:
+        ip: 172.17.129.39
+        mac: 00:16:36:c5:93:bf
+      eth0:
+        ip6: fe80::216:36ff:fe91:ec20
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.39
+        ip6: fe80::260:ddff:fe47:4c33
+        mac: 00:60:dd:47:4c:33
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-4:
+    chassis:
+      serial: 0650QBT12C
+    network_adapters:
+      bmc:
+        ip: 172.17.129.4
+        mac: 00:16:36:c5:93:41
+      eth0:
+        ip6: fe80::216:36ff:fe91:e9d4
+  sol-40:
+    chassis:
+      serial: 0650QBT11D
+    network_adapters:
+      bmc:
+        ip: 172.17.129.40
+        mac: 00:16:36:91:f6:eb
+      eth0:
+        ip6: fe80::216:36ff:fe91:eb08
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.40
+        ip6: fe80::260:ddff:fe47:4c6e
+        mac: 00:60:dd:47:4c:6e
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-41:
+    chassis:
+      serial: 0650QBT12D
+    network_adapters:
+      bmc:
+        ip: 172.17.129.41
+        mac: 00:16:36:91:f6:e7
+      eth0:
+        ip6: fe80::216:36ff:fe91:eaf8
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.41
+        ip6: fe80::260:ddff:fe47:4d2d
+        mac: 00:60:dd:47:4d:2d
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-43:
+    chassis:
+      serial: 0650QBT12F
+    network_adapters:
+      bmc:
+        ip: 172.17.129.43
+        mac: 00:16:36:91:f6:e8
+      eth0:
+        ip6: fe80::216:36ff:fe91:eafc
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.43
+        ip6: fe80::260:ddff:fe47:4c48
+        mac: 00:60:dd:47:4c:48
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-44:
+    chassis:
+      serial: 0650QBT10B
+    network_adapters:
+      bmc:
+        ip: 172.17.129.44
+        mac: 00:16:36:c5:93:33
+      eth0:
+        ip6: fe80::216:36ff:fe91:e918
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.44
+        ip6: fe80::260:ddff:fe47:4c45
+        mac: 00:60:dd:47:4c:45
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-45:
+    chassis:
+      serial: 0650QBT135
+    network_adapters:
+      bmc:
+        ip: 172.17.129.45
+        mac: 00:16:36:c5:93:12
+      eth0:
+        ip6: fe80::216:36ff:fe91:e958
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.45
+        ip6: fe80::260:ddff:fe47:4c35
+        mac: 00:60:dd:47:4c:35
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-46:
+    chassis:
+      serial: 0650QBT131
+    network_adapters:
+      bmc:
+        ip: 172.17.129.46
+        mac: 00:16:36:c5:93:96
+      eth0:
+        ip6: fe80::216:36ff:fe91:eb80
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.46
+        ip6: fe80::260:ddff:fe47:4c47
+        mac: 00:60:dd:47:4c:47
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-48:
+    chassis:
+      serial: 0650QBT133
+    network_adapters:
+      bmc:
+        ip: 172.17.129.48
+        mac: 00:16:36:91:f6:f5
+      eth0:
+        ip6: fe80::216:36ff:fe91:eb28
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.48
+        ip6: fe80::260:ddff:fe47:4c46
+        mac: 00:60:dd:47:4c:46
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-5:
+    chassis:
+      serial: 0650QBT107
+    network_adapters:
+      bmc:
+        ip: 172.17.129.5
+        mac: 00:16:36:c5:93:2a
+      eth0:
+        ip6: fe80::216:36ff:fe91:e8e8
+  sol-50:
+    chassis:
+      serial: xxxxxxxxxx
+    network_adapters:
+      bmc:
+        ip: 172.17.129.50
+        mac: 00:16:36:c5:93:44
+      eth0:
+        ip6: fe80::216:36ff:fe91:e9e0
+      myri0:
+        driver: mx ethernet (myri)
+        interface: Myrinet
+        ip: 172.18.129.50
+        ip6: fe80::260:ddff:fe47:4c30
+        mac: 00:60:dd:47:4c:30
+        management: false
+        mounted: true
+        rate: 10000000000
+  sol-6:
+    chassis:
+      serial: 0650QBT130
+    network_adapters:
+      bmc:
+        ip: 172.17.129.6
+        mac: 00:16:36:c5:92:e3
+      eth0:
+        ip6: fe80::216:36ff:fe91:e870
+  sol-7:
+    chassis:
+      serial: 0650QBT109
+    network_adapters:
+      bmc:
+        ip: 172.17.129.7
+        mac: 00:16:36:c5:93:7c
+      eth0:
+        ip6: fe80::216:36ff:fe91:ead4
+  sol-8:
+    chassis:
+      serial: 0650QBT115
+    network_adapters:
+      bmc:
+        ip: 172.17.129.8
+        mac: 00:16:36:c5:93:ee
+      eth0:
+        ip6: fe80::216:36ff:fec5:8a87
+  sol-9:
+    chassis:
+      serial: 0650QBT128
+    network_adapters:
+      bmc:
+        ip: 172.17.129.9
+        mac: 00:16:36:c5:93:07
+      eth0:
+        ip6: fe80::216:36ff:fe91:e990

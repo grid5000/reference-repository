@@ -7,6 +7,21 @@ queues:
 
 nodes:
   granduc-[1-22]:
+    operating_system:
+      kernel: 2.6.32-5-amd64
+      name: debian
+      version: 6.0.6
+    processor:
+      cache_l1d: 32768
+      cache_l1i: 32768
+      cache_l2: 4194304
+      cache_l3: 0
+      clock_speed: 2000000000
+      instruction_set: x86-64
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz
+      vendor: Intel
+      version: L5335
     performance:
       node_flops: 44.07e+9
       core_flops: 6.409e+9
@@ -23,18 +38,27 @@ nodes:
         interface: SAS
         driver: mptsas
         storage: HDD
+        vendor: SEAGATE
     network_adapters:
       eth0:
+        enabled: true
+        mountable: true
         bridged: true
         device: eth0
       eth1:
+        enabled: true
+        mountable: true
         rate: 1000000000
         bridged: false
         device: eth1
       eth2:
+        enabled: true
+        mountable: true
         bridged: false
         device: eth2
       eth3:
+        enabled: false
+        mountable: false
         rate: 10.0e+9
         bridged: false
         device: eth3
@@ -54,3 +78,283 @@ nodes:
     addressing_plan:
       kavlan: 10.40.0.0/14
       virt: 10.172.0.0/14
+
+
+  granduc-1:
+    chassis:
+      serial: 2QV963J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.1
+        mac: 00:1c:23:c8:69:c2
+      eth0:
+        ip6: fe80::219:b9ff:fef0:1c8
+      eth1:
+        ip: 172.16.178.1
+      eth2:
+        ip: 172.16.179.1
+        ip6: fe80::21b:21ff:fe34:e14b
+  granduc-10:
+    chassis:
+      serial: DELL
+    network_adapters:
+      bmc:
+        ip: 172.17.176.10
+        mac: 00:1c:23:d3:42:56
+      eth0:
+        ip6: fe80::222:19ff:fe6d:850a
+      eth1:
+        ip: 172.16.178.10
+      eth2:
+        ip: 172.16.179.10
+        ip6: fe80::21b:21ff:fe34:e13d
+  granduc-12:
+    chassis:
+      serial: 50W883J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.12
+        mac: 00:1c:23:d3:57:5f
+      eth0:
+        ip6: fe80::219:b9ff:fef2:e10
+      eth1:
+        ip: 172.16.178.12
+      eth2:
+        ip: 172.16.179.12
+        ip6: fe80::21b:21ff:fe34:e11c
+  granduc-13:
+    chassis:
+      serial: 40W883J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.13
+        mac: 00:1c:23:d3:57:75
+      eth0:
+        ip6: fe80::219:b9ff:fef2:e56
+      eth1:
+        ip: 172.16.178.13
+      eth2:
+        ip: 172.16.179.13
+        ip6: fe80::21b:21ff:fe3d:13af
+  granduc-14:
+    chassis:
+      serial: 10W883J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.14
+        mac: 00:1c:23:d3:57:3b
+      eth0:
+        ip6: fe80::219:b9ff:fef2:3bb
+      eth1:
+        ip: 172.16.178.14
+      eth2:
+        ip: 172.16.179.14
+        ip6: fe80::21b:21ff:fe3d:11f7
+  granduc-15:
+    chassis:
+      serial: 60W883J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.15
+        mac: 00:1c:23:d3:57:37
+      eth0:
+        ip6: fe80::219:b9ff:fef2:e2e
+      eth1:
+        ip: 172.16.178.15
+      eth2:
+        ip: 172.16.179.15
+        ip6: fe80::21b:21ff:fe34:e0f1
+      sda:
+        vendor: FUJITSU
+  granduc-16:
+    chassis:
+      serial: JZV883J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.16
+        mac: 00:1c:23:d3:57:67
+      eth0:
+        ip6: fe80::219:b9ff:fef2:f4b
+      eth1:
+        ip: 172.16.178.16
+      eth2:
+        ip: 172.16.179.16
+        ip6: fe80::21b:21ff:fe34:e11a
+  granduc-17:
+    chassis:
+      serial: 20W883J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.17
+        mac: 00:1c:23:d3:57:89
+      eth0:
+        ip6: fe80::219:b9ff:fede:b91c
+      eth1:
+        ip: 172.16.178.17
+      eth2:
+        ip: 172.16.179.17
+        ip6: fe80::21b:21ff:fe3c:8771
+  granduc-18:
+    chassis:
+      serial: GQ2593J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.18
+        mac: 00:1c:23:d6:c4:ea
+      eth0:
+        ip6: fe80::219:b9ff:fef3:bab0
+      eth1:
+        ip: 172.16.178.18
+      eth2:
+        ip: 172.16.179.18
+        ip6: fe80::21b:21ff:fe34:e107
+      sda:
+        vendor: FUJITSU
+  granduc-19:
+    chassis:
+      serial: 69N983J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.19
+        mac: 00:1c:23:d3:42:4e
+      eth0:
+        ip6: fe80::219:b9ff:fef2:edd
+      eth1:
+        ip: 172.16.178.19
+      eth2:
+        ip: 172.16.179.19
+        ip6: fe80::21b:21ff:fe3d:139b
+  granduc-2:
+    chassis:
+      serial: 1QV963J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.2
+        mac: 00:1c:23:c8:69:aa
+      eth0:
+        ip6: fe80::219:b9ff:fef0:1d7
+      eth1:
+        ip: 172.16.178.2
+      eth2:
+        ip: 172.16.179.2
+        ip6: fe80::21b:21ff:fe34:e135
+  granduc-20:
+    chassis:
+      serial: 39N983J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.20
+        mac: 00:1c:23:d3:42:6c
+      eth0:
+        ip6: fe80::219:b9ff:fef2:8ca
+      eth1:
+        ip: 172.16.178.20
+      eth2:
+        ip: 172.16.179.20
+        ip6: fe80::21b:21ff:fe3d:1327
+  granduc-21:
+    chassis:
+      serial: 1R2593J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.21
+        mac: 00:1c:23:d6:c3:0c
+      eth0:
+        ip6: fe80::219:b9ff:fef3:c27d
+      eth1:
+        ip: 172.16.178.21
+      eth2:
+        ip: 172.16.179.21
+        ip6: fe80::21b:21ff:fe3d:137d
+      sda:
+        vendor: FUJITSU
+  granduc-22:
+    chassis:
+      serial: HQ2593J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.22
+        mac: 00:1c:23:d6:c3:32
+      eth0:
+        ip6: fe80::219:b9ff:fef3:baa6
+      eth1:
+        ip: 172.16.178.22
+      eth2:
+        ip: 172.16.179.22
+        ip6: fe80::21b:21ff:fe34:e0e7
+      sda:
+        vendor: FUJITSU
+  granduc-4:
+    chassis:
+      serial: FQ2593J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.4
+        mac: 00:1c:23:d6:c3:06
+      eth0:
+        ip6: fe80::219:b9ff:fef2:ae6
+      eth1:
+        ip: 172.16.178.4
+      eth2:
+        ip: 172.16.179.4
+        ip6: fe80::21b:21ff:fe3d:12e9
+      sda:
+        vendor: FUJITSU
+  granduc-5:
+    chassis:
+      serial: 99N983J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.5
+        mac: 00:1c:23:d3:42:46
+      eth0:
+        ip6: fe80::219:b9ff:fef1:f809
+      eth1:
+        ip: 172.16.178.5
+      eth2:
+        ip: 172.16.179.5
+        ip6: fe80::21b:21ff:fe3d:12d1
+  granduc-6:
+    chassis:
+      serial: BQ2593J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.6
+        mac: 00:1c:23:d6:c3:08
+      eth0:
+        ip6: fe80::219:b9ff:fef2:c80
+      eth1:
+        ip: 172.16.178.6
+      eth2:
+        ip: 172.16.179.6
+        ip6: fe80::21b:21ff:fe3d:13ab
+      sda:
+        vendor: FUJITSU
+  granduc-7:
+    chassis:
+      serial: 49N983J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.7
+        mac: 00:1c:23:d3:42:2c
+      eth0:
+        ip6: fe80::219:b9ff:fef2:e6f
+      eth1:
+        ip: 172.16.178.7
+      eth2:
+        ip: 172.16.179.7
+        ip6: fe80::21b:21ff:fe34:e15f
+  granduc-8:
+    chassis:
+      serial: 59N983J
+    network_adapters:
+      bmc:
+        ip: 172.17.176.8
+        mac: 00:1c:23:d3:08:7a
+      eth0:
+        ip6: fe80::219:b9ff:feee:114a
+      eth1:
+        ip: 172.16.178.8
+      eth2:
+        ip: 172.16.179.8
+        ip6: fe80::21b:21ff:fe34:e18d

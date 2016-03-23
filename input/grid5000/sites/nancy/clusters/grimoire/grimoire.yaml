@@ -10,6 +10,21 @@ queues:
 nodes:
 # Global node properties
   grimoire-[1-8]:
+    operating_system:
+      kernel: 3.16.0-4-amd64
+      name: debian
+      version: '8.2'
+    processor:
+      cache_l1d: 32768
+      cache_l1i: 32768
+      cache_l2: 262144
+      cache_l3: 20971520
+      clock_speed: 3200000000
+      instruction_set: x86-64
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz
+      vendor: Intel
+      version: E5-2630 v3
     performance:
       core_flops: 0
       node_flops: 0
@@ -132,3 +147,45 @@ nodes:
         via:
           api:
             metric: power
+
+
+  grimoire-2:
+    storage_devices:
+      sda:
+        timeread: 1289
+        timewrite: 2889
+  grimoire-3:
+    chassis:
+      serial: 3YZYH82
+    storage_devices:
+      sda:
+        timeread: 1256
+        timewrite: 2713
+  grimoire-5:
+    chassis:
+      serial: 36X1J82
+    storage_devices:
+      sda:
+        timeread: 1266
+        timewrite: 2907
+  grimoire-6:
+    chassis:
+      serial: 3722J82
+    storage_devices:
+      sda:
+        timeread: 1310
+        timewrite: 2993
+  grimoire-7:
+    chassis:
+      serial: 36Y3J82
+    storage_devices:
+      sda:
+        timeread: 1277
+        timewrite: 2927
+  grimoire-8:
+    chassis:
+      serial: 3703J82
+    storage_devices:
+      sda:
+        timeread: 1260
+        timewrite: 2870

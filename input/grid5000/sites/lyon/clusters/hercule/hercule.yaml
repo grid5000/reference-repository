@@ -9,6 +9,21 @@ queues:
 
 nodes:
   hercule-[1-4]:
+    operating_system:
+      kernel: 2.6.32-5-amd64
+      name: debian
+      version: 6.0.6
+    processor:
+      cache_l1d: 32768
+      cache_l1i: 32768
+      cache_l2: 262144
+      cache_l3: 15728640
+      clock_speed: 2000000000
+      instruction_set: x86-64
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) CPU E5-2620 0 @ 2.00GHz
+      vendor: Intel
+      version: E5-2620
     performance:
         core_flops: 10170000000
         node_flops: 127100000000
@@ -33,25 +48,32 @@ nodes:
         interface: SATA
         driver: ahci
         storage: HDD
-    network_adapters:
       eth0:
+        enabled: false
+        mountable: false
         rate: 10.0+e9
         device: eth0
         bridged: false
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth1:
+        enabled: true
+        mountable: true
         bridged: true
         device: eth1
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth2:
+        enabled: true
+        mountable: true
         rate: 100.0+e6
         bridged: false
         device: eth2
         vendor: Intel
         version: Intel Corporation
       eth3:
+        enabled: true
+        mountable: true
         rate: 100.0e+6
         bridged: false
         device: eth3
@@ -76,3 +98,44 @@ nodes:
             metric: pdu_shared 
           www: 
             url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
+
+  hercule-1:
+    chassis:
+      serial: JQ3HD5J
+    network_adapters:
+      bmc:
+        ip: 172.17.51.1
+        mac: 84:8f:69:fd:4d:38
+      eth1:
+        ip6: fe80::28c:faff:fe0b:b9c3
+        switch_port: TenGigabitEthernet 0/24
+  hercule-2:
+    chassis:
+      serial: HQ3HD5J
+    network_adapters:
+      bmc:
+        ip: 172.17.51.2
+        mac: 84:8f:69:fd:4f:3f
+      eth1:
+        ip6: fe80::28c:faff:fe0b:b4bd
+        switch_port: TenGigabitEthernet 0/25
+  hercule-3:
+    chassis:
+      serial: FQ3HD5J
+    network_adapters:
+      bmc:
+        ip: 172.17.51.3
+        mac: 84:8f:69:fd:4c:21
+      eth1:
+        ip6: fe80::28c:faff:fe0b:e179
+        switch_port: TenGigabitEthernet 0/26
+  hercule-4:
+    chassis:
+      serial: GQ3HD5J
+    network_adapters:
+      bmc:
+        ip: 172.17.51.4
+        mac: 84:8f:69:fd:4a:53
+      eth1:
+        ip6: fe80::28c:faff:fe0b:d853
+        switch_port: TenGigabitEthernet 0/27
