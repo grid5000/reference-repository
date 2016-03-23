@@ -84,7 +84,7 @@ class ::Hash
     }
   end
 
-  # sort a hash according to the position of the key in the array
+  # sort a hash according to the position of the key in the array.
   def sort_by_array(array)
     Hash[sort_by{|key, _| array.index(key) || length}] 
   end

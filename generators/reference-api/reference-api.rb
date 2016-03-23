@@ -120,6 +120,7 @@ global_hash["sites"].each do |site_uid, site|
 
       # Populate "network_address", "switch" and "switch_port" from the network equipment description for each network adapters
       node["network_adapters"].each { |network_adapter|
+        network_adapter["mac"] = network_adapter["mac"].downcase if network_adapter["mac"].is_a?(String)
 
         # ib properties
         network_adapter["ib_switch_card"]     = network_adapter.delete("line_card") if network_adapter.key?("line_card")
