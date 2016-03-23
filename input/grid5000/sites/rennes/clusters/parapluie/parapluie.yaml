@@ -31,27 +31,22 @@ nodes:
         version: "82576"
       eth1:
         bridged: true
-        device: eth1
         vendor: Intel
         version: "82576"
       eth2:
         rate: 1000000000
-        device: eth2
         bridged: false
         vendor: Intel
         version: "82576"
       eth3:
         rate: 1000000000
-        device: eth3
         bridged: false
         vendor: Intel
         version: "82576"
       ib0:
-        device: ib0
         vendor: Mellanox
         version: MT25418
       ib1:
-        device: ib1
         vendor: Mellanox
         version: MT25418
       bmc:
@@ -61,7 +56,6 @@ nodes:
         mounted: false
         mountable: false
         management: true
-        device: bmc
     gpu:
       gpu: false
     monitoring:

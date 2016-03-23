@@ -53,13 +53,11 @@ nodes:
         vendor: Intel
         version: 82576EB
         bridged: false
-        device: eth0
         switch: gw-lille
       eth1:
         enabled: true
         mountable: true
         bridged: true
-        device: eth1
         vendor: Intel
         version: 82576EB
       bmc:
@@ -70,7 +68,6 @@ nodes:
         mounted: false
         mountable: false
         management: true
-        device: bmc
         vendor: Inventec
         version: 1.14
     gpu:

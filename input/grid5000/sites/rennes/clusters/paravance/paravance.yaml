@@ -42,7 +42,6 @@ nodes:
     network_adapters:
       eth0:
         rate: 10.0e+9
-        device: eth0
         enabled: true
         management: false
         mountable: true
@@ -57,7 +56,6 @@ nodes:
         mountable: true
         mounted: false
         bridged: false
-        device: eth1
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth2:
@@ -67,7 +65,6 @@ nodes:
         mountable: false
         mounted: false
         bridged: false
-        device: eth2
         vendor: Intel
         version: Intel Corporation
       eth3:
@@ -77,7 +74,6 @@ nodes:
         mountable: false
         mounted: false
         bridged: false
-        device: eth3
         vendor: Intel
         version: Intel Corporation
       bmc:
@@ -87,7 +83,6 @@ nodes:
         mounted: false
         mountable: false
         management: true
-        device: bmc
         ip: null #TODO
         mac: null #TODO
     gpu:

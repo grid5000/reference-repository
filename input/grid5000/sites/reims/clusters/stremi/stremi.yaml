@@ -44,23 +44,19 @@ nodes:
         enabled: true
         mountable: true
         bridged: true
-        device: eth0
       eth1:
         enabled: false
         mountable: false
         rate: 1000000000
         bridged: false
-        device: eth1
       eth2:
         enabled: false
         mountable: false
         bridged: false
-        device: eth2
       eth3:
         enabled: false
         mountable: false
         bridged: false
-        device: eth3
       bmc:
         interface: Ethernet
         rate: 1000000000
@@ -68,7 +64,6 @@ nodes:
         management: true
         mountable: false
         mounted: false
-        device: bmc
     gpu:
       gpu: false
     monitoring:

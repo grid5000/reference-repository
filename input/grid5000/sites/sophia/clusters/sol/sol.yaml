@@ -45,7 +45,6 @@ nodes:
         enabled: true
         mountable: true
         bridged: true
-        device: eth0
         vendor: nVidia
         version: MCP55 Pro
       eth1:
@@ -53,7 +52,6 @@ nodes:
         mountable: false
         rate: 1000000000
         bridged: false
-        device: eth1
         vendor: nVidia
         version: MCP55 Pro
       bmc:
@@ -63,7 +61,6 @@ nodes:
         mounted: false
         mountable: false
         management: true
-        device: bmc
     gpu:
       gpu: false
     monitoring:
@@ -86,13 +83,11 @@ nodes:
     network_adapters:
       eth0:
         bridged: true
-        device: eth0
         vendor: nVidia
         version: MCP55 Pro
       eth1:
         rate: 1000000000
         bridged: false
-        device: eth1
         vendor: nVidia
         version: MCP55 Pro
       bmc:
@@ -102,12 +97,10 @@ nodes:
         mounted: false
         mountable: false
         management: true
-        device: bmc
       myri0:
         vendor: Myricom
         version: M3F-PCIXF-2
         management: false
-        device: myri0
         switch: sw-myrinet
     gpu:
       gpu: false

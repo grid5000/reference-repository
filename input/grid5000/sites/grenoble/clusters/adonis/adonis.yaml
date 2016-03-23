@@ -44,7 +44,6 @@ nodes:
         enabled: true
         mountable: true
         bridged: true
-        device: eth0
         vendor: Intel
         version: Device 10c9 (rev 01)
       eth1:
@@ -52,13 +51,11 @@ nodes:
         mountable: false
         rate: 1000000000
         bridged: false
-        device: eth1
         vendor: Intel
         version: Device 10c9 (rev 01)
       ib0:
         enabled: true
         mountable: true
-        device: ib0
         vendor: Mellanox
       bmc:
         interface: Ethernet
@@ -67,7 +64,6 @@ nodes:
         management: true
         mountable: false
         mounted: false
-        device: bmc
         vendor: Super Micro Computer Inc.
         version: "1.15"
     gpu:

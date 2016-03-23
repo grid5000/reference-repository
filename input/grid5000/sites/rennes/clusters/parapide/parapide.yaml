@@ -47,7 +47,6 @@ nodes:
         enabled: true
         mountable: true
         bridged: true
-        device: eth0
         vendor: Intel
         version: 82575EB
       eth1:
@@ -55,7 +54,6 @@ nodes:
         mountable: false
         rate: 1000000000
         bridged: false
-        device: eth1
         vendor: Intel
         version: 82575EB
       ib0:
@@ -67,7 +65,6 @@ nodes:
         mounted: true
         rate: 20000000000
         version: MT25418
-        device: ib0
         vendor: Mellanox
         version: MT25418
       ib1:
@@ -79,7 +76,6 @@ nodes:
         mounted: false
         rate: 10000000000
         version: MT25418
-        device: ib1
         vendor: Mellanox
         version: MT25418
       bmc:
@@ -89,7 +85,6 @@ nodes:
         mounted: false
         mountable: false
         management: true
-        device: bmc
     gpu:
       gpu: false
     monitoring:

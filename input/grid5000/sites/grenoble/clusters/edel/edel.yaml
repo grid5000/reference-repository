@@ -43,7 +43,6 @@ nodes:
         enabled: true
         mountable: true
         bridged: true
-        device: eth0
         vendor: Intel
         version: 82576 Gigabit Network Connection
       eth1:
@@ -51,13 +50,11 @@ nodes:
         mountable: false
         rate: 1.0e+9
         bridged: false
-        device: eth1
         vendor: Intel
         version: 82576 Gigabit Network Connection
       ib0:
         enabled: true
         mountable: true
-        device: ib0
         vendor: Mellanox
       ib1:
         driver: mlx4_core
@@ -69,7 +66,6 @@ nodes:
         rate: 10000000000
         version: MT26428
         rate: 40.0e+9
-        device: ib1
         vendor: Mellanox
       bmc:
         interface: Ethernet
@@ -78,7 +74,6 @@ nodes:
         management: true
         mountable: false
         mounted: false
-        device: bmc
         vendor: Unknown
         version: "1.7"
     gpu:
@@ -154,7 +149,6 @@ nodes:
   edel-16:
     bios:
       sdb:
-        device: sdb
         model: Virtual Floppy
         rev: 1.0
     chassis:
@@ -177,7 +171,6 @@ nodes:
         version: MT26428
     storage_devices:
       sdb:
-        device: sdb
         model: Virtual Floppy
         rev: 1.0
   edel-17:

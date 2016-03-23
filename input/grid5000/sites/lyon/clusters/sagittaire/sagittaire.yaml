@@ -45,14 +45,12 @@ nodes:
         mountable: false
         rate: 1000000000
         bridged: false
-        device: eth0
         vendor: Broadcom
         model: BCM5704
       eth1:
         enabled: true
         mountable: true
         bridged: true
-        device: eth1
         vendor: Broadcom
         model: BCM5704
       bmc:    
@@ -62,7 +60,6 @@ nodes:
         management: true
         mountable: false
         mounted: false
-        device: bmc
         driver: bnx2
     gpu:
       gpu: false
@@ -257,7 +254,6 @@ nodes:
         switch_port: '1:22'
     storage_devices:
       sdb:
-        device: sdb
         model: MAT3073NC
         rev: 104
         size: 73543163904
@@ -419,7 +415,6 @@ nodes:
         switch_port: '1:4'
     storage_devices:
       sdb:
-        device: sdb
         model: MAT3073NC
         rev: 104
         size: 73543163904
@@ -449,7 +444,6 @@ nodes:
         switch_port: '1:43'
     storage_devices:
       sdb:
-        device: sdb
         model: MAT3073NC
         rev: 104
         size: 73543163904
@@ -599,7 +593,6 @@ nodes:
         switch_port: '2:6'
     storage_devices:
       sdb:
-        device: sdb
         model: MAT3073NC
         rev: 104
         size: 73543163904

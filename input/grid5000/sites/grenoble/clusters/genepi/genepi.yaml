@@ -31,21 +31,17 @@ nodes:
       eth0:
         rate: 1.0e+9
         bridged: false
-        device: eth0
         vendor: Intel
         version: Intel 80003ES2LAN Gigabit Ethernet Controller (Copper (rev 01)
       eth1:
         rate: 1.0e+9
         bridged: true
-        device: eth1
         vendor: Intel
         version: Intel 80003ES2LAN Gigabit Ethernet Controller (Copper (rev 01)
       ib0:
-        device: ib0
         vendor: Mellanox
       ib1:
        rate: 40.0e+9
-       device: ib1
        vendor: Mellanox
       bmc:
         interface: Ethernet
@@ -54,7 +50,6 @@ nodes:
         management: true
         mountable: false
         mounted: false
-        device: bmc
         vendor: Peppercon AG (10437
         version: 1.50
     gpu:

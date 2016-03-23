@@ -44,13 +44,11 @@ nodes:
         enabled: true
         mountable: true
         bridged: true
-        device: eth0
       eth1:
         enabled: false
         mountable: false
         rate: 10.0e+9
         bridged: false
-        device: eth1
       bmc:
         interface: Ethernet
         rate: 1000000000
@@ -58,7 +56,6 @@ nodes:
         management: true
         mountable: false
         mounted: false
-        device: bmc
         switch: gw-luxembourg
     gpu:
       gpu: false
