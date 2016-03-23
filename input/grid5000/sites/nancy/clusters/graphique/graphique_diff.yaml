@@ -1,0 +1,46 @@
+---
+nodes:
+  graphique-[-]:
+    network_adapters:
+      eth0:
+        enabled: false
+        mountable: false
+        rate: 10000000000
+      eth1:
+        enabled: false
+        mountable: false
+        rate: 10000000000
+      eth2:
+        mountable: true
+      eth3:
+        enabled: false
+        mountable: false
+        rate: 1000000000
+    processor:
+      cache_l1d: 32768
+      cache_l1i: 32768
+      cache_l2: 262144
+      cache_l3: 15728640
+      clock_speed: 3200000000
+      instruction_set: x86-64
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz
+      vendor: Intel
+      version: E5-2620 v3
+
+  graphique-1:
+    chassis:
+      serial: BYGMJ32
+    network_adapters:
+      bmc:
+        ip: 172.17.67.1
+        mac: b0:83:fe:e4:69:d8
+  graphique-5:
+    chassis:
+      serial: BXTRV42
+    network_adapters:
+      bmc:
+        ip: 172.17.67.5
+        mac: 18:fb:7b:9b:91:d3
+      eth2:
+        enabled: true

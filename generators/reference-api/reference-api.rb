@@ -16,23 +16,6 @@ refapi_path = "/tmp/data"
 #global_hash = load_yaml_file_hierarchy("../../input/example/")
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 
-# Write pretty and sorted JSON files
-def write_json(filepath, data)
-  def rec_sort(h)
-    case h
-    when Array
-      h.map{|v| rec_sort(v)}#.sort_by!{|v| (v.to_s rescue nil) }
-    when Hash
-      Hash[Hash[h.map{|k,v| [rec_sort(k),rec_sort(v)]}].sort_by{|k,v| [(k.to_s rescue nil), (v.to_s rescue nil)]}]
-    else
-      h
-    end
-  end
-  File.open(filepath, 'w') do |f|
-    f.write(JSON.pretty_generate(rec_sort(data)))
-  end
-end
-
 # Parse network equipment description and return switch name and port connected to given node
 #  In the network description, if the node interface is given (using "port" attribute),
 #  the interface parameter must be used.
@@ -195,7 +178,7 @@ global_hash["sites"].each do |site_uid, site|
           end
         }
        
-        pp node["monitoring"]["wattmeter"]
+        #pp node["monitoring"]["wattmeter"]
 
         if node["monitoring"]["wattmeter"] != "false"
           node["sensors"]["power"]["via"]["api"] ||= {}

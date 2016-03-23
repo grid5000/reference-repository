@@ -1,0 +1,81 @@
+---
+nodes:
+
+  paranoia-[1-8]:
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+      eth1:
+        enabled: false
+        mountable: false
+      eth2:
+        enabled: false
+        rate: 1000000000
+      eth3:
+        enabled: false
+        mountable: false
+    processor:
+      cache_l1d: 32768
+      cache_l1i: 32768
+      cache_l2: 262144
+      cache_l3: 26214400
+      clock_speed: 2200000000
+      instruction_set: x86-64
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) CPU E5-2660 v2 @ 2.20GHz
+      vendor: Intel
+      version: E5-2660 v2
+
+  paranoia-1:
+    chassis:
+      serial: 9N20LZ1
+    network_adapters:
+      bmc:
+        ip: 172.17.100.1
+        mac: f0:4d:a2:73:cf:47
+  paranoia-2:
+    chassis:
+      serial: DB12LZ1
+  paranoia-3:
+    chassis:
+      serial: 9PJ4LZ1
+    network_adapters:
+      bmc:
+        ip: 172.17.100.3
+        mac: f0:4d:a2:74:06:b8
+  paranoia-4:
+    chassis:
+      serial: BVY4LZ1
+    network_adapters:
+      bmc:
+        ip: 172.17.100.4
+        mac: f0:4d:a2:73:cf:2c
+  paranoia-5:
+    chassis:
+      serial: 9912LZ1
+    network_adapters:
+      bmc:
+        ip: 172.17.100.5
+        mac: f0:4d:a2:73:cc:71
+  paranoia-6:
+    chassis:
+      serial: 8TY4LZ1
+    network_adapters:
+      bmc:
+        ip: 172.17.100.6
+        mac: f0:4d:a2:73:ce:24
+  paranoia-7:
+    chassis:
+      serial: 5M20LZ1
+    network_adapters:
+      bmc:
+        ip: 172.17.100.7
+        mac: f0:4d:a2:73:ca:af
+  paranoia-8:
+    chassis:
+      serial: D14YKZ1
+    network_adapters:
+      bmc:
+        ip: 172.17.100.8
+        mac: f0:4d:a2:73:ce:3f

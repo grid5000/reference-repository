@@ -11,6 +11,40 @@ def deep_merge_entries(a, b)
   end
 end
 
+# Write pretty and sorted JSON files
+def write_json(filepath, data)
+  def rec_sort(h)
+    case h
+    when Array
+      h.map{|v| rec_sort(v)}#.sort_by!{|v| (v.to_s rescue nil) }
+    when Hash
+      Hash[Hash[h.map{|k,v| [rec_sort(k),rec_sort(v)]}].sort_by{|k,v| [(k.to_s rescue nil), (v.to_s rescue nil)]}]
+    else
+      h
+    end
+  end
+  File.open(filepath, 'w') do |f|
+    f.write(JSON.pretty_generate(rec_sort(data)))
+  end
+end
+
+# Write sorted YAML files
+def write_yaml(filepath, data)
+  def rec_sort(h)
+    case h
+    when Array
+      h.map{|v| rec_sort(v)}#.sort_by!{|v| (v.to_s rescue nil) }
+    when Hash
+      Hash[Hash[h.map{|k,v| [rec_sort(k),rec_sort(v)]}].sort_by{|k,v| [(k.to_s rescue nil), (v.to_s rescue nil)]}]
+    else
+      h
+    end
+  end
+  File.open(filepath, 'w') do |f|
+    f.write(rec_sort(data).to_yaml)
+  end
+end
+
 # Extend Hash with helper methods needed to convert input data files to ruby Hash
 class ::Hash
 
