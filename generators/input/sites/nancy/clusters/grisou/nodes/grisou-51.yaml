@@ -18,8 +18,8 @@ grisou-51:
       size: 600127266816
       model: ST600MM0088
       rev: TT31
-      timeread: 1276
-      timewrite: 2913
+      timeread: 1281
+      timewrite: 2952
     sdb:
       device: sdb
       size: 600127266816
@@ -30,6 +30,12 @@ grisou-51:
   main_memory:
     ram_size: 135291469824
   network_interfaces:
+    eth4:
+      interface: Ethernet
+      driver: igb
+      mac: 24:6e:96:03:24:24
+      mounted: false
+      management: false
     eth0:
       interface: Ethernet
       ip: 172.16.72.51
@@ -38,30 +44,38 @@ grisou-51:
       rate: 10000000000
       mounted: true
       management: false
+    eth5:
+      interface: Ethernet
+      driver: igb
+      mac: 24:6e:96:03:24:25
+      mounted: false
+      management: false
     eth1:
       interface: Ethernet
       driver: ixgbe
       mac: 24:6e:96:03:24:22
       mounted: false
       management: false
-    eth4:
+    eth2:
       interface: Ethernet
       driver: ixgbe
       mac: a0:36:9f:7e:4c:e8
       mounted: false
       management: false
-    eth5:
+    eth3:
       interface: Ethernet
       driver: ixgbe
       mac: a0:36:9f:7e:4c:ea
       mounted: false
       management: false
-    eth2:
-      interface: Ethernet
-      driver: ib_ipoib
-      mac: 80:00:00:48:fe:80:00:00:00:00:00:00:e4:1d:2d:03:00:bf:4f:81
-      rate: 0
-      mounted: false
+    ib0:
+      interface: InfiniBand
+      ip: 172.18.72.51
+      driver: mlx4_core
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:e4:1d:2d:03:00:bf:4f:81
+      rate: 56000000000
+      version: MT4099
+      mounted: true
       management: false
   operating_system:
     name: debian
