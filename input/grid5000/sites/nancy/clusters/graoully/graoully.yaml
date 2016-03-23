@@ -13,7 +13,8 @@ nodes:
     operating_system:
       kernel: 3.16.0-4-amd64
       name: debian
-      version: '8.2'
+      release: Jessie
+      version: "8.2"
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -34,8 +35,6 @@ nodes:
       queues: 
         - admin
         - production
-    operating_system:
-      release: Jessie
     storage_devices:
       sda:
         interface: SCSI

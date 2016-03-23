@@ -18,6 +18,7 @@ nodes:
       kernel: 3.16.0-4-amd64
       name: debian
       version: '8.2'
+      release: Jessie
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -36,8 +37,6 @@ nodes:
       queues:
       - admin
       - default
-    operating_system:
-      release: Jessie
     storage_devices:
       sda:
         interface: 'SATA II'
@@ -110,7 +109,6 @@ nodes:
   #   status: retired
   # griffon-86:
   #   status: retired
-
 
   griffon-1:
     chassis:
