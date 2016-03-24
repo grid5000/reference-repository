@@ -8,10 +8,6 @@ queues:
 
 nodes:
   orion-[1-4]:
-    operating_system:
-      kernel: 2.6.32-5-amd64
-      name: debian
-      version: 6.0.6
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -29,17 +25,22 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      queues:
+        - default
+        - admin
+      max_walltime: 0
     operating_system:
       name: debian
       release: Jessie
       version: "8.2"
-      kernel: 3.2.0-4-amd64
+      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SCSI
         driver: megaraid_sas
         storage: HDD
         vendor: null
+    network_adapters:
       eth0:
         enabled: true
         mountable: true

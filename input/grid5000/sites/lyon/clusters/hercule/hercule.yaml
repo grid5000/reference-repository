@@ -9,10 +9,6 @@ queues:
 
 nodes:
   hercule-[1-4]:
-    operating_system:
-      kernel: 2.6.32-5-amd64
-      name: debian
-      version: 6.0.6
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -30,11 +26,15 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      virtual: ivt
+      max_walltime: 0
+      queues:
+        - default
+        - admin
     operating_system:
       name: debian
       release: Jessie
       version: "8.2"
-      kernel: 3.2.0-4-amd64
     storage_devices:
       sda:
         interface: SATA
@@ -48,10 +48,11 @@ nodes:
         interface: SATA
         driver: ahci
         storage: HDD
+    network_adapters:
       eth0:
         enabled: false
         mountable: false
-        rate: 10.0+e9
+        rate: 10000000000
         bridged: false
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
@@ -64,7 +65,7 @@ nodes:
       eth2:
         enabled: true
         mountable: true
-        rate: 100.0+e6
+        rate: 100000000
         bridged: false
         vendor: Intel
         version: Intel Corporation
@@ -77,7 +78,7 @@ nodes:
         version: Intel Corporation
       bmc:
         interface: Ethernet
-        rate: 1.0e+9
+        rate: 1000000000
         enabled: true
         mounted: false
         mountable: false

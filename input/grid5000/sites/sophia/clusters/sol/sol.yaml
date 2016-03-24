@@ -9,9 +9,9 @@ queues:
 nodes:
   sol-[1-28]:
     operating_system:
-      kernel: 2.6.32-5-amd64
+      kernel: 3.16.0-4-amd64
       name: debian
-      version: 6.0.6
+      version: '8.2'
     processor:
       cache_l1d: 65536
       cache_l1i: 65536
@@ -29,11 +29,15 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      queues:
+        - default
+        - admin
+      max_walltime: 0
     operating_system:
       name: debian
       release: Jessie
       version: "8.2"
-      kernel: 3.2.0-4-amd64
+      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SATA
@@ -108,7 +112,6 @@ nodes:
       wattmeter: false
 
 # Retired nodes
-nodes:
   sol-36:
     status: retired
 

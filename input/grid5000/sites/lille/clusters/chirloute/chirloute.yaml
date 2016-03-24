@@ -1,6 +1,6 @@
 model: Dell PowerEdge C6100
 created_at: 2011-03-25
-priority: 201199
+priority: '201199'
 kavlan: true
 queues:
   - default
@@ -9,9 +9,9 @@ queues:
 nodes:
   chirloute-[1-8]:
     operating_system:
-      kernel: 2.6.32-5-amd64
+      kernel: 3.16.0-4-amd64
       name: debian
-      version: 6.0.6
+      version: '8.2'
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -33,16 +33,20 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      max_walltime: 0
+      queues:
+        - default
+        - admin
     operating_system:
       name: debian
       release: Jessie
       version: "8.2"
-      kernel: 3.2.0-4-amd64
+      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SATA
         driver: mptsas
-        raid: 0
+        raid: '0'
         storage: HDD
         vendor: SEAGATE
     network_adapters:

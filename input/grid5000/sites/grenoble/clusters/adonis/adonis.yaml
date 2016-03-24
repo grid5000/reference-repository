@@ -28,11 +28,15 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      max_walltime: 0
+      queues:
+        - default
+        - admin
     operating_system:
       name: debian
       release: Jessie
       version: "8.2"
-      kernel: 3.2.0-4-amd64
+      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SATA

@@ -15,11 +15,15 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      max_walltime: 0
+      queues:
+        - default
+        - admin
     operating_system:
       name: debian
       release: Jessie
       version: "8.2"
-      kernel: 3.2.0-4-amd64
+      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:    
         interface: SATA II
@@ -38,7 +42,7 @@ nodes:
         version: 80003ES2LAN
       myri0:
         vendor: Myricom
-        version: 1000000000-PCIE-8A-C
+        version: 10G-PCIE-8A-C
         management: false
         switch: switch-myri
       bmc:
