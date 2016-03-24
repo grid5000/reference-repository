@@ -57,7 +57,7 @@ site :lille do |site_uid|
         operating_system({
           :name     => "debian",
           :release  => "Jessie",
-          :version  => "7",
+          :version  => "8.2",
           :kernel   => "3.16.0-4-amd64"
         })
 
