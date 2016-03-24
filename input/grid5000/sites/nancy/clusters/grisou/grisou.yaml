@@ -14,6 +14,7 @@ nodes:
       kernel: 3.16.0-4-amd64
       name: debian
       version: '8.2'
+      release: Jessie
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -35,9 +36,6 @@ nodes:
       - admin
       - default
       max_walltime: 0
-    operating_system:
-      name: debian
-      release: Jessie
     storage_devices:
       sda:
         interface: SCSI
@@ -166,54 +164,70 @@ nodes:
   grisou-[50-51]:
     network_adapters:
       eth0:
-        enabled: true 
-        mountable: true
         bridged: true
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      eth1:
-        rate: 10.0e+9
-        enabled: false 
-        mountable: false
-        bridged: false
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      eth4:
-        rate: 10.0e+9
-        enabled: false
-        mountable: false
-        bridged: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
-      eth5: 
-        rate: 10.0e+9
-        enabled: false 
-        mountable: false
-        bridged: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
-      bmc: 
-        interface: Ethernet
-        rate: 1.0e+9
         enabled: true
-        mounted: false
-        mountable: false
-        management: true
-      eth2: 
-        enabled: true 
+        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
         mountable: true
-        mounted: true
+        vendor: Intel Corporation
+      eth1:
         bridged: false
-        vendor: Mellanox
-        model: MT27500 Family [ConnectX-3]
-        switch: sgraoullyib
-        guid: null
+        enabled: false
+        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+        mountable: false
+        rate: 10000000000
+        vendor: Intel Corporation
+      eth2:
+        bridged: false
+        enabled: false
+        model: Ethernet 10G 2P X520 Adapter
+        mountable: false
+        rate: 10000000000
+        vendor: Intel Corporation
+      eth3:
+        bridged: false
+        enabled: false
+        model: Ethernet 10G 2P X520 Adapter
+        mountable: false
+        rate: 10000000000
+        vendor: Intel Corporation
+      eth4:
+        bridged: false
+        enabled: false
+        model: I350 Gigabit Network Connection
+        mountable: false
+        rate: 1000000000
+        vendor: Intel Corporation
+      eth5:
+        bridged: false
+        enabled: false
+        model: I350 Gigabit Network Connection
+        mountable: false
+        rate: 1000000000
+        vendor: Intel Corporation
+      bmc:
+        enabled: true
+        interface: Ethernet
+        ip: 172.17.72.50
+        management: true
+        mountable: false
+        mounted: false
+        rate: 1000000000
+      ib0:
+        bridged: false
+        device: ib0
+        driver: mlx4_core
+        enabled: true
         hwid: null
         ib_switch_card: null
         ib_switch_card_pos: null
-        version: null
-        ip6: null
-
+        interface: InfiniBand
+        management: false
+        model: MT27500 Family [ConnectX-3]
+        mountable: true
+        mounted: true
+        rate: 56000000000
+        vendor: Mellanox
+        version: MT4099
 
   grisou-1:
     chassis:

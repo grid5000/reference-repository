@@ -11,6 +11,7 @@ nodes:
 # Global node properties
   grimoire-[1-8]:
     operating_system:
+      release: Jessie
       kernel: 3.16.0-4-amd64
       name: debian
       version: '8.2'
@@ -35,8 +36,6 @@ nodes:
       queues:
       - admin
       - default
-    operating_system:
-      release: Jessie
     storage_devices:
       sda:
         interface: SCSI
