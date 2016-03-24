@@ -1,0 +1,76 @@
+---
+graphique-4:
+  supported_job_types:
+    virtual: ivt
+  processor:
+    clock_speed: 3200000000
+    instruction_set: x86-64
+    model: Intel Xeon
+    version: E5-2620 v3
+    vendor: Intel
+    other_description: Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz
+    cache_l1i: 32768
+    cache_l1d: 32768
+    cache_l2: 262144
+    cache_l3: 15728640
+  main_memory:
+    ram_size: 68719476736
+  architecture:
+    smp_size: 2
+    smt_size: 12
+    platform_type: x86_64
+  block_devices:
+    sda:
+      device: sda
+      size: 299439751168
+      model: PERC H330
+      rev: 4.24
+  network_interfaces:
+    eth0:
+      interface: Ethernet
+      driver: bnx2x
+      mac: 44:a8:42:0a:8d:0d
+      rate: 10000000000
+      mounted: false
+      mountable: false
+      management: false
+      enabled: false
+    eth1:
+      interface: Ethernet
+      driver: bnx2x
+      mac: 44:a8:42:0a:8d:0f
+      rate: 10000000000
+      mounted: false
+      mountable: false
+      management: false
+      enabled: false
+    eth2:
+      interface: Ethernet
+      ip: 172.16.67.4
+      driver: bnx2x
+      mac: 44:a8:42:0a:8d:11
+      rate: 1000000000
+      enabled: true
+      mounted: true
+      mountable: true
+      management: false
+    eth3:
+      interface: Ethernet
+      driver: bnx2x
+      mac: 44:a8:42:0a:8d:13
+      mounted: false
+      mountable: false
+      management: false
+      enabled: false
+      rate: 1000000000
+    bmc:
+      ip: 172.17.67.4
+      mac: 18:fb:7b:9b:91:6d
+  chassis:
+    serial_number: HYTRV42
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R730
+  bios:
+    vendor: Dell Inc.
+    version: 1.0
+    release_date: 08/28/2014

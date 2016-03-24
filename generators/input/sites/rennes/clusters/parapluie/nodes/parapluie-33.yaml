@@ -1,0 +1,102 @@
+---
+parapluie-33:
+  bios:
+    version: O37
+    release_date: 09/06/2010
+    vendor: HP
+  block_devices:
+    sda:
+      model: VB0250EAVER
+      device: sda
+      size: 250059350016
+      rev: HPG0
+      vendor: ATA
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  network_interfaces:
+    ib0:
+      mounted: true
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:c3:d5
+      rate: 20000000000
+      ip6: fe80::223:7dff:ff94:c3d5
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
+      ip: 172.18.99.33
+      driver: mlx4_core
+      mountable: true
+    bmc:
+      mac: 78:e7:d1:65:a9:7a
+      ip: 172.17.99.33
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:c3:d6
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
+    eth0:
+      mounted: false
+      rate: 100000000
+      mac: 78:e7:d1:f9:6f:52
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 78:e7:d1:f9:6f:53
+      ip6: fe80::7ae7:d1ff:fef9:6f53
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.99.33
+    eth2:
+      mounted: false
+      mac: 78:e7:d1:f9:6f:54
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    eth3:
+      mounted: false
+      mac: 78:e7:d1:f9:6f:55
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  chassis:
+    serial_number: GB803651P9
+    manufacturer: HP
+    product_name: ProLiant DL165 G7
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 1700000000
+    other_description: AMD Opteron(tm) Processor 6164 HE
+    version: 6164 HE
+    cache_l2: 524288
+    cache_l3: 5240832
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 51539607552
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 24

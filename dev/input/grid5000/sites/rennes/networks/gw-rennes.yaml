@@ -1,0 +1,337 @@
+---
+gw-rennes:
+  model: Nexus 56128P
+  kind: router
+  site: rennes
+  snmp_community: public
+  routes: {}
+  backplane_bps: 1440000000000
+  mtu: 1500
+  vlans:
+    naming_pattern: Vlan%VLANID%
+    "vlan100":
+      administrative: yes
+      addresses:
+        - 172.16.111.254
+    "vlan101":
+      administrative: yes
+      addresses:
+        - 172.17.111.254
+    "vlan500":
+      addresses:
+        - 192.168.4.19
+    "vlan701":
+      name: kavlan-1
+      addresses:
+        - 192.168.192.0/20
+    "vlan702":
+      name: kavlan-2
+      addresses:
+        - 192.168.208.0/20
+    "vlan703":
+      name: kavlan-3
+      addresses:
+        - 192.168.224.0/20
+    "vlan704":
+      name: kavlan-4
+      addresses:
+        - 10.24.0.0/18
+    "vlan705":
+      name: kavlan-5
+      addresses:
+        - 10.24.64.0/18
+    "vlan706":
+      name: kavlan-6
+      addresses:
+        - 10.24.128.0/18
+    "vlan707":
+      name: kavlan-7
+      addresses:
+        - 10.24.192.0/18
+    "vlan708":
+      name: kavlan-8
+      addresses:
+        - 10.25.0.0/18
+    "vlan709":
+      name: kavlan-9
+      addresses:
+        - 10.25.64.0/18
+    "vlan716":
+      name: kavlan-16
+      addresses:
+        - 10.27.192.0/18
+  routes: {}
+  linecards:
+    1:
+      naming_pattern: "Ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      rate: 10000000000
+      ports:
+        1:
+          uid: parasilo-1
+          kind: node
+          port: eth1
+        2:
+          uid: parasilo-1
+          kind: node
+          port: eth0
+        3:
+          uid: parasilo-2
+          kind: node
+          port: eth1
+        4:
+          uid: parasilo-2
+          kind: node
+          port: eth0
+        5:
+          uid: parasilo-3
+          kind: node
+          port: eth1
+        6:
+          uid: parasilo-3
+          kind: node
+          port: eth0
+        7:
+          uid: parasilo-4
+          kind: node
+          port: eth1
+        8:
+          uid: parasilo-4
+          kind: node
+          port: eth0
+        9:
+          uid: parasilo-5
+          kind: node
+          port: eth1
+        10:
+          uid: parasilo-5
+          kind: node
+          port: eth0
+        11:
+          uid: parasilo-6
+          kind: node
+          port: eth1
+        12:
+          uid: parasilo-6
+          kind: node
+          port: eth0
+        13:
+          uid: parasilo-7
+          kind: node
+          port: eth1
+        14:
+          uid: parasilo-7
+          kind: node
+          port: eth0
+        15:
+          uid: parasilo-8
+          kind: node
+          port: eth1
+        16:
+          uid: parasilo-8
+          kind: node
+          port: eth0
+        17:
+          uid: parasilo-9
+          kind: node
+          port: eth1
+        18:
+          uid: parasilo-9
+          kind: node
+          port: eth0
+        19:
+          uid: parasilo-10
+          kind: node
+          port: eth1
+        20:
+          uid: parasilo-10
+          kind: node
+          port: eth0
+        21:
+          uid: parasilo-11
+          kind: node
+          port: eth1
+        22:
+          uid: parasilo-11
+          kind: node
+          port: eth0
+        23:
+          uid: parasilo-12
+          kind: node
+          port: eth1
+        24:
+          uid: parasilo-12
+          kind: node
+          port: eth0
+        25:
+          uid: parasilo-13
+          kind: node
+          port: eth1
+        26:
+          uid: parasilo-13
+          kind: node
+          port: eth0
+        27:
+          uid: parasilo-14
+          kind: node
+          port: eth1
+        28:
+          uid: parasilo-14
+          kind: node
+          port: eth0
+        29:
+          uid: parasilo-15
+          kind: node
+          port: eth1
+        30:
+          uid: parasilo-15
+          kind: node
+          port: eth0
+        31:
+          uid: parasilo-16
+          kind: node
+          port: eth1
+        32:
+          uid: parasilo-16
+          kind: node
+          port: eth0
+        33:
+          uid: parasilo-17
+          kind: node
+          port: eth1
+        34:
+          uid: parasilo-17
+          kind: node
+          port: eth0
+        35:
+          uid: parasilo-18
+          kind: node
+          port: eth1
+        36:
+          uid: parasilo-18
+          kind: node
+          port: eth0
+        37:
+          uid: parasilo-19
+          kind: node
+          port: eth1
+        38:
+          uid: parasilo-19
+          kind: node
+          port: eth0
+        39:
+          uid: parasilo-20
+          kind: node
+          port: eth1
+        40:
+          uid: parasilo-20
+          kind: node
+          port: eth0
+        41:
+          uid: parasilo-21
+          kind: node
+          port: eth1
+        42:
+          uid: parasilo-21
+          kind: node
+          port: eth0
+        43:
+          uid: parasilo-22
+          kind: node
+          port: eth1
+        44:
+          uid: parasilo-22
+          kind: node
+          port: eth0
+        45:
+          uid: parasilo-23
+          kind: node
+          port: eth1
+        46:
+          uid: parasilo-23
+          kind: node
+          port: eth0
+        47:
+          uid: parasilo-24
+          kind: node
+          port: eth1
+        48:
+          uid: parasilo-24
+          kind: node
+          port: eth0
+        49:
+          uid: paravance-sw-2
+          rate: 40000000000
+          kind: switch
+        50:
+          uid: paravance-sw-2
+          rate: 40000000000
+          kind: switch
+        51:
+          uid: paravance-sw-1
+          rate: 40000000000
+          kind: switch
+        52:
+          uid: paravance-sw-1
+          rate: 40000000000
+          kind: switch
+    2:
+      naming_pattern: "Ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      rate: 10000000000
+      ports:
+        1:
+          uid: parasilo-25
+          kind: node
+          port: eth1
+        2:
+          uid: parasilo-25
+          kind: node
+          port: eth0
+        3:
+          uid: parasilo-26
+          kind: node
+          port: eth1
+        4:
+          uid: parasilo-26
+          kind: node
+          port: eth0
+        5:
+          uid: parasilo-27
+          kind: node
+          port: eth1
+        6:
+          uid: parasilo-27
+          kind: node
+          port: eth0
+        7:
+          uid: parasilo-28
+          kind: node
+          port: eth1
+        8:
+          uid: parasilo-28
+          kind: node
+          port: eth0
+        23:
+          uid: c6509
+          kind: router
+        24:
+          uid: renater-rennes
+          kind: virtual
+  channels:
+    naming_pattern: Po%CHANNELID%
+    snmp_pattern: port-channel%CHANNELID%
+    2:
+      - linecard: 1
+        port: 51
+        rate: 40000000000
+      - linecard: 1
+        port: 52
+        rate: 40000000000
+    3:
+      - linecard: 1
+        port: 49
+        rate: 40000000000
+      - linecard: 1
+        port: 50
+        rate: 40000000000

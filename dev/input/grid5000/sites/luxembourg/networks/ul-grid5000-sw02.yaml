@@ -1,0 +1,168 @@
+---
+ul-grid5000-sw02:
+  model: cisco N5K-C5020P-BF
+  kind: switch
+  site: luxembourg
+  snmp_community: public
+  backplane_bps: 1040000000000
+  mtu: 9216
+  weathermap:
+    use_cacti: "yes"
+  vlans:
+    naming_pattern: Vlan%VLANID%
+    "vlan101":
+      administrative: yes
+      addresses:
+        - 172.17.191.253
+  routes: {}
+
+  linecards:
+#    0:
+#      naming_pattern: "mgmt%PORT%"
+#      rate: 100000000
+#      ports:
+#        0:
+#          uid: gw-luxembourg
+#          port: Gi1/46
+#          kind: router
+    1:
+      naming_pattern: "Ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      rate: 10000000000
+      kind: node
+      ports:
+        1:
+        2:
+          uid: granduc-1
+          port: eth2
+        3:
+          uid: granduc-2
+          port: eth2
+        4:
+          uid: granduc-3
+          port: eth2
+        5:
+          uid: granduc-4
+          port: eth2
+        6:
+          uid: granduc-5
+          port: eth2
+        7:
+          uid: granduc-6
+          port: eth2
+        8:
+          uid: granduc-7
+          port: eth2
+        9:
+          uid: granduc-8
+          port: eth2
+        10:
+          uid: granduc-9
+          port: eth2
+        11:
+          uid: granduc-10
+          port: eth2
+        12:
+          uid: granduc-11
+          port: eth2
+        13:
+          uid: granduc-12
+          port: eth2
+        14:
+          uid: granduc-13
+          port: eth2
+        15:
+          uid: granduc-14
+          port: eth2
+        16:
+          uid: granduc-15
+          port: eth2
+        17:
+          uid: granduc-16
+          port: eth2
+        18:
+          uid: granduc-17
+          port: eth2
+        19:
+          uid: granduc-18
+          port: eth2
+        20:
+          uid: granduc-19
+          port: eth2
+        21:
+          uid: granduc-20
+          port: eth2
+        22:
+          uid: granduc-21
+          port: eth2
+        23:
+          uid: granduc-22
+          port: eth2
+        24:
+        25:
+        26:
+        27:
+        28:
+        29:
+        30:
+          uid: gw-luxembourg
+          port: Te3/1
+          kind: router
+        31:
+        32:
+          uid: gw-luxembourg
+          port: Te3/2
+          kind: router
+        33:
+          uid: mxl1
+          port: Te0/33
+          kind: switch
+        34:
+          uid: mxl1
+          port: Te0/34
+          kind: switch
+        35:
+          uid: mxl1
+          port: Te0/35
+          kind: switch
+        36:
+          uid: mxl1
+          port: Te0/36
+          kind: switch
+        37:
+          uid: mxl2
+          port: Te0/33
+          kind: switch
+        38:
+          uid: mxl2
+          port: Te0/34
+          kind: switch
+        39:
+          uid: mxl2
+          port: Te0/35
+          kind: switch
+        40:
+          uid: mxl2
+          port: Te0/36
+          kind: switch
+  channels:
+    naming_pattern: Po%CHANNELID%
+    snmp_pattern: port-channel%CHANNELID%
+    "lacp5":
+        - linecard: 1
+          port: 33
+        - linecard: 1
+          port: 34
+        - linecard: 1
+          port: 35
+        - linecard: 1
+          port: 36
+    "lacp6":
+        - linecard: 1
+          port: 37
+        - linecard: 1
+          port: 38
+        - linecard: 1
+          port: 39
+        - linecard: 1
+          port: 40

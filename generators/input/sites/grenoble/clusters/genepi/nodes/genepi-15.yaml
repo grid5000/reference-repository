@@ -1,0 +1,86 @@
+---
+genepi-15:
+  bios:
+    release_date: 04/30/2008
+    vendor: Phoenix Technologies LTD
+    version: 1.1a
+  network_interfaces:
+    ib0:
+      mounted: true
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:01:55:d9
+      rate: 20000000000
+      ip6: fe80::202:c903:1:55d9
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT26418
+      ip: 172.18.16.15
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:01:55:da
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT26418
+      driver: mlx4_core
+      mountable: false
+    eth0:
+      mounted: false
+      rate: 1000000000
+      mac: 00:30:48:7f:3e:f2
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: e1000e
+      mountable: false
+    eth1:
+      mounted: true
+      rate: 1000000000
+      mac: 00:30:48:7f:3e:f3
+      ip6: fe80::230:48ff:fe7f:3ef3
+      management: false
+      enabled: true
+      interface: Ethernet
+      ip: 172.16.16.15
+      driver: e1000e
+      mountable: true
+    bmc:
+      mac: 00:30:48:96:d3:2f
+      ip: 172.17.16.15
+  block_devices:
+    sda:
+      model: WDC WD1600YS-01S
+      device: sda
+      size: 164696555520
+      rev: 6.0
+      vendor: Western Digital
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 8393850880
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2500000000
+    other_description: Intel(R) Xeon(R) CPU           E5420  @ 2.50GHz
+    version: E5420
+    cache_l2: 6291456
+    cache_l3: 0
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
+  chassis:
+    serial_number: XAN-SM5P-00190
+    manufacturer: Bull SAS
+    product_name: Novascale Universal

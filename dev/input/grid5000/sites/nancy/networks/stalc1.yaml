@@ -1,0 +1,178 @@
+---
+stalc1:
+  model: 3com 4500G
+  kind: switch
+  site: nancy
+  snmp_community: public
+  mtu: 9216
+  vlans:
+    naming_pattern: Vlan-interface%VLANID%
+    "vlan1":
+      administrative: yes
+      addresses:
+        - 172.16.79.224
+  routes: {}
+  backplane_bps: 176000000000
+  linecards:
+    0:
+      naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports:
+        1:
+          uid: talc-1
+          port: eth0
+        3:
+          uid: talc-2
+          port: eth0
+        5:
+          uid: talc-134
+          port: eth0
+        6:
+          uid: talc-3
+          port: eth0
+        7:
+          uid: talc-4
+          port: eth0
+        8:
+          uid: talc-5
+          port: eth0
+        9:
+          uid: talc-6
+          port: eth0
+        10:
+          uid: talc-7
+          port: eth0
+        11:
+          uid: talc-8
+          port: eth0
+        12:
+          uid: talc-9
+          port: eth0
+        13:
+          uid: talc-10
+          port: eth0
+        14:
+          uid: talc-11
+          port: eth0
+        15:
+          uid: talc-12
+          port: eth0
+        16:
+          uid: talc-13
+          port: eth0
+        17:
+          uid: talc-14
+          port: eth0
+        18:
+          uid: talc-15
+          port: eth0
+        19:
+          uid: talc-16
+          port: eth0
+        20:
+          uid: talc-17
+          port: eth0
+        21:
+          uid: talc-18
+          port: eth0
+        22:
+          uid: graphique-2
+          port: eth2
+        23:
+          uid: graphique-6
+          port: eth2
+        25:
+          uid: talc-19
+          port: eth0
+        26:
+          uid: talc-20
+          port: eth0
+        27:
+          uid: talc-21
+          port: eth0
+        28:
+          uid: talc-22
+          port: eth0
+        29:
+          uid: talc-23
+          port: eth0
+        30:
+          uid: talc-24
+          port: eth0
+        31:
+          uid: talc-25
+          port: eth0
+        32:
+          uid: talc-26
+          port: eth0
+        33:
+          uid: talc-27
+          port: eth0
+        34:
+          uid: talc-28
+          port: eth0
+        35:
+          uid: talc-29
+          port: eth0
+        36:
+          uid: talc-30
+          port: eth0
+        37:
+          uid: talc-31
+          port: eth0
+        38:
+          uid: talc-32
+          port: eth0
+        39:
+          uid: talc-33
+          port: eth0
+        40:
+          uid: talc-34
+          port: eth0
+        41:
+          uid: talc-35
+          port: eth0
+        42:
+          uid: talc-36
+          port: eth0
+        43:
+          uid: talc-37
+          port: eth0
+        44:
+          uid: graphique-3
+          port: eth2
+        45:
+          uid: graphique-4
+          port: eth2
+        46:
+          uid: graphique-5
+          port: eth2
+        47:
+          uid: graphique-1
+          port: eth2
+    1:
+      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: switch
+      rate: 10000000000
+      ports:
+        2: stalc3
+    2:
+      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: other
+      rate: 10000000000
+      ports:
+        1: 
+          uid: sgravillon1
+          kind: switch
+        2:
+          kind: other
+          rate: 10000000000
+          uid: talc-srv
+          port: eth2
+  channels:
+    naming_pattern: Po%CHANNELID%
+

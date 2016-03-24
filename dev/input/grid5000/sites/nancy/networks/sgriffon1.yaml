@@ -1,0 +1,78 @@
+---
+sgriffon1:
+  model: 3com 4500g
+  kind: switch
+  site: nancy
+  snmp_community: public
+  mtu: 9216
+  vlans:
+    naming_pattern: Vlan-interface%VLANID%
+    "vlan1":
+      administrative: yes
+      addresses:
+        - 172.16.79.205
+  routes: {}
+  backplane_bps: 176000000000
+  linecards:
+    0:
+      naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports:
+        2: griffon-2
+        1: griffon-1
+        3: griffon-3
+        4: griffon-4
+        5: griffon-5
+        6: griffon-6
+        7: griffon-7
+        8: griffon-8
+        10: griffon-9
+        9: griffon-10
+        25: griffon-11
+        26: griffon-12
+        27: griffon-13
+        28: griffon-14
+        29: griffon-15
+        30: griffon-16
+        31: griffon-17
+        32: griffon-18
+        33: griffon-19
+        34: griffon-20
+        35: griffon-21
+        36: griffon-22
+        37: griffon-23
+        38: griffon-24
+        39: griffon-25
+        40: griffon-26
+        41: griffon-27
+        42: griffon-28
+        43: griffon-29
+        11: griffon-58
+        12: griffon-59
+        13: griffon-60
+        20:
+          uid: griffon-11
+          port: eth1
+        44:
+          uid: griffon-12
+          port: eth1
+        21:
+          uid: griffon-13
+          port: eth1
+        45:
+          uid: griffon-14
+          port: eth1
+    1:
+      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: other
+      rate: 10000000000
+      ports:
+        2: 
+          uid: sgravillon1
+          kind: switch
+
+  channels:
+    naming_pattern: Po%CHANNELID%

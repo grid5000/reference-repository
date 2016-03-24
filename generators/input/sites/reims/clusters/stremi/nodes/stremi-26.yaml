@@ -1,0 +1,78 @@
+---
+stremi-26:
+  bios:
+    version: O37
+    release_date: 01/26/2011
+    vendor: HP
+  network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: d4:85:64:45:a5:44
+      ip6: fe80::d685:64ff:fe45:a544
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.160.26
+    eth1:
+      mounted: false
+      mac: d4:85:64:45:a5:45
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    eth2:
+      mounted: false
+      mac: d4:85:64:45:a5:48
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    eth3:
+      mounted: false
+      mac: d4:85:64:45:a5:49
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+    bmc:
+      mac: 1c:c1:de:7b:36:17
+      ip: 172.17.160.26
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: GB0250EAFYK
+      device: sda
+      size: 250059350016
+      rev: HPG2
+  chassis:
+    serial_number: GB804391C4
+    manufacturer: HP
+    product_name: ProLiant DL165 G7
+  supported_job_types:
+    virtual: amd-v
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 1700000000
+    other_description: AMD Opteron(tm) Processor 6164 HE
+    version: 6164 HE
+    cache_l2: 524288
+    cache_l3: 5240832
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  main_memory:
+    ram_size: 51539607552
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 24

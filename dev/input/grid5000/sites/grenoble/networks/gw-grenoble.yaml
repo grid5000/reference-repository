@@ -1,0 +1,337 @@
+---
+gw-grenoble:
+  model: ExtremeNetworks
+  kind: router
+  site: grenoble
+  backplane_bps: 800000000000
+  mtu: 9216
+  snmp_community: public
+  routes: {}
+  vlans:
+    naming_pattern: Vlan%VLANID%
+    "vlan100":
+      administrative: yes
+      addresses:
+        - 172.16.31.254
+    "vlan101":
+      addresses:
+        - 172.17.31.254
+    "vlan500":
+      addresses:
+        - 192.168.4.15
+    "vlan701":
+      name: kavlan-1
+      addresses:
+        - 192.168.192.0/20
+    "vlan702":
+      name: kavlan-2
+      addresses:
+        - 192.168.208.0/20
+    "vlan703":
+      name: kavlan-3
+      addresses:
+        - 192.168.224.0/20
+    "vlan704":
+      name: kavlan-4
+      addresses:
+        - 10.4.0.0/18
+    "vlan705":
+      name: kavlan-5
+      addresses:
+        - 10.4.64.0/18
+    "vlan706":
+      name: kavlan-6
+      addresses:
+        - 10.4.128.0/18
+    "vlan707":
+      name: kavlan-7
+      addresses:
+        - 10.4.192.0/18
+    "vlan708":
+      name: kavlan-8
+      addresses:
+        - 10.5.0.0/18
+    "vlan709":
+      name: kavlan-9
+      addresses:
+        - 10.5.64.0/18
+    "vlan711":
+      name: kavlan-11
+      addresses:
+        - 10.7.192.0/18
+  linecards:
+    2:
+      naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      backplane_bps: 48000000000
+      kind: switch
+      rate: 1000000000
+      ports:
+        1:
+          uid: sw-edel-2
+          port: 0/1
+        2:
+          uid: sw-edel-2
+          port: 0/2
+        3:
+          uid: sw-edel-2
+          port: 0/3
+        4:
+          uid: sw-edel-1
+          port: 0/1
+        5:
+          uid: sw-edel-1
+          port: 0/2
+        6:
+          uid: sw-edel-1
+          port: 0/3
+        7:
+          uid: sw-edel-3
+          port: 0/1
+        8:
+          uid: sw-edel-3
+          port: 0/2
+        9:
+          uid: sw-edel-3
+          port: 0/3
+        10:
+          uid: sw-edel-4
+          port: 0/1
+        11:
+          uid: sw-edel-4
+          port: 0/2
+        12:
+          uid: sw-edel-4
+          port: 0/3
+        23:
+          uid: voltaire-1
+        24:
+          uid: voltaire-2
+    3:
+      naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      kind: node
+      backplane_bps: 48000000000
+      rate: 1000000000
+      ports:
+        1:
+          uid: digmgt
+          port: eth0
+          kind: other
+        2:
+          uid: digmgt
+          port: eth1
+          kind: other
+        3:
+          uid: digmgt
+          port: eth2
+          kind: other
+        4:
+          uid: digmgt
+          port: eth3
+          kind: other
+        5:
+          uid: grimage-9
+          port: eth0
+        6:
+          uid: grimage-9
+          port: eth1
+        7:
+          uid: grimage-10
+          port: eth0
+        8:
+          uid: grimage-10
+          port: eth1
+        11:
+          uid: adonis-1
+          port: eth0
+        12:
+          uid: adonis-2
+          port: eth0
+        13:
+          uid: adonis-3
+          port: eth0
+        14:
+          uid: adonis-4
+          port: eth0
+        15:
+          uid: adonis-5
+          port: eth0
+        16:
+          uid: adonis-6
+          port: eth0
+        17:
+          uid: adonis-7
+          port: eth0
+        18:
+          uid: adonis-8
+          port: eth0
+        19:
+          uid: adonis-9
+          port: eth0
+        20:
+          uid: adonis-10
+          port: eth0
+        21:
+          uid: voltaire-3
+          kind: switch
+        25:
+          uid: genepi-16
+          port: eth1
+        26:
+          uid: genepi-34
+          port: eth1
+        27:
+          uid: genepi-18
+          port: eth1
+        28:
+          uid: genepi-30
+          port: eth1
+        29:
+          uid: genepi-14
+          port: eth1
+        30:
+          uid: genepi-24
+          port: eth1
+        31:
+          uid: genepi-20
+          port: eth1
+        32:
+          uid: genepi-22
+          port: eth1
+        33:
+          uid: genepi-28
+          port: eth1
+        34:
+          uid: genepi-32
+          port: eth1
+        37:
+          uid: genepi-10
+          port: eth1
+        38:
+          uid: genepi-12
+          port: eth1
+        39:
+          uid: genepi-8
+          port: eth1
+        40:
+          uid: genepi-4
+          port: eth1
+        41:
+          uid: genepi-6
+          port: eth1
+        42:
+          uid: genepi-2
+          port: eth1
+    4:
+      naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      backplane_bps: 48000000000
+      kind: node
+      rate: 1000000000
+      ports:
+        1:
+          uid: summit-grimage
+          kind: switch
+        3:
+          uid: genepi-29
+          port: eth1
+        4:
+          uid: genepi-27
+          port: eth1
+        5:
+          uid: genepi-33
+          port: eth1
+        6:
+          uid: genepi-17
+          port: eth1
+        7:
+          uid: genepi-15
+          port: eth1
+        8:
+          uid: genepi-26
+          port: eth1
+        9:
+          uid: genepi-11
+          port: eth1
+        10:
+          uid: genepi-21
+          port: eth1
+        13:
+          uid: genepi-31
+          port: eth1
+        14:
+          uid: genepi-23
+          port: eth1
+        15:
+          uid: genepi-25
+          port: eth1
+        16:
+          uid: genepi-19
+          port: eth1
+        17:
+          uid: genepi-13
+          port: eth1
+        18:
+          uid: genepi-9
+          port: eth1
+        19:
+          uid: genepi-5
+          port: eth1
+        20:
+          uid: genepi-7
+          port: eth1
+        21:
+          uid: genepi-3
+          port: eth1
+        22:
+          uid: genepi-1
+          port: eth1
+        23:
+          uid: vthd-inria
+          kind: virtual
+        24:
+          uid: alpes
+          port: eth0
+          kind: other
+        25:
+          uid: grimage-1
+          port: eth0
+        26:
+          uid: grimage-2
+          port: eth0
+        27:
+          uid: grimage-3
+          port: eth0
+        28:
+          uid: grimage-4
+          port: eth0
+        29:
+          uid: grimage-5
+          port: eth0
+        30:
+          uid: grimage-6
+          port: eth0
+        31:
+          uid: grimage-7
+          port: eth0
+        32:
+          uid: grimage-8
+          port: eth0
+    10:
+      naming_pattern: "%LINECARD%:%PORT%"
+      snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      backplane_bps: 48000000000
+      kind: other
+      rate: 10000000000
+      ports:
+        1:
+          uid: dignfs
+          port: eth2
+          rate: 10000000000
+        3:
+          kind: virtual
+          uid: renater-grenoble
+          rate: 10000000000
+  channels:
+    naming_pattern: Po%CHANNELID%

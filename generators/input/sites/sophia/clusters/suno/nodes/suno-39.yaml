@@ -1,0 +1,63 @@
+---
+suno-39:
+  bios:
+    version: 1.1.5
+    release_date: 07/29/2009
+    vendor: Dell Inc.
+  network_interfaces:
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:26:b9:3f:4b:2f
+      ip6: fe80::226:b9ff:fe3f:4b2f
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: bnx2
+      mountable: true
+      ip: 172.16.130.39
+    eth1:
+      mounted: false
+      mac: 00:26:b9:3f:4b:30
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: bnx2
+      mountable: false
+    bmc:
+      mac: 00:26:b9:3f:4b:31
+      ip: 172.17.130.39
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  block_devices:
+    sda:
+      model: PERC 6/i Adapter
+      device: sda
+      size: 598879502336
+      rev: 1.22
+      vendor: Dell
+  chassis:
+    serial_number: J4JPH4J
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R410
+  supported_job_types:
+    virtual: ivt
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2260000000
+    other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
+    version: E5520
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  main_memory:
+    ram_size: 34359738368
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8

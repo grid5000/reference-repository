@@ -1,0 +1,197 @@
+{{See also|[[Network_Description]] &#124; [[Reference_Repository]] &#124; [[OAR_properties_2.0]]}}
+{{Maintainer|Sebastien Badia}}
+{{Author|Cyril Rohr}}
+{{Status|Draft}}
+{{Portal|Admin}}
+
+== Synopsis ==
+The reference data is stored in a Git repository as JSON files, organized into hierarchical folders. These files can be manually written but the Git repository comes with a "/generators" folder which contains a script to ease their generation, based on high-level description files written in Ruby. Given one or more input files that describe the data you want to add, it will generate the required JSON files, directories and symlinks.
+
+== Requirements ==
+* Ruby >= 1.8.6
+* Bundler (<code>gem install bundler</code>)
+* Git
+* g5kadmin account
+
+== Workflow ==
+The general overview of the workflow between git repositories is as follows:
+
+    ADMIN REPOSITORY <-- pull/push -->  MASTER REPOSITORY
+                                               |
+                                               |
+                                              pull
+                                         (every minute)
+                                              / \
+                                             /   \
+                                            |     |
+                   API REPOSITORY SITE X <--|     |--> API REPOSITORY SITE Y
+
+Each site administrator must first clone the remote MASTER REPOSITORY located on the git.grid5000.fr server and store it on a local machine (this is what I call the ADMIN REPOSITORY and has to be done once):
+{{Term|location=g5kadminlaptop|cmd=<code class="command">git</code> clone <code class="file">ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git</code>}}
+
+When there is a need for change, the site administrator PULLs from the MASTER REPOSITORY to get the latest changes:
+
+{{Term|location=reference-repo|cmd=<code class="command">git</code> pull}}
+
+Then she manually adds/edits/removes the raw JSON files or uses the generator (more on that later). When she's done, she COMMITs her changes and PUSHes them to the MASTER REPOSITORY:
+
+  ... editing ...
+{{Term|location=reference-repo|cmd=<code class="command">git</code> commit -a -m "<code class="replace">list of modifications</code>"}}
+{{Term|location=reference-repo|cmd=<code class="command">git</code> push}}
+
+Finally, these changes are automatically replicated every minute to each API REPOSITORY (one per site), that are used by the Reference API.
+
+{{Warning|text=Please note that manually edited files may be overwritten by a generator if it contains instructions on how to generate them. The recommended way of editing the data is to use the generators.}}
+
+== Getting started ==
+First, clone the remote MASTER REPOSITORY if it is not already done:
+
+{{Term|location=g5kadminlaptop|cmd=<code class="command">git</code> clone <code class="file">ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git</code>}}
+From the newly created reference-repository folder, run the following command to install the required dependencies:
+=== RVM Users ===
+{{Term|location=reference-repo|cmd=<code class="command">rvm</code> use 1.8.7}}
+{{Term|location=reference-repo|cmd=<code class="command">rvm</code> create gemset reference-repository}}
+{{Term|location=reference-repo|cmd=<code class="command">rvm</code> gemset use reference-repository}}
+=== Others Users ===
+{{Term|location=reference-repo|cmd=<code class="command">bundle</code> install}}
+
+== g5k-generator ==
+Right now, the easiest way to get started is to look at some existing input files in the "generators/input" directory. There you can see how you can define sites, clusters, nodes and environments programmatically.
+Then you may create a new input file or change an existing one and run it in simulation mode: (run <code class="command">rake -T</code> to see the list of available tasks):
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> g5k:generate DRY=yes}}
+
+Your changes won't be applied but you'll see what would have been changed. Thus, the simulation mode is useful to review your changes before committing and check the ruby syntax of the input files.
+
+When you are happy with your changes, you can then run the command without the DRY flag:
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> g5k:generate SITE=*}}
+
+Please be aware that config files (YAML format) may be passed on the command line, so that the values can be used in the input files via the <code>lookup(config_filename, key)</code> function. To tell the generator to include one or more config files, you must pass them in your command arguments:
+
+Finally, commit your changes with a meaningful message in ENGLISH (you SHOULD first review the changes that will be committed by running the <code>git diff</code> command) and push them immediately to the MASTER REPOSITORY:
+{{Term|location=reference-repo|cmd=<code class="command">git</code> commit -a -m "[<code class="replace">TAGS</code>] message"}}
+
+{{Note|text=<code class="replace">TAGS</code> is a comma-separated list of tags (e.g. <code class="replace">[rennes,lyon]</code>) that add parseable semantics to the commit message.}}
+{{Term|location=reference-repo|cmd=<code class="command">git</code> push}}
+
+== Synchronizing the OAR database ==
+As of 2010/09/08, a synchronization task has been added that allows you to generate the diff between 2 commits (not necessarily consecutive).
+
+Once you've committed your changes, run the <code>oar:generate</code> rake task to generate the corresponding oaradmin lines (run <code>$ rake -D</code> to see the list of available tasks):
+{{Term|location=g5kadminlaptop|cmd=<code class="command">rake</code> oar:generate -s FROM=<PREVIOUS-COMMIT-ID> TO=<LATEST-COMMIT-ID>}}
+
+By default, <code class="replace">TO</code> is set to <code class="replace">HEAD</code>.
+
+The oaradmin lines are sent to STDOUT, the logging data to STDERR.
+
+== Environments generator ==
+To generate the environments descriptions of Grid5000 a rake task is available
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> env:generate DRY=<code class="replace">yes</code> ENV_NAME=<code class="replace">lenny-x64-base-2.5.rb</code>}}
+
+
+== Manage deadnodes ==
+=== Deadnodes to fix ===
+Check the comments of nodes, (comment if dead, 'ok' il alive).
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> deadnodes:tofix SITE=<code class="replace">nancy</code>}}
+
+=== Deadnodes reasons ===
+Check comments of nodes (including phoenix).
+
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> deadnodes:reasons SITE=<code class="replace">reims</code>}}
+ I, [2012-07-25T17:05:58.997802 #8056]  INFO -- : Node 'stremi-14.reims.grid5000.fr' is dead because 'Attente d une intervention de HP : Soucis BIOS'
+
+{{Term|location=reference-repo|cmd=<code class="command">rake</code> deadnodes:reasons SITE=<code class="replace">sophia</code>}}
+ I, [2012-07-25T17:06:57.985664 #8081]  INFO -- : Node 'sol-36.sophia.grid5000.fr' is dead because '[phoenix] Could not respawn this node at Wed Jul 25 12:30:02 +0200 2012'
+ I, [2012-07-25T17:06:57.985794 #8081]  INFO -- : Node 'sol-40.sophia.grid5000.fr' is dead because '[phoenix] Could not respawn this node at Wed Jul 25 12:30:01 +0200 2012'
+ I, [2012-07-25T17:06:57.986003 #8081]  INFO -- : Node 'suno-21.sophia.grid5000.fr' is dead because 'Chassis is on, but the node never get up. No dhcp request received.'
+
+== Filling the reference - Guidelines ==
+
+
+=== <code>network_adapters</code> ===
+
+Many machines have several network interfaces, which are not always all configured. We have identified 4 cases in G5K clusters:
+# The interface is not connected to any cable.
+# The interface is the admin interface (e.g. IPMI).
+# The interface is not mounted in the production environment, but users may use it in their own deployed environment.
+# The interface is mounted in the production environment.
+
+After several discussions inside the PS team, we have fixed some attributes. All of them are mandatory, but the ones between square brackets are only <font color="#FF0000">mandatory under conditions</font>. Those conditions follow the field name, in  <font color="#FF0000">red</font>.
+* '''interface''': the type of network interface, &isin; {"Ethernet", "Myrinet", "InfiniBand"}
+:: NB: It is useless to define "Myrinet 10G" or "Myri-2000" values, because the '''rate''' will differentiate them.
+* '''rate''': speed of the interface in b/s
+* '''mac''':
+:if '''interface''' &isin; {"Ethernet", "Myrinet"}, the MAC address of this interface,
+:if '''interface'''=="InfiniBand", its GUID.
+* '''vendor''': the company which made the device
+* '''version''': its version according to the company nomenclatura
+* '''enabled''': <code>true</code> if there is any cable connected to this interface
+:* ['''management''']''<font color="#FF0000">(if '''enabled'''==true)</font>'': <code>true</code> if this interface is on the administration network (IPMI,...)
+::* ['''network_address''']''<font color="#FF0000">(if '''mounted'''==true or '''management'''==true)</font>'': the DNS entry of the machine by this interface
+:* ['''mountable''']''<font color="#FF0000">(if '''enabled'''==true)</font>'': <code>true</code> if it is usable by any user (even if it possibly requires a customized environment)
+::* ['''driver''']''<font color="#FF0000">(if '''mountable'''==true)</font>'': name of the driver for the device in the linux kernel
+::* ['''mounted''']''<font color="#FF0000">(if '''mountable'''==true)</font>'': <code>true</code> if the production environment mounts, configures this interface
+:::* ['''network_address''']''<font color="#FF0000">(if '''mounted'''==true or '''management'''==true)</font>'': the DNS entry of the machine by this interface
+:::* ['''device''']''<font color="#FF0000">(if '''mounted'''==true)</font>'': name of this interface in the production environment
+:* ['''ip''']''<font color="#FF0000">(if '''enabled'''==true)</font>'': the IP of this interface.
+::*''<font color="#FF0000">(if '''enabled'''==true AND '''ip''' is empty)</font>'' : The dhcp provides no ip adress for this interface
+:* ['''ip6''']: the IPv6 of this interface, for future use...
+* '''bridged''': is the interface used for the KVM bridge in the production environment ? (true | false)
+
+
+==== script reaching IP/MAC addresses of cluster ====
+
+Some scripts have been created to ease the retrieving of MAC/IP addresses on cluster. Get them
+[https://scm.gforge.inria.fr/svn/grid5000/admin/trunk/refapi_fillers/fill-api-nw/?root=grid5000 here]
+
+==== how to retrieve the guid on Infiniband card ====
+
+Here a sample of an ohai plugin (included on the useful gem [https://helpdesk.grid5000.fr/redmine/projects/reference-helper/wiki/Wiki reference-helper] ! ) :
+
+<pre class="brush: ruby">
+#
+# Author:: Pascal Morillon <pascal.morillon@irisa.fr>
+
+provides "infiniband"
+
+infiniband Mash.new
+
+interfaces = Dir['/sys/class/net/*'].collect { |c| File.basename(c) }.select { |s| s =~ /ib.*/ }
+interfaces.each do |interface|
+  infiniband[:"#{interface}"] = Mash.new
+  if File.exist?(File.join('/sys/class/net', interface, 'address'))
+    if File.exist?('/sys/class/infiniband/mthca0/ports')
+      guid_prefix = "20:00:55:04:01:"
+    elsif File.exist?('/sys/class/infiniband/mlx4_0/ports')
+      guid_prefix = "20:00:55:00:41:"
+    end
+    guid_part2 = File.read(File.join('/sys/class/net', interface, 'address')).chomp
+    infiniband[:"#{interface}"][:guid] = guid_prefix + guid_part2.split(":")[5..20].join(":")
+  else
+    exit 1
+  end
+end
+</pre>
+
+== Resources ==
+* [http://cheat.errtheblog.com/s/git Git Cheat Sheet]
+
+== FAQ ==
+=== Resolv::ResolvError occurred when I tried to generate ===
+At runtime, the generator resolves the hostname of each node to obtain its IP address. As a consequence it should be run from within Grid5000 so that it can query the Grid5000 DNS.
+
+=== What kind of commit message ? ===
+After each modification to the repository, you should immediately commit your changes with a meaningful message, so that people can easily understand what has changed (latest changes will be displayed in a syndication feed). Your commits should also be site-specific, or even cluster-specific to avoid merge conflicts. Try to avoid putting a lot of changes in only one commit.
+
+You should also check that your name and email are correctly configured in your Git configuration:
+
+  $ git config --get user.name
+  $ git config --get user.email
+
+Otherwise you can set them by issuing:
+
+  $ git config --global user.name 'John Doe'
+  $ git config --global user.email johndoe@example.com
+
+=== My commit has been rejected, why ? ===
+Since users will make queries such as: "give me the description of that site at this date", the time between the date of the commit and the effective replication of the changes to the APIs must be as low as possible.
+That's why, right after your commit, you should push your changes to the remote MASTER REPOSITORY. Please note that commits whose committed date is older than 60 seconds will be rejected (if you encounter an error, check that your system clock is correctly synchronized with a time server).

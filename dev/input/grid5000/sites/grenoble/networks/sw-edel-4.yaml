@@ -1,0 +1,55 @@
+--- 
+sw-edel-4:
+  model: Broadcom
+  kind: switch
+  site: grenoble
+  snmp_community: public
+  mtu: 9216
+  weathermap: 
+    use_cacti: "no"
+  vlans: 
+    naming_pattern: Vlan%VLANID%
+  routes: {}
+
+  linecards: 
+    1:
+      naming_pattern: "%LINECARD%/0/%PORT%"
+      snmp_pattern: "Unit: %LINECARD% Slot: 0 Port: %PORT% Gigabit - Level"
+      kind: node
+      rate: 1000000000
+      ports: 
+        4:
+          kind: other
+          uid: edel-cmc-4
+        5: edel-55
+        6: edel-56
+        7: edel-57
+        8: edel-58
+        9: edel-59
+        10: edel-60
+        11: edel-61
+        12: edel-62
+        13: edel-63
+        14: edel-64
+        15: edel-65
+        16: edel-66
+        17: edel-67
+        18: edel-68
+        19: edel-69
+        20: edel-70
+        21: edel-71
+        22: edel-72
+        25:
+          uid: gw-grenoble
+          port: "2:10"
+          kind: router
+        26:
+          uid: gw-grenoble
+          port: "2:11"
+          kind: router
+        27:
+          uid: gw-grenoble
+          port: "2:12"
+          kind: router
+  channels: 
+    naming_pattern: Po%CHANNELID%

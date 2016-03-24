@@ -1,0 +1,64 @@
+---
+sagittaire-39:
+  bios:
+    version: V1.35.2.2
+    release_date: 04/25/2006
+    vendor: Phoenix Technologies Ltd.
+  network_interfaces:
+    eth0:
+      mounted: false
+      mac: 00:09:3d:12:4f:18
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: tg3
+      mountable: false
+      ip: 172.16.49.139
+    eth1:
+      mounted: true
+      switch_port: "1:39"
+      rate: 1000000000
+      mac: 00:09:3d:12:4f:19
+      ip6: fe80::209:3dff:fe12:4f19
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: tg3
+      mountable: true
+      ip: 172.16.49.39
+    bmc:
+      mac: 00:09:3d:12:4f:1a
+      ip: 172.17.49.39
+  block_devices:
+    sda:
+      model: MAT3073NC
+      device: sda
+      size: 73543163904
+      rev: 104
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  supported_job_types:
+    virtual: false
+  chassis:
+    serial_number: XG052420611
+    manufacturer: Sun Microsystems
+    product_name: Sun Fire V20z
+  main_memory:
+    ram_size: 2146435072
+  processor:
+    model: AMD Opteron
+    cache_l1d: 65536
+    clock_speed: 2400000000
+    other_description: AMD Opteron(tm) Processor 250
+    version: 250
+    cache_l2: 1048576
+    cache_l3: 0
+    vendor: AMD
+    instruction_set: x86-64
+    cache_l1i: 65536
+  architecture:
+    platform_type: x86_64
+    smt_size: 2
+    smp_size: 2

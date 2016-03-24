@@ -1,0 +1,58 @@
+---
+petitprince-10:
+  operating_system:
+    kernel: 3.2.0-4-amd64
+    name: debian
+    version: 7.1
+  architecture:
+    smp_size: 2
+    smt_size: 12
+    platform_type: x86_64
+  supported_job_types:
+    virtual: ivt
+  block_devices:
+    sda:
+      vendor: SEAGATE
+      model: ST9250610NS
+      rev: AA08
+      device: sda
+      size: 250059350016
+  main_memory:
+    ram_size: 34359738368
+  bios:
+    vendor: Dell Inc.
+    version: 2.4
+    release_date: 07/02/2014
+  network_interfaces:
+    eth0:
+      interface: Ethernet
+      ip: 172.16.177.10
+      driver: bnx2x
+      mac: 90:b1:1c:ac:d3:36
+      rate: 10000000000
+      enabled: true
+      mountable: true
+      mounted: true
+      management: false
+    eth1:
+      interface: Ethernet
+      driver: bnx2x
+      mac: 90:b1:1c:ac:d3:39
+      enabled: false
+      mountable: false
+      mounted: false
+      management: false
+    bmc:
+      ip: 172.17.177.10
+      mac: 00:25:84:e2:eb:c0
+  processor:
+    clock_speed: 2000000000
+    instruction_set: x86-64
+    model: Intel Xeon
+    version: E5-2630L
+    vendor: Intel
+    other_description: Intel(R) Xeon(R) CPU E5-2630L 0 @ 2.00GHz
+    cache_l1i: 32768
+    cache_l1d: 32768
+    cache_l2: 262144
+    cache_l3: 15728640

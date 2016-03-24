@@ -1,0 +1,90 @@
+---
+parapide-16:
+  bios:
+    version: '1.14'
+    release_date: 08/04/2009
+    vendor: American Megatrends Inc.
+  block_devices:
+    sda:
+      model: HITACHI HUA7250S
+      device: sda
+      size: 500107862016
+      rev: AC4A
+  network_interfaces:
+    ib0:
+      mounted: true
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:aa:d9
+      rate: 20000000000
+      ip6: fe80::203:ba00:100:aad9
+      management: false
+      enabled: true
+      interface: InfiniBand
+      version: MT25418
+      ip: 172.18.98.16
+      driver: mlx4_core
+      mountable: true
+    ib1:
+      mounted: false
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:aa:da
+      rate: 10000000000
+      management: false
+      enabled: false
+      interface: InfiniBand
+      version: MT25418
+      driver: mlx4_core
+      mountable: false
+    bmc:
+      mac: 00:14:4f:ca:94:b6
+      ip: 172.17.98.16
+    eth0:
+      mounted: true
+      rate: 1000000000
+      mac: 00:14:4f:ca:94:b4
+      ip6: fe80::214:4fff:feca:94b4
+      management: false
+      enabled: true
+      interface: Ethernet
+      driver: igb
+      mountable: true
+      ip: 172.16.98.16
+    eth1:
+      mounted: false
+      mac: 00:14:4f:ca:94:b5
+      management: false
+      enabled: false
+      interface: Ethernet
+      driver: igb
+      mountable: false
+  operating_system:
+    kernel: 2.6.32-5-amd64
+    name: debian
+    version: 6.0.6
+  chassis:
+    serial_number: 0935XEF04F
+    manufacturer: Sun Microsystems
+    product_name: SUN FIRE X2270
+  supported_job_types:
+    virtual: ivt
+  main_memory:
+    ram_size: 25769803776
+  processor:
+    model: Intel Xeon
+    cache_l1d: 32768
+    clock_speed: 2930000000
+    other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
+    version: X5570
+    cache_l2: 262144
+    cache_l3: 8388608
+    vendor: Intel
+    instruction_set: x86-64
+    cache_l1i: 32768
+  architecture:
+    smp_size: 2
+    platform_type: x86_64
+    smt_size: 8
+  block_device:
+    sda:
+      model: HITACHI HUA7250S
+      size: '976773168'
+      rev: AC4A
+      vendor: ATA

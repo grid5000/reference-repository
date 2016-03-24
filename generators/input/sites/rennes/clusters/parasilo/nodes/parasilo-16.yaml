@@ -1,0 +1,88 @@
+---
+parasilo-16:
+  main_memory:
+    ram_size: 137438953472
+  network_interfaces:
+    eth0:
+      interface: Ethernet
+      ip: 172.16.97.16
+      driver: ixgbe
+      mac: ec:f4:bb:d6:10:38
+      rate: 10000000000
+      mounted: true
+      management: false
+    eth1:
+      interface: Ethernet
+      driver: ixgbe
+      mac: ec:f4:bb:d6:10:3a
+      rate: 10000000000
+      mounted: false
+      management: false
+    eth2:
+      interface: Ethernet
+      driver: igb
+      mac: ec:f4:bb:d6:10:3c
+      mounted: false
+      management: false
+    eth3:
+      interface: Ethernet
+      driver: igb
+      mac: ec:f4:bb:d6:10:3d
+      mounted: false
+      management: false
+  supported_job_types:
+    virtual: ivt
+  bios:
+    vendor: Dell Inc.
+    version: 1.0
+    release_date: 08/28/2014
+  processor:
+    clock_speed: 2400000000
+    instruction_set: x86-64
+    model: Intel Xeon
+    version: E5-2630 v3
+    vendor: Intel
+    other_description: Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz
+    cache_l1i: 32768
+    cache_l1d: 32768
+    cache_l2: 262144
+    cache_l3: 20971520
+  chassis:
+    serial_number: 2XG6152
+    manufacturer: Dell Inc.
+    product_name: PowerEdge R630
+  block_devices:
+    sdc:
+      device: sdc
+      size: 600127266816
+      model: ST600MM0006
+      rev: LS0A
+    sdb:
+      device: sdb
+      size: 600127266816
+      model: ST600MM0006
+      rev: LS0A
+    sdd:
+      device: sdd
+      size: 600127266816
+      model: ST600MM0006
+      rev: LS0A
+    sde:
+      device: sde
+      size: 600127266816
+      model: ST600MM0006
+      rev: LS0A
+    sdf:
+      device: sdf
+      size: 200049647616
+      model: PX02SSF020
+      rev: A4AE
+    sda:
+      device: sda
+      size: 600127266816
+      model: ST600MM0006
+      rev: LS0A
+  architecture:
+    smp_size: 2
+    smt_size: 16
+    platform_type: x86_64

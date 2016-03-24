@@ -1,0 +1,72 @@
+---
+sgraphene1:
+  model: 3com 4510G
+  kind: switch
+  site: nancy
+  snmp_community: public
+  mtu: 9216
+  vlans:
+    naming_pattern: Vlan-interface%VLANID%
+    "vlan1":
+      administrative: yes
+      addresses:
+        - 172.16.79.201
+  routes: {}
+  backplane_bps: 176000000000
+  linecards:
+    0:
+      naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports:
+        2: graphene-1
+        1: graphene-2
+        4: graphene-3
+        3: graphene-4
+        6: graphene-5
+        5: graphene-6
+        8: graphene-7
+        12: graphene-8
+        11: graphene-9
+        7: graphene-10
+        10: graphene-11
+        9: graphene-12
+        14: graphene-13
+        13: graphene-14
+        16: graphene-15
+        15: graphene-16
+        18: graphene-17
+        17: graphene-18
+        20: graphene-19
+        19: graphene-20
+        22: graphene-21
+        21: graphene-22
+        24: graphene-23
+        23: graphene-24
+        26: graphene-25
+        25: graphene-26
+        28: graphene-27
+        27: graphene-28
+        30: graphene-29
+        29: graphene-30
+        32: graphene-31
+        31: graphene-32
+        34: graphene-33
+        33: graphene-34
+        36: graphene-35
+        35: graphene-36
+        38: graphene-37
+        37: graphene-38
+        40: graphene-39
+    1:
+      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: switch
+      rate: 10000000000
+      ports:
+        2: 
+          uid: sgravillon1
+          kind: switch
+  channels:
+    naming_pattern: Po%CHANNELID%
