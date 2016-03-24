@@ -10,7 +10,8 @@ require 'time'
 require '../lib/input_loader'
 
 # Output directory
-refapi_path = "/tmp/data"
+#refapi_path = "/tmp/data"
+refapi_path = "../../data/grid5000"
 
 #global_hash = JSON.parse(STDIN.read)
 #global_hash = load_yaml_file_hierarchy("../input/example/")
