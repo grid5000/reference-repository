@@ -49,7 +49,7 @@ site :nantes do |site_uid|
 
         operating_system({
           :name     => "debian",
-          :release  => "jessie",
+          :release  => "Jessie",
           :version  => "8",
           :kernel   => "3.16.0-4-amd64"
         })

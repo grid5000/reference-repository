@@ -50,9 +50,9 @@ site :sophia do |site_uid|
 
         operating_system({
           :name     => "debian",
-          :release  => "Wheezy",
+          :release  => "Jessie",
           :version  => "7",
-          :kernel   => "3.2.0-4-amd64"
+          :kernel   => "3.16.0-4-amd64"
         })
 
         storage_devices [{
@@ -173,7 +173,7 @@ site :sophia do |site_uid|
 
         operating_system({
           :name     => lookup(node_uid, node_uid, 'operating_system', 'name'),
-          :release  => "Squeeze",
+          :release  => "Jessie",
           :version  => lookup(node_uid, node_uid, 'operating_system', 'version'),
           :kernel   => lookup(node_uid, node_uid, 'operating_system', 'kernel')
         })
