@@ -1,0 +1,45 @@
+---
+sw-admin3:
+  model: cisco 2960G
+  kind: switch
+  site: lille
+  snmp_community: public
+  routes: {}
+  vlans:
+    naming_pattern: Vlan%VLANID%
+    "vlan100":
+    "vlan101":
+      administrative: yes
+      addresses:
+        - 172.17.47.203
+    "vlan701":
+      name: kavlan-1
+    "vlan702":
+      name: kavlan-2
+    "vlan703":
+      name: kavlan-3
+    "vlan704":
+      name: kavlan-4
+    "vlan705":
+      name: kavlan-5
+    "vlan706":
+      name: kavlan-6
+    "vlan707":
+      name: kavlan-7
+    "vlan708":
+      name: kavlan-8
+    "vlan709":
+      name: kavlan-9
+    "vlan712":
+      name: kavlan-12
+
+  linecards:
+    0:
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
+      rate: 1000000000
+      ports:
+        29:
+         uid: chirloute-5
+         port: eth0
