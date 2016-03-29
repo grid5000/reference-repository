@@ -106,41 +106,26 @@ global_hash["sites"].each do |site_uid, site|
       node["network_adapters"].each { |network_adapter|
         network_adapter["mac"] = network_adapter["mac"].downcase if network_adapter["mac"].is_a?(String)
 
-        # ib properties
+        # infiniband properties
         network_adapter["ib_switch_card"]     = network_adapter.delete("line_card") if network_adapter.key?("line_card")
         network_adapter["ib_switch_card_pos"] = network_adapter.delete("position")  if network_adapter.key?("position")
-
-        next unless network_adapter["enabled"]
 
         # Management network_adapter (bmc)
         if network_adapter["management"]
           network_adapter["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr"
-          next
-        end
-
-        # if network_adapter["network_address"] or network_adapter["switch"] or network_adapter["switch_port"]
-        #   pp "Warning: network_address, switch or switch_port defined manually for (#{node_uid}, #{network_adapter["device"]})"
-        #   pp "#{network_adapter["network_address"]}, #{network_adapter["switch"]} or #{network_adapter["switch_port"]}"
-        # end
-        
-        if network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"])
+        elsif network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"])
           # Primary network_adapter
-          network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr"
+          network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr" if network_adapter["enabled"]
          
           # Interface may not be specified in Network Reference for primary network_adapter
           network_adapter["switch"], network_adapter["switch_port"] = net_switch_port_lookup(site, node_uid, network_adapter["device"]) || net_switch_port_lookup(site, node_uid)
-
-          # network_adapter["bridged"] = true # TODO?
-          next
-        end
-#        if network_adapter["bridged"]
+        else
           # Secondary network_adapter(s)
-          network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site_uid}.grid5000.fr"
+          network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site_uid}.grid5000.fr" if network_adapter["enabled"]
           switch, port = net_switch_port_lookup(site, node_uid, network_adapter["device"])
           network_adapter["switch"] = switch if switch
           network_adapter["switch_port"] = port if port
-#        end
-
+        end
       }
 
       node["sensors"] ||= {}
