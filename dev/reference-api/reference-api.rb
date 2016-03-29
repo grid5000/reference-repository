@@ -110,8 +110,8 @@ global_hash["sites"].each do |site_uid, site|
         network_adapter["ib_switch_card"]     = network_adapter.delete("line_card") if network_adapter.key?("line_card")
         network_adapter["ib_switch_card_pos"] = network_adapter.delete("position")  if network_adapter.key?("position")
 
-        # Management network_adapter (bmc)
         if network_adapter["management"]
+          # Management network_adapter (bmc)
           network_adapter["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr"
         elsif network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"])
           # Primary network_adapter
@@ -121,10 +121,12 @@ global_hash["sites"].each do |site_uid, site|
           network_adapter["switch"], network_adapter["switch_port"] = net_switch_port_lookup(site, node_uid, network_adapter["device"]) || net_switch_port_lookup(site, node_uid)
         else
           # Secondary network_adapter(s)
-          network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site_uid}.grid5000.fr" if network_adapter["enabled"]
-          switch, port = net_switch_port_lookup(site, node_uid, network_adapter["device"])
-          network_adapter["switch"] = switch if switch
-          network_adapter["switch_port"] = port if port
+          network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site_uid}.grid5000.fr" if network_adapter["enabled"] && network_adapter["mounted"]
+          if network_adapter["mountable"]
+            switch, port = net_switch_port_lookup(site, node_uid, network_adapter["device"])
+            network_adapter["switch"] = switch if switch
+            network_adapter["switch_port"] = port if port
+          end
         end
       }
 
@@ -166,7 +168,10 @@ global_hash["sites"].each do |site_uid, site|
        
         #pp node["monitoring"]["wattmeter"]
 
-        if node["monitoring"]["wattmeter"] != "false"
+        if node["monitoring"]["wattmeter"] == "yes"
+          node["sensors"]["power"]["via"]["api"] ||= {}
+          node["sensors"]["power"]["via"]["api"]["metric"] = "pdu"
+        elsif node["monitoring"]["wattmeter"] != "false"
           node["sensors"]["power"]["via"]["api"] ||= {}
           node["sensors"]["power"]["via"]["api"]["metric"] = "power"
         end
