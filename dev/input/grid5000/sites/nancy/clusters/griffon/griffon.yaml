@@ -9,6 +9,21 @@ queues:
 
 nodes:
 
+  griffon-[11-14]:
+    network_adapters:
+      eth1:
+        enabled: true
+        mountable: true
+      eth2:
+        management: false
+        mounted: false
+        enabled: false
+        mountable: false
+        bridged: false
+        rate: 10000000000
+        version: Myri-10G
+        vendor: myrinet
+
 # Global node properties
   griffon-[-]:
     performance:
@@ -39,9 +54,10 @@ nodes:
       - default
     storage_devices:
       sda:
-        interface: 'SATA II'
-        driver : "ahci"
-        storage: 'HDD'
+        interface: SATA II
+        driver : ahci
+        storage: HDD
+        vendor: Hitachi
     gpu:
       gpu: false
     sensors:
@@ -94,14 +110,6 @@ nodes:
         vendor: Tyan
         version: M3296
 
-  griffon-[11-14]:
-    network_adapters:
-      eth2:
-        bridged: false
-        rate: 10000000000
-        version: Myri-10G
-        vendor: myrinet
-
 # Retired nodes
   # griffon-36:
   #   status: retired
@@ -120,6 +128,7 @@ nodes:
       eth0:
         ip6: fe80::2e0:81ff:feb2:c188
       ib0:
+        ip: 172.18.65.1
         guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:18:f1
         ip6: fe80::202:c903:3:18f1
       ib1:
