@@ -136,43 +136,24 @@ global_hash["sites"].each do |site_uid, site|
       node["monitoring"]["wattmeter"] ||= false
       node["monitoring"]["wattmeter"] = "true"  if node["monitoring"]["wattmeter"] == true
       node["monitoring"]["wattmeter"] = "false" if node["monitoring"]["wattmeter"] == false
-      if (node.key?("pdu") && node["pdu"].key?("pdu_name")) ||
-          (node.key?("pdu1") && node["pdu1"].key?("pdu_name"))
-
-        #if cluster_uid == "graphene"
-        #  pp "#{pdu_name} #{pdu_position} : #{pdu_info[pdu_name][pdu_position]}"
-        #end
-
-#       if pdu_info[pdu_name][pdu_position] == 1
-#         node["monitoring"]["wattmeter"] = "true"
-#       else
-#         node["monitoring"]["wattmeter"] = "shared"
-#       end
-
+      if node.key?("pdu")
+        node["pdu"] = [ node["pdu"] ] if node["pdu"].is_a?(Hash) # only one PDU : put the PDU entry in an array
+        
         node["sensors"]["power"] ||= {}
-        node["sensors"]["power"]["available"] = true if node["monitoring"]["wattmeter"] != "false"
-
         node["sensors"]["power"]["via"] ||= {}
-        node["sensors"]["power"]["via"]["pdu"] ||= []
-        i=0
-        ['pdu', 'pdu1', 'pdu2'].each { |key|
-          if (node.key?(key) and node[key].key?("pdu_name"))
-            node["sensors"]["power"]["via"]["pdu"][i] ||= {}            
-            node["sensors"]["power"]["via"]["pdu"][i]["uid"]  = node[key]["pdu_name"]
-            node["sensors"]["power"]["via"]["pdu"][i]["port"] = node[key]["pdu_position"] unless node["monitoring"]["wattmeter"] == "shared"
-            node["sensors"]["power"]["via"]["pdu"][i].delete("port") if node["monitoring"]["wattmeter"] == "shared"
-            node.delete(key)
-            i = i+1
-          end
+        node["sensors"]["power"]["via"]["api"] ||= {}
+
+        node["sensors"]["power"]["available"] = true if node["monitoring"]["wattmeter"] != "false"
+        node["sensors"]["power"]["via"]["pdu"] = node.delete("pdu")
+
+        # Remove 'port' info if PDU are shared
+        node["sensors"]["power"]["via"]["pdu"].each { |p|
+          p.delete("port") if node["monitoring"]["wattmeter"] == "shared"
         }
-       
-        #pp node["monitoring"]["wattmeter"]
 
         if node["monitoring"]["wattmeter"] == "yes"
-          node["sensors"]["power"]["via"]["api"] ||= {}
           node["sensors"]["power"]["via"]["api"]["metric"] = "pdu"
         elsif node["monitoring"]["wattmeter"] != "false"
-          node["sensors"]["power"]["via"]["api"] ||= {}
           node["sensors"]["power"]["via"]["api"]["metric"] = "power"
         end
 
