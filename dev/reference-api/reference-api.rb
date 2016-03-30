@@ -46,7 +46,6 @@ end
 
 global_hash["sites"].each do |site_uid, site|
   pp site_uid
-#  pp site
 
   site["clusters"].each do |cluster_uid, cluster|
     pp cluster_uid
@@ -132,31 +131,32 @@ global_hash["sites"].each do |site_uid, site|
 
       node["sensors"] ||= {}
 
-      node["monitoring"] = {} unless node.key?("monitoring")
-      node["monitoring"]["wattmeter"] ||= false
+      node["monitoring"] ||= {}
+      node["monitoring"]["wattmeter"] ||= false # default
+
+      # Use strings instead of boolean as possible values are: true/false/shared/etc.
       node["monitoring"]["wattmeter"] = "true"  if node["monitoring"]["wattmeter"] == true
       node["monitoring"]["wattmeter"] = "false" if node["monitoring"]["wattmeter"] == false
-      if node.key?("pdu")
-        node["pdu"] = [ node["pdu"] ] if node["pdu"].is_a?(Hash) # only one PDU : put the PDU entry in an array
-        
-        node["sensors"]["power"] ||= {}
-        node["sensors"]["power"]["via"] ||= {}
-        node["sensors"]["power"]["via"]["api"] ||= {}
 
-        node["sensors"]["power"]["available"] = true if node["monitoring"]["wattmeter"] != "false"
-        node["sensors"]["power"]["via"]["pdu"] = node.delete("pdu")
+      if node.key?("pdu")
+        # If there is only one PDU, the PDU entry might be an hash instead of 'an hash in an array'. Fix that.
+        node["pdu"] = [ node["pdu"] ] if node["pdu"].is_a?(Hash) 
 
         # Remove 'port' info if PDU are shared
-        node["sensors"]["power"]["via"]["pdu"].each { |p|
+        node["pdu"].each { |p|
           p.delete("port") if node["monitoring"]["wattmeter"] == "shared"
         }
 
-        if node["monitoring"]["wattmeter"] == "yes"
-          node["sensors"]["power"]["via"]["api"]["metric"] = "pdu"
-        elsif node["monitoring"]["wattmeter"] != "false"
-          node["sensors"]["power"]["via"]["api"]["metric"] = "power"
-        end
+        # Move PDU info in the right place
+        node["sensors"]["power"] ||= {}
+        node["sensors"]["power"]["via"] ||= {}
+        node["sensors"]["power"]["via"]["pdu"] = node.delete("pdu")
+      end # node.key?("pdu")
 
+      if node["monitoring"].key?("metric")
+        node["sensors"]["power"]["available"] = true
+        node["sensors"]["power"]["via"]["api"] ||= {}
+        node["sensors"]["power"]["via"]["api"]["metric"] = node["monitoring"].delete("metric")
       end
 
       node.delete("kavlan")
