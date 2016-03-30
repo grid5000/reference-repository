@@ -18,7 +18,7 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 4293918720,
+    "ram_size": 4156555264,
     "virtual_size": null
   },
   "monitoring": {
@@ -50,7 +50,6 @@
       "driver": "forcedeth",
       "enabled": false,
       "interface": "Ethernet",
-      "ip": null,
       "mac": "00:16:36:91:ec:21",
       "management": false,
       "mountable": false,
@@ -58,18 +57,6 @@
       "rate": 1000000000,
       "vendor": "nVidia",
       "version": "MCP55 Pro"
-    },
-    {
-      "device": "bmc",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.17.129.39",
-      "mac": "00:16:36:c5:93:bf",
-      "management": true,
-      "mountable": false,
-      "mounted": false,
-      "network_address": "sol-39-bmc.sophia.grid5000.fr",
-      "rate": 100000000
     },
     {
       "device": "myri0",
@@ -87,6 +74,18 @@
       "switch": "sw-myrinet",
       "vendor": "Myricom",
       "version": "M3F-PCIXF-2"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.129.39",
+      "mac": "00:16:36:c5:93:bf",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "sol-39-bmc.sophia.grid5000.fr",
+      "rate": 100000000
     }
   ],
   "operating_system": {
@@ -112,6 +111,8 @@
     "vendor": "AMD",
     "version": 2218
   },
+  "sensors": {
+  },
   "storage_devices": [
     {
       "device": "sda",
@@ -120,12 +121,18 @@
       "model": "HITACHI HDS7225S",
       "rev": "A9CA",
       "size": 250056000000,
+      "storage": "HDD",
       "vendor": "Hitachi"
     }
   ],
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
     "virtual": "amd-v"
   },
   "type": "node",

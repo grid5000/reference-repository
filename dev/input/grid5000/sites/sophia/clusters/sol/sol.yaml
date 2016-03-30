@@ -7,11 +7,7 @@ queues:
   - admin
 
 nodes:
-  sol-[1-28]:
-    operating_system:
-      kernel: 3.16.0-4-amd64
-      name: debian
-      version: '8.2'
+  sol-[1-50]:
     processor:
       cache_l1d: 65536
       cache_l1i: 65536
@@ -44,6 +40,12 @@ nodes:
         driver: sata_nv
         storage: HDD
         vendor: Hitachi
+    gpu:
+      gpu: false
+    monitoring:
+      wattmeter: false
+
+  sol-[1-28]:
     network_adapters:
       eth0:
         enabled: true
@@ -65,31 +67,19 @@ nodes:
         mounted: false
         mountable: false
         management: true
-    gpu:
-      gpu: false
-    monitoring:
-      wattmeter: false
 
 # Nodes 29 -> 50 myri0 interfaces
   sol-[29-50]:
-    performance:
-      core_flops: 4337000000
-      node_flops: 16800000000
-    supported_job_types:
-      deploy: true
-      besteffort: true
-    operating_system:
-      release: Jessie
-    storage_devices:
-      sda:
-        interface: SATA
-        driver: sata_nv
     network_adapters:
       eth0:
+        enabled: true
+        mountable: true
         bridged: true
         vendor: nVidia
         version: MCP55 Pro
       eth1:
+        enabled: false
+        mountable: false
         rate: 1000000000
         bridged: false
         vendor: nVidia
@@ -102,14 +92,12 @@ nodes:
         mountable: false
         management: true
       myri0:
+        enabled: true
+        mountable: true
         vendor: Myricom
         version: M3F-PCIXF-2
         management: false
         switch: sw-myrinet
-    gpu:
-      gpu: false
-    monitoring:
-      wattmeter: false
 
 # Retired nodes
   sol-36:
