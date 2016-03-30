@@ -88,7 +88,7 @@ class ::Hash
           key = key.to_sym if key_ab.is_a?(Symbol)
 
           # For duplicate entries, the value of PREFIX-x is kept.
-          self[key] = deep_merge_entries(value_ab, self[key]).clone
+          self[key] = deep_merge_entries(deep_copy(value_ab), self[key]).clone
         }
 
       else
@@ -101,7 +101,7 @@ class ::Hash
           next if not x or x.to_i < a
 
           # For duplicate entries, the value of PREFIX-x is kept.
-          self[key_x] = deep_merge_entries(value_ab, value_x).clone
+          self[key_x] = deep_merge_entries(deep_copy(value_ab), value_x).clone
         }
       end
           
@@ -146,6 +146,10 @@ class ::Hash
         yield node_uid, properties
       end
     }
+  end
+
+  def deep_copy(o)
+    Marshal.load(Marshal.dump(o))
   end
 
 end
