@@ -8,6 +8,20 @@ queues:
 
 nodes:
   parapide-[1-25]:
+    monitoring:
+      temperature: true
+      wattmeter: shared
+      metric: power
+    sensors:
+      temperature:
+        available: true
+        via:
+          api: 
+            metric: ambient_temp 
+          ipmi:
+            sensors: 
+              ambient: /MB/T_AMB  
+
     chassis:
       serial: 0935XEF04D
     processor:
@@ -27,6 +41,10 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      max_walltime: 0
+      queues:
+        - default
+        -  admin
     operating_system:
       name: debian
       release: Jessie
@@ -83,20 +101,6 @@ nodes:
         management: true
     gpu:
       gpu: false
-    monitoring:
-      wattmeter: false
-      temperature: true
-    sensors:
-      power:
-        available: true
-      temperature:
-        available: true
-        via:
-          api: 
-            metric: ambient_temp 
-          ipmi:
-            sensors: 
-              ambient: /MB/T_AMB  
 
 
   parapide-1:

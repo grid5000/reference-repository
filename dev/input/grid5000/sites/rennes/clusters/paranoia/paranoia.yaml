@@ -25,6 +25,10 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      queues:
+        - default
+        - admin
+      max_walltime: 0
     operating_system:
       name: debian
       release: Jessie
@@ -106,6 +110,10 @@ nodes:
   paranoia-2:
     chassis:
       serial: DB12LZ1
+    network_adapters:
+      bmc:
+        ip: 172.17.100.2
+        mac: f0:4d:a2:73:cc:7a
   paranoia-3:
     chassis:
       serial: 9PJ4LZ1
