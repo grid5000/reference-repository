@@ -11,6 +11,18 @@ nodes:
 
 # Global node properties
   edel-[1-72]:
+    monitoring:
+      wattmeter: outofband
+    sensors:
+      power:
+        available: true
+        via:
+          api:
+            metric: pdu 
+          ipmi: 
+            sensors: 
+              Power: Power  
+
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -82,17 +94,6 @@ nodes:
         version: "1.7"
     gpu:
       gpu: false
-    monitoring:
-      wattmeter: true
-    sensors:
-      power:
-        available: true
-        via:
-          api:
-            metric: pdu 
-          ipmi: 
-            sensors: 
-              Power: Power  
 
 
 
@@ -151,10 +152,6 @@ nodes:
       eth0:
         ip6: fe80::a00:38ff:fe35:abfc
   edel-16:
-    bios:
-      sdb:
-        model: Virtual Floppy
-        rev: 1.0
     chassis:
       serial: '123456789'
     network_adapters:
@@ -173,10 +170,6 @@ nodes:
         mounted: false
         rate: 10000000000
         version: MT26428
-    storage_devices:
-      sdb:
-        model: Virtual Floppy
-        rev: 1.0
   edel-17:
     chassis:
       serial: '123456789'
@@ -210,7 +203,8 @@ nodes:
     network_adapters:
       bmc:
         ip: 172.17.17.2
-        mac: 08:00:38:36:b0:d4
+        #mac: 08:00:38:36:b0:d4
+        mac: 08:00:38:35:a4:03
       eth0:
         ip6: fe80::a00:38ff:fe36:f33a
       ib1:
@@ -545,7 +539,8 @@ nodes:
     network_adapters:
       bmc:
         ip: 172.18.17.50
-        mac: 08:00:38:35:a4:08
+        #mac: 08:00:38:35:a4:08
+        mac: 00:08:f1:20:07:b8
       eth0:
         ip6: fe80::a00:38ff:fe35:ac10
   edel-51:
@@ -626,7 +621,8 @@ nodes:
     network_adapters:
       bmc:
         ip: 172.17.17.6
-        mac: 08:00:38:36:ac:2f
+        #mac: 08:00:38:36:ac:2f
+        mac: 08:00:38:35:a4:2a
       eth0:
         ip6: fe80::a00:38ff:fe36:f33a
       ib1:
