@@ -8,6 +8,9 @@ queues:
 
 nodes:
   stremi-[1-44]:
+    monitoring:
+      wattmeter: true
+      metric: power
     operating_system:
       kernel: 3.16.0-4-amd64
       name: debian
@@ -70,14 +73,6 @@ nodes:
         mounted: false
     gpu:
       gpu: false
-    monitoring:
-      wattmeter: true
-    sensors:
-      power:
-        available: true
-        via:
-          api:
-            metric: pdu 
 
   stremi-1:
     chassis:
