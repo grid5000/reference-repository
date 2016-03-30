@@ -111,7 +111,7 @@ global_hash["sites"].each do |site_uid, site|
 
         if network_adapter["management"]
           # Management network_adapter (bmc)
-          network_adapter["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr"
+          network_adapter["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr" unless network_adapter.key?("network_address")
         elsif network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"])
           # Primary network_adapter
           network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr" if network_adapter["enabled"]

@@ -1,0 +1,12 @@
+# Use bmc network_address $i-ipmi.lille.grid5000.fr instead of $i-bmc.lille.grid5000.fr
+# Also add myri0 network_address.
+
+nodes:
+<% (1..46).each { |i| %>
+  chinqchint-<%= i %>:
+    network_adapters:
+      myri0:
+        network_address: chinqchint-<%= i %>-myri0.lille.grid5000.fr
+      bmc:
+        network_address: chinqchint-<%= i %>-ipmi.lille.grid5000.fr
+<% } %>

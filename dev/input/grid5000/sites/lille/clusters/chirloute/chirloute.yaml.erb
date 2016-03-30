@@ -1,0 +1,11 @@
+# Use bmc network_address $i-ipmi.lille.grid5000.fr instead of $i-bmc.lille.grid5000.fr
+
+nodes:
+<% (1..8).each { |i| %>
+  chirloute-<%= i %>:
+    network_adapters:
+      eth0:
+        network_address: chirloute-<%= i %>-eth0.lille.grid5000.fr # why do we need that ?
+      bmc:
+        network_address: chirloute-<%= i %>-ipmi.lille.grid5000.fr
+<% } %>

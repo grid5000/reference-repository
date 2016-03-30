@@ -1,0 +1,9 @@
+# Use bmc network_address $i-ipmi.lille.grid5000.fr instead of $i-bmc.lille.grid5000.fr
+
+nodes:
+<% (1..20).each { |i| %>
+  chimint-<%= i %>:
+    network_adapters:
+      bmc:
+        network_address: chimint-<%= i %>-ipmi.lille.grid5000.fr
+<% } %>
