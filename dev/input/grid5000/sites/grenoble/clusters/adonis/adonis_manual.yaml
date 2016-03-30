@@ -1,15 +1,26 @@
 ---
 nodes:
+  adonis-[1-10]:
+    monitoring:
+      wattmeter: shared
+    sensors:
+      power:
+        available: true
+
   adonis-1:
     network_adapters:
       eth0:
         switch: gw-grenoble
         switch_port: '3:11'
-    sensors:
-      measure1: outlet-11
-      measure2: outlet-12
-      pdu: adonis-pdu-1
-      block: block-1
+    pdu:
+      - # the 2 PSUs where the node is plugged
+        - uid: adonis-pdu-1
+          port: outlet-11
+        - uid: adonis-pdu-1
+          port: outlet-12
+      - # this node contributes to the following power consumption measure
+        - uid: adonis-pdu-1
+          measure: block-1
     gpu:
       gpu_count: 2
       gpu_vendor: Nvidia
@@ -19,11 +30,16 @@ nodes:
       eth0:
         switch: gw-grenoble
         switch_port: '3:12'
-    sensors:
-      measure1: outlet-11
-      measure2: outlet-12
-      pdu: adonis-pdu-1
-      block: block-1
+    pdu:
+      - 
+        - uid: adonis-pdu-1
+          port: outlet-11
+        - 
+          uid: adonis-pdu-1
+          port: outlet-12
+      -
+        - uid: adonis-pdu-1
+          measure: block-1
     gpu:
       gpu_count: 2
       gpu_vendor: Nvidia
@@ -33,11 +49,15 @@ nodes:
       eth0:
         switch: gw-grenoble
         switch_port: '3:13'
-    sensors:
-      measure1: outlet-13
-      measure2: outlet-14
-      pdu: adonis-pdu-1
-      block: block-2
+    pdu:
+      - 
+        - uid: adonis-pdu-1
+          port: outlet-13
+        - uid: adonis-pdu-1
+          port: outlet-14
+      - 
+        - uid: adonis-pdu-1
+          measure: block-2
     gpu:
       gpu_count: 2
       gpu_vendor: Nvidia
@@ -47,11 +67,15 @@ nodes:
       eth0:
         switch: gw-grenoble
         switch_port: '3:14'
-    sensors:
-      measure1: outlet-13
-      measure2: outlet-14
-      pdu: adonis-pdu-1
-      block: block-2
+    pdu:
+      -
+        - uid: adonis-pdu-1
+          port: outlet-13
+        - uid: adonis-pdu-1
+          port: outlet-14
+      -
+        - uid: adonis-pdu-1
+          measure: block-2
     gpu:
       gpu_count: 2
       gpu_vendor: Nvidia
@@ -61,83 +85,83 @@ nodes:
       eth0:
         switch: gw-grenoble
         switch_port: '3:15'
-    sensors:
-      measure1: outlet-5
-      measure2: outlet-6
-      pdu: adonis-pdu-1
-      block: block-1
-    gpu:
-      gpu_count: 2
-      gpu_vendor: Nvidia
-      gpu_model: Tesla-C1060
+    pdu:
+      -
+        - uid: adonis-pdu-1
+          port: outlet-5
+        - uid: adonis-pdu-1
+          port: outlet-6
+      - 
+        - uid: adonis-pdu-1
+          measure: block-1
   adonis-6:
     network_adapters:
       eth0:
         switch: gw-grenoble
         switch_port: '3:16'
-    sensors:
-      measure1: outlet-5
-      measure2: outlet-6
-      pdu: adonis-pdu-1
-      block: block-1
-    gpu:
-      gpu_count: 2
-      gpu_vendor: Nvidia
-      gpu_model: Tesla-C1060
+    pdu:
+      -
+        - uid: adonis-pdu-1
+          port: outlet-5
+        - uid: adonis-pdu-1
+          port: outlet-6
+      - 
+        - uid: adonis-pdu-1
+          measure: block-1
   adonis-7:
     network_adapters:
       eth0:
         switch: gw-grenoble
         switch_port: '3:17'
-    sensors:
-      measure1: outlet-1
-      measure2: outlet-2
-      pdu: adonis-pdu-2
-      block: block-1
-    gpu:
-      gpu_count: 2
-      gpu_vendor: Nvidia
-      gpu_model: Tesla-C1060
+    pdu:
+      -
+        - uid: adonis-pdu-2
+          port: outlet-1
+        - uid: adonis-pdu-2
+          port: outlet-2
+      -
+        - uid: adonis-pdu-2
+          measure: block-1
   adonis-8:
     network_adapters:
       eth0:
         switch: gw-grenoble
         switch_port: '3:18'
-    sensors:
-      measure1: outlet-1
-      measure2: outlet-2
-      pdu: adonis-pdu-2
-      block: block-1
-    gpu:
-      gpu_count: 2
-      gpu_vendor: Nvidia
-      gpu_model: Tesla-C1060
+    pdu:
+      -
+        - uid: adonis-pdu-2
+          port: outlet-1
+        - uid: adonis-pdu-2
+          port: outlet-2
+      -
+        - uid: adonis-pdu-2
+          measure: block-1
   adonis-9:
     network_adapters:
       eth0:
         switch: gw-grenoble
         switch_port: '3:19'
-    sensors:
-      measure1: outlet-13
-      measure2: outlet-14
-      pdu: adonis-pdu-2
-      block: block-2
-    gpu:
-      gpu_count: 2
-      gpu_vendor: Nvidia
-      gpu_model: Tesla-C1060
+    pdu:
+      -
+        - uid: adonis-pdu-2
+          port: outlet-13
+        - uid: adonis-pdu-2
+          port: outlet-14
+      -
+        - uid: adonis-pdu-2
+          measure: block-2
   adonis-10:
     network_adapters:
       eth0:
         switch: gw-grenoble
         switch_port: '3:20'
-    sensors:
-      measure1: outlet-13
-      measure2: outlet-14
-      pdu: adonis-pdu-2
-      block: block-2
-    gpu:
-      gpu_count: 2
-      gpu_vendor: Nvidia
-      gpu_model: Tesla-C1060
+    pdu:
+      -
+        - uid: adonis-pdu-2
+          port: outlet-13
+        - uid: adonis-pdu-2
+          port: outlet-14
+      -
+        - uid: adonis-pdu-2
+          measure: block-2
   
