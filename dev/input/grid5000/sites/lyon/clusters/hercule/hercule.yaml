@@ -1,7 +1,7 @@
 ---
 model: Dell C6220
-created_at: 2012-10-02
-priority: 201299
+created_at: 2012-10-02 12:00 GMT
+priority: '201299'
 kavlan: true
 queues:
   - default
@@ -35,6 +35,7 @@ nodes:
       name: debian
       release: Jessie
       version: "8.2"
+      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SATA
@@ -63,6 +64,7 @@ nodes:
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth2:
+        network_address: none
         enabled: true
         mountable: true
         rate: 100000000
@@ -70,6 +72,7 @@ nodes:
         vendor: Intel
         version: Intel Corporation
       eth3:
+        network_address: none
         enabled: true
         mountable: true
         rate: 100.0e+6
@@ -84,7 +87,7 @@ nodes:
         mountable: false
         management: true
     monitoring:
-      wattmeter: shared
+      wattmeter: false
     sensors:
       power:
         available: true
