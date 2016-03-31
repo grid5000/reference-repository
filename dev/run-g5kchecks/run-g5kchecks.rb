@@ -1,3 +1,13 @@
+# This script reserves nodes and then runs g5k-check as root using the g5kadmin credentials.
+#
+# Usage: cd run-g5kcheck; ruby run-g5kchecks.rb; ruby postprocessing.rb
+#
+# - You can edit the node reservation at the beginning of the script (or create reservation manually).
+# - The script will run g5k-checks on every nodes that have been reserved.
+# - Output YAML files of g5k-checks are stored in output/
+# - If an output YAML file already exist in ouput/, the execution of g5k-check on the corresponding node is skipped.
+# - Use postprocessing.rb for moving the file in th input/ directory. This script also edits some keys of the YAML files.
+
 require 'cute'
 require 'peach'
 require 'fileutils'

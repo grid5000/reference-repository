@@ -44,7 +44,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['cpucore']         = node['architecture']['smt_size']/node['architecture']['smp_size']
   h['cputype']         = [node['processor']['model'], node['processor']['version']].join(' ')
   h['cpufreq']         = node['processor']['clock_speed']/1_000_000_000.0
-  h['disktype']        = (node['block_devices'].first[1] || {})['interface']
+  h['disktype']        = (node['storage_devices'].first[1] || {})['interface']
   h['ethnb']           = node['network_adapters'].values.select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}.length
 
   eth10g               = node['network_adapters'].values.select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}

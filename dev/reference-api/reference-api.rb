@@ -45,10 +45,10 @@ def net_switch_port_lookup(site, node_uid, interface='')
 end
 
 global_hash["sites"].each do |site_uid, site|
-  pp site_uid
+  puts site_uid
 
   site["clusters"].each do |cluster_uid, cluster|
-    pp cluster_uid
+    puts "  #{cluster_uid}"
 
     cluster_path = Pathname.new(refapi_path).join("sites",site_uid,"clusters",cluster_uid)
     cluster_path.join("nodes").mkpath()
@@ -66,7 +66,7 @@ global_hash["sites"].each do |site_uid, site|
     
     # Write node info
     cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
-      pp node_uid
+      #puts node_uid
 
       #pp node if node_uid == "graoully-1"
       #next unless node_uid == "griffon-1"

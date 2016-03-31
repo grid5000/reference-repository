@@ -1,13 +1,15 @@
 #!/usr/bin/ruby
 
+# This script does minor edits on the ouput of g5k-checks YAML files and moves the files to the right place in the input/ directory
+#
+# Usage: cd run-g5kcheck; ruby run-g5kchecks.rb; ruby postprocessing.rb
+
 require 'pp'
 require 'erb'
 require 'fileutils'
 require 'pathname'
 require 'yaml'
 require '../lib/hash/hash'
-
-####
 
 list_of_yaml_files = Dir['output/*.y*ml'].sort_by { |x| -x.count('/') }
 list_of_yaml_files.each { |filename|
