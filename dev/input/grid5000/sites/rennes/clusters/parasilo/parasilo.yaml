@@ -8,6 +8,9 @@ queues:
 
 nodes:
   parasilo-[1-28]:
+    monitoring:
+      wattmeter: true
+      metric: power
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -70,6 +73,7 @@ nodes:
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth1:
+        network_address: none
         rate: 10.0e+9
         enabled: true
         management: false
@@ -107,12 +111,6 @@ nodes:
         mac: null #TODO
     gpu:
       gpu: false
-    sensors:
-      power:
-        available: true
-        via:
-          api:
-            metric: pdu
 
   parasilo-1:
     chassis:
@@ -152,7 +150,7 @@ nodes:
       serial: BGZGG42
   parasilo-20:
     chassis:
-      serial: 31000000000G42
+      serial: 31RGG42
   parasilo-21:
     chassis:
       serial: 7HZGG42
