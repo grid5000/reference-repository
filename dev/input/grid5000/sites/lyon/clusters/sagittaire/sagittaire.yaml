@@ -1,6 +1,6 @@
 ---
 model: Sun Fire V20z
-created_at: 2006-07-01
+created_at: 2006-07-01 12:00:00 GMT
 kavlan: true
 queues:
   - default
@@ -71,16 +71,19 @@ nodes:
         per_outlets: true
         via:
           api:
-            metric: pdu 
+            metric: power
           www:
             url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
 
-  sagittaire-[69-79]:
+  sagittaire-[70-79]:
     storage_devices:
       sdb:
         interface: SCSI
         driver: mptspi
         storage: HDD
+        model: MAT3073NC
+        rev: 104
+        size: 73543163904
 
 # Retired nodes
   sagittaire-21:
@@ -252,10 +255,6 @@ nodes:
       eth1:
         ip6: fe80::209:3dff:fe11:9522
         switch_port: '1:22'
-    storage_devices:
-      sdb:
-        model: MAT3073NC
-        size: 73543163904
   sagittaire-23:
     chassis:
       serial: XG052422799
@@ -412,10 +411,6 @@ nodes:
       eth1:
         ip6: fe80::209:3dff:fe11:9522
         switch_port: '1:4'
-    storage_devices:
-      sdb:
-        model: MAT3073NC
-        size: 73543163904
   sagittaire-42:
     chassis:
       serial: XG052420624
@@ -440,10 +435,6 @@ nodes:
       eth1:
         ip6: fe80::209:3dff:fe11:9522
         switch_port: '1:43'
-    storage_devices:
-      sdb:
-        model: MAT3073NC
-        size: 73543163904
   sagittaire-44:
     chassis:
       serial: XG052536146
@@ -588,10 +579,6 @@ nodes:
       eth1:
         ip6: fe80::209:3dff:fe11:9522
         switch_port: '2:6'
-    storage_devices:
-      sdb:
-        model: MAT3073NC
-        size: 73543163904
   sagittaire-55:
     chassis:
       serial: XG052310093
