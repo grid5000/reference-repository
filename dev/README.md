@@ -27,7 +27,7 @@ For the general design discussion, see:
 
 Requirements
 ------------
-Ruby 2.2 (+ HashDiff and Net/SSH for the oar-generator)
+Ruby 2.1 (+ HashDiff and Net/SSH for the oar-generator)
 
 Example using RVM (https://rvm.io/):
 $ \curl -sSL https://get.rvm.io | bash -s stable --ruby
