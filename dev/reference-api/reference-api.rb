@@ -54,12 +54,44 @@ global_hash["sites"].each do |site_uid, site|
   site["type"] = "site"
   site["uid"]  = site_uid
 
-  site_path = Pathname.new(refapi_path).join("sites",site_uid)
+  site_path = Pathname.new(refapi_path).join("sites", site_uid)
   site_path.mkpath()
 
-  pp site_path.join("#{site_uid}.json")
   write_json(site_path.join("#{site_uid}.json"), 
              site.reject {|k, v| k == "clusters" || k == "networks" || k == "dom0"})
+
+  #
+  # Write network info
+  #
+
+  site["networks"].each do |network_uid, network|
+    network["type"] = "network_equipment"
+    network["uid"]  = network_uid
+
+    network_path = Pathname.new(refapi_path).join("sites", site_uid, "network_equipments")
+    network_path.mkpath()
+    
+    network["weathermap"] ||= {}
+
+    # Change the format of linecard from Hash to Array
+    linecards_array = []
+    network["linecards"].each do |linecard_index, linecard|
+      ports = []
+      linecard.delete("ports").each do |port_index, port|
+        port = {"uid"=>port} if port.is_a? String
+        ports[port_index] = port
+      end
+      linecard["ports"] = ports.map{|p| p || {}}
+      linecards_array[linecard_index] = linecard
+    end
+    linecards_tmp = network["linecards"] # bkp
+    network["linecards"] = linecards_array.map{|l| l || {}}
+    
+    write_json(network_path.join("#{network_uid}.json"), 
+               network.reject {|k, v| k == "clusters" || k == "networks" || k == "dom0"})
+    
+    network["linecards"] = linecards_tmp # restore
+  end
 
   site["clusters"].each do |cluster_uid, cluster|
     puts "  #{cluster_uid}"
@@ -75,8 +107,7 @@ global_hash["sites"].each do |site_uid, site|
     # As Date.httpdate and Time.httpdate does not behave the same with timezone, it is converted here as a Ruby time.
     cluster["created_at"] = Time.parse(cluster["created_at"].to_s).httpdate
 
-    cluster_path = Pathname.new(refapi_path).join("sites",site_uid,"clusters",cluster_uid)
-    cluster_path.join("nodes").mkpath()
+    cluster_path = Pathname.new(refapi_path).join("sites", site_uid, "clusters", cluster_uid)
     
     # Write cluster info w/o nodes entries
     write_json(cluster_path.join("#{cluster_uid}.json"),
@@ -85,6 +116,8 @@ global_hash["sites"].each do |site_uid, site|
     #
     # Write node info
     #
+
+    cluster_path.join("nodes").mkpath()
 
     cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
       #puts node_uid
