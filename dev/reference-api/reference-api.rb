@@ -47,24 +47,45 @@ end
 global_hash["sites"].each do |site_uid, site|
   puts site_uid
 
+  #
+  # Write site info
+  #
+
+  site["type"] = "site"
+  site["uid"]  = site_uid
+
+  site_path = Pathname.new(refapi_path).join("sites",site_uid)
+  site_path.mkpath()
+
+  pp site_path.join("#{site_uid}.json")
+  write_json(site_path.join("#{site_uid}.json"), 
+             site.reject {|k, v| k == "clusters" || k == "networks" || k == "dom0"})
+
   site["clusters"].each do |cluster_uid, cluster|
     puts "  #{cluster_uid}"
 
-    cluster_path = Pathname.new(refapi_path).join("sites",site_uid,"clusters",cluster_uid)
-    cluster_path.join("nodes").mkpath()
+    #
+    # Write cluster info
+    #
 
-    # Write cluster info w/o nodes entries
     cluster["type"] = "cluster"
     cluster["uid"]  = cluster_uid
     
     # On the previous version of this script, cluster["created_ad"] was generated from a Ruby Time. cluster["created_ad"] is now a Ruby Date at JSON import.
     # As Date.httpdate and Time.httpdate does not behave the same with timezone, it is converted here as a Ruby time.
     cluster["created_at"] = Time.parse(cluster["created_at"].to_s).httpdate
+
+    cluster_path = Pathname.new(refapi_path).join("sites",site_uid,"clusters",cluster_uid)
+    cluster_path.join("nodes").mkpath()
     
+    # Write cluster info w/o nodes entries
     write_json(cluster_path.join("#{cluster_uid}.json"),
                cluster.reject {|k, v| k == "nodes"})
     
+    #
     # Write node info
+    #
+
     cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
       #puts node_uid
 
