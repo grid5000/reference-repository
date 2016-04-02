@@ -94,6 +94,135 @@ gw-lille:
       rate: 1000000000
       port: eth1
       ports:
+          1: chimint-1
+          2: chimint-2
+          3: chimint-3
+          4: chimint-4
+          5: chimint-5
+          6: chimint-6
+          7: chimint-7
+          8: chimint-8
+          9: chimint-9
+          10: chimint-10
+          11: chimint-11
+          12: chimint-12
+          13: chimint-13
+          14: chimint-14
+          15: chimint-15
+          16: chimint-16
+          17: chimint-17
+          18: chimint-18
+          19: chimint-19
+          20: chimint-20
+          21:
+            uid: chirloute-1
+            port: eth0
+          22:
+            uid: chirloute-2
+            port: eth0
+          23:
+            uid: chirloute-3
+            port: eth0
+          24:
+            uid: chirloute-4
+            port: eth0
+          25:
+            uid: chirloute-5
+            port: eth0
+          26:
+            uid: chirloute-6
+            port: eth0
+          27:
+            uid: chirloute-7
+            port: eth0
+          28:
+            uid: chirloute-8
+            port: eth0
+
+    3:
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
+      backplane_bps: 40000000000
+      rate: 1000000000
+      port: eth0
+      ports:
+          1:
+            uid: chinqchint-39
+            port: eth1
+          2:
+            uid: chinqchint-40
+            port: eth1
+          3:
+            uid: chinqchint-41
+            port: eth1
+          4:
+            uid: chinqchint-42
+            port: eth1
+          5:
+            uid: chinqchint-43
+            port: eth1
+          6:
+            uid: chinqchint-44
+            port: eth1
+          7:
+            uid: chinqchint-45
+            port: eth1
+          8:
+            uid: chinqchint-46
+            port: eth1
+          9: chimint-1
+          10: chimint-2
+          11: chimint-3
+          12: chimint-4
+          13: chimint-5
+          14: chimint-6
+          15: chimint-7
+          16: chimint-8
+          17: chimint-9
+          18: chimint-10
+          19: chimint-11
+          20: chimint-12
+          21: chimint-13
+          22: chimint-14
+          23: chimint-15
+          24: chimint-16
+          25: chimint-17
+          26: chimint-18
+          27: chimint-19
+          28: chimint-20
+          29:
+            uid: chirloute-1
+            port: eth1
+          30:
+            uid: chirloute-2
+            port: eth1
+          31:
+            uid: chirloute-3
+            port: eth1
+          32:
+            uid: chirloute-4
+            port: eth1
+          33:
+            uid: chirloute-5
+            port: eth1
+          34:
+            uid: chirloute-6
+            port: eth1
+          35:
+            uid: chirloute-7
+            port: eth1
+          36:
+            uid: chirloute-8
+            port: eth1
+    4:
+      kind: node
+      naming_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
+      backplane_bps: 40000000000
+      rate: 1000000000
+      port: eth1
+      ports:
         1: chinqchint-1
         2: chinqchint-2
         3: chinqchint-3
@@ -129,146 +258,6 @@ gw-lille:
         35: chinqchint-35
         37: chinqchint-37
         38: chinqchint-38
-        39: chinqchint-39
-        40: chinqchint-40
-        41: chinqchint-5
-        36:
-          kind: other
-          uid: maya-nfs
-          port: eth0
-        42:
-          kind: other
-          uid: chimint-srv
-          port: eth2
-        43:
-          kind: other
-          uid: caulier
-          port: eth0
-        44:
-          kind: other
-          uid: flandres
-          port: eth0
-        14:
-          kind: switch
-          uid: myrinet
-          rate: 1000000000
-    3:
-      kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
-      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
-      backplane_bps: 40000000000
-      rate: 1000000000
-      port: eth1
-      ports:
-        1: chinqchint-41
-        2: chinqchint-42
-        3: chinqchint-43
-        4: chinqchint-44
-        5: chinqchint-45
-        7:
-          uid: chimint-1
-          port: eth0
-        8:
-          uid: chimint-3
-          port: eth0
-        9:
-          uid: chimint-2
-          port: eth0
-        10:
-          uid: chimint-5
-          port: eth0
-        11:
-          uid: chimint-4
-          port: eth0
-        12:
-          uid: chimint-6
-          port: eth0
-        13:
-          uid: chimint-8
-          port: eth0
-        14:
-          uid: chimint-7
-          port: eth0
-        15:
-          uid: chimint-9
-          port: eth0
-        16:
-          uid: chimint-10
-          port: eth0
-        17:
-          uid: chimint-11
-          port: eth0
-        18:
-          uid: chimint-12
-          port: eth0
-        19:
-          uid: chimint-13
-          port: eth0
-        20:
-          uid: chimint-14
-          port: eth0
-        21:
-          uid: chimint-17
-          port: eth0
-        22:
-          uid: chimint-16
-          port: eth0
-        23:
-          uid: chimint-15
-          port: eth0
-        24:
-          uid: chimint-18
-          port: eth0
-        25: chirloute-2
-        26: chirloute-4
-        27:
-          uid: chimint-20
-          port: eth0
-        28:
-          uid: chimint-19
-          port: eth0
-        29: chirloute-1
-        30: chirloute-3
-        31: chirloute-6
-        32: chirloute-8
-        33: chirloute-5
-        41: chinqchint-46
-        42:
-           kind: other
-           uid: jiminy
-           port: eth0
-        43:
-           kind: other
-           uid: fives
-           port: eth0
-        45:
-           kind: other
-           uid: tilt
-           port: eth0
-        46:
-           kind: other
-           uid: zed
-           port: eth0
-    4:
-      kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
-      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
-      backplane_bps: 40000000000
-      rate: 1000000000
-      ports:
-        23:
-          uid: chirloute-7
-          port: eth1
-        28:
-          uid: chinqchint-36
-          port: eth1
-        29:
-          uid: chinqchint-14
-          port: eth1
-        40:
-          kind: other
-          uid: chimint-srv2
-          port: eth1
   channels:
     naming_pattern: Po%CHANNELID%
     snmp_pattern: Port-channel%CHANNELID%
