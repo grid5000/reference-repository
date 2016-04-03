@@ -1,7 +1,18 @@
 {
   "backplane_bps": 1440000000000,
   "channels": {
-    "2": null,
+    "2": [
+      {
+        "linecard": 1,
+        "port": 49,
+        "rate": 40000000000
+      },
+      {
+        "linecard": 1,
+        "port": 50,
+        "rate": 40000000000
+      }
+    ],
     "naming_pattern": "Po%CHANNELID%",
     "snmp_pattern": "port-channel%CHANNELID%"
   },
