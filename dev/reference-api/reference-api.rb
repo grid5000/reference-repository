@@ -100,6 +100,8 @@ global_hash["sites"].each do |site_uid, site|
     network["weathermap"] ||= {}
 
     # Change the format of linecard from Hash to Array
+    linecards_tmp = Marshal.load(Marshal.dump(network["linecards"])) # bkp (deep_copy)
+
     linecards_array = []
     network["linecards"].each do |linecard_index, linecard|
       ports = []
@@ -110,7 +112,6 @@ global_hash["sites"].each do |site_uid, site|
       linecard["ports"] = ports.map{|p| p || {}}
       linecards_array[linecard_index] = linecard
     end
-    linecards_tmp = network["linecards"] # bkp
     network["linecards"] = linecards_array.map{|l| l || {}}
     
     write_json(network_path.join("#{network_uid}.json"), 
