@@ -71,7 +71,7 @@ global_hash["sites"].each do |site_uid, site|
   site_path.mkpath()
 
   write_json(site_path.join("#{site_uid}.json"), 
-             site.reject {|k, v| k == "clusters" || k == "networks" || k == "dom0" || k == "pdu"})
+             site.reject {|k, v| k == "clusters" || k == "networks" || k == "pdu" || k == "dom0" || k == "laptops"})
 
   #
   # Write pdu info
