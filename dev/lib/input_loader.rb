@@ -32,6 +32,8 @@ def load_yaml_file_hierarchy(directory)
       
       # Inject the file content into the global_hash, at the right place
       path_hierarchy = File.dirname(filename).split('/')     # Split the file path (path relative to input/)
+      path_hierarchy = [] if path_hierarchy == ['.']
+
       file_hash = Hash.from_array(path_hierarchy, file_hash) # Build the nested hash hierarchy according to the file path
       global_hash = global_hash.deep_merge(file_hash)        # Merge global_hash and file_hash. The value for entries with duplicate keys will be that of file_hash
 

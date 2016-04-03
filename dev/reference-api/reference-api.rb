@@ -44,6 +44,19 @@ def net_switch_port_lookup(site, node_uid, interface='')
   return nil
 end
 
+#
+# Write grid info
+#
+
+if global_hash['uid']
+  global_hash["type"] = "grid"
+  grid_path = Pathname.new(refapi_path)
+  grid_path.mkpath()
+  
+  write_json(grid_path.join("#{global_hash['uid']}.json"), 
+             global_hash.reject {|k, v| k == "sites"})
+end
+
 global_hash["sites"].each do |site_uid, site|
   puts site_uid
 
