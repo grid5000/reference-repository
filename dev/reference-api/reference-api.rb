@@ -121,6 +121,7 @@ global_hash["sites"].each do |site_uid, site|
     cluster["created_at"] = Time.parse(cluster["created_at"].to_s).httpdate
 
     cluster_path = Pathname.new(refapi_path).join("sites", site_uid, "clusters", cluster_uid)
+    cluster_path.mkpath()
     
     # Write cluster info w/o nodes entries
     write_json(cluster_path.join("#{cluster_uid}.json"),
