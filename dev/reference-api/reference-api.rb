@@ -115,7 +115,7 @@ global_hash["sites"].each do |site_uid, site|
     network["linecards"] = linecards_array.map{|l| l || {}}
     
     write_json(network_path.join("#{network_uid}.json"), 
-               network.reject {|k, v| k == "clusters" || k == "networks" || k == "dom0"})
+               network.reject {|k, v| k == "network_adapters"})
     
     network["linecards"] = linecards_tmp # restore
   end
