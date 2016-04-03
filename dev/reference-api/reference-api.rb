@@ -58,7 +58,20 @@ global_hash["sites"].each do |site_uid, site|
   site_path.mkpath()
 
   write_json(site_path.join("#{site_uid}.json"), 
-             site.reject {|k, v| k == "clusters" || k == "networks" || k == "dom0"})
+             site.reject {|k, v| k == "clusters" || k == "networks" || k == "dom0" || k == "pdu"})
+
+  #
+  # Write pdu info
+  #
+
+  pdu_path = site_path.join("pdus")
+  pdu_path.mkpath()
+    
+  site["pdu"].each do |pdu_uid, pdu|
+    pdu["type"] = "pdu"
+    pdu["uid"]  = pdu_uid
+    write_json(pdu_path.join("#{pdu_uid}.json"), pdu)
+  end if site.key?("pdu")
 
   #
   # Write network info
@@ -155,7 +168,7 @@ global_hash["sites"].each do |site_uid, site|
       node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
       node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc"]).values
 
-      # Populate "network_address", "switch" and "switch_port" from the network equipment description for each network adapters
+      # For each network adapters, populate "network_address", "switch" and "switch_port" from the network equipment description
       node["network_adapters"].each { |network_adapter|
         network_adapter["mac"] = network_adapter["mac"].downcase if network_adapter["mac"].is_a?(String)
 
@@ -210,7 +223,9 @@ global_hash["sites"].each do |site_uid, site|
       end # node.key?("pdu")
 
       if node["monitoring"].key?("metric")
+        node["sensors"]["power"] ||= {}
         node["sensors"]["power"]["available"] = true
+        node["sensors"]["power"]["via"] ||= {}
         node["sensors"]["power"]["via"]["api"] ||= {}
         node["sensors"]["power"]["via"]["api"]["metric"] = node["monitoring"].delete("metric")
       end

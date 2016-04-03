@@ -59,23 +59,23 @@ class ::Hash
     self.merge(other_hash, &merger)
   end
 
-  # Merge keys that match "PREFIX-[a-b]" with others keys that begins by "PREFIX-" 
+  # Merge keys that match "PREFIX[a-b]" with others keys that begins by "PREFIX" 
   # and that ends with x, where a<=x<=b.
   # - This is done recursively (for this Hash and every Hashes it may contain).
-  # - PREFIX-[a-b] values have lower priority on existing PREFIX-x keys.
-  # - "a" and/or "b" may be omited (ie. "PREFIX-[a-]", "PREFIX-[-b]" or "PREFIX-[-]"), meaning that there are no lower and/or upper bound for x.
+  # - PREFIX[a-b] values have lower priority on existing PREFIXx keys.
+  # - "a" and/or "b" may be omited (ie. "PREFIX[a-]", "PREFIX[-b]" or "PREFIX[-]"), meaning that there are no lower and/or upper bound for x.
   #   * If only a is omited, a == 1.
-  #   * If b is omited, only existing keys are modified (no keys are created). Otherwise, PREFIX-[a] to PREFIX-[b] entries are created (if missing).
+  #   * If b is omited, only existing keys are modified (no keys are created). Otherwise, PREFIX[a] to PREFIX[b] entries are created (if missing).
   # Example:
   # {"foo-1": {a: 0}, "foo-2": {a: 0}, "foo-3": {a: 0}, "foo-[2-]": {b: 1}}.expand_square_brackets()
   #  -> {"foo-1": {a: 0}, "foo-2": {a: 0, b:1},  "foo-3": {a: 0, b: 0}}
   def expand_square_brackets(keys=self.clone)
 
-    # Looking up for PREFIX-[a-b] keys
+    # Looking up for PREFIX[a-b] keys
     # (using .clone because cannot add/remove a key from hash during iteration)
     keys.clone.each { |key_ab, value_ab|
 
-      prefix, a, b = key_ab.to_s.scan(/^(.*)-\[(\d*)-(\d*)\]$/).first
+      prefix, a, b = key_ab.to_s.scan(/^(.*)\[(\d*)-(\d*)\]$/).first
       next if not a and not b # not found
       a != "" ? a = a.to_i : a = 1
       b != "" ? b = b.to_i : b
@@ -84,28 +84,28 @@ class ::Hash
 
         # Merge keys, creating missing entries if needed.
         (a..b).each { |x|
-          key = "#{prefix}-#{x}"
+          key = "#{prefix}#{x}"
           key = key.to_sym if key_ab.is_a?(Symbol)
 
-          # For duplicate entries, the value of PREFIX-x is kept.
+          # For duplicate entries, the value of PREFIXx is kept.
           self[key] = deep_merge_entries(deep_copy(value_ab), self[key]).clone
         }
 
       else
 
-        # Modify only existing keys. Looking up for PREFIX-x keys.
+        # Modify only existing keys. Looking up for PREFIXx keys.
         self.clone.each { |key_x, value_x|
           next if key_x.class != key_ab.class
-          x = key_x.to_s.scan(/^#{prefix}-(\d*)$/).first
+          x = key_x.to_s.scan(/^#{prefix}(\d*)$/).first
           x = x.first if x
           next if not x or x.to_i < a
 
-          # For duplicate entries, the value of PREFIX-x is kept.
+          # For duplicate entries, the value of PREFIXx is kept.
           self[key_x] = deep_merge_entries(deep_copy(value_ab), value_x).clone
         }
       end
           
-      # Delete entry "PREFIX-[a-b]"
+      # Delete entry "PREFIX[a-b]"
       self.delete(key_ab)
       keys.delete(key_ab)
     }
