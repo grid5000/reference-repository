@@ -2,7 +2,7 @@ site :luxembourg do |site_uid|
   name "Luxembourg"
   location "Luxembourg, Luxembourg"
   web "https://www.grid5000.fr/mediawiki/index.php/Luxembourg:Home"
-  description "Grid'5000 Luxembourg site"
+  description "Grid5000 Luxembourg site"
   latitude 49.626595
   longitude 6.158676
   email_contact "support-staff@lists.grid5000.fr"
