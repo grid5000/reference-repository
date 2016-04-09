@@ -25,6 +25,18 @@ nodes:
         version: Myri-10G
         vendor: myrinet
 
+  griffon-[1-10]:
+   network_adapters:
+      eth1:
+        enabled: false
+        mountable: false
+
+  griffon-[15-]:
+   network_adapters:
+      eth1:
+        enabled: false
+        mountable: false
+
 # Global node properties
   griffon-[-]:
     performance:
@@ -72,8 +84,6 @@ nodes:
         vendor: intel
         version: 80003ES2LAN
       eth1:
-        enabled: false
-        mountable: false
         bridged: false
         rate: 1000000000 #1G
         vendor: intel

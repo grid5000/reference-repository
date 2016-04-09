@@ -33,20 +33,26 @@ nodes:
         storage: HDD
     network_adapters:
       eth0:
-        rate: 1.0e+9
+        enabled: false
+        mountable: false
+        #rate: 1.0e+9
         bridged: false
         vendor: Intel
         version: Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)
       eth1:
-        rate: 1.0e+9
+        enabled: true
+        mountable: true
+        #rate: 1.0e+9
         bridged: true
         vendor: Intel
         version: Intel 80003ES2LAN Gigabit Ethernet Controller (Copper) (rev 01)
       ib0:
         vendor: Mellanox
       ib1:
-       rate: 40.0e+9
-       vendor: Mellanox
+        enabled: false
+        mountable: false
+        #rate: 40.0e+9
+        vendor: Mellanox
       bmc:
         interface: Ethernet
         rate: 1.0e+9

@@ -39,7 +39,6 @@ nodes:
         interface: SATA
         driver: sata_nv
         storage: HDD
-        vendor: Hitachi
     gpu:
       gpu: false
     monitoring:
@@ -98,6 +97,22 @@ nodes:
         version: M3F-PCIXF-2
         management: false
         switch: sw-myrinet
+
+  # sda vendor
+  sol-[1-24]:
+    storage_devices:
+      sda:
+        vendor: Hitachi
+
+  sol-[26-33]:
+    storage_devices:
+      sda:
+        vendor: Hitachi
+
+  sol-[35-50]:
+    storage_devices:
+      sda:
+        vendor: Hitachi
 
 # Retired nodes
   sol-36:
