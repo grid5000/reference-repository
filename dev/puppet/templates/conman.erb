@@ -11,13 +11,13 @@ server logfile="/var/log/conman.log"
   #       network_address: node_uid-bmc.site.grid5000.fr
   #   conman:
   #     device: /usr/lib/conman/exec/ipmitool.exp
-  #  or
+  #  /or/
   #   conman:
   #     device: ipmi
   #     workaround_flag: solpayloadsize
 
   [site['clusters'], { 'servers' => { 'nodes' => site['servers'] || {} } }].each { |clusters|
-    clusters.each { |cluster_uid, cluster| 
+    clusters.sort.each { |cluster_uid, cluster| 
       cluster['nodes'].each_sort_by_node_uid { |node_uid, node| 
 
         cluster_uid = /[A-Za-z]*/.match(node_uid).to_s if cluster_uid == 'servers' # deduce cluster_uid from node_uid for 'servers' entries
