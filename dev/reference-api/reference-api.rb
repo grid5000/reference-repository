@@ -71,7 +71,7 @@ global_hash["sites"].each do |site_uid, site|
   site_path.mkpath()
 
   write_json(site_path.join("#{site_uid}.json"), 
-             site.reject {|k, v| k == "clusters" || k == "networks" || k == "pdu" || k == "dom0" || k == "laptops"})
+             site.reject {|k, v| k == "clusters" || k == "networks" || k == "pdu" || k == "dom0" || k == "laptops" || k == "servers" })
 
   #
   # Write pdu info
@@ -247,8 +247,9 @@ global_hash["sites"].each do |site_uid, site|
 
       node.delete("kavlan")
 
-      #pp cluster_path.join("nodes","#{node_uid}.json")
-      write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
+      write_json(cluster_path.join("nodes","#{node_uid}.json"), 
+                 node.reject {|k, v| k == "conman"})
+
     end
   end
 end

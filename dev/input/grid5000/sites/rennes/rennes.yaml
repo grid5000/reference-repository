@@ -62,3 +62,8 @@ kavlans:
   16:
     network: 10.27.192.0/18
     gateway: 10.27.255.254
+
+servers:
+  ceph[0-3]:
+    conman:
+      device: /usr/lib/conman/exec/ipmiconsole.exp

@@ -1,0 +1,46 @@
+server logfile="/var/log/conman.log"
+
+<%
+  # http://conman.googlecode.com/svn/trunk/etc/conman.conf  
+
+  # Input data:
+  #
+  # node_uid:
+  #   network_adapters:
+  #     bmc:
+  #       network_address: node_uid-bmc.site.grid5000.fr
+  #   conman:
+  #     device: /usr/lib/conman/exec/ipmitool.exp
+  #  or
+  #   conman:
+  #     device: ipmi
+  #     workaround_flag: solpayloadsize
+
+  [site['clusters'], { 'servers' => { 'nodes' => site['servers'] || {} } }].each { |clusters|
+    clusters.each { |cluster_uid, cluster| 
+      cluster['nodes'].each_sort_by_node_uid { |node_uid, node| 
+
+        cluster_uid = /[A-Za-z]*/.match(node_uid).to_s if cluster_uid == 'servers' # deduce cluster_uid from node_uid for 'servers' entries
+        password = passwd[node_uid] || passwd[cluster_uid] # this allows setting password on a cluster or node basis
+        put "#{node_uid}; password not found" unless passwd
+
+        bmc = node['network_adapters']['bmc'].fetch('network_address').split('.')[0] rescue node_uid + '-bmc'
+        dev = node['conman'].fetch('device') rescue '/usr/lib/conman/exec/ipmitool.exp'
+        
+        if dev != 'ipmi'
+          # External process-based connection (default)
+          # Example : console name="node_uid" dev="/usr/lib/conman/exec/ipmitool.exp node_uid-bmc login password"
+          dev_args = "#{bmc} #{password}"
+        else
+          # IPMI Serial-Over-LAN connection
+          # Example : console name="node_uid" dev="ipmi:node_uid-bmc" ipmiopts="U:login,P:password,W:workaround_flag"
+          dev  = "#{dev}:#{bmc}"
+          login, pass = password.split(' ')
+          ipmiopts = "U:#{login},P:#{pass}"
+          ipmiopts += ",W:#{node['conman'].fetch('workaround_flag')}" rescue ''
+        end
+
+%>console name="<%= node_uid %>" dev="<%= dev %><%= " #{dev_args}" if dev_args %>"<%= " ipmiopts=\"#{ipmiopts}\"" if ipmiopts %>
+<%     } %>
+<%   } %>
+<% } %>
