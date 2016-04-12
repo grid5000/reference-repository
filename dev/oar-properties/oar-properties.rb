@@ -278,7 +278,7 @@ if options[:output] || options[:exec]
     # Build and output commands
     #
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
-      next if node_properties.size == 1
+      # next if node_properties.size == 1
 
       # Create new nodes.
       if (opt == 'ref' || nodelist_properties['oar'][site_uid][node_uid] == nil)
