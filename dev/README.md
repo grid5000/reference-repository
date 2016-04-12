@@ -29,7 +29,11 @@ Requirements
 ------------
 Ruby 2.1 (+ HashDiff and Net/SSH for the oar-generator; + peach and ruby-cute for run-g5kchecks)
 
-Example using RVM (https://rvm.io/):
+There is a Gemfile in the root directory for bundler:
+$ gem install bundler (http://bundler.io/)
+$ bundle install # install all of the required gems
+
+Alternativly, here is an example using RVM (https://rvm.io/):
 $ \curl -sSL https://get.rvm.io | bash -s stable --ruby
 $ source ~/.rvm/scripts/rvm
 $ rvm install 2.2
@@ -37,6 +41,7 @@ $ gem install hashdiff
 $ gem install net-ssh
 $ gem install peach
 $ gem install ruby-cute
+
 
 Input files
 -----------
