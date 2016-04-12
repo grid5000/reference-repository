@@ -11,18 +11,19 @@ def deep_merge_entries(a, b)
   end
 end
 
+def rec_sort(h)
+  case h
+  when Array
+    h.map{|v| rec_sort(v)}#.sort_by!{|v| (v.to_s rescue nil) }
+  when Hash
+    Hash[Hash[h.map{|k,v| [rec_sort(k),rec_sort(v)]}].sort_by{|k,v| [(k.to_s rescue nil), (v.to_s rescue nil)]}]
+  else
+    h
+  end
+end
+
 # Write pretty and sorted JSON files
 def write_json(filepath, data)
-  def rec_sort(h)
-    case h
-    when Array
-      h.map{|v| rec_sort(v)}#.sort_by!{|v| (v.to_s rescue nil) }
-    when Hash
-      Hash[Hash[h.map{|k,v| [rec_sort(k),rec_sort(v)]}].sort_by{|k,v| [(k.to_s rescue nil), (v.to_s rescue nil)]}]
-    else
-      h
-    end
-  end
   File.open(filepath, 'w') do |f|
     f.write(JSON.pretty_generate(rec_sort(data)))
   end
@@ -30,16 +31,6 @@ end
 
 # Write sorted YAML files
 def write_yaml(filepath, data)
-  def rec_sort(h)
-    case h
-    when Array
-      h.map{|v| rec_sort(v)}#.sort_by!{|v| (v.to_s rescue nil) }
-    when Hash
-      Hash[Hash[h.map{|k,v| [rec_sort(k),rec_sort(v)]}].sort_by{|k,v| [(k.to_s rescue nil), (v.to_s rescue nil)]}]
-    else
-      h
-    end
-  end
   File.open(filepath, 'w') do |f|
     f.write(rec_sort(data).to_yaml)
   end
@@ -118,7 +109,7 @@ class ::Hash
     }
   end
 
-  # sort a hash according to the position of the key in the array.
+  # Sort a hash according to the position of the key in the array.
   def sort_by_array(array)
     Hash[sort_by{|key, _| array.index(key) || length}] 
   end
@@ -148,8 +139,19 @@ class ::Hash
     }
   end
 
-  def deep_copy(o)
-    Marshal.load(Marshal.dump(o))
+  # Ex: { a: 1, b: nil, c: { d: nil, e: '' } }.deep_reject! { |k, v| v.blank? }
+  # ==> { a: 1 }
+  # Note: the blk delete condition is also applied to hash
+  #       use  { |k, v| !Hash === v } if you do not want this default behavior
+  def deep_reject!(&blk)
+    self.each do |k, v|
+      v.deep_reject!(&blk) if v.is_a?(Hash)
+      self.delete(k) if blk.call(k, v)
+    end
   end
 
+end
+
+def deep_copy(o)
+  Marshal.load(Marshal.dump(o))
 end

@@ -1,5 +1,9 @@
 #!/usr/bin/ruby
 
+# This script generates:
+# - kadeployg5k/files/<site_uid>/server_conf[_dev]/clusters.conf  from input/
+# - kadeployg5k/files/<site_uid>/server_conf[_dev]/<cluster_uid>-cluster.conf from conf/kadeployg5k.yaml and template/kadeployg5k.yaml.Erb
+
 require 'pp'
 require 'erb'
 require 'fileutils'
@@ -7,10 +11,7 @@ require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
 global_hash = load_yaml_file_hierarchy("../input/grid5000/")
-
-template_hash = YAML::load_file('templates/kadeployg5k.yaml')
-
-write_yaml('/tmp/test.yaml', template_hash)
+output_dir = 'output'
 
 # Compute cluster prefix
 # input: cluster_list = ['graoully', 'graphene', 'griffon', ...]
@@ -36,6 +37,7 @@ def cluster_prefix(cluster_list)
 
 end
 
+# Extract the node ip from the node hash
 def get_ip(node)
   node['network_adapters'].each { |device, network_adapter|
     if network_adapter['mounted'] && /^eth[0-9]$/.match(device)
@@ -44,10 +46,15 @@ def get_ip(node)
   }
 end
 
+# There is two kadeploy servers : kadeploy and kadeploy-dev
 ['', '-dev'].each {|suffix|
-  global_hash['sites'].each { |site_uid, site|
-    next if site_uid != 'nancy'
 
+  global_hash['sites'].each { |site_uid, site|
+
+    #
+    # Generate site/<site_uid>/servers_conf[_dev]/clusters.conf
+    #
+    
     clusters_conf = { 'clusters'=> [] } # output clusters.conf
     prefix = cluster_prefix(site['clusters'].keys)
 
@@ -107,8 +114,7 @@ end
 
     } # site['clusters'].each
 
-
-    output_file = File.join('output', 'kadeployg5k', 'files', site_uid, "server_conf#{suffix.tr('-', '_')}", 'clusters.conf')
+    output_file = File.join(output_dir, 'kadeployg5k', 'files', site_uid, "server_conf#{suffix.tr('-', '_')}", 'clusters.conf')
     dirname = File.dirname(output_file)
     FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
     
