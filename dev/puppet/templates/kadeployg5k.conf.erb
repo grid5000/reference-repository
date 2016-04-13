@@ -14,7 +14,7 @@ timeouts:
 remoteops:
   console:
   - name: soft
-    cmd: /usr/bin/conman -d conman HOSTNAME_SHORT
+    cmd: <%= data['remoteops.console.soft.cmd'] ? data['remoteops.console.soft.cmd'] : '/usr/bin/conman -d conman HOSTNAME_SHORT' %>
   power_status:
   - name: soft
     cmd: <%= data['remoteops.power_status.soft.cmd'] ? data['remoteops.power_status.soft.cmd'] : '/usr/local/bin/lanpower -m HOSTNAME_FQDN -s' %>

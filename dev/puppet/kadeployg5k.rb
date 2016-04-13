@@ -128,7 +128,7 @@ end
 
     # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
     
-    conf = YAML::load(ERB.new(File.read('./conf/kadeployg5k.yaml')).result(binding))
+    conf = YAML::load(ERB.new(File.read("./conf/kadeployg5k#{suffix}.yaml")).result(binding))
 
     site['clusters'].each { |cluster_uid, cluster|
 
