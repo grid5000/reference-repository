@@ -1,0 +1,85 @@
+---
+partitioning:
+  block_device: /dev/sda
+  script: /etc/kadeploy3<%= suffix %>/<%= ! data['partitioning.script'].nil? ? data['partitioning.script'] : "partitioning.sh" %>
+  partitions:
+    tmp: 5
+    prod: 2
+    deploy: 3
+    swap: 1
+  <% if ! data['partitioning.disable_swap'].nil? %>disable_swap: <%= data['partitioning.disable_swap'] %><% end %>
+timeouts:
+  reboot: <%= data['reboot.timeout'] %>
+  kexec: <%= data['reboot.kexec'] %>
+remoteops:
+  console:
+  - name: soft
+    cmd: /usr/bin/conman -d conman HOSTNAME_SHORT
+  power_status:
+  - name: soft
+    cmd: <%= data['remoteops.power_status.soft.cmd'] ? data['remoteops.power_status.soft.cmd'] : '/usr/local/bin/lanpower -m HOSTNAME_FQDN -s' %>
+  power_on:
+  - name: hard
+    cmd: <%= data['remoteops.power_on.hard.cmd'] ? data['remoteops.power_on.hard.cmd'] : '/usr/local/bin/lanpower -c on -m HOSTNAME_SHORT' %><% if data['remoteops.power_on.very_hard.cmd'] %>
+  - name: very_hard
+    cmd: <%= data['remoteops.power_on.very_hard.cmd'] %><%end %>
+  reboot:
+  - name: soft
+    cmd: ssh -q -F /etc/kadeploy3<%= suffix %>/keys/ssh_config root@HOSTNAME_FQDN "if [ -f /bin/systemctl ]; then nohup /bin/systemctl reboot -f >/dev/null & else nohup /sbin/reboot -f >/dev/null & fi"
+  - name: hard
+    cmd: <%= data['remoteops.reboot.hard.cmd'] ? data['remoteops.reboot.hard.cmd'] : '/usr/local/bin/lanpower -c cycle -m HOSTNAME_SHORT' %><% if data['remoteops.reboot.very_hard.cmd'] %>
+  - name: very_hard
+    cmd: <%= data['remoteops.reboot.very_hard.cmd'] %><% end %>
+  power_off:
+  - name: soft
+    cmd: ssh -q -F /etc/kadeploy3<%= suffix %>/keys/ssh_config root@HOSTNAME_FQDN "nohup /sbin/poweroff &>/dev/null &"
+  - name: hard
+    cmd: <%= data['remoteops.power_off.hard.cmd'] ? data['remoteops.power_off.hard.cmd'] : '/usr/local/bin/lanpower -c off -m HOSTNAME_SHORT' %><% if data['remoteops.power_off.very_hard.cmd'] %>
+  - name: very_hard
+    cmd: <%= data['remoteops.power_off.very_hard.cmd'] %><%end %>
+boot:
+  install_bootloader: /etc/kadeploy3<%= suffix %>/install_grub2.sh
+  kernels:
+    deploy:<%
+    if !data['deploy.drivers'].nil? %>
+      drivers: <%= data['deploy.drivers'] %><% end %>
+      vmlinuz: kernels/deploy-wheezy-vmlinuz-1.0.2-g5k
+      initrd: kernels/deploy-wheezy-initrd-1.0.2-g5k
+      params: <%= data['deploy.params'] %>
+      supported_fs: ext2, ext3, ext4<%
+   if !data['nfsroot.params'].nil? %>
+    nfsroot:
+      params: <%= data['nfsroot.params'] %>
+      vmlinuz: kernels/deploy-vmlinuz-2.6.31.4-nfsroot<% end %>
+    user:
+      params: <%= data['user.params'] %>
+postinstall:
+  files:
+  - script: none
+    format: tgz
+    file:  /grid5000/preinstalls/preinstall-<%= cluster_uid %>.tgz
+pxe:
+  headers:
+    dhcp: &id001 |-
+      PROMPT 1
+      SERIAL <%= data['dhcp.serial'] %>
+      TIMEOUT 50
+    networkboot: *id001
+    localboot: *id001
+automata:
+  macrosteps:
+    SetDeploymentEnv:
+    - timeout: <%= data['deployment.timeout'] %>
+      type: Untrusted
+      retries: <%= data['deployment.retries'].nil? ? 1 : data['deployment.retries'] %>
+    BroadcastEnv:
+    - timeout: <%= data['broadcast.timeout'] %>
+      type: Kascade
+      retries: <%= data['broadcast.retries'].nil? ? 1 : data['broadcast.retries'] %>
+    BootNewEnv:
+    - timeout: <%= data['boot.timeout.0'] %>
+      type: <%= data['boot.type.0'].nil? ? 'Kexec' : data['boot.type.0'] %>
+      retries: 0
+    - timeout: <%= data['boot.timeout.1'] %>
+      type: HardReboot
+      retries: 0

@@ -1,0 +1,458 @@
+---
+grenoble:
+  adonis:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200n8 maxcpus=8
+    deploy.params: nouveau.blacklist=yes console=tty0 console=ttyS1,115200n8 ramdisk_size=290000
+      rw noapic init=/linuxrc
+    dhcp.serial: 0 38400
+    nfsroot.params: rw console=ttyS0,38400n8 console=tty0 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
+      init=/sbin/init
+    deployment.timeout: 450
+    broadcast.retries: 0
+    broadcast.timeout: 600
+    boot.timeout.0: 150
+    boot.timeout.1: 450
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  edel:
+    reboot.timeout: 250
+    reboot.kexec: 150
+    partitioning.disable_swap: false
+    partitioning.script: partitioning-edel.sh
+    user.params: console=tty0 console=ttyS1,115200n8
+    deploy.params: console=tty0 console=ttyS1,115200n8 ramdisk_size=290000 rw noapic
+      init=/linuxrc
+    dhcp.serial: 0 38400
+    nfsroot.params: rw console=ttyS0,38400n8 console=tty0 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
+      init=/sbin/init
+    deployment.timeout: 480
+    broadcast.retries: 0
+    broadcast.timeout: 800
+    boot.timeout.0: 150
+    boot.timeout.1: 450
+    remoteops.reboot.hard.cmd: "/usr/local/bin/lanpower -c reset -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  genepi:
+    reboot.timeout: 250
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200n8
+    deploy.drivers: ata_piix
+    deploy.params: ETH_DEV=eth1 console=tty0 console=ttyS1,115200n8 ramdisk_size=290000
+      rw noapic init=/linuxrc radeon.modeset=0
+    dhcp.serial: 0 38400
+    nfsroot.params: rw console=ttyS0,38400n8 console=tty0 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
+      init=/sbin/init
+    deployment.timeout: 450
+    broadcast.retries: 0
+    broadcast.timeout: 600
+    boot.timeout.0: 150
+    boot.timeout.1: 400
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+lille:
+  chimint:
+    reboot.timeout: 250
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,57600n8
+    deploy.drivers: ahci
+    deploy.params: ETH_DEV=eth0 console=tty1 console=ttyS1,57600n8 rw ramdisk_size=800000
+      init=/linuxrc noapic
+    dhcp.serial: 1 57600
+    deployment.timeout: 400
+    broadcast.timeout: 400
+    boot.timeout.0: 400
+    boot.type.0: Classical
+    boot.timeout.1: 400
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      8 -m HOSTNAME_SHORT"
+  chinqchint:
+    reboot.timeout: 250
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,38400n8
+    deploy.params: ETH_DEV=eth1 myri10ge.blacklist=yes console=tty0 console=ttyS1,38400n8
+      radeon.modeset=0
+    dhcp.serial: 0 38400
+    nfsroot.params: rw console=ttyS0,38400n8 console=tty0 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
+      init=/sbin/init
+    deployment.timeout: 400
+    broadcast.retries: 0
+    broadcast.timeout: 600
+    boot.timeout.0: 150
+    boot.timeout.1: 400
+  chirloute:
+    reboot.timeout: 250
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,57600n8 maxcpus=8
+    deploy.drivers: ahci
+    deploy.params: ETH_DEV=eth1 nouveau.blacklist=yes console=tty1 console=ttyS1,57600n8
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 0 57600
+    nfsroot.params: rw console=ttyS1,57600n8 console=tty1 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
+      init=/sbin/init
+    deployment.timeout: 400
+    broadcast.retries: 0
+    broadcast.timeout: 600
+    boot.timeout.0: 150
+    boot.timeout.1: 400
+luxembourg:
+  granduc:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,57600n8
+    deploy.params: usbcore.blacklist=yes ixgbe.blacklist=yes console=tty0 console=ttyS1,57600n8
+      ramdisk_size=260000 rw init=/linuxrc
+    dhcp.serial: 0 38400
+    deployment.timeout: 300
+    broadcast.retries: 0
+    broadcast.timeout: 400
+    boot.timeout.0: 180
+    boot.timeout.1: 350
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      6 -m HOSTNAME_SHORT"
+  petitprince:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,115200n8
+    deploy.params: usbcore.blacklist=yes console=tty0 console=ttyS0,115200n8 ramdisk_size=260000
+      rw init=/linuxrc
+    dhcp.serial: 0 38400
+    deployment.timeout: 300
+    broadcast.retries: 0
+    broadcast.timeout: 400
+    boot.timeout.0: 180
+    boot.timeout.1: 350
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      6 -m HOSTNAME_SHORT"
+lyon:
+  hercule:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200
+    deploy.params: ETH_DEV=eth1 console=tty0 console=ttyS1,115200 igb.blacklist=yes
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 600
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+  orion:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200
+    deploy.params: ETH_DEV=eth0 console=tty0 console=ttyS1,115200 igb.blacklist=yes
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 600
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+  sagittaire:
+    reboot.timeout: 250
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,38400n8
+    deploy.params: ETH_DEV=eth1 console=tty0 console=ttyS0,38400n8
+    dhcp.serial: 0 38400
+    deployment.timeout: 600
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.power_off.very_hard.cmd: "/usr/local/bin/restore_bmc.expect HOSTNAME_SHORT-bmc
+      && /usr/local/bin/lanpower -c off -m HOSTNAME_SHORT"
+    remoteops.power_on.very_hard.cmd: "/usr/local/bin/restore_bmc.expect HOSTNAME_SHORT-bmc
+      && /usr/local/bin/lanpower -c on -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/restore_bmc.expect HOSTNAME_SHORT-bmc
+      && /usr/local/bin/lanpower -c cycle -m HOSTNAME_SHORT"
+  taurus:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200
+    deploy.params: ETH_DEV=eth0 console=tty0 console=ttyS1,115200 igb.blacklist=yes
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 600
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+nancy:
+  graoully:
+    reboot.timeout: 300
+    reboot.kexec: 120
+    user.params: console=tty0 console=ttyS0,115200
+    deploy.params: igb.blacklist=yes ETH_DEV=eth0 console=tty0 console=ttyS0,115200
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 900
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 900
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  graphene:
+    reboot.timeout: 250
+    reboot.kexec: 120
+    user.params: console=tty0 console=ttyS0,38400n8
+    deploy.drivers: ata_piix
+    deploy.params: ETH_DRV=e1000e ETH_DEV=eth0 DISK_DRV=ahci console=tty0 console=ttyS0,38400n8
+      ramdisk_size=290000 rw noapic init=/linuxrc
+    dhcp.serial: 0 38400
+    nfsroot.params: boot=casper netboot=nfs nfsroot=172.28.53.104:/srv/livecd/recette
+      initrd=livecd/initrd.lz console=tty0 console=ttyS0,115200n8 ip
+    deployment.timeout: 450
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 400
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  graphique:
+    reboot.timeout: 350
+    reboot.kexec: 120
+    user.params: console=tty0 console=ttyS1,115200
+    deploy.params: ETH_DEV=eth2 console=tty0 console=ttyS1,115200 igb.blacklist=yes
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 650
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 900
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  graphite:
+    reboot.timeout: 350
+    reboot.kexec: 120
+    user.params: console=tty0 console=ttyS0,115200n8
+    deploy.drivers: ata_piix
+    deploy.params: DISK_DRV=ahci igb.blacklist=yes console=tty0 console=ttyS0,115200n8
+      ramdisk_size=290000 rw noapic init=/linuxrc
+    dhcp.serial: 0 115200
+    deployment.timeout: 650
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 600
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  griffon:
+    reboot.timeout: 250
+    reboot.kexec: 120
+    user.params: console=tty0 console=ttyS0,19200n8
+    deploy.drivers: ata_piix
+    deploy.params: myri10ge.blacklist=yes console=tty0 console=ttyS0,19200n8 ramdisk_size=290000
+      rw noapic init=/linuxrc
+    dhcp.serial: 0 19200
+    nfsroot.params: rw console=ttyS0,19200n8 console=tty0 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
+      init=/sbin/init
+    deployment.timeout: 500
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 420
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  grimoire:
+    reboot.timeout: 300
+    reboot.kexec: 120
+    user.params: console=tty0 console=ttyS0,115200
+    deploy.params: igb.blacklist=yes ETH_DEV=eth0 console=tty0 console=ttyS0,115200
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 900
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 900
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  grisou:
+    reboot.timeout: 300
+    reboot.kexec: 120
+    user.params: console=tty0 console=ttyS0,115200
+    deploy.params: igb.blacklist=yes ETH_DEV=eth0 console=tty0 console=ttyS0,115200
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 900
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 900
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  talc:
+    reboot.timeout: 250
+    reboot.kexec: 120
+    user.params: console=tty0 console=ttyS0,19200n8
+    deploy.drivers: ata_piix
+    deploy.params: myri10ge.blacklist=yes console=tty0 console=ttyS0,19200n8 ramdisk_size=290000
+      rw noapic init=/linuxrc
+    dhcp.serial: 0 19200
+    nfsroot.params: rw console=ttyS0,19200n8 console=tty0 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
+      init=/sbin/init
+    deployment.timeout: 500
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 420
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+nantes:
+  econome:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200
+    deploy.params: ETH_DEV=eth0 console=tty0 console=ttyS1,115200 igb.blacklist=yes
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 600
+    deployment.retries: 2
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+reims:
+  stremi:
+    reboot.timeout: 220
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,115200n8
+    deploy.params: console=tty0 console=ttyS0,115200n8 ramdisk_size=260000 rw init=/linuxrc
+    dhcp.serial: 0 38400
+    deployment.timeout: 320
+    broadcast.retries: 0
+    broadcast.timeout: 400
+    boot.timeout.0: 150
+    boot.timeout.1: 280
+    remoteops.power_off.very_hard.cmd: "/usr/local/bin/lanpower -c off --sleep 8 -m
+      HOSTNAME_SHORT"
+    remoteops.power_on.very_hard.cmd: "/usr/local/bin/lanpower -c on --sleep 8 -m
+      HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      8 -m HOSTNAME_SHORT"
+rennes:
+  paranoia:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200
+    deploy.params: ETH_DEV=eth0 console=tty0 console=ttyS1,115200 igb.blacklist=yes
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 600
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      4 -m HOSTNAME_SHORT"
+  parapide:
+    reboot.timeout: 180
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,115200n8 maxcpus=8
+    deploy.params: console=tty0 console=ttyS0,115200n8 ramdisk_size=260000 rw init=/linuxrc
+    dhcp.serial: 0 38400
+    deployment.timeout: 250
+    broadcast.retries: 0
+    broadcast.timeout: 600
+    boot.timeout.0: 150
+    boot.timeout.1: 300
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      8 -m HOSTNAME_SHORT"
+  parapluie:
+    reboot.timeout: 400
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,115200n8
+    deploy.params: ETH_DEV=eth1 console=tty0 console=ttyS0,115200n8 ramdisk_size=260000
+      rw init=/linuxrc
+    dhcp.serial: 0 38400
+    deployment.timeout: 450
+    broadcast.retries: 0
+    broadcast.timeout: 800
+    boot.timeout.0: 150
+    boot.timeout.1: 450
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      8 -m HOSTNAME_SHORT"
+  parasilo:
+    reboot.timeout: 300
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,115200
+    deploy.params: ETH_DEV=eth0 console=tty0 DISK_DRV=megaraid_sas console=ttyS0,115200
+      igb.blacklist=yes ramdisk_size=260000 rw init=/linuxrc
+    dhcp.serial: 0 115200
+    deployment.timeout: 900
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.reboot.hard.cmd: "/usr/local/bin/lanpower -d -c cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -d -c safety_cycle --sleep
+      4 -m HOSTNAME_SHORT"
+  paravance:
+    reboot.timeout: 300
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,115200
+    deploy.params: ETH_DEV=eth0 console=tty0 DISK_DRV=megaraid_sas console=ttyS0,115200
+      igb.blacklist=yes ramdisk_size=260000 rw init=/linuxrc
+    dhcp.serial: 0 115200
+    deployment.timeout: 900
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.reboot.hard.cmd: "/usr/local/bin/lanpower -d -c cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -d -c safety_cycle --sleep
+      4 -m HOSTNAME_SHORT"
+sophia:
+  sol:
+    reboot.timeout: 150
+    reboot.kexec: 120
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200n8
+    deploy.params: myri10ge.blacklist=yes console=tty1 console=ttyS1,115200n8 rw ramdisk_size=260000
+      init=/linuxrc noapic
+    dhcp.serial: 0 9600
+    deployment.timeout: 600
+    broadcast.retries: 0
+    broadcast.timeout: 400
+    boot.timeout.0: 150
+    boot.timeout.1: 300
+    remoteops.reboot.hard.cmd: "/usr/local/bin/lanpower -c cycle -m HOSTNAME_SHORT
+      --sleep 5 --no-wait"
+    remoteops.power_off.hard.cmd: "/usr/local/bin/lanpower -c off -m HOSTNAME_SHORT
+      --no-wait"
+    remoteops.power_on.hard.cmd: "/usr/local/bin/lanpower -c on -m HOSTNAME_SHORT
+      --no-wait"
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      60 -m HOSTNAME_SHORT --no-wait"
+  suno:
+    reboot.timeout: 200
+    reboot.kexec: 120
+    partitioning.disable_swap: false
+    user.params: console=tty1 console=ttyS1,115200n8
+    deploy.params: console=tty1 console=ttyS1,115200n8 rw ramdisk_size=800000 init=/linuxrc
+      noapic
+    dhcp.serial: 1 115200
+    deployment.timeout: 600
+    broadcast.retries: 0
+    broadcast.timeout: 600
+    boot.timeout.0: 150
+    boot.timeout.1: 300
+    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+      8 -m HOSTNAME_SHORT"

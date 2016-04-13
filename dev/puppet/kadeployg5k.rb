@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 # This script generates:
-# - kadeployg5k/files/<site_uid>/server_conf[_dev]/clusters.conf  from input/
+# - kadeployg5k/files/<site_uid>/server_conf[_dev]/clusters.conf from input/
 # - kadeployg5k/files/<site_uid>/server_conf[_dev]/<cluster_uid>-cluster.conf from conf/kadeployg5k.yaml and template/kadeployg5k.yaml.Erb
 
 require 'pp'
@@ -122,8 +122,29 @@ end
       f.write(clusters_conf.to_yaml)
     end
     
-  } 
-  
+    #
+    # Generate <cluster_uid>-cluster.conf files
+    #
+
+    # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
+    
+    conf = YAML::load(ERB.new(File.read('./conf/kadeployg5k.yaml')).result(binding))
+
+    site['clusters'].each { |cluster_uid, cluster|
+
+      data = data = conf[site_uid][cluster_uid]
+      cluster_yaml = ERB.new(File.read('templates/kadeployg5k.conf.erb')).result(binding)
+
+      output_file = File.join(output_dir, 'kadeployg5k', 'files', site_uid, "server_conf#{suffix.tr('-', '_')}", "#{cluster_uid}-cluster.conf")
+
+      dirname = File.dirname(output_file)
+      FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
+          
+      File.open(output_file, 'w') do |f|
+        f.write(cluster_yaml)
+      end
+      
+    }
+    
+  }
 }
-
-
