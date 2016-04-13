@@ -155,3 +155,9 @@ end
 def deep_copy(o)
   Marshal.load(Marshal.dump(o))
 end
+
+class NilClass
+  def clone()
+    nil
+  end
+end

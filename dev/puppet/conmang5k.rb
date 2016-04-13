@@ -11,10 +11,11 @@ require '../lib/hash/hash.rb'
 global_hash = load_yaml_file_hierarchy("../input/grid5000/")
 $output_dir = 'output'
 
-conf_hash = YAML::load_file('./conf/conman-password.yaml')
+pwd_hash = YAML::load_file('./conf/console-password.yaml')
+conf_hash = YAML::load_file('./conf/console.yaml')
 conf_hash = conf_hash.expand_square_brackets()
 
-def write_conman_file(site_uid, site, passwd)
+def write_conman_file(site_uid, site, conf, passwd)
   erb = ERB.new(File.read("templates/conman.erb"))
   output_file = File.join($output_dir, 'conmang5k', 'files', site_uid, 'conman.conf')
   
@@ -30,5 +31,5 @@ end
 
 # Loop over Grid'5000 sites
 global_hash["sites"].each { |site_uid, site|
-  write_conman_file(site_uid, site, conf_hash[site_uid])
+  write_conman_file(site_uid, site, conf_hash[site_uid], pwd_hash[site_uid])
 }

@@ -14,6 +14,10 @@ virt_ip_range: 10.156.0.0/14
 storage5k: true
 production: true
 
+# needed by puppet generators
+servers:
+  ceph[0-3]:
+
 g5ksubnet:
   network: 10.156.0.0/14
   gateway: 10.159.255.254
@@ -62,8 +66,3 @@ kavlans:
   16:
     network: 10.27.192.0/18
     gateway: 10.27.255.254
-
-servers:
-  ceph[0-3]:
-    conman:
-      device: /usr/lib/conman/exec/ipmiconsole.exp
