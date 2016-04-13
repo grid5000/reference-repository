@@ -9,14 +9,14 @@ require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
 global_hash = load_yaml_file_hierarchy("../input/grid5000/")
-output_dir = 'output'
+$output_dir = 'output'
 
 conf_hash = YAML::load_file('./conf/conman-password.yaml')
 conf_hash = conf_hash.expand_square_brackets()
 
 def write_conman_file(site_uid, site, passwd)
   erb = ERB.new(File.read("templates/conman.erb"))
-  output_file = File.join(output_dir, 'conmang5k', 'files', site_uid, 'conman.conf')
+  output_file = File.join($output_dir, 'conmang5k', 'files', site_uid, 'conman.conf')
   
   # Create directory hierarchy
   dirname = File.dirname(output_file)
