@@ -1,3 +1,31 @@
+luxembourg:
+  petitprince:
+    lanpower:
+      suffix: '-bmc -I lanplus'
+nancy:
+  graphite:
+    lanpower:
+      suffix: "-bmc  -I lanplus -C 3"
+  graphique:
+    lanpower:
+      suffix: "-bmc  -I lanplus -C 3"
+      sleep: "4"
+      command_delay: 15
+  graoully:
+    lanpower:
+      suffix: "-bmc -I lanplus -C 3"
+      sleep: "4"
+      command_delay: 15
+  grimoire:
+    lanpower:
+      suffix: "-bmc -I lanplus -C 3"
+      sleep: "4"
+      command_delay: 15
+  grisou:
+    lanpower:
+      suffix: "-bmc -I lanplus -C 3"
+      sleep: "4"
+      command_delay: 15
 grenoble:
   adonis:
     conman:
@@ -13,16 +41,36 @@ grenoble:
       workaround_flag: solpayloadsize
 lille:
   chimint:
+    lanpower:
+      sleep: '3'
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
   chinqchint:
+    lanpower:
+      sleep: '3'
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
   chirloute:
+    lanpower:
+      sleep: '3'
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
 lyon:
+  hercule:
+    lanpower:
+      sleep: '3'
+      suffix: '-bmc -I lanplus'
+  orion:
+    lanpower:
+      sleep: '3'
+      suffix: '-bmc -I lanplus'
+  taurus:
+    lanpower:
+      sleep: '3'
+      suffix: '-bmc -I lanplus'
   sagittaire:
+    lanpower:
+      sleep: '3'
     conman:
       device: /usr/lib/conman/exec/sun-v20z-v40z.exp
 nantes:
@@ -34,7 +82,14 @@ reims:
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
 rennes:
+  parasilo:
+    lanpower:
+      bmc: ipmi2
+      sleep: '4'
+      command_delay: 15
   paranoia:
+    lanpower:
+      sleep: '4'
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
   parapide:
@@ -43,7 +98,12 @@ rennes:
   parapluie:
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
-  ceph[0-3]:
+  paravance:
+    lanpower:
+      bmc: ipmi2
+      sleep: '4'
+      command_delay: 15
+  ceph:
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
 sophia:
