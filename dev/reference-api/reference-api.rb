@@ -8,6 +8,7 @@ require 'json'
 require 'time'
 
 require '../lib/input_loader'
+require '../input-validators/check-monitoring-properties'
 
 # Output directory
 #refapi_path = "/tmp/data"
@@ -252,4 +253,7 @@ global_hash["sites"].each do |site_uid, site|
 
     end
   end
+
 end
+
+annotate(global_hash)

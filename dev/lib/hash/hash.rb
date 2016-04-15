@@ -141,6 +141,7 @@ class ::Hash
 
   # Ex: { a: 1, b: nil, c: { d: nil, e: '' } }.deep_reject! { |k, v| v.blank? }
   # ==> { a: 1 }
+
   # Note: the blk delete condition is also applied to hash
   #       use  { |k, v| !Hash === v } if you do not want this default behavior
   def deep_reject!(&blk)
