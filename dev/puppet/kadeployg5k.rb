@@ -6,12 +6,12 @@
 
 require 'pp'
 require 'erb'
-require 'fileutils'
+require 'pathname'
 require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
 global_hash = load_yaml_file_hierarchy("../input/grid5000/")
-output_dir = 'output'
+$output_dir = ENV['puppet_repo'] || 'output'
 
 # Compute cluster prefix
 # input: cluster_list = ['graoully', 'graphene', 'griffon', ...]
@@ -114,13 +114,9 @@ end
 
     } # site['clusters'].each
 
-    output_file = File.join(output_dir, 'kadeployg5k', 'files', site_uid, "server_conf#{suffix.tr('-', '_')}", 'clusters.conf')
-    dirname = File.dirname(output_file)
-    FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
-    
-    File.open(output_file, 'w') do |f|
-      f.write(clusters_conf.to_yaml)
-    end
+    output_file = Pathname("#{$output_dir}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/clusters.conf")
+    output_file.dirname.mkpath()
+    File.write(output_file, clusters_conf.to_yaml)
     
     #
     # Generate <cluster_uid>-cluster.conf files
@@ -133,16 +129,11 @@ end
     site['clusters'].each { |cluster_uid, cluster|
 
       data = data = conf[site_uid][cluster_uid]
-      cluster_yaml = ERB.new(File.read('templates/kadeployg5k.conf.erb')).result(binding)
+      output = ERB.new(File.read('templates/kadeployg5k.conf.erb')).result(binding)
 
-      output_file = File.join(output_dir, 'kadeployg5k', 'files', site_uid, "server_conf#{suffix.tr('-', '_')}", "#{cluster_uid}-cluster.conf")
-
-      dirname = File.dirname(output_file)
-      FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
-          
-      File.open(output_file, 'w') do |f|
-        f.write(cluster_yaml)
-      end
+      output_file = Pathname("#{$output_dir}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/#{cluster_uid}-cluster.conf")
+      output_file.dirname.mkpath()
+      File.write(output_file, output)
       
     }
     

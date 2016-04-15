@@ -16,7 +16,9 @@ production: true
 
 # needed by puppet generators
 servers:
-  ceph[0-3]:
+  ceph:
+    nodes:
+      ceph[0-3]:
 
 g5ksubnet:
   network: 10.156.0.0/14

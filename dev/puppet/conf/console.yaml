@@ -104,12 +104,22 @@ rennes:
       sleep: '4'
       command_delay: 15
   ceph:
+    lanpower:
+      sleep: '4'
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
 sophia:
   sol:
     conman:
       device: /usr/lib/conman/exec/sun-elom.exp
+    lanpower:
+      command_delay: '60'
   suno:
     conman:
       device: /usr/lib/conman/exec/ipmiconsole.exp
+  uva:
+    lanpower:
+      command_delay: '60'
+  uvb:
+    lanpower:
+      command_delay: '60'

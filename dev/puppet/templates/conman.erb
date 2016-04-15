@@ -23,36 +23,49 @@ server logfile="/var/log/conman.log"
   #
   # * from conf/console-password.yaml: passwd hash
 
-  [site['clusters'], { 'servers' => { 'nodes' => site['servers'] || {} } }].each { |clusters|
-    clusters.sort.each { |cluster_uid, cluster| 
-      cluster['nodes'].each_sort_by_node_uid { |node_uid, node| 
+  # Generate conman config for both cluster and server entries of the refapi
+  site_refapi['servers'] ||= {}
+  cluster_list = site_refapi['clusters'].keys | site_refapi['servers'].keys | site_config.keys | site_credentials.keys
+  
+  cluster_list.sort.each { |cluster_uid| 
+    cluster_refapi      = site_refapi['clusters'][cluster_uid].fetch('nodes') rescue site_refapi['servers'][cluster_uid].fetch('nodes') rescue nil
+    cluster_config      = site_config[cluster_uid]['conman'] rescue nil
+    cluster_credentials = site_credentials.fetch(cluster_uid) rescue nil                                             
+    
+    # error handling:
+    # - refapi is mandatory for this generator (to get the list of nodes)
+    # - credentials are mandatory and the cluster is skipped if info is missing
+    # - config is optional as the cluster might use the default configuration
+    if cluster_refapi.nil?
+      puts "Warning: #{site_uid} - #{cluster_uid} not found in the reference api"
+      next
+    end
+    if cluster_credentials.nil?
+      puts "Warning: #{site_uid} - #{cluster_uid} not found in console-password.yaml... skipped"
+      next
+    end
 
-        cluster_uid = /[A-Za-z]*/.match(node_uid).to_s if cluster_uid == 'servers' # deduce cluster_uid from node_uid for 'servers' entries
-        password = passwd[node_uid] || passwd[cluster_uid] # this allows setting passwords on a cluster or node basis
-        puts "#{node_uid}; password not found" unless password
-
-        bmc = node['network_adapters']['bmc'].fetch('network_address').split('.')[0] rescue node_uid + '-bmc'
-
-        dev = conf[node_uid]['conman'].fetch('device') rescue nil
-        dev = conf[cluster_uid]['conman'].fetch('device') rescue '/usr/lib/conman/exec/ipmitool.exp' if dev == nil
-      
-        if dev != 'ipmi'
-          # External process-based connection (default)
-          # Example : console name="node_uid" dev="/usr/lib/conman/exec/ipmitool.exp node_uid-bmc login password"
-          dev_args = "#{bmc} #{password}"
-        else
-          # IPMI Serial-Over-LAN connection
-          # Example : console name="node_uid" dev="ipmi:node_uid-bmc" ipmiopts="U:login,P:password,W:workaround_flag"
-          dev  = "#{dev}:#{bmc}"
-          login, pass = password.split(' ')
-          opt = conf[node_uid]['conman'].fetch('workaround_flag') rescue nil
-          opt = conf[cluster_uid]['conman'].fetch('workaround_flag') rescue nil if opt == nil
-
-          ipmiopts = "U:#{login},P:#{pass}"
-          ipmiopts += ",W:#{opt}" if opt != nil
-        end
+    cluster_refapi.each_sort_by_node_uid { |node_uid, node| 
+  
+      dev = cluster_config.fetch('device') rescue '/usr/lib/conman/exec/ipmitool.exp'
+      bmc = node['network_adapters']['bmc'].fetch('network_address').split('.')[0] rescue node_uid + '-bmc'
+    
+      if dev != 'ipmi'
+        # External process-based connection (default)
+        # Example : console name="node_uid" dev="/usr/lib/conman/exec/ipmitool.exp node_uid-bmc login password"
+        dev_args = "#{bmc} #{cluster_credentials}"
+      else
+        # IPMI Serial-Over-LAN connection
+        # Example : console name="node_uid" dev="ipmi:node_uid-bmc" ipmiopts="U:login,P:password,W:workaround_flag"
+        dev  = "#{dev}:#{bmc}"
+        login, pass = cluster_credentials.split(' ')
+        opt = cluster_config.fetch('workaround_flag') rescue nil
+        
+        ipmiopts = "U:#{login},P:#{pass}"
+        ipmiopts += ",W:#{opt}" if opt != nil
+      end
 
 %>console name="<%= node_uid %>" dev="<%= dev %><%= " #{dev_args}" if dev_args %>"<%= " ipmiopts=\"#{ipmiopts}\"" if ipmiopts %>
-<%     } %>
 <%   } %>
 <% } %>
+

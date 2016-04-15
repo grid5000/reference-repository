@@ -1,0 +1,16 @@
+task :default => [:kadeployg5k, :conmang5k, :lanpowerg5k]
+
+desc "Generate kadeployg5k configuration"
+task :kadeployg5k do
+  ruby 'kadeployg5k.rb'
+end
+
+desc "Generate conmang5k configuration"
+task :conmang5k do
+  ruby 'conmang5k.rb'
+end
+
+desc "Generate lanpowerg5k configuration"
+task :lanpowerg5k do
+  ruby 'lanpowerg5k.rb'
+end

@@ -1,35 +1,30 @@
 #!/usr/bin/ruby
 
-# This script generates conmang5k/files/<site_uid>/conman.conf from input/ and conf/conman.yaml
+# This script generates conmang5k/files/<site_uid>/conman.conf from input/, conf/console.yaml and conf/console-password.yaml
 
 require 'pp'
 require 'erb'
-require 'fileutils'
+require 'pathname'
 require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
-global_hash = load_yaml_file_hierarchy("../input/grid5000/")
-$output_dir = 'output'
+$output_dir = ENV['puppet_repo'] || 'output'
 
-pwd_hash = YAML::load_file('./conf/console-password.yaml')
-conf_hash = YAML::load_file('./conf/console.yaml')
-conf_hash = conf_hash.expand_square_brackets()
+# Input
+refapi      = load_yaml_file_hierarchy("../input/grid5000/")
+config      = YAML::load_file('./conf/console.yaml')
+credentials = YAML::load_file('./conf/console-password.yaml')
 
-def write_conman_file(site_uid, site, conf, passwd)
-  erb = ERB.new(File.read("templates/conman.erb"))
-  output_file = File.join($output_dir, 'conmang5k', 'files', site_uid, 'conman.conf')
-  
-  # Create directory hierarchy
-  dirname = File.dirname(output_file)
-  FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
-  
-  # Apply ERB template and save
-  File.open(output_file, "w+") { |f|
-    f.write(erb.result(binding))
-  }
+# Apply ERB template and save result to file
+def write_conman_file(site_uid, site_refapi, site_config, site_credentials)
+  output = ERB.new(File.read("templates/conman.erb")).result(binding)
+
+  output_file = Pathname("#{$output_dir}/modules/conmang5k/files/#{site_uid}/conman.conf")
+  output_file.dirname.mkpath()
+  File.write(output_file, output)
 end
 
-# Loop over Grid'5000 sites
-global_hash["sites"].each { |site_uid, site|
-  write_conman_file(site_uid, site, conf_hash[site_uid], pwd_hash[site_uid])
+# Loop over each site
+refapi["sites"].each { |site_uid, site_refapi|
+  write_conman_file(site_uid, site_refapi, config[site_uid], credentials[site_uid])
 }
