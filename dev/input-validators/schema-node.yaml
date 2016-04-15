@@ -1,0 +1,95 @@
+---
+architecture:
+  platform_type: string
+  smp_size: integer
+  smt_size: integer
+bios:
+  release_date: string
+  vendor: optional ## optional_string or null
+  version: required # string ?
+chassis:
+  manufacturer: string
+  name: string
+  serial: optional # required # string ?
+gpu:
+  <optional_hash>:
+    gpu: optional_boolean # required ?
+    gpu_count: optional_integer
+    gpu_vendor: optional_string
+    gpu_model: optional_string
+kavlan: optional_hash
+main_memory:
+  ram_size: integer
+mic: optional_hash
+monitoring:
+  <optional_hash>:
+    metric: optional_string
+    wattmeter: optional
+    temperature: optional_boolean
+network_adapters:
+  <multi>:
+    network_address: optional
+    interface: string
+    enabled: boolean
+    mountable: boolean
+    mounted: boolean
+    bridged: optional_boolean # boolean ?
+    management: boolean
+    rate: optional ## numeric # integer ?
+    vendor: optional ## optional_string
+    model: optional_string
+    driver: optional_string
+    ip: optional_string
+    mac: optional_string
+    ib_switch_card: optional_string
+    ib_switch_card_pos: optional_string
+    switch: optional_string
+    switch_port: optional_string
+    hwid: optional_string
+    ip6: optional_string
+    guid: optional_string
+    version: optional # optional_string
+    line_card: optional_string
+    position: optional_integer
+operating_system:
+  kernel: string
+  name: string
+  release: string
+  version: string
+pdu: optional_hash
+performance:
+  core_flops: numeric # integer ?
+  node_flops: numeric # integer ?
+processor:
+  cache_l1: optional_integer
+  cache_l1d: integer
+  cache_l1i: integer
+  cache_l2: integer
+  cache_l3: integer
+  clock_speed: integer
+  instruction_set: string
+  model: string
+  other_description: string
+  vendor: string
+  version: required # string or numeric ?
+sensors: optional_hash
+status: optional_string
+storage_devices:
+  <multi>:
+    interface: string
+    driver: string
+    vendor: optional # string
+    storage: string
+    model: string
+    rev: required # string or numeric ?
+    size: integer
+    raid: optional
+    timeread: optional_numeric
+    timewrite: optional_numeric
+supported_job_types:
+  besteffort: boolean
+  deploy: boolean
+  max_walltime: integer
+  queues: array
+  virtual: optional # optional_boolean # string
+addressing_plan: optional

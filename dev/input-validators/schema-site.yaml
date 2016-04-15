@@ -1,0 +1,28 @@
+---
+clusters: required_hash
+networks: required_hash
+dom0: optional_hash
+name: string
+location: string
+web: string
+description: string
+latitude: float
+longitude: float
+email_contact: email
+sys_admin_contact: email
+security_contact: email
+user_support_contact: email
+compilation_server: boolean
+kavlan_ip_range: string
+virt_ip_range: string
+storage5k: boolean
+production: boolean
+laptops: optional_hash
+g5ksubnet:
+  network: string
+  gateway: string
+kavlans:
+  <multi>:
+    network: string
+    gateway: string
+pdu: optional_hash
