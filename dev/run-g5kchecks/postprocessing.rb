@@ -22,7 +22,8 @@ list_of_yaml_files.each { |filename|
 
   hash["storage_devices"] = hash.delete("block_devices")
   hash["storage_devices"]  = hash["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde"])
-  
+  hash["storage_devices"].each {|k, v| v.delete("device") }
+
   hash["network_adapters"] = hash.delete("network_interfaces")
   hash["network_adapters"] = hash["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc"])
  
@@ -31,7 +32,7 @@ list_of_yaml_files.each { |filename|
 
   hash = {node_uid => hash}
  
-  new_filename = "../../input/grid5000/sites/#{site_uid}/clusters/#{cluster_uid}/nodes/" + node_uid + ".yaml"
+  new_filename = "../input/grid5000/sites/#{site_uid}/clusters/#{cluster_uid}/nodes/" + node_uid + ".yaml"
   write_yaml(new_filename, hash)
 
   contents = File.read(new_filename)
