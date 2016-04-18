@@ -26,6 +26,22 @@ jobs = []
 
 FileUtils::mkdir_p("output/")
 
+def run_g5kcheck(site_uid, node_uid, options)
+  puts "#{site_uid}: Processing #{node_uid}"
+  begin
+    Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params]) { |ssh|
+      output1 = ssh.exec!("sudo ssh -o StrictHostKeychecking=no root@#{node_uid} '/usr/bin/g5k-checks -m api'")
+      output2 = ssh.exec!("sudo ssh -q -o StrictHostKeychecking=no root@#{node_uid} 'cat /tmp/#{node_uid}.yaml'")
+      
+      File.open("output/#{node_uid}.yaml", 'w') do |f|
+                f.write(output2)
+      end
+    }
+  rescue Exception => e
+    puts "#{site_uid}: Error while processing #{node_uid} - #{e.class}: #{e.message}"
+  end
+end
+
 begin
 
   g5k = Cute::G5K::API.new()
@@ -81,20 +97,8 @@ begin
 
           next if File.exist?("output/#{node_uid}.yaml")
 
-          puts "#{site_uid}: Processing #{job_uid} - #{node_uid}"
-          begin
-            Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params]) { |ssh|
-              output1 = ssh.exec!("sudo ssh -o StrictHostKeychecking=no root@#{node_uid} '/usr/bin/g5k-checks -m api'")
-              output2 = ssh.exec!("sudo ssh -q -o StrictHostKeychecking=no root@#{node_uid} 'cat /tmp/#{node_uid}.yaml'")
-              
-              File.open("output/#{node_uid}.yaml", 'w') do |f|
-                f.write(output2)
-              end
-            }
-          rescue Exception => e
-            puts "#{site_uid}: Error while processing #{job_uid} - #{node_uid} - #{e.class}: #{e.message}"
-          end
-          
+          run_g5kcheck(site_uid, node_uid, options)
+         
         }
         
         puts "#{site_uid}: Release #{job_uid}"
