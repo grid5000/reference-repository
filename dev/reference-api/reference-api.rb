@@ -149,6 +149,7 @@ global_hash["sites"].each do |site_uid, site|
     cluster_path.join("nodes").mkpath()
 
     cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
+      begin
       #puts node_uid
 
       #pp node if node_uid == "graoully-1"
@@ -168,6 +169,7 @@ global_hash["sites"].each do |site_uid, site|
       node["main_memory"]["virtual_size"] ||= nil
 
       # Delete keys
+      raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
       node["storage_devices"].keys.each { |key| 
         node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")
         node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
@@ -251,9 +253,13 @@ global_hash["sites"].each do |site_uid, site|
       write_json(cluster_path.join("nodes","#{node_uid}.json"), 
                  node.reject {|k, v| k == "conman"})
 
+      rescue => e
+        puts "Error while processing #{node_uid}: #{e}"
+        raise
+      end
     end
   end
 
 end
 
-annotate(global_hash)
+#annotate(global_hash)
