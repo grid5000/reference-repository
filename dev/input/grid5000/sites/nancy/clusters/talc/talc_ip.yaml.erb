@@ -3,6 +3,7 @@ nodes:
   talc-<%= i %>:
     network_adapters:
       bmc:
+        ip: 172.17.66.<%= i %>
         mac: <%= %w(
                     00:E0:81:4F:E3:06
                     00:E0:81:4F:CB:01
