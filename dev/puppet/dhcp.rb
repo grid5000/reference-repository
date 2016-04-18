@@ -60,6 +60,24 @@ global_hash["sites"].each { |site_uid, site_hash|
                     })
   }
 
+  # Relocate ip/mac info of pdus
+  site_hash['pdus'].each { |pdu_uid, pdu_hash|
+    if pdu_hash['ip'] && pdu_hash['mac']
+      pdu_hash['network_adapters'] ||= {}
+      pdu_hash['network_adapters']['pdu'] ||= {}
+      pdu_hash['network_adapters']['pdu']['ip']  = pdu_hash.delete('ip')
+      pdu_hash['network_adapters']['pdu']['mac'] = pdu_hash.delete('mac')
+    end
+  }
+
+  key = 'pdus'
+  write_dhcp_file({
+                    "filename"            => key + ".conf",
+                    "site_uid"            => site_uid,
+                    "nodes"               => site_hash['pdus'],
+                    "network_adapters"  => ['pdu'],
+                  })
+
   next
 
   # Other dhcp files
