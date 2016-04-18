@@ -17,7 +17,7 @@ group {
         node_ip, node_mac = get_network_info(node_hash, network_interface)
       rescue => e
         # Hash.fetch(key) raise KeyError if the hash[key] does not exist.
-        puts "Error in #{__method__}: #{e}. Skip the DHCP entry for #{node_uid} at #{site_uid} (#{network_interface})."
+        puts "Warning: #{site_uid} - #{node_uid}: #{e}. Skip the DHCP entry of the #{network_interface} interface." # (error in #{__method__})
         next
       end
 

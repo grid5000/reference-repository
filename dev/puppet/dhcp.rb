@@ -2,11 +2,11 @@
 
 require 'pp'
 require 'erb'
-require 'fileutils'
+require 'pathname'
 require '../lib/input_loader'
 
-global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
-#puts JSON.generate(data)
+global_hash = load_yaml_file_hierarchy("../input/grid5000/")
+$output_dir = ENV['puppet_repo'] || 'output'
 
 # Get the mac and ip of a node. Throw exception if error.
 def get_network_info(node_hash, network_interface)
@@ -16,13 +16,13 @@ def get_network_info(node_hash, network_interface)
   # For the production network, find the mounted interface (either eth0 or eth1)
   neti = network_interface
   if neti == "eth" then
-    if node_network_adapters.fetch("eth0").fetch("mounted")
-      neti = "eth0"
-    elsif node_network_adapters.fetch("eth1").fetch("mounted")
-      neti = "eth1"
-    else
-      raise 'neither eth0 nor eth1 have the property "mounted" set to "true"'
+    (0..4).each {|i|
+      if node_network_adapters.fetch("eth#{i}").fetch("mounted")
+        neti = "eth#{i}"
+        break
       end
+    }
+    raise 'none of the eth[0-4] interfaces have the property "mounted" set to "true"' if neti == 'eth'
   end
   
   node_network_interface = node_network_adapters.fetch(neti)
@@ -39,22 +39,17 @@ def write_dhcp_file(data)
     return "" 
   end
 
-  erb = ERB.new(File.read("templates/dhcp.erb"))
-  output_file = "output/puppet-repo/modules/dhcpg5k/files/" + data.fetch("site_uid") + "/dhcpd.conf.d/" + data.fetch('filename')
-
-  # Create directory hierarchy
-  dirname = File.dirname(output_file)
-  FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
-  
-  # Apply ERB template and save
-  File.open(output_file, "w+") { |f|
-    f.write(erb.result(binding))
-  }
+  output = ERB.new(File.read('templates/dhcp.erb')).result(binding)
+  output_file = Pathname("#{$output_dir}/modules/dhcpg5k/files/#{data.fetch("site_uid")}/dhcpd.conf.d/#{data.fetch('filename')}")
+  output_file.dirname.mkpath()
+  File.write(output_file, output)
 end
  
 # Loop over Grid'5000 sites
 global_hash["sites"].each { |site_uid, site_hash|
-  
+  puts site_uid
+  next if site_uid != 'nancy'
+
   # On file for each clusters
   site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
     write_dhcp_file({
@@ -64,7 +59,9 @@ global_hash["sites"].each { |site_uid, site_hash|
                       "network_adapters"  => ["eth", "bmc"],
                     })
   }
-  
+
+  next
+
   # Other dhcp files
   ["networks", "laptops", "dom0"].each { |key|
     write_dhcp_file({
