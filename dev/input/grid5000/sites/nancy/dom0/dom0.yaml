@@ -1,51 +1,57 @@
 ---
-fgriffon1:
-  network_adapters:
-    eth0:
-      mac: 00:E0:81:B2:C1:A8
-      ip: 172.16.79.1
 fgriffon2:
   network_adapters:
     eth0:
+      mounted: true
       mac: 00:E0:81:B2:C0:16
       ip: 172.16.79.2
+    adm: 
+      mounted: true
+      ip: 172.17.79.2
+      mac: 00:E0:81:B2:C0:1D
+    bmc: 
+      mounted: true
+      ip: 172.17.79.5
+      mac: 00:E0:81:4F:E3:63
 grog:
   network_adapters:
     eth0:
+      mounted: true
       mac: 84:2B:2B:60:15:6D
       ip: 172.16.79.3
-fgrelon1:
-  network_adapters:
-    eth0:
-      mac: 00:18:FE:7C:5F:B2
-      ip: 172.16.79.9
-fgrelon2:
-  network_adapters:
-    eth0:
-      mac: 00:1B:78:9D:24:FE
-      ip: 172.16.79.10
+    adm:
+      mounted: true
+      ip: 172.17.79.3
+      mac: 84:2B:2B:60:15:6E
+    bmc:
+      mounted: true
+      ip: 172.17.79.6
+      mac: 84:2B:2B:60:15:6F
 srv:
   network_adapters:
     eth0:
-      mac: A0:36:9F:28:10:AC
+      mounted: true
       ip: 172.16.79.15
+      mac: A0:36:9F:28:10:AC
+    bmc:
+      mounted: true
+      ip: 172.17.79.15
+      mac: F0:1F:AF:E0:FA:DC
+
 srv-data:
   network_adapters:
     eth0:
+      mounted: true
       mac: A0:36:9F:2C:5D:B8
       ip: 172.16.79.16
+    bmc:
+      mounted: true
+      ip: 172.17.79.16
+      mac: F0:1F:AF:E1:99:E4
+
 gras:
   network_adapters:
     eth0:
+      mounted: true
       mac: 00:0D:60:55:16:68
       ip: 172.16.79.14
-fmbi1:
-  network_adapters:
-    eth0:
-      mac: 00:E0:81:B0:5E:90
-      ip: 172.16.79.19
-fmbi2:
-  network_adapters:
-    eth0:
-      mac: 00:E0:81:B2:C1:BC
-      ip: 172.16.79.20

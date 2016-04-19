@@ -10,17 +10,25 @@
 group {
 <%
     data.fetch('nodes').each_sort_by_node_uid { |node_uid, node_hash| 
-      network_interface != 'bmc' ? node_uid_net = node_uid : node_uid_net = node_uid + '-bmc'
+      next if node_hash['status'] && node_hash['status']['retired']
+
+      case network_interface
+        when 'bmc', 'adm', 'mic0'
+          node_uid_net = node_uid + '-' + network_interface
+        else
+          node_uid_net = node_uid
+        end
 
       # Get ip and mac addresses
       begin
         node_ip, node_mac = get_network_info(node_hash, network_interface)
       rescue => e
+        next if data.fetch('optional_network_adapters').include?(network_interface)
+
         # Hash.fetch(key) raise KeyError if the hash[key] does not exist.
         puts "Warning: #{site_uid} - #{node_uid}: #{e}. Skip the DHCP entry of the #{network_interface} interface." # (error in #{__method__})
         next
       end
-
 %>
   host <%= node_uid_net %>.<%= site_uid %>.grid5000.fr {
     hardware ethernet       <%= node_mac.upcase %>;

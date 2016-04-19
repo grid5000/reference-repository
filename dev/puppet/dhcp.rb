@@ -70,14 +70,30 @@ global_hash["sites"].each { |site_uid, site_hash|
 
   # One file for each clusters
   site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
-    networks = ["eth", "bmc"]
-    networks << 'mic0' if cluster_hash['nodes'].values.any? {|x| x['network_adapters']['mic0'] }
+    # networks = ["eth", "bmc"]
+    # networks << 'mic0' if cluster_hash['nodes'].values.any? {|x| x['network_adapters']['mic0'] }
 
     write_dhcp_file({
                       "filename"            => "cluster-" + cluster_uid + ".conf",
                       "site_uid"            => site_uid,
                       "nodes"               => cluster_hash.fetch('nodes'),
-                      "network_adapters"    => networks,
+                      "network_adapters"    => ["eth", "bmc", "mic0"],
+                      "optional_network_adapters"  => ["mic0"]
+                    })
+  }
+
+  #
+  #
+  #
+
+  # Other dhcp files
+  ["networks", "laptops", "dom0"].each { |key|
+    write_dhcp_file({
+                      "filename"            => key + ".conf",
+                      "site_uid"            => site_uid,
+                      "nodes"               => site_hash[key],
+                      "network_adapters"    => ["eth", "bmc", "adm"],
+                      "optional_network_adapters"  => ["bmc", "adm"]
                     })
   }
 
@@ -102,30 +118,5 @@ global_hash["sites"].each { |site_uid, site_hash|
                     "nodes"               => site_hash['pdus'],
                     "network_adapters"  => ['pdu'],
                   })
-
-  #
-  #
-  #
-
-# && node_hash['mic']
-#     if pdu_hash['ip'] && pdu_hash['mac']
-#       pdu_hash['network_adapters'] ||= {}
-#       pdu_hash['network_adapters']['pdu'] ||= {}
-#       pdu_hash['network_adapters']['pdu']['ip']  = pdu_hash.delete('ip')
-#       pdu_hash['network_adapters']['pdu']['mac'] = pdu_hash.delete('mac')
-#     end
-#  }
-
-  next
-
-  # Other dhcp files
-  ["networks", "laptops", "dom0"].each { |key|
-    write_dhcp_file({
-                      "filename"            => key + ".conf",
-                      "site_uid"            => site_uid,
-                      "nodes"               => site_hash['nodes'],
-                      "network_adapters"  => ["eth"],
-                    })
-  }
 
 }
