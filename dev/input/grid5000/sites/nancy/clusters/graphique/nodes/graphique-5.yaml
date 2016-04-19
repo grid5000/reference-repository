@@ -19,9 +19,11 @@ graphique-5:
     eth0:
       driver: bnx2x
       interface: Ethernet
+      ip: 172.16.67.5
       mac: 44:a8:42:0a:4b:9b
       management: false
-      mounted: false
+      mounted: true
+      rate: 10000000000
     eth1:
       driver: bnx2x
       interface: Ethernet
@@ -31,17 +33,23 @@ graphique-5:
     eth2:
       driver: bnx2x
       interface: Ethernet
-      ip: 172.16.67.5
       mac: 44:a8:42:0a:4b:9f
       management: false
-      mounted: true
-      rate: 1000000000
+      mounted: false
     eth3:
       driver: bnx2x
       interface: Ethernet
       mac: 44:a8:42:0a:4b:a1
       management: false
       mounted: false
+    ib0:
+      driver: mlx4_core
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f2:b1
+      interface: InfiniBand
+      management: false
+      mounted: false
+      rate: 56000000000
+      version: MT4099
   storage_devices:
     sda:
       model: PERC H330

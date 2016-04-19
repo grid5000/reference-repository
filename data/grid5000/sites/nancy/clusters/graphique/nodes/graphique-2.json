@@ -21,7 +21,7 @@
     "gpu_vendor": "Nvidia"
   },
   "main_memory": {
-    "ram_size": 68719476736,
+    "ram_size": 67645734912,
     "virtual_size": null
   },
   "monitoring": {
@@ -34,11 +34,12 @@
       "driver": "bnx2x",
       "enabled": false,
       "interface": "Ethernet",
+      "ip": "172.16.67.2",
       "mac": "44:a8:42:07:6a:c8",
       "management": false,
       "model": "Broadcom 57800 10 GB DA/SFP+",
       "mountable": false,
-      "mounted": false,
+      "mounted": true,
       "rate": 10000000000,
       "switch": null,
       "switch_port": null,
@@ -64,13 +65,12 @@
       "driver": "bnx2x",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.16.67.2",
       "mac": "44:a8:42:07:6a:cc",
       "management": false,
       "model": "Broadcom 57800 1 GB Base-T",
       "mountable": true,
-      "mounted": true,
-      "network_address": "graphique-2.nancy.grid5000.fr",
+      "mounted": false,
+      "network_address": "graphique-2-eth2.nancy.grid5000.fr",
       "switch": "stalc1",
       "switch_port": "GigabitEthernet1/0/22",
       "vendor": "Broadcom"
@@ -88,6 +88,17 @@
       "mounted": false,
       "rate": 1000000000,
       "vendor": "Broadcom"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f0:61",
+      "interface": "InfiniBand",
+      "ip": "172.18.67.2",
+      "management": false,
+      "mounted": false,
+      "rate": 56000000000,
+      "version": "MT4099"
     },
     {
       "device": "bmc",

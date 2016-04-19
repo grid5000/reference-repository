@@ -19,9 +19,11 @@ graphique-1:
     eth0:
       driver: bnx2x
       interface: Ethernet
+      ip: 172.16.67.1
       mac: b0:83:fe:e5:c0:54
       management: false
-      mounted: false
+      mounted: true
+      rate: 10000000000
     eth1:
       driver: bnx2x
       interface: Ethernet
@@ -31,11 +33,9 @@ graphique-1:
     eth2:
       driver: bnx2x
       interface: Ethernet
-      ip: 172.16.67.1
       mac: b0:83:fe:e5:c0:58
       management: false
-      mounted: true
-      rate: 1000000000
+      mounted: false
     eth3:
       driver: bnx2x
       interface: Ethernet
