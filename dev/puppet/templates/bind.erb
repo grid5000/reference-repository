@@ -4,16 +4,18 @@
 #
 <% data.fetch('entries').each { |cluster_uid, data| %>
 ; Cluster <%= cluster_uid %>
-<%   data.each { |net_uid, entries| %>
-<%     entries.each { |entry| %>
-    <% if entry["start"] == entry["end"] %>
-<%= cluster_uid %>-<%= entry["start"] %>-<%= net_uid %> IN A <%= entry["ip"] %>.<%= entry["start"]+entry["shift"] %>
-    <% else %>
-      <% if entry["mounted"] %>
-$GENERATE <%= entry["start"] %>-<%= entry["end"] %> <%= cluster_uid %>-$ IN A <%= entry["ip"] %>.$<%= '{+' + entry["shift"].to_s  + '}' if entry["shift"] > 0 %>
-$GENERATE <%= entry["start"] %>-<%= entry["end"] %> <%= cluster_uid %>-$-<%= net_uid %> IN CNAME <%= cluster_uid %>-$<%= '{+' + entry["shift"].to_s  + '}' if entry["shift"] > 0 %>
+<%   data.each { |net_uid, entries| 
+       entries.each { |entry| 
+         if entry["start"] == entry["end"] %>
+<%= "#{cluster_uid}-#{entry['start']}-#{net_uid} IN A #{entry['ip']}.#{entry['start']+entry['shift']}" %>
+    <% else 
+           shift = (entry["shift"] > 0 ? '{+' + entry["shift"].to_s  + '}' : '')
+
+           if false # entry["mounted"] 
+%>
+<%= "$GENERATE #{entry["start"]}-#{entry["end"]} #{cluster_uid}-$ IN A #{entry["ip"]}.$#{shift}" %>
       <% else %>
-$GENERATE <%= entry["start"] %>-<%= entry["end"] %> <%= cluster_uid %>-$-<%= net_uid %> IN A <%= entry["ip"] %>.$<%= '{+' + entry["shift"].to_s  + '}' if entry["shift"] > 0 %>
+<%= "$GENERATE #{entry["start"]}-#{entry["end"]} #{cluster_uid}-$-#{net_uid} IN A #{entry["ip"]}.$#{shift}" %>
       <% end %>
      <% end %>
 <%     } %>

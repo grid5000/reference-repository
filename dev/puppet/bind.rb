@@ -2,24 +2,19 @@
 
 require 'pp'
 require 'erb'
-require 'fileutils'
+require 'pathname'
 require '../lib/input_loader'
 
-global_hash = load_yaml_file_hierarchy("../input/grid5000/")
+refapi = load_yaml_file_hierarchy("../input/grid5000/")
+$output_dir = ENV['puppet_repo'] || 'output'
 
 def write_bind_file(data)
-  erb = ERB.new(File.read("templates/bind.erb"))
-  filename = data.fetch("site_uid") + ".db"
-  output_file = "output/puppet-repo/modules/bindg5k/files/zones/" + data.fetch("site_uid") + "/" + filename
+  output = ERB.new(File.read("templates/bind.erb")).result(binding)
 
-  # Create directory hierarchy
-  dirname = File.dirname(output_file)
-  FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
+  output_file = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{data.fetch('site_uid')}/#{data.fetch('site_uid')}.db")
+  output_file.dirname.mkpath()
 
-  # Apply ERB template and save
-  File.open(output_file, "w+") { |f|
-    f.write(erb.result(binding))
-  }
+  File.write(output_file, output)
 end
 
 # Loop over Grid'5000 sites
@@ -30,26 +25,29 @@ end
 #    "ib0"=>[{"start"=>1, "end"=>25, "ip"=>"172.18.98", "shift"=>0}],
 #    "bmc"=>[{"start"=>1, "end"=>25, "ip"=>"172.17.98", "shift"=>0}]}}
 
-global_hash["sites"].each { |site_uid, site_hash|
+refapi["sites"].each { |site_uid, site|
 
   entries = {}
 
-  site_hash.fetch("clusters").sort.each { |cluster_uid, cluster_hash|
+  site.fetch("clusters").sort.each { |cluster_uid, cluster|
+    next if site_uid != 'nancy'
 
-    cluster_hash.fetch('nodes').each_sort_by_node_uid { |node_uid, node_hash|
+    cluster.fetch('nodes').each_sort_by_node_uid { |node_uid, node|
 
       network_adapters = {}
-      node_hash.fetch('network_adapters').each { |net_uid, net_hash|
+
+      node.fetch('network_adapters').each { |net_uid, net_hash|
         network_adapters[net_uid] = {"ip"=>net_hash["ip"], "mounted"=>net_hash["mounted"]}
       }
-      node_hash.fetch('kavlan').each { |net_uid, ip|
+
+      node.fetch('kavlan').each { |net_uid, ip|
         network_adapters[net_uid] = {"ip"=>ip, "mounted"=>nil}
-      } if node_hash['kavlan']
+      } if node['kavlan']
 
       network_adapters.each { |net_uid, net_hash|
 
-        entries[cluster_uid] = {}          unless entries[cluster_uid]
-        entries[cluster_uid][net_uid] = [] unless entries[cluster_uid][net_uid]
+        entries[cluster_uid] ||= {}
+        entries[cluster_uid][net_uid] ||= []
         last_entry = entries[cluster_uid][net_uid].last
 
         next unless net_hash["ip"]
@@ -81,6 +79,5 @@ global_hash["sites"].each { |site_uid, site_hash|
                     "site_uid"            => site_uid,
                     "entries"             => entries,
                   })
-  
-  
+
 }
