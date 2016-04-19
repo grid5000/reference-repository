@@ -30,7 +30,7 @@ group {
         next
       end
 %>
-  host <%= node_uid_net %>.<%= site_uid %>.grid5000.fr {
+  host <%= node_uid_net %> {
     hardware ethernet       <%= node_mac.upcase %>;
     fixed-address           <%= node_ip         %>;
   }
