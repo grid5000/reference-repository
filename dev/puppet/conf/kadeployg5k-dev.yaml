@@ -223,7 +223,7 @@ nancy:
     reboot.timeout: 350
     reboot.kexec: 120
     user.params: console=tty0 console=ttyS1,115200
-    deploy.params: ETH_DEV=eth2 console=tty0 console=ttyS1,115200 igb.blacklist=yes
+    deploy.params: ETH_DEV=eth0 console=tty0 console=ttyS1,115200 igb.blacklist=yes
       ramdisk_size=260000 rw noapic init=/linuxrc
     dhcp.serial: 1 115200
     deployment.timeout: 650
