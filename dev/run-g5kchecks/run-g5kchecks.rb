@@ -1,6 +1,6 @@
 # This script reserves nodes and then runs g5k-check as root using the g5kadmin credentials.
 #
-# Usage: cd run-g5kcheck; ruby run-g5kchecks.rb; ruby postprocessing.rb
+# Usage: cd run-g5kcheck; ruby run-g5kchecks.rb
 #
 # - You can edit the node reservation at the beginning of the script (or create reservation manually).
 # - The script will run g5k-checks on every nodes that have been reserved.
