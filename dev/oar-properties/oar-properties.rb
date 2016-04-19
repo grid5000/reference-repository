@@ -30,10 +30,10 @@ OptionParser.new do |opts|
   opts.separator ""
   opts.separator "Example: ruby oar-properties.rb -v -s nancy -d oarnodes-%s.yaml -o cmd-%s.sh"
 
+  ###
+
   opts.separator ""
   opts.separator "Filters:"
-
-  ###
 
   opts.on('-s', '--sites a,b,c', Array, 'Select site(s)',
           "Default: "+options[:sites].join(", ")) do |s|
