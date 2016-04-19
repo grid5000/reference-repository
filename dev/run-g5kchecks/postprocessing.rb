@@ -11,6 +11,8 @@ require 'pathname'
 require 'yaml'
 require '../lib/hash/hash'
 
+puts 'Postprocessing of output/. Copying files into ../input/'
+
 list_of_yaml_files = Dir['output/*.y*ml'].sort_by { |x| -x.count('/') }
 list_of_yaml_files.each { |filename|
   file     = filename.split("/")[1]
@@ -19,8 +21,12 @@ list_of_yaml_files.each { |filename|
   cluster_uid = node_uid.split("-")[0]
 
   hash = YAML::load_file(filename)
+  if hash == false
+    puts "Error found in #{filename}"
+    next
+  end
 
-  hash["storage_devices"] = hash.delete("block_devices")
+  hash["storage_devices"]  = hash.delete("block_devices")
   hash["storage_devices"]  = hash["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde"])
   hash["storage_devices"].each {|k, v| v.delete("device") }
 
