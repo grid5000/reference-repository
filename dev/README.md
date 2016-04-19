@@ -29,19 +29,13 @@ Requirements
 ------------
 Ruby 2.1 (+ HashDiff and Net/SSH for the oar-generator; + peach and ruby-cute for run-g5kchecks)
 
-There is a Gemfile in the root directory for bundler:
-$ gem install bundler (http://bundler.io/)
-$ bundle install # install all of the required gems
-
-Alternativly, here is an example using RVM (https://rvm.io/):
+Here is an example for creating a ruby setup with RVM (https://rvm.io/), gemset and bundle:
 $ \curl -sSL https://get.rvm.io | bash -s stable --ruby
 $ source ~/.rvm/scripts/rvm
-$ rvm install 2.2
-$ gem install hashdiff
-$ gem install net-ssh
-$ gem install peach
-$ gem install ruby-cute
-
+$ rvm install 2.1
+$ rvm gemset create ref-repo-dev
+$ rvm gemset use ref-repo-dev
+$ bundle install
 
 Input files
 -----------
@@ -152,3 +146,7 @@ Steps:
 - Boot and check nodes with g5k-checks
 
 See sites/nancy/clusters/graoully/graoully_ip.yaml.erb as an example for bootstrapping a cluster configuration.
+
+
+--
+ruby run-g5kchecks.rb -s lyon -n $(ssh lyon.g5kadmin charon -o | tr '\n' ',')
