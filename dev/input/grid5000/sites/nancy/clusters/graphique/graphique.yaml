@@ -44,10 +44,9 @@ nodes:
         vendor: null
     network_adapters:
       eth0:
-        enabled: false
-        mountable: false
-        rate: 10000000000
-        bridged: false
+        enabled: true
+        mountable: true
+        bridged: true
         vendor: Broadcom
         model: Broadcom 57800 10 GB DA/SFP+
         switch: null
@@ -61,9 +60,9 @@ nodes:
         vendor: Broadcom
         model: Broadcom 57800 10 GB DA/SFP+
       eth2:
-        mountable: true
-        enabled: true
-        bridged: true
+        mountable: false
+        enabled: false
+        bridged: false
         vendor: Broadcom
         model: Broadcom 57800 1 GB Base-T
       eth3:
