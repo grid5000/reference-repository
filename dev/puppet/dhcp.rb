@@ -50,17 +50,42 @@ global_hash["sites"].each { |site_uid, site_hash|
   puts site_uid
   next if site_uid != 'nancy'
 
-  # On file for each clusters
+  #
+  # eth, bmc and mic0
+  #
+
+  # Relocate ip/mac info of MIC
   site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
+    cluster_hash.fetch('nodes').each { |node_uid, node_hash| 
+      site_hash.fetch("clusters").each {
+        if node_hash['mic'] && node_hash['mic']['ip'] && node_hash['mic']['mac']
+          node_hash['network_adapters'] ||= {}
+          node_hash['network_adapters']['mic0'] ||= {}
+          node_hash['network_adapters']['mic0']['ip']  = node_hash['mic'].delete('ip')
+          node_hash['network_adapters']['mic0']['mac'] = node_hash['mic'].delete('mac')
+        end
+      }
+    }
+  }
+
+  # One file for each clusters
+  site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
+    networks = ["eth", "bmc"]
+    networks << 'mic0' if cluster_hash['nodes'].values.any? {|x| x['network_adapters']['mic0'] }
+
     write_dhcp_file({
                       "filename"            => "cluster-" + cluster_uid + ".conf",
                       "site_uid"            => site_uid,
                       "nodes"               => cluster_hash.fetch('nodes'),
-                      "network_adapters"  => ["eth", "bmc"],
+                      "network_adapters"    => networks,
                     })
   }
 
-  # Relocate ip/mac info of pdus
+  #
+  # PDUs
+  #
+
+  # Relocate ip/mac info of PDUS
   site_hash['pdus'].each { |pdu_uid, pdu_hash|
     if pdu_hash['ip'] && pdu_hash['mac']
       pdu_hash['network_adapters'] ||= {}
@@ -77,6 +102,19 @@ global_hash["sites"].each { |site_uid, site_hash|
                     "nodes"               => site_hash['pdus'],
                     "network_adapters"  => ['pdu'],
                   })
+
+  #
+  #
+  #
+
+# && node_hash['mic']
+#     if pdu_hash['ip'] && pdu_hash['mac']
+#       pdu_hash['network_adapters'] ||= {}
+#       pdu_hash['network_adapters']['pdu'] ||= {}
+#       pdu_hash['network_adapters']['pdu']['ip']  = pdu_hash.delete('ip')
+#       pdu_hash['network_adapters']['pdu']['mac'] = pdu_hash.delete('mac')
+#     end
+#  }
 
   next
 
