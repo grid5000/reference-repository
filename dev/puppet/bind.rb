@@ -17,26 +17,38 @@ $output_dir = ENV['puppet_repo'] || 'output'
 #  :ip=>"172.16.66",
 #  :shift=>0,
 #  :mounted=>true}
-def print_entry(entry)
-  if entry[:start] == entry[:end]
-    return "#{entry[:cluster_uid]}-#{entry[:start]}-#{entry[:net_uid]} IN A #{entry[:ip]}.#{entry[:start]+entry[:shift]}"
-  else 
-    range = "#{entry[:start]}-#{entry[:end]}"
-    shift = (entry[:shift] > 0 ? '{+' + entry[:shift].to_s  + '}' : '')
-    ip    = "#{entry[:ip]}.$#{shift}"
-    
-    if entry[:mounted] && /^eth[0-9]$/.match(entry[:net_uid])
-      # primary interface
-      return ["$GENERATE #{range} #{entry[:cluster_uid]}-$ IN A #{ip}",
-              "$GENERATE #{range} #{entry[:cluster_uid]}-$-#{entry[:net_uid]} IN CNAME #{entry[:cluster_uid]}-$"].join("\n")
 
-    elsif /^kavlan-[0-9]*$/.match(entry[:net_uid])
-      return ["$GENERATE #{range} #{entry[:cluster_uid]}-$-eth0-#{entry[:net_uid]} IN A #{ip}",
-              "$GENERATE #{range} #{entry[:cluster_uid]}-$-#{entry[:net_uid]} IN CNAME #{entry[:cluster_uid]}-$-eth0-#{entry[:net_uid]}"].join("\n")
-    else
-      return "$GENERATE #{range} #{entry[:cluster_uid]}-$-#{entry[:net_uid]} IN A #{ip}"
-    end 
+def print_entry(entry)
+
+  if entry[:start] == entry[:end]
+    range     = ""
+    hostshort = "#{entry[:cluster_uid]}-#{entry[:start]}"
+    ip        = "#{entry[:ip]}.#{entry[:start]+entry[:shift]}"
+  else
+    range     = "$GENERATE #{entry[:start]}-#{entry[:end]} "                  # $GENERATE 1-16
+    hostshort = "#{entry[:cluster_uid]}-$"                                    # graoully-$
+    shift     = (entry[:shift] > 0 ? '{+' + entry[:shift].to_s  + '}' : '')   
+    ip        = "#{entry[:ip]}.$#{shift}"                                     # 172.16.70.$
+  end
+    
+  hostalias = nil
+  if entry[:mounted] && /^eth[0-9]$/.match(entry[:net_uid])
+    # primary interface
+    hostalias = hostshort
+  elsif /^kavlan-[0-9]*$/.match(entry[:net_uid])
+    # kvlan
+    hostalias = hostshort + "-eth0-#{entry[:net_uid]}" # graoully-$-eth0-kavlan-1
+  end
+
+  hostname = hostshort + "-#{entry[:net_uid]}" # graoully-$-eth0
+
+  if hostalias
+    return ["#{range}#{hostalias} IN A #{ip}",
+            "#{range}#{hostname} IN CNAME #{hostalias}"].join("\n")
+  else
+    return "#{range}#{hostname} IN A #{ip}"
   end 
+  
 end
 
 # def write_bind_file(data)
