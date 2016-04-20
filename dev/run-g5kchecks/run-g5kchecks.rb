@@ -98,6 +98,14 @@ OptionParser.new do |opts|
     puts opts
     exit
   end
+
+  if ARGV.empty?
+    printf "No option is specified. Run g5k-checks on the entire platform ? (y/N) "
+    prompt = STDIN.gets.chomp
+    puts opts
+    exit if prompt != 'y'
+  end
+
 end.parse!
 
 options[:ssh] ||= {}
@@ -115,6 +123,7 @@ puts "Options: #{options}" if options[:verbose]
 
 FileUtils::mkdir_p("output/")
 
+# fnode_uid = fully qualified name (node.site.nancy.grid5000.fr)
 def run_g5kcheck(site_uid, fnode_uid, options)
   puts "#{site_uid}: Processing #{fnode_uid}"
 
@@ -176,7 +185,15 @@ if options[:force]
           next
         end
 
-        nodes_status = $g5k.nodes_status(site_uid) if nodes_status.nil?
+        if nodes_status.nil?
+          begin
+            nodes_status = $g5k.nodes_status(site_uid)
+          rescue Exception => e
+            puts "Error while getting nodes status at #{site_uid}" #{e}
+            next
+          end
+        end
+
         if prompt != 'yes-all' && nodes_status[fnode_uid] && nodes_status[fnode_uid] == "busy"
           if prompt != 'no-all'
             printf "#{site_uid} - #{node_uid} is busy (ie. there is currently an OAR reservation. Run g5k-checks on reserved nodes ? (y/yes-all/no-all/N) "
@@ -200,22 +217,37 @@ if options[:force]
 
 else # ! options[:force]
 
+  begin
   options[:sites].peach  { |site_uid|
 
     jobs = [] # list of OAR reservation
     
     begin
-         
+
       #
       # Node reservation
       #
       
-      nodes_status = $g5k.nodes_status(site_uid)
-      
-      if options[:nodes]
-        
+      begin
+        nodes_status = $g5k.nodes_status(site_uid)
+      rescue Exception => e
+        puts "Error while getting nodes status at #{site_uid}" #{e}
+        next
+      end
+
+      if options[:nodes]        
+
         # Reserve nodes one by one
-        options[:nodes].each { |node_uid| jobs << oarsub(site_uid, "{host='#{node_uid.split('.')[0]}'}", options[:queue]) }
+        options[:nodes].each { |uid| 
+          node_uid = uid.split('.')[0] # entries might be either 'node' or 'node.site.grid5000.fr'
+          fnode_uid = "#{node_uid}.#{site_uid}.grid5000.fr"
+
+          cluster_uid = node_uid.split(/-/).first
+          next if options[:clusters] && ! options[:clusters].include?(cluster_uid) # -c and -n info should be consistent
+          next if ! nodes_status.keys.include?(fnode_uid)                          # the node does not belong to this site
+          
+           jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue]) 
+        }
         
       else
 
@@ -231,7 +263,7 @@ else # ! options[:force]
         end
         
         # Reserve busy nodes one by one
-        $g5k.nodes_status(site_uid).each { |fnode_uid, status|
+        nodes_status.each { |fnode_uid, status|
           cluster_uid = fnode_uid.split(/-/).first
           next if options[:clusters] && ! options[:clusters].include?(cluster_uid)
           next if File.exist?("output/#{fnode_uid}.yaml") # skip reservation if we alread have the node info
@@ -261,7 +293,7 @@ else # ! options[:force]
           next unless jobs.any? { |j| j['uid'] == job_uid } # skip reservations that are not related to this script
           
           if released_jobs[job_uid]
-            puts "#{site_uid}: #{job_uid} already processed" # AOR job deletions can take some times
+            puts "#{site_uid}: #{job_uid} already processed (waiting for job termination)" # OAR job deletions can take some times
             next
           end
           
@@ -301,8 +333,12 @@ else # ! options[:force]
       } if jobs.size > 0
     end # begin/rescue/ensure
     
-  } # options[:sites].each
-  
+  } # options[:sites].peach
+
+  rescue Exception =>e
+    puts "#{e}"
+  end
+
 end # options[:force]
 
 `ruby postprocessing.rb`
