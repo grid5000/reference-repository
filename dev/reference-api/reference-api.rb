@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require 'pp'
+require 'optparse'
 require 'erb'
 require 'fileutils'
 require 'pathname'
@@ -44,6 +45,21 @@ def net_switch_port_lookup(site, node_uid, interface='')
   end
   return nil
 end
+
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: reference-apo.rb"
+  opts.separator ""
+  opts.separator "This script generates the reference-api JSON (data/) from the input files (input/)."
+  opts.separator "It does not have any option."
+  opts.separator ""
+
+  # Print an options summary.
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
 
 #
 # Write grid info
