@@ -2,22 +2,3 @@
 # Module:: dhcpg5k
 # File:: puppet:///modules/bindg5k/files/zones/<%= data.fetch('site_uid') %>/<%= data.fetch('filename') %>
 #
-<% data.fetch('entries').each { |cluster_uid, data| %>
-; Cluster <%= cluster_uid %>
-<%   data.each { |net_uid, entries| 
-       entries.each { |entry| 
-         if entry["start"] == entry["end"] %>
-<%= "#{cluster_uid}-#{entry['start']}-#{net_uid} IN A #{entry['ip']}.#{entry['start']+entry['shift']}" %>
-    <% else 
-           shift = (entry["shift"] > 0 ? '{+' + entry["shift"].to_s  + '}' : '')
-
-           if false # entry["mounted"] 
-%>
-<%= "$GENERATE #{entry["start"]}-#{entry["end"]} #{cluster_uid}-$ IN A #{entry["ip"]}.$#{shift}" %>
-      <% else %>
-<%= "$GENERATE #{entry["start"]}-#{entry["end"]} #{cluster_uid}-$-#{net_uid} IN A #{entry["ip"]}.$#{shift}" %>
-      <% end %>
-     <% end %>
-<%     } %>
-<%   } %>
-<% } %>
