@@ -113,8 +113,7 @@ def get_nodelist_properties(site_uid, site)
       begin
         properties[node_uid] = get_node_properties(cluster_uid, cluster, node_uid, node)
       rescue MissingProperty => e
-        # TODO
-        #puts "Error while processing node #{node_uid}: #{e}"
+        puts "Error while processing node #{node_uid}: #{e}"
       end
 
     end
