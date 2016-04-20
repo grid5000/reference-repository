@@ -179,7 +179,7 @@ if options[:force]
       next if options[:clusters] && ! options[:clusters].include?(cluster_uid)
       
       cluster["nodes"].each_sort_by_node_uid { |node_uid, node|
-        next if options[:nodes] && ! options[:nodes].include?(noder_uid)
+        next if options[:nodes] && ! options[:nodes].include?(node_uid)
 
         fnode_uid = "#{node_uid}.#{site_uid}.grid5000.fr"
         
