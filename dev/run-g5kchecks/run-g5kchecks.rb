@@ -146,15 +146,18 @@ def run_g5kcheck(site_uid, fnode_uid, options)
 end
 
 def oarsub(site_uid, resources, queue)
-  begin
+  job = nil
 
-    $g5k.reserve(:site => site_uid, :resources => resources, :walltime => '00:30:00', :wait => false, :queue => queue)
+  begin
+    job = $g5k.reserve(:site => site_uid, :resources => resources, :walltime => '00:30:00', :wait => false, :queue => queue)
 
   rescue Exception => e
     puts "#{site_uid}: Error during the reservation '#{resources}' at #{site_uid} - #{e.class}: #{e.message}"
   end
+
+  return job
 end
-  
+
 if options[:force]
   
   # puts 'Get input/'
@@ -179,7 +182,7 @@ if options[:force]
         next if options[:nodes] && ! options[:nodes].include?(noder_uid)
 
         fnode_uid = "#{node_uid}.#{site_uid}.grid5000.fr"
-   
+        
         if File.exist?("output/#{fnode_uid}.yaml")
           puts "output/#{fnode_uid}.yaml exist. Remove this file if you want to run g5k-checks again on this node."
           next
@@ -218,125 +221,123 @@ if options[:force]
 else # ! options[:force]
 
   begin
-  options[:sites].peach  { |site_uid|
+    options[:sites].peach  { |site_uid|
 
-    jobs = [] # list of OAR reservation
-    
-    begin
-
-      #
-      # Node reservation
-      #
+      jobs = [] # list of OAR reservation
       
       begin
-        nodes_status = $g5k.nodes_status(site_uid)
-      rescue Exception => e
-        puts "Error while getting nodes status at #{site_uid}" #{e}
-        next
-      end
 
-      if options[:nodes]        
-
-        # Reserve nodes one by one
-        options[:nodes].each { |uid| 
-          node_uid = uid.split('.')[0] # entries might be either 'node' or 'node.site.grid5000.fr'
-          fnode_uid = "#{node_uid}.#{site_uid}.grid5000.fr"
-
-          cluster_uid = node_uid.split(/-/).first
-          next if options[:clusters] && ! options[:clusters].include?(cluster_uid) # -c and -n info should be consistent
-          next if ! nodes_status.keys.include?(fnode_uid)                          # the node does not belong to this site
-          
-           jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue]) 
-        }
+        #
+        # Node reservation
+        #
         
-      else
+        begin
+          nodes_status = $g5k.nodes_status(site_uid)
+        rescue Exception => e
+          puts "Error while getting nodes status at #{site_uid}" #{e}
+          next
+        end
 
-        clusters = $g5k.cluster_uids(site_uid)
-        
-        # Reserve as many free node as possible in one reservation
-        if options[:clusters]
-          options[:clusters].each { |cluster_uid|
-            jobs << oarsub(site_uid, "{cluster='#{cluster_uid}'}/nodes=BEST", options[:queue]) if clusters.include?(cluster_uid)
+        if options[:nodes]        
+
+          # Reserve nodes one by one
+          options[:nodes].each { |uid| 
+            node_uid = uid.split('.')[0] # entries might be either 'node' or 'node.site.grid5000.fr'
+            fnode_uid = "#{node_uid}.#{site_uid}.grid5000.fr"
+
+            cluster_uid = node_uid.split(/-/).first
+            next if options[:clusters] && ! options[:clusters].include?(cluster_uid) # -c and -n info should be consistent
+            next if ! nodes_status.keys.include?(fnode_uid)                          # the node does not belong to this site
+            
+            jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue]) 
           }
+          
         else
-          jobs << oarsub(site_uid, "nodes=BEST", options[:queue])
+
+          clusters = $g5k.cluster_uids(site_uid)
+          
+          # Reserve as many free node as possible in one reservation
+          if options[:clusters]
+            options[:clusters].each { |cluster_uid|
+              jobs << oarsub(site_uid, "{cluster='#{cluster_uid}'}/nodes=BEST", options[:queue]) if clusters.include?(cluster_uid)
+            }
+          else
+            jobs << oarsub(site_uid, "nodes=BEST", options[:queue])
+          end
+          
+          # Reserve busy nodes one by one
+          nodes_status.each { |fnode_uid, status|
+            cluster_uid = fnode_uid.split(/-/).first
+            next if options[:clusters] && ! options[:clusters].include?(cluster_uid)
+            next if File.exist?("output/#{fnode_uid}.yaml") # skip reservation if we alread have the node info
+            next if status != "busy"                        # only busy nodes
+            
+            jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue])
+          }
+          
         end
         
-        # Reserve busy nodes one by one
-        nodes_status.each { |fnode_uid, status|
-          cluster_uid = fnode_uid.split(/-/).first
-          next if options[:clusters] && ! options[:clusters].include?(cluster_uid)
-          next if File.exist?("output/#{fnode_uid}.yaml") # skip reservation if we alread have the node info
-          next if status != "busy"                        # only busy nodes
-            
-          jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue])
-        }
+        #
+        # Process running jobs
+        #
         
-      end
-      
-      #
-      # Process running jobs
-      #
-      
-      released_jobs = {};
-      
-      loop do
-        waiting_jobs   = $g5k.get_my_jobs(site_uid, state='waiting')
-        running_jobs   = $g5k.get_my_jobs(site_uid, state='running')
-        launching_jobs = $g5k.get_my_jobs(site_uid, state='launching')
+        released_jobs = {};
         
-        puts "#{site_uid}: Running: #{running_jobs.size} - Waiting: #{waiting_jobs.size} - Launching: #{launching_jobs.size}"
-        
-        running_jobs.each { |job|
-          job_uid = job['uid']
+        loop do
+          waiting_jobs   = $g5k.get_my_jobs(site_uid, state='waiting')
+          running_jobs   = $g5k.get_my_jobs(site_uid, state='running')
+          launching_jobs = $g5k.get_my_jobs(site_uid, state='launching')
+          
+          puts "#{site_uid}: Running: #{running_jobs.size} - Waiting: #{waiting_jobs.size} - Launching: #{launching_jobs.size}"
+          
+          running_jobs.each { |job|
+            job_uid = job['uid']
 
-          next unless jobs.any? { |j| j['uid'] == job_uid } # skip reservations that are not related to this script
-          
-          if released_jobs[job_uid]
-            puts "#{site_uid}: #{job_uid} already processed (waiting for job termination)" # OAR job deletions can take some times
-            next
-          end
-          
-          puts "#{site_uid}: Processing #{job_uid}"
-          
-          job['assigned_nodes'].peach(10) { |fnode_uid|
+            next unless jobs.any? { |j| j['uid'] == job_uid } # skip reservations that are not related to this script
             
-            next if File.exist?("output/#{fnode_uid}.yaml")
+            if released_jobs[job_uid]
+              puts "#{site_uid}: #{job_uid} already processed (waiting for job termination)" # OAR job deletions can take some times
+              next
+            end
             
-            run_g5kcheck(site_uid, fnode_uid, options)
+            puts "#{site_uid}: Processing #{job_uid}"
             
+            job['assigned_nodes'].peach(10) { |fnode_uid|
+              
+              next if File.exist?("output/#{fnode_uid}.yaml")
+              
+              run_g5kcheck(site_uid, fnode_uid, options)
+              
+            }
+            
+            puts "#{site_uid}: Release #{job_uid}"
+            begin
+              $g5k.release(job)
+              released_jobs[job_uid] = true
+            rescue Exception => e
+              puts "#{site_uid}: Error while releasing job #{job_uid} - #{e.class}: #{e.message}"
+            end
           }
           
-          puts "#{site_uid}: Release #{job_uid}"
-          begin
-            $g5k.release(job)
-            released_jobs[job_uid] = true
-          rescue Exception => e
-            puts "#{site_uid}: Error while releasing job #{job_uid} - #{e.class}: #{e.message}"
-          end
+          # Stop when there isn't any job left
+          break    if running_jobs.empty? and waiting_jobs.empty? and launching_jobs.empty?
+          
+          # Wait a little bit when the previous loop iteration did not find any job to process
+          sleep(5) if running_jobs.empty?
+          
+        end
+
+      rescue Exception => e
+        puts "#{e.class}: #{e.message}"
+      ensure
+        jobs.compact.each { |job|
+          puts "Release job #{job['links'][0]['href']}"
+          $g5k.release(job) 
         }
-        
-        # Stop when there isn't any job left
-        break    if running_jobs.empty? and waiting_jobs.empty? and launching_jobs.empty?
-        
-        # Wait a little bit when the previous loop iteration did not find any job to process
-        sleep(5) if running_jobs.empty?
-        
-      end
+      end # begin/rescue/ensure
+      
+    } # options[:sites].peach
 
-    rescue Exception => e
-      puts "#{e.class}: #{e.message}"
-    ensure
-      jobs.each { |job|
-        puts "Release job #{job['links'][0]['href']}"
-        $g5k.release(job) 
-      } if jobs.size > 0
-    end # begin/rescue/ensure
-    
-  } # options[:sites].peach
-
-  rescue Exception =>e
-    puts "#{e}"
   end
 
 end # options[:force]
