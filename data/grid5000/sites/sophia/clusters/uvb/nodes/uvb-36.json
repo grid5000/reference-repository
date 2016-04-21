@@ -1,0 +1,105 @@
+{
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "enabled": true,
+      "ip": "172.16.132.36",
+      "mac": "00:26:6c:f8:3f:b8",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "uvb-36.sophia.grid5000.fr",
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel Corporation",
+      "version": "82576 Gigabit Network Connection"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "enabled": false,
+      "mountable": false,
+      "rate": 1000000000,
+      "vendor": "Intel Corporation",
+      "version": "82576 Gigabit Network Connection"
+    },
+    {
+      "bridged": false,
+      "device": "ib0",
+      "enabled": true,
+      "hwid": null,
+      "ib_switch_card": null,
+      "ib_switch_card_pos": null,
+      "ip": "172.18.132.36",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "uvb-36-ib0.sophia.grid5000.fr",
+      "switch": "ibswy1nef",
+      "vendor": "Mellanox",
+      "version": "Mellanox Technologies MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.132.36",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "uvb-36-bmc.sophia.grid5000.fr",
+      "rate": 100000000
+    }
+  ],
+  "operating_system": {
+    "kernel": "3.16.0-4-amd64",
+    "name": "debian",
+    "release": "Jessie",
+    "version": "8.2"
+  },
+  "performance": {
+    "core_flops": 0,
+    "node_flops": 0
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 12582912,
+    "clock_speed": 2930000000,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "version": "X5670"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "sata_nv",
+      "interface": "SATA",
+      "storage": "HDD"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ]
+  },
+  "type": "node",
+  "uid": "uvb-36"
+}

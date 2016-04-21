@@ -1,0 +1,74 @@
+{
+  "chassis": {
+    "serial": "0650QBT131"
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "enabled": true,
+      "ip6": "fe80::216:36ff:fe91:eb80",
+      "mountable": true,
+      "network_address": "sol-46-eth0.sophia.grid5000.fr",
+      "vendor": "nVidia",
+      "version": "MCP55 Pro"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "enabled": false,
+      "mountable": false,
+      "rate": 1000000000,
+      "vendor": "nVidia",
+      "version": "MCP55 Pro"
+    },
+    {
+      "device": "myri0",
+      "driver": "mx ethernet (myri)",
+      "enabled": true,
+      "interface": "Myrinet",
+      "ip": "172.18.129.46",
+      "ip6": "fe80::260:ddff:fe47:4c47",
+      "mac": "00:60:dd:47:4c:47",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "sol-46-myri0.sophia.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "sw-myrinet",
+      "vendor": "Myricom",
+      "version": "M3F-PCIXF-2"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.129.46",
+      "mac": "00:16:36:c5:93:96",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "sol-46-bmc.sophia.grid5000.fr",
+      "rate": 100000000
+    }
+  ],
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "vendor": "Hitachi"
+    }
+  ],
+  "type": "node",
+  "uid": "sol-46"
+}
