@@ -248,6 +248,11 @@ else # ! options[:force]
             cluster_uid = node_uid.split(/-/).first
             next if options[:clusters] && ! options[:clusters].include?(cluster_uid) # -c and -n info should be consistent
             next if ! nodes_status.keys.include?(fnode_uid)                          # the node does not belong to this site
+
+            if File.exist?("output/#{fnode_uid}.yaml")
+              puts "output/#{fnode_uid}.yaml exist. Remove this file if you want to run g5k-checks again on this node."
+              next
+            end
             
             jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue]) 
           }
@@ -272,6 +277,11 @@ else # ! options[:force]
             next if File.exist?("output/#{fnode_uid}.yaml") # skip reservation if we alread have the node info
             next if status != "busy"                        # only busy nodes
             
+            if File.exist?("output/#{fnode_uid}.yaml")
+              puts "output/#{fnode_uid}.yaml exist. Remove this file if you want to run g5k-checks again on this node."
+              next
+            end
+
             jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue])
           }
           
