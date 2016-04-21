@@ -116,7 +116,7 @@ end
 
     output_file = Pathname("#{$output_dir}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/clusters.conf")
     output_file.dirname.mkpath()
-    File.write(output_file, clusters_conf.to_yaml)
+    write_yaml(output_file, clusters_conf)
     
     #
     # Generate <cluster_uid>-cluster.conf files
