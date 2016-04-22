@@ -114,8 +114,10 @@ refapi["sites"].each { |site_uid, site|
       }
       
       # Kavlan
-      node.fetch('kavlan').each { |net_uid, ip|
-        network_adapters[net_uid] = {"ip" => ip, "mounted" => nil}
+      node.fetch('kavlan').each { |net_uid, net_hash|
+        net_hash.each { |kavlan_net_uid, ip|
+          network_adapters["#{net_uid}-#{kavlan_net_uid}"] = {"ip" => ip, "mounted" => nil}
+        } 
       } if node['kavlan']
 
       # Mic
@@ -139,20 +141,27 @@ refapi["sites"].each { |site_uid, site|
         else
           
           # CNAME entries
+          hostsuffix  = "-#{net_uid}"
           cnamesuffix = nil # no CNAME entry by default
           if net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
             # primary interface
-            cnamesuffix = ''
-          elsif /^kavlan-[0-9]*$/.match(net_uid)
+            cnamesuffix = '' # CNAME enabled for primary interface
+          elsif /^*-kavlan-[0-9]*$/.match(net_uid)
             # kavlan
-            net_primaries = network_adapters.select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) }
-            cnamesuffix   = "-#{net_primaries.keys.first}-#{net_uid}" # -eth0-kavlan-1
+            net_primaries = network_adapters.select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # list of primary interfaces
+            net_uid_eth, net_uid_kavlan = net_uid.to_s.scan(/^([^-]*)-(.*)$/).first # split 'eth0-kavlan-1'
+
+            # CNAME only for primary interface kavlan
+            if net_primaries.include?(net_uid_eth)
+              hostsuffix  = "-#{net_uid_kavlan}" # -kavlan-1
+              cnamesuffix = "-#{net_uid}"        # -eth0-kavlan-1
+            end
           end
           
           # new range
           new_entry = {
             :uid         => cluster_uid,
-            :hostsuffix  => "-#{net_uid}", # -eth0, -kavlan-1
+            :hostsuffix  => hostsuffix, # -eth0, -kavlan-1
             :cnamesuffix => cnamesuffix,   # graoully-$-, graoully-$-eth0-kavlan-1
             :start       => node_id,
             :end         => node_id,
