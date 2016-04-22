@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 # This script generates conmang5k/files/<site_uid>/conman.conf from input/, conf/console.yaml and conf/console-password.yaml
 
 require 'pp'

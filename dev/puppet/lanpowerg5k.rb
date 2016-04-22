@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 # This script generates lanpowerg5k/files/<site_uid>/lanpower.conf from conf/console.yaml and conf/console-password.conf
 
 require 'pp'

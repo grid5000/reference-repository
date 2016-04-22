@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 # This script generates:
 # - kadeployg5k/files/<site_uid>/server_conf[_dev]/clusters.conf from input/
 # - kadeployg5k/files/<site_uid>/server_conf[_dev]/<cluster_uid>-cluster.conf from conf/kadeployg5k.yaml and template/kadeployg5k.yaml.Erb

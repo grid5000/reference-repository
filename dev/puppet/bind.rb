@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 # See also: https://www.grid5000.fr/mediawiki/index.php/DNS_server
 
 require 'pp'
