@@ -118,6 +118,11 @@ refapi["sites"].each { |site_uid, site|
         network_adapters[net_uid] = {"ip" => ip, "mounted" => nil}
       } if node['kavlan']
 
+      # Mic
+      if node['mic'] && node['mic']['ip']
+        network_adapters['mic0'] = {"ip" => node['mic']['ip']}
+      end
+      
       # Group ip ranges
       network_adapters.each { |net_uid, net_hash|
         next unless net_hash['ip']
