@@ -52,15 +52,6 @@ def print_entry(entry)
   
 end
 
-# def write_bind_file(data)
-#   output = ERB.new(File.read("templates/bind.erb")).result(binding)
-
-#   output_file = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{data.fetch('site_uid')}/#{data.fetch('site_uid')}.db")
-#   output_file.dirname.mkpath()
-
-#   File.write(output_file, output)
-# end
-
 # Loop over Grid'5000 sites
 
 refapi["sites"].each { |site_uid, site|
@@ -185,7 +176,7 @@ refapi["sites"].each { |site_uid, site|
     }
   }
   
-  output_file = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}/#{site_uid}.db")
+  output_file = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}/#{site_uid}-clusters.db")
   output_file.dirname.mkpath()
   File.write(output_file, output.join("\n"))
   
