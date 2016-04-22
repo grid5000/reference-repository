@@ -20,7 +20,14 @@ $g5k = Cute::G5K::API.new()
 # puts '...done'
 
 # puts 'Get site_uids'
-sites = $g5k.site_uids()
+begin
+  sites = $g5k.site_uids()
+rescue Exception => e
+  puts "Error while getting the site list with ruby-cute: #{e.class}: #{e.message}"
+  puts "API unavailable ?"
+  refapi = load_yaml_file_hierarchy("../input/grid5000/")
+  sites = refapi["sites"].keys
+end
 # puts '...done'
 
 #
@@ -192,6 +199,7 @@ if options[:force]
           begin
             nodes_status = $g5k.nodes_status(site_uid)
           rescue Exception => e
+            nodes_status = {} # do not retry
             puts "Error while getting nodes status at #{site_uid}" #{e}
             next
           end
