@@ -59,48 +59,48 @@ refapi["sites"].each { |site_uid, site|
 
   entries = {}
 
-  ["networks", "laptops", "dom0"].each { |key|
-    entries[key] ||= []
+  # # ["networks", "laptops", "dom0"].each { |key|
+  # #   entries[key] ||= []
     
-    site[key].each { |uid, node| 
-      if node['network_adapters'].nil?
-        puts "Warning: no network_adapters for #{uid}" 
-        next
-      end
+  # #   site[key].each { |uid, node| 
+  # #     if node['network_adapters'].nil?
+  # #       puts "Warning: no network_adapters for #{uid}" 
+  # #       next
+  # #     end
 
-      eth_net_uid = node['network_adapters'].select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # eth* interfaces
-      node['network_adapters'].each { |net_uid, net_hash|
-        hostsuffix = nil
-        if ! eth_net_uid.include?(net_uid) && node['network_adapters'].size > 1
-          hostsuffix = "-#{net_uid}"
-        end
+  # #     eth_net_uid = node['network_adapters'].select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # eth* interfaces
+  # #     node['network_adapters'].each { |net_uid, net_hash|
+  # #       hostsuffix = nil
+  # #       if ! eth_net_uid.include?(net_uid) && node['network_adapters'].size > 1
+  # #         hostsuffix = "-#{net_uid}"
+  # #       end
           
 
-        new_entry = {
-          :uid         => uid,
-          :hostsuffix  => hostsuffix, # cacahuete vs. cacahuete-eth0
-          :ip          => net_hash['ip'],
-        }
+  # #       new_entry = {
+  # #         :uid         => uid,
+  # #         :hostsuffix  => hostsuffix, # cacahuete vs. cacahuete-eth0
+  # #         :ip          => net_hash['ip'],
+  # #       }
         
-        entries[key] << new_entry
-      }
-    }
-  }
+  # #       entries[key] << new_entry
+  # #     }
+  # #   }
+  # # }
 
-  # PDUs
-  entries['pdus'] ||= []
-  site['pdus'].each { |pdu_uid, pdu|
-    if pdu['ip']
+  # # # PDUs
+  # # entries['pdus'] ||= []
+  # # site['pdus'].each { |pdu_uid, pdu|
+  # #   if pdu['ip']
 
-      new_entry = {
-        :uid     => pdu_uid,
-        :ip      => pdu['ip']
-      }
+  # #     new_entry = {
+  # #       :uid     => pdu_uid,
+  # #       :ip      => pdu['ip']
+  # #     }
 
-      entries['pdus'] << new_entry
+  # #     entries['pdus'] << new_entry
 
-    end
-  }
+  # #   end
+  # # }
   
   site.fetch("clusters").sort.each { |cluster_uid, cluster|
     #next if cluster_uid != 'griffon'
@@ -109,8 +109,9 @@ refapi["sites"].each { |site_uid, site|
       network_adapters = {}
 
       # Nodes
+      pp node_uid
       node.fetch('network_adapters').each { |net_uid, net_hash|
-        network_adapters[net_uid] = {"ip" => net_hash["ip"], "mounted" => net_hash["mounted"]}
+        network_adapters[net_uid] = {"ip" => net_hash["ip"], "mounted" => net_hash["mounted"]} #, "network_address" => net_hash["network_address"]}
       }
       
       # Kavlan
@@ -127,6 +128,8 @@ refapi["sites"].each { |site_uid, site|
       
       # Group ip ranges
       network_adapters.each { |net_uid, net_hash|
+        next if node['status'] && node['status']['retired'] && cluster_uid == 'graphene' && net_uid == 'eth0' # FIXME
+
         next unless net_hash['ip']
         
         entries["#{cluster_uid}-#{net_uid}"] ||= []
@@ -136,7 +139,7 @@ refapi["sites"].each { |site_uid, site|
         ip = net_hash['ip']
         ip_array = ip.split('.')
         
-        if last_entry and ip == last_entry[:ip] + '.' + (node_id + last_entry[:shift]).to_s and last_entry[:end] == node_id-1
+        if last_entry && ip == last_entry[:ip] + '.' + (node_id + last_entry[:shift]).to_s && last_entry[:end] == node_id-1 # && network_address
           last_entry[:end] += 1
         else
           
