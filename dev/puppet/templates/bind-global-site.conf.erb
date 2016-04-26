@@ -1,0 +1,34 @@
+<%
+  if dir == 'global'
+    type = 'master'
+  elsif dir == 'site'
+    type = 'slave' 
+  else
+    raise "'dir' undefined"
+  end
+
+# List file in the directory instead of using the 'reverse' variable as some files might be set manually
+Dir.entries(zones_dir).each { |file|
+  next unless /.*.db$/.match(file)
+  next if file == "#{site_uid}-clusters.db" # This file should be included in <site_uid>.db
+
+  comment = ''
+  zone = ''
+
+  if file == "#{site_uid}.db"
+    zone = "#{site_uid}.grid5000.fr"
+  elsif /^reverse-(.*).db$/.match(file)
+    zone = "#{$1}.in-addr.arpa"
+    comment = '// The following entry was manually added' if !reverse.keys.include?(file)
+  else
+    puts "Error: unkown zone for '#{file}' in '#{zones_dir}'"
+    next
+  end
+    %>
+  <%= comment %>
+  zone "<%= zone %>" {
+    type <%= type %>;
+    file "/etc/bind/zones/<%= site_uid %>/<%= file %>";
+    <%= type == 'slave' ? 'masters { master-ns-global; };' : '' %>
+  };
+<% } %>

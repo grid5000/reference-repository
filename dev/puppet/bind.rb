@@ -49,11 +49,38 @@ def print_entry(entry)
   else
     return "#{range}#{hostname} IN A #{ip}"
   end 
-  
+end
+
+# Examples: reverse-64.16.172.db
+# 96                                 IN      PTR     opensm.nancy.grid5000.fr.
+# $GENERATE       1-95    $          IN      PTR     graphene-$.nancy.grid5000.fr.
+# $GENERATE       1-4     ${8,0,d}   IN      PTR     graphite-$-ib0.nancy.grid5000.fr.
+def print_reverse_entry(site_uid, entry)
+  if entry[:start].nil?
+    range     = "#{entry[:ip].split('.')[4]}"
+    hostshort = entry[:uid]
+  elsif entry[:start] == entry[:end]
+    range     = "#{entry[:start]+entry[:shift]}"
+    hostshort = "#{entry[:uid]}-#{entry[:start]}"            # graoully-1
+  else
+    range     = "$GENERATE #{entry[:start]}-#{entry[:end]} " # $GENERATE 1-16
+    shift     = (entry[:shift] > 0 ? '${+' + entry[:shift].to_s  + '}' : '$')
+    range     += shift
+    hostshort = "#{entry[:uid]}-$"                           # graoully-$
+  end
+  file = "#{entry[:ip].split('.')[0..2].reverse.join('.')}" # 70.16.172
+
+  if entry[:cnamesuffix].nil?
+    hostname  = entry[:hostsuffix] ? hostshort + entry[:hostsuffix] : hostshort # graoully-$-eth0
+  else
+    hostname  = hostshort + entry[:cnamesuffix]
+  end
+
+  return ["reverse-#{file}.db", "#{range} IN PTR #{hostname}.#{site_uid}.grid5000.fr."]
+
 end
 
 # Loop over Grid'5000 sites
-
 refapi["sites"].each { |site_uid, site|
   next if site_uid != 'nancy'
 
@@ -185,17 +212,40 @@ refapi["sites"].each { |site_uid, site|
   #
   # Output
   #
+  dns = []     # output file for dns entries
+  reverse = {} # one hash entry per reverse dns file
 
-  output = []
   entries.each { |type, e|
     e.each { |entry|
-      output << print_entry(entry)
+      dns << print_entry(entry) # DNS
+
+      output_file, txt_entry = print_reverse_entry(site_uid, entry) # Reverse DNS
+      reverse[output_file] ||= []
+      reverse[output_file] << txt_entry
     }
   }
-  
-  output_file = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}/#{site_uid}-clusters.db")
-  output_file.dirname.mkpath()
-  File.write(output_file, output.join("\n"))
-  
-} # each sites
 
+  zones_dir = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}")
+  zones_dir.mkpath()
+
+  # DNS (/modules/bindg5k/files/zones/nancy-clusters.db)
+  output_file = cluster_file = site_uid + '-clusters.db'
+  File.write(zones_dir + output_file, dns.join("\n"))
+
+  # Reverse DNS (/modules/bindg5k/files/zones/reverse-*db)
+  header = ERB.new(File.read('templates/bind-header.erb')).result(binding)
+  reverse.each { |output_file, output|
+    File.write(zones_dir + output_file, header + output.join("\n"))
+  }
+  
+  # files/global/conf/global-nancy.conf
+  # files/site/conf/global-nancy.conf
+  ['global', 'site'].each { |dir|
+    conf_dir = Pathname("#{$output_dir}/modules/bindg5k/files/#{dir}/conf")
+    conf_dir.mkpath()
+    
+    global_file = ERB.new(File.read('templates/bind-global-site.conf.erb')).result(binding)
+    File.write(conf_dir + "global-#{site_uid}.conf", global_file)
+  }
+
+} # each sites

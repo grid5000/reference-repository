@@ -1,0 +1,10 @@
+$TTL 3h
+@                       IN      SOA     dns.grid5000.fr. nsmaster.dns.grid5000.fr. (
+                                <%= Time.new().strftime("%Y%m%d") %>00 ; serial (YYYYMMDDSS)
+                                4h         ; refresh
+                                1h         ; retry
+                                4w         ; expire
+                                1h)        ; negative caching
+
+@			IN	NS	dns.grid5000.fr.
+@                 MX    10      mail.nancy.grid5000.fr.
