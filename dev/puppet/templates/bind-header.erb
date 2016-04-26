@@ -8,5 +8,5 @@ $TTL 3h
 
 @			IN	NS	dns.grid5000.fr.<%
 if output_file == "#{site_uid}.db" %>
-@                      IN      A       <%= '172.16.79.101' %><% end %>
+@                      IN      A       <%= site['frontend_ip'] %><% end %>
 @                 MX    10      mail.nancy.grid5000.fr.
