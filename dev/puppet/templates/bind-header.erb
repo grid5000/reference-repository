@@ -6,5 +6,7 @@ $TTL 3h
                                 4w         ; expire
                                 1h)        ; negative caching
 
-@			IN	NS	dns.grid5000.fr.
+@			IN	NS	dns.grid5000.fr.<%
+if output_file == "#{site_uid}.db" %>
+@                      IN      A       <%= '172.16.79.101' %><% end %>
 @                 MX    10      mail.nancy.grid5000.fr.

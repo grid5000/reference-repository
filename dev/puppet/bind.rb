@@ -86,48 +86,48 @@ refapi["sites"].each { |site_uid, site|
 
   entries = {}
 
-  # # ["networks", "laptops", "dom0"].each { |key|
-  # #   entries[key] ||= []
+  ["networks", "laptops", "dom0"].each { |key|
+    entries[key] ||= []
     
-  # #   site[key].each { |uid, node| 
-  # #     if node['network_adapters'].nil?
-  # #       puts "Warning: no network_adapters for #{uid}" 
-  # #       next
-  # #     end
+    site[key].each { |uid, node| 
+      if node['network_adapters'].nil?
+        puts "Warning: no network_adapters for #{uid}" 
+        next
+      end
 
-  # #     eth_net_uid = node['network_adapters'].select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # eth* interfaces
-  # #     node['network_adapters'].each { |net_uid, net_hash|
-  # #       hostsuffix = nil
-  # #       if ! eth_net_uid.include?(net_uid) && node['network_adapters'].size > 1
-  # #         hostsuffix = "-#{net_uid}"
-  # #       end
+      eth_net_uid = node['network_adapters'].select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # eth* interfaces
+      node['network_adapters'].each { |net_uid, net_hash|
+        hostsuffix = nil
+        if ! eth_net_uid.include?(net_uid) && node['network_adapters'].size > 1
+          hostsuffix = "-#{net_uid}"
+        end
           
 
-  # #       new_entry = {
-  # #         :uid         => uid,
-  # #         :hostsuffix  => hostsuffix, # cacahuete vs. cacahuete-eth0
-  # #         :ip          => net_hash['ip'],
-  # #       }
+        new_entry = {
+          :uid         => uid,
+          :hostsuffix  => hostsuffix, # cacahuete vs. cacahuete-eth0
+          :ip          => net_hash['ip'],
+        }
         
-  # #       entries[key] << new_entry
-  # #     }
-  # #   }
-  # # }
+        entries[key] << new_entry
+      }
+    }
+  }
 
-  # # # PDUs
-  # # entries['pdus'] ||= []
-  # # site['pdus'].each { |pdu_uid, pdu|
-  # #   if pdu['ip']
+  # PDUs
+  entries['pdus'] ||= []
+  site['pdus'].each { |pdu_uid, pdu|
+    if pdu['ip']
 
-  # #     new_entry = {
-  # #       :uid     => pdu_uid,
-  # #       :ip      => pdu['ip']
-  # #     }
+      new_entry = {
+        :uid     => pdu_uid,
+        :ip      => pdu['ip']
+      }
 
-  # #     entries['pdus'] << new_entry
+      entries['pdus'] << new_entry
 
-  # #   end
-  # # }
+    end
+  }
   
   site.fetch("clusters").sort.each { |cluster_uid, cluster|
     #next if cluster_uid != 'griffon'
@@ -228,13 +228,20 @@ refapi["sites"].each { |site_uid, site|
   zones_dir = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}")
   zones_dir.mkpath()
 
-  # DNS (/modules/bindg5k/files/zones/nancy-clusters.db)
-  output_file = cluster_file = site_uid + '-clusters.db'
-  File.write(zones_dir + output_file, dns.join("\n"))
+  # DNS (/modules/bindg5k/files/zones/nancy.db)
+  manual = site_uid + '-manual.db'
+  dns.unshift("$INCLUDE #{manual}") if File.exist?(zones_dir + manual) # add include statement
+
+  output_file = site_uid + '.db'
+  header = ERB.new(File.read('templates/bind-header.erb')).result(binding)
+  File.write(zones_dir + output_file, header + dns.join("\n"))
 
   # Reverse DNS (/modules/bindg5k/files/zones/reverse-*db)
-  header = ERB.new(File.read('templates/bind-header.erb')).result(binding)
   reverse.each { |output_file, output|
+    header = ERB.new(File.read('templates/bind-header.erb')).result(binding) # do not move outside of the loop (it uses the output_file variable)
+    manual = output_file.sub('.db', '') + '-manual.db'
+    output.unshift("$INCLUDE #{manual}") if File.exist?(zones_dir + manual) # add include statement
+
     File.write(zones_dir + output_file, header + output.join("\n"))
   }
   

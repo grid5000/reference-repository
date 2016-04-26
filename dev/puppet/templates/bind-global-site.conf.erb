@@ -10,7 +10,7 @@
 # List file in the directory instead of using the 'reverse' variable as some files might be set manually
 Dir.entries(zones_dir).each { |file|
   next unless /.*.db$/.match(file)
-  next if file == "#{site_uid}-clusters.db" # This file should be included in <site_uid>.db
+  next if /.*-manual\.db/.match(file) # Those files are included in the generated version of the file
 
   comment = ''
   zone = ''
