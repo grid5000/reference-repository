@@ -15,7 +15,7 @@ require 'pathname'
 require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
-global_hash = load_yaml_file_hierarchy("../input/grid5000/")
+global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 $output_dir = ENV['puppet_repo'] || 'output'
 
 # Compute cluster prefix

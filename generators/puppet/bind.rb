@@ -12,7 +12,7 @@ require 'erb'
 require 'pathname'
 require '../lib/input_loader'
 
-refapi = load_yaml_file_hierarchy("../input/grid5000/")
+refapi = load_yaml_file_hierarchy("../../input/grid5000/")
 $output_dir = ENV['puppet_repo'] || 'output'
 
 # Create a dns entry

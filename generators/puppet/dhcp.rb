@@ -10,7 +10,7 @@ require 'erb'
 require 'pathname'
 require '../lib/input_loader'
 
-global_hash = load_yaml_file_hierarchy("../input/grid5000/")
+global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 $output_dir = ENV['puppet_repo'] || 'output'
 
 # Get the mac and ip of a node. Throw exception if error.

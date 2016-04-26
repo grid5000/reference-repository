@@ -16,8 +16,8 @@ require '../input-validators/check-monitoring-properties'
 refapi_path = "../../data/grid5000"
 
 #global_hash = JSON.parse(STDIN.read)
-#global_hash = load_yaml_file_hierarchy("../input/example/")
-global_hash = load_yaml_file_hierarchy("../input/grid5000/")
+#global_hash = load_yaml_file_hierarchy("../../input/example/")
+global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 
 # Parse network equipment description and return switch name and port connected to given node
 #  In the network description, if the node interface is given (using "port" attribute),

@@ -146,7 +146,3 @@ Steps:
 - Boot and check nodes with g5k-checks
 
 See sites/nancy/clusters/graoully/graoully_ip.yaml.erb as an example for bootstrapping a cluster configuration.
-
-
---
-ruby run-g5kchecks.rb -s lyon -n $(ssh lyon.g5kadmin charon -o | tr '\n' ',')

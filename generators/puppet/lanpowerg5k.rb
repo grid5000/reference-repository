@@ -17,7 +17,7 @@ $output_dir = ENV['puppet_repo'] || 'output'
 
 config      = YAML::load_file('conf/console.yaml')
 credentials = YAML::load_file('conf/console-password.yaml')
-refapi      = load_yaml_file_hierarchy("../input/grid5000/")
+refapi      = load_yaml_file_hierarchy("../../input/grid5000/")
 
 refapi['sites'].each { |site_uid, site_refapi|
   h = {'clusters' => {} } # output hash

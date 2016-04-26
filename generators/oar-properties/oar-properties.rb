@@ -139,7 +139,7 @@ nodelist_properties = {} # ["ref"]  : properties from the reference-repo
 #
 
 nodelist_properties["ref"] = {}
-global_hash = load_yaml_file_hierarchy('../input/grid5000/')
+global_hash = load_yaml_file_hierarchy('../../input/grid5000/')
 options[:sites].each { |site_uid| 
   nodelist_properties["ref"][site_uid] = get_nodelist_properties(site_uid, global_hash["sites"][site_uid]) 
 }

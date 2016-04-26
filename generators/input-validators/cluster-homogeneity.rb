@@ -97,7 +97,7 @@ ignore_keys = %w(
   supported_job_types.max_walltime
 )
 
-refapi_hash = load_yaml_file_hierarchy("../input/grid5000/")
+refapi_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 
 refapi_hash["sites"].each do |site_uid, site|
   site["clusters"].each do |cluster_uid, cluster|

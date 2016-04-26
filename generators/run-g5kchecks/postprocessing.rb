@@ -11,7 +11,7 @@ require 'pathname'
 require 'yaml'
 require '../lib/hash/hash'
 
-puts 'Postprocessing of output/. Copying files into ../input/'
+puts 'Postprocessing of output/. Copying files into ../../input/'
 
 list_of_yaml_files = Dir['output/*.y*ml'].sort_by { |x| -x.count('/') }
 list_of_yaml_files.each { |filename|
@@ -38,7 +38,7 @@ list_of_yaml_files.each { |filename|
 
   hash = {node_uid => hash}
  
-  new_filename = "../input/grid5000/sites/#{site_uid}/clusters/#{cluster_uid}/nodes/" + node_uid + ".yaml"
+  new_filename = "../../input/grid5000/sites/#{site_uid}/clusters/#{cluster_uid}/nodes/" + node_uid + ".yaml"
   write_yaml(new_filename, hash)
 
   contents = File.read(new_filename)

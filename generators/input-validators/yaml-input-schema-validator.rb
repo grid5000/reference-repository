@@ -20,7 +20,7 @@ def run_validator(uid, data, schema)
   end
 end
 
-global_hash = load_yaml_file_hierarchy("../input/grid5000/")
+global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 
 run_validator('global', global_hash, schema_global) #
 

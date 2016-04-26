@@ -33,7 +33,7 @@ class ::Hash
   end
 end
 
-global_hash = load_yaml_file_hierarchy("../input/grid5000/")
+global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 
 # remove entries that are not duplicate
 global_hash.deep_reject! { |k, v| !(

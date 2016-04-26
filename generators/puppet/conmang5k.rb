@@ -16,7 +16,7 @@ require '../lib/hash/hash.rb'
 $output_dir = ENV['puppet_repo'] || 'output'
 
 # Input
-refapi      = load_yaml_file_hierarchy("../input/grid5000/")
+refapi      = load_yaml_file_hierarchy("../../input/grid5000/")
 config      = YAML::load_file('./conf/console.yaml')
 credentials = YAML::load_file('./conf/console-password.yaml')
 

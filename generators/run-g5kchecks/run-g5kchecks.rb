@@ -25,7 +25,7 @@ begin
 rescue Exception => e
   puts "Error while getting the site list with ruby-cute: #{e.class}: #{e.message}"
   puts "API unavailable ?"
-  refapi = load_yaml_file_hierarchy("../input/grid5000/")
+  refapi = load_yaml_file_hierarchy("../../input/grid5000/")
   sites = refapi["sites"].keys
 end
 # puts '...done'
@@ -168,7 +168,7 @@ end
 if options[:force]
   
   # puts 'Get input/'
-  refapi_hash = load_yaml_file_hierarchy("../input/grid5000/") # use input/ has nodes might not be register in OAR db yet (for new clusters installation)
+  refapi_hash = load_yaml_file_hierarchy("../../input/grid5000/") # use input/ has nodes might not be register in OAR db yet (for new clusters installation)
   # puts '...done'
 
   run_queue ||= {}
