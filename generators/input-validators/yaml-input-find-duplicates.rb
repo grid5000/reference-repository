@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 require 'pp'
 require '../lib/input_loader'
 

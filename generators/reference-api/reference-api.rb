@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 require 'pp'
 require 'optparse'
 require 'erb'
@@ -10,6 +15,7 @@ require 'time'
 
 require '../lib/input_loader'
 require '../input-validators/yaml-input-schema-validator'
+require '../input-validators/check-cluster-homogeneity'
 require '../input-validators/check-monitoring-properties'
 
 # Output directory
@@ -19,8 +25,6 @@ refapi_path = "../../data/grid5000"
 #global_hash = JSON.parse(STDIN.read)
 #global_hash = load_yaml_file_hierarchy("../../input/example/")
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
-
-yaml_input_schema_validator(global_hash)
 
 # Parse network equipment description and return switch name and port connected to given node
 #  In the network description, if the node interface is given (using "port" attribute),
@@ -64,6 +68,25 @@ OptionParser.new do |opts|
   end
 end.parse!
 
+
+#
+# input-validators
+#
+
+puts "Checking input data:\n\n"
+r = yaml_input_schema_validator(global_hash)
+puts 'OK' if r
+
+puts "\n"
+puts "#" * 80
+puts "\n"
+
+check_cluster_homogeneity(global_hash)
+puts "\n"
+puts "#" * 80
+puts "\n"
+
+
 #
 # Write grid info
 #
@@ -77,8 +100,10 @@ if global_hash['uid']
              global_hash.reject {|k, v| k == "sites"})
 end
 
+puts "Generating the reference api:\n\n"
+
 global_hash["sites"].each do |site_uid, site|
-  puts site_uid
+  puts "#{site_uid}:"
 
   #
   # Write site info
@@ -110,7 +135,7 @@ global_hash["sites"].each do |site_uid, site|
   # Write network info
   #
 
-  site["networks"].each do |network_uid, network|
+  site["networks"].sort.each do |network_uid, network|
     network["type"] = "network_equipment"
     network["uid"]  = network_uid
 
@@ -140,7 +165,7 @@ global_hash["sites"].each do |site_uid, site|
     network["linecards"] = linecards_tmp # restore
   end
 
-  site["clusters"].each do |cluster_uid, cluster|
+  site["clusters"].sort.each do |cluster_uid, cluster|
     puts "  #{cluster_uid}"
 
     #
@@ -281,4 +306,4 @@ global_hash["sites"].each do |site_uid, site|
 
 end
 
-check_monitoring_properties(global_hash)
+#check_monitoring_properties(global_hash)

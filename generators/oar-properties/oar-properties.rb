@@ -2,6 +2,11 @@
 
 # Generator for the OAR properties
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 require 'pp'
 require 'erb'
 require 'fileutils'
