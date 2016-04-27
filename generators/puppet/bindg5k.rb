@@ -13,7 +13,7 @@ require 'pathname'
 require '../lib/input_loader'
 
 refapi = load_yaml_file_hierarchy("../../input/grid5000/")
-$output_dir = ENV['puppet_repo'] || 'output'
+$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
 
 # Create a dns entry
 # $GENERATE 1-16 graoully-$-bmc IN A 172.17.70.$
@@ -136,7 +136,7 @@ refapi["sites"].each { |site_uid, site|
       network_adapters = {}
 
       # Nodes
-      pp node_uid
+      #pp node_uid
       node.fetch('network_adapters').each { |net_uid, net_hash|
         network_adapters[net_uid] = {"ip" => net_hash["ip"], "mounted" => net_hash["mounted"]} #, "network_address" => net_hash["network_address"]}
       }

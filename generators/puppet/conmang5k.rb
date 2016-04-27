@@ -13,12 +13,14 @@ require 'pathname'
 require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
-$output_dir = ENV['puppet_repo'] || 'output'
+$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
+$conf_dir   = ENV['conf_dir']    || Pathname("#{$output_dir}/modules/lanpowerg5k/generators/")
+raise("Error: #{$conf_dir} does not exist. The environment variables are not set propertly") unless Pathname($conf_dir).exist?
 
 # Input
 refapi      = load_yaml_file_hierarchy("../../input/grid5000/")
-config      = YAML::load_file('./conf/console.yaml')
-credentials = YAML::load_file('./conf/console-password.yaml')
+config      = YAML::load_file($conf_dir + 'console.yaml')
+credentials = YAML::load_file($conf_dir + 'console-password.yaml')
 
 # Apply ERB template and save result to file
 def write_conman_file(site_uid, site_refapi, site_config, site_credentials)

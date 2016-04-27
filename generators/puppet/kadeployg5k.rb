@@ -7,7 +7,7 @@ end
 
 # This script generates:
 # - kadeployg5k/files/<site_uid>/server_conf[_dev]/clusters.conf from input/
-# - kadeployg5k/files/<site_uid>/server_conf[_dev]/<cluster_uid>-cluster.conf from conf/kadeployg5k.yaml and template/kadeployg5k.yaml.Erb
+# - kadeployg5k/files/<site_uid>/server_conf[_dev]/<cluster_uid>-cluster.conf from kadeployg5k[-dev].yaml and template/kadeployg5k.yaml.erb
 
 require 'pp'
 require 'erb'
@@ -16,7 +16,9 @@ require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
-$output_dir = ENV['puppet_repo'] || 'output'
+$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
+$conf_dir   = ENV['conf_dir']    || Pathname("#{$output_dir}/modules/lanpowerg5k/generators/")
+raise("Error: #{$conf_dir} does not exist. The environment variables are not set propertly") unless Pathname($conf_dir).exist?
 
 # Compute cluster prefix
 # input: cluster_list = ['graoully', 'graphene', 'griffon', ...]
@@ -122,14 +124,15 @@ end
     output_file = Pathname("#{$output_dir}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/clusters.conf")
     output_file.dirname.mkpath()
     write_yaml(output_file, clusters_conf)
-    
+    add_header(output_file)
+
     #
     # Generate <cluster_uid>-cluster.conf files
     #
 
     # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
     
-    conf = YAML::load(ERB.new(File.read("./conf/kadeployg5k#{suffix}.yaml")).result(binding))
+    conf = YAML::load(ERB.new(File.read($conf_dir + "kadeployg5k#{suffix}.yaml")).result(binding))
 
     site['clusters'].each { |cluster_uid, cluster|
 

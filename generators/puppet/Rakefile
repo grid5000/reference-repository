@@ -1,16 +1,10 @@
-task :default => [:kadeployg5k, :conmang5k, :lanpowerg5k]
+all_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k]
 
-desc "Generate kadeployg5k configuration"
-task :kadeployg5k do
-  ruby 'kadeployg5k.rb'
-end
+task :default => all_tasks
 
-desc "Generate conmang5k configuration"
-task :conmang5k do
-  ruby 'conmang5k.rb'
+all_tasks.each { |t|
+desc "Generate #{t} configuration"
+task t do
+  ruby "#{t}.rb"
 end
-
-desc "Generate lanpowerg5k configuration"
-task :lanpowerg5k do
-  ruby 'lanpowerg5k.rb'
-end
+}

@@ -11,7 +11,7 @@ require 'pathname'
 require '../lib/input_loader'
 
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
-$output_dir = ENV['puppet_repo'] || 'output'
+$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
 
 # Get the mac and ip of a node. Throw exception if error.
 def get_network_info(node_hash, network_interface)

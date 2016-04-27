@@ -13,10 +13,12 @@ require 'pathname'
 require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
-$output_dir = ENV['puppet_repo'] || 'output'
+$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
+$conf_dir   = ENV['conf_dir']    || Pathname("#{$output_dir}/modules/lanpowerg5k/generators/")
+raise("Error: #{$conf_dir} does not exist. The environment variables are not set propertly") unless Pathname($conf_dir).exist?
 
-config      = YAML::load_file('conf/console.yaml')
-credentials = YAML::load_file('conf/console-password.yaml')
+config      = YAML::load_file($conf_dir + 'console.yaml')
+credentials = YAML::load_file($conf_dir + 'console-password.yaml')
 refapi      = load_yaml_file_hierarchy("../../input/grid5000/")
 
 refapi['sites'].each { |site_uid, site_refapi|
@@ -69,5 +71,6 @@ refapi['sites'].each { |site_uid, site_refapi|
   output_file = Pathname("#{$output_dir}/modules/lanpowerg5k/files/#{site_uid}/lanpower.yaml")
   output_file.dirname.mkpath()
   write_yaml(output_file, h)
+  add_header(output_file)
 
 }
