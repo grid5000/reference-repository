@@ -6,9 +6,11 @@
 # * http://rx.codesimply.com/
 # * http://www.kuwata-lab.com/kwalify/ruby/users-guide.html
 
+dir = Pathname(__FILE__).parent
+
 require 'json'
 require 'hash_validator' # https://github.com/jamesbrooks/hash_validator
-require './lib/multihash_validator' # custom validator
+require "#{dir}/multihash_validator" # custom validator
 
 # Simple required_hash validator
 HashValidator.append_validator(HashValidator::Validator::SimpleValidator.new('required_hash', lambda { |v| v.is_a?(Hash) }))

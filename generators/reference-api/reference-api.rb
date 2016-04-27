@@ -9,6 +9,7 @@ require 'json'
 require 'time'
 
 require '../lib/input_loader'
+require '../input-validators/yaml-input-schema-validator'
 require '../input-validators/check-monitoring-properties'
 
 # Output directory
@@ -18,6 +19,8 @@ refapi_path = "../../data/grid5000"
 #global_hash = JSON.parse(STDIN.read)
 #global_hash = load_yaml_file_hierarchy("../../input/example/")
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
+
+yaml_input_schema_validator(global_hash)
 
 # Parse network equipment description and return switch name and port connected to given node
 #  In the network description, if the node interface is given (using "port" attribute),
@@ -278,4 +281,4 @@ global_hash["sites"].each do |site_uid, site|
 
 end
 
-#annotate(global_hash)
+check_monitoring_properties(global_hash)

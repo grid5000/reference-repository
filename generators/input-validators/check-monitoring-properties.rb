@@ -1,6 +1,7 @@
 #
 # All of the following is just to check the value of node['monitoring']['wattmeter']...
 #
+# Main method is check_monitoring_properties(data) where data is the input/ data after beeing processed by ../reference-api/reference-api.rb
 
 def measurement_point_name(measure_point, site)
   port = measure_point['port'] || measure_point['measure'] || 0
@@ -50,8 +51,7 @@ def monitoring_wattmeter_annotation(pdu_info, site_pdus, site_pdu_outlets, site)
   node_monitoring_wattmeter
 end
 
-# Attempts to add information to data to help users
-def annotate(data)
+def check_monitoring_properties(data)
   data['sites'].each do |site_uid, site|
     site_pdus = {}
     site_pdu_outlets = {}
@@ -139,21 +139,18 @@ def annotate(data)
         node_monitoring_wattmeter[node['uid']] = "true"  if node_monitoring_wattmeter[node['uid']] == true
         node_monitoring_wattmeter[node['uid']] = "false" if node_monitoring_wattmeter[node['uid']] == false
 
-        if node.has_key?('monitoring')
-          if node['monitoring'].has_key?('wattmeter')
-            if node['monitoring']['wattmeter'] != node_monitoring_wattmeter[node['uid']]
-              puts "#{node['uid']}['monitoring']['wattmeter'] override calculated information with information found in input. Calculated it should be #{node_monitoring_wattmeter[node['uid']]}, keeping #{node['monitoring']['wattmeter']}"
-            end
-          else #create wattmeter entry
-            pp 'Missing'
-            node['monitoring']['wattmeter'] = node_monitoring_wattmeter[node['uid']]
+        if node.has_key?('monitoring') && node['monitoring'].has_key?('wattmeter') 
+          if node['monitoring']['wattmeter'] != node_monitoring_wattmeter[node['uid']]
+            puts "Warning: it seems that #{node['uid']}['monitoring']['wattmeter'] should be #{node_monitoring_wattmeter[node['uid']]} instead of #{node['monitoring']['wattmeter']}."
           end
-        else #create monitoring entry
-          pp 'Missing'
-          node['monitoring'] = {'wattmeter' => node_monitoring_wattmeter[node['uid']]}
+        else
+          puts "Warning: #{node['uid']}['monitoring']['wattmeter'] is missing. Should be #{node_monitoring_wattmeter[node['uid']]}."
         end
-        #puts "#{node['uid']}['monitoring']['wattmeter'] = #{node['monitoring']['wattmeter']}"
       end
     end
   end
+end
+
+if __FILE__ == $0
+  puts 'This ruby file cannot be executed by itself. Run ../reference-api/reference-api.rb instead.'
 end
