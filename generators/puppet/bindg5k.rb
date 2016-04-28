@@ -57,7 +57,7 @@ end
 # $GENERATE       1-4     ${8,0,d}   IN      PTR     graphite-$-ib0.nancy.grid5000.fr.
 def print_reverse_entry(site_uid, entry)
   if entry[:start].nil?
-    range     = "#{entry[:ip].split('.')[4]}"
+    range     = "#{entry[:ip].split('.')[3]}"
     hostshort = entry[:uid]
   elsif entry[:start] == entry[:end]
     range     = "#{entry[:start]+entry[:shift]}"
