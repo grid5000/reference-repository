@@ -97,6 +97,17 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['max_walltime'] = 0 # default
   h['max_walltime'] = node['supported_job_types']['max_walltime'] if node['supported_job_types'] && node['supported_job_types'].has_key?('max_walltime')
   
+  # convert booleans to YES/NO string
+  h.each {|k,v|
+    if v == true
+      h[k] = 'YES'
+    elsif v == false
+      h[k] = 'NO'
+    elsif v.is_a? Float
+      h[k] = "#{v}"
+    end
+  }
+
   return h
 end
 
