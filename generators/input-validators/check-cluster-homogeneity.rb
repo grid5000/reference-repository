@@ -107,6 +107,14 @@ eos
 end
 
 def cluster_homogeneity(refapi_hash, verbose=false)
+  if verbose
+    puts "The change set is represented using the following syntax:"
+    puts '  [["+", "path.to.key1", value],          # new key'
+    puts '   ["-", "path.to.key2", value],          # missing key'
+    puts '   ["~", "path.to.key3", value1, value2]] # modified value'
+    puts ''
+  end
+
   ignore_keys = global_ignore_keys()
   
   refapi_hash = load_yaml_file_hierarchy("../../input/grid5000/")
