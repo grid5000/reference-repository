@@ -43,8 +43,15 @@ def cluster_homogeneity(refapi_hash, verbose=false)
     pdu
     pdu.port
     pdu.uid
-  
+    pdu[0]
+    pdu[1]
+
     supported_job_types.max_walltime
+
+    mic.ip
+    mic.mac
+
+    status
   )
 
   ignore_netkeys = <<-eos
@@ -107,15 +114,37 @@ eos
         #next if node_uid != 'graphene-2'
         
         diffs = HashDiff.diff(refnode, node)
-        
+
+        # Hack HashDiff output for arrays:
+        #[["-", "pdu[1]", {"uid"=>"graphene-pdu9", "port"=>24}],
+        # ["-", "pdu[0]", {"uid"=>"graphene-pdu9", "port"=>23}],
+        # ["+", "pdu[0]", {"uid"=>"graphene-pdu9", "port"=>21}],
+        # ["+", "pdu[1]", {"uid"=>"graphene-pdu9", "port"=>22}]]
+        # => should be something like this:
+        # [["~", "pdu[0]", {"uid"=>"graphene-pdu9", "port"=>23}, {"uid"=>"graphene-pdu9", "port"=>22},
+        #  ["~", "pdu[1]", {"uid"=>"graphene-pdu9", "port"=>24}, {"uid"=>"graphene-pdu9", "port"=>23}}
+        d = diffs.select{|x| x[0] != '~' }.group_by{ |x| x[1] }
+        d.each { |k, v|
+          d[k] = v.group_by{ |x| x[0] }
+        }
+        d.each { |k,v|
+          if v.key?('-') && v.key?('+')
+            #puts "Warning: #{node_uid}: convert +/- -> ~ for #{k}"
+            diffs.delete(["-", k, v['-'][0][2]])
+            diffs.delete(["+", k, v['+'][0][2]])
+            diffs << ["~", k, v['-'][0][2], v['+'][0][2] ]
+          end
+        }
+        # end of hack
+
         # Remove keys that are specific to each nodes (ip, mac etc.)
         diffs.clone.each { |diff|
-          diffs.delete(diff) if diff[0] == '~' && ignore_keys.include?(diff[1])
+          diffs.delete(diff) if diff[0] == '~' && ignore_keys.include?(diff[1])         
         }
 
         if verbose && !diffs.empty?
-            puts "Differences between #{refnode_uid} and #{node_uid}:"
-            pp diffs
+          puts "Differences between #{refnode_uid} and #{node_uid}:"
+          pp diffs
         end
 
         count[site_uid][cluster_uid] += diffs.size
