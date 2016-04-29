@@ -106,6 +106,12 @@ eos
   return ignore_keys
 end
 
+def cluster_ignore_keys(filename)
+  file_hash = YAML::load(ERB.new(File.read(filename)).result(binding))
+  file_hash.expand_square_brackets() if file_hash
+  return file_hash
+end
+
 def cluster_homogeneity(refapi_hash, verbose=false)
   if verbose
     puts "The change set is represented using the following syntax:"
@@ -115,8 +121,9 @@ def cluster_homogeneity(refapi_hash, verbose=false)
     puts ''
   end
 
-  ignore_keys = global_ignore_keys()
-  
+  ignore_keys  = global_ignore_keys()
+  cignore_keys = cluster_ignore_keys("../input-validators/check-cluster-homogeneity.yaml.erb")
+
   refapi_hash = load_yaml_file_hierarchy("../../input/grid5000/")
   count = {}
   
@@ -157,8 +164,10 @@ def cluster_homogeneity(refapi_hash, verbose=false)
         # end of hack
 
         # Remove keys that are specific to each nodes (ip, mac etc.)
+        ikeys = cignore_keys[site_uid][node_uid] rescue nil
         diffs.clone.each { |diff|
           diffs.delete(diff) if ignore_keys.include?(diff[0] + diff[1])         
+          diffs.delete(diff) if ikeys && ikeys.include?(diff[0] + diff[1]) 
         }
 
         if verbose && !diffs.empty?
