@@ -16,72 +16,77 @@ dir = Pathname(__FILE__).parent
 
 require "#{dir}/../lib/input_loader"
 
-def cluster_homogeneity(refapi_hash, verbose=false)
+def global_ignore_keys()
+
+  #
+  # Global ignore keys
+  #
 
   ignore_keys = %w(
-    chassis.serial
+    ~chassis.serial
   
-    network_adapters.bmc.ip
-    network_adapters.bmc.mac
-    network_adapters.bmc.network_address
-    network_adapters.bmc.switch
-    network_adapters.bmc.switch_port
+    ~network_adapters.bmc.ip
+    ~network_adapters.bmc.mac
+    ~network_adapters.bmc.network_address
+    ~network_adapters.bmc.switch
+    ~network_adapters.bmc.switch_port
   
-    network_adapters.ib0.guid
-    network_adapters.ib0.hwid
-    network_adapters.ib0.ip
-    network_adapters.ib0.ip6
-    network_adapters.ib0.line_card
-    network_adapters.ib0.position
-    network_adapters.ib1.guid
+    ~network_adapters.ib0.guid
+    ~network_adapters.ib0.hwid
+    ~network_adapters.ib0.ip
+    ~network_adapters.ib0.ip6
+    ~network_adapters.ib0.line_card
+    ~network_adapters.ib0.position
+    ~network_adapters.ib1.guid
   
-    network_adapters.myri0.ip
-    network_adapters.myri0.ip6
-    network_adapters.myri0.mac
-    network_adapters.myri0.network_address
+    ~network_adapters.myri0.ip
+    ~network_adapters.myri0.ip6
+    ~network_adapters.myri0.mac
+    ~network_adapters.myri0.network_address
   
-    pdu
-    pdu.port
-    pdu.uid
-    pdu[0]
-    pdu[1]
+    ~pdu
+    ~pdu.port
+    ~pdu.uid
+    ~pdu[0]
+    ~pdu[1]
 
-    supported_job_types.max_walltime
+    ~supported_job_types.max_walltime
 
-    mic.ip
-    mic.mac
+    ~mic.ip
+    ~mic.mac
 
-    status
+    +status
+    -status
   )
 
   ignore_netkeys = <<-eos
-    network_adapters.eth.ip
-    network_adapters.eth.ip6
-    network_adapters.eth.mac
-    network_adapters.eth.network_address
-    network_adapters.eth.switch
-    network_adapters.eth.switch_port
-    network_adapters.eth.ip
-    network_adapters.eth.ip6
-    network_adapters.eth.mac
-    network_adapters.eth.switch_port
-    network_adapters.eth.ip
-    network_adapters.eth.ip6
-    network_adapters.eth.mac
-    network_adapters.eth.switch_port
-    network_adapters.eth.ip
-    network_adapters.eth.mac
-    network_adapters.eth.mac
-    network_adapters.eth.mac
+    ~network_adapters.eth.ip
+    ~network_adapters.eth.ip6
+    ~network_adapters.eth.mac
+    ~network_adapters.eth.network_address
+    ~network_adapters.eth.switch
+    ~network_adapters.eth.switch_port
+    ~network_adapters.eth.ip
+    ~network_adapters.eth.ip6
+    ~network_adapters.eth.mac
+    ~network_adapters.eth.switch_port
+    ~network_adapters.eth.ip
+    ~network_adapters.eth.ip6
+    ~network_adapters.eth.mac
+    ~network_adapters.eth.switch_port
+    ~network_adapters.eth.ip
+    ~network_adapters.eth.mac
+    ~network_adapters.eth.mac
+    ~network_adapters.eth.mac
 eos
 
   ignore_stokeys = <<-eos
-    storage_devices.sd.model
-    storage_devices.sd.rev
-    storage_devices.sd.size
-    storage_devices.sd.timeread
-    storage_devices.sd.timewrite
-    storage_devices.sd.vendor
+    ~storage_devices.sd.model
+    ~storage_devices.sd.rev
+    ~storage_devices.sd.size
+    ~storage_devices.sd.timeread
+    ~storage_devices.sd.timewrite
+    ~storage_devices.sd.vendor
 eos
 
   (0..5).each { |eth| 
@@ -89,7 +94,7 @@ eos
     ignore_keys.push(* keys)
 
     (1..21).each { |kavlan|
-      ignore_keys << "kavlan.eth#{eth}.kavlan-#{kavlan}"
+      ignore_keys << "~kavlan.eth#{eth}.kavlan-#{kavlan}"
     }
   }
 
@@ -98,6 +103,12 @@ eos
     ignore_keys.push(* keys)
   }
 
+  return ignore_keys
+end
+
+def cluster_homogeneity(refapi_hash, verbose=false)
+  ignore_keys = global_ignore_keys()
+  
   refapi_hash = load_yaml_file_hierarchy("../../input/grid5000/")
   count = {}
   
@@ -139,7 +150,7 @@ eos
 
         # Remove keys that are specific to each nodes (ip, mac etc.)
         diffs.clone.each { |diff|
-          diffs.delete(diff) if diff[0] == '~' && ignore_keys.include?(diff[1])         
+          diffs.delete(diff) if ignore_keys.include?(diff[0] + diff[1])         
         }
 
         if verbose && !diffs.empty?
