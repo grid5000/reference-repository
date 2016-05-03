@@ -200,6 +200,7 @@ def diff_node_properties(node_properties_oar, node_properties_ref)
                  "thread",
                  "type", # TODO
                  "vlan",
+                 "pdu",
                  "wattmeter" # TODO
                 ]
 
