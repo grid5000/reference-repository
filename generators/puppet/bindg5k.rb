@@ -230,19 +230,19 @@ refapi["sites"].each { |site_uid, site|
 
   # DNS (/modules/bindg5k/files/zones/nancy.db)
   manual = site_uid + '-manual.db'
-  dns.unshift("$INCLUDE #{manual}") if File.exist?(zones_dir + manual) # add include statement
+  dns.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(zones_dir + manual) # add include statement
 
   output_file = site_uid + '.db'
   header = ERB.new(File.read('templates/bind-header.erb')).result(binding)
-  File.write(zones_dir + output_file, header + dns.join("\n"))
+  File.write(zones_dir + output_file, header + dns.join("\n") + "\n")
 
   # Reverse DNS (/modules/bindg5k/files/zones/reverse-*db)
   reverse.each { |output_file, output|
     header = ERB.new(File.read('templates/bind-header.erb')).result(binding) # do not move outside of the loop (it uses the output_file variable)
     manual = output_file.sub('.db', '') + '-manual.db'
-    output.unshift("$INCLUDE #{manual}") if File.exist?(zones_dir + manual) # add include statement
-
-    File.write(zones_dir + output_file, header + output.join("\n"))
+    output.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(zones_dir + manual) # add include statement
+    
+    File.write(zones_dir + output_file, header + output.join("\n") + "\n")
   }
   
   # files/global/conf/global-nancy.conf

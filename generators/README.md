@@ -27,7 +27,7 @@ For the general design discussion, see:
 
 Requirements
 ------------
-Ruby 2.1 (+ HashDiff and Net/SSH for the oar-generator; + peach and ruby-cute for run-g5kchecks)
+Ruby 2.1 (+ HashDiff and Net/SSH for the oar-generator; + peach and ruby-cute for run-g5kchecks; + hash_validator for the input validators)
 
 Here is an example for creating a ruby setup with RVM (https://rvm.io/), gemset and bundle:
 $ \curl -sSL https://get.rvm.io | bash -s stable --ruby
@@ -96,8 +96,8 @@ The Reference API generator reads the input/ YAML files and generates the data/ 
 
 Usage: cd reference-api/; ruby reference-api.rb
 
-Update OAR properties
----------------------
+Updating the OAR properties
+---------------------------
 
 The generator can show the differences between the reference-repo and the OAR servers databases:
 
