@@ -85,6 +85,28 @@ nodes:
         gpu_vendor: Nvidia
         gpu_model: GTX 980
 
+  graphique-1:
+    network_adapters:
+      ib0:
+        enabled: false
+        mountable: false
+        mounted: false
+        management: false
+
+  graphique-6:
+    network_adapters:
+      ib0:
+        enabled: false
+        mountable: false
+        mounted: false
+        management: false
+
+  graphique-[2-5]:
+    network_adapters:
+      ib0:
+        enabled: true
+        mountable: true
+
   graphique-[1-2]:
     supported_job_types:
       max_walltime: 86400
