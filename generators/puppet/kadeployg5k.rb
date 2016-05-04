@@ -17,7 +17,7 @@ require '../lib/hash/hash.rb'
 
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 $output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
-$conf_dir   = ENV['conf_dir']    || Pathname("#{$output_dir}/modules/lanpowerg5k/generators/")
+$conf_dir   = ENV['conf_dir']    || Pathname("#{$output_dir}/modules/kadeployg5k/generators/")
 raise("Error: #{$conf_dir} does not exist. The environment variables are not set propertly") unless Pathname($conf_dir).exist?
 
 # Compute cluster prefix

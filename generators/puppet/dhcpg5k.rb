@@ -99,29 +99,32 @@ global_hash["sites"].each { |site_uid, site_hash|
                       "nodes"               => site_hash[key],
                       "network_adapters"    => ["eth", "bmc", "adm"],
                       "optional_network_adapters"  => ["bmc", "adm"]
-                    })
+                    }) unless site_hash[key].nil?
   }
 
   #
   # PDUs
   #
 
-  # Relocate ip/mac info of PDUS
-  site_hash['pdus'].each { |pdu_uid, pdu_hash|
-    if pdu_hash['ip'] && pdu_hash['mac']
-      pdu_hash['network_adapters'] ||= {}
-      pdu_hash['network_adapters']['pdu'] ||= {}
-      pdu_hash['network_adapters']['pdu']['ip']  = pdu_hash.delete('ip')
-      pdu_hash['network_adapters']['pdu']['mac'] = pdu_hash.delete('mac')
-    end
-  }
-
-  key = 'pdus'
-  write_dhcp_file({
-                    "filename"            => key + ".conf",
-                    "site_uid"            => site_uid,
-                    "nodes"               => site_hash['pdus'],
-                    "network_adapters"  => ['pdu'],
-                  })
+  if ! site_hash['pdus'].nil?
+    # Relocate ip/mac info of PDUS
+    site_hash['pdus'].each { |pdu_uid, pdu_hash|
+      if pdu_hash['ip'] && pdu_hash['mac']
+        pdu_hash['network_adapters'] ||= {}
+        pdu_hash['network_adapters']['pdu'] ||= {}
+        pdu_hash['network_adapters']['pdu']['ip']  = pdu_hash.delete('ip')
+        pdu_hash['network_adapters']['pdu']['mac'] = pdu_hash.delete('mac')
+      end
+    }
+    
+    key = 'pdus'
+    write_dhcp_file({
+                      "filename"            => key + ".conf",
+                      "site_uid"            => site_uid,
+                      "nodes"               => site_hash['pdus'],
+                      "network_adapters"  => ['pdu'],
+                      "optional_network_adapters"  => []
+                    })
+  end
 
 }

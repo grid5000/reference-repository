@@ -101,8 +101,7 @@ refapi["sites"].each { |site_uid, site|
         if ! eth_net_uid.include?(net_uid) && node['network_adapters'].size > 1
           hostsuffix = "-#{net_uid}"
         end
-          
-
+        
         new_entry = {
           :uid         => uid,
           :hostsuffix  => hostsuffix, # cacahuete vs. cacahuete-eth0
@@ -111,7 +110,7 @@ refapi["sites"].each { |site_uid, site|
         
         entries[key] << new_entry
       }
-    }
+    } unless site[key].nil?
   }
 
   # PDUs
@@ -127,7 +126,7 @@ refapi["sites"].each { |site_uid, site|
       entries['pdus'] << new_entry
 
     end
-  }
+  } unless site['pdus'].nil?
   
   site.fetch("clusters").sort.each { |cluster_uid, cluster|
     #next if cluster_uid != 'griffon'
