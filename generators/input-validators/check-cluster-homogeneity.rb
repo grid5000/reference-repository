@@ -112,7 +112,9 @@ def cluster_ignore_keys(filename)
   return file_hash
 end
 
-def cluster_homogeneity(refapi_hash, verbose=false)
+def cluster_homogeneity(refapi_hash, options = {:verbose => false})
+  verbose = options[:verbose]
+
   if verbose
     puts "The change set is represented using the following syntax:"
     puts '  [["+", "path.to.key1", value],          # new key'
@@ -128,9 +130,13 @@ def cluster_homogeneity(refapi_hash, verbose=false)
   count = {}
   
   refapi_hash["sites"].sort.each do |site_uid, site|
+    next if options.key?(:sites) && !options[:sites].include?(site_uid)
+
     count[site_uid] = {}
 
     site["clusters"].sort.each do |cluster_uid, cluster|
+      next if options.key?(:clusters) && !options[:clusters].include?(cluster_uid)
+
       count[site_uid][cluster_uid] = 0
 
       refnode_uid = cluster['nodes'].keys.sort.first
@@ -189,10 +195,11 @@ def cluster_homogeneity(refapi_hash, verbose=false)
   return count
 end
 
-def check_cluster_homogeneity(refapi_hash, verbose=false)
+def check_cluster_homogeneity(refapi_hash, options = {:verbose => false})
+  verbose = options[:verbose]
   puts "Differences found between successive nodes, per cluster:\n\n"
 
-  count = cluster_homogeneity(refapi_hash, verbose)
+  count = cluster_homogeneity(refapi_hash, options)
   puts "\n" if verbose
 
   puts count.to_yaml unless verbose
@@ -206,26 +213,44 @@ if __FILE__ == $0
   require 'optparse'
 
   options = {}
+  options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
 
   OptionParser.new do |opts|
     opts.banner = "Usage: check-cluster-homogeneity.rb [options]"
-
+    
     opts.separator ""
     opts.separator "Example: ruby check-cluster-homogeneity.rb -v"
+
+    ###
+    
     opts.separator ""
+    opts.separator "Filters:"
+    
+    opts.on('-s', '--sites a,b,c', Array, 'Select site(s)',
+            "Default: "+options[:sites].join(", ")) do |s|
+      raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
+      options[:sites] = s
+    end
+    
+    opts.on('-c', '--clusters a,b,c', Array, 'Select clusters(s). Default: all') do |s|
+      options[:clusters] = s
+    end
+    
+    opts.separator ""
+    opts.separator "Common options:"
 
     opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
       options[:verbose] ||= 0
       options[:verbose] = options[:verbose] + 1
     end
-  
+    
     # Print an options summary.
     opts.on_tail("-h", "--help", "Show this message") do
       puts opts
       exit
     end
   end.parse!
-
+  
   refapi_hash = load_yaml_file_hierarchy("#{dir}/../../input/grid5000/")
-  check_cluster_homogeneity(refapi_hash, options.key?(:verbose))
+  check_cluster_homogeneity(refapi_hash, options)
 end
