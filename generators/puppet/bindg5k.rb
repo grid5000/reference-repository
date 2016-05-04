@@ -82,7 +82,7 @@ end
 
 # Loop over Grid'5000 sites
 refapi["sites"].each { |site_uid, site|
-  next if site_uid != 'nancy'
+  #next if site_uid != 'nancy'
 
   entries = {}
 

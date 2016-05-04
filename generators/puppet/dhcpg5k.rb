@@ -53,7 +53,7 @@ end
 # Loop over Grid'5000 sites
 global_hash["sites"].each { |site_uid, site_hash|
   puts site_uid
-  next if site_uid != 'nancy'
+  #next if site_uid != 'nancy'
 
   #
   # eth, bmc and mic0

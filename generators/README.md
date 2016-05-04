@@ -13,9 +13,9 @@ This directory contains the input files and scripts needed for generating:
 
   Ex: $ oarsub -p "wattmeter=’YES’ and gpu=’YES’ and eth10g=’Y’"
 
-- ...
+- The configuration files of the following puppet modules: bindg5kb, conmang5k, dhcpg5k, kadeployg5k and lanpowerg5k.
 
-See also: https://www.grid5000.fr/mediawiki/index.php/Reference_Repository (parts of this page is outdated).
+See also: https://www.grid5000.fr/mediawiki/index.php/Reference_Repository.
 
 General Design
 --------------
@@ -134,6 +134,90 @@ This script can be tested with the oar-vagrant box (https://github.com/oar-team/
 See also: 
 * https://www.grid5000.fr/mediawiki/index.php/OAR_properties
 * https://www.grid5000.fr/mediawiki/index.php/OAR_properties_2.0
+
+Generating the DHCP, DNS, Kadeploy, Conman and Lanpower configurations
+----------------------------------------------------------------------
+
+Principles:
+* The source code and the templates of the generators are located in the reference-repo in the generators/puppet/ directory.
+* Additional configuration files (ex: console passwords, kadeploy tuning options etc.) are located within the puppet-repo in puppet-repo/modules/<module_name>/generators/.
+* You can either run the generators from the reference-repo or from the puppet-repo.
+* The output files of the generators are created directly at the right place in the puppet-repo directories 
+  (ie. you can use git diff to display the changes made by the generators before committing them).
+
+### Running the scripts from the puppet-repo
+
+You have to set the 'reference_repo' environment variable so that the generators find the source code, templates and reference-repo data:
+
+Usage example:
+
+$ (cd /tmp; git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/puppet-repo) # or use your existing local copy of the repository
+$ export reference_repo=/tmp/reference-repo
+$ cd puppet-repo/modules/<module_name>/generators/
+$ rake # run the generator for <module_name>
+
+### Running the scripts from the reference-repo
+
+It allows to run all the generators at once. You have to set the 'puppet_repo' environment variable so that the generators find the configuration files. Default is /tmp/puppet-repo.
+
+Usage example:
+
+$ (cd /tmp; git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/puppet-repo) # or use your existing local copy of the repository
+$ export puppet_repo=/tmp/puppet-repo
+$ rake
+
+You also can also run the generators one by one:
+
+$ ruby bindg5k.rb
+$ ruby conmang5k.rb
+$ ruby dhcpg5k.rb
+$ ruby kadeployg5k.rb
+$ ruby lanpowerg5k.rb
+
+To enable the standalone release of the generators, the conf-examples/ directory includes examples of configuration files and the generators can be run without access to the puppet-repo:
+$ conf_dir=conf-examples rake
+
+### Notes about the conmang5k/lanpowerg5k generators
+
+* The configuration is generated for both the clusters and servers entries of the reference-api.
+
+Example:
+
+sites:
+  rennes:
+    clusters:
+      parapide:
+        nodes:
+          parapide-[1-25]:
+    servers:
+      ceph:
+        nodes:
+          ceph[0-3]:
+
+* The configuration is shared between the module conmang5k and lanpowerg5k
+** Passwords are stored in puppet-repo/modules/conmang5k/generators/console-password.yaml
+** Additional configuration options are located in puppet-repo/modules/conmang5k/generators/console-password.yaml
+
+### Notes about the kadeplog5k generator
+
+* It generated both the configuration of the kadeploy and kadeploy-dev servers.
+* It generates the <site_uid>/clusters.conf and the <site_uid>/<cluster_uid>-clusters.conf files for each sites.
+* The template of the <site_uid>/<cluster_uid>-clusters.conf files is located in reference-repo/generators/puppet/templates/kadeployg5k.conf.erb.
+  It includes default parameters.
+* Cluster specific tuning options are located in puppet-repo/modules/kadeployg5k/generators/kadeployg5k.yaml and kadeployg5k-dev.yaml
+
+### Notes about the DNS and DHCP generators
+
+* Those generators are solely based on the data of the reference API.
+* DHCP and DNS entries are generated for nodes (including MIC accelerators), network equipments, pdus and dom0.
+  In addition, the DNS also has kavlan entries and the DHCP includes admin laptops.
+* The DNS script generates the global-<site_uid>.conf files and the zones/<site_uid>/*.db files.
+* DNS CNAME are generated for the main ethernet interface of the nodes.
+* DNS entries can be added manually to the configuration:
+** A new zone can be added directly to the ./zones/<site_uid>/ directory. Re-run the generator after adding the file to add the zone to the global-<site_uid>.conf files.
+** For existing zone, add a ./zones/<site_uid>/<zone_name>-manual.db file and re-run the generator. 
+   This file will get included automatically in the generated zone file called ./zones/<site_uid>/<zone_name>.db.
+   See bindg5k/files/zones/nancy/ for examples. <zone_name>-manual.db files do no need the usual headers ($TTL directives etc.) of zone files.
 
 How to add a new cluster
 ------------------------
