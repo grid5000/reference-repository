@@ -151,7 +151,7 @@ You have to set the 'reference_repo' environment variable so that the generators
 
 Usage example:
 
-$ (cd /tmp; git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/puppet-repo) # or use your existing local copy of the repository
+$ (cd /tmp; git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git) # or use your existing local copy of the repository
 $ export reference_repo=/tmp/reference-repo
 $ cd puppet-repo/modules/<module_name>/generators/
 $ rake # run the generator for <module_name>
