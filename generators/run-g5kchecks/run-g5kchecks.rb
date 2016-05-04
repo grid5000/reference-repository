@@ -136,7 +136,7 @@ def run_g5kcheck(site_uid, fnode_uid, options)
 
   begin
     Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params]) { |ssh|
-      output1 = ssh.exec!("sudo ssh -o StrictHostKeychecking=no root@#{fnode_uid} '/usr/bin/g5k-checks -m api'")
+      output1 = ssh.exec!("sudo ssh -o StrictHostKeychecking=no root@#{fnode_uid} 'sudo /usr/bin/g5k-checks -m api'")
       output2 = ssh.exec!("sudo ssh -q -o StrictHostKeychecking=no root@#{fnode_uid} 'cat /tmp/#{fnode_uid}.yaml'")
 
       if output2 == ''
