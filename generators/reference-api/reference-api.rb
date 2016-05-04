@@ -249,7 +249,7 @@ global_hash["sites"].each do |site_uid, site|
           network_adapter["switch"], network_adapter["switch_port"] = net_switch_port_lookup(site, node_uid, network_adapter["device"]) || net_switch_port_lookup(site, node_uid)
         else
           # Secondary network_adapter(s)
-          network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site_uid}.grid5000.fr" if network_adapter["enabled"] && network_adapter["mountable"] && !network_adapter.key?("network_address")
+          network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site_uid}.grid5000.fr" if network_adapter["mountable"] && !network_adapter.key?("network_address")
           if network_adapter["mountable"] || cluster_uid == 'grimoire'
             # || cluster_uid == 'grimoire' is a temporary hack. See #6757
             switch, port = net_switch_port_lookup(site, node_uid, network_adapter["device"])
