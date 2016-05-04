@@ -28,6 +28,7 @@ require '../lib/input_loader'
 
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
+options[:ssh] ||= {}
 
 OptionParser.new do |opts|
   opts.banner = "Usage: oar-properties.rb [options]"
@@ -83,21 +84,27 @@ OptionParser.new do |opts|
   opts.separator ""
   opts.separator "SSH options:"
 
-  opts.on('--ssh-keys k1,k2,k3', Array, 'SSH keys') do |k|
-    options[:ssh] ||= {}
-    options[:ssh][:params] ||= {}
-    options[:ssh][:params][:keys] ||= []
-    options[:ssh][:params][:keys] << k
-  end
-  
   opts.on('--vagrant', 'This option modifies the SSH parameters to use a vagrant box instead of Grid5000 servers.') do |v|
-    options[:ssh] ||= {}
     options[:ssh][:host] = '127.0.0.1' unless options[:ssh][:host]
     options[:ssh][:user] = 'vagrant'   unless options[:ssh][:user]
     options[:ssh][:params] ||= {}
     options[:ssh][:params][:keys] ||= []
     options[:ssh][:params][:keys] << '~/.vagrant.d/insecure_private_key'
     options[:ssh][:params][:port] = 2222 unless options[:ssh][:params][:port]
+  end
+
+  opts.on('--ssh-host hostname', String, "Hostname of the OAR server(s). Default: 'oar.%s.g5kadmin'") do |h|
+    options[:ssh][:host] = h
+  end
+
+  opts.on('--ssh-user login', String, "User login to connect the OAR server(s). Default: 'g5kadmin'") do |u|
+    options[:ssh][:user] = u
+  end
+
+  opts.on('--ssh-keys k1,k2,k3', Array, 'SSH keys') do |k|
+    options[:ssh][:params] ||= {}
+    options[:ssh][:params][:keys] ||= []
+    options[:ssh][:params][:keys] << k
   end
 
   ###
@@ -127,7 +134,6 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-options[:ssh] ||= {}
 options[:ssh][:user] = 'g5kadmin'        unless options[:ssh][:user]
 options[:ssh][:host] = 'oar.%s.g5kadmin' unless options[:ssh][:host]
 options[:ssh][:params] ||= {}
