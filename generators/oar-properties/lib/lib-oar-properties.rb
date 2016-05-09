@@ -235,14 +235,20 @@ def diff_node_properties(node_properties_oar, node_properties_ref)
 
 end
 
-# Return a list of properties
+# Return a list of properties (as a hash: { property1 => String, property2 => Fixnum, ... })
+# We try to detect the type of the property (Fixnum/String) by looking at the existing values. This is not possible if no value is set (NilClass).
 def get_property_keys(nodelist_properties)
-  properties_keys = Set.new []
+  properties_keys = {}
   nodelist_properties.each { |site_uid, site_properties| 
     # We do not use site/cluster/node filters here as we want the same list of properties across OAR servers
     site_properties.each { |node_uid, node_properties| 
       next if node_uid == nil
-      properties_keys.merge(node_properties.keys)
+      
+      node_properties.each { |k, v|
+        unless properties_keys.key?(k) && NilClass === v
+          properties_keys[k] = v.class
+        end
+      }
     }
   }
   return properties_keys
@@ -339,8 +345,14 @@ end
 
 def oarcmd_create_properties(properties_keys)
   command = ""
-  properties_keys.each { |key|
-    command += "oarproperty -a #{key} || true\n"
+  properties_keys.each { |key, type|
+    if type == Fixnum
+      command += "oarproperty -a #{key} || true\n"
+    elsif type == String
+      command += "oarproperty -a #{key} --varchar || true\n"
+    else
+      raise "Error: the type of the '#{key}' property is unknown (Integer/String). Cannot generate the corresponding 'oarproperty' command."
+    end
   }
   return command
 end
