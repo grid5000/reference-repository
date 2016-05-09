@@ -66,6 +66,17 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['ib56g']           = ib56g ? true : false
   h['ib56gmodel']      = ib56g ? ib56g['version'] : 'none'
 
+  h['ib']              = h['ib10g'] || h['ib20g'] || h['ib40g'] || h['ib56g']
+  h['ib_sdr']          = h['ib10g']
+  h['ib_ddr']          = h['ib20g']
+  h['ib_qdr']          = h['ib40g']
+  h['ib_fdr']          = h['ib56g']
+
+  h['ib_sdr_model']    = h['ib10gmodel']
+  h['ib_ddr_model']    = h['ib20gmodel']
+  h['ib_qdr_model']    = h['ib40gmodel']
+  h['ib_fdr_model']    = h['ib56gmodel']
+
   myri10g              = node['network_adapters'].values.detect{|na| na['interface'] =~ /myri/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 10_000_000_000}
   h['myri10g']         = myri10g ? true : false
   h['myri10gmodel']    = myri10g ? myri10g['version'] : 'none'
@@ -73,6 +84,8 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   myri2g               = node['network_adapters'].values.detect{|na| na['interface'] =~ /myri/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 2_000_000_000}
   h['myri2g']          = myri2g ? true : false
   h['myri2gmodel']     = myri2g ? myri2g['version'] : 'none'
+
+  h['myri']            = h['myri2g'] || h['myri10g']
 
   h['memcore']         = node['main_memory']['ram_size']/node['architecture']['smt_size']/MiB
   h['memcpu']          = node['main_memory']['ram_size']/node['architecture']['smp_size']/MiB
