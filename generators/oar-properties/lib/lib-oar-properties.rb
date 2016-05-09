@@ -352,10 +352,15 @@ def ssh_exec(site_uid, cmds, options)
   c = Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params])
   c.open_channel { |channel|
     channel.exec('sudo bash') { |ch, success|
+      # stdout
       channel.on_data { |ch, data|
         puts data #if options[:verbose] # ssh cmd output
       }
-      
+      # stderr
+      channel.on_extended_data do |ch, type, data|
+        puts data
+      end
+
       cmds.each { |cmd| 
         channel.send_data cmd 
       }
