@@ -271,6 +271,10 @@ if options[:diff]
   } 
  
   puts "Properties that need to be created on the server: #{properties_keys["diff"].keys.to_a.join(', ')}" if options[:verbose] && properties_keys["diff"].keys.size>0
+
+  # Detect unknown properties
+  # unknown_properties = properties_keys["oar"].keys.to_set - properties_keys["ref"].keys.to_set
+  # puts "Properties existing on the server but not managed by the generator: #{unknown_properties.to_a.join(', ')}" if options[:verbose] && unknown_properties.size>0
 end # if options[:diff]
 
 #
