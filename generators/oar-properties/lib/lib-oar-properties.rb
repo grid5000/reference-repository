@@ -25,7 +25,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   end
 
   main_network_adapter = node['network_adapters'].values.find{ |na| na['enabled'] && na['mounted'] && na['interface'] =~ /ethernet/i && !na['management'] }
-  main_network_adapter = node['network_adapters'].values.find{ |na| na['enabled'] && na['mounted'] }
+  #main_network_adapter = node['network_adapters'].values.find{ |na| na['enabled'] && na['mounted'] }
   raise MissingProperty, "Node #{node_uid} does not have a main network_adapter" unless main_network_adapter
 
   #  h['host']            = main_network_adapter['network_address']
