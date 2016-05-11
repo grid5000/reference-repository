@@ -89,7 +89,7 @@ refapi["sites"].each { |site_uid, site|
   ["networks", "laptops", "dom0"].each { |key|
     entries[key] ||= []
     
-    site[key].each { |uid, node| 
+    site[key].sort.each { |uid, node| 
       if node['network_adapters'].nil?
         puts "Warning: no network_adapters for #{uid}" 
         next
@@ -115,7 +115,7 @@ refapi["sites"].each { |site_uid, site|
 
   # PDUs
   entries['pdus'] ||= []
-  site['pdus'].each { |pdu_uid, pdu|
+  site['pdus'].sort.each { |pdu_uid, pdu|
     if pdu['ip']
 
       new_entry = {
