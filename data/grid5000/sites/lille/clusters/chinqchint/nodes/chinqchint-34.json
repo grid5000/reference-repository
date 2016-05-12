@@ -9,16 +9,26 @@
     "vendor": "Phoenix Technologies LTD",
     "version": 6.0
   },
+  "bmc": {
+    "ip": "172.17.34.134",
+    "mac": "00:30:48:94:38:87"
+  },
   "chassis": {
     "manufacturer": "SGI.COM",
     "name": "AltixXE310",
     "serial": "X0004754"
   },
+  "eth0": {
+    "ip6": "fe80::230:48ff:fe7a:5f16"
+  },
+  "eth1": {
+    "ip6": "fe80::230:48ff:fe7a:5f17"
+  },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 8393850880,
+    "ram_size": 8391753728,
     "virtual_size": null
   },
   "monitoring": {
@@ -29,15 +39,10 @@
       "bridged": false,
       "device": "eth0",
       "driver": "e1000e",
-      "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.17.34.34",
       "mac": "00:30:48:7a:5f:16",
       "management": false,
-      "mountable": true,
       "mounted": false,
-      "network_address": "chinqchint-34-eth0.lille.grid5000.fr",
-      "rate": 1000000000,
       "switch": "gw-lille",
       "vendor": "Intel",
       "version": "80003ES2LAN"
@@ -46,15 +51,11 @@
       "bridged": true,
       "device": "eth1",
       "driver": "e1000e",
-      "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.34.34",
-      "ip6": "fe80::230:48ff:fe7a:5f17",
       "mac": "00:30:48:7a:5f:17",
       "management": false,
-      "mountable": true,
       "mounted": true,
-      "network_address": "chinqchint-34.lille.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw-lille",
       "switch_port": "GigabitEthernet4/34",
@@ -63,17 +64,8 @@
     },
     {
       "device": "myri0",
-      "driver": "mx ethernet (myri)",
-      "enabled": false,
-      "interface": "Myrinet",
-      "ip": "172.18.47.134",
-      "ip6": "fe80::260:ddff:fe47:49b8",
-      "mac": "00:60:dd:47:49:b8",
       "management": false,
-      "mountable": true,
-      "mounted": false,
       "network_address": "chinqchint-34-myri0.lille.grid5000.fr",
-      "rate": 10000000000,
       "switch": "switch-myri",
       "vendor": "Myricom",
       "version": "10G-PCIE-8A-C"
@@ -82,8 +74,6 @@
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.17.34.134",
-      "mac": null,
       "management": true,
       "mountable": false,
       "mounted": false,
