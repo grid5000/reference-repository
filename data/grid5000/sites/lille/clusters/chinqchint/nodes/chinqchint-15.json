@@ -9,20 +9,10 @@
     "vendor": "Phoenix Technologies LTD",
     "version": 6.0
   },
-  "bmc": {
-    "ip": "172.17.34.115",
-    "mac": "00:30:48:96:25:b9"
-  },
   "chassis": {
     "manufacturer": "SGI.COM",
     "name": "AltixXE310",
     "serial": "X0004741"
-  },
-  "eth0": {
-    "ip6": "fe80::230:48ff:fe7c:7f9e"
-  },
-  "eth1": {
-    "ip6": "fe80::230:48ff:fe7c:7f9f"
   },
   "gpu": {
     "gpu": false
@@ -41,6 +31,7 @@
       "driver": "e1000e",
       "enabled": true,
       "interface": "Ethernet",
+      "ip6": "fe80::230:48ff:fe7c:7f9e",
       "mac": "00:30:48:7c:7f:9e",
       "management": false,
       "mounted": true,
@@ -58,6 +49,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.34.15",
+      "ip6": "fe80::230:48ff:fe7c:7f9f",
       "mac": "00:30:48:7c:7f:9f",
       "management": false,
       "mounted": true,
@@ -80,6 +72,8 @@
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
+      "ip": "172.17.34.115",
+      "mac": "00:30:48:96:25:b9",
       "management": true,
       "mountable": false,
       "mounted": false,
