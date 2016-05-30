@@ -1,28 +1,10 @@
 {
   "backplane_bps": 346000000000,
   "channels": {
-    "lacp1": [
-      {
-        "linecard": 1,
-        "port": 24
-      }
-    ],
-    "lacp2": [
-      {
-        "linecard": 1,
-        "port": 9
-      }
-    ],
     "lacp3": [
       {
         "linecard": 1,
         "port": 23
-      }
-    ],
-    "lacp4": [
-      {
-        "linecard": 1,
-        "port": 17
       }
     ],
     "naming_pattern": "Po%CHANNELID%",
@@ -41,17 +23,12 @@
         {
         },
         {
-          "kind": "other",
-          "uid": "sgrapheneib"
         },
         {
-          "kind": "other",
-          "port": "bmc",
-          "uid": "fgriffon2"
         },
         {
-          "kind": "other",
-          "uid": "stalc1-ipmi"
+          "kind": "virtual",
+          "uid": "TALC-ADM"
         },
         {
           "kind": "switch",
@@ -62,6 +39,9 @@
         {
         },
         {
+          "kind": "other",
+          "port": "bmc",
+          "uid": "fgriffon2"
         },
         {
           "kind": "other",
@@ -86,32 +66,20 @@
         {
         },
         {
-          "kind": "other",
-          "uid": "sgraphene1-ipmi"
-        },
-        {
-          "kind": "other",
-          "uid": "sgraphene2-ipmi"
-        },
-        {
-          "kind": "other",
-          "uid": "sgraphene3-ipmi"
-        },
-        {
-          "kind": "other",
-          "uid": "sgraphene4-ipmi"
         },
         {
         },
         {
-          "kind": "virtual",
-          "uid": "LORIA"
         },
         {
         },
         {
-          "kind": "other",
-          "uid": "sgriffon1-ipmi"
+        },
+        {
+        },
+        {
+        },
+        {
         },
         {
         },
@@ -196,7 +164,7 @@
     },
     {
       "backplane_bps": 14400000000,
-      "kind": "other",
+      "kind": "router",
       "model": "J9538A",
       "naming_pattern": "%LINECARD:F%%PORT%",
       "ports": [
@@ -205,20 +173,6 @@
         {
           "kind": "router",
           "uid": "gw-nancy"
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-          "kind": "virtual",
-          "uid": "srv"
-        },
-        {
-          "kind": "virtual",
-          "uid": "srv"
         }
       ],
       "rate": 10000000000,

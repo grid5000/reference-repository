@@ -68,19 +68,16 @@ sgravillon1:
       kind: other
       rate: 1000000000
       ports:
-        1:
-          kind: other
-          uid: sgrapheneib
-        2:
-          port: bmc
-          uid: fgriffon2
-          kind: other
         3:
-          uid: stalc1-ipmi
-          kind: other
+          uid: TALC-ADM
+          kind: virtual
         4:
           uid: stalc1
           kind: switch
+        7:
+          uid: fgriffon2
+          port: bmc
+          kind: other
         8:
           port: eth0
           uid: grog
@@ -96,24 +93,6 @@ sgravillon1:
         11:
           port: eth0
           uid: fgriffon1
-          kind: other
-        13:
-          uid: sgraphene1-ipmi
-          kind: other
-        14:
-          uid: sgraphene2-ipmi
-          kind: other
-        15:
-          uid: sgraphene3-ipmi
-          kind: other
-        16:
-          uid: sgraphene4-ipmi
-          kind: other
-        18:
-          uid: LORIA
-          kind: virtual
-        20:
-          uid: sgriffon1-ipmi
           kind: other
         23:
           port: eth1
@@ -163,34 +142,16 @@ sgravillon1:
       snmp_pattern: "F%PORT%"
       backplane_bps: 14400000000
       model: J9538A
-      kind: other
+      kind: router
       rate: 10000000000
       ports:
         1:
           uid: gw-nancy
           kind: router
-        5:
-          uid: srv
-          kind: virtual
-        6:
-          uid: srv
-          kind: virtual
   channels:
     naming_pattern: Po%CHANNELID%
     snmp_pattern: Trk%CHANNELID%
-    "lacp1":
-        - linecard: 1
-          port: 22
-          port: 24
-    "lacp2":
-        - linecard: 1
-          port: 8
-          port: 9
     "lacp3":
         - linecard: 1
           port: 11
           port: 23
-    "lacp4":
-        - linecard: 1
-          port: 12
-          port: 17
