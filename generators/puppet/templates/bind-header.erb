@@ -12,4 +12,4 @@ $TTL 3h
 @			IN	NS	dns.grid5000.fr.<%
 if output_file == "#{site_uid}.db" %>
 @                      IN      A       <%= site['frontend_ip'] %><% end %>
-@                 MX    10      mail.nancy.grid5000.fr.
+@                 MX    10      mail.<%= site_uid %>.grid5000.fr.
