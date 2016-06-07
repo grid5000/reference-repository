@@ -67,17 +67,6 @@ nodes:
         bridged: false
         vendor: intel
         version: 82574L
-      ib0:
-        enabled: true
-        mountable: true
-        vendor: Mellanox
-        version: MT26418
-        switch: sgrapheneib
-      ib1:
-        enabled: false
-        mountable: false
-        vendor: Mellanox
-        version: MT26418
       bmc:
         interface: Ethernet
         rate: 100000000
@@ -93,9 +82,14 @@ nodes:
       power:
         available: true
 
-  graphene-[26-144]:
+  graphene-[1-72]:
     network_adapters:
       ib0:
+        enabled: true
+        mountable: true
+        vendor: Mellanox
+        version: MT26418
+        switch: sgrapheneib
         driver: mlx4_core
         interface: InfiniBand
         management: false
@@ -103,6 +97,38 @@ nodes:
         rate: 20000000000
         version: MT26418
       ib1:
+        enabled: false
+        mountable: false
+        vendor: Mellanox
+        version: MT26418
+        driver: mlx4_core
+        enabled: false
+        interface: InfiniBand
+        management: false
+        mountable: false
+        mounted: false
+        rate: 10000000000
+        version: MT26418
+  
+  graphene-[85-144]:
+    network_adapters:
+      ib0:
+        enabled: true
+        mountable: true
+        vendor: Mellanox
+        version: MT26418
+        switch: sgrapheneib
+        driver: mlx4_core
+        interface: InfiniBand
+        management: false
+        mounted: true
+        rate: 20000000000
+        version: MT26418
+      ib1:
+        enabled: false
+        mountable: false
+        vendor: Mellanox
+        version: MT26418
         driver: mlx4_core
         enabled: false
         interface: InfiniBand
@@ -1196,12 +1222,6 @@ nodes:
         mac: 00:e0:81:d5:08:7b
       eth0:
         ip6: fe80::2e0:81ff:fed5:878
-      ib0:
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:f5
-        ip: 172.18.64.79
-        ip6: fe80::202:c903:b:92f5
-      ib1:
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:f6
   graphene-8:
     chassis:
       serial: 1009390010
