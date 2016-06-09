@@ -141,30 +141,17 @@ Generating the DHCP, DNS, Kadeploy, Conman and Lanpower configurations
 Principles:
 * The source code and the templates of the generators are located in the reference-repo in the generators/puppet/ directory.
 * Additional configuration files (ex: console passwords, kadeploy tuning options etc.) are located within the puppet-repo in puppet-repo/modules/<module_name>/generators/.
-* You can either run the generators from the reference-repo or from the puppet-repo.
 * The output files of the generators are created directly at the right place in the puppet-repo directories 
   (ie. you can use git diff to display the changes made by the generators before committing them).
 
-### Running the scripts from the puppet-repo
-
-You have to set the 'reference_repo' environment variable so that the generators find the source code, templates and reference-repo data:
-
-Usage example:
-
-$ (cd /tmp; git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/reference-repository.git) # or use your existing local copy of the repository
-$ export reference_repo=/tmp/reference-repo
-$ cd puppet-repo/modules/<module_name>/generators/
-$ rake # run the generator for <module_name>
-
-### Running the scripts from the reference-repo
-
-It allows to run all the generators at once. You have to set the 'puppet_repo' environment variable so that the generators find the configuration files. Default is /tmp/puppet-repo.
+To run the generators, you have to set the 'puppet_repo' environment variable so that the generators find the configuration files. Default is /tmp/puppet-repo.
 
 Usage example:
 
 $ (cd /tmp; git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/puppet-repo) # or use your existing local copy of the repository
 $ export puppet_repo=/tmp/puppet-repo
-$ rake
+$ cd reference-repo/generators/puppet
+$ rake # run every generator
 
 You also can also run the generators one by one:
 
