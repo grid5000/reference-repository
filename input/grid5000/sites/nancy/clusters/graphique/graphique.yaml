@@ -84,14 +84,12 @@ nodes:
         gpu_count: 2
         gpu_vendor: Nvidia
         gpu_model: GTX 980
-
-  graphique-1:
-    network_adapters:
-      ib0:
-        enabled: false
-        mountable: false
-        mounted: false
-        management: false
+    sensors:
+      power:
+        available: true
+        via:
+          api: 
+            metric: pdu
 
   graphique-6:
     network_adapters:
@@ -101,7 +99,7 @@ nodes:
         mounted: false
         management: false
 
-  graphique-[2-5]:
+  graphique-[1-5]:
     network_adapters:
       ib0:
         enabled: true

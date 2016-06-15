@@ -25,7 +25,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "multiple"
   },
   "network_adapters": [
     {
@@ -100,6 +100,7 @@
       "mounted": true,
       "network_address": "graphique-3-ib0.nancy.grid5000.fr",
       "rate": 56000000000,
+      "switch": "sgraoullyib",
       "version": "MT4099"
     },
     {
@@ -112,7 +113,8 @@
       "mountable": false,
       "mounted": false,
       "network_address": "graphique-3-bmc.nancy.grid5000.fr",
-      "rate": 1000000000
+      "rate": 1000000000,
+      "switch": "sbaie1-ipmi"
     }
   ],
   "operating_system": {
@@ -139,6 +141,24 @@
     "version": "E5-2620 v3"
   },
   "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 6,
+            "uid": "graoully-pdu1"
+          },
+          {
+            "port": 17,
+            "uid": "graoully-pdu2"
+          }
+        ]
+      }
+    }
   },
   "storage_devices": [
     {
