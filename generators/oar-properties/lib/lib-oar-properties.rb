@@ -79,39 +79,6 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['myri2g']          = myri2g ? true : false
   h['myri2gmodel']     = myri2g ? myri2g['version'] : 'none'
 
-  # TO BE REMOVED
-  h['ethnb']  = h['eth_count'] 
-  h['eth10g'] = (h['eth_rate'] == 10 ? true : false)
-
-  h['ib10g']  = (h['ib_rate']  == 10 ? true : false)
-  h['ib20g']  = (h['ib_rate']  == 20 ? true : false)
-  h['ib40g']  = (h['ib_rate']  == 40 ? true : false)
-  h['ib56g']  = (h['ib_rate']  == 56 ? true : false)
-
-  h['ib10gmodel'] = 'none'
-  h['ib20gmodel'] = 'none'
-  h['ib40gmodel'] = 'none'
-  h['ib56gmodel'] = 'none'
-  if h['ib_rate'] > 0
-    ni_mountable = node['network_adapters'].values.select{|na| na['interface'] =~ /infiniband/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
-    ni_fastest   = ni_mountable.max_by{|na| na['rate']}
-    h["ib#{h['ib_rate']}gmodel"] = ni_fastest['version'] rescue 'none'
-  end
-  #h['ib']             = h['ib10g'] || h['ib20g'] || h['ib40g'] || h['ib56g']
-  h['ib_sdr']          = h['ib10g']
-  h['ib_ddr']          = h['ib20g']
-  h['ib_qdr']          = h['ib40g']
-  h['ib_fdr']          = h['ib56g']
-
-  h['ib_sdr_model']    = h['ib10gmodel']
-  h['ib_ddr_model']    = h['ib20gmodel']
-  h['ib_qdr_model']    = h['ib40gmodel']
-  h['ib_fdr_model']    = h['ib56gmodel']
-
-  h['myri2g']  = (h['myri_rate']  == 2 ? true : false)
-  h['myri10g'] = (h['myri_rate']  == 10 ? true : false)
-  #h['myri']    = h['myri2g'] || h['myri10g']
-
   #
   h['memcore']         = node['main_memory']['ram_size']/node['architecture']['smt_size']/MiB
   h['memcpu']          = node['main_memory']['ram_size']/node['architecture']['smp_size']/MiB
