@@ -45,28 +45,59 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['cputype']         = [node['processor']['model'], node['processor']['version']].join(' ')
   h['cpufreq']         = node['processor']['clock_speed']/1_000_000_000.0
   h['disktype']        = (node['storage_devices'].first[1] || {})['interface']
-  h['ethnb']           = node['network_adapters'].values.select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}.length
 
-  eth10g               = node['network_adapters'].values.select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
-  h['eth10g']          = eth10g.detect{|na| na['rate'] == 10_000_000_000}.nil? ? false : true
+  # ETH
+  ni_mountable = node['network_adapters'].values.select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
+  ni_fastest   = ni_mountable.max_by{|na| na['rate']}
+  
+  h['eth_count'] = ni_mountable.length
+  h['eth_rate']  = ni_fastest['rate'] / 1_000_000_000
+  
+  # INFINIBAND
+  ni_mountable = node['network_adapters'].values.select{|na| na['interface'] =~ /infiniband/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
+  ni_fastest   = ni_mountable.max_by{|na| na['rate']}
+  ib_map = {0 => 'NO', 10 => 'SDR', 20 => 'DDR', 40 => 'QDR', 56 => 'FDR'}
 
-  ib10g                = node['network_adapters'].values.detect{|na| na['interface'] =~ /infiniband/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 10_000_000_000}
-  h['ib10g']           = ib10g ? true : false
-  h['ib10gmodel']      = ib10g ? ib10g['version'] : 'none'
+  h['ib_count'] = ni_mountable.length
+  h['ib_rate']  = ni_mountable.length > 0 ? ni_fastest['rate'] / 1_000_000_000 : 0
+  h['ib']  = ib_map[h['ib_rate']]
 
-  ib20g                = node['network_adapters'].values.detect{|na| na['interface'] =~ /infiniband/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 20_000_000_000}
-  h['ib20g']           = ib20g ? true : false
-  h['ib20gmodel']      = ib20g ? ib20g['version'] : 'none'
+  # MYRINET
+  ni_mountable = node['network_adapters'].values.select{|na| na['interface'] =~ /myri/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
+  ni_fastest   = ni_mountable.max_by{|na| na['rate']}
+  myri_map = {0 => 'NO', 2 => 'Myrinet-2000', 10 => 'Myri-10G'}
 
-  ib40g                = node['network_adapters'].values.detect{|na| na['interface'] =~ /infiniband/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 40_000_000_000}
-  h['ib40g']           = ib40g ? true : false
-  h['ib40gmodel']      = ib40g ? ib40g['version'] : 'none'
+  h['myri_count'] = ni_mountable.length
+  h['myri_rate']  = ni_mountable.length > 0 ? ni_fastest['rate'] / 1_000_000_000 : 0
+  h['myri']  = myri_map[h['myri_rate']]
 
-  ib56g                = node['network_adapters'].values.detect{|na| na['interface'] =~ /infiniband/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 56_000_000_000}
-  h['ib56g']           = ib56g ? true : false
-  h['ib56gmodel']      = ib56g ? ib56g['version'] : 'none'
+  myri10g              = node['network_adapters'].values.detect{|na| na['interface'] =~ /myri/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 10_000_000_000}
+  h['myri10g']         = myri10g ? true : false
+  h['myri10gmodel']    = myri10g ? myri10g['version'] : 'none'
 
-  h['ib']              = h['ib10g'] || h['ib20g'] || h['ib40g'] || h['ib56g']
+  myri2g               = node['network_adapters'].values.detect{|na| na['interface'] =~ /myri/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 2_000_000_000}
+  h['myri2g']          = myri2g ? true : false
+  h['myri2gmodel']     = myri2g ? myri2g['version'] : 'none'
+
+  # TO BE REMOVED
+  h['ethnb']  = h['eth_count'] 
+  h['eth10g'] = (h['eth_rate'] == 10 ? true : false)
+
+  h['ib10g']  = (h['ib_rate']  == 10 ? true : false)
+  h['ib20g']  = (h['ib_rate']  == 20 ? true : false)
+  h['ib40g']  = (h['ib_rate']  == 40 ? true : false)
+  h['ib56g']  = (h['ib_rate']  == 56 ? true : false)
+
+  h['ib10gmodel'] = 'none'
+  h['ib20gmodel'] = 'none'
+  h['ib40gmodel'] = 'none'
+  h['ib56gmodel'] = 'none'
+  if h['ib_rate'] > 0
+    ni_mountable = node['network_adapters'].values.select{|na| na['interface'] =~ /infiniband/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
+    ni_fastest   = ni_mountable.max_by{|na| na['rate']}
+    h["ib#{h['ib_rate']}gmodel"] = ni_fastest['version'] rescue 'none'
+  end
+  #h['ib']             = h['ib10g'] || h['ib20g'] || h['ib40g'] || h['ib56g']
   h['ib_sdr']          = h['ib10g']
   h['ib_ddr']          = h['ib20g']
   h['ib_qdr']          = h['ib40g']
@@ -77,16 +108,11 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['ib_qdr_model']    = h['ib40gmodel']
   h['ib_fdr_model']    = h['ib56gmodel']
 
-  myri10g              = node['network_adapters'].values.detect{|na| na['interface'] =~ /myri/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 10_000_000_000}
-  h['myri10g']         = myri10g ? true : false
-  h['myri10gmodel']    = myri10g ? myri10g['version'] : 'none'
+  h['myri2g']  = (h['myri_rate']  == 2 ? true : false)
+  h['myri10g'] = (h['myri_rate']  == 10 ? true : false)
+  #h['myri']    = h['myri2g'] || h['myri10g']
 
-  myri2g               = node['network_adapters'].values.detect{|na| na['interface'] =~ /myri/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 2_000_000_000}
-  h['myri2g']          = myri2g ? true : false
-  h['myri2gmodel']     = myri2g ? myri2g['version'] : 'none'
-
-  h['myri']            = h['myri2g'] || h['myri10g']
-
+  #
   h['memcore']         = node['main_memory']['ram_size']/node['architecture']['smt_size']/MiB
   h['memcpu']          = node['main_memory']['ram_size']/node['architecture']['smp_size']/MiB
   h['memnode']         = node['main_memory']['ram_size']/MiB
