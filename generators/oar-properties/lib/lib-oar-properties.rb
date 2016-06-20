@@ -139,9 +139,7 @@ def get_nodelist_properties(site_uid, site)
   return properties
 end
 
-def diff_node_properties(node_properties_oar, node_properties_ref)
-  node_properties_oar ||= {}
-  node_properties_ref ||= {}
+def ignore_keys()
 
   # default OAR at resource creation:
   #  available_upto: '2147483647'
@@ -209,6 +207,12 @@ def diff_node_properties(node_properties_oar, node_properties_ref)
                  "pdu",
                  "wattmeter" # TODO
                 ]
+
+end
+
+def diff_node_properties(node_properties_oar, node_properties_ref)
+  node_properties_oar ||= {}
+  node_properties_ref ||= {}
 
   ignore_keys.each { |key| node_properties_oar.delete(key) }
   ignore_keys.each { |key| node_properties_ref.delete(key) }
@@ -344,7 +348,7 @@ def oarcmd_create_properties(properties_keys)
     elsif type == String
       command += "oarproperty -a #{key} --varchar || true\n"
     else
-      raise "Error: the type of the '#{key}' property is unknown (Integer/String). Cannot generate the corresponding 'oarproperty' command."
+      raise "Error: the type of the '#{key}' property is unknown (Integer/String). Cannot generate the corresponding 'oarproperty' command. You must create this property manually ('oarproperty -a #{key} [--varchar]')"
     end
   }
   return command

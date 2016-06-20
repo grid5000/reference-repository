@@ -273,8 +273,12 @@ if options[:diff]
   puts "Properties that need to be created on the server: #{properties_keys["diff"].keys.to_a.join(', ')}" if options[:verbose] && properties_keys["diff"].keys.size>0
 
   # Detect unknown properties
-  # unknown_properties = properties_keys["oar"].keys.to_set - properties_keys["ref"].keys.to_set
-  # puts "Properties existing on the server but not managed by the generator: #{unknown_properties.to_a.join(', ')}" if options[:verbose] && unknown_properties.size>0
+  unknown_properties = properties_keys["oar"].keys.to_set - properties_keys["ref"].keys.to_set
+  ignore_keys.each { |key| unknown_properties.delete(key) }
+  if options[:verbose] && unknown_properties.size>0
+    puts "Properties existing on the server but not managed/known by the generator: #{unknown_properties.to_a.join(', ')}." 
+    puts "Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb." 
+  end
 end # if options[:diff]
 
 #
