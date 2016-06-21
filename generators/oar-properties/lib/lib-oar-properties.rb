@@ -83,8 +83,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
 
   node['gpu']  ||= {}
   h['gpu']             = case node['gpu']['gpu'] when true; true; when false; false when nil; false; else node['gpu']['gpu'].upcase end
-  h['gpu_count']       = node['gpu']['gpu_count']
-  h['gpu_model']       = node['gpu']['gpu_model']
+  h['gpu_count']       = node['gpu']['gpu_count'].nil? ? 0 : node['gpu']['gpu_count']
 
   node['monitoring'] ||= {}
 
@@ -239,9 +238,12 @@ def get_property_keys(nodelist_properties)
       next if node_uid == nil
       
       node_properties.each { |k, v|
-        unless properties_keys.key?(k) && NilClass === v
-          properties_keys[k] = v.class
-        end
+        next if properties_keys.key?(k)
+        next if NilClass === v # we cannot infer type if v is nil
+        next if v == false # also skip detection if 'v == false' because it seems that if a varchar property only as 'NO' values, 
+                           # it might be interpreted as a boolean (see the ib property at nantes: ib: NO in the YAML instead of ib: 'NO')
+                           # ... to be fixed ?
+        properties_keys[k] = v.class
       }
     }
   }
