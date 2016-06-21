@@ -24,8 +24,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
     return h if node.size == 1 # for dead nodes, additional information is most likely missing from the ref-repository.
   end
 
-  main_network_adapter = node['network_adapters'].values.find{ |na| na['enabled'] && na['mounted'] && na['interface'] =~ /ethernet/i && !na['management'] }
-  #main_network_adapter = node['network_adapters'].values.find{ |na| na['enabled'] && na['mounted'] }
+  main_network_adapter = node['network_adapters'].find{|k, na| /^eth[0-9]*$/.match(k) && na['enabled'] && na['mounted'] && !na['management'] }
   raise MissingProperty, "Node #{node_uid} does not have a main network_adapter" unless main_network_adapter
 
   #  h['host']            = main_network_adapter['network_address']
@@ -47,14 +46,16 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['disktype']        = (node['storage_devices'].first[1] || {})['interface']
 
   # ETH
-  ni_mountable = node['network_adapters'].values.select{|na| na['interface'] =~ /ethernet/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
+  ni_mountable = node['network_adapters'].select{|k, na| /^eth[0-9]*$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true)}.values
   ni_fastest   = ni_mountable.max_by{|na| na['rate']}
   
   h['eth_count'] = ni_mountable.length
   h['eth_rate']  = ni_fastest['rate'] / 1_000_000_000
   
+  puts "#{node_uid}: Warning - no rate info for the eth interface" if h['eth_count'] > 0 && h['eth_rate'] == 0
+
   # INFINIBAND
-  ni_mountable = node['network_adapters'].values.select{|na| na['interface'] =~ /infiniband/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
+  ni_mountable = node['network_adapters'].select{|k, na| /^ib[0-9]*$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true)}.values
   ni_fastest   = ni_mountable.max_by{|na| na['rate']}
   ib_map = {0 => 'NO', 10 => 'SDR', 20 => 'DDR', 40 => 'QDR', 56 => 'FDR'}
 
@@ -62,8 +63,10 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['ib_rate']  = ni_mountable.length > 0 ? ni_fastest['rate'] / 1_000_000_000 : 0
   h['ib']  = ib_map[h['ib_rate']]
 
+  puts "#{node_uid}: Warning - no rate info for the ib interface" if h['ib_count'] > 0 && h['ib_rate'] == 0
+
   # MYRINET
-  ni_mountable = node['network_adapters'].values.select{|na| na['interface'] =~ /myri/i}.select{|nb| nb['mounted'] == true || nb['mountable'] == true}
+  ni_mountable = node['network_adapters'].select{|k, na| /^myri[0-9]*$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true)}.values
   ni_fastest   = ni_mountable.max_by{|na| na['rate']}
   myri_map = {0 => 'NO', 2 => 'Myrinet-2000', 10 => 'Myri-10G'}
 
@@ -71,13 +74,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['myri_rate']  = ni_mountable.length > 0 ? ni_fastest['rate'] / 1_000_000_000 : 0
   h['myri']  = myri_map[h['myri_rate']]
 
-  myri10g              = node['network_adapters'].values.detect{|na| na['interface'] =~ /myri/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 10_000_000_000}
-  h['myri10g']         = myri10g ? true : false
-  h['myri10gmodel']    = myri10g ? myri10g['version'] : 'none'
-
-  myri2g               = node['network_adapters'].values.detect{|na| na['interface'] =~ /myri/i && ( na['mounted'] == true || na['mountable'] == true ) && na['rate'] == 2_000_000_000}
-  h['myri2g']          = myri2g ? true : false
-  h['myri2gmodel']     = myri2g ? myri2g['version'] : 'none'
+  puts "#{node_uid}: Warning - no rate info for the myri interface" if h['myri_count'] > 0 && h['myri_rate'] == 0
 
   #
   h['memcore']         = node['main_memory']['ram_size']/node['architecture']['smt_size']/MiB
