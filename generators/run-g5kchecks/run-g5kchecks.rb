@@ -229,10 +229,14 @@ if options[:force]
 else # ! options[:force]
 
   begin
+    jobs = {} # list of OAR reservation
+    released_jobs = {};
+
     options[:sites].peach  { |site_uid|
 
-      jobs = [] # list of OAR reservation
-      
+      jobs[site_uid] = [] # list of OAR reservation
+      released_jobs[site_uid] = {};
+
       begin
 
         #
@@ -262,7 +266,7 @@ else # ! options[:force]
               next
             end
             
-            jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue]) 
+            jobs[site_uid] << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue]) 
           }
           
         else
@@ -272,10 +276,10 @@ else # ! options[:force]
           # Reserve as many free node as possible in one reservation
           if options[:clusters]
             options[:clusters].each { |cluster_uid|
-              jobs << oarsub(site_uid, "{cluster='#{cluster_uid}'}/nodes=BEST", options[:queue]) if clusters.include?(cluster_uid)
+              jobs[site_uid] << oarsub(site_uid, "{cluster='#{cluster_uid}'}/nodes=BEST", options[:queue]) if clusters.include?(cluster_uid)
             }
           else
-            jobs << oarsub(site_uid, "nodes=BEST", options[:queue])
+            jobs[site_uid] << oarsub(site_uid, "nodes=BEST", options[:queue])
           end
           
           # Reserve busy nodes one by one
@@ -290,7 +294,7 @@ else # ! options[:force]
               next
             end
 
-            jobs << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue])
+            jobs[site_uid] << oarsub(site_uid, "{host='#{fnode_uid}'}", options[:queue])
           }
           
         end
@@ -298,8 +302,6 @@ else # ! options[:force]
         #
         # Process running jobs
         #
-        
-        released_jobs = {};
         
         loop do
           waiting_jobs   = $g5k.get_my_jobs(site_uid, state='waiting')
@@ -311,9 +313,9 @@ else # ! options[:force]
           running_jobs.each { |job|
             job_uid = job['uid']
 
-            next unless jobs.any? { |j| j['uid'] == job_uid } # skip reservations that are not related to this script
+            next unless jobs[site_uid].any? { |j| j['uid'] == job_uid } # skip reservations that are not related to this script
             
-            if released_jobs[job_uid]
+            if released_jobs[site_uid][job_uid]
               puts "#{site_uid}: #{job_uid} already processed (waiting for job termination)" # OAR job deletions can take some times
               next
             end
@@ -331,7 +333,7 @@ else # ! options[:force]
             puts "#{site_uid}: Release #{job_uid}"
             begin
               $g5k.release(job)
-              released_jobs[job_uid] = true
+              released_jobs[site_uid][job_uid] = true
             rescue Exception => e
               puts "#{site_uid}: Error while releasing job #{job_uid} - #{e.class}: #{e.message}"
             end
@@ -344,20 +346,29 @@ else # ! options[:force]
           sleep(5) if running_jobs.empty?
           
         end
-
-      rescue Exception => e
-        puts "#{e.class}: #{e.message}"
-      ensure
-        jobs.compact.each { |job|
-          puts "Release job #{job['links'][0]['href']}"
-          $g5k.release(job) 
-        }
-      end # begin/rescue/ensure
+        
+      end # begin
       
     } # options[:sites].peach
-
+    
+  rescue Exception => e
+    puts "#{e.class}: #{e.message}"
+  ensure
+    jobs.each{|site_uid, jobs| jobs.compact.each { |job|
+        begin
+          job_uid = job['uid']
+          if released_jobs[site_uid][job_uid] != true
+            puts "Release job #{job['links'][0]['href']}"
+            $g5k.release(job)
+          end
+        rescue Exception => e
+          puts "Failed releasing job #{job['links'][0]['href']} - #{e.class}: #{e.message}"
+        end
+      }
+    }
+    exit
   end
-
+  
 end # options[:force]
 
 `ruby postprocessing.rb`
