@@ -173,7 +173,7 @@ if options[:force]
 
   run_queue ||= {}
 
-  # Safeguard. Ask before running g5k-checks on reserved nodes (We should not interfere with user experiments
+  # Safeguard. Ask before running g5k-checks on reserved nodes (We should not interfere with user experiments)
   prompt = ''
   options[:sites].each { |site_uid|
     run_queue[site_uid] ||= []
