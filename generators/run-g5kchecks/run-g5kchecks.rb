@@ -15,6 +15,11 @@ require 'peach'
 require '../lib/input_loader'
 require 'pp'
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 # puts 'Init ruby-cute'
 $g5k = Cute::G5K::API.new()
 # puts '...done'
