@@ -79,11 +79,6 @@ nodes:
         mounted: false
         mountable: false
         management: true
-    gpu:
-        gpu: true
-        gpu_count: 2
-        gpu_vendor: Nvidia
-        gpu_model: GTX 980
     sensors:
       power:
         available: true
@@ -124,3 +119,17 @@ nodes:
   graphique-5:
     chassis:
       serial: BXTRV42
+
+  graphique-1:
+    gpu:
+        gpu: true
+        gpu_count: 2
+        gpu_vendor: Nvidia
+        gpu_model: Titian Black
+
+  graphique-[2-6]:
+    gpu:
+        gpu: true
+        gpu_count: 2
+        gpu_vendor: Nvidia
+        gpu_model: GTX 980
