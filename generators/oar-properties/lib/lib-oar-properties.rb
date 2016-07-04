@@ -30,11 +30,11 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   #  h['host']            = main_network_adapter['network_address']
   #TODO  raise MissingProperty, "Node #{node_uid} has no network_address" unless h['host']
 
-  h['ip']              = main_network_adapter['ip']
+  h['ip']              = main_network_adapter[1]['ip']
   raise MissingProperty, "Node #{node_uid} has no IP" unless h['ip']
   h['cluster']         = cluster_uid
   h['nodemodel']       = cluster['model']
-  h['switch']          = main_network_adapter['switch']
+  h['switch']          = main_network_adapter[1]['switch']
   h['besteffort']      = node['supported_job_types']['besteffort']
   h['deploy']          = node['supported_job_types']['deploy']
   h['ip_virtual']      = node['supported_job_types']['virtual'] == 'ivt'
