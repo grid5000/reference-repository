@@ -226,7 +226,7 @@ if options[:force]
 
   # Actual run
   run_queue.peach { |site_uid, q|
-    q.peach { |fnode_uid|
+    q.peach(5) { |fnode_uid|
       run_g5kcheck(site_uid, fnode_uid, options)
     }
   }
