@@ -376,4 +376,6 @@ else # ! options[:force]
   
 end # options[:force]
 
-`ruby postprocessing.rb`
+stdout_str, stderr_str, status = Open3.capture3('ruby postprocessing.rb')
+puts stdout_str
+puts stderr_str
