@@ -55,7 +55,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   puts "#{node_uid}: Warning - no rate info for the eth interface" if h['eth_count'] > 0 && h['eth_rate'] == 0
 
   # INFINIBAND
-  ni_mountable = node['network_adapters'].select{|k, na| /^ib[0-9]*$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true)}.values
+  ni_mountable = node['network_adapters'].select{|k, na| /^ib[0-9]*(\.[0-9]*)?$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true)}.values
   ni_fastest   = ni_mountable.max_by{|na| na['rate']}
   ib_map = {0 => 'NO', 10 => 'SDR', 20 => 'DDR', 40 => 'QDR', 56 => 'FDR'}
 
