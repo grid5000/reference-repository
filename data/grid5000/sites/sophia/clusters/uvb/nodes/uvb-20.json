@@ -1,0 +1,117 @@
+{
+  "architecture": {
+    "platform_type": "x86_64",
+    "smp_size": 2,
+    "smt_size": 12
+  },
+  "bios": {
+    "release_date": "09/17/2013",
+    "vendor": "Dell Inc.",
+    "version": 1.71
+  },
+  "chassis": {
+    "manufacturer": "Dell",
+    "name": "C6100",
+    "serial": "F57XY4J"
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+    "ram_size": 102005473280,
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.132.20",
+      "mac": "00:26:6c:f8:3d:e8",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "uvb-20.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "interface": "Ethernet",
+      "mac": "00:26:6c:f8:3d:e9",
+      "management": false,
+      "mounted": false
+    },
+    {
+      "device": "ib0.8100",
+      "driver": "mlx4_core",
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:c6:1d",
+      "interface": "InfiniBand",
+      "ip": "172.18.132.20",
+      "ip6": "fe80::224:e890:97ff:c61d",
+      "management": false,
+      "mounted": true,
+      "rate": 40000000000,
+      "version": "MT26428"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:c6:1d",
+      "interface": "InfiniBand",
+      "ip": "172.18.132.20",
+      "management": false,
+      "mounted": false,
+      "rate": 40000000000,
+      "version": "MT26428"
+    }
+  ],
+  "operating_system": {
+    "kernel": "3.16.0-4-amd64",
+    "name": "debian",
+    "release": "Jessie",
+    "version": "8.5"
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 12582912,
+    "clock_speed": 2930000000,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "vendor": "Intel",
+    "version": "X5670"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "model": "WDC WD2502ABYS-1",
+      "rev": 3.0,
+      "size": 250000000000
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "default",
+      "admin"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "uvb-20"
+}
