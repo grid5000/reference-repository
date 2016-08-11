@@ -135,8 +135,12 @@ end
     conf = YAML::load(ERB.new(File.read($conf_dir + "kadeployg5k#{suffix}.yaml")).result(binding))
 
     site['clusters'].each { |cluster_uid, cluster|
-
       data = data = conf[site_uid][cluster_uid]
+      if data.nil?
+        puts "Warning: configuration not found in #{$conf_dir}kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
+        next
+      end
+
       output = ERB.new(File.read('templates/kadeployg5k.conf.erb')).result(binding)
 
       output_file = Pathname("#{$output_dir}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/#{cluster_uid}-cluster.conf")
