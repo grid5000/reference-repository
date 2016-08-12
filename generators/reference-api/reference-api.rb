@@ -124,12 +124,11 @@ global_hash["sites"].each do |site_uid, site|
 
   pdu_path = site_path.join("pdus")
   pdu_path.mkpath()
-    
-  site["pdu"].each do |pdu_uid, pdu|
+  site["pdus"].each do |pdu_uid, pdu|
     pdu["type"] = "pdu"
     pdu["uid"]  = pdu_uid
     write_json(pdu_path.join("#{pdu_uid}.json"), pdu)
-  end if site.key?("pdu")
+  end if site.key?("pdus")
 
   #
   # Write network info
