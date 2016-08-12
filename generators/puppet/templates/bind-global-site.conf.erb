@@ -11,6 +11,7 @@
 Dir.entries(zones_dir).sort.each { |file|
   next unless /.*.db$/.match(file)
   next if /.*-manual\.db/.match(file) # Those files are included in the generated version of the file
+  next if local_reverse_list.include?(file) # Local reverse zone files are not be included on the global-<site_uid>.conf files (see #7170 -- fixed)	
 
   comment = ''
   zone = ''
@@ -21,7 +22,7 @@ Dir.entries(zones_dir).sort.each { |file|
     zone = "#{$1}.in-addr.arpa"
     comment = '// The following entry was manually added' if !reverse.keys.include?(file)
   else
-    puts "Error: unkown zone for '#{file}' in '#{zones_dir}'"
+    puts "Error: unknown zone for '#{file}' in '#{zones_dir}'"
     next
   end
     %>
@@ -32,3 +33,4 @@ Dir.entries(zones_dir).sort.each { |file|
     <%= type == 'slave' ? 'masters { master-ns-global; };' : '' %>
   };
 <% } %>
+

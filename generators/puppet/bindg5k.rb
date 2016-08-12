@@ -206,13 +206,13 @@ refapi["sites"].each { |site_uid, site|
     
     
   } # each cluster
-  
 
   #
   # Output
   #
   dns = []     # output file for dns entries
   reverse = {} # one hash entry per reverse dns file
+  local_reverse_list = [] # reverse zone files that include local kavlan (kavlan-1,kavlan-2,kavlan-3).
 
   entries.each { |type, e|
     e.each { |entry|
@@ -221,6 +221,8 @@ refapi["sites"].each { |site_uid, site|
       output_file, txt_entry = print_reverse_entry(site_uid, entry) # Reverse DNS
       reverse[output_file] ||= []
       reverse[output_file] << txt_entry
+
+      local_reverse_list << output_file if /.*-kavlan-[1-3]$/.match(entry[:hostsuffix])
     }
   }
 
