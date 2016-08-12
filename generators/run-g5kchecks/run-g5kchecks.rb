@@ -206,7 +206,7 @@ if options[:force]
           rescue Exception => e
             nodes_status = {} # do not retry
             puts "Error while getting nodes status at #{site_uid}" #{e}
-            next
+            #next continue anyway as the --force option might be used for a new cluster that is not available yet in the reference-api
           end
         end
 

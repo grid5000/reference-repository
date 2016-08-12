@@ -206,14 +206,47 @@ sites:
    This file will get included automatically in the generated zone file called ./zones/<site_uid>/<zone_name>.db.
    See bindg5k/files/zones/nancy/ for examples. <zone_name>-manual.db files do no need the usual headers ($TTL directives etc.) of zone files.
 
-How to add a new cluster
-------------------------
-Steps:
-- Manually get the list of node MAC adresses (QR code scan)
-- DHCP, Kadeploy, Conman, Lanpower configuration
-- First boot!
-- Retrieve hardware information using g5kcheck and add them to the reference repository
-- Add information not provided by g5kcheck (ex: PDU)
-- Boot and check nodes with g5k-checks
+How to add a new cluster to Grid'5000
+-------------------------------------
+The generators can be used to ease the integration of a new cluster to the platform. 
 
-See sites/nancy/clusters/graoully/graoully_ip.yaml.erb as an example for bootstrapping a cluster configuration.
+The general idea is to:
+- add manually a minimalistic description of the new cluster to the reference-api input files
+- use the generators to create the (puppet) configuration files needed to boot the cluster
+- enrich the reference-api input files with information retrieved by g5k-checks on the nodes
+
+Detailed steps:
+* Manually get the list of node MAC adresses (ex: QR code scan)
+
+* Add the cluster to the reference-api:
+
+See input/grid5000/sites/nancy/clusters/graoully/graoully_ip.yaml.erb as an example for bootstrapping a cluster configuration. Create a similar file for the new cluster. This files includes the ip/mac information that will be used by the configuration file generators.
+
+You don't have to run the reference-api generator yet (generator/reference-api/reference-api.rb) but the cluster information must be available locally in the input directory
+
+* Run the DHCP, Kadeploy, Conman and Lanpower generators:
+$ cd generators/puppet
+$ puppet_repo=path_to_your_local_puppet_repo rake
+
+* First boot of the cluster :-)
+
+* Retrieve hardware information using g5k-check and add them to the reference repository
+$ cd generators/run-g5kchecks; ruby run-g5kchecks.rb -f -s <site_uid> -c <cluster_uid>
+
+* Manually add the information that are not provided by g5k-checks (ex: the main <cluster_uid>.yaml file, PDU information ...). Use graoully.yaml as an example.
+
+Note that it is mandatory to specify some of the network_adapter properties (enabled=true, mountable: true etc.). Those properties are used to detect the name of the main interface (eth0 ? eth1 ?).
+
+You can use the input validator to check the new cluster configuration:
+$ cd generators/input-validators; ruby yaml-input-schema-validator.rb
+
+* Run the OAR properties generators. This generator will add the nodes to the OAR configuration.
+$ cd generators/oar-properties/
+$ ruby oar-properties.rb -s <site_uid> -c <cluster_uid> -d -vv
+$ ruby oar-properties.rb -s <site_uid> -c <cluster_uid> -d -e
+
+* Add the cluster to the reference API:
+$ cd generator/reference-api; ruby reference-api.rb # and then commit the data/ directory + wait 10-15 minutes
+
+* Boot and check the nodes with g5k-checks
+
