@@ -4,6 +4,10 @@ gw-nantes:
   kind: router
   site: nantes
   snmp_community: public
+  sensors:
+    network:
+      available: true
+      resolution: 1
   vlans:
     naming_pattern: Vlan%VLANID%
     "vlan100":

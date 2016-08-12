@@ -4,6 +4,10 @@ gw-sophia:
   kind: router
   site: sophia
   snmp_community: public
+  sensors:
+    network:
+      available: true
+      resolution: 1
   mtu: 10240
   vlans:
     naming_pattern: Vlan%VLANID%
