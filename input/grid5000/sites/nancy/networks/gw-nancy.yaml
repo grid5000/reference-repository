@@ -8,6 +8,19 @@ gw-nancy:
     network:
       available: true
       resolution: 10
+    power:
+      pdu:
+        - uid: graoully-pdu1
+          port: 8
+        - uid: graoully-pdu2
+          port: 8
+        - uid: grimoire-pdu1
+          port: 8
+        - uid: grimoire-pdu2
+          port: 8
+  monitoring:
+    wattmeter: multiple
+    metric: power
   mtu: 9220
   vlans:
     naming_pattern: Vlan%VLANID%

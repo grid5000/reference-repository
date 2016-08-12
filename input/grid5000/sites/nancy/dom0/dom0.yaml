@@ -13,6 +13,14 @@ fgriffon2:
       mounted: true
       ip: 172.17.79.5
       mac: 00:E0:81:4F:E3:63
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  pdu:
+    - uid: griffon-pdu2
+      port: 7
+    - uid: griffon-pdu2
+      port: 9
 grog:
   network_adapters:
     eth0:
@@ -27,6 +35,14 @@ grog:
       mounted: true
       ip: 172.17.79.6
       mac: 84:2B:2B:60:15:6F
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  pdu:
+    - uid: graphene-pdu3
+      port: 1
+    - uid: graphene-pdu3
+      port: 2
 srv:
   network_adapters:
     eth0:
@@ -37,6 +53,14 @@ srv:
       mounted: true
       ip: 172.17.79.15
       mac: F0:1F:AF:E0:FA:DC
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  pdu:
+    - uid: graoully-pdu1
+      port: 15
+    - uid: graoully-pdu2
+      port: 15
 
 srv-data:
   network_adapters:
@@ -48,6 +72,44 @@ srv-data:
       mounted: true
       ip: 172.17.79.16
       mac: F0:1F:AF:E1:99:E4
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  pdu:
+    - uid: grisou-pdu1
+      port: 20
+    - uid: grisou-pdu2
+      port: 20
+
+srv2:
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  pdu:
+    - uid: grimoire-pdu1
+      port: 23
+    - uid: grimoire-pdu2
+      port: 23
+
+storage5k:
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  pdu:
+    - uid: griffon-pdu1
+      port: 8
+    - uid: griffon-pdu2
+      port: 8
+
+talc-data:
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  pdu:
+    - uid: grisou-pdu1
+      port: 20
+    - uid: grisou-pdu2
+      port: 20
 
 gras:
   network_adapters:

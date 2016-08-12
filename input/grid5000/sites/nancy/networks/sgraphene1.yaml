@@ -8,6 +8,15 @@ sgraphene1:
     network:
       available: true
       resolution: 1
+    power:
+      pdu:
+        - uid: graphene-pdu1
+          port: 6
+        - uid: graphene-pdu2
+          port: 7
+  monitoring:
+    wattmeter: multiple
+    metric: power
   mtu: 9216
   vlans:
     naming_pattern: Vlan-interface%VLANID%

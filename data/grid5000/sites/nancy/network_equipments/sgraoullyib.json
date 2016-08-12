@@ -66,11 +66,23 @@
     }
   ],
   "model": "Infiniband",
+  "monitoring": {
+    "metric": "power",
+    "wattmeter": true
+  },
   "routes": {
   },
   "sensors": {
     "network": {
       "available": false
+    },
+    "power": {
+      "pdu": [
+        {
+          "port": 7,
+          "uid": "graoully-pdu1"
+        }
+      ]
     }
   },
   "site": "nancy",

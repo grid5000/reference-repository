@@ -163,6 +163,10 @@
     }
   ],
   "model": "3com 4500g",
+  "monitoring": {
+    "metric": "power",
+    "wattmeter": "multiple"
+  },
   "mtu": 9216,
   "routes": {
   },
@@ -170,6 +174,18 @@
     "network": {
       "available": true,
       "resolution": 1
+    },
+    "power": {
+      "pdu": [
+        {
+          "port": 22,
+          "uid": "griffon-pdu2"
+        },
+        {
+          "port": 23,
+          "uid": "griffon-pdu2"
+        }
+      ]
     }
   },
   "site": "nancy",

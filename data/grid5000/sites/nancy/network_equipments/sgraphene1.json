@@ -152,6 +152,10 @@
     }
   ],
   "model": "3com 4510G",
+  "monitoring": {
+    "metric": "power",
+    "wattmeter": "multiple"
+  },
   "mtu": 9216,
   "routes": {
   },
@@ -159,6 +163,18 @@
     "network": {
       "available": true,
       "resolution": 1
+    },
+    "power": {
+      "pdu": [
+        {
+          "port": 6,
+          "uid": "graphene-pdu1"
+        },
+        {
+          "port": 7,
+          "uid": "graphene-pdu2"
+        }
+      ]
     }
   },
   "site": "nancy",

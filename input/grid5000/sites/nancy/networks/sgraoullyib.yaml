@@ -7,6 +7,13 @@ sgraoullyib:
   sensors:
     network:
       available: false
+    power:
+      pdu:
+        - uid: graoully-pdu1
+          port: 7
+  monitoring:
+    wattmeter: true
+    metric: power
   weathermap:
     use_cacti: "no"
   vlans:

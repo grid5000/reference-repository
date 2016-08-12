@@ -1162,6 +1162,10 @@
     }
   ],
   "model": "Cisco Nexus 9508",
+  "monitoring": {
+    "metric": "power",
+    "wattmeter": "multiple"
+  },
   "mtu": 9220,
   "routes": {
   },
@@ -1169,6 +1173,26 @@
     "network": {
       "available": true,
       "resolution": 10
+    },
+    "power": {
+      "pdu": [
+        {
+          "port": 8,
+          "uid": "graoully-pdu1"
+        },
+        {
+          "port": 8,
+          "uid": "graoully-pdu2"
+        },
+        {
+          "port": 8,
+          "uid": "grimoire-pdu1"
+        },
+        {
+          "port": 8,
+          "uid": "grimoire-pdu2"
+        }
+      ]
     }
   },
   "site": "nancy",

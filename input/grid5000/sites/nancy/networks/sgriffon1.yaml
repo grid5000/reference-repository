@@ -8,6 +8,15 @@ sgriffon1:
     network:
       available: true
       resolution: 1
+    power:
+      pdu:
+        - uid: griffon-pdu2
+          port: 22
+        - uid: griffon-pdu2
+          port: 23
+  monitoring:
+    wattmeter: multiple
+    metric: power
   mtu: 9216
   vlans:
     naming_pattern: Vlan-interface%VLANID%
