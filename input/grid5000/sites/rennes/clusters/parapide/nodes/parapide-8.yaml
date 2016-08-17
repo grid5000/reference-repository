@@ -56,14 +56,22 @@ parapide-8:
       rate: 10000000000
       version: MT25418
   operating_system:
+    cstate_driver: intel_idle
+    cstate_governor: menu
+    cstate_max_id: 2
+    ht_enabled: false
     kernel: 3.16.0-4-amd64
     name: debian
+    pstate_driver: acpi-cpufreq
+    pstate_governor: performance
+    turboboost_enabled: true
     version: 8.5
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
     cache_l2: 262144
     cache_l3: 8388608
+    ht_capable: true
     instruction_set: x86-64
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz

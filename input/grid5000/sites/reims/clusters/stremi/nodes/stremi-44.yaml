@@ -50,14 +50,22 @@ stremi-44:
       management: false
       mounted: false
   operating_system:
+    cstate_driver: none
+    cstate_governor: menu
+    cstate_max_id: 
+    ht_enabled: false
     kernel: 3.16.0-4-amd64
     name: debian
+    pstate_driver: acpi-cpufreq
+    pstate_governor: performance
+    turboboost_enabled: unknown
     version: 8.5
   processor:
     cache_l1d: 65536
     cache_l1i: 65536
     cache_l2: 524288
     cache_l3: 5240832
+    ht_capable: true
     instruction_set: x86-64
     model: AMD Opteron
     other_description: AMD Opteron(tm) Processor 6164 HE

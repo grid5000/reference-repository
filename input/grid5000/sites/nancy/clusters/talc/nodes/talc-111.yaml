@@ -41,8 +41,15 @@ talc-111:
       mountable: false
       mounted: false
   operating_system:
+    cstate_driver: none
+    cstate_governor: menu
+    cstate_max_id: 
+    ht_enabled: false
     kernel: 3.16.0-4-amd64
     name: debian
+    pstate_driver: acpi-cpufreq
+    pstate_governor: performance
+    turboboost_enabled: unknown
     version: 8.5
   processor:
     cache_l1d: 32768
@@ -50,6 +57,7 @@ talc-111:
     cache_l2: 6291456
     cache_l3: 0
     clock_speed: 2500000000
+    ht_capable: true
     instruction_set: x86-64
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU           L5420  @ 2.50GHz
