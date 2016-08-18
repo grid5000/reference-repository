@@ -2,6 +2,9 @@
 ---
 hercule-3:
   architecture:
+    nb_cores: 12
+    nb_procs: 2
+    nb_threads: 12
     platform_type: x86_64
     smp_size: 2
     smt_size: 12
@@ -46,6 +49,28 @@ hercule-3:
       mac: 84:8f:69:fd:4c:20
       management: false
       mounted: false
+  operating_system:
+    cstate_driver: intel_idle
+    cstate_governor: menu
+    cstate_max_id: 2
+    ht_enabled: false
+    kernel: 3.16.0-4-amd64
+    name: debian
+    pstate_driver: intel_pstate
+    pstate_governor: performance
+    turboboost_enabled: true
+    version: 8.5
+  processor:
+    cache_l1d: 32768
+    cache_l1i: 32768
+    cache_l2: 262144
+    cache_l3: 15728640
+    ht_capable: true
+    instruction_set: x86-64
+    model: Intel Xeon
+    other_description: Intel(R) Xeon(R) CPU E5-2620 0 @ 2.00GHz
+    vendor: Intel
+    version: E5-2620
   storage_devices:
     sda:
       model: WDC WD2003FYYS-1

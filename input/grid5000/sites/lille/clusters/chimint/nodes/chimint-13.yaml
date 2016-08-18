@@ -2,6 +2,9 @@
 ---
 chimint-13:
   architecture:
+    nb_cores: 8
+    nb_procs: 2
+    nb_threads: 8
     platform_type: x86_64
     smp_size: 2
     smt_size: 8
@@ -41,15 +44,23 @@ chimint-13:
       mounted: false
       rate: 1000000000
   operating_system:
+    cstate_driver: intel_idle
+    cstate_governor: menu
+    cstate_max_id: 2
+    ht_enabled: false
     kernel: 3.16.0-4-amd64
     name: debian
-    version: '8.2'
+    pstate_driver: none
+    pstate_governor: none
+    turboboost_enabled: unknown
+    version: 8.5
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
     cache_l2: 262144
     cache_l3: 12582912
     clock_speed: 2400000000
+    ht_capable: true
     instruction_set: x86-64
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz

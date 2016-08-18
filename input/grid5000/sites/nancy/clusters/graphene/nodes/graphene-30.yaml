@@ -2,6 +2,9 @@
 ---
 graphene-30:
   architecture:
+    nb_cores: 4
+    nb_procs: 1
+    nb_threads: 4
     platform_type: x86_64
     smp_size: 1
     smt_size: 4
@@ -41,6 +44,28 @@ graphene-30:
       mac: 00:e0:81:d5:08:ee
       management: false
       mounted: false
+  operating_system:
+    cstate_driver: intel_idle
+    cstate_governor: menu
+    cstate_max_id: 2
+    ht_enabled: false
+    kernel: 3.16.0-4-amd64
+    name: debian
+    pstate_driver: acpi-cpufreq
+    pstate_governor: performance
+    turboboost_enabled: true
+    version: 8.5
+  processor:
+    cache_l1d: 32768
+    cache_l1i: 32768
+    cache_l2: 262144
+    cache_l3: 8388608
+    ht_capable: true
+    instruction_set: x86-64
+    model: Intel Xeon
+    other_description: Intel(R) Xeon(R) CPU           X3440  @ 2.53GHz
+    vendor: Intel
+    version: X3440
   storage_devices:
     sda:
       model: Hitachi HDS72103
