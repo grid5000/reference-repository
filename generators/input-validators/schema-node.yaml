@@ -3,10 +3,14 @@ architecture:
   platform_type: string
   smp_size: integer
   smt_size: integer
+  nb_cores: integer
+  nb_procs: integer
+  nb_threads: integer
 bios:
   release_date: string
   vendor: optional ## optional_string or null
   version: required # string ?
+  configuration: optional_hash
 chassis:
   manufacturer: string
   name: string
@@ -55,7 +59,14 @@ operating_system:
   kernel: string
   name: string
   release: string
-  version: string
+  version: required # string or float
+  cstate_driver: string
+  cstate_governor: string
+  cstate_max_id: optional_integer
+  ht_enabled: boolean
+  pstate_driver: string
+  pstate_governor: string
+  turboboost_enabled: optional
 pdu: optional_hash
 performance:
   core_flops: numeric # integer ?
@@ -72,6 +83,7 @@ processor:
   other_description: string
   vendor: string
   version: required # string or numeric ?
+  ht_capable: boolean
 sensors: optional_hash
 status: optional_string
 storage_devices:
