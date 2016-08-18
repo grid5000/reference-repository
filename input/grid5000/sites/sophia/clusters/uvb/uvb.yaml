@@ -40,6 +40,21 @@ nodes:
         enabled: true
         mountable: true
         bridged: true
+      eth1:
+        enabled: false
+        mountable: false
+      ib0:
+        enabled: true
+        mountable: true
+      ib0.8100:
+        enabled: true
+        mountable: true
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+        management: false
     storage_devices:
       sda:
         interface: SATA
