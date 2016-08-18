@@ -44,34 +44,47 @@
     {
       "device": "eth1",
       "driver": "igb",
+      "enabled": false,
       "interface": "Ethernet",
       "mac": "00:26:6c:f8:39:01",
       "management": false,
+      "mountable": false,
       "mounted": false
     },
     {
       "device": "ib0.8100",
       "driver": "mlx4_core",
+      "enabled": true,
       "interface": "InfiniBand",
       "ip": "172.18.132.7",
       "management": false,
+      "mountable": true,
       "mounted": true,
+      "network_address": "uvb-7-ib0.8100.sophia.grid5000.fr",
       "rate": 40000000000,
       "version": "MT26428"
     },
     {
       "device": "ib0",
       "driver": "mlx4_core",
+      "enabled": true,
       "interface": "InfiniBand",
       "ip": "172.18.132.7",
       "management": false,
+      "mountable": true,
       "mounted": false,
+      "network_address": "uvb-7-ib0.sophia.grid5000.fr",
       "rate": 40000000000,
       "version": "MT26428"
     },
     {
       "device": "bmc",
-      "ip": "172.17.132.7"
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.132.7",
+      "management": false,
+      "mountable": false,
+      "mounted": false
     }
   ],
   "operating_system": {
@@ -98,10 +111,12 @@
   "storage_devices": [
     {
       "device": "sda",
+      "driver": "ahci",
       "interface": "SATA",
       "model": "WDC WD2502ABYS-1",
       "rev": 3.0,
-      "size": 250000000000
+      "size": 250000000000,
+      "storage": "HDD"
     }
   ],
   "supported_job_types": {
@@ -109,7 +124,7 @@
     "deploy": true,
     "max_walltime": 0,
     "queues": [
-      "default",
+      "testing",
       "admin"
     ],
     "virtual": "ivt"
