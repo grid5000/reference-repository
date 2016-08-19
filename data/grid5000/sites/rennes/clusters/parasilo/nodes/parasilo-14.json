@@ -1,10 +1,19 @@
 {
   "architecture": {
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 16,
     "platform_type": "x86_64",
     "smp_size": 2,
     "smt_size": 16
   },
   "bios": {
+    "configuration": {
+      "cstate_c1e": false,
+      "cstate_enabled": false,
+      "ht_enabled": false,
+      "turboboost_enabled": true
+    },
     "release_date": "08/28/2014",
     "vendor": "Dell Inc.",
     "version": 1.0
@@ -101,10 +110,17 @@
     }
   ],
   "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": 2,
+    "ht_enabled": false,
     "kernel": "3.16.0-4-amd64",
     "name": "debian",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "release": "Jessie",
-    "version": "8.2"
+    "turboboost_enabled": true,
+    "version": 8.5
   },
   "performance": {
     "core_flops": 18720000000,
@@ -117,6 +133,7 @@
     "cache_l2": 262144,
     "cache_l3": 20971520,
     "clock_speed": 2400000000,
+    "ht_capable": true,
     "instruction_set": "x86-64",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",

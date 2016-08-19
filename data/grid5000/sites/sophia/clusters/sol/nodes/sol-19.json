@@ -1,5 +1,8 @@
 {
   "architecture": {
+    "nb_cores": 4,
+    "nb_procs": 2,
+    "nb_threads": 4,
     "platform_type": "x86_64",
     "smp_size": 2,
     "smt_size": 4
@@ -72,10 +75,17 @@
     }
   ],
   "operating_system": {
+    "cstate_driver": "none",
+    "cstate_governor": "menu",
+    "cstate_max_id": null,
+    "ht_enabled": false,
     "kernel": "3.16.0-4-amd64",
     "name": "debian",
+    "pstate_driver": "none",
+    "pstate_governor": "none",
     "release": "Jessie",
-    "version": "8.2"
+    "turboboost_enabled": "unknown",
+    "version": 8.5
   },
   "performance": {
     "core_flops": 4337000000,
@@ -88,6 +98,7 @@
     "cache_l2": 1048576,
     "cache_l3": 0,
     "clock_speed": 2600000000,
+    "ht_capable": true,
     "instruction_set": "x86-64",
     "model": "AMD Opteron",
     "other_description": "Dual-Core AMD Opteron(tm) Processor 2218",
