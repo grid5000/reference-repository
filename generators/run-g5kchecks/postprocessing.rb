@@ -44,7 +44,7 @@ list_of_yaml_files.each { |filename|
 
     hash = {node_uid => hash}
     
-    new_filename = "../../input/grid5000/sites/#{site_uid}/clusters/#{cluster_uid}/nodes/" + node_uid + ".yaml"
+    new_filename = Pathname("../../input/grid5000/sites/#{site_uid}/clusters/#{cluster_uid}/nodes/" + node_uid + ".yaml")
     new_filename.dirname.mkpath()
 
     write_yaml(new_filename, hash)
