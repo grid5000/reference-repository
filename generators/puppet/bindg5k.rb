@@ -219,15 +219,23 @@ refapi["sites"].each { |site_uid, site|
       dns << print_entry(entry) # DNS
 
       output_file, txt_entry = print_reverse_entry(site_uid, entry) # Reverse DNS
+      local_reverse_list << output_file if /.*-kavlan-[1-3]$/.match(entry[:hostsuffix])
+      if local_reverse_list.include?(output_file)
+        local_reverse_list.delete(output_file)
+        output_file = "local/#{output_file}"
+        local_reverse_list << output_file
+      end
       reverse[output_file] ||= []
       reverse[output_file] << txt_entry
-
-      local_reverse_list << output_file if /.*-kavlan-[1-3]$/.match(entry[:hostsuffix])
     }
   }
 
   zones_dir = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}")
   zones_dir.mkpath()
+  if local_reverse_list.length > 0
+    local_zones_dir = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}/local")
+    local_zones_dir.mkpath()
+  end
 
   # DNS (/modules/bindg5k/files/zones/nancy.db)
   manual = site_uid + '-manual.db'
