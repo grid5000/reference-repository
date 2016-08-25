@@ -5,5 +5,6 @@ nodes:
   chinqchint-<%= i %>:
     network_adapters:
       myri0:
+        ip: 172.18.47.<%= i + 100 %>    
         network_address: chinqchint-<%= i %>-myri0.lille.grid5000.fr
 <% } %>
