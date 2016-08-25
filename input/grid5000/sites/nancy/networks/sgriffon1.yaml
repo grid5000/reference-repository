@@ -9,11 +9,14 @@ sgriffon1:
       available: true
       resolution: 1
     power:
-      pdu:
-        - uid: griffon-pdu2
-          port: 22
-        - uid: griffon-pdu2
-          port: 23
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: griffon-pdu2
+            port: 22
+          - uid: griffon-pdu2
+            port: 23
   monitoring:
     wattmeter: multiple
     metric: power

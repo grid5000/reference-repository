@@ -9,15 +9,18 @@ gw-nancy:
       available: true
       resolution: 10
     power:
-      pdu:
-        - uid: graoully-pdu1
-          port: 8
-        - uid: graoully-pdu2
-          port: 8
-        - uid: grimoire-pdu1
-          port: 8
-        - uid: grimoire-pdu2
-          port: 8
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: graoully-pdu1
+            port: 8
+          - uid: graoully-pdu2
+            port: 8
+          - uid: grimoire-pdu1
+            port: 8
+          - uid: grimoire-pdu2
+            port: 8
   monitoring:
     wattmeter: multiple
     metric: power

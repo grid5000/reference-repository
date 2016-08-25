@@ -8,9 +8,12 @@ sgraoullyib:
     network:
       available: false
     power:
-      pdu:
-        - uid: graoully-pdu1
-          port: 7
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: graoully-pdu1
+            port: 7
   monitoring:
     wattmeter: true
     metric: power
