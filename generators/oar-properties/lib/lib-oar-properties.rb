@@ -40,7 +40,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['ip_virtual']      = node['supported_job_types']['virtual'] == 'ivt'
   h['virtual']         = node['supported_job_types']['virtual']
   h['cpuarch']         = node['architecture']['platform_type']
-  h['cpucore']         = node['architecture']['smt_size']/node['architecture']['smp_size']
+  h['cpucore']         = node['architecture']['nb_cores']/node['architecture']['nb_procs']
   h['cputype']         = [node['processor']['model'], node['processor']['version']].join(' ')
   h['cpufreq']         = node['processor']['clock_speed']/1_000_000_000.0
   h['disktype']        = (node['storage_devices'].first[1] || {})['interface']
@@ -77,8 +77,8 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   puts "#{node_uid}: Warning - no rate info for the myri interface" if h['myri_count'] > 0 && h['myri_rate'] == 0
 
   #
-  h['memcore']         = node['main_memory']['ram_size']/node['architecture']['smt_size']/MiB
-  h['memcpu']          = node['main_memory']['ram_size']/node['architecture']['smp_size']/MiB
+  h['memcore']         = node['main_memory']['ram_size']/node['architecture']['nb_cores']/MiB
+  h['memcpu']          = node['main_memory']['ram_size']/node['architecture']['nb_procs']/MiB
   h['memnode']         = node['main_memory']['ram_size']/MiB
 
   node['gpu']  ||= {}
@@ -270,7 +270,7 @@ EOF
 end
 
 def oarcmd_create_node(host, properties, node_hash) # host = grifffon-1.nancy.grid5000.fr; properties, node_hash: input of the reference API for the node
-  #return "# Cannot create #{host} : not enough information about it (node_hash['architecture']['smp_size'], properties['cpucore'])" if node_hash['architecture'].nil? || properties['cpucore'].nil?
+  #return "# Cannot create #{host} : not enough information about it (node_hash['architecture']['nb_procs'], properties['cpucore'])" if node_hash['architecture'].nil? || properties['cpucore'].nil?
 
   node_uid, site_uid, grid_uid = host.split(".")
   cluster_uid, node_number     = node_uid.split("-")
@@ -279,7 +279,7 @@ def oarcmd_create_node(host, properties, node_hash) # host = grifffon-1.nancy.gr
   command += 'list_contains "$nodelist" "' + host + '" && '
   command += "echo '=> host already exist'\n"
   command += 'list_contains "$nodelist" "' + host + '" || '
-  command += "oar_resources_add -a --hosts 1 --host0 #{node_number} --host-prefix #{cluster_uid}- --host-suffix .#{site_uid}.#{grid_uid}.fr --cpus #{node_hash['architecture']['smp_size']} --cores #{properties['cpucore']}"
+  command += "oar_resources_add -a --hosts 1 --host0 #{node_number} --host-prefix #{cluster_uid}- --host-suffix .#{site_uid}.#{grid_uid}.fr --cpus #{node_hash['architecture']['nb_procs']} --cores #{properties['cpucore']}"
   command += ' | bash'
   
   return command + "\n"
