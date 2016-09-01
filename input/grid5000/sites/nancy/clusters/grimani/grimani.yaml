@@ -1,0 +1,51 @@
+---
+# Cluster description
+model: Dell PowerEdge R730
+created_at: 2016-08-30
+kavlan: true
+queues:
+  - testing
+  - admin
+
+nodes:
+# Global node properties
+  grimani-[1-6]:
+    performance:
+     core_flops: 0
+     node_flops: 0
+    operating_system:
+      release: Jessie
+      cstate_driver: intel_idle
+      cstate_governor: menu
+      cstate_max_id: 2
+      ht_enabled: false
+      pstate_driver: intel_pstate
+      pstate_governor: performance
+      turboboost_enabled: true
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      queues:
+      - admin
+      - testing
+      max_walltime: 0
+    gpu:
+      gpu: true
+      gpu_count: 2
+      gpu_model: Tesla K40M
+      gpu_vendor: NVIDIA
+    sensors:
+      power:
+        available: false
+    architecture:
+      nb_cores: 12
+      nb_procs: 2
+      nb_threads: 24
+    processor:
+      ht_capable: true
+    storage_devices:
+      sda:
+        interface: SATA
+        driver: megaraid_sas
+        storage: HDD
+        vendor: Seagate

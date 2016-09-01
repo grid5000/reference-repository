@@ -1,0 +1,72 @@
+nodes:
+<% (1..6).each { |i| %>
+  grimani-<%= i %>:
+    network_adapters:
+      eth0: 
+        enabled: true
+        mounted: true
+        mountable: true
+        bridged: true
+        ip: 172.16.73.<%= i %>
+        mac: <%= %w(
+                    24:6e:96:16:65:60
+                    24:6e:96:15:46:e8
+                    24:6e:96:15:46:88
+                    24:6e:96:16:41:68
+                    24:6e:96:16:5c:e8
+                    24:6e:96:16:5c:30
+             )[i-1] %>
+      eth1:
+        enabled: false
+        mountable: false
+        bridged: false
+        rate: 10000000000
+      eth2:
+        enabled: false
+        mountable: false
+        bridged: false
+        rate: 1000000000
+      eth3:
+        enabled: false
+        mountable: false
+        bridged: false
+        rate: 1000000000
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mounted: false
+        mountable: false
+        bridged: false
+        management: true
+        ip: 172.17.73.<%= i %>
+        mac: <%= %w(
+                   18:fb:7b:a6:16:05
+                   18:fb:7b:a6:15:fb
+                   18:fb:7b:a6:18:db
+                   18:66:da:52:96:cc
+                   18:66:da:52:b4:89
+                   18:66:da:52:9f:94
+                  )[i-1] %>
+
+<% i226_232 = i+225 %>
+    kavlan:
+      eth0:
+        kavlan-1: 192.168.205.<%= i %>
+        kavlan-2: 192.168.221.<%= i %>
+        kavlan-3: 192.168.236.<%= i %>
+        kavlan-4: 10.16.13.<%= i %>
+        kavlan-5: 10.16.77.<%= i %>
+        kavlan-6: 10.16.141.<%= i %>
+        kavlan-7: 10.16.205.<%= i %>
+        kavlan-8: 10.17.13.<%= i %>
+        kavlan-9: 10.17.77.<%= i %>
+        kavlan-11: 10.7.201.<%= i226_232 %>
+        kavlan-12: 10.11.201.<%= i226_232 %>
+        kavlan-13: 10.15.201.<%= i226_232 %>
+        kavlan-14: 10.19.201.<%= i226_232 %>
+        kavlan-16: 10.27.201.<%= i226_232 %>
+        kavlan-18: 10.35.201.<%= i226_232 %>
+        kavlan-19: 10.39.201.<%= i226_232 %>
+        kavlan-20: 10.43.201.<%= i226_232 %>
+        kavlan-21: 10.47.201.<%= i226_232 %>
+<% } %>

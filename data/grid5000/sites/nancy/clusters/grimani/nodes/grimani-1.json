@@ -1,0 +1,157 @@
+{
+  "architecture": {
+    "nb_cores": 12,
+    "nb_procs": 2,
+    "nb_threads": 24,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "04/11/2016",
+    "vendor": "Dell Inc.",
+    "version": 2.1
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R730",
+    "serial": "DB4FDD2"
+  },
+  "gpu": {
+    "gpu": true,
+    "gpu_count": 2,
+    "gpu_model": "Tesla K40M",
+    "gpu_vendor": "NVIDIA"
+  },
+  "main_memory": {
+    "ram_size": 67645734912,
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.73.1",
+      "mac": "24:6e:96:16:65:60",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "grimani-1.nancy.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "gw-nancy",
+      "switch_port": "Ethernet6/46"
+    },
+    {
+      "bridged": false,
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "24:6e:96:16:65:62",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 10000000000
+    },
+    {
+      "bridged": false,
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "24:6e:96:16:65:64",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000
+    },
+    {
+      "bridged": false,
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "mac": "24:6e:96:16:65:65",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "rate": 1000000000
+    },
+    {
+      "bridged": false,
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.73.1",
+      "mac": "18:fb:7b:a6:16:05",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "grimani-1-bmc.nancy.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": 2,
+    "ht_enabled": false,
+    "kernel": "3.16.0-4-amd64",
+    "name": "debian",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "release": "Jessie",
+    "turboboost_enabled": true,
+    "version": 8.5
+  },
+  "performance": {
+    "core_flops": 0,
+    "node_flops": 0
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 15728640,
+    "clock_speed": 1600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2603 v3 @ 1.60GHz",
+    "vendor": "Intel",
+    "version": "E5-2603 v3"
+  },
+  "sensors": {
+    "power": {
+      "available": false
+    }
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "interface": "SATA",
+      "model": "ST1000NX0423",
+      "rev": "NA02",
+      "size": 1000204886016,
+      "storage": "HDD",
+      "vendor": "Seagate"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "grimani-1"
+}
