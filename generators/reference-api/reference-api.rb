@@ -131,6 +131,18 @@ global_hash["sites"].each do |site_uid, site|
   end if site.key?("pdus")
 
   #
+  # Write servers info
+  #
+
+  servers_path = site_path.join("servers")
+  servers_path.mkpath()
+  site["servers"].each do |server_uid, server|
+    server["type"]  = "server"
+    server["uid"]  = server_uid
+    write_json(servers_path.join("#{server_uid}.json"), server)
+  end if site.key?("servers")
+
+  #
   # Write network info
   #
 
