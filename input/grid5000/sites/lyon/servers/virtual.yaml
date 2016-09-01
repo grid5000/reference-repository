@@ -1,0 +1,87 @@
+flyon:
+  kind: virtual
+  alias: [frontend, oar-api]
+  network_adapters: {default: {ip: 172.16.63.101}}
+dhcp:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.102}, adm: {ip: 172.17.63.102}}
+kadeploy:
+  kind: virtual
+  alias: [kadeploy-server]
+  network_adapters: {default: {ip: 172.16.63.103}, adm: {ip: 172.17.63.103}}
+puppet:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.104}}
+supervision:
+  kind: virtual
+  alias: [nagios, munin]
+  network_adapters: {default: {ip: 172.16.63.105}}
+ldap:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.106}}
+api-server-v3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.107}}
+conman:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.108}, adm: {ip: 172.17.63.108}}
+api-server-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.109}}
+proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.110}}
+mysql:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.111}}
+www:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.112}}
+dns:
+  kind: virtual
+  alias: [ns]
+  network_adapters: {default: {ip: 172.16.63.113}}
+api-proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.114}}
+oar-server:
+  kind: virtual
+  alias: [oar, oardb]
+  network_adapters: {default: {ip: 172.16.63.116}}
+syslog:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.117}}
+mail:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.118}}
+ganglia:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.119}}
+kavlan:
+  kind: virtual
+  alias: [kavlan-dhcp]
+  network_adapters: {default: {ip: 172.16.63.121}}
+kavlan-1:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.122}}
+kavlan-2:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.123}}
+kavlan-3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.124}}
+kavlan-691:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.125}}
+kadeploy-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.126}, adm: {ip: 172.17.63.126}}
+kwapi:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.127}}
+web-dev:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.129}}
+nat:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.63.200}}
