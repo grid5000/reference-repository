@@ -4,15 +4,13 @@ graphite-1:
   architecture:
     nb_cores: 16
     nb_procs: 2
-    nb_threads: 16
+    nb_threads: 32
     platform_type: x86_64
-    smp_size: 2
-    smt_size: 16
   bios:
     configuration:
       cstate_c1e: true
       cstate_enabled: true
-      ht_enabled: false
+      ht_enabled: true
       turboboost_enabled: false
     release_date: 01/28/2015
     vendor: Dell Inc.
@@ -81,6 +79,7 @@ graphite-1:
     cache_l2: 262144
     cache_l3: 20971520
     ht_capable: true
+    ht_enabled: true
     instruction_set: x86-64
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU E5-2650 0 @ 2.00GHz

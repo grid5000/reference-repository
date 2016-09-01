@@ -4,15 +4,13 @@ taurus-7:
   architecture:
     nb_cores: 12
     nb_procs: 2
-    nb_threads: 12
+    nb_threads: 24
     platform_type: x86_64
-    smp_size: 2
-    smt_size: 12
   bios:
     configuration:
       cstate_c1e: true
       cstate_enabled: true
-      ht_enabled: false
+      ht_enabled: true
       turboboost_enabled: true
     release_date: 01/22/2016
     vendor: Dell Inc.
@@ -98,6 +96,7 @@ taurus-7:
     cache_l3: 15728640
     clock_speed: 2300000000
     ht_capable: true
+    ht_enabled: true
     instruction_set: x86-64
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
