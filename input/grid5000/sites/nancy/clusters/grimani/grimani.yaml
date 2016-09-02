@@ -21,7 +21,7 @@ nodes:
       ht_enabled: false
       pstate_driver: intel_pstate
       pstate_governor: performance
-      turboboost_enabled: true
+      turboboost_enabled: false
     supported_job_types:
       deploy: true
       besteffort: true
@@ -42,7 +42,7 @@ nodes:
       nb_procs: 2
       nb_threads: 24
     processor:
-      ht_capable: true
+      ht_capable: false
     storage_devices:
       sda:
         interface: SATA
