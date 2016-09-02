@@ -98,6 +98,9 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
 
   h['max_walltime'] = 0 # default
   h['max_walltime'] = node['supported_job_types']['max_walltime'] if node['supported_job_types'] && node['supported_job_types'].has_key?('max_walltime')
+
+  h['maintenance'] = false # default
+  h['maintenance'] = node['supported_job_types']['queues'].include?('testing') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
   
   # convert booleans to YES/NO string
   h.each {|k,v|
@@ -184,7 +187,6 @@ def ignore_keys()
                  "jobs", # This property exists when a job is running
                  "last_available_upto",
                  "last_job_date",
-                 "maintenance",
                  "mic", # TODO
                  "network_address", # TODO
                  "next_finaud_decision",
