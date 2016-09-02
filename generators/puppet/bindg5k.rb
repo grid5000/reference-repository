@@ -46,6 +46,12 @@ def print_entry(entry)
     hostalias = hostshort + entry[:cnamesuffix]
     return ["#{range}#{hostalias} IN A #{ip}",
             "#{range}#{hostname} IN CNAME #{hostalias}"].join("\n")
+  elsif entry[:cnames]
+    output = ["#{range}#{hostname} IN A #{ip}"]
+    entry[:cnames].each{ |cname|
+      output.push("#{range}#{cname} IN CNAME #{hostname}")
+    }
+    return output.join("\n")
   else
     return "#{range}#{hostname} IN A #{ip}"
   end 
@@ -112,6 +118,24 @@ refapi["sites"].each { |site_uid, site|
       }
     } unless site[key].nil?
   }
+
+  # Servers
+  entries['servers'] ||= []
+  site['servers'].sort.each { |server_uid, server|
+    server['network_adapters'].each { |net_uid, net|
+      if net['ip']
+
+        new_entry = {
+          :uid         => server_uid,
+          :hostsuffix  => net_uid != 'default' ? "-#{net_uid}" : '',
+          :ip          => net['ip'],
+          :cnames      => server['alias']
+        }
+
+        entries['servers'] << new_entry
+      end
+    } unless server['network_adapters'].nil?
+  } unless site['servers'].nil?
 
   # PDUs
   entries['pdus'] ||= []
