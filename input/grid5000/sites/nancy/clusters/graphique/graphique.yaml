@@ -72,6 +72,9 @@ nodes:
         bridged: false
         vendor: Broadcom
         model: Broadcom 57800 1 GB Base-T
+      ib0:
+        enabled: true
+        mountable: true
       bmc:
         interface: Ethernet
         rate: 1000000000
@@ -85,20 +88,6 @@ nodes:
         via:
           api: 
             metric: pdu
-
-  graphique-6:
-    network_adapters:
-      ib0:
-        enabled: false
-        mountable: false
-        mounted: false
-        management: false
-
-  graphique-[1-5]:
-    network_adapters:
-      ib0:
-        enabled: true
-        mountable: true
 
   graphique-[1-2]:
     supported_job_types:
