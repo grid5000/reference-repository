@@ -32,15 +32,12 @@ list_of_yaml_files.each { |filename|
       next
     end
 
-    hash["storage_devices"]  = hash.delete("block_devices")
     hash["storage_devices"]  = hash["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde"])
     hash["storage_devices"].each {|k, v| v.delete("device") }
 
-    hash["network_adapters"] = hash.delete("network_interfaces")
     hash["network_adapters"] = hash["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc"])
     
-    hash["chassis"]["name"] = hash["chassis"].delete("product_name")
-    hash["chassis"]["serial"] = hash["chassis"].delete("serial_number")
+    hash['operating_system']['cstate_max_id'] = nil unless hash['operating_system']['cstate_max_id']
 
     hash = {node_uid => hash}
     
