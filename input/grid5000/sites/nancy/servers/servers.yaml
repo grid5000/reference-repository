@@ -1,0 +1,240 @@
+---
+fgriffon2:
+  kind: physical
+  alias: [storage5k]
+  warranty: 01.2012
+  serial:
+  network_adapters:
+    default:
+      mounted: true
+      mac: 00:E0:81:B2:C0:16
+      ip: 172.16.79.2
+    adm:
+      mounted: true
+      ip: 172.17.79.2
+      mac: 00:E0:81:B2:C0:1D
+    bmc: 
+      mounted: true
+      ip: 172.17.79.5
+      mac: 00:E0:81:4F:E3:63
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: griffon-pdu2
+            port: 7
+          - uid: griffon-pdu2
+            port: 9
+grog:
+  kind: physical
+  alias: []
+  warranty: 01.2013
+  serial: 6K7TX4J
+  network_adapters:
+    default:
+      mounted: true
+      mac: 84:2B:2B:60:15:6D
+      ip: 172.16.79.3
+    adm:
+      mounted: true
+      ip: 172.17.79.3
+      mac: 84:2B:2B:60:15:6E
+    bmc:
+      mounted: true
+      ip: 172.17.79.6
+      mac: 84:2B:2B:60:15:6F
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: graphene-pdu3
+            port: 1
+          - uid: graphene-pdu3
+            port: 2
+srv:
+  kind: physical
+  alias: [adminfront,ntp]
+  warranty: 11.2018
+  serial: G8VYKZ1
+  network_adapters:
+    default:
+      mounted: true
+      ip: 172.16.79.15
+      mac: A0:36:9F:28:10:AC
+    bmc:
+      mounted: true
+      ip: 172.17.79.15
+      mac: F0:1F:AF:E0:FA:DC
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: graoully-pdu1
+            port: 15
+          - uid: graoully-pdu2
+            port: 15
+
+srv-data:
+  kind: physical
+  alias: [nfs,home-g5k,public]
+  warranty: 11.2018
+  serial: GCQ7NZ1
+  network_adapters:
+    default:
+      mounted: true
+      mac: A0:36:9F:2C:5D:B8
+      ip: 172.16.79.16
+    bmc:
+      mounted: true
+      ip: 172.17.79.16
+      mac: F0:1F:AF:E1:99:E4
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: grisou-pdu1
+            port: 20
+          - uid: grisou-pdu2
+            port: 20
+
+srv2:
+  kind: physical
+  alias: []
+  warranty: 10.2020
+  serial: 37H1J82
+  network_adapters:
+    default:
+      ip: 172.16.79.22
+    adm:
+      ip: 172.17.79.22
+    bmc:
+      ip: 172.17.79.23
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: grimoire-pdu1
+            port: 23
+          - uid: grimoire-pdu2
+            port: 23
+
+storage5k:
+  kind: physical
+  alias: [storage5k]
+  warranty: 01.2012
+  serial:
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: griffon-pdu1
+            port: 8
+          - uid: griffon-pdu2
+            port: 8
+
+talc-data:
+  kind: physical
+  alias: []
+  warranty: 11.2020
+  serial: 92ZLL82
+  network_adapters:
+    default:
+      ip: 172.16.79.21
+    bmc:
+      ip: 172.17.79.21
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: grisou-pdu1
+            port: 20
+          - uid: grisou-pdu2
+            port: 20
+
+gras:
+  kind: physical
+  alias: []
+  waranty: 01.2012
+  serial:
+  network_adapters:
+    default:
+      mounted: true
+      mac: 00:0D:60:55:16:68
+      ip: 172.16.79.14
+
+srv-data:
+  kind: physical
+  alias: [nfs,home-g5k,public]
+  warranty: 11.2018
+  serial: GCQ7NZ1
+  network_adapters:
+    default:
+      ip: 172.16.79.16
+    bmc:
+      ip: 172.17.79.16
+opensm:
+  kind: physical
+  alias: []
+  warranty: 01.2013
+  serial: 1009390098
+  network_adapters:
+    default:
+      ip: 172.16.64.96
+    bmc:
+      ip: 172.17.64.96

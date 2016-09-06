@@ -1,0 +1,53 @@
+{
+  "alias": [
+    "storage5k"
+  ],
+  "kind": "physical",
+  "monitoring": {
+    "metric": "power",
+    "wattmeter": "multiple"
+  },
+  "network_adapters": {
+    "adm": {
+      "ip": "172.17.79.2",
+      "mac": "00:E0:81:B2:C0:1D",
+      "mounted": true
+    },
+    "bmc": {
+      "ip": "172.17.79.5",
+      "mac": "00:E0:81:4F:E3:63",
+      "mounted": true
+    },
+    "default": {
+      "ip": "172.16.79.2",
+      "mac": "00:E0:81:B2:C0:16",
+      "mounted": true
+    }
+  },
+  "sensors": {
+    "network": {
+      "available": true,
+      "resolution": 1
+    },
+    "power": {
+      "available": true,
+      "resolution": 1,
+      "via": {
+        "pdu": [
+          {
+            "port": 7,
+            "uid": "griffon-pdu2"
+          },
+          {
+            "port": 9,
+            "uid": "griffon-pdu2"
+          }
+        ]
+      }
+    }
+  },
+  "serial": null,
+  "type": "server",
+  "uid": "fgriffon2",
+  "warranty": 1.2012
+}
