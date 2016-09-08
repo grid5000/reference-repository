@@ -114,8 +114,10 @@ OptionParser.new do |opts|
   if ARGV.empty?
     printf "No option is specified. Run g5k-checks on the entire platform ? (y/N) "
     prompt = STDIN.gets.chomp
-    puts opts
-    exit if prompt != 'y'
+    if prompt != 'y'
+      puts opts
+      exit
+    end
   end
 
 end.parse!
