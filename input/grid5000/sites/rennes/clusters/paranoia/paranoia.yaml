@@ -39,22 +39,27 @@ nodes:
         interface: SATA
         driver: ahci
         storage: HDD
+        symlink: /dev/disk/by-slot/disk0
       sdb:
         interface: SATA
         driver: ahci
         storage: HDD
+        symlink: /dev/disk/by-slot/disk1
       sdc:
         interface: SATA
         driver: ahci
         storage: HDD
+        symlink: /dev/disk/by-slot/disk2
       sdd:
         interface: SATA
         driver: ahci
         storage: HDD
+        symlink: /dev/disk/by-slot/disk3
       sde:
         interface: SATA
         driver: ahci
         storage: HDD
+        symlink: /dev/disk/by-slot/disk4
     network_adapters:
       eth0:
         enabled: true
