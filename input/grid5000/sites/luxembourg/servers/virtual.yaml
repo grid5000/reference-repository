@@ -1,0 +1,87 @@
+adminvnc:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.117}}
+api-proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.113}}
+api-server-v3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.124}}
+api-server-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.114}}
+conman:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.110}, adm: {ip: 172.17.191.110}}
+dhcp:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.103}, adm: {ip: 172.17.191.103}}
+dns:
+  kind: virtual
+  alias: [ns]
+  network_adapters: {default: {ip: 172.16.191.101}, adm: {ip: 172.17.191.101}}
+fluxembourg:
+  kind: virtual
+  alias: [frontend, oar-api]
+  network_adapters: {default: {ip: 172.16.191.109}}
+ganglia:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.118}}
+kadeploy:
+  kind: virtual
+  alias: [kadeploy-server]
+  network_adapters: {default: {ip: 172.16.191.107}, adm: {ip: 172.17.191.107}}
+kadeploy-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.125}, adm: {ip: 172.17.191.125}}
+kavlan:
+  kind: virtual
+  alias: [kavlan-dhcp]
+  network_adapters: {default: {ip: 172.16.191.120}}
+kavlan-1:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.121}}
+kavlan-2:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.122}}
+kavlan-3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.123}}
+kwapi:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.127}}
+ldap:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.104}}
+mail:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.116}}
+mysql:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.105}}
+nat:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.200}}
+oar-server:
+  kind: virtual
+  alias: [oar, oardb]
+  network_adapters: {default: {ip: 172.16.191.106}}
+proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.102}}
+puppet:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.100}}
+supervision:
+  kind: virtual
+  alias: [nagios, munin]
+  network_adapters: {default: {ip: 172.16.191.111}}
+syslog:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.115}}
+weathermap:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.119}}
+www:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.108}}
