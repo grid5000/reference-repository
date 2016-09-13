@@ -28,7 +28,6 @@ nodes:
       queues:
       - admin
       - production
-      max_walltime: 0
     gpu:
       gpu: true
       gpu_count: 2
@@ -49,3 +48,13 @@ nodes:
         driver: megaraid_sas
         storage: HDD
         vendor: Seagate
+
+  grimani-[5-6]:
+    supported_job_types:
+      max_walltime: 31536000
+  grimani-[3-4]:
+    supported_job_types:
+      max_walltime: 172800
+  grimani-[1-2]:
+    supported_job_types:
+      max_walltime: 86400
