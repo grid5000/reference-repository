@@ -67,6 +67,31 @@ nodes:
         bridged: false
         vendor: intel
         version: 82574L
+      ib0:
+        enabled: true
+        mountable: true
+        vendor: Mellanox
+        version: MT26418
+        switch: sgrapheneib
+        driver: mlx4_core
+        interface: InfiniBand
+        management: false
+        mounted: true
+        rate: 20000000000
+        version: MT26418
+      ib1:
+        enabled: false
+        mountable: false
+        vendor: Mellanox
+        version: MT26418
+        driver: mlx4_core
+        enabled: false
+        interface: InfiniBand
+        management: false
+        mountable: false
+        mounted: false
+        rate: 10000000000
+        version: MT26418
       bmc:
         interface: Ethernet
         rate: 100000000
@@ -81,62 +106,6 @@ nodes:
     sensors:
       power:
         available: true
-
-  graphene-[1-72]:
-    network_adapters:
-      ib0:
-        enabled: true
-        mountable: true
-        vendor: Mellanox
-        version: MT26418
-        switch: sgrapheneib
-        driver: mlx4_core
-        interface: InfiniBand
-        management: false
-        mounted: true
-        rate: 20000000000
-        version: MT26418
-      ib1:
-        enabled: false
-        mountable: false
-        vendor: Mellanox
-        version: MT26418
-        driver: mlx4_core
-        enabled: false
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-        rate: 10000000000
-        version: MT26418
-  
-  graphene-[85-144]:
-    network_adapters:
-      ib0:
-        enabled: true
-        mountable: true
-        vendor: Mellanox
-        version: MT26418
-        switch: sgrapheneib
-        driver: mlx4_core
-        interface: InfiniBand
-        management: false
-        mounted: true
-        rate: 20000000000
-        version: MT26418
-      ib1:
-        enabled: false
-        mountable: false
-        vendor: Mellanox
-        version: MT26418
-        driver: mlx4_core
-        enabled: false
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-        rate: 10000000000
-        version: MT26418
 
   graphene-96:
     status: retired
