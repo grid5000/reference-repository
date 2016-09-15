@@ -1,6 +1,9 @@
 nodes:
 <% (1..144).each { |i| %>
   graphene-<%= i %>:
+    network_adapters:
+      ib0:
+        ip: 172.18.64.<%= i %>
 <% i93 = i+92 %>
     kavlan:
       eth0:
