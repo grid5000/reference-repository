@@ -13,7 +13,6 @@ graphene-80:
   chassis:
     manufacturer: TYAN
     name: S5501
-    serial: 
   main_memory:
     ram_size: 17179869184
   network_adapters:
@@ -42,6 +41,23 @@ graphene-80:
       mac: 00:e0:81:d5:06:da
       management: false
       mounted: false
+    ib0:
+      driver: mlx4_core
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:d1
+      interface: InfiniBand
+      ip: 172.18.64.80
+      management: false
+      mounted: true
+      rate: 10000000000
+      version: MT26418
+    ib1:
+      driver: mlx4_core
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:d2
+      interface: InfiniBand
+      management: false
+      mounted: false
+      rate: 10000000000
+      version: MT26418
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
