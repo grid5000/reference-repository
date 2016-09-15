@@ -81,12 +81,15 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
   h['memcpu']          = node['main_memory']['ram_size']/node['architecture']['nb_procs']/MiB
   h['memnode']         = node['main_memory']['ram_size']/MiB
 
-  node['gpu']  ||= {}
-  h['gpu']             = case node['gpu']['gpu'] when true; true; when false; false when nil; false; else node['gpu']['gpu'].upcase end
-  h['gpu_count']       = node['gpu']['gpu_count'].nil? ? 0 : node['gpu']['gpu_count']
+  if node.key?('gpu') && node['gpu']['gpu'] == true
+    h['gpu']       = node['gpu']['gpu_model']
+    h['gpu_count'] = node['gpu']['gpu_count']
+  else
+    h['gpu'] = false
+    h['gpu_count'] = 0
+  end
 
   node['monitoring'] ||= {}
-
   h['wattmeter'] = case node['monitoring']['wattmeter'] when true; true; when false; false when nil; false; else node['monitoring']['wattmeter'].upcase end
 
   # h['rconsole'] = node['monitoring']['rconsole']
@@ -165,6 +168,7 @@ def ignore_keys()
   #  type: default
 
   ignore_keys = [
+                 "chassis",
                  "slash_16",
                  "slash_17",
                  "slash_18",
