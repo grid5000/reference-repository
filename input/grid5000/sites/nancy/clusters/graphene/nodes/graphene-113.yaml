@@ -13,7 +13,6 @@ graphene-113:
   chassis:
     manufacturer: TYAN
     name: S5501
-    serial: 
   main_memory:
     ram_size: 17179869184
   network_adapters:
@@ -23,40 +22,50 @@ graphene-113:
       management: true
     eth0:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip: 172.16.64.113
       mac: 00:e0:81:d5:07:bc
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       mac: 00:e0:81:d5:07:bd
       management: false
+      mountable: false
       mounted: false
       rate: 100000000
     eth2:
       driver: e1000e
+      enabled: false
       interface: Ethernet
       mac: 00:e0:81:d5:07:be
       management: false
+      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:b5
       interface: InfiniBand
       ip: 172.18.64.113
       ip6: fe80::202:c903:b:93b5
       management: false
+      mountable: true
       mounted: true
       rate: 20000000000
       version: MT26418
     ib1:
       driver: mlx4_core
+      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:b6
       interface: InfiniBand
       management: false
+      mountable: false
       mounted: false
       rate: 10000000000
       version: MT26418
@@ -86,7 +95,8 @@ graphene-113:
   storage_devices:
     sda:
       model: Hitachi HDS72103
-      rev: A3EA
+      rev: JPFOA3EA
       size: 320072933376
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt
