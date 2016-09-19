@@ -23,17 +23,21 @@ sol-32:
       management: true
     eth0:
       driver: forcedeth
+      enabled: true
       interface: Ethernet
       ip: 172.16.129.32
       mac: 00:16:36:91:e9:94
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: forcedeth
+      enabled: false
       interface: Ethernet
       mac: 00:16:36:91:e9:95
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: none
@@ -61,7 +65,8 @@ sol-32:
   storage_devices:
     sda:
       model: HITACHI HDS7225S
-      rev: A9CA
+      rev: V44OA9CA
       size: 250056000000
+      vendor: Hitachi
   supported_job_types:
     virtual: amd-v

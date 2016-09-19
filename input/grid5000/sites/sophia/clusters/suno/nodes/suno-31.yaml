@@ -23,17 +23,21 @@ suno-31:
       management: true
     eth0:
       driver: bnx2
+      enabled: true
       interface: Ethernet
       ip: 172.16.130.31
       mac: 00:26:b9:3f:4b:56
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: bnx2
+      enabled: false
       interface: Ethernet
       mac: 00:26:b9:3f:4b:57
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: intel_idle
@@ -63,5 +67,6 @@ suno-31:
       model: PERC 6/i Adapter
       rev: 1.22
       size: 598879502336
+      vendor: DELL
   supported_job_types:
     virtual: ivt

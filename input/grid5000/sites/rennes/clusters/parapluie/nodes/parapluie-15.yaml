@@ -23,46 +23,58 @@ parapluie-15:
       management: true
     eth0:
       driver: igb
+      enabled: true
       interface: Ethernet
       mac: 78:e7:d1:f5:4f:04
       management: false
+      mountable: false
       mounted: false
       rate: 100000000
     eth1:
       driver: igb
+      enabled: true
       interface: Ethernet
       ip: 172.16.99.15
       mac: 78:e7:d1:f5:4f:05
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth2:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 78:e7:d1:f5:0f:be
       management: false
+      mountable: false
       mounted: false
     eth3:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 78:e7:d1:f5:0f:bf
       management: false
+      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:72:75
       interface: InfiniBand
       ip: 172.18.99.15
       ip6: fe80::223:7dff:ff94:7275
       management: false
+      mountable: true
       mounted: true
       rate: 20000000000
       version: MT25418
     ib1:
       driver: mlx4_core
+      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:72:76
       interface: InfiniBand
       management: false
+      mountable: false
       mounted: false
       rate: 10000000000
       version: MT25418
@@ -94,5 +106,6 @@ parapluie-15:
       model: VB0250EAVER
       rev: HPG0
       size: 250059350016
+      vendor: ATA
   supported_job_types:
     virtual: amd-v

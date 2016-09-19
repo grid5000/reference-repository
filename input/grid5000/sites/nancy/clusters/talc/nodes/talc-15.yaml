@@ -13,7 +13,6 @@ talc-15:
   chassis:
     manufacturer: TYAN Computer Corporation
     name: S5393
-    serial: 
   main_memory:
     ram_size: 12884901888
   network_adapters:
@@ -23,17 +22,21 @@ talc-15:
       management: true
     eth0:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip: 172.16.66.15
       mac: 00:e0:81:b8:b7:de
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
+      enabled: false
       interface: Ethernet
       mac: 00:e0:81:b8:b7:df
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: none
@@ -61,7 +64,8 @@ talc-15:
   storage_devices:
     sda:
       model: Hitachi HDS72103
-      rev: A39C
+      rev: JPFOA39C
       size: 320072933376
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt

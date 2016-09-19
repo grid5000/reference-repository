@@ -28,49 +28,63 @@ graoully-9:
       management: true
     eth0:
       driver: ixgbe
+      enabled: true
       interface: Ethernet
       ip: 172.16.70.9
       mac: 24:6e:96:03:1e:d0
       management: false
+      mountable: true
       mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
+      enabled: false
       interface: Ethernet
       mac: 24:6e:96:03:1e:d2
       management: false
+      mountable: false
       mounted: false
     eth2:
       driver: ixgbe
+      enabled: false
       interface: Ethernet
       mac: a0:36:9f:7f:35:ac
       management: false
+      mountable: false
       mounted: false
     eth3:
       driver: ixgbe
+      enabled: false
       interface: Ethernet
       mac: a0:36:9f:7f:35:ae
       management: false
+      mountable: false
       mounted: false
     eth4:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 24:6e:96:03:1e:d4
       management: false
+      mountable: false
       mounted: false
     eth5:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 24:6e:96:03:1e:d5
       management: false
+      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:e4:1d:2d:03:00:b9:31:11
       interface: InfiniBand
       ip: 172.18.70.9
       ip6: fe80::e61d:2d03:b9:3111
       management: false
+      mountable: true
       mounted: true
       rate: 56000000000
       version: MT4099
@@ -102,9 +116,11 @@ graoully-9:
       model: ST600MM0088
       rev: TT31
       size: 600127266816
+      vendor: SEAGATE
     sdb:
       model: ST600MM0088
       rev: TT31
       size: 600127266816
+      vendor: SEAGATE
   supported_job_types:
     virtual: ivt

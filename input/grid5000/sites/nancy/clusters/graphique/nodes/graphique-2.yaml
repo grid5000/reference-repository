@@ -28,37 +28,47 @@ graphique-2:
       management: true
     eth0:
       driver: bnx2x
+      enabled: true
       interface: Ethernet
       ip: 172.16.67.2
       mac: 44:a8:42:07:6a:c8
       management: false
+      mountable: true
       mounted: true
       rate: 10000000000
     eth1:
       driver: bnx2x
+      enabled: false
       interface: Ethernet
       mac: 44:a8:42:07:6a:ca
       management: false
+      mountable: false
       mounted: false
     eth2:
       driver: bnx2x
+      enabled: false
       interface: Ethernet
       mac: 44:a8:42:07:6a:cc
       management: false
+      mountable: false
       mounted: false
     eth3:
       driver: bnx2x
+      enabled: false
       interface: Ethernet
       mac: 44:a8:42:07:6a:ce
       management: false
+      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f0:61
       interface: InfiniBand
       ip: 172.18.67.2
       ip6: fe80::f652:1403:76:f061
       management: false
+      mountable: true
       mounted: true
       rate: 56000000000
       version: MT4099
@@ -90,5 +100,6 @@ graphique-2:
       model: PERC H330
       rev: 4.24
       size: 299439751168
+      vendor: DELL
   supported_job_types:
     virtual: ivt

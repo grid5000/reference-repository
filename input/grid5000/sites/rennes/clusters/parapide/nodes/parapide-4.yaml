@@ -23,33 +23,41 @@ parapide-4:
       management: true
     eth0:
       driver: igb
+      enabled: true
       interface: Ethernet
       ip: 172.16.98.4
       mac: 00:14:4f:ca:97:78
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 00:14:4f:ca:97:79
       management: false
+      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:69:b5
       interface: InfiniBand
       ip: 172.18.98.4
       ip6: fe80::203:ba00:100:69b5
       management: false
+      mountable: true
       mounted: true
       rate: 20000000000
       version: MT25418
     ib1:
       driver: mlx4_core
+      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:69:b6
       interface: InfiniBand
       management: false
+      mountable: false
       mounted: false
       rate: 10000000000
       version: MT25418
@@ -79,7 +87,8 @@ parapide-4:
   storage_devices:
     sda:
       model: HITACHI HUA7250S
-      rev: AC5A
+      rev: GK6OAC5A
       size: 500107862016
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt
