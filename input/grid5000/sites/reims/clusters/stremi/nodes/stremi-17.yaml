@@ -23,29 +23,37 @@ stremi-17:
       management: true
     eth0:
       driver: igb
+      enabled: true
       interface: Ethernet
       ip: 172.16.160.17
       mac: 1c:c1:de:6e:14:10
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 1c:c1:de:6e:14:11
       management: false
+      mountable: false
       mounted: false
     eth2:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 1c:c1:de:6e:14:0e
       management: false
+      mountable: false
       mounted: false
     eth3:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 1c:c1:de:6e:14:0f
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: none
@@ -75,5 +83,6 @@ stremi-17:
       model: GB0250EAFYK
       rev: HPG2
       size: 250059350016
+      vendor: ATA
   supported_job_types:
     virtual: amd-v

@@ -23,17 +23,21 @@ chimint-17:
       management: true
     eth0:
       driver: bnx2
+      enabled: true
       interface: Ethernet
       ip: 172.16.33.17
       mac: 84:2b:2b:70:f6:92
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: bnx2
+      enabled: false
       interface: Ethernet
       mac: 84:2b:2b:70:f6:93
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: intel_idle
@@ -63,5 +67,6 @@ chimint-17:
       model: PERC H700
       rev: 2.1
       size: 292326211584
+      vendor: DELL
   supported_job_types:
     virtual: ivt

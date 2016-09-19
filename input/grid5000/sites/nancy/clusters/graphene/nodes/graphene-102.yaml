@@ -13,7 +13,6 @@ graphene-102:
   chassis:
     manufacturer: TYAN
     name: S5501
-    serial: 
   main_memory:
     ram_size: 17179869184
   network_adapters:
@@ -23,40 +22,50 @@ graphene-102:
       management: true
     eth0:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip: 172.16.64.102
       mac: 00:e0:81:d5:08:bc
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       mac: 00:e0:81:d5:08:bd
       management: false
+      mountable: false
       mounted: false
       rate: 100000000
     eth2:
       driver: e1000e
+      enabled: false
       interface: Ethernet
       mac: 00:e0:81:d5:08:be
       management: false
+      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:71
       interface: InfiniBand
       ip: 172.18.64.102
       ip6: fe80::202:c903:b:5e71
       management: false
+      mountable: true
       mounted: true
       rate: 20000000000
       version: MT26418
     ib1:
       driver: mlx4_core
+      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:5e:72
       interface: InfiniBand
       management: false
+      mountable: false
       mounted: false
       rate: 10000000000
       version: MT26418
@@ -86,7 +95,8 @@ graphene-102:
   storage_devices:
     sda:
       model: Hitachi HDS72103
-      rev: A3EA
+      rev: JPFOA3EA
       size: 320072933376
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt

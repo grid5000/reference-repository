@@ -23,16 +23,20 @@ sagittaire-46:
       management: true
     eth0:
       driver: tg3
+      enabled: false
       interface: Ethernet
       mac: 00:09:3d:12:9d:e5
       management: false
+      mountable: true
       mounted: false
     eth1:
       driver: tg3
+      enabled: true
       interface: Ethernet
       ip: 172.16.49.46
       mac: 00:09:3d:12:9d:e6
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
   operating_system:
@@ -63,5 +67,6 @@ sagittaire-46:
       model: MAT3073NC
       rev: 104.0
       size: 73543163904
+      vendor: FUJITSU
   supported_job_types:
     virtual: false

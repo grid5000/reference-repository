@@ -23,29 +23,37 @@ econome-9:
       management: true
     eth0:
       driver: ixgbe
+      enabled: true
       interface: Ethernet
       ip: 172.16.192.9
       mac: a0:36:9f:0e:36:34
       management: false
+      mountable: true
       mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
+      enabled: false
       interface: Ethernet
       mac: a0:36:9f:0e:36:36
       management: false
+      mountable: false
       mounted: false
     eth2:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 78:45:c4:f9:15:ca
       management: false
+      mountable: false
       mounted: false
     eth3:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 78:45:c4:f9:15:cb
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: intel_idle
@@ -73,7 +81,8 @@ econome-9:
   storage_devices:
     sda:
       model: WDC WD2003FYYS-1
-      rev: 1.0
+      rev: 1.01
       size: 2000398934016
+      vendor: Western Digital
   supported_job_types:
     virtual: ivt

@@ -23,18 +23,22 @@ chinqchint-31:
       management: true
     eth0:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip6: fe80::230:48ff:fe7b:f97a
       mac: 00:30:48:7b:f9:7a
       management: false
+      mountable: false
       mounted: false
       rate: 1000000000
     eth1:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip: 172.16.34.31
       mac: 00:30:48:7b:f9:7b
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
   operating_system:
@@ -63,7 +67,8 @@ chinqchint-31:
   storage_devices:
     sda:
       model: Hitachi HDT72502
-      rev: A7EA
+      rev: V5DOA7EA
       size: 250059350016
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt

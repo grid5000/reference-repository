@@ -23,30 +23,38 @@ granduc-1:
       management: true
     eth0:
       driver: bnx2
+      enabled: true
       interface: Ethernet
       ip: 172.16.176.1
       mac: 00:19:b9:f0:01:c8
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: bnx2
+      enabled: false
       interface: Ethernet
       mac: 00:19:b9:f0:01:ca
       management: false
+      mountable: true
       mounted: false
     eth2:
       driver: ixgbe
+      enabled: true
       interface: Ethernet
       mac: 00:1b:21:34:e1:4b
       management: false
+      mountable: true
       mounted: false
       rate: 10000000000
     eth3:
       driver: ixgbe
+      enabled: false
       interface: Ethernet
       mac: 00:1b:21:34:e1:4a
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: none
@@ -76,5 +84,6 @@ granduc-1:
       model: ST9146802SS
       rev: S207
       size: 146815733760
+      vendor: SEAGATE
   supported_job_types:
     virtual: ivt

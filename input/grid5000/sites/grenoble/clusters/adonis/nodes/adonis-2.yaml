@@ -23,25 +23,31 @@ adonis-2:
       management: true
     eth0:
       driver: igb
+      enabled: true
       interface: Ethernet
       ip: 172.16.18.2
       mac: 00:30:48:cc:7f:da
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 00:30:48:cc:7f:db
       management: false
+      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:17:59
       interface: InfiniBand
       ip: 172.18.18.2
       ip6: fe80::230:48ff:ffcc:1759
       management: false
+      mountable: true
       mounted: true
       rate: 40000000000
       version: MT26428
@@ -71,7 +77,8 @@ adonis-2:
   storage_devices:
     sda:
       model: WDC WD2502ABYS-0
-      rev: 3.0
+      rev: 2.03
       size: 251059544064
+      vendor: Western Digital
   supported_job_types:
     virtual: ivt

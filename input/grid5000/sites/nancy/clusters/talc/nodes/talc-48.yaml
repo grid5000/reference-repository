@@ -13,7 +13,6 @@ talc-48:
   chassis:
     manufacturer: TYAN Computer Corporation
     name: S5393
-    serial: 
   main_memory:
     ram_size: 17179869184
   network_adapters:
@@ -23,17 +22,21 @@ talc-48:
       management: true
     eth0:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip: 172.16.66.48
       mac: 00:e0:81:b2:c5:62
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
+      enabled: false
       interface: Ethernet
       mac: 00:e0:81:b2:c5:63
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: none
@@ -61,7 +64,8 @@ talc-48:
   storage_devices:
     sda:
       model: Hitachi HDP72503
-      rev: A5CA
+      rev: GM3OA5CA
       size: 320072933376
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt

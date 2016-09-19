@@ -23,16 +23,20 @@ sagittaire-12:
       management: true
     eth0:
       driver: tg3
+      enabled: false
       interface: Ethernet
       mac: 00:09:3d:12:3c:2b
       management: false
+      mountable: true
       mounted: false
     eth1:
       driver: tg3
+      enabled: true
       interface: Ethernet
       ip: 172.16.49.12
       mac: 00:09:3d:12:3c:2c
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
   operating_system:
@@ -63,5 +67,6 @@ sagittaire-12:
       model: ST373307LC
       rev: 8.0
       size: 73407868928
+      vendor: SEAGATE
   supported_job_types:
     virtual: false

@@ -23,29 +23,37 @@ stremi-21:
       management: true
     eth0:
       driver: igb
+      enabled: true
       interface: Ethernet
       ip: 172.16.160.21
       mac: d4:85:64:45:d5:fe
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: d4:85:64:45:d5:ff
       management: false
+      mountable: false
       mounted: false
     eth2:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: d4:85:64:45:d5:fc
       management: false
+      mountable: false
       mounted: false
     eth3:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: d4:85:64:45:d5:fd
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: none
@@ -75,5 +83,6 @@ stremi-21:
       model: GB0250EAFYK
       rev: HPG2
       size: 250059350016
+      vendor: ATA
   supported_job_types:
     virtual: amd-v
