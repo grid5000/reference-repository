@@ -13,23 +13,30 @@ talc-71:
   chassis:
     manufacturer: TYAN Computer Corporation
     name: S5393
-    serial: 
   main_memory:
     ram_size: 17179869184
   network_adapters:
+    bmc:
+      ip: 172.17.66.71
+      mac: 00:e0:81:4f:e2:c2
+      management: true
     eth0:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip: 172.16.66.71
       mac: 00:e0:81:b2:c5:dc
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
+      enabled: false
       interface: Ethernet
       mac: 00:e0:81:b2:c5:dd
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: none
@@ -57,7 +64,8 @@ talc-71:
   storage_devices:
     sda:
       model: Hitachi HDP72503
-      rev: A5CA
+      rev: GM3OA5CA
       size: 320072933376
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt
