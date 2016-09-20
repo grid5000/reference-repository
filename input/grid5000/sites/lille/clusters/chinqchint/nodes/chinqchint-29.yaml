@@ -23,18 +23,22 @@ chinqchint-29:
       management: true
     eth0:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip6: fe80::230:48ff:fe7c:812a
       mac: 00:30:48:7c:81:2a
       management: false
+      mountable: false
       mounted: false
       rate: 1000000000
     eth1:
       driver: e1000e
+      enabled: true
       interface: Ethernet
       ip: 172.16.34.29
       mac: 00:30:48:7c:81:2b
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
   operating_system:
@@ -47,7 +51,7 @@ chinqchint-29:
     pstate_driver: none
     pstate_governor: none
     turboboost_enabled: unknown
-    version: 8.5
+    version: 8.6
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -63,7 +67,8 @@ chinqchint-29:
   storage_devices:
     sda:
       model: Hitachi HDT72502
-      rev: A7EA
+      rev: V5DOA7EA
       size: 250059350016
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt
