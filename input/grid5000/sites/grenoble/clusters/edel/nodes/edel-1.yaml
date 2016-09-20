@@ -26,7 +26,6 @@ edel-1:
       enabled: true
       interface: Ethernet
       ip: 172.16.17.1
-      ip6: fe80::a00:38ff:fe36:f33a
       mac: 08:00:38:36:f3:be
       management: false
       mountable: true
@@ -42,25 +41,14 @@ edel-1:
       mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
+      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:5f:9e
       interface: InfiniBand
       ip: 172.18.17.1
-      ip6: fe80::a00:3800:137:5f9e
       management: false
       mountable: true
       mounted: true
       rate: 40000000000
-      version: MT26428
-    ib1:
-      driver: mlx4_core
-      enabled: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
-      interface: InfiniBand
-      management: false
-      mountable: false
-      mounted: false
-      rate: 10000000000
       version: MT26428
   operating_system:
     cstate_driver: intel_idle
@@ -90,5 +78,6 @@ edel-1:
       model: C400-MTFDDAA128M
       rev: 40.0
       size: 128035676160
+      vendor: ATA
   supported_job_types:
     virtual: ivt
