@@ -34,34 +34,12 @@ griffon-13:
       rate: 1000000000
     eth1:
       driver: e1000e
-      enabled: true
+      enabled: false
       interface: Ethernet
       mac: 00:e0:81:b2:c1:e5
       management: false
-      mountable: true
-      mounted: false
-    ib0:
-      driver: mlx4_core
-      enabled: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:02:80:bd
-      interface: InfiniBand
-      ip: 172.18.65.13
-      ip6: fe80::202:c903:2:80bd
-      management: false
       mountable: false
       mounted: false
-      rate: 10000000000
-      version: MT26418
-    ib1:
-      driver: mlx4_core
-      enabled: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:02:80:be
-      interface: InfiniBand
-      management: false
-      mountable: false
-      mounted: false
-      rate: 10000000000
-      version: MT26418
   operating_system:
     cstate_driver: none
     cstate_governor: menu
