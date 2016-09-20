@@ -9,7 +9,7 @@ chinqchint-8:
   bios:
     release_date: 09/10/2007
     vendor: Phoenix Technologies LTD
-    version: "6.00"
+    version: 6.0
   chassis:
     manufacturer: SGI.COM
     name: AltixXE310
@@ -23,34 +23,20 @@ chinqchint-8:
       management: true
     eth0:
       driver: e1000e
-      enabled: true
       interface: Ethernet
       ip6: fe80::230:48ff:fe7c:3dd6
       mac: 00:30:48:7c:3d:d6
       management: false
-      mountable: false
       mounted: false
       rate: 1000000000
     eth1:
       driver: e1000e
-      enabled: true
       interface: Ethernet
       ip: 172.16.34.8
       mac: 00:30:48:7c:3d:d7
       management: false
       mounted: true
       rate: 1000000000
-    myri0:
-      driver: mx ethernet (myri)
-      enabled: false
-      interface: Myrinet
-      ip: 172.18.47.108
-      ip6: fe80::260:ddff:fe47:4bb6
-      mac: 00:60:dd:47:4b:b6
-      management: false
-      mountable: true
-      mounted: true
-      rate: 10000000000
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -61,7 +47,7 @@ chinqchint-8:
     pstate_driver: none
     pstate_governor: none
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.5
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -77,8 +63,7 @@ chinqchint-8:
   storage_devices:
     sda:
       model: Hitachi HDT72502
-      rev: V5DOA7EA
+      rev: A7EA
       size: 250059350016
-      vendor: Hitachi
   supported_job_types:
     virtual: ivt
