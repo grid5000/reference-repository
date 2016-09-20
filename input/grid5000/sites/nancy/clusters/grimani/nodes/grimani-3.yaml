@@ -2,11 +2,17 @@
 ---
 grimani-3:
   architecture:
+    nb_cores: 12
+    nb_procs: 2
+    nb_threads: 12
     platform_type: x86_64
   bios:
+    configuration:
+      cstate_c1e: true
+      cstate_enabled: true
     release_date: 04/11/2016
     vendor: Dell Inc.
-    version: 2.1
+    version: 2.1.5
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge R730
@@ -14,6 +20,10 @@ grimani-3:
   main_memory:
     ram_size: 67645734912
   network_adapters:
+    bmc:
+      ip: 172.17.73.3
+      mac: 18:fb:7b:a6:18:db
+      management: true
     eth0:
       driver: ixgbe
       interface: Ethernet
@@ -41,8 +51,15 @@ grimani-3:
       management: false
       mounted: false
   operating_system:
+    cstate_driver: intel_idle
+    cstate_governor: menu
+    cstate_max_id: 2
+    ht_enabled: false
     kernel: 3.16.0-4-amd64
     name: debian
+    pstate_driver: intel_pstate
+    pstate_governor: performance
+    turboboost_enabled: false
     version: 8.5
   processor:
     cache_l1d: 32768
@@ -50,6 +67,7 @@ grimani-3:
     cache_l2: 262144
     cache_l3: 15728640
     clock_speed: 1600000000
+    ht_capable: true
     instruction_set: x86-64
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU E5-2603 v3 @ 1.60GHz
@@ -60,7 +78,5 @@ grimani-3:
       model: ST1000NX0423
       rev: NA02
       size: 1000204886016
-      timeread: 1878
-      timewrite: 4144
   supported_job_types:
     virtual: ivt
