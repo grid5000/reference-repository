@@ -86,7 +86,6 @@ puts "\n"
 puts "#" * 80
 puts "\n"
 
-
 #
 # Write grid info
 #
@@ -170,8 +169,9 @@ global_hash["sites"].each do |site_uid, site|
     end
     network["linecards"] = linecards_array.map{|l| l || {}}
     
-    write_json(network_path.join("#{network_uid}.json"), 
-               network.reject {|k, v| k == "network_adapters"})
+    network.delete_if {|k, v| k == "network_adapters"}
+
+    write_json(network_path.join("#{network_uid}.json"), network)
     
     network["linecards"] = linecards_tmp # restore
   end
@@ -207,7 +207,6 @@ global_hash["sites"].each do |site_uid, site|
       begin
       #puts node_uid
 
-      #pp node if node_uid == "graoully-1"
       #next unless node_uid == "griffon-1"
       
       node["uid"] = node_uid
@@ -305,8 +304,7 @@ global_hash["sites"].each do |site_uid, site|
 
       node.delete("kavlan")
 
-      write_json(cluster_path.join("nodes","#{node_uid}.json"), 
-                 node.reject {|k, v| k == "conman"})
+      write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
 
       rescue => e
         puts "Error while processing #{node_uid}: #{e}"
@@ -316,5 +314,22 @@ global_hash["sites"].each do |site_uid, site|
   end
 
 end
+
+#
+# Write the all-in-one json file
+#
+
+# rename entry for the all-in-on json file
+global_hash["sites"].each do |site_uid, site|
+  site["networks"].sort.each do |network_uid, network|
+    site["network_equipments"] = site.delete("networks") 
+  end
+end
+
+write_json(grid_path.join("../../#{global_hash['uid']}-all.json"), global_hash)
+
+#
+#
+# 
 
 #check_monitoring_properties(global_hash)
