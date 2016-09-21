@@ -28,30 +28,38 @@ paravance-69:
       management: true
     eth0:
       driver: ixgbe
+      enabled: true
       interface: Ethernet
       ip: 172.16.96.69
       mac: ec:f4:bb:d1:01:10
       management: false
+      mountable: true
       mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
+      enabled: true
       interface: Ethernet
       mac: ec:f4:bb:d1:01:12
       management: false
+      mountable: false
       mounted: false
       rate: 10000000000
     eth2:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: ec:f4:bb:d1:01:14
       management: false
+      mountable: false
       mounted: false
     eth3:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: ec:f4:bb:d1:01:15
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: intel_idle
@@ -81,9 +89,11 @@ paravance-69:
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
+      vendor: SEAGATE
     sdb:
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
+      vendor: SEAGATE
   supported_job_types:
     virtual: ivt
