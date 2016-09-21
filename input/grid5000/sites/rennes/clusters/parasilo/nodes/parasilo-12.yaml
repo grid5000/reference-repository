@@ -8,8 +8,8 @@ parasilo-12:
     platform_type: x86_64
   bios:
     configuration:
-      cstate_c1e: false
-      cstate_enabled: false
+      cstate_c1e: true
+      cstate_enabled: true
       ht_enabled: true
       turboboost_enabled: true
     release_date: 04/11/2016
@@ -23,35 +23,43 @@ parasilo-12:
     ram_size: 135291469824
   network_adapters:
     bmc:
-      ip: 172.17.99.12
+      ip: 172.17.97.12
       mac: b8:2a:72:fc:ec:be
       management: true
     eth0:
       driver: ixgbe
+      enabled: true
       interface: Ethernet
       ip: 172.16.97.12
       mac: ec:f4:bb:d0:f1:48
       management: false
+      mountable: true
       mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
+      enabled: true
       interface: Ethernet
       mac: ec:f4:bb:d0:f1:4a
       management: false
+      mountable: false
       mounted: false
       rate: 10000000000
     eth2:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: ec:f4:bb:d0:f1:4c
       management: false
+      mountable: false
       mounted: false
     eth3:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: ec:f4:bb:d0:f1:4d
       management: false
+      mountable: false
       mounted: false
   operating_system:
     cstate_driver: intel_idle
@@ -81,25 +89,31 @@ parasilo-12:
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
+      vendor: SEAGATE
     sdb:
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
+      vendor: SEAGATE
     sdc:
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
+      vendor: SEAGATE
     sdd:
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
+      vendor: SEAGATE
     sde:
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
+      vendor: SEAGATE
     sdf:
       model: PX02SSF020
       rev: A4AE
       size: 200049647616
+      vendor: TOSHIBA
   supported_job_types:
     virtual: ivt
