@@ -2,6 +2,9 @@
 ---
 uvb-24:
   architecture:
+    nb_cores: 12
+    nb_procs: 2
+    nb_threads: 24
     platform_type: x86_64
   bios:
     release_date: 09/17/2013
@@ -14,42 +17,78 @@ uvb-24:
   main_memory:
     ram_size: 102005473280
   network_adapters:
+    bmc:
+      ip: 172.17.132.24
+      mac: 00:26:6c:f8:2d:16
+      management: true
     eth0:
       driver: igb
+      enabled: true
       interface: Ethernet
       ip: 172.16.132.24
       mac: 00:26:6c:f8:2d:14
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 00:26:6c:f8:2d:15
       management: false
+      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:8d
       interface: InfiniBand
       management: false
+      mountable: true
       mounted: false
       rate: 40000000000
       version: MT26428
     ib0.8100:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:8d
       interface: InfiniBand
       ip: 172.18.132.24
       ip6: fe80::224:e890:97ff:8a8d
       management: false
+      mountable: true
       mounted: true
       rate: 40000000000
       version: MT26428
+  operating_system:
+    cstate_driver: intel_idle
+    cstate_governor: menu
+    cstate_max_id: 2
+    ht_enabled: true
+    kernel: 3.16.0-4-amd64
+    name: debian
+    pstate_driver: none
+    pstate_governor: none
+    turboboost_enabled: unknown
+    version: 8.6
+  processor:
+    cache_l1d: 32768
+    cache_l1i: 32768
+    cache_l2: 262144
+    cache_l3: 12582912
+    clock_speed: 2950000000
+    ht_capable: true
+    instruction_set: x86-64
+    model: Intel Xeon
+    other_description: Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz
+    vendor: Intel
+    version: X5670
   storage_devices:
     sda:
       model: WDC WD2502ABYS-1
-      rev: 3.0
+      rev: 2.03
       size: 250000000000
+      vendor: Western Digital
   supported_job_types:
     virtual: ivt

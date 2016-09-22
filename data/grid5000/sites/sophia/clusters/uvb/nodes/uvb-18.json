@@ -1,5 +1,8 @@
 {
   "architecture": {
+    "nb_cores": 12,
+    "nb_procs": 2,
+    "nb_threads": 24,
     "platform_type": "x86_64"
   },
   "bios": {
@@ -83,16 +86,25 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.132.18",
-      "management": false,
+      "mac": "00:26:6c:f8:3e:66",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "uvb-18-bmc.sophia.grid5000.fr"
     }
   ],
   "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": 2,
+    "ht_enabled": true,
     "kernel": "3.16.0-4-amd64",
     "name": "debian",
+    "pstate_driver": "none",
+    "pstate_governor": "none",
     "release": "Jessie",
-    "version": "8.5"
+    "turboboost_enabled": "unknown",
+    "version": 8.6
   },
   "processor": {
     "cache_l1": null,
@@ -100,7 +112,8 @@
     "cache_l1i": 32768,
     "cache_l2": 262144,
     "cache_l3": 12582912,
-    "clock_speed": 2930000000,
+    "clock_speed": 2950000000,
+    "ht_capable": true,
     "instruction_set": "x86-64",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
@@ -115,9 +128,10 @@
       "driver": "ahci",
       "interface": "SATA",
       "model": "WDC WD2502ABYS-1",
-      "rev": 3.0,
+      "rev": 2.03,
       "size": 250000000000,
-      "storage": "HDD"
+      "storage": "HDD",
+      "vendor": "Western Digital"
     }
   ],
   "supported_job_types": {
