@@ -1,11 +1,14 @@
 {
   "architecture": {
+    "nb_cores": 24,
+    "nb_procs": 4,
+    "nb_threads": 24,
     "platform_type": "x86_64"
   },
   "bios": {
     "release_date": "11/11/2010",
     "vendor": "Dell Inc.",
-    "version": 1.2
+    "version": "1.2.0"
   },
   "chassis": {
     "manufacturer": "Dell Inc.",
@@ -70,20 +73,6 @@
       "mounted": false
     },
     {
-      "device": "ib0",
-      "driver": "mlx4_core",
-      "enabled": true,
-      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0c:eb:2f",
-      "interface": "InfiniBand",
-      "ip": "172.18.131.4",
-      "management": false,
-      "mountable": true,
-      "mounted": false,
-      "network_address": "uva-4-ib0.sophia.grid5000.fr",
-      "rate": 40000000000,
-      "version": "MT26428"
-    },
-    {
       "device": "ib0.8100",
       "driver": "mlx4_core",
       "enabled": true,
@@ -99,20 +88,43 @@
       "version": "MT26428"
     },
     {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0c:eb:2f",
+      "interface": "InfiniBand",
+      "ip": "172.18.131.4",
+      "management": false,
+      "mountable": true,
+      "mounted": false,
+      "network_address": "uva-4-ib0.sophia.grid5000.fr",
+      "rate": 40000000000,
+      "version": "MT26428"
+    },
+    {
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.131.4",
-      "management": false,
+      "mac": "00:26:b9:51:4d:86",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "uva-4-bmc.sophia.grid5000.fr"
     }
   ],
   "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": 1,
+    "ht_enabled": false,
     "kernel": "3.16.0-4-amd64",
     "name": "debian",
+    "pstate_driver": "none",
+    "pstate_governor": "none",
     "release": "Jessie",
-    "version": "8.5"
+    "turboboost_enabled": "unknown",
+    "version": 8.6
   },
   "processor": {
     "cache_l1": null,
@@ -120,7 +132,8 @@
     "cache_l1i": 32768,
     "cache_l2": 3145728,
     "cache_l3": 12582912,
-    "clock_speed": 2390000000,
+    "clock_speed": 2400000000,
+    "ht_capable": true,
     "instruction_set": "x86-64",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU           E7450  @ 2.40GHz",
@@ -137,7 +150,8 @@
       "model": "PERC 6/i",
       "rev": 1.22,
       "size": 146163105792,
-      "storage": "HDD"
+      "storage": "HDD",
+      "vendor": "DELL"
     }
   ],
   "supported_job_types": {
