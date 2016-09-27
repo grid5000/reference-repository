@@ -49,12 +49,15 @@ nodes:
         storage: HDD
         vendor: Seagate
 
+  grimani-1:
+    supported_job_types:
+      max_walltime: 86400
+  grimani-2:
+    supported_job_types:
+      max_walltime: 172800
+  grimani-[3-4]:
+    supported_job_types:
+      max_walltime: 604800
   grimani-[5-6]:
     supported_job_types:
       max_walltime: 31536000
-  grimani-[3-4]:
-    supported_job_types:
-      max_walltime: 172800
-  grimani-[1-2]:
-    supported_job_types:
-      max_walltime: 86400
