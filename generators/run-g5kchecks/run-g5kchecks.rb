@@ -40,7 +40,7 @@ end
 #
 
 options = {}
-options[:sites] = sites # %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
+options[:sites] = sites # %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 
 OptionParser.new do |opts|
   opts.banner = "Usage: oar-properties.rb [options]"

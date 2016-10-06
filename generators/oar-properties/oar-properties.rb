@@ -27,7 +27,7 @@ require '../lib/input_loader'
 #
 
 options = {}
-options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
+options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:ssh] ||= {}
 
 OptionParser.new do |opts|

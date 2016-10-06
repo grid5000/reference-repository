@@ -324,25 +324,6 @@ nantes:
     boot.timeout.0: 150
     boot.timeout.1: 600
     remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
-reims:
-  stremi:
-    reboot.timeout: 220
-    reboot.kexec: 100
-    partitioning.disable_swap: false
-    user.params: console=tty0 console=ttyS0,115200n8
-    deploy.params: console=tty0 console=ttyS0,115200n8 ramdisk_size=260000 rw init=/linuxrc
-    dhcp.serial: 0 38400
-    deployment.timeout: 320
-    broadcast.retries: 0
-    broadcast.timeout: 400
-    boot.timeout.0: 150
-    boot.timeout.1: 280
-    remoteops.power_off.very_hard.cmd: "/usr/local/bin/lanpower -c off --sleep 8 -m
-      HOSTNAME_SHORT"
-    remoteops.power_on.very_hard.cmd: "/usr/local/bin/lanpower -c on --sleep 8 -m
-      HOSTNAME_SHORT"
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
-      8 -m HOSTNAME_SHORT"
 rennes:
   paranoia:
     reboot.timeout: 200

@@ -213,7 +213,7 @@ if __FILE__ == $0
   require 'optparse'
 
   options = {}
-  options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes reims rennes sophia}
+  options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 
   OptionParser.new do |opts|
     opts.banner = "Usage: check-cluster-homogeneity.rb [options]"
