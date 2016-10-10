@@ -22,51 +22,36 @@ graphene-137:
       management: true
     eth0:
       driver: e1000e
-      enabled: true
       interface: Ethernet
       ip: 172.16.64.137
       mac: 00:e0:81:d5:08:44
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
-      enabled: true
       interface: Ethernet
       mac: 00:e0:81:d5:08:45
       management: false
-      mountable: false
-      mounted: false
       rate: 100000000
     eth2:
       driver: e1000e
-      enabled: false
       interface: Ethernet
       mac: 00:e0:81:d5:08:46
       management: false
-      mountable: false
-      mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f6:47
       interface: InfiniBand
       ip: 172.18.64.137
       ip6: fe80::202:c903:5:f647
       management: false
-      mountable: true
-      mounted: true
       rate: 20000000000
       version: MT26418
     ib1:
       driver: mlx4_core
-      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f6:48
       interface: InfiniBand
       management: false
-      mountable: false
-      mounted: false
       rate: 10000000000
       version: MT26418
   operating_system:

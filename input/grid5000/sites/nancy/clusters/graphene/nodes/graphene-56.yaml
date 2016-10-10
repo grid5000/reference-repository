@@ -27,21 +27,18 @@ graphene-56:
       ip: 172.16.64.56
       mac: 00:e0:81:d5:06:78
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
       interface: Ethernet
       mac: 00:e0:81:d5:06:79
       management: false
-      mounted: false
       rate: 100000000
     eth2:
       driver: e1000e
       interface: Ethernet
       mac: 00:e0:81:d5:06:7a
       management: false
-      mounted: false
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:89
@@ -49,7 +46,6 @@ graphene-56:
       ip: 172.18.64.56
       ip6: fe80::202:c903:b:9189
       management: false
-      mounted: true
       rate: 20000000000
       version: MT26418
     ib1:
@@ -57,7 +53,6 @@ graphene-56:
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:91:8a
       interface: InfiniBand
       management: false
-      mounted: false
       rate: 10000000000
       version: MT26418
   operating_system:
