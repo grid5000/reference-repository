@@ -20,12 +20,12 @@ chimint-13:
     bmc:
       ip: 172.17.33.113
       mac: 84:2b:2b:71:f1:26
+      management: true
     eth0:
       driver: bnx2
       enabled: true
       interface: Ethernet
       ip: 172.16.33.13
-      ip6: fe80::862b:2bff:fe70:c621
       mac: 84:2b:2b:71:f1:24
       management: false
       mountable: true
@@ -33,14 +33,12 @@ chimint-13:
       rate: 1000000000
     eth1:
       driver: bnx2
-      enabled: true
+      enabled: false
       interface: Ethernet
-      ip6: fe80::862b:2bff:fe70:c622
       mac: 84:2b:2b:71:f1:25
       management: false
-      mountable: true
+      mountable: false
       mounted: false
-      rate: 1000000000
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
