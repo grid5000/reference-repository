@@ -89,10 +89,6 @@ nodes:
           api: 
             metric: pdu
 
-  graphique-1:
-    supported_job_types:
-      max_walltime: 86400
-
   graphique-2:
     supported_job_types:
       max_walltime: 172800
@@ -119,6 +115,8 @@ nodes:
         gpu_count: 2
         gpu_vendor: Nvidia
         gpu_model: Titian Black
+    supported_job_types:
+      max_walltime: 86400
 
   graphique-[2-6]:
     gpu:
