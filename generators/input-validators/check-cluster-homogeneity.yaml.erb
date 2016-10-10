@@ -8,5 +8,42 @@
 #     - ~main_memory.ram_size
 #   sol-29:
 #     - +network_adapters.myri0
+#
+# nancy:
+#   graphique: model differs on graphique-1
+#   grisou-40+: 1 interface instead of 4
+#   grisou-50+: 2 IB interfaces
+#   talc-[15,95,106]: wrong BIOS version
+#   graphene-[45,85]: wrong BIOS version
+#   graphene-104+: different wattmeter
 ---
+nancy:
+  graphique-[1-2]:
+    - ~gpu.gpu_model
+  grisou-[40-51]:
+    - ~network_adapters.eth1.mountable
+    - ~network_adapters.eth2.mountable
+    - ~network_adapters.eth3.mountable
+    - -network_adapters.eth1.ip
+    - -network_adapters.eth2.ip
+    - -network_adapters.eth3.ip
+  grisou-50:
+    - +network_adapters.ib0
+  talc-[15-16]:
+    - ~bios.release_date
+    - ~bios.version
+  talc-[95-96]:
+    - ~bios.release_date
+    - ~bios.version
+  talc-[106-107]:
+    - ~bios.release_date
+    - ~bios.version
+  graphene-[45-46]:
+    - ~bios.release_date
+    - ~bios.version
+  graphene-[85-86]:
+    - ~bios.release_date
+    - ~bios.version
+  graphene-[104-144]:
+    - ~monitoring.wattmeter
 
