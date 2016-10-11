@@ -31,14 +31,6 @@ def global_ignore_keys()
     ~network_adapters.bmc.switch
     ~network_adapters.bmc.switch_port
   
-    ~network_adapters.ib0.guid
-    ~network_adapters.ib0.hwid
-    ~network_adapters.ib0.ip
-    ~network_adapters.ib0.ip6
-    ~network_adapters.ib0.line_card
-    ~network_adapters.ib0.position
-    ~network_adapters.ib1.guid
-  
     ~network_adapters.myri0.ip
     ~network_adapters.myri0.ip6
     ~network_adapters.myri0.mac
@@ -100,6 +92,26 @@ eos
 
   ('a'..'d').each { |sd| 
     keys = ignore_stokeys.gsub('.sd.', ".sd#{sd}.").gsub("\n", " ").split(" ")
+    ignore_keys.push(* keys)
+  }
+
+  ignore_ibkeys = <<-eos
+    ~network_adapters.IB_IF.guid
+    ~network_adapters.IB_IF.hwid
+    ~network_adapters.IB_IF.ip
+    ~network_adapters.IB_IF.ip6
+    ~network_adapters.IB_IF.line_card
+    ~network_adapters.IB_IF.position
+eos
+
+  ib_interfaces = [
+    'ib0',
+    'ib1',
+    'ib0.8100'
+  ]
+
+  ib_interfaces.each { |ib_if|
+    keys = ignore_ibkeys.gsub('IB_IF', "#{ib_if}").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
   }
 
