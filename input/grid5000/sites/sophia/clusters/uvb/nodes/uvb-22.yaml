@@ -23,41 +23,33 @@ uvb-22:
       management: true
     eth0:
       driver: igb
-      enabled: true
       interface: Ethernet
       ip: 172.16.132.22
       mac: 00:26:6c:f8:31:28
       management: false
-      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 00:26:6c:f8:31:29
       management: false
-      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:91
       interface: InfiniBand
       management: false
-      mountable: true
       mounted: false
       rate: 40000000000
       version: MT26428
     ib0.8100:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:91
       interface: InfiniBand
       ip: 172.18.132.22
       ip6: fe80::224:e890:97ff:8a91
       management: false
-      mountable: true
       mounted: true
       rate: 40000000000
       version: MT26428
