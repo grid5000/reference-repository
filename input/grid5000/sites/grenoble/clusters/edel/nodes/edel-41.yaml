@@ -39,6 +39,7 @@ edel-41:
       management: false
       mountable: false
       mounted: false
+      rate: 1000000000
     ib0:
       driver: mlx4_core
       enabled: true
@@ -50,6 +51,16 @@ edel-41:
       mountable: true
       mounted: true
       rate: 40000000000
+      version: MT26428
+    ib1:
+      driver: mlx4_core
+      enabled: false
+      guid:
+      interface: InfiniBand
+      management: false
+      mountable: false
+      mounted: false
+      rate: 10000000000
       version: MT26428
   operating_system:
     cstate_driver: intel_idle

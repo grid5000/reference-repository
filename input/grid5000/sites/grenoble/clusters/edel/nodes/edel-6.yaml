@@ -23,6 +23,7 @@ edel-6:
       management: true
     eth0:
       driver: igb
+      enabled: true
       interface: Ethernet
       ip: 172.16.17.6
       mac: 08:00:38:36:ec:5e
@@ -31,12 +32,15 @@ edel-6:
       rate: 1000000000
     eth1:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 08:00:38:36:ec:5f
       management: false
       mounted: false
+      rate: 1000000000
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:54:8e
       interface: InfiniBand
       ip: 172.18.17.6
@@ -44,6 +48,16 @@ edel-6:
       management: false
       mounted: true
       rate: 40000000000
+      version: MT26428
+    ib1:
+      driver: mlx4_core
+      enabled: false
+      guid:
+      interface: InfiniBand
+      management: false
+      mountable: false
+      mounted: false
+      rate: 10000000000
       version: MT26428
   operating_system:
     cstate_driver: intel_idle
