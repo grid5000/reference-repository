@@ -11,6 +11,8 @@ nodes:
 
 # Global node properties
   edel-[1-72]:
+    chassis:
+      serial: 123456789
     monitoring:
       wattmeter: outofband
     sensors:
@@ -22,7 +24,6 @@ nodes:
           ipmi: 
             sensors: 
               Power: Power  
-
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -58,19 +59,27 @@ nodes:
       eth0:
         enabled: true
         mountable: true
+        mounted: true
         bridged: true
+        rate: 1000000000
         vendor: Intel
         version: 82576 Gigabit Network Connection
       eth1:
         enabled: false
         mountable: false
-        rate: 1.0e+9
+        mounted: false
+        rate: 1000000000
         bridged: false
         vendor: Intel
         version: 82576 Gigabit Network Connection
       ib0:
+        driver: mlx4_core
         enabled: true
+        interface: InfiniBand
+        management: false
         mountable: true
+        mounted: true
+        rate: 40000000000
         vendor: Mellanox
       ib1:
         driver: mlx4_core
@@ -79,6 +88,7 @@ nodes:
         management: false
         mountable: false
         mounted: false
+        rate: 10000000000
         version: MT26428
         vendor: Mellanox
       bmc:
@@ -92,461 +102,3 @@ nodes:
         version: "1.7"
     gpu:
       gpu: false
-
-  edel-10:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab94
-  edel-11:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab90
-  edel-12:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac3c
-  edel-13:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abdc
-  edel-14:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abac
-  edel-15:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abfc
-  edel-16:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f32c
-      ib1:
-        driver: mlx4_core
-        enabled: false
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-  edel-17:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab9e
-  edel-18:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab82
-  edel-19:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-  edel-2:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      bmc:
-        ip: 172.17.17.2
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-      ib1:
-        driver: mlx4_core
-        enabled: false
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-  edel-20:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab78
-  edel-21:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac4a
-  edel-22:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab9c
-  edel-23:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abd6
-  edel-24:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac26
-  edel-25:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:aab8
-  edel-26:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab54
-  edel-27:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-  edel-28:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac48
-  edel-29:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abbe
-  edel-3:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab8c
-  edel-30:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abba
-  edel-32:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab46
-  edel-34:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:aba2
-  edel-35:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab62
-  edel-36:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abe6
-  edel-37:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f306
-      ib1:
-        driver: mlx4_core
-        enabled: false
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-  edel-38:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abd2
-  edel-39:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac2a
-  edel-40:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:aba8
-  edel-41:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f5a4
-      ib1:
-        driver: mlx4_core
-        enabled: false
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-  edel-42:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-      ib1:
-        driver: mlx4_core
-        enabled: false
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-  edel-43:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abd4
-  edel-44:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abaa
-  edel-45:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-  edel-47:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abbc
-  edel-48:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab70
-  edel-49:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abb6
-  edel-5:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-        mountable: true
-      eth1:
-        enabled: false
-        mountable: false
-      ib0:
-        driver: mlx4_core
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:5e:d8
-        interface: InfiniBand
-        ip: 172.18.17.5
-        ip6: fe80::a00:3800:137:5ed8
-        management: false
-        mountable: true
-        mounted: true
-        rate: 40000000000
-        version: MT26428
-      ib1:
-        driver: mlx4_core
-        enabled: false
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-  edel-50:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      bmc:
-        ip: 172.18.17.50
-        #mac: 08:00:38:35:a4:08
-        mac: 00:08:f1:20:07:b8
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac10
-  edel-51:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac40
-  edel-52:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac1a
-  edel-53:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac34
-  edel-55:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abe8
-  edel-56:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-  edel-57:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abae
-  edel-58:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac08
-  edel-59:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab5a
-  edel-6:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      bmc:
-        ip: 172.17.17.6
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-      ib1:
-        driver: mlx4_core
-        enabled: false
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
-        interface: InfiniBand
-        management: false
-        mountable: false
-        mounted: false
-  edel-60:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac24
-  edel-62:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abda
-  edel-64:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:adbe
-  edel-65:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-  edel-66:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac14
-  edel-67:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abfa
-  edel-68:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abb0
-  edel-69:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac68
-  edel-7:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab40
-  edel-70:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ac66
-  edel-71:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe36:f33a
-  edel-8:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:ab56
-  edel-9:
-    chassis:
-      serial: '123456789'
-    network_adapters:
-      eth0:
-        ip6: fe80::a00:38ff:fe35:abd8
