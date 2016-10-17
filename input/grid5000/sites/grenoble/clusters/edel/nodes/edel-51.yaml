@@ -23,33 +23,42 @@ edel-51:
       management: true
     eth0:
       driver: igb
+      enabled: true
       interface: Ethernet
       ip: 172.16.17.51
       mac: 08:00:38:35:ac:40
       management: false
+      mountable: true
       mounted: true
       rate: 1000000000
     eth1:
       driver: igb
+      enabled: false
       interface: Ethernet
       mac: 08:00:38:35:ac:41
       management: false
+      mountable: false
       mounted: false
+      rate: 1000000000
     ib0:
       driver: mlx4_core
+      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:35:ca:61
       interface: InfiniBand
       ip: 172.18.17.51
       ip6: fe80::a00:3800:135:ca61
       management: false
+      mountable: true
       mounted: true
       rate: 40000000000
       version: MT26428
     ib1:
       driver: mlx4_core
+      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
       interface: InfiniBand
       management: false
+      mountable: false
       mounted: false
       rate: 10000000000
       version: MT26428
@@ -69,7 +78,7 @@ edel-51:
     cache_l1i: 32768
     cache_l2: 262144
     cache_l3: 8388608
-    clock_speed: 2250000000
+    clock_speed: 2300000000
     ht_capable: true
     instruction_set: x86-64
     model: Intel Xeon
