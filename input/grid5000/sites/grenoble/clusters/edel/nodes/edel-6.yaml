@@ -13,7 +13,7 @@ edel-6:
   chassis:
     manufacturer: INSYDE
     name: Thurley
-    serial: 123456789
+    serial: '123456789'
   main_memory:
     ram_size: 25769803776
   network_adapters:
@@ -26,6 +26,7 @@ edel-6:
       enabled: true
       interface: Ethernet
       ip: 172.16.17.6
+      ip6: fe80::a00:38ff:fe36:f33a
       mac: 08:00:38:36:ec:5e
       management: false
       mounted: true
@@ -52,7 +53,7 @@ edel-6:
     ib1:
       driver: mlx4_core
       enabled: false
-      guid:
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
       interface: InfiniBand
       management: false
       mountable: false
