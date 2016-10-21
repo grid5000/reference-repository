@@ -155,7 +155,7 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
       refnode = cluster['nodes'][refnode_uid]
       
       cluster["nodes"].each_sort_by_node_uid do |node_uid, node|
-        #next if node_uid != 'graphene-2'
+        next if node['status'] == 'retired'
         
         diffs = HashDiff.diff(refnode, node)
 
