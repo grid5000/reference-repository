@@ -6,7 +6,7 @@
 # - The script will run g5k-checks on every nodes that have been reserved.
 # - Output YAML files of g5k-checks are stored in output/
 # - If an output YAML file already exist in ouput/, the execution of g5k-check on the corresponding node is skipped.
-# - Use postprocessing.rb for moving the file in th input/ directory. This script also edits some keys of the YAML files.
+# - Use postprocessing.rb for moving the file in the input/ directory. This script also edits some keys of the YAML files.
 
 require 'optparse'
 require 'fileutils'
@@ -43,7 +43,7 @@ options = {}
 options[:sites] = sites # %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: oar-properties.rb [options]"
+  opts.banner = "Usage: run-g5kchecks.rb [options]"
 
   opts.separator ""
   opts.separator "Example: ruby run-g5kchecks.rb -s nancy -n graoully-1         # make a reservation on graoully-1 and run g5k-checks"
