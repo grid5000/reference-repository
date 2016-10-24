@@ -11,7 +11,7 @@ graphite-4:
       cstate_c1e: true
       cstate_enabled: true
       ht_enabled: true
-      turboboost_enabled: false
+      turboboost_enabled: true
     release_date: 01/28/2015
     vendor: Dell Inc.
     version: 2.5.2
@@ -28,47 +28,37 @@ graphite-4:
       management: true
     eth0:
       driver: ixgbe
-      enabled: true
       interface: Ethernet
       ip: 172.16.68.4
       mac: b8:ca:3a:69:12:40
       management: false
-      mountable: true
       mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
-      enabled: false
       interface: Ethernet
       mac: b8:ca:3a:69:12:42
       management: false
-      mountable: false
       mounted: false
     eth2:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: b8:ca:3a:69:12:44
       management: false
-      mountable: false
       mounted: false
     eth3:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: b8:ca:3a:69:12:45
       management: false
-      mountable: false
       mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f2:c1
       interface: InfiniBand
       ip: 172.18.68.4
       ip6: fe80::f652:1403:76:f2c1
       management: false
-      mountable: true
       mounted: true
       rate: 56000000000
       version: MT4099
@@ -81,7 +71,7 @@ graphite-4:
     name: debian
     pstate_driver: intel_pstate
     pstate_governor: performance
-    turboboost_enabled: false
+    turboboost_enabled: true
     version: 8.6
   processor:
     cache_l1d: 32768
