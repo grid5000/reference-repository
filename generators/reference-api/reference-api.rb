@@ -207,7 +207,7 @@ global_hash["sites"].each do |site_uid, site|
       begin
       #puts node_uid
 
-      #next unless node_uid == "griffon-1"
+      next if node['status'] == "retired"
       
       node["uid"] = node_uid
       node["type"] = "node"
