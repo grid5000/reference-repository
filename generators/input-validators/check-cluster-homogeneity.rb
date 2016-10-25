@@ -140,7 +140,8 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
 
   refapi_hash = load_yaml_file_hierarchy("../../input/grid5000/")
   count = {}
-  
+  total_count = 0
+
   refapi_hash["sites"].sort.each do |site_uid, site|
     next if options.key?(:sites) && !options[:sites].include?(site_uid)
 
@@ -153,10 +154,10 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
 
       refnode_uid = cluster['nodes'].keys.sort.first
       refnode = cluster['nodes'][refnode_uid]
-      
+
       cluster["nodes"].each_sort_by_node_uid do |node_uid, node|
         next if node['status'] == 'retired'
-        
+
         diffs = HashDiff.diff(refnode, node)
 
         # Hack HashDiff output for arrays:
@@ -184,8 +185,8 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
         # Remove keys that are specific to each nodes (ip, mac etc.)
         ikeys = cignore_keys[site_uid][node_uid] rescue nil
         diffs.clone.each { |diff|
-          diffs.delete(diff) if ignore_keys.include?(diff[0] + diff[1])         
-          diffs.delete(diff) if ikeys && ikeys.include?(diff[0] + diff[1]) 
+          diffs.delete(diff) if ignore_keys.include?(diff[0] + diff[1])
+          diffs.delete(diff) if ikeys && ikeys.include?(diff[0] + diff[1])
         }
 
         if verbose && !diffs.empty?
@@ -193,32 +194,31 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
           pp diffs
         end
 
+        total_count += diffs.size
         count[site_uid][cluster_uid] += diffs.size
 
         # Remove the following line if you want to compare each nodes to the first cluster node
         refnode_uid = node_uid
         refnode = node
-
       end
-      
     end
   end
 
-  return count
+  return [total_count, count]
 end
 
 def check_cluster_homogeneity(refapi_hash, options = {:verbose => false})
   verbose = options[:verbose]
   puts "Differences found between successive nodes, per cluster:\n\n"
 
-  count = cluster_homogeneity(refapi_hash, options)
+  total_count, count = cluster_homogeneity(refapi_hash, options)
   puts "\n" if verbose
 
   puts count.to_yaml unless verbose
 
   puts "\nUse '../input-validators/check-cluster-homogeneity.rb -v' for details." unless verbose
-  
-  return count
+
+  return total_count
 end
 
 if __FILE__ == $0
@@ -229,25 +229,25 @@ if __FILE__ == $0
 
   OptionParser.new do |opts|
     opts.banner = "Usage: check-cluster-homogeneity.rb [options]"
-    
+
     opts.separator ""
     opts.separator "Example: ruby check-cluster-homogeneity.rb -v"
 
     ###
-    
+
     opts.separator ""
     opts.separator "Filters:"
-    
+
     opts.on('-s', '--sites a,b,c', Array, 'Select site(s)',
             "Default: "+options[:sites].join(", ")) do |s|
       raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
       options[:sites] = s
     end
-    
+
     opts.on('-c', '--clusters a,b,c', Array, 'Select clusters(s). Default: all') do |s|
       options[:clusters] = s
     end
-    
+
     opts.separator ""
     opts.separator "Common options:"
 
@@ -255,14 +255,18 @@ if __FILE__ == $0
       options[:verbose] ||= 0
       options[:verbose] = options[:verbose] + 1
     end
-    
+
     # Print an options summary.
     opts.on_tail("-h", "--help", "Show this message") do
       puts opts
       exit
     end
   end.parse!
-  
+
   refapi_hash = load_yaml_file_hierarchy("#{dir}/../../input/grid5000/")
-  check_cluster_homogeneity(refapi_hash, options)
+  total_count = check_cluster_homogeneity(refapi_hash, options)
+
+  # return 0 if all nodes are homogeneous, 1 otherwise
+  exit total_count == 0
+
 end

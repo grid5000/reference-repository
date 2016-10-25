@@ -53,9 +53,8 @@ def net_switch_port_lookup(site, node_uid, interface='')
   return nil
 end
 
-
 OptionParser.new do |opts|
-  opts.banner = "Usage: reference-apo.rb"
+  opts.banner = "Usage: reference-api.rb"
   opts.separator ""
   opts.separator "This script generates the reference-api JSON (data/) from the input files (input/)."
   opts.separator "It does not have any option."
