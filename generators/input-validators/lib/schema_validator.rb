@@ -11,6 +11,7 @@ dir = Pathname(__FILE__).parent
 require 'json'
 require 'hash_validator' # https://github.com/jamesbrooks/hash_validator
 require "#{dir}/multihash_validator" # custom validator for <multi> array-like Hash support
+require "#{dir}/custom_validators" # other custom validators
 
 # Simple required_hash validator
 HashValidator.append_validator(HashValidator::Validator::SimpleValidator.new('required_hash', lambda { |v| v.is_a?(Hash) }))
