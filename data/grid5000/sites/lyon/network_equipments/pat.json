@@ -1,15 +1,11 @@
 {
   "backplane_bps": 40000000000,
-  "channels": {
-    "naming_pattern": "Po%CHANNELID%"
-  },
   "kind": "switch",
   "linecards": [
     {
     },
     {
       "kind": "node",
-      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -94,8 +90,6 @@
   ],
   "model": "Foundry EdgeIron",
   "mtu": 1500,
-  "routes": {
-  },
   "sensors": {
     "network": {
       "available": true,
@@ -107,7 +101,6 @@
   "type": "network_equipment",
   "uid": "pat",
   "vlans": {
-    "naming_pattern": "Vlan%VLANID%",
     "vlan1": {
       "addresses": [
         "172.17.63.250"

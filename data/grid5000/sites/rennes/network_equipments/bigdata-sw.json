@@ -1,13 +1,9 @@
 {
   "backplane_bps": 1280000000000,
-  "channels": {
-    "naming_pattern": "Po%CHANNELID%"
-  },
   "kind": "switch",
   "linecards": [
     {
       "kind": "node",
-      "naming_pattern": "TenGigabitEthernet %LINECARD%/%PORT%",
       "port": "eth0",
       "ports": [
         {
@@ -134,8 +130,6 @@
   ],
   "model": "Force10 S4810",
   "mtu": 1500,
-  "routes": {
-  },
   "sensors": {
     "network": {
       "available": true,
@@ -147,7 +141,6 @@
   "type": "network_equipment",
   "uid": "bigdata-sw",
   "vlans": {
-    "naming_pattern": "Vlan%VLANID%",
     "vlan101": {
       "addresses": [
         "172.17.111.203"
