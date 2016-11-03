@@ -13,7 +13,6 @@ c6509:
   linecards:
     1:
       kind: virtual
-      naming_pattern: Te%LINECARD%/%PORT%
       snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       rate: 10000000000
       backplane_bps: 40000000000
@@ -27,7 +26,6 @@ c6509:
           kind: switch
     2:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
@@ -60,7 +58,6 @@ c6509:
           port: eth2
     3:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
@@ -92,7 +89,6 @@ c6509:
           port: eth2
     8:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
@@ -101,7 +97,6 @@ c6509:
         16:
     7:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       model: WS-X6748-GE-TX
@@ -121,7 +116,6 @@ c6509:
         41: parapide-9
     6:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
@@ -142,7 +136,6 @@ c6509:
         33: parapluie-33
     4:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
@@ -162,6 +155,3 @@ c6509:
         34: parapluie-38
         36: parapluie-39
         37: parapluie-40
-  channels:
-    naming_pattern: Po%CHANNELID%
-    snmp_pattern: Port-channel%CHANNELID%

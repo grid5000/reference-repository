@@ -12,18 +12,13 @@ edgeiron:
     use_cacti: "no"
   mtu: 10240
   vlans:
-    naming_pattern: Vlan%VLANID%
-    snmp_pattern: v%VLANID%
     "vlan100":
       administrative: yes
       addresses:
         - 172.16.143.250
-  routes: {}
   backplane_bps: 40000000000
-
   linecards:
     0:
-      naming_pattern: "%LINECARD%/%PORT%"
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: router
       rate: 1000000000
@@ -35,7 +30,6 @@ edgeiron:
           uid: gw-sophia
           port: ethernet2/2
     1:
-      naming_pattern: "%LINECARD%/%PORT%"
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
@@ -85,7 +79,6 @@ edgeiron:
         18: 
         21: 
     3:
-      naming_pattern: "%LINECARD%/%PORT%"
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
@@ -101,6 +94,4 @@ edgeiron:
         8: 
         7: 
         6: 
-        5: 
-  channels:
-    naming_pattern: Po%CHANNELID%
+        5:

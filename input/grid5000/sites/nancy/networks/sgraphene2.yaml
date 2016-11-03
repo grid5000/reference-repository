@@ -10,16 +10,13 @@ sgraphene2:
       resolution: 1
   mtu: 9216
   vlans:
-    naming_pattern: Vlan-interface%VLANID%
     "vlan1":
       administrative: yes
       addresses:
         - 172.16.79.202
-  routes: {}
   backplane_bps: 176000000000
   linecards:
     0:
-      naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
@@ -60,7 +57,6 @@ sgraphene2:
         34: graphene-73
         35: graphene-74
     1:
-      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: switch
       rate: 10000000000
@@ -68,5 +64,3 @@ sgraphene2:
         2: 
           uid: sgravillon1
           kind: switch
-  channels:
-    naming_pattern: Po%CHANNELID%

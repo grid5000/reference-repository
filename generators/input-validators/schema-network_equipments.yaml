@@ -1,0 +1,48 @@
+---
+model: string
+kind: string
+site: string
+backplane_bps: optional_integer
+mtu: optional_integer
+snmp_community: string
+network_adapters: optional
+weathermap:
+  <optional_hash>:
+    use_cacti: string
+sensors:
+  <optional_hash>:
+    network:
+      <optional_hash>:
+        available: boolean
+        resolution: optional_integer
+        via: optional
+    power:
+      <optional_hash>:
+        available: boolean
+        resolution: optional_integer
+        via: optional
+          #   pdu:
+          #       uid: string
+          #       port: integer
+monitoring:
+  <optional_hash>:
+    wattmeter: optional
+    metric: optional_string
+vlans:
+  <optional_hash>:
+    <multi>:
+      <optional_hash>:
+        administrative: optional_boolean
+        name: optional_string
+        addresses: optional_array
+        mtu: optional_integer
+linecards:
+  <multi>:
+    snmp_pattern: string
+    kind: optional_string
+    rate: integer
+    model: optional_string
+    backplane_bps: optional_integer
+    port: optional_string
+    ports:
+      <multi>: linecard_port #custom linecard port validation (see lib/custom-validators.rb)

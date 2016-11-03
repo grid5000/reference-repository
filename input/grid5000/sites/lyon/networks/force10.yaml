@@ -9,17 +9,14 @@ force10:
       available: true
       resolution: 1
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan101":
       administrative: yes
       addresses:
         - 172.17.63.253
-  routes: {}
   backplane_bps: 1280000000000
   mtu: 12000
   linecards:
     0:
-      naming_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
       snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
       kind: node
       rate: 10000000000
@@ -71,5 +68,3 @@ force10:
           uid: pat
           port: "1:25"
           kind: switch
-  channels:
-    naming_pattern: Po%CHANNELID%

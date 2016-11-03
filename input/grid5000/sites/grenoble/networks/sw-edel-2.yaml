@@ -11,13 +11,9 @@ sw-edel-2:
   mtu: 9216
   weathermap: 
     use_cacti: "no"
-  vlans: 
-    naming_pattern: Vlan%VLANID%
-  routes: {}
-
+  vlans: {}
   linecards: 
     1: 
-      naming_pattern: "%LINECARD%/0/%PORT%"
       snmp_pattern: "Unit: %LINECARD% Slot: 0 Port: %PORT% Gigabit - Level"
       kind: node
       rate: 1000000000
@@ -55,5 +51,3 @@ sw-edel-2:
           uid: gw-grenoble
           port: "2:3"
           kind: router
-  channels: 
-    naming_pattern: Po%CHANNELID%

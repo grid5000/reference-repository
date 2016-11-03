@@ -12,17 +12,13 @@ pat:
     use_cacti: "no"
   mtu: 1500
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan1":
       administrative: yes
       addresses:
         - 172.17.63.250
-  routes: {}
   backplane_bps: 40000000000
-
   linecards:
     1:
-      naming_pattern: "%LINECARD%/%PORT%"
       snmp_pattern: "EtherNet Port on unit %LINECARD%, port:%PORT%"
       kind: node
       rate: 100000000
@@ -59,5 +55,3 @@ pat:
           uid: chris
           port: "0:37"
           kind: switch
-  channels:
-    naming_pattern: Po%CHANNELID%

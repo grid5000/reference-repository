@@ -13,13 +13,10 @@ ul-grid5000-sw02:
   weathermap:
     use_cacti: "yes"
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan101":
       administrative: yes
       addresses:
         - 172.17.191.253
-  routes: {}
-
   linecards:
 #    0:
 #      naming_pattern: "mgmt%PORT%"
@@ -30,7 +27,6 @@ ul-grid5000-sw02:
 #          port: Gi1/46
 #          kind: router
     1:
-      naming_pattern: "Ethernet%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
       kind: node
@@ -149,24 +145,3 @@ ul-grid5000-sw02:
           uid: mxl2
           port: Te0/36
           kind: switch
-  channels:
-    naming_pattern: Po%CHANNELID%
-    snmp_pattern: port-channel%CHANNELID%
-    "lacp5":
-        - linecard: 1
-          port: 33
-        - linecard: 1
-          port: 34
-        - linecard: 1
-          port: 35
-        - linecard: 1
-          port: 36
-    "lacp6":
-        - linecard: 1
-          port: 37
-        - linecard: 1
-          port: 38
-        - linecard: 1
-          port: 39
-        - linecard: 1
-          port: 40

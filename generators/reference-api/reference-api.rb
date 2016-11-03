@@ -320,9 +320,7 @@ end
 
 # rename entry for the all-in-on json file
 global_hash["sites"].each do |site_uid, site|
-  site["networks"].sort.each do |network_uid, network|
-    site["network_equipments"] = site.delete("networks") 
-  end
+  site["network_equipments"] = site.delete("networks")
 end
 
 write_json(grid_path.join("../../#{global_hash['uid']}-all.json"), global_hash)

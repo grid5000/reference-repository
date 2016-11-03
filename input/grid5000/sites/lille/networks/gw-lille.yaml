@@ -8,11 +8,9 @@ gw-lille:
     network:
       available: true
       resolution: 1
-  routes: {}
   backplane_bps: 720000000000
   mtu: 9216
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan100":
       administrative: yes
       addresses:
@@ -72,11 +70,9 @@ gw-lille:
       name: kavlan-12
       addresses:
         - 10.11.192.0/18
-
   linecards:
     6:
       kind: router
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
@@ -84,7 +80,6 @@ gw-lille:
         2: interco-NR-Lille
     1:
       kind: virtual
-      naming_pattern: Te%LINECARD%/%PORT%
       snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 10000000000
@@ -92,7 +87,6 @@ gw-lille:
         1: renater-lille
     2:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
@@ -145,7 +139,6 @@ gw-lille:
 
     3:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
@@ -220,7 +213,6 @@ gw-lille:
             port: eth1
     4:
       kind: node
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
@@ -261,6 +253,3 @@ gw-lille:
         35: chinqchint-35
         37: chinqchint-37
         38: chinqchint-38
-  channels:
-    naming_pattern: Po%CHANNELID%
-    snmp_pattern: Port-channel%CHANNELID%

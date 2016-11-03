@@ -30,6 +30,7 @@ def yaml_input_schema_validator(global_hash, sites = nil, clusters = nil)
   schema_site    = load_yaml_schema("#{dir}/schema-site.yaml")
   schema_cluster = load_yaml_schema("#{dir}/schema-cluster.yaml")
   schema_node    = load_yaml_schema("#{dir}/schema-node.yaml")
+  schema_network_equipments = load_yaml_schema("#{dir}/schema-network_equipments.yaml")
 
   r = true
 
@@ -40,9 +41,13 @@ def yaml_input_schema_validator(global_hash, sites = nil, clusters = nil)
 
     r &= run_validator(site_uid, site, schema_site) #
 
-    site["clusters"].each do |cluster_uid, cluster|
-      next if clusters and not clusters.include?(cluster_uid)
+    site['networks'].each do |network_equipment_uid, network_equipment|
+      r &= run_validator(site_uid, network_equipment, schema_network_equipments)
+    end
 
+    site["clusters"].each do |cluster_uid, cluster|
+      next if clusters and not clusters.include?(cluster_uid)      
+      
       r &= run_validator(cluster_uid, cluster, schema_cluster) #
 
       cluster["nodes"].each do |node_uid, node|

@@ -13,16 +13,12 @@ mxl1:
   weathermap:
     use_cacti: "yes"
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan101":
       administrative: yes
       addresses:
         - 172.17.191.251
-  routes: {}
-
   linecards:
     0:
-      naming_pattern: "Te%LINECARD%/%PORT%"
       snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
       rate: 10000000000
       kind: node
@@ -91,15 +87,3 @@ mxl1:
           uid: ul-grid5000-sw02
           port: Ethernet1/36
           kind: switch
-  channels:
-    naming_pattern: Po%CHANNELID%
-    snmp_pattern: Port-channel%CHANNELID%
-    "lacp5":
-        - linecard: 1
-          port: 33
-        - linecard: 1
-          port: 34
-        - linecard: 1
-          port: 35
-        - linecard: 1
-          port: 36

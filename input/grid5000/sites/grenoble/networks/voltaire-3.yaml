@@ -6,16 +6,10 @@ voltaire-3:
   snmp_community: public
   weathermap: 
     use_cacti: "no"
-  vlans: 
-    naming_pattern: Vlan%VLANID%
-  routes: {}
-
+  vlans: {}
   linecards: 
-    0: 
-      naming_pattern: "%LINECARD%/%PORT%"
+    0:
       kind: switch
       rate: 10000000000
       ports: 
         0: ib-grenoble
-  channels: 
-    naming_pattern: Po%CHANNELID%

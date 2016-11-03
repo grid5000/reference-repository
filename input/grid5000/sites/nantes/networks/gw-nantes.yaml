@@ -9,7 +9,6 @@ gw-nantes:
       available: true
       resolution: 1
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan100":
       administrative: yes
       addresses:
@@ -61,12 +60,10 @@ gw-nantes:
       name: kavlan-21
       addresses:
         - 10.47.192.0/18
-  routes: {}
   backplane_bps: 1280000000000
   mtu: 1500
   linecards:
     0:
-      naming_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
       snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
       kind: node
       rate: 10000000000
@@ -98,6 +95,3 @@ gw-nantes:
         28: econome-20
         31: econome-21
         30: econome-22
-
-  channels:
-    naming_pattern: Po%CHANNELID%
