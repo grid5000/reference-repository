@@ -10,9 +10,7 @@ gw-grenoble:
     network:
       available: true
       resolution: 1
-  routes: {}
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan100":
       administrative: yes
       addresses:
@@ -65,7 +63,6 @@ gw-grenoble:
         - 10.7.192.0/18
   linecards:
     2:
-      naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000
       kind: switch
@@ -112,7 +109,6 @@ gw-grenoble:
         24:
           uid: voltaire-2
     3:
-      naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       kind: node
       backplane_bps: 48000000000
@@ -228,7 +224,6 @@ gw-grenoble:
           uid: genepi-2
           port: eth1
     4:
-      naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000
       kind: node
@@ -323,7 +318,6 @@ gw-grenoble:
           uid: grimage-8
           port: eth0
     10:
-      naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000
       kind: other
@@ -337,5 +331,3 @@ gw-grenoble:
           kind: virtual
           uid: renater-grenoble
           rate: 10000000000
-  channels:
-    naming_pattern: Po%CHANNELID%

@@ -26,7 +26,6 @@ gw-nancy:
     metric: power
   mtu: 9220
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan100":
       administrative: yes
       addresses:
@@ -77,11 +76,9 @@ gw-nancy:
       name: kavlan-14
       addresses:
         - 10.19.192.0/18
-  routes: {}
   backplane_bps: 1280000000000
   linecards:
     1:
-      naming_pattern: "E%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       backplane_bps: 1280000000000
       model: N9K-X9464PX
@@ -221,7 +218,6 @@ gw-nancy:
           uid: renater-nancy
           kind: virtual
     2:
-      naming_pattern: "E%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       backplane_bps: 1280000000000
       model: N9K-X9464PX
@@ -373,7 +369,6 @@ gw-nancy:
           uid: grimoire-8
           kind: node
     3:
-      naming_pattern: "E%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       backplane_bps: 1280000000000
       model: N9K-X9464PX
@@ -573,7 +568,6 @@ gw-nancy:
           kind: node
           port: eth1
     4:
-      naming_pattern: "E%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       backplane_bps: 1280000000000
       model: N9K-X9464PX
@@ -773,7 +767,6 @@ gw-nancy:
           kind: node
           port: eth2
     5:
-      naming_pattern: "E%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       backplane_bps: 1280000000000
       model: N9K-X9464PX
@@ -973,7 +966,6 @@ gw-nancy:
           kind: node
           port: eth3
     6:
-      naming_pattern: "E%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       backplane_bps: 1280000000000
       model: N9K-X9464PX

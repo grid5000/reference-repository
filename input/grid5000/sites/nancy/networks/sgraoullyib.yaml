@@ -19,13 +19,9 @@ sgraoullyib:
     metric: power
   weathermap:
     use_cacti: "no"
-  vlans:
-    naming_pattern: Vlan%VLANID%
-  routes: {}
-
+  vlans: {}
   linecards:
     12:
-      naming_pattern: "%LINECARD%/%PORT%"
       snmp_pattern: "%LINECARD%/%PORT%"
       kind: switch
       rate: 20000000000
@@ -33,5 +29,3 @@ sgraoullyib:
         12: 
           uid: sgriffonib
           kind: switch
-  channels:
-    naming_pattern: Po%CHANNELID%

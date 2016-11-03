@@ -9,11 +9,9 @@ sgravillon1:
       available: true
       resolution: 1
   mtu: 9220
-  routes: {}
   backplane_bps: 346000000000
   linecards:
     1:
-      naming_pattern: "%LINECARD:A%%PORT%"
       snmp_pattern: "A%PORT%"
       backplane_bps: 14400000000
       model: J8702A
@@ -48,7 +46,6 @@ sgravillon1:
           uid: fgriffon1
           kind: other
     2:
-      naming_pattern: "%LINECARD:B%%PORT%"
       snmp_pattern: "B%PORT%"
       backplane_bps: 14400000000
       model: J8708A
@@ -57,7 +54,6 @@ sgravillon1:
       ports:
         1: sgriffon1
     3:
-      naming_pattern: "%LINECARD:C%%PORT%"
       snmp_pattern: "C%PORT%"
       backplane_bps: 14400000000
       model: J8708A
@@ -68,7 +64,6 @@ sgravillon1:
         2: sgraphene2
         4: sgraphene4
     4:
-      naming_pattern: "%LINECARD:D%%PORT%"
       snmp_pattern: "D%PORT%"
       backplane_bps: 14400000000
       model: J8708A
@@ -87,7 +82,6 @@ sgravillon1:
           uid: sgraphene3
           kind: switch
     6:
-      naming_pattern: "%LINECARD:F%%PORT%"
       snmp_pattern: "F%PORT%"
       backplane_bps: 14400000000
       model: J9538A
@@ -97,10 +91,3 @@ sgravillon1:
         1:
           uid: gw-nancy
           kind: router
-  channels:
-    naming_pattern: Po%CHANNELID%
-    snmp_pattern: Trk%CHANNELID%
-    "lacp3":
-        - linecard: 1
-          port: 11
-          port: 23

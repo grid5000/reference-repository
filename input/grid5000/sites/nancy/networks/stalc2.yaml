@@ -10,16 +10,13 @@ stalc2:
       resolution: 1
   mtu: 9216
   vlans:
-    naming_pattern: Vlan-interface%VLANID%
     "vlan1":
       administrative: yes
       addresses:
         - 172.16.79.225
-  routes: {}
   backplane_bps: 176000000000
   linecards:
     0:
-      naming_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
@@ -115,7 +112,6 @@ stalc2:
           uid: talc-67
           port: eth0
     1:
-      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: switch
       rate: 10000000000
@@ -123,7 +119,6 @@ stalc2:
         1: stalc4
         2: stalc3
     2:
-      naming_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
       kind: other
       rate: 10000000000
@@ -136,5 +131,3 @@ stalc2:
           port: eth2
           uid: ftalc2
           kind: other
-  channels:
-    naming_pattern: Po%CHANNELID%

@@ -8,12 +8,10 @@ paravance-sw-2:
     network:
       available: true
       resolution: 1
-  routes: {}
   backplane_bps: 1440000000000
   mtu: 1500
   linecards:
     1:
-      naming_pattern: "Ethernet%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
       ports:
@@ -218,7 +216,6 @@ paravance-sw-2:
           rate: 40000000000
           kind: router
     2:
-      naming_pattern: "Ethernet%LINECARD%/%PORT%"
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
       ports:
@@ -318,13 +315,3 @@ paravance-sw-2:
           uid: paravance-72
           kind: node
           port: eth0
-  channels:
-    naming_pattern: Po%CHANNELID%
-    snmp_pattern: port-channel%CHANNELID%
-    3:
-      - linecard: 1
-        port: 51
-        rate: 40000000000
-      - linecard: 1
-        port: 52
-        rate: 40000000000

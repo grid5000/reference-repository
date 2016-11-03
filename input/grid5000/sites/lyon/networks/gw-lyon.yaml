@@ -9,7 +9,6 @@ gw-lyon:
       available: true
       resolution: 1
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan100":
       administrative: yes
       addresses:
@@ -60,12 +59,10 @@ gw-lyon:
       name: kavlan-13
       addresses:
         - 10.15.192.0/18
-  routes: {}
   backplane_bps: 800000000000
   mtu: 9216
   linecards:
     2:
-      naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
       kind: node
@@ -103,7 +100,6 @@ gw-lyon:
         31: sagittaire-79
         34: cyrrus-adm
     3:
-      naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
       kind: node
@@ -158,7 +154,6 @@ gw-lyon:
         8: sagittaire-8
         9: sagittaire-9
     4:
-      naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
       kind: switch
@@ -184,7 +179,6 @@ gw-lyon:
           uid: ENS-Lyon
           kind: virtual # Through castor, nat VM to ENS-Lyon network
     9:
-      naming_pattern: "%LINECARD%:%PORT%"
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       backplane_bps: 48000000000,
       kind: switch
@@ -200,5 +194,3 @@ gw-lyon:
           uid: renater-lyon
           site: renater
           kind: virtual
-  channels:
-    naming_pattern: Po%CHANNELID%

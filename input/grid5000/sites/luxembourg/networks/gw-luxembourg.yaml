@@ -11,7 +11,6 @@ gw-luxembourg:
   backplane_bps: 720000000000
   mtu: 9216
   vlans:
-    naming_pattern: Vlan%VLANID%
     "vlan50":
       addresses:
         - 192.168.15.254
@@ -68,11 +67,8 @@ gw-luxembourg:
       name: kavlan-20
       addresses:
         - 10.43.192.0/18
-  routes: {}
-
   linecards:
     1:
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
@@ -225,7 +221,6 @@ gw-luxembourg:
 #          kind: switch
         48:
     2:
-      naming_pattern: Gi%LINECARD%/%PORT%
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
@@ -344,7 +339,6 @@ gw-luxembourg:
           kind: other
         48:
     3:
-      naming_pattern: Te%LINECARD%/%PORT%
       snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       rate: 10000000000
       backplane_bps: 40000000000
@@ -357,7 +351,6 @@ gw-luxembourg:
           uid: ul-grid5000-sw02
           port: Ethernet1/32
     5:
-      naming_pattern: Te%LINECARD%/%PORT%
       snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
@@ -366,26 +359,3 @@ gw-luxembourg:
         4:
           uid: renater-luxembourg
           rate: 10000000000
-  channels:
-    naming_pattern: Po%CHANNELID%
-    snmp_pattern: Port-channel%CHANNELID%
-    "lacp1":
-        - linecard: 1
-          port: 35
-        - linecard: 2
-          port: 44
-    "lacp2":
-        - linecard: 1
-          port: 36
-        - linecard: 1
-          port: 40
-    "lacp3":
-        - linecard: 1
-          port: 23
-        - linecard: 2
-          port: 46
-    "lacp4":
-        - linecard: 3
-          port: 1
-        - linecard: 3
-          port: 2
