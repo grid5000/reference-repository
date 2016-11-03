@@ -198,6 +198,7 @@ def ignore_keys()
                  "rconsole", # TODO
                  "resource_id",
                  "scheduler_priority",
+                 "state",
                  "state_num",
                  "switch", # TODO
                  "subnet_address",
