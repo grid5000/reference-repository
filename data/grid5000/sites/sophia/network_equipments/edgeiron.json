@@ -1,9 +1,13 @@
 {
   "backplane_bps": 40000000000,
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
   "kind": "switch",
   "linecards": [
     {
       "kind": "router",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -21,6 +25,7 @@
     },
     {
       "kind": "node",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -128,6 +133,7 @@
     },
     {
       "kind": "node",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -196,6 +202,8 @@
   ],
   "model": "Foundry",
   "mtu": 10240,
+  "routes": {
+  },
   "sensors": {
     "network": {
       "available": true,
@@ -207,6 +215,8 @@
   "type": "network_equipment",
   "uid": "edgeiron",
   "vlans": {
+    "naming_pattern": "Vlan%VLANID%",
+    "snmp_pattern": "v%VLANID%",
     "vlan100": {
       "addresses": [
         "172.16.143.250"

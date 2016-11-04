@@ -1,5 +1,8 @@
 {
   "backplane_bps": 800000000000,
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
   "kind": "router",
   "linecards": [
     {
@@ -9,6 +12,7 @@
     {
       "backplane_bps": 48000000000,
       "kind": "switch",
+      "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
         {
         },
@@ -93,6 +97,7 @@
     {
       "backplane_bps": 48000000000,
       "kind": "node",
+      "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
         {
         },
@@ -261,6 +266,7 @@
     {
       "backplane_bps": 48000000000,
       "kind": "node",
+      "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
         {
         },
@@ -404,6 +410,7 @@
     {
       "backplane_bps": 48000000000,
       "kind": "other",
+      "naming_pattern": "%LINECARD%:%PORT%",
       "ports": [
         {
         },
@@ -426,6 +433,8 @@
   ],
   "model": "ExtremeNetworks",
   "mtu": 9216,
+  "routes": {
+  },
   "sensors": {
     "network": {
       "available": true,
@@ -437,6 +446,7 @@
   "type": "network_equipment",
   "uid": "gw-grenoble",
   "vlans": {
+    "naming_pattern": "Vlan%VLANID%",
     "vlan100": {
       "addresses": [
         "172.16.31.254"

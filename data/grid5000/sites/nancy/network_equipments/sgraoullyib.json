@@ -1,4 +1,7 @@
 {
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
   "kind": "switch",
   "linecards": [
     {
@@ -27,6 +30,7 @@
     },
     {
       "kind": "switch",
+      "naming_pattern": "%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -66,6 +70,8 @@
     "metric": "power",
     "wattmeter": true
   },
+  "routes": {
+  },
   "sensors": {
     "network": {
       "available": false
@@ -88,6 +94,7 @@
   "type": "network_equipment",
   "uid": "sgraoullyib",
   "vlans": {
+    "naming_pattern": "Vlan%VLANID%"
   },
   "weathermap": {
     "use_cacti": "no"

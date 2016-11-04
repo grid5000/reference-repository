@@ -1,9 +1,13 @@
 {
   "backplane_bps": 136000000000,
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
   "kind": "switch",
   "linecards": [
     {
       "kind": "router",
+      "naming_pattern": "ethernet%PORT%",
       "ports": [
         {
         },
@@ -108,6 +112,7 @@
         },
         {
           "rate": 10000000000,
+          "snmp_pattern": "GigabitEthernet%PORT%",
           "uid": "gw-lyon"
         }
       ],
@@ -117,6 +122,8 @@
   ],
   "model": "Foundry FES-X 448",
   "mtu": 10240,
+  "routes": {
+  },
   "sensors": {
     "network": {
       "available": true,
@@ -128,6 +135,7 @@
   "type": "network_equipment",
   "uid": "salome",
   "vlans": {
+    "naming_pattern": "Vlan%VLANID%",
     "vlan101": {
       "addresses": [
         "172.17.63.252"

@@ -1,5 +1,49 @@
 {
   "backplane_bps": 720000000000,
+  "channels": {
+    "lacp1": [
+      {
+        "linecard": 1,
+        "port": 35
+      },
+      {
+        "linecard": 2,
+        "port": 44
+      }
+    ],
+    "lacp2": [
+      {
+        "linecard": 1,
+        "port": 36
+      },
+      {
+        "linecard": 1,
+        "port": 40
+      }
+    ],
+    "lacp3": [
+      {
+        "linecard": 1,
+        "port": 23
+      },
+      {
+        "linecard": 2,
+        "port": 46
+      }
+    ],
+    "lacp4": [
+      {
+        "linecard": 3,
+        "port": 1
+      },
+      {
+        "linecard": 3,
+        "port": 2
+      }
+    ],
+    "naming_pattern": "Po%CHANNELID%",
+    "snmp_pattern": "Port-channel%CHANNELID%"
+  },
   "kind": "router",
   "linecards": [
     {
@@ -7,6 +51,7 @@
     {
       "backplane_bps": 40000000000,
       "kind": "node",
+      "naming_pattern": "Gi%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -150,6 +195,7 @@
     {
       "backplane_bps": 40000000000,
       "kind": "node",
+      "naming_pattern": "Gi%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -328,6 +374,7 @@
     {
       "backplane_bps": 40000000000,
       "kind": "switch",
+      "naming_pattern": "Te%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -348,6 +395,7 @@
     {
       "backplane_bps": 40000000000,
       "kind": "virtual",
+      "naming_pattern": "Te%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -368,6 +416,8 @@
   ],
   "model": "cisco WS-C6506-E",
   "mtu": 9216,
+  "routes": {
+  },
   "sensors": {
     "network": {
       "available": true,
@@ -379,6 +429,7 @@
   "type": "network_equipment",
   "uid": "gw-luxembourg",
   "vlans": {
+    "naming_pattern": "Vlan%VLANID%",
     "vlan100": {
       "addresses": [
         "172.16.191.254"

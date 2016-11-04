@@ -1,9 +1,13 @@
 {
   "backplane_bps": 176000000000,
+  "channels": {
+    "naming_pattern": "Po%CHANNELID%"
+  },
   "kind": "switch",
   "linecards": [
     {
       "kind": "node",
+      "naming_pattern": "GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -133,6 +137,7 @@
     },
     {
       "kind": "switch",
+      "naming_pattern": "Ten-GigabitEthernet1/%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -147,6 +152,8 @@
   ],
   "model": "3com 4510G",
   "mtu": 9216,
+  "routes": {
+  },
   "sensors": {
     "network": {
       "available": true,
@@ -158,6 +165,7 @@
   "type": "network_equipment",
   "uid": "sgraphene4",
   "vlans": {
+    "naming_pattern": "Vlan-interface%VLANID%",
     "vlan1": {
       "addresses": [
         "172.16.79.204"

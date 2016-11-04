@@ -1,5 +1,15 @@
 {
   "backplane_bps": 346000000000,
+  "channels": {
+    "lacp3": [
+      {
+        "linecard": 1,
+        "port": 23
+      }
+    ],
+    "naming_pattern": "Po%CHANNELID%",
+    "snmp_pattern": "Trk%CHANNELID%"
+  },
   "kind": "switch",
   "linecards": [
     {
@@ -8,6 +18,7 @@
       "backplane_bps": 14400000000,
       "kind": "other",
       "model": "J8702A",
+      "naming_pattern": "%LINECARD:A%%PORT%",
       "ports": [
         {
         },
@@ -85,6 +96,7 @@
       "backplane_bps": 14400000000,
       "kind": "switch",
       "model": "J8708A",
+      "naming_pattern": "%LINECARD:B%%PORT%",
       "ports": [
         {
         },
@@ -99,6 +111,7 @@
       "backplane_bps": 14400000000,
       "kind": "switch",
       "model": "J8708A",
+      "naming_pattern": "%LINECARD:C%%PORT%",
       "ports": [
         {
         },
@@ -121,6 +134,7 @@
       "backplane_bps": 14400000000,
       "kind": "other",
       "model": "J8708A",
+      "naming_pattern": "%LINECARD:D%%PORT%",
       "ports": [
         {
         },
@@ -150,6 +164,7 @@
       "backplane_bps": 14400000000,
       "kind": "router",
       "model": "J9538A",
+      "naming_pattern": "%LINECARD:F%%PORT%",
       "ports": [
         {
         },
@@ -164,6 +179,8 @@
   ],
   "model": "HP Procurve 5406zl J8697A",
   "mtu": 9220,
+  "routes": {
+  },
   "sensors": {
     "network": {
       "available": true,
