@@ -23,15 +23,15 @@ def rec_sort(h)
 end
 
 # Write pretty and sorted JSON files
-def write_json(filepath, data)
-  File.open(filepath, 'w') do |f|
+def write_json(filepath, data, perm = 0644)
+  File.open(filepath, 'w', perm) do |f|
     f.write(JSON.pretty_generate(rec_sort(data)))
   end
 end
 
 # Write sorted YAML files
-def write_yaml(filepath, data)
-  File.open(filepath, 'w') do |f|
+def write_yaml(filepath, data, perm = 0644)
+  File.open(filepath, 'w', perm) do |f|
     f.write(rec_sort(data).to_yaml)
   end
 end
