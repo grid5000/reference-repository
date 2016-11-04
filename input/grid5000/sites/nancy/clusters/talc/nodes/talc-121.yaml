@@ -13,10 +13,13 @@ talc-121:
   chassis:
     manufacturer: TYAN Computer Corporation
     name: S5393
-    serial: 
   main_memory:
     ram_size: 17179869184
   network_adapters:
+    bmc:
+      ip: 172.17.66.121
+      mac: 00:e0:81:4f:e3:93
+      management: true
     eth0:
       driver: e1000e
       interface: Ethernet
@@ -57,7 +60,8 @@ talc-121:
   storage_devices:
     sda:
       model: Hitachi HDT72103
-      rev: A31B
+      rev: ST2OA31B
       size: 320072933376
+      vendor: Hitachi
   supported_job_types:
     virtual: ivt
