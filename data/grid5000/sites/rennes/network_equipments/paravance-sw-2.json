@@ -1,27 +1,10 @@
 {
   "backplane_bps": 1440000000000,
-  "channels": {
-    "3": [
-      {
-        "linecard": 1,
-        "port": 51,
-        "rate": 40000000000
-      },
-      {
-        "linecard": 1,
-        "port": 52,
-        "rate": 40000000000
-      }
-    ],
-    "naming_pattern": "Po%CHANNELID%",
-    "snmp_pattern": "port-channel%CHANNELID%"
-  },
   "kind": "switch",
   "linecards": [
     {
     },
     {
-      "naming_pattern": "Ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -284,7 +267,6 @@
       "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
     },
     {
-      "naming_pattern": "Ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -415,8 +397,6 @@
   ],
   "model": "Nexus 56128P",
   "mtu": 1500,
-  "routes": {
-  },
   "sensors": {
     "network": {
       "available": true,

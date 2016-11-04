@@ -1,8 +1,5 @@
 {
   "backplane_bps": 900000000000,
-  "channels": {
-    "naming_pattern": "Po%CHANNELID%"
-  },
   "kind": "router",
   "linecards": [
     {
@@ -10,7 +7,6 @@
     {
       "backplane_bps": null,
       "kind": "switch",
-      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -26,7 +22,6 @@
     {
       "backplane_bps": 20000000000,
       "kind": "switch",
-      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -45,7 +40,6 @@
     {
       "backplane_bps": 24000000000,
       "kind": "node",
-      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -128,7 +122,6 @@
     {
       "backplane_bps": 24000000000,
       "kind": "node",
-      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -211,7 +204,6 @@
     {
       "backplane_bps": 24000000000,
       "kind": "node",
-      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -281,7 +273,6 @@
     {
       "backplane_bps": 24000000000,
       "kind": "node",
-      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -376,7 +367,6 @@
     {
       "backplane_bps": 24000000000,
       "kind": "node",
-      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -456,7 +446,6 @@
     {
       "backplane_bps": 12000000000,
       "kind": "other",
-      "naming_pattern": "ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -500,8 +489,6 @@
   ],
   "model": "Foundry",
   "mtu": 10240,
-  "routes": {
-  },
   "sensors": {
     "network": {
       "available": true,
@@ -513,8 +500,6 @@
   "type": "network_equipment",
   "uid": "gw-sophia",
   "vlans": {
-    "naming_pattern": "Vlan%VLANID%",
-    "snmp_pattern": "v%VLANID%",
     "vlan100": {
       "addresses": [
         "172.16.143.254"

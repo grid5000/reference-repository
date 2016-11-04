@@ -1,32 +1,9 @@
 {
   "backplane_bps": 1407374880000,
-  "channels": {
-    "lacp6": [
-      {
-        "linecard": 1,
-        "port": 33
-      },
-      {
-        "linecard": 1,
-        "port": 34
-      },
-      {
-        "linecard": 1,
-        "port": 35
-      },
-      {
-        "linecard": 1,
-        "port": 36
-      }
-    ],
-    "naming_pattern": "Po%CHANNELID%",
-    "snmp_pattern": "Port-channel%CHANNELID%"
-  },
   "kind": "switch",
   "linecards": [
     {
       "kind": "node",
-      "naming_pattern": "Te%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -153,8 +130,6 @@
   ],
   "model": "Force10 MXL",
   "mtu": 1554,
-  "routes": {
-  },
   "sensors": {
     "network": {
       "available": true,
@@ -166,7 +141,6 @@
   "type": "network_equipment",
   "uid": "mxl2",
   "vlans": {
-    "naming_pattern": "Vlan%VLANID%",
     "vlan101": {
       "addresses": [
         "172.17.191.252"

@@ -1,52 +1,11 @@
 {
   "backplane_bps": 1040000000000,
-  "channels": {
-    "lacp5": [
-      {
-        "linecard": 1,
-        "port": 33
-      },
-      {
-        "linecard": 1,
-        "port": 34
-      },
-      {
-        "linecard": 1,
-        "port": 35
-      },
-      {
-        "linecard": 1,
-        "port": 36
-      }
-    ],
-    "lacp6": [
-      {
-        "linecard": 1,
-        "port": 37
-      },
-      {
-        "linecard": 1,
-        "port": 38
-      },
-      {
-        "linecard": 1,
-        "port": 39
-      },
-      {
-        "linecard": 1,
-        "port": 40
-      }
-    ],
-    "naming_pattern": "Po%CHANNELID%",
-    "snmp_pattern": "port-channel%CHANNELID%"
-  },
   "kind": "switch",
   "linecards": [
     {
     },
     {
       "kind": "node",
-      "naming_pattern": "Ethernet%LINECARD%/%PORT%",
       "ports": [
         {
         },
@@ -211,8 +170,6 @@
   ],
   "model": "cisco N5K-C5020P-BF",
   "mtu": 9216,
-  "routes": {
-  },
   "sensors": {
     "network": {
       "available": true,
@@ -224,7 +181,6 @@
   "type": "network_equipment",
   "uid": "ul-grid5000-sw02",
   "vlans": {
-    "naming_pattern": "Vlan%VLANID%",
     "vlan101": {
       "addresses": [
         "172.17.191.253"
