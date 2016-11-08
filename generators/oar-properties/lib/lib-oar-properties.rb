@@ -9,6 +9,8 @@ require 'time'
 require 'yaml'
 require 'hashdiff'
 require 'set'
+require 'uri'
+require 'net/https'
 
 class MissingProperty <  StandardError; end
 
@@ -208,7 +210,10 @@ def ignore_keys()
                  "type", # TODO
                  "vlan",
                  "pdu",
-                 "wattmeter" # TODO
+                 "wattmeter", # TODO
+                 "id", #id from API (= resource_id from oarnodes)
+                 "api_timestamp", # from API
+                 "links" #from API
                 ]
 
 end
@@ -314,36 +319,53 @@ end
 # Get the OAR properties from the OAR scheduler
 # This is only needed for the -d option
 def oarcmd_get_nodelist_properties(site_uid, filename=nil, options)
-  oarnodes_yaml = ""
+  oarnodes = ""
   
   if filename and File.exist?(filename)
-    # Read oar properties from file
-    puts "Read 'oarnodes -Y' from #{filename}" if options[:verbose]
-    oarnodes_yaml = File.open(filename, 'rb') { |f| f.read }
+    # Read OAR properties from file
+    puts "Reading OAR resources properties from file #{filename}" if options[:verbose]
+    oarnodes = YAML.load(File.open(filename, 'rb') { |f| f.read })
   else
-    # Download the oar properties from the oar server
-    puts "Downloading 'oarnodes -Y' from " + options[:ssh][:host].gsub("%s", site_uid) + "..." if options[:verbose]
+    api_uri = URI.parse("https://api.grid5000.fr/stable/sites/" + site_uid  + "/internal/oarapi/resources/details.json?limit=999999")
 
-    Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params]) { |ssh|
-      # capture all stderr and stdout output from a remote process
-      oarnodes_yaml = ssh.exec!('oarnodes -Y')
-    }
+    # Download the OAR properties from the OAR API (through G5K API)
+    puts "Downloading resources properties from #{api_uri} ..." if options[:verbose]
+
+    http = Net::HTTP.new(api_uri.host, Net::HTTP.https_default_port())
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(api_uri.request_uri)
+    #request.basic_auth("g5k_user", "password") #for tests outside g5k network
+    response = http.request(request)
+
+    raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
+
     puts "... done" if options[:verbose]
+
+    oarnodes = JSON.parse(response.body)
 
     if filename
       # Cache the file
-      puts "Save 'oarnodes -Y' as #{filename}" if options[:verbose]
-      File.write(filename, oarnodes_yaml)
+      puts "Saving OAR resources properties as #{filename}" if options[:verbose]
+      File.write(filename, YAML.dump(oarnodes))
     end
   end
 
-  # Load the YAML file into an hashtable
-  h = YAML.load(oarnodes_yaml)
+  #Adapt from the format of the OAR API
+  if (oarnodes.has_key?("items"))
+    oarnodes = oarnodes["items"];
+  end
 
-  # Format convertion: use host as keys of the hash (instead of id)
-  h = h.map {|k, v| v['type'] == 'default' ? [v['host'].split('.').first, v] : [nil, nil] }.to_h
+  #Format convertion: use host as keys of the hash (instead of id)
+  #Handle the two possible input format (from oarnodes -Y, given by a file, and from the OAR API)
+  if oarnodes.is_a?(Hash)
+    oarnodes = oarnodes.map {|k, v| v['type'] == 'default' ? [v['host'].split('.').first, v] : [nil, nil] }.to_h
+  elsif oarnodes.is_a?(Array)
+    oarnodes = oarnodes.map {|v| v['type'] == 'default' ? [v['host'].split('.').first, v] : [nil, nil] }.to_h
+  else
+    raise "Invalid input format for OAR properties"
+  end
 
-  return h
+  return oarnodes
 end
 
 def oarcmd_create_properties(properties_keys)
