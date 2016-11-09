@@ -1,7 +1,35 @@
 ---
 clusters: required_hash
 networks: required_hash
-servers: optional_hash
+servers:
+  <optional_hash>:
+    <multi>:
+      kind: string
+      alias: optional_array
+      serial: optional
+      warranty: optional
+      nodes: optional_hash
+      network_adapters:
+        <multi>:
+          ip: ip_address
+          mounted: optional_boolean
+          mac: optional_string
+      monitoring:
+        <optional_hash>:
+          wattmeter: optional
+          metric: optional_string
+      sensors:
+        <optional_hash>:
+          network:
+            <optional_hash>:
+              available: boolean
+              resolution: optional_integer
+              via: optional
+          power:
+            <optional_hash>:
+              available: boolean
+              resolution: optional_integer
+              via: optional
 name: string
 location: string
 web: string
@@ -17,7 +45,15 @@ kavlan_ip_range: string
 virt_ip_range: string
 storage5k: boolean
 production: boolean
-laptops: optional_hash
+laptops:
+  <optional_hash>:
+    <multi>:
+      user: string
+      network_adapters:
+        <multi>:
+          mounted: optional_boolean
+          ip: ip_address
+          mac: optional_string
 g5ksubnet:
   network: string
   gateway: string
@@ -26,5 +62,5 @@ kavlans:
     network: string
     gateway: string
 pdus: optional_hash
-renater_ip: string
-frontend_ip: string
+renater_ip: ip_address
+frontend_ip: ip_address

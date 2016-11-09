@@ -1,4 +1,6 @@
 
+require "resolv" #Ip address validation
+
 class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator::Base
 
   def initialize
@@ -24,4 +26,22 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
   end
 end
 
+class HashValidator::Validator::IpAddressValidator < HashValidator::Validator::Base
+
+  def initialize
+    super('ip_address')
+  end
+
+  def validate(key, values, validations, errors)
+    if values.is_a?(String)
+      unless (values =~ Resolv::IPv4::Regex || values =~ Resolv::IPv6::Regex)
+        errors[key] = "Invalid ip address format #{values}"
+      end
+    else
+      errors[key] = "Ip address should be a String"
+    end
+  end
+end
+
 HashValidator.append_validator(HashValidator::Validator::LinecardPortValidator.new)
+HashValidator.append_validator(HashValidator::Validator::IpAddressValidator.new)

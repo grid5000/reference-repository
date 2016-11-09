@@ -8,7 +8,12 @@ bios:
   release_date: string
   vendor: optional ## optional_string or null
   version: required # string ?
-  configuration: optional_hash
+  configuration:
+    <optional_hash>:
+      cstate_c1e: optional_boolean
+      cstate_enabled: optional_boolean
+      ht_enabled: optional_boolean
+      turboboost_enabled: optional_boolean
 chassis:
   manufacturer: string
   name: string
@@ -19,7 +24,9 @@ gpu:
     gpu_count: optional_integer
     gpu_vendor: optional_string
     gpu_model: optional_string
-kavlan: optional_hash
+kavlan:
+  <multi>:
+    <multi>: ip_address
 main_memory:
   ram_size: integer
 mic: optional_hash
@@ -41,14 +48,14 @@ network_adapters:
     vendor: optional ## optional_string
     model: optional_string
     driver: optional_string
-    ip: optional_string
+    ip: optional_ip_address
     mac: optional_string
     ib_switch_card: optional_string
     ib_switch_card_pos: optional_string
     switch: optional_string
     switch_port: optional_string
     hwid: optional_string
-    ip6: optional_string
+    ip6: optional_ip_address
     guid: optional_string
     version: optional # optional_string
     line_card: optional_string
@@ -88,6 +95,7 @@ storage_devices:
   <multi>:
     interface: string
     driver: string
+    symlink: optional_string
     vendor: optional # string
     storage: string
     model: string
