@@ -72,6 +72,9 @@ proxy:
 puppet:
   kind: virtual
   network_adapters: {default: {ip: 172.16.191.100}}
+puppet4:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.191.112}}
 supervision:
   kind: virtual
   alias: [nagios, munin]
