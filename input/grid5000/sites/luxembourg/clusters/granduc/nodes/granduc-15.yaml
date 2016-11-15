@@ -2,88 +2,80 @@
 ---
 granduc-15:
   architecture:
-    nb_cores: 8
-    nb_procs: 2
-    nb_threads: 8
     platform_type: x86_64
+    nb_procs: 2
+    nb_cores: 8
+    nb_threads: 8
   bios:
-    release_date: 10/30/2010
     vendor: Dell Inc.
     version: 2.7.0
-  chassis:
-    manufacturer: Dell Inc.
-    name: PowerEdge 1950
-    serial: 60W883J
-  main_memory:
-    ram_size: 17179869184
+    release_date: 10/30/2010
   network_adapters:
     bmc:
       ip: 172.17.176.15
       mac: 00:1c:23:d3:57:37
       management: true
     eth0:
-      driver: bnx2
-      enabled: true
       interface: Ethernet
       ip: 172.16.176.15
-      mac: 00:19:b9:f2:0e:2e
-      management: false
-      mountable: true
-      mounted: true
-      rate: 1000000000
-    eth1:
       driver: bnx2
-      enabled: false
+      mac: 00:19:b9:f2:0e:2e
+      rate: 1000000000
+      mounted: true
+      management: false
+    eth1:
       interface: Ethernet
+      driver: bnx2
       mac: 00:19:b9:f2:0e:30
-      management: false
-      mountable: true
       mounted: false
+      management: false
     eth2:
-      driver: ixgbe
-      enabled: true
       interface: Ethernet
+      driver: ixgbe
       mac: 00:1b:21:34:e0:f1
-      management: false
-      mountable: true
-      mounted: false
       rate: 10000000000
-    eth3:
-      driver: ixgbe
-      enabled: false
-      interface: Ethernet
-      mac: 00:1b:21:34:e0:f0
-      management: false
-      mountable: false
       mounted: false
-  operating_system:
-    cstate_driver: none
-    cstate_governor: menu
-    cstate_max_id: 
-    ht_enabled: false
-    kernel: 3.16.0-4-amd64
-    name: debian
-    pstate_driver: none
-    pstate_governor: none
-    turboboost_enabled: unknown
-    version: 8.6
-  processor:
-    cache_l1d: 32768
-    cache_l1i: 32768
-    cache_l2: 4194304
-    cache_l3: 0
-    clock_speed: 2000000000
-    ht_capable: true
-    instruction_set: x86-64
-    model: Intel Xeon
-    other_description: Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz
-    vendor: Intel
-    version: L5335
+      management: false
+    eth3:
+      interface: Ethernet
+      driver: ixgbe
+      mac: 00:1b:21:34:e0:f0
+      mounted: false
+      management: false
+  chassis:
+    serial: 60W883J
+    manufacturer: Dell Inc.
+    name: PowerEdge 1950
   storage_devices:
     sda:
+      device: sda
+      size: 146815733760
       model: ST9146802SS
       rev: S207
-      size: 146815733760
       vendor: SEAGATE
   supported_job_types:
     virtual: ivt
+  main_memory:
+    ram_size: 17179869184
+  operating_system:
+    name: debian
+    kernel: 3.16.0-4-amd64
+    version: 8.6
+    ht_enabled: false
+    pstate_driver: none
+    pstate_governor: none
+    turboboost_enabled: unknown
+    cstate_driver: none
+    cstate_governor: menu
+  processor:
+    clock_speed: 2000000000
+    instruction_set: x86-64
+    model: Intel Xeon
+    version: L5335
+    vendor: Intel
+    other_description: Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz
+    cache_l1i: 32768
+    cache_l1d: 32768
+    cache_l2: 4194304
+    cache_l3: 0
+    ht_capable: true
