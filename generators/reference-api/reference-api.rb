@@ -53,6 +53,43 @@ def net_switch_port_lookup(site, node_uid, interface='')
   return nil
 end
 
+# Creation du fichier network_equipment
+def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
+  network["type"] = "network_equipment"
+  network["uid"]  = network_uid
+
+  network_path = ''
+  if site_uid
+    network_path = Pathname.new(refapi_path).join("sites", site_uid, "network_equipments")
+  else
+    network_path = Pathname.new(refapi_path).join("network_equipments")
+  end
+  network_path.mkpath()
+
+  network["weathermap"] ||= {}
+
+  # Change the format of linecard from Hash to Array
+  linecards_tmp = Marshal.load(Marshal.dump(network["linecards"])) # bkp (deep_copy)
+
+  linecards_array = []
+  network["linecards"].each do |linecard_index, linecard|
+    ports = []
+    linecard.delete("ports").each do |port_index, port|
+      port = {"uid"=>port} if port.is_a? String
+      ports[port_index] = port
+    end
+    linecard["ports"] = ports.map{|p| p || {}}
+    linecards_array[linecard_index] = linecard
+  end
+  network["linecards"] = linecards_array.map{|l| l || {}}
+
+  network.delete_if {|k, v| k == "network_adapters"}
+
+  write_json(network_path.join("#{network_uid}.json"), network)
+
+  network["linecards"] = linecards_tmp # restore
+end
+
 OptionParser.new do |opts|
   opts.banner = "Usage: reference-api.rb"
   opts.separator ""
@@ -100,6 +137,11 @@ end
 
 puts "Generating the reference api:\n\n"
 
+# Generate global network_equipments (renater links)
+global_hash["network_equipments"].each do |network_uid, network|
+  create_network_equipment(network_uid, network, refapi_path)
+end
+
 global_hash["sites"].each do |site_uid, site|
   puts "#{site_uid}:"
 
@@ -145,34 +187,7 @@ global_hash["sites"].each do |site_uid, site|
   #
 
   site["networks"].sort.each do |network_uid, network|
-    network["type"] = "network_equipment"
-    network["uid"]  = network_uid
-
-    network_path = Pathname.new(refapi_path).join("sites", site_uid, "network_equipments")
-    network_path.mkpath()
-    
-    network["weathermap"] ||= {}
-
-    # Change the format of linecard from Hash to Array
-    linecards_tmp = Marshal.load(Marshal.dump(network["linecards"])) # bkp (deep_copy)
-
-    linecards_array = []
-    network["linecards"].each do |linecard_index, linecard|
-      ports = []
-      linecard.delete("ports").each do |port_index, port|
-        port = {"uid"=>port} if port.is_a? String
-        ports[port_index] = port
-      end
-      linecard["ports"] = ports.map{|p| p || {}}
-      linecards_array[linecard_index] = linecard
-    end
-    network["linecards"] = linecards_array.map{|l| l || {}}
-    
-    network.delete_if {|k, v| k == "network_adapters"}
-
-    write_json(network_path.join("#{network_uid}.json"), network)
-    
-    network["linecards"] = linecards_tmp # restore
+    create_network_equipment(network_uid, network, refapi_path, site_uid)
   end
 
   site["clusters"].sort.each do |cluster_uid, cluster|

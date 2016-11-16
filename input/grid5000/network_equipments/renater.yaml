@@ -1,0 +1,117 @@
+---
+renater-grenoble:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports:
+        0:
+          uid: renater-lyon
+        1:
+          uid: gw-grenoble
+          kind: router
+          site_uid: grenoble
+renater-lille:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports: 
+        0:
+          uid: renater-paris
+        1:
+          kind: router
+          site_uid: lille
+          uid: gw-lille
+renater-luxembourg:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports:
+        0:
+          uid: renater-nancy
+        1:
+          kind: router
+          site_uid: luxembourg
+          uid: gw-luxembourg
+renater-lyon:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports:
+        0:
+          uid: renater-paris
+        1:
+          uid: renater-sophia
+        2:
+          uid: renater-grenoble
+        3:
+          kind: router
+          site_uid: lyon
+          uid: gw-lyon
+renater-nancy:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports:
+        0:
+          uid: renater-luxembourg
+        1:
+          uid: renater-paris
+        2:
+          kind: router
+          site_uid: nancy
+          uid: gw-nancy
+renater-nantes:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports:
+        0:
+          uid: renater-bordeaux
+        1:
+          uid: renater-rennes
+        2:
+          kind: router
+          site_uid: nantes
+          uid: gw-nantes
+renater-paris:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports:
+        0:
+          uid: renater-lille
+        1:
+          uid: renater-lyon
+        2:
+          uid: renater-nancy
+renater-rennes:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports:
+        0:
+          uid: renater-nantes
+        1:
+          kind: router
+          site_uid: rennes
+          uid: gw-rennes
+renater-sophia:
+  kind: virtual
+  linecards:
+    0:
+      rate: 10000000000
+      ports:
+        0:
+          uid: renater-lyon
+        1:
+          kind: router
+          site_uid: sophia
+          uid: gw-sophia
