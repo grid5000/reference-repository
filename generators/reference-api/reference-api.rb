@@ -130,9 +130,9 @@ if global_hash['uid']
   global_hash["type"] = "grid"
   grid_path = Pathname.new(refapi_path)
   grid_path.mkpath()
-  
+
   write_json(grid_path.join("#{global_hash['uid']}.json"), 
-             global_hash.reject {|k, v| k == "sites"})
+             global_hash.reject {|k, v| k == "sites" || k == "network_equipments"})
 end
 
 puts "Generating the reference api:\n\n"
