@@ -1,4 +1,181 @@
 {
+  "network_equipments": {
+    "renater-grenoble": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-lyon"
+            },
+            "1": {
+              "kind": "router",
+              "site_uid": "grenoble",
+              "uid": "gw-grenoble"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    },
+    "renater-lille": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-paris"
+            },
+            "1": {
+              "kind": "router",
+              "site_uid": "lille",
+              "uid": "gw-lille"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    },
+    "renater-luxembourg": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-nancy"
+            },
+            "1": {
+              "kind": "router",
+              "site_uid": "luxembourg",
+              "uid": "gw-luxembourg"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    },
+    "renater-lyon": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-paris"
+            },
+            "1": {
+              "uid": "renater-sophia"
+            },
+            "2": {
+              "uid": "renater-grenoble"
+            },
+            "3": {
+              "kind": "router",
+              "site_uid": "lyon",
+              "uid": "gw-lyon"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    },
+    "renater-nancy": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-luxembourg"
+            },
+            "1": {
+              "uid": "renater-paris"
+            },
+            "2": {
+              "kind": "router",
+              "site_uid": "nancy",
+              "uid": "gw-nancy"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    },
+    "renater-nantes": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-bordeaux"
+            },
+            "1": {
+              "uid": "renater-rennes"
+            },
+            "2": {
+              "kind": "router",
+              "site_uid": "nantes",
+              "uid": "gw-nantes"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    },
+    "renater-paris": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-lille"
+            },
+            "1": {
+              "uid": "renater-lyon"
+            },
+            "2": {
+              "uid": "renater-nancy"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    },
+    "renater-rennes": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-nantes"
+            },
+            "1": {
+              "kind": "router",
+              "site_uid": "rennes",
+              "uid": "gw-rennes"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    },
+    "renater-sophia": {
+      "kind": "virtual",
+      "linecards": {
+        "0": {
+          "ports": {
+            "0": {
+              "uid": "renater-lyon"
+            },
+            "1": {
+              "kind": "router",
+              "site_uid": "sophia",
+              "uid": "gw-sophia"
+            }
+          },
+          "rate": 10000000000
+        }
+      }
+    }
+  },
   "type": "grid",
   "uid": "grid5000"
 }
