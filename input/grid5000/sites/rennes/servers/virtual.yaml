@@ -1,1 +1,137 @@
-.
+mail:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.207.102}}
+helpdesk-global:
+  kind: virtual
+  network_adapters: {default: {ip: 131.254.202.206}}
+www:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.112}}
+dhcp-prod:
+  kind: virtual
+  alias: [dhcp]
+  network_adapters: {default: {ip: 172.16.111.117}, adm: {ip: 172.16.111.117}}
+ldap:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.120}}
+api-server:
+  kind: virtual
+  alias: [api-server-v4]
+  network_adapters: {default: {ip: 172.16.111.115}}
+nfs-tools:
+  kind: virtual
+  alias: [nfs-stow, nfs-diskless]
+  network_adapters: {default: {ip: 172.16.111.123}}
+elblablo:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.104}}
+cigri:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.129}}
+nat:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.200}}
+g5kschool:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.132}}
+puppet:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.105}}
+api-proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.126}}
+syslog:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.109}}
+mysql:
+  kind: virtual
+  alias: [mysql2]
+  network_adapters: {default: {ip: 172.16.111.113}}
+ganglia:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.107}}
+kavlan:
+  kind: virtual
+  alias: [kavlan-server, kavlan-dhcp]
+  network_adapters: {default: {ip: 172.16.111.100}}
+kavlan-1:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.101}}
+kavlan-2:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.102}}
+kavlan-3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.103}}
+api-server-v3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.128}}
+ca:
+  kind: virtual
+  alias: [ca-global]
+  network_adapters: {default: {ip: 172.16.111.152}}
+ganglia:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.107}}
+dns:
+  kind: virtual
+  alias: [ns]
+  network_adapters: {default: {ip: 172.16.111.118}}
+proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.104}}
+supervision:
+  kind: virtual
+  alias: [nagios, munin]
+  network_adapters: {default: {ip: 172.16.111.122}}
+ldap-global:
+  kind: virtual
+  alias: [ldap-master]
+  network_adapters: {default: {ip: 131.254.202.10}}
+git-global:
+  kind: virtual
+  network_adapters: {default: {ip: 131.254.202.10}}
+backup1:
+  kind: virtual
+  network_adapters: {default: {ip: 131.254.203.251}}
+conman:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.108}}
+kadeploy:
+  kind: virtual
+  alias: [kadeploy-server]
+  network_adapters: {default: {ip: 172.16.111.111}}
+ums:
+  kind: virtual
+  network_adapters: {default: {ip: 131.254.203.237}}
+mysql-archive:
+  kind: virtual
+  alias: [mysql-archive-global]
+  network_adapters: {default: {ip: 131.254.203.248}}
+kadeploy-devel:
+  kind: virtual
+  alias: [kadeploy-server-devel]
+  network_adapters: {default: {ip: 172.16.111.136}}
+mirador:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.137}}
+csod:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.140}}
+oar:
+  kind: virtual
+  alias: [oar-server, oardb]
+  network_adapters: {default: {ip: 172.16.111.110}}
+oardb-archive:
+  kind: virtual
+  network_adapters: {default: {ip: 131.254.203.249}}
+frennes:
+  kind: virtual
+  alias: [frontale, frontend, oar-api]
+  network_adapters: {default: {ip: 172.16.111.106}}
+kwapi:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.139}}
+nfs-qualif:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.150}}
