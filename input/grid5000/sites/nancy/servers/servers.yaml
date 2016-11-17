@@ -158,28 +158,6 @@ srv2:
           - uid: grimoire-pdu2
             port: 23
 
-storage5k:
-  kind: physical
-  alias: [storage5k]
-  warranty: 01.2012
-  serial:
-  monitoring:
-    wattmeter: multiple
-    metric: power
-  sensors:
-    network:
-      available: true
-      resolution: 1
-    power:
-      available: true
-      resolution: 1
-      via:
-        pdu:
-          - uid: griffon-pdu1
-            port: 8
-          - uid: griffon-pdu2
-            port: 8
-
 talc-data:
   kind: physical
   alias: []
