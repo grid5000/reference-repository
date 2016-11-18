@@ -129,7 +129,13 @@ refapi["sites"].each { |site_uid, site|
           :uid         => server_uid,
           :hostsuffix  => net_uid != 'default' ? "-#{net_uid}" : '',
           :ip          => net['ip'],
-          :cnames      => server['alias'] ? server['alias'].map{ |cname| net_uid == 'default' ? cname : "#{cname}-#{net_uid}" } : nil
+          :cnames      => if server['alias']
+            server['alias'].reject{ |cname| cname.include?('.') }.map{ |cname|
+              net_uid == 'default' ? cname : "#{cname}-#{net_uid}"
+            }
+            else
+              nil
+            end
         }
         puts new_entry
 
