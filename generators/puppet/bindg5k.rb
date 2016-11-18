@@ -156,7 +156,7 @@ refapi["sites"].each { |site_uid, site|
   site.fetch("clusters").sort.each { |cluster_uid, cluster|
     #next if cluster_uid != 'griffon'
 
-    cluster.fetch('nodes').each_sort_by_node_uid { |node_uid, node|
+    cluster.fetch('nodes').select { |node_uid, node| node.has_key?('network_adapters') }.each_sort_by_node_uid { |node_uid, node|
       network_adapters = {}
 
       # Nodes
