@@ -213,6 +213,8 @@ end
 
 if options[:diff]
 
+  skipped_nodes = []
+
   #
   # Diff OAR properties between reference-repo and OAR servers
   #
@@ -226,6 +228,11 @@ if options[:diff]
     nodelist_properties["diff"][site_uid] = {}
 
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties_ref|
+
+      if node_properties_ref["state"] == "Dead"
+        skipped_nodes << node_uid
+        next
+      end
 
       node_properties_oar = nodelist_properties["oar"][site_uid][node_uid]
       diff = diff_node_properties(node_properties_oar, node_properties_ref) # Note: this delete some properties from the input parameters
@@ -291,12 +298,18 @@ if options[:diff]
     puts "Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb."
     ret = false unless options[:exec] || options[:output]
   end
+
+  puts "Skipped retired nodes: #{skipped_nodes}" if skipped_nodes.any?
+
 end # if options[:diff]
 
 #
 # Build and execute commands
 #
 if options[:output] || options[:exec]
+
+  skipped_nodes = [] unless options[:diff]
+
   opt = options[:diff] ? 'diff' : 'ref'
   nodelist_properties[opt].each { |site_uid, site_properties|
 
@@ -319,7 +332,12 @@ if options[:output] || options[:exec]
     # Build and output commands
     #
     site_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) { |node_uid, node_properties|
-      # next if node_properties.size == 1
+
+      if node_properties["state"] == "Dead"
+        #Do not log node skipping twice if we just did a diff
+        skipped_nodes << node_uid unless options[:diff]
+        next
+      end
 
       # Create new nodes.
       if (opt == 'ref' || nodelist_properties['oar'][site_uid][node_uid] == nil)
@@ -355,6 +373,11 @@ if options[:output] || options[:exec]
       ssh_exec(site_uid, ssh_cmd, options) if prompt == 'y'
     end
   } # site loop
+
+  if skipped_nodes.any?
+    puts "Skipped retired nodes: #{skipped_nodes}" unless options[:diff]
+  end
+
 end # if options[:output] || options[:exec]
 
 exit ret

@@ -23,7 +23,7 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
 
   if node['status'] == 'retired'
     h['state'] = 'Dead'
-    return h if node.size == 1 # for dead nodes, additional information is most likely missing from the ref-repository.
+    return h # for dead nodes, additional information is most likely missing from the ref-repository, just return the state
   end
 
   main_network_adapter = node['network_adapters'].find{|k, na| /^eth[0-9]*$/.match(k) && na['enabled'] && na['mounted'] && !na['management'] }
