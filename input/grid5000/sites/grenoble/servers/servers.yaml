@@ -1,0 +1,55 @@
+alpes:
+  kind: physical
+  alias: [ntp]
+  warranty:
+  serial:
+  network_adapters:
+    default:
+      ip: 172.16.31.1
+    adm:
+      ip: 172.17.31.1
+    bmc:
+      ip: 172.17.30.1
+
+digmgt:
+  kind: physical
+  alias: [af, adminfront, smokeping]
+  warranty:
+  serial:
+  network_adapters:
+    default:
+      ip: 172.16.31.2
+    adm:
+      ip: 172.17.31.2
+    bmc:
+      ip: 172.17.30.2
+    ib:
+      ip: 172.18.31.2
+
+dignfs:
+  kind: physical
+  alias: [nfs, public, home-g5k, gw10gib]
+  warranty:
+  serial:
+  network_adapters:
+    default:
+      ip: 172.16.31.3
+    adm:
+      ip: 172.17.31.3
+    bmc:
+      ip: 172.17.30.3
+    ib:
+      ip: 172.18.31.3
+
+digsed:
+  kind: physical
+  alias: []
+  warranty:
+  serial:
+  network_adapters:
+    default:
+      ip: 172.16.31.4
+    adm:
+      ip: 172.17.31.4
+    bmc:
+      ip: 172.17.30.4

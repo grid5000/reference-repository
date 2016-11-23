@@ -1,0 +1,105 @@
+www:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.105}}
+dhcp:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.109}}
+dhcp-adm:
+  kind: virtual
+  network_adapters: {default: {ip: 172.17.31.109}}
+ldap:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.112}}
+api-server-v3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.122}}
+api-server-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.108}}
+access:
+  alias: [mail]
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.200}}
+puppet:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.116}}
+weathermap:
+  kind: virtual
+  alias: [cacti]
+  network_adapters: {default: {ip: 172.16.31.117}}
+api-proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.106}}
+syslog:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.115}}
+mysql:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.103}}
+ganglia:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.111}}
+kavlan:
+  kind: virtual
+  alias: [kavlan-dhcp]
+  network_adapters: {default: {ip: 172.16.31.118}}
+kavlan-1:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.119}}
+kavlan-2:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.120}}
+kavlan-3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.121}}
+dns:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.110}}
+proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.113}}
+supervision:
+  kind: virtual
+  alias: [nagios, munin]
+  network_adapters: {default: {ip: 172.16.31.114}}
+conman:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.123}}
+kadeploy:
+  kind: virtual
+  alias: [kadeploy-server]
+  network_adapters: {default: {ip: 172.16.31.102}}
+kadeploy-adm:
+  kind: virtual
+  network_adapters: {default: {ip: 172.17.31.102}}
+kadeploy-devel:
+  kind: virtual
+  alias: [kadeploy-server-devel, deploy-devel]
+  network_adapters: {default: {ip: 172.16.31.124}}
+kadeploy-devel-adm:
+  kind: virtual
+  network_adapters: {default: {ip: 172.17.31.124}}
+mu2:
+  kind: virtual
+  alias: [digitalis]
+  network_adapters: {default: {ip: 172.16.31.152}}
+mu2-adm:
+  kind: virtual
+  network_adapters: {default: {ip: 172.17.31.152}}
+mysql:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.103}}
+oar:
+  kind: virtual
+  alias: [oar-server, oardb]
+  network_adapters: {default: {ip: 172.16.31.104}}
+fgrenoble:
+  kind: virtual
+  alias: [frontend, oar-api]
+  network_adapters: {default: {ip: 172.16.31.101}}
+fgrenoble-adm:
+  kind: virtual
+  network_adapters: {default: {ip: 172.17.31.101}}
+kwapi:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.154}}
