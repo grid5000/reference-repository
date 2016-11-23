@@ -333,7 +333,6 @@ def oarcmd_get_nodelist_properties(site_uid, filename=nil, options)
 
     http = Net::HTTP.new(api_uri.host, Net::HTTP.https_default_port())
     http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(api_uri.request_uri)
     #request.basic_auth("g5k_user", "password") #for tests outside g5k network
     response = http.request(request)
