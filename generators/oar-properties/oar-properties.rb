@@ -34,7 +34,7 @@ OptionParser.new do |opts|
   opts.banner = "Usage: oar-properties.rb [options]"
 
   opts.separator ""
-  opts.separator "Example: ruby oar-properties.rb -v -s nancy -d oarnodes-%s.yaml -o cmd-%s.sh"
+  opts.separator "Example: ruby oar-properties.rb -v -s nancy -d oarnodes-%s.json -o cmd-%s.sh"
 
   ###
 
@@ -69,12 +69,12 @@ OptionParser.new do |opts|
     options[:exec] = e
   end
 
-  opts.on("-d", "--diff [YAML filename]", 
+  opts.on("-d", "--diff [JSON filename]", 
           "Only generates the minimal list of commands needed to update the site configuration",
-          "The optional YAML file is supposed to be the output of the 'oarnodes -Y' command.",
+          "The optional JSON file is supposed to be the output of the 'oarnodes -J' command.",
           "If the file does not exist, the script will get the data from the OAR server and save the result on disk for future use.",
           "If no filename is specified, the script will simply connect to the OAR server.",
-          "You can use the '%s' placeholder for 'site'. Ex: oarnodes-%s.yaml") do |d|
+          "You can use the '%s' placeholder for 'site'. Ex: oarnodes-%s.json") do |d|
     d = true if d == nil
     options[:diff] = d
     #If diff is set with no --output or --exec, the return code will be 0 if there are no differences, 1 otherwise
