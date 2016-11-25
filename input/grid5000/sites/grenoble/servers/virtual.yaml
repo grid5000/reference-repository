@@ -3,10 +3,7 @@ www:
   network_adapters: {default: {ip: 172.16.31.105}}
 dhcp:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.109}}
-dhcp-adm:
-  kind: virtual
-  network_adapters: {default: {ip: 172.17.31.109}}
+  network_adapters: {default: {ip: 172.16.31.109}, adm: {ip: 172.17.31.109}}
 ldap:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.112}}
@@ -68,24 +65,15 @@ conman:
 kadeploy:
   kind: virtual
   alias: [kadeploy-server]
-  network_adapters: {default: {ip: 172.16.31.102}}
-kadeploy-adm:
-  kind: virtual
-  network_adapters: {default: {ip: 172.17.31.102}}
+  network_adapters: {default: {ip: 172.16.31.102}, adm: {ip: 172.17.31.102}}
 kadeploy-devel:
   kind: virtual
   alias: [kadeploy-server-devel, deploy-devel]
-  network_adapters: {default: {ip: 172.16.31.124}}
-kadeploy-devel-adm:
-  kind: virtual
-  network_adapters: {default: {ip: 172.17.31.124}}
+  network_adapters: {default: {ip: 172.16.31.124}, adm: {ip: 172.17.31.124}}
 mu2:
   kind: virtual
   alias: [digitalis]
-  network_adapters: {default: {ip: 172.16.31.152}}
-mu2-adm:
-  kind: virtual
-  network_adapters: {default: {ip: 172.17.31.152}}
+  network_adapters: {default: {ip: 172.16.31.152}, adm: {ip: 172.17.31.152}}
 mysql:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.103}}
@@ -96,10 +84,7 @@ oar:
 fgrenoble:
   kind: virtual
   alias: [frontend, oar-api]
-  network_adapters: {default: {ip: 172.16.31.101}}
-fgrenoble-adm:
-  kind: virtual
-  network_adapters: {default: {ip: 172.17.31.101}}
+  network_adapters: {default: {ip: 172.16.31.101}, adm: {ip: 172.17.31.101}}
 kwapi:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.154}}
