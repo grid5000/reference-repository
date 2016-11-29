@@ -288,7 +288,8 @@ if options[:diff]
     end
   }
 
-  puts "Properties that need to be created on the server: #{properties_keys["diff"].keys.to_a.join(', ')}" if options[:verbose] && properties_keys["diff"].keys.size > 0
+  puts "Properties that need to be created on the server: #{properties_keys["diff"].keys.to_a.delete_if{|e| ignore_keys.include?(e)}.join(', ')}" \
+    if options[:verbose] && properties_keys["diff"].keys.to_a.delete_if{|e| ignore_keys.include?(e)}.size > 0
 
   # Detect unknown properties
   unknown_properties = properties_keys["oar"].keys.to_set - properties_keys["ref"].keys.to_set
@@ -323,8 +324,8 @@ if options[:output] || options[:exec]
     cmd << "echo '================================================================================'\n\n"
 
     # Create properties keys
-    unless properties_keys[opt].empty?
-      cmd << oarcmd_create_properties(properties_keys[opt]) + "\n"
+    unless properties_keys[opt].delete_if{|k, v| ignore_keys.include?(k)}.empty?
+      cmd << oarcmd_create_properties(properties_keys[opt].delete_if{|k, v| ignore_keys.include?(k)}) + "\n"
       cmd << "echo '================================================================================'\n\n"
     end
 
