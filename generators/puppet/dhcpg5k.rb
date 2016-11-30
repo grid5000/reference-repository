@@ -92,7 +92,7 @@ global_hash["sites"].each { |site_uid, site_hash|
   #
 
   # Other dhcp files
-  ["networks", "laptops", "dom0"].each { |key|
+  ["networks", "laptops", "servers"].each { |key|
     write_dhcp_file({
                       "filename"            => key + ".conf",
                       "site_uid"            => site_uid,
