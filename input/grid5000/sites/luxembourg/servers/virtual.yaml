@@ -22,7 +22,7 @@ dns:
   network_adapters: {default: {ip: 172.16.191.101}, adm: {ip: 172.17.191.101}}
 fluxembourg:
   kind: virtual
-  alias: [frontend, oar-api]
+  alias: [frontale, frontend, oar-api]
   network_adapters: {default: {ip: 172.16.191.109}}
 ganglia:
   kind: virtual
@@ -33,6 +33,7 @@ kadeploy:
   network_adapters: {default: {ip: 172.16.191.107}, adm: {ip: 172.17.191.107}}
 kadeploy-devel:
   kind: virtual
+  alias: [kadeploy-server-devel, deploy-devel]
   network_adapters: {default: {ip: 172.16.191.125}, adm: {ip: 172.17.191.125}}
 kavlan:
   kind: virtual
@@ -62,9 +63,9 @@ mysql:
 nat:
   kind: virtual
   network_adapters: {default: {ip: 172.16.191.200}}
-oar-server:
+oar:
   kind: virtual
-  alias: [oar, oardb]
+  alias: [oar-server, oardb]
   network_adapters: {default: {ip: 172.16.191.106}}
 proxy:
   kind: virtual
@@ -84,6 +85,7 @@ syslog:
   network_adapters: {default: {ip: 172.16.191.115}}
 weathermap:
   kind: virtual
+  alias: [cacti]
   network_adapters: {default: {ip: 172.16.191.119}}
 www:
   kind: virtual
