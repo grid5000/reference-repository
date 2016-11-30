@@ -1,0 +1,124 @@
+fnancy:
+  kind: virtual
+  alias: [frontend, oar-api]
+  network_adapters: {default: {ip: 172.16.79.101}}
+kadeploy:
+  kind: virtual
+  alias: [kadeploy-server]
+  network_adapters: {default: {ip: 172.16.79.102}, adm: {ip: 172.17.79.102}}
+mysql:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.103}}
+mail:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.104}}
+syslog:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.105}}
+dns:
+  kind: virtual
+  alias: [ns]
+  network_adapters: {default: {ip: 172.16.79.106}}
+dhcp:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.107}, adm: {ip: 172.17.79.107}}
+proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.108}}
+apt-global:
+  kind: virtual
+  alias: [apt]
+  network_adapters: {default: {ip: 172.16.79.109}}
+puppet:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.110}}
+www:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.112}}
+supervision:
+  kind: virtual
+  alias: [nagios, munin]
+  network_adapters: {default: {ip: 172.16.79.113}}
+oar-server:
+  kind: virtual
+  alias: [oar, oardb]
+  network_adapters: {default: {ip: 172.16.79.114}}
+ldap:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.115}}
+gitolite-global:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.116}}
+api-proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.118}}
+kavlan:
+  kind: virtual
+  alias: [kavlan-dhcp]
+  network_adapters: {default: {ip: 172.16.79.119}}
+kavlan-1:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.120}}
+kavlan-2:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.121}}
+kavlan-3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.122}}
+api-server-v3:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.123}}
+conman:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.124}, adm: {ip: 172.17.79.124}}
+kadeploy-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.131}, adm: {ip: 172.17.79.131}}
+beaujolais:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.132}}
+api-server-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.133}}
+carol:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.138}}
+gerrit:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.140}}
+ganglia:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.142}}
+supervision2:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.145}}
+puppet4:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.146}}
+icinga:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.147}}
+oargrid-global:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.150}}
+kwapi:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.54}}
+kwapi-dev:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.157}}
+backup-local:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.158}}
+web-dev:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.159}}
+jenkins:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.160}}
+am:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.161}}
+nat:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.79.200}}
