@@ -22,6 +22,10 @@ force10:
       rate: 10000000000
       port: eth0
       ports:
+        0:
+          uid: gw-lyon
+          kind: router
+          port: "9:2"
         1: taurus-1
         2: taurus-2
         3: taurus-3
@@ -38,20 +42,20 @@ force10:
         14: taurus-14
         15: taurus-15
         16: taurus-16
-        18: orion-1
-        19: orion-2
-        20: orion-3
-        21: orion-4
-        24:
+        17: orion-1
+        18: orion-2
+        19: orion-3
+        20: orion-4
+        21:
           uid: hercule-1
           port: eth1
-        25:
+        22:
           uid: hercule-2
           port: eth1
-        26:
+        23:
           uid: hercule-3
           port: eth1
-        27:
+        24:
           uid: hercule-4
           port: eth1
         36:
@@ -60,11 +64,7 @@ force10:
         37:
           uid: pollux
           kind: other
-        42:
-          uid: gw-lyon
-          kind: router
-          port: "9:2"
-        47:
-          uid: pat
-          port: "1:25"
-          kind: switch
+        #47:
+        #  uid: pat
+        #  port: "1:25"
+        #  kind: switch
