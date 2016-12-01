@@ -83,6 +83,20 @@ pdus:
           outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
         resolution: 1
 
+  grimani-pdu[1-2]:
+    vendor: APC
+    model: AP8653
+    sensor:
+     - power:
+        per_outlets: true
+        snmp:
+          available: true
+          total_oids:
+            - iso.3.6.1.4.1.318.1.1.12.1.16.0
+          unit: W
+          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+        resolution: 1
+  
   graoully-pdu1:
     ip: 172.17.79.243
     mac: 00:C0:B7:85:24:B7
@@ -146,3 +160,12 @@ pdus:
   griffon-pdu2:
     ip: 172.17.79.217
     mac: 00:C0:B7:4D:A4:A3
+
+  grimani-pdu-1:
+    ip: 172.17.79.218
+    mac: 00:C0:B7:F2:27:D9
+    
+  grimani-pdu-2:
+    ip: 172.17.79.219
+    mac: 00:C0:B7:F2:27:DE
+  
