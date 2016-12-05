@@ -1,0 +1,24 @@
+nodes:
+<% global_grenoble_edel_offset = 34 %>
+<% [*1..72].each { |i| %>
+  edel-<%= i %>:
+    kavlan:
+      eth0:
+        kavlan-1: 192.168.194.<%= i %>
+        kavlan-2: 192.168.210.<%= i %>
+        kavlan-3: 192.168.226.<%= i %>
+        kavlan-4: 10.4.2.<%= i %>
+        kavlan-5: 10.4.66.<%= i %>
+        kavlan-6: 10.4.130.<%= i %>
+        kavlan-7: 10.4.193.<%= i %>
+        kavlan-8: 10.5.2.<%= i %>
+        kavlan-9: 10.5.66.<%= i %>
+        kavlan-11: 10.7.194.<%= i + global_grenoble_edel_offset %>
+        kavlan-12: 10.11.194.<%= i + global_grenoble_edel_offset %>
+        kavlan-13: 10.15.194.<%= i + global_grenoble_edel_offset %>
+        kavlan-14: 10.19.194.<%= i + global_grenoble_edel_offset %>
+        kavlan-16: 10.27.194.<%= i + global_grenoble_edel_offset %>
+        kavlan-18: 10.35.194.<%= i + global_grenoble_edel_offset %>
+        kavlan-20: 10.43.194.<%= i + global_grenoble_edel_offset %>
+        kavlan-21: 10.47.194.<%= i + global_grenoble_edel_offset %>
+<% } %>
