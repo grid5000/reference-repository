@@ -61,15 +61,15 @@ global_hash["sites"].each { |site_uid, site_hash|
 
   # Relocate ip/mac info of MIC
   site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
-    cluster_hash.fetch('nodes').each { |node_uid, node_hash| 
-      site_hash.fetch("clusters").each {
-        if node_hash['mic'] && node_hash['mic']['ip'] && node_hash['mic']['mac']
-          node_hash['network_adapters'] ||= {}
-          node_hash['network_adapters']['mic0'] ||= {}
-          node_hash['network_adapters']['mic0']['ip']  = node_hash['mic'].delete('ip')
-          node_hash['network_adapters']['mic0']['mac'] = node_hash['mic'].delete('mac')
-        end
-      }
+    cluster_hash.fetch('nodes').each { |node_uid, node_hash|
+      next if node_hash == nil || node_hash['status'] == 'retired'
+
+      if node_hash['mic'] && node_hash['mic']['ip'] && node_hash['mic']['mac']
+        node_hash['network_adapters'] ||= {}
+        node_hash['network_adapters']['mic0'] ||= {}
+        node_hash['network_adapters']['mic0']['ip']  = node_hash['mic'].delete('ip')
+        node_hash['network_adapters']['mic0']['mac'] = node_hash['mic'].delete('mac')
+      end
     }
   }
 

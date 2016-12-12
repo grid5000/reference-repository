@@ -10,7 +10,7 @@
 group {
 <%
     data.fetch('nodes').each_sort_by_node_uid { |node_uid, node_hash| 
-      next if node_hash['status'] && node_hash['status']['retired']
+      next if node_hash == nil || (node_hash['status'] && node_hash['status'] == 'retired')
 
       case network_interface
         when 'bmc', 'adm', 'mic0'
