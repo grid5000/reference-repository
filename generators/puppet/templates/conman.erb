@@ -50,8 +50,10 @@ server logfile="/var/log/conman.log"
       next
     end
 
-    cluster_refapi.each_sort_by_node_uid { |node_uid, node| 
-  
+    cluster_refapi.each_sort_by_node_uid { |node_uid, node|
+
+      next if node == nil || node['status'] == 'retired'
+
       dev = cluster_config.fetch('device') rescue '/usr/lib/conman/exec/ipmitool.exp'
       bmc = node['network_adapters']['bmc'].fetch('network_address').split('.')[0] rescue node_uid + '-bmc'
     
