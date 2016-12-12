@@ -87,6 +87,9 @@ end
 
       # group nodes by range (griffon-[1-92] -> 172.16.65.[1-92])
       cluster['nodes'].each_sort_by_node_uid { |node_uid, node|
+
+        next if node == nil || (node['status'] && node['status'] == 'retired')
+
         c, id = node_uid.scan(/^([^\d]*)(\d*)$/).first
         id = id.to_i
         ip = get_ip(node).split('.')
