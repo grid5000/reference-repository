@@ -288,9 +288,8 @@ refapi["sites"].each { |site_uid, site|
   #Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
   Dir.glob(File.join("#{zones_dir}", "reverse-*-manual.db")).each { |reverse_manual_file|
     reverse_manual_file = File.basename(reverse_manual_file);
-    puts "Reverse manual file: #{reverse_manual_file}"
+    puts "Including orphan reverse manual file: #{reverse_manual_file}"
     output_file = reverse_manual_file.sub("-manual.db", ".db")
-    puts "BASENAME: manual file: #{output_file}"
     next if File.exists?(File.join(zones_dir, output_file))
     header = ERB.new(File.read('templates/bind-header.erb')).result(binding) # do not move outside of the loop (it uses the output_file variable)
     content = "$INCLUDE /etc/bind/zones/#{site_uid}/#{reverse_manual_file}"
