@@ -1,4 +1,4 @@
-!/usr/bin/ruby
+#!/usr/bin/ruby
 
 if RUBY_VERSION < "2.1"
   puts "This script requires ruby >= 2.1"
