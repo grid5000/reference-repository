@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+!/usr/bin/ruby
 
 if RUBY_VERSION < "2.1"
   puts "This script requires ruby >= 2.1"
@@ -162,7 +162,7 @@ refapi["sites"].each { |site_uid, site|
   site.fetch("clusters").sort.each { |cluster_uid, cluster|
     #next if cluster_uid != 'griffon'
 
-    cluster.fetch('nodes').select { |node_uid, node| node.has_key?('network_adapters') }.each_sort_by_node_uid { |node_uid, node|
+    cluster.fetch('nodes').select { |node_uid, node| node != nil && node["status"] != "retired" && node.has_key?('network_adapters') }.each_sort_by_node_uid { |node_uid, node|
       network_adapters = {}
 
       # Nodes
@@ -185,7 +185,7 @@ refapi["sites"].each { |site_uid, site|
       
       # Group ip ranges
       network_adapters.each { |net_uid, net_hash|
-        next if node['status'] && node['status']['retired'] && cluster_uid == 'graphene' && net_uid == 'eth0' # FIXME
+        next if cluster_uid == 'graphene' && net_uid == 'eth0' # FIXME
 
         next unless net_hash['ip']
         
@@ -270,7 +270,7 @@ refapi["sites"].each { |site_uid, site|
 
   # DNS (/modules/bindg5k/files/zones/nancy.db)
   manual = site_uid + '-manual.db'
-  dns.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(zones_dir + manual) # add include statement
+  dns.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(File.join(zones_dir, manual)) # add include statement
 
   output_file = site_uid + '.db'
   header = ERB.new(File.read('templates/bind-header.erb')).result(binding)
@@ -280,11 +280,23 @@ refapi["sites"].each { |site_uid, site|
   reverse.each { |output_file, output|
     header = ERB.new(File.read('templates/bind-header.erb')).result(binding) # do not move outside of the loop (it uses the output_file variable)
     manual = output_file.sub('.db', '') + '-manual.db'
-    output.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(zones_dir + manual) # add include statement
-    
-    File.write(zones_dir + output_file, header + output.join("\n") + "\n")
+    output.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(File.join(zones_dir, manual)) # add include statement
+
+    File.write(File.join(zones_dir, output_file), header + output.join("\n") + "\n")
   }
-  
+
+  #Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
+  Dir.glob(File.join("#{zones_dir}", "reverse-*-manual.db")).each { |reverse_manual_file|
+    reverse_manual_file = File.basename(reverse_manual_file);
+    puts "Reverse manual file: #{reverse_manual_file}"
+    output_file = reverse_manual_file.sub("-manual.db", ".db")
+    puts "BASENAME: manual file: #{output_file}"
+    next if File.exists?(File.join(zones_dir, output_file))
+    header = ERB.new(File.read('templates/bind-header.erb')).result(binding) # do not move outside of the loop (it uses the output_file variable)
+    content = "$INCLUDE /etc/bind/zones/#{site_uid}/#{reverse_manual_file}"
+    File.write(File.join(zones_dir, output_file), header + "\n" + content + "\n")
+  }
+
   # files/global/conf/global-nancy.conf
   # files/site/conf/global-nancy.conf
   ['global', 'site'].each { |dir|
