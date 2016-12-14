@@ -10,7 +10,8 @@ dir = Pathname(__FILE__).parent
 
 require 'json'
 require 'hash_validator' # https://github.com/jamesbrooks/hash_validator
-require "#{dir}/multihash_validator" # custom validator for <multi> array-like Hash support
+require "#{dir}/multihash_validator" # custom validator for <multi>-keys Hash support
+require "#{dir}/array_validator" # custom validator for <array> support
 require "#{dir}/custom_validators" # other custom validators
 
 # Simple required_hash validator
@@ -23,7 +24,7 @@ HashValidator.append_validator(HashValidator::Validator::SimpleValidator.new('da
 def add_optional_validator(h)
   h.each_with_object({}) { |(k,v),g|
     g[k] = if (Hash === v) 
-             add_optional_validator(v) 
+             add_optional_validator(v)
            elsif String === v
              if v == 'optional_hash' || v == 'optional'
                HashValidator.optional('required')
@@ -38,13 +39,21 @@ def add_optional_validator(h)
   }
 end
 
-# Recursively replace hash containing '<multi>' by HashValidator::MultiHash objects
-def add_multihash_validator(h)
+# Recursively replace custom validation keys (<multi>, <array>, <nested_array>, <optional_Type>) by their custom validators counterparts
+def replace_validators_keys(h)
   h.each_with_object({}) { |(k,v),g|
-    v = add_multihash_validator(v) if (Hash === v)
+    v = replace_validators_keys(v) if (Hash === v)
     g[k] = if (Hash === v)
              if v.key?('<multi>')
                HashValidator::Validations::Multi.new(v['<multi>'])
+             elsif v.key?('<array>')
+               HashValidator::Validations::Array.new(v['<array>'])
+             elsif v.key?('<nested_array>')
+               HashValidator::Validations::NestedArray.new(v['<nested_array>'])
+             elsif v.key?('<optional_nested_array>')
+               HashValidator.optional(HashValidator::Validations::NestedArray.new(v['<optional_nested_array>']))
+             elsif v.key?('<optional_array>')
+               HashValidator.optional(HashValidator::Validations::Array.new(v['<optional_array>']))
              elsif v.key?('<optional_hash>')
                HashValidator.optional(v['<optional_hash>'])
              else
@@ -69,5 +78,5 @@ end
 def load_yaml_schema(filename)
   schema = YAML::load_file(filename)
   schema = add_optional_validator(schema)
-  schema = add_multihash_validator(schema)
+  schema = replace_validators_keys(schema)
 end
