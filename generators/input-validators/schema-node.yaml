@@ -72,7 +72,11 @@ operating_system:
   pstate_driver: string
   pstate_governor: string
   turboboost_enabled: optional
-pdu: optional_hash
+pdu:
+  <optional_nested_array>:
+    uid: string
+    port: required
+    measure: optional_string
 performance:
   core_flops: numeric # integer ?
   node_flops: numeric # integer ?

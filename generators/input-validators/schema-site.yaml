@@ -61,6 +61,30 @@ kavlans:
   <multi>:
     network: string
     gateway: string
-pdus: optional_hash
+pdus:
+  <optional_hash>:
+    <multi>:
+      ip: ip_address
+      mac: optional_string
+      vendor: optional_string
+      model: optional_string
+      sensors:
+        <array>:
+          power:
+            resolution: optional_integer
+            per_outlets: boolean
+            snmp:
+              <optional_hash>:
+                available: boolean
+                total_oids: array
+                unit: string
+                outlet_prefix_oid: optional_string
+            wattmetre:
+              <optional_hash>:
+                available: boolean
+                unit: string
+                www:
+                  <optional_hash>:
+                    url: string
 renater_ip: ip_address
 frontend_ip: ip_address
