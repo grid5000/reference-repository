@@ -51,6 +51,8 @@ def yaml_input_schema_validator(global_hash, sites = nil, clusters = nil)
       r &= run_validator(cluster_uid, cluster, schema_cluster) #
 
       cluster["nodes"].each do |node_uid, node|
+        next if node == nil || node["status"] == "retired"
+
         r &= run_validator(node_uid, node, schema_node) #
       end
     end
