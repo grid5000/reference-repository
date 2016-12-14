@@ -294,8 +294,6 @@ global_hash["sites"].each do |site_uid, site|
       node["monitoring"]["wattmeter"] = "false" if node["monitoring"]["wattmeter"] == false
 
       if node.key?("pdu")
-        # If there is only one PDU, the PDU entry might be an hash instead of 'an hash in an array'. Fix that.
-        node["pdu"] = [ node["pdu"] ] if node["pdu"].is_a?(Hash) 
 
         # Remove 'port' info if PDU are shared
         node["pdu"].each { |p|
