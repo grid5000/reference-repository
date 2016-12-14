@@ -3,12 +3,13 @@ pdus:
   wattmetre:
     vendor: OmegaWatt
     model: ''
+    ip: 172.16.63.54
     sensors:
-      - power: 
-         per_outlets: true
-         wattmetre: 
-           available: true
-           unit: W
-           www: 
-             url: "http://wattmetre.lyon.grid5000.fr/GetWatts-json.php"
-         resolution: 1
+      - power:
+          resolution: 1
+          per_outlets: true
+          wattmetre:
+            available: true
+            unit: W
+            www: 
+              url: "http://wattmetre.lyon.grid5000.fr/GetWatts-json.php"
