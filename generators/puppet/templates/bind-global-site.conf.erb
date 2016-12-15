@@ -20,13 +20,11 @@ Dir.entries(zones_dir).sort.each { |file|
     zone = "#{site_uid}.grid5000.fr"
   elsif /^reverse-(.*).db$/.match(file)
     zone = "#{$1}.in-addr.arpa"
-    comment = '// The following entry was manually added' if !reverse.keys.include?(file)
   else
     puts "Error: unknown zone for '#{file}' in '#{zones_dir}'"
     next
   end
     %>
-  <%= comment %>
   zone "<%= zone %>" {
     type <%= type %>;
     file "/etc/bind/zones/<%= site_uid %>/<%= file %>";
