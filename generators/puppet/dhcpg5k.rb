@@ -97,8 +97,8 @@ global_hash["sites"].each { |site_uid, site_hash|
                       "filename"            => key + ".conf",
                       "site_uid"            => site_uid,
                       "nodes"               => site_hash[key],
-                      "network_adapters"    => ["eth", "bmc", "adm"],
-                      "optional_network_adapters"  => ["bmc", "adm"]
+                      "network_adapters"    => ["default", "eth", "bmc", "adm"],
+                      "optional_network_adapters"  => ["eth", "bmc", "adm"]
                     }) unless site_hash[key].nil?
   }
 
