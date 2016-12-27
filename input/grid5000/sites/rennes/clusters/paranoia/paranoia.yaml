@@ -70,6 +70,7 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+        rate: 10.0e+9
         bridged: true
         management: false
         vendor: Intel
@@ -78,14 +79,13 @@ nodes:
         enabled: true
         mountable: true
         mounted: false
-        rate: null #TODO 10.0e+9 #10G
+        rate: 10.0e+9
         bridged: false
         management: false
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth2:
         enabled: true
-        rate: 1000000000
         rate: 1.0e+9 #1G
         mountable: true
         mounted: false
