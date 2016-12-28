@@ -185,7 +185,6 @@ refapi["sites"].each { |site_uid, site|
       
       # Group ip ranges
       network_adapters.each { |net_uid, net_hash|
-        next if cluster_uid == 'graphene' && net_uid == 'eth0' # FIXME
 
         next unless net_hash['ip']
         
