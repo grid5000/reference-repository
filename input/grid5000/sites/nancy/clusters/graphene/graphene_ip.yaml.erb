@@ -4,6 +4,9 @@ nodes:
     network_adapters:
       ib0:
         ip: 172.18.64.<%= i %>
+      eth0:
+        ip: 172.16.64.<%= i %>
+        mounted: true
 <% i93 = i+92 %>
     kavlan:
       eth0:
