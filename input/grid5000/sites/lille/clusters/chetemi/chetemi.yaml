@@ -1,0 +1,31 @@
+---
+model: Dell PowerEdge R630
+created_at: 2016-12-01
+kavlan: true
+queues:
+  - admin
+  - testing
+
+nodes:
+
+# Global node properties
+  chetemi-[1-15]:
+    operating_system:
+      name: debian
+      release: Jessie
+      version: "8.2"
+      kernel: 3.16.0-4-amd64
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+      queues:
+        - admin
+        - testing
+    storage_devices:
+      sda:
+    gpu:
+      gpu: false
+    monitoring:
+      wattmeter: false
+
