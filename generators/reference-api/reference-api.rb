@@ -237,8 +237,8 @@ global_hash["sites"].each do |site_uid, site|
       node["main_memory"]["virtual_size"] ||= nil
 
       # Delete keys
-      raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
-      node["storage_devices"].keys.each { |key| 
+      #raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
+      Hash(node["storage_devices"]).keys.each { |key| 
         node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")
         node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
       }
@@ -248,8 +248,8 @@ global_hash["sites"].each do |site_uid, site|
       node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
 
       # Convert hashes to arrays
-      node["storage_devices"].each { |key, hash| node["storage_devices"][key]["device"] = key; } # Add "device: sdX" within the hash
-      node["storage_devices"] = node["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde"]).values
+      Hash(node["storage_devices"]).each { |key, hash| node["storage_devices"][key]["device"] = key; } # Add "device: sdX" within the hash
+      node["storage_devices"] = Hash(node["storage_devices"]).sort_by_array(["sda", "sdb", "sdc", "sdd", "sde"]).values
 
       node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
       node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc"]).values
