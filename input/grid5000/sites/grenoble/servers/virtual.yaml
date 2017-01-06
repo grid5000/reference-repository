@@ -1,22 +1,53 @@
-www:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.105}}
-dhcp:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.109}, adm: {ip: 172.17.31.109}}
-ldap:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.112}}
-api-server-v3:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.122}}
-api-server-devel:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.108}}
 access:
   alias: [mail]
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.100}}
+fgrenoble:
+  kind: virtual
+  alias: [frontend, oar-api]
+  network_adapters: {default: {ip: 172.16.31.101}, adm: {ip: 172.17.31.101}}
+kadeploy:
+  kind: virtual
+  alias: [kadeploy-server]
+  network_adapters: {default: {ip: 172.16.31.102}, adm: {ip: 172.17.31.102}}
+mysql:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.103}}
+oar:
+  kind: virtual
+  alias: [oar-server, oardb]
+  network_adapters: {default: {ip: 172.16.31.104}}
+www:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.105}}
+api-proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.106}}
+api-server-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.108}}
+dhcp:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.109}, adm: {ip: 172.17.31.109}}
+dns:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.110}}
+ganglia:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.111}}
+ldap:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.112}}
+proxy:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.113}}
+supervision:
+  kind: virtual
+  alias: [nagios, munin]
+  network_adapters: {default: {ip: 172.16.31.114}}
+syslog:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.115}}
 puppet:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.116}}
@@ -24,18 +55,6 @@ weathermap:
   kind: virtual
   alias: [cacti]
   network_adapters: {default: {ip: 172.16.31.117}}
-api-proxy:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.106}}
-syslog:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.115}}
-mysql:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.103}}
-ganglia:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.111}}
 kavlan:
   kind: virtual
   alias: [kavlan-dhcp]
@@ -49,23 +68,12 @@ kavlan-2:
 kavlan-3:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.121}}
-dns:
+api-server-v3:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.110}}
-proxy:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.113}}
-supervision:
-  kind: virtual
-  alias: [nagios, munin]
-  network_adapters: {default: {ip: 172.16.31.114}}
+  network_adapters: {default: {ip: 172.16.31.122}}
 conman:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.123}}
-kadeploy:
-  kind: virtual
-  alias: [kadeploy-server]
-  network_adapters: {default: {ip: 172.16.31.102}, adm: {ip: 172.17.31.102}}
 kadeploy-devel:
   kind: virtual
   alias: [kadeploy-server-devel, deploy-devel]
@@ -74,17 +82,9 @@ mu2:
   kind: virtual
   alias: [digitalis]
   network_adapters: {default: {ip: 172.16.31.152}, adm: {ip: 172.17.31.152}}
-mysql:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.103}}
-oar:
-  kind: virtual
-  alias: [oar-server, oardb]
-  network_adapters: {default: {ip: 172.16.31.104}}
-fgrenoble:
-  kind: virtual
-  alias: [frontend, oar-api]
-  network_adapters: {default: {ip: 172.16.31.101}, adm: {ip: 172.17.31.101}}
 kwapi:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.154}}
+puppet4:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.155}}
