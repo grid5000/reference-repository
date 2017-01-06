@@ -6,22 +6,22 @@
   site_uid = data.fetch('site_uid')
 
   data.fetch('network_adapters').each { |network_interface|
-%>
-group {
-<%
-    data.fetch('nodes').each_sort_by_node_uid { |node_uid, node_hash| 
-      next if node_hash == nil || (node_hash['status'] && node_hash['status'] == 'retired')
+    dhcp_entries = []
+
+    data.fetch('nodes').each_sort_by_node_uid { |node_uid, node| 
+      next if node == nil || (node['status'] && node['status'] == 'retired')
 
       case network_interface
         when 'bmc', 'adm', 'mic0'
-          node_uid_net = node_uid + '-' + network_interface
+          uid_net = node_uid + '-' + network_interface
         else
-          node_uid_net = node_uid
-        end
+          uid_net = node_uid
+      end
 
       # Get ip and mac addresses
       begin
-        node_ip, node_mac = get_network_info(node_hash, network_interface)
+        ip, mac = get_network_info(node, network_interface)
+        dhcp_entries.push({ 'uid_net' => uid_net, 'ip' => ip, 'mac' => mac })
       rescue => e
         next if data.fetch('optional_network_adapters').include?(network_interface)
 
@@ -29,11 +29,17 @@ group {
         puts "Warning: #{site_uid} - #{node_uid}: #{e}. Skip the DHCP entry of the #{network_interface} interface." # (error in #{__method__})
         next
       end
+    }
+
+    if not dhcp_entries.empty?
 %>
-  host <%= node_uid_net %> {
-    hardware ethernet       <%= node_mac.upcase %>;
-    fixed-address           <%= node_ip         %>;
+group {
+<% dhcp_entries.each {|node| %>
+  host <%= node['uid_net'] %> {
+    hardware ethernet       <%= node['mac'].upcase %>;
+    fixed-address           <%= node['ip']         %>;
   }
-<%   } %>
+<%    } %>
 }
-<% }   %>
+<% end %>
+<% } %>
