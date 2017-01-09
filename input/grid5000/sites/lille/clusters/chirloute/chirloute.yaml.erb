@@ -1,6 +1,10 @@
 nodes:
 <% (1..8).each { |i| %>
   chirloute-<%= i %>:
+    network_adapters:
+      eth0:
+        ip: 172.16.35.<%= i+100 %>
+        network_address: chirloute-<%= i %>-eth0.lille.grid5000.fr
 <% i92 = i+92 %>   
     kavlan:
       eth1:
