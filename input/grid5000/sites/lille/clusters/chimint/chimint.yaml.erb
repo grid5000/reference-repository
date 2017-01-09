@@ -1,6 +1,10 @@
 nodes:
 <% (1..20).each { |i| %>
   chimint-<%= i %>:
+    network_adapters:
+      eth1:
+        ip: 172.16.36.<%= i %>
+        network_address: chimint-<%= i %>-eth1.lille.grid5000.fr
     kavlan:
       eth0:
         kavlan-1: 192.168.192.<%= i %>
