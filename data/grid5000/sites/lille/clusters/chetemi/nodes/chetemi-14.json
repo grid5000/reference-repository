@@ -1,0 +1,129 @@
+{
+  "architecture": {
+    "nb_cores": 20,
+    "nb_procs": 2,
+    "nb_threads": 40,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "configuration": {
+      "cstate_c1e": false,
+      "cstate_enabled": false,
+      "ht_enabled": true,
+      "turboboost_enabled": true
+    },
+    "release_date": "11/08/2016",
+    "vendor": "Dell Inc.",
+    "version": "2.3.4"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R630",
+    "serial": "5QCFLG2"
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+    "ram_size": 270582939648,
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "ixgbe",
+      "interface": "Ethernet",
+      "ip": "172.16.37.14",
+      "mac": "24:6e:96:2c:be:88",
+      "management": false,
+      "mounted": true,
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "driver": "ixgbe",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:2c:be:8a",
+      "management": false,
+      "mounted": false
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:2c:be:8c",
+      "management": false,
+      "mounted": false
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:2c:be:8d",
+      "management": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "ip": "172.17.37.14",
+      "mac": "84:7b:eb:d5:ac:4e",
+      "management": true,
+      "network_address": "chetemi-14-bmc.lille.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "none",
+    "cstate_governor": "menu",
+    "cstate_max_id": null,
+    "ht_enabled": true,
+    "kernel": "3.16.0-4-amd64",
+    "name": "debian",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "release": "Jessie",
+    "turboboost_enabled": true,
+    "version": 8.6
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 26214400,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "E5-2630 v4"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "model": "PERC H730 Mini",
+      "rev": 4.26,
+      "size": 299439751168,
+      "vendor": "DELL"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "chetemi-14"
+}
