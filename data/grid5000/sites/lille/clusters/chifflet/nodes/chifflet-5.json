@@ -32,11 +32,14 @@
     {
       "device": "eth0",
       "driver": "ixgbe",
+      "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.38.5",
       "mac": "24:6e:96:2c:c1:58",
       "management": false,
+      "mountable": true,
       "mounted": true,
+      "network_address": "chifflet-5.lille.grid5000.fr",
       "rate": 10000000000,
       "switch": null,
       "switch_port": null
@@ -44,32 +47,42 @@
     {
       "device": "eth1",
       "driver": "ixgbe",
+      "enabled": false,
       "interface": "Ethernet",
       "mac": "24:6e:96:2c:c1:5a",
       "management": false,
+      "mountable": false,
       "mounted": false
     },
     {
       "device": "eth2",
       "driver": "igb",
+      "enabled": false,
       "interface": "Ethernet",
       "mac": "24:6e:96:2c:c1:5c",
       "management": false,
+      "mountable": false,
       "mounted": false
     },
     {
       "device": "eth3",
       "driver": "igb",
+      "enabled": false,
       "interface": "Ethernet",
       "mac": "24:6e:96:2c:c1:5d",
       "management": false,
+      "mountable": false,
       "mounted": false
     },
     {
       "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
       "ip": "172.17.38.5",
       "mac": "18:66:da:5c:16:af",
       "management": true,
+      "mountable": false,
+      "mounted": false,
       "network_address": "chifflet-5-bmc.lille.grid5000.fr"
     }
   ],
@@ -86,6 +99,7 @@
     "turboboost_enabled": true,
     "version": 8.6
   },
+  "performance": "hash required",
   "processor": {
     "cache_l1": null,
     "cache_l1d": 32768,
@@ -105,30 +119,42 @@
   "storage_devices": [
     {
       "device": "sda",
+      "driver": "megaraid_sas",
+      "interface": "SAS",
       "model": "PX04SMB040",
       "rev": "AM04",
       "size": 400088457216,
+      "storage": "SSD",
       "vendor": "TOSHIBA"
     },
     {
       "device": "sdb",
+      "driver": "megaraid_sas",
+      "interface": "SAS",
       "model": "PX04SMB040",
       "rev": "AM04",
       "size": 400088457216,
+      "storage": "SSD",
       "vendor": "TOSHIBA"
     },
     {
       "device": "sdc",
+      "driver": "megaraid_sas",
+      "interface": "SATA",
       "model": "TOSHIBA MG04ACA4",
       "rev": "FJ2D",
       "size": 4000787030016,
+      "storage": "HDD",
       "vendor": "ATA"
     },
     {
       "device": "sdd",
+      "driver": "megaraid_sas",
+      "interface": "SATA",
       "model": "TOSHIBA MG04ACA4",
       "rev": "FJ2D",
       "size": 4000787030016,
+      "storage": "HDD",
       "vendor": "ATA"
     }
   ],

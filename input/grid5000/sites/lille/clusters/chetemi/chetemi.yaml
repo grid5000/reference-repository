@@ -28,4 +28,28 @@ nodes:
       gpu: false
     monitoring:
       wattmeter: false
-
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+      eth1:
+        enabled: false
+        mountable: false
+      eth2:
+        enabled: false
+        mountable: false
+      eth3:
+        enabled: false
+        mountable: false
+    performance: hash required
+    storage_devices:
+      sda:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        raid: '1'
