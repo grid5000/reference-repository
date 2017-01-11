@@ -35,11 +35,14 @@
     {
       "device": "eth0",
       "driver": "ixgbe",
+      "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.37.14",
       "mac": "24:6e:96:2c:be:88",
       "management": false,
+      "mountable": true,
       "mounted": true,
+      "network_address": "chetemi-14.lille.grid5000.fr",
       "rate": 10000000000,
       "switch": null,
       "switch_port": null
@@ -47,32 +50,42 @@
     {
       "device": "eth1",
       "driver": "ixgbe",
+      "enabled": false,
       "interface": "Ethernet",
       "mac": "24:6e:96:2c:be:8a",
       "management": false,
+      "mountable": false,
       "mounted": false
     },
     {
       "device": "eth2",
       "driver": "igb",
+      "enabled": false,
       "interface": "Ethernet",
       "mac": "24:6e:96:2c:be:8c",
       "management": false,
+      "mountable": false,
       "mounted": false
     },
     {
       "device": "eth3",
       "driver": "igb",
+      "enabled": false,
       "interface": "Ethernet",
       "mac": "24:6e:96:2c:be:8d",
       "management": false,
+      "mountable": false,
       "mounted": false
     },
     {
       "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
       "ip": "172.17.37.14",
       "mac": "84:7b:eb:d5:ac:4e",
       "management": true,
+      "mountable": false,
+      "mounted": false,
       "network_address": "chetemi-14-bmc.lille.grid5000.fr"
     }
   ],
@@ -89,6 +102,7 @@
     "turboboost_enabled": true,
     "version": 8.6
   },
+  "performance": "hash required",
   "processor": {
     "cache_l1": null,
     "cache_l1d": 32768,
@@ -108,9 +122,13 @@
   "storage_devices": [
     {
       "device": "sda",
+      "driver": "megaraid_sas",
+      "interface": "SAS",
       "model": "PERC H730 Mini",
+      "raid": "1",
       "rev": 4.26,
       "size": 299439751168,
+      "storage": "HDD",
       "vendor": "DELL"
     }
   ],
