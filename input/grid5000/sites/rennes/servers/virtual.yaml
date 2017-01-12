@@ -102,7 +102,7 @@ git-global:
   network_adapters: {default: {ip: 131.254.202.10}}
 backup1:
   kind: virtual
-  network_adapters: {default: {ip: 131.254.203.251}}
+  network_adapters: {default: {ip: 172.16.111.154}}
 conman:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.108}}
@@ -115,8 +115,7 @@ ums:
   network_adapters: {default: {ip: 131.254.203.237}}
 mysql-archive:
   kind: virtual
-  alias: [mysql-archive-global]
-  network_adapters: {default: {ip: 131.254.203.248}}
+  network_adapters: {default: {ip: 172.16.111.155}}
 kadeploy-devel:
   kind: virtual
   alias: [kadeploy-server-devel]
@@ -133,7 +132,7 @@ oar:
   network_adapters: {default: {ip: 172.16.111.110}}
 oardb-archive:
   kind: virtual
-  network_adapters: {default: {ip: 131.254.203.249}}
+  network_adapters: {default: {ip: 172.16.111.156}}
 frennes:
   kind: virtual
   alias: [frontale, frontend, oar-api]
