@@ -1,0 +1,54 @@
+{
+  "alias": [
+    "adminfront",
+    "af"
+  ],
+  "kind": "physical",
+  "monitoring": {
+    "metric": "power",
+    "wattmeter": "multiple"
+  },
+  "network_adapters": {
+    "adm": {
+      "ip": "172.17.47.1",
+      "mac": "d4:ae:52:b1:1a:e3",
+      "mounted": true
+    },
+    "bmc": {
+      "ip": "172.17.46.1",
+      "mac": "44:a8:42:20:c1:9a",
+      "mounted": true
+    },
+    "default": {
+      "ip": "172.16.47.1",
+      "mac": "d4:ae:52:b1:1a:e2",
+      "mounted": true
+    }
+  },
+  "sensors": {
+    "network": {
+      "available": true,
+      "resolution": 1
+    },
+    "power": {
+      "available": true,
+      "resolution": 1,
+      "via": {
+        "pdu": [
+          {
+            "port": null,
+            "uid": null
+          },
+          {
+            "port": null,
+            "uid": null
+          }
+        ]
+      }
+    }
+  },
+  "serial": "C",
+  "type": "server",
+  "uid": "fives",
+  "warranty": "28.07.2017"
+}

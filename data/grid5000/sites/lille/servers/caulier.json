@@ -1,0 +1,51 @@
+{
+  "alias": null,
+  "kind": "physical",
+  "monitoring": {
+    "metric": "power",
+    "wattmeter": "multiple"
+  },
+  "network_adapters": {
+    "adm": {
+      "ip": "172.17.47.7",
+      "mac": "d4:ae:52:b1:45:b1",
+      "mounted": true
+    },
+    "bmc": {
+      "ip": "172.17.46.7",
+      "mac": "d4:ae:52:af:44:00",
+      "mounted": true
+    },
+    "default": {
+      "ip": "172.16.47.7",
+      "mac": "d4:ae:52:b1:45:b1",
+      "mounted": true
+    }
+  },
+  "sensors": {
+    "network": {
+      "available": true,
+      "resolution": 1
+    },
+    "power": {
+      "available": true,
+      "resolution": 1,
+      "via": {
+        "pdu": [
+          {
+            "port": null,
+            "uid": null
+          },
+          {
+            "port": null,
+            "uid": null
+          }
+        ]
+      }
+    }
+  },
+  "serial": "BQ9WD5J",
+  "type": "server",
+  "uid": "caulier",
+  "warranty": "28.07.2017"
+}
