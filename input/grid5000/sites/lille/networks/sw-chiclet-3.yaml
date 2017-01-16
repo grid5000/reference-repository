@@ -1,0 +1,44 @@
+---
+sw-chiclet-3:
+  model: cisco 93180YC-EX
+  kind: switch
+  site: lille
+  snmp_community: public
+  sensors:
+    network:
+      available: true
+      resolution: 1
+  backplane_bps: 36000000000000
+  linecards:
+    1:
+      kind: virtual
+      snmp_pattern: Eth%LINECARD%/%PORT%
+      backplane_bps: 36000000000000
+      rate: 10000000000
+      port: eth0
+      ports:
+          1:  chetemi-1
+          2:  chetemi-2
+          3:  chetemi-3
+          4:  chetemi-4
+          5:  chetemi-5
+          6:  chetemi-6
+          7:  chetemi-7
+          8:  chetemi-8
+          9:  chetemi-9
+          10: chetemi-10
+          11: chetemi-11
+          12: chetemi-12
+          13: chetemi-13
+          14: chetemi-14
+          15: chetemi-15
+          17: chifflet-1
+          18: chifflet-2
+          19: chifflet-3
+          20: chifflet-4
+          21: chifflet-5
+          22: chifflet-6
+          23: chifflet-7
+          24: chifflet-8
+          53: lacp sw-chiclet-2
+          54: lacp sw-chiclet-2

@@ -1,0 +1,21 @@
+---
+sw-chiclet-1:
+  model: cisco 93180YC-EX
+  kind: switch
+  site: lille
+  snmp_community: public
+  sensors:
+    network:
+      available: true
+      resolution: 1
+  backplane_bps: 36000000000000
+  linecards:
+    1:
+      kind: virtual
+      snmp_pattern: Eth%LINECARD%/%PORT%
+      backplane_bps: 36000000000000
+      rate: 10000000000
+      port: eth0
+      ports:
+        53: lacp-sw-chiclet-2
+        54: lacp-sw-chiclet-2
