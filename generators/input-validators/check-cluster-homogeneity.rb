@@ -90,7 +90,7 @@ eos
     }
   }
 
-  ('a'..'d').each { |sd| 
+  ('a'..'e').each { |sd| 
     keys = ignore_stokeys.gsub('.sd.', ".sd#{sd}.").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
   }
