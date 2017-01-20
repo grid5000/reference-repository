@@ -206,3 +206,38 @@ chimint-srv2:
             port:
           - uid:
             port:
+
+welsh:
+  kind: physical
+  alias:
+  warranty: 13.10.2021
+  serial: 5L2DLG2
+  network_adapters:
+    default:
+      mounted: true
+      ip: 172.16.47.8
+      mac: 24:6e:96:2c:9a:40
+    adm:
+      mounted: true
+      ip: 172.17.47.8
+      mac: 24:6e:96:2c:9a:40
+    bmc:
+      mounted: true
+      ip: 172.17.46.8
+      mac: 84:7b:eb:d5:ae:46
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: pdu-b2p1
+            port: 5
+          - uid: pdu-b2p2
+            port: 5
