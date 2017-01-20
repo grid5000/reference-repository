@@ -1,0 +1,62 @@
+---
+nodes:
+  chifflet-[1-8]:
+    monitoring:
+      wattmeter: true
+      metric: power
+
+  chifflet-1:
+    pdu:
+      - uid: pdu-b3p1
+        port: 12
+      - uid: pdu-b3p2
+        port: 12
+
+  chifflet-2:
+    pdu:
+      - uid: pdu-b3p1
+        port: 13
+      - uid: pdu-b3p3
+        port: 12
+
+  chifflet-3:
+    pdu:
+      - uid: pdu-b3p1
+        port: 14
+      - uid: pdu-b3p2
+        port: 13
+
+  chifflet-4:
+    pdu:
+      - uid: pdu-b3p1
+        port: 15
+      - uid: pdu-b3p3
+        port: 13
+
+  chifflet-5:
+    pdu:
+      - uid: pdu-b3p1
+        port: 17
+      - uid: pdu-b3p2
+        port: 14
+
+  chifflet-6:
+    pdu:
+      - uid: pdu-b3p3
+        port: 14
+      - uid: pdu-b3p2
+        port: 15
+
+  chifflet-7:
+    pdu:
+      - uid: pdu-b3p3
+        port: 15
+      - uid: pdu-b3p2
+        port: 17
+
+  chifflet-8:
+    pdu:
+      - uid: pdu-b3p3
+        port: 17
+      - uid: pdu-b3p2
+        port: 18

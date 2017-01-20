@@ -29,7 +29,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "true"
   },
   "network_adapters": [
     {
@@ -118,6 +118,24 @@
     "version": "E5-2680 v4"
   },
   "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 17,
+            "uid": "pdu-b3p3"
+          },
+          {
+            "port": 18,
+            "uid": "pdu-b3p2"
+          }
+        ]
+      }
+    }
   },
   "storage_devices": [
     {
