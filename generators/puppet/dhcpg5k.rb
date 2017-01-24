@@ -8,10 +8,38 @@ end
 require 'pp'
 require 'erb'
 require 'pathname'
+require 'optparse'
 require '../lib/input_loader'
 
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
-$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
+
+options = {}
+options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
+options[:output_dir] = "/tmp/puppet-repo"
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: dhcpg5k.rb [options]"
+
+  opts.separator ""
+  opts.separator "Example: ruby dhcpg5k.rb -s nancy -d /tmp/puppet-repo"
+
+  opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
+    options[:output_dir] = d
+  end
+
+  opts.separator ""
+  opts.separator "Filters:"
+
+  opts.on('-s', '--sites a,b,c', Array, 'Select site(s)', "Default: " + options[:sites].join(", ")) do |s|
+    raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
+    options[:sites] = s
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
 
 # Get the mac and ip of a node. Throw exception if error.
 def get_network_info(node_hash, network_interface)
@@ -38,22 +66,27 @@ def get_network_info(node_hash, network_interface)
   return [node_ip, node_mac]
 end
 
-def write_dhcp_file(data)
+def write_dhcp_file(data, options)
   if data["nodes"].nil?
     puts "Error in #{__method__}: no entry for \"#{data['filename']}\" at #{data['site_uid']} (#{data['network_adapters']})."
     return "" 
   end
 
   output = ERB.new(File.read('templates/dhcp.erb')).result(binding)
-  output_file = Pathname("#{$output_dir}/modules/dhcpg5k/files/#{data.fetch("site_uid")}/dhcpd.conf.d/#{data.fetch('filename')}")
+  output_file = Pathname("#{options[:output_dir]}/modules/dhcpg5k/files/#{data.fetch("site_uid")}/dhcpd.conf.d/#{data.fetch('filename')}")
   output_file.dirname.mkpath()
   File.write(output_file, output)
 end
- 
+
+puts "Writing DHCP configuration files to: #{options[:output_dir]}"
+puts "For site(s): #{options[:sites].join(', ')}"
+
 # Loop over Grid'5000 sites
 global_hash["sites"].each { |site_uid, site_hash|
+
+  next unless options[:sites].include?(site_uid)
+
   puts site_uid
-  #next if site_uid != 'nancy'
 
   #
   # eth, bmc and mic0
@@ -84,7 +117,7 @@ global_hash["sites"].each { |site_uid, site_hash|
                       "nodes"               => cluster_hash.fetch('nodes'),
                       "network_adapters"    => ["eth", "bmc", "mic0"],
                       "optional_network_adapters"  => ["mic0"]
-                    })
+                    }, options)
   }
 
   #
@@ -99,7 +132,7 @@ global_hash["sites"].each { |site_uid, site_hash|
                       "nodes"               => site_hash[key],
                       "network_adapters"    => ["default", "eth", "bmc", "adm"],
                       "optional_network_adapters"  => ["eth", "bmc", "adm"]
-                    }) unless site_hash[key].nil?
+                    }, options) unless site_hash[key].nil?
   }
 
   #
@@ -124,7 +157,7 @@ global_hash["sites"].each { |site_uid, site_hash|
                       "nodes"               => site_hash['pdus'],
                       "network_adapters"  => ['pdu'],
                       "optional_network_adapters"  => []
-                    })
+                    }, options)
   end
 
 }
