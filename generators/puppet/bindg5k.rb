@@ -26,7 +26,6 @@ OptionParser.new do |opts|
   opts.separator "Example: ruby bindg5k.rb -s nancy -d /tmp/puppet-repo"
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
-    puts  "OUTPUT: #{d}"
     options[:output_dir] = d
   end
 
