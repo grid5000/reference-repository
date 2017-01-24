@@ -10,10 +10,39 @@ end
 require 'pp'
 require 'erb'
 require 'pathname'
+require 'optparse'
 require '../lib/input_loader'
 
 refapi = load_yaml_file_hierarchy("../../input/grid5000/")
-$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
+
+options = {}
+options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
+options[:output_dir] = "/tmp/puppet-repo"
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: bindg5k.rb [options]"
+
+  opts.separator ""
+  opts.separator "Example: ruby bindg5k.rb -s nancy -d /tmp/puppet-repo"
+
+  opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
+    puts  "OUTPUT: #{d}"
+    options[:output_dir] = d
+  end
+
+  opts.separator ""
+  opts.separator "Filters:"
+
+  opts.on('-s', '--sites a,b,c', Array, 'Select site(s)', "Default: " + options[:sites].join(", ")) do |s|
+    raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
+    options[:sites] = s
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
 
 # Create a dns entry
 # $GENERATE 1-16 graoully-$-bmc IN A 172.17.70.$
@@ -86,9 +115,13 @@ def print_reverse_entry(site_uid, entry)
 
 end
 
+puts "Writing DNS configuration files to: #{options[:output_dir]}"
+puts "For site(s): #{options[:sites].join(', ')}"
+
 # Loop over Grid'5000 sites
 refapi["sites"].each { |site_uid, site|
-  #next if site_uid != 'nancy'
+
+  next unless options[:sites].include?(site_uid)
 
   entries = {}
 
@@ -260,10 +293,10 @@ refapi["sites"].each { |site_uid, site|
     }
   }
 
-  zones_dir = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}")
+  zones_dir = Pathname("#{options[:output_dir]}/modules/bindg5k/files/zones/#{site_uid}")
   zones_dir.mkpath()
   if local_reverse_list.length > 0
-    local_zones_dir = Pathname("#{$output_dir}/modules/bindg5k/files/zones/#{site_uid}/local")
+    local_zones_dir = Pathname("#{options[:output_dir]}/modules/bindg5k/files/zones/#{site_uid}/local")
     local_zones_dir.mkpath()
   end
 
@@ -298,7 +331,7 @@ refapi["sites"].each { |site_uid, site|
   # files/global/conf/global-nancy.conf
   # files/site/conf/global-nancy.conf
   ['global', 'site'].each { |dir|
-    conf_dir = Pathname("#{$output_dir}/modules/bindg5k/files/#{dir}/conf")
+    conf_dir = Pathname("#{options[:output_dir]}/modules/bindg5k/files/#{dir}/conf")
     conf_dir.mkpath()
     
     global_file = ERB.new(File.read('templates/bind-global-site.conf.erb')).result(binding)
