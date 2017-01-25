@@ -10,18 +10,58 @@ end
 require 'pp'
 require 'yaml'
 require 'pathname'
+require 'optparse'
 require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
-$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
-$conf_dir   = ENV['conf_dir']    || Pathname("#{$output_dir}/modules/lanpowerg5k/generators/")
-raise("Error: #{$conf_dir} does not exist. The environment variables are not set propertly") unless Pathname($conf_dir).exist?
+options = {}
+options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
+options[:output_dir] = "/tmp/puppet-repo"
+options[:conf_dir] = "./conf-examples/"
 
-config      = YAML::load_file($conf_dir + 'console.yaml')
-credentials = YAML::load_file($conf_dir + 'console-password.yaml')
+OptionParser.new do |opts|
+  opts.banner = "Usage: lanpowerg5k.rb [options]"
+
+  opts.separator ""
+  opts.separator "Example: ruby lanpowerg5k.rb -s nancy -d /tmp/puppet-repo"
+
+  opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
+    options[:output_dir] = d
+    options[:conf_dir] = "#{options[:output_dir]}/modules/lanpowerg5k/generators/"
+  end
+
+  opts.on('-c', '--conf-dir dir', String, 'Select the lanpower module configuration path', "Default: ./conf-examples") do |d|
+    options[:conf_dir] = d
+  end
+
+  opts.separator ""
+  opts.separator "Filters:"
+
+  opts.on('-s', '--sites a,b,c', Array, 'Select site(s)', "Default: " + options[:sites].join(", ")) do |s|
+    raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
+    options[:sites] = s
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
+
+raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir].to_s).exist?
+
+puts "Writing lanpower configuration files to: #{options[:output_dir]}"
+puts "Using configuration directory: #{options[:conf_dir]}"
+puts "For site(s): #{options[:sites].join(', ')}"
+
+config      = YAML::load_file("#{options[:conf_dir]}console.yaml")
+credentials = YAML::load_file("#{options[:conf_dir]}console-password.yaml")
 refapi      = load_yaml_file_hierarchy("../../input/grid5000/")
 
 refapi['sites'].each { |site_uid, site_refapi|
+
+  next unless options[:sites].include?(site_uid)
+
   h = {'clusters' => {} } # output hash
 
   # Generate config for both cluster and server entries of the refapi
@@ -31,8 +71,8 @@ refapi['sites'].each { |site_uid, site_refapi|
   cluster_list.sort.each { |cluster_uid| 
     cluster_refapi      = site_refapi['clusters'][cluster_uid].fetch('nodes') rescue site_refapi['servers'][cluster_uid].fetch('nodes') rescue nil
     cluster_config      = config[site_uid][cluster_uid]['lanpower'] rescue nil
-    cluster_credentials = credentials[site_uid].fetch(cluster_uid) rescue nil                                             
-    
+    cluster_credentials = credentials[site_uid].fetch(cluster_uid) rescue nil
+
     # error handling:
     # - refapi is optional for this generator but every cluster should still be on the ref api => display a warning message
     # - credentials are mandatory and the cluster is skipped if info is missing
@@ -66,9 +106,9 @@ refapi['sites'].each { |site_uid, site_refapi|
     h['clusters'][cluster_uid] = cluster_hash
     
   } # clusters.each
-  
+
   # Write output file
-  output_file = Pathname("#{$output_dir}/modules/lanpowerg5k/files/#{site_uid}/lanpower.yaml")
+  output_file = Pathname("#{options[:output_dir]}/modules/lanpowerg5k/files/#{site_uid}/lanpower.yaml")
   output_file.dirname.mkpath()
   write_yaml(output_file, h)
   add_header(output_file)
