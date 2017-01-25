@@ -17,6 +17,7 @@ require '../lib/hash/hash.rb'
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:output_dir] = "/tmp/puppet-repo"
+options[:conf_dir] = "./conf-examples/"
 
 OptionParser.new do |opts|
   opts.banner = "Usage: conmang5k.rb [options]"
@@ -29,7 +30,7 @@ OptionParser.new do |opts|
     options[:conf_dir] = "#{options[:output_dir]}/modules/lanpowerg5k/generators/"
   end
 
-  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: " + "#{options[:output_dir]}/modules/lanpowerg5k/generators/") do |d|
+  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: ./conf-examples/") do |d|
     options[:conf_dir] = d
   end
 
@@ -47,7 +48,7 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir]).exist?
+raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir].to_s).exist?
 
 puts "Writing Conman configuration files to: #{options[:output_dir]}"
 puts "Using configuration directory: #{options[:conf_dir]}"

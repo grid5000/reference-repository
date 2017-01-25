@@ -21,18 +21,20 @@ global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:output_dir] = "/tmp/puppet-repo"
+options[:conf_dir] = "./conf-examples/"
 
 OptionParser.new do |opts|
   opts.banner = "Usage: kadeployg5k.rb [options]"
 
   opts.separator ""
-  opts.separator "Example: ruby kadeployg5k.rb -s nancy -d /tmp/puppet-repo -c path_to_dir_containing_kadeployg5k.yaml"
+  opts.separator "Example: ruby kadeployg5k.rb -s nancy -d /tmp/puppet-repo -c $(dirname path_to_kadeployg5k.yaml)"
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
     options[:output_dir] = d
+    options[:conf_dir] = "#{options[:output_dir]}/modules/kadeployg5k/generators/"
   end
 
-  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: no default") do |d|
+  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: ./conf-examples") do |d|
     options[:conf_dir] = d
   end
 
@@ -50,7 +52,7 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir]).exist?
+raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir].to_s).exist?
 
 puts "Writing Kadeploy configuration files to: #{options[:output_dir]}"
 puts "Using configuration directory: #{options[:conf_dir]}"

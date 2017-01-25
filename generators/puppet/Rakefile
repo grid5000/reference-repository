@@ -5,6 +5,7 @@ task :default => all_tasks
 all_tasks.each { |t|
 desc "Generate #{t} configuration"
 task t do
-  ruby "#{t}.rb"
+  puts "#{t}.rb -o #{ENV['puppet_repo']} -s #{ENV['sites']}"
+  ruby "#{t}.rb -o #{ENV['puppet_repo']} -s #{ENV['sites']}"
 end
 }
