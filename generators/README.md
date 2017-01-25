@@ -122,7 +122,7 @@ g5kadmin@oar.nancy$ oarnodesetting -h graphene-104 -p disktype='SATA II' -p eth1
 
 If you do not want to run the script directly on the OAR server, you can also print the commands out by using the -o (--output) option in place of -e (--execute).
 
-With the -d (--diff) option, the script executes 'oarnodes -Y' on the OAR servers for retrieving the OAR configurations. If you remove this option, the generator
+With the -d (--diff) option, the script fetches the OAR resources description from the OAR API. If you remove this option, the generator
 simply creates a script for setting up every node properties (even those that might already be set correctly). There is a safeguard for not adding a node twice to an OAR database.
 You can also use cache files (-d oarnodes-%s.yaml) if you do not want to retrieve the OAR configuration each time you run the generator.
 
@@ -141,28 +141,45 @@ Generating the DHCP, DNS, Kadeploy, Conman and Lanpower configurations
 Principles:
 * The source code and the templates of the generators are located in the reference-repo in the generators/puppet/ directory.
 * Additional configuration files (ex: console passwords, kadeploy tuning options etc.) are located within the puppet-repo in puppet-repo/modules/<module_name>/generators/.
-* The output files of the generators are created directly at the right place in the puppet-repo directories 
+* By default, the output files of the generators are created at /tmp/puppet-repo. It is possible to create them directly at the right place in the puppet-repo directories by passing the option "-o puppet_repo_path" to the generator.
   (ie. you can use git diff to display the changes made by the generators before committing them).
-
-To run the generators, you have to set the 'puppet_repo' environment variable so that the generators find the configuration files. Default is /tmp/puppet-repo.
 
 Usage example:
 
 $ (cd /tmp; git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/puppet-repo) # or use your existing local copy of the repository
-$ export puppet_repo=/tmp/puppet-repo
 $ cd reference-repo/generators/puppet
-$ rake # run every generator
+$ rake puppet_repo=/tmp/puppet_repo # run every generator and output files to /tmp/puppet_repo
+
+or
+
+$ rake puppet_repo=/tmp/puppet_repo sites=SITE1,SITE2 # run every generator and output files to /tmp/puppet_repo for only SITE1 and SITE2
 
 You also can also run the generators one by one:
 
-$ ruby bindg5k.rb
-$ ruby conmang5k.rb
-$ ruby dhcpg5k.rb
-$ ruby kadeployg5k.rb
-$ ruby lanpowerg5k.rb
+$ ruby bindg5k.rb [options]
+$ ruby conmang5k.rb [options]
+$ ruby dhcpg5k.rb [options]
+$ ruby kadeployg5k.rb [options]
+$ ruby lanpowerg5k.rb [options]
+
+You can run `ruby %generator%.rb -h` to see available options for a particular generator.
+
+Each generator can be run to generate configuration files for only specified grid5000 sites:
+`ruby %generator%.rb -s SITE1,SITE2 [options]`
+
+By default, generators will execute for all sites.
+
+### Configuration directory
+
+lanpowerg5k, conmang5k and kadeployg5k generators require an additional parameter, the path where to find configuration used to generate configuration files:
+
+`ruby %generator%.rb -o puppet_repo_path -c configuration_directory`
+
+It is not mandatory to provide it if the '-o' option is given. In that case, the configuration directory will be set to 'puppet-repo-path/modules/<module_name>/generators/'.
 
 To enable the standalone release of the generators, the conf-examples/ directory includes examples of configuration files and the generators can be run without access to the puppet-repo:
-$ conf_dir=conf-examples rake
+
+`ruby %generator%.rb -c ./conf-examples/`
 
 ### Notes about the conmang5k/lanpowerg5k generators
 
@@ -187,7 +204,7 @@ sites:
 
 ### Notes about the kadeplog5k generator
 
-* It generated both the configuration of the kadeploy and kadeploy-dev servers.
+* It generates both the configuration of the kadeploy and kadeploy-dev servers.
 * It generates the <site_uid>/clusters.conf and the <site_uid>/<cluster_uid>-clusters.conf files for each sites.
 * The template of the <site_uid>/<cluster_uid>-clusters.conf files is located in reference-repo/generators/puppet/templates/kadeployg5k.conf.erb.
   It includes default parameters.
