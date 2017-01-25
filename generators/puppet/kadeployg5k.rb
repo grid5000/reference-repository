@@ -12,13 +12,49 @@ end
 require 'pp'
 require 'erb'
 require 'pathname'
+require 'optparse'
 require '../lib/input_loader'
 require '../lib/hash/hash.rb'
 
 global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
-$output_dir = ENV['puppet_repo'] || '/tmp/puppet-repo'
-$conf_dir   = ENV['conf_dir']    || Pathname("#{$output_dir}/modules/kadeployg5k/generators/")
-raise("Error: #{$conf_dir} does not exist. The environment variables are not set propertly") unless Pathname($conf_dir).exist?
+
+options = {}
+options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
+options[:output_dir] = "/tmp/puppet-repo"
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: kadeployg5k.rb [options]"
+
+  opts.separator ""
+  opts.separator "Example: ruby kadeployg5k.rb -s nancy -d /tmp/puppet-repo -c path_to_dir_containing_kadeployg5k.yaml"
+
+  opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
+    options[:output_dir] = d
+  end
+
+  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: no default") do |d|
+    options[:conf_dir] = d
+  end
+
+  opts.separator ""
+  opts.separator "Filters:"
+
+  opts.on('-s', '--sites a,b,c', Array, 'Select site(s)', "Default: " + options[:sites].join(", ")) do |s|
+    raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
+    options[:sites] = s
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
+
+raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir]).exist?
+
+puts "Writing Kadeploy configuration files to: #{options[:output_dir]}"
+puts "Using configuration directory: #{options[:conf_dir]}"
+puts "For site(s): #{options[:sites].join(', ')}"
 
 # Compute cluster prefix
 # input: cluster_list = ['graoully', 'graphene', 'griffon', ...]
@@ -57,6 +93,8 @@ end
 ['', '-dev'].each {|suffix|
 
   global_hash['sites'].each { |site_uid, site|
+
+    next unless options[:sites].include?(site_uid)
 
     #
     # Generate site/<site_uid>/servers_conf[_dev]/clusters.conf
@@ -124,7 +162,7 @@ end
 
     } # site['clusters'].each
 
-    output_file = Pathname("#{$output_dir}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/clusters.conf")
+    output_file = Pathname("#{options[:output_dir]}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/clusters.conf")
     output_file.dirname.mkpath()
     write_yaml(output_file, clusters_conf)
     add_header(output_file)
@@ -135,18 +173,18 @@ end
 
     # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
     
-    conf = YAML::load(ERB.new(File.read($conf_dir + "kadeployg5k#{suffix}.yaml")).result(binding))
+    conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
 
     site['clusters'].each { |cluster_uid, cluster|
       data = data = conf[site_uid][cluster_uid]
       if data.nil?
-        puts "Warning: configuration not found in #{$conf_dir}kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
+        puts "Warning: configuration not found in #{options[:conf_dir]}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
         next
       end
 
       output = ERB.new(File.read('templates/kadeployg5k.conf.erb')).result(binding)
 
-      output_file = Pathname("#{$output_dir}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/#{cluster_uid}-cluster.conf")
+      output_file = Pathname("#{options[:output_dir]}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/#{cluster_uid}-cluster.conf")
       output_file.dirname.mkpath()
       File.write(output_file, output)
       
