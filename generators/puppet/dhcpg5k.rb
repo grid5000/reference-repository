@@ -21,7 +21,7 @@ OptionParser.new do |opts|
   opts.banner = "Usage: dhcpg5k.rb [options]"
 
   opts.separator ""
-  opts.separator "Example: ruby dhcpg5k.rb -s nancy -d /tmp/puppet-repo"
+  opts.separator "Example: ruby dhcpg5k.rb -s nancy -o /tmp/puppet-repo"
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
     options[:output_dir] = d

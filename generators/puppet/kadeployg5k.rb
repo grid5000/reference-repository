@@ -27,7 +27,7 @@ OptionParser.new do |opts|
   opts.banner = "Usage: kadeployg5k.rb [options]"
 
   opts.separator ""
-  opts.separator "Example: ruby kadeployg5k.rb -s nancy -d /tmp/puppet-repo -c $(dirname path_to_kadeployg5k.yaml)"
+  opts.separator "Example: ruby kadeployg5k.rb -s nancy -o /tmp/puppet-repo -c $(dirname path_to_kadeployg5k.yaml)"
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
     options[:output_dir] = d
