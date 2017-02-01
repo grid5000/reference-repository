@@ -1,262 +1,155 @@
 ---
 model: Dell R430
 created_at: 2016-12-01 12:00:00 GMT
+priority: '201700'
 kavlan: true
 queues:
   - default
   - admin
 
 nodes:
+  nova-[1-23]:
+    performance:
+      core_flops: TODO
+      node_flops: TODO
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      queues:
+        - default
+        - admin
+      max_walltime: 0
+    operating_system:
+      release: Jessie
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        bridged: true
+        vendor: Intel
+        model: Intel Corporation Ethernet 10G 2P X520 Adapter
+      eth1:
+        enabled: false
+        mountable: false
+        rate: 10000000000
+        bridged: false
+        vendor: Intel
+        model: Intel Corporation Ethernet 10G 2P X520 Adapter
+      eth2:
+        enabled: false
+        mountable: false
+        rate: 1000000000
+        bridged: false
+        vendor: Intel
+        model: Broadcom Corporation NetXtreme BCM5720 Gigabit Ethernet PCIe
+      eth3:
+        enabled: false
+        mountable: false
+        rate: 1000000000
+        bridged: false
+        vendor: Intel
+        model: Broadcom Corporation NetXtreme BCM5720 Gigabit Ethernet PCIe
+      eth4:
+        enabled: false
+        mountable: false
+        rate: 1000000000
+        bridged: false
+        vendor: Intel
+        model: Broadcom Corporation NetXtreme BCM5720 Gigabit Ethernet PCIe
+      eth5:
+        enabled: false
+        mountable: false
+        rate: 1000000000
+        bridged: false
+        vendor: Intel
+        model: Broadcom Corporation NetXtreme BCM5720 Gigabit Ethernet PCIe
+      bmc:
+        interface: Ethernet
+        rate: 1000000000
+        enabled: true
+        mounted: false
+        mountable: false
+    monitoring:
+      wattmeter: false #TODO
+    #sensors:
+    #  power:
+    #    available: true
+    #    per_outlets: true
+    #    via:
+    #      api:
+    #        metric: power
+    #      www: 
+    #        url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
+    gpu:
+      gpu: false
+
+
   nova-1:
     chassis:
       serial: 7W7FRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.1
-        mac: 18:66:DA:7E:CB:9A
-      eth0:
-        ip: 172.16.52.1
-        mac: 18:66:DA:7E:CB:96
-        mounted: true
   nova-2:
     chassis:
       serial: 7W89RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.2
-        mac: 18:66:DA:7F:22:D4
-      eth0:
-        ip: 172.16.52.2
-        mac: 18:66:DA:7F:22:D0
-        mounted: true
   nova-3:
     chassis:
       serial: 7W75RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.3
-        mac: 18:66:DA:7E:C2:DA
-      eth0:
-        ip: 172.16.52.3
-        mac: 18:66:DA:7E:C2:D6
-        mounted: true
   nova-4:
     chassis:
       serial: 7W59RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.4
-        mac: 18:66:DA:7E:41:4B
-      eth0:
-        ip: 172.16.52.4
-        mac: 18:66:DA:7E:41:47
-        mounted: true
   nova-5:
     chassis:
       serial: 7W55RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.5
-        mac: 18:66:DA:7E:BE:5B
-      eth0:
-        ip: 172.16.52.5
-        mac: 18:66:DA:7E:BE:57
-        mounted: true
   nova-6:
     chassis:
       serial: 7W45RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.6
-        mac: 18:66:DA:7E:CE:67
-      eth0:
-        ip: 172.16.52.6
-        mac: 18:66:DA:7E:CE:63
-        mounted: true
   nova-7:
     chassis:
       serial: 97L6RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.7
-        mac: 18:66:DA:7E:0F:DE
-      eth0:
-        ip: 172.16.52.7
-        mac: 18:66:DA:7E:0F:DA
-        mounted: true
   nova-8:
     chassis:
       serial: 7Y1FRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.8
-        mac: 18:66:DA:7E:C5:FB
-      eth0:
-        ip: 172.16.52.8
-        mac: 18:66:DA:7E:C5:F7
-        mounted: true
   nova-9:
     chassis:
       serial: 7W26RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.9
-        mac: 18:66:DA:7C:96:1A
-      eth0:
-        ip: 172.16.52.9
-        mac: 18:66:DA:7C:C5:16
-        mounted: true
   nova-10:
     chassis:
       serial: 7W39RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.10
-        mac: 18:66:DA:7E:CA:09
-      eth0:
-        ip: 172.16.52.10
-        mac: 18:66:DA:7E:CA:05
-        mounted: true
   nova-11:
     chassis:
       serial: 7W68RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.11
-        mac: 18:66:DA:7E:BD:DD
-      eth0:
-        ip: 172.16.52.11
-        mac: 18:66:DA:7E:BD:D9
-        mounted: true
   nova-12:
     chassis:
       serial: 7W36RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.12
-        mac: 18:66:DA:7B:32:62
-      eth0:
-        ip: 172.16.52.12
-        mac: 18:66:DA:7B:32:5E
-        mounted: true
   nova-13:
     chassis:
       serial: 7Y38RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.13
-        mac: 18:66:DA:7A:E3:A3
-      eth0:
-        ip: 172.16.52.13
-        mac: 18:66:DA:7A:E3:9F
-        mounted: true
   nova-14:
     chassis:
       serial: 7Y48RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.14
-        mac: 18:66:DA:7C:71:79
-      eth0:
-        ip: 172.16.52.14
-        mac: 18:66:DA:7C:71:75
-        mounted: true
   nova-15:
     chassis:
       serial: 97RDRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.15
-        mac: 18:66:DA:7E:F8:81
-      eth0:
-        ip: 172.16.52.15
-        mac: 18:66:DA:7E:F8:7D
-        mounted: true
   nova-16:
     chassis:
       serial: 97MDRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.16
-        mac: 18:66:DA:7F:02:F7
-      eth0:
-        ip: 172.16.52.16
-        mac: 18:66:DA:7F:02:F3
-        mounted: true
   nova-17:
     chassis:
       serial: 97X9RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.17
-        mac: 18:66:DA:7E:E9:D7
-      eth0:
-        ip: 172.16.52.17
-        mac: 18:66:DA:7E:E9:D3
-        mounted: true
   nova-18:
     chassis:
       serial: 97NBRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.18
-        mac: 18:66:DA:7F:1F:DD
-      eth0:
-        ip: 172.16.52.18
-        mac: 18:66:DA:7F:1F:D9
-        mounted: true
   nova-19:
     chassis:
       serial: 97SDRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.19
-        mac: 18:66:DA:7E:FF:25
-      eth0:
-        ip: 172.16.52.19
-        mac: 18:66:DA:7E:FF:21
-        mounted: true
   nova-20:
     chassis:
       serial: 97VCRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.20
-        mac: 18:66:DA:7E:ED:B1
-      eth0:
-        ip: 172.16.52.20
-        mac: 18:66:DA:7E:ED:AD
-        mounted: true
   nova-21:
     chassis:
       serial: 97PFRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.21
-        mac: 18:66:DA:7E:FB:A7
-      eth0:
-        ip: 172.16.52.21
-        mac: 18:66:DA:7E:FB:A3
-        mounted: true
   nova-22:
     chassis:
       serial: 97M6RG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.22
-        mac: 18:66:DA:7E:14:F0
-      eth0:
-        ip: 172.16.52.22
-        mac: 18:66:DA:7E:14:EC
-        mounted: true
   nova-23:
     chassis:
       serial: 97LBRG2
-    network_adapters:
-      bmc:
-        ip: 172.17.52.23
-        mac: 18:66:DA:7E:11:05
-      eth0:
-        ip: 172.16.52.23
-        mac: 18:66:DA:7E:11:01
-        mounted: true
