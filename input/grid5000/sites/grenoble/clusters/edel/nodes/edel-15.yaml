@@ -13,7 +13,7 @@ edel-15:
   chassis:
     manufacturer: INSYDE
     name: Thurley
-    serial: '123456789'
+    serial: 123456789
   main_memory:
     ram_size: 25769803776
   network_adapters:
@@ -23,44 +23,30 @@ edel-15:
       management: true
     eth0:
       driver: igb
-      enabled: true
       interface: Ethernet
       ip: 172.16.17.15
-      ip6: fe80::a00:38ff:fe35:abfc
       mac: 08:00:38:35:ab:fc
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 08:00:38:35:ab:fd
       management: false
-      mountable: false
-      mounted: false
-      rate: 1000000000
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:35:c9:fb
       interface: InfiniBand
       ip: 172.18.17.15
       ip6: fe80::a00:3800:135:c9fb
       management: false
-      mountable: true
-      mounted: true
       rate: 40000000000
       version: MT26428
     ib1:
       driver: mlx4_core
-      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
       interface: InfiniBand
       management: false
-      mountable: false
-      mounted: false
       rate: 10000000000
       version: MT26428
   operating_system:
@@ -73,13 +59,13 @@ edel-15:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
     cache_l2: 262144
     cache_l3: 8388608
-    clock_speed: 2300000000
+    clock_speed: 2250000000
     ht_capable: true
     instruction_set: x86-64
     model: Intel Xeon
@@ -88,8 +74,9 @@ edel-15:
     version: E5520
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x500a07510367be94"
       model: C400-MTFDDAA128M
-      rev: 40.0
+      rev: 040H
       size: 128035676160
       vendor: ATA
   supported_job_types:

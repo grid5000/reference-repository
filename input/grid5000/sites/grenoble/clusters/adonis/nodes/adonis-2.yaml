@@ -13,7 +13,7 @@ adonis-2:
   chassis:
     manufacturer: Bull SAS
     name: bullx
-    serial: '1234567890'
+    serial: 1234567890
   main_memory:
     ram_size: 25769803776
   network_adapters:
@@ -23,33 +23,23 @@ adonis-2:
       management: true
     eth0:
       driver: igb
-      enabled: true
       interface: Ethernet
       ip: 172.16.18.2
-      ip6: fe80::230:48ff:fecc:7fda
       mac: 00:30:48:cc:7f:da
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 00:30:48:cc:7f:db
       management: false
-      mountable: false
-      mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:30:48:ff:ff:cc:17:59
       interface: InfiniBand
       ip: 172.18.18.2
       ip6: fe80::230:48ff:ffcc:1759
       management: false
-      mountable: true
-      mounted: true
       rate: 40000000000
       version: MT26428
   operating_system:
@@ -62,7 +52,7 @@ adonis-2:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -77,8 +67,9 @@ adonis-2:
     version: E5520
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x50014ee1579b4df4"
       model: WDC WD2502ABYS-0
-      rev: 2.03
+      rev: 02.03B03
       size: 251059544064
       vendor: Western Digital
   supported_job_types:

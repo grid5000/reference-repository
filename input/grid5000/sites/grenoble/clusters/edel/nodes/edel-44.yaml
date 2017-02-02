@@ -13,7 +13,7 @@ edel-44:
   chassis:
     manufacturer: INSYDE
     name: Thurley
-    serial: '123456789'
+    serial: 123456789
   main_memory:
     ram_size: 25769803776
   network_adapters:
@@ -23,44 +23,30 @@ edel-44:
       management: true
     eth0:
       driver: igb
-      enabled: true
       interface: Ethernet
       ip: 172.16.17.44
-      ip6: fe80::a00:38ff:fe35:abaa
       mac: 08:00:38:35:ab:aa
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 08:00:38:35:ab:ab
       management: false
-      mountable: false
-      mounted: false
-      rate: 1000000000
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:35:c9:80
       interface: InfiniBand
       ip: 172.18.17.44
       ip6: fe80::a00:3800:135:c980
       management: false
-      mountable: true
-      mounted: true
       rate: 40000000000
       version: MT26428
     ib1:
       driver: mlx4_core
-      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
       interface: InfiniBand
       management: false
-      mountable: false
-      mounted: false
       rate: 10000000000
       version: MT26428
   operating_system:
@@ -73,7 +59,7 @@ edel-44:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -88,8 +74,9 @@ edel-44:
     version: E5520
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x500a0751032ecb0b"
       model: C400-MTFDDAA064M
-      rev: 40.0
+      rev: 040H
       size: 64023257088
       vendor: ATA
   supported_job_types:
