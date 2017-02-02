@@ -45,18 +45,21 @@ nodes:
       eth0:
         enabled: false
         mountable: false
+        mounted: false
         bridged: false
         vendor: Intel
         version: "82576"
       eth1:
         enabled: true
         mountable: true
+        mounted: false
         bridged: true
         vendor: Intel
         version: "82576"
       eth2:
         enabled: false
         mountable: false
+        mounted: false
         rate: 1000000000
         bridged: false
         vendor: Intel
@@ -64,6 +67,7 @@ nodes:
       eth3:
         enabled: false
         mountable: false
+        mounted: false
         rate: 1000000000
         bridged: false
         vendor: Intel
@@ -71,11 +75,13 @@ nodes:
       ib0:
         enabled: true
         mountable: true
+        mounted: true
         vendor: Mellanox
         version: MT25418
       ib1:
         enabled: false
         mountable: false
+        mounted: false
         vendor: Mellanox
         version: MT25418
       bmc:

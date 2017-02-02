@@ -15,7 +15,7 @@ parapluie-16:
     name: ProLiant DL165 G7
     serial: GB803651P6
   main_memory:
-    ram_size: 50465865728
+    ram_size: 51539607552
   network_adapters:
     bmc:
       ip: 172.17.99.16
@@ -23,53 +23,41 @@ parapluie-16:
       management: true
     eth0:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 78:e7:d1:fa:03:78
       management: false
-      mounted: false
       rate: 100000000
     eth1:
       driver: igb
-      enabled: true
       interface: Ethernet
       ip: 172.16.99.16
       mac: 78:e7:d1:fa:03:79
       management: false
-      mounted: true
       rate: 1000000000
     eth2:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 78:e7:d1:fa:03:5a
       management: false
-      mounted: false
     eth3:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 78:e7:d1:fa:03:5b
       management: false
-      mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:d3:51
       interface: InfiniBand
       ip: 172.18.99.16
       ip6: fe80::223:7dff:ff94:d351
       management: false
-      mounted: true
       rate: 20000000000
       version: MT25418
     ib1:
       driver: mlx4_core
-      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:d3:52
       interface: InfiniBand
       management: false
-      mounted: false
       rate: 10000000000
       version: MT25418
   operating_system:
@@ -82,7 +70,7 @@ parapluie-16:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 65536
     cache_l1i: 65536
@@ -97,6 +85,7 @@ parapluie-16:
     version: 6164 HE
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c50026742199"
       model: VB0250EAVER
       rev: HPG0
       size: 250059350016

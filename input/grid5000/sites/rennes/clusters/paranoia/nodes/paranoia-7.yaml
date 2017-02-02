@@ -15,7 +15,7 @@ paranoia-7:
     name: PowerEdge C6220 II
     serial: 5M20LZ1
   main_memory:
-    ram_size: 135291469824
+    ram_size: 137438953472
   network_adapters:
     bmc:
       ip: 172.17.100.7
@@ -27,26 +27,23 @@ paranoia-7:
       ip: 172.16.100.7
       mac: a0:36:9f:28:a9:14
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:28:a9:16
       management: false
-      mounted: false
+      rate: 10000000000
     eth2:
       driver: igb
       interface: Ethernet
       mac: f0:4d:a2:73:ca:ad
       management: false
-      mounted: false
     eth3:
       driver: igb
       interface: Ethernet
       mac: f0:4d:a2:73:ca:ae
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -57,7 +54,7 @@ paranoia-7:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -72,24 +69,39 @@ paranoia-7:
     version: E5-2660 v2
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x50000c0f022bf654"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f022bf656-lun-0"
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
     sdb:
+      by_id: "/dev/disk/by-id/wwn-0x50000c0f0288c72c"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f0288c72e-lun-0"
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
     sdc:
+      by_id: "/dev/disk/by-id/wwn-0x50000c0f02def9dc"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f02def9de-lun-0"
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
     sdd:
+      by_id: "/dev/disk/by-id/wwn-0x50000c0f02dee7bc"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f02dee7be-lun-0"
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
     sde:
+      by_id: "/dev/disk/by-id/wwn-0x50000c0f02df07a4"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f02df07a6-lun-0"
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
   supported_job_types:
     virtual: ivt

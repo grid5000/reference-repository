@@ -20,7 +20,7 @@ parasilo-16:
     name: PowerEdge R630
     serial: 2XG6152
   main_memory:
-    ram_size: 135291469824
+    ram_size: 137438953472
   network_adapters:
     bmc:
       ip: 172.17.97.16
@@ -28,35 +28,27 @@ parasilo-16:
       management: true
     eth0:
       driver: ixgbe
-      enabled: true
       interface: Ethernet
       ip: 172.16.97.16
       mac: ec:f4:bb:d6:10:38
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
-      enabled: true
       interface: Ethernet
       mac: ec:f4:bb:d6:10:3a
       management: false
-      mounted: false
       rate: 10000000000
     eth2:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: ec:f4:bb:d6:10:3c
       management: false
-      mounted: false
     eth3:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: ec:f4:bb:d6:10:3d
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -67,7 +59,7 @@ parasilo-16:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -82,31 +74,43 @@ parasilo-16:
     version: E5-2630 v3
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5007f5bda57"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sdb:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5007f5c4367"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sdc:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5007f5c6c3b"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:2:0"
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sdd:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5007f5c2b63"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0"
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sde:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5007f599d83"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:4:0"
       model: ST600MM0006
       rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sdf:
+      by_id: "/dev/disk/by-id/wwn-0x500003960c8a50d0"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:5:0"
       model: PX02SSF020
       rev: A4AE
       size: 200049647616

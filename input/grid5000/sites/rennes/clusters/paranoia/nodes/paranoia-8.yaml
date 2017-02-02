@@ -15,7 +15,7 @@ paranoia-8:
     name: PowerEdge C6220 II
     serial: D14YKZ1
   main_memory:
-    ram_size: 135291469824
+    ram_size: 137438953472
   network_adapters:
     bmc:
       ip: 172.17.100.8
@@ -27,26 +27,23 @@ paranoia-8:
       ip: 172.16.100.8
       mac: a0:36:9f:28:a9:18
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:28:a9:1a
       management: false
-      mounted: false
+      rate: 10000000000
     eth2:
       driver: igb
       interface: Ethernet
       mac: f0:4d:a2:73:ce:3d
       management: false
-      mounted: false
     eth3:
       driver: igb
       interface: Ethernet
       mac: f0:4d:a2:73:ce:3e
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -57,7 +54,7 @@ paranoia-8:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -72,24 +69,31 @@ paranoia-8:
     version: E5-2660 v2
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x50000c0f02df020c"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f02df020e-lun-0"
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
     sdb:
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
     sdc:
       model: WD6002BKTG
       rev: D1P3
       size: 600127266816
+      vendor: WD
     sdd:
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
     sde:
       model: WD6001BKHG
       rev: D1S6
       size: 600127266816
+      vendor: WD
   supported_job_types:
     virtual: ivt

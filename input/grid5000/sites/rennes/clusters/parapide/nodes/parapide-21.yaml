@@ -23,38 +23,30 @@ parapide-21:
       management: true
     eth0:
       driver: igb
-      enabled: true
       interface: Ethernet
       ip: 172.16.98.21
       mac: 00:14:4f:ca:4d:78
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 00:14:4f:ca:4d:79
       management: false
-      mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:ab:c5
       interface: InfiniBand
       ip: 172.18.98.21
       ip6: fe80::203:ba00:100:abc5
       management: false
-      mounted: true
       rate: 20000000000
       version: MT25418
     ib1:
       driver: mlx4_core
-      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:ab:c6
       interface: InfiniBand
       management: false
-      mounted: false
       rate: 10000000000
       version: MT25418
   operating_system:
@@ -67,7 +59,7 @@ parapide-21:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -82,6 +74,7 @@ parapide-21:
     version: X5570
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca214cb9da5"
       model: HITACHI HUA7250S
       rev: GK6OAC5A
       size: 500107862016
