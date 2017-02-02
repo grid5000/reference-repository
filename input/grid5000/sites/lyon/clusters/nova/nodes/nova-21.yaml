@@ -20,7 +20,7 @@ nova-21:
     name: PowerEdge R430
     serial: 97PFRG2
   main_memory:
-    ram_size: 67645734912
+    ram_size: 68719476736
   network_adapters:
     bmc:
       ip: 172.17.52.21
@@ -32,38 +32,32 @@ nova-21:
       ip: 172.16.52.21
       mac: a0:36:9f:d2:c6:18
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:d2:c6:1a
       management: false
-      mounted: false
     eth2:
       driver: tg3
       interface: Ethernet
       mac: 18:66:da:7e:fb:a3
       management: false
-      mounted: false
     eth3:
       driver: tg3
       interface: Ethernet
       mac: 18:66:da:7e:fb:a4
       management: false
-      mounted: false
     eth4:
       driver: tg3
       interface: Ethernet
       mac: 18:66:da:7e:fb:a5
       management: false
-      mounted: false
     eth5:
       driver: tg3
       interface: Ethernet
       mac: 18:66:da:7e:fb:a6
       management: false
-      mounted: false
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -89,6 +83,8 @@ nova-21:
     version: E5-2620 v4
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x6847beb0d74c1c001faf302e172ea4cc"
+      by_path: "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0"
       model: PERC H330 Mini
       rev: 4.26
       size: 598879502336

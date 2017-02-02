@@ -20,7 +20,7 @@ nova-8:
     name: PowerEdge R430
     serial: 7Y1FRG2
   main_memory:
-    ram_size: 67645734912
+    ram_size: 68719476736
   network_adapters:
     bmc:
       ip: 172.17.52.8
@@ -32,38 +32,32 @@ nova-8:
       ip: 172.16.52.8
       mac: a0:36:9f:d2:c2:b4
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:d2:c2:b6
       management: false
-      mounted: false
     eth2:
       driver: tg3
       interface: Ethernet
       mac: 18:66:da:7e:c5:f7
       management: false
-      mounted: false
     eth3:
       driver: tg3
       interface: Ethernet
       mac: 18:66:da:7e:c5:f8
       management: false
-      mounted: false
     eth4:
       driver: tg3
       interface: Ethernet
       mac: 18:66:da:7e:c5:f9
       management: false
-      mounted: false
     eth5:
       driver: tg3
       interface: Ethernet
       mac: 18:66:da:7e:c5:fa
       management: false
-      mounted: false
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -89,6 +83,8 @@ nova-8:
     version: E5-2620 v4
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x6847beb0d53639001fa682f814f62a7a"
+      by_path: "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0"
       model: PERC H330 Mini
       rev: 4.26
       size: 598879502336

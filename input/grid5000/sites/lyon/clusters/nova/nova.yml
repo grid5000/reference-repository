@@ -25,12 +25,14 @@ nodes:
       eth0:
         enabled: true
         mountable: true
+        mounted: true
         bridged: true
         vendor: Intel
         model: Intel Corporation Ethernet 10G 2P X520 Adapter
       eth1:
         enabled: false
         mountable: false
+        mounted: false
         rate: 10000000000
         bridged: false
         vendor: Intel
@@ -40,28 +42,32 @@ nodes:
         mountable: false
         rate: 1000000000
         bridged: false
-        vendor: Intel
+        mounted: false
+        vendor: Broadcom
         model: Broadcom Corporation NetXtreme BCM5720 Gigabit Ethernet PCIe
       eth3:
         enabled: false
         mountable: false
+        mounted: false
         rate: 1000000000
         bridged: false
-        vendor: Intel
+        vendor: Broadcom
         model: Broadcom Corporation NetXtreme BCM5720 Gigabit Ethernet PCIe
       eth4:
         enabled: false
         mountable: false
+        mounted: false
         rate: 1000000000
         bridged: false
-        vendor: Intel
+        vendor: Broadcom
         model: Broadcom Corporation NetXtreme BCM5720 Gigabit Ethernet PCIe
       eth5:
         enabled: false
         mountable: false
+        mounted: false
         rate: 1000000000
         bridged: false
-        vendor: Intel
+        vendor: Broadcom
         model: Broadcom Corporation NetXtreme BCM5720 Gigabit Ethernet PCIe
       bmc:
         interface: Ethernet
