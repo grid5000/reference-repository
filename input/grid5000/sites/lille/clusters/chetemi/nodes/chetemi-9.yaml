@@ -20,7 +20,7 @@ chetemi-9:
     name: PowerEdge R630
     serial: 5L8DLG2
   main_memory:
-    ram_size: 270582939648
+    ram_size: 274877906944
   network_adapters:
     bmc:
       ip: 172.17.37.9
@@ -32,26 +32,22 @@ chetemi-9:
       ip: 172.16.37.9
       mac: 24:6e:96:2c:a8:80
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
       interface: Ethernet
       mac: 24:6e:96:2c:a8:82
       management: false
-      mounted: false
     eth2:
       driver: igb
       interface: Ethernet
       mac: 24:6e:96:2c:a8:84
       management: false
-      mounted: false
     eth3:
       driver: igb
       interface: Ethernet
       mac: 24:6e:96:2c:a8:85
       management: false
-      mounted: false
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -62,7 +58,7 @@ chetemi-9:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -77,11 +73,15 @@ chetemi-9:
     version: E5-2630 v4
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c500982c0de7"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
       model: ST300MP0005
       rev: VT32
       size: 300000000000
       vendor: SEAGATE
     sdb:
+      by_id: "/dev/disk/by-id/wwn-0x5000c500982c1dbf"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       model: ST300MP0005
       rev: VT32
       size: 300000000000

@@ -9,13 +9,13 @@ chinqchint-20:
   bios:
     release_date: 09/10/2007
     vendor: Phoenix Technologies LTD
-    version: "6.00"
+    version: 6.0
   chassis:
     manufacturer: SGI.COM
     name: AltixXE310
     serial: X0004748
   main_memory:
-    ram_size: 8391753728
+    ram_size: 8589934592
   network_adapters:
     bmc:
       ip: 172.17.34.120
@@ -27,7 +27,6 @@ chinqchint-20:
       ip6: fe80::230:48ff:fe7c:67bc
       mac: 00:30:48:7c:67:bc
       management: false
-      mounted: false
       rate: 1000000000
     eth1:
       driver: e1000e
@@ -35,7 +34,6 @@ chinqchint-20:
       ip: 172.16.34.20
       mac: 00:30:48:7c:67:bd
       management: false
-      mounted: true
       rate: 1000000000
   operating_system:
     cstate_driver: none
@@ -47,7 +45,7 @@ chinqchint-20:
     pstate_driver: none
     pstate_governor: none
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -62,6 +60,7 @@ chinqchint-20:
     version: E5440
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca210f55cc4"
       model: Hitachi HDT72502
       rev: V5DOA7EA
       size: 250059350016

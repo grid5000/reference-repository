@@ -25,11 +25,11 @@
     "gpu": false
   },
   "main_memory": {
-    "ram_size": 812822560768,
+    "ram_size": 824633720832,
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": "true"
+    "wattmeter": "false"
   },
   "network_adapters": [
     {
@@ -100,7 +100,7 @@
     "pstate_governor": "performance",
     "release": "Jessie",
     "turboboost_enabled": true,
-    "version": 8.6
+    "version": 8.7
   },
   "performance": "hash required",
   "processor": {
@@ -139,6 +139,8 @@
   },
   "storage_devices": [
     {
+      "by_id": "/dev/disk/by-id/wwn-0x500003973c8a1a79",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0",
       "device": "sda",
       "driver": "megaraid_sas",
       "interface": "SAS",
@@ -149,6 +151,8 @@
       "vendor": "TOSHIBA"
     },
     {
+      "by_id": "/dev/disk/by-id/wwn-0x500003973c8a1ac5",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0",
       "device": "sdb",
       "driver": "megaraid_sas",
       "interface": "SAS",
@@ -159,6 +163,8 @@
       "vendor": "TOSHIBA"
     },
     {
+      "by_id": "/dev/disk/by-id/wwn-0x500003973bf03b56",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:2:0",
       "device": "sdc",
       "driver": "megaraid_sas",
       "interface": "SATA",
@@ -166,9 +172,11 @@
       "rev": "FJ2D",
       "size": 4000787030016,
       "storage": "HDD",
-      "vendor": "ATA"
+      "vendor": "Toshiba"
     },
     {
+      "by_id": "/dev/disk/by-id/wwn-0x500003973bf03b58",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0",
       "device": "sdd",
       "driver": "megaraid_sas",
       "interface": "SATA",
@@ -176,7 +184,7 @@
       "rev": "FJ2D",
       "size": 4000787030016,
       "storage": "HDD",
-      "vendor": "ATA"
+      "vendor": "Toshiba"
     }
   ],
   "supported_job_types": {

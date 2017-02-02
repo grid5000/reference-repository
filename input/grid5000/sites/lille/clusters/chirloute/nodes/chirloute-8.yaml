@@ -15,7 +15,7 @@ chirloute-8:
     name: C6100
     serial: F385Z4J
   main_memory:
-    ram_size: 8383365120
+    ram_size: 8589934592
   network_adapters:
     bmc:
       ip: 172.17.35.108
@@ -26,7 +26,6 @@ chirloute-8:
       interface: Ethernet
       mac: 00:26:6c:f9:19:80
       management: false
-      mounted: false
       rate: 1000000000
     eth1:
       driver: igb
@@ -34,7 +33,6 @@ chirloute-8:
       ip: 172.16.35.8
       mac: 00:26:6c:f9:19:81
       management: false
-      mounted: true
       rate: 1000000000
   operating_system:
     cstate_driver: intel_idle
@@ -46,7 +44,7 @@ chirloute-8:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -61,6 +59,8 @@ chirloute-8:
     version: E5620
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c50031ea8e13"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-sas-0x5000c50031ea8e11-lun-0"
       model: ST3300657SS
       rev: ES64
       size: 300000000000
