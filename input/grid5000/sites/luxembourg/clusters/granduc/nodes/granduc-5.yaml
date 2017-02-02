@@ -2,79 +2,77 @@
 ---
 granduc-5:
   architecture:
-    platform_type: x86_64
-    nb_procs: 2
     nb_cores: 8
+    nb_procs: 2
     nb_threads: 8
+    platform_type: x86_64
   bios:
+    release_date: 10/30/2010
     vendor: Dell Inc.
     version: 2.7.0
-    release_date: 10/30/2010
+  chassis:
+    manufacturer: Dell Inc.
+    name: PowerEdge 1950
+    serial: 99N983J
+  main_memory:
+    ram_size: 17179869184
   network_adapters:
     bmc:
       ip: 172.17.176.5
       mac: 00:1c:23:d3:42:46
       management: true
     eth0:
+      driver: bnx2
       interface: Ethernet
       ip: 172.16.176.5
-      driver: bnx2
       mac: 00:19:b9:f1:f8:09
-      rate: 1000000000
-      mounted: true
       management: false
+      rate: 1000000000
     eth1:
-      interface: Ethernet
       driver: bnx2
+      interface: Ethernet
       mac: 00:19:b9:f1:f8:0b
-      mounted: false
       management: false
     eth2:
-      interface: Ethernet
       driver: ixgbe
+      interface: Ethernet
       mac: 00:1b:21:3d:12:d1
+      management: false
       rate: 10000000000
-      mounted: false
-      management: false
     eth3:
-      interface: Ethernet
       driver: ixgbe
+      interface: Ethernet
       mac: 00:1b:21:3d:12:d0
-      mounted: false
       management: false
-  chassis:
-    serial: 99N983J
-    manufacturer: Dell Inc.
-    name: PowerEdge 1950
-  storage_devices:
-    sda:
-      size: 146815733760
-      model: ST9146802SS
-      rev: S207
-      vendor: SEAGATE
-  supported_job_types:
-    virtual: ivt
-  main_memory:
-    ram_size: 17179869184
   operating_system:
-    name: debian
-    kernel: 3.16.0-4-amd64
-    version: 8.6
+    cstate_driver: none
+    cstate_governor: menu
     ht_enabled: false
+    kernel: 3.16.0-4-amd64
+    name: debian
     pstate_driver: none
     pstate_governor: none
     turboboost_enabled: unknown
-    cstate_driver: none
-    cstate_governor: menu
+    version: 8.6
   processor:
-    clock_speed: 2000000000
-    instruction_set: x86-64
-    model: Intel Xeon
-    version: L5335
-    vendor: Intel
-    other_description: Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz
-    cache_l1i: 32768
     cache_l1d: 32768
+    cache_l1i: 32768
     cache_l2: 4194304
     cache_l3: 0
+    clock_speed: 2000000000
     ht_capable: true
+    instruction_set: x86-64
+    model: Intel Xeon
+    other_description: Intel(R) Xeon(R) CPU           L5335  @ 2.00GHz
+    vendor: Intel
+    version: L5335
+  storage_devices:
+    sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c500078e4aef"
+      by_path: "/dev/disk/by-path/pci-0000:02:08.0-sas-0x5000c500078e4aed-lun-0"
+      model: ST9146802SS
+      rev: S207
+      size: 146815733760
+      vendor: SEAGATE
+  supported_job_types:
+    virtual: ivt

@@ -20,7 +20,7 @@ petitprince-14:
     name: PowerEdge M620
     serial: GMVTG5J
   main_memory:
-    ram_size: 33285996544
+    ram_size: 34359738368
   network_adapters:
     bmc:
       ip: 172.17.177.14
@@ -28,21 +28,16 @@ petitprince-14:
       management: true
     eth0:
       driver: bnx2x
-      enabled: true
       interface: Ethernet
       ip: 172.16.177.14
       mac: 90:b1:1c:ac:d3:6a
       management: false
-      mountable: true
-      mounted: true
       rate: 10000000000
     eth1:
       driver: bnx2x
       interface: Ethernet
       mac: 90:b1:1c:ac:d3:6d
       management: false
-      mountable: true
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -68,6 +63,7 @@ petitprince-14:
     version: E5-2630L
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5003fe191f2"
       model: ST9250610NS
       rev: AA08
       size: 250059350016
