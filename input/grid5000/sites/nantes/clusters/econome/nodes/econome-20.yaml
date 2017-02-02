@@ -15,7 +15,7 @@ econome-20:
     name: PowerEdge C6220
     serial: HN30D5J
   main_memory:
-    ram_size: 67645734912
+    ram_size: 68719476736
   network_adapters:
     bmc:
       ip: 172.17.192.20
@@ -27,26 +27,22 @@ econome-20:
       ip: 172.16.192.20
       mac: 90:e2:ba:1a:6b:3c
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
       interface: Ethernet
       mac: 90:e2:ba:1a:6b:3d
       management: false
-      mounted: false
     eth2:
       driver: igb
       interface: Ethernet
       mac: 84:8f:69:fd:47:09
       management: false
-      mounted: false
     eth3:
       driver: igb
       interface: Ethernet
       mac: 84:8f:69:fd:47:0a
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -57,7 +53,7 @@ econome-20:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -72,8 +68,9 @@ econome-20:
     version: E5-2660
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x50014ee25c658eea"
       model: WDC WD2003FYYS-1
-      rev: 1.01
+      rev: 01.01D02
       size: 2000398934016
       vendor: Western Digital
   supported_job_types:
