@@ -96,8 +96,7 @@ OptionParser.new do |opts|
   opts.on('--ssh-keys k1,k2,k3', Array, 'SSH keys') do |k|
     options[:ssh] ||= {}
     options[:ssh][:params] ||= {}
-    options[:ssh][:params][:keys] ||= []
-    options[:ssh][:params][:keys] << k
+    options[:ssh][:params][:keys] = k
   end
   
   ###
