@@ -15,7 +15,7 @@ uva-6:
     name: PowerEdge R900
     serial: 2TTQK4J
   main_memory:
-    ram_size: 67645734912
+    ram_size: 68719476736
   network_adapters:
     bmc:
       ip: 172.17.131.6
@@ -27,33 +27,27 @@ uva-6:
       ip: 172.16.131.6
       mac: 00:24:e8:5b:45:56
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: bnx2
       interface: Ethernet
       mac: 00:24:e8:5b:45:58
       management: false
-      mounted: false
     eth2:
       driver: bnx2
       interface: Ethernet
       mac: 00:24:e8:5b:45:5a
       management: false
-      mounted: false
     eth3:
       driver: bnx2
       interface: Ethernet
       mac: 00:24:e8:5b:45:5c
       management: false
-      mounted: false
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0d:77:31
       interface: InfiniBand
       management: false
-      mountable: true
-      mounted: false
       rate: 40000000000
       version: MT26428
     ib0.8100:
@@ -63,7 +57,6 @@ uva-6:
       ip: 172.18.131.6
       ip6: fe80::202:c903:d:7731
       management: false
-      mounted: true
       rate: 40000000000
       version: MT26428
   operating_system:
@@ -76,7 +69,7 @@ uva-6:
     pstate_driver: none
     pstate_governor: none
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -91,6 +84,8 @@ uva-6:
     version: E7450
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x60026b90549c080012ad8cad06867820"
+      by_path: "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0"
       model: PERC 6/i
       rev: 1.22
       size: 146163105792

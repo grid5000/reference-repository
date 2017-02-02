@@ -15,7 +15,7 @@ suno-14:
     name: PowerEdge R410
     serial: 95JPH4J
   main_memory:
-    ram_size: 33285996544
+    ram_size: 34359738368
   network_adapters:
     bmc:
       ip: 172.17.130.14
@@ -27,14 +27,12 @@ suno-14:
       ip: 172.16.130.14
       mac: 00:26:b9:3f:4a:61
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: bnx2
       interface: Ethernet
       mac: 00:26:b9:3f:4a:62
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -45,7 +43,7 @@ suno-14:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -60,6 +58,8 @@ suno-14:
     version: E5520
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x60026b9037505c001d2659c6080c88f0"
+      by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
       model: PERC 6/i Adapter
       rev: 1.22
       size: 598879502336

@@ -15,7 +15,7 @@ uvb-5:
     name: C6100
     serial: 857XY4J
   main_memory:
-    ram_size: 102005473280
+    ram_size: 103079215104
   network_adapters:
     bmc:
       ip: 172.17.132.5
@@ -27,20 +27,17 @@ uvb-5:
       ip: 172.16.132.5
       mac: 00:26:6c:f8:58:70
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: igb
       interface: Ethernet
       mac: 00:26:6c:f8:58:71
       management: false
-      mounted: false
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:59:41
       interface: InfiniBand
       management: false
-      mounted: false
       rate: 40000000000
       version: MT26428
     ib0.8100:
@@ -50,7 +47,6 @@ uvb-5:
       ip: 172.18.132.5
       ip6: fe80::224:e890:97ff:5941
       management: false
-      mounted: true
       rate: 40000000000
       version: MT26428
   operating_system:
@@ -63,7 +59,7 @@ uvb-5:
     pstate_driver: none
     pstate_governor: none
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -78,8 +74,9 @@ uvb-5:
     version: X5670
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x50014ee1ae216ca4"
       model: WDC WD2502ABYS-1
-      rev: 2.03
+      rev: 3B05
       size: 250000000000
       vendor: Western Digital
   supported_job_types:

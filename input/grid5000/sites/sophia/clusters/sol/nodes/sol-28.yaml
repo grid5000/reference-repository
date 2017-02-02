@@ -15,7 +15,7 @@ sol-28:
     name: Sun Fire X2200 M2
     serial: 0650QBT12A
   main_memory:
-    ram_size: 4156555264
+    ram_size: 4294967296
   network_adapters:
     bmc:
       ip: 172.17.129.28
@@ -23,22 +23,16 @@ sol-28:
       management: true
     eth0:
       driver: forcedeth
-      enabled: true
       interface: Ethernet
       ip: 172.16.129.28
       mac: 00:16:36:91:e8:2c
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: forcedeth
-      enabled: false
       interface: Ethernet
       mac: 00:16:36:91:e8:2d
       management: false
-      mountable: false
-      mounted: false
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -49,7 +43,7 @@ sol-28:
     pstate_driver: none
     pstate_governor: none
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 65536
     cache_l1i: 65536
@@ -64,6 +58,7 @@ sol-28:
     version: 2218
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca20bf2dd2d"
       model: HITACHI HDS7225S
       rev: V44OA9CA
       size: 250056000000
