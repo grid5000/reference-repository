@@ -13,7 +13,7 @@
   "chassis": {
     "manufacturer": "Bull SAS",
     "name": "bullx",
-    "serial": "1234567890"
+    "serial": 1234567890
   },
   "gpu": {
     "gpu": true,
@@ -36,7 +36,6 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.18.2",
-      "ip6": "fe80::230:48ff:fecc:7fda",
       "mac": "00:30:48:cc:7f:da",
       "management": false,
       "mountable": true,
@@ -104,7 +103,7 @@
     "pstate_governor": "performance",
     "release": "Jessie",
     "turboboost_enabled": true,
-    "version": 8.6
+    "version": 8.7
   },
   "performance": {
     "core_flops": 7139000000,
@@ -152,11 +151,12 @@
   },
   "storage_devices": [
     {
+      "by_id": "/dev/disk/by-id/wwn-0x50014ee1579b4df4",
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA",
       "model": "WDC WD2502ABYS-0",
-      "rev": 2.03,
+      "rev": "02.03B03",
       "size": 251059544064,
       "storage": "HDD",
       "vendor": "Western Digital"

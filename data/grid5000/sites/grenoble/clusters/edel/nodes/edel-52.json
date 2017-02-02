@@ -13,7 +13,7 @@
   "chassis": {
     "manufacturer": "INSYDE",
     "name": "Thurley",
-    "serial": "123456789"
+    "serial": 123456789
   },
   "gpu": {
     "gpu": false
@@ -33,7 +33,6 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.17.52",
-      "ip6": "fe80::a00:38ff:fe35:ac1a",
       "mac": "08:00:38:35:ac:1a",
       "management": false,
       "mountable": true,
@@ -114,7 +113,7 @@
     "pstate_governor": "performance",
     "release": "Jessie",
     "turboboost_enabled": "unknown",
-    "version": 8.6
+    "version": 8.7
   },
   "performance": {
     "core_flops": 7134000000,
@@ -148,11 +147,12 @@
   },
   "storage_devices": [
     {
+      "by_id": "/dev/disk/by-id/wwn-0x500a07510367beda",
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA",
       "model": "C400-MTFDDAA128M",
-      "rev": 40.0,
+      "rev": "040H",
       "size": 128035676160,
       "storage": "SSD",
       "vendor": "ATA"
