@@ -24,7 +24,6 @@ graphene-45:
       driver: e1000e
       interface: Ethernet
       ip: 172.16.64.45
-      ip6: fe80::2e0:81ff:fed5:688
       mac: 00:e0:81:d5:06:5c
       management: false
       rate: 1000000000
@@ -65,7 +64,7 @@ graphene-45:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -80,6 +79,7 @@ graphene-45:
     version: X3440
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca34de8f88e"
       model: Hitachi HDP72503
       rev: GM3OA5CA
       size: 320072933376

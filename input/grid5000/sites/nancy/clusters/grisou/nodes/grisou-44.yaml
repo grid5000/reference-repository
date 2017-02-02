@@ -20,7 +20,7 @@ grisou-44:
     name: PowerEdge R630
     serial: 2M72J82
   main_memory:
-    ram_size: 135291469824
+    ram_size: 137438953472
   network_adapters:
     bmc:
       ip: 172.17.72.44
@@ -32,38 +32,32 @@ grisou-44:
       ip: 172.16.72.44
       mac: 24:6e:96:03:0c:10
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
       interface: Ethernet
       mac: 24:6e:96:03:0c:12
       management: false
-      mounted: false
     eth2:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:7e:4e:d8
       management: false
-      mounted: false
     eth3:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:7e:4e:da
       management: false
-      mounted: false
     eth4:
       driver: igb
       interface: Ethernet
       mac: 24:6e:96:03:0c:14
       management: false
-      mounted: false
     eth5:
       driver: igb
       interface: Ethernet
       mac: 24:6e:96:03:0c:15
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -74,7 +68,7 @@ grisou-44:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -89,11 +83,15 @@ grisou-44:
     version: E5-2630 v3
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5008e51423b"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
       model: ST600MM0088
       rev: TT31
       size: 600127266816
       vendor: SEAGATE
     sdb:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5008e51113f"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       model: ST600MM0088
       rev: TT31
       size: 600127266816

@@ -11,9 +11,14 @@ nodes:
 
   griffon-[11-14]:
     network_adapters:
-      eth1:
+      eth0:
         enabled: true
         mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
       eth2:
         management: false
         mounted: false
@@ -26,15 +31,25 @@ nodes:
 
   griffon-[1-10]:
    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
       eth1:
         enabled: false
         mountable: false
+        mounted: false
 
   griffon-[15-]:
    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
       eth1:
         enabled: false
         mountable: false
+        mounted: false
 
 # Global node properties
   griffon-[-]:

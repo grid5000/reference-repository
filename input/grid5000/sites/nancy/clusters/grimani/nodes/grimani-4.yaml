@@ -18,7 +18,7 @@ grimani-4:
     name: PowerEdge R730
     serial: 4B9ZGD2
   main_memory:
-    ram_size: 67645734912
+    ram_size: 68719476736
   network_adapters:
     bmc:
       ip: 172.17.73.4
@@ -26,38 +26,26 @@ grimani-4:
       management: true
     eth0:
       driver: ixgbe
-      enabled: true
       interface: Ethernet
       ip: 172.16.73.4
       mac: 24:6e:96:16:41:68
       management: false
-      mountable: true
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
-      enabled: false
       interface: Ethernet
       mac: 24:6e:96:16:41:6a
       management: false
-      mountable: false
-      mounted: false
     eth2:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 24:6e:96:16:41:6c
       management: false
-      mountable: false
-      mounted: false
     eth3:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 24:6e:96:16:41:6d
       management: false
-      mountable: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -68,7 +56,7 @@ grimani-4:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: false
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -83,8 +71,11 @@ grimani-4:
     version: E5-2603 v3
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5008cd0b9ae"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
       model: ST1000NX0423
       rev: NA02
       size: 1000204886016
+      vendor: Seagate
   supported_job_types:
     virtual: ivt

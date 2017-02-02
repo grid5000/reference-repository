@@ -13,7 +13,6 @@ griffon-27:
   chassis:
     manufacturer: TYAN Computer Corporation
     name: S5393
-    serial: 812530032
   main_memory:
     ram_size: 17179869184
   network_adapters:
@@ -23,45 +22,16 @@ griffon-27:
       management: true
     eth0:
       driver: e1000e
-      enabled: true
       interface: Ethernet
       ip: 172.16.65.27
-#     ip6: fe80::2e0:81ff:feb2:c0c4
       mac: 00:e0:81:b2:c0:c4
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
-      enabled: false
       interface: Ethernet
       mac: 00:e0:81:b2:c0:c5
       management: false
-      mountable: false
-      mounted: false
-    ib0:
-      driver: mlx4_core
-      enabled: false
-#     guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:1f
-      interface: InfiniBand
-#     ip: 172.18.65.27
-#     ip6: fe80::202:c903:3:301f
-      management: false
-      mountable: false
-      mounted: false
-      rate: 10000000000
-      version: MT26418
-    ib1:
-      driver: mlx4_core
-      enabled: false
-#     guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:20
-      interface: InfiniBand
-      management: false
-      mountable: false
-      mounted: false
-      rate: 10000000000
-      version: MT26418
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -72,7 +42,7 @@ griffon-27:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -87,6 +57,7 @@ griffon-27:
     version: L5420
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca34de9060c"
       model: Hitachi HDP72503
       rev: GM3OA5CA
       size: 320072933376

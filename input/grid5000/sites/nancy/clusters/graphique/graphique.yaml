@@ -46,6 +46,7 @@ nodes:
       eth0:
         enabled: true
         mountable: true
+        mounted: false
         bridged: true
         vendor: Broadcom
         model: Broadcom 57800 10 GB DA/SFP+
@@ -55,12 +56,14 @@ nodes:
       eth1:
         enabled: false
         mountable: false
+        mounted: false
         rate: 10000000000
         bridged: false
         vendor: Broadcom
         model: Broadcom 57800 10 GB DA/SFP+
       eth2:
         mountable: false
+        mounted: false
         enabled: false
         bridged: false
         vendor: Broadcom
@@ -68,6 +71,7 @@ nodes:
       eth3:
         enabled: false
         mountable: false
+        mounted: false
         rate: 1000000000
         bridged: false
         vendor: Broadcom
@@ -75,6 +79,7 @@ nodes:
       ib0:
         enabled: true
         mountable: true
+        mounted: true
       bmc:
         interface: Ethernet
         rate: 1000000000

@@ -13,7 +13,6 @@ graphene-39:
   chassis:
     manufacturer: TYAN
     name: S5501
-    serial: 1009390041
   main_memory:
     ram_size: 17179869184
   network_adapters:
@@ -25,7 +24,6 @@ graphene-39:
       driver: e1000e
       interface: Ethernet
       ip: 172.16.64.39
-      ip6: fe80::2e0:81ff:fed5:7dc
       mac: 00:e0:81:d5:07:dc
       management: false
       rate: 1000000000
@@ -66,7 +64,7 @@ graphene-39:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -81,6 +79,7 @@ graphene-39:
     version: X3440
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca371e8cde7"
       model: Hitachi HDS72103
       rev: JPFOA3EA
       size: 320072933376

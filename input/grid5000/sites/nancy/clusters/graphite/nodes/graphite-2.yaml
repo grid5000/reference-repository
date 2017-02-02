@@ -20,7 +20,7 @@ graphite-2:
     name: PowerEdge R720
     serial: B6Q7NZ1
   main_memory:
-    ram_size: 270582939648
+    ram_size: 274877906944
   network_adapters:
     bmc:
       ip: 172.17.68.2
@@ -28,48 +28,33 @@ graphite-2:
       management: true
     eth0:
       driver: ixgbe
-      enabled: true
       interface: Ethernet
       ip: 172.16.68.2
       mac: b8:ca:3a:69:1e:88
       management: false
-      mountable: true
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
-      enabled: false
       interface: Ethernet
       mac: b8:ca:3a:69:1e:8a
       management: false
-      mountable: false
-      mounted: false
     eth2:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: b8:ca:3a:69:1e:8c
       management: false
-      mountable: false
-      mounted: false
     eth3:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: b8:ca:3a:69:1e:8d
       management: false
-      mountable: false
-      mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f2:11
       interface: InfiniBand
       ip: 172.18.68.2
       ip6: fe80::f652:1403:76:f211
       management: false
-      mountable: true
-      mounted: true
       rate: 56000000000
       version: MT4099
   operating_system:
@@ -82,7 +67,7 @@ graphite-2:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -97,11 +82,15 @@ graphite-2:
     version: E5-2650
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x50015178f36802db"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
       model: INTEL SSDSC2BB30
       rev: D201DL10
       size: 300069052416
       vendor: ATA
     sdb:
+      by_id: "/dev/disk/by-id/wwn-0x50015178f36800e7"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       model: INTEL SSDSC2BB30
       rev: D201DL10
       size: 300069052416

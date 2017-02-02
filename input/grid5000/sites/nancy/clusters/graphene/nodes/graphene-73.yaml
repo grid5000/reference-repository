@@ -52,9 +52,6 @@ graphene-73:
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:fe
       interface: InfiniBand
       management: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:fe
-      interface: InfiniBand
-      management: false
       rate: 10000000000
       version: MT26418
   operating_system:
@@ -67,7 +64,7 @@ graphene-73:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -82,6 +79,7 @@ graphene-73:
     version: X3440
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca371e8ce29"
       model: Hitachi HDS72103
       rev: JPFOA3EA
       size: 320072933376

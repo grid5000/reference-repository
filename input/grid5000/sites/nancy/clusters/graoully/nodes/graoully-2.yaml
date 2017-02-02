@@ -20,7 +20,7 @@ graoully-2:
     name: PowerEdge R630
     serial: 3DY1J82
   main_memory:
-    ram_size: 135291469824
+    ram_size: 137438953472
   network_adapters:
     bmc:
       ip: 172.17.70.2
@@ -28,64 +28,43 @@ graoully-2:
       management: true
     eth0:
       driver: ixgbe
-      enabled: true
       interface: Ethernet
       ip: 172.16.70.2
       mac: 24:6e:96:03:0a:28
       management: false
-      mountable: true
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
-      enabled: false
       interface: Ethernet
       mac: 24:6e:96:03:0a:2a
       management: false
-      mountable: false
-      mounted: false
     eth2:
       driver: ixgbe
-      enabled: false
       interface: Ethernet
       mac: a0:36:9f:7e:4d:f0
       management: false
-      mountable: false
-      mounted: false
     eth3:
       driver: ixgbe
-      enabled: false
       interface: Ethernet
       mac: a0:36:9f:7e:4d:f2
       management: false
-      mountable: false
-      mounted: false
     eth4:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 24:6e:96:03:0a:2c
       management: false
-      mountable: false
-      mounted: false
     eth5:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: 24:6e:96:03:0a:2d
       management: false
-      mountable: false
-      mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:e4:1d:2d:03:00:bf:4f:61
       interface: InfiniBand
       ip: 172.18.70.2
       ip6: fe80::e61d:2d03:bf:4f61
       management: false
-      mountable: true
-      mounted: true
       rate: 56000000000
       version: MT4099
   operating_system:
@@ -98,7 +77,7 @@ graoully-2:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -113,11 +92,15 @@ graoully-2:
     version: E5-2630 v3
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5008e43b127"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
       model: ST600MM0088
       rev: TT31
       size: 600127266816
       vendor: SEAGATE
     sdb:
+      by_id: "/dev/disk/by-id/wwn-0x5000c5008e43a327"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       model: ST600MM0088
       rev: TT31
       size: 600127266816

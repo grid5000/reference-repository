@@ -26,21 +26,18 @@ graphene-29:
       ip: 172.16.64.29
       mac: 00:e0:81:d5:06:54
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
       interface: Ethernet
       mac: 00:e0:81:d5:06:55
       management: false
-      mounted: false
       rate: 100000000
     eth2:
       driver: e1000e
       interface: Ethernet
       mac: 00:e0:81:d5:06:56
       management: false
-      mounted: false
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:90:dd
@@ -48,7 +45,6 @@ graphene-29:
       ip: 172.18.64.29
       ip6: fe80::202:c903:b:90dd
       management: false
-      mounted: true
       rate: 20000000000
       version: MT26418
     ib1:
@@ -56,7 +52,6 @@ graphene-29:
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:90:de
       interface: InfiniBand
       management: false
-      mounted: false
       rate: 10000000000
       version: MT26418
   operating_system:
@@ -69,7 +64,7 @@ graphene-29:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -84,6 +79,7 @@ graphene-29:
     version: X3440
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca371e8ce23"
       model: Hitachi HDS72103
       rev: JPFOA3EA
       size: 320072933376

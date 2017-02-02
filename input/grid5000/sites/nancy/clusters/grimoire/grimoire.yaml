@@ -71,27 +71,31 @@ nodes:
       eth0:
         enabled: true
         mountable: true
+        mounted: true
         bridged: true
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth1:
         rate: 10000000000
-        enabled: true
+        enabled: false
         mountable: true
+        mounted: false
         bridged: false
         vendor: Intel Corporation
         model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth2:
         rate: 10000000000
-        enabled: true
+        enabled: false
         mountable: true
+        mounted: false
         bridged: false
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
       eth3:
         rate: 10000000000
-        enabled: true
+        enabled: false
         mountable: true
+        mounted: false
         bridged: false
         vendor: Intel Corporation
         model: Ethernet 10G 2P X520 Adapter
@@ -99,6 +103,7 @@ nodes:
         rate: 1000000000
         enabled: false
         mountable: false
+        mounted: false
         bridged: false
         vendor: Intel Corporation
         model: I350 Gigabit Network Connection
@@ -106,12 +111,14 @@ nodes:
         rate: 1000000000
         enabled: false
         mountable: false
+        mounted: false
         bridged: false
         vendor: Intel Corporation
         model: I350 Gigabit Network Connection
       ib0:
         enabled: true
         mountable: true
+        mounted: true
         bridged: false
         vendor: Mellanox
         model: MT27500 Family [ConnectX-3]

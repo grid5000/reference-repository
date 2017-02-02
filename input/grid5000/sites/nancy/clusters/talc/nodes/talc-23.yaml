@@ -22,22 +22,16 @@ talc-23:
       management: true
     eth0:
       driver: e1000e
-      enabled: true
       interface: Ethernet
       ip: 172.16.66.23
       mac: 00:e0:81:b2:c4:aa
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: e1000e
-      enabled: false
       interface: Ethernet
       mac: 00:e0:81:b2:c4:ab
       management: false
-      mountable: false
-      mounted: false
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -48,7 +42,7 @@ talc-23:
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -63,6 +57,7 @@ talc-23:
     version: L5420
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x5000cca346e9b93a"
       model: Hitachi HDT72103
       rev: ST2OA3AA
       size: 320072933376

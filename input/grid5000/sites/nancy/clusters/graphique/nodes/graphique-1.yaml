@@ -20,7 +20,7 @@ graphique-1:
     name: PowerEdge R730
     serial: BYGMJ32
   main_memory:
-    ram_size: 67645734912
+    ram_size: 68719476736
   network_adapters:
     bmc:
       ip: 172.17.67.1
@@ -28,48 +28,33 @@ graphique-1:
       management: true
     eth0:
       driver: bnx2x
-      enabled: true
       interface: Ethernet
       ip: 172.16.67.1
       mac: b0:83:fe:e5:c0:54
       management: false
-      mountable: true
-      mounted: true
       rate: 10000000000
     eth1:
       driver: bnx2x
-      enabled: false
       interface: Ethernet
       mac: b0:83:fe:e5:c0:56
       management: false
-      mountable: false
-      mounted: false
     eth2:
       driver: bnx2x
-      enabled: false
       interface: Ethernet
       mac: b0:83:fe:e5:c0:58
       management: false
-      mountable: false
-      mounted: false
     eth3:
       driver: bnx2x
-      enabled: false
       interface: Ethernet
       mac: b0:83:fe:e5:c0:5a
       management: false
-      mountable: false
-      mounted: false
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f2:41
       interface: InfiniBand
       ip: 172.18.67.1
       ip6: fe80::f652:1403:76:f241
       management: false
-      mountable: true
-      mounted: true
       rate: 56000000000
       version: MT4099
   operating_system:
@@ -82,7 +67,7 @@ graphique-1:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -97,6 +82,8 @@ graphique-1:
     version: E5-2620 v3
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x6b083fe0d4f321001c1251a311fe7e14"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0"
       model: PERC H330
       rev: 4.24
       size: 299439751168
