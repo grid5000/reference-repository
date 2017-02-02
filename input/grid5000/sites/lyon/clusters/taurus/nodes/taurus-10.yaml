@@ -20,7 +20,7 @@ taurus-10:
     name: PowerEdge R720
     serial: 4HTHD5J
   main_memory:
-    ram_size: 33285996544
+    ram_size: 34359738368
   network_adapters:
     bmc:
       ip: 172.17.48.10
@@ -28,56 +28,36 @@ taurus-10:
       management: true
     eth0:
       driver: ixgbe
-      enabled: true
       interface: Ethernet
       ip: 172.16.48.10
-      ip6: fe80::a236:9fff:fe09:c2f0
       mac: a0:36:9f:09:c2:f0
       management: false
-      mountable: true
-      mounted: true
       rate: 10000000000
-      switch_port: TenGigabitEthernet 0/10
     eth1:
       driver: ixgbe
-      enabled: false
       interface: Ethernet
       mac: a0:36:9f:09:c2:f2
       management: false
-      mountable: false
-      mounted: false
     eth2:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: bc:30:5b:ee:f6:90
       management: false
-      mountable: false
-      mounted: false
     eth3:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: bc:30:5b:ee:f6:91
       management: false
-      mountable: false
-      mounted: false
     eth4:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: bc:30:5b:ee:f6:92
       management: false
-      mountable: false
-      mounted: false
     eth5:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: bc:30:5b:ee:f6:93
       management: false
-      mountable: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -88,7 +68,7 @@ taurus-10:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -103,6 +83,8 @@ taurus-10:
     version: E5-2630
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x6d4ae520ab2d71001794106618de059e"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0"
       model: PERC H710
       rev: 3.13
       size: 598879502336

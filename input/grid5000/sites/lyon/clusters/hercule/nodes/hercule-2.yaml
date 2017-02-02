@@ -15,7 +15,7 @@ hercule-2:
     name: PowerEdge C6220
     serial: HQ3HD5J
   main_memory:
-    ram_size: 33285996544
+    ram_size: 34359738368
   network_adapters:
     bmc:
       ip: 172.17.51.2
@@ -26,27 +26,23 @@ hercule-2:
       interface: Ethernet
       mac: 00:8c:fa:0b:b4:bc
       management: false
-      mounted: false
     eth1:
       driver: ixgbe
       interface: Ethernet
       ip: 172.16.51.2
       mac: 00:8c:fa:0b:b4:bd
       management: false
-      mounted: true
       rate: 10000000000
     eth2:
       driver: igb
       interface: Ethernet
       mac: 84:8f:69:fd:4f:3d
       management: false
-      mounted: false
     eth3:
       driver: igb
       interface: Ethernet
       mac: 84:8f:69:fd:4f:3e
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -57,7 +53,7 @@ hercule-2:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
@@ -72,18 +68,21 @@ hercule-2:
     version: E5-2620
   storage_devices:
     sda:
+      by_id: "/dev/disk/by-id/wwn-0x50014ee25c3d0e25"
       model: WDC WD2003FYYS-1
-      rev: 1.01
+      rev: 01.01D02
       size: 2000398934016
       vendor: Western Digital
     sdb:
+      by_id: "/dev/disk/by-id/wwn-0x50014ee25c3d1dc2"
       model: WDC WD2003FYYS-1
-      rev: 1.01
+      rev: 01.01D02
       size: 2000398934016
       vendor: Western Digital
     sdc:
+      by_id: "/dev/disk/by-id/wwn-0x50014ee206e7f10e"
       model: WDC WD2003FYYS-1
-      rev: 1.01
+      rev: 01.01D02
       size: 2000398934016
       vendor: Western Digital
   supported_job_types:

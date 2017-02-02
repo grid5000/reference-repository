@@ -15,7 +15,7 @@ sagittaire-27:
     name: Sun Fire V20z
     serial: XG052310144
   main_memory:
-    ram_size: 2107637760
+    ram_size: 2147483648
   network_adapters:
     bmc:
       ip: 172.17.49.27
@@ -23,19 +23,15 @@ sagittaire-27:
       management: true
     eth0:
       driver: tg3
-      enabled: false
       interface: Ethernet
       mac: 00:09:3d:12:6a:f0
       management: false
-      mounted: false
     eth1:
       driver: tg3
-      enabled: true
       interface: Ethernet
       ip: 172.16.49.27
       mac: 00:09:3d:12:6a:f1
       management: false
-      mounted: true
       rate: 1000000000
   operating_system:
     cstate_driver: none
@@ -47,7 +43,7 @@ sagittaire-27:
     pstate_driver: none
     pstate_governor: none
     turboboost_enabled: unknown
-    version: 8.6
+    version: 8.7
   processor:
     cache_l1d: 65536
     cache_l1i: 65536
@@ -62,8 +58,9 @@ sagittaire-27:
     version: 250
   storage_devices:
     sda:
+      by_path: "/dev/disk/by-path/pci-0000:02:04.0-scsi-0:0:1:0"
       model: ST373207LC
-      rev: 2.0
+      rev: 2
       size: 73407868928
       vendor: SEAGATE
   supported_job_types:
