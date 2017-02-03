@@ -79,6 +79,8 @@ eos
     ~storage_devices.sd.timeread
     ~storage_devices.sd.timewrite
     ~storage_devices.sd.vendor
+    ~storage_devices.sd.by_id
+    ~storage_devices.sd.by_path
 eos
 
   (0..5).each { |eth| 
