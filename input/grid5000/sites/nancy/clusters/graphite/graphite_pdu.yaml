@@ -1,0 +1,32 @@
+---
+nodes:
+  graphite-[1-4]:
+    monitoring:
+      wattmeter: multiple
+      metric: power
+
+  graphite-1:
+    pdu:
+      - uid: graoully-pdu1
+        port: 1
+      - uid: graoully-pdu2
+        port: 1
+  graphite-2:
+    pdu:
+      - uid: graoully-pdu1
+        port: 2
+      - uid: graoully-pdu2
+        port: 2
+  graphite-3:
+    pdu:
+      - uid: graoully-pdu1
+        port: 3
+      - uid: graoully-pdu2
+        port: 3
+  graphite-4:
+    pdu:
+      - uid: graoully-pdu1
+        port: 4
+      - uid: graoully-pdu2
+        port: 4
+
