@@ -29,7 +29,7 @@
     "virtual_size": null
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "true"
   },
   "network_adapters": [
     {
@@ -165,6 +165,23 @@
     "version": "E5-2620 v4"
   },
   "sensors": {
+    "power": {
+      "available": true,
+      "per_outlets": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "uid": "wattmetre"
+          }
+        ],
+        "www": {
+          "url": "http://wattmetre.lyon.grid5000.fr/GetWatts-json.php"
+        }
+      }
+    }
   },
   "storage_devices": [
     {

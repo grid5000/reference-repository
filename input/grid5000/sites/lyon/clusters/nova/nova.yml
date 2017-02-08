@@ -78,15 +78,17 @@ nodes:
         mounted: false
         mountable: false
     monitoring:
-      wattmeter: false #TODO
-    #sensors:
-    #  power:
-    #    available: true
-    #    per_outlets: true
-    #    via:
-    #      api:
-    #        metric: power
-    #      www: 
-    #        url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
+      wattmeter: true
+    sensors:
+      power:
+        available: true
+        per_outlets: true
+        via:
+          api:
+            metric: power
+          www:
+            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php
+    pdu:
+      - uid: wattmetre
     gpu:
       gpu: false
