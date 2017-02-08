@@ -213,7 +213,8 @@ def ignore_keys()
                  "wattmeter", # TODO
                  "id", #id from API (= resource_id from oarnodes)
                  "api_timestamp", # from API
-                 "links" #from API
+                 "links", #from API
+                 "ip_virtual" #from API
                 ]
 
 end
