@@ -23,6 +23,11 @@ nodes:
       max_walltime: 0
     operating_system:
       release: Jessie
+    storage_devices:
+      sda:
+        interface: SCSI
+        driver: megaraid_sas
+        storage: HDD
     network_adapters:
       eth0:
         enabled: true
