@@ -210,7 +210,6 @@ def ignore_keys()
                  "type", # TODO
                  "vlan",
                  "pdu",
-                 "wattmeter", # TODO
                  "id", #id from API (= resource_id from oarnodes)
                  "api_timestamp", # from API
                  "links", #from API
