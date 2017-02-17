@@ -1,20 +1,10 @@
 ---
 nodes:
-  graphite-[1-4]:
-    monitoring:
-      wattmeter: multiple
-      metric: power
-
   graphite-1:
     network_adapters:
       bmc:
         switch: sgraphene3-ipmi
         switch_port: 1/0/41
-    pdu:
-      - uid: graphene-pdu9
-        port: 23
-      - uid: graphene-pdu9
-        port: 24
     mic:
       mic_count: 1
       mic_model: 7120P
@@ -23,11 +13,6 @@ nodes:
       bmc:
         switch: sgraphene3-ipmi
         switch_port: 1/0/43
-    pdu:
-      - uid: graphene-pdu9
-        port: 21
-      - uid: graphene-pdu9
-        port: 22
     mic:
       mic_count: 1
       mic_model: 7120P
@@ -36,11 +21,6 @@ nodes:
       bmc:
         switch: sgraphene3-ipmi
         switch_port: 1/0/45
-    pdu:
-      - uid: graphene-pdu9
-        port: 19
-      - uid: graphene-pdu9
-        port: 20 
     mic:
       mic_count: 1
       mic_model: 7120P
@@ -49,11 +29,6 @@ nodes:
       bmc:
         switch: sgraphene3-ipmi
         switch_port: 1/0/47
-    pdu:
-      - uid: graphene-pdu9
-        port: 5
-      - uid: graphene-pdu9
-        port: 6
     mic:
       mic_count: 1
       mic_model: 7120P
