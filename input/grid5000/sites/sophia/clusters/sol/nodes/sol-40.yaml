@@ -14,7 +14,7 @@ sol-40:
     name: Sun Fire X2200 M2
     serial: 0650QBT11D
   main_memory:
-    ram_size: 4156555264
+    ram_size: 4294967296
   network_adapters:
     bmc:
       ip: 172.17.129.40
@@ -26,14 +26,12 @@ sol-40:
       ip: 172.16.129.40
       mac: 00:16:36:91:eb:08
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: forcedeth
       interface: Ethernet
       mac: 00:16:36:91:eb:09
       management: false
-      mounted: false
   operating_system:
     cstate_driver: none
     cstate_governor: menu

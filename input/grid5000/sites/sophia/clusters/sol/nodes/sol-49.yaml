@@ -14,36 +14,28 @@ sol-49:
     name: Sun Fire X2200 M2
     serial: 0650QBT110
   main_memory:
-    ram_size: 4293918720
+    ram_size: 4294967296
   network_adapters:
     bmc:
       ip: 172.17.129.49
       mac: 00:16:36:c5:92:7f
     eth0:
       driver: forcedeth
-      enabled: true
       interface: Ethernet
       ip: 172.16.129.49
-      ip6: fe80::216:36ff:fec5:8917
       mac: 00:16:36:c5:89:17
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: forcedeth
-      enabled: false
       interface: Ethernet
       mac: 00:16:36:c5:89:18
       management: false
-      mountable: false
-      mounted: false
     myri0:
       driver: mx ethernet (myri)
       enabled: true
       interface: Myrinet
       ip: 172.18.129.49
-      ip6: fe80::260:ddff:fe47:4c6a
       mac: 00:60:dd:47:4c:6a
       management: false
       mountable: true
