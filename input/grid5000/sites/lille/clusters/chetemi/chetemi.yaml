@@ -22,8 +22,9 @@ nodes:
       queues:
         - admin
         - testing
-    storage_devices:
-      sda:
+    performance:
+        core_flops: 15690000000
+        node_flops: 331400000000
     gpu:
       gpu: false
     monitoring:
@@ -50,7 +51,6 @@ nodes:
         enabled: false
         mountable: false
         mounted: false
-    performance: hash required
     storage_devices:
       sda:
         interface: SAS
