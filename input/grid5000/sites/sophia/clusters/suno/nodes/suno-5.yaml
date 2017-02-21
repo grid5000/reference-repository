@@ -21,23 +21,16 @@ suno-5:
       mac: 00:26:b9:3e:e8:5a
     eth0:
       driver: bnx2
-      enabled: true
       interface: Ethernet
       ip: 172.16.130.5
-      ip6: fe80::226:b9ff:fe3e:e858
       mac: 00:26:b9:3e:e8:58
       management: false
-      mountable: true
-      mounted: true
       rate: 1000000000
     eth1:
       driver: bnx2
-      enabled: false
       interface: Ethernet
       mac: 00:26:b9:3e:e8:59
       management: false
-      mountable: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -68,5 +61,6 @@ suno-5:
       size: 598879502336
       vendor: Dell
       by_id: node-was-not-available-to-retrieve-this-value
+      by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
   supported_job_types:
     virtual: ivt

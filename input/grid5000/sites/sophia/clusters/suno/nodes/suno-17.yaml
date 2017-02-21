@@ -14,26 +14,23 @@ suno-17:
     name: PowerEdge R410
     serial: 54JPH4J
   main_memory:
-    ram_size: 33285996544
+    ram_size: 34359738368
   network_adapters:
     bmc:
       ip: 172.17.130.17
       mac: 00:26:b9:3f:47:dd
-      management: true
     eth0:
       driver: bnx2
       interface: Ethernet
       ip: 172.16.130.17
       mac: 00:26:b9:3f:47:db
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: bnx2
       interface: Ethernet
       mac: 00:26:b9:3f:47:dc
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -62,6 +59,8 @@ suno-17:
       model: PERC 6/i Adapter
       rev: 1.22
       size: 598879502336
+      vendor: Dell
       by_id: node-was-not-available-to-retrieve-this-value
+      by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
   supported_job_types:
     virtual: ivt
