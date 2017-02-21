@@ -117,6 +117,8 @@ end
 puts "Writing DNS configuration files to: #{options[:output_dir]}"
 puts "For site(s): #{options[:sites].join(', ')}"
 
+written_files = []
+
 # Loop over Grid'5000 sites
 refapi["sites"].each { |site_uid, site|
 
@@ -306,6 +308,7 @@ refapi["sites"].each { |site_uid, site|
   output_file = site_uid + '.db'
   header = ERB.new(File.read('templates/bind-header.erb')).result(binding)
   File.write(zones_dir + output_file, header + dns.join("\n") + "\n")
+  written_files << File.join(zones_dir, output_file).to_s
 
   # Reverse DNS (/modules/bindg5k/files/zones/reverse-*db)
   reverse.each { |output_file, output|
@@ -314,6 +317,7 @@ refapi["sites"].each { |site_uid, site|
     output.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(File.join(zones_dir, manual)) # add include statement
 
     File.write(File.join(zones_dir, output_file), header + output.join("\n") + "\n")
+    written_files << File.join(zones_dir, output_file).to_s
   }
 
   #Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
@@ -325,6 +329,7 @@ refapi["sites"].each { |site_uid, site|
     header = ERB.new(File.read('templates/bind-header.erb')).result(binding) # do not move outside of the loop (it uses the output_file variable)
     content = "$INCLUDE /etc/bind/zones/#{site_uid}/#{reverse_manual_file}"
     File.write(File.join(zones_dir, output_file), header + "\n" + content + "\n")
+    written_files << File.join(zones_dir, output_file).to_s
   }
 
   # files/global/conf/global-nancy.conf
@@ -338,3 +343,17 @@ refapi["sites"].each { |site_uid, site|
   }
 
 } # each sites
+
+# Revert changes on files where only the serial has been updated
+written_files.each { |filePath|
+
+  Dir.chdir("#{options[:output_dir]}") {
+    if (Dir.exists?("./.git"))
+      added_deleted = `git diff --numstat #{filePath} | cut -f1-2 | tr -d "\t "`.chomp()
+      if (added_deleted == "11") #1 addition, 1 deletion
+        system("git checkout -- #{filePath}")
+      end
+    end
+  }
+
+}
