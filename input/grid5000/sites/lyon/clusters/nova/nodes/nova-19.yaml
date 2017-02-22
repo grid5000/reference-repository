@@ -8,8 +8,8 @@ nova-19:
     platform_type: x86_64
   bios:
     configuration:
-      cstate_c1e: false
-      cstate_enabled: false
+      cstate_c1e: true
+      cstate_enabled: true
       ht_enabled: true
       turboboost_enabled: true
     release_date: 09/08/2016
@@ -59,9 +59,9 @@ nova-19:
       mac: 18:66:da:7e:ff:24
       management: false
   operating_system:
-    cstate_driver: none
+    cstate_driver: acpi_idle
     cstate_governor: menu
-    cstate_max_id: 
+    cstate_max_id: 1
     ht_enabled: true
     kernel: 3.16.0-4-amd64
     name: debian
