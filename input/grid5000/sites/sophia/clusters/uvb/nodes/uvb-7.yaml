@@ -14,7 +14,7 @@ uvb-7:
     name: C6100
     serial: TOBEDEFINE
   main_memory:
-    ram_size: 102005473280
+    ram_size: 103079215104
   network_adapters:
     bmc:
       ip: 172.17.132.7
@@ -26,27 +26,26 @@ uvb-7:
       ip: 172.16.132.7
       mac: 00:26:6c:f8:39:00
       management: false
-      mounted: true
       rate: 1000000000
     eth1:
       driver: igb
       interface: Ethernet
       mac: 00:26:6c:f8:39:01
       management: false
-      mounted: false
     ib0:
       driver: mlx4_core
+      guid: TOBEDEFINE
       interface: InfiniBand
       management: false
-      mounted: false
       rate: 40000000000
       version: MT26428
     ib0.8100:
       driver: mlx4_core
+      guid: TOBEDEFINE
       interface: InfiniBand
       ip: 172.18.132.7
+      ip6: TOBEDEFINE
       management: false
-      mounted: true
       rate: 40000000000
       version: MT26428
   operating_system:
