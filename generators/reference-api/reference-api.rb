@@ -295,9 +295,14 @@ global_hash["sites"].each do |site_uid, site|
 
       if node.key?("pdu")
 
-        # Remove 'port' info if PDU are shared
         node["pdu"].each { |p|
-          p.delete("port") if node["monitoring"]["wattmeter"] == "shared"
+          pdu = [p].flatten
+          pdu.each { |item|
+            #See https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7585, workaround to validate node pdu that have per_outlets = false
+            item.delete("port") if item["port"] == "disabled"
+            # Remove 'port' info if PDU are shared
+            item.delete("port") if node["monitoring"]["wattmeter"] == "shared"
+          }
         }
 
         # Move PDU info in the right place
