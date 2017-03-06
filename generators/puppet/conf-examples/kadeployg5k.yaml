@@ -1,22 +1,6 @@
 # This is an EXAMPLE of input file for kadeployg5k.rb
 ---
 grenoble:
-  adonis:
-    reboot.timeout: 200
-    reboot.kexec: 100
-    partitioning.disable_swap: false
-    user.params: console=tty0 console=ttyS1,115200n8 maxcpus=8
-    deploy.params: nouveau.blacklist=yes console=tty0 console=ttyS1,115200n8 ramdisk_size=290000
-      rw noapic init=/linuxrc
-    dhcp.serial: 0 38400
-    nfsroot.params: rw console=ttyS0,38400n8 console=tty0 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
-      init=/sbin/init
-    deployment.timeout: 450
-    broadcast.retries: 0
-    broadcast.timeout: 600
-    boot.timeout.0: 150
-    boot.timeout.1: 450
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   edel:
     reboot.timeout: 250
     reboot.kexec: 150
