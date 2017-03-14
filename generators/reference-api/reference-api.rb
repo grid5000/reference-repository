@@ -13,18 +13,17 @@ require 'pathname'
 require 'json'
 require 'time'
 
-require '../lib/input_loader'
-require '../input-validators/yaml-input-schema-validator'
-require '../input-validators/check-cluster-homogeneity'
-require '../input-validators/check-monitoring-properties'
+require_relative '../lib/input_loader'
+require_relative '../input-validators/yaml-input-schema-validator'
+require_relative '../input-validators/check-cluster-homogeneity'
+require_relative '../input-validators/check-monitoring-properties'
 
 # Output directory
-#refapi_path = "/tmp/data"
-refapi_path = "../../data/grid5000"
+input_data_dir = "../../input/grid5000/"
+output_data_dir = "../../data/grid5000/"
 
-#global_hash = JSON.parse(STDIN.read)
-#global_hash = load_yaml_file_hierarchy("../../input/example/")
-global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
+refapi_path = File.expand_path(output_data_dir, File.dirname(__FILE__))
+global_hash = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
 
 # Parse network equipment description and return switch name and port connected to given node
 #  In the network description, if the node interface is given (using "port" attribute),
@@ -103,24 +102,6 @@ OptionParser.new do |opts|
     exit
   end
 end.parse!
-
-
-#
-# input-validators
-#
-
-puts "Checking input data:\n\n"
-r = yaml_input_schema_validator(global_hash)
-puts 'OK' if r
-
-puts "\n"
-puts "#" * 80
-puts "\n"
-
-check_cluster_homogeneity(global_hash)
-puts "\n"
-puts "#" * 80
-puts "\n"
 
 #
 # Write grid info
@@ -341,10 +322,5 @@ global_hash["sites"].each do |site_uid, site|
   site["network_equipments"] = site.delete("networks")
 end
 
-write_json(grid_path.join("../../#{global_hash['uid']}-all.json"), global_hash)
-
-#
-#
-# 
-
-#check_monitoring_properties(global_hash)
+#Write global json file
+write_json(grid_path.join(File.expand_path("../../#{global_hash['uid']}-all.json", File.dirname(__FILE__))), global_hash)

@@ -2,7 +2,7 @@
 
 require 'yaml'
 require 'erb'
-require '../lib/hash/hash.rb'
+require_relative '../lib/hash/hash.rb'
 
 def load_yaml_file_hierarchy(directory)
 

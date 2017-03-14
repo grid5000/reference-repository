@@ -9,9 +9,11 @@ require 'pp'
 require 'erb'
 require 'pathname'
 require 'optparse'
-require '../lib/input_loader'
+require_relative '../lib/input_loader'
 
-global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
+input_data_dir = "../../input/grid5000/"
+
+global_hash = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
 
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
@@ -72,7 +74,7 @@ def write_dhcp_file(data, options)
     return "" 
   end
 
-  output = ERB.new(File.read('templates/dhcp.erb')).result(binding)
+  output = ERB.new(File.read(File.expand_path('templates/dhcp.erb', File.dirname(__FILE__)))).result(binding)
   output_file = Pathname("#{options[:output_dir]}/modules/dhcpg5k/files/#{data.fetch("site_uid")}/dhcpd.conf.d/#{data.fetch('filename')}")
   output_file.dirname.mkpath()
   File.write(output_file, output)

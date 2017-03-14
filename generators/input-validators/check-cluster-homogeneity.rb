@@ -12,9 +12,7 @@ require 'fileutils'
 require 'pathname'
 require 'hashdiff'
 
-dir = Pathname(__FILE__).parent
-
-require "#{dir}/../lib/input_loader"
+require_relative "../lib/input_loader"
 
 def global_ignore_keys()
 
@@ -138,9 +136,10 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
   end
 
   ignore_keys  = global_ignore_keys()
-  cignore_keys = cluster_ignore_keys("../input-validators/check-cluster-homogeneity.yaml.erb")
+  cignore_keys = cluster_ignore_keys(File.expand_path("../input-validators/check-cluster-homogeneity.yaml.erb", File.dirname(__FILE__)))
 
-  refapi_hash = load_yaml_file_hierarchy("../../input/grid5000/")
+  input_data_dir = "../../input/grid5000/"
+  refapi_hash = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
   count = {}
   total_count = 0
 
@@ -218,7 +217,7 @@ def check_cluster_homogeneity(refapi_hash, options = {:verbose => false})
 
   puts count.to_yaml unless verbose
 
-  puts "\nUse '../input-validators/check-cluster-homogeneity.rb -v' for details." unless verbose
+  puts "\nUse '-v' option for details." unless verbose
 
   return total_count
 end
@@ -265,7 +264,7 @@ if __FILE__ == $0
     end
   end.parse!
 
-  refapi_hash = load_yaml_file_hierarchy("#{dir}/../../input/grid5000/")
+  refapi_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
   total_count = check_cluster_homogeneity(refapi_hash, options)
 
   # return 0 if all nodes are homogeneous, 1 otherwise

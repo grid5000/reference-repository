@@ -13,15 +13,16 @@ require 'pp'
 require 'erb'
 require 'pathname'
 require 'optparse'
-require '../lib/input_loader'
-require '../lib/hash/hash.rb'
+require_relative '../lib/input_loader'
+require_relative '../lib/hash/hash.rb'
 
-global_hash = load_yaml_file_hierarchy("../../input/grid5000/")
+input_data_dir = "../../input/grid5000/"
+global_hash = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
 
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:output_dir] = "/tmp/puppet-repo"
-options[:conf_dir] = "./conf-examples/"
+options[:conf_dir] = File.expand_path("conf-examples/", File.dirname(__FILE__))
 
 OptionParser.new do |opts|
   opts.banner = "Usage: kadeployg5k.rb [options]"
@@ -34,7 +35,7 @@ OptionParser.new do |opts|
     options[:conf_dir] = "#{options[:output_dir]}/modules/kadeployg5k/generators/"
   end
 
-  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: ./conf-examples") do |d|
+  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: #{options[:conf_dir]}") do |d|
     options[:conf_dir] = d
   end
 
@@ -184,8 +185,8 @@ end
         next
       end
 
-      output = ERB.new(File.read('templates/kadeployg5k.conf.erb')).result(binding)
-
+      output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__)))).result(binding)
+      
       output_file = Pathname("#{options[:output_dir]}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/#{cluster_uid}-cluster.conf")
       output_file.dirname.mkpath()
       File.write(output_file, output)

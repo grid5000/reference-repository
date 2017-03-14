@@ -8,10 +8,8 @@ end
 require 'fileutils'
 require 'pathname'
 
-dir = Pathname(__FILE__).parent
-
-require "#{dir}/../lib/input_loader"
-require "#{dir}/lib/schema_validator"
+require_relative "../lib/input_loader"
+require_relative "./lib/schema_validator"
 
 def run_validator(uid, data, schema)
   validator = HashValidator.validate(data, schema, strict = true)
@@ -24,13 +22,11 @@ def run_validator(uid, data, schema)
 end
 
 def yaml_input_schema_validator(global_hash, sites = nil, clusters = nil)
-  dir = Pathname(__FILE__).parent
-
-  schema_global  = load_yaml_schema("#{dir}/schema-global.yaml")
-  schema_site    = load_yaml_schema("#{dir}/schema-site.yaml")
-  schema_cluster = load_yaml_schema("#{dir}/schema-cluster.yaml")
-  schema_node    = load_yaml_schema("#{dir}/schema-node.yaml")
-  schema_network_equipments = load_yaml_schema("#{dir}/schema-network_equipments.yaml")
+  schema_global  = load_yaml_schema(File.expand_path("./schema-global.yaml", File.dirname(__FILE__)))
+  schema_site    = load_yaml_schema(File.expand_path("./schema-site.yaml", File.dirname(__FILE__)))
+  schema_cluster = load_yaml_schema(File.expand_path("./schema-cluster.yaml", File.dirname(__FILE__)))
+  schema_node    = load_yaml_schema(File.expand_path("./schema-node.yaml", File.dirname(__FILE__)))
+  schema_network_equipments = load_yaml_schema(File.expand_path("./schema-network_equipments.yaml", File.dirname(__FILE__)))
 
   r = true
 
@@ -90,7 +86,7 @@ if __FILE__ == $0
   end.parse!
 
   puts "Checking input data:\n\n"
-  global_hash = load_yaml_file_hierarchy("#{dir}/../../input/grid5000/")
+  global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
   r = yaml_input_schema_validator(global_hash, options[:sites], options[:clusters])
   puts 'OK' if r
   exit r

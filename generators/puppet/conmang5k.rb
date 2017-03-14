@@ -11,13 +11,13 @@ require 'pp'
 require 'erb'
 require 'pathname'
 require 'optparse'
-require '../lib/input_loader'
-require '../lib/hash/hash.rb'
+require_relative '../lib/input_loader'
+require_relative '../lib/hash/hash.rb'
 
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:output_dir] = "/tmp/puppet-repo"
-options[:conf_dir] = "./conf-examples/"
+options[:conf_dir] = File.expand_path("conf-examples/", File.dirname(__FILE__))
 
 OptionParser.new do |opts|
   opts.banner = "Usage: conmang5k.rb [options]"
@@ -30,7 +30,7 @@ OptionParser.new do |opts|
     options[:conf_dir] = "#{options[:output_dir]}/modules/lanpowerg5k/generators/"
   end
 
-  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: ./conf-examples/") do |d|
+  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: #{options[:conf_dir]}") do |d|
     options[:conf_dir] = d
   end
 
@@ -54,14 +54,16 @@ puts "Writing Conman configuration files to: #{options[:output_dir]}"
 puts "Using configuration directory: #{options[:conf_dir]}"
 puts "For site(s): #{options[:sites].join(', ')}"
 
-# Input
-refapi      = load_yaml_file_hierarchy("../../input/grid5000/")
-config      = YAML::load_file(options[:conf_dir] + 'console.yaml')
-credentials = YAML::load_file(options[:conf_dir] + 'console-password.yaml')
+#Input
+input_data_dir = "../../input/grid5000/"
+refapi = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
+
+config      = YAML::load_file(options[:conf_dir] + '/console.yaml')
+credentials = YAML::load_file(options[:conf_dir] + '/console-password.yaml')
 
 # Apply ERB template and save result to file
 def write_conman_file(site_uid, site_refapi, site_config, site_credentials, options)
-  output = ERB.new(File.read("templates/conman.erb")).result(binding)
+  output = ERB.new(File.read(File.expand_path('templates/conman.erb', File.dirname(__FILE__)))).result(binding)
 
   output_file = Pathname("#{options[:output_dir]}/modules/conmang5k/files/#{site_uid}/conman.conf")
   output_file.dirname.mkpath()

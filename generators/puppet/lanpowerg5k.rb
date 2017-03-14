@@ -11,13 +11,13 @@ require 'pp'
 require 'yaml'
 require 'pathname'
 require 'optparse'
-require '../lib/input_loader'
-require '../lib/hash/hash.rb'
+require_relative '../lib/input_loader'
+require_relative '../lib/hash/hash.rb'
 
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:output_dir] = "/tmp/puppet-repo"
-options[:conf_dir] = "./conf-examples/"
+options[:conf_dir] = File.expand_path("conf-examples/", File.dirname(__FILE__))
 
 OptionParser.new do |opts|
   opts.banner = "Usage: lanpowerg5k.rb [options]"
@@ -30,7 +30,7 @@ OptionParser.new do |opts|
     options[:conf_dir] = "#{options[:output_dir]}/modules/lanpowerg5k/generators/"
   end
 
-  opts.on('-c', '--conf-dir dir', String, 'Select the lanpower module configuration path', "Default: ./conf-examples") do |d|
+  opts.on('-c', '--conf-dir dir', String, 'Select the lanpower module configuration path', "Default: #{options[:conf_dir]}") do |d|
     options[:conf_dir] = d
   end
 
@@ -54,9 +54,11 @@ puts "Writing lanpower configuration files to: #{options[:output_dir]}"
 puts "Using configuration directory: #{options[:conf_dir]}"
 puts "For site(s): #{options[:sites].join(', ')}"
 
-config      = YAML::load_file("#{options[:conf_dir]}console.yaml")
-credentials = YAML::load_file("#{options[:conf_dir]}console-password.yaml")
-refapi      = load_yaml_file_hierarchy("../../input/grid5000/")
+config      = YAML::load_file("#{options[:conf_dir]}/console.yaml")
+credentials = YAML::load_file("#{options[:conf_dir]}/console-password.yaml")
+input_data_dir = "../../input/grid5000/"
+
+refapi = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
 
 refapi['sites'].each { |site_uid, site_refapi|
 

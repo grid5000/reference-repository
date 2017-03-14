@@ -11,7 +11,8 @@
 Dir.entries(zones_dir).sort.each { |file|
   next unless /.*.db$/.match(file)
   next if /.*-manual\.db/.match(file) # Those files are included in the generated version of the file
-  next if local_reverse_list.include?(file) # Local reverse zone files are not be included on the global-<site_uid>.conf files (see #7170 -- fixed)	
+  next if /^local\/.*/.match(file) # Local reverse zone files are not be included on the global-<site_uid>.conf files (see #7170 -- fixed)
+  next if /#{site_uid}-/.match(file) #Do not include site_uid-{servers, pdus} etc 
 
   comment = ''
   zone = ''
@@ -24,11 +25,10 @@ Dir.entries(zones_dir).sort.each { |file|
     puts "Error: unknown zone for '#{file}' in '#{zones_dir}'"
     next
   end
-    %>
+%>
   zone "<%= zone %>" {
     type <%= type %>;
     file "/etc/bind/zones/<%= site_uid %>/<%= file %>";
     <%= type == 'slave' ? 'masters { master-ns-global; };' : '' %>
   };
 <% } %>
-
