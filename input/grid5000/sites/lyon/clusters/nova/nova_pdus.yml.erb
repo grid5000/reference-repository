@@ -1,0 +1,8 @@
+nodes:
+<% (1..23).each { |i| %>
+  nova-<%= i %>:
+    pdu:
+      - uid: wattmetre
+        port: <%= i+98 %>
+<% } %>
+
