@@ -19,8 +19,8 @@ require 'hashdiff'
 require 'optparse'
 require 'net/ssh'
 
-require '../oar-properties/lib/lib-oar-properties'
-require '../lib/input_loader'
+require_relative '../oar-properties/lib/lib-oar-properties'
+require_relative '../lib/input_loader'
 
 #
 # Parse command line parameters
@@ -29,6 +29,7 @@ require '../lib/input_loader'
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:ssh] ||= {}
+options[:api] ||= {}
 
 OptionParser.new do |opts|
   opts.banner = "Usage: oar-properties.rb [options]"
@@ -121,6 +122,20 @@ OptionParser.new do |opts|
   ###
 
   opts.separator ""
+  opts.separator "API authentication options:"
+
+  opts.on('--api-user user', String, 'HTTP authentication user when outside G5K') do |user|
+    options[:api][:user] = user
+    puts "API USER = " + user
+  end
+
+  opts.on('--api-password pwd', String, 'HTTP authentication password when outside G5K') do |pwd|
+    options[:api][:pwd] = pwd
+    puts "PWD  = #{pwd.to_s}"
+  end
+
+  ###
+  opts.separator ""
   opts.separator "Common options:"
 
   opts.on("-v", "--[no-]verbose", "Run verbosely", "Multiple -v options increase the verbosity. The maximum is 3.") do |v|
@@ -155,7 +170,7 @@ nodelist_properties = {} # ["ref"]  : properties from the reference-repo
 #
 
 nodelist_properties["ref"] = {}
-global_hash = load_yaml_file_hierarchy('../../input/grid5000/')
+global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 options[:sites].each { |site_uid|
   nodelist_properties["ref"][site_uid] = get_nodelist_properties(site_uid, global_hash["sites"][site_uid])
 }

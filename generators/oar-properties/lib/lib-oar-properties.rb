@@ -320,7 +320,7 @@ end
 # This is only needed for the -d option
 def oarcmd_get_nodelist_properties(site_uid, filename=nil, options)
   oarnodes = ""
-  
+
   if filename and File.exist?(filename)
     # Read OAR properties from file
     puts "Reading OAR resources properties from file #{filename}" if options[:verbose]
@@ -334,7 +334,11 @@ def oarcmd_get_nodelist_properties(site_uid, filename=nil, options)
     http = Net::HTTP.new(api_uri.host, Net::HTTP.https_default_port())
     http.use_ssl = true
     request = Net::HTTP::Get.new(api_uri.request_uri)
-    #request.basic_auth("g5k_user", "password") #for tests outside g5k network
+
+    if (options[:api][:user] && options[:api][:pwd])
+      request.basic_auth(options[:api][:user], options[:api][:pwd]) #for outside g5k network access
+    end
+
     response = http.request(request)
 
     raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
