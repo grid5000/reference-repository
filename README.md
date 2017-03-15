@@ -6,6 +6,7 @@ The git repository also includes scripts for generating:
 
 Automated tasks are provided to validate and generate data:
 
+``
 rake oar:properties          # Generate oar properties
 rake puppet:all              # Launch all puppet generators
 rake puppet:bindg5k          # Generate bindg5k configuration
@@ -16,5 +17,6 @@ rake puppet:lanpowerg5k      # Generate lanpowerg5k configuration
 rake reference-api           # Creates json data from inputs
 rake validators:homogeneity  # Check homogeneity of clusters
 rake validators:schema       # Check input data schema validity
+``
 
 For more information about generators and validators, please see generators/README.md.
