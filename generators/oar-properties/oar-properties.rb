@@ -126,12 +126,10 @@ OptionParser.new do |opts|
 
   opts.on('--api-user user', String, 'HTTP authentication user when outside G5K') do |user|
     options[:api][:user] = user
-    puts "API USER = " + user
   end
 
   opts.on('--api-password pwd', String, 'HTTP authentication password when outside G5K') do |pwd|
     options[:api][:pwd] = pwd
-    puts "PWD  = #{pwd.to_s}"
   end
 
   ###
