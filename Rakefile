@@ -3,6 +3,7 @@ REFAPI_DIR = "./generators/reference-api"
 PUPPET_DIR = "./generators/puppet"
 OAR_DIR = "./generators/oar-properties"
 VALIDATORS_DIR = "./generators/input-validators"
+WIKI_DIR = "./generators/wiki"
 
 namespace :puppet do
 
@@ -44,6 +45,23 @@ namespace :validators do
     puts "ruby #{VALIDATORS_DIR}/yaml-input-schema-validator.rb #{$CMD_ARGS}"
     system ("ruby #{VALIDATORS_DIR}/yaml-input-schema-validator.rb #{$CMD_ARGS}")
   end
+end
+
+namespace :wiki do
+
+  all_wiki_tasks = [:cpu_parameters]
+
+  all_wiki_tasks.each { |t|
+    desc "Generate the media parts for #{t}"
+    task t do
+      puts "#{WIKI_DIR}/#{t}.rb #{$CMD_ARGS}"
+      ruby "#{WIKI_DIR}/#{t}.rb #{$CMD_ARGS}"
+    end
+  }
+
+  desc "Launch all wiki generators"
+  task :all => all_wiki_tasks
+
 end
 
 desc "Creates json data from inputs"
