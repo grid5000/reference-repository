@@ -31,9 +31,6 @@ table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Vers
 
 table_data = []
 
-#Static cluster information not present in the ref-repo
-cluster_data = YAML::load_file(File.join(File.dirname(File.expand_path(__FILE__)), 'clusters_data.yml'))
-
 global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
 # Loop over Grid'5000 sites
@@ -46,13 +43,12 @@ global_hash["sites"].each { |site_uid, site_hash|
     cpu_family = node_hash["processor"]["model"] rescue ""
     cpu_version = node_hash["processor"]["version"] rescue ""
     cpu_freq = node_hash["processor"]["clock_speed"] / 1000000000.0 rescue 0.0 #GHz
+    cpu_codename = node_hash["processor"]["microarchitecture"] rescue ""
 
     ht_enabled = node_hash["bios"]["configuration"]["ht_enabled"] rescue false
     turboboost_enabled = node_hash["bios"]["configuration"]["turboboost_enabled"] rescue false
     pstate_driver = node_hash["operating_system"]["pstate_driver"] rescue ""
     cstate_driver = node_hash["operating_system"]["cstate_driver"] rescue ""
-
-    cpu_codename = cluster_data[cluster_uid]["cpu_codename"] rescue ""
 
     #One line per cluster
     table_data << [
