@@ -25,7 +25,7 @@ if (options[:user].nil? || options[:pwd].nil?)
   exit
 end
 
-target_page = "Template:CPUParameters"
+target_page = "Generated/CPUParameters"
 
 table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Core Codename", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
 
@@ -86,3 +86,5 @@ page_text += MW.italic(MW.small("Generated from the Grid5000 APIs on " + Time.no
 client = MediawikiApi::Client.new(MW::BASE_URL)
 client.log_in(options[:user], options[:pwd])
 client.edit({"title" => target_page, "text" => page_text })
+
+puts "Page '#{target_page}' created/updated"
