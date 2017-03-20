@@ -122,7 +122,6 @@ end
 # Create a dns entry
 def print_entry(entry)
   max_pad = 30 #Sane default for maximum hostname length
-  max_ip_length = 15
   addr = []
   cnames = []
   hostshort = entry[:uid]
@@ -134,13 +133,15 @@ def print_entry(entry)
     hostalias = hostshort + entry[:cnamesuffix]
     addr << "#{hostalias.ljust(max_pad)} IN A #{' ' * 6 + ip}"
     cnames << "#{hostname.ljust(max_pad)} IN CNAME #{' ' * 6 + hostalias}"
-  elsif entry[:cnames]
+    #If there are cnames defined, point cnames to defined hostname instead
+    hostname = hostalias
+  else
     addr << "#{hostname.ljust(max_pad)} IN A #{' ' * 6 + ip}"
+  end
+  if entry[:cnames]
     entry[:cnames].each{ |cname|
       cnames << "#{cname.ljust(max_pad)} IN CNAME #{' ' * 6 + hostname}"
     }
-  else
-    addr << "#{hostname.ljust(max_pad)} IN A #{' ' * 6 + ip}"
   end
   return addr, cnames
 end
@@ -178,7 +179,7 @@ def get_servers_entries(site)
         :ip          => net['ip']
       }
       if server['alias']
-        new_entry[:names] = server['alias'].reject{ |cname| cname.include?('.') }.map{ |cname|
+        new_entry[:cnames] = server['alias'].reject{ |cname| cname.include?('.') }.map{ |cname|
           net_uid == 'default' ? cname : "#{cname}-#{net_uid}"
         }
       end
@@ -244,9 +245,10 @@ def get_node_entries(cluster_uid, node_uid, network_adapters)
 
     hostsuffix  = "-#{net_uid}"
     cnamesuffix = nil # no CNAME entry by default
+
     if net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
-      # primary interface
-      cnamesuffix = '' # CNAME enabled for primary interface
+      #primary interface
+      cnamesuffix = '' # CNAME enabled for primary interface (node-id-iface cname node-id)
     elsif /^*-kavlan-[0-9]*$/.match(net_uid)
       # kavlan
       net_primaries = network_adapters.select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # list of primary interfaces
@@ -265,7 +267,13 @@ def get_node_entries(cluster_uid, node_uid, network_adapters)
       :node_uid    => node_id,
       :ip          => ip
     }
-
+    #Handle interface aliases
+    if (net_hash["alias"])
+      new_entry[:cnames] ||= []
+      net_hash["alias"].each { |cname|
+        new_entry[:cnames] << "#{cluster_uid}-#{node_id}-#{cname}"
+      }
+    end
     #Group entries by cluster and cluster-kavlan
     if (/kavlan/.match(net_uid))
       entries["#{cluster_uid}-kavlan"] ||= []
@@ -310,7 +318,7 @@ refapi["sites"].each { |site_uid, site|
 
       # Nodes
       node.fetch('network_adapters').each { |net_uid, net_hash|
-        network_adapters[net_uid] = {"ip" => net_hash["ip"], "mounted" => net_hash["mounted"]} #, "network_address" => net_hash["network_address"]}
+        network_adapters[net_uid] = {"ip" => net_hash["ip"], "mounted" => net_hash["mounted"], "alias" => net_hash["alias"]}
       }
 
       # Kavlan
