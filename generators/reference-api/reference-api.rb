@@ -262,6 +262,9 @@ global_hash["sites"].each do |site_uid, site|
             network_adapter["switch_port"] = port if port
           end
         end
+        # If kavlan entry is not defined here, set it node's kavlan description
+        network_adapter["kavlan"] ||= node["kavlan"].keys.include?(network_adapter["device"]) ? true : false
+
         network_adapter.delete("network_address") if network_adapter["network_address"] == 'none'
       }
 
@@ -300,7 +303,6 @@ global_hash["sites"].each do |site_uid, site|
         node["sensors"]["power"]["via"]["api"]["metric"] = node["monitoring"].delete("metric")
       end
 
-      node.delete("kavlan")
 
       write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
 
