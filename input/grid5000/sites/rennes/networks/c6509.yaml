@@ -27,6 +27,7 @@ c6509:
           kind: switch
     2:
       kind: node
+      port: eth1
       snmp_pattern: Gi%LINECARD%/%PORT%
       kavlan_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
@@ -60,18 +61,31 @@ c6509:
           port: eth2
     3:
       kind: node
+      port: eth0
       snmp_pattern: Gi%LINECARD%/%PORT%
       kavlan_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
       ports:
-        42: parapluie-1
-        47: parapluie-21
-        48: parapluie-22
-        46: parapluie-23
-        45: parapluie-4
-        44: parapluie-7
+        42:
+          uid: parapluie-1
+          port: eth1
+        47:
+          uid: parapluie-21
+          port: eth1
+        48:
+          uid: parapluie-22
+          port: eth1
+        46:
+          uid: parapluie-23
+          port: eth1
+        45:
+          uid: parapluie-4
+          port: eth1
+        44:
+          uid: parapluie-7
+          port: eth1
         3:
           uid: paranoia-1
           port: eth2
@@ -101,6 +115,7 @@ c6509:
         16:
     7:
       kind: node
+      port: eth0
       snmp_pattern: Gi%LINECARD%/%PORT%
       kavlan_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
@@ -121,6 +136,7 @@ c6509:
         41: parapide-9
     6:
       kind: node
+      port: eth0
       snmp_pattern: Gi%LINECARD%/%PORT%
       kavlan_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
@@ -139,9 +155,12 @@ c6509:
         43: parapide-20
         38: parapide-22
         37: parapide-24
-        33: parapluie-33
+        33:
+          uid: parapluie-33
+          port: eth1
     4:
       kind: node
+      port: eth1
       snmp_pattern: Gi%LINECARD%/%PORT%
       kavlan_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
