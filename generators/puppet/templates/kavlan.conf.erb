@@ -1,0 +1,57 @@
+{
+   "site": "<%= site_uid %>",
+   "cookie": "eebi6AiN",
+   "remote-servers": [
+<%
+   refapi['sites'].sort.to_h.each do |remote_site_uid, remote_site_refapi|
+     if remote_site_refapi.has_key?('kavlans') and remote_site_uid != site_uid
+-%>
+        {"node": "kavlan-server@kavlan.<%= remote_site_uid %>.grid5000.fr"},
+<%
+     end
+   end
+-%>
+   ],
+   "DefaultVLAN": "PRODUCTION",
+   "loglevel": "notice",
+   "admins": "oar;deploy;root;g5kadmin",
+   "trace": { "active": "off", "path": "/tmp/traces" },
+   "peer_allow_regexp": "(api-proxy\..*\.grid5000.fr)|(api.grid5000.fr)",
+   "SNMPCommunity": "<%= conf.has_key?('snmp_community') ? conf['snmp_community'] : 'public' %>",
+   "db": { "host": "mysql", "name": "deploy3", "user": "<%= conf['db_user'] or 'deploy'%>", "passwd": "<%= conf['db_password'] or fail "Missing db_password entry" %>"},
+   "vlan": [
+       {"value": 100, "name": "PRODUCTION", "type": "NULL"},
+<%
+       site_refapi['kavlans'].each do |kavlan_id, kavlan|
+         if kavlan_id.to_i.between?(1, 3)
+-%>
+       {"value": 70<%= kavlan_id %>, "name": "KAVLAN-<%= kavlan_id %>", "type": "kavlan-local", "dhcpd": "ssh kavlan-<%= kavlan_id %> sudo /etc/init.d/isc-dhcp-server"},
+<%       elsif kavlan_id.to_i.between?(4, 9) -%>
+       {"value": 70<%= kavlan_id %>, "name": "KAVLAN-<%= kavlan_id %>", "type": "kavlan", "dhcpd": "sudo /etc/init.d/isc-dhcp-server-<%= kavlan_id %>"},
+<%       elsif kavlan_id.to_i >= 10 -%>
+       {"value": 7<%= kavlan_id %>, "name": "KAVLAN-<%= kavlan_id %>", "type": "kavlan-global","dhcpd": "sudo /etc/init.d/isc-dhcp-server-0"},
+<%       elsif kavlan_id == 'topo'
+           Range.new(*kavlan.split("..").map{|d| Integer(d)}).each do |kavlan_topo_id| -%>
+       {"value": <%= kavlan_topo_id %>, "name": "KAVLAN-<%= kavlan_topo_id %>", "type": "kavlan-topo"},
+<%
+           end
+         end
+       end
+
+       (10..21).each.reject{ |kavlan_id| site_refapi['kavlans'].include?(kavlan_id) }.each do |kavlan_id|
+-%>
+       {"value": 7<%= kavlan_id %>, "name": "KAVLAN-<%= kavlan_id %>", "type": "kavlan-remote"},
+<%
+       end
+-%>
+     ],
+     "switch": [
+<%
+     conf.fetch('devices', []).sort.to_h.each do |dev_id, dev|
+-%>
+       {"name": "<%= dev_id %>", "IP": "<%= dev['ip'] %>", "type": "<%= dev['driver'] %>", <%= dev.has_key?('port')? "\"Port\": #{dev['port']}," : "" %> <%= dev.has_key?('user')? "\"User\": \"#{dev['user']}\"," : "" %> <%= dev.has_key?('password')? "\"Passwd\": \"#{dev['password']}\"," : "" %>},
+<%
+     end
+-%>
+     ]
+}

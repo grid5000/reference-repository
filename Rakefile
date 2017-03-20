@@ -7,7 +7,7 @@ WIKI_DIR = "./generators/wiki"
 
 namespace :puppet do
 
-  all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k]
+  all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k]
 
   all_puppet_tasks.each { |t|
     desc "Generate #{t} configuration"
