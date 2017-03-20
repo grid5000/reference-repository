@@ -1,9 +1,38 @@
+require 'open-uri'
+require 'uri'
+require 'net/http'
+require 'net/https'
 
+#Adding method to mediawiki_api client
+module MediawikiApi
+
+  class Client
+
+    def get_page_content(page_name)
+      get_conn = Faraday.new(url: MW::BASE_URL + "index.php/#{page_name}") do |faraday|
+        faraday.request :multipart
+        faraday.request :url_encoded
+        faraday.use :cookie_jar, jar: @cookies
+        faraday.use FaradayMiddleware::FollowRedirects
+        faraday.adapter Faraday.default_adapter
+      end
+      params = {
+        :token_type => false,
+        :action => 'raw'
+      }
+      params[:token] = get_token(:csrf)
+      res = get_conn.send(:get, '', params)
+      res.body
+    end
+  end
+
+end
 #Defines MediaWiki helpers
-
 module MW
 
-  BASE_URL = "https://www.grid5000.fr/mediawiki/api.php"
+  BASE_URL = "https://www.grid5000.fr/mediawiki/"
+
+  API_URL = BASE_URL + "api.php"
 
   TABLE_START = "{|"
 
@@ -61,5 +90,4 @@ module MW
   def self.bold(text)
     "'''" + text + "'''"
   end
-
 end
