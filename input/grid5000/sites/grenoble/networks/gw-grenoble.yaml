@@ -65,6 +65,7 @@ gw-grenoble:
   linecards:
     2:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      kavlan_pattern: "%LINECARD%:%PORT%"
       backplane_bps: 48000000000
       kind: switch
       rate: 1000000000
@@ -111,6 +112,7 @@ gw-grenoble:
           uid: voltaire-2
     3:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      kavlan_pattern: "%LINECARD%:%PORT%"
       kind: node
       backplane_bps: 48000000000
       rate: 1000000000
@@ -206,6 +208,7 @@ gw-grenoble:
           port: eth1
     4:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      kavlan_pattern: "%LINECARD%:%PORT%"
       backplane_bps: 48000000000
       kind: node
       rate: 1000000000
@@ -300,6 +303,7 @@ gw-grenoble:
           port: eth0
     10:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
+      kavlan_pattern: "%LINECARD%:%PORT%"
       backplane_bps: 48000000000
       kind: other
       rate: 10000000000

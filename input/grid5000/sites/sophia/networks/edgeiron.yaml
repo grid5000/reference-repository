@@ -20,6 +20,7 @@ edgeiron:
   linecards:
     0:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
+      kavlan_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: router
       rate: 1000000000
       ports:
@@ -31,6 +32,7 @@ edgeiron:
           port: ethernet2/2
     1:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
+      kavlan_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
       ports:
@@ -80,6 +82,7 @@ edgeiron:
         21: 
     3:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
+      kavlan_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kind: node
       rate: 1000000000
       ports:
