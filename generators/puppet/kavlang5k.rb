@@ -18,12 +18,10 @@ require 'optparse'
 require_relative '../lib/input_loader'
 require_relative '../lib/hash/hash.rb'
 
-input_data_dir = "../../input/grid5000/"
-
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:output_dir] = "/tmp/puppet-repo"
-options[:conf_dir] = "./conf-examples/"
+options[:conf_dir] = File.expand_path("./conf-examples/", File.dirname(__FILE__))
 
 OptionParser.new do |opts|
   opts.banner = "Usage: kavlang5k.rb [options]"
@@ -60,7 +58,9 @@ puts "Writing kavlan configuration files to: #{options[:output_dir]}"
 puts "Using configuration directory: #{options[:conf_dir]}"
 puts "For site(s): #{options[:sites].join(', ')}"
 
-refapi      = load_yaml_file_hierarchy("../../input/grid5000/")
+input_data_dir = "../../input/grid5000/"
+
+refapi = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
 
 refapi['sites'].each { |site_uid, site_refapi|
 
@@ -70,19 +70,19 @@ refapi['sites'].each { |site_uid, site_refapi|
   if not conf
     warn "No generator configuration for site #{site_uid} found in #{options[:conf_dir]}/kavlang5k.yaml, skipping kavlan.conf"
   else
-    output = ERB.new(File.read('templates/kavlan.conf.erb'), nil, '-').result(binding)
+    output = ERB.new(File.read(File.expand_path('templates/kavlan.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
     output_file = Pathname("#{options[:output_dir]}/modules/kavlang5k/files/#{site_uid}/kavlan.conf")
     output_file.dirname.mkpath()
     File.write(output_file, output)
   end
 
-  output = ERB.new(File.read('templates/kavlan-cluster.conf.erb'), nil, '-').result(binding)
+  output = ERB.new(File.read(File.expand_path('templates/kavlan-cluster.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
   output_file = Pathname("#{options[:output_dir]}/modules/kavlang5k/files/#{site_uid}/#{site_uid}.conf")
   output_file.dirname.mkpath()
   File.write(output_file, output)
 
   (1..9).each do |kavlan_id|
-    output = ERB.new(File.read('templates/kavlan-dhcp.conf.erb'), nil, '-').result(binding)
+    output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
     output_file = Pathname("#{options[:output_dir]}/modules/kavlang5k/files/#{site_uid}/dhcp/dhcpd-#{kavlan_id}.conf")
     output_file.dirname.mkpath()
     File.write(output_file, output)
@@ -90,7 +90,7 @@ refapi['sites'].each { |site_uid, site_refapi|
 
   # Look for site's global kavlan
   kavlan_id = refapi['sites'][site_uid]['kavlans'].each_key.select {|k| k.is_a?(Numeric) and k>9}.pop()
-  output = ERB.new(File.read('templates/kavlan-dhcp.conf.erb'), nil, '-').result(binding)
+  output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
   output_file = Pathname("#{options[:output_dir]}/modules/kavlang5k/files/#{site_uid}/dhcp/dhcpd-0.conf")
   File.write(output_file, output)
 
