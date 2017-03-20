@@ -11,9 +11,11 @@ require 'pp'
 require 'erb'
 require 'pathname'
 require 'optparse'
-require '../lib/input_loader'
+require_relative '../lib/input_loader'
 
-refapi = load_yaml_file_hierarchy("../../input/grid5000/")
+input_data_dir = "../../input/grid5000/"
+
+refapi = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
 
 options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
@@ -306,13 +308,13 @@ refapi["sites"].each { |site_uid, site|
   dns.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(File.join(zones_dir, manual)) # add include statement
 
   output_file = site_uid + '.db'
-  header = ERB.new(File.read('templates/bind-header.erb')).result(binding)
+  header = ERB.new(File.read(File.expand_path('templates/bind-header.erb', File.dirname(__FILE__)))).result(binding)
   File.write(zones_dir + output_file, header + dns.join("\n") + "\n")
   written_files << File.join(zones_dir, output_file).to_s
 
   # Reverse DNS (/modules/bindg5k/files/zones/reverse-*db)
   reverse.each { |output_file, output|
-    header = ERB.new(File.read('templates/bind-header.erb')).result(binding) # do not move outside of the loop (it uses the output_file variable)
+    header = ERB.new(File.read(File.expand_path('templates/bind-header.erb', File.dirname(__FILE__)))).result(binding) # do not move outside of the loop (it uses the output_file variable)
     manual = output_file.sub('.db', '') + '-manual.db'
     output.unshift("$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}") if File.exist?(File.join(zones_dir, manual)) # add include statement
 
@@ -326,7 +328,7 @@ refapi["sites"].each { |site_uid, site|
     puts "Including orphan reverse manual file: #{reverse_manual_file}"
     output_file = reverse_manual_file.sub("-manual.db", ".db")
     next if File.exists?(File.join(zones_dir, output_file))
-    header = ERB.new(File.read('templates/bind-header.erb')).result(binding) # do not move outside of the loop (it uses the output_file variable)
+    header = ERB.new(File.read(File.expand_path('templates/bind-header.erb', File.dirname(__FILE__)))).result(binding) # do not move outside of the loop (it uses the output_file variable)
     content = "$INCLUDE /etc/bind/zones/#{site_uid}/#{reverse_manual_file}"
     File.write(File.join(zones_dir, output_file), header + "\n" + content + "\n")
     written_files << File.join(zones_dir, output_file).to_s
@@ -337,8 +339,8 @@ refapi["sites"].each { |site_uid, site|
   ['global', 'site'].each { |dir|
     conf_dir = Pathname("#{options[:output_dir]}/modules/bindg5k/files/#{dir}/conf")
     conf_dir.mkpath()
-    
-    global_file = ERB.new(File.read('templates/bind-global-site.conf.erb')).result(binding)
+
+    global_file = ERB.new(File.read(File.expand_path('templates/bind-global-site.conf.erb', File.dirname(__FILE__)))).result(binding)
     File.write(conf_dir + "global-#{site_uid}.conf", global_file)
   }
 
