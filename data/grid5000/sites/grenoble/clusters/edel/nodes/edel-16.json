@@ -18,6 +18,27 @@
   "gpu": {
     "gpu": false
   },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.194.16",
+      "kavlan-11": "10.7.194.50",
+      "kavlan-12": "10.11.194.50",
+      "kavlan-13": "10.15.194.50",
+      "kavlan-14": "10.19.194.50",
+      "kavlan-16": "10.27.194.50",
+      "kavlan-18": "10.35.194.50",
+      "kavlan-2": "192.168.210.16",
+      "kavlan-20": "10.43.194.50",
+      "kavlan-21": "10.47.194.50",
+      "kavlan-3": "192.168.226.16",
+      "kavlan-4": "10.4.2.16",
+      "kavlan-5": "10.4.66.16",
+      "kavlan-6": "10.4.130.16",
+      "kavlan-7": "10.4.193.16",
+      "kavlan-8": "10.5.2.16",
+      "kavlan-9": "10.5.66.16"
+    }
+  },
   "main_memory": {
     "ram_size": 25769803776,
     "virtual_size": null
@@ -33,6 +54,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.17.16",
+      "kavlan": true,
       "mac": "08:00:38:36:f3:2c",
       "management": false,
       "mountable": true,
@@ -50,6 +72,7 @@
       "driver": "igb",
       "enabled": false,
       "interface": "Ethernet",
+      "kavlan": false,
       "mac": "08:00:38:36:f3:2d",
       "management": false,
       "mountable": false,
@@ -66,6 +89,7 @@
       "interface": "InfiniBand",
       "ip": "172.18.17.16",
       "ip6": "fe80::a00:3800:137:5ec3",
+      "kavlan": false,
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -79,6 +103,7 @@
       "driver": "mlx4_core",
       "enabled": false,
       "interface": "InfiniBand",
+      "kavlan": false,
       "management": false,
       "mountable": false,
       "mounted": false,
@@ -91,6 +116,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.17.16",
+      "kavlan": false,
       "mac": "08:00:38:36:af:96",
       "management": true,
       "mountable": false,
