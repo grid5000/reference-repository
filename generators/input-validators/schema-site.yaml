@@ -41,7 +41,6 @@ sys_admin_contact: email
 security_contact: email
 user_support_contact: email
 compilation_server: boolean
-kavlan_ip_range: string
 virt_ip_range: string
 storage5k: boolean
 production: boolean
@@ -61,6 +60,8 @@ kavlans:
   <multi>:
     network: string
     gateway: string
+kavlan_ip_range: string
+kavlan_topo: optional_string
 pdus:
   <optional_hash>:
     <multi>:

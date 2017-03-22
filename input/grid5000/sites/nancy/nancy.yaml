@@ -11,7 +11,6 @@ sys_admin_contact: support-staff@lists.grid5000.fr
 security_contact: support-staff@lists.grid5000.fr
 user_support_contact: support-staff@lists.grid5000.fr
 compilation_server: false
-kavlan_ip_range: 10.16.0.0/14
 virt_ip_range: 10.144.0.0/14
 renater_ip: 192.168.4.14
 storage5k: true
@@ -38,7 +37,8 @@ laptops:
 g5ksubnet:
   network: 10.144.0.0/14
   gateway: 10.147.255.254
-
+kavlan_ip_range: 10.16.0.0/14
+kavlan_topo: 1501..1601
 kavlans:
   default:
     network: 172.16.64.0/20
@@ -84,4 +84,3 @@ kavlans:
     network: 10.19.192.0/18
     gateway: 10.19.255.254
 
-  topo: 1501..1601
