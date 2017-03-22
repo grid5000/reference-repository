@@ -13,6 +13,9 @@ class OarPropertiesGenerator < WikiGenerator
 
   #Static information about properties that cannot be infered from ref-api data
   @@properties = {
+    "max_walltime" => {
+      "description" => "Maximum walltime in seconds allowed on this node (for the production queue only)"
+    },
     "cluster_priority" => {
       "description" => "The priority of this resource for job scheduling"
     },
@@ -78,7 +81,7 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The number of Ethernet interface the node has"
     },
     "eth_rate" => {
-      "description" => "The rate of the connected Ethernet interface"
+      "description" => "the maximum rate of connected network interfaces in Gbps"
     },
     "ib" => {
       "description" => "The technology of the infiniband interface"
@@ -87,7 +90,7 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The number of Infiniband interfaces available"
     },
     "ib_rate" => {
-      "description" => "The rate of the connected infiniband interface"
+      "description" => "The rate of the connected infiniband interface in Gbps"
     },
     "myri" => {
       "description" => "The type of Myrinet interfaces available"
@@ -96,7 +99,7 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The number of Myrinet interfaces available"
     },
     "myri_rate" => {
-      "description" => "The rate of the connected Myrinet interface"
+      "description" => "The rate of the connected Myrinet interface in Gbps"
     },
     "disktype" => {
       "description" => "What disk's interface family node's disk is member of ?"
@@ -108,7 +111,7 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The amount of memory in MB per CPU core"
     },
     "memnode" => {
-      "description" => "The amount of memory in MB of the node"
+      "description" => "The total amount of memory in MB of the node"
     },
     "gpu" => {
       "description" => "The type of GPU available"
@@ -123,14 +126,14 @@ class OarPropertiesGenerator < WikiGenerator
 
   #Group properties by categories
   @@categories = {
-    "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority"],
+    "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
     "Hierarchy" => ["cluster", "cpu", "core", "host", "network_address", "ip", "switch"],
     "Hardware" => ["gpu", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "eth_rate", "eth_count", "cpucount", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual"],
     "Miscellaneous" => ["wattmeter", "nodemodel"]
   }
 
   #Existing properties that won't be documented
-  @@ignored_properties = ["maintenance", "state", "max_walltime", "ip_virtual"]
+  @@ignored_properties = ["maintenance", "state", "ip_virtual"]
 
   def get_nodes_properties(site_uid, site)
     properties = {}

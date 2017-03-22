@@ -16,7 +16,7 @@ class MissingProperty <  StandardError; end
 
 MiB = 1024**2
 
-# Get node properties from the reference repo hash
+# Convert node properties from the reference repo hash to oar properties
 # See also: https://www.grid5000.fr/mediawiki/index.php/Reference_Repository
 def get_node_properties(cluster_uid, cluster, node_uid, node)
   h = {} # ouput
