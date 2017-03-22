@@ -49,7 +49,7 @@ end
 
 namespace :wiki do
 
-  all_wiki_tasks = [:cpu_parameters]
+  all_wiki_tasks = [:cpu_parameters, :oar_properties]
 
   all_wiki_tasks.each { |t|
     desc "Generate the media parts for #{t}"

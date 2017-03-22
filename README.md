@@ -19,6 +19,8 @@ rake puppet:dhcpg5k          # Generate dhcpg5k configuration
 
 rake puppet:kadeployg5k      # Generate kadeployg5k configuration
 
+rake puppet:kavlang5k        # Generate kavlang5k configuration
+
 rake puppet:lanpowerg5k      # Generate lanpowerg5k configuration
 
 rake reference-api           # Creates json data from inputs
@@ -26,6 +28,12 @@ rake reference-api           # Creates json data from inputs
 rake validators:homogeneity  # Check homogeneity of clusters
 
 rake validators:schema       # Check input data schema validity
+
+rake wiki:all                # Launch all wiki generators
+
+rake wiki:cpu_parameters     # Generate the media parts for cpu_parameters
+
+rake wiki:oar_properties     # Generate the media parts for oar_properties
 ```
 
 For more information about generators and validators, please see generators/README.md.
