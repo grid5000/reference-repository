@@ -70,7 +70,7 @@ class WikiGenerator
         options[:update] = true
       end
 
-      opts.on('-p', '--print', 'Print the new generated content on stdout') do
+      opts.on('-o', '--print', 'Print the new generated content on stdout') do
         options[:print] = true
       end
 
@@ -90,9 +90,12 @@ class WikiGenerator
 
   #Execute actions on generator based on given options
   def self.exec(generator, options)
-    generator.login(options)
     generator.generate_content()
 
+    #Login only if we need to
+    if (options[:diff] || options[:update])
+      generator.login(options)
+    end
     if (options[:diff])
       generator.diff_page
     end

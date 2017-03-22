@@ -2,6 +2,7 @@ require 'open-uri'
 require 'uri'
 require 'net/http'
 require 'net/https'
+require 'mediawiki_api'
 
 #Adding method to mediawiki_api client
 module MediawikiApi
@@ -27,6 +28,14 @@ module MediawikiApi
   end
 
 end
+
+#Defines global Grid5000 helpers (TODO move to its own file once it is big enough)
+module G5K
+
+  SITES = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
+
+end
+
 #Defines MediaWiki helpers
 module MW
 
@@ -47,6 +56,10 @@ module MW
   TABLE_CELL = "|"
 
   LINE_FEED = "\n"
+
+  LIST_ITEM = "*"
+
+  NUMBERED_LIST_ITEM = "#"
 
   HTML_LINE_FEED = "<br />"
 
@@ -86,8 +99,17 @@ module MW
   def self.italic(text)
     "''" + text + "''"
   end
-
+ 
   def self.bold(text)
     "'''" + text + "'''"
   end
+
+  def self.heading(text, level = 1)
+    "#{'=' * level} " + text + " #{'=' * level}"
+  end
+
+  def self.code(text)
+    "<code>" + text + "</code>"
+  end   
+
 end
