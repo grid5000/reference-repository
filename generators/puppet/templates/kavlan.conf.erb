@@ -30,11 +30,7 @@
        {"value": 70<%= kavlan_id %>, "name": "KAVLAN-<%= kavlan_id %>", "type": "kavlan", "dhcpd": "sudo /etc/init.d/isc-dhcp-server-<%= kavlan_id %>"},
 <%       elsif kavlan_id.to_i >= 10 -%>
        {"value": 7<%= kavlan_id %>, "name": "KAVLAN-<%= kavlan_id %>", "type": "kavlan-global","dhcpd": "sudo /etc/init.d/isc-dhcp-server-0"},
-<%       elsif kavlan_id == 'topo'
-           Range.new(*kavlan.split("..").map{|d| Integer(d)}).each do |kavlan_topo_id| -%>
-       {"value": <%= kavlan_topo_id %>, "name": "KAVLAN-<%= kavlan_topo_id %>", "type": "kavlan-topo"},
 <%
-           end
          end
        end
 
@@ -42,6 +38,13 @@
 -%>
        {"value": 7<%= kavlan_id %>, "name": "KAVLAN-<%= kavlan_id %>", "type": "kavlan-remote"},
 <%
+       end
+
+       if site_refapi.has_key?('kavlan_topo')
+         Range.new(*site_refapi['kavlan_topo'].split("..").map{|d| Integer(d)}).each do |kavlan_topo_id| -%>
+       {"value": <%= kavlan_topo_id %>, "name": "KAVLAN-<%= kavlan_topo_id %>", "type": "kavlan-topo"},
+<%
+         end
        end
 -%>
      ],
