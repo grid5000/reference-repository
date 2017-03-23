@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'pp'
 
 require_relative '../lib/input_loader'
@@ -74,9 +75,9 @@ class OarPropertiesGenerator < WikiGenerator
     "cpufreq" => {
       "description" => "The frequency in GHz of resource's CPU"
     },
-    "cpucount" => { #Unused ?
-      "description" => "The number of CPUs"
-    },
+    # "cpucount" => { #Unused ?
+    #   "description" => "The number of CPUs"
+    # },
     "eth_count" => {
       "description" => "The number of Ethernet interface the node has"
     },
@@ -121,6 +122,10 @@ class OarPropertiesGenerator < WikiGenerator
     },
     "wattmeter" => {
       "description" => "The type of wattmeter available"
+    },
+    "mic" => {
+      "description" => "Intel many integrated core architecture support",
+      "value_type" => "Boolean"
     }
   }
 
@@ -128,7 +133,7 @@ class OarPropertiesGenerator < WikiGenerator
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
     "Hierarchy" => ["cluster", "cpu", "core", "host", "network_address", "ip", "switch"],
-    "Hardware" => ["gpu", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "eth_rate", "eth_count", "cpucount", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual"],
+    "Hardware" => ["gpu", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel"]
   }
 
@@ -191,8 +196,12 @@ class OarPropertiesGenerator < WikiGenerator
     }
 
     oar_properties.each { |prop, prop_hash|
-      #Limit possible values to 20 elements
-      prop_hash["values"].slice!(0...-20)
+      if (prop_hash["values"].length > 20)
+        #Limit possible values to 20 elements and mark the list as truncated
+        prop_hash["values"].slice!(0...-20)
+        prop_hash["values"].push("...")
+      end
+      @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ")
     }
 
     @generated_content = "Properties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
@@ -206,8 +215,7 @@ class OarPropertiesGenerator < WikiGenerator
         @generated_content += @@properties[property]["description"] + MW::LINE_FEED
         value_type = get_value_type(property, values)
         @generated_content += MW::LIST_ITEM + " Value type: " + MW::code(value_type) + MW::LINE_FEED
-        possible_values = @@properties[property]["possible_values"] || values.join(", ")
-        @generated_content += MW::LIST_ITEM + " Possible values: " + MW::code(possible_values) + MW::LINE_FEED
+        @generated_content += MW::LIST_ITEM + " Possible values: " + MW::code(@@properties[property]["possible_values"]) + MW::LINE_FEED
       }
     }
   end
