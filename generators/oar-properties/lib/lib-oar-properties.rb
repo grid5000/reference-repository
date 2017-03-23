@@ -91,10 +91,14 @@ def get_node_properties(cluster_uid, cluster, node_uid, node)
     h['gpu_count'] = 0
   end
 
+  if (node['mic'])
+    h['mic'] = "YES"
+  else
+    h['mic'] = "NO"
+  end
+
   node['monitoring'] ||= {}
   h['wattmeter'] = case node['monitoring']['wattmeter'] when true; true; when false; false when nil; false; else node['monitoring']['wattmeter'].upcase end
-
-  # h['rconsole'] = node['monitoring']['rconsole']
 
   h['cluster_priority'] = (cluster['priority'] || Time.parse(cluster['created_at'].to_s).strftime('%Y%m')).to_i
   
@@ -193,7 +197,6 @@ def ignore_keys()
                  "jobs", # This property exists when a job is running
                  "last_available_upto",
                  "last_job_date",
-                 "mic", # TODO
                  "network_address", # TODO
                  "next_finaud_decision",
                  "next_state",
