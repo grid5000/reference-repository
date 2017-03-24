@@ -153,6 +153,10 @@ options[:ssh][:host] = 'oar.%s.g5kadmin' unless options[:ssh][:host]
 options[:ssh][:params] ||= {}
 options[:diff] = false unless options[:diff]
 
+if options[:output] && options[:output] != true && !options[:output].include?("%s") && options[:sites].length > 1
+  raise "Can't write several sites to only one file '#{options[:output]}' (add '%s' to the file name to create one file per site)"
+end
+
 puts "Options: #{options}" if options[:verbose]
 
 puts "Hint: You might want to use either --verbose, --output or --exec." unless options[:verbose] || options[:output] || options[:exec]
@@ -328,7 +332,7 @@ if options[:output] || options[:exec]
   nodelist_properties[opt].each { |site_uid, site_properties|
 
     # Init
-    options[:output].is_a?(String) ? o = File.open(options[:output].gsub("%s", site_uid),'w') : o = $stdout.dup
+    options[:output].is_a?(String) ? o = File.open(options[:output].gsub("%s", site_uid), 'w') : o = $stdout.dup
     ssh_cmd = []
 
     create_node_header = false
