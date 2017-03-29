@@ -12,8 +12,7 @@ namespace :puppet do
   all_puppet_tasks.each { |t|
     desc "Generate #{t} configuration"
     task t do
-      puts "#{PUPPET_DIR}/#{t}.rb #{$CMD_ARGS}"
-      ruby "#{PUPPET_DIR}/#{t}.rb #{$CMD_ARGS}"
+      invoke_script "#{PUPPET_DIR}/#{t}.rb"
     end
   }
 
@@ -26,8 +25,7 @@ namespace :oar do
 
   desc "Generate oar properties"
   task :properties do
-    puts "#{OAR_DIR}/oar-properties.rb #{$CMD_ARGS}"
-    ruby "#{OAR_DIR}/oar-properties.rb #{$CMD_ARGS}"
+    invoke_script "#{OAR_DIR}/oar-properties.rb"
   end
 
 end
@@ -36,14 +34,12 @@ namespace :validators do
 
   desc "Check homogeneity of clusters"
   task "homogeneity" do
-    puts "ruby #{VALIDATORS_DIR}/check-cluster-homogeneity.rb #{$CMD_ARGS}"
-    system ("ruby #{VALIDATORS_DIR}/check-cluster-homogeneity.rb #{$CMD_ARGS}")
+    invoke_script "#{VALIDATORS_DIR}/check-cluster-homogeneity.rb"
   end
 
   desc "Check input data schema validity"
   task "schema" do
-    puts "ruby #{VALIDATORS_DIR}/yaml-input-schema-validator.rb #{$CMD_ARGS}"
-    system ("ruby #{VALIDATORS_DIR}/yaml-input-schema-validator.rb #{$CMD_ARGS}")
+    invoke_script "#{VALIDATORS_DIR}/yaml-input-schema-validator.rb"
   end
 end
 
@@ -54,8 +50,7 @@ namespace :wiki do
   all_wiki_tasks.each { |t|
     desc "Generate the media parts for #{t}"
     task t do
-      puts "#{WIKI_DIR}/#{t}.rb #{$CMD_ARGS}"
-      ruby "#{WIKI_DIR}/#{t}.rb #{$CMD_ARGS}"
+      invoke_script "#{WIKI_DIR}/#{t}.rb"
     end
   }
 
@@ -65,10 +60,19 @@ namespace :wiki do
 end
 
 desc "Creates json data from inputs"
-task "reference-api" => ["validators:homogeneity", "validators:schema"] do
-  #no args needed here
-  puts "#{REFAPI_DIR}/reference-api.rb"
-  ruby "#{REFAPI_DIR}/reference-api.rb"
+task "reference-api" do
+  invoke_script "#{REFAPI_DIR}/reference-api.rb"
+end
+
+#Some scripts may return status != 0 (validators, errors, ...)
+#Catch errors and exit properly with status 1 instead of getting Rake errors
+def invoke_script(script)
+  puts "Running #{script} #{$CMD_ARGS}"
+  begin
+    ruby "#{script} #{$CMD_ARGS}"
+  rescue => e
+    exit 1
+  end
 end
 
 #Hack rake: call only the first task and consider the rest as arguments to this task
