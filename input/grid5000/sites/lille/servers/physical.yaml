@@ -144,6 +144,7 @@ srv-data:
   kind: physical
   alias:
     - nfs
+    - public
   warranty: 03.10.2021
   serial: 5Z4B032
   network_adapters:
@@ -186,6 +187,10 @@ chimint-srv2:
       mounted: true
       mac: b8:ac:6f:96:8f:4c
       ip: 192.168.66.241
+    adm:
+      mounted: true
+      ip: 172.17.47.3
+      mac: 24:6e:96:2c:9a:40
     bmc:
       mounted: true
       ip: 172.17.46.3
@@ -209,7 +214,7 @@ chimint-srv2:
 
 welsh:
   kind: physical
-  alias:
+  alias: [ntp]
   warranty: 13.10.2021
   serial: 5L2DLG2
   network_adapters:

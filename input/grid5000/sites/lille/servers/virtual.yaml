@@ -21,6 +21,9 @@ puppet:
       ip: 172.17.47.103
 oar:
   kind: virtual
+  alias:
+    - oar-server
+    - oardb
   network_adapters:
     default:
       ip: 172.16.47.104
@@ -28,6 +31,9 @@ oar:
       ip: 172.17.47.104
 kadeploy:
   kind: virtual
+  alias:
+    - deploy
+    - kadeploy-server
   network_adapters:
     default:
       ip: 172.16.47.105
@@ -35,6 +41,10 @@ kadeploy:
       ip: 172.17.47.105
 flille:
   kind: virtual
+  alias:
+    - frontale
+    - frontend
+    - oar-api
   network_adapters:
     default:
       ip: 172.16.47.106
@@ -91,6 +101,7 @@ www:
       ip: 172.17.47.123
 weathermap:
   kind: virtual
+  alias: [cacti]
   network_adapters:
     default:
       ip: 172.16.47.126
@@ -119,6 +130,7 @@ syslog:
       ip: 172.17.47.129
 kavlan:
   kind: virtual
+  alias: [kavlan-dhcp]
   network_adapters:
     default:
       ip: 172.16.47.130
@@ -168,6 +180,7 @@ proxy:
       ip: 172.17.47.137
 smokeping:
   kind: virtual
+  alias: [smokeping-global]
   network_adapters:
     default:
       ip: 172.16.47.138
@@ -175,6 +188,9 @@ smokeping:
       ip: 172.17.47.138
 kadeploy-devel:
   kind: virtual
+  alias:
+    - deploy-devel
+    - kadeploy-server-devel
   network_adapters:
     default:
       ip: 172.16.47.139
@@ -192,6 +208,9 @@ puppet4:
       ip: 172.16.47.142
 supervision2:
   kind: virtual
+  alias:
+    - nagios
+    - munin
   network_adapters:
     default:
       ip: 172.16.47.143
