@@ -60,9 +60,9 @@ def write_site_zones(site_uid, site, zones_dir, dns_entries)
     output_file = File.join(zones_dir, file_name)
     FileUtils.mkdir_p(File.dirname(output_file))
     header = ERB.new(File.read(File.expand_path('templates/bind-header.erb', File.dirname(__FILE__)))).result(binding)
-    File.write(output_file, header + "\n" + entries["addr"].join("\n") + "\n", node: 'wa+')
+    File.write(output_file, header + "\n" + entries["addr"].join("\n") + "\n\n", node: 'wa+')
     if (! entries["cnames"].empty?)
-      File.write(output_file, "\n; CNAMES\n" + entries["cnames"].join("\n") + "\n", mode: 'a')
+      File.write(output_file, "\n; CNAMES\n" + entries["cnames"].join("\n") + "\n\n", mode: 'a')
     end
     $written_files << output_file
   }
@@ -70,7 +70,7 @@ def write_site_zones(site_uid, site, zones_dir, dns_entries)
   # DNS (/modules/bindg5k/files/zones/nancy.db)
   manual = site_uid + '-manual.db'
   if File.exist?(File.join(zones_dir, manual)) # add include statement
-    site_zone_content += "$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}"
+    site_zone_content += "$INCLUDE /etc/bind/zones/#{site_uid}/#{manual}\n\n"
   end
 
   output_file = site_uid + '.db'
