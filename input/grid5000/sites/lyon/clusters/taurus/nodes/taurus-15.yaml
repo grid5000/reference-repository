@@ -19,7 +19,7 @@ taurus-15:
     name: PowerEdge R720
     serial: 9HTHD5J
   main_memory:
-    ram_size: 33285996544
+    ram_size: 34359738368
   network_adapters:
     bmc:
       ip: 172.17.48.15
@@ -31,38 +31,32 @@ taurus-15:
       ip: 172.16.48.15
       mac: a0:36:9f:09:c1:58
       management: false
-      mounted: true
       rate: 10000000000
     eth1:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:09:c1:5a
       management: false
-      mounted: false
     eth2:
       driver: igb
       interface: Ethernet
       mac: bc:30:5b:ef:22:10
       management: false
-      mounted: false
     eth3:
       driver: igb
       interface: Ethernet
       mac: bc:30:5b:ef:22:11
       management: false
-      mounted: false
     eth4:
       driver: igb
       interface: Ethernet
       mac: bc:30:5b:ef:22:12
       management: false
-      mounted: false
     eth5:
       driver: igb
       interface: Ethernet
       mac: bc:30:5b:ef:22:13
       management: false
-      mounted: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -88,10 +82,11 @@ taurus-15:
     version: E5-2630
   storage_devices:
     sda:
+      by_id: node-was-not-available-to-retrieve-this-value
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0"
       model: PERC H710
       rev: 3.13
       size: 598879502336
       vendor: DELL
-      by_id: node-was-not-available-to-retrieve-this-value
   supported_job_types:
     virtual: ivt
