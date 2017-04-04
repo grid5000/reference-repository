@@ -60,6 +60,9 @@ mysql:
       ip: 172.17.47.107
 supervision:
   kind: virtual
+  alias:
+    - nagios
+    - munin
   network_adapters:
     default:
       ip: 172.16.47.109
@@ -209,9 +212,6 @@ puppet4:
       ip: 172.16.47.142
 supervision2:
   kind: virtual
-  alias:
-    - nagios
-    - munin
   network_adapters:
     default:
       ip: 172.16.47.143
