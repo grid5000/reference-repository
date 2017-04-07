@@ -6,3 +6,4 @@ gem "diffy"
 gem "mediawiki_api"
 gem "net-ssh"
 gem "ruby-ip"
+gem 'dns-zone'
