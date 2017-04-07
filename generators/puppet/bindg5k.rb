@@ -566,6 +566,7 @@ refapi["sites"].each { |site_uid, site|
   site_zone_changed = false
 
   site_records.each{ |type, records|
+    next if records.empty?
     zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
     zone = load_zone(zone_file_path, site_uid, site, false)
     if diff_zone_file(zone, records)
