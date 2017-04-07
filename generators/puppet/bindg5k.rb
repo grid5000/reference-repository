@@ -156,6 +156,7 @@ def get_servers_records(site)
       records << new_record
 
       if server['alias']
+        #Reject global aliases (See 7513)
         server['alias'].reject{ |cname| cname.include?('.') }.each{ |cname|
           cname_record = DNS::Zone::RR::CNAME.new
           cname_record.label = cname
@@ -239,7 +240,7 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       net_hash["alias"].each { |cname|
         cname_record = DNS::Zone::RR::CNAME.new
         cname_record.label = "#{cluster_uid}-#{node_id}-#{cname}"
-        cname_record.domainname = "#{cluster_uid}-#{node_id}"
+        cname_record.domainname = "#{cluster_uid}-#{node_id}-#{net_uid}"
         records << cname_record
       }
     end
