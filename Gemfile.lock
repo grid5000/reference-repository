@@ -16,12 +16,33 @@ GEM
     hashdiff (0.3.2)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    ipaddress (0.8.3)
+    json (2.0.3)
     mediawiki_api (0.7.1)
       faraday (~> 0.9, >= 0.9.0)
       faraday-cookie_jar (~> 0.0, >= 0.0.6)
       faraday_middleware (~> 0.10, >= 0.10.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     multipart-post (2.0.0)
     net-ssh (4.1.0)
+    net-ssh-gateway (2.0.0)
+      net-ssh (>= 4.0.0)
+    net-ssh-multi (1.2.1)
+      net-ssh (>= 2.6.5)
+      net-ssh-gateway (>= 1.2.0)
+    netrc (0.11.0)
+    peach (0.5.1)
+    rest-client (2.0.1)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
+    ruby-cute (0.7)
+      ipaddress (>= 0.8)
+      json (>= 1.8)
+      net-ssh-multi (>= 1.2)
+      rest-client (>= 1.6)
     ruby-ip (0.9.3)
     unf (0.1.4)
       unf_ext
@@ -37,4 +58,6 @@ DEPENDENCIES
   hashdiff
   mediawiki_api
   net-ssh
+  peach
+  ruby-cute
   ruby-ip
