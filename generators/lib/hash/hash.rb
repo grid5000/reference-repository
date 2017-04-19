@@ -109,7 +109,7 @@ class ::Hash
           self[key_x] = deep_merge_entries(deep_copy(value_ab), value_x).clone
         }
       end
-          
+
       # Delete entry "PREFIX[a-b]"
       self.delete(key_ab)
       keys.delete(key_ab)
@@ -143,9 +143,10 @@ class ::Hash
 
   # Custom iterator. Only consider entries corresponding to cluster_list and node_list. Sorted by node_uid.
   def each_filtered_node_uid(cluster_list, node_list)
-    self.each_sort_by_node_uid { |node_uid, properties| 
+    self.each_sort_by_node_uid { |key, properties|
+      node_uid, = key
       cluster_uid = node_uid.split(/-/).first
-      
+
       if (! cluster_list || cluster_list.include?(cluster_uid)) &&
           (! node_list || node_list.include?(node_uid))
         yield node_uid, properties
