@@ -51,13 +51,16 @@ nodes:
       eth0:
         enabled: true
         mountable: true
+        mounted: true
         bridged: true
+        rate: 10.0e+9
       eth1:
-        network_address: none
         enabled: true
         mountable: true
-        rate: 10.0e+9
+        mounted: false
         bridged: false
+        network_address: none
+        rate: 10.0e+9
       bmc:
         interface: Ethernet
         rate: 1000000000
