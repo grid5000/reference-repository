@@ -47,26 +47,28 @@ nodes:
       eth0:
         enabled: true
         mountable: true
-        bridged: true
         mounted: true
+        bridged: true
+        rate: 1.0e+9
       eth1:
         enabled: true
         mountable: true
         mounted: false
-        rate: 1000000000
         bridged: false
+        rate: 1.0e+9
       eth2:
         enabled: true
         mountable: true
-        kavlan: false
         mounted: false
         bridged: false
+        rate: 10.0e+9
+        kavlan: false
       eth3:
         enabled: false
         mountable: false
         mounted: false
-        rate: 10.0e+9
         bridged: false
+        rate: 10.0e+9
       bmc:
         interface: Ethernet
         rate: 1000000000
