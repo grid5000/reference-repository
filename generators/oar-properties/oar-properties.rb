@@ -257,13 +257,16 @@ Those nodes should be marked as 'retired' in the reference-repo.\n"
     properties['diff'][site_uid] = {}
     site_properties.each do |type, type_properties|
       properties['diff'][site_uid][type] = {}
-      type_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) do |node_uid, properties_ref|
+      type_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) do |key, properties_ref|
+        # As an example, key can be equal to 'grimoire-1' for default resources or
+        # ['grimoire-1', 1] for disk resources (disk n°1 of grimoire-1)
+        node_uid, = key
+
         if properties_ref['state'] == 'Dead'
           skipped_nodes << node_uid
           next
         end
 
-        key = (type == 'default') ? node_uid : [node_uid, properties_ref['disk']]
         properties_oar = properties['oar'][site_uid][type][key]
 
         diff = diff_properties(type, properties_oar, properties_ref) # Note: this deletes some properties from the input parameters
@@ -384,13 +387,16 @@ if options[:output] || options[:exec]
     end
 
     # Build and output disk commands
-    site_properties['disk'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |node_uid, disk_properties|
+    site_properties['disk'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |key, disk_properties|
+      # As an example, key can be equal to 'grimoire-1' for default resources or
+      # ['grimoire-1', 1] for disk resources (disk n°1 of grimoire-1)
+      node_uid, = key
       host = [node_uid, site_uid, 'grid5000.fr'].join('.')
 
       next if skipped_nodes.include?(node_uid)
 
       # Create a new disk
-      if opt == 'ref' || properties['oar'][site_uid]['disk'][node_uid].nil?
+      if opt == 'ref' || properties['oar'][site_uid]['disk'][key].nil?
         cmd << oarcmd_create_disk(host, disk_properties)
       end
 

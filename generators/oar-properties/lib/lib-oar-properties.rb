@@ -177,10 +177,10 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
       node_address = [node_uid, site_uid, 'grid5000.fr'].join('.')
       h['cluster'] = cluster_uid
       h['host'] = node_address
-      h['network_address'] = node_address
+      h['network_address'] = ''
       h['disk'] = index
       h['diskpath'] = device['by_path']
-      h['cpuset'] = "disk-#{index}"
+      h['cpuset'] = 0
       properties[key] = h
     end
   end
@@ -290,9 +290,14 @@ def diff_properties(type, properties_oar, properties_ref)
   properties_oar ||= {}
   properties_ref ||= {}
 
-  ignore_keys = ignore_keys()
-  ignore_keys.each { |key| properties_oar.delete(key) }
-  ignore_keys.each { |key| properties_ref.delete(key) }
+  if type == 'default'
+    ignore_keys = ignore_keys()
+    ignore_keys.each { |key| properties_oar.delete(key) }
+    ignore_keys.each { |key| properties_ref.delete(key) }
+  elsif type == 'disk'
+    properties_oar.select! { |k, _v| %w(cluster host network_address disk diskpath cpuset).include?(k) }
+    properties_ref.select! { |k, _v| %w(cluster host network_address disk diskpath cpuset).include?(k) }
+  end
 
   # Ignore the 'state' property only if the node is not 'Dead' according to
   # the reference-repo.
@@ -310,6 +315,7 @@ def diff_properties(type, properties_oar, properties_ref)
 end
 
 # These keys will not be created neither compared with the -d option
+# ignore_keys is only applied to resources of type 'default'
 def ignore_keys()
   # default OAR at resource creation:
   #  available_upto: '2147483647'
@@ -366,6 +372,7 @@ def ignore_keys()
     "scheduler_priority",
     "state",
     "state_num",
+    "switch",
     "subnet_address",
     "subnet_prefix",
     "suspended_jobs",
@@ -376,6 +383,8 @@ def ignore_keys()
     "id", # id from API (= resource_id from oarnodes)
     "api_timestamp", # from API
     "links", # from API
+    "disk",
+    "diskpath"
   ]
   return ignore_keys
 end
@@ -434,7 +443,7 @@ end
 def oarcmd_set_node_properties(host, default_properties)
   return '' if default_properties.size == 0
   command  = "echo; echo 'Setting properties for #{host}:'; echo\n"
-  command += "oarnodesetting --sql \"network_address='#{host}' and type='default'\" -p "
+  command += "oarnodesetting --sql \"host='#{host}' and type='default'\" -p "
   command +=
     default_properties.to_a.map{ |(k,v)|
     v = "YES" if v == true
@@ -450,7 +459,7 @@ def oarcmd_create_disk(host, disk_properties)
   disk_exist = "disk_exist '#{host}' '#{disk}'"
   command = "echo; echo 'Adding disk #{disk} on host #{host}:'\n"
   command += "#{disk_exist} && echo '=> disk already exists'\n"
-  command += "#{disk_exist} || oarnodesetting -a -h '' -p network_address='#{host}' -p host='#{host}' -p type='disk' -p disk=#{disk}"
+  command += "#{disk_exist} || oarnodesetting -a -h '' -p host='#{host}' -p network_address='' -p type='disk' -p disk=#{disk}"
   return command + "\n\n"
 end
 
@@ -460,7 +469,7 @@ def oarcmd_set_disk_properties(host, disk_properties)
   disk = disk_properties['disk']
   diskpath = disk_properties['diskpath']
   command = "echo; echo 'Setting properties for disk #{disk} on host #{host}:'; echo\n"
-  command += "oarnodesetting --sql \"network_address='#{host}' and type='disk' and disk=#{disk}\" -p cpu=0 -p core=0 -p host='#{host}' -p cluster='#{cluster_uid}' -p cpuset='disk-#{disk}' -p diskpath='#{diskpath}'"
+  command += "oarnodesetting --sql \"host='#{host}' and type='disk' and disk=#{disk}\" -p cpu=0 -p core=0 -p network_address='' -p cluster='#{cluster_uid}' -p cpuset=0 -p diskpath='#{diskpath}'"
   command += "\n\n"
   return command
 end

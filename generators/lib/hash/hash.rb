@@ -1,3 +1,4 @@
+# coding: utf-8
 # Monkey patching Ruby's Hash class
 
 # Merge a and b. If a and b are hashes, they are recursively merged.
@@ -144,12 +145,14 @@ class ::Hash
   # Custom iterator. Only consider entries corresponding to cluster_list and node_list. Sorted by node_uid.
   def each_filtered_node_uid(cluster_list, node_list)
     self.each_sort_by_node_uid { |key, properties|
+      # As an example, key can be equal to 'grimoire-1' for default resources or
+      # ['grimoire-1', 1] for disk resources (disk n°1 of grimoire-1)
       node_uid, = key
       cluster_uid = node_uid.split(/-/).first
 
       if (! cluster_list || cluster_list.include?(cluster_uid)) &&
           (! node_list || node_list.include?(node_uid))
-        yield node_uid, properties
+        yield key, properties
       end
     }
   end
