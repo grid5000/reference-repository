@@ -390,19 +390,19 @@ if options[:output] || options[:exec]
     site_properties['disk'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |key, disk_properties|
       # As an example, key can be equal to 'grimoire-1' for default resources or
       # ['grimoire-1', 1] for disk resources (disk n°1 of grimoire-1)
-      node_uid, = key
+      node_uid, disk = key
       host = [node_uid, site_uid, 'grid5000.fr'].join('.')
 
       next if skipped_nodes.include?(node_uid)
 
       # Create a new disk
       if opt == 'ref' || properties['oar'][site_uid]['disk'][key].nil?
-        cmd << oarcmd_create_disk(host, disk_properties)
+        cmd << oarcmd_create_disk(host, disk)
       end
 
       # Update the disk properties
       unless disk_properties.empty?
-        cmd << oarcmd_set_disk_properties(host, disk_properties)
+        cmd << oarcmd_set_disk_properties(host, disk, disk_properties)
         cmd << oarcmd_separator
       end
 

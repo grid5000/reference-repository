@@ -188,12 +188,13 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
 end
 
 def get_oar_default_properties(site_uid, filename, options)
- oarnodes = get_oar_data(site_uid, filename, options)
+  oarnodes = get_oar_data(site_uid, filename, options)
 
   # Handle the two possible input format from oarnodes -Y:
   # given by a file, and from the OAR API
   if oarnodes.is_a?(Hash)
-    oarnodes = oarnodes.select { |_k, v| v['type'] == 'default' }.map { |v| [get_ids(v['host'])['node_uid'], v] }.to_h
+    oarnodes = oarnodes.map { |_k, v| v['type'] == 'default' ? [get_ids(v['host'])['node_uid'], v] : [nil, nil] }.to_h
+    oarnodes.delete(nil)
   elsif oarnodes.is_a?(Array)
     oarnodes = oarnodes.select { |v| v['type'] == 'default' }.map { |v| [get_ids(v['host'])['node_uid'], v] }.to_h
   else
@@ -208,9 +209,10 @@ def get_oar_disk_properties(site_uid, filename, options)
   # Handle the two possible input format from oarnodes -Y:
   # given by a file, and from the OAR API
   if oarnodes.is_a?(Hash)
-    oarnodes = oarnodes.select { |_k, v| v['type'] == 'disk' }.map { |v| [[v['host'].split('.').first, v['disk']], v] }.to_h
+    oarnodes = oarnodes.map { |_k, v|  v['type'] == 'disk' ? [[get_ids(v['host'])['node_uid'], v['disk']], v] : [nil, nil] }.to_h
+    oarnodes.delete(nil)
   elsif oarnodes.is_a?(Array)
-    oarnodes = oarnodes.select { |v| v['type'] == 'disk' }.map { |v| [[v['host'].split('.').first, v['disk']], v] }.to_h
+    oarnodes = oarnodes.select { |v| v['type'] == 'disk' }.map { |v| [[get_ids(v['host'])['node_uid'], v['disk']], v] }.to_h
   else
     raise 'Invalid input format for OAR properties'
   end
@@ -453,9 +455,7 @@ def oarcmd_set_node_properties(host, default_properties)
   return command + "\n\n"
 end
 
-def oarcmd_create_disk(host, disk_properties)
-  disk = disk_properties['disk']
-  id = get_ids(host)
+def oarcmd_create_disk(host, disk)
   disk_exist = "disk_exist '#{host}' '#{disk}'"
   command = "echo; echo 'Adding disk #{disk} on host #{host}:'\n"
   command += "#{disk_exist} && echo '=> disk already exists'\n"
@@ -463,13 +463,16 @@ def oarcmd_create_disk(host, disk_properties)
   return command + "\n\n"
 end
 
-def oarcmd_set_disk_properties(host, disk_properties)
+def oarcmd_set_disk_properties(host, disk, disk_properties)
   return '' if disk_properties.size == 0
-  cluster_uid = host.split('-')[0]
-  disk = disk_properties['disk']
-  diskpath = disk_properties['diskpath']
   command = "echo; echo 'Setting properties for disk #{disk} on host #{host}:'; echo\n"
-  command += "oarnodesetting --sql \"host='#{host}' and type='disk' and disk=#{disk}\" -p cpu=0 -p core=0 -p network_address='' -p cluster='#{cluster_uid}' -p cpuset=0 -p diskpath='#{diskpath}'"
+  command += "oarnodesetting --sql \"host='#{host}' and type='disk' and disk=#{disk}\" -p "
+  command +=
+    disk_properties.to_a.map{ |(k,v)|
+    v = "YES" if v == true
+    v = "NO"  if v == false
+    ! v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
+  }.compact.join(' -p ')
   command += "\n\n"
   return command
 end
