@@ -141,14 +141,11 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   h['cluster_priority'] = (cluster['priority'] || Time.parse(cluster['created_at'].to_s).strftime('%Y%m')).to_i
 
-  h['production'] = false # default
-  h['production'] = node['supported_job_types']['queues'].include?('production') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
-
   h['max_walltime'] = 0 # default
   h['max_walltime'] = node['supported_job_types']['max_walltime'] if node['supported_job_types'] && node['supported_job_types'].has_key?('max_walltime')
 
-  h['maintenance'] = false # default
-  h['maintenance'] = node['supported_job_types']['queues'].include?('testing') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
+  h['production'] = get_production_property(node)
+  h['maintenance'] = get_maintenance_property(node)
 
   # Disk reservation
   h['disk_reservation_count'] = node['storage_devices'].select { |_k, v| v['reservation'] }.length
@@ -167,6 +164,18 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   return h
 end
 
+def get_production_property(node)
+  production = false # default
+  production = node['supported_job_types']['queues'].include?('production') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
+  return production
+end
+
+def get_maintenance_property(node)
+  maintenance = false # default
+  maintenance = node['supported_job_types']['queues'].include?('testing') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
+  return maintenance
+end
+
 def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
   properties = {}
   node['storage_devices'].to_a.each_with_index do |v, index|
@@ -178,6 +187,10 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
       h['cluster'] = cluster_uid
       h['host'] = node_address
       h['network_address'] = ''
+      h['available_upto'] = 0
+      h['deploy'] = 'YES'
+      h['production'] = get_production_property(node)
+      h['maintenance'] = get_maintenance_property(node)
       h['disk'] = index
       h['diskpath'] = device['by_path']
       h['cpuset'] = 0
@@ -297,8 +310,9 @@ def diff_properties(type, properties_oar, properties_ref)
     ignore_keys.each { |key| properties_oar.delete(key) }
     ignore_keys.each { |key| properties_ref.delete(key) }
   elsif type == 'disk'
-    properties_oar.select! { |k, _v| %w(cluster host network_address disk diskpath cpuset).include?(k) }
-    properties_ref.select! { |k, _v| %w(cluster host network_address disk diskpath cpuset).include?(k) }
+    check_keys = %w(cluster host network_address available_upto deploy production maintenance disk diskpath cpuset)
+    properties_oar.select! { |k, _v| check_keys.include?(k) }
+    properties_ref.select! { |k, _v| check_keys.include?(k) }
   end
 
   # Ignore the 'state' property only if the node is not 'Dead' according to
@@ -446,13 +460,17 @@ def oarcmd_set_node_properties(host, default_properties)
   return '' if default_properties.size == 0
   command  = "echo; echo 'Setting properties for #{host}:'; echo\n"
   command += "oarnodesetting --sql \"host='#{host}' and type='default'\" -p "
-  command +=
-    default_properties.to_a.map{ |(k,v)|
+  command += properties_internal(default_properties)
+  return command + "\n\n"
+end
+
+def properties_internal(properties)
+  str = properties.to_a.map do |(k, v)|
     v = "YES" if v == true
     v = "NO"  if v == false
-    ! v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
-  }.compact.join(' -p ')
-  return command + "\n\n"
+    !v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
+  end.compact.join(' -p ')
+  return str
 end
 
 def oarcmd_create_disk(host, disk)
@@ -467,14 +485,8 @@ def oarcmd_set_disk_properties(host, disk, disk_properties)
   return '' if disk_properties.size == 0
   command = "echo; echo 'Setting properties for disk #{disk} on host #{host}:'; echo\n"
   command += "oarnodesetting --sql \"host='#{host}' and type='disk' and disk=#{disk}\" -p "
-  command +=
-    disk_properties.to_a.map{ |(k,v)|
-    v = "YES" if v == true
-    v = "NO"  if v == false
-    ! v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
-  }.compact.join(' -p ')
-  command += "\n\n"
-  return command
+  command += properties_internal(disk_properties)
+  return command + "\n\n"
 end
 
 # sudo exec
