@@ -167,12 +167,14 @@ end
 def get_production_property(node)
   production = false # default
   production = node['supported_job_types']['queues'].include?('production') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
+  production = production == true ? 'YES' : 'NO'
   return production
 end
 
 def get_maintenance_property(node)
   maintenance = false # default
   maintenance = node['supported_job_types']['queues'].include?('testing') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
+  maintenance = maintenance == true ? 'YES' : 'NO'
   return maintenance
 end
 
