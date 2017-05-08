@@ -18,6 +18,7 @@ options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:output_dir] = "/tmp/puppet-repo"
 options[:conf_dir] = File.expand_path("conf-examples/", File.dirname(__FILE__))
+options[:puppet_vers] = 2
 
 OptionParser.new do |opts|
   opts.banner = "Usage: conmang5k.rb [options]"
@@ -27,7 +28,20 @@ OptionParser.new do |opts|
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
     options[:output_dir] = d
-    options[:conf_dir] = "#{options[:output_dir]}/modules/lanpowerg5k/generators/"
+    options[:conf_dir] = case options[:puppet_vers]
+                         when 2
+                           "#{options[:output_dir]}/modules/lanpowerg5k/generators/"
+                         when 4
+                           "#{options[:output_dir]}/platforms/production/modules/generators/ipmitools/"
+                         else
+                           raise "Wrong puppet version"
+                         end
+  end
+
+  opts.on('-p', '--puppet_vers vers', Integer, 'Select puppet version', "Default: #{options[:puppet_vers]}") do |p|
+    puts "42 #{p}"
+    raise "Wrong puppet version must be 2 or 4" unless (p == 2 or p == 4)
+    options[:puppet_vers] = p
   end
 
   opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: #{options[:conf_dir]}") do |d|
@@ -58,14 +72,21 @@ puts "For site(s): #{options[:sites].join(', ')}"
 input_data_dir = "../../input/grid5000/"
 refapi = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
 
-config      = YAML::load_file(options[:conf_dir] + '/console.yaml')
-credentials = YAML::load_file(options[:conf_dir] + '/console-password.yaml')
+config      = YAML::load_file(options[:conf_dir] + 'console.yaml')
+credentials = YAML::load_file(options[:conf_dir] + 'console-password.yaml')
 
 # Apply ERB template and save result to file
 def write_conman_file(site_uid, site_refapi, site_config, site_credentials, options)
   output = ERB.new(File.read(File.expand_path('templates/conman.erb', File.dirname(__FILE__)))).result(binding)
 
-  output_file = Pathname("#{options[:output_dir]}/modules/conmang5k/files/#{site_uid}/conman.conf")
+  output_file = case options[:puppet_vers]
+                when 2
+                  Pathname("#{options[:output_dir]}/modules/conmang5k/files/#{site_uid}/conman.conf")
+                when 4
+                  Pathname("#{options[:output_dir]}/platforms/production/modules/generated/files/conman/server/#{site_uid}.conf")
+                else
+                  raise "Wrong puppet version"
+                end
   output_file.dirname.mkpath()
   File.write(output_file, output)
 end
