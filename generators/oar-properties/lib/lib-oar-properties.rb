@@ -195,7 +195,7 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
       h['maintenance'] = get_maintenance_property(node)
       h['disk'] = index
       h['diskpath'] = device['by_path']
-      h['cpuset'] = index - 1
+      h['cpuset'] = 'd'
       properties[key] = h
     end
   end
