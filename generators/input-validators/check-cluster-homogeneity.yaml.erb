@@ -17,6 +17,9 @@
 #   graphene-104+: different wattmeter
 #   griffon-[1-91]: missing some serial
 #   griffon-[11-14]: additional myrinet interface
+#
+# grenoble:
+#   edel: some nodes have only 1 IB interface
 ---
 nancy:
   graphique-[1-2]:
@@ -87,3 +90,22 @@ sophia:
   uvb-14:
     - +chassis.serial
     - ~chassis.manufacturer
+grenoble:
+  edel-3:
+    - +network_adapters.ib1.guid
+  edel-5:
+    - -network_adapters.ib1.guid
+  edel-7:
+    - +network_adapters.ib1.guid
+  edel-16:
+    - -network_adapters.ib1.guid
+  edel-17:
+    - +network_adapters.ib1.guid
+  edel-37:
+    - -network_adapters.ib1.guid
+  edel-38:
+    - +network_adapters.ib1.guid
+  edel-41:
+    - -network_adapters.ib1.guid
+  edel-43:
+    - +network_adapters.ib1.guid
