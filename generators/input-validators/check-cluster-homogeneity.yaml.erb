@@ -19,7 +19,8 @@
 #   griffon-[11-14]: additional myrinet interface
 #
 # grenoble:
-#   edel: some nodes have only 1 IB interface
+#   edel: some nodes have only 1 IB interface (probably after a hardware replacement)
+#   genepi-[10,24]: no pstate drivers (bug#7436)
 ---
 nancy:
   graphique-[1-2]:
@@ -109,3 +110,9 @@ grenoble:
     - -network_adapters.ib1.guid
   edel-43:
     - +network_adapters.ib1.guid
+  genepi-[10-11]:
+    - ~operating_system.pstate_driver
+    - ~operating_system.pstate_governor
+  genepi-[24-26]:
+    - ~operating_system.pstate_driver
+    - ~operating_system.pstate_governor
