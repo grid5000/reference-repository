@@ -11,7 +11,8 @@ ib-grenoble:
     0:
       kind: switch
       rate: 10000000000
-      ports: 
+      snmp_pattern: "%LINECARD%/%PORT%"
+      ports:
         0: voltaire-1
         1: voltaire-2
         2: voltaire-3
