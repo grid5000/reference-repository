@@ -1,12 +1,13 @@
 ---
 swy1nef:
-  model: Dell
+  model: Dell PowerConnect 6248
   kind: switch
   site: sophia
-  snmp_community: public
+  snmp_community: g5kadmin
+  backplane_bps: 184000000000
   linecards:
     0:
-      snmp_pattern: "%PORT%"
+      snmp_pattern: "Port: %PORT% Gigabit"
       kavlan_pattern: "%PORT%"
       kind: node
       port: eth0
