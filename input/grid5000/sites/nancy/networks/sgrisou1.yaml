@@ -1,0 +1,234 @@
+---
+sgrisou1:
+  model: Dell S3048
+  kind: switch
+  site: nancy
+  snmp_community: public
+  sensors:
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: grimoire-pdu2
+            port: 14
+  monitoring:
+    wattmeter: true
+    metric: power
+  vlans:
+    "vlan1":
+      administrative: yes
+      addresses:
+        - 172.17.79.206
+  mtu: 9220
+  backplane_bps: 260000000000
+  linecards:
+    1:
+      snmp_pattern: "GigabitEthernet %LINECARD%/%PORT%"
+      kavlan_pattern: "GigabitEthernet %LINECARD%/%PORT%"
+      kind: other
+      rate: 1000000000
+      ports:
+        1:
+          uid: grisou-1
+          port: eth4
+          kind: node
+        2:
+          uid: grisou-2
+          port: eth4
+          kind: node
+        3:
+          uid: grisou-3
+          port: eth4
+          kind: node
+        4:
+          uid: grisou-4
+          port: eth4
+          kind: node
+        5:
+          uid: grisou-5
+          port: eth4
+          kind: node
+        6:
+          uid: grisou-6
+          port: eth4
+          kind: node
+        7:
+          uid: grisou-7
+          port: eth4
+          kind: node
+        8:
+          uid: grisou-8
+          port: eth4
+          kind: node
+        9:
+          uid: grisou-9
+          port: eth4
+          kind: node
+        10:
+          uid: grisou-10
+          port: eth4
+          kind: node
+        11:
+          uid: grisou-11
+          port: eth4
+          kind: node
+        12:
+          uid: grisou-12
+          port: eth4
+          kind: node
+        13:
+          uid: grisou-13
+          port: eth4
+          kind: node
+        14:
+          uid: grisou-14
+          port: eth4
+          kind: node
+        15:
+          uid: grisou-15
+          port: eth4
+          kind: node
+        16:
+          uid: grisou-16
+          port: eth4
+          kind: node
+        17:
+          uid: grisou-17
+          port: eth4
+          kind: node
+        18:
+          uid: grisou-18
+          port: eth4
+          kind: node
+        19:
+          uid: grisou-19
+          port: eth4
+          kind: node
+        20:
+          uid: grisou-20
+          port: eth4
+          kind: node
+        21:
+          uid: grisou-21
+          port: eth4
+          kind: node
+        22:
+          uid: grisou-22
+          port: eth4
+          kind: node
+        23:
+          uid: grisou-23
+          port: eth4
+          kind: node
+        24:
+          uid: grisou-24
+          port: eth4
+          kind: node
+        25:
+          uid: grisou-25
+          port: eth4
+          kind: node
+        26:
+          uid: grisou-26
+          port: eth4
+          kind: node
+        27:
+          uid: grisou-27
+          port: eth4
+          kind: node
+        28:
+          uid: grisou-28
+          port: eth4
+          kind: node
+        29:
+          uid: grisou-29
+          port: eth4
+          kind: node
+        30:
+          uid: grisou-30
+          port: eth4
+          kind: node
+        31:
+          uid: grisou-31
+          port: eth4
+          kind: node
+        32:
+          uid: grisou-32
+          port: eth4
+          kind: node
+        33:
+          uid: grisou-33
+          port: eth4
+          kind: node
+        34:
+          uid: grisou-34
+          port: eth4
+          kind: node
+        35:
+          uid: grisou-35
+          port: eth4
+          kind: node
+        36:
+          uid: grisou-36
+          port: eth4
+          kind: node
+        37:
+          uid: grisou-37
+          port: eth4
+          kind: node
+        38:
+          uid: grisou-38
+          port: eth4
+          kind: node
+        39:
+          uid: grisou-39
+          port: eth4
+          kind: node
+        40:
+          uid: grisou-40
+          port: eth4
+          kind: node
+        41:
+          uid: grisou-41
+          port: eth4
+          kind: node
+        42:
+          uid: grisou-42
+          port: eth4
+          kind: node
+        43:
+          uid: grisou-43
+          port: eth4
+          kind: node
+        44:
+          uid: grisou-44
+          port: eth4
+          kind: node
+        45:
+          uid: grisou-45
+          port: eth4
+          kind: node
+        46:
+          uid: grisou-46
+          port: eth4
+          kind: node
+        47:
+          uid: grisou-47
+          port: eth4
+          kind: node
+        48:
+          uid: grisou-48
+          port: eth4
+          kind: node
+    2:
+      snmp_pattern: "TenGigabitEthernet 1/%PORT%"
+      kavlan_pattern: "TenGigabitEthernet 1/%PORT%"
+      kind: other
+      rate: 10000000000
+      ports:
+        52:
+          uid: gw-nancy
+          kind: switch
+      
+
