@@ -10,6 +10,7 @@
 
 require 'optparse'
 require 'fileutils'
+require 'open3'
 require 'cute'
 require 'peach'
 require '../lib/input_loader'
