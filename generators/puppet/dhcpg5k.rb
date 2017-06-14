@@ -51,7 +51,7 @@ def get_network_info(node_hash, network_interface)
   # For the production network, find the mounted interface (either eth0 or eth1)
   neti = network_interface
   if neti == "eth" then
-    (0..4).each {|i|
+    (0..5).each {|i|
       if node_network_adapters.fetch("eth#{i}").fetch("mounted")
         neti = "eth#{i}"
         break
