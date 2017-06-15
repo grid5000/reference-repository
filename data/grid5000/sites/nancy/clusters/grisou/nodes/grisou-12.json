@@ -77,6 +77,17 @@
       "kavlan-7": "10.16.204.192",
       "kavlan-8": "10.17.12.192",
       "kavlan-9": "10.17.76.192"
+    },
+    "eth4": {
+      "kavlan-1": "192.168.205.18",
+      "kavlan-2": "192.168.221.18",
+      "kavlan-3": "192.168.236.18",
+      "kavlan-4": "10.16.13.18",
+      "kavlan-5": "10.16.77.18",
+      "kavlan-6": "10.16.141.18",
+      "kavlan-7": "10.16.205.18",
+      "kavlan-8": "10.17.13.18",
+      "kavlan-9": "10.17.77.18"
     }
   },
   "main_memory": {
@@ -167,15 +178,19 @@
       "bridged": false,
       "device": "eth4",
       "driver": "igb",
-      "enabled": false,
+      "enabled": true,
       "interface": "Ethernet",
-      "kavlan": false,
+      "ip": "172.16.73.18",
+      "kavlan": true,
       "mac": "24:6e:96:03:0f:cc",
       "management": false,
       "model": "I350 Gigabit Network Connection",
-      "mountable": false,
+      "mountable": true,
       "mounted": false,
+      "network_address": "grisou-12-eth4.nancy.grid5000.fr",
       "rate": 1000000000,
+      "switch": "sgrisou1",
+      "switch_port": "GigabitEthernet 1/12",
       "vendor": "Intel Corporation"
     },
     {
