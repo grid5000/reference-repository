@@ -1,6 +1,6 @@
 cronos:
   kind: physical
-  alias: [adminfront, ntp, af, granduc-srv, smokeping]
+  alias: [adminfront, af, granduc-srv, smokeping]
   warranty: 05.2017
   serial: JSG625J
   network_adapters:
@@ -13,7 +13,7 @@ cronos:
 
 zeus:
   kind: physical
-  alias: [nfs, home-g5k, public]
+  alias: [nfs, ntp, home-g5k, public]
   warranty: 08.2016
   serial: 8L6033J
   network_adapters:
@@ -36,10 +36,17 @@ hera:
       mac: 00:1C:23:D6:C4:E6
 
 petitprince-cmc:
-  kind: storage
+  kind: physical
   alias: [m1000-cmc]
   warranty: 10.2016
   serial: CDQTG5J
   network_adapters:
     bmc:
       ip: 172.17.177.254
+
+md1000:
+  kind: storage
+  alias: []
+  warranty: 10.2009
+  serial: 6P90J2J
+  network_adapters: {}
