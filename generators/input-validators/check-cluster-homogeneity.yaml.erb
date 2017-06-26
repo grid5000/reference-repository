@@ -12,6 +12,7 @@
 # nancy:
 #   graphique: model differs on graphique-1
 #   grisou-50+: 2 IB interfaces
+#   grisou-49+: Doesn't have eth4 link
 #   talc-[15,95,106]: wrong BIOS version
 #   graphene-[45,85]: wrong BIOS version
 #   graphene-104+: different wattmeter
@@ -26,6 +27,11 @@ nancy:
     - ~gpu.gpu_model
   grisou-50:
     - +network_adapters.ib0
+  grisou-[49-51]:
+    - -kavlan.eth4
+    - -network_adapters.eth4.ip
+    - ~network_adapters.eth4.enabled
+    - ~network_adapters.eth4.mountable
   talc-[15-16]:
     - ~bios.release_date
     - ~bios.version
