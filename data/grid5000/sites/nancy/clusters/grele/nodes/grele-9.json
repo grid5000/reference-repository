@@ -1,0 +1,191 @@
+{
+  "architecture": {
+    "nb_cores": 24,
+    "nb_procs": 2,
+    "nb_threads": 48,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "configuration": {
+      "cstate_c1e": true,
+      "cstate_enabled": true,
+      "ht_enabled": true,
+      "turboboost_enabled": true
+    },
+    "release_date": "01/17/2017",
+    "vendor": "Dell Inc.",
+    "version": "2.4.3"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R730",
+    "serial": "799BDK2"
+  },
+  "gpu": {
+    "gpu": true,
+    "gpu_count": 2,
+    "gpu_model": "GTX 1080 Ti",
+    "gpu_vendor": "Nvidia"
+  },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.205.66",
+      "kavlan-11": "10.7.201.182",
+      "kavlan-12": "10.11.201.182",
+      "kavlan-13": "10.15.201.182",
+      "kavlan-14": "10.19.201.182",
+      "kavlan-16": "10.27.201.182",
+      "kavlan-18": "10.35.201.182",
+      "kavlan-19": "10.39.201.182",
+      "kavlan-2": "192.168.221.66",
+      "kavlan-20": "10.43.201.182",
+      "kavlan-21": "10.47.201.182",
+      "kavlan-3": "192.168.236.66",
+      "kavlan-4": "10.16.13.66",
+      "kavlan-5": "10.16.77.66",
+      "kavlan-6": "10.16.141.66",
+      "kavlan-7": "10.16.205.66",
+      "kavlan-8": "10.17.13.66",
+      "kavlan-9": "10.17.77.66"
+    }
+  },
+  "main_memory": {
+    "ram_size": 137438953472,
+    "virtual_size": null
+  },
+  "monitoring": {
+    "wattmeter": "true"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.74.9",
+      "kavlan": true,
+      "mac": "24:6e:96:63:d7:48",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "grele-9.nancy.grid5000.fr",
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:63:d7:4a",
+      "management": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:63:d7:4c",
+      "management": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:63:d7:4d",
+      "management": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "ip": "172.17.74.9",
+      "kavlan": false,
+      "mac": "50:9a:4c:5d:4a:59",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "grele-9-bmc.nancy.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": 1,
+    "ht_enabled": true,
+    "kernel": "3.16.0-4-amd64",
+    "name": "debian",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true,
+    "version": 8.8
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 31457280,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Broadwell",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "E5-2650 v4"
+  },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 19,
+            "uid": "grimani-pdu1"
+          },
+          {
+            "port": 19,
+            "uid": "grimani-pdu2"
+          }
+        ]
+      }
+    }
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da0b5ed6d0020cb142213094aa0",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0",
+      "device": "sda",
+      "model": "PERC H730 Mini",
+      "rev": 4.27,
+      "size": 299439751168,
+      "vendor": "DELL"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 3,
+    "queues": [
+      "testing",
+      "production"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "grele-9"
+}

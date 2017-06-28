@@ -1,0 +1,54 @@
+---
+# Cluster description
+model: Dell PowerEdge R730
+created_at: 2017-06-26
+kavlan: true
+priority: '201706'
+queues:
+  - testing
+  - admin
+  
+nodes:
+# Global node properties
+  grele-[1-14]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      queues:
+        - testing
+        - production
+      max_walltime: 3
+    gpu:
+      gpu: true
+      gpu_count: 2
+      gpu_model: GTX 1080 Ti
+      gpu_vendor: Nvidia
+    sensors:
+      power:
+        available: false
+    processor:
+      microarchitecture: Broadwell
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+      bmc:
+        enabled: true
+        mountable: false    
+        mounted: false
+
+
+      
