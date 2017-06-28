@@ -238,3 +238,33 @@ welsh:
             port: 5
           - uid: pdu-b2p2
             port: 5
+
+chiterne:
+  kind: physical
+  warranty: 18.06.2022
+  serial: JH5RS62
+  network_adapters:
+    default:
+      mounted: true
+      ip: 172.16.47.10
+      mac: 24:6e:96:67:5d:a0
+    bmc:
+      mounted: true
+      ip: 172.17.46.10
+      mac: 50:9a:4c:61:df:4a
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: pdu-b2p1
+            port: 9
+          - uid: pdu-b2p2
+            port: 9
