@@ -105,6 +105,9 @@ class OarPropertiesGenerator < WikiGenerator
     "disktype" => {
       "description" => "What disk's interface family node's disk is member of ?"
     },
+    "disk_reservation_count" => {
+      "description" => "The number of reservable disks"
+    },
     "memcpu" => {
       "description" => "The amount of memory in MB per CPU"
     },
@@ -133,7 +136,7 @@ class OarPropertiesGenerator < WikiGenerator
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
     "Hierarchy" => ["cluster", "cpu", "core", "host", "network_address", "ip", "switch"],
-    "Hardware" => ["gpu", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
+    "Hardware" => ["gpu", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel"]
   }
 
@@ -145,7 +148,7 @@ class OarPropertiesGenerator < WikiGenerator
     site['clusters'].each do |cluster_uid, cluster|
       cluster['nodes'].each do |node_uid, node|
         begin
-          properties[node_uid] = get_node_properties(cluster_uid, cluster, node_uid, node)
+          properties[node_uid] = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
         rescue MissingProperty => e
           puts "Error while processing node #{node_uid}: #{e}"
         end
@@ -189,7 +192,7 @@ class OarPropertiesGenerator < WikiGenerator
           oar_properties[property]["values"] << value unless value.nil?
           oar_properties[property]["values"].uniq!
           oar_properties[property]["values"].sort!{ |a, b|
-            (a || "") <=> (b || "")
+            (a && a.to_s || "") <=> (b && b.to_s || "")
           }
         }
       }
