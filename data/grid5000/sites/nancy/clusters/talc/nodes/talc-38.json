@@ -18,6 +18,28 @@
   "gpu": {
     "gpu": false
   },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.195.38",
+      "kavlan-11": "10.7.201.38",
+      "kavlan-12": "10.11.201.38",
+      "kavlan-13": "10.15.201.38",
+      "kavlan-14": "10.19.201.38",
+      "kavlan-16": "10.27.201.38",
+      "kavlan-18": "10.35.201.38",
+      "kavlan-19": "10.39.201.38",
+      "kavlan-2": "192.168.211.38",
+      "kavlan-20": "10.43.201.38",
+      "kavlan-21": "10.47.201.38",
+      "kavlan-3": "192.168.227.38",
+      "kavlan-4": "10.16.3.38",
+      "kavlan-5": "10.16.67.38",
+      "kavlan-6": "10.16.131.38",
+      "kavlan-7": "10.16.195.38",
+      "kavlan-8": "10.17.3.38",
+      "kavlan-9": "10.17.67.38"
+    }
+  },
   "main_memory": {
     "ram_size": 17179869184,
     "virtual_size": null
@@ -34,6 +56,7 @@
       "interface": "Ethernet",
       "ip": "172.16.66.38",
       "ip6": null,
+      "kavlan": true,
       "mac": "00:e0:81:b2:c2:46",
       "management": false,
       "mountable": true,
@@ -51,6 +74,7 @@
       "driver": "e1000e",
       "enabled": false,
       "interface": "Ethernet",
+      "kavlan": false,
       "mac": "00:e0:81:b2:c2:47",
       "management": false,
       "mountable": false,
@@ -64,6 +88,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.66.38",
+      "kavlan": false,
       "mac": "00:e0:81:4f:b5:70",
       "management": true,
       "mountable": false,
@@ -84,12 +109,12 @@
     "pstate_driver": "acpi-cpufreq",
     "pstate_governor": "performance",
     "release": "Jessie",
-    "turboboost_enabled": "unknown",
-    "version": 8.6
+    "turboboost_enabled": false,
+    "version": 8.8
   },
   "performance": {
-    "core_flops": 0,
-    "node_flops": 0
+    "core_flops": 8056000000,
+    "node_flops": 53170000000
   },
   "processor": {
     "cache_l1": null,
@@ -100,6 +125,7 @@
     "clock_speed": 2500000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
+    "microarchitecture": "Harpertown",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU           L5420  @ 2.50GHz",
     "vendor": "Intel",
@@ -109,20 +135,21 @@
   },
   "storage_devices": [
     {
+      "by_id": "/dev/disk/by-id/wwn-0x5000cca35bc4e79f",
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA II",
       "model": "Hitachi HDS72103",
-      "rev": "A39C",
+      "rev": "JPFOA39C",
       "size": 320072933376,
       "storage": "HDD",
-      "vendor": null
+      "vendor": "Hitachi"
     }
   ],
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 7200,
+    "max_walltime": 604800,
     "queues": [
       "admin",
       "production"
