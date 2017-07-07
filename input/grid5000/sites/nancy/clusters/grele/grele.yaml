@@ -17,7 +17,6 @@ nodes:
       queues:
         - testing
         - production
-      max_walltime: 10800
     performance:
       core_flops: 15690000000
       node_flops: 398100000000
@@ -57,16 +56,22 @@ nodes:
         interface: Ethernet
     storage_devices:
       sda:
-        interface: SATA
+        interface: SAS
         driver: megaraid_sas
         storage: HDD
         vendor: DELL
       sdb:
-        interface: SATA
+        interface: SAS
         driver: megaraid_sas
         storage: HDD
         vendor: DELL
 
-
-
-      
+  grele-[1-3]:
+    supported_job_types:
+      max_walltime: 86400
+  grele-[4-6]:
+    supported_job_types:
+      max_walltime: 172800
+  grele-[6-]:
+    supported_job_types:
+      max_walltime: 604800
