@@ -1,0 +1,39 @@
+---
+#Information in this file can be incorrect #TODO
+sgrele-opf:
+  model: Omni-Path
+  kind: switch
+  site: nancy
+  snmp_community: public
+  sensors:
+    network:
+      available: false
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: grimani-pdu1
+            port: 9
+          - uid: grimani-pdu2
+            port: 9
+  monitoring:
+    wattmeter: true
+    metric: power
+  weathermap:
+    use_cacti: "no"
+  vlans: {}
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/%PORT%"
+      kavlan_pattern: "%LINECARD%/%PORT%"
+      kind: switch
+      rate: 100000000000
+      ports:
+        13: 
+          uid: grele-13
+          kind: node
+        14: 
+          uid: grele-14
+          kind: node
+

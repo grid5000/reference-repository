@@ -1,0 +1,84 @@
+{
+  "kind": "switch",
+  "linecards": [
+    {
+    },
+    {
+      "kavlan_pattern": "%LINECARD%/%PORT%",
+      "kind": "switch",
+      "ports": [
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "uid": "grele-13"
+        },
+        {
+          "kind": "node",
+          "uid": "grele-14"
+        }
+      ],
+      "rate": 100000000000,
+      "snmp_pattern": "%LINECARD%/%PORT%"
+    }
+  ],
+  "model": "Omni-Path",
+  "monitoring": {
+    "metric": "power",
+    "wattmeter": true
+  },
+  "sensors": {
+    "network": {
+      "available": false
+    },
+    "power": {
+      "available": true,
+      "resolution": 1,
+      "via": {
+        "pdu": [
+          {
+            "port": 9,
+            "uid": "grimani-pdu1"
+          },
+          {
+            "port": 9,
+            "uid": "grimani-pdu2"
+          }
+        ]
+      }
+    }
+  },
+  "site": "nancy",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "sgrele-opf",
+  "vlans": {
+  },
+  "weathermap": {
+    "use_cacti": "no"
+  }
+}
