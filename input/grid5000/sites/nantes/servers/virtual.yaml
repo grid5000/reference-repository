@@ -1,72 +1,163 @@
 api-proxy:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.106}}
+  network_adapters:
+    default:
+      ip: 172.16.207.106
 api-server-devel:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.117}}
+  network_adapters:
+    default:
+      ip: 172.16.207.117
+api-server-v3:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.118
 conman:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.115}, adm: {ip: 172.17.207.115}}
+  network_adapters:
+    default:
+      ip: 172.16.207.115
+csod:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.128
 dhcp:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.103}, adm: {ip: 172.17.207.103}}
+  network_adapters:
+    default:
+      ip: 172.16.207.103
+    adm:
+      ip: 172.17.207.103
 dns:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.101}}
+  network_adapters:
+    default:
+      ip: 172.16.207.101
 fnantes:
+  alias:
+    - oar-api
+    - frontend
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.100}}
+  network_adapters:
+    default:
+      ip: 172.16.207.100
 ganglia:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.112}}
+  network_adapters:
+    default:
+      ip: 172.16.207.112
+ganglia-dev:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.129
 kadeploy:
+  alias:
+    - kadeploy-server
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.108}, adm: {ip: 172.17.207.108}}
+  network_adapters:
+    default:
+      ip: 172.16.207.108
+    adm:
+      ip: 172.17.207.108
 kadeploy-devel:
+  alias:
+    - kadeploy-server-devel
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.120}, adm: {ip: 172.17.207.120}}
+  network_adapters:
+    default:
+      ip: 172.16.207.120
+    adm:
+      ip: 172.17.207.120
 kavlan:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.121}}
+  network_adapters:
+    default:
+      ip: 172.16.207.121
 kavlan-1:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.122}}
+  network_adapters:
+    default:
+      ip: 172.16.207.122
 kavlan-2:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.123}}
+  network_adapters:
+    default:
+      ip: 172.16.207.123
 kavlan-3:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.124}}
+  network_adapters:
+    default:
+      ip: 172.16.207.124
 kwapi:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.125}}
+  network_adapters:
+    default:
+      ip: 172.16.207.125
 ldap:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.109}}
+  network_adapters:
+    default:
+      ip: 172.16.207.109
 mail:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.102}, adm: {ip: 172.17.207.102}}
+  network_adapters:
+    default:
+      ip: 172.16.207.102
+    adm:
+      ip: 172.17.207.102
 mysql:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.119}}
+  network_adapters:
+    default:
+      ip: 172.16.207.119
+oar:
+  alias:
+    - oardb
+    - oar-server
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.111
 proxy:
   kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.207.104}}
+  network_adapters:
+    default:
+      ip: 172.16.207.104
+puppet:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.105
+puppet4:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.126
+supervision:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.110
+    adm:
+      ip: 172.17.207.110
+supervision2:
+  alias:
+    - munin
+    - nagios
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.127
+syslog:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.116
+www:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.114

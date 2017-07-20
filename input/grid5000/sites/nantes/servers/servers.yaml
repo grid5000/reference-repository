@@ -1,6 +1,6 @@
 srv:
   kind: physical
-  alias: [ntp, adminfront]
+  alias: [adminfront, af]
   warranty: 11.2017
   serial: HP2YG5J
   network_adapters:
@@ -26,7 +26,8 @@ srv-data:
 
 srv-2:
   kind: physical
-  alias: []
+  alias:
+    - ntp
   warranty: 11.2017
   serial: JP2YG5J
   network_adapters:
@@ -37,7 +38,7 @@ srv-2:
       ip: 172.17.207.3
       mac: 78:45:c4:f9:2f:53
 
-ceph100:
+ceph0:
   kind: physical
   alias: []
   warranty: 12.2019
@@ -45,12 +46,12 @@ ceph100:
   network_adapters:
     default:
       ip: 172.16.207.10
-      mac: a0:36:9f:53:11:10 
+      mac: a0:36:9f:53:11:10
     bmc:
       ip: 172.17.207.10
       mac: 34:17:eb:e6:4c:41
 
-ceph101:
+ceph1:
   kind: physical
   alias: []
   warranty: 12.2019
@@ -63,7 +64,7 @@ ceph101:
       ip: 172.17.207.11
       mac: 34:17:eb:e6:4a:6d
 
-ceph102:
+ceph2:
   kind: physical
   alias: []
   warranty: 12.2019
@@ -76,7 +77,7 @@ ceph102:
       ip: 172.17.207.12
       mac: 34:17:eb:e6:47:67
 
-ceph103:
+ceph3:
   kind: physical
   alias: []
   warranty: 12.2019
@@ -88,4 +89,3 @@ ceph103:
     bmc:
       ip: 172.17.207.13
       mac: 34:17:eb:e6:4a:4c
-
