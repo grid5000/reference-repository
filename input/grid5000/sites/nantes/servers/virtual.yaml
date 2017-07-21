@@ -137,6 +137,9 @@ puppet4:
     default:
       ip: 172.16.207.126
 supervision:
+  alias:
+    - munin
+    - nagios
   kind: virtual
   network_adapters:
     default:
@@ -144,9 +147,6 @@ supervision:
     adm:
       ip: 172.17.207.110
 supervision2:
-  alias:
-    - munin
-    - nagios
   kind: virtual
   network_adapters:
     default:
