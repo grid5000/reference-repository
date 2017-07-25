@@ -1,7 +1,10 @@
 ---
 mail:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.207.102}}
+  alias:
+    - mail2
+    - smtp
+  network_adapters: {default: {ip: 131.254.202.15}}
 helpdesk-global:
   kind: virtual
   network_adapters: {default: {ip: 131.254.202.206}}
@@ -10,7 +13,8 @@ www:
   network_adapters: {default: {ip: 172.16.111.112}}
 dhcp-prod:
   kind: virtual
-  alias: [dhcp]
+  alias:
+    - dhcp
   network_adapters: {default: {ip: 172.16.111.117}, adm: {ip: 172.16.111.117}}
 ldap:
   kind: virtual
@@ -21,7 +25,9 @@ api-server:
   network_adapters: {default: {ip: 172.16.111.115}}
 nfs-tools:
   kind: virtual
-  alias: [nfs-stow, nfs-diskless]
+  alias:
+    - nfs-stow
+    - nfs-diskless
   network_adapters: {default: {ip: 172.16.111.123}}
 elblablo:
   kind: virtual
@@ -51,9 +57,14 @@ mysql:
 ganglia:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.107}}
+ganglia-global:
+  kind: virtual
+  network_adapters: {default: {ip: 131.254.202.207}}
 kavlan:
   kind: virtual
-  alias: [kavlan-server, kavlan-dhcp]
+  alias:
+    - kavlan-server
+    - kavlan-dhcp
   network_adapters: {default: {ip: 172.16.111.100}}
 kavlan-1:
   kind: virtual
@@ -69,19 +80,14 @@ api-server-v3:
   network_adapters: {default: {ip: 172.16.111.128}}
 ca:
   kind: virtual
-  alias: [ca-global]
+  alias:
+    - ca-global
   network_adapters: {default: {ip: 172.16.111.152}}
-ganglia:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.111.107}}
 dns:
   kind: virtual
-  alias: [ns]
+  alias:
+    - ns
   network_adapters: {default: {ip: 172.16.111.118}}
-dns2:
-  kind: virtual
-  alias: []
-  network_adapters: {default: {ip: 172.16.111.146}}
 dns-global:
   kind: virtual
   alias: []
@@ -91,21 +97,25 @@ proxy:
   network_adapters: {default: {ip: 172.16.111.163}}
 supervision:
   kind: virtual
-  alias: [nagios, munin]
+  alias:
+    - nagios
+    - munin
   network_adapters: {default: {ip: 172.16.111.122}}
 ldap-global:
   kind: virtual
-  alias: [ldap-master]
-  network_adapters: {default: {ip: 131.254.202.10}}
+  alias:
+    - ldap-master
+  network_adapters: {default: {ip: 172.16.111.153}}
 git-global:
   kind: virtual
-  network_adapters: {default: {ip: 131.254.202.10}}
+  network_adapters: {default: {ip: 131.254.202.204}}
 conman:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.108}}
 kadeploy:
   kind: virtual
-  alias: [kadeploy-server]
+  alias:
+    - kadeploy-server
   network_adapters: {default: {ip: 172.16.111.111}}
 users-api:
   kind: virtual
@@ -113,10 +123,13 @@ users-api:
   network_adapters: {default: {ip: 131.254.203.237}}
 mysql-archive:
   kind: virtual
+  alias:
+    - mysql-archive-global
   network_adapters: {default: {ip: 172.16.111.155}}
 kadeploy-devel:
   kind: virtual
-  alias: [kadeploy-server-devel]
+  alias:
+    - kadeploy-server-devel
   network_adapters: {default: {ip: 172.16.111.136}}
 mirador:
   kind: virtual
@@ -126,14 +139,21 @@ csod:
   network_adapters: {default: {ip: 172.16.111.140}}
 oar:
   kind: virtual
-  alias: [oar-server, oardb]
+  alias:
+    - oar-server
+    - oardb
   network_adapters: {default: {ip: 172.16.111.110}}
 oardb-archive:
   kind: virtual
+  alias:
+    - oardb-archive-global
   network_adapters: {default: {ip: 172.16.111.156}}
 frennes:
   kind: virtual
-  alias: [frontale, frontend, oar-api]
+  alias:
+    - frontale
+    - frontend
+    - oar-api
   network_adapters: {default: {ip: 172.16.111.106}}
 kwapi:
   kind: virtual
@@ -147,3 +167,29 @@ users-api-qualif:
 frontend-dev:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.144}}
+api-server-devel:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.115}}
+stats:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.131}}
+puppet4:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.143}}
+supervision2:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.145}}
+mdsm:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.148}}
+icinga:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.111.151}}
+puppet-master:
+  kind: virtual
+  alias:
+    - puppet-global
+  network_adapters: {default: {ip: 131.254.202.12}}
+dhcp-public:
+  kind: virtual
+  network_adapters: {default: {ip: 131.254.202.4}}

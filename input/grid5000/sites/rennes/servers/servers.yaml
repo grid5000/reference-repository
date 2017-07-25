@@ -34,7 +34,9 @@ metroflux:
 
 srv:
   kind: physical
-  alias: [adminfront,ntp]
+  alias:
+    - adminfront
+    - af
   warranty: 09.2018
   serial: CLXJZY1
   network_adapters:
@@ -45,7 +47,9 @@ srv:
 
 srv-bigdata:
   kind: physical
-  alias: []
+  alias:
+    - storage5k
+    - storage
   warranty: 10.2018
   serial: 6V9FGZ1
   network_adapters:
@@ -56,7 +60,8 @@ srv-bigdata:
 
 ceph0:
   kind: physical
-  alias: []
+  alias:
+    - ceph
   warranty: 11.2018
   serial: GQHZKZ1
   network_adapters:
@@ -100,7 +105,8 @@ ceph3:
 
 parasilo-srv-1:
   kind: physical
-  alias: []
+  alias:
+    - ntp
   warranty: 01.2022
   serial: H8RGG42
   network_adapters:
@@ -122,7 +128,12 @@ parasilo-srv-2:
 
 parasilo-srv-3:
   kind: physical
-  alias: []
+  alias:
+    - nfs
+    - nfs-grid5000
+    - nfs-home
+    - home-g5k
+    - public
   warranty: 01.2022
   serial: BDZGG42
   network_adapters:
@@ -136,11 +147,25 @@ metroflux-disc:
   alias: []
   warranty: 01.2015
   serial: 8LY4M4J
-  network_adapters: {}
+  network_adapters:
+    default:
+      ip: 172.17.111.220
+
+md3260-bg-1:
+  kind: storage
+  network_adapters:
+    default:
+      ip: 172.17.111.221
+
+md3260-bg-2:
+  kind: storage
+  network_adapters:
+    default:
+      ip: 172.17.111.222
 
 bigdata-disc:
   kind: storage
   alias: []
-  warranty: 10.2018 
+  warranty: 10.2018
   serial: D12LGZ1
   network_adapters: {}
