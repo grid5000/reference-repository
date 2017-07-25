@@ -38,15 +38,25 @@ grisou-50:
       interface: Ethernet
       mac: 24:6e:96:03:0b:a2
       management: false
-    eth4:
+    eth2:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:7e:4c:24
       management: false
-    eth5:
+    eth3:
       driver: ixgbe
       interface: Ethernet
       mac: a0:36:9f:7e:4c:26
+      management: false
+    eth4:
+      driver: igb
+      interface: Ethernet
+      mac: 24:6e:96:03:0b:a4
+      management: false
+    eth5:
+      driver: igb
+      interface: Ethernet
+      mac: 24:6e:96:03:0b:a5
       management: false
     ib0:
       driver: mlx4_core
