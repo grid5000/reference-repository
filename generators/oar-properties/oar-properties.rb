@@ -25,7 +25,7 @@
 #     },
 #   }
 #   {"disk"=>
-#     {["grimoire-1", 1]=>
+#     {["grimoire-1", "sdb.grimoire-1"]=>
 #       {"cluster"=>"grimoire",
 #        "host"=>"grimoire-1.nancy.grid5000.fr"
 #        "network_address"="grimoire-1.nancy.grid5000.fr"
@@ -33,9 +33,9 @@
 #        "diskpath"=>"/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
 #        "cpuset"=>"disk-1"
 #       },
-#      ["grimoire-1", 2]=>...,
+#      ["grimoire-1", "sdc.grimoire-1"]=>...,
 #      ...
-#      ["grimoire-2", 1]=>...,
+#      ["grimoire-2", "sdb.grimoire-2"]=>...,
 #     }
 #   }
 # }
@@ -389,7 +389,7 @@ if options[:output] || options[:exec]
     # Build and output disk commands
     site_properties['disk'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |key, disk_properties|
       # As an example, key can be equal to 'grimoire-1' for default resources or
-      # ['grimoire-1', 1] for disk resources (disk n°1 of grimoire-1)
+      # ['grimoire-1', 'sdb.grimoire-1'] for disk resources (disk sdb of grimoire-1)
       node_uid, disk = key
       host = [node_uid, site_uid, 'grid5000.fr'].join('.')
 
