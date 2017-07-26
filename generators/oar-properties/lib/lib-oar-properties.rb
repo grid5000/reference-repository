@@ -178,10 +178,27 @@ def get_maintenance_property(node)
   return maintenance
 end
 
+# Returns the expected properties of the reservable disks. These
+# properties are then compared with the values in OAR database, to
+# generate a diff.
+# The key is of the form [node, disk]. In the following example
+# we list the different disks (from sdb to sdf) of node grimoire-1.
+# {["grimoire-1", "sdb.grimoire-1"]=>
+#  {"cluster"=>"grimoire",
+#  "host"=>"grimoire-1.nancy.grid5000.fr",
+#  "network_address"=>"",
+#  "available_upto"=>0,
+#  "deploy"=>"YES",
+#  "production"=>"NO",
+#  "maintenance"=>"NO",
+#  "disk"=>"sdb.grimoire-1",
+#  "diskpath"=>"/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0",
+#  "cpuset"=>-1},
+#  ["grimoire-1", "sdc.grimoire-1"]=> ...
 def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
   properties = {}
   node['storage_devices'].to_a.each_with_index do |v, index|
-    _device_uid, device = v
+    device_uid, device = v
     if index > 0 && device['reservation']
       key = [node_uid, index]
       h = {}
@@ -193,7 +210,7 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
       h['deploy'] = 'YES'
       h['production'] = get_production_property(node)
       h['maintenance'] = get_maintenance_property(node)
-      h['disk'] = index
+      h['disk'] = [device_uid, node_uid].join('.')
       h['diskpath'] = device['by_path']
       h['cpuset'] = -1
       properties[key] = h
