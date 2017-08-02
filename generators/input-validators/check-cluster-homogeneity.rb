@@ -153,11 +153,18 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
 
       count[site_uid][cluster_uid] = 0
 
-      refnode_uid = cluster['nodes'].keys.sort.first
-      refnode = cluster['nodes'][refnode_uid]
+      refnode_uid = nil
+      refnode = nil
 
       cluster["nodes"].each_sort_by_node_uid do |node_uid, node|
+
         next if node['status'] == 'retired'
+
+        if !refnode
+          refnode = node
+          refnode_uid = node_uid
+          next
+        end
 
         diffs = HashDiff.diff(refnode, node)
 
