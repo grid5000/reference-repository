@@ -39,9 +39,9 @@ supervision:
   kind: virtual
   alias: [nagios, munin]
   network_adapters: {default: {ip: 172.16.79.113}}
-oar-server:
+oar:
   kind: virtual
-  alias: [oar, oardb]
+  alias: [oar-server, oardb]
   network_adapters: {default: {ip: 172.16.79.114}}
 ldap:
   kind: virtual
