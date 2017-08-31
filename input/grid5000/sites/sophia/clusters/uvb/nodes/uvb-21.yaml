@@ -23,32 +23,40 @@ uvb-21:
       management: true
     eth0:
       driver: igb
+      firmware_version: 1.4.3
       interface: Ethernet
       ip: 172.16.132.21
       mac: 00:26:6c:f8:5b:4c
       management: false
+      model: 82576 Gigabit Network Connection
+      name: enp1s0f0
       rate: 1000000000
+      vendor: Intel
     eth1:
       driver: igb
+      firmware_version: 1.4.3
       interface: Ethernet
       mac: 00:26:6c:f8:5b:4d
       management: false
+      model: 82576 Gigabit Network Connection
+      name: enp1s0f1
+      rate: 0
+      vendor: Intel
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:ad:f0
       interface: InfiniBand
       management: false
+      model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
       rate: 40000000000
-      version: MT26428
+      vendor: Mellanox Technologies
     ib0.8100:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:ad:f0
       interface: InfiniBand
       ip: 172.18.132.21
-      ip6: fe80::224:e890:97ff:adf0
       management: false
       rate: 40000000000
-      version: MT26428
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -75,8 +83,8 @@ uvb-21:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50014ee1035611cc"
+      firmware_version: 02.03B05
       model: WDC WD2502ABYS-1
-      rev: 02.03B05
       size: 250000000000
       vendor: Western Digital
   supported_job_types:
