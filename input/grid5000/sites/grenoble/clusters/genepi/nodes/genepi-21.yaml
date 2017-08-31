@@ -23,32 +23,42 @@ genepi-21:
       management: true
     eth0:
       driver: e1000e
+      firmware_version: 2.1-12
       interface: Ethernet
       mac: 00:30:48:7f:3e:f0
       management: false
+      model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
+      name: enp5s0f0
+      rate: 0
+      vendor: Intel
     eth1:
       driver: e1000e
+      firmware_version: 2.1-12
       interface: Ethernet
       ip: 172.16.16.21
       mac: 00:30:48:7f:3e:f1
       management: false
+      model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
+      name: enp5s0f1
       rate: 1000000000
+      vendor: Intel
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:01:55:d1
       interface: InfiniBand
       ip: 172.18.16.21
-      ip6: fe80::202:c903:1:55d1
       management: false
+      model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
       rate: 20000000000
-      version: MT26418
+      vendor: Mellanox Technologies
     ib1:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:01:55:d2
       interface: InfiniBand
       management: false
+      model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
       rate: 10000000000
-      version: MT26418
+      vendor: Mellanox Technologies
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -75,8 +85,8 @@ genepi-21:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50014ee1009bd31f"
+      firmware_version: 20.06C06
       model: WDC WD1600YS-01S
-      rev: 20.06C06
       size: 164696555520
       vendor: Western Digital
   supported_job_types:
