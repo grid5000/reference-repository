@@ -28,27 +28,45 @@ parasilo-24:
       management: true
     eth0:
       driver: ixgbe
+      firmware_version: '0x80000691'
       interface: Ethernet
       ip: 172.16.97.24
       mac: ec:f4:bb:d1:10:18
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp1s0f0
       rate: 10000000000
+      vendor: Intel
     eth1:
       driver: ixgbe
+      firmware_version: '0x80000691'
       interface: Ethernet
       mac: ec:f4:bb:d1:10:1a
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp1s0f1
       rate: 10000000000
+      vendor: Intel
     eth2:
       driver: igb
+      firmware_version: 1.67, 0x80000b85, 16.0.24
       interface: Ethernet
       mac: ec:f4:bb:d1:10:1c
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp6s0f0
+      rate: 0
+      vendor: Intel
     eth3:
       driver: igb
+      firmware_version: 1.67, 0x80000b85, 16.0.24
       interface: Ethernet
       mac: ec:f4:bb:d1:10:1d
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp6s0f1
+      rate: 0
+      vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -76,43 +94,43 @@ parasilo-24:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062eb7557"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
+      firmware_version: LS0A
       model: ST600MM0006
-      rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062eb6ca7"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
+      firmware_version: LS0A
       model: ST600MM0006
-      rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sdc:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062eb93bb"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:2:0"
+      firmware_version: LS0A
       model: ST600MM0006
-      rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sdd:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062ea7143"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0"
+      firmware_version: LS0A
       model: ST600MM0006
-      rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sde:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062ea041f"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:4:0"
+      firmware_version: LS0A
       model: ST600MM0006
-      rev: LS0A
       size: 600127266816
       vendor: SEAGATE
     sdf:
       by_id: "/dev/disk/by-id/wwn-0x50000395ec8a0460"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:5:0"
+      firmware_version: A4AE
       model: PX02SSF020
-      rev: A4AE
       size: 200049647616
       vendor: TOSHIBA
   supported_job_types:
