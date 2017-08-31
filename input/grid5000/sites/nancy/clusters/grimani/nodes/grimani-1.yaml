@@ -26,26 +26,45 @@ grimani-1:
       management: true
     eth0:
       driver: ixgbe
+      firmware_version: '0x800007f4'
       interface: Ethernet
       ip: 172.16.73.1
       mac: 24:6e:96:16:65:60
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp1s0f0
       rate: 10000000000
+      vendor: Intel
     eth1:
       driver: ixgbe
+      firmware_version: '0x800007f4'
       interface: Ethernet
       mac: 24:6e:96:16:65:62
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp1s0f1
+      rate: 0
+      vendor: Intel
     eth2:
       driver: igb
+      firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:16:65:64
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp6s0f0
+      rate: 0
+      vendor: Intel
     eth3:
       driver: igb
+      firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:16:65:65
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp6s0f1
+      rate: 0
+      vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -73,8 +92,8 @@ grimani-1:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c5008cd09959"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
+      firmware_version: NA02
       model: ST1000NX0423
-      rev: NA02
       size: 1000204886016
       vendor: Seagate
   supported_job_types:
