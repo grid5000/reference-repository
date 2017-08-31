@@ -27,12 +27,19 @@ sol-4:
       ip: 172.16.129.4
       mac: 00:16:36:91:e9:d4
       management: false
+      model: MCP55 Ethernet
+      name: enp0s8
       rate: 1000000000
+      vendor: NVIDIA
     eth1:
       driver: forcedeth
       interface: Ethernet
       mac: 00:16:36:91:e9:d5
       management: false
+      model: MCP55 Ethernet
+      name: enp0s9
+      rate: 0
+      vendor: NVIDIA
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -59,8 +66,8 @@ sol-4:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000cca20bf2e70c"
+      firmware_version: V44OA9CA
       model: HITACHI HDS7225S
-      rev: V44OA9CA
       size: 250056000000
       vendor: Hitachi
   supported_job_types:
