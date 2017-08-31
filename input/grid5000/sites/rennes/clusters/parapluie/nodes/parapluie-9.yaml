@@ -23,43 +23,62 @@ parapluie-9:
       management: true
     eth0:
       driver: igb
+      firmware_version: 1.8.2
       interface: Ethernet
       mac: 78:e7:d1:f9:8e:f6
       management: false
+      model: 82576 Gigabit Network Connection
+      name: enp4s0f0
       rate: 100000000
+      vendor: Intel
     eth1:
       driver: igb
+      firmware_version: 1.8.2
       interface: Ethernet
       ip: 172.16.99.9
       mac: 78:e7:d1:f9:8e:f7
       management: false
+      model: 82576 Gigabit Network Connection
+      name: enp4s0f1
       rate: 1000000000
+      vendor: Intel
     eth2:
       driver: igb
+      firmware_version: 1.8.2
       interface: Ethernet
       mac: 78:e7:d1:f9:8e:e4
       management: false
+      model: 82576 Gigabit Network Connection
+      name: enp3s0f0
+      rate: 0
+      vendor: Intel
     eth3:
       driver: igb
+      firmware_version: 1.8.2
       interface: Ethernet
       mac: 78:e7:d1:f9:8e:e5
       management: false
+      model: 82576 Gigabit Network Connection
+      name: enp3s0f1
+      rate: 0
+      vendor: Intel
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:d3:21
       interface: InfiniBand
       ip: 172.18.99.9
-      ip6: fe80::223:7dff:ff94:d321
       management: false
+      model: MT25418 [ConnectX VPI PCIe 2.0 2.5GT/s - IB DDR / 10GigE]
       rate: 20000000000
-      version: MT25418
+      vendor: Mellanox Technologies
     ib1:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:d3:22
       interface: InfiniBand
       management: false
+      model: MT25418 [ConnectX VPI PCIe 2.0 2.5GT/s - IB DDR / 10GigE]
       rate: 10000000000
-      version: MT25418
+      vendor: Mellanox Technologies
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -86,8 +105,8 @@ parapluie-9:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c5002673a23e"
+      firmware_version: HPG0
       model: VB0250EAVER
-      rev: HPG0
       size: 250059350016
       vendor: ATA
   supported_job_types:
