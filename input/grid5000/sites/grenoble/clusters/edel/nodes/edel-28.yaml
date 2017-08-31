@@ -23,42 +23,32 @@ edel-28:
       management: true
     eth0:
       driver: igb
-      firmware_version: 1.5.6
       interface: Ethernet
       ip: 172.16.17.28
       mac: 08:00:38:35:ac:48
       management: false
-      model: 82576 Gigabit Network Connection
-      name: enp1s0f0
       rate: 1000000000
-      vendor: Intel
     eth1:
       driver: igb
-      firmware_version: 1.5.6
       interface: Ethernet
       mac: 08:00:38:35:ac:49
       management: false
-      model: 82576 Gigabit Network Connection
-      name: enp1s0f1
-      rate: 0
-      vendor: Intel
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:35:ca:6d
       interface: InfiniBand
       ip: 172.18.17.28
+      ip6: fe80::a00:3800:135:ca6d
       management: false
-      model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
       rate: 40000000000
-      vendor: Mellanox Technologies
+      version: MT26428
     ib1:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
       interface: InfiniBand
       management: false
-      model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
       rate: 10000000000
-      vendor: Mellanox Technologies
+      version: MT26428
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -85,8 +75,8 @@ edel-28:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x500a07510367bf24"
-      firmware_version: 040H
       model: C400-MTFDDAA128M
+      rev: 040H
       size: 128035676160
       vendor: ATA
   supported_job_types:

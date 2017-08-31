@@ -28,45 +28,26 @@ chetemi-7:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x800007f4'
       interface: Ethernet
       ip: 172.16.37.7
       mac: 24:6e:96:2c:7b:50
       management: false
-      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      name: enp1s0f0
       rate: 10000000000
-      vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x800007f4'
       interface: Ethernet
       mac: 24:6e:96:2c:7b:52
       management: false
-      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      name: enp1s0f1
-      rate: 0
-      vendor: Intel
     eth2:
       driver: igb
-      firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:2c:7b:54
       management: false
-      model: I350 Gigabit Network Connection
-      name: enp6s0f0
-      rate: 0
-      vendor: Intel
     eth3:
       driver: igb
-      firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:2c:7b:55
       management: false
-      model: I350 Gigabit Network Connection
-      name: enp6s0f1
-      rate: 0
-      vendor: Intel
   operating_system:
     cstate_driver: acpi_idle
     cstate_governor: menu
@@ -94,15 +75,15 @@ chetemi-7:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c500982bdacf"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
-      firmware_version: VT32
       model: ST300MP0005
+      rev: VT32
       size: 300000000000
       vendor: SEAGATE
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x5000c500982c34ff"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
-      firmware_version: VT32
       model: ST300MP0005
+      rev: VT32
       size: 300000000000
       vendor: SEAGATE
   supported_job_types:

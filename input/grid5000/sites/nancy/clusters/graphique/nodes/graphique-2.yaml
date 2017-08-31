@@ -28,54 +28,35 @@ graphique-2:
       management: true
     eth0:
       driver: bnx2x
-      firmware_version: FFV7.10.17 bc 7.10.11
       interface: Ethernet
       ip: 172.16.67.2
       mac: 44:a8:42:07:6a:c8
       management: false
-      model: NetXtreme II BCM57800 1/10 Gigabit Ethernet
-      name: enp1s0f0
       rate: 10000000000
-      vendor: Broadcom
     eth1:
       driver: bnx2x
-      firmware_version: FFV7.10.17 bc 7.10.11
       interface: Ethernet
       mac: 44:a8:42:07:6a:ca
       management: false
-      model: NetXtreme II BCM57800 1/10 Gigabit Ethernet
-      name: enp1s0f1
-      rate: 0
-      vendor: Broadcom
     eth2:
       driver: bnx2x
-      firmware_version: FFV7.10.17 bc 7.10.11
       interface: Ethernet
       mac: 44:a8:42:07:6a:cc
       management: false
-      model: NetXtreme II BCM57800 1/10 Gigabit Ethernet
-      name: enp1s0f2
-      rate: 0
-      vendor: Broadcom
     eth3:
       driver: bnx2x
-      firmware_version: FFV7.10.17 bc 7.10.11
       interface: Ethernet
       mac: 44:a8:42:07:6a:ce
       management: false
-      model: NetXtreme II BCM57800 1/10 Gigabit Ethernet
-      name: enp1s0f3
-      rate: 0
-      vendor: Broadcom
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f0:61
       interface: InfiniBand
       ip: 172.18.67.2
+      ip6: fe80::f652:1403:76:f061
       management: false
-      model: MT27500 Family [ConnectX-3]
       rate: 56000000000
-      vendor: Mellanox Technologies
+      version: MT4099
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -103,8 +84,8 @@ graphique-2:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x644a8420018050001c7e477b12eb7708"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0"
-      firmware_version: 4.24
       model: PERC H330
+      rev: 4.24
       size: 299439751168
       vendor: DELL
   supported_job_types:

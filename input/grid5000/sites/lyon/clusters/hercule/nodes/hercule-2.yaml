@@ -23,45 +23,26 @@ hercule-2:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x00000000'
       interface: Ethernet
       mac: 00:8c:fa:0b:b4:bc
       management: false
-      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      name: enp130s0f0
-      rate: 0
-      vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x00000000'
       interface: Ethernet
       ip: 172.16.51.2
       mac: 00:8c:fa:0b:b4:bd
       management: false
-      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      name: enp130s0f1
       rate: 10000000000
-      vendor: Intel
     eth2:
       driver: igb
-      firmware_version: 1.57.0
       interface: Ethernet
       mac: 84:8f:69:fd:4f:3d
       management: false
-      model: I350 Gigabit Network Connection
-      name: enp2s0f0
-      rate: 0
-      vendor: Intel
     eth3:
       driver: igb
-      firmware_version: 1.57.0
       interface: Ethernet
       mac: 84:8f:69:fd:4f:3e
       management: false
-      model: I350 Gigabit Network Connection
-      name: enp2s0f3
-      rate: 0
-      vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -88,20 +69,20 @@ hercule-2:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50014ee25c3d0e25"
-      firmware_version: 01.01D02
       model: WDC WD2003FYYS-1
+      rev: 01.01D02
       size: 2000398934016
       vendor: Western Digital
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x50014ee25c3d1dc2"
-      firmware_version: 01.01D02
       model: WDC WD2003FYYS-1
+      rev: 01.01D02
       size: 2000398934016
       vendor: Western Digital
     sdc:
       by_id: "/dev/disk/by-id/wwn-0x50014ee206e7f10e"
-      firmware_version: 01.01D02
       model: WDC WD2003FYYS-1
+      rev: 01.01D02
       size: 2000398934016
       vendor: Western Digital
   supported_job_types:

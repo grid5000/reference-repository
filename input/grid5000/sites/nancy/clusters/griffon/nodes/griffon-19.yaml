@@ -22,25 +22,16 @@ griffon-19:
       management: true
     eth0:
       driver: e1000e
-      firmware_version: 2.2-12
       interface: Ethernet
       ip: 172.16.65.19
       mac: 00:e0:81:b2:c5:60
       management: false
-      model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
-      name: enp15s0f0
       rate: 1000000000
-      vendor: Intel
     eth1:
       driver: e1000e
-      firmware_version: 2.2-12
       interface: Ethernet
       mac: 00:e0:81:b2:c5:61
       management: false
-      model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
-      name: enp15s0f1
-      rate: 0
-      vendor: Intel
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -67,8 +58,8 @@ griffon-19:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000cca34ddfef02"
-      firmware_version: GM3OA5CA
       model: Hitachi HDP72503
+      rev: GM3OA5CA
       size: 320072933376
       vendor: Hitachi
   supported_job_types:

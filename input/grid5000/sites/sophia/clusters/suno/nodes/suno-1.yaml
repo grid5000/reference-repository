@@ -13,7 +13,6 @@ suno-1:
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge R410
-    serial: "..CN137409BN01JJ."
   main_memory:
     ram_size: 34359738368
   network_adapters:
@@ -23,25 +22,16 @@ suno-1:
       management: true
     eth0:
       driver: bnx2
-      firmware_version: 5.0.12 bc 5.0.11 NCSI 2.0.5
       interface: Ethernet
       ip: 172.16.130.1
       mac: 00:26:b9:58:e6:82
       management: false
-      model: NetXtreme II BCM5716 Gigabit Ethernet
-      name: enp1s0f0
       rate: 1000000000
-      vendor: Broadcom
     eth1:
       driver: bnx2
-      firmware_version: 5.0.12 bc 5.0.11 NCSI 2.0.5
       interface: Ethernet
       mac: 00:26:b9:58:e6:83
       management: false
-      model: NetXtreme II BCM5716 Gigabit Ethernet
-      name: enp1s0f1
-      rate: 0
-      vendor: Broadcom
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -69,8 +59,8 @@ suno-1:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x60026b903752e5001f07d1950b91b9e1"
       by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
-      firmware_version: 1.22
       model: PERC 6/i Adapter
+      rev: 1.22
       size: 598879502336
       vendor: DELL
   supported_job_types:

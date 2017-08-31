@@ -28,65 +28,36 @@ nova-19:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x800007f5'
       interface: Ethernet
       ip: 172.16.52.19
       mac: a0:36:9f:d2:ca:58
       management: false
-      model: Ethernet 10G 2P X520 Adapter
-      name: enp5s0f0
       rate: 10000000000
-      vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x800007f5'
       interface: Ethernet
       mac: a0:36:9f:d2:ca:5a
       management: false
-      model: Ethernet 10G 2P X520 Adapter
-      name: enp5s0f1
-      rate: 0
-      vendor: Intel
     eth2:
       driver: tg3
-      firmware_version: FFV20.2.17 bc 5720-v1.39
       interface: Ethernet
       mac: 18:66:da:7e:ff:21
       management: false
-      model: NetXtreme BCM5720 Gigabit Ethernet PCIe
-      name: enp2s0f0
-      rate: 0
-      vendor: Broadcom
     eth3:
       driver: tg3
-      firmware_version: FFV20.2.17 bc 5720-v1.39
       interface: Ethernet
       mac: 18:66:da:7e:ff:22
       management: false
-      model: NetXtreme BCM5720 Gigabit Ethernet PCIe
-      name: enp2s0f1
-      rate: 0
-      vendor: Broadcom
     eth4:
       driver: tg3
-      firmware_version: FFV20.2.17 bc 5720-v1.39
       interface: Ethernet
       mac: 18:66:da:7e:ff:23
       management: false
-      model: NetXtreme BCM5720 Gigabit Ethernet PCIe
-      name: enp3s0f0
-      rate: 0
-      vendor: Broadcom
     eth5:
       driver: tg3
-      firmware_version: FFV20.2.17 bc 5720-v1.39
       interface: Ethernet
       mac: 18:66:da:7e:ff:24
       management: false
-      model: NetXtreme BCM5720 Gigabit Ethernet PCIe
-      name: enp3s0f1
-      rate: 0
-      vendor: Broadcom
   operating_system:
     cstate_driver: acpi_idle
     cstate_governor: menu
@@ -114,8 +85,8 @@ nova-19:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x6847beb0d532d2001faf306f1651a996"
       by_path: "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0"
-      firmware_version: 4.26
       model: PERC H330 Mini
+      rev: 4.26
       size: 598879502336
       vendor: DELL
   supported_job_types:

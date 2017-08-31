@@ -28,65 +28,36 @@ orion-1:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x8000030d'
       interface: Ethernet
       ip: 172.16.50.1
       mac: a0:36:9f:08:fa:54
       management: false
-      model: Ethernet 10G 2P X520 Adapter
-      name: enp68s0f0
       rate: 10000000000
-      vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x8000030d'
       interface: Ethernet
       mac: a0:36:9f:08:fa:56
       management: false
-      model: Ethernet 10G 2P X520 Adapter
-      name: enp68s0f1
-      rate: 0
-      vendor: Intel
     eth2:
       driver: igb
-      firmware_version: 1.56, 0x80000814
       interface: Ethernet
       mac: bc:30:5b:ef:25:9c
       management: false
-      model: I350 Gigabit Network Connection
-      name: enp1s0f0
-      rate: 0
-      vendor: Intel
     eth3:
       driver: igb
-      firmware_version: 1.56, 0x80000814
       interface: Ethernet
       mac: bc:30:5b:ef:25:9d
       management: false
-      model: I350 Gigabit Network Connection
-      name: enp1s0f1
-      rate: 0
-      vendor: Intel
     eth4:
       driver: igb
-      firmware_version: 1.56, 0x80000814
       interface: Ethernet
       mac: bc:30:5b:ef:25:9e
       management: false
-      model: I350 Gigabit Network Connection
-      name: enp1s0f2
-      rate: 0
-      vendor: Intel
     eth5:
       driver: igb
-      firmware_version: 1.56, 0x80000814
       interface: Ethernet
       mac: bc:30:5b:ef:25:9f
       management: false
-      model: I350 Gigabit Network Connection
-      name: enp1s0f3
-      rate: 0
-      vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -114,8 +85,8 @@ orion-1:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x6d4ae520ab2833001797384918984fca"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0"
-      firmware_version: 3.13
       model: PERC H710
+      rev: 3.13
       size: 598879502336
       vendor: DELL
   supported_job_types:

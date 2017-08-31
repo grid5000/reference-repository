@@ -53,37 +53,28 @@
       "device": "eth0",
       "driver": "igb",
       "enabled": true,
-      "firmware_version": "1.4.3",
       "interface": "Ethernet",
       "ip": "172.16.132.14",
       "kavlan": true,
       "mac": "00:26:6c:f8:5d:6c",
       "management": false,
-      "model": "82576 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
-      "name": "enp1s0f0",
       "network_address": "uvb-14.sophia.grid5000.fr",
       "rate": 1000000000,
       "switch": "swy1nef",
-      "switch_port": "Port: 74 Gigabit",
-      "vendor": "Intel"
+      "switch_port": "Port: 74 Gigabit"
     },
     {
       "device": "eth1",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.4.3",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "00:26:6c:f8:5d:6d",
       "management": false,
-      "model": "82576 Gigabit Network Connection",
       "mountable": false,
-      "mounted": false,
-      "name": "enp1s0f1",
-      "rate": 0,
-      "vendor": "Intel"
+      "mounted": false
     },
     {
       "alias": [
@@ -95,12 +86,14 @@
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:9d",
       "interface": "InfiniBand",
       "ip": "172.18.132.14",
+      "ip6": "fe80::224:e890:97ff:8a9d",
       "kavlan": false,
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "uvb-14-ib0.8100.sophia.grid5000.fr",
-      "rate": 40000000000
+      "rate": 40000000000,
+      "version": "MT26428"
     },
     {
       "device": "ib0",
@@ -110,12 +103,11 @@
       "interface": "InfiniBand",
       "kavlan": false,
       "management": false,
-      "model": "MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]",
       "mountable": true,
       "mounted": false,
       "network_address": "uvb-14-ib0.sophia.grid5000.fr",
       "rate": 40000000000,
-      "vendor": "Mellanox Technologies"
+      "version": "MT26428"
     },
     {
       "device": "bmc",
@@ -169,9 +161,9 @@
       "by_id": "/dev/disk/by-id/wwn-0x50014ee1ae21aa9f",
       "device": "sda",
       "driver": "ahci",
-      "firmware_version": "02.03B05",
       "interface": "SATA",
       "model": "WDC WD2502ABYS-1",
+      "rev": "02.03B05",
       "size": 250000000000,
       "storage": "HDD",
       "vendor": "Western Digital"
