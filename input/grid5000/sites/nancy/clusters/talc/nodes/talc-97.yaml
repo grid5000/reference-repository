@@ -22,16 +22,25 @@ talc-97:
       management: true
     eth0:
       driver: e1000e
+      firmware_version: 2.2-12
       interface: Ethernet
       ip: 172.16.66.97
       mac: 00:e0:81:b5:9c:a2
       management: false
+      model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
+      name: enp15s0f0
       rate: 1000000000
+      vendor: Intel
     eth1:
       driver: e1000e
+      firmware_version: 2.2-12
       interface: Ethernet
       mac: 00:e0:81:b5:9c:a3
       management: false
+      model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
+      name: enp15s0f1
+      rate: 0
+      vendor: Intel
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -58,8 +67,8 @@ talc-97:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000cca346cb1e20"
+      firmware_version: ST2OA31B
       model: Hitachi HDT72103
-      rev: ST2OA31B
       size: 320072933376
       vendor: Hitachi
   supported_job_types:
