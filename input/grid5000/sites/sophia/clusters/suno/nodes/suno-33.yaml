@@ -23,16 +23,25 @@ suno-33:
       management: true
     eth0:
       driver: bnx2
+      firmware_version: 5.0.9 bc 5.0.6 NCSI 2.0.3
       interface: Ethernet
       ip: 172.16.130.33
       mac: 00:26:b9:3f:3f:67
       management: false
+      model: NetXtreme II BCM5716 Gigabit Ethernet
+      name: enp1s0f0
       rate: 1000000000
+      vendor: Broadcom
     eth1:
       driver: bnx2
+      firmware_version: 5.0.9 bc 5.0.6 NCSI 2.0.3
       interface: Ethernet
       mac: 00:26:b9:3f:3f:68
       management: false
+      model: NetXtreme II BCM5716 Gigabit Ethernet
+      name: enp1s0f1
+      rate: 0
+      vendor: Broadcom
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -60,8 +69,8 @@ suno-33:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x60026b903752be001abeb9ec04a967d6"
       by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
+      firmware_version: 1.22
       model: PERC 6/i Adapter
-      rev: 1.22
       size: 598879502336
       vendor: DELL
   supported_job_types:
