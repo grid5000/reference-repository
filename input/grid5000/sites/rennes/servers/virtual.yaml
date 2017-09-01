@@ -19,10 +19,6 @@ dhcp-prod:
 ldap:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.120}}
-api-server:
-  kind: virtual
-  alias: [api-server-v4]
-  network_adapters: {default: {ip: 172.16.111.115}}
 nfs-tools:
   kind: virtual
   alias:
