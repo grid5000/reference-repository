@@ -93,15 +93,12 @@ refapi['sites'].each { |site_uid, site_refapi|
     #     suffix: "-bmc"
     #     sleep: "6"
 
-    cluster_hash = {}
-    cluster_hash['bmc']           = cluster_config.fetch('bmc') rescue 'ipmi'
-    cluster_hash['user']          = cluster_credentials.split(' ')[0]
-    cluster_hash['password']      = cluster_credentials.split(' ')[1]
-    cluster_hash['sleep']         = cluster_config.fetch('sleep') rescue '6'
-    cluster_hash['command_delay'] = cluster_config.fetch('command_delay') rescue nil
-
-    cluster_hash['suffix']        = cluster_config.fetch('suffix') rescue nil
-    cluster_hash['suffix']        = cluster_refapi["#{cluster_uid}-1"]['network_adapters']['bmc'].fetch('network_address').split('.')[0].gsub("#{cluster_uid}-1",'') rescue '-bmc' if cluster_hash['suffix'].nil?
+    cluster_hash = cluster_config || {}
+    cluster_hash['bmc'] ||= 'ipmi'
+    cluster_hash['sleep'] ||= '6'
+    cluster_hash['suffix'] ||= (cluster_refapi["#{cluster_uid}-1"]['network_adapters']['bmc'].fetch('network_address').split('.')[0].gsub("#{cluster_uid}-1",'') rescue '-bmc')
+    cluster_hash['user'] ||= cluster_credentials.split(' ')[0]
+    cluster_hash['password'] ||= cluster_credentials.split(' ')[1]
 
     cluster_hash.reject!{ |k,v| v == nil } 
 
