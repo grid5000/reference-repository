@@ -1,6 +1,9 @@
 access:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.100}}
+mail:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.31.125}}
 fgrenoble:
   kind: virtual
   alias: [frontend, oar-api]
