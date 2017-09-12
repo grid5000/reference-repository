@@ -141,5 +141,11 @@ stalc3:
       kind: switch
       rate: 10000000000
       ports:
-        1: stalc1
         2: stalc2
+    2:
+      snmp_pattern: "Ten-GigabitEthernet1/%LINECARD%/%PORT%"
+      kind: router
+      rate: 10000000000
+      ports:
+        1: gw-nancy
+
