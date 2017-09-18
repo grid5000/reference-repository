@@ -18,6 +18,7 @@ options = {}
 options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 options[:output_dir] = "/tmp/puppet-repo"
 options[:conf_dir] = File.expand_path("conf-examples/", File.dirname(__FILE__))
+options[:puppet4] = false
 
 OptionParser.new do |opts|
   opts.banner = "Usage: lanpowerg5k.rb [options]"
@@ -27,11 +28,22 @@ OptionParser.new do |opts|
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
     options[:output_dir] = d
-    options[:conf_dir] = "#{options[:output_dir]}/modules/lanpowerg5k/generators/"
+
+    options[:conf_dir] = begin
+      if options[:puppet4]
+        "#{options[:output_dir]}/platforms/production/generators/ipmitools"
+      else
+        "#{options[:output_dir]}/modules/lanpowerg5k/generators/"
+      end
+    end
   end
 
   opts.on('-c', '--conf-dir dir', String, 'Select the lanpower module configuration path', "Default: #{options[:conf_dir]}") do |d|
     options[:conf_dir] = d
+  end
+
+  opts.on('--puppet4', 'Puppet 4 version', "Default: " + options[:puppet4].to_s) do |d|
+    options[:puppet4] = d
   end
 
   opts.separator ""
@@ -50,6 +62,7 @@ end.parse!
 
 raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir].to_s).exist?
 
+puts "Puppet #{options[:puppet4] ? '4' : '2'} context"
 puts "Writing lanpower configuration files to: #{options[:output_dir]}"
 puts "Using configuration directory: #{options[:conf_dir]}"
 puts "For site(s): #{options[:sites].join(', ')}"
@@ -70,7 +83,7 @@ refapi['sites'].each { |site_uid, site_refapi|
   site_refapi['servers'] ||= {}
   cluster_list = site_refapi['clusters'].keys | site_refapi['servers'].keys | config[site_uid].keys | credentials[site_uid].keys
 
-  cluster_list.sort.each { |cluster_uid| 
+  cluster_list.sort.each { |cluster_uid|
     cluster_refapi      = site_refapi['clusters'][cluster_uid].fetch('nodes') rescue site_refapi['servers'][cluster_uid].fetch('nodes') rescue nil
     cluster_config      = config[site_uid][cluster_uid]['lanpower'] rescue nil
     cluster_credentials = credentials[site_uid].fetch(cluster_uid) rescue nil
@@ -100,14 +113,20 @@ refapi['sites'].each { |site_uid, site_refapi|
     cluster_hash['user'] ||= cluster_credentials.split(' ')[0]
     cluster_hash['password'] ||= cluster_credentials.split(' ')[1]
 
-    cluster_hash.reject!{ |k,v| v == nil } 
+    cluster_hash.reject!{ |k,v| v == nil }
 
     h['clusters'][cluster_uid] = cluster_hash
-    
+
   } # clusters.each
 
   # Write output file
-  output_file = Pathname("#{options[:output_dir]}/modules/lanpowerg5k/files/#{site_uid}/lanpower.yaml")
+  output_file = begin
+    if options[:puppet4]
+      Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/lanpower/#{site_uid}/lanpower.yaml")
+    else
+      Pathname("#{options[:output_dir]}/modules/lanpowerg5k/files/#{site_uid}/lanpower.yaml")
+    end
+  end
   output_file.dirname.mkpath()
   write_yaml(output_file, h)
   add_header(output_file)
