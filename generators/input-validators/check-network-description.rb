@@ -78,7 +78,7 @@ def check_network_description(options)
             if mynetnodes.length == 1
               # on n'en a trouvé qu'un seul, c'est donc forcément le bon
               mynetnodes.first['found'] += 1
-              links << [ eq['uid'], mynetnodes.first['nickname'] ].sort
+              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
             elsif mynetnodes.length > 1
               # il y en a plusieurs...
               if port['port'].nil?
@@ -91,7 +91,7 @@ def check_network_description(options)
                 if mynetnodes.length == 1
                   # on n'en a trouvé qu'un seul, c'est donc forcément le bon
                   mynetnodes.first['found'] += 1
-                  links << [ eq['uid'], mynetnodes.first['nickname'] ].sort
+                  links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
                 elsif mynetnodes.length > 1
                   puts "ERROR: port specification matches several network nodes. port=#{port} ; network nodes matched=#{mynetnodes}"
                   ok = false
@@ -111,7 +111,7 @@ def check_network_description(options)
               if mynetnodes.length == 1
                 # on n'en a trouvé qu'un seul, c'est donc forcément le bon
                 mynetnodes.first['found'] += 1
-                links << [ eq['uid'], mynetnodes.first['nickname'] ].sort
+                links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
               elsif mynetnodes.length > 1
                 puts "ERROR: port specification matches several network nodes. port=#{port} ; network nodes matched=#{mynetnodes}"
                 ok = false
@@ -124,7 +124,7 @@ def check_network_description(options)
               mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid', 'port') == port.values_at('kind', 'uid', 'port') }
               if mynetnodes.length == 1
                 mynetnodes.first['found'] += 1
-                links << [ eq['uid'], mynetnodes.first['nickname'] ].sort
+                links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
               else
                 puts "ERROR: this port is connected to a node that does not exist: #{port}"
                 ok = false
@@ -134,7 +134,7 @@ def check_network_description(options)
             mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid') == port.values_at('kind', 'uid') }
             if mynetnodes.length == 1
               mynetnodes.first['found'] += 1
-              links << [ eq['uid'], mynetnodes.first['nickname'] ].sort
+              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
             else
               puts "ERROR: this port is connected to a switch or router that does not exist: #{port}"
               ok = false
@@ -167,19 +167,20 @@ def check_network_description(options)
       ok = false
     end
 
-    links.uniq.each do |l|
+    linknicks = links.map { |l| l['nicknames'] }
+    linknicks.uniq.each do |l|
       n0 = netnodes.select { |n| n['nickname'] == l[0] }.first
       n1 = netnodes.select { |n| n['nickname'] == l[1] }.first
       if ['router','switch'].include?(n0['kind']) and ['router','switch'].include?(n1['kind'])
         next if HPC_SWITCHES.include?(n0['nickname']) or HPC_SWITCHES.include?(n1['nickname']) # FIXME we ignore problems with HPC switches for now
         # this is a link between network equipment
-        if links.count(l) % 2 != 0
-          puts "ERROR: link between two network equipments should have 2 instances (or 4, 6, 8 in case of aggregation): #{l} (actual count: #{links.count(l)})"
+        if linknicks.count(l) % 2 != 0
+          puts "ERROR: link between two network equipments should have 2 instances (or 4, 6, 8 in case of aggregation): #{l} (actual count: #{linknicks.count(l)})"
           ok = false
         end
       else
-        if links.count(l) != 1
-          puts "ERROR: duplicate link : #{l} (actual count: #{links.count(l)})"
+        if linknicks.count(l) != 1
+          puts "ERROR: duplicate link : #{l} (actual count: #{linknicks.count(l)})"
           ok = false
         end
       end
