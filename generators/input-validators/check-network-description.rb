@@ -185,8 +185,78 @@ def check_network_description(options)
         end
       end
     end
+    
+    # FIXME check rates
+
+    if options[:dot]
+      generate_dot(netnodes, links, "network_#{site}.dot")
+    end
   end
   return ok
+end
+
+def generate_dot(netnodes, links, ofile)
+  fd = File::new(ofile, 'w')
+  fd.puts "graph graphname {"
+  mynetnodes = []
+  netnodes.each do |n|
+    next if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or HPC_SWITCHES.include?(n['nickname'])
+    mynetnodes << n
+  end
+  # delete nodes we don't care about (HPC networks)
+  nicknames = mynetnodes.map { |n| n['nickname'] }
+  links.delete_if { |l| not (nicknames.include?(l['switch']) and nicknames.include?(l['target'])) }
+
+  # enrich links
+  links.each do |l|
+    l['target_kind'] = mynetnodes.select { |n| n['nickname'] == l['target'] }.first['kind']
+    if l['target_kind'] == 'node'
+      l['target_cluster'] = l['target'].split('-')[0]
+    end
+  end
+
+  # optimize links by grouping nodes to same switch
+  links.map { |l| l['switch'] }.uniq.each do |switch| # for each switch
+    puts "optimizing #{switch}"
+    links.select { |l| l['switch'] == switch and l['target_kind'] == 'node' }.map {|l| l['target_cluster'] }.uniq.each do |cluster|
+      puts "optimizing #{switch}/#{cluster}"
+      links_to_nodes = links.select { |l| l['switch'] == switch and l['target_kind'] == 'node' and l['target_cluster'] == cluster }
+      next if links_to_nodes.empty?
+      if links_to_nodes.map { |l| l['rate'] }.uniq.length > 1
+        raise "Non-homogeneous rate"
+      end
+      nicknames = links_to_nodes.map { |l| l['target'] }
+      nicknames_str = ` echo #{nicknames.join(" ")} | nodeset -f`.chomp
+      mynetnodes_first = mynetnodes.select { |n| n['nickname'] == nicknames.first }.first
+      mynetnodes.delete_if { |n| nicknames.include?(n['nickname']) }
+      # add a hackish entry
+      mynetnodes_first['nickname'] = nicknames_str
+      mynetnodes << mynetnodes_first
+      links -= links_to_nodes
+      links << { 'nicknames' => [ links_to_nodes.first['switch'], nicknames_str ].sort, 'switch' => links_to_nodes.first['switch'], 'target' => nicknames_str, 'rate' => links_to_nodes.first['rate'] }
+    end
+  end
+
+  # remove duplicate reverse links between switches. We keep only the one where the target is the second node.
+  links.delete_if { |l| ['router', 'switch'].include?(l['target_kind']) and l['target'] == l['nicknames'].first }
+
+  # output remaining netnodes
+  mynetnodes.each do |n|
+    fd.puts "\"#{n['nickname']}\";"
+  end
+  # finally output links
+  links.uniq.each do |l|
+    if l['rate'] == 1*10**9
+      r = '1G'
+    elsif l['rate'] == 10*10**9
+      r = '10G'
+    else
+      raise "Invalid rate: #{l['rate']}"
+    end
+    fd.puts "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\"];"
+  end
+  fd.puts "}"
+  fd.close
 end
 
 
@@ -219,6 +289,10 @@ if __FILE__ == $0
     opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
       options[:verbose] ||= 0
       options[:verbose] = options[:verbose] + 1
+    end
+
+    opts.on("", "--dot", "Generate one dotfile per site") do
+      options[:dot] = true
     end
 
     # Print an options summary.
