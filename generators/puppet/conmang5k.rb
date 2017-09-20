@@ -27,7 +27,7 @@ OptionParser.new do |opts|
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
     options[:output_dir] = d
-    options[:conf_dir] = "#{options[:output_dir]}/platforms/production/modules/generators/ipmitools/"
+    options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/ipmitools/"
   end
 
   opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: #{options[:conf_dir]}") do |d|
