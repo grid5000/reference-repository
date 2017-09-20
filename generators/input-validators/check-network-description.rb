@@ -189,15 +189,13 @@ def check_network_description(options)
     # FIXME check rates
 
     if options[:dot]
-      generate_dot(netnodes, links, "network_#{site}.dot")
+      generate_dot(netnodes, links, site)
     end
   end
   return ok
 end
 
-def generate_dot(netnodes, links, ofile)
-  fd = File::new(ofile, 'w')
-  fd.puts "graph graphname {"
+def generate_dot(netnodes, links, site)
   mynetnodes = []
   netnodes.each do |n|
     next if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or HPC_SWITCHES.include?(n['nickname'])
@@ -239,17 +237,31 @@ def generate_dot(netnodes, links, ofile)
 
   # remove duplicate reverse links between switches. We keep only the one where the target is the second node.
   links.delete_if { |l| ['router', 'switch'].include?(l['target_kind']) and l['target'] == l['nicknames'].first }
-
+  fd = File::new("network_#{site}.dot", 'w')
+  fd.puts "graph graphname {"
+  router = mynetnodes.select { |n| n['kind'] == 'router' }.first['nickname']
+  fd.puts <<-EOF
+  root="#{router}";
+  overlap=false;
+  splines=true;
+  ranksep=0.6;
+        EOF
   # output remaining netnodes
   mynetnodes.each do |n|
-    fd.puts "\"#{n['nickname']}\";"
+    if n['kind'] == 'node'
+      fd.puts "\"#{n['nickname']}\";"
+    else
+      fd.puts "\"#{n['nickname']}\" [shape=box];"
+    end
   end
   # finally output links
-  links.uniq.each do |l|
+  links.each do |l|
     if l['rate'] == 1*10**9
       r = '1G'
     elsif l['rate'] == 10*10**9
       r = '10G'
+    elsif l['rate'] == 40*10**9
+      r = '40G'
     else
       raise "Invalid rate: #{l['rate']}"
     end
@@ -257,6 +269,8 @@ def generate_dot(netnodes, links, ofile)
   end
   fd.puts "}"
   fd.close
+  system("twopi -Tpdf network_#{site}.dot -onetwork_#{site}.pdf")
+  system("twopi -Tpng network_#{site}.dot -onetwork_#{site}.png")
 end
 
 
