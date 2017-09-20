@@ -185,8 +185,15 @@ def check_network_description(options)
         end
       end
     end
-    
-    # FIXME check rates
+
+    links.each do |l|
+      nn = netnodes.select { |n| n['nickname'] == l['target'] }.first
+      next if nn['kind'] != 'node'
+      if l['rate'] != nn['rate']
+        puts "ERROR: invalid rate for #{l}: netnode has #{l['rate']}"
+        ok = false
+      end
+    end
 
     if options[:dot]
       generate_dot(netnodes, links, site)
