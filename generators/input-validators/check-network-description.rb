@@ -78,7 +78,7 @@ def check_network_description(options)
             if mynetnodes.length == 1
               # on n'en a trouvé qu'un seul, c'est donc forcément le bon
               mynetnodes.first['found'] += 1
-              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
+              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'] }
             elsif mynetnodes.length > 1
               # il y en a plusieurs...
               if port['port'].nil?
@@ -91,7 +91,7 @@ def check_network_description(options)
                 if mynetnodes.length == 1
                   # on n'en a trouvé qu'un seul, c'est donc forcément le bon
                   mynetnodes.first['found'] += 1
-                  links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
+                  links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'] }
                 elsif mynetnodes.length > 1
                   puts "ERROR: port specification matches several network nodes. port=#{port} ; network nodes matched=#{mynetnodes}"
                   ok = false
@@ -111,7 +111,7 @@ def check_network_description(options)
               if mynetnodes.length == 1
                 # on n'en a trouvé qu'un seul, c'est donc forcément le bon
                 mynetnodes.first['found'] += 1
-                links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
+                links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'] }
               elsif mynetnodes.length > 1
                 puts "ERROR: port specification matches several network nodes. port=#{port} ; network nodes matched=#{mynetnodes}"
                 ok = false
@@ -124,7 +124,7 @@ def check_network_description(options)
               mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid', 'port') == port.values_at('kind', 'uid', 'port') }
               if mynetnodes.length == 1
                 mynetnodes.first['found'] += 1
-                links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
+                links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'] }
               else
                 puts "ERROR: this port is connected to a node that does not exist: #{port}"
                 ok = false
@@ -134,7 +134,7 @@ def check_network_description(options)
             mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid') == port.values_at('kind', 'uid') }
             if mynetnodes.length == 1
               mynetnodes.first['found'] += 1
-              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => lc['rate'] }
+              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'] }
             else
               puts "ERROR: this port is connected to a switch or router that does not exist: #{port}"
               ok = false
