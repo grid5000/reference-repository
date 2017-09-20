@@ -5,6 +5,9 @@
 require 'json'
 require 'pp'
 
+# FIXME infiniband equipment is not completely described in the ref-api yet. See Bug 8586
+HPC_SWITCHES = ['ib-grenoble', 'voltaire-1', 'voltaire-2', 'voltaire-3', 'sgraoullyib', 'sgrapheneib', 'sw-myrinet', 'sgrele-opf']
+
 def check_network_description(options)
   ok = true
   puts "Documentation: https://www.grid5000.fr/mediawiki/index.php/TechTeam:Network_Description"
@@ -71,7 +74,7 @@ def check_network_description(options)
           #### FIXME toute cette partie pourrait être enlevée si les données étaient complètes dans l'API ...
           if port['kind'].nil?
             # aucun type de port (node, switch, etc.) n'est spécifié. Cherchons si on trouve un netnode (noeud ou switch) avec cet uid, et prenons sa seule interface 'mounted' pas Infiniband...
-            mynetnodes = netnodes.select { |n| n.values_at('uid') == port.values_at('uid') and n['interface'] != 'InfiniBand' }
+            mynetnodes = netnodes.select { |n| n.values_at('uid') == port.values_at('uid') and n['interface'] != 'InfiniBand' and n['interface'] != 'Myrinet' }
             if mynetnodes.length == 1
               # on n'en a trouvé qu'un seul, c'est donc forcément le bon
               mynetnodes.first['found'] += 1
@@ -149,8 +152,7 @@ def check_network_description(options)
     # find netnodes without connection
     # for routers, it's OK, because they would be connected to other G5K routers
     netnodes.select { |n| n['found'] == 0 and not n['kind'] == 'router' }.each do |n|
-      # FIXME infiniband equipment is not completely described in the ref-api yet. See Bug 8586
-      if n['interface'] == 'InfiniBand' or ['ib-grenoble', 'voltaire-1', 'voltaire-2', 'voltaire-3', 'sgraoullyib', 'sgrapheneib'].include?(n['uid'])
+      if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or HPC_SWITCHES.include?(n['uid'])
         puts "WARNING: we did not find a corresponding entry on a network equipment for this InfiniBand node: #{n}"
       else
         puts "ERROR: we did not find a corresponding entry on a network equipment for this node: #{n}"
@@ -169,6 +171,7 @@ def check_network_description(options)
       n0 = netnodes.select { |n| n['nickname'] == l[0] }.first
       n1 = netnodes.select { |n| n['nickname'] == l[1] }.first
       if ['router','switch'].include?(n0['kind']) and ['router','switch'].include?(n1['kind'])
+        next if HPC_SWITCHES.include?(n0['nickname']) or HPC_SWITCHES.include?(n1['nickname']) # FIXME we ignore problems with HPC switches for now
         # this is a link between network equipment
         if links.count(l) % 2 != 0
           puts "ERROR: link between two network equipments should have 2 instances (or 4, 6, 8 in case of aggregation): #{l} (actual count: #{links.count(l)})"
