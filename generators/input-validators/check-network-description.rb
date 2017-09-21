@@ -214,7 +214,8 @@ def generate_dot(netnodes, links, site)
 
   # enrich links
   links.each do |l|
-    l['target_kind'] = mynetnodes.select { |n| n['nickname'] == l['target'] }.first['kind']
+    nn = mynetnodes.select { |n| n['nickname'] == l['target'] }.first
+    l['target_kind'] = nn['kind']
     if l['target_kind'] == 'node'
       l['target_cluster'] = l['target'].split('-')[0]
     end
@@ -223,63 +224,70 @@ def generate_dot(netnodes, links, site)
   # remove duplicate reverse links between switches. We keep only the one where the target is the second node.
   links.delete_if { |l| ['router', 'switch'].include?(l['target_kind']) and l['target'] == l['nicknames'].first }
 
-
-  # optimize links by grouping nodes to same switch
-  links.map { |l| l['switch'] }.uniq.each do |switch| # for each switch
-    puts "optimizing #{switch}"
-    links.select { |l| l['switch'] == switch and l['target_kind'] == 'node' }.map {|l| l['target_cluster'] }.uniq.each do |cluster|
-      puts "optimizing #{switch}/#{cluster}"
-      links_to_nodes = links.select { |l| l['switch'] == switch and l['target_kind'] == 'node' and l['target_cluster'] == cluster }
-      next if links_to_nodes.empty?
-      if links_to_nodes.map { |l| l['rate'] }.uniq.length > 1
-        raise "Non-homogeneous rate"
-      end
-      nicknames = links_to_nodes.map { |l| l['target'] }
-      nicknames_str = ` echo #{nicknames.join(" ")} | nodeset -f`.chomp
-      mynetnodes_first = mynetnodes.select { |n| n['nickname'] == nicknames.first }.first
-      mynetnodes.delete_if { |n| nicknames.include?(n['nickname']) }
-      # add a hackish entry
-      mynetnodes_first['nickname'] = nicknames_str
-      mynetnodes << mynetnodes_first
-      links -= links_to_nodes
-      links << { 'nicknames' => [ links_to_nodes.first['switch'], nicknames_str ].sort, 'switch' => links_to_nodes.first['switch'], 'target' => nicknames_str, 'rate' => links_to_nodes.first['rate'] }
+  # separate links to equipments
+  eqlinks = links.select { |l| ['router', 'switch'].include?(l['target_kind']) }
+  # for links to nodes, re-process the links to facilitate grouping
+  nodeslinks = []
+  links.select { |l| ['node'].include?(l['target_kind']) }.each do |l|
+    mynodelinks = nodeslinks.select { |nl| l['target_node'] == nl['target_node'] }.first
+    if mynodelinks.nil?
+      mynodelinks = { 'target_cluster' => l['target_cluster'], 'target_node' => l['target_node'], 'attachments' => {} }
+      nodeslinks << mynodelinks
     end
+    mynodelinks['attachments'][l['port']] = { 'switch' => l['switch'], 'rate' => l['rate'] }
   end
+  # group
+  nodeslinks = nodeslinks.group_by { |l| [ l['target_cluster'], l['attachments'] ] }.to_a.map { |e| e[1].map! { |f| f['target_node'] } ; e }
+  # factor
+  nodeslinks.map! { |e| e[1] = `echo #{e[1].uniq.join(' ')}|nodeset -f`.chomp ; e }
 
   fd = File::new("network_#{site}.dot", 'w')
   fd.puts "graph graphname {"
   router = mynetnodes.select { |n| n['kind'] == 'router' }.first['nickname']
   fd.puts <<-EOF
   root="#{router}";
-  overlap=false;
+  layout=twopi;
+  overlap=scale;
   splines=true;
-  ranksep=0.6;
+  ranksep=2.0;
         EOF
-  # output remaining netnodes
-  mynetnodes.each do |n|
-    if n['kind'] == 'node'
-      fd.puts "\"#{n['nickname']}\";"
-    else
-      fd.puts "\"#{n['nickname']}\" [shape=box];"
-    end
+  # output graph nodes, equipment first
+  (eqlinks.map { |e| e['switch'] } + eqlinks.map { |e| e['target'] }).each do |eq|
+    fd.puts "\"#{eq}\" [shape=box];"
   end
+  # then nodes groups
+  nodeslinks.each do |e|
+    fd.puts "\"#{e[1]}\";"
+  end
+
   # finally output links
-  links.each do |l|
-    if l['rate'] == 1*10**9
-      r = '1G'
-    elsif l['rate'] == 10*10**9
-      r = '10G'
-    elsif l['rate'] == 40*10**9
-      r = '40G'
-    else
-      raise "Invalid rate: #{l['rate']}"
-    end
+  # between network equipments
+  eqlinks.each do |l|
+    r = "#{l['rate'] / 10**9}G"
     fd.puts "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\"];"
+  end
+  # between network equipments and nodes
+  nodeslinks.each do |l|
+    if l[0][1].length > 1
+      # more than one interface, show port number
+      l[0][1].to_a.sort { |a, b| a[0] <=> b[0] }.each do |e|
+        iface, target = e
+        iface = iface.gsub('eth', '')
+        r = "#{target['rate'] / 10**9}G"
+        fd.puts "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",headlabel=\"#{iface}\"];"
+      end
+    else
+      # only one interface
+      l[0][1].each_pair do |iface, target|
+        r = "#{target['rate'] / 10**9}G"
+        fd.puts "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",len=2.0];"
+      end
+    end
   end
   fd.puts "}"
   fd.close
-  system("twopi -Tpdf network_#{site}.dot -onetwork_#{site}.pdf")
-  system("twopi -Tpng network_#{site}.dot -onetwork_#{site}.png")
+  system("dot -Tpdf network_#{site}.dot -onetwork_#{site}.pdf")
+  system("dot -Tpng network_#{site}.dot -onetwork_#{site}.png")
 end
 
 
