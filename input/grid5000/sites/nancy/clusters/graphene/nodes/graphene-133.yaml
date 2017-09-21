@@ -22,38 +22,52 @@ graphene-133:
       management: true
     eth0:
       driver: e1000e
+      firmware_version: 1.8-0
       interface: Ethernet
       ip: 172.16.64.133
       mac: 00:e0:81:d5:07:e0
       management: false
+      model: 82574L Gigabit Network Connection
+      name: enp3s0
       rate: 1000000000
+      vendor: Intel
     eth1:
       driver: e1000e
+      firmware_version: 1.8-0
       interface: Ethernet
       mac: 00:e0:81:d5:07:e1
       management: false
+      model: 82574L Gigabit Network Connection
+      name: enp4s0
       rate: 100000000
+      vendor: Intel
     eth2:
       driver: e1000e
+      firmware_version: 1.8-0
       interface: Ethernet
       mac: 00:e0:81:d5:07:e2
       management: false
+      model: 82574L Gigabit Network Connection
+      name: enp5s0
+      rate: 0
+      vendor: Intel
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f7:b3
       interface: InfiniBand
       ip: 172.18.64.133
-      ip6: fe80::202:c903:5:f7b3
       management: false
+      model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
       rate: 20000000000
-      version: MT26418
+      vendor: Mellanox Technologies
     ib1:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:05:f7:b4
       interface: InfiniBand
       management: false
+      model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
       rate: 10000000000
-      version: MT26418
+      vendor: Mellanox Technologies
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -80,8 +94,8 @@ graphene-133:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000cca371e60bd7"
+      firmware_version: JPFOA3EA
       model: Hitachi HDS72103
-      rev: JPFOA3EA
       size: 320072933376
       vendor: Hitachi
   supported_job_types:

@@ -28,35 +28,54 @@ graphite-4:
       management: true
     eth0:
       driver: ixgbe
+      firmware_version: '0x80000461'
       interface: Ethernet
       ip: 172.16.68.4
       mac: b8:ca:3a:69:12:40
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp1s0f0
       rate: 10000000000
+      vendor: Intel
     eth1:
       driver: ixgbe
+      firmware_version: '0x80000461'
       interface: Ethernet
       mac: b8:ca:3a:69:12:42
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp1s0f1
+      rate: 0
+      vendor: Intel
     eth2:
       driver: igb
+      firmware_version: 0.5, 0x80000ad2, 14.5.8
       interface: Ethernet
       mac: b8:ca:3a:69:12:44
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp8s0f0
+      rate: 0
+      vendor: Intel
     eth3:
       driver: igb
+      firmware_version: 0.5, 0x80000ad2, 14.5.8
       interface: Ethernet
       mac: b8:ca:3a:69:12:45
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp8s0f1
+      rate: 0
+      vendor: Intel
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:f4:52:14:03:00:76:f2:c1
       interface: InfiniBand
       ip: 172.18.68.4
-      ip6: fe80::f652:1403:76:f2c1
       management: false
+      model: MT27500 Family [ConnectX-3]
       rate: 56000000000
-      version: MT4099
+      vendor: Mellanox Technologies
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -84,15 +103,15 @@ graphite-4:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50015178f36802eb"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
+      firmware_version: D201DL10
       model: INTEL SSDSC2BB30
-      rev: D201DL10
       size: 300069052416
       vendor: ATA
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x50015178f368041d"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
+      firmware_version: D201DL10
       model: INTEL SSDSC2BB30
-      rev: D201DL10
       size: 300069052416
       vendor: ATA
   supported_job_types:

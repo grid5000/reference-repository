@@ -28,26 +28,45 @@ chifflet-5:
       management: true
     eth0:
       driver: ixgbe
+      firmware_version: '0x800007f4'
       interface: Ethernet
       ip: 172.16.38.5
       mac: 24:6e:96:2c:c1:58
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp1s0f0
       rate: 10000000000
+      vendor: Intel
     eth1:
       driver: ixgbe
+      firmware_version: '0x800007f4'
       interface: Ethernet
       mac: 24:6e:96:2c:c1:5a
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp1s0f1
+      rate: 0
+      vendor: Intel
     eth2:
       driver: igb
+      firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:2c:c1:5c
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp7s0f0
+      rate: 0
+      vendor: Intel
     eth3:
       driver: igb
+      firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:2c:c1:5d
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp7s0f1
+      rate: 0
+      vendor: Intel
   operating_system:
     cstate_driver: acpi_idle
     cstate_governor: menu
@@ -75,29 +94,29 @@ chifflet-5:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x500003973c8a1ac1"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:0:0"
+      firmware_version: AM04
       model: PX04SMB040
-      rev: AM04
       size: 400088457216
       vendor: TOSHIBA
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x500003973c8a1a81"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
+      firmware_version: AM04
       model: PX04SMB040
-      rev: AM04
       size: 400088457216
       vendor: TOSHIBA
     sdc:
       by_id: "/dev/disk/by-id/wwn-0x500003973be828ea"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:2:0"
+      firmware_version: FJ2D
       model: TOSHIBA MG04ACA4
-      rev: FJ2D
       size: 4000787030016
       vendor: Toshiba
     sdd:
       by_id: "/dev/disk/by-id/wwn-0x500003973be828ee"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0"
+      firmware_version: FJ2D
       model: TOSHIBA MG04ACA4
-      rev: FJ2D
       size: 4000787030016
       vendor: Toshiba
   supported_job_types:

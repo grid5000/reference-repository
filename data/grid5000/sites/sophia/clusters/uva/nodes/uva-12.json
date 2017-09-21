@@ -53,50 +53,69 @@
       "device": "eth0",
       "driver": "bnx2",
       "enabled": true,
+      "firmware_version": "5.0.9 bc 5.0.4 UMP 1.1.9",
       "interface": "Ethernet",
       "ip": "172.16.131.12",
       "kavlan": true,
       "mac": "00:26:b9:55:ba:83",
       "management": false,
+      "model": "NetXtreme II BCM5708 Gigabit Ethernet",
       "mountable": true,
       "mounted": true,
+      "name": "enp5s0",
       "network_address": "uva-12.sophia.grid5000.fr",
       "rate": 1000000000,
       "switch": "swy1nef",
-      "switch_port": "Port: 12 Gigabit"
+      "switch_port": "Port: 12 Gigabit",
+      "vendor": "Broadcom"
     },
     {
       "device": "eth1",
       "driver": "bnx2",
       "enabled": false,
+      "firmware_version": "5.0.9 bc 5.0.4 UMP 1.1.9",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "00:26:b9:55:ba:85",
       "management": false,
+      "model": "NetXtreme II BCM5708 Gigabit Ethernet",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "enp7s0",
+      "rate": 0,
+      "vendor": "Broadcom"
     },
     {
       "device": "eth2",
       "driver": "bnx2",
       "enabled": false,
+      "firmware_version": "5.0.9 bc 5.0.4 ipms 1.6.0",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "00:26:b9:55:ba:87",
       "management": false,
+      "model": "NetXtreme II BCM5708 Gigabit Ethernet",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "enp9s0",
+      "rate": 0,
+      "vendor": "Broadcom"
     },
     {
       "device": "eth3",
       "driver": "bnx2",
       "enabled": false,
+      "firmware_version": "5.0.9 bc 5.0.4 ipms 1.6.0",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "00:26:b9:55:ba:89",
       "management": false,
+      "model": "NetXtreme II BCM5708 Gigabit Ethernet",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "enp11s0",
+      "rate": 0,
+      "vendor": "Broadcom"
     },
     {
       "device": "ib0",
@@ -106,11 +125,12 @@
       "interface": "InfiniBand",
       "kavlan": false,
       "management": false,
+      "model": "MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]",
       "mountable": true,
       "mounted": false,
       "network_address": "uva-12-ib0.sophia.grid5000.fr",
       "rate": 40000000000,
-      "version": "MT26428"
+      "vendor": "Mellanox Technologies"
     },
     {
       "alias": [
@@ -122,14 +142,12 @@
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0c:bf:ab",
       "interface": "InfiniBand",
       "ip": "172.18.131.12",
-      "ip6": "fe80::202:c903:c:bfab",
       "kavlan": false,
       "management": false,
       "mountable": true,
       "mounted": true,
       "network_address": "uva-12-ib0.8100.sophia.grid5000.fr",
-      "rate": 40000000000,
-      "version": "MT26428"
+      "rate": 40000000000
     },
     {
       "device": "bmc",
@@ -184,9 +202,9 @@
       "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0",
       "device": "sda",
       "driver": "megaraid_sas",
+      "firmware_version": 1.22,
       "interface": "SAS",
       "model": "PERC 6/i",
-      "rev": 1.22,
       "size": 146163105792,
       "storage": "HDD",
       "vendor": "DELL"
