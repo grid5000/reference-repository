@@ -12,11 +12,32 @@
   },
   "chassis": {
     "manufacturer": "TYAN",
-    "name": "S5501",
-    "serial": 1009390088
+    "name": "S5501"
   },
   "gpu": {
     "gpu": false
+  },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.194.86",
+      "kavlan-11": "10.7.200.178",
+      "kavlan-12": "10.11.200.178",
+      "kavlan-13": "10.15.200.178",
+      "kavlan-14": "10.19.200.178",
+      "kavlan-16": "10.27.200.178",
+      "kavlan-18": "10.35.200.178",
+      "kavlan-19": "10.39.200.178",
+      "kavlan-2": "192.168.210.86",
+      "kavlan-20": "10.43.200.178",
+      "kavlan-21": "10.47.200.178",
+      "kavlan-3": "192.168.226.86",
+      "kavlan-4": "10.16.2.86",
+      "kavlan-5": "10.16.66.86",
+      "kavlan-6": "10.16.130.86",
+      "kavlan-7": "10.16.194.86",
+      "kavlan-8": "10.17.2.86",
+      "kavlan-9": "10.17.66.86"
+    }
   },
   "main_memory": {
     "ram_size": 17179869184,
@@ -33,7 +54,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.64.86",
-      "ip6": "fe80::2e0:81ff:fed5:80c",
+      "kavlan": true,
       "mac": "00:e0:81:d5:08:0c",
       "management": false,
       "mountable": true,
@@ -51,6 +72,7 @@
       "driver": "e1000e",
       "enabled": false,
       "interface": "Ethernet",
+      "kavlan": false,
       "mac": "00:e0:81:d5:08:0d",
       "management": false,
       "mountable": false,
@@ -65,6 +87,7 @@
       "driver": "e1000e",
       "enabled": false,
       "interface": "Ethernet",
+      "kavlan": false,
       "mac": "00:e0:81:d5:08:0e",
       "management": false,
       "mountable": false,
@@ -80,6 +103,7 @@
       "interface": "InfiniBand",
       "ip": "172.18.64.86",
       "ip6": "fe80::202:c903:b:93a1",
+      "kavlan": false,
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -95,6 +119,7 @@
       "enabled": false,
       "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a2",
       "interface": "InfiniBand",
+      "kavlan": false,
       "management": false,
       "mountable": false,
       "mounted": false,
@@ -107,6 +132,7 @@
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.64.86",
+      "kavlan": false,
       "mac": "00:e0:81:d5:08:0f",
       "management": true,
       "mountable": false,
@@ -130,7 +156,7 @@
     "pstate_governor": "performance",
     "release": "Jessie",
     "turboboost_enabled": true,
-    "version": 8.6
+    "version": 8.9
   },
   "performance": {
     "core_flops": 8024000000.0,
@@ -145,6 +171,7 @@
     "clock_speed": 2550000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
+    "microarchitecture": "Lynnfield",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU           X3440  @ 2.53GHz",
     "vendor": "Intel",
@@ -167,6 +194,7 @@
   },
   "storage_devices": [
     {
+      "by_id": "node-was-not-available-to-retrieve-this-value",
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA II",
