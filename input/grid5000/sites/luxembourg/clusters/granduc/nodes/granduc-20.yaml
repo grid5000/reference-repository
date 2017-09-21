@@ -23,30 +23,29 @@ granduc-20:
       management: true
     eth0:
       driver: bnx2
+      firmware_version: 6.4.5 bc 5.0.7 UMP 1.1.9
       interface: Ethernet
       ip: 172.16.176.20
       mac: 00:19:b9:f2:08:ca
       management: false
+      model: NetXtreme II BCM5708 Gigabit Ethernet
+      name: enp4s0
       rate: 1000000000
+      vendor: Broadcom
     eth1:
       driver: bnx2
+      firmware_version: 6.4.5 bc 5.0.7 UMP 1.1.9
       interface: Ethernet
       mac: 00:19:b9:f2:08:cc
       management: false
-    eth2:
-      driver: ixgbe
-      interface: Ethernet
-      mac: 00:1b:21:3d:13:27
-      management: false
-      rate: 10000000000
-    eth3:
-      driver: ixgbe
-      interface: Ethernet
-      mac: 00:1b:21:3d:13:26
-      management: false
+      model: NetXtreme II BCM5708 Gigabit Ethernet
+      name: enp8s0
+      rate: 1000000000
+      vendor: Broadcom
   operating_system:
     cstate_driver: none
     cstate_governor: menu
+    cstate_max_id: 
     ht_enabled: false
     kernel: 3.16.0-4-amd64
     name: debian
@@ -70,8 +69,8 @@ granduc-20:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c500078e7303"
       by_path: "/dev/disk/by-path/pci-0000:02:08.0-sas-0x5000c500078e7301-lun-0"
+      firmware_version: S207
       model: ST9146802SS
-      rev: S207
       size: 146815733760
       vendor: SEAGATE
   supported_job_types:

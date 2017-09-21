@@ -13,6 +13,7 @@ granduc-17:
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge 1950
+    serial: "..CN6970275D3242."
   main_memory:
     ram_size: 17179869184
   network_adapters:
@@ -22,30 +23,49 @@ granduc-17:
       management: true
     eth0:
       driver: bnx2
+      firmware_version: 6.4.5 bc 5.0.7 UMP 1.1.9
       interface: Ethernet
       ip: 172.16.176.17
       mac: 00:19:b9:de:b9:1c
       management: false
+      model: NetXtreme II BCM5708 Gigabit Ethernet
+      name: enp4s0
       rate: 1000000000
+      vendor: Broadcom
     eth1:
       driver: bnx2
+      firmware_version: 6.4.5 bc 5.0.7 UMP 1.1.9
       interface: Ethernet
       mac: 00:19:b9:de:b9:1e
       management: false
+      model: NetXtreme II BCM5708 Gigabit Ethernet
+      name: enp8s0
+      rate: 1000000000
+      vendor: Broadcom
     eth2:
       driver: ixgbe
+      firmware_version: '0xc7390000'
       interface: Ethernet
       mac: 00:1b:21:3c:87:71
       management: false
+      model: 82598EB 10-Gigabit AF Dual Port Network Connection
+      name: enp13s0f0
       rate: 10000000000
+      vendor: Intel
     eth3:
       driver: ixgbe
+      firmware_version: '0xc7390000'
       interface: Ethernet
       mac: 00:1b:21:3c:87:70
       management: false
+      model: 82598EB 10-Gigabit AF Dual Port Network Connection
+      name: enp13s0f1
+      rate: 0
+      vendor: Intel
   operating_system:
     cstate_driver: none
     cstate_governor: menu
+    cstate_max_id: 
     ht_enabled: false
     kernel: 3.16.0-4-amd64
     name: debian
@@ -69,8 +89,8 @@ granduc-17:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c500078e3e9b"
       by_path: "/dev/disk/by-path/pci-0000:02:08.0-sas-0x5000c500078e3e99-lun-0"
+      firmware_version: S207
       model: ST9146802SS
-      rev: S207
       size: 146815733760
       vendor: SEAGATE
   supported_job_types:

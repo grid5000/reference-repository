@@ -28,16 +28,25 @@ petitprince-7:
       management: true
     eth0:
       driver: bnx2x
+      firmware_version: FFV7.12.19 bc 7.12.5
       interface: Ethernet
       ip: 172.16.177.7
       mac: e0:db:55:09:ac:80
       management: false
+      model: NetXtreme II BCM57810 10 Gigabit Ethernet
+      name: enp1s0f0
       rate: 10000000000
+      vendor: Broadcom
     eth1:
       driver: bnx2x
+      firmware_version: FFV7.12.19 bc 7.12.5
       interface: Ethernet
       mac: e0:db:55:09:ac:82
       management: false
+      model: NetXtreme II BCM57810 10 Gigabit Ethernet
+      name: enp1s0f1
+      rate: 10000000000
+      vendor: Broadcom
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -64,8 +73,8 @@ petitprince-7:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c5004008af8c"
+      firmware_version: AA08
       model: ST9250610NS
-      rev: AA08
       size: 250059350016
       vendor: Seagate
   supported_job_types:

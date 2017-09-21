@@ -23,30 +23,49 @@ granduc-21:
       management: true
     eth0:
       driver: bnx2
+      firmware_version: 6.4.5 bc 5.0.7 UMP 1.1.9
       interface: Ethernet
       ip: 172.16.176.21
       mac: 00:19:b9:f3:c2:7d
       management: false
+      model: NetXtreme II BCM5708 Gigabit Ethernet
+      name: enp4s0
       rate: 1000000000
+      vendor: Broadcom
     eth1:
       driver: bnx2
+      firmware_version: 6.4.5 bc 5.0.7 UMP 1.1.9
       interface: Ethernet
       mac: 00:19:b9:f3:c2:7f
       management: false
+      model: NetXtreme II BCM5708 Gigabit Ethernet
+      name: enp8s0
+      rate: 1000000000
+      vendor: Broadcom
     eth2:
       driver: ixgbe
+      firmware_version: '0xc7390000'
       interface: Ethernet
       mac: 00:1b:21:3d:13:7d
       management: false
+      model: 82598EB 10-Gigabit AF Dual Port Network Connection
+      name: enp13s0f0
       rate: 10000000000
+      vendor: Intel
     eth3:
       driver: ixgbe
+      firmware_version: '0xc7390000'
       interface: Ethernet
       mac: 00:1b:21:3d:13:7c
       management: false
+      model: 82598EB 10-Gigabit AF Dual Port Network Connection
+      name: enp13s0f1
+      rate: 0
+      vendor: Intel
   operating_system:
     cstate_driver: none
     cstate_governor: menu
+    cstate_max_id: 
     ht_enabled: false
     kernel: 3.16.0-4-amd64
     name: debian
@@ -70,8 +89,8 @@ granduc-21:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c5000ec2f6fb"
       by_path: "/dev/disk/by-path/pci-0000:02:08.0-sas-0x5000c5000ec2f6f9-lun-0"
+      firmware_version: S22A
       model: ST9146802SS
-      rev: S22A
       size: 146815733760
       vendor: SEAGATE
   supported_job_types:
