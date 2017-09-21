@@ -23,26 +23,45 @@ econome-5:
       management: true
     eth0:
       driver: ixgbe
+      firmware_version: '0x800004e1'
       interface: Ethernet
       ip: 172.16.192.5
       mac: a0:36:9f:0e:2e:c4
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp3s0f0
       rate: 10000000000
+      vendor: Intel
     eth1:
       driver: ixgbe
+      firmware_version: '0x800004e1'
       interface: Ethernet
       mac: a0:36:9f:0e:2e:c6
       management: false
+      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      name: enp3s0f1
+      rate: 0
+      vendor: Intel
     eth2:
       driver: igb
+      firmware_version: 1.57.0
       interface: Ethernet
       mac: 78:45:c4:f9:16:ca
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp2s0f0
+      rate: 0
+      vendor: Intel
     eth3:
       driver: igb
+      firmware_version: 1.57.0
       interface: Ethernet
       mac: 78:45:c4:f9:16:cb
       management: false
+      model: I350 Gigabit Network Connection
+      name: enp2s0f3
+      rate: 0
+      vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -69,8 +88,8 @@ econome-5:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50014ee25c658e9c"
+      firmware_version: 01.01D05
       model: WDC WD2003FYYS-1
-      rev: 01.01D05
       size: 2000398934016
       vendor: Western Digital
   supported_job_types:
