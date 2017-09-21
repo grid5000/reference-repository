@@ -220,6 +220,10 @@ def generate_dot(netnodes, links, site)
     end
   end
 
+  # remove duplicate reverse links between switches. We keep only the one where the target is the second node.
+  links.delete_if { |l| ['router', 'switch'].include?(l['target_kind']) and l['target'] == l['nicknames'].first }
+
+
   # optimize links by grouping nodes to same switch
   links.map { |l| l['switch'] }.uniq.each do |switch| # for each switch
     puts "optimizing #{switch}"
@@ -242,8 +246,6 @@ def generate_dot(netnodes, links, site)
     end
   end
 
-  # remove duplicate reverse links between switches. We keep only the one where the target is the second node.
-  links.delete_if { |l| ['router', 'switch'].include?(l['target_kind']) and l['target'] == l['nicknames'].first }
   fd = File::new("network_#{site}.dot", 'w')
   fd.puts "graph graphname {"
   router = mynetnodes.select { |n| n['kind'] == 'router' }.first['nickname']
