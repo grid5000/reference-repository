@@ -149,8 +149,8 @@ Usage example:
 $ (cd /tmp; git clone ssh://g5kadmin@git.grid5000.fr/srv/git/repos/puppet-repo) # or use your existing local copy of the repository
 $ cd reference-repo/generators/puppet
 $ rake puppet_repo=/tmp/puppet_repo # run every generator and output files to /tmp/puppet_repo
-
 or
+$ cd reference-repo && rake -- puppet:generator -o /tmp/puppet_repo -s site1,site2 # run every generator and output files to /tmp/puppet_repo
 
 $ rake puppet_repo=/tmp/puppet_repo sites=SITE1,SITE2 # run every generator and output files to /tmp/puppet_repo for only SITE1 and SITE2
 
