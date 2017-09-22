@@ -62,6 +62,8 @@ network_adapters:
     line_card: optional_string
     position: optional_integer
     alias: optional_array
+    firmware_version: optional
+    name: optional
 operating_system:
   kernel: string
   name: string
@@ -100,7 +102,7 @@ sensors: optional_hash
 status: optional_string
 storage_devices:
   <multi>:
-    by_id: string
+    by_id: optional_string
     by_path: optional_string
     unstable_device_name: optional_boolean
     interface: string
@@ -109,7 +111,8 @@ storage_devices:
     vendor: optional # string
     storage: string
     model: string
-    rev: required # string or numeric ?
+    firmware_version: optional
+    rev: optional # unused but kept for shema compatibility
     size: integer
     raid: optional
     timeread: optional_numeric
