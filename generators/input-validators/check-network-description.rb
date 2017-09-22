@@ -155,7 +155,7 @@ def check_network_description(options)
       if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or HPC_SWITCHES.include?(n['uid'])
         puts "WARNING: we did not find a corresponding entry on a network equipment for this InfiniBand node: #{n}"
       else
-        puts "ERROR: we did not find a corresponding entry on a network equipment for this node: #{n}"
+        puts "ERROR: we did not find a corresponding entry on a network equipment for this node or equipment (where is it plugged?!): #{n}"
         ok = false
       end
     end
