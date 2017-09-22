@@ -175,7 +175,7 @@ def check_network_description(options)
         next if HPC_SWITCHES.include?(n0['nickname']) or HPC_SWITCHES.include?(n1['nickname']) # FIXME we ignore problems with HPC switches for now
         # this is a link between network equipment
         if linknicks.count(l) % 2 != 0
-          puts "ERROR: link between two network equipments should have 2 instances (or 4, 6, 8 in case of aggregation): #{l} (actual count: #{linknicks.count(l)})"
+          puts "ERROR: link between two network equipments should have 2 instances (or 4, 6, 8 in case of aggregation) (probably switch A is connected to switch B, but B is not connected to A): #{l} (actual count: #{linknicks.count(l)})"
           ok = false
         end
       else
