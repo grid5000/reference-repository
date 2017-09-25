@@ -58,111 +58,43 @@ nodes:
             metric: power
 
 # Nodes with 4 interfaces
-  grisou-[1-48]:
+  grisou-[1-49]:
     network_adapters:
       eth0:
         enabled: true 
         mountable: true
         bridged: true
         mounted: true
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth1:
         rate: 10.0e+9
         enabled: true
         mountable: true
         bridged: false
         mounted: false
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth2:
         rate: 10.0e+9
         enabled: true
         mountable: true
         bridged: false
         mounted: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
       eth3:
         rate: 10.0e+9
         enabled: true
         mountable: true
         bridged: false
         mounted: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
       eth4:
         rate: 1.0e+9
         enabled: true
         mountable: true
         bridged: false
         mounted: false
-        vendor: Intel Corporation
-        model: I350 Gigabit Network Connection
       eth5:
         rate: 1.0e+9
         enabled: false 
         mountable: false
         bridged: false
         mounted: false
-        vendor: Intel Corporation
-        model: I350 Gigabit Network Connection
-      bmc:
-        interface: Ethernet
-        rate: 1.0e+9
-        enabled: true
-        mounted: false
-        mountable: false
-        management: true
-  grisou-49:
-    network_adapters:
-      eth0:
-        enabled: true 
-        mountable: true
-        bridged: true
-        mounted: true
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      eth1:
-        rate: 10.0e+9
-        enabled: true
-        mountable: true
-        bridged: false
-        mounted: false
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
-      eth2:
-        rate: 10.0e+9
-        enabled: true
-        mountable: true
-        bridged: false
-        mounted: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
-      eth3:
-        rate: 10.0e+9
-        enabled: true
-        mountable: true
-        bridged: false
-        mounted: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
-      eth4:
-        rate: 1.0e+9
-        enabled: false 
-        mountable: false
-        bridged: false
-        mounted: false
-        vendor: Intel Corporation
-        model: I350 Gigabit Network Connection
-      eth5:
-        rate: 1.0e+9
-        enabled: false 
-        mountable: false
-        bridged: false
-        mounted: false
-        vendor: Intel Corporation
-        model: I350 Gigabit Network Connection
       bmc:
         interface: Ethernet
         rate: 1.0e+9
@@ -176,50 +108,38 @@ nodes:
       eth0:
         bridged: true
         enabled: true
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
         mountable: true
         mounted: true
-        vendor: Intel Corporation
       eth1:
         bridged: false
         enabled: true
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
         mountable: true
         mounted: false
         rate: 10.0e+9
-        vendor: Intel Corporation
       eth2:
         bridged: false
         enabled: true
-        model: Ethernet 10G 2P X520 Adapter
         mountable: true
         mounted: false
         rate: 10.0e+9
-        vendor: Intel Corporation
       eth3:
         bridged: false
         enabled: true
-        model: Ethernet 10G 2P X520 Adapter
         mountable: true
         mounted: false
         rate: 10.0e+9
-        vendor: Intel Corporation
       eth4:
         bridged: false
         enabled: false
-        model: I350 Gigabit Network Connection
         mountable: false
         mounted: false
         rate: 1.0e+9
-        vendor: Intel Corporation
       eth5:
         bridged: false
         enabled: false
-        model: I350 Gigabit Network Connection
         mountable: false
         mounted: false
         rate: 1.0e+9
-        vendor: Intel Corporation
       bmc:
         enabled: true
         interface: Ethernet
