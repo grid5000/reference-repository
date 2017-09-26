@@ -66,6 +66,10 @@ def check_network_description(options)
     # scan equipments ports, search for each node
     neteqs.each do |eq|
       puts "looking at #{eq['uid']} ..."
+      if HPC_SWITCHES.include?(eq['uid'])
+        puts "This is an HPC switch. ERRORs will be non-fatal."
+        oldok = ok
+      end
       eq['linecards'].each do |lc|
         (lc['ports'] || []).each do |port|
           # skip if empty port
@@ -146,6 +150,9 @@ def check_network_description(options)
             ok = false
           end
         end
+      end
+      if HPC_SWITCHES.include?(eq['uid'])
+        ok = oldok
       end
     end
 
