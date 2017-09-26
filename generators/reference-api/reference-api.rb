@@ -220,7 +220,6 @@ global_hash["sites"].each do |site_uid, site|
       node["gpu"]["gpu"] ||= false
       
       node["main_memory"] = {} unless node.key?("main_memory")
-      node["main_memory"]["virtual_size"] ||= nil
 
       # Delete keys
       #raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
