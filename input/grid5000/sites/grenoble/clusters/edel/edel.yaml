@@ -60,17 +60,11 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-        rate: 1000000000
-        vendor: Intel
-        version: 82576 Gigabit Network Connection
       eth1:
         enabled: false
         mountable: false
         mounted: false
-        rate: 1000000000
         bridged: false
-        vendor: Intel
-        version: 82576 Gigabit Network Connection
       ib0:
         driver: mlx4_core
         enabled: true
@@ -79,7 +73,6 @@ nodes:
         mountable: true
         mounted: true
         rate: 40000000000
-        vendor: Mellanox
       ib1:
         driver: mlx4_core
         enabled: false
@@ -89,7 +82,6 @@ nodes:
         mounted: false
         rate: 10000000000
         version: MT26428
-        vendor: Mellanox
       bmc:
         interface: Ethernet
         rate: 100.0e+6
