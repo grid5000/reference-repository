@@ -11,6 +11,9 @@ require 'pp'
 require 'fileutils'
 require 'pathname'
 require 'hashdiff'
+require 'json'
+require 'uri'
+require 'net/https'
 
 require_relative "../lib/input_loader"
 
@@ -50,29 +53,23 @@ def global_ignore_keys()
   )
 
   ignore_netkeys = <<-eos
+    ~network_adapters.eth.rate
+    ~network_adapters.eth.name
     ~network_adapters.eth.ip
+    -network_adapters.eth.ip
     ~network_adapters.eth.ip6
+    -network_adapters.eth.ip6
     ~network_adapters.eth.mac
     ~network_adapters.eth.network_address
     ~network_adapters.eth.switch
     ~network_adapters.eth.switch_port
-    ~network_adapters.eth.ip
-    ~network_adapters.eth.ip6
-    ~network_adapters.eth.mac
-    ~network_adapters.eth.switch_port
-    ~network_adapters.eth.ip
-    ~network_adapters.eth.ip6
-    ~network_adapters.eth.mac
-    ~network_adapters.eth.switch_port
-    ~network_adapters.eth.ip
-    ~network_adapters.eth.mac
-    ~network_adapters.eth.mac
-    ~network_adapters.eth.mac
 eos
 
   ignore_stokeys = <<-eos
     ~storage_devices.sd.model
+    ~storage_devices.sd.firmware_version
     ~storage_devices.sd.rev
+    -storage_devices.sd.rev
     ~storage_devices.sd.size
     ~storage_devices.sd.timeread
     ~storage_devices.sd.timewrite
@@ -81,7 +78,7 @@ eos
     ~storage_devices.sd.by_path
 eos
 
-  (0..5).each { |eth| 
+  (0..5).each { |eth|
     keys = ignore_netkeys.gsub('.eth.', ".eth#{eth}.").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
 
@@ -102,6 +99,7 @@ eos
     ~network_adapters.IB_IF.ip6
     ~network_adapters.IB_IF.line_card
     ~network_adapters.IB_IF.position
+    +network_adapters.IB_IF.version
 eos
 
   ib_interfaces = [
@@ -114,7 +112,6 @@ eos
     keys = ignore_ibkeys.gsub('IB_IF', "#{ib_if}").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
   }
-
   return ignore_keys
 end
 
@@ -122,6 +119,39 @@ def cluster_ignore_keys(filename)
   file_hash = YAML::load(ERB.new(File.read(filename)).result(binding))
   file_hash.expand_square_brackets() if file_hash
   return file_hash
+end
+
+def get_site_dead_nodes(site_uid, options)
+
+  oarnodes = ''
+  api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
+
+  # Download the OAR properties from the OAR API (through G5K API)
+  puts "Downloading OAR resources properties from #{api_uri} ..." if options[:verbose]
+  http = Net::HTTP.new(api_uri.host, Net::HTTP.https_default_port)
+  http.use_ssl = true
+  request = Net::HTTP::Get.new(api_uri.request_uri)
+
+  # For outside g5k network access
+  if options[:api][:user] && options[:api][:pwd]
+    request.basic_auth(options[:api][:user], options[:api][:pwd])
+    #request.basic_auth("nmichon", "o|JsGvGD4200")
+  end
+
+  response = http.request(request)
+  raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
+  puts '... done' if options[:verbose]
+  oarnodes = JSON.parse(response.body)
+
+  # Adapt from the format of the OAR API
+  oarnodes = oarnodes['items'] if oarnodes.key?('items')
+  dead_nodes = []
+  oarnodes.each() { |node|
+    if node["state"] == "Dead" && !dead_nodes.include?(node["network_address"])
+      dead_nodes << node["network_address"].split(".")[0]
+    end
+  }
+  return dead_nodes
 end
 
 def cluster_homogeneity(refapi_hash, options = {:verbose => false})
@@ -146,6 +176,8 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
   refapi_hash["sites"].sort.each do |site_uid, site|
     next if options.key?(:sites) && !options[:sites].include?(site_uid)
 
+    site_dead_nodes = get_site_dead_nodes(site_uid, options)
+
     count[site_uid] = {}
 
     site["clusters"].sort.each do |cluster_uid, cluster|
@@ -157,8 +189,7 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
       refnode = nil
 
       cluster["nodes"].each_sort_by_node_uid do |node_uid, node|
-
-        next if node['status'] == 'retired'
+        next if node['status'] == 'retired' || site_dead_nodes.include?(node_uid)
 
         if !refnode
           refnode = node
@@ -234,6 +265,7 @@ if __FILE__ == $0
 
   options = {}
   options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
+  options[:api] = {}
 
   OptionParser.new do |opts|
     opts.banner = "Usage: check-cluster-homogeneity.rb [options]"
@@ -262,6 +294,14 @@ if __FILE__ == $0
     opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
       options[:verbose] ||= 0
       options[:verbose] = options[:verbose] + 1
+    end
+
+    opts.on('--api-user user', String, 'HTTP authentication user when outside G5K') do |user|
+      options[:api][:user] = user
+    end
+
+    opts.on('--api-password pwd', String, 'HTTP authentication password when outside G5K') do |pwd|
+      options[:api][:pwd] = pwd
     end
 
     # Print an options summary.
