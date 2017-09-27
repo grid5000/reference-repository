@@ -58,7 +58,7 @@ nodes:
             metric: power
 
 # Nodes with 4 interfaces
-  grisou-[1-49]:
+  grisou-[1-48]:
     network_adapters:
       eth0:
         enabled: true 
@@ -92,6 +92,51 @@ nodes:
       eth5:
         rate: 1.0e+9
         enabled: false 
+        mountable: false
+        bridged: false
+        mounted: false
+      bmc:
+        interface: Ethernet
+        rate: 1.0e+9
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
+# grisou-49
+  grisou-49:
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        bridged: true
+        mounted: true
+      eth1:
+        rate: 10.0e+9
+        enabled: true
+        mountable: true
+        bridged: false
+        mounted: false
+      eth2:
+        rate: 10.0e+9
+        enabled: true
+        mountable: true
+        bridged: false
+        mounted: false
+      eth3:
+        rate: 10.0e+9
+        enabled: true
+        mountable: true
+        bridged: false
+        mounted: false
+      eth4:
+        rate: 1.0e+9
+        enabled: false
+        mountable: false
+        bridged: false
+        mounted: false
+      eth5:
+        rate: 1.0e+9
+        enabled: false
         mountable: false
         bridged: false
         mounted: false
