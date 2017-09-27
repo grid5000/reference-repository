@@ -10,27 +10,7 @@ queues:
 
 nodes:
 
-  griffon-[11-14]:
-    network_adapters:
-      eth0:
-        enabled: true
-        mountable: true
-        mounted: true
-      eth1:
-        enabled: false
-        mountable: false
-        mounted: false
-      eth2:
-        management: false
-        mounted: false
-        enabled: false
-        mountable: false
-        bridged: false
-        rate: 10000000000
-        version: Myri-10G
-        vendor: myrinet
-
-  griffon-[1-10]:
+  griffon-[1-14]:
    network_adapters:
       eth0:
         enabled: true
@@ -138,6 +118,8 @@ nodes:
 
 # Retired nodes
   griffon-3:
+    status: retired
+  griffon-[12-13]:
     status: retired
   griffon-[30-57]:
     status: retired
