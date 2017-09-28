@@ -10,29 +10,7 @@ queues:
 
 nodes:
 
-  griffon-[1-14]:
-   network_adapters:
-      eth0:
-        enabled: true
-        mountable: true
-        mounted: true
-      eth1:
-        enabled: false
-        mountable: false
-        mounted: false
-
-  griffon-[15-]:
-   network_adapters:
-      eth0:
-        enabled: true
-        mountable: true
-        mounted: true
-      eth1:
-        enabled: false
-        mountable: false
-        mounted: false
-
-# Global node properties
+  # Global node properties
   griffon-[-]:
     performance:
       core_flops: 7963000000.0
@@ -77,10 +55,14 @@ nodes:
         enabled: true
         mountable: true
         bridged: true
+        mounted: true
         vendor: intel
         version: 80003ES2LAN
       eth1:
         bridged: false
+        enabled: false
+        mountable: false
+        mounted: false
         rate: 1000000000 #1G
         vendor: intel
         version: BCM5721
