@@ -25,13 +25,15 @@
 nancy:
   graphique-[1-2]:
     - ~gpu.gpu_model
-  grisou-50:
-    - +network_adapters.ib0
-  grisou-[49-51]:
+  grisou-49:
     - -kavlan.eth4
-    - -network_adapters.eth4.ip
     - ~network_adapters.eth4.enabled
     - ~network_adapters.eth4.mountable
+  grisou-50:
+    - -kavlan.eth4
+    - ~network_adapters.eth4.enabled
+    - ~network_adapters.eth4.mountable
+    - +network_adapters.ib0
   talc-[15-16]:
     - ~bios.release_date
     - ~bios.version
