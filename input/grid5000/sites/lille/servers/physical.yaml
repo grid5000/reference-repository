@@ -1,19 +1,10 @@
 fives:
   kind: physical
   alias:
-    - adminfront
     - af
   warranty: 28.07.2017
   serial: CQ9WD5J
   network_adapters:
-    default:
-      mounted: true
-      mac: d4:ae:52:b1:1a:e2
-      ip: 172.16.47.1
-    adm:
-      mounted: true
-      mac: d4:ae:52:b1:1a:e3
-      ip: 172.17.47.1
     bmc:
       mounted: true
       ip: 172.17.46.1
@@ -206,13 +197,15 @@ chimint-srv2:
 
 welsh:
   kind: physical
-  alias: [ntp]
+  alias:
+    - ntp
+    - adminfront
   warranty: 13.10.2021
   serial: 5L2DLG2
   network_adapters:
     default:
       mounted: true
-      ip: 172.16.47.8
+      ip: 172.16.47.1
       mac: 24:6e:96:2c:9a:40
     adm:
       mounted: true
