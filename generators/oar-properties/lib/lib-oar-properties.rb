@@ -84,7 +84,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   # ETH
   ni_mountable = node['network_adapters'].select { |k, na| /^eth[0-9]*$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true) }.values
-  ni_fastest   = ni_mountable.max_by { |na| na['rate'] }
+  ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
 
   h['eth_count'] = ni_mountable.length
   h['eth_rate']  = ni_fastest['rate'] / 1_000_000_000
