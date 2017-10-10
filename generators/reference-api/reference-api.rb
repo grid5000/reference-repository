@@ -117,6 +117,9 @@ if global_hash['uid']
 end
 
 puts "Generating the reference api:\n\n"
+puts "Removing #{refapi_path} directory:\n"
+FileUtils.rm_rf(refapi_path)
+puts "Done."
 
 # Generate global network_equipments (renater links)
 global_hash["network_equipments"].each do |network_uid, network|
