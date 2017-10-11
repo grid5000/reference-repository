@@ -117,8 +117,9 @@ if global_hash['uid']
 end
 
 puts "Generating the reference api:\n\n"
-puts "Removing #{refapi_path} directory:\n"
-FileUtils.rm_rf(refapi_path)
+puts "Removing data directory:\n"
+FileUtils.rm_rf(Pathname.new(refapi_path).join("sites"))
+FileUtils.rm_rf(Pathname.new(refapi_path).join("network_equipments"))
 puts "Done."
 
 # Generate global network_equipments (renater links)
