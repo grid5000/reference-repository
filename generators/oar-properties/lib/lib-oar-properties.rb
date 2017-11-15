@@ -93,7 +93,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   # INFINIBAND
   ni_mountable = node['network_adapters'].select { |k, na| /^ib[0-9]*(\.[0-9]*)?$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true) }.values
-  ni_fastest   = ni_mountable.max_by { |na| na['rate'] }
+  ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
   ib_map = { 0 => 'NO', 10 => 'SDR', 20 => 'DDR', 40 => 'QDR', 56 => 'FDR' }
 
   h['ib_count'] = ni_mountable.length
@@ -104,7 +104,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   # MYRINET
   ni_mountable = node['network_adapters'].select { |k, na| /^myri[0-9]*$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true) }.values
-  ni_fastest   = ni_mountable.max_by { |na| na['rate'] }
+  ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
   myri_map = { 0 => 'NO', 2 => 'Myrinet-2000', 10 => 'Myri-10G' }
 
   h['myri_count'] = ni_mountable.length
