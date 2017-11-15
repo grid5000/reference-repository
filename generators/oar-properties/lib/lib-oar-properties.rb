@@ -351,8 +351,8 @@ def diff_properties(type, properties_oar, properties_ref)
 end
 
 # These keys will not be created neither compared with the -d option
-# ignore_keys is only applied to resources of type 'default'
-def ignore_keys()
+# ignore_default_keys is only applied to resources of type 'default'
+def ignore_default_keys()
   # default OAR at resource creation:
   #  available_upto: '2147483647'
   #  besteffort: 'YES'
@@ -376,7 +376,7 @@ def ignore_keys()
   #  state_num: 3
   #  suspended_jobs: 'NO'
   #  type: default
-  ignore_keys = [
+  ignore_default_keys = [
     "chassis",
     "slash_16",
     "slash_17",
@@ -418,11 +418,23 @@ def ignore_keys()
     "pdu",
     "id", # id from API (= resource_id from oarnodes)
     "api_timestamp", # from API
-    "links", # from API
+    "links" # from API
+  ]
+  return ignore_default_keys
+end
+
+# Properties of resources of type 'disk' to ignore (for example, when
+# comparing resources of type 'default' with the -d option)
+def ignore_disk_keys()
+  ignore_disk_keys = [
     "disk",
     "diskpath"
   ]
-  return ignore_keys
+  return ignore_disk_keys
+end
+
+def ignore_keys()
+  return ignore_default_keys() + ignore_disk_keys()
 end
 
 def oarcmd_script_header()

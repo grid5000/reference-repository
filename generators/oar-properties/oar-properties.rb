@@ -217,7 +217,7 @@ properties['ref'] = get_oar_properties_from_the_ref_repo(global_hash, options)
 # Get the list of property keys from the reference-repo (['ref'])
 properties_keys = {}
 properties_keys['ref'] = get_property_keys(properties['ref'])
-ignore_keys = ignore_keys()
+ignore_default_keys = ignore_default_keys()
 
 # Diff
 if options[:diff]
@@ -321,11 +321,11 @@ Those nodes should be marked as 'retired' in the reference-repo.\n"
     end
   end
 
-  puts "Properties that need to be created on the server: #{properties_keys['diff'].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.join(', ')}" if options[:verbose] && properties_keys['diff'].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.size > 0
+  puts "Properties that need to be created on the server: #{properties_keys['diff'].keys.to_a.delete_if { |e| ignore_default_keys.include?(e) }.join(', ')}" if options[:verbose] && properties_keys['diff'].keys.to_a.delete_if { |e| ignore_default_keys.include?(e) }.size > 0
 
   # Detect unknown properties
   unknown_properties = properties_keys['oar'].keys.to_set - properties_keys['ref'].keys.to_set
-  ignore_keys.each do |key|
+  ignore_default_keys.each do |key|
     unknown_properties.delete(key)
   end
 
@@ -351,7 +351,7 @@ if options[:output] || options[:exec]
     cmd << oarcmd_separator
 
     # Create properties keys
-    properties_keys[opt].delete_if { |k, _v| ignore_keys.include?(k) }
+    properties_keys[opt].delete_if { |k, _v| ignore_default_keys.include?(k) }
     unless properties_keys[opt].empty?
       cmd << oarcmd_create_properties(properties_keys[opt]) + "\n"
       cmd << oarcmd_separator
