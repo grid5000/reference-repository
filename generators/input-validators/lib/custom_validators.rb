@@ -5,7 +5,7 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
 
   def initialize
     super('linecard_port')
-    @port_properties = ["uid", "name", "port", "kind", "mtu", "rate", "site"]
+    @port_properties = ["uid", "name", "port", "kind", "mtu", "rate", "site", "aggregation"]
   end
 
   def validate(key, values, validations, errors)
