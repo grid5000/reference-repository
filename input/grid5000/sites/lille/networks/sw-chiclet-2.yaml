@@ -72,7 +72,23 @@ sw-chiclet-2:
       ports:
         33: renater5-FON
         35: labo
-        51: lacp sw-chiclet-1
-        52: lacp sw-chiclet-1
-        53: lacp sw-chiclet-3
-        54: lacp sw-chiclet-3
+        51:
+          uid: lacp-sw-chiclet-1
+          kind: switch
+          port: Ethernet1/54
+          aggregation: lacp
+        52:
+          uid: lacp-sw-chiclet-1
+          kind: switch
+          port: Ethernet1/53
+          aggregation: lacp
+        53:
+          uid: lacp-sw-chiclet-3
+          kind: switch
+          port: Ethernet1/53
+          aggregation: lacp
+        54:
+          uid: lacp-sw-chiclet-3
+          kind: switch
+          port: Ethernet1/54
+          aggregation: lacp
