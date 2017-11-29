@@ -70,25 +70,29 @@ sw-chiclet-2:
       rate: 10000000000
       port: eth0
       ports:
-        33: renater5-FON
-        35: labo
+        33:
+          uid: renater5-FON
+          kind: other
+        35:
+          uid: labo
+          kind: other
         51:
-          uid: lacp-sw-chiclet-1
+          uid: sw-chiclet-1
           kind: switch
           port: Ethernet1/54
           aggregation: lacp
         52:
-          uid: lacp-sw-chiclet-1
+          uid: sw-chiclet-1
           kind: switch
           port: Ethernet1/53
           aggregation: lacp
         53:
-          uid: lacp-sw-chiclet-3
+          uid: sw-chiclet-3
           kind: switch
           port: Ethernet1/53
           aggregation: lacp
         54:
-          uid: lacp-sw-chiclet-3
+          uid: sw-chiclet-3
           kind: switch
           port: Ethernet1/54
           aggregation: lacp
