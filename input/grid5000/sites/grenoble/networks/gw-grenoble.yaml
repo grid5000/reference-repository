@@ -161,15 +161,19 @@ gw-grenoble:
         5:
           uid: grimage-9
           port: eth0
+          kind: other
         6:
           uid: grimage-9
           port: eth1
+          kind: other
         7:
           uid: grimage-10
           port: eth0
+          kind: other
         8:
           uid: grimage-10
           port: eth1
+          kind: other
         11:
         12:
         13:
@@ -234,7 +238,7 @@ gw-grenoble:
       ports:
         1:
           uid: summit-grimage
-          kind: switch
+          kind: other
         3:
           uid: genepi-29
           port: eth1
@@ -296,27 +300,35 @@ gw-grenoble:
         25:
           uid: grimage-1
           port: eth0
+          kind: other
         26:
           uid: grimage-2
           port: eth0
+          kind: other
         27:
           uid: grimage-3
           port: eth0
+          kind: other
         28:
           uid: grimage-4
           port: eth0
+          kind: other
         29:
           uid: grimage-5
           port: eth0
+          kind: other
         30:
           uid: grimage-6
           port: eth0
+          kind: other
         31:
           uid: grimage-7
           port: eth0
+          kind: other
         32:
           uid: grimage-8
           port: eth0
+          kind: other
     10:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       kavlan_pattern: "%LINECARD%:%PORT%"
@@ -328,6 +340,7 @@ gw-grenoble:
           uid: dignfs
           port: eth2
           rate: 10000000000
+          kind: other
         3:
           kind: virtual
           uid: renater-grenoble
