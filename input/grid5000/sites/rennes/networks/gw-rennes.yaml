@@ -264,19 +264,27 @@ gw-rennes:
         49:
           uid: paravance-sw-2
           rate: 40000000000
+          port: Ethernet1/51
           kind: switch
+          aggregation: lacp
         50:
           uid: paravance-sw-2
           rate: 40000000000
+          port: Ethernet1/52
           kind: switch
+          aggregation: lacp
         51:
           uid: paravance-sw-1
           rate: 40000000000
+          port: Ethernet1/49
           kind: switch
+          aggregation: lacp
         52:
           uid: paravance-sw-1
           rate: 40000000000
+          port: Ethernet1/50
           kind: switch
+          aggregation: lacp
     2:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"

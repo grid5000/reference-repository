@@ -213,10 +213,14 @@ paravance-sw-1:
           uid: gw-rennes
           rate: 40000000000
           kind: router
+          port: Ethernet1/51
+          aggregation: lacp
         50:
           uid: gw-rennes
           rate: 40000000000
           kind: router
+          port: Ethernet1/52
+          aggregation: lacp
     2:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
