@@ -454,7 +454,7 @@ node_exist () {
 }
 
 disk_exist () {
-  [[ $(oarnodes --sql "host='$1' and type='disk' and disk=$2") ]]
+  [[ $(oarnodes --sql "host='$1' and type='disk' and disk='$2'") ]]
 }
 
 EOF
