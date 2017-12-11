@@ -200,7 +200,7 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
   node['storage_devices'].to_a.each_with_index do |v, index|
     device_uid, device = v
     disk = [device_uid, node_uid].join('.')
-    if index > 0 && device['reservation'] # index > 0 is used to exclude sda
+    if index > 0 && device['reservation']
       key = [node_uid, disk]
       h = {}
       node_address = [node_uid, site_uid, 'grid5000.fr'].join('.')
@@ -293,8 +293,10 @@ end
 # We detect the type of the property (Fixnum/String) by looking at the existing values
 def get_property_keys(properties)
   properties_keys = {}
-  properties.each do |type, type_properties|
-    properties_keys.merge!(get_property_keys_internal(type, type_properties))
+  properties.each do |_site_uid, site_properties|
+    site_properties.each do |type, type_properties|
+      properties_keys.merge!(get_property_keys_internal(type, type_properties))
+    end
   end
   return properties_keys
 end
