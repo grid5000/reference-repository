@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    backports (3.10.3)
     diffy (3.2.0)
     dns-zone (0.3.1)
     domain_name (0.5.20170223)
@@ -38,6 +39,10 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    restfully (0.6.3)
+      backports
+      json (>= 1.2.0)
+      rest-client (>= 1.4)
     ruby-cute (0.7)
       ipaddress (>= 0.8)
       json (>= 1.8)
@@ -59,5 +64,6 @@ DEPENDENCIES
   mediawiki_api
   net-ssh
   peach
+  restfully
   ruby-cute
   ruby-ip
