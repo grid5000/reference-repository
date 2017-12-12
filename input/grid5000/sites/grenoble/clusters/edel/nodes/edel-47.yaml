@@ -19,14 +19,14 @@ edel-47:
   network_adapters:
     bmc:
       ip: 172.17.17.47
-      mac: 08:00:38:35:a3:de
+      mac: '08:00:38:35:a3:de'
       management: true
     eth0:
       driver: igb
       firmware_version: 2.0.6
       interface: Ethernet
       ip: 172.16.17.47
-      mac: 08:00:38:35:ab:bc
+      mac: '08:00:38:35:ab:bc'
       management: false
       model: 82576 Gigabit Network Connection
       name: enp1s0f0
@@ -36,11 +36,10 @@ edel-47:
       driver: igb
       firmware_version: 2.0.6
       interface: Ethernet
-      mac: 08:00:38:35:ab:bd
+      mac: '08:00:38:35:ab:bd'
       management: false
       model: 82576 Gigabit Network Connection
       name: enp1s0f1
-      rate: 0
       vendor: Intel
     ib0:
       driver: mlx4_core
@@ -64,12 +63,9 @@ edel-47:
     cstate_governor: menu
     cstate_max_id: 2
     ht_enabled: false
-    kernel: 3.16.0-4-amd64
-    name: debian
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: false
-    version: 8.9
   processor:
     cache_l1d: 32768
     cache_l1i: 32768

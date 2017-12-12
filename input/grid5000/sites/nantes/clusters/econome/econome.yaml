@@ -30,11 +30,6 @@ nodes:
       queues:
         - default
         - admin
-    operating_system:
-      name: debian
-      release: Jessie
-      version: "8.2"
-      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SATA
@@ -52,12 +47,10 @@ nodes:
         enabled: false
         mountable: false
         mounted: false
-        rate: 10.0e+9
         bridged: false
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth2:
-        rate: 1.0e+9
         enabled: false
         mountable: false
         mounted: false
@@ -65,7 +58,6 @@ nodes:
         vendor: Intel
         version: Intel Corporation
       eth3:
-        rate: 1.0e+9
         enabled: false
         mountable: false
         mounted: false

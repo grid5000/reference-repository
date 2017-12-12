@@ -30,11 +30,6 @@ nodes:
         - default
         - admin
       max_walltime: 0
-    operating_system:
-      name: debian
-      release: Jessie
-      version: "8.2"
-      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SATA
@@ -75,7 +70,6 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
-        rate: 10.0e+9
         bridged: true
         management: false
         vendor: Intel
@@ -84,14 +78,12 @@ nodes:
         enabled: true
         mountable: true
         mounted: false
-        rate: 10.0e+9
         bridged: false
         management: false
         vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth2:
         enabled: true
-        rate: 1.0e+9 #1G
         mountable: true
         mounted: false
         bridged: false
@@ -103,7 +95,6 @@ nodes:
         mountable: false
         mounted: false
         management: false
-        rate: 1000000000
         bridged: false
         vendor: Intel
         version: Intel Corporation

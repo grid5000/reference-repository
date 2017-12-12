@@ -13,11 +13,6 @@ nodes:
 
 # Global node properties
   graphene-[1-144]:
-    operating_system:
-      kernel: 3.16.0-4-amd64
-      name: debian
-      version: '8.2'
-      release: "Jessie"
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -52,25 +47,16 @@ nodes:
         mountable: true
         bridged: true
         mounted: true
-        vendor: intel
-        version: 82574L
       eth1:
         enabled: false
         mountable: false
         bridged: false
         mounted: false
-        vendor: intel
-        version: 82574L
-        bridged: false
-        vendor: intel
-        version: 82574L
       eth2:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: intel
-        version: 82574L
       ib0:
         enabled: true
         mountable: true
@@ -100,8 +86,6 @@ nodes:
         mounted: false
         mountable: false
         management: true
-        vendor: Tyan
-        version: AST2050
     gpu:
      gpu: false
     sensors:

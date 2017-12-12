@@ -10,10 +10,6 @@ nodes:
   taurus-[1-16]:
     chassis:
       name: PowerEdge R720
-    operating_system:
-      kernel: 3.16.0-4-amd64
-      name: debian
-      version: '8.2'
     processor:
       cache_l1d: 32768
       cache_l1i: 32768
@@ -36,11 +32,6 @@ nodes:
       queues:
         - default
         - admin
-    operating_system:
-      name: debian
-      release: Jessie
-      version: "8.2"
-      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SCSI
@@ -52,48 +43,31 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-        vendor: Intel
-        model: Intel X520 DP 10Gb DA/SFP+ Server Adapter
       eth1:
         enabled: false
         mountable: false
         mounted: false
-        rate: 1000000000
         bridged: false
-        vendor: Intel
-        model: Intel X520 DP 10Gb DA/SFP+ Server Adapter
       eth2:
         enabled: false
         mountable: false
         mounted: false
-        rate: 1000000000
         bridged: false
-        vendor: Intel
-        model: Intel Ethernet I350 QP 1Gb
       eth3:
         enabled: false
         mountable: false
         mounted: false
-        rate: 1000000000
         bridged: false
-        vendor: Intel
-        model: Intel Ethernet I350 QP 1Gb
       eth4:
         enabled: false
         mountable: false
         mounted: false
-        rate: 1000000000
         bridged: false
-        vendor: Intel
-        model: Intel Ethernet I350 QP 1Gb
       eth5:
         enabled: false
         mountable: false
         mounted: false
-        rate: 1000000000
         bridged: false
-        vendor: Intel
-        model: Intel Ethernet I350 QP 1Gb
       bmc:
         interface: Ethernet
         rate: 1000000000

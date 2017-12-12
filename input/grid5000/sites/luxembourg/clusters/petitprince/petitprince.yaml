@@ -7,10 +7,6 @@ queues:
 
 nodes:
   petitprince-[1-16]:
-    operating_system:
-      kernel: 3.16.0-4-amd64
-      name: debian
-      version: '8.2'
     chassis:
       manufacturer: Dell Inc.
       name: PowerEdge M620
@@ -36,11 +32,6 @@ nodes:
       queues:
         - default
         - admin
-    operating_system:
-      name: debian
-      release: Jessie
-      version: "8.2"
-      kernel: 3.16.0-4-amd64
     storage_devices:
       sda:
         interface: SATA
@@ -53,13 +44,11 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-        rate: 10.0e+9
       eth1:
         enabled: true
         mountable: true
         mounted: false
         bridged: false
-        rate: 10.0e+9
       bmc:
         interface: Ethernet
         rate: 1000000000
@@ -72,7 +61,3 @@ nodes:
       gpu: false
     monitoring:
       wattmeter: false
-    addressing_plan:
-      kavlan: 10.40.0.0/14
-      virt: 10.172.0.0/14
-
