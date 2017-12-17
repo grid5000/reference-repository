@@ -55,8 +55,12 @@ nancy:
   griffon-[1-91]:
     - +chassis.serial
     - -chassis.serial
+  griffon-11: # griffon-11 has an additional 10G NIC
+    - +network_adapters.eth1
+    - +network_adapters.eth1.rate
   griffon-15:
-    - -network_adapters.eth2
+    - -network_adapters.eth1
+    - -network_adapters.eth1.rate
 
 rennes:
   parasilo-[1-28]:
