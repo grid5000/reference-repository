@@ -1,0 +1,78 @@
+---
+ecotype-prod2:
+  model: S4840-ON
+  kind: switch
+  site: nantes
+  snmp_community: public
+  sensors:
+    network:
+      available: true
+      resolution: 1
+  backplane_bps: 1280000000000
+  mtu: 1500
+  linecards:
+    0:
+      snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
+      kavlan_pattern: "%PORT%"
+      kind: node
+      rate: 10000000000
+      port: eth0
+      ports:
+        1: ecotype-1
+        2: ecotype-2
+        3: ecotype-3
+        4: ecotype-4
+        5: ecotype-5
+        6: ecotype-6
+        8: ecotype-8
+        7: ecotype-7
+        9: ecotype-9
+        10: ecotype-10
+        11: ecotype-11
+        12: ecotype-12
+        13: ecotype-13
+        14: ecotype-14
+        15: ecotype-15
+        16: ecotype-16
+        17: ecotype-17
+        18: ecotype-18
+        19: ecotype-19
+        20: ecotype-20
+        21: ecotype-21
+        22: ecotype-22
+        23: ecotype-23
+        24: ecotype-24
+        25: ecotype-25
+        26: ecotype-26
+        27: ecotype-27
+        28: ecotype-28
+        29: ecotype-29
+        30: ecotype-30
+        31: ecotype-31
+        32: ecotype-32
+        33: ecotype-33
+        34: ecotype-34
+        35: ecotype-35
+        36: ecotype-36
+        37: ecotype-37
+        38: ecotype-38
+        39: ecotype-39
+        40: ecotype-40
+        41: ecotype-41
+        42: ecotype-42
+        43: ecotype-43
+        44: ecotype-44
+        45: ecotype-45
+        46: ecotype-46
+        47: ecotype-47
+        48: ecotype-48
+        49:
+          uid: gw-nantes
+          port: fortyGigE0/50
+          aggregation: lacp
+          kind: switch
+        50:
+          uid: gw-nantes
+          port: fortyGigE0/56
+          aggregation: lacp
+          kind: switch
