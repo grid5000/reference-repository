@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# coding: utf-8
 
 # This script checks the network description for inconsistencies
 
@@ -266,30 +267,31 @@ def generate_dot(netnodes, links, site)
   # factor
   nodeslinks.map! { |e| e[1] = `echo #{e[1].uniq.join(' ')}|nodeset -f`.chomp ; e }
 
-  fd = File::new("network_#{site}.dot", 'w')
-  fd.puts "graph graphname {"
+  header = []
+  content = []
+  trailer = []
+  
+  header << "graph graphname {"
   router = mynetnodes.select { |n| n['kind'] == 'router' }.first['nickname']
-  fd.puts <<-EOF
-  root="#{router}";
-  layout=twopi;
-  overlap=scale;
-  splines=true;
-  ranksep=2.0;
-        EOF
+  header << "root=\"#{router}\";"
+  header << "layout=twopi;"
+  header << "overlap=scale;"
+  header << "splines=true;"
+  header << "ranksep=2.0;"
   # output graph nodes, equipment first
   (eqlinks.map { |e| e['switch'] } + eqlinks.map { |e| e['target'] }).each do |eq|
-    fd.puts "\"#{eq}\" [shape=box];"
+    content << "\"#{eq}\" [shape=box];"
   end
   # then nodes groups
   nodeslinks.each do |e|
-    fd.puts "\"#{e[1]}\";"
+    content << "\"#{e[1]}\";"
   end
 
   # finally output links
   # between network equipments
   eqlinks.each do |l|
     r = "#{l['rate'] / 10**9}G"
-    fd.puts "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\"];"
+    content << "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\"];"
   end
   # between network equipments and nodes
   nodeslinks.each do |l|
@@ -299,20 +301,23 @@ def generate_dot(netnodes, links, site)
         iface, target = e
         iface = iface.gsub('eth', '')
         r = "#{target['rate'] / 10**9}G"
-        fd.puts "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",headlabel=\"#{iface}\"];"
+        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",headlabel=\"#{iface}\"];"
       end
     else
       # only one interface
       l[0][1].each_pair do |iface, target|
         r = "#{target['rate'] / 10**9}G"
-        fd.puts "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",len=2.0];"
+        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",len=2.0];"
       end
     end
   end
-  fd.puts "}"
-  fd.close
-  system("dot -Tpdf network_#{site}.dot -onetwork_#{site}.pdf")
-  system("dot -Tpng network_#{site}.dot -onetwork_#{site}.png")
+  trailer << "}"
+  
+  name = "#{site.capitalize}Network"
+  data = [header, content.sort, trailer].flatten.join("\n")
+  IO.write("#{name}.dot", data)
+  system("dot -Tpdf #{name}.dot -o#{name}.pdf")
+  system("dot -Tpng #{name}.dot -o#{name}.png")
 end
 
 
