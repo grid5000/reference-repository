@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # This script checks the network description for inconsistencies
+# This script needs 'nodeset' and 'dot' programs, which are available
+# in clustershell and graphviz debian packages
 
 require 'json'
 require 'pp'
@@ -265,7 +267,7 @@ def generate_dot(netnodes, links, site)
   # group
   nodeslinks = nodeslinks.group_by { |l| [ l['target_cluster'], l['attachments'] ] }.to_a.map { |e| e[1].map! { |f| f['target_node'] } ; e }
   # factor
-  nodeslinks.map! { |e| e[1] = `echo #{e[1].uniq.join(' ')}|nodeset -f`.chomp ; e }
+  nodeslinks.map! { |e| e[1] = sh("echo #{e[1].uniq.join(' ')}|nodeset -f"); e }
 
   header = []
   content = []
@@ -316,11 +318,19 @@ def generate_dot(netnodes, links, site)
   name = "#{site.capitalize}Network"
   data = [header, content.sort, trailer].flatten.join("\n")
   IO.write("#{name}.dot", data)
-  system("dot -Tpdf #{name}.dot -o#{name}.pdf")
-  system("dot -Tpng #{name}.dot -o#{name}.png")
+  sh("dot -Tpdf #{name}.dot -o#{name}.pdf")
+  sh("dot -Tpng #{name}.dot -o#{name}.png")
 end
 
-
+def sh(cmd)
+  begin
+    output = `#{cmd}`.chomp
+  rescue StandardError => e
+    raise "ERROR: The following command produced an error: #{cmd}\n#{e}" if $?.exitstatus != 0
+  end
+  return output
+end
+  
 if __FILE__ == $0
   require 'optparse'
 
@@ -363,5 +373,13 @@ if __FILE__ == $0
     end
   end.parse!
 
-  exit(check_network_description(options))
+  ret = 2
+  begin
+    ret = check_network_description(options)
+  rescue StandardError => e
+    puts e
+    ret = 3
+  ensure
+    exit(ret)
+  end
 end
