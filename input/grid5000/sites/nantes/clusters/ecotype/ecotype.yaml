@@ -4,10 +4,19 @@ model: Dell R630
 created_at: 2017-10-16 17:40:55.149032
 kavlan: true
 queues:
-  - default
+  - testing
   - admin
 
 nodes:
+  ecotype-[1-48]:
+    network_adapters:
+      eth0:
+        mounted: true
+        enabled: true
+      eth1:
+        mounted: false
+        enabled: true
+        mountable: true
   ecotype-1:
     chassis:
       serial: 7Z7CQK2
@@ -18,8 +27,8 @@ nodes:
       eth0:
         ip: 172.16.193.1
         mac: 24:6E:96:6A:46:E0
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:46:E2
   ecotype-2:
     chassis:
       serial: 7WTCQK2
@@ -30,8 +39,8 @@ nodes:
       eth0:
         ip: 172.16.193.2
         mac: 24:6E:96:6A:D0:48
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D0:4A
   ecotype-3:
     chassis:
       serial: 7WTGQK2
@@ -42,8 +51,8 @@ nodes:
       eth0:
         ip: 172.16.193.3
         mac: 24:6E:96:6A:D7:18
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D7:1A
   ecotype-4:
     chassis:
       serial: 7WMGQK2
@@ -54,8 +63,8 @@ nodes:
       eth0:
         ip: 172.16.193.4
         mac: 24:6E:96:6A:D7:08
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D7:0A
   ecotype-5:
     chassis:
       serial: 7WT8QK2
@@ -66,8 +75,8 @@ nodes:
       eth0:
         ip: 172.16.193.5
         mac: 24:6E:96:6A:D3:28
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D3:2A
   ecotype-6:
     chassis:
       serial: 7WPCQK2
@@ -78,8 +87,8 @@ nodes:
       eth0:
         ip: 172.16.193.6
         mac: 24:6E:96:6A:D6:B0
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D6:B2
   ecotype-7:
     chassis:
       serial: 7VM8QK2
@@ -90,8 +99,8 @@ nodes:
       eth0:
         ip: 172.16.193.7
         mac: 24:6E:96:6A:4F:78
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:4F:7A
   ecotype-8:
     chassis:
       serial: 7T9CQK2
@@ -102,8 +111,8 @@ nodes:
       eth0:
         ip: 172.16.193.8
         mac: 24:6E:96:6A:C9:D0
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:C9:D2
   ecotype-9:
     chassis:
       serial: 7WR8QK2
@@ -114,8 +123,8 @@ nodes:
       eth0:
         ip: 172.16.193.9
         mac: 24:6E:96:6A:D7:00
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D7:02
   ecotype-10:
     chassis:
       serial: 7WQBQK2
@@ -126,8 +135,8 @@ nodes:
       eth0:
         ip: 172.16.193.10
         mac: 24:6E:96:6A:D1:F8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D1:FA
   ecotype-11:
     chassis:
       serial: 7VL8QK2
@@ -138,8 +147,8 @@ nodes:
       eth0:
         ip: 172.16.193.11
         mac: 24:6E:96:6A:4F:00
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:4F:02
   ecotype-12:
     chassis:
       serial: 7VK9QK2
@@ -150,8 +159,8 @@ nodes:
       eth0:
         ip: 172.16.193.12
         mac: 24:6E:96:6A:52:B8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:52:BA
   ecotype-13:
     chassis:
       serial: 7Z6GQK2
@@ -162,8 +171,8 @@ nodes:
       eth0:
         ip: 172.16.193.13
         mac: 24:6E:96:6A:49:78
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:49:7A
   ecotype-14:
     chassis:
       serial: 7Z68QK2
@@ -174,8 +183,8 @@ nodes:
       eth0:
         ip: 172.16.193.14
         mac: 24:6E:96:6A:46:78
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:46:7A
   ecotype-15:
     chassis:
       serial: 7Z8DQK2
@@ -186,8 +195,8 @@ nodes:
       eth0:
         ip: 172.16.193.15
         mac: 24:6E:96:6A:46:50
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:46:52
   ecotype-16:
     chassis:
       serial: 7Z88QK2
@@ -198,8 +207,8 @@ nodes:
       eth0:
         ip: 172.16.193.16
         mac: 24:6E:96:6A:46:C0
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:46:C2
   ecotype-17:
     chassis:
       serial: 7Z7HQK2
@@ -210,8 +219,8 @@ nodes:
       eth0:
         ip: 172.16.193.17
         mac: 24:6E:96:6A:47:48
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:47:4A
   ecotype-18:
     chassis:
       serial: 7Z78QK2
@@ -222,8 +231,8 @@ nodes:
       eth0:
         ip: 172.16.193.18
         mac: 24:6E:96:6A:5A:58
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:5A:5A
   ecotype-19:
     chassis:
       serial: 7Z98QK2
@@ -234,8 +243,8 @@ nodes:
       eth0:
         ip: 172.16.193.19
         mac: 24:6E:96:6A:59:60
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:59:62
   ecotype-20:
     chassis:
       serial: 7Z9GQK2
@@ -246,8 +255,8 @@ nodes:
       eth0:
         ip: 172.16.193.20
         mac: 24:6E:96:6A:50:10
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:50:12
   ecotype-21:
     chassis:
       serial: 7SRGQK2
@@ -258,8 +267,8 @@ nodes:
       eth0:
         ip: 172.16.193.21
         mac: 24:6E:96:6A:C9:E0
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:C9:E2
   ecotype-22:
     chassis:
       serial: 7WSCQK2
@@ -270,8 +279,8 @@ nodes:
       eth0:
         ip: 172.16.193.22
         mac: 24:6E:96:6A:D3:20
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D3:22
   ecotype-23:
     chassis:
       serial: 7SPFQK2
@@ -282,8 +291,8 @@ nodes:
       eth0:
         ip: 172.16.193.23
         mac: 24:6E:96:6A:4E:B8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:4E:BA
   ecotype-24:
     chassis:
       serial: 7T9HQK2
@@ -294,8 +303,8 @@ nodes:
       eth0:
         ip: 172.16.193.24
         mac: 24:6E:96:6A:CF:E8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:CF:EA
   ecotype-25:
     chassis:
       serial: 7VMHQK2
@@ -306,8 +315,8 @@ nodes:
       eth0:
         ip: 172.16.193.25
         mac: 24:6E:96:6A:48:B8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:48:BA
   ecotype-26:
     chassis:
       serial: 7VNHQK2
@@ -318,8 +327,8 @@ nodes:
       eth0:
         ip: 172.16.193.26
         mac: 24:6E:96:6A:4E:E8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:4E:EA
   ecotype-27:
     chassis:
       serial: 7SPHQK2
@@ -330,8 +339,8 @@ nodes:
       eth0:
         ip: 172.16.193.27
         mac: 24:6E:96:6A:D9:F8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6e:96:6A:D9:FA
   ecotype-28:
     chassis:
       serial: 7STDQK2
@@ -342,8 +351,8 @@ nodes:
       eth0:
         ip: 172.16.193.28
         mac: 24:6E:96:6A:CA:D0
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6e:96:6A:CA:D2
   ecotype-29:
     chassis:
       serial: 7T7BQK2
@@ -354,8 +363,8 @@ nodes:
       eth0:
         ip: 172.16.193.29
         mac: 24:6E:96:6A:D8:20
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6e:96:6a:D8:22
   ecotype-30:
     chassis:
       serial: 7SPCQK2
@@ -366,8 +375,8 @@ nodes:
       eth0:
         ip: 172.16.193.30
         mac: 24:6E:96:6A:51:88
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6e:96:6a:51:8A
   ecotype-31:
     chassis:
       serial: 7T68QK2
@@ -378,8 +387,8 @@ nodes:
       eth0:
         ip: 172.16.193.31
         mac: 24:6E:96:6A:D8:28
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D8:2A
   ecotype-32:
     chassis:
       serial: 7SQBQK2
@@ -390,21 +399,20 @@ nodes:
       eth0:
         ip: 172.16.193.32
         mac: 24:6E:96:6A:D6:08
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D6:0A
   ecotype-33:
     chassis:
       serial: 7SP8QK2
     network_adapters:
       bmc:
         ip: 172.17.193.33
-        mac:
-          50:9A:4C:A8:82:16
+        mac: 50:9A:4C:A8:82:16
       eth0:
         ip: 172.16.193.33
         mac: 24:6E:96:6A:4E:88
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:4E:8A
   ecotype-34:
     chassis:
       serial: 7T9FQK2
@@ -415,8 +423,8 @@ nodes:
       eth0:
         ip: 172.16.193.34
         mac: 24:6E:96:6A:C9:48
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:C9:4A
   ecotype-35:
     chassis:
       serial: 7SQGQK2
@@ -427,8 +435,8 @@ nodes:
       eth0:
         ip: 172.16.193.35
         mac: 24:6E:96:6A:D1:20
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D1:22
   ecotype-36:
     chassis:
       serial: 7SN9QK2
@@ -439,8 +447,8 @@ nodes:
       eth0:
         ip: 172.16.193.36
         mac: 24:6E:96:6A:56:60
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:56:62
   ecotype-37:
     chassis:
       serial: 7T8GQK2
@@ -451,8 +459,8 @@ nodes:
       eth0:
         ip: 172.16.193.37
         mac: 24:6E:96:6A:CC:D0
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:CC:D2
   ecotype-38:
     chassis:
       serial: 7T98QK2
@@ -463,8 +471,8 @@ nodes:
       eth0:
         ip: 172.16.193.38
         mac: 24:6E:96:6A:D7:88
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D7:8A
   ecotype-39:
     chassis:
       serial: 7T6HQK2
@@ -475,8 +483,8 @@ nodes:
       eth0:
         ip: 172.16.193.39
         mac: 24:6E:96:6A:D1:18
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D1:1A
   ecotype-40:
     chassis:
       serial: 7VNBQK2
@@ -487,8 +495,8 @@ nodes:
       eth0:
         ip: 172.16.193.40
         mac: 24:6E:96:6A:4F:20
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:4F:22
   ecotype-41:
     chassis:
       serial: 7SNCQK2
@@ -499,8 +507,8 @@ nodes:
       eth0:
         ip: 172.16.193.41
         mac: 24:6E:96:6A:49:08
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:49:0A
   ecotype-42:
     chassis:
       serial: 7VK8QK2
@@ -511,8 +519,8 @@ nodes:
       eth0:
         ip: 172.16.193.42
         mac: 24:6E:96:6A:4C:E8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:4C:EA
   ecotype-43:
     chassis:
       serial: 7WRGQK2
@@ -523,8 +531,8 @@ nodes:
       eth0:
         ip: 172.16.193.43
         mac: 24:6E:96:6A:D0:80
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D0:82
   ecotype-44:
     chassis:
       serial: 7VKDQK2
@@ -535,8 +543,8 @@ nodes:
       eth0:
         ip: 172.16.193.44
         mac: 24:6E:96:6A:63:50
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:63:52
   ecotype-45:
     chassis:
       serial: 7Z9CQK2
@@ -547,8 +555,8 @@ nodes:
       eth0:
         ip: 172.16.193.45
         mac: 24:6E:96:6A:47:40
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:47:42
   ecotype-46:
     chassis:
       serial: 7T8DQK2
@@ -559,8 +567,8 @@ nodes:
       eth0:
         ip: 172.16.193.46
         mac: 24:6E:96:6A:C9:A8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:C9:AA
   ecotype-47:
     chassis:
       serial: 7WSFQK2
@@ -571,8 +579,8 @@ nodes:
       eth0:
         ip: 172.16.193.47
         mac: 24:6E:96:6A:D1:E8
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:D1:EA
   ecotype-48:
     chassis:
       serial: 7T88QK2
@@ -583,5 +591,5 @@ nodes:
       eth0:
         ip: 172.16.193.48
         mac: 24:6E:96:6A:CF:50
-        mounted: true
-        enabled: true
+      eth1:
+        mac: 24:6E:96:6A:CF:52
