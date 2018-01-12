@@ -25,6 +25,11 @@ nodes:
         mounted: false
         enabled: false
         mountable: false
+    storage_devices:
+      sda:
+        interface: SAS
+        driver: megaraid_sas
+        storage: SSD
   ecotype-1:
     chassis:
       serial: 7Z7CQK2
