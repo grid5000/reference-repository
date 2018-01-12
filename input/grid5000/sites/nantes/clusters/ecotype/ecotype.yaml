@@ -9,6 +9,8 @@ queues:
 
 nodes:
   ecotype-[1-48]:
+    processor:
+      microarchitecture: Broadwell
     network_adapters:
       eth0:
         mounted: true
@@ -17,6 +19,19 @@ nodes:
         mounted: false
         enabled: true
         mountable: true
+      eth2:
+        mounted: false
+        enabled: false
+        mountable: false
+      eth3:
+        mounted: false
+        enabled: false
+        mountable: false
+    storage_devices:
+      sda:
+        interface: SAS
+        driver: megaraid_sas
+        storage: SSD
   ecotype-1:
     chassis:
       serial: 7Z7CQK2
