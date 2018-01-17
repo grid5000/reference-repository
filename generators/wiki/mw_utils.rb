@@ -34,6 +34,29 @@ module G5K
 
   SITES = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
 
+  # This method compacts an array of integers as follows
+  # nodeset([2,3,4,7,9,10,12]) returns the string '[2-4,7,9-10,12]'
+  def self.nodeset(a)
+    l = a.length
+    return '' if l == 0
+    a = a.compact.uniq.sort
+    a0 = a[0]
+    s = "[#{a0}"
+    i = 1
+    while i < l
+      fast_forward = (i < l and a[i] - a0 == 1)?true:false
+      (a0 = a[i] and i+=1 ) while (i < l and a[i] - a0 == 1) # fast forward
+      if fast_forward
+        s += (i != l)?"-#{a0},#{a[i]}":"-#{a0}"
+      else
+        s += ",#{a[i]}"
+      end
+      a0 = a[i]
+      i += 1
+    end
+    s += ']'
+  end
+  
 end
 
 #Defines MediaWiki helpers
