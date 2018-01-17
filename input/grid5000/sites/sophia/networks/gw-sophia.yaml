@@ -85,9 +85,12 @@ gw-sophia:
       rate: 10000000000
       ports:
         1:
-          uid: renater-sophia
-          kind: renater
-          site: virtual
+          uid: renater5-FON
+          kind: other
+        2:
+          uid: swx1nef
+          kind: switch
+          port: 0/5
     2:
       snmp_pattern: "10GigabitEthernet%LINECARD%/%PORT%"
       kind: switch
@@ -209,7 +212,9 @@ gw-sophia:
           uid: sol-50
           kind: node
           port: eth0
-        6: sw-myrinet
+        6:
+          uid: sw-myrinet
+          kind: other
         10:
           uid: stock
           kind: other

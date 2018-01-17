@@ -1,0 +1,25 @@
+---
+swx1nef:
+  model: Juniper EX2500-24F-FB
+  warranty: expired
+  kind: switch
+  site: sophia
+  snmp_community: g5kadmin
+  backplane_bps: 240000000000
+  linecards:
+    0:
+      kind: virtual
+      rate: 10000000000
+      ports:
+        5:
+          uid: gw-sophia
+          kind: router
+          port: 1/2
+        18:
+          uid: swy1nef
+          kind: switch
+          port: 0/103
+        19:
+          uid: srv3
+          kind: other
+          port: eth3
