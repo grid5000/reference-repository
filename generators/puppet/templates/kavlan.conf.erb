@@ -17,7 +17,7 @@
    "admins": "oar;deploy;root;g5kadmin",
    "trace": { "active": "off", "path": "/tmp/traces" },
    "SNMPCommunity": "<%= conf.has_key?('snmp_community') ? conf['snmp_community'] : 'public' %>",
-   "db": { "host": "mysql", "name": "deploy3", "user": "<%= conf['db_user'] or 'deploy'%>", "passwd": "<%= conf['db_password'] or fail "Missing db_password entry" %>"},
+   "db": { "host": "kadeploy", "name": "deploy3", "user": "<%= conf['db_user'] or 'deploy'%>", "passwd": "<%= conf['db_password'] or fail "Missing db_password entry" %>"},
    "vlan": [
        {"value": 100, "name": "PRODUCTION", "type": "NULL"},
 <%
