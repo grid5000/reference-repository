@@ -32,21 +32,11 @@ OptionParser.new do |opts|
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
     options[:output_dir] = d
-    options[:conf_dir] = begin
-                           if options[:puppet4]
-                             "#{options[:output_dir]}/platforms/production/generators/kadeploy"
-                           else
-                             "#{options[:output_dir]}/modules/kadeployg5k/generators/"
-                           end
-                         end
+    options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/kadeploy"
   end
 
   opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: #{options[:conf_dir]}") do |d|
     options[:conf_dir] = d
-  end
-
-  opts.on('--puppet4', 'Puppet 4 version', "Default: " + options[:puppet4].to_s) do |d|
-    options[:puppet4] = d
   end
 
   opts.separator ""
@@ -175,13 +165,8 @@ end
 
     } # site['clusters'].each
 
-    output_file =begin
-                   if options[:puppet4]
-                     Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/clusters.conf")
-                   else
-                     Pathname("#{options[:output_dir]}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/clusters.conf")
-                   end
-                 end
+    output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/clusters.conf")
+
     output_file.dirname.mkpath()
     write_yaml(output_file, clusters_conf)
     add_header(output_file)
@@ -203,13 +188,7 @@ end
 
       output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__)))).result(binding)
 
-      output_file = begin
-                      if options[:puppet4]
-                        Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/#{cluster_uid}-cluster.conf")
-                      else
-                        Pathname("#{options[:output_dir]}/modules/kadeployg5k/files/#{site_uid}/server_conf#{suffix.tr('-', '_')}/#{cluster_uid}-cluster.conf")
-                      end
-                    end
+      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/#{cluster_uid}-cluster.conf")
 
       output_file.dirname.mkpath()
       File.write(output_file, output)
