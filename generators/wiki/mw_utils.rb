@@ -93,7 +93,11 @@ module MW
     table_text += MW::LINE_FEED + MW::TABLE_ROW + MW::LINE_FEED
 
     columns.each { |col|
-      table_text += MW::TABLE_HEADER + MW::TABLE_CELL + col + MW::LINE_FEED
+      if col.kind_of?(Hash)
+        table_text += MW::TABLE_HEADER + col[:attributes] + MW::TABLE_CELL + col[:text] + MW::LINE_FEED
+      else
+        table_text += MW::TABLE_HEADER + MW::TABLE_CELL + col + MW::LINE_FEED
+      end
     }
 
     rows.each { |row|
