@@ -13,7 +13,6 @@
 #   graphique: model differs on graphique-1
 #   grisou-50+: 2 IB interfaces
 #   grisou-49+: Doesn't have eth4 link
-#   talc-[15,95,106]: wrong BIOS version
 #   graphene-[45,85]: wrong BIOS version
 #   graphene-104+: different wattmeter
 #   griffon-[1-91]: missing some serial
@@ -35,15 +34,6 @@ nancy:
     - ~network_adapters.eth4.enabled
     - ~network_adapters.eth4.mountable
     - +network_adapters.ib0
-  talc-[15-16]:
-    - ~bios.release_date
-    - ~bios.version
-  talc-[95-96]:
-    - ~bios.release_date
-    - ~bios.version
-  talc-[106-108]:
-    - ~bios.release_date
-    - ~bios.version
   graphene-[45-46]:
     - ~bios.release_date
     - ~bios.version

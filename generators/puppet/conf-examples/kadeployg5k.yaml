@@ -276,22 +276,6 @@ nancy:
     boot.timeout.0: 180
     boot.timeout.1: 900
     remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
-  talc:
-    reboot.timeout: 250
-    reboot.kexec: 120
-    user.params: console=tty0 console=ttyS0,19200n8
-    deploy.drivers: ata_piix
-    deploy.params: myri10ge.blacklist=yes console=tty0 console=ttyS0,19200n8 ramdisk_size=290000
-      rw noapic init=/linuxrc
-    dhcp.serial: 0 19200
-    nfsroot.params: rw console=ttyS0,19200n8 console=tty0 root=/dev/nfs ip=dhcp nfsroot=172.24.120.35:/mnt/nfsroot/rootfs
-      init=/sbin/init
-    deployment.timeout: 500
-    broadcast.retries: 0
-    broadcast.timeout: 900
-    boot.timeout.0: 180
-    boot.timeout.1: 420
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
 nantes:
   econome:
     reboot.timeout: 200
