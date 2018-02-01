@@ -85,13 +85,13 @@ def check_network_description(options)
               links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'], 'target_node' => mynetnodes.first['uid'], 'port' => mynetnodes.first['port'] }
             elsif mynetnodes.length > 1
               # il y en a plusieurs...
-              if port['port'].nil?
+              if port['port'].nil? and lc['port'].nil?
                 # et pas de port précisé. C'est une erreur.
                 puts "ERROR: port specification matches several network nodes. port=#{port} ; network nodes matched=#{mynetnodes}"
                 ok = false
               else
                 # mais un port est précisé, cherchons avec le port
-                mynetnodes = netnodes.select { |n| n.values_at('uid', 'port') == port.values_at('uid', 'port') }
+                mynetnodes = netnodes.select { |n| n.values_at('uid', 'port') == port.values_at('uid', 'port') || (n.values_at('uid') == port.values_at('uid') and n['port'] == lc['port']) }
                 if mynetnodes.length == 1
                   # on n'en a trouvé qu'un seul, c'est donc forcément le bon
                   mynetnodes.first['found'] += 1
