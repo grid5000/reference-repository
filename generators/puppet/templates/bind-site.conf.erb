@@ -1,12 +1,4 @@
 <%
-  if dir == 'global'
-    type = 'master'
-  elsif dir == 'site'
-    type = 'slave' 
-  else
-    raise "'dir' undefined"
-  end
-
 # List file in the directory instead of using the 'reverse' variable as some files might be set manually
 Dir.entries(zones_dir).sort.each { |file|
   next unless /.*.db$/.match(file)
@@ -27,8 +19,7 @@ Dir.entries(zones_dir).sort.each { |file|
   end
 %>
   zone "<%= zone %>" {
-    type <%= type %>;
+    type master;
     file "/etc/bind/zones/<%= site_uid %>/<%= file %>";
-    <%= type == 'slave' ? 'masters { master-ns-global; };' : '' %>
   };
 <% } %>

@@ -22,14 +22,14 @@ refapi = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(
 
 $options = {}
 $options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
-$options[:output_dir] = "/tmp/puppet-repo"
+$options[:output_dir] = "/tmp/puppet"
 $options[:verbose] = false
 
 OptionParser.new do |opts|
   opts.banner = "Usage: bindg5k.rb [options]"
 
   opts.separator ""
-  opts.separator "Example: ruby bindg5k.rb -s nancy -o /tmp/puppet-repo"
+  opts.separator "Example: ruby bindg5k.rb -s nancy -o /tmp/puppet"
 
   opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + $options[:output_dir]) do |d|
     $options[:output_dir] = d
@@ -448,13 +448,18 @@ def get_orphan_reverse_manual_zones(zones_dir, site_uid, site)
   return zones
 end
 
-def write_global_site_conf(site_uid, dest_dir, zones_dir)
-  ['global', 'site'].each { |dir|
-    conf_file = File.join(dest_dir, "#{dir}/conf", "global-#{site_uid}.conf")
+def write_site_conf(site_uid, dest_dir, zones_dir)
+    conf_file = File.join(dest_dir, "#{site_uid}-zones.conf")
     FileUtils.mkdir_p(File.dirname(conf_file))
-    conf_content = ERB.new(File.read(File.expand_path('templates/bind-global-site.conf.erb', File.dirname(__FILE__)))).result(binding)
+    conf_content = ERB.new(File.read(File.expand_path('templates/bind-site.conf.erb', File.dirname(__FILE__)))).result(binding)
     File.write(conf_file, conf_content)
-  }
+end
+
+def write_site_local_conf(site_uid, dest_dir, zones_dir)
+    conf_file = File.join(dest_dir, "#{site_uid}-localzones.conf")
+    FileUtils.mkdir_p(File.dirname(conf_file))
+    conf_content = ERB.new(File.read(File.expand_path('templates/bind-site-local.conf.erb', File.dirname(__FILE__)))).result(binding)
+    File.write(conf_file, conf_content)
 end
 
 def write_zone(zone)
@@ -474,7 +479,7 @@ refapi["sites"].each { |site_uid, site|
   
   next unless $options[:sites].include?(site_uid)
 
-  dest_dir = "#{$options[:output_dir]}/modules/bindg5k/files/"
+  dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
   zones_dir = File.join(dest_dir, "zones/#{site_uid}")
 
   site_records = {}
@@ -590,6 +595,7 @@ refapi["sites"].each { |site_uid, site|
     write_zone(zone)
   }
 
-  write_global_site_conf(site_uid, dest_dir, zones_dir)
+  write_site_conf(site_uid, dest_dir, zones_dir)
+  write_site_local_conf(site_uid, dest_dir, zones_dir)
 
 } # each sites
