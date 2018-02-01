@@ -1,0 +1,18 @@
+---
+lyon:
+  db_user: deploy
+  db_password: db_password
+  snmp_community: public
+  devices:
+    gw-lyon:
+      ip: 172.16.63.254
+      driver: ExtremeSSH
+      port: 22
+      user: admin
+      password: password
+    force10:
+      ip: 172.17.63.253
+      driver: DellForce10
+      port: 22
+      user: admin
+      password: password
