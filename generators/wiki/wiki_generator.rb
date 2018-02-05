@@ -47,6 +47,12 @@ class WikiGenerator
     return content.gsub(/''<small>Generated from the Grid5000 APIs on .+<\/small>''/, '')
   end
 
+  def update_files
+    @files.each { |file|
+      @mw_client.update_file(file['filename'], file['path'], file['content_type'], file['comment'], true)
+    }
+  end
+
   #print generator content to stdout
   def print()
     puts @generated_content
@@ -117,7 +123,8 @@ class WikiGenerator
       generator.print
     end
     if (options[:update])
-      generator.update_page
+      generator.update_page if generator.instance_variable_get('@generated_content')
+      generator.update_files if generator.instance_variable_get('@files')
     end
   end
 

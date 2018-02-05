@@ -28,6 +28,13 @@ module MediawikiApi
       res = get_conn.send(:get, '', params)
       res.body
     end
+
+    def update_file(filename, path, content_type, comment, ignorewarnings, text = nil)
+      file = Faraday::UploadIO.new(path, content_type)
+      action(:upload,
+             filename: filename, file: file, comment: comment, text: text,
+             ignorewarnings: ignorewarnings)
+    end
   end
 
 end
