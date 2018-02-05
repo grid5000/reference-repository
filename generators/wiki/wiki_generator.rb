@@ -77,7 +77,9 @@ class WikiGenerator
     
   #print generator content to stdout
   def print()
+    puts '---------- GENERATED PAGE BEGIN ----------'
     puts @generated_content
+    puts '----------- GENERATED PAGE END -----------'
   end
 
   #Generic static method for cli arguments parsing
