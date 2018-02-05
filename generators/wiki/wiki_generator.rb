@@ -29,8 +29,9 @@ class WikiGenerator
   #Get the given page content and print a diff if any
   #Return true if there are no differences, false otherwise
   def diff_page()
-    wiki_content = @mw_client.get_page_content(@page_name)
-    diff = Diffy::Diff.new(wiki_content, @generated_content, :context => 0)
+    wiki_content = remove_page_creation_date(@mw_client.get_page_content(@page_name)).strip # .strip removes potential '\n' at end of file
+    generated_content = remove_page_creation_date(@generated_content).strip
+    diff = Diffy::Diff.new(wiki_content, generated_content, :context => 0)
     if (diff.to_s.empty?)
       puts "No differences found between generated and current wiki content for page #{@page_name}."
       return true
@@ -40,6 +41,10 @@ class WikiGenerator
     puts "#{diff.to_s(:text)}"
     puts '------------- PAGE DIFF END -------------'
     return false
+  end
+
+  def remove_page_creation_date(content)
+    return content.gsub(/''<small>Generated from the Grid5000 APIs on .+<\/small>''/, '')
   end
 
   #print generator content to stdout
