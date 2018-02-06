@@ -32,9 +32,13 @@ class WikiGenerator
     wiki_content = @mw_client.get_page_content(@page_name)
     diff = Diffy::Diff.new(wiki_content, @generated_content, :context => 0)
     if (diff.to_s.empty?)
+      puts "No differences found between generated and current wiki content for page #{@page_name}."
       return true
     end
-    puts "Differences between generated and current wiki content for page #{@page_name}:\n#{diff.to_s(:color)}"
+    puts "Differences between generated and current wiki content for page #{@page_name}:"
+    puts '------------ PAGE DIFF BEGIN ------------'
+    puts "#{diff.to_s(:text)}"
+    puts '------------- PAGE DIFF END -------------'
     return false
   end
 
