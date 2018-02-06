@@ -27,14 +27,15 @@ class WikiGenerator
   end
 
   #Get the given page content and print a diff if any
-  #Return true if there are differences, false otherwise
+  #Return true if there are no differences, false otherwise
   def diff_page()
     wiki_content = @mw_client.get_page_content(@page_name)
     diff = Diffy::Diff.new(wiki_content, @generated_content, :context => 0)
     if (diff.to_s.empty?)
-      return false
+      return true
     end
     puts "Differences between generated and current wiki content for page #{@page_name}:\n#{diff.to_s(:color)}"
+    return false
   end
 
   #print generator content to stdout
