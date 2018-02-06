@@ -28,6 +28,23 @@ module MediawikiApi
       res = get_conn.send(:get, '', params)
       res.body
     end
+    
+    def get_file_content(file_name)
+      get_conn = Faraday.new(url: MW::BASE_URL + "images/#{file_name}") do |faraday|
+        faraday.request :multipart
+        faraday.request :url_encoded
+        faraday.use :cookie_jar, jar: @cookies
+        faraday.use FaradayMiddleware::FollowRedirects
+        faraday.adapter Faraday.default_adapter
+      end
+      params = {
+        :token_type => false,
+        :action => 'raw'
+      }
+      params[:token] = get_token(:csrf)
+      res = get_conn.send(:get, '', params)
+      res.body
+    end
 
     def update_file(filename, path, content_type, comment, ignorewarnings, text = nil)
       file = Faraday::UploadIO.new(path, content_type)

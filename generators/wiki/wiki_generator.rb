@@ -53,6 +53,28 @@ class WikiGenerator
     }
   end
 
+  def diff_files
+    ret = true
+    @files.each { |file|
+      if file['content-type'] == 'text/plain'
+        file_content = @mw_client.get_file_content(file['filename'])
+        generated_content = File.read(file['path'])
+        diff = Diffy::Diff.new(file_content, generated_content, :context => 0)
+        if (diff.to_s.empty?)
+          puts "No differences found between generated and current content for file #{file['filename']}."
+          ret &= true
+        else
+          puts "Differences between generated and current content for file #{file['filename']}:"
+          puts '------------ FILE DIFF BEGIN ------------'
+          puts "#{diff.to_s(:text)}"
+          puts '------------- FILE DIFF END -------------'
+          ret &= false
+        end
+      end
+    }
+    return ret
+  end
+    
   #print generator content to stdout
   def print()
     puts @generated_content
@@ -117,7 +139,8 @@ class WikiGenerator
       generator.login(options)
     end
     if (options[:diff])
-      generator.diff_page
+      generator.diff_page if generator.instance_variable_get('@generated_content')
+      generator.diff_files if generator.instance_variable_get('@files')
     end
     if (options[:print])
       generator.print
