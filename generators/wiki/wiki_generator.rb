@@ -45,22 +45,22 @@ class WikiGenerator
 
   #Generic static method for cli arguments parsing
   def self.parse_options
+    conf = ENV['HOME']+'/.grid5000_api.yml'
+    yconf = YAML::load(IO::read(conf)) rescue {}
+    api_user = yconf['username']
+    api_password = yconf['password']
+
     options = {
       :diff => false,
       :print => false,
-      :update => false
+      :update => false,
+      :user => ENV['API_USER'] || api_user,
+      :pwd => ENV['API_PASSWORD'] || api_password
     }
 
     opt_parse = OptionParser.new do |opts|
-      opts.banner = "Usage: <wiki_generator>.rb --api-user user --api-password password"
-
-      opts.on('-u=user', '--api-user=user', String, 'User for HTTP authentication ') do |user|
-        options[:user] = user
-      end
-
-      opts.on('-p=pwd', '--api-password=pwd', String, 'Password for HTTP authentication') do |pwd|
-        options[:pwd] = pwd
-      end
+      opts.banner = "Usage: <wiki_generator>.rb\n"
+      opts.banner += "This script looks for file ~/.grid5000_api.yml containing your API username and password credentials. The script also recognize API_USER and API_PASSWORD environment variables."
 
       opts.on('-d', '--diff', 'Print a diff of the current wiki page against the content to generated') do
         options[:diff] = true
