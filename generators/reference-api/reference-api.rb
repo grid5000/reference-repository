@@ -75,6 +75,15 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
     ports = []
     linecard.delete("ports").each do |port_index, port|
       port = {"uid"=>port} if port.is_a? String
+      if port.is_a? Hash
+        # complete entries (see bug 8587)
+        if port['port'].nil? and linecard['port']
+          port['port'] = linecard['port']
+        end
+        if port['kind'].nil? and linecard['kind']
+          port['kind'] = linecard['kind']
+        end
+      end
       ports[port_index] = port
     end
     linecard["ports"] = ports.map{|p| p || {}}
