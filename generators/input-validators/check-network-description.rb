@@ -96,64 +96,14 @@ def check_network_description(options)
           # skip if empty port
           next if port == {}
 
-          #### FIXME toute cette partie pourrait être enlevée si les données étaient complètes dans l'API ...
-          if port['kind'].nil?
-            # aucun type de port (node, switch, etc.) n'est spécifié. Cherchons si on trouve un netnode (noeud ou switch) avec cet uid, et prenons sa seule interface 'mounted' pas Infiniband...
-            mynetnodes = netnodes.select { |n| n.values_at('uid') == port.values_at('uid') and n['interface'] != 'InfiniBand' and n['interface'] != 'Myrinet' }
+          if port['kind'] == 'node'
+            mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid', 'port') == port.values_at('kind', 'uid', 'port') }
             if mynetnodes.length == 1
-              # on n'en a trouvé qu'un seul, c'est donc forcément le bon
               mynetnodes.first['found'] += 1
               links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'], 'target_node' => mynetnodes.first['uid'], 'port' => mynetnodes.first['port'] }
-            elsif mynetnodes.length > 1
-              # il y en a plusieurs...
-              if port['port'].nil? and lc['port'].nil?
-                # et pas de port précisé. C'est une erreur.
-                puts "ERROR: port specification matches several network nodes. port=#{port} ; network nodes matched=#{mynetnodes}"
-                ok = false
-              else
-                # mais un port est précisé, cherchons avec le port
-                mynetnodes = netnodes.select { |n| n.values_at('uid', 'port') == port.values_at('uid', 'port') || (n.values_at('uid') == port.values_at('uid') and n['port'] == lc['port']) }
-                if mynetnodes.length == 1
-                  # on n'en a trouvé qu'un seul, c'est donc forcément le bon
-                  mynetnodes.first['found'] += 1
-                  links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'], 'target_node' => mynetnodes.first['uid'], 'port' => mynetnodes.first['port'] }
-                elsif mynetnodes.length > 1
-                  puts "ERROR: port specification matches several network nodes. port=#{port} ; network nodes matched=#{mynetnodes}"
-                  ok = false
-                else # = 0
-                  puts "ERROR: port specification matches no network nodes: #{port}"
-                  ok = false
-                end
-              end
-            else # = 0
-              puts "ERROR: port specification matches no network nodes: #{port}"
+            else
+              puts "ERROR: this port is connected to a node that does not exist: #{port}"
               ok = false
-            end
-          elsif port['kind'] == 'node'
-            if port['port'].nil?
-              # aucun port (par ex eth0) n'est spécifié, on suppose que c'est la seule interface 'mounted' pour cet uid
-              mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid') == port.values_at('kind', 'uid') and n['mounted'] }
-              if mynetnodes.length == 1
-                # on n'en a trouvé qu'un seul, c'est donc forcément le bon
-                mynetnodes.first['found'] += 1
-                links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'], 'target_node' => mynetnodes.first['uid'], 'port' => mynetnodes.first['port'] }
-              elsif mynetnodes.length > 1
-                puts "ERROR: port specification matches several network nodes. port=#{port} ; network nodes matched=#{mynetnodes}"
-                ok = false
-              else # = 0
-                puts "ERROR: port specification matches no network nodes: #{port}"
-                ok = false
-              end
-           ########### .... jusqu'à ici ! (fin du FIXME)
-            else # port défini
-              mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid', 'port') == port.values_at('kind', 'uid', 'port') }
-              if mynetnodes.length == 1
-                mynetnodes.first['found'] += 1
-                links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'], 'target_node' => mynetnodes.first['uid'], 'port' => mynetnodes.first['port'] }
-              else
-                puts "ERROR: this port is connected to a node that does not exist: #{port}"
-                ok = false
-              end
             end
           elsif port['kind'] == 'switch' or port['kind'] == 'router'
             mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid') == port.values_at('kind', 'uid') }
