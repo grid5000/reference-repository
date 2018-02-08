@@ -19,24 +19,24 @@
   },
   "kavlan": {
     "eth0": {
-      "kavlan-1": "192.168.193.58",
-      "kavlan-11": "10.7.200.58",
-      "kavlan-12": "10.11.200.58",
-      "kavlan-13": "10.15.200.58",
-      "kavlan-14": "10.19.200.58",
-      "kavlan-16": "10.27.200.58",
-      "kavlan-18": "10.35.200.58",
-      "kavlan-19": "10.39.200.58",
-      "kavlan-2": "192.168.209.58",
-      "kavlan-20": "10.43.200.58",
-      "kavlan-21": "10.47.200.58",
-      "kavlan-3": "192.168.225.58",
-      "kavlan-4": "10.16.1.58",
-      "kavlan-5": "10.16.65.58",
-      "kavlan-6": "10.16.129.58",
-      "kavlan-7": "10.16.193.58",
-      "kavlan-8": "10.17.1.58",
-      "kavlan-9": "10.17.65.58"
+      "kavlan-1": "192.168.193.3",
+      "kavlan-11": "10.7.200.3",
+      "kavlan-12": "10.11.200.3",
+      "kavlan-13": "10.15.200.3",
+      "kavlan-14": "10.19.200.3",
+      "kavlan-16": "10.27.200.3",
+      "kavlan-18": "10.35.200.3",
+      "kavlan-19": "10.39.200.3",
+      "kavlan-2": "192.168.209.3",
+      "kavlan-20": "10.43.200.3",
+      "kavlan-21": "10.47.200.3",
+      "kavlan-3": "192.168.225.3",
+      "kavlan-4": "10.16.1.3",
+      "kavlan-5": "10.16.65.3",
+      "kavlan-6": "10.16.129.3",
+      "kavlan-7": "10.16.193.3",
+      "kavlan-8": "10.17.1.3",
+      "kavlan-9": "10.17.65.3"
     }
   },
   "main_memory": {
@@ -51,21 +51,18 @@
       "device": "eth0",
       "driver": "e1000e",
       "enabled": true,
-      "firmware_version": "2.2-12",
       "interface": "Ethernet",
-      "ip": "172.16.65.58",
+      "ip": "172.16.65.3",
       "kavlan": true,
-      "mac": "00:e0:81:b2:c0:28",
+      "mac": "00:e0:81:b2:c1:fe",
       "management": false,
-      "model": "80003ES2LAN Gigabit Ethernet Controller (Copper)",
       "mountable": true,
       "mounted": true,
-      "name": "enp15s0f0",
-      "network_address": "griffon-58.nancy.grid5000.fr",
+      "network_address": "griffon-3.nancy.grid5000.fr",
       "rate": 1000000000,
-      "switch": "sgriffon1",
-      "switch_port": "GigabitEthernet1/0/11",
-      "vendor": "Intel",
+      "switch": null,
+      "switch_port": null,
+      "vendor": "intel",
       "version": "80003ES2LAN"
     },
     {
@@ -73,25 +70,22 @@
       "device": "eth1",
       "driver": "e1000e",
       "enabled": false,
-      "firmware_version": "2.2-12",
       "interface": "Ethernet",
       "kavlan": false,
-      "mac": "00:e0:81:b2:c0:29",
+      "mac": "00:e0:81:b2:c1:ff",
       "management": false,
-      "model": "80003ES2LAN Gigabit Ethernet Controller (Copper)",
       "mountable": false,
       "mounted": false,
-      "name": "enp15s0f1",
       "switch": null,
       "switch_port": null,
-      "vendor": "Intel",
+      "vendor": "intel",
       "version": "BCM5721"
     },
     {
       "device": "ib0",
       "driver": "mlx4_core",
       "enabled": false,
-      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:17:9d",
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:bd",
       "interface": "InfiniBand",
       "kavlan": false,
       "management": false,
@@ -105,7 +99,7 @@
       "device": "ib1",
       "driver": "mlx4_core",
       "enabled": false,
-      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:17:9e",
+      "guid": "20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:be",
       "interface": "InfiniBand",
       "kavlan": false,
       "management": false,
@@ -119,13 +113,13 @@
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.17.65.58",
+      "ip": "172.17.65.3",
       "kavlan": false,
-      "mac": "00:e0:81:4f:e2:f3",
+      "mac": "00:e0:81:4f:cb:0a",
       "management": true,
       "mountable": false,
       "mounted": false,
-      "network_address": "griffon-58-bmc.nancy.grid5000.fr",
+      "network_address": "griffon-3-bmc.nancy.grid5000.fr",
       "vendor": "Tyan",
       "version": "M3296"
     }
@@ -167,7 +161,7 @@
         },
         "pdu": [
           {
-            "uid": "griffon-pdu1"
+            "uid": "griffon-pdu2"
           }
         ]
       }
@@ -175,12 +169,12 @@
   },
   "storage_devices": [
     {
-      "by_id": "/dev/disk/by-id/wwn-0x5000cca34de7dc71",
+      "by_id": "node-was-not-available-to-retrieve-this-value",
       "device": "sda",
       "driver": "ahci",
-      "firmware_version": "GM3OA5CA",
       "interface": "SATA II",
       "model": "Hitachi HDP72503",
+      "rev": "GM3OA5CA",
       "size": 320072933376,
       "storage": "HDD",
       "vendor": "Hitachi"
@@ -197,5 +191,5 @@
     "virtual": "ivt"
   },
   "type": "node",
-  "uid": "griffon-58"
+  "uid": "griffon-3"
 }
