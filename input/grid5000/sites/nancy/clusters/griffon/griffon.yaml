@@ -63,23 +63,27 @@ nodes:
         switch: null
         switch_port: null
       ib0:
-        driver: mlx4_core
-        enabled: false
         interface: InfiniBand
-        management: false
-        mountable: false
+        driver: mlx4_core
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:23
+        rate: 10000000000
+        model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
+        vendor: Mellanox Technologies
         mounted: false
-        version: MT26418
-        vendor: Mellanox
+        management: false
+        enabled: false
+        mountable: false
       ib1:
-        driver: mlx4_core
-        enabled: false
         interface: InfiniBand
-        management: false
-        mountable: false
+        driver: mlx4_core
+        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:03:30:24
+        rate: 10000000000
+        model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
+        vendor: Mellanox Technologies
         mounted: false
-        version: MT26418
-        vendor: Mellanox
+        management: false
+        enabled: false
+        mountable: false
       bmc:
         interface: Ethernet
         enabled: true
