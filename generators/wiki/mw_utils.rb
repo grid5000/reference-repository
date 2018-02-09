@@ -57,6 +57,25 @@ module G5K
     end
     s += ']'
   end
+
+  def self.get_size(x)
+    gbytes = (x.to_f / 2**30).floor
+    if gbytes < 2**10
+      gbytes.to_s + '&nbsp;GB'
+    else
+      (x.to_f / 2**40).round(3).to_s + '&nbsp;TB'
+    end
+  end
+  
+  def self.get_rate(x)
+    return '' if (x == 0 || x.nil?)
+    mbps = (x.to_f / 10**6).floor
+    if mbps < 1000
+      mbps.to_s + '&nbsp;Mbps'
+    else
+      (x.to_f / 10**9).floor.to_s + '&nbsp;Gbps'
+    end
+  end
   
 end
 
