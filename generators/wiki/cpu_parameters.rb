@@ -10,7 +10,7 @@ class CPUParametersGenerator < WikiGenerator
 
   def generate_content
 
-    table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Core Codename", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
+    table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Microarchitecture", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
     table_data = []
     global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
