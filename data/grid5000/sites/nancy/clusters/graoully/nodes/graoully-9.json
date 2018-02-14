@@ -6,12 +6,6 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "configuration": {
-      "cstate_c1e": true,
-      "cstate_enabled": true,
-      "ht_enabled": true,
-      "turboboost_enabled": true
-    },
     "release_date": "06/03/2015",
     "vendor": "Dell Inc.",
     "version": "1.3.6"
@@ -67,7 +61,7 @@
       "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
       "mountable": true,
       "mounted": true,
-      "name": "enp1s0f0",
+      "name": "eno1",
       "network_address": "graoully-9.nancy.grid5000.fr",
       "rate": 10000000000,
       "switch": "gw-nancy",
@@ -87,7 +81,7 @@
       "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "enp1s0f1",
+      "name": "eno2",
       "vendor": "Intel"
     },
     {
@@ -135,7 +129,7 @@
       "model": "I350 Gigabit Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "enp5s0f0",
+      "name": "eno3",
       "vendor": "Intel"
     },
     {
@@ -151,7 +145,7 @@
       "model": "I350 Gigabit Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "enp5s0f1",
+      "name": "eno4",
       "vendor": "Intel"
     },
     {
@@ -193,7 +187,6 @@
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
-    "cstate_max_id": 2,
     "ht_enabled": true,
     "pstate_driver": "intel_pstate",
     "pstate_governor": "performance",
