@@ -61,7 +61,7 @@
       "model": "82576 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
-      "name": "enp1s0f0",
+      "name": "eno1",
       "network_address": "uvb-1.sophia.grid5000.fr",
       "rate": 1000000000,
       "switch": "swy1nef",
@@ -80,7 +80,7 @@
       "model": "82576 Gigabit Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "enp1s0f1",
+      "name": "eno2",
       "vendor": "Intel"
     },
     {
@@ -131,7 +131,6 @@
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
-    "cstate_max_id": 2,
     "ht_enabled": true,
     "pstate_driver": "none",
     "pstate_governor": "none",
@@ -161,6 +160,7 @@
   "storage_devices": [
     {
       "by_id": "/dev/disk/by-id/wwn-0x50014ee10377365d",
+      "by_path": "/dev/disk/by-path/pci-0000:00:1f.2-ata-1",
       "device": "sda",
       "driver": "ahci",
       "firmware_version": "02.03B05",
