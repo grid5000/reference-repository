@@ -39,7 +39,7 @@ genepi-12:
       management: false
       model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
       name: enp5s0f1
-      rate: 1000000000
+      rate: 100000000
       vendor: Intel
     ib0:
       driver: mlx4_core
@@ -61,7 +61,6 @@ genepi-12:
   operating_system:
     cstate_driver: none
     cstate_governor: menu
-    cstate_max_id: 
     ht_enabled: false
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
@@ -81,6 +80,7 @@ genepi-12:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50014ee100956ff0"
+      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
       firmware_version: 20.06C06
       model: WDC WD1600YS-01S
       size: 164696555520
