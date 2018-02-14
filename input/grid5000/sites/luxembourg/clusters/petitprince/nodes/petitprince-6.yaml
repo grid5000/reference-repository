@@ -7,11 +7,6 @@ petitprince-6:
     nb_threads: 24
     platform_type: x86_64
   bios:
-    configuration:
-      cstate_c1e: true
-      cstate_enabled: true
-      ht_enabled: true
-      turboboost_enabled: true
     release_date: 01/27/2016
     vendor: Dell Inc.
     version: 2.5.4
@@ -34,7 +29,7 @@ petitprince-6:
       mac: e0:db:55:09:7b:70
       management: false
       model: NetXtreme II BCM57810 10 Gigabit Ethernet
-      name: enp1s0f0
+      name: eno1
       rate: 10000000000
       vendor: Broadcom
     eth1:
@@ -44,13 +39,12 @@ petitprince-6:
       mac: e0:db:55:09:7b:72
       management: false
       model: NetXtreme II BCM57810 10 Gigabit Ethernet
-      name: enp1s0f1
+      name: eno2
       rate: 10000000000
       vendor: Broadcom
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    cstate_max_id: 2
     ht_enabled: true
     pstate_driver: intel_pstate
     pstate_governor: performance
@@ -70,6 +64,7 @@ petitprince-6:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000c5004008cea0"
+      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
       firmware_version: AA08
       model: ST9250610NS
       size: 250059350016
