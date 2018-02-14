@@ -7,12 +7,7 @@ nova-18:
     nb_threads: 32
     platform_type: x86_64
   bios:
-    configuration:
-      cstate_c1e: true
-      cstate_enabled: true
-      ht_enabled: true
-      turboboost_enabled: true
-    release_date: '09/08/2016'
+    release_date: 09/08/2016
     vendor: Dell Inc.
     version: 2.2.5
   chassis:
@@ -53,7 +48,7 @@ nova-18:
       mac: 18:66:da:7f:1f:d9
       management: false
       model: NetXtreme BCM5720 Gigabit Ethernet PCIe
-      name: enp2s0f0
+      name: eno1
       vendor: Broadcom
     eth3:
       driver: tg3
@@ -62,7 +57,7 @@ nova-18:
       mac: 18:66:da:7f:1f:da
       management: false
       model: NetXtreme BCM5720 Gigabit Ethernet PCIe
-      name: enp2s0f1
+      name: eno2
       vendor: Broadcom
     eth4:
       driver: tg3
@@ -71,7 +66,7 @@ nova-18:
       mac: 18:66:da:7f:1f:db
       management: false
       model: NetXtreme BCM5720 Gigabit Ethernet PCIe
-      name: enp3s0f0
+      name: eno3
       vendor: Broadcom
     eth5:
       driver: tg3
@@ -80,12 +75,11 @@ nova-18:
       mac: 18:66:da:7f:1f:dc
       management: false
       model: NetXtreme BCM5720 Gigabit Ethernet PCIe
-      name: enp3s0f1
+      name: eno4
       vendor: Broadcom
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    cstate_max_id: 1
     ht_enabled: true
     pstate_driver: intel_pstate
     pstate_governor: performance
