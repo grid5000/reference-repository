@@ -100,7 +100,7 @@
       "model": "I350 Gigabit Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "enp2s0f0",
+      "name": "eno1",
       "rate": 1000000000,
       "vendor": "Intel",
       "version": "Intel Corporation"
@@ -118,7 +118,7 @@
       "model": "I350 Gigabit Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "enp2s0f3",
+      "name": "eno2",
       "vendor": "Intel",
       "version": "Intel Corporation"
     },
@@ -139,7 +139,7 @@
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
-    "cstate_max_id": 2,
+    "cstate_max_id": null,
     "ht_enabled": true,
     "pstate_driver": "intel_pstate",
     "pstate_governor": "performance",
@@ -172,6 +172,7 @@
   "storage_devices": [
     {
       "by_id": "/dev/disk/by-id/wwn-0x50014ee25c659979",
+      "by_path": "/dev/disk/by-path/pci-0000:00:1f.2-ata-1",
       "device": "sda",
       "driver": "ahci",
       "firmware_version": "01.01D05",

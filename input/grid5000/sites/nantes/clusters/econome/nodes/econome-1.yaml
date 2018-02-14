@@ -48,7 +48,7 @@ econome-1:
       mac: 78:45:c4:f9:15:4c
       management: false
       model: I350 Gigabit Network Connection
-      name: enp2s0f0
+      name: eno1
       vendor: Intel
     eth3:
       driver: igb
@@ -57,12 +57,12 @@ econome-1:
       mac: 78:45:c4:f9:15:4d
       management: false
       model: I350 Gigabit Network Connection
-      name: enp2s0f3
+      name: eno2
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    cstate_max_id: 2
+    cstate_max_id: 
     ht_enabled: true
     pstate_driver: intel_pstate
     pstate_governor: performance
@@ -82,6 +82,7 @@ econome-1:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50014ee2b1bb39c5"
+      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
       firmware_version: 01.01D05
       model: WDC WD2003FYYS-1
       size: 2000398934016
