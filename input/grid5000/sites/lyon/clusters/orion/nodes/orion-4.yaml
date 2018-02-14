@@ -7,11 +7,6 @@ orion-4:
     nb_threads: 24
     platform_type: x86_64
   bios:
-    configuration:
-      cstate_c1e: true
-      cstate_enabled: true
-      ht_enabled: true
-      turboboost_enabled: true
     release_date: 05/10/2012
     vendor: Dell Inc.
     version: 1.2.6
@@ -53,7 +48,7 @@ orion-4:
       mac: bc:30:5b:ef:25:5c
       management: false
       model: I350 Gigabit Network Connection
-      name: enp1s0f0
+      name: eno1
       vendor: Intel
     eth3:
       driver: igb
@@ -62,7 +57,7 @@ orion-4:
       mac: bc:30:5b:ef:25:5d
       management: false
       model: I350 Gigabit Network Connection
-      name: enp1s0f1
+      name: eno2
       vendor: Intel
     eth4:
       driver: igb
@@ -71,7 +66,7 @@ orion-4:
       mac: bc:30:5b:ef:25:5e
       management: false
       model: I350 Gigabit Network Connection
-      name: enp1s0f2
+      name: eno3
       vendor: Intel
     eth5:
       driver: igb
@@ -80,12 +75,12 @@ orion-4:
       mac: bc:30:5b:ef:25:5f
       management: false
       model: I350 Gigabit Network Connection
-      name: enp1s0f3
+      name: eno4
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    cstate_max_id: 2
+    cstate_max_id: 
     ht_enabled: true
     pstate_driver: intel_pstate
     pstate_governor: performance
