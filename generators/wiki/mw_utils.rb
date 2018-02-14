@@ -98,6 +98,10 @@ module MW
 
   TABLE_CELL = "|"
 
+  UNSORTED_INLINE_CELL = "!!"
+
+  UNSORTED_TABLE_CELL = "!"
+  
   LINE_FEED = "\n"
 
   LIST_ITEM = "*"
@@ -120,12 +124,20 @@ module MW
     }
 
     rows.each { |row|
+      if row.kind_of?(Hash) and row[:sort] == false
+        row = row[:columns]
+        table_cell = MW::UNSORTED_TABLE_CELL
+        inline_cell = MW::UNSORTED_INLINE_CELL
+      else
+        table_cell = MW::TABLE_CELL
+        inline_cell = MW::INLINE_CELL
+      end
       table_text += MW::TABLE_ROW + MW::LINE_FEED
       row.each_with_index{ |cell, i|
         if (i == 0)
-          table_text += MW::TABLE_CELL
+          table_text += table_cell
         else
-          table_text += MW::INLINE_CELL
+          table_text += inline_cell
         end
         table_text += cell.to_s
       }
