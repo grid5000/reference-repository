@@ -19,27 +19,27 @@ edel-21:
   network_adapters:
     bmc:
       ip: 172.17.17.21
-      mac: '08:00:38:35:a4:25'
+      mac: 08:00:38:35:a4:25
       management: true
     eth0:
       driver: igb
       firmware_version: 1.5.6
       interface: Ethernet
       ip: 172.16.17.21
-      mac: '08:00:38:35:ac:4a'
+      mac: 08:00:38:35:ac:4a
       management: false
       model: 82576 Gigabit Network Connection
-      name: enp1s0f0
+      name: Utils
       rate: 1000000000
       vendor: Intel
     eth1:
       driver: igb
       firmware_version: 1.5.6
       interface: Ethernet
-      mac: '08:00:38:35:ac:4b'
+      mac: 08:00:38:35:ac:4b
       management: false
       model: 82576 Gigabit Network Connection
-      name: enp1s0f1
+      name: Utils
       vendor: Intel
     ib0:
       driver: mlx4_core
@@ -61,7 +61,6 @@ edel-21:
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    cstate_max_id: 2
     ht_enabled: false
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
@@ -81,6 +80,7 @@ edel-21:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x500a07510367befc"
+      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
       firmware_version: 040H
       model: C400-MTFDDAA128M
       size: 128035676160
