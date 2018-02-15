@@ -19,25 +19,27 @@ edel-49:
   network_adapters:
     bmc:
       ip: 172.17.17.49
-      mac: 08:00:38:35:a3:db
+      mac: '08:00:38:35:a3:db'
       management: true
     eth0:
       driver: igb
       firmware_version: 2.0.6
       interface: Ethernet
       ip: 172.16.17.49
-      mac: 08:00:38:35:ab:b6
+      mac: '08:00:38:35:ab:b6'
       management: false
       model: 82576 Gigabit Network Connection
+      name: enp1s0f0
       rate: 1000000000
       vendor: Intel
     eth1:
       driver: igb
       firmware_version: 2.0.6
       interface: Ethernet
-      mac: 08:00:38:35:ab:b7
+      mac: '08:00:38:35:ab:b7'
       management: false
       model: 82576 Gigabit Network Connection
+      name: enp1s0f1
       vendor: Intel
     ib0:
       driver: mlx4_core
@@ -59,6 +61,7 @@ edel-49:
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
+    cstate_max_id: 2
     ht_enabled: false
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
@@ -68,7 +71,7 @@ edel-49:
     cache_l1i: 32768
     cache_l2: 262144
     cache_l3: 8388608
-    clock_speed: 2250000000
+    clock_speed: 2300000000
     ht_capable: true
     instruction_set: x86-64
     model: Intel Xeon
@@ -78,7 +81,6 @@ edel-49:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x500a07510367bf00"
-      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
       firmware_version: 040H
       model: C400-MTFDDAA128M
       size: 128035676160
