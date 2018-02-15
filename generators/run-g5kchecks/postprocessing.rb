@@ -41,6 +41,7 @@ list_of_yaml_files.each { |filename|
       net_adapter.delete("enabled")
       net_adapter.delete("mounted")
       net_adapter.delete("mountable")
+      net_adapter.delete("rate") if net_adapter["rate"] == 0
     }
 
     hash["network_adapters"] = hash["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc"])
