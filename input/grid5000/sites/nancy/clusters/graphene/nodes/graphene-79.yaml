@@ -54,6 +54,7 @@ graphene-79:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:92:f5
       interface: InfiniBand
+      ip: 172.18.64.79
       management: false
       model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
       rate: 20000000000
@@ -69,7 +70,7 @@ graphene-79:
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    cstate_max_id: 2
+    cstate_max_id: 
     ht_enabled: false
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
@@ -89,6 +90,7 @@ graphene-79:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5000cca371e901f3"
+      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
       firmware_version: JPFOA3EA
       model: Hitachi HDS72103
       size: 320072933376
