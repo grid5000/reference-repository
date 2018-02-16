@@ -11,6 +11,13 @@ nodes:
   ecotype-[1-48]:
     processor:
       microarchitecture: Broadwell
+    supported_job_types:
+      deploy: true
+      besteffort: false
+      max_walltime: 0
+      queues:
+        - admin
+        - testing
     network_adapters:
       eth0:
         mounted: true
