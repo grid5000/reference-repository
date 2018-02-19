@@ -49,7 +49,7 @@ paranoia-1:
       mac: f0:4d:a2:73:cf:45
       management: false
       model: I350 Gigabit Network Connection
-      name: enp2s0f0
+      name: eno1
       rate: 1000000000
       vendor: Intel
     eth3:
@@ -59,12 +59,12 @@ paranoia-1:
       mac: f0:4d:a2:73:cf:46
       management: false
       model: I350 Gigabit Network Connection
-      name: enp2s0f3
+      name: eno2
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    cstate_max_id: 2
+    cstate_max_id: 
     ht_enabled: true
     pstate_driver: intel_pstate
     pstate_governor: performance
@@ -84,35 +84,35 @@ paranoia-1:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50000c0f02df100c"
-      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f02df100e-lun-0"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-phy0-lun-0"
       firmware_version: D1S6
       model: WD6001BKHG
       size: 600127266816
       vendor: WD
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x50000c0f02df1a80"
-      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f02df1a82-lun-0"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-phy1-lun-0"
       firmware_version: D1S6
       model: WD6001BKHG
       size: 600127266816
       vendor: WD
     sdc:
       by_id: "/dev/disk/by-id/wwn-0x50000c0f02df0970"
-      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f02df0972-lun-0"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-phy2-lun-0"
       firmware_version: D1S6
       model: WD6001BKHG
       size: 600127266816
       vendor: WD
     sdd:
       by_id: "/dev/disk/by-id/wwn-0x50000c0f0288cdc8"
-      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f0288cdca-lun-0"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-phy3-lun-0"
       firmware_version: D1S6
       model: WD6001BKHG
       size: 600127266816
       vendor: WD
     sde:
       by_id: "/dev/disk/by-id/wwn-0x50000c0f0288e114"
-      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-0x50000c0f0288e116-lun-0"
+      by_path: "/dev/disk/by-path/pci-0000:82:00.0-sas-phy4-lun-0"
       firmware_version: D1S6
       model: WD6001BKHG
       size: 600127266816
