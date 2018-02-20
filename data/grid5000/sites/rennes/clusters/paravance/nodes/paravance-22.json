@@ -6,12 +6,6 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "configuration": {
-      "cstate_c1e": true,
-      "cstate_enabled": true,
-      "ht_enabled": true,
-      "turboboost_enabled": true
-    },
     "release_date": "09/06/2016",
     "vendor": "Dell Inc.",
     "version": "2.2.5"
@@ -85,7 +79,7 @@
       "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
       "mountable": true,
       "mounted": true,
-      "name": "enp1s0f0",
+      "name": "eno1",
       "network_address": "paravance-22.rennes.grid5000.fr",
       "rate": 10000000000,
       "switch": "paravance-sw-1",
@@ -106,7 +100,7 @@
       "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
       "mountable": true,
       "mounted": false,
-      "name": "enp1s0f1",
+      "name": "eno2",
       "network_address": "paravance-22-eth1.rennes.grid5000.fr",
       "rate": 10000000000,
       "switch": "paravance-sw-1",
@@ -127,7 +121,7 @@
       "model": "I350 Gigabit Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "enp6s0f0",
+      "name": "eno3",
       "vendor": "Intel",
       "version": "Intel Corporation"
     },
@@ -144,7 +138,7 @@
       "model": "I350 Gigabit Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "enp6s0f1",
+      "name": "eno4",
       "vendor": "Intel",
       "version": "Intel Corporation"
     },
@@ -165,7 +159,7 @@
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
-    "cstate_max_id": 2,
+    "cstate_max_id": null,
     "ht_enabled": true,
     "pstate_driver": "intel_pstate",
     "pstate_governor": "performance",
