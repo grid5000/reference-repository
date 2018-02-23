@@ -47,8 +47,10 @@ boot:
     deploy:<%
     if !data['deploy.drivers'].nil? %>
       drivers: <%= data['deploy.drivers'] %><% end %>
-      vmlinuz: kernels/deploy-wheezy-vmlinuz-1.0.2-g5k
-      initrd: kernels/deploy-wheezy-initrd-1.0.2-g5k
+      vmlinuz: <%= data['deploy.vmlinuz'] ? data['deploy.vmlinuz'] :
+        suffix == '' ? 'kernels/deploy-wheezy-vmlinuz-1.0.2-g5k' : 'kernels/kadeploy3_deploy_kernel-jessie_vmlinuz' %>
+      initrd: <%= data['deploy.initrd'] ? data['deploy.initrd'] :
+        suffix == '' ? 'kernels/deploy-wheezy-initrd-1.0.2-g5k' : 'kernels/kadeploy3_deploy_kernel-jessie_initrd.img' %>
       params: <%= data['deploy.params'] %>
       supported_fs: ext2, ext3, ext4<%
    if !data['nfsroot.params'].nil? %>
