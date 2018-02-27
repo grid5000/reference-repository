@@ -142,11 +142,16 @@
     },
     {
       "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
       "ip": "172.17.193.36",
       "kavlan": false,
       "mac": "50:9a:4c:a8:82:0c",
       "management": true,
-      "network_address": "ecotype-36-bmc.nantes.grid5000.fr"
+      "mountable": false,
+      "mounted": false,
+      "network_address": "ecotype-36-bmc.nantes.grid5000.fr",
+      "rate": 1000000000
     }
   ],
   "operating_system": {
@@ -157,6 +162,10 @@
     "pstate_driver": "intel_pstate",
     "pstate_governor": "performance",
     "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 13180000000,
+    "node_flops": 275300000000
   },
   "processor": {
     "cache_l1": null,
