@@ -38,6 +38,13 @@ nodes:
         mounted: false
         enabled: false
         mountable: false
+      bmc:
+        interface: Ethernet
+        rate: 1.0e+9
+        enabled: true
+        mounted: false
+        mountable: false
+        management: true
     storage_devices:
       sda:
         interface: SAS
