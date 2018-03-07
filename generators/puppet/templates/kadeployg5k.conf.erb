@@ -29,7 +29,7 @@ remoteops:
     cmd: <%= data['remoteops.power_on.very_hard.cmd'] %><%end %>
   reboot:
   - name: soft
-    cmd: ssh -q -F /etc/kadeploy3<%= suffix %>/keys/ssh_config root@HOSTNAME_FQDN "if [ -f /bin/systemctl ]; then nohup /bin/systemctl reboot -f >/dev/null & else nohup /sbin/reboot -f >/dev/null & fi"
+    cmd: ssh -q -F /etc/kadeploy3<%= suffix %>/keys/ssh_config root@HOSTNAME_FQDN "if [ -f /bin/systemctl ]; then nohup /bin/systemctl reboot <%= suffix == '' ? '-f ' : '' %>>/dev/null & else nohup /sbin/reboot <%= suffix == '' ? '-f ' : '' %>>/dev/null & fi"
   - name: hard
     cmd: <%= data['remoteops.reboot.hard.cmd'] ? data['remoteops.reboot.hard.cmd'] : '/usr/local/bin/lanpower -c cycle -m HOSTNAME_SHORT' %><% if data['remoteops.reboot.very_hard.cmd'] %>
   - name: very_hard
