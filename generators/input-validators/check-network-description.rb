@@ -63,6 +63,24 @@ def check_network_description(options)
 
     links = []
 
+    # scan neteq for backplane_bps (bug 8294)
+    puts "Scanning network equipments for backplane_bps..."
+    neteqs.each do |eq|
+      next if HPC_SWITCHES.include?(eq['uid'])
+      puts "looking at #{eq['uid']} ..."
+      if not eq['backplane_bps']
+        puts "WARNING: #{eq['uid']} has no backplane_bps"
+      end
+      if eq['linecards'].length > 1 # only look at LC-specific backplane if switch has more than one linecard
+        eq['linecards'].each do |lc|
+          next if lc.keys.empty?
+          if not lc['backplane_bps']
+            puts "WARNING: #{eq['uid']} has a linecard without backplane_bps"
+          end
+        end
+      end
+    end
+
     # scan equipments ports, search for each node
     neteqs.each do |eq|
       puts "looking at #{eq['uid']} ..."
