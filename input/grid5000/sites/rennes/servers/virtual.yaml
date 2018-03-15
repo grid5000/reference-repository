@@ -100,11 +100,6 @@ supervision:
     - nagios
     - munin
   network_adapters: {default: {ip: 172.16.111.122}}
-ldap-global:
-  kind: virtual
-  alias:
-    - ldap-master
-  network_adapters: {default: {ip: 172.16.111.153}}
 git-global:
   kind: virtual
   network_adapters: {default: {ip: 131.254.202.204}}
@@ -116,10 +111,6 @@ kadeploy:
   alias:
     - kadeploy-server
   network_adapters: {default: {ip: 172.16.111.111}}
-users-api:
-  kind: virtual
-  alias: [ums]
-  network_adapters: {default: {ip: 172.16.111.165}}
 mysql-archive:
   kind: virtual
   alias:
