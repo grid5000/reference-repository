@@ -147,6 +147,17 @@ module MW
     return table_text
   end
 
+  def self.generate_hash_table(hash)
+    format = " valign=\"top\" style=\"background-color: #f9f9f9; padding: 0px 10px 0px 3px;\" "
+    table = [MW::TABLE_START, MW::TABLE_ROW]
+    hash.each { |k, v|
+      table << MW::TABLE_CELL + format + MW::TABLE_CELL + "'''#{k}:'''"
+      table << MW::TABLE_CELL + " #{v}<br/>"
+      table << MW::TABLE_ROW
+    }
+    (table << MW::TABLE_END).join(MW::LINE_FEED)
+  end
+
   def self.small(text)
     "<small>" + text + "</small>"
   end
