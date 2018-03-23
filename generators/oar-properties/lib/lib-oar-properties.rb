@@ -83,7 +83,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['disktype'] = (node['storage_devices'].first[1] || {})['interface']
 
   # ETH
-  ni_mountable = node['network_adapters'].select { |k, na| /^eth[0-9]*$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true) }.values
+  ni_mountable = node['network_adapters'].select { |k, na| /^eth[0-9]*$/.match(k) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }.values
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
 
   h['eth_count'] = ni_mountable.length
@@ -92,7 +92,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   puts "#{node_uid}: Warning - no rate info for the eth interface" if h['eth_count'] > 0 && h['eth_rate'] == 0
 
   # INFINIBAND
-  ni_mountable = node['network_adapters'].select { |k, na| /^ib[0-9]*(\.[0-9]*)?$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true) }.values
+  ni_mountable = node['network_adapters'].select { |k, na| /^ib[0-9]*(\.[0-9]*)?$/.match(k) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }.values
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
   ib_map = { 0 => 'NO', 10 => 'SDR', 20 => 'DDR', 40 => 'QDR', 56 => 'FDR' }
 
@@ -103,7 +103,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   puts "#{node_uid}: Warning - no rate info for the ib interface" if h['ib_count'] > 0 && h['ib_rate'] == 0
 
   # MYRINET
-  ni_mountable = node['network_adapters'].select { |k, na| /^myri[0-9]*$/.match(k) && (na['enabled'] == true || na['mounted'] == true || na['mountable'] == true) }.values
+  ni_mountable = node['network_adapters'].select { |k, na| /^myri[0-9]*$/.match(k) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }.values
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
   myri_map = { 0 => 'NO', 2 => 'Myrinet-2000', 10 => 'Myri-10G' }
 
