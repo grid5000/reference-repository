@@ -271,7 +271,7 @@ global_hash["sites"].each do |site_uid, site|
           end
         end
         # If kavlan entry is not defined here, set it node's kavlan description
-        network_adapter["kavlan"] ||= node["kavlan"].keys.include?(network_adapter["device"]) ? true : false
+        network_adapter["kavlan"] ||= node["kavlan"].keys.include?(network_adapter["device"]) ? true : false rescue false
 
         network_adapter.delete("network_address") if network_adapter["network_address"] == 'none'
       }
