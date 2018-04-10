@@ -76,6 +76,10 @@ module G5K
       (x.to_f / 10**9).floor.to_s + '&nbsp;Gbps'
     end
   end
+
+  def self.pluralize(count, word)
+    return (count == 1 || word[-1] == 's') ? word : word + 's'
+  end
   
 end
 
