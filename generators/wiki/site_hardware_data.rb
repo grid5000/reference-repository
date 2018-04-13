@@ -1,9 +1,6 @@
 # coding: utf-8
 require 'pp'
-require_relative 'site_hardware.rb'
+require_relative './site_hardware.rb'
+require_relative './mw_utils.rb'
 
-global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
-
-sites = global_hash['sites'].keys.sort
-
-pp get_hardware(sites)
+pp get_hardware(G5K::SITES)
