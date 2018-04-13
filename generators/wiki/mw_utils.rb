@@ -1,8 +1,11 @@
+require 'pp'
 require 'open-uri'
 require 'uri'
 require 'net/http'
 require 'net/https'
 require 'mediawiki_api'
+
+require_relative "../lib/input_loader"
 
 #Adding method to mediawiki_api client
 module MediawikiApi
@@ -32,8 +35,8 @@ end
 #Defines global Grid5000 helpers (TODO move to its own file once it is big enough)
 module G5K
 
-  SITES = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
-
+  SITES = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))['sites'].keys.sort
+  
   # This method compacts an array of integers as follows
   # nodeset([2,3,4,7,9,10,12]) returns the string '[2-4,<wbr>7,<wbr>9-10,<wbr>12]'
   # where <wbr> is a hidden tag that enables carriage return in wikimedia
@@ -187,3 +190,4 @@ module MW
   end   
 
 end
+pp G5K::SITES
