@@ -1,4 +1,3 @@
-
 require "optparse"
 require "mediawiki_api"
 require "diffy"
@@ -28,41 +27,86 @@ class WikiGenerator
   end
 
   #Get the given page content and print a diff if any
-  #Return true if there are differences, false otherwise
+  #Return true if there are no differences, false otherwise
   def diff_page()
-    wiki_content = @mw_client.get_page_content(@page_name)
-    diff = Diffy::Diff.new(wiki_content, @generated_content, :context => 0)
+    wiki_content = remove_page_creation_date(@mw_client.get_page_content(@page_name)).strip # .strip removes potential '\n' at end of file
+    generated_content = remove_page_creation_date(@generated_content).strip
+    diff = Diffy::Diff.new(wiki_content, generated_content, :context => 0)
     if (diff.to_s.empty?)
-      return false
+      puts "No differences found between generated and current wiki content for page #{@page_name}."
+      return true
     end
-    puts "Differences between generated and current wiki content for page #{@page_name}:\n#{diff.to_s(:color)}"
+    puts "Differences between generated and current wiki content for page #{@page_name}:"
+    puts '------------ PAGE DIFF BEGIN ------------'
+    puts "#{diff.to_s(:text)}"
+    puts '------------- PAGE DIFF END -------------'
+    return false
   end
 
+  def remove_page_creation_date(content)
+    return content.gsub(/''<small>Generated from the Grid5000 APIs on .+<\/small>''/, '')
+  end
+
+  def update_files
+    @files.each { |file|
+      @mw_client.update_file(file['filename'], file['path'], file['content_type'], file['comment'], true)
+    }
+  end
+
+  def diff_files
+    ret = true
+    @files.each { |file|
+      if file['content-type'] == 'text/plain'
+        file_content = @mw_client.get_file_content(file['filename'])
+        generated_content = File.read(file['path'])
+        diff = Diffy::Diff.new(file_content, generated_content, :context => 0)
+        if (diff.to_s.empty?)
+          puts "No differences found between generated and current content for file #{file['filename']}."
+          ret &= true
+        else
+          puts "Differences between generated and current content for file #{file['filename']}:"
+          puts '------------ FILE DIFF BEGIN ------------'
+          puts "#{diff.to_s(:text)}"
+          puts '------------- FILE DIFF END -------------'
+          ret &= false
+        end
+      end
+    }
+    return ret
+  end
+    
   #print generator content to stdout
   def print()
+    puts '---------- GENERATED PAGE BEGIN ----------'
     puts @generated_content
+    puts '----------- GENERATED PAGE END -----------'
   end
 
   #Generic static method for cli arguments parsing
   def self.parse_options
+    conf = ENV['HOME']+'/.grid5000_api.yml'
+    yconf = YAML::load(IO::read(conf)) rescue {}
+    api_user = yconf['username']
+    api_password = yconf['password']
+
     options = {
+      :sites => G5K::SITES,
       :diff => false,
       :print => false,
-      :update => false
+      :update => false,
+      :user => ENV['API_USER'] || api_user,
+      :pwd => ENV['API_PASSWORD'] || api_password
     }
 
     opt_parse = OptionParser.new do |opts|
-      opts.banner = "Usage: <wiki_generator>.rb --api-user user --api-password password"
+      opts.banner = "Usage: <wiki_generator>.rb\n"
+      opts.banner += "This script looks for file ~/.grid5000_api.yml containing your API username and password credentials. The script also recognize API_USER and API_PASSWORD environment variables."
 
-      opts.on('-u=user', '--api-user=user', String, 'User for HTTP authentication ') do |user|
-        options[:user] = user
+      opts.on('-s', '--sites=site1,site2', Array, 'Only consider these sites (when applicable)') do |sites|
+        options[:sites] = sites.map{ |e| e.downcase }
       end
-
-      opts.on('-p=pwd', '--api-password=pwd', String, 'Password for HTTP authentication') do |pwd|
-        options[:pwd] = pwd
-      end
-
-      opts.on('-d', '--diff', 'Print a diff of the current wiki page against the content to generated') do
+      
+      opts.on('-d', '--diff', 'Print a diff of the current wiki page against the content to generate') do
         options[:diff] = true
       end
 
@@ -92,19 +136,23 @@ class WikiGenerator
   def self.exec(generator, options)
     generator.generate_content()
 
+    ret = true
     #Login only if we need to
     if (options[:diff] || options[:update])
       generator.login(options)
     end
     if (options[:diff])
-      generator.diff_page
+      ret &= generator.diff_page if generator.instance_variable_get('@generated_content')
+      ret &= generator.diff_files if generator.instance_variable_get('@files')
     end
     if (options[:print])
       generator.print
     end
     if (options[:update])
-      generator.update_page
+      generator.update_page if generator.instance_variable_get('@generated_content')
+      generator.update_files if generator.instance_variable_get('@files')
     end
+    return ret
   end
 
 end

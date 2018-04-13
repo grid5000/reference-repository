@@ -10,7 +10,7 @@ class CPUParametersGenerator < WikiGenerator
 
   def generate_content
 
-    table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Core Codename", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
+    table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Microarchitecture", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
     table_data = []
     global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
@@ -48,11 +48,11 @@ class CPUParametersGenerator < WikiGenerator
     }
     #Sort by cluster date
     table_data.sort_by! { |row|
-      DateTime.parse(row[0])
+      [DateTime.parse(row[0]), row[1], row[2]]
     }
 
     #Table construction
-    table_options = 'class="G5KDataTable" border="1" style="text-align: center;"'
+    table_options = 'class="wikitable sortable"'
     @generated_content = MW.generate_table(table_options, table_columns, table_data)
     @generated_content += MW.italic(MW.small("Generated from the Grid5000 APIs on " + Time.now.strftime("%Y-%m-%d")))
     @generated_content += MW::LINE_FEED
@@ -63,5 +63,5 @@ generator = CPUParametersGenerator.new("Generated/CPUParameters")
 
 options = WikiGenerator::parse_options
 if (options)
-  WikiGenerator::exec(generator, options)
+  exit(WikiGenerator::exec(generator, options))
 end

@@ -31,9 +31,17 @@ rake validators:schema       # Check input data schema validity
 
 rake wiki:all                # Launch all wiki generators
 
-rake wiki:cpu_parameters     # Generate the media parts for cpu_parameters
+rake wiki:cpu_parameters     # Generate the media parts for cpu_parameters page
 
-rake wiki:oar_properties     # Generate the media parts for oar_properties
+rake wiki:oar_properties     # Generate the media parts for oar_properties page
+
+rake wiki:disk_reservation   # Generate the media parts for disk_reservation page
+
+rake wiki:hardware           # Generate the media parts for hardware page
+
+rake wiki:site_hardware      # Generate the media parts for site hardware pages
+
+rake wiki:site_network       # Generate the media parts for site network pages
 ```
 
 For more information about generators and validators, please see generators/README.md.

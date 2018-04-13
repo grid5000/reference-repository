@@ -228,6 +228,6 @@ generator = OarPropertiesGenerator.new("Generated/OAR_Properties")
 
 options = WikiGenerator::parse_options
 if (options)
-  WikiGenerator::exec(generator, options)
+  exit(WikiGenerator::exec(generator, options))
 end
 
