@@ -34,13 +34,13 @@ class WikiGenerator
     diff = Diffy::Diff.new(wiki_content, generated_content, :context => 0)
     if (diff.to_s.empty?)
       puts "No differences found between generated and current wiki content for page #{@page_name}."
-      return true
+      return 0
     end
     puts "Differences between generated and current wiki content for page #{@page_name}:"
     puts '------------ PAGE DIFF BEGIN ------------'
     puts "#{diff.to_s(:text)}"
     puts '------------- PAGE DIFF END -------------'
-    return false
+    return 1
   end
 
   def remove_page_creation_date(content)
@@ -54,7 +54,7 @@ class WikiGenerator
   end
 
   def diff_files
-    ret = true
+    ret = 0
     @files.each { |file|
       if file['content-type'] == 'text/plain'
         file_content = @mw_client.get_file_content(file['filename'])
@@ -62,13 +62,13 @@ class WikiGenerator
         diff = Diffy::Diff.new(file_content, generated_content, :context => 0)
         if (diff.to_s.empty?)
           puts "No differences found between generated and current content for file #{file['filename']}."
-          ret &= true
+          ret &= 0
         else
           puts "Differences between generated and current content for file #{file['filename']}:"
           puts '------------ FILE DIFF BEGIN ------------'
           puts "#{diff.to_s(:text)}"
           puts '------------- FILE DIFF END -------------'
-          ret &= false
+          ret &= 1
         end
       end
     }
@@ -134,25 +134,37 @@ class WikiGenerator
 
   #Execute actions on generator based on given options
   def self.exec(generator, options)
-    generator.generate_content()
-
-    ret = true
-    #Login only if we need to
-    if (options[:diff] || options[:update])
-      generator.login(options)
-    end
-    if (options[:diff])
-      ret &= generator.diff_page if generator.instance_variable_get('@generated_content')
-      ret &= generator.diff_files if generator.instance_variable_get('@files')
-    end
-    if (options[:print])
-      generator.print
-    end
-    if (options[:update])
-      generator.update_page if generator.instance_variable_get('@generated_content')
-      generator.update_files if generator.instance_variable_get('@files')
-    end
-    return ret
+    ret = 2
+    begin
+      generator.generate_content()
+      
+      #Login only if we need to
+      if (options[:diff] || options[:update])
+        generator.login(options)
+        ret = 0
+      end
+      if (options[:diff])
+        ret = generator.diff_page if generator.instance_variable_get('@generated_content')
+        ret &= generator.diff_files if generator.instance_variable_get('@files')
+      end
+      if (options[:print])
+        generator.print
+        ret = 0
+      end
+      if (options[:update])
+        generator.update_page if generator.instance_variable_get('@generated_content')
+        generator.update_files if generator.instance_variable_get('@files')
+        ret = 0
+      end
+      
+    rescue MediawikiApi::ApiError => e
+      puts e
+      ret = 3
+    rescue StandardError => e
+      puts e
+      ret = 4
+    end  
+    exit ret
   end
-
+  
 end
