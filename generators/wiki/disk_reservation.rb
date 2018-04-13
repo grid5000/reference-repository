@@ -67,5 +67,16 @@ generator = DiskReservationGenerator.new("Generated/DiskReservation")
 
 options = WikiGenerator::parse_options
 if (options)
-  exit(WikiGenerator::exec(generator, options))
+  ret = 2
+  begin
+    ret = WikiGenerator::exec(generator, options)
+  rescue MediawikiApi::ApiError => e
+    puts e, e.backtrace
+    ret = 3
+  rescue StandardError => e
+    puts e, e.backtrace
+    ret = 4
+  ensure
+    exit(ret)
+  end
 end

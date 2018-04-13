@@ -252,11 +252,21 @@ if __FILE__ == $0
   options = WikiGenerator::parse_options
 
   if (options)
-    ret = true
-    generators = options[:sites].map{ |site| SiteHardwareGenerator.new(site.capitalize + ':Hardware', site) }
-    generators.each{ |generator|
-      ret &= WikiGenerator::exec(generator, options)
-    }
-    exit(ret)
+    ret=2
+    begin
+      ret = true
+      generators = options[:sites].map{ |site| SiteHardwareGenerator.new(site.capitalize + ':Hardware', site) }
+      generators.each{ |generator|
+        ret &= WikiGenerator::exec(generator, options)
+      }
+    rescue MediawikiApi::ApiError => e
+      puts e, e.backtrace
+      ret = 3
+    rescue StandardError => e
+      puts e, e.backtrace
+      ret = 4
+    ensure
+      exit(ret)
+    end
   end
 end
