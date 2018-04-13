@@ -214,4 +214,3 @@ module MW
   end   
 
 end
-pp G5K::SITES
