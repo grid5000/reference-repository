@@ -28,7 +28,7 @@ class DiskReservationGenerator < WikiGenerator
         disk_info.each { |num, reservable_disks|
         table_data << [
           "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
-          "[https://api.grid5000.fr/stable/sites/#{site_uid}/clusters/#{cluster_uid}/nodes.json?pretty=1 #{cluster_uid}" + (disk_info.size== 1 ? '' : '-' + G5K.nodeset(num)) + "]",
+          "[https://public-api.grid5000.fr/stable/sites/#{site_uid}/clusters/#{cluster_uid}/nodes.json?pretty=1 #{cluster_uid}" + (disk_info.size== 1 ? '' : '-' + G5K.nodeset(num)) + "]",
           num.count,
           reservable_disks
           ] if reservable_disks > 0
