@@ -212,7 +212,7 @@ class OarPropertiesGenerator < WikiGenerator
 
     @@categories.sort.to_h.each { |cat, cat_properties|
       @generated_content += MW::heading(cat, 2) + MW::LINE_FEED
-      cat_properties.each{ |property|
+      cat_properties.sort.each{ |property|
         values = oar_properties[property]["values"] rescue []
         @generated_content += MW::heading(MW::code(property), 3) + MW::LINE_FEED
         @generated_content += @@properties[property]["description"] + MW::LINE_FEED
