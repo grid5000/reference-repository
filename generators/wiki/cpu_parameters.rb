@@ -15,8 +15,8 @@ class CPUParametersGenerator < WikiGenerator
     global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
     # Loop over Grid'5000 sites
-    global_hash["sites"].each { |site_uid, site_hash|
-      site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
+    global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
+      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
 
         node_hash = cluster_hash.fetch('nodes').first[1]
 

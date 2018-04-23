@@ -15,17 +15,17 @@ class DiskReservationGenerator < WikiGenerator
     global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
     # Loop over Grid'5000 sites
-    global_hash["sites"].each { |site_uid, site_hash|
-      site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
+    global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
+      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
         disk_info = {}
-        cluster_hash.fetch('nodes').sort.each { |node_uid, node_hash|
+        cluster_hash.fetch('nodes').sort.to_h.each { |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
            reservable_disks = node_hash['storage_devices'].select{ |k, v| v['reservation'] == true }.count
           add(disk_info, node_uid, reservable_disks)
         }
 
         # One line for each group of nodes with the same number of reservable disks
-        disk_info.each { |num, reservable_disks|
+        disk_info.sort.to_h.each { |num, reservable_disks|
         table_data << [
           "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
           "[https://public-api.grid5000.fr/stable/sites/#{site_uid}/clusters/#{cluster_uid}/nodes.json?pretty=1 #{cluster_uid}" + (disk_info.size== 1 ? '' : '-' + G5K.nodeset(num)) + "]",

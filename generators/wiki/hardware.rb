@@ -36,9 +36,9 @@ class G5KHardwareGenerator < WikiGenerator
       'node_models' => {}
     }
     
-    @global_hash['sites'].sort.each { |site_uid, site_hash|
-      site_hash['clusters'].sort.each { |cluster_uid, cluster_hash|
-        cluster_hash['nodes'].sort.each { |node_uid, node_hash|
+    @global_hash['sites'].sort.to_h.each { |site_uid, site_hash|
+      site_hash['clusters'].sort.to_h.each { |cluster_uid, cluster_hash|
+        cluster_hash['nodes'].sort.to_h.each { |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
           @node = node_uid
           
@@ -74,7 +74,7 @@ class G5KHardwareGenerator < WikiGenerator
                        .uniq
 
           net_interconnects = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
-          net_interconnects.each { |k, v|
+          net_interconnects.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
             init(data, 'net_interconnects', k)
             data['net_interconnects'][k][site_uid] += v
           }
@@ -87,7 +87,7 @@ class G5KHardwareGenerator < WikiGenerator
           gpu_families[[g['gpu_vendor']]] = g['gpu_count'] if g and g['gpu']
           mic_families = {}
           mic_families[[m['mic_vendor']]] = m['mic_count'] if m and m['mic']
-          gpu_families.merge(mic_families).each { |k, v|
+          gpu_families.merge(mic_families).sort.to_h.each { |k, v|
             init(data, 'acc_families', k) 
             data['acc_families'][k][site_uid] += v
           }
@@ -97,7 +97,7 @@ class G5KHardwareGenerator < WikiGenerator
           mic_details = {}
           mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
           
-          gpu_details.merge(mic_details).each { |k, v|
+          gpu_details.merge(mic_details).sort.to_h.each { |k, v|
             init(data, 'acc_models', k)
             data['acc_models'][k][site_uid] += v[0]
 
@@ -211,10 +211,10 @@ class G5KHardwareGenerator < WikiGenerator
   
   def generate_interfaces
     table_data = []
-    @global_hash["sites"].each { |site_uid, site_hash|
-      site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
+    @global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
+      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
         network_interfaces = {}
-        cluster_hash.fetch('nodes').sort.each { |node_uid, node_hash|
+        cluster_hash.fetch('nodes').sort.to_h.each { |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
           if node_hash['network_adapters']
             node_interfaces = node_hash['network_adapters'].select{ |k, v| v['interface'] == 'Ethernet' and v['enabled'] == true and (v['mounted'] == true or v['mountable'] == true) and v['management'] == false }
