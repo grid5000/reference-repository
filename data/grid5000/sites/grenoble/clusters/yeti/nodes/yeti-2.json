@@ -1,11 +1,25 @@
 {
+  "architecture": {
+    "nb_cores": 64,
+    "nb_procs": 4,
+    "nb_threads": 128,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "12/12/2017",
+    "vendor": "Dell Inc.",
+    "version": "1.2.21"
+  },
   "chassis": {
-    "serial": "TBD"
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R940",
+    "serial": "6FGRSM2"
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
+    "ram_size": 824633720832
   },
   "monitoring": {
     "wattmeter": "false"
@@ -13,24 +27,126 @@
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "i40e",
+      "firmware_version": "6.00 0x800034eb 18.3.6",
       "interface": "Ethernet",
       "ip": "172.16.19.2",
       "mac": "24:6e:96:91:2b:50",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mounted": true,
+      "name": "eno113",
+      "rate": 10000000000,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "firmware_version": "6.00 0x800034eb 18.3.6",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:91:2b:52",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "name": "eno114",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "i40e",
+      "firmware_version": "6.00 0x800034eb 18.3.6",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:91:2b:54",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "name": "eno115",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "i40e",
+      "firmware_version": "6.00 0x800034eb 18.3.6",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:91:2b:56",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "name": "eno116",
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
       "ip": "172.17.19.2",
-      "mac": "50:9a:4c:76:71:9f"
+      "mac": "50:9a:4c:76:71:9f",
+      "management": true,
+      "network_address": "yeti-2-bmc.grenoble.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": null,
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 23068672,
+    "clock_speed": 2100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
+    "vendor": "Intel"
+  },
   "sensors": {
   },
   "storage_devices": [
-
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466030bbc600223ab55ace7a0389",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0",
+      "device": "sda",
+      "firmware_version": 5.0,
+      "model": "PERC H740P Adp",
+      "size": 479559942144,
+      "vendor": "DELL"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466030bbc60021fcc932bf99a770",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:1:0",
+      "device": "sdb",
+      "firmware_version": 5.0,
+      "model": "PERC H740P Adp",
+      "size": 1999844147200,
+      "vendor": "DELL"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466030bbc60021fcc935c34df088",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:2:0",
+      "device": "sdc",
+      "firmware_version": 5.0,
+      "model": "PERC H740P Adp",
+      "size": 1999844147200,
+      "vendor": "DELL"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466030bbc60021fcc937c74d2454",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:3:0",
+      "device": "sdd",
+      "firmware_version": 5.0,
+      "model": "PERC H740P Adp",
+      "size": 1999844147200,
+      "vendor": "DELL"
+    }
   ],
+  "supported_job_types": {
+    "virtual": "ivt"
+  },
   "type": "node",
   "uid": "yeti-2"
 }
