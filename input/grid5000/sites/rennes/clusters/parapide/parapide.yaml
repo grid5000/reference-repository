@@ -10,9 +10,12 @@ nodes:
   parapide-[1-25]:
     monitoring:
       temperature: true
-      wattmeter: shared
+      wattmeter: true
       metric: power
     sensors:
+      power:
+        available: true
+        per_outlets: true
       temperature:
         available: true
         via:
