@@ -145,8 +145,8 @@ class OarPropertiesGenerator < WikiGenerator
 
   def get_nodes_properties(site_uid, site)
     properties = {}
-    site['clusters'].each do |cluster_uid, cluster|
-      cluster['nodes'].each do |node_uid, node|
+    site['clusters'].sort.to_h.each do |cluster_uid, cluster|
+      cluster['nodes'].sort.to_h.each do |node_uid, node|
         begin
           properties[node_uid] = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
         rescue MissingProperty => e
@@ -182,9 +182,9 @@ class OarPropertiesGenerator < WikiGenerator
 
     #Compiled properties used to generate page
     oar_properties = {}
-    props.each { |site, site_props|
-      site_props.each { |node_uid, node_props|
-        node_props.each { |property, value|
+    props.sort.to_h.each { |site, site_props|
+      site_props.sort.to_h.each { |node_uid, node_props|
+        node_props.sort.to_h.each { |property, value|
           next if @@ignored_properties.include?(property)
 
           oar_properties[property] ||= {}
@@ -198,7 +198,7 @@ class OarPropertiesGenerator < WikiGenerator
       }
     }
 
-    oar_properties.each { |prop, prop_hash|
+    oar_properties.sort.to_h.each { |prop, prop_hash|
       if (prop_hash["values"].length > 20)
         #Limit possible values to 20 elements and mark the list as truncated
         prop_hash["values"].slice!(0...-20)
@@ -210,9 +210,9 @@ class OarPropertiesGenerator < WikiGenerator
     @generated_content = "Properties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
     @generated_content += MW::heading("OAR Properties", 1) + MW::LINE_FEED
 
-    @@categories.each { |cat, cat_properties|
+    @@categories.sort.to_h.each { |cat, cat_properties|
       @generated_content += MW::heading(cat, 2) + MW::LINE_FEED
-      cat_properties.each{ |property|
+      cat_properties.sort.each{ |property|
         values = oar_properties[property]["values"] rescue []
         @generated_content += MW::heading(MW::code(property), 3) + MW::LINE_FEED
         @generated_content += @@properties[property]["description"] + MW::LINE_FEED
@@ -228,6 +228,17 @@ generator = OarPropertiesGenerator.new("Generated/OAR_Properties")
 
 options = WikiGenerator::parse_options
 if (options)
-  WikiGenerator::exec(generator, options)
+  ret = 2
+  begin
+    ret = WikiGenerator::exec(generator, options)
+  rescue MediawikiApi::ApiError => e
+    puts e, e.backtrace
+    ret = 3
+  rescue StandardError => e
+    puts e, e.backtrace
+    ret = 4
+  ensure
+    exit(ret)
+  end
 end
 

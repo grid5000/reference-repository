@@ -23,28 +23,44 @@ granduc-10:
       management: true
     eth0:
       driver: bnx2
+      firmware_version: 6.4.5 bc 5.0.7 UMP 1.1.9
       interface: Ethernet
       ip: 172.16.176.10
       mac: 00:22:19:6d:85:0a
       management: false
+      model: NetXtreme II BCM5708 Gigabit Ethernet
+      name: eno1
       rate: 1000000000
+      vendor: Broadcom
     eth1:
       driver: bnx2
+      firmware_version: 6.4.5 bc 5.0.7 UMP 1.1.9
       interface: Ethernet
       mac: 00:22:19:6d:85:0c
       management: false
+      model: NetXtreme II BCM5708 Gigabit Ethernet
+      name: eno2
       rate: 1000000000
+      vendor: Broadcom
     eth2:
       driver: ixgbe
+      firmware_version: '0xc7390000'
       interface: Ethernet
       mac: 00:1b:21:34:e1:3d
       management: false
+      model: 82598EB 10-Gigabit AF Dual Port Network Connection
+      name: enp13s0f0
       rate: 10000000000
+      vendor: Intel
     eth3:
       driver: ixgbe
+      firmware_version: '0xc7390000'
       interface: Ethernet
       mac: 00:1b:21:34:e1:3c
       management: false
+      model: 82598EB 10-Gigabit AF Dual Port Network Connection
+      name: enp13s0f1
+      vendor: Intel
   operating_system:
     cstate_driver: none
     cstate_governor: menu

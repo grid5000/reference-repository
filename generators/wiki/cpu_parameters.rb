@@ -10,13 +10,13 @@ class CPUParametersGenerator < WikiGenerator
 
   def generate_content
 
-    table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Core Codename", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
+    table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Microarchitecture", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
     table_data = []
     global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
     # Loop over Grid'5000 sites
-    global_hash["sites"].each { |site_uid, site_hash|
-      site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
+    global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
+      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
 
         node_hash = cluster_hash.fetch('nodes').first[1]
 
@@ -48,11 +48,11 @@ class CPUParametersGenerator < WikiGenerator
     }
     #Sort by cluster date
     table_data.sort_by! { |row|
-      DateTime.parse(row[0])
+      [DateTime.parse(row[0]), row[1], row[2]]
     }
 
     #Table construction
-    table_options = 'class="G5KDataTable" border="1" style="text-align: center;"'
+    table_options = 'class="wikitable sortable"'
     @generated_content = MW.generate_table(table_options, table_columns, table_data)
     @generated_content += MW.italic(MW.small("Generated from the Grid5000 APIs on " + Time.now.strftime("%Y-%m-%d")))
     @generated_content += MW::LINE_FEED
@@ -63,5 +63,16 @@ generator = CPUParametersGenerator.new("Generated/CPUParameters")
 
 options = WikiGenerator::parse_options
 if (options)
-  WikiGenerator::exec(generator, options)
+  ret = 2
+  begin
+    ret = WikiGenerator::exec(generator, options)
+  rescue MediawikiApi::ApiError => e
+    puts e, e.backtrace
+    ret = 3
+  rescue StandardError => e
+    puts e, e.backtrace
+    ret = 4
+  ensure
+    exit(ret)
+  end
 end

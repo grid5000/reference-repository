@@ -18,7 +18,7 @@ timeouts:
 remoteops:
   console:
   - name: soft
-    cmd: <%= data['remoteops.console.soft.cmd'] ? data['remoteops.console.soft.cmd'] : '/usr/bin/conman -d conman HOSTNAME_SHORT' %>
+    cmd: <%= data['remoteops.console.soft.cmd'] ? data['remoteops.console.soft.cmd'] : '/usr/bin/conman -f -d conman HOSTNAME_SHORT' %>
   power_status:
   - name: soft
     cmd: <%= data['remoteops.power_status.soft.cmd'] ? data['remoteops.power_status.soft.cmd'] : '/usr/local/bin/lanpower -m HOSTNAME_FQDN -s' %>
@@ -43,14 +43,18 @@ remoteops:
     cmd: <%= data['remoteops.power_off.very_hard.cmd'] %><%end %>
 boot:
   install_bootloader: /etc/kadeploy3<%= suffix %>/install_grub2.sh
-  kernels:
+  kernels:<%
+kernel_prod = 'kernels/kadeploy3_deploy_kernel-jessie_vmlinuz'
+initrd_prod = 'kernels/kadeploy3_deploy_kernel-jessie_initrd.img'
+kernel_dev  = 'kernels/kadeploy3_deploy_kernel-jessie_vmlinuz'
+initrd_dev  = 'kernels/kadeploy3_deploy_kernel-jessie_initrd.img'%>
     deploy:<%
     if !data['deploy.drivers'].nil? %>
       drivers: <%= data['deploy.drivers'] %><% end %>
       vmlinuz: <%= data['deploy.vmlinuz'] ? data['deploy.vmlinuz'] :
-        suffix == '' ? 'kernels/deploy-wheezy-vmlinuz-1.0.2-g5k' : 'kernels/kadeploy3_deploy_kernel-jessie_vmlinuz' %>
+        suffix == '' ? kernel_prod : kernel_dev %>
       initrd: <%= data['deploy.initrd'] ? data['deploy.initrd'] :
-        suffix == '' ? 'kernels/deploy-wheezy-initrd-1.0.2-g5k' : 'kernels/kadeploy3_deploy_kernel-jessie_initrd.img' %>
+        suffix == '' ? initrd_prod : initrd_dev %>
       params: <%= data['deploy.params'] %>
       supported_fs: ext2, ext3, ext4<%
    if !data['nfsroot.params'].nil? %>

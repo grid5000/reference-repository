@@ -44,7 +44,7 @@
   },
   "monitoring": {
     "temperature": true,
-    "wattmeter": "shared"
+    "wattmeter": "true"
   },
   "network_adapters": [
     {
@@ -164,13 +164,15 @@
   "sensors": {
     "power": {
       "available": true,
+      "per_outlets": true,
       "via": {
         "api": {
           "metric": "power"
         },
         "pdu": [
           {
-            "uid": "parapide-pdu-1"
+            "port": 21,
+            "uid": "parapluie-pdu-4"
           }
         ]
       }
