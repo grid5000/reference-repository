@@ -9,8 +9,42 @@ queues:
 nodes:
   yeti-[1-4]:
     network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
       eth0:
         mounted: true
         enabled: true
         management: false
         mountable: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SAS
+        driver: megaraid_sas
+        storage: SSD
+      sdb:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+      sdc:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+      sdd:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
