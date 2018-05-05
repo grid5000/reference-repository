@@ -191,6 +191,7 @@ class G5KHardwareGenerator < WikiGenerator
   # For a correct sort of the column, all dates must be in the same
   # format (same number of digits)
   def get_date(microarchitecture)
+    return 'MISSING' if microarchitecture.nil?
     release_dates = {
       'K8' => '2003',
       'K10' => '2007',
@@ -205,7 +206,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Broadwell' => '2015',
     }
     date = release_dates[microarchitecture.to_s]
-    raise 'ERROR: microarchitecture not found' if date.nil?
+    raise "ERROR: microarchitecture not found: '#{microarchitecture.to_s}'. Add in hardware.rb" if date.nil?
     date
   end
   
