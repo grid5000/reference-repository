@@ -169,8 +169,10 @@ class G5KHardwareGenerator < WikiGenerator
     index = 0
     k0 = 0
     data[key].sort_by{
-      # Sort the table by first column (= first elt of k)
-      |k, v| k[0].kind_of?(Hash) ? k[0][:sort] : k[0]
+      # Sort the table by the identifiers (e.g. Microarchitecture, or Microarchitecture + CPU name).
+      # This colum is either just a text field, or a more complex hash with a :sort key that should be
+      # used for sorting.
+      |k, v| k.map { |c| c.kind_of?(Hash) ? c[:sort] : c }
     }.to_h.each { |k, v|
       k0 = k if index == 0
       index += 1
