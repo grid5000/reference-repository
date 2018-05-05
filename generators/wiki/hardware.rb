@@ -204,6 +204,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Sandy Bridge' => '2012',
       'Haswell' => '2013',
       'Broadwell' => '2015',
+      'Skylake' => '2016'
     }
     date = release_dates[microarchitecture.to_s]
     raise "ERROR: microarchitecture not found: '#{microarchitecture.to_s}'. Add in hardware.rb" if date.nil?
