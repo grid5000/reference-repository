@@ -47,7 +47,7 @@ end.parse!
 def get_network_info(node_hash, network_interface)
   # Get node_hash["network_adapters"][network_interface]["ip"] and node_hash["network_adapters"][network_interface]["mac"]
   node_network_adapters = node_hash.fetch("network_adapters")
-  
+
   # For the production network, find the mounted interface (either eth0 or eth1)
   neti = network_interface
   if neti == "eth" then
@@ -59,23 +59,23 @@ def get_network_info(node_hash, network_interface)
     }
     raise 'none of the eth[0-4] interfaces have the property "mounted" set to "true"' if neti == 'eth'
   end
-  
+
   node_network_interface = node_network_adapters.fetch(neti)
-  
+
   raise '"mac" is nil' unless node_mac = node_network_interface.fetch("mac")
   raise '"ip" is nil'  unless node_ip  = node_network_interface.fetch("ip")
-  
+
   return [node_ip, node_mac]
 end
 
 def write_dhcp_file(data, options)
   if data["nodes"].nil?
     puts "Error in #{__method__}: no entry for \"#{data['filename']}\" at #{data['site_uid']} (#{data['network_adapters']})."
-    return "" 
+    return ""
   end
 
   output = ERB.new(File.read(File.expand_path('templates/dhcp.erb', File.dirname(__FILE__)))).result(binding)
-  output_file = Pathname("#{options[:output_dir]}/modules/dhcpg5k/files/#{data.fetch("site_uid")}/dhcpd.conf.d/#{data.fetch('filename')}")
+  output_file = Pathname("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/dhcp/#{data.fetch("site_uid")}/#{data.fetch('filename')}")
   output_file.dirname.mkpath()
   File.write(output_file, output)
 end
@@ -151,7 +151,7 @@ global_hash["sites"].each { |site_uid, site_hash|
         pdu_hash['network_adapters']['pdu']['mac'] = pdu_hash.delete('mac')
       end
     }
-    
+
     key = 'pdus'
     write_dhcp_file({
                       "filename"            => key + ".conf",
