@@ -116,6 +116,7 @@
     "clock_speed": 2100000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
+    "microarchitecture": "Skylake",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
     "vendor": "Intel"
@@ -173,6 +174,13 @@
     }
   ],
   "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
     "virtual": "ivt"
   },
   "type": "node",
