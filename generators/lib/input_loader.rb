@@ -16,20 +16,22 @@ def load_yaml_file_hierarchy(directory)
     list_of_yaml_files = Dir['**/*.y*ml', '**/*.y*ml.erb'].sort_by { |x| -x.count('/') }
     
     list_of_yaml_files.each { |filename|
-      
-      # Load YAML
-      if /\.y.*ml\.erb$/.match(filename)
-        # For files with .erb.yaml extensions, process the template before loading the YAML.
-        file_hash = YAML::load(ERB.new(File.read(filename)).result(binding))
-      else
-        file_hash = YAML::load_file(filename)
+      begin
+        # Load YAML
+        if /\.y.*ml\.erb$/.match(filename)
+          # For files with .erb.yaml extensions, process the template before loading the YAML.
+          file_hash = YAML::load(ERB.new(File.read(filename)).result(binding))
+        else
+          file_hash = YAML::load_file(filename)
+        end
+      if not file_hash
+        raise Exception.new("loaded hash is empty")
+      end
+      # YAML::Psych raises an exception if the file cannot be loaded.
+      rescue Exception => e
+        puts "Error loading '#{filename}', #{e.message}"
       end
 
-      if not file_hash
-        puts "Error loading '#{filename}'"
-        next
-      end
-      
       # Inject the file content into the global_hash, at the right place
       path_hierarchy = File.dirname(filename).split('/')     # Split the file path (path relative to input/)
       path_hierarchy = [] if path_hierarchy == ['.']
