@@ -190,8 +190,8 @@ def get_hardware(sites)
         storage = node_hash['storage_devices'].map{ |k, v| {'size' => v['size'],  'tech' => v['storage']} }
         hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by { |e| e[0]['size'].to_f }.map{ |e| (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') + G5K.get_size(e[0]['size']) + '&nbsp;' + e[0]['tech'] }.join(' +&nbsp;')
         hard['storage_size'] = storage.inject(0){|sum, v| sum + (v['size'].to_f / 2**30).floor }.to_s # round to GB to avoid small differences within a cluster
-        storage_description = node_hash['storage_devices'].map { |k, v| { 'device' => v['device'], 'size' => v['size'], 'tech' => v['storage'], 'interface' => v['interface'], 'model' => v['model'], 'driver' => v['driver'], 'count' => node_hash['storage_devices'].count } }
-        hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size']), e['tech'], e['interface'], e['model'], ' (driver: ' + e['driver'] + ')'].join(' ') }.join('<br />')
+        storage_description = node_hash['storage_devices'].map { |k, v| { 'device' => v['device'], 'size' => v['size'], 'tech' => v['storage'], 'interface' => v['interface'], 'model' => v['model'], 'driver' => v['driver'], 'path' => v['by_path'] || v['by_id'],  'count' => node_hash['storage_devices'].count } }
+        hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size']), e['tech'], e['interface'], e['model'], ' (driver: ' + e['driver'] + ', path: ' + e['path']+ ')'].join(' ') }.join('<br />')
         
         network = node_hash['network_adapters'].select { |k, v| v['management'] == false }.map{ |k, v| {'rate' => v['rate'], 'interface' => v['interface'], 'used' => (v['enabled'] and (v['mounted'] or v['mountable'])) } }
         hard['used_networks'] = network.select { |e| e['used'] == true }.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by{ |e| e[0]['rate'].to_f }.map{ |e| get_network_info(e, false) }.join('+&nbsp;')
