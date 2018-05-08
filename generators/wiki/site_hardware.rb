@@ -18,6 +18,7 @@ class SiteHardwareGenerator < WikiGenerator
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n"
     @generated_content += "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
     @generated_content += "\n= Summary =\n"
+    @generated_content += "'''#{generate_oneline_summary}'''\n"
     @generated_content += self.class.generate_summary(@site, false)
     @generated_content += self.class.generate_description(@site)
     @generated_content += MW.italic(MW.small('Generated from the Grid5000 APIs on ' + Time.now.strftime('%Y-%m-%d')))
@@ -32,6 +33,23 @@ class SiteHardwareGenerator < WikiGenerator
       table_data += self.generate_summary_data(site, true)[1]
     }
     MW.generate_table('class="wikitable sortable"', table_columns, table_data) + "\n"
+  end
+
+  def generate_oneline_summary
+    h = G5K::get_global_hash['sites'][@site]
+    # remove retired nodes
+    # FIXME this should probably move to a helper
+    h['clusters'].each_pair do |cl, v|
+      v['nodes'].delete_if { |n, v| v['status'] == 'retired' }
+    end
+    h['clusters'].delete_if { |k, v| v['nodes'].empty? }
+
+    clusters = h['clusters'].length
+    nodes = h['clusters'].inject(0) { |a, b| a + b[1]['nodes'].values.length }
+    cores = h['clusters'].inject(0) { |a, b| cnodes = b[1]['nodes'].values ; a + cnodes.length * cnodes.first['architecture']['nb_cores'] }
+    flops = h['clusters'].inject(0) { |a, b| cnodes = b[1]['nodes'].values ; a + cnodes.length * (cnodes.first['performance']['node_flops'] rescue 0) }
+    tflops = sprintf("%.1f", flops.to_f / (10**12))
+    return "#{clusters} cluster#{clusters > 1 ? 's' : ''}, #{nodes} node#{nodes > 1 ? 's' : ''}, #{cores} core#{cores > 1 ? 's' : ''}, #{tflops} TFLOPS"
   end
 
   def self.generate_summary(site, with_sites)
