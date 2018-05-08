@@ -12,7 +12,7 @@ class CPUParametersGenerator < WikiGenerator
 
     table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Microarchitecture", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
     table_data = []
-    global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
+    global_hash = get_global_hash
 
     # Loop over Grid'5000 sites
     global_hash["sites"].sort.to_h.each { |site_uid, site_hash|

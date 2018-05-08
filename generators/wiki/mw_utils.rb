@@ -59,8 +59,6 @@ end
 #Defines global Grid5000 helpers (TODO move to its own file once it is big enough)
 module G5K
 
-  SITES = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))['sites'].keys.sort
-  
   # This method compacts an array of integers as follows
   # nodeset([2,3,4,7,9,10,12]) returns the string '[2-4,<wbr>7,<wbr>9-10,<wbr>12]'
   # where <wbr> is a hidden tag that enables carriage return in wikimedia
@@ -108,6 +106,16 @@ module G5K
     return (count == 1 || word[-1] == 's') ? word : word + 's'
   end
   
+  @@global_hash = nil
+  def self.get_global_hash
+    if @@global_hash.nil?
+      @@global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
+    end
+    # return a deep copy of global_hash
+    return Marshal.load(Marshal.dump(@@global_hash))
+  end
+
+  SITES = get_global_hash['sites'].keys.sort
 end
 
 #Defines MediaWiki helpers

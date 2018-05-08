@@ -12,7 +12,7 @@ class G5KHardwareGenerator < WikiGenerator
   end
 
   def generate_content
-    @global_hash = load_yaml_file_hierarchy(File.expand_path('../../input/grid5000/', File.dirname(__FILE__)))
+    @global_hash = get_global_hash
     @site_uids = G5K::SITES
     
     @generated_content = "__NOEDITSECTION__\n"

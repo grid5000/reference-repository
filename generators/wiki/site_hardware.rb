@@ -160,7 +160,7 @@ def sort_data(data, key)
 end
 
 def get_hardware(sites)
-  global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
+  global_hash = G5K::get_global_hash
   
   # Loop over each cluster of the site
   hardware = {}

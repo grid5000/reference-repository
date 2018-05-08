@@ -173,7 +173,7 @@ class OarPropertiesGenerator < WikiGenerator
   end
 
   def generate_content
-    refapi = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
+    refapi = get_global_hash
     #Properties generated from oar-properties generator
     props = {}
     G5K::SITES.each{ |site_uid|

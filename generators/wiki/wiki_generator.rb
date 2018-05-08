@@ -11,6 +11,10 @@ class WikiGenerator
     @page_name = page_name
   end
 
+  def get_global_hash
+    return G5K::get_global_hash
+  end
+
   def login(options)
     if (options[:user] && options[:pwd])
       @mw_client.log_in(options[:user], options[:pwd])
