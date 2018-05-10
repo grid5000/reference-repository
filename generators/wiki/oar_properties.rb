@@ -1,10 +1,8 @@
 # coding: utf-8
-require 'pp'
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
+require 'wiki_generator'
 
-require_relative '../lib/input_loader'
 require_relative '../oar-properties/lib/lib-oar-properties'
-require_relative './wiki_generator'
-require_relative './mw_utils'
 
 class OarPropertiesGenerator < WikiGenerator
 

@@ -5,7 +5,10 @@ require 'net/http'
 require 'net/https'
 require 'mediawiki_api'
 
-require_relative "../lib/input_loader"
+# also add generators/lib to load path
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
+require 'input_loader'
+
 
 #Adding method to mediawiki_api client
 module MediawikiApi
@@ -109,7 +112,7 @@ module G5K
   @@global_hash = nil
   def self.get_global_hash
     if @@global_hash.nil?
-      @@global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
+      @@global_hash = load_yaml_file_hierarchy(File.expand_path("../../../input/grid5000/", File.dirname(__FILE__)))
     end
     # return a deep copy of global_hash
     return Marshal.load(Marshal.dump(@@global_hash))
