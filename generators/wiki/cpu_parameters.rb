@@ -64,7 +64,7 @@ options = WikiGenerator::parse_options
 if (options)
   ret = 2
   begin
-    ret = WikiGenerator::exec(generator, options)
+    ret = generator.exec(options)
   rescue MediawikiApi::ApiError => e
     puts e, e.backtrace
     ret = 3

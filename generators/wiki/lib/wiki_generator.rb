@@ -6,6 +6,8 @@ require "optparse"
 require "mediawiki_api"
 require "diffy"
 require "mw_utils"
+require 'date'
+require 'pp'
 
 class WikiGenerator
 
@@ -140,24 +142,24 @@ class WikiGenerator
   end
 
   #Execute actions on generator based on given options
-  def self.exec(generator, options)
-    generator.generate_content()
+  def exec(options)
+    generate_content()
 
     ret = true
     #Login only if we need to
     if (options[:diff] || options[:update])
-      generator.login(options)
+      login(options)
     end
     if (options[:diff])
-      ret &= generator.diff_page if generator.instance_variable_get('@generated_content')
-      ret &= generator.diff_files if generator.instance_variable_get('@files')
+      ret &= diff_page if instance_variable_get('@generated_content')
+      ret &= diff_files if instance_variable_get('@files')
     end
     if (options[:print])
-      generator.print
+      print
     end
     if (options[:update])
-      generator.update_page if generator.instance_variable_get('@generated_content')
-      generator.update_files if generator.instance_variable_get('@files')
+      update_page if instance_variable_get('@generated_content')
+      update_files if instance_variable_get('@files')
     end
     return ret
   end

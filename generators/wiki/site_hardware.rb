@@ -270,7 +270,7 @@ if __FILE__ == $0
       ret = true
       generators = options[:sites].map{ |site| SiteHardwareGenerator.new(site.capitalize + ':Hardware', site) }
       generators.each{ |generator|
-        ret &= WikiGenerator::exec(generator, options)
+        ret &= generator.exec(options)
       }
     rescue MediawikiApi::ApiError => e
       puts e, e.backtrace

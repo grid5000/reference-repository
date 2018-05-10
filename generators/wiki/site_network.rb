@@ -37,7 +37,7 @@ if (options)
     ret = true
     generators = options[:sites].map{ |site| SiteNetworkGenerator.new('Generated/' + site.capitalize + 'Network', site) }
     generators.each{ |generator|
-      ret &= WikiGenerator::exec(generator, options)
+      ret &= generator.exec(options)
     }
   rescue MediawikiApi::ApiError => e
     puts e, e.backtrace
