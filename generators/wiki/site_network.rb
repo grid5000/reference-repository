@@ -29,23 +29,25 @@ class SiteNetworkGenerator < WikiGenerator
   end
 end
 
-options = WikiGenerator::parse_options
+if __FILE__ == $0
+  options = WikiGenerator::parse_options
 
-if (options)
-  ret = 2
-  begin
-    ret = true
-    generators = options[:sites].map{ |site| SiteNetworkGenerator.new('Generated/' + site.capitalize + 'Network', site) }
-    generators.each{ |generator|
-      ret &= generator.exec(options)
-    }
-  rescue MediawikiApi::ApiError => e
-    puts e, e.backtrace
-    ret = 3
-  rescue StandardError => e
-    puts e, e.backtrace
-    ret = 4
-  ensure
-    exit(ret)
+  if (options)
+    ret = 2
+    begin
+      ret = true
+      generators = options[:sites].map{ |site| SiteNetworkGenerator.new('Generated/' + site.capitalize + 'Network', site) }
+      generators.each{ |generator|
+        ret &= generator.exec(options)
+      }
+    rescue MediawikiApi::ApiError => e
+      puts e, e.backtrace
+      ret = 3
+    rescue StandardError => e
+      puts e, e.backtrace
+      ret = 4
+    ensure
+      exit(ret)
+    end
   end
 end
