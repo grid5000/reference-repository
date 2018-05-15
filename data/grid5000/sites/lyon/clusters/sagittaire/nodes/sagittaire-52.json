@@ -13,36 +13,36 @@
   "chassis": {
     "manufacturer": "Sun Microsystems",
     "name": "Sun Fire V20z",
-    "serial": "XG052536201"
+    "serial": "XG052422284"
   },
   "gpu": {
     "gpu": false
   },
   "kavlan": {
     "eth1": {
-      "kavlan-1": "192.168.192.1",
-      "kavlan-11": "10.7.198.1",
-      "kavlan-12": "10.11.198.1",
-      "kavlan-13": "10.15.198.1",
-      "kavlan-14": "10.19.198.1",
-      "kavlan-16": "10.27.198.1",
-      "kavlan-17": "10.31.198.1",
-      "kavlan-18": "10.35.198.1",
-      "kavlan-19": "10.39.198.1",
-      "kavlan-2": "192.168.208.1",
-      "kavlan-20": "10.43.198.1",
-      "kavlan-21": "10.47.198.1",
-      "kavlan-3": "192.168.224.1",
-      "kavlan-4": "10.12.0.1",
-      "kavlan-5": "10.12.64.1",
-      "kavlan-6": "10.12.128.1",
-      "kavlan-7": "10.12.192.1",
-      "kavlan-8": "10.13.0.1",
-      "kavlan-9": "10.13.64.1"
+      "kavlan-1": "192.168.192.52",
+      "kavlan-11": "10.7.198.52",
+      "kavlan-12": "10.11.198.52",
+      "kavlan-13": "10.15.198.52",
+      "kavlan-14": "10.19.198.52",
+      "kavlan-16": "10.27.198.52",
+      "kavlan-17": "10.31.198.52",
+      "kavlan-18": "10.35.198.52",
+      "kavlan-19": "10.39.198.52",
+      "kavlan-2": "192.168.208.52",
+      "kavlan-20": "10.43.198.52",
+      "kavlan-21": "10.47.198.52",
+      "kavlan-3": "192.168.224.52",
+      "kavlan-4": "10.12.0.52",
+      "kavlan-5": "10.12.64.52",
+      "kavlan-6": "10.12.128.52",
+      "kavlan-7": "10.12.192.52",
+      "kavlan-8": "10.13.0.52",
+      "kavlan-9": "10.13.64.52"
     }
   },
   "main_memory": {
-    "ram_size": 2147483648
+    "ram_size": 2107637760
   },
   "monitoring": {
     "wattmeter": "true"
@@ -53,57 +53,50 @@
       "device": "eth0",
       "driver": "tg3",
       "enabled": false,
-      "firmware_version": "5704-v3.27",
       "interface": "Ethernet",
       "kavlan": false,
-      "mac": "00:09:3d:12:9e:13",
+      "mac": "00:09:3d:12:27:66",
       "management": false,
-      "model": "NetXtreme BCM5704 Gigabit Ethernet",
       "mountable": false,
-      "mounted": false,
-      "name": "enp2s2f0",
-      "vendor": "Broadcom"
+      "mounted": false
     },
     {
       "bridged": true,
       "device": "eth1",
       "driver": "tg3",
       "enabled": true,
-      "firmware_version": "5704-v3.27",
       "interface": "Ethernet",
-      "ip": "172.16.49.1",
-      "ip6": "fe80::209:3dff:fe12:9e14",
+      "ip": "172.16.49.52",
+      "ip6": "fe80::209:3dff:fe12:2767",
       "kavlan": true,
-      "mac": "00:09:3d:12:9e:14",
+      "mac": "00:09:3d:12:27:67",
       "management": false,
-      "model": "NetXtreme BCM5704 Gigabit Ethernet",
       "mountable": true,
       "mounted": true,
-      "name": "enp2s2f1",
-      "network_address": "sagittaire-1.lyon.grid5000.fr",
+      "network_address": "sagittaire-52.lyon.grid5000.fr",
       "rate": 1000000000,
       "switch": "gw-lyon",
-      "switch_port": "BD-8810 Port 4:10",
-      "vendor": "Broadcom"
+      "switch_port": "BD-8810 Port 4:22"
     },
     {
       "device": "bmc",
       "driver": "bnx2",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.17.49.1",
+      "ip": "172.17.49.52",
       "kavlan": false,
-      "mac": "00:09:3d:12:9e:15",
+      "mac": "00:09:3d:12:27:68",
       "management": true,
       "mountable": false,
       "mounted": false,
-      "network_address": "sagittaire-1-bmc.lyon.grid5000.fr",
+      "network_address": "sagittaire-52-bmc.lyon.grid5000.fr",
       "rate": 1000000000
     }
   ],
   "operating_system": {
     "cstate_driver": "none",
     "cstate_governor": "menu",
+    "cstate_max_id": null,
     "ht_enabled": false,
     "pstate_driver": "none",
     "pstate_governor": "none",
@@ -138,7 +131,7 @@
         },
         "pdu": [
           {
-            "port": 4,
+            "port": 51,
             "uid": "wattmetre"
           }
         ],
@@ -150,13 +143,11 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/pci-0000:02:04.0-scsi-0:0:1:0",
       "device": "sda",
       "driver": "mptspi",
-      "firmware_version": 104,
       "interface": "SCSI",
       "model": "MAT3073NC",
+      "rev": 104.0,
       "size": 73543163904,
       "storage": "HDD",
       "vendor": "FUJITSU"
@@ -173,5 +164,5 @@
     "virtual": false
   },
   "type": "node",
-  "uid": "sagittaire-1"
+  "uid": "sagittaire-52"
 }
