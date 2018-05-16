@@ -1,14 +1,23 @@
+# also add generators/lib to load path
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
+
+require 'input_loader'
 require "optparse"
 require "mediawiki_api"
 require "diffy"
-
-require_relative "./mw_utils"
+require "mw_utils"
+require 'date'
+require 'pp'
 
 class WikiGenerator
 
   def initialize(page_name)
     @mw_client = MediawikiApi::Client.new(MW::API_URL)
     @page_name = page_name
+  end
+
+  def get_global_hash
+    return G5K::get_global_hash
   end
 
   def login(options)
@@ -133,24 +142,24 @@ class WikiGenerator
   end
 
   #Execute actions on generator based on given options
-  def self.exec(generator, options)
-    generator.generate_content()
+  def exec(options)
+    generate_content()
 
     ret = true
     #Login only if we need to
     if (options[:diff] || options[:update])
-      generator.login(options)
+      login(options)
     end
     if (options[:diff])
-      ret &= generator.diff_page if generator.instance_variable_get('@generated_content')
-      ret &= generator.diff_files if generator.instance_variable_get('@files')
+      ret &= diff_page if instance_variable_get('@generated_content')
+      ret &= diff_files if instance_variable_get('@files')
     end
     if (options[:print])
-      generator.print
+      print
     end
     if (options[:update])
-      generator.update_page if generator.instance_variable_get('@generated_content')
-      generator.update_files if generator.instance_variable_get('@files')
+      update_page if instance_variable_get('@generated_content')
+      update_files if instance_variable_get('@files')
     end
     return ret
   end

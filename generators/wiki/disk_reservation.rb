@@ -1,7 +1,6 @@
 # coding: utf-8
-require_relative '../lib/input_loader'
-require_relative './wiki_generator'
-require_relative './mw_utils'
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
+require 'wiki_generator'
 
 class DiskReservationGenerator < WikiGenerator
 
@@ -12,7 +11,7 @@ class DiskReservationGenerator < WikiGenerator
   def generate_content
     table_columns = ["Site", "Cluster", "Number of nodes", "Number of reservable disks per node"]
     table_data = []
-    global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
+    global_hash = get_global_hash
 
     # Loop over Grid'5000 sites
     global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
@@ -63,20 +62,23 @@ class DiskReservationGenerator < WikiGenerator
   end
 end
 
-generator = DiskReservationGenerator.new("Generated/DiskReservation")
+if __FILE__ == $0
+  generator = DiskReservationGenerator.new("Generated/DiskReservation")
 
-options = WikiGenerator::parse_options
-if (options)
-  ret = 2
-  begin
-    ret = WikiGenerator::exec(generator, options)
-  rescue MediawikiApi::ApiError => e
-    puts e, e.backtrace
-    ret = 3
-  rescue StandardError => e
-    puts e, e.backtrace
-    ret = 4
-  ensure
-    exit(ret)
+  options = WikiGenerator::parse_options
+  pp options
+  if (options)
+    ret = 2
+    begin
+      ret = generator.exec(options)
+    rescue MediawikiApi::ApiError => e
+      puts e, e.backtrace
+      ret = 3
+    rescue StandardError => e
+      puts e, e.backtrace
+      ret = 4
+    ensure
+      exit(ret)
+    end
   end
 end

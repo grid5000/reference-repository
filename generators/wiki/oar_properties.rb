@@ -1,10 +1,8 @@
 # coding: utf-8
-require 'pp'
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
+require 'wiki_generator'
 
-require_relative '../lib/input_loader'
 require_relative '../oar-properties/lib/lib-oar-properties'
-require_relative './wiki_generator'
-require_relative './mw_utils'
 
 class OarPropertiesGenerator < WikiGenerator
 
@@ -173,7 +171,7 @@ class OarPropertiesGenerator < WikiGenerator
   end
 
   def generate_content
-    refapi = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
+    refapi = get_global_hash
     #Properties generated from oar-properties generator
     props = {}
     G5K::SITES.each{ |site_uid|
@@ -224,21 +222,22 @@ class OarPropertiesGenerator < WikiGenerator
   end
 end
 
-generator = OarPropertiesGenerator.new("Generated/OAR_Properties")
+if __FILE__ == $0
+  generator = OarPropertiesGenerator.new("Generated/OAR_Properties")
 
-options = WikiGenerator::parse_options
-if (options)
-  ret = 2
-  begin
-    ret = WikiGenerator::exec(generator, options)
-  rescue MediawikiApi::ApiError => e
-    puts e, e.backtrace
-    ret = 3
-  rescue StandardError => e
-    puts e, e.backtrace
-    ret = 4
-  ensure
-    exit(ret)
+  options = WikiGenerator::parse_options
+  if (options)
+    ret = 2
+    begin
+      ret = generator.exec(options)
+    rescue MediawikiApi::ApiError => e
+      puts e, e.backtrace
+      ret = 3
+    rescue StandardError => e
+      puts e, e.backtrace
+      ret = 4
+    ensure
+      exit(ret)
+    end
   end
 end
-

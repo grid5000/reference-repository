@@ -67,61 +67,80 @@ gw-lyon:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       kavlan_pattern: "%LINECARD%:%PORT%"
       backplane_bps: 48000000000,
-      kind: node
       rate: 1000000000
-      port: eth1
       ports:
-        23: sagittaire-48
-        24: sagittaire-49
-        25: sagittaire-50
-        26: sagittaire-51
-        34:
-          uid: cyrrus-adm
+        1:
+          uid: andromede
           kind: other
+          port: bmc
+        3:
+          uid: procyon
+          port: bmc
+          kind: other
+        6:
+          uid: castor
+          port: bmc
+          kind: other
+        7:
+          uid: pollux
+          port: bmc
+          kind: other
+
     3:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       kavlan_pattern: "%LINECARD%:%PORT%"
       backplane_bps: 48000000000,
-      kind: node
       rate: 1000000000
-      port: eth1
       ports:
-        10: sagittaire-43
-        11: sagittaire-11
-        12: sagittaire-12
-        13: sagittaire-13
-        14: sagittaire-14
-        15: sagittaire-15
-        16: sagittaire-16
-        17: sagittaire-17
-        18: sagittaire-18
-        19: sagittaire-19
-        1: sagittaire-1
-        20: sagittaire-20
-        21: sagittaire-44
-        24: sagittaire-24
-        26: sagittaire-46
-        27: sagittaire-27
-        28: sagittaire-47
-        29: sagittaire-29
-        2: sagittaire-2
-        30: sagittaire-30
-        31: sagittaire-31
-        32: sagittaire-32
-        33: sagittaire-33
-        34: sagittaire-34
-        3: sagittaire-3
-        4: sagittaire-4
-        5: sagittaire-5
-        6: sagittaire-6
-        7: sagittaire-7
+        1:
+          uid: wattemetre
+          kind: other
+        2:
+          uid: andromede
+          kind: other
+
     4:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       kavlan_pattern: "%LINECARD%:%PORT%"
       backplane_bps: 48000000000,
-      kind: switch
+      kind: node
+      port: eth1
       rate: 1000000000
       ports:
+        8: sagittaire-5
+        9: sagittaire-3
+        10: sagittaire-1
+        33: sagittaire-2
+        32: sagittaire-4
+        34: sagittaire-6
+        14: sagittaire-7
+        38: sagittaire-11
+        12: sagittaire-12
+        35: sagittaire-13
+        37: sagittaire-14
+        13: sagittaire-15
+        11: sagittaire-16
+        36: sagittaire-17
+        41: sagittaire-18
+        43: sagittaire-19
+        18: sagittaire-20
+        19: sagittaire-24
+        42: sagittaire-27
+        39: sagittaire-29
+        15: sagittaire-30
+        40: sagittaire-31
+        17: sagittaire-32
+        16: sagittaire-33
+        46: sagittaire-34
+        47: sagittaire-43
+        44: sagittaire-44
+        20: sagittaire-46
+        24: sagittaire-47
+        31: sagittaire-48
+        23: sagittaire-49
+        45: sagittaire-50
+        48: sagittaire-51
+        22: sagittaire-52
         6:
           uid: cyrrus
           port: eth1
@@ -134,13 +153,6 @@ gw-lyon:
           uid: nebula
           port: eth1
           kind: other
-        36:
-          uid: wattmetre
-          port: eth1
-          kind: other
-        48:
-          uid: ENS-Lyon
-          kind: virtual # Through castor, nat VM to ENS-Lyon network
     9:
       snmp_pattern: "BD-8810 Port %LINECARD%:%PORT%"
       kavlan_pattern: "%LINECARD%:%PORT%"
@@ -151,9 +163,6 @@ gw-lyon:
         2:
           uid: force10
           port: "0:42"
-        3:
-          uid: salome
-          port: "0:49"
         4:
           uid: renater-lyon
           site: renater

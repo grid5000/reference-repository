@@ -1,0 +1,189 @@
+{
+  "architecture": {
+    "nb_cores": 64,
+    "nb_procs": 4,
+    "nb_threads": 128,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "12/12/2017",
+    "vendor": "Dell Inc.",
+    "version": "1.2.21"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R940",
+    "serial": "6FGPSM2"
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+    "ram_size": 824633720832
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "6.00 0x800034eb 18.3.6",
+      "interface": "Ethernet",
+      "ip": "172.16.19.3",
+      "mac": "24:6e:96:91:4c:90",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno113",
+      "network_address": "yeti-3.grenoble.grid5000.fr",
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "6.00 0x800034eb 18.3.6",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:91:4c:92",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno114",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "6.00 0x800034eb 18.3.6",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:91:4c:94",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno115",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "6.00 0x800034eb 18.3.6",
+      "interface": "Ethernet",
+      "mac": "24:6e:96:91:4c:96",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno116",
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.19.3",
+      "mac": "50:9a:4c:76:72:89",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "yeti-3-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": null,
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 23068672,
+    "clock_speed": 2100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
+    "vendor": "Intel",
+    "version": "Gold 6130"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466030a3cb00223b92d7caa2ee25",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0",
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "firmware_version": 5.0,
+      "interface": "SAS",
+      "model": "PERC H740P Adp",
+      "size": 479559942144,
+      "storage": "SSD",
+      "vendor": "DELL"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466030a3cb00223b92d9ccfeedee",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:1:0",
+      "device": "sdb",
+      "driver": "megaraid_sas",
+      "firmware_version": 5.0,
+      "interface": "SAS",
+      "model": "PERC H740P Adp",
+      "size": 1999844147200,
+      "storage": "HDD",
+      "vendor": "DELL"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466030a3cb00223b92dbd095b1ac",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:2:0",
+      "device": "sdc",
+      "driver": "megaraid_sas",
+      "firmware_version": 5.0,
+      "interface": "SAS",
+      "model": "PERC H740P Adp",
+      "size": 1999844147200,
+      "storage": "HDD",
+      "vendor": "DELL"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466030a3cb00223b92ded465c604",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:3:0",
+      "device": "sdd",
+      "driver": "megaraid_sas",
+      "firmware_version": 5.0,
+      "interface": "SAS",
+      "model": "PERC H740P Adp",
+      "size": 1999844147200,
+      "storage": "HDD",
+      "vendor": "DELL"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "yeti-3"
+}

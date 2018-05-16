@@ -1,6 +1,5 @@
-require_relative '../lib/input_loader'
-require_relative './wiki_generator'
-require_relative './mw_utils'
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
+require 'wiki_generator'
 
 class CPUParametersGenerator < WikiGenerator
 
@@ -12,7 +11,7 @@ class CPUParametersGenerator < WikiGenerator
 
     table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Microarchitecture", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
     table_data = []
-    global_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
+    global_hash = get_global_hash
 
     # Loop over Grid'5000 sites
     global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
@@ -59,20 +58,22 @@ class CPUParametersGenerator < WikiGenerator
   end
 end
 
-generator = CPUParametersGenerator.new("Generated/CPUParameters")
+if __FILE__ == $0
+  generator = CPUParametersGenerator.new("Generated/CPUParameters")
 
-options = WikiGenerator::parse_options
-if (options)
-  ret = 2
-  begin
-    ret = WikiGenerator::exec(generator, options)
-  rescue MediawikiApi::ApiError => e
-    puts e, e.backtrace
-    ret = 3
-  rescue StandardError => e
-    puts e, e.backtrace
-    ret = 4
-  ensure
-    exit(ret)
+  options = WikiGenerator::parse_options
+  if (options)
+    ret = 2
+    begin
+      ret = generator.exec(options)
+    rescue MediawikiApi::ApiError => e
+      puts e, e.backtrace
+      ret = 3
+    rescue StandardError => e
+      puts e, e.backtrace
+      ret = 4
+    ensure
+      exit(ret)
+    end
   end
 end

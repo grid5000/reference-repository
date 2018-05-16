@@ -1,8 +1,6 @@
 # coding: utf-8
-require 'pp'
-require_relative '../lib/input_loader'
-require_relative './wiki_generator'
-require_relative './mw_utils'
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
+require 'wiki_generator'
 require_relative './site_hardware.rb'
 
 class G5KHardwareGenerator < WikiGenerator
@@ -12,7 +10,7 @@ class G5KHardwareGenerator < WikiGenerator
   end
 
   def generate_content
-    @global_hash = load_yaml_file_hierarchy(File.expand_path('../../input/grid5000/', File.dirname(__FILE__)))
+    @global_hash = get_global_hash
     @site_uids = G5K::SITES
     
     @generated_content = "__NOEDITSECTION__\n"
@@ -169,8 +167,10 @@ class G5KHardwareGenerator < WikiGenerator
     index = 0
     k0 = 0
     data[key].sort_by{
-      # Sort the table by first column (= first elt of k)
-      |k, v| k[0].kind_of?(Hash) ? k[0][:sort] : k[0]
+      # Sort the table by the identifiers (e.g. Microarchitecture, or Microarchitecture + CPU name).
+      # This colum is either just a text field, or a more complex hash with a :sort key that should be
+      # used for sorting.
+      |k, v| k.map { |c| c.kind_of?(Hash) ? c[:sort] : c }
     }.to_h.each { |k, v|
       k0 = k if index == 0
       index += 1
@@ -191,6 +191,7 @@ class G5KHardwareGenerator < WikiGenerator
   # For a correct sort of the column, all dates must be in the same
   # format (same number of digits)
   def get_date(microarchitecture)
+    return 'MISSING' if microarchitecture.nil?
     release_dates = {
       'K8' => '2003',
       'K10' => '2007',
@@ -203,9 +204,10 @@ class G5KHardwareGenerator < WikiGenerator
       'Sandy Bridge' => '2012',
       'Haswell' => '2013',
       'Broadwell' => '2015',
+      'Skylake' => '2016'
     }
     date = release_dates[microarchitecture.to_s]
-    raise 'ERROR: microarchitecture not found' if date.nil?
+    raise "ERROR: microarchitecture not found: '#{microarchitecture.to_s}'. Add in hardware.rb" if date.nil?
     date
   end
   
@@ -268,21 +270,23 @@ class G5KHardwareGenerator < WikiGenerator
   end  
 end
 
-generator = G5KHardwareGenerator.new("Hardware")
+if __FILE__ == $0
+  generator = G5KHardwareGenerator.new("Hardware")
 
-options = WikiGenerator::parse_options
-if (options)
-  ret = 2
-  begin
-    ret = WikiGenerator::exec(generator, options)
-  rescue MediawikiApi::ApiError => e
-    puts e, e.backtrace
-    ret = 3
-  rescue StandardError => e
-    puts "Error with node: #{generator.instance_variable_get(:@node)}"
-    puts e, e.backtrace
-    ret = 4
-  ensure
-    exit(ret)
+  options = WikiGenerator::parse_options
+  if (options)
+    ret = 2
+    begin
+      ret = generator.exec(options)
+    rescue MediawikiApi::ApiError => e
+      puts e, e.backtrace
+      ret = 3
+    rescue StandardError => e
+      puts "Error with node: #{generator.instance_variable_get(:@node)}"
+      puts e, e.backtrace
+      ret = 4
+    ensure
+      exit(ret)
+    end
   end
 end
