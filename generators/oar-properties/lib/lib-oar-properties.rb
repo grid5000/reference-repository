@@ -342,7 +342,7 @@ def diff_properties(type, properties_oar, properties_ref)
     properties_ref.delete('state')
   elsif type == 'default' && properties_ref.size == 1
     # For dead nodes, when information is missing from the reference-repo, only enforce the 'state' property and ignore other differences.
-    return HashDiff.diff('state' => properties_oar['state'], 'state' => properties_ref['state'])
+    return HashDiff.diff({'state' => properties_oar['state']}, {'state' => properties_ref['state']})
   end
 
   return HashDiff.diff(properties_oar, properties_ref)
