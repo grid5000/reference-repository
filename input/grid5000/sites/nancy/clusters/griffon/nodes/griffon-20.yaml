@@ -26,12 +26,34 @@ griffon-20:
       ip: 172.16.65.20
       mac: 00:e0:81:b2:c5:74
       management: false
+      model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
+      name: enp15s0f0
       rate: 1000000000
+      vendor: Intel
     eth1:
       driver: e1000e
       interface: Ethernet
       mac: 00:e0:81:b2:c5:75
       management: false
+      model: 80003ES2LAN Gigabit Ethernet Controller (Copper)
+      name: enp15s0f1
+      vendor: Intel
+    ib0:
+      driver: mlx4_core
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:02:80:c1
+      interface: InfiniBand
+      management: false
+      model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
+      rate: 10000000000
+      vendor: Mellanox Technologies
+    ib1:
+      driver: mlx4_core
+      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:02:80:c2
+      interface: InfiniBand
+      management: false
+      model: MT26418 [ConnectX VPI PCIe 2.0 5GT/s - IB DDR / 10GigE]
+      rate: 10000000000
+      vendor: Mellanox Technologies
   operating_system:
     cstate_driver: none
     cstate_governor: menu
