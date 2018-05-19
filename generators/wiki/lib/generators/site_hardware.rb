@@ -209,8 +209,28 @@ def get_hardware(sites)
         network = node_hash['network_adapters'].select { |k, v| v['management'] == false }.map{ |k, v| {'rate' => v['rate'], 'interface' => v['interface'], 'used' => (v['enabled'] and (v['mounted'] or v['mountable'])) } }
         hard['used_networks'] = network.select { |e| e['used'] == true }.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by{ |e| e[0]['rate'].to_f }.map{ |e| get_network_info(e, false) }.join('+&nbsp;')
         hard['network_throughput'] = network.select { |e| e['used'] == true }.inject(0){|sum, v| sum + (v['rate'].to_f / 10**6).floor }.to_s # round to Mbps
-        network_description = node_hash['network_adapters'].select { |k, v| v['management'] == false }.map{ |k, v| { 'device' => k, 'name' => v['name'], 'rate' => v['rate'], 'interface' => v['interface'], 'driver' => v['driver'], 'unwired' => v['enabled'] == false, 'unavailable_for_experiment' => v['mountable'] == false, 'no_kavlan' => (v['interface'] == 'Ethernet' && v['mountable'] == true && v['kavlan'] == false), 'count' => node_hash['network_adapters'].count } }.sort_by{ |e| e['device'] }
-        hard['network_description'] = network_description.map { |e| ((e['count'] > 1 ? ["\n*"] : []) + (e['unavailable_for_experiment'] ? ['<span style="color:grey">'] : []) + (e['name'].nil? ? [e['device'] + ','] : [e['device'] + "/" + e['name'] + ',']) + [e['interface'], '(driver: ' + e['driver'] + '),', 'configured rate: ' + (e['unwired'] ? 'n/c' : G5K.get_rate(e['rate'])), ('- unavailable for experiment' if e['unavailable_for_experiment']), ('- no KaVLAN' if e['no_kavlan']), e['unavailable_for_experiment'] ? '</span>' : '']).join(' ') }.join('<br />')
+        network_description = node_hash['network_adapters'].select { |k, v| v['management'] == false }.map{ |k, v| { 'device' => k, 'name' => v['name'], 'rate' => v['rate'], 'interface' => v['interface'], 'driver' => v['driver'], 'unwired' => v['enabled'] == false, 'unavailable_for_experiment' => v['mountable'] == false, 'no_kavlan' => (v['interface'] == 'Ethernet' && v['mountable'] == true && v['kavlan'] == false), 'model' => (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A'), 'count' => node_hash['network_adapters'].count } }.sort_by{ |e| e['device'] }
+        hard['network_description'] = network_description.map do |e|
+          s  = e['count'] > 1 ? "\n* " : ''
+          s += e['unavailable_for_experiment'] ? '<span style="color:grey">' : ''
+          s += e['name'].nil? ? e['device'] : e['device'] + "/" + e['name']
+          s += ', '
+          s += e['interface']
+          s += ', '
+          if !(e['unwired'] and e['unavailable_for_experiment'])
+            s += 'configured rate: ' + (e['unwired'] ? 'n/c' : G5K.get_rate(e['rate']))
+            s += ', '
+          end
+          if !(e['model'] == 'N/A N/A' and e['unavailable_for_experiment']) # don't include interface model if not available
+            e['model'] = 'N/A' if e['model'] == 'N/A N/A'
+            s += 'model: '+ e['model'] + ', '
+          end
+          s += 'driver: ' + e['driver']
+          s += ' - unavailable for experiment' if e['unavailable_for_experiment']
+          s += ' - no KaVLAN' if e['no_kavlan']
+          s +=  e['unavailable_for_experiment'] ? '</span>' : ''
+          s
+        end.join('<br />')
 
         gpu = node_hash['gpu']
         hard['gpu_str'] = if gpu && gpu['gpu']
