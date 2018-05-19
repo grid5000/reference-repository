@@ -14,6 +14,7 @@ class G5KHardwareGenerator < WikiGenerator
     @site_uids = G5K::SITES
     
     @generated_content = "__NOEDITSECTION__\n"
+    @generated_content += "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
     @generated_content += "\n= Clusters =\n"
     @generated_content += SiteHardwareGenerator.generate_all_clusters
     @generated_content += generate_totals
