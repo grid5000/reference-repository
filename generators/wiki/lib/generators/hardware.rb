@@ -246,7 +246,7 @@ class G5KHardwareGenerator < WikiGenerator
             interfaces['details'] = node_interfaces.map{ |k, v| k + (v['name'].nil? ? '' : '/' + v['name'])  + ' (' + G5K.get_rate(v['rate']) + ')' }.sort.join(', ')
             queues = cluster_hash['queues'] - ['admin', 'default']
             interfaces['queues'] = (queues.nil? || (queues.empty? ? '' : queues[0] + G5K.pluralize(queues.count, ' queue')))
-            add(network_interfaces, node_uid, interfaces) if node_interfaces.count > 1
+            interface_add(network_interfaces, node_uid, interfaces) if node_interfaces.count > 1
           end
         }
 
@@ -277,7 +277,7 @@ class G5KHardwareGenerator < WikiGenerator
   # network_interfaces. If nodes 2,3,7 have the same interfaces, they
   # will be gathered in the same key and we will have
   # network_interfaces[[2,3,7]] = interfaces
-  def add(network_interfaces, node_uid, interfaces)
+  def interface_add(network_interfaces, node_uid, interfaces)
     num1 = node_uid.split('-')[1].to_i
     if network_interfaces.has_value?(interfaces) == false
       network_interfaces[[num1]] = interfaces
@@ -286,7 +286,7 @@ class G5KHardwareGenerator < WikiGenerator
       network_interfaces.delete(num2)
       network_interfaces[num2.push(num1)] = interfaces
     end
-  end  
+  end
 end
 
 if __FILE__ == $0
