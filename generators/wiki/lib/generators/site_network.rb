@@ -25,7 +25,12 @@ class SiteNetworkGenerator < WikiGenerator
   end
 
   def generate_content
-    check_network_description({:sites => [@site], :dot => true})
+    @generated_content = "__NOTOC__\n__NOEDITSECTION__\n"
+    @generated_content += "FIXME\n"
+    @generated_content += MW.italic(MW.small(generated_date_string))
+    @generated_content += MW::LINE_FEED
+
+    #check_network_description({:sites => [@site], :dot => true})
   end
 end
 
