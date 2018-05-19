@@ -45,7 +45,6 @@ SITE_GENERATORS = {
 GENERATORS = GLOBAL_GENERATORS.merge(SITE_GENERATORS)
 
 options = WikiGenerator::parse_options
-p options
 myopts = options.clone
 options[:generators].each do |g|
   myopts[:generators] = [g]
