@@ -254,6 +254,8 @@ def generate_dot(netnodes, links, site)
 
   # separate links to equipments
   eqlinks = links.select { |l| ['router', 'switch'].include?(l['target_kind']) }
+  # group links between same pairs of switches
+  eqlinks = eqlinks.group_by { |e| e }.to_a.map { |e| e[0]['count'] = e[1].length ; e[0] }
   # for links to nodes, re-process the links to facilitate grouping
   nodeslinks = []
   links.select { |l| ['node'].include?(l['target_kind']) }.each do |l|
@@ -292,7 +294,11 @@ def generate_dot(netnodes, links, site)
   # finally output links
   # between network equipments
   eqlinks.each do |l|
-    r = "#{l['rate'] / 10**9}G"
+    if l['count'] == 1
+      r = "#{l['rate'] / 10**9}G"
+    else
+      r = "#{l['count']}x#{l['rate'] / 10**9}G"
+    end
     content << "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\"];"
   end
   # between network equipments and nodes
