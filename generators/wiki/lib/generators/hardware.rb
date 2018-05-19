@@ -82,7 +82,7 @@ class G5KHardwareGenerator < WikiGenerator
           # NIC models
           interfaces = node_hash['network_adapters']
                        .select{ |k, v| v['enabled'] and (v['mounted'] or v['mountable']) and not v['management'] }
-                       .map{ |k, v| t = (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A') ; [{text: t, sort: t }] }
+                       .map{ |k, v| t = (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A') ; [ {text: v['interface'], sort: v['interface']}, {text: t, sort: t }] }
                        .uniq
 
           net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
@@ -152,6 +152,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content +=  generate_interfaces
 
     generated_content += "\n== Network interface models ==\n"
+    table_columns = ['Type', 'Model'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
     
     generated_content += "\n= Accelerators (GPU, Xeon Phi) ="
