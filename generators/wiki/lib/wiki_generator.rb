@@ -54,7 +54,13 @@ class WikiGenerator
 
   #Actually edit the mediawiki page with the new generated content
   def update_page
-    @mw_client.edit({"title" => @page_name, "text" => @generated_content })
+    wiki_content = remove_page_creation_date(@mw_client.get_page_content(@page_name)).strip # .strip removes potential '\n' at end of file
+    generated_content = remove_page_creation_date(@generated_content).strip
+    if wiki_content == generated_content
+      puts "No modification on #{@page_name}, skipping update"
+    else
+      @mw_client.edit({"title" => @page_name, "text" => @generated_content })
+    end
   end
 
   #Get the given page content and print a diff if any
@@ -75,9 +81,15 @@ class WikiGenerator
   end
 
   def update_files
-    @files.each { |file|
-      @mw_client.update_file(file['filename'], file['path'], file['content_type'], file['comment'], true)
-    }
+    @files.each do |file|
+      file_content = @mw_client.get_file_content(file['filename'])
+      generated_content = File.read(file['path'])
+      if file_content == generated_content
+        puts "No modification on #{file['filename']}, skipping update"
+      else
+        @mw_client.update_file(file['filename'], file['path'], file['content_type'], file['comment'], true)
+      end
+    end
   end
 
   def diff_files
