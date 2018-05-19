@@ -30,7 +30,8 @@ class SiteNetworkGenerator < WikiGenerator
     @generated_content += MW.italic(MW.small(generated_date_string))
     @generated_content += MW::LINE_FEED
 
-    #check_network_description({:sites => [@site], :dot => true})
+    # this will generate dot and png network maps in the current directory
+    check_network_description({:sites => [@site], :dot => true})
   end
 end
 
