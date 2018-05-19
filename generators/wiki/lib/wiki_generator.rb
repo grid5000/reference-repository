@@ -21,8 +21,20 @@ class WikiGenerator
   end
 
   def login(options)
-    if (options[:user] && options[:pwd])
-      @mw_client.log_in(options[:user], options[:pwd])
+    tries = 3
+    begin
+      if (options[:user] && options[:pwd])
+        @mw_client.log_in(options[:user], options[:pwd])
+      end
+    rescue
+      tries -= 1
+      if tries > 0
+        puts "Login failed. retrying..."
+        sleep(1)
+        retry
+      else
+        raise "Login failed and retries exhausted."
+      end
     end
   end
 
