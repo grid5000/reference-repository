@@ -99,6 +99,7 @@ class WikiGenerator
     api_password = yconf['password']
 
     options = {
+      :generators => [],
       :sites => G5K::SITES,
       :diff => false,
       :print => false,
@@ -111,6 +112,10 @@ class WikiGenerator
       opts.banner = "Usage: <wiki_generator>.rb\n"
       opts.banner += "This script looks for file ~/.grid5000_api.yml containing your API username and password credentials. The script also recognize API_USER and API_PASSWORD environment variables."
 
+      opts.on('-g', '--generators=generator1,generator2', Array, 'Run those generators') do |g|
+        options[:generators] = g
+      end
+      
       opts.on('-s', '--sites=site1,site2', Array, 'Only consider these sites (when applicable)') do |sites|
         options[:sites] = sites.map{ |e| e.downcase }
       end
