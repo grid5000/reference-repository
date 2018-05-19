@@ -219,6 +219,8 @@ class OarPropertiesGenerator < WikiGenerator
         @generated_content += MW::LIST_ITEM + " Possible values: " + MW::code(@@properties[property]["possible_values"]) + MW::LINE_FEED
       }
     }
+    @generated_content += MW.italic(MW.small(generated_date_string))
+    @generated_content += MW::LINE_FEED
   end
 end
 

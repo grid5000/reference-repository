@@ -16,7 +16,7 @@ class SiteHardwareGenerator < WikiGenerator
     @generated_content += "'''#{generate_oneline_summary}'''\n"
     @generated_content += self.class.generate_summary(@site, false)
     @generated_content += self.class.generate_description(@site)
-    @generated_content += MW.italic(MW.small('Generated from the Grid5000 APIs on ' + Time.now.strftime('%Y-%m-%d')))
+    @generated_content += MW.italic(MW.small(generated_date_string))
     @generated_content += MW::LINE_FEED
   end
 

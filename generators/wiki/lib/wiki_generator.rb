@@ -42,6 +42,16 @@ class WikiGenerator
     raise "To be implemented in actual generators"
   end
 
+  def remove_page_creation_date(content)
+    return content.gsub(/''<small>Last generated from the Grid5000 API on .+<\/small>''/, '')
+  end
+
+  def generated_date_string
+    commit = `git show --oneline -s`.split(' ').first
+    date = Time.now.strftime("%Y-%m-%d")
+    return "Last generated from the Grid5000 Reference API on #{date} ([https://github.com/grid5000/reference-repository/commit/#{commit} commit #{commit}])"
+  end
+
   #Actually edit the mediawiki page with the new generated content
   def update_page
     @mw_client.edit({"title" => @page_name, "text" => @generated_content })
@@ -62,10 +72,6 @@ class WikiGenerator
     puts "#{diff.to_s(:text)}"
     puts '------------- PAGE DIFF END -------------'
     return false
-  end
-
-  def remove_page_creation_date(content)
-    return content.gsub(/''<small>Generated from the Grid5000 APIs on .+<\/small>''/, '')
   end
 
   def update_files
@@ -112,7 +118,7 @@ class WikiGenerator
 
     options = {
       :generators => [],
-      :sites => G5K::SITES,
+      :sites => ['global'] + G5K::SITES,
       :diff => false,
       :print => false,
       :update => false,

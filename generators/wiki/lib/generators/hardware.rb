@@ -17,7 +17,7 @@ class G5KHardwareGenerator < WikiGenerator
     @generated_content += "\n= Clusters =\n"
     @generated_content += SiteHardwareGenerator.generate_all_clusters
     @generated_content += generate_totals
-    @generated_content += MW.italic(MW.small("Generated from the Grid5000 APIs on " + Time.now.strftime("%Y-%m-%d")))
+    @generated_content += MW.italic(MW.small(generated_date_string))
     @generated_content += MW::LINE_FEED
   end
 

@@ -53,7 +53,7 @@ class CPUParametersGenerator < WikiGenerator
     #Table construction
     table_options = 'class="wikitable sortable"'
     @generated_content = MW.generate_table(table_options, table_columns, table_data)
-    @generated_content += MW.italic(MW.small("Generated from the Grid5000 APIs on " + Time.now.strftime("%Y-%m-%d")))
+    @generated_content += MW.italic(MW.small(generated_date_string))
     @generated_content += MW::LINE_FEED
   end
 end
