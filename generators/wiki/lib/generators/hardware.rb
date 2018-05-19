@@ -155,6 +155,10 @@ class G5KHardwareGenerator < WikiGenerator
     table_columns = ['Type', 'Model'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
     
+    generated_content += "\n= Storage ="
+    generated_content += "\n== Nodes with several disks ==\n"
+    generated_content +=  generate_storage
+
     generated_content += "\n= Accelerators (GPU, Xeon Phi) ="
     generated_content += "\n== Accelerator families ==\n"
     table_columns = ['Accelerator family'] + sites + ['Accelerators total']
@@ -229,7 +233,76 @@ class G5KHardwareGenerator < WikiGenerator
     raise "ERROR: microarchitecture not found: '#{microarchitecture.to_s}'. Add in hardware.rb" if date.nil?
     date
   end
-  
+
+  def storage_size_to_text(s)
+    if s > 1000*1000*1000*1000 # 1 TB
+      return sprintf("%.1f", s/(1000*1000*1000*1000)) + ' TB'
+    else
+      return sprintf("%d", s/(1000*1000*1000)) + ' GB'
+    end
+  end
+
+  def generate_storage
+    table_columns = ["Site", "Cluster", "Number of nodes", "Main disk", "Additional HDDs", "Additional SSDs", "Disk reservation"]
+    table_data = []
+    global_hash = get_global_hash
+
+    # Loop over Grid'5000 sites
+    global_hash["sites"].sort.to_h.each do |site_uid, site_hash|
+      site_hash.fetch("clusters").sort.to_h.each do |cluster_uid, cluster_hash|
+        nodes_data = []
+        cluster_hash.fetch('nodes').sort.to_h.each do |node_uid, node_hash|
+          next if node_hash['status'] == 'retired'
+          sd = node_hash['storage_devices']
+          reservable_disks = sd.to_a.select{ |v| v[1]['reservation'] == true }.count > 0
+          maindisk = sd.to_a.select { |v| v[0] == 'sda' }.first[1]
+          maindisk_t = maindisk['storage'] + ' ' + storage_size_to_text(maindisk['size'])
+          other = sd.to_a.select { |d| d[0] != 'sda' }
+          hdds = other.select { |d| d[1]['storage'] == 'HDD' }
+          if hdds.count == 0
+            hdd_t = "0"
+          else
+            hdd_t = hdds.count.to_s + " (" + hdds.map { |d| storage_size_to_text(d[1]['size']) }.join(', ') + ")"
+          end
+          ssds = other.select { |d| d[1]['storage'] == 'SSD' }
+          if ssds.count == 0
+            ssd_t = "0"
+          else
+            ssd_t = ssds.count.to_s + " (" + ssds.map { |d| storage_size_to_text(d[1]['size']) }.join(', ') + ")"
+          end
+          nodes_data << { 'uid' => node_uid, 'data' => { 'main' => maindisk_t, 'hdd' => hdd_t, 'ssd' => ssd_t, 'reservation' => reservable_disks } }
+        end
+        nd = nodes_data.group_by { |d| d['data'] }
+        nd.each do |data, nodes|
+          # only keep nodes with more than one disk
+          next if data['hdd'] == "0" and data['ssd'] == "0"
+          if nd.length == 1
+            nodesetname = cluster_uid
+          else
+            nodesetname = G5K.nodeset(nodes.map { |n| n['uid'].split('-')[1].to_i })
+          end
+          table_data << [
+            "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
+              "[[#{site_uid.capitalize}:Hardware##{cluster_uid}|#{nodesetname}]]",
+              nodes.length,
+              data['main'],
+              data['hdd'],
+              data['ssd'],
+              data['reservation'] ? 'yes' : 'no'
+          ]
+        end
+      end
+    end
+    # Sort by site and cluster name
+    table_data.sort_by! { |row|
+      [row[0], row[1]]
+    }
+
+    # Table construction
+    table_options = 'class="wikitable sortable"'
+    return MW.generate_table(table_options, table_columns, table_data)
+  end
+
   def generate_interfaces
     table_data = []
     @global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
