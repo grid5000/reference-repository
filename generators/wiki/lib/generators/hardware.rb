@@ -29,6 +29,7 @@ class G5KHardwareGenerator < WikiGenerator
       'core_models' => {},
       'ram_size' => {},
       'net_interconnects' => {},
+      'net_models' => {},
       'acc_families' => {},
       'acc_models' => {},
       'acc_cores' => {},
@@ -76,6 +77,18 @@ class G5KHardwareGenerator < WikiGenerator
           net_interconnects.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
             init(data, 'net_interconnects', k)
             data['net_interconnects'][k][site_uid] += v
+          }
+          
+          # NIC models
+          interfaces = node_hash['network_adapters']
+                       .select{ |k, v| v['enabled'] and (v['mounted'] or v['mountable']) and not v['management'] }
+                       .map{ |k, v| t = (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A') ; [{text: t, sort: t }] }
+                       .uniq
+
+          net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
+          net_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
+            init(data, 'net_models', k)
+            data['net_models'][k][site_uid] += v
           }
 
           # Accelerators
@@ -130,12 +143,16 @@ class G5KHardwareGenerator < WikiGenerator
     table_columns = ['RAM size'] + sites + ['Nodes total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'ram_size'))
 
-    generated_content += "\n= Network interconnects =\n"
+    generated_content += "\n= Networking =\n"
+    generated_content += "\n== Network interconnects ==\n"
     table_columns = ['Interconnect'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_interconnects'))
 
-    generated_content += "\n= Nodes with several Ethernet interfaces =\n"
+    generated_content += "\n== Nodes with several Ethernet interfaces ==\n"
     generated_content +=  generate_interfaces
+
+    generated_content += "\n== Network interface models ==\n"
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
     
     generated_content += "\n= Accelerators (GPU, Xeon Phi) ="
     generated_content += "\n== Accelerator families ==\n"
