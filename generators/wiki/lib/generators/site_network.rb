@@ -24,10 +24,16 @@ class SiteNetworkGenerator < WikiGenerator
     ]
   end
 
+  def generate_equipments
+    h = G5K::get_global_hash['sites'][@site]
+    return h['networks'].to_a.map { |e| "* #{e[0]}: #{e[1]['model']}" }.sort.join("\n")
+  end
+
   def generate_content
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n"
-    @generated_content += "FIXME\n"
-    @generated_content += MW.italic(MW.small(generated_date_string))
+    @generated_content += "= Network devices models =\n"
+    @generated_content += generate_equipments + "\n"
+    @generated_content += "More details (including address ranges are available from the [[Grid5000:Network]] page.\n"
     @generated_content += MW::LINE_FEED
 
     # this will generate dot and png network maps in the current directory
