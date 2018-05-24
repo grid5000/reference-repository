@@ -55,7 +55,13 @@ nancy:
   griffon-15:
     - -network_adapters.eth1
     - -network_adapters.eth1.rate
-
+nantes:
+  econome-[1-22]:
+    - +network_adapters.eth2.rate
+    - -network_adapters.eth2.rate
+  econome-19:
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
 rennes:
   parasilo-[1-28]:
     - ~storage_devices.sdf.model
