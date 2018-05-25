@@ -270,7 +270,9 @@ class G5KHardwareGenerator < WikiGenerator
           else
             ssd_t = ssds.count.to_s + " (" + ssds.map { |d| storage_size_to_text(d[1]['size']) }.join(', ') + ")"
           end
-          nodes_data << { 'uid' => node_uid, 'data' => { 'main' => maindisk_t, 'hdd' => hdd_t, 'ssd' => ssd_t, 'reservation' => reservable_disks } }
+          queues = cluster_hash['queues'] - ['admin', 'default']
+          queue_t = (queues.nil? || (queues.empty? ? '' : "_.28" + queues[0].gsub(' ', '_') + ' queue.29'))
+          nodes_data << { 'uid' => node_uid, 'data' => { 'main' => maindisk_t, 'hdd' => hdd_t, 'ssd' => ssd_t, 'reservation' => reservable_disks, 'queue' => queue_t } }
         end
         nd = nodes_data.group_by { |d| d['data'] }
         nd.each do |data, nodes|
@@ -283,7 +285,7 @@ class G5KHardwareGenerator < WikiGenerator
           end
           table_data << [
             "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
-              "[[#{site_uid.capitalize}:Hardware##{cluster_uid}|#{nodesetname}]]",
+              "[[#{site_uid.capitalize}:Hardware##{cluster_uid}#{data['queue']}|#{nodesetname}]]",
               nodes.length,
               data['main'],
               data['hdd'],
