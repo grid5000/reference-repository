@@ -243,7 +243,7 @@ class G5KHardwareGenerator < WikiGenerator
   end
 
   def generate_storage
-    table_columns = ["Site", "Cluster", "Number of nodes", "Main disk", "Additional HDDs", "Additional SSDs", "Disk reservation"]
+    table_columns = ["Site", "Cluster", "Number of nodes", "Main disk", "Additional HDDs", "Additional SSDs", "[[Disk_reservation|Disk reservation]]"]
     table_data = []
     global_hash = get_global_hash
 
