@@ -301,7 +301,7 @@ class G5KHardwareGenerator < WikiGenerator
     }
 
     # Table construction
-    table_options = 'class="wikitable sortable"'
+    table_options = 'class="wikitable sortable" style="text-align: center;"'
     return MW.generate_table(table_options, table_columns, table_data)
   end
 
