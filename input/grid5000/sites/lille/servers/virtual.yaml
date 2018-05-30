@@ -1,6 +1,5 @@
 dns:
   kind: virtual
-  alias: [dhcp]
   network_adapters:
     default:
       ip: 172.16.47.101
@@ -75,6 +74,13 @@ mail:
       ip: 172.16.47.110
     adm:
       ip: 172.17.47.110
+dhcp:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.47.111
+    adm:
+      ip: 172.17.47.111
 access:
   kind: virtual
   network_adapters:
