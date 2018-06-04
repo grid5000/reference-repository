@@ -13,14 +13,12 @@ hercule-3:
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge C6220
-    serial: FQ3HD5J
   main_memory:
     ram_size: 34359738368
   network_adapters:
     bmc:
       ip: 172.17.51.3
       mac: 84:8f:69:fd:4c:21
-      management: true
     eth0:
       driver: ixgbe
       firmware_version: '0x00000000'
@@ -67,17 +65,7 @@ hercule-3:
     pstate_governor: performance
     turboboost_enabled: true
   processor:
-    cache_l1d: 32768
-    cache_l1i: 32768
-    cache_l2: 262144
-    cache_l3: 15728640
-    clock_speed: 2000000000
     ht_capable: true
-    instruction_set: x86-64
-    model: Intel Xeon
-    other_description: Intel(R) Xeon(R) CPU E5-2620 0 @ 2.00GHz
-    vendor: Intel
-    version: E5-2620
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50014ee206e7e551"
