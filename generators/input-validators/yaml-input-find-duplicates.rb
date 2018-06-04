@@ -64,8 +64,10 @@ def yaml_input_find_duplicates(refapi_hash, options)
 
   if refapi_hash.empty?
     puts "OK: no duplicate entries."
+    exit(0)
   else
     puts refapi_hash.to_yaml
+    exit(1)
   end
 
 end
