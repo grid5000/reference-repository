@@ -28,6 +28,7 @@ end
 def parse_command_line_parameters
   options = {}
   options[:sites] = %w(grenoble lille luxembourg lyon nancy nantes rennes sophia)
+  options[:clusters] = []
 
   OptionParser.new do |opts|
     opts.banner = 'Usage: oar-properties-check.rb [options]'
@@ -100,7 +101,8 @@ options[:sites].each do |site|
   # for each host ...
   default_resources.map { |e| e['host'] }.uniq.each do |host|
     host_resources = default_resources.select { |e| e['host'] == host }
-    next if options[:clusters] and not options[:clusters].include?(host_resources['cluster'])
+    cluster = host_resources.first['cluster']
+    next if not options[:clusters].empty? and not options[:clusters].include?(cluster)
 
     # compute nbcores.
     # cpucore is cores per cpu. to know the number of cpus, we devide memnode per memcpu.
