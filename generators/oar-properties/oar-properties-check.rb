@@ -14,9 +14,12 @@ require 'optparse'
 require 'net/ssh'
 require 'open-uri'
 
+# propriétés ignorées
+IGNORED_PROPERTIES=%w{chassis chunks thread}
 
 # Propriétés qui devraient être présentes
-G5K_PROPERTIES=%w{api_timestamp available_upto besteffort chunks cluster cluster_priority comment core cpu cpuarch cpucore cpufreq cpuset cputype deploy desktop_computing disk disk_reservation_count diskpath disktype drain eth_count eth_rate expiry_date finaud_decision gpu gpu_count grub host ib ib_count ib_rate id ip last_available_upto last_job_date links maintenance max_walltime memcore memcpu memnode mic myri myri_count myri_rate network_address next_finaud_decision next_state nodemodel production rconsole scheduler_priority slash_16 slash_17 slash_18 slash_19 slash_20 slash_21 slash_22 state state_num subnet_address subnet_prefix suspended_jobs switch type virtual vlan wattmeter}.sort
+G5K_PROPERTIES=%w{api_timestamp available_upto besteffort chunks cluster cluster_priority comment core cpu cpuarch cpucore cpufreq cpuset cputype deploy desktop_computing disk disk_reservation_count diskpath disktype drain eth_count eth_rate expiry_date finaud_decision gpu gpu_count grub host ib ib_count ib_rate id ip last_available_upto last_job_date links maintenance max_walltime memcore memcpu memnode mic myri myri_count myri_rate network_address next_finaud_decision next_state nodemodel production rconsole scheduler_priority slash_16 slash_17 slash_18 slash_19 slash_20 slash_21 slash_22 state state_num subnet_address subnet_prefix suspended_jobs switch type virtual vlan wattmeter}.sort - IGNORED_PROPERTIES
+
 
 class Hash
   def slice(*extract)
@@ -74,7 +77,7 @@ options[:sites].each do |site|
   default_resources = resources.select { |e| e['type'] == 'default' }.sort_by { |e| e['id'] }
 
   # Checking list of properties
-  names = default_resources.map { |e| e.keys.sort }.uniq.first
+  names = default_resources.map { |e| e.keys.sort }.uniq.first - IGNORED_PROPERTIES
   if names != G5K_PROPERTIES
     puts "ERROR: wrong list of properties:"
     ret = false
