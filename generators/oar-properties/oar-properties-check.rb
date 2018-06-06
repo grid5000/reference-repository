@@ -117,7 +117,7 @@ options[:sites].each do |site|
       ret = false
     end
 
-    # ids, cpus, cores should follow the physical order (provided by cpuset)
+    # ids and cores should be in the same order
     host_cores = host_resources.map { |e| e['core'] }
     host_cores_min = host_cores.first
     host_cores_max = host_cores.last
@@ -125,13 +125,15 @@ options[:sites].each do |site|
       puts "ERROR: core values for #{host} are not sequential"
       ret = false
     end
-    host_cpusets = host_resources.map { |e| e['cpuset'] }
+    # the first cpuset should be 0
+    host_cpusets = host_resources.map { |e| e['cpuset'] }.sort
     host_cpusets_min = host_cpusets.first
     host_cpusets_max = host_cpusets.last
     if host_cpusets_min != 0
       puts "ERROR: first cpuset value for #{host} should be 0"
       ret = false
     end
+    # the last cpuset should be nbcores-1
     if host_cpusets_max - host_cpusets_min + 1 != nbcores
       puts "ERROR: cpuset values for #{host} are not sequential"
       ret = false
