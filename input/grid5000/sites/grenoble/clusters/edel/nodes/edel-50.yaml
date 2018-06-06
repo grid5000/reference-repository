@@ -23,12 +23,10 @@ edel-50:
       management: true
     eth0:
       driver: igb
-      enabled: true
       interface: Ethernet
       ip: 172.16.17.50
       mac: '08:00:38:35:ac:10'
       management: false
-      mountable: true
       mounted: true
       model: 82576 Gigabit Network Connection
       name: enp1s0f0
@@ -36,11 +34,9 @@ edel-50:
       vendor: Intel
     eth1:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: '08:00:38:35:ac:11'
       management: false
-      mountable: false
       mounted: false
       rate: 1000000000
       model: 82576 Gigabit Network Connection
@@ -48,13 +44,11 @@ edel-50:
       vendor: Intel
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:35:ca:19
       interface: InfiniBand
       ip: 172.18.17.50
       ip6: fe80::a00:3800:135:ca19
       management: false
-      mountable: true
       mounted: true
       rate: 40000000000
       version: MT26428
@@ -62,14 +56,11 @@ edel-50:
       model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
     ib1:
       driver: mlx4_core
-      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
       interface: InfiniBand
       management: false
-      mountable: false
       mounted: false
       rate: 10000000000
-      version: MT26428
       vendor: Mellanox Technologies
       model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
   operating_system:

@@ -23,7 +23,6 @@ edel-35:
       management: true
     eth0:
       driver: igb
-      enabled: true
       interface: Ethernet
       ip: 172.16.17.35
       mac: '08:00:38:35:ab:62'
@@ -35,7 +34,6 @@ edel-35:
       vendor: Intel
     eth1:
       driver: igb
-      enabled: false
       interface: Ethernet
       mac: '08:00:38:35:ab:63'
       management: false
@@ -46,7 +44,6 @@ edel-35:
       vendor: Intel
     ib0:
       driver: mlx4_core
-      enabled: true
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:35:c9:14
       interface: InfiniBand
       ip: 172.18.17.35
@@ -59,13 +56,11 @@ edel-35:
       model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
     ib1:
       driver: mlx4_core
-      enabled: false
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
       interface: InfiniBand
       management: false
       mounted: false
       rate: 10000000000
-      version: MT26428
       vendor: Mellanox Technologies
       model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
   operating_system:

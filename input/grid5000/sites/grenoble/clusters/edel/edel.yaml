@@ -11,8 +11,6 @@ nodes:
 
 # Global node properties
   edel-[1-72]:
-    chassis:
-      serial: 123456789
     monitoring:
       wattmeter: outofband
     sensors:
@@ -23,16 +21,6 @@ nodes:
             sensors:
               Power: Power
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 8388608
-      clock_speed: 2270000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
-      vendor: Intel
-      version: E5520
       microarchitecture: Nehalem
     performance:
         core_flops: 7134000000
@@ -61,27 +49,18 @@ nodes:
         mounted: false
         bridged: false
       ib0:
-        driver: mlx4_core
         enabled: true
-        interface: InfiniBand
-        management: false
         mountable: true
         mounted: true
-        rate: 40000000000
       ib1:
-        driver: mlx4_core
         enabled: false
-        interface: InfiniBand
-        management: false
         mountable: false
         mounted: false
-        rate: 10000000000
         version: MT26428
       bmc:
         interface: Ethernet
         rate: 100.0e+6
         enabled: true
-        management: true
         mountable: false
         mounted: false
         vendor: Unknown
