@@ -85,7 +85,7 @@ options[:sites].each do |site|
   # 'core' must be globally unique
   dupe_cores = default_resources.map { |e| e.slice('id', 'core', 'host', 'cpu', 'cpuset') }.group_by { |e| e['core'] }.to_a.select { |e| e[1].length > 1 }
   unless dupe_cores.empty?
-    puts "ERROR: some resources have the same 'core' value. it should be globally unique."
+    puts "ERROR: some resources have the same 'core' value. it should be globally unique over the site."
     ret = false
     pp dupe_cores if options[:verbose]
   end
@@ -93,7 +93,7 @@ options[:sites].each do |site|
   # 'cpu' must be unique to a 'host'
   dupe_cpus = default_resources.map { |e| [e['cpu'], e['host'] ]}.uniq.group_by { |e| e[0] }.to_a.select { |e| e[1].length > 1 }
   unless dupe_cpus.empty?
-    puts "ERROR: some hosts have the same 'cpu' value. it should be globally unique."
+    puts "ERROR: some hosts have the same 'cpu' value. it should be globally unique over the site."
     ret = false
     pp dupe_cores if options[:verbose]
   end
