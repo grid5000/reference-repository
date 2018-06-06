@@ -23,8 +23,8 @@ class CPUParametersGenerator < WikiGenerator
         cpu_version = node_hash["processor"]["version"] rescue ""
         cpu_freq = node_hash["processor"]["clock_speed"] / 1000000000.0 rescue 0.0 #GHz
         cpu_codename = node_hash["processor"]["microarchitecture"] rescue ""
-        ht_enabled = node_hash["bios"]["configuration"]["ht_enabled"] rescue false
-        turboboost_enabled = node_hash["bios"]["configuration"]["turboboost_enabled"] rescue false
+        ht_enabled = node_hash["operating_system"]["ht_enabled"] rescue false
+        turboboost_enabled = node_hash["operating_system"]["turboboost_enabled"] rescue false
         pstate_driver = node_hash["operating_system"]["pstate_driver"] rescue ""
         cstate_driver = node_hash["operating_system"]["cstate_driver"] rescue ""
 
