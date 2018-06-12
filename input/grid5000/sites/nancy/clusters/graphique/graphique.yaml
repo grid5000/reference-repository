@@ -21,55 +21,35 @@ nodes:
       - admin
       - production
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 15728640
-      clock_speed: 3200000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz
-      vendor: Intel
-      version: E5-2620 v3
       microarchitecture: Haswell
     storage_devices:
       sda:
         interface: SCSI
         driver: megaraid_sas
         storage: HDD
-        vendor: null
     network_adapters:
       eth0:
         enabled: true
         mountable: true
         mounted: false
         bridged: true
-        vendor: Broadcom
-        model: Broadcom 57800 10 GB DA/SFP+
         switch: null
         switch_port: null
-        vendor: Broadcom
       eth1:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Broadcom
-        model: Broadcom 57800 10 GB DA/SFP+
       eth2:
         mountable: false
         mounted: false
         enabled: false
         bridged: false
-        vendor: Broadcom
-        model: Broadcom 57800 1 GB Base-T
       eth3:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Broadcom
-        model: Broadcom 57800 1 GB Base-T
       ib0:
         enabled: true
         mountable: true
@@ -79,7 +59,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
     sensors:
       power:
         available: true
@@ -94,14 +73,6 @@ nodes:
   graphique-[3-]:
     supported_job_types:
       max_walltime: 604800
-
-  graphique-1:
-    chassis:
-      serial: BYGMJ32
-
-  graphique-5:
-    chassis:
-      serial: BXTRV42
 
   graphique-1:
     gpu:

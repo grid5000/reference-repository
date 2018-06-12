@@ -11,16 +11,6 @@ nodes:
 # Global node properties
   graoully-[1-16]:
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 20971520
-      clock_speed: 3200000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz
-      vendor: Intel
-      version: E5-2630 v3
       microarchitecture: Haswell
     performance:
       core_flops: 15480000000
@@ -35,12 +25,10 @@ nodes:
       sda:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
       sdb:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
     network_adapters:
       eth0:
@@ -48,50 +36,36 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth1:
         enabled: false 
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth2:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
       eth3:
         enabled: false 
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
       eth4:
         enabled: false 
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: I350 Gigabit Network Connection
       eth5:
         enabled: false 
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: I350 Gigabit Network Connection
       ib0:
         enabled: true 
         mountable: true
         mounted: true
         bridged: false
-        vendor: Mellanox
-        model: MT27500 Family [ConnectX-3]
         switch: sgraoullyib
         hwid: null
         ib_switch_card: null
@@ -103,7 +77,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
     gpu:
       gpu: false
 

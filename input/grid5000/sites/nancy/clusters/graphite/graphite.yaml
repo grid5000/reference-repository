@@ -15,16 +15,6 @@ nodes:
       core_flops: 13.17e+9
       node_flops: 187.90e+9
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 20971520
-      clock_speed: 2800000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU E5-2650 0 @ 2.00GHz
-      vendor: Intel
-      version: E5-2650
       microarchitecture: Sandy Bridge
     supported_job_types:
       deploy: true
@@ -38,34 +28,28 @@ nodes:
         interface: SATA II
         driver: megaraid_sas
         storage: SSD
-        vendor: null
       sdb:
         interface: SATA II
         driver: megaraid_sas
         storage: SSD
-        vendor: null
     network_adapters:
       eth0:
         enabled: true
         mountable: true
         mounted: true
         bridged: true
-        vendor: intel
         version: 82599EB
-        ip6: null
       eth1:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: intel
         version: 82599EB
       eth2:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: intel
         version: I350
         switch: null
         switch_port: null
@@ -74,7 +58,6 @@ nodes:
         mountable: false
         mounted: false
         bridged: false
-        vendor: intel
         version: I350
         switch: null
         switch_port: null
@@ -83,7 +66,6 @@ nodes:
         mountable: true
         mounted: true
         bridged: false
-        vendor: Mellanox
         switch: sgraoullyib
         hwid: null
         ib_switch_card: null
@@ -95,7 +77,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
         vendor: DELL
         version: IDRAC7
     mic:

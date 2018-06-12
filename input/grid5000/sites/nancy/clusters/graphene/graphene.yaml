@@ -14,16 +14,6 @@ nodes:
 # Global node properties
   graphene-[1-144]:
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 8388608
-      clock_speed: 2530000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU           X3440  @ 2.53GHz
-      vendor: Intel
-      version: X3440
       microarchitecture: Lynnfield
     performance:
       core_flops: 8.024e+9
@@ -40,7 +30,6 @@ nodes:
         interface: SATA II
         driver: ahci
         storage: HDD
-        vendor: Hitachi
     network_adapters:
       eth0:
         enabled: true
@@ -60,32 +49,16 @@ nodes:
       ib0:
         enabled: true
         mountable: true
-        vendor: Mellanox
-        version: MT26418
-        switch: sgrapheneib
-        driver: mlx4_core
-        interface: InfiniBand
-        management: false
         mounted: true
-        version: MT26418
       ib1:
         enabled: false
         mountable: false
-        vendor: Mellanox
-        version: MT26418
-        driver: mlx4_core
-        enabled: false
-        interface: InfiniBand
-        management: false
-        mountable: false
         mounted: false
-        version: MT26418
       bmc:
         interface: Ethernet
         enabled: true
         mounted: false
         mountable: false
-        management: true
     gpu:
      gpu: false
     sensors:
