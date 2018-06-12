@@ -11,16 +11,6 @@ nodes:
 # Global node properties
   grimoire-[1-8]:
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 20971520
-      clock_speed: 3200000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz
-      vendor: Intel
-      version: E5-2630 v3
       microarchitecture: Haswell
     performance:
       core_flops: 15440000000
@@ -36,36 +26,30 @@ nodes:
       sda:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
       sdb:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
         reservation: true
       sdc:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
         reservation: true
       sdd:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
         reservation: true
       sde:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
         reservation: true
       sdf:
         interface: SCSI
         driver: megaraid_sas
-        vendor: TOSHIBA
         storage: SSD
         reservation: true
     network_adapters:
@@ -74,53 +58,39 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth1:
         enabled: true
         mountable: true
         kavlan: true
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       eth2:
         enabled: true
         mountable: true
         kavlan: true
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
       eth3:
         enabled: true
         mountable: true
         kavlan: true
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: Ethernet 10G 2P X520 Adapter
       eth4:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: I350 Gigabit Network Connection
       eth5:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel Corporation
-        model: I350 Gigabit Network Connection
       ib0:
         enabled: true
         mountable: true
         mounted: true
         bridged: false
-        vendor: Mellanox
-        model: MT27500 Family [ConnectX-3]
         switch: sgraoullyib
         hwid: null
         ib_switch_card: null
@@ -131,7 +101,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
 
     gpu:
       gpu: false
