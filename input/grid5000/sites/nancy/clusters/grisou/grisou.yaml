@@ -11,16 +11,6 @@ nodes:
 # Global node properties
   grisou-[1-51]:
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 20971520
-      clock_speed: 3200000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz
-      vendor: Intel
-      version: E5-2630 v3
       microarchitecture: Haswell
     performance:
       core_flops: 15380000000
@@ -36,12 +26,10 @@ nodes:
       sda:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
       sdb:
         interface: SCSI
         driver: megaraid_sas
-        vendor: LSI Logic / Symbios Logic
         storage: HDD
     gpu:
       gpu: false
@@ -90,7 +78,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
 # grisou-49
   grisou-49:
     network_adapters:
@@ -129,7 +116,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
 # Node with infiniband
   grisou-[50-51]:
     network_adapters:
@@ -166,22 +152,16 @@ nodes:
       bmc:
         enabled: true
         interface: Ethernet
-        management: true
         mountable: false
         mounted: false
       ib0:
         bridged: false
-        driver: mlx4_core
         enabled: true
         hwid: null
         ib_switch_card: null
         ib_switch_card_pos: null
-        interface: InfiniBand
-        management: false
-        model: MT27500 Family [ConnectX-3]
         mountable: true
         mounted: true
-        vendor: Mellanox
         version: MT4099
         switch: sgraoullyib
 
