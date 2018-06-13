@@ -49,6 +49,11 @@ def yaml_input_find_duplicates(refapi_hash, options)
       if options.key?(:clusters) && !options[:clusters].include?(cluster_uid)
           site["clusters"].delete(cluster_uid)
       end
+      cluster["nodes"].sort.each do |node_uid, node|
+          if node.key?("status") && node["status"] == "retired"
+            cluster["nodes"].delete(node_uid)
+        end
+      end
     end
   end
 
