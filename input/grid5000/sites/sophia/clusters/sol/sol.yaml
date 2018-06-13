@@ -9,17 +9,7 @@ queues:
 nodes:
   sol-[1-50]:
     processor:
-      cache_l1d: 65536
-      cache_l1i: 65536
-      cache_l2: 1048576
-      cache_l3: 0
-      clock_speed: 2600000000
-      instruction_set: x86-64
       microarchitecture: K8
-      model: AMD Opteron
-      other_description: Dual-Core AMD Opteron(tm) Processor 2218
-      vendor: AMD
-      version: 2218
     performance:
       core_flops: 4337000000
       node_flops: 16800000000
@@ -58,7 +48,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
 
 # Nodes 29 -> 50 myri0 interfaces
   sol-[29-50]:
@@ -68,20 +57,17 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-        vendor: nVidia
       eth1:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: nVidia
       bmc:
         interface: Ethernet
         rate: 100.0e+6
         enabled: true
         mounted: false
         mountable: false
-        management: true
       myri0:
         driver: mx ethernet (myri)
         interface: Myrinet

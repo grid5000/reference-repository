@@ -9,16 +9,6 @@ queues:
 nodes:
   suno-[1-45]:
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 8388608
-      clock_speed: 2260000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU           E5520  @ 2.27GHz
-      vendor: Intel
-      version: E5520
       microarchitecture: Nehalem
     performance:
       core_flops: 7140000000
@@ -42,23 +32,19 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-        vendor: Broadcom
         version: NetXtremeII BCM5716
       eth1:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Broadcom
         version: NetXtremeII BCM5716
       bmc:
         interface: Ethernet
         rate: 100.0e+6
         enabled: true
-        management: true
         mountable: false
         mounted: false
-        vendor: Unknown
         version: "1.7"
     gpu:
       gpu: false
