@@ -44,6 +44,7 @@ SITE_GENERATORS = {
 }
 GENERATORS = GLOBAL_GENERATORS.merge(SITE_GENERATORS)
 
+ret = true
 options = WikiGenerator::parse_options
 myopts = options.clone
 options[:generators].each do |g|
@@ -51,12 +52,12 @@ options[:generators].each do |g|
   options[:sites].each do |s|
     myopts[:sites] = [s]
     if GLOBAL_GENERATORS.has_key?(g) and s == 'global'
-      ret = GLOBAL_GENERATORS[g][:gen].new(GLOBAL_GENERATORS[g][:page]).exec(myopts)
+      ret &= GLOBAL_GENERATORS[g][:gen].new(GLOBAL_GENERATORS[g][:page]).exec(myopts)
     elsif SITE_GENERATORS.has_key?(g) and s != 'global'
-      ret = SITE_GENERATORS[g][:gen].new(s.capitalize + SITE_GENERATORS[g][:page_suffix], s).exec(myopts)
+      ret &= SITE_GENERATORS[g][:gen].new(s.capitalize + SITE_GENERATORS[g][:page_suffix], s).exec(myopts)
     else
       puts "Nothing to do: #{g}/#{s}"
     end
-    exit(ret)
   end
 end
+exit(ret)
