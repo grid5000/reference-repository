@@ -17,7 +17,11 @@ dahu-2:
   main_memory:
     ram_size: 206158430208
   network_adapters:
-    enp24s0f0:
+    bmc:
+      ip: 172.17.20.2
+      mac: 50:9a:4c:78:e8:d1
+      management: true
+    eth0:
       driver: i40e
       firmware_version: 5.40 0x80002d39 18.0.17
       interface: Ethernet
@@ -28,7 +32,7 @@ dahu-2:
       name: enp24s0f0
       rate: 10000000000
       vendor: Intel
-    enp24s0f1:
+    eth1:
       driver: i40e
       firmware_version: 5.40 0x80002d39 18.0.17
       interface: Ethernet
@@ -36,14 +40,6 @@ dahu-2:
       management: false
       model: Ethernet Controller X710 for 10GbE SFP+
       name: enp24s0f1
-      vendor: Intel
-    ib0:
-      driver: hfi1
-      guid: 80:00:00:02:fe:80:00:00:00:00:00:00:00:11:75:01:01:71:10:1a
-      interface: InfiniBand
-      management: false
-      model: Omni-Path HFI Silicon 100 Series [discrete]
-      rate: 100000000000
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
@@ -64,7 +60,6 @@ dahu-2:
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz
     vendor: Intel
-    version: Gold 6130
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x5002538c0010aad8"
