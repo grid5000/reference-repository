@@ -1,0 +1,78 @@
+{
+  "chassis": {
+    "serial": "TBD"
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "main_memory": {
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "ip": "172.16.20.11",
+      "mac": "3c:fd:fe:55:e8:20",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "dahu-11.grenoble.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.20.11",
+      "mac": "50:9a:4c:78:11:f8",
+      "mountable": false,
+      "mounted": false
+    }
+  ],
+  "processor": {
+    "cache_l1": null,
+    "version": "Gold 6130"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "interface": "SATA",
+      "storage": "HDD"
+    },
+    {
+      "device": "sdb",
+      "driver": "megaraid_sas",
+      "interface": "SATA",
+      "storage": "HDD"
+    },
+    {
+      "device": "sdc",
+      "driver": "megaraid_sas",
+      "interface": "SATA",
+      "storage": "HDD"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "dahu-11"
+}
