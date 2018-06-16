@@ -227,7 +227,7 @@ def get_hardware(sites)
             e['model'] = 'N/A' if e['model'] == 'N/A N/A'
             s += 'model: '+ e['model'] + ', '
           end
-          s += 'driver: ' + e['driver']
+          s +=  'driver: ' + e['driver'] if e['driver']
           s += ' - unavailable for experiment' if e['unavailable_for_experiment']
           s += ' - no KaVLAN' if e['no_kavlan']
           s +=  e['unavailable_for_experiment'] ? '</span>' : ''
