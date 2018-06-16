@@ -195,8 +195,8 @@ class OarPropertiesGenerator < WikiGenerator
         }
       }
     }
-
     oar_properties.sort.to_h.each { |prop, prop_hash|
+      prop_hash["values"].sort!
       if (prop_hash["values"].length > 20)
         #Limit possible values to 20 elements and mark the list as truncated
         prop_hash["values"].slice!(0...-20)
