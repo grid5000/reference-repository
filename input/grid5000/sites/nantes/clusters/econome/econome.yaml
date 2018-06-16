@@ -9,16 +9,6 @@ queues:
 nodes:
   econome-[1-22]:
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 20971520
-      clock_speed: 2200000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz
-      vendor: Intel
-      version: E5-2660
       microarchitecture: Sandy Bridge
     performance:
       core_flops: 14040000000
@@ -41,28 +31,24 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-        vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth1:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel
         version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth2:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel
         version: Intel Corporation
       eth3:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel
         version: Intel Corporation
       bmc:
         interface: Ethernet
@@ -70,7 +56,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
     gpu:
       gpu: false
     monitoring:
@@ -78,93 +63,3 @@ nodes:
     sensors:
       power:
         available: false
-
-  econome-1:
-    chassis:
-      serial: CP2YG5J
-  
-  econome-2:
-    chassis:
-      serial: DP2YG5J
-  
-  econome-3:
-    chassis:
-      serial: FP2YG5J
-  
-  econome-4:
-    chassis:
-      serial: GP2YG5J
-  
-  econome-5:
-    chassis:
-      serial: CQ2YG5J
-  
-  econome-6:
-    chassis:
-      serial: DQ2YG5J
-  
-  econome-7:
-    chassis:
-      serial: FQ2YG5J
-  
-  econome-8:
-    chassis:
-      serial: GQ2YG5J
-  
-  econome-9:
-    chassis:
-      serial: F9GYG5J
-  
-  econome-10:
-    chassis:
-      serial: G9GYG5J
-  
-  econome-11:
-    chassis:
-      serial: J9GYG5J
-  
-  econome-12:
-    chassis:
-      serial: H9GYG5J
-  
-  econome-13:
-    chassis:
-      serial: HN2YG5J
-  
-  econome-14:
-    chassis:
-      serial: JN2YG5J
-  
-  econome-15:
-    chassis:
-      serial: 1P2YG5J
-    
-  econome-16:
-    chassis:
-      serial: 2P2YG5J
-  
-  econome-17:
-    chassis:
-      serial: 1Q2YG5J
-  
-  econome-18:
-    chassis:
-      serial: 2Q2YG5J
-  
-  econome-19:
-    chassis:
-      serial: JN30D5J
-  
-  econome-20:
-    chassis:
-      serial: HN30D5J
-  
-  econome-21:
-    chassis:
-      serial: 2P30D5J
-  
-  econome-22:
-    chassis:
-      serial: 1P30D5J
-  
-  
