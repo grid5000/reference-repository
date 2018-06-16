@@ -1,11 +1,25 @@
 {
+  "architecture": {
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "02/09/2018",
+    "vendor": "Dell Inc.",
+    "version": "1.3.7"
+  },
   "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6420",
     "serial": "TBD"
   },
   "gpu": {
     "gpu": false
   },
   "main_memory": {
+    "ram_size": 206158430208
   },
   "monitoring": {
     "wattmeter": "false"
@@ -13,22 +27,39 @@
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "5.40 0x80002d39 18.0.17",
+      "interface": "Ethernet",
       "ip": "172.16.20.11",
       "mac": "3c:fd:fe:55:e8:20",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": true,
       "mounted": true,
+      "name": "enp24s0f0",
       "network_address": "dahu-11.grenoble.grid5000.fr",
-      "interface": "Ethernet",
+      "rate": 10000000000,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
-      "interface": "Ethernet",
       "enabled": false,
       "mountable": false,
       "mounted": false
+    },
+    {
+      "device": "enp24s0f1",
+      "driver": "i40e",
+      "firmware_version": "5.40 0x80002d39 18.0.17",
+      "interface": "Ethernet",
+      "mac": "50:9a:4c:42:42:43",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "name": "enp24s0f1",
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -36,34 +67,73 @@
       "interface": "Ethernet",
       "ip": "172.17.20.11",
       "mac": "50:9a:4c:78:11:f8",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "dahu-11-bmc.grenoble.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": null,
+    "ht_enabled": true,
+    "pstate_driver": "none",
+    "pstate_governor": "none",
+    "turboboost_enabled": false
+  },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 23068672,
+    "clock_speed": 2100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
+    "vendor": "Intel",
     "version": "Gold 6130"
   },
   "sensors": {
   },
   "storage_devices": [
     {
+      "by_id": "/dev/disk/by-id/wwn-0x5002538c0010a9a6",
+      "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-3",
       "device": "sda",
       "driver": "megaraid_sas",
+      "firmware_version": "GD53",
       "interface": "SATA",
-      "storage": "HDD"
+      "model": "MZ7KM240HMHQ0D3",
+      "size": 240057409536,
+      "storage": "HDD",
+      "vendor": "ATA"
     },
     {
+      "by_id": "/dev/disk/by-id/wwn-0x5002538c00107b09",
+      "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-4",
       "device": "sdb",
       "driver": "megaraid_sas",
+      "firmware_version": "GD53",
       "interface": "SATA",
-      "storage": "HDD"
+      "model": "MZ7KM480HMHQ0D3",
+      "size": 480103981056,
+      "storage": "HDD",
+      "vendor": "ATA"
     },
     {
+      "by_id": "/dev/disk/by-id/wwn-0x5000c500a59eee40",
+      "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-5",
       "device": "sdc",
       "driver": "megaraid_sas",
+      "firmware_version": "DB34",
       "interface": "SATA",
-      "storage": "HDD"
+      "model": "ST4000NM0265-2DC",
+      "size": 4000787030016,
+      "storage": "HDD",
+      "vendor": "Seagate"
     }
   ],
   "supported_job_types": {
@@ -73,7 +143,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "dahu-11"
