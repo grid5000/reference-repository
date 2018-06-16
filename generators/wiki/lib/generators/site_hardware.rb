@@ -191,14 +191,16 @@ def get_hardware(sites)
         hard['date'] = Date.parse(cluster_hash['created_at'].to_s).strftime('%Y-%m-%d')
         hard['model'] = cluster_hash['model']
         hard['processor_model'] = [node_hash['processor']['model'], node_hash['processor']['version']].join(' ')
-        hard['processor_freq'] = node_hash['processor']['other_description'].split('@')[1]
+        if node_hash['processor']['other_description'] =~ /@/
+          hard['processor_freq'] = node_hash['processor']['other_description'].split('@')[1].strip
+        end
         hard['microarchitecture'] = node_hash['processor']['microarchitecture']
         hard['cpus_per_node'] = node_hash['architecture']['nb_procs']
         hard['cpus_per_node_str'] = hard['cpus_per_node'].to_s + '&nbsp;' + G5K.pluralize(hard['cpus_per_node'], 'CPU') + '/node'
         hard['cores_per_cpu'] = node_hash['architecture']['nb_cores'] / hard['cpus_per_node']
         hard['cores_per_cpu_str'] = hard['cores_per_cpu'].to_s + '&nbsp;' + G5K.pluralize(hard['cores_per_cpu'], 'core') + '/CPU'
         hard['num_processor_model'] = (hard['cpus_per_node'] == 1 ? '' : "#{hard['cpus_per_node']}&nbsp;x&nbsp;") + hard['processor_model'].gsub(' ', '&nbsp;')
-        hard['processor_description'] = [hard['processor_model'], hard['microarchitecture'], hard['processor_freq'], '(' + hard['cpus_per_node_str'] + ',', hard['cores_per_cpu_str'] + ')'].join(' ')
+        hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])       
         storage = node_hash['storage_devices'].map{ |k, v| {'size' => v['size'],  'tech' => v['storage']} }
         hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by { |e| e[0]['size'].to_f }.map{ |e| (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') + G5K.get_size(e[0]['size']) + '&nbsp;' + e[0]['tech'] }.join(' +&nbsp;')
