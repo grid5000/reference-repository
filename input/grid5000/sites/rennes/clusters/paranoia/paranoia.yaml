@@ -9,16 +9,6 @@ queues:
 nodes:
   paranoia-[1-8]:
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 26214400
-      clock_speed: 2200000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU E5-2660 v2 @ 2.20GHz
-      vendor: Intel
-      version: E5-2660 v2
       microarchitecture: Sandy Bridge
     performance:
       core_flops: 13800000000
@@ -36,75 +26,57 @@ nodes:
         driver: ahci
         storage: HDD
         symlink: /dev/disk/by-slot/disk0
-        vendor: WD
       sdb:
         unstable_device_name: true
         interface: SATA
         driver: ahci
         storage: HDD
         symlink: /dev/disk/by-slot/disk1
-        vendor: WD
       sdc:
         unstable_device_name: true
         interface: SATA
         driver: ahci
         storage: HDD
         symlink: /dev/disk/by-slot/disk2
-        vendor: WD
       sdd:
         unstable_device_name: true
         interface: SATA
         driver: ahci
         storage: HDD
         symlink: /dev/disk/by-slot/disk3
-        vendor: WD
       sde:
         unstable_device_name: true
         interface: SATA
         driver: ahci
         storage: HDD
         symlink: /dev/disk/by-slot/disk4
-        vendor: WD
     network_adapters:
       eth0:
         enabled: true
         mountable: true
         mounted: true
         bridged: true
-        management: false
-        vendor: Intel
-        version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth1:
         enabled: true
         mountable: true
         mounted: false
         bridged: false
-        management: false
-        vendor: Intel
-        version: 82599EB 10-Gigabit SFI/SFP+ Network Connection
       eth2:
         enabled: true
         mountable: true
         mounted: false
         bridged: false
-        management: false
-        vendor: Intel
-        version: Intel Corporation
       eth3:
         enabled: false
         mountable: false
         mounted: false
-        management: false
         bridged: false
-        vendor: Intel
-        version: Intel Corporation
       bmc:
         interface: Ethernet
         rate: 1000000000
         enabled: true
         mounted: false
         mountable: false
-        management: true
     gpu:
       gpu: false
     monitoring:
@@ -112,28 +84,3 @@ nodes:
     sensors:
       power:
         available: false
-
-  paranoia-1:
-    chassis:
-      serial: 9N20LZ1
-  paranoia-2:
-    chassis:
-      serial: DB12LZ1
-  paranoia-3:
-    chassis:
-      serial: 9PJ4LZ1
-  paranoia-4:
-    chassis:
-      serial: BVY4LZ1
-  paranoia-5:
-    chassis:
-      serial: 9912LZ1
-  paranoia-6:
-    chassis:
-      serial: 8TY4LZ1
-  paranoia-7:
-    chassis:
-      serial: 5M20LZ1
-  paranoia-8:
-    chassis:
-      serial: D14YKZ1

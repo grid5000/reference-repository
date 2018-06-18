@@ -25,19 +25,7 @@ nodes:
             sensors: 
               ambient: /MB/T_AMB  
 
-    chassis:
-      serial: 0935XEF04D
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 8388608
-      clock_speed: 2930000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz
-      vendor: Intel
-      version: X5570
       microarchitecture: Nehalem
     performance:
       core_flops: 9170000000
@@ -54,197 +42,33 @@ nodes:
         interface: SATA
         driver: ahci
         storage: HDD
-        vendor: ATA
     network_adapters:
       eth0:
         enabled: true
         mountable: true
         mounted: true
         bridged: true
-        vendor: Intel
-        version: 82575EB
       eth1:
         enabled: false
         mountable: false
         mounted: false
         bridged: false
-        vendor: Intel
-        version: 82575EB
       ib0:
-        driver: mlx4_core
         enabled: true
-        interface: InfiniBand
-        management: false
         mountable: true
         mounted: true
-        rate: 20000000000
-        version: MT25418
-        vendor: Mellanox
-        version: MT25418
       ib1:
-        driver: mlx4_core
         enabled: false
-        interface: InfiniBand
-        management: false
         mountable: false
         mounted: false
-        rate: 10000000000
-        version: MT25418
-        vendor: Mellanox
-        version: MT25418
       bmc:
         interface: Ethernet
         rate: 1000000000
         enabled: true
         mounted: false
         mountable: false
-        management: true
     gpu:
       gpu: false
-
-  parapide-1:
-    chassis:
-      serial: 0935XEF04D
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:970c
-      ib0:
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:ad
-        ip: 172.18.98.1
-      ib1:
-        guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:03:ba:00:01:00:9e:ae
-  parapide-10:
-    chassis:
-      serial: 0935XEF046
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:984c
-  parapide-11:
-    chassis:
-      serial: 0935XEF055
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:9ae0
-  parapide-12:
-    chassis:
-      serial: 0935XEF042
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:9924
-  parapide-13:
-    chassis:
-      serial: 0935XEF059
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:9a80
-  parapide-15:
-    chassis:
-      serial: 0935XEF058
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:8f00
-  parapide-16:
-    chassis:
-      serial: 0935XEF04F
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:94b4
-  parapide-17:
-    chassis:
-      serial: 0935XEF048
-    network_adapters:
-      eth0:
-        ip6: fe80::221:28ff:fe40:3c3a
-  parapide-18:
-    chassis:
-      serial: 0935XEF044
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:99a8
-  parapide-19:
-    chassis:
-      serial: 0935XEF04E
-    network_adapters:
-      eth0:
-        ip6: fe80::221:28ff:fe40:3c3a
-  parapide-2:
-    chassis:
-      serial: 0935XEF052
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:997c
-  parapide-20:
-    chassis:
-      serial: 0935XEF053
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:922c
-  parapide-21:
-    chassis:
-      serial: 0935XEF049
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:4d78
-  parapide-23:
-    chassis:
-      serial: 0935XEF057
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:99dc
-  parapide-24:
-    chassis:
-      serial: 0935XEF056
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:9238
-  parapide-25:
-    chassis:
-      serial: 0935XEF04C
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:9160
-  parapide-3:
-    chassis:
-      serial: 0935XEF041
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:926c
-  parapide-4:
-    chassis:
-      serial: 0935XEF047
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:9778
-  parapide-5:
-    chassis:
-      serial: 0935XEF051
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:9470
-  parapide-6:
-    chassis:
-      serial: 0935XEF04B
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:9230
-  parapide-7:
-    chassis:
-      serial: 0935XEF050
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:a728
-  parapide-8:
-    chassis:
-      serial: 0935XEF045
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:92b4
-  parapide-9:
-    chassis:
-      serial: 0935XEF04A
-    network_adapters:
-      eth0:
-        ip6: fe80::214:4fff:feca:98a0
 
   parapide-14:
     status: retired
