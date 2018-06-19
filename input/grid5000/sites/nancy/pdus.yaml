@@ -1,4 +1,16 @@
-pdus: 
+pdus:
+  grvingt-pdu[1-2]:
+    vendor: APC
+    model: AP8886
+    sensors:
+     - power:
+        per_outlets: false
+        snmp:
+          available: true
+          total_oids:
+            - iso.3.6.1.4.1.318.1.1.12.1.16.0
+          unit: W
+        resolution: 1
 
   graphene-pdu[1-6]:
     vendor: APC
