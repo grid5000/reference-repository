@@ -76,6 +76,14 @@ options[:sites].each do |site|
 
   default_resources = resources.select { |e| e['type'] == 'default' }.sort_by { |e| e['id'] }
 
+  # Checking scheduler_priority
+  default_resources.each do |r|
+    if r['scheduler_priority'] < 0
+      puts "Invalid scheduler_priority value on #{r['id']}/#{r['network_address']}: #{r['scheduler_priority']}"
+      ret = false
+    end
+  end
+
   # Checking list of properties
   names = default_resources.map { |e| e.keys.sort }.uniq.first - IGNORED_PROPERTIES
   if names != G5K_PROPERTIES
