@@ -43,20 +43,13 @@ namespace :validators do
   end
 end
 
-namespace :wiki do
-
-  all_wiki_tasks = [:cpu_parameters, :oar_properties, :disk_reservation, :hardware, :site_hardware, :site_network]
-
-  all_wiki_tasks.each { |t|
-    desc "Generate the media parts for #{t}"
-    task t do
-      invoke_script "#{WIKI_DIR}/#{t}.rb"
-    end
-  }
-
-  desc "Launch all wiki generators"
-  task :all => all_wiki_tasks
-
+desc "See info about wiki generators"
+task "wiki" do
+  puts "Wikigenerators are in generators/wiki. See the 'wikigen' script."
+  puts " => generators/wiki/wikigen -h"
+  puts "Examples:"
+  puts "  generators/wiki/wiki -g cpu_parameters -s global -d"
+  puts "  generators/wiki/wiki -g site_hardware -s nancy -d"
 end
 
 desc "Creates json data from inputs"
