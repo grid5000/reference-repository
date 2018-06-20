@@ -56,12 +56,15 @@
       "kavlan": true,
       "mac": "00:26:6c:fb:8a:2c",
       "management": false,
+      "model": "82576 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
+      "name": "eno1",
       "network_address": "uvb-3.sophia.grid5000.fr",
       "rate": 1000000000,
       "switch": "swy1nef",
-      "switch_port": "Port: 87 Gigabit"
+      "switch_port": "Port: 87 Gigabit",
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
@@ -71,8 +74,11 @@
       "kavlan": false,
       "mac": "00:26:6c:fb:8a:2d",
       "management": false,
+      "model": "82576 Gigabit Network Connection",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno2",
+      "vendor": "Intel"
     },
     {
       "alias": [
@@ -166,6 +172,7 @@
   "storage_devices": [
     {
       "by_id": "node-was-not-available-to-retrieve-this-value",
+      "by_path": "/dev/disk/by-path/pci-0000:00:1f.2-ata-1",
       "device": "sda",
       "driver": "ahci",
       "interface": "SATA",

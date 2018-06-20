@@ -26,12 +26,18 @@ uvb-3:
       ip: 172.16.132.3
       mac: 00:26:6c:fb:8a:2c
       management: false
+      model: 82576 Gigabit Network Connection
+      name: eno1
       rate: 1000000000
+      vendor: Intel
     eth1:
       driver: igb
       interface: Ethernet
       mac: 00:26:6c:fb:8a:2d
       management: false
+      model: 82576 Gigabit Network Connection
+      name: eno2
+      vendor: Intel
     ib0:
       driver: mlx4_core
       guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:c6:0d
@@ -82,5 +88,6 @@ uvb-3:
       size: 250000000000
       vendor: Western Digital
       by_id: node-was-not-available-to-retrieve-this-value
+      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
   supported_job_types:
     virtual: ivt
