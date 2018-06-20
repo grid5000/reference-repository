@@ -4,15 +4,15 @@ nodes:
   yeti-<%= i %>:
     kavlan:
       eth0:
-        kavlan-1: 192.168.194.<%= i %>
-        kavlan-2: 192.168.210.<%= i %>
-        kavlan-3: 192.168.226.<%= i %>
-        kavlan-4: 10.4.2.<%= i %>
-        kavlan-5: 10.4.66.<%= i %>
-        kavlan-6: 10.4.130.<%= i %>
-        kavlan-7: 10.4.193.<%= i %>
-        kavlan-8: 10.5.2.<%= i %>
-        kavlan-9: 10.5.66.<%= i %>
+        kavlan-1: 192.168.194.<%= i + global_grenoble_yeti_offset %>
+        kavlan-2: 192.168.210.<%= i + global_grenoble_yeti_offset %>
+        kavlan-3: 192.168.226.<%= i + global_grenoble_yeti_offset %>
+        kavlan-4: 10.4.2.<%= i + global_grenoble_yeti_offset %>
+        kavlan-5: 10.4.66.<%= i + global_grenoble_yeti_offset %>
+        kavlan-6: 10.4.130.<%= i + global_grenoble_yeti_offset %>
+        kavlan-7: 10.4.193.<%= i + global_grenoble_yeti_offset %>
+        kavlan-8: 10.5.2.<%= i + global_grenoble_yeti_offset %>
+        kavlan-9: 10.5.66.<%= i + global_grenoble_yeti_offset %>
         kavlan-11: 10.7.194.<%= i + global_grenoble_yeti_offset %>
         kavlan-12: 10.11.194.<%= i + global_grenoble_yeti_offset %>
         kavlan-13: 10.15.194.<%= i + global_grenoble_yeti_offset %>
@@ -21,4 +21,7 @@ nodes:
         kavlan-18: 10.35.194.<%= i + global_grenoble_yeti_offset %>
         kavlan-20: 10.43.194.<%= i + global_grenoble_yeti_offset %>
         kavlan-21: 10.47.194.<%= i + global_grenoble_yeti_offset %>
+    network_adapters:
+      ib0:
+        ip: 172.18.19.<%= i %>
 <% } %>

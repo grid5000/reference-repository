@@ -18,6 +18,27 @@
   "gpu": {
     "gpu": false
   },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.194.133",
+      "kavlan-11": "10.7.194.133",
+      "kavlan-12": "10.11.194.133",
+      "kavlan-13": "10.15.194.133",
+      "kavlan-14": "10.19.194.133",
+      "kavlan-16": "10.27.194.133",
+      "kavlan-18": "10.35.194.133",
+      "kavlan-2": "192.168.210.133",
+      "kavlan-20": "10.43.194.133",
+      "kavlan-21": "10.47.194.133",
+      "kavlan-3": "192.168.226.133",
+      "kavlan-4": "10.4.2.133",
+      "kavlan-5": "10.4.66.133",
+      "kavlan-6": "10.4.130.133",
+      "kavlan-7": "10.4.193.133",
+      "kavlan-8": "10.5.2.133",
+      "kavlan-9": "10.5.66.133"
+    }
+  },
   "main_memory": {
     "ram_size": 206158430208
   },
@@ -32,6 +53,7 @@
       "firmware_version": "6.00 0x80003753 18.5.17",
       "interface": "Ethernet",
       "ip": "172.16.20.13",
+      "kavlan": true,
       "mac": "3c:fd:fe:55:e3:60",
       "management": false,
       "model": "Ethernet Controller X710 for 10GbE SFP+",
@@ -50,6 +72,7 @@
       "enabled": false,
       "firmware_version": "6.00 0x80003753 18.5.17",
       "interface": "Ethernet",
+      "kavlan": false,
       "mac": "3c:fd:fe:55:e3:62",
       "management": false,
       "model": "Ethernet Controller X710 for 10GbE SFP+",
@@ -59,10 +82,16 @@
       "vendor": "Intel"
     },
     {
+      "device": "ib0",
+      "ip": "172.18.20.13",
+      "kavlan": false
+    },
+    {
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.20.13",
+      "kavlan": false,
       "mac": "50:9a:4c:78:e8:8f",
       "management": true,
       "mountable": false,
