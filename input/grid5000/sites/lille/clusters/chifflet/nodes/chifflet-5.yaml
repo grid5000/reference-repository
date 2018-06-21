@@ -21,7 +21,7 @@ chifflet-5:
       ip: 172.17.38.5
       mac: 18:66:da:5c:16:af
       management: true
-    eth0:
+    eno1:
       driver: ixgbe
       firmware_version: '0x800007f4'
       interface: Ethernet
@@ -32,7 +32,7 @@ chifflet-5:
       name: eno1
       rate: 10000000000
       vendor: Intel
-    eth1:
+    eno2:
       driver: ixgbe
       firmware_version: '0x800007f4'
       interface: Ethernet
@@ -40,8 +40,9 @@ chifflet-5:
       management: false
       model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       name: eno2
+      rate: 10000000000
       vendor: Intel
-    eth2:
+    eno3:
       driver: igb
       firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
@@ -50,7 +51,7 @@ chifflet-5:
       model: I350 Gigabit Network Connection
       name: eno3
       vendor: Intel
-    eth3:
+    eno4:
       driver: igb
       firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
