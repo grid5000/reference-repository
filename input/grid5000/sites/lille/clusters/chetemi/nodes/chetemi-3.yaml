@@ -21,7 +21,7 @@ chetemi-3:
       ip: 172.17.37.3
       mac: 84:7b:eb:d5:ae:74
       management: true
-    eno1:
+    eth0:
       driver: ixgbe
       firmware_version: '0x800007f4'
       interface: Ethernet
@@ -32,7 +32,7 @@ chetemi-3:
       name: eno1
       rate: 10000000000
       vendor: Intel
-    eno2:
+    eth1:
       driver: ixgbe
       firmware_version: '0x800007f4'
       interface: Ethernet
@@ -40,9 +40,8 @@ chetemi-3:
       management: false
       model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       name: eno2
-      rate: 10000000000
       vendor: Intel
-    eno3:
+    eth2:
       driver: igb
       firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
@@ -51,7 +50,7 @@ chetemi-3:
       model: I350 Gigabit Network Connection
       name: eno3
       vendor: Intel
-    eno4:
+    eth3:
       driver: igb
       firmware_version: 1.67, 0x80000d26, 17.5.10
       interface: Ethernet
