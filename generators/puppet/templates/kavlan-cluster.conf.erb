@@ -31,18 +31,20 @@ end
 
 refapi['sites'][site_uid]['clusters'].sort.to_h.each do |cluster_uid, cluster|
 -%>
+<% if cluster['kavlan'] -%>
 # Cluster <%= cluster_uid %>
 <%
-  cluster['nodes'].sort.to_h.each do |node_uid, node|
-    next if node['status'] and node['status'] == "retired"
-    node['network_adapters'].each do |interface_uid, interface|
-      interface_has_kavlan = interface.has_key?('kavlan') ? interface['kavlan'] : node['kavlan'].has_key?(interface_uid)
-      if interface_has_kavlan
-        switch_uid, kavlan_port_name = net_switch_port_lookup(refapi['sites'][site_uid], node_uid, interface_uid)
-        if switch_uid and kavlan_port_name
+    cluster['nodes'].sort.to_h.each do |node_uid, node|
+      next if node['status'] and node['status'] == "retired"
+      node['network_adapters'].each do |interface_uid, interface|
+        interface_has_kavlan = interface.has_key?('kavlan') ? interface['kavlan'] : node['kavlan'].has_key?(interface_uid)
+        if interface_has_kavlan
+          switch_uid, kavlan_port_name = net_switch_port_lookup(refapi['sites'][site_uid], node_uid, interface_uid)
+          if switch_uid and kavlan_port_name
 -%>
 <%= node_uid %><%= interface['mounted']? "" : "-"+interface_uid %>.<%= site_uid %>.grid5000.fr <%= kavlan_port_name %> <%= switch_uid %>
 <%
+          end
         end
       end
     end
