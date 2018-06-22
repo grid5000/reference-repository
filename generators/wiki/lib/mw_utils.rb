@@ -68,6 +68,7 @@ module G5K
   def self.nodeset(a)
     l = a.length
     return '' if l == 0
+    return a.first.to_s if l == 1
     a = a.compact.uniq.sort
     a0 = a[0]
     s = "[#{a0}"
