@@ -163,15 +163,18 @@ class WikiGenerator
       end
 
       # Print an options summary.
-      opts.on_tail("-h", "--help", "Show this message") do
+      opts.on("-h", "--help", "Show this message") do
         puts opts
         exit
       end
+
+      opts.separator ""
+      opts.separator "Generators: #{GENERATORS.keys.join(' ')}"
     end
     opt_parse.parse!
     if (!options[:diff] && !options[:print] && !options[:update])
-      puts "At least one action must be given!\n#{opt_parse.to_s}"
-      return false
+      puts "ERROR: At least one action must be given! (--diff, --print, --update)\n#{opt_parse.to_s}"
+      exit(1)
     end
     return options
   end
