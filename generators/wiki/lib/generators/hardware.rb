@@ -12,7 +12,7 @@ class G5KHardwareGenerator < WikiGenerator
   def generate_content
     @global_hash = get_global_hash
     @site_uids = G5K::SITES
-    
+
     @generated_content = "__NOEDITSECTION__\n"
     @generated_content += "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
     @generated_content += "\n= Clusters =\n"
@@ -35,13 +35,13 @@ class G5KHardwareGenerator < WikiGenerator
       'acc_cores' => {},
       'node_models' => {}
     }
-    
+
     @global_hash['sites'].sort.to_h.each { |site_uid, site_hash|
       site_hash['clusters'].sort.to_h.each { |cluster_uid, cluster_hash|
         cluster_hash['nodes'].sort.to_h.each { |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
           @node = node_uid
-          
+
           # Processors
           model = node_hash['processor']['model']
           version = "#{model} #{node_hash['processor']['version']}"
@@ -60,7 +60,7 @@ class G5KHardwareGenerator < WikiGenerator
 
           init(data, 'core_models', key)
           data['core_models'][key][site_uid] += cluster_cores
-          
+
           # RAM size
           ram_size = node_hash['main_memory']['ram_size']
           key = [{ text: G5K.get_size(ram_size), sort: (ram_size / 2**30).to_s.rjust(6, '0') + ' GB' }]
@@ -68,22 +68,42 @@ class G5KHardwareGenerator < WikiGenerator
           data['ram_size'][key][site_uid] += 1
 
           # HPC Networks
-          interfaces = node_hash['network_adapters']
-                       .select{ |k, v| v['enabled'] and (v['mounted'] or v['mountable']) and not v['management'] }
-                       .map{ |k, v| [{text: v['interface'] + ' ' + G5K.get_rate(v['rate']), sort: ((v['rate'])/10**6).to_s.rjust(6, '0') + ' Gbps, ' + v['interface']}] }
-                       .uniq
+          interfaces = node_hash['network_adapters'].select{ |k, v|
+            v['enabled'] and
+            (v['mounted'] or v['mountable']) and
+            not v['management']
+          }.map{ |k, v|
+            [
+              {
+                text: v['interface'] + ' ' + G5K.get_rate(v['rate']),
+                sort: ((v['rate'])/10**6).to_s.rjust(6, '0') + ' Gbps, ' + v['interface']
+              }
+            ]
+          }.uniq
 
           net_interconnects = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
           net_interconnects.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
             init(data, 'net_interconnects', k)
             data['net_interconnects'][k][site_uid] += v
           }
-          
+
           # NIC models
-          interfaces = node_hash['network_adapters']
-                       .select{ |k, v| v['enabled'] and (v['mounted'] or v['mountable']) and not v['management'] }
-                       .map{ |k, v| t = (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A') ; [ {text: v['interface'], sort: v['interface']}, {text: t, sort: t }] }
-                       .uniq
+          interfaces = node_hash['network_adapters'].select{ |k, v|
+            v['enabled'] and
+            (v['mounted'] or v['mountable']) and
+            not v['management']
+          }.map{ |k, v|
+            t = (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A');
+            [
+              {
+                text: v['interface'],
+                sort: v['interface']
+              },
+              {
+                text: t, sort: t
+              }
+            ]
+          }.uniq
 
           net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
           net_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
@@ -93,14 +113,14 @@ class G5KHardwareGenerator < WikiGenerator
 
           # Accelerators
           g = node_hash['gpu']
-          m = node_hash['mic']        
+          m = node_hash['mic']
 
           gpu_families = {}
           gpu_families[[g['gpu_vendor']]] = g['gpu_count'] if g and g['gpu']
           mic_families = {}
           mic_families[[m['mic_vendor']]] = m['mic_count'] if m and m['mic']
           gpu_families.merge(mic_families).sort.to_h.each { |k, v|
-            init(data, 'acc_families', k) 
+            init(data, 'acc_families', k)
             data['acc_families'][k][site_uid] += v
           }
 
@@ -108,7 +128,7 @@ class G5KHardwareGenerator < WikiGenerator
           gpu_details[["#{g['gpu_vendor']} #{g['gpu_model']}"]] = [g['gpu_count'], g['gpu_cores']] if g and g['gpu']
           mic_details = {}
           mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
-          
+
           gpu_details.merge(mic_details).sort.to_h.each { |k, v|
             init(data, 'acc_models', k)
             data['acc_models'][k][site_uid] += v[0]
@@ -154,7 +174,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Network interface models ==\n"
     table_columns = ['Type', 'Model'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
-    
+
     generated_content += "\n= Storage ="
     generated_content += "\n== Nodes with several disks ==\n"
     generated_content +=  generate_storage
@@ -169,7 +189,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Accelerator cores ==\n"
     table_columns = ['Accelerator model'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_cores'))
-    
+
     generated_content += "\n= Nodes models =\n"
     table_columns = ['Nodes model'] + sites + ['Nodes total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'node_models'))
@@ -345,7 +365,7 @@ class G5KHardwareGenerator < WikiGenerator
 
     table_options = 'class="wikitable sortable" style="text-align: center;"'
     table_columns = ["Site", "Cluster", "Nodes", "10G interfaces", "1G interfaces", "Interfaces (throughput)"]
-    MW.generate_table(table_options, table_columns, table_data)    
+    MW.generate_table(table_options, table_columns, table_data)
   end
 
   # This methods adds the array interfaces to the hash
