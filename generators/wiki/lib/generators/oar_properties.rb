@@ -225,7 +225,7 @@ class OarPropertiesGenerator < WikiGenerator
 end
 
 if __FILE__ == $0
-  generator = OarPropertiesGenerator.new("Generated/OAR_Properties")
+  generator = OarPropertiesGenerator.new("OAR_Properties")
 
   options = WikiGenerator::parse_options
   if (options)
