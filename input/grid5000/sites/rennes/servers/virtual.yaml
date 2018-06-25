@@ -11,11 +11,9 @@ helpdesk-global:
 www:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.112}}
-dhcp-prod:
+dhcp:
   kind: virtual
-  alias:
-    - dhcp
-  network_adapters: {default: {ip: 172.16.111.117}, adm: {ip: 172.16.111.117}}
+  network_adapters: {default: {ip: 172.16.111.117}, adm: {ip: 172.17.111.117}}
 ldap:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.120}}
