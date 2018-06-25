@@ -71,7 +71,8 @@ class G5KHardwareGenerator < WikiGenerator
           interfaces = node_hash['network_adapters'].select{ |k, v|
             v['enabled'] and
             (v['mounted'] or v['mountable']) and
-            not v['management']
+            not v['management'] and
+            (k =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
           }.map{ |k, v|
             [
               {
@@ -91,7 +92,8 @@ class G5KHardwareGenerator < WikiGenerator
           interfaces = node_hash['network_adapters'].select{ |k, v|
             v['enabled'] and
             (v['mounted'] or v['mountable']) and
-            not v['management']
+            not v['management'] and
+            (k =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
           }.map{ |k, v|
             t = (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A');
             [
