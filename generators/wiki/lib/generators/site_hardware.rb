@@ -209,7 +209,8 @@ def get_hardware(sites)
         hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size']), e['tech'], e['interface'], e['model'], ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'].join(' ') }.join('<br />')
 
         network = node_hash['network_adapters'].select { |k, v|
-          v['management'] == false
+          v['management'] == false &&
+          (k =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
         }.map{|k, v| {
             'rate' => v['rate'],
             'interface' => v['interface'],
@@ -233,7 +234,8 @@ def get_hardware(sites)
         }.to_s # round to Mbps
 
         network_description = node_hash['network_adapters'].select { |k, v|
-          v['management'] == false
+          v['management'] == false &&
+          (k =~ /\./).nil? # exclude PKEY / VLAN interface see #9417
         }.map{ |k, v|
           {
             'device' => k,
