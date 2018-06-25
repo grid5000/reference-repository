@@ -8,7 +8,7 @@ class SiteHardwareGenerator < WikiGenerator
     super(page_name)
     @site = site
   end
-  
+
   def generate_content
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n"
     @generated_content += "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
@@ -51,7 +51,7 @@ class SiteHardwareGenerator < WikiGenerator
     table_columns, table_data = self.generate_summary_data(site, with_sites)
     MW.generate_table('class="wikitable sortable"', table_columns, table_data) + "\n"
   end
-        
+
   def self.generate_summary_data(site, with_sites)
     table_columns = []
     table_data = []
@@ -62,7 +62,7 @@ class SiteHardwareGenerator < WikiGenerator
     hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
       site_accelerators += cluster_hash.select { |k, v| v['accelerators'] != '' }.count
     }
-    
+
     hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
       cluster_nodes = cluster_hash.keys.flatten.count
       queue = cluster_hash.map { |k, v| v['queue']}.first
@@ -83,7 +83,7 @@ class SiteHardwareGenerator < WikiGenerator
     }
     [table_columns, table_data]
   end
-  
+
   def self.generate_description(site)
     table_columns = []
     text_data = []
@@ -94,7 +94,7 @@ class SiteHardwareGenerator < WikiGenerator
     hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
       site_accelerators += cluster_hash.select { |k, v| v['accelerators'] != '' }.count
     }
-    
+
     hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
       subclusters = cluster_hash.keys.count != 1
       cluster_nodes = cluster_hash.keys.flatten.count
@@ -102,7 +102,7 @@ class SiteHardwareGenerator < WikiGenerator
       cluster_cores = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] * v['cores_per_cpu'] }.reduce(:+)
       queue_str = cluster_hash.map { |k, v| v['queue_str']}.first
       table_columns = ['Cluster',  'Queue', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + (site_accelerators.zero? ? [] : ['Accelerators'])
-      
+
       text_data <<  ["\n== #{cluster_uid}" + (queue_str == '' ? '' : " (#{queue_str})") + " ==\n"]
       text_data << ["'''#{cluster_nodes} #{G5K.pluralize(cluster_nodes, 'node')}, #{cluster_cpus} #{G5K.pluralize(cluster_cpus, 'cpu')}, #{cluster_cores} #{G5K.pluralize(cluster_cores, 'core')}" + (subclusters == true ? ",''' split as follows due to differences between nodes " : "''' ") + "([https://public-api.grid5000.fr/stable/sites/#{site}/clusters/#{cluster_uid}/nodes.json?pretty=1 json])"]
 
@@ -174,7 +174,7 @@ end
 
 def get_hardware(sites)
   global_hash = G5K::get_global_hash
-  
+
   # Loop over each cluster of the site
   hardware = {}
   global_hash['sites'].sort.to_h.select{ |site_uid, site_hash| sites.include?(site_uid) }.each { |site_uid, site_hash|
@@ -201,17 +201,57 @@ def get_hardware(sites)
         hard['cores_per_cpu_str'] = hard['cores_per_cpu'].to_s + '&nbsp;' + G5K.pluralize(hard['cores_per_cpu'], 'core') + '/CPU'
         hard['num_processor_model'] = (hard['cpus_per_node'] == 1 ? '' : "#{hard['cpus_per_node']}&nbsp;x&nbsp;") + hard['processor_model'].gsub(' ', '&nbsp;')
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
-        hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])       
+        hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
         storage = node_hash['storage_devices'].map{ |k, v| {'size' => v['size'],  'tech' => v['storage']} }
         hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by { |e| e[0]['size'].to_f }.map{ |e| (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') + G5K.get_size(e[0]['size']) + '&nbsp;' + e[0]['tech'] }.join(' +&nbsp;')
         hard['storage_size'] = storage.inject(0){|sum, v| sum + (v['size'].to_f / 2**30).floor }.to_s # round to GB to avoid small differences within a cluster
         storage_description = node_hash['storage_devices'].map { |k, v| { 'device' => v['device'], 'size' => v['size'], 'tech' => v['storage'], 'interface' => v['interface'], 'model' => v['model'], 'driver' => v['driver'], 'path' => v['by_path'] || v['by_id'],  'count' => node_hash['storage_devices'].count } }
         hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size']), e['tech'], e['interface'], e['model'], ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'].join(' ') }.join('<br />')
-        
-        network = node_hash['network_adapters'].select { |k, v| v['management'] == false }.map{ |k, v| {'rate' => v['rate'], 'interface' => v['interface'], 'used' => (v['enabled'] and (v['mounted'] or v['mountable'])) } }
-        hard['used_networks'] = network.select { |e| e['used'] == true }.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by{ |e| e[0]['rate'].to_f }.map{ |e| get_network_info(e, false) }.join('+&nbsp;')
-        hard['network_throughput'] = network.select { |e| e['used'] == true }.inject(0){|sum, v| sum + (v['rate'].to_f / 10**6).floor }.to_s # round to Mbps
-        network_description = node_hash['network_adapters'].select { |k, v| v['management'] == false }.map{ |k, v| { 'device' => k, 'name' => v['name'], 'rate' => v['rate'], 'interface' => v['interface'], 'driver' => v['driver'], 'unwired' => v['enabled'] == false, 'unavailable_for_experiment' => v['mountable'] == false, 'no_kavlan' => (v['interface'] == 'Ethernet' && v['mountable'] == true && v['kavlan'] == false), 'model' => (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A'), 'count' => node_hash['network_adapters'].count } }.sort_by{ |e| e['device'] }
+
+        network = node_hash['network_adapters'].select { |k, v|
+          v['management'] == false
+        }.map{|k, v| {
+            'rate' => v['rate'],
+            'interface' => v['interface'],
+            'used' => (v['enabled'] and (v['mounted'] or v['mountable']))
+          }
+        }
+        hard['used_networks'] = network.select { |e|
+          e['used'] == true
+        }.each_with_object(Hash.new(0)) { |data, counts|
+          counts[data] += 1
+        }.to_a.sort_by { |e|
+          e[0]['rate'].to_f
+        }.map{ |e|
+          get_network_info(e, false)
+        }.join('+&nbsp;')
+
+        hard['network_throughput'] = network.select { |e|
+          e['used'] == true
+        }.inject(0){ |sum, v|
+          sum + (v['rate'].to_f / 10**6).floor
+        }.to_s # round to Mbps
+
+        network_description = node_hash['network_adapters'].select { |k, v|
+          v['management'] == false
+        }.map{ |k, v|
+          {
+            'device' => k,
+            'name' => v['name'],
+            'rate' => v['rate'],
+            'interface' => v['interface'],
+            'driver' => v['driver'],
+            'unwired' => v['enabled'] == false,
+            'unavailable_for_experiment' => v['mountable'] == false,
+            'no_kavlan' => (v['interface'] == 'Ethernet' &&
+              v['mountable'] == true &&
+              v['kavlan'] == false),
+            'model' => (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A'),
+            'count' => node_hash['network_adapters'].count
+          }
+        }.sort_by{ |e|
+          e['device']
+        }
         hard['network_description'] = network_description.map do |e|
           s  = e['count'] > 1 ? "\n* " : ''
           s += e['unavailable_for_experiment'] ? '<span style="color:grey">' : ''
@@ -247,9 +287,9 @@ def get_hardware(sites)
                             ''
                           end
         hard['accelerators'] = hard['gpu_str'] != '' ? hard['gpu_str'] + (hard['mic_str'] != '' ? ' ; ' + hard['mic_str'] : '') : hard['mic_str']
-        
+
         add(hardware[site_uid][cluster_uid], node_uid, hard)
-      }      
+      }
     }
   }
   hardware
