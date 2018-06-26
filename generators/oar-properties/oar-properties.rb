@@ -170,8 +170,6 @@ def parse_command_line_parameters
     raise "Can't write several sites to only one file '#{options[:output]}' (add '%s' to the file name to create one file per site)"
   end
 
-  puts "Options: #{options}" if options[:verbose]
-
   puts 'Hint: You might want to use either --verbose, --output or --exec.' unless options[:verbose] || options[:output] || options[:exec]
 
   return options
