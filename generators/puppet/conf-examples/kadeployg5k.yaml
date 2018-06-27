@@ -276,6 +276,39 @@ nancy:
     boot.timeout.0: 180
     boot.timeout.1: 900
     remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+  grvingt:
+    reboot.timeout: 400
+    reboot.kexec: 120
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS0,115200 modprobe.blacklist=hfi1
+    deploy.vmlinuz: kernels/kadeploy3_deploy_kernel-jessie_vmlinuz
+    deploy.initrd: kernels/kadeploy3_deploy_kernel-jessie_initrd.img
+    deploy.params: ETH_DEV=eth0 console=tty0 console=ttyS0,115200 modprobe.blacklist=igb
+      ramdisk_size=260000 rw noapic
+    dhcp.serial: 1 115200
+    deployment.timeout: 900
+    broadcast.retries: 0
+    broadcast.timeout: 900
+    boot.timeout.0: 180
+    boot.timeout.1: 900
+    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.reboot.hard.cmd: "/etc/kadeploy3/hard_reboot_grvingt.sh HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/etc/kadeploy3/reset_bootseq_grvingt.sh HOSTNAME_SHORT"
+  grcinq:
+    reboot.timeout: 200
+    reboot.kexec: 100
+    partitioning.disable_swap: false
+    user.params: console=tty0 console=ttyS1,115200
+    deploy.params: ETH_DEV=eth0 console=tty0 console=ttyS1,115200 modprobe.blacklist=igb
+      ramdisk_size=260000 rw noapic init=/linuxrc
+    dhcp.serial: 1 115200
+    deployment.timeout: 600
+    deployment.retries: 2
+    broadcast.retries: 0
+    broadcast.timeout: 1000
+    boot.timeout.0: 150
+    boot.timeout.1: 600
+    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
 nantes:
   econome:
     reboot.timeout: 200
