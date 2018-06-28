@@ -7,7 +7,7 @@ parapluie-4:
     nb_threads: 24
     platform_type: x86_64
   bios:
-    release_date: '09/06/2010'
+    release_date: 09/06/2010
     vendor: HP
     version: O37
   chassis:
@@ -55,10 +55,11 @@ parapluie-4:
     ib0:
       driver: mlx4_core
       enabled: true
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:b2:49
+      guid: '0x00237dffff94b249'
       interface: InfiniBand
       ip: 172.18.99.4
       ip6: fe80::223:7dff:ff94:b249
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:b2:49
       management: false
       mounted: true
       rate: 20000000000
@@ -66,8 +67,9 @@ parapluie-4:
     ib1:
       driver: mlx4_core
       enabled: false
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:b2:4a
+      guid: '0x00237dffff94b24a'
       interface: InfiniBand
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:00:23:7d:ff:ff:94:b2:4a
       management: false
       mounted: false
       rate: 10000000000
@@ -94,10 +96,10 @@ parapluie-4:
     version: 6164 HE
   storage_devices:
     sda:
+      by_id: node-was-not-available-to-retrieve-this-value
       model: VB0250EAVER
       rev: HPG0
       size: 250059350016
       vendor: ATA
-      by_id: node-was-not-available-to-retrieve-this-value
   supported_job_types:
     virtual: amd-v
