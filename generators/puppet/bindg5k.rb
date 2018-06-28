@@ -21,7 +21,7 @@ input_data_dir = "../../input/grid5000/"
 refapi = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
 
 $options = {}
-$options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
+$options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia toulouse}
 $options[:output_dir] = "/tmp/puppet"
 $options[:verbose] = false
 
@@ -388,7 +388,7 @@ def set_zone_header_records(zone, site)
   zone.mx = DNS::Zone::RR::MX.new
   zone.mx.priority = 10
   zone.mx.exchange = "mail.#{zone.site_uid}.grid5000.fr."
-  if (File.basename(zone.file_path) == "#{zone.site_uid}.db")
+  if (File.basename(zone.file_path) == "#{zone.site_uid}.db" && site['frontend_ip'])
     zone.at = DNS::Zone::RR::A.new
     zone.at.address = site['frontend_ip']
   end
@@ -494,7 +494,7 @@ refapi["sites"].each { |site_uid, site|
   site_records['networks'] = get_networks_records(site, 'networks') unless site['networks'].nil?
   site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
 
-  site.fetch("clusters").sort.each { |cluster_uid, cluster|
+  site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
 
     cluster.fetch('nodes').select { |node_uid, node|
       node != nil && node["status"] != "retired" && node.has_key?('network_adapters')

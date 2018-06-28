@@ -30,7 +30,7 @@ subnet <%= kavlan_ip.network.to_addr %> netmask <%= kavlan_ip.netmask.to_addr %>
 <%
 refapi['sites'].sort.to_h.each_key do |site|
   next if kavlan_id.to_i.between?(1, 9) and site != site_uid
-  refapi['sites'][site]['clusters'].sort.to_h.each do |cluster_uid, cluster|
+  refapi['sites'][site].fetch('clusters', []).sort.to_h.each do |cluster_uid, cluster|
     cluster['nodes'].sort.to_h.each do |node_uid, node|
       next if node['status'] and node['status'] == 'retired'
       node['network_adapters'].each do |interface_uid, interface|

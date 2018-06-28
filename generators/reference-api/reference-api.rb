@@ -185,11 +185,11 @@ global_hash["sites"].each do |site_uid, site|
   # Write network info
   #
 
-  site["networks"].sort.each do |network_uid, network|
+  site.fetch("networks", []).sort.each do |network_uid, network|
     create_network_equipment(network_uid, network, refapi_path, site_uid)
   end
 
-  site["clusters"].sort.each do |cluster_uid, cluster|
+  site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
     puts "  #{cluster_uid}"
 
     #
