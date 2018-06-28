@@ -44,9 +44,9 @@ dns:
 api-proxy:
   kind: virtual
   network_adapters: {default: {ip: 172.16.63.114}}
-oar-server:
+oar:
   kind: virtual
-  alias: [oar, oardb]
+  alias: [oar-server, oardb]
   network_adapters: {default: {ip: 172.16.63.116}}
 syslog:
   kind: virtual
