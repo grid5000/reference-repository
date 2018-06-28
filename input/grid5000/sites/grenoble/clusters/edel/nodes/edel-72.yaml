@@ -19,49 +19,51 @@ edel-72:
   network_adapters:
     bmc:
       ip: 172.17.17.72
-      mac: '08:00:38:36:af:ee'
+      mac: 08:00:38:36:af:ee
       management: true
     eth0:
       driver: igb
       interface: Ethernet
       ip: 172.16.17.72
-      mac: '08:00:38:36:f3:dc'
+      mac: 08:00:38:36:f3:dc
       management: false
-      mounted: true
       model: 82576 Gigabit Network Connection
+      mounted: true
       name: enp1s0f0
       rate: 1000000000
       vendor: Intel
     eth1:
       driver: igb
       interface: Ethernet
-      mac: '08:00:38:36:f3:dd'
+      mac: 08:00:38:36:f3:dd
       management: false
-      mounted: false
-      rate: 1000000000
       model: 82576 Gigabit Network Connection
+      mounted: false
       name: enp1s0f1
+      rate: 1000000000
       vendor: Intel
     ib0:
       driver: mlx4_core
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:5f:cb
+      guid: '0x0800380001375fcb'
       interface: InfiniBand
       ip: 172.18.17.72
       ip6: fe80::a00:3800:137:5fcb
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:5f:cb
       management: false
+      model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
       mounted: true
       rate: 40000000000
       vendor: Mellanox Technologies
-      model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
     ib1:
       driver: mlx4_core
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+      guid: '0x0000000000000000'
       interface: InfiniBand
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:00:00:00:00:00:00:00:00
       management: false
+      model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
       mounted: false
       rate: 10000000000
       vendor: Mellanox Technologies
-      model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
@@ -84,10 +86,10 @@ edel-72:
     version: E5520
   storage_devices:
     sda:
+      by_id: node-was-not-available-to-retrieve-this-value
       model: C400-MTFDDAA128M
       rev: 40.0
       size: 128035676160
       vendor: ATA
-      by_id: node-was-not-available-to-retrieve-this-value
   supported_job_types:
     virtual: ivt

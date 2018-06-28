@@ -19,14 +19,14 @@ edel-2:
   network_adapters:
     bmc:
       ip: 172.17.17.2
-      mac: '08:00:38:36:b0:d4'
+      mac: 08:00:38:36:b0:d4
       management: true
     eth0:
       driver: igb
       firmware_version: 2.0.6
       interface: Ethernet
       ip: 172.16.17.2
-      mac: '08:00:38:36:f5:a8'
+      mac: 08:00:38:36:f5:a8
       management: false
       model: 82576 Gigabit Network Connection
       name: enp1s0f0
@@ -36,16 +36,17 @@ edel-2:
       driver: igb
       firmware_version: 2.0.6
       interface: Ethernet
-      mac: '08:00:38:36:f5:a9'
+      mac: 08:00:38:36:f5:a9
       management: false
       model: 82576 Gigabit Network Connection
       name: enp1s0f1
       vendor: Intel
     ib0:
       driver: mlx4_core
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:62:7d
+      guid: '0x080038000137627d'
       interface: InfiniBand
       ip: 172.18.17.2
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:08:00:38:00:01:37:62:7d
       management: false
       model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
       rate: 40000000000
