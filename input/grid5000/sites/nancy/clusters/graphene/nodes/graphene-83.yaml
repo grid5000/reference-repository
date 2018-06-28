@@ -40,17 +40,19 @@ graphene-83:
       management: false
     ib0:
       driver: mlx4_core
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a5
+      guid: '0x0002c903000b93a5'
       interface: InfiniBand
       ip: 172.18.64.83
       ip6: fe80::202:c903:b:93a5
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a5
       management: false
       rate: 20000000000
       version: MT26418
     ib1:
       driver: mlx4_core
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a6
+      guid: '0x0002c903000b93a6'
       interface: InfiniBand
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:00:02:c9:03:00:0b:93:a6
       management: false
       rate: 10000000000
       version: MT26418
@@ -76,10 +78,10 @@ graphene-83:
     version: X3440
   storage_devices:
     sda:
+      by_id: node-was-not-available-to-retrieve-this-value
       model: Hitachi HDS72103
       rev: JPFOA3EA
       size: 320072933376
       vendor: Hitachi
-      by_id: node-was-not-available-to-retrieve-this-value
   supported_job_types:
     virtual: ivt
