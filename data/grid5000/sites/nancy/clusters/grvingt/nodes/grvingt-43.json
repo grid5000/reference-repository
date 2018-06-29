@@ -1,0 +1,150 @@
+{
+  "architecture": {
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "05/30/2018",
+    "vendor": "Dell Inc.",
+    "version": "1.4.9"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6420",
+    "serial": "9XHCDP2"
+  },
+  "gpu": {
+    "gpu": false
+  },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.195.91",
+      "kavlan-11": "10.7.201.91",
+      "kavlan-12": "10.11.201.91",
+      "kavlan-13": "10.15.201.91",
+      "kavlan-14": "10.19.201.91",
+      "kavlan-16": "10.27.201.91",
+      "kavlan-18": "10.35.201.91",
+      "kavlan-19": "10.39.201.91",
+      "kavlan-2": "192.168.211.91",
+      "kavlan-20": "10.43.201.91",
+      "kavlan-21": "10.47.201.91",
+      "kavlan-3": "192.168.227.91",
+      "kavlan-4": "10.16.3.91",
+      "kavlan-5": "10.16.67.91",
+      "kavlan-6": "10.16.131.91",
+      "kavlan-7": "10.16.195.91",
+      "kavlan-8": "10.17.3.91",
+      "kavlan-9": "10.17.67.91"
+    }
+  },
+  "main_memory": {
+    "ram_size": 206158430208
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "6.00 0x800034ec 18.3.6",
+      "interface": "Ethernet",
+      "ip": "172.16.76.43",
+      "kavlan": true,
+      "mac": "3c:fd:fe:57:d4:58",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp24s0f0",
+      "network_address": "grvingt-43.nancy.grid5000.fr",
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "6.00 0x800034ec 18.3.6",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "3c:fd:fe:57:d4:5a",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp24s0f1",
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.76.43",
+      "kavlan": false,
+      "mac": "50:9a:4c:83:cf:77",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "grvingt-43-bmc.nancy.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "cstate_max_id": null,
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 23068672,
+    "clock_speed": 2100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
+    "vendor": "Intel",
+    "version": "Gold 6130"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000c500b91bae6d",
+      "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-3",
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "firmware_version": "NB33",
+      "interface": "SATA",
+      "model": "ST1000NX0443",
+      "size": 1000204886016,
+      "storage": "HDD",
+      "vendor": "Seagate"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "grvingt-43"
+}
