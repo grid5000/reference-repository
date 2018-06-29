@@ -7,7 +7,7 @@ uvb-30:
     nb_threads: 24
     platform_type: x86_64
   bios:
-    release_date: '09/17/2013'
+    release_date: 09/17/2013
     vendor: Dell Inc.
     version: 1.71
   chassis:
@@ -43,23 +43,26 @@ uvb-30:
       vendor: Intel
     ib0:
       driver: mlx4_core
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:99
+      guid: '0x0024e89097ff8a99'
       interface: InfiniBand
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:99
       management: false
       model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
       rate: 40000000000
       vendor: Mellanox Technologies
     ib0.8100:
       driver: mlx4_core
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:99
+      guid: '0x0024e89097ff8a99'
       interface: InfiniBand
       ip: 172.18.132.30
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:8a:99
       management: false
       rate: 40000000000
     ib1:
       driver: mlx4_core
-      guid: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:c6:12
+      guid: '0x0024e89097ffc612'
       interface: InfiniBand
+      mac: 20:00:55:00:41:80:00:00:00:00:00:00:00:24:e8:90:97:ff:c6:12
       management: false
       model: MT26428 [ConnectX VPI PCIe 2.0 5GT/s - IB QDR / 10GigE]
       rate: 10000000000
@@ -87,10 +90,10 @@ uvb-30:
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x50014ee158d2867d"
+      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
       model: WDC WD2502ABYS-1
       firmware_version: 02.03B05
       size: 250000000000
       vendor: Western Digital
-      by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
   supported_job_types:
     virtual: ivt
