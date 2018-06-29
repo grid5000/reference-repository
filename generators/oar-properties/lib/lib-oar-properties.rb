@@ -33,7 +33,12 @@ def get_ref_default_properties(_site_uid, site)
       begin
         properties[node_uid] = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
       rescue MissingProperty => e
-        puts "Error while processing node #{node_uid}: #{e}"
+        puts "Error (missing property) while processing node #{node_uid}: #{e}"
+      rescue Exception => e
+        puts "FATAL ERROR while processing node #{node_uid}: #{e}"
+        puts "Description of the node is:"
+        pp node
+        raise
       end
     end
   end
