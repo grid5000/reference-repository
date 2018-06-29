@@ -21,15 +21,6 @@ grvingt-18:
       ip: 172.17.76.18
       mac: 50:9a:4c:86:03:3e
       management: true
-    enp24s0f1:
-      driver: i40e
-      firmware_version: 6.00 0x800034ec 18.3.6
-      interface: Ethernet
-      mac: 3c:fd:fe:59:18:52
-      management: false
-      model: Ethernet Controller X710 for 10GbE SFP+
-      name: enp24s0f1
-      vendor: Intel
     eth0:
       driver: i40e
       firmware_version: 6.00 0x800034ec 18.3.6
@@ -40,6 +31,15 @@ grvingt-18:
       model: Ethernet Controller X710 for 10GbE SFP+
       name: enp24s0f0
       rate: 10000000000
+      vendor: Intel
+    eth1:
+      driver: i40e
+      firmware_version: 6.00 0x800034ec 18.3.6
+      interface: Ethernet
+      mac: 3c:fd:fe:59:18:52
+      management: false
+      model: Ethernet Controller X710 for 10GbE SFP+
+      name: enp24s0f1
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
