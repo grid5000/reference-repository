@@ -59,9 +59,21 @@ grimani-1:
       model: I350 Gigabit Network Connection
       name: eno4
       vendor: Intel
+    ib0:
+      driver: hfi1
+      firmware_version: 1.24
+      guid: '0x001175010171b09f'
+      interface: Omni-Path
+      mac: 80:00:00:02:fe:80:00:00:00:00:00:00:00:11:75:01:01:71:b0:9f
+      management: false
+      model: Omni-Path HFI Silicon 100 Series [discrete]
+      name: ib0
+      rate: 100000000000
+      vendor: Intel
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
+    cstate_max_id: 
     ht_enabled: false
     pstate_driver: intel_pstate
     pstate_governor: performance
