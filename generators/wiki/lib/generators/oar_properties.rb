@@ -83,13 +83,22 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "the maximum rate of connected network interfaces in Gbps"
     },
     "ib" => {
-      "description" => "The technology of the infiniband interface"
+      "description" => "The technology of the Infiniband interface"
     },
     "ib_count" => {
       "description" => "The number of Infiniband interfaces available"
     },
     "ib_rate" => {
-      "description" => "The rate of the connected infiniband interface in Gbps"
+      "description" => "The rate of the connected Infiniband interface in Gbps"
+    },
+    "opa" => {
+      "description" => "Whether an Omni-Path interface is available"
+    },
+    "opa_count" => {
+      "description" => "The number of Omni-Path interfaces available"
+    },
+    "opa_rate" => {
+      "description" => "The rate of the connected Omni-Path interface in Gbps"
     },
     "myri" => {
       "description" => "The type of Myrinet interfaces available"
@@ -134,7 +143,7 @@ class OarPropertiesGenerator < WikiGenerator
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
     "Hierarchy" => ["cluster", "cpu", "core", "host", "network_address", "ip", "switch"],
-    "Hardware" => ["gpu", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
+    "Hardware" => ["gpu", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel"]
   }
 
