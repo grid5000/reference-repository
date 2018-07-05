@@ -17,70 +17,136 @@ sgrvingt:
   mtu: 1500
   linecards:
     1:
-      snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
-      kavlan_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
-      kind: node
-      rate: 10000000000
-      port: eth0
-      ports:
-        1: grvingt-3
-        2: grvingt-4
-        3: grvingt-7
-        4: grvingt-8
-        5: grvingt-11
-        6: grvingt-12
-        7: grvingt-15
-        8: grvingt-16
-        9: grvingt-19
-        10: grvingt-20
-        11: grvingt-23
-        12: grvingt-24
-        13: grvingt-27
-        14: grvingt-28
-        15: grvingt-31
-        16: grvingt-32
-        17: grvingt-35
-        18: grvingt-36
-        19: grvingt-39
-        20: grvingt-40
-        21: grvingt-37
-        22: grvingt-38
-        23: grvingt-33
-        24: grvingt-34
-        25: grvingt-29
-        26: grvingt-30
-        27: grvingt-25
-        28: grvingt-26
-        29: grvingt-21
-        30: grvingt-22
-        31: grvingt-17
-        32: grvingt-18
-        33: grvingt-13
-        34: grvingt-14
-        35: grvingt-9
-        36: grvingt-10
-        37: grvingt-5
-        38: grvingt-6
-        39: grvingt-1
-        40: grvingt-2
-        41: 
-          uid: grcinq-srv-3
-          kind: other
-        42:
-          uid: grcinq-srv-2
-          kind: other
-        43:
-          uid: grvingt-srv
-          kind: other
-        44:
-          uid: wurst
-          kind: other
-        45:
-          uid: sgrcinq1
-          kind: switch
-        46:
-          uid: grcinq-srv-1
-          kind: other
-        48:
-          uid: gw-nancy
-          kind: router 
+       snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
+       kavlan_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
+       kind: node
+       rate: 10000000000
+       port: eth0
+       ports:
+         1: grvingt-3
+         2: grvingt-4
+         3: grvingt-7
+         4: grvingt-8
+         5: grvingt-11
+         6: grvingt-12
+         7: grvingt-15
+         8: grvingt-16
+         9: grvingt-19
+         10: grvingt-20
+         11: grvingt-23
+         12: grvingt-24
+         13: grvingt-27
+         14: grvingt-28
+         15: grvingt-31
+         16: grvingt-32
+         17: grvingt-35
+         18: grvingt-36
+         19: grvingt-39
+         20: grvingt-40
+         21: grvingt-37
+         22: grvingt-38
+         23: grvingt-33
+         24: grvingt-34
+         25: grvingt-29
+         26: grvingt-30
+         27: grvingt-25
+         28: grvingt-26
+         29: grvingt-21
+         30: grvingt-22
+         31: grvingt-17
+         32: grvingt-18
+         33: grvingt-13
+         34: grvingt-14
+         35: grvingt-9
+         36: grvingt-10
+         37: grvingt-5
+         38: grvingt-6
+         39: grvingt-1
+         40: grvingt-2
+         41: 
+           uid: grcinq-srv-3
+           kind: other
+         42:
+           uid: grcinq-srv-2
+           kind: other
+         43:
+           uid: grvingt-srv
+           kind: other
+         44:
+           uid: wurst
+           kind: other
+         45:
+           uid: sgrcinq1
+           kind: switch
+         46:
+           uid: grcinq-srv-1
+           kind: other
+         48:
+           uid: gw-nancy
+           kind: router
+    49:
+        snmp_pattern: "TenGigabitEthernet  1/%LINECARD%/%PORT%"
+        kavlan_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
+        kind: node
+        rate: 10000000000
+        port: eth0
+        ports:
+          1: grvingt-44
+          2: grvingt-43
+          3: grvingt-48
+          4: grvingt-47
+    50:
+        snmp_pattern: "TenGigabitEthernet  1/%LINECARD%/%PORT%"
+        kavlan_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
+        kind: node
+        rate: 10000000000
+        port: eth0
+        ports:
+          1: grvingt-58
+          2: grvingt-57
+          3: grvingt-62
+          4: grvingt-61
+    51:
+        snmp_pattern: "TenGigabitEthernet  1/%LINECARD%/%PORT%"
+        kavlan_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
+        kind: node
+        rate: 10000000000
+        port: eth0
+        ports:
+          1: grvingt-52
+          2: grvingt-51
+          3: grvingt-56
+          4: grvingt-55
+    52:
+        snmp_pattern: "TenGigabitEthernet  1/%LINECARD%/%PORT%"
+        kavlan_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
+        kind: node
+        rate: 10000000000
+        port: eth0
+        ports:
+          1: grvingt-50
+          2: grvingt-49
+          3: grvingt-54
+          4: grvingt-53
+    53:
+        snmp_pattern: "TenGigabitEthernet  1/%LINECARD%/%PORT%"
+        kavlan_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
+        kind: node
+        rate: 10000000000
+        port: eth0
+        ports:
+          1: grvingt-60
+          2: grvingt-59
+          3: grvingt-64
+          4: grvingt-63
+    54:
+        snmp_pattern: "TenGigabitEthernet  1/%LINECARD%/%PORT%"
+        kavlan_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
+        kind: node
+        rate: 10000000000
+        port: eth0
+        ports:
+          1: grvingt-42
+          2: grvingt-41
+          3: grvingt-46
+          4: grvingt-45
