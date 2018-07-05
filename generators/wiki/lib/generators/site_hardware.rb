@@ -257,7 +257,11 @@ def get_hardware(sites)
         hard['network_description'] = network_description.map do |e|
           s  = e['count'] > 1 ? "\n* " : ''
           s += e['unavailable_for_experiment'] ? '<span style="color:grey">' : ''
-          s += e['name'].nil? ? e['device'] : e['device'] + "/" + e['name']
+          if e['name'].nil? or e['name'] == e['device']
+            s += e['device']
+          else
+            s +=  e['device'] + "/" + e['name']
+          end
           s += ', '
           s += e['interface']
           s += ', '
