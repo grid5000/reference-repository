@@ -26,7 +26,7 @@ grvingt-42:
       firmware_version: 6.00 0x80003753 18.5.17
       interface: Ethernet
       ip: 172.16.76.42
-      mac: 3C:FD:FE:57:6B:D8
+      mac: 3c:fd:fe:57:6b:d8
       management: false
       model: Ethernet Controller X710 for 10GbE SFP+
       name: enp24s0f0
@@ -36,10 +36,21 @@ grvingt-42:
       driver: i40e
       firmware_version: 6.00 0x80003753 18.5.17
       interface: Ethernet
-      mac: 3C:FD:FE:57:6B:DA
+      mac: 3c:fd:fe:57:6b:da
       management: false
       model: Ethernet Controller X710 for 10GbE SFP+
       name: enp24s0f1
+      vendor: Intel
+    ib0:
+      driver: hfi1
+      firmware_version: 1.24
+      guid: '0x001175010172043a'
+      interface: Omni-Path
+      mac: 80:00:00:02:fe:80:00:00:00:00:00:00:00:11:75:01:01:72:04:3a
+      management: false
+      model: Omni-Path HFI Silicon 100 Series [discrete]
+      name: ib0
+      rate: 100000000000
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
