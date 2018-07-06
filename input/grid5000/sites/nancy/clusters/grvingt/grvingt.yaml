@@ -45,3 +45,13 @@ nodes:
         interface: SATA
         driver: megaraid_sas
         storage: HDD
+
+  grvingt-[1-8]:
+    supported_job_types:
+      max_walltime: 14400
+  grvingt-[9-16]:
+    supported_job_types:
+      max_walltime: 43200
+  grvingt-[17-64]:
+    supported_job_types:
+      max_walltime: 604800
