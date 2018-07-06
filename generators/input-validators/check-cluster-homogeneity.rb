@@ -37,6 +37,9 @@ def global_ignore_keys()
     ~network_adapters.myri0.mac
     ~network_adapters.myri0.network_address
   
+    ~network_adapters.ib0.mac
+    ~network_adapters.ib1.mac
+
     ~pdu
     ~pdu.port
     ~pdu.uid
