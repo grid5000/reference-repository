@@ -39,110 +39,115 @@ class G5KHardwareGenerator < WikiGenerator
     @global_hash['sites'].sort.to_h.each { |site_uid, site_hash|
       site_hash['clusters'].sort.to_h.each { |cluster_uid, cluster_hash|
         cluster_hash['nodes'].sort.to_h.each { |node_uid, node_hash|
-          next if node_hash['status'] == 'retired'
-          @node = node_uid
+          begin
+            next if node_hash['status'] == 'retired'
+            @node = node_uid
 
-          # Processors
-          model = node_hash['processor']['model']
-          version = "#{model} #{node_hash['processor']['version']}"
-          microarchitecture = node_hash['processor']['microarchitecture']
+            # Processors
+            model = node_hash['processor']['model']
+            version = "#{model} #{node_hash['processor']['version']}"
+            microarchitecture = node_hash['processor']['microarchitecture']
 
-          cluster_procs = node_hash['architecture']['nb_procs']
-          cluster_cores = node_hash['architecture']['nb_cores']
+            cluster_procs = node_hash['architecture']['nb_procs']
+            cluster_cores = node_hash['architecture']['nb_cores']
 
-          key = [model]
-          init(data, 'proc_families', key)
-          data['proc_families'][key][site_uid] += cluster_procs
+            key = [model]
+            init(data, 'proc_families', key)
+            data['proc_families'][key][site_uid] += cluster_procs
 
-          key = [{text: microarchitecture || ' ', sort: get_date(microarchitecture) + ', ' + microarchitecture.to_s}, {text: version, sort: get_date(microarchitecture) + ', ' + version.to_s}]
-          init(data, 'proc_models', key)
-          data['proc_models'][key][site_uid] += cluster_procs
+            key = [{text: microarchitecture || ' ', sort: get_date(microarchitecture) + ', ' + microarchitecture.to_s}, {text: version, sort: get_date(microarchitecture) + ', ' + version.to_s}]
+            init(data, 'proc_models', key)
+            data['proc_models'][key][site_uid] += cluster_procs
 
-          init(data, 'core_models', key)
-          data['core_models'][key][site_uid] += cluster_cores
+            init(data, 'core_models', key)
+            data['core_models'][key][site_uid] += cluster_cores
 
-          # RAM size
-          ram_size = node_hash['main_memory']['ram_size']
-          key = [{ text: G5K.get_size(ram_size), sort: (ram_size / 2**30).to_s.rjust(6, '0') + ' GB' }]
-          init(data, 'ram_size', key)
-          data['ram_size'][key][site_uid] += 1
+            # RAM size
+            ram_size = node_hash['main_memory']['ram_size']
+            key = [{ text: G5K.get_size(ram_size), sort: (ram_size / 2**30).to_s.rjust(6, '0') + ' GB' }]
+            init(data, 'ram_size', key)
+            data['ram_size'][key][site_uid] += 1
 
-          # HPC Networks
-          interfaces = node_hash['network_adapters'].select{ |k, v|
-            v['enabled'] and
-            (v['mounted'] or v['mountable']) and
-            not v['management'] and
-            (k =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
-          }.map{ |k, v|
-            [
-              {
-                text: v['interface'] + ' ' + G5K.get_rate(v['rate']),
-                sort: ((v['rate'])/10**6).to_s.rjust(6, '0') + ' Gbps, ' + v['interface']
-              }
-            ]
-          }.uniq
+            # HPC Networks
+            interfaces = node_hash['network_adapters'].select{ |k, v|
+              v['enabled'] and
+                (v['mounted'] or v['mountable']) and
+                not v['management'] and
+                (k =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
+            }.map{ |k, v|
+              [
+                {
+                  text: v['interface'] + ' ' + G5K.get_rate(v['rate']),
+                  sort: ((v['rate'])/10**6).to_s.rjust(6, '0') + ' Gbps, ' + v['interface']
+                }
+              ]
+            }.uniq
 
-          net_interconnects = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
-          net_interconnects.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
-            init(data, 'net_interconnects', k)
-            data['net_interconnects'][k][site_uid] += v
-          }
+            net_interconnects = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
+            net_interconnects.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
+              init(data, 'net_interconnects', k)
+              data['net_interconnects'][k][site_uid] += v
+            }
 
-          # NIC models
-          interfaces = node_hash['network_adapters'].select{ |k, v|
-            v['enabled'] and
-            (v['mounted'] or v['mountable']) and
-            not v['management'] and
-            (k =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
-          }.map{ |k, v|
-            t = (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A');
-            [
-              {
-                text: v['interface'],
-                sort: v['interface']
-              },
-              {
-                text: t, sort: t
-              }
-            ]
-          }.uniq
+            # NIC models
+            interfaces = node_hash['network_adapters'].select{ |k, v|
+              v['enabled'] and
+                (v['mounted'] or v['mountable']) and
+                not v['management'] and
+                (k =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
+            }.map{ |k, v|
+              t = (v['vendor'] || 'N/A') + ' ' + (v['model'] || 'N/A');
+              [
+                {
+                  text: v['interface'],
+                  sort: v['interface']
+                },
+                {
+                  text: t, sort: t
+                }
+              ]
+            }.uniq
 
-          net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
-          net_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
-            init(data, 'net_models', k)
-            data['net_models'][k][site_uid] += v
-          }
+            net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
+            net_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
+              init(data, 'net_models', k)
+              data['net_models'][k][site_uid] += v
+            }
 
-          # Accelerators
-          g = node_hash['gpu']
-          m = node_hash['mic']
+            # Accelerators
+            g = node_hash['gpu']
+            m = node_hash['mic']
 
-          gpu_families = {}
-          gpu_families[[g['gpu_vendor']]] = g['gpu_count'] if g and g['gpu']
-          mic_families = {}
-          mic_families[[m['mic_vendor']]] = m['mic_count'] if m and m['mic']
-          gpu_families.merge(mic_families).sort.to_h.each { |k, v|
-            init(data, 'acc_families', k)
-            data['acc_families'][k][site_uid] += v
-          }
+            gpu_families = {}
+            gpu_families[[g['gpu_vendor']]] = g['gpu_count'] if g and g['gpu']
+            mic_families = {}
+            mic_families[[m['mic_vendor']]] = m['mic_count'] if m and m['mic']
+            gpu_families.merge(mic_families).sort.to_h.each { |k, v|
+              init(data, 'acc_families', k)
+              data['acc_families'][k][site_uid] += v
+            }
 
-          gpu_details = {}
-          gpu_details[["#{g['gpu_vendor']} #{g['gpu_model']}"]] = [g['gpu_count'], g['gpu_cores']] if g and g['gpu']
-          mic_details = {}
-          mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
+            gpu_details = {}
+            gpu_details[["#{g['gpu_vendor']} #{g['gpu_model']}"]] = [g['gpu_count'], g['gpu_cores']] if g and g['gpu']
+            mic_details = {}
+            mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
 
-          gpu_details.merge(mic_details).sort.to_h.each { |k, v|
-            init(data, 'acc_models', k)
-            data['acc_models'][k][site_uid] += v[0]
+            gpu_details.merge(mic_details).sort.to_h.each { |k, v|
+              init(data, 'acc_models', k)
+              data['acc_models'][k][site_uid] += v[0]
 
-            init(data, 'acc_cores', k)
-            data['acc_cores'][k][site_uid] += v[1]
-          }
+              init(data, 'acc_cores', k)
+              data['acc_cores'][k][site_uid] += v[1]
+            }
 
-          # Nodes
-          key = [cluster_hash['model']]
-          init(data, 'node_models', key)
-          data['node_models'][key][site_uid] += 1
+            # Nodes
+            key = [cluster_hash['model']]
+            init(data, 'node_models', key)
+            data['node_models'][key][site_uid] += 1
+          rescue
+            puts "ERROR while processing #{node_uid}: #{$!}"
+            raise
+          end
         }
       }
     }
