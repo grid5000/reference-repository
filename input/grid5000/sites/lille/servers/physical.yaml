@@ -260,3 +260,119 @@ chiterne:
             port: 9
           - uid: pdu-b2p2
             port: 9
+
+gardin:
+  kind: physical
+  warranty: 2023-06-25
+  serial: 2SYTKQ2
+  network_adapters:
+    default:
+      mounted: true
+      ip: 172.16.47.9
+    bmc:
+      mounted: true
+      ip: 172.17.46.9
+      mac: 54:48:10:f4:f9:0c
+    monitoring:
+      wattmeter: multiple
+      metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: pdu-b2p1
+            port:
+          - uid: pdu-b2p2
+            port:
+
+gwol-north:
+  kind: physical
+  warranty: 2023-06-25
+  serial: 2SSSKQ2
+  network_adapters:
+    default:
+      mounted: true
+      ip: 172.16.47.4
+    bmc:
+      mounted: true
+      ip: 172.17.46.4
+      mac: 54:48:10:f4:f5:ca
+    monitoring:
+      wattmeter: multiple
+      metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: pdu-b2p1
+            port:
+          - uid: pdu-b2p2
+            port:
+
+granche-srv1:
+  kind: physical
+  warranty: 2023-06-25
+  serial: 2STSKQ2
+  network_adapters:
+    default:
+      mounted: true
+      ip: 172.16.47.14
+    bmc:
+      mounted: true
+      ip: 172.17.46.14
+      mac: 54:48:10:f2:e9:78
+    monitoring:
+      wattmeter: multiple
+      metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: pdu-b2p1
+            port:
+          - uid: pdu-b2p2
+            port:
+
+granche-srv2:
+  kind: physical
+  warranty: 2023-06-25
+  serial: 2SVQKQ2
+  network_adapters:
+    default:
+      mounted: true
+      ip: 172.16.47.15
+    bmc:
+      mounted: true
+      ip: 172.17.46.15
+      mac: 54:48:10:f2:d3:7c
+    monitoring:
+      wattmeter: multiple
+      metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: pdu-b2p1
+            port:
+          - uid: pdu-b2p2
+            port:
