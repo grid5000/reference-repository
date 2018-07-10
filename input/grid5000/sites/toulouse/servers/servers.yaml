@@ -1,0 +1,33 @@
+g5kservices1:
+  kind: physical
+  alias: [adminfront, osirim-home5k]
+  warranty: 01.2010
+  serial:
+  network_adapters:
+    default:
+      ip: 172.16.127.1
+    adm:
+      ip: 172.17.127.1
+
+dns:
+  kind: virtual
+  alias: [ns]
+  network_adapters: {default: {ip: 172.16.127.106}}
+ldap:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.127.102}}
+mail:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.127.113}}
+puppet:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.127.110}}
+osirim-gw:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.113.8}}
+osirim:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.113.7}}
+gw:
+  kind: virtual
+  network_adapters: {default: {ip: 172.16.127.254}}
