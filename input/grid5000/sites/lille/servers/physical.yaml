@@ -269,6 +269,7 @@ gardin:
     default:
       mounted: true
       ip: 172.16.47.9
+      mac: 24:6E:96:DC:F4:2C
     bmc:
       mounted: true
       ip: 172.17.46.9
@@ -286,9 +287,9 @@ gardin:
       via:
         pdu:
           - uid: pdu-b2p1
-            port:
+            port: 13
           - uid: pdu-b2p2
-            port:
+            port: 13
 
 gwol-north:
   kind: physical
@@ -298,6 +299,7 @@ gwol-north:
     default:
       mounted: true
       ip: 172.16.47.4
+      mac: 24:6E:96:DD:1F:56
     bmc:
       mounted: true
       ip: 172.17.46.4
@@ -315,9 +317,9 @@ gwol-north:
       via:
         pdu:
           - uid: pdu-b2p1
-            port:
+            port: 14
           - uid: pdu-b2p2
-            port:
+            port: 14
 
 granche-srv1:
   kind: physical
@@ -327,6 +329,7 @@ granche-srv1:
     default:
       mounted: true
       ip: 172.16.47.14
+      mac: 3C:FD:FE:B9:91:30
     bmc:
       mounted: true
       ip: 172.17.46.14
@@ -344,9 +347,9 @@ granche-srv1:
       via:
         pdu:
           - uid: pdu-b2p1
-            port:
+            port: 11
           - uid: pdu-b2p2
-            port:
+            port: 11
 
 granche-srv2:
   kind: physical
@@ -356,6 +359,7 @@ granche-srv2:
     default:
       mounted: true
       ip: 172.16.47.15
+      mac: 3C:FD:FE:B9:9A:10
     bmc:
       mounted: true
       ip: 172.17.46.15
@@ -373,6 +377,6 @@ granche-srv2:
       via:
         pdu:
           - uid: pdu-b2p1
-            port:
+            port: 10
           - uid: pdu-b2p2
-            port:
+            port: 10
