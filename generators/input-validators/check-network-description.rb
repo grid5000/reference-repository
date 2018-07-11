@@ -130,7 +130,7 @@ def check_network_description(options)
     # find netnodes without connection
     # for routers, it's OK, because they would be connected to other G5K routers
     netnodes.select { |n| n['found'] == 0 and not n['kind'] == 'router' }.each do |n|
-      if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or HPC_SWITCHES.include?(n['uid'])
+      if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or n['interface'] == 'Omni-Path' or HPC_SWITCHES.include?(n['uid'])
         puts "WARNING: we did not find a corresponding entry on a network equipment for this InfiniBand node: #{n}"
       else
         puts "ERROR: we did not find a corresponding entry on a network equipment for this node or equipment (where is it plugged?!): #{n}"
