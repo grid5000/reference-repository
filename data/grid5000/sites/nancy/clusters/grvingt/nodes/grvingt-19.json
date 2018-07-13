@@ -44,7 +44,7 @@
     "ram_size": 206158430208
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "shared"
   },
   "network_adapters": [
     {
@@ -143,6 +143,15 @@
     "version": "Gold 6130"
   },
   "sensors": {
+    "power": {
+      "available": true,
+      "per_outlets": false,
+      "via": {
+        "api": {
+          "metric": "pdu_shared"
+        }
+      }
+    }
   },
   "storage_devices": [
     {
