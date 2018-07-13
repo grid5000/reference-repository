@@ -1,0 +1,22 @@
+<%
+# List file in the directory instead of using the 'reverse' variable as some files might be set manually
+Dir.entries(File.join(zones_dir, "local")).sort.each { |file|
+  next unless /.*.db$/.match(file)
+
+  comment = ''
+  zone = ''
+
+  if file == "#{site_uid}.db"
+    zone = "#{site_uid}.grid5000.fr"
+  elsif /^reverse-(.*).db$/.match(file)
+    zone = "#{$1}.in-addr.arpa"
+  else
+    puts "Error: unknown zone for '#{file}' in '#{zones_dir}'"
+    next
+  end
+%>
+  zone "<%= zone %>" {
+    type master;
+    file "/etc/bind/zones/<%= site_uid %>/local/<%= file %>";
+  };
+<% } %>
