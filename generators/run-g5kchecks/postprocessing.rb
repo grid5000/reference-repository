@@ -35,8 +35,6 @@ list_of_yaml_files.each { |filename|
     hash["storage_devices"]  = hash["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde"])
     hash["storage_devices"].each {|k, v| v.delete("device") }
 
-    hash['operating_system']['cstate_max_id'] = nil unless hash['operating_system']['cstate_max_id']
-
     hash['network_adapters'].each { |net_adapter_name, net_adapter|
       net_adapter.delete("enabled")
       net_adapter.delete("mounted")
