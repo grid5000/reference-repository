@@ -71,9 +71,8 @@ postinstall:
 pxe:
   headers:
     dhcp: &id001 |-
-      PROMPT 1
+      PROMPT 0
       SERIAL <%= data['dhcp.serial'] %>
-      TIMEOUT 50
     networkboot: *id001
     localboot: *id001
 automata:
