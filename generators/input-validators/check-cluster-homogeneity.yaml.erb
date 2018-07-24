@@ -18,8 +18,6 @@
 #   griffon-[1-91]: missing some serial
 #   griffon-[11-14]: additional myrinet interface
 #
-# grenoble:
-#   edel: some nodes have only 1 IB interface (probably after a hardware replacement)
 ---
 nancy:
   graphique-[1-2]:
@@ -103,13 +101,3 @@ sophia:
   uvb-14:
     - +chassis.serial
     - ~chassis.manufacturer
-grenoble:
-  edel-[1-72]:
-    - +network_adapters.ib1.guid
-    - -network_adapters.ib1.guid
-    - +network_adapters.ib1.model
-    - -network_adapters.ib1.model
-    - +network_adapters.ib1.vendor
-    - -network_adapters.ib1.vendor
-    - ~network_adapters.eth0.firmware_version
-    - ~network_adapters.eth1.firmware_version

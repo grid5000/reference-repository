@@ -46,14 +46,14 @@ class OarPropertiesGenerator < WikiGenerator
     },
     "host" => {
       "description" => "A user-friendly name for the network_address property",
-      "possible_values" => "edel-1.grenoble.grid5000.fr, ..."
+      "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
     "ip" => {
       "description" => "The IPv4 address of the node the resource is part of"
     },
     "network_address" => {
       "description" => "The full hostname of the node the resource is part of",
-      "possible_values" => "edel-1.grenoble.grid5000.fr, ..."
+      "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
     "switch" => {
       "description" => "On what switch the resource is directly connected ?"
