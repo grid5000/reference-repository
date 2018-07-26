@@ -18,6 +18,13 @@ end
 
 puts 'Postprocessing of output/. Copying files into ../../input/'
 
+net_adapter_names_mapping = YAML::load_file("net_names_mapping.yaml")
+
+if (net_adapter_names_mapping == false)
+  puts "failed to load net adapters mappings 'net_names_mapping.yaml'"
+  exit 1
+end
+
 list_of_yaml_files = Dir['output/*.y*ml'].sort_by { |x| -x.count('/') }
 list_of_yaml_files.each { |filename|
   begin
@@ -32,14 +39,30 @@ list_of_yaml_files.each { |filename|
       next
     end
 
+    puts "Post-processing node uid = #{node_uid}"
+
     hash["storage_devices"]  = hash["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde"])
     hash["storage_devices"].each {|k, v| v.delete("device") }
 
-    hash['network_adapters'].each { |net_adapter_name, net_adapter|
+    remaped_net_names = []
+    hash['network_adapters'].each { |net_name, net_adapter|
       net_adapter.delete("enabled")
       net_adapter.delete("mounted")
       net_adapter.delete("mountable")
       net_adapter.delete("rate") if net_adapter["rate"] == 0
+
+      if (net_adapter_names_mapping[node_uid] && net_adapter_names_mapping[node_uid][net_name])
+        #Priority of node-specific mapping instead of default cluster mapping
+        remaped_net_names << [net_name, net_adapter_names_mapping[node_uid][net_name]]
+      elsif (net_adapter_names_mapping[cluster_uid] && net_adapter_names_mapping[cluster_uid][net_name])
+        remaped_net_names << [net_name, net_adapter_names_mapping[cluster_uid][net_name]]
+      end
+    }
+
+    # Changing net_adapter key from predictable name to legacy name
+    remaped_net_names.each { |arr|
+      hash['network_adapters'][arr[1]] = hash['network_adapters'][arr[0]]
+      hash['network_adapters'].delete(arr[0])
     }
 
     hash["network_adapters"] = hash["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc"])
@@ -59,6 +82,6 @@ list_of_yaml_files.each { |filename|
     }
 
   rescue Exception => e
-    puts "#{node_uid} - #{e.class}: #{e.message}"
+    puts "#{node_uid} - #{e.class}: #{e.message}\nError: #{e.backtrace}"
   end
 }
