@@ -89,15 +89,19 @@ sophia:
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
     - +chassis.serial
+  uvb-[1-44]:
+    - ~network_adapters.ib0.8100.mac
   uvb-3:
     - -chassis.serial
     - ~chassis.manufacturer
   uvb-4:
     - +chassis.serial
     - ~chassis.manufacturer
+    - ~network_adapters.ib0.8100.mac
   uvb-13:
     - -chassis.serial
     - ~chassis.manufacturer
   uvb-14:
     - +chassis.serial
     - ~chassis.manufacturer
+    - ~network_adapters.ib0.8100.mac
