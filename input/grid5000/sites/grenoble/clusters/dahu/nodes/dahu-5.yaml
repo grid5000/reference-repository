@@ -56,9 +56,9 @@ dahu-5:
     cstate_driver: intel_idle
     cstate_governor: menu
     ht_enabled: true
-    pstate_driver: none
-    pstate_governor: none
-    turboboost_enabled: false
+    pstate_driver: intel_pstate
+    pstate_governor: performance
+    turboboost_enabled: true
   processor:
     cache_l1d: 32768
     cache_l1i: 32768

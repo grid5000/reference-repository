@@ -21,15 +21,6 @@ dahu-17:
       ip: 172.17.20.17
       mac: 50:9a:4c:78:12:76
       management: true
-    eth1:
-      driver: i40e
-      firmware_version: 6.00 0x80003753 18.5.17
-      interface: Ethernet
-      mac: 3c:fd:fe:54:c1:fa
-      management: false
-      model: Ethernet Controller X710 for 10GbE SFP+
-      name: enp24s0f1
-      vendor: Intel
     eth0:
       driver: i40e
       firmware_version: 6.00 0x80003753 18.5.17
@@ -40,6 +31,15 @@ dahu-17:
       model: Ethernet Controller X710 for 10GbE SFP+
       name: enp24s0f0
       rate: 10000000000
+      vendor: Intel
+    eth1:
+      driver: i40e
+      firmware_version: 6.00 0x80003753 18.5.17
+      interface: Ethernet
+      mac: 3c:fd:fe:54:c1:fa
+      management: false
+      model: Ethernet Controller X710 for 10GbE SFP+
+      name: enp24s0f1
       vendor: Intel
     ib0:
       driver: hfi1
@@ -56,9 +56,9 @@ dahu-17:
     cstate_driver: intel_idle
     cstate_governor: menu
     ht_enabled: true
-    pstate_driver: none
-    pstate_governor: none
-    turboboost_enabled: false
+    pstate_driver: intel_pstate
+    pstate_governor: performance
+    turboboost_enabled: true
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
