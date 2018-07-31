@@ -81,8 +81,9 @@ dhcp:
       ip: 172.16.47.111
     adm:
       ip: 172.17.47.111
-access:
+nat:
   kind: virtual
+  alias: [access]
   network_adapters:
     default:
       ip: 172.16.47.120
