@@ -1,0 +1,18 @@
+nodes:
+<% (1..8).each { |i| %>
+  chifflot-<%= i %>:
+    network_adapters:
+      bmc:
+        ip: 172.17.39.<%= i %>
+        mac: <%= %w(
+                    58:8A:5A:EE:92:16
+                    58:8A:5A:EE:94:B0
+                    58:8A:5A:EE:E5:6A
+                    58:8A:5A:EE:96:B4
+                    58:8A:5A:EE:94:7A
+                    00:de:ad:be:ef:00
+                    58:8A:5A:EE:E4:26
+                    58:8A:5A:EE:92:10
+                    )[i-1] %>
+
+<% } %>
