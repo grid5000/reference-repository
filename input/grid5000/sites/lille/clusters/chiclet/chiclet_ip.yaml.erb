@@ -2,6 +2,19 @@ nodes:
 <% (1..8).each { |i| %>
   chiclet-<%= i %>:
     network_adapters:
+      eth0:
+        mounted: true
+        ip: 172.16.39.<%= i %>
+        mac: <%= %w(
+                    3C:FD:FE:C1:63:40
+                    3C:FD:FE:C1:72:C0
+                    3C:FD:FE:C1:75:D0
+                    3C:FD:FE:C1:63:30
+                    3C:FD:FE:C1:6F:E0
+                    00:de:ad:be:ef:00
+                    3C:FD:FE:C1:72:D0
+                    3C:FD:FE:C1:70:60
+                    )[i-1] %>
       bmc:
         ip: 172.17.39.<%= i %>
         mac: <%= %w(
@@ -15,4 +28,23 @@ nodes:
                     58:8A:5A:EE:92:10
                     )[i-1] %>
 
+<% i40 = i+40 %>
+        kavlan-1: 192.168.198.<%= i %>
+        kavlan-2: 192.168.215.<%= i %>
+        kavlan-3: 192.168.231.<%= i %>
+        kavlan-4: 10.8.4.<%= i %>
+        kavlan-5: 10.8.68.<%= i %>
+        kavlan-6: 10.8.132.<%= i %>
+        kavlan-7: 10.8.196.<%= i %>
+        kavlan-8: 10.9.4.<%= i %>
+        kavlan-9: 10.9.68.<%= i %>
+        kavlan-11: 10.7.197.<%=  i40 %>
+        kavlan-12: 10.11.197.<%= i40 %>
+        kavlan-13: 10.15.197.<%= i40 %>
+        kavlan-14: 10.19.197.<%= i40 %>
+        kavlan-16: 10.27.197.<%= i40 %>
+        kavlan-18: 10.35.197.<%= i40 %>
+        kavlan-19: 10.39.197.<%= i40 %>
+        kavlan-20: 10.43.197.<%= i40 %>
+        kavlan-21: 10.47.197.<%= i40 %>
 <% } %>
