@@ -2,6 +2,19 @@ nodes:
 <% (1..8).each { |i| %>
   chifflot-<%= i %>:
     network_adapters:
+      eth0:
+        mounted: true
+        ip: 172.16.36.<%= i %>
+        mac: <%= %w(
+                    3C:FD:FE:C1:60:30
+                    3C:FD:FE:C1:69:D0
+                    3C:FD:FE:C1:63:F0
+                    3C:FD:FE:C1:60:10
+                    3C:FD:FE:C1:5F:50
+                    3C:FD:FE:C1:65:A0
+                    3C:FD:FE:C1:70:90
+                    3C:FD:FE:C1:64:20
+                    )[i-1] %>
       bmc:
         ip: 172.17.36.<%= i %>
         mac: <%= %w(
@@ -15,4 +28,25 @@ nodes:
                     54:48:10:FA:85:54
                     )[i-1] %>
 
+    kavlan:
+      eth0:
+<% i30 = i+30 %>
+        kavlan-1: 192.168.197.<%= i %>
+        kavlan-2: 192.168.214.<%= i %>
+        kavlan-3: 192.168.230.<%= i %>
+        kavlan-4: 10.8.3.<%= i %>
+        kavlan-5: 10.8.67.<%= i %>
+        kavlan-6: 10.8.131.<%= i %>
+        kavlan-7: 10.8.195.<%= i %>
+        kavlan-8: 10.9.3.<%= i %>
+        kavlan-9: 10.9.67.<%= i %>
+        kavlan-11: 10.7.197.<%=  i30 %>
+        kavlan-12: 10.11.197.<%= i30 %>
+        kavlan-13: 10.15.197.<%= i30 %>
+        kavlan-14: 10.19.197.<%= i30 %>
+        kavlan-16: 10.27.197.<%= i30 %>
+        kavlan-18: 10.35.197.<%= i30 %>
+        kavlan-19: 10.39.197.<%= i30 %>
+        kavlan-20: 10.43.197.<%= i30 %>
+        kavlan-21: 10.47.197.<%= i30 %>
 <% } %>
