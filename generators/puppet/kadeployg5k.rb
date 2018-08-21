@@ -180,7 +180,13 @@ end
     conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
 
     site['clusters'].each { |cluster_uid, cluster|
-      data = data = conf[site_uid][cluster_uid]
+      defaults = conf['defaults']
+      overrides = conf[site_uid][cluster_uid]
+      dupes = (defaults.to_a & overrides.to_a)
+      if not dupes.empty?
+        puts "Warning: cluster-specific configuration for #{cluster_uid} overrides default values: #{dupes.to_s}"
+      end
+      data = data = defaults.merge(overrides)
       if data.nil?
         puts "Warning: configuration not found in #{options[:conf_dir]}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
         next
