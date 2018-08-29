@@ -33,40 +33,7 @@ fgriffon2:
             port: 7
           - uid: griffon-pdu2
             port: 9
-grog:
-  kind: physical
-  alias: []
-  warranty: 2013-01
-  serial: 6K7TX4J
-  network_adapters:
-    default:
-      mounted: true
-      mac: 84:2B:2B:60:15:6D
-      ip: 172.16.79.3
-    adm:
-      mounted: true
-      ip: 172.17.79.3
-      mac: 84:2B:2B:60:15:6E
-    bmc:
-      mounted: true
-      ip: 172.17.79.6
-      mac: 84:2B:2B:60:15:6F
-  monitoring:
-    wattmeter: multiple
-    metric: power
-  sensors:
-    network:
-      available: true
-      resolution: 1
-    power:
-      available: true
-      resolution: 1
-      via:
-        pdu:
-          - uid: graphene-pdu3
-            port: 1
-          - uid: graphene-pdu3
-            port: 2
+
 srv:
   kind: physical
   alias: [adminfront]
