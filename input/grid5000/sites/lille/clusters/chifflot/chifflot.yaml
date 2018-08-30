@@ -1,0 +1,156 @@
+---
+model: Dell PowerEdge R740
+created_at: 2018-08-01
+priority: '201870'
+kavlan: true
+queues:
+  - admin
+  - testing
+
+nodes:
+
+# Global node properties
+  chifflot-[1-6]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+      queues:
+        - admin
+        - testing
+    processor:
+      microarchitecture: Skylake
+    gpu:
+      gpu: true
+      gpu_count: 2
+      gpu_cores: 7168
+      gpu_vendor: Nvidia
+      gpu_model: Tesla P100
+    monitoring:
+      wattmeter: true
+      metric: power
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        bridged: true
+      eth1:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+      sdb:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+        reservation: true
+      sdc:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        reservation: true
+      sdd:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        reservation: true
+      sde:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        reservation: true
+      sdf:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        reservation: true
+  chifflot-[7-8]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+      queues:
+        - admin
+        - testing
+    processor:
+      microarchitecture: Skylake
+    gpu:
+      gpu: true
+      gpu_count: 2
+      gpu_cores: 10240
+      gpu_vendor: Nvidia
+      gpu_model: Tesla V100
+    monitoring:
+      wattmeter: true
+      metric: power
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        bridged: true
+      eth1:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+      sdb:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+        reservation: true
+      sdc:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        reservation: true
+      sdd:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        reservation: true
+      sde:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        reservation: true
+      sdf:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+        reservation: true
