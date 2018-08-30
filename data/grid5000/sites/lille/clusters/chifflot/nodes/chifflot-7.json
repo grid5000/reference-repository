@@ -1,0 +1,315 @@
+{
+  "architecture": {
+    "nb_cores": 24,
+    "nb_procs": 2,
+    "nb_threads": 48,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "06/29/2018",
+    "vendor": "Dell Inc.",
+    "version": "1.4.9"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R740",
+    "serial": "43ZKYQ2"
+  },
+  "gpu": {
+    "gpu": true,
+    "gpu_cores": 10240,
+    "gpu_count": 2,
+    "gpu_model": "Tesla V100",
+    "gpu_vendor": "Nvidia"
+  },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.194.7",
+      "kavlan-11": "10.7.196.53",
+      "kavlan-12": "10.11.196.53",
+      "kavlan-13": "10.15.196.53",
+      "kavlan-14": "10.19.196.53",
+      "kavlan-16": "10.27.196.53",
+      "kavlan-18": "10.35.196.53",
+      "kavlan-19": "10.39.196.53",
+      "kavlan-2": "192.168.210.7",
+      "kavlan-20": "10.43.196.53",
+      "kavlan-21": "10.47.196.53",
+      "kavlan-3": "192.168.226.7",
+      "kavlan-4": "10.8.2.7",
+      "kavlan-5": "10.8.66.7",
+      "kavlan-6": "10.8.130.7",
+      "kavlan-7": "10.8.194.7",
+      "kavlan-8": "10.9.2.7",
+      "kavlan-9": "10.9.66.7"
+    },
+    "eth1": {
+      "kavlan-1": "192.168.194.15",
+      "kavlan-11": "10.7.196.61",
+      "kavlan-12": "10.11.196.61",
+      "kavlan-13": "10.15.196.61",
+      "kavlan-14": "10.19.196.61",
+      "kavlan-16": "10.27.196.61",
+      "kavlan-18": "10.35.196.61",
+      "kavlan-19": "10.39.196.61",
+      "kavlan-2": "192.168.210.15",
+      "kavlan-20": "10.43.196.61",
+      "kavlan-21": "10.47.196.61",
+      "kavlan-3": "192.168.226.15",
+      "kavlan-4": "10.8.2.15",
+      "kavlan-5": "10.8.66.15",
+      "kavlan-6": "10.8.130.15",
+      "kavlan-7": "10.8.194.15",
+      "kavlan-8": "10.9.2.15",
+      "kavlan-9": "10.9.66.15"
+    }
+  },
+  "main_memory": {
+    "ram_size": 206158430208
+  },
+  "monitoring": {
+    "wattmeter": "true"
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "6.00 0x80003785 18.5.17",
+      "interface": "Ethernet",
+      "ip": "172.16.36.7",
+      "kavlan": true,
+      "mac": "3c:fd:fe:c1:70:90",
+      "management": false,
+      "model": "Ethernet Controller XXV710 for 25GbE SFP28",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp134s0f0",
+      "network_address": "chifflot-7.lille.grid5000.fr",
+      "rate": 25000000000,
+      "switch": "sw-chiclet-1",
+      "switch_port": "Ethernet1/7",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "6.00 0x80003785 18.5.17",
+      "interface": "Ethernet",
+      "kavlan": true,
+      "mac": "3c:fd:fe:c1:70:91",
+      "management": false,
+      "model": "Ethernet Controller XXV710 for 25GbE SFP28",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp134s0f1",
+      "network_address": "chifflot-7.lille.grid5000.fr",
+      "rate": 25000000000,
+      "switch": "sw-chiclet-1",
+      "switch_port": "Ethernet1/23",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000faa, 18.5.17",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:00:2f:fc",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno1",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000faa, 18.5.17",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:00:2f:fd",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth4",
+      "driver": "igb",
+      "firmware_version": "1.67, 0x80000faa, 18.5.17",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:00:2f:fe",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "name": "eno3",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth5",
+      "driver": "igb",
+      "firmware_version": "1.67, 0x80000faa, 18.5.17",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:00:2f:ff",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "name": "eno4",
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.36.7",
+      "kavlan": false,
+      "mac": "54:48:10:fa:7a:da",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "chifflot-7-bmc.lille.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 20185088,
+    "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "Gold 6126"
+  },
+  "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 7,
+            "uid": "pdu-b1p2"
+          },
+          {
+            "port": 4,
+            "uid": "pdu-b1p3"
+          }
+        ]
+      }
+    }
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x55cd2e414f2b4d45",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "firmware_version": "SCV1DL58",
+      "interface": "SATA",
+      "model": "SSDSC2KG480G7R",
+      "size": 480103981056,
+      "storage": "SSD",
+      "vendor": "ATA"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x55cd2e414f2b4d34",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:1:0",
+      "device": "sdb",
+      "driver": "megaraid_sas",
+      "firmware_version": "SCV1DL58",
+      "interface": "SATA",
+      "model": "SSDSC2KG480G7R",
+      "reservation": true,
+      "size": 480103981056,
+      "storage": "SSD",
+      "vendor": "ATA"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000cca269792f38",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:2:0",
+      "device": "sdc",
+      "driver": "megaraid_sas",
+      "firmware_version": "KU27",
+      "interface": "SAS",
+      "model": "HUS726040ALS210",
+      "reservation": true,
+      "size": 4000787030016,
+      "storage": "HDD",
+      "vendor": "HGST"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000cca2697930a8",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:3:0",
+      "device": "sdd",
+      "driver": "megaraid_sas",
+      "firmware_version": "KU27",
+      "interface": "SAS",
+      "model": "HUS726040ALS210",
+      "reservation": true,
+      "size": 4000787030016,
+      "storage": "HDD",
+      "vendor": "HGST"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000cca269792dd0",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:4:0",
+      "device": "sde",
+      "driver": "megaraid_sas",
+      "firmware_version": "KU27",
+      "interface": "SAS",
+      "model": "HUS726040ALS210",
+      "reservation": true,
+      "size": 4000787030016,
+      "storage": "HDD",
+      "vendor": "HGST"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000cca269792fb0",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:5:0",
+      "device": "sdf",
+      "driver": "megaraid_sas",
+      "firmware_version": "KU27",
+      "interface": "SAS",
+      "model": "HUS726040ALS210",
+      "reservation": true,
+      "size": 4000787030016,
+      "storage": "HDD",
+      "vendor": "HGST"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "default"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "chifflot-7"
+}
