@@ -166,6 +166,20 @@ global_hash["sites"].each do |site_uid, site|
   site["pdus"].each do |pdu_uid, pdu|
     pdu["type"] = "pdu"
     pdu["uid"]  = pdu_uid
+
+    pdu_attached_nodes = {}
+    site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
+      cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
+        node.fetch('pdu', []).each do |node_pdu|
+          if node_pdu["uid"] == pdu_uid
+            pp pdu_uid,node_uid
+            pdu_attached_nodes[node_pdu["port"]] = node_uid
+          end
+        end
+      end
+    end
+    pdu["ports"] = pdu_attached_nodes
+
     write_json(pdu_path.join("#{pdu_uid}.json"), pdu)
   end if site.key?("pdus")
 
