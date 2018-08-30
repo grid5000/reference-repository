@@ -1,0 +1,8 @@
+---
+nodes:
+<% (1..16).each { |i| %>
+  taurus-<%= i %>:
+    pdu:
+      - uid: wattmetre4
+        port: <%= i-1 %>
+<% } %>
