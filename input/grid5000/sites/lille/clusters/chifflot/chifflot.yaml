@@ -10,7 +10,7 @@ queues:
 nodes:
 
 # Global node properties
-  chifflot-[1-6]:
+  chifflot-[1-8]:
     supported_job_types:
       deploy: true
       besteffort: true
@@ -20,143 +20,76 @@ nodes:
         - testing
     processor:
       microarchitecture: Skylake
+    monitoring:
+      wattmeter: true
+      metric: power
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        bridged: true
+      eth1:
+        enabled: true
+        mountable: true
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth4:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth5:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+      sdb:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+      sdc:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+      sdd:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+      sde:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+      sdf:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+  chifflot-[1-6]:
     gpu:
       gpu: true
       gpu_count: 2
       gpu_cores: 7168
       gpu_vendor: Nvidia
       gpu_model: Tesla P100
-    monitoring:
-      wattmeter: true
-      metric: power
-    network_adapters:
-      bmc:
-        interface: Ethernet
-        enabled: true
-        mountable: false
-        mounted: false
-      eth0:
-        enabled: true
-        mountable: true
-        mounted: true
-        bridged: true
-      eth1:
-        enabled: true
-        mountable: true
-        mounted: false
-      eth2:
-        enabled: false
-        mountable: false
-        mounted: false
-      eth3:
-        enabled: false
-        mountable: false
-        mounted: false
-      eth4:
-        enabled: false
-        mountable: false
-        mounted: false
-      eth5:
-        enabled: false
-        mountable: false
-        mounted: false
-    storage_devices:
-      sda:
-        interface: SATA
-        driver: megaraid_sas
-        storage: SSD
-      sdb:
-        interface: SATA
-        driver: megaraid_sas
-        storage: SSD
-      sdc:
-        interface: SAS
-        driver: megaraid_sas
-        storage: HDD
-      sdd:
-        interface: SAS
-        driver: megaraid_sas
-        storage: HDD
-      sde:
-        interface: SAS
-        driver: megaraid_sas
-        storage: HDD
-      sdf:
-        interface: SAS
-        driver: megaraid_sas
-        storage: HDD
   chifflot-[7-8]:
-    supported_job_types:
-      deploy: true
-      besteffort: true
-      max_walltime: 0
-      queues:
-        - admin
-        - testing
-    processor:
-      microarchitecture: Skylake
     gpu:
       gpu: true
       gpu_count: 2
       gpu_cores: 10240
       gpu_vendor: Nvidia
       gpu_model: Tesla V100
-    monitoring:
-      wattmeter: true
-      metric: power
-    network_adapters:
-      bmc:
-        interface: Ethernet
-        enabled: true
-        mountable: false
-        mounted: false
-      eth0:
-        enabled: true
-        mountable: true
-        mounted: true
-        bridged: true
-      eth1:
-        enabled: true
-        mountable: true
-        mounted: false
-      eth2:
-        enabled: false
-        mountable: false
-        mounted: false
-      eth3:
-        enabled: false
-        mountable: false
-        mounted: false
-      eth4:
-        enabled: false
-        mountable: false
-        mounted: false
-      eth5:
-        enabled: false
-        mountable: false
-        mounted: false
-    storage_devices:
-      sda:
-        interface: SATA
-        driver: megaraid_sas
-        storage: SSD
-      sdb:
-        interface: SATA
-        driver: megaraid_sas
-        storage: SSD
-      sdc:
-        interface: SAS
-        driver: megaraid_sas
-        storage: HDD
-      sdd:
-        interface: SAS
-        driver: megaraid_sas
-        storage: HDD
-      sde:
-        interface: SAS
-        driver: megaraid_sas
-        storage: HDD
-      sdf:
-        interface: SAS
-        driver: megaraid_sas
-        storage: HDD
