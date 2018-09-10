@@ -347,7 +347,7 @@ class G5KHardwareGenerator < WikiGenerator
             interfaces['10g_count'] = node_interfaces.select { |k, v| v['rate'] == 10_000_000_000 }.count
             interfaces['1g_count'] = node_interfaces.select { |k, v| v['rate'] == 1_000_000_000 }.count
             interfaces['details'] = node_interfaces.map{ |k, v| k + (v['name'].nil? ? '' : '/' + v['name'])  + ' (' + G5K.get_rate(v['rate']) + ')' }.sort.join(', ')
-            queues = cluster_hash['queues'] - ['admin', 'default']
+            queues = cluster_hash['queues'] - ['admin', 'default', 'testing']
             interfaces['queues'] = (queues.nil? || (queues.empty? ? '' : queues[0] + G5K.pluralize(queues.count, ' queue')))
             interface_add(network_interfaces, node_uid, interfaces) if node_interfaces.count > 1
           end
@@ -372,7 +372,7 @@ class G5KHardwareGenerator < WikiGenerator
     }
 
     table_options = 'class="wikitable sortable" style="text-align: center;"'
-    table_columns = ["Site", "Cluster", "Nodes", "10G interfaces", "1G interfaces", "Interfaces (throughput)"]
+    table_columns = ["Site", "Cluster", "Nodes", "25G interfaces", "10G interfaces", "1G interfaces", "Interfaces (throughput)"]
     MW.generate_table(table_options, table_columns, table_data)
   end
 
