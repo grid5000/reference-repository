@@ -344,6 +344,7 @@ class G5KHardwareGenerator < WikiGenerator
             node_interfaces = node_hash['network_adapters'].select{ |k, v| v['interface'] == 'Ethernet' and v['enabled'] == true and (v['mounted'] == true or v['mountable'] == true) and v['management'] == false }
 
             interfaces = {}
+            interfaces['25g_count'] = node_interfaces.select { |k, v| v['rate'] == 25_000_000_000 }.count
             interfaces['10g_count'] = node_interfaces.select { |k, v| v['rate'] == 10_000_000_000 }.count
             interfaces['1g_count'] = node_interfaces.select { |k, v| v['rate'] == 1_000_000_000 }.count
             interfaces['details'] = node_interfaces.map{ |k, v| k + (v['name'].nil? ? '' : '/' + v['name'])  + ' (' + G5K.get_rate(v['rate']) + ')' }.sort.join(', ')
@@ -359,6 +360,7 @@ class G5KHardwareGenerator < WikiGenerator
             "[[#{site_uid.capitalize}:Network|#{site_uid.capitalize}]]",
             "[[#{site_uid.capitalize}:Hardware##{cluster_uid}" + (interfaces['queues'] == '' ? '' : "_.28#{queues.gsub(' ', '_')}.29") + "|#{cluster_uid}" + (network_interfaces.size==1 ? '' : '-' + G5K.nodeset(num)) + "]]",
             num.count,
+            interfaces['25g_count'].zero? ? '' : interfaces['25g_count'],
             interfaces['10g_count'].zero? ? '' : interfaces['10g_count'],
             interfaces['1g_count'].zero? ? '' : interfaces['1g_count'],
             interfaces['details']
