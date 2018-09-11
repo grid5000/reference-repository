@@ -541,6 +541,11 @@ refapi["sites"].each { |site_uid, site|
       reverse_file_name, reverse_record = get_reverse_record(record, site_uid)
       if reverse_file_name != nil
         reverse_records[reverse_file_name] ||= []
+        reverse_records[reverse_file_name].each {|r|
+          if r.label == reverse_record.label
+            puts "Warning: reverse entry with IP #{reverse_record.label} already exists in #{reverse_file_name}, #{reverse_record.name} is duplicate"
+          end
+        }
         reverse_records[reverse_file_name] << reverse_record
       end
     }
