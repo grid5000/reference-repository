@@ -1,0 +1,128 @@
+---
+gw2-grenoble:
+  model: ExtremeNetworks
+  kind: router
+  alias: [sw-imag]
+  site: grenoble
+  warranty: expired
+  backplane_bps: 800000000000
+  mtu: 9216
+  snmp_community: public
+  sensors:
+    network:
+      available: true
+      resolution: 1
+  vlans:
+    "vlan100":
+      administrative: yes
+      addresses:
+        - 172.16.31.254
+    "vlan101":
+      addresses:
+        - 172.17.31.254
+    "vlan500":
+      addresses:
+        - 192.168.4.15
+    "vlan701":
+      name: kavlan-1
+      addresses:
+        - 192.168.192.0/20
+    "vlan702":
+      name: kavlan-2
+      addresses:
+        - 192.168.208.0/20
+    "vlan703":
+      name: kavlan-3
+      addresses:
+        - 192.168.224.0/20
+    "vlan704":
+      name: kavlan-4
+      addresses:
+        - 10.4.0.0/18
+    "vlan705":
+      name: kavlan-5
+      addresses:
+        - 10.4.64.0/18
+    "vlan706":
+      name: kavlan-6
+      addresses:
+        - 10.4.128.0/18
+    "vlan707":
+      name: kavlan-7
+      addresses:
+        - 10.4.192.0/18
+    "vlan708":
+      name: kavlan-8
+      addresses:
+        - 10.5.0.0/18
+    "vlan709":
+      name: kavlan-9
+      addresses:
+        - 10.5.64.0/18
+    "vlan711":
+      name: kavlan-11
+      addresses:
+        - 10.7.192.0/18
+  linecards:
+    0:
+      snmp_pattern: "X670V-48x Port %PORT%"
+      kavlan_pattern: "%PORT%"
+      backplane_bps: 48000000000
+      kind: node
+      port: eth0
+      rate: 10000000000
+      ports:
+        1: dahu-1
+        2: dahu-2
+        3: dahu-3
+        4: dahu-4
+        5: dahu-5
+        6: dahu-6
+        7: dahu-7
+        8: dahu-8
+        9: dahu-9
+        10: dahu-10
+        11: dahu-11
+        12: dahu-12
+        13: dahu-13
+        14: dahu-14
+        15: dahu-15
+        16: dahu-16
+        17: dahu-17
+        18: dahu-18
+        19: dahu-19
+        20: dahu-20
+        21: dahu-21
+        22: dahu-22
+        23: dahu-23
+        24: dahu-24
+        25: dahu-25
+        26: dahu-26
+        27: dahu-27
+        28: dahu-28
+        29: dahu-29
+        30: dahu-30
+        31: dahu-31
+        32: dahu-32
+        33: yeti-1
+        34: yeti-2
+        35: yeti-3
+        36: yeti-4
+        41:
+          uid: dighyp1
+          kind: other
+        42:
+          uid: dighyp2
+          kind: other
+        43:
+          uid: digsed
+          kind: other
+        44:
+          uid: digsed
+          kind: other
+        45:
+          uid: digwatt
+          kind: other
+        48:
+          uid: renater5
+          kind: other
