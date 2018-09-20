@@ -17,15 +17,6 @@ dhcp:
 ldap:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.120}}
-nfs-tools:
-  kind: virtual
-  alias:
-    - nfs-stow
-    - nfs-diskless
-  network_adapters: {default: {ip: 172.16.111.123}}
-elblablo:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.111.104}}
 cigri:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.129}}
@@ -33,9 +24,6 @@ nat:
   kind: virtual
   alias: [access]
   network_adapters: {default: {ip: 172.16.111.200}}
-g5kschool:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.111.132}}
 puppet:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.105}}
@@ -90,9 +78,6 @@ dns-global:
   kind: virtual
   alias: []
   network_adapters: {default: {ip: 131.254.203.235}}
-proxy:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.111.163}}
 supervision:
   kind: virtual
   alias:
@@ -147,15 +132,9 @@ frennes:
 kwapi:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.139}}
-nfs-qualif:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.111.150}}
 users-api-devel:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.157}}
-frontend-dev:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.111.144}}
 api-server-devel:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.115}}
