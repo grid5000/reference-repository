@@ -1,0 +1,10 @@
+generate-reference-api:
+   tags:
+    - docker
+   image: debian:stretch
+   script:
+    - apt-get update && apt-get -y install ruby rake ruby-hashdiff git
+    - gem install hash_validator
+    - rake reference-api
+    - git status # TODO complain if we have uncommitted changes?
+    - git diff
