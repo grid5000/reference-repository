@@ -1,0 +1,90 @@
+{
+  "gpu": {
+    "gpu": false
+  },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.195.24",
+      "kavlan-11": "10.7.201.24",
+      "kavlan-12": "10.11.201.24",
+      "kavlan-13": "10.15.201.24",
+      "kavlan-14": "10.19.201.24",
+      "kavlan-16": "10.27.201.24",
+      "kavlan-18": "10.35.201.24",
+      "kavlan-19": "10.39.201.24",
+      "kavlan-2": "192.168.211.24",
+      "kavlan-20": "10.43.201.24",
+      "kavlan-21": "10.47.201.24",
+      "kavlan-3": "192.168.227.24",
+      "kavlan-4": "10.16.3.24",
+      "kavlan-5": "10.16.67.24",
+      "kavlan-6": "10.16.131.24",
+      "kavlan-7": "10.16.195.24",
+      "kavlan-8": "10.17.3.24",
+      "kavlan-9": "10.17.67.24"
+    }
+  },
+  "main_memory": {
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.75.24",
+      "kavlan": true,
+      "mac": "84:8f:69:fd:25:65",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "grcinq-24.nancy.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.75.24",
+      "kavlan": false,
+      "mac": "84:8f:69:fd:25:67",
+      "mountable": false,
+      "mounted": false
+    }
+  ],
+  "processor": {
+    "cache_l1": null,
+    "microarchitecture": "Sandy Bridge",
+    "version": "E5-2650"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "ahci",
+      "interface": "SATA",
+      "storage": "HDD"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "grcinq-24"
+}
