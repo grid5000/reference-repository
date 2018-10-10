@@ -1,10 +1,28 @@
+stages:
+- validate
+- generate
+
+validate-data:
+   stage: validate
+   tags:
+    - docker
+   image: debian:stretch
+   script:
+    - apt-get update && apt-get -y install ruby rake ruby-hashdiff
+    - gem install hash_validator
+    - cd generators/input-validators/
+    - ruby yaml-input-schema-validator.rb
+    - ruby yaml-input-find-duplicates.rb
+
 generate-reference-api:
+   stage: generate
    tags:
     - docker
    image: debian:stretch
    script:
     - apt-get update && apt-get -y install ruby rake ruby-hashdiff git
     - gem install hash_validator
+    - export TZ=Europe/Paris
     - rake reference-api
-    - git status # TODO complain if we have uncommitted changes?
-    - git diff
+    - git status
+    - git diff --exit-code
