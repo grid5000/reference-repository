@@ -5,7 +5,7 @@ stages:
 validate-data:
    stage: validate
    tags:
-    - docker
+    - grid5000-docker
    image: debian:stretch
    script:
     - apt-get update && apt-get -y install ruby rake ruby-hashdiff
@@ -17,7 +17,7 @@ validate-data:
 generate-reference-api:
    stage: generate
    tags:
-    - docker
+    - grid5000-docker
    image: debian:stretch
    script:
     - apt-get update && apt-get -y install ruby rake ruby-hashdiff git
