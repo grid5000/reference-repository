@@ -1,6 +1,7 @@
 stages:
 - validate
 - generate
+- deploy
 
 validate-data:
    stage: validate
@@ -26,3 +27,10 @@ generate-reference-api:
     - rake reference-api
     - git status
     - git diff --exit-code
+
+deploy:
+   stage: deploy
+   tags:
+    - grid5000-shell
+   script:
+    - /srv/ci-runner-scripts/bin/update-api-servers
