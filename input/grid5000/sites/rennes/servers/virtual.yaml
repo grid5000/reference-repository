@@ -5,9 +5,6 @@ mail:
     - mail2
     - smtp
   network_adapters: {default: {ip: 172.16.111.164}}
-helpdesk-global:
-  kind: virtual
-  network_adapters: {default: {ip: 131.254.202.206}}
 www:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.112}}
@@ -95,19 +92,11 @@ kadeploy:
   alias:
     - kadeploy-server
   network_adapters: {default: {ip: 172.16.111.111}}
-mysql-archive:
-  kind: virtual
-  alias:
-    - mysql-archive-global
-  network_adapters: {default: {ip: 172.16.111.155}}
 kadeploy-devel:
   kind: virtual
   alias:
     - kadeploy-server-devel
   network_adapters: {default: {ip: 172.16.111.136}}
-mirador:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.111.137}}
 csod:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.140}}
@@ -117,11 +106,6 @@ oar:
     - oar-server
     - oardb
   network_adapters: {default: {ip: 172.16.111.110}}
-oardb-archive:
-  kind: virtual
-  alias:
-    - oardb-archive-global
-  network_adapters: {default: {ip: 172.16.111.156}}
 frennes:
   kind: virtual
   alias:
