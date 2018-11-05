@@ -50,13 +50,6 @@ flille:
       ip: 172.16.47.106
     adm:
       ip: 172.17.47.106
-mysql:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.107
-    adm:
-      ip: 172.17.47.107
 supervision:
   kind: virtual
   alias:
@@ -110,14 +103,6 @@ www:
       ip: 172.16.47.123
     adm:
       ip: 172.17.47.123
-weathermap:
-  kind: virtual
-  alias: [cacti]
-  network_adapters:
-    default:
-      ip: 172.16.47.126
-    adm:
-      ip: 172.17.47.126
 conman:
   kind: virtual
   network_adapters:
@@ -175,13 +160,6 @@ api-server-v3:
       ip: 172.16.47.134
     adm:
       ip: 172.17.47.134
-syslog-dmz:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.135
-    adm:
-      ip: 172.17.47.135
 proxy:
   kind: virtual
   network_adapters:
@@ -189,14 +167,6 @@ proxy:
       ip: 172.16.47.137
     adm:
       ip: 172.17.47.137
-smokeping:
-  kind: virtual
-  alias: [smokeping-global]
-  network_adapters:
-    default:
-      ip: 172.16.47.138
-    adm:
-      ip: 172.17.47.138
 kadeploy-devel:
   kind: virtual
   alias:
