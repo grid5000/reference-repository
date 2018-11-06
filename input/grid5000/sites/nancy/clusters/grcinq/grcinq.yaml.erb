@@ -2,6 +2,8 @@ nodes:
 <% (1..48).each { |i| %>
   grcinq-<%= i %>:
     network_adapters:
+      ib0:
+        ip: 172.18.75.<%= i %>
       eth0: 
         mounted: true
         ip: 172.16.75.<%= i %>
