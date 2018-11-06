@@ -1,0 +1,61 @@
+---
+model: Dell PowerEdge C6220
+created_at: 2013-04-09
+kavlan: false
+queues:
+  - admin
+  - testing
+nodes:
+  grcinq-[1-48]:
+    processor:
+      microarchitecture: Sandy Bridge
+    performance:
+      core_flops: 0
+      node_flops: 0
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      queues:
+        - admin
+        - testing
+    gpu:
+      gpu: false
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        mounted: true
+        enabled: true
+        mountable: true
+      eth1:
+        mounted: false
+        enabled: false
+        mountable: false
+      ib0:
+        mounted: true
+        enabled: true
+        mountable: true
+    storage_devices:
+      sda:
+        interface: SATA
+        driver: ahci
+        storage: HDD
+    monitoring:
+      wattmeter: shared
+      metric: power
+    sensors:
+      power:
+        available: false
+
+  grcinq-[1-8]:
+    supported_job_types:
+      max_walltime: 14400
+  grcinq-[9-16]:
+    supported_job_types:
+      max_walltime: 43200
+  grcinq-[17-48]:
+    supported_job_types:
+      max_walltime: 604800
