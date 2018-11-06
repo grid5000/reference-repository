@@ -26,6 +26,8 @@ generate-reference-api:
     - export TZ=Europe/Paris
     - rake reference-api
     - git status
+    - echo "Checking that git status output is empty..."
+    - [ "`git status -s`" = "" ]
     - git diff --exit-code
 
 deploy:
