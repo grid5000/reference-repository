@@ -27,7 +27,7 @@ generate-reference-api:
     - rake reference-api
     - git status
     - echo "Checking that git status output is empty..."
-    - [ "`git status -s`" = "" ]
+    - sh -c '[ "`git status -s`" = "" ]'
     - git diff --exit-code
 
 deploy:
