@@ -3,7 +3,7 @@
     "sw-imag"
   ],
   "backplane_bps": 800000000000,
-  "kind": "switch",
+  "kind": "router",
   "linecards": [
     {
       "backplane_bps": 48000000000,
@@ -200,9 +200,6 @@
         {
         },
         {
-          "kind": "router",
-          "port": "eth0",
-          "uid": "gw-grenoble"
         },
         {
           "kind": "other",
@@ -254,7 +251,85 @@
   "site": "grenoble",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "gw2",
+  "uid": "gw",
+  "vlans": {
+    "vlan100": {
+      "addresses": [
+        "172.16.31.254"
+      ],
+      "administrative": true
+    },
+    "vlan101": {
+      "addresses": [
+        "172.17.31.254"
+      ]
+    },
+    "vlan500": {
+      "addresses": [
+        "192.168.4.15"
+      ]
+    },
+    "vlan701": {
+      "addresses": [
+        "192.168.192.0/20"
+      ],
+      "name": "kavlan-1"
+    },
+    "vlan702": {
+      "addresses": [
+        "192.168.208.0/20"
+      ],
+      "name": "kavlan-2"
+    },
+    "vlan703": {
+      "addresses": [
+        "192.168.224.0/20"
+      ],
+      "name": "kavlan-3"
+    },
+    "vlan704": {
+      "addresses": [
+        "10.4.0.0/18"
+      ],
+      "name": "kavlan-4"
+    },
+    "vlan705": {
+      "addresses": [
+        "10.4.64.0/18"
+      ],
+      "name": "kavlan-5"
+    },
+    "vlan706": {
+      "addresses": [
+        "10.4.128.0/18"
+      ],
+      "name": "kavlan-6"
+    },
+    "vlan707": {
+      "addresses": [
+        "10.4.192.0/18"
+      ],
+      "name": "kavlan-7"
+    },
+    "vlan708": {
+      "addresses": [
+        "10.5.0.0/18"
+      ],
+      "name": "kavlan-8"
+    },
+    "vlan709": {
+      "addresses": [
+        "10.5.64.0/18"
+      ],
+      "name": "kavlan-9"
+    },
+    "vlan711": {
+      "addresses": [
+        "10.7.192.0/18"
+      ],
+      "name": "kavlan-11"
+    }
+  },
   "warranty": "expired",
   "weathermap": {
   }
