@@ -45,3 +45,13 @@ rake wiki:site_network       # Generate the media parts for site network pages
 ```
 
 For more information about generators and validators, please see generators/README.md.
+
+# Credentials
+
+all tools should use ~/.grid5000_api.yml. Example:
+```
+ uri: https://api.grid5000.fr/
+ username: username
+ password: password
+ version: stable
+```
