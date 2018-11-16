@@ -93,7 +93,7 @@ namespace :gen do
   task "wiki" do
     require 'refrepo/gen/wiki'
     options = {}
-    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : ['global'] + G5K_SITES )
     if ENV['NAME']
       options[:generators] = ENV['NAME'].split(',')
     else
