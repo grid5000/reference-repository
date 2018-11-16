@@ -11,9 +11,9 @@ validate-data:
    script:
     - apt-get update && apt-get -y install ruby rake ruby-hashdiff
     - gem install hash_validator
-    - cd generators/input-validators/
-    - ruby yaml-input-schema-validator.rb
-    - ruby yaml-input-find-duplicates.rb
+    - rake valid:schema
+    - rake valid:duplicates
+    - rake valid:homogeneity
 
 generate-reference-api:
    stage: generate
