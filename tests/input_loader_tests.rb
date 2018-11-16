@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+# FIXME adjust (probably broken)
+
 require_relative "input_loader"
 require "test/unit"
 require "hashdiff"
