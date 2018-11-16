@@ -11,10 +11,6 @@ end
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
 require 'refrepo'
 
-REFAPI_DIR = "./generators/reference-api"
-PUPPET_DIR = "./generators/puppet"
-VALIDATORS_DIR = "./generators/input-validators"
-
 if Dir::exists?(ENV['HOME'] + '/.gpuppet/repo')
   PUPPET_ODIR = ENV['HOME'] + '/.gpuppet/repo'
 else
@@ -187,17 +183,6 @@ desc "Creates JSON data from inputs"
 task "reference-api" do
   require 'refrepo/gen/reference-api'
   generate_reference_api
-end
-
-#Some scripts may return status != 0 (validators, errors, ...)
-#Catch errors and exit properly with status 1 instead of getting Rake errors
-def invoke_script(script)
-  puts "Running #{script} #{$CMD_ARGS}"
-  begin
-    ruby "#{script} #{$CMD_ARGS}"
-  rescue => e
-    exit 1
-  end
 end
 
 #Hack rake: call only the first task and consider the rest as arguments to this task
