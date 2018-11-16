@@ -22,13 +22,6 @@ IGNORED_PROPERTIES=%w{chassis chunks thread}
 G5K_PROPERTIES=%w{api_timestamp available_upto besteffort chunks cluster cluster_priority comment core cpu cpuarch cpucore cpufreq cpuset cputype deploy desktop_computing disk disk_reservation_count diskpath disktype drain eth_count eth_rate expiry_date finaud_decision gpu gpu_count grub host ib ib_count ib_rate id ip last_available_upto last_job_date links maintenance max_walltime memcore memcpu memnode mic myri myri_count myri_rate network_address next_finaud_decision next_state nodemodel production rconsole scheduler_priority slash_16 slash_17 slash_18 slash_19 slash_20 slash_21 slash_22 state state_num subnet_address subnet_prefix suspended_jobs switch type virtual vlan wattmeter opa opa_count opa_rate}.sort - IGNORED_PROPERTIES
 
 
-class Hash
-  def slice(*extract)
-    h2 = self.select{|key, value| extract.include?(key) }
-    h2
-  end
-end
-
 module RefRepo::Valid::OarProperties
   def self.check(options)
     ret = true

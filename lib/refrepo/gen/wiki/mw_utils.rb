@@ -114,7 +114,7 @@ module G5K
     return Marshal.load(Marshal.dump(@@global_hash))
   end
 
-  SITES = get_global_hash['sites'].keys.sort
+  SITES = RefRepo::Utils::get_sites
 end
 
 #Defines MediaWiki helpers

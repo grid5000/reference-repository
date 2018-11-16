@@ -17,6 +17,10 @@ module RefRepo::Utils
     d = open("#{conf['uri']}/#{conf['version']}/#{path}", o).read
     return JSON::parse(d)
   end
+
+  def self.get_sites
+    return (Dir::entries('input/grid5000/sites') - ['.', '..']).sort
+  end
 end
 
 # Various monkey patches

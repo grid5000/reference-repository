@@ -13,7 +13,7 @@ VALIDATORS_DIR = "./generators/input-validators"
 WIKI_DIR = "./generators/wiki"
 
 # Get the list of sites as the list of directories in input/grid5000/sites
-G5K_SITES = (Dir::entries('input/grid5000/sites') - ['.', '..']).sort
+G5K_SITES = RefRepo::Utils::get_sites
 
 namespace :puppet do
 
