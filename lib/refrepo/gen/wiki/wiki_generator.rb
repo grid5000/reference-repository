@@ -1,11 +1,10 @@
 # also add generators/lib to load path
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
 
-require 'input_loader'
+require 'refrepo/input_loader'
 require "optparse"
 require "mediawiki_api"
 require "diffy"
-require "mw_utils"
 require 'date'
 require 'pp'
 

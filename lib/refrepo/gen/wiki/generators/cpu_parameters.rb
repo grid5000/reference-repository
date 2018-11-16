@@ -1,5 +1,4 @@
-$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
-require 'wiki_generator'
+require 'refrepo/gen/wiki/wiki_generator'
 
 class CPUParametersGenerator < WikiGenerator
 

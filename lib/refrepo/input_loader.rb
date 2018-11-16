@@ -2,9 +2,9 @@
 
 require 'yaml'
 require 'erb'
-require_relative '../lib/hash/hash.rb'
+require 'refrepo/hash/hash.rb'
 
-def load_yaml_file_hierarchy(directory)
+def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
   global_hash = {} # the global data structure
   

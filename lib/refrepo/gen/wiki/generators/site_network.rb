@@ -1,8 +1,9 @@
 # coding: utf-8
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
-require 'wiki_generator'
+require 'refrepo/gen/wiki/wiki_generator'
 
-require_relative '../../../input-validators/check-network-description'
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../../../../generators')))
+require 'input-validators/check-network-description'
 
 # This class generates the network description of each site, in .dot
 # and .png format

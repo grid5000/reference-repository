@@ -1,9 +1,19 @@
+if ENV['COV']
+  require 'simplecov'
+  SimpleCov.start
+end
+
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
+require 'refrepo'
 
 REFAPI_DIR = "./generators/reference-api"
 PUPPET_DIR = "./generators/puppet"
 OAR_DIR = "./generators/oar-properties"
 VALIDATORS_DIR = "./generators/input-validators"
 WIKI_DIR = "./generators/wiki"
+
+# Get the list of sites as the list of directories in input/grid5000/sites
+G5K_SITES = (Dir::entries('input/grid5000/sites') - ['.', '..']).sort
 
 namespace :puppet do
 
@@ -43,13 +53,36 @@ namespace :validators do
   end
 end
 
-desc "See info about wiki generators"
-task "wiki" do
-  puts "Wikigenerators are in generators/wiki. See the 'wikigen' script."
-  puts " => generators/wiki/wikigen -h"
-  puts "Examples:"
-  puts "  generators/wiki/wiki -g cpu_parameters -s global -d"
-  puts "  generators/wiki/wiki -g site_hardware -s nancy -d"
+namespace :gen do
+  desc "Run wiki generator. Parameter: NAME={hardware,site_hardware,...} SITE={global,grenoble,...} DO={diff,print,update}"
+  task "wiki" do
+    options = {}
+    if ENV['SITE']
+      options[:sites] = ENV['SITE'].split(',')
+    else
+      options[:sites] = ['global'] + G5K_SITES
+    end
+    if ENV['NAME']
+      options[:generators] = ENV['NAME'].split(',')
+    else
+      puts "You must specify a generator name using NAME="
+      exit(1)
+    end
+    options[:diff] = false
+    options[:print] = false
+    options[:update] = false
+    if ENV['DO']
+      ENV['DO'].split(',').each do |t|
+        options[:diff] = true if t == 'diff'
+        options[:print] = true if t == 'print'
+        options[:update] = true if t == 'update'
+      end
+    else
+      puts "You must specify something to do using DO="
+      exit(1)
+    end
+    RefRepo::Gen::Wiki::wikigen(options)
+  end
 end
 
 desc "Creates json data from inputs"
