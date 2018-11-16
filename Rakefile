@@ -79,6 +79,23 @@ namespace :valid do
     exit(ret)
   end
 
+  desc "Check network description -- parameters: [SITE={grenoble,...}] [VERBOSE=1] GENERATE_DOT=1"
+  task "network" do
+    require 'refrepo/valid/network'
+    options = {}
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+    options[:verbose] = true if ENV['VERBOSE']
+    options[:dot] = true if ENV['GENERATE_DOT']
+    ret = 2
+    begin
+      ret = check_network_description(options)
+    rescue StandardError => e
+      puts e
+      ret = 3
+    ensure
+      exit(ret)
+    end
+  end
 end
 
 namespace :gen do

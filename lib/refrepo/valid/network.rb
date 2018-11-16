@@ -20,10 +20,10 @@ def check_network_description(options)
     # get list of network equipments and nodes
     neteqs = []
     nodes = []
-    Dir::glob("../../data/grid5000/sites/#{site}/network_equipments/*.json").each do |f|
+    Dir::glob("data/grid5000/sites/#{site}/network_equipments/*.json").each do |f|
       neteqs << JSON::parse(IO::read(f))
     end
-    Dir::glob("../../data/grid5000/sites/#{site}/clusters/*/nodes/*.json").each do |f|
+    Dir::glob("data/grid5000/sites/#{site}/clusters/*/nodes/*.json").each do |f|
       nodes << JSON::parse(IO::read(f))
     end
 
@@ -285,57 +285,4 @@ def sh(cmd)
     raise "ERROR: The following command produced an error: #{cmd}\n#{e}" if $?.exitstatus != 0
   end
   return output
-end
-  
-if __FILE__ == $0
-  require 'optparse'
-
-  options = {}
-  options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
-
-  OptionParser.new do |opts|
-    opts.banner = "Usage: check-network-description.rb [options]"
-
-    opts.separator ""
-    opts.separator "Example: ruby check-network-description.rb -v"
-
-    ###
-
-    opts.separator ""
-    opts.separator "Filters:"
-
-    opts.on('-s', '--sites a,b,c', Array, 'Select site(s)',
-            "Default: "+options[:sites].join(", ")) do |s|
-      raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
-      options[:sites] = s
-    end
-
-    opts.separator ""
-    opts.separator "Common options:"
-
-    opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
-      options[:verbose] ||= 0
-      options[:verbose] = options[:verbose] + 1
-    end
-
-    opts.on("", "--dot", "Generate one dotfile per site") do
-      options[:dot] = true
-    end
-
-    # Print an options summary.
-    opts.on_tail("-h", "--help", "Show this message") do
-      puts opts
-      exit
-    end
-  end.parse!
-
-  ret = 2
-  begin
-    ret = check_network_description(options)
-  rescue StandardError => e
-    puts e
-    ret = 3
-  ensure
-    exit(ret)
-  end
 end
