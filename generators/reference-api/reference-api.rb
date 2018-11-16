@@ -15,10 +15,9 @@ require 'time'
 
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
 require 'refrepo/input_loader'
-
-require_relative '../input-validators/yaml-input-schema-validator'
-require_relative '../input-validators/check-cluster-homogeneity'
-require_relative '../input-validators/check-monitoring-properties'
+require 'refrepo/valid/input/schema'
+require 'refrepo/valid/homogeneity'
+require 'refrepo/valid/input/monitoring'
 
 # Output directory
 input_data_dir = "../../input/grid5000/"
