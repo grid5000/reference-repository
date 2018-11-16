@@ -3,6 +3,11 @@ if ENV['COV']
   SimpleCov.start
 end
 
+if RUBY_VERSION < "2.1"
+  puts "This script requires ruby >= 2.1"
+  exit
+end
+
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
 require 'refrepo'
 
@@ -30,9 +35,24 @@ end
 
 namespace :valid do
 
-  desc "Check homogeneity of clusters"
+  desc "Check homogeneity of clusters -- parameters: SITE={grenoble,..} CLUSTER={yeti,..} VERBOSE=1"
   task "homogeneity" do
-    invoke_script "#{VALIDATORS_DIR}/check-cluster-homogeneity.rb"
+    require 'refrepo/valid/homogeneity'
+    options = {}
+    if ENV['SITE']
+      options[:sites] = ENV['SITE'].split(',')
+    else
+      options[:sites] = G5K_SITES
+    end
+    if ENV['CLUSTER']
+      options[:clusters] = ENV['CLUSTER'].split(',')
+    else
+      options[:clusters] = []
+    end
+    options[:verbose] = ENV['VERBOSE'].to_i if ENV['VERBOSE']
+
+    ret = check_cluster_homogeneity(options)
+    exit(ret)
   end
 
   desc "Check input data schema validity"
