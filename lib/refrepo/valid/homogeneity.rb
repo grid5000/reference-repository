@@ -2,11 +2,6 @@
 
 # This script checks the cluster homogeneity
 
-if RUBY_VERSION < "2.1"
-  puts "This script requires ruby >= 2.1"
-  exit
-end
-
 require 'pp'
 require 'fileutils'
 require 'pathname'
@@ -15,10 +10,9 @@ require 'json'
 require 'uri'
 require 'net/https'
 
-$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
 require 'refrepo/input_loader'
 
-def global_ignore_keys()
+def global_ignore_keys
 
   #
   # Global ignore keys
@@ -170,10 +164,10 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
   end
 
   ignore_keys  = global_ignore_keys()
-  cignore_keys = cluster_ignore_keys(File.expand_path("../input-validators/check-cluster-homogeneity.yaml.erb", File.dirname(__FILE__)))
+  cignore_keys = cluster_ignore_keys(File.expand_path("data/homogeneity.yaml.erb", File.dirname(__FILE__)))
 
   input_data_dir = "../../input/grid5000/"
-  refapi_hash = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
+  refapi_hash = load_yaml_file_hierarchy
   count = {}
   total_count = 0
 
@@ -250,7 +244,13 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
   return [total_count, count]
 end
 
-def check_cluster_homogeneity(refapi_hash, options = {:verbose => false})
+def check_cluster_homogeneity(options = {:verbose => false})
+  refapi_hash = load_yaml_file_hierarchy
+  options[:api] = {}
+  conf = RefRepo::Utils.get_api_config
+  options[:api][:user] = conf['username']
+  options[:api][:pwd] = conf['password']
+
   verbose = options[:verbose]
   puts "Differences found between successive nodes, per cluster:\n\n"
 
@@ -259,66 +259,7 @@ def check_cluster_homogeneity(refapi_hash, options = {:verbose => false})
 
   puts count.to_yaml unless verbose
 
-  puts "\nUse '-v' option for details." unless verbose
+  puts "\nUse 'VERBOSE=1' option for details." unless verbose
 
-  return total_count
-end
-
-if __FILE__ == $0
-  require 'optparse'
-
-  options = {}
-  options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
-  options[:api] = {}
-
-  OptionParser.new do |opts|
-    opts.banner = "Usage: check-cluster-homogeneity.rb [options]"
-
-    opts.separator ""
-    opts.separator "Example: ruby check-cluster-homogeneity.rb -v"
-
-    ###
-
-    opts.separator ""
-    opts.separator "Filters:"
-
-    opts.on('-s', '--sites a,b,c', Array, 'Select site(s)',
-            "Default: "+options[:sites].join(", ")) do |s|
-      raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
-      options[:sites] = s
-    end
-
-    opts.on('-c', '--clusters a,b,c', Array, 'Select clusters(s). Default: all') do |s|
-      options[:clusters] = s
-    end
-
-    opts.separator ""
-    opts.separator "Common options:"
-
-    opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
-      options[:verbose] ||= 0
-      options[:verbose] = options[:verbose] + 1
-    end
-
-    opts.on('--api-user user', String, 'HTTP authentication user when outside G5K') do |user|
-      options[:api][:user] = user
-    end
-
-    opts.on('--api-password pwd', String, 'HTTP authentication password when outside G5K') do |pwd|
-      options[:api][:pwd] = pwd
-    end
-
-    # Print an options summary.
-    opts.on_tail("-h", "--help", "Show this message") do
-      puts opts
-      exit
-    end
-  end.parse!
-
-  refapi_hash = load_yaml_file_hierarchy(File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
-  total_count = check_cluster_homogeneity(refapi_hash, options)
-
-  # return 0 if all nodes are homogeneous, 1 otherwise
-  exit total_count == 0
-
+  return total_count == 0
 end
