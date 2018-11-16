@@ -21,7 +21,7 @@ G5K_SITES = RefRepo::Utils::get_sites
 
 namespace :valid do
 
-  desc "Check homogeneity of clusters -- parameters: SITE={grenoble,..} CLUSTER={yeti,..} VERBOSE=1"
+  desc "Check homogeneity of clusters -- parameters: [SITE={grenoble,..}] [CLUSTER={yeti,..}] [VERBOSE=1]"
   task "homogeneity" do
     require 'refrepo/valid/homogeneity'
     options = {}
@@ -33,7 +33,7 @@ namespace :valid do
     exit(ret)
   end
 
-  desc "Check for duplicates fields in input -- parameters: SITE={grenoble..} CLUSTER={yeti,...} VERBOSE=1"
+  desc "Check for duplicates fields in input -- parameters: [SITE={grenoble..}] [CLUSTER={yeti,...}] [VERBOSE=1]"
   task "duplicates" do
     require 'refrepo/valid/input/duplicates'
     options = {}
@@ -44,7 +44,7 @@ namespace :valid do
     exit(ret)
   end
 
-  desc "Check input data schema validity -- parameters: SITE={grenoble,..} CLUSTER={yeti,..}"
+  desc "Check input data schema validity -- parameters: [SITE={grenoble,..}] [CLUSTER={yeti,..}]"
   task "schema" do
     require 'refrepo/valid/input/schema'
     options = {}
@@ -65,7 +65,7 @@ namespace :valid do
     exit(ret)
   end
 
-  desc "Check network description -- parameters: [SITE={grenoble,...}] [VERBOSE=1] GENERATE_DOT=1"
+  desc "Check network description -- parameters: [SITE={grenoble,...}] [VERBOSE=1] [GENERATE_DOT=1]"
   task "network" do
     require 'refrepo/valid/network'
     options = {}
@@ -113,7 +113,7 @@ namespace :gen do
     exit(ret)
   end
 
-  desc "Generate OAR properties -- parameters: SITE={grenoble,...} CLUSTER={yeti,...} NODE={dahu-1,...} DO={print,exec,diff,check} VERBOSE={0,1,2,3}"
+  desc "Generate OAR properties -- parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [NODE={dahu-1,...}] DO={print,exec,diff,check} [VERBOSE={0,1,2,3}]"
   task "oar-properties" do
     require 'refrepo/gen/oar-properties'
     options = {}
@@ -158,7 +158,7 @@ namespace :puppet do
   all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k]
 
   all_puppet_tasks.each { |t|
-    desc "Generate #{t} configuration -- parameters: SITE={grenoble,...} OUTPUTDIR=[default: #{PUPPET_ODIR}] [CONFDIR=...] VERBOSE=1"
+    desc "Generate #{t} configuration -- parameters: [SITE={grenoble,...}] [OUTPUTDIR=(default: #{PUPPET_ODIR})] [CONFDIR=...] [VERBOSE=1]"
     task t do
       require "refrepo/gen/puppet/#{t}"
       options = {}
