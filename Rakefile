@@ -17,22 +17,6 @@ VALIDATORS_DIR = "./generators/input-validators"
 
 G5K_SITES = RefRepo::Utils::get_sites
 
-namespace :puppet do
-
-  all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k]
-
-  all_puppet_tasks.each { |t|
-    desc "Generate #{t} configuration"
-    task t do
-      invoke_script "#{PUPPET_DIR}/#{t}.rb"
-    end
-  }
-
-  desc "Launch all puppet generators"
-  task :all => all_puppet_tasks
-
-end
-
 namespace :valid do
 
   desc "Check homogeneity of clusters -- parameters: SITE={grenoble,..} CLUSTER={yeti,..} VERBOSE=1"
@@ -166,6 +150,23 @@ namespace :gen do
     ret = generate_oar_properties(options)
     exit(ret)
   end
+
+namespace :puppet do
+
+  all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k]
+
+  all_puppet_tasks.each { |t|
+    desc "Generate #{t} configuration"
+    task t do
+      invoke_script "#{PUPPET_DIR}/#{t}.rb"
+    end
+  }
+
+  desc "Launch all puppet generators"
+  task :all => all_puppet_tasks
+
+end
+
 
 end
 
