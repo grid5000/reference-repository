@@ -1,9 +1,3 @@
-require 'pp'
-require 'erb'
-require 'pathname'
-require 'optparse'
-require 'refrepo/input_loader'
-
 # Get the mac and ip of a node. Throw exception if error.
 def get_network_info(node_hash, network_interface)
   # Get node_hash["network_adapters"][network_interface]["ip"] and node_hash["network_adapters"][network_interface]["mac"]

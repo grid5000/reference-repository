@@ -1,8 +1,7 @@
 # coding: utf-8
 require 'refrepo/gen/wiki/wiki_generator'
 
-$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../../../../generators/oar-properties/lib')))
-require 'lib-oar-properties'
+require 'refrepo/gen/oar-properties'
 
 class OarPropertiesGenerator < WikiGenerator
 

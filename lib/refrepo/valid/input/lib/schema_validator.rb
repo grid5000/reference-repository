@@ -8,7 +8,6 @@
 
 dir = Pathname(__FILE__).parent
 
-require 'json'
 require 'hash_validator' # https://github.com/jamesbrooks/hash_validator
 require "#{dir}/multihash_validator" # custom validator for <multi>-keys Hash support
 require "#{dir}/array_validator" # custom validator for <array> support

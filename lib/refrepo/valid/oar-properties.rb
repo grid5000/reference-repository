@@ -1,19 +1,7 @@
-#!/usr/bin/ruby
 # coding: utf-8
 
-require 'pp'
-require 'erb'
-require 'fileutils'
-require 'pathname'
-require 'json'
-require 'time'
-require 'yaml'
-require 'set'
-require 'hashdiff'
-require 'optparse'
 require 'net/ssh'
-require 'open-uri'
-require 'refrepo/utils'
+require 'hashdiff'
 
 # propriétés ignorées
 IGNORED_PROPERTIES=%w{chassis chunks thread}

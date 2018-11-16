@@ -1,8 +1,3 @@
-#!/usr/bin/ruby
-
-require 'pp'
-require 'refrepo/input_loader'
-
 # replace default deep_merge before calling load_yaml_file_hierarchy
 class ::Hash
   def deep_merge(other_hash)

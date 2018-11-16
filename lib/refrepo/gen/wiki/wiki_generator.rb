@@ -1,12 +1,5 @@
-# also add generators/lib to load path
-$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
-
-require 'refrepo/input_loader'
-require "optparse"
 require "mediawiki_api"
 require "diffy"
-require 'date'
-require 'pp'
 
 class WikiGenerator
 

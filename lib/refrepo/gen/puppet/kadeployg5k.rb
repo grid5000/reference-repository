@@ -1,8 +1,3 @@
-require 'pp'
-require 'erb'
-require 'pathname'
-require 'optparse'
-require 'refrepo/input_loader'
 require 'refrepo/hash/hash'
 
 # Compute cluster prefix

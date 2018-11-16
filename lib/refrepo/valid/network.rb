@@ -1,12 +1,8 @@
-#!/usr/bin/ruby
 # coding: utf-8
 
 # This script checks the network description for inconsistencies
 # This script needs 'nodeset' and 'dot' programs, which are available
 # in clustershell and graphviz debian packages
-
-require 'json'
-require 'pp'
 
 # FIXME infiniband equipment is not completely described in the ref-api yet. See Bug 8586
 HPC_SWITCHES = ['ib-grenoble', 'voltaire-1', 'voltaire-2', 'voltaire-3', 'sgraoullyib', 'sgrapheneib', 'sw-myrinet', 'sgrele-opf']

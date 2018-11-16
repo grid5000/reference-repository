@@ -1,8 +1,3 @@
-require 'pp'
-require 'open-uri'
-require 'uri'
-require 'net/http'
-require 'net/https'
 require 'mediawiki_api'
 
 #Adding method to mediawiki_api client

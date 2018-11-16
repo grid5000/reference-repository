@@ -1,8 +1,6 @@
 # Load a hierarchy of YAML file into a Ruby hash
 
-require 'yaml'
-require 'erb'
-require 'refrepo/hash/hash.rb'
+require 'refrepo/hash/hash'
 
 def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 

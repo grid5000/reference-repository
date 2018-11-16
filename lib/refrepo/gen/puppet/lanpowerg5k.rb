@@ -1,10 +1,5 @@
 # This script generates lanpowerg5k/files/<site_uid>/lanpower.conf from conf/console.yaml and conf/console-password.conf
 
-require 'pp'
-require 'yaml'
-require 'pathname'
-require 'optparse'
-require 'refrepo/input_loader'
 require 'refrepo/hash/hash'
 
 def generate_puppet_lanpowerg5k(options)

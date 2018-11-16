@@ -1,12 +1,6 @@
 # See also: https://www.grid5000.fr/mediawiki/index.php/DNS_server
 
-require 'pp'
-require 'erb'
-require 'pathname'
-require 'fileutils'
-require 'optparse'
 require 'dns/zone'
-require 'refrepo/input_loader'
 
 #Prettier aligned dump of records
 class DNS::Zone::RR::A

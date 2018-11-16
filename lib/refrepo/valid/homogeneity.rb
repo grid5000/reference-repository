@@ -1,16 +1,6 @@
-#!/usr/bin/ruby
-
 # This script checks the cluster homogeneity
 
-require 'pp'
-require 'fileutils'
-require 'pathname'
 require 'hashdiff'
-require 'json'
-require 'uri'
-require 'net/https'
-
-require 'refrepo/input_loader'
 
 def global_ignore_keys
 

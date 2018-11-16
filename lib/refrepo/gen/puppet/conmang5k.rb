@@ -1,10 +1,5 @@
 # This script generates conmang5k/files/<site_uid>/conman.conf from input/, conf/console.yaml and conf/console-password.yaml
 
-require 'pp'
-require 'erb'
-require 'pathname'
-require 'optparse'
-require 'refrepo/input_loader'
 require 'refrepo/hash/hash'
 
 # Apply ERB template and save result to file

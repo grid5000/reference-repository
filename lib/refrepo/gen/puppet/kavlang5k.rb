@@ -1,13 +1,5 @@
 # !!! Require to "gem install ruby-ip", do not install "ip" gem !!!
 
-require 'json'
-require 'fileutils'
-
-require 'pp'
-require 'yaml'
-require 'pathname'
-require 'optparse'
-require 'refrepo/input_loader'
 require 'refrepo/hash/hash'
 
 def generate_puppet_kavlang5k(options)

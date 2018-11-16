@@ -1,7 +1,6 @@
 # coding: utf-8
-$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
 require 'refrepo/gen/wiki/wiki_generator'
-require_relative './site_hardware.rb'
+require 'refrepo/gen/wiki/generators/site_hardware'
 
 class G5KHardwareGenerator < WikiGenerator
 

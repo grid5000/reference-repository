@@ -1,14 +1,3 @@
-#!/usr/bin/ruby
-
-require 'pp'
-require 'optparse'
-require 'erb'
-require 'fileutils'
-require 'pathname'
-require 'json'
-require 'time'
-
-require 'refrepo/input_loader'
 require 'refrepo/valid/input/schema'
 require 'refrepo/valid/homogeneity'
 require 'refrepo/valid/input/monitoring'

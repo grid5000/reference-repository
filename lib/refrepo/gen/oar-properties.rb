@@ -1,19 +1,6 @@
-#!/usr/bin/ruby
 # coding: utf-8
 
-require 'pp'
-require 'erb'
-require 'fileutils'
-require 'pathname'
-require 'json'
-require 'time'
-require 'yaml'
 require 'hashdiff'
-require 'set'
-require 'uri'
-require 'net/https'
-
-require 'refrepo/input_loader'
 
 class MissingProperty < StandardError; end
 

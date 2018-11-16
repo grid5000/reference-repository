@@ -1,10 +1,3 @@
-#!/usr/bin/ruby
-
-require 'fileutils'
-require 'pathname'
-
-require 'refrepo/input_loader'
-
 require_relative "./lib/schema_validator"
 
 def run_validator(uid, data, schema)
