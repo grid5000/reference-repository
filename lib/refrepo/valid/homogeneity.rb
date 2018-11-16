@@ -167,7 +167,6 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
   cignore_keys = cluster_ignore_keys(File.expand_path("data/homogeneity.yaml.erb", File.dirname(__FILE__)))
 
   input_data_dir = "../../input/grid5000/"
-  refapi_hash = load_yaml_file_hierarchy
   count = {}
   total_count = 0
 
