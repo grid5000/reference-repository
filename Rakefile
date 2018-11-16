@@ -39,19 +39,22 @@ namespace :valid do
   task "homogeneity" do
     require 'refrepo/valid/homogeneity'
     options = {}
-    if ENV['SITE']
-      options[:sites] = ENV['SITE'].split(',')
-    else
-      options[:sites] = G5K_SITES
-    end
-    if ENV['CLUSTER']
-      options[:clusters] = ENV['CLUSTER'].split(',')
-    else
-      options[:clusters] = []
-    end
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+    options[:clusters] = ( ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [] )
     options[:verbose] = ENV['VERBOSE'].to_i if ENV['VERBOSE']
 
     ret = check_cluster_homogeneity(options)
+    exit(ret)
+  end
+
+  desc "Check for duplicates fields in input -- parameters: SITE={grenoble..} CLUSTER={yeti,...} VERBOSE=1"
+  task "duplicates" do
+    require 'refrepo/valid/input/duplicates'
+    options = {}
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+    options[:clusters] = ( ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [] )
+    options[:verbose] = ENV['VERBOSE'].to_i if ENV['VERBOSE']
+    ret = yaml_input_find_duplicates(options)
     exit(ret)
   end
 
@@ -64,17 +67,9 @@ namespace :valid do
   task "oar-properties" do
     require 'refrepo/valid/oar-properties'
     options = {}
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+    options[:clusters] = ( ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [] )
     options[:verbose] = true if ENV['VERBOSE']
-    if ENV['SITE']
-      options[:sites] = ENV['SITE'].split(',')
-    else
-      options[:sites] = G5K_SITES
-    end
-    if ENV['CLUSTER']
-      options[:clusters] = ENV['CLUSTER'].split(',')
-    else
-      options[:clusters] = []
-    end
     ret = RefRepo::Valid::OarProperties::check(options)
     exit(ret)
   end
@@ -86,11 +81,7 @@ namespace :gen do
   task "wiki" do
     require 'refrepo/gen/wiki'
     options = {}
-    if ENV['SITE']
-      options[:sites] = ENV['SITE'].split(',')
-    else
-      options[:sites] = ['global'] + G5K_SITES
-    end
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
     if ENV['NAME']
       options[:generators] = ENV['NAME'].split(',')
     else
@@ -118,11 +109,7 @@ namespace :gen do
   task "oar-properties" do
     require 'refrepo/gen/oar-properties'
     options = {}
-    if ENV['SITE']
-      options[:sites] = ENV['SITE'].split(',')
-    else
-      options[:sites] = G5K_SITES
-    end
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
     if ENV['CLUSTER']
       options[:clusters] = ENV['CLUSTER'].split(',')
     end
