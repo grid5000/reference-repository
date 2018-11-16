@@ -40,7 +40,7 @@ namespace :oar do
 
 end
 
-namespace :validators do
+namespace :valid do
 
   desc "Check homogeneity of clusters"
   task "homogeneity" do
@@ -51,10 +51,29 @@ namespace :validators do
   task "schema" do
     invoke_script "#{VALIDATORS_DIR}/yaml-input-schema-validator.rb"
   end
+
+  desc "Check OAR properties. Parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [VERBOSE=1]"
+  task "oar-properties" do
+    options = {}
+    options[:verbose] = true if ENV['VERBOSE']
+    if ENV['SITE']
+      options[:sites] = ENV['SITE'].split(',')
+    else
+      options[:sites] = G5K_SITES
+    end
+    if ENV['CLUSTER']
+      options[:clusters] = ENV['CLUSTER'].split(',')
+    else
+      options[:clusters] = []
+    end
+    ret = RefRepo::Valid::OarProperties::check(options)
+    exit(ret)
+  end
+
 end
 
 namespace :gen do
-  desc "Run wiki generator. Parameter: NAME={hardware,site_hardware,...} SITE={global,grenoble,...} DO={diff,print,update}"
+  desc "Run wiki generator. Parameters: NAME={hardware,site_hardware,...} SITE={global,grenoble,...} DO={diff,print,update}"
   task "wiki" do
     options = {}
     if ENV['SITE']
@@ -81,7 +100,8 @@ namespace :gen do
       puts "You must specify something to do using DO="
       exit(1)
     end
-    RefRepo::Gen::Wiki::wikigen(options)
+    ret = RefRepo::Gen::Wiki::wikigen(options)
+    exit(ret)
   end
 end
 
