@@ -169,9 +169,10 @@ namespace :gen do
 
 end
 
-desc "Creates json data from inputs"
+desc "Creates JSON data from inputs"
 task "reference-api" do
-  invoke_script "#{REFAPI_DIR}/reference-api.rb"
+  require 'refrepo/gen/reference-api'
+  generate_reference_api
 end
 
 #Some scripts may return status != 0 (validators, errors, ...)
