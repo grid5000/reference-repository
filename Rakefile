@@ -58,9 +58,14 @@ namespace :valid do
     exit(ret)
   end
 
-  desc "Check input data schema validity"
+  desc "Check input data schema validity -- parameters: SITE={grenoble,..} CLUSTER={yeti,..}"
   task "schema" do
-    invoke_script "#{VALIDATORS_DIR}/yaml-input-schema-validator.rb"
+    require 'refrepo/valid/input/schema'
+    options = {}
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+    options[:clusters] = ( ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [] )
+    ret = yaml_input_schema_validator(options)
+    exit(ret)
   end
 
   desc "Check OAR properties -- parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [VERBOSE=1]"
