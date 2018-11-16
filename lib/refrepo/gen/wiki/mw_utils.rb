@@ -1,6 +1,3 @@
-require 'active_support'
-require 'active_support/core_ext/object/deep_dup'
-
 require 'pp'
 require 'open-uri'
 require 'uri'
@@ -114,7 +111,7 @@ module G5K
       @@global_hash = load_yaml_file_hierarchy
     end
     # return a deep copy of global_hash
-    return @@global_hash.deep_dup
+    return Marshal.load(Marshal.dump(@@global_hash))
   end
 
   SITES = get_global_hash['sites'].keys.sort
