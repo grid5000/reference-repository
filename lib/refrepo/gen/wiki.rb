@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 require 'refrepo/gen/wiki/wiki_generator'
 require 'refrepo/gen/wiki/mw_utils'
 require 'refrepo/gen/wiki/generators/cpu_parameters'

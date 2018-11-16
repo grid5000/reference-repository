@@ -1,5 +1,4 @@
 # coding: utf-8
-require 'refrepo/gen/wiki/wiki_generator'
 require 'refrepo/valid/network'
 
 # This class generates the network description of each site, in .dot

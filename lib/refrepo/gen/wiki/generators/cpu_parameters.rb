@@ -1,4 +1,3 @@
-require 'refrepo/gen/wiki/wiki_generator'
 
 class CPUParametersGenerator < WikiGenerator
 

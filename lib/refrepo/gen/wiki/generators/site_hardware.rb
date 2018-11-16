@@ -1,5 +1,4 @@
 # coding: utf-8
-require 'refrepo/gen/wiki/wiki_generator'
 
 class SiteHardwareGenerator < WikiGenerator
 
