@@ -1,63 +1,9 @@
-#!/usr/bin/ruby
-
-# This script generates:
-# - kadeployg5k/files/<site_uid>/server_conf[_dev]/clusters.conf from input/
-# - kadeployg5k/files/<site_uid>/server_conf[_dev]/<cluster_uid>-cluster.conf from kadeployg5k[-dev].yaml and template/kadeployg5k.yaml.erb
-
-if RUBY_VERSION < "2.1"
-  puts "This script requires ruby >= 2.1"
-  exit
-end
-
 require 'pp'
 require 'erb'
 require 'pathname'
 require 'optparse'
-require_relative '../lib/input_loader'
-require_relative '../lib/hash/hash.rb'
-
-input_data_dir = "../../input/grid5000/"
-global_hash = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
-
-options = {}
-options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia}
-options[:output_dir] = "/tmp/puppet-repo"
-options[:conf_dir] = File.expand_path("conf-examples/", File.dirname(__FILE__))
-
-OptionParser.new do |opts|
-  opts.banner = "Usage: kadeployg5k.rb [options]"
-
-  opts.separator ""
-  opts.separator "Example: ruby kadeployg5k.rb -s nancy -o /tmp/puppet-repo -c $(dirname path_to_kadeployg5k.yaml)"
-
-  opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + options[:output_dir]) do |d|
-    options[:output_dir] = d
-    options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/kadeploy"
-  end
-
-  opts.on('-c', '--conf-dir dir', String, 'Select the conman configuration path', "Default: #{options[:conf_dir]}") do |d|
-    options[:conf_dir] = d
-  end
-
-  opts.separator ""
-  opts.separator "Filters:"
-
-  opts.on('-s', '--sites a,b,c', Array, 'Select site(s)', "Default: " + options[:sites].join(", ")) do |s|
-    raise "Wrong argument for -s option." unless (s - options[:sites]).empty?
-    options[:sites] = s
-  end
-
-  opts.on_tail("-h", "--help", "Show this message") do
-    puts opts
-    exit
-  end
-end.parse!
-
-raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir].to_s).exist?
-
-puts "Writing Kadeploy configuration files to: #{options[:output_dir]}"
-puts "Using configuration directory: #{options[:conf_dir]}"
-puts "For site(s): #{options[:sites].join(', ')}"
+require 'refrepo/input_loader'
+require 'refrepo/hash/hash'
 
 # Compute cluster prefix
 # input: cluster_list = ['graoully', 'graphene', 'griffon', ...]
@@ -92,114 +38,129 @@ def get_ip(node)
   }
 end
 
-# There is two kadeploy servers : kadeploy and kadeploy-dev
-['', '-dev'].each {|suffix|
+def generate_puppet_kadeployg5k(options)
 
-  global_hash['sites'].each { |site_uid, site|
+  global_hash = load_yaml_file_hierarchy
 
-    next unless options[:sites].include?(site_uid)
+  if not options[:confdir]
+    options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/kadeploy"
+  end
 
-    #
-    # Generate site/<site_uid>/servers_conf[_dev]/clusters.conf
-    #
+  raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir].to_s).exist?
 
-    clusters_conf = { 'clusters'=> [] } # output clusters.conf
-    prefix = cluster_prefix(site['clusters'].keys)
+  puts "Writing Kadeploy configuration files to: #{options[:output_dir]}"
+  puts "Using configuration directory: #{options[:conf_dir]}"
+  puts "For site(s): #{options[:sites].join(', ')}"
 
-    site['clusters'].sort.each { |cluster_uid, cluster|
+  # There is two kadeploy servers : kadeploy and kadeploy-dev
+  ['', '-dev'].each {|suffix|
 
-      # clusters:
-      # - name: griffon
-      #   prefix: gri
-      #   conf_file: /etc/kadeploy3/griffon-cluster.conf
-      #   nodes:
-      #   - name: griffon-[1-92].nancy.grid5000.fr
-      #     address: 172.16.65.[1-92]
+    global_hash['sites'].each { |site_uid, site|
 
-      cluster_conf = {}
-      cluster_conf['name']      = cluster_uid
-      cluster_conf['prefix']    = prefix[cluster_uid]
-      cluster_conf['conf_file'] = "/etc/kadeploy3#{suffix}/#{cluster_uid}-cluster.conf"
-      cluster_conf['nodes']     = []
+      next unless options[:sites].include?(site_uid)
 
-      # init
-      first = last = c_uid = -1
-      first_ip = ['0', '0', '0', 0]
+      #
+      # Generate site/<site_uid>/servers_conf[_dev]/clusters.conf
+      #
 
-      # group nodes by range (griffon-[1-92] -> 172.16.65.[1-92])
-      cluster['nodes'].each_sort_by_node_uid { |node_uid, node|
+      clusters_conf = { 'clusters'=> [] } # output clusters.conf
+      prefix = cluster_prefix(site['clusters'].keys)
 
-        next if node == nil || (node['status'] && node['status'] == 'retired')
+      site['clusters'].sort.each { |cluster_uid, cluster|
 
-        c, id = node_uid.scan(/^([^\d]*)(\d*)$/).first
-        id = id.to_i
-        ip = get_ip(node).split('.')
-        ip[3] = ip[3].to_i
+        # clusters:
+        # - name: griffon
+        #   prefix: gri
+        #   conf_file: /etc/kadeploy3/griffon-cluster.conf
+        #   nodes:
+        #   - name: griffon-[1-92].nancy.grid5000.fr
+        #     address: 172.16.65.[1-92]
 
-        if c == c_uid && id == last + 1 && ip[0..2] == first_ip[0..2] && ip[3] == first_ip[3] + id - first
-          # extend range
-          last = id
-        else
-          if c_uid != -1
-            node = {}
-            node['name']    = "#{c_uid}[#{first}-#{last}].#{site_uid}.grid5000.fr"
-            node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3]+last-first}]"
-            cluster_conf['nodes'] << node
+        cluster_conf = {}
+        cluster_conf['name']      = cluster_uid
+        cluster_conf['prefix']    = prefix[cluster_uid]
+        cluster_conf['conf_file'] = "/etc/kadeploy3#{suffix}/#{cluster_uid}-cluster.conf"
+        cluster_conf['nodes']     = []
+
+        # init
+        first = last = c_uid = -1
+        first_ip = ['0', '0', '0', 0]
+
+        # group nodes by range (griffon-[1-92] -> 172.16.65.[1-92])
+        cluster['nodes'].each_sort_by_node_uid { |node_uid, node|
+
+          next if node == nil || (node['status'] && node['status'] == 'retired')
+
+          c, id = node_uid.scan(/^([^\d]*)(\d*)$/).first
+          id = id.to_i
+          ip = get_ip(node).split('.')
+          ip[3] = ip[3].to_i
+
+          if c == c_uid && id == last + 1 && ip[0..2] == first_ip[0..2] && ip[3] == first_ip[3] + id - first
+            # extend range
+            last = id
+          else
+            if c_uid != -1
+              node = {}
+              node['name']    = "#{c_uid}[#{first}-#{last}].#{site_uid}.grid5000.fr"
+              node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3]+last-first}]"
+              cluster_conf['nodes'] << node
+            end
+
+            # new range
+            first = last = id
+            first_ip = ip
+            c_uid = c
           end
-
-          # new range
-          first = last = id
-          first_ip = ip
-          c_uid = c
+        }
+        # last range
+        if c_uid != -1
+          node = {}
+          node['name']    = "#{c_uid}[#{first}-#{last}].#{site_uid}.grid5000.fr"
+          node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3]+last-first}]"
+          cluster_conf['nodes'] << node
         end
-      }
-      # last range
-      if c_uid != -1
-        node = {}
-        node['name']    = "#{c_uid}[#{first}-#{last}].#{site_uid}.grid5000.fr"
-        node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3]+last-first}]"
-        cluster_conf['nodes'] << node
-      end
 
-      clusters_conf['clusters'] << cluster_conf
+        clusters_conf['clusters'] << cluster_conf
 
-    } # site['clusters'].each
+      } # site['clusters'].each
 
-    output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/clusters.conf")
-
-    output_file.dirname.mkpath()
-    write_yaml(output_file, clusters_conf)
-    add_header(output_file)
-
-    #
-    # Generate <cluster_uid>-cluster.conf files
-    #
-
-    # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
-
-    conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
-
-    site['clusters'].each { |cluster_uid, cluster|
-      defaults = conf['defaults']
-      overrides = conf[site_uid][cluster_uid]
-      dupes = (defaults.to_a & overrides.to_a)
-      if not dupes.empty?
-        puts "Warning: cluster-specific configuration for #{cluster_uid} overrides default values: #{dupes.to_s}"
-      end
-      data = data = defaults.merge(overrides)
-      if data.nil?
-        puts "Warning: configuration not found in #{options[:conf_dir]}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
-        next
-      end
-
-      output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__)))).result(binding)
-
-      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/#{cluster_uid}-cluster.conf")
+      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/clusters.conf")
 
       output_file.dirname.mkpath()
-      File.write(output_file, output)
+      write_yaml(output_file, clusters_conf)
+      add_header(output_file)
+
+      #
+      # Generate <cluster_uid>-cluster.conf files
+      #
+
+      # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
+
+      conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
+
+      site['clusters'].each { |cluster_uid, cluster|
+        defaults = conf['defaults']
+        overrides = conf[site_uid][cluster_uid]
+        dupes = (defaults.to_a & overrides.to_a)
+        if not dupes.empty?
+          puts "Warning: cluster-specific configuration for #{cluster_uid} overrides default values: #{dupes.to_s}"
+        end
+        data = data = defaults.merge(overrides)
+        if data.nil?
+          puts "Warning: configuration not found in #{options[:conf_dir]}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
+          next
+        end
+
+        output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__)))).result(binding)
+
+        output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/#{cluster_uid}-cluster.conf")
+
+        output_file.dirname.mkpath()
+        File.write(output_file, output)
+
+      }
 
     }
-
   }
-}
+end

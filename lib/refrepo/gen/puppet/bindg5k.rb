@@ -1,11 +1,3 @@
-#!/usr/bin/ruby
-# coding: utf-8
-
-if RUBY_VERSION < "2.1"
-  puts "This script requires ruby >= 2.1"
-  exit
-end
-
 # See also: https://www.grid5000.fr/mediawiki/index.php/DNS_server
 
 require 'pp'
@@ -14,44 +6,7 @@ require 'pathname'
 require 'fileutils'
 require 'optparse'
 require 'dns/zone'
-require_relative '../lib/input_loader'
-
-input_data_dir = "../../input/grid5000/"
-
-refapi = load_yaml_file_hierarchy(File.expand_path(input_data_dir, File.dirname(__FILE__)))
-
-$options = {}
-$options[:sites] = %w{grenoble lille luxembourg lyon nancy nantes rennes sophia toulouse}
-$options[:output_dir] = "/tmp/puppet"
-$options[:verbose] = false
-
-OptionParser.new do |opts|
-  opts.banner = "Usage: bindg5k.rb [options]"
-
-  opts.separator ""
-  opts.separator "Example: ruby bindg5k.rb -s nancy -o /tmp/puppet"
-
-  opts.on('-o', '--output-dir dir', String, 'Select the puppet repo path', "Default: " + $options[:output_dir]) do |d|
-    $options[:output_dir] = d
-  end
-
-  opts.separator ""
-  opts.separator "Filters:"
-
-  opts.on('-s', '--sites a,b,c', Array, 'Select site(s)', "Default: " + $options[:sites].join(", ")) do |s|
-    raise "Wrong argument for -s option." unless (s - $options[:sites]).empty?
-    $options[:sites] = s
-  end
-
-  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
-    $options[:verbose] = true
-  end
-
-  opts.on_tail("-h", "--help", "Show this message") do
-    puts opts
-    exit
-  end
-end.parse!
+require 'refrepo/input_loader'
 
 #Prettier aligned dump of records
 class DNS::Zone::RR::A
@@ -467,140 +422,146 @@ def write_zone(zone)
   File.write(zone.file_path, zone.dump)
 end
 
-puts "Writing DNS configuration files to: #{$options[:output_dir]}"
-puts "For site(s): #{$options[:sites].join(', ')}"
+# main method
+def generate_puppet_bindg5k(options)
+  $options = options
+  puts "Writing DNS configuration files to: #{$options[:output_dir]}"
+  puts "For site(s): #{$options[:sites].join(', ')}"
 
-puts "Note: if you modify *-manual.db files you will have to manually update the serial in managed db file for changes to be applied"
+  puts "Note: if you modify *-manual.db files you will have to manually update the serial in managed db file for changes to be applied"
 
-$written_files = []
+  $written_files = []
 
-# Loop over Grid'5000 sites
-refapi["sites"].each { |site_uid, site|
-  
-  next unless $options[:sites].include?(site_uid)
+  refapi = load_yaml_file_hierarchy
 
-  dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
-  zones_dir = File.join(dest_dir, "zones/#{site_uid}")
+  # Loop over Grid'5000 sites
+  refapi["sites"].each { |site_uid, site|
 
-  site_records = {}
+    next unless $options[:sites].include?(site_uid)
 
-  # Servers
-  site_records['servers'] = get_servers_records(site) unless site['servers'].nil?
+    dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
+    zones_dir = File.join(dest_dir, "zones/#{site_uid}")
 
-  # PDUs
-  site_records['pdus'] = get_pdus_records(site) unless site['pdus'].nil?
+    site_records = {}
 
-  # Networks and laptops (same input format)
-  site_records['networks'] = get_networks_records(site, 'networks') unless site['networks'].nil?
-  site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
+    # Servers
+    site_records['servers'] = get_servers_records(site) unless site['servers'].nil?
 
-  site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
+    # PDUs
+    site_records['pdus'] = get_pdus_records(site) unless site['pdus'].nil?
 
-    cluster.fetch('nodes').select { |node_uid, node|
-      node != nil && node["status"] != "retired" && node.has_key?('network_adapters')
-    }.each_sort_by_node_uid { |node_uid, node|
+    # Networks and laptops (same input format)
+    site_records['networks'] = get_networks_records(site, 'networks') unless site['networks'].nil?
+    site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
 
-      network_adapters = {}
+    site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
 
-      # Nodes
-      node.fetch('network_adapters').each { |net_uid, net_hash|
-        network_adapters[net_uid] = {"ip" => net_hash["ip"], "mounted" => net_hash["mounted"], "alias" => net_hash["alias"]}
+      cluster.fetch('nodes').select { |node_uid, node|
+        node != nil && node["status"] != "retired" && node.has_key?('network_adapters')
+      }.each_sort_by_node_uid { |node_uid, node|
+
+        network_adapters = {}
+
+        # Nodes
+        node.fetch('network_adapters').each { |net_uid, net_hash|
+          network_adapters[net_uid] = {"ip" => net_hash["ip"], "mounted" => net_hash["mounted"], "alias" => net_hash["alias"]}
+        }
+
+        # Mic
+        if node['mic'] && node['mic']['ip']
+          network_adapters['mic0'] = {"ip" => node['mic']['ip']}
+        end
+
+        site_records[cluster_uid] ||= []
+        site_records[cluster_uid] += get_node_records(cluster_uid, node_uid, network_adapters)
+
+        # Kavlan
+        if node['kavlan']
+          kavlan_adapters = {}
+          node.fetch('kavlan').each { |net_uid, net_hash|
+            net_hash.each { |kavlan_net_uid, ip|
+              kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] = {"ip" => ip, "mounted" => node['network_adapters'][net_uid]['mounted']}
+            }
+          }
+          site_records["#{cluster_uid}-kavlan"] ||= []
+          site_records["#{cluster_uid}-kavlan"] += get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
+        end
+      } # each nodes
+    } # each cluster
+
+    reverse_records = {} # one hash entry per reverse dns file
+
+    site_records.each { |zone, records|
+
+      #Sort records
+      site_records[zone] = sort_records(records)
+
+      records.each{ |record|
+        #get Reverse records
+        reverse_file_name, reverse_record = get_reverse_record(record, site_uid)
+        if reverse_file_name != nil
+          reverse_records[reverse_file_name] ||= []
+          reverse_records[reverse_file_name].each {|r|
+            if r.label == reverse_record.label
+              puts "Warning: reverse entry with IP #{reverse_record.label} already exists in #{reverse_file_name}, #{reverse_record.name} is duplicate"
+            end
+          }
+          reverse_records[reverse_file_name] << reverse_record
+        end
+      }
+    }
+
+    zones = []
+
+    #Sort reverse records and create reverse zone from files
+    reverse_records.each{ |file_name, records|
+      records.sort!{ |a, b|
+        a.label.to_i <=> b.label.to_i
       }
 
-      # Mic
-      if node['mic'] && node['mic']['ip']
-        network_adapters['mic0'] = {"ip" => node['mic']['ip']}
+      reverse_file_path = File.join(zones_dir, file_name)
+      zone = load_zone(reverse_file_path, site_uid, site, true)
+      if diff_zone_file(zone, records)
+        zone.soa.serial = update_serial(zone.soa.serial)
       end
-
-      site_records[cluster_uid] ||= []
-      site_records[cluster_uid] += get_node_records(cluster_uid, node_uid, network_adapters)
-
-      # Kavlan
-      if node['kavlan']
-        kavlan_adapters = {}
-        node.fetch('kavlan').each { |net_uid, net_hash|
-          net_hash.each { |kavlan_net_uid, ip|
-            kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] = {"ip" => ip, "mounted" => node['network_adapters'][net_uid]['mounted']}
-          }
-        }
-        site_records["#{cluster_uid}-kavlan"] ||= []
-        site_records["#{cluster_uid}-kavlan"] += get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
-      end
-    } # each nodes
-  } # each cluster
-
-  reverse_records = {} # one hash entry per reverse dns file
-
-  site_records.each { |zone, records|
-
-    #Sort records
-    site_records[zone] = sort_records(records)
-
-    records.each{ |record|
-      #get Reverse records
-      reverse_file_name, reverse_record = get_reverse_record(record, site_uid)
-      if reverse_file_name != nil
-        reverse_records[reverse_file_name] ||= []
-        reverse_records[reverse_file_name].each {|r|
-          if r.label == reverse_record.label
-            puts "Warning: reverse entry with IP #{reverse_record.label} already exists in #{reverse_file_name}, #{reverse_record.name} is duplicate"
-          end
-        }
-        reverse_records[reverse_file_name] << reverse_record
-      end
-    }
-  }
-
-  zones = []
-
-  #Sort reverse records and create reverse zone from files
-  reverse_records.each{ |file_name, records|
-    records.sort!{ |a, b|
-      a.label.to_i <=> b.label.to_i
+      zone.records = records;
+      zones << zone
     }
 
-    reverse_file_path = File.join(zones_dir, file_name)
-    zone = load_zone(reverse_file_path, site_uid, site, true)
-    if diff_zone_file(zone, records)
-      zone.soa.serial = update_serial(zone.soa.serial)
+    #Manage site zone (SITE.db file)
+    #It only contains header and inclusion of other db files
+    #Check modification in included files and update serial accordingly
+    site_zone_path = File.join(zones_dir, site_uid + ".db")
+    site_zone = load_zone(site_zone_path, site_uid, site, true)
+    site_zone_changed = false
+
+    site_records.each{ |type, records|
+      next if records.empty?
+      zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
+      zone = load_zone(zone_file_path, site_uid, site, false)
+      if diff_zone_file(zone, records)
+        puts "Zone file changed: #{zone.file_path}" if $options[:verbose]
+        site_zone_changed = true
+      end
+      zone.records = records
+      site_zone.include += "$INCLUDE /etc/bind/zones/#{site_uid}/#{File.basename(zone_file_path)}\n"
+      zones << zone
+    }
+
+    if (site_zone_changed)
+      site_zone.soa.serial = update_serial(site_zone.soa.serial)
     end
-    zone.records = records;
-    zones << zone
-  }
 
-  #Manage site zone (SITE.db file)
-  #It only contains header and inclusion of other db files
-  #Check modification in included files and update serial accordingly
-  site_zone_path = File.join(zones_dir, site_uid + ".db")
-  site_zone = load_zone(site_zone_path, site_uid, site, true)
-  site_zone_changed = false
+    zones << site_zone
 
-  site_records.each{ |type, records|
-    next if records.empty?
-    zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
-    zone = load_zone(zone_file_path, site_uid, site, false)
-    if diff_zone_file(zone, records)
-      puts "Zone file changed: #{zone.file_path}" if $options[:verbose]
-      site_zone_changed = true
-    end
-    zone.records = records
-    site_zone.include += "$INCLUDE /etc/bind/zones/#{site_uid}/#{File.basename(zone_file_path)}\n"
-    zones << zone
-  }
+    zones += get_orphan_reverse_manual_zones(zones_dir, site_uid, site)
 
-  if (site_zone_changed)
-    site_zone.soa.serial = update_serial(site_zone.soa.serial)
-  end
+    zones.each{ |zone|
+      write_zone(zone)
+    }
 
-  zones << site_zone
+    write_site_conf(site_uid, dest_dir, zones_dir)
+    write_site_local_conf(site_uid, dest_dir, zones_dir)
 
-  zones += get_orphan_reverse_manual_zones(zones_dir, site_uid, site)
-
-  zones.each{ |zone|
-    write_zone(zone)
-  }
-
-  write_site_conf(site_uid, dest_dir, zones_dir)
-  write_site_local_conf(site_uid, dest_dir, zones_dir)
-
-} # each sites
+  } # each sites
+end

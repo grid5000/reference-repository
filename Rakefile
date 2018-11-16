@@ -15,6 +15,12 @@ REFAPI_DIR = "./generators/reference-api"
 PUPPET_DIR = "./generators/puppet"
 VALIDATORS_DIR = "./generators/input-validators"
 
+if Dir::exists?(ENV['HOME'] + '/.gpuppet/repo')
+  PUPPET_ODIR = ENV['HOME'] + '/.gpuppet/repo'
+else
+  PUPPET_ODIR = '/tmp/puppet'
+end
+
 G5K_SITES = RefRepo::Utils::get_sites
 
 namespace :valid do
@@ -156,9 +162,16 @@ namespace :puppet do
   all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k]
 
   all_puppet_tasks.each { |t|
-    desc "Generate #{t} configuration"
+    desc "Generate #{t} configuration -- parameters: SITE={grenoble,...} OUTPUTDIR=[default: #{PUPPET_ODIR}] [CONFDIR=...] VERBOSE=1"
     task t do
-      invoke_script "#{PUPPET_DIR}/#{t}.rb"
+      require "refrepo/gen/puppet/#{t}"
+      options = {}
+      options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+      options[:output_dir] = ENV['OUTPUTDIR'] || PUPPET_ODIR
+      options[:verbose] = (ENV['VERBOSE'] != nil)
+      options[:conf_dir] = ENV['CONFDIR'] if ENV['CONFDIR']
+      send("generate_puppet_#{t}", options)
+
     end
   }
 
