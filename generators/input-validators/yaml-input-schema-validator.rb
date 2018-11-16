@@ -8,7 +8,9 @@ end
 require 'fileutils'
 require 'pathname'
 
-require_relative "../lib/input_loader"
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
+require 'refrepo/input_loader'
+
 require_relative "./lib/schema_validator"
 
 def run_validator(uid, data, schema)

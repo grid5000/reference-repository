@@ -8,11 +8,8 @@ require 'refrepo'
 
 REFAPI_DIR = "./generators/reference-api"
 PUPPET_DIR = "./generators/puppet"
-OAR_DIR = "./generators/oar-properties"
 VALIDATORS_DIR = "./generators/input-validators"
-WIKI_DIR = "./generators/wiki"
 
-# Get the list of sites as the list of directories in input/grid5000/sites
 G5K_SITES = RefRepo::Utils::get_sites
 
 namespace :puppet do
@@ -31,15 +28,6 @@ namespace :puppet do
 
 end
 
-namespace :oar do
-
-  desc "Generate oar properties"
-  task :properties do
-    invoke_script "#{OAR_DIR}/oar-properties.rb"
-  end
-
-end
-
 namespace :valid do
 
   desc "Check homogeneity of clusters"
@@ -52,8 +40,9 @@ namespace :valid do
     invoke_script "#{VALIDATORS_DIR}/yaml-input-schema-validator.rb"
   end
 
-  desc "Check OAR properties. Parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [VERBOSE=1]"
+  desc "Check OAR properties -- parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [VERBOSE=1]"
   task "oar-properties" do
+    require 'refrepo/valid/oar-properties'
     options = {}
     options[:verbose] = true if ENV['VERBOSE']
     if ENV['SITE']
@@ -73,8 +62,9 @@ namespace :valid do
 end
 
 namespace :gen do
-  desc "Run wiki generator. Parameters: NAME={hardware,site_hardware,...} SITE={global,grenoble,...} DO={diff,print,update}"
+  desc "Run wiki generator -- parameters: NAME={hardware,site_hardware,...} SITE={global,grenoble,...} DO={diff,print,update}"
   task "wiki" do
+    require 'refrepo/gen/wiki'
     options = {}
     if ENV['SITE']
       options[:sites] = ENV['SITE'].split(',')
@@ -103,6 +93,51 @@ namespace :gen do
     ret = RefRepo::Gen::Wiki::wikigen(options)
     exit(ret)
   end
+
+  desc "Generate OAR properties -- parameters: SITE={grenoble,...} CLUSTER={yeti,...} NODE={dahu-1,...} DO={print,exec,diff,check} VERBOSE={0,1,2,3}"
+  task "oar-properties" do
+    require 'refrepo/gen/oar-properties'
+    options = {}
+    if ENV['SITE']
+      options[:sites] = ENV['SITE'].split(',')
+    else
+      options[:sites] = G5K_SITES
+    end
+    if ENV['CLUSTER']
+      options[:clusters] = ENV['CLUSTER'].split(',')
+    end
+    if ENV['NODE']
+      options[:nodes] = ENV['NODE'].split(',')
+    end
+    options[:output] = false
+    options[:diff] = false
+    options[:exec] = false
+    options[:check] = false
+    if ENV['DO']
+      ENV['DO'].split(',').each do |t|
+        options[:diff] = true if t == 'diff'
+        options[:output] = true if t == 'output'
+        options[:exec] = true if t == 'update'
+        if t == 'check'
+          options[:diff] = true # check requires diff
+          options[:check] = true
+        end
+      end
+    else
+      puts "You must specify something to do using DO="
+      exit(1)
+    end
+
+    if ENV['VERBOSE']
+      options[:verbose] = ENV['VERBOSE'].to_i
+    else
+      options[:verbose] = 0
+    end
+
+    ret = generate_oar_properties(options)
+    exit(ret)
+  end
+
 end
 
 desc "Creates json data from inputs"

@@ -13,7 +13,9 @@ require 'pathname'
 require 'json'
 require 'time'
 
-require_relative '../lib/input_loader'
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
+require 'refrepo/input_loader'
+
 require_relative '../input-validators/yaml-input-schema-validator'
 require_relative '../input-validators/check-cluster-homogeneity'
 require_relative '../input-validators/check-monitoring-properties'

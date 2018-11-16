@@ -15,7 +15,8 @@ require 'json'
 require 'uri'
 require 'net/https'
 
-require_relative "../lib/input_loader"
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../../lib')))
+require 'refrepo/input_loader'
 
 def global_ignore_keys()
 

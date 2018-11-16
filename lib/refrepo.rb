@@ -5,7 +5,4 @@ module RefRepo::Gen
 end
 module RefRepo::Valid
 end
-require 'refrepo/valid/oar-properties'
-require 'refrepo/gen/wiki'
-
-
+require 'refrepo/utils'
