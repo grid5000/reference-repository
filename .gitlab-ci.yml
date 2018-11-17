@@ -9,8 +9,11 @@ validate-data:
     - grid5000-docker
    image: debian:stretch
    script:
-    - apt-get update && apt-get -y install ruby rake ruby-hashdiff
+    - apt-get update && apt-get -y install ruby rake ruby-hashdiff wget
     - gem install hash_validator
+      # Add G5K CA certificate
+    - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca.grid5000.fr.crt
+    - /usr/sbin/update-ca-certificates
     - rake valid:schema
     - rake valid:duplicates
     - rake valid:homogeneity
