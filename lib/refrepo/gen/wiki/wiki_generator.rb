@@ -15,9 +15,8 @@ class WikiGenerator
   def login(options)
     tries = 3
     begin
-      if (options[:user] && options[:pwd])
-        @mw_client.log_in(options[:user], options[:pwd])
-      end
+      conf = RefRepo::Utils.get_api_config
+      @mw_client.log_in(conf['username'], conf['password'])
     rescue
       tries -= 1
       if tries > 0
