@@ -56,7 +56,7 @@ class WikiGenerator
 
   #Get the given page content and print a diff if any
   #Return true if there are no differences, false otherwise
-  def diff_page()
+  def diff_page
     wiki_content = remove_page_creation_date(@mw_client.get_page_content(@page_name)).strip # .strip removes potential '\n' at end of file
     generated_content = remove_page_creation_date(@generated_content).strip
     diff = Diffy::Diff.new(wiki_content, generated_content, :context => 3)
