@@ -37,7 +37,7 @@ def generate_puppet_kadeployg5k(options)
 
   global_hash = load_yaml_file_hierarchy
 
-  if not options[:confdir]
+  if not options[:conf_dir]
     options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/kadeploy"
   end
 

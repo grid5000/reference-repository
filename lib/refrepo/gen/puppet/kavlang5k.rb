@@ -4,7 +4,7 @@ require 'refrepo/hash/hash'
 
 def generate_puppet_kavlang5k(options)
 
-  if not options[:confdir]
+  if not options[:conf_dir]
     options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/kavlan"
   end
 

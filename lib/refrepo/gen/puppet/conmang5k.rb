@@ -13,7 +13,7 @@ def write_conman_file(site_uid, site_refapi, site_config, site_credentials, opti
 end
 
 def generate_puppet_conmang5k(options)
-  if not options[:confdir]
+  if not options[:conf_dir]
     options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/ipmitools/"
   end
 
