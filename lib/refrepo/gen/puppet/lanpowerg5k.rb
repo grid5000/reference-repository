@@ -9,7 +9,6 @@ def generate_puppet_lanpowerg5k(options)
 
   raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect") unless Pathname(options[:conf_dir].to_s).exist?
 
-  puts "Puppet #{options[:puppet4] ? '4' : '2'} context"
   puts "Writing lanpower configuration files to: #{options[:output_dir]}"
   puts "Using configuration directory: #{options[:conf_dir]}"
   puts "For site(s): #{options[:sites].join(', ')}"
@@ -66,13 +65,7 @@ def generate_puppet_lanpowerg5k(options)
     } # clusters.each
 
     # Write output file
-    output_file = begin
-                    if options[:puppet4]
-                      Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/lanpower/#{site_uid}/lanpower.yaml")
-                    else
-                      Pathname("#{options[:output_dir]}/modules/lanpowerg5k/files/#{site_uid}/lanpower.yaml")
-                    end
-                  end
+    output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/lanpower/#{site_uid}/lanpower.yaml")
     output_file.dirname.mkpath()
     write_yaml(output_file, h)
     add_header(output_file)
