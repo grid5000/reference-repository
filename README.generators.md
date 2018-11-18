@@ -1,6 +1,8 @@
 Reference repository generators
 ===============================
 
+FIXME this file is partially outdated
+
 This directory contains the input files and scripts needed for generating:
 
 - The Reference API ie. the JSON files that are served by the Grid'5000 API for describing nodes, network equipments, topology ...
