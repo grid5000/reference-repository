@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require 'hashdiff'
+require 'refrepo/data_loader'
 
 class MissingProperty < StandardError; end
 
@@ -59,14 +60,15 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     return h
   end
 
-  main_network_adapter = node['network_adapters'].find { |k, na| /^eth[0-9]*$/.match(k) && na['enabled'] && na['mounted'] && !na['management'] }
+  main_network_adapter = node['network_adapters'].find { |na| /^eth[0-9]*$/.match(na['device']) && na['enabled'] && na['mounted'] && !na['management'] }
+
   raise MissingProperty, "Node #{node_uid} does not have a main network_adapter (ie. an ethernet interface with enabled=true && mounted==true && management==false)" unless main_network_adapter
 
-  h['ip'] = main_network_adapter[1]['ip']
+  h['ip'] = main_network_adapter['ip']
   raise MissingProperty, "Node #{node_uid} has no IP" unless h['ip']
   h['cluster'] = cluster_uid
   h['nodemodel'] = cluster['model']
-  h['switch'] = main_network_adapter[1]['switch']
+  h['switch'] = main_network_adapter['switch']
   h['besteffort'] = node['supported_job_types']['besteffort']
   h['deploy'] = node['supported_job_types']['deploy']
   h['virtual'] = node['supported_job_types']['virtual']
@@ -74,10 +76,10 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['cpucore'] = node['architecture']['nb_cores'] / node['architecture']['nb_procs']
   h['cputype'] = [node['processor']['model'], node['processor']['version']].join(' ')
   h['cpufreq'] = node['processor']['clock_speed'] / 1_000_000_000.0
-  h['disktype'] = (node['storage_devices'].first[1] || {})['interface']
+  h['disktype'] = (node['storage_devices'].first || {})['interface']
 
   # ETH
-  ni_mountable = node['network_adapters'].select { |k, na| /^eth[0-9]*$/.match(k) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }.values
+  ni_mountable = node['network_adapters'].select { |na| /^eth[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
 
   h['eth_count'] = ni_mountable.length
@@ -86,7 +88,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   puts "#{node_uid}: Warning - no rate info for the eth interface" if h['eth_count'] > 0 && h['eth_rate'] == 0
 
   # INFINIBAND
-  ni_mountable = node['network_adapters'].select { |k, na| /^ib[0-9]*(\.[0-9]*)?$/.match(k) && (na['interface'] == 'InfiniBand' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }.values
+  ni_mountable = node['network_adapters'].select { |na| /^ib[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'InfiniBand' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
   ib_map = { 0 => 'NO', 10 => 'SDR', 20 => 'DDR', 40 => 'QDR', 56 => 'FDR' }
 
@@ -97,7 +99,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   puts "#{node_uid}: Warning - no rate info for the ib interface" if h['ib_count'] > 0 && h['ib_rate'] == 0
   
   # OMNIPATH
-  ni_mountable = node['network_adapters'].select { |k, na| /^ib[0-9]*(\.[0-9]*)?$/.match(k) && (na['interface'] == 'Omni-Path' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }.values
+  ni_mountable = node['network_adapters'].select { |na| /^ib[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'Omni-Path' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
 
   h['opa_count'] = ni_mountable.length
@@ -108,7 +110,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
 
   # MYRINET
-  ni_mountable = node['network_adapters'].select { |k, na| /^myri[0-9]*$/.match(k) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }.values
+  ni_mountable = node['network_adapters'].select { |na| /^myri[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
   myri_map = { 0 => 'NO', 2 => 'Myrinet-2000', 10 => 'Myri-10G' }
 
@@ -138,8 +140,8 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   node['monitoring'] ||= {}
   h['wattmeter'] = case node['monitoring']['wattmeter']
-                   when true then true
-                   when false then false
+                   when "true" then true
+                   when "false" then false
                    when nil then false
                    else node['monitoring']['wattmeter'].upcase
                    end
@@ -153,7 +155,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['maintenance'] = get_maintenance_property(node)
 
   # Disk reservation
-  h['disk_reservation_count'] = node['storage_devices'].select { |_k, v| v['reservation'] }.length
+  h['disk_reservation_count'] = node['storage_devices'].select { |v| v['reservation'] }.length
 
   # convert booleans to YES/NO string
   h.each do |k, v|
@@ -202,9 +204,8 @@ end
 #  ["grimoire-1", "sdc.grimoire-1"]=> ...
 def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
   properties = {}
-  node['storage_devices'].to_a.each_with_index do |v, index|
-    device_uid, device = v
-    disk = [device_uid, node_uid].join('.')
+  node['storage_devices'].each_with_index do |device, index|
+    disk = [device['device'], node_uid].join('.')
     if index > 0 && device['reservation'] # index > 0 is used to exclude sda
       key = [node_uid, disk]
       h = {}
@@ -588,7 +589,7 @@ def generate_oar_properties(options)
   options[:ssh][:user] = 'g5kadmin'
   options[:ssh][:host] = 'oar.%s.g5kadmin'
   ret = true
-  global_hash = load_yaml_file_hierarchy
+  global_hash = load_data_hierarchy
 
   properties = {}
   properties['ref'] = get_oar_properties_from_the_ref_repo(global_hash, options)
