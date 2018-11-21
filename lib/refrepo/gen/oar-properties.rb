@@ -2,6 +2,7 @@
 
 require 'hashdiff'
 require 'refrepo/data_loader'
+require 'net/ssh'
 
 class MissingProperty < StandardError; end
 
@@ -528,7 +529,7 @@ end
 def ssh_exec(site_uid, cmds, options)
   # The following is equivalent to : "cat cmds | bash"
   #res = ""
-  c = Net::SSH.start(options[:ssh][:host].gsub("%s", site_uid), options[:ssh][:user], options[:ssh][:params])
+  c = Net::SSH.start("oar.#{site_uid}.g5kadmin", "g5kadmin")
   c.open_channel { |channel|
     channel.exec('sudo bash') { |ch, success|
       # stdout
