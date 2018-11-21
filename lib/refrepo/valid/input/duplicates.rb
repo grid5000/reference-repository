@@ -37,7 +37,7 @@ def yaml_input_find_duplicates(options)
     end
 
     site["clusters"].sort.each do |cluster_uid, cluster|
-      if options.key?(:clusters) && !options[:clusters].include?(cluster_uid)
+      if options.key?(:clusters) && (not options[:clusters].empty?) && !options[:clusters].include?(cluster_uid)
           site["clusters"].delete(cluster_uid)
       end
       cluster["nodes"].sort.each do |node_uid, node|
