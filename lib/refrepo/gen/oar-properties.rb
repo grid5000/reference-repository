@@ -412,7 +412,6 @@ def ignore_default_keys()
     "scheduler_priority",
     "state",
     "state_num",
-    "switch",
     "subnet_address",
     "subnet_prefix",
     "suspended_jobs",
