@@ -626,12 +626,6 @@ def generate_oar_properties(options)
       ret = false unless options[:exec] || options[:output]
     end
 
-    if missings_dead.size > 0 && options[:check]
-      puts "*** Warning: The following 'Dead' nodes exist in the OAR server but are missing in the reference-repo: #{missings_dead.join(', ')}.
-Those nodes should be marked as 'retired' in the reference-repo.\n"
-ret = false unless options[:exec] || options[:output]
-    end
-
     skipped_nodes = []
     prev_diff = {}
     properties['diff'] = {}
