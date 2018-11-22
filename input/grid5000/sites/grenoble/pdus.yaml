@@ -1,9 +1,15 @@
+---
 pdus:
-  idgraf-pdu:
-    ip: 172.17.31.218
-    mac: 00:20:85:F9:0C:74
+  wattmetre1:
+    vendor: OmegaWatt
+    model: ''
+    ip: 172.16.31.9
     sensors:
       - power:
-          per_outlets: true
           resolution: 1
-
+          per_outlets: true
+          wattmetre:
+            available: true
+            unit: W
+            www:
+              url: "http://digwatt.grenoble.grid5000.fr/GetWatts-json.php"
