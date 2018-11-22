@@ -72,7 +72,7 @@ srv-bigdata:
 rook-storage0:
   kind: physical
   alias:
-    - ceph
+    - ceph1
   warranty: 2018-11
   serial: GQHZKZ1
   network_adapters:
@@ -83,7 +83,8 @@ rook-storage0:
 
 rook-storage1:
   kind: physical
-  alias: []
+  alias:
+    - ceph2
   warranty: 2018-11
   serial: GMG6LZ1
   network_adapters:
@@ -105,7 +106,8 @@ rook-storage2:
 
 rook-storage3:
   kind: physical
-  alias: []
+  alias:
+    - ceph0
   warranty: 2018-11
   serial: FQJ4LZ1
   network_adapters:
