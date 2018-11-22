@@ -27,6 +27,14 @@ module RefRepo::Valid::OarProperties
         end
       end
 
+      # Non-default resources must have available_upto = 0 (see bug 8062)
+      resources.select { |e| e['type'] != 'default' }.sort_by { |e| e['id'] }.each do |r|
+        if r['available_upto'] != 0
+          puts "Invalid available_upto value on #{r['id']} (type=#{r['type']}, state=#{r['state']}): #{r['available_upto']} (should be 0)"
+          ret = false
+        end
+      end
+
       # Checking list of properties
       names = default_resources.map { |e| e.keys.sort }.uniq.first - IGNORED_PROPERTIES
       if names != G5K_PROPERTIES
