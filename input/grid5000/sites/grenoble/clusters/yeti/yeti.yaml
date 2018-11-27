@@ -50,6 +50,14 @@ nodes:
         mounted: true
         netmask: 255.255.240.0
     storage_devices:
+      nvme0n1:
+        interface: NVME
+        driver: nvme
+        storage: SSD
+      nvme1n1:
+        interface: NVME
+        driver: nvme
+        storage: SSD
       sda:
         interface: SAS
         driver: megaraid_sas
