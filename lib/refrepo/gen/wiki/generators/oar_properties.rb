@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require 'refrepo/gen/oar-properties'
+require 'refrepo/data_loader'
 
 class OarPropertiesGenerator < WikiGenerator
 
@@ -178,7 +179,7 @@ class OarPropertiesGenerator < WikiGenerator
   end
 
   def generate_content
-    refapi = get_global_hash
+    refapi = load_data_hierarchy
     #Properties generated from oar-properties generator
     props = {}
     G5K::SITES.each{ |site_uid|
