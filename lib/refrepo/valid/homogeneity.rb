@@ -10,18 +10,18 @@ def global_ignore_keys
 
   ignore_keys = %w(
     ~chassis.serial
-  
+
     ~network_adapters.bmc.ip
     ~network_adapters.bmc.mac
     ~network_adapters.bmc.network_address
     ~network_adapters.bmc.switch
     ~network_adapters.bmc.switch_port
-  
+
     ~network_adapters.myri0.ip
     ~network_adapters.myri0.ip6
     ~network_adapters.myri0.mac
     ~network_adapters.myri0.network_address
-  
+
     ~network_adapters.ib0.mac
     ~network_adapters.ib1.mac
 
@@ -66,6 +66,10 @@ eos
     ~storage_devices.sd.by_path
 eos
 
+  ignore_nvmekeys = <<-eos
+    ~storage_devices.nvme.by_id
+eos
+
   (0..5).each { |eth|
     keys = ignore_netkeys.gsub('.eth.', ".eth#{eth}.").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
@@ -75,9 +79,16 @@ eos
     }
   }
 
-  ('a'..'f').each { |sd| 
+  ('a'..'f').each { |sd|
     keys = ignore_stokeys.gsub('.sd.', ".sd#{sd}.").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
+  }
+
+  (0..2).each { |i|
+    (0..2).each { |j|
+      keys = ignore_nvmekeys.gsub('.nvme.', ".nvme#{i}n#{j}.").gsub("\n", " ").split(" ")
+      ignore_keys.push(* keys)
+    }
   }
 
   ignore_ibkeys = <<-eos
