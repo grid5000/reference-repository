@@ -262,7 +262,7 @@ class G5KHardwareGenerator < WikiGenerator
 
   def storage_size_to_text(s)
     if s > 1000*1000*1000*1000 # 1 TB
-      return sprintf("%.1f", s/(1000*1000*1000*1000)) + ' TB'
+      return sprintf("%.1f", s.to_f/(1000*1000*1000*1000)) + ' TB'
     else
       return sprintf("%d", s/(1000*1000*1000)) + ' GB'
     end
