@@ -274,19 +274,19 @@ class G5KHardwareGenerator < WikiGenerator
           sd = node_hash['storage_devices']
           reservable_disks = sd.to_a.select{ |v| v[1]['reservation'] == true }.count > 0
           maindisk = sd.to_a.select { |v| v[0] == 'sda' }.first[1]
-          maindisk_t = maindisk['storage'] + ' ' + G5K.get_size(maindisk['size'])
+          maindisk_t = maindisk['storage'] + ' ' + G5K.get_size(maindisk['size'],'metric')
           other = sd.to_a.select { |d| d[0] != 'sda' }
           hdds = other.select { |d| d[1]['storage'] == 'HDD' }
           if hdds.count == 0
             hdd_t = "0"
           else
-            hdd_t = hdds.count.to_s + " (" + hdds.map { |d| G5K.get_size(d[1]['size']) }.join(', ') + ")"
+            hdd_t = hdds.count.to_s + " (" + hdds.map { |d| G5K.get_size(d[1]['size'],'metric') }.join(', ') + ")"
           end
           ssds = other.select { |d| d[1]['storage'] == 'SSD' }
           if ssds.count == 0
             ssd_t = "0"
           else
-            ssd_t = ssds.count.to_s + " (" + ssds.map { |d| G5K.get_size(d[1]['size']) }.join(', ') + ")"
+            ssd_t = ssds.count.to_s + " (" + ssds.map { |d| G5K.get_size(d[1]['size'],'metric') }.join(', ') + ")"
           end
           queues = cluster_hash['queues'] - ['admin', 'default']
           queue_t = (queues.nil? || (queues.empty? ? '' : "_.28" + queues[0].gsub(' ', '_') + ' queue.29'))
