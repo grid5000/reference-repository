@@ -794,7 +794,7 @@ def generate_oar_properties(options)
       if options[:exec]
         printf 'Apply changes to the OAR server ' + options[:ssh][:host].gsub('%s', site_uid) + ' ? (y/N) '
         prompt = STDIN.gets.chomp
-        ssh_exec(site_uid, ssh_cmd, options) if prompt == 'y'
+        ssh_exec(site_uid, ssh_cmd, options) if prompt.downcase == 'y'
       end
     end # site loop
 
