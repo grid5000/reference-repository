@@ -451,8 +451,12 @@ set -o pipefail
 EOF
 end
 
-def oarcmd_create_node_header()
+def oarcmd_create_helper_functions()
   return <<EOF
+property_exist () {
+  [[ $(oarproperty -l | grep -e "^$1$") ]]
+}
+
 node_exist () {
   [[ $(oarnodes --sql "host='$1' and type='default'") ]]
 }
@@ -472,9 +476,9 @@ def oarcmd_create_properties(properties_keys)
   command = ''
   properties_keys.each do |key, key_type|
     if key_type == Fixnum
-      command += "oarproperty -a #{key} || true\n"
+      command += "property_exist '#{key}' || oarproperty -a #{key}\n"
     elsif key_type == String
-      command += "oarproperty -a #{key} --varchar || true\n"
+      command += "property_exist '#{key}' || oarproperty -a #{key} --varchar\n"
     else
       raise "Error: the type of the '#{key}' property is unknown (Integer/String). Cannot generate the corresponding 'oarproperty' command. You must create this property manually ('oarproperty -a #{key} [--varchar]')"
     end
@@ -728,14 +732,16 @@ def generate_oar_properties(options)
       cmd << oarcmd_script_header
       cmd << oarcmd_separator
 
+      # Create helper functions
+      cmd << oarcmd_create_helper_functions
+      cmd << oarcmd_separator
+
       # Create properties keys
       properties_keys[opt][site_uid].delete_if { |k, _v| ignore_default_keys.include?(k) }
       unless properties_keys[opt][site_uid].empty?
         cmd << oarcmd_create_properties(properties_keys[opt][site_uid]) + "\n"
         cmd << oarcmd_separator
       end
-      cmd << oarcmd_create_node_header
-      cmd << oarcmd_separator
 
       # Build and output node commands
       site_properties['default'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |node_uid, node_properties|
