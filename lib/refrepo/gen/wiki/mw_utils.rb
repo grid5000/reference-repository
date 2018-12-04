@@ -77,12 +77,21 @@ module G5K
     s += ']'
   end
 
-  def self.get_size(x)
-    gbytes = (x.to_f / 2**30).floor
-    if gbytes < 2**10
-      gbytes.to_s + '&nbsp;GB'
+  def self.get_size(x, unit='IEC')
+    if unit == 'metric'
+      giga = (x.to_f / 1000**3).floor
+      if giga < 1000
+        giga.to_s + '&nbsp;GB'
+      else
+        (x.to_f / 1000**4).round(2).to_s + '&nbsp;TB'
+      end
     else
-      (x.to_f / 2**40).round(3).to_s + '&nbsp;TB'
+      giga = (x.to_f / 2**30).floor
+      if giga < 2**10
+        giga.to_s + '&nbsp;GiB'
+      else
+        (x.to_f / 2**40).round(2).to_s + '&nbsp;TiB'
+      end
     end
   end
   

@@ -201,10 +201,10 @@ def get_hardware(sites)
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
         storage = node_hash['storage_devices'].map{ |k, v| {'size' => v['size'],  'tech' => v['storage']} }
-        hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by { |e| e[0]['size'].to_f }.map{ |e| (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') + G5K.get_size(e[0]['size']) + '&nbsp;' + e[0]['tech'] }.join(' +&nbsp;')
+        hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by { |e| e[0]['size'].to_f }.map{ |e| (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') + G5K.get_size(e[0]['size'],'metric') + '&nbsp;' + e[0]['tech'] }.join(' +&nbsp;')
         hard['storage_size'] = storage.inject(0){|sum, v| sum + (v['size'].to_f / 2**30).floor }.to_s # round to GB to avoid small differences within a cluster
         storage_description = node_hash['storage_devices'].map { |k, v| { 'device' => v['device'], 'size' => v['size'], 'tech' => v['storage'], 'interface' => v['interface'], 'model' => v['model'], 'driver' => v['driver'], 'path' => v['by_path'] || v['by_id'],  'count' => node_hash['storage_devices'].count } }
-        hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size']), e['tech'], e['interface'], e['model'], ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'].join(' ') }.join('<br />')
+        hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size'],'metric'), e['tech'], e['interface'], e['model'], ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'].join(' ') }.join('<br />')
 
         network = node_hash['network_adapters'].select { |k, v|
           v['management'] == false &&
