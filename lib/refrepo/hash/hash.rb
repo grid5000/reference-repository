@@ -126,7 +126,7 @@ class ::Hash
 
   # Sort a hash according to the position of the key in the array.
   def sort_by_array(array)
-    Hash[sort_by{|key, _| array.index(key) || length}] 
+    Hash[sort_by{|key, _| array.index(key) or raise "Unknown key to sort array: #{key}" }] 
   end
 
   # Add an element composed of nested Hashes made from elements found in "array" argument
