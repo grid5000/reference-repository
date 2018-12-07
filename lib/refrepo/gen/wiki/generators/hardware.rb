@@ -13,11 +13,51 @@ class G5KHardwareGenerator < WikiGenerator
 
     @generated_content = "__NOEDITSECTION__\n"
     @generated_content += "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
+    @generated_content += generate_summary
     @generated_content += "\n= Clusters =\n"
     @generated_content += SiteHardwareGenerator.generate_all_clusters
     @generated_content += generate_totals
     @generated_content += MW.italic(MW.small(generated_date_string))
     @generated_content += MW::LINE_FEED
+  end
+
+  def generate_summary
+    sites = @global_hash['sites'].length
+    clusters = 0
+    nodes = 0
+    cores = 0
+    gpus = 0
+    hdds = 0
+    ssds = 0
+    storage_space = 0
+
+    @global_hash['sites'].sort.to_h.each do |site_uid, site_hash|
+      clusters += site_hash['clusters'].length
+      site_hash['clusters'].sort.to_h.each do |cluster_uid, cluster_hash|
+        nodes += cluster_hash['nodes'].length
+        cluster_hash['nodes'].sort.to_h.each do |node_uid, node_hash|
+          next if node_hash['status'] == 'retired'
+          cores += node_hash['architecture']['nb_cores']
+          if node_hash['gpu'] and node_hash['gpu']['gpu_count']
+            gpus += node_hash['gpu']['gpu_count']
+          end
+          ssds += node_hash['storage_devices'].values.select { |d| d['storage'] == 'SSD' }.length
+          hdds += node_hash['storage_devices'].values.select { |d| d['storage'] == 'HDD' }.length
+          node_hash['storage_devices'].each_pair do |k, e|
+            storage_space += e['size']
+          end
+        end
+      end
+    end
+    return <<-EOF
+= Summary =
+* #{sites} sites
+* #{clusters} clusters
+* #{nodes} nodes
+* #{cores} CPU cores
+* #{gpus} GPUs
+* #{ssds} SSDs and #{hdds} HDDs on nodes (total: #{G5K.get_size(storage_space, 'metric')})
+    EOF
   end
 
   def generate_totals
