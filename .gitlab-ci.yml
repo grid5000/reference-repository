@@ -3,6 +3,16 @@ stages:
 - generate
 - deploy
 
+rubocop:
+  stage: validate
+  tags:
+   - grid5000-docker
+  image: debian:stretch
+  script:
+      - echo "deb http://deb.debian.org/debian/ stretch-backports main" >> /etc/apt/sources.list.d/stretch-backports.list
+      - apt-get update && apt-get -y install rubocop/stretch-backports
+      - rubocop --fail-level W
+
 validate-data:
    stage: validate
    tags:
