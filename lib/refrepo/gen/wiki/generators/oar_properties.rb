@@ -149,7 +149,7 @@ class OarPropertiesGenerator < WikiGenerator
   #Existing properties that won't be documented
   @@ignored_properties = ["maintenance", "state", "ip_virtual"]
 
-  def get_nodes_properties(site_uid, site)
+  def get_nodes_properties(_site_uid, site)
     properties = {}
     site['clusters'].sort.to_h.each do |cluster_uid, cluster|
       cluster['nodes'].sort.to_h.each do |node_uid, node|

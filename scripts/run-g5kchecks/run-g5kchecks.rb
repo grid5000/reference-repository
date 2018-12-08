@@ -28,7 +28,7 @@ $g5k = Cute::G5K::API.new()
 # puts 'Get site_uids'
 begin
   sites = $g5k.site_uids()
-rescue Exception => e
+rescue StandardError => e
   puts "Error while getting the site list with ruby-cute: #{e.class}: #{e.message}"
   puts "API unavailable ?"
   refapi = load_yaml_file_hierarchy("../../input/grid5000/")
@@ -154,7 +154,7 @@ def run_g5kcheck(site_uid, fnode_uid, options)
         end
       end
     }
-  rescue Exception => e
+  rescue StandardError => e
     puts "#{site_uid}: Error while processing #{fnode_uid} - #{e.class}: #{e.message}"
   end
 end
@@ -165,7 +165,7 @@ def oarsub(site_uid, resources, queue)
   begin
     job = $g5k.reserve(:site => site_uid, :resources => resources, :walltime => '00:30:00', :wait => false, :queue => queue)
 
-  rescue Exception => e
+  rescue StandardError => e
     puts "#{site_uid}: Error during the reservation '#{resources}' at #{site_uid} - #{e.class}: #{e.message}"
   end
 
@@ -205,7 +205,7 @@ if options[:force]
         if nodes_status.nil?
           begin
             nodes_status = $g5k.nodes_status(site_uid)
-          rescue Exception => e
+          rescue StandardError => e
             nodes_status = {} # do not retry
             puts "Error while getting nodes status at #{site_uid}" #{e}
             #next continue anyway as the --force option might be used for a new cluster that is not available yet in the reference-api
@@ -252,7 +252,7 @@ else # ! options[:force]
         
         begin
           nodes_status = $g5k.nodes_status(site_uid)
-        rescue Exception => e
+        rescue StandardError => e
           puts "Error while getting nodes status at #{site_uid}" #{e}
           next
         end
@@ -311,9 +311,9 @@ else # ! options[:force]
         #
         
         loop do
-          waiting_jobs   = $g5k.get_my_jobs(site_uid, state='waiting')
-          running_jobs   = $g5k.get_my_jobs(site_uid, state='running')
-          launching_jobs = $g5k.get_my_jobs(site_uid, state='launching')
+          waiting_jobs   = $g5k.get_my_jobs(site_uid, 'waiting')
+          running_jobs   = $g5k.get_my_jobs(site_uid, 'running')
+          launching_jobs = $g5k.get_my_jobs(site_uid, 'launching')
           
           puts "#{site_uid}: Running: #{running_jobs.size} - Waiting: #{waiting_jobs.size} - Launching: #{launching_jobs.size}"
           
@@ -341,7 +341,7 @@ else # ! options[:force]
             begin
               $g5k.release(job)
               released_jobs[site_uid][job_uid] = true
-            rescue Exception => e
+            rescue StandardError => e
               puts "#{site_uid}: Error while releasing job #{job_uid} - #{e.class}: #{e.message}"
             end
           }
@@ -358,26 +358,27 @@ else # ! options[:force]
       
     } # options[:sites].peach
     
-  rescue Exception => e
+  rescue StandardError => e
     puts "#{e.class}: #{e.message}"
   ensure
-    jobs.each{|site_uid, jobs| jobs.compact.each { |job|
+    jobs.each do |site_uid, jobs2|
+      jobs2.compact.each do |job|
         begin
           job_uid = job['uid']
           if released_jobs[site_uid][job_uid] != true
             puts "Release job #{job['links'][0]['href']}"
             $g5k.release(job)
           end
-        rescue Exception => e
+        rescue StandardError => e
           puts "Failed releasing job #{job['links'][0]['href']} - #{e.class}: #{e.message}"
         end
-      }
-    }
+      end
+    end
     exit
   end
   
 end # options[:force]
 
-stdout_str, stderr_str, status = Open3.capture3('ruby postprocessing.rb')
+stdout_str, stderr_str, _status = Open3.capture3('ruby postprocessing.rb')
 puts stdout_str
 puts stderr_str

@@ -197,7 +197,7 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
   return records
 end
 
-def get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
+def get_node_kavlan_records(_cluster_uid, node_uid, network_adapters, kavlan_adapters)
   records = []
 
   kavlan_adapters.each { |net_uid, net_hash|
@@ -290,7 +290,7 @@ end
 
 def include_manual_file(zone)
   manual_file_path = File.join(File.dirname(zone.file_path), File.basename(zone.file_path).sub('.db', '') + '-manual.db')
-  if (File.exists?(manual_file_path))
+  if (File.exist?(manual_file_path))
     return "$INCLUDE /etc/bind/zones/#{zone.site_uid}/#{File.basename(zone.file_path).sub('.db', '') + '-manual.db'}\n"
   end
   return ''
@@ -298,7 +298,7 @@ end
 
 #
 def load_zone(zone_file_path, site_uid, site, header)
-  if File.exists?(zone_file_path)
+  if File.exist?(zone_file_path)
     zone = DNS::Zone.load(File.read(zone_file_path))
   else
     zone = DNS::Zone.new
@@ -388,7 +388,7 @@ def get_orphan_reverse_manual_zones(zones_dir, site_uid, site)
   zones = []
   Dir.glob(File.join(zones_dir, "reverse-*-manual.db")).each { |reverse_manual_file|
     output_file = reverse_manual_file.sub("-manual.db", ".db")
-    next if File.exists?(File.join(output_file))
+    next if File.exist?(File.join(output_file))
     puts "Creating file for orphan reverse manual file: #{output_file}" if $options[:verbose]
     #Creating the zone will include automatically the manual file
     zone = load_zone(output_file, site_uid, site, true)

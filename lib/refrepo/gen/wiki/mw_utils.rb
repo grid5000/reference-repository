@@ -75,6 +75,7 @@ module G5K
       i += 1
     end
     s += ']'
+    return s
   end
 
   def self.get_size(x, unit='IEC')

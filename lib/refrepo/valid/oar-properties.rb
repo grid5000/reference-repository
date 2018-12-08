@@ -102,7 +102,7 @@ module RefRepo::Valid::OarProperties
         end
         if options[:verbose] and (host_cpusets_max - host_cpusets_min + 1 != nbcores or host_cores_max - host_cores_min + 1 != nbcores)
           puts "id   cpu   core   cpuset"
-          pp host_resources.map { |e| [e['id'], e['cpu'], e['core'], e['cpuset'] ] }
+          pp(host_resources.map { |e| [e['id'], e['cpu'], e['core'], e['cpuset'] ] })
         end
       end
     end

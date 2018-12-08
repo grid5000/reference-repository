@@ -66,7 +66,7 @@ end
 
 # Monkey patching of the SimpleValidator to get more useful error messages
 class HashValidator::Validator::SimpleValidator < HashValidator::Validator::Base
-  def validate(key, value, validations, errors)
+  def validate(key, value, _validations, errors)
     unless lambda.call(value)
       errors[key] = "#{self.name} required (current value: #{value.class}:#{value})"
     end
@@ -78,4 +78,5 @@ def load_yaml_schema(filename)
   schema = YAML::load_file(filename)
   schema = add_optional_validator(schema)
   schema = replace_validators_keys(schema)
+  return schema
 end

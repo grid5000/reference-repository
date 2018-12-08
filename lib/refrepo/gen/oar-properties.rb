@@ -25,7 +25,7 @@ def get_ref_default_properties(_site_uid, site)
         properties[node_uid] = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
       rescue MissingProperty => e
         puts "Error (missing property) while processing node #{node_uid}: #{e}"
-      rescue Exception => e
+      rescue StandardError => e
         puts "FATAL ERROR while processing node #{node_uid}: #{e}"
         puts "Description of the node is:"
         pp node
@@ -477,7 +477,7 @@ end
 def oarcmd_create_properties(properties_keys)
   command = ''
   properties_keys.each do |key, key_type|
-    if key_type == Fixnum
+    if key_type == Fixnum # rubocop:disable Lint/UnifiedInteger
       command += "property_exist '#{key}' || oarproperty -a #{key}\n"
     elsif key_type == String
       command += "property_exist '#{key}' || oarproperty -a #{key} --varchar\n"
@@ -532,18 +532,18 @@ def oarcmd_set_disk_properties(host, disk, disk_properties)
 end
 
 # sudo exec
-def ssh_exec(site_uid, cmds, options)
+def ssh_exec(site_uid, cmds, _options)
   # The following is equivalent to : "cat cmds | bash"
   #res = ""
   c = Net::SSH.start("oar.#{site_uid}.g5kadmin", "g5kadmin")
   c.open_channel { |channel|
     channel.exec('sudo bash') { |ch, success|
       # stdout
-      channel.on_data { |ch, data|
+      channel.on_data { |ch2, data|
         puts data #if options[:verbose] # ssh cmd output
       }
       # stderr
-      channel.on_extended_data do |ch, type, data|
+      channel.on_extended_data do |ch2, type, data|
         puts data
       end
 

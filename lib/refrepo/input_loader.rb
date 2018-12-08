@@ -26,7 +26,7 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
         raise Exception.new("loaded hash is empty")
       end
       # YAML::Psych raises an exception if the file cannot be loaded.
-      rescue Exception => e
+      rescue StandardError => e
         puts "Error loading '#{filename}', #{e.message}"
       end
 

@@ -1,7 +1,7 @@
 require_relative "./lib/schema_validator"
 
 def run_validator(uid, data, schema)
-  validator = HashValidator.validate(data, schema, strict = true)
+  validator = HashValidator.validate(data, schema, true)
   if ! validator.valid?
     errors = {uid => validator.errors}
     puts errors.to_yaml

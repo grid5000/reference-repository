@@ -238,6 +238,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n= Nodes models =\n"
     table_columns = ['Nodes model'] + sites + ['Nodes total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'node_models'))
+    return generated_content
   end
 
   def init(data, key1, key2)
@@ -295,8 +296,8 @@ class G5KHardwareGenerator < WikiGenerator
       'Skylake' => '2016',
       'Zen' => '2017'
     }
-    date = release_dates[microarchitecture.to_s]
-    raise "ERROR: microarchitecture not found: '#{microarchitecture.to_s}'. Add in hardware.rb" if date.nil?
+    date = release_dates[microarchitecture]
+    raise "ERROR: microarchitecture not found: '#{microarchitecture}'. Add in hardware.rb" if date.nil?
     date
   end
 

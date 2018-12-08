@@ -139,9 +139,9 @@ def generate_puppet_kadeployg5k(options)
         overrides = conf[site_uid][cluster_uid]
         dupes = (defaults.to_a & overrides.to_a)
         if not dupes.empty?
-          puts "Warning: cluster-specific configuration for #{cluster_uid} overrides default values: #{dupes.to_s}"
+          puts "Warning: cluster-specific configuration for #{cluster_uid} overrides default values: #{dupes}"
         end
-        data = data = defaults.merge(overrides)
+        data = defaults.merge(overrides)
         if data.nil?
           puts "Warning: configuration not found in #{options[:conf_dir]}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
           next

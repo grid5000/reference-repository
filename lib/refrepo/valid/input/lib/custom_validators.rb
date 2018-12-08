@@ -8,7 +8,7 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
     @port_properties = ["uid", "name", "port", "kind", "mtu", "rate", "site", "aggregation"]
   end
 
-  def validate(key, values, validations, errors)
+  def validate(key, values, _validations, errors)
     if values.is_a?(Hash)
       values.each do |k, v|
         if @port_properties.index(k) == nil
@@ -32,7 +32,7 @@ class HashValidator::Validator::IpAddressValidator < HashValidator::Validator::B
     super('ip_address')
   end
 
-  def validate(key, values, validations, errors)
+  def validate(key, values, _validations, errors)
     if values.is_a?(String)
       unless (values =~ Resolv::IPv4::Regex || values =~ Resolv::IPv6::Regex)
         errors[key] = "Invalid ip address format #{values}"

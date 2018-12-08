@@ -33,7 +33,7 @@ class SiteHardwareGenerator < WikiGenerator
     # remove retired nodes
     # FIXME this should probably move to a helper
     h['clusters'].each_pair do |cl, v|
-      v['nodes'].delete_if { |n, v| v['status'] == 'retired' }
+      v['nodes'].delete_if { |n, v2| v2['status'] == 'retired' }
     end
     h['clusters'].delete_if { |k, v| v['nodes'].empty? }
 
@@ -136,6 +136,7 @@ class SiteHardwareGenerator < WikiGenerator
 
     generated_content = "\n= Cluster details =\n"
     generated_content += text_data.join("\n")
+    return generated_content
   end
 end
 

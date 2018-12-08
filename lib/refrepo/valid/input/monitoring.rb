@@ -55,7 +55,6 @@ def check_monitoring_properties(data)
   data['sites'].each do |site_uid, site|
     site_pdus = {}
     site_pdu_outlets = {}
-    metric_nodes = {}
     node_monitoring_wattmeter = {}
     # if site['clusters'].nil?
     #   return

@@ -122,7 +122,6 @@ end
 
 def get_site_dead_nodes(site_uid, options)
 
-  oarnodes = ''
   api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
 
   # Download the OAR properties from the OAR API (through G5K API)
@@ -167,7 +166,6 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
   ignore_keys  = global_ignore_keys()
   cignore_keys = cluster_ignore_keys(File.expand_path("data/homogeneity.yaml.erb", File.dirname(__FILE__)))
 
-  input_data_dir = "../../input/grid5000/"
   count = {}
   total_count = 0
 

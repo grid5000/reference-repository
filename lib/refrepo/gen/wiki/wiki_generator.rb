@@ -12,7 +12,7 @@ class WikiGenerator
     return G5K::get_global_hash
   end
 
-  def login(options)
+  def login(_options)
     tries = 3
     begin
       conf = RefRepo::Utils.get_api_config
@@ -164,7 +164,7 @@ class WikiGenerator
     end
     opt_parse.parse!
     if (!options[:diff] && !options[:print] && !options[:update])
-      puts "ERROR: At least one action must be given! (--diff, --print, --update)\n#{opt_parse.to_s}"
+      puts "ERROR: At least one action must be given! (--diff, --print, --update)\n#{opt_parse}"
       exit(1)
     end
     return options

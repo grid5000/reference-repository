@@ -38,11 +38,11 @@ def yaml_input_find_duplicates(options)
 
     site["clusters"].sort.each do |cluster_uid, cluster|
       if options.key?(:clusters) && (not options[:clusters].empty?) && !options[:clusters].include?(cluster_uid)
-          site["clusters"].delete(cluster_uid)
+        site["clusters"].delete(cluster_uid)
       end
       cluster["nodes"].sort.each do |node_uid, node|
-          if node.key?("status") && node["status"] == "retired"
-            cluster["nodes"].delete(node_uid)
+        if node.key?("status") && node["status"] == "retired"
+          cluster["nodes"].delete(node_uid)
         end
       end
     end

@@ -17,8 +17,11 @@ def get_network_info(node_hash, network_interface)
 
   node_network_interface = node_network_adapters.fetch(neti)
 
-  raise '"mac" is nil' unless node_mac = node_network_interface.fetch("mac")
-  raise '"ip" is nil'  unless node_ip  = node_network_interface.fetch("ip")
+  node_mac = node_network_interface.fetch("mac")
+  node_ip  = node_network_interface.fetch("ip")
+
+  raise '"mac" is nil' unless node_mac
+  raise '"ip" is nil'  unless node_ip
 
   return [node_ip, node_mac]
 end

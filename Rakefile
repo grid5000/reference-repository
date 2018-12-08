@@ -11,7 +11,7 @@ end
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
 require 'refrepo'
 
-if Dir::exists?(ENV['HOME'] + '/.gpuppet/repo')
+if Dir::exist?(ENV['HOME'] + '/.gpuppet/repo')
   PUPPET_ODIR = ENV['HOME'] + '/.gpuppet/repo'
 else
   PUPPET_ODIR = '/tmp/puppet'
