@@ -1,5 +1,6 @@
 {
   "ip": "172.17.97.201",
+  "model": "AP8659",
   "ports": {
     "1": "parasilo-9",
     "2": "parasilo-8",
@@ -9,6 +10,23 @@
     "6": "paravance-1",
     "7": "paravance-2"
   },
+  "sensors": [
+    {
+      "power": {
+        "per_outlets": false,
+        "resolution": 1,
+        "snmp": {
+          "available": true,
+          "outlet_prefix_oid": "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7",
+          "total_oids": [
+            "iso.3.6.1.4.1.318.1.1.12.1.16.0"
+          ],
+          "unit": "W"
+        }
+      }
+    }
+  ],
   "type": "pdu",
-  "uid": "parasilo-pdu-1"
+  "uid": "parasilo-pdu-1",
+  "vendor": "APC"
 }
