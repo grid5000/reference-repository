@@ -43,7 +43,7 @@
     "ram_size": 824633720832
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "true"
   },
   "network_adapters": [
     {
@@ -173,7 +173,12 @@
   },
   "sensors": {
     "power": {
+      "available": true,
+      "per_outlets": true,
       "via": {
+        "api": {
+          "metric": "power"
+        },
         "pdu": [
           {
             "port": 4,
@@ -183,7 +188,10 @@
             "port": 5,
             "uid": "wattmetre1"
           }
-        ]
+        ],
+        "www": {
+          "url": "http://wattmetre.lyon.grid5000.fr/GetWatts-json.php"
+        }
       }
     }
   },

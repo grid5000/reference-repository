@@ -76,3 +76,14 @@ nodes:
         driver: megaraid_sas
         storage: HDD
         reservation: true
+    monitoring:
+      wattmeter: true
+    sensors:
+      power:
+        available: true
+        per_outlets: true
+        via:
+          api:
+            metric: power
+          www:
+            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php
