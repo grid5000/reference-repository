@@ -18,6 +18,10 @@ module RefRepo::Valid::OarProperties
       resources = RefRepo::Utils::get_api("sites/#{site}/internal/oarapi/resources/details.json?limit=1000000")['items']
 
       default_resources = resources.select { |e| e['type'] == 'default' }.sort_by { |e| e['id'] }
+      if not options[:clusters].empty?
+        puts "Restricting to resources of clusters #{options[:clusters].join(',')}"
+        default_resources.select! { |e| options[:clusters].include?(e['cluster']) }
+      end
 
       # Checking scheduler_priority
       default_resources.each do |r|
