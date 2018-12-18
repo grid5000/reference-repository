@@ -49,6 +49,7 @@ def generate_puppet_kadeployg5k(options)
 
   # There is two kadeploy servers : kadeploy and kadeploy-dev
   ['', '-dev'].each {|suffix|
+    puts "Info: Working with kadeployg5k#{suffix}.yaml"
 
     global_hash['sites'].each { |site_uid, site|
 
@@ -138,8 +139,12 @@ def generate_puppet_kadeployg5k(options)
         defaults = conf['defaults']
         overrides = conf[site_uid][cluster_uid]
         dupes = (defaults.to_a & overrides.to_a)
+        key_dupes = (defaults.to_a.map(&:first) & overrides.to_a.map(&:first))
         if not dupes.empty?
-          puts "Warning: cluster-specific configuration for #{cluster_uid} overrides default values: #{dupes}"
+          puts "Warning: Overriding default values #{dupes} by the same value for #{cluster_uid}"
+        end
+        if not key_dupes.empty?
+          puts "Info: cluster-specific configuration for #{cluster_uid} overrides default values: #{key_dupes}"
         end
         data = defaults.merge(overrides)
         if data.nil?
