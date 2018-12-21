@@ -273,7 +273,7 @@ def get_oar_data(site_uid, filename, options)
     puts "Downloading resources properties from #{api_uri} ..." if options[:verbose]
     http = Net::HTTP.new(api_uri.host, Net::HTTP.https_default_port)
     http.use_ssl = true
-    request = Net::HTTP::Get.new(api_uri.request_uri)
+    request = Net::HTTP::Get.new(api_uri.request_uri, {'User-Agent' => 'reference-repository/gen/oar-properties'})
 
     # For outside g5k network access
     if options[:api][:user] && options[:api][:pwd]

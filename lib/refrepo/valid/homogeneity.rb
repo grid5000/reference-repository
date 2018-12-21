@@ -128,7 +128,7 @@ def get_site_dead_nodes(site_uid, options)
   puts "Downloading OAR resources properties from #{api_uri} ..." if options[:verbose]
   http = Net::HTTP.new(api_uri.host, Net::HTTP.https_default_port)
   http.use_ssl = true
-  request = Net::HTTP::Get.new(api_uri.request_uri)
+  request = Net::HTTP::Get.new(api_uri.request_uri, {'User-Agent' => 'reference-repository/valid/homogeneity'})
 
   # For outside g5k network access
   if options[:api][:user] && options[:api][:pwd]
