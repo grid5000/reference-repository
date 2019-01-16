@@ -12,6 +12,7 @@ require 'set'
 require 'time'
 require 'uri'
 require 'yaml'
+require 'ipaddress'
 
 
 # pre-declare those modules here
