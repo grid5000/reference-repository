@@ -196,7 +196,6 @@ routed rennes parasilo eth1 0 24 13 0
 routed sophia suno eth0 0 32 3 0
 routed sophia uvb eth0 0 32 5 0
 routed luxembourg granduc eth0 0 40 1 0
-routed luxembourg granduc eth1 0 40 1 22
 routed luxembourg granduc eth1 0 40 2 0
 routed luxembourg petitprince eth0 0 40 3 0
 routed luxembourg petitprince eth1 0 40 4 0
