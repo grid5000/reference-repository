@@ -195,6 +195,12 @@ task "reference-api" do
   generate_reference_api
 end
 
+desc "Output sorted VLAN offsets table (to update the input YAML after modification)"
+task "sort-vlans-offsets" do
+  sorted_vlan_offsets
+end
+
+
 #Hack rake: call only the first task and consider the rest as arguments to this task
 currentTask = Rake.application.top_level_tasks.first
 taskNames = Rake.application.tasks().map { |task| task.name() }

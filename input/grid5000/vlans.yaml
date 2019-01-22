@@ -54,7 +54,7 @@ vlans:
             address: 10.47.192.0
             type: global
     # Allocation of VLAN offsets (relative to VLAN IPs above)
-    # Please keep this sorted. After modification, use: ruby -Ilib -rrefrepo/input_loader -e sorted_vlan_offsets
+    # Please keep this sorted. After modification, use: rake sort-vlans-offsets
     # Max addresses are:
     #   local: 15.255 (/20 network) -- overlap between sites is OK
     #   global: 63.255 (/18 network)
