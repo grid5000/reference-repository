@@ -18,7 +18,6 @@ gw-nantes:
       addresses:
         - 172.17.192.0/20
     "vlan316":
-      mtu: 9180
       addresses:
         - 192.168.70.9
     "vlan701":
@@ -62,7 +61,6 @@ gw-nantes:
       addresses:
         - 10.47.192.0/18
   backplane_bps: 1280000000000
-  mtu: 9216
   linecards:
     0:
       snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
@@ -74,7 +72,6 @@ gw-nantes:
         0:
           uid: renater-nantes
           kind: virtual
-          mtu: 9216
         45: econome-1
         44: econome-2
         15: econome-3
