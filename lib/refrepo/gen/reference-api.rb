@@ -88,6 +88,10 @@ def generate_reference_api
 
   if global_hash['uid']
     global_hash["type"] = "grid"
+
+    # remove kavlan information for now
+    global_hash.delete('vlans')
+
     grid_path = Pathname.new(refapi_path)
     grid_path.mkpath()
 
