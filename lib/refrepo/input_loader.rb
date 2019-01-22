@@ -51,23 +51,7 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   add_kavlan_ips(global_hash)
 
   return global_hash
-
 end
-
-# FIXME missing clusters / interfaces:
-# NO VLAN OFFSET: ["local", "nancy", "grimoire", "eth1"] / grimoire-8-eth1-kavlan-1.nancy.grid5000.fr
-# NO VLAN OFFSET: ["routed", "nancy", "grimoire", "eth1"] / grimoire-8-eth1-kavlan-4.nancy.grid5000.fr
-# NO VLAN OFFSET: ["global", "nancy", "grimoire", "eth1"] / grimoire-8-eth1-kavlan-11.nancy.grid5000.fr
-# NO VLAN OFFSET: ["local", "nancy", "grimoire", "eth2"] / grimoire-8-eth2-kavlan-1.nancy.grid5000.fr
-# NO VLAN OFFSET: ["routed", "nancy", "grimoire", "eth2"] / grimoire-8-eth2-kavlan-4.nancy.grid5000.fr
-# NO VLAN OFFSET: ["global", "nancy", "grimoire", "eth2"] / grimoire-8-eth2-kavlan-11.nancy.grid5000.fr
-# NO VLAN OFFSET: ["local", "nancy", "grimoire", "eth3"] / grimoire-8-eth3-kavlan-1.nancy.grid5000.fr
-# NO VLAN OFFSET: ["routed", "nancy", "grimoire", "eth3"] / grimoire-8-eth3-kavlan-4.nancy.grid5000.fr
-# NO VLAN OFFSET: ["global", "nancy", "grimoire", "eth3"] / grimoire-8-eth3-kavlan-11.nancy.grid5000.fr
-# NO VLAN OFFSET: ["global", "nancy", "grisou", "eth1"] / grisou-43-eth1-kavlan-11.nancy.grid5000.fr
-# NO VLAN OFFSET: ["global", "nancy", "grisou", "eth2"] / grisou-43-eth2-kavlan-11.nancy.grid5000.fr
-# NO VLAN OFFSET: ["global", "nancy", "grisou", "eth3"] / grisou-43-eth3-kavlan-11.nancy.grid5000.fr
-# NO VLAN OFFSET: ["global", "nancy", "grisou", "eth4"] / grisou-43-eth4-kavlan-11.nancy.grid5000.fr
 
 def sorted_vlan_offsets
   offsets = load_yaml_file_hierarchy['vlans']['offsets'].split("\n").
@@ -93,7 +77,8 @@ def add_kavlan_ips(h)
   vlan_base = h['vlans']['base']
   vlan_offset = h['vlans']['offsets'].split("\n").map { |l| l = l.split(/\s+/) ; [ l[0..3], l[4..-1].inject(0) { |a, b| (a << 8) + b.to_i } ] }.to_h
   h['sites'].each_pair do |site_uid, hs|
-    p site_uid
+    # forget about allocated ips for local vlans, since we are starting a new site
+    $allocated.delete_if { |k, v| v[3] == 'local' }
     hs['clusters'].each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         # raise "Old kavlan data in input/ for #{node_uid}" if hn.has_key?('kavlan') # FIXME uncomment after input/ is cleaned up
@@ -106,7 +91,7 @@ def add_kavlan_ips(h)
             base = IPAddress::IPv4::new(v['address']).to_u32
             k = [type, site_uid, cluster_uid, iface]
             if not vlan_offset.has_key?(k)
-              puts "Missing VLAN offset for #{k}"
+              raise "Missing VLAN offset for #{k}"
               if GET_FROM_DNS
                 puts "Trying to get from DNS..."
                 next if $tried_resolv[k]
@@ -123,9 +108,10 @@ def add_kavlan_ips(h)
               end
               next
             end
-            ip = IPAddress::IPv4::parse_u32(base + vlan_offset[k] + node_id)
-            raise "IP already allocated: #{ip} (trying to add it to #{node_uid}-#{iface})" if $allocated[ip]
-            $allocated[ip] = true
+            ip = IPAddress::IPv4::parse_u32(base + vlan_offset[k] + node_id).to_s
+            a = [ site_uid, node_uid, iface, type, vlan ]
+            raise "IP already allocated: #{ip} (trying to add it to #{a} ; allocated to #{$allocated[ip]})" if $allocated[ip]
+            $allocated[ip] = a
             hn['kavlan'][iface]["kavlan-#{vlan}"] = ip
           end
         end
