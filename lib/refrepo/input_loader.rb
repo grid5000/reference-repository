@@ -71,17 +71,18 @@ end
 # this was useful when doing the initial import
 GET_FROM_DNS = false
 
-$tried_resolv = {}
-$allocated = {}
 def add_kavlan_ips(h)
+  tried_resolv = {}
+  allocated = {}
   vlan_base = h['vlans']['base']
   vlan_offset = h['vlans']['offsets'].split("\n").map { |l| l = l.split(/\s+/) ; [ l[0..3], l[4..-1].inject(0) { |a, b| (a << 8) + b.to_i } ] }.to_h
   h['sites'].each_pair do |site_uid, hs|
     # forget about allocated ips for local vlans, since we are starting a new site
-    $allocated.delete_if { |k, v| v[3] == 'local' }
+    allocated.delete_if { |k, v| v[3] == 'local' }
     hs['clusters'].each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
-        # raise "Old kavlan data in input/ for #{node_uid}" if hn.has_key?('kavlan') # FIXME uncomment after input/ is cleaned up
+        raise "Node hash for #{node_uid} is nil" if hn.nil?
+        raise "Old kavlan data in input/ for #{node_uid}" if hn.has_key?('kavlan')
         node_id = node_uid.split('-')[1].to_i
         hn['kavlan'] = {}
         hn['network_adapters'].to_a.select { |i| i[1]['mountable'] and (i[1]['kavlan'] or not i[1].has_key?('kavlan')) and i[1]['interface'] == 'Ethernet' }.map { |e| e[0] }.each do |iface|
@@ -94,8 +95,8 @@ def add_kavlan_ips(h)
               raise "Missing VLAN offset for #{k}"
               if GET_FROM_DNS
                 puts "Trying to get from DNS..."
-                next if $tried_resolv[k]
-                $tried_resolv[k] = true
+                next if tried_resolv[k]
+                tried_resolv[k] = true
                 host = "#{node_uid}-#{iface}-kavlan-#{vlan}.#{site_uid}.grid5000.fr"
                 begin
                   ip = IPSocket.getaddress(host)
@@ -110,8 +111,8 @@ def add_kavlan_ips(h)
             end
             ip = IPAddress::IPv4::parse_u32(base + vlan_offset[k] + node_id).to_s
             a = [ site_uid, node_uid, iface, type, vlan ]
-            raise "IP already allocated: #{ip} (trying to add it to #{a} ; allocated to #{$allocated[ip]})" if $allocated[ip]
-            $allocated[ip] = a
+            raise "IP already allocated: #{ip} (trying to add it to #{a} ; allocated to #{allocated[ip]})" if allocated[ip]
+            allocated[ip] = a
             hn['kavlan'][iface]["kavlan-#{vlan}"] = ip
           end
         end
