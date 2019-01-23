@@ -68,11 +68,8 @@ def sorted_vlan_offsets
 
 end
 
-# this was useful when doing the initial import
-GET_FROM_DNS = false
 
 def add_kavlan_ips(h)
-  tried_resolv = {}
   allocated = {}
   vlan_base = h['vlans']['base']
   vlan_offset = h['vlans']['offsets'].split("\n").map { |l| l = l.split(/\s+/) ; [ l[0..3], l[4..-1].inject(0) { |a, b| (a << 8) + b.to_i } ] }.to_h
@@ -93,21 +90,6 @@ def add_kavlan_ips(h)
             k = [type, site_uid, cluster_uid, iface]
             if not vlan_offset.has_key?(k)
               raise "Missing VLAN offset for #{k}"
-              if GET_FROM_DNS
-                puts "Trying to get from DNS..."
-                next if tried_resolv[k]
-                tried_resolv[k] = true
-                host = "#{node_uid}-#{iface}-kavlan-#{vlan}.#{site_uid}.grid5000.fr"
-                begin
-                  ip = IPSocket.getaddress(host)
-                  puts "#{host} => #{ip} / base= #{IPAddress::IPv4::parse_u32(base)}"
-                  offset = IPAddress::IPv4::new(ip).to_u32 - base - node_id
-                  puts "NEW VLAN OFFSET: #{type} #{site_uid} #{cluster_uid} #{iface} #{IPAddress::IPv4::parse_u32(offset).octets.join(' ')}"
-                rescue SocketError
-                  puts "NO VLAN OFFSET: #{k} / #{host}"
-                end
-              end
-              next
             end
             ip = IPAddress::IPv4::parse_u32(base + vlan_offset[k] + node_id).to_s
             a = [ site_uid, node_uid, iface, type, vlan ]
