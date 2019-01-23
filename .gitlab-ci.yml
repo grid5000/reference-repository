@@ -34,7 +34,7 @@ generate-reference-api:
     - grid5000-docker
    image: debian:stretch
    script:
-    - apt-get update && apt-get -y install ruby rake ruby-hashdiff git
+    - apt-get update && apt-get -y install ruby rake ruby-hashdiff git ruby-ipaddress
     - gem install hash_validator
     - export TZ=Europe/Paris
     - rake reference-api
