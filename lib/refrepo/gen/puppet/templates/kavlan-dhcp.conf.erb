@@ -11,19 +11,18 @@ option pxelinux.reboottime code 211 = unsigned integer 32;
 option vendorinfo          code 43  = string;
 
 <%
-require 'ip'
 kavlan = refapi['sites'][site_uid]['kavlans'][kavlan_id]
-kavlan_ip = IP.new(kavlan['network'])
+kavlan_ip = IPAddress::IPv4::new(kavlan['network'])
 -%>
 
-subnet <%= kavlan_ip.network.to_addr %> netmask <%= kavlan_ip.netmask.to_addr %> {
+subnet <%= kavlan_ip.network %> netmask <%= kavlan_ip.netmask %> {
     default-lease-time 86400;
     max-lease-time 604800;
     option domain-name-servers <%= kavlan_id.to_i.between?(1, 3)? kavlan['gateway'] : "dns.#{site_uid}.grid5000.fr" %>;
     option ntp-servers <%= kavlan_id.to_i.between?(1, 3)? kavlan['gateway'] : "ntp.#{site_uid}.grid5000.fr" %>;
     option routers <%= kavlan['gateway'] %>;
-    option subnet-mask <%= kavlan_ip.netmask.to_addr %>;
-    option broadcast-address <%= kavlan_ip.broadcast.to_addr %>;
+    option subnet-mask <%= kavlan_ip.netmask %>;
+    option broadcast-address <%= kavlan_ip.broadcast %>;
     filename  "pxelinux.0";
     next-server <%= "kadeploy.#{site_uid}.grid5000.fr" %>;
 

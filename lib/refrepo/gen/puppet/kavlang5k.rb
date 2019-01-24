@@ -1,5 +1,3 @@
-# !!! Require to "gem install ruby-ip", do not install "ip" gem !!!
-
 require 'refrepo/hash/hash'
 
 def generate_puppet_kavlang5k(options)
