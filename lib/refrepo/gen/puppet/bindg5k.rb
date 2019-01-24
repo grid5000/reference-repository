@@ -384,20 +384,6 @@ def diff_zone_file(zone, records)
   return added_records.any? || removed_records.any?
 end
 
-#Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
-def get_orphan_reverse_manual_zones(zones_dir, site_uid, site)
-  zones = []
-  Dir.glob(File.join(zones_dir, "reverse-*-manual.db")).each { |reverse_manual_file|
-    output_file = reverse_manual_file.sub("-manual.db", ".db")
-    next if File.exist?(File.join(output_file))
-    puts "Creating file for orphan reverse manual file: #{output_file}" if $options[:verbose]
-    #Creating the zone will include automatically the manual file
-    zone = load_zone(output_file, site_uid, site, true)
-    zones << zone
-  }
-  return zones
-end
-
 def write_site_conf(site_uid, dest_dir, zones_dir)
     conf_file = File.join(dest_dir, "#{site_uid}-zones.conf")
     FileUtils.mkdir_p(File.dirname(conf_file))
@@ -437,13 +423,15 @@ def generate_puppet_bindg5k(options)
     dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
     zones_dir = File.join(dest_dir, "zones/#{site_uid}")
 
-    # Cleanup of old zone files
-    Find.find(zones_dir) do |path|
-      next if not File::file?(path)
-      next if path =~ /manual/ # skip *manual* files
-      # FIXME those files are not named *manual*, but should not be removed
-      next if ['nancy-laptops.db', 'toulouse-servers.db', 'toulouse.db'].include?(File::basename(path))
-      FileUtils::rm(path)
+    if File::exists?(zones_dir)
+      # Cleanup of old zone files
+      Find.find(zones_dir) do |path|
+        next if not File::file?(path)
+        next if path =~ /manual/ # skip *manual* files
+        # FIXME those files are not named *manual*, but should not be removed
+        next if ['nancy-laptops.db', 'toulouse-servers.db', 'toulouse.db'].include?(File::basename(path))
+        FileUtils::rm(path)
+      end
     end
 
     site_records = {}
@@ -558,7 +546,18 @@ def generate_puppet_bindg5k(options)
 
     zones << site_zone
 
-    zones += get_orphan_reverse_manual_zones(zones_dir, site_uid, site)
+    # zones that are already known and going to be written
+    future_zones = zones.map { |z| File::basename(z.file_path) }
+
+    # Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
+    Dir.glob(File.join(zones_dir, "reverse-*-manual.db")).each { |reverse_manual_file|
+      output_file = reverse_manual_file.sub("-manual.db", ".db")
+      next if future_zones.include?(File::basename(output_file)) # the zone is already going to be written
+      puts "Creating file for orphan reverse manual file: #{output_file}" if $options[:verbose]
+      #Creating the zone will include automatically the manual file
+      zone = load_zone(output_file, site_uid, site, true)
+      zones << zone
+    }
 
     zones.each{ |zone|
       write_zone(zone)
