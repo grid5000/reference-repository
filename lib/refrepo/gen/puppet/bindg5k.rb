@@ -1,7 +1,6 @@
 # See also: https://www.grid5000.fr/mediawiki/index.php/DNS_server
 
 require 'dns/zone'
-require 'find'
 
 #Prettier aligned dump of records
 class DNS::Zone::RR::A
@@ -436,15 +435,6 @@ def generate_puppet_bindg5k(options)
 
     dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
     zones_dir = File.join(dest_dir, "zones/#{site_uid}")
-
-    # Cleanup of old zone files
-    Find.find(zones_dir) do |path|
-      next if not File::file?(path)
-      next if path =~ /manual/ # skip *manual* files
-      # FIXME those files are not named *manual*, but should not be removed
-      next if ['nancy-laptops.db', 'toulouse-servers.db', 'toulouse.db'].include?(File::basename(path))
-      FileUtils::rm(path)
-    end
 
     site_records = {}
 
