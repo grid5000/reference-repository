@@ -403,6 +403,8 @@ def write_zone(zone)
   File.write(zone.file_path, zone.dump)
 end
 
+CLEAN_OLD_ZONE_FILES = false
+
 # main method
 def generate_puppet_bindg5k(options)
   $options = options
@@ -423,7 +425,7 @@ def generate_puppet_bindg5k(options)
     dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
     zones_dir = File.join(dest_dir, "zones/#{site_uid}")
 
-    if File::exist?(zones_dir)
+    if CLEAN_OLD_ZONE_FILES and File::exist?(zones_dir)
       # Cleanup of old zone files
       Find.find(zones_dir) do |path|
         next if not File::file?(path)
