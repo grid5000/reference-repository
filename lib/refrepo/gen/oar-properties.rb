@@ -535,7 +535,7 @@ end
 def ssh_exec(site_uid, cmds, _options)
   # The following is equivalent to : "cat cmds | bash"
   #res = ""
-  c = Net::SSH.start("oar.#{site_uid}.g5kadmin", "g5kadmin")
+  c = Net::SSH.start(_options[:ssh][:host], _options[:ssh][:user])
   c.open_channel { |channel|
     channel.exec('sudo bash') { |ch, success|
       # stdout
@@ -591,9 +591,9 @@ def generate_oar_properties(options)
   conf = RefRepo::Utils.get_api_config
   options[:api][:user] = conf['username']
   options[:api][:pwd] = conf['password']
-  options[:ssh] = {}
+  options[:ssh] ||= {}
   options[:ssh][:user] = 'g5kadmin'
-  options[:ssh][:host] = 'oar.%s.g5kadmin'
+  options[:ssh][:host] ||= 'oar.%s.g5kadmin'
   ret = true
   global_hash = load_data_hierarchy
 

@@ -136,6 +136,10 @@ namespace :gen do
     if ENV['NODE']
       options[:nodes] = ENV['NODE'].split(',')
     end
+    if ENV['OAR_SERVER']
+      options[:ssh] ||= {}
+      options[:ssh][:host] = ENV['OAR_SERVER']
+    end
     options[:output] = false
     options[:diff] = false
     options[:exec] = false
