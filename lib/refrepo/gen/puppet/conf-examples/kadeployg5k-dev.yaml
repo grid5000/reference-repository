@@ -15,7 +15,7 @@ lille:
     broadcast.timeout: 600
     boot.timeout.0: 150
     boot.timeout.1: 400
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle --sleep
       8 -m HOSTNAME_SHORT"
   chinqchint:
     reboot.timeout: 250
@@ -62,7 +62,7 @@ luxembourg:
     broadcast.timeout: 400
     boot.timeout.0: 150
     boot.timeout.1: 350
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle --sleep
       6 -m HOSTNAME_SHORT"
   petitprince:
     reboot.timeout: 200
@@ -77,7 +77,7 @@ luxembourg:
     broadcast.timeout: 400
     boot.timeout.0: 150
     boot.timeout.1: 350
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle --sleep
       6 -m HOSTNAME_SHORT"
 lyon:
   hercule:
@@ -93,7 +93,7 @@ lyon:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
   orion:
     reboot.timeout: 200
     reboot.kexec: 100
@@ -107,7 +107,7 @@ lyon:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
   sagittaire:
     reboot.timeout: 200
     reboot.kexec: 100
@@ -120,13 +120,13 @@ lyon:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
     remoteops.power_off.very_hard.cmd: "/usr/local/bin/restore_bmc.expect HOSTNAME_SHORT-bmc
-      && /usr/local/bin/lanpower -c off -m HOSTNAME_SHORT"
+      && /usr/bin/lanpower -c off -m HOSTNAME_SHORT"
     remoteops.power_on.very_hard.cmd: "/usr/local/bin/restore_bmc.expect HOSTNAME_SHORT-bmc
-      && /usr/local/bin/lanpower -c on -m HOSTNAME_SHORT"
+      && /usr/bin/lanpower -c on -m HOSTNAME_SHORT"
     remoteops.reboot.very_hard.cmd: "/usr/local/bin/restore_bmc.expect HOSTNAME_SHORT-bmc
-      && /usr/local/bin/lanpower -c cycle -m HOSTNAME_SHORT"
+      && /usr/bin/lanpower -c cycle -m HOSTNAME_SHORT"
   taurus:
     reboot.timeout: 200
     reboot.kexec: 100
@@ -140,7 +140,7 @@ lyon:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
 nancy:
   graoully:
     reboot.timeout: 300
@@ -154,7 +154,7 @@ nancy:
     broadcast.timeout: 900
     boot.timeout.0: 180
     boot.timeout.1: 900
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   graphene:
     reboot.timeout: 250
     reboot.kexec: 120
@@ -170,7 +170,7 @@ nancy:
     broadcast.timeout: 900
     boot.timeout.0: 180
     boot.timeout.1: 400
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   graphique:
     reboot.timeout: 350
     reboot.kexec: 120
@@ -183,7 +183,7 @@ nancy:
     broadcast.timeout: 900
     boot.timeout.0: 180
     boot.timeout.1: 900
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   graphite:
     reboot.timeout: 350
     reboot.kexec: 120
@@ -197,7 +197,7 @@ nancy:
     broadcast.timeout: 900
     boot.timeout.0: 180
     boot.timeout.1: 600
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   griffon:
     reboot.timeout: 250
     reboot.kexec: 120
@@ -213,7 +213,7 @@ nancy:
     broadcast.timeout: 900
     boot.timeout.0: 180
     boot.timeout.1: 420
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   grimoire:
     reboot.timeout: 300
     reboot.kexec: 120
@@ -226,7 +226,7 @@ nancy:
     broadcast.timeout: 900
     boot.timeout.0: 180
     boot.timeout.1: 900
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   grisou:
     reboot.timeout: 300
     reboot.kexec: 120
@@ -239,7 +239,7 @@ nancy:
     broadcast.timeout: 900
     boot.timeout.0: 180
     boot.timeout.1: 900
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   grvingt:
     reboot.timeout: 400
     reboot.kexec: 120
@@ -255,7 +255,7 @@ nancy:
     broadcast.timeout: 900
     boot.timeout.0: 180
     boot.timeout.1: 900
-    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
     remoteops.reboot.hard.cmd: "/etc/kadeploy3/hard_reboot_grvingt.sh HOSTNAME_SHORT"
     remoteops.reboot.very_hard.cmd: "/etc/kadeploy3/reset_bootseq_grvingt.sh HOSTNAME_SHORT"
   grcinq:
@@ -272,7 +272,7 @@ nancy:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
 nantes:
   econome:
     reboot.timeout: 200
@@ -287,7 +287,7 @@ nantes:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.power_status.soft.cmd: "/usr/local/bin/lanpower -s -m HOSTNAME_SHORT"
+    remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
 rennes:
   paranoia:
     reboot.timeout: 200
@@ -302,7 +302,7 @@ rennes:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle --sleep
       4 -m HOSTNAME_SHORT"
   parapide:
     reboot.timeout: 120
@@ -316,7 +316,7 @@ rennes:
     broadcast.timeout: 600
     boot.timeout.0: 300
     boot.timeout.1: 300
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle --sleep
       8 -m HOSTNAME_SHORT"
   parapluie:
     reboot.timeout: 400
@@ -331,7 +331,7 @@ rennes:
     broadcast.timeout: 800
     boot.timeout.0: 150
     boot.timeout.1: 450
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle --sleep
       8 -m HOSTNAME_SHORT"
   parasilo:
     reboot.timeout: 300
@@ -346,8 +346,8 @@ rennes:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.reboot.hard.cmd: "/usr/local/bin/lanpower -d -c cycle -m HOSTNAME_SHORT"
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -d -c safety_cycle --sleep
+    remoteops.reboot.hard.cmd: "/usr/bin/lanpower -d -c cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -d -c safety_cycle --sleep
       4 -m HOSTNAME_SHORT"
   paravance:
     reboot.timeout: 300
@@ -362,8 +362,8 @@ rennes:
     broadcast.timeout: 1000
     boot.timeout.0: 150
     boot.timeout.1: 600
-    remoteops.reboot.hard.cmd: "/usr/local/bin/lanpower -d -c cycle -m HOSTNAME_SHORT"
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -d -c safety_cycle --sleep
+    remoteops.reboot.hard.cmd: "/usr/bin/lanpower -d -c cycle -m HOSTNAME_SHORT"
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -d -c safety_cycle --sleep
       4 -m HOSTNAME_SHORT"
 sophia:
   sol:
@@ -379,13 +379,13 @@ sophia:
     broadcast.timeout: 400
     boot.timeout.0: 150
     boot.timeout.1: 300
-    remoteops.reboot.hard.cmd: "/usr/local/bin/lanpower -c cycle -m HOSTNAME_SHORT
+    remoteops.reboot.hard.cmd: "/usr/bin/lanpower -c cycle -m HOSTNAME_SHORT
       --sleep 5 --no-wait"
-    remoteops.power_off.hard.cmd: "/usr/local/bin/lanpower -c off -m HOSTNAME_SHORT
+    remoteops.power_off.hard.cmd: "/usr/bin/lanpower -c off -m HOSTNAME_SHORT
       --no-wait"
-    remoteops.power_on.hard.cmd: "/usr/local/bin/lanpower -c on -m HOSTNAME_SHORT
+    remoteops.power_on.hard.cmd: "/usr/bin/lanpower -c on -m HOSTNAME_SHORT
       --no-wait"
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle --sleep
       60 -m HOSTNAME_SHORT --no-wait"
   suno:
     reboot.timeout: 200
@@ -400,5 +400,5 @@ sophia:
     broadcast.timeout: 600
     boot.timeout.0: 151
     boot.timeout.1: 300
-    remoteops.reboot.very_hard.cmd: "/usr/local/bin/lanpower -c safety_cycle --sleep
+    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle --sleep
       8 -m HOSTNAME_SHORT"

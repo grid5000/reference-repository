@@ -21,24 +21,24 @@ remoteops:
     cmd: <%= data['remoteops.console.soft.cmd'] ? data['remoteops.console.soft.cmd'] : '/usr/bin/conman -f -d conman HOSTNAME_SHORT' %>
   power_status:
   - name: soft
-    cmd: <%= data['remoteops.power_status.soft.cmd'] ? data['remoteops.power_status.soft.cmd'] : '/usr/local/bin/lanpower -m HOSTNAME_FQDN -s' %>
+    cmd: <%= data['remoteops.power_status.soft.cmd'] ? data['remoteops.power_status.soft.cmd'] : '/usr/bin/lanpower -m HOSTNAME_FQDN -s' %>
   power_on:
   - name: hard
-    cmd: <%= data['remoteops.power_on.hard.cmd'] ? data['remoteops.power_on.hard.cmd'] : '/usr/local/bin/lanpower -c on -m HOSTNAME_SHORT' %><% if data['remoteops.power_on.very_hard.cmd'] %>
+    cmd: <%= data['remoteops.power_on.hard.cmd'] ? data['remoteops.power_on.hard.cmd'] : '/usr/bin/lanpower -c on -m HOSTNAME_SHORT' %><% if data['remoteops.power_on.very_hard.cmd'] %>
   - name: very_hard
     cmd: <%= data['remoteops.power_on.very_hard.cmd'] %><%end %>
   reboot:
   - name: soft
     cmd: ssh -q -F /etc/kadeploy3<%= suffix %>/keys/ssh_config root@HOSTNAME_FQDN "if [ -f /bin/systemctl ]; then nohup /bin/systemctl reboot >/dev/null & else nohup /sbin/reboot >/dev/null & fi"
   - name: hard
-    cmd: <%= data['remoteops.reboot.hard.cmd'] ? data['remoteops.reboot.hard.cmd'] : '/usr/local/bin/lanpower -c cycle -m HOSTNAME_SHORT' %><% if data['remoteops.reboot.very_hard.cmd'] %>
+    cmd: <%= data['remoteops.reboot.hard.cmd'] ? data['remoteops.reboot.hard.cmd'] : '/usr/bin/lanpower -c cycle -m HOSTNAME_SHORT' %><% if data['remoteops.reboot.very_hard.cmd'] %>
   - name: very_hard
     cmd: <%= data['remoteops.reboot.very_hard.cmd'] %><% end %>
   power_off:
   - name: soft
     cmd: ssh -q -F /etc/kadeploy3<%= suffix %>/keys/ssh_config root@HOSTNAME_FQDN "nohup /sbin/poweroff &>/dev/null &"
   - name: hard
-    cmd: <%= data['remoteops.power_off.hard.cmd'] ? data['remoteops.power_off.hard.cmd'] : '/usr/local/bin/lanpower -c off -m HOSTNAME_SHORT' %><% if data['remoteops.power_off.very_hard.cmd'] %>
+    cmd: <%= data['remoteops.power_off.hard.cmd'] ? data['remoteops.power_off.hard.cmd'] : '/usr/bin/lanpower -c off -m HOSTNAME_SHORT' %><% if data['remoteops.power_off.very_hard.cmd'] %>
   - name: very_hard
     cmd: <%= data['remoteops.power_off.very_hard.cmd'] %><%end %>
 boot:
