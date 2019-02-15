@@ -44,6 +44,7 @@ refapi['sites'].sort.to_h.each_key do |site|
      hardware ethernet <%= interface['mac'].downcase() %>;
      option host-name "<%= node_uid %><%= interface['mounted']? "" : "-"+interface_uid %>-kavlan-<%= kavlan_id %>";
      option domain-name "<%= site %>.grid5000.fr";
+     option domain-search "<%= site %>.grid5000.fr", "grid5000.fr";
      fixed-address <%= node['kavlan'][interface_uid]["kavlan-#{kavlan_id}"] %>;
 <%        if kavlan_id > 9 -%>
      next-server kadeploy.<%= site %>.grid5000.fr;
