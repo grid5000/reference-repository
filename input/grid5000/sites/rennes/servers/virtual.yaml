@@ -37,9 +37,6 @@ mysql:
 ganglia:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.107}}
-ganglia-global:
-  kind: virtual
-  network_adapters: {default: {ip: 131.254.202.207}}
 kavlan:
   kind: virtual
   alias:
@@ -78,9 +75,6 @@ supervision:
     - nagios
     - munin
   network_adapters: {default: {ip: 172.16.111.122}}
-git-global:
-  kind: virtual
-  network_adapters: {default: {ip: 131.254.202.204}}
 conman:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.108}}
@@ -134,11 +128,6 @@ mdsm:
 icinga:
   kind: virtual
   network_adapters: {default: {ip: 172.16.111.151}}
-puppet-master:
-  kind: virtual
-  alias:
-    - puppet-global
-  network_adapters: {default: {ip: 131.254.202.12}}
 dhcp-public:
   kind: virtual
   network_adapters: {default: {ip: 131.254.202.4}}
