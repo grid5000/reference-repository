@@ -12,34 +12,6 @@ pdus:
           unit: W
         resolution: 1
 
-  graphene-pdu[1-6]:
-    vendor: APC
-    model: AP7953
-    sensors:
-     - power:
-        per_outlets: false
-        snmp:
-          available: true
-          total_oids: 
-            - iso.3.6.1.4.1.318.1.1.12.1.16.0
-          unit: W
-        resolution: 1
-  
-  graphene-pdu[7-8]:
-    vendor: Eaton Corporation
-    model: ''
-    sensors:
-     - power:
-        per_outlets: true
-        snmp:
-          available: true
-          total_oids:
-            - iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.1
-            - iso.3.6.1.4.1.534.6.6.7.5.5.1.3.0.2
-          unit: W
-          outlet_prefix_oid: iso.3.6.1.4.1.534.6.6.7.6.5.1.3.0
-        resolution: 60
-
   griffon-pdu[1-2]:
     vendor: APC
     model: AP7953
@@ -116,38 +88,6 @@ pdus:
   graoully-pdu2:
     ip:  172.17.79.244 
     mac: 00:C0:B7:85:13:9C
-
-  graphene-pdu1:
-    ip:  172.17.79.208 
-    mac: 00:C0:B7:4D:A4:B0
-
-  graphene-pdu2:
-    ip:  172.17.79.209 
-    mac: 00:C0:B7:4D:A4:A3
-
-  graphene-pdu3:
-    ip:  172.17.79.210 
-    mac: 00:C0:B7:4D:A4:AA
-
-  graphene-pdu4:
-    ip:  172.17.79.211 
-    mac: 00:C0:B7:4D:A4:BC
-
-  graphene-pdu5:
-    ip:  172.17.79.212 
-    mac: 00:C0:B7:4D:A4:AC
-
-  graphene-pdu6:
-    ip:  172.17.79.213 
-    mac: 00:C0:B7:4D:A1:87
-
-  graphene-pdu7:
-    ip:  172.17.79.214 
-    mac: 00:C0:B7:4D:D7:87
-
-  graphene-pdu8:
-    ip:  172.17.79.215 
-    mac: 00:C0:B7:4D:A1:87
 
   grimoire-pdu1:
     ip: 172.17.79.245
