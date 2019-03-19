@@ -5,7 +5,7 @@
 # in clustershell and graphviz debian packages
 
 # FIXME infiniband equipment is not completely described in the ref-api yet. See Bug 8586
-HPC_SWITCHES = ['ib-grenoble', 'voltaire-1', 'voltaire-2', 'voltaire-3', 'sgraoullyib', 'sgrapheneib', 'sw-myrinet', 'sgrele-opf']
+HPC_SWITCHES = ['ib-grenoble', 'voltaire-1', 'voltaire-2', 'voltaire-3', 'sgraoullyib', 'sw-myrinet', 'sgrele-opf']
 
 def check_network_description(options)
   ok = true
