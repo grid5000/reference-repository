@@ -47,17 +47,6 @@ sgravillon1:
       rate: 10000000000
       ports:
         1: sgriffon1
-    3:
-      snmp_pattern: "C%PORT%"
-      kavlan_pattern: "C%PORT%"
-      backplane_bps: 14400000000
-      model: J8708A
-      kind: switch
-      rate: 10000000000
-      ports:
-        1: sgraphene1
-        2: sgraphene2
-        4: sgraphene4
     4:
       snmp_pattern: "D%PORT%"
       kavlan_pattern: "D%PORT%"
@@ -74,9 +63,6 @@ sgravillon1:
           kind: other
           uid: fgriffon2
           port: eth2
-        4:
-          uid: sgraphene3
-          kind: switch
     6:
       snmp_pattern: "F%PORT%"
       kavlan_pattern: "F%PORT%"

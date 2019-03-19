@@ -155,22 +155,6 @@ nancy:
     boot.timeout.0: 180
     boot.timeout.1: 900
     remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
-  graphene:
-    reboot.timeout: 250
-    reboot.kexec: 120
-    user.params: console=tty0 console=ttyS0,38400n8
-    deploy.drivers: ata_piix
-    deploy.params: ETH_DRV=e1000e ETH_DEV=eth0 DISK_DRV=ahci console=tty0 console=ttyS0,38400n8
-      ramdisk_size=290000 rw noapic init=/linuxrc
-    dhcp.serial: 0 38400
-    nfsroot.params: boot=casper netboot=nfs nfsroot=172.28.53.104:/srv/livecd/recette
-      initrd=livecd/initrd.lz console=tty0 console=ttyS0,115200n8 ip
-    deployment.timeout: 450
-    broadcast.retries: 0
-    broadcast.timeout: 900
-    boot.timeout.0: 180
-    boot.timeout.1: 400
-    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   graphique:
     reboot.timeout: 350
     reboot.kexec: 120
