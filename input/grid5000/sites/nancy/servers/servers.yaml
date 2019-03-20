@@ -1,30 +1,4 @@
 ---
-fgriffon2:
-  kind: physical
-  alias: [storage5k]
-  warranty: 2012-01
-  serial:
-  network_adapters:
-    default:
-      mounted: true
-      mac: 00:02:C9:02:41:66
-      ip: 172.16.79.2
-    adm:
-      mounted: true
-      ip: 172.17.79.2
-      mac: 00:E0:81:B5:8F:BA
-    bmc: 
-      mounted: true
-      ip: 172.17.79.5
-      mac: 00:E0:81:4F:E3:63
-  monitoring:
-    wattmeter: multiple
-    metric: power
-  sensors:
-    network:
-      available: true
-      resolution: 1
-
 srv:
   kind: physical
   alias: [adminfront]
@@ -176,19 +150,6 @@ talc-data-baie3:
             port: 23
           - uid: grisou-pdu2
             port: 23
-
-opensm:
-  kind: physical
-  alias: []
-  warranty: 2013-01
-  serial: 1009390098
-  network_adapters:
-    default:
-      ip: 172.16.79.24
-      mac: 00:E0:81:D5:08:0C
-    bmc:
-      ip: 172.17.79.24
-      mac: 00:E0:81:D5:08:0F
 
 grcinq-srv-1:
   kind: physical
