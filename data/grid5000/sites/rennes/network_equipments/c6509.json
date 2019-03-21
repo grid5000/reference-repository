@@ -1,5 +1,6 @@
 {
   "backplane_bps": 720000000000,
+  "ip": "172.17.111.207",
   "kind": "switch",
   "linecards": [
     {
@@ -17,10 +18,12 @@
         {
           "kind": "router",
           "port": "Ethernet2/23",
-          "uid": "gw-rennes"
+          "snmp_name": "TenGigabitEthernet1/2",
+          "uid": "gw"
         },
         {
           "kind": "switch",
+          "snmp_name": "TenGigabitEthernet1/3",
           "uid": "bigdata-sw"
         }
       ],
@@ -32,7 +35,6 @@
       "kavlan_pattern": "Gi%LINECARD%/%PORT%",
       "kind": "node",
       "model": "WS-X6748-GE-TX",
-      "port": "eth2",
       "ports": [
         {
         },
@@ -119,41 +121,49 @@
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Gi2/41",
           "uid": "paranoia-1"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Gi2/42",
           "uid": "paranoia-2"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Gi2/43",
           "uid": "paranoia-3"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Gi2/44",
           "uid": "paranoia-4"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Gi2/45",
           "uid": "paranoia-5"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Gi2/46",
           "uid": "paranoia-6"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Gi2/47",
           "uid": "paranoia-7"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Gi2/48",
           "uid": "paranoia-8"
         }
       ],
@@ -165,73 +175,85 @@
       "kavlan_pattern": "Gi%LINECARD%/%PORT%",
       "kind": "node",
       "model": "WS-X6748-GE-TX",
-      "port": "eth0",
       "ports": [
         {
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/1",
           "uid": "parapide-1"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/2",
           "uid": "parapide-2"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/3",
           "uid": "parapide-3"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/4",
           "uid": "parapide-4"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/5",
           "uid": "parapide-5"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/6",
           "uid": "parapide-6"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/7",
           "uid": "parapide-7"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/8",
           "uid": "parapide-8"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/9",
           "uid": "parapide-9"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/10",
           "uid": "parapide-10"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/11",
           "uid": "parapide-11"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/12",
           "uid": "parapide-12"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/13",
           "uid": "parapide-13"
         },
         {
@@ -239,36 +261,43 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/15",
           "uid": "parapide-16"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/16",
           "uid": "parapide-18"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/17",
           "uid": "parapide-19"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/18",
           "uid": "parapide-20"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/19",
           "uid": "parapide-21"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/20",
           "uid": "parapide-24"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Gi3/21",
           "uid": "parapide-25"
         }
       ],
@@ -280,98 +309,115 @@
       "kavlan_pattern": "Gi%LINECARD%/%PORT%",
       "kind": "node",
       "model": "WS-X6748-GE-TX",
-      "port": "eth1",
       "ports": [
         {
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/1",
           "uid": "parapluie-1"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/2",
           "uid": "parapluie-2"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/3",
           "uid": "parapluie-8"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/4",
           "uid": "parapluie-9"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/5",
           "uid": "parapluie-11"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/6",
           "uid": "parapluie-12"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/7",
           "uid": "parapluie-13"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/8",
           "uid": "parapluie-15"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/9",
           "uid": "parapluie-19"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/10",
           "uid": "parapluie-20"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/11",
           "uid": "parapluie-21"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/12",
           "uid": "parapluie-22"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/13",
           "uid": "parapluie-25"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/14",
           "uid": "parapluie-28"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/15",
           "uid": "parapluie-31"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/16",
           "uid": "parapluie-32"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/17",
           "uid": "parapluie-35"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "Gi4/18",
           "uid": "parapluie-38"
         }
       ],
@@ -380,17 +426,10 @@
     }
   ],
   "model": "Cisco WS-C6509-E",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
+  "role": "production",
   "site": "rennes",
   "snmp_community": "privkavlan",
   "type": "network_equipment",
   "uid": "c6509",
-  "warranty": "expired",
-  "weathermap": {
-  }
+  "warranty": "expired"
 }

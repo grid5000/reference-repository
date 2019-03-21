@@ -1,14 +1,12 @@
 ---
 c6509:
+  role: production
   model: Cisco WS-C6509-E
   warranty: "expired"
   kind: switch
   site: rennes
   snmp_community: privkavlan
-  sensors:
-    network:
-      available: true
-      resolution: 1
+  ip: 172.17.111.207
   backplane_bps: 720000000000
   linecards:
     1:
@@ -20,7 +18,7 @@ c6509:
       model: WS-X6704-10GE
       ports:
         2:
-          uid: gw-rennes
+          uid: gw
           kind: router
           port: Ethernet2/23
         3:
@@ -28,24 +26,22 @@ c6509:
           kind: switch
     2:
       kind: node
-      port: eth2
       snmp_pattern: Gi%LINECARD%/%PORT%
       kavlan_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
       ports:
-              41: paranoia-1
-              42: paranoia-2
-              43: paranoia-3
-              44: paranoia-4
-              45: paranoia-5
-              46: paranoia-6
-              47: paranoia-7
-              48: paranoia-8
+        41: paranoia-1-eth2
+        42: paranoia-2-eth2
+        43: paranoia-3-eth2
+        44: paranoia-4-eth2
+        45: paranoia-5-eth2
+        46: paranoia-6-eth2
+        47: paranoia-7-eth2
+        48: paranoia-8-eth2
     3:
       kind: node
-      port: eth0
       snmp_pattern: Gi%LINECARD%/%PORT%
       kavlan_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
@@ -74,28 +70,27 @@ c6509:
         21: parapide-25
     4:
       kind: node
-      port: eth1
       snmp_pattern: Gi%LINECARD%/%PORT%
       kavlan_pattern: Gi%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
       model: WS-X6748-GE-TX
       ports:
-        1: parapluie-1
-        2: parapluie-2
-        3: parapluie-8
-        4: parapluie-9
-        5: parapluie-11
-        6: parapluie-12
-        7: parapluie-13
-        8: parapluie-15
-        9: parapluie-19
-        10: parapluie-20
-        11: parapluie-21
-        12: parapluie-22
-        13: parapluie-25
-        14: parapluie-28
-        15: parapluie-31
-        16: parapluie-32
-        17: parapluie-35
-        18: parapluie-38
+        1: parapluie-1-eth1
+        2: parapluie-2-eth1
+        3: parapluie-8-eth1
+        4: parapluie-9-eth1
+        5: parapluie-11-eth1
+        6: parapluie-12-eth1
+        7: parapluie-13-eth1
+        8: parapluie-15-eth1
+        9: parapluie-19-eth1
+        10: parapluie-20-eth1
+        11: parapluie-21-eth1
+        12: parapluie-22-eth1
+        13: parapluie-25-eth1
+        14: parapluie-28-eth1
+        15: parapluie-31-eth1
+        16: parapluie-32-eth1
+        17: parapluie-35-eth1
+        18: parapluie-38-eth1

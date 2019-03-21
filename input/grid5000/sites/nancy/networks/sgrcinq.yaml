@@ -1,29 +1,19 @@
 ---
 sgrcinq:
+  role: production
   model: Cisco WS-C2960X-48TD-L
   warranty: "2028-11-28" # see bug 9837
   kind: switch
   site: nancy
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
-    power:
-      available: false
-  vlans:
-    "vlan1":
-      administrative: yes
-      addresses:
-        - 172.17.79.230
+  ip: 172.17.79.230
   backplane_bps: 100000000000
   linecards:
     0:
-       snmp_pattern: "GigabitEthernet 1/%LINECARD%/%PORT%"
+       snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
        kavlan_pattern: "Gi1/%LINECARD%/%PORT%"
        kind: node
        rate: 1000000000
-       port: eth0
        ports:
          1: grcinq-3
          2: grcinq-4
@@ -74,11 +64,10 @@ sgrcinq:
          47: grcinq-1
          48: grcinq-2
     1:
-        snmp_pattern: "TenGigabitEthernet 1/0/%PORT%"
+        snmp_pattern: "TenGigabitEthernet1/0/%PORT%"
         kavlan_pattern: "TenGigabitEthernet1/0/%PORT%"
         kind: other
         rate: 10000000000
-        port: eth0
         ports:
           1:
             uid: sgrvingt

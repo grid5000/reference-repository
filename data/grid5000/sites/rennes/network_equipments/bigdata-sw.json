@@ -1,15 +1,16 @@
 {
   "backplane_bps": 1280000000000,
+  "ip": "172.17.111.203",
   "kind": "switch",
   "linecards": [
     {
       "kavlan_pattern": "%PORT%",
       "kind": "node",
-      "port": "eth0",
       "ports": [
         {
           "kind": "switch",
           "port": "1:3",
+          "snmp_name": "0",
           "uid": "c6509"
         },
         {
@@ -33,8 +34,8 @@
         {
         },
         {
-          "kind": "other",
-          "port": "eth0",
+          "kind": "server",
+          "snmp_name": "11",
           "uid": "srv-bigdata"
         },
         {
@@ -50,53 +51,61 @@
         {
         },
         {
-          "kind": "other",
-          "port": "eth0",
+          "kind": "server",
+          "snmp_name": "18",
           "uid": "ceph3"
         },
         {
-          "kind": "other",
-          "port": "eth0",
+          "kind": "server",
+          "snmp_name": "19",
           "uid": "ceph2"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "20",
           "uid": "paranoia-8"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "21",
           "uid": "paranoia-7"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "22",
           "uid": "paranoia-4"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "23",
           "uid": "paranoia-3"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "24",
           "uid": "paranoia-4"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "25",
           "uid": "paranoia-3"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "26",
           "uid": "paranoia-8"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "27",
           "uid": "paranoia-7"
         },
         {
@@ -110,21 +119,25 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "32",
           "uid": "paranoia-6"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "33",
           "uid": "paranoia-5"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "34",
           "uid": "paranoia-2"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "35",
           "uid": "paranoia-1"
         },
         {
@@ -140,33 +153,37 @@
         {
         },
         {
-          "kind": "other",
-          "port": "eth0",
+          "kind": "server",
+          "snmp_name": "42",
           "uid": "ceph1"
         },
         {
-          "kind": "other",
-          "port": "eth0",
+          "kind": "server",
+          "snmp_name": "43",
           "uid": "ceph0"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "44",
           "uid": "paranoia-6"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "45",
           "uid": "paranoia-5"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "46",
           "uid": "paranoia-2"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "47",
           "uid": "paranoia-1"
         }
       ],
@@ -175,25 +192,10 @@
     }
   ],
   "model": "Force10 S4810",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
+  "role": "production",
   "site": "rennes",
   "snmp_community": "public",
   "type": "network_equipment",
   "uid": "bigdata-sw",
-  "vlans": {
-    "vlan101": {
-      "addresses": [
-        "172.17.111.203"
-      ],
-      "administrative": true
-    }
-  },
-  "warranty": "2018-10-01",
-  "weathermap": {
-  }
+  "warranty": "2018-10-01"
 }

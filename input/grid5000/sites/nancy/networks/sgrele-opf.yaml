@@ -1,14 +1,13 @@
 ---
 #Information in this file can be incorrect #TODO
 sgrele-opf:
+  role: hpc
   model: Omni-Path
   warranty: 2022-06-01
   kind: switch
   site: nancy
   snmp_community: public
   sensors:
-    network:
-      available: false
     power:
       available: true
       resolution: 1
@@ -21,9 +20,7 @@ sgrele-opf:
   monitoring:
     wattmeter: true
     metric: power
-  weathermap:
-    use_cacti: "no"
-  vlans: {}
+  ip: 172.17.79.253
   linecards:
     1:
       snmp_pattern: "%LINECARD%/%PORT%"
@@ -31,11 +28,9 @@ sgrele-opf:
       kind: switch
       rate: 100000000000
       ports:
-        13: 
+        13:
           uid: grele-13-when-undead
           kind: node
-        14: 
+        14:
           uid: grele-14-when-undead
           kind: node
-
-

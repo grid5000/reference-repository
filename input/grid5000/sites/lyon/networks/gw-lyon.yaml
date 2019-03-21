@@ -1,15 +1,17 @@
 ---
-gw-lyon:
+gw:
+  role: production
   model: Dell EMC S4128F-ON
   serial: J9J1PK2
   warranty: 2024-08-15
   kind: router
+  alias:
+    - gw-lyon
+    - router
+    - sgemini
   site: lyon
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
+  ip: 172.16.63.254
   vlans:
     "vlan100":
       administrative: yes
@@ -69,22 +71,18 @@ gw-lyon:
       kavlan_pattern: "%PORT%"
       kind: node
       rate: 10000000000
-      port: eth0
       ports:
         1: gemini-1
         2: gemini-2
         20:
           uid: albireo-a
-          kind: other
-          port: eno1
+          kind: server
         21:
           uid: albireo-b
-          kind: other
-          port: eno1
+          kind: server
         22:
           uid: alcor
-          kind: other
-          port: ens3f1
+          kind: server
         23:
           uid: salome
           kind: switch
@@ -95,5 +93,4 @@ gw-lyon:
           port: '0:60'
         30:
           uid: renater-lyon
-          site: renater
-          kind: virtual
+          kind: backbone

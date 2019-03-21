@@ -1,18 +1,16 @@
 ---
 sw-chiclet-3:
+  role: production
   model: cisco 93180YC-EX
   warranty: 2021-11-30
+  ip: 172.17.47.223
   kind: switch
   site: lille
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
   backplane_bps: 36000000000000
   linecards:
     1:
-      kind: virtual
+      kind: node
       snmp_pattern: Ethernet%LINECARD%/%PORT%
       kavlan_pattern: Ethernet%LINECARD%/%PORT%
       backplane_bps: 36000000000000
@@ -20,197 +18,107 @@ sw-chiclet-3:
       ports:
         1:
           uid:  chetemi-1
-          port: eth0
-          kind: node
         2:
           uid:  chetemi-2
-          port: eth0
-          kind: node
         3:
           uid:  chetemi-3
-          port: eth0
-          kind: node
         4:
           uid:  chetemi-4
-          port: eth0
-          kind: node
         5:
           uid:  chetemi-5
-          port: eth0
-          kind: node
         6:
           uid:  chetemi-6
-          port: eth0
-          kind: node
         7:
           uid:  chetemi-7
-          port: eth0
-          kind: node
         8:
           uid:  chetemi-8
-          port: eth0
-          kind: node
         9:
           uid:  chetemi-9
-          port: eth0
-          kind: node
         10:
           uid:  chetemi-10
-          port: eth0
-          kind: node
         11:
           uid:  chetemi-11
-          port: eth0
-          kind: node
         12:
           uid:  chetemi-12
-          port: eth0
-          kind: node
         13:
           uid:  chetemi-13
-          port: eth0
-          kind: node
         14:
           uid:  chetemi-14
-          port: eth0
-          kind: node
         15:
           uid:  chetemi-15
-          port: eth0
-          kind: node
         17:
           uid:  chifflet-1
-          port: eth0
-          kind: node
         18:
           uid:  chifflet-2
-          port: eth0
-          kind: node
         19:
           uid:  chifflet-3
-          port: eth0
-          kind: node
         20:
           uid:  chifflet-4
-          port: eth0
-          kind: node
         21:
           uid:  chifflet-5
-          port: eth0
-          kind: node
         22:
           uid:  chifflet-6
-          port: eth0
-          kind: node
         23:
           uid:  chifflet-7
-          port: eth0
-          kind: node
         24:
           uid:  chifflet-8
-          port: eth0
-          kind: node
         25:
-          uid:  chetemi-1
-          port: eth1
-          kind: node
+          uid:  chetemi-1-eth1
         26:
-          uid:  chetemi-2
-          port: eth1
-          kind: node
+          uid:  chetemi-2-eth1
         27:
-          uid:  chetemi-3
-          port: eth1
-          kind: node
+          uid:  chetemi-3-eth1
         28:
-          uid:  chetemi-4
-          port: eth1
-          kind: node
+          uid:  chetemi-4-eth1
         29:
-          uid:  chetemi-5
-          port: eth1
-          kind: node
+          uid:  chetemi-5-eth1
         30:
-          uid:  chetemi-6
-          port: eth1
-          kind: node
+          uid:  chetemi-6-eth1
         31:
-          uid:  chetemi-7
-          port: eth1
-          kind: node
+          uid:  chetemi-7-eth1
         32:
-          uid:  chetemi-8
-          port: eth1
-          kind: node
+          uid:  chetemi-8-eth1
         33:
-          uid:  chetemi-9
-          port: eth1
-          kind: node
+          uid:  chetemi-9-eth1
         34:
-          uid:  chetemi-10
-          port: eth1
-          kind: node
+          uid:  chetemi-10-eth1
         35:
-          uid:  chetemi-11
-          port: eth1
-          kind: node
+          uid:  chetemi-11-eth1
         36:
-          uid:  chetemi-12
-          port: eth1
-          kind: node
+          uid:  chetemi-12-eth1
         37:
-          uid:  chetemi-13
-          port: eth1
-          kind: node
+          uid:  chetemi-13-eth1
         38:
-          uid:  chetemi-14
-          port: eth1
-          kind: node
+          uid:  chetemi-14-eth1
         39:
-          uid:  chetemi-15
-          port: eth1
-          kind: node
+          uid:  chetemi-15-eth1
         40:
-          uid:  chifflet-1
-          port: eth1
-          kind: node
+          uid:  chifflet-1-eth1
         41:
-          uid:  chifflet-2
-          port: eth1
-          kind: node
+          uid:  chifflet-2-eth1
         42:
-          uid:  chifflet-3
-          port: eth1
-          kind: node
+          uid:  chifflet-3-eth1
         43:
-          uid:  chifflet-4
-          port: eth1
-          kind: node
+          uid:  chifflet-4-eth1
         44:
-          uid:  chifflet-5
-          port: eth1
-          kind: node
+          uid:  chifflet-5-eth1
         45:
-          uid:  chifflet-6
-          port: eth1
-          kind: node
+          uid:  chifflet-6-eth1
         46:
-          uid:  chifflet-7
-          port: eth1
-          kind: node
+          uid:  chifflet-7-eth1
         47:
-          uid:  chifflet-8
-          port: eth1
-          kind: node
+          uid:  chifflet-8-eth1
         53:
-          uid: sw-chiclet-2
-          kind: router
-          port: Ethernet1/53
-          aggregation: lacp
+          uid: port-channel1
+          kind: channel
           rate: 100000000000
         54:
-          uid: sw-chiclet-2
-          kind: router
-          port: Ethernet1/54
-          aggregation: lacp
+          uid: port-channel1
+          kind: channel
           rate: 100000000000
+  channels:
+    port-channel1:
+      uid: sw-chiclet-2
+      port: port-channel2
+      rate: 200000000000
+      kind: router

@@ -1,14 +1,12 @@
 ---
 ecotype-prod1:
+  role: production
   model: S4048-ON
   kind: switch
   site: nantes
+  ip: 172.16.207.252
   snmp_community: public
   warranty: 2022-06-01
-  sensors:
-    network:
-      available: true
-      resolution: 1
   backplane_bps: 1280000000000
   linecards:
     1:
@@ -16,7 +14,6 @@ ecotype-prod1:
       kavlan_pattern: "%LINECARD%/%PORT%"
       kind: node
       rate: 10000000000
-      port: eth0
       ports:
         1: ecotype-1
         2: ecotype-2
@@ -67,12 +64,18 @@ ecotype-prod1:
         47: ecotype-47
         48: ecotype-48
         49:
-          uid: gw-nantes
-          port: fortyGigE0/52
-          aggregation: lacp
-          kind: router
+          uid: Port-channel 1
+          snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
+          kind: channel
+          rate: 40000000000
         50:
-          uid: gw-nantes
-          port: fortyGigE0/48
-          aggregation: lacp
-          kind: router
+          uid: Port-channel 1
+          snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
+          kind: channel
+          rate: 40000000000
+  channels:
+    Port-channel 1:
+      kind: router
+      uid: gw
+      port: Port-channel 1
+      rate: 80000000000

@@ -1,5 +1,17 @@
 {
+  "alias": [
+    "gw-luxembourg"
+  ],
   "backplane_bps": 720000000000,
+  "channels": {
+    "Port-channel4": {
+      "kind": "switch",
+      "port": "port-channel4",
+      "rate": 20000000000,
+      "uid": "ul-grid5000-sw02"
+    }
+  },
+  "ip": "172.16.191.254",
   "kind": "router",
   "linecards": [
     {
@@ -62,16 +74,19 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet1/25",
           "uid": "granduc-2"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet1/26",
           "uid": "granduc-3"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet1/27",
           "uid": "granduc-4"
         },
         {
@@ -79,6 +94,7 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet1/29",
           "uid": "granduc-6"
         },
         {
@@ -88,6 +104,7 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet1/32",
           "uid": "granduc-9"
         },
         {
@@ -95,28 +112,28 @@
         {
         },
         {
-          "kind": "other",
-          "port": "eth1",
-          "uid": "cronos"
+          "kind": "server",
+          "snmp_name": "GigabitEthernet1/35",
+          "uid": "cronos-eth1"
         },
         {
-          "kind": "other",
-          "port": "eth0",
+          "kind": "server",
+          "snmp_name": "GigabitEthernet1/36",
           "uid": "zeus"
         },
         {
-          "kind": "other",
-          "port": "eth2",
-          "uid": "cronos"
+          "kind": "server",
+          "snmp_name": "GigabitEthernet1/37",
+          "uid": "cronos-eth2"
         },
         {
         },
         {
         },
         {
-          "kind": "other",
-          "port": "eth1",
-          "uid": "zeus"
+          "kind": "server",
+          "snmp_name": "GigabitEthernet1/40",
+          "uid": "zeus-eth1"
         },
         {
         },
@@ -150,16 +167,19 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/2",
           "uid": "granduc-2"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/3",
           "uid": "granduc-3"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/4",
           "uid": "granduc-4"
         },
         {
@@ -167,6 +187,7 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/6",
           "uid": "granduc-6"
         },
         {
@@ -176,6 +197,7 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/9",
           "uid": "granduc-9"
         },
         {
@@ -185,6 +207,7 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/12",
           "uid": "granduc-12"
         },
         {
@@ -194,11 +217,13 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/15",
           "uid": "granduc-15"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/16",
           "uid": "granduc-16"
         },
         {
@@ -206,6 +231,7 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/18",
           "uid": "granduc-18"
         },
         {
@@ -213,11 +239,13 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/20",
           "uid": "granduc-20"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "GigabitEthernet2/21",
           "uid": "granduc-21"
         },
         {
@@ -227,6 +255,7 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet2/24",
           "uid": "granduc-12"
         },
         {
@@ -236,11 +265,13 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet2/27",
           "uid": "granduc-15"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet2/28",
           "uid": "granduc-16"
         },
         {
@@ -248,6 +279,7 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet2/30",
           "uid": "granduc-18"
         },
         {
@@ -255,11 +287,13 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet2/32",
           "uid": "granduc-20"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "GigabitEthernet2/33",
           "uid": "granduc-21"
         },
         {
@@ -283,8 +317,8 @@
         {
         },
         {
-          "kind": "other",
-          "port": "eth0",
+          "kind": "server",
+          "snmp_name": "GigabitEthernet2/44",
           "uid": "cronos"
         },
         {
@@ -302,21 +336,19 @@
     {
       "backplane_bps": 40000000000,
       "kavlan_pattern": "Ti%LINECARD%/%PORT%",
-      "kind": "switch",
+      "kind": "channel",
       "ports": [
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Ethernet1/30",
-          "uid": "ul-grid5000-sw02"
+          "kind": "channel",
+          "snmp_name": "TenGigabitEthernet3/1",
+          "uid": "Port-channel4"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Ethernet1/32",
-          "uid": "ul-grid5000-sw02"
+          "kind": "channel",
+          "snmp_name": "TenGigabitEthernet3/2",
+          "uid": "Port-channel4"
         }
       ],
       "rate": 10000000000,
@@ -327,7 +359,7 @@
     {
       "backplane_bps": 40000000000,
       "kavlan_pattern": "Ti%LINECARD%/%PORT%",
-      "kind": "virtual",
+      "kind": "backbone",
       "ports": [
         {
         },
@@ -338,8 +370,9 @@
         {
         },
         {
-          "kind": "virtual",
+          "kind": "backbone",
           "rate": 10000000000,
+          "snmp_name": "TenGigabitEthernet5/4",
           "uid": "renater-luxembourg"
         }
       ],
@@ -348,16 +381,11 @@
     }
   ],
   "model": "cisco WS-C6506-E",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
+  "role": "production",
   "site": "luxembourg",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "gw-luxembourg",
+  "uid": "gw",
   "vlans": {
     "vlan100": {
       "addresses": [
@@ -446,7 +474,5 @@
       "name": "kavlan-20"
     }
   },
-  "warranty": "2018-12-01",
-  "weathermap": {
-  }
+  "warranty": "2018-12-01"
 }

@@ -1,21 +1,12 @@
 ---
 sgrvingt:
+  role: production
   model: Dell S4048
   warranty: "2023-03-27"
   kind: switch
   site: nancy
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
-    power:
-      available: false
-  vlans:
-    "vlan1":
-      administrative: yes
-      addresses:
-        - 172.17.79.207
+  ip: 172.17.79.207
   backplane_bps: 1440000000000
   linecards:
     1:
@@ -23,7 +14,6 @@ sgrvingt:
        kavlan_pattern: "TenGigabitEthernet%LINECARD%/%PORT%"
        kind: node
        rate: 10000000000
-       port: eth0
        ports:
          1: grvingt-3
          2: grvingt-4
@@ -65,33 +55,32 @@ sgrvingt:
          38: grvingt-6
          39: grvingt-1
          40: grvingt-2
-         41: 
+         41:
            uid: grcinq-srv-3
-           kind: other
+           kind: server
          42:
            uid: grcinq-srv-2
-           kind: other
+           kind: server
          43:
            uid: grvingt-srv
-           kind: other
+           kind: server
          44:
            uid: wurst
-           kind: other
+           kind: server
          45:
            uid: sgrcinq
            kind: switch
          46:
            uid: grcinq-srv-1
-           kind: other
+           kind: server
          48:
-           uid: gw-nancy
+           uid: gw
            kind: router
     49:
         snmp_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
         kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
         kind: node
         rate: 10000000000
-        port: eth0
         ports:
           1: grvingt-44
           2: grvingt-43
@@ -102,7 +91,6 @@ sgrvingt:
         kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
         kind: node
         rate: 10000000000
-        port: eth0
         ports:
           1: grvingt-58
           2: grvingt-57
@@ -113,7 +101,6 @@ sgrvingt:
         kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
         kind: node
         rate: 10000000000
-        port: eth0
         ports:
           1: grvingt-52
           2: grvingt-51
@@ -124,7 +111,6 @@ sgrvingt:
         kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
         kind: node
         rate: 10000000000
-        port: eth0
         ports:
           1: grvingt-50
           2: grvingt-49
@@ -135,7 +121,6 @@ sgrvingt:
         kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
         kind: node
         rate: 10000000000
-        port: eth0
         ports:
           1: grvingt-60
           2: grvingt-59
@@ -146,7 +131,6 @@ sgrvingt:
         kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
         kind: node
         rate: 10000000000
-        port: eth0
         ports:
           1: grvingt-42
           2: grvingt-41
