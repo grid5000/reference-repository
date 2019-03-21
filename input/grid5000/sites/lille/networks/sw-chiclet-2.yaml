@@ -2,13 +2,10 @@
 sw-chiclet-2:
   model: cisco 93180YC-EX
   warranty: 2021-11-30
+  ip: 172.17.47.222
   kind: router
   site: lille
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
   backplane_bps: 36000000000000
   vlans:
     "vlan100":
@@ -63,12 +60,11 @@ sw-chiclet-2:
         - 10.11.192.0/18
   linecards:
     1:
-      kind: virtual
+      kind: other
       snmp_pattern: Ethernet%LINECARD%/%PORT%
       kavlan_pattern: Ethernet%LINECARD%/%PORT%
       backplane_bps: 36000000000000
       rate: 10000000000
-      port: eth0
       ports:
         33:
           uid: renater5-FON
@@ -76,27 +72,39 @@ sw-chiclet-2:
         35:
           uid: labo
           kind: other
+          rate: 1000000000
         51:
           uid: sw-chiclet-1
-          kind: switch
+          kind: channel
           port: Ethernet1/54
-          aggregation: lacp
           rate: 100000000000
         52:
           uid: sw-chiclet-1
-          kind: switch
+          kind: channel
           port: Ethernet1/53
-          aggregation: lacp
           rate: 100000000000
         53:
           uid: sw-chiclet-3
-          kind: switch
+          kind: channel
           port: Ethernet1/53
-          aggregation: lacp
           rate: 100000000000
         54:
           uid: sw-chiclet-3
-          kind: switch
+          kind: channel
           port: Ethernet1/54
-          aggregation: lacp
           rate: 100000000000
+  channels:
+    port-channel-1:
+      ports:
+        - Ethernet1/51
+        - Ethernet1/52
+      uid: port-channel-1
+      kind: switch
+      rate: 200000000000
+    port-channel-2:
+      ports:
+        - Ethernet1/53
+        - Ethernet1/54
+      uid: port-channel-1
+      kind: switch
+      rate: 200000000000
