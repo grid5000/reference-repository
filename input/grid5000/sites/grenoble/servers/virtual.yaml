@@ -41,9 +41,6 @@ ganglia:
 ldap:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.112}}
-proxy:
-  kind: virtual
-  network_adapters: {default: {ip: 172.16.31.113}}
 supervision:
   kind: virtual
   alias: [nagios, munin]
