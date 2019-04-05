@@ -182,6 +182,8 @@ def get_hardware(sites)
       hardware[site_uid][cluster_uid] = {}
       cluster_hash.fetch('nodes').sort.each { |node_uid, node_hash|
         next if node_hash['status'] == 'retired'
+        # map model to vendor (eg: {'SAS5484654' => 'Seagate', 'PX458' => 'Toshiba' ...}
+        disk_model_vendor_mapping =  global_hash['disk_vendor_model_mapping'].map{ |vdr, mdls| mdls.map{ |mdl| [mdl, vdr] } }.flatten(1).to_h
         hard = {}
         queue = cluster_hash['queues'] - ['admin', 'default']
         hard['queue'] = (queue.nil? || queue.empty?) ? '' : queue[0]
@@ -204,8 +206,9 @@ def get_hardware(sites)
         storage = node_hash['storage_devices'].map{ |k, v| {'size' => v['size'],  'tech' => v['storage']} }
         hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by { |e| e[0]['size'].to_f }.map{ |e| (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') + G5K.get_size(e[0]['size'],'metric') + '&nbsp;' + e[0]['tech'] }.join(' +&nbsp;')
         hard['storage_size'] = storage.inject(0){|sum, v| sum + (v['size'].to_f / 2**30).floor }.to_s # round to GB to avoid small differences within a cluster
-        storage_description = node_hash['storage_devices'].map { |k, v| { 'device' => v['device'], 'size' => v['size'], 'tech' => v['storage'], 'interface' => v['interface'], 'model' => v['model'], 'driver' => v['driver'], 'path' => v['by_path'] || v['by_id'],  'count' => node_hash['storage_devices'].count } }
-        hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size'],'metric'), e['tech'], e['interface'], e['model'], ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'].join(' ') }.join('<br />')
+        storage_description = node_hash['storage_devices'].map { |k, v| { 'device' => v['device'], 'size' => v['size'], 'tech' => v['storage'], 'interface' => v['interface'], 'vendor' => disk_model_vendor_mapping[v['model']],'model' => v['model'], 'driver' => v['driver'], 'path' => v['by_path'] || v['by_id'],  'count' => node_hash['storage_devices'].count } }
+
+        hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size'],'metric'), e['tech'], e['interface'], e['vendor'], e['model'], ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'].join(' ') }.join('<br />')
 
         network = node_hash['network_adapters'].select { |k, v|
           v['management'] == false &&
