@@ -96,7 +96,7 @@ def generate_reference_api
     grid_path.mkpath()
 
     write_json(grid_path.join("#{global_hash['uid']}.json"), 
-               global_hash.reject {|k, v| k == "sites" || k == "network_equipments"})
+               global_hash.reject {|k, v| k == "sites" || k == "network_equipments" || k == "disk_vendor_model_mapping"})
   end
 
   puts "Generating the reference api:\n\n"
@@ -229,6 +229,14 @@ def generate_reference_api
             node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
           }
           node.delete("status")
+
+          # Add vendor info to storage
+          node["storage_devices"].each do |key, hash|
+            matching_vendor =  global_hash['disk_vendor_model_mapping'].select {|_, v| v.include? hash["model"] }
+            raise "Model \"#{hash["model"]}\" don't match any vendor in input/grid5000/disks.yaml" if matching_vendor.empty?
+            raise "Model \"#{hash["model"]}\" specify in multiple vendors: #{matching_vendor.keys} in input/grid5000/disks.yaml" if matching_vendor.length > 1
+            hash['vendor'] = matching_vendor.keys.first
+          end
 
           # Type conversion
           node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
