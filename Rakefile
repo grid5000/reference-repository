@@ -125,7 +125,7 @@ namespace :gen do
     exit(ret)
   end
 
-  desc "Generate OAR properties -- parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [NODE={dahu-1,...}] DO={output,exec,diff,check} [VERBOSE={0,1,2,3}]"
+  desc "Generate OAR properties -- parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [NODE={dahu-1,...}] DO={output,exec,diff} [VERBOSE={0,1,2,3}]"
   task "oar-properties" do
     require 'refrepo/gen/oar-properties'
     options = {}
@@ -143,16 +143,11 @@ namespace :gen do
     options[:output] = false
     options[:diff] = false
     options[:exec] = false
-    options[:check] = false
     if ENV['DO']
       ENV['DO'].split(',').each do |t|
         options[:diff] = true if t == 'diff'
         options[:output] = true if t == 'output'
         options[:exec] = true if t == 'exec'
-        if t == 'check'
-          options[:diff] = true # check requires diff
-          options[:check] = true
-        end
       end
     else
       puts "You must specify something to do using DO="
