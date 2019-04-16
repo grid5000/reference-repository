@@ -532,10 +532,10 @@ def oarcmd_set_disk_properties(host, disk, disk_properties)
 end
 
 # sudo exec
-def ssh_exec(cmds, options)
+def ssh_exec(cmds, options, site_uid)
   # The following is equivalent to : "cat cmds | bash"
   #res = ""
-  c = Net::SSH.start(options[:ssh][:host], options[:ssh][:user])
+  c = Net::SSH.start(options[:ssh][:host].gsub('%s', site_uid), options[:ssh][:user])
   c.open_channel { |channel|
     channel.exec('sudo bash') { |ch, success|
       # stdout
@@ -802,7 +802,7 @@ def generate_oar_properties(options)
       if options[:exec]
         printf 'Apply changes to the OAR server ' + options[:ssh][:host].gsub('%s', site_uid) + ' ? (y/N) '
         prompt = STDIN.gets.chomp
-        ssh_exec(ssh_cmd, options) if prompt.downcase == 'y'
+        ssh_exec(ssh_cmd, options, site_uid) if prompt.downcase == 'y'
       end
     end # site loop
 
