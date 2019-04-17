@@ -665,7 +665,7 @@ def generate_oar_properties(options)
           end
 
           case options[:verbose]
-          when 1
+          when 0..1
             puts "#{key}:#{info}" if info != ''
             puts "#{key}:#{diff_keys}" if diff.size != 0
           when 2
