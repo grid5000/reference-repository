@@ -658,7 +658,12 @@ def generate_oar_properties(options)
           properties['diff'][site_uid][type][key] = properties_ref.select { |k, _v| diff_keys.include?(k) }
 
           # Verbose output
-          info = type == 'default' ? ' new node !' : ' new disk !' if properties['oar'][site_uid][type][key].nil?
+          if properties['oar'][site_uid][type][key].nil?
+            info = ((type == 'default') ? ' new node !' : ' new disk !')
+          else
+            info = ''
+          end
+
           case options[:verbose]
           when 1
             puts "#{key}:#{info}" if info != ''
