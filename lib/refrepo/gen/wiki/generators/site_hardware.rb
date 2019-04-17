@@ -9,6 +9,7 @@ class SiteHardwareGenerator < WikiGenerator
 
   def generate_content
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n"
+    @generated_content += "{{Portal|User}}\n"
     @generated_content += "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
     @generated_content += "\n= Summary =\n"
     @generated_content += "'''#{generate_oneline_summary}'''\n"

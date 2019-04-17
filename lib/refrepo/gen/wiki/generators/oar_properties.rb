@@ -213,7 +213,7 @@ class OarPropertiesGenerator < WikiGenerator
       @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ")
     }
 
-    @generated_content = "Properties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
+    @generated_content = "{{Portal|User}}\nProperties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
     @generated_content += MW::heading("OAR Properties", 1) + MW::LINE_FEED
 
     @@categories.sort.to_h.each { |cat, cat_properties|
