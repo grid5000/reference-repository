@@ -154,11 +154,7 @@ namespace :gen do
       exit(1)
     end
 
-    if ENV['VERBOSE']
-      options[:verbose] = ENV['VERBOSE'].to_i
-    else
-      options[:verbose] = 0
-    end
+    options[:verbose] = ENV['VERBOSE'].to_i if ENV['VERBOSE']
 
     ret = generate_oar_properties(options)
     exit(ret)
@@ -175,7 +171,7 @@ namespace :gen do
         options = {}
         options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
         options[:output_dir] = ENV['OUTPUTDIR'] || PUPPET_ODIR
-        options[:verbose] = (ENV['VERBOSE'] != nil)
+        options[:verbose] = true if ENV['VERBOSE']
         options[:conf_dir] = ENV['CONFDIR'] if ENV['CONFDIR']
         send("generate_puppet_#{t}", options)
 
