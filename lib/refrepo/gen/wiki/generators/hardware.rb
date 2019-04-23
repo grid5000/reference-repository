@@ -120,7 +120,7 @@ class G5KHardwareGenerator < WikiGenerator
                   sort: ((v['rate'])/10**6).to_s.rjust(6, '0') + ' Gbps, ' + v['interface']
                 }
               ]
-            }.uniq
+            }
 
             net_interconnects = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
             net_interconnects.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
