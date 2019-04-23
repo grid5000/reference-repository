@@ -117,7 +117,7 @@ class G5KHardwareGenerator < WikiGenerator
               [
                 {
                   text: v['interface'] + ' ' + G5K.get_rate(v['rate']),
-                  sort: ((v['rate'])/10**6).to_s.rjust(6, '0') + ' Gbps, ' + v['interface']
+                  sort: v['interface'] + ' ' + ((v['rate'])/10**6).to_s.rjust(6, '0') + ' Gbps'
                 }
               ]
             }
