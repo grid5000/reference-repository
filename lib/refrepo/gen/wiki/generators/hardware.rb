@@ -35,9 +35,9 @@ class G5KHardwareGenerator < WikiGenerator
     @global_hash['sites'].sort.to_h.each do |site_uid, site_hash|
       clusters += site_hash['clusters'].length
       site_hash['clusters'].sort.to_h.each do |cluster_uid, cluster_hash|
-        nodes += cluster_hash['nodes'].length
         cluster_hash['nodes'].sort.to_h.each do |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
+          nodes += 1
           cores += node_hash['architecture']['nb_cores']
           if node_hash['gpu'] and node_hash['gpu']['gpu_count']
             gpus += node_hash['gpu']['gpu_count']
