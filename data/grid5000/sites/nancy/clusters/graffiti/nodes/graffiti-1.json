@@ -1,0 +1,70 @@
+{
+  "gpu": {
+    "gpu": false
+  },
+  "kavlan": {
+  },
+  "main_memory": {
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "ip": "172.16.64.1",
+      "kavlan": false,
+      "mac": "ee:ee:ee:ee:ee:ee",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "graffiti-1.nancy.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.64.1",
+      "kavlan": false,
+      "mac": "f4:02:70:9a:3f:74",
+      "mountable": false,
+      "mounted": false
+    }
+  ],
+  "processor": {
+    "cache_l1": null,
+    "microarchitecture": "Skylake"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "interface": "SATA",
+      "model": "PERC H330",
+      "storage": "SSD",
+      "vendor": "Dell (Raid)"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 86400,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "graffiti-1"
+}

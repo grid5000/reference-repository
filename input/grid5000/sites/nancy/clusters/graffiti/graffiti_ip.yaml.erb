@@ -1,0 +1,18 @@
+nodes:
+ <% (1..2).each { |i| %>
+   graffiti-<%= i %>:
+     network_adapters:
+       eth0:
+         mounted: true
+         ip: 172.16.64.<%= i %>
+         mac: <%= %w(
+                     EE:EE:EE:EE:EE:EE
+                     DD:DD:DD:2C:A5:80
+                    )[i-1] %>
+       bmc:
+         ip: 172.17.64.<%= i %> 
+         mac: <%= %w(
+                     F4:02:70:9A:3F:74
+                     F4:02:70:9A:48:E8
+                   )[i-1] %>
+<% } %>

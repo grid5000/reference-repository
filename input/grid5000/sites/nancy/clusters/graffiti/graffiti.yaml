@@ -1,0 +1,46 @@
+---
+model: Dell PowerEdge T640
+created_at: 2019-06-07
+kavlan: false
+queues:
+  - admin
+  - testing
+nodes:
+  graffiti-[1-13]:
+    processor:
+      microarchitecture: Skylake
+    supported_job_types:
+       deploy: true
+       besteffort: true
+       queues:
+         - admin
+         - testing
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+        model: PERC H330
+  graffiti-[1-3]:
+    supported_job_types:
+      max_walltime: 86400
+  graffiti-[4-6]:
+    supported_job_types:
+      max_walltime: 172800
+  graffiti-[7-]:
+    supported_job_types:
+      max_walltime: 604800
