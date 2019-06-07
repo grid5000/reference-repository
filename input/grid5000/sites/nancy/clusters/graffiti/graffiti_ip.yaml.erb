@@ -1,5 +1,5 @@
 nodes:
- <% (1..2).each { |i| %>
+ <% (1..13).each { |i| %>
    graffiti-<%= i %>:
      network_adapters:
        eth0:
@@ -8,11 +8,33 @@ nodes:
          mac: <%= %w(
                      F8:F2:1E:60:41:20
                      F8:F2:1E:60:3F:A0
+                     FF:EA:1E:60:3F:A0
+                     FF:EA:1E:60:3F:A1
+                     FF:EA:1E:60:3F:A2
+                     FF:EA:1E:60:3F:A3
+                     FF:EA:1E:60:3F:A4
+                     FF:EA:1E:60:3F:A5
+                     FF:EA:1E:60:3F:A6
+                     FF:EA:1E:60:3F:A7
+                     FF:EA:1E:60:3F:A8
+                     FF:EA:1E:60:3F:A9
+                     FF:EA:1E:60:3F:AA
                     )[i-1] %>
        bmc:
          ip: 172.17.64.<%= i %> 
          mac: <%= %w(
                      F4:02:70:9A:3F:74
                      F4:02:70:9A:48:E8
+                     BF:EA:1E:60:3F:A0
+                     BF:EA:1E:60:3F:A1
+                     BF:EA:1E:60:3F:A2
+                     BF:EA:1E:60:3F:A3
+                     BF:EA:1E:60:3F:A4
+                     BF:EA:1E:60:3F:A5
+                     BF:EA:1E:60:3F:A6
+                     BF:EA:1E:60:3F:A7
+                     BF:EA:1E:60:3F:A8
+                     BF:EA:1E:60:3F:A9
+                     BF:EA:1E:60:3F:AA
                    )[i-1] %>
 <% } %>
