@@ -63,11 +63,13 @@ initrd_dev  = 'kernels/kadeploy3-deploy-kernel-jessie.initrd.img'%>
       vmlinuz: kernels/deploy-vmlinuz-2.6.31.4-nfsroot<% end %>
     user:
       params: <%= data['user.params'] %>
+<%- if ! data['preinstall'].nil? && data['preinstall'].to_s == "true" -%>
 postinstall:
   files:
   - script: none
     format: tgz
     file:  /grid5000/preinstalls/preinstall-<%= cluster_uid %>.tgz
+<%- end -%>
 pxe:
   headers:
     dhcp: &id001 |-
