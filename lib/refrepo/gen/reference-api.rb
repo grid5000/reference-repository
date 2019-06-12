@@ -51,7 +51,7 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
   network["linecards"].each do |linecard_index, linecard|
     ports = []
     linecard.delete("ports").each do |port_index, port|
-      port = {"uid"=>port} if port.is_a? String
+      port = { "uid"=> port } if port.is_a? String
       if port.is_a? Hash
         # complete entries (see bug 8587)
         if port['port'].nil? and linecard['port']
@@ -59,6 +59,12 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
         end
         if port['kind'].nil? and linecard['kind']
           port['kind'] = linecard['kind']
+        end
+        if (!linecard['kind'].nil? and port['kind'].nil? and linecard['kind'] == 'node') or
+            port['kind'] == 'node' and
+            port['port'].nil?
+          p = port['uid'].match(/([a-z]*)-([0-9]*)-?(.*)/).captures[2]
+          port['port'] = p != '' ? p : 'eth0'
         end
       end
       ports[port_index] = port
