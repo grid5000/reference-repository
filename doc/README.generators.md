@@ -13,7 +13,7 @@ This directory contains the input files and scripts needed for generating:
 - The OAR properties ie. the node information that is registered in OAR databases and 
   allows user to select resources matching their experiment requirements.
 
-  Ex: $ oarsub -p "wattmeter=’YES’ and gpu=’YES’ and eth10g=’Y’"
+  Ex: $ oarsub -p "wattmeter=’YES’ and eth10g=’Y’"
 
 - The configuration files of the following puppet modules: bindg5kb, conmang5k, dhcpg5k, kadeployg5k and lanpowerg5k.
 
