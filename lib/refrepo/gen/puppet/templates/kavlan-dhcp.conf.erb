@@ -11,7 +11,7 @@ option pxelinux.reboottime code 211 = unsigned integer 32;
 option vendorinfo          code 43  = string;
 
 <%
-kavlan = refapi['sites'][site_uid]['kavlans'][kavlan_id]
+kavlan = refapi['sites'][site_uid]['kavlans'][kavlan_id.to_s] # TODO fix needed conversion
 kavlan_ip = IPAddress::IPv4::new(kavlan['network'])
 -%>
 
@@ -32,21 +32,24 @@ refapi['sites'].sort.to_h.each_key do |site|
   refapi['sites'][site].fetch('clusters', []).sort.to_h.each do |cluster_uid, cluster|
     cluster['nodes'].sort.to_h.each do |node_uid, node|
       next if node['status'] and node['status'] == 'retired'
-      node['network_adapters'].each do |interface_uid, interface|
-        if (interface['mountable'] or site == "rennes") and node['kavlan'] and node['kavlan'].has_key?(interface_uid) # TODO: use interface['kavlan']
-          if not interface['mac'] or not node['kavlan'].has_key?(interface_uid) or not node['kavlan'][interface_uid]["kavlan-#{kavlan_id}"]
-            warn "WARN: Cannot fill dhcpd entry for #{node_uid}, interface #{interface_uid} in vlan #{kavlan_id}: " \
-              "Missing mac (#{interface['mac']}) or IP (#{node['kavlan'][interface_uid] and node['kavlan'][interface_uid]["kavlan-#{kavlan_id}"]})"
-            next
-          end
+      node['network_adapters'].each do |interface|
+          if interface['mountable'] and
+             interface['kavlan']
+
+             if not interface['mac'] or
+                not node['kavlan'][interface['device']]["kavlan-#{kavlan_id}"]
+                  warn "WARN: Cannot fill dhcpd entry for #{node_uid}, interface #{interface_uid} in vlan #{kavlan_id}: " \
+              "Missing mac (#{interface['mac']}) or IP (#{node['kavlan'][interface['device']] and node['kavlan'][interface['device']]["kavlan-#{kavlan_id}"]})"
+                  next
+             end
 -%>
-   host <%= node_uid %><%= interface['mounted']? "" : "-"+interface_uid %>-kavlan-<%= kavlan_id %>.<%= site %>.grid5000.fr {
+   host <%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-kavlan-<%= kavlan_id %>.<%= site %>.grid5000.fr {
      hardware ethernet <%= interface['mac'].downcase() %>;
-     option host-name "<%= node_uid %><%= interface['mounted']? "" : "-"+interface_uid %>-kavlan-<%= kavlan_id %>";
+     option host-name "<%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-kavlan-<%= kavlan_id %>";
      option domain-name "<%= site %>.grid5000.fr";
      option domain-search "<%= site %>.grid5000.fr", "grid5000.fr";
-     fixed-address <%= node['kavlan'][interface_uid]["kavlan-#{kavlan_id}"] %>;
-<%        if kavlan_id > 9 -%>
+     fixed-address <%= node['kavlan'][interface['device']]["kavlan-#{kavlan_id}"] %>;
+<%        if kavlan_id.to_i > 9 -%>
      next-server kadeploy.<%= site %>.grid5000.fr;
 <%        end -%>
    }
