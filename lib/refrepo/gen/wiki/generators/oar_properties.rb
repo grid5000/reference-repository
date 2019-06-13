@@ -123,11 +123,15 @@ class OarPropertiesGenerator < WikiGenerator
     "memnode" => {
       "description" => "The total amount of memory in MB of the node"
     },
-    "gpu" => {
+    "gpu_model" => {
       "description" => "The type of GPU available"
     },
     "gpu_count" => {
       "description" => "The number of GPU cards available"
+    },
+    "gpu" => {
+      "description" => "The ID of the GPU the resource is part of. The unique scope is the OAR server. ",
+      "possible_values" => "1, 2, 3, ..."
     },
     "wattmeter" => {
       "description" => "The type of wattmeter available"
@@ -142,7 +146,7 @@ class OarPropertiesGenerator < WikiGenerator
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
     "Hierarchy" => ["cluster", "cpu", "core", "host", "network_address", "ip", "switch"],
-    "Hardware" => ["gpu", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
+    "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel"]
   }
 

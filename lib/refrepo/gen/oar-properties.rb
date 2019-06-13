@@ -126,10 +126,10 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['memnode'] = node['main_memory']['ram_size'] / MiB
 
   if node.key?('gpu') && node['gpu']['gpu'] == true
-    h['gpu'] = node['gpu']['gpu_model']
+    h['gpu_model'] = node['gpu']['gpu_model']
     h['gpu_count'] = node['gpu']['gpu_count']
   else
-    h['gpu'] = false
+    h['gpu_model'] = false
     h['gpu_count'] = 0
   end
 
