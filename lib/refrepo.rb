@@ -25,3 +25,4 @@ end
 # load sub-parts that are used by many scripts anyway
 require 'refrepo/utils'
 require 'refrepo/input_loader'
+require 'refrepo/data_loader'
