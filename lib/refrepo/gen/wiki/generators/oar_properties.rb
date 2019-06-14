@@ -129,10 +129,6 @@ class OarPropertiesGenerator < WikiGenerator
     "gpu_count" => {
       "description" => "The number of GPU cards available"
     },
-    "gpu" => {
-      "description" => "The ID of the GPU the resource is part of. The unique scope is the OAR server. ",
-      "possible_values" => "1, 2, 3, ..."
-    },
     "wattmeter" => {
       "description" => "The type of wattmeter available"
     },
