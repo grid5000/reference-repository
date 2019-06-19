@@ -23,7 +23,7 @@ def generate_puppet_conmang5k(options)
   puts "Using configuration directory: #{options[:conf_dir]}"
   puts "For site(s): #{options[:sites].join(', ')}"
 
-  refapi = load_yaml_file_hierarchy
+  refapi = load_data_hierarchy
 
   config      = YAML::load_file(options[:conf_dir] + 'console.yaml')
   credentials = YAML::load_file(options[:conf_dir] + 'console-password.yaml')
