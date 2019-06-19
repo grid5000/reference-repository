@@ -16,7 +16,7 @@ def generate_puppet_lanpowerg5k(options)
   config      = YAML::load_file("#{options[:conf_dir]}/console.yaml")
   credentials = YAML::load_file("#{options[:conf_dir]}/console-password.yaml")
 
-  refapi = load_yaml_file_hierarchy
+  refapi = load_data_hierarchy
 
   refapi['sites'].each { |site_uid, site_refapi|
 
