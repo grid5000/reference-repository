@@ -26,16 +26,14 @@ end
 
 # Extract the node ip from the node hash
 def get_ip(node)
-  node['network_adapters'].each { |device, network_adapter|
-    if network_adapter['mounted'] && /^eth[0-9]$/.match(device)
-      return network_adapter['ip']
-    end
-  }
+  return node['network_adapters'].select { |n|
+    n['mounted'] && n['device'] =~ /eth/
+  }[0]['ip']
 end
 
 def generate_puppet_kadeployg5k(options)
 
-  global_hash = load_yaml_file_hierarchy
+  global_hash = load_data_hierarchy
 
   if not options[:conf_dir]
     options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/kadeploy"
