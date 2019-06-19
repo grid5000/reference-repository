@@ -145,7 +145,7 @@ def get_networks_records(site, key)
       next
     end
 
-    eth_net_uid = node['network_adapters'].select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # eth* interfaces 
+    eth_net_uid = node['network_adapters'].select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # eth* interfaces
     node['network_adapters'].each { |net_uid, net_hash|
       if ! eth_net_uid.include?(net_uid) && node['network_adapters'].size > 1
         hostsuffix = "-#{net_uid}"
@@ -164,7 +164,7 @@ end
 def get_node_records(cluster_uid, node_uid, network_adapters)
 
   records = []
- 
+
   network_adapters.each { |net_uid, net_hash|
 
     next unless net_hash['ip']
@@ -415,7 +415,7 @@ def generate_puppet_bindg5k(options)
 
   $written_files = []
 
-  refapi = load_yaml_file_hierarchy
+  refapi = load_data_hierarchy
 
   # Loop over Grid'5000 sites
   refapi["sites"].each { |site_uid, site|
@@ -445,7 +445,7 @@ def generate_puppet_bindg5k(options)
     site_records['pdus'] = get_pdus_records(site) unless site['pdus'].nil?
 
     # Networks and laptops (same input format)
-    site_records['networks'] = get_networks_records(site, 'networks') unless site['networks'].nil?
+    site_records['networks'] = get_networks_records(site, 'network_equipments') unless site['network_equipments'].nil?
     site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
 
     site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
@@ -457,8 +457,8 @@ def generate_puppet_bindg5k(options)
         network_adapters = {}
 
         # Nodes
-        node.fetch('network_adapters').each { |net_uid, net_hash|
-          network_adapters[net_uid] = {"ip" => net_hash["ip"], "mounted" => net_hash["mounted"], "alias" => net_hash["alias"]}
+        node.fetch('network_adapters').each { |net|
+          network_adapters[net['device']] = {"ip" => net["ip"], "mounted" => net["mounted"], 'alias' => net['alias']}
         }
 
         # Mic
@@ -474,9 +474,15 @@ def generate_puppet_bindg5k(options)
           kavlan_adapters = {}
           node.fetch('kavlan').each { |net_uid, net_hash|
             net_hash.each { |kavlan_net_uid, ip|
-              kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] = {"ip" => ip, "mounted" => node['network_adapters'][net_uid]['mounted']}
+              kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] = {
+                'ip' => ip,
+                'mounted' => node['network_adapters'].select { |n|
+                  n['device'] == net_uid
+                }[0]['mounted']
+              }
             }
           }
+
           site_records["#{cluster_uid}-kavlan"] ||= []
           site_records["#{cluster_uid}-kavlan"] += get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
         end

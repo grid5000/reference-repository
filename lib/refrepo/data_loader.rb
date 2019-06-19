@@ -22,7 +22,7 @@ def load_data_hierarchy
       path_hierarchy = File.dirname(filename).split('/')     # Split the file path (path relative to input/)
       path_hierarchy = [] if path_hierarchy == ['.']
 
-      if ['nodes', 'network_equipments'].include?(path_hierarchy.last)
+      if ['nodes', 'network_equipments', 'servers', 'pdus'].include?(path_hierarchy.last)
         # it's a node or a network_equipment, add the uid
         path_hierarchy << file_hash['uid']
       end
