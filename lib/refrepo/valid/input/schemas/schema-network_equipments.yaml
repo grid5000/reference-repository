@@ -8,6 +8,7 @@ alias : optional_array
 backplane_bps: optional_integer
 mtu: optional_integer
 snmp_community: string
+ip: optional_string
 network_adapters: optional
 weathermap:
   <optional_hash>:
@@ -50,3 +51,10 @@ linecards:
     port: optional_string
     ports:
       <multi>: linecard_port #custom linecard port validation (see lib/custom-validators.rb)
+channels:
+  <optional_hash>:
+    <multi>:
+      ports: array
+      uid: string
+      kind: string
+      rate: integer
