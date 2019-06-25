@@ -7,7 +7,6 @@ require 'refrepo/valid/input/monitoring'
 #  the interface parameter must be used.
 def net_switch_port_lookup(site, node_uid, interface='')
   site["networks"].each do |switch_uid, switch|
-    #pp switch_uid
     switch["linecards"].each do |lc_uid,lc|
       lc["ports"].each do |port_uid,port|
         if port.is_a?(Hash)
@@ -16,6 +15,11 @@ def net_switch_port_lookup(site, node_uid, interface='')
         else
           switch_remote_port = lc["port"] || ""
           switch_remote_uid = port
+        end
+        if switch_remote_uid =~ /([a-z]*-[0-9]*)-(.*)/
+          n, p = switch_remote_uid.match(/([a-z]*-[0-9]*)-(.*)/).captures
+          switch_remote_uid = n
+          switch_remote_port = p
         end
         if switch_remote_uid == node_uid and switch_remote_port == interface
             # Build port name from snmp_naming_pattern
@@ -30,7 +34,7 @@ def net_switch_port_lookup(site, node_uid, interface='')
 end
 
 # Creation du fichier network_equipment
-def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
+def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
   network["type"] = "network_equipment"
   network["uid"]  = network_uid
 
@@ -60,16 +64,19 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
         if port['kind'].nil? and linecard['kind']
           port['kind'] = linecard['kind']
         end
-        if (!linecard['kind'].nil? and port['kind'].nil? and linecard['kind'] == 'node') or
-            port['kind'] == 'node' and
+        if ((!linecard['kind'].nil? &&
+            port['kind'].nil? &&
+            linecard['kind'] == 'node') ||
+            port['kind'] == 'node') &&
             port['port'].nil?
-          p = port['uid'].match(/([a-z]*)-([0-9]*)-?(.*)/).captures[2]
+          p = port['uid'].match(/([a-z]*-[0-9]*)-?(.*)/).captures[1]
           port['port'] = p != '' ? p : 'eth0'
+          port['uid'] = port['uid'].gsub(/-#{p}$/, '')
         end
       end
       ports[port_index] = port
     end
-    linecard["ports"] = ports.map{|p| p || {}}
+    linecard["ports"] = ports.map { |p| p || {} }
     linecards_array[linecard_index] = linecard
   end
   network["linecards"] = linecards_array.map{|l| l || {}}

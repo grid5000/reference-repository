@@ -1,5 +1,17 @@
 {
   "backplane_bps": 36000000000000,
+  "channels": {
+    "port-channel-1": {
+      "kind": "router",
+      "ports": [
+        "Ethernet1/53",
+        "Ethernet1/54"
+      ],
+      "rate": 200000000000,
+      "uid": "port-channel-1"
+    }
+  },
+  "ip": "172.17.47.221",
   "kind": "switch",
   "linecards": [
     {
@@ -7,7 +19,7 @@
     {
       "backplane_bps": 36000000000000,
       "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
-      "kind": "virtual",
+      "kind": "node",
       "ports": [
         {
         },
@@ -212,15 +224,13 @@
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "router",
+          "kind": "channel",
           "port": "Ethernet1/52",
           "rate": 100000000000,
           "uid": "sw-chiclet-2"
         },
         {
-          "aggregation": "lacp",
-          "kind": "router",
+          "kind": "channel",
           "port": "Ethernet1/51",
           "rate": 100000000000,
           "uid": "sw-chiclet-2"
@@ -231,12 +241,6 @@
     }
   ],
   "model": "cisco 93180YC-EX",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
   "site": "lille",
   "snmp_community": "public",
   "type": "network_equipment",

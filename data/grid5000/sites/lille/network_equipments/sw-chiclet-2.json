@@ -1,5 +1,26 @@
 {
   "backplane_bps": 36000000000000,
+  "channels": {
+    "port-channel-1": {
+      "kind": "switch",
+      "ports": [
+        "Ethernet1/51",
+        "Ethernet1/52"
+      ],
+      "rate": 200000000000,
+      "uid": "port-channel-1"
+    },
+    "port-channel-2": {
+      "kind": "switch",
+      "ports": [
+        "Ethernet1/53",
+        "Ethernet1/54"
+      ],
+      "rate": 200000000000,
+      "uid": "port-channel-1"
+    }
+  },
+  "ip": "172.17.47.222",
   "kind": "router",
   "linecards": [
     {
@@ -7,8 +28,7 @@
     {
       "backplane_bps": 36000000000000,
       "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
-      "kind": "virtual",
-      "port": "eth0",
+      "kind": "other",
       "ports": [
         {
         },
@@ -78,14 +98,13 @@
         },
         {
           "kind": "other",
-          "port": "eth0",
           "uid": "renater5-FON"
         },
         {
         },
         {
           "kind": "other",
-          "port": "eth0",
+          "rate": 1000000000,
           "uid": "labo"
         },
         {
@@ -119,29 +138,25 @@
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
+          "kind": "channel",
           "port": "Ethernet1/54",
           "rate": 100000000000,
           "uid": "sw-chiclet-1"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
+          "kind": "channel",
           "port": "Ethernet1/53",
           "rate": 100000000000,
           "uid": "sw-chiclet-1"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
+          "kind": "channel",
           "port": "Ethernet1/53",
           "rate": 100000000000,
           "uid": "sw-chiclet-3"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
+          "kind": "channel",
           "port": "Ethernet1/54",
           "rate": 100000000000,
           "uid": "sw-chiclet-3"
@@ -152,12 +167,6 @@
     }
   ],
   "model": "cisco 93180YC-EX",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
   "site": "lille",
   "snmp_community": "public",
   "type": "network_equipment",
