@@ -77,6 +77,7 @@ def add_kavlan_ips(h)
     # forget about allocated ips for local vlans, since we are starting a new site
     allocated.delete_if { |k, v| v[3] == 'local' }
     hs['clusters'].each_pair do |cluster_uid, hc|
+      next if hc['kavlan'] and hc['kavlan'] == false # skip clusters where kavlan is globally set to false (used for initial cluster installation)
       hc['nodes'].each_pair do |node_uid, hn|
         raise "Node hash for #{node_uid} is nil" if hn.nil?
         raise "Old kavlan data in input/ for #{node_uid}" if hn.has_key?('kavlan')
