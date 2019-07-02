@@ -87,8 +87,8 @@ def check_network_description(options)
         puts "This is an HPC switch. ERRORs will be non-fatal."
         oldok = ok
       end
-      eq['linecards'].each do |lc|
-        (lc['ports'] || []).each do |port|
+      eq['linecards'].each_with_index do |lc, lc_i|
+        (lc['ports'] || []).each_with_index do |port, port_i|
           # skip if empty port
           next if port == {}
 
@@ -105,13 +105,35 @@ def check_network_description(options)
             mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid') == port.values_at('kind', 'uid') }
             if mynetnodes.length == 1
               mynetnodes.first['found'] += 1
-              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'], 'target_node' => mynetnodes.first['uid'], 'port' => mynetnodes.first['port'] }
+              links << {
+                'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort,
+                'switch' => eq['uid'],
+                'target' => mynetnodes.first['nickname'],
+                'rate' => port['rate'] || lc['rate'],
+                'target_node' => mynetnodes.first['uid'],
+                'port' => mynetnodes.first['port']
+              }
             else
               puts "ERROR: this port is connected to a switch or router that does not exist: #{port}"
               ok = false
             end
           elsif port['kind'] == 'other' or port['kind'] == 'virtual'
             puts "INFO: skipping port kind #{port['kind']} for #{port['uid']}"
+          elsif port['kind'] == 'channel'
+            port_to_lookup = lc['snmp_pattern'].gsub(/%LINECARD%/, lc_i.to_s).gsub(/%PORT%/, port_i.to_s)
+            channel = eq['channels'].select { |k,v|
+              v['ports'].include?(port_to_lookup)
+            }.first[1]
+            if channel['kind'] == 'switch' or channel['kind'] == 'router'
+              links << {
+                'nicknames' => [ eq['uid'], port['uid'] ].sort,
+                'switch' => eq['uid'],
+                'target' => port['uid'],
+                'rate' => port['rate'] || lc['rate'],
+                'target_node' => port['uid'],
+                'port' => nil
+              }
+            end
           else
             puts "ERROR: unknown port kind: #{port}"
             ok = false
@@ -220,7 +242,7 @@ def generate_dot(netnodes, links, site)
   header = []
   content = []
   trailer = []
-  
+
   header << "graph graphname {"
   router = mynetnodes.select { |n| n['kind'] == 'router' }.first['nickname']
   header << "root=\"#{router}\";"
@@ -266,7 +288,7 @@ def generate_dot(netnodes, links, site)
     end
   end
   trailer << "}"
-  
+
   name = "#{site.capitalize}Network"
   data = [header, content.sort, trailer].flatten.join("\n")
   IO.write("#{name}.dot", data)
