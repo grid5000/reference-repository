@@ -23,7 +23,7 @@ class SiteNetworkGenerator < WikiGenerator
 
   def generate_equipments
     h = G5K::get_global_hash['sites'][@site]
-    return h['networks'].to_a.map { |e| "* #{e[0]}: #{e[1]['model']}" }.sort.join("\n")
+    return h['network_equipments'].to_a.map { |e| "* #{e[0]}: #{e[1]['model']}" }.sort.join("\n")
   end
 
   def generate_content

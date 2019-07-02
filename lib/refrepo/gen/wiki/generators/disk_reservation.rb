@@ -17,7 +17,7 @@ class DiskReservationGenerator < WikiGenerator
         disk_info = {}
         cluster_hash.fetch('nodes').sort.to_h.each { |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
-           reservable_disks = node_hash['storage_devices'].select{ |k, v| v['reservation'] == true }.count
+           reservable_disks = node_hash['storage_devices'].select{ |v| v['reservation'] == true }.count
           add(disk_info, node_uid, reservable_disks)
         }
 

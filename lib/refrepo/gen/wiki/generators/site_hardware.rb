@@ -184,7 +184,6 @@ def get_hardware(sites)
       cluster_hash.fetch('nodes').sort.each { |node_uid, node_hash|
         next if node_hash['status'] == 'retired'
         # map model to vendor (eg: {'SAS5484654' => 'Seagate', 'PX458' => 'Toshiba' ...}
-        disk_model_vendor_mapping =  global_hash['disk_vendor_model_mapping'].map{ |vdr, mdls| mdls.map{ |mdl| [mdl, vdr] } }.flatten(1).to_h
         hard = {}
         queue = cluster_hash['queues'] - ['admin', 'default']
         hard['queue'] = (queue.nil? || queue.empty?) ? '' : queue[0]
@@ -204,17 +203,51 @@ def get_hardware(sites)
         hard['num_processor_model'] = (hard['cpus_per_node'] == 1 ? '' : "#{hard['cpus_per_node']}&nbsp;x&nbsp;") + hard['processor_model'].gsub(' ', '&nbsp;')
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
-        storage = node_hash['storage_devices'].map{ |k, v| {'size' => v['size'],  'tech' => v['storage']} }
-        hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts| counts[data] += 1 }.to_a.sort_by { |e| e[0]['size'].to_f }.map{ |e| (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') + G5K.get_size(e[0]['size'],'metric') + '&nbsp;' + e[0]['tech'] }.join(' +&nbsp;')
+        storage = node_hash['storage_devices'].map { |i| { 'size' => i['size'], 'tech' => i['storage'] } }
+        hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts|
+          counts[data] += 1
+        }.to_a.sort_by { |e|
+          e[0]['size'].to_f
+        }.map { |e|
+          (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') +
+          G5K.get_size(e[0]['size'], 'metric') +
+          '&nbsp;' +
+          e[0]['tech']
+        }.join(' +&nbsp;')
+
         hard['storage_size'] = storage.inject(0){|sum, v| sum + (v['size'].to_f / 2**30).floor }.to_s # round to GB to avoid small differences within a cluster
-        storage_description = node_hash['storage_devices'].map { |k, v| { 'device' => v['device'], 'size' => v['size'], 'tech' => v['storage'], 'interface' => v['interface'], 'vendor' => disk_model_vendor_mapping[v['model']],'model' => v['model'], 'driver' => v['driver'], 'path' => v['by_path'] || v['by_id'],  'count' => node_hash['storage_devices'].count } }
+        storage_description = node_hash['storage_devices'].sort { |a,b|
+          a['device'] <=> b['device']
+        }.map do |v|
+          {
+            'device' => v['device'],
+            'size' => v['size'],
+            'tech' => v['storage'],
+            'interface' => v['interface'],
+            'vendor' => v['vendor'],
+            'model' => v['model'],
+            'driver' => v['driver'],
+            'path' => v['by_path'] || v['by_id'],
+            'count' => node_hash['storage_devices'].count
+          }
+        end
 
-        hard['storage_description'] = storage_description.map { |e| [ e['count'] > 1 ? "\n*" : '', G5K.get_size(e['size'],'metric'), e['tech'], e['interface'], e['vendor'], e['model'], ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'].join(' ') }.join('<br />')
+        hard['storage_description'] = storage_description.map { |e|
+          [
+            e['count'] > 1 ? "\n*" : '',
+            G5K.get_size(e['size'],'metric'),
+            e['tech'],
+            e['interface'],
+            e['vendor'],
+            e['model'],
+            ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'
+          ].join(' ')
+        }.join('<br />')
 
-        network = node_hash['network_adapters'].select { |k, v|
+        network = node_hash['network_adapters'].select { |v|
           v['management'] == false &&
-          (k =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
-        }.map{|k, v| {
+          (v['device'] =~ /\./).nil? # exclude PKEY / VLAN interfaces see #9417
+        }.map{|v| {
             'rate' => v['rate'],
             'interface' => v['interface'],
             'used' => (v['enabled'] and (v['mounted'] or v['mountable']))
@@ -236,12 +269,12 @@ def get_hardware(sites)
           sum + (v['rate'].to_f / 10**6).floor
         }.to_s # round to Mbps
 
-        network_description = node_hash['network_adapters'].select { |k, v|
+        network_description = node_hash['network_adapters'].select { |v|
           v['management'] == false &&
-          (k =~ /\./).nil? # exclude PKEY / VLAN interface see #9417
-        }.map{ |k, v|
+          (v['device'] =~ /\./).nil? # exclude PKEY / VLAN interface see #9417
+        }.map{ |v|
           {
-            'device' => k,
+            'device' => v['device'],
             'name' => v['name'],
             'rate' => v['rate'],
             'interface' => v['interface'],
