@@ -28,7 +28,7 @@ class CPUParametersGenerator < WikiGenerator
 
         #One line per cluster
         table_data << [
-          DateTime.new(*cluster_hash["created_at"].to_s.scan(/\d+/).map {|i| i.to_i}).strftime("%Y-%m-%d"),
+          DateTime.parse(*cluster_hash["created_at"]).strftime("%Y-%m-%d"),
           site_uid,
           cluster_uid,
           cpu_family,

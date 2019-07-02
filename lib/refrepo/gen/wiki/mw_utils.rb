@@ -21,7 +21,7 @@ module MediawikiApi
       res = get_conn.send(:get, '', params)
       res.body
     end
-    
+
     def get_file_content(file_name)
       get_conn = Faraday.new(url: MW::BASE_URL + "images/#{file_name}") do |faraday|
         faraday.request :multipart
@@ -95,7 +95,7 @@ module G5K
       end
     end
   end
-  
+
   def self.get_rate(x)
     return '' if (x == 0 || x.nil?)
     mbps = (x.to_f / 10**6).floor
@@ -109,11 +109,11 @@ module G5K
   def self.pluralize(count, word)
     return (count == 1 || word[-1] == 's') ? word : word + 's'
   end
-  
+
   @@global_hash = nil
   def self.get_global_hash
     if @@global_hash.nil?
-      @@global_hash = load_yaml_file_hierarchy
+      @@global_hash = load_data_hierarchy
     end
     # return a deep copy of global_hash
     return Marshal.load(Marshal.dump(@@global_hash))
@@ -144,7 +144,7 @@ module MW
   UNSORTED_INLINE_CELL = "!!"
 
   UNSORTED_TABLE_CELL = "!"
-  
+
   LINE_FEED = "\n"
 
   LIST_ITEM = "*"
@@ -212,7 +212,7 @@ module MW
   def self.italic(text)
     "''" + text + "''"
   end
- 
+
   def self.bold(text)
     "'''" + text + "'''"
   end
@@ -223,6 +223,6 @@ module MW
 
   def self.code(text)
     "<code>" + text + "</code>"
-  end   
+  end
 
 end
