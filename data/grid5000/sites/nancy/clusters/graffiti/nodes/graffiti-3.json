@@ -1,4 +1,20 @@
 {
+  "architecture": {
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 32,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "06/14/2019",
+    "vendor": "Dell Inc.",
+    "version": "2.2.11"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge T640",
+    "serial": "BL1CBX2"
+  },
   "gpu": {
     "gpu": true,
     "gpu_cores": 17408,
@@ -6,56 +22,143 @@
     "gpu_model": "RTX 2080 Ti",
     "gpu_vendor": "Nvidia"
   },
-  "kavlan": {
-  },
   "main_memory": {
+    "ram_size": 137438953472
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "multiple"
   },
   "network_adapters": [
     {
+      "bridged": false,
       "device": "eth0",
-      "enabled": true,
-      "ip": "172.16.64.3",
-      "kavlan": false,
-      "mac": "ff:ea:1e:60:3f:a0",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "graffiti-3.nancy.grid5000.fr",
-      "switch": null,
-      "switch_port": null
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+      "interface": "Ethernet",
+      "mac": "f4:02:70:9a:49:72",
+      "management": false,
+      "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno1",
+      "vendor": "Broadcom"
     },
     {
+      "bridged": false,
       "device": "eth1",
+      "driver": "bnxt_en",
       "enabled": false,
-      "kavlan": false,
+      "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+      "interface": "Ethernet",
+      "mac": "f4:02:70:9a:49:73",
+      "management": false,
+      "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno2d1",
+      "vendor": "Broadcom"
+    },
+    {
+      "bridged": true,
+      "device": "eth2",
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "6.80 0x80003d72 18.8.9",
+      "interface": "Ethernet",
+      "ip": "172.16.64.3",
+      "mac": "f8:f2:1e:60:41:90",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp137s0f0",
+      "network_address": "graffiti-3.nancy.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "gw-nancy",
+      "switch_port": "Ethernet6/40",
+      "vendor": "Intel"
+    },
+    {
+      "bridged": false,
+      "device": "eth3",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "6.80 0x80003d72 18.8.9",
+      "interface": "Ethernet",
+      "mac": "f8:f2:1e:60:41:91",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp137s0f1",
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.64.3",
-      "kavlan": false,
-      "mac": "bf:ea:1e:60:3f:a0",
+      "mac": "f4:02:70:9a:49:82",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "graffiti-3-bmc.nancy.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "processor": {
     "cache_l1": null,
-    "microarchitecture": "Skylake"
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 11534336,
+    "clock_speed": 2100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4110 CPU @ 2.10GHz",
+    "vendor": "Intel",
+    "version": "Silver 4110"
   },
   "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 7,
+            "uid": "graffiti-pdu1"
+          },
+          {
+            "port": 7,
+            "uid": "graffiti-pdu2"
+          }
+        ]
+      }
+    }
   },
   "storage_devices": [
     {
+      "by_id": "/dev/disk/by-id/wwn-0x6f402700aeff440024a3cc780477d47a",
+      "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0",
       "device": "sda",
       "driver": "megaraid_sas",
+      "firmware_version": 4.29,
       "interface": "SATA",
-      "model": "PERC H330",
+      "model": "PERC H330 Adp",
+      "size": 479559942144,
       "storage": "SSD",
       "vendor": "Dell (Raid)"
     }
@@ -67,7 +170,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "graffiti-3"
