@@ -68,6 +68,20 @@ pdus:
           outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
         resolution: 1
   
+  graffiti-pdu[1-4]:
+    vendor: APC
+    model: AP8653
+    sensors:
+     - power:
+        per_outlets: true
+        snmp:
+          available: true
+          total_oids:
+            - iso.3.6.1.4.1.318.1.1.12.1.16.0
+          unit: W
+          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+        resolution: 1
+  
   graoully-pdu1:
     ip: 172.17.79.243
     mac: 00:C0:B7:ED:63:AE
@@ -107,3 +121,19 @@ pdus:
   grvingt-pdu2:
     ip: 172.17.79.221
     mac: 00:C0:B7:E2:B6:68
+
+  graffiti-pdu1:
+    ip: 172.17.79.226
+    mac: 28:29:86:0B:3B:06
+
+  graffiti-pdu2:
+    ip: 172.17.79.227
+    mac: 28:29:86:10:0E:8C
+
+  graffiti-pdu3:
+    ip: 172.17.79.228
+    mac: 28:29:86:12:27:FF
+
+  graffiti-pdu4:
+    ip: 172.17.79.229
+    mac: 28:29:86:10:0E:B4
