@@ -14,6 +14,23 @@ graphique-3:
     manufacturer: Dell Inc.
     name: PowerEdge R730
     serial: 9ZTRV42
+  gpu_devices:
+    nvidia0:
+      cpu_affinity: 0
+      device: "/dev/nvidia0"
+      memory: 4043000000
+      model: GeForce GTX 980
+      power_default_limit: 180.00 W
+      vbios_version: 84.04.2F.00.18
+      vendor: Nvidia
+    nvidia1:
+      cpu_affinity: 1
+      device: "/dev/nvidia1"
+      memory: 4043000000
+      model: GeForce GTX 980
+      power_default_limit: 180.00 W
+      vbios_version: 84.04.2F.00.18
+      vendor: Nvidia
   main_memory:
     ram_size: 68719476736
   network_adapters:
@@ -97,6 +114,5 @@ graphique-3:
       firmware_version: 4.24
       model: PERC H330
       size: 299439751168
-
   supported_job_types:
     virtual: ivt

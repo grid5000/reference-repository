@@ -14,6 +14,23 @@ chifflot-1:
     manufacturer: Dell Inc.
     name: PowerEdge R740
     serial: 43ZLYQ2
+  gpu_devices:
+    nvidia0:
+      cpu_affinity: 0
+      device: "/dev/nvidia0"
+      memory: 16280000000
+      model: Tesla P100-PCIE-16GB
+      power_default_limit: 250.00 W
+      vbios_version: 86.00.4D.00.01
+      vendor: Nvidia
+    nvidia1:
+      cpu_affinity: 1
+      device: "/dev/nvidia1"
+      memory: 16280000000
+      model: Tesla P100-PCIE-16GB
+      power_default_limit: 250.00 W
+      vbios_version: 86.00.4D.00.01
+      vendor: Nvidia
   main_memory:
     ram_size: 206158430208
   network_adapters:
@@ -104,41 +121,35 @@ chifflot-1:
       firmware_version: SCV1DL58
       model: SSDSC2KG480G7R
       size: 480103981056
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x55cd2e414f2b5341"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:1:0"
       firmware_version: SCV1DL58
       model: SSDSC2KG480G7R
       size: 480103981056
-
     sdc:
       by_id: "/dev/disk/by-id/wwn-0x5000c500a64e236f"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:2:0"
       firmware_version: DT31
       model: ST4000NM0295
       size: 4000787030016
-
     sdd:
       by_id: "/dev/disk/by-id/wwn-0x5000c500a64d9e47"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:3:0"
       firmware_version: DT31
       model: ST4000NM0295
       size: 4000787030016
-
     sde:
       by_id: "/dev/disk/by-id/wwn-0x5000c500a64e447b"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:4:0"
       firmware_version: DT31
       model: ST4000NM0295
       size: 4000787030016
-
     sdf:
       by_id: "/dev/disk/by-id/wwn-0x5000c500a64df333"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:5:0"
       firmware_version: DT31
       model: ST4000NM0295
       size: 4000787030016
-
   supported_job_types:
     virtual: ivt
