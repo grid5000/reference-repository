@@ -14,6 +14,23 @@ graphique-1:
     manufacturer: Dell Inc.
     name: PowerEdge R730
     serial: BYGMJ32
+  gpu_devices:
+    nvidia0:
+      cpu_affinity: 0
+      device: "/dev/nvidia0"
+      memory: 6083000000
+      model: GeForce GTX TITAN Black
+      power_default_limit: 250.00 W
+      vbios_version: 80.80.4E.00.90
+      vendor: Nvidia
+    nvidia1:
+      cpu_affinity: 1
+      device: "/dev/nvidia1"
+      memory: 6083000000
+      model: GeForce GTX TITAN Black
+      power_default_limit: 250.00 W
+      vbios_version: 80.80.4E.00.90
+      vendor: Nvidia
   main_memory:
     ram_size: 68719476736
   network_adapters:
@@ -97,6 +114,5 @@ graphique-1:
       firmware_version: 4.24
       model: PERC H330
       size: 299439751168
-
   supported_job_types:
     virtual: ivt

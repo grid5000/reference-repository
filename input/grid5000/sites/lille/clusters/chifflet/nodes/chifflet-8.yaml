@@ -14,6 +14,23 @@ chifflet-8:
     manufacturer: Dell Inc.
     name: PowerEdge R730
     serial: 5QP8LG2
+  gpu_devices:
+    nvidia0:
+      cpu_affinity: 0
+      device: "/dev/nvidia0"
+      memory: 11178000000
+      model: GeForce GTX 1080 Ti
+      power_default_limit: 250.00 W
+      vbios_version: 86.02.39.00.01
+      vendor: Nvidia
+    nvidia1:
+      cpu_affinity: 1
+      device: "/dev/nvidia1"
+      memory: 11178000000
+      model: GeForce GTX 1080 Ti
+      power_default_limit: 250.00 W
+      vbios_version: 86.02.39.00.01
+      vendor: Nvidia
   main_memory:
     ram_size: 824633720832
   network_adapters:
@@ -86,27 +103,23 @@ chifflet-8:
       firmware_version: AM04
       model: PX04SMB040
       size: 400088457216
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x500003973c8a1a91"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       firmware_version: AM04
       model: PX04SMB040
       size: 400088457216
-
     sdc:
       by_id: "/dev/disk/by-id/wwn-0x500003973be828f3"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:2:0"
       firmware_version: FJ2D
       model: TOSHIBA MG04ACA4
       size: 4000787030016
-
     sdd:
       by_id: "/dev/disk/by-id/wwn-0x500003973be828e8"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0"
       firmware_version: FJ2D
       model: TOSHIBA MG04ACA4
       size: 4000787030016
-
   supported_job_types:
     virtual: ivt
