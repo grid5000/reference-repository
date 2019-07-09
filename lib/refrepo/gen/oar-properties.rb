@@ -673,7 +673,7 @@ def generate_oar_properties(options)
           when 2
             # Give more details
             if header == false
-              puts "Output format: ['~', 'key', 'old value', 'new value']"
+              puts "Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed"
               header = true
             end
             if diff.empty?
