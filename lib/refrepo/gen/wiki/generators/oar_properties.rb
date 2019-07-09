@@ -43,6 +43,10 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The ID of the CPU the resource is part of. The unique scope is the OAR server. ",
       "possible_values" => "1, 2, 3, ..."
     },
+    "gpu" => {
+      "description" => "The ID of the GPU the resource is part of. The unique scope is the OAR server. ",
+      "possible_values" => "1, 2, 3, ..."
+    },
     "host" => {
       "description" => "A user-friendly name for the network_address property",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
