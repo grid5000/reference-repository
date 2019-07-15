@@ -95,7 +95,7 @@ def generate_reference_api
     grid_path = Pathname.new(refapi_path)
     grid_path.mkpath()
 
-    write_json(grid_path.join("#{global_hash['uid']}.json"), 
+    write_json(grid_path.join("#{global_hash['uid']}.json"),
                global_hash.reject {|k, v| k == "sites" || k == "network_equipments" || k == "disk_vendor_model_mapping"})
   end
 
@@ -128,7 +128,7 @@ def generate_reference_api
     site_path = Pathname.new(refapi_path).join("sites", site_uid)
     site_path.mkpath()
 
-    write_json(site_path.join("#{site_uid}.json"), 
+    write_json(site_path.join("#{site_uid}.json"),
                site.reject {|k, v| k == "clusters" || k == "networks" || k == "pdus" || k == "dom0" || k == "laptops" || k == "servers" })
 
     #
@@ -189,7 +189,7 @@ def generate_reference_api
 
       # On the previous version of this script, cluster["created_ad"] was generated from a Ruby Time. cluster["created_ad"] is now a Ruby Date at JSON import.
       # As Date.httpdate and Time.httpdate does not behave the same with timezone, it is converted here as a Ruby time.
-      cluster["created_at"] = Time.parse(cluster["created_at"].to_s).httpdate
+      cluster["created_at"] = Date.parse(cluster["created_at"].to_s).httpdate
 
       cluster_path = Pathname.new(refapi_path).join("sites", site_uid, "clusters", cluster_uid)
       cluster_path.mkpath()
@@ -224,7 +224,7 @@ def generate_reference_api
 
           # Delete keys
           #raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
-          Hash(node["storage_devices"]).keys.each { |key| 
+          Hash(node["storage_devices"]).keys.each { |key|
             node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")
             node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
           }

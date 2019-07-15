@@ -6,19 +6,22 @@ def get_network_info(node_hash, network_interface)
   # For the production network, find the mounted interface (either eth0 or eth1)
   neti = network_interface
   if neti == "eth" then
-    (0..5).each {|i|
-      if node_network_adapters.fetch("eth#{i}").fetch("mounted")
-        neti = "eth#{i}"
-        break
-      end
-    }
-    raise 'none of the eth[0-4] interfaces have the property "mounted" set to "true"' if neti == 'eth'
+    neti = node_network_adapters.select { |i| i['device'] =~ /eth/ and i['mounted'] }[0]['device']
+    unless neti
+      raise 'none of the eth[0-4] interfaces have the property "mounted" set to "true"' if neti == 'eth'
+    end
   end
 
-  node_network_interface = node_network_adapters.fetch(neti)
+  node_network_interface = nil
+  case node_network_adapters
+  when Array
+    node_network_interface = node_network_adapters.select { |i| i['device'] == neti }[0]
+  when Hash
+    node_network_interface = node_network_adapters[neti]
+  end
 
-  node_mac = node_network_interface.fetch("mac")
-  node_ip  = node_network_interface.fetch("ip")
+  node_mac = node_network_interface.fetch('mac')
+  node_ip  = node_network_interface.fetch('ip')
 
   raise '"mac" is nil' unless node_mac
   raise '"ip" is nil'  unless node_ip
@@ -39,7 +42,7 @@ def write_dhcp_file(data, options)
 end
 
 def generate_puppet_dhcpg5k(options)
-  global_hash = load_yaml_file_hierarchy
+  global_hash = load_data_hierarchy
 
 
   puts "Writing DHCP configuration files to: #{options[:output_dir]}"
@@ -62,10 +65,12 @@ def generate_puppet_dhcpg5k(options)
         next if node_hash == nil || node_hash['status'] == 'retired'
 
         if node_hash['mic'] && node_hash['mic']['ip'] && node_hash['mic']['mac']
-          node_hash['network_adapters'] ||= {}
-          node_hash['network_adapters']['mic0'] ||= {}
-          node_hash['network_adapters']['mic0']['ip']  = node_hash['mic'].delete('ip')
-          node_hash['network_adapters']['mic0']['mac'] = node_hash['mic'].delete('mac')
+          node_hash['network_adapters'] ||= []
+          node_hash['network_adapters'].push({
+                                               'device' => 'mic0',
+                                               'ip'=> node_hash['mic'].delete('ip'),
+                                               'mac' => node_hash['mic'].delete('mac')
+                                             })
         end
       }
     }
@@ -74,7 +79,6 @@ def generate_puppet_dhcpg5k(options)
     site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
       # networks = ["eth", "bmc"]
       # networks << 'mic0' if cluster_hash['nodes'].values.any? {|x| x['network_adapters']['mic0'] }
-
       write_dhcp_file({
         "filename"            => "cluster-" + cluster_uid + ".conf",
         "site_uid"            => site_uid,
@@ -84,9 +88,6 @@ def generate_puppet_dhcpg5k(options)
       }, options)
     }
 
-    #
-    #
-    #
 
     # Other dhcp files
     ["networks", "laptops", "servers"].each { |key|

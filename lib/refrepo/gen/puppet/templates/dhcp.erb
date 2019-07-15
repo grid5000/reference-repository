@@ -8,7 +8,7 @@
   data.fetch('network_adapters').each { |network_interface|
     dhcp_entries = []
 
-    data.fetch('nodes').each_sort_by_node_uid { |node_uid, node| 
+    data.fetch('nodes').each_sort_by_node_uid { |node_uid, node|
       next if node == nil || (node['status'] && node['status'] == 'retired')
 
       case network_interface
@@ -30,7 +30,6 @@
         next
       end
     }
-
     if not dhcp_entries.empty?
 %>
 group {
