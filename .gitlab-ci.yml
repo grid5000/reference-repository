@@ -7,17 +7,16 @@ rubocop:
   stage: validate
   tags:
    - grid5000-docker
-  image: debian:stretch
+  image: debian:buster
   script:
-      - echo "deb http://deb.debian.org/debian/ stretch-backports main" >> /etc/apt/sources.list.d/stretch-backports.list
-      - apt-get update && apt-get -y install rubocop/stretch-backports
+      - apt-get update && apt-get -y install rubocop
       - rubocop --fail-level W
 
 validate-data:
    stage: validate
    tags:
     - grid5000-docker
-   image: debian:stretch
+   image: debian:buster
    script:
     - apt-get update && apt-get -y install ruby rake ruby-hashdiff ruby-ipaddress wget
     - gem install hash_validator
@@ -32,7 +31,7 @@ generate-reference-api:
    stage: generate
    tags:
     - grid5000-docker
-   image: debian:stretch
+   image: debian:buster
    script:
     - apt-get update && apt-get -y install ruby rake ruby-hashdiff git ruby-ipaddress
     - gem install hash_validator
