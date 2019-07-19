@@ -35,6 +35,21 @@ nancy:
   graphique-[1-2]:
     - ~gpu.gpu_model
     - ~gpu.gpu_cores
+    - ~gpu_devices.nvidia0.vbios_version
+    - ~gpu_devices.nvidia0.memory
+    - ~gpu_devices.nvidia0.power_default_limit
+    - ~gpu_devices.nvidia0.model
+    - ~gpu_devices.nvidia1.vbios_version
+    - ~gpu_devices.nvidia1.memory
+    - ~gpu_devices.nvidia1.power_default_limit
+    - ~gpu_devices.nvidia1.model
+  graphique-[3-4]:
+    - ~gpu_devices.nvidia1.vbios_version
+  graphique-[4-5]:
+    - ~gpu_devices.nvidia0.vbios_version
+    - ~gpu_devices.nvidia1.vbios_version
+  graphique-[5-6]:
+    - ~gpu_devices.nvidia0.vbios_version
   grisou-49:
     - -kavlan.eth4
     - ~network_adapters.eth4.enabled
