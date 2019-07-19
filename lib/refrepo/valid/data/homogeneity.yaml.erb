@@ -21,7 +21,17 @@ lille:
   chifflot-[6-7]:
     - ~gpu.gpu_model
     - ~gpu.gpu_cores
+    - ~gpu_devices.nvidia0.vbios_version
+    - ~gpu_devices.nvidia0.memory
+    - ~gpu_devices.nvidia0.model
+    - ~gpu_devices.nvidia1.vbios_version
+    - ~gpu_devices.nvidia1.memory
+    - ~gpu_devices.nvidia1.model
 nancy:
+  graffiti-[1-3]:
+    - ~gpu_devices.nvidia1.vbios_version
+    - ~gpu_devices.nvidia2.vbios_version
+    - ~gpu_devices.nvidia3.vbios_version
   graphique-[1-2]:
     - ~gpu.gpu_model
     - ~gpu.gpu_cores
