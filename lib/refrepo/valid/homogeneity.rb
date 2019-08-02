@@ -177,8 +177,8 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
     count[site_uid] = {}
 
     site["clusters"].sort.each do |cluster_uid, cluster|
-      next if options.key?(:clusters) && !options[:clusters].include?(cluster_uid)
-
+      next if options.key?(:clusters) &&
+        !(options[:clusters].include?(cluster_uid) || options[:clusters].empty?)
       count[site_uid][cluster_uid] = 0
 
       refnode_uid = nil
