@@ -98,7 +98,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['ib'] = ib_map[h['ib_rate']]
 
   puts "#{node_uid}: Warning - no rate info for the ib interface" if h['ib_count'] > 0 && h['ib_rate'] == 0
-  
+
   # OMNIPATH
   ni_mountable = node['network_adapters'].select { |na| /^ib[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'Omni-Path' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
@@ -349,10 +349,10 @@ def diff_properties(type, properties_oar, properties_ref)
     properties_ref.delete('state')
   elsif type == 'default' && properties_ref.size == 1
     # For dead nodes, when information is missing from the reference-repo, only enforce the 'state' property and ignore other differences.
-    return HashDiff.diff({'state' => properties_oar['state']}, {'state' => properties_ref['state']})
+    return Hashdiff.diff({'state' => properties_oar['state']}, {'state' => properties_ref['state']})
   end
 
-  return HashDiff.diff(properties_oar, properties_ref)
+  return Hashdiff.diff(properties_oar, properties_ref)
 end
 
 # These keys will not be created neither compared with the -d option
@@ -550,7 +550,7 @@ def ssh_exec(cmds, options, site_uid)
       end
 
       cmds.each { |cmd|
-        channel.send_data cmd 
+        channel.send_data cmd
       }
       channel.eof!
     }
@@ -696,7 +696,7 @@ def generate_oar_properties(options)
         end
       end
 
-      # Get the list of property keys from the OAR scheduler (['oar'])   
+      # Get the list of property keys from the OAR scheduler (['oar'])
       properties_keys['oar'][site_uid] = get_property_keys(properties['oar'][site_uid])
 
       # Build the list of properties that must be created in the OAR server
