@@ -4,8 +4,8 @@ model: Dell PowerEdge R730
 created_at: 2016-08-30
 kavlan: true
 queues:
-  - production
   - admin
+  - production
 
 nodes:
 # Global node properties
@@ -16,9 +16,6 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-      queues:
-      - admin
-      - production
     gpu:
       gpu: true
       gpu_count: 2

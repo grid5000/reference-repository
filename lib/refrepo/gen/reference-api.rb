@@ -222,6 +222,8 @@ def generate_reference_api
 
           node["main_memory"] = {} unless node.key?("main_memory")
 
+          node['supported_job_types']['queues'] = cluster['queues'] unless node['supported_job_types'].key?('queues')
+
           # Delete keys
           #raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
           Hash(node["storage_devices"]).keys.each { |key|

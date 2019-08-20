@@ -4,18 +4,15 @@ model: Dell PowerEdge R730
 created_at: 2017-06-26
 kavlan: true
 queues:
-  - production
   - admin
-  
+  - production
+
 nodes:
 # Global node properties
   grele-[1-14]:
     supported_job_types:
       deploy: true
       besteffort: true
-      queues:
-        - admin
-        - production
     performance:
       core_flops: 15690000000
       node_flops: 398100000000
@@ -49,7 +46,7 @@ nodes:
         mounted: false
       bmc:
         enabled: true
-        mountable: false    
+        mountable: false
         mounted: false
         interface: Ethernet
       ib0:
