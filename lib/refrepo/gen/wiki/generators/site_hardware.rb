@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'refrepo/gpu_ref'
+
 class SiteHardwareGenerator < WikiGenerator
 
   def initialize(page_name, site)
@@ -316,9 +318,25 @@ def get_hardware(sites)
           s
         end.join('<br />')
 
-        gpu = node_hash['gpu']
-        hard['gpu_str'] = if gpu && gpu['gpu']
-                            (gpu['gpu_count'].to_i == 1 ? '' : gpu['gpu_count'].to_s + '&nbsp;x&nbsp;') + gpu['gpu_vendor'].to_s + ' ' + gpu['gpu_model'].to_s.gsub(' ', '&nbsp;')
+        lgpu = node_hash['gpu_devices']
+        hard['gpu_str'] = if lgpu
+                            bymodel = {}
+                            lgpu.each { |g|
+                              d = g[1]
+                              vendor = d['vendor']
+                              model = GPURef.getGrid5000LegacyNameFor(d['model'])
+                              vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;')
+                              if bymodel[vm]
+                                bymodel[vm] += 1
+                              else
+                                bymodel[vm] = 1
+                              end
+                            }
+                            res = []
+                            bymodel.each { |model,count|
+                              res << (count == 1 ? '' : count.to_s + '&nbsp;x&nbsp;') + model
+                            }
+                            res.join(", ")
                           else
                             ''
                           end

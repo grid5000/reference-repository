@@ -39,8 +39,8 @@ class G5KHardwareGenerator < WikiGenerator
           next if node_hash['status'] == 'retired'
           nodes += 1
           cores += node_hash['architecture']['nb_cores']
-          if node_hash['gpu'] and node_hash['gpu']['gpu_count']
-            gpus += node_hash['gpu']['gpu_count']
+          if node_hash['gpu_devices']
+            gpus += node_hash['gpu_devices'].length
           end
           ssds += node_hash['storage_devices'].select { |d| d['storage'] == 'SSD' }.length
           hdds += node_hash['storage_devices'].select { |d| d['storage'] == 'HDD' }.length
@@ -154,22 +154,45 @@ class G5KHardwareGenerator < WikiGenerator
             }
 
             # Accelerators
-            g = node_hash['gpu']
             m = node_hash['mic']
 
-            gpu_families = {}
-            gpu_families[[g['gpu_vendor']]] = g['gpu_count'] if g and g['gpu']
             mic_families = {}
             mic_families[[m['mic_vendor']]] = m['mic_count'] if m and m['mic']
+            mic_details = {}
+            mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
+
+            lg = node_hash['gpu_devices']
+            gpu_families = {}
+            gpu_details = {}
+            unless lg.nil?
+              lg.each { |g|
+                d = g[1]
+                vendor = d['vendor']
+                cmodel = d['model']
+                model = GPURef.getGrid5000LegacyNameFor(cmodel)
+                nbcores = GPURef.getNumberOfCoresFor(cmodel)
+
+                family = gpu_families[[vendor]]
+                if family.nil?
+                  gpu_families[[vendor]] = 1
+                else
+                  gpu_families[[vendor]] += 1
+                end
+
+                details = gpu_details[["#{vendor} #{model}"]]
+
+                if details.nil?
+                  gpu_details[["#{vendor} #{model}"]] = [1, nbcores]
+                else
+                  gpu_details[["#{vendor} #{model}"]] = [details[0]+1, details[1]+nbcores]
+                end
+              }
+            end
+
             gpu_families.merge(mic_families).sort.to_h.each { |k, v|
               init(data, 'acc_families', k)
               data['acc_families'][k][site_uid] += v
             }
-
-            gpu_details = {}
-            gpu_details[["#{g['gpu_vendor']} #{g['gpu_model']}"]] = [g['gpu_count'], g['gpu_cores']] if g and g['gpu']
-            mic_details = {}
-            mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
 
             gpu_details.merge(mic_details).sort.to_h.each { |k, v|
               init(data, 'acc_models', k)

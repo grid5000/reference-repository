@@ -3,6 +3,7 @@
 require 'hashdiff'
 require 'refrepo/data_loader'
 require 'net/ssh'
+require 'refrepo/gpu_ref'
 
 class MissingProperty < StandardError; end
 
@@ -125,9 +126,10 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['memcpu'] = node['main_memory']['ram_size'] / node['architecture']['nb_procs']/MiB
   h['memnode'] = node['main_memory']['ram_size'] / MiB
 
-  if node.key?('gpu') && node['gpu']['gpu'] == true
-    h['gpu_model'] = node['gpu']['gpu_model']
-    h['gpu_count'] = node['gpu']['gpu_count']
+  if node.key?('gpu_devices')
+    # This forbids a node to host different GPU models ...
+    h['gpu_model'] = GPURef.getGrid5000LegacyNameFor(node['gpu_devices'].values[0]['model'])
+    h['gpu_count'] = node['gpu_devices'].length
   else
     h['gpu_model'] = false
     h['gpu_count'] = 0
