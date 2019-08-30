@@ -29,14 +29,31 @@ nodes:
     network_adapters:
       eth0:
         mounted: true
+        mountable: true
+        enabled: true
+        bridged: true
+        kavlan: true
       eth1:
         mounted: false
+        bridged: false
+        enabled: false
+        mountable: false
       eth2:
         mounted: false
+        bridged: false
+        enabled: false
+        mountable: false
       eth3:
         mounted: false
+        bridged: false
+        enabled: false
+        mountable: false
       bmc:
         mounted: false
+        mountable: false
+        enabled: true
+        bridged: false
+        interface: Ethernet
       ib0:
         mounted: true
         enabled: true
