@@ -747,6 +747,10 @@ def generate_oar_properties(options)
       cmd << oarcmd_create_helper_functions
       cmd << oarcmd_separator
 
+      # Make sure the host property is created (for a new site),
+      # because it is needed by the node_exist helper function
+      cmd << "property_exist host || oarproperty -a host --varchar\n\n" 
+
       # Create properties keys
       properties_keys[opt][site_uid].delete_if { |k, _v| ignore_default_keys.include?(k) }
       unless properties_keys[opt][site_uid].empty?
