@@ -193,7 +193,7 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
           next
         end
 
-        diffs = Hashdiff.diff(refnode, node)
+        diffs = HashDiff.diff(refnode, node)
 
         # Hack HashDiff output for arrays:
         #[["-", "pdu[1]", {"uid"=>"graphene-pdu9", "port"=>24}],
