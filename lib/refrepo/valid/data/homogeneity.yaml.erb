@@ -63,10 +63,6 @@ nancy:
     - ~network_adapters.eth4.enabled
     - ~network_adapters.eth4.mountable
     - +network_adapters.ib0
-  # Delete grvingt exception after fixing bug #10707
-  grvingt-[1-64]:
-    - ~bios.release_date
-    - ~bios.version
 nantes:
   econome-[1-22]:
     - +network_adapters.eth2.rate
