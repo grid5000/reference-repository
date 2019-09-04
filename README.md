@@ -26,7 +26,7 @@ See also:
 We use bundler to manage dependencies.
 
 ```
-apt install bundler
+apt install bundler # or gem install bundler -v 1.17.3
 bundler install --standalone # this installs dependencies in the 'bundle' directory
 rake reference-api # or other commands
 ```

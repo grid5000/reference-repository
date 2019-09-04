@@ -19,7 +19,7 @@ validate-data:
    image: debian:buster
    script:
     - apt-get update && apt-get -y install ruby ruby-dev build-essential rake wget
-    - gem install bundler
+    - gem install bundler -v 1.17.3
     - bundle install
       # Add G5K CA certificate
     - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
@@ -35,7 +35,7 @@ generate-reference-api:
    image: debian:buster
    script:
     - apt-get update && apt-get -y install ruby ruby-dev build-essential rake git
-    - gem install bundler
+    - gem install bundler -v 1.17.3
     - bundle install
     - export TZ=Europe/Paris
     - rake reference-api
