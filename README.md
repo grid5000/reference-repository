@@ -21,6 +21,17 @@ See also:
 * .gitlab-ci.yml, that automates various checks and the deployment of data files after each commit
 * doc/README.generators.md
 
+# Setup
+
+We use bundler to manage dependencies.
+
+```
+apt install bundler
+bundler install --standalone # this installs dependencies in the 'bundle' directory
+rake reference-api # or other commands
+```
+
+
 # Credentials
 
 all tools that require to authenticate against Grid'5000 use credentials from ~/.grid5000_api.yml. Example:
