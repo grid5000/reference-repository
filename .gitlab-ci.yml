@@ -18,8 +18,9 @@ validate-data:
     - grid5000-docker
    image: debian:buster
    script:
-    - apt-get update && apt-get -y install ruby rake ruby-hashdiff ruby-ipaddress wget
-    - gem install hash_validator
+    - apt-get update && apt-get -y install ruby ruby-dev build-essential rake wget
+    - gem install bundler
+    - bundle install
       # Add G5K CA certificate
     - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
     - /usr/sbin/update-ca-certificates
@@ -33,8 +34,9 @@ generate-reference-api:
     - grid5000-docker
    image: debian:buster
    script:
-    - apt-get update && apt-get -y install ruby rake ruby-hashdiff git ruby-ipaddress
-    - gem install hash_validator
+    - apt-get update && apt-get -y install ruby ruby-dev build-essential rake git
+    - gem install bundler
+    - bundle install
     - export TZ=Europe/Paris
     - rake reference-api
     - git status
