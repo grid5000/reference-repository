@@ -1,0 +1,48 @@
+---
+model: Dell PowerEdge R640
+created_at: 2019-09-04
+kavlan: false
+queues:
+  - admin
+  - testing
+nodes:
+  gros-[1-124]:
+    processor:
+      microarchitecture: Cascade Lake-SP
+    supported_job_types:
+       deploy: true
+       besteffort: false
+       max_walltime: 0
+       queues:
+         - admin
+         - testing
+    performance:
+      core_flops: 0
+      node_flops: 0
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        bridged: true
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        bridged: true
+        enabled: true
+        mountable: true
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+        model: PERC H330
+      sdb:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+        model: PERC H330
