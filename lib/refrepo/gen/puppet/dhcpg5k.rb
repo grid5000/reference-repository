@@ -1,6 +1,6 @@
-# Get the mac and ip of a node. Throw exception if error.
+# Get the mac, ipv4, ipv6 of a node. Throw exception if error.
 def get_network_info(node_hash, network_interface)
-  # Get node_hash["network_adapters"][network_interface]["ip"] and node_hash["network_adapters"][network_interface]["mac"]
+  # Get node_hash["network_adapters"][network_interface]["ip"], node_hash["network_adapters"][network_interface]["ip6"] and node_hash["network_adapters"][network_interface]["mac"]
   node_network_adapters = node_hash.fetch("network_adapters")
 
   # For the production network, find the mounted interface (either eth0 or eth1)
@@ -21,24 +21,28 @@ def get_network_info(node_hash, network_interface)
   end
 
   node_mac = node_network_interface.fetch('mac')
-  node_ip  = node_network_interface.fetch('ip')
+  node_ipv4 = node_network_interface.fetch('ip')
+  node_ipv6 = node_network_interface.fetch('ip6', nil)
 
-  raise '"mac" is nil' unless node_mac
-  raise '"ip" is nil'  unless node_ip
+  raise '"mac" is nil'  unless node_mac
+  raise '"ip" is nil'   unless node_ipv4
+  #raise '"ipv6" is nil' unless node_ipv6 # commented right now, we don't yet impose ipv6 for everything
 
-  return [node_ip, node_mac]
+  return [node_ipv4, node_ipv6, node_mac]
 end
 
-def write_dhcp_file(data, options)
+def write_dhcp_files(data, options)
   if data["nodes"].nil?
     puts "Error in #{__method__}: no entry for \"#{data['filename']}\" at #{data['site_uid']} (#{data['network_adapters']})."
     return ""
   end
 
-  output = ERB.new(File.read(File.expand_path('templates/dhcp.erb', File.dirname(__FILE__)))).result(binding)
-  output_file = Pathname("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/dhcp/#{data.fetch("site_uid")}/#{data.fetch('filename')}")
-  output_file.dirname.mkpath()
-  File.write(output_file, output)
+  ["dhcp", "dhcpv6"].each { |dhcpkind|
+    output = ERB.new(File.read(File.expand_path("templates/dhcp.erb", File.dirname(__FILE__)))).result(binding)
+    output_file = Pathname("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/#{dhcpkind}/#{data.fetch("site_uid")}/#{data.fetch('filename')}")
+    output_file.dirname.mkpath()
+    File.write(output_file, output)
+  }
 end
 
 def generate_puppet_dhcpg5k(options)
@@ -79,7 +83,7 @@ def generate_puppet_dhcpg5k(options)
     site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
       # networks = ["eth", "bmc"]
       # networks << 'mic0' if cluster_hash['nodes'].values.any? {|x| x['network_adapters']['mic0'] }
-      write_dhcp_file({
+      write_dhcp_files({
         "filename"            => "cluster-" + cluster_uid + ".conf",
         "site_uid"            => site_uid,
         "nodes"               => cluster_hash.fetch('nodes'),
@@ -91,7 +95,7 @@ def generate_puppet_dhcpg5k(options)
 
     # Other dhcp files
     ["networks", "laptops", "servers"].each { |key|
-      write_dhcp_file({
+      write_dhcp_files({
         "filename"            => key + ".conf",
         "site_uid"            => site_uid,
         "nodes"               => site_hash[key],
@@ -116,7 +120,7 @@ def generate_puppet_dhcpg5k(options)
       }
 
       key = 'pdus'
-      write_dhcp_file({
+      write_dhcp_files({
         "filename"            => key + ".conf",
         "site_uid"            => site_uid,
         "nodes"               => site_hash['pdus'],

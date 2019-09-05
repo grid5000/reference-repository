@@ -18,10 +18,11 @@
           uid_net = node_uid
       end
 
-      # Get ip and mac addresses
+      # Get ipv4, ipv6 and mac addresses
       begin
-        ip, mac = get_network_info(node, network_interface)
-        dhcp_entries.push({ 'uid_net' => uid_net, 'ip' => ip, 'mac' => mac })
+        ipv4, ipv6, mac = get_network_info(node, network_interface)
+        next if dhcpkind == 'dhcpv6' && ipv6 == nil
+        dhcp_entries.push({ 'uid_net' => uid_net, 'ipv4' => ipv4, 'ipv6' => ipv6, 'mac' => mac })
       rescue => e
         next if data.fetch('optional_network_adapters').include?(network_interface)
 
@@ -36,7 +37,7 @@ group {
 <% dhcp_entries.each {|node| %>
   host <%= node['uid_net'] %> {
     hardware ethernet       <%= node['mac'].upcase %>;
-    fixed-address           <%= node['ip']         %>;
+    fixed-address           <%= dhcpkind == 'dhcpv6' ? node['ipv6'] : node['ipv4'] %>;
   }
 <%    } %>
 }
