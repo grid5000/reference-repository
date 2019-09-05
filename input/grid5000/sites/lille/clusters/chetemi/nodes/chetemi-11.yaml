@@ -23,7 +23,7 @@ chetemi-11:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x800007f4'
+      firmware_version: 0x800007f4, 17.5.10
       interface: Ethernet
       ip: 172.16.37.11
       mac: 24:6e:96:2c:be:d8
@@ -34,7 +34,7 @@ chetemi-11:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x800007f4'
+      firmware_version: 0x800007f4, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:2c:be:da
       management: false
@@ -86,13 +86,11 @@ chetemi-11:
       firmware_version: VT32
       model: ST300MP0005
       size: 300000000000
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x5000c500982c29ef"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       firmware_version: VT32
       model: ST300MP0005
       size: 300000000000
-
   supported_job_types:
     virtual: ivt
