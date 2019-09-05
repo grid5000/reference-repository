@@ -23,7 +23,7 @@ nova-21:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x800007f5'
+      firmware_version: 0x800007f5, 17.5.10
       interface: Ethernet
       ip: 172.16.52.21
       mac: a0:36:9f:d2:c6:18
@@ -34,7 +34,7 @@ nova-21:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x800007f5'
+      firmware_version: 0x800007f5, 17.5.10
       interface: Ethernet
       mac: a0:36:9f:d2:c6:1a
       management: false
@@ -103,6 +103,5 @@ nova-21:
       firmware_version: 4.26
       model: PERC H330 Mini
       size: 598879502336
-
   supported_job_types:
     virtual: ivt
