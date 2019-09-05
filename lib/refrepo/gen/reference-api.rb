@@ -217,9 +217,6 @@ def generate_reference_api
           end
 
           # Add default keys
-          node["gpu"] = {} unless node.key?("gpu")
-          node["gpu"]["gpu"] ||= false
-
           node["main_memory"] = {} unless node.key?("main_memory")
 
           node['supported_job_types']['queues'] = cluster['queues'] unless node['supported_job_types'].key?('queues')
