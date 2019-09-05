@@ -2,12 +2,20 @@
 
 require 'dns/zone'
 require 'find'
+require 'ipaddr'
 
 #Prettier aligned dump of records
 class DNS::Zone::RR::A
   def dump
     max_pad = 30
-    return "#{@label.ljust(max_pad)} IN A #{' ' * 6 + @address}"
+    return "#{@label.ljust(max_pad)} IN A    #{' ' * 6 + @address}"
+  end
+end
+
+class DNS::Zone::RR::AAAA
+  def dump
+    max_pad = 30
+    return "#{@label.ljust(max_pad)} IN AAAA #{' ' * 6 + @address}"
   end
 end
 
@@ -97,14 +105,21 @@ def get_servers_records(site)
     next if server['network_adapters'].nil?
 
     server['network_adapters'].each { |net_uid, net|
-      next if net['ip'].nil?
-
-      new_record = DNS::Zone::RR::A.new
-      new_record.address = net['ip']
-      new_record.label = server_uid
-      new_record.label += "-#{net_uid}" if net_uid != 'default'
-      records << new_record
-
+      next if net['ip'].nil? && net['ip6'].nil?
+      if net['ip']
+        new_record = DNS::Zone::RR::A.new
+        new_record.address = net['ip']
+        new_record.label = server_uid
+        new_record.label += "-#{net_uid}" if net_uid != 'default'
+        records << new_record
+      end
+      if net['ip6']
+        new_record_ipv6 = DNS::Zone::RR::AAAA.new
+        new_record_ipv6.address = net['ip6']
+        new_record_ipv6.label = server_uid
+        new_record_ipv6.label += "-#{net_uid}" if net_uid != 'default'
+        records << new_record_ipv6
+      end
       if server['alias']
         #Reject global aliases (See 7513)
         server['alias'].reject{ |cname| cname.include?('.') }.each{ |cname|
@@ -126,12 +141,20 @@ def get_pdus_records(site)
 
   site['pdus'].sort.each { |pdu_uid, pdu|
 
-    next unless pdu['ip']
+    next unless pdu['ip'] || pdu['ip6']
 
-    new_record = DNS::Zone::RR::A.new
-    new_record.address = pdu['ip']
-    new_record.label = pdu_uid
-    records << new_record
+    if pdu['ip']
+      new_record = DNS::Zone::RR::A.new
+      new_record.address = pdu['ip']
+      new_record.label = pdu_uid
+      records << new_record
+    end
+    if pdu['ip6']
+      new_record_ipv6 = DNS::Zone::RR::AAAA.new
+      new_record_ipv6.address = pdu['ip6']
+      new_record_ipv6.label = pdu_uid
+      records << new_record_ipv6
+    end
   }
   return records
 end
@@ -152,10 +175,18 @@ def get_networks_records(site, key)
       else
         hostsuffix = ''
       end
-      new_record = DNS::Zone::RR::A.new
-      new_record.address = net_hash['ip']
-      new_record.label = uid + hostsuffix
-      records << new_record
+      if net_hash['ip']
+        new_record = DNS::Zone::RR::A.new
+        new_record.address = net_hash['ip']
+        new_record.label = uid + hostsuffix
+        records << new_record
+      end
+      if net_hash['ip6']
+        new_record_ipv6 = DNS::Zone::RR::AAAA.new
+        new_record_ipv6.address = net_hash['ip6']
+        new_record_ipv6.label = uid + hostsuffix
+        records << new_record_ipv6
+      end
     }
   }
   return records
@@ -167,15 +198,24 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
 
   network_adapters.each { |net_uid, net_hash|
 
-    next unless net_hash['ip']
+    next unless net_hash['ip'] || net_hash['ip6']
 
     node_id = node_uid.to_s.split(/(\d+)/)[1].to_i # node number
 
-    new_record = DNS::Zone::RR::A.new
-    new_record.address = net_hash['ip']
-    new_record.label = "#{cluster_uid}-#{node_id}"
-    new_record.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
-    records << new_record
+    if net_hash['ip']
+      new_record = DNS::Zone::RR::A.new
+      new_record.address = net_hash['ip']
+      new_record.label = "#{cluster_uid}-#{node_id}"
+      new_record.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
+      records << new_record
+    end
+    if net_hash['ip6']
+      new_record_ipv6 = DNS::Zone::RR::AAAA.new
+      new_record_ipv6.address = net_hash['ip6']
+      new_record_ipv6.label = "#{cluster_uid}-#{node_id}"
+      new_record_ipv6.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
+      records << new_record_ipv6
+    end
 
     if net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
       # CNAME enabled for primary interface (node-id-iface cname node-id)
@@ -227,33 +267,51 @@ end
 
 def get_reverse_record(record, site_uid)
 
-  return unless record.is_a?(DNS::Zone::RR::A)
+  return unless record.is_a?(DNS::Zone::RR::A) || record.is_a?(DNS::Zone::RR::AAAA)
 
-  ip_array = record.address.split(".")
-  file_name = "reverse-#{ip_array[0..2].reverse.join('.')}.db" # 70.16.172
+  if record.is_a?(DNS::Zone::RR::AAAA) # check for AAAA before A because AAAA inherits from A (so an AAAA is also an A)
+    nibble_array = IPAddr.new(record.address).to_string.gsub(':','').split('').reverse
+    # nibble_array indexes:
+    #   0 to 15 = interface part
+    #   16 to 31 = routing part
+    # I choose to split between interface part as PTR label and routing part as constructed domain name
+    # it produces less files than for ipv4 reverse mappings (afaik there is no reason to produce so much individual files)
+    file_name = "reverse6-#{nibble_array[16..31].join('.')}.db"
+    # the filename is reverse6 because we will use it later to sort between ipv4 or ipv6 PTR records
+    reverse_record = DNS::Zone::RR::PTR.new
+    reverse_record.label = nibble_array[0..15].join('.')
+    reverse_record.name = "#{record.label}.#{site_uid}.grid5000.fr."
+    return file_name, reverse_record
+  elsif record.is_a?(DNS::Zone::RR::A)
+    ip_array = record.address.split(".")
+    file_name = "reverse-#{ip_array[0..2].reverse.join('.')}.db" # 70.16.172
 
-  if /.*-kavlan-[1-3]$/.match(record.label)
-    #A filter in bind-global-site.conf.erb prevents entries in 'local' directory to be included in global configuration
-    #TODO later, also add DMZ IPs check here
-    file_name.prepend("local/")
+    if /.*-kavlan-[1-3]$/.match(record.label)
+      #A filter in bind-global-site.conf.erb prevents entries in 'local' directory to be included in global configuration
+      #TODO later, also add DMZ IPs check here
+      file_name.prepend("local/")
+    end
+
+    reverse_record = DNS::Zone::RR::PTR.new
+    reverse_record.label = ip_array[3] #ip suffix
+    reverse_record.name = "#{record.label}.#{site_uid}.grid5000.fr."
+
+    return file_name, reverse_record
   end
-
-  reverse_record = DNS::Zone::RR::PTR.new
-  reverse_record.label = ip_array[3] #ip suffix
-  reverse_record.name = "#{record.label}.#{site_uid}.grid5000.fr."
-
-  return file_name, reverse_record
 end
 
 def sort_records(records)
   sorted_records = []
   cnames = []
   in_a = []
+  in_aaaa = []
   ptr = []
 
   records.each{ |record|
     if (record.is_a?(DNS::Zone::RR::A))
       in_a << record
+    elsif (record.is_a?(DNS::Zone::RR::AAAA))
+      in_aaaa << record
     elsif (record.is_a?(DNS::Zone::RR::CNAME))
       cnames << record
     elsif (record.is_a?(DNS::Zone::RR::PTR))
@@ -266,6 +324,10 @@ def sort_records(records)
     }
   }
   sorted_records += in_a
+  in_aaaa.sort_by!{ |record|
+    IPAddr.new(record).to_string.gsub(':','')
+  }
+  sorted_records += in_aaaa
   ptr.sort_by!{ |record|
     record.name
   }
@@ -458,18 +520,19 @@ def generate_puppet_bindg5k(options)
 
         # Nodes
         node.fetch('network_adapters').each { |net|
-          network_adapters[net['device']] = {"ip" => net["ip"], "mounted" => net["mounted"], 'alias' => net['alias']}
+          network_adapters[net['device']] = {"ip" => net["ip"], "ip6" => net["ip6"], "mounted" => net["mounted"], 'alias' => net['alias']}
         }
 
         # Mic
-        if node['mic'] && node['mic']['ip']
-          network_adapters['mic0'] = {"ip" => node['mic']['ip']}
+        if node['mic'] && (node['mic']['ip'] || node['mic']['ip6'])
+          network_adapters['mic0'] = {"ip" => node['mic']['ip'], "ip6" => node['mic']['ip6']}
         end
 
         site_records[cluster_uid] ||= []
         site_records[cluster_uid] += get_node_records(cluster_uid, node_uid, network_adapters)
 
         # Kavlan
+        #FIXME: need to be adapted for IPv6 at some point. Perhaps with kavlan6 entries in the refapi?
         if node['kavlan']
           kavlan_adapters = {}
           node.fetch('kavlan').each { |net_uid, net_hash|
@@ -503,7 +566,7 @@ def generate_puppet_bindg5k(options)
           reverse_records[reverse_file_name] ||= []
           reverse_records[reverse_file_name].each {|r|
             if r.label == reverse_record.label
-              puts "Warning: reverse entry with IP #{reverse_record.label} already exists in #{reverse_file_name}, #{reverse_record.name} is duplicate"
+              puts "Warning: reverse entry with address #{reverse_record.label} already exists in #{reverse_file_name}, #{reverse_record.name} is duplicate"
             end
           }
           reverse_records[reverse_file_name] << reverse_record
@@ -515,9 +578,15 @@ def generate_puppet_bindg5k(options)
 
     #Sort reverse records and create reverse zone from files
     reverse_records.each{ |file_name, records|
-      records.sort!{ |a, b|
-        a.label.to_i <=> b.label.to_i
-      }
+      if file_name.start_with?('reverse6')
+        records.sort!{ |a, b|
+          a.label.gsub('.','').reverse <=> b.label.gsub('.','').reverse
+        }
+      else
+        records.sort!{ |a, b|
+          a.label.to_i <=> b.label.to_i
+        }
+      end
 
       reverse_file_path = File.join(zones_dir, file_name)
       zone = load_zone(reverse_file_path, site_uid, site, true)
@@ -559,6 +628,7 @@ def generate_puppet_bindg5k(options)
 
     # Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
     Dir.glob(File.join(zones_dir, "reverse-*-manual.db")).each { |reverse_manual_file|
+      #FIXME: need to be adapted for IPv6 at some point
       output_file = reverse_manual_file.sub("-manual.db", ".db")
       next if future_zones.include?(File::basename(output_file)) # the zone is already going to be written
       puts "Creating file for orphan reverse manual file: #{output_file}" if $options[:verbose]
