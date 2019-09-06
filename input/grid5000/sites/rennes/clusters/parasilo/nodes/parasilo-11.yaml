@@ -23,7 +23,7 @@ parasilo-11:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x80000691'
+      firmware_version: 0x80000691, 16.0.24
       interface: Ethernet
       ip: 172.16.97.11
       mac: ec:f4:bb:d0:f7:10
@@ -34,7 +34,7 @@ parasilo-11:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x80000691'
+      firmware_version: 0x80000691, 16.0.24
       interface: Ethernet
       mac: ec:f4:bb:d0:f7:12
       management: false
@@ -86,41 +86,35 @@ parasilo-11:
       firmware_version: LS0A
       model: ST600MM0006
       size: 600127266816
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062ed330f"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       firmware_version: LS0A
       model: ST600MM0006
       size: 600127266816
-
     sdc:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062ea138f"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:2:0"
       firmware_version: LS0A
       model: ST600MM0006
       size: 600127266816
-
     sdd:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062ed25bf"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0"
       firmware_version: LS0A
       model: ST600MM0006
       size: 600127266816
-
     sde:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062ed4bf7"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:4:0"
       firmware_version: LS0A
       model: ST600MM0006
       size: 600127266816
-
     sdf:
       by_id: "/dev/disk/by-id/wwn-0x50000395ec8a0434"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:5:0"
       firmware_version: A4AE
       model: PX02SSF020
       size: 200049647616
-
   supported_job_types:
     virtual: ivt
