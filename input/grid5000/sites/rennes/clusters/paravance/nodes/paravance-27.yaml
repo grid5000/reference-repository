@@ -23,7 +23,7 @@ paravance-27:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x80000691'
+      firmware_version: 0x80000691, 16.0.24
       interface: Ethernet
       ip: 172.16.96.27
       mac: ec:f4:bb:d0:f0:08
@@ -34,7 +34,7 @@ paravance-27:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x80000691'
+      firmware_version: 0x80000691, 16.0.24
       interface: Ethernet
       mac: ec:f4:bb:d0:f0:0a
       management: false
@@ -86,13 +86,11 @@ paravance-27:
       firmware_version: LS0A
       model: ST600MM0006
       size: 600127266816
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x5000c50062eb577b"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       firmware_version: LS0A
       model: ST600MM0006
       size: 600127266816
-
   supported_job_types:
     virtual: ivt
