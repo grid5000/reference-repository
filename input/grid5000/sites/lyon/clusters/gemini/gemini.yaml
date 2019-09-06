@@ -1,0 +1,44 @@
+model: Nvidia DGX-1
+created_at: 2019-09-01
+kavlan: false
+queues:
+  - admin
+  - testing
+nodes:
+  gemini-[1-2]:
+    supported_job_types:
+      deploy: true
+      besteffort: false
+      max_walltime: 0
+      queues:
+        - admin
+        - testing
+    storage_devices:
+      sda:
+        interface: SCSI
+        driver: megaraid_sas
+        storage: HDD
+      sdb:
+        interface: SCSI
+        driver: megaraid_sas
+        storage: HDD
+    performance:
+      core_flops: 0
+      node_flops: 0
+    kavlan: {}
+    processor:
+      microarchitecture: Broadwell
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
