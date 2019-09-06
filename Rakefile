@@ -127,29 +127,67 @@ namespace :gen do
     exit(ret)
   end
 
-  desc "Generate OAR properties -- parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [NODE={dahu-1,...}] DO={diff,print,update} [VERBOSE={0,1,2,3}]"
+  desc "Generate OAR properties -- parameters: SITE=grenoble CLUSTER={yeti,...} DO={print,table,update,diff} [VERBOSE={0,1,2,3}] [OAR_SERVER=192.168.37.10] [OAR_SERVER_USER=g5kadmin]"
   task "oar-properties" do
+    # Manage oar-properties for a given set of Grid'5000 cluster. The task takes the following parameters
+    # Params:
+    # +SITE+:: Grid'5000 site (Nantes, Nancy, ...).
+    # +CLUSTERS+:: a comma separated list of Grid'5000 clusters (econome, ecotype, ...). This argument is optional:
+    #     if no clusters is provided, the script will be run on each cluster of the specified site.
+    # +Do+:: specify the action to execute:
+    #       - print: computes a mapping (server, cpu, core, gpu) for the given clusters, and shows OAR shell commands
+    #         that would be run on an OAR server to converge to this mapping. This action try to reuse existing OAR
+    #         resource's IDs, by fetching the current state of the OAR database via the OAR REST API (see the
+    #         OAR_API_SERVER and OAR_API_PORT arguments).
+    #       - table: show an ASCII table that illustrates the mapping (server, cpu, core, gpu) computed via action
+    #         "print"
+    #       - update: apply the commands of computed with the "print" task, to a given OAR server (see the OAR_SERVER
+    #         and OAR_SERVER_USER arguments).
+    #       - diff: Compare the mapping (server, cpu, core, gpu) computed with action "print", with the existing mapping
+    #         fetched from the OAR REST API (see the OAR_API_SERVER, OAR_API_PORT).
+    # +OAR_SERVER+:: IP address fo the OAR server that will serve as a target of the generator. The generator will
+    #         connect via SSH to this server. By default, it targets the OAR server of the Grid'5000 site.
+    # +OAR_SERVER_USER+:: SSH user that may be used to connect to the OAR server. By default, it targets the OAR server of the Grid'5000 site.
+    # +OAR_API_SERVER+:: IP address fo the server that hosts the OAR API. The generator will use it to understand the
+    #         existing (server, cpu, core, gpu) mapping.
+    # +OAR_API_PORT+:: HTTP port used to connect to the REST API
+
     require 'refrepo/gen/oar-properties'
     options = {}
-    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+
     if ENV['CLUSTER']
       options[:clusters] = ENV['CLUSTER'].split(',')
     end
-    if ENV['NODE']
-      options[:nodes] = ENV['NODE'].split(',')
+    if ENV['SITE']
+      options[:site] = ENV['SITE']
+    else
+      puts "You must specify a site."
+      exit(1)
     end
+
+    if not G5K_SITES.include?(options[:site])
+      puts "Invalid site: #{options[:site]}"
+      exit(1)
+    end
+
     if ENV['OAR_SERVER']
       options[:ssh] ||= {}
       options[:ssh][:host] = ENV['OAR_SERVER']
     end
-    options[:diff] = false
+    if ENV['OAR_SERVER_USER']
+      options[:ssh] ||= {}
+      options[:ssh][:user] = ENV['OAR_SERVER_USER']
+    end
     options[:print] = false
+    options[:diff] = false
     options[:update] = false
+    options[:table] = false
     if ENV['DO']
       ENV['DO'].split(',').each do |t|
-        options[:diff] = true if t == 'diff'
+        options[:table] = true if t == 'table'
         options[:print] = true if t == 'print'
         options[:update] = true if t == 'update'
+        options[:diff] = true if t == 'diff'
       end
     else
       puts "You must specify something to do using DO="

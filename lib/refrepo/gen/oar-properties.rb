@@ -9,6 +9,296 @@ class MissingProperty < StandardError; end
 
 MiB = 1024**2
 
+# CPU distribution can be: round-robin | continuous
+DEFAULT_CPUSET_MAPPING = "continuous"
+
+# GPU distribution can be: round-robin | continuous
+DEFAULT_GPUSET_MAPPING = "continuous"
+
+############################################
+# Functions related to the "TABLE" operation
+############################################
+
+def export_rows_as_formated_line(generated_hierarchy)
+  # Display header
+  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
+  puts "|#{'cluster'.rjust(10)} | #{'host'.ljust(20)} | #{'cpu'.ljust(5)} | #{'core'.ljust(5)} | #{'cpuset'.ljust(8)} | #{'gpu'.ljust(4)} | #{'gpudevice'.ljust(20)} | #{'cpumodel'.ljust(30)} | #{'gpumodel'.ljust(30)}|"
+  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
+
+  oar_rows = generated_hierarchy[:nodes].map{|node| node[:oar_rows]}.flatten
+
+  # Display rows
+  oar_rows.each do |row|
+    cluster = row[:cluster].to_s
+    host = row[:host].to_s
+    cpu = row[:cpu].to_s
+    core = row[:core].to_s
+    cpuset = row[:cpuset].to_s
+    gpu = row[:gpu].to_s
+    gpudevice = row[:gpudevice].to_s
+    cpumodel = row[:cpumodel].to_s
+    gpumodel = row[:gpumodel].to_s
+    puts "|#{cluster.rjust(10)} | #{host.ljust(20)} | #{cpu.ljust(5)} | #{core.ljust(5)} | #{cpuset.ljust(8)} | #{gpu.ljust(4)} | #{gpudevice.ljust(20)} | #{cpumodel.ljust(30)} | #{gpumodel.ljust(30)}|"
+  end
+  # Display footer
+  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
+end
+
+############################################
+# Functions related to the "PRINT" operation
+############################################
+
+# Generates an ASCII separator
+def generate_separators()
+  command = "echo '================================================================================'"
+  return command + "\n"
+end
+
+def generate_create_disk_cmd(host, disk)
+  disk_exist = "disk_exist '#{host}' '#{disk}'"
+  command = "echo; echo 'Adding disk #{disk} on host #{host}:'\n"
+  command += "#{disk_exist} && echo '=> disk already exists'\n"
+  command += "#{disk_exist} || oarnodesetting -a -h '' -p host='#{host}' -p type='disk' -p disk='#{disk}'"
+  return command + "\n\n"
+end
+
+def generate_set_node_properties_cmd(host, default_properties)
+  if not default_properties.nil?
+    return '' if default_properties.size == 0
+    command  = "echo; echo 'Setting properties for #{host}:'; echo\n"
+    command += "oarnodesetting --sql \"host='#{host}' and type='default'\" -p "
+    command += properties_internal(default_properties)
+    return command + "\n\n"
+  else
+    return "echo ; echo 'Not setting properties for #{host}: node is not available in ref-api (retired?)'; echo\n\n"
+  end
+end
+
+def generate_set_disk_properties_cmd(host, disk, disk_properties)
+  return '' if disk_properties.size == 0
+  command = "echo; echo 'Setting properties for disk #{disk} on host #{host}:'; echo\n"
+  command += "oarnodesetting --sql \"host='#{host}' and type='disk' and disk='#{disk}'\" -p "
+  command += disk_properties_internal(disk_properties)
+  return command + "\n\n"
+end
+
+def generate_create_oar_property_cmd(properties_keys)
+  command = ''
+  ignore_keys_list = ignore_default_keys()
+  properties_keys.each do |key, key_type|
+    if ignore_keys_list.include?(key)
+      next
+    end
+    if key_type == Fixnum # rubocop:disable Lint/UnifiedInteger
+      command += "property_exist '#{key}' || oarproperty -a #{key}\n"
+    elsif key_type == String
+      command += "property_exist '#{key}' || oarproperty -a #{key} --varchar\n"
+    else
+      raise "Error: the type of the '#{key}' property is unknown (Integer/String). Cannot generate the corresponding 'oarproperty' command. You must create this property manually ('oarproperty -a #{key} [--varchar]')"
+    end
+  end
+  return command
+end
+
+
+# Generates helper functions:
+#   - property_exist : check if a property exists
+#   - node_exist : check if a node exists
+#   - disk_exist : check if a disk exists
+#
+# and variables which help to add nex resources:
+#   - NEXT_AVAILABLE_CPU_ID : the next identifier that can safely be used for a new cpi
+#   - NEXT_AVAILABLE_CORE_ID : the next identifier that can safely be used for a new core
+def generate_oar_commands_header()
+  return %Q{
+#! /usr/bin/env bash
+
+set -eu
+set -x
+set -o pipefail
+
+echo '================================================================================'
+
+property_exist () {
+  [[ $(oarproperty -l | grep -e "^$1$") ]]
+}
+
+node_exist () {
+  [[ $(oarnodes --sql "host='$1' and type='default'") ]]
+}
+
+disk_exist () {
+  [[ $(oarnodes --sql "host='$1' and type='disk' and disk='$2'") ]]
+}
+
+
+# if [ $(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
+#   NEXT_AVAILABLE_CPU_ID=0
+# else
+#   MAX_CPU_ID=$(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | head -n1)
+#   let "NEXT_AVAILABLE_CPU_ID=MAX_CPU_ID+1"
+# fi
+#
+# if [ $(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
+#   NEXT_AVAILABLE_CORE_ID=0
+# else
+#   MAX_CORE_ID=$(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | head -n1)
+#   let "NEXT_AVAILABLE_CORE_ID=MAX_CORE_ID+1"
+# fi
+}
+end
+
+
+# Ensures that all required OAR properties exists.
+# OAR properties can be divided in two sets:
+#   - properties that were previously created by 'oar_resources_add'
+#   - remaining properties that can be generated from API
+def generate_oar_property_creation(site_name, data_hierarchy)
+
+  #############################################
+  # Create properties that were previously created
+  # by 'oar_resources_add'
+  ##############################################
+  commands = %Q{
+#############################################
+# Create OAR properties that were created by 'oar_resources_add'
+#############################################
+property_exist 'host' || oarproperty -a host --varchar
+property_exist 'cpu' || oarproperty -a cpu
+property_exist 'core' || oarproperty -a core
+property_exist 'gpudevice' || oarproperty -a gpudevice
+property_exist 'gpu' || oarproperty -a gpu
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+
+}
+
+  #############################################
+  # Create remaining properties (from API)
+  #############################################
+  commands += %Q{
+#############################################
+# Create OAR properties if they don't exist
+#############################################
+
+}
+
+  # Fetch oar properties from ref repo
+  # global_hash = load_data_hierarchy
+  global_hash = data_hierarchy
+  site_properties = get_oar_properties_from_the_ref_repo(global_hash, {
+      :sites => [site_name]
+  })[site_name]
+  property_keys = get_property_keys(site_properties)
+
+  # Generate OAR commands for creating properties
+  commands += generate_create_oar_property_cmd(property_keys)
+
+  return commands
+end
+
+
+# Exports a description of OAR ressources as a bunch of "self contained" OAR
+# commands. Basically it does the following:
+#   (0) * It adds an header containing helper functions and detects the next
+#         CPU and CORE IDs that could be used by new OAR resources
+#         (cf "generate_oar_commands_header()")
+#   (0) * It creates OAR properties if they don't already exist (cf "generate_oar_property_creation()")
+#   (1) * It iterates over nodes contained in the 'generated_hierarchy' hash-table
+#   (2)    > * It iterates over the oar resources of the node
+#   (3)         > * If the resource already exists, the CPU and CORE associated to the resource is detected
+#   (4)           * The resource is exported as an OAR command
+#   (5)      * If applicable, create/update the storage devices associated to the node
+def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy)
+
+  result = ""
+
+  # Generate helper functions and detect the next available CPU and CORE IDs for
+  # non exisiting resources
+  result += generate_oar_commands_header()
+
+  # Ensure that OAR properties exist before creating/updating OAR resources
+  result += generate_oar_property_creation(site_name, data_hierarchy)
+
+  # Iterate over nodes of the generated resource hierarchy
+  generated_hierarchy[:nodes].each do |node|
+    result += %Q{
+
+###################################
+# #{node[:fqdn]}
+###################################
+}
+
+    # Iterate over the resources of the OAR node
+    node[:oar_rows].each do |oar_ressource_row|
+      # host = oar_ressource_row[:host].to_s
+      host = oar_ressource_row[:fqdn].to_s
+      cpu = oar_ressource_row[:cpu].to_s
+      core = oar_ressource_row[:core].to_s
+      cpuset = oar_ressource_row[:cpuset].to_s
+      gpu = oar_ressource_row[:gpu].to_s
+      gpudevice = oar_ressource_row[:gpudevice].to_s
+      gpumodel = oar_ressource_row[:gpumodel].to_s
+      gpudevicepath = oar_ressource_row[:gpudevicepath].to_s
+      resource_id = oar_ressource_row[:resource_id]
+
+      if resource_id == -1 or resource_id.nil?
+        # Add the resource to the OAR DB
+        if gpu == ''
+          result += "oarnodesetting -a -h '#{host}' -p host='#{host}' -p cpu=#{cpu} -p core=#{core} -p cpuset=#{cpuset}\n"
+        else
+          result += "oarnodesetting -a -h '#{host}' -p host='#{host}' -p cpu=#{cpu} -p core=#{core} -p cpuset=#{cpuset} -p gpu=#{gpu} -p gpu_model='#{gpumodel}' -p gpudevice=#{gpudevice} # This GPU is mapped on #{gpudevicepath}\n"
+        end
+      else
+        # Update the resource
+        if gpu == ''
+          result += "oarnodesetting --sql \"host='#{host}' AND resource_id='#{resource_id}' AND type='default'\" -p cpu=#{cpu} -p core=#{core} -p cpuset=#{cpuset}\n"
+        else
+          result += "oarnodesetting --sql \"host='#{host}' AND resource_id='#{resource_id}' AND type='default'\" -p cpu=#{cpu} -p core=#{core} -p cpuset=#{cpuset} -p gpu=#{gpu} -p gpu_model='#{gpumodel}' -p gpudevice=#{gpudevice} # This GPU is mapped on #{gpudevicepath}\n"
+        end
+      end
+    end
+
+    # Set the OAR properties of the OAR node
+    result += generate_set_node_properties_cmd(node[:fqdn], node[:default_description])
+
+    # Iterate over storage devices
+    node[:description]["storage_devices"].select{|v| v.key?("reservation") and v["reservation"]}.each do |storage_device|
+      # As <storage_device> is an Array, where the first element is the device name (i.e. sda, sdb, ...),
+      # and the second element is a dictionnary containing information about the storage device,
+      # thus two variables are created:
+      #    - <storage_device_name> : variable that contains the device name (sda, sdb, ...)
+      #    - <storage_device_name_with_hostname> : variable that will be the ID of the storage. It follows this
+      #       pattern : "sda1.ecotype-48"
+      storage_device_name = storage_device["device"]
+      storage_device_name_with_hostname = "#{storage_device_name}.#{node[:name]}"
+
+      # Retried the site propertie that corresponds to this storage device
+      storage_device_oar_properties_tuple = site_properties["disk"].select { |keys| keys.include?(storage_device_name_with_hostname) }.first
+
+      if storage_device_oar_properties_tuple.nil? or storage_device_oar_properties_tuple.size < 2
+        raise "Error: could not find a site properties for disk #{storage_device_name_with_hostname}"
+      end
+      storage_device_oar_properties = storage_device_oar_properties_tuple[1]
+
+      result += generate_separators()
+
+      # Ensure that the storage device exists
+      result += generate_create_disk_cmd(node[:fqdn], storage_device_name_with_hostname)
+
+      # Set the OAR properties associated to this storage device
+      result += generate_set_disk_properties_cmd(node[:fqdn], storage_device_name_with_hostname, storage_device_oar_properties)
+    end
+
+    result += generate_separators()
+  end
+
+  return result
+end
+
+############################################
+# Functions related to the "DIFF" operation
+############################################
+
 def get_ids(host)
   node_uid, site_uid, grid_uid, _tdl = host.split('.')
   cluster_uid, node_num = node_uid.split('-')
@@ -189,6 +479,40 @@ def get_maintenance_property(node)
   return maintenance
 end
 
+# Return a list of properties as a hash: { property1 => String, property2 => Fixnum, ... }
+# We detect the type of the property (Fixnum/String) by looking at the existing values
+def get_property_keys(properties)
+  properties_keys = {}
+  properties.each do |type, type_properties|
+    properties_keys.merge!(get_property_keys_internal(type, type_properties))
+  end
+  return properties_keys
+end
+
+def properties_internal(properties)
+  str = properties
+            .to_a
+            .select{|k, v| not ignore_default_keys.include? k}
+            .map do |(k, v)|
+                v = "YES" if v == true
+                v = "NO"  if v == false
+                !v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
+            end.compact.join(' -p ')
+  return str
+end
+
+def disk_properties_internal(properties)
+  str = properties
+            .to_a
+            .select{|k, v| not v.nil? and not v==""}
+            .map do |(k, v)|
+    v = "YES" if v == true
+    v = "NO"  if v == false
+    !v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
+  end.compact.join(' -p ')
+  return str
+end
+
 # Returns the expected properties of the reservable disks. These
 # properties are then compared with the values in OAR database, to
 # generate a diff.
@@ -270,12 +594,19 @@ def get_oar_data(site_uid, filename, options)
     puts "Reading OAR resources properties from file #{filename}" if options[:verbose]
     oarnodes = YAML.load(File.open(filename, 'rb') { |f| f.read })
   else
-    api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
+
+    if options[:api][:uri] and not options[:api][:uri].include? "api.grid5000.fr"
+      api_uri = URI.parse(options[:api][:uri]+'/oarapi/resources/details.json?limit=999999')
+    else
+      api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
+    end
 
     # Download the OAR properties from the OAR API (through G5K API)
     puts "Downloading resources properties from #{api_uri} ..." if options[:verbose]
-    http = Net::HTTP.new(api_uri.host, Net::HTTP.https_default_port)
-    http.use_ssl = true
+    http = Net::HTTP.new(api_uri.host, api_uri.port)
+    if api_uri.scheme == "https"
+      http.use_ssl = true
+    end
     request = Net::HTTP::Get.new(api_uri.request_uri, {'User-Agent' => 'reference-repository/gen/oar-properties'})
 
     # For outside g5k network access
@@ -297,16 +628,6 @@ def get_oar_data(site_uid, filename, options)
   # Adapt from the format of the OAR API
   oarnodes = oarnodes['items'] if oarnodes.key?('items')
   return oarnodes
-end
-
-# Return a list of properties as a hash: { property1 => String, property2 => Fixnum, ... }
-# We detect the type of the property (Fixnum/String) by looking at the existing values
-def get_property_keys(properties)
-  properties_keys = {}
-  properties.each do |type, type_properties|
-    properties_keys.merge!(get_property_keys_internal(type, type_properties))
-  end
-  return properties_keys
 end
 
 def get_property_keys_internal(_type, type_properties)
@@ -397,8 +718,12 @@ def ignore_default_keys()
     "besteffort",
     "chunks",
     "comment", # TODO
-    "core",
-    "cpu",
+    "core", # This property was created by 'oar_resources_add'
+    "cpu", # This property was created by 'oar_resources_add'
+    "host", # This property was created by 'oar_resources_add'
+    "gpudevice", # New property taken into account by the new generator
+    "gpu_model", # New property taken into account by the new generator
+    "gpu", # New property taken into account by the new generator
     "cpuset",
     "desktop_computing",
     "deploy",
@@ -406,7 +731,6 @@ def ignore_default_keys()
     "expiry_date",
     "finaud_decision",
     "grub",
-    "host", # TODO
     "jobs", # This property exists when a job is running
     "last_available_upto",
     "last_job_date",
@@ -448,61 +772,6 @@ def ignore_keys()
   return ignore_default_keys() + ignore_disk_keys()
 end
 
-def oarcmd_script_header()
-  return <<EOF
-#! /usr/bin/env bash
-
-set -eu
-set -o pipefail
-
-EOF
-end
-
-def oarcmd_create_helper_functions()
-  return <<EOF
-property_exist () {
-  [[ $(oarproperty -l | grep -e "^$1$") ]]
-}
-
-node_exist () {
-  [[ $(oarnodes --sql "host='$1' and type='default'") ]]
-}
-
-disk_exist () {
-  [[ $(oarnodes --sql "host='$1' and type='disk' and disk='$2'") ]]
-}
-
-EOF
-end
-
-def oarcmd_separator
-  return "echo '" + '=' * 80 + "'\n\n"
-end
-
-def oarcmd_create_properties(properties_keys)
-  command = ''
-  properties_keys.each do |key, key_type|
-    if key_type == Fixnum # rubocop:disable Lint/UnifiedInteger
-      command += "property_exist '#{key}' || oarproperty -a #{key}\n"
-    elsif key_type == String
-      command += "property_exist '#{key}' || oarproperty -a #{key} --varchar\n"
-    else
-      raise "Error: the type of the '#{key}' property is unknown (Integer/String). Cannot generate the corresponding 'oarproperty' command. You must create this property manually ('oarproperty -a #{key} [--varchar]')"
-    end
-  end
-  return command
-end
-
-def oarcmd_create_node(host, default_properties, node_hash)
-  id = get_ids(host)
-  node_exist = "node_exist '#{host}'"
-  command  = "echo; echo 'Adding host #{host}:'\n"
-  command += "#{node_exist} && echo '=> host already exists'\n"
-  command += "#{node_exist} || oar_resources_add -a --hosts 1 --host0 #{id['node_num']} --host-prefix #{id['cluster_uid']}- --host-suffix .#{id['site_uid']}.#{id['grid_uid']}.fr --cpus #{node_hash['architecture']['nb_procs']} --cores #{default_properties['cpucore']}"
-  command += ' | bash'
-  return command + "\n\n"
-end
-
 def oarcmd_set_node_properties(host, default_properties)
   return '' if default_properties.size == 0
   command  = "echo; echo 'Setting properties for #{host}:'; echo\n"
@@ -511,54 +780,52 @@ def oarcmd_set_node_properties(host, default_properties)
   return command + "\n\n"
 end
 
-def properties_internal(properties)
-  str = properties.to_a.map do |(k, v)|
-    v = "YES" if v == true
-    v = "NO"  if v == false
-    !v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
-  end.compact.join(' -p ')
-  return str
-end
-
-def oarcmd_create_disk(host, disk)
-  disk_exist = "disk_exist '#{host}' '#{disk}'"
-  command = "echo; echo 'Adding disk #{disk} on host #{host}:'\n"
-  command += "#{disk_exist} && echo '=> disk already exists'\n"
-  command += "#{disk_exist} || oarnodesetting -a -h '' -p host='#{host}' -p network_address='' -p type='disk' -p disk='#{disk}'"
-  return command + "\n\n"
-end
-
-def oarcmd_set_disk_properties(host, disk, disk_properties)
-  return '' if disk_properties.size == 0
-  command = "echo; echo 'Setting properties for disk #{disk} on host #{host}:'; echo\n"
-  command += "oarnodesetting --sql \"host='#{host}' and type='disk' and disk='#{disk}'\" -p "
-  command += properties_internal(disk_properties)
-  return command + "\n\n"
+def get_oar_resources_from_oar(options)
+  properties = {}
+  sites = options[:sites]
+  diff = options[:diff]
+  sites.each do |site_uid|
+    filename = diff.is_a?(String) ? diff.gsub('%s', site_uid) : nil
+    properties[site_uid] = {}
+    properties[site_uid]['resources'] = get_oar_data(site_uid, filename, options)
+  end
+  # for debugging
+  if ENV['FAKE_EMPTY_SITE']
+    properties.keys.each do |site|
+      properties[site]['resources'] = []
+    end
+  end
+  return properties
 end
 
 # sudo exec
-def ssh_exec(cmds, options, site_uid)
+def run_commands_via_ssh(cmds, options, verbose=true)
   # The following is equivalent to : "cat cmds | bash"
-  #res = ""
-  c = Net::SSH.start(options[:ssh][:host].gsub('%s', site_uid), options[:ssh][:user])
+  res = ""
+  c = Net::SSH.start(options[:ssh][:host], options[:ssh][:user])
   c.open_channel { |channel|
     channel.exec('sudo bash') { |ch, success|
       # stdout
       channel.on_data { |ch2, data|
-        puts data #if options[:verbose] # ssh cmd output
+        if verbose
+          puts data #if options[:verbose] # ssh cmd output
+        end
+        res += data
       }
       # stderr
       channel.on_extended_data do |ch2, type, data|
-        puts data
+        if verbose
+          puts data #if options[:verbose] # ssh cmd output
+        end
+        res += data
       end
 
-      cmds.each { |cmd|
-        channel.send_data cmd
-      }
+      channel.send_data cmds
       channel.eof!
     }
   }
   c.loop
+  return res
 end
 
 # Get the properties of each node
@@ -586,22 +853,10 @@ def get_oar_properties_from_oar(options)
   return properties
 end
 
-# Main program
-# properties['ref'] = properties from the reference-repo
-# properties['oar'] = properties from the OAR server
-# properties['diff'] = diff between "ref" and "oar"
+def do_diff(options, generated_hierarchy, data_hierarchy)
 
-def generate_oar_properties(options)
-  options[:api] = {}
-  conf = RefRepo::Utils.get_api_config
-  options[:api][:user] = conf['username']
-  options[:api][:pwd] = conf['password']
-  options[:ssh] ||= {}
-  options[:ssh][:user] = 'g5kadmin'
-  options[:ssh][:host] ||= 'oar.%s.g5kadmin'
-  ret = true
-  global_hash = load_data_hierarchy
-
+  # global_hash = load_data_hierarchy
+  global_hash = data_hierarchy
   properties = {}
   properties['ref'] = get_oar_properties_from_the_ref_repo(global_hash, options)
   properties['oar'] = get_oar_properties_from_oar(options)
@@ -612,6 +867,7 @@ def generate_oar_properties(options)
     'oar' => {},
     'diff' => {}
   }
+
   options[:sites].each do |site_uid|
     properties_keys['ref'][site_uid] = get_property_keys(properties['ref'][site_uid])
   end
@@ -728,102 +984,462 @@ def generate_oar_properties(options)
         ret = false unless options[:update] || options[:print]
       end
       puts "Skipped retired nodes: #{skipped_nodes}" if skipped_nodes.any?
+
+
+      # Check that CPUSETs on the OAR server are consistent with what would have been generated
+      oar_resources = get_oar_resources_from_oar(options)
+
+      fix_cmds = ""
+
+      options[:clusters].each do |cluster|
+
+        generated_rows_for_this_cluster = generated_hierarchy[:nodes]
+                                              .map{|node| node[:oar_rows]}
+                                              .flatten
+                                              .select{|r| r[:cluster] == cluster}
+
+        site_resources = oar_resources[site_uid]["resources"]
+        cluster_resources = site_resources.select{|x| x["cluster"] == cluster}
+        default_cluster_resources = cluster_resources.select{|r| r["type"] == "default"}
+
+
+        if generated_rows_for_this_cluster.length > 0
+          # Check that OAR resources are associated with the right cpu, core and cpuset
+          generated_rows_for_this_cluster.each do |row|
+            corresponding_resource = default_cluster_resources.select{|r| r["id"] == row[:resource_id]}
+            if corresponding_resource.length > 0
+
+              {:cpu => "cpu", :core => "core", :cpuset => "cpuset", :gpu => "gpu", :gpudevice => "gpudevice"}.each do |key, value|
+                if row[key].to_s != corresponding_resource[0][value].to_s and not (key == :gpu and row[key].nil? and corresponding_resource[0][value] == 0)
+                  puts "Error: resource #{corresponding_resource[0]["id"]} is associated to #{value.upcase} (#{corresponding_resource[0][value]}), while I computed that it should be associated to #{row[key]}"
+                  fix_cmds += %Q{
+oarnodesetting --sql "resource_id='#{corresponding_resource[0]["id"]}' AND type='default'" -p #{value}=#{row[key]}}
+                end
+              end
+            else
+              # If resource_id is not equal to -1, then the generator is working on a resource that should exist,
+              # however it cannot be found : the generator reports an error to the operator
+              if row[:resource_id] != -1
+                puts "Error: could not find ressource with ID=#{row[:resource_id]}"
+              end
+            end
+          end
+        end
+      end
+
+      if not fix_cmds.empty?
+        puts ""
+        puts "################################################"
+        puts "# You may execute the following commands to fix "
+        puts "# some resources of the OAR database"
+        puts "################################################"
+        puts fix_cmds
+      end
+
     end # if options[:diff]
   end
+end
 
-  # Build and execute commands
-  if options[:print] || options[:update]
-    skipped_nodes = [] unless options[:diff]
-    opt = options[:diff] ? 'diff' : 'ref'
 
-    properties[opt].each do |site_uid, site_properties|
-      options[:print].is_a?(String) ? o = File.open(options[:print].gsub('%s', site_uid), 'w') : o = $stdout.dup
+def extract_clusters_description(clusters, site_name, options, data_hierarchy, site_properties)
 
-      ssh_cmd = []
-      cmd = []
-      cmd << oarcmd_script_header
-      cmd << oarcmd_separator
+  # This function works as follow:
+  # (1) Initialization
+  #    (a) Load the local data contained in YAML input files
+  #    (b) Handle the program arguments (detects which site and which clusters
+  #        are targeted), and what action is requested
+  #    (c) Fetch the OAR properties of the requested site
+  # (2) Generate an OAR node hierarchy
+  #    (a) Iterate over cluster > nodes > cpus > cores
+  #    (b) Detect existing resource_ids and {CPU, CORE, CPUSET, GPU}'s IDs
+  #    (c) [if cluster with GPU] detects the existing mapping GPU <-> CPU in the cluster
+  #    (d) Associate a cpuset to each core
+  #    (e) [if cluster with GPU] Associate a gpuset to each core
 
-      # Create helper functions
-      cmd << oarcmd_create_helper_functions
-      cmd << oarcmd_separator
 
-      # Make sure the host property is created (for a new site),
-      # because it is needed by the node_exist helper function
-      cmd << "property_exist host || oarproperty -a host --varchar\n\n" 
+  ############################################
+  # (1) Initialization
+  ############################################
 
-      # Create properties keys
-      properties_keys[opt][site_uid].delete_if { |k, _v| ignore_default_keys.include?(k) }
-      unless properties_keys[opt][site_uid].empty?
-        cmd << oarcmd_create_properties(properties_keys[opt][site_uid]) + "\n"
-        cmd << oarcmd_separator
+  oar_resources = get_oar_resources_from_oar(options)
+
+  generated_hierarchy = {
+      :nodes => []
+  }
+
+  ############################################
+  # (2) Generate an OAR node hierarchy
+  ############################################
+
+  site_resources = oar_resources[site_name]["resources"].select{|r| r["type"] == "default"}
+
+  next_rsc_ids = {
+      "cpu" => site_resources.length > 0 ? site_resources.map{|r| r["cpu"]}.max : 0,
+      "core" => site_resources.length > 0 ? site_resources.map{|r| r["core"]}.max : 0,
+      "gpu" => site_resources.length > 0 ? site_resources.map{|r| r["gpu"]}.select{|x| not x.nil?}.max : 0
+  }
+
+  newly_allocated_resources = {
+      "cpu" => [],
+      "core" =>[],
+      "gpu" => []
+  }
+
+  # Some existing cluster have GPUs, but no GPU ID has been allocated to them
+  if next_rsc_ids["gpu"].nil?
+    next_rsc_ids["gpu"] = 0
+  end
+
+  ############################################
+  # (2-a) Iterate over clusters. (rest: servers, cpus, cores)
+  ############################################
+
+  clusters.sort.each do |cluster_name|
+
+    cpu_idx = 0
+    core_idx = 0
+
+    cluster_resources = site_resources.select{|r| r["cluster"] == cluster_name}
+
+    cluster_desc_from_input_files = data_hierarchy['sites'][site_name]['clusters'][cluster_name]
+    first_node = cluster_desc_from_input_files['nodes'].first[1]
+
+    # Some clusters such as graphite have a different organisation:
+    # for example, graphite-1 is organised as follow:
+    #   1st resource => cpu: 665, core: 1903
+    #   2nd resource => cpu: 666, core: 1904
+    #   3rd resource => cpu: 665, core: 1905
+    #   4th resource => cpu: 666, core: 1906
+    #   ...
+    #
+    # To cope with such cases and ensure an homogeneous processing a "is_quirk_cluster" variable is set to true.
+    is_quirk_cluster = false
+
+    node_count = cluster_desc_from_input_files['nodes'].length
+
+    cpu_count = first_node['architecture']['nb_procs']
+    core_count = first_node['architecture']['nb_cores'] / cpu_count
+    gpu_count = first_node.key?("gpu_devices") ? first_node["gpu_devices"].length : 0
+
+    cpu_model = "#{first_node['processor']['model']} #{first_node['processor']['version']}"
+    cpuset_mapping = first_node.key?("cpuset_mapping") ? first_node["cpuset_mapping"] : DEFAULT_CPUSET_MAPPING
+    # Detect how 'GPUSETs' are distributed over CPUs/GPUs of servers of this cluster
+    gpuset_mapping = DEFAULT_GPUSET_MAPPING
+
+    ############################################
+    # (2-b) Detect existing resource_ids and {CPU, CORE, CPUSET, GPU}'s IDs
+    ############################################
+
+    # Detect if the cluster is new, or if it is already known by OAR
+    is_a_new_cluster = cluster_resources.select{|x| x["cluster"] == cluster_name}.length == 0
+
+    # <phys_rsc_map> is a hash that centralises variables that will be used for managing IDs of CPUs, COREs, GPUs of
+    # the cluster that is going to be updated. <phys_rsc_map> is useful to detect situations where the current number
+    # of resources associated to a cluster does not correspond to the needs of the cluster.
+    phys_rsc_map = {
+        "cpu" => {
+          :current_ids => [],
+          :per_server_count => first_node['architecture']['nb_procs'],
+          :per_cluster_count => node_count * cpu_count
+        },
+        "core" => {
+          :current_ids => [],
+          :per_server_count => first_node['architecture']['nb_cores'] / cpu_count,
+          :per_cluster_count => node_count * cpu_count * core_count
+        },
+        "gpu" => {
+          :current_ids => [],
+          :per_server_count => first_node.key?("gpu_devices") ? first_node["gpu_devices"].length : 0,
+          :per_cluster_count => node_count * gpu_count
+        },
+    }
+
+    # For each physical ressource, we prepare a list of IDs:
+    #   a) if the cluster is new: the IDs is a list of number in [max_resource_id, max_resource_id + cluster_resource_count]
+    #   a) if the cluster is not new: the IDs is the list of existing resources
+    phys_rsc_map.each do |physical_resource, variables|
+      if is_a_new_cluster
+        variables[:current_ids] = [*next_rsc_ids[physical_resource]+1..next_rsc_ids[physical_resource]+variables[:per_cluster_count]]
+        next_rsc_ids[physical_resource] = variables[:per_server_count] > 0 ? variables[:current_ids].max : next_rsc_ids[physical_resource]
+      else
+        variables[:current_ids] = cluster_resources.map{|r| r[physical_resource]}.select{|x| not x.nil?}.uniq
       end
-
-      # Build and output node commands
-      site_properties['default'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |node_uid, node_properties|
-        cluster_uid = node_uid.split('-')[0]
-        node_address = [node_uid, site_uid, 'grid5000.fr'].join('.')
-
-        if node_properties['state'] == 'Dead'
-          # Do not log node skipping twice if we just did a diff
-          skipped_nodes << node_uid unless options[:diff]
-          next
-        end
-
-        # Create new nodes
-        if opt == 'ref' || properties['oar'][site_uid]['default'][node_uid].nil?
-          node_hash = global_hash['sites'][site_uid]['clusters'][cluster_uid]['nodes'][node_uid]
-          cmd << oarcmd_create_node(node_address, node_properties, node_hash)
-        end
-
-        # Update properties
-        unless node_properties.empty?
-          cmd << oarcmd_set_node_properties(node_address, node_properties)
-          cmd << oarcmd_separator
-        end
-        ssh_cmd += cmd if options[:update]
-        o.write(cmd.join('')) if options[:print]
-        cmd = []
-      end
-
-      # Build and output disk commands
-      site_properties['disk'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |key, disk_properties|
-        # As an example, key can be equal to 'grimoire-1' for default resources or
-        # ['grimoire-1', 'sdb.grimoire-1'] for disk resources (disk sdb of grimoire-1)
-        node_uid, disk = key
-        host = [node_uid, site_uid, 'grid5000.fr'].join('.')
-
-        next if skipped_nodes.include?(node_uid)
-
-        # Create a new disk
-        if opt == 'ref' || properties['oar'][site_uid]['disk'][key].nil?
-          cmd << oarcmd_create_disk(host, disk)
-        end
-
-        # Update the disk properties
-        unless disk_properties.empty?
-          cmd << oarcmd_set_disk_properties(host, disk, disk_properties)
-          cmd << oarcmd_separator
-        end
-
-        ssh_cmd += cmd if options[:update]
-        o.write(cmd.join('')) if options[:print]
-        cmd = []
-      end
-      o.close
-
-      # Execute commands
-      if options[:update]
-        printf 'Apply changes to the OAR server ' + options[:ssh][:host].gsub('%s', site_uid) + ' ? (y/N) '
-        prompt = STDIN.gets.chomp
-        ssh_exec(ssh_cmd, options, site_uid) if prompt.downcase == 'y'
-      end
-    end # site loop
-
-    if skipped_nodes.any?
-      puts "Skipped retired nodes: #{skipped_nodes}" unless options[:diff]
     end
-  end # if options[:print] || options[:update]
 
-  return ret
+    if is_a_new_cluster
+      oar_resource_ids = phys_rsc_map["core"][:current_ids].map{|r| -1}
+    else
+      oar_resource_ids = cluster_resources.map{|r| r["id"]}.uniq
+      if oar_resource_ids != cluster_resources.sort_by {|r| [ r["cpu"], r["core"]] }.map{|r| r["id"]}
+        is_quirk_cluster = true
+      end
+    end
+
+    phys_rsc_map.each do |physical_resource, variables|
+      # Try to fix a bad allocation of physical resources. There is two main cases:
+      #  case 1) We detect too many resources: it likely means than a rsc of another cluster has been mis-associated to
+      #   this cluster. A simple fix is to sort <RESOURCES> of the cluster according to their number of occurence in
+      #   the cluster's properties, and keep only the N <RESOURCES> that appears the most frequently, where N is equal
+      #   to node_count * count(RESOURCES)
+      #  case 2) We don't have enough RESOURCES: it likely means that a same rsc has been associated to different
+      #   properties, and that a "gap" should exist in RESOURCES IDs (.i.e some rsc IDs are available). We fill the
+      #   missing RESOURCES with a) available RESOURCES in the site, and then b) new RESOURCES
+
+      phys_rsc_ids = variables[:current_ids]
+      expected_phys_rsc_count = variables[:per_cluster_count]
+
+      if phys_rsc_ids.length != expected_phys_rsc_count
+        raise "#{physical_resource} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count})"
+      end
+
+      variables[:current_ids] = phys_rsc_ids
+    end
+
+    # Some cluster (econome) have attributed resources according to the "alpha-numerical" order of nodes
+    # ([1, 11, 12, ..., 3] instead of [1, 2, 3, 4, ...]). Here we preserve to order of existing nodes of the cluster
+    if is_a_new_cluster
+      nodes_names = (1..node_count).map {|i| {:name => "#{cluster_name}-#{i}", :fqdn => "#{cluster_name}-#{i}.#{site_name}.grid5000.fr"}}
+    else
+      nodes_names = cluster_resources.map{|r| r["host"]}.map{|fqdn| {:fqdn => fqdn, :name => fqdn.split(".")[0]}}.uniq
+    end
+
+    ############################################
+    # Suite of (2-a): Iterate over nodes of the cluster. (rest: cpus, cores)
+    ############################################
+
+    (1..node_count).each do |node_num|
+
+      # node_index0 starts at 0
+      node_index0 = node_num -1
+
+      name = nodes_names[node_index0][:name]
+      fqdn = nodes_names[node_index0][:fqdn]
+
+      node_description = cluster_desc_from_input_files["nodes"][name]
+
+      node_description_default_properties = site_properties["default"][name]
+
+      # Detect GPU configuration of nodes
+      if node_description.key? "gpu_devices"
+        gpus = node_description["gpu_devices"]
+      else
+        gpus = []
+      end
+
+      # Assign to each GPU of a node, a "local_id" property which is between 0 and "gpu_count_per_node". This 'local_id'
+      # property will be used to assign a unique local gpuset to each GPU.
+      gpu_idx = 0
+      gpus.map do |v|
+        v[1]['local_id'] = gpu_idx
+        gpu_idx += 1
+      end
+
+      if cpuset_mapping == 'continuous'
+        cpuset = 0
+      end
+
+      generated_node_description = {
+        :name => name,
+        :fqdn => fqdn,
+        :cluster_name => cluster_name,
+        :site_name => site_name,
+        :description => node_description,
+        :oar_rows => [],
+        :disks => [],
+        :gpus => gpus,
+        :default_description => node_description_default_properties
+      }
+
+      ############################################
+      # Suite of (2-a): Iterate over CPUs of the server. (rest: cores)
+      ############################################
+      (1..phys_rsc_map["cpu"][:per_server_count]).each do |cpu_num|
+
+        # cpu_index0 starts at 0
+        cpu_index0 = cpu_num - 1
+
+        ############################################
+        # (2-c) [if cluster with GPU] detects the existing mapping GPU <-> CPU in the cluster
+        ############################################
+        numa_gpus = []
+        if node_description.key? "gpu_devices"
+          numa_gpus = node_description["gpu_devices"].map {|v| v[1]}.select {|v| v['cpu_affinity'] == cpu_index0}
+        end
+
+        ############################################
+        # Suite of (2-a): Iterate over CORES of the CPU
+        ############################################
+        (1..phys_rsc_map["core"][:per_server_count]).each do |core_num|
+
+          # core_index0 starts at 0
+          core_index0 = core_num - 1
+
+          # Compute cpu and core ID
+          oar_resource_id = oar_resource_ids[core_idx]
+          if not is_quirk_cluster
+            cpu_id = phys_rsc_map["cpu"][:current_ids][cpu_idx]
+            core_id = phys_rsc_map["core"][:current_ids][core_idx]
+          else
+            current_resource = cluster_resources.select{|r| r["id"] == oar_resource_id}[0]
+            cpu_id = current_resource["cpu"]
+            core_id = current_resource["core"]
+          end
+
+          # Prepare an Hash that represents a single OAR resource. Few
+          # keys are initialized with empty values.
+          row = {
+            :cluster => cluster_name,
+            :host => name,
+            :cpu => cpu_id,
+            :core => core_id,
+            :cpuset => nil,
+            :gpu => nil,
+            :gpudevice => nil,
+            :gpudevicepath => nil,
+            :cpumodel => nil,
+            :gpumodel => nil,
+            :oar_properties => nil,
+            :fqdn => fqdn,
+            :resource_id => oar_resource_id,
+          }
+
+          ############################################
+          # (2-d) Associate a cpuset to each core
+          ############################################
+          if cpuset_mapping == 'continuous'
+            row[:cpuset] = cpuset
+          else
+            # CPUSETs starts at 0
+            row[:cpuset] = cpu_index0 + core_index0 * phys_rsc_map["cpu"][:per_server_count]
+          end
+
+          row[:cpumodel] = cpu_model
+
+          ############################################
+          # (2-e) [if cluster with GPU] Associate a gpuset to each core
+          ############################################
+          if not numa_gpus.empty?
+            if gpuset_mapping == 'continuous'
+              gpu_idx = core_index0 / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
+            else
+              gpu_idx = core_index0 % numa_gpus.length
+            end
+
+            selected_gpu = numa_gpus[gpu_idx]
+            if selected_gpu.nil?
+              next
+            end
+
+            row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * phys_rsc_map["gpu"][:per_server_count] + selected_gpu['local_id']]
+            row[:gpudevice] = selected_gpu['local_id']
+            row[:gpudevicepath] = selected_gpu['device']
+            row[:gpumodel] = selected_gpu['model']
+          end
+
+          core_idx += 1
+
+          if cpuset_mapping == 'continuous'
+            cpuset += 1
+          end
+
+          generated_node_description[:oar_rows].push(row)
+        end
+        cpu_idx += 1
+      end
+
+      generated_hierarchy[:nodes].push(generated_node_description)
+    end
+  end
+  return generated_hierarchy
+end
+
+############################################
+# MAIN function
+############################################
+
+# This function is called from RAKE and is in charge of
+#   - printing OAR commands to
+#      > add a new cluster
+#      > update and existing cluster
+#   - execute these commands on an OAR server
+
+def generate_oar_properties(options)
+
+  options[:api] ||= {}
+  conf = RefRepo::Utils.get_api_config
+  options[:api][:user] = conf['username']
+  options[:api][:pwd] = conf['password']
+  options[:api][:uri] = conf['uri']
+  options[:ssh] ||= {}
+  options[:ssh][:user] ||= 'g5kadmin'
+  options[:ssh][:host] ||= 'oar.%s.g5kadmin'
+  options[:sites] = [options[:site]] # for compatibility with other generators
+
+  ############################################
+  # Fetch:
+  # 1) hierarchy from YAML files
+  # 2) generated data from load_data_hierarchy
+  # 3) oar properties from the reference repository
+  ############################################
+
+  data_hierarchy = load_data_hierarchy
+
+  site_name = options[:site]
+
+  # If no cluster is given, then the clusters are the cluster of the given site
+  if not options.key? :clusters or options[:clusters].length == 0
+    if data_hierarchy['sites'].key? site_name
+      clusters = data_hierarchy['sites'][site_name]['clusters'].keys
+      options[:clusters] = clusters
+    else
+      raise("The provided site does not exist : I can't detect clusters")
+    end
+  else
+    clusters = options[:clusters]
+  end
+
+
+  site_properties = get_oar_properties_from_the_ref_repo(data_hierarchy, {
+      :sites => [site_name]
+  })[site_name]
+
+  ############################################
+  # Generate information about the clusters
+  ############################################
+
+  generated_hierarchy = extract_clusters_description(clusters,
+                                                     site_name,
+                                                     options,
+                                                     data_hierarchy,
+                                                     site_properties)
+
+  ############################################
+  # Output generated information
+  ############################################
+
+  # DO=table
+  if options.key? :table and options[:table]
+    export_rows_as_formated_line(generated_hierarchy)
+  end
+
+  # DO=print
+  if options.key? :print and options[:print]
+    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy)
+    puts(cmds)
+  end
+
+  # Do=Diff
+  if options.key? :diff and options[:diff]
+    do_diff(options, generated_hierarchy, data_hierarchy)
+  end
+
+  # Do=update
+  if options[:update]
+    printf 'Apply changes to the OAR server ' + options[:ssh][:host].gsub('%s', site_name) + ' ? (y/N) '
+    prompt = STDIN.gets.chomp
+    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy)
+    run_commands_via_ssh(cmds, options) if prompt.downcase == 'y'
+  end
+
+  return 0
 end
