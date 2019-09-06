@@ -63,6 +63,12 @@ nancy:
     - ~network_adapters.eth4.enabled
     - ~network_adapters.eth4.mountable
     - +network_adapters.ib0
+# revert this one when all grisou nodes are OK (2019/09/07)
+  grisou-51:
+    - -kavlan.eth4
+    - ~network_adapters.eth4.enabled
+    - ~network_adapters.eth4.mountable
+    - +network_adapters.ib0
 nantes:
   econome-[1-22]:
     - +network_adapters.eth2.rate
