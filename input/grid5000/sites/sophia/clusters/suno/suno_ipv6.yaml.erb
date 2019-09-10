@@ -1,0 +1,8 @@
+---
+nodes:
+<% (1..45).each do |index| %>
+  suno-<%= index %>:
+    network_adapters:
+      eth0:
+        ip6: fd0e:ebc6:bc7:800:3::<%= index.to_s(16) %>
+<% end %>

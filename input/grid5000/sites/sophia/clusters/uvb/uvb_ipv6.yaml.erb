@@ -1,0 +1,8 @@
+---
+nodes:
+<% (1..44).each do |index| %>
+  uvb-<%= index %>:
+    network_adapters:
+      eth0:
+        ip6: fd0e:ebc6:bc7:800:5::<%= index.to_s(16) %>
+<% end %>
