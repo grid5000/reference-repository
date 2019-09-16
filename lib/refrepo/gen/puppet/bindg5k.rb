@@ -8,7 +8,7 @@ require 'ipaddr'
 class DNS::Zone::RR::A
   def dump
     max_pad = 30
-    return "#{@label.ljust(max_pad)} IN A    #{' ' * 6 + @address}"
+    return "#{@label.ljust(max_pad)} IN A #{' ' * 6 + @address}"
   end
 end
 
