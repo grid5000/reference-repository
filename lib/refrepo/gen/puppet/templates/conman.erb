@@ -54,15 +54,15 @@ server logfile="/var/log/conman.log"
 
       next if node == nil || node['status'] == 'retired'
 
-      dev = cluster_config.fetch('device') rescue '/usr/lib/conman/exec/ipmitool.exp'
+      dev = cluster_config.fetch('device') rescue 'ipmi'
       bmc = node['network_adapters']['bmc'].fetch('network_address').split('.')[0] rescue node_uid + '-bmc'
     
       if dev != 'ipmi'
-        # External process-based connection (default)
+        # External process-based connection
         # Example : console name="node_uid" dev="/usr/lib/conman/exec/ipmitool.exp node_uid-bmc login password"
         dev_args = "#{bmc} #{cluster_credentials}"
       else
-        # IPMI Serial-Over-LAN connection
+        # IPMI Serial-Over-LAN connection (default)
         # Example : console name="node_uid" dev="ipmi:node_uid-bmc" ipmiopts="U:login,P:password,W:workaround_flag"
         dev  = "#{dev}:#{bmc}"
         login, pass = cluster_credentials.split(' ')
