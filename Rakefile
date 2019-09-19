@@ -186,6 +186,21 @@ namespace :gen do
   end
 end
 
+namespace :version do
+  desc 'Get model list, need model='
+  task :get do
+    model = ENV['model']
+    raise 'need model=' if model.nil?
+
+    model_filter = nodes_by_model(model)
+    nodes = model_filter.map { |x| { 'node' => x['uid'], 'bios' => x['bios']['version'] } }
+    nodes.each do |node|
+      puts "#{node['node']} : #{node['bios']}"
+    end
+  end
+end
+
+
 desc "Creates JSON data from inputs"
 task "reference-api" do
   require 'refrepo/gen/reference-api'
