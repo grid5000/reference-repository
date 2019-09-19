@@ -37,7 +37,11 @@ group {
 <% dhcp_entries.each {|node| %>
   host <%= node['uid_net'] %> {
     hardware ethernet       <%= node['mac'].upcase %>;
-    fixed-address           <%= dhcpkind == 'dhcpv6' ? node['ipv6'] : node['ipv4'] %>;
+<% if dhcpkind == 'dhcpv6' -%>
+    fixed-address6          <%= node['ipv6'] %>;
+<% else -%>
+    fixed-address           <%= node['ipv4'] %>;
+<% end -%>
   }
 <%    } %>
 }
