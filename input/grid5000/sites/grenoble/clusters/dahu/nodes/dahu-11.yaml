@@ -19,7 +19,7 @@ dahu-11:
   network_adapters:
     bmc:
       ip: 172.17.20.11
-      mac: 50:9A:4C:80:6C:0F
+      mac: 50:9a:4c:80:6c:0f
       management: true
     eth0:
       driver: i40e
@@ -46,6 +46,7 @@ dahu-11:
       firmware_version: 1.26
       guid: '0x00117501017165fd'
       interface: Omni-Path
+      ip: 172.18.20.11
       mac: 80:00:00:02:fe:80:00:00:00:00:00:00:00:11:75:01:01:71:65:fd
       management: false
       model: Omni-Path HFI Silicon 100 Series [discrete]
@@ -78,20 +79,17 @@ dahu-11:
       firmware_version: GD53
       model: MZ7KM240HMHQ0D3
       size: 240057409536
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x5002538c00107b18"
       by_path: "/dev/disk/by-path/pci-0000:00:11.5-ata-4"
       firmware_version: GD53
       model: MZ7KM480HMHQ0D3
       size: 480103981056
-
     sdc:
       by_id: "/dev/disk/by-id/wwn-0x5000c500a59c5a06"
       by_path: "/dev/disk/by-path/pci-0000:00:11.5-ata-5"
       firmware_version: DB34
       model: ST4000NM0265-2DC
       size: 4000787030016
-
   supported_job_types:
     virtual: ivt
