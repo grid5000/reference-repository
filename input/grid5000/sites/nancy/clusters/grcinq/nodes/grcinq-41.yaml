@@ -29,7 +29,7 @@ grcinq-41:
       mac: 78:45:c4:fc:3b:09
       management: false
       model: I350 Gigabit Network Connection
-      name: eno1
+      name: eth0
       rate: 1000000000
       vendor: Intel
     eth1:
@@ -39,13 +39,14 @@ grcinq-41:
       mac: 78:45:c4:fc:3b:0a
       management: false
       model: I350 Gigabit Network Connection
-      name: eno2
+      name: eth1
       vendor: Intel
     ib0:
       driver: mlx4_core
       firmware_version: 2.42.5000
       guid: '0x0002c903001df1b1'
       interface: InfiniBand
+      ip: 172.18.75.41
       mac: 80:00:02:08:fe:80:00:00:00:00:00:00:00:02:c9:03:00:1d:f1:b1
       management: false
       model: MT27500 Family [ConnectX-3]
@@ -78,6 +79,5 @@ grcinq-41:
       firmware_version: 01.01V03
       model: WDC WD1003FBYX-1
       size: 1000204886016
-
   supported_job_types:
     virtual: ivt
