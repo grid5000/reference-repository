@@ -5,15 +5,17 @@ $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
 require 'refrepo'
 require 'refrepo/gen/oar-properties'
 
+STUBDIR = File.expand_path(File.dirname(__FILE__))
+
 WebMock.disable_net_connect!(allow_localhost: true)
 
 conf = RefRepo::Utils.get_api_config
 
 def load_stub_file_content(stub_filename)
-  if not File.exist?("stub_oar_properties/#{stub_filename}")
-    raise("Cannot find #{stub_filename} in 'stub_oar_properties/'")
+  if not File.exist?("#{STUBDIR}/stub_oar_properties/#{stub_filename}")
+    raise("Cannot find #{stub_filename} in '#{STUBDIR}/stub_oar_properties/'")
   end
-  file = File.open("stub_oar_properties/#{stub_filename}", "r")
+  file = File.open("#{STUBDIR}/stub_oar_properties/#{stub_filename}", "r")
   lines = IO.read(file)
   file.close()
   return lines
