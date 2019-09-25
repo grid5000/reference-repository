@@ -1,5 +1,22 @@
 {
+  "architecture": {
+    "nb_cores": 18,
+    "nb_procs": 1,
+    "nb_threads": 36,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "06/13/2019",
+    "vendor": "Dell Inc.",
+    "version": "2.2.11"
+  },
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R640",
+    "serial": "3TCTGY2"
+  },
   "main_memory": {
+    "ram_size": 103079215104
   },
   "monitoring": {
     "wattmeter": "false"
@@ -8,24 +25,41 @@
     {
       "bridged": true,
       "device": "eth0",
+      "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "14.24.8000",
+      "interface": "Ethernet",
       "ip": "172.16.66.14",
       "kavlan": false,
       "mac": "98:03:9b:b0:c8:8e",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
       "mountable": true,
       "mounted": true,
+      "name": "eno1",
       "network_address": "gros-14.nancy.grid5000.fr",
+      "rate": 25000000000,
       "switch": "sgros1",
-      "switch_port": "ethernet 1/1/59:2"
+      "switch_port": "ethernet 1/1/59:2",
+      "vendor": "Mellanox Technologies"
     },
     {
       "bridged": false,
       "device": "eth1",
+      "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "14.24.8000",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "98:03:9b:b0:c8:8f",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
       "mountable": true,
       "mounted": false,
-      "network_address": "gros-14-eth1.nancy.grid5000.fr"
+      "name": "eno2",
+      "network_address": "gros-14-eth1.nancy.grid5000.fr",
+      "rate": 25000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -34,34 +68,63 @@
       "ip": "172.17.66.14",
       "kavlan": false,
       "mac": "54:bf:64:fb:80:f0",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "gros-14-bmc.nancy.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 0,
     "node_flops": 0
   },
   "processor": {
     "cache_l1": null,
-    "microarchitecture": "Cascade Lake-SP"
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 25952256,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Cascade Lake-SP",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5220 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Gold 5220"
   },
   "sensors": {
   },
   "storage_devices": [
     {
+      "by_id": "/dev/disk/by-id/wwn-0x6f402700aed8df0025150a8f04b29993",
+      "by_path": "/dev/disk/by-path/pci-0000:17:00.0-scsi-0:2:0:0",
       "device": "sda",
       "driver": "megaraid_sas",
+      "firmware_version": 4.29,
       "interface": "SATA",
-      "model": "PERC H330",
+      "model": "PERC H330 Mini",
+      "size": 479559942144,
       "storage": "SSD",
       "vendor": "Dell (Raid)"
     },
     {
+      "by_id": "/dev/disk/by-id/wwn-0x6f402700aed8df0025150a9004bb0d8d",
+      "by_path": "/dev/disk/by-path/pci-0000:17:00.0-scsi-0:2:1:0",
       "device": "sdb",
       "driver": "megaraid_sas",
+      "firmware_version": 4.29,
       "interface": "SATA",
-      "model": "PERC H330",
+      "model": "PERC H330 Mini",
+      "size": 959656755200,
       "storage": "SSD",
       "vendor": "Dell (Raid)"
     }
@@ -73,7 +136,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "gros-14"
