@@ -23,7 +23,7 @@ grisou-42:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x8000095c'
+      firmware_version: 0x8000095c, 18.8.9
       interface: Ethernet
       ip: 172.16.72.42
       mac: e4:43:4b:1f:c2:f8
@@ -34,7 +34,7 @@ grisou-42:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x8000095c'
+      firmware_version: 0x8000095c, 18.8.9
       interface: Ethernet
       mac: e4:43:4b:1f:c2:fa
       management: false
@@ -44,7 +44,7 @@ grisou-42:
       vendor: Intel
     eth2:
       driver: ixgbe
-      firmware_version: '0x8000095d'
+      firmware_version: 0x8000095d, 18.8.9
       interface: Ethernet
       mac: a0:36:9f:7e:4b:4c
       management: false
@@ -54,7 +54,7 @@ grisou-42:
       vendor: Intel
     eth3:
       driver: ixgbe
-      firmware_version: '0x8000095d'
+      firmware_version: 0x8000095d, 18.8.9
       interface: Ethernet
       mac: a0:36:9f:7e:4b:4e
       management: false
@@ -107,13 +107,11 @@ grisou-42:
       firmware_version: TT31
       model: ST600MM0088
       size: 600127266816
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x5000c5008e5147bf"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       firmware_version: TT31
       model: ST600MM0088
       size: 600127266816
-
   supported_job_types:
     virtual: ivt

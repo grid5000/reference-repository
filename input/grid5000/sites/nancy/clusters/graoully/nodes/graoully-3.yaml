@@ -23,7 +23,7 @@ graoully-3:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x8000095c'
+      firmware_version: 0x8000095c, 18.8.9
       interface: Ethernet
       ip: 172.16.70.3
       mac: 24:6e:96:03:11:08
@@ -34,7 +34,7 @@ graoully-3:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x8000095c'
+      firmware_version: 0x8000095c, 18.8.9
       interface: Ethernet
       mac: 24:6e:96:03:11:0a
       management: false
@@ -43,7 +43,7 @@ graoully-3:
       vendor: Intel
     eth2:
       driver: ixgbe
-      firmware_version: '0x8000095d'
+      firmware_version: 0x8000095d, 18.8.9
       interface: Ethernet
       mac: a0:36:9f:7e:4c:d4
       management: false
@@ -52,7 +52,7 @@ graoully-3:
       vendor: Intel
     eth3:
       driver: ixgbe
-      firmware_version: '0x8000095d'
+      firmware_version: 0x8000095d, 18.8.9
       interface: Ethernet
       mac: a0:36:9f:7e:4c:d6
       management: false
@@ -115,13 +115,11 @@ graoully-3:
       firmware_version: TT31
       model: ST600MM0088
       size: 600127266816
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x5000c5008e50e823"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0"
       firmware_version: TT31
       model: ST600MM0088
       size: 600127266816
-
   supported_job_types:
     virtual: ivt
