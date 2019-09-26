@@ -40,7 +40,7 @@ grele-14:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x800007f4'
+      firmware_version: 0x800007f4, 17.5.10
       interface: Ethernet
       ip: 172.16.74.14
       mac: 24:6e:96:63:dd:f0
@@ -51,7 +51,7 @@ grele-14:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x800007f4'
+      firmware_version: 0x800007f4, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:63:dd:f2
       management: false
@@ -78,7 +78,7 @@ grele-14:
       vendor: Intel
     ib0:
       driver: hfi1
-      firmware_version: 1.26
+      firmware_version: 1.27.0
       guid: '0x00117501010dd432'
       interface: Omni-Path
       ip: 172.18.74.14
@@ -114,13 +114,11 @@ grele-14:
       firmware_version: 4.27
       model: PERC H730 Mini
       size: 299439751168
-
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x61866da0b5ed690020f1032d04c25600"
       by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:1:0"
       firmware_version: 4.27
       model: PERC H730 Mini
       size: 299439751168
-
   supported_job_types:
     virtual: ivt
