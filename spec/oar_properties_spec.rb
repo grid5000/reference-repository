@@ -43,6 +43,7 @@ end
 stubbed_addresses = [
     "#{conf["uri"]}",
     "#{conf["uri"]}/oarapi/resources/details.json?limit=999999",
+    "#{conf["uri"]}stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999",
 ]
 
 
