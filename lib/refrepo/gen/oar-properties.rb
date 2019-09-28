@@ -821,8 +821,7 @@ end
 # Get the properties of each node
 def get_oar_properties_from_the_ref_repo(global_hash, options)
   properties = {}
-  sites = options.fetch(:sites)
-  sites.each do |site_uid|
+  options.fetch(:sites).each do |site_uid|
     properties[site_uid] = {
       'default' => get_ref_default_properties(site_uid, global_hash.fetch('sites').fetch(site_uid)),
       'disk' => get_ref_disk_properties(site_uid, global_hash.fetch('sites').fetch(site_uid))
@@ -833,14 +832,13 @@ end
 
 def get_oar_properties_from_oar(options)
   properties = {}
-  sites = options[:sites]
-  diff = options[:diff]
-  sites.each do |site_uid|
-    properties[site_uid] = {}
-    properties[site_uid]['default'] = get_oar_default_properties(site_uid, options)
-    properties[site_uid]['disk'] = get_oar_disk_properties(site_uid, options)
+  options.fetch(:sites).each do |site_uid|
+    properties[site_uid] = {
+      'default' => get_oar_default_properties(site_uid, options),
+      'disk' => get_oar_disk_properties(site_uid, options)
+    }
   end
-  return properties
+  properties
 end
 
 def do_diff(options, generated_hierarchy, global_hash, refrepo_properties)
