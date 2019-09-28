@@ -773,13 +773,12 @@ end
 
 def get_oar_resources_from_oar(options)
   properties = {}
-  sites = options[:sites]
-  diff = options[:diff]
-  sites.each do |site_uid|
-    properties[site_uid] = {}
-    properties[site_uid]['resources'] = get_oar_data(site_uid, options)
+  options.fetch(:sites).each do |site_uid|
+    properties[site_uid] = {
+      'resources' => get_oar_data(site_uid, options)
+    }
   end
-  return properties
+  properties
 end
 
 # sudo exec
