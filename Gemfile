@@ -9,6 +9,7 @@ gem "dns-zone"
 gem "ruby-cute", :require => "cute"
 gem "peach"
 gem "restfully"
-gem "rspec"
-gem "webmock"
-gem "simplecov"
+gem "rspec", :group => [:development, :test]
+gem "webmock", :group => [:development, :test]
+gem "simplecov", :group => [:development, :test]
+gem "mutant-rspec", :group => [:development, :test]
