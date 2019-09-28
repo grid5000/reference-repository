@@ -558,33 +558,13 @@ end
 
 def get_oar_default_properties(site_uid, options)
   oarnodes = get_oar_data(site_uid, options)
-
-  # Handle the two possible input format from oarnodes -Y:
-  # given by a file, and from the OAR API
-  if oarnodes.is_a?(Hash)
-    oarnodes = oarnodes.map { |_k, v| v['type'] == 'default' ? [get_ids(v['host'])['node_uid'], v] : [nil, nil] }.to_h
-    oarnodes.delete(nil)
-  elsif oarnodes.is_a?(Array)
-    oarnodes = oarnodes.select { |v| v['type'] == 'default' }.map { |v| [get_ids(v['host'])['node_uid'], v] }.to_h
-  else
-    raise 'Invalid input format for OAR properties'
-  end
+  oarnodes = oarnodes.select { |v| v['type'] == 'default' }.map { |v| [get_ids(v['host'])['node_uid'], v] }.to_h
   return oarnodes
 end
 
 def get_oar_disk_properties(site_uid, options)
   oarnodes = get_oar_data(site_uid, options)
-
-  # Handle the two possible input format from oarnodes -Y:
-  # given by a file, and from the OAR API
-  if oarnodes.is_a?(Hash)
-    oarnodes = oarnodes.map { |_k, v|  v['type'] == 'disk' ? [[get_ids(v['host'])['node_uid'], v['disk']], v] : [nil, nil] }.to_h
-    oarnodes.delete(nil)
-  elsif oarnodes.is_a?(Array)
-    oarnodes = oarnodes.select { |v| v['type'] == 'disk' }.map { |v| [[get_ids(v['host'])['node_uid'], v['disk']], v] }.to_h
-  else
-    raise 'Invalid input format for OAR properties'
-  end
+  oarnodes = oarnodes.select { |v| v['type'] == 'disk' }.map { |v| [[get_ids(v['host'])['node_uid'], v['disk']], v] }.to_h
   return oarnodes
 end
 
