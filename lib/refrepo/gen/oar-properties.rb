@@ -556,8 +556,8 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
   properties
 end
 
-def get_oar_default_properties(site_uid, filename, options)
-  oarnodes = get_oar_data(site_uid, filename, options)
+def get_oar_default_properties(site_uid, options)
+  oarnodes = get_oar_data(site_uid, options)
 
   # Handle the two possible input format from oarnodes -Y:
   # given by a file, and from the OAR API
@@ -572,8 +572,8 @@ def get_oar_default_properties(site_uid, filename, options)
   return oarnodes
 end
 
-def get_oar_disk_properties(site_uid, filename, options)
-  oarnodes = get_oar_data(site_uid, filename, options)
+def get_oar_disk_properties(site_uid, options)
+  oarnodes = get_oar_data(site_uid, options)
 
   # Handle the two possible input format from oarnodes -Y:
   # given by a file, and from the OAR API
@@ -589,44 +589,33 @@ def get_oar_disk_properties(site_uid, filename, options)
 end
 
 # Get all data from the OAR database
-def get_oar_data(site_uid, filename, options)
+def get_oar_data(site_uid, options)
   oarnodes = ''
-  if filename && File.exist?(filename)
-    # Read OAR properties from file
-    puts "Reading OAR resources properties from file #{filename}" if options[:verbose]
-    oarnodes = YAML.load(File.open(filename, 'rb') { |f| f.read })
+  if options[:api][:uri] and not options[:api][:uri].include? "api.grid5000.fr"
+    api_uri = URI.parse(options[:api][:uri]+'/oarapi/resources/details.json?limit=999999')
   else
-
-    if options[:api][:uri] and not options[:api][:uri].include? "api.grid5000.fr"
-      api_uri = URI.parse(options[:api][:uri]+'/oarapi/resources/details.json?limit=999999')
-    else
-      api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
-    end
-
-    # Download the OAR properties from the OAR API (through G5K API)
-    puts "Downloading resources properties from #{api_uri} ..." if options[:verbose]
-    http = Net::HTTP.new(api_uri.host, api_uri.port)
-    if api_uri.scheme == "https"
-      http.use_ssl = true
-    end
-    request = Net::HTTP::Get.new(api_uri.request_uri, {'User-Agent' => 'reference-repository/gen/oar-properties'})
-
-    # For outside g5k network access
-    if options[:api][:user] && options[:api][:pwd]
-      request.basic_auth(options[:api][:user], options[:api][:pwd])
-    end
-
-    response = http.request(request)
-    raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
-    puts '... done' if options[:verbose]
-
-    oarnodes = JSON.parse(response.body)
-    if filename
-      puts "Saving OAR resources properties as #{filename}" if options[:verbose]
-      File.write(filename, YAML.dump(oarnodes))
-    end
+    api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
   end
 
+  # Download the OAR properties from the OAR API (through G5K API)
+  puts "Downloading resources properties from #{api_uri} ..." if options[:verbose]
+  http = Net::HTTP.new(api_uri.host, api_uri.port)
+  if api_uri.scheme == "https"
+    http.use_ssl = true
+  end
+  request = Net::HTTP::Get.new(api_uri.request_uri, {'User-Agent' => 'reference-repository/gen/oar-properties'})
+
+  # For outside g5k network access
+  if options[:api][:user] && options[:api][:pwd]
+    request.basic_auth(options[:api][:user], options[:api][:pwd])
+  end
+
+  response = http.request(request)
+  raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
+  puts '... done' if options[:verbose]
+
+  oarnodes = JSON.parse(response.body)
+ 
   # Adapt from the format of the OAR API
   oarnodes = oarnodes['items'] if oarnodes.key?('items')
   return oarnodes
@@ -787,9 +776,8 @@ def get_oar_resources_from_oar(options)
   sites = options[:sites]
   diff = options[:diff]
   sites.each do |site_uid|
-    filename = diff.is_a?(String) ? diff.gsub('%s', site_uid) : nil
     properties[site_uid] = {}
-    properties[site_uid]['resources'] = get_oar_data(site_uid, filename, options)
+    properties[site_uid]['resources'] = get_oar_data(site_uid, options)
   end
   # for debugging
   if ENV['FAKE_EMPTY_SITE']
@@ -848,10 +836,9 @@ def get_oar_properties_from_oar(options)
   sites = options[:sites]
   diff = options[:diff]
   sites.each do |site_uid|
-    filename = diff.is_a?(String) ? diff.gsub('%s', site_uid) : nil
     properties[site_uid] = {}
-    properties[site_uid]['default'] = get_oar_default_properties(site_uid, filename, options)
-    properties[site_uid]['disk'] = get_oar_disk_properties(site_uid, filename, options)
+    properties[site_uid]['default'] = get_oar_default_properties(site_uid, options)
+    properties[site_uid]['disk'] = get_oar_disk_properties(site_uid, options)
   end
   return properties
 end
