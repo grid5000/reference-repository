@@ -17,10 +17,7 @@ def load_stub_file_content(stub_filename)
   if not File.exist?("#{STUBDIR}/stub_oar_properties/#{stub_filename}")
     raise("Cannot find #{stub_filename} in '#{STUBDIR}/stub_oar_properties/'")
   end
-  file = File.open("#{STUBDIR}/stub_oar_properties/#{stub_filename}", "r")
-  lines = IO.read(file)
-  file.close()
-  return lines
+  return IO.read("#{STUBDIR}/stub_oar_properties/#{stub_filename}")
 end
 
 # This code comes from https://gist.github.com/herrphon/2d2ebbf23c86a10aa955
@@ -40,12 +37,6 @@ def capture(&block)
   result
 end
 
-stubbed_addresses = [
-    "#{conf["uri"]}",
-    "#{conf["uri"]}/oarapi/resources/details.json?limit=999999",
-    "#{conf["uri"]}stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999",
-]
-
 
 def str_block_to_regexp(str)
   str1 = str.gsub("|", "\\\\|")
@@ -53,25 +44,31 @@ def str_block_to_regexp(str)
   return Regexp.new str2
 end
 
-describe 'Oar properties generator' do
+def prepare_stubs(oar_api, data_hierarchy)
+  conf = RefRepo::Utils.get_api_config
+  stubbed_addresses = [
+    "#{conf["uri"]}",
+    "#{conf["uri"]}stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999",
+  ]
+  stubbed_api_response = load_stub_file_content(oar_api)
+  stubbed_addresses.each do |stubbed_address|
+    stub_request(:get, stubbed_address).
+      with(
+        headers: {
+          'Accept'=>'*/*',
+        }).
+        to_return(status: 200, body: stubbed_api_response, headers: {})
+  end
+
+  # Overload the 'load_data_hierarchy' to simulate the addition of a fake site in the input files
+  expect_any_instance_of(Object).to receive(:load_data_hierarchy).and_return(JSON::parse(load_stub_file_content(data_hierarchy)))
+end
+
+describe 'OarProperties' do
 
   context 'interracting with an empty OAR server' do
     before do
-      stubbed_api_response = load_stub_file_content("dump_oar_api_empty_server.json")
-      stubbed_addresses.each do |stubbed_address|
-        stub_request(:get, stubbed_address).
-            with(
-                headers: {
-                    'Accept'=>'*/*',
-                }).
-            to_return(status: 200, body: stubbed_api_response, headers: {})
-      end
-
-      # Overload the 'load_data_hierarchy' to simulate the addition of a fake site in the input files
-      def load_data_hierarchy
-        json_str = load_stub_file_content("load_data_hierarchy_stubbed_data.json")
-        return JSON.parse(json_str)
-      end
+      prepare_stubs("dump_oar_api_empty_server.json", "load_data_hierarchy_stubbed_data.json")
     end
 
     it 'should generate correctly a table of nodes' do
@@ -286,21 +283,7 @@ TXT
 
   context 'OAR server with data' do
     before do
-      stubbed_api_response = load_stub_file_content("dump_oar_api_configured_server.json")
-      stubbed_addresses.each do |stubbed_address|
-        stub_request(:get, stubbed_address).
-            with(
-                headers: {
-                    'Accept'=>'*/*',
-                }).
-            to_return(status: 200, body: stubbed_api_response, headers: {})
-      end
-
-      # Overload the 'load_data_hierarchy' to simulate the addition of a fake site in the input files
-      def load_data_hierarchy
-        json_str = load_stub_file_content("load_data_hierarchy_stubbed_data.json")
-        return JSON.parse(json_str)
-      end
+      prepare_stubs("dump_oar_api_configured_server.json", "load_data_hierarchy_stubbed_data.json")
     end
 
     it 'should generate correctly a table of nodes' do
@@ -455,21 +438,7 @@ TXT
 
   context 'interracting with an empty OAR server (cluster with disk)' do
     before do
-      stubbed_api_response = load_stub_file_content("dump_oar_api_empty_server.json")
-      stubbed_addresses.each do |stubbed_address|
-        stub_request(:get, stubbed_address).
-            with(
-                headers: {
-                    'Accept'=>'*/*',
-                }).
-            to_return(status: 200, body: stubbed_api_response, headers: {})
-      end
-
-      # Overload the 'load_data_hierarchy' to simulate the addition of a fake site in the input files
-      def load_data_hierarchy
-        json_str = load_stub_file_content("load_data_hierarchy_stubbed_data_with_disk.json")
-        return JSON.parse(json_str)
-      end
+      prepare_stubs("dump_oar_api_empty_server.json", "load_data_hierarchy_stubbed_data_with_disk.json")
     end
 
     it 'should generate correctly a table of nodes' do
@@ -772,21 +741,7 @@ TXT
 
   context 'OAR server with data' do
     before do
-      stubbed_api_response = load_stub_file_content("dump_oar_api_configured_server_with_disk.json")
-      stubbed_addresses.each do |stubbed_address|
-        stub_request(:get, stubbed_address).
-            with(
-                headers: {
-                    'Accept'=>'*/*',
-                }).
-            to_return(status: 200, body: stubbed_api_response, headers: {})
-      end
-
-      # Overload the 'load_data_hierarchy' to simulate the addition of a fake site in the input files
-      def load_data_hierarchy
-        json_str = load_stub_file_content("load_data_hierarchy_stubbed_data_with_disk.json")
-        return JSON.parse(json_str)
-      end
+      prepare_stubs("dump_oar_api_configured_server_with_disk.json", "load_data_hierarchy_stubbed_data_with_disk.json")
     end
 
     it 'should generate correctly a table of nodes' do
