@@ -833,13 +833,14 @@ end
 # Get the properties of each node
 def get_oar_properties_from_the_ref_repo(global_hash, options)
   properties = {}
-  sites = options[:sites]
+  sites = options.fetch(:sites)
   sites.each do |site_uid|
-    properties[site_uid] = {}
-    properties[site_uid]['default'] = get_ref_default_properties(site_uid, global_hash['sites'][site_uid])
-    properties[site_uid]['disk'] = get_ref_disk_properties(site_uid, global_hash['sites'][site_uid])
+    properties[site_uid] = {
+      'default' => get_ref_default_properties(site_uid, global_hash.fetch('sites').fetch(site_uid)),
+      'disk' => get_ref_disk_properties(site_uid, global_hash.fetch('sites').fetch(site_uid))
+    }
   end
-  return properties
+  properties
 end
 
 def get_oar_properties_from_oar(options)
