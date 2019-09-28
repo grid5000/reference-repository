@@ -19,6 +19,8 @@ DEFAULT_GPUSET_MAPPING = "continuous"
 # Functions related to the "TABLE" operation
 ############################################
 
+module OarProperties
+
 def export_rows_as_formated_line(generated_hierarchy)
   # Display header
   puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
@@ -1424,22 +1426,25 @@ def generate_oar_properties(options)
 
   # DO=print
   if options.key? :print and options[:print]
-    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy)
+    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
     puts(cmds)
   end
 
   # Do=Diff
   if options.key? :diff and options[:diff]
-    do_diff(options, generated_hierarchy, data_hierarchy)
+    do_diff(options, generated_hierarchy, data_hierarchy, refrepo_properties)
   end
 
   # Do=update
   if options[:update]
     printf 'Apply changes to the OAR server ' + options[:ssh][:host].gsub('%s', site_name) + ' ? (y/N) '
     prompt = STDIN.gets.chomp
-    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy)
+    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
     run_commands_via_ssh(cmds, options) if prompt.downcase == 'y'
   end
 
   return 0
 end
+
+end
+include OarProperties
