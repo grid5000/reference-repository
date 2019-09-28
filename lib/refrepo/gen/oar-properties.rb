@@ -856,13 +856,12 @@ def get_oar_properties_from_oar(options)
   return properties
 end
 
-def do_diff(options, generated_hierarchy, data_hierarchy)
+def do_diff(options, generated_hierarchy, global_hash, refrepo_properties)
 
-  # global_hash = load_data_hierarchy
-  global_hash = data_hierarchy
-  properties = {}
-  properties['ref'] = get_oar_properties_from_the_ref_repo(global_hash, options)
-  properties['oar'] = get_oar_properties_from_oar(options)
+  properties = {
+    'ref' => refrepo_properties,
+    'oar' => get_oar_properties_from_oar(options)
+  }
 
   # Get the list of property keys from the reference-repo (['ref'])
   properties_keys = {
@@ -1402,9 +1401,9 @@ def generate_oar_properties(options)
   end
 
 
-  site_properties = get_oar_properties_from_the_ref_repo(data_hierarchy, {
+  refrepo_properties = get_oar_properties_from_the_ref_repo(data_hierarchy, {
       :sites => [site_name]
-  })[site_name]
+  })
 
   ############################################
   # Generate information about the clusters
@@ -1414,7 +1413,7 @@ def generate_oar_properties(options)
                                                      site_name,
                                                      options,
                                                      data_hierarchy,
-                                                     site_properties)
+                                                     refrepo_properties[site_name])
 
   ############################################
   # Output generated information
