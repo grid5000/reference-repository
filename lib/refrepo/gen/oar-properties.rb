@@ -779,12 +779,6 @@ def get_oar_resources_from_oar(options)
     properties[site_uid] = {}
     properties[site_uid]['resources'] = get_oar_data(site_uid, options)
   end
-  # for debugging
-  if ENV['FAKE_EMPTY_SITE']
-    properties.keys.each do |site|
-      properties[site]['resources'] = []
-    end
-  end
   return properties
 end
 
