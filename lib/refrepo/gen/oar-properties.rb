@@ -570,7 +570,6 @@ end
 
 # Get all data from the OAR database
 def get_oar_data(site_uid, options)
-  oarnodes = ''
   if options[:api][:uri] and not options[:api][:uri].include? "api.grid5000.fr"
     api_uri = URI.parse(options[:api][:uri]+'/oarapi/resources/details.json?limit=999999')
   else
@@ -814,7 +813,7 @@ def get_oar_properties_from_oar(options)
   properties
 end
 
-def do_diff(options, generated_hierarchy, global_hash, refrepo_properties)
+def do_diff(options, generated_hierarchy, refrepo_properties)
 
   properties = {
     'ref' => refrepo_properties,
@@ -1037,12 +1036,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       "cpu" => site_resources.length > 0 ? site_resources.map{|r| r["cpu"]}.max : 0,
       "core" => site_resources.length > 0 ? site_resources.map{|r| r["core"]}.max : 0,
       "gpu" => site_resources.length > 0 ? site_resources.map{|r| r["gpu"]}.select{|x| not x.nil?}.max : 0
-  }
-
-  newly_allocated_resources = {
-      "cpu" => [],
-      "core" =>[],
-      "gpu" => []
   }
 
   # Some existing cluster have GPUs, but no GPU ID has been allocated to them
@@ -1390,7 +1383,7 @@ def generate_oar_properties(options)
 
   # Do=Diff
   if options.key? :diff and options[:diff]
-    do_diff(options, generated_hierarchy, data_hierarchy, refrepo_properties)
+    do_diff(options, generated_hierarchy, refrepo_properties)
   end
 
   # Do=update

@@ -22,7 +22,7 @@ end
 
 # This code comes from https://gist.github.com/herrphon/2d2ebbf23c86a10aa955
 # and enables to capture all output made on stdout and stderr by a block of code
-def capture(&block)
+def capture(&_block)
   begin
     $stdout = StringIO.new
     $stderr = StringIO.new
