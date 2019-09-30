@@ -318,7 +318,8 @@ class G5KHardwareGenerator < WikiGenerator
       'Haswell' => '2013',
       'Broadwell' => '2015',
       'Skylake' => '2016',
-      'Zen' => '2017'
+      'Zen' => '2017',
+      'Cascade Lake-SP' => '2019',
     }
     date = release_dates[microarchitecture]
     raise "ERROR: microarchitecture not found: '#{microarchitecture}'. Add in hardware.rb" if date.nil?
