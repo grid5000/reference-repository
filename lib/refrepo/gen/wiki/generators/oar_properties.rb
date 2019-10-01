@@ -173,7 +173,7 @@ class OarPropertiesGenerator < WikiGenerator
     end
     if (!values.empty?)
       case values[0].class.name
-      when "Fixnum"
+      when "Fixnum", "Numeric", "Integer"
         return "Integer"
       when "TrueClass", "FalseClass"
         return "Boolean"
