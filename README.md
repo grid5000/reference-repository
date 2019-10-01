@@ -41,3 +41,12 @@ all tools that require to authenticate against Grid'5000 use credentials from ~/
  password: password
  version: stable
 ```
+
+# Some development information
+
+* Run rspec tests: `bundler exec rspec`
+    + This generates coverage information in the coverage/ directory
+* Explore the code using code-explorer: `bundle exec code-explorer`
+* Run mutation testing:
+    + A specific method: `bundler exec mutant --include lib --require refrepo --use rspec 'OarProperties#get_oar_properties_from_oar'`
+    + The whole OAR properties generator (takes a long time): `bundler exec mutant --include lib --require refrepo --use rspec 'OarProperties'`
