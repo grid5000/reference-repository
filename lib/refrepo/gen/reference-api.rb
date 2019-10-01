@@ -245,7 +245,7 @@ def generate_reference_api
           node["storage_devices"] = Hash(node["storage_devices"]).sort_by_array(["sda", "sdb", "sdc", "sdd", "sde", "sdf", "nvme0n1", "nvme1n1"]).values
 
           node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
-          node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "bmc", "eno1", "eno2"]).values
+          node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1"]).values
 
           # For each network adapters, populate "network_address", "switch" and "switch_port" from the network equipment description
           node["network_adapters"].each { |network_adapter|
