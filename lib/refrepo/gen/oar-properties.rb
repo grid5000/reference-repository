@@ -742,14 +742,6 @@ def ignore_keys()
   return ignore_default_keys() + ignore_disk_keys()
 end
 
-def oarcmd_set_node_properties(host, default_properties)
-  return '' if default_properties.size == 0
-  command  = "echo; echo 'Setting properties for #{host}:'; echo\n"
-  command += "oarnodesetting --sql \"host='#{host}' and type='default'\" -p "
-  command += properties_internal(default_properties)
-  return command + "\n\n"
-end
-
 def get_oar_resources_from_oar(options)
   properties = {}
   options.fetch(:sites).each do |site_uid|
