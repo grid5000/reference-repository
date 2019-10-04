@@ -37,6 +37,46 @@ pollux:
     bmc:
       ip: 172.17.62.2
 
+albireo-a:
+  kind: physical
+  alias: [srv1]
+  warranty: 2026-06
+  serial: XXXXXX
+  network_adapters:
+    default:
+      ip: 172.16.63.9
+    adm:
+      ip: 172.17.63.9
+    bmc:
+      ip: 172.17.62.9
+      mac: 54:BF:64:FC:A5:D0
+
+albireo-b:
+  kind: physical
+  alias: [srv2]
+  warranty: 2026-06
+  serial: XXXXXX
+  network_adapters:
+    default:
+      ip: 172.16.63.10
+    adm:
+      ip: 172.17.63.10
+    bmc:
+      ip: 172.17.62.10
+      mac: 54:BF:64:FC:AC:9C
+
+alcor:
+  kind: physical
+  alias: [storage]
+  warranty: 2026-08
+  serial: 8KB35Z2
+  network_adapters:
+    default:
+      ip: 172.16.63.11
+    bmc:
+      ip: 172.17.62.11
+      mac: 4C:D9:8F:6E:26:89
+
 nebula:
   kind: physical
   alias:
