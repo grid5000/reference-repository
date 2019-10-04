@@ -48,6 +48,7 @@ def prepare_stubs(oar_api, data_hierarchy)
   conf = RefRepo::Utils.get_api_config
   stubbed_addresses = [
     "#{conf["uri"]}",
+    "#{conf["uri"]}/oarapi/resources/details.json?limit=999999",
     "#{conf["uri"]}stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999",
   ]
   stubbed_api_response = load_stub_file_content(oar_api)
@@ -65,6 +66,60 @@ def prepare_stubs(oar_api, data_hierarchy)
 end
 
 describe 'OarProperties' do
+
+  context 'testing arguments' do
+    before do
+      prepare_stubs("dump_oar_api_empty_server.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should should accept case where only the site is specified' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => true,
+          :print => false,
+          :update => false,
+          :diff => false,
+          :site => "fakesite",
+      }
+
+      expected_header = <<-TXT
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+|   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+    end
+
+    it 'should should accept case where only the site is specified' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => true,
+          :print => false,
+          :update => false,
+          :diff => false,
+          :site => "fakesite2",
+      }
+
+      expect { generate_oar_properties(options) }.to raise_error("The provided site does not exist : I can't detect clusters")
+    end
+  end
 
   context 'interracting with an empty OAR server' do
     before do
@@ -279,8 +334,6 @@ TXT
     end
   end
 
-
-
   context 'OAR server with data' do
     before do
       prepare_stubs("dump_oar_api_configured_server.json", "load_data_hierarchy_stubbed_data.json")
@@ -307,7 +360,7 @@ TXT
 +---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
 |   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
 +---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
-      TXT
+TXT
 
       expected_clustera1_desc = <<-TXT
 |  clustera | clustera-1           | 1     | 1     | 0        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
@@ -316,7 +369,7 @@ TXT
 |  clustera | clustera-1           | 1     | 4     | 3        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clustera | clustera-1           | 1     | 5     | 4        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clustera | clustera-1           | 1     | 6     | 5        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
-      TXT
+TXT
 
       expected_clustera2_desc = <<-TXT
 |  clustera | clustera-2           | 4     | 26    | 9        | 7    | 2                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
@@ -326,7 +379,7 @@ TXT
 |  clustera | clustera-2           | 4     | 30    | 13       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clustera | clustera-2           | 4     | 31    | 14       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clustera | clustera-2           | 4     | 32    | 15       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
-      TXT
+TXT
 
       generator_output = capture do
         generate_oar_properties(options)
@@ -364,7 +417,7 @@ property_exist 'core' || oarproperty -a core
 property_exist 'gpudevice' || oarproperty -a gpudevice
 property_exist 'gpu' || oarproperty -a gpu
 property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
-      TXT
+TXT
 
       expected_clustera1_cmds = <<-TXT
 ###################################
@@ -374,7 +427,7 @@ oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' AND resource_id='1'
 oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=2 -p cpuset=1 -p gpu=1 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
 oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=3 -p cpuset=2 -p gpu=1 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
 oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' AND resource_id='4' AND type='default'" -p cpu=1 -p core=4 -p cpuset=3 -p gpu=1 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
-      TXT
+TXT
 
       expected_clustera2_cmds = <<-TXT
 ###################################
@@ -385,11 +438,11 @@ oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' AND resource_id='18
 oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' AND resource_id='19' AND type='default'" -p cpu=3 -p core=19 -p cpuset=2 -p gpu=5 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
 oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' AND resource_id='20' AND type='default'" -p cpu=3 -p core=20 -p cpuset=3 -p gpu=5 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
 oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' AND resource_id='21' AND type='default'" -p cpu=3 -p core=21 -p cpuset=4 -p gpu=6 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
-      TXT
+TXT
 
       expected_clustera3_cmds = <<-TXT
 oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw-fakesite' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
-      TXT
+TXT
 
       generator_output = capture do
         generate_oar_properties(options)
@@ -462,7 +515,7 @@ TXT
 +---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
 |   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
 +---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
-      TXT
+TXT
 
       expected_clusterb1_desc = <<-TXT
 |  clusterb | clusterb-1           | 1     | 1     | 0        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
@@ -472,7 +525,7 @@ TXT
 |  clusterb | clusterb-1           | 1     | 5     | 4        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clusterb | clusterb-1           | 1     | 6     | 5        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clusterb | clusterb-1           | 1     | 7     | 6        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
-      TXT
+TXT
 
       expected_clusterb2_desc = <<-TXT
 |  clusterb | clusterb-2           | 3     | 17    | 0        | 5    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
@@ -482,7 +535,7 @@ TXT
 |  clusterb | clusterb-2           | 3     | 21    | 4        | 6    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clusterb | clusterb-2           | 3     | 22    | 5        | 6    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clusterb | clusterb-2           | 3     | 23    | 6        | 6    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
-      TXT
+TXT
 
       generator_output = capture do
         generate_oar_properties(options)
@@ -541,11 +594,11 @@ oarnodesetting -a -h 'clusterb-2.fakesite.grid5000.fr' -p host='clusterb-2.fakes
 oarnodesetting -a -h 'clusterb-2.fakesite.grid5000.fr' -p host='clusterb-2.fakesite.grid5000.fr' -p cpu=4 -p core=30 -p cpuset=13 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
 oarnodesetting -a -h 'clusterb-2.fakesite.grid5000.fr' -p host='clusterb-2.fakesite.grid5000.fr' -p cpu=4 -p core=31 -p cpuset=14 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
 oarnodesetting -a -h 'clusterb-2.fakesite.grid5000.fr' -p host='clusterb-2.fakesite.grid5000.fr' -p cpu=4 -p core=32 -p cpuset=15 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
-      TXT
+TXT
 
       expected_clusterb3_cmds = <<-TXT
 oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clusterb' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
-      TXT
+TXT
 
       expected_clusterb4_cmds = <<-TXT
 echo '================================================================================'
@@ -620,7 +673,7 @@ TXT
     ["+", "switch", nil]
     ["+", "virtual", "ivt"]
     ["+", "wattmeter", "MULTIPLE"]
-      TXT
+TXT
 
       expected_clusterb2_diff = <<-TXT
   clusterb-2: new node !
@@ -656,7 +709,7 @@ TXT
     ["+", "switch", nil]
     ["+", "virtual", "ivt"]
     ["+", "wattmeter", "MULTIPLE"]
-      TXT
+TXT
 
       expected_clusterb3_diff =  <<-TXT
   ["clusterb-1", "sdb.clusterb-1"]: new disk !
@@ -725,7 +778,7 @@ TXT
     ["+", "maintenance", "NO"]
     ["+", "network_address", ""]
     ["+", "production", "YES"]
-      TXT
+TXT
 
       generator_output = capture do
         generate_oar_properties(options)
@@ -739,7 +792,7 @@ TXT
 
 
 
-  context 'OAR server with data' do
+  context 'OAR server with data (cluster with disk)' do
     before do
       prepare_stubs("dump_oar_api_configured_server_with_disk.json", "load_data_hierarchy_stubbed_data_with_disk.json")
     end
@@ -765,7 +818,7 @@ TXT
 +---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
 |   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
 +---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
-      TXT
+TXT
 
       expected_clusterb1_desc = <<-TXT
 |  clusterb | clusterb-1           | 1     | 1     | 0        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
@@ -774,7 +827,7 @@ TXT
 |  clusterb | clusterb-1           | 1     | 4     | 3        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clusterb | clusterb-1           | 1     | 5     | 4        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clusterb | clusterb-1           | 1     | 6     | 5        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
-      TXT
+TXT
 
       expected_clusterb2_desc = <<-TXT
 |  clusterb | clusterb-2           | 4     | 26    | 9        | 7    | 2                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
@@ -784,7 +837,7 @@ TXT
 |  clusterb | clusterb-2           | 4     | 30    | 13       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clusterb | clusterb-2           | 4     | 31    | 14       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
 |  clusterb | clusterb-2           | 4     | 32    | 15       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
-      TXT
+TXT
 
       generator_output = capture do
         generate_oar_properties(options)
@@ -822,7 +875,7 @@ property_exist 'core' || oarproperty -a core
 property_exist 'gpudevice' || oarproperty -a gpudevice
 property_exist 'gpu' || oarproperty -a gpu
 property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
-      TXT
+TXT
 
       expected_clusterb1_cmds = <<-TXT
 ###################################
@@ -832,7 +885,7 @@ oarnodesetting --sql "host='clusterb-1.fakesite.grid5000.fr' AND resource_id='1'
 oarnodesetting --sql "host='clusterb-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=2 -p cpuset=1 -p gpu=1 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
 oarnodesetting --sql "host='clusterb-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=3 -p cpuset=2 -p gpu=1 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
 oarnodesetting --sql "host='clusterb-1.fakesite.grid5000.fr' AND resource_id='4' AND type='default'" -p cpu=1 -p core=4 -p cpuset=3 -p gpu=1 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
-      TXT
+TXT
 
       expected_clusterb2_cmds = <<-TXT
 ###################################
@@ -854,11 +907,11 @@ oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' AND resource_id='32
 oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
 oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' AND resource_id='34' AND type='default'" -p cpu=4 -p core=31 -p cpuset=14 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
 oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' AND resource_id='35' AND type='default'" -p cpu=4 -p core=32 -p cpuset=15 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
-      TXT
+TXT
 
       expected_clusterb3_cmds = <<-TXT
 oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clusterb' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
-      TXT
+TXT
 
       generator_output = capture do
         generate_oar_properties(options)
@@ -890,11 +943,11 @@ oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' and type='default'"
 
       expected_clusterb1_diff = <<-TXT
   clusterb-1: OK
-      TXT
+TXT
 
       expected_clusterb2_diff = <<-TXT
   clusterb-2: OK
-      TXT
+TXT
 
       expected_clusterb3_diff = <<-TXT
   ["clusterb-1", "sdb.clusterb-1"]: OK
@@ -903,7 +956,7 @@ oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' and type='default'"
   ["clusterb-2", "sdb.clusterb-2"]: OK
   ["clusterb-2", "sdc.clusterb-2"]: OK
   ["clusterb-2", "sdd.clusterb-2"]: OK
-      TXT
+TXT
 
       generator_output = capture do
         generate_oar_properties(options)
@@ -912,6 +965,374 @@ oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' and type='default'"
       expect(generator_output[:stdout]).to include(expected_clusterb1_diff)
       expect(generator_output[:stdout]).to include(expected_clusterb2_diff)
       expect(generator_output[:stdout]).to include(expected_clusterb3_diff)
+    end
+  end
+
+  context 'interracting with an empty OAR server (without gpu)' do
+    before do
+      prepare_stubs("dump_oar_api_empty_server.json", "load_data_hierarchy_stubbed_data_without_gpu.json")
+    end
+
+    it 'should generate correctly a table of nodes' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => true,
+          :print => false,
+          :update => false,
+          :diff => false,
+          :site => "fakesite",
+          :clusters => ["clusterc"]
+      }
+
+      expected_header = <<-TXT
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+|   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+TXT
+
+      expected_clusterc1_desc = <<-TXT
+|  clusterc | clusterc-1           | 1     | 1     | 0        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 2     | 1        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 3     | 2        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 4     | 3        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 5     | 4        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 6     | 5        |      |                      | Intel Xeon Silver 4110         |                               |
+TXT
+
+      expected_clusterc2_desc = <<-TXT
+|  clusterc | clusterc-2           | 4     | 26    | 9        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 27    | 10       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 28    | 11       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 29    | 12       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 30    | 13       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 31    | 14       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 32    | 15       |      |                      | Intel Xeon Silver 4110         |                               |
+TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clusterc1_desc)
+      expect(generator_output[:stdout]).to include(expected_clusterc2_desc)
+    end
+
+    it 'should generate correctly all the commands to update OAR' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => false,
+          :print => true,
+          :update => false,
+          :diff => false,
+          :site => "fakesite",
+          :clusters => ["clusterc"]
+      }
+
+      expected_header = <<-TXT
+#############################################
+# Create OAR properties that were created by 'oar_resources_add'
+#############################################
+property_exist 'host' || oarproperty -a host --varchar
+property_exist 'cpu' || oarproperty -a cpu
+property_exist 'core' || oarproperty -a core
+property_exist 'gpudevice' || oarproperty -a gpudevice
+property_exist 'gpu' || oarproperty -a gpu
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+TXT
+
+      expected_clusterc1_cmds = <<-TXT
+###################################
+# clusterc-1.fakesite.grid5000.fr
+###################################
+oarnodesetting -a -h 'clusterc-1.fakesite.grid5000.fr' -p host='clusterc-1.fakesite.grid5000.fr' -p cpu=1 -p core=1 -p cpuset=0
+oarnodesetting -a -h 'clusterc-1.fakesite.grid5000.fr' -p host='clusterc-1.fakesite.grid5000.fr' -p cpu=1 -p core=2 -p cpuset=1
+oarnodesetting -a -h 'clusterc-1.fakesite.grid5000.fr' -p host='clusterc-1.fakesite.grid5000.fr' -p cpu=1 -p core=3 -p cpuset=2
+TXT
+
+
+
+      expected_clusterc2_cmds = <<-TXT
+oarnodesetting -a -h 'clusterc-2.fakesite.grid5000.fr' -p host='clusterc-2.fakesite.grid5000.fr' -p cpu=4 -p core=29 -p cpuset=12
+oarnodesetting -a -h 'clusterc-2.fakesite.grid5000.fr' -p host='clusterc-2.fakesite.grid5000.fr' -p cpu=4 -p core=30 -p cpuset=13
+oarnodesetting -a -h 'clusterc-2.fakesite.grid5000.fr' -p host='clusterc-2.fakesite.grid5000.fr' -p cpu=4 -p core=31 -p cpuset=14
+oarnodesetting -a -h 'clusterc-2.fakesite.grid5000.fr' -p host='clusterc-2.fakesite.grid5000.fr' -p cpu=4 -p core=32 -p cpuset=15
+TXT
+      expected_clusterc3_cmds = <<-TXT
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clusterc' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=0 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
+TXT
+
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clusterc1_cmds)
+      expect(generator_output[:stdout]).to include(expected_clusterc2_cmds)
+      expect(generator_output[:stdout]).to include(expected_clusterc3_cmds)
+    end
+
+    it 'should generate correctly a diff with the OAR server' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => false,
+          :print => false,
+          :update => false,
+          :diff => true,
+          :site => "fakesite",
+          :clusters => ["clusterc"],
+          :verbose => 2
+      }
+
+      expected_clusterc1_diff = <<-TXT
+  clusterc-1: new node !
+    ["+", "cluster", "clusterc"]
+    ["+", "cluster_priority", 201906]
+    ["+", "cpuarch", "x86_64"]
+    ["+", "cpucore", 8]
+    ["+", "cpufreq", "2.1"]
+    ["+", "cputype", "Intel Xeon Silver 4110"]
+    ["+", "disk_reservation_count", 3]
+    ["+", "disktype", "SATA"]
+    ["+", "eth_count", 1]
+    ["+", "eth_rate", 10]
+    ["+", "gpu_count", 0]
+    ["+", "ib", "NO"]
+    ["+", "ib_count", 0]
+    ["+", "ib_rate", 0]
+    ["+", "ip", "172.16.64.1"]
+    ["+", "maintenance", "NO"]
+    ["+", "max_walltime", 86400]
+    ["+", "memcore", 8192]
+    ["+", "memcpu", 65536]
+    ["+", "memnode", 131072]
+    ["+", "mic", "NO"]
+    ["+", "myri", "NO"]
+    ["+", "myri_count", 0]
+    ["+", "myri_rate", 0]
+    ["+", "nodemodel", "Dell PowerEdge T640"]
+    ["+", "opa", "NO"]
+    ["+", "opa_count", 0]
+    ["+", "opa_rate", 0]
+    ["+", "production", "YES"]
+    ["+", "switch", nil]
+    ["+", "virtual", "ivt"]
+    ["+", "wattmeter", "MULTIPLE"]
+TXT
+
+      expected_clusterc2_diff = <<-TXT
+  clusterc-2: new node !
+    ["+", "cluster", "clusterc"]
+    ["+", "cluster_priority", 201906]
+    ["+", "cpuarch", "x86_64"]
+    ["+", "cpucore", 8]
+    ["+", "cpufreq", "2.1"]
+    ["+", "cputype", "Intel Xeon Silver 4110"]
+    ["+", "disk_reservation_count", 3]
+    ["+", "disktype", "SATA"]
+    ["+", "eth_count", 1]
+    ["+", "eth_rate", 10]
+    ["+", "gpu_count", 0]
+    ["+", "ib", "NO"]
+    ["+", "ib_count", 0]
+    ["+", "ib_rate", 0]
+    ["+", "ip", "172.16.64.2"]
+    ["+", "maintenance", "NO"]
+    ["+", "max_walltime", 86400]
+    ["+", "memcore", 8192]
+    ["+", "memcpu", 65536]
+    ["+", "memnode", 131072]
+    ["+", "mic", "NO"]
+    ["+", "myri", "NO"]
+    ["+", "myri_count", 0]
+    ["+", "myri_rate", 0]
+    ["+", "nodemodel", "Dell PowerEdge T640"]
+    ["+", "opa", "NO"]
+    ["+", "opa_count", 0]
+    ["+", "opa_rate", 0]
+    ["+", "production", "YES"]
+    ["+", "switch", nil]
+    ["+", "virtual", "ivt"]
+    ["+", "wattmeter", "MULTIPLE"]
+TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_clusterc1_diff)
+      expect(generator_output[:stdout]).to include(expected_clusterc2_diff)
+    end
+  end
+
+  context 'interracting with a configured OAR server (without gpu)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_without_gpu.json", "load_data_hierarchy_stubbed_data_without_gpu.json")
+    end
+
+    it 'should generate correctly a table of nodes' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => true,
+          :print => false,
+          :update => false,
+          :diff => false,
+          :site => "fakesite",
+          :clusters => ["clusterc"]
+      }
+
+      expected_header = <<-TXT
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+|   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+TXT
+
+      expected_clusterc1_desc = <<-TXT
+|  clusterc | clusterc-1           | 1     | 1     | 0        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 2     | 1        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 3     | 2        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 4     | 3        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 5     | 4        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 6     | 5        |      |                      | Intel Xeon Silver 4110         |                               |
+TXT
+
+      expected_clusterc2_desc = <<-TXT
+|  clusterc | clusterc-2           | 4     | 26    | 9        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 27    | 10       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 28    | 11       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 29    | 12       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 30    | 13       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 31    | 14       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 32    | 15       |      |                      | Intel Xeon Silver 4110         |                               |
+TXT
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clusterc1_desc)
+      expect(generator_output[:stdout]).to include(expected_clusterc2_desc)
+    end
+
+    it 'should generate correctly all the commands to update OAR' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => false,
+          :print => true,
+          :update => false,
+          :diff => false,
+          :site => "fakesite",
+          :clusters => ["clusterc"]
+      }
+
+      expected_header = <<-TXT
+#############################################
+# Create OAR properties that were created by 'oar_resources_add'
+#############################################
+property_exist 'host' || oarproperty -a host --varchar
+property_exist 'cpu' || oarproperty -a cpu
+property_exist 'core' || oarproperty -a core
+property_exist 'gpudevice' || oarproperty -a gpudevice
+property_exist 'gpu' || oarproperty -a gpu
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+TXT
+
+      expected_clusterc1_cmds = <<-TXT
+###################################
+# clusterc-1.fakesite.grid5000.fr
+###################################
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='1' AND type='default'" -p cpu=1 -p core=1 -p cpuset=0
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=2 -p cpuset=1
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=3 -p cpuset=2
+TXT
+
+      expected_clusterc2_cmds = <<-TXT
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='32' AND type='default'" -p cpu=4 -p core=29 -p cpuset=12
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='34' AND type='default'" -p cpu=4 -p core=31 -p cpuset=14
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='35' AND type='default'" -p cpu=4 -p core=32 -p cpuset=15
+TXT
+      expected_clusterc3_cmds = <<-TXT
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clusterc' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=0 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
+TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clusterc1_cmds)
+      expect(generator_output[:stdout]).to include(expected_clusterc2_cmds)
+      expect(generator_output[:stdout]).to include(expected_clusterc3_cmds)
+    end
+
+    it 'should generate correctly a diff with the OAR server' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => false,
+          :print => false,
+          :update => false,
+          :diff => true,
+          :site => "fakesite",
+          :clusters => ["clusterc"],
+          :verbose => 2
+      }
+
+      expected_clusterc1_diff = <<-TXT
+Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
+  clusterc-1: OK
+  clusterc-2: OK
+  ["clusterc-1", "sdb.clusterc-1"]: OK
+  ["clusterc-1", "sdc.clusterc-1"]: OK
+  ["clusterc-1", "sdd.clusterc-1"]: OK
+  ["clusterc-2", "sdb.clusterc-2"]: OK
+  ["clusterc-2", "sdc.clusterc-2"]: OK
+  ["clusterc-2", "sdd.clusterc-2"]: OK
+TXT
+
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_clusterc1_diff)
     end
   end
 end
