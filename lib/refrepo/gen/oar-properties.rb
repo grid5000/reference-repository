@@ -594,7 +594,7 @@ def get_oar_data(site_uid, options)
   puts '... done' if options[:verbose]
 
   oarnodes = JSON.parse(response.body)
- 
+
   # Adapt from the format of the OAR API
   oarnodes = oarnodes['items'] if oarnodes.key?('items')
   return oarnodes
@@ -1052,9 +1052,15 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     cpu_idx = 0
     core_idx = 0
 
-    cluster_resources = site_resources.select{|r| r["cluster"] == cluster_name}
-
     cluster_desc_from_input_files = data_hierarchy['sites'][site_name]['clusters'][cluster_name]
+    cluster_nodes = cluster_desc_from_input_files['nodes']
+    
+    node_count = cluster_nodes.length
+
+    cluster_resources = site_resources
+                            .select{|r| r["cluster"] == cluster_name}
+                            .select{|r| cluster_nodes.include?(r["host"].split(".")[0])}
+
     first_node = cluster_desc_from_input_files['nodes'].first[1]
 
     # Some clusters such as graphite have a different organisation:
@@ -1068,7 +1074,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     # To cope with such cases and ensure an homogeneous processing a "is_quirk_cluster" variable is set to true.
     is_quirk_cluster = false
 
-    node_count = cluster_desc_from_input_files['nodes'].length
 
     cpu_count = first_node['architecture']['nb_procs']
     core_count = first_node['architecture']['nb_cores'] / cpu_count
@@ -1129,7 +1134,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     end
 
     phys_rsc_map.each do |physical_resource, variables|
-      # Try to fix a bad allocation of physical resources. There is two main cases:
+      # Try to detect a bad allocation of physical resources. There is two main cases:
       #  case 1) We detect too many resources: it likely means than a rsc of another cluster has been mis-associated to
       #   this cluster. A simple fix is to sort <RESOURCES> of the cluster according to their number of occurence in
       #   the cluster's properties, and keep only the N <RESOURCES> that appears the most frequently, where N is equal
@@ -1142,6 +1147,28 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       expected_phys_rsc_count = variables[:per_cluster_count]
 
       if phys_rsc_ids.length != expected_phys_rsc_count
+
+        # We detected a situation where a phyisical resource is misallocated to a wrong OAR property
+        if cluster_resources.map{|r| r[physical_resource]}.length == expected_phys_rsc_count
+          resource_count = Hash.new([])
+          cluster_resources.select{|r| not r[physical_resource].nil? }.each do |resource|
+            resource_count[resource[physical_resource]] += [resource]
+          end
+
+          for (k, v) in resource_count
+            if v.size > 1
+              duplicated_resources = cluster_resources.select{|r| r[physical_resource] == k}
+              oar_sql_clause = duplicated_resources.map{|r| r["id"]}.map{|rid| "resource_id='#{rid}'"}.join(" OR ")
+
+              puts("################################")
+              puts("# Error: resources with ids #{duplicated_resources.map{|r| r["id"]}} have the same value for #{physical_resource} (#{physical_resource} is equal to #{k})\n")
+              puts("# You can review this situation via the following command:\n")
+              puts("################################")
+              puts("oarnodes -Y --sql \"#{oar_sql_clause}\"\n")
+            end
+          end
+        end
+
         raise "#{physical_resource} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count})"
       end
 
