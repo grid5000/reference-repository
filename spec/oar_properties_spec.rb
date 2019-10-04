@@ -1335,4 +1335,238 @@ TXT
       expect(generator_output[:stdout]).to include(expected_clusterc1_diff)
     end
   end
+
+  context 'interracting with a configured OAR server (quirk cluster)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_quirk_cluster.json", "load_data_hierarchy_stubbed_data_without_gpu.json")
+    end
+
+    it 'should generate correctly a table of nodes' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => true,
+        :print => false,
+        :update => false,
+        :diff => false,
+        :site => "fakesite",
+        :clusters => ["clusterc"]
+      }
+
+      expected_header = <<-TXT
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+|   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+      TXT
+
+      expected_clusterc1_desc = <<-TXT
+|  clusterc | clusterc-1           | 1     | 1     | 0        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 3     | 1        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 2     | 2        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 4     | 3        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 5     | 4        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 6     | 5        |      |                      | Intel Xeon Silver 4110         |                               |
+      TXT
+
+      expected_clusterc2_desc = <<-TXT
+|  clusterc | clusterc-2           | 4     | 26    | 9        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 27    | 10       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 28    | 11       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 29    | 12       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 30    | 13       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 31    | 14       |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-2           | 4     | 32    | 15       |      |                      | Intel Xeon Silver 4110         |                               |
+TXT
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clusterc1_desc)
+      expect(generator_output[:stdout]).to include(expected_clusterc2_desc)
+    end
+
+    it 'should generate correctly all the commands to update OAR' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => true,
+        :update => false,
+        :diff => false,
+        :site => "fakesite",
+        :clusters => ["clusterc"]
+      }
+
+      expected_header = <<-TXT
+#############################################
+# Create OAR properties that were created by 'oar_resources_add'
+#############################################
+property_exist 'host' || oarproperty -a host --varchar
+property_exist 'cpu' || oarproperty -a cpu
+property_exist 'core' || oarproperty -a core
+property_exist 'gpudevice' || oarproperty -a gpudevice
+property_exist 'gpu' || oarproperty -a gpu
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+TXT
+
+      expected_clusterc1_cmds = <<-TXT
+###################################
+# clusterc-1.fakesite.grid5000.fr
+###################################
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='1' AND type='default'" -p cpu=1 -p core=1 -p cpuset=0
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=3 -p cpuset=1
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=2 -p cpuset=2
+TXT
+
+      expected_clusterc2_cmds = <<-TXT
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='32' AND type='default'" -p cpu=4 -p core=29 -p cpuset=12
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='34' AND type='default'" -p cpu=4 -p core=31 -p cpuset=14
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='35' AND type='default'" -p cpu=4 -p core=32 -p cpuset=15
+TXT
+      expected_clusterc3_cmds = <<-TXT
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clusterc' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=0 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
+TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clusterc1_cmds)
+      expect(generator_output[:stdout]).to include(expected_clusterc2_cmds)
+      expect(generator_output[:stdout]).to include(expected_clusterc3_cmds)
+    end
+
+    it 'should generate correctly a diff with the OAR server' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clusterc"],
+        :verbose => 2
+      }
+
+      expected_clusterc1_diff = <<-TXT
+Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
+  clusterc-1: OK
+  clusterc-2: OK
+  ["clusterc-1", "sdb.clusterc-1"]: OK
+  ["clusterc-1", "sdc.clusterc-1"]: OK
+  ["clusterc-1", "sdd.clusterc-1"]: OK
+  ["clusterc-2", "sdb.clusterc-2"]: OK
+  ["clusterc-2", "sdc.clusterc-2"]: OK
+  ["clusterc-2", "sdd.clusterc-2"]: OK
+TXT
+
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_clusterc1_diff)
+    end
+  end
+
+  context 'interracting with a configured OAR server (misconfigured cores)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_misconfigured_cores.json", "load_data_hierarchy_stubbed_data_without_gpu.json")
+    end
+
+    it 'should generate generate an error' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => true,
+        :update => false,
+        :diff => false,
+        :site => "fakesite",
+        :clusters => ["clusterc"]
+      }
+
+      expected_output = <<-TXT
+################################
+# Error: resources with ids [2, 3] have the same value for core (core is equal to 3)
+# You can review this situation via the following command:
+################################
+oarnodes -Y --sql "resource_id='2' OR resource_id='3'"
+TXT
+
+      has_encountered_an_error = false
+      generator_output = capture do
+        begin
+          generate_oar_properties(options)
+        rescue
+          has_encountered_an_error = true
+        end
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+      expect(has_encountered_an_error).to be true
+    end
+  end
+
+  context 'interracting with a configured OAR server (misconfigured gpu)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_misconfigured_gpu.json", "load_data_hierarchy_stubbed_data_without_gpu.json")
+    end
+
+    it 'should propose a correction' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"]
+      }
+
+      expected_output = <<-TXT
+Error: resource 9 is associated to GPU (2), while I computed that it should be associated to 3
+TXT
+      expected_output2 = <<-TXT
+oarnodesetting --sql "resource_id='9' AND type='default'" -p gpu=3
+TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+      expect(generator_output[:stdout]).to include(expected_output2)
+    end
+  end
 end
