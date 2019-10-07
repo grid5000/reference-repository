@@ -56,7 +56,7 @@
 <%
      conf.fetch('devices', []).sort.to_h.each do |dev_id, dev|
 -%>
-       {"name": "<%= dev_id %>", "IP": "<%= dev['ip'] %>", "type": "<%= dev['driver'] %>", <%= dev.has_key?('port')? "\"Port\": #{dev['port']}," : "" %> <%= dev.has_key?('user')? "\"User\": \"#{dev['user']}\"," : "" %> <%= dev.has_key?('password')? "\"Passwd\": \"#{dev['password']}\"," : "" %>},
+       {"name": "<%= dev_id %>", "IP": "<%= dev['ip'] %>", "type": "<%= dev['driver'] %>", <%= dev.has_key?('port')? "\"Port\": #{dev['port']}," : "" %> <%= dev.has_key?('user')? "\"User\": \"#{dev['user']}\"," : "" %> <%= dev.has_key?('password')? "\"Passwd\": \"#{dev['password']}\"," : "" %><%= dev.has_key?('prompt')? " \"Prompt\": \"#{dev['prompt']}\"," : "" %>},
 <%
      end
 -%>
