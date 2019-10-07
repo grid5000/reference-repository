@@ -1,0 +1,108 @@
+{
+  "backplane_bps": 960000000000,
+  "kind": "switch",
+  "linecards": [
+    {
+      "kavlan_pattern": "%PORT%",
+      "kind": "node",
+      "port": "eth0",
+      "ports": [
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "uid": "gemini-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "uid": "gemini-2"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "other",
+          "port": "eth0",
+          "uid": "albireo-a"
+        },
+        {
+          "kind": "other",
+          "port": "eth0",
+          "uid": "albireo-b"
+        },
+        {
+        },
+        {
+          "kind": "other",
+          "port": "eth0",
+          "uid": "alcor"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "switch",
+          "port": "0:60",
+          "uid": "force10"
+        }
+      ],
+      "rate": 10000000000,
+      "snmp_pattern": "TenGigabitEthernet %LINECARD%/%PORT%"
+    }
+  ],
+  "model": "Dell EMC S4128F-ON",
+  "sensors": {
+    "network": {
+      "available": true,
+      "resolution": 1
+    }
+  },
+  "serial": "J9J1PK2",
+  "site": "lyon",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "gwnext",
+  "vlans": {
+    "vlan101": {
+      "addresses": [
+        "172.17.63.252"
+      ],
+      "administrative": true
+    }
+  },
+  "warranty": "2024-08-15",
+  "weathermap": {
+  }
+}
