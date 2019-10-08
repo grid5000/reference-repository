@@ -60,7 +60,7 @@
     "ram_size": 103079215104
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "multiple"
   },
   "network_adapters": [
     {
@@ -146,6 +146,20 @@
     "version": "Gold 5220"
   },
   "sensors": {
+    "power": {
+      "available": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 2,
+            "uid": "gros-pdu4"
+          }
+        ]
+      }
+    }
   },
   "storage_devices": [
     {
