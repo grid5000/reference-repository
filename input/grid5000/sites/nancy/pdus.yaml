@@ -137,3 +137,42 @@ pdus:
   graffiti-pdu4:
     ip: 172.17.79.232
     mac: 28:29:86:10:0E:B4
+
+  gros-pdu[1-8]:
+    vendor: APC
+    model: AP8653
+    sensors:
+     - power:
+        per_outlets: true
+        snmp:
+          available: true
+          total_oids:
+            - iso.3.6.1.4.1.318.1.1.12.1.16.0
+          unit: W
+          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+        resolution: 1
+
+  gros-pdu1:
+    ip: 172.17.79.222
+    mac: 28:29:86:1b:0e:e5
+  gros-pdu2:
+    ip: 172.17.79.233
+    mac: 28:29:86:1a:0a:d2
+  gros-pdu3:
+    ip: 172.17.79.234
+    mac: 28:29:86:1a:09:ae
+  gros-pdu4:
+    ip: 172.17.79.235
+    mac: 28:29:86:1a:0a:b6
+  gros-pdu5:
+    ip: 172.17.79.236
+    mac: 28:29:86:1b:0e:e6
+  gros-pdu6:
+    ip: 172.17.79.237
+    mac: 28:29:86:1b:0e:ef
+  gros-pdu7:
+    ip: 172.17.79.239
+    mac: 28:29:86:10:0e:89
+  gros-pdu8:
+    ip: 172.17.79.249
+    mac: 28:29:86:12:28:60
