@@ -118,6 +118,7 @@ def get_servers_records(site)
         new_record_ipv6.address = net['ip6']
         new_record_ipv6.label = server_uid
         new_record_ipv6.label += "-#{net_uid}" if net_uid != 'default'
+        new_record_ipv6.label += '-ipv6'
         records << new_record_ipv6
       end
       if server['alias']
@@ -152,7 +153,7 @@ def get_pdus_records(site)
     if pdu['ip6']
       new_record_ipv6 = DNS::Zone::RR::AAAA.new
       new_record_ipv6.address = pdu['ip6']
-      new_record_ipv6.label = pdu_uid
+      new_record_ipv6.label = pdu_uid + '-ipv6'
       records << new_record_ipv6
     end
   }
@@ -184,7 +185,7 @@ def get_networks_records(site, key)
       if net_hash['ip6']
         new_record_ipv6 = DNS::Zone::RR::AAAA.new
         new_record_ipv6.address = net_hash['ip6']
-        new_record_ipv6.label = uid + hostsuffix
+        new_record_ipv6.label = uid + hostsuffix + '-ipv6'
         records << new_record_ipv6
       end
     }
@@ -214,6 +215,7 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       new_record_ipv6.address = net_hash['ip6']
       new_record_ipv6.label = "#{cluster_uid}-#{node_id}"
       new_record_ipv6.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
+      new_record_ipv6.label += '-ipv6'
       records << new_record_ipv6
     end
 
