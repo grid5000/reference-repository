@@ -9,9 +9,6 @@ class MissingProperty < StandardError; end
 
 MiB = 1024**2
 
-# GPU distribution can be: round-robin | continuous
-DEFAULT_GPUSET_MAPPING = "continuous"
-
 ############################################
 # Functions related to the "TABLE" operation
 ############################################
@@ -1070,8 +1067,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
     cpu_model = "#{first_node['processor']['model']} #{first_node['processor']['version']}"
     core_numbering = first_node['architecture']['cpu_core_numbering']
-    # Detect how 'GPUSETs' are distributed over CPUs/GPUs of servers of this cluster
-    gpuset_mapping = DEFAULT_GPUSET_MAPPING
 
     ############################################
     # (2-b) Detect existing resource_ids and {CPU, CORE, CPUSET, GPU}'s IDs
@@ -1288,11 +1283,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           # (2-e) [if cluster with GPU] Associate a gpuset to each core
           ############################################
           if not numa_gpus.empty?
-            if gpuset_mapping == 'continuous'
-              gpu_idx = core_index0 / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
-            else
-              gpu_idx = core_index0 % numa_gpus.length
-            end
+            gpu_idx = core_index0 / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
 
             selected_gpu = numa_gpus[gpu_idx]
             if selected_gpu.nil?
