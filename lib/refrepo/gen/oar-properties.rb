@@ -1198,7 +1198,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         gpu_idx += 1
       end
 
-      if core_numbering == 'continuous'
+      if core_numbering == 'contiguous'
         cpuset = 0
       end
 
@@ -1270,7 +1270,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           ############################################
           # (2-d) Associate a cpuset to each core
           ############################################
-          if core_numbering == 'continuous'
+          if core_numbering == 'contiguous'
             row[:cpuset] = cpuset
           else
             # CPUSETs starts at 0
@@ -1298,7 +1298,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
           core_idx += 1
 
-          if core_numbering == 'continuous'
+          if core_numbering == 'contiguous'
             cpuset += 1
           end
 
