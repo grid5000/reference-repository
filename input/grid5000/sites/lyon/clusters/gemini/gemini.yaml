@@ -15,13 +15,30 @@ nodes:
         - testing
     storage_devices:
       sda:
-        interface: SCSI
+        interface: SAS
         driver: megaraid_sas
-        storage: HDD
+        storage: SSD
+        reservation: true
       sdb:
-        interface: SCSI
+        interface: SAS
         driver: megaraid_sas
-        storage: HDD
+        storage: SSD
+        reservation: true
+      sdc:
+        interface: SAS
+        driver: megaraid_sas
+        storage: SSD
+        reservation: true
+      sdd:
+        interface: SAS
+        driver: megaraid_sas
+        storage: SSD
+        reservation: true
+      sde:
+        interface: SAS
+        driver: megaraid_sas
+        storage: SSD
+        reservation: true
     performance:
       core_flops: 0
       node_flops: 0

@@ -10,7 +10,7 @@ gemini-2:
     release_date: 02/14/2019
     vendor: American Megatrends Inc.
     version: S2W_3A08
-  bmc_version: 'unknown'
+  bmc_version: unknown
   chassis:
     manufacturer: NVIDIA
     name: DGX-1 with V100-32
@@ -129,16 +129,34 @@ gemini-2:
     version: E5-2698 v4
   storage_devices:
     sda:
-      by_id: "/dev/disk/by-id/wwn-0x6001636002b0eb30249c2e5a12d3eb70"
-      by_path: "/dev/disk/by-path/pci-0000:81:00.0-scsi-0:2:0:0"
-      firmware_version: 4.66
-      model: MRROMB
-      size: 479559942144
+      by_id: "/dev/disk/by-id/wwn-0x5001636002be9c8c"
+      by_path: "/dev/disk/by-path/pci-0000:81:00.0-scsi-0:0:14:0"
+      firmware_version: GXM5104Q
+      model: SAMSUNG MZ7KM480
+      size: 480103981056
     sdb:
-      by_id: "/dev/disk/by-id/wwn-0x6001636002b0eb30249c2e5b12dcfe79"
-      by_path: "/dev/disk/by-path/pci-0000:81:00.0-scsi-0:2:1:0"
-      firmware_version: 4.66
-      model: MRROMB
-      size: 7679267307520
+      by_id: "/dev/disk/by-id/wwn-0x5002538c40bf3462"
+      by_path: "/dev/disk/by-path/pci-0000:81:00.0-scsi-0:0:15:0"
+      firmware_version: GXT5204Q
+      model: SAMSUNG MZ7LM1T9
+      size: 1920383410176
+    sdc:
+      by_id: "/dev/disk/by-id/wwn-0x5002538c40bf3469"
+      by_path: "/dev/disk/by-path/pci-0000:81:00.0-scsi-0:0:16:0"
+      firmware_version: GXT5204Q
+      model: SAMSUNG MZ7LM1T9
+      size: 1920383410176
+    sdd:
+      by_id: "/dev/disk/by-id/wwn-0x5002538c40bf3459"
+      by_path: "/dev/disk/by-path/pci-0000:81:00.0-scsi-0:0:17:0"
+      firmware_version: GXT5204Q
+      model: SAMSUNG MZ7LM1T9
+      size: 1920383410176
+    sde:
+      by_id: "/dev/disk/by-id/wwn-0x5002538c40bf345b"
+      by_path: "/dev/disk/by-path/pci-0000:81:00.0-scsi-0:0:18:0"
+      firmware_version: GXT5204Q
+      model: SAMSUNG MZ7LM1T9
+      size: 1920383410176
   supported_job_types:
     virtual: ivt
