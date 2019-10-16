@@ -24,10 +24,6 @@ force10:
       rate: 10000000000
       port: eth0
       ports:
-        0:
-          uid: gw-lyon
-          kind: router
-          port: "9:2"
         1: taurus-1
         2: taurus-2
         3: taurus-3
@@ -91,6 +87,6 @@ force10:
           uid: procyon
           kind: other
         60:
-          uid: gwnext
-          kind: switch
+          uid: gw-lyon
+          kind: router
           port: '0:25'

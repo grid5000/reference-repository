@@ -1,0 +1,52 @@
+---
+salome:
+  model: FESX448+2XG-PREM
+  serial: FL37068284
+  warranty: expired
+  kind: switch
+  site: lyon
+  snmp_community: public
+  sensors:
+    network:
+      available: true
+      resolution: 1
+  vlans:
+    "vlan101":
+      administrative: yes
+      addresses:
+        - 172.17.63.250
+  backplane_bps: 136000000000
+  linecards:
+    0:
+      snmp_pattern: "ethernet %PORT%"
+      kavlan_pattern: "%PORT%"
+      kind: node
+      rate: 1000000000
+      port: eth1
+      ports:
+        2:
+          uid: gw-lyon
+          kind: router
+          port: "0:23"
+        21: sagittaire-1
+        22: sagittaire-2
+        23: sagittaire-3
+        24: sagittaire-4
+        25: sagittaire-5
+        26: sagittaire-6
+        27: sagittaire-7
+        28: sagittaire-11
+        29: sagittaire-12
+        30: sagittaire-13
+        31: sagittaire-14
+        32: sagittaire-15
+        33: sagittaire-16
+        34: sagittaire-17
+        35: sagittaire-18
+        36: sagittaire-19
+        37: sagittaire-20
+        38: sagittaire-24
+        39: sagittaire-27
+        40: sagittaire-29
+        41: sagittaire-30
+        42: sagittaire-31

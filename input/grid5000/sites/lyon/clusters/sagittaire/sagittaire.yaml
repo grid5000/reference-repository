@@ -16,11 +16,7 @@ nodes:
     status: retired
   sagittaire-28:
     status: retired
-  sagittaire-[35-42]:
-    status: retired
-  sagittaire-[45-47]:
-    status: retired
-  sagittaire-[52-79]:
+  sagittaire-[32-79]:
     status: retired
 
   sagittaire-[1-79]:
@@ -59,7 +55,7 @@ nodes:
         mountable: true
         mounted: true
         bridged: true
-      bmc:    
+      bmc:
         interface: Ethernet
         rate: 1000000000
         enabled: true
@@ -77,7 +73,7 @@ nodes:
           api:
             metric: power
           www:
-            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php 
+            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php
 
   sagittaire-[70-79]:
     storage_devices:

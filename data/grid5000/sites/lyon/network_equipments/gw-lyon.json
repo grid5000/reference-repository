@@ -1,74 +1,53 @@
 {
-  "backplane_bps": 800000000000,
+  "backplane_bps": 960000000000,
   "kind": "router",
   "linecards": [
     {
-    },
-    {
-    },
-    {
-      "backplane_bps": 48000000000,
-      "kavlan_pattern": "%LINECARD%:%PORT%",
-      "ports": [
-        {
-        },
-        {
-          "kind": "other",
-          "port": "bmc",
-          "uid": "andromede"
-        },
-        {
-        },
-        {
-          "kind": "other",
-          "port": "bmc",
-          "uid": "procyon"
-        },
-        {
-        },
-        {
-        },
-        {
-          "kind": "other",
-          "port": "bmc",
-          "uid": "castor"
-        },
-        {
-          "kind": "other",
-          "port": "bmc",
-          "uid": "pollux"
-        }
-      ],
-      "rate": 1000000000,
-      "snmp_pattern": "BD-8810 Port %LINECARD%:%PORT%"
-    },
-    {
-      "backplane_bps": 48000000000,
-      "kavlan_pattern": "%LINECARD%:%PORT%",
-      "ports": [
-        {
-        },
-        {
-          "kind": "other",
-          "uid": "wattemetre"
-        },
-        {
-          "kind": "other",
-          "uid": "andromede"
-        }
-      ],
-      "rate": 1000000000,
-      "snmp_pattern": "BD-8810 Port %LINECARD%:%PORT%"
-    },
-    {
-      "backplane_bps": 48000000000,
-      "kavlan_pattern": "%LINECARD%:%PORT%",
+      "kavlan_pattern": "%PORT%",
       "kind": "node",
-      "port": "eth1",
+      "port": "eth0",
       "ports": [
         {
         },
         {
+          "kind": "node",
+          "port": "eth0",
+          "uid": "gemini-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "uid": "gemini-2"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "virtual",
+          "port": "eth0",
+          "site": "renater",
+          "uid": "renater-lyon"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
         },
         {
         },
@@ -80,235 +59,44 @@
         },
         {
           "kind": "other",
-          "port": "eth1",
-          "uid": "cyrrus"
+          "port": "eno1",
+          "uid": "albireo-a"
         },
         {
           "kind": "other",
-          "port": "eth1",
-          "uid": "flow"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-5"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-3"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-1"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-16"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-12"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-15"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-7"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-30"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-33"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-32"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-20"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-24"
-        },
-        {
+          "port": "eno1",
+          "uid": "albireo-b"
         },
         {
           "kind": "other",
-          "port": "eth1",
-          "uid": "nebula"
+          "port": "ens3f1",
+          "uid": "alcor"
         },
         {
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-49"
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-48"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-4"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-2"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-6"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-13"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-17"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-14"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-11"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-29"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-31"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-18"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-27"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-19"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-44"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-50"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-34"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-43"
-        },
-        {
-          "kind": "node",
-          "port": "eth1",
-          "uid": "sagittaire-51"
-        }
-      ],
-      "rate": 1000000000,
-      "snmp_pattern": "BD-8810 Port %LINECARD%:%PORT%"
-    },
-    {
-    },
-    {
-    },
-    {
-    },
-    {
-    },
-    {
-      "backplane_bps": 48000000000,
-      "kavlan_pattern": "%LINECARD%:%PORT%",
-      "kind": "switch",
-      "ports": [
-        {
+          "kind": "switch",
+          "port": "2",
+          "uid": "salome"
         },
         {
         },
         {
           "kind": "switch",
-          "port": "0:42",
+          "port": "0:60",
           "uid": "force10"
-        },
-        {
-          "kind": "virtual",
-          "site": "renater",
-          "uid": "renater-lyon"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "BD-8810 Port %LINECARD%:%PORT%"
+      "snmp_pattern": "ethernet 1/%LINECARD%/%PORT%"
     }
   ],
-  "model": "Extreme Networks Aspen 8810",
+  "model": "Dell EMC S4128F-ON",
   "sensors": {
     "network": {
       "available": true,
       "resolution": 1
     }
   },
+  "serial": "J9J1PK2",
   "site": "lyon",
   "snmp_community": "public",
   "type": "network_equipment",
@@ -323,7 +111,8 @@
     "vlan101": {
       "addresses": [
         "172.17.63.254"
-      ]
+      ],
+      "administrative": true
     },
     "vlan500": {
       "addresses": [
@@ -391,7 +180,7 @@
       "name": "kavlan-13"
     }
   },
-  "warranty": "2010-01-01",
+  "warranty": "2024-08-15",
   "weathermap": {
   }
 }
