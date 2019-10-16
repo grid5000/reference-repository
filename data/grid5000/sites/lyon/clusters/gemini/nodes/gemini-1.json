@@ -90,19 +90,6 @@
       "vendor": "Nvidia"
     }
   },
-  "ib0": {
-    "enabled": true,
-    "interface": "InfiniBand",
-    "ip": "172.18.53.1",
-    "mountable": true,
-    "mounted": true,
-    "netmask": "255.255.240.0"
-  },
-  "ib1": {
-    "enabled": true,
-    "mountable": true,
-    "mounted": false
-  },
   "kavlan": {
     "eth0": {
       "kavlan-1": "192.168.197.1",
@@ -165,6 +152,28 @@
       "mounted": false,
       "name": "enp1s0f1",
       "vendor": "Intel"
+    },
+    {
+      "device": "ib0",
+      "enabled": true,
+      "interface": "InfiniBand",
+      "ip": "172.18.53.1",
+      "kavlan": false,
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "netmask": "255.255.240.0",
+      "network_address": "gemini-1-ib0.lyon.grid5000.fr"
+    },
+    {
+      "device": "ib1",
+      "enabled": true,
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "management": false,
+      "mountable": true,
+      "mounted": false,
+      "network_address": "gemini-1-ib1.lyon.grid5000.fr"
     },
     {
       "device": "bmc",
