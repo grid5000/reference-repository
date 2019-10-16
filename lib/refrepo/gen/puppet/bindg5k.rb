@@ -310,10 +310,10 @@ def sort_records(records)
   ptr = []
 
   records.each{ |record|
-    if (record.is_a?(DNS::Zone::RR::A))
-      in_a << record
-    elsif (record.is_a?(DNS::Zone::RR::AAAA))
+    if (record.is_a?(DNS::Zone::RR::AAAA)) # check for AAAA before A because AAAA inherits from A (so an AAAA is also an A)
       in_aaaa << record
+    elsif (record.is_a?(DNS::Zone::RR::A))
+      in_a << record
     elsif (record.is_a?(DNS::Zone::RR::CNAME))
       cnames << record
     elsif (record.is_a?(DNS::Zone::RR::PTR))
@@ -327,7 +327,7 @@ def sort_records(records)
   }
   sorted_records += in_a
   in_aaaa.sort_by!{ |record|
-    IPAddr.new(record).to_string.gsub(':','')
+    IPAddr.new(record.address).to_string.gsub(':','')
   }
   sorted_records += in_aaaa
   ptr.sort_by!{ |record|
