@@ -1,0 +1,18 @@
+nodes:
+  gemini-[1-2]:
+      ib0:
+        enabled: true
+        mountable: true
+        mounted: true
+        interface: InfiniBand
+        netmask: 255.255.240.0
+      ib1:
+        enabled: true
+        mountable: true
+        mounted: false
+  gemini-1:
+      ib0:
+        ip: 172.18.53.1
+  gemini-2:
+      ib0:
+        ip: 172.18.53.2
