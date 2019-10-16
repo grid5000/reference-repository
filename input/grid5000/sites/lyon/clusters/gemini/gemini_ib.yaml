@@ -5,12 +5,12 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
-        management: false
         interface: InfiniBand
         netmask: 255.255.240.0
   gemini-1:
     network_adapters:
       ib0:
+        management: false
         ip: 172.18.53.1
         mac: 00:00:10:86:fe:80:00:00:00:00:00:00:98:03:9b:03:00:92:66:da
   gemini-2:
