@@ -30,6 +30,8 @@ def global_ignore_keys
     ~pdu.uid
     ~pdu[0]
     ~pdu[1]
+    ~pdu[2]
+    ~pdu[3]
 
     ~supported_job_types.max_walltime
 
