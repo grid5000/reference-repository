@@ -953,12 +953,15 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
           generated_rows_for_this_cluster.each do |row|
             corresponding_resource = default_cluster_resources.select{|r| r["id"] == row[:resource_id]}
             if corresponding_resource.length > 0
+              resc = corresponding_resource[0]
 
               {:cpu => "cpu", :core => "core", :cpuset => "cpuset", :gpu => "gpu", :gpudevice => "gpudevice"}.each do |key, value|
                 if row[key].to_s != corresponding_resource[0][value].to_s and not (key == :gpu and row[key].nil? and corresponding_resource[0][value] == 0)
-                  puts "Error: resource #{corresponding_resource[0]["id"]} is associated to #{value.upcase} (#{corresponding_resource[0][value]}), while I computed that it should be associated to #{row[key]}"
-                  fix_cmds += %Q{
-oarnodesetting --sql "resource_id='#{corresponding_resource[0]["id"]}' AND type='default'" -p #{value}=#{row[key]}}
+                  fix_cmd = <<-TXT
+# Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: API gives #{resc[value]}, generator wants #{row[key]}. To fix this:
+oarnodesetting --sql "resource_id='#{corresponding_resource[0]["id"]}' AND type='default'" -p #{value}=#{row[key]}
+TXT
+                  fix_cmds += "#{fix_cmd}"
                 end
               end
             else
@@ -978,6 +981,7 @@ oarnodesetting --sql "resource_id='#{corresponding_resource[0]["id"]}' AND type=
         puts "# You may execute the following commands to fix "
         puts "# some resources of the OAR database"
         puts "################################################"
+        puts ""
         puts fix_cmds
       end
 
@@ -1040,7 +1044,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
     cluster_desc_from_input_files = data_hierarchy['sites'][site_name]['clusters'][cluster_name]
     cluster_nodes = cluster_desc_from_input_files['nodes']
-    
+
     node_count = cluster_nodes.length
 
     cluster_resources = site_resources
