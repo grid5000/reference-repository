@@ -1768,7 +1768,8 @@ TXT
       }
 
       expected_output = <<-TXT
-Error: resource 9 is associated to GPU (2), while I computed that it should be associated to 3
+# Error: Resource 9 (host=clustera-1.fakesite.grid5000.fr cpu=2 core=9 cpuset=8 gpu=2 gpudevice=2) has a mismatch for ressource GPU: API gives 2, generator wants 3. To fix this:
+oarnodesetting --sql "resource_id='9' AND type='default'" -p gpu=3
 TXT
       expected_output2 = <<-TXT
 oarnodesetting --sql "resource_id='9' AND type='default'" -p gpu=3
