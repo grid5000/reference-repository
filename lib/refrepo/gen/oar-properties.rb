@@ -1157,7 +1157,10 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           end
         end
 
-        raise "#{physical_resource} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count})"
+        if ["cpu", "core"].include? physical_resource
+          puts("#{physical_resource} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count})")
+          return 1
+        end
       end
 
       variables[:current_ids] = phys_rsc_ids
