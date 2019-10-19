@@ -229,12 +229,12 @@ def generate_dot(netnodes, links, site)
   header << "splines=true;"
   header << "ranksep=2.0;"
   # output graph nodes, equipment first
-  (eqlinks.map { |e| e['switch'] } + eqlinks.map { |e| e['target'] }).each do |eq|
-    content << "\"#{eq}\" [shape=box];"
+  mynetnodes.select { |n| n['kind'] == 'router' or n['kind'] == 'switch' }.map { |e| e['uid'] }.sort.each do |eq|
+    content << "\"#{eq}\" [shape=box color=\"gold\" style=\"filled\"];"
   end
   # then nodes groups
   nodeslinks.each do |e|
-    content << "\"#{e[1]}\";"
+    content << "\"#{e[1]}\" [color=\"chartreuse2\" style=\"filled\"];"
   end
 
   # finally output links
