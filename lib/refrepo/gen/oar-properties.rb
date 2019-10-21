@@ -92,12 +92,13 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   # INFINIBAND
   ni_mountable = node['network_adapters'].select { |na| /^ib[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'InfiniBand' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
-  ib_map = { 0 => 'NO', 10 => 'SDR', 20 => 'DDR', 40 => 'QDR', 56 => 'FDR' }
+  ib_map = { 0 => 'NO', 10 => 'SDR', 20 => 'DDR', 40 => 'QDR', 56 => 'FDR', 100 => 'EDR' }
 
   h['ib_count'] = ni_mountable.length
   h['ib_rate']  = ni_mountable.length > 0 ? ni_fastest['rate'] / 1_000_000_000 : 0
   h['ib'] = ib_map[h['ib_rate']]
 
+  puts "#{node_uid}: Warning - unkwnon ib kind for rate #{h['ib_rate']}, update ib_map variable" if not ib_map.key?(h['ib_rate'])
   puts "#{node_uid}: Warning - no rate info for the ib interface" if h['ib_count'] > 0 && h['ib_rate'] == 0
 
   # OMNIPATH
