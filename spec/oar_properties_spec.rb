@@ -1783,4 +1783,294 @@ TXT
       expect(generator_output[:stdout]).to include(expected_output2)
     end
   end
+
+  context 'interracting with a configured OAR server (msising network interfaces)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server.json", "load_data_hierarchy_stubbed_data_missing_main_network_property.json")
+    end
+
+    it 'should propose a correction' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+Error (missing property) while processing node clustera-1: Node clustera-1 does not have a main network_adapter (ie. an ethernet interface with enabled=true && mounted==true && management==false)
+      TXT
+      expected_output2 = <<-TXT
+*** Error: The following nodes exist in the OAR server but are missing in the reference-repo: clustera-1.
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+      expect(generator_output[:stdout]).to include(expected_output2)
+    end
+  end
+
+  context 'interracting with a configured OAR server (wrong variable type for gpu)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_wrong_vartype.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should propose a correction' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
+  clustera-1:
+    ["~", "eth_rate", "10", 10]
+      TXT
+
+      expected_output2 = <<-TXT
+Error: the OAR property 'eth_rate' is a 'String' on the fakesite server and this script uses 'Fixnum' for this property.
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+      expect(generator_output[:stdout]).to include(expected_output2)
+    end
+  end
+
+  context 'interracting with a configured OAR server (different_values for wattmeters)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server.json", "load_data_hierarchy_stubbed_data_wattmeters_variations.json")
+    end
+
+    it 'should propose a correction' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
+  clustera-1:
+    ["~", "wattmeter", "MULTIPLE", "YES"]
+  clustera-2:
+    ["~", "wattmeter", "MULTIPLE", "NO"]
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+    end
+  end
+
+  context 'interracting with a configured OAR server (no wattmeters)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server.json", "load_data_hierarchy_stubbed_data_wattmeters_nil.json")
+    end
+
+    it 'should propose a correction' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
+  clustera-1:
+    ["~", "wattmeter", "MULTIPLE", "NO"]
+  clustera-2: same modifications as above
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+    end
+  end
+
+  context 'interracting with a configured OAR server (with missing property)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_missing_property.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should propose a correction (verbose=1)' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 1
+      }
+
+      expected_output = <<-TXT
+clustera-1:["ib_rate"]
+clustera-2:["ib_rate"]
+Properties that need to be created on the fakesite server: ib_rate
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+    end
+
+    it 'should propose a correction (verbose=2)' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+    ["+", "ib_rate", 0]
+  clustera-2: same modifications as above
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+    end
+
+    it 'should propose a correction (verbose=3)' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 3
+      }
+
+      expected_output = <<-TXT
+    "new values": {
+      "ip": "172.16.64.2",
+      "cluster": "clustera",
+      "nodemodel": "Dell PowerEdge T640",
+      "switch": "gw-fakesite",
+      "virtual": "ivt",
+      "cpuarch": "x86_64",
+      "cpucore": 8,
+      "cputype": "Intel Xeon Silver 4110",
+      "cpufreq": "2.1",
+      "disktype": "SATA",
+      "eth_count": 1,
+      "eth_rate": 10,
+      "ib_count": 0,
+      "ib_rate": 0,
+      "ib": "NO",
+      "opa_count": 0,
+      "opa_rate": 0,
+      "opa": "NO",
+      "myri_count": 0,
+      "myri_rate": 0,
+      "myri": "NO",
+      "memcore": 8192,
+      "memcpu": 65536,
+      "memnode": 131072,
+      "gpu_count": 4,
+      "mic": "NO",
+      "wattmeter": "MULTIPLE",
+      "cluster_priority": 201906,
+      "max_walltime": 86400,
+      "production": "YES",
+      "maintenance": "NO",
+      "disk_reservation_count": 0
+    }
+  }
+}
+Properties that need to be created on the fakesite server: ib_rate
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+    end
+  end
 end
