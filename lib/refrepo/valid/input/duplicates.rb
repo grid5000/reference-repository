@@ -9,6 +9,12 @@ class ::Hash
       else
         v1.gsub!('!duplicated: ') if String === v1
         v2.gsub!('!duplicated: ') if String === v2
+        v1 = "!duplicated: false" if FalseClass === v1
+        v1 = "!duplicated: true" if TrueClass === v1
+        v2 = "!duplicated: false" if FalseClass === v2
+        v2 = "!duplicated: true" if TrueClass === v2
+        v1 = "!duplicated: nil" if NilClass === v1
+        v2 = "!duplicated: nil" if NilClass === v2
         if Hash === v1 || Hash === v2
           # for example, this occurs if there are some empty entries on yaml files that need to be deleted (ex: parasilo-1 => {})
           # return a hash because it is needed by expand_square_brackets
@@ -55,7 +61,7 @@ def yaml_input_find_duplicates(options)
   )}
 
 # remove ip, mac and mounted properties (as it can be use to bootstrap the installation of a cluster)
-  refapi_hash.deep_reject! {|k, v| k == 'ip' || k == 'mac' || k == 'mounted'}
+#  refapi_hash.deep_reject! {|k, v| k == 'ip' || k == 'mac' || k == 'mounted'}
   refapi_hash.deep_reject! {|k, v| v == {}}
 
   if refapi_hash.empty?
