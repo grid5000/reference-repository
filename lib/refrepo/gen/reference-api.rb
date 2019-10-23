@@ -146,7 +146,6 @@ def generate_reference_api
         cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
           node.fetch('pdu', []).each do |node_pdu|
             if node_pdu["uid"] == pdu_uid
-              pp pdu_uid,node_uid
               pdu_attached_nodes[node_pdu["port"]] = node_uid
             end
           end
