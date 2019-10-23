@@ -2,6 +2,7 @@
 ---
 paravance-19:
   architecture:
+    cpu_core_numbering: round-robin
     nb_cores: 16
     nb_procs: 2
     nb_threads: 32
@@ -35,7 +36,7 @@ paravance-19:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x800007f4, 16.5.20'
+      firmware_version: 0x800007f4, 16.5.20
       interface: Ethernet
       mac: ec:f4:bb:d1:02:9a
       management: false
