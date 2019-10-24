@@ -164,32 +164,25 @@ def get_networks_records(site, key)
   records = []
 
   site[key].sort.each { |uid, node|
-    if node['network_adapters'].nil?
-      puts "Warning: no network_adapters for #{uid}"
+    if node['ip'].nil?
+      puts "Warning: no IP for #{uid}"
       next
     end
 
-    eth_net_uid = node['network_adapters'].select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # eth* interfaces
-    node['network_adapters'].each { |net_uid, net_hash|
-      if ! eth_net_uid.include?(net_uid) && node['network_adapters'].size > 1
-        hostsuffix = "-#{net_uid}"
-      else
-        hostsuffix = ''
-      end
-      if net_hash['ip']
-        new_record = DNS::Zone::RR::A.new
-        new_record.address = net_hash['ip']
-        new_record.label = uid + hostsuffix
-        records << new_record
-      end
-      if net_hash['ip6']
-        new_record_ipv6 = DNS::Zone::RR::AAAA.new
-        new_record_ipv6.address = net_hash['ip6']
-        new_record_ipv6.label = uid + hostsuffix + '-ipv6'
-        records << new_record_ipv6
-      end
-    }
+    if node['ip']
+      new_record = DNS::Zone::RR::A.new
+      new_record.address = node['ip']
+      new_record.label = uid
+      records << new_record
+    end
+    if node['ip6']
+      new_record_ipv6 = DNS::Zone::RR::AAAA.new
+      new_record_ipv6.address = node['ip6']
+      new_record_ipv6.label = uid + '-ipv6'
+      records << new_record_ipv6
+    end
   }
+
   return records
 end
 
