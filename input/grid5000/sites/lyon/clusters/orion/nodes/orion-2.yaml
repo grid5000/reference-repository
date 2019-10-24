@@ -15,21 +15,13 @@ orion-2:
     manufacturer: Dell Inc.
     name: PowerEdge R720
     serial: 93MJD5J
-  gpu_devices:
-    nvidia0:
-      cpu_affinity: 1
-      device: "/dev/nvidia0"
-      memory: 5636096000
-      model: Tesla M2075
-      power_default_limit: 225.00 W
-      vbios_version: 70.10.46.00.05
-      vendor: Nvidia
   main_memory:
     ram_size: 34359738368
   network_adapters:
     bmc:
       ip: 172.17.50.2
       mac: d4:be:d9:f9:a3:28
+      management: true
     eth0:
       driver: ixgbe
       firmware_version: '0x8000030d'
@@ -94,8 +86,18 @@ orion-2:
     pstate_governor: performance
     turboboost_enabled: true
   processor:
+    cache_l1d: 32768
+    cache_l1i: 32768
+    cache_l2: 262144
+    cache_l3: 15728640
+    clock_speed: 2300000000
     ht_capable: true
+    instruction_set: x86-64
     microcode: '0x718'
+    model: Intel Xeon
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    vendor: Intel
+    version: E5-2630
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x6d4ae520ab2be9002413f44f13a048ac"

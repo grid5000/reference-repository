@@ -8,19 +8,7 @@ queues:
 
 nodes:
   taurus-[1-16]:
-    chassis:
-      name: PowerEdge R720
     processor:
-      cache_l1d: 32768
-      cache_l1i: 32768
-      cache_l2: 262144
-      cache_l3: 15728640
-      clock_speed: 2300000000
-      instruction_set: x86-64
-      model: Intel Xeon
-      other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
-      vendor: Intel
-      version: E5-2630
       microarchitecture: Sandy Bridge
     performance:
         core_flops: 11770000000
@@ -71,7 +59,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-        management: true
     monitoring:
       wattmeter: true
     sensors:
