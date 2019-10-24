@@ -959,8 +959,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
               {:cpu => "cpu", :core => "core", :cpuset => "cpuset", :gpu => "gpu", :gpudevice => "gpudevice"}.each do |key, value|
                 if row[key].to_s != corresponding_resource[0][value].to_s and not (key == :gpu and row[key].nil? and corresponding_resource[0][value] == 0)
                   fix_cmd = <<-TXT
-# Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: API gives #{resc[value]}, generator wants #{row[key]}. To fix this:
-oarnodesetting --sql "resource_id='#{corresponding_resource[0]["id"]}' AND type='default'" -p #{value}=#{row[key]}
+# Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: API gives #{resc[value]}, generator wants #{row[key]}.
 TXT
                   fix_cmds += "#{fix_cmd}"
                 end
@@ -1199,7 +1198,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
       # Detect GPU configuration of nodes
       if node_description.key? "gpu_devices"
-        gpus = node_description["gpu_devices"]
+        gpus = node_description["gpu_devices"].select{|k ,v| v.fetch("reservable", true)}
       else
         gpus = []
       end
@@ -1241,7 +1240,9 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         ############################################
         numa_gpus = []
         if node_description.key? "gpu_devices"
-          numa_gpus = node_description["gpu_devices"].map {|v| v[1]}.select {|v| v['cpu_affinity'] == cpu_index0}
+          numa_gpus = node_description["gpu_devices"]
+                        .map {|v| v[1]}
+                        .select {|v| v['cpu_affinity'] == cpu_index0 and v.fetch("reservable", true)}
         end
 
         ############################################
