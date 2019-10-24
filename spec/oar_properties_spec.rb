@@ -2068,4 +2068,91 @@ Properties that need to be created on the fakesite server: ib_rate
       expect(generator_output[:stdout]).to include(expected_output)
     end
   end
+
+  context 'interracting with a configured OAR server (non reservable GPUs)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server.json", "load_data_hierarchy_stubbed_data_with_non_reservable_gpus.json")
+    end
+
+    it 'should ignore the GPUs' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => true,
+        :print => false,
+        :update => false,
+        :diff => false,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+|  clustera | clustera-1           | 1     | 1     | 0        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clustera | clustera-1           | 1     | 2     | 1        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clustera | clustera-1           | 1     | 3     | 2        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clustera | clustera-1           | 1     | 4     | 3        |      |                      | Intel Xeon Silver 4110         |                               |
+      TXT
+
+      not_expected_output = <<-TXT
+GeForce RTX 2080 Ti
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+      expect(generator_output[:stdout]).not_to include(not_expected_output)
+    end
+  end
+
+  context 'interracting with a configured OAR server (misconfigured to test the "DIFF" action)' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_to_test_diff.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should ignore the GPUs' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+  clustera-2:
+    ["~", "eth_rate", 100, 10]
+    ["~", "gpu_count", 2, 4]
+      TXT
+
+      expected_output2 = <<-TXT
+# Error: Resource 4 (host=clustera-1.fakesite.grid5000.fr cpu=1 core=4 cpuset=2 gpu=2 gpudevice=1) has a mismatch for ressource CPUSET: API gives 2, generator wants 3.
+# Error: Resource 4 (host=clustera-1.fakesite.grid5000.fr cpu=1 core=4 cpuset=2 gpu=2 gpudevice=1) has a mismatch for ressource GPU: API gives 2, generator wants 1.
+# Error: Resource 4 (host=clustera-1.fakesite.grid5000.fr cpu=1 core=4 cpuset=2 gpu=2 gpudevice=1) has a mismatch for ressource GPUDEVICE: API gives 1, generator wants 0.
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+      expect(generator_output[:stdout]).to include(expected_output2)
+    end
+  end
 end
