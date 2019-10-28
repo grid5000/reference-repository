@@ -88,7 +88,7 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
   end
   network["linecards"] = linecards_array.map{|l| l || {}}
 
-  network.delete_if {|k, v| k == "network_adapters"}
+  network.delete_if {|k, v| k == "network_adapters"} # TO DELETE
 
   write_json(network_path.join("#{network_uid}.json"), network)
 
