@@ -2,6 +2,7 @@
 ---
 paravance-47:
   architecture:
+    cpu_core_numbering: round-robin
     nb_cores: 16
     nb_procs: 2
     nb_threads: 32
@@ -24,7 +25,7 @@ paravance-47:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x800007f4, 17.5.10'
+      firmware_version: 0x800007f4, 17.5.10
       interface: Ethernet
       ip: 172.16.96.47
       mac: ec:f4:bb:d1:01:98
@@ -35,7 +36,7 @@ paravance-47:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x800007f4, 17.5.10'
+      firmware_version: 0x800007f4, 17.5.10
       interface: Ethernet
       mac: ec:f4:bb:d1:01:9a
       management: false

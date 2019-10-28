@@ -2,6 +2,7 @@
 ---
 paravance-51:
   architecture:
+    cpu_core_numbering: round-robin
     nb_cores: 16
     nb_procs: 2
     nb_threads: 32
@@ -24,7 +25,7 @@ paravance-51:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x800008c5, 17.5.10'
+      firmware_version: 0x800008c5, 17.5.10
       interface: Ethernet
       ip: 172.16.96.51
       mac: 24:6e:96:31:da:e0
@@ -35,7 +36,7 @@ paravance-51:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x800008c5, 17.5.10'
+      firmware_version: 0x800008c5, 17.5.10
       interface: Ethernet
       mac: 24:6e:96:31:da:e2
       management: false
