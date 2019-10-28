@@ -236,6 +236,11 @@ def generate_reference_api
             hash['vendor'] = matching_vendor.keys.first
           end
 
+          # Ensure that by_id is present (bug 11043)
+          node["storage_devices"].each do |key, hash|
+            hash['by_id'] = '' if not hash['by_id']
+          end
+
           # Type conversion
           node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
 
