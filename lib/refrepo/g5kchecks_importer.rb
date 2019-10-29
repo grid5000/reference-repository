@@ -49,7 +49,7 @@ def g5kchecks_importer(sourcedir)
         hash['network_adapters'].delete(arr[0])
       }
 
-      hash["network_adapters"] = hash["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1", "ib0.8100"])
+      hash["network_adapters"] = hash["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1", "ib0.8100","ibp12s0","ibp132s0","ibp139s0"])
 
       hash = {node_uid => hash}
 

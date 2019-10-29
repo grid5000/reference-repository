@@ -109,17 +109,55 @@ gemini-2:
       name: enp1s0f1
       vendor: Intel
     ib0:
-      driver: mlx5_core
-      firmware_version: 16.23.1020
-      guid: '0x98039b03009a4a4e'
+      name: ib0
       interface: InfiniBand
       ip: 172.18.53.2
+      driver: mlx5_core
       mac: 00:00:10:86:fe:80:00:00:00:00:00:00:98:03:9b:03:00:9a:4a:4e
-      management: false
-      model: MT27800 Family [ConnectX-5]
-      name: ib0
+      guid: '0x98039b03009a4a4e'
+      enabled: true
       rate: 100000000000
+      firmware_version: 16.23.1020
+      model: MT27800 Family [ConnectX-5]
       vendor: Mellanox Technologies
+      mounted: true
+      management: false
+    ibp12s0:
+      name: ibp12s0
+      driver: mlx5_core
+      mac: 00:00:10:86:fe:80:00:00:00:00:00:00:98:03:9b:03:00:9a:4a:46
+      guid: '0x98039b03009a4a4e'
+      enabled: true
+      rate: 100000000000
+      firmware_version: 16.23.1020
+      model: MT27800 Family [ConnectX-5]
+      vendor: Mellanox Technologies
+      mounted: false
+      management: false
+    ibp132s0:
+      name: ibp132s0
+      driver: mlx5_core
+      mac: 00:00:10:86:fe:80:00:00:00:00:00:00:98:03:9b:03:00:9a:27:46
+      guid: '0x98039b03009a4a4e'
+      enabled: true
+      rate: 100000000000
+      firmware_version: 16.23.1020
+      model: MT27800 Family [ConnectX-5]
+      vendor: Mellanox Technologies
+      mounted: false
+      management: false
+    ibp139s0:
+      name: ibp139s0
+      driver: mlx5_core
+      mac: 00:00:10:86:fe:80:00:00:00:00:00:00:98:03:9b:03:00:9a:4b:6a
+      guid: '0x98039b03009a4a4e'
+      enabled: true
+      rate: 100000000000
+      firmware_version: 16.23.1020
+      model: MT27800 Family [ConnectX-5]
+      vendor: Mellanox Technologies
+      mounted: false
+      management: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
