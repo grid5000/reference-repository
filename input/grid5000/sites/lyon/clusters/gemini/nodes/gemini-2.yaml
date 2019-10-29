@@ -122,8 +122,9 @@ gemini-2:
       vendor: Mellanox Technologies
       mounted: true
       management: false
-    ibp12s0:
-      name: ibp12s0
+      mountable: true
+    ib1:
+      name: ib1
       driver: mlx5_core
       mac: 00:00:10:86:fe:80:00:00:00:00:00:00:98:03:9b:03:00:9a:4a:46
       guid: '0x98039b03009a4a4e'
@@ -134,8 +135,9 @@ gemini-2:
       vendor: Mellanox Technologies
       mounted: false
       management: false
-    ibp132s0:
-      name: ibp132s0
+      mountable: false
+    ib2:
+      name: ib2
       driver: mlx5_core
       mac: 00:00:10:86:fe:80:00:00:00:00:00:00:98:03:9b:03:00:9a:27:46
       guid: '0x98039b03009a4a4e'
@@ -146,8 +148,9 @@ gemini-2:
       vendor: Mellanox Technologies
       mounted: false
       management: false
-    ibp139s0:
-      name: ibp139s0
+      mountable: false
+    ib3:
+      name: ib3
       driver: mlx5_core
       mac: 00:00:10:86:fe:80:00:00:00:00:00:00:98:03:9b:03:00:9a:4b:6a
       guid: '0x98039b03009a4a4e'
@@ -158,6 +161,7 @@ gemini-2:
       vendor: Mellanox Technologies
       mounted: false
       management: false
+      mountable: false
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
