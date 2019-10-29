@@ -163,23 +163,39 @@ end
 def get_networks_records(site, key)
   records = []
 
-  site[key].sort.each { |uid, node|
-    if node['ip'].nil?
+  site[key].sort.each { |uid, net|
+    if net['ip'].nil?
       puts "Warning: no IP for #{uid}"
       next
     end
 
-    if node['ip']
+    if net['ip']
       new_record = DNS::Zone::RR::A.new
-      new_record.address = node['ip']
+      new_record.address = net['ip']
       new_record.label = uid
       records << new_record
     end
-    if node['ip6']
+    if net['ip6']
       new_record_ipv6 = DNS::Zone::RR::AAAA.new
-      new_record_ipv6.address = node['ip6']
+      new_record_ipv6.address = net['ip6']
       new_record_ipv6.label = uid + '-ipv6'
       records << new_record_ipv6
+    end
+    if net['alias']
+      net['alias'].each{ |a|
+        if a.is_a?(Hash)
+          new_record = DNS::Zone::RR::A.new
+          new_record.address = a['ip']
+          new_record.label = a['name']
+          records << new_record
+        end
+        if a.is_a?(String) and !a.include?('.')  #Reject global aliases (See 7513)
+          cname_record = DNS::Zone::RR::CNAME.new
+          cname_record.label = a
+          cname_record.domainname = uid
+          records << cname_record
+        end
+      }
     end
   }
 
