@@ -1198,7 +1198,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
       # Detect GPU configuration of nodes
       if node_description.key? "gpu_devices"
-        gpus = node_description["gpu_devices"].select{|k ,v| v.fetch("reservable", true)}
+        gpus = node_description["gpu_devices"].select{|k ,v| v.fetch("reservation", true)}
       else
         gpus = []
       end
@@ -1242,7 +1242,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         if node_description.key? "gpu_devices"
           numa_gpus = node_description["gpu_devices"]
                         .map {|v| v[1]}
-                        .select {|v| v['cpu_affinity'] == cpu_index0 and v.fetch("reservable", true)}
+                        .select {|v| v['cpu_affinity'] == cpu_index0 and v.fetch("reservation", true)}
         end
 
         ############################################
