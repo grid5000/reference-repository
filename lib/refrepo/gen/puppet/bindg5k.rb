@@ -585,8 +585,8 @@ def generate_puppet_bindg5k(options)
           a.label.gsub('.','').reverse <=> b.label.gsub('.','').reverse
         }
       else
-        records.sort!{ |a, b|
-          a.label.to_i <=> b.label.to_i
+        records.sort_by!{ |r|
+          [r.label.to_i, r.name]
         }
       end
 
