@@ -193,9 +193,12 @@ namespace :version do
     raise 'need model=' if model.nil?
 
     model_filter = nodes_by_model(model)
-    nodes = model_filter.map { |x| { 'node' => x['uid'], 'bios' => x['bios']['version'] } }
-    nodes.each do |node|
-      puts "#{node['node']} : #{node['bios']}"
+    model_filter.sort_by{|node| node['uid'].to_s.split(/(\d+)/).map { |e| [e.to_i, e]}}.each do |node|
+      version = Hash.new
+      version['bios'] = node['bios']['version']
+      version['network_adapters'] = get_firmware_version(node['network_adapters'])
+      version['storage_devices'] = get_firmware_version(node['storage_devices'])
+      puts "#{node['uid']} : #{version}"
     end
   end
 end
