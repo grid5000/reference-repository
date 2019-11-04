@@ -1000,7 +1000,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
   # This function works as follow:
   # (1) Initialization
-  #    (a) Load the local data contained in YAML input files
+  #    (a) Load the local data contained in JSON data files
   #    (b) Handle the program arguments (detects which site and which clusters
   #        are targeted), and what action is requested
   #    (c) Fetch the OAR properties of the requested site
@@ -1048,8 +1048,8 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     cpu_idx = 0
     core_idx = 0
 
-    cluster_desc_from_input_files = data_hierarchy['sites'][site_name]['clusters'][cluster_name]
-    cluster_nodes = cluster_desc_from_input_files['nodes']
+    cluster_desc_from_data_files = data_hierarchy['sites'][site_name]['clusters'][cluster_name]
+    cluster_nodes = cluster_desc_from_data_files['nodes']
 
     node_count = cluster_nodes.length
 
@@ -1057,7 +1057,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
                             .select{|r| r["cluster"] == cluster_name}
                             .select{|r| cluster_nodes.include?(r["host"].split(".")[0])}
 
-    first_node = cluster_desc_from_input_files['nodes'].first[1]
+    first_node = cluster_desc_from_data_files['nodes'].first[1]
 
     # Some clusters such as graphite have a different organisation:
     # for example, graphite-1 is organised as follow:
@@ -1192,7 +1192,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       name = nodes_names[node_index0][:name]
       fqdn = nodes_names[node_index0][:fqdn]
 
-      node_description = cluster_desc_from_input_files["nodes"][name]
+      node_description = cluster_desc_from_data_files["nodes"][name]
 
       node_description_default_properties = site_properties["default"][name]
 
