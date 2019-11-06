@@ -196,6 +196,7 @@ namespace :version do
     model_filter.sort_by{|node| node['uid'].to_s.split(/(\d+)/).map { |e| [e.to_i, e]}}.each do |node|
       version = Hash.new
       version['bios'] = node['bios']['version']
+      version['bmc_version'] = node['bmc_version']
       version['network_adapters'] = get_firmware_version(node['network_adapters'])
       version['storage_devices'] = get_firmware_version(node['storage_devices'])
       puts "#{node['uid']} : #{version}"
