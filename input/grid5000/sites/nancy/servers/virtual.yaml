@@ -25,8 +25,9 @@ dhcp:
 apt-global:
   kind: virtual
   network_adapters: {default: {ip: 172.16.79.109}}
-puppet:
+puppet6:
   kind: virtual
+  alias: puppet
   network_adapters: {default: {ip: 172.16.79.110}}
 www:
   kind: virtual

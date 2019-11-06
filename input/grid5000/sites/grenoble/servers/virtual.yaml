@@ -48,8 +48,9 @@ supervision:
 syslog:
   kind: virtual
   network_adapters: {default: {ip: 172.16.31.115}}
-puppet:
+puppet6:
   kind: virtual
+  alias: puppet
   network_adapters: {default: {ip: 172.16.31.116}}
 kavlan:
   kind: virtual
