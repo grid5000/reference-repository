@@ -1,0 +1,7 @@
+nodes:
+<% (1..8).each do |index| %>
+  grimoire-<%= index %>:
+    network_adapters:
+      eth0:
+        ip6: 2001:660:4406:500:8::<%= index.to_s(16) %>
+<% end %>

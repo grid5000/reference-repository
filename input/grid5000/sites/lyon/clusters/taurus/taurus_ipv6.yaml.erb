@@ -1,0 +1,7 @@
+nodes:
+<% (1..16).each do |index| %>
+  taurus-<%= index %>:
+    network_adapters:
+      eth0:
+        ip6: 2001:660:4406:400:1::<%= index.to_s(16) %>
+<% end %>

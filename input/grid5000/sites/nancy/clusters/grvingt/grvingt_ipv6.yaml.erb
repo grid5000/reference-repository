@@ -1,0 +1,7 @@
+nodes:
+<% (1..64).each do |index| %>
+  grvingt-<%= index %>:
+    network_adapters:
+      eth0:
+        ip6: 2001:660:4406:500:d::<%= index.to_s(16) %>
+<% end %>

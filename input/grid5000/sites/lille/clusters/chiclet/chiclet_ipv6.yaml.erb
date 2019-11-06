@@ -1,0 +1,7 @@
+nodes:
+<% (1..8).each do |index| %>
+  chiclet-<%= index %>:
+    network_adapters:
+      eth0:
+        ip6: 2001:660:4406:200:8::<%= index.to_s(16) %>
+<% end %>

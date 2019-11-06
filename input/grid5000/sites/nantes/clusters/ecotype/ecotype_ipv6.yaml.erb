@@ -1,0 +1,7 @@
+nodes:
+<% (1..48).each do |index| %>
+  ecotype-<%= index %>:
+    network_adapters:
+      eth0:
+        ip6: 2001:660:4406:600:2::<%= index.to_s(16) %>
+<% end %>
