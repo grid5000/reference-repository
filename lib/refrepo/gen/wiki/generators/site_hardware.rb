@@ -230,7 +230,8 @@ def get_hardware(sites)
             'model' => v['model'],
             'driver' => v['driver'],
             'path' => v['by_path'] || v['by_id'],
-            'count' => node_hash['storage_devices'].count
+            'count' => node_hash['storage_devices'].count,
+            'reservation' => v['reservation'].nil? ? false : v['reservation']
           }
         end
 
@@ -242,7 +243,8 @@ def get_hardware(sites)
             e['interface'],
             e['vendor'],
             e['model'],
-            ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')'
+            ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')',
+            e['reservation'] ? '[[Disk_reservation|(reservable)]]' : ''
           ].join(' ')
         }.join('<br />')
 

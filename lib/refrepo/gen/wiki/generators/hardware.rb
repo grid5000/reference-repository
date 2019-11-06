@@ -247,6 +247,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n= Storage ="
     generated_content += "\n== Nodes with several disks ==\n"
     generated_content +=  generate_storage
+    generated_content += "\n''*: disk is [[Disk_reservation|reservable]]''"
 
     generated_content += "\n= Accelerators (GPU, Xeon Phi) ="
     generated_content += "\n== Accelerator families ==\n"
@@ -327,7 +328,7 @@ class G5KHardwareGenerator < WikiGenerator
   end
 
   def generate_storage
-    table_columns = ["Site", "Cluster", "Number of nodes", "Main disk", "Additional HDDs", "Additional SSDs", "[[Disk_reservation|Disk reservation]]"]
+    table_columns = ["Site", "Cluster", "Number of nodes", "Main disk", "Additional HDDs", "Additional SSDs"]
     table_data = []
     global_hash = get_global_hash
 
@@ -346,13 +347,19 @@ class G5KHardwareGenerator < WikiGenerator
           if hdds.count == 0
             hdd_t = "0"
           else
-            hdd_t = hdds.count.to_s + " (" + hdds.map { |d| G5K.get_size(d['size'],'metric') }.join(', ') + ")"
+            hdd_t = hdds.count.to_s + " (" + hdds.map { |d|
+              G5K.get_size(d['size'],'metric') +
+              ((!d['reservation'].nil? && d['reservation']) ? '[[Disk_reservation|*]]' : '')
+            }.join(', ') + ")"
           end
           ssds = other.select { |d| d['storage'] == 'SSD' }
           if ssds.count == 0
             ssd_t = "0"
           else
-            ssd_t = ssds.count.to_s + " (" + ssds.map { |d| G5K.get_size(d['size'],'metric') }.join(', ') + ")"
+            ssd_t = ssds.count.to_s + " (" + ssds.map { |d|
+              G5K.get_size(d['size'],'metric') +
+              ((!d['reservation'].nil? && d['reservation']) ? '[[Disk_reservation|*]]' : '')
+            }.join(', ') + ")"
           end
           queues = cluster_hash['queues'] - ['admin', 'default']
           queue_t = (queues.nil? || (queues.empty? ? '' : "_.28" + queues[0].gsub(' ', '_') + ' queue.29'))
@@ -374,7 +381,6 @@ class G5KHardwareGenerator < WikiGenerator
               data['main'],
               data['hdd'],
               data['ssd'],
-              data['reservation'] ? 'yes' : 'no'
           ]
         end
       end
