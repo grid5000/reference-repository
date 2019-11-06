@@ -280,3 +280,33 @@ talc-data2:
     bmc:
       ip: 172.17.79.30
       mac: 4c:d9:8f:63:31:d3
+
+srv3:
+  kind: physical
+  warranty: 2026-07
+  serial: FKHBSY2
+  network_adapters:
+    default:
+      mounted: true
+      mac: e4:43:4b:83:8a:ec
+      ip: 172.16.79.18
+    bmc:
+      mounted: true
+      ip: 172.17.79.18
+      mac: 54:bf:64:fc:97:42
+  monitoring:
+    wattmeter: multiple
+    metric: power
+  sensors:
+    network:
+      available: true
+      resolution: 1
+    power:
+      available: true
+      resolution: 1
+      via:
+        pdu:
+          - uid: gros-pdu7
+            port: 14
+          - uid: gros-pdu8
+            port: 14
