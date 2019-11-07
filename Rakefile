@@ -187,10 +187,10 @@ namespace :gen do
 end
 
 namespace :version do
-  desc 'Get model list, need model='
+  desc 'Get bios, bmc and firmwares version -- parameters: MODEL={630,6420,...}'
   task :get do
-    model = ENV['model']
-    raise 'need model=' if model.nil?
+    model = ENV['MODEL']
+    raise 'need MODEL=' if model.nil?
 
     model_filter = nodes_by_model(model)
     model_filter.sort_by{|node| node['uid'].to_s.split(/(\d+)/).map { |e| [e.to_i, e]}}.each do |node|
