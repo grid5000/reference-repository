@@ -2110,6 +2110,42 @@ GeForce RTX 2080 Ti
       expect(generator_output[:stdout]).to include(expected_output)
       expect(generator_output[:stdout]).not_to include(not_expected_output)
     end
+
+    it 'should ignore the GPUs' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+# Error: Resource 1 (host=clustera-1.fakesite.grid5000.fr cpu=1 core=1 cpuset=0 gpu=1 gpudevice=0) has a mismatch for ressource GPU: OAR API gives 1, generator wants ø.
+# Error: Resource 1 (host=clustera-1.fakesite.grid5000.fr cpu=1 core=1 cpuset=0 gpu=1 gpudevice=0) has a mismatch for ressource GPUDEVICE: OAR API gives 0, generator wants ø.
+# Error: Resource 2 (host=clustera-1.fakesite.grid5000.fr cpu=1 core=2 cpuset=1 gpu=1 gpudevice=0) has a mismatch for ressource GPU: OAR API gives 1, generator wants ø.
+      TXT
+
+      not_expected_output = <<-TXT
+GeForce RTX 2080 Ti
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+      expect(generator_output[:stdout]).not_to include(not_expected_output)
+    end
   end
 
 end
