@@ -31,6 +31,7 @@ class G5KHardwareGenerator < WikiGenerator
     hdds = 0
     ssds = 0
     storage_space = 0
+    ram = 0
 
     @global_hash['sites'].sort.to_h.each do |site_uid, site_hash|
       clusters += site_hash['clusters'].length
@@ -39,6 +40,7 @@ class G5KHardwareGenerator < WikiGenerator
           next if node_hash['status'] == 'retired'
           nodes += 1
           cores += node_hash['architecture']['nb_cores']
+          ram += node_hash['main_memory']['ram_size']
           if node_hash['gpu_devices']
             gpus += node_hash['gpu_devices'].length
           end
@@ -57,6 +59,7 @@ class G5KHardwareGenerator < WikiGenerator
 * #{nodes} nodes
 * #{cores} CPU cores
 * #{gpus} GPUs
+* #{G5K.get_size(ram)} RAM
 * #{ssds} SSDs and #{hdds} HDDs on nodes (total: #{G5K.get_size(storage_space, 'metric')})
     EOF
   end
