@@ -80,18 +80,24 @@ module G5K
 
   def self.get_size(x, unit='IEC')
     if unit == 'metric'
-      giga = (x.to_f / 1000**3).floor
-      if giga < 1000
-        giga.to_s + '&nbsp;GB'
+      if x < 10**9
+        return "#{(x.to_f / 10**6).floor}&nbsp;MB"
+      elsif x < 10**12
+        return "#{(x.to_f / 10**9).floor}&nbsp;GB"
+      elsif x < 10**15
+        return "#{(x.to_f / 10**12).round(2)}&nbsp;TB"
       else
-        (x.to_f / 1000**4).round(2).to_s + '&nbsp;TB'
+        return "#{(x.to_f / 10**15).round(2)}&nbsp;PB"
       end
     else
-      giga = (x.to_f / 2**30).floor
-      if giga < 2**10
-        giga.to_s + '&nbsp;GiB'
+      if x < 2**30
+        return "#{(x.to_f / 2**20).floor}&nbsp;MiB"
+      elsif x < 2**40
+        return "#{(x.to_f / 2**30).floor}&nbsp;GiB"
+      elsif x < 2**50
+        return "#{(x.to_f / 2**40).round(2)}&nbsp;TiB"
       else
-        (x.to_f / 2**40).round(2).to_s + '&nbsp;TiB'
+        return "#{(x.to_f / 2**50).round(2)}&nbsp;PiB"
       end
     end
   end
