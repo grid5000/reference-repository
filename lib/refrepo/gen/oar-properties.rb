@@ -996,6 +996,90 @@ TXT
 end
 
 
+def sanity_check(cluster_resources, site_resources)
+
+  sanity_result = true
+
+  # Detect cluster resources
+  cluster_cpus =
+    cluster_resources
+      .map{|r| r["cpu"]}
+      .uniq
+  cluster_gpus =
+    cluster_resources
+      .map{|r| r["gpu"]}
+      .select{|gpu| not gpu.nil?}
+      .uniq
+  cluster_cores =
+    cluster_resources
+      .map{|r| r["core"]}
+      .uniq
+
+  # Check CPUs
+  cluster_cpus.each do |cluster_cpu|
+    hosts_with_same_cpu =
+      site_resources
+        .select{|r| r["cpu"] == cluster_cpu}
+        .map{|r| r["host"]}
+        .uniq
+
+    if hosts_with_same_cpu.length > 1
+      puts("################################")
+      puts("# Error: CPU #{cluster_cpu} is associated to more than one host: #{hosts_with_same_cpu}.")
+      puts("# You can review this situation via the following command:\n")
+      puts("################################")
+      puts("oarnodes -Y --sql \"cpu=#{cluster_cpu}\"")
+      puts("")
+
+      sanity_result = false
+    end
+  end
+
+  # Checks GPUs
+  cluster_gpus.each do |cluster_gpu|
+    hosts_with_same_gpu =
+      site_resources
+        .select{|r| r["gpu"] == cluster_gpu}
+        .map{|r| r["host"]}
+        .uniq
+
+    if hosts_with_same_gpu.length > 1
+      puts("################################")
+      puts("# Error: GPU #{cluster_gpu} is associated to more than one host: #{hosts_with_same_gpu}.")
+      puts("# You can review this situation via the following command:\n")
+      puts("################################")
+      puts("oarnodes -Y --sql \"gpu=#{cluster_gpu}\"")
+      puts("")
+
+      sanity_result = false
+    end
+  end
+
+  # Check Cores
+  cluster_cores.each do |cluster_core|
+    resources_id_with_same_core =
+      site_resources
+        .select{|r| r["core"] == cluster_core}
+        .map{|r| r["id"]}
+
+    if resources_id_with_same_core.length > 1
+      oar_sql_clause = resources_id_with_same_core .map{|rid| "resource_id='#{rid}'"}.join(" OR ")
+
+      puts("################################")
+      puts("# Error: resources with ids #{resources_id_with_same_core} have the same value for core (core is equal to #{cluster_core})\n")
+      puts("# You can review this situation via the following command:\n")
+      puts("################################")
+      puts("oarnodes -Y --sql \"#{oar_sql_clause}\"")
+      puts("")
+
+      sanity_result = false
+    end
+  end
+
+  return sanity_result
+end
+
+
 def extract_clusters_description(clusters, site_name, options, data_hierarchy, site_properties)
 
   # This function works as follow:
@@ -1056,6 +1140,12 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     cluster_resources = site_resources
                             .select{|r| r["cluster"] == cluster_name}
                             .select{|r| cluster_nodes.include?(r["host"].split(".")[0])}
+
+    sanity_check_result = sanity_check(cluster_resources, site_resources)
+    unless sanity_check_result
+      puts("It seems that the cluster \"#{cluster_name}\" has some incoherence in its resource configuration (see above). The generator will abort.")
+      raise 'Sanity check failed'
+    end
 
     first_node = cluster_desc_from_data_files['nodes'].first[1]
 
@@ -1128,44 +1218,14 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     end
 
     phys_rsc_map.each do |physical_resource, variables|
-      # Try to detect a bad allocation of physical resources. There is two main cases:
-      #  case 1) We detect too many resources: it likely means than a rsc of another cluster has been mis-associated to
-      #   this cluster. A simple fix is to sort <RESOURCES> of the cluster according to their number of occurence in
-      #   the cluster's properties, and keep only the N <RESOURCES> that appears the most frequently, where N is equal
-      #   to node_count * count(RESOURCES)
-      #  case 2) We don't have enough RESOURCES: it likely means that a same rsc has been associated to different
-      #   properties, and that a "gap" should exist in RESOURCES IDs (.i.e some rsc IDs are available). We fill the
-      #   missing RESOURCES with a) available RESOURCES in the site, and then b) new RESOURCES
-
+      # Try to detect case where an existing cluster is misconfigured: too many or too few OAR resources
       phys_rsc_ids = variables[:current_ids]
       expected_phys_rsc_count = variables[:per_cluster_count]
 
       if phys_rsc_ids.length != expected_phys_rsc_count
-
-        # We detected a situation where a phyisical resource is misallocated to a wrong OAR property
-        if cluster_resources.map{|r| r[physical_resource]}.length == expected_phys_rsc_count
-          resource_count = Hash.new([])
-          cluster_resources.select{|r| not r[physical_resource].nil? }.each do |resource|
-            resource_count[resource[physical_resource]] += [resource]
-          end
-
-          for (k, v) in resource_count
-            if v.size > 1
-              duplicated_resources = cluster_resources.select{|r| r[physical_resource] == k}
-              oar_sql_clause = duplicated_resources.map{|r| r["id"]}.map{|rid| "resource_id='#{rid}'"}.join(" OR ")
-
-              puts("################################")
-              puts("# Error: resources with ids #{duplicated_resources.map{|r| r["id"]}} have the same value for #{physical_resource} (#{physical_resource} is equal to #{k})\n")
-              puts("# You can review this situation via the following command:\n")
-              puts("################################")
-              puts("oarnodes -Y --sql \"#{oar_sql_clause}\"\n")
-            end
-          end
-        end
-
         if ["cpu", "core"].include? physical_resource
-          puts("#{physical_resource} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count})")
-          return 1
+          puts("#{physical_resource.upcase} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}).")
+          raise "unexpected number (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}) of resources for cluster #{cluster_name}"
         end
       end
 
@@ -1377,7 +1437,6 @@ def generate_oar_properties(options)
     clusters = options[:clusters]
   end
 
-
   refrepo_properties = get_oar_properties_from_the_ref_repo(data_hierarchy, {
       :sites => [site_name]
   })
@@ -1386,11 +1445,16 @@ def generate_oar_properties(options)
   # Generate information about the clusters
   ############################################
 
-  generated_hierarchy = extract_clusters_description(clusters,
-                                                     site_name,
-                                                     options,
-                                                     data_hierarchy,
-                                                     refrepo_properties[site_name])
+  begin
+    generated_hierarchy = extract_clusters_description(clusters,
+                                                       site_name,
+                                                       options,
+                                                       data_hierarchy,
+                                                       refrepo_properties[site_name])
+  rescue
+    print("A problem occured while building the clusters description. Generator is exiting.")
+    return 1
+  end
 
   ############################################
   # Output generated information
