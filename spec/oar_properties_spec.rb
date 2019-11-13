@@ -1485,16 +1485,16 @@ TXT
 ###################################
 # clusterc-1.fakesite.grid5000.fr
 ###################################
-oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='1' AND type='default'" -p cpu=1 -p core=1 -p cpuset=0 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=2 -p cpuset=1 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=3 -p cpuset=2 -p gpu=0 -p gpudevice= -p gpu_model=
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='1' AND type='default'" -p cpu=1 -p core=1 -p cpuset=0
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=2 -p cpuset=1
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=3 -p cpuset=2
 TXT
 
       expected_clusterc2_cmds = <<-TXT
-oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='32' AND type='default'" -p cpu=4 -p core=29 -p cpuset=12 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='34' AND type='default'" -p cpu=4 -p core=31 -p cpuset=14 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='35' AND type='default'" -p cpu=4 -p core=32 -p cpuset=15 -p gpu=0 -p gpudevice= -p gpu_model=
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='32' AND type='default'" -p cpu=4 -p core=29 -p cpuset=12
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='34' AND type='default'" -p cpu=4 -p core=31 -p cpuset=14
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='35' AND type='default'" -p cpu=4 -p core=32 -p cpuset=15
 TXT
       expected_clusterc3_cmds = <<-TXT
 oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clusterc' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=0 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
@@ -1637,16 +1637,16 @@ TXT
 ###################################
 # clusterc-1.fakesite.grid5000.fr
 ###################################
-oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='1' AND type='default'" -p cpu=1 -p core=1 -p cpuset=0 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=3 -p cpuset=1 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=2 -p cpuset=2 -p gpu=0 -p gpudevice= -p gpu_model=
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='1' AND type='default'" -p cpu=1 -p core=1 -p cpuset=0
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=3 -p cpuset=1
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=2 -p cpuset=2
 TXT
 
       expected_clusterc2_cmds = <<-TXT
-oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='32' AND type='default'" -p cpu=4 -p core=29 -p cpuset=12 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='34' AND type='default'" -p cpu=4 -p core=31 -p cpuset=14 -p gpu=0 -p gpudevice= -p gpu_model=
-oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='35' AND type='default'" -p cpu=4 -p core=32 -p cpuset=15 -p gpu=0 -p gpudevice= -p gpu_model=
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='32' AND type='default'" -p cpu=4 -p core=29 -p cpuset=12
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='34' AND type='default'" -p cpu=4 -p core=31 -p cpuset=14
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='35' AND type='default'" -p cpu=4 -p core=32 -p cpuset=15
 TXT
       expected_clusterc3_cmds = <<-TXT
 oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clusterc' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=0 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
