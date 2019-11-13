@@ -1731,17 +1731,11 @@ TXT
 oarnodes -Y --sql "resource_id='2' OR resource_id='3'"
 TXT
 
-      has_encountered_an_error = false
       generator_output = capture do
-        begin
           generate_oar_properties(options)
-        rescue
-          has_encountered_an_error = true
-        end
       end
 
       expect(generator_output[:stdout]).to include(expected_output)
-      expect(has_encountered_an_error).to be true
     end
   end
 
@@ -2111,7 +2105,7 @@ GeForce RTX 2080 Ti
       expect(generator_output[:stdout]).not_to include(not_expected_output)
     end
 
-    it 'should ignore the GPUs' do
+    it 'it should expect no value for GPU (DIFF)' do
 
       uri = URI(conf["uri"])
 
@@ -2145,6 +2139,129 @@ GeForce RTX 2080 Ti
 
       expect(generator_output[:stdout]).to include(expected_output)
       expect(generator_output[:stdout]).not_to include(not_expected_output)
+    end
+  end
+
+  context 'interracting with a configured same CPUs, COREs, GPUS, allocated to different servers' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_duplicated_cpus_cores_gpus.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should trigger an error with a message' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+################################
+# Error: CPU 1 is associated to more than one host: ["clustera-1.fakesite.grid5000.fr", "clustera-2.fakesite.grid5000.fr"].
+# You can review this situation via the following command:
+################################
+oarnodes -Y --sql "cpu=1"
+
+################################
+# Error: GPU 1 is associated to more than one host: ["clustera-1.fakesite.grid5000.fr", "clustera-2.fakesite.grid5000.fr"].
+# You can review this situation via the following command:
+################################
+oarnodes -Y --sql "gpu=1"
+
+################################
+# Error: resources with ids [21, 22] have the same value for core (core is equal to 21)
+# You can review this situation via the following command:
+################################
+oarnodes -Y --sql "resource_id='21' OR resource_id='22'"
+
+It seems that the cluster "clustera" has some incoherence in its resource configuration (see above). The generator will abort.
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+    end
+  end
+
+  context 'interracting with a configured same CPUs, COREs, GPUS, allocated to different servers' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_with_too_many_oar_resources.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should trigger an error with a message' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+CORE has an unexpected number of resources (current:33 vs expected:32).
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+    end
+  end
+
+  context 'interracting with a configured same CPUs, COREs, GPUS, allocated to different servers' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_with_too_few_oar_resources.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should trigger an error with a message' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+CORE has an unexpected number of resources (current:31 vs expected:32).
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
     end
   end
 
