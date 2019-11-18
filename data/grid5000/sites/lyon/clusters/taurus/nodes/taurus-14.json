@@ -14,6 +14,7 @@
   "bmc_version": "2.61.60.60",
   "chassis": {
     "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R720",
     "serial": "DHTHD5J"
   },
   "kavlan": {
@@ -153,8 +154,10 @@
       "ip": "172.17.48.14",
       "kavlan": false,
       "mac": "d4:be:d9:f9:a3:4c",
+      "management": true,
       "mountable": false,
       "mounted": false,
+      "network_address": "taurus-14-bmc.lyon.grid5000.fr",
       "rate": 1000000000
     }
   ],
@@ -172,9 +175,19 @@
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 15728640,
+    "clock_speed": 2300000000,
     "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Sandy Bridge",
-    "microcode": "0x718"
+    "microcode": "0x718",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz",
+    "vendor": "Intel",
+    "version": "E5-2630"
   },
   "sensors": {
     "power": {

@@ -14,6 +14,7 @@ taurus-14:
   bmc_version: 2.61.60.60
   chassis:
     manufacturer: Dell Inc.
+    name: PowerEdge R720
     serial: DHTHD5J
   main_memory:
     ram_size: 34359738368
@@ -21,6 +22,7 @@ taurus-14:
     bmc:
       ip: 172.17.48.14
       mac: d4:be:d9:f9:a3:4c
+      management: true
     eth0:
       driver: ixgbe
       firmware_version: '0x8000030d'
@@ -85,8 +87,18 @@ taurus-14:
     pstate_governor: performance
     turboboost_enabled: true
   processor:
+    cache_l1d: 32768
+    cache_l1i: 32768
+    cache_l2: 262144
+    cache_l3: 15728640
+    clock_speed: 2300000000
     ht_capable: true
+    instruction_set: x86-64
     microcode: '0x718'
+    model: Intel Xeon
+    other_description: Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz
+    vendor: Intel
+    version: E5-2630
   storage_devices:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x6d4ae520ab02d000233e11ee1baa90cb"
