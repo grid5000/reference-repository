@@ -935,7 +935,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
       # Check that CPUSETs on the OAR server are consistent with what would have been generated
       oar_resources = get_oar_resources_from_oar(options)
 
-      fix_cmds = ""
+      diagnostic_msgs = ""
 
       options[:clusters].each do |cluster|
 
@@ -962,10 +962,10 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
                   if expected_value == "" or expected_value.nil?
                     expected_value = "ø"
                   end
-                  fix_cmd = <<-TXT
+                  diagnostic_msg = <<-TXT
 # Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: OAR API gives #{resc[value]}, generator wants #{expected_value}.
 TXT
-                  fix_cmds += "#{fix_cmd}"
+                  diagnostic_msgs += "#{diagnostic_msg}"
                 end
               end
             else
@@ -979,14 +979,9 @@ TXT
         end
       end
 
-      if not fix_cmds.empty?
-        puts ""
-        puts "################################################"
-        puts "# You may execute the following commands to fix "
-        puts "# some resources of the OAR database"
-        puts "################################################"
-        puts ""
-        puts fix_cmds
+      if not diagnostic_msgs.empty?
+        puts diagnostic_msgs
+        ret = false unless options[:update] || options[:print]
       end
 
     end # if options[:diff]
