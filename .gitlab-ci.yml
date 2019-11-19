@@ -10,7 +10,7 @@ rubocop:
   image: debian:buster
   script:
       - apt-get update && apt-get -y install rubocop
-      - rubocop --fail-level W
+      - rubocop -l --fail-level W
 
 validate-data:
    stage: validate
