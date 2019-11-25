@@ -176,3 +176,43 @@ pdus:
   gros-pdu8:
     ip: 172.17.79.249
     mac: 28:29:86:12:28:60
+
+  gros-wattmetre1:
+    vendor: OmegaWatt
+    model: ''
+    ip: 172.16.79.18
+    sensors:
+      - power:
+          resolution: 1
+          per_outlets: true
+          wattmetre:
+            available: true
+            unit: W
+            www:
+              url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
+  gros-wattmetre2:
+    vendor: OmegaWatt
+    model: ''
+    ip: 172.16.79.18
+    sensors:
+      - power:
+          resolution: 1
+          per_outlets: true
+          wattmetre:
+            available: true
+            unit: W
+            www:
+              url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
+  gros-wattmetre3:
+    vendor: OmegaWatt
+    model: ''
+    ip: 172.16.79.18
+    sensors:
+      - power:
+          resolution: 1
+          per_outlets: true
+          wattmetre:
+            available: true
+            unit: W
+            www:
+              url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
