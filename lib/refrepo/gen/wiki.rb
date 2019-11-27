@@ -6,6 +6,7 @@ require 'refrepo/gen/wiki/generators/hardware'
 require 'refrepo/gen/wiki/generators/oar_properties'
 require 'refrepo/gen/wiki/generators/site_hardware'
 require 'refrepo/gen/wiki/generators/site_network'
+require 'refrepo/gen/wiki/generators/status'
 
 module RefRepo::Gen::Wiki
 
@@ -21,6 +22,10 @@ module RefRepo::Gen::Wiki
     'hardware' => {
       :gen => G5KHardwareGenerator,
       :page => 'Hardware'
+    },
+    'status' => {
+      :gen => StatusGenerator,
+      :page => 'Status'
     },
     'oar_properties' => {
       :gen => OarPropertiesGenerator,
