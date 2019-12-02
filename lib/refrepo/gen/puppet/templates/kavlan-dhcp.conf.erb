@@ -25,6 +25,7 @@ subnet <%= kavlan_ip.network %> netmask <%= kavlan_ip.netmask %> {
     option broadcast-address <%= kavlan_ip.broadcast %>;
     filename  "pxelinux.0";
     next-server <%= "kadeploy.#{site_uid}.grid5000.fr" %>;
+}
 
 <%
 refapi['sites'].sort.to_h.each_key do |site|
@@ -43,16 +44,16 @@ refapi['sites'].sort.to_h.each_key do |site|
                   next
              end
 -%>
-   host <%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-kavlan-<%= kavlan_id %>.<%= site %>.grid5000.fr {
-     hardware ethernet <%= interface['mac'].downcase() %>;
-     option host-name "<%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-kavlan-<%= kavlan_id %>";
-     option domain-name "<%= site %>.grid5000.fr";
-     option domain-search "<%= site %>.grid5000.fr", "grid5000.fr";
-     fixed-address <%= node['kavlan'][interface['device']]["kavlan-#{kavlan_id}"] %>;
-<%        if kavlan_id.to_i > 9 -%>
-     next-server kadeploy.<%= site %>.grid5000.fr;
-<%        end -%>
-   }
+host <%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-kavlan-<%= kavlan_id %>.<%= site %>.grid5000.fr {
+  hardware ethernet <%= interface['mac'].downcase() %>;
+  option host-name "<%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-kavlan-<%= kavlan_id %>";
+  option domain-name "<%= site %>.grid5000.fr";
+  option domain-search "<%= site %>.grid5000.fr", "grid5000.fr";
+  fixed-address <%= node['kavlan'][interface['device']]["kavlan-#{kavlan_id}"] %>;
+<%     if kavlan_id.to_i > 9 -%>
+  next-server kadeploy.<%= site %>.grid5000.fr;
+<%     end -%>
+}
 <%
         end
       end
@@ -60,4 +61,3 @@ refapi['sites'].sort.to_h.each_key do |site|
   end
 end
 -%>
-}
