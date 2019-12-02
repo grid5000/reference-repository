@@ -1421,6 +1421,9 @@ def generate_oar_properties(options)
 
   site_name = options[:site]
 
+  # Replace the site placeholder of ssh hosts by the site
+  options[:ssh][:host] = options[:ssh][:host].gsub('%s', site_name)
+
   # If no cluster is given, then the clusters are the cluster of the given site
   if not options.key? :clusters or options[:clusters].length == 0
     if data_hierarchy['sites'].key? site_name
