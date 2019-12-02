@@ -1135,6 +1135,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     cluster_resources = site_resources
                             .select{|r| r["cluster"] == cluster_name}
                             .select{|r| cluster_nodes.include?(r["host"].split(".")[0])}
+                            .sort_by{|r| [r["cpu"], r["core"]]}
 
     sanity_check_result = sanity_check(cluster_resources, site_resources)
     unless sanity_check_result
