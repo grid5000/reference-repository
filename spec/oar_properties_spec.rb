@@ -1579,11 +1579,13 @@ TXT
 
       expected_clusterc1_desc = <<-TXT
 |  clusterc | clusterc-1           | 1     | 1     | 0        |      |                      | Intel Xeon Silver 4110         |                               |
-|  clusterc | clusterc-1           | 1     | 3     | 1        |      |                      | Intel Xeon Silver 4110         |                               |
-|  clusterc | clusterc-1           | 1     | 2     | 2        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 2     | 1        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 3     | 2        |      |                      | Intel Xeon Silver 4110         |                               |
 |  clusterc | clusterc-1           | 1     | 4     | 3        |      |                      | Intel Xeon Silver 4110         |                               |
 |  clusterc | clusterc-1           | 1     | 5     | 4        |      |                      | Intel Xeon Silver 4110         |                               |
 |  clusterc | clusterc-1           | 1     | 6     | 5        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 7     | 6        |      |                      | Intel Xeon Silver 4110         |                               |
+|  clusterc | clusterc-1           | 1     | 8     | 7        |      |                      | Intel Xeon Silver 4110         |                               |
       TXT
 
       expected_clusterc2_desc = <<-TXT
@@ -1638,11 +1640,12 @@ TXT
 # clusterc-1.fakesite.grid5000.fr
 ###################################
 oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='1' AND type='default'" -p cpu=1 -p core=1 -p cpuset=0
-oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=3 -p cpuset=1
-oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=2 -p cpuset=2
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='3' AND type='default'" -p cpu=1 -p core=2 -p cpuset=1
+oarnodesetting --sql "host='clusterc-1.fakesite.grid5000.fr' AND resource_id='2' AND type='default'" -p cpu=1 -p core=3 -p cpuset=2
 TXT
 
       expected_clusterc2_cmds = <<-TXT
+oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='31' AND type='default'" -p cpu=4 -p core=28 -p cpuset=11
 oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='32' AND type='default'" -p cpu=4 -p core=29 -p cpuset=12
 oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13
 oarnodesetting --sql "host='clusterc-2.fakesite.grid5000.fr' AND resource_id='34' AND type='default'" -p cpu=4 -p core=31 -p cpuset=14
