@@ -1,0 +1,1527 @@
+{
+  "sites": {
+    "fakesite": {
+      "clusters": {
+        "clustera": {
+          "nodes": {
+            "clustera-1": {
+              "architecture": {
+                "nb_cores": 16,
+                "nb_procs": 2,
+                "nb_threads": 32,
+                "platform_type": "x86_64",
+                "cpu_core_numbering": "contiguous"
+              },
+              "bios": {
+                "release_date": "06/14/2019",
+                "vendor": "Dell Inc.",
+                "version": "2.2.11"
+              },
+              "chassis": {
+                "manufacturer": "Dell Inc.",
+                "name": "PowerEdge T640",
+                "serial": "FL1CBX2"
+              },
+              "gpu": {
+                "gpu": true,
+                "gpu_cores": 17408,
+                "gpu_count": 4,
+                "gpu_model": "RTX 2080 Ti",
+                "gpu_vendor": "Nvidia"
+              },
+              "gpu_devices": {
+                "nvidia0": {
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia0",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.B2",
+                  "vendor": "Nvidia"
+                },
+                "nvidia1": {
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia1",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.B2",
+                  "vendor": "Nvidia"
+                },
+                "nvidia2": {
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia2",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.0B.40.09",
+                  "vendor": "Nvidia"
+                },
+                "nvidia3": {
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia3",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.B2",
+                  "vendor": "Nvidia"
+                }
+              },
+              "main_memory": {
+                "ram_size": 137438953472
+              },
+              "monitoring": {
+                "wattmeter": "multiple"
+              },
+              "network_adapters": [
+                {
+                  "bridged": false,
+                  "device": "eth0",
+                  "driver": "bnxt_en",
+                  "enabled": false,
+                  "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+                  "interface": "Ethernet",
+                  "mac": "f4:02:70:9a:3f:64",
+                  "management": false,
+                  "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno1",
+                  "vendor": "Broadcom"
+                },
+                {
+                  "bridged": false,
+                  "device": "eth1",
+                  "driver": "bnxt_en",
+                  "enabled": false,
+                  "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+                  "interface": "Ethernet",
+                  "mac": "f4:02:70:9a:3f:65",
+                  "management": false,
+                  "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno2d1",
+                  "vendor": "Broadcom"
+                },
+                {
+                  "bridged": true,
+                  "device": "eth2",
+                  "driver": "i40e",
+                  "enabled": true,
+                  "firmware_version": "6.80 0x80003d72 18.8.9",
+                  "interface": "Ethernet",
+                  "ip": "172.16.64.1",
+                  "mac": "f8:f2:1e:60:41:20",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "enp137s0f0",
+                  "network_address": "clustera-1.fakesite.grid5000.fr",
+                  "rate": 10000000000,
+                  "switch": "gw-fakesite",
+                  "switch_port": "Ethernet6/39",
+                  "vendor": "Intel"
+                },
+                {
+                  "bridged": false,
+                  "device": "eth3",
+                  "driver": "i40e",
+                  "enabled": false,
+                  "firmware_version": "6.80 0x80003d72 18.8.9",
+                  "interface": "Ethernet",
+                  "mac": "f8:f2:1e:60:41:21",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "enp137s0f1",
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "bmc",
+                  "enabled": true,
+                  "interface": "Ethernet",
+                  "ip": "172.17.64.1",
+                  "mac": "f4:02:70:9a:3f:74",
+                  "management": true,
+                  "mountable": false,
+                  "mounted": false,
+                  "network_address": "clustera-1-bmc.fakesite.grid5000.fr"
+                }
+              ],
+              "operating_system": {
+                "cstate_driver": "intel_idle",
+                "cstate_governor": "menu",
+                "ht_enabled": true,
+                "pstate_driver": "intel_pstate",
+                "pstate_governor": "performance",
+                "turboboost_enabled": true
+              },
+              "performance": {
+                "core_flops": 17713000000,
+                "node_flops": 202670000000
+              },
+              "processor": {
+                "cache_l1": null,
+                "cache_l1d": 32768,
+                "cache_l1i": 32768,
+                "cache_l2": 1048576,
+                "cache_l3": 11534336,
+                "clock_speed": 2100000000,
+                "ht_capable": true,
+                "instruction_set": "x86-64",
+                "microarchitecture": "Skylake",
+                "model": "Intel Xeon",
+                "other_description": "Intel(R) Xeon(R) Silver 4110 CPU @ 2.10GHz",
+                "vendor": "Intel",
+                "version": "Silver 4110"
+              },
+              "sensors": {
+                "power": {
+                  "available": true,
+                  "via": {
+                    "api": {
+                      "metric": "power"
+                    },
+                    "pdu": [
+                      {
+                        "port": 1,
+                        "uid": "clustera-pdu1"
+                      },
+                      {
+                        "port": 1,
+                        "uid": "clustera-pdu2"
+                      }
+                    ]
+                  }
+                }
+              },
+              "storage_devices": [
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x6f402700aefea00024afe4c307e10af8",
+                  "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0",
+                  "device": "sda",
+                  "driver": "megaraid_sas",
+                  "firmware_version": 4.29,
+                  "interface": "SATA",
+                  "model": "PERC H330 Adp",
+                  "size": 479559942144,
+                  "storage": "SSD",
+                  "vendor": "Dell (Raid)"
+                }
+              ],
+              "supported_job_types": {
+                "besteffort": true,
+                "deploy": true,
+                "max_walltime": 86400,
+                "queues": [
+                  "admin",
+                  "production"
+                ],
+                "virtual": "ivt"
+              },
+              "type": "node",
+              "uid": "clustera-1"
+            },
+            "clustera-2": {
+              "architecture": {
+                "nb_cores": 16,
+                "nb_procs": 2,
+                "nb_threads": 32,
+                "platform_type": "x86_64",
+                "cpu_core_numbering": "contiguous"
+              },
+              "bios": {
+                "release_date": "06/14/2019",
+                "vendor": "Dell Inc.",
+                "version": "2.2.11"
+              },
+              "chassis": {
+                "manufacturer": "Dell Inc.",
+                "name": "PowerEdge T640",
+                "serial": "9L1CBX2"
+              },
+              "gpu": {
+                "gpu": true,
+                "gpu_cores": 17408,
+                "gpu_count": 4,
+                "gpu_model": "RTX 2080 Ti",
+                "gpu_vendor": "Nvidia"
+              },
+              "gpu_devices": {
+                "nvidia0": {
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia0",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.B2",
+                  "vendor": "Nvidia"
+                },
+                "nvidia1": {
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia1",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.0B.40.09",
+                  "vendor": "Nvidia"
+                },
+                "nvidia2": {
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia2",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.0B.40.09",
+                  "vendor": "Nvidia"
+                },
+                "nvidia3": {
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia3",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.AC",
+                  "vendor": "Nvidia"
+                }
+              },
+              "main_memory": {
+                "ram_size": 137438953472
+              },
+              "monitoring": {
+                "wattmeter": "multiple"
+              },
+              "network_adapters": [
+                {
+                  "bridged": false,
+                  "device": "eth0",
+                  "driver": "bnxt_en",
+                  "enabled": false,
+                  "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+                  "interface": "Ethernet",
+                  "mac": "f4:02:70:9a:48:d8",
+                  "management": false,
+                  "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno1",
+                  "vendor": "Broadcom"
+                },
+                {
+                  "bridged": false,
+                  "device": "eth1",
+                  "driver": "bnxt_en",
+                  "enabled": false,
+                  "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+                  "interface": "Ethernet",
+                  "mac": "f4:02:70:9a:48:d9",
+                  "management": false,
+                  "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno2d1",
+                  "vendor": "Broadcom"
+                },
+                {
+                  "bridged": true,
+                  "device": "eth2",
+                  "driver": "i40e",
+                  "enabled": true,
+                  "firmware_version": "6.80 0x80003d72 18.8.9",
+                  "interface": "Ethernet",
+                  "ip": "172.16.64.2",
+                  "mac": "f8:f2:1e:60:3f:a0",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "enp137s0f0",
+                  "network_address": "clustera-2.fakesite.grid5000.fr",
+                  "rate": 10000000000,
+                  "switch": "gw-fakesite",
+                  "switch_port": "Ethernet6/40",
+                  "vendor": "Intel"
+                },
+                {
+                  "bridged": false,
+                  "device": "eth3",
+                  "driver": "i40e",
+                  "enabled": false,
+                  "firmware_version": "6.80 0x80003d72 18.8.9",
+                  "interface": "Ethernet",
+                  "mac": "f8:f2:1e:60:3f:a1",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "enp137s0f1",
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "bmc",
+                  "enabled": true,
+                  "interface": "Ethernet",
+                  "ip": "172.17.64.2",
+                  "mac": "f4:02:70:9a:48:e8",
+                  "management": true,
+                  "mountable": false,
+                  "mounted": false,
+                  "network_address": "clustera-2-bmc.fakesite.grid5000.fr"
+                }
+              ],
+              "operating_system": {
+                "cstate_driver": "intel_idle",
+                "cstate_governor": "menu",
+                "ht_enabled": true,
+                "pstate_driver": "intel_pstate",
+                "pstate_governor": "performance",
+                "turboboost_enabled": true
+              },
+              "performance": {
+                "core_flops": 17713000000,
+                "node_flops": 202670000000
+              },
+              "processor": {
+                "cache_l1": null,
+                "cache_l1d": 32768,
+                "cache_l1i": 32768,
+                "cache_l2": 1048576,
+                "cache_l3": 11534336,
+                "clock_speed": 2100000000,
+                "ht_capable": true,
+                "instruction_set": "x86-64",
+                "microarchitecture": "Skylake",
+                "model": "Intel Xeon",
+                "other_description": "Intel(R) Xeon(R) Silver 4110 CPU @ 2.10GHz",
+                "vendor": "Intel",
+                "version": "Silver 4110"
+              },
+              "sensors": {
+                "power": {
+                  "available": true,
+                  "via": {
+                    "api": {
+                      "metric": "power"
+                    },
+                    "pdu": [
+                      {
+                        "port": 6,
+                        "uid": "clustera-pdu1"
+                      },
+                      {
+                        "port": 6,
+                        "uid": "clustera-pdu2"
+                      }
+                    ]
+                  }
+                }
+              },
+              "storage_devices": [
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x6f402700aeff430024929b4003cd51d0",
+                  "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0",
+                  "device": "sda",
+                  "driver": "megaraid_sas",
+                  "firmware_version": 4.29,
+                  "interface": "SATA",
+                  "model": "PERC H330 Adp",
+                  "size": 479559942144,
+                  "storage": "SSD",
+                  "vendor": "Dell (Raid)"
+                }
+              ],
+              "supported_job_types": {
+                "besteffort": true,
+                "deploy": true,
+                "max_walltime": 86400,
+                "queues": [
+                  "admin",
+                  "production"
+                ],
+                "virtual": "ivt"
+              },
+              "type": "node",
+              "uid": "clustera-2"
+            }
+          },
+          "created_at": "Fri, 07 Jun 2019 00:00:00 GMT",
+          "kavlan": false,
+          "model": "Dell PowerEdge T640",
+          "queues": [
+            "admin",
+            "production"
+          ],
+          "type": "cluster",
+          "uid": "clustera"
+        },
+        "clusterb": {
+          "nodes": {
+            "clusterb-2": {
+              "architecture": {
+                "nb_cores": 16,
+                "nb_procs": 2,
+                "nb_threads": 32,
+                "platform_type": "x86_64",
+                "cpu_core_numbering": "contiguous"
+              },
+              "bios": {
+                "release_date": "06/14/2019",
+                "vendor": "Dell Inc.",
+                "version": "2.2.11"
+              },
+              "chassis": {
+                "manufacturer": "Dell Inc.",
+                "name": "PowerEdge T640",
+                "serial": "9L1CBX2"
+              },
+              "gpu": {
+                "gpu": true,
+                "gpu_cores": 17408,
+                "gpu_count": 4,
+                "gpu_model": "RTX 2080 Ti",
+                "gpu_vendor": "Nvidia"
+              },
+              "gpu_devices": {
+                "nvidia0": {
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia0",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.B2",
+                  "vendor": "Nvidia"
+                },
+                "nvidia1": {
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia1",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.0B.40.09",
+                  "vendor": "Nvidia"
+                },
+                "nvidia2": {
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia2",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.0B.40.09",
+                  "vendor": "Nvidia"
+                },
+                "nvidia3": {
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia3",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.AC",
+                  "vendor": "Nvidia"
+                }
+              },
+              "main_memory": {
+                "ram_size": 137438953472
+              },
+              "monitoring": {
+                "wattmeter": "multiple"
+              },
+              "network_adapters": [
+                {
+                  "bridged": false,
+                  "device": "eth0",
+                  "driver": "bnxt_en",
+                  "enabled": false,
+                  "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+                  "interface": "Ethernet",
+                  "mac": "f4:02:70:9a:48:d8",
+                  "management": false,
+                  "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno1",
+                  "vendor": "Broadcom"
+                },
+                {
+                  "bridged": false,
+                  "device": "eth1",
+                  "driver": "bnxt_en",
+                  "enabled": false,
+                  "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+                  "interface": "Ethernet",
+                  "mac": "f4:02:70:9a:48:d9",
+                  "management": false,
+                  "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno2d1",
+                  "vendor": "Broadcom"
+                },
+                {
+                  "bridged": true,
+                  "device": "eth2",
+                  "driver": "i40e",
+                  "enabled": true,
+                  "firmware_version": "6.80 0x80003d72 18.8.9",
+                  "interface": "Ethernet",
+                  "ip": "172.16.64.2",
+                  "mac": "f8:f2:1e:60:3f:a0",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "enp137s0f0",
+                  "network_address": "clusterb-2.fakesite.grid5000.fr",
+                  "rate": 10000000000,
+                  "switch": null,
+                  "switch_port": null,
+                  "vendor": "Intel"
+                },
+                {
+                  "bridged": false,
+                  "device": "eth3",
+                  "driver": "i40e",
+                  "enabled": false,
+                  "firmware_version": "6.80 0x80003d72 18.8.9",
+                  "interface": "Ethernet",
+                  "mac": "f8:f2:1e:60:3f:a1",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "enp137s0f1",
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "bmc",
+                  "enabled": true,
+                  "interface": "Ethernet",
+                  "ip": "172.17.64.2",
+                  "mac": "f4:02:70:9a:48:e8",
+                  "management": true,
+                  "mountable": false,
+                  "mounted": false,
+                  "network_address": "clusterb-2-bmc.fakesite.grid5000.fr"
+                }
+              ],
+              "operating_system": {
+                "cstate_driver": "intel_idle",
+                "cstate_governor": "menu",
+                "ht_enabled": true,
+                "pstate_driver": "intel_pstate",
+                "pstate_governor": "performance",
+                "turboboost_enabled": true
+              },
+              "performance": {
+                "core_flops": 17713000000,
+                "node_flops": 202670000000
+              },
+              "processor": {
+                "cache_l1": null,
+                "cache_l1d": 32768,
+                "cache_l1i": 32768,
+                "cache_l2": 1048576,
+                "cache_l3": 11534336,
+                "clock_speed": 2100000000,
+                "ht_capable": true,
+                "instruction_set": "x86-64",
+                "microarchitecture": "Skylake",
+                "model": "Intel Xeon",
+                "other_description": "Intel(R) Xeon(R) Silver 4110 CPU @ 2.10GHz",
+                "vendor": "Intel",
+                "version": "Silver 4110"
+              },
+              "sensors": {
+                "power": {
+                  "available": true,
+                  "via": {
+                    "api": {
+                      "metric": "power"
+                    },
+                    "pdu": [
+                      {
+                        "port": 6,
+                        "uid": "clusterb-pdu1"
+                      },
+                      {
+                        "port": 6,
+                        "uid": "clusterb-pdu2"
+                      }
+                    ]
+                  }
+                }
+              },
+              "storage_devices": [
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x6f402700aeff430024929b4003cd51d0",
+                  "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0",
+                  "device": "sda",
+                  "driver": "megaraid_sas",
+                  "firmware_version": 4.29,
+                  "interface": "SATA",
+                  "model": "PERC H330 Adp",
+                  "size": 479559942144,
+                  "storage": "SSD",
+                  "vendor": "Dell (Raid)"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x500003973c8a1ad9",
+                  "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0",
+                  "device": "sdb",
+                  "driver": "megaraid_sas",
+                  "firmware_version": "AM04",
+                  "interface": "SAS",
+                  "model": "PX04SMB040",
+                  "reservation": true,
+                  "size": 400088457216,
+                  "storage": "SSD",
+                  "vendor": "Toshiba"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x500003973be828eb",
+                  "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:2:0",
+                  "device": "sdc",
+                  "driver": "megaraid_sas",
+                  "firmware_version": "FJ2D",
+                  "interface": "SATA",
+                  "model": "TOSHIBA MG04ACA4",
+                  "reservation": true,
+                  "size": 4000787030016,
+                  "storage": "HDD",
+                  "vendor": "Toshiba"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x500003973be828e9",
+                  "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0",
+                  "device": "sdd",
+                  "driver": "megaraid_sas",
+                  "firmware_version": "FJ2D",
+                  "interface": "SATA",
+                  "model": "TOSHIBA MG04ACA4",
+                  "reservation": true,
+                  "size": 4000787030016,
+                  "storage": "HDD",
+                  "vendor": "Toshiba"
+                }
+              ],
+              "supported_job_types": {
+                "besteffort": true,
+                "deploy": true,
+                "max_walltime": 86400,
+                "queues": [
+                  "admin",
+                  "production"
+                ],
+                "virtual": "ivt"
+              },
+              "type": "node",
+              "uid": "clusterb-2"
+            },
+            "clusterb-1": {
+              "architecture": {
+                "nb_cores": 16,
+                "nb_procs": 2,
+                "nb_threads": 32,
+                "platform_type": "x86_64",
+                "cpu_core_numbering": "contiguous"
+              },
+              "bios": {
+                "release_date": "06/14/2019",
+                "vendor": "Dell Inc.",
+                "version": "2.2.11"
+              },
+              "chassis": {
+                "manufacturer": "Dell Inc.",
+                "name": "PowerEdge T640",
+                "serial": "FL1CBX2"
+              },
+              "gpu": {
+                "gpu": true,
+                "gpu_cores": 17408,
+                "gpu_count": 4,
+                "gpu_model": "RTX 2080 Ti",
+                "gpu_vendor": "Nvidia"
+              },
+              "gpu_devices": {
+                "nvidia0": {
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia0",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.B2",
+                  "vendor": "Nvidia"
+                },
+                "nvidia1": {
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia1",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.B2",
+                  "vendor": "Nvidia"
+                },
+                "nvidia2": {
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia2",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.0B.40.09",
+                  "vendor": "Nvidia"
+                },
+                "nvidia3": {
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia3",
+                  "memory": 10989000000,
+                  "model": "GeForce RTX 2080 Ti",
+                  "power_default_limit": "250.00 W",
+                  "vbios_version": "90.02.17.00.B2",
+                  "vendor": "Nvidia"
+                }
+              },
+              "main_memory": {
+                "ram_size": 137438953472
+              },
+              "monitoring": {
+                "wattmeter": "multiple"
+              },
+              "network_adapters": [
+                {
+                  "bridged": false,
+                  "device": "eth0",
+                  "driver": "bnxt_en",
+                  "enabled": false,
+                  "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+                  "interface": "Ethernet",
+                  "mac": "f4:02:70:9a:3f:64",
+                  "management": false,
+                  "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno1",
+                  "vendor": "Broadcom"
+                },
+                {
+                  "bridged": false,
+                  "device": "eth1",
+                  "driver": "bnxt_en",
+                  "enabled": false,
+                  "firmware_version": "214.0.173/1.9.2 pkg 21.40.20.0",
+                  "interface": "Ethernet",
+                  "mac": "f4:02:70:9a:3f:65",
+                  "management": false,
+                  "model": "BCM57416 NetXtreme-E 10GBase-T RDMA Ethernet Controller",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno2d1",
+                  "vendor": "Broadcom"
+                },
+                {
+                  "bridged": true,
+                  "device": "eth2",
+                  "driver": "i40e",
+                  "enabled": true,
+                  "firmware_version": "6.80 0x80003d72 18.8.9",
+                  "interface": "Ethernet",
+                  "ip": "172.16.64.1",
+                  "mac": "f8:f2:1e:60:41:20",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "enp137s0f0",
+                  "network_address": "clusterb-1.fakesite.grid5000.fr",
+                  "rate": 10000000000,
+                  "switch": null,
+                  "switch_port": null,
+                  "vendor": "Intel"
+                },
+                {
+                  "bridged": false,
+                  "device": "eth3",
+                  "driver": "i40e",
+                  "enabled": false,
+                  "firmware_version": "6.80 0x80003d72 18.8.9",
+                  "interface": "Ethernet",
+                  "mac": "f8:f2:1e:60:41:21",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "enp137s0f1",
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "bmc",
+                  "enabled": true,
+                  "interface": "Ethernet",
+                  "ip": "172.17.64.1",
+                  "mac": "f4:02:70:9a:3f:74",
+                  "management": true,
+                  "mountable": false,
+                  "mounted": false,
+                  "network_address": "clusterb-1-bmc.fakesite.grid5000.fr"
+                }
+              ],
+              "operating_system": {
+                "cstate_driver": "intel_idle",
+                "cstate_governor": "menu",
+                "ht_enabled": true,
+                "pstate_driver": "intel_pstate",
+                "pstate_governor": "performance",
+                "turboboost_enabled": true
+              },
+              "performance": {
+                "core_flops": 17713000000,
+                "node_flops": 202670000000
+              },
+              "processor": {
+                "cache_l1": null,
+                "cache_l1d": 32768,
+                "cache_l1i": 32768,
+                "cache_l2": 1048576,
+                "cache_l3": 11534336,
+                "clock_speed": 2100000000,
+                "ht_capable": true,
+                "instruction_set": "x86-64",
+                "microarchitecture": "Skylake",
+                "model": "Intel Xeon",
+                "other_description": "Intel(R) Xeon(R) Silver 4110 CPU @ 2.10GHz",
+                "vendor": "Intel",
+                "version": "Silver 4110"
+              },
+              "sensors": {
+                "power": {
+                  "available": true,
+                  "via": {
+                    "api": {
+                      "metric": "power"
+                    },
+                    "pdu": [
+                      {
+                        "port": 1,
+                        "uid": "clusterb-pdu1"
+                      },
+                      {
+                        "port": 1,
+                        "uid": "clusterb-pdu2"
+                      }
+                    ]
+                  }
+                }
+              },
+              "storage_devices": [
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x6f402700aefea00024afe4c307e10af8",
+                  "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0",
+                  "device": "sda",
+                  "driver": "megaraid_sas",
+                  "firmware_version": 4.29,
+                  "interface": "SATA",
+                  "model": "PERC H330 Adp",
+                  "size": 479559942144,
+                  "storage": "SSD",
+                  "vendor": "Dell (Raid)"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x500003973c8a1ad9",
+                  "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0",
+                  "device": "sdb",
+                  "driver": "megaraid_sas",
+                  "firmware_version": "AM04",
+                  "interface": "SAS",
+                  "model": "PX04SMB040",
+                  "reservation": true,
+                  "size": 400088457216,
+                  "storage": "SSD",
+                  "vendor": "Toshiba"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x500003973be828eb",
+                  "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:2:0",
+                  "device": "sdc",
+                  "driver": "megaraid_sas",
+                  "firmware_version": "FJ2D",
+                  "interface": "SATA",
+                  "model": "TOSHIBA MG04ACA4",
+                  "reservation": true,
+                  "size": 4000787030016,
+                  "storage": "HDD",
+                  "vendor": "Toshiba"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x500003973be828e9",
+                  "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0",
+                  "device": "sdd",
+                  "driver": "megaraid_sas",
+                  "firmware_version": "FJ2D",
+                  "interface": "SATA",
+                  "model": "TOSHIBA MG04ACA4",
+                  "reservation": true,
+                  "size": 4000787030016,
+                  "storage": "HDD",
+                  "vendor": "Toshiba"
+                }
+              ],
+              "supported_job_types": {
+                "besteffort": true,
+                "deploy": true,
+                "max_walltime": 86400,
+                "queues": [
+                  "admin",
+                  "production"
+                ],
+                "virtual": "ivt"
+              },
+              "type": "node",
+              "uid": "clusterb-1"
+            }
+          },
+          "created_at": "Fri, 07 Jun 2019 00:00:00 GMT",
+          "kavlan": false,
+          "model": "Dell PowerEdge T640",
+          "queues": [
+            "admin",
+            "production"
+          ],
+          "type": "cluster",
+          "uid": "clusterb"
+        }
+      },
+      "network_equipments": {
+        "gw-fakesite": {
+          "backplane_bps": 1280000000000,
+          "kind": "router",
+          "linecards": [
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+              "backplane_bps": 1280000000000,
+              "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+              "kind": "node",
+              "model": "N9K-X9464PX",
+              "ports": [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "uid": "clustera-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "uid": "clustera-2"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+            }
+          ],
+          "model": "Cisco Nexus 9508",
+          "monitoring": {
+            "metric": "power",
+            "wattmeter": "multiple"
+          },
+          "sensors": {
+            "network": {
+              "available": true,
+              "resolution": 10
+            },
+            "power": {
+              "available": true,
+              "resolution": 1,
+              "via": {
+                "pdu": [
+                  {
+                    "port": 8,
+                    "uid": "graoully-pdu1"
+                  },
+                  {
+                    "port": 8,
+                    "uid": "graoully-pdu2"
+                  },
+                  {
+                    "port": 8,
+                    "uid": "grimoire-pdu1"
+                  },
+                  {
+                    "port": 8,
+                    "uid": "grimoire-pdu2"
+                  }
+                ]
+              }
+            }
+          },
+          "site": "fakesite",
+          "snmp_community": "public",
+          "type": "network_equipment",
+          "uid": "gw-fakesite",
+          "vlans": {
+            "vlan100": {
+              "addresses": [
+                "172.16.79.254"
+              ],
+              "administrative": true
+            },
+            "vlan101": {
+              "addresses": [
+                "172.17.79.254"
+              ]
+            },
+            "vlan500": {
+              "addresses": [
+                "192.168.4.14"
+              ]
+            },
+            "vlan701": {
+              "addresses": [
+                "192.168.192.0/20"
+              ],
+              "name": "kavlan-1"
+            },
+            "vlan702": {
+              "addresses": [
+                "192.168.208.0/20"
+              ],
+              "name": "kavlan-2"
+            },
+            "vlan703": {
+              "addresses": [
+                "192.168.224.0/20"
+              ],
+              "name": "kavlan-3"
+            },
+            "vlan704": {
+              "addresses": [
+                "10.16.0.0/18"
+              ],
+              "name": "kavlan-4"
+            },
+            "vlan705": {
+              "addresses": [
+                "10.16.64.0/18"
+              ],
+              "name": "kavlan-5"
+            },
+            "vlan706": {
+              "addresses": [
+                "10.16.128.0/18"
+              ],
+              "name": "kavlan-6"
+            },
+            "vlan707": {
+              "addresses": [
+                "10.16.192.0/18"
+              ],
+              "name": "kavlan-7"
+            },
+            "vlan708": {
+              "addresses": [
+                "10.17.0.0/18"
+              ],
+              "name": "kavlan-8"
+            },
+            "vlan709": {
+              "addresses": [
+                "10.17.64.0/18"
+              ],
+              "name": "kavlan-9"
+            },
+            "vlan714": {
+              "addresses": [
+                "10.19.192.0/18"
+              ],
+              "name": "kavlan-14"
+            }
+          },
+          "warranty": "2020-09-01",
+          "weathermap": {}
+        }
+      },
+      "pdus": {
+        "clustera-pdu1": {
+          "ip": "172.17.79.226",
+          "mac": "28:29:86:0B:3B:06",
+          "model": "AP8653",
+          "ports": {
+            "1": "clustera-1",
+            "6": "clustera-2"
+          },
+          "sensors": [
+            {
+              "power": {
+                "per_outlets": true,
+                "resolution": 1,
+                "snmp": {
+                  "available": true,
+                  "outlet_prefix_oid": "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7",
+                  "total_oids": [
+                    "iso.3.6.1.4.1.318.1.1.12.1.16.0"
+                  ],
+                  "unit": "W"
+                }
+              }
+            }
+          ],
+          "type": "pdu",
+          "uid": "clustera-pdu1",
+          "vendor": "APC"
+        },
+        "clustera-pdu3": {
+          "ip": "172.17.79.231",
+          "mac": "28:29:86:12:27:FF",
+          "model": "AP8653",
+          "ports": {},
+          "sensors": [
+            {
+              "power": {
+                "per_outlets": true,
+                "resolution": 1,
+                "snmp": {
+                  "available": true,
+                  "outlet_prefix_oid": "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7",
+                  "total_oids": [
+                    "iso.3.6.1.4.1.318.1.1.12.1.16.0"
+                  ],
+                  "unit": "W"
+                }
+              }
+            }
+          ],
+          "type": "pdu",
+          "uid": "clustera-pdu3",
+          "vendor": "APC"
+        },
+        "clustera-pdu2": {
+          "ip": "172.17.79.227",
+          "mac": "28:29:86:10:0E:8C",
+          "model": "AP8653",
+          "ports": {
+            "1": "clustera-1",
+            "6": "clustera-2"
+          },
+          "sensors": [
+            {
+              "power": {
+                "per_outlets": true,
+                "resolution": 1,
+                "snmp": {
+                  "available": true,
+                  "outlet_prefix_oid": "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7",
+                  "total_oids": [
+                    "iso.3.6.1.4.1.318.1.1.12.1.16.0"
+                  ],
+                  "unit": "W"
+                }
+              }
+            }
+          ],
+          "type": "pdu",
+          "uid": "clustera-pdu2",
+          "vendor": "APC"
+        },
+        "clustera-pdu4": {
+          "ip": "172.17.79.232",
+          "mac": "28:29:86:10:0E:B4",
+          "model": "AP8653",
+          "ports": {},
+          "sensors": [
+            {
+              "power": {
+                "per_outlets": true,
+                "resolution": 1,
+                "snmp": {
+                  "available": true,
+                  "outlet_prefix_oid": "iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7",
+                  "total_oids": [
+                    "iso.3.6.1.4.1.318.1.1.12.1.16.0"
+                  ],
+                  "unit": "W"
+                }
+              }
+            }
+          ],
+          "type": "pdu",
+          "uid": "clustera-pdu4",
+          "vendor": "APC"
+        }
+      },
+      "compilation_server": false,
+      "description": "Grid5000 Fakesite site",
+      "email_contact": "support-staff@lists.grid5000.fr",
+      "frontend_ip": "172.16.79.101",
+      "g5ksubnet": {
+        "gateway": "10.147.255.254",
+        "network": "10.144.0.0/14"
+      },
+      "latitude": 48.7,
+      "location": "Fakesite, France",
+      "longitude": 6.2,
+      "name": "Fakesite",
+      "production": true,
+      "renater_ip": "192.168.4.14",
+      "security_contact": "support-staff@lists.grid5000.fr",
+      "storage5k": false,
+      "sys_admin_contact": "support-staff@lists.grid5000.fr",
+      "type": "site",
+      "uid": "fakesite",
+      "user_support_contact": "support-staff@lists.grid5000.fr",
+      "virt_ip_range": "10.144.0.0/14",
+      "web": "http://www.grid5000.fr/mediawiki/index.php/Fakesite:Home"
+    }
+  },
+  "network_equipments": {
+    "renater-lille": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-paris"
+            },
+            {
+              "kind": "router",
+              "site_uid": "lille",
+              "uid": "gw-lille"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-lille",
+      "weathermap": {}
+    },
+    "renater-nantes": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-lyon"
+            },
+            {
+              "uid": "renater-rennes"
+            },
+            {
+              "kind": "router",
+              "site_uid": "nantes",
+              "uid": "gw-nantes"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-nantes",
+      "weathermap": {}
+    },
+    "renater-rennes": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-nantes"
+            },
+            {
+              "kind": "router",
+              "site_uid": "rennes",
+              "uid": "gw-rennes"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-rennes",
+      "weathermap": {}
+    },
+    "renater-paris": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-lille"
+            },
+            {
+              "uid": "renater-lyon"
+            },
+            {
+              "uid": "renater-nancy"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-paris",
+      "weathermap": {}
+    },
+    "renater-sophia": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-lyon"
+            },
+            {
+              "kind": "router",
+              "site_uid": "sophia",
+              "uid": "gw-sophia"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-sophia",
+      "weathermap": {}
+    },
+    "renater-luxembourg": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-nancy"
+            },
+            {
+              "kind": "router",
+              "site_uid": "luxembourg",
+              "uid": "gw-luxembourg"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-luxembourg",
+      "weathermap": {}
+    },
+    "renater-nancy": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-luxembourg"
+            },
+            {
+              "uid": "renater-paris"
+            },
+            {
+              "kind": "router",
+              "site_uid": "nancy",
+              "uid": "gw-nancy"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-nancy",
+      "weathermap": {}
+    },
+    "renater-grenoble": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-lyon"
+            },
+            {
+              "kind": "router",
+              "site_uid": "grenoble",
+              "uid": "gw-grenoble"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-grenoble",
+      "weathermap": {}
+    },
+    "renater-lyon": {
+      "kind": "virtual",
+      "linecards": [
+        {
+          "ports": [
+            {
+              "uid": "renater-paris"
+            },
+            {
+              "uid": "renater-sophia"
+            },
+            {
+              "uid": "renater-grenoble"
+            },
+            {
+              "uid": "renater-nantes"
+            },
+            {
+              "kind": "router",
+              "site_uid": "lyon",
+              "uid": "gw-lyon"
+            }
+          ],
+          "rate": 10000000000
+        }
+      ],
+      "type": "network_equipment",
+      "uid": "renater-lyon",
+      "weathermap": {}
+    }
+  },
+  "type": "grid",
+  "uid": "grid5000"
+}

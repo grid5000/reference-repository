@@ -489,6 +489,64 @@ TXT
     end
   end
 
+  context 'OAR server with data' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should generate correctly a table of nodes' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => true,
+        :print => false,
+        :update => false,
+        :diff => false,
+        :site => "fakesite",
+        :clusters => ["clustera"]
+      }
+
+      expected_header = <<-TXT
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+|   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+      TXT
+
+      expected_clustera1_desc = <<-TXT
+|  clustera | clustera-1           | 1     | 1     | 0        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-1           | 1     | 2     | 1        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-1           | 1     | 3     | 2        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-1           | 1     | 4     | 3        | 1    | 0                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-1           | 1     | 5     | 4        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-1           | 1     | 6     | 5        | 2    | 1                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+      TXT
+
+      expected_clustera2_desc = <<-TXT
+|  clustera | clustera-2           | 4     | 26    | 9        | 7    | 2                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-2           | 4     | 27    | 10       | 7    | 2                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-2           | 4     | 28    | 11       | 7    | 2                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-2           | 4     | 29    | 12       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-2           | 4     | 30    | 13       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-2           | 4     | 31    | 14       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+|  clustera | clustera-2           | 4     | 32    | 15       | 8    | 3                    | Intel Xeon Silver 4110         | GeForce RTX 2080 Ti           |
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clustera1_desc)
+      expect(generator_output[:stdout]).to include(expected_clustera2_desc)
+    end
+
+  end
+
   context 'interracting with an empty OAR server (round-robin cpusets)' do
     before do
       prepare_stubs("dump_oar_api_empty_server.json", "load_data_hierarchy_stubbed_data_round_robin_cpusets.json")
@@ -1774,6 +1832,34 @@ TXT
 
       expect(generator_output[:stdout]).to include(expected_output)
     end
+
+    it 'should print commands to correct the cluster' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => false,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clustera"]
+      }
+
+      expected_output = <<-TXT
+# Error: Resource 9 (host=clustera-1.fakesite.grid5000.fr cpu=2 core=9 cpuset=8 gpu=2 gpudevice=2) has a mismatch for ressource GPU: OAR API gives 2, generator wants 3.
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+    end
   end
 
   context 'interracting with a configured OAR server (msising network interfaces)' do
@@ -2265,6 +2351,66 @@ CORE has an unexpected number of resources (current:31 vs expected:32).
       end
 
       expect(generator_output[:stdout]).to include(expected_output)
+    end
+  end
+
+  context 'interracting with a cluster with misconfigured resources, errors in its OAR properties and some misconfigured disks' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_with_disk_misconfigured_resources_properties_and_disks.json", "load_data_hierarchy_stubbed_data_with_disk.json")
+    end
+
+    it 'should handle "diff,print" action' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => true,
+        :update => false,
+        :diff => true,
+        :site => "fakesite",
+        :clusters => ["clusterb"],
+        :verbose => 2
+      }
+
+      expected_output = <<-TXT
+oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clusterb' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
+      TXT
+
+      expected_output2 = <<-TXT
+oarnodesetting --sql "host='clusterb-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.1' -p cluster='clusterb' -p nodemodel='Dell PowerEdge T640' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p opa='NO' -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=3
+      TXT
+
+      expected_output3 = <<-TXT
+echo '================================================================================'
+echo; echo 'Adding disk sdb.clusterb-1 on host clusterb-1.fakesite.grid5000.fr:'
+disk_exist 'clusterb-1.fakesite.grid5000.fr' 'sdb.clusterb-1' && echo '=> disk already exists'
+disk_exist 'clusterb-1.fakesite.grid5000.fr' 'sdb.clusterb-1' || oarnodesetting -a -h '' -p host='clusterb-1.fakesite.grid5000.fr' -p type='disk' -p disk='sdb.clusterb-1'
+
+echo; echo 'Setting properties for disk sdb.clusterb-1 on host clusterb-1.fakesite.grid5000.fr:'; echo
+oarnodesetting --sql "host='clusterb-1.fakesite.grid5000.fr' and type='disk' and disk='sdb.clusterb-1'" -p cluster='clusterb' -p host='clusterb-1.fakesite.grid5000.fr' -p available_upto=0 -p deploy='YES' -p production='YES' -p maintenance='NO' -p disk='sdb.clusterb-1' -p diskpath='/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0' -p cpuset=-1
+      TXT
+
+      expected_output4 = <<-TXT
+oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' AND resource_id='33' AND type='default'" -p cpu=4 -p core=30 -p cpuset=13 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+      TXT
+      dont_expected_output5 = <<-TXT
+echo; echo 'Adding disk sdb.clusterb-2 on host clusterb-1.fakesite.grid5000.fr:'
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_output)
+      expect(generator_output[:stdout]).to include(expected_output2)
+      expect(generator_output[:stdout]).to include(expected_output3)
+      expect(generator_output[:stdout]).to include(expected_output4)
+      expect(generator_output[:stdout]).not_to include(dont_expected_output5)
     end
   end
 
