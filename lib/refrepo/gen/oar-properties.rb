@@ -598,10 +598,19 @@ end
 
 # Get all data from the OAR database
 def get_oar_data(site_uid, options)
-  if options[:api][:uri] and not options[:api][:uri].include? "api.grid5000.fr"
-    api_uri = URI.parse(options[:api][:uri]+'/oarapi/resources/details.json?limit=999999')
-  else
+
+  # If no API URL is given, set a default URL on https://api.grid5000.fr
+  if not options[:api][:uri]
+    options[:api][:uri] = "https://api.grid5000.fr"
+  end
+
+  # Preparing the URL that will be used to fetch OAR resources
+  if options[:api][:uri].include? "api.grid5000.fr"
     api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
+  elsif options[:api][:uri].include? "api-ext.grid5000.fr"
+    api_uri = URI.parse('https://api-ext.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
+  else
+    api_uri = URI.parse(options[:api][:uri]+'/oarapi/resources/details.json?limit=999999')
   end
 
   # Download the OAR properties from the OAR API (through G5K API)
