@@ -1,0 +1,220 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 32,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "08/15/2019",
+    "vendor": "Dell Inc.",
+    "version": "1.10.6"
+  },
+  "bmc_version": "3.36.36.36",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R7425",
+    "serial": "DVJVY03"
+  },
+  "gpu_devices": {
+    "nvidia0": {
+      "cpu_affinity": 2,
+      "device": "/dev/nvidia0",
+      "memory": 15079000000,
+      "model": "Tesla T4",
+      "power_default_limit": "70.00 W",
+      "vbios_version": "90.04.38.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "cpu_affinity": 3,
+      "device": "/dev/nvidia1",
+      "memory": 15079000000,
+      "model": "Tesla T4",
+      "power_default_limit": "70.00 W",
+      "vbios_version": "90.04.38.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "cpu_affinity": 4,
+      "device": "/dev/nvidia2",
+      "memory": 15079000000,
+      "model": "Tesla T4",
+      "power_default_limit": "70.00 W",
+      "vbios_version": "90.04.38.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "cpu_affinity": 6,
+      "device": "/dev/nvidia3",
+      "memory": 15079000000,
+      "model": "Tesla T4",
+      "power_default_limit": "70.00 W",
+      "vbios_version": "90.04.38.00.03",
+      "vendor": "Nvidia"
+    }
+  },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.205.2",
+      "kavlan-11": "10.7.221.2",
+      "kavlan-12": "10.11.221.2",
+      "kavlan-13": "10.15.221.2",
+      "kavlan-14": "10.19.221.2",
+      "kavlan-16": "10.27.221.2",
+      "kavlan-18": "10.35.221.2",
+      "kavlan-2": "192.168.221.2",
+      "kavlan-20": "10.43.221.2",
+      "kavlan-21": "10.47.221.2",
+      "kavlan-3": "192.168.237.2",
+      "kavlan-4": "10.16.13.2",
+      "kavlan-5": "10.16.77.2",
+      "kavlan-6": "10.16.141.2",
+      "kavlan-7": "10.16.205.2",
+      "kavlan-8": "10.17.13.2",
+      "kavlan-9": "10.17.77.2"
+    }
+  },
+  "main_memory": {
+    "ram_size": 137438953472
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "7.10 0x8000519f 19.0.12",
+      "interface": "Ethernet",
+      "ip": "172.16.77.2",
+      "kavlan": true,
+      "mac": "e4:43:4b:a5:b1:10",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno1",
+      "network_address": "grue-2.nancy.grid5000.fr",
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fa8, 19.0.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:a5:b1:30",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "7.10 0x8000519f 19.0.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:a5:b1:12",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fa8, 19.0.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:a5:b1:31",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.77.2",
+      "kavlan": false,
+      "mac": "f4:02:70:c8:45:42",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "grue-2-bmc.nancy.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": false,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 0,
+    "node_flops": 0
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 65536,
+    "cache_l2": 524288,
+    "cache_l3": 8388608,
+    "clock_speed": 2400000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Zen",
+    "microcode": "0x8001250",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7351 16-Core Processor",
+    "vendor": "AMD",
+    "version": 7351
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x64cd98f09f5a72002577fabc03912e15",
+      "by_path": "/dev/disk/by-path/pci-0000:e1:00.0-scsi-0:2:0:0",
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "firmware_version": 4.3,
+      "interface": "SAS",
+      "model": "PERC H730P Adp",
+      "size": 479559942144,
+      "storage": "SDD",
+      "vendor": "Dell (Raid)"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "amd-v"
+  },
+  "type": "node",
+  "uid": "grue-2"
+}
