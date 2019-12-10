@@ -10,6 +10,10 @@ def g5kchecks_importer(sourcedir)
   end
 
   list_of_yaml_files = Dir["#{sourcedir}/*.y*ml"].sort_by { |x| -x.count('/') }
+  if list_of_yaml_files.empty?
+    puts "No files found in #{sourcedir}. Aborting."
+    exit(1)
+  end
   list_of_yaml_files.each do |filename|
     begin
       file     = File::basename(filename)
