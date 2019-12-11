@@ -5,7 +5,7 @@ grue-1:
     cpu_core_numbering: round-robin
     nb_cores: 32
     nb_procs: 2
-    nb_threads: 32
+    nb_threads: 64
     platform_type: x86_64
   bios:
     release_date: '08/15/2019'
@@ -68,15 +68,6 @@ grue-1:
       rate: 10000000000
       vendor: Intel
     eth1:
-      driver: igb
-      firmware_version: 1.67, 0x80000fa8, 19.0.12
-      interface: Ethernet
-      mac: e4:43:4b:a5:71:fc
-      management: false
-      model: I350 Gigabit Network Connection
-      name: eno3
-      vendor: Intel
-    eth2:
       driver: i40e
       firmware_version: 7.10 0x8000519f 19.0.12
       interface: Ethernet
@@ -84,6 +75,15 @@ grue-1:
       management: false
       model: Ethernet Controller X710 for 10GbE SFP+
       name: eno2
+      vendor: Intel
+    eth2:
+      driver: igb
+      firmware_version: 1.67, 0x80000fa8, 19.0.12
+      interface: Ethernet
+      mac: e4:43:4b:a5:71:fc
+      management: false
+      model: I350 Gigabit Network Connection
+      name: eno3
       vendor: Intel
     eth3:
       driver: igb
@@ -97,7 +97,7 @@ grue-1:
   operating_system:
     cstate_driver: acpi_idle
     cstate_governor: menu
-    ht_enabled: false
+    ht_enabled: true
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true

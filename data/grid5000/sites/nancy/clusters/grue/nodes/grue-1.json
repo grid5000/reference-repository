@@ -3,7 +3,7 @@
     "cpu_core_numbering": "round-robin",
     "nb_cores": 32,
     "nb_procs": 2,
-    "nb_threads": 32,
+    "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
@@ -105,21 +105,6 @@
     },
     {
       "device": "eth1",
-      "driver": "igb",
-      "enabled": false,
-      "firmware_version": "1.67, 0x80000fa8, 19.0.12",
-      "interface": "Ethernet",
-      "kavlan": false,
-      "mac": "e4:43:4b:a5:71:fc",
-      "management": false,
-      "model": "I350 Gigabit Network Connection",
-      "mountable": false,
-      "mounted": false,
-      "name": "eno3",
-      "vendor": "Intel"
-    },
-    {
-      "device": "eth2",
       "driver": "i40e",
       "enabled": false,
       "firmware_version": "7.10 0x8000519f 19.0.12",
@@ -131,6 +116,21 @@
       "mountable": false,
       "mounted": false,
       "name": "eno2",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fa8, 19.0.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:a5:71:fc",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
       "vendor": "Intel"
     },
     {
@@ -164,7 +164,7 @@
   "operating_system": {
     "cstate_driver": "acpi_idle",
     "cstate_governor": "menu",
-    "ht_enabled": false,
+    "ht_enabled": true,
     "pstate_driver": "acpi-cpufreq",
     "pstate_governor": "performance",
     "turboboost_enabled": true
