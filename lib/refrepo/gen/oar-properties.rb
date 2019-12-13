@@ -431,7 +431,6 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   h['opa_count'] = ni_mountable.length
   h['opa_rate']  = ni_mountable.length > 0 ? ni_fastest['rate'] / 1_000_000_000 : 0
-  h['opa'] = h['opa_count'] > 0
 
   puts "#{node_uid}: Warning - no rate info for the opa interface" if h['opa_count'] > 0 && h['opa_rate'] == 0
 
