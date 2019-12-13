@@ -722,7 +722,7 @@ def ignore_default_keys()
     "slash_21",
     "slash_22",
     "available_upto",
-    "besteffort",
+    # "besteffort",
     "chunks",
     "comment", # TODO
     "core", # This property was created by 'oar_resources_add'
