@@ -323,7 +323,7 @@ def sort_records(records)
   in_a.sort_by!{ |record|
     record.address.split('.').map{ |octet|
       octet.to_i
-    }
+    }.push(record.label)
   }
   sorted_records += in_a
   in_aaaa.sort_by!{ |record|
