@@ -733,7 +733,7 @@ def ignore_default_keys()
     "gpu", # New property taken into account by the new generator
     "cpuset",
     "desktop_computing",
-    "deploy",
+    # "deploy",
     "drain",
     "expiry_date",
     "finaud_decision",
