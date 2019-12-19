@@ -11,6 +11,7 @@ class GPURef
     "GeForce GTX TITAN Black" => 2880,
     "GeForce GTX 980" => 2048,
     "Tesla K40m" => 2880,
+    "Tesla T4" => 2560,
   }
 
   @@new_gpu_names2old_ones = {
@@ -23,6 +24,7 @@ class GPURef
     "GeForce GTX TITAN Black" => "Titan Black",
     "GeForce GTX 980" => "GTX 980",
     "Tesla K40m" => "Tesla K40M",
+    "Tesla T4" => "Tesla T4",
   }
 
   def self.getNumberOfCoresFor(model)
@@ -43,4 +45,3 @@ class GPURef
   end
 
 end
-
