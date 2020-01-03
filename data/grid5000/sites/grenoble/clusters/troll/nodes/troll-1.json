@@ -1,0 +1,165 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "08/15/2019",
+    "vendor": "Dell Inc.",
+    "version": "2.3.10"
+  },
+  "bmc_version": "3.36.36.36",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R640",
+    "serial": "7D9D013"
+  },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.194.1",
+      "kavlan-11": "10.7.198.1",
+      "kavlan-12": "10.11.198.1",
+      "kavlan-13": "10.15.198.1",
+      "kavlan-14": "10.19.198.1",
+      "kavlan-16": "10.27.198.1",
+      "kavlan-18": "10.35.198.1",
+      "kavlan-2": "192.168.210.1",
+      "kavlan-20": "10.43.198.1",
+      "kavlan-21": "10.47.198.1",
+      "kavlan-3": "192.168.226.1",
+      "kavlan-4": "10.4.2.1",
+      "kavlan-5": "10.4.66.1",
+      "kavlan-6": "10.4.130.1",
+      "kavlan-7": "10.4.194.1",
+      "kavlan-8": "10.5.2.1",
+      "kavlan-9": "10.5.66.1"
+    }
+  },
+  "main_memory": {
+    "ram_size": 2061584302080
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "bridged": true,
+      "device": "eth0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "14.25.1020 (DEL2810000034)",
+      "interface": "Ethernet",
+      "ip": "172.16.22.1",
+      "ip6": "2001:660:4406:100:3::1",
+      "kavlan": true,
+      "mac": "b8:59:9f:b0:87:00",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno1",
+      "network_address": "troll-1.grenoble.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "gw",
+      "switch_port": "X670V-48x Port 37",
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "eth1",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "14.25.1020 (DEL2810000034)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "b8:59:9f:b0:87:01",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.22.1",
+      "kavlan": false,
+      "mac": "f4:02:70:b8:69:3c",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "troll-1-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 0,
+    "node_flops": 0
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 23068672,
+    "clock_speed": 2300000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Cascade Lake-SP",
+    "microcode": "0x500002c",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz",
+    "vendor": "Intel",
+    "version": "Gold 5218"
+  },
+  "sensors": {
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x500a075122febd94",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
+      "device": "sda",
+      "driver": "megaraid_sas",
+      "firmware_version": "D1DF003",
+      "interface": "SATA",
+      "model": "MTFDDAK480TDN",
+      "size": 480103981056,
+      "storage": "SSD",
+      "vendor": "Micron"
+    },
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.0025389671000bad",
+      "by_path": "/dev/disk/by-path/pci-0000:d8:00.0-nvme-1",
+      "device": "nvme0n1",
+      "driver": "nvme",
+      "interface": "NVME",
+      "model": "Dell Express Flash NVMe PM1725 1.6TB AIC",
+      "size": 1600321314816,
+      "storage": "SSD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "troll-1"
+}

@@ -1,0 +1,44 @@
+---
+model: Dell PowerEdge R640
+created_at: 2019-12-23
+kavlan: true
+queues:
+  - admin
+  - testing
+nodes:
+  troll-[1-4]:
+    processor:
+      microarchitecture: Cascade Lake-SP
+    supported_job_types:
+       deploy: true
+       besteffort: true
+       max_walltime: 0
+    performance:
+       core_flops: 0
+       node_flops: 0
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        bridged: true
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      nvme0n1:
+        interface: NVME
+        driver: nvme
+        storage: SSD
+        #model: Dell Express Flash NVMe PM1725 1.6TB AIC
+      sda:
+        interface: SATA
+        driver: megaraid_sas
+        storage: SSD
+        #model: PERC H330 Mini
