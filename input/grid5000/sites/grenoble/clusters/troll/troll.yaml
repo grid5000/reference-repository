@@ -36,9 +36,18 @@ nodes:
         interface: NVME
         driver: nvme
         storage: SSD
-        #model: Dell Express Flash NVMe PM1725 1.6TB AIC
       sda:
         interface: SATA
         driver: megaraid_sas
         storage: SSD
-        #model: PERC H330 Mini
+    monitoring:
+      wattmeter: true
+    sensors:
+      power:
+        available: true
+        per_outlets: true
+        via:
+          api:
+            metric: power
+          www:
+            url: http://wattmetre.grenoble.grid5000.fr/GetWatts-json.php
