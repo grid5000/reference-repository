@@ -42,7 +42,7 @@
     "ram_size": 2061584302080
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "true"
   },
   "network_adapters": [
     {
@@ -124,6 +124,24 @@
     "version": "Gold 5218"
   },
   "sensors": {
+    "power": {
+      "available": true,
+      "per_outlets": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 5,
+            "uid": "wattmetre11"
+          }
+        ],
+        "www": {
+          "url": "http://wattmetre.grenoble.grid5000.fr/GetWatts-json.php"
+        }
+      }
+    }
   },
   "storage_devices": [
     {
