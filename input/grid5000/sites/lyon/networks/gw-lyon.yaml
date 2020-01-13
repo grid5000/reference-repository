@@ -64,8 +64,8 @@ gw-lyon:
         - 10.15.192.0/18
   backplane_bps: 960000000000
   linecards:
-    0:
-      snmp_pattern: "ethernet 1/%LINECARD%/%PORT%"
+    1:
+      snmp_pattern: "ethernet1/%LINECARD%/%PORT%"
       kavlan_pattern: "%PORT%"
       kind: node
       rate: 10000000000
