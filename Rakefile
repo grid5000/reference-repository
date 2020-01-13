@@ -91,6 +91,7 @@ namespace :valid do
       ret = check_network_description(options)
     rescue StandardError => e
       puts e
+      puts e.backtrace
       ret = 3
     ensure
       exit(ret)
