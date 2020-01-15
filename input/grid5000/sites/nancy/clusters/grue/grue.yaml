@@ -5,14 +5,13 @@
    - admin
    - testing
  nodes:
-   grue-[1-5]:  
+   grue-[1-5]:
      supported_job_types:
        deploy: true
-       besteffort: true
-       max_walltime: 0
+       besteffort: true           
      performance:
-      core_flops: 0
-      node_flops: 0
+      core_flops: 13438000000
+      node_flops: 430760000000
      processor:
        microarchitecture: Zen
      network_adapters:
@@ -42,3 +41,12 @@
          interface: SAS
          driver: megaraid_sas
          storage: SDD
+   grue-[1-2]:
+     supported_job_types:
+        max_walltime: 86400 
+   grue-[3-4]:
+     supported_job_types:
+        max_walltime: 172800
+   grue-[5-]:
+     supported_job_types:
+        max_walltime: 604800     
