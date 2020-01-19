@@ -1364,10 +1364,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       ############################################
       # Suite of (2-a): Iterate over CPUs of the server. (rest: cores)
       ############################################
-      (1..phys_rsc_map["cpu"][:per_server_count]).each do |cpu_num|
-
-        # cpu_index0 starts at 0
-        cpu_index0 = cpu_num - 1
+      (0...phys_rsc_map["cpu"][:per_server_count]).each do |cpu_num|
 
         ############################################
         # (2-c) [if cluster with GPU] detects the existing mapping GPU <-> CPU in the cluster
@@ -1376,7 +1373,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         if node_description.key? "gpu_devices"
           numa_gpus = node_description["gpu_devices"]
                         .map {|v| v[1]}
-                        .select {|v| v['cpu_affinity'] == cpu_index0 and v.fetch("reservation", true)}
+                        .select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
         end
 
         ############################################
@@ -1423,7 +1420,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
             row[:cpuset] = cpuset
           else
             # CPUSETs starts at 0
-            row[:cpuset] = cpu_index0 + core_index0 * phys_rsc_map["cpu"][:per_server_count]
+            row[:cpuset] = cpu_num + core_index0 * phys_rsc_map["cpu"][:per_server_count]
           end
 
           row[:cpumodel] = cpu_model
