@@ -1270,7 +1270,8 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     #   a) if the cluster is new: the IDs is a list of number in [max_resource_id, max_resource_id + cluster_resource_count]
     #   a) if the cluster is not new: the IDs is the list of existing resources
     phys_rsc_map.each do |physical_resource, variables|
-      if is_a_new_cluster
+      # if it's a new cluster, or the cluster doesn't have resource ids for this kind of resources
+      if is_a_new_cluster or cluster_resources.map{|r| r[physical_resource]}.select{|x| not x.nil?}.empty?
         variables[:current_ids] = [*next_rsc_ids[physical_resource]+1..next_rsc_ids[physical_resource]+variables[:per_cluster_count]]
         next_rsc_ids[physical_resource] = variables[:per_server_count] > 0 ? variables[:current_ids].max : next_rsc_ids[physical_resource]
       else

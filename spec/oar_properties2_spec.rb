@@ -110,4 +110,9 @@ describe 'OarProperties2' do
   it 'works on a cluster with GPUs and cores_affinity, on an empty OAR server' do
     check_oar_properties({ :oar => 'oar_empty', :data => 'data_grue', :case => 'grue_empty' })
   end
+
+  it 'works on a cluster with GPUs and cores_affinity, on configured OAR server without GPUs' do
+    check_oar_properties({ :oar => 'oar_grue-without-gpus', :data => 'data_grue', :case => 'grue_nogpus' })
+  end
+
 end

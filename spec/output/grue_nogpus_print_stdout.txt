@@ -1,0 +1,287 @@
+
+#! /usr/bin/env bash
+
+set -eu
+set -x
+set -o pipefail
+
+echo '================================================================================'
+
+property_exist () {
+  [[ $(oarproperty -l | grep -e "^$1$") ]]
+}
+
+node_exist () {
+  [[ $(oarnodes --sql "host='$1' and type='default'") ]]
+}
+
+disk_exist () {
+  [[ $(oarnodes --sql "host='$1' and type='disk' and disk='$2'") ]]
+}
+
+
+# if [ $(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
+#   NEXT_AVAILABLE_CPU_ID=0
+# else
+#   MAX_CPU_ID=$(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | head -n1)
+#   let "NEXT_AVAILABLE_CPU_ID=MAX_CPU_ID+1"
+# fi
+#
+# if [ $(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
+#   NEXT_AVAILABLE_CORE_ID=0
+# else
+#   MAX_CORE_ID=$(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | head -n1)
+#   let "NEXT_AVAILABLE_CORE_ID=MAX_CORE_ID+1"
+# fi
+
+#############################################
+# Create OAR properties that were created by 'oar_resources_add'
+#############################################
+property_exist 'host' || oarproperty -a host --varchar
+property_exist 'cpu' || oarproperty -a cpu
+property_exist 'core' || oarproperty -a core
+property_exist 'gpudevice' || oarproperty -a gpudevice
+property_exist 'gpu' || oarproperty -a gpu
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+
+
+#############################################
+# Create OAR properties if they don't exist
+#############################################
+
+property_exist 'ip' || oarproperty -a ip --varchar
+property_exist 'cluster' || oarproperty -a cluster --varchar
+property_exist 'nodemodel' || oarproperty -a nodemodel --varchar
+property_exist 'switch' || oarproperty -a switch --varchar
+property_exist 'virtual' || oarproperty -a virtual --varchar
+property_exist 'cpuarch' || oarproperty -a cpuarch --varchar
+property_exist 'cpucore' || oarproperty -a cpucore
+property_exist 'cputype' || oarproperty -a cputype --varchar
+property_exist 'cpufreq' || oarproperty -a cpufreq --varchar
+property_exist 'disktype' || oarproperty -a disktype --varchar
+property_exist 'eth_count' || oarproperty -a eth_count
+property_exist 'eth_rate' || oarproperty -a eth_rate
+property_exist 'ib_count' || oarproperty -a ib_count
+property_exist 'ib_rate' || oarproperty -a ib_rate
+property_exist 'ib' || oarproperty -a ib --varchar
+property_exist 'opa_count' || oarproperty -a opa_count
+property_exist 'opa_rate' || oarproperty -a opa_rate
+property_exist 'myri_count' || oarproperty -a myri_count
+property_exist 'myri_rate' || oarproperty -a myri_rate
+property_exist 'myri' || oarproperty -a myri --varchar
+property_exist 'memcore' || oarproperty -a memcore
+property_exist 'memcpu' || oarproperty -a memcpu
+property_exist 'memnode' || oarproperty -a memnode
+property_exist 'gpu_count' || oarproperty -a gpu_count
+property_exist 'mic' || oarproperty -a mic --varchar
+property_exist 'wattmeter' || oarproperty -a wattmeter --varchar
+property_exist 'cluster_priority' || oarproperty -a cluster_priority
+property_exist 'max_walltime' || oarproperty -a max_walltime
+property_exist 'production' || oarproperty -a production --varchar
+property_exist 'maintenance' || oarproperty -a maintenance --varchar
+property_exist 'disk_reservation_count' || oarproperty -a disk_reservation_count
+
+
+###################################
+# clustera-1.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12215' AND type='default'" -p cpu=1765 -p core=10967 -p cpuset=0 -p gpu=105 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12216' AND type='default'" -p cpu=1765 -p core=10968 -p cpuset=2 -p gpu=106 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12217' AND type='default'" -p cpu=1765 -p core=10969 -p cpuset=4 -p gpu=105 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12218' AND type='default'" -p cpu=1765 -p core=10970 -p cpuset=6 -p gpu=106 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12219' AND type='default'" -p cpu=1765 -p core=10971 -p cpuset=8 -p gpu=105 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12220' AND type='default'" -p cpu=1765 -p core=10972 -p cpuset=10 -p gpu=106 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12221' AND type='default'" -p cpu=1765 -p core=10973 -p cpuset=12 -p gpu=105 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12222' AND type='default'" -p cpu=1765 -p core=10974 -p cpuset=14 -p gpu=106 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12223' AND type='default'" -p cpu=1765 -p core=10975 -p cpuset=16 -p gpu=105 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12224' AND type='default'" -p cpu=1765 -p core=10976 -p cpuset=18 -p gpu=106 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12225' AND type='default'" -p cpu=1765 -p core=10977 -p cpuset=20 -p gpu=105 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12226' AND type='default'" -p cpu=1765 -p core=10978 -p cpuset=22 -p gpu=106 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12227' AND type='default'" -p cpu=1765 -p core=10979 -p cpuset=24 -p gpu=105 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12228' AND type='default'" -p cpu=1765 -p core=10980 -p cpuset=26 -p gpu=106 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12229' AND type='default'" -p cpu=1765 -p core=10981 -p cpuset=28 -p gpu=105 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12230' AND type='default'" -p cpu=1765 -p core=10982 -p cpuset=30 -p gpu=106 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12231' AND type='default'" -p cpu=1766 -p core=10983 -p cpuset=1 -p gpu=107 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12232' AND type='default'" -p cpu=1766 -p core=10984 -p cpuset=3 -p gpu=108 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12233' AND type='default'" -p cpu=1766 -p core=10985 -p cpuset=5 -p gpu=108 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12234' AND type='default'" -p cpu=1766 -p core=10986 -p cpuset=7 -p gpu=107 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12235' AND type='default'" -p cpu=1766 -p core=10987 -p cpuset=9 -p gpu=107 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12236' AND type='default'" -p cpu=1766 -p core=10988 -p cpuset=11 -p gpu=108 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12237' AND type='default'" -p cpu=1766 -p core=10989 -p cpuset=13 -p gpu=108 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12238' AND type='default'" -p cpu=1766 -p core=10990 -p cpuset=15 -p gpu=107 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12239' AND type='default'" -p cpu=1766 -p core=10991 -p cpuset=17 -p gpu=107 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12240' AND type='default'" -p cpu=1766 -p core=10992 -p cpuset=19 -p gpu=108 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12241' AND type='default'" -p cpu=1766 -p core=10993 -p cpuset=21 -p gpu=108 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12242' AND type='default'" -p cpu=1766 -p core=10994 -p cpuset=23 -p gpu=107 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12243' AND type='default'" -p cpu=1766 -p core=10995 -p cpuset=25 -p gpu=107 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12244' AND type='default'" -p cpu=1766 -p core=10996 -p cpuset=27 -p gpu=108 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12245' AND type='default'" -p cpu=1766 -p core=10997 -p cpuset=29 -p gpu=108 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='12246' AND type='default'" -p cpu=1766 -p core=10998 -p cpuset=31 -p gpu=107 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+echo; echo 'Setting properties for clustera-1.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' and type='default'" -p ip='172.16.77.1' -p cluster='clustera' -p nodemodel='R7425' -p switch='gw-nancy' -p besteffort='YES' -p deploy='YES' -p virtual='amd-v' -p cpuarch='x86_64' -p cpucore=16 -p cputype='AMD EPYC 7351' -p cpufreq='2.4' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='NO' -p cluster_priority=201911 -p max_walltime=86400 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-2.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12247' AND type='default'" -p cpu=1767 -p core=10999 -p cpuset=0 -p gpu=109 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12248' AND type='default'" -p cpu=1767 -p core=11000 -p cpuset=2 -p gpu=110 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12249' AND type='default'" -p cpu=1767 -p core=11001 -p cpuset=4 -p gpu=109 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12250' AND type='default'" -p cpu=1767 -p core=11002 -p cpuset=6 -p gpu=110 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12251' AND type='default'" -p cpu=1767 -p core=11003 -p cpuset=8 -p gpu=109 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12252' AND type='default'" -p cpu=1767 -p core=11004 -p cpuset=10 -p gpu=110 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12253' AND type='default'" -p cpu=1767 -p core=11005 -p cpuset=12 -p gpu=109 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12254' AND type='default'" -p cpu=1767 -p core=11006 -p cpuset=14 -p gpu=110 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12255' AND type='default'" -p cpu=1767 -p core=11007 -p cpuset=16 -p gpu=109 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12256' AND type='default'" -p cpu=1767 -p core=11008 -p cpuset=18 -p gpu=110 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12257' AND type='default'" -p cpu=1767 -p core=11009 -p cpuset=20 -p gpu=109 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12258' AND type='default'" -p cpu=1767 -p core=11010 -p cpuset=22 -p gpu=110 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12259' AND type='default'" -p cpu=1767 -p core=11011 -p cpuset=24 -p gpu=109 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12260' AND type='default'" -p cpu=1767 -p core=11012 -p cpuset=26 -p gpu=110 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12261' AND type='default'" -p cpu=1767 -p core=11013 -p cpuset=28 -p gpu=109 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12262' AND type='default'" -p cpu=1767 -p core=11014 -p cpuset=30 -p gpu=110 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12263' AND type='default'" -p cpu=1768 -p core=11015 -p cpuset=1 -p gpu=111 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12264' AND type='default'" -p cpu=1768 -p core=11016 -p cpuset=3 -p gpu=112 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12265' AND type='default'" -p cpu=1768 -p core=11017 -p cpuset=5 -p gpu=112 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12266' AND type='default'" -p cpu=1768 -p core=11018 -p cpuset=7 -p gpu=111 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12267' AND type='default'" -p cpu=1768 -p core=11019 -p cpuset=9 -p gpu=111 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12268' AND type='default'" -p cpu=1768 -p core=11020 -p cpuset=11 -p gpu=112 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12269' AND type='default'" -p cpu=1768 -p core=11021 -p cpuset=13 -p gpu=112 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12270' AND type='default'" -p cpu=1768 -p core=11022 -p cpuset=15 -p gpu=111 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12271' AND type='default'" -p cpu=1768 -p core=11023 -p cpuset=17 -p gpu=111 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12272' AND type='default'" -p cpu=1768 -p core=11024 -p cpuset=19 -p gpu=112 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12273' AND type='default'" -p cpu=1768 -p core=11025 -p cpuset=21 -p gpu=112 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12274' AND type='default'" -p cpu=1768 -p core=11026 -p cpuset=23 -p gpu=111 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12275' AND type='default'" -p cpu=1768 -p core=11027 -p cpuset=25 -p gpu=111 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12276' AND type='default'" -p cpu=1768 -p core=11028 -p cpuset=27 -p gpu=112 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12277' AND type='default'" -p cpu=1768 -p core=11029 -p cpuset=29 -p gpu=112 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='12278' AND type='default'" -p cpu=1768 -p core=11030 -p cpuset=31 -p gpu=111 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+echo; echo 'Setting properties for clustera-2.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' and type='default'" -p ip='172.16.77.2' -p cluster='clustera' -p nodemodel='R7425' -p switch='gw-nancy' -p besteffort='YES' -p deploy='YES' -p virtual='amd-v' -p cpuarch='x86_64' -p cpucore=16 -p cputype='AMD EPYC 7351' -p cpufreq='2.4' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='NO' -p cluster_priority=201911 -p max_walltime=86400 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-3.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12279' AND type='default'" -p cpu=1769 -p core=11031 -p cpuset=0 -p gpu=113 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12280' AND type='default'" -p cpu=1769 -p core=11032 -p cpuset=2 -p gpu=114 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12281' AND type='default'" -p cpu=1769 -p core=11033 -p cpuset=4 -p gpu=113 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12282' AND type='default'" -p cpu=1769 -p core=11034 -p cpuset=6 -p gpu=114 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12283' AND type='default'" -p cpu=1769 -p core=11035 -p cpuset=8 -p gpu=113 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12284' AND type='default'" -p cpu=1769 -p core=11036 -p cpuset=10 -p gpu=114 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12285' AND type='default'" -p cpu=1769 -p core=11037 -p cpuset=12 -p gpu=113 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12286' AND type='default'" -p cpu=1769 -p core=11038 -p cpuset=14 -p gpu=114 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12287' AND type='default'" -p cpu=1769 -p core=11039 -p cpuset=16 -p gpu=113 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12288' AND type='default'" -p cpu=1769 -p core=11040 -p cpuset=18 -p gpu=114 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12289' AND type='default'" -p cpu=1769 -p core=11041 -p cpuset=20 -p gpu=113 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12290' AND type='default'" -p cpu=1769 -p core=11042 -p cpuset=22 -p gpu=114 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12291' AND type='default'" -p cpu=1769 -p core=11043 -p cpuset=24 -p gpu=113 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12292' AND type='default'" -p cpu=1769 -p core=11044 -p cpuset=26 -p gpu=114 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12293' AND type='default'" -p cpu=1769 -p core=11045 -p cpuset=28 -p gpu=113 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12294' AND type='default'" -p cpu=1769 -p core=11046 -p cpuset=30 -p gpu=114 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12295' AND type='default'" -p cpu=1770 -p core=11047 -p cpuset=1 -p gpu=115 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12296' AND type='default'" -p cpu=1770 -p core=11048 -p cpuset=3 -p gpu=116 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12297' AND type='default'" -p cpu=1770 -p core=11049 -p cpuset=5 -p gpu=116 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12298' AND type='default'" -p cpu=1770 -p core=11050 -p cpuset=7 -p gpu=115 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12299' AND type='default'" -p cpu=1770 -p core=11051 -p cpuset=9 -p gpu=115 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12300' AND type='default'" -p cpu=1770 -p core=11052 -p cpuset=11 -p gpu=116 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12301' AND type='default'" -p cpu=1770 -p core=11053 -p cpuset=13 -p gpu=116 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12302' AND type='default'" -p cpu=1770 -p core=11054 -p cpuset=15 -p gpu=115 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12303' AND type='default'" -p cpu=1770 -p core=11055 -p cpuset=17 -p gpu=115 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12304' AND type='default'" -p cpu=1770 -p core=11056 -p cpuset=19 -p gpu=116 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12305' AND type='default'" -p cpu=1770 -p core=11057 -p cpuset=21 -p gpu=116 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12306' AND type='default'" -p cpu=1770 -p core=11058 -p cpuset=23 -p gpu=115 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12307' AND type='default'" -p cpu=1770 -p core=11059 -p cpuset=25 -p gpu=115 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12308' AND type='default'" -p cpu=1770 -p core=11060 -p cpuset=27 -p gpu=116 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12309' AND type='default'" -p cpu=1770 -p core=11061 -p cpuset=29 -p gpu=116 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='12310' AND type='default'" -p cpu=1770 -p core=11062 -p cpuset=31 -p gpu=115 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+echo; echo 'Setting properties for clustera-3.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' and type='default'" -p ip='172.16.77.3' -p cluster='clustera' -p nodemodel='R7425' -p switch='gw-nancy' -p besteffort='YES' -p deploy='YES' -p virtual='amd-v' -p cpuarch='x86_64' -p cpucore=16 -p cputype='AMD EPYC 7351' -p cpufreq='2.4' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='NO' -p cluster_priority=201911 -p max_walltime=172800 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-4.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12311' AND type='default'" -p cpu=1771 -p core=11063 -p cpuset=0 -p gpu=117 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12312' AND type='default'" -p cpu=1771 -p core=11064 -p cpuset=2 -p gpu=118 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12313' AND type='default'" -p cpu=1771 -p core=11065 -p cpuset=4 -p gpu=117 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12314' AND type='default'" -p cpu=1771 -p core=11066 -p cpuset=6 -p gpu=118 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12315' AND type='default'" -p cpu=1771 -p core=11067 -p cpuset=8 -p gpu=117 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12316' AND type='default'" -p cpu=1771 -p core=11068 -p cpuset=10 -p gpu=118 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12317' AND type='default'" -p cpu=1771 -p core=11069 -p cpuset=12 -p gpu=117 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12318' AND type='default'" -p cpu=1771 -p core=11070 -p cpuset=14 -p gpu=118 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12319' AND type='default'" -p cpu=1771 -p core=11071 -p cpuset=16 -p gpu=117 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12320' AND type='default'" -p cpu=1771 -p core=11072 -p cpuset=18 -p gpu=118 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12321' AND type='default'" -p cpu=1771 -p core=11073 -p cpuset=20 -p gpu=117 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12322' AND type='default'" -p cpu=1771 -p core=11074 -p cpuset=22 -p gpu=118 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12323' AND type='default'" -p cpu=1771 -p core=11075 -p cpuset=24 -p gpu=117 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12324' AND type='default'" -p cpu=1771 -p core=11076 -p cpuset=26 -p gpu=118 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12325' AND type='default'" -p cpu=1771 -p core=11077 -p cpuset=28 -p gpu=117 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12326' AND type='default'" -p cpu=1771 -p core=11078 -p cpuset=30 -p gpu=118 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12327' AND type='default'" -p cpu=1772 -p core=11079 -p cpuset=1 -p gpu=119 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12328' AND type='default'" -p cpu=1772 -p core=11080 -p cpuset=3 -p gpu=120 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12329' AND type='default'" -p cpu=1772 -p core=11081 -p cpuset=5 -p gpu=120 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12330' AND type='default'" -p cpu=1772 -p core=11082 -p cpuset=7 -p gpu=119 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12331' AND type='default'" -p cpu=1772 -p core=11083 -p cpuset=9 -p gpu=119 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12332' AND type='default'" -p cpu=1772 -p core=11084 -p cpuset=11 -p gpu=120 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12333' AND type='default'" -p cpu=1772 -p core=11085 -p cpuset=13 -p gpu=120 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12334' AND type='default'" -p cpu=1772 -p core=11086 -p cpuset=15 -p gpu=119 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12335' AND type='default'" -p cpu=1772 -p core=11087 -p cpuset=17 -p gpu=119 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12336' AND type='default'" -p cpu=1772 -p core=11088 -p cpuset=19 -p gpu=120 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12337' AND type='default'" -p cpu=1772 -p core=11089 -p cpuset=21 -p gpu=120 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12338' AND type='default'" -p cpu=1772 -p core=11090 -p cpuset=23 -p gpu=119 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12339' AND type='default'" -p cpu=1772 -p core=11091 -p cpuset=25 -p gpu=119 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12340' AND type='default'" -p cpu=1772 -p core=11092 -p cpuset=27 -p gpu=120 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12341' AND type='default'" -p cpu=1772 -p core=11093 -p cpuset=29 -p gpu=120 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='12342' AND type='default'" -p cpu=1772 -p core=11094 -p cpuset=31 -p gpu=119 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+echo; echo 'Setting properties for clustera-4.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' and type='default'" -p ip='172.16.77.4' -p cluster='clustera' -p nodemodel='R7425' -p switch='gw-nancy' -p besteffort='YES' -p deploy='YES' -p virtual='amd-v' -p cpuarch='x86_64' -p cpucore=16 -p cputype='AMD EPYC 7351' -p cpufreq='2.4' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='NO' -p cluster_priority=201911 -p max_walltime=172800 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-5.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12343' AND type='default'" -p cpu=1773 -p core=11095 -p cpuset=0 -p gpu=121 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12344' AND type='default'" -p cpu=1773 -p core=11096 -p cpuset=2 -p gpu=122 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12345' AND type='default'" -p cpu=1773 -p core=11097 -p cpuset=4 -p gpu=121 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12346' AND type='default'" -p cpu=1773 -p core=11098 -p cpuset=6 -p gpu=122 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12347' AND type='default'" -p cpu=1773 -p core=11099 -p cpuset=8 -p gpu=121 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12348' AND type='default'" -p cpu=1773 -p core=11100 -p cpuset=10 -p gpu=122 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12349' AND type='default'" -p cpu=1773 -p core=11101 -p cpuset=12 -p gpu=121 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12350' AND type='default'" -p cpu=1773 -p core=11102 -p cpuset=14 -p gpu=122 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12351' AND type='default'" -p cpu=1773 -p core=11103 -p cpuset=16 -p gpu=121 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12352' AND type='default'" -p cpu=1773 -p core=11104 -p cpuset=18 -p gpu=122 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12353' AND type='default'" -p cpu=1773 -p core=11105 -p cpuset=20 -p gpu=121 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12354' AND type='default'" -p cpu=1773 -p core=11106 -p cpuset=22 -p gpu=122 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12355' AND type='default'" -p cpu=1773 -p core=11107 -p cpuset=24 -p gpu=121 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12356' AND type='default'" -p cpu=1773 -p core=11108 -p cpuset=26 -p gpu=122 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12357' AND type='default'" -p cpu=1773 -p core=11109 -p cpuset=28 -p gpu=121 -p gpu_model='Tesla T4' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12358' AND type='default'" -p cpu=1773 -p core=11110 -p cpuset=30 -p gpu=122 -p gpu_model='Tesla T4' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12359' AND type='default'" -p cpu=1774 -p core=11111 -p cpuset=1 -p gpu=123 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12360' AND type='default'" -p cpu=1774 -p core=11112 -p cpuset=3 -p gpu=124 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12361' AND type='default'" -p cpu=1774 -p core=11113 -p cpuset=5 -p gpu=124 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12362' AND type='default'" -p cpu=1774 -p core=11114 -p cpuset=7 -p gpu=123 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12363' AND type='default'" -p cpu=1774 -p core=11115 -p cpuset=9 -p gpu=123 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12364' AND type='default'" -p cpu=1774 -p core=11116 -p cpuset=11 -p gpu=124 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12365' AND type='default'" -p cpu=1774 -p core=11117 -p cpuset=13 -p gpu=124 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12366' AND type='default'" -p cpu=1774 -p core=11118 -p cpuset=15 -p gpu=123 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12367' AND type='default'" -p cpu=1774 -p core=11119 -p cpuset=17 -p gpu=123 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12368' AND type='default'" -p cpu=1774 -p core=11120 -p cpuset=19 -p gpu=124 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12369' AND type='default'" -p cpu=1774 -p core=11121 -p cpuset=21 -p gpu=124 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12370' AND type='default'" -p cpu=1774 -p core=11122 -p cpuset=23 -p gpu=123 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12371' AND type='default'" -p cpu=1774 -p core=11123 -p cpuset=25 -p gpu=123 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12372' AND type='default'" -p cpu=1774 -p core=11124 -p cpuset=27 -p gpu=124 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12373' AND type='default'" -p cpu=1774 -p core=11125 -p cpuset=29 -p gpu=124 -p gpu_model='Tesla T4' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='12374' AND type='default'" -p cpu=1774 -p core=11126 -p cpuset=31 -p gpu=123 -p gpu_model='Tesla T4' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+echo; echo 'Setting properties for clustera-5.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' and type='default'" -p ip='172.16.77.5' -p cluster='clustera' -p nodemodel='R7425' -p switch='gw-nancy' -p besteffort='YES' -p deploy='YES' -p virtual='amd-v' -p cpuarch='x86_64' -p cpucore=16 -p cputype='AMD EPYC 7351' -p cpufreq='2.4' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p mic='NO' -p wattmeter='NO' -p cluster_priority=201911 -p max_walltime=604800 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+
+echo '================================================================================'
