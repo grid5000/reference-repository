@@ -1405,24 +1405,22 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           # (2-e) [if cluster with GPU] Associate a gpuset to each core
           ############################################
 
-          numa_gpus = []
           if node_description.key? "gpu_devices"
-            numa_gpus = node_description["gpu_devices"].values
-            .select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
-          end
+            numa_gpus = node_description["gpu_devices"].values.select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
 
-          if not numa_gpus.empty?
-            gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
+            if not numa_gpus.empty? # this can happen if GPUs are not reservable
+              gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
 
-            selected_gpu = numa_gpus[gpu_idx]
-            if selected_gpu.nil?
-              next
+              selected_gpu = numa_gpus[gpu_idx]
+              if selected_gpu.nil?
+                next
+              end
+
+              row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * phys_rsc_map["gpu"][:per_server_count] + selected_gpu['local_id']]
+              row[:gpudevice] = selected_gpu['local_id']
+              row[:gpudevicepath] = selected_gpu['device']
+              row[:gpumodel] = selected_gpu['model']
             end
-
-            row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * phys_rsc_map["gpu"][:per_server_count] + selected_gpu['local_id']]
-            row[:gpudevice] = selected_gpu['local_id']
-            row[:gpudevicepath] = selected_gpu['device']
-            row[:gpumodel] = selected_gpu['model']
           end
 
           core_idx += 1
