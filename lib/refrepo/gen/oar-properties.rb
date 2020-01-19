@@ -1330,12 +1330,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         next
       end
 
-      # Assign to each GPU of a node, a "local_id" property which is between 0 and "gpu_count_per_node". This 'local_id'
-      # property will be used to assign a unique local gpuset to each GPU.
-      (node_description["gpu_devices"] || {}).select{|k ,v| v.fetch("reservation", true)}.each_with_index do |v, i|
-        v[1]['local_id'] = i
-      end
-
       generated_node_description = {
         :name => name,
         :fqdn => fqdn,
@@ -1406,6 +1400,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           ############################################
 
           if node_description.key? "gpu_devices"
+            # numa_gpus is the list of gpus for the current CPU
             numa_gpus = node_description["gpu_devices"].values.select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
 
             if not numa_gpus.empty? # this can happen if GPUs are not reservable
@@ -1416,8 +1411,11 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
                 next
               end
 
-              row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * phys_rsc_map["gpu"][:per_server_count] + selected_gpu['local_id']]
-              row[:gpudevice] = selected_gpu['local_id']
+              # id of the selected GPU in the node
+              local_id = node_description["gpu_devices"].values.index(selected_gpu)
+
+              row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * phys_rsc_map["gpu"][:per_server_count] + local_id]
+              row[:gpudevice] = local_id
               row[:gpudevicepath] = selected_gpu['device']
               row[:gpumodel] = selected_gpu['model']
             end
