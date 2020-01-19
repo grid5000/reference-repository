@@ -1330,19 +1330,10 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         next
       end
 
-      # Detect GPU configuration of nodes
-      if node_description.key? "gpu_devices"
-        gpus = node_description["gpu_devices"].select{|k ,v| v.fetch("reservation", true)}
-      else
-        gpus = []
-      end
-
       # Assign to each GPU of a node, a "local_id" property which is between 0 and "gpu_count_per_node". This 'local_id'
       # property will be used to assign a unique local gpuset to each GPU.
-      gpu_idx = 0
-      gpus.map do |v|
-        v[1]['local_id'] = gpu_idx
-        gpu_idx += 1
+      (node_description["gpu_devices"] || {}).select{|k ,v| v.fetch("reservation", true)}.each_with_index do |v, i|
+        v[1]['local_id'] = i
       end
 
       generated_node_description = {
