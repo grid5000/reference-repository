@@ -1947,7 +1947,7 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
       TXT
 
       expected_output2 = <<-TXT
-Error: the OAR property 'eth_rate' is a 'String' on the fakesite server and this script uses 'Fixnum' for this property.
+Error: the OAR property 'eth_rate' is a 'String' on the fakesite server and this script uses 'Integer' for this property.
       TXT
 
       generator_output = capture do
