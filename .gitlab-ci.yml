@@ -49,3 +49,15 @@ deploy:
     - grid5000-shell
    script:
     - /srv/ci-runner-scripts/bin/update-api-servers
+
+rspec:
+   stage: deploy # we use 'deploy' here to avoid blocking on this when updating the ref-repo
+   tags:
+    - grid5000-docker
+   image: debian:buster
+   script:
+    - apt-get update && apt-get -y install ruby ruby-dev build-essential rake git
+    - gem install bundler -v 1.17.3
+    - bundle install
+    - export TZ=Europe/Paris
+    - bundle exec rspec
