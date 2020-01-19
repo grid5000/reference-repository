@@ -1345,10 +1345,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         gpu_idx += 1
       end
 
-      if core_numbering == 'contiguous'
-        cpuset = 0
-      end
-
       generated_node_description = {
         :name => name,
         :fqdn => fqdn,
@@ -1414,10 +1410,11 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           # (2-d) Associate a cpuset to each core
           ############################################
           if core_numbering == 'contiguous'
-            row[:cpuset] = cpuset
-          else
-            # CPUSETs starts at 0
+            row[:cpuset] = cpu_num * phys_rsc_map["core"][:per_server_count] + core_num
+          elsif core_numbering == 'round-robin'
             row[:cpuset] = cpu_num + core_num * phys_rsc_map["cpu"][:per_server_count]
+          else
+            raise
           end
 
           row[:cpumodel] = cpu_model
@@ -1440,10 +1437,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           end
 
           core_idx += 1
-
-          if core_numbering == 'contiguous'
-            cpuset += 1
-          end
 
           generated_node_description[:oar_rows].push(row)
         end
