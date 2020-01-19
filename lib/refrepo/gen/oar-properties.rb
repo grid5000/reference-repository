@@ -1379,10 +1379,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         ############################################
         # Suite of (2-a): Iterate over CORES of the CPU
         ############################################
-        (1..phys_rsc_map["core"][:per_server_count]).each do |core_num|
-
-          # core_index0 starts at 0
-          core_index0 = core_num - 1
+        (0...phys_rsc_map["core"][:per_server_count]).each do |core_num|
 
           # Compute cpu and core ID
           oar_resource_id = oar_resource_ids[core_idx]
@@ -1420,7 +1417,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
             row[:cpuset] = cpuset
           else
             # CPUSETs starts at 0
-            row[:cpuset] = cpu_num + core_index0 * phys_rsc_map["cpu"][:per_server_count]
+            row[:cpuset] = cpu_num + core_num * phys_rsc_map["cpu"][:per_server_count]
           end
 
           row[:cpumodel] = cpu_model
@@ -1429,7 +1426,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           # (2-e) [if cluster with GPU] Associate a gpuset to each core
           ############################################
           if not numa_gpus.empty?
-            gpu_idx = core_index0 / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
+            gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
 
             selected_gpu = numa_gpus[gpu_idx]
             if selected_gpu.nil?
