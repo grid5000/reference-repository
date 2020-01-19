@@ -1367,8 +1367,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         ############################################
         numa_gpus = []
         if node_description.key? "gpu_devices"
-          numa_gpus = node_description["gpu_devices"]
-                        .map {|v| v[1]}
+          numa_gpus = node_description["gpu_devices"].values
                         .select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
         end
 
