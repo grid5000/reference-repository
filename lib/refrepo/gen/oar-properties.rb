@@ -1353,7 +1353,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         :description => node_description,
         :oar_rows => [],
         :disks => [],
-        :gpus => gpus,
+        :gpus => (node_description["gpu_devices"] != nil ? (node_description["gpu_devices"].select{|k ,v| v.fetch("reservation", true)}.length) : 0),
         :default_description => node_description_default_properties
       }
 
