@@ -1353,14 +1353,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       ############################################
       (0...phys_rsc_map["cpu"][:per_server_count]).each do |cpu_num|
 
-        ############################################
-        # (2-c) [if cluster with GPU] detects the existing mapping GPU <-> CPU in the cluster
-        ############################################
-        numa_gpus = []
-        if node_description.key? "gpu_devices"
-          numa_gpus = node_description["gpu_devices"].values
-                        .select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
-        end
 
         ############################################
         # Suite of (2-a): Iterate over CORES of the CPU
@@ -1412,6 +1404,13 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           ############################################
           # (2-e) [if cluster with GPU] Associate a gpuset to each core
           ############################################
+
+          numa_gpus = []
+          if node_description.key? "gpu_devices"
+            numa_gpus = node_description["gpu_devices"].values
+            .select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
+          end
+
           if not numa_gpus.empty?
             gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
 
