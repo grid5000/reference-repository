@@ -1511,7 +1511,9 @@ def generate_oar_properties(options)
                                                        data_hierarchy,
                                                        refrepo_properties[site_name])
   rescue
-    print("A problem occured while building the clusters description. Generator is exiting.")
+    puts "A problem occured while building the clusters description. Generator is exiting."
+    puts $!
+    puts $@
     return 1
   end
 
