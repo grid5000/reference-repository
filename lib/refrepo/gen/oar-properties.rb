@@ -85,6 +85,10 @@ def generate_create_oar_property_cmd(properties_keys)
     if ignore_keys_list.include?(key)
       next
     end
+    # keys such as deploy or besteffort are default OAR keys that should not be created
+    if oar_system_keys.include?(key)
+      next
+    end
     if key_type == Fixnum # rubocop:disable Lint/UnifiedInteger
       command += "property_exist '#{key}' || oarproperty -a #{key}\n"
     elsif key_type == String
@@ -777,6 +781,14 @@ end
 
 def ignore_keys()
   return ignore_default_keys() + ignore_disk_keys()
+end
+
+# Properties such as deploy and besteffort, that should not be created
+def oar_system_keys()
+  [
+    'deploy',
+    'besteffort'
+  ]
 end
 
 def get_oar_resources_from_oar(options)
