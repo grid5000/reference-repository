@@ -726,7 +726,6 @@ def ignore_default_keys()
     "slash_21",
     "slash_22",
     "available_upto",
-    # "besteffort",
     "chunks",
     "comment", # TODO
     "core", # This property was created by 'oar_resources_add'
@@ -737,7 +736,6 @@ def ignore_default_keys()
     "gpu", # New property taken into account by the new generator
     "cpuset",
     "desktop_computing",
-    # "deploy",
     "drain",
     "expiry_date",
     "finaud_decision",
@@ -811,14 +809,14 @@ def run_commands_via_ssh(cmds, options, verbose=true)
       # stdout
       channel.on_data { |ch2, data|
         if verbose
-          puts data #if options[:verbose] # ssh cmd output
+          puts data
         end
         res += data
       }
       # stderr
       channel.on_extended_data do |ch2, type, data|
         if verbose
-          puts data #if options[:verbose] # ssh cmd output
+          puts data
         end
         res += data
       end
