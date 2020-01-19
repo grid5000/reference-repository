@@ -41,6 +41,15 @@
          interface: SAS
          driver: megaraid_sas
          storage: SDD
+     gpu_devices:
+       nvidia0:
+         cores_affinity: 0 16 8 24 4 20 12 28
+       nvidia1:
+         cores_affinity: 2 18 10 26 6 22 14 30
+       nvidia2:
+         cores_affinity: 1 17 9 25 7 23 15 31
+       nvidia3:
+         cores_affinity: 3 19 11 27 5 21 13 29
    grue-[1-2]:
      supported_job_types:
         max_walltime: 86400 
