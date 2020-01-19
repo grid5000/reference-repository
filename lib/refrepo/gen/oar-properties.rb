@@ -828,6 +828,7 @@ def run_commands_via_ssh(cmds, options, verbose=true)
     }
   }
   c.loop
+  c.close
   return res
 end
 
