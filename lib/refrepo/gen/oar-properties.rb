@@ -1404,8 +1404,16 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
             numa_gpus = node_description["gpu_devices"].values.select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
 
             if not numa_gpus.empty? # this can happen if GPUs are not reservable
-              gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
-              selected_gpu = numa_gpus[gpu_idx]
+              if numa_gpus.first.key? 'cores_affinity'
+                # this cluster uses cores_affinity, not arbitrary allocation
+                selected_gpu = numa_gpus.find { |g| g['cores_affinity'].split.map { |e| e.to_i }.include?(row[:cpuset]) }
+                if selected_gpu.nil?
+                  raise "Could not find a GPU on CPU #{cpu_num} for core #{row[:cpuset]}"
+                end
+              else
+                gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
+                selected_gpu = numa_gpus[gpu_idx]
+              end
               # id of the selected GPU in the node
               local_id = node_description["gpu_devices"].values.index(selected_gpu)
 
