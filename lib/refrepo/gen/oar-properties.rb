@@ -1405,12 +1405,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
             if not numa_gpus.empty? # this can happen if GPUs are not reservable
               gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
-
               selected_gpu = numa_gpus[gpu_idx]
-              if selected_gpu.nil?
-                next
-              end
-
               # id of the selected GPU in the node
               local_id = node_description["gpu_devices"].values.index(selected_gpu)
 
