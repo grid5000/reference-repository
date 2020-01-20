@@ -32,6 +32,7 @@ class G5KHardwareGenerator < WikiGenerator
     ssds = 0
     storage_space = 0
     ram = 0
+    pmem = 0
 
     @global_hash['sites'].sort.to_h.each do |site_uid, site_hash|
       clusters += site_hash['clusters'].length
@@ -41,6 +42,7 @@ class G5KHardwareGenerator < WikiGenerator
           nodes += 1
           cores += node_hash['architecture']['nb_cores']
           ram += node_hash['main_memory']['ram_size']
+          pmem += node_hash['main_memory']['pmem_size'] if node_hash['main_memory']['pmem_size']
           if node_hash['gpu_devices']
             gpus += node_hash['gpu_devices'].length
           end
@@ -59,7 +61,7 @@ class G5KHardwareGenerator < WikiGenerator
 * #{nodes} nodes
 * #{cores} CPU cores
 * #{gpus} GPUs
-* #{G5K.get_size(ram)} RAM
+* #{G5K.get_size(ram)} RAM + #{G5K.get_size(pmem)} PMEM
 * #{ssds} SSDs and #{hdds} HDDs on nodes (total: #{G5K.get_size(storage_space, 'metric')})
     EOF
   end
@@ -70,6 +72,7 @@ class G5KHardwareGenerator < WikiGenerator
       'proc_models' => {},
       'core_models' => {},
       'ram_size' => {},
+      'pmem_size' => {},
       'net_interconnects' => {},
       'net_models' => {},
       'acc_families' => {},
@@ -109,6 +112,14 @@ class G5KHardwareGenerator < WikiGenerator
             key = [{ text: G5K.get_size(ram_size), sort: (ram_size / 2**30).to_s.rjust(6, '0') + ' GB' }]
             init(data, 'ram_size', key)
             data['ram_size'][key][site_uid] += 1
+
+            # PMEM size
+            if node_hash['main_memory']['pmem_size']
+              pmem_size = node_hash['main_memory']['pmem_size']
+              key = [{ text: G5K.get_size(pmem_size), sort: (pmem_size / 2**30).to_s.rjust(6, '0') + ' GB' }]
+              init(data, 'pmem_size', key)
+              data['pmem_size'][key][site_uid] += 1
+            end
 
             # HPC Networks
             interfaces = node_hash['network_adapters'].select{ |v|
@@ -231,9 +242,13 @@ class G5KHardwareGenerator < WikiGenerator
     table_columns =  ['Microarchitecture', 'Core model'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'core_models'))
 
-    generated_content += "\n= RAM size per node =\n"
+    generated_content += "\n= Memory =\n"
+    generated_content += "\n== RAM size per node ==\n"
     table_columns = ['RAM size'] + sites + ['Nodes total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'ram_size'))
+    generated_content += "\n== PMEM size per node ==\n"
+    table_columns = ['PMEM size'] + sites + ['Nodes total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'pmem_size'))
 
     generated_content += "\n= Networking =\n"
     generated_content += "\n== Network interconnects ==\n"

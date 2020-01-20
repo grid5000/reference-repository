@@ -77,7 +77,7 @@ class SiteHardwareGenerator < WikiGenerator
         cluster_nodes,
         cell_data(data, 'num_processor_model'),
         cell_data(data, 'cores_per_cpu_str'),
-        cell_data(data, 'ram_size'),
+        sort_data(data, 'ram_size') + (!data['pmem_size'].nil? ? " + #{cell_data(data, 'pmem_size')} PMEM" : ''),
         'data-sort-value="' + sort_data(data, 'storage_size') + '"|' + cell_data(data, 'storage'),
         'data-sort-value="' + sort_data(data, 'network_throughput') + '"|' + cell_data(data, 'used_networks')
       ] + ((site_accelerators.zero? && with_sites == false) ? [] : [cell_data(data, 'accelerators')])
@@ -128,7 +128,7 @@ class SiteHardwareGenerator < WikiGenerator
           'Model' => h['model'],
           'Date of arrival' => h['date'],
           'CPU' => h['processor_description'],
-          'Memory' => h['ram_size'],
+          'Memory' => h['ram_size'] + (!h['pmem_size'].nil? ? " + #{h['pmem_size']} PMEM" : ''),
           'Storage' => h['storage_description'],
           'Network' => h['network_description'],
         }
@@ -205,6 +205,7 @@ def get_hardware(sites)
         hard['num_processor_model'] = (hard['cpus_per_node'] == 1 ? '' : "#{hard['cpus_per_node']}&nbsp;x&nbsp;") + hard['processor_model'].gsub(' ', '&nbsp;')
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
+        hard['pmem_size'] = G5K.get_size(node_hash['main_memory']['pmem_size']) unless node_hash['main_memory']['pmem_size'].nil?
         storage = node_hash['storage_devices'].map { |i| { 'size' => i['size'], 'tech' => i['storage'] } }
         hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts|
           counts[data] += 1
