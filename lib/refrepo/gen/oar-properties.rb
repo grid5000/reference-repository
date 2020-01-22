@@ -1270,7 +1270,8 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     #   a) if the cluster is new: the IDs is a list of number in [max_resource_id, max_resource_id + cluster_resource_count]
     #   a) if the cluster is not new: the IDs is the list of existing resources
     phys_rsc_map.each do |physical_resource, variables|
-      if is_a_new_cluster
+      # if it's a new cluster, or the cluster doesn't have resource ids for this kind of resources
+      if is_a_new_cluster or cluster_resources.map{|r| r[physical_resource]}.select{|x| not x.nil?}.empty?
         variables[:current_ids] = [*next_rsc_ids[physical_resource]+1..next_rsc_ids[physical_resource]+variables[:per_cluster_count]]
         next_rsc_ids[physical_resource] = variables[:per_server_count] > 0 ? variables[:current_ids].max : next_rsc_ids[physical_resource]
       else
@@ -1330,25 +1331,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         next
       end
 
-      # Detect GPU configuration of nodes
-      if node_description.key? "gpu_devices"
-        gpus = node_description["gpu_devices"].select{|k ,v| v.fetch("reservation", true)}
-      else
-        gpus = []
-      end
-
-      # Assign to each GPU of a node, a "local_id" property which is between 0 and "gpu_count_per_node". This 'local_id'
-      # property will be used to assign a unique local gpuset to each GPU.
-      gpu_idx = 0
-      gpus.map do |v|
-        v[1]['local_id'] = gpu_idx
-        gpu_idx += 1
-      end
-
-      if core_numbering == 'contiguous'
-        cpuset = 0
-      end
-
       generated_node_description = {
         :name => name,
         :fqdn => fqdn,
@@ -1357,35 +1339,20 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         :description => node_description,
         :oar_rows => [],
         :disks => [],
-        :gpus => gpus,
+        :gpus => (node_description["gpu_devices"] != nil ? (node_description["gpu_devices"].select{|k ,v| v.fetch("reservation", true)}.length) : 0),
         :default_description => node_description_default_properties
       }
 
       ############################################
       # Suite of (2-a): Iterate over CPUs of the server. (rest: cores)
       ############################################
-      (1..phys_rsc_map["cpu"][:per_server_count]).each do |cpu_num|
+      (0...phys_rsc_map["cpu"][:per_server_count]).each do |cpu_num|
 
-        # cpu_index0 starts at 0
-        cpu_index0 = cpu_num - 1
-
-        ############################################
-        # (2-c) [if cluster with GPU] detects the existing mapping GPU <-> CPU in the cluster
-        ############################################
-        numa_gpus = []
-        if node_description.key? "gpu_devices"
-          numa_gpus = node_description["gpu_devices"]
-                        .map {|v| v[1]}
-                        .select {|v| v['cpu_affinity'] == cpu_index0 and v.fetch("reservation", true)}
-        end
 
         ############################################
         # Suite of (2-a): Iterate over CORES of the CPU
         ############################################
-        (1..phys_rsc_map["core"][:per_server_count]).each do |core_num|
-
-          # core_index0 starts at 0
-          core_index0 = core_num - 1
+        (0...phys_rsc_map["core"][:per_server_count]).each do |core_num|
 
           # Compute cpu and core ID
           oar_resource_id = oar_resource_ids[core_idx]
@@ -1420,10 +1387,11 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           # (2-d) Associate a cpuset to each core
           ############################################
           if core_numbering == 'contiguous'
-            row[:cpuset] = cpuset
+            row[:cpuset] = cpu_num * phys_rsc_map["core"][:per_server_count] + core_num
+          elsif core_numbering == 'round-robin'
+            row[:cpuset] = cpu_num + core_num * phys_rsc_map["cpu"][:per_server_count]
           else
-            # CPUSETs starts at 0
-            row[:cpuset] = cpu_index0 + core_index0 * phys_rsc_map["cpu"][:per_server_count]
+            raise
           end
 
           row[:cpumodel] = cpu_model
@@ -1431,25 +1399,33 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           ############################################
           # (2-e) [if cluster with GPU] Associate a gpuset to each core
           ############################################
-          if not numa_gpus.empty?
-            gpu_idx = core_index0 / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
 
-            selected_gpu = numa_gpus[gpu_idx]
-            if selected_gpu.nil?
-              next
+          if node_description.key? "gpu_devices"
+            # numa_gpus is the list of gpus for the current CPU
+            numa_gpus = node_description["gpu_devices"].values.select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
+
+            if not numa_gpus.empty? # this can happen if GPUs are not reservable
+              if numa_gpus.first.key? 'cores_affinity'
+                # this cluster uses cores_affinity, not arbitrary allocation
+                selected_gpu = numa_gpus.find { |g| g['cores_affinity'].split.map { |e| e.to_i }.include?(row[:cpuset]) }
+                if selected_gpu.nil?
+                  raise "Could not find a GPU on CPU #{cpu_num} for core #{row[:cpuset]}"
+                end
+              else
+                gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
+                selected_gpu = numa_gpus[gpu_idx]
+              end
+              # id of the selected GPU in the node
+              local_id = node_description["gpu_devices"].values.index(selected_gpu)
+
+              row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * phys_rsc_map["gpu"][:per_server_count] + local_id]
+              row[:gpudevice] = local_id
+              row[:gpudevicepath] = selected_gpu['device']
+              row[:gpumodel] = selected_gpu['model']
             end
-
-            row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * phys_rsc_map["gpu"][:per_server_count] + selected_gpu['local_id']]
-            row[:gpudevice] = selected_gpu['local_id']
-            row[:gpudevicepath] = selected_gpu['device']
-            row[:gpumodel] = selected_gpu['model']
           end
 
           core_idx += 1
-
-          if core_numbering == 'contiguous'
-            cpuset += 1
-          end
 
           generated_node_description[:oar_rows].push(row)
         end
@@ -1525,7 +1501,9 @@ def generate_oar_properties(options)
                                                        data_hierarchy,
                                                        refrepo_properties[site_name])
   rescue
-    print("A problem occured while building the clusters description. Generator is exiting.")
+    puts "A problem occured while building the clusters description. Generator is exiting."
+    puts $!
+    puts $@
     return 1
   end
 
