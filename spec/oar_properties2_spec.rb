@@ -4,8 +4,8 @@ require 'spec_helper'
 def gen_stub(file, site, cluster)
   data = load_data_hierarchy
   data['sites'].delete_if { |k, v| site != k }
-  data['sites'].each_pair do |site_uid, site|
-    site['clusters'].delete_if { |k, v| cluster != k }
+  data['sites'].each_pair do |site_uid, s|
+    s['clusters'].delete_if { |k, v| cluster != k }
   end
   data.delete('network_equipments')
   data['sites']['fakesite'] = data['sites'][site]
@@ -60,7 +60,7 @@ def check_oar_properties(o)
     end
     # stdout
     ofile = "#{specdir}/output/#{o[:case]}_#{type}_stdout.txt"
-    if not File::exists?(ofile)
+    if not File::exist?(ofile)
       puts "Output file #{ofile} did not exist, created."
       File::open(ofile, "w") { |fd| fd.print output[:stdout] }
       ofile_data = output[:stdout]
@@ -70,7 +70,7 @@ def check_oar_properties(o)
     expect(output[:stdout]).to eq(ofile_data)
     # stderr
     ofile = "#{specdir}/output/#{o[:case]}_#{type}_stderr.txt"
-    if not File::exists?(ofile)
+    if not File::exist?(ofile)
       puts "Output file #{ofile} did not exist, created."
       File::open(ofile, "w") { |fd| fd.print output[:stderr] }
       ofile_data = output[:stderr]
