@@ -94,9 +94,6 @@ class OarPropertiesGenerator < WikiGenerator
     "ib_rate" => {
       "description" => "The rate of the connected Infiniband interface in Gbps"
     },
-    "opa" => {
-      "description" => "Whether an Omni-Path interface is available"
-    },
     "opa_count" => {
       "description" => "The number of Omni-Path interfaces available"
     },
@@ -146,7 +143,7 @@ class OarPropertiesGenerator < WikiGenerator
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
     "Hierarchy" => ["cluster", "cpu", "core", "host", "network_address", "ip", "switch"],
-    "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
+    "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel"]
   }
 
