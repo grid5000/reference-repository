@@ -61,7 +61,7 @@
     "ram_size": 103079215104
   },
   "monitoring": {
-    "wattmeter": "multiple"
+    "wattmeter": "true"
   },
   "network_adapters": [
     {
@@ -150,20 +150,20 @@
   "sensors": {
     "power": {
       "available": true,
+      "per_outlets": true,
       "via": {
         "api": {
           "metric": "power"
         },
         "pdu": [
           {
-            "port": 10,
-            "uid": "gros-pdu1"
-          },
-          {
-            "port": "15",
+            "port": 14,
             "uid": "gros-wattmetre1"
           }
-        ]
+        ],
+        "www": {
+          "url": "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
+        }
       }
     }
   },
