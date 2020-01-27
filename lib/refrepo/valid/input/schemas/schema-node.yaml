@@ -101,7 +101,9 @@ storage_devices:
     interface: string
     driver: string
     symlink: optional_string
-    storage: string
+    storage: 
+      - SSD
+      - HDD
     model: string
     firmware_version: optional
     rev: optional # unused but kept for shema compatibility
