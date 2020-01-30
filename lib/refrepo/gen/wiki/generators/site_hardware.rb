@@ -176,6 +176,7 @@ end
 
 def get_hardware(sites)
   global_hash = G5K::get_global_hash
+  known_devices_name = ["sda", "sdb", "sdc", "sdd", "sde","sdf", "nvme1n1", "nvme0n1"]
 
   # Loop over each cluster of the site
   hardware = {}
@@ -184,6 +185,11 @@ def get_hardware(sites)
     site_hash['clusters'].sort.to_h.each { |cluster_uid, cluster_hash|
       hardware[site_uid][cluster_uid] = {}
       cluster_hash.fetch('nodes').sort.each { |node_uid, node_hash|
+        node_hash['storage_devices'].map do |d|
+          unless known_devices_name.include?(d['device'])
+            raise "unknown device name: #{d['device']}, can't sort correctly"
+          end
+        end
         next if node_hash['status'] == 'retired'
         # map model to vendor (eg: {'SAS5484654' => 'Seagate', 'PX458' => 'Toshiba' ...}
         hard = {}
@@ -206,16 +212,17 @@ def get_hardware(sites)
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
         hard['pmem_size'] = G5K.get_size(node_hash['main_memory']['pmem_size']) unless node_hash['main_memory']['pmem_size'].nil?
-        storage = node_hash['storage_devices'].map { |i| { 'size' => i['size'], 'tech' => i['storage'] } }
+        storage = node_hash['storage_devices'].sort_by!{ |d| known_devices_name.index(d['device'])}.map { |i| { 'size' => i['size'], 'tech' => i['storage'] } }
         hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts|
           counts[data] += 1
-        }.to_a.sort_by { |e|
-          e[0]['size'].to_f
-        }.map { |e|
-          (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') +
-          G5K.get_size(e[0]['size'], 'metric') +
-          '&nbsp;' +
-          e[0]['tech']
+        }.to_a
+        .map.with_index { |e, i|
+          size = G5K.get_size(e[0]['size'], 'metric')
+          if i.zero?
+            (e[1] == 1 ? "<b>#{size}&nbsp;#{e[0]['tech']}</b>" : "<b>1&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}</b>" + ' +&nbsp;' + (e[1] - 1).to_s + "&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}")
+          else
+            (e[1] == 1 ? "#{size}&nbsp;#{e[0]['tech']}" : e[1].to_s + "&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}")
+          end
         }.join(' +&nbsp;')
 
         hard['storage_size'] = storage.inject(0){|sum, v| sum + (v['size'].to_f / 2**30).floor }.to_s # round to GB to avoid small differences within a cluster
@@ -236,7 +243,7 @@ def get_hardware(sites)
           }
         end
 
-        hard['storage_description'] = storage_description.map { |e|
+        hard['storage_description'] = storage_description.sort_by!{ |d| known_devices_name.index(d['device'])}.map { |e|
           [
             e['count'] > 1 ? "\n*" : '',
             G5K.get_size(e['size'],'metric'),
@@ -245,7 +252,8 @@ def get_hardware(sites)
             e['vendor'],
             e['model'],
             ' (driver: ' + (e['driver'] || 'MISSING') + ', path: ' + (e['path'] || 'MISSING') + ')',
-            e['reservation'] ? '[[Disk_reservation|(reservable)]]' : ''
+            e['reservation'] ? '[[Disk_reservation|(reservable)]]' : '',
+            e['device'] == 'sda' ? '(primary disk)' : ''
           ].join(' ')
         }.join('<br />')
 
