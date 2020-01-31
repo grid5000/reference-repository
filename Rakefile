@@ -203,10 +203,11 @@ namespace :gen do
 
   namespace :puppet do
 
-    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :network_monitoring]
+    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :network_monitoring, :'refapi-subset']
 
     all_puppet_tasks.each { |t|
-      desc "Generate #{t} configuration -- parameters: [SITE={grenoble,...}] [OUTPUTDIR=(default: #{PUPPET_ODIR})] [CONFDIR=...] [VERBOSE=1]"
+      generated_desc = (t == :'refapi-subset') ? 'description' : 'configuration'
+      desc "Generate #{t} #{generated_desc} -- parameters: [SITE={grenoble,...}] [OUTPUTDIR=(default: #{PUPPET_ODIR})] [CONFDIR=...] [VERBOSE=1]"
       task t do
         require "refrepo/gen/puppet/#{t}"
         options = {}
@@ -214,7 +215,7 @@ namespace :gen do
         options[:output_dir] = ENV['OUTPUTDIR'] || PUPPET_ODIR
         options[:verbose] = true if ENV['VERBOSE']
         options[:conf_dir] = ENV['CONFDIR'] if ENV['CONFDIR']
-        send("generate_puppet_#{t}", options)
+        send("generate_puppet_#{t}".gsub(/-/, '_'), options)
 
       end
     }
