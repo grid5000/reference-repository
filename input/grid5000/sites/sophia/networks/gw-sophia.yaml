@@ -1,14 +1,14 @@
 ---
-gw-sophia:
+gw:
+  role: production
   model: Foundry
   warranty: expired
   kind: router
   site: sophia
   snmp_community: g5kadmin
-  sensors:
-    network:
-      available: true
-      resolution: 1
+  alias:
+    - gw-sophia
+  ip: 172.16.143.254
   vlans:
     "vlan100":
       administrative: yes
@@ -85,28 +85,15 @@ gw-sophia:
       ports:
         1:
           uid: renater5-FON
-          kind: other
+          kind: backbone
         2:
           uid: swx1nef
           kind: switch
           port: 0/5
-    2:
-      snmp_pattern: "10GigabitEthernet%LINECARD%/%PORT%"
-      kind: switch
-      backplane_bps: 20000000000
-      rate: 10000000000
-      ports:
-        1:
-          uid: edgeiron
-          port: 0/1
-        2:
-          uid: edgeiron
-          port: 0/2
     7:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kavlan_pattern: "%LINECARD%/%PORT%"
       kind: node
-      port: eth0
       backplane_bps: 24000000000
       rate: 1000000000
       ports:
@@ -122,16 +109,13 @@ gw-sophia:
         10: suno-45
         23:
           uid: srv
-          port: eth0
-          kind: other
+          kind: server
         24:
           uid: srv-stock
-          port: eth0
-          kind: other
+          kind: server
         18:
-          uid: srv2
-          port: eth1
-          kind: other
+          uid: srv2-eth1
+          kind: server
     9:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kavlan_pattern: "%LINECARD%/%PORT%"
@@ -141,12 +125,10 @@ gw-sophia:
       ports:
         10:
           uid: stock
-          kind: other
-          port: eth0
+          kind: server
         12:
-          uid: stock
-          kind: other
-          port: eth1
+          uid: stock-eth1
+          kind: server
     5:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kavlan_pattern: "%LINECARD%/%PORT%"
@@ -199,26 +181,20 @@ gw-sophia:
         17: suno-34
         18: suno-35
         19:
-          uid: srv-stock
-          port: eth2
-          kind: other
+          uid: srv-stock-eth2
+          kind: server
         20:
-          uid: srv
-          port: eth1
-          kind: other
+          uid: srv-eth1
+          kind: server
         21:
-          uid: srv
-          port: eth3
-          kind: other
+          uid: srv-eth3
+          kind: server
         22:
-          uid: srv
-          port: eth2
-          kind: other
+          uid: srv-eth2
+          kind: server
         23:
-          uid: srv-stock
-          port: eth3
-          kind: other
+          uid: srv-stock-eth3
+          kind: server
         24:
-          uid: srv-stock
-          port: eth1
-          kind: other
+          uid: srv-stock-eth1
+          kind: server

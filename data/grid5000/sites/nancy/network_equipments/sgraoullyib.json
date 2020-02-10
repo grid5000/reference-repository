@@ -1,4 +1,5 @@
 {
+  "ip": "172.17.79.223",
   "kind": "switch",
   "linecards": [
     {
@@ -115,7 +116,9 @@
         },
         {
           "kind": "node",
-          "uid": "node-mapping-undocumented-for-this-ib-switch"
+          "port": "mapping-undocumented-for-this-ib-switch",
+          "snmp_name": "12/42",
+          "uid": "node"
         }
       ],
       "rate": 20000000000,
@@ -127,10 +130,8 @@
     "metric": "power",
     "wattmeter": true
   },
+  "role": "hpc",
   "sensors": {
-    "network": {
-      "available": false
-    },
     "power": {
       "available": true,
       "resolution": 1,
@@ -148,10 +149,5 @@
   "snmp_community": "public",
   "type": "network_equipment",
   "uid": "sgraoullyib",
-  "vlans": {
-  },
-  "warranty": "2020-09-01",
-  "weathermap": {
-    "use_cacti": "no"
-  }
+  "warranty": "2020-09-01"
 }

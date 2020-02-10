@@ -1,5 +1,30 @@
 {
+  "alias": [
+    {
+      "ip": "172.16.47.254",
+      "name": "gw"
+    },
+    {
+      "ip": "172.17.47.254",
+      "name": "gw-adm"
+    }
+  ],
   "backplane_bps": 36000000000000,
+  "channels": {
+    "port-channel1": {
+      "kind": "switch",
+      "port": "port-channel1",
+      "rate": 200000000000,
+      "uid": "sw-chiclet-1"
+    },
+    "port-channel2": {
+      "kind": "switch",
+      "port": "port-channel1",
+      "rate": 200000000000,
+      "uid": "sw-chiclet-3"
+    }
+  },
+  "ip": "172.17.47.222",
   "kind": "router",
   "linecards": [
     {
@@ -7,8 +32,7 @@
     {
       "backplane_bps": 36000000000000,
       "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
-      "kind": "virtual",
-      "port": "eth0",
+      "kind": "other",
       "ports": [
         {
         },
@@ -77,15 +101,16 @@
         {
         },
         {
-          "kind": "other",
-          "port": "eth0",
+          "kind": "backbone",
+          "snmp_name": "Ethernet1/33",
           "uid": "renater5-FON"
         },
         {
         },
         {
           "kind": "other",
-          "port": "eth0",
+          "rate": 1000000000,
+          "snmp_name": "Ethernet1/35",
           "uid": "labo"
         },
         {
@@ -119,32 +144,28 @@
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Ethernet1/54",
+          "kind": "channel",
           "rate": 100000000000,
-          "uid": "sw-chiclet-1"
+          "snmp_name": "Ethernet1/51",
+          "uid": "port-channel1"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Ethernet1/53",
+          "kind": "channel",
           "rate": 100000000000,
-          "uid": "sw-chiclet-1"
+          "snmp_name": "Ethernet1/52",
+          "uid": "port-channel1"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Ethernet1/53",
+          "kind": "channel",
           "rate": 100000000000,
-          "uid": "sw-chiclet-3"
+          "snmp_name": "Ethernet1/53",
+          "uid": "port-channel2"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Ethernet1/54",
+          "kind": "channel",
           "rate": 100000000000,
-          "uid": "sw-chiclet-3"
+          "snmp_name": "Ethernet1/54",
+          "uid": "port-channel2"
         }
       ],
       "rate": 10000000000,
@@ -152,12 +173,7 @@
     }
   ],
   "model": "cisco 93180YC-EX",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
+  "role": "production",
   "site": "lille",
   "snmp_community": "public",
   "type": "network_equipment",
@@ -240,7 +256,5 @@
       "name": "kavlan-12"
     }
   },
-  "warranty": "2021-11-30",
-  "weathermap": {
-  }
+  "warranty": "2021-11-30"
 }

@@ -1,16 +1,16 @@
 ---
 gw:
+  role: production
   model: ExtremeNetworks
   kind: router
-  alias: [sw-imag]
+  alias:
+    - sw-imag
+    - gw-grenoble
   site: grenoble
   warranty: expired
   backplane_bps: 800000000000
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
+  ip: 172.16.31.254
   vlans:
     "vlan100":
       administrative: yes
@@ -68,7 +68,6 @@ gw:
       kavlan_pattern: "%PORT%"
       backplane_bps: 48000000000
       kind: node
-      port: eth0
       rate: 10000000000
       ports:
         1: dahu-1
@@ -113,19 +112,19 @@ gw:
         40: troll-4
         41:
           uid: dighyp1
-          kind: other
+          kind: server
         42:
           uid: dighyp2
-          kind: other
+          kind: server
         43:
           uid: digsed
-          kind: other
+          kind: server
         44:
           uid: digsed
-          kind: other
+          kind: server
         45:
           uid: digwatt
-          kind: other
+          kind: server
         48:
           uid: renater5
-          kind: other
+          kind: backbone

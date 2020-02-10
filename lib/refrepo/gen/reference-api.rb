@@ -7,7 +7,6 @@ require 'refrepo/valid/input/monitoring'
 #  the interface parameter must be used.
 def net_switch_port_lookup(site, node_uid, interface='')
   site["networks"].each do |switch_uid, switch|
-    #pp switch_uid
     switch["linecards"].each do |lc_uid,lc|
       lc["ports"].each do |port_uid,port|
         if port.is_a?(Hash)
@@ -17,11 +16,17 @@ def net_switch_port_lookup(site, node_uid, interface='')
           switch_remote_port = lc["port"] || ""
           switch_remote_uid = port
         end
+        if switch_remote_uid =~ /([a-z]*-[0-9]*)-(.*)/
+          n, p = switch_remote_uid.match(/([a-z]*-[0-9]*)-(.*)/).captures
+          switch_remote_uid = n
+          switch_remote_port = p
+        end
         if switch_remote_uid == node_uid and switch_remote_port == interface
-            # Build port name from snmp_naming_pattern
-            # Example: '3 2 GigabitEthernet%LINECARD%/%PORT%' -> 'GigabitEthernet3/2'
-            port_name = lc["snmp_pattern"].sub("%LINECARD%",lc_uid.to_s).sub("%PORT%",port_uid.to_s)
-            return switch_uid, port_name
+          # Build port name from snmp_naming_pattern
+          # Example: '3 2 GigabitEthernet%LINECARD%/%PORT%' -> 'GigabitEthernet3/2'
+          pattern = port["snmp_pattern"] || lc["snmp_pattern"]
+          port_name = pattern.sub("%LINECARD%",lc_uid.to_s).sub("%PORT%",port_uid.to_s)
+          return switch_uid, port_name
         end
       end
     end
@@ -30,7 +35,7 @@ def net_switch_port_lookup(site, node_uid, interface='')
 end
 
 # Creation du fichier network_equipment
-def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
+def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
   network["type"] = "network_equipment"
   network["uid"]  = network_uid
 
@@ -42,8 +47,6 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
   end
   network_path.mkpath()
 
-  network["weathermap"] ||= {}
-
   # Change the format of linecard from Hash to Array
   linecards_tmp = Marshal.load(Marshal.dump(network["linecards"])) # bkp (deep_copy)
 
@@ -51,7 +54,7 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
   network["linecards"].each do |linecard_index, linecard|
     ports = []
     linecard.delete("ports").each do |port_index, port|
-      port = {"uid"=>port} if port.is_a? String
+      port = { "uid"=> port } if port.is_a? String
       if port.is_a? Hash
         # complete entries (see bug 8587)
         if port['port'].nil? and linecard['port']
@@ -60,15 +63,32 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid=nil)
         if port['kind'].nil? and linecard['kind']
           port['kind'] = linecard['kind']
         end
+        if port['snmp_pattern'].nil? and linecard['snmp_pattern']
+          port['snmp_pattern'] = linecard['snmp_pattern']
+        end
+        if port['snmp_pattern']
+          port['snmp_name'] = port['snmp_pattern']
+            .sub('%LINECARD%',linecard_index.to_s).sub('%PORT%',port_index.to_s)
+          port.delete('snmp_pattern')
+        end
+        if ((!linecard['kind'].nil? &&
+            port['kind'].nil? &&
+            linecard['kind'] == 'node') ||
+            port['kind'] == 'node') &&
+            port['port'].nil?
+          p = port['uid'].match(/([a-z]*-[0-9]*)-?(.*)/).captures[1]
+          port['port'] = p != '' ? p : 'eth0'
+          port['uid'] = port['uid'].gsub(/-#{p}$/, '')
+        end
       end
       ports[port_index] = port
     end
-    linecard["ports"] = ports.map{|p| p || {}}
+    linecard["ports"] = ports.map { |p| p || {} }
     linecards_array[linecard_index] = linecard
   end
   network["linecards"] = linecards_array.map{|l| l || {}}
 
-  network.delete_if {|k, v| k == "network_adapters"}
+  network.delete_if {|k, v| k == "network_adapters"} # TO DELETE
 
   write_json(network_path.join("#{network_uid}.json"), network)
 

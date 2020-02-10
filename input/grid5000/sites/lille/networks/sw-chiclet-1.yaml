@@ -1,18 +1,16 @@
 ---
 sw-chiclet-1:
+  role: production
   model: cisco 93180YC-EX
   warranty: 2021-11-30
+  ip: 172.17.47.221
   kind: switch
   site: lille
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
   backplane_bps: 36000000000000
   linecards:
     1:
-      kind: virtual
+      kind: node
       snmp_pattern: Ethernet%LINECARD%/%PORT%
       kavlan_pattern: Ethernet%LINECARD%/%PORT%
       backplane_bps: 36000000000000
@@ -20,141 +18,79 @@ sw-chiclet-1:
       ports:
         1:
           uid:  chifflot-1
-          port: eth0
-          kind: node
         2:
           uid:  chifflot-2
-          port: eth0
-          kind: node
         3:
           uid:  chifflot-3
-          port: eth0
-          kind: node
         4:
           uid:  chifflot-4
-          port: eth0
-          kind: node
         5:
           uid:  chifflot-5
-          port: eth0
-          kind: node
         6:
           uid:  chifflot-6
-          port: eth0
-          kind: node
         7:
           uid:  chifflot-7
-          port: eth0
-          kind: node
         8:
           uid:  chifflot-8
-          port: eth0
-          kind: node
         9:
           uid:  chiclet-1
-          port: eth0
-          kind: node
         10:
           uid:  chiclet-2
-          port: eth0
-          kind: node
         11:
           uid:  chiclet-3
-          port: eth0
-          kind: node
         12:
           uid:  chiclet-4
-          port: eth0
-          kind: node
         13:
           uid:  chiclet-5
-          port: eth0
-          kind: node
         14:
           uid:  chiclet-6
-          port: eth0
-          kind: node
         15:
           uid:  chiclet-7
-          port: eth0
-          kind: node
         16:
           uid:  chiclet-8
-          port: eth0
-          kind: node
         17:
-          uid:  chifflot-1
-          port: eth1
-          kind: node
+          uid:  chifflot-1-eth1
         18:
-          uid:  chifflot-2
-          port: eth1
-          kind: node
+          uid:  chifflot-2-eth1
         19:
-          uid:  chifflot-3
-          port: eth1
-          kind: node
+          uid:  chifflot-3-eth1
         20:
-          uid:  chifflot-4
-          port: eth1
-          kind: node
+          uid:  chifflot-4-eth1
         21:
-          uid:  chifflot-5
-          port: eth1
-          kind: node
+          uid:  chifflot-5-eth1
         22:
-          uid:  chifflot-6
-          port: eth1
-          kind: node
+          uid:  chifflot-6-eth1
         23:
-          uid:  chifflot-7
-          port: eth1
-          kind: node
+          uid:  chifflot-7-eth1
         24:
-          uid:  chifflot-8
-          port: eth1
-          kind: node
+          uid:  chifflot-8-eth1
         25:
-          uid:  chiclet-1
-          port: eth1
-          kind: node
+          uid:  chiclet-1-eth1
         26:
-          uid:  chiclet-2
-          port: eth1
-          kind: node
+          uid:  chiclet-2-eth1
         27:
-          uid:  chiclet-3
-          port: eth1
-          kind: node
+          uid:  chiclet-3-eth1
         28:
-          uid:  chiclet-4
-          port: eth1
-          kind: node
+          uid:  chiclet-4-eth1
         29:
-          uid:  chiclet-5
-          port: eth1
-          kind: node
+          uid:  chiclet-5-eth1
         30:
-          uid:  chiclet-6
-          port: eth1
-          kind: node
+          uid:  chiclet-6-eth1
         31:
-          uid:  chiclet-7
-          port: eth1
-          kind: node
+          uid:  chiclet-7-eth1
         32:
-          uid:  chiclet-8
-          port: eth1
-          kind: node
+          uid:  chiclet-8-eth1
         53:
-          uid: sw-chiclet-2
-          kind: router
-          port: Ethernet1/52
-          aggregation: lacp
+          uid: port-channel1
+          kind: channel
           rate: 100000000000
         54:
-          uid: sw-chiclet-2
-          kind: router
-          port: Ethernet1/51
-          aggregation: lacp
+          uid: port-channel1
+          kind: channel
           rate: 100000000000
+  channels:
+    port-channel1:
+      port: port-channel1
+      uid: sw-chiclet-2
+      kind: router
+      rate: 200000000000

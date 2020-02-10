@@ -1,15 +1,15 @@
 ---
-gw-luxembourg:
+gw:
+  role: production
   model: cisco WS-C6506-E
+  alias:
+    - gw-luxembourg
   kind: router
   site: luxembourg
   snmp_community: public
   warranty: 2018-12-01
-  sensors:
-    network:
-      available: true
-      resolution: 1
   backplane_bps: 720000000000
+  ip: 172.16.191.254
   vlans:
     "vlan50":
       addresses:
@@ -164,36 +164,27 @@ gw-luxembourg:
 #          port: bmc
 #          kind: node
         25:
-          uid: granduc-2
-          port: eth1
+          uid: granduc-2-eth1
         26:
-          uid: granduc-3
-          port: eth1
+          uid: granduc-3-eth1
         27:
-          uid: granduc-4
-          port: eth1
+          uid: granduc-4-eth1
         29:
-          uid: granduc-6
-          port: eth1
+          uid: granduc-6-eth1
         32:
-          uid: granduc-9
-          port: eth1
+          uid: granduc-9-eth1
         35:
-          uid: cronos
-          port: eth1
-          kind: other
+          uid: cronos-eth1
+          kind: server
         36:
           uid: zeus
-          port: eth0
-          kind: other
+          kind: server
         37:
-          uid: cronos
-          port: eth2
-          kind: other
+          uid: cronos-eth2
+          kind: server
         40:
-          uid: zeus
-          port: eth1
-          kind: other
+          uid: zeus-eth1
+          kind: server
         46:
 #          uid: ul-grid5000-sw02
 #          port: mgmt0
@@ -208,59 +199,41 @@ gw-luxembourg:
       ports:
         2:
           uid: granduc-2
-          port: eth0
         3:
           uid: granduc-3
-          port: eth0
         4:
           uid: granduc-4
-          port: eth0
         6:
           uid: granduc-6
-          port: eth0
         9:
           uid: granduc-9
-          port: eth0
         12:
           uid: granduc-12
-          port: eth0
         15:
           uid: granduc-15
-          port: eth0
         16:
           uid: granduc-16
-          port: eth0
         18:
           uid: granduc-18
-          port: eth0
         20:
           uid: granduc-20
-          port: eth0
         21:
           uid: granduc-21
-          port: eth0
         24:
-          uid: granduc-12
-          port: eth1
+          uid: granduc-12-eth1
         27:
-          uid: granduc-15
-          port: eth1
+          uid: granduc-15-eth1
         28:
-          uid: granduc-16
-          port: eth1
+          uid: granduc-16-eth1
         30:
-          uid: granduc-18
-          port: eth1
+          uid: granduc-18-eth1
         32:
-          uid: granduc-20
-          port: eth1
+          uid: granduc-20-eth1
         33:
-          uid: granduc-21
-          port: eth1
+          uid: granduc-21-eth1
         44:
           uid: cronos
-          port: eth0
-          kind: other
+          kind: server
         45:
 #          uid: zeus
 #          port: bmc
@@ -271,24 +244,27 @@ gw-luxembourg:
       kavlan_pattern: Ti%LINECARD%/%PORT%
       rate: 10000000000
       backplane_bps: 40000000000
-      kind: switch
+      kind: channel
       ports:
         1:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/30
-          aggregation: lacp
+          uid: Port-channel4
+          kind: channel
         2:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/32
-          aggregation: lacp
+          uid: Port-channel4
+          kind: channel
     5:
       snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       kavlan_pattern: Ti%LINECARD%/%PORT%
       rate: 1000000000
       backplane_bps: 40000000000
-      kind: virtual
+      kind: backbone
       ports:
         4:
           uid: renater-luxembourg
           rate: 10000000000
-          kind: virtual
+  channels:
+    Port-channel4:
+      uid: ul-grid5000-sw02
+      port: port-channel4
+      kind: switch
+      rate: 20000000000

@@ -1,323 +1,181 @@
 ---
 paravance-sw-2:
+  role: production
   model: Nexus 56128P
   warranty: 2018-04-01
   kind: switch
   site: rennes
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
+  ip: 172.17.111.205
   backplane_bps: 1440000000000
   linecards:
     1:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
+      kind: node
       ports:
         1:
-          uid: paravance-37
-          kind: node
-          port: eth1
+          uid: paravance-37-eth1
         2:
           uid: paravance-37
-          kind: node
-          port: eth0
         3:
-          uid: paravance-38
-          kind: node
-          port: eth1
+          uid: paravance-38-eth1
         4:
           uid: paravance-38
-          kind: node
-          port: eth0
         5:
-          uid: paravance-39
-          kind: node
-          port: eth1
+          uid: paravance-39-eth1
         6:
           uid: paravance-39
-          kind: node
-          port: eth0
         7:
-          uid: paravance-40
-          kind: node
-          port: eth1
+          uid: paravance-40-eth1
         8:
           uid: paravance-40
-          kind: node
-          port: eth0
         9:
-          uid: paravance-41
-          kind: node
-          port: eth1
+          uid: paravance-41-eth1
         10:
           uid: paravance-41
-          kind: node
-          port: eth0
         11:
-          uid: paravance-42
-          kind: node
-          port: eth1
+          uid: paravance-42-eth1
         12:
           uid: paravance-42
-          kind: node
-          port: eth0
         13:
-          uid: paravance-43
-          kind: node
-          port: eth1
+          uid: paravance-43-eth1
         14:
           uid: paravance-43
-          kind: node
-          port: eth0
         15:
-          uid: paravance-44
-          kind: node
-          port: eth1
+          uid: paravance-44-eth1
         16:
           uid: paravance-44
-          kind: node
-          port: eth0
         17:
-          uid: paravance-45
-          kind: node
-          port: eth1
+          uid: paravance-45-eth1
         18:
           uid: paravance-45
-          kind: node
-          port: eth0
         19:
-          uid: paravance-46
-          kind: node
-          port: eth1
+          uid: paravance-46-eth1
         20:
           uid: paravance-46
-          kind: node
-          port: eth0
         21:
-          uid: paravance-47
-          kind: node
-          port: eth1
+          uid: paravance-47-eth1
         22:
           uid: paravance-47
-          kind: node
-          port: eth0
         23:
-          uid: paravance-48
-          kind: node
-          port: eth1
+          uid: paravance-48-eth1
         24:
           uid: paravance-48
-          kind: node
-          port: eth0
         25:
-          uid: paravance-49
-          kind: node
-          port: eth1
+          uid: paravance-49-eth1
         26:
           uid: paravance-49
-          kind: node
-          port: eth0
         27:
-          uid: paravance-50
-          kind: node
-          port: eth1
+          uid: paravance-50-eth1
         28:
           uid: paravance-50
-          kind: node
-          port: eth0
         29:
-          uid: paravance-51
-          kind: node
-          port: eth1
+          uid: paravance-51-eth1
         30:
           uid: paravance-51
-          kind: node
-          port: eth0
         31:
-          uid: paravance-52
-          kind: node
-          port: eth1
+          uid: paravance-52-eth1
         32:
           uid: paravance-52
-          kind: node
-          port: eth0
         33:
-          uid: paravance-53
-          kind: node
-          port: eth1
+          uid: paravance-53-eth1
         34:
           uid: paravance-53
-          kind: node
-          port: eth0
         35:
-          uid: paravance-54
-          kind: node
-          port: eth1
+          uid: paravance-54-eth1
         36:
           uid: paravance-54
-          kind: node
-          port: eth0
         37:
-          uid: paravance-55
-          kind: node
-          port: eth1
+          uid: paravance-55-eth1
         38:
           uid: paravance-55
-          kind: node
-          port: eth0
         39:
-          uid: paravance-56
-          kind: node
-          port: eth1
+          uid: paravance-56-eth1
         40:
           uid: paravance-56
-          kind: node
-          port: eth0
         41:
-          uid: paravance-57
-          kind: node
-          port: eth1
+          uid: paravance-57-eth1
         42:
           uid: paravance-57
-          kind: node
-          port: eth0
         43:
-          uid: paravance-58
-          kind: node
-          port: eth1
+          uid: paravance-58-eth1
         44:
           uid: paravance-58
-          kind: node
-          port: eth0
         45:
-          uid: paravance-59
-          kind: node
-          port: eth1
+          uid: paravance-59-eth1
         46:
           uid: paravance-59
-          kind: node
-          port: eth0
         47:
-          uid: paravance-60
-          kind: node
-          port: eth1
+          uid: paravance-60-eth1
         48:
           uid: paravance-60
-          kind: node
-          port: eth0
         51:
-          uid: gw-rennes
+          uid: port-channel4
           rate: 40000000000
-          kind: router
-          port: Ethernet1/49
-          aggregation: lacp
+          kind: channel
         52:
-          uid: gw-rennes
+          uid: port-channel4
           rate: 40000000000
-          kind: router
-          port: Ethernet1/50
-          aggregation: lacp
+          kind: channel
     2:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
       rate: 10000000000
+      kind: node
       ports:
         1:
-          uid: paravance-61
-          kind: node
-          port: eth1
+          uid: paravance-61-eth1
         2:
           uid: paravance-61
-          kind: node
-          port: eth0
         3:
-          uid: paravance-62
-          kind: node
-          port: eth1
+          uid: paravance-62-eth1
         4:
           uid: paravance-62
-          kind: node
-          port: eth0
         5:
-          uid: paravance-63
-          kind: node
-          port: eth1
+          uid: paravance-63-eth1
         6:
           uid: paravance-63
-          kind: node
-          port: eth0
         7:
-          uid: paravance-64
-          kind: node
-          port: eth1
+          uid: paravance-64-eth1
         8:
           uid: paravance-64
-          kind: node
-          port: eth0
         9:
-          uid: paravance-65
-          kind: node
-          port: eth1
+          uid: paravance-65-eth1
         10:
           uid: paravance-65
-          kind: node
-          port: eth0
         11:
-          uid: paravance-66
-          kind: node
-          port: eth1
+          uid: paravance-66-eth1
         12:
           uid: paravance-66
-          kind: node
-          port: eth0
         13:
-          uid: paravance-67
-          kind: node
-          port: eth1
+          uid: paravance-67-eth1
         14:
           uid: paravance-67
-          kind: node
-          port: eth0
         15:
-          uid: paravance-68
-          kind: node
-          port: eth1
+          uid: paravance-68-eth1
         16:
           uid: paravance-68
-          kind: node
-          port: eth0
         17:
-          uid: paravance-69
-          kind: node
-          port: eth1
+          uid: paravance-69-eth1
         18:
           uid: paravance-69
-          kind: node
-          port: eth0
         19:
-          uid: paravance-70
-          kind: node
-          port: eth1
+          uid: paravance-70-eth1
         20:
           uid: paravance-70
-          kind: node
-          port: eth0
         21:
-          uid: paravance-71
-          kind: node
-          port: eth1
+          uid: paravance-71-eth1
         22:
           uid: paravance-71
-          kind: node
-          port: eth0
         23:
-          uid: paravance-72
-          kind: node
-          port: eth1
+          uid: paravance-72-eth1
         24:
           uid: paravance-72
-          kind: node
-          port: eth0
+  channels:
+    port-channel4:
+      uid: gw
+      port: port-channel3
+      rate: 80000000000
+      kind: router

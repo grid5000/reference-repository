@@ -1,17 +1,18 @@
 ---
 swy1nef:
+  role: production
   model: Dell PowerConnect 6248
   warranty: expired
   kind: switch
   site: sophia
   snmp_community: g5kadmin
+  ip: 172.16.143.249
   backplane_bps: 184000000000
   linecards:
     0:
       snmp_pattern: "Port: %PORT% Gigabit"
       kavlan_pattern: "%PORT%"
       kind: node
-      port: eth0
       rate: 1000000000
       ports:
         53: uvb-27
@@ -34,7 +35,7 @@ swy1nef:
         71: uvb-15
         72:
           uid: opensm
-          kind: other
+          kind: server
         73: uvb-19
         74: uvb-14
         75: uvb-17

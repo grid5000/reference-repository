@@ -1,22 +1,15 @@
 ---
 mxl2:
+  role: production
   model: Force10 MXL
   kind: switch
   site: luxembourg
   snmp_community: public
   warranty: expired
-  sensors:
-    network:
-      available: true
-      resolution: 1
   backplane_bps: 1407374880000
-  weathermap:
-    use_cacti: "yes"
-  vlans:
-    "vlan101":
-      administrative: yes
-      addresses:
-        - 172.17.191.252
+  alias:
+    - m1000-mxl2
+  ip: 172.17.191.252
   linecards:
     0:
       snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
@@ -25,67 +18,50 @@ mxl2:
       kind: node
       ports:
         1:
-          uid: petitprince-1
-          port: eth1
+          uid: petitprince-1-eth1
         2:
-          uid: petitprince-2
-          port: eth1
+          uid: petitprince-2-eth1
         3:
-          uid: petitprince-3
-          port: eth1
+          uid: petitprince-3-eth1
         4:
-          uid: petitprince-4
-          port: eth1
+          uid: petitprince-4-eth1
         5:
-          uid: petitprince-5
-          port: eth1
+          uid: petitprince-5-eth1
         6:
-          uid: petitprince-6
-          port: eth1
+          uid: petitprince-6-eth1
         7:
-          uid: petitprince-7
-          port: eth1
+          uid: petitprince-7-eth1
         8:
-          uid: petitprince-8
-          port: eth1
+          uid: petitprince-8-eth1
         9:
-          uid: petitprince-9
-          port: eth1
+          uid: petitprince-9-eth1
         10:
-          uid: petitprince-10
-          port: eth1
+          uid: petitprince-10-eth1
         11:
-          uid: petitprince-11
-          port: eth1
+          uid: petitprince-11-eth1
         13:
-          uid: petitprince-13
-          port: eth1
+          uid: petitprince-13-eth1
         14:
-          uid: petitprince-14
-          port: eth1
+          uid: petitprince-14-eth1
         15:
-          uid: petitprince-15
-          port: eth1
+          uid: petitprince-15-eth1
         16:
-          uid: petitprince-16
-          port: eth1
+          uid: petitprince-16-eth1
         33:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/37
-          kind: switch
-          aggregation: lacp
+          uid: Port-channel 6
+          kind: channel
         34:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/38
-          kind: switch
-          aggregation: lacp
+          uid: Port-channel 6
+          kind: channel
         35:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/39
-          kind: switch
-          aggregation: lacp
+          uid: Port-channel 6
+          kind: channel
         36:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/40
-          kind: switch
-          aggregation: lacp
+          uid: Port-channel 6
+          kind: channel
+  channels:
+    Port-channel 6:
+      uid: ul-grid5000-sw02
+      port: port-channel6
+      kind: switch
+      rate: 4000000000

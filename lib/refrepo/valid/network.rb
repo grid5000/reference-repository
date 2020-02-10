@@ -33,12 +33,26 @@ def check_network_description(options)
           ok = false
           nic['network_address'] = "#{n['uid']}-#{nic['device']}.#{site}.grid5000.fr" # hack
         end
-        netnodes << { 'kind' => 'node', 'uid' => n['uid'], 'port' => nic['device'], 'rate' => nic['rate'], 'switch' => nic['switch'], 'interface' => nic['interface'], 'mounted' => nic['mounted'], 'mountable' => nic['mountable'], 'nickname' => nic['network_address'].split('.')[0] }
+        netnodes << {
+          'kind' => 'node',
+          'uid' => n['uid'],
+          'port' => nic['device'],
+          'rate' => nic['rate'],
+          'switch' => nic['switch'],
+          'interface' => nic['interface'],
+          'mounted' => nic['mounted'],
+          'mountable' => nic['mountable'],
+          'nickname' => nic['network_address'].split('.')[0]
+        }
       end
     end
 
     neteqs.each do |eq|
-      netnodes << { 'kind' => eq['kind'], 'uid' => eq['uid'], 'nickname' => eq['uid'] }
+      netnodes << {
+        'kind' => eq['kind'],
+        'uid' => eq['uid'],
+        'nickname' => eq['uid']
+      }
     end
 
     # check number of routers
@@ -87,8 +101,8 @@ def check_network_description(options)
         puts "This is an HPC switch. ERRORs will be non-fatal."
         oldok = ok
       end
-      eq['linecards'].each do |lc|
-        (lc['ports'] || []).each do |port|
+      eq['linecards'].each_with_index do |lc, lc_i|
+        (lc['ports'] || []).each_with_index do |port, port_i|
           # skip if empty port
           next if port == {}
 
@@ -96,22 +110,93 @@ def check_network_description(options)
             mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid', 'port') == port.values_at('kind', 'uid', 'port') }
             if mynetnodes.length == 1
               mynetnodes.first['found'] += 1
-              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'], 'target_node' => mynetnodes.first['uid'], 'port' => mynetnodes.first['port'] }
+              links << {
+                'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort,
+                'switch' => eq['uid'],
+                'target' => mynetnodes.first['nickname'],
+                'rate' => port['rate'] || lc['rate'],
+                'target_node' => mynetnodes.first['uid'],
+                'port' => mynetnodes.first['port']
+              }
             else
               puts "ERROR: this port is connected to a node that does not exist: #{port}"
               ok = false
             end
-          elsif port['kind'] == 'switch' or port['kind'] == 'router'
+          elsif ['switch','router'].include?(port['kind'])
             mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid') == port.values_at('kind', 'uid') }
             if mynetnodes.length == 1
               mynetnodes.first['found'] += 1
-              links << { 'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort, 'switch' => eq['uid'], 'target' => mynetnodes.first['nickname'], 'rate' => port['rate'] || lc['rate'], 'target_node' => mynetnodes.first['uid'], 'port' => mynetnodes.first['port'] }
+              links << {
+                'nicknames' => [ eq['uid'], mynetnodes.first['nickname'] ].sort,
+                'switch' => eq['uid'],
+                'target' => mynetnodes.first['nickname'],
+                'rate' => port['rate'] || lc['rate'],
+                'target_node' => mynetnodes.first['uid'],
+                'port' => mynetnodes.first['port']
+              }
             else
               puts "ERROR: this port is connected to a switch or router that does not exist: #{port}"
               ok = false
             end
-          elsif port['kind'] == 'other' or port['kind'] == 'virtual'
+          elsif ['other','virtual','server','backbone'].include?(port['kind'])
             puts "INFO: skipping port kind #{port['kind']} for #{port['uid']}"
+          elsif port['kind'] == 'channel'
+
+            # Check that the port of kind channel is reference in channels
+            port_to_lookup = port['snmp_name']
+            channel = eq['channels'][port['uid']]
+            unless channel
+              puts "ERROR: port #{port_to_lookup} is referencing a channel that doesn't exist on #{eq['uid']}"
+              ok = false
+            end
+
+            if channel && ['server','other'].include?(channel['kind'])
+              puts "INFO: skipping channel for #{channel['kind']} #{port['uid']}"
+            elsif channel && ['switch','router'].include?(channel['kind'])
+
+              channel_ports = eq['linecards'].reject { |i| i == {} }.map do |i|
+                i['ports'].reject { |j| j == {} }
+                  .select { |k| k['uid'] == port['uid'] }
+              end.reject { |i| i == [] }.first
+
+              # Check that port of kind channel is referencing a port of type channel
+              # only if the channel is connected to router/switch
+              connected_to = neteqs.select { |n| n['uid'] == channel['uid'] }.first
+
+              unless connected_to && connected_to['channels'][channel['port']]
+                puts "ERROR #{channel['port']} not found on #{channel['uid']}"
+                ok = false
+                next
+              end
+
+              connected_to = connected_to['linecards'].reject { |i| i == {} }.map do |i|
+                i['ports'].reject { |j| j == {} }
+                  .select { |k| k['uid'] == channel['port'] }
+              end.reject { |i| i == [] }.first
+
+              if connected_to.length == 0
+                puts "ERROR: port #{port_to_lookup} on #{eq['uid']} is not connected to an endpoint"
+                ok = false
+              elsif connected_to.length == 1
+                puts "ERROR: port #{port_to_lookup} is a channel on #{eq['uid']} and is only connected to one endpoint"
+                pp connected_to
+                ok = false
+              elsif connected_to.length != channel_ports.length
+                puts "ERROR: channel misconfiguration for #{port_to_lookup} on #{eq['uid']} with #{port['uid']} "
+                ok = false
+              else
+                mynetnodes = netnodes.select { |n| n['uid'] == channel['uid'] }
+                mynetnodes.first['found'] += 1
+                links << {
+                  'nicknames' => [ eq['uid'], channel['uid'] ].sort,
+                  'switch' => eq['uid'],
+                  'target' => channel['uid'],
+                  'rate' => port['rate'] || lc['rate'],
+                  'target_node' => channel['uid'],
+                  'port' => mynetnodes.first['port']
+                }
+              end
+            end
           else
             puts "ERROR: unknown port kind: #{port}"
             ok = false
@@ -120,6 +205,24 @@ def check_network_description(options)
       end
       if HPC_SWITCHES.include?(eq['uid'])
         ok = oldok
+      end
+    end
+
+    neteqs.each do |eq|
+      next if eq['channels'].nil?
+
+      eq['channels'].each do |k,v|
+        # Check that channel is referencing a correct channel
+        # only if the channel is connected to router/switch
+        next unless ['switch', 'router'].include?(v['kind'])
+        c_lookup = neteqs.select { |n| n['uid'] == v['uid'] }
+        c_lookup = c_lookup.length.zero? ? nil : c_lookup.first['channels']
+
+        if !c_lookup.nil? and !c_lookup[v['port']].nil? and
+            c_lookup[v['port']]['port'] != k
+          puts "ERROR: channel #{k} of #{eq['uid']} not found on #{v['uid']} found #{c_lookup[v['port']]['port']} instead"
+          ok =false
+        end
       end
     end
 
@@ -220,7 +323,7 @@ def generate_dot(netnodes, links, site)
   header = []
   content = []
   trailer = []
-  
+
   header << "graph graphname {"
   router = mynetnodes.select { |n| n['kind'] == 'router' }.first['nickname']
   header << "root=\"#{router}\";"
@@ -266,7 +369,7 @@ def generate_dot(netnodes, links, site)
     end
   end
   trailer << "}"
-  
+
   name = "#{site.capitalize}Network"
   data = [header, content.sort, trailer].flatten.join("\n")
   IO.write("#{name}.dot", data)

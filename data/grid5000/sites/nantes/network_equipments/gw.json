@@ -1,15 +1,32 @@
 {
+  "alias": [
+    "gw-nantes"
+  ],
   "backplane_bps": 1280000000000,
+  "channels": {
+    "Port-channel 1": {
+      "kind": "switch",
+      "port": "Port-channel 1",
+      "rate": 80000000000,
+      "uid": "ecotype-prod1"
+    },
+    "Port-channel 2": {
+      "kind": "switch",
+      "port": "Port-channel 1",
+      "rate": 80000000000,
+      "uid": "ecotype-prod2"
+    }
+  },
+  "ip": "172.16.207.254",
   "kind": "router",
   "linecards": [
     {
       "kavlan_pattern": "%PORT%",
       "kind": "node",
-      "port": "eth0",
       "ports": [
         {
-          "kind": "virtual",
-          "port": "eth0",
+          "kind": "backbone",
+          "snmp_name": "TenGigabitEthernet 0/0",
           "uid": "renater-nantes"
         },
         {
@@ -33,6 +50,7 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/10",
           "uid": "econome-10"
         },
         {
@@ -42,51 +60,61 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/13",
           "uid": "econome-17"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/14",
           "uid": "econome-4"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/15",
           "uid": "econome-3"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/16",
           "uid": "econome-8"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/17",
           "uid": "econome-7"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/18",
           "uid": "econome-12"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/19",
           "uid": "econome-11"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/20",
           "uid": "econome-16"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/21",
           "uid": "econome-15"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/22",
           "uid": "econome-18"
         },
         {
@@ -102,11 +130,13 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/28",
           "uid": "econome-20"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/29",
           "uid": "econome-19"
         },
         {
@@ -114,11 +144,13 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/31",
           "uid": "econome-21"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/32",
           "uid": "econome-22"
         },
         {
@@ -134,11 +166,13 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/38",
           "uid": "econome-14"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/39",
           "uid": "econome-13"
         },
         {
@@ -146,26 +180,31 @@
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/41",
           "uid": "econome-9"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/42",
           "uid": "econome-6"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/43",
           "uid": "econome-5"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/44",
           "uid": "econome-2"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/45",
           "uid": "econome-1"
         },
         {
@@ -173,10 +212,10 @@
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "fortyGigE0/50",
-          "uid": "ecotype-prod1"
+          "kind": "channel",
+          "rate": 40000000000,
+          "snmp_name": "fortyGigE 0/48",
+          "uid": "Port-channel 1"
         },
         {
         },
@@ -185,10 +224,10 @@
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "fortyGigE0/49",
-          "uid": "ecotype-prod1"
+          "kind": "channel",
+          "rate": 40000000000,
+          "snmp_name": "fortyGigE 0/52",
+          "uid": "Port-channel 1"
         },
         {
         },
@@ -197,10 +236,10 @@
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "fortyGigE0/50",
-          "uid": "ecotype-prod2"
+          "kind": "channel",
+          "rate": 40000000000,
+          "snmp_name": "fortyGigE 0/56",
+          "uid": "Port-channel 2"
         },
         {
         },
@@ -209,10 +248,10 @@
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "fortyGigE0/49",
-          "uid": "ecotype-prod2"
+          "kind": "channel",
+          "rate": 40000000000,
+          "snmp_name": "fortyGigE 0/60",
+          "uid": "Port-channel 2"
         }
       ],
       "rate": 10000000000,
@@ -220,16 +259,11 @@
     }
   ],
   "model": "Force10 S4810",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
+  "role": "production",
   "site": "nantes",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "gw-nantes",
+  "uid": "gw",
   "vlans": {
     "vlan100": {
       "addresses": [
@@ -308,7 +342,5 @@
       "name": "kavlan-21"
     }
   },
-  "warranty": "2017-10-01",
-  "weathermap": {
-  }
+  "warranty": "2017-10-01"
 }

@@ -1,5 +1,11 @@
 {
+  "alias": [
+    "gw-lyon",
+    "router",
+    "sgemini"
+  ],
   "backplane_bps": 960000000000,
+  "ip": "172.16.63.254",
   "kind": "router",
   "linecards": [
     {
@@ -7,18 +13,19 @@
     {
       "kavlan_pattern": "%PORT%",
       "kind": "node",
-      "port": "eth0",
       "ports": [
         {
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "ethernet1/1/1",
           "uid": "gemini-1"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "ethernet1/1/2",
           "uid": "gemini-2"
         },
         {
@@ -56,23 +63,24 @@
         {
         },
         {
-          "kind": "other",
-          "port": "eno1",
+          "kind": "server",
+          "snmp_name": "ethernet1/1/20",
           "uid": "albireo-a"
         },
         {
-          "kind": "other",
-          "port": "eno1",
+          "kind": "server",
+          "snmp_name": "ethernet1/1/21",
           "uid": "albireo-b"
         },
         {
-          "kind": "other",
-          "port": "ens3f1",
+          "kind": "server",
+          "snmp_name": "ethernet1/1/22",
           "uid": "alcor"
         },
         {
           "kind": "switch",
           "port": "2",
+          "snmp_name": "ethernet1/1/23",
           "uid": "salome"
         },
         {
@@ -80,6 +88,7 @@
         {
           "kind": "switch",
           "port": "0:60",
+          "snmp_name": "ethernet1/1/25",
           "uid": "force10"
         },
         {
@@ -91,9 +100,8 @@
         {
         },
         {
-          "kind": "virtual",
-          "port": "eth0",
-          "site": "renater",
+          "kind": "backbone",
+          "snmp_name": "ethernet1/1/30",
           "uid": "renater-lyon"
         }
       ],
@@ -102,17 +110,12 @@
     }
   ],
   "model": "Dell EMC S4128F-ON",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
+  "role": "production",
   "serial": "J9J1PK2",
   "site": "lyon",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "gw-lyon",
+  "uid": "gw",
   "vlans": {
     "vlan100": {
       "addresses": [
@@ -192,7 +195,5 @@
       "name": "kavlan-13"
     }
   },
-  "warranty": "2024-08-15",
-  "weathermap": {
-  }
+  "warranty": "2024-08-15"
 }

@@ -1,24 +1,23 @@
 ---
 model: string
+role:
+  - admin
+  - production
+  - hpc
 warranty: optional
-kind: string
+kind:
+  - router
+  - switch
 serial: optional_string
 site: string
 alias : optional_array
 backplane_bps: optional_integer
 mtu: optional_integer
 snmp_community: string
+ip: optional_string
 network_adapters: optional
-weathermap:
-  <optional_hash>:
-    use_cacti: string
 sensors:
   <optional_hash>:
-    network:
-      <optional_hash>:
-        available: boolean
-        resolution: optional_integer
-        via: optional
     power:
       <optional_hash>:
         available: boolean
@@ -50,3 +49,10 @@ linecards:
     port: optional_string
     ports:
       <multi>: linecard_port #custom linecard port validation (see lib/custom-validators.rb)
+channels:
+  <optional_hash>:
+    <multi>:
+      port: string
+      uid: string
+      kind: string
+      rate: integer

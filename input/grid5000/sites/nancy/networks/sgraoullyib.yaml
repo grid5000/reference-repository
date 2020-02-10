@@ -1,13 +1,12 @@
 ---
 sgraoullyib:
+  role: hpc
   model: Infiniband
   warranty: 2020-09-01
   kind: switch
   site: nancy
   snmp_community: public
   sensors:
-    network:
-      available: false
     power:
       available: true
       resolution: 1
@@ -18,9 +17,7 @@ sgraoullyib:
   monitoring:
     wattmeter: true
     metric: power
-  weathermap:
-    use_cacti: "no"
-  vlans: {}
+  ip: 172.17.79.223
   linecards:
     12:
       snmp_pattern: "%LINECARD%/%PORT%"
@@ -28,6 +25,6 @@ sgraoullyib:
       kind: switch
       rate: 20000000000
       ports:
-        42: 
+        42:
           uid: node-mapping-undocumented-for-this-ib-switch
           kind: node

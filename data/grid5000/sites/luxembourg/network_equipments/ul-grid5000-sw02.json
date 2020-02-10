@@ -1,5 +1,32 @@
 {
   "backplane_bps": 1040000000000,
+  "channels": {
+    "port-channel4": {
+      "kind": "router",
+      "port": "Port-channel4",
+      "rate": 20000000000,
+      "uid": "gw"
+    },
+    "port-channel5": {
+      "kind": "switch",
+      "port": "Port-channel 5",
+      "rate": 40000000000,
+      "uid": "mxl1"
+    },
+    "port-channel6": {
+      "kind": "switch",
+      "port": "Port-channel 6",
+      "rate": 40000000000,
+      "uid": "mxl2"
+    },
+    "port-channel7": {
+      "kind": "server",
+      "port": "NA",
+      "rate": 20000000000,
+      "uid": "srv-data"
+    }
+  },
+  "ip": "172.17.191.253",
   "kind": "switch",
   "linecards": [
     {
@@ -17,16 +44,19 @@
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/3",
           "uid": "granduc-2"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/4",
           "uid": "granduc-3"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/5",
           "uid": "granduc-4"
         },
         {
@@ -34,6 +64,7 @@
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/7",
           "uid": "granduc-6"
         },
         {
@@ -43,6 +74,7 @@
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/10",
           "uid": "granduc-9"
         },
         {
@@ -52,6 +84,7 @@
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/13",
           "uid": "granduc-12"
         },
         {
@@ -61,11 +94,13 @@
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/16",
           "uid": "granduc-15"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/17",
           "uid": "granduc-16"
         },
         {
@@ -73,6 +108,7 @@
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/19",
           "uid": "granduc-18"
         },
         {
@@ -80,11 +116,13 @@
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/21",
           "uid": "granduc-20"
         },
         {
           "kind": "node",
           "port": "eth2",
+          "snmp_name": "Ethernet1/22",
           "uid": "granduc-21"
         },
         {
@@ -92,6 +130,14 @@
         {
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/25",
+          "uid": "port-channel7"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/26",
+          "uid": "port-channel7"
         },
         {
         },
@@ -100,68 +146,56 @@
         {
         },
         {
-        },
-        {
-          "aggregation": "lacp",
-          "kind": "router",
-          "port": "Te3/1",
-          "uid": "gw-luxembourg"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/30",
+          "uid": "port-channel4"
         },
         {
         },
         {
-          "aggregation": "lacp",
-          "kind": "router",
-          "port": "Te3/2",
-          "uid": "gw-luxembourg"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/32",
+          "uid": "port-channel4"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Te0/33",
-          "uid": "mxl1"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/33",
+          "uid": "port-channel5"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Te0/34",
-          "uid": "mxl1"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/34",
+          "uid": "port-channel5"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Te0/35",
-          "uid": "mxl1"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/35",
+          "uid": "port-channel5"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Te0/36",
-          "uid": "mxl1"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/36",
+          "uid": "port-channel5"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Te0/33",
-          "uid": "mxl2"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/37",
+          "uid": "port-channel6"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Te0/34",
-          "uid": "mxl2"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/38",
+          "uid": "port-channel6"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Te0/35",
-          "uid": "mxl2"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/39",
+          "uid": "port-channel6"
         },
         {
-          "aggregation": "lacp",
-          "kind": "switch",
-          "port": "Te0/36",
-          "uid": "mxl2"
+          "kind": "channel",
+          "snmp_name": "Ethernet1/40",
+          "uid": "port-channel6"
         }
       ],
       "rate": 10000000000,
@@ -169,26 +203,10 @@
     }
   ],
   "model": "cisco N5K-C5020P-BF",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
+  "role": "production",
   "site": "luxembourg",
   "snmp_community": "public",
   "type": "network_equipment",
   "uid": "ul-grid5000-sw02",
-  "vlans": {
-    "vlan101": {
-      "addresses": [
-        "172.17.191.253"
-      ],
-      "administrative": true
-    }
-  },
-  "warranty": "expired",
-  "weathermap": {
-    "use_cacti": "yes"
-  }
+  "warranty": "expired"
 }

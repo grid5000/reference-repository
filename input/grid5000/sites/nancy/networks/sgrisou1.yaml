@@ -1,5 +1,6 @@
 ---
 sgrisou1:
+  role: production
   model: Dell S3048
   warranty: 2022-06-01
   kind: switch
@@ -16,211 +17,111 @@ sgrisou1:
   monitoring:
     wattmeter: true
     metric: power
-  vlans:
-    "vlan1":
-      administrative: yes
-      addresses:
-        - 172.17.79.206
+  ip: 172.17.79.206
   backplane_bps: 260000000000
   linecards:
     1:
       snmp_pattern: "GigabitEthernet %LINECARD%/%PORT%"
       kavlan_pattern: "GigabitEthernet%LINECARD%/%PORT%"
-      kind: other
+      kind: node
       rate: 1000000000
       ports:
         1:
-          uid: grisou-1
-          port: eth4
-          kind: node
+          uid: grisou-1-eth4
         2:
-          uid: grisou-2
-          port: eth4
-          kind: node
+          uid: grisou-2-eth4
         3:
-          uid: grisou-3
-          port: eth4
-          kind: node
+          uid: grisou-3-eth4
         4:
-          uid: grisou-4
-          port: eth4
-          kind: node
+          uid: grisou-4-eth4
         5:
-          uid: grisou-5
-          port: eth4
-          kind: node
+          uid: grisou-5-eth4
         6:
-          uid: grisou-6
-          port: eth4
-          kind: node
+          uid: grisou-6-eth4
         7:
-          uid: grisou-7
-          port: eth4
-          kind: node
+          uid: grisou-7-eth4
         8:
-          uid: grisou-8
-          port: eth4
-          kind: node
+          uid: grisou-8-eth4
         9:
-          uid: grisou-9
-          port: eth4
-          kind: node
+          uid: grisou-9-eth4
         10:
-          uid: grisou-10
-          port: eth4
-          kind: node
+          uid: grisou-10-eth4
         11:
-          uid: grisou-11
-          port: eth4
-          kind: node
+          uid: grisou-11-eth4
         12:
-          uid: grisou-12
-          port: eth4
-          kind: node
+          uid: grisou-12-eth4
         13:
-          uid: grisou-13
-          port: eth4
-          kind: node
+          uid: grisou-13-eth4
         14:
-          uid: grisou-14
-          port: eth4
-          kind: node
+          uid: grisou-14-eth4
         15:
-          uid: grisou-15
-          port: eth4
-          kind: node
+          uid: grisou-15-eth4
         16:
-          uid: grisou-16
-          port: eth4
-          kind: node
+          uid: grisou-16-eth4
         17:
-          uid: grisou-17
-          port: eth4
-          kind: node
+          uid: grisou-17-eth4
         18:
-          uid: grisou-18
-          port: eth4
-          kind: node
+          uid: grisou-18-eth4
         19:
-          uid: grisou-19
-          port: eth4
-          kind: node
+          uid: grisou-19-eth4
         20:
-          uid: grisou-20
-          port: eth4
-          kind: node
+          uid: grisou-20-eth4
         21:
-          uid: grisou-21
-          port: eth4
-          kind: node
+          uid: grisou-21-eth4
         22:
-          uid: grisou-22
-          port: eth4
-          kind: node
+          uid: grisou-22-eth4
         23:
-          uid: grisou-23
-          port: eth4
-          kind: node
+          uid: grisou-23-eth4
         24:
-          uid: grisou-24
-          port: eth4
-          kind: node
+          uid: grisou-24-eth4
         25:
-          uid: grisou-25
-          port: eth4
-          kind: node
+          uid: grisou-25-eth4
         26:
-          uid: grisou-26
-          port: eth4
-          kind: node
+          uid: grisou-26-eth4
         27:
-          uid: grisou-27
-          port: eth4
-          kind: node
+          uid: grisou-27-eth4
         28:
-          uid: grisou-28
-          port: eth4
-          kind: node
+          uid: grisou-28-eth4
         29:
-          uid: grisou-29
-          port: eth4
-          kind: node
+          uid: grisou-29-eth4
         30:
-          uid: grisou-30
-          port: eth4
-          kind: node
+          uid: grisou-30-eth4
         31:
-          uid: grisou-31
-          port: eth4
-          kind: node
+          uid: grisou-31-eth4
         32:
-          uid: grisou-32
-          port: eth4
-          kind: node
+          uid: grisou-32-eth4
         33:
-          uid: grisou-33
-          port: eth4
-          kind: node
+          uid: grisou-33-eth4
         34:
-          uid: grisou-34
-          port: eth4
-          kind: node
+          uid: grisou-34-eth4
         35:
-          uid: grisou-35
-          port: eth4
-          kind: node
+          uid: grisou-35-eth4
         36:
-          uid: grisou-36
-          port: eth4
-          kind: node
+          uid: grisou-36-eth4
         37:
-          uid: grisou-37
-          port: eth4
-          kind: node
+          uid: grisou-37-eth4
         38:
-          uid: grisou-38
-          port: eth4
-          kind: node
+          uid: grisou-38-eth4
         39:
-          uid: grisou-39
-          port: eth4
-          kind: node
+          uid: grisou-39-eth4
         40:
-          uid: grisou-40
-          port: eth4
-          kind: node
+          uid: grisou-40-eth4
         41:
-          uid: grisou-41
-          port: eth4
-          kind: node
+          uid: grisou-41-eth4
         42:
-          uid: grisou-42
-          port: eth4
-          kind: node
+          uid: grisou-42-eth4
         43:
-          uid: grisou-43
-          port: eth4
-          kind: node
+          uid: grisou-43-eth4
         44:
-          uid: grisou-44
-          port: eth4
-          kind: node
+          uid: grisou-44-eth4
         45:
-          uid: grisou-45
-          port: eth4
-          kind: node
+          uid: grisou-45-eth4
         46:
-          uid: grisou-46
-          port: eth4
-          kind: node
+          uid: grisou-46-eth4
         47:
-          uid: grisou-47
-          port: eth4
-          kind: node
+          uid: grisou-47-eth4
         48:
-          uid: grisou-48
-          port: eth4
-          kind: node
+          uid: grisou-48-eth4
     2:
       snmp_pattern: "TenGigabitEthernet 1/%PORT%"
       kavlan_pattern: "TenGigabitEthernet1/%PORT%"
@@ -228,7 +129,5 @@ sgrisou1:
       rate: 10000000000
       ports:
         52:
-          uid: gw-nancy
+          uid: gw
           kind: router
-      
-

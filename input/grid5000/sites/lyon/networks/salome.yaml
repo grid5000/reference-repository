@@ -1,20 +1,15 @@
 ---
 salome:
+  role: production
   model: FESX448+2XG-PREM
   serial: FL37068284
   warranty: expired
   kind: switch
   site: lyon
+  ip: 172.17.63.250
+  alias:
+    - ssagittaire
   snmp_community: public
-  sensors:
-    network:
-      available: true
-      resolution: 1
-  vlans:
-    "vlan101":
-      administrative: yes
-      addresses:
-        - 172.17.63.250
   backplane_bps: 136000000000
   linecards:
     0:
@@ -25,7 +20,7 @@ salome:
       port: eth1
       ports:
         2:
-          uid: gw-lyon
+          uid: gw
           kind: router
           port: "0:23"
         4:

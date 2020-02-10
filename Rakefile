@@ -91,6 +91,7 @@ namespace :valid do
       ret = check_network_description(options)
     rescue StandardError => e
       puts e
+      puts e.backtrace
       ret = 3
     ensure
       exit(ret)
@@ -202,7 +203,7 @@ namespace :gen do
 
   namespace :puppet do
 
-    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k]
+    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :network_monitoring]
 
     all_puppet_tasks.each { |t|
       desc "Generate #{t} configuration -- parameters: [SITE={grenoble,...}] [OUTPUTDIR=(default: #{PUPPET_ODIR})] [CONFDIR=...] [VERBOSE=1]"

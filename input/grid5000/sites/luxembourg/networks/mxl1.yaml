@@ -1,22 +1,15 @@
 ---
 mxl1:
+  role: production
   model: Force10 MXL
   kind: switch
   site: luxembourg
   snmp_community: public
   warranty: expired
-  sensors:
-    network:
-      available: true
-      resolution: 1
   backplane_bps: 1407374880000
-  weathermap:
-    use_cacti: "yes"
-  vlans:
-    "vlan101":
-      administrative: yes
-      addresses:
-        - 172.17.191.251
+  alias:
+    - m1000-mxl1
+  ip: 172.17.191.251
   linecards:
     0:
       snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
@@ -26,66 +19,49 @@ mxl1:
       ports:
         1:
           uid: petitprince-1
-          port: eth0
         2:
           uid: petitprince-2
-          port: eth0
         3:
           uid: petitprince-3
-          port: eth0
         4:
           uid: petitprince-4
-          port: eth0
         5:
           uid: petitprince-5
-          port: eth0
         6:
           uid: petitprince-6
-          port: eth0
         7:
           uid: petitprince-7
-          port: eth0
         8:
           uid: petitprince-8
-          port: eth0
         9:
           uid: petitprince-9
-          port: eth0
         10:
           uid: petitprince-10
-          port: eth0
         11:
           uid: petitprince-11
-          port: eth0
         13:
           uid: petitprince-13
-          port: eth0
         14:
           uid: petitprince-14
-          port: eth0
         15:
           uid: petitprince-15
-          port: eth0
         16:
           uid: petitprince-16
-          port: eth0
         33:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/33
-          kind: switch
-          aggregation: lacp
+          uid: Port-channel 5
+          kind: channel
         34:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/34
-          kind: switch
-          aggregation: lacp
+          uid: Port-channel 5
+          kind: channel
         35:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/35
-          kind: switch
-          aggregation: lacp
+          uid: Port-channel 5
+          kind: channel
         36:
-          uid: ul-grid5000-sw02
-          port: Ethernet1/36
-          kind: switch
-          aggregation: lacp
+          uid: Port-channel 5
+          kind: channel
+  channels:
+    Port-channel 5:
+      uid: ul-grid5000-sw02
+      port: port-channel5
+      kind: switch
+      rate: 4000000000

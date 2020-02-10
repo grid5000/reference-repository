@@ -1,5 +1,9 @@
 {
+  "alias": [
+    "ssagittaire"
+  ],
   "backplane_bps": 136000000000,
+  "ip": "172.17.63.250",
   "kind": "switch",
   "linecards": [
     {
@@ -14,13 +18,15 @@
         {
           "kind": "router",
           "port": "0:23",
-          "uid": "gw-lyon"
+          "snmp_name": "ethernet 2",
+          "uid": "gw"
         },
         {
         },
         {
           "kind": "other",
           "port": "eth1",
+          "snmp_name": "ethernet 4",
           "uid": "sw-admin"
         },
         {
@@ -58,111 +64,133 @@
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 21",
           "uid": "sagittaire-1"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 22",
           "uid": "sagittaire-2"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 23",
           "uid": "sagittaire-3"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 24",
           "uid": "sagittaire-4"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 25",
           "uid": "sagittaire-5"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 26",
           "uid": "sagittaire-6"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 27",
           "uid": "sagittaire-7"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 28",
           "uid": "sagittaire-11"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 29",
           "uid": "sagittaire-12"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 30",
           "uid": "sagittaire-13"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 31",
           "uid": "sagittaire-14"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 32",
           "uid": "sagittaire-15"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 33",
           "uid": "sagittaire-16"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 34",
           "uid": "sagittaire-17"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 35",
           "uid": "sagittaire-18"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 36",
           "uid": "sagittaire-19"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 37",
           "uid": "sagittaire-20"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 38",
           "uid": "sagittaire-24"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 39",
           "uid": "sagittaire-27"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 40",
           "uid": "sagittaire-29"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 41",
           "uid": "sagittaire-30"
         },
         {
           "kind": "node",
           "port": "eth1",
+          "snmp_name": "ethernet 42",
           "uid": "sagittaire-31"
         }
       ],
@@ -171,26 +199,11 @@
     }
   ],
   "model": "FESX448+2XG-PREM",
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
-    }
-  },
+  "role": "production",
   "serial": "FL37068284",
   "site": "lyon",
   "snmp_community": "public",
   "type": "network_equipment",
   "uid": "salome",
-  "vlans": {
-    "vlan101": {
-      "addresses": [
-        "172.17.63.250"
-      ],
-      "administrative": true
-    }
-  },
-  "warranty": "expired",
-  "weathermap": {
-  }
+  "warranty": "expired"
 }
