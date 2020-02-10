@@ -1,7 +1,13 @@
 # add network_monitoring on supervision.site.grid5000.fr.yaml on hiera
 #
 
+NETWORK_EQUIPMENTS_BLACKLIST = [
+  'swx1nef',
+  'swy1nef',
+]
+
 def generate_puppet_network_monitoring(options)
+
   refapi = load_data_hierarchy
 
   sites = options[:sites]
@@ -14,9 +20,22 @@ def generate_puppet_network_monitoring(options)
 
     snmp_hosts = hiera_yaml['grid5000::munin::snmp::hosts'] || []
     net_hosts = hiera_yaml['grid5000::icinga::network::hosts'] || []
+    admin_hosts = hiera_yaml['grid5000::icinga::network::admin_hosts'] || []
 
     net_eqs.each do |eq_name, eq_v|
+      next if NETWORK_EQUIPMENTS_BLACKLIST.include?(eq_name)
+
       fqdn_eq_name = "#{eq_name}.#{s}.grid5000.fr"
+
+      if %w[admin hpc].include?(eq_v['role'])
+        unless admin_hosts.find { |i| i['name'] == fqdn_eq_name }
+          admin_hosts << {
+            'name' => fqdn_eq_name,
+            'address' => eq_v['ip']
+          }
+        end
+        next
+      end
 
       snmp_hosts << fqdn_eq_name unless
         snmp_hosts.find { |i| i == fqdn_eq_name }
@@ -71,6 +90,7 @@ def generate_puppet_network_monitoring(options)
     end
     hiera_yaml['grid5000::munin::snmp::hosts'] = snmp_hosts
     hiera_yaml['grid5000::icinga::network::hosts'] = net_hosts
+    hiera_yaml['grid5000::icinga::network::admin_hosts'] = admin_hosts
     IO.write(hiera_file, YAML.dump(hiera_yaml))
   end
 end
