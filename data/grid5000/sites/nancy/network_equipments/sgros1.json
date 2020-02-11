@@ -6,6 +6,18 @@
     {
     },
     {
+      "kavlan_pattern": "ethernet1/1/%LINECARD%:%PORT%",
+      "ports": [
+        {
+        },
+        {
+          "kind": "router",
+          "snmp_name": "ethernet1/1/1:1",
+          "uid": "gw"
+        }
+      ],
+      "rate": 40000000000,
+      "snmp_pattern": "ethernet1/1/%LINECARD%:%PORT%"
     },
     {
     },
@@ -1122,22 +1134,6 @@
       ],
       "rate": 25000000000,
       "snmp_pattern": "ethernet1/1/%LINECARD%:%PORT%"
-    },
-    {
-    },
-    {
-      "kavlan_pattern": "ethernet1/1/%LINECARD%",
-      "ports": [
-        {
-        },
-        {
-          "kind": "router",
-          "snmp_name": "ethernet1/1/65",
-          "uid": "gw"
-        }
-      ],
-      "rate": 10000000000,
-      "snmp_pattern": "ethernet1/1/%LINECARD%"
     }
   ],
   "model": "Dell Z9264F-ON",

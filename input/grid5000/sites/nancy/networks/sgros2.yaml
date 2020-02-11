@@ -9,6 +9,14 @@ sgros2:
   ip: 172.17.79.209
   backplane_bps: 6400000000000
   linecards:
+    1:
+      snmp_pattern: "ethernet1/1/%LINECARD%:%PORT%"
+      kavlan_pattern: "ethernet1/1/%LINECARD%:%PORT%"
+      rate: 40_000_000_000
+      ports:
+        1:
+          uid: gw
+          kind: router
     3:
        snmp_pattern: "ethernet1/1/%LINECARD%:%PORT%"
        kavlan_pattern: "ethernet1/1/%LINECARD%:%PORT%"
@@ -319,11 +327,3 @@ sgros2:
          2: gros-2-eth1
          3: gros-3-eth1
          4: gros-4-eth1
-    66:
-       snmp_pattern: "ethernet1/1/%LINECARD%"
-       kavlan_pattern: "ethernet1/1/%LINECARD%"
-       rate: 10000000000
-       ports:
-         1:
-           uid: gw
-           kind: router
