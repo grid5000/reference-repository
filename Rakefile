@@ -228,6 +228,8 @@ end
 namespace :version do
   desc 'Get bios, bmc and firmwares version -- parameters: MODEL={630,6420,...}'
   task :get do
+    require 'refrepo/firmwares'
+
     model = ENV['MODEL']
     raise 'need MODEL=' if model.nil?
 
@@ -240,6 +242,12 @@ namespace :version do
       version['storage_devices'] = get_firmware_version(node['storage_devices'])
       puts "#{node['uid']} : #{version}"
     end
+  end
+
+  desc 'Build an HTML table with firmware versions'
+  task :table do
+    require 'refrepo/firmwares'
+    gen_firmwares_tables
   end
 end
 
