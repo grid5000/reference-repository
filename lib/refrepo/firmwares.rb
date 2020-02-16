@@ -37,13 +37,14 @@ end
 
 def gen_firmwares_tables
   data = load_data_hierarchy
+
   # nodes table
-  d = []
+  nodes = []
   data['sites'].keys.each do |site|
     data['sites'][site]['clusters'].keys.each do |cluster|
-       nodes = data['sites'][site]['clusters'][cluster]['nodes'].values.map do |e|
+       nodes += data['sites'][site]['clusters'][cluster]['nodes'].values.map do |e|
          {
-           'uid' => e['uid'],
+           'address' => e['uid'],
            'chassis_manufacturer' => e['chassis']['manufacturer'],
            'chassis_name' => e['chassis']['name'],
            'bmc_version' => e['bmc_version'],
@@ -51,17 +52,12 @@ def gen_firmwares_tables
            'bios_version' => e['bios']['version']
          }
        end
-       nodesets = nodes.group_by { |e| e.except('uid') }.map do |e|
-         e[1] = e[1].map { |f| f['uid'] }
-         e[1] = `echo #{e[1].join(',')} | nodeset -f`.chomp
-         e
-       end
-       nodesets.each do |e|
-         h = { 'site' => site, 'cluster' => cluster, 'nodes' => e[1] }
-         h.merge!(e[0])
-         d << h
-       end
     end
+  end
+  nodesets = nodes.group_by { |e| e.except('address') }.map do |e|
+    e[1] = e[1].map { |f| f['address'] }
+    nodes = `echo #{e[1].join(',')} | nodeset -f`.chomp
+    e[0].merge( { 'nodes' => nodes, 'nodes_count' => e[1].length } )
   end
   
   # NICs table
@@ -144,9 +140,8 @@ def gen_firmwares_tables
    <table id="table0" class="table table-bordered table-hover table-condensed text-center table-reducedrowheight">
      <thead>
        <tr>
-         <th class="text-center">Site</th>
-         <th class="text-center">Cluster</th>
          <th class="text-center">Nodes</th>
+         <th class="text-center">Nodes count</th>
          <th class="text-center">Manufacturer</th>
          <th class="text-center">Model</th>
          <th class="text-center">BMC</th>
@@ -163,17 +158,15 @@ def gen_firmwares_tables
        <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
        <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
        <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
-       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
      </tr>
      </tfoot>
      <tbody>
      EOF
-     d.each do |r|
+     nodesets.each do |r|
        puts <<-EOF
 <tr>
-<td class="text-nowrap">#{r['site']}</td>
-<td class="text-nowrap">#{r['cluster']}</td>
 <td class="text-nowrap">#{r['nodes']}</td>
+<td class="text-nowrap">#{r['nodes_count']}</td>
 <td class="text-nowrap">#{r['chassis_manufacturer']}</td>
 <td class="text-nowrap">#{r['chassis_name']}</td>
 <td class="text-nowrap">#{r['bmc_version']}</td>
