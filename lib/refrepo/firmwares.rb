@@ -89,6 +89,31 @@ def gen_firmwares_tables
     e[0].merge( { 'nodes' => nodes, 'nodes_count' => e[1].length } )
   end
 
+  # Storage table
+  stos = []
+  data['sites'].keys.each do |site|
+    data['sites'][site]['clusters'].keys.each do |cluster|
+       data['sites'][site]['clusters'][cluster]['nodes'].keys.each do |node|
+         stos += data['sites'][site]['clusters'][cluster]['nodes'][node]['storage_devices'].
+           map do |st|
+             {
+               'address' => "#{node}-#{st['device']}",
+               'vendor' => st['vendor'],
+               'model' => st['model'],
+               'driver' => st['driver'],
+               'firmware_version' => st['firmware_version']
+             }
+           end
+       end
+    end
+  end
+  stosets = stos.group_by { |e| e.except('address') }.map do |e|
+    e[1] = e[1].map { |f| f['address'] }
+    nodes = `echo #{e[1].join(',')} | nodeset -f`.chomp
+    e[0].merge( { 'nodes' => nodes, 'nodes_count' => e[1].length } )
+  end
+
+
   puts <<-EOF
 <!DOCTYPE html>
 <html>
@@ -96,7 +121,7 @@ def gen_firmwares_tables
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bugzilla summary</title>
+<title>Firmwares</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
@@ -224,6 +249,65 @@ def gen_firmwares_tables
    </div>
   <script type="text/javascript" class="init">
     $('#table1').DataTable(
+         { "bPaginate": false, }
+    ).columns().every( function () {
+      var that = this;
+
+      $( 'input', this.footer() ).on( 'keyup change', function () {
+        if ( that.search() !== this.value ) {
+          that
+            .search( this.value )
+            .draw();
+        }
+      } );
+    } );
+</script>
+
+<h3>Storage</h3>
+  <div class="table-responsive"><div class='container-fluid'>
+   <table id="table2" class="table table-bordered table-hover table-condensed text-center table-reducedrowheight">
+     <thead>
+       <tr>
+         <th class="text-center">Vendor</th>
+         <th class="text-center">Model</th>
+         <th class="text-center">Driver</th>
+         <th class="text-center">Firmware</th>
+         <th class="text-center">Nodes</th>
+         <th class="text-center">Nodes count</th>
+       </tr>
+     </thead>
+     <tfoot style="display: table-header-group;">
+     <tr>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+     </tr>
+     </tfoot>
+     <tbody>
+     EOF
+     stosets.each do |r|
+       puts <<-EOF
+<tr>
+<td class="text-nowrap">#{r['vendor']}</td>
+<td class="text-nowrap">#{r['model']}</td>
+<td class="text-nowrap">#{r['driver']}</td>
+<td class="text-nowrap">#{r['firmware_version']}</td>
+<td>#{r['nodes']}</td>
+<td class="text-nowrap">#{r['nodes_count']}</td>
+      </tr>
+      EOF
+     end
+     puts <<-EOF
+             </tbody>
+   </table>
+   </div>
+   </div>
+   </div>
+  <script type="text/javascript" class="init">
+    $('#table2').DataTable(
          { "bPaginate": false, }
     ).columns().every( function () {
       var that = this;
