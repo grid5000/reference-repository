@@ -52,7 +52,7 @@ def gen_firmwares_tables
          }
        end
        nodesets = nodes.group_by { |e| e.except('uid') }.map do |e|
-         e[1] = e[1].map { |f| f['uid'] } ; e
+         e[1] = e[1].map { |f| f['uid'] }
          e[1] = `echo #{e[1].join(',')} | nodeset -f`.chomp
          e
        end
@@ -62,6 +62,31 @@ def gen_firmwares_tables
          d << h
        end
     end
+  end
+  
+  # NICs table
+  nics = []
+  data['sites'].keys.each do |site|
+    data['sites'][site]['clusters'].keys.each do |cluster|
+       data['sites'][site]['clusters'][cluster]['nodes'].keys.each do |node|
+         nics += data['sites'][site]['clusters'][cluster]['nodes'][node]['network_adapters'].
+           select { |ni| ni['mountable'] }.
+           map do |ni|
+             {
+               'address' => ni['network_address'],
+               'interface' => ni['interface'],
+               'vendor' => ni['vendor'],
+               'model' => ni['model'],
+               'firmware_version' => ni['firmware_version']
+             }
+           end
+       end
+    end
+  end
+  nicsets = nics.group_by { |e| e.except('address') }.map do |e|
+    e[1] = e[1].map { |f| f['address'] }
+    nodes = `echo #{e[1].join(',')} | nodeset -f`.chomp
+    e[0].merge( { 'nodes' => nodes, 'nodes_count' => e[1].length } )
   end
 
   puts <<-EOF
@@ -153,6 +178,67 @@ def gen_firmwares_tables
       } );
     } );
 </script>
+
+<h3>NICs</h3>
+  <div class="table-responsive"><div class='container-fluid'>
+   <table id="table1" class="table table-bordered table-hover table-condensed text-center table-reducedrowheight">
+     <thead>
+       <tr>
+         <th class="text-center">Interface</th>
+         <th class="text-center">Vendor</th>
+         <th class="text-center">Model</th>
+         <th class="text-center">Firmware</th>
+         <th class="text-center">Interfaces</th>
+         <th class="text-center">Interfaces count</th>
+       </tr>
+     </thead>
+     <tfoot style="display: table-header-group;">
+     <tr>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+       <td><input type="text" placeholder="" size="2" style="width:100%;" /></td>
+     </tr>
+     </tfoot>
+     <tbody>
+     EOF
+     nicsets.each do |r|
+       puts <<-EOF
+<tr>
+<td class="text-nowrap">#{r['interface']}</td>
+<td class="text-nowrap">#{r['vendor']}</td>
+<td class="text-nowrap">#{r['model']}</td>
+<td class="text-nowrap">#{r['firmware_version']}</td>
+<td>#{r['nodes']}</td>
+<td class="text-nowrap">#{r['nodes_count']}</td>
+      </tr>
+      EOF
+     end
+     puts <<-EOF
+             </tbody>
+   </table>
+   </div>
+   </div>
+   </div>
+  <script type="text/javascript" class="init">
+    $('#table1').DataTable(
+         { "bPaginate": false, }
+    ).columns().every( function () {
+      var that = this;
+
+      $( 'input', this.footer() ).on( 'keyup change', function () {
+        if ( that.search() !== this.value ) {
+          that
+            .search( this.value )
+            .draw();
+        }
+      } );
+    } );
+</script>
+
+
 </body>
 </html>
   EOF
