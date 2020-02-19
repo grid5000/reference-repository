@@ -329,7 +329,11 @@ def generate_dot(netnodes, links, site)
   header << "root=\"#{router}\";"
   header << "layout=twopi;"
   header << "overlap=scale;"
-  header << "splines=true;"
+  if %w{sophia}.include?(site)
+    header << "splines=false;"
+  else
+    header << "splines=true;"
+  end
   header << "ranksep=2.0;"
   # output graph nodes, equipment first
   mynetnodes.select { |n| n['kind'] == 'router' or n['kind'] == 'switch' }.map { |e| e['uid'] }.sort.each do |eq|
