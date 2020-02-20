@@ -1,5 +1,13 @@
 {
   "backplane_bps": 6400000000000,
+  "channels": {
+    "port-channel1": {
+      "kind": "router",
+      "port": "port-channel2",
+      "rate": 80000000000,
+      "uid": "gw"
+    }
+  },
   "ip": "172.17.79.208",
   "kind": "switch",
   "linecards": [
@@ -11,9 +19,14 @@
         {
         },
         {
-          "kind": "router",
+          "kind": "channel",
           "snmp_name": "ethernet1/1/1:1",
-          "uid": "gw"
+          "uid": "port-channel1"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/1:2",
+          "uid": "port-channel1"
         }
       ],
       "rate": 40000000000,

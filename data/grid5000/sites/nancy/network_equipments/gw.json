@@ -4,6 +4,20 @@
     "sgravillon2"
   ],
   "backplane_bps": 1280000000000,
+  "channels": {
+    "port-channel2": {
+      "kind": "switch",
+      "port": "port-channel1",
+      "rate": 800000000000,
+      "uid": "sgros1"
+    },
+    "port-channel3": {
+      "kind": "switch",
+      "port": "port-channel1",
+      "rate": 800000000000,
+      "uid": "sgros2"
+    }
+  },
   "ip": "172.16.79.254",
   "kind": "router",
   "linecards": [
@@ -1782,12 +1796,16 @@
         {
         },
         {
+          "kind": "channel",
+          "rate": 40000000000,
+          "snmp_name": "Ethernet6/51",
+          "uid": "port-channel3"
         },
         {
-          "kind": "switch",
+          "kind": "channel",
           "rate": 40000000000,
           "snmp_name": "Ethernet6/52",
-          "uid": "sgros2"
+          "uid": "port-channel3"
         }
       ],
       "rate": 10000000000,
@@ -2002,12 +2020,16 @@
         {
         },
         {
+          "kind": "channel",
+          "rate": 40000000000,
+          "snmp_name": "Ethernet7/51",
+          "uid": "port-channel2"
         },
         {
-          "kind": "switch",
+          "kind": "channel",
           "rate": 40000000000,
           "snmp_name": "Ethernet7/52",
-          "uid": "sgros1"
+          "uid": "port-channel2"
         }
       ],
       "rate": 10000000000,

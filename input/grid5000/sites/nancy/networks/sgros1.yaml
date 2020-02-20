@@ -15,8 +15,11 @@ sgros1:
       rate: 40_000_000_000
       ports:
         1:
-          uid: gw
-          kind: router
+          uid: port-channel1
+          kind: channel
+        2:
+          uid: port-channel1
+          kind: channel
     3:
       snmp_pattern: "ethernet1/1/%LINECARD%:%PORT%"
       kavlan_pattern: "ethernet1/1/%LINECARD%:%PORT%"
@@ -327,3 +330,9 @@ sgros1:
          2: gros-2
          3: gros-3
          4: gros-4
+  channels:
+    port-channel1:
+      port: port-channel2
+      uid: gw
+      kind: router
+      rate: 80000000000
