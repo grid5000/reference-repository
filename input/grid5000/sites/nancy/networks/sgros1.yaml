@@ -10,8 +10,8 @@ sgros1:
   backplane_bps: 6400000000000
   linecards:
     1:
-      snmp_pattern: "ethernet1/1/%LINECARD%:%PORT%"
-      kavlan_pattern: "ethernet1/1/%LINECARD%:%PORT%"
+      snmp_pattern: "ethernet1/1/%PORT%:1"
+      kavlan_pattern: "ethernet1/1/%PORT%:1"
       rate: 40_000_000_000
       ports:
         1:
