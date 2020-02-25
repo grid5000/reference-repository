@@ -24,7 +24,10 @@ def gen_json(site, output_path)
     cluster_hash['nodes'].to_h.each do |node_uid, node_hash|
       node_hash.delete_if { |key| key != 'software' }
     end
+
+    cluster_hash['nodes'] = cluster_hash['nodes'].sort_by{|node_uid, _node_hash| node_uid[/(\d+)/].to_i }.to_h
   end
+  site_data_hierarchy['sites'][site]['clusters'] = site_data_hierarchy['sites'][site]['clusters'].sort_by{ |cluster_uid, cluster_hash| cluster_uid }.to_h
 
   output_file = File.new(output_path, 'w')
   output_file.write(JSON.pretty_generate(site_data_hierarchy))
