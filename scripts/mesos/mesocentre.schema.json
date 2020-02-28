@@ -1,0 +1,222 @@
+{
+  "title": "mesocentre",
+  "type": "object",
+  "required": ["name","contactName","location"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nom usuel"
+    },
+    "institutesName": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tutelles du mésocentre"
+    },
+    "url": {
+      "type": "string",
+      "description": "Adresse Web de l'infrastructure"
+    },
+    "financersName": {
+      "type" : "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Nom des organismes ou projet financeurs"
+    },
+    "location": {
+      "type": "string",
+      "enum": ["Auvergne-Rhône-Alpes",
+        "Bourgogne-Franche-Comté",
+        "Bretagne",
+        "Centre-Val de Loire",
+        "Corse",
+        "Grand Est",
+        "Guadeloupe",
+        "Guyane",
+        "Hauts-de-France",
+        "Île-de-France",
+        "Martinique",
+        "Mayotte",
+        "Normandie",
+        "Nouvelle-Aquitaine",
+        "Occitanie",
+        "Pays de la Loire",
+        "Provence-Alpes-Côte d'Azur",
+        "La Réunion",
+        "Etranger"],
+      "description": "Localisation géographique (Région)"
+    },
+    "GPSCoordinates": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Coordonnées GPS - latitude, longitude - du centre (pour la création de la carte des mésocentres)"
+    },
+    "contactName": {
+      "type": "string",
+      "description": "Nom du contact principal"
+    },
+    "contactAddress": {
+      "type": "string",
+      "description": "Adresse email du contact"
+    },
+    "totalCoreNumber": {
+      "type": "number",
+      "description": "Nombre de coeurs total"
+    },
+    "totalStorage": {
+      "type": "number",
+      "description": "Capacité disque totale en To"
+    },
+    "distributedInfra": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["EGI","grid5000"]
+      },
+      "description": "Nom des infrastructures distribuées auxquelles appartient le mésocentre"
+    },
+    "serviceName": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },        
+      "description": "Services proposés par le mésocentre"
+    },
+    "etptNumber": {
+      "type": "number",
+      "description": "Nombre de ETPT travaillant pour l'administration et le support"
+    },
+    "accessPolicy": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },      
+      "description": "Politique d'accès : qui a accès au mésocentre, de quelle manière ?"
+    },
+    "fullDescription": {
+      "type": "string",
+      "description": "Longue description"
+    },
+    "clusterList" : {
+      "type": "array",
+      "items": {"$ref": "#/definitions/clusterItem"}
+    }, 
+    "storageList" : {
+      "type": "array",
+      "items": {"$ref": "#/definitions/storageTypeItem"}
+    }
+  },
+  "definitions":{
+    "clusterItem": {
+      "type": "object",
+      "properties": {
+        "clusterName": {
+          "type": "string",
+          "description": "Nom du cluster"
+        },
+        "clusterCoreNumber":{
+          "type": "number",
+          "description": "Nombre de coeurs dans ce cluster"
+        },
+        "nodeType" : {
+          "type": "array",
+          "items": {"$ref": "#/definitions/nodeTypeItem"}
+        },
+        "storageType": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/storageTypeItem" }
+        },
+        "networkType": {
+          "type": "string",
+          "enum": ["infiniband","ethernet","omni-path"],
+          "description": "Type d'interconnexion"
+        },
+        "networkBandwidth": {
+          "type": "number",
+          "description": "Bande passante réseau en Gb/s"
+        },
+        "networkTopology": {
+          "type": "string",
+          "enum": ["fat tree","tore","dragonfly","hypercube"],
+          "description": "Topologie réseau"
+        },
+        "jobschedulerName": {
+          "type": "string",
+            "enum": ["slurm","oar","grid engine","lsf","pbs","openstack"],
+          "description": "Nom du gestionnaire de jobs"
+        },
+        "vendorName": {
+          "type": "string",
+            "enum": ["IBM", "NEC", "Cray", "Atos", "HPE", "SGI", "Dell", "Lenovo", "Sun Microsystems", "NVIDIA"],
+          "description": "Nom du vendeur"
+        }
+      }
+    },
+    "nodeTypeItem": {
+      "type": "object",
+      "properties": {
+        "GPUType": {
+          "type": "string",
+          "description": "Type de GPU (si le noeud en possède)"
+        },
+        "GPUNumber": {
+          "type": "number",
+          "description": "Nombre de GPU par noeud de ce type"
+        },
+        "CPUType": {
+          "type": "string",
+          "description": "Type de CPU"
+        },
+        "coreNumber": {
+          "type": "number",
+          "description": "Nombre de coeurs par noeud de ce type"
+        },
+        "cpuNumber": {
+          "type": "number",
+          "description": "Nombre de CPUs (sockets) par noeud de ce type"
+        },
+        "memory": {
+          "type": "number",
+          "description": "RAM en Go par noeud de ce type"
+        },
+        "localDisk": {
+          "type": "number",
+          "description": "Capacité en To"
+        },
+        "nodeNumber": {
+          "type": "number",
+          "description" : "Nombre de noeuds de ce type"
+        }
+      }
+    },
+    "storageTypeItem": {
+      "type": "object",
+      "properties": {
+        "typeName": {
+          "type": "string",
+          "enum": ["scratch","home","data"],
+          "description": "Type de stockage"
+        },
+	"name": {
+          "type": "string",
+          "description": "Nom du stockage"
+        },
+        "filesystemType":{
+          "type": "string",
+            "enum": ["BeeGFS","Spectrum Scale","LUSTRE","ext4","iRODS","NFS","CEPH"],
+          "description": "Nom du système de fichier"
+        },
+        "size": {
+          "type": "number",
+          "description": "Capacité de ce type de stockage en To"
+        }
+      }
+    }
+  }
+}
