@@ -1,0 +1,53 @@
+---
+model: R181-T92-00
+created_at: 2020-01-06
+kavlan: true
+queues:
+  - admin
+  - testing
+nodes:
+  pyxis-[1-4]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    performance:
+      core_flops: 0
+      node_flops: 0
+    processor:
+       microarchitecture: Vulcan
+       clock_speed: 2200000000
+    software:
+      standard-environment: debian10-arm64-std
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mounted: false
+        mountable: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+      sdb:
+        interface: SAS
+        driver: megaraid_sas
+        storage: HDD
+    sensors:
+      power:
+        available: true
+        per_outlets: true
+        via:
+          api:
+            metric: power
+          www:
+            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php
