@@ -1,0 +1,586 @@
+metrics:
+
+- name: wattmetre_power_watt
+  description: Power consumption reported by wattmetre, in watt
+  period: 1000
+  optional_period: 20
+  source:
+    protocol: wattmetre
+
+- name: network_ifacein_bytes_total
+  description: Input byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: network_ifaceout_bytes_total
+  description: Output byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: bmc_temp_ambient_celsius
+  description: Front node ambiant temperature reported by BMC, in celsius
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 97 #Temp_Ambient_FP
+
+- name: bmc_power_node_watt
+  description: Power consumption of node reported by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 91 #Pwr_Node
+
+- name: bmc_power_gpgpu0_watt
+  description: Power consumption of GPU 0 reported by BMC, in watt by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 83 #Power_GPGPU0
+
+- name: bmc_power_gpgpu1_watt
+  description: Power consumption of GPU 1 reported by BMC, in watt by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 84 #Power_GPGPU1
+
+- name: bmc_power_gpgpu2_watt
+  description: Power consumption of GPU 2 reported by BMC, in watt by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 85 #Power_GPGPU2
+
+- name: bmc_power_gpgpu3_watt
+  description: Power consumption of GPU 3 reported by BMC, in watt by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 86 #Power_GPGPU3
+
+- name: bmc_power_gpgpu4_watt
+  description: Power consumption of GPU 4 reported by BMC, in watt by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 87 #Power_GPGPU4
+
+- name: bmc_power_gpgpu5_watt
+  description: Power consumption of GPU 5 reported by BMC, in watt by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 88 #Power_GPGPU5
+
+- name: bmc_power_gpgpu6_watt
+  description: Power consumption of GPU 6 reported by BMC, in watt by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 89 #Power_GPGPU6
+
+- name: bmc_power_gpgpu7_watt
+  description: Power consumption of GPU 7 reported by BMC, in watt by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 90 #Power_GPGPU7
+
+- name: bmc_airflow_cfm
+  description: Airflow reported by BMC, in CFM
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 2 #Airflow
+
+- name: bmc_fanspeed_sysfan01_rpm
+  description: Speed of SYS fan 0_1 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 18 #Fan_SYS0_1
+
+- name: bmc_fanspeed_sysfan02_rpm
+  description: Speed of SYS fan 0_2 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 19 #Fan_SYS0_2
+
+- name: bmc_fanspeed_sysfan11_rpm
+  description: Speed of SYS fan 1_1 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 20 #Fan_SYS1_1
+
+- name: bmc_fanspeed_sysfan12_rpm
+  description: Speed of SYS fan 1_2 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 21 #Fan_SYS1_2
+
+- name: bmc_fanspeed_sysfan21_rpm
+  description: Speed of SYS fan 2_1 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 22 #Fan_SYS2_1
+
+- name: bmc_fanspeed_sysfan22_rpm
+  description: Speed of SYS fan 2_2 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 23 #Fan_SYS2_2
+
+- name: bmc_fanspeed_sysfan31_rpm
+  description: Speed of SYS fan 3_1 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 24 #Fan_SYS3_1
+
+- name: bmc_fanspeed_sysfan32_rpm
+  description: Speed of SYS fan 3_2 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 25 #Fan_SYS3_2
+
+- name: bmc_power_hsc0_watt
+  description: Power consumption of HSC0 reported by BMC, in watt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 48 #HSC0 Input
+
+- name: bmc_power_hsc1_watt
+  description: Power consumption of HSC1 reported by BMC, in watt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 51 #HSC1 Input
+
+- name: bmc_power_hsc2_watt
+  description: Power consumption of HSC2 reported by BMC, in watt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 53 #HSC2 Input
+
+- name: bmc_power_psu1_watt
+  description: Power consumption of PSU1 reported by BMC, in watt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 74 #PSU1 Input
+
+- name: bmc_power_psu2_watt
+  description: Power consumption of PSU2 reported by BMC, in watt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 76 #PSU2 Input
+
+- name: bmc_power_psu3_watt
+  description: Power consumption of PSU3 reported by BMC, in watt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 78 #PSU3 Input
+
+- name: bmc_power_psu4_watt
+  description: Power consumption of PSU4 reported by BMC, in watt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 80 #PSU4 Input
+
+- name: bmc_temp_ambient_bp0_celsius
+  description: Temperature of BP0 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 95 #Temp_Ambient_BP0
+
+- name: bmc_temp_ambient_bp1_celsius
+  description: Temperature of BP1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 96 #Temp_Ambient_BP1
+
+- name: bmc_temp_ambient_pci_celsius
+  description: Temperature of PCI reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 98 #Temp_Ambient_PCI
+
+- name: bmc_temp_cpu1_celsius
+  description: Temperature of CPU 1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 99 #Temp_CPU0
+
+- name: bmc_temp_cpu2_celsius
+  description: Temperature of CPU 2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 100 #Temp_CPU1
+
+- name: bmc_temp_dimm_ab_celsius
+  description: Temperature of DIMM_AB reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 101 #Temp_DIMM_AB
+
+- name: bmc_temp_dimm_cd_celsius
+  description: Temperature of DIMM_CD reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 102 #Temp_DIMM_CD
+
+- name: bmc_temp_dimm_ef_celsius
+  description: Temperature of DIMM_EF reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 103 #Temp_DIMM_EF
+
+- name: bmc_temp_dimm_gh_celsius
+  description: Temperature of DIMM_GH reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 104 #Temp_DIMM_GH
+
+- name: bmc_temp_expb_celsius
+  description: Temperature of EXPB reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 105 #Temp_EXPB
+
+- name: bmc_temp_gpu0_celsius
+  description: Temperature of GPU0 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 106 #Temp_GPGPU0
+
+- name: bmc_temp_gpu1_celsius
+  description: Temperature of GPU1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 107 #Temp_GPGPU1
+
+- name: bmc_temp_gpu2_celsius
+  description: Temperature of GPU2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 108 #Temp_GPGPU2
+
+- name: bmc_temp_gpu3_celsius
+  description: Temperature of GPU3 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 109 #Temp_GPGPU3
+
+- name: bmc_temp_gpu4_celsius
+  description: Temperature of GPU4 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 110 #Temp_GPGPU4
+
+- name: bmc_temp_gpu5_celsius
+  description: Temperature of GPU5 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 111 #Temp_GPGPU5
+
+- name: bmc_temp_gpu6_celsius
+  description: Temperature of GPU6 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 112 #Temp_GPGPU6
+
+- name: bmc_temp_gpu7_celsius
+  description: Temperature of GPU7 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 113 #Temp_GPGPU7
+
+- name: bmc_temp_gpu_b0_celsius
+  description: Temperature of GPU B0 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 114 #Temp_GPUB0
+
+- name: bmc_temp_gpu_b1_celsius
+  description: Temperature of GPU B1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 115 #Temp_GPUB1
+
+- name: bmc_temp_inlet_mb_celsius
+  description: Temperature of Inlet MB reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 116 #Temp_Inlet_MB
+
+- name: bmc_temp_ocp_mezz_celsius
+  description: Temperature of OCP Mezz reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 117 #Temp_OCP_Mezz
+
+- name: bmc_temp_outlet_celsius
+  description: Temperature of Outlet reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 118 #Temp_Outlet
+
+- name: bmc_temp_pch_celsius
+  description: Temperature of PCH reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 119 #Temp_PCH
+
+- name: bmc_temp_pdb_celsius
+  description: Temperature of PDB reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 120 #Temp_PDB
+
+- name: bmc_temp_raidcard_celsius
+  description: Temperature of Raid Card reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 121 #Temp_RaidCard
+
+- name: bmc_temp_vr_cpu1_celsius
+  description: Temperature of VR CPU 1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 122 #Temp_VR_CPU0
+
+- name: bmc_temp_vr_cpu2_celsius
+  description: Temperature of VR CPU 2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 123 #Temp_VR_CPU1
+
+- name: bmc_temp_vr_dimm_ab_celsius
+  description: Temperature of VR DIMM_AB reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 124 #Temp_VR_DIMM_AB
+
+- name: bmc_temp_vr_dimm_cd_celsius
+  description: Temperature of VR DIMM_CD reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 125 #Temp_VR_DIMM_CD
+
+- name: bmc_temp_vr_dimm_ef_celsius
+  description: Temperature of VR DIMM_EF reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 126 #Temp_VR_DIMM_EF
+
+- name: bmc_temp_vr_dimm_gh_celsius
+  description: Temperature of VR DIMM_GH reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 127 #Temp_VR_DIMM_GH
+
+- name: bmc_voltage_p12v_volt
+  description: Voltage of P12V reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 128 #Volt_P12V
+
+- name: bmc_voltage_p1v05_volt
+  description: Voltage of P1V05 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 129 #Volt_P1V05
+
+- name: bmc_voltage_p1v8_aux_volt
+  description: Voltage of P1V8_AUX reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 130 #Volt_P1V8_AUX
+
+- name: bmc_voltage_p3v3_volt
+  description: Voltage of P3V3 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 131 #Volt_P3V3
+
+- name: bmc_voltage_p3v3_aux_volt
+  description: Voltage of P3V3_AUX reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 132 #Volt_P3V3_AUX
+
+- name: bmc_voltage_p3v_bat_volt
+  description: Voltage of P3V_BAT reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 133 #Volt_P3V_BAT
+
+- name: bmc_voltage_p5v_volt
+  description: Voltage of P5V reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 134 #Volt_P5V
+
+- name: bmc_voltage_p5v_aux_volt
+  description: Voltage of P5V_AUX reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 135 #Volt_P5V_AUX
+
+- name: bmc_voltage_vr_cpu1_volt
+  description: Voltage of VR CPU1 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 136 #Volt_VR_CPU0
+
+- name: bmc_voltage_vr_cpu1_volt
+  description: Voltage of VR CPU2 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 137 #Volt_VR_CPU1
+
+- name: bmc_voltage_vr_dimm_ab_volt
+  description: Voltage of VR DIMM_AB reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 138 #Volt_VR_DIMM_AB
+
+- name: bmc_voltage_vr_dimm_cd_volt
+  description: Voltage of VR DIMM_CD reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 139 #Volt_VR_DIMM_CD
+
+- name: bmc_voltage_vr_dimm_ef_volt
+  description: Voltage of VR DIMM_EF reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 140 #Volt_VR_DIMM_EF
+
+- name: bmc_voltage_vr_dimm_gh_volt
+  description: Voltage of VR DIMM_GH reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 141 #Volt_VR_DIMM_GH
+

@@ -1,0 +1,124 @@
+---
+metrics:
+
+- name: wattmetre_power_watt
+  description: Power consumption reported by wattmetre, in watt
+  period: 1000
+  optional_period: 20
+  source:
+    protocol: wattmetre
+
+- name: network_ifacein_bytes_total
+  description: Input byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: network_ifaceout_bytes_total
+  description: Output byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: bmc_temp_ambiant_celsius
+  description: Front node ambiant temperature temperature reported by BMC, in celsius
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 23 #Inlet Temp
+
+- name: bmc_temp_cpu1_celsius
+  description: Temperature of CPU 1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 155 #Temp
+
+- name: bmc_temp_cpu2_celsius
+  description: Temperature of CPU 2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 156 #Temp
+
+- name: bmc_fanspeed_psufan2a_rpm
+  description: Speed of PSU fan 2A reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 13 #Fan2A
+
+- name: bmc_fanspeed_psufan2b_rpm
+  description: Speed of PSU fan 2B reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 14 #Fan2B
+
+- name: bmc_fanspeed_psufan3a_rpm
+  description: Speed of PSU fan 3A reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 15 #Fan3A
+
+- name: bmc_fanspeed_psufan3b_rpm
+  description: Speed of PSU fan 3B reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 16 #Fan3B
+
+- name: bmc_fanspeed_psufan4a_rpm
+  description: Speed of PSU fan 4A reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 17 #Fan4A
+
+- name: bmc_fanspeed_psufan4b_rpm
+  description: Speed of PSU fan 4B reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 18 #Fan4B
+
+- name: bmc_fanspeed_psufan5a_rpm
+  description: Speed of PSU fan 5A reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 19 #Fan5A
+
+- name: bmc_fanspeed_psufan5b_rpm
+  description: Speed of PSU fan 5B reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 20 #Fan5B
+
+- name: bmc_fanspeed_psufan6a_rpm
+  description: Speed of PSU fan 6A reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 21 #Fan6A
+
+- name: bmc_fanspeed_psufan6b_rpm
+  description: Speed of PSU fan 6B reported by BMC, in RPM
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 22 #Fan6B

@@ -1,6 +1,162 @@
 {
   "created_at": "Thu, 01 Dec 2016 00:00:00 GMT",
   "kavlan": true,
+  "metrics": [
+    {
+      "description": "Power consumption reported by wattmetre, in watt",
+      "name": "wattmetre_power_watt",
+      "optional_period": 20,
+      "period": 1000,
+      "source": {
+        "protocol": "wattmetre"
+      }
+    },
+    {
+      "description": "Input byte counter for the network device port connected to the node",
+      "name": "network_ifacein_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port connected to the node",
+      "name": "network_ifaceout_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Front node ambiant temperature temperature reported by BMC, in celsius",
+      "name": "bmc_temp_ambiant_celsius",
+      "period": 5000,
+      "source": {
+        "id": 23,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of CPU 1 reported by BMC, in celsius",
+      "name": "bmc_temp_cpu1_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 155,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of CPU 2 reported by BMC, in celsius",
+      "name": "bmc_temp_cpu2_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 156,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 2A reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan2a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 13,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 2B reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan2b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 14,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 3A reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan3a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 15,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 3B reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan3b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 16,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 4A reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan4a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 17,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 4B reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan4b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 18,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 5A reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan5a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 19,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 5B reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan5b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 20,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 6A reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan6a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 21,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU fan 6B reported by BMC, in RPM",
+      "name": "bmc_fanspeed_psufan6b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 22,
+        "protocol": "ipmisensor"
+      }
+    }
+  ],
   "model": "Dell PowerEdge R430",
   "priority": "201700",
   "queues": [

@@ -1,0 +1,139 @@
+metrics:
+
+- name: wattmetre_power_watt
+  description: Power consumption reported by wattmetre, in watt
+  period: 1000
+  optional_period: 20
+  source:
+    protocol: wattmetre
+
+- name: network_ifacein_bytes_total
+  description: Input byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: network_ifaceout_bytes_total
+  description: Output byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: bmc_temp_ambiant_celsius
+  description: Front node ambiant temperature reported by BMC, in celsius
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 20 #Inlet Temp
+
+- name: bmc_power_node_watt
+  description: Power consumption of node reported by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 95 #Pwr Consumption
+
+- name: bmc_current_psu1_amp
+  description: Current of PSU 1 reported by BMC, in ampere
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 88 #Current 1
+
+- name: bmc_current_psu2_amp
+  description: Current of PSU 2 reported by BMC, in ampere
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 89 #Current 2
+
+- name: bmc_voltage_psu1_volt
+  description: Voltage of PSU 1 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 90 #Voltage 1
+
+- name: bmc_voltage_psu2_volt
+  description: Voltage of PSU 2 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 91 #Voltage 2
+
+- name: bmc_temp_exhaust_celsius
+  description: Exhausted air temperature reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 21 #Exhaust Temp
+
+- name: bmc_temp_cpu1_celsius
+  description: Temperature of CPU 1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 22 #Temp
+
+- name: bmc_temp_cpu2_celsius
+  description: Temperature of CPU 2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 23 #Temp
+
+- name: bmc_fanspeed_psufan1_rpm
+  description: Speed of PSU fan 1 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 14 #Fan1
+
+- name: bmc_fanspeed_psufan2_rpm
+  description: Speed of PSU fan 2 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 15 #Fan2
+
+- name: bmc_fanspeed_psufan3_rpm
+  description: Speed of PSU fan 3 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 16 #Fan3
+
+- name: bmc_fanspeed_psufan4_rpm
+  description: Speed of PSU fan 4 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 17 #Fan4
+
+- name: bmc_fanspeed_psufan5_rpm
+  description: Speed of PSU fan 5 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 18 #Fan5
+
+- name: bmc_fanspeed_psufan6_rpm
+  description: Speed of PSU fan 6 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 19 #Fan6
+
