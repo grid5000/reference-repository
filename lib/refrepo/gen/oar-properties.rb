@@ -1389,6 +1389,8 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           ############################################
           if core_numbering == 'contiguous'
             row[:cpuset] = cpu_num * cpu_core_count + core_num
+          elsif core_numbering == 'contiguous-including-threads'
+            row[:cpuset] = cpu_num * cpu_thread_count + core_num
           elsif core_numbering == 'round-robin'
             row[:cpuset] = cpu_num + core_num * cpu_count
           else
