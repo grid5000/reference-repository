@@ -1,0 +1,23 @@
+# device : group : driver : username : password : enable
+# group = site-kind, ex: grenoble-admin
+# driver : see https://github.com/ytti/oxidized/blob/master/docs/Supported-OS-Types.md
+# enable :
+### false = already in exec mode
+### true = need the "enable" cmd without password
+### p4ssword : the enable password
+<%-
+conf.each do |site, groups|
+  groups.each do |g,devices|
+    devices.each do |d,v|
+      missing_info = ["driver","user","password"] - v.keys
+      if missing_info.length != 0
+        puts "Skipping #{d}.#{site}, missing #{missing_info.to_s}"
+        next
+      else
+      enable = v.has_key?('enable') ? v['enable'] : false
+-%>
+<%=[d+'.'+site,site+"-"+g,v['driver'],v['user'],v['password'],enable].join(':') %>
+      <%- end -%>
+    <%- end -%>
+  <%- end -%>
+<%- end -%>
