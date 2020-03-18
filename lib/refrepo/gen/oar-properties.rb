@@ -1232,7 +1232,8 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
 
     cpu_count = first_node['architecture']['nb_procs']
-    core_count = first_node['architecture']['nb_cores'] / cpu_count
+    cpu_core_count = first_node['architecture']['nb_cores'] / cpu_count
+    cpu_thread_count = first_node['architecture']['nb_threads'] / cpu_count
     gpu_count = first_node.key?("gpu_devices") ? first_node["gpu_devices"].length : 0
 
     cpu_model = "#{first_node['processor']['model']} #{first_node['processor']['version']}"
@@ -1251,17 +1252,17 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     phys_rsc_map = {
         "cpu" => {
           :current_ids => [],
-          :per_server_count => first_node['architecture']['nb_procs'],
+          :per_server_count => cpu_count,
           :per_cluster_count => node_count * cpu_count
         },
         "core" => {
           :current_ids => [],
-          :per_server_count => first_node['architecture']['nb_cores'] / cpu_count,
-          :per_cluster_count => node_count * cpu_count * core_count
+          :per_server_count => cpu_core_count,
+          :per_cluster_count => node_count * cpu_count * cpu_core_count
         },
         "gpu" => {
           :current_ids => [],
-          :per_server_count => first_node.key?("gpu_devices") ? first_node["gpu_devices"].length : 0,
+          :per_server_count => gpu_count,
           :per_cluster_count => node_count * gpu_count
         },
     }
@@ -1346,13 +1347,13 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       ############################################
       # Suite of (2-a): Iterate over CPUs of the server. (rest: cores)
       ############################################
-      (0...phys_rsc_map["cpu"][:per_server_count]).each do |cpu_num|
+      (0...cpu_count).each do |cpu_num|
 
 
         ############################################
         # Suite of (2-a): Iterate over CORES of the CPU
         ############################################
-        (0...phys_rsc_map["core"][:per_server_count]).each do |core_num|
+        (0...cpu_core_count).each do |core_num|
 
           # Compute cpu and core ID
           oar_resource_id = oar_resource_ids[core_idx]
@@ -1387,9 +1388,11 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           # (2-d) Associate a cpuset to each core
           ############################################
           if core_numbering == 'contiguous'
-            row[:cpuset] = cpu_num * phys_rsc_map["core"][:per_server_count] + core_num
+            row[:cpuset] = cpu_num * cpu_core_count + core_num
+          elsif core_numbering == 'contiguous-including-threads'
+            row[:cpuset] = cpu_num * cpu_thread_count + core_num
           elsif core_numbering == 'round-robin'
-            row[:cpuset] = cpu_num + core_num * phys_rsc_map["cpu"][:per_server_count]
+            row[:cpuset] = cpu_num + core_num * cpu_count
           else
             raise
           end
@@ -1412,13 +1415,13 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
                   raise "Could not find a GPU on CPU #{cpu_num} for core #{row[:cpuset]}"
                 end
               else
-                gpu_idx = core_num / (phys_rsc_map["core"][:per_server_count] / numa_gpus.length)
+                gpu_idx = core_num / (cpu_core_count / numa_gpus.length)
                 selected_gpu = numa_gpus[gpu_idx]
               end
               # id of the selected GPU in the node
               local_id = node_description["gpu_devices"].values.index(selected_gpu)
 
-              row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * phys_rsc_map["gpu"][:per_server_count] + local_id]
+              row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * gpu_count + local_id]
               row[:gpudevice] = local_id
               row[:gpudevicepath] = selected_gpu['device']
               row[:gpumodel] = selected_gpu['model']

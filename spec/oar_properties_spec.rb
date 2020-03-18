@@ -702,6 +702,150 @@ oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'"
     end
   end
 
+  context 'interracting with an empty OAR server (contiguous_including_threads cpusets)' do
+    before do
+      prepare_stubs("dump_oar_api_empty_server.json", "load_data_hierarchy_stubbed_data_contiguous-including-threads_cpusets.json")
+    end
+
+    it 'should generate correctly a table of nodes' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => true,
+        :print => false,
+        :update => false,
+        :diff => false,
+        :site => "fakesite",
+        :clusters => ["clustera"]
+      }
+
+      expected_header = <<-TXT
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+|   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+      TXT
+
+      expected_clustera1_begin_desc = <<-TXT
+|  clustera | clustera-1           | 1     | 1     | 0        |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 1     | 2     | 1        |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 1     | 3     | 2        |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 1     | 4     | 3        |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 1     | 5     | 4        |      |                      | ThunderX2 99xx                 |                               |
+      TXT
+
+
+      expected_clustera1_middle_desc = <<-TXT
+|  clustera | clustera-1           | 1     | 29    | 28       |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 1     | 30    | 29       |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 1     | 31    | 30       |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 1     | 32    | 31       |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 2     | 33    | 128      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 2     | 34    | 129      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 2     | 35    | 130      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-1           | 2     | 36    | 131      |      |                      | ThunderX2 99xx                 |                               |
+      TXT
+
+      expected_clustera2_middle_desc = <<-TXT
+|  clustera | clustera-2           | 3     | 93    | 28       |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 3     | 94    | 29       |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 3     | 95    | 30       |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 3     | 96    | 31       |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 4     | 97    | 128      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 4     | 98    | 129      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 4     | 99    | 130      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 4     | 100   | 131      |      |                      | ThunderX2 99xx                 |                               |
+      TXT
+
+      expected_clustera2_end_desc = <<-TXT
+|  clustera | clustera-2           | 4     | 125   | 156      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 4     | 126   | 157      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 4     | 127   | 158      |      |                      | ThunderX2 99xx                 |                               |
+|  clustera | clustera-2           | 4     | 128   | 159      |      |                      | ThunderX2 99xx                 |                               |
++---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clustera1_begin_desc)
+      expect(generator_output[:stdout]).to include(expected_clustera1_middle_desc)
+      expect(generator_output[:stdout]).to include(expected_clustera2_middle_desc)
+      expect(generator_output[:stdout]).to include(expected_clustera2_end_desc)
+    end
+
+    it 'should generate correctly all the commands to update OAR' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+        :table => false,
+        :print => true,
+        :update => false,
+        :diff => false,
+        :site => "fakesite",
+        :clusters => ["clustera"]
+      }
+
+      expected_header = <<-TXT
+#############################################
+# Create OAR properties that were created by 'oar_resources_add'
+#############################################
+property_exist 'host' || oarproperty -a host --varchar
+property_exist 'cpu' || oarproperty -a cpu
+property_exist 'core' || oarproperty -a core
+property_exist 'gpudevice' || oarproperty -a gpudevice
+property_exist 'gpu' || oarproperty -a gpu
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+      TXT
+
+      expected_clustera1_cmds = <<-TXT
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=29 -p cpuset=28
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=30 -p cpuset=29
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=31 -p cpuset=30
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=32 -p cpuset=31
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=33 -p cpuset=128
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=34 -p cpuset=129
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=35 -p cpuset=130
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=36 -p cpuset=131
+      TXT
+
+      expected_clustera2_cmds = <<-TXT
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=93 -p cpuset=28
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=94 -p cpuset=29
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=95 -p cpuset=30
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=96 -p cpuset=31
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=97 -p cpuset=128
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=98 -p cpuset=129
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=99 -p cpuset=130
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=100 -p cpuset=131
+      TXT
+
+      expected_clustera3_cmds = <<-TXT
+oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.54.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='arm64' -p cpuarch='aarch64' -p cpucore=32 -p cputype='ThunderX2 99xx' -p cpufreq='2.2' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p mic='NO' -p wattmeter='NO' -p cluster_priority=201906 -p max_walltime=0 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+      TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_header)
+      expect(generator_output[:stdout]).to include(expected_clustera1_cmds)
+      expect(generator_output[:stdout]).to include(expected_clustera2_cmds)
+      expect(generator_output[:stdout]).to include(expected_clustera3_cmds)
+    end
+  end
+
   context 'interracting with an empty OAR server (cluster with disk)' do
     before do
       prepare_stubs("dump_oar_api_empty_server.json", "load_data_hierarchy_stubbed_data_with_disk.json")
