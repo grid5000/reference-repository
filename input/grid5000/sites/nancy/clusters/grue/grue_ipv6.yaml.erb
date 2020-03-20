@@ -1,0 +1,8 @@
+nodes:
+<% (1..5).each do |index| %>
+  grue-<%= index %>:
+    network_adapters:
+      eth0:
+        ip6: 2001:660:4406:500:2::<%= index.to_s(16) %>
+<% end %>
+
