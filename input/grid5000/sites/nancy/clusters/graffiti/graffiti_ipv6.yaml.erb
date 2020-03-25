@@ -1,7 +1,0 @@
-nodes:
-<% (1..13).each do |index| %>
-  graffiti-<%= index %>:
-    network_adapters:
-      eth2:
-        ip6: 2001:660:4406:500:1::<%= index.to_s(16) %>
-<% end %>

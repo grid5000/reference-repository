@@ -1,7 +1,0 @@
-nodes:
-<% (1..4).each do |index| %>
-  graphite-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:500:5::<%= index.to_s(16) %>
-<% end %>

@@ -1,7 +1,0 @@
-nodes:
-<% (1..2).each do |index| %>
-  gemini-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:400:6::<%= index.to_s(16) %>
-<% end %>

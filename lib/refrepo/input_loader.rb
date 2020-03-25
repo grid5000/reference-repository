@@ -47,6 +47,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
 #  pp global_hash
 
+  # populate each node with its IPv6
+  add_ipv6(global_hash)
+
   # populate each node with its kavlan IPs
   add_kavlan_ips(global_hash)
 
@@ -98,6 +101,36 @@ def add_kavlan_ips(h)
             allocated[ip] = a
             hn['kavlan'][iface]["kavlan-#{vlan}"] = ip
           end
+        end
+      end
+    end
+  end
+end
+
+def add_ipv6(h)
+  # for each node
+  h['sites'].each_pair do |site_uid, hs|
+    hs['clusters'].each_pair do |cluster_uid, hc|
+      hc['nodes'].each_pair do |node_uid, hn|
+        # get IPv4
+        ip4 = nil
+        hn['network_adapters'].each_pair do |iface, nh|
+          if nh['mountable'] == true and nh['interface'] == 'Ethernet'
+            # for mounted && ethernet interfaces only
+            ip4 = nh['ip']
+            if not ip4.nil?
+              # compute and assign IPv6 based on IPv4
+              ip6 = '2001:660:4406:'
+              ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
+              ip6 += '00:'
+              ip6 += '%x::' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+              ip6 += '%x' % (ip4.split('.')[3].to_i)
+              nh['ip6'] = ip6
+              next
+            end
+          end
+          # for all other cases, force no IPv6
+          nh.delete('ip6')
         end
       end
     end

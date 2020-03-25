@@ -1,7 +1,0 @@
-nodes:
-<% (1..16).each do |index| %>
-  petitprince-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:300:2::<%= index.to_s(16) %>
-<% end %>

@@ -1,7 +1,0 @@
-nodes:
-<% (1..72).each do |index| %>
-  dahu-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:100:5::<%= index.to_s(16) %>
-<% end %>

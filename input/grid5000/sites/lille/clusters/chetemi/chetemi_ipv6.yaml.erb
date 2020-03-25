@@ -1,7 +1,0 @@
-nodes:
-<% (1..15).each do |index| %>
-  chetemi-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:200:6::<%= index.to_s(16) %>
-<% end %>

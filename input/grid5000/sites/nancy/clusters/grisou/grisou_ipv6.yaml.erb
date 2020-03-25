@@ -1,7 +1,0 @@
-nodes:
-<% (1..51).each do |index| %>
-  grisou-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:500:9::<%= index.to_s(16) %>
-<% end %>

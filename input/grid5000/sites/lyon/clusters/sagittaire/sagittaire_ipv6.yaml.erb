@@ -1,7 +1,0 @@
-nodes:
-<% (1..79).each do |index| %>
-  sagittaire-<%= index %>:
-    network_adapters:
-      eth1:
-        ip6: 2001:660:4406:400:2::<%= index.to_s(16) %>
-<% end %>

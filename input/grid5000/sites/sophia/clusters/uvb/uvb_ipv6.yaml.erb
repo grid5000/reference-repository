@@ -1,8 +1,0 @@
----
-nodes:
-<% (1..44).each do |index| %>
-  uvb-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:800:5::<%= index.to_s(16) %>
-<% end %>

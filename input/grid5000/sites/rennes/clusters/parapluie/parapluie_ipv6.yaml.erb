@@ -1,7 +1,0 @@
-nodes:
-<% (1..40).each do |index| %>
-  parapluie-<%= index %>:
-    network_adapters:
-      eth1:
-        ip6: 2001:660:4406:700:4::<%= index.to_s(16) %>
-<% end %>

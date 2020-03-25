@@ -1,7 +1,0 @@
-nodes:
-<% (1..23).each do |index| %>
-  nova-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:400:5::<%= index.to_s(16) %>
-<% end %>

@@ -1,7 +1,0 @@
-nodes:
-<% (1..4).each do |index| %>
-  orion-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:400:3::<%= index.to_s(16) %>
-<% end %>

@@ -1,7 +1,0 @@
-nodes:
-<% (1..14).each do |index| %>
-  grele-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:500:b::<%= index.to_s(16) %>
-<% end %>

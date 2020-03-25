@@ -1,7 +1,0 @@
-nodes:
-<% (1..22).each do |index| %>
-  econome-<%= index %>:
-    network_adapters:
-      eth0:
-        ip6: 2001:660:4406:600:1::<%= index.to_s(16) %>
-<% end %>
