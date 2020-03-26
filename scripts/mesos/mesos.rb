@@ -53,15 +53,15 @@ d['sites'].each_pair do |site, ds|
                   end
   o['GPSCoordinates'] = [ds['latitude'], ds['longitude']]
   o['contactName'], o['contactAddress'] = case site
-                                           when 'grenoble' then ['Olivier Richard', 'olivier.richard@imag.fr']
-                                           when 'lille' then ['Nouredine Melab', 'nouredine.melab@univ-lille.fr']
-                                           when 'lyon' then ['Laurent Lefevre', 'laurent.lefevre@inria.fr']
-                                           when 'nancy' then ['Lucas Nussbaum', 'lucas.nussbaum@loria.fr']
-                                           when 'nantes' then ['Adrien Lèbre', 'adrien.lebre@inria.fr']
-                                           when 'rennes' then ['Anne-Cécile Orgerie', 'anne-cecile.orgerie@irisa.fr']
-                                           when 'sophia' then ['Fabrice Huet', 'fabrice.huet@unice.fr']
-                                           when 'luxembourg' then ['Sébastien Varrette', 'sebastien.varrette@uni.lu']
-                                           end
+                                          when 'grenoble' then ['Olivier Richard', 'olivier.richard@imag.fr']
+                                          when 'lille' then ['Nouredine Melab', 'nouredine.melab@univ-lille.fr']
+                                          when 'lyon' then ['Laurent Lefevre', 'laurent.lefevre@inria.fr']
+                                          when 'nancy' then ['Lucas Nussbaum', 'lucas.nussbaum@loria.fr']
+                                          when 'nantes' then ['Adrien Lèbre', 'adrien.lebre@inria.fr']
+                                          when 'rennes' then ['Anne-Cécile Orgerie', 'anne-cecile.orgerie@irisa.fr']
+                                          when 'sophia' then ['Fabrice Huet', 'fabrice.huet@unice.fr']
+                                          when 'luxembourg' then ['Sébastien Varrette', 'sebastien.varrette@uni.lu']
+                                          end
   o['distributedInfra'] = [ 'grid5000' ]
   o['clusterList'] = []
   ds['clusters'].each_pair do |cluster, dc|
