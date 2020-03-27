@@ -190,6 +190,14 @@ pdus:
             unit: W
             www:
               url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
+    metrics:
+    - name: wattmetre_power_watt
+      description: Power consumption per outlet reported by wattmetre, in watt
+      period: 1000
+      optional_period: 20
+      source:
+        protocol: wattmetre
+
   gros-wattmetre2:
     vendor: OmegaWatt
     model: ''
@@ -203,6 +211,14 @@ pdus:
             unit: W
             www:
               url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
+    metrics:
+    - name: wattmetre_power_watt
+      description: Power consumption per outlet reported by wattmetre, in watt
+      period: 1000
+      optional_period: 20
+      source:
+        protocol: wattmetre
+
   gros-wattmetre3:
     vendor: OmegaWatt
     model: ''
@@ -216,3 +232,10 @@ pdus:
             unit: W
             www:
               url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
+    metrics:
+    - name: wattmetre_power_watt
+      description: Power consumption per outlet reported by wattmetre, in watt
+      period: 1000
+      optional_period: 20
+      source:
+        protocol: wattmetre
