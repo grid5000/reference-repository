@@ -107,17 +107,6 @@ def add_kavlan_ips(h)
   end
 end
 
-$ipv6_site_indexes = {
-  'grenoble' => 1,
-  'lille' => 2,
-  'luxembourg' => 3,
-  'lyon' => 4,
-  'nancy' => 5,
-  'nantes' => 6,
-  'rennes' => 7,
-  'sophia' => 8,
-}
-
 def add_ipv6(h)
   # for each node
   h['sites'].each_pair do |site_uid, hs|
@@ -132,7 +121,7 @@ def add_ipv6(h)
             if not ip4.nil?
               # compute and assign IPv6 based on IPv4
               ip6 = '2001:660:4406:'
-              ip6 += '%x' % $ipv6_site_indexes[site_uid]
+              ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
               ip6 += '00:'
               ip6 += '%x::' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
               ip6 += '%x' % (ip4.split('.')[3].to_i)
