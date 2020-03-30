@@ -1,6 +1,231 @@
 {
   "created_at": "Wed, 04 Sep 2019 00:00:00 GMT",
   "kavlan": true,
+  "metrics": [
+    {
+      "description": "Power consumption reported by wattmetre, in watt",
+      "name": "wattmetre_power_watt",
+      "optional_period": 20,
+      "period": 1000,
+      "source": {
+        "protocol": "wattmetre"
+      }
+    },
+    {
+      "description": "Input byte counter for the network device port connected to the node",
+      "name": "network_ifacein_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port connected to the node",
+      "name": "network_ifaceout_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Front node ambiant temperature reported by BMC, in celsius",
+      "name": "bmc_temp_ambiant_celsius",
+      "period": 5000,
+      "source": {
+        "id": 3,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of node reported by BMC, in watt",
+      "name": "bmc_power_node_watt",
+      "period": 5000,
+      "source": {
+        "id": 66,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of CPU 1 reported by BMC, in celsius",
+      "name": "bmc_temp_cpu1_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 1,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of PSU 1 reported by BMC, in amp",
+      "name": "bmc_current_psu1_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 57,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of PSU 1 reported by BMC, in volt",
+      "name": "bmc_voltage_psu1_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 59,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Usage of IO reported by BMC, in percent",
+      "name": "bmc_usage_io_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 73,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Usage of MEM reported by BMC, in percent",
+      "name": "bmc_usage_mem_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 74,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Usage of SYS reported by BMC, in percent",
+      "name": "bmc_usage_sys_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 75,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Usage of CPU reported by BMC, in percent",
+      "name": "bmc_usage_cpu_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 76,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 4A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan4a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 160,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 4B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan4b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 161,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 5A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan5a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 162,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 5B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan5b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 163,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 6A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan6a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 164,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 6B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan6b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 165,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 7A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan7a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 166,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 7B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan7b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 167,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 8A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan8a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 168,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of PSU Fan 8B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_psufan8b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 169,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Exhaust reported by BMC, in celsius",
+      "name": "bmc_temp_exhaust_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 204,
+        "protocol": "ipmisensor"
+      }
+    }
+  ],
   "model": "Dell PowerEdge R640",
   "queues": [
     "admin",

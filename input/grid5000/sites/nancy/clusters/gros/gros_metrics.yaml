@@ -1,0 +1,178 @@
+metrics:
+
+- name: wattmetre_power_watt
+  description: Power consumption reported by wattmetre, in watt
+  period: 1000
+  optional_period: 20
+  source:
+    protocol: wattmetre
+
+- name: network_ifacein_bytes_total
+  description: Input byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: network_ifaceout_bytes_total
+  description: Output byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: bmc_temp_ambiant_celsius
+  description: Front node ambiant temperature reported by BMC, in celsius
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3 #Inlet Temp
+
+- name: bmc_power_node_watt
+  description: Power consumption of node reported by BMC, in watt
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 66 #Pwr Consumption
+
+- name: bmc_temp_cpu1_celsius
+  description: Temperature of CPU 1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 1 #Temp
+
+- name: bmc_current_psu1_amp
+  description: Current of PSU 1 reported by BMC, in amp
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 57 #Current 1
+
+- name: bmc_voltage_psu1_volt
+  description: Voltage of PSU 1 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 59 #Voltage 1
+
+- name: bmc_usage_io_percent
+  description: Usage of IO reported by BMC, in percent
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 73 #IO Usage
+
+- name: bmc_usage_mem_percent
+  description: Usage of MEM reported by BMC, in percent
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 74 #MEM Usage
+
+- name: bmc_usage_sys_percent
+  description: Usage of SYS reported by BMC, in percent
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 75 #SYS Usage
+
+- name: bmc_usage_cpu_percent
+  description: Usage of CPU reported by BMC, in percent
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 76 #CPU Usage
+
+- name: bmc_fanspeed_psufan4a_rpm
+  description: Speed of PSU Fan 4A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 160 #Fan4A
+
+- name: bmc_fanspeed_psufan4b_rpm
+  description: Speed of PSU Fan 4B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 161 #Fan4B
+
+- name: bmc_fanspeed_psufan5a_rpm
+  description: Speed of PSU Fan 5A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 162 #Fan5A
+
+- name: bmc_fanspeed_psufan5b_rpm
+  description: Speed of PSU Fan 5B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 163 #Fan5B
+
+- name: bmc_fanspeed_psufan6a_rpm
+  description: Speed of PSU Fan 6A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 164 #Fan6A
+
+- name: bmc_fanspeed_psufan6b_rpm
+  description: Speed of PSU Fan 6B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 165 #Fan6B
+
+- name: bmc_fanspeed_psufan7a_rpm
+  description: Speed of PSU Fan 7A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 166 #Fan7A
+
+- name: bmc_fanspeed_psufan7b_rpm
+  description: Speed of PSU Fan 7B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 167 #Fan7B
+
+- name: bmc_fanspeed_psufan8a_rpm
+  description: Speed of PSU Fan 8A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 168 #Fan8A
+
+- name: bmc_fanspeed_psufan8b_rpm
+  description: Speed of PSU Fan 8B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 169 #Fan8B
+
+- name: bmc_temp_exhaust_celsius
+  description: Temperature of Exhaust reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 204 #Exhaust Temp
