@@ -1,4 +1,5 @@
 require 'refrepo/hash/hash'
+require 'erb'
 
 def generate_puppet_kwollectg5k(options)
 
@@ -26,7 +27,9 @@ def generate_puppet_kwollectg5k(options)
     site['clusters'].sort.each { |cluster_uid, cluster|
       cluster['nodes'].each_sort_by_node_uid { |node_uid, node|
 
-        ipmi_credentials = credentials.fetch(site_uid, {}).fetch(cluster_uid, "").sub(" ", ":")
+        ipmi_credentials = credentials.fetch(site_uid, {}).fetch(cluster_uid, "").split(" ")
+        ipmi_credentials.map! { |s| ERB::Util.url_encode(s) }
+        ipmi_credentials = ipmi_credentials.join(":")
 
         output = ERB.new(File.read(File.expand_path('templates/kwollect-node.erb', File.dirname(__FILE__))), nil, '-').result(binding)
         output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{node_uid}.conf")
