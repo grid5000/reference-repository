@@ -10,9 +10,8 @@ neteq.fetch('metrics', []).each {|metric|
     neteq['linecards'].each_with_index {|linecard, linecard_uid|
       linecard.fetch('ports', []).each_with_index {|lport, lport_uid|
         next if lport.empty?
-        lport_uid += 12
         port_uid = neteq['linecards'].length > 1 ? "#{linecard_uid}_#{lport_uid}" : lport_uid
-        port_name = linecard["snmp_pattern"].sub("%LINECARD%",linecard_uid.to_s).sub("%PORT%",lport_uid.to_s)
+        port_name = lport['snmp_name']
         # TODO: Handle secondary interface
         port_node = lport['uid']
 -%>
