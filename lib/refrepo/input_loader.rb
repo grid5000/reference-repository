@@ -114,8 +114,10 @@ def add_ipv6(h)
       hc['nodes'].each_pair do |node_uid, hn|
         # get IPv4
         ip4 = nil
+        num_main_interfaces = 0
         hn['network_adapters'].each_pair do |iface, nh|
-          if nh['mountable'] == true and nh['interface'] == 'Ethernet'
+          if nh['mounted'] == true && nh['interface'] == 'Ethernet' && nh['management'] == false
+            num_main_interfaces += 1
             # for mounted && ethernet interfaces only
             ip4 = nh['ip']
             if not ip4.nil?
@@ -131,6 +133,9 @@ def add_ipv6(h)
           end
           # for all other cases, force no IPv6
           nh.delete('ip6')
+        end
+        if num_main_interfaces > 1
+          raise "#{node_uid}.#{site_uid}: more than one interface with mounted == true && interface == 'Ethernet' && management == false"
         end
       end
     end
