@@ -1,13 +1,6 @@
 ---
 metrics:
 
-- name: wattmetre_power_watt
-  description: Power consumption reported by wattmetre, in watt
-  period: 1000
-  optional_period: 20
-  source:
-    protocol: wattmetre
-
 - name: network_ifacein_bytes_total
   description: Input byte counter for the network device port connected to the node
   period: 1000
@@ -26,14 +19,14 @@ metrics:
   scale_factor: 0.1
   source:
     protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.2
+    id: 1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.1
 
 - name: bmc_power_node_watt
   description: Power consumption of node reported by BMC, in watt
   period: 5000
   source:
     protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.2
+    id: 1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.3
 
 - name: bmc_voltage_psu1_volt
   description: Voltage of PSU 1 reported by BMC, in volt
@@ -42,6 +35,14 @@ metrics:
   source:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.600.12.1.16.1.1
+
+- name: bmc_voltage_psu2_volt
+  description: Voltage of PSU 2 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: snmp
+    id: 1.3.6.1.4.1.674.10892.5.4.600.12.1.16.1.2
 
 - name: bmc_current_psu1_amp
   description: Current of PSU 1 reported by BMC, in amp
@@ -52,6 +53,15 @@ metrics:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.1
 
+- name: bmc_current_psu2_amp
+  description: Current of PSU 2 reported by BMC, in amp
+  period: 0
+  optional_period: 5000
+  scale_factor: 0.1
+  source:
+    protocol: snmp
+    id: 1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.2
+
 - name: bmc_power_node_watt_total
   description: Cumulated power consumption of node reported by BMC, in watt
   period: 0
@@ -60,94 +70,53 @@ metrics:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.600.60.1.7.1.1
 
-- name: bmc_fanspeed_fan4a_rpm
-  description: Speed of Fan 4A reported by BMC, in rpm
+- name: bmc_fanspeed_fan1_rpm
+  description: Speed of Fan 1 reported by BMC, in rpm
   period: 0
   optional_period: 5000
   source:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.1
 
-- name: bmc_fanspeed_fan4b_rpm
-  description: Speed of Fan 4B reported by BMC, in rpm
+- name: bmc_fanspeed_fan2_rpm
+  description: Speed of Fan 2 reported by BMC, in rpm
   period: 0
   optional_period: 5000
   source:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.2
 
-- name: bmc_fanspeed_fan5a_rpm
-  description: Speed of Fan 5A reported by BMC, in rpm
+- name: bmc_fanspeed_fan3_rpm
+  description: Speed of Fan 3 reported by BMC, in rpm
   period: 0
   optional_period: 5000
   source:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.3
 
-- name: bmc_fanspeed_fan5b_rpm
-  description: Speed of Fan 5B reported by BMC, in rpm
+- name: bmc_fanspeed_fan4_rpm
+  description: Speed of Fan 4 reported by BMC, in rpm
   period: 0
   optional_period: 5000
   source:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.4
 
-- name: bmc_fanspeed_fan6a_rpm
-  description: Speed of Fan 6A reported by BMC, in rpm
+- name: bmc_fanspeed_fan5_rpm
+  description: Speed of Fan 5 reported by BMC, in rpm
   period: 0
   optional_period: 5000
   source:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.5
 
-- name: bmc_fanspeed_fan6b_rpm
-  description: Speed of Fan 6B reported by BMC, in rpm
+- name: bmc_fanspeed_fan6_rpm
+  description: Speed of Fan 6 reported by BMC, in rpm
   period: 0
   optional_period: 5000
   source:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.6
-
-- name: bmc_fanspeed_fan7a_rpm
-  description: Speed of Fan 7A reported by BMC, in rpm
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.7
-
-- name: bmc_fanspeed_fan7b_rpm
-  description: Speed of Fan 7B reported by BMC, in rpm
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.8
-
-- name: bmc_fanspeed_fan8a_rpm
-  description: Speed of Fan 8A reported by BMC, in rpm
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.9
-
-- name: bmc_fanspeed_fan8b_rpm
-  description: Speed of Fan 8B reported by BMC, in rpm
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.10
-
-- name: bmc_temp_cpu1_celsius
-  description: Temperature of CPU 1 reported by BMC, in celsius
-  period: 0
-  optional_period: 5000
-  scale_factor: 0.1
-  source:
-    protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.1
 
 - name: bmc_temp_exhaust_celsius
   description: Temperature of exhausted air reported by BMC, in celsius
@@ -156,4 +125,22 @@ metrics:
   scale_factor: 0.1
   source:
     protocol: snmp
+    id: 1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.2
+
+- name: bmc_temp_cpu1_celsius
+  description: Temperature of CPU 1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  scale_factor: 0.1
+  source:
+    protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.3
+
+- name: bmc_temp_cpu2_celsius
+  description: Temperature of CPU 2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  scale_factor: 0.1
+  source:
+    protocol: snmp
+    id: 1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.4

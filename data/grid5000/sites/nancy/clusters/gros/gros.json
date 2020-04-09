@@ -31,9 +31,10 @@
       "description": "Front node ambiant temperature reported by BMC, in celsius",
       "name": "bmc_temp_ambiant_celsius",
       "period": 5000,
+      "scale_factor": 0.1,
       "source": {
-        "id": 3,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.2",
+        "protocol": "snmp"
       }
     },
     {
@@ -41,28 +42,8 @@
       "name": "bmc_power_node_watt",
       "period": 5000,
       "source": {
-        "id": 66,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of CPU 1 reported by BMC, in celsius",
-      "name": "bmc_temp_cpu1_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 1,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Current of PSU 1 reported by BMC, in amp",
-      "name": "bmc_current_psu1_amp",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 57,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.2",
+        "protocol": "snmp"
       }
     },
     {
@@ -71,158 +52,151 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 59,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.600.12.1.16.1.1",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Usage of IO reported by BMC, in percent",
-      "name": "bmc_usage_io_percent",
+      "description": "Current of PSU 1 reported by BMC, in amp",
+      "name": "bmc_current_psu1_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "scale_factor": 0.1,
+      "source": {
+        "id": "1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.1",
+        "protocol": "snmp"
+      }
+    },
+    {
+      "description": "Cumulated power consumption of node reported by BMC, in watt",
+      "name": "bmc_power_node_watt_total",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 73,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.600.60.1.7.1.1",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Usage of MEM reported by BMC, in percent",
-      "name": "bmc_usage_mem_percent",
+      "description": "Speed of Fan 4A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan4a_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 74,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.1",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Usage of SYS reported by BMC, in percent",
-      "name": "bmc_usage_sys_percent",
+      "description": "Speed of Fan 4B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan4b_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 75,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.2",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Usage of CPU reported by BMC, in percent",
-      "name": "bmc_usage_cpu_percent",
+      "description": "Speed of Fan 5A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan5a_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 76,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.3",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 4A reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan4a_rpm",
+      "description": "Speed of Fan 5B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan5b_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 160,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.4",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 4B reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan4b_rpm",
+      "description": "Speed of Fan 6A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan6a_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 161,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.5",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 5A reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan5a_rpm",
+      "description": "Speed of Fan 6B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan6b_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 162,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.6",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 5B reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan5b_rpm",
+      "description": "Speed of Fan 7A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan7a_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 163,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.7",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 6A reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan6a_rpm",
+      "description": "Speed of Fan 7B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan7b_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 164,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.8",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 6B reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan6b_rpm",
+      "description": "Speed of Fan 8A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan8a_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 165,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.9",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 7A reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan7a_rpm",
+      "description": "Speed of Fan 8B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fan8b_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 166,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.10",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 7B reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan7b_rpm",
+      "description": "Temperature of CPU 1 reported by BMC, in celsius",
+      "name": "bmc_temp_cpu1_celsius",
       "optional_period": 5000,
       "period": 0,
+      "scale_factor": 0.1,
       "source": {
-        "id": 167,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.1",
+        "protocol": "snmp"
       }
     },
     {
-      "description": "Speed of PSU Fan 8A reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan8a_rpm",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 168,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Speed of PSU Fan 8B reported by BMC, in rpm",
-      "name": "bmc_fanspeed_psufan8b_rpm",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 169,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of Exhaust reported by BMC, in celsius",
+      "description": "Temperature of exhausted air reported by BMC, in celsius",
       "name": "bmc_temp_exhaust_celsius",
       "optional_period": 5000,
       "period": 0,
+      "scale_factor": 0.1,
       "source": {
-        "id": 204,
-        "protocol": "ipmisensor"
+        "id": "1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.3",
+        "protocol": "snmp"
       }
     }
   ],
