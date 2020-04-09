@@ -124,8 +124,12 @@ def add_ipv6(h)
             ip6 = '2001:660:4406:'
             ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
             ip6 += '00:'
-            ip6 += '%x:' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
-            ip6 += '%x::' % idx
+            ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+            if idx > 0
+              ip6 += ':%x::' % idx
+            else
+              ip6 += '::'
+            end
             ip6 += '%x' % (ip4.split('.')[3].to_i)
             nah['ip6'] = ip6
           end
@@ -157,8 +161,12 @@ def add_kavlan_ipv6s(h)
               ip6 = '2001:660:4406:'
               ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
               ip6 += '%x:' % (kvl_id + 0x80)
-              ip6 += '%x:' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
-              ip6 += '%x::' % idx
+              ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+              if idx > 0
+                ip6 += ':%x::' % idx
+              else
+                ip6 += '::'
+              end
               ip6 += '%x' % (ip4.split('.')[3].to_i)
               hn['kavlan6'][iface][kvl_id] = ip6
             end
