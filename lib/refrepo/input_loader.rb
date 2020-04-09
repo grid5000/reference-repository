@@ -52,6 +52,7 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
   # populate each node with its kavlan IPs
   add_kavlan_ips(global_hash)
+  add_kavlan_ipv6s(global_hash)
 
   return global_hash
 end
@@ -112,30 +113,56 @@ def add_ipv6(h)
   h['sites'].each_pair do |site_uid, hs|
     hs['clusters'].each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
-        # get IPv4
-        ip4 = nil
-        num_main_interfaces = 0
-        hn['network_adapters'].each_pair do |iface, nh|
-          if nh['mounted'] == true && nh['interface'] == 'Ethernet' && nh['management'] == false
-            num_main_interfaces += 1
-            # for mounted && ethernet interfaces only
-            ip4 = nh['ip']
-            if not ip4.nil?
-              # compute and assign IPv6 based on IPv4
+        ipv6_adapters = hn['network_adapters'].select { |k,v| v['mountable'] and v['interface'] == 'Ethernet' }
+        if ipv6_adapters.length > 0
+          if not ipv6_adapters.values[0]['mounted']
+            raise "#{node_uid}: inconsistency: this code assumes first mountable ethernet adapter should be mounted: #{hn}"
+          end
+          ip4 = ipv6_adapters.values[0]['ip']
+          ipv6_adapters.each_with_index do |(iface, nah), idx|
+            # compute and assign IPv6 based on IPv4 of the first adapter
+            ip6 = '2001:660:4406:'
+            ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
+            ip6 += '00:'
+            ip6 += '%x:' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+            ip6 += '%x::' % idx
+            ip6 += '%x' % (ip4.split('.')[3].to_i)
+            nah['ip6'] = ip6
+          end
+        end
+      end
+    end
+  end
+end
+
+def add_kavlan_ipv6s(h)
+  h['sites'].each_pair do |site_uid, hs|
+    hs['clusters'].each_pair do |cluster_uid, hc|
+      hc['nodes'].each_pair do |node_uid, hn|
+        node_id = node_uid.split('-')[1].to_i
+        kvl_adapters = hn['network_adapters'].select { |k,v| v['mountable'] and (v['kavlan'] or not v.has_key?('kavlan')) and v['interface'] == 'Ethernet' }
+        if kvl_adapters.length > 0
+          if kvl_adapters.length != hn['kavlan'].length
+            raise "#{node_uid}: inconsistency: num kvl_adapters = #{kvl_adapters.length}, num kavlan entries = #{hn['kavlan'].length}"
+          end
+          if not kvl_adapters.values[0]['mounted']
+            raise "#{node_uid}: inconsistency: this code assumes first kvl_adapters should be mounted: #{hn}"
+          end
+          ip4 = kvl_adapters.values[0]['ip']
+          hn['kavlan6'] = {}
+          kvl_adapters.each_with_index do |(iface, nah), idx|
+            hn['kavlan6'][iface] = {}
+            hn['kavlan'][iface].each_key do |kvl|
+              kvl_id = kvl.split('-')[1].to_i
               ip6 = '2001:660:4406:'
               ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
-              ip6 += '00:'
-              ip6 += '%x::' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+              ip6 += '%x:' % (kvl_id + 0x80)
+              ip6 += '%x:' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+              ip6 += '%x::' % idx
               ip6 += '%x' % (ip4.split('.')[3].to_i)
-              nh['ip6'] = ip6
-              next
+              hn['kavlan6'][iface][kvl_id] = ip6
             end
           end
-          # for all other cases, force no IPv6
-          nh.delete('ip6')
-        end
-        if num_main_interfaces > 1
-          raise "#{node_uid}.#{site_uid}: more than one interface with mounted == true && interface == 'Ethernet' && management == false"
         end
       end
     end
