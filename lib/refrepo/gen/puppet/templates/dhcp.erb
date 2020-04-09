@@ -20,9 +20,18 @@
 
       # Get ipv4, ipv6 and mac addresses
       begin
-        ipv4, ipv6, mac = get_network_info(node, network_interface)
-        next if dhcpkind == 'dhcpv6' && ipv6 == nil
-        dhcp_entries.push({ 'uid_net' => uid_net, 'ipv4' => ipv4, 'ipv6' => ipv6, 'mac' => mac })
+        ifinfos = get_network_info(node, network_interface)
+        ifinfos.each do |h|
+          if dhcpkind == 'dhcpv6'
+            if h['ip6']
+              dhcp_entries.push({ 'uid_net' => uid_net, 'ipv6' => h['ip6'], 'mac' => h['mac'] })
+            end
+          else
+            if h['ip']
+              dhcp_entries.push({ 'uid_net' => uid_net, 'ipv4' => h['ip'], 'mac' => h['mac'] })
+            end
+          end
+        end
       rescue => e
         next if data.fetch('optional_network_adapters').include?(network_interface)
 
@@ -30,6 +39,7 @@
         puts "Warning: #{site_uid} - #{node_uid}: #{e}. Skip the DHCP entry of the #{network_interface} interface." # (error in #{__method__})
         next
       end
+
     }
     if not dhcp_entries.empty?
 %>

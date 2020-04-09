@@ -1,34 +1,36 @@
 # Get the mac, ipv4, ipv6 of a node. Throw exception if error.
 def get_network_info(node_hash, network_interface)
-  # Get node_hash["network_adapters"][network_interface]["ip"], node_hash["network_adapters"][network_interface]["ip6"] and node_hash["network_adapters"][network_interface]["mac"]
   node_network_adapters = node_hash.fetch("network_adapters")
 
-  # For the production network, find the mounted interface (either eth0 or eth1)
-  neti = network_interface
-  if neti == "eth" then
-    neti = node_network_adapters.select { |i| i['device'] =~ /eth/ and i['mounted'] }[0]['device']
-    unless neti
-      raise 'none of the eth[0-4] interfaces have the property "mounted" set to "true"' if neti == 'eth'
+  network_infos = []
+  if network_interface == "eth" then
+    adapters = node_network_adapters.select { |i| i['device'] =~ /eth/ and (i['mountable'] or i['mounted'])}
+    if adapters.length > 0
+      if not adapters[0]['mounted']
+        raise "#{node_hash['uid']}: inconsistency: this code assumes first mountable ethernet adapter should be mounted: #{node_network_adapters}"
+      end
+    end
+  else
+    case node_network_adapters
+    when Array
+      adapters = node_network_adapters.select { |i| i['device'] == network_interface }
+    when Hash
+      adapters = [ node_network_adapters[network_interface] ]
     end
   end
-
-  node_network_interface = nil
-  case node_network_adapters
-  when Array
-    node_network_interface = node_network_adapters.select { |i| i['device'] == neti }[0]
-  when Hash
-    node_network_interface = node_network_adapters[neti]
+  if adapters.length > 0
+    for a in adapters
+      mac = a.fetch('mac')
+      ip = a.fetch('ip', nil)
+      ip6 = a.fetch('ip6', nil)
+      if (not ip.nil?) or (not ip6.nil?)
+        network_infos << {'mac' => mac,
+                          'ip' => ip,
+                          'ip6' => ip6 }
+      end
+    end
   end
-
-  node_mac = node_network_interface.fetch('mac')
-  node_ipv4 = node_network_interface.fetch('ip')
-  node_ipv6 = node_network_interface.fetch('ip6', nil)
-
-  raise '"mac" is nil'  unless node_mac
-  raise '"ip" is nil'   unless node_ipv4
-  #raise '"ipv6" is nil' unless node_ipv6 # commented right now, we don't yet impose ipv6 for everything
-
-  return [node_ipv4, node_ipv6, node_mac]
+  return network_infos
 end
 
 def write_dhcp_files(data, options)
