@@ -25,6 +25,9 @@ cluster.fetch('metrics', []).each {|metric|
 <%- if metric['period'] == 0 -%>
   optional: true
 <%- end -%>
+<%- if metric.has_key?('scale_factor') -%>
+  scale_factor: <%= metric['scale_factor'] %>
+<%- end -%>
 
 <%-
 }
