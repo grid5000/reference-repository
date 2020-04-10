@@ -168,7 +168,7 @@ def add_kavlan_ipv6s(h)
                 ip6 += '::'
               end
               ip6 += '%x' % (ip4.split('.')[3].to_i)
-              hn['kavlan6'][iface][kvl_id] = ip6
+              hn['kavlan6'][iface]["kavlan-#{kvl_id}"] = ip6
             end
           end
         end
