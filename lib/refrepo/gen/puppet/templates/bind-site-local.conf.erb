@@ -10,6 +10,8 @@ Dir.entries(File.join(zones_dir, "local")).sort.each { |file|
     zone = "#{site_uid}.grid5000.fr"
   elsif /^reverse-(.*).db$/.match(file)
     zone = "#{$1}.in-addr.arpa"
+  elsif /^reverse6-(.*).db$/.match(file)
+    zone = "#{$1}.ip6.arpa"
   else
     puts "Error: unknown zone for '#{file}' in '#{zones_dir}'"
     next

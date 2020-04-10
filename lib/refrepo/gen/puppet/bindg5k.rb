@@ -234,6 +234,10 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       cname_record.label = "#{cluster_uid}-#{node_id}-#{net_uid}"
       cname_record.domainname = "#{cluster_uid}-#{node_id}"
       records << cname_record
+      cname_record_ipv6 = DNS::Zone::RR::CNAME.new
+      cname_record_ipv6.label = "#{cluster_uid}-#{node_id}-#{net_uid}-ipv6"
+      cname_record_ipv6.domainname = "#{cluster_uid}-#{node_id}-ipv6"
+      records << cname_record_ipv6
     end
 
     #Handle interface aliases
@@ -254,15 +258,24 @@ def get_node_kavlan_records(_cluster_uid, node_uid, network_adapters, kavlan_ada
 
   kavlan_adapters.each { |net_uid, net_hash|
 
-    next unless net_hash['ip']
+    next unless net_hash['ip'] || net_hash['ip6']
 
     net_primaries = network_adapters.select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # list of primary interfaces
     net_uid_eth, net_uid_kavlan = net_uid.to_s.scan(/^([^-]*)-(.*)$/).first # split 'eth0-kavlan-1'
 
-    new_record = DNS::Zone::RR::A.new
-    new_record.address = net_hash['ip']
-    new_record.label = "#{node_uid}-#{net_uid}" #sol-23-eth0-kavlan-1
-    records << new_record
+    if net_hash['ip']
+      new_record = DNS::Zone::RR::A.new
+      new_record.address = net_hash['ip']
+      new_record.label = "#{node_uid}-#{net_uid}" #sol-23-eth0-kavlan-1
+      records << new_record
+    end
+    if net_hash['ip6']
+      new_record_ipv6 = DNS::Zone::RR::AAAA.new
+      new_record_ipv6.address = net_hash['ip6']
+      new_record_ipv6.label = "#{node_uid}-#{net_uid}" #sol-23-eth0-kavlan-1
+      new_record_ipv6.label += '-ipv6'
+      records << new_record_ipv6
+    end
 
     # CNAME only for primary interface kavlan
     if net_primaries.include?(net_uid_eth)
@@ -270,6 +283,10 @@ def get_node_kavlan_records(_cluster_uid, node_uid, network_adapters, kavlan_ada
       cname_record.label = "#{node_uid}-#{net_uid_kavlan}"
       cname_record.domainname = "#{node_uid}-#{net_uid}" #sol-23-eth0-kavlan-1
       records << cname_record
+      cname_record_ipv6 = DNS::Zone::RR::CNAME.new
+      cname_record_ipv6.label = "#{node_uid}-#{net_uid_kavlan}-ipv6"
+      cname_record_ipv6.domainname = "#{node_uid}-#{net_uid}-ipv6" #sol-23-eth0-kavlan-1
+      records << cname_record_ipv6
     end
   } #each network adapters
 
@@ -282,15 +299,15 @@ def get_reverse_record(record, site_uid)
 
   if record.is_a?(DNS::Zone::RR::AAAA) # check for AAAA before A because AAAA inherits from A (so an AAAA is also an A)
     nibble_array = IPAddr.new(record.address).to_string.gsub(':','').split('').reverse
-    # nibble_array indexes:
-    #   0 to 15 = interface part
-    #   16 to 31 = routing part
-    # I choose to split between interface part as PTR label and routing part as constructed domain name
-    # it produces less files than for ipv4 reverse mappings (afaik there is no reason to produce so much individual files)
-    file_name = "reverse6-#{nibble_array[16..31].join('.')}.db"
-    # the filename is reverse6 because we will use it later to sort between ipv4 or ipv6 PTR records
+    nibble_split = 18
+    file_name = "reverse6-#{nibble_array[nibble_split..31].join('.')}.db"
+    if /.*-kavlan-[1-3]-ipv6$/.match(record.label)
+      #A filter in bind-global-site.conf.erb prevents entries in 'local' directory to be included in global configuration
+      #TODO later, also add DMZ IPs check here
+      file_name.prepend("local/")
+    end
     reverse_record = DNS::Zone::RR::PTR.new
-    reverse_record.label = nibble_array[0..15].join('.')
+    reverse_record.label = nibble_array[0..(nibble_split-1)].join('.')
     reverse_record.name = "#{record.label}.#{site_uid}.grid5000.fr."
     return file_name, reverse_record
   elsif record.is_a?(DNS::Zone::RR::A)
@@ -347,13 +364,13 @@ def sort_records(records)
   cnames.sort_by!{ |record|
     sort_by = record.label
     label_array = record.label.split("-")
-    if label_array.length == 4
+    if label_array.length >= 4 and (Integer(label_array[3]) rescue false)
       if label_array[1].to_i != 0 && label_array[3].to_i != 0
-        sort_by = [label_array[3].to_i, label_array[1].to_i]
+        sort_by = [label_array.length, label_array[3].to_i, label_array[1].to_i]
       end
     elsif label_array.length > 1
       if label_array[1].to_i != 0
-        sort_by = label_array[1].to_i
+        sort_by = [ label_array.length, label_array[1].to_i ]
       end
     end
     sort_by
@@ -543,22 +560,28 @@ def generate_puppet_bindg5k(options)
         site_records[cluster_uid] += get_node_records(cluster_uid, node_uid, network_adapters)
 
         # Kavlan
-        #FIXME: need to be adapted for IPv6 at some point. Perhaps with kavlan6 entries in the refapi?
-        if node['kavlan']
-          kavlan_adapters = {}
-          node.fetch('kavlan').each { |net_uid, net_hash|
-            net_hash.each { |kavlan_net_uid, ip|
-              kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] = {
-                'ip' => ip,
-                'mounted' => node['network_adapters'].select { |n|
-                  n['device'] == net_uid
-                }[0]['mounted']
+        kavlan_adapters = {}
+        ['kavlan', 'kavlan6'].each { |kavlan_kind|
+          if node[kavlan_kind]
+            node.fetch(kavlan_kind).each { |net_uid, net_hash|
+              net_hash.each { |kavlan_net_uid, ip|
+                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] ||= {}
+                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['mounted'] = node['network_adapters'].select { |n|
+                    n['device'] == net_uid
+                  }[0]['mounted']
+                if kavlan_kind == 'kavlan6'
+                  kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip6'] = ip
+                else
+                  kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip'] = ip
+                end
               }
             }
-          }
-
-          site_records["#{cluster_uid}-kavlan"] ||= []
-          site_records["#{cluster_uid}-kavlan"] += get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
+          end
+        }
+        if kavlan_adapters.length > 0
+          key_sr = "#{cluster_uid}-kavlan"
+          site_records[key_sr] ||= []
+          site_records[key_sr] += get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
         end
       } # each nodes
     } # each cluster
