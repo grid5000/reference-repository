@@ -567,8 +567,8 @@ def generate_puppet_bindg5k(options)
               net_hash.each { |kavlan_net_uid, ip|
                 kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] ||= {}
                 kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['mounted'] = node['network_adapters'].select { |n|
-                    n['device'] == net_uid
-                  }[0]['mounted']
+                  n['device'] == net_uid
+                }[0]['mounted']
                 if kavlan_kind == 'kavlan6'
                   kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip6'] = ip
                 else
