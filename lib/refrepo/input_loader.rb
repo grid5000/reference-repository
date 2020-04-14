@@ -113,13 +113,13 @@ def add_ipv6(h)
   h['sites'].each_pair do |site_uid, hs|
     hs['clusters'].each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
-        ipv6_adapters = hn['network_adapters'].select { |k,v| v['mountable'] and v['interface'] == 'Ethernet' }
+        ipv6_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and v['interface'] == 'Ethernet' }
         if ipv6_adapters.length > 0
           if not ipv6_adapters.values[0]['mounted']
             raise "#{node_uid}: inconsistency: this code assumes first mountable ethernet adapter should be mounted: #{hn}"
           end
           ip4 = ipv6_adapters.values[0]['ip']
-          ipv6_adapters.each_with_index do |(iface, nah), idx|
+          ipv6_adapters.each_with_index do |(_iface, nah), idx|
             # compute and assign IPv6 based on IPv4 of the first adapter
             ip6 = '2001:660:4406:'
             ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
@@ -141,7 +141,7 @@ end
 
 def add_kavlan_ipv6s(h)
   h['sites'].each_pair do |site_uid, hs|
-    hs['clusters'].each_pair do |cluster_uid, hc|
+    hs['clusters'].each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         kvl_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and (v['kavlan'] or not v.has_key?('kavlan')) and v['interface'] == 'Ethernet' }
         if kvl_adapters.length > 0
