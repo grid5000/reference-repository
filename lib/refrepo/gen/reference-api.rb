@@ -111,11 +111,11 @@ def generate_reference_api
 
     # remove kavlan information for now
     global_hash.delete('vlans')
-
-    # also remove software info
+    # remove software info
     global_hash.delete('software')
-
-    # also remove ipv6 info
+    # remove ipv4 info
+    global_hash.delete('ipv4')
+    # remove ipv6 info
     global_hash.delete('ipv6')
     
     grid_path = Pathname.new(refapi_path)
