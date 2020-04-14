@@ -143,8 +143,7 @@ def add_kavlan_ipv6s(h)
   h['sites'].each_pair do |site_uid, hs|
     hs['clusters'].each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
-        node_id = node_uid.split('-')[1].to_i
-        kvl_adapters = hn['network_adapters'].select { |k,v| v['mountable'] and (v['kavlan'] or not v.has_key?('kavlan')) and v['interface'] == 'Ethernet' }
+        kvl_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and (v['kavlan'] or not v.has_key?('kavlan')) and v['interface'] == 'Ethernet' }
         if kvl_adapters.length > 0
           if kvl_adapters.length != hn['kavlan'].length
             raise "#{node_uid}: inconsistency: num kvl_adapters = #{kvl_adapters.length}, num kavlan entries = #{hn['kavlan'].length}"
@@ -154,7 +153,7 @@ def add_kavlan_ipv6s(h)
           end
           ip4 = kvl_adapters.values[0]['ip']
           hn['kavlan6'] = {}
-          kvl_adapters.each_with_index do |(iface, nah), idx|
+          kvl_adapters.each_with_index do |(iface, _nah), idx|
             hn['kavlan6'][iface] = {}
             hn['kavlan'][iface].each_key do |kvl|
               kvl_id = kvl.split('-')[1].to_i
