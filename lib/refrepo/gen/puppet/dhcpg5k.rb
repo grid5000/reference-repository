@@ -23,8 +23,10 @@ def get_network_info(node_hash, network_interface)
       mac = a.fetch('mac')
       ip = a.fetch('ip', nil)
       ip6 = a.fetch('ip6', nil)
+      name = a.fetch('network_address').split('.')[0] rescue node_hash['uid']
       if (not ip.nil?) or (not ip6.nil?)
         network_infos << {'mac' => mac,
+                          'name' => name,
                           'ip' => ip,
                           'ip6' => ip6 }
       end

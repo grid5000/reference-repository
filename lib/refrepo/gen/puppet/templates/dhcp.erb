@@ -11,17 +11,16 @@
     data.fetch('nodes').each_sort_by_node_uid { |node_uid, node|
       next if node == nil || (node['status'] && node['status'] == 'retired')
 
-      case network_interface
-        when 'bmc', 'adm', 'mic0'
-          uid_net = node_uid + '-' + network_interface
-        else
-          uid_net = node_uid
-      end
-
       # Get ipv4, ipv6 and mac addresses
       begin
         ifinfos = get_network_info(node, network_interface)
         ifinfos.each do |h|
+          case network_interface
+            when 'bmc', 'adm', 'mic0'
+              uid_net = node_uid + '-' + network_interface
+            else
+              uid_net = h['name']
+          end
           if dhcpkind == 'dhcpv6'
             if h['ip6']
               dhcp_entries.push({ 'uid_net' => uid_net, 'ipv6' => h['ip6'], 'mac' => h['mac'] })
