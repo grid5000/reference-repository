@@ -5,14 +5,14 @@ require 'refrepo/hash/hash'
 def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
   global_hash = {} # the global data structure
-  
+
   Dir.chdir(directory) {
-  
+
     # Recursively list the .yaml files.
     # The order in which the results are returned depends on the system (http://ruby-doc.org/core-2.2.3/Dir.html).
     # => List deepest files first as they have lowest priority when hash keys are duplicated.
     list_of_yaml_files = Dir['**/*.y*ml', '**/*.y*ml.erb'].sort_by { |x| -x.count('/') }
-    
+
     list_of_yaml_files.each { |filename|
       begin
         # Load YAML
@@ -53,6 +53,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with its kavlan IPs
   add_kavlan_ips(global_hash)
   add_kavlan_ipv6s(global_hash)
+
+  # populate each node with software informations
+  add_software(global_hash)
 
   return global_hash
 end
@@ -171,6 +174,18 @@ def add_kavlan_ipv6s(h)
             end
           end
         end
+      end
+    end
+  end
+end
+
+def add_software(h)
+  # for each node
+  h['sites'].each_pair do |site_uid, hs|
+    hs['clusters'].each_pair do |cluster_uid, hc|
+      hc['nodes'].each_pair do |node_uid, hn|
+        hn['software']['postinstall-version'] = h['software']['postinstall-version']
+        hn['software']['forced-deployment-timestamp'] = h['software']['forced-deployment-timestamp']
       end
     end
   end
