@@ -4,7 +4,8 @@
 #
 
 <%-
-wattmetre_port_per_node.each {|node, ports|
+  # Sort by cluster and node number
+  wattmetre_port_per_node.to_a.sort_by { |e| n = e[0].split('-') ; n[1] = n[1].to_i ; n }.each { |e| node, ports = e
 -%>
 <%= node %>: [<%= ports.join(',') %>]
 <%-
