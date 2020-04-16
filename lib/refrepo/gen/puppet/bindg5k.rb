@@ -299,7 +299,7 @@ def get_reverse_record(record, site_uid)
 
   if record.is_a?(DNS::Zone::RR::AAAA) # check for AAAA before A because AAAA inherits from A (so an AAAA is also an A)
     nibble_array = IPAddr.new(record.address).to_string.gsub(':','').split('').reverse
-    nibble_split = 18
+    nibble_split = 16
     file_name = "reverse6-#{nibble_array[nibble_split..31].join('.')}.db"
     if /.*-kavlan-[1-3]-ipv6$/.match(record.label)
       #A filter in bind-global-site.conf.erb prevents entries in 'local' directory to be included in global configuration
