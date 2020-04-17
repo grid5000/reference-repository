@@ -1,0 +1,149 @@
+---
+metrics:
+
+- name: network_ifacein_bytes_total
+  description: Input byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: network_ifaceout_bytes_total
+  description: Output byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: bmc_temp_ambiant_celsius
+  description: Front node ambiant temperature reported by BMC, in celsius
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 11 #Inlet Temp
+
+- name: bmc_voltage_12vstandby_volt
+  description: Voltage of 12V Standby reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5 #12V Standby
+
+- name: bmc_voltage_5vstandby_volt
+  description: Voltage of 5V Standby reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6 #5V Standby
+
+- name: bmc_voltage_5v_volt
+  description: Voltage of 5V reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 7 #5V
+
+- name: bmc_voltage_3.3vstandby_volt
+  description: Voltage of 3.3V Standby reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 8 #3.3V Standby
+
+- name: bmc_voltage_3.3v_volt
+  description: Voltage of 3.3V reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 9 #3.3V
+
+- name: bmc_temp_cpu1_celsius
+  description: Temperature of CPU 1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 12 #CPU1 Temp
+
+- name: bmc_temp_cpu2_celsius
+  description: Temperature of CPU 2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 13 #CPU2 Temp
+
+- name: bmc_temp_dimmzone1_celsius
+  description: Temperature of DIMM ZONE 1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 14 #DIMM ZONE 1 Temp
+
+- name: bmc_temp_dimmzone2_celsius
+  description: Temperature of DIMM ZONE 2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 15 #DIMM ZONE 2 Temp
+
+- name: bmc_temp_pch_celsius
+  description: Temperature of PCH reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 18 #PCH Temp
+
+- name: bmc_voltage_input_volt
+  description: Input voltage reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 16 #Input Voltage
+
+- name: bmc_current_input_amp
+  description: Input current reported by BMC, in amp
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 17 #Input Current
+
+- name: bmc_fanspeed_fan1_rpm
+  description: Speed of fan 1 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 21 #FAN_1
+
+- name: bmc_fanspeed_fan2_rpm
+  description: Speed of fan 2 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 24 #FAN_2
+
+- name: bmc_fanspeed_fan3_rpm
+  description: Speed of fan 3 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 28 #FAN_3
+
+- name: bmc_fanspeed_fan4_rpm
+  description: Speed of fan 4 reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 29 #FAN_4
