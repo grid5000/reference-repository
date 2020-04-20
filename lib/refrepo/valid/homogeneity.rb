@@ -80,6 +80,7 @@ eos
 
     (1..21).each { |kavlan|
       ignore_keys << "~kavlan.eth#{eth}.kavlan-#{kavlan}"
+      ignore_keys << "~kavlan6.eth#{eth}.kavlan-#{kavlan}"
     }
   }
 
