@@ -1,0 +1,526 @@
+---
+metrics:
+
+- name: network_ifacein_bytes_total
+  description: Input byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: network_ifaceout_bytes_total
+  description: Output byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: bmc_voltage_pvcore1_volt
+  description: Voltage of PVCORE1 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 2720 #PVCORE1
+
+- name: bmc_voltage_pvnbcpu1_volt
+  description: Voltage of PVNB CPU1 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 2784 #PVNB CPU1
+
+- name: bmc_voltage_p1v5ddr3cpu1_volt
+  description: Voltage of P1V5 DDR3 CPU1 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 2848 #P1V5 DDR3 CPU1
+
+- name: bmc_voltage_pvcore2_volt
+  description: Voltage of PVCORE2 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 2912 #PVCORE2
+
+- name: bmc_voltage_pvnbcpu2_volt
+  description: Voltage of PVNB CPU2 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 2976 #PVNB CPU2
+
+- name: bmc_voltage_p1v5ddr3cpu2_volt
+  description: Voltage of P1V5 DDR3 CPU2 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3040 #P1V5 DDR3 CPU2
+
+- name: bmc_voltage_p12v_volt
+  description: Voltage of P12V reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3104 #P12V
+
+- name: bmc_voltage_p5v_volt
+  description: Voltage of P5V reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3168 #P5V
+
+- name: bmc_voltage_p5vstby_volt
+  description: Voltage of P5V STBY reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3232 #P5V STBY
+
+- name: bmc_voltage_p3v3_volt
+  description: Voltage of P3V3 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3296 #P3V3
+
+- name: bmc_voltage_p3v3stby_volt
+  description: Voltage of P3V3 STBY reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3360 #P3V3 STBY
+
+- name: bmc_voltage_p1v1sr5670_volt
+  description: Voltage of P1V1 SR5670 reported by BMC, in volt
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3424 #P1V1 SR5670
+
+- name: bmc_fanspeed_psufan1inlet_rpm
+  description: Speed of PSU Fan 1 Inlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3536 #Fan1 Inlet
+
+- name: bmc_fanspeed_psufan1outlet_rpm
+  description: Speed of PSU Fan 1 Outlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3648 #Fan1 Outlet
+
+- name: bmc_fanspeed_psufan2inlet_rpm
+  description: Speed of PSU Fan 2 Inlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3760 #Fan2 Inlet
+
+- name: bmc_fanspeed_psufan2outlet_rpm
+  description: Speed of PSU Fan 2 Outlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3872 #Fan2 Outlet
+
+- name: bmc_fanspeed_psufan3inlet_rpm
+  description: Speed of PSU Fan 3 Inlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 3984 #Fan3 Inlet
+
+- name: bmc_fanspeed_psufan3outlet_rpm
+  description: Speed of PSU Fan 3 Outlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4096 #Fan3 Outlet
+
+- name: bmc_fanspeed_psufan4inlet_rpm
+  description: Speed of PSU Fan 4 Inlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4208 #Fan4 Inlet
+
+- name: bmc_fanspeed_psufan4outlet_rpm
+  description: Speed of PSU Fan 4 Outlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4320 #Fan4 Outlet
+
+- name: bmc_fanspeed_psufan5inlet_rpm
+  description: Speed of PSU Fan 5 Inlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4384 #Fan5 Inlet
+
+- name: bmc_fanspeed_psufan5outlet_rpm
+  description: Speed of PSU Fan 5 Outlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4448 #Fan5 Outlet
+
+- name: bmc_fanspeed_psufan6inlet_rpm
+  description: Speed of PSU Fan 6 Inlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4512 #Fan6 Inlet
+
+- name: bmc_fanspeed_psufan6outlet_rpm
+  description: Speed of PSU Fan 6 Outlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4576 #Fan6 Outlet
+
+- name: bmc_fanspeed_psufan7inlet_rpm
+  description: Speed of PSU Fan 7 Inlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4640 #Fan7 Inlet
+
+- name: bmc_fanspeed_psufan7outlet_rpm
+  description: Speed of PSU Fan 7 Outlet reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4704 #Fan7 Outlet
+
+- name: bmc_temp_cpu1dimm1_celsius
+  description: Temperature of CPU1 DIMM1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4816 #CPU1 DIMM1
+
+- name: bmc_temp_cpu1dimm2_celsius
+  description: Temperature of CPU1 DIMM2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4880 #CPU1 DIMM2
+
+- name: bmc_temp_cpu1dimm3_celsius
+  description: Temperature of CPU1 DIMM3 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 4944 #CPU1 DIMM3
+
+- name: bmc_temp_cpu1dimm4_celsius
+  description: Temperature of CPU1 DIMM4 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5008 #CPU1 DIMM4
+
+- name: bmc_temp_cpu1dimm5_celsius
+  description: Temperature of CPU1 DIMM5 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5072 #CPU1 DIMM5
+
+- name: bmc_temp_cpu1dimm6_celsius
+  description: Temperature of CPU1 DIMM6 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5136 #CPU1 DIMM6
+
+- name: bmc_temp_cpu1dimm7_celsius
+  description: Temperature of CPU1 DIMM7 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5200 #CPU1 DIMM7
+
+- name: bmc_temp_cpu1dimm8_celsius
+  description: Temperature of CPU1 DIMM8 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5264 #CPU1 DIMM8
+
+- name: bmc_temp_cpu1dimm9_celsius
+  description: Temperature of CPU1 DIMM9 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5328 #CPU1 DIMM9
+
+- name: bmc_temp_cpu1dimm10_celsius
+  description: Temperature of CPU1 DIMM10 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5392 #CPU1 DIMM10
+
+- name: bmc_temp_cpu1dimm11_celsius
+  description: Temperature of CPU1 DIMM11 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5456 #CPU1 DIMM11
+
+- name: bmc_temp_cpu1dimm12_celsius
+  description: Temperature of CPU1 DIMM12 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5520 #CPU1 DIMM12
+
+- name: bmc_temp_cpu2dimm1_celsius
+  description: Temperature of CPU2 DIMM1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5584 #CPU2 DIMM1
+
+- name: bmc_temp_cpu2dimm2_celsius
+  description: Temperature of CPU2 DIMM2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5648 #CPU2 DIMM2
+
+- name: bmc_temp_cpu2dimm3_celsius
+  description: Temperature of CPU2 DIMM3 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5712 #CPU2 DIMM3
+
+- name: bmc_temp_cpu2dimm4_celsius
+  description: Temperature of CPU2 DIMM4 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5776 #CPU2 DIMM4
+
+- name: bmc_temp_cpu2dimm5_celsius
+  description: Temperature of CPU2 DIMM5 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5840 #CPU2 DIMM5
+
+- name: bmc_temp_cpu2dimm6_celsius
+  description: Temperature of CPU2 DIMM6 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5904 #CPU2 DIMM6
+
+- name: bmc_temp_cpu2dimm7_celsius
+  description: Temperature of CPU2 DIMM7 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 5968 #CPU2 DIMM7
+
+- name: bmc_temp_cpu2dimm8_celsius
+  description: Temperature of CPU2 DIMM8 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6032 #CPU2 DIMM8
+
+- name: bmc_temp_cpu2dimm9_celsius
+  description: Temperature of CPU2 DIMM9 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6096 #CPU2 DIMM9
+
+- name: bmc_temp_cpu2dimm10_celsius
+  description: Temperature of CPU2 DIMM10 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6160 #CPU2 DIMM10
+
+- name: bmc_temp_cpu2dimm11_celsius
+  description: Temperature of CPU2 DIMM11 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6224 #CPU2 DIMM11
+
+- name: bmc_temp_cpu2dimm12_celsius
+  description: Temperature of CPU2 DIMM12 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6288 #CPU2 DIMM12
+
+- name: bmc_temp_inletambient_celsius
+  description: Temperature of Inlet Ambient reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6400 #Inlet Ambient
+
+- name: bmc_temp_cpu1_celsius
+  description: Temperature of CPU1 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6464 #CPU1
+
+- name: bmc_temp_cpu2_celsius
+  description: Temperature of CPU2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6528 #CPU2
+
+- name: bmc_temp_pcioutlet_celsius
+  description: Temperature of PCI Outlet reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6592 #PCI Outlet
+
+- name: bmc_temp_sr5670outlet_celsius
+  description: Temperature of SR5670 Outlet reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6656 #SR5670 Outlet
+
+- name: bmc_temp_rearboard_celsius
+  description: Temperature of Rear Board reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6720 #Rear Board
+
+- name: bmc_temp_pcimid_celsius
+  description: Temperature of PCI Mid reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6784 #PCI Mid
+
+- name: bmc_temp_pciinlet_celsius
+  description: Temperature of PCI Inlet reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6848 #PCI Inlet
+
+- name: bmc_temp_rearboard2_celsius
+  description: Temperature of Rear Board2 reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6912 #Rear Board2
+
+- name: bmc_temp_cpuinlet_celsius
+  description: Temperature of CPU Inlet reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 6976 #CPU Inlet
+
+- name: bmc_temp_psinletambient_celsius
+  description: Temperature of PS Inlet Ambient reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 7040 #PS Inlet Ambient
+
+- name: bmc_temp_iocontroller_celsius
+  description: Temperature of IO Controller reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 7104 #IO Controller
+
+- name: bmc_temp_pci16_riser_celsius
+  description: Temperature of PCI16_RISER reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 7168 #PCI16_RISER
+
+- name: bmc_temp_pci4_riser_celsius
+  description: Temperature of PCI4_RISER reported by BMC, in celsius
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 7232 #PCI4_RISER

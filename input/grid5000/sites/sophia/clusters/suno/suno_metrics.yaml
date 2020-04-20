@@ -1,0 +1,85 @@
+---
+metrics:
+
+- name: network_ifacein_bytes_total
+  description: Input byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: network_ifaceout_bytes_total
+  description: Output byte counter for the network device port connected to the node
+  period: 1000
+  source:
+    protocol: network_equipment
+
+- name: bmc_temp_ambiant_celsius
+  description: Front node ambiant temperature reported by BMC, in celsius
+  period: 5000
+  source:
+    protocol: ipmisensor
+    id: 10 #Inlet Temp
+
+- name: bmc_fanspeed_fanmod1a_rpm
+  description: Speed of FAN MOD 1A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 33 #FAN MOD 1A RPM
+
+- name: bmc_fanspeed_fanmod1b_rpm
+  description: Speed of FAN MOD 1B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 34 #FAN MOD 1B RPM
+
+- name: bmc_fanspeed_fanmod2a_rpm
+  description: Speed of FAN MOD 2A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 35 #FAN MOD 2A RPM
+
+- name: bmc_fanspeed_fanmod2b_rpm
+  description: Speed of FAN MOD 2B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 36 #FAN MOD 2B RPM
+
+- name: bmc_fanspeed_fanmod3a_rpm
+  description: Speed of FAN MOD 3A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 37 #FAN MOD 3A RPM
+
+- name: bmc_fanspeed_fanmod3b_rpm
+  description: Speed of FAN MOD 3B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 38 #FAN MOD 3B RPM
+
+- name: bmc_fanspeed_fanmod4a_rpm
+  description: Speed of FAN MOD 4A reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 39 #FAN MOD 4A RPM
+
+- name: bmc_fanspeed_fanmod4b_rpm
+  description: Speed of FAN MOD 4B reported by BMC, in rpm
+  period: 0
+  optional_period: 5000
+  source:
+    protocol: ipmisensor
+    id: 40 #FAN MOD 4B RPM

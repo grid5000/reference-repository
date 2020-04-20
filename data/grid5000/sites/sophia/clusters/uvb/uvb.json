@@ -1,6 +1,134 @@
 {
   "created_at": "Tue, 04 Jan 2011 00:00:00 GMT",
   "kavlan": true,
+  "metrics": [
+    {
+      "description": "Input byte counter for the network device port connected to the node",
+      "name": "network_ifacein_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port connected to the node",
+      "name": "network_ifaceout_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Voltage of PS 12V reported by BMC, in volt",
+      "name": "bmc_voltage_ps12v_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 14,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of PS 5V reported by BMC, in volt",
+      "name": "bmc_voltage_ps5v_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 15,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of MLB TEMP 2 reported by BMC, in celsius",
+      "name": "bmc_temp_mlbtemp2_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 16,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of MLB TEMP 3 reported by BMC, in celsius",
+      "name": "bmc_temp_mlbtemp3_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 17,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Processor 1 reported by BMC, in celsius",
+      "name": "bmc_temp_processor1temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 18,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of MLB TEMP 1 reported by BMC, in celsius",
+      "name": "bmc_temp_mlbtemp1_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 19,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Processor 2 reported by BMC, in celsius",
+      "name": "bmc_temp_processor2temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 20,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of STBY 3.3V reported by BMC, in volt",
+      "name": "bmc_voltage_stby3.3v_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 21,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "PS Current reported by BMC, in amp",
+      "name": "bmc_current_ps_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 22,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VCORE 1 reported by BMC, in volt",
+      "name": "bmc_voltage_vcore1_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 26,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VCORE 2 reported by BMC, in volt",
+      "name": "bmc_voltage_vcore2_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 27,
+        "protocol": "ipmisensor"
+      }
+    }
+  ],
   "model": "Dell PowerEdge C6100",
   "queues": [
     "default",

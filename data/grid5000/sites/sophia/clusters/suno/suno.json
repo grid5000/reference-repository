@@ -1,6 +1,113 @@
 {
   "created_at": "Wed, 27 Jan 2010 00:00:00 GMT",
   "kavlan": true,
+  "metrics": [
+    {
+      "description": "Input byte counter for the network device port connected to the node",
+      "name": "network_ifacein_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port connected to the node",
+      "name": "network_ifaceout_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Front node ambiant temperature reported by BMC, in celsius",
+      "name": "bmc_temp_ambiant_celsius",
+      "period": 5000,
+      "source": {
+        "id": 10,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of FAN MOD 1A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fanmod1a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 33,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of FAN MOD 1B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fanmod1b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 34,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of FAN MOD 2A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fanmod2a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 35,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of FAN MOD 2B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fanmod2b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 36,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of FAN MOD 3A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fanmod3a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 37,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of FAN MOD 3B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fanmod3b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 38,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of FAN MOD 4A reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fanmod4a_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 39,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of FAN MOD 4B reported by BMC, in rpm",
+      "name": "bmc_fanspeed_fanmod4b_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 40,
+        "protocol": "ipmisensor"
+      }
+    }
+  ],
   "model": "Dell PowerEdge R410",
   "queues": [
     "default",
