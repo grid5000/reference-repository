@@ -162,7 +162,7 @@ def add_ipv6(h)
           ip4 = ipv6_adapters.values[0]['ip']
           ipv6_adapters.each_with_index do |(_iface, nah), idx|
             # compute and assign IPv6 based on IPv4 of the first adapter
-            ip6 = '2001:660:4406:'
+            ip6 = h['ipv6']['prefix'] + ':'
             ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
             ip6 += '00:'
             ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
@@ -199,7 +199,7 @@ def add_kavlan_ipv6s(h)
             hn['kavlan6'][iface] = {}
             hn['kavlan'][iface].each_key do |kvl|
               kvl_id = kvl.split('-')[1].to_i
-              ip6 = '2001:660:4406:'
+              ip6 = h['ipv6']['prefix'] + ':'
               ip6 += '%x' % h['ipv6']['site-indexes'][site_uid]
               ip6 += '%x:' % (kvl_id + 0x80)
               ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
