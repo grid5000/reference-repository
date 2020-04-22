@@ -10,6 +10,43 @@ option pxelinux.pathprefix code 210 = text;
 option pxelinux.reboottime code 211 = unsigned integer 32;
 option vendorinfo          code 43  = string;
 
+# define Option for the PXE class
+option space PXE;
+option PXE.mtftp-ip code 1 = ip-address;
+option PXE.mtftp-cport code 2 = unsigned integer 16;
+option PXE.mtftp-sport code 3 = unsigned integer 16;
+option PXE.mtftp-tmout code 4 = unsigned integer 8;
+option PXE.mtftp-delay code 5 = unsigned integer 8;
+option PXE.discovery-control code 6 = unsigned integer 8;
+option PXE.discovery-mcast-addr code 7 = ip-address;
+option arch code 93 = unsigned integer 16;
+
+# create the Class PXE
+class "PXE" {
+    # if the vendor-class-identifier is set to PXEClient in the client dhcp request
+    match if substring(option vendor-class-identifier, 0, 9) = "PXEClient";
+    #
+    # filename define the file retrieve by the client, there pxelinux.0
+    # our tftp is chrooted so is just the path to the file
+    # If you prefer use grub, use pxegrub compiled for your ethernet card.
+    if option arch = 00:07 {
+        filename "/grub/x86_64-efi/core.efi";
+    } else if option arch = 00:09 {
+        filename "/grub/x86_64-efi/core.efi";
+    } else if option arch = 00:0b {
+        filename "/grub/arm64-efi/core.efi";
+    } else {
+        filename "/pxelinux.0";
+        #
+        # Set the  vendor-class-identifier field to PXEClient in dhcp answer
+        # if this field is not set the pxe client will ignore the answer !
+        #
+        option vendor-class-identifier "PXEClient";
+        vendor-option-space PXE;
+        option PXE.mtftp-ip 0.0.0.0;
+    }
+}
+
 <%
 kavlan = refapi['sites'][site_uid]['kavlans'][kavlan_id.to_s] # TODO fix needed conversion
 kavlan_ip = IPAddress::IPv4::new(kavlan['network'])
@@ -23,7 +60,6 @@ subnet <%= kavlan_ip.network %> netmask <%= kavlan_ip.netmask %> {
     option routers <%= kavlan['gateway'] %>;
     option subnet-mask <%= kavlan_ip.netmask %>;
     option broadcast-address <%= kavlan_ip.broadcast %>;
-    filename  "pxelinux.0";
     next-server <%= "kadeploy.#{site_uid}.grid5000.fr" %>;
 }
 
