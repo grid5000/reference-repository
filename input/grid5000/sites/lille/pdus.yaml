@@ -2,6 +2,13 @@ pdus:
   pdu-b1p[1-3]: &ap8659
     vendor: APC
     model: AP8659
+    metrics:
+    - name: pdu_outlet_power_watt
+      description: Power consumption per outlet reported by PDU, in watt
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
       - power:
           per_outlets: true
@@ -26,6 +33,13 @@ pdus:
   pdu-b1p3-2:
     vendor: APC
     model: AP8659
+    metrics:
+    - name: pdu_outlet_power_watt
+      description: Power consumption per outlet reported by PDU, in watt
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
       - power:
           per_outlets: true
@@ -47,6 +61,13 @@ pdus:
   pdu-b3p1:
     vendor: APC
     model: AP8659
+    metrics:
+    - name: pdu_outlet_power_watt
+      description: Power consumption per outlet reported by PDU, in watt
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
       - power:
           per_outlets: true
@@ -69,6 +90,13 @@ pdus:
   pdu-b3p3:
     vendor: APC
     model: AP8659
+    metrics:
+    - name: pdu_outlet_power_watt
+      description: Power consumption per outlet reported by PDU, in watt
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
       - power:
           per_outlets: true
