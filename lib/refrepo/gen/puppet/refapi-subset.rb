@@ -23,6 +23,7 @@ def gen_json(site, output_path)
     cluster_hash.delete_if { |key| key != 'nodes' }
     cluster_hash['nodes'].to_h.each do |node_uid, node_hash|
       node_hash.delete_if { |key| key != 'software' }
+      node_hash['software'].delete_if { |key| key != 'standard-environment' }
     end
 
     cluster_hash['nodes'] = cluster_hash['nodes'].sort_by{|node_uid, _node_hash| node_uid[/(\d+)/].to_i }.to_h
