@@ -5,8 +5,10 @@
 
 <%-
 cluster.fetch('metrics', []).each {|metric|
+  # These are "virtual" metrics available for a node, but collected elsewhere
   next if metric['source']['protocol'] == "wattmetre"
   next if metric['source']['protocol'] == "network_equipment"
+  next if metric['source']['protocol'] == "pdu"
 
   if metric['source']['protocol'] == "ipmisensor"
     auth = ipmi_credentials+"@"
