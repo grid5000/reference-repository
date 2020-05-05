@@ -46,6 +46,14 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The ID of the CPU the resource is part of. The unique scope is the OAR server. ",
       "possible_values" => "1, 2, 3, ..."
     },
+    "disk" => {
+      "description" => "Id of a reservable disk on a node, for resources of type 'disk'.",
+      "possible_values" => "sdb.yeti-1, sdc.yeti-1, sdd.yeti-1, ..."
+    },
+    "diskpath" => {
+      "description" => "Device path of a reservable disk on a node, for resources of type 'disk'.",
+      "possible_values" => "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:1:0, /dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:2:0, /dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:3:0..."
+    },
     "gpu" => {
       "description" => "The ID of the GPU the resource is part of. The unique scope is the OAR server. ",
       "possible_values" => "1, 2, 3, ..."
@@ -147,15 +155,19 @@ class OarPropertiesGenerator < WikiGenerator
     "mic" => {
       "description" => "Intel many integrated core architecture support",
       "value_type" => "Boolean"
+    },
+    "type" => {
+      "description" => "Type of the resource.",
+      "possible_values" => "kavlan-topo, storage, disk, kavlan-local, kavlan-global, default, subnet, kavlan"
     }
   }
 
   #Group properties by categories
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
-    "Hierarchy" => ["chassis", "cluster", "cpu", "core", "gpu", "host", "network_address", "ip", "slash_[16-22]", "switch", "vlan"],
+    "Hierarchy" => ["chassis", "cluster", "cpu", "core", "disk", "diskpath", "gpu", "host", "network_address", "slash_[16-22]", "switch", "vlan"],
     "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
-    "Miscellaneous" => ["wattmeter", "nodemodel"]
+    "Miscellaneous" => ["wattmeter", "nodemodel", "ip", "type"]
   }
 
   #Existing properties that won't be documented
