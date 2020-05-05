@@ -175,6 +175,19 @@ class OarPropertiesGenerator < WikiGenerator
     "type" => {
       "description" => "Type of the resource.",
       "possible_values" => "kavlan-topo, storage, disk, kavlan-local, kavlan-global, default, subnet, kavlan"
+    },
+    "expiry_date" => {
+      "description" => "Expiration datefor the given resource. (g5k internal property)",
+      "possible_values" => "0"
+    },
+    "comment" => {
+      "description" => "Comment for the given resource. (g5k internal property)",
+      "possible_values" => "Retired since 2018-01-30: retired_cluster, PSU Dead, Retired"
+    },
+    "maintenance" => {
+      "description" => "Is this resource under maintenance ? (g5k internal property)",
+      "value_type" => "Boolean",
+      "possible_values" => "YES, NO"
     }
   }
 
@@ -183,7 +196,7 @@ class OarPropertiesGenerator < WikiGenerator
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
     "Hierarchy" => ["chassis", "cluster", "cpu", "cpuset", "core", "disk", "diskpath", "gpu", "gpudevice", "host", "network_address", "slash_[16-22]", "switch", "subnet_address", "subnet_prefix", "vlan"],
     "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
-    "Miscellaneous" => ["wattmeter", "nodemodel", "ip", "type"]
+    "Miscellaneous" => ["wattmeter", "nodemodel", "ip", "type", "expiry_date", "comment", "maintenance"]
   }
 
   #Existing properties that won't be documented
