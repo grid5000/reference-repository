@@ -51,14 +51,14 @@ class OarPropertiesGenerator < WikiGenerator
       "possible_values" => "1, 2, 3, ..."
     },
     "host" => {
-      "description" => "A user-friendly name for the network_address property",
+      "description" => "The full hostname of the node the resource is part of",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
     "ip" => {
       "description" => "The IPv4 address of the node the resource is part of"
     },
     "network_address" => {
-      "description" => "The full hostname of the node the resource is part of",
+      "description" => "The full hostname of the node the resource is part of (deprecated, please use host instead)",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
     "slash_[16-22]" => {
