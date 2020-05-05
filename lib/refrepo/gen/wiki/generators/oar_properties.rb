@@ -32,6 +32,9 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "Is this resource available in production queue ?",
       "value_type" => "Boolean"
     },
+    "chassis" => {
+      "description" => "The manfacturer, name and serial of the chassis."
+    },
     "cluster" => {
       "description" => "The name of the cluster the resource is part of"
     },
@@ -58,8 +61,16 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The full hostname of the node the resource is part of",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
+    "slash_[16-22]" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
     "switch" => {
       "description" => "On what switch the resource is directly connected ?"
+    },
+    "vlan" => {
+      "description" => "Used for kavlan-topo resources.",
+      "possible_values" => "1, 1523, 1560, 1597, ..."
     },
     "nodemodel" => {
       "description" => "The type of the chassis"
@@ -142,7 +153,7 @@ class OarPropertiesGenerator < WikiGenerator
   #Group properties by categories
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
-    "Hierarchy" => ["cluster", "cpu", "core", "host", "network_address", "ip", "switch"],
+    "Hierarchy" => ["chassis", "cluster", "cpu", "core", "gpu", "host", "network_address", "ip", "slash_[16-22]", "switch", "vlan"],
     "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel"]
   }
