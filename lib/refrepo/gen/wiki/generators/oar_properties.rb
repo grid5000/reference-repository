@@ -84,6 +84,14 @@ class OarPropertiesGenerator < WikiGenerator
     "switch" => {
       "description" => "On what switch the resource is directly connected ?"
     },
+    "subnet_address" => {
+      "description" => "Subnet address for subnet resources.",
+      "possible_values" => "10.144.52.0, 10.144.24.0, 10.144.132.0, 10.146.28.0, 10.144.236.0, ..."
+    },
+    "subnet_prefix" => {
+      "description" => "Subnet prefix for subnet resources.",
+      "possible_values" => "22"
+    },
     "vlan" => {
       "description" => "Used for kavlan-topo resources.",
       "possible_values" => "1, 1523, 1560, 1597, ..."
@@ -173,7 +181,7 @@ class OarPropertiesGenerator < WikiGenerator
   #Group properties by categories
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
-    "Hierarchy" => ["chassis", "cluster", "cpu", "cpuset", "core", "disk", "diskpath", "gpu", "gpudevice", "host", "network_address", "slash_[16-22]", "switch", "vlan"],
+    "Hierarchy" => ["chassis", "cluster", "cpu", "cpuset", "core", "disk", "diskpath", "gpu", "gpudevice", "host", "network_address", "slash_[16-22]", "switch", "subnet_address", "subnet_prefix", "vlan"],
     "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel", "ip", "type"]
   }
