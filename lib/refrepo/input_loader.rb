@@ -181,6 +181,8 @@ def add_ipv6(h)
 end
 
 def add_kavlan_ipv6s(h)
+  global_vlan_site = {}
+  h['ipv6']['site_global_kavlans'].each { |key, value| global_vlan_site[value] = key }
   h['sites'].each_pair do |site_uid, hs|
     hs['clusters'].each_pair do |_cluster_uid, hc|
       next if !hc['kavlan'] # skip clusters where kavlan is globally set to false (used for initial cluster installation)
@@ -200,8 +202,17 @@ def add_kavlan_ipv6s(h)
             hn['kavlan'][iface].each_key do |kvl|
               kvl_id = kvl.split('-')[1].to_i
               ip6 = h['ipv6']['prefix'] + ':'
-              ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
-              ip6 += '%x:' % (kvl_id + 0x80)
+              case kvl_id
+              when 1..3 # local non-routed
+                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
+                ip6 += '%x:' % (kvl_id + 0x80 - 1)
+              when 4..9 # local routed
+                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
+                ip6 += '%x:' % (kvl_id + 0x90 - 4)
+              else      # global
+                ip6 += '%x' % h['ipv6']['site_indexes'][global_vlan_site[kvl_id]]
+                ip6 += '%x:' % ((h['ipv6']['site_indexes'][site_uid]&0x1f) + 0xa0)
+              end
               ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
               if idx > 0
                 ip6 += ':%x::' % idx
