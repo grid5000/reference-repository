@@ -54,7 +54,10 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with its IPv4 addresses
   add_ipv4(global_hash)
 
-  # populate each node with its kavlan IPv4 IPs
+  # add some ipv6 informations in sites
+  add_site_ipv6_infos(global_hash)
+
+  # populate each node with its kavlan IPs
   add_kavlan_ips(global_hash)
   add_kavlan_ipv6s(global_hash)
 
@@ -315,3 +318,13 @@ def add_theorical_flops(h)
     end
   end
 end
+
+def add_site_ipv6_infos(h)
+  h['sites'].each_pair do |site_uid, hs|
+    h['sites'][site_uid]['ipv6'] = {}
+    h['sites'][site_uid]['ipv6']['prefix'] = h['ipv6']['prefix'] + ":%02x" % (h['ipv6']['site_indexes'][site_uid])
+    h['sites'][site_uid]['ipv6']['site_index'] = h['ipv6']['site_indexes'][site_uid]
+    h['sites'][site_uid]['ipv6']['site_global_kavlan'] = h['ipv6']['site_global_kavlans'][site_uid]
+  end
+end
+
