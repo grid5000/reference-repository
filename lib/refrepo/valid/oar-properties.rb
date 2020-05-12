@@ -1,6 +1,5 @@
 # coding: utf-8
 
-require 'refrepo/data_loader'
 require 'net/ssh'
 require 'hashdiff'
 
@@ -14,7 +13,6 @@ G5K_PROPERTIES=%w{api_timestamp available_upto besteffort chassis chunks cluster
 module RefRepo::Valid::OarProperties
   def self.check(options)
     ret = true
-    refapi = load_data_hierarchy
     options[:sites].each do |site|
       puts "Checking site #{site}..."
       resources = RefRepo::Utils::get_api("sites/#{site}/internal/oarapi/resources/details.json?limit=1000000")['items']
@@ -79,7 +77,6 @@ module RefRepo::Valid::OarProperties
           raise "Invalid: varying nbcores inside cluster!"
         end
         nbcores = nbcores.first
-        refapi_host = refapi['sites'][site]['clusters'][cluster]['nodes'][host.split('.')[0]]
 
         if host_resources.length != nbcores
           puts "ERROR: invalid number of resources for #{host}. should be nbcores."
@@ -102,23 +99,11 @@ module RefRepo::Valid::OarProperties
           puts "ERROR: first cpuset value for #{host} should be 0"
           ret = false
         end
-        # the last cpuset should be nbcores-1
-        if host_cpusets_max - host_cpusets_min + 1 != nbcores and refapi_host['architecture']['cpu_core_numbering'] != 'contiguous-including-threads'
+        # the last cpuset should be nbcores-1, on aarch64 cpuset are not sequential
+        if host_cpusets_max - host_cpusets_min + 1 != nbcores and host_resources.map { |e| e['cpuarch']} == 'x86_64'
           puts "ERROR: cpuset values for #{host} are not sequential"
           ret = false
         end
-
-        # Core numbering is different with contiguous-including-threads
-        if refapi_host['architecture']['cpu_core_numbering'] == 'contiguous-including-threads'
-          cpu_num_max = refapi_host['architecture']['nb_procs'] - 1
-          thread_per_cpu = refapi_host['architecture']['nb_threads'] / refapi_host['architecture']['nb_procs']
-          core_per_cpu = nbcores / refapi_host['architecture']['nb_procs']
-          if host_cpusets_max != cpu_num_max * thread_per_cpu + core_per_cpu - 1
-            puts "ERROR: cpuset values for #{host} do not match contiguous-including-threads core numbering"
-            ret = false
-          end
-        end
-
         if options[:verbose] and (host_cpusets_max - host_cpusets_min + 1 != nbcores or host_cores_max - host_cores_min + 1 != nbcores)
           puts "id   cpu   core   cpuset"
           pp(host_resources.map { |e| [e['id'], e['cpu'], e['core'], e['cpuset'] ] })
