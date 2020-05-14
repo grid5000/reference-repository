@@ -50,7 +50,10 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with its IPv6
   add_ipv6(global_hash)
 
-  # populate each node with its kavlan IPs
+  # populate each node with its IPv4 addresses
+  add_ipv4(global_hash)
+
+  # populate each node with its kavlan IPv4 IPs
   add_kavlan_ips(global_hash)
   add_kavlan_ipv6s(global_hash)
 
@@ -105,6 +108,34 @@ def add_kavlan_ips(h)
             allocated[ip] = a
             hn['kavlan'][iface]["kavlan-#{vlan}"] = ip
           end
+        end
+      end
+    end
+  end
+end
+
+def add_ipv4(h)
+  allocated = {}
+  base = IPAddress::IPv4::new(h['ipv4']['base']).to_u32
+  sites_offsets = h['ipv4']['sites_offsets'].split("\n").map { |l| l = l.split(/\s+/) ; [ l[0], l[1..-1].inject(0) { |a, b| (a << 8) + b.to_i } ] }.to_h
+  iface_offsets = h['ipv4']['iface_offsets'].split("\n").map { |l| l = l.split(/\s+/) ; [ l[0..2], l[3..-1].inject(0) { |a, b| (a << 8) + b.to_i } ] }.to_h
+  h['sites'].each_pair do |site_uid, hs|
+    hs['clusters'].each_pair do |cluster_uid, hc|
+      hc['nodes'].each_pair do |node_uid, hn|
+        raise "Node hash for #{node_uid} is nil" if hn.nil?
+        node_id = node_uid.split('-')[1].to_i
+        hn['network_adapters'].each_pair do |iface, v|
+          # only allocate mountable ethernet interfaces
+          next if not (v['mountable'] and v['interface'] == 'Ethernet')
+          k = [site_uid, cluster_uid, iface]
+          if not iface_offsets.has_key?(k)
+            raise "Missing IPv4 information for #{k}"
+          end
+          ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id).to_s
+          a = [ site_uid, node_uid, iface ]
+          raise "IP already allocated: #{ip} (trying to add it to #{a} ; allocated to #{allocated[ip]})" if allocated[ip]
+          allocated[ip] = a
+          v['ip'] = ip
         end
       end
     end
