@@ -32,10 +32,6 @@ puppet6:
 www:
   kind: virtual
   network_adapters: {default: {ip: 172.16.79.112}}
-supervision:
-  kind: virtual
-  alias: [nagios, munin]
-  network_adapters: {default: {ip: 172.16.79.113}}
 oar:
   kind: virtual
   alias: [oar-server, oardb]

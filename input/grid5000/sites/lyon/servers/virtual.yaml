@@ -13,10 +13,6 @@ puppet6:
   kind: virtual
   alias: [puppet]
   network_adapters: {default: {ip: 172.16.63.104}}
-supervision:
-  kind: virtual
-  alias: [nagios, munin]
-  network_adapters: {default: {ip: 172.16.63.105}}
 ldap:
   kind: virtual
   network_adapters: {default: {ip: 172.16.63.106}}
