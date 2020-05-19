@@ -14,10 +14,12 @@ neteq.fetch('metrics', []).each {|metric|
         port_name = lport['snmp_name']
         # TODO: Handle secondary interface
         port_node = lport['uid']
+        labels = lport['kind'] == 'node' ? {'interface': lport['port']} : {}
+        labels.update({'_device_alias': port_node})
 -%>
 - name: <%= metric['name'] %>
   device_id: <%= neteq_uid %>-port-<%= port_uid %>
-  device_alias: <%= port_node %>
+  labels: <%= labels.to_json %>
   url: snmp://<%= neteq.fetch('snmp_community', 'public')%>@<%= neteq_uid %>.<%= site_uid %>.grid5000.fr/<%= metric['source']['id'].sub('%SNMP_IFACE%',  "{{ #{port_name} }}") %>
   update_every: <%= metric['period'] > 0 ? metric['period'] : metric['optional_period'] %>
 <%- if metric['period'] == 0 -%>
