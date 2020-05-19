@@ -38,7 +38,7 @@
     },
     {
       "description": "Power consumption of node reported by BMC, in watt",
-      "name": "bmc_power_node_watt",
+      "name": "bmc_node_power_watt",
       "period": 5000,
       "source": {
         "id": 91,
@@ -47,7 +47,10 @@
     },
     {
       "description": "Power consumption of GPU 0 reported by BMC, in watt by BMC, in watt",
-      "name": "bmc_power_gpgpu0_watt",
+      "labels": {
+        "gpu": "0"
+      },
+      "name": "bmc_gpu_power_watt",
       "period": 5000,
       "source": {
         "id": 83,
@@ -56,7 +59,10 @@
     },
     {
       "description": "Power consumption of GPU 1 reported by BMC, in watt by BMC, in watt",
-      "name": "bmc_power_gpgpu1_watt",
+      "labels": {
+        "gpu": "1"
+      },
+      "name": "bmc_gpu_power_watt",
       "period": 5000,
       "source": {
         "id": 84,
@@ -65,7 +71,10 @@
     },
     {
       "description": "Power consumption of GPU 2 reported by BMC, in watt by BMC, in watt",
-      "name": "bmc_power_gpgpu2_watt",
+      "labels": {
+        "gpu": "2"
+      },
+      "name": "bmc_gpu_power_watt",
       "period": 5000,
       "source": {
         "id": 85,
@@ -74,7 +83,10 @@
     },
     {
       "description": "Power consumption of GPU 3 reported by BMC, in watt by BMC, in watt",
-      "name": "bmc_power_gpgpu3_watt",
+      "labels": {
+        "gpu": "3"
+      },
+      "name": "bmc_gpu_power_watt",
       "period": 5000,
       "source": {
         "id": 86,
@@ -83,7 +95,10 @@
     },
     {
       "description": "Power consumption of GPU 4 reported by BMC, in watt by BMC, in watt",
-      "name": "bmc_power_gpgpu4_watt",
+      "labels": {
+        "gpu": "4"
+      },
+      "name": "bmc_gpu_power_watt",
       "period": 5000,
       "source": {
         "id": 87,
@@ -92,7 +107,10 @@
     },
     {
       "description": "Power consumption of GPU 5 reported by BMC, in watt by BMC, in watt",
-      "name": "bmc_power_gpgpu5_watt",
+      "labels": {
+        "gpu": "5"
+      },
+      "name": "bmc_gpu_power_watt",
       "period": 5000,
       "source": {
         "id": 88,
@@ -101,7 +119,10 @@
     },
     {
       "description": "Power consumption of GPU 6 reported by BMC, in watt by BMC, in watt",
-      "name": "bmc_power_gpgpu6_watt",
+      "labels": {
+        "gpu": "6"
+      },
+      "name": "bmc_gpu_power_watt",
       "period": 5000,
       "source": {
         "id": 89,
@@ -110,7 +131,10 @@
     },
     {
       "description": "Power consumption of GPU 7 reported by BMC, in watt by BMC, in watt",
-      "name": "bmc_power_gpgpu7_watt",
+      "labels": {
+        "gpu": "7"
+      },
+      "name": "bmc_gpu_power_watt",
       "period": 5000,
       "source": {
         "id": 90,
@@ -128,7 +152,10 @@
     },
     {
       "description": "Speed of SYS fan 0_1 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_sysfan01_rpm",
+      "labels": {
+        "fan": "01"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -138,7 +165,10 @@
     },
     {
       "description": "Speed of SYS fan 0_2 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_sysfan02_rpm",
+      "labels": {
+        "fan": "02"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -148,7 +178,10 @@
     },
     {
       "description": "Speed of SYS fan 1_1 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_sysfan11_rpm",
+      "labels": {
+        "fan": "11"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -158,7 +191,10 @@
     },
     {
       "description": "Speed of SYS fan 1_2 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_sysfan12_rpm",
+      "labels": {
+        "fan": "12"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -168,7 +204,10 @@
     },
     {
       "description": "Speed of SYS fan 2_1 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_sysfan21_rpm",
+      "labels": {
+        "fan": "21"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -178,7 +217,10 @@
     },
     {
       "description": "Speed of SYS fan 2_2 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_sysfan22_rpm",
+      "labels": {
+        "fan": "22"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -188,7 +230,10 @@
     },
     {
       "description": "Speed of SYS fan 3_1 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_sysfan31_rpm",
+      "labels": {
+        "fan": "31"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -198,7 +243,10 @@
     },
     {
       "description": "Speed of SYS fan 3_2 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_sysfan32_rpm",
+      "labels": {
+        "fan": "32"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -208,7 +256,10 @@
     },
     {
       "description": "Power consumption of HSC0 reported by BMC, in watt",
-      "name": "bmc_power_hsc0_watt",
+      "labels": {
+        "hsc": "0"
+      },
+      "name": "bmc_hsc_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -218,7 +269,10 @@
     },
     {
       "description": "Power consumption of HSC1 reported by BMC, in watt",
-      "name": "bmc_power_hsc1_watt",
+      "labels": {
+        "hsc": "1"
+      },
+      "name": "bmc_hsc_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -228,7 +282,10 @@
     },
     {
       "description": "Power consumption of HSC2 reported by BMC, in watt",
-      "name": "bmc_power_hsc2_watt",
+      "labels": {
+        "hsc": "2"
+      },
+      "name": "bmc_hsc_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -238,7 +295,10 @@
     },
     {
       "description": "Power consumption of PSU1 reported by BMC, in watt",
-      "name": "bmc_power_psu1_watt",
+      "labels": {
+        "psu": "1"
+      },
+      "name": "bmc_psu_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -248,7 +308,10 @@
     },
     {
       "description": "Power consumption of PSU2 reported by BMC, in watt",
-      "name": "bmc_power_psu2_watt",
+      "labels": {
+        "psu": "2"
+      },
+      "name": "bmc_psu_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -258,7 +321,10 @@
     },
     {
       "description": "Power consumption of PSU3 reported by BMC, in watt",
-      "name": "bmc_power_psu3_watt",
+      "labels": {
+        "psu": "3"
+      },
+      "name": "bmc_psu_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -268,7 +334,10 @@
     },
     {
       "description": "Power consumption of PSU4 reported by BMC, in watt",
-      "name": "bmc_power_psu4_watt",
+      "labels": {
+        "psu": "4"
+      },
+      "name": "bmc_psu_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -308,7 +377,10 @@
     },
     {
       "description": "Temperature of CPU 1 reported by BMC, in celsius",
-      "name": "bmc_temp_cpu1_celsius",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -318,7 +390,10 @@
     },
     {
       "description": "Temperature of CPU 2 reported by BMC, in celsius",
-      "name": "bmc_temp_cpu2_celsius",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -328,7 +403,10 @@
     },
     {
       "description": "Temperature of DIMM_AB reported by BMC, in celsius",
-      "name": "bmc_temp_dimm_ab_celsius",
+      "labels": {
+        "dimm": "ab"
+      },
+      "name": "bmc_temp_dimm_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -338,7 +416,10 @@
     },
     {
       "description": "Temperature of DIMM_CD reported by BMC, in celsius",
-      "name": "bmc_temp_dimm_cd_celsius",
+      "labels": {
+        "dimm": "cd"
+      },
+      "name": "bmc_temp_dimm_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -348,7 +429,10 @@
     },
     {
       "description": "Temperature of DIMM_EF reported by BMC, in celsius",
-      "name": "bmc_temp_dimm_ef_celsius",
+      "labels": {
+        "dimm": "ef"
+      },
+      "name": "bmc_temp_dimm_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -358,7 +442,10 @@
     },
     {
       "description": "Temperature of DIMM_GH reported by BMC, in celsius",
-      "name": "bmc_temp_dimm_gh_celsius",
+      "labels": {
+        "dimm": "gh"
+      },
+      "name": "bmc_temp_dimm_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -378,7 +465,10 @@
     },
     {
       "description": "Temperature of GPU0 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu0_celsius",
+      "labels": {
+        "gpu": "0"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -388,7 +478,10 @@
     },
     {
       "description": "Temperature of GPU1 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu1_celsius",
+      "labels": {
+        "gpu": "1"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -398,7 +491,10 @@
     },
     {
       "description": "Temperature of GPU2 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu2_celsius",
+      "labels": {
+        "gpu": "2"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -408,7 +504,10 @@
     },
     {
       "description": "Temperature of GPU3 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu3_celsius",
+      "labels": {
+        "gpu": "3"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -418,7 +517,10 @@
     },
     {
       "description": "Temperature of GPU4 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu4_celsius",
+      "labels": {
+        "gpu": "4"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -428,7 +530,10 @@
     },
     {
       "description": "Temperature of GPU5 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu5_celsius",
+      "labels": {
+        "gpu": "5"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -438,7 +543,10 @@
     },
     {
       "description": "Temperature of GPU6 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu6_celsius",
+      "labels": {
+        "gpu": "6"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -448,7 +556,10 @@
     },
     {
       "description": "Temperature of GPU7 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu7_celsius",
+      "labels": {
+        "gpu": "7"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -458,7 +569,10 @@
     },
     {
       "description": "Temperature of GPU B0 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu_b0_celsius",
+      "labels": {
+        "id": "0"
+      },
+      "name": "bmc_temp_gpub_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -468,7 +582,10 @@
     },
     {
       "description": "Temperature of GPU B1 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu_b1_celsius",
+      "labels": {
+        "id": "1"
+      },
+      "name": "bmc_temp_gpub_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -538,7 +655,10 @@
     },
     {
       "description": "Temperature of VR CPU 1 reported by BMC, in celsius",
-      "name": "bmc_temp_vr_cpu1_celsius",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_cpu_temp_vr_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -548,7 +668,10 @@
     },
     {
       "description": "Temperature of VR CPU 2 reported by BMC, in celsius",
-      "name": "bmc_temp_vr_cpu2_celsius",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_cpu_temp_vr_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -558,7 +681,10 @@
     },
     {
       "description": "Temperature of VR DIMM_AB reported by BMC, in celsius",
-      "name": "bmc_temp_vr_dimm_ab_celsius",
+      "labels": {
+        "dimm": "ab"
+      },
+      "name": "bmc_temp_vr_dimm_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -568,7 +694,10 @@
     },
     {
       "description": "Temperature of VR DIMM_CD reported by BMC, in celsius",
-      "name": "bmc_temp_vr_dimm_cd_celsius",
+      "labels": {
+        "dimm": "cd"
+      },
+      "name": "bmc_temp_vr_dimm_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -578,7 +707,10 @@
     },
     {
       "description": "Temperature of VR DIMM_EF reported by BMC, in celsius",
-      "name": "bmc_temp_vr_dimm_ef_celsius",
+      "labels": {
+        "dimm": "ef"
+      },
+      "name": "bmc_temp_vr_dimm_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -588,7 +720,10 @@
     },
     {
       "description": "Temperature of VR DIMM_GH reported by BMC, in celsius",
-      "name": "bmc_temp_vr_dimm_gh_celsius",
+      "labels": {
+        "dimm": "gh"
+      },
+      "name": "bmc_temp_vr_dimm_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -598,7 +733,10 @@
     },
     {
       "description": "Voltage of P12V reported by BMC, in volt",
-      "name": "bmc_voltage_p12v_volt",
+      "labels": {
+        "voltage": "p12v"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -608,7 +746,10 @@
     },
     {
       "description": "Voltage of P1V05 reported by BMC, in volt",
-      "name": "bmc_voltage_p1v05_volt",
+      "labels": {
+        "voltage": "p1v05"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -618,7 +759,10 @@
     },
     {
       "description": "Voltage of P1V8_AUX reported by BMC, in volt",
-      "name": "bmc_voltage_p1v8_aux_volt",
+      "labels": {
+        "voltage": "p1v8_aux"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -628,7 +772,10 @@
     },
     {
       "description": "Voltage of P3V3 reported by BMC, in volt",
-      "name": "bmc_voltage_p3v3_volt",
+      "labels": {
+        "voltage": "p3v3"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -638,7 +785,10 @@
     },
     {
       "description": "Voltage of P3V3_AUX reported by BMC, in volt",
-      "name": "bmc_voltage_p3v3_aux_volt",
+      "labels": {
+        "voltage": "p3v3_aux"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -648,7 +798,10 @@
     },
     {
       "description": "Voltage of P3V_BAT reported by BMC, in volt",
-      "name": "bmc_voltage_p3v_bat_volt",
+      "labels": {
+        "voltage": "p3v_bat"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -658,7 +811,10 @@
     },
     {
       "description": "Voltage of P5V reported by BMC, in volt",
-      "name": "bmc_voltage_p5v_volt",
+      "labels": {
+        "voltage": "p5v"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -668,7 +824,10 @@
     },
     {
       "description": "Voltage of P5V_AUX reported by BMC, in volt",
-      "name": "bmc_voltage_p5v_aux_volt",
+      "labels": {
+        "voltage": "p5v_aux"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -678,7 +837,10 @@
     },
     {
       "description": "Voltage of VR CPU1 reported by BMC, in volt",
-      "name": "bmc_voltage_vr_cpu1_volt",
+      "labels": {
+        "voltage": "vr_cpu1"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -688,7 +850,10 @@
     },
     {
       "description": "Voltage of VR CPU2 reported by BMC, in volt",
-      "name": "bmc_voltage_vr_cpu1_volt",
+      "labels": {
+        "voltage": "vr_cpu1"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -698,7 +863,10 @@
     },
     {
       "description": "Voltage of VR DIMM_AB reported by BMC, in volt",
-      "name": "bmc_voltage_vr_dimm_ab_volt",
+      "labels": {
+        "voltage": "vr_dimm_ab"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -708,7 +876,10 @@
     },
     {
       "description": "Voltage of VR DIMM_CD reported by BMC, in volt",
-      "name": "bmc_voltage_vr_dimm_cd_volt",
+      "labels": {
+        "voltage": "vr_dimm_cd"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -718,7 +889,10 @@
     },
     {
       "description": "Voltage of VR DIMM_EF reported by BMC, in volt",
-      "name": "bmc_voltage_vr_dimm_ef_volt",
+      "labels": {
+        "voltage": "vr_dimm_ef"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -728,7 +902,10 @@
     },
     {
       "description": "Voltage of VR DIMM_GH reported by BMC, in volt",
-      "name": "bmc_voltage_vr_dimm_gh_volt",
+      "labels": {
+        "voltage": "vr_dimm_gh"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {

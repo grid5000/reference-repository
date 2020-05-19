@@ -20,7 +20,8 @@ metrics:
     protocol: ipmisensor
     id: 11 #Inlet Temp
 
-- name: bmc_voltage_12vstandby_volt
+- name: bmc_voltage_volt
+  labels: {"voltage": "12vstandby"}
   description: Voltage of 12V Standby reported by BMC, in volt
   period: 0
   optional_period: 5000
@@ -28,7 +29,8 @@ metrics:
     protocol: ipmisensor
     id: 5 #12V Standby
 
-- name: bmc_voltage_5vstandby_volt
+- name: bmc_voltage_volt
+  labels: {"voltage": "5vstandby"}
   description: Voltage of 5V Standby reported by BMC, in volt
   period: 0
   optional_period: 5000
@@ -36,7 +38,8 @@ metrics:
     protocol: ipmisensor
     id: 6 #5V Standby
 
-- name: bmc_voltage_5v_volt
+- name: bmc_voltage_volt
+  labels: {"voltage": "5v"}
   description: Voltage of 5V reported by BMC, in volt
   period: 0
   optional_period: 5000
@@ -44,7 +47,8 @@ metrics:
     protocol: ipmisensor
     id: 7 #5V
 
-- name: bmc_voltage_3.3vstandby_volt
+- name: bmc_voltage_volt
+  labels: {"voltage": "3.3vstandby"}
   description: Voltage of 3.3V Standby reported by BMC, in volt
   period: 0
   optional_period: 5000
@@ -52,7 +56,8 @@ metrics:
     protocol: ipmisensor
     id: 8 #3.3V Standby
 
-- name: bmc_voltage_3.3v_volt
+- name: bmc_voltage_volt
+  labels: {"voltage": "3.3v"}
   description: Voltage of 3.3V reported by BMC, in volt
   period: 0
   optional_period: 5000
@@ -60,7 +65,8 @@ metrics:
     protocol: ipmisensor
     id: 9 #3.3V
 
-- name: bmc_temp_cpu1_celsius
+- name: bmc_cpu_temp_celsius
+  labels: {"cpu": "1"}
   description: Temperature of CPU 1 reported by BMC, in celsius
   period: 0
   optional_period: 5000
@@ -68,7 +74,8 @@ metrics:
     protocol: ipmisensor
     id: 12 #CPU1 Temp
 
-- name: bmc_temp_cpu2_celsius
+- name: bmc_cpu_temp_celsius
+  labels: {"cpu": "2"}
   description: Temperature of CPU 2 reported by BMC, in celsius
   period: 0
   optional_period: 5000
@@ -76,7 +83,8 @@ metrics:
     protocol: ipmisensor
     id: 13 #CPU2 Temp
 
-- name: bmc_temp_dimmzone1_celsius
+- name: bmc_temp_dimmzone_celsius
+  labels: {"zone": "1"}
   description: Temperature of DIMM ZONE 1 reported by BMC, in celsius
   period: 0
   optional_period: 5000
@@ -84,7 +92,8 @@ metrics:
     protocol: ipmisensor
     id: 14 #DIMM ZONE 1 Temp
 
-- name: bmc_temp_dimmzone2_celsius
+- name: bmc_temp_dimmzone_celsius
+  labels: {"zone": "2"}
   description: Temperature of DIMM ZONE 2 reported by BMC, in celsius
   period: 0
   optional_period: 5000
@@ -100,7 +109,8 @@ metrics:
     protocol: ipmisensor
     id: 18 #PCH Temp
 
-- name: bmc_voltage_input_volt
+- name: bmc_voltage_volt
+  labels: {"voltage": "input"}
   description: Input voltage reported by BMC, in volt
   period: 0
   optional_period: 5000
@@ -116,7 +126,8 @@ metrics:
     protocol: ipmisensor
     id: 17 #Input Current
 
-- name: bmc_fanspeed_fan1_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "1"}
   description: Speed of fan 1 reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -124,7 +135,8 @@ metrics:
     protocol: ipmisensor
     id: 21 #FAN_1
 
-- name: bmc_fanspeed_fan2_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "2"}
   description: Speed of fan 2 reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -132,7 +144,8 @@ metrics:
     protocol: ipmisensor
     id: 24 #FAN_2
 
-- name: bmc_fanspeed_fan3_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "3"}
   description: Speed of fan 3 reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -140,7 +153,8 @@ metrics:
     protocol: ipmisensor
     id: 28 #FAN_3
 
-- name: bmc_fanspeed_fan4_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "4"}
   description: Speed of fan 4 reported by BMC, in rpm
   period: 0
   optional_period: 5000

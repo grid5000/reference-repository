@@ -20,7 +20,8 @@ metrics:
     protocol: ipmisensor
     id: 10 #Inlet Temp
 
-- name: bmc_fanspeed_fanmod1a_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "mod1a"}
   description: Speed of FAN MOD 1A reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -28,7 +29,8 @@ metrics:
     protocol: ipmisensor
     id: 33 #FAN MOD 1A RPM
 
-- name: bmc_fanspeed_fanmod1b_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "mod1b"}
   description: Speed of FAN MOD 1B reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -36,7 +38,8 @@ metrics:
     protocol: ipmisensor
     id: 34 #FAN MOD 1B RPM
 
-- name: bmc_fanspeed_fanmod2a_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "mod2a"}
   description: Speed of FAN MOD 2A reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -44,7 +47,8 @@ metrics:
     protocol: ipmisensor
     id: 35 #FAN MOD 2A RPM
 
-- name: bmc_fanspeed_fanmod2b_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "mod2b"}
   description: Speed of FAN MOD 2B reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -52,7 +56,8 @@ metrics:
     protocol: ipmisensor
     id: 36 #FAN MOD 2B RPM
 
-- name: bmc_fanspeed_fanmod3a_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "mod3a"}
   description: Speed of FAN MOD 3A reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -60,7 +65,8 @@ metrics:
     protocol: ipmisensor
     id: 37 #FAN MOD 3A RPM
 
-- name: bmc_fanspeed_fanmod3b_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "mod3b"}
   description: Speed of FAN MOD 3B reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -68,7 +74,8 @@ metrics:
     protocol: ipmisensor
     id: 38 #FAN MOD 3B RPM
 
-- name: bmc_fanspeed_fanmod4a_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "mod4a"}
   description: Speed of FAN MOD 4A reported by BMC, in rpm
   period: 0
   optional_period: 5000
@@ -76,7 +83,8 @@ metrics:
     protocol: ipmisensor
     id: 39 #FAN MOD 4A RPM
 
-- name: bmc_fanspeed_fanmod4b_rpm
+- name: bmc_fan_speed_rpm
+  labels: {"fan": "mod4b"}
   description: Speed of FAN MOD 4B reported by BMC, in rpm
   period: 0
   optional_period: 5000

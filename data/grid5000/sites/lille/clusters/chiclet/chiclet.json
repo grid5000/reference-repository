@@ -30,7 +30,7 @@
     },
     {
       "description": "Power consumption of node reported by BMC, in watt",
-      "name": "bmc_power_node_watt",
+      "name": "bmc_node_power_watt",
       "period": 5000,
       "source": {
         "id": "1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.3",
@@ -39,7 +39,10 @@
     },
     {
       "description": "Voltage of PSU 1 reported by BMC, in volt",
-      "name": "bmc_voltage_psu1_volt",
+      "labels": {
+        "psu": "1"
+      },
+      "name": "bmc_psu_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -49,7 +52,10 @@
     },
     {
       "description": "Voltage of PSU 2 reported by BMC, in volt",
-      "name": "bmc_voltage_psu2_volt",
+      "labels": {
+        "psu": "2"
+      },
+      "name": "bmc_psu_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -59,7 +65,10 @@
     },
     {
       "description": "Current of PSU 1 reported by BMC, in amp",
-      "name": "bmc_current_psu1_amp",
+      "labels": {
+        "psu": "1"
+      },
+      "name": "bmc_psu_current_amp",
       "optional_period": 5000,
       "period": 0,
       "scale_factor": 0.1,
@@ -70,7 +79,10 @@
     },
     {
       "description": "Current of PSU 2 reported by BMC, in amp",
-      "name": "bmc_current_psu2_amp",
+      "labels": {
+        "psu": "2"
+      },
+      "name": "bmc_psu_current_amp",
       "optional_period": 5000,
       "period": 0,
       "scale_factor": 0.1,
@@ -81,7 +93,7 @@
     },
     {
       "description": "Cumulated power consumption of node reported by BMC, in watt",
-      "name": "bmc_power_node_watt_total",
+      "name": "bmc_node_power_watt_total",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -91,7 +103,10 @@
     },
     {
       "description": "Speed of Fan 1 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan1_rpm",
+      "labels": {
+        "fan": "1"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -101,7 +116,10 @@
     },
     {
       "description": "Speed of Fan 2 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan2_rpm",
+      "labels": {
+        "fan": "2"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -111,7 +129,10 @@
     },
     {
       "description": "Speed of Fan 3 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan3_rpm",
+      "labels": {
+        "fan": "3"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -121,7 +142,10 @@
     },
     {
       "description": "Speed of Fan 4 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan4_rpm",
+      "labels": {
+        "fan": "4"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -131,7 +155,10 @@
     },
     {
       "description": "Speed of Fan 5 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan5_rpm",
+      "labels": {
+        "fan": "5"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -141,7 +168,10 @@
     },
     {
       "description": "Speed of Fan 6 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan6_rpm",
+      "labels": {
+        "fan": "6"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -151,7 +181,10 @@
     },
     {
       "description": "Temperature of CPU 1 reported by BMC, in celsius",
-      "name": "bmc_temp_cpu1_celsius",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "scale_factor": 0.1,
@@ -162,7 +195,10 @@
     },
     {
       "description": "Temperature of CPU 2 reported by BMC, in celsius",
-      "name": "bmc_temp_cpu2_celsius",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "scale_factor": 0.1,
