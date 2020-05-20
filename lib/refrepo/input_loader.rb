@@ -60,6 +60,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with software informations
   add_software(global_hash)
 
+  # populate each cluster with metrics network information
+  add_network_metrics(global_hash)
+
   return global_hash
 end
 
@@ -217,6 +220,38 @@ def add_software(h)
       hc['nodes'].each_pair do |node_uid, hn|
         hn['software']['postinstall-version'] = h['software']['postinstall-version']
         hn['software']['forced-deployment-timestamp'] = h['software']['forced-deployment-timestamp']
+      end
+    end
+  end
+end
+
+def add_network_metrics(h)
+  # for each cluster
+  h['sites'].each_pair do |site_uid, site|
+    site['clusters'].each_pair do |cluster_uid, cluster|
+
+      # remove any network metrics defined in cluster
+      cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_.*_bytes_total/}
+
+      # for each interface of a cluster's node
+      node_uid, node = cluster['nodes'].first
+      node["network_adapters"].each do |iface_uid, iface|
+
+        # get switch attached to interface
+        if iface['mounted'] and not iface['management'] and iface['interface'] == 'Ethernet'
+          switch, _ = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)
+        else
+          switch, _ = net_switch_port_lookup(site, node_uid, iface_uid)
+        end
+
+        # for each network metric declared for the switch
+        site.fetch('networks', {}).fetch(switch, {}).fetch('metrics', []).select{|m| m['name'] =~ /network_.*_bytes_total/}.each do |metric|
+
+          # add this metric to cluster's list of available metrics, associated to node interface
+          cluster['metrics'].push(metric.merge(
+            {"labels": {"interface": iface_uid}, "source": {"protocol": "network_equipment"}}
+          ))
+        end
       end
     end
   end

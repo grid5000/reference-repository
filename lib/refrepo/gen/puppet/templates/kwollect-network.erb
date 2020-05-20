@@ -12,7 +12,6 @@ neteq.fetch('metrics', []).each {|metric|
         next if lport.empty?
         port_uid = neteq['linecards'].length > 1 ? "#{linecard_uid}_#{lport_uid}" : lport_uid
         port_name = lport['snmp_name']
-        # TODO: Handle secondary interface
         port_node = lport['uid']
         labels = lport['kind'] == 'node' ? {'interface': lport['port']} : {}
         labels.update({'_device_alias': port_node})
