@@ -235,7 +235,7 @@ def add_network_metrics(h)
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_.*_bytes_total/}
 
       # for each interface of a cluster's node
-      node_uid, node = cluster['nodes'].first
+      node_uid, node = cluster['nodes'].select { |k, v| v['status'] != 'retired' }.first
       node["network_adapters"].each do |iface_uid, iface|
 
         # get switch attached to interface
