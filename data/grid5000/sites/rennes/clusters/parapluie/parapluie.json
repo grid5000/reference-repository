@@ -3,22 +3,6 @@
   "kavlan": true,
   "metrics": [
     {
-      "description": "Input byte counter for the network device port connected to the node",
-      "name": "network_ifacein_bytes_total",
-      "period": 1000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Output byte counter for the network device port connected to the node",
-      "name": "network_ifaceout_bytes_total",
-      "period": 1000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
       "description": "Voltage of PVCORE1 reported by BMC, in volt",
       "labels": {
         "voltage": "pvcore1"
@@ -812,6 +796,36 @@
       "source": {
         "id": 7232,
         "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Input byte counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_bytes_total",
+      "period": 1000,
+      "source": {
+        "id": "1.3.6.1.2.1.2.2.1.10.%SNMP_IFACE%",
+        "protocol": "snmp"
+      },
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_bytes_total",
+      "period": 1000,
+      "source": {
+        "id": "1.3.6.1.2.1.2.2.1.16.%SNMP_IFACE%",
+        "protocol": "snmp"
+      },
+      "source": {
+        "protocol": "network_equipment"
       }
     }
   ],
