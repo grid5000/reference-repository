@@ -14,7 +14,7 @@ pdu.fetch('metrics', []).each {|metric|
 - name: <%= metric['name'] %>
   device_id: <%= pdu_uid %>-port-<%= port_uid %>
 <%- if single_port -%>
-  labels: <%= {'_device_alias': node_uid}.to_json %>
+  labels: <%= {'_device_alias' => node_uid}.to_json %>
 <%- end -%>
   url: snmp://<%= pdu.fetch('snmp_community', 'public')%>@<%= pdu_uid %>.<%= site_uid %>.grid5000.fr/<%= metric['source']['id'].sub('%PORT%',  "#{port_uid}") %>
   update_every: <%= metric['period'] > 0 ? metric['period'] : metric['optional_period'] %>

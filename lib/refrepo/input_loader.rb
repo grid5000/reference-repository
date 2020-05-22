@@ -249,8 +249,8 @@ def add_network_metrics(h)
         site.fetch('networks', {}).fetch(switch, {}).fetch('metrics', []).select{|m| m['name'] =~ /network_.*_bytes_total/}.each do |metric|
 
           # add this metric to cluster's list of available metrics, associated to node interface
-          new_metric = metric.merge({"labels": {"interface": iface_uid}})
-          new_metric["source"] = {"protocol": "network_equipment"}
+          new_metric = metric.merge({"labels" => {"interface" => iface_uid}})
+          new_metric["source"] = {"protocol" => "network_equipment"}
           cluster['metrics'].push(new_metric)
         end
       end

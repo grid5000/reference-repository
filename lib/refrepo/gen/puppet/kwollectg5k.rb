@@ -82,7 +82,7 @@ def generate_puppet_kwollectg5k(options)
         if not wattmetre_port_per_node.key?(node)
           wattmetre_port_per_node[node] = []
         end
-        wattmetre_port_per_node[node].append("#{pdu_uid}-port#{port}")
+        wattmetre_port_per_node[node] << "#{pdu_uid}-port#{port}"
       }
     }
     if not wattmetre_port_per_node.empty?

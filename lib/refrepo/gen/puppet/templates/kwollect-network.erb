@@ -13,8 +13,8 @@ neteq.fetch('metrics', []).each {|metric|
         port_uid = neteq['linecards'].length > 1 ? "#{linecard_uid}_#{lport_uid}" : lport_uid
         port_name = lport['snmp_name']
         port_node = lport['uid']
-        labels = lport['kind'] == 'node' ? {'interface': lport['port']} : {}
-        labels.update({'_device_alias': port_node})
+        labels = lport['kind'] == 'node' ? {'interface' => lport['port']} : {}
+        labels.update({'_device_alias' => port_node})
 -%>
 - name: <%= metric['name'] %>
   device_id: <%= neteq_uid %>-port-<%= port_uid %>
