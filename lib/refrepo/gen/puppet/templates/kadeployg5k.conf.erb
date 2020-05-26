@@ -55,7 +55,7 @@ initrd_dev  = 'kernels/kadeploy3-deploy-kernel-jessie.initrd.img'%>
         suffix == '' ? kernel_prod : kernel_dev %>
       initrd: <%= data['deploy.initrd'] ? data['deploy.initrd'] :
         suffix == '' ? initrd_prod : initrd_dev %>
-      params: <%= data['deploy.params'] %>
+      params: <%= data['deploy.params'] %><%= data['deploy.default_params'] ? ' ' + data['deploy.default_params'] : '' %>
       supported_fs: ext2, ext3, ext4<%
    if !data['nfsroot.params'].nil? %>
     nfsroot:
