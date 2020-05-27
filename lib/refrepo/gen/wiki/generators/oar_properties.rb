@@ -47,7 +47,7 @@ class OarPropertiesGenerator < WikiGenerator
       "possible_values" => "1, 2, 3, ..."
     },
     "cpuset" => {
-      "description" => "CPU hardware identifier (useful for gnu-parallel).",
+      "description" => "Logical processor identifier (only the first thread in case of HyperThreading).",
       "possible_values" => "0, 1, 2, 3, ..."
     },
     "disk" => {
@@ -63,18 +63,18 @@ class OarPropertiesGenerator < WikiGenerator
       "possible_values" => "1, 2, 3, ..."
     },
     "gpudevice" => {
-      "description" => "GPU hardware identifier (useful for gnu-parallel).",
+      "description" => "GPU device identifier.",
       "possible_values" => "0, 1, 2, 3"
     },
     "host" => {
-      "description" => "The full hostname of the node the resource is part of",
+      "description" => "The full hostname of the node the resource is part of.",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
     "ip" => {
       "description" => "The IPv4 address of the node the resource is part of"
     },
     "network_address" => {
-      "description" => "The full hostname of the node the resource is part of (deprecated, please use host instead)",
+      "description" => "The full hostname of the node the resource is part of, please use 'host' instead.",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
     "slash_[16-22]" => {
@@ -177,7 +177,7 @@ class OarPropertiesGenerator < WikiGenerator
       "possible_values" => "kavlan-topo, storage, disk, kavlan-local, kavlan-global, default, subnet, kavlan"
     },
     "expiry_date" => {
-      "description" => "Expiration datefor the given resource. (g5k internal property)",
+      "description" => "Expiration date for the given resource.",
       "possible_values" => "0"
     },
     "comment" => {
@@ -185,7 +185,7 @@ class OarPropertiesGenerator < WikiGenerator
       "possible_values" => "Retired since 2018-01-30: retired_cluster, PSU Dead, Retired"
     },
     "maintenance" => {
-      "description" => "Is this resource under maintenance ? (g5k internal property)",
+      "description" => "Is this resource under maintenance ?",
       "value_type" => "Boolean",
       "possible_values" => "YES, NO"
     }
