@@ -764,8 +764,6 @@ def ignore_default_keys()
     "id", # id from API (= resource_id from oarnodes)
     "api_timestamp", # from API
     "links", # from API
-    "gpu",  # temporary hack, waiting for the new generator that will handle gpu
-    "gpudevice",  # temporary hack, waiting for the new generator that will handle gpu
   ]
   return ignore_default_keys
 end
