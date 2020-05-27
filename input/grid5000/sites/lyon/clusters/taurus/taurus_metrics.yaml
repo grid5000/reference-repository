@@ -44,14 +44,15 @@ metrics:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.600.12.1.16.1.1
 
-- name: bmc_psu_voltage_volt
-  labels: {"psu": "2"}
-  description: Voltage of PSU 2 reported by BMC, in volt
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.600.12.1.16.1.2
+# PSU2 not plugged
+# - name: bmc_psu_voltage_volt
+#   labels: {"psu": "2"}
+#   description: Voltage of PSU 2 reported by BMC, in volt
+#   period: 0
+#   optional_period: 5000
+#   source:
+#     protocol: snmp
+#     id: 1.3.6.1.4.1.674.10892.5.4.600.12.1.16.1.2
 
 - name: bmc_psu_current_amp
   labels: {"psu": "1"}
@@ -63,15 +64,16 @@ metrics:
     protocol: snmp
     id: 1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.1
 
-- name: bmc_psu_current_amp
-  labels: {"psu": "2"}
-  description: Current of PSU 2 reported by BMC, in amp
-  period: 0
-  optional_period: 5000
-  scale_factor: 0.1
-  source:
-    protocol: snmp
-    id: 1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.2
+# PSU2 not plugged
+# - name: bmc_psu_current_amp
+#   labels: {"psu": "2"}
+#   description: Current of PSU 2 reported by BMC, in amp
+#   period: 0
+#   optional_period: 5000
+#   scale_factor: 0.1
+#   source:
+#     protocol: snmp
+#     id: 1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.2
 
 - name: bmc_node_power_watt_total
   description: Cumulated power consumption of node reported by BMC, in watt
