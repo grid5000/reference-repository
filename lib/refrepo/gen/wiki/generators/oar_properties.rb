@@ -247,8 +247,8 @@ class OarPropertiesGenerator < WikiGenerator
     oar_properties.sort.to_h.each { |prop, prop_hash|
       prop_hash["values"].sort!
       if (prop_hash["values"].length > 20)
-        #Limit possible values to 20 elements and mark the list as truncated
-        prop_hash["values"].slice!(0...-20)
+        #Limit possible values to 20 random elements and mark the list as truncated
+        prop_hash["values"] = prop_hash["values"].sample(20).sort
         prop_hash["values"].push("...")
       end
       @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ") unless @@properties[prop].nil?
