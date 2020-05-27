@@ -52,11 +52,9 @@ class OarPropertiesGenerator < WikiGenerator
     },
     "disk" => {
       "description" => "Id of a reservable disk on a node, for resources of type 'disk'.",
-      "possible_values" => "sdb.yeti-1, sdc.yeti-1, sdd.yeti-1, ..."
     },
     "diskpath" => {
       "description" => "Device path of a reservable disk on a node, for resources of type 'disk'.",
-      "possible_values" => "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:1:0, /dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:2:0, /dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:3:0..."
     },
     "gpu" => {
       "description" => "The ID of the GPU the resource is part of. The unique scope is the OAR server. ",
@@ -202,20 +200,6 @@ class OarPropertiesGenerator < WikiGenerator
   #Existing properties that won't be documented
   @@ignored_properties = ["maintenance", "state", "ip_virtual"]
 
-  def get_nodes_properties(_site_uid, site)
-    properties = {}
-    site['clusters'].sort.to_h.each do |cluster_uid, cluster|
-      cluster['nodes'].sort.to_h.each do |node_uid, node|
-        begin
-          properties[node_uid] = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
-        rescue MissingProperty => e
-          puts "Error while processing node #{node_uid}: #{e}"
-        end
-      end
-    end
-    return properties
-  end
-
   def get_value_type(prop, values)
     if (@@properties[prop]["value_type"])
       return @@properties[prop]["value_type"]
@@ -236,22 +220,26 @@ class OarPropertiesGenerator < WikiGenerator
     #Properties generated from oar-properties generator
     props = {}
     G5K::SITES.each{ |site_uid|
-      props[site_uid] = get_nodes_properties(site_uid, refapi["sites"][site_uid])
+      props[site_uid] = {}
+      props[site_uid]["default"] = get_ref_default_properties(site_uid, refapi["sites"][site_uid])
+      props[site_uid]["disk"] = get_ref_disk_properties(site_uid, refapi["sites"][site_uid])
     }
 
     #Compiled properties used to generate page
     oar_properties = {}
     props.sort.to_h.each { |site, site_props|
-      site_props.sort.to_h.each { |node_uid, node_props|
-        node_props.sort.to_h.each { |property, value|
-          next if @@ignored_properties.include?(property)
+      site_props.sort.to_h.each { |type, type_props|
+        type_props.sort.to_h.each { |node_uid, node_props|
+          node_props.sort.to_h.each { |property, value|
+            next if @@ignored_properties.include?(property)
 
-          oar_properties[property] ||= {}
-          oar_properties[property]["values"] ||= []
-          oar_properties[property]["values"] << value unless value.nil?
-          oar_properties[property]["values"].uniq!
-          oar_properties[property]["values"].sort!{ |a, b|
-            (a && a.to_s || "") <=> (b && b.to_s || "")
+            oar_properties[property] ||= {}
+            oar_properties[property]["values"] ||= []
+            oar_properties[property]["values"] << value unless value.nil?
+            oar_properties[property]["values"].uniq!
+            oar_properties[property]["values"].sort!{ |a, b|
+              (a && a.to_s || "") <=> (b && b.to_s || "")
+            }
           }
         }
       }
@@ -263,7 +251,7 @@ class OarPropertiesGenerator < WikiGenerator
         prop_hash["values"].slice!(0...-20)
         prop_hash["values"].push("...")
       end
-      @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ")
+      @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ") unless @@properties[prop].nil?
     }
 
     @generated_content = "{{Portal|User}}\nProperties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
