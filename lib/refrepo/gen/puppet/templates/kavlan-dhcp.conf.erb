@@ -120,7 +120,7 @@ host <%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-ka
   option host-name "<%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-kavlan-<%= kavlan_id %>-ipv6";
   option domain-name "<%= site %>.grid5000.fr";
   option domain-search "<%= site %>.grid5000.fr", "grid5000.fr";
-  fixed-address <%= node['kavlan6'][interface['device']]["kavlan-#{kavlan_id}"] %>;
+  fixed-address6 <%= node['kavlan6'][interface['device']]["kavlan-#{kavlan_id}"] %>;
 }
 <%
              end
