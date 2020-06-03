@@ -75,7 +75,31 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The full hostname of the node the resource is part of, please use 'host' instead.",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
-    "slash_[16-22]" => {
+    "slash_16" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_17" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_18" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_19" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_20" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_21" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_22" => {
       "description" => "Used for subnet resources.",
       "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
     },
@@ -192,7 +216,7 @@ class OarPropertiesGenerator < WikiGenerator
   #Group properties by categories
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
-    "Hierarchy" => ["chassis", "cluster", "cpu", "cpuset", "core", "disk", "diskpath", "gpu", "gpudevice", "host", "slash_[16-22]", "switch", "subnet_address", "subnet_prefix", "vlan"],
+    "Hierarchy" => ["chassis", "cluster", "cpu", "cpuset", "core", "disk", "diskpath", "gpu", "gpudevice", "host", "slash_16", "slash_17", "slash_18", "slash_19", "slash_20", "slash_21", "slash_22", "switch", "subnet_address", "subnet_prefix", "vlan"],
     "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel", "network_address", "ip", "type", "expiry_date", "comment", "maintenance"]
   }
@@ -219,10 +243,20 @@ class OarPropertiesGenerator < WikiGenerator
     refapi = load_data_hierarchy
     #Properties generated from oar-properties generator
     props = {}
-    G5K::SITES.each{ |site_uid|
+    oar_data_properties = []
+    G5K::SITES.each_with_index{ |site_uid, index|
       props[site_uid] = {}
       props[site_uid]["default"] = get_ref_default_properties(site_uid, refapi["sites"][site_uid])
       props[site_uid]["disk"] = get_ref_disk_properties(site_uid, refapi["sites"][site_uid])
+
+      # Retrieve all oar fields from the first site
+      if index == 0
+        get_oar_data(site_uid, {"api": {}, "verbose": false}).each { |oar_node_data, _|
+          oar_node_data.each { |key, _|
+            oar_data_properties << key unless oar_data_properties.include? key
+          }
+        }
+      end
     }
 
     #Compiled properties used to generate page
@@ -254,7 +288,13 @@ class OarPropertiesGenerator < WikiGenerator
       @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ") unless @@properties[prop].nil?
     }
 
+    # Compare properties with fields from oar db
+    oar_data_properties.reject!{|x| (@@properties.keys.include? x or @@ignored_properties.include? x)}
+
     @generated_content = "{{Portal|User}}\nProperties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
+    if not oar_data_properties.empty?
+      @generated_content += "{{Warning|text=Following properties are not documented : " + oar_data_properties.sort.join(', ') + "}}" + MW::LINE_FEED
+    end
     @generated_content += MW::heading("OAR Properties", 1) + MW::LINE_FEED
 
     @@categories.sort.to_h.each { |cat, cat_properties|
