@@ -1,18 +1,6 @@
 ---
 metrics:
 
-- name: network_ifacein_bytes_total
-  description: Input byte counter for the network device port connected to the node
-  period: 1000
-  source:
-    protocol: network_equipment
-
-- name: network_ifaceout_bytes_total
-  description: Output byte counter for the network device port connected to the node
-  period: 1000
-  source:
-    protocol: network_equipment
-
 - name: bmc_voltage_volt
   labels: {"voltage": "ps12v"}
   description: Voltage of PS 12V reported by BMC, in volt
