@@ -62,13 +62,13 @@ subnet <%= kavlan_ip.network %> netmask <%= kavlan_ip.netmask %> {
      case kavlan_id
      when 1..3 # local non routed vlan
        kavlan6_net = kavlan_id + 0x80 - 1
+       kavlan6_ip = "#{refapi['sites'][site_uid]['ipv6']['prefix']}#{sprintf('%02x', kavlan6_net)}::/64"
      when 4..9 # local routed vlan
        kavlan6_net = kavlan_id + 0x90 - 4
+       kavlan6_ip = "#{refapi['sites'][site_uid]['ipv6']['prefix']}#{sprintf('%02x', kavlan6_net)}::/64"
      else      # global vlan
-       kavlan6_net = kavlan_id + 0xa0 - 10
-     end
-     refapi['sites'][site_uid]
-     kavlan6_ip = "#{refapi['sites'][site_uid]['ipv6']['prefix']}#{sprintf('%02x', kavlan6_net)}::/64" -%>
+       kavlan6_ip = "#{refapi['sites'][site_uid]['ipv6']['prefix']}a0::/59"
+     end -%>
 subnet6 <%= kavlan6_ip %> {
 <% end -%>
     default-lease-time 86400;
