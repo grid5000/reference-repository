@@ -100,7 +100,7 @@ namespace :valid do
 end
 
 namespace :gen do
-  desc "Run wiki generator -- parameters: NAME={hardware,site_hardware,...} SITE={global,grenoble,...} DO={diff,print,update}"
+  desc "Run wiki generator -- parameters: NAME={hardware,site_hardware,oar-properties,...} SITE={global,grenoble,...} DO={diff,print,update}"
   task "wiki" do
     require 'refrepo/gen/wiki'
     options = {}
