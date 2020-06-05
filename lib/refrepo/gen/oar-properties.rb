@@ -450,7 +450,10 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['memcpu'] = node['main_memory']['ram_size'] / node['architecture']['nb_procs']/MiB
   h['memnode'] = node['main_memory']['ram_size'] / MiB
 
-  if node.key?('gpu_devices')
+  if node.key?('gpu_devices') \
+    and h['cluster'] != 'orion'
+    # Do not generate GPU ppty for orion, cf #10785
+
     # This forbids a node to host different GPU models ...
     h['gpu_model'] = GPURef.getGrid5000LegacyNameFor(node['gpu_devices'].values[0]['model'])
     h['gpu_count'] = node['gpu_devices'].length
