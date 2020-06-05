@@ -32,6 +32,9 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "Is this resource available in production queue ?",
       "value_type" => "Boolean"
     },
+    "chassis" => {
+      "description" => "The manfacturer, name and serial of the chassis."
+    },
     "cluster" => {
       "description" => "The name of the cluster the resource is part of"
     },
@@ -43,23 +46,77 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The ID of the CPU the resource is part of. The unique scope is the OAR server. ",
       "possible_values" => "1, 2, 3, ..."
     },
+    "cpuset" => {
+      "description" => "Logical processor identifier (only the first thread in case of HyperThreading).",
+      "possible_values" => "0, 1, 2, 3, ..."
+    },
+    "disk" => {
+      "description" => "Id of a reservable disk on a node, for resources of type 'disk'.",
+    },
+    "diskpath" => {
+      "description" => "Device path of a reservable disk on a node, for resources of type 'disk'.",
+    },
     "gpu" => {
       "description" => "The ID of the GPU the resource is part of. The unique scope is the OAR server. ",
       "possible_values" => "1, 2, 3, ..."
     },
+    "gpudevice" => {
+      "description" => "GPU device identifier.",
+      "possible_values" => "0, 1, 2, 3"
+    },
     "host" => {
-      "description" => "A user-friendly name for the network_address property",
+      "description" => "The full hostname of the node the resource is part of.",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
     },
     "ip" => {
       "description" => "The IPv4 address of the node the resource is part of"
     },
     "network_address" => {
-      "description" => "The full hostname of the node the resource is part of",
+      "description" => "The full hostname of the node the resource is part of, please use 'host' instead.",
       "possible_values" => "dahu-1.grenoble.grid5000.fr, ..."
+    },
+    "slash_16" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_17" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_18" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_19" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_20" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_21" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
+    },
+    "slash_22" => {
+      "description" => "Used for subnet resources.",
+      "possible_values" => "3d92, 00e6, 2cfc, 2bed, ..."
     },
     "switch" => {
       "description" => "On what switch the resource is directly connected ?"
+    },
+    "subnet_address" => {
+      "description" => "Subnet address for subnet resources.",
+      "possible_values" => "10.144.52.0, 10.144.24.0, 10.144.132.0, 10.146.28.0, 10.144.236.0, ..."
+    },
+    "subnet_prefix" => {
+      "description" => "Subnet prefix for subnet resources.",
+      "possible_values" => "22"
+    },
+    "vlan" => {
+      "description" => "Used for kavlan-topo resources.",
+      "possible_values" => "1, 1523, 1560, 1597, ..."
     },
     "nodemodel" => {
       "description" => "The type of the chassis"
@@ -136,33 +193,36 @@ class OarPropertiesGenerator < WikiGenerator
     "mic" => {
       "description" => "Intel many integrated core architecture support",
       "value_type" => "Boolean"
+    },
+    "type" => {
+      "description" => "Type of the resource.",
+      "possible_values" => "kavlan-topo, storage, disk, kavlan-local, kavlan-global, default, subnet, kavlan"
+    },
+    "expiry_date" => {
+      "description" => "Expiration date for the given resource.",
+      "possible_values" => "0"
+    },
+    "comment" => {
+      "description" => "Comment for the given resource. (g5k internal property)",
+      "possible_values" => "Retired since 2018-01-30: retired_cluster, PSU Dead, Retired"
+    },
+    "maintenance" => {
+      "description" => "Is this resource under maintenance ?",
+      "value_type" => "Boolean",
+      "possible_values" => "YES, NO"
     }
   }
 
   #Group properties by categories
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
-    "Hierarchy" => ["cluster", "cpu", "core", "host", "network_address", "ip", "switch"],
+    "Hierarchy" => ["chassis", "cluster", "cpu", "cpuset", "core", "disk", "diskpath", "gpu", "gpudevice", "host", "slash_16", "slash_17", "slash_18", "slash_19", "slash_20", "slash_21", "slash_22", "switch", "subnet_address", "subnet_prefix", "vlan"],
     "Hardware" => ["gpu_model", "gpu_count", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "myri_rate", "myri_count", "myri", "ib_rate", "ib_count", "ib", "opa_rate", "opa_count", "eth_rate", "eth_count", "cpufreq", "cputype", "cpucore", "cpuarch", "virtual", "mic"],
-    "Miscellaneous" => ["wattmeter", "nodemodel"]
+    "Miscellaneous" => ["wattmeter", "nodemodel", "network_address", "ip", "type", "expiry_date", "comment", "maintenance"]
   }
 
   #Existing properties that won't be documented
   @@ignored_properties = ["maintenance", "state", "ip_virtual"]
-
-  def get_nodes_properties(_site_uid, site)
-    properties = {}
-    site['clusters'].sort.to_h.each do |cluster_uid, cluster|
-      cluster['nodes'].sort.to_h.each do |node_uid, node|
-        begin
-          properties[node_uid] = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
-        rescue MissingProperty => e
-          puts "Error while processing node #{node_uid}: #{e}"
-        end
-      end
-    end
-    return properties
-  end
 
   def get_value_type(prop, values)
     if (@@properties[prop]["value_type"])
@@ -183,23 +243,37 @@ class OarPropertiesGenerator < WikiGenerator
     refapi = load_data_hierarchy
     #Properties generated from oar-properties generator
     props = {}
-    G5K::SITES.each{ |site_uid|
-      props[site_uid] = get_nodes_properties(site_uid, refapi["sites"][site_uid])
+    oar_data_properties = []
+    G5K::SITES.each_with_index{ |site_uid, index|
+      props[site_uid] = {}
+      props[site_uid]["default"] = get_ref_default_properties(site_uid, refapi["sites"][site_uid])
+      props[site_uid]["disk"] = get_ref_disk_properties(site_uid, refapi["sites"][site_uid])
+
+      # Retrieve all oar fields from the first site
+      if index == 0
+        get_oar_data(site_uid, {"api": {}, "verbose": false}).each { |oar_node_data, _|
+          oar_node_data.each { |key, _|
+            oar_data_properties << key unless oar_data_properties.include? key
+          }
+        }
+      end
     }
 
     #Compiled properties used to generate page
     oar_properties = {}
     props.sort.to_h.each { |site, site_props|
-      site_props.sort.to_h.each { |node_uid, node_props|
-        node_props.sort.to_h.each { |property, value|
-          next if @@ignored_properties.include?(property)
+      site_props.sort.to_h.each { |type, type_props|
+        type_props.sort.to_h.each { |node_uid, node_props|
+          node_props.sort.to_h.each { |property, value|
+            next if @@ignored_properties.include?(property)
 
-          oar_properties[property] ||= {}
-          oar_properties[property]["values"] ||= []
-          oar_properties[property]["values"] << value unless value.nil?
-          oar_properties[property]["values"].uniq!
-          oar_properties[property]["values"].sort!{ |a, b|
-            (a && a.to_s || "") <=> (b && b.to_s || "")
+            oar_properties[property] ||= {}
+            oar_properties[property]["values"] ||= []
+            oar_properties[property]["values"] << value unless value.nil?
+            oar_properties[property]["values"].uniq!
+            oar_properties[property]["values"].sort!{ |a, b|
+              (a && a.to_s || "") <=> (b && b.to_s || "")
+            }
           }
         }
       }
@@ -207,14 +281,20 @@ class OarPropertiesGenerator < WikiGenerator
     oar_properties.sort.to_h.each { |prop, prop_hash|
       prop_hash["values"].sort!
       if (prop_hash["values"].length > 20)
-        #Limit possible values to 20 elements and mark the list as truncated
-        prop_hash["values"].slice!(0...-20)
+        #Limit possible values to 20 random elements and mark the list as truncated
+        prop_hash["values"] = prop_hash["values"].sample(20).sort
         prop_hash["values"].push("...")
       end
-      @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ")
+      @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ") unless @@properties[prop].nil?
     }
 
+    # Compare properties with fields from oar db
+    oar_data_properties.reject!{|x| (@@properties.keys.include? x or @@ignored_properties.include? x)}
+
     @generated_content = "{{Portal|User}}\nProperties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
+    if not oar_data_properties.empty?
+      @generated_content += "{{Warning|text=Following properties are not documented : " + oar_data_properties.sort.join(', ') + "}}" + MW::LINE_FEED
+    end
     @generated_content += MW::heading("OAR Properties", 1) + MW::LINE_FEED
 
     @@categories.sort.to_h.each { |cat, cat_properties|

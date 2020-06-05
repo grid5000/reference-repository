@@ -403,6 +403,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['cputype'] = [node['processor']['model'], node['processor']['version']].join(' ')
   h['cpufreq'] = node['processor']['clock_speed'] / 1_000_000_000.0
   h['disktype'] = (node['storage_devices'].first || {})['interface']
+  h['chassis'] = [node['chassis']['manufacturer'], node['chassis']['name'], node['chassis']['serial']].join(' ')
 
   # ETH
   ni_mountable = node['network_adapters'].select { |na| /^eth[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
@@ -763,8 +764,6 @@ def ignore_default_keys()
     "id", # id from API (= resource_id from oarnodes)
     "api_timestamp", # from API
     "links", # from API
-    "gpu",  # temporary hack, waiting for the new generator that will handle gpu
-    "gpudevice",  # temporary hack, waiting for the new generator that will handle gpu
   ]
   return ignore_default_keys
 end
