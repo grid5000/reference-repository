@@ -68,11 +68,14 @@ class SiteHardwareGenerator < WikiGenerator
       cluster_nodes = cluster_hash.keys.flatten.count
       queue = cluster_hash.map { |k, v| v['queue']}.first
       queue_str = cluster_hash.map { |k, v| v['queue_str']}.first
-      table_columns = (with_sites == true ? ['Site'] : []) + ['Cluster',  'Queue', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : ['Accelerators'])
+      restrictions = []
+      restrictions << "<b>#{queue}</b>&nbsp;queue" if queue != ''
+      restrictions << '<b>exotic</b>&nbsp;job&nbsp;type' if cluster_hash.map { |k, v| v['exotic']}.first
+      table_columns = (with_sites == true ? ['Site'] : []) + ['Cluster',  'Restrictions', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : ['Accelerators'])
       data = partition(cluster_hash)
       table_data <<  (with_sites == true ? ["[[#{site.capitalize}:Hardware|#{site.capitalize}]]"] : []) + [
         (with_sites == true ? "[[#{site.capitalize}:Hardware##{cluster_uid}" + (queue_str == '' ? '' : "_.28#{queue_str.gsub(' ', '_')}.29") + "|#{cluster_uid}]]" : "[[##{cluster_uid}" + (queue_str == '' ? '' : "_.28#{queue_str.gsub(' ', '_')}.29") + "|#{cluster_uid}]]"),
-        (queue == '' ? 'default' : queue),
+        restrictions.join(",<br/>"),
         cell_data(data, 'date'),
         cluster_nodes,
         cell_data(data, 'num_processor_model'),
@@ -102,9 +105,12 @@ class SiteHardwareGenerator < WikiGenerator
       cluster_cpus = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] }.reduce(:+)
       cluster_cores = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] * v['cores_per_cpu'] }.reduce(:+)
       queue_str = cluster_hash.map { |k, v| v['queue_str']}.first
+      restrictions = []
+      restrictions << queue_str if queue_str != ''
+      restrictions << "exotic job type" if cluster_hash.map { |k, v| v['exotic']}.first
       table_columns = ['Cluster',  'Queue', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + (site_accelerators.zero? ? [] : ['Accelerators'])
 
-      text_data <<  ["\n== #{cluster_uid}" + (queue_str == '' ? '' : " (#{queue_str})") + " ==\n"]
+      text_data <<  ["\n== #{cluster_uid}" + (restrictions.empty? ? '' : " (#{restrictions.join(", ")})") + " ==\n"]
       text_data << ["'''#{cluster_nodes} #{G5K.pluralize(cluster_nodes, 'node')}, #{cluster_cpus} #{G5K.pluralize(cluster_cpus, 'cpu')}, #{cluster_cores} #{G5K.pluralize(cluster_cores, 'core')}" + (subclusters == true ? ",''' split as follows due to differences between nodes " : "''' ") + "([https://public-api.grid5000.fr/stable/sites/#{site}/clusters/#{cluster_uid}/nodes.json?pretty=1 json])"]
 
       cluster_hash.sort.to_h.each_with_index { |(num, h), i|
@@ -196,7 +202,7 @@ def get_hardware(sites)
         queue = cluster_hash['queues'] - ['admin', 'default']
         hard['queue'] = (queue.nil? || queue.empty?) ? '' : queue[0]
         hard['queue_str'] = (queue.nil? || queue.empty?) ? '' : queue[0] + G5K.pluralize(queue.count, ' queue')
-
+        hard['exotic'] = cluster_hash['exotic']
         hard['date'] = Date.parse(cluster_hash['created_at'].to_s).strftime('%Y-%m-%d')
         hard['model'] = cluster_hash['model']
         hard['processor_model'] = [node_hash['processor']['model'], node_hash['processor']['version']].join(' ')
