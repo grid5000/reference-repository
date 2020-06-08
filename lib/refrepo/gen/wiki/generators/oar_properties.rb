@@ -251,7 +251,7 @@ class OarPropertiesGenerator < WikiGenerator
 
       # Retrieve all oar fields from the first site
       if index == 0
-        get_oar_data(site_uid, {"api": {}, "verbose": false}).each { |oar_node_data, _|
+        get_oar_data(site_uid, {:api => {}, :verbose => false}).each { |oar_node_data, _|
           oar_node_data.each { |key, _|
             oar_data_properties << key unless oar_data_properties.include? key
           }
