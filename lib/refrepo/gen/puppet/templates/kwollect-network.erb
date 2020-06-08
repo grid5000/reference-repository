@@ -19,7 +19,7 @@ neteq.fetch('metrics', []).each {|metric|
 - name: <%= metric['name'] %>
   device_id: <%= neteq_uid %>-port-<%= port_uid %>
   labels: <%= labels.to_json %>
-  url: snmp://<%= neteq.fetch('snmp_community', 'public')%>@<%= neteq_uid %>.<%= site_uid %>.grid5000.fr/<%= metric['source']['id'].sub('%SNMP_IFACE%',  "{{ #{port_name} }}") %>
+  url: snmp://<%= neteq.fetch('snmp_community', 'public')%>@<%= neteq_uid %>.<%= site_uid %>.grid5000.fr/<%= metric['source']['id'].sub('%SNMP_IFACE%',  port_name) %>
   update_every: <%= metric['period'] > 0 ? metric['period'] : metric['optional_period'] %>
 <%- if metric['period'] == 0 -%>
   optional: true
