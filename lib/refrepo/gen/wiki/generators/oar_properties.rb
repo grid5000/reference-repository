@@ -243,20 +243,18 @@ class OarPropertiesGenerator < WikiGenerator
     refapi = load_data_hierarchy
     #Properties generated from oar-properties generator
     props = {}
-    oar_data_properties = []
+    oarapi_properties = []
+
     G5K::SITES.each_with_index{ |site_uid, index|
       props[site_uid] = {}
       props[site_uid]["default"] = get_ref_default_properties(site_uid, refapi["sites"][site_uid])
       props[site_uid]["disk"] = get_ref_disk_properties(site_uid, refapi["sites"][site_uid])
+    }
 
-      # Retrieve all oar fields from the first site
-      if index == 0
-        get_oar_data(site_uid, {:api => {}, :verbose => false}).each { |oar_node_data, _|
-          oar_node_data.each { |key, _|
-            oar_data_properties << key unless oar_data_properties.include? key
-          }
-        }
-      end
+    RefRepo::Utils::get_api("sites/#{G5K::SITES.first}/internal/oarapi/resources/details.json?limit=999999")['items'].each { |oarapi_details|
+      oarapi_details.keys.each { |property|
+        oarapi_properties << property unless oarapi_properties.include? property
+      }
     }
 
     #Compiled properties used to generate page
@@ -289,11 +287,11 @@ class OarPropertiesGenerator < WikiGenerator
     }
 
     # Compare properties with fields from oar db
-    oar_data_properties.reject!{|x| (@@properties.keys.include? x or @@ignored_properties.include? x)}
+    oarapi_properties.reject!{|x| (@@properties.keys.include? x or @@ignored_properties.include? x)}
 
     @generated_content = "{{Portal|User}}\nProperties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
-    if not oar_data_properties.empty?
-      @generated_content += "{{Warning|text=Following properties are not documented : " + oar_data_properties.sort.join(', ') + "}}" + MW::LINE_FEED
+    if not oarapi_properties.empty?
+      @generated_content += "{{Warning|text=Following properties are not documented : " + oarapi_properties.sort.join(', ') + "}}" + MW::LINE_FEED
     end
     @generated_content += MW::heading("OAR Properties", 1) + MW::LINE_FEED
 
