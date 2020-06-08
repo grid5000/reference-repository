@@ -463,6 +463,12 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     h['gpu_count'] = 0
   end
 
+  if node.key?('exotic')
+    h['exotic'] = node['exotic']
+  else
+    h['exotic'] = false
+  end
+
   h['mic'] = if node['mic']
                'YES'
              else
