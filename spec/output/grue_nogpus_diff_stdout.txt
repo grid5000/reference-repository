@@ -7,10 +7,16 @@ Downloading resources properties from https://api.grid5000.fr/stable/sites/fakes
 Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
   clustera-1:
     ["-", "opa", "NO"]
+    ["~", "maintenance", "YES", "NO"]
+    ["~", "nodemodel", "R7425", "Dell PowerEdge R7425"]
+    ["~", "production", "NO", "YES"]
+    ["~", "switch", "gw-nancy", "gw"]
+    ["+", "exotic", "NO"]
   clustera-2: same modifications as above
   clustera-3: same modifications as above
   clustera-4: same modifications as above
   clustera-5: same modifications as above
+Properties that need to be created on the fakesite server: exotic
 Properties existing on the fakesite server but not managed/known by the generator: opa, disk, diskpath.
 Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.
 Downloading resources properties from https://api.grid5000.fr/stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999 ...
