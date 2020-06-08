@@ -244,6 +244,8 @@ def generate_reference_api
           # Add default keys
           node["main_memory"] = {} unless node.key?("main_memory")
 
+          node["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false unless node.key?('exotic')
+
           node['supported_job_types']['queues'] = cluster['queues'] unless node['supported_job_types'].key?('queues')
 
           # Delete keys
