@@ -222,7 +222,11 @@ class OarPropertiesGenerator < WikiGenerator
   }
 
   #Existing properties that won't be documented
-  @@ignored_properties = ["maintenance", "state", "ip_virtual"]
+  @@ignored_properties = [
+    "maintenance", "state", "ip_virtual", "api_timestamp", "available_upto", "chunks", "desktop_computing",
+    "drain", "finaud_decision", "grub", "id", "last_available_upto", "last_job_date", "links", "next_finaud_decision",
+    "next_state", "rconsole", "scheduler_priority", "state_num", "suspended_jobs"
+  ]
 
   def get_value_type(prop, values)
     if (@@properties[prop]["value_type"])
