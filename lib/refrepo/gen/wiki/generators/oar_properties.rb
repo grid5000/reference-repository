@@ -286,13 +286,13 @@ class OarPropertiesGenerator < WikiGenerator
       @@properties[prop]["possible_values"] ||= prop_hash["values"].join(", ") unless @@properties[prop].nil?
     }
 
-    # Compare properties with fields from oar db
+    # If there are undocumented and not ignored properties, we raise an error
     oarapi_properties.reject!{|x| (@@properties.keys.include? x or @@ignored_properties.include? x)}
+    if not oarapi_properties.empty?
+      raise("Following properties are not documented : #{oarapi_properties.sort.join(', ')}")
+    end
 
     @generated_content = "{{Portal|User}}\nProperties on resources managed by OAR allow users to select them according to their experiment's characteristics." + MW::LINE_FEED
-    if not oarapi_properties.empty?
-      @generated_content += "{{Warning|text=Following properties are not documented : " + oarapi_properties.sort.join(', ') + "}}" + MW::LINE_FEED
-    end
     @generated_content += MW::heading("OAR Properties", 1) + MW::LINE_FEED
 
     @@categories.sort.to_h.each { |cat, cat_properties|
