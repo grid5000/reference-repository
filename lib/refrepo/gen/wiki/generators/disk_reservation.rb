@@ -59,24 +59,3 @@ class DiskReservationGenerator < WikiGenerator
     end
   end
 end
-
-if __FILE__ == $0
-  generator = DiskReservationGenerator.new("Generated/DiskReservation")
-
-  options = WikiGenerator::parse_options
-  pp options
-  if (options)
-    ret = 2
-    begin
-      ret = generator.exec(options)
-    rescue MediawikiApi::ApiError => e
-      puts e, e.backtrace
-      ret = 3
-    rescue StandardError => e
-      puts e, e.backtrace
-      ret = 4
-    ensure
-      exit(ret)
-    end
-  end
-end

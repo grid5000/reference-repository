@@ -112,64 +112,6 @@ class WikiGenerator
     puts '----------- GENERATED PAGE END -----------'
   end
 
-  #Generic static method for cli arguments parsing
-  def self.parse_options
-    conf = ENV['HOME']+'/.grid5000_api.yml'
-    yconf = YAML::load(IO::read(conf)) rescue {}
-    api_user = yconf['username']
-    api_password = yconf['password']
-
-    options = {
-      :generators => [],
-      :sites => ['global'] + G5K::SITES,
-      :diff => false,
-      :print => false,
-      :update => false,
-      :user => ENV['API_USER'] || api_user,
-      :pwd => ENV['API_PASSWORD'] || api_password
-    }
-
-    opt_parse = OptionParser.new do |opts|
-      opts.banner = "Usage: wikigen\n"
-      opts.banner += "This script looks for file ~/.grid5000_api.yml containing your API username and password credentials. The script also recognize API_USER and API_PASSWORD environment variables."
-
-      opts.on('-g', '--generators=generator1,generator2', Array, 'Run those generators') do |g|
-        options[:generators] = g
-      end
-      
-      opts.on('-s', '--sites=site1,site2', Array, 'Only consider these sites (when applicable)') do |sites|
-        options[:sites] = sites.map{ |e| e.downcase }
-      end
-      
-      opts.on('-d', '--diff', 'Print a diff of the current wiki page against the content to generate') do
-        options[:diff] = true
-      end
-
-      opts.on('-u', '--update', 'Update the wiki page with the new generated content') do
-        options[:update] = true
-      end
-
-      opts.on('-o', '--print', 'Print the new generated content on stdout') do
-        options[:print] = true
-      end
-
-      # Print an options summary.
-      opts.on("-h", "--help", "Show this message") do
-        puts opts
-        exit
-      end
-
-      opts.separator ""
-      opts.separator "Generators: #{GENERATORS.keys.join(' ')}"
-    end
-    opt_parse.parse!
-    if (!options[:diff] && !options[:print] && !options[:update])
-      puts "ERROR: At least one action must be given! (--diff, --print, --update)\n#{opt_parse}"
-      exit(1)
-    end
-    return options
-  end
-
   #Execute actions on generator based on given options
   def exec(options)
     generate_content()

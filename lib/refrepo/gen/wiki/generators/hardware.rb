@@ -479,24 +479,3 @@ class G5KHardwareGenerator < WikiGenerator
     end
   end
 end
-
-if __FILE__ == $0
-  generator = G5KHardwareGenerator.new("Hardware")
-
-  options = WikiGenerator::parse_options
-  if (options)
-    ret = 2
-    begin
-      ret = generator.exec(options)
-    rescue MediawikiApi::ApiError => e
-      puts e, e.backtrace
-      ret = 3
-    rescue StandardError => e
-      puts "Error with node: #{generator.instance_variable_get(:@node)}"
-      puts e, e.backtrace
-      ret = 4
-    ensure
-      exit(ret)
-    end
-  end
-end
