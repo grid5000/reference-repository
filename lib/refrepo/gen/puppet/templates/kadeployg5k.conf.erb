@@ -44,10 +44,10 @@ remoteops:
 boot:
   install_bootloader: /etc/kadeploy3<%= suffix %>/install_grub2.sh
   kernels:<%
-kernel_prod = 'kernels/kadeploy3-deploy-kernel-jessie.vmlinuz'
-initrd_prod = 'kernels/kadeploy3-deploy-kernel-jessie.initrd.img'
-kernel_dev  = 'kernels/kadeploy3-deploy-kernel-jessie.vmlinuz'
-initrd_dev  = 'kernels/kadeploy3-deploy-kernel-jessie.initrd.img'%>
+kernel_prod = 'kernels/kadeploy3-deploy-kernel-buster.vmlinuz'
+initrd_prod = 'kernels/kadeploy3-deploy-kernel-buster.initrd.img'
+kernel_dev  = 'kernels/kadeploy3-deploy-kernel-buster.vmlinuz'
+initrd_dev  = 'kernels/kadeploy3-deploy-kernel-buster.initrd.img'%>
     deploy:<%
     if !data['deploy.drivers'].nil? %>
       drivers: <%= data['deploy.drivers'] %><% end %>
