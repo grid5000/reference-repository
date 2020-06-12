@@ -1,0 +1,30 @@
+nodes:
+  pyxis-[1-4]:
+    network_adapters:
+      ib0:
+        enabled: true
+        mountable: true
+        mounted: true
+        management: false
+        interface: InfiniBand
+        netmask: 255.255.240.0
+  pyxis-1:
+    network_adapters:
+      ib0:
+        ip: 172.18.54.1
+        mac: 00:00:10:86:fe:80:00:00:00:00:00:00:b8:59:9f:03:00:d1:f7:05
+  pyxis-2:
+    network_adapters:
+      ib0:
+        ip: 172.18.54.2
+        mac: 00:00:10:86:fe:80:00:00:00:00:00:00:b8:59:9f:03:00:d1:f7:06
+  pyxis-3:
+    network_adapters:
+      ib0:
+        ip: 172.18.54.3
+        mac: 00:00:10:86:fe:80:00:00:00:00:00:00:b8:59:9f:03:00:d1:f6:f2
+  pyxis-4:
+    network_adapters:
+      ib0:
+        ip: 172.18.54.4
+        mac: 00:00:10:86:fe:80:00:00:00:00:00:00:b8:59:9f:03:00:d1:fa:66
