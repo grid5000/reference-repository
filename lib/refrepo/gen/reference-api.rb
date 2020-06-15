@@ -211,6 +211,7 @@ def generate_reference_api
 
       cluster["type"] = "cluster"
       cluster["uid"]  = cluster_uid
+      cluster["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false
 
       # On the previous version of this script, cluster["created_ad"] was generated from a Ruby Time. cluster["created_ad"] is now a Ruby Date at JSON import.
       # As Date.httpdate and Time.httpdate does not behave the same with timezone, it is converted here as a Ruby time.
@@ -243,6 +244,8 @@ def generate_reference_api
 
           # Add default keys
           node["main_memory"] = {} unless node.key?("main_memory")
+
+          node["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false unless node.key?('exotic')
 
           node['supported_job_types']['queues'] = cluster['queues'] unless node['supported_job_types'].key?('queues')
 
