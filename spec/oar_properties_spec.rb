@@ -968,7 +968,7 @@ disk_exist 'clusterb-2.fakesite.grid5000.fr' 'sdd.clusterb-2' && echo '=> disk a
 disk_exist 'clusterb-2.fakesite.grid5000.fr' 'sdd.clusterb-2' || oarnodesetting -a -h '' -p host='clusterb-2.fakesite.grid5000.fr' -p type='disk' -p disk='sdd.clusterb-2'
 
 echo; echo 'Setting properties for disk sdd.clusterb-2 on host clusterb-2.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' and type='disk' and disk='sdd.clusterb-2'" -p cluster='clusterb' -p host='clusterb-2.fakesite.grid5000.fr' -p available_upto=0 -p deploy='YES' -p production='YES' -p maintenance='NO' -p disk='sdd.clusterb-2' -p diskpath='/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0' -p cpuset=-1
+oarnodesetting --sql "host='clusterb-2.fakesite.grid5000.fr' and type='disk' and disk='sdd.clusterb-2'" -p cluster='clusterb' -p host='clusterb-2.fakesite.grid5000.fr' -p available_upto=0 -p deploy='YES' -p production='YES' -p maintenance='NO' -p disk='sdd.clusterb-2' -p diskpath='/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:3:0' -p exotic='NO' -p cpuset=-1
 TXT
 
       generator_output = capture do
