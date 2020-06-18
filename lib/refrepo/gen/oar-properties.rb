@@ -590,6 +590,7 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
       h['maintenance'] = get_maintenance_property(node)
       h['disk'] = disk
       h['diskpath'] = device['by_path']
+      h['exotic'] = node['exotic'] ? 'YES' : 'NO'
       h['cpuset'] = -1
       properties[key] = h
     end
