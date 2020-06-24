@@ -1,7 +1,13 @@
+---
 stages:
-- validate
-- generate
-- deploy
+  - validate
+  - generate
+  - deploy
+
+include:
+  - project: 'grid5000/grid5000-gitlab-templates'
+    ref: master
+    file: '/sonarqube.yml'
 
 rubocop:
   stage: validate
