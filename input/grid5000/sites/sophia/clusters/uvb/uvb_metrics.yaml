@@ -1,100 +1,100 @@
 ---
 metrics:
 
-- name: bmc_voltage_volt
-  labels: {"voltage": "ps12v"}
-  description: Voltage of PS 12V reported by BMC, in volt
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 14 #PS 12V
+  - name: bmc_voltage_volt
+    labels: {"voltage": "ps12v"}
+    description: Voltage of PS 12V reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 14  # PS 12V
 
-- name: bmc_voltage_volt
-  labels: {"voltage": "ps5v"}
-  description: Voltage of PS 5V reported by BMC, in volt
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 15 #PS 5V
+  - name: bmc_voltage_volt
+    labels: {"voltage": "ps5v"}
+    description: Voltage of PS 5V reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 15  # PS 5V
 
-- name: bmc_temp_mlb_celsius
-  labels: {"id": "2"}
-  description: Temperature of MLB TEMP 2 reported by BMC, in celsius
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 16 #MLB TEMP 2
+  - name: bmc_temp_mlb_celsius
+    labels: {"id": "2"}
+    description: Temperature of MLB TEMP 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 16  # MLB TEMP 2
 
-- name: bmc_temp_mlb_celsius
-  labels: {"id": "3"}
-  description: Temperature of MLB TEMP 3 reported by BMC, in celsius
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 17 #MLB TEMP 3
+  - name: bmc_temp_mlb_celsius
+    labels: {"id": "3"}
+    description: Temperature of MLB TEMP 3 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 17  # MLB TEMP 3
 
-- name: bmc_cpu_temp_celsius
-  labels: {"cpu": "1"}
-  description: Temperature of Processor 1 reported by BMC, in celsius
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 18 #Processor 1 Temp
+  - name: bmc_cpu_temp_celsius
+    labels: {"cpu": "1"}
+    description: Temperature of Processor 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 18  # Processor 1 Temp
 
-- name: bmc_temp_mlb_celsius
-  labels: {"id": "1"}
-  description: Temperature of MLB TEMP 1 reported by BMC, in celsius
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 19 #MLB TEMP 1
+  - name: bmc_temp_mlb_celsius
+    labels: {"id": "1"}
+    description: Temperature of MLB TEMP 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 19  # MLB TEMP 1
 
-- name: bmc_cpu_temp_celsius
-  labels: {"cpu": "2"}
-  description: Temperature of Processor 2 reported by BMC, in celsius
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 20 #Processor 2 Temp
+  - name: bmc_cpu_temp_celsius
+    labels: {"cpu": "2"}
+    description: Temperature of Processor 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 20  # Processor 2 Temp
 
-- name: bmc_voltage_volt
-  labels: {"voltage": "stby3.3v"}
-  description: Voltage of STBY 3.3V reported by BMC, in volt
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 21 #STBY 3.3V
+  - name: bmc_voltage_volt
+    labels: {"voltage": "stby3.3v"}
+    description: Voltage of STBY 3.3V reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 21  # STBY 3.3V
 
-- name: bmc_current_ps_amp
-  description: PS Current reported by BMC, in amp
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 22 #PS Current
+  - name: bmc_current_ps_amp
+    description: PS Current reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 22  # PS Current
 
-- name: bmc_voltage_volt
-  labels: {"voltage": "vcore1"}
-  description: Voltage of VCORE 1 reported by BMC, in volt
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 26 #VCORE 1
+  - name: bmc_voltage_volt
+    labels: {"voltage": "vcore1"}
+    description: Voltage of VCORE 1 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 26  # VCORE 1
 
-- name: bmc_voltage_volt
-  labels: {"voltage": "vcore2"}
-  description: Voltage of VCORE 2 reported by BMC, in volt
-  period: 0
-  optional_period: 5000
-  source:
-    protocol: ipmisensor
-    id: 27 #VCORE 2
+  - name: bmc_voltage_volt
+    labels: {"voltage": "vcore2"}
+    description: Voltage of VCORE 2 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 27  # VCORE 2

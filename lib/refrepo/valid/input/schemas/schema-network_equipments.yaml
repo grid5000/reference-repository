@@ -10,7 +10,7 @@ kind:
   - switch
 serial: optional_string
 site: string
-alias : optional_array
+alias: optional_array
 backplane_bps: optional_integer
 mtu: optional_integer
 snmp_community: string
@@ -23,9 +23,9 @@ sensors:
         available: boolean
         resolution: optional_integer
         via: optional
-          #   pdu:
-          #       uid: string
-          #       port: integer
+        #   pdu:
+        #       uid: string
+        #       port: integer
 monitoring:
   <optional_hash>:
     wattmeter: optional
@@ -48,7 +48,8 @@ linecards:
     backplane_bps: optional_integer
     port: optional_string
     ports:
-      <multi>: linecard_port #custom linecard port validation (see lib/custom-validators.rb)
+      # custom linecard port validation (see lib/custom-validators.rb)
+      <multi>: linecard_port
 channels:
   <optional_hash>:
     <multi>:

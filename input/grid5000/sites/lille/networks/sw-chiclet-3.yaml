@@ -9,18 +9,18 @@ sw-chiclet-3:
   snmp_community: public
   backplane_bps: 36000000000000
   metrics:
-  - name: network_ifacein_bytes_total
-    description: Input byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
-  - name: network_ifaceout_bytes_total
-    description: Output byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_bytes_total
+      description: Input byte counter for the network device port
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_bytes_total
+      description: Output byte counter for the network device port
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
   linecards:
     1:
       kind: node
@@ -30,97 +30,97 @@ sw-chiclet-3:
       rate: 10000000000
       ports:
         1:
-          uid:  chetemi-1
+          uid: chetemi-1
         2:
-          uid:  chetemi-2
+          uid: chetemi-2
         3:
-          uid:  chetemi-3
+          uid: chetemi-3
         4:
-          uid:  chetemi-4
+          uid: chetemi-4
         5:
-          uid:  chetemi-5
+          uid: chetemi-5
         6:
-          uid:  chetemi-6
+          uid: chetemi-6
         7:
-          uid:  chetemi-7
+          uid: chetemi-7
         8:
-          uid:  chetemi-8
+          uid: chetemi-8
         9:
-          uid:  chetemi-9
+          uid: chetemi-9
         10:
-          uid:  chetemi-10
+          uid: chetemi-10
         11:
-          uid:  chetemi-11
+          uid: chetemi-11
         12:
-          uid:  chetemi-12
+          uid: chetemi-12
         13:
-          uid:  chetemi-13
+          uid: chetemi-13
         14:
-          uid:  chetemi-14
+          uid: chetemi-14
         15:
-          uid:  chetemi-15
+          uid: chetemi-15
         17:
-          uid:  chifflet-1
+          uid: chifflet-1
         18:
-          uid:  chifflet-2
+          uid: chifflet-2
         19:
-          uid:  chifflet-3
+          uid: chifflet-3
         20:
-          uid:  chifflet-4
+          uid: chifflet-4
         21:
-          uid:  chifflet-5
+          uid: chifflet-5
         22:
-          uid:  chifflet-6
+          uid: chifflet-6
         23:
-          uid:  chifflet-7
+          uid: chifflet-7
         24:
-          uid:  chifflet-8
+          uid: chifflet-8
         25:
-          uid:  chetemi-1-eth1
+          uid: chetemi-1-eth1
         26:
-          uid:  chetemi-2-eth1
+          uid: chetemi-2-eth1
         27:
-          uid:  chetemi-3-eth1
+          uid: chetemi-3-eth1
         28:
-          uid:  chetemi-4-eth1
+          uid: chetemi-4-eth1
         29:
-          uid:  chetemi-5-eth1
+          uid: chetemi-5-eth1
         30:
-          uid:  chetemi-6-eth1
+          uid: chetemi-6-eth1
         31:
-          uid:  chetemi-7-eth1
+          uid: chetemi-7-eth1
         32:
-          uid:  chetemi-8-eth1
+          uid: chetemi-8-eth1
         33:
-          uid:  chetemi-9-eth1
+          uid: chetemi-9-eth1
         34:
-          uid:  chetemi-10-eth1
+          uid: chetemi-10-eth1
         35:
-          uid:  chetemi-11-eth1
+          uid: chetemi-11-eth1
         36:
-          uid:  chetemi-12-eth1
+          uid: chetemi-12-eth1
         37:
-          uid:  chetemi-13-eth1
+          uid: chetemi-13-eth1
         38:
-          uid:  chetemi-14-eth1
+          uid: chetemi-14-eth1
         39:
-          uid:  chetemi-15-eth1
+          uid: chetemi-15-eth1
         40:
-          uid:  chifflet-1-eth1
+          uid: chifflet-1-eth1
         41:
-          uid:  chifflet-2-eth1
+          uid: chifflet-2-eth1
         42:
-          uid:  chifflet-3-eth1
+          uid: chifflet-3-eth1
         43:
-          uid:  chifflet-4-eth1
+          uid: chifflet-4-eth1
         44:
-          uid:  chifflet-5-eth1
+          uid: chifflet-5-eth1
         45:
-          uid:  chifflet-6-eth1
+          uid: chifflet-6-eth1
         46:
-          uid:  chifflet-7-eth1
+          uid: chifflet-7-eth1
         47:
-          uid:  chifflet-8-eth1
+          uid: chifflet-8-eth1
         53:
           uid: port-channel1
           kind: channel
