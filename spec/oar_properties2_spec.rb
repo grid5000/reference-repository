@@ -115,4 +115,25 @@ describe 'OarProperties2' do
     check_oar_properties({ :oar => 'oar_grue-without-gpus', :data => 'data_grue', :case => 'grue_nogpus' })
   end
 
+  it 'generates an identical output for graffiti when all GPUs are there' do
+    check_oar_properties({ :oar => 'oar_graffiti-with-all-gpus', :data => 'data_graffiti2', :case => 'graffiti-all-gpus' })
+  end
+
+  it 'generates an output for graffiti when a GPU has been removed, but OAR not updated' do
+    check_oar_properties({ :oar => 'oar_graffiti-with-all-gpus', :data => 'data_graffiti2-missing-gpu', :case => 'graffiti-gpu-removed' })
+  end
+
+  it 'generates an output for graffiti when a GPU has been removed, and OAR updated' do
+    check_oar_properties({ :oar => 'oar_graffiti-with-missing-gpus', :data => 'data_graffiti2-missing-gpu', :case => 'graffiti-gpu-removed-OAR-updated' })
+  end
+
+  it 'generates an output for graffiti when a GPU has been removed then re-added, OAR not yet re-updated' do
+    check_oar_properties({ :oar => 'oar_graffiti-with-missing-gpus', :data => 'data_graffiti2', :case => 'graffiti-gpu-removed-OAR-updated-gpu-re-added' })
+  end
+
+  it 'generates an output for graffiti when a GPU has been removed then re-added, OAR updated' do
+    check_oar_properties({ :oar => 'oar_graffiti-with-all-gpus', :data => 'data_graffiti2', :case => 'graffiti-gpu-removed-OAR-updated-gpu-re-added-OAR-updated' })
+  end
+
+
 end
