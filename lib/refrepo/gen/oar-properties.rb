@@ -1272,7 +1272,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         "gpu" => {
           :current_ids => [],
           :per_server_count => gpu_count,
-          :per_cluster_count => node_count * gpu_count
+          :per_cluster_count =>  cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.inject(0) { |a, b| a+b } # sum
         },
     }
 
