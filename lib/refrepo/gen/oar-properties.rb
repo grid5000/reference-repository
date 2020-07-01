@@ -1304,9 +1304,11 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       expected_phys_rsc_count = variables[:per_cluster_count]
 
       if phys_rsc_ids.length != expected_phys_rsc_count
-        if ["cpu", "core"].include? physical_resource
+        if ["cpu", "core", "gpu"].include? physical_resource
           puts("#{physical_resource.upcase} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}).")
-          raise "unexpected number (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}) of resources for cluster #{cluster_name}"
+          if ["cpu", "core"].include? physical_resource # this problem is not fatal for GPUs
+            raise "unexpected number (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}) of resources for cluster #{cluster_name}"
+          end
         end
       end
 
