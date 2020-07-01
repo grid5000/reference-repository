@@ -1432,7 +1432,13 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
               # id of the selected GPU in the node
               local_id = node_description["gpu_devices"].values.index(selected_gpu)
 
-              row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * gpu_count + local_id]
+              # to assign the gpu number, just use the number of nodes and the number of GPUs per node
+              # sanity check: we must fall into the correct range
+              gpu = phys_rsc_map["gpu"][:current_ids].min + node_index0 * gpu_count + local_id
+              if gpu > phys_rsc_map["gpu"][:current_ids].max
+                raise "Invalid GPU number for cluster #{cluster_name}"
+              end
+              row[:gpu] = gpu
               row[:gpudevice] = local_id
               row[:gpudevicepath] = selected_gpu['device']
               row[:gpumodel] = selected_gpu['model']
