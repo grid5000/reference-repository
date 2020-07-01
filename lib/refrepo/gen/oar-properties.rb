@@ -1243,7 +1243,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     cpu_count = first_node['architecture']['nb_procs']
     cpu_core_count = first_node['architecture']['nb_cores'] / cpu_count
     cpu_thread_count = first_node['architecture']['nb_threads'] / cpu_count
-    gpu_count = first_node.key?("gpu_devices") ? first_node["gpu_devices"].length : 0
+    gpu_count = cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.max
 
     cpu_model = "#{first_node['processor']['model']} #{first_node['processor']['version']}"
     core_numbering = first_node['architecture']['cpu_core_numbering']
