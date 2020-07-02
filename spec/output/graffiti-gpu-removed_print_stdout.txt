@@ -1,0 +1,409 @@
+GPU has an unexpected number of resources (current:52 vs expected:51).
+
+#! /usr/bin/env bash
+
+set -eu
+set -x
+set -o pipefail
+
+echo '================================================================================'
+
+property_exist () {
+  [[ $(oarproperty -l | grep -e "^$1$") ]]
+}
+
+node_exist () {
+  [[ $(oarnodes --sql "host='$1' and type='default'") ]]
+}
+
+disk_exist () {
+  [[ $(oarnodes --sql "host='$1' and type='disk' and disk='$2'") ]]
+}
+
+
+# if [ $(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
+#   NEXT_AVAILABLE_CPU_ID=0
+# else
+#   MAX_CPU_ID=$(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | head -n1)
+#   let "NEXT_AVAILABLE_CPU_ID=MAX_CPU_ID+1"
+# fi
+#
+# if [ $(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
+#   NEXT_AVAILABLE_CORE_ID=0
+# else
+#   MAX_CORE_ID=$(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | head -n1)
+#   let "NEXT_AVAILABLE_CORE_ID=MAX_CORE_ID+1"
+# fi
+
+#############################################
+# Create OAR properties that were created by 'oar_resources_add'
+#############################################
+property_exist 'host' || oarproperty -a host --varchar
+property_exist 'cpu' || oarproperty -a cpu
+property_exist 'core' || oarproperty -a core
+property_exist 'gpudevice' || oarproperty -a gpudevice
+property_exist 'gpu' || oarproperty -a gpu
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+
+
+#############################################
+# Create OAR properties if they don't exist
+#############################################
+
+property_exist 'ip' || oarproperty -a ip --varchar
+property_exist 'cluster' || oarproperty -a cluster --varchar
+property_exist 'nodemodel' || oarproperty -a nodemodel --varchar
+property_exist 'switch' || oarproperty -a switch --varchar
+property_exist 'virtual' || oarproperty -a virtual --varchar
+property_exist 'cpuarch' || oarproperty -a cpuarch --varchar
+property_exist 'cpucore' || oarproperty -a cpucore
+property_exist 'cputype' || oarproperty -a cputype --varchar
+property_exist 'cpufreq' || oarproperty -a cpufreq --varchar
+property_exist 'disktype' || oarproperty -a disktype --varchar
+property_exist 'eth_count' || oarproperty -a eth_count
+property_exist 'eth_rate' || oarproperty -a eth_rate
+property_exist 'ib_count' || oarproperty -a ib_count
+property_exist 'ib_rate' || oarproperty -a ib_rate
+property_exist 'ib' || oarproperty -a ib --varchar
+property_exist 'opa_count' || oarproperty -a opa_count
+property_exist 'opa_rate' || oarproperty -a opa_rate
+property_exist 'myri_count' || oarproperty -a myri_count
+property_exist 'myri_rate' || oarproperty -a myri_rate
+property_exist 'myri' || oarproperty -a myri --varchar
+property_exist 'memcore' || oarproperty -a memcore
+property_exist 'memcpu' || oarproperty -a memcpu
+property_exist 'memnode' || oarproperty -a memnode
+property_exist 'gpu_count' || oarproperty -a gpu_count
+property_exist 'exotic' || oarproperty -a exotic --varchar
+property_exist 'mic' || oarproperty -a mic --varchar
+property_exist 'wattmeter' || oarproperty -a wattmeter --varchar
+property_exist 'cluster_priority' || oarproperty -a cluster_priority
+property_exist 'max_walltime' || oarproperty -a max_walltime
+property_exist 'production' || oarproperty -a production --varchar
+property_exist 'maintenance' || oarproperty -a maintenance --varchar
+property_exist 'disk_reservation_count' || oarproperty -a disk_reservation_count
+
+
+###################################
+# clustera-1.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9651' AND type='default'" -p cpu=1615 -p core=8527 -p cpuset=0 -p gpu=53 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9652' AND type='default'" -p cpu=1615 -p core=8528 -p cpuset=2 -p gpu=53 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9653' AND type='default'" -p cpu=1615 -p core=8529 -p cpuset=4 -p gpu=53 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9654' AND type='default'" -p cpu=1615 -p core=8530 -p cpuset=6 -p gpu=53 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9655' AND type='default'" -p cpu=1615 -p core=8531 -p cpuset=8 -p gpu=54 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9656' AND type='default'" -p cpu=1615 -p core=8532 -p cpuset=10 -p gpu=54 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9657' AND type='default'" -p cpu=1615 -p core=8533 -p cpuset=12 -p gpu=54 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9658' AND type='default'" -p cpu=1615 -p core=8534 -p cpuset=14 -p gpu=54 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9659' AND type='default'" -p cpu=1616 -p core=8535 -p cpuset=1 -p gpu=55 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9660' AND type='default'" -p cpu=1616 -p core=8536 -p cpuset=3 -p gpu=55 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9661' AND type='default'" -p cpu=1616 -p core=8537 -p cpuset=5 -p gpu=55 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9662' AND type='default'" -p cpu=1616 -p core=8538 -p cpuset=7 -p gpu=55 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9663' AND type='default'" -p cpu=1616 -p core=8539 -p cpuset=9 -p gpu=56 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9664' AND type='default'" -p cpu=1616 -p core=8540 -p cpuset=11 -p gpu=56 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9665' AND type='default'" -p cpu=1616 -p core=8541 -p cpuset=13 -p gpu=56 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' AND resource_id='9666' AND type='default'" -p cpu=1616 -p core=8542 -p cpuset=15 -p gpu=56 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-1.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-1.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-2.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9667' AND type='default'" -p cpu=1617 -p core=8543 -p cpuset=0 -p gpu=57 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9668' AND type='default'" -p cpu=1617 -p core=8544 -p cpuset=2 -p gpu=57 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9669' AND type='default'" -p cpu=1617 -p core=8545 -p cpuset=4 -p gpu=57 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9670' AND type='default'" -p cpu=1617 -p core=8546 -p cpuset=6 -p gpu=57 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9671' AND type='default'" -p cpu=1617 -p core=8547 -p cpuset=8 -p gpu=58 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9672' AND type='default'" -p cpu=1617 -p core=8548 -p cpuset=10 -p gpu=58 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9673' AND type='default'" -p cpu=1617 -p core=8549 -p cpuset=12 -p gpu=58 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9674' AND type='default'" -p cpu=1617 -p core=8550 -p cpuset=14 -p gpu=58 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9675' AND type='default'" -p cpu=1618 -p core=8551 -p cpuset=1 -p gpu=59 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9676' AND type='default'" -p cpu=1618 -p core=8552 -p cpuset=3 -p gpu=59 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9677' AND type='default'" -p cpu=1618 -p core=8553 -p cpuset=5 -p gpu=59 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9678' AND type='default'" -p cpu=1618 -p core=8554 -p cpuset=7 -p gpu=59 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9679' AND type='default'" -p cpu=1618 -p core=8555 -p cpuset=9 -p gpu=59 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9680' AND type='default'" -p cpu=1618 -p core=8556 -p cpuset=11 -p gpu=59 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9681' AND type='default'" -p cpu=1618 -p core=8557 -p cpuset=13 -p gpu=59 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' AND resource_id='9682' AND type='default'" -p cpu=1618 -p core=8558 -p cpuset=15 -p gpu=59 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+echo; echo 'Setting properties for clustera-2.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-2.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=3 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-3.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9683' AND type='default'" -p cpu=1619 -p core=8559 -p cpuset=0 -p gpu=61 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9684' AND type='default'" -p cpu=1619 -p core=8560 -p cpuset=2 -p gpu=61 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9685' AND type='default'" -p cpu=1619 -p core=8561 -p cpuset=4 -p gpu=61 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9686' AND type='default'" -p cpu=1619 -p core=8562 -p cpuset=6 -p gpu=61 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9687' AND type='default'" -p cpu=1619 -p core=8563 -p cpuset=8 -p gpu=62 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9688' AND type='default'" -p cpu=1619 -p core=8564 -p cpuset=10 -p gpu=62 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9689' AND type='default'" -p cpu=1619 -p core=8565 -p cpuset=12 -p gpu=62 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9690' AND type='default'" -p cpu=1619 -p core=8566 -p cpuset=14 -p gpu=62 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9691' AND type='default'" -p cpu=1620 -p core=8567 -p cpuset=1 -p gpu=63 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9692' AND type='default'" -p cpu=1620 -p core=8568 -p cpuset=3 -p gpu=63 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9693' AND type='default'" -p cpu=1620 -p core=8569 -p cpuset=5 -p gpu=63 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9694' AND type='default'" -p cpu=1620 -p core=8570 -p cpuset=7 -p gpu=63 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9695' AND type='default'" -p cpu=1620 -p core=8571 -p cpuset=9 -p gpu=64 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9696' AND type='default'" -p cpu=1620 -p core=8572 -p cpuset=11 -p gpu=64 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9697' AND type='default'" -p cpu=1620 -p core=8573 -p cpuset=13 -p gpu=64 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' AND resource_id='9698' AND type='default'" -p cpu=1620 -p core=8574 -p cpuset=15 -p gpu=64 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-3.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-3.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.3' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-4.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9699' AND type='default'" -p cpu=1621 -p core=8575 -p cpuset=0 -p gpu=65 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9700' AND type='default'" -p cpu=1621 -p core=8576 -p cpuset=2 -p gpu=65 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9701' AND type='default'" -p cpu=1621 -p core=8577 -p cpuset=4 -p gpu=65 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9702' AND type='default'" -p cpu=1621 -p core=8578 -p cpuset=6 -p gpu=65 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9703' AND type='default'" -p cpu=1621 -p core=8579 -p cpuset=8 -p gpu=66 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9704' AND type='default'" -p cpu=1621 -p core=8580 -p cpuset=10 -p gpu=66 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9705' AND type='default'" -p cpu=1621 -p core=8581 -p cpuset=12 -p gpu=66 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9706' AND type='default'" -p cpu=1621 -p core=8582 -p cpuset=14 -p gpu=66 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9707' AND type='default'" -p cpu=1622 -p core=8583 -p cpuset=1 -p gpu=67 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9708' AND type='default'" -p cpu=1622 -p core=8584 -p cpuset=3 -p gpu=67 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9709' AND type='default'" -p cpu=1622 -p core=8585 -p cpuset=5 -p gpu=67 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9710' AND type='default'" -p cpu=1622 -p core=8586 -p cpuset=7 -p gpu=67 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9711' AND type='default'" -p cpu=1622 -p core=8587 -p cpuset=9 -p gpu=68 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9712' AND type='default'" -p cpu=1622 -p core=8588 -p cpuset=11 -p gpu=68 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9713' AND type='default'" -p cpu=1622 -p core=8589 -p cpuset=13 -p gpu=68 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' AND resource_id='9714' AND type='default'" -p cpu=1622 -p core=8590 -p cpuset=15 -p gpu=68 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-4.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-4.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.4' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=172800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-5.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9715' AND type='default'" -p cpu=1623 -p core=8591 -p cpuset=0 -p gpu=69 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9716' AND type='default'" -p cpu=1623 -p core=8592 -p cpuset=2 -p gpu=69 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9717' AND type='default'" -p cpu=1623 -p core=8593 -p cpuset=4 -p gpu=69 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9718' AND type='default'" -p cpu=1623 -p core=8594 -p cpuset=6 -p gpu=69 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9719' AND type='default'" -p cpu=1623 -p core=8595 -p cpuset=8 -p gpu=70 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9720' AND type='default'" -p cpu=1623 -p core=8596 -p cpuset=10 -p gpu=70 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9721' AND type='default'" -p cpu=1623 -p core=8597 -p cpuset=12 -p gpu=70 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9722' AND type='default'" -p cpu=1623 -p core=8598 -p cpuset=14 -p gpu=70 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9723' AND type='default'" -p cpu=1624 -p core=8599 -p cpuset=1 -p gpu=71 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9724' AND type='default'" -p cpu=1624 -p core=8600 -p cpuset=3 -p gpu=71 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9725' AND type='default'" -p cpu=1624 -p core=8601 -p cpuset=5 -p gpu=71 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9726' AND type='default'" -p cpu=1624 -p core=8602 -p cpuset=7 -p gpu=71 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9727' AND type='default'" -p cpu=1624 -p core=8603 -p cpuset=9 -p gpu=72 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9728' AND type='default'" -p cpu=1624 -p core=8604 -p cpuset=11 -p gpu=72 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9729' AND type='default'" -p cpu=1624 -p core=8605 -p cpuset=13 -p gpu=72 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' AND resource_id='9730' AND type='default'" -p cpu=1624 -p core=8606 -p cpuset=15 -p gpu=72 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-5.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-5.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.5' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=172800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-6.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9731' AND type='default'" -p cpu=1625 -p core=8607 -p cpuset=0 -p gpu=73 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9732' AND type='default'" -p cpu=1625 -p core=8608 -p cpuset=2 -p gpu=73 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9733' AND type='default'" -p cpu=1625 -p core=8609 -p cpuset=4 -p gpu=73 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9734' AND type='default'" -p cpu=1625 -p core=8610 -p cpuset=6 -p gpu=73 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9735' AND type='default'" -p cpu=1625 -p core=8611 -p cpuset=8 -p gpu=74 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9736' AND type='default'" -p cpu=1625 -p core=8612 -p cpuset=10 -p gpu=74 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9737' AND type='default'" -p cpu=1625 -p core=8613 -p cpuset=12 -p gpu=74 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9738' AND type='default'" -p cpu=1625 -p core=8614 -p cpuset=14 -p gpu=74 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9739' AND type='default'" -p cpu=1626 -p core=8615 -p cpuset=1 -p gpu=75 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9740' AND type='default'" -p cpu=1626 -p core=8616 -p cpuset=3 -p gpu=75 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9741' AND type='default'" -p cpu=1626 -p core=8617 -p cpuset=5 -p gpu=75 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9742' AND type='default'" -p cpu=1626 -p core=8618 -p cpuset=7 -p gpu=75 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9743' AND type='default'" -p cpu=1626 -p core=8619 -p cpuset=9 -p gpu=76 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9744' AND type='default'" -p cpu=1626 -p core=8620 -p cpuset=11 -p gpu=76 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9745' AND type='default'" -p cpu=1626 -p core=8621 -p cpuset=13 -p gpu=76 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' AND resource_id='9746' AND type='default'" -p cpu=1626 -p core=8622 -p cpuset=15 -p gpu=76 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-6.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-6.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.6' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=172800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-7.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9747' AND type='default'" -p cpu=1627 -p core=8623 -p cpuset=0 -p gpu=77 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9748' AND type='default'" -p cpu=1627 -p core=8624 -p cpuset=2 -p gpu=77 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9749' AND type='default'" -p cpu=1627 -p core=8625 -p cpuset=4 -p gpu=77 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9750' AND type='default'" -p cpu=1627 -p core=8626 -p cpuset=6 -p gpu=77 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9751' AND type='default'" -p cpu=1627 -p core=8627 -p cpuset=8 -p gpu=78 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9752' AND type='default'" -p cpu=1627 -p core=8628 -p cpuset=10 -p gpu=78 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9753' AND type='default'" -p cpu=1627 -p core=8629 -p cpuset=12 -p gpu=78 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9754' AND type='default'" -p cpu=1627 -p core=8630 -p cpuset=14 -p gpu=78 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9755' AND type='default'" -p cpu=1628 -p core=8631 -p cpuset=1 -p gpu=79 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9756' AND type='default'" -p cpu=1628 -p core=8632 -p cpuset=3 -p gpu=79 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9757' AND type='default'" -p cpu=1628 -p core=8633 -p cpuset=5 -p gpu=79 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9758' AND type='default'" -p cpu=1628 -p core=8634 -p cpuset=7 -p gpu=79 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9759' AND type='default'" -p cpu=1628 -p core=8635 -p cpuset=9 -p gpu=80 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9760' AND type='default'" -p cpu=1628 -p core=8636 -p cpuset=11 -p gpu=80 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9761' AND type='default'" -p cpu=1628 -p core=8637 -p cpuset=13 -p gpu=80 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' AND resource_id='9762' AND type='default'" -p cpu=1628 -p core=8638 -p cpuset=15 -p gpu=80 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-7.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-7.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.7' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-8.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9763' AND type='default'" -p cpu=1629 -p core=8639 -p cpuset=0 -p gpu=81 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9764' AND type='default'" -p cpu=1629 -p core=8640 -p cpuset=2 -p gpu=81 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9765' AND type='default'" -p cpu=1629 -p core=8641 -p cpuset=4 -p gpu=81 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9766' AND type='default'" -p cpu=1629 -p core=8642 -p cpuset=6 -p gpu=81 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9767' AND type='default'" -p cpu=1629 -p core=8643 -p cpuset=8 -p gpu=82 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9768' AND type='default'" -p cpu=1629 -p core=8644 -p cpuset=10 -p gpu=82 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9769' AND type='default'" -p cpu=1629 -p core=8645 -p cpuset=12 -p gpu=82 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9770' AND type='default'" -p cpu=1629 -p core=8646 -p cpuset=14 -p gpu=82 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9771' AND type='default'" -p cpu=1630 -p core=8647 -p cpuset=1 -p gpu=83 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9772' AND type='default'" -p cpu=1630 -p core=8648 -p cpuset=3 -p gpu=83 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9773' AND type='default'" -p cpu=1630 -p core=8649 -p cpuset=5 -p gpu=83 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9774' AND type='default'" -p cpu=1630 -p core=8650 -p cpuset=7 -p gpu=83 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9775' AND type='default'" -p cpu=1630 -p core=8651 -p cpuset=9 -p gpu=84 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9776' AND type='default'" -p cpu=1630 -p core=8652 -p cpuset=11 -p gpu=84 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9777' AND type='default'" -p cpu=1630 -p core=8653 -p cpuset=13 -p gpu=84 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' AND resource_id='9778' AND type='default'" -p cpu=1630 -p core=8654 -p cpuset=15 -p gpu=84 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-8.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-8.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.8' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-9.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9779' AND type='default'" -p cpu=1631 -p core=8655 -p cpuset=0 -p gpu=85 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9780' AND type='default'" -p cpu=1631 -p core=8656 -p cpuset=2 -p gpu=85 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9781' AND type='default'" -p cpu=1631 -p core=8657 -p cpuset=4 -p gpu=85 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9782' AND type='default'" -p cpu=1631 -p core=8658 -p cpuset=6 -p gpu=85 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9783' AND type='default'" -p cpu=1631 -p core=8659 -p cpuset=8 -p gpu=86 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9784' AND type='default'" -p cpu=1631 -p core=8660 -p cpuset=10 -p gpu=86 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9785' AND type='default'" -p cpu=1631 -p core=8661 -p cpuset=12 -p gpu=86 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9786' AND type='default'" -p cpu=1631 -p core=8662 -p cpuset=14 -p gpu=86 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9787' AND type='default'" -p cpu=1632 -p core=8663 -p cpuset=1 -p gpu=87 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9788' AND type='default'" -p cpu=1632 -p core=8664 -p cpuset=3 -p gpu=87 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9789' AND type='default'" -p cpu=1632 -p core=8665 -p cpuset=5 -p gpu=87 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9790' AND type='default'" -p cpu=1632 -p core=8666 -p cpuset=7 -p gpu=87 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9791' AND type='default'" -p cpu=1632 -p core=8667 -p cpuset=9 -p gpu=88 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9792' AND type='default'" -p cpu=1632 -p core=8668 -p cpuset=11 -p gpu=88 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9793' AND type='default'" -p cpu=1632 -p core=8669 -p cpuset=13 -p gpu=88 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' AND resource_id='9794' AND type='default'" -p cpu=1632 -p core=8670 -p cpuset=15 -p gpu=88 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-9.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-9.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.9' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-10.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9795' AND type='default'" -p cpu=1633 -p core=8671 -p cpuset=0 -p gpu=89 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9796' AND type='default'" -p cpu=1633 -p core=8672 -p cpuset=2 -p gpu=89 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9797' AND type='default'" -p cpu=1633 -p core=8673 -p cpuset=4 -p gpu=89 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9798' AND type='default'" -p cpu=1633 -p core=8674 -p cpuset=6 -p gpu=89 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9799' AND type='default'" -p cpu=1633 -p core=8675 -p cpuset=8 -p gpu=90 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9800' AND type='default'" -p cpu=1633 -p core=8676 -p cpuset=10 -p gpu=90 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9801' AND type='default'" -p cpu=1633 -p core=8677 -p cpuset=12 -p gpu=90 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9802' AND type='default'" -p cpu=1633 -p core=8678 -p cpuset=14 -p gpu=90 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9803' AND type='default'" -p cpu=1634 -p core=8679 -p cpuset=1 -p gpu=91 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9804' AND type='default'" -p cpu=1634 -p core=8680 -p cpuset=3 -p gpu=91 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9805' AND type='default'" -p cpu=1634 -p core=8681 -p cpuset=5 -p gpu=91 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9806' AND type='default'" -p cpu=1634 -p core=8682 -p cpuset=7 -p gpu=91 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9807' AND type='default'" -p cpu=1634 -p core=8683 -p cpuset=9 -p gpu=92 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9808' AND type='default'" -p cpu=1634 -p core=8684 -p cpuset=11 -p gpu=92 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9809' AND type='default'" -p cpu=1634 -p core=8685 -p cpuset=13 -p gpu=92 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' AND resource_id='9810' AND type='default'" -p cpu=1634 -p core=8686 -p cpuset=15 -p gpu=92 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-10.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-10.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.10' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-11.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9811' AND type='default'" -p cpu=1635 -p core=8687 -p cpuset=0 -p gpu=93 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9812' AND type='default'" -p cpu=1635 -p core=8688 -p cpuset=2 -p gpu=93 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9813' AND type='default'" -p cpu=1635 -p core=8689 -p cpuset=4 -p gpu=93 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9814' AND type='default'" -p cpu=1635 -p core=8690 -p cpuset=6 -p gpu=93 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9815' AND type='default'" -p cpu=1635 -p core=8691 -p cpuset=8 -p gpu=94 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9816' AND type='default'" -p cpu=1635 -p core=8692 -p cpuset=10 -p gpu=94 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9817' AND type='default'" -p cpu=1635 -p core=8693 -p cpuset=12 -p gpu=94 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9818' AND type='default'" -p cpu=1635 -p core=8694 -p cpuset=14 -p gpu=94 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9819' AND type='default'" -p cpu=1636 -p core=8695 -p cpuset=1 -p gpu=95 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9820' AND type='default'" -p cpu=1636 -p core=8696 -p cpuset=3 -p gpu=95 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9821' AND type='default'" -p cpu=1636 -p core=8697 -p cpuset=5 -p gpu=95 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9822' AND type='default'" -p cpu=1636 -p core=8698 -p cpuset=7 -p gpu=95 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9823' AND type='default'" -p cpu=1636 -p core=8699 -p cpuset=9 -p gpu=96 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9824' AND type='default'" -p cpu=1636 -p core=8700 -p cpuset=11 -p gpu=96 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9825' AND type='default'" -p cpu=1636 -p core=8701 -p cpuset=13 -p gpu=96 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' AND resource_id='9826' AND type='default'" -p cpu=1636 -p core=8702 -p cpuset=15 -p gpu=96 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-11.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-11.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.11' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-12.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9827' AND type='default'" -p cpu=1637 -p core=8703 -p cpuset=0 -p gpu=97 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9828' AND type='default'" -p cpu=1637 -p core=8704 -p cpuset=2 -p gpu=97 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9829' AND type='default'" -p cpu=1637 -p core=8705 -p cpuset=4 -p gpu=97 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9830' AND type='default'" -p cpu=1637 -p core=8706 -p cpuset=6 -p gpu=97 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9831' AND type='default'" -p cpu=1637 -p core=8707 -p cpuset=8 -p gpu=98 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9832' AND type='default'" -p cpu=1637 -p core=8708 -p cpuset=10 -p gpu=98 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9833' AND type='default'" -p cpu=1637 -p core=8709 -p cpuset=12 -p gpu=98 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9834' AND type='default'" -p cpu=1637 -p core=8710 -p cpuset=14 -p gpu=98 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9835' AND type='default'" -p cpu=1638 -p core=8711 -p cpuset=1 -p gpu=99 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9836' AND type='default'" -p cpu=1638 -p core=8712 -p cpuset=3 -p gpu=99 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9837' AND type='default'" -p cpu=1638 -p core=8713 -p cpuset=5 -p gpu=99 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9838' AND type='default'" -p cpu=1638 -p core=8714 -p cpuset=7 -p gpu=99 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9839' AND type='default'" -p cpu=1638 -p core=8715 -p cpuset=9 -p gpu=100 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9840' AND type='default'" -p cpu=1638 -p core=8716 -p cpuset=11 -p gpu=100 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9841' AND type='default'" -p cpu=1638 -p core=8717 -p cpuset=13 -p gpu=100 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' AND resource_id='9842' AND type='default'" -p cpu=1638 -p core=8718 -p cpuset=15 -p gpu=100 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-12.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-12.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.12' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-13.nancy.grid5000.fr
+###################################
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9843' AND type='default'" -p cpu=1639 -p core=8719 -p cpuset=0 -p gpu=101 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9844' AND type='default'" -p cpu=1639 -p core=8720 -p cpuset=2 -p gpu=101 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9845' AND type='default'" -p cpu=1639 -p core=8721 -p cpuset=4 -p gpu=101 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9846' AND type='default'" -p cpu=1639 -p core=8722 -p cpuset=6 -p gpu=101 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=0 # This GPU is mapped on /dev/nvidia0
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9847' AND type='default'" -p cpu=1639 -p core=8723 -p cpuset=8 -p gpu=102 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9848' AND type='default'" -p cpu=1639 -p core=8724 -p cpuset=10 -p gpu=102 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9849' AND type='default'" -p cpu=1639 -p core=8725 -p cpuset=12 -p gpu=102 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9850' AND type='default'" -p cpu=1639 -p core=8726 -p cpuset=14 -p gpu=102 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=1 # This GPU is mapped on /dev/nvidia1
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9851' AND type='default'" -p cpu=1640 -p core=8727 -p cpuset=1 -p gpu=103 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9852' AND type='default'" -p cpu=1640 -p core=8728 -p cpuset=3 -p gpu=103 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9853' AND type='default'" -p cpu=1640 -p core=8729 -p cpuset=5 -p gpu=103 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9854' AND type='default'" -p cpu=1640 -p core=8730 -p cpuset=7 -p gpu=103 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9855' AND type='default'" -p cpu=1640 -p core=8731 -p cpuset=9 -p gpu=104 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9856' AND type='default'" -p cpu=1640 -p core=8732 -p cpuset=11 -p gpu=104 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9857' AND type='default'" -p cpu=1640 -p core=8733 -p cpuset=13 -p gpu=104 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' AND resource_id='9858' AND type='default'" -p cpu=1640 -p core=8734 -p cpuset=15 -p gpu=104 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
+echo; echo 'Setting properties for clustera-13.nancy.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-13.nancy.grid5000.fr' and type='default'" -p ip='172.16.64.13' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+
+echo '================================================================================'

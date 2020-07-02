@@ -1243,7 +1243,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     cpu_count = first_node['architecture']['nb_procs']
     cpu_core_count = first_node['architecture']['nb_cores'] / cpu_count
     cpu_thread_count = first_node['architecture']['nb_threads'] / cpu_count
-    gpu_count = first_node.key?("gpu_devices") ? first_node["gpu_devices"].length : 0
+    gpu_count = cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.max
 
     cpu_model = "#{first_node['processor']['model']} #{first_node['processor']['version']}"
     core_numbering = first_node['architecture']['cpu_core_numbering']
@@ -1272,7 +1272,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         "gpu" => {
           :current_ids => [],
           :per_server_count => gpu_count,
-          :per_cluster_count => node_count * gpu_count
+          :per_cluster_count =>  cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.inject(0) { |a, b| a+b } # sum
         },
     }
 
@@ -1304,9 +1304,11 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       expected_phys_rsc_count = variables[:per_cluster_count]
 
       if phys_rsc_ids.length != expected_phys_rsc_count
-        if ["cpu", "core"].include? physical_resource
+        if ["cpu", "core", "gpu"].include? physical_resource
           puts("#{physical_resource.upcase} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}).")
-          raise "unexpected number (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}) of resources for cluster #{cluster_name}"
+          if ["cpu", "core"].include? physical_resource # this problem is not fatal for GPUs
+            raise "unexpected number (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}) of resources for cluster #{cluster_name}"
+          end
         end
       end
 
@@ -1430,7 +1432,13 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
               # id of the selected GPU in the node
               local_id = node_description["gpu_devices"].values.index(selected_gpu)
 
-              row[:gpu] = phys_rsc_map["gpu"][:current_ids][node_index0 * gpu_count + local_id]
+              # to assign the gpu number, just use the number of nodes and the number of GPUs per node
+              # sanity check: we must fall into the correct range
+              gpu = phys_rsc_map["gpu"][:current_ids].min + node_index0 * gpu_count + local_id
+              if gpu > phys_rsc_map["gpu"][:current_ids].max
+                raise "Invalid GPU number for cluster #{cluster_name}"
+              end
+              row[:gpu] = gpu
               row[:gpudevice] = local_id
               row[:gpudevicepath] = selected_gpu['device']
               row[:gpumodel] = selected_gpu['model']
