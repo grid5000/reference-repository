@@ -1,17 +1,16 @@
 ---
 srv:
   kind: physical
-  alias: [adminfront]
   warranty: 2020-11
   serial: G8VYKZ1
   network_adapters:
     default:
       mounted: true
-      ip: 172.16.79.15
+      ip: 172.16.79.18
       mac: A0:36:9F:28:10:AC
     bmc:
       mounted: true
-      ip: 172.17.79.15
+      ip: 172.17.79.18
       mac: F0:1F:AF:E0:FA:DC
   monitoring:
     wattmeter: multiple
@@ -283,17 +282,17 @@ talc-data2:
 
 srv3:
   kind: physical
-  alias: [wattmetre]
+  alias: [wattmetre, adminfront]
   warranty: 2026-07
   serial: FKHBSY2
   network_adapters:
     default:
       mac: e4:43:4b:83:8a:ec
-      ip: 172.16.79.18
+      ip: 172.16.79.15
     adm:
       ip: 172.17.79.19
     bmc:
-      ip: 172.17.79.18
+      ip: 172.17.79.15
       mac: 54:bf:64:fc:97:42
   monitoring:
     wattmeter: multiple
