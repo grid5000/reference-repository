@@ -7,8 +7,8 @@ architecture:
   cpu_core_numbering: string
 bios:
   release_date: string
-  vendor: optional ## optional_string or null
-  version: required # string ?
+  vendor: optional  # optional_string or null
+  version: required  # string ?
   configuration:
     <optional_hash>:
       cstate_c1e: optional_boolean
@@ -19,7 +19,7 @@ bmc_version: string
 chassis:
   manufacturer: string
   name: string
-  serial: optional # required # string ?
+  serial: optional  # required # string ?
 exotic: optional_boolean
 gpu_devices: optional_hash
 kavlan:
@@ -45,14 +45,14 @@ network_adapters:
     mountable: boolean
     kavlan: optional_boolean
     mounted: boolean
-    bridged: optional_boolean # boolean ?
+    bridged: optional_boolean  # boolean ?
     management: boolean
-    rate: optional ## numeric # integer ?
-    vendor: optional ## optional_string
+    rate: optional  # numeric # integer ?
+    vendor: optional  # optional_string
     model: optional_string
     driver: optional_string
     ip: optional_ip_address
-    netmask: optional #Create optional_netmask format ?
+    netmask: optional  # Create optional_netmask format ?
     mac: optional_string
     ib_switch_card: optional_string
     ib_switch_card_pos: optional_string
@@ -79,8 +79,8 @@ pdu:
     port: required
     measure: optional_string
 performance:
-  core_flops: numeric # integer ?
-  node_flops: numeric # integer ?
+  core_flops: numeric  # integer ?
+  node_flops: numeric  # integer ?
 processor:
   cache_l1: optional_integer
   cache_l1d: integer
@@ -93,7 +93,7 @@ processor:
   model: string
   other_description: string
   vendor: string
-  version: required # string or numeric ?
+  version: required  # string or numeric ?
   ht_capable: boolean
   microarchitecture: string
 sensors: optional_hash
@@ -109,12 +109,12 @@ storage_devices:
     unstable_device_name: optional_boolean
     interface: string
     symlink: optional_string
-    storage: 
+    storage:
       - SSD
       - HDD
     model: string
     firmware_version: optional
-    rev: optional # unused but kept for shema compatibility
+    rev: optional  # unused but kept for shema compatibility
     size: integer
     raid: optional
     timeread: optional_numeric
@@ -125,5 +125,5 @@ supported_job_types:
   deploy: boolean
   max_walltime: integer
   queues: optional_array
-  virtual: optional # optional_boolean # string
+  virtual: optional  # optional_boolean # string
 addressing_plan: optional

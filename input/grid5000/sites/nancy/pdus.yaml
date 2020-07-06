@@ -1,128 +1,129 @@
+---
 pdus:
   grvingt-pdu[1-2]:
     vendor: APC
     model: AP8886
     sensors:
-     - power:
-        per_outlets: false
-        snmp:
-          available: true
-          total_oids:
-            - iso.3.6.1.4.1.318.1.1.12.1.16.0
-          unit: W
-        resolution: 1
+      - power:
+          per_outlets: false
+          snmp:
+            available: true
+            total_oids:
+              - iso.3.6.1.4.1.318.1.1.12.1.16.0
+            unit: W
+          resolution: 1
 
   graoully-pdu[1-2]:
     vendor: APC
     model: AP8653
     metrics:
-    - name: pdu_outlet_power_watt
-      description: Power consumption per outlet reported by PDU, in watt
-      period: 1000
-      source:
-        protocol: snmp
-        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
-     - power:
-        per_outlets: true
-        snmp:
-          available: true
-          total_oids:
-            - iso.3.6.1.4.1.318.1.1.12.1.16.0
-          unit: W
-          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
-        resolution: 1
-  
+      - power:
+          per_outlets: true
+          snmp:
+            available: true
+            total_oids:
+              - iso.3.6.1.4.1.318.1.1.12.1.16.0
+            unit: W
+            outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+          resolution: 1
+
   grimoire-pdu[1-2]:
     vendor: APC
     model: AP8653
     metrics:
-    - name: pdu_outlet_power_watt
-      description: Power consumption per outlet reported by PDU, in watt
-      period: 1000
-      source:
-        protocol: snmp
-        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
-     - power:
-        per_outlets: true
-        snmp:
-          available: true
-          total_oids:
-            - iso.3.6.1.4.1.318.1.1.12.1.16.0
-          unit: W
-          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
-        resolution: 1
-  
+      - power:
+          per_outlets: true
+          snmp:
+            available: true
+            total_oids:
+              - iso.3.6.1.4.1.318.1.1.12.1.16.0
+            unit: W
+            outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+          resolution: 1
+
   grisou-pdu[1-2]:
     vendor: APC
     model: AP8653
     metrics:
-    - name: pdu_outlet_power_watt
-      description: Power consumption per outlet reported by PDU, in watt
-      period: 1000
-      source:
-        protocol: snmp
-        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
-     - power:
-        per_outlets: true
-        snmp:
-          available: true
-          total_oids:
-            - iso.3.6.1.4.1.318.1.1.12.1.16.0
-          unit: W
-          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
-        resolution: 1
+      - power:
+          per_outlets: true
+          snmp:
+            available: true
+            total_oids:
+              - iso.3.6.1.4.1.318.1.1.12.1.16.0
+            unit: W
+            outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+          resolution: 1
 
   grimani-pdu[1-2]:
     vendor: APC
     model: AP8653
     metrics:
-    - name: pdu_outlet_power_watt
-      description: Power consumption per outlet reported by PDU, in watt
-      period: 1000
-      source:
-        protocol: snmp
-        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
-     - power:
-        per_outlets: true
-        snmp:
-          available: true
-          total_oids:
-            - iso.3.6.1.4.1.318.1.1.12.1.16.0
-          unit: W
-          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
-        resolution: 1
-  
+      - power:
+          per_outlets: true
+          snmp:
+            available: true
+            total_oids:
+              - iso.3.6.1.4.1.318.1.1.12.1.16.0
+            unit: W
+            outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+          resolution: 1
+
   graffiti-pdu[1-4]:
     vendor: APC
     model: AP8653
     metrics:
-    - name: pdu_outlet_power_watt
-      description: Power consumption per outlet reported by PDU, in watt
-      period: 1000
-      source:
-        protocol: snmp
-        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
-     - power:
-        per_outlets: true
-        snmp:
-          available: true
-          total_oids:
-            - iso.3.6.1.4.1.318.1.1.12.1.16.0
-          unit: W
-          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
-        resolution: 1
-  
+      - power:
+          per_outlets: true
+          snmp:
+            available: true
+            total_oids:
+              - iso.3.6.1.4.1.318.1.1.12.1.16.0
+            unit: W
+            outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+          resolution: 1
+
   graoully-pdu1:
     ip: 172.17.79.243
     mac: 00:C0:B7:ED:63:AE
 
   graoully-pdu2:
-    ip:  172.17.79.244 
+    ip: 172.17.79.244
     mac: 00:C0:B7:85:13:9C
 
   grimoire-pdu1:
@@ -144,7 +145,7 @@ pdus:
   grimani-pdu1:
     ip: 172.17.79.218
     mac: 00:C0:B7:F2:27:D9
-    
+
   grimani-pdu2:
     ip: 172.17.79.219
     mac: 00:C0:B7:F2:27:DE
@@ -177,22 +178,22 @@ pdus:
     vendor: APC
     model: AP8653
     metrics:
-    - name: pdu_outlet_power_watt
-      description: Power consumption per outlet reported by PDU, in watt
-      period: 1000
-      source:
-        protocol: snmp
-        id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
     sensors:
-     - power:
-        per_outlets: true
-        snmp:
-          available: true
-          total_oids:
-            - iso.3.6.1.4.1.318.1.1.12.1.16.0
-          unit: W
-          outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
-        resolution: 1
+      - power:
+          per_outlets: true
+          snmp:
+            available: true
+            total_oids:
+              - iso.3.6.1.4.1.318.1.1.12.1.16.0
+            unit: W
+            outlet_prefix_oid: iso.3.6.1.4.1.318.1.1.26.9.4.3.1.7
+          resolution: 1
 
   gros-pdu1:
     ip: 172.17.79.222
@@ -233,12 +234,12 @@ pdus:
             www:
               url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
     metrics:
-    - name: wattmetre_power_watt
-      description: Power consumption per outlet reported by wattmetre, in watt
-      period: 1000
-      optional_period: 20
-      source:
-        protocol: wattmetre
+      - name: wattmetre_power_watt
+        description: Power consumption per outlet reported by wattmetre, in watt
+        period: 1000
+        optional_period: 20
+        source:
+          protocol: wattmetre
 
   gros-wattmetre2:
     vendor: OmegaWatt
@@ -254,12 +255,12 @@ pdus:
             www:
               url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
     metrics:
-    - name: wattmetre_power_watt
-      description: Power consumption per outlet reported by wattmetre, in watt
-      period: 1000
-      optional_period: 20
-      source:
-        protocol: wattmetre
+      - name: wattmetre_power_watt
+        description: Power consumption per outlet reported by wattmetre, in watt
+        period: 1000
+        optional_period: 20
+        source:
+          protocol: wattmetre
 
   gros-wattmetre3:
     vendor: OmegaWatt
@@ -275,9 +276,9 @@ pdus:
             www:
               url: "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
     metrics:
-    - name: wattmetre_power_watt
-      description: Power consumption per outlet reported by wattmetre, in watt
-      period: 1000
-      optional_period: 20
-      source:
-        protocol: wattmetre
+      - name: wattmetre_power_watt
+        description: Power consumption per outlet reported by wattmetre, in watt
+        period: 1000
+        optional_period: 20
+        source:
+          protocol: wattmetre

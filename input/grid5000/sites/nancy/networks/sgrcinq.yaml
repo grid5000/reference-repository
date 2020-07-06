@@ -2,85 +2,85 @@
 sgrcinq:
   role: production
   model: Cisco WS-C2960X-48TD-L
-  warranty: "2028-11-28" # see bug 9837
+  warranty: "2028-11-28"  # see bug 9837
   kind: switch
   site: nancy
   snmp_community: public
   metrics:
-  - name: network_ifacein_bytes_total
-    description: Input byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
-  - name: network_ifaceout_bytes_total
-    description: Output byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_bytes_total
+      description: Input byte counter for the network device port
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_bytes_total
+      description: Output byte counter for the network device port
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
   ip: 172.17.79.230
   backplane_bps: 100000000000
   linecards:
     0:
-       snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
-       kavlan_pattern: "Gi1/%LINECARD%/%PORT%"
-       kind: node
-       rate: 1000000000
-       ports:
-         1: grcinq-3
-         2: grcinq-4
-         3: grcinq-7
-         4: grcinq-8
-         5: grcinq-11
-         6: grcinq-12
-         7: grcinq-15
-         8: grcinq-16
-         9: grcinq-19
-         10: grcinq-20
-         11: grcinq-23
-         12: grcinq-24
-         13: grcinq-27
-         14: grcinq-28
-         15: grcinq-31
-         16: grcinq-32
-         17: grcinq-35
-         18: grcinq-36
-         19: grcinq-39
-         20: grcinq-40
-         21: grcinq-43
-         22: grcinq-44
-         23: grcinq-47
-         25: grcinq-45
-         26: grcinq-46
-         27: grcinq-41
-         28: grcinq-42
-         29: grcinq-37
-         30: grcinq-38
-         31: grcinq-33
-         32: grcinq-34
-         33: grcinq-29
-         34: grcinq-30
-         35: grcinq-25
-         36: grcinq-26
-         37: grcinq-21
-         38: grcinq-22
-         39: grcinq-17
-         40: grcinq-18
-         41: grcinq-13
-         42: grcinq-14
-         43: grcinq-9
-         44: grcinq-10
-         45: grcinq-5
-         46: grcinq-6
-         47: grcinq-1
-         48: grcinq-2
+      snmp_pattern: "GigabitEthernet1/%LINECARD%/%PORT%"
+      kavlan_pattern: "Gi1/%LINECARD%/%PORT%"
+      kind: node
+      rate: 1000000000
+      ports:
+        1: grcinq-3
+        2: grcinq-4
+        3: grcinq-7
+        4: grcinq-8
+        5: grcinq-11
+        6: grcinq-12
+        7: grcinq-15
+        8: grcinq-16
+        9: grcinq-19
+        10: grcinq-20
+        11: grcinq-23
+        12: grcinq-24
+        13: grcinq-27
+        14: grcinq-28
+        15: grcinq-31
+        16: grcinq-32
+        17: grcinq-35
+        18: grcinq-36
+        19: grcinq-39
+        20: grcinq-40
+        21: grcinq-43
+        22: grcinq-44
+        23: grcinq-47
+        25: grcinq-45
+        26: grcinq-46
+        27: grcinq-41
+        28: grcinq-42
+        29: grcinq-37
+        30: grcinq-38
+        31: grcinq-33
+        32: grcinq-34
+        33: grcinq-29
+        34: grcinq-30
+        35: grcinq-25
+        36: grcinq-26
+        37: grcinq-21
+        38: grcinq-22
+        39: grcinq-17
+        40: grcinq-18
+        41: grcinq-13
+        42: grcinq-14
+        43: grcinq-9
+        44: grcinq-10
+        45: grcinq-5
+        46: grcinq-6
+        47: grcinq-1
+        48: grcinq-2
     1:
-        snmp_pattern: "TenGigabitEthernet1/0/%PORT%"
-        kavlan_pattern: "TenGigabitEthernet1/0/%PORT%"
-        kind: other
-        rate: 10000000000
-        ports:
-          1:
-            uid: sgrvingt
-            kind: switch
+      snmp_pattern: "TenGigabitEthernet1/0/%PORT%"
+      kavlan_pattern: "TenGigabitEthernet1/0/%PORT%"
+      kind: other
+      rate: 10000000000
+      ports:
+        1:
+          uid: sgrvingt
+          kind: switch

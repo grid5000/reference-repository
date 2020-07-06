@@ -9,7 +9,7 @@ queues:
   - default
 
 nodes:
-# Global node properties
+  # Global node properties
   grisou-[1-51]:
     processor:
       microarchitecture: Haswell
@@ -33,15 +33,15 @@ nodes:
     sensors:
       power:
         available: true
-        via: 
+        via:
           api:
             metric: power
 
-# Nodes with 4 interfaces
+  # Nodes with 4 interfaces
   grisou-[1-48]:
     network_adapters:
       eth0:
-        enabled: true 
+        enabled: true
         mountable: true
         bridged: true
         mounted: true
@@ -66,7 +66,7 @@ nodes:
         bridged: false
         mounted: false
       eth5:
-        enabled: false 
+        enabled: false
         mountable: false
         bridged: false
         mounted: false
@@ -75,7 +75,7 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-# grisou-49
+
   grisou-49:
     network_adapters:
       eth0:
@@ -113,7 +113,7 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-# Node with infiniband
+  # Node with infiniband
   grisou-[50-51]:
     network_adapters:
       eth0:
@@ -161,4 +161,3 @@ nodes:
         mounted: true
         netmask: 255.255.255.0
         switch: sgraoullyib
-

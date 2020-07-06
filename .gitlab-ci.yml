@@ -1,38 +1,44 @@
+---
 stages:
-- validate
-- generate
-- deploy
+  - validate
+  - generate
+  - deploy
+
+include:
+  - project: 'grid5000/grid5000-gitlab-templates'
+    ref: master
+    file: '/sonarqube.yml'
 
 rubocop:
   stage: validate
   tags:
-   - grid5000-docker
+    - grid5000-docker
   image: debian:buster
   script:
-      - apt-get update && apt-get -y install rubocop
-      - rubocop -l --fail-level W
+    - apt-get update && apt-get -y install rubocop
+    - rubocop -l --fail-level W
 
 validate-data:
-   stage: validate
-   tags:
+  stage: validate
+  tags:
     - grid5000-docker
-   image: debian:buster
-   script:
+  image: debian:buster
+  script:
     - apt-get update && apt-get -y install ruby ruby-dev build-essential rake wget
     - gem install bundler -v 1.17.3
     - bundle install --without development
-      # Add G5K CA certificate
+    # Add G5K CA certificate
     - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
     - /usr/sbin/update-ca-certificates
     - rake valid:schema
     - rake valid:duplicates
 
 generate-reference-api:
-   stage: generate
-   tags:
+  stage: generate
+  tags:
     - grid5000-docker
-   image: debian:buster
-   script:
+  image: debian:buster
+  script:
     - apt-get update && apt-get -y install ruby ruby-dev build-essential rake git
     - gem install bundler -v 1.17.3
     - bundle install --without development
@@ -44,18 +50,18 @@ generate-reference-api:
     - git diff --exit-code
 
 deploy:
-   stage: deploy
-   tags:
+  stage: deploy
+  tags:
     - grid5000-shell
-   script:
+  script:
     - /srv/ci-runner-scripts/bin/update-api-servers
 
 rspec:
-   stage: deploy # we use 'deploy' here to avoid blocking on this when updating the ref-repo
-   tags:
+  stage: deploy  # we use 'deploy' here to avoid blocking on this when updating the ref-repo
+  tags:
     - grid5000-docker
-   image: debian:buster
-   script:
+  image: debian:buster
+  script:
     - apt-get update && apt-get -y install ruby ruby-dev build-essential rake git
     - gem install bundler -v 1.17.3
     - bundle install

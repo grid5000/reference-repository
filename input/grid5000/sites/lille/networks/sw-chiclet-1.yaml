@@ -9,18 +9,18 @@ sw-chiclet-1:
   snmp_community: public
   backplane_bps: 36000000000000
   metrics:
-  - name: network_ifacein_bytes_total
-    description: Input byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
-  - name: network_ifaceout_bytes_total
-    description: Output byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_bytes_total
+      description: Input byte counter for the network device port
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_bytes_total
+      description: Output byte counter for the network device port
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
   linecards:
     1:
       kind: node
@@ -30,69 +30,69 @@ sw-chiclet-1:
       rate: 25000000000
       ports:
         1:
-          uid:  chifflot-1
+          uid: chifflot-1
         2:
-          uid:  chifflot-2
+          uid: chifflot-2
         3:
-          uid:  chifflot-3
+          uid: chifflot-3
         4:
-          uid:  chifflot-4
+          uid: chifflot-4
         5:
-          uid:  chifflot-5
+          uid: chifflot-5
         6:
-          uid:  chifflot-6
+          uid: chifflot-6
         7:
-          uid:  chifflot-7
+          uid: chifflot-7
         8:
-          uid:  chifflot-8
+          uid: chifflot-8
         9:
-          uid:  chiclet-1
+          uid: chiclet-1
         10:
-          uid:  chiclet-2
+          uid: chiclet-2
         11:
-          uid:  chiclet-3
+          uid: chiclet-3
         12:
-          uid:  chiclet-4
+          uid: chiclet-4
         13:
-          uid:  chiclet-5
+          uid: chiclet-5
         14:
-          uid:  chiclet-6
+          uid: chiclet-6
         15:
-          uid:  chiclet-7
+          uid: chiclet-7
         16:
-          uid:  chiclet-8
+          uid: chiclet-8
         17:
-          uid:  chifflot-1-eth1
+          uid: chifflot-1-eth1
         18:
-          uid:  chifflot-2-eth1
+          uid: chifflot-2-eth1
         19:
-          uid:  chifflot-3-eth1
+          uid: chifflot-3-eth1
         20:
-          uid:  chifflot-4-eth1
+          uid: chifflot-4-eth1
         21:
-          uid:  chifflot-5-eth1
+          uid: chifflot-5-eth1
         22:
-          uid:  chifflot-6-eth1
+          uid: chifflot-6-eth1
         23:
-          uid:  chifflot-7-eth1
+          uid: chifflot-7-eth1
         24:
-          uid:  chifflot-8-eth1
+          uid: chifflot-8-eth1
         25:
-          uid:  chiclet-1-eth1
+          uid: chiclet-1-eth1
         26:
-          uid:  chiclet-2-eth1
+          uid: chiclet-2-eth1
         27:
-          uid:  chiclet-3-eth1
+          uid: chiclet-3-eth1
         28:
-          uid:  chiclet-4-eth1
+          uid: chiclet-4-eth1
         29:
-          uid:  chiclet-5-eth1
+          uid: chiclet-5-eth1
         30:
-          uid:  chiclet-6-eth1
+          uid: chiclet-6-eth1
         31:
-          uid:  chiclet-7-eth1
+          uid: chiclet-7-eth1
         32:
-          uid:  chiclet-8-eth1
+          uid: chiclet-8-eth1
         53:
           uid: port-channel1
           kind: channel

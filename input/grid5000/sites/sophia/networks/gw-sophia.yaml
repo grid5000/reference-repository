@@ -7,18 +7,18 @@ gw:
   site: sophia
   snmp_community: public
   metrics:
-  - name: network_ifacein_bytes_total
-    description: Input byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
-  - name: network_ifaceout_bytes_total
-    description: Output byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_bytes_total
+      description: Input byte counter for the network device port
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_bytes_total
+      description: Output byte counter for the network device port
+      period: 1000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
   alias:
     - gw-sophia
   ip: 172.16.143.254
@@ -211,16 +211,3 @@ gw:
         24:
           uid: srv-stock-eth1
           kind: server
-  metrics:
-  - name: network_ifacein_bytes_total
-    description: Input byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
-  - name: network_ifaceout_bytes_total
-    description: Output byte counter for the network device port
-    period: 1000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
