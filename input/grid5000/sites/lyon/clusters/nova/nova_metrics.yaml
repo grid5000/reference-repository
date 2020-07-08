@@ -30,15 +30,16 @@ metrics:
       protocol: snmp
       id: 1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.1
 
-  - name: bmc_node_power_watt
-    description: Power consumption of node reported by BMC, in watt
-    period: 5000
-    source:
-      protocol: snmp
-      id: >-
-        1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.{{
-        1.3.6.1.4.1.674.10892.5.4.600.30.1.8.1
-        == System Board Pwr Consumption }}
+  # Value is always 0
+  # - name: bmc_node_power_watt
+  #   description: Power consumption of node reported by BMC, in watt
+  #   period: 5000
+  #   source:
+  #     protocol: snmp
+  #     id: >-
+  #       1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.{{
+  #       1.3.6.1.4.1.674.10892.5.4.600.30.1.8.1
+  #       == System Board Pwr Consumption }}
 
   # SNMP error: No Such Instance currently exists at this OID
   # - name: bmc_psu_current_amp
@@ -66,13 +67,14 @@ metrics:
   #       1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.{{
   #       1.3.6.1.4.1.674.10892.5.4.600.30.1.8.1 == PS2 Current 2 }}
 
-  - name: bmc_node_power_watthour_total
-    description: Cumulated power consumption of node reported by BMC, in watt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: snmp
-      id: 1.3.6.1.4.1.674.10892.5.4.600.60.1.7.1.1
+  # Value is always 0
+  # - name: bmc_node_power_watthour_total
+  #   description: Cumulated power consumption of node reported by BMC, in watt
+  #   period: 0
+  #   optional_period: 5000
+  #   source:
+  #     protocol: snmp
+  #     id: 1.3.6.1.4.1.674.10892.5.4.600.60.1.7.1.1
 
   - name: bmc_fan_speed_rpm
     labels: {"fan": "2a"}
