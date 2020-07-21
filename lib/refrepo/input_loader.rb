@@ -64,6 +64,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each cluster with metrics network information
   add_network_metrics(global_hash)
 
+  # populate each node with theorical flops
+  add_theorical_flops(global_hash)
+
   return global_hash
 end
 
@@ -253,6 +256,42 @@ def add_network_metrics(h)
           new_metric["source"] = {"protocol" => "network_equipment"}
           cluster['metrics'].push(new_metric)
         end
+      end
+    end
+  end
+end
+
+def get_flops_per_cycle(microarch, cpu_name)
+  # Double precision operations each cycle, sources:
+  # https://en.wikipedia.org/wiki/FLOPS
+  # https://en.wikichip.org/wiki/WikiChip
+  # https://ark.intel.com/
+  case microarch
+  when "K8"
+    return 2
+  when "Clovertown", "Nehalem", "Westmere", "K10"
+    return 4
+  when "Sandy Bridge", "Zen", "Vulcan"
+    return 8
+  when "Haswell", "Broadwell"
+    return 16
+  when "Cascade Lake-SP", "Skylake"
+    case cpu_name
+    when /Silver 4110/, /Gold 5218/, /Gold 5220/
+      return 16
+    when /Gold 6126/, /Gold 6130/
+      return 32
+    end
+  end
+  raise "Error: Unknown CPU architecture, cannot compute flops"
+end
+
+def add_theorical_flops(h)
+  h['sites'].each_pair do |site_uid, site|
+    site['clusters'].each_pair do |cluster_uid, cluster|
+      cluster['nodes'].select { |k, v| v['status'] != 'retired' }.each_pair do |node_uid, node|
+        node['performance']['core_flops'] =  node['processor']['clock_speed'] * get_flops_per_cycle(node['processor']['microarchitecture'], node['processor']['other_description'])
+        node['performance']['node_flops'] = node['architecture']['nb_cores'] * node['performance']['core_flops']
       end
     end
   end
