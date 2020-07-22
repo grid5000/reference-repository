@@ -308,7 +308,8 @@ def get_hardware(sites)
         }.sort_by{ |e|
           e['device']
         }
-        hard['network_description'] = network_description.map.with_index do |e, i|
+        nic_c = 0
+        hard['network_description'] = network_description.map do |e|
           s  = e['count'] > 1 ? "\n* " : ''
           s += e['unavailable_for_experiment'] ? '<span style="color:grey">' : ''
           if e['name'].nil? or e['name'] == e['device']
@@ -330,8 +331,9 @@ def get_hardware(sites)
           s +=  'driver: ' + e['driver'] if e['driver']
           if e['unavailable_for_experiment']
             s += ' - unavailable for experiment'
-          elsif e['device'] =~ /eth/ && !i.zero?
-            s += ' [[Advanced_KaVLAN#A_simple_multi_NICs_example|(multi NICs example)]]'
+          elsif e['device'] =~ /eth/
+            s += ' [[Advanced_KaVLAN#A_simple_multi_NICs_example|(multi NICs example)]]' if !nic_c.zero?
+            nic_c += 1
           end
           s += ' - no KaVLAN' if e['no_kavlan']
           s +=  e['unavailable_for_experiment'] ? '</span>' : ''
