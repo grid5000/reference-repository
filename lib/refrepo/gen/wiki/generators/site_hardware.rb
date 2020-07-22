@@ -80,7 +80,7 @@ class SiteHardwareGenerator < WikiGenerator
         cluster_nodes,
         cell_data(data, 'num_processor_model'),
         cell_data(data, 'cores_per_cpu_str'),
-        sort_data(data, 'ram_size') + (!data['pmem_size'].nil? ? " + #{cell_data(data, 'pmem_size')} PMEM" : ''),
+        sort_data(data, 'ram_size') + (!data['pmem_size'].nil? ? " + #{cell_data(data, 'pmem_size')} [[PMEM]]" : ''),
         'data-sort-value="' + sort_data(data, 'storage_size') + '"|' + cell_data(data, 'storage'),
         'data-sort-value="' + sort_data(data, 'network_throughput') + '"|' + cell_data(data, 'used_networks')
       ] + ((site_accelerators.zero? && with_sites == false) ? [] : [cell_data(data, 'accelerators')])
@@ -134,7 +134,7 @@ class SiteHardwareGenerator < WikiGenerator
           'Model' => h['model'],
           'Date of arrival' => h['date'],
           'CPU' => h['processor_description'],
-          'Memory' => h['ram_size'] + (!h['pmem_size'].nil? ? " + #{h['pmem_size']} PMEM" : ''),
+          'Memory' => h['ram_size'] + (!h['pmem_size'].nil? ? " + #{h['pmem_size']} [[PMEM]]" : ''),
           'Storage' => h['storage_description'],
           'Network' => h['network_description'],
         }
@@ -308,7 +308,7 @@ def get_hardware(sites)
         }.sort_by{ |e|
           e['device']
         }
-        hard['network_description'] = network_description.map do |e|
+        hard['network_description'] = network_description.map.with_index do |e, i|
           s  = e['count'] > 1 ? "\n* " : ''
           s += e['unavailable_for_experiment'] ? '<span style="color:grey">' : ''
           if e['name'].nil? or e['name'] == e['device']
@@ -328,7 +328,11 @@ def get_hardware(sites)
             s += 'model: '+ e['model'] + ', '
           end
           s +=  'driver: ' + e['driver'] if e['driver']
-          s += ' - unavailable for experiment' if e['unavailable_for_experiment']
+          if e['unavailable_for_experiment']
+            s += ' - unavailable for experiment'
+          elsif e['device'] =~ /eth/ && !i.zero?
+            s += ' [[Advanced_KaVLAN#A_simple_multi_NICs_example|(multi NICs example)]]'
+          end
           s += ' - no KaVLAN' if e['no_kavlan']
           s +=  e['unavailable_for_experiment'] ? '</span>' : ''
           s
