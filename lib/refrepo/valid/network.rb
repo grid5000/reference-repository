@@ -318,6 +318,8 @@ def generate_dot(netnodes, links, site)
   # group
   nodeslinks = nodeslinks.group_by { |l| [ l['target_cluster'], l['attachments'] ] }.to_a.map { |e| e[1].map! { |f| f['target_node'] } ; e }
   # factor
+  system("which nodeset > /dev/null") or raise "WARNING: command nodeset absent, please install clustershell"
+
   nodeslinks.map! { |e| e[1] = sh("echo #{e[1].uniq.join(' ')}|nodeset -f"); e }
 
   header = []

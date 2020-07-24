@@ -54,6 +54,8 @@ def gen_firmwares_tables
        end
     end
   end
+
+  system("which nodeset > /dev/null") or raise "WARNING: command nodeset absent, please install clustershell"
   nodesets = nodes.group_by { |e| e.except('address') }.map do |e|
     e[1] = e[1].map { |f| f['address'] }
     nodes = `echo #{e[1].join(',')} | nodeset -f`.chomp
