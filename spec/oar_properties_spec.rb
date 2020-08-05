@@ -2564,4 +2564,44 @@ echo; echo 'Adding disk sdb.clusterb-2 on host clusterb-1.fakesite.grid5000.fr:'
     end
   end
 
+  context 'OAR server with data but chassis is unset' do
+    before do
+      prepare_stubs("dump_oar_api_configured_server_but_chassis_unset.json", "load_data_hierarchy_stubbed_data.json")
+    end
+
+    it 'should generate correctly a diff with the OAR server' do
+
+      uri = URI(conf["uri"])
+
+      response = Net::HTTP.get(uri)
+
+      expect(response).to be_an_instance_of(String)
+
+      options = {
+          :table => false,
+          :print => false,
+          :update => false,
+          :diff => true,
+          :site => "fakesite",
+          :clusters => ["clustera"],
+          :verbose => 2
+      }
+
+      expected_clustera1_diff = <<-TXT
+  clustera-1:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 FL1CBX2"]
+TXT
+      expected_clustera2_diff = <<-TXT
+  clustera-2:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 9L1CBX2"]
+TXT
+
+      generator_output = capture do
+        generate_oar_properties(options)
+      end
+
+      expect(generator_output[:stdout]).to include(expected_clustera1_diff)
+      expect(generator_output[:stdout]).to include(expected_clustera2_diff)
+    end
+  end
 end
