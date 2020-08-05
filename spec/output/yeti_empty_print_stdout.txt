@@ -59,6 +59,7 @@ property_exist 'cpucore' || oarproperty -a cpucore
 property_exist 'cputype' || oarproperty -a cputype --varchar
 property_exist 'cpufreq' || oarproperty -a cpufreq --varchar
 property_exist 'disktype' || oarproperty -a disktype --varchar
+property_exist 'chassis' || oarproperty -a chassis --varchar
 property_exist 'eth_count' || oarproperty -a eth_count
 property_exist 'eth_rate' || oarproperty -a eth_rate
 property_exist 'ib_count' || oarproperty -a ib_count
@@ -153,7 +154,7 @@ oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakes
 oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=4 -p core=63 -p cpuset=59
 oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=4 -p core=64 -p cpuset=63
 echo; echo 'Setting properties for clustera-1.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.19.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge R940' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=16 -p cputype='Intel Xeon Gold 6130' -p cpufreq='2.1' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=1 -p opa_rate=100 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=12288 -p memcpu=196608 -p memnode=786432 -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='YES' -p cluster_priority=201801 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=3
+oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.19.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge R940' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=16 -p cputype='Intel Xeon Gold 6130' -p cpufreq='2.1' -p disktype='SAS' -p chassis='Dell Inc. PowerEdge R940 6FGQSM2' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=1 -p opa_rate=100 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=12288 -p memcpu=196608 -p memnode=786432 -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='YES' -p cluster_priority=201801 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=3
 
 echo '================================================================================'
 echo; echo 'Adding disk sdb.clustera-1 on host clustera-1.fakesite.grid5000.fr:'
@@ -250,7 +251,7 @@ oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakes
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=8 -p core=127 -p cpuset=59
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=8 -p core=128 -p cpuset=63
 echo; echo 'Setting properties for clustera-2.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.19.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge R940' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=16 -p cputype='Intel Xeon Gold 6130' -p cpufreq='2.1' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=1 -p opa_rate=100 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=12288 -p memcpu=196608 -p memnode=786432 -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='YES' -p cluster_priority=201801 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=3
+oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.19.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge R940' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=16 -p cputype='Intel Xeon Gold 6130' -p cpufreq='2.1' -p disktype='SAS' -p chassis='Dell Inc. PowerEdge R940 6FGRSM2' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=1 -p opa_rate=100 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=12288 -p memcpu=196608 -p memnode=786432 -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='YES' -p cluster_priority=201801 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=3
 
 echo '================================================================================'
 echo; echo 'Adding disk sdb.clustera-2 on host clustera-2.fakesite.grid5000.fr:'
@@ -347,7 +348,7 @@ oarnodesetting -a -h 'clustera-3.fakesite.grid5000.fr' -p host='clustera-3.fakes
 oarnodesetting -a -h 'clustera-3.fakesite.grid5000.fr' -p host='clustera-3.fakesite.grid5000.fr' -p cpu=12 -p core=191 -p cpuset=59
 oarnodesetting -a -h 'clustera-3.fakesite.grid5000.fr' -p host='clustera-3.fakesite.grid5000.fr' -p cpu=12 -p core=192 -p cpuset=63
 echo; echo 'Setting properties for clustera-3.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-3.fakesite.grid5000.fr' and type='default'" -p ip='172.16.19.3' -p cluster='clustera' -p nodemodel='Dell PowerEdge R940' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=16 -p cputype='Intel Xeon Gold 6130' -p cpufreq='2.1' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=1 -p opa_rate=100 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=12288 -p memcpu=196608 -p memnode=786432 -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='YES' -p cluster_priority=201801 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=3
+oarnodesetting --sql "host='clustera-3.fakesite.grid5000.fr' and type='default'" -p ip='172.16.19.3' -p cluster='clustera' -p nodemodel='Dell PowerEdge R940' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=16 -p cputype='Intel Xeon Gold 6130' -p cpufreq='2.1' -p disktype='SAS' -p chassis='Dell Inc. PowerEdge R940 6FGPSM2' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=1 -p opa_rate=100 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=12288 -p memcpu=196608 -p memnode=786432 -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='YES' -p cluster_priority=201801 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=3
 
 echo '================================================================================'
 echo; echo 'Adding disk sdb.clustera-3 on host clustera-3.fakesite.grid5000.fr:'
@@ -444,7 +445,7 @@ oarnodesetting -a -h 'clustera-4.fakesite.grid5000.fr' -p host='clustera-4.fakes
 oarnodesetting -a -h 'clustera-4.fakesite.grid5000.fr' -p host='clustera-4.fakesite.grid5000.fr' -p cpu=16 -p core=255 -p cpuset=59
 oarnodesetting -a -h 'clustera-4.fakesite.grid5000.fr' -p host='clustera-4.fakesite.grid5000.fr' -p cpu=16 -p core=256 -p cpuset=63
 echo; echo 'Setting properties for clustera-4.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-4.fakesite.grid5000.fr' and type='default'" -p ip='172.16.19.4' -p cluster='clustera' -p nodemodel='Dell PowerEdge R940' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=16 -p cputype='Intel Xeon Gold 6130' -p cpufreq='2.1' -p disktype='SAS' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=1 -p opa_rate=100 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=12288 -p memcpu=196608 -p memnode=786432 -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='YES' -p cluster_priority=201801 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=3
+oarnodesetting --sql "host='clustera-4.fakesite.grid5000.fr' and type='default'" -p ip='172.16.19.4' -p cluster='clustera' -p nodemodel='Dell PowerEdge R940' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=16 -p cputype='Intel Xeon Gold 6130' -p cpufreq='2.1' -p disktype='SAS' -p chassis='Dell Inc. PowerEdge R940 6FGMSM2' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=1 -p opa_rate=100 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=12288 -p memcpu=196608 -p memnode=786432 -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='YES' -p cluster_priority=201801 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=3
 
 echo '================================================================================'
 echo; echo 'Adding disk sdb.clustera-4 on host clustera-4.fakesite.grid5000.fr:'

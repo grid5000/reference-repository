@@ -59,6 +59,7 @@ property_exist 'cpucore' || oarproperty -a cpucore
 property_exist 'cputype' || oarproperty -a cputype --varchar
 property_exist 'cpufreq' || oarproperty -a cpufreq --varchar
 property_exist 'disktype' || oarproperty -a disktype --varchar
+property_exist 'chassis' || oarproperty -a chassis --varchar
 property_exist 'eth_count' || oarproperty -a eth_count
 property_exist 'eth_rate' || oarproperty -a eth_rate
 property_exist 'ib_count' || oarproperty -a ib_count
@@ -103,7 +104,7 @@ oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakes
 oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=15 -p cpuset=13
 oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=16 -p cpuset=15
 echo; echo 'Setting properties for clustera-1.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.68.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge R720' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon E5-2650' -p cpufreq='2.0' -p disktype='SATA II' -p eth_count=1 -p eth_rate=10 -p ib_count=1 -p ib_rate=56 -p ib='FDR' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=16384 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p exotic='NO' -p mic='YES' -p wattmeter='MULTIPLE' -p cluster_priority=201312 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.68.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge R720' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon E5-2650' -p cpufreq='2.0' -p disktype='SATA II' -p chassis='Dell Inc. PowerEdge R720 27Q7NZ1' -p eth_count=1 -p eth_rate=10 -p ib_count=1 -p ib_rate=56 -p ib='FDR' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=16384 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p exotic='NO' -p mic='YES' -p wattmeter='MULTIPLE' -p cluster_priority=201312 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=0
 
 echo '================================================================================'
 
@@ -128,7 +129,7 @@ oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakes
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=31 -p cpuset=13
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=32 -p cpuset=15
 echo; echo 'Setting properties for clustera-2.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.68.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge R720' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon E5-2650' -p cpufreq='2.0' -p disktype='SATA II' -p eth_count=1 -p eth_rate=10 -p ib_count=1 -p ib_rate=56 -p ib='FDR' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=16384 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p exotic='NO' -p mic='YES' -p wattmeter='MULTIPLE' -p cluster_priority=201312 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.68.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge R720' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon E5-2650' -p cpufreq='2.0' -p disktype='SATA II' -p chassis='Dell Inc. PowerEdge R720 B6Q7NZ1' -p eth_count=1 -p eth_rate=10 -p ib_count=1 -p ib_rate=56 -p ib='FDR' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=16384 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p exotic='NO' -p mic='YES' -p wattmeter='MULTIPLE' -p cluster_priority=201312 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=0
 
 echo '================================================================================'
 
@@ -153,7 +154,7 @@ oarnodesetting -a -h 'clustera-3.fakesite.grid5000.fr' -p host='clustera-3.fakes
 oarnodesetting -a -h 'clustera-3.fakesite.grid5000.fr' -p host='clustera-3.fakesite.grid5000.fr' -p cpu=6 -p core=47 -p cpuset=13
 oarnodesetting -a -h 'clustera-3.fakesite.grid5000.fr' -p host='clustera-3.fakesite.grid5000.fr' -p cpu=6 -p core=48 -p cpuset=15
 echo; echo 'Setting properties for clustera-3.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-3.fakesite.grid5000.fr' and type='default'" -p ip='172.16.68.3' -p cluster='clustera' -p nodemodel='Dell PowerEdge R720' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon E5-2650' -p cpufreq='2.0' -p disktype='SATA II' -p eth_count=1 -p eth_rate=10 -p ib_count=1 -p ib_rate=56 -p ib='FDR' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=16384 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p exotic='NO' -p mic='YES' -p wattmeter='MULTIPLE' -p cluster_priority=201312 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-3.fakesite.grid5000.fr' and type='default'" -p ip='172.16.68.3' -p cluster='clustera' -p nodemodel='Dell PowerEdge R720' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon E5-2650' -p cpufreq='2.0' -p disktype='SATA II' -p chassis='Dell Inc. PowerEdge R720 G5Q7NZ1' -p eth_count=1 -p eth_rate=10 -p ib_count=1 -p ib_rate=56 -p ib='FDR' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=16384 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p exotic='NO' -p mic='YES' -p wattmeter='MULTIPLE' -p cluster_priority=201312 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=0
 
 echo '================================================================================'
 
@@ -178,6 +179,6 @@ oarnodesetting -a -h 'clustera-4.fakesite.grid5000.fr' -p host='clustera-4.fakes
 oarnodesetting -a -h 'clustera-4.fakesite.grid5000.fr' -p host='clustera-4.fakesite.grid5000.fr' -p cpu=8 -p core=63 -p cpuset=13
 oarnodesetting -a -h 'clustera-4.fakesite.grid5000.fr' -p host='clustera-4.fakesite.grid5000.fr' -p cpu=8 -p core=64 -p cpuset=15
 echo; echo 'Setting properties for clustera-4.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-4.fakesite.grid5000.fr' and type='default'" -p ip='172.16.68.4' -p cluster='clustera' -p nodemodel='Dell PowerEdge R720' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon E5-2650' -p cpufreq='2.0' -p disktype='SATA II' -p eth_count=1 -p eth_rate=10 -p ib_count=1 -p ib_rate=56 -p ib='FDR' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=16384 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p exotic='NO' -p mic='YES' -p wattmeter='MULTIPLE' -p cluster_priority=201312 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-4.fakesite.grid5000.fr' and type='default'" -p ip='172.16.68.4' -p cluster='clustera' -p nodemodel='Dell PowerEdge R720' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon E5-2650' -p cpufreq='2.0' -p disktype='SATA II' -p chassis='Dell Inc. PowerEdge R720 66Q7NZ1' -p eth_count=1 -p eth_rate=10 -p ib_count=1 -p ib_rate=56 -p ib='FDR' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=16384 -p memcpu=131072 -p memnode=262144 -p gpu_count=0 -p exotic='NO' -p mic='YES' -p wattmeter='MULTIPLE' -p cluster_priority=201312 -p max_walltime=0 -p production='NO' -p maintenance='NO' -p disk_reservation_count=0
 
 echo '================================================================================'

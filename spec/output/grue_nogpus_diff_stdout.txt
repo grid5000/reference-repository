@@ -3,16 +3,45 @@ Downloading resources properties from https://api.grid5000.fr/stable/sites/fakes
 Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
   clustera-1:
     ["-", "opa", "NO"]
+    ["~", "chassis", nil, "Dell Inc. PowerEdge R7425 FVJVY03"]
     ["~", "maintenance", "YES", "NO"]
     ["~", "nodemodel", "R7425", "Dell PowerEdge R7425"]
     ["~", "production", "NO", "YES"]
     ["~", "switch", "gw-nancy", "gw"]
     ["+", "exotic", "NO"]
-  clustera-2: same modifications as above
-  clustera-3: same modifications as above
-  clustera-4: same modifications as above
-  clustera-5: same modifications as above
-Properties that need to be created on the fakesite server: exotic
+  clustera-2:
+    ["-", "opa", "NO"]
+    ["~", "chassis", nil, "Dell Inc. PowerEdge R7425 DVJVY03"]
+    ["~", "maintenance", "YES", "NO"]
+    ["~", "nodemodel", "R7425", "Dell PowerEdge R7425"]
+    ["~", "production", "NO", "YES"]
+    ["~", "switch", "gw-nancy", "gw"]
+    ["+", "exotic", "NO"]
+  clustera-3:
+    ["-", "opa", "NO"]
+    ["~", "chassis", nil, "Dell Inc. PowerEdge R7425 CVJVY03"]
+    ["~", "maintenance", "YES", "NO"]
+    ["~", "nodemodel", "R7425", "Dell PowerEdge R7425"]
+    ["~", "production", "NO", "YES"]
+    ["~", "switch", "gw-nancy", "gw"]
+    ["+", "exotic", "NO"]
+  clustera-4:
+    ["-", "opa", "NO"]
+    ["~", "chassis", nil, "Dell Inc. PowerEdge R7425 GVJVY03"]
+    ["~", "maintenance", "YES", "NO"]
+    ["~", "nodemodel", "R7425", "Dell PowerEdge R7425"]
+    ["~", "production", "NO", "YES"]
+    ["~", "switch", "gw-nancy", "gw"]
+    ["+", "exotic", "NO"]
+  clustera-5:
+    ["-", "opa", "NO"]
+    ["~", "chassis", nil, "Dell Inc. PowerEdge R7425 BVJVY03"]
+    ["~", "maintenance", "YES", "NO"]
+    ["~", "nodemodel", "R7425", "Dell PowerEdge R7425"]
+    ["~", "production", "NO", "YES"]
+    ["~", "switch", "gw-nancy", "gw"]
+    ["+", "exotic", "NO"]
+Properties that need to be created on the fakesite server: chassis, exotic
 Properties existing on the fakesite server but not managed/known by the generator: opa, disk, diskpath.
 Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.
 # Error: Resource 12215 (host=clustera-1.nancy.grid5000.fr cpu=1765 core=10967 cpuset=0 gpu= gpudevice=) has a mismatch for ressource GPU: OAR API gives , generator wants 105.
