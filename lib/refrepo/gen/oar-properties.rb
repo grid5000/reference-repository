@@ -15,6 +15,9 @@ MiB = 1024**2
 
 module OarProperties
 
+# OAR API data cache
+@@oar_data = {}
+
 def export_rows_as_formated_line(generated_hierarchy)
   # Display header
   puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
@@ -612,43 +615,48 @@ end
 
 # Get all data from the OAR database
 def get_oar_data(site_uid, options)
+  data_key = [site_uid,options].to_s
+  # is data already in cache ?
+  if @@oar_data[data_key].nil?
+    # If no API URL is given, set a default URL on https://api.grid5000.fr
+    if not options[:api][:uri]
+      options[:api][:uri] = "https://api.grid5000.fr"
+    end
 
-  # If no API URL is given, set a default URL on https://api.grid5000.fr
-  if not options[:api][:uri]
-    options[:api][:uri] = "https://api.grid5000.fr"
+    # Preparing the URL that will be used to fetch OAR resources
+    if options[:api][:uri].include? "api.grid5000.fr"
+      api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
+    elsif options[:api][:uri].include? "api-ext.grid5000.fr"
+      api_uri = URI.parse('https://api-ext.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
+    else
+      api_uri = URI.parse(options[:api][:uri]+'/oarapi/resources/details.json?limit=999999')
+    end
+
+    # Download the OAR properties from the OAR API (through G5K API)
+    puts "Downloading resources properties from #{api_uri} ..." if options[:verbose] and options[:verbose] > 0
+    http = Net::HTTP.new(api_uri.host, api_uri.port)
+    if api_uri.scheme == "https"
+      http.use_ssl = true
+    end
+    request = Net::HTTP::Get.new(api_uri.request_uri, {'User-Agent' => 'reference-repository/gen/oar-properties'})
+
+    # For outside g5k network access
+    if options[:api][:user] && options[:api][:pwd]
+      request.basic_auth(options[:api][:user], options[:api][:pwd])
+    end
+
+    response = http.request(request)
+    raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
+    puts '... done' if options[:verbose] and options[:verbose] > 0
+
+    oarnodes = JSON.parse(response.body)
+
+    # Adapt from the format of the OAR API
+    oarnodes = oarnodes['items'] if oarnodes.key?('items')
+    @@oar_data[data_key] = oarnodes
   end
-
-  # Preparing the URL that will be used to fetch OAR resources
-  if options[:api][:uri].include? "api.grid5000.fr"
-    api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
-  elsif options[:api][:uri].include? "api-ext.grid5000.fr"
-    api_uri = URI.parse('https://api-ext.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
-  else
-    api_uri = URI.parse(options[:api][:uri]+'/oarapi/resources/details.json?limit=999999')
-  end
-
-  # Download the OAR properties from the OAR API (through G5K API)
-  puts "Downloading resources properties from #{api_uri} ..." if options[:verbose]
-  http = Net::HTTP.new(api_uri.host, api_uri.port)
-  if api_uri.scheme == "https"
-    http.use_ssl = true
-  end
-  request = Net::HTTP::Get.new(api_uri.request_uri, {'User-Agent' => 'reference-repository/gen/oar-properties'})
-
-  # For outside g5k network access
-  if options[:api][:user] && options[:api][:pwd]
-    request.basic_auth(options[:api][:user], options[:api][:pwd])
-  end
-
-  response = http.request(request)
-  raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
-  puts '... done' if options[:verbose]
-
-  oarnodes = JSON.parse(response.body)
-
-  # Adapt from the format of the OAR API
-  oarnodes = oarnodes['items'] if oarnodes.key?('items')
-  return oarnodes
+  # Return a deep copy of the cached value as it will be modified in place
+  return Marshal.load(Marshal.dump(@@oar_data[data_key]))
 end
 
 def get_property_keys_internal(_type, type_properties)
@@ -1469,6 +1477,10 @@ end
 #   - execute these commands on an OAR server
 
 def generate_oar_properties(options)
+
+  # Reset the OAR API cache, because the rpec tests change the data in our back
+  # while calling multiple times this function.
+  @@oar_data = {}
 
   options[:api] ||= {}
   conf = RefRepo::Utils.get_api_config
