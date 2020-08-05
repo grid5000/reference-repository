@@ -1,7 +1,7 @@
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__)))
 require 'spec_helper'
 
-def gen_stub(file, site, cluster)
+def gen_stub(file, site, cluster, node_count = 9999)
   data = load_data_hierarchy
   data['sites'].delete_if { |k, v| site != k }
   data['sites'].each_pair do |site_uid, s|
@@ -17,7 +17,7 @@ def gen_stub(file, site, cluster)
   nodes = c['clustera']['nodes']
   nodes.keys.each do |k|
     c, n = k.split('-')
-    nodes["clustera-#{n}"] = nodes[k]
+    nodes["clustera-#{n}"] = nodes[k] if n.to_i <= node_count
     nodes.delete(k)
   end
 
