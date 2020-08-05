@@ -87,6 +87,7 @@ gen_stub('data_graffiti', 'nancy', 'graffiti')
 gen_stub('data_grimoire', 'nancy', 'grimoire')
 gen_stub('data_graphite', 'nancy', 'graphite')
 gen_stub('data_yeti', 'grenoble', 'yeti')
+gen_stub('data_dahu', 'grenoble', 'dahu', 8)
 gen_stub('data_grue', 'nancy', 'grue')
 =end
 
@@ -105,6 +106,10 @@ describe 'OarProperties2' do
 
   it 'works on a cluster with OPA, on an empty OAR server' do
     check_oar_properties({ :oar => 'oar_empty', :data => 'data_yeti', :case => 'yeti_empty' })
+  end
+
+  it 'works on a cluster with multiple nodes per chassis, on an empty OAR server' do
+    check_oar_properties({ :oar => 'oar_empty', :data => 'data_dahu', :case => 'dahu_empty' })
   end
 
   it 'works on a cluster with GPUs and cores_affinity, on an empty OAR server' do
