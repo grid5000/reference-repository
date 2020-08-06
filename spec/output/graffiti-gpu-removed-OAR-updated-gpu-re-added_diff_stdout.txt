@@ -2,20 +2,34 @@ Downloading resources properties from https://api.grid5000.fr/stable/sites/fakes
 ... done
 GPU has an unexpected number of resources (current:51 vs expected:52).
 Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
-  clustera-1: OK
+  clustera-1:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 FL1CBX2"]
   clustera-2:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 9L1CBX2"]
     ["~", "gpu_count", 3, 4]
-  clustera-3: OK
-  clustera-4: OK
-  clustera-5: OK
-  clustera-6: OK
-  clustera-7: OK
-  clustera-8: OK
-  clustera-9: OK
-  clustera-10: OK
-  clustera-11: OK
-  clustera-12: OK
-  clustera-13: OK
+  clustera-3:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 BL1CBX2"]
+  clustera-4:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 DL1CBX2"]
+  clustera-5:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 CL1CBX2"]
+  clustera-6:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 8K1CBX2"]
+  clustera-7:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 BK1CBX2"]
+  clustera-8:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 CK1CBX2"]
+  clustera-9:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 9K1CBX2"]
+  clustera-10:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 GL1CBX2"]
+  clustera-11:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 JL1CBX2"]
+  clustera-12:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 HL1CBX2"]
+  clustera-13:
+    ["~", "chassis", nil, "Dell Inc. PowerEdge T640 7K1CBX2"]
+Properties that need to be created on the fakesite server: chassis
 Properties existing on the fakesite server but not managed/known by the generator: disk, diskpath.
 Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.
 # Error: Resource 9679 (host=clustera-2.nancy.grid5000.fr cpu=1618 core=8555 cpuset=9 gpu=59 gpudevice=2) has a mismatch for ressource GPU: OAR API gives 59, generator wants 60.
