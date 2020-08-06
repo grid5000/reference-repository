@@ -1,10 +1,6 @@
 Downloading resources properties from https://api.grid5000.fr/stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999 ...
 ... done
 GPU has an unexpected number of resources (current:51 vs expected:52).
-Downloading resources properties from https://api.grid5000.fr/stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999 ...
-... done
-Downloading resources properties from https://api.grid5000.fr/stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999 ...
-... done
 Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
   clustera-1: OK
   clustera-2:
@@ -22,8 +18,6 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
   clustera-13: OK
 Properties existing on the fakesite server but not managed/known by the generator: disk, diskpath.
 Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.
-Downloading resources properties from https://api.grid5000.fr/stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999 ...
-... done
 # Error: Resource 9679 (host=clustera-2.nancy.grid5000.fr cpu=1618 core=8555 cpuset=9 gpu=59 gpudevice=2) has a mismatch for ressource GPU: OAR API gives 59, generator wants 60.
 # Error: Resource 9679 (host=clustera-2.nancy.grid5000.fr cpu=1618 core=8555 cpuset=9 gpu=59 gpudevice=2) has a mismatch for ressource GPUDEVICE: OAR API gives 2, generator wants 3.
 # Error: Resource 9680 (host=clustera-2.nancy.grid5000.fr cpu=1618 core=8556 cpuset=11 gpu=59 gpudevice=2) has a mismatch for ressource GPU: OAR API gives 59, generator wants 60.
