@@ -1218,6 +1218,11 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     cpu_idx = 0
     core_idx = 0
 
+    unless data_hierarchy['sites'][site_name]['clusters'].include?(cluster_name)
+      puts("It seems that the cluster \"#{cluster_name}\" does not exist in the API. The generator will abort.")
+      raise 'Sanity check failed'
+    end
+
     cluster_desc_from_data_files = data_hierarchy['sites'][site_name]['clusters'][cluster_name]
     cluster_nodes = cluster_desc_from_data_files['nodes']
 
