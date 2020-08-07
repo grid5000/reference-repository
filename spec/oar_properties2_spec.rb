@@ -1,7 +1,7 @@
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__)))
 require 'spec_helper'
 
-def gen_stub(file, site, cluster)
+def gen_stub(file, site, cluster, node_count = 9999)
   data = load_data_hierarchy
   data['sites'].delete_if { |k, v| site != k }
   data['sites'].each_pair do |site_uid, s|
@@ -17,7 +17,7 @@ def gen_stub(file, site, cluster)
   nodes = c['clustera']['nodes']
   nodes.keys.each do |k|
     c, n = k.split('-')
-    nodes["clustera-#{n}"] = nodes[k]
+    nodes["clustera-#{n}"] = nodes[k] if n.to_i <= node_count
     nodes.delete(k)
   end
 
@@ -87,6 +87,7 @@ gen_stub('data_graffiti', 'nancy', 'graffiti')
 gen_stub('data_grimoire', 'nancy', 'grimoire')
 gen_stub('data_graphite', 'nancy', 'graphite')
 gen_stub('data_yeti', 'grenoble', 'yeti')
+gen_stub('data_dahu', 'grenoble', 'dahu', 8)
 gen_stub('data_grue', 'nancy', 'grue')
 =end
 
@@ -105,6 +106,10 @@ describe 'OarProperties2' do
 
   it 'works on a cluster with OPA, on an empty OAR server' do
     check_oar_properties({ :oar => 'oar_empty', :data => 'data_yeti', :case => 'yeti_empty' })
+  end
+
+  it 'works on a cluster with multiple nodes per chassis, on an empty OAR server' do
+    check_oar_properties({ :oar => 'oar_empty', :data => 'data_dahu', :case => 'dahu_empty' })
   end
 
   it 'works on a cluster with GPUs and cores_affinity, on an empty OAR server' do

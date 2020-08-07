@@ -3,6 +3,7 @@ Downloading resources properties from https://api.grid5000.fr/stable/sites/fakes
 Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
   clustera-1: new node !
     ["+", "besteffort", "YES"]
+    ["+", "chassis", "Dell Inc. PowerEdge R940 6FGQSM2"]
     ["+", "cluster", "clustera"]
     ["+", "cluster_priority", 201801]
     ["+", "cpuarch", "x86_64"]
@@ -38,6 +39,7 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "wattmeter", "YES"]
   clustera-2: new node !
     ["+", "besteffort", "YES"]
+    ["+", "chassis", "Dell Inc. PowerEdge R940 6FGRSM2"]
     ["+", "cluster", "clustera"]
     ["+", "cluster_priority", 201801]
     ["+", "cpuarch", "x86_64"]
@@ -73,6 +75,7 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "wattmeter", "YES"]
   clustera-3: new node !
     ["+", "besteffort", "YES"]
+    ["+", "chassis", "Dell Inc. PowerEdge R940 6FGPSM2"]
     ["+", "cluster", "clustera"]
     ["+", "cluster_priority", 201801]
     ["+", "cpuarch", "x86_64"]
@@ -108,6 +111,7 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "wattmeter", "YES"]
   clustera-4: new node !
     ["+", "besteffort", "YES"]
+    ["+", "chassis", "Dell Inc. PowerEdge R940 6FGMSM2"]
     ["+", "cluster", "clustera"]
     ["+", "cluster_priority", 201801]
     ["+", "cpuarch", "x86_64"]
@@ -273,4 +277,4 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "maintenance", "NO"]
     ["+", "network_address", ""]
     ["+", "production", "NO"]
-Properties that need to be created on the fakesite server: ip, cluster, nodemodel, switch, besteffort, deploy, virtual, cpuarch, cpucore, cputype, cpufreq, disktype, eth_count, eth_rate, ib_count, ib_rate, ib, opa_count, opa_rate, myri_count, myri_rate, myri, memcore, memcpu, memnode, gpu_count, exotic, mic, wattmeter, cluster_priority, max_walltime, production, maintenance, disk_reservation_count, disk, diskpath
+Properties that need to be created on the fakesite server: ip, cluster, nodemodel, switch, besteffort, deploy, virtual, cpuarch, cpucore, cputype, cpufreq, disktype, chassis, eth_count, eth_rate, ib_count, ib_rate, ib, opa_count, opa_rate, myri_count, myri_rate, myri, memcore, memcpu, memnode, gpu_count, exotic, mic, wattmeter, cluster_priority, max_walltime, production, maintenance, disk_reservation_count, disk, diskpath

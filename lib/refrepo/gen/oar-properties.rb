@@ -735,7 +735,6 @@ def ignore_default_keys()
   #  suspended_jobs: 'NO'
   #  type: default
   ignore_default_keys = [
-    "chassis",
     "slash_16",
     "slash_17",
     "slash_18",
