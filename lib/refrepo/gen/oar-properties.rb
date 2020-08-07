@@ -369,7 +369,7 @@ def get_ref_disk_properties(site_uid, site)
   site['clusters'].each do |cluster_uid, cluster|
     cluster['nodes'].each do |node_uid, node|
       begin
-        properties.merge!(get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node))
+        properties.merge!(get_ref_disk_properties_internal(cluster_uid, cluster, node_uid, node))
       rescue MissingProperty => e
         puts "Error while processing node #{node_uid}: #{e}"
       end
@@ -576,25 +576,23 @@ end
 #  "diskpath"=>"/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0",
 #  "cpuset"=>-1},
 #  ["grimoire-1", "sdc.grimoire-1"]=> ...
-def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
+def get_ref_disk_properties_internal(cluster_uid, cluster, node_uid, node)
   properties = {}
   node['storage_devices'].each_with_index do |device, index|
     disk = [device['device'], node_uid].join('.')
     if index > 0 && device['reservation'] # index > 0 is used to exclude sda
       key = [node_uid, disk]
-      h = {}
-      node_address = [node_uid, site_uid, 'grid5000.fr'].join('.')
-      h['cluster'] = cluster_uid
-      h['host'] = node_address
-      h['network_address'] = ''
+      # For the disk properties, we overload the node default resources properties
+      # so first we get the default properties
+      h = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
+      # and then overload some of the properties
       h['available_upto'] = 0
-      h['deploy'] = 'YES'
-      h['production'] = get_production_property(node)
-      h['maintenance'] = get_maintenance_property(node)
       h['disk'] = disk
       h['diskpath'] = device['by_path']
-      h['exotic'] = node['exotic'] ? 'YES' : 'NO'
       h['cpuset'] = -1
+      # and we delete properties that should not be set
+      h.delete('network_address')
+      h.delete('max_walltime')
       properties[key] = h
     end
   end
