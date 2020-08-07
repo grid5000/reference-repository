@@ -9,14 +9,83 @@ class MissingProperty < StandardError; end
 
 MiB = 1024**2
 
-############################################
-# Functions related to the "TABLE" operation
-############################################
-
 module OarProperties
+
+# Properties that must be created event if not present in the ref api
+OAR_properties_force_create = {
+  "comment" => String
+}
+
+# Properties such as deploy and besteffort, that should not be created
+OAR_properties_ignore_create = [
+  'deploy',
+  'besteffort'
+]
+
+# These keys will not be created neither compared with the -d option
+# because they are mutable for default resources
+OAR_properties_ignore_value_for_default_resources = [
+  "core", # This property was created by 'oar_resources_add'
+  "cpu", # This property was created by 'oar_resources_add'
+  "gpu", # New property taken into account by the new generator
+  "cpuset",
+  "available_upto",
+  "comment", # TODO
+  "desktop_computing",
+  "drain",
+  "expiry_date",
+  "finaud_decision",
+  "grub",
+  "jobs", # This property exists when a job is running
+  "last_available_upto",
+  "last_job_date",
+  "network_address", # TODO
+  "next_finaud_decision",
+  "next_state",
+  "rconsole", # TODO
+  "resource_id",
+  "state_num",
+  "subnet_address",
+  "subnet_prefix",
+  "suspended_jobs",
+  "type", # TODO
+  "id", # id from API (= resource_id from oarnodes)
+  "api_timestamp", # from API
+  "links", # from API
+]
+
+# These keys will not be created neither compared with the -d option
+# because they are mutable for disk resources
+OAR_properties_ignore_value_for_disk_resources = [
+  "disk",
+  "diskpath",
+  "comment", # TODO
+  "desktop_computing",
+  "drain",
+  "expiry_date",
+  "finaud_decision",
+  "grub",
+  "jobs", # This property exists when a job is running
+  "last_available_upto",
+  "last_job_date",
+  "next_finaud_decision",
+  "next_state",
+  "rconsole", # TODO
+  "resource_id",
+  "state_num",
+  "suspended_jobs",
+  "type", # TODO
+  "id", # id from API (= resource_id from oarnodes)
+  "api_timestamp", # from API
+  "links", # from API
+]
 
 # OAR API data cache
 @@oar_data = {}
+
+############################################
+# Functions related to the "TABLE" operation
+############################################
 
 def export_rows_as_formated_line(generated_hierarchy)
   # Display header
@@ -81,18 +150,13 @@ def generate_set_disk_properties_cmd(host, disk, disk_properties)
   return command + "\n\n"
 end
 
-def generate_create_oar_property_cmd(properties_keys)
+def generate_create_oar_property_cmd(properties)
   command = ''
-  ignore_keys_list = ignore_default_keys()
-  properties_keys.each do |key, key_type|
-    if ignore_keys_list.include?(key)
+  properties.each do |key, type|
+    if OAR_properties_ignore_create.include?(key)
       next
     end
-    # keys such as deploy or besteffort are default OAR keys that should not be created
-    if oar_system_keys.include?(key)
-      next
-    end
-    if key_type == Integer
+    if type == Integer
       command += "property_exist '#{key}' || oarproperty -a #{key}\n"
     elsif key_type == String
       command += "property_exist '#{key}' || oarproperty -a #{key} --varchar\n"
@@ -113,7 +177,7 @@ end
 #   - NEXT_AVAILABLE_CPU_ID : the next identifier that can safely be used for a new cpi
 #   - NEXT_AVAILABLE_CORE_ID : the next identifier that can safely be used for a new core
 def generate_oar_commands_header()
-  return %Q{
+  return <<EOS
 #! /usr/bin/env bash
 
 set -eu
@@ -134,21 +198,7 @@ disk_exist () {
   [[ $(oarnodes --sql "host='$1' and type='disk' and disk='$2'") ]]
 }
 
-
-# if [ $(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
-#   NEXT_AVAILABLE_CPU_ID=0
-# else
-#   MAX_CPU_ID=$(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | head -n1)
-#   let "NEXT_AVAILABLE_CPU_ID=MAX_CPU_ID+1"
-# fi
-#
-# if [ $(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
-#   NEXT_AVAILABLE_CORE_ID=0
-# else
-#   MAX_CORE_ID=$(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | head -n1)
-#   let "NEXT_AVAILABLE_CORE_ID=MAX_CORE_ID+1"
-# fi
-}
+EOS
 end
 
 
@@ -158,11 +208,12 @@ end
 #   - remaining properties that can be generated from API
 def generate_oar_property_creation(site_name, data_hierarchy)
 
+# FIXME: to remove, use the generic OAR_properties_force_create if really needed...
   #############################################
   # Create properties that were previously created
   # by 'oar_resources_add'
   ##############################################
-  commands = %Q{
+  commands = <<EOS
 #############################################
 # Create OAR properties that were created by 'oar_resources_add'
 #############################################
@@ -173,17 +224,17 @@ property_exist 'gpudevice' || oarproperty -a gpudevice
 property_exist 'gpu' || oarproperty -a gpu
 property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
 
-}
+EOS
 
   #############################################
   # Create remaining properties (from API)
   #############################################
-  commands += %Q{
+  commands += <<EOS
 #############################################
 # Create OAR properties if they don't exist
 #############################################
 
-}
+EOS
 
   # Fetch oar properties from ref repo
   # global_hash = load_data_hierarchy
@@ -240,12 +291,12 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
     end
 
     if print_node_header
-      result += %Q{
+      result += <<EOS
 
 ###################################
 # #{node[:fqdn]}
 ###################################
-}
+EOS
     end
 
     # Iterate over the resources of the OAR node
@@ -345,12 +396,12 @@ end
 
 # Get all node properties of a given site from the reference repo hash
 # See also: https://www.grid5000.fr/mediawiki/index.php/Reference_Repository
-def get_ref_default_properties(_site_uid, site)
+def get_ref_default_properties(site_uid, site)
   properties = {}
   site['clusters'].each do |cluster_uid, cluster|
     cluster['nodes'].each do |node_uid, node|
       begin
-        properties[node_uid] = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
+        properties[node_uid] = get_ref_node_properties_internal(site_uid, cluster_uid, cluster, node_uid, node)
       rescue MissingProperty => e
         puts "Error (missing property) while processing node #{node_uid}: #{e}"
       rescue StandardError => e
@@ -369,7 +420,7 @@ def get_ref_disk_properties(site_uid, site)
   site['clusters'].each do |cluster_uid, cluster|
     cluster['nodes'].each do |node_uid, node|
       begin
-        properties.merge!(get_ref_disk_properties_internal(cluster_uid, cluster, node_uid, node))
+        properties.merge!(get_ref_disk_properties_internal(site_uid, cluster_uid, cluster, node_uid, node))
       rescue MissingProperty => e
         puts "Error while processing node #{node_uid}: #{e}"
       end
@@ -379,7 +430,7 @@ def get_ref_disk_properties(site_uid, site)
 end
 
 # Generates the properties of a single node
-def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
+def get_ref_node_properties_internal(_site_uid, cluster_uid, cluster, node_uid, node)
   h = {}
 
   if node['status'] == 'retired'
@@ -537,25 +588,25 @@ end
 
 def properties_internal(properties)
   str = properties
-            .to_a
-            .select{|k, v| not ignore_default_keys.include? k}
-            .map do |(k, v)|
-                v = "YES" if v == true
-                v = "NO"  if v == false
-                !v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
-            end.compact.join(' -p ')
+    .to_a
+    .select{|k, v| not OAR_properties_ignore_value_for_default_resources.include? k}
+    .map do |(k, v)|
+      v = "YES" if v == true
+      v = "NO"  if v == false
+      !v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
+    end.compact.join(' -p ')
   return str
 end
 
 def disk_properties_internal(properties)
   str = properties
-            .to_a
-            .select{|k, v| not v.nil? and not v==""}
-            .map do |(k, v)|
-    v = "YES" if v == true
-    v = "NO"  if v == false
-    !v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
-  end.compact.join(' -p ')
+    .to_a
+    .select{|k, v| not v.nil? and not v==""}
+    .map do |(k, v)|
+      v = "YES" if v == true
+      v = "NO"  if v == false
+      !v.nil? ? "#{k}=#{v.inspect.gsub("'", "\\'").gsub("\"", "'")}" : nil
+    end.compact.join(' -p ')
   return str
 end
 
@@ -576,7 +627,7 @@ end
 #  "diskpath"=>"/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0",
 #  "cpuset"=>-1},
 #  ["grimoire-1", "sdc.grimoire-1"]=> ...
-def get_ref_disk_properties_internal(cluster_uid, cluster, node_uid, node)
+def get_ref_disk_properties_internal(site_uid, cluster_uid, cluster, node_uid, node)
   properties = {}
   node['storage_devices'].each_with_index do |device, index|
     disk = [device['device'], node_uid].join('.')
@@ -584,14 +635,16 @@ def get_ref_disk_properties_internal(cluster_uid, cluster, node_uid, node)
       key = [node_uid, disk]
       # For the disk properties, we overload the node default resources properties
       # so first we get the default properties
-      h = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
+      h = get_ref_node_properties_internal(site_uid, cluster_uid, cluster, node_uid, node)
       # and then overload some of the properties
       h['available_upto'] = 0
       h['disk'] = disk
       h['diskpath'] = device['by_path']
       h['cpuset'] = -1
+      # and we force network_address to "" and host to is value (not by get_ref_node_properties_internal)
+      h['network_address'] = ""
+      h['host'] = [node_uid, site_uid, 'grid5000.fr'].join('.') 
       # and we delete properties that should not be set
-      h.delete('network_address')
       h.delete('max_walltime')
       properties[key] = h
     end
@@ -682,124 +735,30 @@ def diff_properties(type, properties_oar, properties_ref)
   properties_ref ||= {}
 
   if type == 'default'
-    ignore_keys = ignore_keys()
-    ignore_keys.each { |key| properties_oar.delete(key) }
-    ignore_keys.each { |key| properties_ref.delete(key) }
+    OAR_properties_ignore_value_for_default_resources.each do |key|
+      properties_oar.delete(key)
+      properties_ref.delete(key)
+    end
   elsif type == 'disk'
-    check_keys = %w(cluster host network_address available_upto deploy production maintenance disk diskpath cpuset)
-    properties_oar.select! { |k, _v| check_keys.include?(k) }
-    properties_ref.select! { |k, _v| check_keys.include?(k) }
+    OAR_properties_ignore_value_for_disk_resources.each do |key|
+      properties_oar.delete(key)
+      properties_ref.delete(key)
+    end
   end
 
   # Ignore the 'state' property only if the node is not 'Dead' according to
   # the reference-repo.
   # Otherwise, we must enforce that the node state is also 'Dead' on the OAR server.
   # On the OAR server, the 'state' property can be modified by phoenix. We ignore that.
-  if type == 'default' && properties_ref['state'] != 'Dead'
+  if properties_ref['state'] != 'Dead'
     properties_oar.delete('state')
     properties_ref.delete('state')
-  elsif type == 'default' && properties_ref.size == 1
+  elsif properties_ref.size == 1
     # For dead nodes, when information is missing from the reference-repo, only enforce the 'state' property and ignore other differences.
     return Hashdiff.diff({'state' => properties_oar['state']}, {'state' => properties_ref['state']})
   end
 
   return Hashdiff.diff(properties_oar, properties_ref)
-end
-
-# These keys will not be created neither compared with the -d option
-# ignore_default_keys is only applied to resources of type 'default'
-def ignore_default_keys()
-  # default OAR at resource creation:
-  #  available_upto: '2147483647'
-  #  besteffort: 'YES'
-  #  core: ~
-  #  cpu: ~
-  #  cpuset: 0
-  #  deploy: 'NO'
-  #  desktop_computing: 'NO'
-  #  drain: 'NO'
-  #  expiry_date: 0
-  #  finaud_decision: 'YES'
-  #  host: ~
-  #  last_available_upto: 0
-  #  last_job_date: 0
-  #  network_address: server
-  #  next_finaud_decision: 'NO'
-  #  next_state: UnChanged
-  #  resource_id: 9
-  #  scheduler_priority: 0
-  #  state: Suspected
-  #  state_num: 3
-  #  suspended_jobs: 'NO'
-  #  type: default
-  ignore_default_keys = [
-    "slash_16",
-    "slash_17",
-    "slash_18",
-    "slash_19",
-    "slash_20",
-    "slash_21",
-    "slash_22",
-    "available_upto",
-    "chunks",
-    "comment", # TODO
-    "core", # This property was created by 'oar_resources_add'
-    "cpu", # This property was created by 'oar_resources_add'
-    "host", # This property was created by 'oar_resources_add'
-    "gpudevice", # New property taken into account by the new generator
-    "gpu_model", # New property taken into account by the new generator
-    "gpu", # New property taken into account by the new generator
-    "cpuset",
-    "desktop_computing",
-    "drain",
-    "expiry_date",
-    "finaud_decision",
-    "grub",
-    "jobs", # This property exists when a job is running
-    "last_available_upto",
-    "last_job_date",
-    "network_address", # TODO
-    "next_finaud_decision",
-    "next_state",
-    "rconsole", # TODO
-    "resource_id",
-    "scheduler_priority",
-    "state",
-    "state_num",
-    "subnet_address",
-    "subnet_prefix",
-    "suspended_jobs",
-    "thread",
-    "type", # TODO
-    "vlan",
-    "pdu",
-    "id", # id from API (= resource_id from oarnodes)
-    "api_timestamp", # from API
-    "links", # from API
-  ]
-  return ignore_default_keys
-end
-
-# Properties of resources of type 'disk' to ignore (for example, when
-# comparing resources of type 'default' with the -d option)
-def ignore_disk_keys()
-  ignore_disk_keys = [
-    "disk",
-    "diskpath"
-  ]
-  return ignore_disk_keys
-end
-
-def ignore_keys()
-  return ignore_default_keys() + ignore_disk_keys()
-end
-
-# Properties such as deploy and besteffort, that should not be created
-def oar_system_keys()
-  [
-    'deploy',
-    'besteffort'
-  ]
 end
 
 def get_oar_resources_from_oar(options)
@@ -889,7 +848,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
   options[:sites].each do |site_uid|
     properties_keys['ref'][site_uid] = get_property_keys(properties['ref'][site_uid])
   end
-  ignore_default_keys = ignore_default_keys()
 
   # Diff
   if options[:diff]
@@ -953,27 +911,27 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
 
           case options[:verbose]
           when 1
-            diagnostic_msgs.push( "#{key}:#{info}") if info != ''
-            diagnostic_msgs.push( "#{key}:#{diff_keys}") if diff.size != 0
+            diagnostic_msgs.push("#{key}:#{info}") if info != ''
+            diagnostic_msgs.push("#{key}:#{diff_keys}") if diff.size != 0
           when 2
             # Give more details
             if header == false
-              diagnostic_msgs.push( "Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed")
+              diagnostic_msgs.push("Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed")
               header = true
             end
             if diff.empty?
-              diagnostic_msgs.push( "  #{key}: OK#{info}")
+              diagnostic_msgs.push("  #{key}: OK#{info}")
             elsif diff == prev_diff
-              diagnostic_msgs.push( "  #{key}:#{info} same modifications as above")
+              diagnostic_msgs.push("  #{key}:#{info} same modifications as above")
             else
-              diagnostic_msgs.push( "  #{key}:#{info}")
-              diff.each { |d| diagnostic_msgs.push( "    #{d}") }
+              diagnostic_msgs.push("  #{key}:#{info}")
+              diff.each { |d| diagnostic_msgs.push("    #{d}") }
             end
             prev_diff = diff
           when 3
             # Even more details
-            diagnostic_msgs.push( "#{key}:#{info}") if info != ''
-            diagnostic_msgs.push( JSON.pretty_generate(key => { 'old values' => properties_oar, 'new values' => properties_ref }))
+            diagnostic_msgs.push("#{key}:#{info}") if info != ''
+            diagnostic_msgs.push(JSON.pretty_generate(key => { 'old values' => properties_oar, 'new values' => properties_ref }))
           end
           if diff.size != 0
             ret = false unless options[:update] || options[:print]
@@ -986,30 +944,39 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
 
       # Build the list of properties that must be created in the OAR server
       properties_keys['diff'][site_uid] = {}
+#require "pry-byebug"
+#binding.pry
+      # Check that properties in the ref repository have the same type as what is defined in OAR_properties_force_create
       properties_keys['ref'][site_uid].each do |k, v_ref|
+        if OAR_properties_force_create[k] != v_ref
+          diagnostic_msgs.push("Error: property #{k} mismatch between the hardcoded type (#{OAR_properties_force_create[k]}) and the type found in the ref api (#{v_ref}).")
+          ret = false unless options[:update] || options[:print]
+        end
+      end
+      properties_keys['ref'][site_uid].merge(OAR_properties_force_create).each do |k, v_ref|
         v_oar = properties_keys['oar'][site_uid][k]
         properties_keys['diff'][site_uid][k] = v_ref unless v_oar
         if v_oar && v_oar != v_ref && v_ref != NilClass && v_oar != NilClass
           # Detect inconsistency between the type (String/Integer) of properties generated by this script and the existing values on the server.
-          diagnostic_msgs.push( "Error: the OAR property '#{k}' is a '#{v_oar}' on the #{site_uid} server and this script uses '#{v_ref}' for this property.")
+          diagnostic_msgs.push("Error: property #{k} mismatch between the type known by OAR in #{site_uid} (#{OAR_properties_force_create[k]}) and the type found in the ref api (#{v_ref}).")
           ret = false unless options[:update] || options[:print]
         end
       end
 
-      diagnostic_msgs.push( "Properties that need to be created on the #{site_uid} server: #{properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_default_keys.include?(e) }.join(', ')}") if options[:verbose] && properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_default_keys.include?(e) }.size > 0
+      diagnostic_msgs.push("Properties that need to be created on the #{site_uid} server: #{properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| OAR_properties_ignore_create.include?(e) }.join(', ')}") if options[:verbose] && properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| OAR_properties_ignore_value_for_default_resources.include?(e) }.size > 0
 
       # Detect unknown properties
       unknown_properties = properties_keys['oar'][site_uid].keys.to_set - properties_keys['ref'][site_uid].keys.to_set
-      ignore_default_keys.each do |key|
+      OAR_properties_ignore_value_for_default_resources.each do |key|
         unknown_properties.delete(key)
       end
 
       if options[:verbose] && unknown_properties.size > 0
-        diagnostic_msgs.push( "Properties existing on the #{site_uid} server but not managed/known by the generator: #{unknown_properties.to_a.join(', ')}.")
-        diagnostic_msgs.push( "Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.")
+        diagnostic_msgs.push("Properties existing on the #{site_uid} server but not managed/known by the generator: #{unknown_properties.to_a.join(', ')}.")
+        diagnostic_msgs.push("Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.")
         ret = false unless options[:update] || options[:print]
       end
-      diagnostic_msgs.push( "Skipped retired nodes: #{skipped_nodes}") if skipped_nodes.any?
+      diagnostic_msgs.push("Skipped retired nodes: #{skipped_nodes}") if skipped_nodes.any?
 
 
       if not (options[:print] and options[:diff])
@@ -1046,7 +1013,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
                   if expected_value == "" or expected_value.nil?
                     expected_value = "ø"
                   end
-                  diagnostic_msg = <<-TXT
+                  diagnostic_msg = <<TXT
 # Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: OAR API gives #{resc[value]}, generator wants #{expected_value}.
 TXT
                   error_msgs += "#{diagnostic_msg}"
@@ -1340,7 +1307,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     (1..node_count).each do |node_num|
 
       # node_index0 starts at 0
-      node_index0 = node_num -1
+      node_index0 = node_num - 1
 
       name = nodes_names[node_index0][:name]
       fqdn = nodes_names[node_index0][:fqdn]
