@@ -1,0 +1,48 @@
+---
+sgrappe:
+  role: production
+  model: Dell S5224F-ON
+  warranty: "2025-08-07"
+  kind: switch
+  site: nancy
+  snmp_community: public
+  ip: 172.17.79.205
+  linecards:
+    1:
+      snmp_pattern: "Ethernet1/%LINECARD%/%PORT%"
+      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
+      kind: node
+      rate: 25000000000
+      ports:
+        1:
+          uid: grappe-1
+        2:
+          uid: grappe-2
+        3:
+          uid: grappe-3
+        4:
+          uid: grappe-4
+        5:
+          uid: grappe-5
+        6:
+          uid: grappe-6
+        7:
+          uid: grappe-7
+        8:
+          uid: grappe-8
+        9:
+          uid: grappe-9
+        10:
+           uid: grappe-10
+        11:
+           uid: grappe-11
+        12:
+           uid: grappe-12
+        13:
+           uid: grappe-13
+        14:
+           uid: grappe-14
+        15:
+           uid: grappe-15
+        16:
+           uid: grappe-16

@@ -52,7 +52,6 @@ end
 def generate_puppet_dhcpg5k(options)
   global_hash = load_data_hierarchy
 
-
   puts "Writing DHCP configuration files to: #{options[:output_dir]}"
   puts "For site(s): #{options[:sites].join(', ')}"
 
