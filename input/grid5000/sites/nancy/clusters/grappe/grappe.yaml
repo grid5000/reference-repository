@@ -1,0 +1,62 @@
+---
+model: Dell PowerEdge R640
+created_at: 2020-08-20
+kavlan: true
+queues:
+  - admin
+  - testing
+nodes:
+  grappe-[1-16]:
+    software:
+      standard-environment: debian10-x64-std
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    performance:
+      core_flops: 0
+      node_flops: 0
+    processor:
+      microarchitecture: Cascade Lake-SP
+      #other_description: Intel Xeon Gold 5218R
+      clock_speed: 2100000000
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth4:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth5:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SATA
+        storage: SSD
+        #model: PERC H330 Mini
+      sdb:
+        interface: SAS
+        storage: HDD
+        #model: PERC H330 Mini
+        reservation: true
