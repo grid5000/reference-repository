@@ -369,7 +369,7 @@ def get_ref_disk_properties(site_uid, site)
   site['clusters'].each do |cluster_uid, cluster|
     cluster['nodes'].each do |node_uid, node|
       begin
-        properties.merge!(get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node))
+        properties.merge!(get_ref_disk_properties_internal(site_uid, cluster_uid, cluster, node_uid, node))
       rescue MissingProperty => e
         puts "Error while processing node #{node_uid}: #{e}"
       end
@@ -576,24 +576,22 @@ end
 #  "diskpath"=>"/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0",
 #  "cpuset"=>-1},
 #  ["grimoire-1", "sdc.grimoire-1"]=> ...
-def get_ref_disk_properties_internal(site_uid, cluster_uid, node_uid, node)
+def get_ref_disk_properties_internal(site_uid, cluster_uid, cluster, node_uid, node)
   properties = {}
   node['storage_devices'].each_with_index do |device, index|
     disk = [device['device'], node_uid].join('.')
     if index > 0 && device['reservation'] # index > 0 is used to exclude sda
       key = [node_uid, disk]
-      h = {}
+      # Starting from default resources properties, then override with disk properties
+      h = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
       node_address = [node_uid, site_uid, 'grid5000.fr'].join('.')
-      h['cluster'] = cluster_uid
       h['host'] = node_address
       h['network_address'] = ''
       h['available_upto'] = 0
       h['deploy'] = 'YES'
-      h['production'] = get_production_property(node)
-      h['maintenance'] = get_maintenance_property(node)
+      h['max_walltime'] = 0
       h['disk'] = disk
       h['diskpath'] = device['by_path']
-      h['exotic'] = node['exotic'] ? 'YES' : 'NO'
       h['cpuset'] = -1
       properties[key] = h
     end
@@ -685,13 +683,12 @@ def diff_properties(type, properties_oar, properties_ref)
 
   if type == 'default'
     ignore_keys = ignore_keys()
-    ignore_keys.each { |key| properties_oar.delete(key) }
-    ignore_keys.each { |key| properties_ref.delete(key) }
   elsif type == 'disk'
     check_keys = %w(cluster host network_address available_upto deploy production maintenance disk diskpath cpuset)
-    properties_oar.select! { |k, _v| check_keys.include?(k) }
-    properties_ref.select! { |k, _v| check_keys.include?(k) }
+    ignore_keys = ignore_keys() - check_keys #Some key must be ignored for default but not for disks, ex: available_upto
   end
+  ignore_keys.each { |key| properties_oar.delete(key) }
+  ignore_keys.each { |key| properties_ref.delete(key) }
 
   # Ignore the 'state' property only if the node is not 'Dead' according to
   # the reference-repo.
@@ -998,7 +995,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
         end
       end
 
-      diagnostic_msgs.push( "Properties that need to be created on the #{site_uid} server: #{properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_default_keys.include?(e) }.join(', ')}") if options[:verbose] && properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_default_keys.include?(e) }.size > 0
+      diagnostic_msgs.push( "Properties that need to be created on the #{site_uid} server: #{properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.join(', ')}") if options[:verbose] && properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.size > 0
 
       # Detect unknown properties
       unknown_properties = properties_keys['oar'][site_uid].keys.to_set - properties_keys['ref'][site_uid].keys.to_set
