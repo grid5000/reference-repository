@@ -1,9 +1,10 @@
 {
+  "backplane_bps": 2160000000000,
   "channels": {
     "port-channel1": {
       "kind": "router",
       "port": "port-channel4",
-      "rate": 1000000000000,
+      "rate": 800000000000,
       "uid": "gw"
     }
   },
@@ -13,7 +14,7 @@
     {
     },
     {
-      "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+      "kavlan_pattern": "Ethernet1%LINECARD%/%PORT%",
       "kind": "node",
       "ports": [
         {
