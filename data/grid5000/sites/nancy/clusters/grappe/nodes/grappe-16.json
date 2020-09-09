@@ -64,7 +64,7 @@
     "ram_size": 103079215104
   },
   "monitoring": {
-    "wattmeter": "false"
+    "wattmeter": "multiple"
   },
   "network_adapters": [
     {
@@ -205,6 +205,28 @@
     "version": "Gold 5218R"
   },
   "sensors": {
+    "power": {
+      "available": true,
+      "per_outlets": true,
+      "via": {
+        "api": {
+          "metric": "power"
+        },
+        "pdu": [
+          {
+            "port": 21,
+            "uid": "grappe-pdu1"
+          },
+          {
+            "port": 22,
+            "uid": "grappe-pdu2"
+          }
+        ],
+        "www": {
+          "url": "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
+        }
+      }
+    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
