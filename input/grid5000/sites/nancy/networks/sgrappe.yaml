@@ -61,9 +61,15 @@ sgrappe:
         16:
            uid: grappe-16
         25:
+           snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
+           kind: node
+           rate: 25000000000
            uid: port-channel1
            kind: channel
-        26: 
+        26:
+           snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
+           kind: node
+           rate: 25000000000
            uid: port-channel1
            kind: channel
   channels:
