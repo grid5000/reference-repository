@@ -19,9 +19,15 @@ def generate_puppet_kwollectg5k(options)
 
   refapi = load_data_hierarchy
 
+  puts "Old configurations directory will be stored in /tmp/kwollect-#{Time.now.to_i}"
+  backup_dir = Pathname("/tmp/kwollect-#{Time.now.to_i}/")
+  backup_dir.mkpath()
+
   refapi['sites'].each { |site_uid, site|
 
     next unless options[:sites].include?(site_uid)
+
+    FileUtils.mv("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}", "#{backup_dir}/")
 
     # Metrics configuration for each node
     site['clusters'].sort.each { |cluster_uid, cluster|
