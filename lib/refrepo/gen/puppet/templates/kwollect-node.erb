@@ -11,18 +11,28 @@ cluster.fetch('metrics', []).each {|metric|
   next if metric['source']['protocol'] == "pdu"
 
   if metric['source']['protocol'] == "ipmisensor"
-    auth = ipmi_credentials+"@"
+    host = ipmi_credentials+"@"+node_uid+"-bmc."+site_uid+".grid5000.fr"
+    label = {'_device_alias' => node_uid+'-bmc'}
   elsif metric['source']['protocol'] == "snmp"
-    auth = "public@"
+    host = "public@"+node_uid+"-bmc."+site_uid+".grid5000.fr"
+    label = {'_device_alias' => node_uid+'-bmc'}
   else
-    auth = ""
+    host = node_uid+"."+site_uid+".grid5000.fr"
+    label = {}
+  end
+  if metric['source'].has_key?('port')
+    host = host+":"+metric['source']['port'].to_s
+  end
+  id = metric['source'].fetch('id', '')
+  if id.kind_of?(Array)
+    id = id.join("-")
   end
 
 -%>
 - name: <%= metric['name'] %>
   device_id: <%= node_uid %>
-  url: <%= metric['source']['protocol'] %>://<%= auth %><%= node_uid %>-bmc.<%= site_uid %>.grid5000.fr/<%= metric['source']['id'] %>
-  labels: <%= metric.fetch('labels', {}).update({'_device_alias' => node_uid+'-bmc'}).to_json %>
+  url: <%= metric['source']['protocol'] %>://<%= host %>/<%= id %>
+  labels: <%= metric.fetch('labels', {}).update(label).to_json %>
   update_every: <%= metric['period'] > 0 ? metric['period'] : metric['optional_period'] %>
 <%- if metric['period'] == 0 -%>
   optional: true
