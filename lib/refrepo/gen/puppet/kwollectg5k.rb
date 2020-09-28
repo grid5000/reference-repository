@@ -27,7 +27,9 @@ def generate_puppet_kwollectg5k(options)
 
     next unless options[:sites].include?(site_uid)
 
-    FileUtils.mv("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}", "#{backup_dir}/")
+    if File.directory?("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}")
+      FileUtils.mv("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}", "#{backup_dir}/")
+    end
 
     # Metrics configuration for each node
     site['clusters'].sort.each { |cluster_uid, cluster|
