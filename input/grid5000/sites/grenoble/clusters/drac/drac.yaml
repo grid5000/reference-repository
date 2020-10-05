@@ -1,0 +1,62 @@
+---
+model: IBM PowerNV S822LC (8335-GTB)
+created_at: 2020-10-05
+kavlan: false
+queues:
+  - admin
+  - testing
+nodes:
+  drac-[1-12]:
+    processor:
+      microarchitecture: POWER8NVL
+      clock_speed: 0
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    performance:
+      core_flops: 0
+      node_flops: 0
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth1:
+        bridged: true
+        enabled: true
+        mountable: true
+        mounted: true
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth4:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth5:
+        enabled: false
+        mountable: false
+        mounted: false
+      ib0:
+        mounted: true
+        enabled: true
+        mountable: true
+        netmask: 255.255.240.0
+    storage_devices:
+      sda:
+        interface: SATA
+        storage: HDD
+      sdb:
+        interface: SATA
+        storage: HDD
