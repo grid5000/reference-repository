@@ -286,6 +286,9 @@ def get_flops_per_cycle(microarch, cpu_name)
     when /Gold 6126/, /Gold 6130/
       return 32
     end
+  # 4 64-bit FPUs, x2 for Fused Multiply-Add
+  when /POWER8/
+    return 8
   end
   raise "Error: Unknown CPU architecture, cannot compute flops"
 end
