@@ -1,0 +1,124 @@
+{
+  "architecture": {
+    "nb_cores": 20,
+    "nb_procs": 2,
+    "nb_threads": 16
+  },
+  "exotic": true,
+  "main_memory": {
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "bridged": true,
+      "device": "eth1",
+      "enabled": true,
+      "kavlan": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "drac-5.grenoble.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth2",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "eth3",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "eth4",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "eth5",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "ib0",
+      "enabled": true,
+      "kavlan": false,
+      "mountable": true,
+      "mounted": true,
+      "netmask": "255.255.240.0",
+      "network_address": "drac-5-ib0.grenoble.grid5000.fr"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "drac-5-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 0,
+    "node_flops": 0
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 0,
+    "microarchitecture": "POWER8NVL"
+  },
+  "sensors": {
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2020091600"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "device": "sda",
+      "interface": "SATA",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "device": "sdb",
+      "interface": "SATA",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "drac-5"
+}
