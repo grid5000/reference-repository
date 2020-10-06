@@ -222,6 +222,9 @@ def add_software(h)
   h['sites'].each_pair do |site_uid, hs|
     hs['clusters'].each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
+        if not hn.key?('software')
+          hn['software'] = {}
+        end
         hn['software']['postinstall-version'] = h['software']['postinstall-version']
         hn['software']['forced-deployment-timestamp'] = h['software']['forced-deployment-timestamp']
       end
