@@ -290,6 +290,7 @@ def add_theorical_flops(h)
   h['sites'].each_pair do |site_uid, site|
     site['clusters'].each_pair do |cluster_uid, cluster|
       cluster['nodes'].select { |k, v| v['status'] != 'retired' }.each_pair do |node_uid, node|
+        node['performance'] = {}
         node['performance']['core_flops'] =  node['processor']['clock_speed'] * get_flops_per_cycle(node['processor']['microarchitecture'], node['processor']['other_description'])
         node['performance']['node_flops'] = node['architecture']['nb_cores'] * node['performance']['core_flops']
       end
