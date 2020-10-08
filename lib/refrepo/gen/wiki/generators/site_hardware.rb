@@ -10,15 +10,16 @@ class SiteHardwareGenerator < WikiGenerator
   end
 
   def generate_content
-    @generated_content = "__NOTOC__\n__NOEDITSECTION__\n"
-    @generated_content += "{{Portal|User}}\n"
-    @generated_content += "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
-    @generated_content += "\n= Summary =\n"
-    @generated_content += "'''#{generate_oneline_summary}'''\n"
-    @generated_content += self.class.generate_summary(@site, false)
-    @generated_content += self.class.generate_description(@site)
-    @generated_content += MW.italic(MW.small(generated_date_string))
-    @generated_content += MW::LINE_FEED
+    @generated_content = "__NOTOC__\n__NOEDITSECTION__\n" +
+      "{{Portal|User}}\n" +
+      "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
+      "\n= Summary =\n" +
+      "'''#{generate_oneline_summary}'''\n" +
+      self.class.generate_summary(@site, false) +
+      "''*: disk is [[Disk_reservation|reservable]]''" +
+      self.class.generate_description(@site) +
+      MW.italic(MW.small(generated_date_string)) +
+      MW::LINE_FEED
   end
 
   def self.generate_all_clusters
@@ -218,16 +219,24 @@ def get_hardware(sites)
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
         hard['pmem_size'] = G5K.get_size(node_hash['main_memory']['pmem_size']) unless node_hash['main_memory']['pmem_size'].nil?
-        storage = node_hash['storage_devices'].sort_by!{ |d| known_devices_name.index(d['device'])}.map { |i| { 'size' => i['size'], 'tech' => i['storage'] } }
+        storage = node_hash['storage_devices'].sort_by!{ |d| known_devices_name.index(d['device'])}.map { |i| { 'size' => i['size'], 'tech' => i['storage'], 'reservation' => i['reservation'].nil? ? false : i['reservation'] } }
         hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts|
           counts[data] += 1
         }.to_a
-        .map.with_index { |e, i|
+          .map.with_index { |e, i|
           size = G5K.get_size(e[0]['size'], 'metric')
           if i.zero?
-            (e[1] == 1 ? "<b>#{size}&nbsp;#{e[0]['tech']}</b>" : "<b>1&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}</b>" + ' +&nbsp;' + (e[1] - 1).to_s + "&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}")
+            if e[1] == 1
+              "<b>#{size}&nbsp;#{e[0]['tech']}</b>"
+            else
+              "<b>1&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}</b>" + ' +&nbsp;' + (e[1] - 1).to_s + "&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}" + (e[0]['reservation'] ? '[[Disk_reservation|*]]' : '')
+            end
           else
-            (e[1] == 1 ? "#{size}&nbsp;#{e[0]['tech']}" : e[1].to_s + "&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}")
+            if e[1] == 1
+              "#{size}&nbsp;#{e[0]['tech']}" + (e[0]['reservation'] ? '[[Disk_reservation|*]]' : '')
+            else
+              e[1].to_s + "&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}" + (e[0]['reservation'] ? '[[Disk_reservation|*]]' : '')
+            end
           end
         }.join(' +&nbsp;')
 
