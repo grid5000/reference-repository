@@ -391,7 +391,7 @@ class G5KHardwareGenerator < WikiGenerator
           if nd.length == 1
             nodesetname = cluster_uid
           else
-            nodesetname = G5K.nodeset(nodes.map { |n| n['uid'].split('-')[1].to_i })
+            nodesetname = cluster_uid + '-' + G5K.nodeset(nodes.map { |n| n['uid'].split('-')[1].to_i })
           end
           table_data << [
             "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
