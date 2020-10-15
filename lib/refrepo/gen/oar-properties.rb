@@ -582,14 +582,20 @@ def get_ref_disk_properties_internal(site_uid, cluster_uid, cluster, node_uid, n
     disk = [device['device'], node_uid].join('.')
     if index > 0 && device['reservation'] # index > 0 is used to exclude sda
       key = [node_uid, disk]
-      # Starting from default resources properties, then override with disk properties
+      # Start by copying the properties of the resource of type default,
+      # because to reserve both the resources of type disk and of type default
+      # for a same host, almost all properties must have the same value.
+      # In particular, max_walltime must be identic, but mind that that
+      # max_walltime properties is not related to the max duration of a job
+      # containing only disk resources (14days), it is not used for that.
       h = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
-      node_address = [node_uid, site_uid, 'grid5000.fr'].join('.')
-      h['host'] = node_address
+      # We set the host property because it's not done in what we got above
+      h['host'] = [node_uid, site_uid, 'grid5000.fr'].join('.')
+      # We do not set network_address and available_upto for disk resources
+      # (FIXME: recall why)
       h['network_address'] = ''
       h['available_upto'] = 0
-      h['deploy'] = 'YES'
-      h['max_walltime'] = 0
+      # We set the disk specific property values
       h['disk'] = disk
       h['diskpath'] = device['by_path']
       h['cpuset'] = -1
