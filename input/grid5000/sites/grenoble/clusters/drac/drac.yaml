@@ -43,18 +43,15 @@ nodes:
         enabled: false
         mountable: false
         mounted: false
-      eth4:
-        enabled: false
-        mountable: false
-        mounted: false
-      eth5:
-        enabled: false
-        mountable: false
-        mounted: false
       ib0:
         mounted: true
         enabled: true
         mountable: true
+        netmask: 255.255.240.0
+      ib1:
+        mounted: false
+        enabled: false
+        mountable: false
         netmask: 255.255.240.0
     storage_devices:
       sda:
