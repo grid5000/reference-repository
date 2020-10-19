@@ -183,6 +183,7 @@ end
 def add_kavlan_ipv6s(h)
   h['sites'].each_pair do |site_uid, hs|
     hs['clusters'].each_pair do |_cluster_uid, hc|
+      next if !hc['kavlan'] # skip clusters where kavlan is globally set to false (used for initial cluster installation)
       hc['nodes'].each_pair do |node_uid, hn|
         kvl_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and (v['kavlan'] or not v.has_key?('kavlan')) and v['interface'] == 'Ethernet' }
         if kvl_adapters.length > 0
