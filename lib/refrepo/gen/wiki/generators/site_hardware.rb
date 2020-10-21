@@ -265,11 +265,11 @@ def get_hardware(sites)
             e['interface'],
             e['vendor'],
             e['model'],
-            ' (path: ' + (e['path'] || 'MISSING') + ')',
+            ' (path: ' + (e['path'] || 'MISSING') + ', disk name in std environment*: ' + e['device'] + ')',
             e['reservation'] ? '[[Disk_reservation|(reservable)]]' : '',
             e['device'] == 'sda' ? '(primary disk)' : ''
           ].join(' ')
-        }.join('<br />')
+        }.join('<br />') + "<br /> \n''*the name of the disk may vary depending on the disks reserved/environment''"
 
         network = node_hash['network_adapters'].select { |v|
           v['management'] == false &&
