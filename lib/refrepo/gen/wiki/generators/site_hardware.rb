@@ -10,13 +10,22 @@ class SiteHardwareGenerator < WikiGenerator
   end
 
   def generate_content
+    has_reservable_disks = false
+    G5K::get_global_hash['sites'][@site]['clusters'].each do |_,c|
+      c['nodes'].each do |_,n|
+        n['storage_devices'].each do |d|
+          has_reservable_disks ||= d['reservation']
+        end
+      end
+    end
+
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n" +
       "{{Portal|User}}\n" +
       "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
       "\n= Summary =\n" +
       "'''#{generate_oneline_summary}'''\n" +
       self.class.generate_summary(@site, false) +
-      "''*: disk is [[Disk_reservation|reservable]]''" +
+      (has_reservable_disks ? "''*: disk is [[Disk_reservation|reservable]]''" : '') +
       self.class.generate_description(@site) +
       MW.italic(MW.small(generated_date_string)) +
       MW::LINE_FEED
@@ -257,7 +266,9 @@ def get_hardware(sites)
           }
         end
 
+        has_reservable_disks = false
         hard['storage_description'] = storage_description.sort_by!{ |d| known_devices_name.index(d['device'])}.map { |e|
+          has_reservable_disks ||= e['reservation']
           [
             e['count'] > 1 ? "\n*" : '',
             G5K.get_size(e['size'],'metric'),
@@ -265,11 +276,15 @@ def get_hardware(sites)
             e['interface'],
             e['vendor'],
             e['model'],
-            ' (path: ' + (e['path'] || 'MISSING') + ', disk name in std environment*: ' + e['device'] + ')',
+            '(dev: /dev/' + e['device'] + (e['reservation'] ? '*' : '')  + ', by-path: ' + (e['path'] || 'MISSING') + ')',
             e['reservation'] ? '[[Disk_reservation|(reservable)]]' : '',
             e['device'] == 'sda' ? '(primary disk)' : ''
           ].join(' ')
-        }.join('<br />') + "<br /> \n''*the name of the disk may vary depending on the disks reserved/environment''"
+        }.join('<br />')
+
+        if has_reservable_disks
+          hard['storage_description'] += "<br /> \n''*: the disk block device name /dev/sd? may vary in deployed environments, prefer referring to the by-path identifier''"
+        end
 
         network = node_hash['network_adapters'].select { |v|
           v['management'] == false &&
