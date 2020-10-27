@@ -75,7 +75,7 @@ d['sites'].each_pair do |site, ds|
                        when 'Dell Inc.' then 'Dell' # normalize according to schema
                        when 'HP' then 'HPE'
                        else fn['chassis']['manufacturer']
-                       end
+      end
     ]
 
     oc['jobschedulerName'] = 'oar'
