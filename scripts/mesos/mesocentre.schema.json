@@ -65,13 +65,21 @@
       "type": "string",
       "description": "Adresse email du contact"
     },
-    "totalCoreNumber": {
+    "mesoCoreNumber": {
       "type": "number",
-      "description": "Nombre de coeurs total"
+      "description": "Nombre de coeurs total dans le mésocentre"
     },
-    "totalStorage": {
+    "mesoGPUNumber": {
       "type": "number",
-      "description": "Capacité disque totale en To"
+      "description": "Nombre de GPUs total dans le mésocentre"
+    },
+    "mesoRAMSize": {
+      "type": "number",
+      "description": "Capacité RAM totale dans le mésocentre en Go"
+    },
+    "mesoStorageSize": {
+      "type": "number",
+      "description": "Capacité disque totale dans le mésocentre en To"
     },
     "distributedInfra": {
       "type": "array",
@@ -85,7 +93,7 @@
       "type": "array",
       "items": {
         "type": "string"
-      },        
+      },
       "description": "Services proposés par le mésocentre"
     },
     "etptNumber": {
@@ -96,7 +104,7 @@
       "type": "array",
       "items": {
         "type": "string"
-      },      
+      },
       "description": "Politique d'accès : qui a accès au mésocentre, de quelle manière ?"
     },
     "fullDescription": {
@@ -116,13 +124,25 @@
     "clusterItem": {
       "type": "object",
       "properties": {
-        "clusterName": {
+        "name": {
           "type": "string",
           "description": "Nom du cluster"
         },
         "clusterCoreNumber":{
           "type": "number",
-          "description": "Nombre de coeurs dans ce cluster"
+          "description": "Nombre de coeurs total dans ce cluster"
+        },
+        "clusterGPUNumber": {
+          "type": "number",
+          "description": "Nombre de GPUs total dans ce cluster"
+        },
+        "clusterRAMSize": {
+          "type": "number",
+          "description": "Capacité RAM totale dans ce cluster en Go"
+        },
+        "clusterStorageSize": {
+          "type": "number",
+          "description": "Capacité disque totale dans ce cluster en To"
         },
         "nodeType" : {
           "type": "array",
@@ -152,8 +172,11 @@
           "description": "Nom du gestionnaire de jobs"
         },
         "vendorName": {
-          "type": "string",
-            "enum": ["IBM", "NEC", "Cray", "Atos", "HPE", "SGI", "Dell", "Lenovo", "Sun Microsystems", "NVIDIA", "GIGABYTE"],
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["IBM", "NEC", "Cray", "Bull", "Atos", "HPE", "SGI", "Dell", "Lenovo", "Sun Microsystems", "NVIDIA", "Supermicro", "GIGABYTE"]
+          },
           "description": "Nom du vendeur"
         }
       }
@@ -165,29 +188,29 @@
           "type": "string",
           "description": "Type de GPU (si le noeud en possède)"
         },
-        "GPUNumber": {
+        "nodeGPUNumber": {
           "type": "number",
-          "description": "Nombre de GPU par noeud de ce type"
+          "description": "Nombre de GPUs par noeud de ce type"
         },
         "CPUType": {
           "type": "string",
           "description": "Type de CPU"
         },
-        "coreNumber": {
-          "type": "number",
-          "description": "Nombre de coeurs par noeud de ce type"
-        },
-        "cpuNumber": {
+        "nodeCPUNumber": {
           "type": "number",
           "description": "Nombre de CPUs (sockets) par noeud de ce type"
         },
-        "memory": {
+        "CPUCoreNumber": {
           "type": "number",
-          "description": "RAM en Go par noeud de ce type"
+          "description": "Nombre de coeurs par CPU"
         },
-        "localDisk": {
+        "nodeRAMSize": {
           "type": "number",
-          "description": "Capacité en To"
+          "description": "RAM par noeud de ce type en Go"
+        },
+        "nodeStorageSize": {
+          "type": "number",
+          "description": "Capacité disque par noeud de ce type en To"
         },
         "nodeNumber": {
           "type": "number",
@@ -203,13 +226,13 @@
           "enum": ["scratch","home","data"],
           "description": "Type de stockage"
         },
-	"name": {
+    "name": {
           "type": "string",
           "description": "Nom du stockage"
         },
         "filesystemType":{
           "type": "string",
-            "enum": ["BeeGFS","Spectrum Scale","LUSTRE","ext4","iRODS","NFS","CEPH"],
+            "enum": ["BeeGFS","Spectrum Scale","LUSTRE","ext4","iRODS","NFS","CEPH","GlusterFS"],
           "description": "Nom du système de fichier"
         },
         "size": {
