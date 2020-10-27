@@ -66,26 +66,28 @@ d['sites'].each_pair do |site, ds|
   o['clusterList'] = []
   ds['clusters'].each_pair do |cluster, dc|
     oc = {}
-    oc['clusterName'] = cluster
+    oc['name'] = cluster
     nodes = dc['nodes'].values.select { |n| not n['status'] == 'retired' }
     next if nodes.empty?
     fn = nodes.first
-    oc['vendorName'] = case fn['chassis']['manufacturer']
+    oc['vendorName'] = [
+      case fn['chassis']['manufacturer']
                        when 'Dell Inc.' then 'Dell' # normalize according to schema
                        when 'HP' then 'HPE'
                        else fn['chassis']['manufacturer']
                        end
+    ]
 
     oc['jobschedulerName'] = 'oar'
     oc['clusterCoreNumber'] = nodes.length * fn['architecture']['nb_cores']
     oc['nodeType'] = [
       {
         "CPUType" => "#{fn['processor']['model']} #{fn['processor']['version']}",
-        "coreNumber" => fn['architecture']['nb_cores'],
-        "cpuNumber" => fn['architecture']['nb_procs'], # FIXME check name of property
-        "memory" => (fn['main_memory']['ram_size'].to_f / 1024**3).to_i,
+        "CPUCoreNumber" => fn['architecture']['nb_cores'] / fn['architecture']['nb_procs'],
+        "nodeCPUNumber" => fn['architecture']['nb_procs'],
+        "nodeRAMSize" => (fn['main_memory']['ram_size'].to_f / 1024**3).to_i,
         "nodeNumber" => nodes.length,
-        "localDisk" => (fn['storage_devices'].map { |sd| sd['size'] }.sum.to_f / 1024**4).round(2)
+        "nodeStorageSize" => (fn['storage_devices'].map { |sd| sd['size'] }.sum.to_f / 1024**4).round(2)
       }
     ]
     if not fn['network_adapters'].select { |na| na['interface'] == 'InfiniBand' }.empty?
@@ -99,7 +101,7 @@ d['sites'].each_pair do |site, ds|
     if (fn['gpu_devices'] || {}).values.length > 0
       gpus = fn['gpu_devices'].values
       oc['nodeType'].first['GPUType'] = "#{gpus.first['vendor']} #{gpus.first['model']}"
-      oc['nodeType'].first['GPUNumber'] = gpus.length
+      oc['nodeType'].first['nodeGPUNumber'] = gpus.length
     end
     o['clusterList'] << oc
   end
@@ -176,8 +178,8 @@ d['sites'].each_pair do |site, ds|
       'size' => 40
     }
   end
-  o['totalCoreNumber'] = o['clusterList'].map { |c| c['clusterCoreNumber'] }.sum
-  o['totalStorage'] = (o['clusterList'].map { |c| c['nodeType'].map { |n| n['localDisk'] * n['nodeNumber'] }.sum }.sum +
+  o['mesoCoreNumber'] = o['clusterList'].map { |c| c['clusterCoreNumber'] }.sum
+  o['mesoStorageSize'] = (o['clusterList'].map { |c| c['nodeType'].map { |n| n['nodeStorageSize'] * n['nodeNumber'] }.sum }.sum +
     o['storageList'].map { |s| s['size'] }.sum).round(2)
   JSON::Validator.validate!(mesos_schema, o)
   File::open("grid5000-#{site}.json", "w") { |fd| fd.puts JSON::pretty_generate(o) }
