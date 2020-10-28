@@ -19,17 +19,12 @@
       "mounted": false
     },
     {
-      "bridged": true,
       "device": "eth1",
       "enabled": true,
-      "ip": "172.16.24.7",
       "kavlan": false,
-      "mac": "98:be:94:68:00:07",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "drac-7.grenoble.grid5000.fr",
-      "switch": null,
-      "switch_port": null
+      "mac": "98:be:94:68:80:15",
+      "mountable": false,
+      "mounted": false
     },
     {
       "device": "eth2",
@@ -39,25 +34,17 @@
       "mounted": false
     },
     {
+      "bridged": true,
       "device": "eth3",
-      "enabled": false,
+      "enabled": true,
+      "ip": "172.16.24.7",
       "kavlan": false,
-      "mountable": false,
-      "mounted": false
-    },
-    {
-      "device": "eth4",
-      "enabled": false,
-      "kavlan": false,
-      "mountable": false,
-      "mounted": false
-    },
-    {
-      "device": "eth5",
-      "enabled": false,
-      "kavlan": false,
-      "mountable": false,
-      "mounted": false
+      "mac": "98:be:94:68:80:17",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "drac-7.grenoble.grid5000.fr",
+      "switch": null,
+      "switch_port": null
     },
     {
       "device": "ib0",
@@ -69,12 +56,20 @@
       "network_address": "drac-7-ib0.grenoble.grid5000.fr"
     },
     {
+      "device": "ib1",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false,
+      "netmask": "255.255.240.0"
+    },
+    {
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.17.24.7",
       "kavlan": false,
-      "mac": "70:e2:84:14:00:07",
+      "mac": "70:e2:84:14:15:a9",
       "management": true,
       "mountable": false,
       "mounted": false,
@@ -94,7 +89,8 @@
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2020091600"
+    "postinstall-version": "1.2020091600",
+    "standard-environment": "debian10-ppc64-std"
   },
   "storage_devices": [
     {

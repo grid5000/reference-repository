@@ -1,11 +1,20 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous-including-threads",
     "nb_cores": 20,
     "nb_procs": 2,
-    "nb_threads": 16
+    "nb_threads": 160,
+    "platform_type": "ppc64le"
+  },
+  "bmc_version": "2.13",
+  "chassis": {
+    "manufacturer": "IBM",
+    "name": "8335-GTB",
+    "serial": "21089FA"
   },
   "exotic": true,
   "main_memory": {
+    "ram_size": 137011724288
   },
   "monitoring": {
     "wattmeter": "false"
@@ -13,60 +22,109 @@
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "bnx2x",
       "enabled": false,
+      "firmware_version": "bc 7.10.4",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "98:be:94:68:48:cc",
+      "management": false,
+      "model": "NetXtreme II BCM57800 1/10 Gigabit Ethernet",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "enP1p1s0f0",
+      "vendor": "Broadcom"
     },
     {
-      "bridged": true,
       "device": "eth1",
+      "driver": "bnx2x",
       "enabled": true,
+      "firmware_version": "bc 7.10.4",
+      "interface": "Ethernet",
       "ip": "172.16.24.5",
       "kavlan": false,
       "mac": "98:be:94:68:48:cd",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "drac-5.grenoble.grid5000.fr",
-      "switch": null,
-      "switch_port": null
+      "management": false,
+      "model": "NetXtreme II BCM57800 1/10 Gigabit Ethernet",
+      "mountable": false,
+      "mounted": false,
+      "name": "enP1p1s0f1",
+      "rate": 10000000000,
+      "vendor": "Broadcom"
     },
     {
       "device": "eth2",
+      "driver": "bnx2x",
       "enabled": false,
+      "firmware_version": "bc 7.10.4",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "98:be:94:68:48:ce",
+      "management": false,
+      "model": "NetXtreme II BCM57800 1/10 Gigabit Ethernet",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "enP1p1s0f2",
+      "vendor": "Broadcom"
     },
     {
+      "bridged": true,
       "device": "eth3",
-      "enabled": false,
+      "driver": "bnx2x",
+      "enabled": true,
+      "firmware_version": "bc 7.10.4",
+      "interface": "Ethernet",
+      "ip": "172.16.24.5",
+      "ip6": "2001:660:4406:100:9::5",
       "kavlan": false,
-      "mountable": false,
-      "mounted": false
-    },
-    {
-      "device": "eth4",
-      "enabled": false,
-      "kavlan": false,
-      "mountable": false,
-      "mounted": false
-    },
-    {
-      "device": "eth5",
-      "enabled": false,
-      "kavlan": false,
-      "mountable": false,
-      "mounted": false
+      "mac": "98:be:94:68:48:cf",
+      "management": false,
+      "model": "NetXtreme II BCM57800 1/10 Gigabit Ethernet",
+      "mountable": true,
+      "mounted": true,
+      "name": "enP1p1s0f3",
+      "network_address": "drac-5.grenoble.grid5000.fr",
+      "rate": 1000000000,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Broadcom"
     },
     {
       "device": "ib0",
+      "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "12.17.2010",
+      "guid": "0x7cfe900300814c40",
+      "interface": "InfiniBand",
       "kavlan": false,
+      "mac": "00:00:00:66:fe:80:00:00:00:00:00:00:7c:fe:90:03:00:81:4c:40",
+      "management": false,
+      "model": "MT27700 Family [ConnectX-4]",
       "mountable": true,
       "mounted": true,
+      "name": "ib0",
       "netmask": "255.255.240.0",
-      "network_address": "drac-5-ib0.grenoble.grid5000.fr"
+      "network_address": "drac-5-ib0.grenoble.grid5000.fr",
+      "rate": 100000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "12.17.2010",
+      "guid": "0x7cfe900300814c41",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "00:00:00:66:fe:80:00:00:00:00:00:00:7c:fe:90:03:00:81:4c:41",
+      "management": false,
+      "model": "MT27700 Family [ConnectX-4]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib1",
+      "netmask": "255.255.240.0",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -81,37 +139,63 @@
       "network_address": "drac-5-bmc.grenoble.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "powernv_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "powernv-cpufreq",
+    "pstate_governor": "ondemand",
+    "turboboost_enabled": false
+  },
   "performance": {
     "core_flops": 32000000000,
     "node_flops": 640000000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 65536,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 8388608,
     "clock_speed": 4000000000,
-    "microarchitecture": "POWER8NVL"
+    "ht_capable": true,
+    "instruction_set": "ppc64le",
+    "microarchitecture": "POWER8NVL",
+    "microcode": "unknown",
+    "model": "POWER8NVL",
+    "other_description": "POWER8NVL (raw), altivec supported",
+    "vendor": "IBM",
+    "version": "1.0 (pvr 004c 0100)"
   },
   "sensors": {
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2020091600"
+    "postinstall-version": "1.2020091600",
+    "standard-environment": "debian10-ppc64-std"
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5000c50081108684",
+      "by_path": "/dev/disk/by-path/pci-0009:04:00.0-ata-1",
       "device": "sda",
+      "firmware_version": "BE33",
       "interface": "SATA",
-      "model": "unknown",
+      "model": "ST1000NX0313",
+      "size": 1000204886016,
       "storage": "HDD",
-      "vendor": "Unknown"
+      "vendor": "Seagate"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5000c5008c5cb8a9",
+      "by_path": "/dev/disk/by-path/pci-0009:04:00.0-ata-2",
       "device": "sdb",
+      "firmware_version": "BE33",
       "interface": "SATA",
-      "model": "unknown",
+      "model": "ST1000NX0313",
+      "size": 1000204886016,
       "storage": "HDD",
-      "vendor": "Unknown"
+      "vendor": "Seagate"
     }
   ],
   "supported_job_types": {
