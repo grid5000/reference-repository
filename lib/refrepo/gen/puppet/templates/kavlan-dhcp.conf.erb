@@ -67,7 +67,7 @@ subnet <%= kavlan_ip.network %> netmask <%= kavlan_ip.netmask %> {
        kavlan6_net = kavlan_id + 0x90 - 4
        kavlan6_ip = "#{refapi['sites'][site_uid]['ipv6']['prefix']}#{sprintf('%02x', kavlan6_net)}::/64"
      else      # global vlan
-       kavlan6_ip = "#{refapi['sites'][site_uid]['ipv6']['prefix']}a0::/59"
+       kavlan6_ip = "#{refapi['sites'][site_uid]['ipv6']['prefix']}a0::/64"
      end -%>
 subnet6 <%= kavlan6_ip %> {
 <% end -%>

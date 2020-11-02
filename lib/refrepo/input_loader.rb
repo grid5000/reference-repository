@@ -213,10 +213,15 @@ def add_kavlan_ipv6s(h)
                 ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
                 ip6 += '%x:' % (kvl_id + 0x90 - 4)
               else      # global
-                ip6 += '%x' % h['ipv6']['site_indexes'][global_vlan_site[kvl_id]]
-                ip6 += '%x:' % ((h['ipv6']['site_indexes'][site_uid]&0x1f) + 0xa0)
+                ip6 += '%xa0:' % h['ipv6']['site_indexes'][global_vlan_site[kvl_id]] # no matter what, the gw is always on the global kavlan's site
               end
-              ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+              if kvl_id > 9
+                # global kavlan: set most signicant octet of interface part to site index
+                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
+                ip6 += '%02x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+              else
+                ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+              end
               if idx > 0
                 ip6 += ':%x::' % idx
               else
