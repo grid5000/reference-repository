@@ -1,6 +1,6 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous-including-threads",
+    "cpu_core_numbering": "contiguous-grouped-by-threads",
     "nb_cores": 20,
     "nb_procs": 2,
     "nb_threads": 160,
@@ -143,10 +143,10 @@
     }
   ],
   "operating_system": {
-    "cstate_driver": "powernv_idle",
+    "cstate_driver": "contiguous-grouped-by-threadsnv_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "powernv-cpufreq",
+    "pstate_driver": "contiguous-grouped-by-threadsnv-cpufreq",
     "pstate_governor": "ondemand",
     "turboboost_enabled": false
   },
