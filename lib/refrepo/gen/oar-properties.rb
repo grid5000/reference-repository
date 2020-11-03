@@ -1258,6 +1258,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     cpu_count = first_node['architecture']['nb_procs']
     cpu_core_count = first_node['architecture']['nb_cores'] / cpu_count
     cpu_thread_count = first_node['architecture']['nb_threads'] / cpu_count
+    core_thread_count = first_node['architecture']['nb_threads'] / first_node['architecture']['nb_cores']
     gpu_count = cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.max
 
     cpu_model = "#{first_node['processor']['model']} #{first_node['processor']['version']}"
@@ -1412,11 +1413,14 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
           ############################################
           # (2-d) Associate a cpuset to each core
+          # See https://www.grid5000.fr/w/TechTeam:CPU_core_numbering
           ############################################
           if core_numbering == 'contiguous'
             row[:cpuset] = cpu_num * cpu_core_count + core_num
           elsif core_numbering == 'contiguous-including-threads'
             row[:cpuset] = cpu_num * cpu_thread_count + core_num
+          elsif core_numbering == 'contiguous-grouped-by-threads'
+            row[:cpuset] = cpu_num * cpu_thread_count + core_num * core_thread_count
           elsif core_numbering == 'round-robin'
             row[:cpuset] = cpu_num + core_num * cpu_count
           else
