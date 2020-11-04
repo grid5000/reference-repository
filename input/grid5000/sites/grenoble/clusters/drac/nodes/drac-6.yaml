@@ -9,14 +9,14 @@ drac-6:
     platform_type: ppc64le
   bios:
     vendor: IBM
-    version: IBM-garrison-ibm-OP8_v1.12_2.72
+    version: garrison-ibm-OP8_v1.12_2.72
   bmc_version: '2.13'
   chassis:
     manufacturer: IBM
     name: 8335-GTB
     serial: 2108A2A
   main_memory:
-    ram_size: 137011724288
+    ram_size: 137438953472
   network_adapters:
     bmc:
       ip: 172.17.24.6
@@ -59,6 +59,25 @@ drac-6:
       model: NetXtreme II BCM57800 1/10 Gigabit Ethernet
       name: enP1p1s0f3
       rate: 1000000000
+      vendor: Broadcom
+    eth4:
+      driver: tg3
+      firmware_version: 5719-v1.43 NCSI v1.3.12.0
+      interface: Ethernet
+      mac: 70:e2:84:14:14:e7
+      management: false
+      model: NetXtreme BCM5719 Gigabit Ethernet PCIe
+      name: enP9p7s0f0
+      rate: 1000000000
+      vendor: Broadcom
+    eth5:
+      driver: tg3
+      firmware_version: 5719-v1.43 NCSI v1.3.12.0
+      interface: Ethernet
+      mac: 70:e2:84:14:14:e8
+      management: false
+      model: NetXtreme BCM5719 Gigabit Ethernet PCIe
+      name: enP9p7s0f1
       vendor: Broadcom
     ib0:
       driver: mlx5_core
