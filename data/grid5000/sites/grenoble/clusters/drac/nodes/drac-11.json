@@ -92,6 +92,24 @@
       "vendor": "Broadcom"
     },
     {
+      "device": "eth4",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "management": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "eth5",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "management": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
       "device": "ib0",
       "driver": "mlx5_core",
       "enabled": true,
@@ -142,10 +160,10 @@
     }
   ],
   "operating_system": {
-    "cstate_driver": "contiguous-grouped-by-threadsnv_idle",
+    "cstate_driver": "powernv_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "contiguous-grouped-by-threadsnv-cpufreq",
+    "pstate_driver": "powernv-cpufreq",
     "pstate_governor": "ondemand",
     "turboboost_enabled": false
   },
