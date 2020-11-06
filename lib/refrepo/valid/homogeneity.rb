@@ -45,8 +45,6 @@ def global_ignore_keys
   )
 
   ignore_netkeys = <<-eos
-    ~network_adapters.eth.rate
-    ~network_adapters.eth.name
     ~network_adapters.eth.ip
     -network_adapters.eth.ip
     ~network_adapters.eth.ip6
