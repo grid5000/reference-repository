@@ -335,6 +335,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Westmere' => '2011',
       'Sandy Bridge' => '2012',
       'Haswell' => '2013',
+      'POWER8NVL' => '2014',
       'Broadwell' => '2015',
       'Skylake' => '2016',
       'Zen' => '2017',
