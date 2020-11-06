@@ -30,7 +30,7 @@ class SiteNetworkGenerator < WikiGenerator
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n"
     @generated_content += "= Network devices models =\n"
     @generated_content += generate_equipments + "\n"
-    @generated_content += "More details (including address ranges are available from the [[Grid5000:Network]] page.\n"
+    @generated_content += "More details (including address ranges) are available from the [[Grid5000:Network]] page.\n"
     @generated_content += MW::LINE_FEED
 
     # this will generate dot and png network maps in the current directory
