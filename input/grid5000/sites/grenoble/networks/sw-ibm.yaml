@@ -1,0 +1,30 @@
+---
+sw-ibm:
+  role: production
+  model: IBM RackSwitch G8052
+  kind: switch
+  site: grenoble
+  warranty: expired
+  snmp_community: public
+  linecards:
+    0:
+      snmp_pattern: "%PORT%"
+      kind: node
+      rate: 1000000000
+      ports:
+        13: drac-1-eth3
+        14: drac-2-eth3
+        15: drac-3-eth3
+        16: drac-4-eth3
+        17: drac-5-eth3
+        18: drac-6-eth3
+        19: drac-7-eth3
+        20: drac-8-eth3
+        21: drac-9-eth3
+        22: drac-10-eth3
+        23: drac-11-eth3
+        24: drac-12-eth3
+        52:
+          uid: gw
+          kind: router
+          rate: 10000000000
