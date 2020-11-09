@@ -24,7 +24,7 @@ def net_switch_port_lookup(site, node_uid, interface='')
         if switch_remote_uid == node_uid and switch_remote_port == interface
           # Build port name from snmp_naming_pattern
           # Example: '3 2 GigabitEthernet%LINECARD%/%PORT%' -> 'GigabitEthernet3/2'
-          pattern = port["snmp_pattern"] || lc["snmp_pattern"]
+          pattern = port["snmp_pattern"] || lc["snmp_pattern"] || ""
           port_name = pattern.sub("%LINECARD%",lc_uid.to_s).sub("%PORT%",port_uid.to_s)
           return switch_uid, port_name
         end
