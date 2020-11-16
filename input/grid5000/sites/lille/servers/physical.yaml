@@ -322,6 +322,10 @@ granche-srv1:
             port: 11
           - uid: pdu-b2p2
             port: 11
+  group_storage:
+    name: storage1
+    size: 90000000000000
+    rate: 50000000000
 
 granche-srv2:
   kind: physical
@@ -353,3 +357,7 @@ granche-srv2:
             port: 10
           - uid: pdu-b2p2
             port: 10
+  group_storage:
+    name: storage2
+    size: 90000000000000
+    rate: 50000000000
