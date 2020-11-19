@@ -148,7 +148,7 @@ class SiteHardwareGenerator < WikiGenerator
           'Storage' => h['storage_description'],
           'Network' => h['network_description'],
         }
-        hash[accelerators] = h['accelerators'] if accelerators
+        hash[accelerators] = h['accelerators_long'] if accelerators
         text_data << MW::generate_hash_table(hash)
       }
     }
@@ -190,14 +190,18 @@ def sort_data(data, key)
   data[key].map{ |e| e['sort'] }[0]
 end
 
-def gpu_description(node_hash)
+def gpu_description(node_hash, long_names)
   lgpu = node_hash['gpu_devices']
   if lgpu
     bymodel = {}
     lgpu.each { |g|
       d = g[1]
       vendor = d['vendor']
-      model = GPURef.getGrid5000LegacyNameFor(d['model'])
+      if long_names
+        model = d['model']
+      else
+        model = GPURef.getGrid5000LegacyNameFor(d['model'])
+      end
       vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;')
       if bymodel[vm]
         bymodel[vm] += 1
@@ -390,7 +394,8 @@ def get_hardware(sites)
           s
         end.join('<br />')
 
-        hard['gpu_str'] = gpu_description(node_hash)
+        hard['gpu_str'] = gpu_description(node_hash, false)
+        hard['gpu_str_long'] = gpu_description(node_hash, true)
         mic = node_hash['mic']
         hard['mic_str'] = if mic
                             (mic['mic_count'].to_i == 1 ? '' : mic['mic_count'].to_s + '&nbsp;x&nbsp;') + mic['mic_vendor'].to_s + ' ' + mic['mic_model'].to_s.gsub(' ', '&nbsp;')
@@ -398,6 +403,7 @@ def get_hardware(sites)
                             ''
                           end
         hard['accelerators'] = hard['gpu_str'] != '' ? hard['gpu_str'] + (hard['mic_str'] != '' ? ' ; ' + hard['mic_str'] : '') : hard['mic_str']
+        hard['accelerators_long'] = hard['gpu_str_long'] != '' ? hard['gpu_str_long'] + (hard['mic_str'] != '' ? ' ; ' + hard['mic_str'] : '') : hard['mic_str']
 
         add(hardware[site_uid][cluster_uid], node_uid, hard)
       }
