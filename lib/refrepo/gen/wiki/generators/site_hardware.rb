@@ -190,6 +190,32 @@ def sort_data(data, key)
   data[key].map{ |e| e['sort'] }[0]
 end
 
+def gpu_description(node_hash)
+  lgpu = node_hash['gpu_devices']
+  if lgpu
+    bymodel = {}
+    lgpu.each { |g|
+      d = g[1]
+      vendor = d['vendor']
+      model = GPURef.getGrid5000LegacyNameFor(d['model'])
+      vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;')
+      if bymodel[vm]
+        bymodel[vm] += 1
+      else
+        bymodel[vm] = 1
+      end
+    }
+    res = []
+    bymodel.each { |model,count|
+      res << (count == 1 ? '' : count.to_s + '&nbsp;x&nbsp;') + model
+    }
+  else
+    res = []
+  end
+  res.join(", ")
+end
+
+
 def get_hardware(sites)
   global_hash = G5K::get_global_hash
   known_devices_name = ["sda", "sdb", "sdc", "sdd", "sde","sdf", "nvme1n1", "nvme0n1"]
@@ -364,28 +390,7 @@ def get_hardware(sites)
           s
         end.join('<br />')
 
-        lgpu = node_hash['gpu_devices']
-        hard['gpu_str'] = if lgpu
-                            bymodel = {}
-                            lgpu.each { |g|
-                              d = g[1]
-                              vendor = d['vendor']
-                              model = GPURef.getGrid5000LegacyNameFor(d['model'])
-                              vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;')
-                              if bymodel[vm]
-                                bymodel[vm] += 1
-                              else
-                                bymodel[vm] = 1
-                              end
-                            }
-                            res = []
-                            bymodel.each { |model,count|
-                              res << (count == 1 ? '' : count.to_s + '&nbsp;x&nbsp;') + model
-                            }
-                            res.join(", ")
-                          else
-                            ''
-                          end
+        hard['gpu_str'] = gpu_description(node_hash)
         mic = node_hash['mic']
         hard['mic_str'] = if mic
                             (mic['mic_count'].to_i == 1 ? '' : mic['mic_count'].to_s + '&nbsp;x&nbsp;') + mic['mic_vendor'].to_s + ' ' + mic['mic_model'].to_s.gsub(' ', '&nbsp;')
