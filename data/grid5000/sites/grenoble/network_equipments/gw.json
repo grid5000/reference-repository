@@ -4,6 +4,14 @@
     "gw-grenoble"
   ],
   "backplane_bps": 800000000000,
+  "channels": {
+    "TN-G5K-INT": {
+      "kind": "switch",
+      "port": "TN-G5K-INT",
+      "rate": 30000000000,
+      "uid": "sw-aci-333"
+    }
+  },
   "ip": "172.16.31.254",
   "kind": "router",
   "linecards": [
@@ -265,13 +273,19 @@
           "uid": "dighyp2"
         },
         {
+          "kind": "channel",
+          "snmp_name": "X670V-48x Port 43",
+          "uid": "TN-G5K-INT"
         },
         {
+          "kind": "channel",
+          "snmp_name": "X670V-48x Port 44",
+          "uid": "TN-G5K-INT"
         },
         {
-          "kind": "switch",
+          "kind": "channel",
           "snmp_name": "X670V-48x Port 45",
-          "uid": "sw-ibm"
+          "uid": "TN-G5K-INT"
         },
         {
           "kind": "server",

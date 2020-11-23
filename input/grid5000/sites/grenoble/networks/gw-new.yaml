@@ -1,0 +1,31 @@
+---
+gw-new:
+  role: production
+  model: Dell S5296F-ON
+  kind: switch
+  site: grenoble
+  warranty: N/A
+  snmp_community: public
+  ip: 172.16.31.252
+  linecards:
+    0:
+      snmp_pattern: "%PORT%"
+      kavlan_pattern: "%PORT%"
+      kind: node
+      rate: 10000000000
+      ports:
+        41: drac-1
+        42: drac-2
+        43: drac-3
+        44: drac-4
+        45: drac-5
+        46: drac-6
+        47: drac-7
+        48: drac-8
+        49: drac-9
+        50: drac-10
+        51: drac-11
+        52: drac-12
+        91:
+          uid: sw-aci-333
+          kind: switch

@@ -1,0 +1,32 @@
+---
+sw-aci-333:
+  role: production
+  model: Cisco ACI leaf
+  kind: switch
+  site: grenoble
+  warranty: N/A
+  snmp_community: public
+  linecards:
+    0:
+      snmp_pattern: "%PORT%"
+      kind: switch
+      rate: 10000000000
+      ports:
+        17:
+          uid: TN-G5K-INT
+          kind: channel
+        18:
+          uid: TN-G5K-INT
+          kind: channel
+        19:
+          uid: TN-G5K-INT
+          kind: channel
+        46:
+          uid: gw-new
+          kind: switch
+  channels:
+    TN-G5K-INT:
+      uid: gw
+      port: TN-G5K-INT
+      kind: switch
+      rate: 30000000000
