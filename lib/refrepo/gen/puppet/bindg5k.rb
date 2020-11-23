@@ -386,14 +386,16 @@ def sort_records(records)
   cnames.sort_by!{ |record|
     sort_by = record.label
     label_array = record.label.split("-")
-    if label_array.length >= 4 and (Integer(label_array[3]) rescue false)
-      if label_array[1].to_i != 0 && label_array[3].to_i != 0
-        sort_by = [label_array.length, label_array[3].to_i, label_array[1].to_i]
+    if label_array.length > 1 and label_array[1] !~ /\D/
+      sort_by = (record.label.match(/ipv6/).nil? ? [0] : [1]) # -ipv6 at end
+      sort_by << label_array.length # sort by record 'type'
+      sort_by << record.label.scan(/-(\d+)-?/).flatten.map{ |i| i.to_i} # sort by node then kavlan number
+      intf = record.label.scan(/((eth|en)\w+)-?/).flatten.first # detect intf
+      unless intf.nil?
+        sort_by << (record.label.match(/eth/).nil? ? [1] : [0]) # ethX first
+        sort_by << intf.scan(/\d+/).reverse.map{ |i| i.to_i } # sort intf
       end
-    elsif label_array.length > 1
-      if label_array[1].to_i != 0
-        sort_by = [ label_array.length, label_array[1].to_i ]
-      end
+      sort_by.flatten!
     end
     sort_by
   }
