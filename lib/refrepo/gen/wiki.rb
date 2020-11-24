@@ -16,7 +16,7 @@ module RefRepo::Gen::Wiki
       :gen => CPUParametersGenerator,
       :page => "Generated/CPUParameters"
     },
-    'disk_reservation' => { 
+    'disk_reservation' => {
       :gen => DiskReservationGenerator,
       :page => 'Generated/DiskReservation'
     },
@@ -34,7 +34,7 @@ module RefRepo::Gen::Wiki
     },
     'group_storage' => {
       :gen => GroupStorageGenerator,
-      :page => 'Group_Storage'
+      :page => 'Generated/GroupStorage'
     }
   }
   SITE_GENERATORS = {
