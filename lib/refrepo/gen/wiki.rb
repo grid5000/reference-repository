@@ -7,6 +7,7 @@ require 'refrepo/gen/wiki/generators/oar_properties'
 require 'refrepo/gen/wiki/generators/site_hardware'
 require 'refrepo/gen/wiki/generators/site_network'
 require 'refrepo/gen/wiki/generators/status'
+require 'refrepo/gen/wiki/generators/group_storage'
 
 module RefRepo::Gen::Wiki
 
@@ -30,6 +31,10 @@ module RefRepo::Gen::Wiki
     'oar_properties' => {
       :gen => OarPropertiesGenerator,
       :page => 'OAR_Properties'
+    },
+    'group_storage' => {
+      :gen => GroupStorageGenerator,
+      :page => 'Group_Storage'
     }
   }
   SITE_GENERATORS = {
