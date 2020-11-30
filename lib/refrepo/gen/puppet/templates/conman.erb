@@ -72,7 +72,7 @@ server logfile="/var/log/conman.log"
         ipmiopts += ",W:#{opt}" if opt != nil
       end
 
-%>console name="<%= node_uid %>" dev="<%= dev %><%= " #{dev_args}" if dev_args %>"<%= " ipmiopts=\"#{ipmiopts}\"" if ipmiopts %>
+      %>console name="<%= node_uid %>" dev="<%= dev %><%= " #{dev_args}" if dev_args %>"<%= " ipmiopts=\"#{ipmiopts}\"" if ipmiopts %> log="/var/log/conman/<%= node_uid %>.log"
 <%   } %>
 <% } %>
 
