@@ -268,9 +268,9 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       if resource_id == -1 or resource_id.nil?
         # Add the resource to the OAR DB
         if gpu == ''
-          result += "oarnodesetting -a -h '#{host}' -p host='#{host}' -p cpu=#{cpu} -p core=#{core} -p cpuset=#{cpuset}\n"
+          result += "oarnodesetting -a -h '#{host}' -s Absent -p host='#{host}' -p cpu=#{cpu} -p core=#{core} -p cpuset=#{cpuset}\n"
         else
-          result += "oarnodesetting -a -h '#{host}' -p host='#{host}' -p cpu=#{cpu} -p core=#{core} -p cpuset=#{cpuset} -p gpu=#{gpu} -p gpu_model='#{gpumodel}' -p gpudevice=#{gpudevice} # This GPU is mapped on #{gpudevicepath}\n"
+          result += "oarnodesetting -a -h '#{host}' -s Absent -p host='#{host}' -p cpu=#{cpu} -p core=#{core} -p cpuset=#{cpuset} -p gpu=#{gpu} -p gpu_model='#{gpumodel}' -p gpudevice=#{gpudevice} # This GPU is mapped on #{gpudevicepath}\n"
         end
       else
         # Update the resource
