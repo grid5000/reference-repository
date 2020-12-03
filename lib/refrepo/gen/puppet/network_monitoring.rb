@@ -4,6 +4,7 @@
 NETWORK_EQUIPMENTS_BLACKLIST = [
   'swx1nef',
   'swy1nef',
+  'sw-aci-333',
 ]
 
 def generate_puppet_network_monitoring(options)
