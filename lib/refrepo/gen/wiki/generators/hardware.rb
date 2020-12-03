@@ -381,9 +381,7 @@ class G5KHardwareGenerator < WikiGenerator
               ((!d['reservation'].nil? && d['reservation']) ? '[[Disk_reservation|*]]' : '')
             }.join(', ') + ")"
           end
-          queues = cluster_hash['queues'] - ['admin', 'default']
-          queue_t = (queues.nil? || (queues.empty? ? '' : "_.28" + queues[0].gsub(' ', '_') + ' queue.29'))
-          nodes_data << { 'uid' => node_uid, 'data' => { 'main' => maindisk_t, 'hdd' => hdd_t, 'ssd' => ssd_t, 'reservation' => reservable_disks, 'queue' => queue_t } }
+          nodes_data << { 'uid' => node_uid, 'data' => { 'main' => maindisk_t, 'hdd' => hdd_t, 'ssd' => ssd_t, 'reservation' => reservable_disks } }
         end
         nd = nodes_data.group_by { |d| d['data'] }
         nd.each do |data, nodes|
@@ -396,7 +394,7 @@ class G5KHardwareGenerator < WikiGenerator
           end
           table_data << [
             "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
-              "[[#{site_uid.capitalize}:Hardware##{cluster_uid}#{data['queue']}|#{nodesetname}]]",
+              "[[#{site_uid.capitalize}:Hardware##{cluster_uid}|#{nodesetname}]]",
               nodes.length,
               data['main'],
               data['hdd'],
@@ -445,7 +443,7 @@ class G5KHardwareGenerator < WikiGenerator
         network_interfaces.sort.to_h.each { |num, interfaces|
           table_data << [
             "[[#{site_uid.capitalize}:Network|#{site_uid.capitalize}]]",
-            "[[#{site_uid.capitalize}:Hardware##{cluster_uid}" + (interfaces['queues'] == '' ? '' : "_.28#{queues.gsub(' ', '_')}.29") + "|#{cluster_uid}" + (network_interfaces.size==1 ? '' : '-' + G5K.nodeset(num)) + "]]",
+            "[[#{site_uid.capitalize}:Hardware##{cluster_uid}" + "|#{cluster_uid}" + (network_interfaces.size==1 ? '' : '-' + G5K.nodeset(num)) + "]]",
             num.count,
             interfaces['25g_count'].zero? ? '' : interfaces['25g_count'],
             interfaces['10g_count'].zero? ? '' : interfaces['10g_count'],
