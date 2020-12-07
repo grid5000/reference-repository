@@ -182,10 +182,10 @@ users-api:
 users-api-devel:
   kind: virtual
   network_adapters: {default: {ip: 172.16.47.107}}
-ldap-global:
+ldap-master:
   kind: virtual
   alias:
-    - ldap-master
+    - ldap-global
   network_adapters: {default: {ip: 172.16.47.150}}
 bugzilla:
   kind: virtual
