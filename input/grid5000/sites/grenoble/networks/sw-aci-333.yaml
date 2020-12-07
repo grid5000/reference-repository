@@ -12,6 +12,9 @@ sw-aci-333:
       kind: switch
       rate: 10000000000
       ports:
+        5:
+          uid: gw-new
+          kind: switch
         17:
           uid: TN-G5K-INT
           kind: channel
@@ -21,9 +24,6 @@ sw-aci-333:
         19:
           uid: TN-G5K-INT
           kind: channel
-        46:
-          uid: gw-new
-          kind: switch
   channels:
     TN-G5K-INT:
       uid: gw
