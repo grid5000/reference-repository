@@ -108,55 +108,59 @@ class SiteHardwareGenerator < WikiGenerator
       site_accelerators += cluster_hash.select { |k, v| v['accelerators'] != '' }.count
     }
 
-    hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
-      subclusters = cluster_hash.keys.count != 1
-      cluster_nodes = cluster_hash.keys.flatten.count
-      cluster_cpus = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] }.reduce(:+)
-      cluster_cores = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] * v['cores_per_cpu'] }.reduce(:+)
-      queue_str = cluster_hash.map { |k, v| v['queue_str']}.first
-      access_conditions = []
-      access_conditions << queue_str if queue_str != ''
-      access_conditions << "exotic job type" if cluster_hash.map { |k, v| v['exotic']}.first
-      table_columns = ['Cluster',  'Queue', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + (site_accelerators.zero? ? [] : ['Accelerators'])
+    # Group by queue
+    # Alphabetic ordering of queue names matches what we want: "default" < "production" < "testing"
+    hardware[site].group_by { |cluster_uid, cluster_hash| cluster_hash.map { |k, v| v['queue']}.first }.sort.each { |queue, clusters|
+      queue = (queue.nil? || queue.empty?) ? 'default' : queue
+      text_data << "\n= Clusters in #{queue} queue ="
+      clusters.sort.to_h.each { |cluster_uid, cluster_hash|
+        subclusters = cluster_hash.keys.count != 1
+        cluster_nodes = cluster_hash.keys.flatten.count
+        cluster_cpus = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] }.reduce(:+)
+        cluster_cores = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] * v['cores_per_cpu'] }.reduce(:+)
+        queue_str = cluster_hash.map { |k, v| v['queue_str']}.first
+        access_conditions = []
+        access_conditions << queue_str if queue_str != ''
+        access_conditions << "exotic job type" if cluster_hash.map { |k, v| v['exotic']}.first
+        table_columns = ['Cluster',  'Queue', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + (site_accelerators.zero? ? [] : ['Accelerators'])
 
-      text_data <<  ["\n== #{cluster_uid} ==\n"]
-      text_data << ["'''#{cluster_nodes} #{G5K.pluralize(cluster_nodes, 'node')}, #{cluster_cpus} #{G5K.pluralize(cluster_cpus, 'cpu')}, #{cluster_cores} #{G5K.pluralize(cluster_cores, 'core')}" + (subclusters == true ? ",''' split as follows due to differences between nodes " : "''' ") + "([https://public-api.grid5000.fr/stable/sites/#{site}/clusters/#{cluster_uid}/nodes.json?pretty=1 json])"]
+        text_data <<  ["\n== #{cluster_uid} ==\n"]
+        text_data << ["'''#{cluster_nodes} #{G5K.pluralize(cluster_nodes, 'node')}, #{cluster_cpus} #{G5K.pluralize(cluster_cpus, 'cpu')}, #{cluster_cores} #{G5K.pluralize(cluster_cores, 'core')}" + (subclusters == true ? ",''' split as follows due to differences between nodes " : "''' ") + "([https://public-api.grid5000.fr/stable/sites/#{site}/clusters/#{cluster_uid}/nodes.json?pretty=1 json])"]
 
-      cluster_hash.sort.to_h.each_with_index { |(num, h), i|
-        if subclusters
-          subcluster_nodes = num.count
-          subcluster_cpus = subcluster_nodes * h['cpus_per_node']
-          subcluster_cores = subcluster_nodes * h['cpus_per_node'] * h['cores_per_cpu']
-          text_data << "<hr style=\"height:10pt; visibility:hidden;\" />\n" if i != 0 # smaller vertical <br />
-          text_data << ["; #{cluster_uid}-#{G5K.nodeset(num)} (#{subcluster_nodes} #{G5K.pluralize(subcluster_nodes, 'node')}, #{subcluster_cpus} #{G5K.pluralize(subcluster_cpus, 'cpu')}, #{subcluster_cores} #{G5K.pluralize(subcluster_cores, 'core')})"]
-        end
+        cluster_hash.sort.to_h.each_with_index { |(num, h), i|
+          if subclusters
+            subcluster_nodes = num.count
+            subcluster_cpus = subcluster_nodes * h['cpus_per_node']
+            subcluster_cores = subcluster_nodes * h['cpus_per_node'] * h['cores_per_cpu']
+            text_data << "<hr style=\"height:10pt; visibility:hidden;\" />\n" if i != 0 # smaller vertical <br />
+            text_data << ["; #{cluster_uid}-#{G5K.nodeset(num)} (#{subcluster_nodes} #{G5K.pluralize(subcluster_nodes, 'node')}, #{subcluster_cpus} #{G5K.pluralize(subcluster_cpus, 'cpu')}, #{subcluster_cores} #{G5K.pluralize(subcluster_cores, 'core')})"]
+          end
 
-        accelerators = nil
-        if h['gpu_str'] != '' && h['mic_str'] != ''
-          accelerators = 'GPU/Xeon Phi'
-        elsif h['gpu_str'] != ''
-          accelerators = 'GPU'
-        elsif h['mic_str'] != ''
-          accelerators = 'Xeon Phi'
-        end
-        hash = {}
-        hash['Access condition'] = access_conditions.join(", ") if not access_conditions.empty?
-        hash.merge!({
-          'Model' => h['model'],
-          'Date of arrival' => h['date'],
-          'CPU' => h['processor_description'],
-          'Memory' => h['ram_size'] + (!h['pmem_size'].nil? ? " + #{h['pmem_size']} [[PMEM]]" : ''),
-          'Storage' => h['storage_description'],
-          'Network' => h['network_description'],
-        })
-        hash[accelerators] = h['accelerators_long'] if accelerators
-        text_data << MW::generate_hash_table(hash)
+          accelerators = nil
+          if h['gpu_str'] != '' && h['mic_str'] != ''
+            accelerators = 'GPU/Xeon Phi'
+          elsif h['gpu_str'] != ''
+            accelerators = 'GPU'
+          elsif h['mic_str'] != ''
+            accelerators = 'Xeon Phi'
+          end
+          hash = {}
+          hash['Access condition'] = access_conditions.join(", ") if not access_conditions.empty?
+          hash.merge!({
+            'Model' => h['model'],
+            'Date of arrival' => h['date'],
+            'CPU' => h['processor_description'],
+            'Memory' => h['ram_size'] + (!h['pmem_size'].nil? ? " + #{h['pmem_size']} [[PMEM]]" : ''),
+            'Storage' => h['storage_description'],
+            'Network' => h['network_description'],
+          })
+          hash[accelerators] = h['accelerators_long'] if accelerators
+          text_data << MW::generate_hash_table(hash)
+        }
       }
     }
 
-    generated_content = "\n= Cluster details =\n"
-    generated_content += text_data.join("\n")
-    return generated_content
+    return text_data.join("\n")
   end
 end
 
