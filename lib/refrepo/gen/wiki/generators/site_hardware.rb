@@ -78,8 +78,12 @@ class SiteHardwareGenerator < WikiGenerator
       cluster_nodes = cluster_hash.keys.flatten.count
       queue = cluster_hash.map { |k, v| v['queue']}.first
       access_conditions = []
-      access_conditions << "<b>#{queue}</b>&nbsp;queue" if queue != ''
-      access_conditions << '<b>exotic</b>&nbsp;job&nbsp;type' if cluster_hash.map { |k, v| v['exotic']}.first
+      if queue == 'production'
+        access_conditions << "<b>[[Grid5000:UsagePolicy#Rules_for_the_production_queue|#{queue}]]</b>&nbsp;queue"
+      elsif queue != ''
+        access_conditions << "<b>#{queue}</b>&nbsp;queue"
+      end
+      access_conditions << '<b>[[Getting_Started#Selecting_specific_resources|exotic]]</b>&nbsp;job&nbsp;type' if cluster_hash.map { |k, v| v['exotic']}.first
       table_columns = (with_sites == true ? ['Site'] : []) + ['Cluster',  'Access Condition', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : ['Accelerators'])
       data = partition(cluster_hash)
       table_data <<  (with_sites == true ? ["[[#{site.capitalize}:Hardware|#{site.capitalize}]]"] : []) + [
