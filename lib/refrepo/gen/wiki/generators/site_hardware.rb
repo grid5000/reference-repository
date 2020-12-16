@@ -131,6 +131,16 @@ class SiteHardwareGenerator < WikiGenerator
         text_data <<  ["\n== #{cluster_uid} ==\n"]
         text_data << ["'''#{cluster_nodes} #{G5K.pluralize(cluster_nodes, 'node')}, #{cluster_cpus} #{G5K.pluralize(cluster_cpus, 'cpu')}, #{cluster_cores} #{G5K.pluralize(cluster_cores, 'core')}" + (subclusters == true ? ",''' split as follows due to differences between nodes " : "''' ") + "([https://public-api.grid5000.fr/stable/sites/#{site}/clusters/#{cluster_uid}/nodes.json?pretty=1 json])"]
 
+        reservation_cmd = "\n{{Term|location=f#{site}|cmd="
+        reservation_cmd += "<code class=\"command\">oarsub</code> "
+        reservation_cmd += "<code class=\"replace\">-q #{queue}</code> " if queue != 'default'
+        reservation_cmd += "<code class=\"replace\">-t exotic</code> " if cluster_hash.map { |k, v| v['exotic']}.first
+        reservation_cmd += "<code class=\"env\">-p \"cluster='#{cluster_uid}'\"</code> "
+        reservation_cmd += "<code>-I</code>"
+        reservation_cmd += "}}\n"
+        text_data << "\n'''Reservation example:'''"
+        text_data << reservation_cmd
+
         cluster_hash.sort.to_h.each_with_index { |(num, h), i|
           if subclusters
             subcluster_nodes = num.count
