@@ -10,9 +10,9 @@ gw-new:
   ip: 172.16.31.252
   backplane_bps: 6400000000000
   linecards:
-    1: # Les noeuds en 10Gb/s
+    0:
       snmp_pattern: "ethernet1/1/%PORT%:1"
-      kavlan_pattern: "ethernet1/1/%PORT%:1"
+      kavlan_pattern: "ethernet1/1/%PORT%:1" # Pattern pour les noeuds en 10Gb/s
       kind: node
       rate: 10000000000
       ports:
@@ -64,28 +64,28 @@ gw-new:
         46: drac-10
         47: drac-11
         48: drac-12
-    #2: # Les noeuds en 25Gb/s et les serveurs en 25Gb/s
-      #snmp_pattern: "ethernet1/1/%PORT%"
-      #kavlan_pattern: "ethernet1/1/%PORT%"
-      #kind: node
-      #rate: 25000000000
-      #ports:
-        #77: troll-1
-        #78: troll-2
-        #79: troll-3
-        #80: troll-4
+        #77:
+        #  uid: troll-1
+        #  kavlan_pattern: "ethernet1/1/%PORT%" # Pattern pour les noeuds en 25Gb/s
+        #  rate: 25000000000
+        #78:
+        #  uid: troll-2
+        #  kavlan_pattern: "ethernet1/1/%PORT%"
+        #  rate: 25000000000
+        #79:
+        #  uid: troll-3
+        #  kavlan_pattern: "ethernet1/1/%PORT%"
+        #  rate: 25000000000
+        #80:
+        #  uid: troll-4
+        #  kavlan_pattern: "ethernet1/1/%PORT%"
+        #  rate: 25000000000
         #83:
         #  uid: port-channel10
         #  kind: channel
         #84:
         #  uid: port-channel10
         #  kind: channel
-    2: # 3 <----- Les serveurs en 10Gb/s et les uplinks
-      snmp_pattern: "ethernet1/1/%PORT%:1"
-      kavlan_pattern: "ethernet1/1/%PORT%:1"
-      kind: node
-      rate: 10000000000
-      ports:
         #85: digsed-1 # lacp
         #86: digsed-2 # lacp
         #87: dighyp1 # lacp
