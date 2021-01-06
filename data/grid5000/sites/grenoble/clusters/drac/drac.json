@@ -3,7 +3,28 @@
   "exotic": true,
   "kavlan": true,
   "metrics": [
-
+    {
+      "description": "Input byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_bytes_total",
+      "period": 1000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    }
   ],
   "model": "IBM PowerNV S822LC (8335-GTB)",
   "queues": [
