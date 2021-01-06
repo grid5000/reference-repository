@@ -1,15 +1,16 @@
 ---
 gw:
   role: production
-  model: ExtremeNetworks
+  model: Dell S5296F-ON
+  serial: H47D9Z2
+  warranty: "2027-11-03"
   kind: router
   alias:
     - sw-imag
     - gw-grenoble
   site: grenoble
-  warranty: expired
-  backplane_bps: 800000000000
   snmp_community: public
+  backplane_bps: 6400000000000
   metrics:
     - name: network_ifacein_bytes_total
       description: Input byte counter for the network device port
@@ -77,9 +78,8 @@ gw:
         - 10.7.192.0/18
   linecards:
     0:
-      snmp_pattern: "X670V-48x Port %PORT%"
-      kavlan_pattern: "%PORT%"
-      backplane_bps: 48000000000
+      snmp_pattern: "ethernet1/1/%PORT%:1"
+      kavlan_pattern: "ethernet1/1/%PORT%:1" # Pattern pour les noeuds en 10Gb/s
       kind: node
       rate: 10000000000
       ports:
@@ -119,37 +119,92 @@ gw:
         34: yeti-2
         35: yeti-3
         36: yeti-4
-        37: troll-1
-        38: troll-2
-        39: troll-3
-        40: troll-4
-        41:
+        37: drac-1
+        38: drac-2
+        39: drac-3
+        40: drac-4
+        41: drac-5
+        42: drac-6
+        43: drac-7
+        44: drac-8
+        45: drac-9
+        46: drac-10
+        47: drac-11
+        48: drac-12
+        77:
+          uid: troll-1
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%" # Pattern pour les noeuds en 25Gb/s
+          rate: 25000000000
+        78:
+          uid: troll-2
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
+        79:
+          uid: troll-3
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
+        80:
+          uid: troll-4
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
+        83:
+          uid: port-channel10
+          kind: channel
+          rate: 25000000000
+        84:
+          uid: port-channel10
+          kind: channel
+          rate: 25000000000
+        85:
+          uid: port-channel20
+          kind: channel
+        86:
+          uid: port-channel20
+          kind: channel
+        87:
           uid: dighyp1
           kind: server
-        42:
+        88:
           uid: dighyp2
           kind: server
-        43:
-          uid: X670V-48x Port 43
-          kind: channel
-        44:
-          uid: X670V-48x Port 43
-          kind: channel
-        45:
-          uid: X670V-48x Port 43
-          kind: channel
-        46:
+        89:
           uid: digwatt
           kind: server
-        47:
-          uid: ACI-G5K-EXT
+        91:
+          uid: ACI-G5K-INT
           kind: other
-        48:
-          uid: renater5
+        92:
+          uid: port-channel100
+          kind: channel
+        93:
+          uid: port-channel100
+          kind: channel
+        94:
+          uid: port-channel100
+          kind: channel
+        95:
+          uid: port-channel100
+          kind: channel
+        96:
+          uid: renater-grenoble
           kind: backbone
   channels:
-    X670V-48x Port 43:
-      uid: sw-aci-333
-      port: TN-G5K-INT
-      kind: switch
-      rate: 30000000000
+    port-channel10:
+      uid: dignfs
+      port: port-channel10
+      kind: server
+      rate: 50000000000
+    port-channel20:
+      uid: digsed
+      port: port-channel20
+      kind: server
+      rate: 20000000000
+    port-channel100:
+      uid: ACI-G5K-EXT
+      port: port-channel100
+      kind: other
+      rate: 40000000000
