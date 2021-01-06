@@ -16,42 +16,42 @@ gw-new:
       kind: node
       rate: 10000000000
       ports:
-        #1: dahu-1
-        #2: dahu-2
-        #3: dahu-3
-        #4: dahu-4
-        #5: dahu-5
-        #6: dahu-6
-        #7: dahu-7
-        #8: dahu-8
-        #9: dahu-9
-        #10: dahu-10
-        #11: dahu-11
-        #12: dahu-12
-        #13: dahu-13
-        #14: dahu-14
-        #15: dahu-15
-        #16: dahu-16
-        #17: dahu-17
-        #18: dahu-18
-        #19: dahu-19
-        #20: dahu-20
-        #21: dahu-21
-        #22: dahu-22
-        #23: dahu-23
-        #24: dahu-24
-        #25: dahu-25
-        #26: dahu-26
-        #27: dahu-27
-        #28: dahu-28
-        #29: dahu-29
-        #30: dahu-30
-        #31: dahu-31
-        #32: dahu-32
-        #33: yeti-1
-        #34: yeti-2
-        #35: yeti-3
-        #36: yeti-4
+        1: dahu-1
+        2: dahu-2
+        3: dahu-3
+        4: dahu-4
+        5: dahu-5
+        6: dahu-6
+        7: dahu-7
+        8: dahu-8
+        9: dahu-9
+        10: dahu-10
+        11: dahu-11
+        12: dahu-12
+        13: dahu-13
+        14: dahu-14
+        15: dahu-15
+        16: dahu-16
+        17: dahu-17
+        18: dahu-18
+        19: dahu-19
+        20: dahu-20
+        21: dahu-21
+        22: dahu-22
+        23: dahu-23
+        24: dahu-24
+        25: dahu-25
+        26: dahu-26
+        27: dahu-27
+        28: dahu-28
+        29: dahu-29
+        30: dahu-30
+        31: dahu-31
+        32: dahu-32
+        33: yeti-1
+        34: yeti-2
+        35: yeti-3
+        36: yeti-4
         37: drac-1
         38: drac-2
         39: drac-3
@@ -64,45 +64,80 @@ gw-new:
         46: drac-10
         47: drac-11
         48: drac-12
-        #77:
-        #  uid: troll-1
-        #  kavlan_pattern: "ethernet1/1/%PORT%" # Pattern pour les noeuds en 25Gb/s
-        #  rate: 25000000000
-        #78:
-        #  uid: troll-2
-        #  kavlan_pattern: "ethernet1/1/%PORT%"
-        #  rate: 25000000000
-        #79:
-        #  uid: troll-3
-        #  kavlan_pattern: "ethernet1/1/%PORT%"
-        #  rate: 25000000000
-        #80:
-        #  uid: troll-4
-        #  kavlan_pattern: "ethernet1/1/%PORT%"
-        #  rate: 25000000000
-        #83:
-        #  uid: port-channel10
-        #  kind: channel
-        #84:
-        #  uid: port-channel10
-        #  kind: channel
-        #85: digsed-1 # lacp
-        #86: digsed-2 # lacp
-        #87: dighyp1 # lacp
-        #88: dighyp2 # lacp
-        #89: digwatt
-        #90: ACI-TN-G5K-EXT
+        77:
+          uid: troll-1
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%" # Pattern pour les noeuds en 25Gb/s
+          rate: 25000000000
+        78:
+          uid: troll-2
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
+        79:
+          uid: troll-3
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
+        80:
+          uid: troll-4
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
+        83:
+          uid: port-channel10
+          kind: channel
+          rate: 25000000000
+        84:
+          uid: port-channel10
+          kind: channel
+          rate: 25000000000
+        85:
+          uid: port-channel20
+          kind: channel
+        86:
+          uid: port-channel20
+          kind: channel
+        87:
+          uid: dighyp1
+          kind: server
+        88:
+          uid: dighyp2
+          kind: server
+        89:
+          uid: digwatt
+          kind: server
         91:
-          uid: sw-aci-333
-          kind: switch
-        #92: ACI-TN-G5K-EXT-1
-        #93: ACI-TN-G5K-EXT-2
-        #94: ACI-TN-G5K-EXT-3
-        #95: ACI-TN-G5K-EXT-4
-        #96: RENATER-G5K-BACKBONE
-  #channels:
-    #port-channel10:
-      #uid: dignfs
-      #port: NA
-      #kind: server
-      #rate: 50000000000
+          uid: ACI-G5K-INT
+          kind: other
+        92:
+          uid: port-channel100
+          kind: channel
+        93:
+          uid: port-channel100
+          kind: channel
+        94:
+          uid: port-channel100
+          kind: channel
+        95:
+          uid: port-channel100
+          kind: channel
+        96:
+          uid: renater-grenoble
+          kind: backbone
+  channels:
+    port-channel10:
+      uid: dignfs
+      port: port-channel10
+      kind: server
+      rate: 50000000000
+    port-channel20:
+      uid: digsed
+      port: port-channel20
+      kind: server
+      rate: 20000000000
+    port-channel100:
+      uid: ACI-G5K-EXT
+      port: port-channel100
+      kind: other
+      rate: 40000000000
