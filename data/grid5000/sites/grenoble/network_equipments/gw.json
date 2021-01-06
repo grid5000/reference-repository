@@ -3,21 +3,32 @@
     "sw-imag",
     "gw-grenoble"
   ],
-  "backplane_bps": 800000000000,
+  "backplane_bps": 6400000000000,
   "channels": {
-    "X670V-48x Port 43": {
-      "kind": "switch",
-      "port": "TN-G5K-INT",
-      "rate": 30000000000,
-      "uid": "sw-aci-333"
+    "port-channel10": {
+      "kind": "server",
+      "port": "port-channel10",
+      "rate": 50000000000,
+      "uid": "dignfs"
+    },
+    "port-channel100": {
+      "kind": "other",
+      "port": "port-channel100",
+      "rate": 40000000000,
+      "uid": "ACI-G5K-EXT"
+    },
+    "port-channel20": {
+      "kind": "server",
+      "port": "port-channel20",
+      "rate": 20000000000,
+      "uid": "digsed"
     }
   },
   "ip": "172.16.31.254",
   "kind": "router",
   "linecards": [
     {
-      "backplane_bps": 48000000000,
-      "kavlan_pattern": "%PORT%",
+      "kavlan_pattern": "ethernet1/1/%PORT%:1",
       "kind": "node",
       "ports": [
         {
@@ -25,286 +36,455 @@
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 1",
+          "snmp_name": "ethernet1/1/1:1",
           "uid": "dahu-1"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 2",
+          "snmp_name": "ethernet1/1/2:1",
           "uid": "dahu-2"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 3",
+          "snmp_name": "ethernet1/1/3:1",
           "uid": "dahu-3"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 4",
+          "snmp_name": "ethernet1/1/4:1",
           "uid": "dahu-4"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 5",
+          "snmp_name": "ethernet1/1/5:1",
           "uid": "dahu-5"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 6",
+          "snmp_name": "ethernet1/1/6:1",
           "uid": "dahu-6"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 7",
+          "snmp_name": "ethernet1/1/7:1",
           "uid": "dahu-7"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 8",
+          "snmp_name": "ethernet1/1/8:1",
           "uid": "dahu-8"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 9",
+          "snmp_name": "ethernet1/1/9:1",
           "uid": "dahu-9"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 10",
+          "snmp_name": "ethernet1/1/10:1",
           "uid": "dahu-10"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 11",
+          "snmp_name": "ethernet1/1/11:1",
           "uid": "dahu-11"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 12",
+          "snmp_name": "ethernet1/1/12:1",
           "uid": "dahu-12"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 13",
+          "snmp_name": "ethernet1/1/13:1",
           "uid": "dahu-13"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 14",
+          "snmp_name": "ethernet1/1/14:1",
           "uid": "dahu-14"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 15",
+          "snmp_name": "ethernet1/1/15:1",
           "uid": "dahu-15"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 16",
+          "snmp_name": "ethernet1/1/16:1",
           "uid": "dahu-16"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 17",
+          "snmp_name": "ethernet1/1/17:1",
           "uid": "dahu-17"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 18",
+          "snmp_name": "ethernet1/1/18:1",
           "uid": "dahu-18"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 19",
+          "snmp_name": "ethernet1/1/19:1",
           "uid": "dahu-19"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 20",
+          "snmp_name": "ethernet1/1/20:1",
           "uid": "dahu-20"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 21",
+          "snmp_name": "ethernet1/1/21:1",
           "uid": "dahu-21"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 22",
+          "snmp_name": "ethernet1/1/22:1",
           "uid": "dahu-22"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 23",
+          "snmp_name": "ethernet1/1/23:1",
           "uid": "dahu-23"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 24",
+          "snmp_name": "ethernet1/1/24:1",
           "uid": "dahu-24"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 25",
+          "snmp_name": "ethernet1/1/25:1",
           "uid": "dahu-25"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 26",
+          "snmp_name": "ethernet1/1/26:1",
           "uid": "dahu-26"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 27",
+          "snmp_name": "ethernet1/1/27:1",
           "uid": "dahu-27"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 28",
+          "snmp_name": "ethernet1/1/28:1",
           "uid": "dahu-28"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 29",
+          "snmp_name": "ethernet1/1/29:1",
           "uid": "dahu-29"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 30",
+          "snmp_name": "ethernet1/1/30:1",
           "uid": "dahu-30"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 31",
+          "snmp_name": "ethernet1/1/31:1",
           "uid": "dahu-31"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 32",
+          "snmp_name": "ethernet1/1/32:1",
           "uid": "dahu-32"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 33",
+          "snmp_name": "ethernet1/1/33:1",
           "uid": "yeti-1"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 34",
+          "snmp_name": "ethernet1/1/34:1",
           "uid": "yeti-2"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 35",
+          "snmp_name": "ethernet1/1/35:1",
           "uid": "yeti-3"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 36",
+          "snmp_name": "ethernet1/1/36:1",
           "uid": "yeti-4"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 37",
+          "snmp_name": "ethernet1/1/37:1",
+          "uid": "drac-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/38:1",
+          "uid": "drac-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/39:1",
+          "uid": "drac-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/40:1",
+          "uid": "drac-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/41:1",
+          "uid": "drac-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/42:1",
+          "uid": "drac-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/43:1",
+          "uid": "drac-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/44:1",
+          "uid": "drac-8"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/45:1",
+          "uid": "drac-9"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/46:1",
+          "uid": "drac-10"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/47:1",
+          "uid": "drac-11"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/48:1",
+          "uid": "drac-12"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kavlan_pattern": "ethernet1/1/%PORT%",
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "ethernet1/1/77",
           "uid": "troll-1"
         },
         {
+          "kavlan_pattern": "ethernet1/1/%PORT%",
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 38",
+          "rate": 25000000000,
+          "snmp_name": "ethernet1/1/78",
           "uid": "troll-2"
         },
         {
+          "kavlan_pattern": "ethernet1/1/%PORT%",
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 39",
+          "rate": 25000000000,
+          "snmp_name": "ethernet1/1/79",
           "uid": "troll-3"
         },
         {
+          "kavlan_pattern": "ethernet1/1/%PORT%",
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "X670V-48x Port 40",
+          "rate": 25000000000,
+          "snmp_name": "ethernet1/1/80",
           "uid": "troll-4"
         },
         {
+        },
+        {
+        },
+        {
+          "kind": "channel",
+          "rate": 25000000000,
+          "snmp_name": "ethernet1/1/83:1",
+          "uid": "port-channel10"
+        },
+        {
+          "kind": "channel",
+          "rate": 25000000000,
+          "snmp_name": "ethernet1/1/84:1",
+          "uid": "port-channel10"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/85:1",
+          "uid": "port-channel20"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/86:1",
+          "uid": "port-channel20"
+        },
+        {
           "kind": "server",
-          "snmp_name": "X670V-48x Port 41",
+          "snmp_name": "ethernet1/1/87:1",
           "uid": "dighyp1"
         },
         {
           "kind": "server",
-          "snmp_name": "X670V-48x Port 42",
+          "snmp_name": "ethernet1/1/88:1",
           "uid": "dighyp2"
         },
         {
-          "kind": "channel",
-          "snmp_name": "X670V-48x Port 43",
-          "uid": "X670V-48x Port 43"
-        },
-        {
-          "kind": "channel",
-          "snmp_name": "X670V-48x Port 44",
-          "uid": "X670V-48x Port 43"
-        },
-        {
-          "kind": "channel",
-          "snmp_name": "X670V-48x Port 45",
-          "uid": "X670V-48x Port 43"
-        },
-        {
           "kind": "server",
-          "snmp_name": "X670V-48x Port 46",
+          "snmp_name": "ethernet1/1/89:1",
           "uid": "digwatt"
         },
         {
+        },
+        {
           "kind": "other",
-          "snmp_name": "X670V-48x Port 47",
-          "uid": "ACI-G5K-EXT"
+          "snmp_name": "ethernet1/1/91:1",
+          "uid": "ACI-G5K-INT"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/92:1",
+          "uid": "port-channel100"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/93:1",
+          "uid": "port-channel100"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/94:1",
+          "uid": "port-channel100"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/95:1",
+          "uid": "port-channel100"
         },
         {
           "kind": "backbone",
-          "snmp_name": "X670V-48x Port 48",
-          "uid": "renater5"
+          "snmp_name": "ethernet1/1/96:1",
+          "uid": "renater-grenoble"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "X670V-48x Port %PORT%"
+      "snmp_pattern": "ethernet1/1/%PORT%:1"
     }
   ],
   "metrics": [
@@ -327,8 +507,9 @@
       }
     }
   ],
-  "model": "ExtremeNetworks",
+  "model": "Dell S5296F-ON",
   "role": "production",
+  "serial": "H47D9Z2",
   "site": "grenoble",
   "snmp_community": "public",
   "type": "network_equipment",
@@ -411,5 +592,5 @@
       "name": "kavlan-11"
     }
   },
-  "warranty": "expired"
+  "warranty": "2027-11-03"
 }
