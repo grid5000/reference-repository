@@ -4,7 +4,7 @@
   "kavlan": true,
   "metrics": [
     {
-      "description": "Front node ambiant temperature reported by BMC, in celsius",
+      "description": "Front node ambient temperature reported by BMC, in celsius",
       "name": "bmc_temp_ambient_celsius",
       "period": 5000,
       "source": {
@@ -23,7 +23,10 @@
     },
     {
       "description": "Temperature of CPU Diode 1 reported by BMC, in celsius",
-      "name": "bmc_temp_cpudiode1_celsius",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_cpudiode_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -33,7 +36,10 @@
     },
     {
       "description": "Temperature of CPU Diode 2 reported by BMC, in celsius",
-      "name": "bmc_temp_cpudiode2_celsius",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_cpudiode_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -43,7 +49,10 @@
     },
     {
       "description": "Temperature of CPU1 reported by BMC, in celsius",
-      "name": "bmc_temp_cpu1_celsius",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -53,7 +62,10 @@
     },
     {
       "description": "Temperature of CPU2 reported by BMC, in celsius",
-      "name": "bmc_temp_cpu2_celsius",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -63,7 +75,10 @@
     },
     {
       "description": "Temperature of DIMM1 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm1_celsius",
+      "labels": {
+        "dimm": "1"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -73,7 +88,10 @@
     },
     {
       "description": "Temperature of DIMM2 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm2_celsius",
+      "labels": {
+        "dimm": "2"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -83,7 +101,10 @@
     },
     {
       "description": "Temperature of DIMM3 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm3_celsius",
+      "labels": {
+        "dimm": "3"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -93,7 +114,10 @@
     },
     {
       "description": "Temperature of DIMM4 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm4_celsius",
+      "labels": {
+        "dimm": "4"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -103,7 +127,10 @@
     },
     {
       "description": "Temperature of DIMM5 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm5_celsius",
+      "labels": {
+        "dimm": "5"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -113,7 +140,10 @@
     },
     {
       "description": "Temperature of DIMM6 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm6_celsius",
+      "labels": {
+        "dimm": "6"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -123,7 +153,10 @@
     },
     {
       "description": "Temperature of DIMM7 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm7_celsius",
+      "labels": {
+        "dimm": "7"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -133,7 +166,10 @@
     },
     {
       "description": "Temperature of DIMM8 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm8_celsius",
+      "labels": {
+        "dimm": "8"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -143,7 +179,10 @@
     },
     {
       "description": "Temperature of DIMM9 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm9_celsius",
+      "labels": {
+        "dimm": "9"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -153,7 +192,10 @@
     },
     {
       "description": "Temperature of DIMM10 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm10_celsius",
+      "labels": {
+        "dimm": "10"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -163,7 +205,10 @@
     },
     {
       "description": "Temperature of DIMM11 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm11_celsius",
+      "labels": {
+        "dimm": "11"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -173,7 +218,10 @@
     },
     {
       "description": "Temperature of DIMM12 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm12_celsius",
+      "labels": {
+        "dimm": "12"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -183,7 +231,10 @@
     },
     {
       "description": "Temperature of DIMM13 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm13_celsius",
+      "labels": {
+        "dimm": "13"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -193,7 +244,10 @@
     },
     {
       "description": "Temperature of DIMM14 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm14_celsius",
+      "labels": {
+        "dimm": "14"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -203,7 +257,10 @@
     },
     {
       "description": "Temperature of DIMM15 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm15_celsius",
+      "labels": {
+        "dimm": "15"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -213,7 +270,10 @@
     },
     {
       "description": "Temperature of DIMM16 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm16_celsius",
+      "labels": {
+        "dimm": "16"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -223,7 +283,10 @@
     },
     {
       "description": "Temperature of DIMM17 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm17_celsius",
+      "labels": {
+        "dimm": "17"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -233,7 +296,10 @@
     },
     {
       "description": "Temperature of DIMM18 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm18_celsius",
+      "labels": {
+        "dimm": "18"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -243,7 +309,10 @@
     },
     {
       "description": "Temperature of DIMM19 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm19_celsius",
+      "labels": {
+        "dimm": "19"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -253,7 +322,10 @@
     },
     {
       "description": "Temperature of DIMM20 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm20_celsius",
+      "labels": {
+        "dimm": "20"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -263,7 +335,10 @@
     },
     {
       "description": "Temperature of DIMM21 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm21_celsius",
+      "labels": {
+        "dimm": "21"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -273,7 +348,10 @@
     },
     {
       "description": "Temperature of DIMM22 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm22_celsius",
+      "labels": {
+        "dimm": "22"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -283,7 +361,10 @@
     },
     {
       "description": "Temperature of DIMM23 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm23_celsius",
+      "labels": {
+        "dimm": "23"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -293,7 +374,10 @@
     },
     {
       "description": "Temperature of DIMM24 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm24_celsius",
+      "labels": {
+        "dimm": "24"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -303,7 +387,10 @@
     },
     {
       "description": "Temperature of DIMM25 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm25_celsius",
+      "labels": {
+        "dimm": "25"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -313,7 +400,10 @@
     },
     {
       "description": "Temperature of DIMM26 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm26_celsius",
+      "labels": {
+        "dimm": "26"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -323,7 +413,10 @@
     },
     {
       "description": "Temperature of DIMM27 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm27_celsius",
+      "labels": {
+        "dimm": "27"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -333,7 +426,10 @@
     },
     {
       "description": "Temperature of DIMM28 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm28_celsius",
+      "labels": {
+        "dimm": "28"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -343,7 +439,10 @@
     },
     {
       "description": "Temperature of DIMM29 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm29_celsius",
+      "labels": {
+        "dimm": "29"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -353,7 +452,10 @@
     },
     {
       "description": "Temperature of DIMM30 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm30_celsius",
+      "labels": {
+        "dimm": "30"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -363,7 +465,10 @@
     },
     {
       "description": "Temperature of DIMM31 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm31_celsius",
+      "labels": {
+        "dimm": "31"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -373,7 +478,10 @@
     },
     {
       "description": "Temperature of DIMM32 reported by BMC, in celsius",
-      "name": "bmc_temp_dimm32_celsius",
+      "labels": {
+        "dimm": "32"
+      },
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -383,7 +491,7 @@
     },
     {
       "description": "Power consumption of Fan reported by BMC, in watt",
-      "name": "bmc_power_fan_watt",
+      "name": "bmc_fan_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -392,8 +500,11 @@
       }
     },
     {
-      "description": "Power consumption of Mem Proc0 reported by BMC, in watt",
-      "name": "bmc_power_memproc0_watt",
+      "description": "Power consumption of Mem Proc1 reported by BMC, in watt",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_mem_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -402,8 +513,11 @@
       }
     },
     {
-      "description": "Power consumption of Mem Proc1 reported by BMC, in watt",
-      "name": "bmc_power_memproc1_watt",
+      "description": "Power consumption of Mem Proc2 reported by BMC, in watt",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_mem_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -412,8 +526,11 @@
       }
     },
     {
-      "description": "Power consumption of PCIE Proc0 reported by BMC, in watt",
-      "name": "bmc_power_pcieproc0_watt",
+      "description": "Power consumption of PCIE Proc1 reported by BMC, in watt",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_pcie_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -423,7 +540,7 @@
     },
     {
       "description": "Power consumption of Mem Cache reported by BMC, in watt",
-      "name": "bmc_power_memcache_watt",
+      "name": "bmc_memcache_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -432,8 +549,11 @@
       }
     },
     {
-      "description": "Power consumption of Proc0 reported by BMC, in watt",
-      "name": "bmc_power_proc0_watt",
+      "description": "Power consumption of Proc1 reported by BMC, in watt",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_cpu_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -443,7 +563,10 @@
     },
     {
       "description": "Voltage of CPU VDD reported by BMC, in volt",
-      "name": "bmc_voltage_cpuvdd_volt",
+      "labels": {
+        "voltage": "cpuvdd"
+      },
+      "name": "bmc_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -453,7 +576,10 @@
     },
     {
       "description": "Current of CPU VDD reported by BMC, in amp",
-      "name": "bmc_current_cpuvdd_amp",
+      "labels": {
+        "current": "cpuvdd"
+      },
+      "name": "bmc_current_amp",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -462,8 +588,11 @@
       }
     },
     {
-      "description": "Power consumption of Proc1 reported by BMC, in watt",
-      "name": "bmc_power_proc1_watt",
+      "description": "Power consumption of Proc2 reported by BMC, in watt",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_cpu_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -472,8 +601,11 @@
       }
     },
     {
-      "description": "Power consumption of PCIE Proc1 reported by BMC, in watt",
-      "name": "bmc_power_pcieproc1_watt",
+      "description": "Power consumption of PCIE Proc2 reported by BMC, in watt",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_pcie_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -483,7 +615,7 @@
     },
     {
       "description": "Power consumption of GPU reported by BMC, in watt",
-      "name": "bmc_power_gpu_watt",
+      "name": "bmc_gpu_power_watt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -493,7 +625,10 @@
     },
     {
       "description": "Temperature of GPU 1 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu1_celsius",
+      "labels": {
+        "gpu": "1"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -503,7 +638,10 @@
     },
     {
       "description": "Temperature of GPU 2 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu2_celsius",
+      "labels": {
+        "gpu": "2"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -513,7 +651,10 @@
     },
     {
       "description": "Temperature of GPU 3 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu3_celsius",
+      "labels": {
+        "gpu": "3"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -523,7 +664,10 @@
     },
     {
       "description": "Temperature of GPU 4 reported by BMC, in celsius",
-      "name": "bmc_temp_gpu4_celsius",
+      "labels": {
+        "gpu": "4"
+      },
+      "name": "bmc_gpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -533,7 +677,10 @@
     },
     {
       "description": "Speed of Fan 1 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan1_rpm",
+      "labels": {
+        "fan": "1"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -543,7 +690,10 @@
     },
     {
       "description": "Speed of Fan 2 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan2_rpm",
+      "labels": {
+        "fan": "2"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -553,7 +703,10 @@
     },
     {
       "description": "Speed of Fan 3 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan3_rpm",
+      "labels": {
+        "fan": "3"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -563,7 +716,10 @@
     },
     {
       "description": "Speed of Fan 4 reported by BMC, in rpm",
-      "name": "bmc_fanspeed_fan4_rpm",
+      "labels": {
+        "fan": "4"
+      },
+      "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -573,7 +729,10 @@
     },
     {
       "description": "Temperature of CPU 1 VDD reported by BMC, in celsius",
-      "name": "bmc_temp_cpu1vdd_celsius",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_vdd_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -583,7 +742,10 @@
     },
     {
       "description": "Temperature of CPU 2 VDD reported by BMC, in celsius",
-      "name": "bmc_temp_cpu2vdd_celsius",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_vdd_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
