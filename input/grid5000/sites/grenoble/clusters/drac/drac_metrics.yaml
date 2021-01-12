@@ -1,0 +1,550 @@
+---
+metrics:
+
+  - name: network_ifacein_bytes_total
+    description: >-
+      Input byte counter for the network device port connected to the node
+    period: 1000
+    source:
+      protocol: network_equipment
+
+  - name: network_ifaceout_bytes_total
+    description: >-
+      Output byte counter for the network device port connected to the node
+    period: 1000
+    source:
+      protocol: network_equipment
+
+  - name: bmc_temp_ambient_celsius
+    description: >-
+      Front node ambiant temperature reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 175 #Ambient Temp
+
+  - name: bmc_node_power_watt
+    description: Power consumption of node reported by BMC, in watt
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 212 #System Power
+
+  - name: bmc_temp_cpudiode1_celsius
+    description: Temperature of CPU Diode 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 2 #CPU Diode 1
+
+  - name: bmc_temp_cpudiode2_celsius
+    description: Temperature of CPU Diode 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 3 #CPU Diode 2
+
+  - name: bmc_temp_cpu1_celsius
+    description: Temperature of CPU1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 61 #CPU1 Temp
+
+  - name: bmc_temp_cpu2_celsius
+    description: Temperature of CPU2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 62 #CPU2 Temp
+
+  - name: bmc_temp_dimm1_celsius
+    description: Temperature of DIMM1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 63 #DIMM1 Temp
+
+  - name: bmc_temp_dimm2_celsius
+    description: Temperature of DIMM2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 64 #DIMM2 Temp
+
+  - name: bmc_temp_dimm3_celsius
+    description: Temperature of DIMM3 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 65 #DIMM3 Temp
+
+  - name: bmc_temp_dimm4_celsius
+    description: Temperature of DIMM4 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 66 #DIMM4 Temp
+
+  - name: bmc_temp_dimm5_celsius
+    description: Temperature of DIMM5 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 68 #DIMM5 Temp
+
+  - name: bmc_temp_dimm6_celsius
+    description: Temperature of DIMM6 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 69 #DIMM6 Temp
+
+  - name: bmc_temp_dimm7_celsius
+    description: Temperature of DIMM7 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 70 #DIMM7 Temp
+
+  - name: bmc_temp_dimm8_celsius
+    description: Temperature of DIMM8 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 71 #DIMM8 Temp
+
+  - name: bmc_temp_dimm9_celsius
+    description: Temperature of DIMM9 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 73 #DIMM9 Temp
+
+  - name: bmc_temp_dimm10_celsius
+    description: Temperature of DIMM10 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 74 #DIMM10 Temp
+
+  - name: bmc_temp_dimm11_celsius
+    description: Temperature of DIMM11 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 75 #DIMM11 Temp
+
+  - name: bmc_temp_dimm12_celsius
+    description: Temperature of DIMM12 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 76 #DIMM12 Temp
+
+  - name: bmc_temp_dimm13_celsius
+    description: Temperature of DIMM13 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 78 #DIMM13 Temp
+
+  - name: bmc_temp_dimm14_celsius
+    description: Temperature of DIMM14 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 79 #DIMM14 Temp
+
+  - name: bmc_temp_dimm15_celsius
+    description: Temperature of DIMM15 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 80 #DIMM15 Temp
+
+  - name: bmc_temp_dimm16_celsius
+    description: Temperature of DIMM16 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 81 #DIMM16 Temp
+
+  - name: bmc_temp_dimm17_celsius
+    description: Temperature of DIMM17 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 83 #DIMM17 Temp
+
+  - name: bmc_temp_dimm18_celsius
+    description: Temperature of DIMM18 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 84 #DIMM18 Temp
+
+  - name: bmc_temp_dimm19_celsius
+    description: Temperature of DIMM19 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 85 #DIMM19 Temp
+
+  - name: bmc_temp_dimm20_celsius
+    description: Temperature of DIMM20 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 86 #DIMM20 Temp
+
+  - name: bmc_temp_dimm21_celsius
+    description: Temperature of DIMM21 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 88 #DIMM21 Temp
+
+  - name: bmc_temp_dimm22_celsius
+    description: Temperature of DIMM22 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 89 #DIMM22 Temp
+
+  - name: bmc_temp_dimm23_celsius
+    description: Temperature of DIMM23 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 90 #DIMM23 Temp
+
+  - name: bmc_temp_dimm24_celsius
+    description: Temperature of DIMM24 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 91 #DIMM24 Temp
+
+  - name: bmc_temp_dimm25_celsius
+    description: Temperature of DIMM25 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 93 #DIMM25 Temp
+
+  - name: bmc_temp_dimm26_celsius
+    description: Temperature of DIMM26 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 94 #DIMM26 Temp
+
+  - name: bmc_temp_dimm27_celsius
+    description: Temperature of DIMM27 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 95 #DIMM27 Temp
+
+  - name: bmc_temp_dimm28_celsius
+    description: Temperature of DIMM28 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 96 #DIMM28 Temp
+
+  - name: bmc_temp_dimm29_celsius
+    description: Temperature of DIMM29 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 98 #DIMM29 Temp
+
+  - name: bmc_temp_dimm30_celsius
+    description: Temperature of DIMM30 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 99 #DIMM30 Temp
+
+  - name: bmc_temp_dimm31_celsius
+    description: Temperature of DIMM31 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 100 #DIMM31 Temp
+
+  - name: bmc_temp_dimm32_celsius
+    description: Temperature of DIMM32 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 101 #DIMM32 Temp
+
+  - name: bmc_power_fan_watt
+    description: Power consumption of Fan reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 103 #Fan Power
+
+  - name: bmc_power_memproc0_watt
+    description: Power consumption of Mem Proc0 reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 104 #Mem Proc0 Pwr
+
+  - name: bmc_power_memproc1_watt
+    description: Power consumption of Mem Proc1 reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 105 #Mem Proc1 Pwr
+
+  - name: bmc_power_pcieproc0_watt
+    description: Power consumption of PCIE Proc0 reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 106 #PCIE Proc0 Pwr
+
+  - name: bmc_power_memcache_watt
+    description: Power consumption of Mem Cache reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 107 #Mem Cache Power
+
+  - name: bmc_power_proc0_watt
+    description: Power consumption of Proc0 reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 108 #Proc0 Power
+
+  - name: bmc_voltage_cpuvdd_volt
+    description: Voltage of CPU VDD reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 207 #CPU VDD Volt
+
+  - name: bmc_current_cpuvdd_amp
+    description: Current of CPU VDD reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 208 #CPU VDD Curr
+
+  - name: bmc_power_proc1_watt
+    description: Power consumption of Proc1 reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 210 #Proc1 Power
+
+  - name: bmc_power_pcieproc1_watt
+    description: Power consumption of PCIE Proc1 reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 211 #PCIE Proc1 Power
+
+  - name: bmc_power_gpu_watt
+    description: Power consumption of GPU reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 213 #GPU Power
+
+  - name: bmc_temp_gpu1_celsius
+    description: Temperature of GPU 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 216 #GPU Temp 1
+
+  - name: bmc_temp_gpu2_celsius
+    description: Temperature of GPU 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 217 #GPU Temp 2
+
+  - name: bmc_temp_gpu3_celsius
+    description: Temperature of GPU 3 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 218 #GPU Temp 3
+
+  - name: bmc_temp_gpu4_celsius
+    description: Temperature of GPU 4 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 219 #GPU Temp 4
+
+  - name: bmc_fanspeed_fan1_rpm
+    description: Speed of Fan 1 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 227 #Fan 1
+
+  - name: bmc_fanspeed_fan2_rpm
+    description: Speed of Fan 2 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 228 #Fan 2
+
+  - name: bmc_fanspeed_fan3_rpm
+    description: Speed of Fan 3 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 229 #Fan 3
+
+  - name: bmc_fanspeed_fan4_rpm
+    description: Speed of Fan 4 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 230 #Fan 4
+
+  - name: bmc_temp_cpu1vdd_celsius
+    description: Temperature of CPU 1 VDD reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 251 #CPU 1 VDD Temp
+
+  - name: bmc_temp_cpu2vdd_celsius
+    description: Temperature of CPU 2 VDD reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 252 #CPU 2 VDD Temp
+
+  - name: prom_default_metrics
+    description: Default subset of metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
+      id:
+        - node_boot_time_seconds
+        - node_cpu_frequency_hertz
+        - node_cpu_seconds_total
+        - node_filesystem_free_bytes
+        - node_filesystem_size_bytes
+        - node_load1
+        - node_load15
+        - node_load5
+        - node_memory_Buffers_bytes
+        - node_memory_Cached_bytes
+        - node_memory_MemAvailable_bytes
+        - node_memory_MemFree_bytes
+        - node_memory_MemTotal_bytes
+        - node_memory_Shmem_bytes
+        - node_memory_SwapFree_bytes
+        - node_memory_SwapTotal_bytes
+        - node_network_receive_bytes_total
+        - node_network_receive_packets_total
+        - node_network_transmit_bytes_total
+        - node_network_transmit_packets_total
+        - node_procs_blocked
+        - node_procs_running
+        - kwollect_custom
+
+  - name: prom_all_metrics
+    description: All metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
+
+  - name: prom_nvgpu_default_metrics
+    description: Default subset of metrics from Prometheus Nvidia DCGM Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9400
+      id:
+        - DCGM_FI_DEV_SM_CLOCK
+        - DCGM_FI_DEV_MEM_CLOCK
+        - DCGM_FI_DEV_GPU_TEMP
+        - DCGM_FI_DEV_POWER_USAGE
+        - DCGM_FI_DEV_GPU_UTIL
+        - DCGM_FI_DEV_MEM_COPY_UTIL
+
+  - name: prom_nvgpu_all_metrics
+    description: All metrics from Prometheus Nvidia DCGM Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9400
