@@ -79,7 +79,7 @@ digarm:
 
 dignfs:
   kind: physical
-  alias: [nfs, public, home-g5k, ntp, modules]
+  alias: [nfs, public, home-g5k, ntp, modules, storage1]
   warranty: 2025-10-06
   serial: 57JV173
   network_adapters:
@@ -90,4 +90,7 @@ dignfs:
       mac: 2C:EA:7F:42:45:35
     adm:
       ip: 172.17.31.12
-
+  group_storage:
+    name: storage1
+    size: 55000000000000
+    rate: 50000000000
