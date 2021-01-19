@@ -64,7 +64,7 @@
     "ram_size": 68719476736
   },
   "monitoring": {
-    "wattmeter": "true"
+    "wattmeter": "false"
   },
   "network_adapters": [
     {
@@ -213,16 +213,8 @@
   },
   "sensors": {
     "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "www": {
-          "url": "http://wattmetre.lyon.grid5000.fr/GetWatts-json.php"
-        }
-      }
+      "available": false,
+      "per_outlets": false
     }
   },
   "software": {

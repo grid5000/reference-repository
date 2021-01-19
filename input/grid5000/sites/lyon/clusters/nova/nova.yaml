@@ -60,13 +60,8 @@ nodes:
         mounted: false
         mountable: false
     monitoring:
-      wattmeter: true
+      wattmeter: false
     sensors:
       power:
-        available: true
-        per_outlets: true
-        via:
-          api:
-            metric: power
-          www:
-            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php
+        available: false
+        per_outlets: false
