@@ -259,10 +259,23 @@ def generate_reference_api
 
           # Add vendor info to storage
           node["storage_devices"].each do |key, hash|
-            matching_vendor =  global_hash['disk_vendor_model_mapping'].select {|_, v| v.include? hash["model"] }
+            matching_vendor = {}
+            matching_interface = []
+            global_hash['disk_vendor_model_mapping'].each do |interface, vendor|
+              vendor.select do |k, v|
+                matching_vendor[k] = v if v.include? hash["model"]
+                matching_interface << interface if v.include? hash["model"]
+              end
+            end
+
             raise "Model \"#{hash["model"]}\" don't match any vendor in input/grid5000/disks.yaml" if matching_vendor.empty?
             raise "Model \"#{hash["model"]}\" specify in multiple vendors: #{matching_vendor.keys} in input/grid5000/disks.yaml" if matching_vendor.length > 1
+            raise "Model \"#{hash["model"]}\" specify in multiple interface: #{matching_interface} in input/grid5000/disks.yaml" if matching_interface.length > 1
             hash['vendor'] = matching_vendor.keys.first
+
+            if matching_interface.first != 'RAID' && hash['interface'] != matching_interface.first
+              raise "Interface \"#{hash['interface']}\" for disk #{key} (model #{hash["model"]}) does not match interface \"#{matching_interface.first}\" in input/grid5000/disks.yaml"
+            end
           end
 
           # Ensure that by_id is present (bug 11043)
