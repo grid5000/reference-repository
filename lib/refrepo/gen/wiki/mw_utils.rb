@@ -6,7 +6,7 @@ module MediawikiApi
   class Client
 
     def get_page_content(page_name)
-      get_conn = Faraday.new(url: MW::BASE_URL + "index.php/#{page_name}") do |faraday|
+      get_conn = Faraday.new(url: MW::BASE_URL + "#{page_name}") do |faraday|
         faraday.request :multipart
         faraday.request :url_encoded
         faraday.use :cookie_jar, jar: @cookies
@@ -131,7 +131,7 @@ end
 #Defines MediaWiki helpers
 module MW
 
-  BASE_URL = "https://www.grid5000.fr/mediawiki/"
+  BASE_URL = "https://www.grid5000.fr/w/"
 
   API_URL = BASE_URL + "api.php"
 

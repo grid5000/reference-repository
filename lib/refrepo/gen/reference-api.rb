@@ -368,6 +368,6 @@ def generate_reference_api
     site["network_equipments"] = site.delete("networks")
   end
 
-  # Write global json file - Disable this for now, see https://www.grid5000.fr/mediawiki/index.php/TechTeam:CT-220
+  # Write global json file - Disable this for now, see https://www.grid5000.fr/w/TechTeam:CT-220
   #write_json(grid_path.join(File.expand_path("../../#{global_hash['uid']}-all.json", File.dirname(__FILE__))), global_hash)
 end

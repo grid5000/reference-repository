@@ -344,7 +344,7 @@ def get_ids(host)
 end
 
 # Get all node properties of a given site from the reference repo hash
-# See also: https://www.grid5000.fr/mediawiki/index.php/Reference_Repository
+# See also: https://www.grid5000.fr/w/Reference_Repository
 def get_ref_default_properties(_site_uid, site)
   properties = {}
   site['clusters'].each do |cluster_uid, cluster|

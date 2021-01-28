@@ -17,7 +17,7 @@ All tasks are executed using **rake**. To see the list of tasks, use `rake -T`.
 
 See also:
 
-* https://www.grid5000.fr/mediawiki/index.php/Reference_Repository
+* https://www.grid5000.fr/w/Reference_Repository
 * .gitlab-ci.yml, that automates various checks and the deployment of data files after each commit
 * doc/README.generators.md
 

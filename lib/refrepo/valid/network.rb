@@ -9,7 +9,7 @@ HPC_SWITCHES = ['ib-grenoble', 'voltaire-1', 'voltaire-2', 'voltaire-3', 'sgraou
 
 def check_network_description(options)
   ok = true
-  puts "Documentation: https://www.grid5000.fr/mediawiki/index.php/TechTeam:Network_Description"
+  puts "Documentation: https://www.grid5000.fr/w/TechTeam:Network_Description"
   options[:sites].each do |site|
     puts "Checking #{site}..."
 

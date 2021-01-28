@@ -1,4 +1,4 @@
-# See also: https://www.grid5000.fr/mediawiki/index.php/DNS_server
+# See also: https://www.grid5000.fr/w/DNS_server
 
 require 'dns/zone'
 require 'find'
