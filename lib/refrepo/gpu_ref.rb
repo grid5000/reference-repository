@@ -13,6 +13,7 @@ class GPURef
     "GeForce GTX 980" => 2048,
     "Tesla K40m" => 2880,
     "Tesla T4" => 2560,
+    "A100-PCIE-40GB" => 6912,
   }
 
   @@new_gpu_names2old_ones = {
@@ -27,6 +28,7 @@ class GPURef
     "GeForce GTX 980" => "GTX 980",
     "Tesla K40m" => "Tesla K40M",
     "Tesla T4" => "Tesla T4",
+    "A100-PCIE-40GB" => "A100"
   }
 
   def self.getNumberOfCoresFor(model)
