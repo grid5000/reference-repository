@@ -28,7 +28,7 @@ class GPURef
     "GeForce GTX 980" => "GTX 980",
     "Tesla K40m" => "Tesla K40M",
     "Tesla T4" => "Tesla T4",
-    "A100-PCIE-40GB" => "A100"
+    "A100-PCIE-40GB" => "A100",
   }
 
   def self.getNumberOfCoresFor(model)
