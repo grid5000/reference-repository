@@ -182,6 +182,29 @@ end
 def add_kavlan_ipv6s(h)
   global_vlan_site = {}
   h['ipv6']['site_global_kavlans'].each { |key, value| global_vlan_site[value] = key }
+  # Set kavlan ipv6 informations at site level
+  h['sites'].each_pair do |site_uid, hs|
+    site_ip6_prefix = h['ipv6']['prefix'] + ':' + '%x' % h['ipv6']['site_indexes'][site_uid]
+    kavlan_ids = h['vlans']['base'].map{ |k,v| k if v["type"] =~ /local|routed/ }.compact + [h['ipv6']['site_global_kavlans'][site_uid]]
+    kavlan_ids.each do |kvl_id|
+      hs['kavlans'][kvl_id]['ipv6'] = {}
+      case kvl_id
+      when 1..3 # local non-routed
+        hs['kavlans'][kvl_id]['ipv6']['prefix'] = site_ip6_prefix + '%x' % (kvl_id + 0x80 - 1)
+      when 4..9 # local routed
+        hs['kavlans'][kvl_id]['ipv6']['prefix'] = site_ip6_prefix + '%x' % (kvl_id + 0x90 - 4)
+        hs['kavlans'][kvl_id]['ipv6']['gateway'] = hs['kavlans'][kvl_id]['ipv6']['prefix'] + '::ffff:ffff'
+      else      # global
+        hs['kavlans'][kvl_id]['ipv6']['prefix'] = site_ip6_prefix + 'a0'
+      end
+      hs['kavlans'][kvl_id]['ipv6']['prefix_length'] = 64
+    end
+    hs['kavlans']['default']['ipv6'] = {}
+    hs['kavlans']['default']['ipv6']['prefix'] = site_ip6_prefix + '00'
+    hs['kavlans']['default']['ipv6']['prefix_length'] = 64
+    hs['kavlans']['default']['ipv6']['gateway'] = hs['kavlans']['default']['ipv6']['prefix'] + '::ffff:ffff'
+  end
+  # Set kavlan ipv6 informations at node level
   h['sites'].each_pair do |site_uid, hs|
     hs['clusters'].each_pair do |_cluster_uid, hc|
       next if !hc['kavlan'] # skip clusters where kavlan is globally set to false (used for initial cluster installation)
@@ -200,23 +223,15 @@ def add_kavlan_ipv6s(h)
             hn['kavlan6'][iface] = {}
             hn['kavlan'][iface].each_key do |kvl|
               kvl_id = kvl.split('-')[1].to_i
-              ip6 = h['ipv6']['prefix'] + ':'
-              case kvl_id
-              when 1..3 # local non-routed
-                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
-                ip6 += '%x:' % (kvl_id + 0x80 - 1)
-              when 4..9 # local routed
-                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
-                ip6 += '%x:' % (kvl_id + 0x90 - 4)
-              else      # global
-                ip6 += '%xa0:' % h['ipv6']['site_indexes'][global_vlan_site[kvl_id]] # no matter what, the gw is always on the global kavlan's site
-              end
-              if kvl_id > 9
-                # global kavlan: set most signicant octet of interface part to site index
-                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
-                ip6 += '%02x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+              if kvl_id <= 9
+                ip6 = hs['kavlans'][kvl_id]['ipv6']['prefix']
+                ip6 += ':%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
               else
-                ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+                #Take prefix from global vlan site (ex: nova-5-kavlan-11.lyon, get prefix from Grenoble (11) global vlan)
+                ip6 = h['sites'][global_vlan_site[kvl_id]]['kavlans'][kvl_id]['ipv6']['prefix']
+                # global kavlan: set most signicant octet of interface part to site index
+                ip6 += ':%x' % h['ipv6']['site_indexes'][site_uid]
+                ip6 += '%02x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
               end
               ip6 += ':%x::' % idx
               ip6 += '%x' % (ip4.split('.')[3].to_i)
