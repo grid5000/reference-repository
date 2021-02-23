@@ -170,6 +170,7 @@ def generate_reference_api
       pdu_attached_nodes = {}
       site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
         cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
+          next if node['status'] == "retired"
           node.fetch('pdu', []).each do |node_pdu|
             if node_pdu["uid"] == pdu_uid
               pdu_attached_nodes[node_pdu["port"]] = node_uid
