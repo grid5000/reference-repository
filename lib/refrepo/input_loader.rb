@@ -1,5 +1,6 @@
 # Load a hierarchy of YAML file into a Ruby hash
 
+require 'ipaddress'
 require 'refrepo/hash/hash'
 require 'refrepo/gen/reference-api'
 
@@ -48,14 +49,14 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
 #  pp global_hash
 
+  # add some ipv6 informations in sites
+  add_site_ipv6_infos(global_hash)
+
   # populate each node with its IPv6
   add_ipv6(global_hash)
 
   # populate each node with its IPv4 addresses
   add_ipv4(global_hash)
-
-  # add some ipv6 informations in sites
-  add_site_ipv6_infos(global_hash)
 
   # populate each node with its kavlan IPs
   add_kavlan_ips(global_hash)
@@ -155,6 +156,7 @@ end
 def add_ipv6(h)
   # for each node
   h['sites'].each_pair do |site_uid, hs|
+    site_prefix = IPAddress hs['ipv6']['prefix']
     hs['clusters'].each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         ipv6_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and v['interface'] == 'Ethernet' }
@@ -165,13 +167,12 @@ def add_ipv6(h)
           ip4 = ipv6_adapters.values[0]['ip']
           ipv6_adapters.each_with_index do |(_iface, nah), idx|
             # compute and assign IPv6 based on IPv4 of the first adapter
-            ip6 = h['ipv6']['prefix'] + ':'
-            ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
-            ip6 += '00:'
-            ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
-            ip6 += ':%x::' % idx
-            ip6 += '%x' % (ip4.split('.')[3].to_i)
-            nah['ip6'] = ip6
+            ip6 = IPAddress site_prefix.to_string
+            ip6.prefix = 64
+            ip6[4] = (ip4.split('.')[2].to_i & 0b1111) + 1
+            ip6[5] = idx
+            ip6[7] = ip4.split('.')[3].to_i
+            nah['ip6'] = ip6.compressed
           end
         end
       end
@@ -200,27 +201,23 @@ def add_kavlan_ipv6s(h)
             hn['kavlan6'][iface] = {}
             hn['kavlan'][iface].each_key do |kvl|
               kvl_id = kvl.split('-')[1].to_i
-              ip6 = h['ipv6']['prefix'] + ':'
+              ip6 = IPAddress hs['ipv6']['prefix']
               case kvl_id
               when 1..3 # local non-routed
-                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
-                ip6 += '%x:' % (kvl_id + 0x80 - 1)
+                ip6[3] |= (kvl_id + 0x80 - 1)
               when 4..9 # local routed
-                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
-                ip6 += '%x:' % (kvl_id + 0x90 - 4)
+                ip6[3] |= (kvl_id + 0x90 - 4)
               else      # global
-                ip6 += '%xa0:' % h['ipv6']['site_indexes'][global_vlan_site[kvl_id]] # no matter what, the gw is always on the global kavlan's site
-              end
-              if kvl_id > 9
+                # The prefix is based on the site of the global kavlan, not the site of the node
+                ip6[3] = h['ipv6']['site_indexes'][global_vlan_site[kvl_id]] << 8
+                ip6[3] |= 0xA0
                 # global kavlan: set most signicant octet of interface part to site index
-                ip6 += '%x' % h['ipv6']['site_indexes'][site_uid]
-                ip6 += '%02x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
-              else
-                ip6 += '%x' % ((ip4.split('.')[2].to_i & 0b1111) + 1)
+                ip6[4] = h['ipv6']['site_indexes'][site_uid] << 8
               end
-              ip6 += ':%x::' % idx
-              ip6 += '%x' % (ip4.split('.')[3].to_i)
-              hn['kavlan6'][iface]["kavlan-#{kvl_id}"] = ip6
+              ip6[4] |= (ip4.split('.')[2].to_i & 0b1111) + 1
+              ip6[5] = idx
+              ip6[7] = ip4.split('.')[3].to_i
+              hn['kavlan6'][iface]["kavlan-#{kvl_id}"] = ip6.compressed
             end
           end
         end
@@ -317,9 +314,14 @@ def add_theorical_flops(h)
 end
 
 def add_site_ipv6_infos(h)
+  global_prefix = IPAddress h['ipv6']['prefix']
   h['sites'].each_pair do |site_uid, hs|
+    site_prefix = IPAddress global_prefix.to_string
+    # Site index is third group of nibbles, but on the MSB side
+    site_prefix[3] = h['ipv6']['site_indexes'][site_uid] << 8
+    site_prefix.prefix = 56
     h['sites'][site_uid]['ipv6'] = {}
-    h['sites'][site_uid]['ipv6']['prefix'] = h['ipv6']['prefix'] + ":%02x" % (h['ipv6']['site_indexes'][site_uid])
+    h['sites'][site_uid]['ipv6']['prefix'] = site_prefix.to_string
     h['sites'][site_uid]['ipv6']['site_index'] = h['ipv6']['site_indexes'][site_uid]
     h['sites'][site_uid]['ipv6']['site_global_kavlan'] = h['ipv6']['site_global_kavlans'][site_uid]
   end
