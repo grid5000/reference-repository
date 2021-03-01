@@ -43,6 +43,29 @@ class HashValidator::Validator::Ipv4AddressValidator < HashValidator::Validator:
   end
 end
 
+class HashValidator::Validator::Ipv4NetworkValidator < HashValidator::Validator::Base
+
+  def initialize
+    super('ipv4_network')
+  end
+
+  def validate(key, values, _validations, errors)
+    if not values.is_a?(String)
+      errors[key] = "IPv4 network should be a String"
+    elsif not values.include?('/')
+      errors[key] = "IPv4 network should contain a '/' character"
+    else
+      address = values.split("/")[0]
+      prefix_length = Integer(values.split("/")[1]) rescue nil
+      if (not prefix_length.is_a?(Integer)) || prefix_length < 0 || prefix_length > 32
+        errors[key] = "Invalid IPv4 prefix length for network #{values}"
+      elsif not address =~ Resolv::IPv4::Regex
+        errors[key] = "Invalid IPv4 network format #{values}"
+      end
+    end
+  end
+end
+
 class HashValidator::Validator::Ipv6AddressValidator < HashValidator::Validator::Base
 
   def initialize
@@ -60,6 +83,31 @@ class HashValidator::Validator::Ipv6AddressValidator < HashValidator::Validator:
   end
 end
 
+class HashValidator::Validator::Ipv6NetworkValidator < HashValidator::Validator::Base
+
+  def initialize
+    super('ipv6_network')
+  end
+
+  def validate(key, values, _validations, errors)
+    if not values.is_a?(String)
+      errors[key] = "IPv6 network should be a String"
+    elsif not values.include?('/')
+      errors[key] = "IPv6 network should contain a '/' character"
+    else
+      address = values.split("/")[0]
+      prefix_length = Integer(values.split("/")[1]) rescue nil
+      if (not prefix_length.is_a?(Integer)) || prefix_length < 0 || prefix_length > 128
+        errors[key] = "Invalid IPv6 prefix length for network #{values}"
+      elsif not address =~ Resolv::IPv6::Regex
+        errors[key] = "Invalid IPv6 network format #{values}"
+      end
+    end
+  end
+end
+
 HashValidator.append_validator(HashValidator::Validator::LinecardPortValidator.new)
 HashValidator.append_validator(HashValidator::Validator::Ipv4AddressValidator.new)
+HashValidator.append_validator(HashValidator::Validator::Ipv4NetworkValidator.new)
 HashValidator.append_validator(HashValidator::Validator::Ipv6AddressValidator.new)
+HashValidator.append_validator(HashValidator::Validator::Ipv6NetworkValidator.new)

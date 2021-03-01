@@ -39,7 +39,7 @@ sys_admin_contact: email
 security_contact: email
 user_support_contact: email
 compilation_server: boolean
-virt_ip_range: string
+virt_ip_range: ipv4_network
 production: boolean
 laptops:
   <optional_hash>:
@@ -51,15 +51,15 @@ laptops:
           ip: ipv4_address
           mac: optional_string
 g5ksubnet:
-  network: string
+  network: ipv4_network
   gateway: ipv4_address
 kavlans:
   <multi>:
-    network: string
+    network: ipv4_network
     gateway: ipv4_address
-    network_ipv6: string
+    network_ipv6: ipv6_network
     gateway_ipv6: optional_ipv6_address
-kavlan_ip_range: string
+kavlan_ip_range: ipv4_network
 kavlan_topo: optional_string
 kavlan_nef: optional_integer
 pdus:
@@ -77,6 +77,6 @@ pdus:
 renater_ip: ipv4_address
 frontend_ip: ipv4_address
 ipv6:
-  prefix: string
+  prefix: ipv6_network
   site_global_kavlan: integer
   site_index: integer
