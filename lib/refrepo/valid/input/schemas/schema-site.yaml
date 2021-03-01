@@ -14,7 +14,7 @@ servers:
       expire: optional
       network_adapters:
         <multi>:
-          ip: ip_address
+          ip: ipv4_address
           mounted: optional_boolean
           mac: optional_string
       pdu:
@@ -48,17 +48,17 @@ laptops:
       network_adapters:
         <multi>:
           mounted: optional_boolean
-          ip: ip_address
+          ip: ipv4_address
           mac: optional_string
 g5ksubnet:
   network: string
-  gateway: string
+  gateway: ipv4_address
 kavlans:
   <multi>:
     network: string
-    gateway: string
+    gateway: ipv4_address
     network_ipv6: string
-    gateway_ipv6: optional_string
+    gateway_ipv6: optional_ipv6_address
 kavlan_ip_range: string
 kavlan_topo: optional_string
 kavlan_nef: optional_integer
@@ -68,14 +68,14 @@ pdus:
       type: string
       uid: string
       ports: optional_hash
-      ip: ip_address
+      ip: ipv4_address
       mac: optional_string
       vendor: optional_string
       model: optional_string
       metrics: optional_array
       kind: optional_string
-renater_ip: ip_address
-frontend_ip: ip_address
+renater_ip: ipv4_address
+frontend_ip: ipv4_address
 ipv6:
   prefix: string
   site_global_kavlan: integer

@@ -26,22 +26,40 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
   end
 end
 
-class HashValidator::Validator::IpAddressValidator < HashValidator::Validator::Base
+class HashValidator::Validator::Ipv4AddressValidator < HashValidator::Validator::Base
 
   def initialize
-    super('ip_address')
+    super('ipv4_address')
   end
 
   def validate(key, values, _validations, errors)
     if values.is_a?(String)
-      unless (values =~ Resolv::IPv4::Regex || values =~ Resolv::IPv6::Regex)
-        errors[key] = "Invalid ip address format #{values}"
+      unless values =~ Resolv::IPv4::Regex
+        errors[key] = "Invalid IPv4 address format #{values}"
       end
     else
-      errors[key] = "Ip address should be a String"
+      errors[key] = "IPv4 address should be a String"
+    end
+  end
+end
+
+class HashValidator::Validator::Ipv6AddressValidator < HashValidator::Validator::Base
+
+  def initialize
+    super('ipv6_address')
+  end
+
+  def validate(key, values, _validations, errors)
+    if values.is_a?(String)
+      unless values =~ Resolv::IPv6::Regex
+        errors[key] = "Invalid IPv6 address format #{values}"
+      end
+    else
+      errors[key] = "IPv6 address should be a String"
     end
   end
 end
 
 HashValidator.append_validator(HashValidator::Validator::LinecardPortValidator.new)
-HashValidator.append_validator(HashValidator::Validator::IpAddressValidator.new)
+HashValidator.append_validator(HashValidator::Validator::Ipv4AddressValidator.new)
+HashValidator.append_validator(HashValidator::Validator::Ipv6AddressValidator.new)

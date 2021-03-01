@@ -26,11 +26,11 @@ gpu_devices: optional_hash
 kavlan:
   <optional_hash>:
     <multi>:
-      <multi>: ip_address
+      <multi>: ipv4_address
 kavlan6:
   <optional_hash>:
     <multi>:
-      <multi>: ip_address
+      <multi>: ipv6_address
 main_memory:
   ram_size: integer
   pmem_size: optional_integer
@@ -49,7 +49,7 @@ network_adapters:
     vendor: optional  # optional_string
     model: optional_string
     driver: optional_string
-    ip: optional_ip_address
+    ip: optional_ipv4_address
     netmask: optional  # Create optional_netmask format ?
     mac: optional_string
     ib_switch_card: optional_string
@@ -57,7 +57,7 @@ network_adapters:
     switch: optional_string
     switch_port: optional_string
     hwid: optional_string
-    ip6: optional_ip_address
+    ip6: optional_ipv6_address
     guid: optional_string
     line_card: optional_string
     position: optional_integer
