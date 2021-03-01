@@ -183,6 +183,44 @@ end
 def add_kavlan_ipv6s(h)
   global_vlan_site = {}
   h['ipv6']['site_global_kavlans'].each { |key, value| global_vlan_site[value] = key }
+  # Set kavlan ipv6 informations at site level
+  h['sites'].each_pair do |site_uid, hs|
+    site_prefix = IPAddress hs['ipv6']['prefix']
+    kavlan_ids = h['vlans']['base'].map{ |k,v| k if v["type"] =~ /local|routed/ }.compact + [h['ipv6']['site_global_kavlans'][site_uid]]
+    kavlan_ids.each do |kvl_id|
+      kavlan_prefix = IPAddress site_prefix.to_string
+      kavlan_prefix.prefix = 64
+      case kvl_id
+      when 1..3 # local non-routed
+        kavlan_prefix[3] |= (kvl_id + 0x80 - 1)
+        has_gateway = false
+      when 4..9 # local routed
+        kavlan_prefix[3] |= (kvl_id + 0x90 - 4)
+        has_gateway = true
+      else      # global
+        kavlan_prefix[3] |= 0xA0
+        has_gateway = true
+      end
+      hs['kavlans'][kvl_id]['network_ipv6'] = kavlan_prefix.to_string
+      if has_gateway
+        gateway = IPAddress kavlan_prefix.to_string
+        if kvl_id > 9 # global kavlan gateway encodes site at an additional place
+          gateway[4] = h['ipv6']['site_indexes'][site_uid] << 8
+        end
+        gateway[6] = 0xFFFF
+        gateway[7] = 0xFFFF
+        hs['kavlans'][kvl_id]['gateway_ipv6'] = gateway.compressed
+      end
+    end
+    prod_prefix = IPAddress site_prefix.to_string
+    prod_prefix.prefix = 64
+    gateway = IPAddress prod_prefix.to_string
+    gateway[6] = 0xFFFF
+    gateway[7] = 0xFFFF
+    hs['kavlans']['default']['network_ipv6'] = prod_prefix.to_string
+    hs['kavlans']['default']['gateway_ipv6'] = gateway.compressed
+  end
+  # Set kavlan ipv6 informations at node level
   h['sites'].each_pair do |site_uid, hs|
     hs['clusters'].each_pair do |_cluster_uid, hc|
       next if !hc['kavlan'] # skip clusters where kavlan is globally set to false (used for initial cluster installation)
@@ -201,16 +239,11 @@ def add_kavlan_ipv6s(h)
             hn['kavlan6'][iface] = {}
             hn['kavlan'][iface].each_key do |kvl|
               kvl_id = kvl.split('-')[1].to_i
-              ip6 = IPAddress hs['ipv6']['prefix']
-              case kvl_id
-              when 1..3 # local non-routed
-                ip6[3] |= (kvl_id + 0x80 - 1)
-              when 4..9 # local routed
-                ip6[3] |= (kvl_id + 0x90 - 4)
-              else      # global
+              if kvl_id <= 9
+                ip6 = IPAddress hs['kavlans'][kvl_id]['network_ipv6']
+              else
                 # The prefix is based on the site of the global kavlan, not the site of the node
-                ip6[3] = h['ipv6']['site_indexes'][global_vlan_site[kvl_id]] << 8
-                ip6[3] |= 0xA0
+                ip6 = IPAddress h['sites'][global_vlan_site[kvl_id]]['kavlans'][kvl_id]['network_ipv6']
                 # global kavlan: set most signicant octet of interface part to site index
                 ip6[4] = h['ipv6']['site_indexes'][site_uid] << 8
               end
