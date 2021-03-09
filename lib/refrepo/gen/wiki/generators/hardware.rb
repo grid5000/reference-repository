@@ -75,6 +75,7 @@ class G5KHardwareGenerator < WikiGenerator
       'pmem_size' => {},
       'net_interconnects' => {},
       'net_models' => {},
+      'nvme_models' => {},
       'acc_families' => {},
       'acc_models' => {},
       'acc_cores' => {},
@@ -165,6 +166,23 @@ class G5KHardwareGenerator < WikiGenerator
             net_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
               init(data, 'net_models', k)
               data['net_models'][k][site_uid] += v
+            }
+
+            # NVMe SSD models
+            nvme = node_hash['storage_devices'].select{ |v|
+              v['interface'] == 'NVME'}.map{ |v|
+              t = v['model'] || 'N/A';
+              [
+                {
+                  text: t, sort: t
+                }
+              ]
+            }.uniq
+
+            nvme_models = nvme.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
+            nvme_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
+              init(data, 'nvme_models', k)
+              data['nvme_models'][k][site_uid] += v
             }
 
             # Accelerators
@@ -263,6 +281,9 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
 
     generated_content += "\n= Storage ="
+    generated_content += "\n== NVMe SSD models ==\n"
+    table_columns = ['NVMe SSD models'] + sites + ['NVMe SSDs total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'nvme_models'))
     generated_content += "\n== Nodes with several disks ==\n"
     generated_content +=  generate_storage
     generated_content += "\n''*: disk is [[Disk_reservation|reservable]]''"
