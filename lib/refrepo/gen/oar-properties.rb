@@ -405,7 +405,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['cpucore'] = node['architecture']['nb_cores'] / node['architecture']['nb_procs']
   h['cputype'] = [node['processor']['model'], node['processor']['version']].join(' ')
   h['cpufreq'] = node['processor']['clock_speed'] / 1_000_000_000.0
-  h['disktype'] = (node['storage_devices'].first || {})['interface']
+  h['disktype'] = [node['storage_devices'].first['interface'], node['storage_devices'].first['storage']].join('/')
   h['chassis'] = [node['chassis']['manufacturer'], node['chassis']['name'], node['chassis']['serial']].join(' ')
 
   # ETH
