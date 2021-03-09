@@ -172,7 +172,7 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The rate of the connected Myrinet interface in Gbps"
     },
     "disktype" => {
-      "description" => "What disk's interface family node's disk is member of ?"
+      "description" => "The node's primary disk interface and storage type (like SATA/SSD)"
     },
     "disk_reservation_count" => {
       "description" => "The number of reservable disks"
