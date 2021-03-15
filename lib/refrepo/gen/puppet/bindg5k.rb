@@ -519,6 +519,105 @@ end
 
 CLEAN_OLD_ZONE_FILES = false
 
+def fetch_site_records(site)
+  site_records = {}
+
+  # Servers
+  site_records['servers'] = get_servers_records(site) unless site['servers'].nil?
+
+  # PDUs
+  site_records['pdus'] = get_pdus_records(site) unless site['pdus'].nil?
+
+  # Networks and laptops (same input format)
+  site_records['networks'] = get_networks_records(site, 'network_equipments') unless site['network_equipments'].nil?
+  site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
+
+  site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
+
+    cluster.fetch('nodes').select { |node_uid, node|
+      node != nil && node["status"] != "retired" && node.has_key?('network_adapters')
+    }.each_sort_by_node_uid { |node_uid, node|
+
+      network_adapters = {}
+
+      # Nodes
+      node.fetch('network_adapters').each { |net|
+        network_adapters[net['device']] = {
+          "ip"      => net["ip"],
+          "ip6"     => net["ip6"],
+          "mounted" => net["mounted"],
+          'alias'   => net['alias'],
+          'pname'   => net['name'],
+        }
+      }
+
+      # Mic
+      if node['mic'] && (node['mic']['ip'] || node['mic']['ip6'])
+        network_adapters['mic0'] = {"ip" => node['mic']['ip'], "ip6" => node['mic']['ip6']}
+      end
+
+      site_records[cluster_uid] ||= []
+      site_records[cluster_uid] += get_node_records(cluster_uid, node_uid, network_adapters)
+
+      # Kavlan
+      kavlan_adapters = {}
+      ['kavlan', 'kavlan6'].each { |kavlan_kind|
+        if node[kavlan_kind]
+          node.fetch(kavlan_kind).each { |net_uid, net_hash|
+            net_hash.each { |kavlan_net_uid, ip|
+              kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] ||= {}
+              kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['mounted'] = node['network_adapters'].select { |n|
+                n['device'] == net_uid
+              }[0]['mounted']
+              kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['pname'] = node['network_adapters'].select { |n|
+                n['device'] == net_uid
+              }.first['name'] + '-' + kavlan_net_uid
+              if kavlan_kind == 'kavlan6'
+                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip6'] = ip
+              else
+                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip'] = ip
+              end
+            }
+          }
+        end
+      }
+      if kavlan_adapters.length > 0
+        key_sr = "#{cluster_uid}-kavlan"
+        site_records[key_sr] ||= []
+        site_records[key_sr] += get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
+      end
+    } # each nodes
+  } # each cluster
+
+  site_records
+end
+
+# Returns one hash entry per reverse dns file
+def compute_reverse_records(site_uid, site_records)
+  reverse_records = {}
+
+  site_records.each { |zone, records|
+    # Sort records
+    site_records[zone] = sort_records(records)
+
+    records.each{ |record|
+      # Get reverse records
+      reverse_file_name, reverse_record = get_reverse_record(record, site_uid)
+      if reverse_file_name != nil
+        reverse_records[reverse_file_name] ||= []
+        reverse_records[reverse_file_name].each {|r|
+          if r.label == reverse_record.label
+            puts "Warning: reverse entry with address #{reverse_record.label} already exists in #{reverse_file_name}, #{reverse_record.name} is duplicate"
+          end
+        }
+        reverse_records[reverse_file_name] << reverse_record
+      end
+    }
+  }
+
+  reverse_records
+end
+
 # main method
 def generate_puppet_bindg5k(options)
   $options = options
@@ -550,100 +649,15 @@ def generate_puppet_bindg5k(options)
       end
     end
 
-    site_records = {}
+    site_records = fetch_site_records(site)
 
-    # Servers
-    site_records['servers'] = get_servers_records(site) unless site['servers'].nil?
+    # One hash entry per reverse dns file
+    reverse_records = compute_reverse_records(site_uid, site_records)
 
-    # PDUs
-    site_records['pdus'] = get_pdus_records(site) unless site['pdus'].nil?
-
-    # Networks and laptops (same input format)
-    site_records['networks'] = get_networks_records(site, 'network_equipments') unless site['network_equipments'].nil?
-    site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
-
-    site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
-
-      cluster.fetch('nodes').select { |node_uid, node|
-        node != nil && node["status"] != "retired" && node.has_key?('network_adapters')
-      }.each_sort_by_node_uid { |node_uid, node|
-
-        network_adapters = {}
-
-        # Nodes
-        node.fetch('network_adapters').each { |net|
-          network_adapters[net['device']] = {
-            "ip"      => net["ip"],
-            "ip6"     => net["ip6"],
-            "mounted" => net["mounted"],
-            'alias'   => net['alias'],
-            'pname'   => net['name'],
-          }
-        }
-
-        # Mic
-        if node['mic'] && (node['mic']['ip'] || node['mic']['ip6'])
-          network_adapters['mic0'] = {"ip" => node['mic']['ip'], "ip6" => node['mic']['ip6']}
-        end
-
-        site_records[cluster_uid] ||= []
-        site_records[cluster_uid] += get_node_records(cluster_uid, node_uid, network_adapters)
-
-        # Kavlan
-        kavlan_adapters = {}
-        ['kavlan', 'kavlan6'].each { |kavlan_kind|
-          if node[kavlan_kind]
-            node.fetch(kavlan_kind).each { |net_uid, net_hash|
-              net_hash.each { |kavlan_net_uid, ip|
-                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"] ||= {}
-                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['mounted'] = node['network_adapters'].select { |n|
-                  n['device'] == net_uid
-                }[0]['mounted']
-                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['pname'] = node['network_adapters'].select { |n|
-                  n['device'] == net_uid
-                }.first['name'] + '-' + kavlan_net_uid
-                if kavlan_kind == 'kavlan6'
-                  kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip6'] = ip
-                else
-                  kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip'] = ip
-                end
-              }
-            }
-          end
-        }
-        if kavlan_adapters.length > 0
-          key_sr = "#{cluster_uid}-kavlan"
-          site_records[key_sr] ||= []
-          site_records[key_sr] += get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
-        end
-      } # each nodes
-    } # each cluster
-
-    reverse_records = {} # one hash entry per reverse dns file
-
-    site_records.each { |zone, records|
-
-      #Sort records
-      site_records[zone] = sort_records(records)
-
-      records.each{ |record|
-        #get Reverse records
-        reverse_file_name, reverse_record = get_reverse_record(record, site_uid)
-        if reverse_file_name != nil
-          reverse_records[reverse_file_name] ||= []
-          reverse_records[reverse_file_name].each {|r|
-            if r.label == reverse_record.label
-              puts "Warning: reverse entry with address #{reverse_record.label} already exists in #{reverse_file_name}, #{reverse_record.name} is duplicate"
-            end
-          }
-          reverse_records[reverse_file_name] << reverse_record
-        end
-      }
-    }
-
+    # Build all zones
     zones = []
 
-    #Sort reverse records and create reverse zone from files
+    # Sort reverse records and create reverse zone from files
     reverse_records.each{ |file_name, records|
       if file_name.start_with?('reverse6')
         records.sort!{ |a, b|
