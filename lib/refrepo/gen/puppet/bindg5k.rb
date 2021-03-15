@@ -618,6 +618,95 @@ def compute_reverse_records(site_uid, site_records)
   reverse_records
 end
 
+def generate_site_data(site_uid, site, dest_dir, zones_dir)
+  if CLEAN_OLD_ZONE_FILES and File::exist?(zones_dir)
+    # Cleanup of old zone files
+    Find.find(zones_dir) do |path|
+      next if not File::file?(path)
+      next if path =~ /manual/ # skip *manual* files
+      # FIXME those files are not named *manual*, but should not be removed
+      next if ['nancy-laptops.db', 'toulouse-servers.db', 'toulouse.db'].include?(File::basename(path))
+      FileUtils::rm(path)
+    end
+  end
+
+  site_records = fetch_site_records(site)
+
+  # One hash entry per reverse dns file
+  reverse_records = compute_reverse_records(site_uid, site_records)
+
+  # Build all zones
+  zones = []
+
+  # Sort reverse records and create reverse zone from files
+  reverse_records.each{ |file_name, records|
+    if file_name.start_with?('reverse6')
+      records.sort!{ |a, b|
+        a.label.gsub('.','').reverse <=> b.label.gsub('.','').reverse
+      }
+    else
+      records.sort_by!{ |r|
+        [r.label.to_i, r.name]
+      }
+    end
+
+    reverse_file_path = File.join(zones_dir, file_name)
+    zone = load_zone(reverse_file_path, site_uid, site, true)
+    if diff_zone_file(zone, records)
+      zone.soa.serial = update_serial(zone.soa.serial)
+    end
+    zone.records = records;
+    zones << zone
+  }
+
+  # Manage site zone (SITE.db file)
+  # It only contains header and inclusion of other db files
+  # Check modification in included files and update serial accordingly
+  site_zone_path = File.join(zones_dir, site_uid + ".db")
+  site_zone = load_zone(site_zone_path, site_uid, site, true)
+  site_zone_changed = false
+
+  site_records.each{ |type, records|
+    next if records.empty?
+    zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
+    zone = load_zone(zone_file_path, site_uid, site, false)
+    if diff_zone_file(zone, records)
+      puts "Zone file changed: #{zone.file_path}" if $options[:verbose]
+      site_zone_changed = true
+    end
+    zone.records = records
+    site_zone.include += "$INCLUDE /etc/bind/zones/#{site_uid}/#{File.basename(zone_file_path)}\n"
+    zones << zone
+  }
+
+  if (site_zone_changed)
+    site_zone.soa.serial = update_serial(site_zone.soa.serial)
+  end
+
+  zones << site_zone
+
+  # zones that are already known and going to be written
+  future_zones = zones.map { |z| File::basename(z.file_path) }
+
+  # Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
+  Dir.glob(File.join(zones_dir, "reverse-*-manual.db")).each { |reverse_manual_file|
+    # FIXME: need to be adapted for IPv6 at some point
+    output_file = reverse_manual_file.sub("-manual.db", ".db")
+    next if future_zones.include?(File::basename(output_file)) # the zone is already going to be written
+    puts "Creating file for orphan reverse manual file: #{output_file}" if $options[:verbose]
+    # Creating the zone will include automatically the manual file
+    zone = load_zone(output_file, site_uid, site, true)
+    zones << zone
+  }
+
+  zones.each{ |zone|
+    write_zone(zone)
+  }
+
+  write_site_conf(site_uid, dest_dir, zones_dir)
+  write_site_local_conf(site_uid, dest_dir, zones_dir)
+end
+
 # main method
 def generate_puppet_bindg5k(options)
   $options = options
@@ -637,93 +726,6 @@ def generate_puppet_bindg5k(options)
 
     dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
     zones_dir = File.join(dest_dir, "zones/#{site_uid}")
-
-    if CLEAN_OLD_ZONE_FILES and File::exist?(zones_dir)
-      # Cleanup of old zone files
-      Find.find(zones_dir) do |path|
-        next if not File::file?(path)
-        next if path =~ /manual/ # skip *manual* files
-        # FIXME those files are not named *manual*, but should not be removed
-        next if ['nancy-laptops.db', 'toulouse-servers.db', 'toulouse.db'].include?(File::basename(path))
-        FileUtils::rm(path)
-      end
-    end
-
-    site_records = fetch_site_records(site)
-
-    # One hash entry per reverse dns file
-    reverse_records = compute_reverse_records(site_uid, site_records)
-
-    # Build all zones
-    zones = []
-
-    # Sort reverse records and create reverse zone from files
-    reverse_records.each{ |file_name, records|
-      if file_name.start_with?('reverse6')
-        records.sort!{ |a, b|
-          a.label.gsub('.','').reverse <=> b.label.gsub('.','').reverse
-        }
-      else
-        records.sort_by!{ |r|
-          [r.label.to_i, r.name]
-        }
-      end
-
-      reverse_file_path = File.join(zones_dir, file_name)
-      zone = load_zone(reverse_file_path, site_uid, site, true)
-      if diff_zone_file(zone, records)
-        zone.soa.serial = update_serial(zone.soa.serial)
-      end
-      zone.records = records;
-      zones << zone
-    }
-
-    #Manage site zone (SITE.db file)
-    #It only contains header and inclusion of other db files
-    #Check modification in included files and update serial accordingly
-    site_zone_path = File.join(zones_dir, site_uid + ".db")
-    site_zone = load_zone(site_zone_path, site_uid, site, true)
-    site_zone_changed = false
-
-    site_records.each{ |type, records|
-      next if records.empty?
-      zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
-      zone = load_zone(zone_file_path, site_uid, site, false)
-      if diff_zone_file(zone, records)
-        puts "Zone file changed: #{zone.file_path}" if $options[:verbose]
-        site_zone_changed = true
-      end
-      zone.records = records
-      site_zone.include += "$INCLUDE /etc/bind/zones/#{site_uid}/#{File.basename(zone_file_path)}\n"
-      zones << zone
-    }
-
-    if (site_zone_changed)
-      site_zone.soa.serial = update_serial(site_zone.soa.serial)
-    end
-
-    zones << site_zone
-
-    # zones that are already known and going to be written
-    future_zones = zones.map { |z| File::basename(z.file_path) }
-
-    # Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
-    Dir.glob(File.join(zones_dir, "reverse-*-manual.db")).each { |reverse_manual_file|
-      #FIXME: need to be adapted for IPv6 at some point
-      output_file = reverse_manual_file.sub("-manual.db", ".db")
-      next if future_zones.include?(File::basename(output_file)) # the zone is already going to be written
-      puts "Creating file for orphan reverse manual file: #{output_file}" if $options[:verbose]
-      #Creating the zone will include automatically the manual file
-      zone = load_zone(output_file, site_uid, site, true)
-      zones << zone
-    }
-
-    zones.each{ |zone|
-      write_zone(zone)
-    }
-
-    write_site_conf(site_uid, dest_dir, zones_dir)
-    write_site_local_conf(site_uid, dest_dir, zones_dir)
-
+    generate_site_data(site_uid, site, dest_dir, zones_dir)
   } # each sites
 end
