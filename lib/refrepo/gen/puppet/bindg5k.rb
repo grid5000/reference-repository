@@ -421,7 +421,7 @@ def include_manual_file(zone)
   return ''
 end
 
-#
+# Header can be :internal, :external, or :none
 def load_zone(zone_file_path, site_uid, site, header)
   if File.exist?(zone_file_path)
     zone = DNS::Zone.load(File.read(zone_file_path))
@@ -431,21 +431,23 @@ def load_zone(zone_file_path, site_uid, site, header)
   zone.site_uid = site_uid
   zone.file_path = zone_file_path
   #If the target file will have a header or not (manage included files without records duplication)
-  zone.header = header
+  zone.header = (header != :none)
   zone.soa = zone.records[0] if zone.records.any? && zone.records[0].type == 'SOA'
 
   #We only want the zone to manage these records, we will manage SOA, MX, NS, @s manually
   zone.records.reject! { |rec|
     !( rec.is_a?(DNS::Zone::RR::A) || rec.is_a?(DNS::Zone::RR::CNAME) || rec.is_a?(DNS::Zone::RR::PTR)) || rec.label == "@"
   }
-  if header
-    set_zone_header_records(zone, site)
+  if header == :internal
+    set_internal_zone_header_records(zone, site)
+  elsif header == :external
+    set_external_zone_header_records(zone, site)
   end
   zone.include = include_manual_file(zone)
   return zone
 end
 
-def set_zone_header_records(zone, site)
+def set_internal_zone_header_records(zone, site)
   if zone.soa.nil?
     soa = DNS::Zone::RR::SOA.new
     soa.serial = Time.now.utc.strftime("%Y%m%d00")
@@ -467,6 +469,27 @@ def set_zone_header_records(zone, site)
     zone.at = DNS::Zone::RR::A.new
     zone.at.address = site['frontend_ip']
   end
+end
+
+def set_external_zone_header_records(zone, _site)
+  if zone.soa.nil?
+    soa = DNS::Zone::RR::SOA.new
+    soa.serial = Time.now.utc.strftime("%Y%m%d00")
+    soa.refresh_ttl = "4h"
+    soa.retry_ttl = "1h"
+    soa.expiry_ttl = "1w"
+    soa.minimum_ttl = "1h"
+    soa.nameserver = "ns1.grid5000.fr."
+    soa.email = "network-staff.lists.grid5000.fr."
+    zone.soa = soa
+  end
+  ns1 = DNS::Zone::RR::NS.new
+  ns1.nameserver = "ns1.grid5000.fr."
+  ns2 = DNS::Zone::RR::NS.new
+  ns2.nameserver = "ns2.grid5000.fr."
+  ns3 = DNS::Zone::RR::NS.new
+  ns3.nameserver = "dns.inria.fr."
+  zone.ns_list = [ns1, ns2, ns3]
 end
 
 def update_serial(serial)
@@ -523,6 +546,13 @@ def write_site_local_conf(site_uid, dest_dir, zones_dir)
     File.write(conf_file, conf_content)
 end
 
+def write_site_external_conf(site_uid, dest_dir, zones_dir)
+    conf_file = File.join(dest_dir, "#{site_uid}-zones.conf")
+    FileUtils.mkdir_p(File.dirname(conf_file))
+    conf_content = ERB.new(File.read(File.expand_path('templates/bind-site-external.conf.erb', File.dirname(__FILE__)))).result(binding)
+    File.write(conf_file, conf_content)
+end
+
 def write_zone(zone)
   FileUtils.mkdir_p(File.dirname(zone.file_path))
   File.write(zone.file_path, zone.dump)
@@ -530,18 +560,23 @@ end
 
 CLEAN_OLD_ZONE_FILES = false
 
-def fetch_site_records(site)
+# Type can be :internal (internal DNS data served to Grid5000) or
+# :external (external DNS data served to the Internet)
+def fetch_site_records(site, type)
   site_records = {}
 
-  # Servers
-  site_records['servers'] = get_servers_records(site) unless site['servers'].nil?
+  # This makes no sense (currently) for external DNS
+  if type == :internal
+    # Servers
+    site_records['servers'] = get_servers_records(site) unless site['servers'].nil?
 
-  # PDUs
-  site_records['pdus'] = get_pdus_records(site) unless site['pdus'].nil?
+    # PDUs
+    site_records['pdus'] = get_pdus_records(site) unless site['pdus'].nil?
 
-  # Networks and laptops (same input format)
-  site_records['networks'] = get_networks_records(site, 'network_equipments') unless site['network_equipments'].nil?
-  site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
+    # Networks and laptops (same input format)
+    site_records['networks'] = get_networks_records(site, 'network_equipments') unless site['network_equipments'].nil?
+    site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
+  end
 
   site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
 
@@ -554,12 +589,12 @@ def fetch_site_records(site)
       # Nodes
       node.fetch('network_adapters').each { |net|
         network_adapters[net['device']] = {
-          "ip"      => net["ip"],
           "ip6"     => net["ip6"],
           "mounted" => net["mounted"],
           'alias'   => net['alias'],
           'pname'   => net['name'],
         }
+        network_adapters[net['device']]["ip"] = net["ip"] if type == :internal
       }
 
       # Mic
@@ -572,7 +607,9 @@ def fetch_site_records(site)
 
       # Kavlan
       kavlan_adapters = {}
-      ['kavlan', 'kavlan6'].each { |kavlan_kind|
+      kavlan_kinds = ['kavlan6']
+      kavlan_kinds << 'kavlan' if type == :internal
+      kavlan_kinds.each { |kavlan_kind|
         if node[kavlan_kind]
           node.fetch(kavlan_kind).each { |net_uid, net_hash|
             net_hash.each { |kavlan_net_uid, ip|
@@ -629,7 +666,7 @@ def compute_reverse_records(site_uid, site_records)
   reverse_records
 end
 
-def generate_site_data(site_uid, site, dest_dir, zones_dir)
+def generate_internal_site_data(site_uid, site, dest_dir, zones_dir)
   if CLEAN_OLD_ZONE_FILES and File::exist?(zones_dir)
     # Cleanup of old zone files
     Find.find(zones_dir) do |path|
@@ -641,13 +678,13 @@ def generate_site_data(site_uid, site, dest_dir, zones_dir)
     end
   end
 
-  site_records = fetch_site_records(site)
+  site_records = fetch_site_records(site, :internal)
 
   # One hash entry per reverse dns file
   reverse_records = compute_reverse_records(site_uid, site_records)
 
-  # Build all zones
-  zones = []
+  # Build all internal DNS zones
+  internal_zones = []
 
   # Sort reverse records and create reverse zone from files
   reverse_records.each{ |file_name, records|
@@ -662,42 +699,42 @@ def generate_site_data(site_uid, site, dest_dir, zones_dir)
     end
 
     reverse_file_path = File.join(zones_dir, file_name)
-    zone = load_zone(reverse_file_path, site_uid, site, true)
+    zone = load_zone(reverse_file_path, site_uid, site, :internal)
     if diff_zone_file(zone, records)
       zone.soa.serial = update_serial(zone.soa.serial)
     end
     zone.records = records;
-    zones << zone
+    internal_zones << zone
   }
 
   # Manage site zone (SITE.db file)
   # It only contains header and inclusion of other db files
   # Check modification in included files and update serial accordingly
   site_zone_path = File.join(zones_dir, site_uid + ".db")
-  site_zone = load_zone(site_zone_path, site_uid, site, true)
+  site_zone = load_zone(site_zone_path, site_uid, site, :internal)
   site_zone_changed = false
 
   site_records.each{ |type, records|
     next if records.empty?
     zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
-    zone = load_zone(zone_file_path, site_uid, site, false)
+    zone = load_zone(zone_file_path, site_uid, site, :none)
     if diff_zone_file(zone, records)
-      puts "Zone file changed: #{zone.file_path}" if $options[:verbose]
+      puts "Internal zone file changed: #{zone.file_path}" if $options[:verbose]
       site_zone_changed = true
     end
     zone.records = records
     site_zone.include += "$INCLUDE /etc/bind/zones/#{site_uid}/#{File.basename(zone_file_path)}\n"
-    zones << zone
+    internal_zones << zone
   }
 
   if (site_zone_changed)
     site_zone.soa.serial = update_serial(site_zone.soa.serial)
   end
 
-  zones << site_zone
+  internal_zones << site_zone
 
   # zones that are already known and going to be written
-  future_zones = zones.map { |z| File::basename(z.file_path) }
+  future_zones = internal_zones.map { |z| File::basename(z.file_path) }
 
   # Create reverse-*.db files for each reverse-*-manual.db that do not have (yet) a corresponding file.
   Dir.glob(File.join(zones_dir, "reverse-*-manual.db")).each { |reverse_manual_file|
@@ -706,16 +743,76 @@ def generate_site_data(site_uid, site, dest_dir, zones_dir)
     next if future_zones.include?(File::basename(output_file)) # the zone is already going to be written
     puts "Creating file for orphan reverse manual file: #{output_file}" if $options[:verbose]
     # Creating the zone will include automatically the manual file
-    zone = load_zone(output_file, site_uid, site, true)
-    zones << zone
+    zone = load_zone(output_file, site_uid, site, :internal)
+    internal_zones << zone
   }
 
-  zones.each{ |zone|
+  internal_zones.each{ |zone|
     write_zone(zone)
   }
 
   write_site_conf(site_uid, dest_dir, zones_dir)
   write_site_local_conf(site_uid, dest_dir, zones_dir)
+end
+
+def generate_external_site_data(site_uid, site, dest_dir, zones_dir)
+  site_records = fetch_site_records(site, :external)
+
+  # One hash entry per reverse dns file
+  reverse_records = compute_reverse_records(site_uid, site_records)
+
+  # Build all external DNS zones (IPv6 only)
+  external_zones = []
+
+  # Sort reverse records and create reverse zone from files
+  reverse_records.each{ |file_name, records|
+    # Only keep IPv6 reverse zones
+    next if not file_name.start_with?('reverse6')
+    # Sort
+    records.sort!{ |a, b|
+      a.label.gsub('.','').reverse <=> b.label.gsub('.','').reverse
+    }
+
+    reverse_file_path = File.join(zones_dir, file_name)
+    zone = load_zone(reverse_file_path, site_uid, site, :external)
+    if diff_zone_file(zone, records)
+      zone.soa.serial = update_serial(zone.soa.serial)
+    end
+    zone.records = records;
+    external_zones << zone
+  }
+
+  # Manage site zone (SITE.db file)
+  # It only contains header and inclusion of other db files
+  # Check modification in included files and update serial accordingly
+  site_zone_path = File.join(zones_dir, site_uid + ".db")
+  site_zone = load_zone(site_zone_path, site_uid, site, :external)
+  site_zone_changed = false
+
+  site_records.each{ |type, records|
+    next if records.empty?
+    zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
+    zone = load_zone(zone_file_path, site_uid, site, :none)
+    if diff_zone_file(zone, records)
+      puts "External zone file changed: #{zone.file_path}" if $options[:verbose]
+      site_zone_changed = true
+    end
+    zone.records = records
+    site_zone.include += "$INCLUDE /etc/bind/zones/external/#{site_uid}/#{File.basename(zone_file_path)}\n"
+    external_zones << zone
+  }
+
+  if (site_zone_changed)
+    site_zone.soa.serial = update_serial(site_zone.soa.serial)
+  end
+
+  external_zones << site_zone
+
+  external_zones.each{ |zone|
+    write_zone(zone)
+  }
+
+  write_site_external_conf(site_uid, dest_dir, zones_dir)
 end
 
 # main method
@@ -735,8 +832,12 @@ def generate_puppet_bindg5k(options)
 
     next unless $options[:sites].include?(site_uid)
 
-    dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
-    zones_dir = File.join(dest_dir, "zones/#{site_uid}")
-    generate_site_data(site_uid, site, dest_dir, zones_dir)
+    internal_dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
+    internal_zones_dir = File.join(internal_dest_dir, "zones/#{site_uid}")
+    generate_internal_site_data(site_uid, site, internal_dest_dir, internal_zones_dir)
+
+    external_dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind_external/"
+    external_zones_dir = File.join(external_dest_dir, "zones/#{site_uid}")
+    generate_external_site_data(site_uid, site, external_dest_dir, external_zones_dir)
   } # each sites
 end
