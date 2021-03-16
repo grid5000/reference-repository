@@ -245,14 +245,18 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
 
     if net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
       # CNAME enabled for primary interface (node-id-iface cname node-id)
-      cname_record = DNS::Zone::RR::CNAME.new
-      cname_record.label = "#{cluster_uid}-#{node_id}-#{net_uid}"
-      cname_record.domainname = "#{cluster_uid}-#{node_id}"
-      records << cname_record
-      cname_record_ipv6 = DNS::Zone::RR::CNAME.new
-      cname_record_ipv6.label = "#{cluster_uid}-#{node_id}-#{net_uid}-ipv6"
-      cname_record_ipv6.domainname = "#{cluster_uid}-#{node_id}-ipv6"
-      records << cname_record_ipv6
+      if net_hash['ip']
+        cname_record = DNS::Zone::RR::CNAME.new
+        cname_record.label = "#{cluster_uid}-#{node_id}-#{net_uid}"
+        cname_record.domainname = "#{cluster_uid}-#{node_id}"
+        records << cname_record
+      end
+      if net_hash['ip6']
+        cname_record_ipv6 = DNS::Zone::RR::CNAME.new
+        cname_record_ipv6.label = "#{cluster_uid}-#{node_id}-#{net_uid}-ipv6"
+        cname_record_ipv6.domainname = "#{cluster_uid}-#{node_id}-ipv6"
+        records << cname_record_ipv6
+      end
     end
 
     #Handle interface aliases
@@ -301,11 +305,13 @@ def get_node_kavlan_records(_cluster_uid, node_uid, network_adapters, kavlan_ada
     end
 
     # CNAME only for primary interface kavlan
-    if net_primaries.include?(net_uid_eth)
+    if net_primaries.include?(net_uid_eth) and net_hash['ip']
       cname_record = DNS::Zone::RR::CNAME.new
       cname_record.label = "#{node_uid}-#{net_uid_kavlan}"
       cname_record.domainname = "#{node_uid}-#{net_uid}" #sol-23-eth0-kavlan-1
       records << cname_record
+    end
+    if net_primaries.include?(net_uid_eth) and net_hash['ip6']
       cname_record_ipv6 = DNS::Zone::RR::CNAME.new
       cname_record_ipv6.label = "#{node_uid}-#{net_uid_kavlan}-ipv6"
       cname_record_ipv6.domainname = "#{node_uid}-#{net_uid}-ipv6" #sol-23-eth0-kavlan-1
