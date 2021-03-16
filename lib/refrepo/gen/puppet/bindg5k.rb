@@ -61,7 +61,7 @@ class DNS::Zone
   attr_accessor :site_uid
   attr_accessor :header
   attr_accessor :soa
-  attr_accessor :ns
+  attr_accessor :ns_list
   attr_accessor :mx
   attr_accessor :at
   attr_accessor :include
@@ -71,11 +71,15 @@ class DNS::Zone
     if header
       content += "$TTL 3h\n"
       content += soa.dump + "\n"
-      content += ns.dump + "\n"
+      for ns in ns_list
+        content += ns.dump + "\n"
+      end
       if at
         content += at.dump + "\n"
       end
-      content += mx.dump + "\n"
+      if mx
+        content += mx.dump + "\n"
+      end
     end
     return content
   end
@@ -447,8 +451,9 @@ def set_zone_header_records(zone, site)
     soa.email = "nsmaster.dns.grid5000.fr."
     zone.soa = soa
   end
-  zone.ns = DNS::Zone::RR::NS.new
-  zone.ns.nameserver = "dns.grid5000.fr."
+  ns = DNS::Zone::RR::NS.new
+  ns.nameserver = "dns.grid5000.fr."
+  zone.ns_list = [ns]
   zone.mx = DNS::Zone::RR::MX.new
   zone.mx.priority = 10
   zone.mx.exchange = "mail.#{zone.site_uid}.grid5000.fr."
