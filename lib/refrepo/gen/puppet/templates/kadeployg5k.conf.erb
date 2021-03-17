@@ -11,6 +11,17 @@ partitioning:
     prod: 2
     deploy: 3
     swap: 1
+trusted_deployment:
+  partition: /dev/sda<%= suffix.empty? ? "2":"3"%>
+  user: oar
+<% if data['trusted_env'] %>
+  envs:
+    - name: <%= cluster['nodes'].values.first['software']['standard-environment'] %>
+      user: deploy
+<% end %>
+kexec:
+  server_precmd: "true"
+  script: /etc/kadeploy3-dev/kexec.sh
   <% if ! data['partitioning.disable_swap'].nil? %>disable_swap: <%= data['partitioning.disable_swap'] %><% end %>
 timeouts:
   reboot: <%= data['reboot.timeout'] %>
@@ -82,6 +93,9 @@ automata:
     SetDeploymentEnv:
     - timeout: <%= data['deployment.timeout'] %>
       type: Untrusted
+      retries: <%= data['deployment.retries'].nil? ? 1 : data['deployment.retries'] %>
+    - timeout: <%= data['deployment.timeout'] %>
+      type: Kexec
       retries: <%= data['deployment.retries'].nil? ? 1 : data['deployment.retries'] %>
     BroadcastEnv:
     - timeout: <%= data['broadcast.timeout'] %>
