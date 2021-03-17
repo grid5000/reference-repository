@@ -33,7 +33,7 @@ class "PXE" {
     # if the vendor-class-identifier is set to PXEClient in the client dhcp request
     match if substring(option vendor-class-identifier, 0, 9) = "PXEClient";
     #
-    # filename define the file retrieve by the client, there pxelinux.0
+    # filename define the file retrieve by the client, there lpxelinux.0
     # our tftp is chrooted so is just the path to the file
     # If you prefer use grub, use pxegrub compiled for your ethernet card.
     if option arch = 00:07 {
@@ -43,7 +43,7 @@ class "PXE" {
     } else if option arch = 00:0b {
         filename "/grub/arm64-efi/core.efi";
     } else {
-        filename "/pxelinux.0";
+        filename "/lpxelinux.0";
         #
         # Set the  vendor-class-identifier field to PXEClient in dhcp answer
         # if this field is not set the pxe client will ignore the answer !
