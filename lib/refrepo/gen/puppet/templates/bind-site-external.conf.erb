@@ -19,6 +19,7 @@ Dir.entries(zones_dir).sort.each { |file|
 %>
   zone "<%= zone %>" {
     type master;
+    allow-query { any; };
     file "/etc/bind/zones/external/<%= site_uid %>/<%= file %>";
   };
 <% } %>
