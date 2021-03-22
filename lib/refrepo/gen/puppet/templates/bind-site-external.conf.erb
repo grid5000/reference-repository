@@ -1,0 +1,25 @@
+<%
+# List file in the directory instead of using the 'reverse' variable as some files might be set manually
+Dir.entries(zones_dir).sort.each { |file|
+  next unless /.*.db$/.match(file)
+  next if /#{site_uid}-/.match(file) #Do not include site_uid-{servers, pdus} etc 
+
+  comment = ''
+  zone = ''
+
+  if file == "#{site_uid}.db"
+    zone = "#{site_uid}.grid5000.fr"
+  elsif /^reverse6-(.*).db$/.match(file)
+    zone = "#{$1}.ip6.arpa"
+  else
+    puts "Error: unknown zone for '#{file}' in '#{zones_dir}'"
+    next
+  end
+
+%>
+  zone "<%= zone %>" {
+    type master;
+    allow-query { any; };
+    file "/etc/bind/zones/external/<%= site_uid %>/<%= file %>";
+  };
+<% } %>
