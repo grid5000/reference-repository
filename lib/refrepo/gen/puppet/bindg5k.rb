@@ -488,7 +488,7 @@ def set_external_zone_header_records(zone, _site)
   ns2 = DNS::Zone::RR::NS.new
   ns2.nameserver = "ns2.grid5000.fr."
   ns3 = DNS::Zone::RR::NS.new
-  ns3.nameserver = "dns.inria.fr."
+  ns3.nameserver = "ns-ext1.grid5000.fr."
   zone.ns_list = [ns1, ns2, ns3]
 end
 
