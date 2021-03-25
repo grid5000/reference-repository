@@ -413,16 +413,24 @@ def sort_records(records)
   return sorted_records
 end
 
-def include_manual_file(zone)
+# zone_type can be :internal or :external
+def include_manual_file(zone, zone_type)
   manual_file_path = File.join(File.dirname(zone.file_path), File.basename(zone.file_path).sub('.db', '') + '-manual.db')
+  if zone_type == :internal
+    base_dir = "/etc/bind/zones"
+  elsif zone_type == :external
+    base_dir = "/etc/bind/zones/external"
+  else
+    raise "Zone type should be either :internal or :external"
+  end
   if (File.exist?(manual_file_path))
-    return "$INCLUDE /etc/bind/zones/#{zone.site_uid}/#{File.basename(zone.file_path).sub('.db', '') + '-manual.db'}\n"
+    return "$INCLUDE #{base_dir}/#{zone.site_uid}/#{File.basename(zone.file_path).sub('.db', '') + '-manual.db'}\n"
   end
   return ''
 end
 
-# Header can be :internal, :external, or :none
-def load_zone(zone_file_path, site_uid, site, header)
+# zone_type can be :internal or :external
+def load_zone(zone_file_path, site_uid, site, zone_type, add_header)
   if File.exist?(zone_file_path)
     zone = DNS::Zone.load(File.read(zone_file_path))
   else
@@ -431,19 +439,19 @@ def load_zone(zone_file_path, site_uid, site, header)
   zone.site_uid = site_uid
   zone.file_path = zone_file_path
   #If the target file will have a header or not (manage included files without records duplication)
-  zone.header = (header != :none)
+  zone.header = add_header
   zone.soa = zone.records[0] if zone.records.any? && zone.records[0].type == 'SOA'
 
   #We only want the zone to manage these records, we will manage SOA, MX, NS, @s manually
   zone.records.reject! { |rec|
     !( rec.is_a?(DNS::Zone::RR::A) || rec.is_a?(DNS::Zone::RR::CNAME) || rec.is_a?(DNS::Zone::RR::PTR)) || rec.label == "@"
   }
-  if header == :internal
+  if add_header && zone_type == :internal
     set_internal_zone_header_records(zone, site)
-  elsif header == :external
+  elsif add_header && zone_type == :external
     set_external_zone_header_records(zone, site)
   end
-  zone.include = include_manual_file(zone)
+  zone.include = include_manual_file(zone, zone_type)
   return zone
 end
 
@@ -699,7 +707,7 @@ def generate_internal_site_data(site_uid, site, dest_dir, zones_dir)
     end
 
     reverse_file_path = File.join(zones_dir, file_name)
-    zone = load_zone(reverse_file_path, site_uid, site, :internal)
+    zone = load_zone(reverse_file_path, site_uid, site, :internal, true)
     if diff_zone_file(zone, records)
       zone.soa.serial = update_serial(zone.soa.serial)
     end
@@ -711,13 +719,13 @@ def generate_internal_site_data(site_uid, site, dest_dir, zones_dir)
   # It only contains header and inclusion of other db files
   # Check modification in included files and update serial accordingly
   site_zone_path = File.join(zones_dir, site_uid + ".db")
-  site_zone = load_zone(site_zone_path, site_uid, site, :internal)
+  site_zone = load_zone(site_zone_path, site_uid, site, :internal, true)
   site_zone_changed = false
 
   site_records.each{ |type, records|
     next if records.empty?
     zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
-    zone = load_zone(zone_file_path, site_uid, site, :none)
+    zone = load_zone(zone_file_path, site_uid, site, :internal, false)
     if diff_zone_file(zone, records)
       puts "Internal zone file changed: #{zone.file_path}" if $options[:verbose]
       site_zone_changed = true
@@ -743,7 +751,7 @@ def generate_internal_site_data(site_uid, site, dest_dir, zones_dir)
     next if future_zones.include?(File::basename(output_file)) # the zone is already going to be written
     puts "Creating file for orphan reverse manual file: #{output_file}" if $options[:verbose]
     # Creating the zone will include automatically the manual file
-    zone = load_zone(output_file, site_uid, site, :internal)
+    zone = load_zone(output_file, site_uid, site, :internal, true)
     internal_zones << zone
   }
 
@@ -774,7 +782,7 @@ def generate_external_site_data(site_uid, site, dest_dir, zones_dir)
     }
 
     reverse_file_path = File.join(zones_dir, file_name)
-    zone = load_zone(reverse_file_path, site_uid, site, :external)
+    zone = load_zone(reverse_file_path, site_uid, site, :external, true)
     if diff_zone_file(zone, records)
       zone.soa.serial = update_serial(zone.soa.serial)
     end
@@ -786,13 +794,13 @@ def generate_external_site_data(site_uid, site, dest_dir, zones_dir)
   # It only contains header and inclusion of other db files
   # Check modification in included files and update serial accordingly
   site_zone_path = File.join(zones_dir, site_uid + ".db")
-  site_zone = load_zone(site_zone_path, site_uid, site, :external)
+  site_zone = load_zone(site_zone_path, site_uid, site, :external, true)
   site_zone_changed = false
 
   site_records.each{ |type, records|
     next if records.empty?
     zone_file_path = File.join(zones_dir, site_uid + "-" + type + ".db")
-    zone = load_zone(zone_file_path, site_uid, site, :none)
+    zone = load_zone(zone_file_path, site_uid, site, :external, false)
     if diff_zone_file(zone, records)
       puts "External zone file changed: #{zone.file_path}" if $options[:verbose]
       site_zone_changed = true
