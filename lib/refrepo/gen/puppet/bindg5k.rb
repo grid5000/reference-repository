@@ -470,9 +470,12 @@ def set_internal_zone_header_records(zone, site)
   ns = DNS::Zone::RR::NS.new
   ns.nameserver = "dns.grid5000.fr."
   zone.ns_list = [ns]
-  zone.mx = DNS::Zone::RR::MX.new
-  zone.mx.priority = 10
-  zone.mx.exchange = "mail.#{zone.site_uid}.grid5000.fr."
+  # Only add MX for <site>.grid5000.fr, not for reverse zones
+  if File.basename(zone.file_path) == "#{zone.site_uid}.db"
+    zone.mx = DNS::Zone::RR::MX.new
+    zone.mx.priority = 10
+    zone.mx.exchange = "mail.#{zone.site_uid}.grid5000.fr."
+  end
   if (File.basename(zone.file_path) == "#{zone.site_uid}.db" && site['frontend_ip'])
     zone.at = DNS::Zone::RR::A.new
     zone.at.address = site['frontend_ip']
