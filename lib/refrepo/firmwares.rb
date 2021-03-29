@@ -49,7 +49,7 @@ def gen_firmwares_tables
            'chassis_name' => e['chassis']['name'],
            'bmc_version' => e['bmc_version'],
            'bios_release_date' => e['bios']['release_date'],
-           'bios_version' => e['bios']['version']
+           'bios_version' => e['bios']['version'],
            'sriov_enabled' => e['bios']['sriov']
          }
        end
@@ -176,7 +176,7 @@ def gen_firmwares_tables
 <td class="text-nowrap">#{r['bmc_version']}</td>
 <td class="text-nowrap">#{r['bios_release_date']}</td>
 <td class="text-nowrap">#{r['bios_version']}</td>
-<td class="text-nowrap">#{r['SR-IOV']}</td>
+<td class="text-nowrap">#{r['sriov_enabled']}</td>
       </tr>
       EOF
      end
