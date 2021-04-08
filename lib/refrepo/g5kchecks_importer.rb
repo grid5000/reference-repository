@@ -29,7 +29,7 @@ def g5kchecks_importer(sourcedir)
 
       puts "Post-processing node uid = #{node_uid}"
 
-      hash["storage_devices"]  = hash["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde","sdf", "nvme1n1", "nvme0n1", "nvme0c65n1"])
+      hash["storage_devices"]  = hash["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde","sdf", "nvme1n1", "nvme0n1"])
       hash["storage_devices"].each {|k, v| v.delete("device") }
 
       remaped_net_names = []
