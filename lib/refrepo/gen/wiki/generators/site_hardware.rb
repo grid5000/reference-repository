@@ -241,7 +241,7 @@ end
 
 def get_hardware(sites)
   global_hash = G5K::get_global_hash
-  known_devices_name = ["sda", "sdb", "sdc", "sdd", "sde","sdf", "nvme1n1", "nvme0n1"]
+  known_devices_name = ["sda", "sdb", "sdc", "sdd", "sde","sdf", "nvme1n1", "nvme0n1", "nvme0c65n1"]
 
   # Loop over each cluster of the site
   hardware = {}
