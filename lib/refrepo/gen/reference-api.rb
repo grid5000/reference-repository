@@ -326,15 +326,6 @@ def generate_reference_api
             network_adapter.delete("network_address") if network_adapter["network_address"] == 'none'
           }
 
-          node["sensors"] ||= {}
-
-          node["monitoring"] ||= {}
-          node["monitoring"]["wattmeter"] ||= false # default
-
-          # Use strings instead of boolean as possible values are: true/false/shared/etc.
-          node["monitoring"]["wattmeter"] = "true"  if node["monitoring"]["wattmeter"] == true
-          node["monitoring"]["wattmeter"] = "false" if node["monitoring"]["wattmeter"] == false
-
           if node.key?("pdu")
 
             node["pdu"].each { |p|
@@ -342,25 +333,10 @@ def generate_reference_api
               pdu.each { |item|
                 #See https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7585, workaround to validate node pdu that have per_outlets = false
                 item.delete("port") if item["port"] == "disabled"
-                # Remove 'port' info if PDU are shared
-                item.delete("port") if node["monitoring"]["wattmeter"] == "shared"
               }
             }
-
-            # Move PDU info in the right place
-            node["sensors"]["power"] ||= {}
-            node["sensors"]["power"]["via"] ||= {}
-            node["sensors"]["power"]["via"]["pdu"] = node.delete("pdu")
+          #TODO: decide if we want to keep it
           end # node.key?("pdu")
-
-          if node["monitoring"].key?("metric")
-            node["sensors"]["power"] ||= {}
-            node["sensors"]["power"]["available"] = true
-            node["sensors"]["power"]["via"] ||= {}
-            node["sensors"]["power"]["via"]["api"] ||= {}
-            node["sensors"]["power"]["via"]["api"]["metric"] = node["monitoring"].delete("metric")
-          end
-
 
           write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
 
