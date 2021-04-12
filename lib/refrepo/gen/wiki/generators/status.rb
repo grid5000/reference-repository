@@ -24,11 +24,9 @@ class StatusGenerator < WikiGenerator
     @generated_content += MW::LINE_FEED
     @generated_content += generate_network_monitoring
     @generated_content += MW::LINE_FEED
-    @generated_content += generate_power_monitoring
+    @generated_content += generate_node_monitoring
     @generated_content += MW::LINE_FEED
     @generated_content += generate_usage_statistics
-    @generated_content += MW::LINE_FEED
-    @generated_content += generate_ganglia
     @generated_content += MW::LINE_FEED
     @generated_content += generate_jenkins
     @generated_content += MW.italic(MW.small(generated_date_string))
@@ -113,30 +111,21 @@ class StatusGenerator < WikiGenerator
     data + "A dashboard combining links and real-time data is available on the [https://intranet.grid5000.fr/net/Lille/ Grid'5000 Backbone Network Monitoring] page.\n"
   end
 
-  def generate_power_monitoring
-    data = "= Power Monitoring =\n"
+  def generate_node_monitoring
+    data = "= Node Monitoring =\n"
     data += MW::LINE_FEED
     data += "{|\n"
     @site_uids.sort.each do |site_uid|
-      if has_power_monitoring?(site_uid)
         data += "|bgcolor=\"#ffffff\" valign=\"top\" style=\"border:1px solid #cccccc;padding:1em;padding-top:0.5em;\"|\n"
-        data += "[https://intranet.grid5000.fr/supervision/#{site_uid}/monitoring/energy/last/minute/ '''#{site_uid.capitalize}''']\n"
-      end
+        data += "[https://api.grid5000.fr/sid/sites/#{site_uid}/metrics/dashboard '''#{site_uid.capitalize}''']\n"
     end
-
-    data += "|}\n"
-    data += MW::LINE_FEED
-    data += "Clusters where kwapi is available are listed on this page : https://intranet.grid5000.fr/jenkins-status/?job=test_kwapi\n"
+    data += "|}\n\n"
+    data += "[https://intranet.grid5000.fr/ganglia/ Ganglia] provides resources usage metrics (memory, cpu, jobs...) for individual sites or the whole platform.\n"
   end
 
   def generate_usage_statistics
     data = "= Usage statistics =\n"
     data + "[https://intranet.grid5000.fr/stats/ Stats5k] gathers a lot of statistics about the testbed.\n"
-  end
-
-  def generate_ganglia
-    data = "= Ganglia =\n"
-    data + "[https://intranet.grid5000.fr/ganglia/ Ganglia] provides resources usage metrics (memory, cpu, jobs...) for individual sites or the whole platform.\n"
   end
 
   def generate_jenkins
@@ -174,19 +163,6 @@ class StatusGenerator < WikiGenerator
     site_hash["clusters"].each_value do |cluster_hash|
       if cluster_hash["queues"].include?("production")
         return true
-      end
-    end
-
-    false
-  end
-
-  def has_power_monitoring?(site)
-    site_hash = @global_hash["sites"][site]
-    site_hash["clusters"].each_value do |cluster_hash|
-      cluster_hash.fetch("nodes").each_value do | node_hash|
-        if node_hash["sensors"].has_key?("power") and node_hash["sensors"]["power"]["available"]
-          return true
-        end
       end
     end
 
