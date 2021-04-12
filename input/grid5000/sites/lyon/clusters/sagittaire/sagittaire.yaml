@@ -54,17 +54,6 @@ nodes:
         mountable: false
         mounted: false
         driver: bnx2
-    monitoring:
-      wattmeter: true
-    sensors:
-      power:
-        available: true
-        per_outlets: true
-        via:
-          api:
-            metric: power
-          www:
-            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php
 
   sagittaire-[70-79]:
     storage_devices:

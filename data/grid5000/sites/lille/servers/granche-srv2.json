@@ -9,10 +9,6 @@
     "size": 90000000000000
   },
   "kind": "physical",
-  "monitoring": {
-    "metric": "power",
-    "wattmeter": "multiple"
-  },
   "network_adapters": {
     "bmc": {
       "ip": "172.17.46.15",
@@ -23,28 +19,16 @@
       "mac": "3C:FD:FE:B9:9A:10"
     }
   },
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
+  "pdu": [
+    {
+      "port": 10,
+      "uid": "pdu-b2p1"
     },
-    "power": {
-      "available": true,
-      "resolution": 1,
-      "via": {
-        "pdu": [
-          {
-            "port": 10,
-            "uid": "pdu-b2p1"
-          },
-          {
-            "port": 10,
-            "uid": "pdu-b2p2"
-          }
-        ]
-      }
+    {
+      "port": 10,
+      "uid": "pdu-b2p2"
     }
-  },
+  ],
   "serial": "2SVQKQ2",
   "type": "server",
   "uid": "granche-srv2",

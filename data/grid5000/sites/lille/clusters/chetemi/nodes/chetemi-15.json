@@ -101,9 +101,6 @@
   "main_memory": {
     "ram_size": 274877906944
   },
-  "monitoring": {
-    "wattmeter": "multiple"
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -199,6 +196,16 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 9,
+      "uid": "pdu-b3p1"
+    },
+    {
+      "port": 9,
+      "uid": "pdu-b3p2-1"
+    }
+  ],
   "performance": {
     "core_flops": 35200000000,
     "node_flops": 704000000000
@@ -218,22 +225,6 @@
     "other_description": "Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
     "vendor": "Intel",
     "version": "E5-2630 v4"
-  },
-  "sensors": {
-    "power": {
-      "via": {
-        "pdu": [
-          {
-            "port": 9,
-            "uid": "pdu-b3p1"
-          },
-          {
-            "port": 9,
-            "uid": "pdu-b3p2-1"
-          }
-        ]
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

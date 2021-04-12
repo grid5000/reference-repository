@@ -1,17 +1,5 @@
 ---
 nodes:
-  gros-[1-124]:
-    monitoring:
-      wattmeter: true
-    sensors:
-      power:
-        available: true
-        per_outlets: true
-        via:
-          api:
-            metric: power
-          www:
-            url: http://wattmetre.nancy.grid5000.fr/GetWatts-json.php
   gros-1:
     pdu:
     - uid: gros-wattmetre1

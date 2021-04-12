@@ -7,20 +7,12 @@ sgrele-opf:
   kind: switch
   site: nancy
   snmp_community: public
-  sensors:
-    power:
-      available: true
-      resolution: 1
-      via:
-        pdu:
-          - uid: grimani-pdu1
-            port: 10
-          - uid: grimani-pdu2
-            port: 10
-  monitoring:
-    wattmeter: true
-    metric: power
   ip: 172.17.79.253
+  pdu:
+    - uid: grimani-pdu1
+      port: 10
+    - uid: grimani-pdu2
+      port: 10
   linecards:
     1:
       snmp_pattern: "%LINECARD%/%PORT%"

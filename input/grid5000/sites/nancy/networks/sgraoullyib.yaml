@@ -6,17 +6,9 @@ sgraoullyib:
   kind: switch
   site: nancy
   snmp_community: public
-  sensors:
-    power:
-      available: true
-      resolution: 1
-      via:
-        pdu:
-          - uid: graoully-pdu2
-            port: 7
-  monitoring:
-    wattmeter: true
-    metric: power
+  pdu:
+    - uid: graoully-pdu2
+      port: 7
   metrics:
     - name: network_ifacein_bytes_total
       description: Input byte counter for the network device port

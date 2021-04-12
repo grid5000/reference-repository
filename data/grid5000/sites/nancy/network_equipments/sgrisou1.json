@@ -442,25 +442,13 @@
     }
   ],
   "model": "Dell S3048",
-  "monitoring": {
-    "metric": "power",
-    "wattmeter": true
-  },
-  "role": "production",
-  "sensors": {
-    "power": {
-      "available": true,
-      "resolution": 1,
-      "via": {
-        "pdu": [
-          {
-            "port": 14,
-            "uid": "grimoire-pdu2"
-          }
-        ]
-      }
+  "pdu": [
+    {
+      "port": 14,
+      "uid": "grimoire-pdu2"
     }
-  },
+  ],
+  "role": "production",
   "site": "nancy",
   "snmp_community": "public",
   "type": "network_equipment",

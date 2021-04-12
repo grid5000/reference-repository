@@ -54,15 +54,7 @@ nodes:
         interface: SAS
         #model: PERC H330 Mini
         reservation: true
-    sensors:
-      power:
-        available: true
-        per_outlets: true
-        via:
-          api:
-            metric: power
-          www:
-            url: http://wattmetre.nancy.grid5000.fr/GetWatts-json.php
+
   grappe-[1-4]:
     supported_job_types:
       max_walltime: 172800

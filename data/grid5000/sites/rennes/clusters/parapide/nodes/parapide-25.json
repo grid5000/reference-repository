@@ -63,10 +63,6 @@
   "main_memory": {
     "ram_size": 25769803776
   },
-  "monitoring": {
-    "temperature": true,
-    "wattmeter": "true"
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -165,6 +161,12 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 4,
+      "uid": "parapluie-pdu-4"
+    }
+  ],
   "performance": {
     "core_flops": 11800000000,
     "node_flops": 94400000000
@@ -184,36 +186,6 @@
     "other_description": "Intel(R) Xeon(R) CPU           X5570  @ 2.93GHz",
     "vendor": "Intel",
     "version": "X5570"
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "port": 4,
-            "uid": "parapluie-pdu-4"
-          }
-        ]
-      }
-    },
-    "temperature": {
-      "available": true,
-      "via": {
-        "api": {
-          "metric": "ambient_temp"
-        },
-        "ipmi": {
-          "sensors": {
-            "ambient": "/MB/T_AMB"
-          }
-        }
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

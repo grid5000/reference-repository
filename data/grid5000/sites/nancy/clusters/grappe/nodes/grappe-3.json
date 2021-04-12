@@ -63,9 +63,6 @@
   "main_memory": {
     "ram_size": 103079215104
   },
-  "monitoring": {
-    "wattmeter": "multiple"
-  },
   "network_adapters": [
     {
       "device": "eth0",
@@ -184,6 +181,16 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 7,
+      "uid": "grappe-pdu1"
+    },
+    {
+      "port": 7,
+      "uid": "grappe-pdu2"
+    }
+  ],
   "performance": {
     "core_flops": 33600000000,
     "node_flops": 1344000000000
@@ -203,30 +210,6 @@
     "other_description": "Intel(R) Xeon(R) Gold 5218R CPU @ 2.10GHz",
     "vendor": "Intel",
     "version": "Gold 5218R"
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "port": 7,
-            "uid": "grappe-pdu1"
-          },
-          {
-            "port": 7,
-            "uid": "grappe-pdu2"
-          }
-        ],
-        "www": {
-          "url": "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
-        }
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

@@ -4,15 +4,6 @@ pdus:
     vendor: OmegaWatt
     model: ''
     ip: 172.16.31.9
-    sensors:
-      - power:
-          resolution: 1
-          per_outlets: true
-          wattmetre:
-            available: true
-            unit: W
-            www:
-              url: "http://digwatt.grenoble.grid5000.fr/GetWatts-json.php"
     metrics:
       - name: wattmetre_power_watt
         description: Power consumption per outlet reported by wattmetre, in watt

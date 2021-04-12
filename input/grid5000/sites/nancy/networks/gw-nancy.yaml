@@ -10,23 +10,15 @@ gw:
   alias:
     - gw-nancy
     - sgravillon2
-  sensors:
-    power:
-      available: true
-      resolution: 1
-      via:
-        pdu:
-          - uid: graoully-pdu1
-            port: 8
-          - uid: graoully-pdu2
-            port: 8
-          - uid: grimoire-pdu1
-            port: 8
-          - uid: grimoire-pdu2
-            port: 8
-  monitoring:
-    wattmeter: multiple
-    metric: power
+  pdu:
+    - uid: graoully-pdu1
+      port: 8
+    - uid: graoully-pdu2
+      port: 8
+    - uid: grimoire-pdu1
+      port: 8
+    - uid: grimoire-pdu2
+      port: 8
   metrics:
     - name: network_ifacein_bytes_total
       description: Input byte counter for the network device port
@@ -810,9 +802,9 @@ gw:
       uid: sgros2
       kind: switch
       rate: 800000000000
-    port-channel4: 
+    port-channel4:
       port: port-channel1
       uid: sgrappe
       kind: switch
       rate: 800000000000
-    
+
