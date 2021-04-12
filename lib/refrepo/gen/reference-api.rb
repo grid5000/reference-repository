@@ -1,6 +1,5 @@
 require 'refrepo/valid/input/schema'
 require 'refrepo/valid/homogeneity'
-require 'refrepo/valid/input/monitoring'
 
 # Parse network equipment description and return switch name and port connected to given node
 #  In the network description, if the node interface is given (using "port" attribute),
