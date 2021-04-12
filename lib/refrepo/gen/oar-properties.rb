@@ -457,12 +457,10 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
                'NO'
              end
 
-  node['monitoring'] ||= {}
-  h['wattmeter'] = case node['monitoring']['wattmeter']
-                   when "true" then true
-                   when "false" then false
-                   when nil then false
-                   else node['monitoring']['wattmeter'].upcase
+  h['wattmeter'] = case cluster.fetch('metrics', []).any?{|metric| metric['name'].match?(/wattmetre_power_watt|pdu_outlet_power_watt/)}
+                   when true then "YES"
+                   when false then "NO"
+                   when nil then "NO"
                    end
 
   h['cluster_priority'] = (cluster['priority'] || Time.parse(cluster['created_at'].to_s).strftime('%Y%m')).to_i
