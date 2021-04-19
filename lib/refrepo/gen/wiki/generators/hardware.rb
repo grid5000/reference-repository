@@ -171,7 +171,7 @@ class G5KHardwareGenerator < WikiGenerator
             # NVMe SSD models
             nvme = node_hash['storage_devices'].select{ |v|
               v['interface'] == 'NVME'}.map{ |v|
-              t = v['model'] || 'N/A';
+              t = v['alt_model_name'] || v['model'] || 'N/A';
               [
                 {
                   text: t, sort: t
