@@ -308,7 +308,7 @@ def get_hardware(sites)
             'tech' => v['storage'],
             'interface' => v['interface'],
             'vendor' => v['vendor'],
-            'model' => v['model'],
+            'model' => v['alt_model_name'] || v['model'],
             'path' => v['by_path'] || v['by_id'],
             'count' => node_hash['storage_devices'].count,
             'reservation' => v['reservation'].nil? ? false : v['reservation']
