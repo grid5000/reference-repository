@@ -65,7 +65,7 @@ def generate_puppet_network_monitoring(options)
         l['ports'].each do |p|
           next if p == {}
 
-          next unless %w[other switch router channel backbone].include?(p['kind'])
+          next unless %w[other switch router server channel backbone].include?(p['kind'])
 
           port_name = p['snmp_name']
           next if net_hosts_eq['interfaces'].find { |i| i['name'] == port_name }
