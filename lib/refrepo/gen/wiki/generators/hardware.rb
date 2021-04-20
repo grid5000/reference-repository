@@ -177,7 +177,7 @@ class G5KHardwareGenerator < WikiGenerator
                   text: t, sort: t
                 }
               ]
-            }.uniq
+            }
 
             nvme_models = nvme.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
             nvme_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
