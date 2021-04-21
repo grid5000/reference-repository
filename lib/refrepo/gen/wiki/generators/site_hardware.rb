@@ -21,11 +21,13 @@ class SiteHardwareGenerator < WikiGenerator
 
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n" +
       "{{Portal|User}}\n" +
-      "<div class=\"sitelink\">[[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
+      "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
       "\n= Summary =\n" +
       "'''#{generate_oneline_summary}'''\n" +
       self.class.generate_summary(@site, false) +
       (has_reservable_disks ? "''*: disk is [[Disk_reservation|reservable]]''" : '') +
+      "\n= Network topology =\n" +
+      "See [[#{@site.capitalize}:Network]]" +
       self.class.generate_description(@site) +
       MW.italic(MW.small(generated_date_string)) +
       MW::LINE_FEED
