@@ -110,14 +110,14 @@ gw:
       backplane_bps: 24000000000
       rate: 1000000000
       ports:
-        23:
-          uid: srv
+        11:
+          uid: gwol-south
           kind: server
-        24:
-          uid: srv-stock
+        12:
+          uid: srv3-eth2
           kind: server
-        18:
-          uid: srv2-eth1
+        13:
+          uid: srv-eth1
           kind: server
     9:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
@@ -126,11 +126,8 @@ gw:
       backplane_bps: 12000000000
       rate: 1000000000
       ports:
-        10:
-          uid: stock
-          kind: server
-        12:
-          uid: stock-eth1
+        2:
+          uid: srv-data
           kind: server
     6:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
@@ -139,22 +136,4 @@ gw:
       port: eth0
       backplane_bps: 24000000000
       rate: 1000000000
-      ports:
-        19:
-          uid: srv-stock-eth2
-          kind: server
-        20:
-          uid: srv-eth1
-          kind: server
-        21:
-          uid: srv-eth3
-          kind: server
-        22:
-          uid: srv-eth2
-          kind: server
-        23:
-          uid: srv-stock-eth3
-          kind: server
-        24:
-          uid: srv-stock-eth1
-          kind: server
+      ports: {}
