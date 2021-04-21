@@ -116,6 +116,9 @@ host <%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-ka
 <%     if kavlan_id.to_i > 9 -%>
   next-server kadeploy.<%= site %>.grid5000.fr;
 <%     end -%>
+<% if node_uid =~ /^(troll|gros)-\d+$/ -%>
+  filename                "/pxelinux.0"
+<% end -%>
 }
 <%
              elsif dhcpkind == 'dhcpd6'

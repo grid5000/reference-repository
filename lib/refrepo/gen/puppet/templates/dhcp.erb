@@ -21,6 +21,7 @@
             else
               uid_net = h['name']
           end
+
           if dhcpkind == 'dhcpv6'
             if h['ip6']
               dhcp_entries.push({ 'uid_net' => uid_net, 'ipv6' => h['ip6'], 'mac' => h['mac'] })
@@ -50,6 +51,9 @@ group {
     fixed-address6          <%= node['ipv6'] %>;
 <% else -%>
     fixed-address           <%= node['ipv4'] %>;
+<% end -%>
+<% if node['uid_net'] =~ /^(troll|gros)-\d+$/ -%>
+    filename                "/pxelinux.0"
 <% end -%>
   }
 <%    } %>
