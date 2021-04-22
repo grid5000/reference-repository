@@ -1000,7 +1000,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
               if row[key].to_s != corresponding_resource[0][value].to_s and not (key == :gpu and row[key].nil? and corresponding_resource[0][value] == 0)
                 expected_value = row[key]
                 if expected_value == "" or expected_value.nil?
-                  expected_value = "ø"
+                  expected_value = "null"
                 end
                 diagnostic_msg = <<-TXT
 # Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: OAR API gives #{resc[value]}, generator wants #{expected_value}.
