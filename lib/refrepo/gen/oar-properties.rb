@@ -462,7 +462,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     h['gpu_model'] = GPURef.getGrid5000LegacyNameFor(node['gpu_devices'].values[0]['model'])
     h['gpu_count'] = node['gpu_devices'].length
   else
-    h['gpu_model'] = false
+    h['gpu_model'] = ''
     h['gpu_count'] = 0
   end
 
@@ -750,7 +750,6 @@ def ignore_default_keys()
     "cpu", # This property was created by 'oar_resources_add'
     "host", # This property was created by 'oar_resources_add'
     "gpudevice", # New property taken into account by the new generator
-    "gpu_model", # New property taken into account by the new generator
     "gpu", # New property taken into account by the new generator
     "cpuset",
     "desktop_computing",
