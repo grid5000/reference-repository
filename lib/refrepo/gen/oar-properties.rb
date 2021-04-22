@@ -215,30 +215,23 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
 
   result = ""
 
-  print_header = true
+  # Generate helper functions and detect the next available CPU and CORE IDs for
+  # non exisiting resources
+  result += generate_oar_commands_header()
 
-  if print_header
-    # Generate helper functions and detect the next available CPU and CORE IDs for
-    # non exisiting resources
-    result += generate_oar_commands_header()
-
-    # Ensure that OAR properties exist before creating/updating OAR resources
-    result += generate_oar_property_creation(site_name, data_hierarchy)
-  end
+  # Ensure that OAR properties exist before creating/updating OAR resources
+  result += generate_oar_property_creation(site_name, data_hierarchy)
 
   # Iterate over nodes of the generated resource hierarchy
   generated_hierarchy[:nodes].each do |node|
 
-    print_node_header = true
 
-    if print_node_header
-      result += %Q{
+    result += %Q{
 
 ###################################
 # #{node[:fqdn]}
 ###################################
 }
-    end
 
     # Iterate over the resources of the OAR node
     node[:oar_rows].each do |oar_ressource_row|
@@ -270,12 +263,8 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       end
     end
 
-    print_node = true
-
-    if print_node
-      # Set the OAR properties of the OAR node
-      result += generate_set_node_properties_cmd(node[:fqdn], node[:default_description])
-    end
+    # Set the OAR properties of the OAR node
+    result += generate_set_node_properties_cmd(node[:fqdn], node[:default_description])
 
     # Iterate over storage devices
     node[:description]["storage_devices"].select{|v| v.key?("reservation") and v["reservation"]}.each do |storage_device|
@@ -305,9 +294,7 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       result += generate_set_disk_properties_cmd(node[:fqdn], storage_device_name_with_hostname, storage_device_oar_properties)
     end
 
-    if print_node
-      result += generate_separators()
-    end
+    result += generate_separators()
   end
 
   return result
