@@ -15,7 +15,6 @@ class GPURef
     "Tesla T4" => 2560,
     "A100-PCIE-40GB" => 6912,
     "Quadro RTX 6000" => 4608,
-
   }
 
   @@new_gpu_names2old_ones = {
