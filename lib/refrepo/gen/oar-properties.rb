@@ -5,6 +5,11 @@ require 'refrepo/data_loader'
 require 'net/ssh'
 require 'refrepo/gpu_ref'
 
+# TODO missing test case: dead nodes (see coverage)
+# TODO missing test case: quirk cluster (see coverage)
+# TODO missing test case: contiguous-grouped-by-threads (see coverage)
+# TODO for gpu_model (and others?) use NULL instead of empty string
+
 class MissingProperty < StandardError; end
 
 MiB = 1024**2
