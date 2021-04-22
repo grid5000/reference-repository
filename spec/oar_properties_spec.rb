@@ -1,8 +1,6 @@
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__)))
 require 'spec_helper'
 
-conf = RefRepo::Utils.get_api_config
-
 describe 'OarProperties' do
 
   context 'interracting with an empty OAR server' do
