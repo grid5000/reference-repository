@@ -1447,13 +1447,14 @@ def generate_oar_properties(options)
 
   ############################################
   # Fetch:
-  # 1) hierarchy from YAML files
-  # 2) generated data from load_data_hierarchy
-  # 3) oar properties from the reference repository
+  # 1) generated data from load_data_hierarchy
+  # 2) oar properties from the reference repository
   ############################################
 
+  # Load the description from the ref-api (data/ dir)
   data_hierarchy = load_data_hierarchy
 
+  # filter based on site/cluster
   site_name = options[:site]
 
   # Replace the site placeholder of ssh hosts by the site
@@ -1471,14 +1472,12 @@ def generate_oar_properties(options)
     clusters = options[:clusters]
   end
 
+  # convert to OAR properties
   refrepo_properties = get_oar_properties_from_the_ref_repo(data_hierarchy, {
       :sites => [site_name]
   })
 
-  ############################################
-  # Generate information about the clusters
-  ############################################
-
+  # also fetch the resources hierarchy inside nodes (cores, gpus, etc.)
   generated_hierarchy = extract_clusters_description(clusters,
                                                        site_name,
                                                        options,
@@ -1521,5 +1520,5 @@ def generate_oar_properties(options)
   return ret
 end
 
-end
+end # Module
 include OarProperties
