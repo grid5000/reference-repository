@@ -211,15 +211,11 @@ end
 #   (3)         > * If the resource already exists, the CPU and CORE associated to the resource is detected
 #   (4)           * The resource is exported as an OAR command
 #   (5)      * If applicable, create/update the storage devices associated to the node
-def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy, faulty_resources=nil, faulty_nodes=nil)
+def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy)
 
   result = ""
 
   print_header = true
-
-  if not faulty_nodes.nil? or not faulty_resources.nil?
-    print_header = false
-  end
 
   if print_header
     # Generate helper functions and detect the next available CPU and CORE IDs for
@@ -234,10 +230,6 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
   generated_hierarchy[:nodes].each do |node|
 
     print_node_header = true
-
-    if not faulty_nodes.nil? and not faulty_nodes.include?(node[:fqdn])
-      print_node_header = false
-    end
 
     if print_node_header
       result += %Q{
@@ -261,10 +253,6 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       gpudevicepath = oar_ressource_row[:gpudevicepath].to_s
       resource_id = oar_ressource_row[:resource_id]
 
-      if not faulty_resources.nil? and not faulty_resources.include?(resource_id)
-        next
-      end
-
       if resource_id == -1 or resource_id.nil?
         # Add the resource to the OAR DB
         if gpu == ''
@@ -283,9 +271,6 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
     end
 
     print_node = true
-    if not faulty_nodes.nil? and not faulty_nodes.include?(node[:name])
-      print_node = false
-    end
 
     if print_node
       # Set the OAR properties of the OAR node
@@ -302,10 +287,6 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       #       pattern : "sda1.ecotype-48"
       storage_device_name = storage_device["device"]
       storage_device_name_with_hostname = "#{storage_device_name}.#{node[:name]}"
-
-      if not faulty_nodes.nil? and not faulty_nodes.include?(storage_device_name_with_hostname)
-        next
-      end
 
       # Retried the site propertie that corresponds to this storage device
       storage_device_oar_properties_tuple = site_properties["disk"].select { |keys| keys.include?(storage_device_name_with_hostname) }.first
@@ -873,9 +854,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
 
   diagnostic_msgs = []
 
-  faulty_resources = []
-  faulty_nodes = []
-
   properties = {
     'ref' => refrepo_properties,
     'oar' => get_oar_properties_from_oar(options)
@@ -939,14 +917,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
         diff = diff_properties(type, properties_oar, properties_ref) # Note: this deletes some properties from the input parameters
         diff_keys = diff.map { |hashdiff_array| hashdiff_array[1] }
         properties['diff'][site_uid][type][key] = properties_ref.select { |k, _v| diff_keys.include?(k) }
-
-        if not diff.empty?
-          if key.kind_of?(Array)
-            faulty_nodes.push(key[-1])
-          else
-            faulty_nodes.push(key)
-          end
-        end
 
         if properties['oar'][site_uid][type][key].nil?
           info = ((type == 'default') ? ' new node !' : ' new disk !')
@@ -1043,8 +1013,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
 # Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: OAR API gives #{resc[value]}, generator wants #{expected_value}.
                 TXT
                 error_msgs += "#{diagnostic_msg}"
-                faulty_resources.push(row[:resource_id])
-                faulty_resources.push(row[:host])
               end
             end
           else
@@ -1052,8 +1020,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
             # however it cannot be found : the generator reports an error to the operator
             if row[:resource_id] != -1
               puts "Error: could not find ressource with ID=#{row[:resource_id]}"
-              faulty_resources.push(row[:resource_id])
-              faulty_resources.push(row[:host])
             end
           end
         end
@@ -1067,7 +1033,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
 
   end
 
-  return ret, faulty_resources, faulty_nodes
+  return ret
 end
 
 
@@ -1550,17 +1516,13 @@ def generate_oar_properties(options)
 
   # Do=Diff
   if options.key? :diff and options[:diff]
-    return_code, faulty_resources, faulty_nodes = do_diff(options, generated_hierarchy, refrepo_properties)
+    return_code = do_diff(options, generated_hierarchy, refrepo_properties)
     ret = return_code
   end
 
   # DO=print
   if options.key? :print and options[:print]
-    if options[:diff]
-      cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy, faulty_resources, faulty_nodes)
-    else
-      cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
-    end
+    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
 
     puts(cmds)
   end
