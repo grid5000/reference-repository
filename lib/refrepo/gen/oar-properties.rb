@@ -1015,7 +1015,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
     diagnostic_msgs.push( "Skipped retired nodes: #{skipped_nodes}") if skipped_nodes.any?
 
 
-    if not (options[:print] and options[:diff])
+    if not options[:print]
       diagnostic_msgs.map{|msg| puts(msg)}
     end
 
@@ -1070,7 +1070,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
       end
     end
 
-    if not (options[:print] and options[:diff]) and not error_msgs.empty?
+    if not options[:print] and not error_msgs.empty?
       puts error_msgs
       ret = false unless options[:update] || options[:print]
     end
