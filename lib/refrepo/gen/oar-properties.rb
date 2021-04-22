@@ -904,7 +904,11 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
   properties['oar'].each do |site_uid, site_properties|
     site_properties['default'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |node_uid, node_properties_oar|
       unless properties['ref'][site_uid]['default'][node_uid]
-        node_properties_oar['state'] != 'Dead' ? missings_alive << node_uid : missings_dead << node_uid
+        if node_properties_oar['state'] != 'Dead'
+          missings_alive << node_uid
+        else
+          missings_dead << node_uid
+        end
       end
     end
   end
