@@ -27,6 +27,13 @@ describe 'OarProperties' do
     end
   end
 
+  context 'interracting with an empty OAR server (contiguous_grouped_by_threads cpusets)' do
+    it 'should work correctly' do
+      check_oar_properties({ :oar => 'oar_empty', :data => 'data_contiguous-grouped-by-threads_cpusets', :case => 'empty_contiguous-grouped-by-threads_cpusets' })
+    end
+  end
+
+
   context 'interracting with an empty OAR server (cluster with disk)' do
     it 'should work correctly' do
       check_oar_properties({ :oar => 'oar_empty', :data => 'data_with_disk', :case => 'empty_with_disk' })
