@@ -187,8 +187,7 @@ TXT
           :update => false,
           :diff => true,
           :site => "fakesite",
-          :clusters => ["clustera"],
-          :verbose => 2
+          :clusters => ["clustera"]
       }
 
       expected_clustera1_diff = <<-TXT
@@ -412,8 +411,7 @@ TXT
           :update => false,
           :diff => true,
           :site => "fakesite",
-          :clusters => ["clustera"],
-          :verbose => 2
+          :clusters => ["clustera"]
       }
 
       expected_clustera1_diff = <<-TXT
@@ -619,8 +617,7 @@ oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'"
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_clustera1_diff = <<-TXT
@@ -1000,8 +997,7 @@ TXT
           :update => false,
           :diff => true,
           :site => "fakesite",
-          :clusters => ["clusterb"],
-          :verbose => 2
+          :clusters => ["clusterb"]
       }
 
       expected_clusterb1_diff = <<-TXT
@@ -1494,8 +1490,7 @@ TXT
           :update => false,
           :diff => true,
           :site => "fakesite",
-          :clusters => ["clusterb"],
-          :verbose => 2
+          :clusters => ["clusterb"]
       }
 
       expected_clusterb1_diff = <<-TXT
@@ -1656,8 +1651,7 @@ TXT
           :update => false,
           :diff => true,
           :site => "fakesite",
-          :clusters => ["clusterc"],
-          :verbose => 2
+          :clusters => ["clusterc"]
       }
 
       expected_clusterc1_diff = <<-TXT
@@ -1874,8 +1868,7 @@ TXT
           :update => false,
           :diff => true,
           :site => "fakesite",
-          :clusters => ["clusterc"],
-          :verbose => 2
+          :clusters => ["clusterc"]
       }
 
       expected_clusterc1_diff = <<-TXT
@@ -2029,8 +2022,7 @@ TXT
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clusterc"],
-        :verbose => 2
+        :clusters => ["clusterc"]
       }
 
       expected_clusterc1_diff = <<-TXT
@@ -2173,8 +2165,7 @@ TXT
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2212,8 +2203,7 @@ Error (missing property) while processing node clustera-1: Node clustera-1 does 
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2254,8 +2244,7 @@ Error: the OAR property 'eth_rate' is a 'String' on the fakesite server and this
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2293,8 +2282,7 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2317,7 +2305,7 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
       prepare_stubs("dump_oar_api_configured_server_missing_property.json", "load_data_hierarchy_stubbed_data.json")
     end
 
-    it 'should propose a correction (verbose=1)' do
+    it 'should propose a correction' do
 
       uri = URI(conf["uri"])
 
@@ -2331,39 +2319,7 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 1
-      }
-
-      expected_output = <<-TXT
-clustera-1:["ib_rate"]
-clustera-2:["ib_rate"]
-Properties that need to be created on the fakesite server: ib_rate
-      TXT
-
-      generator_output = capture do
-        generate_oar_properties(options)
-      end
-
-      expect(generator_output[:stdout]).to include(expected_output)
-    end
-
-    it 'should propose a correction (verbose=2)' do
-
-      uri = URI(conf["uri"])
-
-      response = Net::HTTP.get(uri)
-
-      expect(response).to be_an_instance_of(String)
-
-      options = {
-        :table => false,
-        :print => false,
-        :update => false,
-        :diff => true,
-        :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2378,73 +2334,6 @@ Properties that need to be created on the fakesite server: ib_rate
       expect(generator_output[:stdout]).to include(expected_output)
     end
 
-    it 'should propose a correction (verbose=3)' do
-
-      uri = URI(conf["uri"])
-
-      response = Net::HTTP.get(uri)
-
-      expect(response).to be_an_instance_of(String)
-
-      options = {
-        :table => false,
-        :print => false,
-        :update => false,
-        :diff => true,
-        :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 3
-      }
-
-      expected_output = <<-TXT
-    "new values": {
-      "ip": "172.16.64.2",
-      "cluster": "clustera",
-      "nodemodel": "Dell PowerEdge T640",
-      "switch": "gw-fakesite",
-      "besteffort": "YES",
-      "deploy": "YES",
-      "virtual": "ivt",
-      "cpuarch": "x86_64",
-      "cpucore": 8,
-      "cputype": "Intel Xeon Silver 4110",
-      "cpufreq": "2.1",
-      "disktype": "SATA/SSD",
-      "chassis": "Dell Inc. PowerEdge T640 9L1CBX2",
-      "eth_count": 1,
-      "eth_rate": 10,
-      "ib_count": 0,
-      "ib_rate": 0,
-      "ib": "NO",
-      "opa_count": 0,
-      "opa_rate": 0,
-      "myri_count": 0,
-      "myri_rate": 0,
-      "myri": "NO",
-      "memcore": 8192,
-      "memcpu": 65536,
-      "memnode": 131072,
-      "gpu_count": 4,
-      "exotic": "NO",
-      "mic": "NO",
-      "wattmeter": "MULTIPLE",
-      "cluster_priority": 201906,
-      "max_walltime": 86400,
-      "production": "YES",
-      "maintenance": "NO",
-      "disk_reservation_count": 0
-    }
-  }
-}
-Properties that need to be created on the fakesite server: ib_rate
-      TXT
-
-      generator_output = capture do
-        generate_oar_properties(options)
-      end
-
-      expect(generator_output[:stdout]).to include(expected_output)
-    end
   end
 
   context 'interracting with a configured OAR server (non reservable GPUs)' do
@@ -2466,8 +2355,7 @@ Properties that need to be created on the fakesite server: ib_rate
         :update => false,
         :diff => false,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2503,8 +2391,7 @@ GeForce RTX 2080 Ti
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2545,8 +2432,7 @@ GeForce RTX 2080 Ti
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2598,8 +2484,7 @@ It seems that the cluster "clustera" has some incoherence in its resource config
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2633,8 +2518,7 @@ CORE has an unexpected number of resources (current:33 vs expected:32).
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_output = <<-TXT
@@ -2668,8 +2552,7 @@ CORE has an unexpected number of resources (current:31 vs expected:32).
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clusterb"],
-        :verbose => 2
+        :clusters => ["clusterb"]
       }
 
       expected_output = <<-TXT
@@ -2728,8 +2611,7 @@ echo; echo 'Adding disk sdb.clusterb-2 on host clusterb-1.fakesite.grid5000.fr:'
         :update => false,
         :diff => true,
         :site => "fakesite",
-        :clusters => ["clustera"],
-        :verbose => 2
+        :clusters => ["clustera"]
       }
 
       expected_clustera1_diff = <<-TXT
@@ -2769,8 +2651,7 @@ echo; echo 'Adding disk sdb.clusterb-2 on host clusterb-1.fakesite.grid5000.fr:'
           :update => false,
           :diff => true,
           :site => "fakesite",
-          :clusters => ["clustera"],
-          :verbose => 2
+          :clusters => ["clustera"]
       }
 
       expected_clustera1_diff = <<-TXT

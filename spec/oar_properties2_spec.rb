@@ -53,7 +53,7 @@ def check_oar_properties(o)
   {
     'table' => { :table => true, :print => false, :update => false, :diff => false, :site => "fakesite", :clusters => ["clustera"] },
     'print' => { :table => false, :print => true, :update => false, :diff => false, :site => "fakesite", :clusters => ["clustera"] },
-    'diff'  => { :table => false, :print => false, :update => false, :diff => true, :verbose => 2, :site => "fakesite", :clusters => ["clustera"] }
+    'diff'  => { :table => false, :print => false, :update => false, :diff => true, :site => "fakesite", :clusters => ["clustera"] }
   }.each_pair do |type, options|
     output = capture do
       generate_oar_properties(options)
