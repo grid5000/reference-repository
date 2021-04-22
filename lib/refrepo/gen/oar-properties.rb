@@ -637,7 +637,6 @@ def get_oar_data(site_uid, options)
     end
 
     # Download the OAR properties from the OAR API (through G5K API)
-    puts "Downloading resources properties from #{api_uri} ..." if options[:verbose] and options[:verbose] > 0
     http = Net::HTTP.new(api_uri.host, api_uri.port)
     if api_uri.scheme == "https"
       http.use_ssl = true
@@ -651,7 +650,6 @@ def get_oar_data(site_uid, options)
 
     response = http.request(request)
     raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
-    puts '... done' if options[:verbose] and options[:verbose] > 0
 
     oarnodes = JSON.parse(response.body)
 
@@ -951,37 +949,26 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
           end
         end
 
-        # Verbose output
         if properties['oar'][site_uid][type][key].nil?
           info = ((type == 'default') ? ' new node !' : ' new disk !')
         else
           info = ''
         end
 
-        case options[:verbose]
-        when 1
-          diagnostic_msgs.push( "#{key}:#{info}") if info != ''
-          diagnostic_msgs.push( "#{key}:#{diff_keys}") if diff.size != 0
-        when 2
-          # Give more details
-          if header == false
-            diagnostic_msgs.push( "Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed")
-            header = true
-          end
-          if diff.empty?
-            diagnostic_msgs.push( "  #{key}: OK#{info}")
-          elsif diff == prev_diff
-            diagnostic_msgs.push( "  #{key}:#{info} same modifications as above")
-          else
-            diagnostic_msgs.push( "  #{key}:#{info}")
-            diff.each { |d| diagnostic_msgs.push( "    #{d}") }
-          end
-          prev_diff = diff
-        when 3
-          # Even more details
-          diagnostic_msgs.push( "#{key}:#{info}") if info != ''
-          diagnostic_msgs.push( JSON.pretty_generate(key => { 'old values' => properties_oar, 'new values' => properties_ref }))
+        if header == false
+          # output header only once
+          diagnostic_msgs.push( "Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed")
+          header = true
         end
+        if diff.empty?
+          diagnostic_msgs.push( "  #{key}: OK#{info}")
+        elsif diff == prev_diff
+          diagnostic_msgs.push( "  #{key}:#{info} same modifications as above")
+        else
+          diagnostic_msgs.push( "  #{key}:#{info}")
+          diff.each { |d| diagnostic_msgs.push( "    #{d}") }
+        end
+        prev_diff = diff
         if diff.size != 0
           ret = false unless options[:update] || options[:print]
         end
@@ -1003,7 +990,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
       end
     end
 
-    diagnostic_msgs.push( "Properties that need to be created on the #{site_uid} server: #{properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.join(', ')}") if options[:verbose] && properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.size > 0
+    diagnostic_msgs.push( "Properties that need to be created on the #{site_uid} server: #{properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.join(', ')}") if properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.size > 0
 
     # Detect unknown properties
     unknown_properties = properties_keys['oar'][site_uid].keys.to_set - properties_keys['ref'][site_uid].keys.to_set
@@ -1011,7 +998,7 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
       unknown_properties.delete(key)
     end
 
-    if options[:verbose] && unknown_properties.size > 0
+    if unknown_properties.size > 0
       diagnostic_msgs.push( "Properties existing on the #{site_uid} server but not managed/known by the generator: #{unknown_properties.to_a.join(', ')}.")
       diagnostic_msgs.push( "Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.")
       ret = false unless options[:update] || options[:print]

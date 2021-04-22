@@ -128,7 +128,7 @@ namespace :gen do
     exit(ret)
   end
 
-  desc "Generate OAR properties -- parameters: SITE=grenoble CLUSTER={yeti,...} DO={print,table,update,diff} [VERBOSE={0,1,2,3}] [OAR_SERVER=192.168.37.10] [OAR_SERVER_USER=g5kadmin]"
+  desc "Generate OAR properties -- parameters: SITE=grenoble CLUSTER={yeti,...} DO={print,table,update,diff} [OAR_SERVER=192.168.37.10] [OAR_SERVER_USER=g5kadmin]"
   task "oar-properties" do
     # Manage oar-properties for a given set of Grid'5000 cluster. The task takes the following parameters
     # Params:
@@ -194,8 +194,6 @@ namespace :gen do
       puts "You must specify something to do using DO="
       exit(1)
     end
-
-    options[:verbose] = ENV['VERBOSE'].to_i if ENV['VERBOSE']
 
     ret = generate_oar_properties(options)
     exit(ret)
