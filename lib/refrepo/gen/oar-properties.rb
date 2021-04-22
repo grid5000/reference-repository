@@ -1497,8 +1497,7 @@ def generate_oar_properties(options)
 
   # Do=Diff
   if options.key? :diff and options[:diff]
-    return_code = do_diff(options, generated_hierarchy, refrepo_properties)
-    ret = return_code
+    ret = do_diff(options, generated_hierarchy, refrepo_properties)
   end
 
   # DO=print
