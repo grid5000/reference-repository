@@ -127,7 +127,11 @@ def check_oar_properties(o)
     'diff'  => { :table => false, :print => false, :update => false, :diff => true, :site => "fakesite", :clusters => ["clustera"] }
   }.each_pair do |type, options|
     output = capture do
-      generate_oar_properties(options)
+      begin
+        generate_oar_properties(options)
+      rescue
+        puts $!.message
+      end
     end
     # stdout
     ofile = "#{specdir}/output/#{o[:case]}_#{type}_stdout.txt"

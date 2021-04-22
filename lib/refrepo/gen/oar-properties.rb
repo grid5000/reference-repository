@@ -1477,18 +1477,11 @@ def generate_oar_properties(options)
   # Generate information about the clusters
   ############################################
 
-  begin
-    generated_hierarchy = extract_clusters_description(clusters,
+  generated_hierarchy = extract_clusters_description(clusters,
                                                        site_name,
                                                        options,
                                                        data_hierarchy,
                                                        refrepo_properties[site_name])
-  rescue
-    puts "A problem occured while building the clusters description. Generator is exiting."
-    puts $!
-    puts $@
-    return 1
-  end
 
   ############################################
   # Output generated information
