@@ -1,16 +1,20 @@
 Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
-  clustera-1: OK
-  clustera-2: OK
-  clustera-3: OK
-  clustera-4: OK
-  clustera-5: OK
-  clustera-6: OK
-  clustera-7: OK
-  clustera-8: OK
-  clustera-9: OK
-  clustera-10: OK
-  clustera-11: OK
-  clustera-12: OK
-  clustera-13: OK
+  clustera-1:
+    ["+", "core_count", 16]
+    ["+", "cpu_count", 2]
+    ["+", "thread_count", 32]
+  clustera-2: same modifications as above
+  clustera-3: same modifications as above
+  clustera-4: same modifications as above
+  clustera-5: same modifications as above
+  clustera-6: same modifications as above
+  clustera-7: same modifications as above
+  clustera-8: same modifications as above
+  clustera-9: same modifications as above
+  clustera-10: same modifications as above
+  clustera-11: same modifications as above
+  clustera-12: same modifications as above
+  clustera-13: same modifications as above
+Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count
 Properties existing on the fakesite server but not managed/known by the generator: disk, diskpath.
 Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.
