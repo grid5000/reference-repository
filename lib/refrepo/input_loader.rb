@@ -341,14 +341,17 @@ def add_pdu_metrics(h)
         cluster['metrics'].insert(0, new_metric)
       end
 
-      # check if they all have pdu monitoring and add the metric to the cluster
+      # check if PDU have monitoring then add the metric to the cluster
       if not cluster_pdus.empty? \
       and cluster_pdus.all?{|pdu| site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'pdu_outlet_power_watt'}}
 
-        metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).each{|m| m['name'] == 'pdu_outlet_power_watt'}.first
-        new_metric = metric.merge({'description' => "Power consumption of node reported by PDU, in watt"})
-        new_metric['source'] = {"protocol" => "pdu"}
-        cluster['metrics'].insert(0, new_metric)
+        # Metric is available for node only if a single PDU powers it
+        if not cluster['nodes'].each_value.any?{|node| node.fetch('pdu', []).select{|p| not p.has_key?('kind') or p.fetch('kind', '') != 'wattmetre-only'}.map{|p| p['uid']}.uniq.length > 1}
+          metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).each{|m| m['name'] == 'pdu_outlet_power_watt'}.first
+          new_metric = metric.merge({'description' => "Power consumption of node reported by PDU, in watt"})
+          new_metric['source'] = {"protocol" => "pdu"}
+          cluster['metrics'].insert(0, new_metric)
+        end
       end
     end
   end
