@@ -1,20 +1,6 @@
 ---
 metrics:
 
-  - name: network_ifacein_bytes_total
-    description: >-
-      Input byte counter for the network device port connected to the node
-    period: 1000
-    source:
-      protocol: network_equipment
-
-  - name: network_ifaceout_bytes_total
-    description: >-
-      Output byte counter for the network device port connected to the node
-    period: 1000
-    source:
-      protocol: network_equipment
-
   - name: prom_default_metrics
     description: Default subset of metrics from Prometheus Node Exporter
     period: 0
