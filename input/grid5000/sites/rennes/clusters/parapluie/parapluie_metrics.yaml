@@ -1,8 +1,8 @@
 ---
 metrics:
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "pvcore1"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "pvcore1"}
     description: Voltage of PVCORE1 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -10,8 +10,8 @@ metrics:
       protocol: ipmisensor
       id: 2720  # PVCORE1
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "pvnbcpu1"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "pvnb_cpu1"}
     description: Voltage of PVNB CPU1 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -19,8 +19,8 @@ metrics:
       protocol: ipmisensor
       id: 2784  # PVNB CPU1
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "p1v5ddr3cpu1"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p1v5_ddr3_cpu1"}
     description: Voltage of P1V5 DDR3 CPU1 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -28,8 +28,8 @@ metrics:
       protocol: ipmisensor
       id: 2848  # P1V5 DDR3 CPU1
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "pvcore2"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "pvcore2"}
     description: Voltage of PVCORE2 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -37,8 +37,8 @@ metrics:
       protocol: ipmisensor
       id: 2912  # PVCORE2
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "pvnbcpu2"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "pvnb_cpu2"}
     description: Voltage of PVNB CPU2 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -46,8 +46,8 @@ metrics:
       protocol: ipmisensor
       id: 2976  # PVNB CPU2
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "p1v5ddr3cpu2"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p1v5_ddr3_cpu2"}
     description: Voltage of P1V5 DDR3 CPU2 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -55,8 +55,8 @@ metrics:
       protocol: ipmisensor
       id: 3040  # P1V5 DDR3 CPU2
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "p12v"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p12v"}
     description: Voltage of P12V reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -64,8 +64,8 @@ metrics:
       protocol: ipmisensor
       id: 3104  # P12V
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "p5v"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p5v"}
     description: Voltage of P5V reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -73,8 +73,8 @@ metrics:
       protocol: ipmisensor
       id: 3168  # P5V
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "p5vstby"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p5v_stby"}
     description: Voltage of P5V STBY reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -82,8 +82,8 @@ metrics:
       protocol: ipmisensor
       id: 3232  # P5V STBY
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "p3v3"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p3v3"}
     description: Voltage of P3V3 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -91,8 +91,8 @@ metrics:
       protocol: ipmisensor
       id: 3296  # P3V3
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "p3v3stby"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p3v3_stby"}
     description: Voltage of P3V3 STBY reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -100,8 +100,8 @@ metrics:
       protocol: ipmisensor
       id: 3360  # P3V3 STBY
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "p1v1sr5670"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p1v1_sr5670"}
     description: Voltage of P1V1 SR5670 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -235,7 +235,7 @@ metrics:
       protocol: ipmisensor
       id: 4704  # Fan7 Outlet
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm1"}
     description: Temperature of CPU1 DIMM1 reported by BMC, in celsius
     period: 0
@@ -244,7 +244,7 @@ metrics:
       protocol: ipmisensor
       id: 4816  # CPU1 DIMM1
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm2"}
     description: Temperature of CPU1 DIMM2 reported by BMC, in celsius
     period: 0
@@ -253,7 +253,7 @@ metrics:
       protocol: ipmisensor
       id: 4880  # CPU1 DIMM2
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm3"}
     description: Temperature of CPU1 DIMM3 reported by BMC, in celsius
     period: 0
@@ -262,7 +262,7 @@ metrics:
       protocol: ipmisensor
       id: 4944  # CPU1 DIMM3
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm4"}
     description: Temperature of CPU1 DIMM4 reported by BMC, in celsius
     period: 0
@@ -271,7 +271,7 @@ metrics:
       protocol: ipmisensor
       id: 5008  # CPU1 DIMM4
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm5"}
     description: Temperature of CPU1 DIMM5 reported by BMC, in celsius
     period: 0
@@ -280,7 +280,7 @@ metrics:
       protocol: ipmisensor
       id: 5072  # CPU1 DIMM5
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm6"}
     description: Temperature of CPU1 DIMM6 reported by BMC, in celsius
     period: 0
@@ -289,7 +289,7 @@ metrics:
       protocol: ipmisensor
       id: 5136  # CPU1 DIMM6
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm7"}
     description: Temperature of CPU1 DIMM7 reported by BMC, in celsius
     period: 0
@@ -298,7 +298,7 @@ metrics:
       protocol: ipmisensor
       id: 5200  # CPU1 DIMM7
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm8"}
     description: Temperature of CPU1 DIMM8 reported by BMC, in celsius
     period: 0
@@ -307,7 +307,7 @@ metrics:
       protocol: ipmisensor
       id: 5264  # CPU1 DIMM8
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm9"}
     description: Temperature of CPU1 DIMM9 reported by BMC, in celsius
     period: 0
@@ -316,7 +316,7 @@ metrics:
       protocol: ipmisensor
       id: 5328  # CPU1 DIMM9
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm10"}
     description: Temperature of CPU1 DIMM10 reported by BMC, in celsius
     period: 0
@@ -325,7 +325,7 @@ metrics:
       protocol: ipmisensor
       id: 5392  # CPU1 DIMM10
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm11"}
     description: Temperature of CPU1 DIMM11 reported by BMC, in celsius
     period: 0
@@ -334,7 +334,7 @@ metrics:
       protocol: ipmisensor
       id: 5456  # CPU1 DIMM11
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu1dimm12"}
     description: Temperature of CPU1 DIMM12 reported by BMC, in celsius
     period: 0
@@ -343,7 +343,7 @@ metrics:
       protocol: ipmisensor
       id: 5520  # CPU1 DIMM12
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm1"}
     description: Temperature of CPU2 DIMM1 reported by BMC, in celsius
     period: 0
@@ -352,7 +352,7 @@ metrics:
       protocol: ipmisensor
       id: 5584  # CPU2 DIMM1
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm2"}
     description: Temperature of CPU2 DIMM2 reported by BMC, in celsius
     period: 0
@@ -361,7 +361,7 @@ metrics:
       protocol: ipmisensor
       id: 5648  # CPU2 DIMM2
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm3"}
     description: Temperature of CPU2 DIMM3 reported by BMC, in celsius
     period: 0
@@ -370,7 +370,7 @@ metrics:
       protocol: ipmisensor
       id: 5712  # CPU2 DIMM3
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm4"}
     description: Temperature of CPU2 DIMM4 reported by BMC, in celsius
     period: 0
@@ -379,7 +379,7 @@ metrics:
       protocol: ipmisensor
       id: 5776  # CPU2 DIMM4
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm5"}
     description: Temperature of CPU2 DIMM5 reported by BMC, in celsius
     period: 0
@@ -388,7 +388,7 @@ metrics:
       protocol: ipmisensor
       id: 5840  # CPU2 DIMM5
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm6"}
     description: Temperature of CPU2 DIMM6 reported by BMC, in celsius
     period: 0
@@ -397,7 +397,7 @@ metrics:
       protocol: ipmisensor
       id: 5904  # CPU2 DIMM6
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm7"}
     description: Temperature of CPU2 DIMM7 reported by BMC, in celsius
     period: 0
@@ -406,7 +406,7 @@ metrics:
       protocol: ipmisensor
       id: 5968  # CPU2 DIMM7
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm8"}
     description: Temperature of CPU2 DIMM8 reported by BMC, in celsius
     period: 0
@@ -415,7 +415,7 @@ metrics:
       protocol: ipmisensor
       id: 6032  # CPU2 DIMM8
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm9"}
     description: Temperature of CPU2 DIMM9 reported by BMC, in celsius
     period: 0
@@ -424,7 +424,7 @@ metrics:
       protocol: ipmisensor
       id: 6096  # CPU2 DIMM9
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm10"}
     description: Temperature of CPU2 DIMM10 reported by BMC, in celsius
     period: 0
@@ -433,7 +433,7 @@ metrics:
       protocol: ipmisensor
       id: 6160  # CPU2 DIMM10
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm11"}
     description: Temperature of CPU2 DIMM11 reported by BMC, in celsius
     period: 0
@@ -442,7 +442,7 @@ metrics:
       protocol: ipmisensor
       id: 6224  # CPU2 DIMM11
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     labels: {"dimm": "cpu2dimm12"}
     description: Temperature of CPU2 DIMM12 reported by BMC, in celsius
     period: 0
@@ -451,7 +451,8 @@ metrics:
       protocol: ipmisensor
       id: 6288  # CPU2 DIMM12
 
-  - name: bmc_temp_inletambient_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "inlet_ambient"}
     description: Temperature of Inlet Ambient reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -477,7 +478,8 @@ metrics:
       protocol: ipmisensor
       id: 6528  # CPU2
 
-  - name: bmc_temp_pcioutlet_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "pci_outlet"}
     description: Temperature of PCI Outlet reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -485,7 +487,8 @@ metrics:
       protocol: ipmisensor
       id: 6592  # PCI Outlet
 
-  - name: bmc_temp_sr5670outlet_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "sr5670_outlet"}
     description: Temperature of SR5670 Outlet reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -493,7 +496,8 @@ metrics:
       protocol: ipmisensor
       id: 6656  # SR5670 Outlet
 
-  - name: bmc_temp_rearboard_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "rear_board"}
     description: Temperature of Rear Board reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -501,7 +505,8 @@ metrics:
       protocol: ipmisensor
       id: 6720  # Rear Board
 
-  - name: bmc_temp_pcimid_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "pci_mid"}
     description: Temperature of PCI Mid reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -509,7 +514,8 @@ metrics:
       protocol: ipmisensor
       id: 6784  # PCI Mid
 
-  - name: bmc_temp_pciinlet_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "pci_inlet"}
     description: Temperature of PCI Inlet reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -517,7 +523,8 @@ metrics:
       protocol: ipmisensor
       id: 6848  # PCI Inlet
 
-  - name: bmc_temp_rearboard2_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "rear_board2"}
     description: Temperature of Rear Board2 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -525,7 +532,8 @@ metrics:
       protocol: ipmisensor
       id: 6912  # Rear Board2
 
-  - name: bmc_temp_cpuinlet_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "cpu_inlet"}
     description: Temperature of CPU Inlet reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -533,7 +541,8 @@ metrics:
       protocol: ipmisensor
       id: 6976  # CPU Inlet
 
-  - name: bmc_temp_psinletambient_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "ps_inlet_ambient"}
     description: Temperature of PS Inlet Ambient reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -541,7 +550,8 @@ metrics:
       protocol: ipmisensor
       id: 7040  # PS Inlet Ambient
 
-  - name: bmc_temp_iocontroller_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "io_controller"}
     description: Temperature of IO Controller reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -549,7 +559,8 @@ metrics:
       protocol: ipmisensor
       id: 7104  # IO Controller
 
-  - name: bmc_temp_pci16_riser_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "pci16_riser"}
     description: Temperature of PCI16_RISER reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -557,7 +568,8 @@ metrics:
       protocol: ipmisensor
       id: 7168  # PCI16_RISER
 
-  - name: bmc_temp_pci4_riser_celsius
+  - name: bmc_other_temp_celsius
+    labels: {"id": "pci4_riser"}
     description: Temperature of PCI4_RISER reported by BMC, in celsius
     period: 0
     optional_period: 5000
