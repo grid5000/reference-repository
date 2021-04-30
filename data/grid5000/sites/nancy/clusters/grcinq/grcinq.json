@@ -4,8 +4,8 @@
   "kavlan": true,
   "metrics": [
     {
-      "description": "Front node ambiant temperature reported by BMC, in celsius",
-      "name": "bmc_temp_ambiant_celsius",
+      "description": "Front node ambient temperature reported by BMC, in celsius",
+      "name": "bmc_ambient_temp_celsius",
       "period": 5000,
       "source": {
         "id": 11,
@@ -15,9 +15,9 @@
     {
       "description": "Voltage of 12V Standby reported by BMC, in volt",
       "labels": {
-        "voltage": "12vstandby"
+        "id": "12v_standby"
       },
-      "name": "bmc_voltage_volt",
+      "name": "bmc_other_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -28,9 +28,9 @@
     {
       "description": "Voltage of 5V Standby reported by BMC, in volt",
       "labels": {
-        "voltage": "5vstandby"
+        "id": "5v_standby"
       },
-      "name": "bmc_voltage_volt",
+      "name": "bmc_other_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -41,9 +41,9 @@
     {
       "description": "Voltage of 5V reported by BMC, in volt",
       "labels": {
-        "voltage": "5v"
+        "id": "5v"
       },
-      "name": "bmc_voltage_volt",
+      "name": "bmc_other_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -54,9 +54,9 @@
     {
       "description": "Voltage of 3.3V Standby reported by BMC, in volt",
       "labels": {
-        "voltage": "3.3vstandby"
+        "id": "3.3vstandby"
       },
-      "name": "bmc_voltage_volt",
+      "name": "bmc_other_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -67,9 +67,9 @@
     {
       "description": "Voltage of 3.3V reported by BMC, in volt",
       "labels": {
-        "voltage": "3.3v"
+        "id": "3.3v"
       },
-      "name": "bmc_voltage_volt",
+      "name": "bmc_other_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -80,7 +80,7 @@
     {
       "description": "Temperature of CPU 1 reported by BMC, in celsius",
       "labels": {
-        "cpu": "1"
+        "id": "1"
       },
       "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
@@ -93,7 +93,7 @@
     {
       "description": "Temperature of CPU 2 reported by BMC, in celsius",
       "labels": {
-        "cpu": "2"
+        "id": "2"
       },
       "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
@@ -106,9 +106,9 @@
     {
       "description": "Temperature of DIMM ZONE 1 reported by BMC, in celsius",
       "labels": {
-        "zone": "1"
+        "id": "dimm_zone_1"
       },
-      "name": "bmc_temp_dimmzone_celsius",
+      "name": "bmc_other_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -119,9 +119,9 @@
     {
       "description": "Temperature of DIMM ZONE 2 reported by BMC, in celsius",
       "labels": {
-        "zone": "2"
+        "id": "dimm_zone_2"
       },
-      "name": "bmc_temp_dimmzone_celsius",
+      "name": "bmc_other_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -131,7 +131,10 @@
     },
     {
       "description": "Temperature of PCH reported by BMC, in celsius",
-      "name": "bmc_temp_pch_celsius",
+      "labels": {
+        "id": "pch"
+      },
+      "name": "bmc_other_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -142,9 +145,9 @@
     {
       "description": "Voltage of Input reported by BMC, in volt",
       "labels": {
-        "voltage": "input"
+        "id": "input"
       },
-      "name": "bmc_voltage_volt",
+      "name": "bmc_other_voltage_volt",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -153,8 +156,11 @@
       }
     },
     {
-      "description": "Input Current reported by BMC, in amp",
-      "name": "bmc_current_input_amp",
+      "description": "Current of input reported by BMC, in amp",
+      "labels": {
+        "id": "input"
+      },
+      "name": "bmc_other_current_amp",
       "optional_period": 5000,
       "period": 0,
       "source": {
@@ -165,7 +171,7 @@
     {
       "description": "Speed of FAN 1 reported by BMC, in rpm",
       "labels": {
-        "fan": "1"
+        "id": "1"
       },
       "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
@@ -178,7 +184,7 @@
     {
       "description": "Speed of FAN 2 reported by BMC, in rpm",
       "labels": {
-        "fan": "2"
+        "id": "2"
       },
       "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
@@ -191,7 +197,7 @@
     {
       "description": "Speed of FAN 3 reported by BMC, in rpm",
       "labels": {
-        "fan": "3"
+        "id": "3"
       },
       "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,
@@ -204,7 +210,7 @@
     {
       "description": "Speed of FAN 4 reported by BMC, in rpm",
       "labels": {
-        "fan": "4"
+        "id": "4"
       },
       "name": "bmc_fan_speed_rpm",
       "optional_period": 5000,

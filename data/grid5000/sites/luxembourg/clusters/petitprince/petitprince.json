@@ -4,8 +4,8 @@
   "kavlan": true,
   "metrics": [
     {
-      "description": "Front node ambiant temperature reported by BMC, in celsius",
-      "name": "bmc_temp_ambiant_celsius",
+      "description": "Front node ambient temperature reported by BMC, in celsius",
+      "name": "bmc_ambient_temp_celsius",
       "period": 5000,
       "scale_factor": 0.1,
       "source": {
@@ -23,7 +23,7 @@
       }
     },
     {
-      "description": "Cumulated power consumption of node reported by BMC, in watt",
+      "description": "Cumulated power consumption of node reported by BMC, in watt-hour",
       "name": "bmc_node_power_watthour_total",
       "optional_period": 5000,
       "period": 0,
@@ -35,7 +35,7 @@
     {
       "description": "Temperature of CPU 1 reported by BMC, in celsius",
       "labels": {
-        "cpu": "1"
+        "id": "1"
       },
       "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
@@ -49,7 +49,7 @@
     {
       "description": "Temperature of CPU 2 reported by BMC, in celsius",
       "labels": {
-        "cpu": "2"
+        "id": "2"
       },
       "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
