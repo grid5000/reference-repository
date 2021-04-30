@@ -1,7 +1,7 @@
 ---
 metrics:
 
-  - name: bmc_temp_ambient_celsius
+  - name: bmc_ambient_temp_celsius
     description: >-
       Front node ambient temperature reported by BMC, in celsius
     period: 5000
@@ -196,7 +196,7 @@ metrics:
       protocol: ipmisensor
       id: 32 #CPU1_TEMP
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     description: Temperature of DIMMG0 reported by BMC, in celsius
     labels: {"dimm": "g0"}
     period: 0
@@ -205,7 +205,7 @@ metrics:
       protocol: ipmisensor
       id: 33 #DIMMG0_TEMP
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     description: Temperature of DIMMG1 reported by BMC, in celsius
     labels: {"dimm": "g1"}
     period: 0
@@ -214,7 +214,7 @@ metrics:
       protocol: ipmisensor
       id: 34 #DIMMG1_TEMP
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     description: Temperature of DIMMG2 reported by BMC, in celsius
     labels: {"dimm": "g2"}
     period: 0
@@ -223,7 +223,7 @@ metrics:
       protocol: ipmisensor
       id: 35 #DIMMG2_TEMP
 
-  - name: bmc_temp_dimm_celsius
+  - name: bmc_dimm_temp_celsius
     description: Temperature of DIMMG3 reported by BMC, in celsius
     labels: {"dimm": "g3"}
     period: 0
@@ -232,360 +232,360 @@ metrics:
       protocol: ipmisensor
       id: 36 #DIMMG3_TEMP
 
-  - name: bmc_cpudts_temp_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of CPU 1 DTS reported by BMC, in celsius
-    labels: {"cpu": "1"}
+    labels: {"id": "cpu1_dts"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 37 #CPU0_DTS
 
-  - name: bmc_cpudts_temp_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of CPU 2 DTS reported by BMC, in celsius
-    labels: {"cpu": "2"}
+    labels: {"id": "cpu2_dts"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 38 #CPU1_DTS
 
-  - name: bmc_temp_hdd_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of HDD_TEMP_0 reported by BMC, in celsius
-    labels: {"hdd": "temp_0"}
+    labels: {"id": "hdd_temp_0"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 39 #HDD_TEMP_0
 
-  - name: bmc_temp_hdd_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of HDD_TEMP_1 reported by BMC, in celsius
-    labels: {"hdd": "temp_1"}
+    labels: {"id": "hdd_temp_1"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 40 #HDD_TEMP_1
 
-  - name: bmc_temp_mb_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of MB_TEMP1 reported by BMC, in celsius
-    labels: {"temp": "1"}
+    labels: {"id": "mb_temp1"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 42 #MB_TEMP1
 
-  - name: bmc_temp_mb_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of MB_TEMP2 reported by BMC, in celsius
-    labels: {"temp": "2"}
+    labels: {"id": "mb_temp2"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 43 #MB_TEMP2
 
-  - name: bmc_temp_psuhotspot_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of PSU1_HOTSPOT reported by BMC, in celsius
-    labels: {"psu": "1"}
+    labels: {"id": "psu1_hotspot"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 46 #PSU1_HOTSPOT
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_0V8_VDD reported by BMC, in volt
-    labels: {"voltage": "p_0v8_vdd"}
+    labels: {"id": "p_0v8_vdd"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 48 #P_0V8_VDD
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_12V reported by BMC, in volt
-    labels: {"voltage": "p_12v"}
+    labels: {"id": "p_12v"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 49 #P_12V
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_12V_STBY reported by BMC, in volt
-    labels: {"voltage": "p_12v_stby"}
+    labels: {"id": "p_12v_stby"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 50 #P_12V_STBY
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_1V15 reported by BMC, in volt
-    labels: {"voltage": "p_1v15"}
+    labels: {"id": "p_1v15"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 51 #P_1V15
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_1V2_BMC reported by BMC, in volt
-    labels: {"voltage": "p_1v2_bmc"}
+    labels: {"id": "p_1v2_bmc"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 52 #P_1V2_BMC
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_1V8_VDD reported by BMC, in volt
-    labels: {"voltage": "p_1v8_vdd"}
+    labels: {"id": "p_1v8_vdd"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 53 #P_1V8_VDD
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_2V5_BMC_VPP reported by BMC, in volt
-    labels: {"voltage": "p_2v5_bmc_vpp"}
+    labels: {"id": "p_2v5_bmc_vpp"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 54 #P_2V5_BMC_VPP
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_3V3 reported by BMC, in volt
-    labels: {"voltage": "p_3v3"}
+    labels: {"id": "p_3v3"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 55 #P_3V3
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_3V3_C reported by BMC, in volt
-    labels: {"voltage": "p_3v3_c"}
+    labels: {"id": "p_3v3_c"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 56 #P_3V3_C
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_5V reported by BMC, in volt
-    labels: {"voltage": "p_5v"}
+    labels: {"id": "p_5v"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 57 #P_5V
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of P_VBAT reported by BMC, in volt
-    labels: {"voltage": "p_vbat"}
+    labels: {"id": "p_vbat"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 58 #P_VBAT
 
-  - name: bmc_current_vr_amp
+  - name: bmc_other_current_amp
     description: Current of VR_P0_IOUT reported by BMC, in amp
-    labels: {"vr": "p0_iout"}
+    labels: {"id": "vr_p0_iout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 60 #VR_P0_IOUT
 
-  - name: bmc_current_vr_amp
+  - name: bmc_other_current_amp
     description: Current of VR_P1_IOUT reported by BMC, in amp
-    labels: {"vr": "p1_iout"}
+    labels: {"id": "vr_p1_iout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 61 #VR_P1_IOUT
 
-  - name: bmc_current_amp
+  - name: bmc_other_current_amp
     description: Current of VR_DIMMG0_IOUT reported by BMC, in amp
-    labels: {"current": "vr_dimmg0_iout"}
+    labels: {"id": "vr_dimmg0_iout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 62 #VR_DIMMG0_IOUT
 
-  - name: bmc_current_amp
+  - name: bmc_other_current_amp
     description: Current of VR_DIMMG1_IOUT reported by BMC, in amp
-    labels: {"current": "vr_dimmg1_iout"}
+    labels: {"id": "vr_dimmg1_iout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 63 #VR_DIMMG1_IOUT
 
-  - name: bmc_current_amp
+  - name: bmc_other_current_amp
     description: Current of VR_DIMMG2_IOUT reported by BMC, in amp
-    labels: {"current": "vr_dimmg2_iout"}
+    labels: {"id": "vr_dimmg2_iout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 64 #VR_DIMMG2_IOUT
 
-  - name: bmc_current_amp
+  - name: bmc_other_current_amp
     description: Current of VR_DIMMG3_IOUT reported by BMC, in amp
-    labels: {"current": "vr_dimmg3_iout"}
+    labels: {"id": "vr_dimmg3_iout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 65 #VR_DIMMG3_IOUT
 
-  - name: bmc_temp_vr_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of VR_P0_TEMP reported by BMC, in celsius
-    labels: {"vr": "p0"}
+    labels: {"id": "vr_p0"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 66 #VR_P0_TEMP
 
-  - name: bmc_temp_vr_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of VR_P1_TEMP reported by BMC, in celsius
-    labels: {"vr": "p1"}
+    labels: {"id": "vr_p1"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 67 #VR_P1_TEMP
 
-  - name: bmc_temp_vr_dimm_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of VR_DIMMG0_TEMP reported by BMC, in celsius
-    labels: {"dimm": "g0"}
+    labels: {"id": "vr_dimmg0"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 68 #VR_DIMMG0_TEMP
 
-  - name: bmc_temp_vr_dimm_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of VR_DIMMG1_TEMP reported by BMC, in celsius
-    labels: {"dimm": "g1"}
+    labels: {"id": "vr_dimmg1"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 69 #VR_DIMMG1_TEMP
 
-  - name: bmc_temp_vr_dimm_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of VR_DIMMG2_TEMP reported by BMC, in celsius
-    labels: {"dimm": "g2"}
+    labels: {"id": "vr_dimmg2"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 70 #VR_DIMMG2_TEMP
 
-  - name: bmc_temp_vr_dimm_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of VR_DIMMG3_TEMP reported by BMC, in celsius
-    labels: {"dimm": "g3"}
+    labels: {"id": "vr_dimmg3"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 71 #VR_DIMMG3_TEMP
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_DIMMG0_VIN reported by BMC, in volt
-    labels: {"voltage": "vr_dimmg0_vin"}
+    labels: {"id": "vr_dimmg0_vin"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 72 #VR_DIMMG0_VIN
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_DIMMG1_VIN reported by BMC, in volt
-    labels: {"voltage": "vr_dimmg1_vin"}
+    labels: {"id": "vr_dimmg1_vin"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 73 #VR_DIMMG1_VIN
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_DIMMG2_VIN reported by BMC, in volt
-    labels: {"voltage": "vr_dimmg2_vin"}
+    labels: {"id": "vr_dimmg2_vin"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 74 #VR_DIMMG2_VIN
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_DIMMG3_VIN reported by BMC, in volt
-    labels: {"voltage": "vr_dimmg3_vin"}
+    labels: {"id": "vr_dimmg3_vin"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 75 #VR_DIMMG3_VIN
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_P0_VOUT reported by BMC, in volt
-    labels: {"voltage": "vr_p0_vout"}
+    labels: {"id": "vr_p0_vout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 76 #VR_P0_VOUT
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_P1_VOUT reported by BMC, in volt
-    labels: {"voltage": "vr_p1_vout"}
+    labels: {"id": "vr_p1_vout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 77 #VR_P1_VOUT
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_DIMMG0_VOUT reported by BMC, in volt
-    labels: {"voltage": "vr_dimmg0_vout"}
+    labels: {"id": "vr_dimmg0_vout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 78 #VR_DIMMG0_VOUT
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_DIMMG1_VOUT reported by BMC, in volt
-    labels: {"voltage": "vr_dimmg1_vout"}
+    labels: {"id": "vr_dimmg1_vout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 79 #VR_DIMMG1_VOUT
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_DIMMG2_VOUT reported by BMC, in volt
-    labels: {"voltage": "vr_dimmg2_vout"}
+    labels: {"id": "vr_dimmg2_vout"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 80 #VR_DIMMG2_VOUT
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of VR_DIMMG3_VOUT reported by BMC, in volt
-    labels: {"voltage": "vr_dimmg3_vout"}
+    labels: {"id": "vr_dimmg3_vout"}
     period: 0
     optional_period: 5000
     source:

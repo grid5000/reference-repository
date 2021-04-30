@@ -1,8 +1,8 @@
 ---
 metrics:
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "ps12v"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_12v"}
     description: Voltage of PS 12V reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -10,8 +10,8 @@ metrics:
       protocol: ipmisensor
       id: 14  # PS 12V
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "ps5v"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_5v"}
     description: Voltage of PS 5V reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -19,8 +19,8 @@ metrics:
       protocol: ipmisensor
       id: 15  # PS 5V
 
-  - name: bmc_temp_mlb_celsius
-    labels: {"id": "2"}
+  - name: bmc_other_temp_celsius
+    labels: {"id": "mlb_2"}
     description: Temperature of MLB TEMP 2 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -28,8 +28,8 @@ metrics:
       protocol: ipmisensor
       id: 16  # MLB TEMP 2
 
-  - name: bmc_temp_mlb_celsius
-    labels: {"id": "3"}
+  - name: bmc_other_temp_celsius
+    labels: {"id": "mlb_3"}
     description: Temperature of MLB TEMP 3 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -39,15 +39,15 @@ metrics:
 
   - name: bmc_cpu_temp_celsius
     labels: {"cpu": "1"}
-    description: Temperature of Processor 1 reported by BMC, in celsius
+    description: Temperature of CPU 1 reported by BMC, in celsius
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 18  # Processor 1 Temp
 
-  - name: bmc_temp_mlb_celsius
-    labels: {"id": "1"}
+  - name: bmc_other_temp_celsius
+    labels: {"id": "mlb_1"}
     description: Temperature of MLB TEMP 1 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -57,15 +57,15 @@ metrics:
 
   - name: bmc_cpu_temp_celsius
     labels: {"cpu": "2"}
-    description: Temperature of Processor 2 reported by BMC, in celsius
+    description: Temperature of CPU 2 reported by BMC, in celsius
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 20  # Processor 2 Temp
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "stby3.3v"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "stby_3.3v"}
     description: Voltage of STBY 3.3V reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -73,16 +73,16 @@ metrics:
       protocol: ipmisensor
       id: 21  # STBY 3.3V
 
-  - name: bmc_current_ps_amp
-    description: PS Current reported by BMC, in amp
+  - name: bmc_psu_current_amp
+    description: Current of PSU reported by BMC, in amp
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 22  # PS Current
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "vcore1"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "vcore_1"}
     description: Voltage of VCORE 1 reported by BMC, in volt
     period: 0
     optional_period: 5000
@@ -90,8 +90,8 @@ metrics:
       protocol: ipmisensor
       id: 26  # VCORE 1
 
-  - name: bmc_voltage_volt
-    labels: {"voltage": "vcore2"}
+  - name: bmc_other_voltage_volt
+    labels: {"id": "vcore_2"}
     description: Voltage of VCORE 2 reported by BMC, in volt
     period: 0
     optional_period: 5000

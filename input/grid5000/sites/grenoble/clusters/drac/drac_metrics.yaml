@@ -1,7 +1,7 @@
 ---
 metrics:
 
-  - name: bmc_temp_ambient_celsius
+  - name: bmc_ambient_temp_celsius
     description: >-
       Front node ambient temperature reported by BMC, in celsius
     period: 5000
@@ -16,18 +16,18 @@ metrics:
       protocol: ipmisensor
       id: 212 #System Power
 
-  - name: bmc_cpudiode_temp_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of CPU Diode 1 reported by BMC, in celsius
-    labels: {"cpu": "1"}
+    labels: {"id": "cpu_diode_1"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 2 #CPU Diode 1
 
-  - name: bmc_cpudiode_temp_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of CPU Diode 2 reported by BMC, in celsius
-    labels: {"cpu": "2"}
+    labels: {"id": "cpu_diode_2"}
     period: 0
     optional_period: 5000
     source:
@@ -350,7 +350,7 @@ metrics:
 
   - name: bmc_mem_power_watt
     description: Power consumption of Mem Proc1 reported by BMC, in watt
-    labels: {"cpu": "1"}
+    labels: {"mem": "proc1"}
     period: 0
     optional_period: 5000
     source:
@@ -359,23 +359,24 @@ metrics:
 
   - name: bmc_mem_power_watt
     description: Power consumption of Mem Proc2 reported by BMC, in watt
-    labels: {"cpu": "2"}
+    labels: {"mem": "proc2"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 105 #Mem Proc1 Pwr
 
-  - name: bmc_pcie_power_watt
+  - name: bmc_other_power_watt
     description: Power consumption of PCIE Proc1 reported by BMC, in watt
-    labels: {"cpu": "1"}
+    labels: {"id": "pcie_proc1"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 106 #PCIE Proc0 Pwr
 
-  - name: bmc_memcache_power_watt
+  - name: bmc_other_power_watt
+    labels: {"id": "mem_cache"}
     description: Power consumption of Mem Cache reported by BMC, in watt
     period: 0
     optional_period: 5000
@@ -384,7 +385,7 @@ metrics:
       id: 107 #Mem Cache Power
 
   - name: bmc_cpu_power_watt
-    description: Power consumption of Proc1 reported by BMC, in watt
+    description: Power consumption of CPU 1 reported by BMC, in watt
     labels: {"cpu": "1"}
     period: 0
     optional_period: 5000
@@ -392,18 +393,18 @@ metrics:
       protocol: ipmisensor
       id: 108 #Proc0 Power
 
-  - name: bmc_voltage_volt
+  - name: bmc_other_voltage_volt
     description: Voltage of CPU VDD reported by BMC, in volt
-    labels: {"voltage": "cpuvdd"}
+    labels: {"id": "cpu_vdd"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 207 #CPU VDD Volt
 
-  - name: bmc_current_amp
+  - name: bmc_other_current_amp
     description: Current of CPU VDD reported by BMC, in amp
-    labels: {"current": "cpuvdd"}
+    labels: {"id": "cpu_vdd"}
     period: 0
     optional_period: 5000
     source:
@@ -411,7 +412,7 @@ metrics:
       id: 208 #CPU VDD Curr
 
   - name: bmc_cpu_power_watt
-    description: Power consumption of Proc2 reported by BMC, in watt
+    description: Power consumption of CPU 2 reported by BMC, in watt
     labels: {"cpu": "2"}
     period: 0
     optional_period: 5000
@@ -419,9 +420,9 @@ metrics:
       protocol: ipmisensor
       id: 210 #Proc1 Power
 
-  - name: bmc_pcie_power_watt
+  - name: bmc_other_power_watt
     description: Power consumption of PCIE Proc2 reported by BMC, in watt
-    labels: {"cpu": "2"}
+    labels: {"id": "pcie_proc2"}
     period: 0
     optional_period: 5000
     source:
@@ -508,18 +509,18 @@ metrics:
       protocol: ipmisensor
       id: 230 #Fan 4
 
-  - name: bmc_vdd_temp_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of CPU 1 VDD reported by BMC, in celsius
-    labels: {"cpu": "1"}
+    labels: {"id": "cpu_1_vdd"}
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 251 #CPU 1 VDD Temp
 
-  - name: bmc_vdd_temp_celsius
+  - name: bmc_other_temp_celsius
     description: Temperature of CPU 2 VDD reported by BMC, in celsius
-    labels: {"cpu": "2"}
+    labels: {"id": "cpu_2_vdd"}
     period: 0
     optional_period: 5000
     source:
