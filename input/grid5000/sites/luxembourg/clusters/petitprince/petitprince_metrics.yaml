@@ -1,8 +1,8 @@
 ---
 metrics:
 
-  - name: bmc_temp_ambiant_celsius
-    description: Front node ambiant temperature reported by BMC, in celsius
+  - name: bmc_ambient_temp_celsius
+    description: Front node ambient temperature reported by BMC, in celsius
     period: 5000
     scale_factor: 0.1
     source:
@@ -20,7 +20,7 @@ metrics:
         == System Board Pwr Consumption }}
 
   - name: bmc_node_power_watthour_total
-    description: Cumulated power consumption of node reported by BMC, in watt
+    description: Cumulated power consumption of node reported by BMC, in watt-hour
     period: 0
     optional_period: 5000
     source:
