@@ -94,6 +94,9 @@ rook-storage1:
   kind: physical
   alias:
     - ceph2
+    - harbor
+    - harbor-notary
+    - docker-mirror
   warranty: 2018-11
   serial: GMG6LZ1
   network_adapters:
@@ -127,10 +130,7 @@ rook-storage3:
 
 cargo0:
   kind: physical
-  alias:
-  - harbor
-  - harbor-notary
-  - docker-mirror
+  alias: []
   network_adapters:
     default:
       ip: 172.16.111.40
