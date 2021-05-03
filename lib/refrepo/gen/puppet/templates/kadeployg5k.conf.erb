@@ -21,7 +21,7 @@ trusted_deployment:
 <% end %>
 kexec:
   server_precmd: "true"
-  script: /etc/kadeploy3-dev/kexec.sh
+  script: /etc/kadeploy3<%= suffix %>/kexec.sh
   <% if ! data['partitioning.disable_swap'].nil? %>disable_swap: <%= data['partitioning.disable_swap'] %><% end %>
 timeouts:
   reboot: <%= data['reboot.timeout'] %>
