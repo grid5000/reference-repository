@@ -259,7 +259,7 @@ def generate_reference_api
           node.delete("status")
 
           # Add vendor info to storage
-          node["storage_devices"].each do |key, hash|
+          node.fetch("storage_devices", []).each do |key, hash|
             matching_vendor = {}
             matching_interface = []
             global_hash['disk_vendor_model_mapping'].each do |interface, vendor|
@@ -280,7 +280,7 @@ def generate_reference_api
           end
 
           # Ensure that by_id is present (bug 11043)
-          node["storage_devices"].each do |key, hash|
+          node.fetch("storage_devices", []).each do |key, hash|
             hash['by_id'] = '' if not hash['by_id']
           end
 
