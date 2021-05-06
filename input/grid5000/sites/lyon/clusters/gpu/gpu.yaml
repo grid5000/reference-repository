@@ -1,0 +1,105 @@
+model: Altus XE2118GT
+created_at: 2021-05-01
+kavlan: false
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  gpu-[1-10]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 1
+      nb_cores: 48
+      nb_threads: 96
+    processor:
+      microarchitecture: Zen 2
+      clock_speed: 2300000000
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+  gpu-1:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:11:37:a3
+        ip: 172.17.55.1
+      eth0:
+        mac: ''
+  gpu-2:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:75:ef:3e
+        ip: 172.17.55.2
+      eth0:
+        mac: ''
+  gpu-3:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:4a:ed:5f
+        ip: 172.17.55.3
+      eth0:
+        mac: ''
+  gpu-4:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:4e:b1:09
+        ip: 172.17.55.4
+      eth0:
+        mac: ''
+  gpu-5:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:75:f1:3a
+        ip: 172.17.55.5
+      eth0:
+        mac: ''
+  gpu-6:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:4a:ed:0b
+        ip: 172.17.55.6
+      eth0:
+        mac: ''
+  gpu-7:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:1e:89:66
+        ip: 172.17.55.7
+      eth0:
+        mac: ''
+  gpu-8:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:4e:b1:59
+        ip: 172.17.55.8
+      eth0:
+        mac: ''
+  gpu-9:
+    network_adapters:
+      bmc:
+        mac: b4:2e:99:b4:c6:fc
+        ip: 172.17.55.9
+      eth0:
+        mac: ''
+  gpu-10:
+    network_adapters:
+      bmc:
+        mac: 18:c0:4d:4e:b1:11
+        ip: 172.17.55.10
+      eth0:
+        mac: ''
