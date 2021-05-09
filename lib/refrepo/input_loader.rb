@@ -369,7 +369,7 @@ def get_flops_per_cycle(microarch, cpu_name)
     return 4
   when "Sandy Bridge", "Zen", "Vulcan"
     return 8
-  when "Haswell", "Broadwell"
+  when "Haswell", "Broadwell", "Zen 2"
     return 16
   when "Cascade Lake-SP", "Skylake"
     case cpu_name
