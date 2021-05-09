@@ -1,38 +1,6 @@
 require 'refrepo/valid/input/schema'
 require 'refrepo/valid/homogeneity'
 
-# Parse network equipment description and return switch name and port connected to given node
-#  In the network description, if the node interface is given (using "port" attribute),
-#  the interface parameter must be used.
-def net_switch_port_lookup(site, node_uid, interface='')
-  site["networks"].each do |switch_uid, switch|
-    switch["linecards"].each do |lc_uid,lc|
-      lc["ports"].each do |port_uid,port|
-        if port.is_a?(Hash)
-          switch_remote_port = port["port"] || lc["port"] || ""
-          switch_remote_uid = port["uid"]
-        else
-          switch_remote_port = lc["port"] || ""
-          switch_remote_uid = port
-        end
-        if switch_remote_uid =~ /([a-z]*-[0-9]*)-(.*)/
-          n, p = switch_remote_uid.match(/([a-z]*-[0-9]*)-(.*)/).captures
-          switch_remote_uid = n
-          switch_remote_port = p
-        end
-        if switch_remote_uid == node_uid and switch_remote_port == interface
-          # Build port name from snmp_naming_pattern
-          # Example: '3 2 GigabitEthernet%LINECARD%/%PORT%' -> 'GigabitEthernet3/2'
-          pattern = port["snmp_pattern"] || lc["snmp_pattern"] || ""
-          port_name = pattern.sub("%LINECARD%",lc_uid.to_s).sub("%PORT%",port_uid.to_s)
-          return switch_uid, port_name
-        end
-      end
-    end
-  end
-  return nil
-end
-
 # Creation du fichier network_equipment
 def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
   network["type"] = "network_equipment"
@@ -307,17 +275,9 @@ def generate_reference_api
             elsif network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"])
               # Primary network_adapter
               network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr" if network_adapter["enabled"]
-
-              # Interface may not be specified in Network Reference for primary network_adapter
-              network_adapter["switch"], network_adapter["switch_port"] = net_switch_port_lookup(site, node_uid, network_adapter["device"]) || net_switch_port_lookup(site, node_uid)
             else
               # Secondary network_adapter(s)
               network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site_uid}.grid5000.fr" if network_adapter["mountable"] && !network_adapter.key?("network_address")
-              if network_adapter["mountable"]
-                switch, port = net_switch_port_lookup(site, node_uid, network_adapter["device"])
-                network_adapter["switch"] = switch if switch
-                network_adapter["switch_port"] = port if port
-              end
             end
             # If kavlan entry is not defined here, set it node's kavlan description
             network_adapter["kavlan"] ||= node["kavlan"].nil? ? false : node["kavlan"].keys.include?(network_adapter["device"]) ? true : false

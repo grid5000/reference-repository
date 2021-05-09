@@ -49,6 +49,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
 #  pp global_hash
 
+  # add switch and port to nodes
+  add_switch_port(global_hash)
+
   # add some ipv6 informations in sites
   add_site_ipv6_infos(global_hash)
 
@@ -89,9 +92,60 @@ def sorted_vlan_offsets
    sort_by { |l| [l[0] ] + l[4..-1] }.
    map { |l| l.join(' ') }.
    join("\n")
-
 end
 
+# Parse network equipment description and return switch name and port connected to given node
+#  In the network description, if the node interface is given (using "port" attribute),
+#  the interface parameter must be used.
+def net_switch_port_lookup(site, node_uid, interface='')
+  site["networks"].each do |switch_uid, switch|
+    switch["linecards"].each do |lc_uid,lc|
+      lc["ports"].each do |port_uid,port|
+        if port.is_a?(Hash)
+          switch_remote_port = port["port"] || lc["port"] || ""
+          switch_remote_uid = port["uid"]
+        else
+          switch_remote_port = lc["port"] || ""
+          switch_remote_uid = port
+        end
+        if switch_remote_uid =~ /([a-z]*-[0-9]*)-(.*)/
+          n, p = switch_remote_uid.match(/([a-z]*-[0-9]*)-(.*)/).captures
+          switch_remote_uid = n
+          switch_remote_port = p
+        end
+        if switch_remote_uid == node_uid and switch_remote_port == interface
+          # Build port name from snmp_naming_pattern
+          # Example: '3 2 GigabitEthernet%LINECARD%/%PORT%' -> 'GigabitEthernet3/2'
+          pattern = port["snmp_pattern"] || lc["snmp_pattern"] || ""
+          port_name = pattern.sub("%LINECARD%",lc_uid.to_s).sub("%PORT%",port_uid.to_s)
+          return switch_uid, port_name
+        end
+      end
+    end
+  end
+  return nil
+end
+
+def add_switch_port(h)
+  h['sites'].each_pair do |site_uid, site|
+    used_ports = {}
+    site['clusters'].each_pair do |cluster_uid, hc|
+      hc['nodes'].each_pair do |node_uid, hn|
+        next if hn['status'] == 'retired'
+        hn['network_adapters'].each_pair do |iface_uid, iface|
+          if (iface['mounted'] or iface['mountable']) and not iface['management'] and iface['interface'] == 'Ethernet'
+            switch, swport = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)
+            if used_ports[[switch, swport]]
+              raise "Duplicate port assigned for #{node_uid} #{iface_uid}. Already assigned to #{used_ports[[switch, swport]]} Aborting."
+            end
+            used_ports[[switch, swport]] = [node_uid, iface_uid]
+            iface['switch'], iface['switch_port'] = switch, swport
+          end
+        end
+      end
+    end
+  end
+end
 
 def add_kavlan_ips(h)
   allocated = {}
@@ -286,15 +340,14 @@ def add_network_metrics(h)
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_iface.*/}
 
       # for each interface of a cluster's node
-      node_uid, node = cluster['nodes'].select { |k, v| v['status'] != 'retired' }.sort_by{ |k, v| k }.first
+      _, node = cluster['nodes'].select { |k, v| v['status'] != 'retired' }.sort_by{ |k, v| k }.first
       node["network_adapters"].each do |iface_uid, iface|
 
+        # we only support metrics for Ethernet at this point
+        next if iface['interface'] != 'Ethernet'
+
         # get switch attached to interface
-        if iface['mounted'] and not iface['management'] and iface['interface'] == 'Ethernet'
-          switch, _ = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)
-        else
-          switch, _ = net_switch_port_lookup(site, node_uid, iface_uid)
-        end
+        switch = iface['switch']
 
         # for each network metric declared for the switch
         site.fetch('networks', {}).fetch(switch, {}).fetch('metrics', []).select{|m| m['name'] =~ /network_iface.*/}.each do |metric|
