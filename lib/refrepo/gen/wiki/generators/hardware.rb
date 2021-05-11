@@ -360,6 +360,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Broadwell' => '2015',
       'Skylake' => '2016',
       'Zen' => '2017',
+      'Zen 2' => '2019',
       'Cascade Lake-SP' => '2019',
       'Vulcan' => '2018',
     }
