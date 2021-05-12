@@ -141,6 +141,15 @@ class OarPropertiesGenerator < WikiGenerator
     # "cpucount" => { #Unused ?
     #   "description" => "The number of CPUs"
     # },
+    "cpu_count" => {
+      "description" => "The number of CPUs (sockets) the node has"
+    },
+    "core_count" => {
+      "description" => "The total number of CPU cores the node has"
+    },
+    "thread_count" => {
+      "description" => "The total number of CPU threads the node has"
+    },
     "eth_count" => {
       "description" => "The number of Ethernet interface the node has"
     },

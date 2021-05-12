@@ -3,10 +3,14 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["~", "disktype", "SAS", "SAS/SSD"]
     ["~", "gpu_count", nil, 4]
     ["~", "gpu_model", nil, "Tesla T4"]
+    ["+", "core_count", 32]
+    ["+", "cpu_count", 2]
+    ["+", "thread_count", 64]
   clustera-2: same modifications as above
   clustera-3: same modifications as above
   clustera-4: same modifications as above
   clustera-5: same modifications as above
+Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count
 Properties existing on the fakesite server but not managed/known by the generator: disk, diskpath.
 Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.
 # Error: Resource 12215 (host=clustera-1.nancy.grid5000.fr cpu=1765 core=10967 cpuset=0 gpu= gpudevice=) has a mismatch for ressource GPU: OAR API gives , generator wants 105.

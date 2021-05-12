@@ -2,6 +2,13 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
   clustera-1:
     ["~", "gpu_model", "GeForce RTX 2080 Ti", "RTX 2080 Ti"]
     ["~", "wattmeter", "MULTIPLE", "YES"]
+    ["+", "core_count", 16]
+    ["+", "cpu_count", 2]
+    ["+", "thread_count", 32]
   clustera-2:
     ["~", "gpu_model", "GeForce RTX 2080 Ti", "RTX 2080 Ti"]
     ["~", "wattmeter", "MULTIPLE", "NO"]
+    ["+", "core_count", 16]
+    ["+", "cpu_count", 2]
+    ["+", "thread_count", 32]
+Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count
