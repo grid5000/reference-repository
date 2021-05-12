@@ -5,6 +5,7 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "chassis", "Dell Inc. PowerEdge T640 FL1CBX2"]
     ["+", "core_count", 16]
     ["+", "cpu_count", 2]
+    ["+", "eth_kavlan_count", 0]
     ["+", "exotic", "NO"]
     ["+", "thread_count", 32]
   clustera-2:
@@ -13,7 +14,8 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "chassis", "Dell Inc. PowerEdge T640 9L1CBX2"]
     ["+", "core_count", 16]
     ["+", "cpu_count", 2]
+    ["+", "eth_kavlan_count", 0]
     ["+", "exotic", "NO"]
     ["+", "thread_count", 32]
 Error: the OAR property 'eth_rate' is a 'String' on the fakesite server and this script uses 'Integer' for this property.
-Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count, chassis, exotic
+Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count, chassis, eth_kavlan_count, exotic

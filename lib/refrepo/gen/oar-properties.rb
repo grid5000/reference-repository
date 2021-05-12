@@ -388,6 +388,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
 
   h['eth_count'] = ni_mountable.length
+  h['eth_kavlan_count'] = ni_mountable.select { |na| na['kavlan'] == true }.length
   h['eth_rate']  = ni_fastest['rate'] / 1_000_000_000
 
   puts "#{node_uid}: Warning - no rate info for the eth interface" if h['eth_count'] > 0 && h['eth_rate'] == 0
