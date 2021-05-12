@@ -1,0 +1,231 @@
+
+#! /usr/bin/env bash
+
+set -eu
+set -x
+set -o pipefail
+
+echo '================================================================================'
+
+property_exist () {
+  [[ $(oarproperty -l | grep -e "^$1$") ]]
+}
+
+node_exist () {
+  [[ $(oarnodes --sql "host='$1' and type='default'") ]]
+}
+
+disk_exist () {
+  [[ $(oarnodes --sql "host='$1' and type='disk' and disk='$2'") ]]
+}
+
+
+# if [ $(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
+#   NEXT_AVAILABLE_CPU_ID=0
+# else
+#   MAX_CPU_ID=$(oarnodes -Y | grep " cpu:" | awk '{print $2}' | sort -nr | head -n1)
+#   let "NEXT_AVAILABLE_CPU_ID=MAX_CPU_ID+1"
+# fi
+#
+# if [ $(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | wc -c) == "0" ]; then
+#   NEXT_AVAILABLE_CORE_ID=0
+# else
+#   MAX_CORE_ID=$(oarnodes -Y | grep " core:" | awk '{print $2}' | sort -nr | head -n1)
+#   let "NEXT_AVAILABLE_CORE_ID=MAX_CORE_ID+1"
+# fi
+
+#############################################
+# Create OAR properties that were created by 'oar_resources_add'
+#############################################
+property_exist 'host' || oarproperty -a host --varchar
+property_exist 'cpu' || oarproperty -a cpu
+property_exist 'core' || oarproperty -a core
+property_exist 'gpudevice' || oarproperty -a gpudevice
+property_exist 'gpu' || oarproperty -a gpu
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+
+
+#############################################
+# Create OAR properties if they don't exist
+#############################################
+
+property_exist 'ip' || oarproperty -a ip --varchar
+property_exist 'cluster' || oarproperty -a cluster --varchar
+property_exist 'nodemodel' || oarproperty -a nodemodel --varchar
+property_exist 'switch' || oarproperty -a switch --varchar
+property_exist 'virtual' || oarproperty -a virtual --varchar
+property_exist 'cpuarch' || oarproperty -a cpuarch --varchar
+property_exist 'cpucore' || oarproperty -a cpucore
+property_exist 'cputype' || oarproperty -a cputype --varchar
+property_exist 'cpufreq' || oarproperty -a cpufreq --varchar
+property_exist 'disktype' || oarproperty -a disktype --varchar
+property_exist 'chassis' || oarproperty -a chassis --varchar
+property_exist 'eth_count' || oarproperty -a eth_count
+property_exist 'eth_rate' || oarproperty -a eth_rate
+property_exist 'ib_count' || oarproperty -a ib_count
+property_exist 'ib_rate' || oarproperty -a ib_rate
+property_exist 'ib' || oarproperty -a ib --varchar
+property_exist 'opa_count' || oarproperty -a opa_count
+property_exist 'opa_rate' || oarproperty -a opa_rate
+property_exist 'myri_count' || oarproperty -a myri_count
+property_exist 'myri_rate' || oarproperty -a myri_rate
+property_exist 'myri' || oarproperty -a myri --varchar
+property_exist 'memcore' || oarproperty -a memcore
+property_exist 'memcpu' || oarproperty -a memcpu
+property_exist 'memnode' || oarproperty -a memnode
+property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
+property_exist 'gpu_count' || oarproperty -a gpu_count
+property_exist 'exotic' || oarproperty -a exotic --varchar
+property_exist 'mic' || oarproperty -a mic --varchar
+property_exist 'wattmeter' || oarproperty -a wattmeter --varchar
+property_exist 'cluster_priority' || oarproperty -a cluster_priority
+property_exist 'max_walltime' || oarproperty -a max_walltime
+property_exist 'production' || oarproperty -a production --varchar
+property_exist 'maintenance' || oarproperty -a maintenance --varchar
+property_exist 'disk_reservation_count' || oarproperty -a disk_reservation_count
+
+
+###################################
+# clustera-1.fakesite.grid5000.fr
+###################################
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=1 -p cpuset=0
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=2 -p cpuset=1
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=3 -p cpuset=2
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=4 -p cpuset=3
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=5 -p cpuset=4
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=6 -p cpuset=5
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=7 -p cpuset=6
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=8 -p cpuset=7
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=9 -p cpuset=8
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=10 -p cpuset=9
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=11 -p cpuset=10
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=12 -p cpuset=11
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=13 -p cpuset=12
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=14 -p cpuset=13
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=15 -p cpuset=14
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=16 -p cpuset=15
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=17 -p cpuset=16
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=18 -p cpuset=17
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=19 -p cpuset=18
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=20 -p cpuset=19
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=21 -p cpuset=20
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=22 -p cpuset=21
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=23 -p cpuset=22
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=24 -p cpuset=23
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=25 -p cpuset=24
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=26 -p cpuset=25
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=27 -p cpuset=26
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=28 -p cpuset=27
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=29 -p cpuset=28
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=30 -p cpuset=29
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=31 -p cpuset=30
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=1 -p core=32 -p cpuset=31
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=33 -p cpuset=128
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=34 -p cpuset=129
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=35 -p cpuset=130
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=36 -p cpuset=131
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=37 -p cpuset=132
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=38 -p cpuset=133
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=39 -p cpuset=134
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=40 -p cpuset=135
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=41 -p cpuset=136
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=42 -p cpuset=137
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=43 -p cpuset=138
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=44 -p cpuset=139
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=45 -p cpuset=140
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=46 -p cpuset=141
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=47 -p cpuset=142
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=48 -p cpuset=143
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=49 -p cpuset=144
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=50 -p cpuset=145
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=51 -p cpuset=146
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=52 -p cpuset=147
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=53 -p cpuset=148
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=54 -p cpuset=149
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=55 -p cpuset=150
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=56 -p cpuset=151
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=57 -p cpuset=152
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=58 -p cpuset=153
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=59 -p cpuset=154
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=60 -p cpuset=155
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=61 -p cpuset=156
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=62 -p cpuset=157
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=63 -p cpuset=158
+oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=64 -p cpuset=159
+echo; echo 'Setting properties for clustera-1.fakesite.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.54.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='arm64' -p cpuarch='aarch64' -p cpucore=32 -p cputype='ThunderX2 99xx' -p cpufreq='2.2' -p disktype='SAS/SSD' -p chassis='GIGABYTE R181-T92-00 GJG5N9812A0001' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=131072 -p memnode=262144 -p gpu_model='' -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='NO' -p cluster_priority=201906 -p max_walltime=0 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+
+echo '================================================================================'
+
+
+###################################
+# clustera-2.fakesite.grid5000.fr
+###################################
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=65 -p cpuset=0
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=66 -p cpuset=1
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=67 -p cpuset=2
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=68 -p cpuset=3
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=69 -p cpuset=4
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=70 -p cpuset=5
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=71 -p cpuset=6
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=72 -p cpuset=7
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=73 -p cpuset=8
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=74 -p cpuset=9
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=75 -p cpuset=10
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=76 -p cpuset=11
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=77 -p cpuset=12
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=78 -p cpuset=13
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=79 -p cpuset=14
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=80 -p cpuset=15
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=81 -p cpuset=16
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=82 -p cpuset=17
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=83 -p cpuset=18
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=84 -p cpuset=19
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=85 -p cpuset=20
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=86 -p cpuset=21
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=87 -p cpuset=22
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=88 -p cpuset=23
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=89 -p cpuset=24
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=90 -p cpuset=25
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=91 -p cpuset=26
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=92 -p cpuset=27
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=93 -p cpuset=28
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=94 -p cpuset=29
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=95 -p cpuset=30
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=3 -p core=96 -p cpuset=31
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=97 -p cpuset=128
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=98 -p cpuset=129
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=99 -p cpuset=130
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=100 -p cpuset=131
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=101 -p cpuset=132
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=102 -p cpuset=133
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=103 -p cpuset=134
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=104 -p cpuset=135
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=105 -p cpuset=136
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=106 -p cpuset=137
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=107 -p cpuset=138
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=108 -p cpuset=139
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=109 -p cpuset=140
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=110 -p cpuset=141
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=111 -p cpuset=142
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=112 -p cpuset=143
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=113 -p cpuset=144
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=114 -p cpuset=145
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=115 -p cpuset=146
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=116 -p cpuset=147
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=117 -p cpuset=148
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=118 -p cpuset=149
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=119 -p cpuset=150
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=120 -p cpuset=151
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=121 -p cpuset=152
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=122 -p cpuset=153
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=123 -p cpuset=154
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=124 -p cpuset=155
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=125 -p cpuset=156
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=126 -p cpuset=157
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=127 -p cpuset=158
+oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=128 -p cpuset=159
+echo; echo 'Setting properties for clustera-2.fakesite.grid5000.fr:'; echo
+oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.54.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='arm64' -p cpuarch='aarch64' -p cpucore=32 -p cputype='ThunderX2 99xx' -p cpufreq='2.2' -p disktype='SAS/SSD' -p chassis='GIGABYTE R181-T92-00 GJG5N9812A0004' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=131072 -p memnode=262144 -p gpu_model='' -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='NO' -p cluster_priority=201906 -p max_walltime=0 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+
+echo '================================================================================'

@@ -1,0 +1,20 @@
+################################
+# Error: CPU 1 is associated to more than one host: ["clustera-1.fakesite.grid5000.fr", "clustera-2.fakesite.grid5000.fr"].
+# You can review this situation via the following command:
+################################
+oarnodes -Y --sql "cpu=1"
+
+################################
+# Error: GPU 1 is associated to more than one host: ["clustera-1.fakesite.grid5000.fr", "clustera-2.fakesite.grid5000.fr"].
+# You can review this situation via the following command:
+################################
+oarnodes -Y --sql "gpu=1"
+
+################################
+# Error: resources with ids [21, 22] have the same value for core (core is equal to 21)
+# You can review this situation via the following command:
+################################
+oarnodes -Y --sql "resource_id='21' OR resource_id='22'"
+
+It seems that the cluster "clustera" has some incoherence in its resource configuration (see above). The generator will abort.
+Sanity check failed

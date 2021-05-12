@@ -1,0 +1,13 @@
+Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
+  clustera-1:
+    ["~", "deploy", "NO", "YES"]
+    ["~", "gpu_model", "GeForce RTX 2080 Ti", "RTX 2080 Ti"]
+    ["+", "chassis", "Dell Inc. PowerEdge T640 FL1CBX2"]
+    ["+", "exotic", "NO"]
+  clustera-2:
+    ["~", "deploy", "NO", "YES"]
+    ["~", "gpu_model", "GeForce RTX 2080 Ti", "RTX 2080 Ti"]
+    ["+", "chassis", "Dell Inc. PowerEdge T640 9L1CBX2"]
+    ["+", "exotic", "NO"]
+Properties that need to be created on the fakesite server: chassis, exotic
+# Error: Resource 9 (host=clustera-1.fakesite.grid5000.fr cpu=2 core=9 cpuset=8 gpu=2 gpudevice=2) has a mismatch for ressource GPU: OAR API gives 2, generator wants 3.
