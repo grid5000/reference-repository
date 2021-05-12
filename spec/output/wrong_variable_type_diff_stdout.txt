@@ -1,0 +1,13 @@
+Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
+  clustera-1:
+    ["~", "eth_rate", "10", 10]
+    ["~", "gpu_model", "GeForce RTX 2080 Ti", "RTX 2080 Ti"]
+    ["+", "chassis", "Dell Inc. PowerEdge T640 FL1CBX2"]
+    ["+", "exotic", "NO"]
+  clustera-2:
+    ["~", "eth_rate", "10", 10]
+    ["~", "gpu_model", "GeForce RTX 2080 Ti", "RTX 2080 Ti"]
+    ["+", "chassis", "Dell Inc. PowerEdge T640 9L1CBX2"]
+    ["+", "exotic", "NO"]
+Error: the OAR property 'eth_rate' is a 'String' on the fakesite server and this script uses 'Integer' for this property.
+Properties that need to be created on the fakesite server: chassis, exotic

@@ -5,6 +5,10 @@ require 'refrepo/data_loader'
 require 'net/ssh'
 require 'refrepo/gpu_ref'
 
+# TODO missing test case: dead nodes (see coverage)
+# TODO missing test case: quirk cluster (see coverage)
+# TODO for gpu_model (and others?) use NULL instead of empty string
+
 class MissingProperty < StandardError; end
 
 MiB = 1024**2
@@ -211,42 +215,27 @@ end
 #   (3)         > * If the resource already exists, the CPU and CORE associated to the resource is detected
 #   (4)           * The resource is exported as an OAR command
 #   (5)      * If applicable, create/update the storage devices associated to the node
-def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy, faulty_resources=nil, faulty_nodes=nil)
+def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, data_hierarchy)
 
   result = ""
 
-  print_header = true
+  # Generate helper functions and detect the next available CPU and CORE IDs for
+  # non exisiting resources
+  result += generate_oar_commands_header()
 
-  if not faulty_nodes.nil? or not faulty_resources.nil?
-    print_header = false
-  end
-
-  if print_header
-    # Generate helper functions and detect the next available CPU and CORE IDs for
-    # non exisiting resources
-    result += generate_oar_commands_header()
-
-    # Ensure that OAR properties exist before creating/updating OAR resources
-    result += generate_oar_property_creation(site_name, data_hierarchy)
-  end
+  # Ensure that OAR properties exist before creating/updating OAR resources
+  result += generate_oar_property_creation(site_name, data_hierarchy)
 
   # Iterate over nodes of the generated resource hierarchy
   generated_hierarchy[:nodes].each do |node|
 
-    print_node_header = true
 
-    if not faulty_nodes.nil? and not faulty_nodes.include?(node[:fqdn])
-      print_node_header = false
-    end
-
-    if print_node_header
-      result += %Q{
+    result += %Q{
 
 ###################################
 # #{node[:fqdn]}
 ###################################
 }
-    end
 
     # Iterate over the resources of the OAR node
     node[:oar_rows].each do |oar_ressource_row|
@@ -260,10 +249,6 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       gpumodel = oar_ressource_row[:gpumodel].to_s
       gpudevicepath = oar_ressource_row[:gpudevicepath].to_s
       resource_id = oar_ressource_row[:resource_id]
-
-      if not faulty_resources.nil? and not faulty_resources.include?(resource_id)
-        next
-      end
 
       if resource_id == -1 or resource_id.nil?
         # Add the resource to the OAR DB
@@ -282,15 +267,8 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       end
     end
 
-    print_node = true
-    if not faulty_nodes.nil? and not faulty_nodes.include?(node[:name])
-      print_node = false
-    end
-
-    if print_node
-      # Set the OAR properties of the OAR node
-      result += generate_set_node_properties_cmd(node[:fqdn], node[:default_description])
-    end
+    # Set the OAR properties of the OAR node
+    result += generate_set_node_properties_cmd(node[:fqdn], node[:default_description])
 
     # Iterate over storage devices
     node[:description]["storage_devices"].select{|v| v.key?("reservation") and v["reservation"]}.each do |storage_device|
@@ -302,10 +280,6 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       #       pattern : "sda1.ecotype-48"
       storage_device_name = storage_device["device"]
       storage_device_name_with_hostname = "#{storage_device_name}.#{node[:name]}"
-
-      if not faulty_nodes.nil? and not faulty_nodes.include?(storage_device_name_with_hostname)
-        next
-      end
 
       # Retried the site propertie that corresponds to this storage device
       storage_device_oar_properties_tuple = site_properties["disk"].select { |keys| keys.include?(storage_device_name_with_hostname) }.first
@@ -324,9 +298,7 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       result += generate_set_disk_properties_cmd(node[:fqdn], storage_device_name_with_hostname, storage_device_oar_properties)
     end
 
-    if print_node
-      result += generate_separators()
-    end
+    result += generate_separators()
   end
 
   return result
@@ -462,7 +434,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     h['gpu_model'] = GPURef.getGrid5000LegacyNameFor(node['gpu_devices'].values[0]['model'])
     h['gpu_count'] = node['gpu_devices'].length
   else
-    h['gpu_model'] = false
+    h['gpu_model'] = ''
     h['gpu_count'] = 0
   end
 
@@ -637,7 +609,6 @@ def get_oar_data(site_uid, options)
     end
 
     # Download the OAR properties from the OAR API (through G5K API)
-    puts "Downloading resources properties from #{api_uri} ..." if options[:verbose] and options[:verbose] > 0
     http = Net::HTTP.new(api_uri.host, api_uri.port)
     if api_uri.scheme == "https"
       http.use_ssl = true
@@ -651,7 +622,6 @@ def get_oar_data(site_uid, options)
 
     response = http.request(request)
     raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
-    puts '... done' if options[:verbose] and options[:verbose] > 0
 
     oarnodes = JSON.parse(response.body)
 
@@ -752,7 +722,6 @@ def ignore_default_keys()
     "cpu", # This property was created by 'oar_resources_add'
     "host", # This property was created by 'oar_resources_add'
     "gpudevice", # New property taken into account by the new generator
-    "gpu_model", # New property taken into account by the new generator
     "gpu", # New property taken into account by the new generator
     "cpuset",
     "desktop_computing",
@@ -872,12 +841,11 @@ def get_oar_properties_from_oar(options)
 end
 
 def do_diff(options, generated_hierarchy, refrepo_properties)
+  raise if options[:update] or options[:print] # no longer supported, was never really supported
+
   ret = 0
 
   diagnostic_msgs = []
-
-  faulty_resources = []
-  faulty_nodes = []
 
   properties = {
     'ref' => refrepo_properties,
@@ -896,191 +864,169 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
   end
   ignore_default_keys = ignore_default_keys()
 
-  # Diff
-  if options[:diff]
-    # Build the list of nodes that are listed in properties['oar'],
-    # but does not exist in properties['ref']
-    # We distinguish 'Dead' nodes and 'Alive'/'Absent'/etc. nodes
-    missings_alive = []
-    missings_dead = []
-    properties['oar'].each do |site_uid, site_properties|
-      site_properties['default'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |node_uid, node_properties_oar|
-        unless properties['ref'][site_uid]['default'][node_uid]
-          node_properties_oar['state'] != 'Dead' ? missings_alive << node_uid : missings_dead << node_uid
+  # Build the list of nodes that are listed in properties['oar'],
+  # but does not exist in properties['ref']
+  # We distinguish 'Dead' nodes and 'Alive'/'Absent'/etc. nodes
+  missings_alive = []
+  missings_dead = []
+  properties['oar'].each do |site_uid, site_properties|
+    site_properties['default'].each_filtered_node_uid(options[:clusters], options[:nodes]) do |node_uid, node_properties_oar|
+      unless properties['ref'][site_uid]['default'][node_uid]
+        if node_properties_oar['state'] != 'Dead'
+          missings_alive << node_uid
+        else
+          missings_dead << node_uid
         end
       end
     end
-
-    if missings_alive.size > 0
-      diagnostic_msgs.push("*** Error: The following nodes exist in the OAR server but are missing in the reference-repo: #{missings_alive.join(', ')}.\n")
-      ret = false unless options[:update] || options[:print]
-    end
-
-    skipped_nodes = []
-    prev_diff = {}
-    properties['diff'] = {}
-
-    header = false
-    properties['ref'].each do |site_uid, site_properties|
-      properties['diff'][site_uid] = {}
-      site_properties.each do |type, type_properties|
-        properties['diff'][site_uid][type] = {}
-        type_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) do |key, properties_ref|
-          # As an example, key can be equal to 'grimoire-1' for default resources or
-          # ['grimoire-1', 1] for disk resources (disk n°1 of grimoire-1)
-          node_uid, = key
-
-          if properties_ref['state'] == 'Dead'
-            skipped_nodes << node_uid
-            next
-          end
-
-          properties_oar = properties['oar'][site_uid][type][key]
-
-          diff = diff_properties(type, properties_oar, properties_ref) # Note: this deletes some properties from the input parameters
-          diff_keys = diff.map { |hashdiff_array| hashdiff_array[1] }
-          properties['diff'][site_uid][type][key] = properties_ref.select { |k, _v| diff_keys.include?(k) }
-
-          if not diff.empty?
-            if key.kind_of?(Array)
-              faulty_nodes.push(key[-1])
-            else
-              faulty_nodes.push(key)
-            end
-          end
-
-          # Verbose output
-          if properties['oar'][site_uid][type][key].nil?
-            info = ((type == 'default') ? ' new node !' : ' new disk !')
-          else
-            info = ''
-          end
-
-          case options[:verbose]
-          when 1
-            diagnostic_msgs.push( "#{key}:#{info}") if info != ''
-            diagnostic_msgs.push( "#{key}:#{diff_keys}") if diff.size != 0
-          when 2
-            # Give more details
-            if header == false
-              diagnostic_msgs.push( "Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed")
-              header = true
-            end
-            if diff.empty?
-              diagnostic_msgs.push( "  #{key}: OK#{info}")
-            elsif diff == prev_diff
-              diagnostic_msgs.push( "  #{key}:#{info} same modifications as above")
-            else
-              diagnostic_msgs.push( "  #{key}:#{info}")
-              diff.each { |d| diagnostic_msgs.push( "    #{d}") }
-            end
-            prev_diff = diff
-          when 3
-            # Even more details
-            diagnostic_msgs.push( "#{key}:#{info}") if info != ''
-            diagnostic_msgs.push( JSON.pretty_generate(key => { 'old values' => properties_oar, 'new values' => properties_ref }))
-          end
-          if diff.size != 0
-            ret = false unless options[:update] || options[:print]
-          end
-        end
-      end
-
-      # Get the list of property keys from the OAR scheduler (['oar'])
-      properties_keys['oar'][site_uid] = get_property_keys(properties['oar'][site_uid])
-
-      # Build the list of properties that must be created in the OAR server
-      properties_keys['diff'][site_uid] = {}
-      properties_keys['ref'][site_uid].each do |k, v_ref|
-        v_oar = properties_keys['oar'][site_uid][k]
-        properties_keys['diff'][site_uid][k] = v_ref unless v_oar
-        if v_oar && v_oar != v_ref && v_ref != NilClass && v_oar != NilClass
-          # Detect inconsistency between the type (String/Integer) of properties generated by this script and the existing values on the server.
-          diagnostic_msgs.push( "Error: the OAR property '#{k}' is a '#{v_oar}' on the #{site_uid} server and this script uses '#{v_ref}' for this property.")
-          ret = false unless options[:update] || options[:print]
-        end
-      end
-
-      diagnostic_msgs.push( "Properties that need to be created on the #{site_uid} server: #{properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.join(', ')}") if options[:verbose] && properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.size > 0
-
-      # Detect unknown properties
-      unknown_properties = properties_keys['oar'][site_uid].keys.to_set - properties_keys['ref'][site_uid].keys.to_set
-      ignore_default_keys.each do |key|
-        unknown_properties.delete(key)
-      end
-
-      if options[:verbose] && unknown_properties.size > 0
-        diagnostic_msgs.push( "Properties existing on the #{site_uid} server but not managed/known by the generator: #{unknown_properties.to_a.join(', ')}.")
-        diagnostic_msgs.push( "Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.")
-        ret = false unless options[:update] || options[:print]
-      end
-      diagnostic_msgs.push( "Skipped retired nodes: #{skipped_nodes}") if skipped_nodes.any?
-
-
-      if not (options[:print] and options[:diff])
-        diagnostic_msgs.map{|msg| puts(msg)}
-      end
-
-      # Check that CPUSETs on the OAR server are consistent with what would have been generated
-      oar_resources = get_oar_resources_from_oar(options)
-
-      error_msgs = ""
-
-      options[:clusters].each do |cluster|
-
-        generated_rows_for_this_cluster = generated_hierarchy[:nodes]
-                                              .map{|node| node[:oar_rows]}
-                                              .flatten
-                                              .select{|r| r[:cluster] == cluster}
-
-        site_resources = oar_resources[site_uid]["resources"]
-        cluster_resources = site_resources.select{|x| x["cluster"] == cluster}
-        default_cluster_resources = cluster_resources.select{|r| r["type"] == "default"}
-
-
-        if generated_rows_for_this_cluster.length > 0
-          # Check that OAR resources are associated with the right cpu, core and cpuset
-          generated_rows_for_this_cluster.each do |row|
-            corresponding_resource = default_cluster_resources.select{|r| r["id"] == row[:resource_id]}
-            if corresponding_resource.length > 0
-              resc = corresponding_resource[0]
-
-              {:cpu => "cpu", :core => "core", :cpuset => "cpuset", :gpu => "gpu", :gpudevice => "gpudevice"}.each do |key, value|
-                if row[key].to_s != corresponding_resource[0][value].to_s and not (key == :gpu and row[key].nil? and corresponding_resource[0][value] == 0)
-                  expected_value = row[key]
-                  if expected_value == "" or expected_value.nil?
-                    expected_value = "ø"
-                  end
-                  diagnostic_msg = <<-TXT
-# Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: OAR API gives #{resc[value]}, generator wants #{expected_value}.
-TXT
-                  error_msgs += "#{diagnostic_msg}"
-                  faulty_resources.push(row[:resource_id])
-                  faulty_resources.push(row[:host])
-                end
-              end
-            else
-              # If resource_id is not equal to -1, then the generator is working on a resource that should exist,
-              # however it cannot be found : the generator reports an error to the operator
-              if row[:resource_id] != -1
-                puts "Error: could not find ressource with ID=#{row[:resource_id]}"
-                faulty_resources.push(row[:resource_id])
-                faulty_resources.push(row[:host])
-              end
-            end
-          end
-        end
-      end
-
-      if not (options[:print] and options[:diff]) and not error_msgs.empty?
-        puts error_msgs
-        ret = false unless options[:update] || options[:print]
-      end
-
-    end # if options[:diff]
   end
 
-  return ret, faulty_resources, faulty_nodes
+  if missings_alive.size > 0
+    diagnostic_msgs.push("*** Error: The following nodes exist in the OAR server but are missing in the reference-repo: #{missings_alive.join(', ')}.\n")
+    ret = false
+  end
+
+  skipped_nodes = []
+  prev_diff = {}
+  properties['diff'] = {}
+
+  header = false
+  properties['ref'].each do |site_uid, site_properties|
+    properties['diff'][site_uid] = {}
+    site_properties.each do |type, type_properties|
+      properties['diff'][site_uid][type] = {}
+      type_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) do |key, properties_ref|
+        # As an example, key can be equal to 'grimoire-1' for default resources or
+        # ['grimoire-1', 1] for disk resources (disk n°1 of grimoire-1)
+        node_uid, = key
+
+        if properties_ref['state'] == 'Dead'
+          skipped_nodes << node_uid
+          next
+        end
+
+        properties_oar = properties['oar'][site_uid][type][key]
+
+        diff = diff_properties(type, properties_oar, properties_ref) # Note: this deletes some properties from the input parameters
+        diff_keys = diff.map { |hashdiff_array| hashdiff_array[1] }
+        properties['diff'][site_uid][type][key] = properties_ref.select { |k, _v| diff_keys.include?(k) }
+
+        if properties['oar'][site_uid][type][key].nil?
+          info = ((type == 'default') ? ' new node !' : ' new disk !')
+        else
+          info = ''
+        end
+
+        if header == false
+          # output header only once
+          diagnostic_msgs.push( "Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed")
+          header = true
+        end
+        if diff.empty?
+          diagnostic_msgs.push( "  #{key}: OK#{info}")
+        elsif diff == prev_diff
+          diagnostic_msgs.push( "  #{key}:#{info} same modifications as above")
+        else
+          diagnostic_msgs.push( "  #{key}:#{info}")
+          diff.each { |d| diagnostic_msgs.push( "    #{d}") }
+        end
+        prev_diff = diff
+        if diff.size != 0
+          ret = false
+        end
+      end
+    end
+
+    # Get the list of property keys from the OAR scheduler (['oar'])
+    properties_keys['oar'][site_uid] = get_property_keys(properties['oar'][site_uid])
+
+    # Build the list of properties that must be created in the OAR server
+    properties_keys['diff'][site_uid] = {}
+    properties_keys['ref'][site_uid].each do |k, v_ref|
+      v_oar = properties_keys['oar'][site_uid][k]
+      properties_keys['diff'][site_uid][k] = v_ref unless v_oar
+      if v_oar && v_oar != v_ref && v_ref != NilClass && v_oar != NilClass
+        # Detect inconsistency between the type (String/Integer) of properties generated by this script and the existing values on the server.
+        diagnostic_msgs.push( "Error: the OAR property '#{k}' is a '#{v_oar}' on the #{site_uid} server and this script uses '#{v_ref}' for this property.")
+        ret = false
+      end
+    end
+
+    diagnostic_msgs.push( "Properties that need to be created on the #{site_uid} server: #{properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.join(', ')}") if properties_keys['diff'][site_uid].keys.to_a.delete_if { |e| ignore_keys.include?(e) }.size > 0
+
+    # Detect unknown properties
+    unknown_properties = properties_keys['oar'][site_uid].keys.to_set - properties_keys['ref'][site_uid].keys.to_set
+    ignore_default_keys.each do |key|
+      unknown_properties.delete(key)
+    end
+
+    if unknown_properties.size > 0
+      diagnostic_msgs.push( "Properties existing on the #{site_uid} server but not managed/known by the generator: #{unknown_properties.to_a.join(', ')}.")
+      diagnostic_msgs.push( "Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.")
+      ret = false
+    end
+    diagnostic_msgs.push( "Skipped retired nodes: #{skipped_nodes}") if skipped_nodes.any?
+
+
+    if not options[:print]
+      diagnostic_msgs.map{|msg| puts(msg)}
+    end
+
+    # Check that CPUSETs on the OAR server are consistent with what would have been generated
+    oar_resources = get_oar_resources_from_oar(options)
+
+    error_msgs = ""
+
+    options[:clusters].each do |cluster|
+
+      generated_rows_for_this_cluster = generated_hierarchy[:nodes]
+      .map{|node| node[:oar_rows]}
+      .flatten
+      .select{|r| r[:cluster] == cluster}
+
+      site_resources = oar_resources[site_uid]["resources"]
+      cluster_resources = site_resources.select{|x| x["cluster"] == cluster}
+      default_cluster_resources = cluster_resources.select{|r| r["type"] == "default"}
+
+
+      if generated_rows_for_this_cluster.length > 0
+        # Check that OAR resources are associated with the right cpu, core and cpuset
+        generated_rows_for_this_cluster.each do |row|
+          corresponding_resource = default_cluster_resources.select{|r| r["id"] == row[:resource_id]}
+          if corresponding_resource.length > 0
+            resc = corresponding_resource[0]
+
+            {:cpu => "cpu", :core => "core", :cpuset => "cpuset", :gpu => "gpu", :gpudevice => "gpudevice"}.each do |key, value|
+              if row[key].to_s != corresponding_resource[0][value].to_s and not (key == :gpu and row[key].nil? and corresponding_resource[0][value] == 0)
+                expected_value = row[key]
+                if expected_value == "" or expected_value.nil?
+                  expected_value = "null"
+                end
+                diagnostic_msg = <<-TXT
+# Error: Resource #{resc["id"]} (host=#{resc["network_address"]} cpu=#{resc["cpu"]} core=#{resc["core"]} cpuset=#{resc["cpuset"]} gpu=#{resc["gpu"]} gpudevice=#{resc["gpudevice"]}) has a mismatch for ressource #{value.upcase}: OAR API gives #{resc[value]}, generator wants #{expected_value}.
+                TXT
+                error_msgs += "#{diagnostic_msg}"
+              end
+            end
+          else
+            # If resource_id is not equal to -1, then the generator is working on a resource that should exist,
+            # however it cannot be found : the generator reports an error to the operator
+            if row[:resource_id] != -1
+              puts "Error: could not find ressource with ID=#{row[:resource_id]}"
+            end
+          end
+        end
+      end
+    end
+
+    if not options[:print] and not error_msgs.empty?
+      puts error_msgs
+      ret = false
+    end
+
+  end
+
+  return ret
 end
 
 
@@ -1505,13 +1451,14 @@ def generate_oar_properties(options)
 
   ############################################
   # Fetch:
-  # 1) hierarchy from YAML files
-  # 2) generated data from load_data_hierarchy
-  # 3) oar properties from the reference repository
+  # 1) generated data from load_data_hierarchy
+  # 2) oar properties from the reference repository
   ############################################
 
+  # Load the description from the ref-api (data/ dir)
   data_hierarchy = load_data_hierarchy
 
+  # filter based on site/cluster
   site_name = options[:site]
 
   # Replace the site placeholder of ssh hosts by the site
@@ -1529,26 +1476,17 @@ def generate_oar_properties(options)
     clusters = options[:clusters]
   end
 
+  # convert to OAR properties
   refrepo_properties = get_oar_properties_from_the_ref_repo(data_hierarchy, {
       :sites => [site_name]
   })
 
-  ############################################
-  # Generate information about the clusters
-  ############################################
-
-  begin
-    generated_hierarchy = extract_clusters_description(clusters,
+  # also fetch the resources hierarchy inside nodes (cores, gpus, etc.)
+  generated_hierarchy = extract_clusters_description(clusters,
                                                        site_name,
                                                        options,
                                                        data_hierarchy,
                                                        refrepo_properties[site_name])
-  rescue
-    puts "A problem occured while building the clusters description. Generator is exiting."
-    puts $!
-    puts $@
-    return 1
-  end
 
   ############################################
   # Output generated information
@@ -1563,17 +1501,12 @@ def generate_oar_properties(options)
 
   # Do=Diff
   if options.key? :diff and options[:diff]
-    return_code, faulty_resources, faulty_nodes = do_diff(options, generated_hierarchy, refrepo_properties)
-    ret = return_code
+    ret = do_diff(options, generated_hierarchy, refrepo_properties)
   end
 
   # DO=print
   if options.key? :print and options[:print]
-    if options[:diff]
-      cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy, faulty_resources, faulty_nodes)
-    else
-      cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
-    end
+    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
 
     puts(cmds)
   end
@@ -1590,5 +1523,5 @@ def generate_oar_properties(options)
   return ret
 end
 
-end
+end # Module
 include OarProperties
