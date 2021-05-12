@@ -283,7 +283,7 @@ def add_network_metrics(h)
     site['clusters'].each_pair do |cluster_uid, cluster|
 
       # remove any network metrics defined in cluster
-      cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_.*_bytes_total/}
+      cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_iface.*/}
 
       # for each interface of a cluster's node
       node_uid, node = cluster['nodes'].select { |k, v| v['status'] != 'retired' }.sort_by{ |k, v| k }.first
@@ -297,7 +297,7 @@ def add_network_metrics(h)
         end
 
         # for each network metric declared for the switch
-        site.fetch('networks', {}).fetch(switch, {}).fetch('metrics', []).select{|m| m['name'] =~ /network_.*_bytes_total/}.each do |metric|
+        site.fetch('networks', {}).fetch(switch, {}).fetch('metrics', []).select{|m| m['name'] =~ /network_iface.*/}.each do |metric|
 
           # add this metric to cluster's list of available metrics, associated to node interface
           new_metric = metric.merge({"labels" => {"interface" => iface_uid}})
