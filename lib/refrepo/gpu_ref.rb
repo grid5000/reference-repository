@@ -17,7 +17,7 @@ class GPURef
     "Quadro RTX 6000" => 4608,
   }
 
-  @@new_gpu_names2old_ones = {
+  @@model2sname = {
     "GeForce RTX 2080 Ti" => "RTX 2080 Ti",
     "GeForce GTX 1080 Ti" => "GTX 1080 Ti",
     "Tesla P100-PCIE-16GB" => "Tesla P100",
@@ -42,11 +42,11 @@ class GPURef
   end
 
   # will not keep this, just to ease manual testing for bug #10436
-  def self.getGrid5000LegacyNameFor(model)
-    if @@new_gpu_names2old_ones[model]
-      return @@new_gpu_names2old_ones[model]
+  def self.model2shortname(model)
+    if @@model2sname[model]
+      return @@model2sname[model]
     else
-      return model
+      raise "Missing short name for model: #{model}"
     end
   end
 

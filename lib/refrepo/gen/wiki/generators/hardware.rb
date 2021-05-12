@@ -201,7 +201,7 @@ class G5KHardwareGenerator < WikiGenerator
                 d = g[1]
                 vendor = d['vendor']
                 cmodel = d['model']
-                model = GPURef.getGrid5000LegacyNameFor(cmodel)
+                model = cmodel
                 nbcores = GPURef.getNumberOfCoresFor(cmodel)
 
                 family = gpu_families[[vendor]]

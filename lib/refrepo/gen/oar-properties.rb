@@ -434,8 +434,11 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     and h['cluster'] != 'orion'
     # Do not generate GPU ppty for orion, cf #10785
 
-    # This forbids a node to host different GPU models ...
-    h['gpu_model'] = GPURef.getGrid5000LegacyNameFor(node['gpu_devices'].values[0]['model'])
+    models = node['gpu_devices'].values.map { |g| g['model'] }.uniq
+    if models.length > 1
+      raise "Node #{h['uid']} has more than one model of GPU"
+    end
+    h['gpu_model'] = models.first
     h['gpu_count'] = node['gpu_devices'].length
   else
     h['gpu_model'] = ''

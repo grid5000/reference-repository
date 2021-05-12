@@ -220,7 +220,7 @@ def gpu_description(node_hash, long_names)
       if long_names
         model = d['model']
       else
-        model = GPURef.getGrid5000LegacyNameFor(d['model'])
+        model = GPURef.model2shortname(d['model'])
       end
       vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;')
       if bymodel[vm]
