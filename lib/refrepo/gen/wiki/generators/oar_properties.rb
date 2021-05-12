@@ -153,6 +153,9 @@ class OarPropertiesGenerator < WikiGenerator
     "eth_count" => {
       "description" => "The number of Ethernet interface the node has"
     },
+    "eth_kavlan_count" => {
+      "description" => "The number of Ethernet interface with KaVLAN support the node has"
+    },
     "eth_rate" => {
       "description" => "the maximum rate of connected network interfaces in Gbps"
     },
