@@ -56,6 +56,9 @@ property_exist 'switch' || oarproperty -a switch --varchar
 property_exist 'virtual' || oarproperty -a virtual --varchar
 property_exist 'cpuarch' || oarproperty -a cpuarch --varchar
 property_exist 'cpucore' || oarproperty -a cpucore
+property_exist 'cpu_count' || oarproperty -a cpu_count
+property_exist 'core_count' || oarproperty -a core_count
+property_exist 'thread_count' || oarproperty -a thread_count
 property_exist 'cputype' || oarproperty -a cputype --varchar
 property_exist 'cpufreq' || oarproperty -a cpufreq --varchar
 property_exist 'disktype' || oarproperty -a disktype --varchar
@@ -107,7 +110,7 @@ oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='cluste
 oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=6 -p core=47 -p cpuset=14 -p gpu=4 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
 oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=6 -p core=48 -p cpuset=15 -p gpu=4 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
 echo; echo 'Setting properties for clustera-1.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw-fakesite' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA/SSD' -p chassis='Dell Inc. PowerEdge T640 FL1CBX2' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_model='RTX 2080 Ti' -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw-fakesite' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cpu_count=2 -p core_count=16 -p thread_count=32 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA/SSD' -p chassis='Dell Inc. PowerEdge T640 FL1CBX2' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_model='RTX 2080 Ti' -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
 
 echo '================================================================================'
 
@@ -132,6 +135,6 @@ oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='cluste
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=8 -p core=63 -p cpuset=14 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=8 -p core=64 -p cpuset=15 -p gpu=8 -p gpu_model='GeForce RTX 2080 Ti' -p gpudevice=3 # This GPU is mapped on /dev/nvidia3
 echo; echo 'Setting properties for clustera-2.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw-fakesite' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA/SSD' -p chassis='Dell Inc. PowerEdge T640 9L1CBX2' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_model='RTX 2080 Ti' -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.64.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw-fakesite' -p besteffort='YES' -p deploy='YES' -p virtual='ivt' -p cpuarch='x86_64' -p cpucore=8 -p cpu_count=2 -p core_count=16 -p thread_count=32 -p cputype='Intel Xeon Silver 4110' -p cpufreq='2.1' -p disktype='SATA/SSD' -p chassis='Dell Inc. PowerEdge T640 9L1CBX2' -p eth_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=8192 -p memcpu=65536 -p memnode=131072 -p gpu_model='RTX 2080 Ti' -p gpu_count=4 -p exotic='NO' -p mic='NO' -p wattmeter='MULTIPLE' -p cluster_priority=201906 -p max_walltime=86400 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
 
 echo '================================================================================'

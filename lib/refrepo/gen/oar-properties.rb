@@ -375,6 +375,9 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['virtual'] = node['supported_job_types']['virtual']
   h['cpuarch'] = node['architecture']['platform_type']
   h['cpucore'] = node['architecture']['nb_cores'] / node['architecture']['nb_procs']
+  h['cpu_count'] = node['architecture']['nb_procs']
+  h['core_count'] = node['architecture']['nb_cores']
+  h['thread_count'] = node['architecture']['nb_threads']
   h['cputype'] = [node['processor']['model'], node['processor']['version']].join(' ')
   h['cpufreq'] = node['processor']['clock_speed'] / 1_000_000_000.0
   h['disktype'] = [node['storage_devices'].first['interface'], node['storage_devices'].first['storage']].join('/')
