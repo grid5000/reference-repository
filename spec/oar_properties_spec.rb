@@ -58,12 +58,6 @@ describe 'OarProperties' do
     end
   end
 
-  context 'interracting with a configured OAR server (quirk cluster)' do
-    it 'should work correctly' do
-      check_oar_properties({ :oar => 'oar_quirk_cluster', :data => 'data_without_gpu', :case => 'configured_without_gpu_quirk_cluster' })
-    end
-  end
-
   context 'interracting with a configured OAR server (misconfigured cores)' do
     it 'should work correctly' do
       check_oar_properties({ :oar => 'oar_misconfigured_cores', :data => 'data_without_gpu', :case => 'configured_misconfigured_cores' })

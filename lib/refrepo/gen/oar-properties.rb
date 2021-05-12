@@ -6,7 +6,6 @@ require 'net/ssh'
 require 'refrepo/gpu_ref'
 
 # TODO missing test case: dead nodes (see coverage)
-# TODO missing test case: quirk cluster (see coverage)
 # TODO for gpu_model (and others?) use NULL instead of empty string
 
 class MissingProperty < StandardError; end
@@ -1194,18 +1193,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
     first_node = cluster_desc_from_data_files['nodes'].first[1]
 
-    # Some clusters such as graphite have a different organisation:
-    # for example, graphite-1 is organised as follow:
-    #   1st resource => cpu: 665, core: 1903
-    #   2nd resource => cpu: 666, core: 1904
-    #   3rd resource => cpu: 665, core: 1905
-    #   4th resource => cpu: 666, core: 1906
-    #   ...
-    #
-    # To cope with such cases and ensure an homogeneous processing a "is_quirk_cluster" variable is set to true.
-    is_quirk_cluster = false
-
-
     cpu_count = first_node['architecture']['nb_procs']
     cpu_core_count = first_node['architecture']['nb_cores'] / cpu_count
     cpu_thread_count = first_node['architecture']['nb_threads'] / cpu_count
@@ -1260,9 +1247,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       oar_resource_ids = phys_rsc_map["core"][:current_ids].map{|r| -1}
     else
       oar_resource_ids = cluster_resources.map{|r| r["id"]}.uniq
-      if oar_resource_ids != cluster_resources.sort_by {|r| [ r["cpu"], r["core"]] }.map{|r| r["id"]}
-        is_quirk_cluster = true
-      end
     end
 
     phys_rsc_map.each do |physical_resource, variables|
@@ -1335,14 +1319,8 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
           # Compute cpu and core ID
           oar_resource_id = oar_resource_ids[core_idx]
-          if not is_quirk_cluster
-            cpu_id = phys_rsc_map["cpu"][:current_ids][cpu_idx]
-            core_id = phys_rsc_map["core"][:current_ids][core_idx]
-          else
-            current_resource = cluster_resources.select{|r| r["id"] == oar_resource_id}[0]
-            cpu_id = current_resource["cpu"]
-            core_id = current_resource["core"]
-          end
+          cpu_id = phys_rsc_map["cpu"][:current_ids][cpu_idx]
+          core_id = phys_rsc_map["core"][:current_ids][core_idx]
 
           # Prepare an Hash that represents a single OAR resource. Few
           # keys are initialized with empty values.
