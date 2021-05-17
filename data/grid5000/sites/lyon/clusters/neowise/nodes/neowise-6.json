@@ -1,0 +1,76 @@
+{
+  "architecture": {
+    "nb_cores": 48,
+    "nb_procs": 1,
+    "nb_threads": 96
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "monitoring": {
+    "wattmeter": "false"
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "ip": "172.16.55.6",
+      "kavlan": false,
+      "mac": "18:c0:4d:4a:ed:09",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "neowise-6.lyon.grid5000.fr",
+      "switch": "gw",
+      "switch_port": "ethernet1/1/16"
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.55.6",
+      "kavlan": false,
+      "mac": "18:c0:4d:4a:ed:0b",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "neowise-6-bmc.lyon.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 36800000000,
+    "node_flops": 1766400000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2300000000,
+    "microarchitecture": "Zen 2"
+  },
+  "sensors": {
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2021041500",
+    "standard-environment": "debian10-x64-std"
+  },
+  "storage_devices": [
+
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "neowise-6"
+}
