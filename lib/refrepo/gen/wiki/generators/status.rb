@@ -38,23 +38,6 @@ class StatusGenerator < WikiGenerator
     data += MW::LINE_FEED
     data += "{|\n"
     data += "|bgcolor=\"#aaaaaa\" colspan=\"8\"|\n"
-    data += "'''Monika''' ''(current placement and queued jobs status)''\n"
-    data += "|-\n"
-
-    # Loop over Grid'5000 sites for Monika's links
-    @site_uids.sort.each do |site_uid|
-      if has_queue_production?(site_uid)
-        data += "|bgcolor=\"#ffffff\" valign=\"top\" style=\"border:1px solid #cccccc;padding:1em;padding-top:0.5em;\"|\n"
-        data += "[https://intranet.grid5000.fr/oar/#{site_uid.capitalize}/monika.cgi '''#{site_uid.capitalize}''']<br>\n"
-        data += "[https://intranet.grid5000.fr/oar/#{site_uid.capitalize}/monika-prod.cgi '''#{site_uid.capitalize} (production)''']\n"
-      else
-        data += "|bgcolor=\"#ffffff\" valign=\"top\" style=\"border:1px solid #cccccc;padding:1em;padding-top:0.5em;\"|\n"
-        data += "[https://intranet.grid5000.fr/oar/#{site_uid.capitalize}/monika.cgi '''#{site_uid.capitalize}''']\n"
-      end
-    end
-
-    data += "|-\n"
-    data += "|bgcolor=\"#aaaaaa\" colspan=\"8\"|\n"
     data += "'''Drawgantt''' ''(past, current and future OAR jobs scheduling)''\n"
     data += "|-\n"
     data += "|bgcolor=\"#eeeeee\" colspan=\"8\"|\n"
@@ -94,6 +77,23 @@ class StatusGenerator < WikiGenerator
       end
       data += "[https://intranet.grid5000.fr/oar/#{site_uid.capitalize}/drawgantt-svg-subnets/?relative_start=-28800&relative_stop=604800 subnets]<br>\n"
       data += "[https://intranet.grid5000.fr/oar/#{site_uid.capitalize}/drawgantt-svg-vlans/?relative_start=-28800&relative_stop=604800 vlans]\n"
+    end
+
+    data += "|-\n"
+    data += "|bgcolor=\"#aaaaaa\" colspan=\"8\"|\n"
+    data += "'''Monika''' ''(current placement and queued jobs status)''\n"
+    data += "|-\n"
+
+    # Loop over Grid'5000 sites for Monika's links
+    @site_uids.sort.each do |site_uid|
+      if has_queue_production?(site_uid)
+        data += "|bgcolor=\"#ffffff\" valign=\"top\" style=\"border:1px solid #cccccc;padding:1em;padding-top:0.5em;\"|\n"
+        data += "[https://intranet.grid5000.fr/oar/#{site_uid.capitalize}/monika.cgi '''#{site_uid.capitalize}''']<br>\n"
+        data += "[https://intranet.grid5000.fr/oar/#{site_uid.capitalize}/monika-prod.cgi '''#{site_uid.capitalize} (production)''']\n"
+      else
+        data += "|bgcolor=\"#ffffff\" valign=\"top\" style=\"border:1px solid #cccccc;padding:1em;padding-top:0.5em;\"|\n"
+        data += "[https://intranet.grid5000.fr/oar/#{site_uid.capitalize}/monika.cgi '''#{site_uid.capitalize}''']\n"
+      end
     end
 
     data += "|}\n"
