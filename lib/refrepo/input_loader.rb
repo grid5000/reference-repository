@@ -81,6 +81,8 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
   add_node_pdu_mapping(global_hash)
 
+  complete_network_equipments(global_hash)
+
   return global_hash
 end
 
@@ -618,3 +620,20 @@ def add_site_ipv6_infos(h)
   end
 end
 
+
+def complete_one_network_equipment(network_uid, network)
+  network["type"] = "network_equipment"
+  network["uid"]  = network_uid
+end
+
+def complete_network_equipments(h)
+  h['network_equipments'].each do |network_uid, network|
+    complete_one_network_equipment(network_uid, network)
+  end
+
+  h['sites'].each do |site_uid, site|
+    site.fetch('networks', []).each do |network_uid, network|
+      complete_one_network_equipment(network_uid, network)
+    end
+  end
+end

@@ -3,9 +3,6 @@ require 'refrepo/valid/homogeneity'
 
 # Creation du fichier network_equipment
 def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
-  network["type"] = "network_equipment"
-  network["uid"]  = network_uid
-
   network_path = ''
   if site_uid
     network_path = Pathname.new(refapi_path).join("sites", site_uid, "network_equipments")
