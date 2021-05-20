@@ -90,6 +90,21 @@ def add_default_values_and_mappings(h)
       server["uid"]  = server_uid
     end
 
+    site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
+
+      #
+      # Write cluster info
+      #
+
+      cluster["type"] = "cluster"
+      cluster["uid"]  = cluster_uid
+      cluster["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false
+
+      # On the previous version of this script, cluster["created_ad"] was generated from a Ruby Time. cluster["created_ad"] is now a Ruby Date at JSON import.
+      # As Date.httpdate and Time.httpdate does not behave the same with timezone, it is converted here as a Ruby time.
+      cluster["created_at"] = Date.parse(cluster["created_at"].to_s).httpdate
+    end
+
   end
 end
 
