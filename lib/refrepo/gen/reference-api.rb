@@ -11,52 +11,7 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
   end
   network_path.mkpath()
 
-  # Change the format of linecard from Hash to Array
-  linecards_tmp = Marshal.load(Marshal.dump(network["linecards"])) # bkp (deep_copy)
-
-  linecards_array = []
-  network["linecards"].each do |linecard_index, linecard|
-    ports = []
-    linecard.delete("ports").each do |port_index, port|
-      port = { "uid"=> port } if port.is_a? String
-      if port.is_a? Hash
-        # complete entries (see bug 8587)
-        if port['port'].nil? and linecard['port']
-          port['port'] = linecard['port']
-        end
-        if port['kind'].nil? and linecard['kind']
-          port['kind'] = linecard['kind']
-        end
-        if port['snmp_pattern'].nil? and linecard['snmp_pattern']
-          port['snmp_pattern'] = linecard['snmp_pattern']
-        end
-        if port['snmp_pattern']
-          port['snmp_name'] = port['snmp_pattern']
-            .sub('%LINECARD%',linecard_index.to_s).sub('%PORT%',port_index.to_s)
-          port.delete('snmp_pattern')
-        end
-        if ((!linecard['kind'].nil? &&
-            port['kind'].nil? &&
-            linecard['kind'] == 'node') ||
-            port['kind'] == 'node') &&
-            port['port'].nil?
-          p = port['uid'].match(/([a-z]*-[0-9]*)-?(.*)/).captures[1]
-          port['port'] = p != '' ? p : 'eth0'
-          port['uid'] = port['uid'].gsub(/-#{p}$/, '')
-        end
-      end
-      ports[port_index] = port
-    end
-    linecard["ports"] = ports.map { |p| p || {} }
-    linecards_array[linecard_index] = linecard
-  end
-  network["linecards"] = linecards_array.map{|l| l || {}}
-
-  network.delete_if {|k, v| k == "network_adapters"} # TO DELETE
-
   write_json(network_path.join("#{network_uid}.json"), network)
-
-  network["linecards"] = linecards_tmp # restore
 end
 
 def generate_reference_api
@@ -81,7 +36,7 @@ def generate_reference_api
     global_hash.delete('ipv4')
     # remove ipv6 info
     global_hash.delete('ipv6')
-    
+
     grid_path = Pathname.new(refapi_path)
     grid_path.mkpath()
 
