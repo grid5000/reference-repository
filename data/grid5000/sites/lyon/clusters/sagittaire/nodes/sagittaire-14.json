@@ -63,9 +63,6 @@
   "main_memory": {
     "ram_size": 2147483648
   },
-  "monitoring": {
-    "wattmeter": "true"
-  },
   "network_adapters": [
     {
       "bridged": false,
@@ -128,6 +125,12 @@
     "pstate_governor": "none",
     "turboboost_enabled": false
   },
+  "pdu": [
+    {
+      "port": 10,
+      "uid": "wattmetre1"
+    }
+  ],
   "performance": {
     "core_flops": 4800000000,
     "node_flops": 9600000000
@@ -147,26 +150,6 @@
     "other_description": "AMD Opteron(tm) Processor 250",
     "vendor": "AMD",
     "version": 250
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "port": 10,
-            "uid": "wattmetre1"
-          }
-        ],
-        "www": {
-          "url": "http://wattmetre.lyon.grid5000.fr/GetWatts-json.php"
-        }
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

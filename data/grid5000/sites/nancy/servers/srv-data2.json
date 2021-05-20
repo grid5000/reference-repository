@@ -6,10 +6,6 @@
     "modules"
   ],
   "kind": "physical",
-  "monitoring": {
-    "metric": "power",
-    "wattmeter": "multiple"
-  },
   "network_adapters": {
     "bmc": {
       "ip": "172.17.79.17",
@@ -22,28 +18,16 @@
       "mounted": false
     }
   },
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
+  "pdu": [
+    {
+      "port": 1,
+      "uid": "gros-pdu7"
     },
-    "power": {
-      "available": true,
-      "resolution": 1,
-      "via": {
-        "pdu": [
-          {
-            "port": 1,
-            "uid": "gros-pdu7"
-          },
-          {
-            "port": 1,
-            "uid": "gros-pdu8"
-          }
-        ]
-      }
+    {
+      "port": 1,
+      "uid": "gros-pdu8"
     }
-  },
+  ],
   "serial": "DKHBSY2",
   "type": "server",
   "uid": "srv-data2",

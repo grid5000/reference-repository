@@ -63,9 +63,6 @@
   "main_memory": {
     "ram_size": 824633720832
   },
-  "monitoring": {
-    "wattmeter": "true"
-  },
   "network_adapters": [
     {
       "device": "eth0",
@@ -174,6 +171,16 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 0,
+      "uid": "wattmetre1"
+    },
+    {
+      "port": 1,
+      "uid": "wattmetre1"
+    }
+  ],
   "performance": {
     "core_flops": 67200000000,
     "node_flops": 4300800000000
@@ -193,30 +200,6 @@
     "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
     "vendor": "Intel",
     "version": "Gold 6130"
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "port": 0,
-            "uid": "wattmetre1"
-          },
-          {
-            "port": 1,
-            "uid": "wattmetre1"
-          }
-        ],
-        "www": {
-          "url": "http://digwatt.grenoble.grid5000.fr/GetWatts-json.php"
-        }
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

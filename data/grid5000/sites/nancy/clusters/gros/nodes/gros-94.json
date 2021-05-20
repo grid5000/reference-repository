@@ -101,9 +101,6 @@
   "main_memory": {
     "ram_size": 103079215104
   },
-  "monitoring": {
-    "wattmeter": "true"
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -170,6 +167,17 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "kind": "wattmetre-only",
+      "port": 35,
+      "uid": "gros-wattmetre3"
+    },
+    {
+      "port": 9,
+      "uid": "gros-pdu6"
+    }
+  ],
   "performance": {
     "core_flops": 35200000000,
     "node_flops": 633600000000
@@ -189,31 +197,6 @@
     "other_description": "Intel(R) Xeon(R) Gold 5220 CPU @ 2.20GHz",
     "vendor": "Intel",
     "version": "Gold 5220"
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "kind": "wattmetre-only",
-            "port": 35,
-            "uid": "gros-wattmetre3"
-          },
-          {
-            "port": 9,
-            "uid": "gros-pdu6"
-          }
-        ],
-        "www": {
-          "url": "http://wattmetre.nancy.grid5000.fr/GetWatts-json.php"
-        }
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

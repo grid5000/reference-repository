@@ -101,9 +101,6 @@
   "main_memory": {
     "ram_size": 137438953472
   },
-  "monitoring": {
-    "wattmeter": "true"
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -203,6 +200,12 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 17,
+      "uid": "paravance-pdu-2"
+    }
+  ],
   "performance": {
     "core_flops": 38400000000,
     "node_flops": 614400000000
@@ -222,22 +225,6 @@
     "other_description": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
     "vendor": "Intel",
     "version": "E5-2630 v3"
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "port": 17,
-            "uid": "paravance-pdu-2"
-          }
-        ]
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

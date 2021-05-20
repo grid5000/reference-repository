@@ -4,10 +4,6 @@
     "public"
   ],
   "kind": "physical",
-  "monitoring": {
-    "metric": "power",
-    "wattmeter": "multiple"
-  },
   "network_adapters": {
     "adm": {
       "ip": "172.17.47.11",
@@ -22,28 +18,16 @@
       "mac": "ec:f4:bb:c8:08:d4"
     }
   },
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
+  "pdu": [
+    {
+      "port": 7,
+      "uid": "pdu-b2p1"
     },
-    "power": {
-      "available": true,
-      "resolution": 1,
-      "via": {
-        "pdu": [
-          {
-            "port": 7,
-            "uid": "pdu-b2p1"
-          },
-          {
-            "port": 7,
-            "uid": "pdu-b2p2"
-          }
-        ]
-      }
+    {
+      "port": 7,
+      "uid": "pdu-b2p2"
     }
-  },
+  ],
   "serial": "5Z4B032",
   "type": "server",
   "uid": "srv-data",

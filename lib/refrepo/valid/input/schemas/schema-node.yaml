@@ -34,11 +34,6 @@ main_memory:
   ram_size: integer
   pmem_size: optional_integer
 mic: optional_hash
-monitoring:
-  <optional_hash>:
-    metric: optional_string
-    wattmeter: optional
-    temperature: optional_boolean
 network_adapters:
   <multi>:
     network_address: optional
@@ -76,7 +71,7 @@ operating_system:
   pstate_governor: string
   turboboost_enabled: optional
 pdu:
-  <optional_nested_array>:
+  <optional_array>:
     uid: string
     port: required
     kind: optional_string
@@ -99,7 +94,6 @@ processor:
   version: required  # string or numeric ?
   ht_capable: boolean
   microarchitecture: string
-sensors: optional_hash
 software:
   standard-environment: string
   postinstall-version: string

@@ -54,17 +54,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-    monitoring:
-      wattmeter: false
-    sensors:
-      power:
-        available: true
-        per_outlets: false
-        via:
-          api:
-            metric: pdu_shared
-          www:
-            url: http://wattmetre.lyon.grid5000.fr/GetWatts-json.php
 
   hercule-1:
     network_adapters:

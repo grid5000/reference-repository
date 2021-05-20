@@ -146,25 +146,13 @@
     }
   ],
   "model": "Infiniband",
-  "monitoring": {
-    "metric": "power",
-    "wattmeter": true
-  },
-  "role": "hpc",
-  "sensors": {
-    "power": {
-      "available": true,
-      "resolution": 1,
-      "via": {
-        "pdu": [
-          {
-            "port": 7,
-            "uid": "graoully-pdu2"
-          }
-        ]
-      }
+  "pdu": [
+    {
+      "port": 7,
+      "uid": "graoully-pdu2"
     }
-  },
+  ],
+  "role": "hpc",
   "site": "nancy",
   "snmp_community": "public",
   "type": "network_equipment",

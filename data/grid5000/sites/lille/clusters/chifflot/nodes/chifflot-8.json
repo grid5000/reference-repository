@@ -121,9 +121,6 @@
   "main_memory": {
     "ram_size": 206158430208
   },
-  "monitoring": {
-    "wattmeter": "multiple"
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -249,6 +246,16 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 5,
+      "uid": "pdu-b1p3"
+    },
+    {
+      "port": 6,
+      "uid": "pdu-b1p1"
+    }
+  ],
   "performance": {
     "core_flops": 83200000000,
     "node_flops": 1996800000000
@@ -268,22 +275,6 @@
     "other_description": "Intel(R) Xeon(R) Gold 6126 CPU @ 2.60GHz",
     "vendor": "Intel",
     "version": "Gold 6126"
-  },
-  "sensors": {
-    "power": {
-      "via": {
-        "pdu": [
-          {
-            "port": 5,
-            "uid": "pdu-b1p3"
-          },
-          {
-            "port": 6,
-            "uid": "pdu-b1p1"
-          }
-        ]
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
