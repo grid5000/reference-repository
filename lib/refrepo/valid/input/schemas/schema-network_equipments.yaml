@@ -29,17 +29,18 @@ vlans:
         addresses: optional_array
         mtu: optional_integer
 linecards:
-  <multi>:
-    snmp_pattern: string
-    kavlan_pattern: optional_string
-    kind: optional_string
-    rate: integer
-    model: optional_string
-    backplane_bps: optional_integer
-    port: optional_string
-    ports:
-      # custom linecard port validation (see lib/custom-validators.rb)
-      <multi>: linecard_port
+  <array>:
+      snmp_pattern: optional_string
+      kavlan_pattern: optional_string
+      kind: optional_string
+      rate: optional_integer
+      model: optional_string
+      backplane_bps: optional_integer
+      port: optional_string
+      ports:
+        # custom linecard port validation (see lib/custom-validators.rb)
+        <optional_array>:
+          <multi>: linecard_port
 channels:
   <optional_hash>:
     <multi>:
@@ -48,3 +49,5 @@ channels:
       kind: string
       rate: integer
 metrics: optional_array
+uid: string
+type: string

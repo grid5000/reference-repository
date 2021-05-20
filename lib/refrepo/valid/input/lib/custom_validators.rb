@@ -18,10 +18,10 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
       if values["uid"].nil? || values["uid"].empty?
         errors[key] = "port 'uid' property should be defined."
       end
-    elsif values.is_a?(String) || values == nil
+    elsif values.is_a?(String) || values.is_a?(Numeric) || values == nil
       #Allow any string and nil values
     else
-      errors[key] = "port definition should be either empty, a String or a Hash (with required 'uid' and #{@port_properties} allowed properties)."
+      errors[key] = "port definition should be either empty, a String, a Numeric or a Hash (with required 'uid' and #{@port_properties} allowed properties)."
     end
   end
 end

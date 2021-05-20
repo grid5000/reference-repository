@@ -630,8 +630,8 @@ def complete_one_network_equipment(network_uid, network)
   network["linecards"].each do |linecard_index, linecard|
     ports = []
     linecard.delete("ports").each do |port_index, port|
-      port = { "uid"=> port } if port.is_a? String
-      if port.is_a? Hash
+      if not port.nil?
+        port = { "uid"=> port } if port.is_a? String
         # complete entries (see bug 8587)
         if port['port'].nil? and linecard['port']
           port['port'] = linecard['port']
@@ -644,14 +644,14 @@ def complete_one_network_equipment(network_uid, network)
         end
         if port['snmp_pattern']
           port['snmp_name'] = port['snmp_pattern']
-            .sub('%LINECARD%',linecard_index.to_s).sub('%PORT%',port_index.to_s)
+          .sub('%LINECARD%',linecard_index.to_s).sub('%PORT%',port_index.to_s)
           port.delete('snmp_pattern')
         end
         if ((!linecard['kind'].nil? &&
-            port['kind'].nil? &&
-            linecard['kind'] == 'node') ||
-            port['kind'] == 'node') &&
-            port['port'].nil?
+             port['kind'].nil? &&
+             linecard['kind'] == 'node') ||
+             port['kind'] == 'node') &&
+             port['port'].nil?
           p = port['uid'].match(/([a-z]*-[0-9]*)-?(.*)/).captures[1]
           port['port'] = p != '' ? p : 'eth0'
           port['uid'] = port['uid'].gsub(/-#{p}$/, '')
