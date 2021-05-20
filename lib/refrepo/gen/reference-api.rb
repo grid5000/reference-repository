@@ -130,25 +130,9 @@ def generate_reference_api
 
     pdu_path = site_path.join("pdus")
     pdu_path.mkpath()
-    site["pdus"].each do |pdu_uid, pdu|
-      pdu["type"] = "pdu"
-      pdu["uid"]  = pdu_uid
-
-      pdu_attached_nodes = {}
-      site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
-        cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
-          next if node['status'] == "retired"
-          node.fetch('pdu', []).each do |node_pdu|
-            if node_pdu["uid"] == pdu_uid
-              pdu_attached_nodes[node_pdu["port"]] = node_uid
-            end
-          end
-        end
-      end
-      pdu["ports"] = pdu_attached_nodes
-
+    site.fetch("pdus", []).each do |pdu_uid, pdu|
       write_json(pdu_path.join("#{pdu_uid}.json"), pdu)
-    end if site.key?("pdus")
+    end
 
     #
     # Write servers info

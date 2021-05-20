@@ -85,7 +85,25 @@ end
 def add_default_values_and_mappings(h)
   h["sites"].each do |site_uid, site|
 
-    site["servers"].each do |server_uid, server|
+    site.fetch("pdus", []).each do |pdu_uid, pdu|
+      pdu["type"] = "pdu"
+      pdu["uid"]  = pdu_uid
+
+      pdu_attached_nodes = {}
+      site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
+        cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
+          next if node['status'] == "retired"
+          node.fetch('pdu', []).each do |node_pdu|
+            if node_pdu["uid"] == pdu_uid
+              pdu_attached_nodes[node_pdu["port"]] = node_uid
+            end
+          end
+        end
+      end
+      pdu["ports"] = pdu_attached_nodes
+    end
+
+    site.fetch("servers", []).each do |server_uid, server|
       server["type"]  = "server"
       server["uid"]  = server_uid
     end
