@@ -33,6 +33,7 @@ class G5KHardwareGenerator < WikiGenerator
     storage_space = 0
     ram = 0
     pmem = 0
+    flops = 0
 
     @global_hash['sites'].sort.to_h.each do |site_uid, site_hash|
       clusters += site_hash['clusters'].length
@@ -51,9 +52,11 @@ class G5KHardwareGenerator < WikiGenerator
           node_hash['storage_devices'].each do |i|
             storage_space += i['size']
           end
+          flops += node_hash['performance']['node_flops']
         end
       end
     end
+    tflops = sprintf("%.1f", flops.to_f / (10**12))
     return <<-EOF
 = Summary =
 * #{sites} sites
@@ -63,6 +66,7 @@ class G5KHardwareGenerator < WikiGenerator
 * #{gpus} GPUs
 * #{G5K.get_size(ram)} RAM + #{G5K.get_size(pmem)} PMEM
 * #{ssds} SSDs and #{hdds} HDDs on nodes (total: #{G5K.get_size(storage_space, 'metric')})
+* #{tflops} TFLOPS (excluding GPUs)
     EOF
   end
 
