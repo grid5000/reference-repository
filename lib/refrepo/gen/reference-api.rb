@@ -140,10 +140,8 @@ def generate_reference_api
 
     servers_path = site_path.join("servers")
     servers_path.mkpath()
-    if site.key?("servers")
-      site["servers"].each do |server_uid, server|
-        write_json(servers_path.join("#{server_uid}.json"), server)
-      end
+    site.fetch("servers", []).each do |server_uid, server|
+      write_json(servers_path.join("#{server_uid}.json"), server)
     end
 
     #

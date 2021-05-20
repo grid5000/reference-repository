@@ -108,6 +108,7 @@ def add_default_values_and_mappings(h)
       server["uid"]  = server_uid
     end
 
+
     site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
 
       #
@@ -206,7 +207,6 @@ def add_default_values_and_mappings(h)
               network_adapter["kavlan"] = node["kavlan"].keys.include?(device) ? true : false
             end
           end
-          network_adapter["kavlan"] ||= node["kavlan"].nil? ? false : node["kavlan"].keys.include?(network_adapter["device"]) ? true : false
 
           network_adapter.delete("network_address") if network_adapter["network_address"] == 'none'
         }
@@ -220,7 +220,6 @@ def add_default_values_and_mappings(h)
               item.delete("port") if item["port"] == "disabled"
             }
           }
-          #TODO: decide if we want to keep it
         end # node.key?("pdu")
       end
     end
