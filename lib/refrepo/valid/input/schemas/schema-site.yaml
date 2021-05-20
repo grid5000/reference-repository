@@ -4,6 +4,8 @@ networks: optional_hash
 servers:
   <optional_hash>:
     <multi>:
+      uid: string
+      type: string
       kind: string
       alias: optional_array
       serial: optional
@@ -63,6 +65,9 @@ kavlan_nef: optional_integer
 pdus:
   <optional_hash>:
     <multi>:
+      type: string
+      uid: string
+      ports: optional_hash
       ip: ip_address
       mac: optional_string
       vendor: optional_string

@@ -49,6 +49,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
 #  pp global_hash
 
+  # add switch and port to nodes
+  add_switch_port(global_hash)
+
   # add some ipv6 informations in sites
   add_site_ipv6_infos(global_hash)
 
@@ -74,7 +77,163 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with theorical flops
   add_theorical_flops(global_hash)
 
+  add_default_values_and_mappings(global_hash)
+
+  add_node_pdu_mapping(global_hash)
+
+  complete_network_equipments(global_hash)
+
   return global_hash
+end
+
+def add_node_pdu_mapping(h)
+  h["sites"].each do |site_uid, site|
+    site.fetch("pdus", []).each do |pdu_uid, pdu|
+      pdu_attached_nodes = {}
+      site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
+        cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
+          next if node['status'] == "retired"
+          node.fetch('pdu', []).each do |node_pdu|
+            if node_pdu["uid"] == pdu_uid
+              pdu_attached_nodes[node_pdu["port"]] = node_uid
+            end
+          end
+        end
+      end
+      pdu["ports"] = pdu_attached_nodes
+    end
+  end
+end
+
+def add_default_values_and_mappings(h)
+  h["sites"].each do |site_uid, site|
+
+    site.fetch("pdus", []).each do |pdu_uid, pdu|
+      pdu["type"] = "pdu"
+      pdu["uid"]  = pdu_uid
+    end
+
+    site.fetch("servers", []).each do |server_uid, server|
+      server["type"]  = "server"
+      server["uid"]  = server_uid
+    end
+
+    site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
+
+      #
+      # Write cluster info
+      #
+
+      cluster["type"] = "cluster"
+      cluster["uid"]  = cluster_uid
+      cluster["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false
+
+      # On the previous version of this script, cluster["created_ad"] was generated from a Ruby Time. cluster["created_ad"] is now a Ruby Date at JSON import.
+      # As Date.httpdate and Time.httpdate does not behave the same with timezone, it is converted here as a Ruby time.
+      cluster["created_at"] = Date.parse(cluster["created_at"].to_s).httpdate
+
+      #
+      # Write node info
+      #
+
+      cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
+        #puts node_uid
+
+        node["uid"] = node_uid
+        node["type"] = "node"
+        if node.key?("processor")
+          node["processor"]["cache_l1"] ||= nil
+        end
+
+        # Add default keys
+        node["main_memory"] = {} unless node.key?("main_memory")
+
+        node["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false unless node.key?('exotic')
+
+        node['supported_job_types']['queues'] = cluster['queues'] unless node['supported_job_types'].key?('queues')
+
+        # Delete keys
+        #raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
+        Hash(node["storage_devices"]).keys.each { |key|
+          node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")
+          node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
+        }
+
+        # Add vendor info to storage
+        node["storage_devices"].each do |key, hash|
+          next if node['status'] == "retired" # we do not bother for retired nodes
+
+          matching_vendor = {}
+          matching_interface = []
+          h['disk_vendor_model_mapping'].each do |interface, vendor|
+            vendor.select do |k, v|
+              matching_vendor[k] = v if v.include? hash["model"]
+              matching_interface << interface if v.include? hash["model"]
+            end
+          end
+
+          raise "Model \"#{hash["model"]}\" don't match any vendor in input/grid5000/disks.yaml" if matching_vendor.empty?
+          raise "Model \"#{hash["model"]}\" specify in multiple vendors: #{matching_vendor.keys} in input/grid5000/disks.yaml" if matching_vendor.length > 1
+          raise "Model \"#{hash["model"]}\" specify in multiple interface: #{matching_interface} in input/grid5000/disks.yaml" if matching_interface.length > 1
+          hash['vendor'] = matching_vendor.keys.first
+
+          if matching_interface.first != 'RAID' && hash['interface'] != matching_interface.first
+            raise "Interface \"#{hash['interface']}\" for disk #{key} (model #{hash["model"]}) does not match interface \"#{matching_interface.first}\" in input/grid5000/disks.yaml"
+          end
+        end
+
+        # Ensure that by_id is present (bug 11043)
+        node["storage_devices"].each do |key, hash|
+          hash['by_id'] = '' if not hash['by_id']
+        end
+
+        # Type conversion
+        node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
+
+        # For each network adapters, populate "network_address", "switch" and "switch_port" from the network equipment description
+        node["network_adapters"].each_pair { |device, network_adapter|
+          network_adapter["mac"] = network_adapter["mac"].downcase if network_adapter["mac"].is_a?(String)
+
+          # infiniband properties
+          network_adapter["ib_switch_card"]     = network_adapter.delete("line_card") if network_adapter.key?("line_card")
+          network_adapter["ib_switch_card_pos"] = network_adapter.delete("position")  if network_adapter.key?("position")
+
+          if network_adapter["management"]
+            # Management network_adapter (bmc)
+            network_adapter["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr" unless network_adapter.key?("network_address")
+          elsif network_adapter["mounted"] and /^eth[0-9]$/.match(device)
+            # Primary network_adapter
+            network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr" if network_adapter["enabled"]
+          else
+            # Secondary network_adapter(s)
+            network_adapter["network_address"] = "#{node_uid}-#{device}.#{site_uid}.grid5000.fr" if network_adapter["mountable"] && !network_adapter.key?("network_address")
+          end
+          # If kavlan entry is not defined here, set it node's kavlan description
+          if not network_adapter["kavlan"]
+            if node["kavlan"].nil?
+              network_adapter["kavlan"] = false
+            else
+              network_adapter["kavlan"] = node["kavlan"].keys.include?(device) ? true : false
+            end
+          end
+
+          network_adapter.delete("network_address") if network_adapter["network_address"] == 'none'
+        }
+
+        if node.key?("pdu")
+
+          node["pdu"].each { |p|
+            pdu = [p].flatten
+            pdu.each { |item|
+              #See https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7585, workaround to validate node pdu that have per_outlets = false
+              item.delete("port") if item["port"] == "disabled"
+            }
+          }
+        end # node.key?("pdu")
+      end
+    end
+
+  end
 end
 
 def sorted_vlan_offsets
@@ -89,9 +248,60 @@ def sorted_vlan_offsets
    sort_by { |l| [l[0] ] + l[4..-1] }.
    map { |l| l.join(' ') }.
    join("\n")
-
 end
 
+# Parse network equipment description and return switch name and port connected to given node
+#  In the network description, if the node interface is given (using "port" attribute),
+#  the interface parameter must be used.
+def net_switch_port_lookup(site, node_uid, interface='')
+  site["networks"].each do |switch_uid, switch|
+    switch["linecards"].each do |lc_uid,lc|
+      lc["ports"].each do |port_uid,port|
+        if port.is_a?(Hash)
+          switch_remote_port = port["port"] || lc["port"] || ""
+          switch_remote_uid = port["uid"]
+        else
+          switch_remote_port = lc["port"] || ""
+          switch_remote_uid = port
+        end
+        if switch_remote_uid =~ /([a-z]*-[0-9]*)-(.*)/
+          n, p = switch_remote_uid.match(/([a-z]*-[0-9]*)-(.*)/).captures
+          switch_remote_uid = n
+          switch_remote_port = p
+        end
+        if switch_remote_uid == node_uid and switch_remote_port == interface
+          # Build port name from snmp_naming_pattern
+          # Example: '3 2 GigabitEthernet%LINECARD%/%PORT%' -> 'GigabitEthernet3/2'
+          pattern = port["snmp_pattern"] || lc["snmp_pattern"] || ""
+          port_name = pattern.sub("%LINECARD%",lc_uid.to_s).sub("%PORT%",port_uid.to_s)
+          return switch_uid, port_name
+        end
+      end
+    end
+  end
+  return nil
+end
+
+def add_switch_port(h)
+  h['sites'].each_pair do |site_uid, site|
+    used_ports = {}
+    site['clusters'].each_pair do |cluster_uid, hc|
+      hc['nodes'].each_pair do |node_uid, hn|
+        next if hn['status'] == 'retired'
+        hn['network_adapters'].each_pair do |iface_uid, iface|
+          if (iface['mounted'] or iface['mountable']) and not iface['management'] and iface['interface'] == 'Ethernet'
+            switch, swport = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)
+            if used_ports[[switch, swport]]
+              raise "Duplicate port assigned for #{node_uid} #{iface_uid}. Already assigned to #{used_ports[[switch, swport]]} Aborting."
+            end
+            used_ports[[switch, swport]] = [node_uid, iface_uid]
+            iface['switch'], iface['switch_port'] = switch, swport
+          end
+        end
+      end
+    end
+  end
+end
 
 def add_kavlan_ips(h)
   allocated = {}
@@ -286,15 +496,14 @@ def add_network_metrics(h)
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_iface.*/}
 
       # for each interface of a cluster's node
-      node_uid, node = cluster['nodes'].select { |k, v| v['status'] != 'retired' }.sort_by{ |k, v| k }.first
+      _, node = cluster['nodes'].select { |k, v| v['status'] != 'retired' }.sort_by{ |k, v| k }.first
       node["network_adapters"].each do |iface_uid, iface|
 
+        # we only support metrics for Ethernet at this point
+        next if iface['interface'] != 'Ethernet'
+
         # get switch attached to interface
-        if iface['mounted'] and not iface['management'] and iface['interface'] == 'Ethernet'
-          switch, _ = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)
-        else
-          switch, _ = net_switch_port_lookup(site, node_uid, iface_uid)
-        end
+        switch = iface['switch']
 
         # for each network metric declared for the switch
         site.fetch('networks', {}).fetch(switch, {}).fetch('metrics', []).select{|m| m['name'] =~ /network_iface.*/}.each do |metric|
@@ -411,3 +620,59 @@ def add_site_ipv6_infos(h)
   end
 end
 
+
+def complete_one_network_equipment(network_uid, network)
+  network["type"] = "network_equipment"
+  network["uid"]  = network_uid
+
+  # Change the format of linecard from Hash to Array
+  linecards_array = []
+  network["linecards"].each do |linecard_index, linecard|
+    ports = []
+    linecard.delete("ports").each do |port_index, port|
+      if not port.nil?
+        port = { "uid"=> port } if port.is_a? String
+        # complete entries (see bug 8587)
+        if port['port'].nil? and linecard['port']
+          port['port'] = linecard['port']
+        end
+        if port['kind'].nil? and linecard['kind']
+          port['kind'] = linecard['kind']
+        end
+        if port['snmp_pattern'].nil? and linecard['snmp_pattern']
+          port['snmp_pattern'] = linecard['snmp_pattern']
+        end
+        if port['snmp_pattern']
+          port['snmp_name'] = port['snmp_pattern']
+          .sub('%LINECARD%',linecard_index.to_s).sub('%PORT%',port_index.to_s)
+          port.delete('snmp_pattern')
+        end
+        if ((!linecard['kind'].nil? &&
+             port['kind'].nil? &&
+             linecard['kind'] == 'node') ||
+             port['kind'] == 'node') &&
+             port['port'].nil?
+          p = port['uid'].match(/([a-z]*-[0-9]*)-?(.*)/).captures[1]
+          port['port'] = p != '' ? p : 'eth0'
+          port['uid'] = port['uid'].gsub(/-#{p}$/, '')
+        end
+      end
+      ports[port_index] = port
+    end
+    linecard["ports"] = ports.map { |p| p || {} }
+    linecards_array[linecard_index] = linecard
+  end
+  network["linecards"] = linecards_array.map{|l| l || {}}
+end
+
+def complete_network_equipments(h)
+  h['network_equipments'].each do |network_uid, network|
+    complete_one_network_equipment(network_uid, network)
+  end
+
+  h['sites'].each do |site_uid, site|
+    site.fetch('networks', []).each do |network_uid, network|
+      complete_one_network_equipment(network_uid, network)
+    end
+  end
+end
