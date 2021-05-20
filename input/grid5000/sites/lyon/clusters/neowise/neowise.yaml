@@ -1,29 +1,23 @@
-model: Altus XE2118GT
-created_at: 2021-05-01
+model: Dell PowerEdge R7525
+created_at: 2021-05-17
 kavlan: false
-exotic: false
+exotic: true
 queues:
   - admin
-  - testing
 nodes:
   neowise-[1-10]:
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
-    software:
-      standard-environment: debian10-x64-std
-    architecture:
-      nb_procs: 1
-      nb_cores: 48
-      nb_threads: 96
     processor:
       microarchitecture: Zen 2
-      clock_speed: 2300000000
+      clock_speed: 2100000000
+    software:
+      standard-environment: debian10-x64-std
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true
         mountable: false
         mounted: false
@@ -31,87 +25,19 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
-      eth1:
+      eth1: 
         enabled: false
         mountable: false
         mounted: false
-  neowise-1:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:11:37:a3
-        ip: 172.17.55.1
-      eth0:
-        mac: 18:c0:4d:11:37:a1
-        ip: 172.16.55.1
-  neowise-2:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:75:ef:3e
-        ip: 172.17.55.2
-      eth0:
-        mac: 18:c0:4d:75:ef:3c
-        ip: 172.16.55.2
-  neowise-3:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:4a:ed:5f
-        ip: 172.17.55.3
-      eth0:
-        mac: 18:c0:4d:4a:ed:5d
-        ip: 172.16.55.3
-  neowise-4:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:4e:b1:09
-        ip: 172.17.55.4
-      eth0:
-        mac: 18:c0:4d:4e:b1:07
-        ip: 172.16.55.4
-  neowise-5:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:75:f1:3a
-        ip: 172.17.55.5
-      eth0:
-        mac: 18:c0:4d:75:f1:38
-        ip: 172.16.55.5
-  neowise-6:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:4a:ed:0b
-        ip: 172.17.55.6
-      eth0:
-        mac: 18:c0:4d:4a:ed:09
-        ip: 172.16.55.6
-  neowise-7:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:1e:89:66
-        ip: 172.17.55.7
-      eth0:
-        mac: 18:c0:4d:1e:89:64
-        ip: 172.16.55.7
-  neowise-8:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:4e:b1:59
-        ip: 172.17.55.8
-      eth0:
-        mac: 18:c0:4d:4e:b1:57
-        ip: 172.16.55.8
-  neowise-9:
-    network_adapters:
-      bmc:
-        mac: b4:2e:99:b4:c6:fc
-        ip: 172.17.55.9
-      eth0:
-        mac: b4:2e:99:b4:c6:fa
-        ip: 172.16.55.9
-  neowise-10:
-    network_adapters:
-      bmc:
-        mac: 18:c0:4d:4e:b1:11
-        ip: 172.17.55.10
-      eth0:
-        mac: 18:c0:4d:4e:b1:0f
-        ip: 172.16.55.10
+      ib0: 
+        enabled: false
+        mountable: false
+        mounted: false
+      ib1: 
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      nvme0n1:
+        interface: NVME
+        model: MZ1LB1T9HALS

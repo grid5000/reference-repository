@@ -1,11 +1,25 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
     "nb_cores": 48,
     "nb_procs": 1,
-    "nb_threads": 96
+    "nb_threads": 96,
+    "platform_type": "x86_64"
   },
-  "exotic": false,
+  "bios": {
+    "release_date": "06/17/2020",
+    "vendor": "GIGABYTE",
+    "version": "R23"
+  },
+  "bmc_version": "12.45",
+  "chassis": {
+    "manufacturer": "Penguin Computing",
+    "name": "AMD-Penguin COVID19",
+    "serial": "P100228629"
+  },
+  "exotic": true,
   "main_memory": {
+    "ram_size": 549755813888
   },
   "monitoring": {
     "wattmeter": "false"
@@ -13,22 +27,74 @@
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "14.22.1002 (GIG0000000005)",
+      "interface": "Ethernet",
       "ip": "172.16.55.9",
+      "ip6": "2001:660:4406:400:8::9",
       "kavlan": false,
       "mac": "b4:2e:99:b4:c6:fa",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
       "mountable": true,
       "mounted": true,
+      "name": "eno1",
       "network_address": "neowise-9.lyon.grid5000.fr",
+      "rate": 10000000000,
       "switch": "gw",
-      "switch_port": "ethernet1/1/18"
+      "switch_port": "ethernet1/1/18",
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "eth1",
+      "driver": "mlx5_core",
       "enabled": false,
+      "firmware_version": "14.22.1002 (GIG0000000005)",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "b4:2e:99:b4:c6:fb",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno2",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.29.2002",
+      "guid": "0x0c42a10300a0fc48",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "00:00:10:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fc:48",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib0",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.29.2002",
+      "guid": "0x0c42a10300a0fc20",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "00:00:10:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fc:20",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib1",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -43,14 +109,33 @@
       "network_address": "neowise-9-bmc.lyon.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
-    "core_flops": 36800000000,
-    "node_flops": 1766400000000
+    "core_flops": 33600000000,
+    "node_flops": 1612800000000
   },
   "processor": {
     "cache_l1": null,
-    "clock_speed": 2300000000,
-    "microarchitecture": "Zen 2"
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 16777216,
+    "clock_speed": 2100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Zen 2",
+    "microcode": "0x8301038",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7642 48-Core Processor",
+    "vendor": "AMD",
+    "version": 7642
   },
   "sensors": {
   },
@@ -60,16 +145,25 @@
     "standard-environment": "debian10-x64-std"
   },
   "storage_devices": [
-
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.343336304e5312000025384100000001",
+      "by_path": "/dev/disk/by-path/pci-0000:82:00.0-nvme-1",
+      "device": "nvme0n1",
+      "interface": "NVME",
+      "model": "SAMSUNG MZ1LB1T9HALS-00007",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "Samsung"
+    }
   ],
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
     "max_walltime": 0,
     "queues": [
-      "admin",
-      "testing"
-    ]
+      "admin"
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "neowise-9"
