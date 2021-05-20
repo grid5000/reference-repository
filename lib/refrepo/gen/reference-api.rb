@@ -156,11 +156,11 @@ def generate_reference_api
 
     servers_path = site_path.join("servers")
     servers_path.mkpath()
-    site["servers"].each do |server_uid, server|
-      server["type"]  = "server"
-      server["uid"]  = server_uid
-      write_json(servers_path.join("#{server_uid}.json"), server)
-    end if site.key?("servers")
+    if site.key?("servers")
+      site["servers"].each do |server_uid, server|
+        write_json(servers_path.join("#{server_uid}.json"), server)
+      end
+    end
 
     #
     # Write network info

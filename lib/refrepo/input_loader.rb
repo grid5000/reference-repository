@@ -77,7 +77,20 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with theorical flops
   add_theorical_flops(global_hash)
 
+  add_default_values_and_mappings(global_hash)
+
   return global_hash
+end
+
+def add_default_values_and_mappings(h)
+  h["sites"].each do |site_uid, site|
+
+    site["servers"].each do |server_uid, server|
+      server["type"]  = "server"
+      server["uid"]  = server_uid
+    end
+
+  end
 end
 
 def sorted_vlan_offsets
