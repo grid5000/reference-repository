@@ -1,14 +1,9 @@
 Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for added, ['~', 'key', 'old value', 'new value'] for changed
   clustera-1:
-    ["~", "wattmeter", "MULTIPLE", "YES"]
-    ["+", "core_count", 16]
-    ["+", "cpu_count", 2]
-    ["+", "eth_kavlan_count", 0]
-    ["+", "thread_count", 32]
-  clustera-2:
     ["~", "wattmeter", "MULTIPLE", "NO"]
     ["+", "core_count", 16]
     ["+", "cpu_count", 2]
     ["+", "eth_kavlan_count", 0]
     ["+", "thread_count", 32]
+  clustera-2: same modifications as above
 Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count, eth_kavlan_count

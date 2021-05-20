@@ -4,10 +4,6 @@
     "adminfront"
   ],
   "kind": "physical",
-  "monitoring": {
-    "metric": "power",
-    "wattmeter": "multiple"
-  },
   "network_adapters": {
     "adm": {
       "ip": "172.17.79.19"
@@ -21,28 +17,16 @@
       "mac": "e4:43:4b:83:8a:ec"
     }
   },
-  "sensors": {
-    "network": {
-      "available": true,
-      "resolution": 1
+  "pdu": [
+    {
+      "port": 14,
+      "uid": "gros-pdu7"
     },
-    "power": {
-      "available": true,
-      "resolution": 1,
-      "via": {
-        "pdu": [
-          {
-            "port": 14,
-            "uid": "gros-pdu7"
-          },
-          {
-            "port": 14,
-            "uid": "gros-pdu8"
-          }
-        ]
-      }
+    {
+      "port": 14,
+      "uid": "gros-pdu8"
     }
-  },
+  ],
   "serial": "FKHBSY2",
   "type": "server",
   "uid": "srv3",

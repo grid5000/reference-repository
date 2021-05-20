@@ -117,10 +117,9 @@ class StatusGenerator < WikiGenerator
     data += "{|\n"
     @site_uids.sort.each do |site_uid|
         data += "|bgcolor=\"#ffffff\" valign=\"top\" style=\"border:1px solid #cccccc;padding:1em;padding-top:0.5em;\"|\n"
-        data += "[https://api.grid5000.fr/sid/sites/#{site_uid}/metrics/dashboard '''#{site_uid.capitalize}''']\n"
+        data += "[https://api.grid5000.fr/stable/sites/#{site_uid}/metrics/dashboard '''#{site_uid.capitalize}''']\n"
     end
     data += "|}\n\n"
-    data += "[https://intranet.grid5000.fr/ganglia/ Ganglia] provides resources usage metrics (memory, cpu, jobs...) for individual sites or the whole platform.\n"
   end
 
   def generate_usage_statistics

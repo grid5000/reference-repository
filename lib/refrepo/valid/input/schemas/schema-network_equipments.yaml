@@ -16,20 +16,10 @@ mtu: optional_integer
 snmp_community: string
 ip: optional_string
 network_adapters: optional
-sensors:
-  <optional_hash>:
-    power:
-      <optional_hash>:
-        available: boolean
-        resolution: optional_integer
-        via: optional
-        #   pdu:
-        #       uid: string
-        #       port: integer
-monitoring:
-  <optional_hash>:
-    wattmeter: optional
-    metric: optional_string
+pdu:
+  <optional_array>:
+    uid: string
+    port: integer
 vlans:
   <optional_hash>:
     <multi>:

@@ -6,17 +6,9 @@ sgrisou1:
   kind: switch
   site: nancy
   snmp_community: public
-  sensors:
-    power:
-      available: true
-      resolution: 1
-      via:
-        pdu:
-          - uid: grimoire-pdu2
-            port: 14
-  monitoring:
-    wattmeter: true
-    metric: power
+  pdu:
+    - uid: grimoire-pdu2
+      port: 14
   metrics:
     - name: network_ifacein_bytes_total
       description: Input byte counter for the network device port

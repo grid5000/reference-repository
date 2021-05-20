@@ -64,9 +64,6 @@
     "pmem_size": 1649267441664,
     "ram_size": 412316860416
   },
-  "monitoring": {
-    "wattmeter": "true"
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -146,6 +143,12 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 11,
+      "uid": "wattmetre1"
+    }
+  ],
   "performance": {
     "core_flops": 36800000000,
     "node_flops": 1177600000000
@@ -165,26 +168,6 @@
     "other_description": "Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz",
     "vendor": "Intel",
     "version": "Gold 5218"
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "port": 11,
-            "uid": "wattmetre1"
-          }
-        ],
-        "www": {
-          "url": "http://wattmetre.grenoble.grid5000.fr/GetWatts-json.php"
-        }
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

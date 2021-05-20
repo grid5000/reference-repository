@@ -63,9 +63,6 @@
   "main_memory": {
     "ram_size": 274877906944
   },
-  "monitoring": {
-    "wattmeter": "true"
-  },
   "network_adapters": [
     {
       "device": "eth0",
@@ -144,6 +141,12 @@
     "pstate_governor": "performance",
     "turboboost_enabled": false
   },
+  "pdu": [
+    {
+      "port": 24,
+      "uid": "wattmetre1"
+    }
+  ],
   "performance": {
     "core_flops": 17600000000,
     "node_flops": 1126400000000
@@ -163,26 +166,6 @@
     "other_description": "ThunderX2 99xx",
     "vendor": "Cavium",
     "version": "99xx"
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "port": 24,
-            "uid": "wattmetre1"
-          }
-        ],
-        "www": {
-          "url": "http://wattmetre.lyon.grid5000.fr/GetWatts-json.php"
-        }
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,

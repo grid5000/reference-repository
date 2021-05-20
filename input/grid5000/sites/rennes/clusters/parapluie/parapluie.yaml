@@ -56,24 +56,6 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
-    monitoring:
-      wattmeter: true
-      temperature: true
-    sensors:
-      power:
-        available: true
-        per_outlets: true
-        via:
-          api:
-            metric: power
-      temperature:
-        available: true
-        via:
-          api:
-            metric: ambient_temp
-          ipmi:
-            sensors:
-              ambient: Inlet Ambient
 
   parapluie-8:
     status: retired

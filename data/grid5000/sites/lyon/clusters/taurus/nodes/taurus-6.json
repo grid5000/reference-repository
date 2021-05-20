@@ -63,9 +63,6 @@
   "main_memory": {
     "ram_size": 34359738368
   },
-  "monitoring": {
-    "wattmeter": "true"
-  },
   "network_adapters": [
     {
       "bridged": true,
@@ -191,6 +188,12 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 5,
+      "uid": "wattmetre4"
+    }
+  ],
   "performance": {
     "core_flops": 18400000000,
     "node_flops": 220800000000
@@ -210,26 +213,6 @@
     "other_description": "Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz",
     "vendor": "Intel",
     "version": "E5-2630"
-  },
-  "sensors": {
-    "power": {
-      "available": true,
-      "per_outlets": true,
-      "via": {
-        "api": {
-          "metric": "power"
-        },
-        "pdu": [
-          {
-            "port": 5,
-            "uid": "wattmetre4"
-          }
-        ],
-        "www": {
-          "url": "http://wattmetre.lyon.grid5000.fr/GetWatts-json.php"
-        }
-      }
-    }
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
