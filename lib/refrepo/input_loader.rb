@@ -79,16 +79,14 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
   add_default_values_and_mappings(global_hash)
 
+  add_node_pdu_mapping(global_hash)
+
   return global_hash
 end
 
-def add_default_values_and_mappings(h)
+def add_node_pdu_mapping(h)
   h["sites"].each do |site_uid, site|
-
     site.fetch("pdus", []).each do |pdu_uid, pdu|
-      pdu["type"] = "pdu"
-      pdu["uid"]  = pdu_uid
-
       pdu_attached_nodes = {}
       site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
         cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
@@ -102,12 +100,21 @@ def add_default_values_and_mappings(h)
       end
       pdu["ports"] = pdu_attached_nodes
     end
+  end
+end
+
+def add_default_values_and_mappings(h)
+  h["sites"].each do |site_uid, site|
+
+    site.fetch("pdus", []).each do |pdu_uid, pdu|
+      pdu["type"] = "pdu"
+      pdu["uid"]  = pdu_uid
+    end
 
     site.fetch("servers", []).each do |server_uid, server|
       server["type"]  = "server"
       server["uid"]  = server_uid
     end
-
 
     site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
 
