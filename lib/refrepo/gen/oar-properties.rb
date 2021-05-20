@@ -5,7 +5,6 @@ require 'refrepo/data_loader'
 require 'net/ssh'
 require 'refrepo/gpu_ref'
 
-# TODO missing test case: dead nodes (see coverage)
 # TODO for gpu_model (and others?) use NULL instead of empty string
 
 class MissingProperty < StandardError; end
@@ -72,7 +71,7 @@ def generate_set_node_properties_cmd(host, default_properties)
     command += properties_internal(default_properties)
     return command + "\n\n"
   else
-    return "echo ; echo 'Not setting properties for #{host}: node is not available in ref-api (retired?)'; echo\n\n"
+    return "echo ; echo 'Not setting properties for #{host}: node is not available in ref-api'; echo\n\n"
   end
 end
 
@@ -353,13 +352,6 @@ end
 # Generates the properties of a single node
 def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h = {}
-
-  if node['status'] == 'retired'
-    # For dead nodes, additional information is most likely missing
-    # from the ref-repository: just return the state
-    h['state'] = 'Dead'
-    return h
-  end
 
   main_network_adapter = node['network_adapters'].find { |na| /^eth[0-9]*$/.match(na['device']) && na['enabled'] && na['mounted'] && !na['management'] }
 
@@ -671,18 +663,6 @@ def diff_properties(type, properties_oar, properties_ref)
   ignore_keys.each { |key| properties_oar.delete(key) }
   ignore_keys.each { |key| properties_ref.delete(key) }
 
-  # Ignore the 'state' property only if the node is not 'Dead' according to
-  # the reference-repo.
-  # Otherwise, we must enforce that the node state is also 'Dead' on the OAR server.
-  # On the OAR server, the 'state' property can be modified by phoenix. We ignore that.
-  if type == 'default' && properties_ref['state'] != 'Dead'
-    properties_oar.delete('state')
-    properties_ref.delete('state')
-  elsif type == 'default' && properties_ref.size == 1
-    # For dead nodes, when information is missing from the reference-repo, only enforce the 'state' property and ignore other differences.
-    return Hashdiff.diff({'state' => properties_oar['state']}, {'state' => properties_ref['state']})
-  end
-
   return Hashdiff.diff(properties_oar, properties_ref)
 end
 
@@ -871,7 +851,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
 
   # Build the list of nodes that are listed in properties['oar'],
   # but does not exist in properties['ref']
-  # We distinguish 'Dead' nodes and 'Alive'/'Absent'/etc. nodes
   missings_alive = []
   missings_dead = []
   properties['oar'].each do |site_uid, site_properties|
@@ -891,7 +870,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
     ret = false
   end
 
-  skipped_nodes = []
   prev_diff = {}
   properties['diff'] = {}
 
@@ -903,12 +881,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
       type_properties.each_filtered_node_uid(options[:clusters], options[:nodes]) do |key, properties_ref|
         # As an example, key can be equal to 'grimoire-1' for default resources or
         # ['grimoire-1', 1] for disk resources (disk n°1 of grimoire-1)
-        node_uid, = key
-
-        if properties_ref['state'] == 'Dead'
-          skipped_nodes << node_uid
-          next
-        end
 
         properties_oar = properties['oar'][site_uid][type][key]
 
@@ -970,8 +942,6 @@ def do_diff(options, generated_hierarchy, refrepo_properties)
       diagnostic_msgs.push( "Hint: you can delete properties with 'oarproperty -d <property>' or add them to the ignore list in lib/lib-oar-properties.rb.")
       ret = false
     end
-    diagnostic_msgs.push( "Skipped retired nodes: #{skipped_nodes}") if skipped_nodes.any?
-
 
     if not options[:print]
       diagnostic_msgs.map{|msg| puts(msg)}

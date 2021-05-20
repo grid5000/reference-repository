@@ -125,38 +125,6 @@ def cluster_ignore_keys(filename)
   return file_hash
 end
 
-def get_site_dead_nodes(site_uid, options)
-
-  api_uri = URI.parse('https://api.grid5000.fr/stable/sites/' + site_uid  + '/internal/oarapi/resources/details.json?limit=999999')
-
-  # Download the OAR properties from the OAR API (through G5K API)
-  puts "Downloading OAR resources properties from #{api_uri} ..." if options[:verbose]
-  http = Net::HTTP.new(api_uri.host, Net::HTTP.https_default_port)
-  http.use_ssl = true
-  request = Net::HTTP::Get.new(api_uri.request_uri, {'User-Agent' => 'reference-repository/valid/homogeneity'})
-
-  # For outside g5k network access
-  if options[:api][:user] && options[:api][:pwd]
-    request.basic_auth(options[:api][:user], options[:api][:pwd])
-    #request.basic_auth("nmichon", "o|JsGvGD4200")
-  end
-
-  response = http.request(request)
-  raise "Failed to fetch resources properties from API: \n#{response.body}\n" unless response.code.to_i == 200
-  puts '... done' if options[:verbose]
-  oarnodes = JSON.parse(response.body)
-
-  # Adapt from the format of the OAR API
-  oarnodes = oarnodes['items'] if oarnodes.key?('items')
-  dead_nodes = []
-  oarnodes.each() { |node|
-    if node["state"] == "Dead" && !dead_nodes.include?(node["network_address"])
-      dead_nodes << node["network_address"].split(".")[0]
-    end
-  }
-  return dead_nodes
-end
-
 def cluster_homogeneity(refapi_hash, options = {:verbose => false})
   verbose = options[:verbose]
 
@@ -177,8 +145,6 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
   refapi_hash["sites"].sort.each do |site_uid, site|
     next if options.key?(:sites) && !options[:sites].include?(site_uid)
 
-    site_dead_nodes = get_site_dead_nodes(site_uid, options)
-
     count[site_uid] = {}
 
     site["clusters"].sort.each do |cluster_uid, cluster|
@@ -190,7 +156,7 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
       refnode = nil
 
       cluster["nodes"].each_sort_by_node_uid do |node_uid, node|
-        next if node['status'] == 'retired' || site_dead_nodes.include?(node_uid)
+        next if node['status'] == 'retired'
 
         if !refnode
           refnode = node

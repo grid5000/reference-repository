@@ -49,6 +49,8 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
 #  pp global_hash
 
+  detect_dead_nodes_with_yaml_files(global_hash)
+
   # add switch and port to nodes
   add_switch_port(global_hash)
 
@@ -296,6 +298,20 @@ def add_switch_port(h)
             end
             used_ports[[switch, swport]] = [node_uid, iface_uid]
             iface['switch'], iface['switch_port'] = switch, swport
+          end
+        end
+      end
+    end
+  end
+end
+
+def detect_dead_nodes_with_yaml_files(h)
+  h['sites'].each_pair do |site_uid, hs|
+    hs['clusters'].each_pair do |cluster_uid, hc|
+      hc['nodes'].each_pair do |node_uid, hn|
+        if hn['status'] == 'retired'
+          if (hn['processor']['model'] rescue nil)
+            raise "ERROR: #{node_uid} is marked status:retired, but its yaml is still in the repository. Please remove it."
           end
         end
       end
