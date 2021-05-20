@@ -103,6 +103,108 @@ def add_default_values_and_mappings(h)
       # On the previous version of this script, cluster["created_ad"] was generated from a Ruby Time. cluster["created_ad"] is now a Ruby Date at JSON import.
       # As Date.httpdate and Time.httpdate does not behave the same with timezone, it is converted here as a Ruby time.
       cluster["created_at"] = Date.parse(cluster["created_at"].to_s).httpdate
+
+      #
+      # Write node info
+      #
+
+      cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
+        #puts node_uid
+
+        node["uid"] = node_uid
+        node["type"] = "node"
+        if node.key?("processor")
+          node["processor"]["cache_l1"] ||= nil
+        end
+
+        # Add default keys
+        node["main_memory"] = {} unless node.key?("main_memory")
+
+        node["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false unless node.key?('exotic')
+
+        node['supported_job_types']['queues'] = cluster['queues'] unless node['supported_job_types'].key?('queues')
+
+        # Delete keys
+        #raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
+        Hash(node["storage_devices"]).keys.each { |key|
+          node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")
+          node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
+        }
+
+        # Add vendor info to storage
+        node["storage_devices"].each do |key, hash|
+          next if node['status'] == "retired" # we do not bother for retired nodes
+
+          matching_vendor = {}
+          matching_interface = []
+          h['disk_vendor_model_mapping'].each do |interface, vendor|
+            vendor.select do |k, v|
+              matching_vendor[k] = v if v.include? hash["model"]
+              matching_interface << interface if v.include? hash["model"]
+            end
+          end
+
+          raise "Model \"#{hash["model"]}\" don't match any vendor in input/grid5000/disks.yaml" if matching_vendor.empty?
+          raise "Model \"#{hash["model"]}\" specify in multiple vendors: #{matching_vendor.keys} in input/grid5000/disks.yaml" if matching_vendor.length > 1
+          raise "Model \"#{hash["model"]}\" specify in multiple interface: #{matching_interface} in input/grid5000/disks.yaml" if matching_interface.length > 1
+          hash['vendor'] = matching_vendor.keys.first
+
+          if matching_interface.first != 'RAID' && hash['interface'] != matching_interface.first
+            raise "Interface \"#{hash['interface']}\" for disk #{key} (model #{hash["model"]}) does not match interface \"#{matching_interface.first}\" in input/grid5000/disks.yaml"
+          end
+        end
+
+        # Ensure that by_id is present (bug 11043)
+        node["storage_devices"].each do |key, hash|
+          hash['by_id'] = '' if not hash['by_id']
+        end
+
+        # Type conversion
+        node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
+
+        # For each network adapters, populate "network_address", "switch" and "switch_port" from the network equipment description
+        node["network_adapters"].each_pair { |device, network_adapter|
+          network_adapter["mac"] = network_adapter["mac"].downcase if network_adapter["mac"].is_a?(String)
+
+          # infiniband properties
+          network_adapter["ib_switch_card"]     = network_adapter.delete("line_card") if network_adapter.key?("line_card")
+          network_adapter["ib_switch_card_pos"] = network_adapter.delete("position")  if network_adapter.key?("position")
+
+          if network_adapter["management"]
+            # Management network_adapter (bmc)
+            network_adapter["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr" unless network_adapter.key?("network_address")
+          elsif network_adapter["mounted"] and /^eth[0-9]$/.match(device)
+            # Primary network_adapter
+            network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr" if network_adapter["enabled"]
+          else
+            # Secondary network_adapter(s)
+            network_adapter["network_address"] = "#{node_uid}-#{device}.#{site_uid}.grid5000.fr" if network_adapter["mountable"] && !network_adapter.key?("network_address")
+          end
+          # If kavlan entry is not defined here, set it node's kavlan description
+          if not network_adapter["kavlan"]
+            if node["kavlan"].nil?
+              network_adapter["kavlan"] = false
+            else
+              network_adapter["kavlan"] = node["kavlan"].keys.include?(device) ? true : false
+            end
+          end
+          network_adapter["kavlan"] ||= node["kavlan"].nil? ? false : node["kavlan"].keys.include?(network_adapter["device"]) ? true : false
+
+          network_adapter.delete("network_address") if network_adapter["network_address"] == 'none'
+        }
+
+        if node.key?("pdu")
+
+          node["pdu"].each { |p|
+            pdu = [p].flatten
+            pdu.each { |item|
+              #See https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7585, workaround to validate node pdu that have per_outlets = false
+              item.delete("port") if item["port"] == "disabled"
+            }
+          }
+          #TODO: decide if we want to keep it
+        end # node.key?("pdu")
+      end
     end
 
   end

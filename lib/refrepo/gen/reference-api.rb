@@ -191,110 +191,19 @@ def generate_reference_api
       cluster_path.join("nodes").mkpath()
 
       cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
-        begin
-          #puts node_uid
 
-          next if node['status'] == "retired"
+        next if node['status'] == "retired"
 
-          node["uid"] = node_uid
-          node["type"] = "node"
-          if node.key?("processor")
-            node["processor"]["cache_l1"] ||= nil
-          end
+        node.delete("status")
 
-          # Add default keys
-          node["main_memory"] = {} unless node.key?("main_memory")
+        # Convert hashes to arrays
+        Hash(node["storage_devices"]).each { |key, hash| node["storage_devices"][key]["device"] = key; } # Add "device: sdX" within the hash
+        node["storage_devices"] = Hash(node["storage_devices"]).sort_by_array(["sda", "sdb", "sdc", "sdd", "sde", "sdf", "nvme0n1", "nvme1n1"]).values
 
-          node["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false unless node.key?('exotic')
+        node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
+        node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "ibs1","bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1"]).values
 
-          node['supported_job_types']['queues'] = cluster['queues'] unless node['supported_job_types'].key?('queues')
-
-          # Delete keys
-          #raise 'node["storage_devices"] is nil' if node["storage_devices"].nil?
-          Hash(node["storage_devices"]).keys.each { |key|
-            node["storage_devices"][key].delete("timeread")  if node["storage_devices"][key].key?("timeread")
-            node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
-          }
-          node.delete("status")
-
-          # Add vendor info to storage
-          node["storage_devices"].each do |key, hash|
-            matching_vendor = {}
-            matching_interface = []
-            global_hash['disk_vendor_model_mapping'].each do |interface, vendor|
-              vendor.select do |k, v|
-                matching_vendor[k] = v if v.include? hash["model"]
-                matching_interface << interface if v.include? hash["model"]
-              end
-            end
-
-            raise "Model \"#{hash["model"]}\" don't match any vendor in input/grid5000/disks.yaml" if matching_vendor.empty?
-            raise "Model \"#{hash["model"]}\" specify in multiple vendors: #{matching_vendor.keys} in input/grid5000/disks.yaml" if matching_vendor.length > 1
-            raise "Model \"#{hash["model"]}\" specify in multiple interface: #{matching_interface} in input/grid5000/disks.yaml" if matching_interface.length > 1
-            hash['vendor'] = matching_vendor.keys.first
-
-            if matching_interface.first != 'RAID' && hash['interface'] != matching_interface.first
-              raise "Interface \"#{hash['interface']}\" for disk #{key} (model #{hash["model"]}) does not match interface \"#{matching_interface.first}\" in input/grid5000/disks.yaml"
-            end
-          end
-
-          # Ensure that by_id is present (bug 11043)
-          node["storage_devices"].each do |key, hash|
-            hash['by_id'] = '' if not hash['by_id']
-          end
-
-          # Type conversion
-          node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
-
-          # Convert hashes to arrays
-          Hash(node["storage_devices"]).each { |key, hash| node["storage_devices"][key]["device"] = key; } # Add "device: sdX" within the hash
-          node["storage_devices"] = Hash(node["storage_devices"]).sort_by_array(["sda", "sdb", "sdc", "sdd", "sde", "sdf", "nvme0n1", "nvme1n1"]).values
-
-          node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
-          node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "ibs1","bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1"]).values
-
-          # For each network adapters, populate "network_address", "switch" and "switch_port" from the network equipment description
-          node["network_adapters"].each { |network_adapter|
-            network_adapter["mac"] = network_adapter["mac"].downcase if network_adapter["mac"].is_a?(String)
-
-            # infiniband properties
-            network_adapter["ib_switch_card"]     = network_adapter.delete("line_card") if network_adapter.key?("line_card")
-            network_adapter["ib_switch_card_pos"] = network_adapter.delete("position")  if network_adapter.key?("position")
-
-            if network_adapter["management"]
-              # Management network_adapter (bmc)
-              network_adapter["network_address"] = "#{node_uid}-bmc.#{site_uid}.grid5000.fr" unless network_adapter.key?("network_address")
-            elsif network_adapter["mounted"] and /^eth[0-9]$/.match(network_adapter["device"])
-              # Primary network_adapter
-              network_adapter["network_address"] = "#{node_uid}.#{site_uid}.grid5000.fr" if network_adapter["enabled"]
-            else
-              # Secondary network_adapter(s)
-              network_adapter["network_address"] = "#{node_uid}-#{network_adapter["device"]}.#{site_uid}.grid5000.fr" if network_adapter["mountable"] && !network_adapter.key?("network_address")
-            end
-            # If kavlan entry is not defined here, set it node's kavlan description
-            network_adapter["kavlan"] ||= node["kavlan"].nil? ? false : node["kavlan"].keys.include?(network_adapter["device"]) ? true : false
-
-            network_adapter.delete("network_address") if network_adapter["network_address"] == 'none'
-          }
-
-          if node.key?("pdu")
-
-            node["pdu"].each { |p|
-              pdu = [p].flatten
-              pdu.each { |item|
-                #See https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7585, workaround to validate node pdu that have per_outlets = false
-                item.delete("port") if item["port"] == "disabled"
-              }
-            }
-          #TODO: decide if we want to keep it
-          end # node.key?("pdu")
-
-          write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
-
-        rescue => e
-          puts "Error while processing #{node_uid}: #{e}"
-          raise
-        end
+        write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
       end
     end
 
