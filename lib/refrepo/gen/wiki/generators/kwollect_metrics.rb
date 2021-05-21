@@ -8,6 +8,7 @@ class KwollectMetricsGenerator < WikiGenerator
 
   def generate_content
     @generated_content = "__NOEDITSECTION__\n"
+    @generated_content = "\nMetrics marked with * must be activated on demand, and metrics marked with ** are activated on non-deploy jobs by default.\n\n"
     @generated_content += "{|class=\"wikitable\"\n"
     @generated_content += "! style=\"width: 15%\" | Metric Name\n"
     @generated_content += "! style=\"width: 30%\" | Description\n"
@@ -24,6 +25,7 @@ class KwollectMetricsGenerator < WikiGenerator
 
     metric_names.sort.each do |metric_name|
 
+      optional = all_metrics.select{|m| m["name"] == metric_name}.first["period"] == 0 ? "*" : ""
       descriptions = all_metrics.select{|m| m["name"] == metric_name}.map{|metric| metric["description"]}.uniq
       if descriptions.length != 1
         description = longest_common_prefix(descriptions) + "XXX" + longest_common_suffix(descriptions)
@@ -33,8 +35,9 @@ class KwollectMetricsGenerator < WikiGenerator
       if metric_name =~ /prom_.*default_metrics/
         prom_metric_ids = all_metrics.select{|m| m["name"] == metric_name}.map{|metric| metric["source"]["id"]}.first
         description += ":<br/>''#{prom_metric_ids.join(", ")}''"
+        optional = "**"
       end
-      @generated_content += "|-\n|#{metric_name}\n|#{description}\n|"
+      @generated_content += "|-\n|#{metric_name}#{optional}\n|#{description}\n|"
 
       sites.each_value.sort_by{|s| s['uid']}.each do |site|
         devices = site["clusters"].each_value.select{|c| c.fetch('metrics', []).map{|m| m["name"]}.any?{|m| m == metric_name}}.map{|c| c["uid"]}.sort
