@@ -16,6 +16,13 @@ metrics:
       protocol: ipmisensor
       id: 212 #System Power
 
+  - name: bmc_gpu_power_watt
+    description: Power consumption of GPU reported by BMC, in watt
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 213 #GPU Power
+
   - name: bmc_other_temp_celsius
     description: Temperature of CPU Diode 1 reported by BMC, in celsius
     labels: {"id": "cpu_diode_1"}
@@ -428,14 +435,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 211 #PCIE Proc1 Power
-
-  - name: bmc_gpu_power_watt
-    description: Power consumption of GPU reported by BMC, in watt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 213 #GPU Power
 
   - name: bmc_gpu_temp_celsius
     description: Temperature of GPU 1 reported by BMC, in celsius

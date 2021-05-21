@@ -22,6 +22,15 @@
       }
     },
     {
+      "description": "Power consumption of GPU reported by BMC, in watt",
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 213,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
       "description": "Temperature of CPU Diode 1 reported by BMC, in celsius",
       "labels": {
         "id": "cpu_diode_1"
@@ -613,16 +622,6 @@
       "period": 0,
       "source": {
         "id": 211,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Power consumption of GPU reported by BMC, in watt",
-      "name": "bmc_gpu_power_watt",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 213,
         "protocol": "ipmisensor"
       }
     },
