@@ -40,6 +40,8 @@ def global_ignore_keys
     ~mic.ip
     ~mic.mac
 
+    ~uid
+
     +status
     -status
   )
@@ -101,6 +103,7 @@ eos
     ~network_adapters.IB_IF.ip6
     ~network_adapters.IB_IF.line_card
     ~network_adapters.IB_IF.position
+    ~network_adapters.IB_IF.network_address
     +network_adapters.IB_IF.version
 eos
 
