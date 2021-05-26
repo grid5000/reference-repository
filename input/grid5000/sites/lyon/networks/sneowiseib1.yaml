@@ -1,0 +1,54 @@
+---
+sneowiseib1:
+  role: hpc
+  model: Mellanox QM8700
+  warranty: 2024-03-31
+  kind: switch
+  site: lyon
+  snmp_community: public
+  metrics: []
+  ip: 172.17.63.231
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/%PORT%"
+      kavlan_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 200000000000
+      ports:
+        1: neowise-1-ib0
+        2: neowise-2-ib0
+        3: neowise-3-ib0
+        4: neowise-4-ib0
+        5: neowise-5-ib0
+        6: neowise-6-ib0
+        7: neowise-7-ib0
+        8: neowise-8-ib0
+        9: neowise-9-ib0
+        10: neowise-10-ib0
+        20:
+          uid: port-channel1
+          kind: channel
+        21:
+          uid: port-channel1
+          kind: channel
+        22:
+          uid: port-channel1
+          kind: channel
+        23:
+          uid: port-channel1
+          kind: channel
+        24:
+          uid: port-channel1
+          kind: channel
+        25:
+          uid: port-channel1
+          kind: channel
+        26:
+          uid: port-channel1
+          kind: channel
+  channels:
+    port-channel1:
+      port: port-channel1
+      uid: sneowiseib2
+      rate: 1200000000000
+      kind: channel
