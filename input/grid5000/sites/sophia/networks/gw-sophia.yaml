@@ -103,6 +103,52 @@ gw:
           uid: swx1nef
           kind: switch
           port: 0/5
+    3:
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
+      kavlan_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      backplane_bps: 24000000000
+      rate: 1000000000
+      ports:
+        1: uvb-37
+        2: uvb-43
+        3: uvb-26
+        5: uvb-25
+        7:
+          uid: opensm
+          kind: server
+        10: uvb-38
+        11: uvb-27
+        13: uvb-18
+        14: uvb-41
+        15: uvb-14
+        17: uvb-28
+        18: uvb-34
+        19: uvb-16
+        20: uvb-33
+        22: uvb-31
+        24: uvb-42
+    4:
+      snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
+      kavlan_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      backplane_bps: 24000000000
+      rate: 1000000000
+      ports:
+        1: uvb-12
+        2: uvb-36
+        4: uvb-35
+        6: uvb-44
+        8: uvb-29
+        9: uvb-11
+        10: uvb-1
+        12: uvb-2
+        14: uvb-17
+        16: uvb-4
+        18: uvb-5
+        20: uvb-6
+        22: uvb-7
+        24: uvb-8
     7:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kavlan_pattern: "%LINECARD%/%PORT%"
@@ -122,13 +168,15 @@ gw:
     9:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kavlan_pattern: "%LINECARD%/%PORT%"
-      kind: other
+      kind: node
       backplane_bps: 12000000000
       rate: 1000000000
       ports:
+        1: uvb-9
         2:
           uid: srv-data
           kind: server
+        3: uvb-10
     6:
       snmp_pattern: "GigabitEthernet%LINECARD%/%PORT%"
       kavlan_pattern: "%LINECARD%/%PORT%"
