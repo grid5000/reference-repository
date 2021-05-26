@@ -1,0 +1,35 @@
+{
+  "created_at": "Mon, 17 May 2021 00:00:00 GMT",
+  "exotic": true,
+  "kavlan": false,
+  "metrics": [
+    {
+      "description": "Input byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    }
+  ],
+  "model": "AMD-Penguin Computing",
+  "queues": [
+    "admin"
+  ],
+  "type": "cluster",
+  "uid": "neowise"
+}
