@@ -21,9 +21,6 @@
   "main_memory": {
     "ram_size": 549755813888
   },
-  "monitoring": {
-    "wattmeter": "false"
-  },
   "network_adapters": [
     {
       "device": "eth0",
@@ -42,55 +39,62 @@
       "name": "eno1",
       "network_address": "neowise-8.lyon.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null,
+      "switch": "gw",
+      "switch_port": "ethernet1/1/18",
       "vendor": "Mellanox Technologies"
     },
     {
       "device": "eth1",
       "driver": "mlx5_core",
-      "enabled": false,
+      "enabled": true,
       "firmware_version": "14.22.1002 (GIG0000000005)",
       "interface": "Ethernet",
+      "ip": "172.16.55.18",
+      "ip6": "2001:660:4406:400:8:1:0:8",
       "kavlan": false,
       "mac": "18:c0:4d:4e:b1:58",
       "management": false,
       "model": "MT27710 Family [ConnectX-4 Lx]",
-      "mountable": false,
-      "mounted": false,
+      "mountable": true,
+      "mounted": true,
       "name": "eno2",
+      "network_address": "neowise-8.lyon.grid5000.fr",
       "rate": 10000000000,
+      "switch": "sneowise",
+      "switch_port": "1/8",
       "vendor": "Mellanox Technologies"
     },
     {
       "device": "ib0",
       "driver": "mlx5_core",
-      "enabled": false,
+      "enabled": true,
       "firmware_version": "20.29.2002",
       "guid": "0x0c42a10300a0fc48",
       "interface": "InfiniBand",
       "kavlan": false,
       "management": false,
-      "mountable": false,
-      "mounted": false,
+      "mountable": true,
+      "mounted": true,
       "name": "ib0",
-      "rate": 10000000000,
+      "network_address": "neowise-8-ib0.lyon.grid5000.fr",
+      "rate": 200000000000,
       "vendor": "Mellanox Technologies"
     },
     {
       "device": "ib1",
       "driver": "mlx5_core",
-      "enabled": false,
+      "enabled": true,
       "firmware_version": "20.29.2002",
       "guid": "0x0c42a10300a0fc20",
       "interface": "InfiniBand",
       "kavlan": false,
       "management": false,
       "model": "MT28908 Family [ConnectX-6]",
-      "mountable": false,
-      "mounted": false,
+      "mountable": true,
+      "mounted": true,
       "name": "ib1",
-      "rate": 10000000000,
+      "network_address": "neowise-8-ib1.lyon.grid5000.fr",
+      "rate": 200000000000,
       "vendor": "Mellanox Technologies"
     },
     {
@@ -133,8 +137,6 @@
     "other_description": "AMD EPYC 7642 48-Core Processor",
     "vendor": "AMD",
     "version": 7642
-  },
-  "sensors": {
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
