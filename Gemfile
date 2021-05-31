@@ -14,5 +14,4 @@ gem "restfully"
 gem "rspec", :group => [:development]
 gem "webmock", :group => [:development]
 gem "simplecov", :group => [:development]
-gem "mutant-rspec", :group => [:development]
 gem "code-explorer", :group => [:development]
