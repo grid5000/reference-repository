@@ -48,10 +48,18 @@ class "PXE" {
         # Set the  vendor-class-identifier field to PXEClient in dhcp answer
         # if this field is not set the pxe client will ignore the answer !
         #
+        option pxelinux.pathprefix "http://kadeploy.<%= "#{site_uid}.grid5000.fr" %>;
         option vendor-class-identifier "PXEClient";
         vendor-option-space PXE;
         option PXE.mtftp-ip 0.0.0.0;
     }
+}
+
+# force dhcp parameter request to include the pathprefix (210 = 0xd2) even if
+# the dhcp client did not request it
+
+if exists dhcp-parameter-request-list {
+  option dhcp-parameter-request-list = concat(option dhcp-parameter-request-list, d2);
 }
 
 <%
