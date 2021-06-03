@@ -52,7 +52,7 @@ group {
 <% else -%>
     fixed-address           <%= node['ipv4'] %>;
 <% end -%>
-<% if node['uid_net'] =~ /^(troll|gros)-\d+$/ -%>
+<% if node['uid_net'] =~ /^(troll)-\d+$/ -%>
     filename                "/pxelinux.0";
 <% end -%>
   }

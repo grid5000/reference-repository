@@ -48,7 +48,8 @@ class "PXE" {
         # Set the  vendor-class-identifier field to PXEClient in dhcp answer
         # if this field is not set the pxe client will ignore the answer !
         #
-        option pxelinux.pathprefix "http://kadeploy.<%= "#{site_uid}.grid5000.fr" %>;
+        option pxelinux.pathprefix "http://kadeploy.<%= "#{site_uid}.grid5000.fr" %>/";
+        option pxelinux.configfile "pxelinux.cfg/";
         option vendor-class-identifier "PXEClient";
         vendor-option-space PXE;
         option PXE.mtftp-ip 0.0.0.0;
@@ -59,7 +60,7 @@ class "PXE" {
 # the dhcp client did not request it
 
 if exists dhcp-parameter-request-list {
-  option dhcp-parameter-request-list = concat(option dhcp-parameter-request-list, d2);
+  option dhcp-parameter-request-list = concat(option dhcp-parameter-request-list, d1, d2);
 }
 
 <%
@@ -124,7 +125,7 @@ host <%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-ka
 <%     if kavlan_id.to_i > 9 -%>
   next-server kadeploy.<%= site %>.grid5000.fr;
 <%     end -%>
-<% if node_uid =~ /^(troll|gros)-\d+$/ -%>
+<% if node_uid =~ /^(troll)-\d+$/ -%>
   filename "/pxelinux.0";
 <% end -%>
 }
