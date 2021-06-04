@@ -98,19 +98,45 @@
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "14.22.1002 (GIG0000000005)",
+      "interface": "Ethernet",
+      "ip": "172.16.55.1",
+      "ip6": "2001:660:4406:400:8::1",
       "kavlan": false,
+      "mac": "18:c0:4d:11:37:a1",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
       "mountable": true,
       "mounted": true,
-      "network_address": "neowise-1.lyon.grid5000.fr"
+      "name": "eno1",
+      "network_address": "neowise-1.lyon.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "gw",
+      "switch_port": "ethernet1/1/11",
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "eth1",
+      "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "14.22.1002 (GIG0000000005)",
+      "interface": "Ethernet",
+      "ip": "172.16.55.11",
+      "ip6": "2001:660:4406:400:8:1:0:1",
       "kavlan": false,
+      "mac": "18:c0:4d:11:37:a2",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
       "mountable": true,
       "mounted": true,
-      "network_address": "neowise-1.lyon.grid5000.fr"
+      "name": "eno2",
+      "network_address": "neowise-1.lyon.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "sneowise",
+      "switch_port": "1/1",
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "ib0",
@@ -159,33 +185,6 @@
       "mountable": false,
       "mounted": false,
       "network_address": "neowise-1-bmc.lyon.grid5000.fr"
-    },
-    {
-      "device": "eno1",
-      "driver": "mlx5_core",
-      "firmware_version": "14.22.1002 (GIG0000000005)",
-      "interface": "Ethernet",
-      "ip": "172.16.55.1",
-      "kavlan": false,
-      "mac": "18:c0:4d:11:37:a1",
-      "management": false,
-      "model": "MT27710 Family [ConnectX-4 Lx]",
-      "name": "eno1",
-      "rate": 10000000000,
-      "vendor": "Mellanox Technologies"
-    },
-    {
-      "device": "eno2",
-      "driver": "mlx5_core",
-      "firmware_version": "14.22.1002 (GIG0000000005)",
-      "interface": "Ethernet",
-      "kavlan": false,
-      "mac": "18:c0:4d:11:37:a2",
-      "management": false,
-      "model": "MT27710 Family [ConnectX-4 Lx]",
-      "name": "eno2",
-      "rate": 10000000000,
-      "vendor": "Mellanox Technologies"
     }
   ],
   "operating_system": {
