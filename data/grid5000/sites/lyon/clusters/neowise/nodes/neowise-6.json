@@ -18,51 +18,99 @@
     "serial": "P100228626"
   },
   "exotic": true,
+  "gpu_devices": {
+    "card0": {
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card0",
+      "memory": 34359738368,
+      "model": "Radeon Instinct MI50 32GB",
+      "power_default_limit": 225.0,
+      "vbios_version": "113-D1631700-111",
+      "vendor": "AMD"
+    },
+    "card1": {
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card1",
+      "memory": 34359738368,
+      "model": "Radeon Instinct MI50 32GB",
+      "power_default_limit": 225.0,
+      "vbios_version": "113-D1631700-111",
+      "vendor": "AMD"
+    },
+    "card2": {
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card2",
+      "memory": 34359738368,
+      "model": "Radeon Instinct MI50 32GB",
+      "power_default_limit": 225.0,
+      "vbios_version": "113-D1631700-111",
+      "vendor": "AMD"
+    },
+    "card3": {
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card3",
+      "memory": 34359738368,
+      "model": "Radeon Instinct MI50 32GB",
+      "power_default_limit": 225.0,
+      "vbios_version": "113-D1631700-111",
+      "vendor": "AMD"
+    },
+    "card4": {
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card4",
+      "memory": 34359738368,
+      "model": "Radeon Instinct MI50 32GB",
+      "power_default_limit": 225.0,
+      "vbios_version": "113-D1631700-111",
+      "vendor": "AMD"
+    },
+    "card5": {
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card5",
+      "memory": 34359738368,
+      "model": "Radeon Instinct MI50 32GB",
+      "power_default_limit": 225.0,
+      "vbios_version": "113-D1631700-111",
+      "vendor": "AMD"
+    },
+    "card6": {
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card6",
+      "memory": 34359738368,
+      "model": "Radeon Instinct MI50 32GB",
+      "power_default_limit": 225.0,
+      "vbios_version": "113-D1631700-111",
+      "vendor": "AMD"
+    },
+    "card7": {
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card7",
+      "memory": 34359738368,
+      "model": "Radeon Instinct MI50 32GB",
+      "power_default_limit": 225.0,
+      "vbios_version": "113-D1631700-111",
+      "vendor": "AMD"
+    }
+  },
   "main_memory": {
     "ram_size": 549755813888
   },
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx5_core",
       "enabled": true,
-      "firmware_version": "14.22.1002 (GIG0000000005)",
-      "interface": "Ethernet",
-      "ip": "172.16.55.6",
-      "ip6": "2001:660:4406:400:8::6",
       "kavlan": false,
-      "mac": "18:c0:4d:4a:ed:09",
-      "management": false,
-      "model": "MT27710 Family [ConnectX-4 Lx]",
       "mountable": true,
       "mounted": true,
-      "name": "eno1",
-      "network_address": "neowise-6.lyon.grid5000.fr",
-      "rate": 10000000000,
-      "switch": "gw",
-      "switch_port": "ethernet1/1/16",
-      "vendor": "Mellanox Technologies"
+      "network_address": "neowise-6.lyon.grid5000.fr"
     },
     {
       "device": "eth1",
-      "driver": "mlx5_core",
       "enabled": true,
-      "firmware_version": "14.22.1002 (GIG0000000005)",
-      "interface": "Ethernet",
-      "ip": "172.16.55.16",
-      "ip6": "2001:660:4406:400:8:1:0:6",
       "kavlan": false,
-      "mac": "18:c0:4d:4a:ed:0a",
-      "management": false,
-      "model": "MT27710 Family [ConnectX-4 Lx]",
       "mountable": true,
       "mounted": true,
-      "name": "eno2",
-      "network_address": "neowise-6.lyon.grid5000.fr",
-      "rate": 10000000000,
-      "switch": "sneowise",
-      "switch_port": "1/6",
-      "vendor": "Mellanox Technologies"
+      "network_address": "neowise-6.lyon.grid5000.fr"
     },
     {
       "device": "ib0",
@@ -72,7 +120,7 @@
       "guid": "0x0c42a10300a0fbc0",
       "interface": "InfiniBand",
       "kavlan": false,
-      "mac": "00:00:08:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fb:c0",
+      "mac": "00:00:10:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fb:c0",
       "management": false,
       "model": "MT28908 Family [ConnectX-6]",
       "mountable": true,
@@ -90,7 +138,7 @@
       "guid": "0x0c42a10300a0faf4",
       "interface": "InfiniBand",
       "kavlan": false,
-      "mac": "00:00:10:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fa:f4",
+      "mac": "00:00:08:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fa:f4",
       "management": false,
       "model": "MT28908 Family [ConnectX-6]",
       "mountable": true,
@@ -111,6 +159,33 @@
       "mountable": false,
       "mounted": false,
       "network_address": "neowise-6-bmc.lyon.grid5000.fr"
+    },
+    {
+      "device": "eno1",
+      "driver": "mlx5_core",
+      "firmware_version": "14.22.1002 (GIG0000000005)",
+      "interface": "Ethernet",
+      "ip": "172.16.55.6",
+      "kavlan": false,
+      "mac": "18:c0:4d:4a:ed:09",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
+      "name": "eno1",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "eno2",
+      "driver": "mlx5_core",
+      "firmware_version": "14.22.1002 (GIG0000000005)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "18:c0:4d:4a:ed:0a",
+      "management": false,
+      "model": "MT27710 Family [ConnectX-4 Lx]",
+      "name": "eno2",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
     }
   ],
   "operating_system": {

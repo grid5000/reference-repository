@@ -16,6 +16,71 @@ neowise-9:
     manufacturer: Penguin Computing
     name: AMD-Penguin COVID19
     serial: P100228629
+  gpu_devices:
+    card0:
+      cpu_affinity: 0
+      device: "/dev/dri/card0"
+      memory: 34359738368
+      model: Radeon Instinct MI50 32GB
+      power_default_limit: 225.0
+      vbios_version: 113-D1631700-111
+      vendor: AMD
+    card1:
+      cpu_affinity: 0
+      device: "/dev/dri/card1"
+      memory: 34359738368
+      model: Radeon Instinct MI50 32GB
+      power_default_limit: 225.0
+      vbios_version: 113-D1631700-111
+      vendor: AMD
+    card2:
+      cpu_affinity: 0
+      device: "/dev/dri/card2"
+      memory: 34359738368
+      model: Radeon Instinct MI50 32GB
+      power_default_limit: 225.0
+      vbios_version: 113-D1631700-111
+      vendor: AMD
+    card3:
+      cpu_affinity: 0
+      device: "/dev/dri/card3"
+      memory: 34359738368
+      model: Radeon Instinct MI50 32GB
+      power_default_limit: 225.0
+      vbios_version: 113-D1631700-111
+      vendor: AMD
+    card4:
+      cpu_affinity: 0
+      device: "/dev/dri/card4"
+      memory: 34359738368
+      model: Radeon Instinct MI50 32GB
+      power_default_limit: 225.0
+      vbios_version: 113-D1631700-111
+      vendor: AMD
+    card5:
+      cpu_affinity: 0
+      device: "/dev/dri/card5"
+      memory: 34359738368
+      model: Radeon Instinct MI50 32GB
+      power_default_limit: 225.0
+      vbios_version: 113-D1631700-111
+      vendor: AMD
+    card6:
+      cpu_affinity: 0
+      device: "/dev/dri/card6"
+      memory: 34359738368
+      model: Radeon Instinct MI50 32GB
+      power_default_limit: 225.0
+      vbios_version: 113-D1631700-111
+      vendor: AMD
+    card7:
+      cpu_affinity: 0
+      device: "/dev/dri/card7"
+      memory: 34359738368
+      model: Radeon Instinct MI50 32GB
+      power_default_limit: 225.0
+      vbios_version: 113-D1631700-111
+      vendor: AMD
   main_memory:
     ram_size: 549755813888
   network_adapters:
@@ -23,7 +88,7 @@ neowise-9:
       ip: 172.17.55.9
       mac: b4:2e:99:b4:c6:fc
       management: true
-    eth0:
+    eno1:
       driver: mlx5_core
       firmware_version: 14.22.1002 (GIG0000000005)
       interface: Ethernet
@@ -34,7 +99,7 @@ neowise-9:
       name: eno1
       rate: 10000000000
       vendor: Mellanox Technologies
-    eth1:
+    eno2:
       driver: mlx5_core
       firmware_version: 14.22.1002 (GIG0000000005)
       interface: Ethernet
@@ -49,22 +114,22 @@ neowise-9:
       firmware_version: 20.29.2002
       guid: '0x0c42a10300a0fc48'
       interface: InfiniBand
-      mac: 00:00:10:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fc:48
+      mac: 00:00:08:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fc:48
       management: false
       model: MT28908 Family [ConnectX-6]
       name: ib0
-      rate: 200000000000
+      rate: 10000000000
       vendor: Mellanox Technologies
     ib1:
       driver: mlx5_core
       firmware_version: 20.29.2002
       guid: '0x0c42a10300a0fc20'
       interface: InfiniBand
-      mac: 00:00:10:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fc:20
+      mac: 00:00:04:28:fe:80:00:00:00:00:00:00:0c:42:a1:03:00:a0:fc:20
       management: false
       model: MT28908 Family [ConnectX-6]
       name: ib1
-      rate: 200000000000
+      rate: 10000000000
       vendor: Mellanox Technologies
   operating_system:
     cstate_driver: acpi_idle
