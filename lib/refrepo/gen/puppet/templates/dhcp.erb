@@ -52,7 +52,8 @@ group {
 <% else -%>
     fixed-address           <%= node['ipv4'] %>;
 <% end -%>
-<% if node['uid_net'] =~ /^(troll)-\d+$/ -%>
+<% if node['uid_net'] =~ /^(fixme|fixme)-\d+$/ -%>
+    <%# Cas spécial pour les gros et troll, enlevé à cause du bug 13163 %>
     filename                "/pxelinux.0";
 <% end -%>
   }

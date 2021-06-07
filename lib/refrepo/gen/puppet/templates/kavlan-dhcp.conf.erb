@@ -125,7 +125,8 @@ host <%= node_uid %><%= interface['mounted']? "" : "-"+interface['device'] %>-ka
 <%     if kavlan_id.to_i > 9 -%>
   next-server kadeploy.<%= site %>.grid5000.fr;
 <%     end -%>
-<% if node_uid =~ /^(troll)-\d+$/ -%>
+<% if node_uid =~ /^(fixme|fixme)-\d+$/ -%>
+  <%# Cas spécial pour les gros et troll, enlevé à cause du bug 13163 %>
   filename "/pxelinux.0";
 <% end -%>
 }
