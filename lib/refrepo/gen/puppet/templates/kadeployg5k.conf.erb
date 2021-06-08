@@ -6,6 +6,9 @@
 partitioning:
   block_device: /dev/sda
   script: /etc/kadeploy3<%= suffix %>/<%= ! data['partitioning.script'].nil? ? data['partitioning.script'] : "partitioning.sh" %>
+  <%- if !data['formating.script'].nil? && !data['formating.script'].empty? -%>
+  formating_script: /etc/kadeploy3<%= suffix %>/<%= data['formating.script'] %>
+  <%- end -%>
   partitions:
     tmp: 5
     prod: 2
