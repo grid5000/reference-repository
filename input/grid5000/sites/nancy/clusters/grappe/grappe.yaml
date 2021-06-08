@@ -7,6 +7,8 @@ queues:
   - production
 nodes:
   grappe-[1-16]:
+    bios:
+      sriov: true
     software:
       standard-environment: debian10-x64-std
     supported_job_types:
