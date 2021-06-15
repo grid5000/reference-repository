@@ -1,7 +1,7 @@
 model: AMD-Penguin Computing
 created_at: 2021-05-17
-kavlan: false
 exotic: true
+kavlan: true
 queues:
   - admin
   - testing
@@ -32,6 +32,7 @@ nodes:
         enabled: true
         mountable: true
         mounted: false
+        kavlan: false
     storage_devices:
       nvme0n1:
         interface: NVME
