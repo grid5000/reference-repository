@@ -31,6 +31,7 @@ class GPURef
     "Tesla T4" => "Tesla T4",
     "A100-PCIE-40GB" => "A100",
     "Quadro RTX 6000" => "Quadro RTX 6000",
+    "Radeon Instinct MI50 32GB" => "MI50"
   }
 
   def self.getNumberOfCoresFor(model)
