@@ -1,0 +1,28 @@
+---
+sib:
+  role: hpc
+  model: Mellanox SB7800
+  warranty: 2024-07-31
+  kind: switch
+  site: lyon
+  snmp_community: public
+  metrics: []
+  ip: 172.17.63.230
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/%PORT%"
+      kavlan_pattern: "%LINECARD%/%PORT%"
+      kind: node
+      rate: 100000000000
+      # /!\ Unverified mapping
+      ports:
+        1: gemini-1-ib0
+        2: gemini-1-ib1
+        3: gemini-1-ib2
+        5: gemini-2-ib0
+        6: gemini-2-ib1
+        7: gemini-2-ib2
+        9: pyxis-1-ib0
+        10: pyxis-2-ib0
+        11: pyxis-3-ib0
+        12: pyxis-4-ib0
