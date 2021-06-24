@@ -406,7 +406,7 @@ def get_hardware(sites)
           if e['unavailable_for_experiment']
             s += ' - unavailable for experiment'
           elsif e['device'] =~ /eth/
-            s += ' [[Advanced_KaVLAN#A_simple_multi_NICs_example|(multi NICs example)]]' if !nic_c.zero?
+            s += ' [[Advanced_KaVLAN#A_simple_multi_NICs_example|(multi NICs example)]]' if !nic_c.zero? and not e.fetch('no_kavlan')
             nic_c += 1
           end
           s += ' - no KaVLAN' if e['no_kavlan']
