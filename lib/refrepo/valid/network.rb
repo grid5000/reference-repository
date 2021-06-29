@@ -5,7 +5,9 @@
 # in clustershell and graphviz debian packages
 
 # FIXME infiniband equipment is not completely described in the ref-api yet. See Bug 8586
-HPC_SWITCHES = ['ib-grenoble', 'voltaire-1', 'voltaire-2', 'voltaire-3', 'sgraoullyib', 'sw-myrinet', 'sgrele-opf', 'sneowiseib1', 'sneowiseib2']
+def hpc_switch?(neteq)
+  return neteq.fetch("kind") == "hpcswitch"
+end
 
 def check_network_description(options)
   ok = true
@@ -79,7 +81,7 @@ def check_network_description(options)
     # scan neteq for backplane_bps (bug 8294)
     puts "Scanning network equipments for backplane_bps..."
     neteqs.each do |eq|
-      next if HPC_SWITCHES.include?(eq['uid'])
+      next if hpc_switch?(eq)
       puts "looking at #{eq['uid']} ..."
       if not eq['backplane_bps']
         puts "WARNING: #{eq['uid']} has no backplane_bps"
@@ -97,8 +99,8 @@ def check_network_description(options)
     # scan equipments ports, search for each node
     neteqs.each do |eq|
       puts "looking at #{eq['uid']} ..."
-      if HPC_SWITCHES.include?(eq['uid'])
-        puts "This is an HPC switch. ERRORs will be non-fatal."
+      if hpc_switch?(eq)
+        #puts "This is an HPC switch. ERRORs will be non-fatal."
         oldok = ok
       end
       eq['linecards'].each_with_index do |lc, lc_i|
@@ -203,7 +205,7 @@ def check_network_description(options)
           end
         end
       end
-      if HPC_SWITCHES.include?(eq['uid'])
+      if hpc_switch?(eq)
         ok = oldok
       end
     end
@@ -229,7 +231,7 @@ def check_network_description(options)
     # find netnodes without connection
     # for routers, it's OK, because they would be connected to other G5K routers
     netnodes.select { |n| n['found'] == 0 and not n['kind'] == 'router' }.each do |n|
-      if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or n['interface'] == 'Omni-Path' or HPC_SWITCHES.include?(n['uid'])
+      if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or n['interface'] == 'Omni-Path' or hpc_switch?(n)
         puts "WARNING: we did not find a corresponding entry on a network equipment for this InfiniBand node: #{n}"
       else
         puts "ERROR: we did not find a corresponding entry on a network equipment for this node or equipment (where is it plugged?!): #{n}"
@@ -249,7 +251,7 @@ def check_network_description(options)
       n0 = netnodes.select { |n| n['nickname'] == l[0] }.first
       n1 = netnodes.select { |n| n['nickname'] == l[1] }.first
       if ['router','switch'].include?(n0['kind']) and ['router','switch'].include?(n1['kind'])
-        next if HPC_SWITCHES.include?(n0['nickname']) or HPC_SWITCHES.include?(n1['nickname']) # FIXME we ignore problems with HPC switches for now
+        next if hpc_switch?(n0) or hpc_switch?(n1) # FIXME we ignore problems with HPC switches for now
         # this is a link between network equipment
         if linknicks.count(l) % 2 != 0
           puts "ERROR: link between two network equipments should have 2 instances (or 4, 6, 8 in case of aggregation) (probably switch A is connected to switch B, but B is not connected to A): #{l} (actual count: #{linknicks.count(l)})"
@@ -282,7 +284,7 @@ end
 def generate_dot(netnodes, links, site)
   mynetnodes = []
   netnodes.each do |n|
-    next if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or HPC_SWITCHES.include?(n['nickname'])
+    next if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or hpc_switch?(n)
     mynetnodes << n
   end
   # delete nodes we don't care about (HPC networks)
