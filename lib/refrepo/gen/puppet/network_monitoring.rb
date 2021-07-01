@@ -28,15 +28,7 @@ def generate_puppet_network_monitoring(options)
 
       fqdn_eq_name = "#{eq_name}.#{s}.grid5000.fr"
 
-      if %w[admin hpc].include?(eq_v['role'])
-        unless admin_hosts.find { |i| i['name'] == fqdn_eq_name }
-          admin_hosts << {
-            'name' => fqdn_eq_name,
-            'address' => eq_v['ip']
-          }
-        end
-        next
-      end
+      next if eq_v['kind'] == 'hpcswitch'
 
       snmp_hosts << fqdn_eq_name unless
         snmp_hosts.find { |i| i == fqdn_eq_name }
