@@ -307,6 +307,7 @@ def get_hardware(sites)
             'device' => v['device'],
             'size' => v['size'],
             'tech' => v['storage'],
+            'id' => v['id'],
             'interface' => v['interface'],
             'vendor' => v['vendor'],
             'model' => v['alt_model_name'] || v['model'],
@@ -321,6 +322,7 @@ def get_hardware(sites)
           has_reservable_disks ||= e['reservation']
           [
             e['count'] > 1 ? "\n*" : '',
+            e['id'] + ',',
             G5K.get_size(e['size'],'metric'),
             e['tech'],
             e['interface'],
@@ -328,7 +330,7 @@ def get_hardware(sites)
             e['model'],
             '(dev: /dev/' + e['device'] + (e['reservation'] ? '*' : '')  + ', by-path: ' + (e['path'] || 'MISSING') + ')',
             e['reservation'] ? '[[Disk_reservation|(reservable)]]' : '',
-            e['device'] == 'sda' ? '(primary disk)' : ''
+            e['id'] == 'disk0' ? '(primary disk)' : ''
           ].join(' ')
         }.join('<br />')
 
