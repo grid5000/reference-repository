@@ -15,6 +15,7 @@ class GPURef
     "Tesla T4" => 2560,
     "A100-PCIE-40GB" => 6912,
     "Quadro RTX 6000" => 4608,
+    "Radeon Instinct MI50 32GB" => 5120,
   }
 
   @@model2sname = {
