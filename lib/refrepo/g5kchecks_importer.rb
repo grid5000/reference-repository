@@ -1,5 +1,8 @@
 require 'refrepo/hash/hash'
 
+DISK_ORDER = %w(sda sdb sdc sdd sde sdf nvme0n1 nvme1n1)
+INTERFACE_ORDER = %w(eth0 eth1 eth2 eth3 eth4 eth5 eth6 ib0 ib1 ib2 ib3 ibs1 bmc eno1 eno2 eno1np0 eno2np1 ens4f0 ens4f1 ens5f0 ens5f1 ib0.8100)
+
 def g5kchecks_importer(sourcedir)
   puts "Importing source files from #{sourcedir} into input directory..."
   net_adapter_names_mapping = YAML::load_file(File.dirname(__FILE__) + "/net_names_mapping.yaml")
@@ -28,8 +31,10 @@ def g5kchecks_importer(sourcedir)
       end
 
       puts "Post-processing node uid = #{node_uid}"
-
-      hash["storage_devices"]  = hash["storage_devices"].sort_by_array(["sda", "sdb", "sdc", "sdd", "sde","sdf", "nvme0n1", "nvme1n1"])
+      unk_disks = hash['storage_devices'].map{|k,v| v['device']} - DISK_ORDER
+      raise "Unable to order disks: #{unk_disks.join(', ')}" unless unk_disks.empty?
+      hash["storage_devices"]  = hash["storage_devices"].sort_by_array(DISK_ORDER)
+      hash["storage_devices"].each_with_index{|k,idx| k[1]['id'] = "disk#{idx}"}
       hash["storage_devices"].each {|k, v| v.delete("device") }
 
       remaped_net_names = []
@@ -53,7 +58,9 @@ def g5kchecks_importer(sourcedir)
         hash['network_adapters'].delete(arr[0])
       }
 
-      hash["network_adapters"] = hash["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0", "ib1", "ib2", "ib3", "ibs1", "bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1", "ib0.8100"])
+      unk_interfaces = hash['network_adapters'].map(&:first) - INTERFACE_ORDER
+      raise "Unable to order network interfaces; #{unk_interfaces.join(', ')}" unless unk_interfaces.empty?
+      hash["network_adapters"] = hash["network_adapters"].sort_by_array(INTERFACE_ORDER)
 
       hash = {node_uid => hash}
 
