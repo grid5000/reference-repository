@@ -1,7 +1,7 @@
----
 nat:
   kind: virtual
-  alias: [access]
+  alias:
+  - access
   network_adapters:
     default:
       ip: 172.16.143.110
@@ -127,7 +127,8 @@ oar:
       ip: 172.17.143.104
 puppet6:
   kind: virtual
-  alias: [puppet]
+  alias:
+  - puppet
   network_adapters:
     default:
       ip: 172.16.143.103
@@ -179,4 +180,6 @@ guix:
       ip: 172.16.143.144
 kwollect:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.143.114}}
+  network_adapters:
+    default:
+      ip: 172.16.143.114

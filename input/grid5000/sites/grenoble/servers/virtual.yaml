@@ -1,87 +1,157 @@
----
 nat:
   kind: virtual
-  alias: [access]
-  network_adapters: {default: {ip: 172.16.31.100}}
+  alias:
+  - access
+  network_adapters:
+    default:
+      ip: 172.16.31.100
 mail:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.125}}
+  network_adapters:
+    default:
+      ip: 172.16.31.125
 fgrenoble:
   kind: virtual
-  alias: [frontend, oar-api]
-  network_adapters: {default: {ip: 172.16.31.101}, adm: {ip: 172.17.31.101}}
+  alias:
+  - frontend
+  - oar-api
+  network_adapters:
+    default:
+      ip: 172.16.31.101
+    adm:
+      ip: 172.17.31.101
 kadeploy:
   kind: virtual
-  alias: [kadeploy-server]
-  network_adapters: {default: {ip: 172.16.31.102}, adm: {ip: 172.17.31.102}}
+  alias:
+  - kadeploy-server
+  network_adapters:
+    default:
+      ip: 172.16.31.102
+    adm:
+      ip: 172.17.31.102
 mysql:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.103}}
+  network_adapters:
+    default:
+      ip: 172.16.31.103
 oar:
   kind: virtual
-  alias: [oar-server, oardb]
-  network_adapters: {default: {ip: 172.16.31.104}}
+  alias:
+  - oar-server
+  - oardb
+  network_adapters:
+    default:
+      ip: 172.16.31.104
 www:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.105}}
+  network_adapters:
+    default:
+      ip: 172.16.31.105
 api-proxy:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.106}}
+  network_adapters:
+    default:
+      ip: 172.16.31.106
 api-server-devel:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.108}}
+  network_adapters:
+    default:
+      ip: 172.16.31.108
 dhcp:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.109}, adm: {ip: 172.17.31.109}}
+  network_adapters:
+    default:
+      ip: 172.16.31.109
+    adm:
+      ip: 172.17.31.109
 dns:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.110}}
+  network_adapters:
+    default:
+      ip: 172.16.31.110
 ganglia:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.111}}
+  network_adapters:
+    default:
+      ip: 172.16.31.111
 ldap:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.112}}
+  network_adapters:
+    default:
+      ip: 172.16.31.112
 syslog:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.115}}
+  network_adapters:
+    default:
+      ip: 172.16.31.115
 puppet6:
   kind: virtual
-  alias: [puppet]
-  network_adapters: {default: {ip: 172.16.31.116}}
+  alias:
+  - puppet
+  network_adapters:
+    default:
+      ip: 172.16.31.116
 kavlan:
   kind: virtual
-  alias: [kavlan-dhcp]
-  network_adapters: {default: {ip: 172.16.31.118}}
+  alias:
+  - kavlan-dhcp
+  network_adapters:
+    default:
+      ip: 172.16.31.118
 kavlan-1:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.119}}
+  network_adapters:
+    default:
+      ip: 172.16.31.119
 kavlan-2:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.120}}
+  network_adapters:
+    default:
+      ip: 172.16.31.120
 kavlan-3:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.121}}
+  network_adapters:
+    default:
+      ip: 172.16.31.121
 api-server-v3:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.122}}
+  network_adapters:
+    default:
+      ip: 172.16.31.122
 conman:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.123}}
+  network_adapters:
+    default:
+      ip: 172.16.31.123
 kadeploy-devel:
   kind: virtual
-  alias: [kadeploy-server-devel, deploy-devel]
-  network_adapters: {default: {ip: 172.16.31.124}, adm: {ip: 172.17.31.124}}
+  alias:
+  - kadeploy-server-devel
+  - deploy-devel
+  network_adapters:
+    default:
+      ip: 172.16.31.124
+    adm:
+      ip: 172.17.31.124
 mu2:
   kind: virtual
-  alias: [digitalis]
-  network_adapters: {default: {ip: 172.16.31.152}, adm: {ip: 172.17.31.152}}
+  alias:
+  - digitalis
+  network_adapters:
+    default:
+      ip: 172.16.31.152
+    adm:
+      ip: 172.17.31.152
 supervision2:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.156}}
+  network_adapters:
+    default:
+      ip: 172.16.31.156
 kwollect:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.31.127}}
+  network_adapters:
+    default:
+      ip: 172.16.31.127
 guix:
   kind: virtual
   network_adapters:

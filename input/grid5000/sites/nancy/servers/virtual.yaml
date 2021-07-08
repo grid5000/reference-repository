@@ -1,104 +1,182 @@
----
 fnancy:
   kind: virtual
-  alias: [frontend, oar-api]
-  network_adapters: {default: {ip: 172.16.79.101}}
+  alias:
+  - frontend
+  - oar-api
+  network_adapters:
+    default:
+      ip: 172.16.79.101
 kadeploy:
   kind: virtual
-  alias: [kadeploy-server]
-  network_adapters: {default: {ip: 172.16.79.102}, adm: {ip: 172.17.79.102}}
+  alias:
+  - kadeploy-server
+  network_adapters:
+    default:
+      ip: 172.16.79.102
+    adm:
+      ip: 172.17.79.102
 mysql:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.103}}
+  network_adapters:
+    default:
+      ip: 172.16.79.103
 mail:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.104}}
+  network_adapters:
+    default:
+      ip: 172.16.79.104
 syslog:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.105}}
+  network_adapters:
+    default:
+      ip: 172.16.79.105
 dns:
   kind: virtual
-  alias: [ns]
-  network_adapters: {default: {ip: 172.16.79.106}}
+  alias:
+  - ns
+  network_adapters:
+    default:
+      ip: 172.16.79.106
 dhcp:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.107}, adm: {ip: 172.17.79.107}}
+  network_adapters:
+    default:
+      ip: 172.16.79.107
+    adm:
+      ip: 172.17.79.107
 apt-global:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.109}}
+  network_adapters:
+    default:
+      ip: 172.16.79.109
 puppet6:
   kind: virtual
-  alias: [puppet]
-  network_adapters: {default: {ip: 172.16.79.110}}
+  alias:
+  - puppet
+  network_adapters:
+    default:
+      ip: 172.16.79.110
 www:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.112}}
+  network_adapters:
+    default:
+      ip: 172.16.79.112
 oar:
   kind: virtual
-  alias: [oar-server, oardb]
-  network_adapters: {default: {ip: 172.16.79.114}}
+  alias:
+  - oar-server
+  - oardb
+  network_adapters:
+    default:
+      ip: 172.16.79.114
 ldap:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.115}}
+  network_adapters:
+    default:
+      ip: 172.16.79.115
 gitolite-global:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.116}}
+  network_adapters:
+    default:
+      ip: 172.16.79.116
 api-proxy:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.118}}
+  network_adapters:
+    default:
+      ip: 172.16.79.118
 kavlan:
   kind: virtual
-  alias: [kavlan-dhcp]
-  network_adapters: {default: {ip: 172.16.79.119}}
+  alias:
+  - kavlan-dhcp
+  network_adapters:
+    default:
+      ip: 172.16.79.119
 kavlan-1:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.120}}
+  network_adapters:
+    default:
+      ip: 172.16.79.120
 kavlan-2:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.121}}
+  network_adapters:
+    default:
+      ip: 172.16.79.121
 kavlan-3:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.122}}
+  network_adapters:
+    default:
+      ip: 172.16.79.122
 api-server-v3:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.123}}
+  network_adapters:
+    default:
+      ip: 172.16.79.123
 conman:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.124}, adm: {ip: 172.17.79.124}}
+  network_adapters:
+    default:
+      ip: 172.16.79.124
+    adm:
+      ip: 172.17.79.124
 kadeploy-devel:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.131}, adm: {ip: 172.17.79.131}}
+  network_adapters:
+    default:
+      ip: 172.16.79.131
+    adm:
+      ip: 172.17.79.131
 api-server-devel:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.133}}
+  network_adapters:
+    default:
+      ip: 172.16.79.133
 ganglia:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.142}}
+  network_adapters:
+    default:
+      ip: 172.16.79.142
 supervision2:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.145}}
+  network_adapters:
+    default:
+      ip: 172.16.79.145
 icinga:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.147}}
+  network_adapters:
+    default:
+      ip: 172.16.79.147
 jenkins:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.160}}
+  network_adapters:
+    default:
+      ip: 172.16.79.160
 jenkins-dev:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.148}}
+  network_adapters:
+    default:
+      ip: 172.16.79.148
 nat:
   kind: virtual
-  alias: [access]
-  network_adapters: {default: {ip: 172.16.79.200}}
+  alias:
+  - access
+  network_adapters:
+    default:
+      ip: 172.16.79.200
 frontend-dev:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.161}}
+  network_adapters:
+    default:
+      ip: 172.16.79.161
 ci-runner:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.162}}
+  network_adapters:
+    default:
+      ip: 172.16.79.162
 kwollect:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.79.134}}
+  network_adapters:
+    default:
+      ip: 172.16.79.134
 grcinq-puppet:
   kind: virtual
   network_adapters:

@@ -1,4 +1,3 @@
----
 api-proxy:
   kind: virtual
   network_adapters:
@@ -33,8 +32,8 @@ dns:
       ip: 172.16.207.101
 fnantes:
   alias:
-    - oar-api
-    - frontend
+  - oar-api
+  - frontend
   kind: virtual
   network_adapters:
     default:
@@ -46,7 +45,7 @@ ganglia:
       ip: 172.16.207.112
 kadeploy:
   alias:
-    - kadeploy-server
+  - kadeploy-server
   kind: virtual
   network_adapters:
     default:
@@ -55,7 +54,7 @@ kadeploy:
       ip: 172.17.207.108
 kadeploy-devel:
   alias:
-    - kadeploy-server-devel
+  - kadeploy-server-devel
   kind: virtual
   network_adapters:
     default:
@@ -101,15 +100,16 @@ mysql:
       ip: 172.16.207.119
 oar:
   alias:
-    - oardb
-    - oar-server
+  - oardb
+  - oar-server
   kind: virtual
   network_adapters:
     default:
       ip: 172.16.207.111
 puppet6:
   kind: virtual
-  alias: [puppet]
+  alias:
+  - puppet
   network_adapters:
     default:
       ip: 172.16.207.105
@@ -135,11 +135,16 @@ www-dev:
       ip: 172.16.207.113
 nat:
   kind: virtual
-  alias: [access]
-  network_adapters: {default: {ip: 172.16.207.200}}
+  alias:
+  - access
+  network_adapters:
+    default:
+      ip: 172.16.207.200
 kwollect:
   kind: virtual
-  network_adapters: {default: {ip: 172.16.207.126}}
+  network_adapters:
+    default:
+      ip: 172.16.207.126
 infra-k8s-master0:
   kind: virtual
   network_adapters:
