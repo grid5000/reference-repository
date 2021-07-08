@@ -192,6 +192,12 @@ def get_networks_records(site, key)
           new_record.address = a['ip']
           new_record.label = a['name']
           records << new_record
+          if a['ip6']
+            new_record_ipv6 = DNS::Zone::RR::AAAA.new
+            new_record_ipv6.address = a['ip6']
+            new_record_ipv6.label = a['name'] + '-ipv6'
+            records << new_record_ipv6
+          end
         end
         if a.is_a?(String) and !a.include?('.')  #Reject global aliases (See 7513)
           cname_record = DNS::Zone::RR::CNAME.new
