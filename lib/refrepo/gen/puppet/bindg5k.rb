@@ -590,9 +590,14 @@ def fetch_site_records(site, type)
     # PDUs
     site_records['pdus'] = get_pdus_records(site) unless site['pdus'].nil?
 
-    # Networks and laptops (same input format)
-    site_records['networks'] = get_networks_records(site, 'network_equipments') unless site['network_equipments'].nil?
+    # Laptops (same input format as networks)
     site_records['laptops'] = get_networks_records(site, 'laptops') unless site['laptops'].nil?
+  end
+
+  # Add L3 network devices to both internal and external DNS, but only keep IPv6 records for external DNS.
+  site_records['networks'] = get_networks_records(site, 'network_equipments') unless site['network_equipments'].nil?
+  if type == :external
+    site_records['networks'].select! { |record| record.is_a?(DNS::Zone::RR::AAAA) }
   end
 
   site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
