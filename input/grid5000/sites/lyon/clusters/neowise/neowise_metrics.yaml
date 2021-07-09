@@ -1,0 +1,835 @@
+---
+metrics:
+
+  - name: bmc_ambient_temp_celsius
+    description: Front node ambient temperature reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 64 #INLET_AIR_TEMP
+
+  - name: bmc_node_power_watt
+    description: Power consumption of node reported by BMC, in watt
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 87 #SYS_POWER
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_riser1"}
+    description: Current of 12V_RISER1 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 11 #12V_RISER1
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_riser2"}
+    description: Current of 12V_RISER2 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 12 #12V_RISER2
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_gpu0"}
+    description: Current of 12V_GPU0 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 13 #12V_GPU0
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_gpu1"}
+    description: Current of 12V_GPU1 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 14 #12V_GPU1
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_gpu2"}
+    description: Current of 12V_GPU2 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 16 #12V_GPU2
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_gpu3"}
+    description: Current of 12V_GPU3 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 15 #12V_GPU3
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_gpu4"}
+    description: Current of 12V_GPU4 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 18 #12V_GPU4
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_gpu5"}
+    description: Current of 12V_GPU5 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 17 #12V_GPU5
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_gpu6"}
+    description: Current of 12V_GPU6 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 19 #12V_GPU6
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_gpu7"}
+    description: Current of 12V_GPU7 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 20 #12V_GPU7
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_atx1"}
+    description: Current of 12V_ATX1 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 21 #12V_ATX1
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_atx2"}
+    description: Current of 12V_ATX2 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 22 #12V_ATX2
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_mb"}
+    description: Current of 12V_MB reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 23 #12V_MB
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_pdb"}
+    description: Current of 12V_PDB reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 24 #12V_PDB
+
+  - name: bmc_other_current_amp
+    labels: {"id": "12v_fan"}
+    description: Current of 12V_FAN reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 25 #12V_FAN
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_atx1"}
+    description: Voltage of P_12V_ATX1 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 26 #P_12V_ATX1
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_atx2"}
+    description: Voltage of P_12V_ATX2 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 27 #P_12V_ATX2
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_fan"}
+    description: Voltage of P_12V_FAN reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 28 #P_12V_FAN
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_gpu0"}
+    description: Voltage of P_12V_GPU0 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 29 #P_12V_GPU0
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_gpu1"}
+    description: Voltage of P_12V_GPU1 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 30 #P_12V_GPU1
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_gpu2"}
+    description: Voltage of P_12V_GPU2 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 32 #P_12V_GPU2
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_gpu3"}
+    description: Voltage of P_12V_GPU3 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 31 #P_12V_GPU3
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_gpu4"}
+    description: Voltage of P_12V_GPU4 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 34 #P_12V_GPU4
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_gpu5"}
+    description: Voltage of P_12V_GPU5 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 33 #P_12V_GPU5
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_gpu6"}
+    description: Voltage of P_12V_GPU6 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 35 #P_12V_GPU6
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_gpu7"}
+    description: Voltage of P_12V_GPU7 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 36 #P_12V_GPU7
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_mb"}
+    description: Voltage of P_12V_MB reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 37 #P_12V_MB
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_pdb"}
+    description: Voltage of P_12V_PDB reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 38 #P_12V_PDB
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_riser1"}
+    description: Voltage of P_12V_RISER1 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 39 #P_12V_RISER1
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v_riser2"}
+    description: Voltage of P_12V_RISER2 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 40 #P_12V_RISER2
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "gpu_fan12e"}
+    description: Speed of Fan GPU_FAN12 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 47 #GPU_FAN12E
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "gpu_fan56e"}
+    description: Speed of Fan GPU_FAN56 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 48 #GPU_FAN56E
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "gpu_fan12"}
+    description: Speed of Fan GPU_FAN12 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 41 #GPU_FAN12
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "gpu_fan34"}
+    description: Speed of Fan GPU_FAN34 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 45 #GPU_FAN34
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "gpu_fan56"}
+    description: Speed of Fan GPU_FAN56 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 42 #GPU_FAN56
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "gpu_fan78"}
+    description: Speed of Fan GPU_FAN78 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 46 #GPU_FAN78
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "sys_fan1"}
+    description: Speed of Fan SYS_FAN1 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 43 #SYS_FAN1
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "sys_fan2"}
+    description: Speed of Fan SYS_FAN2 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 44 #SYS_FAN2
+
+  - name: bmc_cpu_temp_celsius
+    labels: {"cpu": "0"}
+    description: Temperature of Cpu 0 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 50 #CPU0_TEMP
+
+  - name: bmc_dimm_temp_celsius
+    labels: {"dimm": "g0"}
+    description: Temperature of Dimm G0 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 51 #DIMMG0_TEMP
+
+  - name: bmc_dimm_temp_celsius
+    labels: {"dimm": "g1"}
+    description: Temperature of Dimm G1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 52 #DIMMG1_TEMP
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "cpu0_dts"}
+    description: Temperature of CPU0_DTS reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 53 #CPU0_DTS
+
+  - name: bmc_gpu_temp_celsius
+    labels: {"gpu": "0"}
+    description: Temperature of Gpu 0 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 54 #GPU0_PROC
+
+  - name: bmc_gpu_temp_celsius
+    labels: {"gpu": "1"}
+    description: Temperature of Gpu 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 55 #GPU1_PROC
+
+  - name: bmc_gpu_temp_celsius
+    labels: {"gpu": "2"}
+    description: Temperature of Gpu 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 56 #GPU2_PROC
+
+  - name: bmc_gpu_temp_celsius
+    labels: {"gpu": "3"}
+    description: Temperature of Gpu 3 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 57 #GPU3_PROC
+
+  - name: bmc_gpu_temp_celsius
+    labels: {"gpu": "4"}
+    description: Temperature of Gpu 4 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 58 #GPU4_PROC
+
+  - name: bmc_gpu_temp_celsius
+    labels: {"gpu": "5"}
+    description: Temperature of Gpu 5 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 59 #GPU5_PROC
+
+  - name: bmc_gpu_temp_celsius
+    labels: {"gpu": "6"}
+    description: Temperature of Gpu 6 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 60 #GPU6_PROC
+
+  - name: bmc_gpu_temp_celsius
+    labels: {"gpu": "7"}
+    description: Temperature of Gpu 7 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 61 #GPU7_PROC
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "m2_g0_amb_temp"}
+    description: Temperature of M2_G0_AMB_TEMP reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 62 #M2_G0_AMB_TEMP
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "hdd_temp"}
+    description: Temperature of HDD_TEMP reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 63 #HDD_TEMP
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "mb_temp1"}
+    description: Temperature of MB_TEMP1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 65 #MB_TEMP1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "mb_temp2"}
+    description: Temperature of MB_TEMP2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 66 #MB_TEMP2
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "nvmeg0_temp"}
+    description: Temperature of NVMeG0_TEMP reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 67 #NVMeG0_TEMP
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_12v"}
+    description: Voltage of P_12V reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 70 #P_12V
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_1v2"}
+    description: Voltage of P_1V2 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 71 #P_1V2
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p0_vdd_18_dual"}
+    description: Voltage of P0_VDD_18_DUAL reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 72 #P0_VDD_18_DUAL
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p0_vdd_18"}
+    description: Voltage of P0_VDD_18 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 73 #P0_VDD_18
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p0_vpp_abcd_sus"}
+    description: Voltage of P0_VPP_ABCD_SUS reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 74 #P0_VPP_ABCD_SUS
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p0_vpp_efgh_sus"}
+    description: Voltage of P0_VPP_EFGH_SUS reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 75 #P0_VPP_EFGH_SUS
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_3v3"}
+    description: Voltage of P_3V3 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 76 #P_3V3
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_5v"}
+    description: Voltage of P_5V reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 77 #P_5V
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_5v_stby"}
+    description: Voltage of P_5V_STBY reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 78 #P_5V_STBY
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p_vbat"}
+    description: Voltage of P_VBAT reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 79 #P_VBAT
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "soc_vddcr"}
+    description: Voltage of SOC_VDDCR reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 80 #SOC_VDDCR
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p0_vddcr_cpu"}
+    description: Voltage of P0_VDDCR_CPU reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 81 #P0_VDDCR_CPU
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "soc_vddcr_dual"}
+    description: Voltage of SOC_VDDCR_DUAL reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 82 #SOC_VDDCR_DUAL
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p0_vddio_abcd"}
+    description: Voltage of P0_VDDIO_ABCD reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 83 #P0_VDDIO_ABCD
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "p0_vddio_efgh"}
+    description: Voltage of P0_VDDIO_EFGH reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 84 #P0_VDDIO_EFGH
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "pdb_temp1"}
+    description: Temperature of PDB_TEMP1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 85 #PDB_TEMP1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "pdb_temp2"}
+    description: Temperature of PDB_TEMP2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 86 #PDB_TEMP2
+
+  - name: bmc_other_current_amp
+    labels: {"id": "vr_p0_iout"}
+    description: Current of VR_P0_IOUT reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 88 #VR_P0_IOUT
+
+  - name: bmc_other_current_amp
+    labels: {"id": "vr_dimmg0_iout"}
+    description: Current of VR_DIMMG0_IOUT reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 89 #VR_DIMMG0_IOUT
+
+  - name: bmc_other_current_amp
+    labels: {"id": "vr_dimmg1_iout"}
+    description: Current of VR_DIMMG1_IOUT reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 90 #VR_DIMMG1_IOUT
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "vr_p0_temp"}
+    description: Temperature of VR_P0_TEMP reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 91 #VR_P0_TEMP
+
+  - name: bmc_other_temp_celsius
+    labels: {"dimm": "vr_dimmg0"}
+    description: Temperature of Dimm G0 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 92 #VR_DIMMG0_TEMP
+
+  - name: bmc_other_temp_celsius
+    labels: {"dimm": "vr_dimmg1"}
+    description: Temperature of Dimm G1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 93 #VR_DIMMG1_TEMP
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "vr_p0_vin"}
+    description: Voltage of VR_P0_VIN reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 94 #VR_P0_VIN
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "vr_dimmg0_vin"}
+    description: Voltage of VR_DIMMG0_VIN reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 95 #VR_DIMMG0_VIN
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "vr_dimmg1_vin"}
+    description: Voltage of VR_DIMMG1_VIN reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 96 #VR_DIMMG1_VIN
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "vr_p0_vout"}
+    description: Voltage of VR_P0_VOUT reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 97 #VR_P0_VOUT
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "vr_dimmg0_vout"}
+    description: Voltage of VR_DIMMG0_VOUT reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 98 #VR_DIMMG0_VOUT
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "vr_dimmg1_vout"}
+    description: Voltage of VR_DIMMG1_VOUT reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 99 #VR_DIMMG1_VOUT
+
+  - name: prom_default_metrics
+    description: Default subset of metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
+      id:
+        - node_boot_time_seconds
+        - node_cpu_frequency_hertz
+        - node_cpu_seconds_total
+        - node_filesystem_free_bytes
+        - node_filesystem_size_bytes
+        - node_load1
+        - node_load15
+        - node_load5
+        - node_memory_Buffers_bytes
+        - node_memory_Cached_bytes
+        - node_memory_MemAvailable_bytes
+        - node_memory_MemFree_bytes
+        - node_memory_MemTotal_bytes
+        - node_memory_Shmem_bytes
+        - node_memory_SwapFree_bytes
+        - node_memory_SwapTotal_bytes
+        - node_network_receive_bytes_total
+        - node_network_receive_packets_total
+        - node_network_transmit_bytes_total
+        - node_network_transmit_packets_total
+        - node_procs_blocked
+        - node_procs_running
+        - kwollect_custom
+
+  - name: prom_all_metrics
+    description: All metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
+
+  - name: prom_nvgpu_default_metrics
+    description: Default subset of metrics from Prometheus Nvidia DCGM Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9400
+      id:
+        - DCGM_FI_DEV_SM_CLOCK
+        - DCGM_FI_DEV_MEM_CLOCK
+        - DCGM_FI_DEV_GPU_TEMP
+        - DCGM_FI_DEV_POWER_USAGE
+        - DCGM_FI_DEV_GPU_UTIL
+        - DCGM_FI_DEV_MEM_COPY_UTIL
+
+  - name: prom_nvgpu_all_metrics
+    description: All metrics from Prometheus Nvidia DCGM Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9400
