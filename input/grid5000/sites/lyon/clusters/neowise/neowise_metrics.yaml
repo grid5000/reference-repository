@@ -501,14 +501,15 @@ metrics:
       protocol: ipmisensor
       id: 66 #MB_TEMP2
 
-  - name: bmc_other_temp_celsius
-    labels: {"id": "nvmeg0_temp"}
-    description: Temperature of NVMeG0_TEMP reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 67 #NVMeG0_TEMP
+# Commented as value returned is always 'N/A'
+  # - name: bmc_other_temp_celsius
+  #   labels: {"id": "nvmeg0_temp"}
+  #   description: Temperature of NVMeG0_TEMP reported by BMC, in celsius
+  #   period: 0
+  #   optional_period: 5000
+  #   source:
+  #     protocol: ipmisensor
+  #     id: 67 #NVMeG0_TEMP
 
   - name: bmc_other_voltage_volt
     labels: {"id": "p_12v"}
