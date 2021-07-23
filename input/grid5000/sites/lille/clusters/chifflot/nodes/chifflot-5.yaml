@@ -50,6 +50,8 @@ chifflot-5:
       model: Ethernet Controller XXV710 for 25GbE SFP28
       name: ens5f0
       rate: 25000000000
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth1:
       driver: i40e
@@ -60,6 +62,8 @@ chifflot-5:
       model: Ethernet Controller XXV710 for 25GbE SFP28
       name: ens5f1
       rate: 25000000000
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth2:
       driver: igb
@@ -69,6 +73,8 @@ chifflot-5:
       management: false
       model: I350 Gigabit Network Connection
       name: eno1
+      sriov: true
+      sriov_totalvfs: 7
       vendor: Intel
     eth3:
       driver: igb
@@ -78,6 +84,8 @@ chifflot-5:
       management: false
       model: I350 Gigabit Network Connection
       name: eno2
+      sriov: true
+      sriov_totalvfs: 7
       vendor: Intel
     eth4:
       driver: igb
@@ -87,6 +95,8 @@ chifflot-5:
       management: false
       model: I350 Gigabit Network Connection
       name: eno3
+      sriov: true
+      sriov_totalvfs: 7
       vendor: Intel
     eth5:
       driver: igb
@@ -96,6 +106,8 @@ chifflot-5:
       management: false
       model: I350 Gigabit Network Connection
       name: eno4
+      sriov: true
+      sriov_totalvfs: 7
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle

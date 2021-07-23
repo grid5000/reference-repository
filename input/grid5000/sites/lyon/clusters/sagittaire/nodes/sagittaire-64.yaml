@@ -28,6 +28,8 @@ sagittaire-64:
       mac: 00:09:3d:12:31:7c
       management: false
       mounted: false
+      sriov: false
+      sriov_totalvfs: 0
     eth1:
       driver: tg3
       interface: Ethernet
@@ -36,6 +38,8 @@ sagittaire-64:
       management: false
       mounted: true
       rate: 1000000000
+      sriov: false
+      sriov_totalvfs: 0
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -48,9 +52,9 @@ sagittaire-64:
     microcode: '0x3a'
   storage_devices:
     sda:
+      id: disk0
       model: MAT3073NC
       rev: 104.0
-      id: disk0
       size: 73543163904
   supported_job_types:
     virtual: false

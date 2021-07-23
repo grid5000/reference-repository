@@ -28,6 +28,8 @@ sagittaire-8:
       mac: 00:09:3d:12:6b:0e
       management: false
       mounted: false
+      sriov: false
+      sriov_totalvfs: 0
     eth1:
       driver: tg3
       interface: Ethernet
@@ -36,6 +38,8 @@ sagittaire-8:
       management: false
       mounted: true
       rate: 1000000000
+      sriov: false
+      sriov_totalvfs: 0
       switch_port: '1:8'
   operating_system:
     cstate_driver: none
@@ -49,9 +53,9 @@ sagittaire-8:
     microcode: '0x3a'
   storage_devices:
     sda:
+      id: disk0
       model: ST373207LC
       rev: 2
-      id: disk0
       size: 73407868928
   supported_job_types:
     virtual: false

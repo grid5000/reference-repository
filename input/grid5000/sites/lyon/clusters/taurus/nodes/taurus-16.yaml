@@ -31,6 +31,8 @@ taurus-16:
       model: Ethernet 10G 2P X520 Adapter
       name: enp68s0f0
       rate: 10000000000
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Intel
     eth1:
       driver: ixgbe
@@ -40,6 +42,8 @@ taurus-16:
       management: false
       model: Ethernet 10G 2P X520 Adapter
       name: enp68s0f1
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Intel
     eth2:
       driver: igb
@@ -49,6 +53,8 @@ taurus-16:
       management: false
       model: I350 Gigabit Network Connection
       name: eno1
+      sriov: true
+      sriov_totalvfs: 7
       vendor: Intel
     eth3:
       driver: igb
@@ -58,6 +64,8 @@ taurus-16:
       management: false
       model: I350 Gigabit Network Connection
       name: eno2
+      sriov: true
+      sriov_totalvfs: 7
       vendor: Intel
     eth4:
       driver: igb
@@ -67,6 +75,8 @@ taurus-16:
       management: false
       model: I350 Gigabit Network Connection
       name: eno3
+      sriov: true
+      sriov_totalvfs: 7
       vendor: Intel
     eth5:
       driver: igb
@@ -76,6 +86,8 @@ taurus-16:
       management: false
       model: I350 Gigabit Network Connection
       name: eno4
+      sriov: true
+      sriov_totalvfs: 7
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle

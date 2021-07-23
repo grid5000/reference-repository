@@ -33,6 +33,8 @@ grisou-13:
       model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       name: eno1
       rate: 10000000000
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Intel
     eth1:
       driver: ixgbe
@@ -43,6 +45,8 @@ grisou-13:
       model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       name: eno2
       rate: 10000000000
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Intel
     eth2:
       driver: ixgbe
@@ -53,6 +57,8 @@ grisou-13:
       model: Ethernet 10G 2P X520 Adapter
       name: enp4s0f0
       rate: 10000000000
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Intel
     eth3:
       driver: ixgbe
@@ -63,6 +69,8 @@ grisou-13:
       model: Ethernet 10G 2P X520 Adapter
       name: enp4s0f1
       rate: 10000000000
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Intel
     eth4:
       driver: igb
@@ -73,6 +81,8 @@ grisou-13:
       model: I350 Gigabit Network Connection
       name: eno3
       rate: 1000000000
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth5:
       driver: igb
@@ -82,6 +92,8 @@ grisou-13:
       management: false
       model: I350 Gigabit Network Connection
       name: eno4
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle

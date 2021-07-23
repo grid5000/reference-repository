@@ -33,6 +33,8 @@ paravance-27:
       model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       name: eno1
       rate: 10000000000
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Intel
     eth1:
       driver: ixgbe
@@ -43,6 +45,8 @@ paravance-27:
       model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
       name: eno2
       rate: 10000000000
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Intel
     eth2:
       driver: igb
@@ -52,6 +56,8 @@ paravance-27:
       management: false
       model: I350 Gigabit Network Connection
       name: eno3
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth3:
       driver: igb
@@ -61,6 +67,8 @@ paravance-27:
       management: false
       model: I350 Gigabit Network Connection
       name: eno4
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
