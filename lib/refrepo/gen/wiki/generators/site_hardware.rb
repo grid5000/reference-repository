@@ -373,6 +373,7 @@ def get_hardware(sites)
             'rate' => v['rate'],
             'interface' => v['interface'],
             'driver' => v['driver'],
+            'sriov' => v['sriov'],
             'unwired' => v['enabled'] == false,
             'unavailable_for_experiment' => v['mountable'] == false,
             'no_kavlan' => (v['interface'] == 'Ethernet' &&
@@ -402,6 +403,7 @@ def get_hardware(sites)
             desc.append('model: '+ e['model'])
           end
           desc.append('driver: ' + e['driver']) if e['driver']
+          desc.append('SR-IOV enabled') if e['sriov'] and not e['unavailable_for_experiment']
           # Generate final string and then adjust
           s = desc.join(', ')
           if e['no_kavlan']
