@@ -513,6 +513,7 @@ class G5KHardwareGenerator < WikiGenerator
 
             interfaces = {}
             interfaces['details'] = node_interfaces.map{ |v| v['device'] + (v['name'].nil? ? '' : '/' + v['name']) + " (#{v['sriov_totalvfs']} VFs)" }.sort.join(', ')
+            interfaces['vfs_sum'] = node_interfaces.map{ |v| v['sriov_totalvfs'] }.sum
             interface_add(network_interfaces, node_uid, interfaces) if node_interfaces.count > 0
           end
         }
@@ -523,7 +524,7 @@ class G5KHardwareGenerator < WikiGenerator
             "[[#{site_uid.capitalize}:Network|#{site_uid.capitalize}]]",
             "[[#{site_uid.capitalize}:Hardware##{cluster_uid}" + "|#{cluster_uid}" + (network_interfaces.size==1 ? '' : '-' + G5K.nodeset(num)) + "]]",
             num.count,
-            interfaces['details']
+            "data-sort-value=\"#{interfaces['vfs_sum']}\"|#{interfaces['details']}"
           ]
         }
       }
