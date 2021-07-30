@@ -465,7 +465,7 @@ class G5KHardwareGenerator < WikiGenerator
             interfaces['25g_count'] = node_interfaces.select { |v| v['rate'] == 25_000_000_000 }.count
             interfaces['10g_count'] = node_interfaces.select { |v| v['rate'] == 10_000_000_000 }.count
             interfaces['1g_count'] = node_interfaces.select { |v| v['rate'] == 1_000_000_000 }.count
-            interfaces['details'] = node_interfaces.map{ |v| v['device'] + (v['name'].nil? ? '' : '/' + v['name'])  + ' (' + G5K.get_rate(v['rate']) + ')' }.sort.join(', ')
+            interfaces['details'] = node_interfaces.map{ |v| v['name'] + ' (' + G5K.get_rate(v['rate']) + ')' }.sort.join(', ')
             queues = cluster_hash['queues'] - ['admin', 'default', 'testing']
             interfaces['queues'] = (queues.nil? || (queues.empty? ? '' : queues[0] + G5K.pluralize(queues.count, ' queue')))
             interface_add(network_interfaces, node_uid, interfaces) if node_interfaces.count > 1
@@ -512,7 +512,7 @@ class G5KHardwareGenerator < WikiGenerator
             }
 
             interfaces = {}
-            interfaces['details'] = node_interfaces.map{ |v| v['device'] + (v['name'].nil? ? '' : '/' + v['name']) + " (#{v['sriov_totalvfs']} VFs)" }.sort.join(', ')
+            interfaces['details'] = node_interfaces.map{ |v| v['name'] + " (#{v['sriov_totalvfs']} VFs)" }.sort.join(', ')
             interfaces['vfs_sum'] = node_interfaces.map{ |v| v['sriov_totalvfs'] }.sum
             interface_add(network_interfaces, node_uid, interfaces) if node_interfaces.count > 0
           end
