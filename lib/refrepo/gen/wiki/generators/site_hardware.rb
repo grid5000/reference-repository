@@ -344,6 +344,7 @@ def get_hardware(sites)
         }.map{|v| {
             'rate' => v['rate'],
             'interface' => v['interface'],
+            'sriov' => v['sriov'],
             'used' => (v['enabled'] and (v['mounted'] or v['mountable']))
           }
         }
@@ -356,6 +357,7 @@ def get_hardware(sites)
         }.map{ |e|
           get_network_info(e, false)
         }.join('+&nbsp;')
+        hard['used_networks'] += ', SR-IOV available' if network.any? { |e| e['sriov'] }
 
         hard['network_throughput'] = network.select { |e|
           e['used'] == true
