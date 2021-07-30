@@ -284,6 +284,9 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Nodes with several Ethernet interfaces ==\n"
     generated_content +=  generate_interfaces
 
+    generated_content += "\n== Nodes with SR-IOV support ==\n"
+    generated_content +=  generate_sriov_interfaces
+
     generated_content += "\n== Network interface models ==\n"
     table_columns = ['Type', 'Driver', 'Model'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
@@ -490,6 +493,48 @@ class G5KHardwareGenerator < WikiGenerator
 
     table_options = 'class="wikitable sortable" style="text-align: center;"'
     table_columns = ["Site", "Cluster", "Nodes", "25G interfaces", "10G interfaces", "1G interfaces", "Interfaces (throughput)"]
+    MW.generate_table(table_options, table_columns, table_data)
+  end
+
+  def generate_sriov_interfaces
+    table_data = []
+    @global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
+      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
+        network_interfaces = {}
+        cluster_hash.fetch('nodes').sort.to_h.each { |node_uid, node_hash|
+          next if node_hash['status'] == 'retired'
+          if node_hash['network_adapters']
+            node_interfaces = node_hash['network_adapters'].select{ |v|
+              v['sriov'] and
+              v['enabled'] == true and
+              (v['mounted'] == true or v['mountable'] == true) and
+              v['management'] == false
+            }
+
+            interfaces = {}
+            interfaces['details'] = node_interfaces.map{ |v| v['device'] + (v['name'].nil? ? '' : '/' + v['name']) + " (#{v['sriov_totalvfs']} VFs)" }.sort.join(', ')
+            interface_add(network_interfaces, node_uid, interfaces) if node_interfaces.count > 0
+          end
+        }
+
+        # One line for each group of nodes with the same interfaces
+        network_interfaces.sort.to_h.each { |num, interfaces|
+          table_data << [
+            "[[#{site_uid.capitalize}:Network|#{site_uid.capitalize}]]",
+            "[[#{site_uid.capitalize}:Hardware##{cluster_uid}" + "|#{cluster_uid}" + (network_interfaces.size==1 ? '' : '-' + G5K.nodeset(num)) + "]]",
+            num.count,
+            interfaces['details']
+          ]
+        }
+      }
+    }
+    # Sort by site and cluster name
+    table_data.sort_by! { |row|
+      [row[0], row[1]]
+    }
+
+    table_options = 'class="wikitable sortable" style="text-align: center;"'
+    table_columns = ["Site", "Cluster", "Nodes", "Interfaces (max number of Virtual Functions)"]
     MW.generate_table(table_options, table_columns, table_data)
   end
 
