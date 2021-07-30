@@ -161,13 +161,17 @@ class G5KHardwareGenerator < WikiGenerator
                   sort: v['interface']
                 },
                 {
+                  text: v['driver'], sort: v['driver']
+                },
+                {
                   text: t, sort: t
                 }
               ]
             }.uniq
 
             net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
-            net_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
+            # Sort by interface type (eth or IB) and then by driver
+            net_models.sort_by { |k, v|  [k.first[:sort], k[1][:sort]] }.each { |k, v|
               init(data, 'net_models', k)
               data['net_models'][k][site_uid] += v
             }
@@ -281,7 +285,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content +=  generate_interfaces
 
     generated_content += "\n== Network interface models ==\n"
-    table_columns = ['Type', 'Model'] + sites + ['Cards total']
+    table_columns = ['Type', 'Driver', 'Model'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
 
     generated_content += "\n= Storage ="
