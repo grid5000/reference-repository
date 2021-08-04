@@ -344,6 +344,7 @@ def get_hardware(sites)
         }.map{|v| {
             'rate' => v['rate'],
             'interface' => v['interface'],
+            'sriov' => v['sriov'],
             'used' => (v['enabled'] and (v['mounted'] or v['mountable']))
           }
         }
@@ -356,6 +357,7 @@ def get_hardware(sites)
         }.map{ |e|
           get_network_info(e, false)
         }.join('+&nbsp;')
+        hard['used_networks'] += ', SR-IOV available' if network.any? { |e| e['sriov'] }
 
         hard['network_throughput'] = network.select { |e|
           e['used'] == true
@@ -373,6 +375,7 @@ def get_hardware(sites)
             'rate' => v['rate'],
             'interface' => v['interface'],
             'driver' => v['driver'],
+            'sriov' => v['sriov'],
             'unwired' => v['enabled'] == false,
             'unavailable_for_experiment' => v['mountable'] == false,
             'no_kavlan' => (v['interface'] == 'Ethernet' &&
@@ -386,33 +389,34 @@ def get_hardware(sites)
         }
         nic_c = 0
         hard['network_description'] = network_description.map do |e|
-          s  = e['count'] > 1 ? "\n* " : ''
-          s += e['unavailable_for_experiment'] ? '<span style="color:grey">' : ''
+          desc = []
           if e['name'].nil? or e['name'] == e['device']
-            s += e['device']
+            desc.append(e['device'])
           else
-            s +=  e['device'] + "/" + e['name']
+            desc.append(e['device'] + "/" + e['name'])
           end
-          s += ', '
-          s += e['interface']
-          s += ', '
+          desc.append(e['interface'])
+
           if !(e['unwired'] and e['unavailable_for_experiment'])
-            s += 'configured rate: ' + (e['unwired'] ? 'n/c' : G5K.get_rate(e['rate']))
-            s += ', '
+            desc.append('configured rate: ' + (e['unwired'] ? 'n/c' : G5K.get_rate(e['rate'])))
           end
           if !(e['model'] == 'N/A N/A' and e['unavailable_for_experiment']) # don't include interface model if not available
             e['model'] = 'N/A' if e['model'] == 'N/A N/A'
-            s += 'model: '+ e['model'] + ', '
+            desc.append('model: '+ e['model'])
           end
-          s +=  'driver: ' + e['driver'] if e['driver']
-          if e['unavailable_for_experiment']
-            s += ' - unavailable for experiment'
+          desc.append('driver: ' + e['driver']) if e['driver']
+          desc.append('SR-IOV enabled') if e['sriov'] and not e['unavailable_for_experiment']
+          # Generate final string and then adjust
+          s = desc.join(', ')
+          if e['no_kavlan']
+            s += ' - no KaVLAN'
+          elsif e['unavailable_for_experiment']
+            s = '<span style="color:grey">' + s + ' - unavailable for experiment</span>'
           elsif e['device'] =~ /eth/
-            s += ' [[Advanced_KaVLAN#A_simple_multi_NICs_example|(multi NICs example)]]' if !nic_c.zero? and not e.fetch('no_kavlan')
+            s += ' [[Advanced_KaVLAN#A_simple_multi_NICs_example|(multi NICs example)]]' if !nic_c.zero?
             nic_c += 1
           end
-          s += ' - no KaVLAN' if e['no_kavlan']
-          s +=  e['unavailable_for_experiment'] ? '</span>' : ''
+          s = "\n* " + s
           s
         end.join('<br />')
 
