@@ -8,10 +8,10 @@ gros-2:
     nb_threads: 36
     platform_type: x86_64
   bios:
-    release_date: '08/27/2020'
+    release_date: 004/21/2021
     vendor: Dell Inc.
-    version: 2.8.2
-  bmc_version: 4.22.00.53
+    version: 2.11.2
+  bmc_version: 5.00.00.00
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge R640
@@ -25,7 +25,7 @@ gros-2:
       management: true
     eth0:
       driver: mlx5_core
-      firmware_version: 14.27.6122 (DEL2810000034)
+      firmware_version: 14.28.4512 (DEL2810000034)
       interface: Ethernet
       ip: 172.16.66.2
       mac: 98:03:9b:b0:65:b2
@@ -33,20 +33,20 @@ gros-2:
       model: MT27710 Family [ConnectX-4 Lx]
       name: eno1
       rate: 25000000000
-      sriov: false
-      sriov_totalvfs: 0
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Mellanox Technologies
     eth1:
       driver: mlx5_core
-      firmware_version: 14.27.6122 (DEL2810000034)
+      firmware_version: 14.28.4512 (DEL2810000034)
       interface: Ethernet
       mac: 98:03:9b:b0:65:b3
       management: false
       model: MT27710 Family [ConnectX-4 Lx]
       name: eno2
       rate: 25000000000
-      sriov: false
-      sriov_totalvfs: 0
+      sriov: true
+      sriov_totalvfs: 63
       vendor: Mellanox Technologies
   operating_system:
     cstate_driver: intel_idle
@@ -71,7 +71,7 @@ gros-2:
     sda:
       by_id: "/dev/disk/by-id/wwn-0x500a075121e45b85"
       by_path: "/dev/disk/by-path/pci-0000:17:00.0-scsi-0:0:0:0"
-      firmware_version: D1DF003
+      firmware_version: D1DF005
       id: disk0
       model: MTFDDAK480TDN
       size: 480103981056
@@ -79,7 +79,7 @@ gros-2:
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x500a075121a49089"
       by_path: "/dev/disk/by-path/pci-0000:17:00.0-scsi-0:0:1:0"
-      firmware_version: D1DF003
+      firmware_version: D1DF005
       id: disk1
       model: MTFDDAK960TDN
       size: 960197124096
