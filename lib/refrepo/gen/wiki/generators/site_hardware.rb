@@ -391,21 +391,21 @@ def get_hardware(sites)
         hard['network_description'] = network_description.map do |e|
           desc = []
           if e['name'].nil? or e['name'] == e['device']
-            desc.append(e['device'])
+            desc << e['device']
           else
-            desc.append(e['device'] + "/" + e['name'])
+            desc << e['device'] + "/" + e['name']
           end
-          desc.append(e['interface'])
+          desc << e['interface']
 
           if !(e['unwired'] and e['unavailable_for_experiment'])
-            desc.append('configured rate: ' + (e['unwired'] ? 'n/c' : G5K.get_rate(e['rate'])))
+            desc << 'configured rate: ' + (e['unwired'] ? 'n/c' : G5K.get_rate(e['rate']))
           end
           if !(e['model'] == 'N/A N/A' and e['unavailable_for_experiment']) # don't include interface model if not available
             e['model'] = 'N/A' if e['model'] == 'N/A N/A'
-            desc.append('model: '+ e['model'])
+            desc << 'model: '+ e['model']
           end
-          desc.append('driver: ' + e['driver']) if e['driver']
-          desc.append('SR-IOV enabled') if e['sriov'] and not e['unavailable_for_experiment']
+          desc << 'driver: ' + e['driver'] if e['driver']
+          desc << 'SR-IOV enabled' if e['sriov'] and not e['unavailable_for_experiment']
           # Generate final string and then adjust
           s = desc.join(', ')
           if e['no_kavlan']
