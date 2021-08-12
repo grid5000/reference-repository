@@ -10,7 +10,6 @@
 #     - +network_adapters.myri0
 #
 # nancy:
-#   graphique: model differs on graphique-1
 #   grisou-50+: 2 IB interfaces
 #   grisou-49+: Doesn't have eth4 link
 #   griffon-[1-91]: missing some serial
@@ -51,7 +50,7 @@ nancy:
     - ~gpu_devices.nvidia3.memory
     - ~gpu_devices.nvidia3.model
 
-  graphique-[1-2]:
+  graphique-2:
     - ~gpu.gpu_model
     - ~gpu.gpu_cores
     - ~gpu_devices.nvidia0.vbios_version
