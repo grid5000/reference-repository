@@ -8,10 +8,10 @@ chifflot-6:
     nb_threads: 48
     platform_type: x86_64
   bios:
-    release_date: 11/26/2019
+    release_date: 004/21/2021
     vendor: Dell Inc.
-    version: 2.4.8
-  bmc_version: 4.00.00.00
+    version: 2.11.2
+  bmc_version: 5.00.00.00
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge R740
@@ -42,7 +42,7 @@ chifflot-6:
       management: true
     eth0:
       driver: i40e
-      firmware_version: 7.10 0x800051ac 19.0.12
+      firmware_version: 8.15 0x800096ca 20.0.17
       interface: Ethernet
       ip: 172.16.36.6
       mac: 3c:fd:fe:c1:65:a0
@@ -55,7 +55,7 @@ chifflot-6:
       vendor: Intel
     eth1:
       driver: i40e
-      firmware_version: 7.10 0x800051ac 19.0.12
+      firmware_version: 8.15 0x800096ca 20.0.17
       interface: Ethernet
       mac: 3c:fd:fe:c1:65:a1
       management: false
@@ -67,47 +67,47 @@ chifflot-6:
       vendor: Intel
     eth2:
       driver: igb
-      firmware_version: 1.67, 0x80000faa, 19.0.12
+      firmware_version: 1.67, 0x80001103, 20.0.16
       interface: Ethernet
       mac: e4:43:4b:00:24:cc
       management: false
       model: I350 Gigabit Network Connection
       name: eno1
-      sriov: true
-      sriov_totalvfs: 7
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth3:
       driver: igb
-      firmware_version: 1.67, 0x80000faa, 19.0.12
+      firmware_version: 1.67, 0x80001103, 20.0.16
       interface: Ethernet
       mac: e4:43:4b:00:24:cd
       management: false
       model: I350 Gigabit Network Connection
       name: eno2
-      sriov: true
-      sriov_totalvfs: 7
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth4:
       driver: igb
-      firmware_version: 1.67, 0x80000faa, 19.0.12
+      firmware_version: 1.67, 0x80001103, 20.0.16
       interface: Ethernet
       mac: e4:43:4b:00:24:ce
       management: false
       model: I350 Gigabit Network Connection
       name: eno3
-      sriov: true
-      sriov_totalvfs: 7
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth5:
       driver: igb
-      firmware_version: 1.67, 0x80000faa, 19.0.12
+      firmware_version: 1.67, 0x80001103, 20.0.16
       interface: Ethernet
       mac: e4:43:4b:00:24:cf
       management: false
       model: I350 Gigabit Network Connection
       name: eno4
-      sriov: true
-      sriov_totalvfs: 7
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
@@ -140,7 +140,7 @@ chifflot-6:
     sdb:
       by_id: "/dev/disk/by-id/wwn-0x55cd2e414f2b52e6"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:1:0"
-      firmware_version: SCV1DL58
+      firmware_version: SCV1DL5C
       id: disk1
       model: SSDSC2KG480G7R
       size: 480103981056
