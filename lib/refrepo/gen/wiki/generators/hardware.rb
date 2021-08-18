@@ -513,7 +513,7 @@ class G5KHardwareGenerator < WikiGenerator
 
             interfaces = {}
             interfaces['details'] = node_interfaces.map{ |v| v['name'] + " (#{v['sriov_totalvfs']} VFs)" }.sort.join(', ')
-            interfaces['vfs_sum'] = node_interfaces.map{ |v| v['sriov_totalvfs'] }.sum
+            interfaces['vfs_sum'] = node_interfaces.map{ |v| v['sriov_totalvfs'] }.inject(0,:+)
             interface_add(network_interfaces, node_uid, interfaces) if node_interfaces.count > 0
           end
         }
