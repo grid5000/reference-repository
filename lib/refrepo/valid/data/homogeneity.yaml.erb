@@ -89,6 +89,11 @@ nancy:
     - ~network_adapters.eth2.name
     - ~network_adapters.eth3.name
     - +network_adapters.ib0
+  gros-41:
+    - +pdu[1]
+  gros-77:
+    - -pdu[1]
+    - +pdu
 nantes:
   econome-[1-22]:
     - +network_adapters.eth2.rate
