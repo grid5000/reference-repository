@@ -450,7 +450,26 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
                'NO'
              end
 
-  h['wattmeter'] = cluster.fetch('metrics', []).any?{|metric| metric['name'].match(/wattmetre_power_watt|pdu_outlet_power_watt/)} ? "YES" : "NO"
+  cluster_metrics = cluster.fetch('metrics', [])
+  is_wattmetre_metric = lambda {|metric| metric['name'].match(/wattmetre_power_watt|pdu_outlet_power_watt/)}
+  nb_of_cluster_wattmetre_metrics = cluster_metrics.select(&is_wattmetre_metric).length
+
+  # Check wattmetre at the cluster level
+  h['wattmeter'] = cluster_metrics.any?(&is_wattmetre_metric) ? "YES" : "NO"
+
+  if h['wattmeter'] == 'YES'
+    # Still need to check if wattmetre is actually valid for this node
+    if node.key?('pdu')
+      # Basically, we want to disable the wattmeter proprety if the node has not all the declared cluster wattmeter possibilities activated
+      # ce code ne desactive pas un gemini/yeti qui a 1 entree pdu desactivee sur 2 (2 entree pdu wattmetre pour une metrique wattmetre)
+      # mais bon, y a t'il une raison de faire cela dans le yaml ?
+      h['wattmeter'] = node['pdu'].length >= nb_of_cluster_wattmetre_metrics ? "YES" : "NO"
+    else
+      # this case can happen when there is nothing available on the node (may happen if a port of a pdu is dysfunctionning)
+      # si on desactive tous les pdu: wattmetre pour un gemini/yeti, alors on entrerait ce cas
+      h['wattmeter'] = 'NO'
+    end
+  end
 
   h['cluster_priority'] = (cluster['priority'] || Time.parse(cluster['created_at'].to_s).strftime('%Y%m')).to_i
 
