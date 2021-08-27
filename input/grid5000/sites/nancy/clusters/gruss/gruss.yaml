@@ -1,0 +1,67 @@
+model: Dell PowerEdge R7525
+created_at: 2021-08-26
+kavlan: false
+exotic: false
+queues:
+- admin
+- testing
+nodes:
+  gruss-[1-4]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+    processor:
+      microarchitecture: Zen
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+    storage_devices:
+      sda:
+        interface: SAS
+        storage: SSD
+        model: PERC H730P Adp
+  gruss-1:
+    network_adapters:
+      bmc:
+        mac: B0:7B:25:DA:E2:B8
+        ip: 172.17.65.1
+      eth0:
+        mac: 24:6E:96:2C:97:D0
+        ip: 172.16.65.1
+  gruss-2:
+    network_adapters:
+      bmc:
+        mac: B0:7B:25:DF:DD:08
+        ip: 172.17.65.2
+      eth0:
+        mac: 24:6E:96:2C:97:D1
+        ip: 172.16.65.2
+  gruss-3:
+    network_adapters:
+      bmc:
+        mac: B0:7B:25:DF:DB:A0
+        ip: 172.17.65.3
+      eth0:
+        mac: 24:6E:96:2C:97:D2
+        ip: 172.16.65.3
+  gruss-4:
+    network_adapters:
+      bmc:
+        mac: B0:7B:25:DF:E0:EC
+        ip: 172.17.65.4
+      eth0:
+        mac: 24:6E:96:2C:97:D3
+        ip: 172.16.65.4
