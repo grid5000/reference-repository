@@ -357,7 +357,6 @@ def get_hardware(sites)
         }.map{ |e|
           get_network_info(e, false)
         }.join('+&nbsp;')
-        hard['used_networks'] += ', SR-IOV available' if network.any? { |e| e['sriov'] }
 
         hard['network_throughput'] = network.select { |e|
           e['used'] == true
@@ -455,8 +454,13 @@ end
 
 def get_network_info(e, all_networks)
   rate = G5K.get_rate(e[0]['rate'])
+  if e[0]['sriov']
+    sriov = "&nbsp;(SR&#8209;IOV)"
+  else
+    sriov = ''
+  end
   (e[1] == 1 ? '' : e[1].to_s + '&nbsp;x&nbsp;') +
-    (rate == '' ? '' : rate + '&nbsp;') +
+    (rate == '' ? '' : rate + sriov + '&nbsp;') +
     (all_networks ? e[0]['interface'].to_s : get_interface(e[0]['interface'])) +
     (all_networks ? (e[0]['used'] == true ? '' : ' (unused)') : '')
 end
