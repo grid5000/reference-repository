@@ -161,6 +161,11 @@ def add_default_values_and_mappings(h)
           node["storage_devices"][key].delete("timewrite") if node["storage_devices"][key].key?("timewrite")
         }
 
+        # Ensure that id (diskN) is present
+        node["storage_devices"].each do |key, hash|
+          raise "Missing id for disk #{key} from cluster input" if !hash['id']
+        end
+
         # Add vendor info to storage
         node["storage_devices"].each do |key, hash|
           next if node['status'] == "retired" # we do not bother for retired nodes
