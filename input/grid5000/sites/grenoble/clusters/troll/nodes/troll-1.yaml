@@ -80,20 +80,18 @@ troll-1:
     vendor: Intel
     version: Gold 5218
   storage_devices:
-    nvme0n1:
-      by_id: "/dev/disk/by-id/nvme-eui.36314130522024320025384100000004"
-      by_path: "/dev/disk/by-path/pci-0000:d8:00.0-nvme-1"
-      id: disk1
-      model: Dell Ent NVMe AGN MU AIC 1.6TB
-      size: 1600321314816
-      storage: SSD
-    sda:
+    pci-0000:18:00.0-scsi-0:0:0:0:
       by_id: "/dev/disk/by-id/wwn-0x500a075122febd94"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0"
       firmware_version: D1DF005
-      id: disk0
       model: MTFDDAK480TDN
       size: 480103981056
+      storage: SSD
+    pci-0000:d8:00.0-nvme-1:
+      by_id: "/dev/disk/by-id/nvme-eui.36314130522024320025384100000004"
+      by_path: "/dev/disk/by-path/pci-0000:d8:00.0-nvme-1"
+      model: Dell Ent NVMe AGN MU AIC 1.6TB
+      size: 1600321314816
       storage: SSD
   supported_job_types:
     virtual: ivt

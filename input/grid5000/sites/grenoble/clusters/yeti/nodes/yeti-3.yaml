@@ -101,51 +101,45 @@ yeti-3:
     vendor: Intel
     version: Gold 6130
   storage_devices:
-    nvme0n1:
-      by_id: "/dev/disk/by-id/nvme-eui.0025389671000bb6"
-      by_path: "/dev/disk/by-path/pci-0000:59:00.0-nvme-1"
-      id: disk4
-      model: Dell Express Flash NVMe PM1725 1.6TB AIC
-      size: 1600321314816
-      storage: SSD
-    nvme1n1:
-      by_id: "/dev/disk/by-id/nvme-eui.002538957100101f"
-      by_path: "/dev/disk/by-path/pci-0000:6d:00.0-nvme-1"
-      id: disk5
-      model: Dell Express Flash NVMe PM1725 1.6TB AIC
-      size: 1600321314816
-      storage: SSD
-    sda:
+    pci-0000:18:00.0-scsi-0:0:0:0:
       by_id: "/dev/disk/by-id/wwn-0x55cd2e4150a22f9b"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0"
       firmware_version: XCV1DL69
-      id: disk0
       model: SSDSC2KG480G8R
       size: 480103981056
       storage: SSD
-    sdb:
+    pci-0000:18:00.0-scsi-0:0:1:0:
       by_id: "/dev/disk/by-id/wwn-0x5000c500a08a4beb"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:1:0"
       firmware_version: NT32
-      id: disk1
       model: ST2000NX0463
       size: 2000398934016
       storage: HDD
-    sdc:
+    pci-0000:18:00.0-scsi-0:0:2:0:
       by_id: "/dev/disk/by-id/wwn-0x5000c500a089563f"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:2:0"
       firmware_version: NT32
-      id: disk2
       model: ST2000NX0463
       size: 2000398934016
       storage: HDD
-    sdd:
+    pci-0000:18:00.0-scsi-0:0:3:0:
       by_id: "/dev/disk/by-id/wwn-0x5000c500a0adf81f"
       by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:3:0"
       firmware_version: NT32
-      id: disk3
       model: ST2000NX0463
       size: 2000398934016
       storage: HDD
+    pci-0000:59:00.0-nvme-1:
+      by_id: "/dev/disk/by-id/nvme-eui.0025389671000bb6"
+      by_path: "/dev/disk/by-path/pci-0000:59:00.0-nvme-1"
+      model: Dell Express Flash NVMe PM1725 1.6TB AIC
+      size: 1600321314816
+      storage: SSD
+    pci-0000:6d:00.0-nvme-1:
+      by_id: "/dev/disk/by-id/nvme-eui.002538957100101f"
+      by_path: "/dev/disk/by-path/pci-0000:6d:00.0-nvme-1"
+      model: Dell Express Flash NVMe PM1725 1.6TB AIC
+      size: 1600321314816
+      storage: SSD
   supported_job_types:
     virtual: ivt
