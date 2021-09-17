@@ -18,8 +18,9 @@ nodes:
       besteffort: true
       max_walltime: 0
     storage_devices:
-      sda:
+      pci-0000:00:11.0-ata-1:
         interface: SATA
+        id: disk0
     network_adapters:
       eth0:
         enabled: false

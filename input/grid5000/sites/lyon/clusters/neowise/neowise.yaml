@@ -26,11 +26,12 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
-      eth1: 
+      eth1:
         enabled: true
         mountable: true
         mounted: false
         kavlan: false
     storage_devices:
-      nvme0n1:
+      pci-0000:82:00.0-nvme-1:
         interface: NVME
+        id: disk0

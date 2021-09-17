@@ -36,8 +36,9 @@ nodes:
         mountable: true
         netmask: 255.255.255.0
     storage_devices:
-      sda:
+      pci-0000:00:11.5-ata-3:
         interface: SATA
+        id: disk0
 
   grvingt-[1-8]:
     supported_job_types:

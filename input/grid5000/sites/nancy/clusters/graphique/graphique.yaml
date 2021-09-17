@@ -19,8 +19,9 @@ nodes:
     software:
       standard-environment: debian10-x64-std
     storage_devices:
-      sda:
+      pci-0000:02:00.0-scsi-0:2:0:0:
         interface: RAID-1 (2 disks)
+        id: disk0
     network_adapters:
       eth0:
         enabled: true

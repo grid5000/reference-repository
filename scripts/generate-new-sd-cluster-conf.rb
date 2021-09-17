@@ -19,6 +19,8 @@ sites.each do |s|
       new_sd_conf['storage_devices'][sd['by_path'].split('/').last]['interface'] = sd['interface']
       new_sd_conf['storage_devices'][sd['by_path'].split('/').last]['id'] = sd['id']
       new_sd_conf['storage_devices'][sd['by_path'].split('/').last]['reservation'] = sd['reservation'] if sd['reservation']
+      new_sd_conf['storage_devices'][sd['by_path'].split('/').last]['symlink'] = sd['symlink'] if sd['symlink']
+      new_sd_conf['storage_devices'][sd['by_path'].split('/').last]['alt_model_name'] = sd['alt_model_name'] if sd['alt_model_name']
     end
     puts new_sd_conf.to_yaml
     puts

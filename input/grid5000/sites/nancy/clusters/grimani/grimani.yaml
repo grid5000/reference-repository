@@ -19,8 +19,9 @@ nodes:
     software:
       standard-environment: debian10-x64-std
     storage_devices:
-      sda:
+      pci-0000:03:00.0-scsi-0:0:0:0:
         interface: SATA
+        id: disk0
     network_adapters:
       eth0:
         mounted: true

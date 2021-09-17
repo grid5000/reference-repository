@@ -38,8 +38,9 @@ nodes:
         mountable: false
         mounted: false
     storage_devices:
-      sda:
+      pci-0000:e1:00.0-scsi-0:2:0:0:
         interface: SAS
+        id: disk0
     gpu_devices:
       nvidia0:
         cores_affinity: 0 16 8 24 4 20 12 28

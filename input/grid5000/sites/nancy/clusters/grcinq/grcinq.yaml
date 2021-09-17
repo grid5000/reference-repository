@@ -37,9 +37,9 @@ nodes:
         mountable: true
         netmask: 255.255.255.0
     storage_devices:
-      sda:
+      pci-0000:00:1f.2-ata-1:
         interface: SATA
-
+        id: disk0
   grcinq-[1-8]:
     supported_job_types:
       max_walltime: 14400

@@ -47,14 +47,13 @@ nodes:
         mountable: false
         mounted: false
     storage_devices:
-      sda:
+      pci-0000:1a:00.0-scsi-0:0:0:0:
         interface: SATA
-        #model: PERC H330 Mini
-      sdb:
+        id: disk0
+      pci-0000:1a:00.0-scsi-0:0:1:0:
         interface: SAS
-        #model: PERC H330 Mini
+        id: disk1
         reservation: true
-
   grappe-[1-4]:
     supported_job_types:
       max_walltime: 172800

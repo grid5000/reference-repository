@@ -32,7 +32,9 @@ nodes:
         mountable: false
         mounted: false
     storage_devices:
-      sda:
+      pci-0000:0f:00.0-sas-phy2-lun-0:
         interface: SATA
-      sdb:
+        id: disk0
+      pci-0000:0f:00.0-sas-phy3-lun-0:
         interface: SATA
+        id: disk1
