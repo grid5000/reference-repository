@@ -271,13 +271,13 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
 
     # Iterate over storage devices
     node[:description]["storage_devices"].select{|v| v.key?("reservation") and v["reservation"]}.each do |storage_device|
-      # As <storage_device> is an Array, where the first element is the device name (i.e. sda, sdb, ...),
+      # As <storage_device> is an Array, where the first element is the device id (i.e. disk0, disk1, ...),
       # and the second element is a dictionnary containing information about the storage device,
       # thus two variables are created:
-      #    - <storage_device_name> : variable that contains the device name (sda, sdb, ...)
+      #    - <storage_device_name> : variable that contains the device id (disk0, disk1, ...)
       #    - <storage_device_name_with_hostname> : variable that will be the ID of the storage. It follows this
-      #       pattern : "sda1.ecotype-48"
-      storage_device_name = storage_device["device"]
+      #       pattern : "disk1.ecotype-48"
+      storage_device_name = storage_device["id"]
       storage_device_name_with_hostname = "#{storage_device_name}.#{node[:name]}"
 
       # Retried the site propertie that corresponds to this storage device
@@ -529,8 +529,8 @@ end
 # properties are then compared with the values in OAR database, to
 # generate a diff.
 # The key is of the form [node, disk]. In the following example
-# we list the different disks (from sdb to sdf) of node grimoire-1.
-# {["grimoire-1", "sdb.grimoire-1"]=>
+# we list the different disks (from disk1 to disk5) of node grimoire-1.
+# {["grimoire-1", "disk1.grimoire-1"]=>
 #  {"cluster"=>"grimoire",
 #  "host"=>"grimoire-1.nancy.grid5000.fr",
 #  "network_address"=>"",
@@ -538,15 +538,15 @@ end
 #  "deploy"=>"YES",
 #  "production"=>"NO",
 #  "maintenance"=>"NO",
-#  "disk"=>"sdb.grimoire-1",
+#  "disk"=>"disk1.grimoire-1",
 #  "diskpath"=>"/dev/disk/by-path/pci-0000:02:00.0-scsi-0:0:1:0",
 #  "cpuset"=>-1},
-#  ["grimoire-1", "sdc.grimoire-1"]=> ...
+#  ["grimoire-1", "disk2.grimoire-1"]=> ...
 def get_ref_disk_properties_internal(site_uid, cluster_uid, cluster, node_uid, node)
   properties = {}
   node['storage_devices'].each_with_index do |device, index|
-    disk = [device['device'], node_uid].join('.')
-    if index > 0 && device['reservation'] # index > 0 is used to exclude sda
+    disk = [device['id'], node_uid].join('.')
+    if index > 0 && device['reservation'] # index > 0 is used to exclude disk0
       key = [node_uid, disk]
       # Start by copying the properties of the resource of type default,
       # because to reserve both the resources of type disk and of type default
