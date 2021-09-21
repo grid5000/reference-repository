@@ -393,9 +393,9 @@ class G5KHardwareGenerator < WikiGenerator
           next if node_hash['status'] == 'retired'
           sd = node_hash['storage_devices']
           reservable_disks = sd.select{ |v| v['reservation'] == true }.count > 0
-          maindisk = sd.select { |v| v['device'] == 'sda' }[0] || sd.select { |v| v['device'] == 'nvme0n1' }[0]
+          maindisk = sd.select { |v| v['id'] == 'disk0' }[0]
           maindisk_t = maindisk['storage'] + ' ' + G5K.get_size(maindisk['size'],'metric')
-          other = sd.select { |d| d['device'] != 'sda' }
+          other = sd.select { |d| d['id'] != 'disk0' }
           hdds = other.select { |d| d['storage'] == 'HDD' }
           if hdds.count == 0
             hdd_t = "0"
