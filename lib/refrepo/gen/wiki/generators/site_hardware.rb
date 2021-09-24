@@ -142,6 +142,40 @@ class SiteHardwareGenerator < WikiGenerator
         text_data << "\n'''Reservation example:'''"
         text_data << reservation_cmd
 
+        if queue == 'production'
+          walltime_breakout_text = "\n'''Max walltime (hours) per nodes:'''\n"
+          nodes = G5K::get_global_hash['sites'][site]['clusters'][cluster_uid]['nodes']
+          max_walltime_per_node = nodes.map { |node_name,node|
+            [node['supported_job_types']['max_walltime']/3600,node_name.sub("#{cluster_uid}-",'').to_i]
+          }
+          walltime_breakout = {}
+          max_walltime_per_node.each { |e|
+            if walltime_breakout[e[0]]
+              walltime_breakout[e[0]] << e[1]
+            else
+              walltime_breakout[e[0]] = [e[1]]
+            end
+          }
+          # https://stackoverflow.com/questions/20847212/how-to-convert-an-array-of-number-into-ranges
+          walltime_breakout.each { |walltime,nodes|
+            prev_node =  nodes[0]
+            walltime_breakout[walltime] = nodes.sort.slice_before { |node|
+              prev_node, node2 = node, prev_node
+              node2 + 1 != node
+            }.map{|b,*,c| c ? [b,c] : b }.flatten
+          }
+          walltime_breakout.sort.each { |hours_range|
+            (hours, range) = hours_range
+            if range.length == 1
+              range_text = "#{range[0]}"
+            else
+              range_text = "[#{range[0]}-#{range[1]}]"
+            end
+            walltime_breakout_text << "* #{cluster_uid}-#{range_text}: #{hours}h\n"
+         }
+          text_data << walltime_breakout_text
+        end
+
         cluster_hash.sort.to_h.each_with_index { |(num, h), i|
           if subclusters
             subcluster_nodes = num.count
