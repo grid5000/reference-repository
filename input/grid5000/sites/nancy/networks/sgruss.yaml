@@ -1,0 +1,42 @@
+---
+sgruss:
+  model: Dell S5224F-ON
+  warranty: "2026-08-02"
+  kind: switch
+  site: nancy
+  snmp_community: public
+  ip: 172.17.79.212
+  backplane_bps: 2160000000000
+  linecards:
+    1:
+      snmp_pattern: "ethernet1/%LINECARD%/%PORT%"
+      kavlan_pattern: "ethernet1/%LINECARD%/%PORT%"
+      kind: node
+      rate: 25000000000
+      ports:
+        1:
+          uid: gruss-1
+        2:
+          uid: gruss-2
+        3:
+          uid: gruss-3
+        4:
+          uid: gruss-4
+        25:
+           snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
+           kind: node
+           rate: 25000000000
+           uid: port-channel1
+           kind: channel
+        26:
+           snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
+           kind: node
+           rate: 25000000000
+           uid: port-channel1
+           kind: channel
+  channels:
+    port-channel1:
+      port: port-channel5
+      uid: gw
+      kind: router
+      rate: 800000000000
