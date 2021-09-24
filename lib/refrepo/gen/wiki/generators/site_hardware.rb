@@ -172,7 +172,7 @@ class SiteHardwareGenerator < WikiGenerator
               range_text = "[#{range[0]}-#{range[1]}]"
             end
             walltime_breakout_text << "* #{cluster_uid}-#{range_text}: #{hours}h\n"
-         }
+          }
           text_data << walltime_breakout_text
         end
 
