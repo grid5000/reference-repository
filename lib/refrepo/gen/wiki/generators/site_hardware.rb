@@ -274,7 +274,8 @@ def get_hardware(sites)
         hard['cpus_per_node_str'] = hard['cpus_per_node'].to_s + '&nbsp;' + G5K.pluralize(hard['cpus_per_node'], 'CPU') + '/node'
         hard['cores_per_cpu'] = node_hash['architecture']['nb_cores'] / hard['cpus_per_node']
         hard['cores_per_cpu_str'] = hard['cores_per_cpu'].to_s + '&nbsp;' + G5K.pluralize(hard['cores_per_cpu'], 'core') + '/CPU'
-        hard['num_processor_model'] = (hard['cpus_per_node'] == 1 ? '' : "#{hard['cpus_per_node']}&nbsp;x&nbsp;") + hard['processor_model'].gsub(' ', '&nbsp;')
+        exotic_archname = get_exotic_archname(node_hash['architecture']['platform_type'])
+        hard['num_processor_model'] = (hard['cpus_per_node'] == 1 ? '' : "#{hard['cpus_per_node']}&nbsp;x&nbsp;") + (exotic_archname ? "#{exotic_archname}&nbsp;" : '') + hard['processor_model'].gsub(' ', '&nbsp;')
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
         hard['pmem_size'] = G5K.get_size(node_hash['main_memory']['pmem_size']) unless node_hash['main_memory']['pmem_size'].nil?
@@ -435,6 +436,18 @@ def get_hardware(sites)
     }
   }
   hardware
+end
+
+# This method returns a processor family if the architecture/platform_stream is not mainstream
+def get_exotic_archname(platform_type)
+  case platform_type
+  when /aarch64/
+    "ARM"
+  when /ppc64le/
+    "Power"
+  else
+    nil
+  end
 end
 
 # This methods adds the array hard to the hash
