@@ -157,9 +157,9 @@ class SiteHardwareGenerator < WikiGenerator
             end
           }
           # https://stackoverflow.com/questions/20847212/how-to-convert-an-array-of-number-into-ranges
-          walltime_breakout.each { |walltime,nodes|
-            prev_node =  nodes[0]
-            walltime_breakout[walltime] = nodes.sort.slice_before { |node|
+          walltime_breakout.each { |walltime,allnodes|
+            prev_node =  allnodes[0]
+            walltime_breakout[walltime] = allnodes.sort.slice_before { |node|
               prev_node, node2 = node, prev_node
               node2 + 1 != node
             }.map{|b,*,c| c ? [b,c] : b }.flatten
