@@ -143,7 +143,7 @@ class SiteHardwareGenerator < WikiGenerator
         text_data << reservation_cmd
 
         if queue == 'production'
-          walltime_breakout_text = "\n'''Max walltime (hours) per nodes:'''\n"
+          walltime_breakout_text = "'''Max walltime per nodes:'''\n"
           nodes = G5K::get_global_hash['sites'][site]['clusters'][cluster_uid]['nodes']
           max_walltime_per_node = nodes.map { |node_name,node|
             [node['supported_job_types']['max_walltime']/3600,node_name.sub("#{cluster_uid}-",'').to_i]
