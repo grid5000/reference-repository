@@ -248,6 +248,7 @@ def gpu_description(node_hash, long_names)
   lgpu = node_hash['gpu_devices']
   if lgpu
     bymodel = {}
+    memgib = (node_hash['gpu_devices'].first()[1]['memory'].to_f/2**30).round(0)
     lgpu.each { |g|
       d = g[1]
       vendor = d['vendor']
@@ -256,7 +257,7 @@ def gpu_description(node_hash, long_names)
       else
         model = GPURef.model2shortname(d['model'])
       end
-      vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;')
+      vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;') + "&nbsp;(#{memgib}&nbsp;GiB)"
       if bymodel[vm]
         bymodel[vm] += 1
       else
