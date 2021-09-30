@@ -4,18 +4,18 @@
 #
 ---
 partitioning:
-  block_device: /dev/sda
+  deploy_label: DEPLOY
+  block_device: disk0
   script: /etc/kadeploy3<%= suffix %>/<%= ! data['partitioning.script'].nil? ? data['partitioning.script'] : "partitioning.sh" %>
   <%- if !data['formating.script'].nil? && !data['formating.script'].empty? -%>
   formating_script: /etc/kadeploy3<%= suffix %>/<%= data['formating.script'] %>
   <%- end -%>
-  partitions:
-    tmp: 5
-    prod: 2
-    deploy: 3
-    swap: 1
+  disk_path:
+  <%- cluster['nodes'].values.first['storage_devices'].reject{|disk| disk['reservation']}.each do |disk| -%>
+    <%= disk['id'] %>: <%= disk['by_path'] %>
+  <%- end -%>
 trusted_deployment:
-  partition: /dev/sda<%= suffix.empty? ? "2":"3"%>
+  partition: disk0/PROD
   user: oar
 <% if data['trusted_env'] %>
   envs:
@@ -95,10 +95,10 @@ automata:
   macrosteps:
     SetDeploymentEnv:
     - timeout: <%= data['deployment.timeout'] %>
-      type: Untrusted
+      type: Trusted
       retries: <%= data['deployment.retries'].nil? ? 1 : data['deployment.retries'] %>
     - timeout: <%= data['deployment.timeout'] %>
-      type: Kexec
+      type: Untrusted
       retries: <%= data['deployment.retries'].nil? ? 1 : data['deployment.retries'] %>
     BroadcastEnv:
     - timeout: <%= data['broadcast.timeout'] %>

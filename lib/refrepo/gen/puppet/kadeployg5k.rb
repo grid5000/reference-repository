@@ -46,9 +46,7 @@ def generate_puppet_kadeployg5k(options)
   puts "For site(s): #{options[:sites].join(', ')}"
 
   # There is two kadeploy servers : kadeploy and kadeploy-dev
-  # FIXME disable -dev generation for kadeploy 3.5 to 3.6 transition
-  #['', '-dev'].each {|suffix|
-  [''].each {|suffix|
+  ['', '-dev'].each {|suffix|
     puts "Info: Working with kadeployg5k#{suffix}.yaml"
 
     global_hash['sites'].each { |site_uid, site|
