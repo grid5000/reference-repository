@@ -1,0 +1,183 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 48,
+    "nb_procs": 2,
+    "nb_threads": 96,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "04/08/2021",
+    "vendor": "Dell Inc.",
+    "version": "2.2.5"
+  },
+  "bmc_version": "5.00.00.00",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R7525",
+    "serial": "1ZBX2G3"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 274877906944
+  },
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "tg3",
+      "enabled": false,
+      "firmware_version": "FFV21.80.9 bc 5720-v1.39",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "b0:7b:25:d4:b8:e6",
+      "management": false,
+      "model": "NetXtreme BCM5720 Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom"
+    },
+    {
+      "device": "eth1",
+      "driver": "tg3",
+      "enabled": false,
+      "firmware_version": "FFV21.80.9 bc 5720-v1.39",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "b0:7b:25:d4:b8:e7",
+      "management": false,
+      "model": "NetXtreme BCM5720 Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom"
+    },
+    {
+      "device": "eth2",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "16.28.4512 (DEL0000000016)",
+      "interface": "Ethernet",
+      "ip": "172.16.69.3",
+      "ip6": "2001:660:4406:500:6::3",
+      "kavlan": false,
+      "mac": "b8:ce:f6:38:3b:e2",
+      "management": false,
+      "model": "MT27800 Family [ConnectX-5]",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno33",
+      "network_address": "gruss-3.nancy.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "sgruss",
+      "switch_port": "ethernet1/1/3",
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "eth3",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "16.28.4512 (DEL0000000016)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "b8:ce:f6:38:3b:e3",
+      "management": false,
+      "model": "MT27800 Family [ConnectX-5]",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno34",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.69.3",
+      "kavlan": false,
+      "mac": "b0:7b:25:df:db:a0",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "gruss-3-bmc.nancy.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 19200000000,
+    "node_flops": 921600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 16777216,
+    "clock_speed": 2400000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Zen",
+    "microcode": "0x830104d",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7352 24-Core Processor",
+    "vendor": "AMD",
+    "version": 7352
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2021092900",
+    "standard-environment": "debian10-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x62cea7f0bb1f3300288affd7b81eae16",
+      "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0",
+      "device": "sda",
+      "firmware_version": 5.14,
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "PERC H345 Front",
+      "size": 1919716163584,
+      "storage": "SSD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-ata-1",
+      "device": "sdb",
+      "firmware_version": "MV.R00-0",
+      "id": "disk1",
+      "interface": "NVME",
+      "model": "DELLBOSS VD",
+      "size": 480036847616,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 172800,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "amd-v"
+  },
+  "type": "node",
+  "uid": "gruss-3"
+}
