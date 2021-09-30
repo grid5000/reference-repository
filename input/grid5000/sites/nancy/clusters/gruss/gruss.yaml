@@ -1,0 +1,55 @@
+model: Dell PowerEdge R7525
+created_at: 2021-08-26
+kavlan: false
+exotic: false
+queues:
+- admin
+- testing
+nodes:
+  gruss-[3-4]:
+    storage_devices:
+      sdb:
+        interface: NVME
+  gruss-[1-4]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+    software:
+      standard-environment: debian10-x64-std
+    processor:
+      microarchitecture: Zen
+      clock_speed: 2400000000
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      sda:
+        interface: SAS
+  gruss-[1-2]:
+    supported_job_types:
+      max_walltime: 86400
+  gruss-3:
+    supported_job_types:
+      max_walltime: 172800
+  gruss-[4-]:
+    supported_job_types:
+      max_walltime: 604800
