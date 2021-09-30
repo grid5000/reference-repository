@@ -10,6 +10,7 @@ require 'refrepo/gpu_ref'
 class MissingProperty < StandardError; end
 
 MiB = 1024**2
+GiB = 1024**3
 
 ############################################
 # Functions related to the "TABLE" operation
@@ -247,6 +248,7 @@ def export_rows_as_oar_command(generated_hierarchy, site_name, site_properties, 
       gpudevice = oar_ressource_row[:gpudevice].to_s
       gpumodel = oar_ressource_row[:gpumodel].to_s
       gpudevicepath = oar_ressource_row[:gpudevicepath].to_s
+      memgpu = oar_ressource_row[:memgpu].to_i
       resource_id = oar_ressource_row[:resource_id]
 
       if resource_id == -1 or resource_id.nil?
@@ -433,9 +435,11 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     end
     h['gpu_model'] = models.first
     h['gpu_count'] = node['gpu_devices'].length
+    h['memgpu'] = models.first['memory'] / GiB
   else
     h['gpu_model'] = ''
     h['gpu_count'] = 0
+    h['memgpu'] = 0
   end
 
   if node.key?('exotic')
@@ -705,6 +709,7 @@ def ignore_default_keys()
     "host", # This property was created by 'oar_resources_add'
     "gpudevice", # New property taken into account by the new generator
     "gpu", # New property taken into account by the new generator
+    "memgpu", # ?
     "cpuset",
     "desktop_computing",
     "drain",
@@ -1300,6 +1305,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
             :cpuset => nil,
             :gpu => nil,
             :gpudevice => nil,
+            :memgpu => nil,
             :gpudevicepath => nil,
             :cpumodel => nil,
             :gpumodel => nil,
@@ -1358,6 +1364,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
               row[:gpudevice] = local_id
               row[:gpudevicepath] = selected_gpu['device']
               row[:gpumodel] = selected_gpu['model']
+              row[:memgpu] = selected_gpu['memory']
             end
           end
 
