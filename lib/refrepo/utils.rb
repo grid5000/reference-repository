@@ -14,7 +14,7 @@ module RefRepo::Utils
     else
       o = {}
     end
-    d = open("#{conf['uri']}/#{conf['version']}/#{path}", o).read
+    d = URI.open("#{conf['uri']}/#{conf['version']}/#{path}", o).read
     return JSON::parse(d)
   end
 
