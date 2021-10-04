@@ -320,6 +320,12 @@ gw:
           uid: grimoire-7
         48:
           uid: grimoire-8
+        49:
+          uid: port-channel5
+          kind: channel
+        50:
+          uid: port-channel5
+          kind: channel
     3:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
@@ -838,4 +844,8 @@ gw:
       uid: sgrappe
       kind: switch
       rate: 800000000000
-
+    port-channel5:
+      port: port-channel1
+      uid: sgruss
+      kind: switch
+      rate: 800000000000
