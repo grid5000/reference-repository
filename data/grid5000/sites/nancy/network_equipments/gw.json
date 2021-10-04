@@ -22,6 +22,12 @@
       "port": "port-channel1",
       "rate": 800000000000,
       "uid": "sgrappe"
+    },
+    "port-channel5": {
+      "kind": "switch",
+      "port": "port-channel1",
+      "rate": 800000000000,
+      "uid": "sgruss"
     }
   },
   "ip": "172.16.79.254",
@@ -592,6 +598,16 @@
           "port": "eth0",
           "snmp_name": "Ethernet2/48",
           "uid": "grimoire-8"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet2/49",
+          "uid": "port-channel5"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet2/50",
+          "uid": "port-channel5"
         }
       ],
       "rate": 10000000000,
