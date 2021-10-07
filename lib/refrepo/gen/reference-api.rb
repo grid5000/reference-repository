@@ -136,6 +136,14 @@ def generate_reference_api
         node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
         node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "ibs1","bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1"]).values
 
+        node["memory_devices"].each { |key, hash| node["memory_devices"][key]["device"] = key; } # Add "device: dimm_a1" within the hash
+        node["memory_devices"] = node["memory_devices"].sort_by { |d, _|
+          [d.gsub(/dimm_(\d+)/, '\1').to_i,
+           d.gsub(/^dimm_([A-z]+)(\d+)$/, '\1'),
+           d.gsub(/^dimm_([A-z]+)(\d+)$/, '\2').to_i]
+        }.to_h
+        node["memory_devices"] = node["memory_devices"].values
+
         write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
       end
     end
