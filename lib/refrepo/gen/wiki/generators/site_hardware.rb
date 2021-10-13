@@ -277,7 +277,6 @@ end
 
 def get_hardware(sites)
   global_hash = G5K::get_global_hash
-  known_devices_name = ["sda", "sdb", "sdc", "sdd", "sde","sdf", "nvme0n1", "nvme1n1"]
 
   # Loop over each cluster of the site
   hardware = {}
@@ -286,11 +285,6 @@ def get_hardware(sites)
     site_hash['clusters'].sort.to_h.each { |cluster_uid, cluster_hash|
       hardware[site_uid][cluster_uid] = {}
       cluster_hash.fetch('nodes').sort.each { |node_uid, node_hash|
-        node_hash['storage_devices'].map do |d|
-          unless known_devices_name.include?(d['device'])
-            raise "unknown device name: #{d['device']}, can't sort correctly"
-          end
-        end
         next if node_hash['status'] == 'retired'
         # map model to vendor (eg: {'SAS5484654' => 'Seagate', 'PX458' => 'Toshiba' ...}
         hard = {}
@@ -314,7 +308,7 @@ def get_hardware(sites)
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
         hard['pmem_size'] = G5K.get_size(node_hash['main_memory']['pmem_size']) unless node_hash['main_memory']['pmem_size'].nil?
-        storage = node_hash['storage_devices'].sort_by!{ |d| known_devices_name.index(d['device'])}.map { |i| { 'size' => i['size'], 'tech' => i['storage'], 'reservation' => i['reservation'].nil? ? false : i['reservation'] } }
+        storage = node_hash['storage_devices'].sort_by!{ |d| d['id']}.map { |i| { 'size' => i['size'], 'tech' => i['storage'], 'reservation' => i['reservation'].nil? ? false : i['reservation'] } }
         hard['storage'] = storage.each_with_object(Hash.new(0)) { |data, counts|
           counts[data] += 1
         }.to_a
@@ -354,7 +348,7 @@ def get_hardware(sites)
         end
 
         has_reservable_disks = false
-        hard['storage_description'] = storage_description.sort_by!{ |d| known_devices_name.index(d['device'])}.map { |e|
+        hard['storage_description'] = storage_description.sort_by!{ |d| d['id']}.map { |e|
           has_reservable_disks ||= e['reservation']
           [
             e['count'] > 1 ? "\n*" : '',
@@ -364,15 +358,11 @@ def get_hardware(sites)
             e['interface'],
             e['vendor'],
             e['model'],
-            '(dev: /dev/' + e['device'] + (e['reservation'] ? '*' : '')  + ', by-path: ' + (e['path'] || 'MISSING') + ')',
+            '(dev: /dev/' + e['id'] + (e['reservation'] ? '*' : '')  + ', by-path: ' + (e['path'] || 'MISSING') + ')',
             e['reservation'] ? '[[Disk_reservation|(reservable)]]' : '',
             e['id'] == 'disk0' ? '(primary disk)' : ''
           ].join(' ')
         }.join('<br />')
-
-        if has_reservable_disks
-          hard['storage_description'] += "<br /> \n''*: the disk block device name /dev/sd? may vary in deployed environments, prefer referring to the by-path identifier''"
-        end
 
         network = node_hash['network_adapters'].select { |v|
           v['management'] == false &&

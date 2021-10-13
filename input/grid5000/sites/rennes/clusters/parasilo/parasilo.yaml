@@ -18,22 +18,28 @@ nodes:
       besteffort: true
       max_walltime: 0
     storage_devices:
-      sda:
+      pci-0000:03:00.0-scsi-0:0:0:0:
         interface: SAS
-      sdb:
+        id: disk0
+      pci-0000:03:00.0-scsi-0:0:1:0:
         interface: SAS
+        id: disk1
         reservation: true
-      sdc:
+      pci-0000:03:00.0-scsi-0:0:2:0:
         interface: SAS
+        id: disk2
         reservation: true
-      sdd:
+      pci-0000:03:00.0-scsi-0:0:3:0:
         interface: SAS
+        id: disk3
         reservation: true
-      sde:
+      pci-0000:03:00.0-scsi-0:0:4:0:
         interface: SAS
+        id: disk4
         reservation: true
-      sdf:
+      pci-0000:03:00.0-scsi-0:0:5:0:
         interface: SAS
+        id: disk5
         reservation: true
     network_adapters:
       eth0:

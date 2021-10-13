@@ -20,7 +20,7 @@ grouille-1:
     nvidia0:
       cpu_affinity: 0
       device: "/dev/nvidia0"
-      memory: 42506125312
+      memory: 42505076736
       model: A100-PCIE-40GB
       power_default_limit: 250.00 W
       vbios_version: 92.00.25.00.08
@@ -28,7 +28,7 @@ grouille-1:
     nvidia1:
       cpu_affinity: 1
       device: "/dev/nvidia1"
-      memory: 42506125312
+      memory: 42505076736
       model: A100-PCIE-40GB
       power_default_limit: 250.00 W
       vbios_version: 92.00.25.00.08
@@ -106,19 +106,17 @@ grouille-1:
     vendor: AMD
     version: 7452
   storage_devices:
-    sda:
+    pci-0000:01:00.0-scsi-0:0:1:0:
       by_id: "/dev/disk/by-id/wwn-0x58ce38ee20f6cc95"
       by_path: "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:0:1:0"
       firmware_version: B709
-      id: disk0
       model: KRM5XVUG1T92
       size: 1920383410176
       storage: SSD
-    sdb:
+    pci-0000:01:00.0-scsi-0:0:2:0:
       by_id: "/dev/disk/by-id/wwn-0x500a075129de049a"
       by_path: "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:0:2:0"
       firmware_version: D3DJ004
-      id: disk1
       model: MTFDDAK960TDT
       size: 960197124096
       storage: SSD

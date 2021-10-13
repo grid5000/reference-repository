@@ -58,7 +58,9 @@ nodes:
         mountable: true
         mounted: false
     storage_devices:
-      sda:
+      pci-0009:04:00.0-ata-1:
         interface: SATA
-      sdb:
+        id: disk0
+      pci-0009:04:00.0-ata-2:
         interface: SATA
+        id: disk1

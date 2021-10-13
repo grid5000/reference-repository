@@ -28,8 +28,9 @@ nodes:
       besteffort: true
       max_walltime: 0
     storage_devices:
-      sda:
+      pci-0000:02:04.0-scsi-0:0:1:0:
         interface: SCSI
+        id: disk0
     network_adapters:
       eth0:
         enabled: false
@@ -48,16 +49,6 @@ nodes:
         mountable: false
         mounted: false
         driver: bnx2
-
-  sagittaire-[70-79]:
-    storage_devices:
-      sdb:
-        interface: SCSI
-        driver: mptspi
-        model: MAT3073NC
-        vendor: FUJITSU
-        rev: 104
-        size: 73543163904
 
   sagittaire-11:
     network_adapters:

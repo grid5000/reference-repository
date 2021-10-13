@@ -47,18 +47,24 @@ nodes:
         mounted: true
         netmask: 255.255.240.0
     storage_devices:
-      nvme0n1:
-        interface: NVME
-      nvme1n1:
-        interface: NVME
-      sda:
+      pci-0000:18:00.0-scsi-0:0:0:0:
         interface: SATA
-      sdb:
+        id: disk0
+      pci-0000:18:00.0-scsi-0:0:1:0:
         interface: SAS
+        id: disk1
         reservation: true
-      sdc:
+      pci-0000:18:00.0-scsi-0:0:2:0:
         interface: SAS
+        id: disk2
         reservation: true
-      sdd:
+      pci-0000:18:00.0-scsi-0:0:3:0:
         interface: SAS
+        id: disk3
         reservation: true
+      pci-0000:59:00.0-nvme-1:
+        interface: NVME
+        id: disk4
+      pci-0000:6d:00.0-nvme-1:
+        interface: NVME
+        id: disk5

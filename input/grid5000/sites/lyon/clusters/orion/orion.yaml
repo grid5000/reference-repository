@@ -19,8 +19,9 @@ nodes:
       besteffort: true
       max_walltime: 0
     storage_devices:
-      sda:
+      pci-0000:02:00.0-scsi-0:2:0:0:
         interface: RAID-0 (2 disks)
+        id: disk0
     gpu_devices:
       nvidia0:
         cpu_affinity: 1

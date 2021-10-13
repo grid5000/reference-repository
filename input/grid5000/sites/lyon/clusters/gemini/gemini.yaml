@@ -14,19 +14,24 @@ nodes:
       besteffort: true
       max_walltime: 0
     storage_devices:
-      sda:
+      pci-0000:81:00.0-scsi-0:0:14:0:
         interface: SATA
-      sdb:
+        id: disk0
+      pci-0000:81:00.0-scsi-0:0:15:0:
         interface: SATA
+        id: disk1
         reservation: true
-      sdc:
+      pci-0000:81:00.0-scsi-0:0:16:0:
         interface: SATA
+        id: disk2
         reservation: true
-      sdd:
+      pci-0000:81:00.0-scsi-0:0:17:0:
         interface: SATA
+        id: disk3
         reservation: true
-      sde:
+      pci-0000:81:00.0-scsi-0:0:18:0:
         interface: SATA
+        id: disk4
         reservation: true
     processor:
       microarchitecture: Broadwell
