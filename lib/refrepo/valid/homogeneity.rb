@@ -57,22 +57,9 @@ def global_ignore_keys
     ~network_adapters.eth.switch_port
 eos
 
-  ignore_stokeys = <<-eos
-    ~storage_devices.sd.model
-    ~storage_devices.sd.firmware_version
-    ~storage_devices.sd.rev
-    -storage_devices.sd.rev
-    ~storage_devices.sd.size
-    ~storage_devices.sd.timeread
-    ~storage_devices.sd.timewrite
-    ~storage_devices.sd.vendor
-    ~storage_devices.sd.by_id
-    ~storage_devices.sd.by_path
-eos
-
-  ignore_nvmekeys = <<-eos
-    ~storage_devices.nvme.by_id
-eos
+  ignore_regex = [
+    ['~', /storage_devices\..*\.by_id/],
+  ]
 
   (0..5).each { |eth|
     keys = ignore_netkeys.gsub('.eth.', ".eth#{eth}.").gsub("\n", " ").split(" ")
@@ -81,18 +68,6 @@ eos
     (1..21).each { |kavlan|
       ignore_keys << "~kavlan.eth#{eth}.kavlan-#{kavlan}"
       ignore_keys << "~kavlan6.eth#{eth}.kavlan-#{kavlan}"
-    }
-  }
-
-  ('a'..'f').each { |sd|
-    keys = ignore_stokeys.gsub('.sd.', ".sd#{sd}.").gsub("\n", " ").split(" ")
-    ignore_keys.push(* keys)
-  }
-
-  (0..2).each { |i|
-    (0..2).each { |j|
-      keys = ignore_nvmekeys.gsub('.nvme.', ".nvme#{i}n#{j}.").gsub("\n", " ").split(" ")
-      ignore_keys.push(* keys)
     }
   }
 
@@ -119,7 +94,7 @@ eos
     keys = ignore_ibkeys.gsub('IB_IF', "#{ib_if}").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
   }
-  return ignore_keys
+  return [ignore_keys, ignore_regex]
 end
 
 def cluster_ignore_keys(filename)
@@ -139,7 +114,7 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
     puts ''
   end
 
-  ignore_keys  = global_ignore_keys()
+  ignore_keys, ignore_regex  = global_ignore_keys()
   cignore_keys = cluster_ignore_keys(File.expand_path("data/homogeneity.yaml.erb", File.dirname(__FILE__)))
 
   count = {}
@@ -193,10 +168,25 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
 
         # Remove keys that are specific to each nodes (ip, mac etc.)
         ikeys = cignore_keys[site_uid][node_uid] rescue nil
-        diffs.clone.each { |diff|
-          diffs.delete(diff) if ignore_keys.include?(diff[0] + diff[1])
-          diffs.delete(diff) if ikeys && ikeys.include?(diff[0] + diff[1])
-        }
+
+        diffs.clone.each do |diff|
+          if ignore_keys.include?(diff[0] + diff[1])
+            diffs.delete(diff)
+            next
+          end
+
+          if ikeys && ikeys.include?(diff[0] + diff[1])
+            diffs.delete(diff)
+            next
+          end
+
+          ignore_regex.each do |e|
+            if e[0] == diff[0] && e[1].match?(diff[1])
+              diffs.delete(diff)
+              break
+            end
+          end
+        end
 
         if verbose && !diffs.empty?
           puts "Differences between #{refnode_uid} and #{node_uid}:"
