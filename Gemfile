@@ -15,4 +15,3 @@ gem "rspec", :group => [:development]
 gem "webmock", :group => [:development]
 gem "simplecov", :group => [:development]
 gem "code-explorer", :group => [:development]
-gem "byebug", "~> 11.1", :group => :development
