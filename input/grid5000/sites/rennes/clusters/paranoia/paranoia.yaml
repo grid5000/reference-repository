@@ -13,6 +13,10 @@ nodes:
       clock_speed: 2200000000
     software:
       standard-environment: debian10-x64-std
+    management_tools:
+      ipmitool:
+        retries: 5
+        timeout: 60
     supported_job_types:
       deploy: true
       besteffort: true
