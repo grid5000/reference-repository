@@ -17,6 +17,10 @@ nodes:
       max_walltime: 0
     software:
       standard-environment: debian10-ppc64-std
+    management_tools:
+      ipmitool:
+        retries: 3
+        timeout: 80
     network_adapters:
       bmc:
         interface: Ethernet
