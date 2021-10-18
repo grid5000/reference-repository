@@ -14,6 +14,7 @@ class GPURef
     "Tesla K40m" => 2880,
     "Tesla T4" => 2560,
     "A100-PCIE-40GB" => 6912,
+    "A40" => 10752,
     "Quadro RTX 6000" => 4608,
     "Radeon Instinct MI50 32GB" => 5120,
   }
@@ -31,6 +32,7 @@ class GPURef
     "Tesla K40m" => "Tesla K40M",
     "Tesla T4" => "Tesla T4",
     "A100-PCIE-40GB" => "A100",
+    "A40" => "A40",
     "Quadro RTX 6000" => "Quadro RTX 6000",
     "Radeon Instinct MI50 32GB" => "MI50"
   }
