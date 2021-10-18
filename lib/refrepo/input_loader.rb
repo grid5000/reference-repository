@@ -83,6 +83,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # add compute capability for nvidia gpus
   add_compute_capability(global_hash)
 
+  # populate each node with administration tools' parameters
+  add_management_tools(global_hash)
+
   add_default_values_and_mappings(global_hash)
 
   add_node_pdu_mapping(global_hash)
@@ -626,6 +629,19 @@ def add_theorical_flops(h)
         node['performance'] = {}
         node['performance']['core_flops'] =  node['processor']['clock_speed'].to_i * get_flops_per_cycle(node['processor']['microarchitecture'], node['processor']['other_description'])
         node['performance']['node_flops'] = node['architecture']['nb_cores'].to_i * node['performance']['core_flops'].to_i
+      end
+    end
+  end
+end
+
+def add_management_tools(h)
+  h['sites'].each_pair do |site_uid, site|
+    site['clusters'].each_pair do |cluster_uid, cluster|
+      cluster['nodes'].select { |k, v| v['status'] != 'retired' }.each_pair do |node_uid, node|
+        node['management_tools'] = h['management_tools'] if !node.has_key?('management_tools')
+        h['management_tools'].each_key do |k|
+          node['management_tools'][k] = h['management_tools'][k] if !node['management_tools'].has_key?(k)
+        end
       end
     end
   end
