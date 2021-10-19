@@ -258,6 +258,11 @@ def gpu_description(node_hash, long_names)
         model = GPURef.model2shortname(d['model'])
       end
       vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;') + "&nbsp;(#{memgib}&nbsp;GiB)"
+      if long_names
+        cc = GPURef.get_compute_capability(d['model'])
+        vm += "<br>Compute&nbsp;capability:&nbsp;#{cc}" if cc
+      end
+
       if bymodel[vm]
         bymodel[vm] += 1
       else
