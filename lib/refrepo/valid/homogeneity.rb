@@ -181,7 +181,7 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
           end
 
           ignore_regex.each do |e|
-            if e[0] == diff[0] && e[1].match?(diff[1])
+            if e[0] == diff[0] && e[1].match(diff[1])
               diffs.delete(diff)
               break
             end
