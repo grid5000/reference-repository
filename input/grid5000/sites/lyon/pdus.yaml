@@ -1,12 +1,28 @@
 ---
 pdus:
   pdu1a:
+    # Rangée 9, 1ere armoire, PDU gauche
     vendor: APC
     model: AP8886
     ip: 172.17.63.201
     mac: 28:29:86:1D:00:29
 
+  pdu1b:
+    # Rangée 9, 1ere armoire, PDU droite
+    vendor: APC
+    model: AP8886
+    ip: 172.17.63.202
+    mac: 28:29:86:1D:00:20
+
+  pdu2a:
+    # Rangée 8, 1ere armoire, PDU droite
+    vendor: APC
+    model: AP8886
+    ip: 172.17.63.204
+    mac: 28:29:86:1D:00:32
+
   pdu2b:
+    # Rangée 8, 1ere armoire, PDU gauche
     vendor: APC
     model: AP8886
     ip: 172.17.63.204
@@ -14,7 +30,7 @@ pdus:
 
   wattmetre1:
     vendor: OmegaWatt
-    model: ''
+    model: v2
     ip: 172.16.63.8
     metrics:
       - name: wattmetre_power_watt
@@ -26,12 +42,40 @@ pdus:
 
   wattmetre4:
     vendor: OmegaWatt
-    model: ''
+    model: v2
     ip: 172.16.63.8
     metrics:
       - name: wattmetre_power_watt
         description: Power consumption per outlet reported by wattmetre, in watt
         period: 1000
         optional_period: 20
+        source:
+          protocol: wattmetre
+
+  wattmetrev3-1:
+    vendor: OmegaWatt
+    model: v3
+    kind: wattmetre-only
+    serial: '02000014'
+    ip: 172.16.63.8
+    metrics:
+      - name: wattmetre_power_watt
+        description: Power consumption per outlet reported by wattmetre, in watt
+        period: 1000
+        optional_period: 10
+        source:
+          protocol: wattmetre
+
+  wattmetrev3-2:
+    vendor: OmegaWatt
+    model: v3
+    kind: wattmetre-only
+    serial: '02000011'
+    ip: 172.16.63.8
+    metrics:
+      - name: wattmetre_power_watt
+        description: Power consumption per outlet reported by wattmetre, in watt
+        period: 1000
+        optional_period: 10
         source:
           protocol: wattmetre
