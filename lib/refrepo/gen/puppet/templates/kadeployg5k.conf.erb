@@ -26,6 +26,9 @@ kexec:
   server_precmd: "true"
   script: /etc/kadeploy3<%= suffix %>/<%= data.fetch('kexec_script', 'kexec.sh') %>
   <% if ! data['partitioning.disable_swap'].nil? %>disable_swap: <%= data['partitioning.disable_swap'] %><% end %>
+arch:
+  default: <%= cluster['nodes'].values.first['architecture']['platform_type'] %>
+  supported: <%= cluster['nodes'].values.first['architecture']['platform_type'] %>
 timeouts:
   reboot: <%= data['reboot.timeout'] %>
   kexec: <%= data['reboot.kexec'] %>
@@ -85,6 +88,7 @@ postinstall:
     file:  /grid5000/preinstalls/preinstall-<%= cluster_uid %>.tgz
 <%- end -%>
 pxe:
+  script: /etc/kadeploy3<%= suffix %>/<%= data.fetch('pxe_script', 'set_pxe.rb') %>
   headers:
     dhcp: &id001 |-
       PROMPT 0
