@@ -358,7 +358,7 @@ def get_hardware(sites)
             e['interface'],
             e['vendor'],
             e['model'],
-            '(dev: /dev/' + e['id'] + (e['reservation'] ? '*' : '')  + ', by-path: ' + (e['path'] || 'MISSING') + ')',
+            '(dev: <code class="file">/dev/' + e['id'] + '</code>' + (e['reservation'] ? '[[Disk_reservation|*]]' : '')  + ', by-path: <code class="file">' + (e['path'] || 'MISSING') + '</code>)',
             e['reservation'] ? '[[Disk_reservation|(reservable)]]' : '',
             e['id'] == 'disk0' ? '(primary disk)' : ''
           ].join(' ')
