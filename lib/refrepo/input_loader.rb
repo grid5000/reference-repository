@@ -3,6 +3,7 @@
 require 'ipaddress'
 require 'refrepo/hash/hash'
 require 'refrepo/gen/reference-api'
+require 'refrepo/gpu_ref'
 
 def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/", File.dirname(__FILE__)))
 
@@ -78,6 +79,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
   # populate each node with theorical flops
   add_theorical_flops(global_hash)
+
+  # add compute capability for nvidia gpus
+  add_compute_capability(global_hash)
 
   add_default_values_and_mappings(global_hash)
 
@@ -641,6 +645,19 @@ def add_site_ipv6_infos(h)
   end
 end
 
+def add_compute_capability(h)
+  h['sites'].each_pair do |site_uid, site|
+    site['clusters'].each_pair do |cluster_uid, cluster|
+      cluster['nodes'].select { |k, v| v['status'] != 'retired' }.each_pair do |node_uid, node|
+        if node['gpu_devices']
+          node['gpu_devices'].select { |_, v| v['vendor'] == 'Nvidia' }.each do |_, v|
+            v['compute_capability'] = GPURef.get_compute_capability(v['model'])
+          end
+        end
+      end
+    end
+  end
+end
 
 def complete_one_network_equipment(network_uid, network)
   network["type"] = "network_equipment"
