@@ -98,9 +98,11 @@ pxe:
 automata:
   macrosteps:
     SetDeploymentEnv:
+<%- if data['trusted_env'] -%>
     - timeout: <%= data['deployment.timeout'] %>
       type: Trusted
       retries: <%= data['deployment.retries'].nil? ? 1 : data['deployment.retries'] %>
+<%- end -%>
     - timeout: <%= data['deployment.timeout'] %>
       type: Untrusted
       retries: <%= data['deployment.retries'].nil? ? 1 : data['deployment.retries'] %>
