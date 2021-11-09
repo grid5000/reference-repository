@@ -463,6 +463,9 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   # Disk reservation
   h['disk_reservation_count'] = node['storage_devices'].select { |v| v['reservation'] }.length
 
+  # Software environment
+  h['standard_environment'] = node['software']['standard-environment']
+
   # convert booleans to YES/NO string
   h.each do |k, v|
     if v == true
