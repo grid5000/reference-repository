@@ -40,7 +40,8 @@ class OarPropertiesGenerator < WikiGenerator
     },
     "core" => {
       "description" => "The ID of the CPU core the resource is part of. The unique scope is the OAR server.",
-      "possible_values" => "1, 2, 3, ..."
+      "possible_values" => "1, 2, 3, ...",
+      "value_type" => "Integer"
     },
     "cpu" => {
       "description" => "The ID of the CPU the resource is part of. The unique scope is the OAR server. ",
@@ -48,6 +49,7 @@ class OarPropertiesGenerator < WikiGenerator
     },
     "cpuset" => {
       "description" => "Logical processor identifier (only the first thread in case of HyperThreading).",
+      "value_type" => "String",
       "possible_values" => "0, 1, 2, 3, ..."
     },
     "disk" => {
@@ -63,7 +65,8 @@ class OarPropertiesGenerator < WikiGenerator
     },
     "gpu" => {
       "description" => "The ID of the GPU the resource is part of. The unique scope is the OAR server. ",
-      "possible_values" => "1, 2, 3, ..."
+      "possible_values" => "1, 2, 3, ...",
+      "Value_Type" => "Integer"
     },
     "gpudevice" => {
       "description" => "GPU device identifier.",
@@ -205,7 +208,8 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "The number of GPU cards available"
     },
     "wattmeter" => {
-      "description" => "The type of wattmeter available"
+      "description" => "The type of wattmeter available",
+      "value_type" => "Boolean"
     },
     "mic" => {
       "description" => "Intel many integrated core architecture support",
