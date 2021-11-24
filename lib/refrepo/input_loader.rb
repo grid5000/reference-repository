@@ -188,7 +188,7 @@ def add_default_values_and_mappings(h)
 
           raise "Model \"#{hash["model"]}\" don't match any vendor in input/grid5000/disks.yaml" if matching_vendor.empty?
           raise "Model \"#{hash["model"]}\" specify in multiple vendors: #{matching_vendor.keys} in input/grid5000/disks.yaml" if matching_vendor.length > 1
-          raise "Model \"#{hash["model"]}\" specify in multiple interface: #{matching_interface} in input/grid5000/disks.yaml" if matching_interface.length > 1
+          raise "Model \"#{hash["model"]}\" specify in multiple interface: #{matching_interface} in input/grid5000/disks.yaml" if matching_interface.length > 1 unless hash["model"] == "unknown"
           hash['vendor'] = matching_vendor.keys.first
 
           if matching_interface.first != 'RAID' && hash['interface'] != matching_interface.first
