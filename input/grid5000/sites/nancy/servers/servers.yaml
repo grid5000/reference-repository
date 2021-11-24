@@ -39,7 +39,7 @@ srv-data:
 
 srv-data2:
   kind: physical
-  alias: [nfs, home-g5k, public, modules]
+  alias: [nfs, home-g5k, public, modules, storage2]
   warranty: 2026-07
   serial: DKHBSY2
   network_adapters:
@@ -56,6 +56,11 @@ srv-data2:
       port: 1
     - uid: gros-pdu8
       port: 1
+  group_storage:
+    name: storage2
+    size: 90000000000000
+    rate: 10000000000
+
 
 srv2:
   kind: physical
@@ -77,7 +82,8 @@ srv2:
 
 talc-data:
   kind: physical
-  alias: []
+  alias:
+    - storage3
   warranty: 2022-11
   serial: 92ZLL82
   network_adapters:
@@ -90,6 +96,11 @@ talc-data:
       port: 21
     - uid: grisou-pdu2
       port: 21
+  group_storage:
+    name: storage3
+    size: 180000000000000
+    rate: 10000000000
+
 
 talc-data-baie2:
   kind: storage
@@ -204,7 +215,8 @@ grvingt-srv:
 
 talc-data2:
   kind: physical
-  alias: []
+  alias:
+    - storage1
   warranty: 2026-05
   serial: DK7R9X2
   network_adapters:
@@ -215,7 +227,7 @@ talc-data2:
       ip: 172.17.79.30
       mac: 4c:d9:8f:63:31:d3
   group_storage:
-    name: talc-data2
+    name: storage1
     size: 200000000000000
     rate: 10000000000
 
