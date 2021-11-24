@@ -1,0 +1,45 @@
+model: NVidia DGX A100 
+created_at: 2021-11-18
+kavlan: false
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  sirius-1:  
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+    processor:
+      microarchitecture: Zen 2
+      clock_speed: 2100000000
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true 
+        mountable: false 
+        mounted: false 
+        mac: 5c:ff:35:e3:84:be
+        ip: 172.17.56.1
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        mac: 5c:ff:35:e3:84:29
+        ip: 172.16.56.1
+    storage_devices:
+      disk0:
+        interface: RAID
+        id : disk0 
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+    memory_devices:
+      dimm_p0_a0:
+        firmware: unknown
+        technology: dram
