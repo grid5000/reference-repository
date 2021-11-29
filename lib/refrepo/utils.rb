@@ -13,8 +13,9 @@ module RefRepo::Utils
       o = { :http_basic_authentication => [conf['username'], conf['password']] }
     else
       o = {}
+      puts "Check the documentation https://www.grid5000.fr/w/TechTeam:Reference_Repository#Credentials and your ~/.grid5000_api.yml file"
     end
-    d = open("#{conf['uri']}/#{conf['version']}/#{path}", o).read
+    d = URI.open("#{conf['uri']}/#{conf['version']}/#{path}", o).read
     return JSON::parse(d)
   end
 
