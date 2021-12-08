@@ -39,11 +39,36 @@ nodes:
         mac: 5c:ff:35:e3:84:29
         ip: 172.16.56.1
     storage_devices:
-      disk0:
+      pci-0000:22:00.0-nvme-1:
         interface: RAID
         id : disk0 
         model: unknown
-        by_path: "/dev/disk/by-path/dummy"
+        by_path: "/dev/disk/by-path/pci-0000:22:00.0-nvme-1"
+      pci-0000:23:00.0-nvme-1:
+        interface: RAID
+        id: disk1
+        model: unknown
+        by_path: "/dev/disk/by-path/pci-0000:23:00.0-nvme-1"
+      pci-0000:09:00.0-nvme-1:
+        interface: RAID
+        id: disk2
+        model: unknown
+        by_path: "/dev/disk/by-path/pci-0000:09:00.0-nvme-1"
+      pci-0000:52:00.0-nvme-1:
+        interface: RAID
+        id: disk3
+        model: unknown
+        by_path: "/dev/disk/by-path/pci-0000:52:00.0-nvme-1"
+      pci-0000:8a:00.0-nvme-1:
+        interface: RAID
+        id: disk5
+        model: unknown
+        by_path: "/dev/disk/by-path/pci-0000:8a:00.0-nvme-1"
+      pci-0000:ca:00.0-nvme-1:
+        interface: RAID
+        id: disk4
+        model: unknown
+        by_path: "/dev/disk/by-path/pci-0000:ca:00.0-nvme-1"
     memory_devices:
       dimm_p0_a0:
         firmware: unknown
