@@ -136,7 +136,7 @@ def generate_reference_api
         node["storage_devices"] = node["storage_devices"].sort_by{ |sd, v| v['id'] }.map { |a| a[1] }
 
         node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
-        node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "ibs1","bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1"]).values
+        node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "ib4", "ib5", "ib6", "ib7", "ibs1","bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1"]).values
 
         node["memory_devices"].each { |key, hash| node["memory_devices"][key]["device"] = key; } # Add "device: dimm_a1" within the hash
         node["memory_devices"] = node["memory_devices"].sort_by { |d, _|
