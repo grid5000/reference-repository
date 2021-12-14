@@ -7,69 +7,50 @@ queues:
   - admin
   - testing
 nodes:
-  sirius-1:  
+  sirius-[1-1]:  
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 32
-      nb_threads: 64
     processor:
       microarchitecture: Zen 2
       clock_speed: 2100000000
-    architecture:
-      platform_type: x86_64
     software:
       standard-environment: debian11-x64-std
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true 
         mountable: false 
         mounted: false 
-        mac: 5c:ff:35:e3:84:be
-        ip: 172.17.56.1
       eth0:
         enabled: true
         mountable: true
         mounted: true
-        mac: 5c:ff:35:e3:84:29
-        ip: 172.16.56.1
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
       pci-0000:22:00.0-nvme-1:
-        interface: RAID
+        interface: NVME
         id : disk0 
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:22:00.0-nvme-1"
       pci-0000:23:00.0-nvme-1:
-        interface: RAID
+        interface: NVME
         id: disk1
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:23:00.0-nvme-1"
       pci-0000:09:00.0-nvme-1:
-        interface: RAID
+        interface: NVME
         id: disk2
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:09:00.0-nvme-1"
       pci-0000:52:00.0-nvme-1:
-        interface: RAID
+        interface: NVME
         id: disk3
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:52:00.0-nvme-1"
       pci-0000:8a:00.0-nvme-1:
-        interface: RAID
+        interface: NVME
         id: disk5
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:8a:00.0-nvme-1"
       pci-0000:ca:00.0-nvme-1:
-        interface: RAID
+        interface: NVME
         id: disk4
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:ca:00.0-nvme-1"
-    memory_devices:
-      dimm_p0_a0:
-        firmware: unknown
-        technology: dram

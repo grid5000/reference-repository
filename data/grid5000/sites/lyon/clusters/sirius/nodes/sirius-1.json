@@ -1,9 +1,25 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 128,
+    "nb_procs": 2,
+    "nb_threads": 256,
     "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "02/08/2021",
+    "vendor": "American Megatrends Inc.",
+    "version": 0.34
+  },
+  "bmc_version": "0.14",
+  "chassis": {
+    "manufacturer": "NVIDIA",
+    "name": "DGXA100 920-23687-2530-000",
+    "serial": 1572221610085
   },
   "exotic": false,
   "main_memory": {
+    "ram_size": 1099511627776
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -13,21 +29,298 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_p0_a0",
-      "firmware": "unknown",
+      "device": "dimm_cpu0_dimm_a1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu0_dimm_b1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu0_dimm_c1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu0_dimm_d1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu0_dimm_e1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu0_dimm_f1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu0_dimm_g1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu0_dimm_h1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu1_dimm_i1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu1_dimm_j1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu1_dimm_k1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu1_dimm_l1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu1_dimm_m1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu1_dimm_n1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu1_dimm_o1",
+      "firmware": "Unknown",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_cpu1_dimm_p1",
+      "firmware": "Unknown",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "igb",
       "enabled": true,
+      "firmware_version": "3.25, 0x800005cc",
+      "interface": "Ethernet",
       "ip": "172.16.56.1",
+      "ip6": "2001:660:4406:400:9::1",
       "kavlan": false,
       "mac": "5c:ff:35:e3:84:29",
+      "management": false,
+      "model": "I210 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
-      "network_address": "sirius-1.lyon.grid5000.fr"
+      "name": "eth0",
+      "network_address": "sirius-1.lyon.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.28.4000 (MT_0000000225)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "b8:ce:f6:2d:18:d6",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "eth1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "eth2",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.28.4000 (MT_0000000225)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "b8:ce:f6:2d:18:d7",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "eth2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "20.28.4000",
+      "guid": "0xb8cef60300632c5c",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "b8:ce:f6:03:00:63:2c:5c",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "network_address": "sirius-1-ib0.lyon.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "20.28.4000",
+      "guid": "0xb8cef60300632c54",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "b8:ce:f6:03:00:63:2c:54",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": true,
+      "mounted": false,
+      "name": "ib1",
+      "network_address": "sirius-1-ib1.lyon.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib2",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "20.28.4000",
+      "guid": "0xb8cef60300632388",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "b8:ce:f6:03:00:63:23:88",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": true,
+      "mounted": false,
+      "name": "ib2",
+      "network_address": "sirius-1-ib2.lyon.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib3",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.28.4000",
+      "guid": "0xb8cef603007d8592",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "b8:ce:f6:03:00:7d:85:92",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib3",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib4",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.28.4000",
+      "guid": "0xb8cef60300633c8c",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "b8:ce:f6:03:00:63:3c:8c",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib4",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib5",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.28.4000",
+      "guid": "0xb8cef60300633c94",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "b8:ce:f6:03:00:63:3c:94",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib5",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib6",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.28.4000",
+      "guid": "0xb8cef60300632310",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "b8:ce:f6:03:00:63:23:10",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib6",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib7",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "20.28.4000",
+      "guid": "0xb8cef603007d8002",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "b8:ce:f6:03:00:7d:80:02",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib7",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -42,14 +335,33 @@
       "network_address": "sirius-1-bmc.lyon.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "none",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 33600000000,
-    "node_flops": 0
+    "node_flops": 4300800000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 16777216,
     "clock_speed": 2100000000,
-    "microarchitecture": "Zen 2"
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Zen 2",
+    "microcode": "0x8301034",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7742 64-Core Processor",
+    "vendor": "AMD",
+    "version": 7742
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -58,52 +370,64 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.34333630522580960025384100000001",
       "by_path": "/dev/disk/by-path/pci-0000:22:00.0-nvme-1",
       "id": "disk0",
-      "interface": "RAID",
-      "model": "unknown",
-      "vendor": "Unknown"
+      "interface": "NVME",
+      "model": "SAMSUNG MZ1LB1T9HALS-00007",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "Samsung"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.34333630522580930025384100000001",
       "by_path": "/dev/disk/by-path/pci-0000:23:00.0-nvme-1",
       "id": "disk1",
-      "interface": "RAID",
-      "model": "unknown",
-      "vendor": "Unknown"
+      "interface": "NVME",
+      "model": "SAMSUNG MZ1LB1T9HALS-00007",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "Samsung"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.00000000000000008ce38ee20485ce01",
       "by_path": "/dev/disk/by-path/pci-0000:09:00.0-nvme-1",
       "id": "disk2",
-      "interface": "RAID",
-      "model": "unknown",
-      "vendor": "Unknown"
+      "interface": "NVME",
+      "model": "KCM6DRUL3T84",
+      "size": 3840755982336,
+      "storage": "SSD",
+      "vendor": "Kioxia"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.00000000000000008ce38ee20486ae01",
       "by_path": "/dev/disk/by-path/pci-0000:52:00.0-nvme-1",
       "id": "disk3",
-      "interface": "RAID",
-      "model": "unknown",
-      "vendor": "Unknown"
+      "interface": "NVME",
+      "model": "KCM6DRUL3T84",
+      "size": 3840755982336,
+      "storage": "SSD",
+      "vendor": "Kioxia"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.00000000000000008ce38ee20485da01",
       "by_path": "/dev/disk/by-path/pci-0000:ca:00.0-nvme-1",
       "id": "disk4",
-      "interface": "RAID",
-      "model": "unknown",
-      "vendor": "Unknown"
+      "interface": "NVME",
+      "model": "KCM6DRUL3T84",
+      "size": 3840755982336,
+      "storage": "SSD",
+      "vendor": "Kioxia"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.00000000000000008ce38ee20485e901",
       "by_path": "/dev/disk/by-path/pci-0000:8a:00.0-nvme-1",
       "id": "disk5",
-      "interface": "RAID",
-      "model": "unknown",
-      "vendor": "Unknown"
+      "interface": "NVME",
+      "model": "KCM6DRUL3T84",
+      "size": 3840755982336,
+      "storage": "SSD",
+      "vendor": "Kioxia"
     }
   ],
   "supported_job_types": {
@@ -113,7 +437,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "sirius-1"
