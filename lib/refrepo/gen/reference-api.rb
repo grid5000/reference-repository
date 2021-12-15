@@ -36,6 +36,8 @@ def generate_reference_api
     global_hash.delete('ipv4')
     # remove ipv6 info
     global_hash.delete('ipv6')
+    # remove management_tools info
+    global_hash.delete('management_tools')
 
     grid_path = Pathname.new(refapi_path)
     grid_path.mkpath()
