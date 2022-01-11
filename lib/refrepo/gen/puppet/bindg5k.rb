@@ -221,14 +221,13 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
 
     node_id = node_uid.to_s.split(/(\d+)/)[1].to_i # node number
 
-    
     if net_hash['ip']
       new_record = DNS::Zone::RR::A.new
       new_record.address = net_hash['ip']
       new_record.label = "#{cluster_uid}-#{node_id}"
       new_record.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
       records << new_record
-      if /^eth[0-9]$/.match(net_uid)
+      if /^eth[0-9]$/.match(net_uid) && net_hash['pname'] != nil && !net_hash['pname'].empty?
         check_interface_name(node_uid, net_uid, net_hash)
         cname_record = DNS::Zone::RR::CNAME.new
         cname_record.label = "#{cluster_uid}-#{node_id}-#{net_hash['pname']}"
@@ -243,7 +242,7 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       new_record_ipv6.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
       new_record_ipv6.label += '-ipv6'
       records << new_record_ipv6
-      if /^eth[0-9]$/.match(net_uid)
+      if /^eth[0-9]$/.match(net_uid) && net_hash['pname'] != nil && !net_hash['pname'].empty?
         check_interface_name(node_uid, net_uid, net_hash)
         cname_record_ipv6 = DNS::Zone::RR::CNAME.new
         cname_record_ipv6.label = "#{cluster_uid}-#{node_id}-#{net_hash['pname']}-ipv6"
