@@ -29,7 +29,7 @@ class WikiGenerator
     end
   end
 
-  def generate_content
+  def generate_content(_options)
     raise "To be implemented in actual generators"
   end
 
@@ -114,7 +114,7 @@ class WikiGenerator
 
   #Execute actions on generator based on given options
   def exec(options)
-    generate_content()
+    generate_content(options)
 
     ret = true
     #Login only if we need to

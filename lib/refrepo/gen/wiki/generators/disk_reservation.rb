@@ -6,7 +6,7 @@ class DiskReservationGenerator < WikiGenerator
     super(page_name)
   end
 
-  def generate_content
+  def generate_content(_options)
     table_columns = ["Site", "Cluster", "Number of nodes", "Number of reservable disks per node"]
     table_data = []
     global_hash = get_global_hash

@@ -6,7 +6,7 @@ class KwollectMetricsGenerator < WikiGenerator
     super(page_name)
   end
 
-  def generate_content
+  def generate_content(_options)
     @generated_content = "__NOEDITSECTION__\n"
     @generated_content = "\nMetrics marked with * must be activated on demand, and metrics marked with ** are activated on non-deploy jobs by default.\n\n"
     @generated_content += "{|class=\"wikitable\"\n"

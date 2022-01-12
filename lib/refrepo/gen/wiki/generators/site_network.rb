@@ -26,7 +26,7 @@ class SiteNetworkGenerator < WikiGenerator
     return h['network_equipments'].to_a.map { |e| "* #{e[0]}: #{e[1]['model']}" }.sort.join("\n")
   end
 
-  def generate_content
+  def generate_content(_options)
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n"
     @generated_content += "= Network devices models =\n"
     @generated_content += generate_equipments + "\n"
