@@ -227,7 +227,8 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       new_record.label = "#{cluster_uid}-#{node_id}"
       new_record.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
       records << new_record
-      if /^eth[0-9]$/.match(net_uid)
+      if /^eth[0-9]$/.match(net_uid) && net_hash['pname'] != nil && !net_hash['pname'].empty?
+        check_interface_name(node_uid, net_uid, net_hash)
         cname_record = DNS::Zone::RR::CNAME.new
         cname_record.label = "#{cluster_uid}-#{node_id}-#{net_hash['pname']}"
         cname_record.domainname = "#{cluster_uid}-#{node_id}-#{net_uid}"
@@ -241,7 +242,8 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       new_record_ipv6.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
       new_record_ipv6.label += '-ipv6'
       records << new_record_ipv6
-      if /^eth[0-9]$/.match(net_uid)
+      if /^eth[0-9]$/.match(net_uid) && net_hash['pname'] != nil && !net_hash['pname'].empty?
+        check_interface_name(node_uid, net_uid, net_hash)
         cname_record_ipv6 = DNS::Zone::RR::CNAME.new
         cname_record_ipv6.label = "#{cluster_uid}-#{node_id}-#{net_hash['pname']}-ipv6"
         cname_record_ipv6.domainname = "#{cluster_uid}-#{node_id}-#{net_uid}-ipv6"
@@ -276,6 +278,12 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
     end
   } #each network adapters
   return records
+end
+
+def check_interface_name(node_uid, net_uid, net_hash)
+  if net_uid == net_hash['pname']
+    raise "Error - #{node_uid} : incorrect 'pname' value for #{net_uid} (current value is '#{net_hash['pname']}'). Please put a predictable name instead."
+  end 
 end
 
 def get_node_kavlan_records(_cluster_uid, node_uid, network_adapters, kavlan_adapters)
