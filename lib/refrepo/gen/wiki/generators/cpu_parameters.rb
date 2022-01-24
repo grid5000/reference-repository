@@ -5,7 +5,7 @@ class CPUParametersGenerator < WikiGenerator
     super(page_name)
   end
 
-  def generate_content
+  def generate_content(_options)
 
     table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Microarchitecture", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
     table_data = []

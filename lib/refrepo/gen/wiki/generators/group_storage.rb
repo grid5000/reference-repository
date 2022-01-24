@@ -6,7 +6,7 @@ class GroupStorageGenerator < WikiGenerator
     super(page_name)
   end
 
-  def generate_content
+  def generate_content(_options)
     table_columns = ["Site", "Server Name", "Size", "Link Speed", "Notes"]
     table_data = []
     global_hash = get_global_hash
