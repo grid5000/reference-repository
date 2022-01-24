@@ -264,7 +264,7 @@ class OarPropertiesGenerator < WikiGenerator
     "String"
   end
 
-  def generate_content
+  def generate_content(_options)
     refapi = load_data_hierarchy
     #Properties generated from oar-properties generator
     props = {}

@@ -100,10 +100,12 @@ namespace :valid do
 end
 
 namespace :gen do
-  desc "Run wiki generator -- parameters: NAME={hardware,site_hardware,oar_properties,...} SITE={global,grenoble,...} DO={diff,print,update}"
+  desc "Run wiki generator -- parameters: NAME={hardware,site_hardware,oar_properties,...} SITE={global,grenoble,...} DO={diff,print,update} [CONFDIR=...]"
   task "wiki" do
     require 'refrepo/gen/wiki'
     options = {}
+    options[:conf_dir] = ENV['CONFDIR'] if ENV['CONFDIR']
+    options[:output_dir] = PUPPET_ODIR
     options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : ['global'] + G5K_SITES )
     if ENV['NAME']
       options[:generators] = ENV['NAME'].split(',')
@@ -201,7 +203,7 @@ namespace :gen do
 
   namespace :puppet do
 
-    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :'oxidizedg5k']
+    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :oxidizedg5k, :'oarsub-simplifier-aliases']
 
     all_puppet_tasks.each { |t|
       generated_desc = (t == :'refapi-subset') ? 'description' : 'configuration'

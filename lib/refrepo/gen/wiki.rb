@@ -9,6 +9,7 @@ require 'refrepo/gen/wiki/generators/site_network'
 require 'refrepo/gen/wiki/generators/status'
 require 'refrepo/gen/wiki/generators/group_storage'
 require 'refrepo/gen/wiki/generators/kwollect_metrics'
+require 'refrepo/gen/wiki/generators/oarsub_simplifier_aliases'
 
 module RefRepo::Gen::Wiki
 
@@ -40,6 +41,10 @@ module RefRepo::Gen::Wiki
     'kwollect_metrics' => {
       :gen => KwollectMetricsGenerator,
       :page => 'Generated/KwollectMetrics'
+    },
+    'oarsub_simplifier_aliases' => {
+      :gen => OarsubSimplifierAliasesGenerator,
+      :page => 'Generated/OarsubSimplifierAliases'
     }
   }
   SITE_GENERATORS = {

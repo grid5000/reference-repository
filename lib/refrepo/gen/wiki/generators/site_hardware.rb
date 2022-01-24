@@ -9,7 +9,7 @@ class SiteHardwareGenerator < WikiGenerator
     @site = site
   end
 
-  def generate_content
+  def generate_content(_options)
     has_reservable_disks = false
     G5K::get_global_hash['sites'][@site]['clusters'].each do |_,c|
       c['nodes'].each do |_,n|

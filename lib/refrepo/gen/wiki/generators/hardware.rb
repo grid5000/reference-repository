@@ -7,7 +7,7 @@ class G5KHardwareGenerator < WikiGenerator
     super(page_name)
   end
 
-  def generate_content
+  def generate_content(_options)
     @global_hash = get_global_hash
     @site_uids = G5K::SITES
 
