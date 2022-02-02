@@ -94,7 +94,7 @@ pxe:
   <%- if cluster['boot_type'] == 'bios' -%>
   script: /etc/kadeploy3<%= suffix %>/<%= data.fetch('pxe_script', 'set_pxe.rb') %>
   <%- elsif cluster['boot_type'] == 'uefi' -%>
-  script: /etc/kadeploy3<%= suffix %>/<%= data.fetch('pxe_script', 'set_uefi_pxe.rb') %>
+  script: /etc/kadeploy3<%= suffix %>/<%= data.fetch('pxe_uefi_script', 'set_uefi_pxe.rb') %>
   <%- else -%>
   # unable to select a pxe script for "<%= cluster['boot_type'] %>" boot type.
   <%- end -%>
