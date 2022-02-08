@@ -187,8 +187,12 @@ gw:
           snmp_pattern: "ethernet1/1/%PORT%"
           kavlan_pattern: "ethernet1/1/%PORT%"
           rate: 25000000000
-        81: servan-1
-        82: servan-2
+        81:
+          uid: servan-1
+          rate: 25000000000
+        82:
+          uid: servan-2
+          rate: 25000000000
         83:
           uid: port-channel10
           kind: channel
