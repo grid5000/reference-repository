@@ -74,9 +74,6 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each cluster with metrics network information
   add_network_metrics(global_hash)
 
-  # populate each cluster with metrics PDU information
-  add_pdu_metrics(global_hash)
-
   # populate each node with theorical flops
   add_theorical_flops(global_hash)
 
@@ -90,6 +87,11 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
   add_node_pdu_mapping(global_hash)
 
+  add_wattmetre_mapping(global_hash)
+
+  # populate each cluster with metrics PDU information
+  add_pdu_metrics(global_hash)
+
   complete_network_equipments(global_hash)
 
   return global_hash
@@ -98,6 +100,8 @@ end
 def add_node_pdu_mapping(h)
   h["sites"].each do |site_uid, site|
     site.fetch("pdus", []).each do |pdu_uid, pdu|
+
+      # Get pdu information from node description in clusters/ hierachy
       pdu_attached_nodes = {}
       site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
         cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
@@ -109,7 +113,79 @@ def add_node_pdu_mapping(h)
           end
         end
       end
-      pdu["ports"] = pdu_attached_nodes
+
+      # Merge pdu information from pdus/ hierachy into node information
+      pdu.fetch("ports", {}).each do |port_uid, node_uid|
+        node_uid = node_uid["uid"] if node_uid.is_a?(Hash)
+        node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
+        next if not node
+        node["pdu"] ||= []
+        if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_uid}
+          raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_uid} description defined both in clusters/ and pdus/ hierarchy"
+        end
+        node["pdu"].append({"uid" => pdu_uid, "port" => port_uid})
+      end
+
+      # Merge pdu information from node description in pdus/ hierachy
+      pdu_attached_nodes.each do |port_uid, node_uid|
+        if pdu.fetch('ports', {}).key?(port_uid)
+          raise "ERROR: Port #{port_uid} of #{pdu_uid}.#{site_uid} is defined both in PDU description and in node #{node_uid} description"
+        end
+        pdu["ports"] ||= {}
+        pdu["ports"][port_uid] = node_uid
+      end
+    end
+  end
+end
+
+def add_wattmetre_mapping(h)
+  h["sites"].each do |site_uid, site|
+    site.fetch("pdus", []).each do |pdu_uid, pdu|
+      # Process wattmetre v3 information from pdus/ hierachy
+      if pdu_uid.include?("wattmetrev3") # TODO: better way of identifying a V3 wattmetre
+        wattmetre_modules = {}
+        # Look for other PDUs where this wattmetre is used
+        site.fetch("pdus", []).each do |other_pdu_uid, other_pdu|
+          other_pdu.fetch("ports", {}).each do |other_port_uid, other_port_data|
+            next if not other_port_data.is_a?(Hash)
+            next if other_port_data["wattmetre"] != pdu_uid
+            mod = other_port_data["module"].to_i
+            chan = other_port_data["channel"].to_i
+            node_uid = other_port_data["uid"]
+            if not wattmetre_modules[mod]
+              wattmetre_modules[mod] = {}
+            end
+            wattmetre_modules[mod][chan] = node_uid
+            # Convert PDU port's full Hash to string w/ node uid for generated data
+            other_pdu["ports"][other_port_uid] = node_uid
+          end
+        end
+        # Wattmetre ports are numbered by modules serial, then by channels inside module
+        wattmetre_modules.sort.each_with_index do |m, module_idx|
+          channels = m[1]
+          channels.sort.sort.each_with_index do |c, chan_idx|
+            node_uid = c[1]
+            # Each module has 6 channels
+            port_num = module_idx*6 + chan_idx
+
+            pdu["ports"] ||= {}
+            if pdu['ports'].key?(port_num)
+              raise "ERROR: Port #{port_num} of #{pdu_uid}.#{site_uid} is defined both in wattmetre description and in other PDUs' port info"
+            end
+
+            # Add mapping to wattmetre description under pdus/ hierarchy
+            pdu["ports"][port_num] = node_uid
+
+            # Add mapping to node description under clusters/ hierarchy
+            node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
+            node["pdu"] ||= []
+            if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_num}
+              raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_num} description defined both in clusters/ and pdus/ hierarchy"
+            end
+            node["pdu"].append({"uid" => pdu_uid, "port" => port_num, "kind" => "wattmetre-only"})
+          end
+        end
+      end
     end
   end
 end

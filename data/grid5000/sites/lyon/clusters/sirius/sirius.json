@@ -4,7 +4,15 @@
   "exotic": false,
   "kavlan": false,
   "metrics": [
-
+    {
+      "description": "Power consumption of node reported by wattmetre, in watt",
+      "name": "wattmetre_power_watt",
+      "optional_period": 10,
+      "period": 1000,
+      "source": {
+        "protocol": "wattmetre"
+      }
+    }
   ],
   "model": "NVidia DGX A100",
   "queues": [
