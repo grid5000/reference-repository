@@ -10,6 +10,7 @@ partitioning:
   <%- if !data['formating.script'].nil? && !data['formating.script'].empty? -%>
   formating_script: /etc/kadeploy3<%= suffix %>/<%= data['formating.script'] %>
   <%- end -%>
+  # Not used by Grid'5000 since we take the disk by_path from the API but Kadeploy needs it
   disk_path:
   <%- cluster['nodes'].values.first['storage_devices'].reject{|disk| disk['reservation']}.each do |disk| -%>
     <%= disk['id'] %>: <%= disk['by_path'] %>
