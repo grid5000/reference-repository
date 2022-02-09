@@ -74,9 +74,6 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each cluster with metrics network information
   add_network_metrics(global_hash)
 
-  # populate each cluster with metrics PDU information
-  add_pdu_metrics(global_hash)
-
   # populate each node with theorical flops
   add_theorical_flops(global_hash)
 
@@ -90,6 +87,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
   add_node_pdu_mapping(global_hash)
 
+  # populate each cluster with metrics PDU information
+  add_pdu_metrics(global_hash)
+
   complete_network_equipments(global_hash)
 
   return global_hash
@@ -98,6 +98,8 @@ end
 def add_node_pdu_mapping(h)
   h["sites"].each do |site_uid, site|
     site.fetch("pdus", []).each do |pdu_uid, pdu|
+
+      # Get pdu information from node description in clusters/ hierachy
       pdu_attached_nodes = {}
       site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
         cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
@@ -109,7 +111,26 @@ def add_node_pdu_mapping(h)
           end
         end
       end
-      pdu["ports"] = pdu_attached_nodes
+
+      # Merge pdu information from pdus/ hierachy into node information
+      pdu.fetch("ports", {}).each do |port_uid, node_uid|
+        node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
+        next if not node
+        node["pdu"] ||= []
+        if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_uid}
+          raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_uid} description defined both in clusters/ and pdus/ hierarchy"
+        end
+        node["pdu"].append({"uid" => pdu_uid, "port" => port_uid})
+      end
+
+      # Merge pdu information from node description in pdus/ hierachy
+      pdu_attached_nodes.each do |port_uid, node_uid|
+        if pdu.fetch('ports', {}).key?(port_uid)
+          raise "ERROR: Port #{port_uid} of #{pdu_uid}.#{site_uid} is defined both in PDU description and in node #{node_uid} description"
+        end
+        pdu["ports"] ||= {}
+        pdu["ports"][port_uid] = node_uid
+      end
     end
   end
 end
