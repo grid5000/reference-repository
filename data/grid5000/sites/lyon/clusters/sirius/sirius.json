@@ -4,7 +4,1083 @@
   "exotic": false,
   "kavlan": false,
   "metrics": [
-
+    {
+      "description": "Front node ambient temperature reported by BMC, in celsius",
+      "name": "bmc_ambient_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 97,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of node reported by BMC, in watt",
+      "name": "bmc_node_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 91,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of GPU 0 reported by BMC, in watt by BMC, in watt",
+      "labels": {
+        "gpu": "0"
+      },
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 83,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of GPU 1 reported by BMC, in watt by BMC, in watt",
+      "labels": {
+        "gpu": "1"
+      },
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 84,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of GPU 2 reported by BMC, in watt by BMC, in watt",
+      "labels": {
+        "gpu": "2"
+      },
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 85,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of GPU 3 reported by BMC, in watt by BMC, in watt",
+      "labels": {
+        "gpu": "3"
+      },
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 86,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of GPU 4 reported by BMC, in watt by BMC, in watt",
+      "labels": {
+        "gpu": "4"
+      },
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 87,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of GPU 5 reported by BMC, in watt by BMC, in watt",
+      "labels": {
+        "gpu": "5"
+      },
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 88,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of GPU 6 reported by BMC, in watt by BMC, in watt",
+      "labels": {
+        "gpu": "6"
+      },
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 89,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of GPU 7 reported by BMC, in watt by BMC, in watt",
+      "labels": {
+        "gpu": "7"
+      },
+      "name": "bmc_gpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 90,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Airflow reported by BMC, in CFM",
+      "name": "bmc_other_airflow_cfm",
+      "period": 5000,
+      "source": {
+        "id": 2,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of SYS fan 0_1 reported by BMC, in rpm",
+      "labels": {
+        "fan": "01"
+      },
+      "name": "bmc_fan_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 18,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of SYS fan 0_2 reported by BMC, in rpm",
+      "labels": {
+        "fan": "02"
+      },
+      "name": "bmc_fan_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 19,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of SYS fan 1_1 reported by BMC, in rpm",
+      "labels": {
+        "fan": "11"
+      },
+      "name": "bmc_fan_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 20,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of SYS fan 1_2 reported by BMC, in rpm",
+      "labels": {
+        "fan": "12"
+      },
+      "name": "bmc_fan_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 21,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of SYS fan 2_1 reported by BMC, in rpm",
+      "labels": {
+        "fan": "21"
+      },
+      "name": "bmc_fan_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 22,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of SYS fan 2_2 reported by BMC, in rpm",
+      "labels": {
+        "fan": "22"
+      },
+      "name": "bmc_fan_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 23,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of SYS fan 3_1 reported by BMC, in rpm",
+      "labels": {
+        "fan": "31"
+      },
+      "name": "bmc_fan_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 24,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of SYS fan 3_2 reported by BMC, in rpm",
+      "labels": {
+        "fan": "32"
+      },
+      "name": "bmc_fan_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 25,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of HSC0 reported by BMC, in watt",
+      "labels": {
+        "id": "hsc0"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 48,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of HSC1 reported by BMC, in watt",
+      "labels": {
+        "id": "hsc1"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 51,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of HSC2 reported by BMC, in watt",
+      "labels": {
+        "id": "hsc2"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 53,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PSU1 reported by BMC, in watt",
+      "labels": {
+        "psu": "1"
+      },
+      "name": "bmc_psu_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 74,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PSU2 reported by BMC, in watt",
+      "labels": {
+        "psu": "2"
+      },
+      "name": "bmc_psu_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 76,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PSU3 reported by BMC, in watt",
+      "labels": {
+        "psu": "3"
+      },
+      "name": "bmc_psu_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 78,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PSU4 reported by BMC, in watt",
+      "labels": {
+        "psu": "4"
+      },
+      "name": "bmc_psu_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 80,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of BP0 reported by BMC, in celsius",
+      "labels": {
+        "id": "bp0"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 95,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of BP1 reported by BMC, in celsius",
+      "labels": {
+        "id": "bp1"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 96,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of PCI reported by BMC, in celsius",
+      "labels": {
+        "id": "pci"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 98,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of CPU 1 reported by BMC, in celsius",
+      "labels": {
+        "cpu": "1"
+      },
+      "name": "bmc_cpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 99,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of CPU 2 reported by BMC, in celsius",
+      "labels": {
+        "cpu": "2"
+      },
+      "name": "bmc_cpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 100,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of DIMM_AB reported by BMC, in celsius",
+      "labels": {
+        "dimm": "ab"
+      },
+      "name": "bmc_dimm_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 101,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of DIMM_CD reported by BMC, in celsius",
+      "labels": {
+        "dimm": "cd"
+      },
+      "name": "bmc_dimm_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 102,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of DIMM_EF reported by BMC, in celsius",
+      "labels": {
+        "dimm": "ef"
+      },
+      "name": "bmc_dimm_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 103,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of DIMM_GH reported by BMC, in celsius",
+      "labels": {
+        "dimm": "gh"
+      },
+      "name": "bmc_dimm_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 104,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of EXPB reported by BMC, in celsius",
+      "labels": {
+        "id": "expb"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 105,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU0 reported by BMC, in celsius",
+      "labels": {
+        "gpu": "0"
+      },
+      "name": "bmc_gpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 106,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU1 reported by BMC, in celsius",
+      "labels": {
+        "gpu": "1"
+      },
+      "name": "bmc_gpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 107,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU2 reported by BMC, in celsius",
+      "labels": {
+        "gpu": "2"
+      },
+      "name": "bmc_gpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 108,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU3 reported by BMC, in celsius",
+      "labels": {
+        "gpu": "3"
+      },
+      "name": "bmc_gpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 109,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU4 reported by BMC, in celsius",
+      "labels": {
+        "gpu": "4"
+      },
+      "name": "bmc_gpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 110,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU5 reported by BMC, in celsius",
+      "labels": {
+        "gpu": "5"
+      },
+      "name": "bmc_gpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 111,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU6 reported by BMC, in celsius",
+      "labels": {
+        "gpu": "6"
+      },
+      "name": "bmc_gpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 112,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU7 reported by BMC, in celsius",
+      "labels": {
+        "gpu": "7"
+      },
+      "name": "bmc_gpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 113,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU B0 reported by BMC, in celsius",
+      "labels": {
+        "id": "gpub0"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 114,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of GPU B1 reported by BMC, in celsius",
+      "labels": {
+        "id": "gpub1"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 115,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Inlet MB reported by BMC, in celsius",
+      "labels": {
+        "id": "inlet_mb"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 116,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of OCP Mezz reported by BMC, in celsius",
+      "labels": {
+        "id": "ocp_mezz"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 117,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Outlet reported by BMC, in celsius",
+      "labels": {
+        "id": "outlet"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 118,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of PCH reported by BMC, in celsius",
+      "labels": {
+        "id": "pch"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 119,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of PDB reported by BMC, in celsius",
+      "labels": {
+        "id": "pdb"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 120,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Raid Card reported by BMC, in celsius",
+      "labels": {
+        "id": "raidcard"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 121,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of VR CPU 1 reported by BMC, in celsius",
+      "labels": {
+        "id": "vr_cpu1"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 122,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of VR CPU 2 reported by BMC, in celsius",
+      "labels": {
+        "id": "vr_cpu2"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 123,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of VR DIMM_AB reported by BMC, in celsius",
+      "labels": {
+        "id": "vr_dimm_ab"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 124,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of VR DIMM_CD reported by BMC, in celsius",
+      "labels": {
+        "id": "vr_dimm_cd"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 125,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of VR DIMM_EF reported by BMC, in celsius",
+      "labels": {
+        "id": "vr_dimm_ef"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 126,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of VR DIMM_GH reported by BMC, in celsius",
+      "labels": {
+        "id": "vr_dimm_gh"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 127,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of P12V reported by BMC, in volt",
+      "labels": {
+        "id": "p12v"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 128,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of P1V05 reported by BMC, in volt",
+      "labels": {
+        "id": "p1v05"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 129,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of P1V8_AUX reported by BMC, in volt",
+      "labels": {
+        "id": "p1v8_aux"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 130,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of P3V3 reported by BMC, in volt",
+      "labels": {
+        "id": "p3v3"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 131,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of P3V3_AUX reported by BMC, in volt",
+      "labels": {
+        "id": "p3v3_aux"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 132,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of P3V_BAT reported by BMC, in volt",
+      "labels": {
+        "id": "p3v_bat"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 133,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of P5V reported by BMC, in volt",
+      "labels": {
+        "id": "p5v"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 134,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of P5V_AUX reported by BMC, in volt",
+      "labels": {
+        "id": "p5v_aux"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 135,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VR CPU1 reported by BMC, in volt",
+      "labels": {
+        "id": "vr_cpu1"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 136,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VR CPU2 reported by BMC, in volt",
+      "labels": {
+        "id": "vr_cpu2"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 137,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VR DIMM_AB reported by BMC, in volt",
+      "labels": {
+        "id": "vr_dimm_ab"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 138,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VR DIMM_CD reported by BMC, in volt",
+      "labels": {
+        "id": "vr_dimm_cd"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 139,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VR DIMM_EF reported by BMC, in volt",
+      "labels": {
+        "id": "vr_dimm_ef"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 140,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VR DIMM_GH reported by BMC, in volt",
+      "labels": {
+        "id": "vr_dimm_gh"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 141,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Default subset of metrics from Prometheus Node Exporter",
+      "name": "prom_default_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "id": [
+          "node_boot_time_seconds",
+          "node_cpu_frequency_hertz",
+          "node_cpu_seconds_total",
+          "node_filesystem_free_bytes",
+          "node_filesystem_size_bytes",
+          "node_load1",
+          "node_load15",
+          "node_load5",
+          "node_memory_Buffers_bytes",
+          "node_memory_Cached_bytes",
+          "node_memory_MemAvailable_bytes",
+          "node_memory_MemFree_bytes",
+          "node_memory_MemTotal_bytes",
+          "node_memory_Shmem_bytes",
+          "node_memory_SwapFree_bytes",
+          "node_memory_SwapTotal_bytes",
+          "node_network_receive_bytes_total",
+          "node_network_receive_packets_total",
+          "node_network_transmit_bytes_total",
+          "node_network_transmit_packets_total",
+          "node_procs_blocked",
+          "node_procs_running",
+          "kwollect_custom"
+        ],
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Node Exporter",
+      "name": "prom_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "Default subset of metrics from Prometheus Nvidia DCGM Exporter",
+      "name": "prom_nvgpu_default_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "id": [
+          "DCGM_FI_DEV_SM_CLOCK",
+          "DCGM_FI_DEV_MEM_CLOCK",
+          "DCGM_FI_DEV_GPU_TEMP",
+          "DCGM_FI_DEV_POWER_USAGE",
+          "DCGM_FI_DEV_GPU_UTIL",
+          "DCGM_FI_DEV_MEM_COPY_UTIL"
+        ],
+        "port": 9400,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Nvidia DCGM Exporter",
+      "name": "prom_nvgpu_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "port": 9400,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "Input byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input packet counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output packet counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_error_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_error_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    }
   ],
   "model": "NVidia DGX A100",
   "queues": [

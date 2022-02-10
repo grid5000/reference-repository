@@ -18,6 +18,88 @@
     "serial": 1572221610085
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.0",
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 42505076736,
+      "model": "A100-SXM4-40GB",
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.0",
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 42505076736,
+      "model": "A100-SXM4-40GB",
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.0",
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia2",
+      "memory": 42505076736,
+      "model": "A100-SXM4-40GB",
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "8.0",
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia3",
+      "memory": 42505076736,
+      "model": "A100-SXM4-40GB",
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia4": {
+      "compute_capability": "8.0",
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia4",
+      "memory": 42505076736,
+      "model": "A100-SXM4-40GB",
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia5": {
+      "compute_capability": "8.0",
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia5",
+      "memory": 42505076736,
+      "model": "A100-SXM4-40GB",
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia6": {
+      "compute_capability": "8.0",
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia6",
+      "memory": 42505076736,
+      "model": "A100-SXM4-40GB",
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia7": {
+      "compute_capability": "8.0",
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia7",
+      "memory": 42505076736,
+      "model": "A100-SXM4-40GB",
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
     "ram_size": 1099511627776
   },
@@ -145,8 +227,8 @@
       "rate": 1000000000,
       "sriov": false,
       "sriov_totalvfs": 0,
-      "switch": null,
-      "switch_port": null,
+      "switch": "gw",
+      "switch_port": "ethernet1/1/7",
       "vendor": "Intel"
     },
     {
@@ -161,7 +243,8 @@
       "model": "MT28908 Family [ConnectX-6]",
       "mountable": false,
       "mounted": false,
-      "name": "enp225s0f1np1",
+      "name": "enp225s0f0np0",
+      "rate": 0,
       "sriov": false,
       "sriov_totalvfs": 0,
       "vendor": "Mellanox Technologies"
@@ -178,7 +261,8 @@
       "model": "MT28908 Family [ConnectX-6]",
       "mountable": false,
       "mounted": false,
-      "name": "eth2",
+      "name": "enp225s0f1np1",
+      "rate": 0,
       "sriov": false,
       "sriov_totalvfs": 0,
       "vendor": "Mellanox Technologies"
@@ -186,7 +270,7 @@
     {
       "device": "ib0",
       "driver": "mlx5_core",
-      "enabled": true,
+      "enabled": false,
       "firmware_version": "20.28.4000",
       "guid": "0xb8cef60300632c5c",
       "interface": "InfiniBand",
@@ -195,18 +279,17 @@
       "mac": "b8:ce:f6:03:00:63:2c:5c",
       "management": false,
       "model": "MT28908 Family [ConnectX-6]",
-      "mountable": true,
-      "mounted": true,
+      "mountable": false,
+      "mounted": false,
       "name": "ib0",
       "netmask": "255.255.240.0",
-      "network_address": "sirius-1-ib0.lyon.grid5000.fr",
       "rate": 10000000000,
       "vendor": "Mellanox Technologies"
     },
     {
       "device": "ib1",
       "driver": "mlx5_core",
-      "enabled": true,
+      "enabled": false,
       "firmware_version": "20.28.4000",
       "guid": "0xb8cef60300632c54",
       "interface": "InfiniBand",
@@ -214,17 +297,16 @@
       "mac": "b8:ce:f6:03:00:63:2c:54",
       "management": false,
       "model": "MT28908 Family [ConnectX-6]",
-      "mountable": true,
+      "mountable": false,
       "mounted": false,
       "name": "ib1",
-      "network_address": "sirius-1-ib1.lyon.grid5000.fr",
       "rate": 10000000000,
       "vendor": "Mellanox Technologies"
     },
     {
       "device": "ib2",
       "driver": "mlx5_core",
-      "enabled": true,
+      "enabled": false,
       "firmware_version": "20.28.4000",
       "guid": "0xb8cef60300632388",
       "interface": "InfiniBand",
@@ -232,10 +314,9 @@
       "mac": "b8:ce:f6:03:00:63:23:88",
       "management": false,
       "model": "MT28908 Family [ConnectX-6]",
-      "mountable": true,
+      "mountable": false,
       "mounted": false,
       "name": "ib2",
-      "network_address": "sirius-1-ib2.lyon.grid5000.fr",
       "rate": 10000000000,
       "vendor": "Mellanox Technologies"
     },

@@ -68,6 +68,11 @@ class GPURef
       'short_name'         => 'A100',
       'alias'              => 'a100-pcie-40',
     },
+    'A100-SXM4-40GB' => {
+      'cores'              => 6912,
+      'compute_capability' => '8.0',
+      'short_name'         => 'A100',
+    },
     'A40' => {
       'cores'              => 10752,
       'compute_capability' => '8.6',
