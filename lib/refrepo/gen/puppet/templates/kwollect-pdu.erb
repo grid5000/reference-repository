@@ -7,7 +7,7 @@
 pdu.fetch('metrics', []).each {|metric|
   next if metric['source']['protocol'] != 'snmp'
   if metric['source']['id'].include?('%PORT%')
-    pdu['ports'].each {|port_uid, node_uid|
+    pdu.fetch('ports', {}).each {|port_uid, node_uid|
       # Map metric to node only for single PSU
       single_port = ports_by_node[node_uid].length == 1
 -%>

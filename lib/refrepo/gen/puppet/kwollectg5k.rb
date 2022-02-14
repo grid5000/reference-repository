@@ -62,7 +62,7 @@ def generate_puppet_kwollectg5k(options)
       pdu.fetch('metrics', []).each {|metric|
         next if metric['source']['protocol'] != 'snmp'
         if metric['source']['id'].include?('%PORT%')
-          pdu['ports'].each {|port_uid, node_uid|
+          pdu.fetch('ports', {}).each {|port_uid, node_uid|
             if not ports_by_node.has_key?(node_uid)
               ports_by_node[node_uid] = []
             end
