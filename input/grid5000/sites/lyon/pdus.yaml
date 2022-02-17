@@ -406,6 +406,61 @@ pdus:
         phase: 1 ## pas 2 ?
         phase_inverted: false # ??
 
+  wattmetre1:
+    vendor: OmegaWatt
+    model: v2
+    ip: 172.16.63.8
+    metrics:
+      - name: wattmetre_power_watt
+        description: Power consumption per outlet reported by wattmetre, in watt
+        period: 1000
+        optional_period: 20
+        source:
+          protocol: wattmetre
+    ports:
+      0: taurus-1
+      1: taurus-2
+      2: taurus-3
+      3: taurus-4
+      4: taurus-5
+      5: taurus-6
+      6: taurus-7
+      7: nova-1
+      8: nova-2
+      9: nova-3
+      10: nova-4
+      11: nova-5
+      12: nova-6
+      13: nova-7
+      14: nova-8
+      15: nova-9
+      16: nova-10
+      17: nova-11
+      18: nova-12
+      19: nova-13
+      20: nova-14
+      21: nova-15
+      22: nova-16
+      23: nova-17
+      24: nova-18
+      25: nova-19
+      26: nova-20
+      27: nova-21
+      28: nova-22
+      29: nova-23
+      30: taurus-8
+      31: taurus-9
+      32: taurus-10
+      33: taurus-11
+      34: taurus-12
+      35: taurus-13
+      36: taurus-14
+      37: taurus-15
+      38: taurus-16
+      39: orion-1
+      40: orion-3  #orion-2 est retired, on passe direct à orion-3
+      41: orion-4
+
   wattmetrev3-1:
     vendor: OmegaWatt
     model: v3
@@ -431,29 +486,5 @@ pdus:
         description: Power consumption per outlet reported by wattmetre, in watt
         period: 1000
         optional_period: 10
-        source:
-          protocol: wattmetre
-
-  wattmetre1:
-    vendor: OmegaWatt
-    model: v2
-    ip: 172.16.63.8
-    metrics:
-      - name: wattmetre_power_watt
-        description: Power consumption per outlet reported by wattmetre, in watt
-        period: 1000
-        optional_period: 20
-        source:
-          protocol: wattmetre
-
-  wattmetre4:
-    vendor: OmegaWatt
-    model: v2
-    ip: 172.16.63.8
-    metrics:
-      - name: wattmetre_power_watt
-        description: Power consumption per outlet reported by wattmetre, in watt
-        period: 1000
-        optional_period: 20
         source:
           protocol: wattmetre
