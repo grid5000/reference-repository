@@ -38,6 +38,9 @@ def gen_json(output_path)
     end
     begin
       dns_ip = site_h['servers']['dns']['network_adapters']['default']['ip']
+      if !dns_ip
+        puts "ERROR: #{site_id} unable to get DNS IP address"
+      end
     rescue StandardError
       puts "ERROR: #{site_id} unable to get DNS IP address"
     end
