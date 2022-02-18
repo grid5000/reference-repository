@@ -11,10 +11,8 @@ def gen_json(output_path)
 
   site_data_hierarchy.delete_if { |k| k != 'sites' }
   site_data_hierarchy['sites'].each do |site_id, site_h|
-    puts site_id
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
     site_h['clusters'].each do |cluster_id, cluster_h|
-      puts '  ' + cluster_id
       cluster_h.delete_if { |k| k != 'nodes' }
       cluster_h['nodes'].each do |_node_id, node_h|
         node_h.delete_if { |k| k != 'network_adapters' }
@@ -26,7 +24,6 @@ def gen_json(output_path)
       puts "ERROR: #{site_id} has #{routers.length} routers"
     end
     gw = routers[0]
-    puts "  #{site_id} gw: #{gw}"
     site_h['network_equipments'][gw].delete_if { |k| ! ['ip', 'ip6', 'kind'].include? k }
     site_h['servers'].delete_if { |k, _v| k != 'dns' }
     dns_list = site_h['servers'].keys
@@ -41,7 +38,6 @@ def gen_json(output_path)
     end
     begin
       dns_ip = site_h['servers']['dns']['network_adapters']['default']['ip']
-      puts "  #{site_id} DNS IP address: #{dns_ip}"
     rescue StandardError
       puts "ERROR: #{site_id} unable to get DNS IP address"
     end
