@@ -72,6 +72,7 @@ class GPURef
       'cores'              => 6912,
       'compute_capability' => '8.0',
       'short_name'         => 'A100',
+      'alias'              => 'a100-sxm4-40',
     },
     'A40' => {
       'cores'              => 10752,
