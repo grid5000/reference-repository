@@ -46,11 +46,11 @@ def gen_json(output_path)
     end
   end
   # consistent order
-  site_data_hierarchy['sites'].sort_by { |site_id, site_h| site_id }
+  site_data_hierarchy['sites'] = site_data_hierarchy['sites'].sort_by { |site_id, site_h| site_id }.to_h
   site_data_hierarchy['sites'].each { |site_id, site_h|
-    site_h['clusters'].sort_by { |cluster_id, cluster_h| cluster_id }
+    site_h['clusters'] = site_h['clusters'].sort_by { |cluster_id, cluster_h| cluster_id }.to_h
     site_h['clusters'].each { |cluster_id, cluster_h|
-      cluster_h['nodes'].sort_by { |node_id, node_h| node_id[/(\d+)/].to_i }
+      cluster_h['nodes'] = cluster_h['nodes'].sort_by { |node_id, node_h| node_id[/(\d+)/].to_i }.to_h
     }
   }
 
