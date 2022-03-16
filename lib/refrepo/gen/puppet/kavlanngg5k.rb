@@ -45,6 +45,15 @@ def gen_json(output_path)
       puts "ERROR: #{site_id} unable to get DNS IP address"
     end
   end
+  # consistent order
+  site_data_hierarchy['sites'].sort_by { |site_id, site_h| site_id }
+  site_data_hierarchy['sites'].each { |site_id, site_h|
+    site_h['clusters'].sort_by { |cluster_id, cluster_h| cluster_id }
+    site_h['clusters'].each { |cluster_id, cluster_h|
+      cluster_h['nodes'].sort_by { |node_id, node_h| node_id[/(\d+)/].to_i }
+    }
+  }
+
   output_file = File.new(output_path, 'w')
   output_file.write(JSON.pretty_generate(site_data_hierarchy))
 end
