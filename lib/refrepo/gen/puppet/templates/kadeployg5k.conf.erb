@@ -107,7 +107,7 @@ pxe:
     localboot: *id001
 automata:
   macrosteps:
-    SetDeploymentEnv:
+    SetDeploymentMiniOS:
 <%- if data['trusted_env'] -%>
     - timeout: <%= data['deployment.timeout'] %>
       type: Trusted
