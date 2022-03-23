@@ -20,7 +20,7 @@ trusted_deployment:
   user: oar
 <% if data['trusted_env'] %>
   envs:
-    - name: debian11-std
+    - name: <%= cluster['nodes'].values.first['software']['standard-environment'] %>
       user: deploy
 <% end %>
 kexec:
