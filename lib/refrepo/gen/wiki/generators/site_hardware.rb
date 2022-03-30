@@ -102,6 +102,18 @@ class SiteHardwareGenerator < WikiGenerator
     [table_columns, table_data]
   end
 
+  def self.get_queue_drawgantt_url(site, queue)
+    url = "https://intranet.grid5000.fr/oar/#{site.capitalize}/"
+    if (queue == 'production')
+      url += "drawgantt-svg-prod/"
+    #elsif (queue == 'testing')
+    #  url += "drawgantt-svg/?filter=with%20testing" # Here we miss a filter "only testing"
+    else
+      url += "drawgantt-svg/"
+    end
+    url
+  end
+
   def self.generate_description(site)
     table_columns = []
     text_data = []
@@ -117,7 +129,12 @@ class SiteHardwareGenerator < WikiGenerator
     # Alphabetic ordering of queue names matches what we want: "default" < "production" < "testing"
     hardware[site].group_by { |cluster_uid, cluster_hash| cluster_hash.map { |k, v| v['queue']}.first }.sort.each { |queue, clusters|
       queue = (queue.nil? || queue.empty?) ? 'default' : queue
-      text_data << "\n= Clusters in #{queue} queue ="
+      queue_drawgantt_url = get_queue_drawgantt_url(site, queue)
+      if (queue != 'testing')
+        text_data << "\n= Clusters in the [#{queue_drawgantt_url} #{queue} queue] ="
+      else
+        text_data << "\n= Clusters in the #{queue} queue ="
+      end
       clusters.sort.to_h.each { |cluster_uid, cluster_hash|
         subclusters = cluster_hash.keys.count != 1
         cluster_nodes = cluster_hash.keys.flatten.count
@@ -129,7 +146,8 @@ class SiteHardwareGenerator < WikiGenerator
         access_conditions << "exotic job type" if cluster_hash.map { |k, v| v['exotic']}.first
         table_columns = ['Cluster',  'Queue', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + (site_accelerators.zero? ? [] : ['Accelerators'])
 
-        text_data <<  ["\n== #{cluster_uid} ==\n"]
+        cluster_drawgantt_url = get_queue_drawgantt_url(site, queue)+"?filter=#{cluster_uid}%20only"
+        text_data <<  ["\n== [#{cluster_drawgantt_url} #{cluster_uid}] ==\n"]
         text_data << ["'''#{cluster_nodes} #{G5K.pluralize(cluster_nodes, 'node')}, #{cluster_cpus} #{G5K.pluralize(cluster_cpus, 'cpu')}, #{cluster_cores} #{G5K.pluralize(cluster_cores, 'core')}" + (subclusters == true ? ",''' split as follows due to differences between nodes " : "''' ") + "([https://public-api.grid5000.fr/stable/sites/#{site}/clusters/#{cluster_uid}/nodes.json?pretty=1 json])"]
 
         reservation_cmd = "\n{{Term|location=f#{site}|cmd="
