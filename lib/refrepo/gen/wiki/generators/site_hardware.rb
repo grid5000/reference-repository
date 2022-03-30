@@ -23,8 +23,8 @@ class SiteHardwareGenerator < WikiGenerator
       "{{Portal|User}}\n" +
       "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
       "'''See also:''' [[#{@site.capitalize}:Network|Network topology for #{@site.capitalize}]]\n" +
-      "\n= Summary =\n" +
-      "'''#{generate_oneline_summary}'''\n" +
+      "#{SiteHardwareGenerator.generate_header_summary({@site => G5K::get_global_hash['sites'][@site]})}\n" +
+      "= Clusters =\n" +
       self.class.generate_summary(@site, false) +
       (has_reservable_disks ? "''*: disk is [[Disk_reservation|reservable]]''" : '') +
       self.class.generate_description(@site) +
@@ -42,21 +42,53 @@ class SiteHardwareGenerator < WikiGenerator
     MW.generate_table('class="wikitable sortable"', table_columns, table_data) + "\n"
   end
 
-  def generate_oneline_summary
-    h = G5K::get_global_hash['sites'][@site]
-    # remove retired nodes
-    # FIXME this should probably move to a helper
-    h['clusters'].each_pair do |cl, v|
-      v['nodes'].delete_if { |n, v2| v2['status'] == 'retired' }
-    end
-    h['clusters'].delete_if { |k, v| v['nodes'].empty? }
+  def self.generate_header_summary(sites_hash)
+    sites = sites_hash.length
+    clusters = 0
+    nodes = 0
+    cores = 0
+    gpus = 0
+    hdds = 0
+    ssds = 0
+    storage_space = 0
+    ram = 0
+    pmem = 0
+    flops = 0
 
-    clusters = h['clusters'].length
-    nodes = h['clusters'].inject(0) { |a, b| a + b[1]['nodes'].values.length }
-    cores = h['clusters'].inject(0) { |a, b| cnodes = b[1]['nodes'].values ; a + cnodes.length * cnodes.first['architecture']['nb_cores'] }
-    flops = h['clusters'].inject(0) { |a, b| cnodes = b[1]['nodes'].values ; a + cnodes.length * (cnodes.first['performance']['node_flops'] rescue 0) }
+    sites_hash.sort.to_h.each do |site_uid, site_hash|
+      clusters += site_hash['clusters'].length
+      site_hash['clusters'].sort.to_h.each do |cluster_uid, cluster_hash|
+        cluster_hash['nodes'].sort.to_h.each do |node_uid, node_hash|
+          next if node_hash['status'] == 'retired'
+          nodes += 1
+          cores += node_hash['architecture']['nb_cores']
+          ram += node_hash['main_memory']['ram_size']
+          pmem += node_hash['main_memory']['pmem_size'] if node_hash['main_memory']['pmem_size']
+          if node_hash['gpu_devices']
+            gpus += node_hash['gpu_devices'].length
+          end
+          ssds += node_hash['storage_devices'].select { |d| d['storage'] == 'SSD' }.length
+          hdds += node_hash['storage_devices'].select { |d| d['storage'] == 'HDD' }.length
+          node_hash['storage_devices'].each do |i|
+            storage_space += i['size']
+          end
+          flops += node_hash['performance']['node_flops']
+        end
+      end
+    end
     tflops = sprintf("%.1f", flops.to_f / (10**12))
-    return "#{clusters} cluster#{clusters > 1 ? 's' : ''}, #{nodes} node#{nodes > 1 ? 's' : ''}, #{cores} core#{cores > 1 ? 's' : ''}, #{tflops} TFLOPS"
+
+    summary  = "= Summary =\n"
+    summary += sites > 1 ? "* #{sites} sites\n":''
+    summary += "* #{clusters} cluster" + (clusters > 1 ? "s":'') + "\n"
+    summary += "* #{nodes} nodes\n"
+    summary += "* #{cores} CPU cores\n"
+    summary += gpus > 0 ? "* #{gpus} GPUs\n":''
+    summary += "* #{G5K.get_size(ram)} RAM"
+    summary += pmem > 0 ? " + #{G5K.get_size(pmem)} PMEM\n":"\n"
+    summary += (ssds > 0 ? "* #{ssds} SSDs and ":"* ") + "#{hdds} HDDs on nodes (total: #{G5K.get_size(storage_space, 'metric')})\n"
+    summary += "* #{tflops} TFLOPS (excluding GPUs)\n"
+    summary
   end
 
   def self.generate_summary(site, with_sites)
