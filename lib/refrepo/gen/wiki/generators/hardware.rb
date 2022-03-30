@@ -14,60 +14,12 @@ class G5KHardwareGenerator < WikiGenerator
     @generated_content = "__NOEDITSECTION__\n"
     @generated_content += "{{Portal|User}}\n"
     @generated_content += "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
-    @generated_content += generate_summary
+    @generated_content += SiteHardwareGenerator.generate_header_summary(@global_hash['sites'])
     @generated_content += "\n= Clusters =\n"
     @generated_content += SiteHardwareGenerator.generate_all_clusters
     @generated_content += generate_totals
     @generated_content += MW.italic(MW.small(generated_date_string))
     @generated_content += MW::LINE_FEED
-  end
-
-  def generate_summary
-    sites = @global_hash['sites'].length
-    clusters = 0
-    nodes = 0
-    cores = 0
-    gpus = 0
-    hdds = 0
-    ssds = 0
-    storage_space = 0
-    ram = 0
-    pmem = 0
-    flops = 0
-
-    @global_hash['sites'].sort.to_h.each do |site_uid, site_hash|
-      clusters += site_hash['clusters'].length
-      site_hash['clusters'].sort.to_h.each do |cluster_uid, cluster_hash|
-        cluster_hash['nodes'].sort.to_h.each do |node_uid, node_hash|
-          next if node_hash['status'] == 'retired'
-          nodes += 1
-          cores += node_hash['architecture']['nb_cores']
-          ram += node_hash['main_memory']['ram_size']
-          pmem += node_hash['main_memory']['pmem_size'] if node_hash['main_memory']['pmem_size']
-          if node_hash['gpu_devices']
-            gpus += node_hash['gpu_devices'].length
-          end
-          ssds += node_hash['storage_devices'].select { |d| d['storage'] == 'SSD' }.length
-          hdds += node_hash['storage_devices'].select { |d| d['storage'] == 'HDD' }.length
-          node_hash['storage_devices'].each do |i|
-            storage_space += i['size']
-          end
-          flops += node_hash['performance']['node_flops']
-        end
-      end
-    end
-    tflops = sprintf("%.1f", flops.to_f / (10**12))
-    return <<-EOF
-= Summary =
-* #{sites} sites
-* #{clusters} clusters
-* #{nodes} nodes
-* #{cores} CPU cores
-* #{gpus} GPUs
-* #{G5K.get_size(ram)} RAM + #{G5K.get_size(pmem)} PMEM
-* #{ssds} SSDs and #{hdds} HDDs on nodes (total: #{G5K.get_size(storage_space, 'metric')})
-* #{tflops} TFLOPS (excluding GPUs)
-    EOF
   end
 
   def generate_totals
