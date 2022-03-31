@@ -186,7 +186,7 @@ class SiteHardwareGenerator < WikiGenerator
         reservation_cmd += "<code class=\"command\">oarsub</code> "
         reservation_cmd += "<code class=\"replace\">-q #{queue}</code> " if queue != 'default'
         reservation_cmd += "<code class=\"replace\">-t exotic</code> " if cluster_hash.map { |k, v| v['exotic']}.first
-        reservation_cmd += "<code class=\"env\">-p \"cluster='#{cluster_uid}'\"</code> "
+        reservation_cmd += "<code class=\"env\">-p #{cluster_uid}</code> "
         reservation_cmd += "<code>-I</code>"
         reservation_cmd += "}}\n"
         text_data << "\n'''Reservation example:'''"
