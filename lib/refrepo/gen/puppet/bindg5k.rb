@@ -225,9 +225,9 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       new_record = DNS::Zone::RR::A.new
       new_record.address = net_hash['ip']
       new_record.label = "#{cluster_uid}-#{node_id}"
-      new_record.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
+      new_record.label += "-#{net_uid}" unless net_hash['mounted'] && /^(eth|fpga)[0-9]$/.match(net_uid)
       records << new_record
-      if /^eth[0-9]$/.match(net_uid) && net_hash['pname'] != nil && !net_hash['pname'].empty?
+      if /^(eth|fpga)[0-9]$/.match(net_uid) && net_hash['pname'] != nil && !net_hash['pname'].empty?
         check_interface_name(node_uid, net_uid, net_hash)
         cname_record = DNS::Zone::RR::CNAME.new
         cname_record.label = "#{cluster_uid}-#{node_id}-#{net_hash['pname']}"
@@ -239,10 +239,10 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       new_record_ipv6 = DNS::Zone::RR::AAAA.new
       new_record_ipv6.address = net_hash['ip6']
       new_record_ipv6.label = "#{cluster_uid}-#{node_id}"
-      new_record_ipv6.label += "-#{net_uid}" unless net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
+      new_record_ipv6.label += "-#{net_uid}" unless net_hash['mounted'] && /^(eth|fpga)[0-9]$/.match(net_uid)
       new_record_ipv6.label += '-ipv6'
       records << new_record_ipv6
-      if /^eth[0-9]$/.match(net_uid) && net_hash['pname'] != nil && !net_hash['pname'].empty?
+      if /^(eth|fpga)[0-9]$/.match(net_uid) && net_hash['pname'] != nil && !net_hash['pname'].empty?
         check_interface_name(node_uid, net_uid, net_hash)
         cname_record_ipv6 = DNS::Zone::RR::CNAME.new
         cname_record_ipv6.label = "#{cluster_uid}-#{node_id}-#{net_hash['pname']}-ipv6"
@@ -251,7 +251,7 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       end
     end
 
-    if net_hash['mounted'] && /^eth[0-9]$/.match(net_uid)
+    if net_hash['mounted'] && /^(eth|fpga)[0-9]$/.match(net_uid)
       # CNAME enabled for primary interface (node-id-iface cname node-id)
       if net_hash['ip']
         cname_record = DNS::Zone::RR::CNAME.new
@@ -293,7 +293,7 @@ def get_node_kavlan_records(_cluster_uid, node_uid, network_adapters, kavlan_ada
 
     next unless net_hash['ip'] || net_hash['ip6']
 
-    net_primaries = network_adapters.select{ |u, h| h['mounted'] && /^eth[0-9]$/.match(u) } # list of primary interfaces
+    net_primaries = network_adapters.select{ |u, h| h['mounted'] && /^(eth|fpga)[0-9]$/.match(u) } # list of primary interfaces
     net_uid_eth, net_uid_kavlan = net_uid.to_s.scan(/^([^-]*)-(.*)$/).first # split 'eth0-kavlan-1'
 
     if net_hash['ip']
@@ -414,7 +414,7 @@ def sort_records(records)
       sort_by = (record.label.match(/ipv6/).nil? ? [0] : [1]) # -ipv6 at end
       sort_by << label_array.length # sort by record 'type'
       sort_by << record.label.scan(/-(\d+)-?/).flatten.map{ |i| i.to_i} # sort by node then kavlan number
-      intf = record.label.scan(/((eth|en)\w+)-?/).flatten.first # detect intf
+      intf = record.label.scan(/((eth|en|fpga)\w+)-?/).flatten.first # detect intf
       unless intf.nil?
         sort_by << (record.label.match(/eth/).nil? ? [1] : [0]) # ethX first
         sort_by << intf.scan(/\d+/).reverse.map{ |i| i.to_i } # sort intf
