@@ -2,6 +2,7 @@
 pdus:
   pdu1a:
     # Rangée 9, 1ere armoire, PDU gauche
+    # Bank 1&2: Phase 1, Bank 3&4: Phase 3, Bank 5&6: Phase 2
     vendor: APC
     model: AP8886
     ip: 172.17.63.201
@@ -10,41 +11,42 @@ pdus:
       14: #bank2
         uid: neowise-1
         wattmetre: wattmetrev3-1
-        module: "04000014" # ou 16?
+        module: "04000016"
         channel: 1
         phase: 1
         phase_inverted: true
       15: #bank2
         uid: neowise-2
         wattmetre: wattmetrev3-1
-        module: "04000014" # ou 16?
+        module: "04000016"
         channel: 2
         phase: 1
         phase_inverted: true
       20: #bank3
         uid: neowise-3
         wattmetre: wattmetrev3-1
-        module: "04000014" # ou 16?
+        module: "04000016"
         channel: 3
         phase: 3
         phase_inverted: true
       21: #bank3
         uid: neowise-4
         wattmetre: wattmetrev3-1
-        module: "04000014" # ou 16?
+        module: "04000016"
         channel: 4
         phase: 3
         phase_inverted: true
-      28: #bank4
+      34: #bank5
         uid: neowise-5
         wattmetre: wattmetrev3-1
-        module: "04000014" # ou 16?
+        module: "04000016"
         channel: 5
-        phase: 3
+        phase: 2
         phase_inverted: true
 
   pdu1b:
     # Rangée 9, 1ere armoire, PDU droite
+    # Bank 1&2: Phase 1, Bank 3&4: Phase 3, Bank 5&6: Phase 2
     vendor: APC
     model: AP8886
     ip: 172.17.63.202
@@ -53,37 +55,37 @@ pdus:
       14: #bank2
         uid: neowise-1
         wattmetre: wattmetrev3-1
-        module: "04000016" # ou 14?
+        module: "04000014"
         channel: 1
         phase: 1
         phase_inverted: true
       15: #bank2
         uid: neowise-2
         wattmetre: wattmetrev3-1
-        module: "04000016" # ou 14?
+        module: "04000014"
         channel: 2
         phase: 1
-        phase_inverted: true #?
+        phase_inverted: true
       20: #bank3
         uid: neowise-3
         wattmetre: wattmetrev3-1
-        module: "04000016" # ou 14?
+        module: "04000014"
         channel: 3
         phase: 3
         phase_inverted: true
-      21: #bank3
+      35: #bank5
         uid: neowise-4
         wattmetre: wattmetrev3-1
-        module: "04000016" # ou 14?
+        module: "04000014"
         channel: 4
-        phase: 3
+        phase: 2
         phase_inverted: true
-      28: #bank4
+      34: #bank5
         uid: neowise-5
         wattmetre: wattmetrev3-1
-        module: "04000016" # ou 14?
+        module: "04000014"
         channel: 5
-        phase: 3
+        phase: 2
         phase_inverted: true
 
   pdu3a:
@@ -156,14 +158,14 @@ pdus:
       b6:
         uid: gemini-2
         wattmetre: wattmetrev3-1
-        module: "04000010"
+        module: "04000020"
         channel: 1
         phase: 2
         phase_inverted: true
       b7:
         uid: pyxis-4
         wattmetre: wattmetrev3-1
-        module: "04000010"
+        module: "04000020"
         channel: 6
         phase: 2
         phase_inverted: true
@@ -177,14 +179,14 @@ pdus:
       c1:
         uid: gemini-2
         wattmetre: wattmetrev3-1
-        module: "04000010"
+        module: "04000020"
         channel: 2
         phase: 3
         phase_inverted: true
       c2:
         uid: pyxis-3
         wattmetre: wattmetrev3-1
-        module: "04000010"
+        module: "04000020"
         channel: 5
         phase: 3
         phase_inverted: true
@@ -205,7 +207,7 @@ pdus:
         phase_inverted: true
 
   pdu3b:
-    # Rangée 9, 2ere armoire, PDU gauche
+    # Rangée 9, 2ere armoire, PDU droite
     vendor: Eaton
     model: EMAB20
     ip: 172.17.63.206
@@ -266,14 +268,14 @@ pdus:
         uid: gemini-1
         wattmetre: wattmetrev3-1
         module: "04000011"
-        channel: 3 #?
+        channel: 3
         phase: 2
         phase_inverted: true
       b6:
         uid: gemini-2
         wattmetre: wattmetrev3-1
-        module: "04000010"
-        channel: 3 #?
+        module: "04000020"
+        channel: 3
         phase: 2
         phase_inverted: true
       b8:
@@ -299,9 +301,9 @@ pdus:
         phase_inverted: true
       c3: switch-ib
       c4:
-        uid: gemini-2 #-2?
+        uid: gemini-2
         wattmetre: wattmetrev3-1
-        module: "04000010"
+        module: "04000020"
         channel: 4
         phase: 3
         phase_inverted: true
@@ -322,6 +324,7 @@ pdus:
 
   pdu2a:
     # Rangée 8, 1ere armoire, PDU droite
+    # Bank 1&2: Phase 1, Bank 3&4: Phase 3, Bank 5&6: Phase 2
     vendor: APC
     model: AP8886
     ip: 172.17.63.204
@@ -330,41 +333,42 @@ pdus:
       14: #bank2
         uid: neowise-6
         wattmetre: wattmetrev3-2
-        module: "04000012" #|15?
+        module: "04000015"
         channel: 1
         phase: 1
         phase_inverted: true
       15: #bank2
         uid: neowise-7
         wattmetre: wattmetrev3-2
-        module: "04000012" #|15?
+        module: "04000015"
         channel: 2
         phase: 1
         phase_inverted: true
       20: #bank3
         uid: neowise-8
         wattmetre: wattmetrev3-2
-        module: "04000012" #|15?
+        module: "04000015"
         channel: 3
-        phase: 2
+        phase: 3
         phase_inverted: true
       21: #bank3
         uid: neowise-9
         wattmetre: wattmetrev3-2
-        module: "04000012" #|15?
+        module: "04000015"
         channel: 4
-        phase: 2
+        phase: 3
         phase_inverted: true
       28: #bank4
         uid: neowise-10
         wattmetre: wattmetrev3-2
-        module: "04000012" #|15?
+        module: "04000015"
         channel: 5
         phase: 2
         phase_inverted: true
 
   pdu2b:
     # Rangée 8, 1ere armoire, PDU gauche
+    # Bank 1&2: Phase 1, Bank 3&4: Phase 2, Bank 5&6: Phase 3
     vendor: APC
     model: AP8886
     ip: 172.17.63.204
@@ -373,38 +377,38 @@ pdus:
       14: #bank2
         uid: neowise-6
         wattmetre: wattmetrev3-2
-        module: "04000015" # ou 12?
+        module: "04000012"
         channel: 1
         phase: 1
         phase_inverted: true
       15: #bank2
         uid: neowise-7
         wattmetre: wattmetrev3-2
-        module: "04000015" # ou 12?
+        module: "04000012"
         channel: 2
         phase: 1
         phase_inverted: true
       20: #bank3
         uid: neowise-8
         wattmetre: wattmetrev3-2
-        module: "04000015" # ou 12?
+        module: "04000012"
         channel: 3
-        phase: 1 ## pas 2 ?
-        phase_inverted: false # ??
+        phase: 2
+        phase_inverted: true
       21: #bank3
         uid: neowise-9
         wattmetre: wattmetrev3-2
-        module: "04000015" # ou 12?
+        module: "04000012"
         channel: 4
-        phase: 1 ## pas 2 ?
-        phase_inverted: false # ??
+        phase: 2
+        phase_inverted: true
       28: #bank4
         uid: neowise-10
         wattmetre: wattmetrev3-2
-        module: "04000015" # ou 12?
+        module: "04000012"
         channel: 5
-        phase: 1 ## pas 2 ?
-        phase_inverted: false # ??
+        phase: 3
+        phase_inverted: true
 
   wattmetre1:
     vendor: OmegaWatt
