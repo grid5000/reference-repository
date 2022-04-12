@@ -36,7 +36,7 @@ class HashValidator::Validator::MultiHashValidator < HashValidator::Validator::B
     end
 
     # Cleanup errors (remove any empty nested errors)
-    errors.delete_if { |k,v| v.empty? }
+    errors.delete_if { |_k,v| v.empty? }
   end
 end
 

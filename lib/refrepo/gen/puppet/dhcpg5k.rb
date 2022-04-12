@@ -67,8 +67,8 @@ def generate_puppet_dhcpg5k(options)
     #
 
     # Relocate ip/mac info of MIC
-    site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
-      cluster_hash.fetch('nodes').each { |node_uid, node_hash|
+    site_hash.fetch("clusters").each { |_cluster_uid, cluster_hash|
+      cluster_hash.fetch('nodes').each { |_node_uid, node_hash|
         next if node_hash == nil || node_hash['status'] == 'retired'
 
         if node_hash['mic'] && node_hash['mic']['ip'] && node_hash['mic']['mac']
@@ -113,7 +113,7 @@ def generate_puppet_dhcpg5k(options)
 
     if ! site_hash['pdus'].nil?
       # Relocate ip/mac info of PDUS
-      site_hash['pdus'].each { |pdu_uid, pdu_hash|
+      site_hash['pdus'].each { |_pdu_uid, pdu_hash|
         if pdu_hash['ip'] && pdu_hash['mac']
           pdu_hash['network_adapters'] ||= {}
           pdu_hash['network_adapters']['pdu'] ||= {}

@@ -2,9 +2,7 @@
 
 class StatusGenerator < WikiGenerator
 
-  def initialize(page_name)
-    super(page_name)
-  end
+  
 
   def generate_content(_options)
     @global_hash = get_global_hash

@@ -58,7 +58,7 @@ def generate_puppet_lanpowerg5k(options)
       cluster_hash['user'] ||= cluster_credentials.split(' ')[0]
       cluster_hash['password'] ||= cluster_credentials.split(' ')[1]
 
-      cluster_hash.reject!{ |k,v| v == nil }
+      cluster_hash.reject!{ |_k,v| v == nil }
 
       h['clusters'][cluster_uid] = cluster_hash
 

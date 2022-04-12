@@ -74,9 +74,9 @@ end
 
 def gen_stub(file, site, cluster, node_count = 9999)
   data = load_data_hierarchy
-  data['sites'].delete_if { |k, v| site != k }
-  data['sites'].each_pair do |site_uid, s|
-    s['clusters'].delete_if { |k, v| cluster != k }
+  data['sites'].delete_if { |k, _v| site != k }
+  data['sites'].each_pair do |_site_uid, s|
+    s['clusters'].delete_if { |k, _v| cluster != k }
   end
   data.delete('network_equipments')
   data['sites']['fakesite'] = data['sites'][site]

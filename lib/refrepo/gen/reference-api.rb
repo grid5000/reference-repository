@@ -43,7 +43,7 @@ def generate_reference_api
     grid_path.mkpath()
 
     write_json(grid_path.join("#{global_hash['uid']}.json"),
-               global_hash.reject {|k, v| k == "sites" || k == "network_equipments" || k == "disk_vendor_model_mapping"})
+               global_hash.reject {|k, _v| k == "sites" || k == "network_equipments" || k == "disk_vendor_model_mapping"})
   end
 
   puts "Generating the reference api:\n\n"
@@ -76,7 +76,7 @@ def generate_reference_api
     site_path.mkpath()
 
     write_json(site_path.join("#{site_uid}.json"),
-               site.reject {|k, v| k == "clusters" || k == "networks" || k == "pdus" || k == "dom0" || k == "laptops" || k == "servers" })
+               site.reject {|k, _v| k == "clusters" || k == "networks" || k == "pdus" || k == "dom0" || k == "laptops" || k == "servers" })
 
     #
     # Write pdu info
@@ -118,7 +118,7 @@ def generate_reference_api
 
       # Write cluster info w/o nodes entries
       write_json(cluster_path.join("#{cluster_uid}.json"),
-                 cluster.reject {|k, v| k == "nodes"})
+                 cluster.reject {|k, _v| k == "nodes"})
 
       #
       # Write node info
@@ -133,12 +133,12 @@ def generate_reference_api
         node.delete("status")
 
         # Convert hashes to arrays
-        node["storage_devices"] = node["storage_devices"].sort_by{ |sd, v| v['id'] }.map { |a| a[1] }
+        node["storage_devices"] = node["storage_devices"].sort_by{ |_sd, v| v['id'] }.map { |a| a[1] }
 
-        node["network_adapters"].each { |key, hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
+        node["network_adapters"].each { |key, _hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
         node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "ib4", "ib5", "ib6", "ib7", "ibs1","bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1"]).values
 
-        node["memory_devices"].each { |key, hash| node["memory_devices"][key]["device"] = key; } # Add "device: dimm_a1" within the hash
+        node["memory_devices"].each { |key, _hash| node["memory_devices"][key]["device"] = key; } # Add "device: dimm_a1" within the hash
         node["memory_devices"] = node["memory_devices"].sort_by { |d, _|
           [d.gsub(/dimm_(\d+)/, '\1').to_i,
            d.gsub(/^dimm_([A-z]+)(\d+)$/, '\1'),
@@ -157,7 +157,7 @@ def generate_reference_api
   #
 
   # rename entry for the all-in-on json file
-  global_hash["sites"].each do |site_uid, site|
+  global_hash["sites"].each do |_site_uid, site|
     site["network_equipments"] = site.delete("networks")
   end
 

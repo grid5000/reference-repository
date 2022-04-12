@@ -610,7 +610,7 @@ def fetch_site_records(site, type)
 
   site.fetch("clusters", []).sort.each { |cluster_uid, cluster|
 
-    cluster.fetch('nodes').select { |node_uid, node|
+    cluster.fetch('nodes').select { |_node_uid, node|
       node != nil && node["status"] != "retired" && node.has_key?('network_adapters')
     }.each_sort_by_node_uid { |node_uid, node|
 

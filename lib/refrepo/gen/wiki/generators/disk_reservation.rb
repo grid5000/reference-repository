@@ -2,9 +2,7 @@
 
 class DiskReservationGenerator < WikiGenerator
 
-  def initialize(page_name)
-    super(page_name)
-  end
+  
 
   def generate_content(_options)
     table_columns = ["Site", "Cluster", "Number of nodes", "Number of reservable disks per node"]

@@ -103,8 +103,8 @@ def check_network_description(options)
         #puts "This is an HPC switch. ERRORs will be non-fatal."
         oldok = ok
       end
-      eq['linecards'].each_with_index do |lc, lc_i|
-        (lc['ports'] || []).each_with_index do |port, port_i|
+      eq['linecards'].each_with_index do |lc, _lc_i|
+        (lc['ports'] || []).each_with_index do |port, _port_i|
           # skip if empty port
           next if port == {}
 
@@ -370,7 +370,7 @@ def generate_dot(netnodes, links, site)
       end
     else
       # only one interface
-      l[0][1].each_pair do |iface, target|
+      l[0][1].each_pair do |_iface, target|
         r = "#{target['rate'] / 10**9}G"
         content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",len=2.0];"
       end

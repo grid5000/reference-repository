@@ -41,7 +41,7 @@ OptionParser.new do |opts|
     options[:clusters] = s
   end
 
-  opts.on('--clean', 'Remove content from output/ after execution') do |s|
+  opts.on('--clean', 'Remove content from output/ after execution') do |_s|
     options[:rm_output] = true
   end
 

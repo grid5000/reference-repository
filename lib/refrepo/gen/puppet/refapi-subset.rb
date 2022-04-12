@@ -19,16 +19,16 @@ def gen_json(site, output_path)
   site_data_hierarchy.delete_if { |key| key != 'sites' }
   site_data_hierarchy['sites'].delete_if { |key| key != site }
   site_data_hierarchy['sites'][site].delete_if { |key| key != 'clusters' }
-  site_data_hierarchy['sites'][site]['clusters'].to_h.each do |cluster_uid, cluster_hash|
+  site_data_hierarchy['sites'][site]['clusters'].to_h.each do |_cluster_uid, cluster_hash|
     cluster_hash.delete_if { |key| key != 'nodes' }
-    cluster_hash['nodes'].to_h.each do |node_uid, node_hash|
+    cluster_hash['nodes'].to_h.each do |_node_uid, node_hash|
       node_hash.delete_if { |key| key != 'software' }
       node_hash['software'].delete_if { |key| key != 'standard-environment' }
     end
 
     cluster_hash['nodes'] = cluster_hash['nodes'].sort_by{|node_uid, _node_hash| node_uid[/(\d+)/].to_i }.to_h
   end
-  site_data_hierarchy['sites'][site]['clusters'] = site_data_hierarchy['sites'][site]['clusters'].sort_by{ |cluster_uid, cluster_hash| cluster_uid }.to_h
+  site_data_hierarchy['sites'][site]['clusters'] = site_data_hierarchy['sites'][site]['clusters'].sort_by{ |cluster_uid, _cluster_hash| cluster_uid }.to_h
 
   output_file = File.new(output_path, 'w')
   output_file.write(JSON.pretty_generate(site_data_hierarchy))
