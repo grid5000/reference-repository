@@ -1,5 +1,6 @@
 ---
 stages:
+  - lint
   - validate
   - generate
   - deploy
@@ -9,14 +10,10 @@ include:
     ref: master
     file: '/sonarqube.yml'
 
-rubocop:
-  stage: validate
-  tags:
-    - grid5000-docker
-  image: debian:buster
-  script:
-    - apt-get update && apt-get -y install rubocop
-    - rubocop -l --fail-level W
+include:
+  - project: 'grid5000/grid5000-gitlab-templates'
+    ref: master
+    file: '/rubocop.yml'
 
 validate-data:
   stage: validate
