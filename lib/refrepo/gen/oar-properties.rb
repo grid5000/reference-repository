@@ -449,6 +449,11 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
              else
                'NO'
              end
+  h['fpga'] = if node['fpga']
+              'YES'
+            else
+              'NO'
+            end
 
   h['wattmeter'] = cluster.fetch('metrics', []).any?{|metric| metric['name'].match(/wattmetre_power_watt|pdu_outlet_power_watt/)} ? "YES" : "NO"
 
