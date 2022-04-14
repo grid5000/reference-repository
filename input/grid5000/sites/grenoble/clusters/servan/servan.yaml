@@ -44,19 +44,15 @@ nodes:
         enabled: true
         management: false
         mountable: true
-        mounted: true
-        mac: 00:00:00:00:00:01
+        mounted: false
         kavlan: true
-        name: eno37
       fpga1:
         interface: Ethernet
         management: false
         enabled: true
         mountable: true
-        mounted: true
-        mac: 00:00:00:00:00:00
+        mounted: false
         kavlan: true
-        name: eno38
     storage_devices:
       pci-0000:c3:00.0-nvme-1:
         interface: NVME
@@ -64,4 +60,16 @@ nodes:
       pci-0000:c4:00.0-nvme-1:
         interface: NVME
         id: disk1
+  servan-1:
+    network_adapters:
+      fpga0:
+        mac: 00:0A:35:06:4A:DC
+      fpga1:
+        mac: 00:0A:35:06:4A:DD
+  servan-2:
+    network_adapters:
+      fpga0:
+        mac: 00:00:00:00:00:00
+      fpga1:
+        mac: 11:11:11:11:11:11
 

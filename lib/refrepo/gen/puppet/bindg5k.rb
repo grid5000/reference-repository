@@ -267,7 +267,7 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
       end
     end
 
-    #Handle interface aliases
+    #Handle interface aliases 
     if (net_hash["alias"])
       net_hash["alias"].each { |cname|
         cname_record = DNS::Zone::RR::CNAME.new
@@ -301,10 +301,12 @@ def get_node_kavlan_records(_cluster_uid, node_uid, network_adapters, kavlan_ada
       new_record.address = net_hash['ip']
       new_record.label = "#{node_uid}-#{net_uid}" #sol-23-eth0-kavlan-1
       records << new_record
-      cname_record = DNS::Zone::RR::CNAME.new
-      cname_record.label = "#{node_uid}-#{net_hash['pname']}"
-      cname_record.domainname = "#{node_uid}-#{net_uid}" #sol-23-eno1-kavlan-1
-      records << cname_record
+      if !/^fpga[0-9]$/.match(net_uid_eth)
+        cname_record = DNS::Zone::RR::CNAME.new
+        cname_record.label = "#{node_uid}-#{net_hash['pname']}"
+        cname_record.domainname = "#{node_uid}-#{net_uid}" #sol-23-eno1-kavlan-1
+        records << cname_record
+      end
     end
     if net_hash['ip6']
       new_record_ipv6 = DNS::Zone::RR::AAAA.new
@@ -657,16 +659,12 @@ def fetch_site_records(site, type)
                   kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip'] = ip
                 end
               end
-              # if /^fpga[0-9]$/.match(net_uid)
-              #   kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['mountable'] = node['network_adapters'].select { |n|
-              #     n['device'] == net_uid
-              #   }[0]['moutable']
-              #   if kavlan_kind == 'kavlan6'
-              #     kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip6'] = ip
-              #   else
-              #     kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip'] = ip
-              #   end
-              # end
+              if /^fpga[0-9]$/.match(net_uid)
+                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['mountable'] = node['network_adapters'].select { |n|
+                  n['device'] == net_uid
+                }[0]['moutable']
+                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip'] = ip
+              end
             }
           }
         end
@@ -675,7 +673,7 @@ def fetch_site_records(site, type)
         key_sr = "#{cluster_uid}-kavlan"
         site_records[key_sr] ||= []
         site_records[key_sr] += get_node_kavlan_records(cluster_uid, node_uid, network_adapters, kavlan_adapters)
-        end
+      end
     } # each nodes
   } # each cluster
 
