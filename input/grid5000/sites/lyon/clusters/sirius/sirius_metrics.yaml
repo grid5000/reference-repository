@@ -231,15 +231,6 @@ metrics:
       id: 16 #TEMP_U.2_NVME0
 
   - name: bmc_other_temp_celsius
-    labels: {"id": "u.2_nvme1"}
-    description: Temperature of U.2_NVME1 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 17 #TEMP_U.2_NVME1
-
-  - name: bmc_other_temp_celsius
     labels: {"id": "u.2_nvme2"}
     description: Temperature of U.2_NVME2 reported by BMC, in celsius
     period: 0
@@ -247,15 +238,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 18 #TEMP_U.2_NVME2
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "u.2_nvme3"}
-    description: Temperature of U.2_NVME3 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 19 #TEMP_U.2_NVME3
 
   - name: bmc_other_temp_celsius
     labels: {"id": "u.2_nvme4"}
@@ -267,15 +249,6 @@ metrics:
       id: 20 #TEMP_U.2_NVME4
 
   - name: bmc_other_temp_celsius
-    labels: {"id": "u.2_nvme5"}
-    description: Temperature of U.2_NVME5 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 21 #TEMP_U.2_NVME5
-
-  - name: bmc_other_temp_celsius
     labels: {"id": "u.2_nvme6"}
     description: Temperature of U.2_NVME6 reported by BMC, in celsius
     period: 0
@@ -283,15 +256,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 22 #TEMP_U.2_NVME6
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "u.2_nvme7"}
-    description: Temperature of U.2_NVME7 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 23 #TEMP_U.2_NVME7
 
   - name: bmc_psu_temp_celsius
     labels: {"psu": "0"}
@@ -517,15 +481,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 51 #TEMP_GB_GPU7_M
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "mb_ad_card0"}
-    description: Temperature of MB_AD_CARD0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 52 #TEMP_MB_AD_CARD0
 
   - name: bmc_other_temp_celsius
     labels: {"id": "mb_ad_card1"}
@@ -985,114 +940,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 141 #VOLT_PVDDCR_CPU1
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "io0_ib0_p0"}
-    description: Temperature of IO0_IB0_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 167 #TEMP_IO0_IB0_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "io0_ib1_p0"}
-    description: Temperature of IO0_IB1_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 168 #TEMP_IO0_IB1_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "io1_ib2_p0"}
-    description: Temperature of IO1_IB2_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 169 #TEMP_IO1_IB2_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "io1_ib3_p0"}
-    description: Temperature of IO1_IB3_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 170 #TEMP_IO1_IB3_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "io0_ib4_p0"}
-    description: Temperature of IO0_IB4_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 171 #TEMP_IO0_IB4_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "io0_ib5_p0"}
-    description: Temperature of IO0_IB5_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 172 #TEMP_IO0_IB5_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "io1_ib6_p0"}
-    description: Temperature of IO1_IB6_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 173 #TEMP_IO1_IB6_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "io1_ib7_p0"}
-    description: Temperature of IO1_IB7_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 174 #TEMP_IO1_IB7_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "mb_ad_c0_p0"}
-    description: Temperature of MB_AD_C0_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 175 #TEMP_MB_AD_C0_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "mb_ad_c0_p1"}
-    description: Temperature of MB_AD_C0_P1 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 176 #TEMP_MB_AD_C0_P1
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "mb_ad_c1_p0"}
-    description: Temperature of MB_AD_C1_P0 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 177 #TEMP_MB_AD_C1_P0
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "mb_ad_c1_p1"}
-    description: Temperature of MB_AD_C1_P1 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 178 #TEMP_MB_AD_C1_P1
 
   - name: bmc_other_temp_celsius
     labels: {"id": "gb_hsc0"}
