@@ -504,7 +504,7 @@ end
 def properties_internal(properties)
   str = properties
             .to_a
-            .select{|k, v| not ignore_default_keys.include? k}
+            .select{|k, _v| not ignore_default_keys.include? k}
             .map do |(k, v)|
                 v = "YES" if v == true
                 v = "NO"  if v == false
@@ -516,7 +516,7 @@ end
 def disk_properties_internal(properties)
   str = properties
             .to_a
-            .select{|k, v| not v.nil? and not v==""}
+            .select{|_k, v| not v.nil? and not v==""}
             .map do |(k, v)|
     v = "YES" if v == true
     v = "NO"  if v == false
@@ -774,16 +774,16 @@ def run_commands_via_ssh(cmds, options, verbose=true)
   res = ""
   c = Net::SSH.start(options[:ssh][:host], options[:ssh][:user])
   c.open_channel { |channel|
-    channel.exec('sudo bash') { |ch, success|
+    channel.exec('sudo bash') { |_ch, _success|
       # stdout
-      channel.on_data { |ch2, data|
+      channel.on_data { |_ch2, data|
         if verbose
           puts data
         end
         res += data
       }
       # stderr
-      channel.on_extended_data do |ch2, type, data|
+      channel.on_extended_data do |_ch2, _type, data|
         if verbose
           puts data
         end
@@ -1212,7 +1212,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     end
 
     if is_a_new_cluster
-      oar_resource_ids = phys_rsc_map["core"][:current_ids].map{|r| -1}
+      oar_resource_ids = phys_rsc_map["core"][:current_ids].map{|_r| -1}
     else
       oar_resource_ids = cluster_resources.map{|r| r["id"]}.uniq
     end
@@ -1270,7 +1270,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         :description => node_description,
         :oar_rows => [],
         :disks => [],
-        :gpus => (node_description["gpu_devices"] != nil ? (node_description["gpu_devices"].select{|k ,v| v.fetch("reservation", true)}.length) : 0),
+        :gpus => (node_description["gpu_devices"] != nil ? (node_description["gpu_devices"].select{|_k ,v| v.fetch("reservation", true)}.length) : 0),
         :default_description => node_description_default_properties
       }
 

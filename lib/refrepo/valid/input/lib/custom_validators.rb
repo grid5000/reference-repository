@@ -10,7 +10,7 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
 
   def validate(key, values, _validations, errors)
     if values.is_a?(Hash)
-      values.each do |k, v|
+      values.each do |k, _v|
         if @port_properties.index(k) == nil
           errors[key] = "unexpected key '#{k}'."
         end

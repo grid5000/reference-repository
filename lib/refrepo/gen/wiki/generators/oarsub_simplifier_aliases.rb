@@ -3,9 +3,7 @@
 require 'refrepo/gen/puppet/oarsub-simplifier-aliases'
 
 class OarsubSimplifierAliasesGenerator < WikiGenerator
-  def initialize(page_name)
-    super(page_name)
-  end
+  
 
   def generate_content(options)
     default_aliases = get_sub_simplifier_default_aliases(options)

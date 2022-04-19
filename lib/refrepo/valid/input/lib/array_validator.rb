@@ -44,7 +44,7 @@ class HashValidator::Validator::ArrayValidator < HashValidator::Validator::Base
     end
 
     # Cleanup errors (remove any empty nested errors)
-    errors.delete_if { |k,v| v.empty? }
+    errors.delete_if { |_k,v| v.empty? }
   end
 end
 
@@ -74,7 +74,7 @@ class HashValidator::Validator::NestedArrayValidator < HashValidator::Validator:
     end
 
     # Cleanup errors (remove any empty nested errors)
-    errors.delete_if { |k,v| v.empty? }
+    errors.delete_if { |_k,v| v.empty? }
   end
 end
 

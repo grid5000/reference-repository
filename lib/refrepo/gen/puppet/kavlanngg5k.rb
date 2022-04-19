@@ -12,7 +12,7 @@ def gen_json(output_path)
   site_data_hierarchy.delete_if { |k| k != 'sites' }
   site_data_hierarchy['sites'].each do |site_id, site_h|
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
-    site_h['clusters'].each do |cluster_id, cluster_h|
+    site_h['clusters'].each do |_cluster_id, cluster_h|
       cluster_h.delete_if { |k| k != 'nodes' }
       cluster_h['nodes'].each do |_node_id, node_h|
         node_h.delete_if { |k| k != 'network_adapters' }
@@ -46,11 +46,11 @@ def gen_json(output_path)
     end
   end
   # consistent order
-  site_data_hierarchy['sites'] = site_data_hierarchy['sites'].sort_by { |site_id, site_h| site_id }.to_h
-  site_data_hierarchy['sites'].each { |site_id, site_h|
-    site_h['clusters'] = site_h['clusters'].sort_by { |cluster_id, cluster_h| cluster_id }.to_h
-    site_h['clusters'].each { |cluster_id, cluster_h|
-      cluster_h['nodes'] = cluster_h['nodes'].sort_by { |node_id, node_h| node_id[/(\d+)/].to_i }.to_h
+  site_data_hierarchy['sites'] = site_data_hierarchy['sites'].sort_by { |site_id, _site_h| site_id }.to_h
+  site_data_hierarchy['sites'].each { |_site_id, site_h|
+    site_h['clusters'] = site_h['clusters'].sort_by { |cluster_id, _cluster_h| cluster_id }.to_h
+    site_h['clusters'].each { |_cluster_id, cluster_h|
+      cluster_h['nodes'] = cluster_h['nodes'].sort_by { |node_id, _node_h| node_id[/(\d+)/].to_i }.to_h
     }
   }
 

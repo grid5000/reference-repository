@@ -26,7 +26,7 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
           file_hash = YAML::load_file(filename)
         end
       if not file_hash
-        raise Exception.new("loaded hash is empty")
+        raise StandardError.new("loaded hash is empty")
       end
       # YAML::Psych raises an exception if the file cannot be loaded.
       rescue StandardError => e
@@ -103,7 +103,7 @@ def add_node_pdu_mapping(h)
 
       # Get pdu information from node description in clusters/ hierachy
       pdu_attached_nodes = {}
-      site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
+      site.fetch("clusters", []).sort.each do |_cluster_uid, cluster|
         cluster["nodes"].each do |node_uid, node|# _sort_by_node_uid
           next if node['status'] == "retired"
           node.fetch('pdu', []).each do |node_pdu|
@@ -145,7 +145,7 @@ def add_wattmetre_mapping(h)
       if pdu_uid.include?("wattmetrev3") # TODO: better way of identifying a V3 wattmetre
         wattmetre_modules = {}
         # Look for other PDUs where this wattmetre is used
-        site.fetch("pdus", []).each do |other_pdu_uid, other_pdu|
+        site.fetch("pdus", []).each do |_other_pdu_uid, other_pdu|
           other_pdu.fetch("ports", {}).each do |other_port_uid, other_port_data|
             next if not other_port_data.is_a?(Hash)
             next if other_port_data["wattmetre"] != pdu_uid
@@ -273,12 +273,12 @@ def add_default_values_and_mappings(h)
         end
 
         # Ensure that by_id is present (bug 11043)
-        node["storage_devices"].each do |key, hash|
+        node["storage_devices"].each do |_key, hash|
           hash['by_id'] = '' if not hash['by_id']
         end
 
         # Type conversion
-        node["network_adapters"].each { |key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
+        node["network_adapters"].each { |_key, hash| hash["rate"] = hash["rate"].to_i if hash["rate"].is_a?(Float) }
 
         # For each network adapters, populate "network_address", "switch" and "switch_port" from the network equipment description
         node["network_adapters"].each_pair { |device, network_adapter|
@@ -373,9 +373,9 @@ def net_switch_port_lookup(site, node_uid, interface='')
 end
 
 def add_switch_port(h)
-  h['sites'].each_pair do |site_uid, site|
+  h['sites'].each_pair do |_site_uid, site|
     used_ports = {}
-    site['clusters'].each_pair do |cluster_uid, hc|
+    site['clusters'].each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         next if hn['status'] == 'retired'
         hn['network_adapters'].each_pair do |iface_uid, iface|
@@ -394,8 +394,8 @@ def add_switch_port(h)
 end
 
 def detect_dead_nodes_with_yaml_files(h)
-  h['sites'].each_pair do |site_uid, hs|
-    hs['clusters'].each_pair do |cluster_uid, hc|
+  h['sites'].each_pair do |_site_uid, hs|
+    hs['clusters'].each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         if hn['status'] == 'retired'
           if (hn['processor']['model'] rescue nil)
@@ -413,7 +413,7 @@ def add_kavlan_ips(h)
   vlan_offset = h['vlans']['offsets'].split("\n").map { |l| l = l.split(/\s+/) ; [ l[0..3], l[4..-1].inject(0) { |a, b| (a << 8) + b.to_i } ] }.to_h
   h['sites'].each_pair do |site_uid, hs|
     # forget about allocated ips for local vlans, since we are starting a new site
-    allocated.delete_if { |k, v| v[3] == 'local' }
+    allocated.delete_if { |_k, v| v[3] == 'local' }
     hs['clusters'].each_pair do |cluster_uid, hc|
       next if !hc['kavlan'] # skip clusters where kavlan is globally set to false (used for initial cluster installation)
       hc['nodes'].each_pair do |node_uid, hn|
@@ -472,9 +472,9 @@ end
 
 def add_ipv6(h)
   # for each node
-  h['sites'].each_pair do |site_uid, hs|
+  h['sites'].each_pair do |_site_uid, hs|
     site_prefix = IPAddress hs['ipv6']['prefix']
-    hs['clusters'].each_pair do |cluster_uid, hc|
+    hs['clusters'].each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         ipv6_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and v['interface'] == 'Ethernet' }
         if ipv6_adapters.length > 0
@@ -578,9 +578,9 @@ end
 
 def add_software(h)
   # for each node
-  h['sites'].each_pair do |site_uid, hs|
-    hs['clusters'].each_pair do |cluster_uid, hc|
-      hc['nodes'].each_pair do |node_uid, hn|
+  h['sites'].each_pair do |_site_uid, hs|
+    hs['clusters'].each_pair do |_cluster_uid, hc|
+      hc['nodes'].each_pair do |_node_uid, hn|
         if not hn.key?('software')
           hn['software'] = {}
         end
@@ -593,14 +593,14 @@ end
 
 def add_network_metrics(h)
   # for each cluster
-  h['sites'].each_pair do |site_uid, site|
-    site['clusters'].each_pair do |cluster_uid, cluster|
+  h['sites'].each_pair do |_site_uid, site|
+    site['clusters'].each_pair do |_cluster_uid, cluster|
 
       # remove any network metrics defined in cluster
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_iface.*/}
 
       # for each interface of a cluster's node
-      _, node = cluster['nodes'].select { |k, v| v['status'] != 'retired' }.sort_by{ |k, v| k }.first
+      _, node = cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.sort_by{ |k, _v| k }.first
       node["network_adapters"].each do |iface_uid, iface|
 
         # we only support metrics for Ethernet at this point
@@ -624,8 +624,8 @@ end
 
 def add_pdu_metrics(h)
   # for each cluster
-  h['sites'].each_pair do |site_uid, site|
-    site['clusters'].each_pair do |cluster_uid, cluster|
+  h['sites'].each_pair do |_site_uid, site|
+    site['clusters'].each_pair do |_cluster_uid, cluster|
 
       # remove any PDU metrics defined in cluster
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /(wattmetre_power_watt|pdu_outlet_power_watt)/ }
@@ -637,7 +637,7 @@ def add_pdu_metrics(h)
       if not cluster_wm.empty? \
       and cluster_wm.all?{|pdu| site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'wattmetre_power_watt'}}
 
-        metric = site['pdus'][cluster_wm.first].fetch('metrics', []).each{|m| m['name'] == 'wattmetre_power_watt'}.first
+        metric = site['pdus'][cluster_wm.first].fetch('metrics', []).select{|m| m['name'] == 'wattmetre_power_watt'}.first
         new_metric = metric.merge({'description' => "Power consumption of node reported by wattmetre, in watt"})
         cluster['metrics'].insert(0, new_metric)
       end
@@ -649,7 +649,7 @@ def add_pdu_metrics(h)
       if not cluster_pdus.empty? \
       and cluster_pdus.all?{|pdu| site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'wattmetre_power_watt'}}
 
-        metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).each{|m| m['name'] == 'wattmetre_power_watt'}.first
+        metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).select{|m| m['name'] == 'wattmetre_power_watt'}.first
         new_metric = metric.merge({'description' => "Power consumption of node reported by wattmetre, in watt"})
         cluster['metrics'].insert(0, new_metric)
       end
@@ -660,7 +660,7 @@ def add_pdu_metrics(h)
 
         # Metric is available for node only if a single PDU powers it
         if not cluster['nodes'].each_value.any?{|node| node.fetch('pdu', []).select{|p| not p.has_key?('kind') or p.fetch('kind', '') != 'wattmetre-only'}.map{|p| p['uid']}.uniq.length > 1}
-          metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).each{|m| m['name'] == 'pdu_outlet_power_watt'}.first
+          metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).select{|m| m['name'] == 'pdu_outlet_power_watt'}.first
           new_metric = metric.merge({'description' => "Power consumption of node reported by PDU, in watt"})
           new_metric['source'] = {"protocol" => "pdu"}
           cluster['metrics'].insert(0, new_metric)
@@ -699,9 +699,9 @@ def get_flops_per_cycle(microarch, cpu_name)
 end
 
 def add_theorical_flops(h)
-  h['sites'].each_pair do |site_uid, site|
-    site['clusters'].each_pair do |cluster_uid, cluster|
-      cluster['nodes'].select { |k, v| v['status'] != 'retired' }.each_pair do |node_uid, node|
+  h['sites'].each_pair do |_site_uid, site|
+    site['clusters'].each_pair do |_cluster_uid, cluster|
+      cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         node['performance'] = {}
         node['performance']['core_flops'] =  node['processor']['clock_speed'].to_i * get_flops_per_cycle(node['processor']['microarchitecture'], node['processor']['other_description'])
         node['performance']['node_flops'] = node['architecture']['nb_cores'].to_i * node['performance']['core_flops'].to_i
@@ -711,9 +711,9 @@ def add_theorical_flops(h)
 end
 
 def add_management_tools(h)
-  h['sites'].each_pair do |site_uid, site|
-    site['clusters'].each_pair do |cluster_uid, cluster|
-      cluster['nodes'].select { |k, v| v['status'] != 'retired' }.each_pair do |node_uid, node|
+  h['sites'].each_pair do |_site_uid, site|
+    site['clusters'].each_pair do |_cluster_uid, cluster|
+      cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         node['management_tools'] = h['management_tools'] if !node.has_key?('management_tools')
         h['management_tools'].each_key do |k|
           node['management_tools'][k] = h['management_tools'][k] if !node['management_tools'].has_key?(k)
@@ -725,7 +725,7 @@ end
 
 def add_site_ipv6_infos(h)
   global_prefix = IPAddress h['ipv6']['prefix']
-  h['sites'].each_pair do |site_uid, hs|
+  h['sites'].each_pair do |site_uid, _hs|
     site_prefix = IPAddress global_prefix.to_string
     # Site index is third group of nibbles, but on the MSB side
     site_prefix[3] = h['ipv6']['site_indexes'][site_uid] << 8
@@ -738,9 +738,9 @@ def add_site_ipv6_infos(h)
 end
 
 def add_compute_capability(h)
-  h['sites'].each_pair do |site_uid, site|
-    site['clusters'].each_pair do |cluster_uid, cluster|
-      cluster['nodes'].select { |k, v| v['status'] != 'retired' }.each_pair do |node_uid, node|
+  h['sites'].each_pair do |_site_uid, site|
+    site['clusters'].each_pair do |_cluster_uid, cluster|
+      cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         if node['gpu_devices']
           node['gpu_devices'].select { |_, v| v['vendor'] == 'Nvidia' }.each do |_, v|
             v['compute_capability'] = GPURef.get_compute_capability(v['model'])
@@ -800,7 +800,7 @@ def complete_network_equipments(h)
     complete_one_network_equipment(network_uid, network)
   end
 
-  h['sites'].each do |site_uid, site|
+  h['sites'].each do |_site_uid, site|
     site.fetch('networks', []).each do |network_uid, network|
       complete_one_network_equipment(network_uid, network)
     end
