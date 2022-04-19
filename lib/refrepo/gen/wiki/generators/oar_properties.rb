@@ -5,9 +5,7 @@ require 'refrepo/data_loader'
 
 class OarPropertiesGenerator < WikiGenerator
 
-  def initialize(page_name)
-    super(page_name)
-  end
+  
 
   #Static information about properties that cannot be infered from ref-api data
   @@properties = {
@@ -270,7 +268,7 @@ class OarPropertiesGenerator < WikiGenerator
     props = {}
     oarapi_properties = []
 
-    G5K::SITES.each_with_index{ |site_uid, index|
+    G5K::SITES.each_with_index{ |site_uid, _index|
       props[site_uid] = {}
       props[site_uid]["default"] = get_ref_default_properties(site_uid, refapi["sites"][site_uid])
       props[site_uid]["disk"] = get_ref_disk_properties(site_uid, refapi["sites"][site_uid])
@@ -284,9 +282,9 @@ class OarPropertiesGenerator < WikiGenerator
 
     #Compiled properties used to generate page
     oar_properties = {}
-    props.sort.to_h.each { |site, site_props|
-      site_props.sort.to_h.each { |type, type_props|
-        type_props.sort.to_h.each { |node_uid, node_props|
+    props.sort.to_h.each { |_site, site_props|
+      site_props.sort.to_h.each { |_type, type_props|
+        type_props.sort.to_h.each { |_node_uid, node_props|
           node_props.sort.to_h.each { |property, value|
             next if @@ignored_properties.include?(property)
 

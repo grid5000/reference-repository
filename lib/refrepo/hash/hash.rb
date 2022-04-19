@@ -61,7 +61,7 @@ class ::Hash
   # a.deep_merge(b) -> {:key=>"value_b"}
   # b.deep_merge(a) -> {:key=>"value_a"}
   def deep_merge(other_hash)
-    merger = proc { |key, v1, v2| Hash === v1 && Hash === v2 ? v1.merge(v2, &merger) : v2 }
+    merger = proc { |_key, v1, v2| Hash === v1 && Hash === v2 ? v1.merge(v2, &merger) : v2 }
     self.merge(other_hash, &merger)
   end
 

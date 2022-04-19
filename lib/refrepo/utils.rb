@@ -27,7 +27,7 @@ end
 # Various monkey patches
 class Hash
   def slice(*extract)
-    h2 = self.select{|key, value| extract.include?(key) }
+    h2 = self.select{|key, _value| extract.include?(key) }
     h2
   end
 end

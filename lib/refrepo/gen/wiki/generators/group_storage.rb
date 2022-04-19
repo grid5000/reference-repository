@@ -2,9 +2,7 @@
 
 class GroupStorageGenerator < WikiGenerator
 
-  def initialize(page_name)
-    super(page_name)
-  end
+  
 
   def generate_content(_options)
     table_columns = ["Site", "Server Name", "Size", "Link Speed", "Notes"]

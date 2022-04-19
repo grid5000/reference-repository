@@ -55,10 +55,10 @@ class SiteHardwareGenerator < WikiGenerator
     pmem = 0
     flops = 0
 
-    sites_hash.sort.to_h.each do |site_uid, site_hash|
+    sites_hash.sort.to_h.each do |_site_uid, site_hash|
       clusters += site_hash['clusters'].length
-      site_hash['clusters'].sort.to_h.each do |cluster_uid, cluster_hash|
-        cluster_hash['nodes'].sort.to_h.each do |node_uid, node_hash|
+      site_hash['clusters'].sort.to_h.each do |_cluster_uid, cluster_hash|
+        cluster_hash['nodes'].sort.to_h.each do |_node_uid, node_hash|
           next if node_hash['status'] == 'retired'
           nodes += 1
           cores += node_hash['architecture']['nb_cores']
@@ -103,20 +103,20 @@ class SiteHardwareGenerator < WikiGenerator
     hardware = get_hardware([site])
 
     site_accelerators = 0
-    hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
-      site_accelerators += cluster_hash.select { |k, v| v['accelerators'] != '' }.count
+    hardware[site].sort.to_h.each { |_cluster_uid, cluster_hash|
+      site_accelerators += cluster_hash.select { |_k, v| v['accelerators'] != '' }.count
     }
 
     hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
       cluster_nodes = cluster_hash.keys.flatten.count
-      queue = cluster_hash.map { |k, v| v['queue']}.first
+      queue = cluster_hash.map { |_k, v| v['queue']}.first
       access_conditions = []
       if queue == 'production'
         access_conditions << "<b>[[Grid5000:UsagePolicy#Rules_for_the_production_queue|#{queue}]]</b>&nbsp;queue"
       elsif queue != ''
         access_conditions << "<b>#{queue}</b>&nbsp;queue"
       end
-      access_conditions << '<b>[[Getting_Started#Selecting_specific_resources|exotic]]</b>&nbsp;job&nbsp;type' if cluster_hash.map { |k, v| v['exotic']}.first
+      access_conditions << '<b>[[Getting_Started#Selecting_specific_resources|exotic]]</b>&nbsp;job&nbsp;type' if cluster_hash.map { |_k, v| v['exotic']}.first
       table_columns = (with_sites == true ? ['Site'] : []) + ['Cluster',  'Access Condition', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : ['Accelerators'])
       data = partition(cluster_hash)
       table_data <<  (with_sites == true ? ["[[#{site.capitalize}:Hardware|#{site.capitalize}]]"] : []) + [
@@ -153,13 +153,13 @@ class SiteHardwareGenerator < WikiGenerator
     hardware = get_hardware([site])
 
     site_accelerators = 0
-    hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
-      site_accelerators += cluster_hash.select { |k, v| v['accelerators'] != '' }.count
+    hardware[site].sort.to_h.each { |_cluster_uid, cluster_hash|
+      site_accelerators += cluster_hash.select { |_k, v| v['accelerators'] != '' }.count
     }
 
     # Group by queue
     # Alphabetic ordering of queue names matches what we want: "default" < "production" < "testing"
-    hardware[site].group_by { |cluster_uid, cluster_hash| cluster_hash.map { |k, v| v['queue']}.first }.sort.each { |queue, clusters|
+    hardware[site].group_by { |_cluster_uid, cluster_hash| cluster_hash.map { |_k, v| v['queue']}.first }.sort.each { |queue, clusters|
       queue = (queue.nil? || queue.empty?) ? 'default' : queue
       queue_drawgantt_url = get_queue_drawgantt_url(site, queue)
       if (queue != 'testing')
@@ -172,10 +172,10 @@ class SiteHardwareGenerator < WikiGenerator
         cluster_nodes = cluster_hash.keys.flatten.count
         cluster_cpus = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] }.reduce(:+)
         cluster_cores = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] * v['cores_per_cpu'] }.reduce(:+)
-        queue_str = cluster_hash.map { |k, v| v['queue_str']}.first
+        queue_str = cluster_hash.map { |_k, v| v['queue_str']}.first
         access_conditions = []
         access_conditions << queue_str if queue_str != ''
-        access_conditions << "exotic job type" if cluster_hash.map { |k, v| v['exotic']}.first
+        access_conditions << "exotic job type" if cluster_hash.map { |_k, v| v['exotic']}.first
         table_columns = ['Cluster',  'Queue', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + (site_accelerators.zero? ? [] : ['Accelerators'])
 
         cluster_drawgantt_url = get_queue_drawgantt_url(site, queue)+"?filter=#{cluster_uid}%20only"
@@ -185,7 +185,7 @@ class SiteHardwareGenerator < WikiGenerator
         reservation_cmd = "\n{{Term|location=f#{site}|cmd="
         reservation_cmd += "<code class=\"command\">oarsub</code> "
         reservation_cmd += "<code class=\"replace\">-q #{queue}</code> " if queue != 'default'
-        reservation_cmd += "<code class=\"replace\">-t exotic</code> " if cluster_hash.map { |k, v| v['exotic']}.first
+        reservation_cmd += "<code class=\"replace\">-t exotic</code> " if cluster_hash.map { |_k, v| v['exotic']}.first
         reservation_cmd += "<code class=\"env\">-p #{cluster_uid}</code> "
         reservation_cmd += "<code>-I</code>"
         reservation_cmd += "}}\n"
@@ -267,7 +267,7 @@ end
 def partition(cluster_hash)
   data = {}
   h1 = {}
-  cluster_hash.sort.to_h.each { |num2, h2|
+  cluster_hash.sort.to_h.each { |_num2, h2|
     h2.each_key{ |k|
       h1[k] = []
       cluster_hash.sort.to_h.each { |num3, h3|
@@ -335,7 +335,7 @@ def get_hardware(sites)
 
   # Loop over each cluster of the site
   hardware = {}
-  global_hash['sites'].sort.to_h.select{ |site_uid, site_hash| sites.include?(site_uid) }.each { |site_uid, site_hash|
+  global_hash['sites'].sort.to_h.select{ |site_uid, _site_hash| sites.include?(site_uid) }.each { |site_uid, site_hash|
     hardware[site_uid] = {}
     site_hash['clusters'].sort.to_h.each { |cluster_uid, cluster_hash|
       hardware[site_uid][cluster_uid] = {}

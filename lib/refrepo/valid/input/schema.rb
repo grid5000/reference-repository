@@ -29,7 +29,7 @@ def yaml_input_schema_validator(options)
 
     r &= run_validator(site_uid, site, schema_site) #
 
-    site['networks'].each do |network_equipment_uid, network_equipment|
+    site['networks'].each do |_network_equipment_uid, network_equipment|
       r &= run_validator(site_uid, network_equipment, schema_network_equipments)
     end
 

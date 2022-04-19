@@ -2,9 +2,7 @@
 
 class KwollectMetricsGenerator < WikiGenerator
 
-  def initialize(page_name)
-    super(page_name)
-  end
+  
 
   def generate_content(_options)
     @generated_content = "__NOEDITSECTION__\n"

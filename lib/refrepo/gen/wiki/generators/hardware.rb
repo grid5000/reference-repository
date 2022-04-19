@@ -3,9 +3,7 @@ require 'refrepo/gen/wiki/generators/site_hardware'
 
 class G5KHardwareGenerator < WikiGenerator
 
-  def initialize(page_name)
-    super(page_name)
-  end
+  
 
   def generate_content(_options)
     @global_hash = get_global_hash
@@ -39,7 +37,7 @@ class G5KHardwareGenerator < WikiGenerator
     }
 
     @global_hash['sites'].sort.to_h.each { |site_uid, site_hash|
-      site_hash['clusters'].sort.to_h.each { |cluster_uid, cluster_hash|
+      site_hash['clusters'].sort.to_h.each { |_cluster_uid, cluster_hash|
         cluster_hash['nodes'].sort.to_h.each { |node_uid, node_hash|
           begin
             next if node_hash['status'] == 'retired'
@@ -94,7 +92,7 @@ class G5KHardwareGenerator < WikiGenerator
             }
 
             net_interconnects = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
-            net_interconnects.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
+            net_interconnects.sort_by { |k, _v|  k.first[:sort] }.each { |k, v|
               init(data, 'net_interconnects', k)
               data['net_interconnects'][k][site_uid] += v
             }
@@ -123,7 +121,7 @@ class G5KHardwareGenerator < WikiGenerator
 
             net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
             # Sort by interface type (eth or IB) and then by driver
-            net_models.sort_by { |k, v|  [k.first[:sort], k[1][:sort]] }.each { |k, v|
+            net_models.sort_by { |k, _v|  [k.first[:sort], k[1][:sort]] }.each { |k, v|
               init(data, 'net_models', k)
               data['net_models'][k][site_uid] += v
             }
@@ -150,7 +148,7 @@ class G5KHardwareGenerator < WikiGenerator
             }
 
             ssd_models = ssd.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
-            ssd_models.sort_by { |k, v|  k.first[:sort] }.each { |k, v|
+            ssd_models.sort_by { |k, _v|  k.first[:sort] }.each { |k, v|
               init(data, 'ssd_models', k)
               data['ssd_models'][k][site_uid] += v
             }
@@ -296,7 +294,7 @@ class G5KHardwareGenerator < WikiGenerator
       # Sort the table by the identifiers (e.g. Microarchitecture, or Microarchitecture + CPU name).
       # This colum is either just a text field, or a more complex hash with a :sort key that should be
       # used for sorting.
-      |k, v| k.map { |c| c.kind_of?(Hash) ? c[:sort] : c }
+      |k, _v| k.map { |c| c.kind_of?(Hash) ? c[:sort] : c }
     }.to_h.each { |k, v|
       k0 = k if index == 0
       index += 1

@@ -55,14 +55,14 @@ def yaml_input_find_duplicates(options)
   end
 
 # remove entries that are not duplicate
-  refapi_hash.deep_reject! {|k, v| !(
+  refapi_hash.deep_reject! {|_k, v| !(
   (v.is_a?(Hash) && !v.empty?) ||
       v.is_a?(String) && v.start_with?('!duplicated:')
   )}
 
 # remove ip, mac and mounted properties (as it can be use to bootstrap the installation of a cluster)
 #  refapi_hash.deep_reject! {|k, v| k == 'ip' || k == 'mac' || k == 'mounted'}
-  refapi_hash.deep_reject! {|k, v| v == {}}
+  refapi_hash.deep_reject! {|_k, v| v == {}}
 
   if refapi_hash.empty?
     puts "OK: no duplicate entries."
