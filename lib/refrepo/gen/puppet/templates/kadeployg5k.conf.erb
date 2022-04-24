@@ -33,6 +33,15 @@ arch:
 timeouts:
   reboot: <%= data['reboot.timeout'] %>
   kexec: <%= data['reboot.kexec'] %>
+trusted_deployment:
+   user: oar
+   partition: /dev/sda2
+   envs:
+    - name: <%= data['trusted_env.name'] ? data['trusted_env.name'] : data['defaults.trusted_env.name'] %>
+      user: deploy
+kexec:
+  server_precmd: "true"
+  script: /etc/kadeploy3-dev/kexec.sh
 remoteops:
   console:
   - name: soft
