@@ -39,6 +39,20 @@ nodes:
         enabled: false
         mountable: false
         mounted: false
+      fpga0:
+        interface: Ethernet
+        enabled: true
+        management: false
+        mountable: true
+        mounted: false
+        kavlan: true
+      fpga1:
+        interface: Ethernet
+        management: false
+        enabled: true
+        mountable: true
+        mounted: false
+        kavlan: true
     storage_devices:
       pci-0000:c3:00.0-nvme-1:
         interface: NVME
@@ -46,4 +60,16 @@ nodes:
       pci-0000:c4:00.0-nvme-1:
         interface: NVME
         id: disk1
+  servan-1:
+    network_adapters:
+      fpga0:
+        mac: 00:0A:35:06:4A:B8
+      fpga1:
+        mac: 00:0A:35:06:4A:B9
+  servan-2:
+    network_adapters:
+      fpga0:
+        mac: 00:0A:35:06:4A:DC
+      fpga1:
+        mac: 00:0A:35:06:4A:DD
 
