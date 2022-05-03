@@ -4,7 +4,7 @@ def get_network_info(node_hash, network_interface)
 
   network_infos = []
   if network_interface == "eth" then
-    adapters = node_network_adapters.select { |i| i['device'] =~ /(eth|fpga)/ and (i['mountable'] or i['mounted'])}
+    adapters = node_network_adapters.select { |i| i['device'] =~ /eth/ and (i['mountable'] or i['mounted'])}
     if adapters.length > 0
       if not adapters[0]['mounted']
         raise "#{node_hash['uid']}: inconsistency: this code assumes first mountable ethernet adapter should be mounted: #{node_network_adapters}"
