@@ -16,7 +16,7 @@
         ifinfos = get_network_info(node, network_interface)
         ifinfos.each do |h|
           case network_interface
-            when 'bmc', 'adm', 'mic0'
+            when 'bmc', 'adm', 'mic0', 'fpga0', 'fpga1'
               uid_net = node_uid + '-' + network_interface
             else
               uid_net = h['name']
