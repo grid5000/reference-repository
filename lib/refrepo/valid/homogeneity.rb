@@ -63,6 +63,7 @@ eos
 
   ignore_regex = [
     ['~', /storage_devices\..*\.by_id/],
+    ['~', /\.*fpga\.*/],
   ]
 
   (0..5).each { |eth|
