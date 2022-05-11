@@ -277,7 +277,7 @@
     {
       "device": "fpga0",
       "enabled": true,
-      "interface": "Ethernet",
+      "interface": "Ethernet-fpga",
       "ip": "172.16.23.11",
       "ip6": "2001:660:4406:100:8:1:0:1",
       "kavlan": true,
@@ -287,13 +287,15 @@
       "mounted": false,
       "network_address": "servan-1-fpga0.grenoble.grid5000.fr",
       "rate": 100000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "gw",
       "switch_port": "ethernet1/1/97"
     },
     {
       "device": "fpga1",
       "enabled": true,
-      "interface": "Ethernet",
+      "interface": "Ethernet-fpga",
       "ip": "172.16.23.21",
       "ip6": "2001:660:4406:100:8:2:0:1",
       "kavlan": true,
@@ -303,6 +305,8 @@
       "mounted": false,
       "network_address": "servan-1-fpga1.grenoble.grid5000.fr",
       "rate": 100000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "gw",
       "switch_port": "ethernet1/1/98"
     }
@@ -314,6 +318,13 @@
     "pstate_driver": "acpi-cpufreq",
     "pstate_governor": "performance",
     "turboboost_enabled": true
+  },
+  "other_devices": {
+    "fpga0": {
+      "model": "Alveo U200",
+      "type": "fpga",
+      "vendor": "Xilinx"
+    }
   },
   "performance": {
     "core_flops": 36800000000,
