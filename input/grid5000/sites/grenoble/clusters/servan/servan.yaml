@@ -40,21 +40,25 @@ nodes:
         mountable: false
         mounted: false
       fpga0:
-        interface: Ethernet
+        interface: Ethernet-fpga
         enabled: true
         management: false
         mountable: true
         mounted: false
         kavlan: true
         rate: 100000000000
+        sriov: false
+        sriov_totalvfs: 0
       fpga1:
-        interface: Ethernet
+        interface: Ethernet-fpga
         management: false
         enabled: true
         mountable: true
         mounted: false
         kavlan: true
         rate: 100000000000
+        sriov: false
+        sriov_totalvfs: 0
     storage_devices:
       pci-0000:c3:00.0-nvme-1:
         interface: NVME

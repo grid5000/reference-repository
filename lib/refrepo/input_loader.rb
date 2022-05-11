@@ -379,7 +379,7 @@ def add_switch_port(h)
       hc['nodes'].each_pair do |node_uid, hn|
         next if hn['status'] == 'retired'
         hn['network_adapters'].each_pair do |iface_uid, iface|
-          if (iface['mounted'] or iface['mountable']) and not iface['management'] and iface['interface'] == 'Ethernet'
+          if (iface['mounted'] or iface['mountable']) and not iface['management'] and iface['interface'] =~ /(fpga|Ethernet)/
             switch, swport = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)
             if used_ports[[switch, swport]]
               raise "Duplicate port assigned for #{node_uid} #{iface_uid}. Already assigned to #{used_ports[[switch, swport]]} Aborting."
@@ -421,7 +421,7 @@ def add_kavlan_ips(h)
         raise "Old kavlan data in input/ for #{node_uid}" if hn.has_key?('kavlan')
         node_id = node_uid.split('-')[1].to_i
         hn['kavlan'] = {}
-        hn['network_adapters'].to_a.select { |i| i[1]['mountable'] and (i[1]['kavlan'] or not i[1].has_key?('kavlan')) and i[1]['interface'] == 'Ethernet' }.map { |e| e[0] }.each do |iface|
+        hn['network_adapters'].to_a.select { |i| i[1]['mountable'] and (i[1]['kavlan'] or not i[1].has_key?('kavlan')) and i[1]['interface'] =~ /(Ethernet-fpga|Ethernet)/ }.map { |e| e[0] }.each do |iface|
           hn['kavlan'][iface] = {}
           vlan_base.each do |vlan, v|
             type = v['type']
@@ -454,7 +454,7 @@ def add_ipv4(h)
         node_id = node_uid.split('-')[1].to_i
         hn['network_adapters'].each_pair do |iface, v|
           # only allocate mountable ethernet interfaces
-          next if not (v['mountable'] and v['interface'] == 'Ethernet')
+          next if not (v['mountable'] and ['Ethernet','Ethernet-fpga'].include?(v['interface']))
           k = [site_uid, cluster_uid, iface]
           if not iface_offsets.has_key?(k)
             raise "Missing IPv4 information for #{k}"
@@ -476,7 +476,7 @@ def add_ipv6(h)
     site_prefix = IPAddress hs['ipv6']['prefix']
     hs['clusters'].each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
-        ipv6_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and v['interface'] == 'Ethernet' }
+        ipv6_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and ['Ethernet','Ethernet-fpga'].include?(v['interface']) }
         if ipv6_adapters.length > 0
           if not ipv6_adapters.values[0]['mounted']
             raise "#{node_uid}: inconsistency: this code assumes first mountable ethernet adapter should be mounted: #{hn}"
@@ -542,7 +542,7 @@ def add_kavlan_ipv6s(h)
     hs['clusters'].each_pair do |_cluster_uid, hc|
       next if !hc['kavlan'] # skip clusters where kavlan is globally set to false (used for initial cluster installation)
       hc['nodes'].each_pair do |node_uid, hn|
-        kvl_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and (v['kavlan'] or not v.has_key?('kavlan')) and v['interface'] == 'Ethernet' }
+        kvl_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and (v['kavlan'] or not v.has_key?('kavlan')) and ['Ethernet','Ethernet-fpga'].include?(v['interface']) }
         if kvl_adapters.length > 0
           if kvl_adapters.length != hn['kavlan'].length
             raise "#{node_uid}: inconsistency: num kvl_adapters = #{kvl_adapters.length}, num kavlan entries = #{hn['kavlan'].length}"
