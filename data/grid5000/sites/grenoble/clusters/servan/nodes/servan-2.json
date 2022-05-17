@@ -276,6 +276,7 @@
     },
     {
       "device": "fpga0",
+      "driver": "xrt",
       "enabled": true,
       "interface": "Ethernet-fpga",
       "ip": "172.16.23.12",
@@ -283,6 +284,7 @@
       "kavlan": true,
       "mac": "00:0a:35:06:4a:dc",
       "management": false,
+      "model": "Alveo U200 QSFP28 (100GbE)",
       "mountable": true,
       "mounted": false,
       "network_address": "servan-2-fpga0.grenoble.grid5000.fr",
@@ -290,10 +292,12 @@
       "sriov": false,
       "sriov_totalvfs": 0,
       "switch": "gw",
-      "switch_port": "ethernet1/1/99"
+      "switch_port": "ethernet1/1/99",
+      "vendor": "Xilinx"
     },
     {
       "device": "fpga1",
+      "driver": "xrt",
       "enabled": true,
       "interface": "Ethernet-fpga",
       "ip": "172.16.23.22",
@@ -301,6 +305,7 @@
       "kavlan": true,
       "mac": "00:0a:35:06:4a:dd",
       "management": false,
+      "model": "Alveo U200 QSFP28 (100GbE)",
       "mountable": true,
       "mounted": false,
       "network_address": "servan-2-fpga1.grenoble.grid5000.fr",
@@ -308,7 +313,8 @@
       "sriov": false,
       "sriov_totalvfs": 0,
       "switch": "gw",
-      "switch_port": "ethernet1/1/100"
+      "switch_port": "ethernet1/1/100",
+      "vendor": "Xilinx"
     }
   ],
   "operating_system": {
@@ -321,6 +327,8 @@
   },
   "other_devices": {
     "fpga0": {
+      "core": 0,
+      "count": 1,
       "model": "Alveo U200",
       "type": "fpga",
       "vendor": "Xilinx"

@@ -122,6 +122,12 @@ class G5KHardwareGenerator < WikiGenerator
             net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
             # Sort by interface type (eth or IB) and then by driver
             net_models.sort_by { |k, _v|  [k.first[:sort], k[1][:sort]] }.each { |k, v|
+              if k.first[:text] == "Ethernet-fpga"
+                k.each_with_index { |_v, i|
+                  k[i][:text] = k[i][:text] + "*"
+                }
+              end
+
               init(data, 'net_models', k)
               data['net_models'][k][site_uid] += v
             }
@@ -154,6 +160,13 @@ class G5KHardwareGenerator < WikiGenerator
             }
 
             # Accelerators
+            f = node_hash['other_devices']
+            fpga_families = {}
+            fpga_families[["#{f['fpga0']['vendor']} (#{f['fpga0']['type']})"]] = 1 if f and f['fpga0']
+            fpga_details = {}
+            # We don't have information about the number of cores, by default we add it manually to 0
+            fpga_details[["#{f['fpga0']['vendor']} #{f['fpga0']['model']} (#{f['fpga0']['type']})"]]  = [f['fpga0']['count'], f['fpga0']['core']] if f and f['fpga0']
+            
             m = node_hash['mic']
 
             mic_families = {}
@@ -189,15 +202,16 @@ class G5KHardwareGenerator < WikiGenerator
               }
             end
 
-            gpu_families.merge(mic_families).sort.to_h.each { |k, v|
+            gpu_families.merge(mic_families).merge(fpga_families).sort.to_h.each { |k, v|
               init(data, 'acc_families', k)
               data['acc_families'][k][site_uid] += v
             }
 
-            gpu_details.merge(mic_details).sort.to_h.each { |k, v|
+            gpu_details.merge(mic_details).merge(fpga_details).sort.to_h.each { |k, v|
               init(data, 'acc_models', k)
               data['acc_models'][k][site_uid] += v[0]
-
+            }
+            gpu_details.merge(mic_details).sort.to_h.each { |k, v|
               init(data, 'acc_cores', k)
               data['acc_cores'][k][site_uid] += v[1]
             }
@@ -240,7 +254,6 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Network interconnects ==\n"
     table_columns = ['Interconnect'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_interconnects'))
-
     generated_content += "\n== Nodes with several Ethernet interfaces ==\n"
     generated_content +=  generate_interfaces
 
@@ -250,7 +263,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Network interface models ==\n"
     table_columns = ['Type', 'Driver', 'Model'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
-
+    generated_content += "\n''*: By default network interface on fpga card is not supported by OS''"
     generated_content += "\n= Storage ="
     generated_content += "\n== SSD models ==\n"
     table_columns = ['SSD interface', 'Model', 'Size'] + sites + ['SSDs total']
@@ -259,7 +272,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content +=  generate_storage
     generated_content += "\n''*: disk is [[Disk_reservation|reservable]]''"
 
-    generated_content += "\n= Accelerators (GPU, Xeon Phi) ="
+    generated_content += "\n= Accelerators (GPU, Xeon Phi, FPGA) ="
     generated_content += "\n== Accelerator families ==\n"
     table_columns = ['Accelerator family'] + sites + ['Accelerators total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_families'))
