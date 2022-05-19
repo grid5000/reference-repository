@@ -26,10 +26,6 @@ class EnvironmentsGenerator < WikiGenerator
     'debiantesting-min' => 'debian testing minimalistic installation',
   }
 
-  def initialize(page_name)
-    super(page_name)
-  end
-
   def generate_content(_options)
 
     table_columns = ["Name"]
