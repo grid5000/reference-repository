@@ -8,6 +8,7 @@ require 'refrepo/gen/wiki/generators/site_hardware'
 require 'refrepo/gen/wiki/generators/site_network'
 require 'refrepo/gen/wiki/generators/status'
 require 'refrepo/gen/wiki/generators/group_storage'
+require 'refrepo/gen/wiki/generators/environments'
 require 'refrepo/gen/wiki/generators/kwollect_metrics'
 require 'refrepo/gen/wiki/generators/oarsub_simplifier_aliases'
 
@@ -37,6 +38,10 @@ module RefRepo::Gen::Wiki
     'group_storage' => {
       :gen => GroupStorageGenerator,
       :page => 'Generated/GroupStorage'
+    },
+    'environments' => {
+      :gen => EnvironmentsGenerator,
+      :page => 'Generated/Environments'
     },
     'kwollect_metrics' => {
       :gen => KwollectMetricsGenerator,
