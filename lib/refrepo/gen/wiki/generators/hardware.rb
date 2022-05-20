@@ -162,15 +162,15 @@ class G5KHardwareGenerator < WikiGenerator
             # Accelerators
             f = node_hash['other_devices']
             fpga_families = {}
-            fpga_families[["#{f['fpga0']['vendor']} (#{f['fpga0']['type']})"]] = 1 if f and f['fpga0']
+            fpga_families[["#{f['fpga0']['vendor']} #{f['fpga0']['type'].upcase}"]] = 1 if f and f['fpga0']
             fpga_details = {}
             # We don't have information about the number of cores, by default we add it manually to 0
-            fpga_details[["#{f['fpga0']['vendor']} #{f['fpga0']['model']} (#{f['fpga0']['type']})"]]  = [f['fpga0']['count'], f['fpga0']['core']] if f and f['fpga0']
+            fpga_details[["#{f['fpga0']['vendor']} #{f['fpga0']['model']}"]] = [f['fpga0']['count'], f['fpga0']['core']] if f and f['fpga0']
             
             m = node_hash['mic']
 
             mic_families = {}
-            mic_families[[m['mic_vendor']]] = m['mic_count'] if m and m['mic']
+            mic_families[["Intel MIC"]] = m['mic_count'] if m and m['mic']
             mic_details = {}
             mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
 
@@ -180,17 +180,19 @@ class G5KHardwareGenerator < WikiGenerator
             unless lg.nil?
               lg.each { |g|
                 d = g[1]
+                vendor_families = "#{d['vendor']} GPU"
                 vendor = d['vendor']
                 cmodel = d['model']
                 model = cmodel
                 nbcores = GPURef.getNumberOfCoresFor(cmodel)
 
-                family = gpu_families[[vendor]]
+                family = gpu_families[[vendor_families]]
                 if family.nil?
-                  gpu_families[[vendor]] = 1
+                  gpu_families[[vendor_families]] = 1
                 else
-                  gpu_families[[vendor]] += 1
-                end
+                  gpu_families[[vendor_families]] += 1
+                end                
+
 
                 details = gpu_details[["#{vendor} #{model}"]]
 
