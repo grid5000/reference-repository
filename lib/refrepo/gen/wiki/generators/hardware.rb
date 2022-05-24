@@ -168,7 +168,7 @@ class G5KHardwareGenerator < WikiGenerator
             m = node_hash['mic']
 
             mic_families = {}
-            mic_families[["Intel MIC"]] = m['mic_count'] if m and m['mic']
+            mic_families[["#{m['mic_vendor']} MIC"]] = m['mic_count'] if m and m['mic']
             mic_details = {}
             mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
 
