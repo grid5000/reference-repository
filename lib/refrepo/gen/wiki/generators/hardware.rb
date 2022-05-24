@@ -158,19 +158,28 @@ class G5KHardwareGenerator < WikiGenerator
             }
 
             # Accelerators
-            f = node_hash['other_devices']
+            other_dev = node_hash['other_devices']
             fpga_families = {}
-            fpga_families[["#{f['fpga0']['vendor']} #{f['fpga0']['type'].upcase}"]] = 1 if f and f['fpga0']
             fpga_details = {}
-            # We don't have information about the number of cores, by default we add it manually to 0
-            fpga_details[["#{f['fpga0']['vendor']} #{f['fpga0']['model']}"]] = [f['fpga0']['count'], f['fpga0']['core']] if f and f['fpga0']
+            if other_dev and other_dev['fpga0']
+              fpga = other_dev['fpga0']
+              vendor_type = "#{fpga['vendor']} #{fpga['type'].upcase}"
+              vendor_model = "#{fpga['vendor']} #{fpga['model']}"
+              fpga_families[[vendor_type]] = 1
+              fpga_details[[vendor_model]] = [fpga['count'], fpga['core']]
+            end
+
             
             m = node_hash['mic']
-
             mic_families = {}
-            mic_families[["#{m['mic_vendor']} MIC"]] = m['mic_count'] if m and m['mic']
             mic_details = {}
-            mic_details[["#{m['mic_vendor']} #{m['mic_model']}"]] = [m['mic_count'], m['mic_cores']] if m and m['mic']
+            if m and m['mic']
+              vendor_mic = "#{m['mic_vendor']} MIC"
+              vendor_model = "#{m['mic_vendor']} #{m['mic_model']}"
+              mic_families[[vendor_mic]] = m['mic_count']
+              mic_details[[vendor_model]] = [m['mic_count'], m['mic_cores']]
+            end
+
 
             lg = node_hash['gpu_devices']
             gpu_families = {}
