@@ -7,9 +7,9 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "10/06/2021",
+    "release_date": "01/13/2022",
     "vendor": "Dell Inc.",
-    "version": "2.5.6"
+    "version": "2.6.6"
   },
   "bmc_version": "5.10",
   "chassis": {
@@ -276,35 +276,45 @@
     },
     {
       "device": "fpga0",
+      "driver": "xrt",
       "enabled": true,
-      "interface": "Ethernet",
+      "interface": "Ethernet-FPGA",
       "ip": "172.16.23.11",
       "ip6": "2001:660:4406:100:8:1:0:1",
       "kavlan": true,
       "mac": "00:0a:35:06:4a:b8",
       "management": false,
+      "model": "Alveo U200 QSFP28 (100GbE)",
       "mountable": true,
       "mounted": false,
       "network_address": "servan-1-fpga0.grenoble.grid5000.fr",
       "rate": 100000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "gw",
-      "switch_port": "ethernet1/1/97"
+      "switch_port": "ethernet1/1/97",
+      "vendor": "Xilinx"
     },
     {
       "device": "fpga1",
+      "driver": "xrt",
       "enabled": true,
-      "interface": "Ethernet",
+      "interface": "Ethernet-FPGA",
       "ip": "172.16.23.21",
       "ip6": "2001:660:4406:100:8:2:0:1",
       "kavlan": true,
       "mac": "00:0a:35:06:4a:b9",
       "management": false,
+      "model": "Alveo U200 QSFP28 (100GbE)",
       "mountable": true,
       "mounted": false,
       "network_address": "servan-1-fpga1.grenoble.grid5000.fr",
       "rate": 100000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "gw",
-      "switch_port": "ethernet1/1/98"
+      "switch_port": "ethernet1/1/98",
+      "vendor": "Xilinx"
     }
   ],
   "operating_system": {
@@ -314,6 +324,15 @@
     "pstate_driver": "acpi-cpufreq",
     "pstate_governor": "performance",
     "turboboost_enabled": true
+  },
+  "other_devices": {
+    "fpga0": {
+      "core": 0,
+      "count": 1,
+      "model": "Alveo U200",
+      "type": "fpga",
+      "vendor": "Xilinx"
+    }
   },
   "performance": {
     "core_flops": 36800000000,
@@ -329,7 +348,7 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Zen 2",
-    "microcode": "0x830104d",
+    "microcode": "0x8301052",
     "model": "AMD EPYC",
     "other_description": "AMD EPYC 7352 24-Core Processor",
     "vendor": "AMD",

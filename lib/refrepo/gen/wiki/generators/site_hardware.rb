@@ -236,12 +236,14 @@ class SiteHardwareGenerator < WikiGenerator
           end
 
           accelerators = nil
-          if h['gpu_str'] != '' && h['mic_str'] != ''
-            accelerators = 'GPU/Xeon Phi'
+          if h['gpu_str'] != '' && h['mic_str'] != '' && h['fpga_str'] != ''
+            accelerators = 'GPU/Xeon Phi/FPGA'
           elsif h['gpu_str'] != ''
             accelerators = 'GPU'
           elsif h['mic_str'] != ''
             accelerators = 'Xeon Phi'
+          elsif h['fpga_str'] != ''
+            accelerators = 'FPGA'
           end
           hash = {}
           hash['Access condition'] = access_conditions.join(", ") if not access_conditions.empty?
@@ -508,9 +510,18 @@ def get_hardware(sites)
                           else
                             ''
                           end
+        # Add fpga_str information
+        fpga = node_hash['other_devices']
+        hard['fpga_str'] = if fpga
+                              (fpga['fpga0']['count'].to_i == 1 ? '' : fpga['fpga0']['count'].to_s + '&nbsp;x&nbsp;') + fpga['fpga0']['vendor'].to_s + ' ' + fpga['fpga0']['model'].to_s.gsub(' ', '&nbsp;')
+                            else
+                              ''
+                            end
         hard['accelerators'] = hard['gpu_str'] != '' ? hard['gpu_str'] + (hard['mic_str'] != '' ? ' ; ' + hard['mic_str'] : '') : hard['mic_str']
-        hard['accelerators_long'] = hard['gpu_str_long'] != '' ? hard['gpu_str_long'] + (hard['mic_str'] != '' ? ' ; ' + hard['mic_str'] : '') : hard['mic_str']
+        hard['accelerators'] += hard['fpga_str'] if hard['fpga_str'] != ''
 
+        hard['accelerators_long'] = hard['gpu_str_long'] != '' ? hard['gpu_str_long'] + (hard['fpga_str'] != '' ? ' ; ' + hard['fpga_str'] : '') : hard['fpga_str'] 
+        hard['accelerators_long'] += ' ; ' + hard['mic_str'] if hard['mic_str'] != ''
         add(hardware[site_uid][cluster_uid], node_uid, hard)
       }
     }
