@@ -380,7 +380,7 @@ def get_hardware(sites)
             if e[1] == 1
               "<b>#{size}&nbsp;#{e[0]['tech']}</b>"
             else
-              "<b>1&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}</b>" + ' +&nbsp;' + (e[1] - 1).to_s + "&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}" + (e[0]['reservation'] ? '[[Disk_reservation|*]]' : '')
+              "<b>#{size}&nbsp;#{e[0]['tech']}</b>" + ' +&nbsp;' + ((remainder = e[1] - 1) == 1 ? '' : "#{remainder}&nbsp;x&nbsp;") + "#{size}&nbsp;#{e[0]['tech']}" + (e[0]['reservation'] ? '[[Disk_reservation|*]]' : '')
             end
           else
             if e[1] == 1
