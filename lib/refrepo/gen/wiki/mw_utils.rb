@@ -164,13 +164,20 @@ module MW
 
     table_text += MW::LINE_FEED + MW::TABLE_ROW + MW::LINE_FEED
 
-    columns.each { |col|
-      if col.kind_of?(Hash)
-        table_text += MW::TABLE_HEADER + col[:attributes] + MW::TABLE_CELL + col[:text] + MW::LINE_FEED
-      else
-        table_text += MW::TABLE_HEADER + MW::TABLE_CELL + col + MW::LINE_FEED
+    # A bit hacky, we want generate_table to work with an array or with an 
+    # array of array for mulitline header
+    columns = [columns] unless columns.first.kind_of?(Array)
+
+    columns.each do |headers_row|
+      headers_row.each do |col|
+        if col.kind_of?(Hash)
+          table_text += MW::TABLE_HEADER + col[:attributes] + MW::TABLE_CELL + col[:text] + MW::LINE_FEED
+        else
+          table_text += MW::TABLE_HEADER + MW::TABLE_CELL + col + MW::LINE_FEED
+        end
       end
-    }
+      table_text += MW::TABLE_ROW + MW::LINE_FEED
+    end
 
     rows.each { |row|
       if row.kind_of?(Hash) and row[:sort] == false
@@ -181,7 +188,7 @@ module MW
         table_cell = MW::TABLE_CELL
         inline_cell = MW::INLINE_CELL
       end
-      table_text += MW::TABLE_ROW + MW::LINE_FEED
+      table_text += MW::LINE_FEED
       row.each_with_index{ |cell, i|
         if (i == 0)
           table_text += table_cell
@@ -190,7 +197,7 @@ module MW
         end
         table_text += cell.to_s
       }
-      table_text += MW::LINE_FEED
+      table_text += MW::LINE_FEED + MW::TABLE_ROW
     }
     table_text += MW::LINE_FEED + MW::TABLE_END
     return table_text

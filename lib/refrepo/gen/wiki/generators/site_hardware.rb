@@ -117,15 +117,19 @@ class SiteHardwareGenerator < WikiGenerator
         access_conditions << "<b>#{queue}</b>&nbsp;queue"
       end
       access_conditions << '<b>[[Getting_Started#Selecting_specific_resources|exotic]]</b>&nbsp;job&nbsp;type' if cluster_hash.map { |_k, v| v['exotic']}.first
-      table_columns = (with_sites == true ? ['Site'] : []) + ['Cluster',  'Access Condition', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : ['Accelerators'])
+      table_columns = []
+      table_columns << (with_sites == true ? [{attributes: 'rowspan=2', text: 'Site'}] : []) + [{attributes: 'rowspan=2', text: 'Cluster'},  {attributes: 'rowspan=2', text: 'Access Condition'}, {attributes: 'rowspan=2', text: 'Date of arrival'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Nodes' }, {attributes: 'colspan=4', text:  'CPU'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Memory' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Storage' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : [{attributes: 'rowspan=2', text: 'Accelerators'}])
+      table_columns << [{ attributes: 'data-sort-type="number"', text: '#' }, 'Name', { attributes: 'data-sort-type="number"', text: 'Cores' }, 'Architecture' ]
       data = partition(cluster_hash)
       table_data <<  (with_sites == true ? ["[[#{site.capitalize}:Hardware|#{site.capitalize}]]"] : []) + [
         (with_sites == true ? "[[#{site.capitalize}:Hardware##{cluster_uid}" + "|#{cluster_uid}]]" : "[[##{cluster_uid}" + "|#{cluster_uid}]]"),
         access_conditions.join(",<br/>"),
         cell_data(data, 'date'),
         cluster_nodes,
-        cell_data(data, 'num_processor_model'),
+        cell_data(data, 'cpus_per_node'),
+        cell_data(data, 'processor_model'),
         cell_data(data, 'cores_per_cpu_str'),
+        cell_data(data, 'architecture'),
         sort_data(data, 'ram_size') + (!data['pmem_size'].nil? ? " + #{cell_data(data, 'pmem_size')} [[PMEM]]" : ''),
         'data-sort-value="' + sort_data(data, 'storage_size') + '"|' + cell_data(data, 'storage'),
         'data-sort-value="' + sort_data(data, 'network_throughput') + '"|' + cell_data(data, 'used_networks')
@@ -360,6 +364,7 @@ def get_hardware(sites)
         hard['cpus_per_node_str'] = hard['cpus_per_node'].to_s + '&nbsp;' + G5K.pluralize(hard['cpus_per_node'], 'CPU') + '/node'
         hard['cores_per_cpu'] = node_hash['architecture']['nb_cores'] / hard['cpus_per_node']
         hard['cores_per_cpu_str'] = hard['cores_per_cpu'].to_s + '&nbsp;' + G5K.pluralize(hard['cores_per_cpu'], 'core') + '/CPU'
+        hard['architecture'] = node_hash['architecture']['platform_type']
         exotic_archname = get_exotic_archname(node_hash['architecture']['platform_type'])
         hard['num_processor_model'] = (hard['cpus_per_node'] == 1 ? '' : "#{hard['cpus_per_node']}&nbsp;x&nbsp;") + (exotic_archname ? "#{exotic_archname}&nbsp;" : '') + hard['processor_model'].gsub(' ', '&nbsp;')
         hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
@@ -375,7 +380,7 @@ def get_hardware(sites)
             if e[1] == 1
               "<b>#{size}&nbsp;#{e[0]['tech']}</b>"
             else
-              "<b>1&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}</b>" + ' +&nbsp;' + (e[1] - 1).to_s + "&nbsp;x&nbsp;#{size}&nbsp;#{e[0]['tech']}" + (e[0]['reservation'] ? '[[Disk_reservation|*]]' : '')
+              "<b>#{size}&nbsp;#{e[0]['tech']}</b>" + ' +&nbsp;' + ((remainder = e[1] - 1) == 1 ? '' : "#{remainder}&nbsp;x&nbsp;") + "#{size}&nbsp;#{e[0]['tech']}" + (e[0]['reservation'] ? '[[Disk_reservation|*]]' : '')
             end
           else
             if e[1] == 1
