@@ -376,7 +376,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['chassis'] = [node['chassis']['manufacturer'], node['chassis']['name'], node['chassis']['serial']].join(' ')
 
   # ETH
-  ni_mountable = node['network_adapters'].select { |na| /^eth[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
+  ni_mountable = node['network_adapters'].select { |na| /^(eth|fpga)[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
 
   h['eth_count'] = ni_mountable.length
