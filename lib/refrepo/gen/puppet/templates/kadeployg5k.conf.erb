@@ -11,8 +11,9 @@ partitioning:
   formating_script: /etc/kadeploy3<%= suffix %>/<%= data['formating.script'] %>
   <%- end -%>
   # Not used by Grid'5000 since we take the disk by_path from the API but Kadeploy needs it
+<%# We transform cluster['nodes'] into an array and sort it by nodename in order to be sure to obtain the same result all the times -%>
   disk_path:
-  <%- cluster['nodes'].values.first['storage_devices'].reject{|disk| disk['reservation']}.each do |disk| -%>
+  <%- cluster['nodes'].to_a.sort_by(&:first)[0][1]['storage_devices'].reject{|disk| disk['reservation']}.each do |disk| -%>
     <%= disk['id'] %>: <%= disk['by_path'] %>
   <%- end -%>
 trusted_deployment:
