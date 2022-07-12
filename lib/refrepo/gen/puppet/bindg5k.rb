@@ -314,10 +314,12 @@ def get_node_kavlan_records(_cluster_uid, node_uid, network_adapters, kavlan_ada
       new_record_ipv6.label = "#{node_uid}-#{net_uid}" #sol-23-eth0-kavlan-1
       new_record_ipv6.label += '-ipv6'
       records << new_record_ipv6
-      cname_record_ipv6 = DNS::Zone::RR::CNAME.new
-      cname_record_ipv6.label = "#{node_uid}-#{net_hash['pname']}-ipv6"
-      cname_record_ipv6.domainname = "#{node_uid}-#{net_uid}-ipv6" #sol-23-eno1-kavlan-1
-      records << cname_record_ipv6
+      if !/^fpga[0-9]$/.match(net_uid_eth)
+        cname_record_ipv6 = DNS::Zone::RR::CNAME.new
+        cname_record_ipv6.label = "#{node_uid}-#{net_hash['pname']}-ipv6"
+        cname_record_ipv6.domainname = "#{node_uid}-#{net_uid}-ipv6" #sol-23-eno1-kavlan-1
+        records << cname_record_ipv6
+      end
     end
 
     # CNAME only for primary interface kavlan
@@ -663,7 +665,11 @@ def fetch_site_records(site, type)
                 kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['mountable'] = node['network_adapters'].select { |n|
                   n['device'] == net_uid
                 }[0]['moutable']
-                kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip'] = ip
+                if kavlan_kind == 'kavlan6'
+                  kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip6'] = ip
+                else
+                  kavlan_adapters["#{net_uid}-#{kavlan_net_uid}"]['ip'] = ip
+                end
               end
             }
           }
