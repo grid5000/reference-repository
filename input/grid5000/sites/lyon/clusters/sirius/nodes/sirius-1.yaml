@@ -88,10 +88,11 @@ sirius-1:
       ip: 172.17.56.1
       mac: 5c:ff:35:e3:84:be
       management: true
-    eth1:
+    eth0:
       driver: igb
       firmware_version: 3.25, 0x800005cc
       interface: Ethernet
+      ip: 172.16.56.1
       mac: 5c:ff:35:e3:84:29
       management: false
       model: I210 Gigabit Network Connection
@@ -100,13 +101,12 @@ sirius-1:
       sriov: false
       sriov_totalvfs: 0
       vendor: Intel
-    eth0:
+    eth1:
       name: enp225s0f0np0
       interface: Ethernet
       driver: mlx5_core
-      ip: 172.16.56.1
       mac: b8:ce:f6:2d:18:d6
-      rate: 10000000000
+      rate: 100000000000
       firmware_version: 20.28.4000 (MT_0000000225)
       model: MT28908 Family [ConnectX-6]
       vendor: Mellanox Technologies
