@@ -118,8 +118,9 @@ class SiteHardwareGenerator < WikiGenerator
       end
       access_conditions << '<b>[[Getting_Started#Selecting_specific_resources|exotic]]</b>&nbsp;job&nbsp;type' if cluster_hash.map { |_k, v| v['exotic']}.first
       table_columns = []
-      table_columns << (with_sites == true ? [{attributes: 'rowspan=2', text: 'Site'}] : []) + [{attributes: 'rowspan=2', text: 'Cluster'},  {attributes: 'rowspan=2', text: 'Access Condition'}, {attributes: 'rowspan=2', text: 'Date of arrival'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Nodes' }, {attributes: 'colspan=4', text:  'CPU'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Memory' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Storage' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : [{attributes: 'rowspan=2', text: 'Accelerators'}])
-      table_columns << [{ attributes: 'data-sort-type="number"', text: '#' }, 'Name', { attributes: 'data-sort-type="number"', text: 'Cores' }, 'Architecture' ]
+      table_columns << (with_sites == true ? [{attributes: 'rowspan=2', text: 'Site'}] : []) + [{attributes: 'rowspan=2', text: 'Cluster'},  {attributes: 'rowspan=2', text: 'Access Condition'}, {attributes: 'rowspan=2', text: 'Date of arrival'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Nodes' }, {attributes: 'colspan=4', text:  'CPU'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Memory' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Storage' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : [{attributes: 'colspan=4 rowspan=1', text: 'Accelerators'}])
+      table_columns << [{ attributes: 'data-sort-type="number"', text: '#' }, 'Name', { attributes: 'data-sort-type="number"', text: 'Cores' }, 'Architecture']
+      table_columns[1] += [{ attributes: 'data-sort-type="number"', text: '#' }, 'Name', { attributes: 'data-sort-type="number"', text: 'Compute capability' }, 'Micro-architecture' ] unless site_accelerators.zero? && with_sites == false
       data = partition(cluster_hash)
       table_data <<  (with_sites == true ? ["[[#{site.capitalize}:Hardware|#{site.capitalize}]]"] : []) + [
         (with_sites == true ? "[[#{site.capitalize}:Hardware##{cluster_uid}" + "|#{cluster_uid}]]" : "[[##{cluster_uid}" + "|#{cluster_uid}]]"),
@@ -133,7 +134,7 @@ class SiteHardwareGenerator < WikiGenerator
         sort_data(data, 'ram_size') + (!data['pmem_size'].nil? ? " + #{cell_data(data, 'pmem_size')} [[PMEM]]" : ''),
         'data-sort-value="' + sort_data(data, 'storage_size') + '"|' + cell_data(data, 'storage'),
         'data-sort-value="' + sort_data(data, 'network_throughput') + '"|' + cell_data(data, 'used_networks')
-      ] + ((site_accelerators.zero? && with_sites == false) ? [] : [cell_data(data, 'accelerators')])
+      ] + ((site_accelerators.zero? && with_sites == false) ? [] : [cell_data(data, 'accelerators_count') ,cell_data(data, 'accelerators'), cell_data(data, 'compute_capability'), cell_data(data, 'micro_architecture')])
     }
     [table_columns, table_data]
   end
@@ -300,7 +301,7 @@ def sort_data(data, key)
   data[key].map{ |e| e['sort'] }[0]
 end
 
-def gpu_description(node_hash, long_names)
+def gpu_description(node_hash, long_names, with_count = true)
   lgpu = node_hash['gpu_devices']
   if lgpu
     bymodel = {}
@@ -316,7 +317,8 @@ def gpu_description(node_hash, long_names)
       vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;') + "&nbsp;(#{memgib}&nbsp;GiB)"
       if long_names
         cc = GPURef.get_compute_capability(d['model'])
-        vm += "<br>Compute&nbsp;capability:&nbsp;#{cc}" if cc
+        ma = GPURef.get_micro_architecture(d['model'])
+        vm += "<br>Compute&nbsp;capability:&nbsp;#{cc}, Micro-architecture:&nbsp;#{ma}" if cc && ma
       end
 
       if bymodel[vm]
@@ -327,7 +329,7 @@ def gpu_description(node_hash, long_names)
     }
     res = []
     bymodel.each { |model,count|
-      res << (count == 1 ? '' : count.to_s + '&nbsp;x&nbsp;') + model
+      res << ((count == 1 || !with_count) ? '' : count.to_s + '&nbsp;x&nbsp;') + model
     }
   else
     res = []
@@ -507,26 +509,26 @@ def get_hardware(sites)
           s
         end.join('<br />')
 
-        hard['gpu_str'] = gpu_description(node_hash, false)
+        hard['gpu_str'] = gpu_description(node_hash, false, false)
         hard['gpu_str_long'] = gpu_description(node_hash, true)
-        mic = node_hash['mic']
-        hard['mic_str'] = if mic
-                            (mic['mic_count'].to_i == 1 ? '' : mic['mic_count'].to_s + '&nbsp;x&nbsp;') + mic['mic_vendor'].to_s + ' ' + mic['mic_model'].to_s.gsub(' ', '&nbsp;')
-                          else
-                            ''
-                          end
-        # Add fpga_str information
-        fpga = node_hash['other_devices']
-        hard['fpga_str'] = if fpga
-                              (fpga['fpga0']['count'].to_i == 1 ? '' : fpga['fpga0']['count'].to_s + '&nbsp;x&nbsp;') + fpga['fpga0']['vendor'].to_s + ' ' + fpga['fpga0']['model'].to_s.gsub(' ', '&nbsp;')
-                            else
-                              ''
-                            end
-        hard['accelerators'] = hard['gpu_str'] != '' ? hard['gpu_str'] + (hard['mic_str'] != '' ? ' ; ' + hard['mic_str'] : '') : hard['mic_str']
-        hard['accelerators'] += hard['fpga_str'] if hard['fpga_str'] != ''
+        hard['fpga_str'] = ''
+        hard['mic_str'] = ''
+        if (mic = node_hash['mic'])
+           hard['accelerators'] = mic['mic_vendor'].to_s + ' ' + mic['mic_model'].to_s.gsub(' ', '&nbsp;')
+           hard['accelerators_count'] = mic['mic_count']
+           hard['mic_str'] = (mic['mic_count'].to_i == 1 ? '' : mic['mic_count'].to_s + '&nbsp;x&nbsp;') + mic['mic_vendor'].to_s + ' ' + mic['mic_model'].to_s.gsub(' ', '&nbsp;')
+        elsif (fpga = node_hash['other_devices'])
+          hard['accelerators'] = fpga['fpga0']['vendor'].to_s + ' ' + fpga['fpga0']['model'].to_s.gsub(' ', '&nbsp;')
+          hard['accelerators_count'] = fpga['fpga0']['count']
+          hard['fpga_str'] = (fpga['fpga0']['count'].to_i == 1 ? '' : fpga['fpga0']['count'].to_s + '&nbsp;x&nbsp;') + fpga['fpga0']['vendor'].to_s + ' ' + fpga['fpga0']['model'].to_s.gsub(' ', '&nbsp;')
+        else
+          hard['accelerators'] = hard['gpu_str'] != '' ? hard['gpu_str'] + (hard['mic_str'] != '' ? ' ; ' + hard['mic_str'] : '') : hard['mic_str']
+          hard['accelerators_count'] = node_hash['gpu_devices']&.count || ''
+        end
 
-        hard['accelerators_long'] = hard['gpu_str_long'] != '' ? hard['gpu_str_long'] + (hard['fpga_str'] != '' ? ' ; ' + hard['fpga_str'] : '') : hard['fpga_str'] 
-        hard['accelerators_long'] += ' ; ' + hard['mic_str'] if hard['mic_str'] != ''
+        hard['accelerators_long'] = [hard['gpu_str_long'], hard['fpga_str'], hard['mic_str']].reject{|x| x.chomp.empty?}.join(' ; ')
+        hard['compute_capability'] = node_hash['gpu_devices']&.map{|_,v| v['compute_capability']}&.uniq&.first || ''
+        hard['micro_architecture'] = node_hash['gpu_devices']&.map{|_,v| v['micro_architecture']}&.uniq&.first || ''
         add(hardware[site_uid][cluster_uid], node_uid, hard)
       }
     }
