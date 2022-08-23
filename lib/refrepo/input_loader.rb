@@ -77,7 +77,7 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with theorical flops
   add_theorical_flops(global_hash)
 
-  # add compute capability for nvidia gpus
+  # add compute capability and micro_architecture for nvidia gpus
   add_compute_capability(global_hash)
 
   # populate each node with administration tools' parameters
@@ -123,7 +123,7 @@ def add_node_pdu_mapping(h)
         if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_uid}
           raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_uid} description defined both in clusters/ and pdus/ hierarchy"
         end
-        node["pdu"].append({"uid" => pdu_uid, "port" => port_uid})
+        node["pdu"].push({"uid" => pdu_uid, "port" => port_uid})
       end
 
       # Merge pdu information from node description in pdus/ hierachy
@@ -182,7 +182,7 @@ def add_wattmetre_mapping(h)
             if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_num}
               raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_num} description defined both in clusters/ and pdus/ hierarchy"
             end
-            node["pdu"].append({"uid" => pdu_uid, "port" => port_num, "kind" => "wattmetre-only"})
+            node["pdu"].push({"uid" => pdu_uid, "port" => port_num, "kind" => "wattmetre-only"})
           end
         end
       end
@@ -744,6 +744,7 @@ def add_compute_capability(h)
         if node['gpu_devices']
           node['gpu_devices'].select { |_, v| v['vendor'] == 'Nvidia' }.each do |_, v|
             v['compute_capability'] = GPURef.get_compute_capability(v['model'])
+            v['micro_architecture'] = GPURef.get_micro_architecture(v['model'])
           end
         end
       end
