@@ -40,7 +40,7 @@ nodes:
         mountable: false
         mounted: false
       fpga0:
-        interface: Ethernet-FPGA
+        interface: Ethernet
         enabled: true
         management: false
         mountable: true
@@ -49,8 +49,9 @@ nodes:
         rate: 100000000000
         sriov: false
         sriov_totalvfs: 0
+        name: fpga0
       fpga1:
-        interface: Ethernet-FPGA
+        interface: Ethernet
         management: false
         enabled: true
         mountable: true
@@ -59,6 +60,7 @@ nodes:
         rate: 100000000000
         sriov: false
         sriov_totalvfs: 0
+        name: fpga1
     storage_devices:
       pci-0000:c3:00.0-nvme-1:
         interface: NVME
