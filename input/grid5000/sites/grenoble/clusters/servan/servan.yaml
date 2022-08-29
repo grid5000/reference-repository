@@ -50,6 +50,9 @@ nodes:
         sriov: false
         sriov_totalvfs: 0
         name: fpga0
+        driver: n/a
+        model: Alveo U200 QSFP28 (100GbE)
+        vendor: Xilinx
       fpga1:
         interface: Ethernet
         management: false
@@ -61,6 +64,9 @@ nodes:
         sriov: false
         sriov_totalvfs: 0
         name: fpga1
+        driver: n/a
+        model: Alveo U200 QSFP28 (100GbE)
+        vendor: Xilinx
     storage_devices:
       pci-0000:c3:00.0-nvme-1:
         interface: NVME
@@ -76,26 +82,14 @@ nodes:
     network_adapters:
       fpga0:
         mac: 00:0A:35:06:4A:B8
-        driver: n/a
-        model: Alveo U200 QSFP28 (100GbE)
-        vendor: Xilinx
       fpga1:
         mac: 00:0A:35:06:4A:B9
-        driver: n/a
-        model: Alveo U200 QSFP28 (100GbE)
-        vendor: Xilinx
   servan-2:
     network_adapters:
       fpga0:
         mac: 00:0A:35:06:4A:DC
-        driver: n/a
-        model: Alveo U200 QSFP28 (100GbE)
-        vendor: Xilinx
       fpga1:
         mac: 00:0A:35:06:4A:DD
-        driver: n/a
-        model: Alveo U200 QSFP28 (100GbE)
-        vendor: Xilinx
 
 
 
