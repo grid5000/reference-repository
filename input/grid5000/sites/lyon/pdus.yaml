@@ -94,104 +94,111 @@ pdus:
     model: EMAB20
     ip: 172.17.63.205
     mac: 00:20:85:D7:8A:6C
+    metrics:
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.534.6.6.7.6.5.1.3.0.%PORT%
     ports:
-      a1:
+      1: #a1
         uid: sagittaire-2
         wattmetre: wattmetrev3-1
         module: "04000018"
         channel: 1
         phase: 1
         phase_inverted: true
-      a2:
+      2: #a2
         uid: sagittaire-3
         wattmetre: wattmetrev3-1
         module: "04000018"
         channel: 2
         phase: 1
         phase_inverted: true
-      a3:
+      3: #a3
         uid: sagittaire-4
         wattmetre: wattmetrev3-1
         module: "04000018"
         channel: 3
         phase: 1
         phase_inverted: true
-      a4:
+      4: #a4
         uid: sagittaire-5
         wattmetre: wattmetrev3-1
         module: "04000018"
         channel: 4
         phase: 1
         phase_inverted: true
-      a6:
+      6: #a6
         uid: sagittaire-7
         wattmetre: wattmetrev3-1
         module: "04000018"
         channel: 6
         phase: 1
         phase_inverted: true
-      a7: wattmetrev3-1-phase1
-      a8:
+      7: wattmetrev3-1-phase1 #a7
+      8: #a8
         uid: sirius-1
         wattmetre: wattmetrev3-1
         module: "04000013"
         channel: 1
         phase: 1
         phase_inverted: false
-      b1: gw
-      b2: salome
-      b3: wattmetrev3-1-phase2
-      b5:
+      9: gw #b1
+      10: salome #b2
+      11: wattmetrev3-1-phase2 #b3
+      13: #b5
         uid: gemini-1
         wattmetre: wattmetrev3-1
         module: "04000011"
         channel: 1
         phase: 2
         phase_inverted: true
-      b6:
+      14: #b6
         uid: gemini-2
         wattmetre: wattmetrev3-1
         module: "04000020"
         channel: 1
         phase: 2
         phase_inverted: true
-      b7:
+      15: #b7
         uid: pyxis-4
         wattmetre: wattmetrev3-1
         module: "04000020"
         channel: 6
         phase: 2
         phase_inverted: true
-      b8:
+      16: #b8
         uid: sirius-1
         wattmetre: wattmetrev3-1
         module: "04000013"
         channel: 2
         phase: 2
         phase_inverted: true
-      c1:
+      17: #c1
         uid: gemini-2
         wattmetre: wattmetrev3-1
         module: "04000020"
         channel: 2
         phase: 3
         phase_inverted: true
-      c2:
+      18: #c2
         uid: pyxis-3
         wattmetre: wattmetrev3-1
         module: "04000020"
         channel: 5
         phase: 3
         phase_inverted: true
-      c3: wattmetrev3-1-phase3
-      c5:
+      19: wattmetrev3-1-phase3 #c3
+      21: #c5
         uid: gemini-1
         wattmetre: wattmetrev3-1
         module: "04000011"
         channel: 2
         phase: 3
         phase_inverted: true
-      c8:
+      24: #c8
         uid: sirius-1
         wattmetre: wattmetrev3-1
         module: "04000013"
@@ -205,109 +212,116 @@ pdus:
     model: EMAB20
     ip: 172.17.63.206
     mac: 00:20:85:D7:84:EB
+    metrics:
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.534.6.6.7.6.5.1.3.0.%PORT%
     ports:
-      a1:
+      1: #a1
         uid: sagittaire-11
         wattmetre: wattmetrev3-1
         module: "04000022"
         channel: 1
         phase: 1
         phase_inverted: true
-      a2:
+      2: #a2
         uid: sagittaire-12
         wattmetre: wattmetrev3-1
         module: "04000022"
         channel: 2
         phase: 1
         phase_inverted: true
-      a3:
+      3: #a3
         uid: sagittaire-13
         wattmetre: wattmetrev3-1
         module: "04000022"
         channel: 3
         phase: 1
         phase_inverted: true
-      a4:
+      4: #a4
         uid: sagittaire-14
         wattmetre: wattmetrev3-1
         module: "04000022"
         channel: 4
         phase: 1
         phase_inverted: true
-      a5:
+      5: #a5
         uid: sagittaire-15
         wattmetre: wattmetrev3-1
         module: "04000022"
         channel: 5
         phase: 1
         phase_inverted: true
-      a6:
+      6: #6
         uid: sagittaire-16
         wattmetre: wattmetrev3-1
         module: "04000022"
         channel: 6
         phase: 1
         phase_inverted: true
-      a7: gw
-      a8:
+      7: gw #a7
+      8: #a8
         uid: sirius-1
         wattmetre: wattmetrev3-1
         module: "04000013"
         channel: 4
         phase: 1
         phase_inverted: false
-      b1: switch-adm
-      b5:
+      9: switch-adm #b1
+      13: #b5
         uid: gemini-1
         wattmetre: wattmetrev3-1
         module: "04000011"
         channel: 3
         phase: 2
         phase_inverted: true
-      b6:
+      14: #b6
         uid: gemini-2
         wattmetre: wattmetrev3-1
         module: "04000020"
         channel: 3
         phase: 2
         phase_inverted: true
-      b8:
+      16: #b8
         uid: sirius-1
         wattmetre: wattmetrev3-1
         module: "04000013"
         channel: 5
         phase: 2
         phase_inverted: true
-      c1:
+      17: #c1
         uid: pyxis-1
         wattmetre: wattmetrev3-1
         module: "04000011"
         channel: 5
         phase: 3
         phase_inverted: true
-      c2:
+      18: #c2
         uid: pyxis-2
         wattmetre: wattmetrev3-1
         module: "04000011"
         channel: 6
         phase: 3
         phase_inverted: true
-      c3: switch-ib
-      c4:
+      19: switch-ib #c3
+      20: #c4
         uid: gemini-2
         wattmetre: wattmetrev3-1
         module: "04000020"
         channel: 4
         phase: 3
         phase_inverted: true
-      c5:
+      21: #c5
         uid: gemini-1
         wattmetre: wattmetrev3-1
         module: "04000011"
         channel: 4
         phase: 3
         phase_inverted: true
-      c8:
+      24: #c8
         uid: sirius-1
         wattmetre: wattmetrev3-1
         module: "04000013"

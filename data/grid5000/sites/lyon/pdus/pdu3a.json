@@ -1,27 +1,38 @@
 {
   "ip": "172.17.63.205",
   "mac": "00:20:85:D7:8A:6C",
+  "metrics": [
+    {
+      "description": "Power consumption per outlet reported by PDU, in watt",
+      "name": "pdu_outlet_power_watt",
+      "period": 1000,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.5.1.3.0.%PORT%",
+        "protocol": "snmp"
+      }
+    }
+  ],
   "model": "EMAB20",
   "ports": {
-    "a1": "sagittaire-2",
-    "a2": "sagittaire-3",
-    "a3": "sagittaire-4",
-    "a4": "sagittaire-5",
-    "a6": "sagittaire-7",
-    "a7": "wattmetrev3-1-phase1",
-    "a8": "sirius-1",
-    "b1": "gw",
-    "b2": "salome",
-    "b3": "wattmetrev3-1-phase2",
-    "b5": "gemini-1",
-    "b6": "gemini-2",
-    "b7": "pyxis-4",
-    "b8": "sirius-1",
-    "c1": "gemini-2",
-    "c2": "pyxis-3",
-    "c3": "wattmetrev3-1-phase3",
-    "c5": "gemini-1",
-    "c8": "sirius-1"
+    "1": "sagittaire-2",
+    "10": "salome",
+    "11": "wattmetrev3-1-phase2",
+    "13": "gemini-1",
+    "14": "gemini-2",
+    "15": "pyxis-4",
+    "16": "sirius-1",
+    "17": "gemini-2",
+    "18": "pyxis-3",
+    "19": "wattmetrev3-1-phase3",
+    "2": "sagittaire-3",
+    "21": "gemini-1",
+    "24": "sirius-1",
+    "3": "sagittaire-4",
+    "4": "sagittaire-5",
+    "6": "sagittaire-7",
+    "7": "wattmetrev3-1-phase1",
+    "8": "sirius-1",
+    "9": "gw"
   },
   "type": "pdu",
   "uid": "pdu3a",
