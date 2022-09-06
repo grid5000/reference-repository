@@ -23,7 +23,7 @@ class KwollectMetricsGenerator < WikiGenerator
 
     metric_names.sort.each do |metric_name|
 
-      optional = all_metrics.select{|m| m["name"] == metric_name}.first["period"] == 0 ? "*" : ""
+      optional = all_metrics.select{|m| m["name"] == metric_name}.any?{|metric| metric["period"] == 0} ? "*" : ""
       descriptions = all_metrics.select{|m| m["name"] == metric_name}.map{|metric| metric["description"]}.uniq
       if descriptions.length != 1
         description = longest_common_prefix(descriptions) + "XXX" + longest_common_suffix(descriptions)
