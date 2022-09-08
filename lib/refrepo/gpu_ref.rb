@@ -93,6 +93,8 @@ class GPURef
     },
   }
 
+  @@minimal_compute_capability_supported = 3.0
+
   def self.getNumberOfCoresFor(model)
     if @@gpus[model]
       return @@gpus[model]['cores']
@@ -125,5 +127,18 @@ class GPURef
     end
 
     aliases
+  end
+
+  def self.is_gpu_supported(model)
+    support = true
+    compute_capability = @@gpus[model]['compute_capability']
+    
+    if compute_capability
+      support = (compute_capability.to_f >= @@minimal_compute_capability_supported)
+    else
+      support = (@@gpus[model]['short_name'] == 'MI50')
+    end
+
+    return support
   end
 end

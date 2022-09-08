@@ -423,19 +423,19 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['memcpu'] = node['main_memory']['ram_size'] / node['architecture']['nb_procs']/MiB
   h['memnode'] = node['main_memory']['ram_size'] / MiB
 
-  if node.key?('gpu_devices') \
-    and h['cluster'] != 'orion'
-    # Do not generate GPU ppty for orion, cf #10785
+  h['gpu_model'] = ''
+  h['gpu_count'] = 0
 
-    models = node['gpu_devices'].values.map { |g| g['model'] }.uniq
+  if node.key?('gpu_devices')
+    models = node['gpu_devices'].map { |_, g| g['model'] }.uniq
     if models.length > 1
       raise "Node #{h['uid']} has more than one model of GPU"
     end
-    h['gpu_model'] = models.first
-    h['gpu_count'] = node['gpu_devices'].length
-  else
-    h['gpu_model'] = ''
-    h['gpu_count'] = 0
+    gpu_model = models.first
+    if GPURef.is_gpu_supported(gpu_model) 
+      h['gpu_model'] = models.first
+      h['gpu_count'] = node['gpu_devices'].length
+    end
   end
 
   if node.key?('exotic')
