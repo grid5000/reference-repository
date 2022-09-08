@@ -1,0 +1,65 @@
+model: HPe Apollo 6500
+created_at: 2022-09-07
+kavlan: false
+boot_type: bios 
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  grat-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+    processor:
+      microarchitecture: Zen 2
+      clock_speed: 2100000000
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+        mac: 5c:ba:2c:3d:84:4c
+        ip: 172.17.69.11
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        mac: 88:e9:a4:58:c1:30
+        ip: 172.16.69.11
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk1:
+        id: disk1
+        interface: SATA
+        storage: HDD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk2:
+        id: disk2
+        interface: NVME
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
