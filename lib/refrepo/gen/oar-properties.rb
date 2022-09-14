@@ -433,7 +433,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     end
     gpu_model = models.first
     if GPURef.is_gpu_supported(gpu_model) 
-      h['gpu_model'] = models.first
+      h['gpu_model'] = gpu_model
       h['gpu_count'] = node['gpu_devices'].length
     end
   end

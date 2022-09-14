@@ -11,14 +11,24 @@ class SiteHardwareGenerator < WikiGenerator
 
   def generate_content(_options)
     has_reservable_disks = false
+    has_unsupported_gpu = false
     G5K::get_global_hash['sites'][@site]['clusters'].each do |_,c|
       c['nodes'].each do |_,n|
         n['storage_devices'].each do |d|
           has_reservable_disks ||= d['reservation']
         end
+
+        if n['gpu_devices'] != nil
+          has_unsupported_gpu ||= n['gpu_devices'].map { |_, g| g['model'] }.uniq
+            .map{|gpu_model| GPURef.is_gpu_supported(gpu_model)}.reduce(:&)
+        end
       end
     end
 
+    asterisks = []
+    asterisks << "''*: disk is [[Disk_reservation|reservable]]''" if has_reservable_disks
+    asterisks << "''**: GPU is not supported by Grid'5000 default environments''" if has_unsupported_gpu
+    
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n" +
       "{{Portal|User}}\n" +
       "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
@@ -26,7 +36,7 @@ class SiteHardwareGenerator < WikiGenerator
       "#{SiteHardwareGenerator.generate_header_summary({@site => G5K::get_global_hash['sites'][@site]})}\n" +
       "= Clusters =\n" +
       self.class.generate_summary(@site, false) +
-      (has_reservable_disks ? "''*: disk is [[Disk_reservation|reservable]]''" : '') +
+      asterisks.join("\n\n") +
       self.class.generate_description(@site) +
       MW.italic(MW.small(generated_date_string)) +
       MW::LINE_FEED
@@ -302,39 +312,35 @@ end
 
 def gpu_description(node_hash, long_names)
   lgpu = node_hash['gpu_devices']
+  res = []
   if lgpu
-    bymodel = {}
-    memgib = (node_hash['gpu_devices'].first()[1]['memory'].to_f/2**30).round(0)
-    lgpu.each { |g|
-      d = g[1]
-      vendor = d['vendor']
-      if long_names
-        model = d['model']
-      else
-        model = GPURef.model2shortname(d['model'])
-      end
-      vm = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;') + "&nbsp;(#{memgib}&nbsp;GiB)"
-      if long_names
-        cc = GPURef.get_compute_capability(d['model'])
-        vm += "<br>Compute&nbsp;capability:&nbsp;#{cc}" if cc
-      end
+    gpu_types = lgpu.values.group_by{|device_hash| device_hash['model']}.map do |model_name, device_hashes|
+      description = gpu_model_description(device_hashes.first, long_names)
+      [model_name, {number: device_hashes.length, description: description}]
+    end.to_h
 
-      if bymodel[vm]
-        bymodel[vm] += 1
-      else
-        bymodel[vm] = 1
-      end
+    gpu_types.each{|_model, hash|
+      res << (hash[:number] == 1 ? '' : hash[:number].to_s + '&nbsp;x&nbsp;') + hash[:description]
     }
-    res = []
-    bymodel.each { |model,count|
-      res << (count == 1 ? '' : count.to_s + '&nbsp;x&nbsp;') + model
-    }
-  else
-    res = []
+ 
   end
-  res.join(", ")
+  return res.join(", ")
 end
 
+def gpu_model_description(device_hash, long_name) 
+  model = long_name ? device_hash['model'] : GPURef.model2shortname(device_hash['model'])
+  memgib = (device_hash['memory'].to_f/2**30).round(0)
+  vendor = device_hash['vendor']
+  description = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;') + "&nbsp;(#{memgib}&nbsp;GiB)"
+  if long_name
+    cc = GPURef.get_compute_capability(model)
+    description += "<br>Compute&nbsp;capability:&nbsp;#{cc}" if cc
+    description += "<br>This GPU is not supported by Grid'5000 default environments !" if !GPURef.is_gpu_supported(model)
+  else
+    description += '**' if !GPURef.is_gpu_supported(device_hash['model'])
+  end
+  return description
+end
 
 def get_hardware(sites)
   global_hash = G5K::get_global_hash
