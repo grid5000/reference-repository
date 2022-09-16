@@ -108,7 +108,46 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
@@ -150,7 +189,6 @@
       "mounted": false,
       "name": "eno2",
       "network_address": "ecotype-47-eth1.nantes.grid5000.fr",
-      "rate": 10000000000,
       "sriov": true,
       "sriov_totalvfs": 63,
       "switch": "ecotype-prod2",
@@ -209,7 +247,7 @@
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "intel_pstate",
+    "pstate_driver": "intel_cpufreq",
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
@@ -227,7 +265,7 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Broadwell",
-    "microcode": "0xb00003e",
+    "microcode": "0xb000040",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU E5-2630L v4 @ 1.80GHz",
     "vendor": "Intel",

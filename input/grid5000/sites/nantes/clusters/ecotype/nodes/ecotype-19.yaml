@@ -18,7 +18,31 @@ ecotype-19:
     serial: 7Z98QK2
   main_memory:
     ram_size: 137438953472
-  memory_devices: {}
+  memory_devices:
+    dimm_a1:
+      size: 17179869184
+      technology: dram
+    dimm_a2:
+      size: 17179869184
+      technology: dram
+    dimm_a3:
+      size: 17179869184
+      technology: dram
+    dimm_a4:
+      size: 17179869184
+      technology: dram
+    dimm_b1:
+      size: 17179869184
+      technology: dram
+    dimm_b2:
+      size: 17179869184
+      technology: dram
+    dimm_b3:
+      size: 17179869184
+      technology: dram
+    dimm_b4:
+      size: 17179869184
+      technology: dram
   network_adapters:
     bmc:
       ip: 172.17.193.19
@@ -75,7 +99,7 @@ ecotype-19:
     cstate_driver: intel_idle
     cstate_governor: menu
     ht_enabled: true
-    pstate_driver: intel_pstate
+    pstate_driver: intel_cpufreq
     pstate_governor: performance
     turboboost_enabled: true
   processor:
@@ -85,7 +109,7 @@ ecotype-19:
     cache_l3: 26214400
     ht_capable: true
     instruction_set: x86-64
-    microcode: '0xb00003e'
+    microcode: '0xb000040'
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU E5-2630L v4 @ 1.80GHz
     vendor: Intel
