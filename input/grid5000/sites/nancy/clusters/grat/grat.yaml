@@ -12,15 +12,9 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 32
-      nb_threads: 64
-      platform_type: x86_64
     processor:
       microarchitecture: Zen 2
       clock_speed: 2100000000
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -28,27 +22,39 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true
         mountable: false
         mounted: false
-        mac: 5c:ba:2c:3d:84:4c
-        ip: 172.17.69.11
       eth0:
-        interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
-        mac: 88:e9:a4:58:c1:30
-        ip: 172.16.69.11
       eth1:
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:64:00.0-sas-0x58ce38ee21ce4fea-lun-0:
         id: disk0
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:64:00.0-sas-0x58ce38ee21ce500e-lun-0"
+      pci-0000:64:00.0-sas-0x58ce38ee21ce4fee-lun-0:
+        id: disk1
+        interface: SAS
+      pci-0000:64:00.0-sas-0x58ce38ee21ce5002-lun-0:
+        id: disk2
+        interface: SAS
+      pci-0000:64:00.0-sas-0x58ce38ee21ce500e-lun-0:
+        id: disk3
+        interface: SAS
+      pci-0000:64:00.0-sas-0x58ce38ee21ce5012-lun-0:
+        id: disk4
+        interface: SAS
+      pci-0000:64:00.0-sas-0x58ce38ee21ce5016-lun-0:
+        id: disk5
+        interface: SAS
+      pci-0000:64:00.0-sas-0x58ce38ee21ce501a-lun-0:
+        id: disk6
+        interface: SAS
+      pci-0000:64:00.0-sas-0x58ce38ee21ce502e-lun-0:
+        id: disk7
+        interface: SAS
