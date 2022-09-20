@@ -2,10 +2,10 @@
 ---
 servan-2:
   architecture:
-    cpu_core_numbering: contiguous-including-threads
+    cpu_core_numbering: contiguous
     nb_cores: 48
     nb_procs: 2
-    nb_threads: 48
+    nb_threads: 96
     platform_type: x86_64
   bios:
     release_date: 06/23/2022
@@ -97,7 +97,7 @@ servan-2:
   operating_system:
     cstate_driver: acpi_idle
     cstate_governor: menu
-    ht_enabled: false
+    ht_enabled: true
     pstate_driver: acpi-cpufreq
     pstate_governor: performance
     turboboost_enabled: true
