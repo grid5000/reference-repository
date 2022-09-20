@@ -431,9 +431,9 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     if models.length > 1
       raise "Node #{h['uid']} has more than one model of GPU"
     end
-    gpu_model = models.first
-    if GPURef.is_gpu_supported(gpu_model) 
-      h['gpu_model'] = gpu_model
+    device = node['gpu_devices'].first[1]
+    if GPURef.is_gpu_supported(device)
+      h['gpu_model'] = device['model']
       h['gpu_count'] = node['gpu_devices'].length
     end
   end

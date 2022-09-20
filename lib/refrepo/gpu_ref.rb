@@ -1,5 +1,8 @@
 # coding: utf-8
 
+NVIDIA = 'Nvidia'
+MINIMAL_COMPUTE_CAPABILITY_SUPPORTED = 3.0 
+
 class GPURef
   @@gpus = {
     'GeForce RTX 2080 Ti' => {
@@ -129,16 +132,13 @@ class GPURef
     aliases
   end
 
-  def self.is_gpu_supported(model)
-    support = true
-    compute_capability = @@gpus[model]['compute_capability']
-    
-    if compute_capability
-      support = (compute_capability.to_f >= @@minimal_compute_capability_supported)
-    else
-      support = (@@gpus[model]['short_name'] == 'MI50')
-    end
-
+  def self.is_gpu_supported(device)
+    support = (device['vendor'] == NVIDIA) ? is_cc_supported(device['model']) : true
     return support
+  end
+
+  def self.is_cc_supported(model)
+    compute_capability = @@gpus[model]['compute_capability']
+    return (compute_capability.to_f >= @@minimal_compute_capability_supported)
   end
 end
