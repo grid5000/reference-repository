@@ -96,7 +96,6 @@ class GPURef
     },
   }
 
-  @@minimal_compute_capability_supported = 3.0
 
   def self.getNumberOfCoresFor(model)
     if @@gpus[model]
@@ -139,6 +138,6 @@ class GPURef
 
   def self.is_cc_supported(model)
     compute_capability = @@gpus[model]['compute_capability']
-    return (compute_capability.to_f >= @@minimal_compute_capability_supported)
+    return (compute_capability.to_f >= MINIMAL_COMPUTE_CAPABILITY_SUPPORTED)
   end
 end
