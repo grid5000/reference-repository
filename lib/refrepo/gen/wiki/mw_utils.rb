@@ -102,7 +102,11 @@ module G5K
     end
   end
 
-  def self.get_rate(x)
+  def self.get_rate(x, unit=:auto)
+    if unit == :sortable
+      return '000000' if x.nil?
+      return (x.to_f / 10**6).floor.to_s.rjust(6, '0')
+    end
     return '' if (x == 0 || x.nil?)
     mbps = (x.to_f / 10**6).floor
     if mbps < 1000
