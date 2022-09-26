@@ -16,6 +16,11 @@ partitioning:
   <%- cluster['nodes'].to_a.sort_by(&:first)[0][1]['storage_devices'].reject{|disk| disk['reservation']}.each do |disk| -%>
     <%= disk['id'] %>: <%= disk['by_path'] %>
   <%- end -%>
+  partitions_size:
+  <%- disk_size = cluster['nodes'].to_a.sort_by(&:first)[0][1]['storage_devices'].select{|x| x['id'] == 'disk0'}.first['size'] -%>
+    DEPLOY: 34000076800
+    PROD: 31000100864
+    TMP: <%= disk_size - 70000795648 %>
 trusted_deployment:
   partition: disk0/PROD
   user: oar
