@@ -27,7 +27,7 @@ class SiteHardwareGenerator < WikiGenerator
 
     asterisks = []
     asterisks << "''*: disk is [[Disk_reservation|reservable]]''" if has_reservable_disks
-    asterisks << "''**: GPU is not supported by Grid'5000 default environments''" if has_unsupported_gpu
+    asterisks << "''**: crossed GPUs are not supported by Grid'5000 default environments''" if has_unsupported_gpu
     
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n" +
       "{{Portal|User}}\n" +
@@ -335,9 +335,9 @@ def gpu_model_description(device_hash, long_name)
   if long_name
     cc = GPURef.get_compute_capability(model)
     description += "<br>Compute&nbsp;capability:&nbsp;#{cc}" if cc
-    description += "<br>This GPU is not supported by Grid'5000 default environments !" if !GPURef.is_gpu_supported(device_hash)
+    description = "<s>" + description + "</s><br>''not supported by Grid'5000 default environments''" if !GPURef.is_gpu_supported(device_hash)
   else
-    description += '**' if !GPURef.is_gpu_supported(device_hash])
+    description = "<s>" + description + "</s>**" if !GPURef.is_gpu_supported(device_hash)
   end
   return description
 end
