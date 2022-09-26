@@ -122,7 +122,7 @@ class G5KHardwareGenerator < WikiGenerator
             net_models = interfaces.inject(Hash.new(0)){ |h, v| h[v] += 1; h }
             # Sort by interface type (eth or IB) and then by driver
             net_models.sort_by { |k, _v|  [k.first[:sort], k[1][:sort]] }.each { |k, v|
-              if k.first[:text] == "Ethernet-FPGA"
+              if k.first[:text] == "FPGA/Ethernet"
                 k.first[:text] = k.first[:text] + "*"
               end
 
@@ -272,7 +272,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Network interface models ==\n"
     table_columns = ['Type', 'Driver', 'Model'] + sites + ['Cards total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
-    generated_content += "\n''*: By default network interface on FPGA card is not supported by OS''"
+    generated_content += "\n''*: Ethernet interfaces on FPGA cards are not directly usable by the operating system''"
     generated_content += "\n= Storage ="
     generated_content += "\n== SSD models ==\n"
     table_columns = ['SSD interface', 'Model', 'Size'] + sites + ['SSDs total']
