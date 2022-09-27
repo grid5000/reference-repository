@@ -18,9 +18,9 @@ class SiteHardwareGenerator < WikiGenerator
           has_reservable_disks ||= d['reservation']
         end
 
-        if n['gpu_devices'] != nil
+        if ! n['gpu_devices'].nil?
           has_unsupported_gpu ||= n['gpu_devices'].map { |_, g| g['model'] }.uniq
-            .map{|gpu_model| GPURef.is_gpu_supported(gpu_model)}.reduce(:&)
+            .map{|gpu_model| GPURef.is_gpu_supported?(gpu_model)}.reduce(:&)
         end
       end
     end
@@ -335,9 +335,9 @@ def gpu_model_description(device_hash, long_name)
   if long_name
     cc = GPURef.get_compute_capability(model)
     description += "<br>Compute&nbsp;capability:&nbsp;#{cc}" if cc
-    description = "<s>" + description + "</s><br>''not supported by Grid'5000 default environments''" if !GPURef.is_gpu_supported(device_hash)
+    description = "<s>" + description + "</s><br>''not supported by Grid'5000 default environments''" if !GPURef.is_gpu_supported?(device_hash)
   else
-    description = "<s>" + description + "</s>**" if !GPURef.is_gpu_supported(device_hash)
+    description = "<s>" + description + "</s>**" if !GPURef.is_gpu_supported?(device_hash)
   end
   return description
 end
