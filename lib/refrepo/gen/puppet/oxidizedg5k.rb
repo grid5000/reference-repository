@@ -18,7 +18,7 @@ def generate_puppet_oxidizedg5k(options)
   if not conf
     warn "No generator configuration for oxidized found in #{options[:conf_dir]}/oxidizedg5k.yaml, skipping oxidized"
   else
-    output = ERB.new(File.read(File.expand_path('templates/oxidized.db.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+    output = ERB.new(File.read(File.expand_path('templates/oxidized.db.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
     output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/oxidized/oxidized.db")
     output_file.dirname.mkpath()
     File.write(output_file, output)

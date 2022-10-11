@@ -42,7 +42,7 @@ def write_dhcp_files(data, options)
   end
 
   ["dhcp", "dhcpv6"].each { |dhcpkind|
-    output = ERB.new(File.read(File.expand_path("templates/dhcp.erb", File.dirname(__FILE__))), nil, '-').result(binding)
+    output = ERB.new(File.read(File.expand_path("templates/dhcp.erb", File.dirname(__FILE__))), trim_mode: '-').result(binding)
     output_file = Pathname("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/#{dhcpkind}/#{data.fetch("site_uid")}/#{data.fetch('filename')}")
     output_file.dirname.mkpath()
     File.write(output_file, output)

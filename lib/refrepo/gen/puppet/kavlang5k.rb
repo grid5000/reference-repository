@@ -44,24 +44,24 @@ def generate_puppet_kavlang5k(options)
 
     next unless options[:sites].include?(site_uid)
 
-    conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kavlang5k.yaml"), nil, '-').result(binding))[site_uid]
+    conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kavlang5k.yaml"), trim_mode: '-').result(binding))[site_uid]
     if not conf
       warn "No generator configuration for site #{site_uid} found in #{options[:conf_dir]}/kavlang5k.yaml, skipping kavlan.conf"
     else
-      output = ERB.new(File.read(File.expand_path('templates/kavlan.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+      output = ERB.new(File.read(File.expand_path('templates/kavlan.conf.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
       output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/kavlan.conf")
       output_file.dirname.mkpath()
       File.write(output_file, output)
     end
 
-    output = ERB.new(File.read(File.expand_path('templates/kavlan-cluster.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+    output = ERB.new(File.read(File.expand_path('templates/kavlan-cluster.conf.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
     output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/#{site_uid}.conf")
     output_file.dirname.mkpath()
     File.write(output_file, output)
 
     (1..9).each do |kavlan_id|
       ["dhcpd", "dhcpd6"].each { |dhcpkind|
-        output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+        output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
         output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/dhcp/#{dhcpkind}-#{kavlan_id}.conf")
         output_file.dirname.mkpath()
         File.write(output_file, output)
@@ -72,7 +72,7 @@ def generate_puppet_kavlang5k(options)
     # TODO fix dirty convertion to_i below
     kavlan_id = refapi['sites'][site_uid]['kavlans'].each_key.select {|k| k.to_i > 9}.pop().to_i
     ["dhcpd", "dhcpd6"].each { |dhcpkind|
-      output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+      output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
       output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/dhcp/#{dhcpkind}-0.conf")
       File.write(output_file, output)
     }

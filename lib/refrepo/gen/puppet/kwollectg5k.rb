@@ -39,7 +39,7 @@ def generate_puppet_kwollectg5k(options)
         ipmi_credentials.map! { |s| ERB::Util.url_encode(s) }
         ipmi_credentials = ipmi_credentials.join(":")
 
-        output = ERB.new(File.read(File.expand_path('templates/kwollect-node.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+        output = ERB.new(File.read(File.expand_path('templates/kwollect-node.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
         output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{node_uid}.conf")
         output_file.dirname.mkpath()
         File.write(output_file, output)
@@ -49,7 +49,7 @@ def generate_puppet_kwollectg5k(options)
     # Metrics configuration for network device
     site['network_equipments'].each { |neteq_uid, neteq|
 
-      output = ERB.new(File.read(File.expand_path('templates/kwollect-network.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+      output = ERB.new(File.read(File.expand_path('templates/kwollect-network.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
       output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{neteq_uid}.conf")
       output_file.dirname.mkpath()
       File.write(output_file, output)
@@ -74,7 +74,7 @@ def generate_puppet_kwollectg5k(options)
     ## Then, write PDU metrics config
     site.fetch('pdus', {}).each { |pdu_uid, pdu|
 
-      output = ERB.new(File.read(File.expand_path('templates/kwollect-pdu.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+      output = ERB.new(File.read(File.expand_path('templates/kwollect-pdu.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
       output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{pdu_uid}.conf")
       output_file.dirname.mkpath()
       File.write(output_file, output)
@@ -94,7 +94,7 @@ def generate_puppet_kwollectg5k(options)
       }
     }
     if not wattmetre_port_per_node.empty?
-      output = ERB.new(File.read(File.expand_path('templates/kwollect-wattmetre-mapping.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+      output = ERB.new(File.read(File.expand_path('templates/kwollect-wattmetre-mapping.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
       output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect-wattmetre/#{site_uid}/wattmetre-mapping.conf")
       output_file.dirname.mkpath()
       File.write(output_file, output)
