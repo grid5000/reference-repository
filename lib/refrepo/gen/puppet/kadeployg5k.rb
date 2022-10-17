@@ -150,7 +150,7 @@ def generate_puppet_kadeployg5k(options)
           next
         end
 
-        output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__))), nil, '-').result(binding)
+        output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
 
         output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/#{cluster_uid}-cluster.conf")
 
