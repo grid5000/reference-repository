@@ -8,39 +8,30 @@ stages:
 include:
   - project: 'grid5000/grid5000-gitlab-templates'
     ref: master
-    file: '/sonarqube.yml'
-
-include:
-  - project: 'grid5000/grid5000-gitlab-templates'
-    ref: master
-    file: '/rubocop.yml'
+    file:
+      # Execute sonarqube
+      - '/sonarqube.yml'
+      # Execute rubocop
+      - '/rubocop-rails.yml'
+      # Import g5k default stages
+      - '/g5k-default-stages.yml'
 
 validate-data:
+  extends: .test-for-bullseye
   stage: validate
-  tags:
-    - grid5000-docker
-  image: debian:buster
   script:
-    - apt-get update && apt-get -y install ruby ruby-dev build-essential rake wget
-    - gem install bundler -v 1.17.3
-    - bundle install --without development
     # Add G5K CA certificate
     - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
     - /usr/sbin/update-ca-certificates
-    - rake valid:schema
-    - rake valid:duplicates
+    - bundle exec rake valid:schema
+    - bundle exec rake valid:duplicates
 
 generate-reference-api:
+  extends: .test-for-bullseye
   stage: generate
-  tags:
-    - grid5000-docker
-  image: debian:buster
   script:
-    - apt-get update && apt-get -y install ruby ruby-dev build-essential rake git
-    - gem install bundler -v 1.17.3
-    - bundle install --without development
     - export TZ=Europe/Paris
-    - rake reference-api
+    - bundle exec rake reference-api
     - git status
     - echo "Checking that git status output is empty..."
     - sh -c '[ "`git status -s`" = "" ]'
@@ -55,12 +46,7 @@ deploy:
 
 rspec:
   stage: deploy  # we use 'deploy' here to avoid blocking on this when updating the ref-repo
-  tags:
-    - grid5000-docker
-  image: debian:buster
+  extends: .test-for-bullseye
   script:
-    - apt-get update && apt-get -y install ruby ruby-dev build-essential rake git
-    - gem install bundler -v 1.17.3
-    - bundle install
     - export TZ=Europe/Paris
     - bundle exec rspec
