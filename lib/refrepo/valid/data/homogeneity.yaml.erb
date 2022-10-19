@@ -21,6 +21,20 @@ grenoble:
     - ~storage_devices.pci-0009:04:00.0-ata-1.firmware_version
   dahu-[7-8]:
     - ~storage_devices.pci-0000:00:11.5-ata-5.firmware_version
+  dahu-[12-13]:
+    - ~bios.release_date
+    - ~bios.version
+    - ~bmc_version
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - ~processor.microcode
+  dahu-[16-17]:
+    - ~bios.release_date
+    - ~bios.version
+    - ~bmc_version
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - ~processor.microcode
   yeti-[1-2]:
     - ~storage_devices.pci-0000:59:00.0-nvme-1.model
   yeti-[3-4]:
