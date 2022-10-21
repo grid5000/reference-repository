@@ -1,9 +1,12 @@
 ---
 stages:
   - lint
+  - test
   - validate
   - generate
   - deploy
+  # 'post_validate' is after 'deploy' to avoid blocking on this when updating the ref-repo
+  - post_validate
 
 include:
   - project: 'grid5000/grid5000-gitlab-templates'
@@ -16,19 +19,66 @@ include:
       # Import g5k default stages
       - '/g5k-default-stages.yml'
 
+rspec:
+  stage: test
+  extends: .test-for-bullseye
+  script:
+    - export TZ=Europe/Paris
+    - bundle exec rspec
+
 validate-data:
   extends: .test-for-bullseye
   stage: validate
+  parallel:
+    matrix:
+      - SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia]
   script:
-    # Add G5K CA certificate
-    - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
-    - /usr/sbin/update-ca-certificates
-    - bundle exec rake valid:schema
-    - bundle exec rake valid:duplicates
+    - echo 'Doing input validation ...'
+    - bundle exec rake valid:schema SITE=${SITE}
+    - echo 'Checking configuration duplicates...'
+    - bundle exec rake valid:duplicates SITE=${SITE}
+    - echo 'Doing check of network description ...'
+    - bundle exec rake valid:network SITE=${SITE}
 
-wikigen:
+generate-reference-api:
   extends: .test-for-bullseye
-  stage: validate
+  stage: generate
+  script:
+    - export TZ=Europe/Paris
+    - bundle exec rake reference-api
+    - echo "Checking that git status output is empty..."
+    - git status -s
+    - git diff --exit-code
+
+run-puppet-generator:
+  extends: .test-for-bullseye
+  stage: generate
+  needs: ['generate-reference-api']
+  parallel:
+    matrix:
+      - SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia]
+  script:
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.inria.fr/grid5000/grid5000-puppet.git
+    - cd grid5000-puppet/platforms
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.inria.fr/grid5000/g5k-platform-production.git production
+    - cd ../..
+    - bundle exec rake gen:puppet:all SITE=${SITE} OUTPUTDIR=../grid5000-puppet
+    - cd grid5000-puppet
+    - echo "Checking that grid5000-puppet is unchanged..."
+    - git status -s
+    - git diff --exit-code
+    - echo "Checking that g5k-platform-production is unchanged..."
+    - cd platforms/production
+    - git status -s
+    - git diff --exit-code
+  only:
+    refs:
+      - master
+
+run-wiki-generator:
+  extends: .test-for-bullseye
+  stage: generate
+  needs: ['generate-reference-api']
   parallel:
     matrix:
       - GENERATOR: [cpu_parameters, disk_reservation, environments, group_storage, hardware, kwollect_metrics, oar_properties, status]
@@ -42,16 +92,17 @@ wikigen:
     refs:
       - master
 
-generate-reference-api:
+run-oar-properties-generator:
   extends: .test-for-bullseye
   stage: generate
+  needs: ['generate-reference-api']
+  parallel:
+    matrix:
+      - SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia]
   script:
-    - export TZ=Europe/Paris
-    - bundle exec rake reference-api
-    - git status
-    - echo "Checking that git status output is empty..."
-    - sh -c '[ "`git status -s`" = "" ]'
-    - git diff --exit-code
+    - bundle exec rake gen:oar-properties SITE=${SITE} DO=diff VERBOSE=2
+    - bundle exec rake valid:oar-properties SITE=#{SITE} VERBOSE=1
+
 
 deploy:
   stage: deploy
@@ -60,9 +111,12 @@ deploy:
   script:
     - /srv/ci-runner-scripts/bin/update-api-servers
 
-rspec:
-  stage: deploy  # we use 'deploy' here to avoid blocking on this when updating the ref-repo
+validate-data:
   extends: .test-for-bullseye
+  stage: post_validate
+  parallel:
+    matrix:
+      - SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia]
   script:
-    - export TZ=Europe/Paris
-    - bundle exec rspec
+    - echo "Checking cluster homogeneity..."
+    - bundle exec rake valid:homogeneity SITE=${SITE} VERBOSE=1
