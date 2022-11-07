@@ -18,6 +18,7 @@ module RefRepo::Valid::OarProperties
       resources = RefRepo::Utils::get_api("sites/#{site}/internal/oarapi/resources/details.json?limit=1000000")['items']
 
       default_resources = resources.select { |e| e['type'] == 'default' }.sort_by { |e| e['id'] }
+      disk_resources = resources.select { |e| e['type'] == 'disk' }.sort_by { |e| e['id'] }
       if not options[:clusters].empty?
         puts "Restricting to resources of clusters #{options[:clusters].join(',')}"
         default_resources.select! { |e| options[:clusters].include?(e['cluster']) }
@@ -67,8 +68,20 @@ module RefRepo::Valid::OarProperties
       # for each host ...
       default_resources.map { |e| e['host'] }.uniq.each do |host|
         host_resources = default_resources.select { |e| e['host'] == host }
+        host_disks = disk_resources.select { |e| e['host'] == host }
         cluster = host_resources.first['cluster']
         next if not options[:clusters].empty? and not options[:clusters].include?(cluster)
+
+        # check number of reservable disks against disk_reservation_count
+        disk_reservation_count = host_resources.map{ |e| e['disk_reservation_count'] }.uniq
+        if disk_reservation_count.length > 1
+          raise "Invalid: varying disk_reservation_count inside cluster!"
+        end
+        disk_reservation_count = disk_reservation_count.first || 0
+        if disk_reservation_count != host_disks.count
+          puts "ERROR: Discrepancy found between the number of disks (#{host_disks.count}) and \"disk_reservation_count\" (#{disk_reservation_count}) for #{host}"
+          ret = false
+        end
 
         # compute nbcores.
         # cpucore is cores per cpu. to know the number of cpus, we devide memnode per memcpu.
