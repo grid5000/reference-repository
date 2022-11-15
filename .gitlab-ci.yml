@@ -66,3 +66,11 @@ rspec:
   script:
     - export TZ=Europe/Paris
     - bundle exec rspec
+
+valid-homogeneity:
+  stage: deploy
+  extends: .test-for-bullseye
+  script:
+    - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
+    - /usr/sbin/update-ca-certificates
+    - bundle exec rake valid:homogeneity
