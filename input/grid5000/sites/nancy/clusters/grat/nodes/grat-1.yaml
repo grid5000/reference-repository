@@ -8,10 +8,10 @@ grat-1:
     nb_threads: 128
     platform_type: x86_64
   bios:
-    release_date: 02/10/2022
+    release_date: '08/11/2022'
     vendor: HPE
     version: A47
-  bmc_version: '2.60'
+  bmc_version: '2.72'
   chassis:
     manufacturer: HPE
     name: ProLiant XL675d Gen10 Plus
@@ -139,25 +139,26 @@ grat-1:
       management: true
     eth0:
       driver: mlx5_core
-      firmware_version: 16.31.1014 (MT_0000000416)
+      firmware_version: 16.33.1048 (MT_0000000416)
       interface: Ethernet
       ip: 172.16.69.11
       mac: 88:e9:a4:91:0d:42
       management: false
       model: MT27800 Family [ConnectX-5]
-      name: enp24s0f0
+      name: ens21f0np0
       rate: 25000000000
       sriov: true
       sriov_totalvfs: 8
       vendor: Mellanox Technologies
     eth1:
       driver: mlx5_core
-      firmware_version: 16.31.1014 (MT_0000000416)
+      firmware_version: 16.33.1048 (MT_0000000416)
       interface: Ethernet
       mac: 88:e9:a4:91:0d:43
       management: false
       model: MT27800 Family [ConnectX-5]
-      name: enp24s0f1
+      name: ens21f1np1
+      rate: 25000000000
       sriov: true
       sriov_totalvfs: 8
       vendor: Mellanox Technologies
@@ -175,7 +176,7 @@ grat-1:
     cache_l3: 33554432
     ht_capable: true
     instruction_set: x86-64
-    microcode: '0xa00115d'
+    microcode: '0xa001173'
     model: AMD EPYC
     other_description: AMD EPYC 7513 32-Core Processor
     vendor: AMD
