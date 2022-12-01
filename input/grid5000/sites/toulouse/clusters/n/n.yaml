@@ -1,0 +1,44 @@
+model: N
+created_at: 2022-12-01
+kavlan: false
+boot_type: uefi 
+exotic: false
+queues:
+  - admin
+nodes:
+  n-[1-10]:  
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+    processor:
+      microarchitecture: Zen 2
+      clock_speed: 2100000000
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true 
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"

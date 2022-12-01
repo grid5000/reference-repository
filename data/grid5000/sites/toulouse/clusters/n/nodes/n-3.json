@@ -1,0 +1,75 @@
+{
+  "architecture": {
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "kavlan": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "n-3.toulouse.grid5000.fr"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "n-3-bmc.toulouse.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 33600000000,
+    "node_flops": 1075200000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2100000000,
+    "microarchitecture": "Zen 2"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2022120114",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin"
+    ]
+  },
+  "type": "node",
+  "uid": "n-3"
+}
