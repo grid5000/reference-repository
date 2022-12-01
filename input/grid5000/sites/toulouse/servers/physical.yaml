@@ -1,0 +1,49 @@
+---
+pve-1:
+  kind: physical
+  serial: CZJ2170NK8
+  alias: [ntp]
+  network_adapters:
+    bmc:
+      ip: 172.17.126.1
+      mac: 5c:ba:2c:ae:5f:50
+    default:
+      ip: 172.16.127.1
+      mac: d4:f5:ef:56:04:c0
+    adm:
+      ip: 172.17.127.1
+
+pve-2:
+  kind: physical
+  serial: CZJ2170NK9
+  network_adapters:
+    bmc:
+      ip: 172.17.126.2
+      mac: 5c:ba:2c:4e:5f:5e
+    default:
+      ip: 172.16.127.2
+      mac: d4:f5:ef:56:04:c0
+    adm:
+      ip: 172.17.127.2
+
+srv-data:
+  kind: physical
+  serial: CZ22230FL8
+  alias: [nfs, home-g5k, modules]
+  network_adapters:
+    bmc:
+      ip: 172.17.126.3
+      mac: 5c:ba:2c:29:08:1a
+    default:
+      ip: 172.16.127.3
+      mac: d4:f5:ef:32:2a:40
+    adm:
+      ip: 172.17.127.3
+
+oobm:
+  kind: physical
+  alias: [x-bmc]
+  network_adapters:
+    default:
+      ip: 172.17.121.1
+      mac: 00:30:64:37:c8:c8
