@@ -16,29 +16,58 @@ nodes:
       nb_cores: 32
       nb_threads: 64
       platform_type: x86_64
+      cpu_core_numbering: contiguous
+    bios:
+      release_date: 01/01/2000
+      vendor: Unknown
+      version: Unknown
+    bmc_version: Unknown
+    chassis:
+      manufacturer: Unknown
+      name: unknown chassis
+      serial: Unknown
+    main_memory:
+      ram_size: 549755813888
+    memory_devices:
+      dimm_a0:
+        size: 1024
+        technology: Unknown
+    network_adapters:
+      eth0:
+        interface: Unknown
+        enabled: false
+        management: false
+        mountable: false
+        mounted: false
+    operating_system:
+      cstate_driver: Unknown
+      cstate_governor: Unknown
+      ht_enabled: false
+      pstate_driver: Unknown
+      pstate_governor: Unknown
+      turboboost_enabled: false
     processor:
       microarchitecture: Zen 2
-      clock_speed: 2100000000
-    memory_devices: []
+      clock_speed: 1
+      cache_l1d: 1024
+      cache_l1i: 1024
+      cache_l2: 1024
+      cache_l3: 1024
+      ht_capable: false
+      instruction_set: Unknown
+      microcode: Unknown
+      model: Unknown
+      other_description: Unknown
+      vendor: Unknown
+      version: Unknown
+    storage_devices:
+      pci-name:
+        size: 1024
+        id: Unknown
+        model: SAMSUNG MZ7KM480
+        interface: SATA
+        storage: SSD
     software:
       standard-environment: debian11-x64-std
     management_tools:
       bmc_vendor_tool: ipmitool
-    network_adapters:
-      bmc:
-        interface: Ethernet
-        management: true
-        enabled: true 
-        mountable: false
-        mounted: false
-      eth0:
-        enabled: true
-        mountable: true
-        mounted: true
-    storage_devices:
-      disk0:
-        id: disk0
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"

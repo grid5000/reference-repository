@@ -1,12 +1,25 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
     "nb_cores": 32,
     "nb_procs": 2,
     "nb_threads": 64,
     "platform_type": "x86_64"
   },
+  "bios": {
+    "release_date": "01/01/2000",
+    "vendor": "Unknown",
+    "version": "Unknown"
+  },
+  "bmc_version": "Unknown",
+  "chassis": {
+    "manufacturer": "Unknown",
+    "name": "unknown chassis",
+    "serial": "Unknown"
+  },
   "exotic": false,
   "main_memory": {
+    "ram_size": 549755813888
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -15,36 +28,50 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a0",
+      "size": 1024,
+      "technology": "Unknown"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "enabled": true,
+      "enabled": false,
+      "interface": "Unknown",
       "kavlan": false,
-      "mountable": true,
-      "mounted": true,
-      "network_address": "n-2.toulouse.grid5000.fr"
-    },
-    {
-      "device": "bmc",
-      "enabled": true,
-      "interface": "Ethernet",
-      "kavlan": false,
-      "management": true,
+      "management": false,
       "mountable": false,
-      "mounted": false,
-      "network_address": "n-2-bmc.toulouse.grid5000.fr"
+      "mounted": false
     }
   ],
+  "operating_system": {
+    "cstate_driver": "Unknown",
+    "cstate_governor": "Unknown",
+    "ht_enabled": false,
+    "pstate_driver": "Unknown",
+    "pstate_governor": "Unknown",
+    "turboboost_enabled": false
+  },
   "performance": {
-    "core_flops": 33600000000,
-    "node_flops": 1075200000000
+    "core_flops": 16,
+    "node_flops": 512
   },
   "processor": {
     "cache_l1": null,
-    "clock_speed": 2100000000,
-    "microarchitecture": "Zen 2"
+    "cache_l1d": 1024,
+    "cache_l1i": 1024,
+    "cache_l2": 1024,
+    "cache_l3": 1024,
+    "clock_speed": 1,
+    "ht_capable": false,
+    "instruction_set": "Unknown",
+    "microarchitecture": "Zen 2",
+    "microcode": "Unknown",
+    "model": "Unknown",
+    "other_description": "Unknown",
+    "vendor": "Unknown",
+    "version": "Unknown"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -54,12 +81,12 @@
   "storage_devices": [
     {
       "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
-      "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
+      "id": "Unknown",
+      "interface": "SATA",
+      "model": "SAMSUNG MZ7KM480",
+      "size": 1024,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Samsung"
     }
   ],
   "supported_job_types": {
