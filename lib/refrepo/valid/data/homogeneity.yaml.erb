@@ -191,12 +191,18 @@ nantes:
     - ~network_adapters.eth1.firmware_version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
 rennes:
-  paranoia-[3-5]:
+  paranoia-3:
+    - ~storage_devices.pci-0000:82:00.0-sas-phy0-lun-0.firmware_version
+    - ~storage_devices.pci-0000:82:00.0-sas-phy0-lun-0.model
+  paranoia-4:
     - ~storage_devices.pci-0000:82:00.0-sas-phy0-lun-0.firmware_version
     - ~storage_devices.pci-0000:82:00.0-sas-phy0-lun-0.model
     - ~storage_devices.pci-0000:82:00.0-sas-phy4-lun-0.firmware_version
     - ~storage_devices.pci-0000:82:00.0-sas-phy4-lun-0.model
-  paranoia-[7-8]:
+  paranoia-5:
+    - ~storage_devices.pci-0000:82:00.0-sas-phy4-lun-0.firmware_version
+    - ~storage_devices.pci-0000:82:00.0-sas-phy4-lun-0.model
+  paranoia-8:
     - ~storage_devices.pci-0000:82:00.0-sas-phy3-lun-0.firmware_version
     - ~storage_devices.pci-0000:82:00.0-sas-phy3-lun-0.model
     - ~storage_devices.pci-0000:82:00.0-sas-phy3-lun-0.vendor
@@ -214,8 +220,6 @@ rennes:
     - +pdu
   parasilo-16:
     - -pdu
-  parasilo-17:
-    - +pdu
   parasilo-18:
     - -pdu
   parasilo-19:
@@ -223,8 +227,6 @@ rennes:
   parasilo-20:
     - -pdu
   parasilo-21:
-    - +pdu
-  parasilo-22:
     - +pdu
   parasilo-[6-7]:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:5:0.firmware_version
@@ -236,11 +238,6 @@ rennes:
   parasilo-[25-26]:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:2:0.firmware_version
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:2:0.model
-  paravance-[1-72]:
-    - ~network_adapters.eth0.firmware_version
-    - ~network_adapters.eth1.firmware_version
-    - ~network_adapters.eth2.firmware_version
-    - ~network_adapters.eth3.firmware_version
   paravance-3:
     - +pdu
 sophia:
