@@ -22,12 +22,8 @@ grenoble:
   dahu-[7-8]:
     - ~storage_devices.pci-0000:00:11.5-ata-5.firmware_version
   dahu-[12-13]:
-    - ~bios.release_date
-    - ~bios.version
-    - ~bmc_version
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
-    - ~processor.microcode
   dahu-[16-17]:
     - ~bios.release_date
     - ~bios.version
@@ -45,7 +41,17 @@ lille:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:3:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:3:0.model
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:3:0.vendor
-  chifflot-[3-4]:
+  chifflot-3:
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:2:0.firmware_version
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:2:0.model
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:2:0.vendor
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:4:0.firmware_version
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:4:0.model
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:4:0.vendor
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.firmware_version
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.model
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.vendor
+  chifflot-4:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:2:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:2:0.model
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:2:0.vendor
@@ -58,9 +64,11 @@ lille:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.model
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.vendor
-  chifflot-[6-7]:
-    - ~gpu.gpu_model
-    - ~gpu.gpu_cores
+  chifflot-6:
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.firmware_version
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.model
+    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.vendor
+  chifflot-7:
     - ~gpu_devices.nvidia0.vbios_version
     - ~gpu_devices.nvidia0.memory
     - ~gpu_devices.nvidia0.model
@@ -82,31 +90,6 @@ lille:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.model
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.vendor
 lyon:
-  nova-[23-24]:
-    - ~bios.release_date
-    - ~bios.version
-    - ~bmc_version
-    - ~network_adapters.eth0.firmware_version
-    - ~network_adapters.eth1.firmware_version
-    - ~network_adapters.eth2.firmware_version
-    - ~network_adapters.eth3.firmware_version
-    - ~network_adapters.eth4.firmware_version
-    - ~network_adapters.eth5.firmware_version
-  taurus-[4-6]:
-    - ~bmc_version
-    - ~network_adapters.eth0.firmware_version
-    - ~network_adapters.eth1.firmware_version
-    - ~network_adapters.eth2.firmware_version
-    - ~network_adapters.eth3.firmware_version
-    - ~network_adapters.eth4.firmware_version
-    - ~network_adapters.eth5.firmware_version
-  taurus-[12-13]:
-    - ~network_adapters.eth0.firmware_version
-    - ~network_adapters.eth1.firmware_version
-    - ~network_adapters.eth2.firmware_version
-    - ~network_adapters.eth3.firmware_version
-    - ~network_adapters.eth4.firmware_version
-    - ~network_adapters.eth5.firmware_version
   sagittaire-11:
     - ~storage_devices.pci-0000:02:04.0-scsi-0:0:1:0.firmware_version
     - ~storage_devices.pci-0000:02:04.0-scsi-0:0:1:0.model
@@ -120,16 +103,15 @@ lyon:
     - ~storage_devices.pci-0000:02:04.0-scsi-0:0:1:0.firmware_version
 
 nancy:
-  graffiti-[1-3]:
+  graffiti-2:
     - ~gpu_devices.nvidia1.vbios_version
     - ~gpu_devices.nvidia2.vbios_version
-    - ~gpu_devices.nvidia3.vbios_version
-  graffiti-[9-11]:
+  graffiti-3:
+    - ~gpu_devices.nvidia1.vbios_version
+  graffiti-[10-11]:
     - ~gpu_devices.nvidia2.vbios_version
     - ~gpu_devices.nvidia3.vbios_version
   graffiti-13:
-    - ~gpu.gpu_model
-    - ~gpu.gpu_cores
     - ~gpu_devices.nvidia0.vbios_version
     - ~gpu_devices.nvidia0.memory
     - ~gpu_devices.nvidia0.model
@@ -143,29 +125,14 @@ nancy:
     - ~gpu_devices.nvidia3.memory
     - ~gpu_devices.nvidia3.model
 
-  graphique-2:
-    - ~gpu.gpu_model
-    - ~gpu.gpu_cores
-    - ~gpu_devices.nvidia0.vbios_version
-    - ~gpu_devices.nvidia0.memory
-    - ~gpu_devices.nvidia0.power_default_limit
-    - ~gpu_devices.nvidia0.model
-    - ~gpu_devices.nvidia1.vbios_version
-    - ~gpu_devices.nvidia1.memory
-    - ~gpu_devices.nvidia1.power_default_limit
-    - ~gpu_devices.nvidia1.model
-    - ~network_adapters.eth0.sriov
-    - ~network_adapters.eth0.sriov_totalvfs
-    - ~network_adapters.eth1.sriov
-    - ~network_adapters.eth1.sriov_totalvfs
-  graphique-[3-4]:
+  graphique-4:
     - ~gpu_devices.nvidia1.vbios_version
   graphique-[4-5]:
     - ~gpu_devices.nvidia0.vbios_version
     - ~gpu_devices.nvidia1.vbios_version
   graphique-[5-6]:
     - ~gpu_devices.nvidia0.vbios_version
-  grele-[12-13]:
+  grele-13:
     - ~gpu_devices.nvidia0.vbios_version
     - ~gpu_devices.nvidia1.vbios_version
   grisou-49:
@@ -219,28 +186,23 @@ nancy:
     - -storage_devices.pci-0000:01:00.0-scsi-0:0:1:0
 
 nantes:
-  econome-[1-22]:
-    - +network_adapters.eth2.rate
-    - -network_adapters.eth2.rate
   econome-19:
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
-  ecotype-[18-19]:
-    - ~bios.release_date
-    - ~bios.version
-    - ~bmc_version
-    - ~network_adapters.eth0.firmware_version
-    - ~network_adapters.eth1.firmware_version
-    - ~network_adapters.eth2.firmware_version
-    - ~network_adapters.eth3.firmware_version
 rennes:
-  paranoia-[3-5]:
+  paranoia-3:
+    - ~storage_devices.pci-0000:82:00.0-sas-phy0-lun-0.firmware_version
+    - ~storage_devices.pci-0000:82:00.0-sas-phy0-lun-0.model
+  paranoia-4:
     - ~storage_devices.pci-0000:82:00.0-sas-phy0-lun-0.firmware_version
     - ~storage_devices.pci-0000:82:00.0-sas-phy0-lun-0.model
     - ~storage_devices.pci-0000:82:00.0-sas-phy4-lun-0.firmware_version
     - ~storage_devices.pci-0000:82:00.0-sas-phy4-lun-0.model
-  paranoia-[7-8]:
+  paranoia-5:
+    - ~storage_devices.pci-0000:82:00.0-sas-phy4-lun-0.firmware_version
+    - ~storage_devices.pci-0000:82:00.0-sas-phy4-lun-0.model
+  paranoia-8:
     - ~storage_devices.pci-0000:82:00.0-sas-phy3-lun-0.firmware_version
     - ~storage_devices.pci-0000:82:00.0-sas-phy3-lun-0.model
     - ~storage_devices.pci-0000:82:00.0-sas-phy3-lun-0.vendor
@@ -258,8 +220,6 @@ rennes:
     - +pdu
   parasilo-16:
     - -pdu
-  parasilo-17:
-    - +pdu
   parasilo-18:
     - -pdu
   parasilo-19:
@@ -267,8 +227,6 @@ rennes:
   parasilo-20:
     - -pdu
   parasilo-21:
-    - +pdu
-  parasilo-22:
     - +pdu
   parasilo-[6-7]:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:5:0.firmware_version
@@ -280,27 +238,9 @@ rennes:
   parasilo-[25-26]:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:2:0.firmware_version
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:2:0.model
-  paravance-[1-72]:
-    - ~network_adapters.eth0.firmware_version
-    - ~network_adapters.eth1.firmware_version
-    - ~network_adapters.eth2.firmware_version
-    - ~network_adapters.eth3.firmware_version
   paravance-3:
     - +pdu
 sophia:
-  uvb-[1-44]:
-    - ~network_adapters.ib0.8100.mac
-  uvb-3:
-    - -chassis.serial
-    - ~chassis.manufacturer
-  uvb-4:
-    - +chassis.serial
-    - ~chassis.manufacturer
-    - ~network_adapters.ib0.8100.mac
   uvb-13:
     - -chassis.serial
     - ~chassis.manufacturer
-  uvb-14:
-    - +chassis.serial
-    - ~chassis.manufacturer
-    - ~network_adapters.ib0.8100.mac

@@ -174,13 +174,22 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
         # Remove keys that are specific to each nodes (ip, mac etc.)
         ikeys = cignore_keys[site_uid][node_uid] rescue nil
 
+        not_found_keys = []
+        if !ikeys.nil?
+          ikeys.each do |key|
+            diff = diffs.select {|entry| entry[0] + entry[1] == key}.first
+            if diff.nil? 
+              not_found_keys << key
+              total_count += 1
+              count[site_uid][cluster_uid] += 1
+            else
+              diffs.delete(diff)
+            end
+          end
+        end
+
         diffs.clone.each do |diff|
           if ignore_keys.include?(diff[0] + diff[1])
-            diffs.delete(diff)
-            next
-          end
-
-          if ikeys && ikeys.include?(diff[0] + diff[1])
             diffs.delete(diff)
             next
           end
@@ -196,6 +205,13 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
         if verbose && !diffs.empty?
           puts "Differences between #{refnode_uid} and #{node_uid}:"
           pp diffs
+        end
+
+        if verbose && !not_found_keys.empty?
+          puts "Unsatisfied homogeneity exceptions between #{refnode_uid} and #{node_uid}: "
+          not_found_keys.each do |key|
+            puts "\t#{key}"
+          end
         end
 
         total_count += diffs.size
