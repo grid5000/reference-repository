@@ -128,3 +128,7 @@ automata:
     - timeout: <%= data['boot.timeout.1'] %>
       type: HardReboot
       retries: 0
+<%- if data['force_tftp'] -%>
+custom_variables:
+  FORCE_TFTP="1"
+<%- end -%>
