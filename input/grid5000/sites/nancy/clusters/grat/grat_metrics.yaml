@@ -1,0 +1,1366 @@
+---
+metrics:
+
+  - name: bmc_ambient_temp_celsius
+    description: Front node ambient temperature reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: FIXME #Inlet Temp
+
+  - name: bmc_node_power_watt
+    description: Power consumption of node reported by BMC, in watt
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: FIXME #Pwr Consumption
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "01-inletambient"}
+    description: Temperature of 01-Inlet Ambient reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 2 #01-Inlet Ambient
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "02-cpu1"}
+    description: Temperature of 02-CPU 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 3 #02-CPU 1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "03-cpu2"}
+    description: Temperature of 03-CPU 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 4 #03-CPU 2
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "108-cpu1pkgtmp"}
+    description: Temperature of 108-CPU 1 PkgTmp reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 5 #108-CPU 1 PkgTmp
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "109-cpu2pkgtmp"}
+    description: Temperature of 109-CPU 2 PkgTmp reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 6 #109-CPU 2 PkgTmp
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "04-p1dimm1-8"}
+    description: Temperature of 04-P1 DIMM 1-8 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 7 #04-P1 DIMM 1-8
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "05-p1dimm9-16"}
+    description: Temperature of 05-P1 DIMM 9-16 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 8 #05-P1 DIMM 9-16
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "06-p2dimm1-8"}
+    description: Temperature of 06-P2 DIMM 1-8 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 9 #06-P2 DIMM 1-8
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "07-p2dimm9-16"}
+    description: Temperature of 07-P2 DIMM 9-16 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 10 #07-P2 DIMM 9-16
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "08-hdmax"}
+    description: Temperature of 08-HD Max reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 11 #08-HD Max
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "09-expbaydrive"}
+    description: Temperature of 09-Exp Bay Drive reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 12 #09-Exp Bay Drive
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "10-storbatt"}
+    description: Temperature of 10-Stor Batt reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 13 #10-Stor Batt
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "11-boardinlet"}
+    description: Temperature of 11-Board Inlet reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 14 #11-Board Inlet
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "12-vrp1"}
+    description: Temperature of 12-VR P1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 15 #12-VR P1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "13-vrp2"}
+    description: Temperature of 13-VR P2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 16 #13-VR P2
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "14-vrp1mem1"}
+    description: Temperature of 14-VR P1 Mem 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 17 #14-VR P1 Mem 1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "15-vrp1mem2"}
+    description: Temperature of 15-VR P1 Mem 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 18 #15-VR P1 Mem 2
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "16-vrp2mem1"}
+    description: Temperature of 16-VR P2 Mem 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 19 #16-VR P2 Mem 1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "17-vrp2mem2"}
+    description: Temperature of 17-VR P2 Mem 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 20 #17-VR P2 Mem 2
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "18-bmc"}
+    description: Temperature of 18-BMC reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 21 #18-BMC
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "19-bmczone"}
+    description: Temperature of 19-BMC Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 22 #19-BMC Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "20-hdcontroller"}
+    description: Temperature of 20-HD Controller reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 23 #20-HD Controller
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "21-hdcntlrzone"}
+    description: Temperature of 21-HD Cntlr Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 24 #21-HD Cntlr Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "23-lomcardzone"}
+    description: Temperature of 23-LOM Card Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 25 #23-LOM Card Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "24-pci17"}
+    description: Temperature of 24-PCI 17 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 26 #24-PCI 17
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "25-pci17zone"}
+    description: Temperature of 25-PCI 17 Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 27 #25-PCI 17 Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "26-pci18"}
+    description: Temperature of 26-PCI 18 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 28 #26-PCI 18
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "27-pci18zone"}
+    description: Temperature of 27-PCI 18 Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 29 #27-PCI 18 Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "28-pci19"}
+    description: Temperature of 28-PCI 19 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 30 #28-PCI 19
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "29-pci19zone"}
+    description: Temperature of 29-PCI 19 Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 31 #29-PCI 19 Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "30-pci20"}
+    description: Temperature of 30-PCI 20 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 32 #30-PCI 20
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "31-pci20zone"}
+    description: Temperature of 31-PCI 20 Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 33 #31-PCI 20 Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "32-pci21"}
+    description: Temperature of 32-PCI 21 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 34 #32-PCI 21
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "33-pci21zone"}
+    description: Temperature of 33-PCI 21 Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 35 #33-PCI 21 Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "34-pci22"}
+    description: Temperature of 34-PCI 22 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 36 #34-PCI 22
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "35-pci22zone"}
+    description: Temperature of 35-PCI 22 Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 37 #35-PCI 22 Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "38-batteryzone"}
+    description: Temperature of 38-Battery Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 38 #38-Battery Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "41-pcieswitch1"}
+    description: Temperature of 41-PCIe Switch 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 39 #41-PCIe Switch 1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "42-pcieswitch2"}
+    description: Temperature of 42-PCIe Switch 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 40 #42-PCIe Switch 2
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "43-pcieswitch3"}
+    description: Temperature of 43-PCIe Switch 3 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 41 #43-PCIe Switch 3
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "44-pcieswitch4"}
+    description: Temperature of 44-PCIe Switch 4 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 42 #44-PCIe Switch 4
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "45-pcieswitch5"}
+    description: Temperature of 45-PCIe Switch 5 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 43 #45-PCIe Switch 5
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "46-p/s1inlet"}
+    description: Temperature of 46-P/S 1 Inlet reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 44 #46-P/S 1 Inlet
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "47-p/s2inlet"}
+    description: Temperature of 47-P/S 2 Inlet reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 45 #47-P/S 2 Inlet
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "48-p/s3inlet"}
+    description: Temperature of 48-P/S 3 Inlet reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 46 #48-P/S 3 Inlet
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "49-p/s4inlet"}
+    description: Temperature of 49-P/S 4 Inlet reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 47 #49-P/S 4 Inlet
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "50-p/s5inlet"}
+    description: Temperature of 50-P/S 5 Inlet reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 48 #50-P/S 5 Inlet
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "51-p/s6inlet"}
+    description: Temperature of 51-P/S 6 Inlet reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 49 #51-P/S 6 Inlet
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "52-p/s1"}
+    description: Temperature of 52-P/S 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 50 #52-P/S 1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "53-p/s2"}
+    description: Temperature of 53-P/S 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 51 #53-P/S 2
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "54-p/s3"}
+    description: Temperature of 54-P/S 3 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 52 #54-P/S 3
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "55-p/s4"}
+    description: Temperature of 55-P/S 4 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 53 #55-P/S 4
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "56-p/s5"}
+    description: Temperature of 56-P/S 5 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 54 #56-P/S 5
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "57-p/s6"}
+    description: Temperature of 57-P/S 6 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 55 #57-P/S 6
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "62-gpu1"}
+    description: Temperature of 62-GPU 1 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 56 #62-GPU 1
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "63-gpu2"}
+    description: Temperature of 63-GPU 2 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 57 #63-GPU 2
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "65-gpu3"}
+    description: Temperature of 65-GPU 3 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 58 #65-GPU 3
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "66-gpu4"}
+    description: Temperature of 66-GPU 4 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 59 #66-GPU 4
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "68-gpu5"}
+    description: Temperature of 68-GPU 5 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 60 #68-GPU 5
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "69-gpu6"}
+    description: Temperature of 69-GPU 6 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 61 #69-GPU 6
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "71-gpu7"}
+    description: Temperature of 71-GPU 7 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 62 #71-GPU 7
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "72-gpu8"}
+    description: Temperature of 72-GPU 8 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 63 #72-GPU 8
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "74-gpu9"}
+    description: Temperature of 74-GPU 9 reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 64 #74-GPU 9
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "94-gpuzone"}
+    description: Temperature of 94-GPU Zone reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 65 #94-GPU Zone
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "95-ahcihdmax"}
+    description: Temperature of 95-AHCI HD Max reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 66 #95-AHCI HD Max
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan1dutycycle"}
+    description: Usage of Fan 1 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 68 #Fan 1 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan2dutycycle"}
+    description: Usage of Fan 2 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 71 #Fan 2 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan3dutycycle"}
+    description: Usage of Fan 3 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 74 #Fan 3 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan4dutycycle"}
+    description: Usage of Fan 4 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 77 #Fan 4 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan5dutycycle"}
+    description: Usage of Fan 5 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 80 #Fan 5 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan6dutycycle"}
+    description: Usage of Fan 6 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 83 #Fan 6 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan7dutycycle"}
+    description: Usage of Fan 7 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 86 #Fan 7 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan8dutycycle"}
+    description: Usage of Fan 8 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 89 #Fan 8 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan9dutycycle"}
+    description: Usage of Fan 9 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 92 #Fan 9 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan10dutycycle"}
+    description: Usage of Fan 10 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 95 #Fan 10 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan11dutycycle"}
+    description: Usage of Fan 11 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 98 #Fan 11 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan12dutycycle"}
+    description: Usage of Fan 12 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 101 #Fan 12 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan13dutycycle"}
+    description: Usage of Fan 13 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 104 #Fan 13 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan14dutycycle"}
+    description: Usage of Fan 14 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 107 #Fan 14 DutyCycle
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "fan15dutycycle"}
+    description: Usage of Fan 15 DutyCycle reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 110 #Fan 15 DutyCycle
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps1input"}
+    description: Power consumption of PS 1 Input reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 113 #PS 1 Input
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps2input"}
+    description: Power consumption of PS 2 Input reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 115 #PS 2 Input
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps3input"}
+    description: Power consumption of PS 3 Input reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 117 #PS 3 Input
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps4input"}
+    description: Power consumption of PS 4 Input reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 119 #PS 4 Input
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps5input"}
+    description: Power consumption of PS 5 Input reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 121 #PS 5 Input
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps6input"}
+    description: Power consumption of PS 6 Input reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 123 #PS 6 Input
+
+  - name: bmc_other_power_watt
+    labels: {"id": "powermeter"}
+    description: Power consumption of Power Meter reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 124 #Power Meter
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps1output"}
+    description: Power consumption of PS 1 Output reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 131 #PS 1 Output
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_out_01"}
+    description: Voltage of PS_Volt_Out_01 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 132 #PS_Volt_Out_01
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_in_01"}
+    description: Voltage of PS_Volt_In_01 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 133 #PS_Volt_In_01
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_out_01"}
+    description: Current of PS_Curr_Out_01 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 134 #PS_Curr_Out_01
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_in_01"}
+    description: Current of PS_Curr_In_01 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 135 #PS_Curr_In_01
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps2output"}
+    description: Power consumption of PS 2 Output reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 136 #PS 2 Output
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_out_02"}
+    description: Voltage of PS_Volt_Out_02 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 137 #PS_Volt_Out_02
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_in_02"}
+    description: Voltage of PS_Volt_In_02 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 138 #PS_Volt_In_02
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_out_02"}
+    description: Current of PS_Curr_Out_02 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 139 #PS_Curr_Out_02
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_in_02"}
+    description: Current of PS_Curr_In_02 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 140 #PS_Curr_In_02
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps3output"}
+    description: Power consumption of PS 3 Output reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 141 #PS 3 Output
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_out_03"}
+    description: Voltage of PS_Volt_Out_03 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 142 #PS_Volt_Out_03
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_in_03"}
+    description: Voltage of PS_Volt_In_03 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 143 #PS_Volt_In_03
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_out_03"}
+    description: Current of PS_Curr_Out_03 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 144 #PS_Curr_Out_03
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_in_03"}
+    description: Current of PS_Curr_In_03 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 145 #PS_Curr_In_03
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps4output"}
+    description: Power consumption of PS 4 Output reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 146 #PS 4 Output
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_out_04"}
+    description: Voltage of PS_Volt_Out_04 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 147 #PS_Volt_Out_04
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_in_04"}
+    description: Voltage of PS_Volt_In_04 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 148 #PS_Volt_In_04
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_out_04"}
+    description: Current of PS_Curr_Out_04 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 149 #PS_Curr_Out_04
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_in_04"}
+    description: Current of PS_Curr_In_04 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 150 #PS_Curr_In_04
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps5output"}
+    description: Power consumption of PS 5 Output reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 151 #PS 5 Output
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_out_05"}
+    description: Voltage of PS_Volt_Out_05 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 152 #PS_Volt_Out_05
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_in_05"}
+    description: Voltage of PS_Volt_In_05 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 153 #PS_Volt_In_05
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_out_05"}
+    description: Current of PS_Curr_Out_05 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 154 #PS_Curr_Out_05
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_in_05"}
+    description: Current of PS_Curr_In_05 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 155 #PS_Curr_In_05
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps6output"}
+    description: Power consumption of PS 6 Output reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 156 #PS 6 Output
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_out_06"}
+    description: Voltage of PS_Volt_Out_06 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 157 #PS_Volt_Out_06
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_in_06"}
+    description: Voltage of PS_Volt_In_06 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 158 #PS_Volt_In_06
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_out_06"}
+    description: Current of PS_Curr_Out_06 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 159 #PS_Curr_Out_06
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_in_06"}
+    description: Current of PS_Curr_In_06 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 160 #PS_Curr_In_06
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "20-hdcontroller"}
+    description: Temperature of 20-HD Controller reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 161 #20-HD Controller
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "20-hdcontroller"}
+    description: Temperature of 20-HD Controller reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 162 #20-HD Controller
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "20-hdcontroller"}
+    description: Temperature of 20-HD Controller reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 163 #20-HD Controller
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "32-pci21-i/omo"}
+    description: Temperature of 32-PCI 21-I/O mo reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 164 #32-PCI 21-I/O mo
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "62-gpu1-gpuasi"}
+    description: Temperature of 62-GPU 1-GPU ASI reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 165 #62-GPU 1-GPU ASI
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "62-gpu1-memory"}
+    description: Temperature of 62-GPU 1-Memory reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 166 #62-GPU 1-Memory
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "63-gpu2-gpuasi"}
+    description: Temperature of 63-GPU 2-GPU ASI reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 167 #63-GPU 2-GPU ASI
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "63-gpu2-memory"}
+    description: Temperature of 63-GPU 2-Memory reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 168 #63-GPU 2-Memory
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "65-gpu3-gpuasi"}
+    description: Temperature of 65-GPU 3-GPU ASI reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 169 #65-GPU 3-GPU ASI
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "65-gpu3-memory"}
+    description: Temperature of 65-GPU 3-Memory reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 170 #65-GPU 3-Memory
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "66-gpu4-gpuasi"}
+    description: Temperature of 66-GPU 4-GPU ASI reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 171 #66-GPU 4-GPU ASI
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "66-gpu4-memory"}
+    description: Temperature of 66-GPU 4-Memory reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 172 #66-GPU 4-Memory
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "68-gpu5-gpuasi"}
+    description: Temperature of 68-GPU 5-GPU ASI reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 173 #68-GPU 5-GPU ASI
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "68-gpu5-memory"}
+    description: Temperature of 68-GPU 5-Memory reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 174 #68-GPU 5-Memory
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "69-gpu6-gpuasi"}
+    description: Temperature of 69-GPU 6-GPU ASI reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 175 #69-GPU 6-GPU ASI
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "69-gpu6-memory"}
+    description: Temperature of 69-GPU 6-Memory reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 176 #69-GPU 6-Memory
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "71-gpu7-gpuasi"}
+    description: Temperature of 71-GPU 7-GPU ASI reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 177 #71-GPU 7-GPU ASI
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "71-gpu7-memory"}
+    description: Temperature of 71-GPU 7-Memory reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 178 #71-GPU 7-Memory
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "72-gpu8-gpuasi"}
+    description: Temperature of 72-GPU 8-GPU ASI reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 179 #72-GPU 8-GPU ASI
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "72-gpu8-memory"}
+    description: Temperature of 72-GPU 8-Memory reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 180 #72-GPU 8-Memory
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "74-gpu9-nvswit"}
+    description: Temperature of 74-GPU 9-NV SWIT reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 181 #74-GPU 9-NV SWIT
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "74-gpu9-nvswit"}
+    description: Temperature of 74-GPU 9-NV SWIT reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 182 #74-GPU 9-NV SWIT
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "74-gpu9-nvswit"}
+    description: Temperature of 74-GPU 9-NV SWIT reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 183 #74-GPU 9-NV SWIT
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "74-gpu9-nvswit"}
+    description: Temperature of 74-GPU 9-NV SWIT reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 184 #74-GPU 9-NV SWIT
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "74-gpu9-nvswit"}
+    description: Temperature of 74-GPU 9-NV SWIT reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 185 #74-GPU 9-NV SWIT
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "74-gpu9-nvswit"}
+    description: Temperature of 74-GPU 9-NV SWIT reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 186 #74-GPU 9-NV SWIT
+
+  - name: prom_default_metrics
+    description: Default subset of metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
+      id:
+        - node_boot_time_seconds
+        - node_cpu_frequency_hertz
+        - node_cpu_seconds_total
+        - node_filesystem_free_bytes
+        - node_filesystem_size_bytes
+        - node_load1
+        - node_load15
+        - node_load5
+        - node_memory_Buffers_bytes
+        - node_memory_Cached_bytes
+        - node_memory_MemAvailable_bytes
+        - node_memory_MemFree_bytes
+        - node_memory_MemTotal_bytes
+        - node_memory_Shmem_bytes
+        - node_memory_SwapFree_bytes
+        - node_memory_SwapTotal_bytes
+        - node_network_receive_bytes_total
+        - node_network_receive_packets_total
+        - node_network_transmit_bytes_total
+        - node_network_transmit_packets_total
+        - node_procs_blocked
+        - node_procs_running
+        - kwollect_custom
+
+  - name: prom_all_metrics
+    description: All metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
+
+  - name: prom_nvgpu_default_metrics
+    description: Default subset of metrics from Prometheus Nvidia DCGM Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9400
+      id:
+        - DCGM_FI_DEV_SM_CLOCK
+        - DCGM_FI_DEV_MEM_CLOCK
+        - DCGM_FI_DEV_GPU_TEMP
+        - DCGM_FI_DEV_POWER_USAGE
+        - DCGM_FI_DEV_GPU_UTIL
+        - DCGM_FI_DEV_MEM_COPY_UTIL
+
+  - name: prom_nvgpu_all_metrics
+    description: All metrics from Prometheus Nvidia DCGM Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9400
