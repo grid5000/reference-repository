@@ -107,7 +107,7 @@ refapi['sites'].sort.to_h.each_key do |site|
 
              if not interface['mac'] or
                 not node['kavlan'][interface['device']]["kavlan-#{kavlan_id}"]
-                  warn "WARN: Cannot fill dhcpd entry for #{node_uid}, interface #{interface_uid} in vlan #{kavlan_id}: " \
+                  warn "WARN: Cannot fill dhcpd entry for #{node_uid}, interface #{interface['name']} in vlan #{kavlan_id}: " \
               "Missing mac (#{interface['mac']}) or IP (#{node['kavlan'][interface['device']] and node['kavlan'][interface['device']]["kavlan-#{kavlan_id}"]})"
                   next
              end
