@@ -26,7 +26,7 @@ class EnvironmentsGenerator < WikiGenerator
     'rocky9-min' => 'rocky 9 minimalistic installation',
     'debiantesting-min' => 'debian testing minimalistic installation',
   }
-  EXCLUDED_ENVIRONMENTS = [ 'ubuntu2204-nfs' ]
+  EXCLUDED_ENVIRONMENTS = [ 'ubuntu2204-nfs', 'debiantesting-nfs' ]
 
   def generate_content(_options)
 
