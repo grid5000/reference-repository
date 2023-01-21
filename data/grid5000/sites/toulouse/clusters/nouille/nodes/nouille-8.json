@@ -36,22 +36,32 @@
   ],
   "network_adapters": [
     {
+      "bridged": false,
       "device": "eth0",
-      "enabled": false,
-      "interface": "Unknown",
+      "enabled": true,
+      "interface": "Ethernet",
       "ip": "172.16.120.8",
+      "ip6": "2001:660:4406:900:9::8",
       "kavlan": false,
       "mac": "84:16:0c:4b:cd:46",
       "management": false,
       "mountable": true,
-      "mounted": true
+      "mounted": true,
+      "network_address": "nouille-8.toulouse.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "gw-toulouse",
+      "switch_port": "tengigabitethernet1/1/8"
     },
     {
       "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
       "ip": "172.17.120.8",
       "kavlan": false,
       "mac": "5c:ed:8c:3b:14:ec",
       "management": true,
+      "mountable": false,
+      "mounted": false,
       "network_address": "nouille-8-bmc.toulouse.grid5000.fr"
     }
   ],

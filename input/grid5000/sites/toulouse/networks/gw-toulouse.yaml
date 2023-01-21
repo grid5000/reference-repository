@@ -5,7 +5,7 @@ gw-toulouse:
   ip: 172.17.127.254
   kind: router
   site: toulouse
-  snmp_community: Unknown # I put this value here so that rake valid:schema is happy
+  snmp_community: Unknown
   vlans:
     "vlan100":
       administrative: yes
@@ -59,12 +59,36 @@ gw-toulouse:
         - 10.31.192.0/18
   linecards:
     1:
-      kind: other
       rate: 10000000000
+      snmp_pattern: "tengigabitethernet1/%LINECARD%/%PORT%"
+      kavlan_pattern: "%PORT%"
+      kind: node
       ports:
-        15: oobm
-        16: oobm
-        17: pve-1
-        18: pve-2
-        19: nfs
-        20: nfs
+        1: nouille-1
+        2: nouille-2
+        3: nouille-3
+        4: nouille-4
+        5: nouille-5
+        6: nouille-6
+        7: nouille-7
+        8: nouille-8
+        9: nouille-9
+        10: nouille-10
+        15: 
+          uid: oobm
+          kind: server
+        16: 
+          uid: oobm
+          kind: server
+        17: 
+          uid: pve-1
+          kind: server
+        18: 
+          uid: pve-2
+          kind: server
+        19: 
+          uid: nfs
+          kind: server
+        20: 
+          uid: nfs
+          kind: server

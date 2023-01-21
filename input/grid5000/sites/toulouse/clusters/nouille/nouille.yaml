@@ -33,9 +33,20 @@ nodes:
         size: 1024
         technology: Unknown
     network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false 
       eth0:
-        interface: Unknown
-        enabled: false
+        interface: Ethernet
+        rate: 10000000000
+        management: false
+        enabled: true
+        mountable: true
+        mounted: true
+        bridged: false
     operating_system:
       cstate_driver: Unknown
       cstate_governor: Unknown
