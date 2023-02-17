@@ -178,7 +178,8 @@ wurst:
 
 grvingt-srv:
   kind: physical
-  alias: []
+  alias:
+    - storage5
   warranty: 2025-03
   serial: 8WQDDP2
   network_adapters:
@@ -192,6 +193,10 @@ grvingt-srv:
       ip: 172.18.75.229
     ib1:
       ip: 172.18.76.229
+  #group_storage:
+  #  name: storage5
+  #  size:
+  #  rate:
 
 talc-data2:
   kind: physical
