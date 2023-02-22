@@ -2,7 +2,7 @@
 
 class EnvironmentsGenerator < WikiGenerator
 
-  OSVERSION_SORT_ORDER = ['debian10','debian11','debiantesting','centos7','centos8','rocky8', 'rocky9', 'centosstream8','ubuntu1804','ubuntu2004']
+  OSVERSION_SORT_ORDER = ['debian10','debian11','debiantesting','centos7','centos8','rocky8','rocky9','centosstream8','centosstream9','ubuntu1804','ubuntu2004', 'ubuntu2204']
   VARIANT_SORT_ORDER = ['min','base','xen', 'nfs', 'big', 'std']
   # FIXME Update the description of envs to something more sensible instead of overwriting here.
   DESC = {
@@ -17,14 +17,25 @@ class EnvironmentsGenerator < WikiGenerator
     'debian11-nfs' => 'debian 11 (bullseye) with support for mounting NFS home',
     'debian11-big' => 'debian 11 (bullseye) with packages for development, system tools, editors, shells.',
     'ubuntu1804-min' => 'ubuntu 18.04 (bionic) minimalistic installation',
+    'ubuntu1804-nfs' => 'ubuntu 18.04 (bionic) with support for mounting NFS home',
     'ubuntu2004-min' => 'ubuntu 20.04 (focal) minimalistic installation',
+    'ubuntu2004-nfs' => 'ubuntu 20.04 (focal) with support for mounting NFS home',
     'ubuntu2204-min' => 'ubuntu 22.04 (jellyfish) minimalistic installation',
+    'ubuntu2204-nfs' => 'ubuntu 22.04 (jellyfish) with support for mounting NFS home',
     'centos7-min' => 'centos 7 minimalistic installation',
+    'centos7-nfs' => 'centos 7 with support for mounting NFS home',
     'centos8-min' => 'centos 8 minimalistic installation',
+    'centos8-nfs' => 'centos 8 with support for mounting NFS home',
     'centosstream8-min' => 'centos-stream 8 minimalistic installation',
+    'centosstream8-nfs' => 'centos-stream 9 with support for mounting NFS home',
+    'centosstream9-min' => 'centos-stream 9 minimalistic installation',
+    'centosstream9-nfs' => 'centos-stream 9 with support for mounting NFS home',
     'rocky8-min' => 'rocky 8 minimalistic installation',
+    'rocky8-nfs' => 'rocky 8 with support for mounting NFS home',
     'rocky9-min' => 'rocky 9 minimalistic installation',
+    'rocky9-nfs' => 'rocky 9 with support for mounting NFS home',
     'debiantesting-min' => 'debian testing minimalistic installation',
+    'debiantesting-nfs' => 'debian testing with support for mounting NFS home',
   }
 
   def generate_content(_options)
