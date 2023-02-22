@@ -26,7 +26,6 @@ class EnvironmentsGenerator < WikiGenerator
     'rocky9-min' => 'rocky 9 minimalistic installation',
     'debiantesting-min' => 'debian testing minimalistic installation',
   }
-  EXCLUDED_ENVIRONMENTS = [ 'ubuntu2204-nfs' ]
 
   def generate_content(_options)
 
@@ -41,7 +40,8 @@ class EnvironmentsGenerator < WikiGenerator
     # The creation date can be a little different on each site, we remove it from hash before removing dupplicate
     envs.each{|x| x.delete('created_at')}
     envs.uniq!
-    envs.reject!{|x| EXCLUDED_ENVIRONMENTS.include?(x['name']) }
+    # FIXME We reject debian11-std here until #13183 is fixed
+    envs.reject!{|x| x['name'] == 'debian11-std'}
     table_columns += envs.map{|x| x['arch']}.uniq.sort.reverse
     table_columns << 'Description'
     envs = envs.group_by{|x| x['name']}.map{|k,v| [k,v.map{|x| x['arch']}, v.first['description']]}
