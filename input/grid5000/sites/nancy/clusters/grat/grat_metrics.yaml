@@ -35,18 +35,18 @@ metrics:
       protocol: ipmisensor
       id: 4 #03-CPU 2
 
-  - name: bmc_other_temp_celsius
-    labels: {"id": "108-cpu1pkgtmp"}
-    description: Temperature of 108-CPU 1 PkgTmp reported by BMC, in celsius
+  - name: bmc_cpu_temp_celsius
+    labels: {"cpu": "1pkg"}
+    description: Temperature of Cpu 1 Pkg reported by BMC, in celsius
     period: 0
     optional_period: 5000
     source:
       protocol: ipmisensor
       id: 5 #108-CPU 1 PkgTmp
 
-  - name: bmc_other_temp_celsius
-    labels: {"id": "109-cpu2pkgtmp"}
-    description: Temperature of 109-CPU 2 PkgTmp reported by BMC, in celsius
+  - name: bmc_cpu_temp_celsius
+    labels: {"cpu": "2pkg"}
+    description: Temperature of Cpu 2 Pkg reported by BMC, in celsius
     period: 0
     optional_period: 5000
     source:
