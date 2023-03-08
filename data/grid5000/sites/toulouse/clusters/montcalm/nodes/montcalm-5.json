@@ -1,0 +1,121 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "01/01/2000",
+    "vendor": "Unknown",
+    "version": "Unknown"
+  },
+  "bmc_version": "Unknown",
+  "chassis": {
+    "manufacturer": "HPe",
+    "name": "HPE Proliant DL360 Gen10+"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 549755813888
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a0",
+      "size": 1024,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "bridged": false,
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.120.5",
+      "ip6": "2001:660:4406:900:9::5",
+      "kavlan": false,
+      "mac": "84:16:0c:4b:1a:ae",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "montcalm-5.toulouse.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "gw-toulouse",
+      "switch_port": "tengigabitethernet1/1/5"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.120.5",
+      "kavlan": false,
+      "mac": "5c:ed:8c:3b:14:e8",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "montcalm-5-bmc.toulouse.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "none",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 108800000000,
+    "node_flops": 1740800000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 98304,
+    "cache_l1i": 65536,
+    "cache_l2": 2621440,
+    "cache_l3": 3145728,
+    "clock_speed": 3400000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Ice Lake",
+    "microcode": "Unknown",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz",
+    "vendor": "Intel",
+    "version": "Silver 4314"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023011210",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "id": "Unknown",
+      "interface": "SATA",
+      "model": "HPE P40498-B21",
+      "size": 1030792151040,
+      "storage": "SSD",
+      "vendor": "HP"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin"
+    ]
+  },
+  "type": "node",
+  "uid": "montcalm-5"
+}
