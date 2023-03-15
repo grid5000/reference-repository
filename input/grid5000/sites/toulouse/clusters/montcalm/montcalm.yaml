@@ -43,6 +43,9 @@ nodes:
         rate: 10000000000
         management: false
         name: ens10f0np0
+        vendor: Broadcom Inc. and subsidiaries
+        model: BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller
+        driver: bnxt_en
         enabled: true
         mountable: true
         mounted: true
@@ -69,9 +72,9 @@ nodes:
       vendor: Intel
       version: Silver 4314
     storage_devices:
-      disk0:
+      pci-0000:00:17.0-ata-1:
         size: 1030792151040
-        id: Unknown
+        id: disk0
         model: HPE P40498-B21
         interface: SATA
         storage: SSD
