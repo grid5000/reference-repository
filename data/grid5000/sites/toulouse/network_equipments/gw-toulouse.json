@@ -1,0 +1,196 @@
+{
+  "ip": "172.17.127.254",
+  "kind": "router",
+  "linecards": [
+    {
+    },
+    {
+      "kavlan_pattern": "%PORT%",
+      "kind": "node",
+      "ports": [
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/1",
+          "uid": "montcalm-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/2",
+          "uid": "montcalm-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/3",
+          "uid": "montcalm-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/4",
+          "uid": "montcalm-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/5",
+          "uid": "montcalm-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/6",
+          "uid": "montcalm-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/7",
+          "uid": "montcalm-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/8",
+          "uid": "montcalm-8"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "tengigabitethernet1/1/9",
+          "uid": "montcalm-9"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "server",
+          "snmp_name": "tengigabitethernet1/1/15",
+          "uid": "oobm"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "tengigabitethernet1/1/16",
+          "uid": "oobm"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "tengigabitethernet1/1/17",
+          "uid": "pve-1"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "tengigabitethernet1/1/18",
+          "uid": "pve-2"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "tengigabitethernet1/1/19",
+          "uid": "nfs"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "tengigabitethernet1/1/20",
+          "uid": "nfs"
+        }
+      ],
+      "rate": 10000000000,
+      "snmp_pattern": "tengigabitethernet1/%LINECARD%/%PORT%"
+    }
+  ],
+  "model": "Temporary-Dell-OS6",
+  "serial": "unknown",
+  "site": "toulouse",
+  "snmp_community": "Unknown",
+  "type": "network_equipment",
+  "uid": "gw-toulouse",
+  "vlans": {
+    "vlan100": {
+      "addresses": [
+        "172.16.127.254"
+      ],
+      "administrative": true
+    },
+    "vlan101": {
+      "addresses": [
+        "172.17.127.254"
+      ]
+    },
+    "vlan500": {
+      "addresses": [
+        "192.168.4.16"
+      ]
+    },
+    "vlan701": {
+      "addresses": [
+        "192.168.192.0/20"
+      ],
+      "name": "kavlan-1"
+    },
+    "vlan702": {
+      "addresses": [
+        "192.168.208.0/20"
+      ],
+      "name": "kavlan-2"
+    },
+    "vlan703": {
+      "addresses": [
+        "192.168.224.0/20"
+      ],
+      "name": "kavlan-3"
+    },
+    "vlan704": {
+      "addresses": [
+        "10.28.0.0/18"
+      ],
+      "name": "kavlan-4"
+    },
+    "vlan705": {
+      "addresses": [
+        "10.28.64.0/18"
+      ],
+      "name": "kavlan-5"
+    },
+    "vlan706": {
+      "addresses": [
+        "10.28.128.0/18"
+      ],
+      "name": "kavlan-6"
+    },
+    "vlan707": {
+      "addresses": [
+        "10.28.192.0/18"
+      ],
+      "name": "kavlan-7"
+    },
+    "vlan708": {
+      "addresses": [
+        "10.29.0.0/18"
+      ],
+      "name": "kavlan-8"
+    },
+    "vlan709": {
+      "addresses": [
+        "10.29.64.0/18"
+      ],
+      "name": "kavlan-9"
+    },
+    "vlan712": {
+      "addresses": [
+        "10.31.192.0/18"
+      ],
+      "name": "kavlan-17"
+    }
+  }
+}

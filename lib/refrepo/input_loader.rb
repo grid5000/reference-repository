@@ -684,6 +684,8 @@ def get_flops_per_cycle(microarch, cpu_name)
     return 8
   when "Haswell", "Broadwell", "Zen 2"
     return 16
+  when "Ice Lake"
+    return 32
   when "Cascade Lake-SP", "Skylake"
     case cpu_name
     when /Silver 4110/, /Gold 5218/, /Gold 5220/
