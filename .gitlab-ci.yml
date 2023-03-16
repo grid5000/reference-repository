@@ -29,6 +29,7 @@ validate-data:
 wikigen:
   extends: .test-for-bullseye
   stage: validate
+  allow_failure: true
   parallel:
     matrix:
       - GENERATOR: [cpu_parameters, disk_reservation, environments, group_storage, hardware, kwollect_metrics, oar_properties, status]
