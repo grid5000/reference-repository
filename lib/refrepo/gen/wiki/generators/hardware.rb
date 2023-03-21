@@ -354,6 +354,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Skylake' => '2016',
       'Zen' => '2017',
       'Zen 2' => '2019',
+      'Zen 3' => '2020',
       'Cascade Lake-SP' => '2019',
       'Vulcan' => '2018',
       'Ice Lake' => '2021',
