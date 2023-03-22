@@ -4,7 +4,7 @@ created_at: 2014-02-21
 kavlan: true
 boot_type: bios
 queues:
-  - default
+  - production
   - admin
 
 nodes:
@@ -23,7 +23,6 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
     storage_devices:
       pci-0000:82:00.0-sas-phy0-lun-0:
         interface: SAS
@@ -67,3 +66,9 @@ nodes:
         enabled: true
         mounted: false
         mountable: false
+  paranoia-[1-4]:
+    supported_job_types:
+      max_walltime: 43200
+  paranoia-[5-8]:
+    supported_job_types:
+      max_walltime: 604800
