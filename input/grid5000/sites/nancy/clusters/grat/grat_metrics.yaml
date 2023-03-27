@@ -3,16 +3,14 @@ metrics:
 
   - name: bmc_ambient_temp_celsius
     description: Temperature reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
+    period: 5000
     source:
       protocol: ipmisensor
       id: 2 #01-Inlet Ambient
 
   - name: bmc_node_power_watt
-    description: Power consumption reported by BMC, in watt
-    period: 0
-    optional_period: 5000
+    description: Power consumption of node reported by BMC, in watt
+    period: 5000
     source:
       protocol: ipmisensor
       id: 124 #Power Meter
@@ -54,7 +52,7 @@ metrics:
       id: 6 #109-CPU 2 PkgTmp
 
   - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "1-8"}
+    labels: {"dimm": "P1 1-8"}
     description: Temperature of Dimm 1-8 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -63,7 +61,7 @@ metrics:
       id: 7 #04-P1 DIMM 1-8
 
   - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "9-16"}
+    labels: {"dimm": "P1 9-16"}
     description: Temperature of Dimm 9-16 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -72,7 +70,7 @@ metrics:
       id: 8 #05-P1 DIMM 9-16
 
   - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "1-8"}
+    labels: {"dimm": "P2 1-8"}
     description: Temperature of Dimm 1-8 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -81,7 +79,7 @@ metrics:
       id: 9 #06-P2 DIMM 1-8
 
   - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "9-16"}
+    labels: {"dimm": "P2 9-16"}
     description: Temperature of Dimm 9-16 reported by BMC, in celsius
     period: 0
     optional_period: 5000
