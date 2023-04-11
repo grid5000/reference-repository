@@ -1,24 +1,25 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 16,
+    "nb_cores": 32,
     "nb_procs": 2,
     "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": "Unknown"
+    "release_date": "08/11/2022",
+    "vendor": "HPE",
+    "version": "U46"
   },
-  "bmc_version": "Unknown",
+  "bmc_version": "2.72",
   "chassis": {
-    "manufacturer": "HPe",
-    "name": "HPE Proliant DL360 Gen10+"
+    "manufacturer": "HPE",
+    "name": "ProLiant DL360 Gen10 Plus",
+    "serial": "CZJ244064X"
   },
   "exotic": false,
   "main_memory": {
-    "ram_size": 549755813888
+    "ram_size": 274877906944
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -28,17 +29,52 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_a0",
-      "size": 1024,
+      "device": "dimm_proc 1 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
-      "bridged": false,
       "device": "eth0",
       "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "218.0.152.0/pkg 218.0.166.0",
       "interface": "Ethernet",
       "ip": "172.16.120.7",
       "ip6": "2001:660:4406:900:9::7",
@@ -51,8 +87,27 @@
       "name": "ens10f0np0",
       "network_address": "montcalm-7.toulouse.grid5000.fr",
       "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "gw-toulouse",
       "switch_port": "tengigabitethernet1/1/7",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "218.0.152.0/pkg 218.0.166.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "84:16:0c:4b:c1:89",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens10f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
@@ -69,28 +124,28 @@
     }
   ],
   "operating_system": {
-    "cstate_driver": "none",
+    "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "acpi-cpufreq",
+    "pstate_driver": "intel_pstate",
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 108800000000,
-    "node_flops": 1740800000000
+    "node_flops": 3481600000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 98304,
-    "cache_l1i": 65536,
-    "cache_l2": 2621440,
-    "cache_l3": 3145728,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 1310720,
+    "cache_l3": 25165824,
     "clock_speed": 3400000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Ice Lake",
-    "microcode": "Unknown",
+    "microcode": "0xd000375",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz",
     "vendor": "Intel",
@@ -103,12 +158,13 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x500a07513b970fec",
       "by_path": "/dev/disk/by-path/pci-0000:00:17.0-ata-1",
+      "firmware_version": "HPG1",
       "id": "disk0",
       "interface": "SATA",
-      "model": "HPE P40498-B21",
-      "size": 1030792151040,
+      "model": "VK000960GXAWL",
+      "size": 960197124096,
       "storage": "SSD",
       "vendor": "HP"
     }
@@ -119,7 +175,8 @@
     "max_walltime": 0,
     "queues": [
       "admin"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "montcalm-7"
