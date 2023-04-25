@@ -31,7 +31,7 @@ class KwollectMetricsGenerator < WikiGenerator
         description = descriptions.first
       end
       if metric_name =~ /prom_.*default_metrics/
-        prom_metric_ids = all_metrics.select{|m| m["name"] == metric_name}.map{|metric| metric["source"]["id"]}.first
+        prom_metric_ids = all_metrics.select{|m| m["name"] == metric_name}.map{|metric| metric["source"]["id"]}.flatten.uniq
         description += ":<br/>''#{prom_metric_ids.join(", ")}''"
         optional = "**"
       end
