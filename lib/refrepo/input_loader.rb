@@ -599,22 +599,25 @@ def add_network_metrics(h)
       # remove any network metrics defined in cluster
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_iface.*/}
 
-      # for each interface of a cluster's node
       _, node = cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.sort_by{ |k, _v| k }.first
-      node["network_adapters"].each do |iface_uid, iface|
 
-        # we only support metrics for Ethernet at this point
-        next if iface['interface'] != 'Ethernet'
+      # for each iface_uid found for cluster's nodes
+      cluster['nodes'].select { |_, v| v['status'] != 'retired' }.map{|_, node| node['network_adapters']}.map{|h| h.keys}.flatten.uniq.each do |iface_uid|
 
-        # get switch attached to interface
-        switch = iface['switch']
+        # find switches connected to cluster's nodes interface with this uid
+        switches = cluster['nodes'].select { |_, v| v['status'] != 'retired' }.map{|_, node| node['network_adapters'].fetch(iface_uid, {}).fetch('switch', nil)}.uniq - [nil]
+        next if switches.length == 0
 
-        # for each network metric declared for the switch
-        site.fetch('networks', {}).fetch(switch, {}).fetch('metrics', []).select{|m| m['name'] =~ /network_iface.*/}.each do |metric|
-
-          # add this metric to cluster's list of available metrics, associated to node interface
+        # for all metrics from those switches
+        switches.map{|switch| site.fetch('networks', {}).fetch(switch, {}).fetch('metrics', []).select{|m| m['name'] =~ /network_iface.*/}}.flatten.uniq{|m| m['name']}.each do |metric|
           new_metric = metric.merge({"labels" => {"interface" => iface_uid}})
           new_metric["source"] = {"protocol" => "network_equipment"}
+
+          # check if some cluster's nodes do not have this interface found in some network ports
+          if not cluster['nodes'].select { |_, v| v['status'] != 'retired' }.map{|_, node| node['network_adapters'].fetch(iface_uid, {}).fetch('switch', nil)}.all?{|s| not s.nil? and site.fetch('networks', {}).fetch(s, {}).fetch('metrics', []).select{|m| m['name'] == metric['name']}}
+            # otherwise add "only_for" key to indicate nodes found
+            new_metric['only_for'] = cluster['nodes'].select { |_, v| v['status'] != 'retired' }.select{|node_uid, node| site.fetch('networks', {}).fetch(node['network_adapters'].fetch(iface_uid, {}).fetch('switch', 'notfound'), {}).fetch('metrics', []).select{|m| m['name'] == metric['name']}}.keys.sort_by{|node| node.split("-")[1].to_i}
+          end
           cluster['metrics'].push(new_metric)
         end
       end
