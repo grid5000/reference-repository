@@ -640,10 +640,10 @@ def add_pdu_metrics(h)
         metric = site['pdus'][cluster_wm.first].fetch('metrics', []).find{|m| m['name'] == 'wattmetre_power_watt'}
         new_metric = metric.merge({'description' => "Power consumption of node reported by wattmetre, in watt"})
         # check if all cluster's nodes if found in wattmetres' ports
-        if not cluster['nodes'].select{|k, v| v['status'] != 'retired'}.keys.all?{|node| cluster_wm.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
+        if not cluster['nodes'].select{|_, v| v['status'] != 'retired'}.keys.all?{|node| cluster_wm.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
           # otherwise add "only_for" key to indicate nodes found
           new_metric['only_for'] = cluster['nodes'].keys.select{|node| cluster_wm.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}.sort_by{|node| node.split("-")[1].to_i}
-          #p cluster['nodes'].select{|k, v| v['status'] != 'retired'}.keys.select{|node| not cluster_wm.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
+          #p cluster['nodes'].select{|_, v| v['status'] != 'retired'}.keys.select{|node| not cluster_wm.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
         end
         cluster['metrics'].insert(0, new_metric)
       end
@@ -658,7 +658,7 @@ def add_pdu_metrics(h)
         metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).find{|m| m['name'] == 'wattmetre_power_watt'}
         new_metric = metric.merge({'description' => "Power consumption of node reported by wattmetre, in watt"})
         # check if all cluster's nodes if found in wattmetres' ports
-        if not cluster['nodes'].select{|k, v| v['status'] != 'retired'}.keys.all?{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
+        if not cluster['nodes'].select{|_, v| v['status'] != 'retired'}.keys.all?{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
           # otherwise add "only_for" key to indicate nodes found
           new_metric['only_for'] = cluster['nodes'].keys.select{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}.sort_by{|node| node.split("-")[1].to_i}
         end
@@ -675,7 +675,7 @@ def add_pdu_metrics(h)
           new_metric = metric.merge({'description' => "Power consumption of node reported by PDU, in watt"})
           new_metric['source'] = {"protocol" => "pdu"}
           # check if all cluster's nodes if found in pdus' ports or if some pdu do not have power metric
-          if not cluster['nodes'].select{|k, v| v['status'] != 'retired'}.keys.all?{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}} or cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('metrics', []).none?{|m| m['name'] == 'pdu_outlet_power_watt'}}
+          if not cluster['nodes'].select{|_, v| v['status'] != 'retired'}.keys.all?{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}} or cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('metrics', []).none?{|m| m['name'] == 'pdu_outlet_power_watt'}}
 
             # otherwise add "only_for" key to indicate nodes found
             new_metric['only_for'] = cluster['nodes'].keys.select{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node) and site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'pdu_outlet_power_watt'}}}.sort_by{|node| node.split("-")[1].to_i}
