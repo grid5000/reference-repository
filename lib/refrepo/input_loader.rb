@@ -599,10 +599,8 @@ def add_network_metrics(h)
       # remove any network metrics defined in cluster
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_iface.*/}
 
-      _, node = cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.sort_by{ |k, _v| k }.first
-
       # for each iface_uid found for cluster's nodes
-      cluster['nodes'].select { |_, v| v['status'] != 'retired' }.map{|_, node| node['network_adapters']}.map{|h| h.keys}.flatten.uniq.each do |iface_uid|
+      cluster['nodes'].select { |_, v| v['status'] != 'retired' }.map{|_, node| node['network_adapters']}.map{|e| e.keys}.flatten.uniq.each do |iface_uid|
 
         # find switches connected to cluster's nodes interface with this uid
         switches = cluster['nodes'].select { |_, v| v['status'] != 'retired' }.map{|_, node| node['network_adapters'].fetch(iface_uid, {}).fetch('switch', nil)}.uniq - [nil]
@@ -616,7 +614,7 @@ def add_network_metrics(h)
           # check if some cluster's nodes do not have this interface found in some network ports
           if not cluster['nodes'].select { |_, v| v['status'] != 'retired' }.map{|_, node| node['network_adapters'].fetch(iface_uid, {}).fetch('switch', nil)}.all?{|s| not s.nil? and site.fetch('networks', {}).fetch(s, {}).fetch('metrics', []).select{|m| m['name'] == metric['name']}}
             # otherwise add "only_for" key to indicate nodes found
-            new_metric['only_for'] = cluster['nodes'].select { |_, v| v['status'] != 'retired' }.select{|node_uid, node| site.fetch('networks', {}).fetch(node['network_adapters'].fetch(iface_uid, {}).fetch('switch', 'notfound'), {}).fetch('metrics', []).select{|m| m['name'] == metric['name']}}.keys.sort_by{|node| node.split("-")[1].to_i}
+            new_metric['only_for'] = cluster['nodes'].select { |_, v| v['status'] != 'retired' }.select{|_, node| site.fetch('networks', {}).fetch(node['network_adapters'].fetch(iface_uid, {}).fetch('switch', 'notfound'), {}).fetch('metrics', []).select{|m| m['name'] == metric['name']}}.keys.sort_by{|node| node.split("-")[1].to_i}
           end
           cluster['metrics'].push(new_metric)
         end
