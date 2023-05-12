@@ -637,8 +637,14 @@ def add_pdu_metrics(h)
       if not cluster_wm.empty? \
       and cluster_wm.all?{|pdu| site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'wattmetre_power_watt'}}
 
-        metric = site['pdus'][cluster_wm.first].fetch('metrics', []).select{|m| m['name'] == 'wattmetre_power_watt'}.first
+        metric = site['pdus'][cluster_wm.first].fetch('metrics', []).find{|m| m['name'] == 'wattmetre_power_watt'}
         new_metric = metric.merge({'description' => "Power consumption of node reported by wattmetre, in watt"})
+        # check if all cluster's nodes if found in wattmetres' ports
+        if not cluster['nodes'].select{|k, v| v['status'] != 'retired'}.keys.all?{|node| cluster_wm.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
+          # otherwise add "only_for" key to indicate nodes found
+          new_metric['only_for'] = cluster['nodes'].keys.select{|node| cluster_wm.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}.sort_by{|node| node.split("-")[1].to_i}
+          #p cluster['nodes'].select{|k, v| v['status'] != 'retired'}.keys.select{|node| not cluster_wm.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
+        end
         cluster['metrics'].insert(0, new_metric)
       end
 
@@ -649,20 +655,31 @@ def add_pdu_metrics(h)
       if not cluster_pdus.empty? \
       and cluster_pdus.all?{|pdu| site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'wattmetre_power_watt'}}
 
-        metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).select{|m| m['name'] == 'wattmetre_power_watt'}.first
+        metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).find{|m| m['name'] == 'wattmetre_power_watt'}
         new_metric = metric.merge({'description' => "Power consumption of node reported by wattmetre, in watt"})
+        # check if all cluster's nodes if found in wattmetres' ports
+        if not cluster['nodes'].select{|k, v| v['status'] != 'retired'}.keys.all?{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}
+          # otherwise add "only_for" key to indicate nodes found
+          new_metric['only_for'] = cluster['nodes'].keys.select{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}}.sort_by{|node| node.split("-")[1].to_i}
+        end
         cluster['metrics'].insert(0, new_metric)
       end
 
       # check if PDU have monitoring then add the metric to the cluster
       if not cluster_pdus.empty? \
-      and cluster_pdus.all?{|pdu| site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'pdu_outlet_power_watt'}}
+      and cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'pdu_outlet_power_watt'}}
 
         # Metric is available for node only if a single PDU powers it
         if not cluster['nodes'].each_value.any?{|node| node.fetch('pdu', []).select{|p| not p.has_key?('kind') or p.fetch('kind', '') != 'wattmetre-only'}.map{|p| p['uid']}.uniq.length > 1}
-          metric = site['pdus'][cluster_pdus.first].fetch('metrics', []).select{|m| m['name'] == 'pdu_outlet_power_watt'}.first
+          metric = site['pdus'].values.find{|p| cluster_pdus.include?(p['uid']) and p.fetch('metrics', []).find{|m| m['name'] == 'pdu_outlet_power_watt'}}['metrics'].find{|m| m['name'] == 'pdu_outlet_power_watt'}
           new_metric = metric.merge({'description' => "Power consumption of node reported by PDU, in watt"})
           new_metric['source'] = {"protocol" => "pdu"}
+          # check if all cluster's nodes if found in pdus' ports or if some pdu do not have power metric
+          if not cluster['nodes'].select{|k, v| v['status'] != 'retired'}.keys.all?{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node)}} or cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('metrics', []).none?{|m| m['name'] == 'pdu_outlet_power_watt'}}
+
+            # otherwise add "only_for" key to indicate nodes found
+            new_metric['only_for'] = cluster['nodes'].keys.select{|node| cluster_pdus.any?{|pdu| site['pdus'][pdu].fetch('ports', []).has_value?(node) and site['pdus'][pdu].fetch('metrics', []).any?{|m| m['name'] == 'pdu_outlet_power_watt'}}}.sort_by{|node| node.split("-")[1].to_i}
+          end
           cluster['metrics'].insert(0, new_metric)
         end
       end
