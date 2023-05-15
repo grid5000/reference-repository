@@ -39,27 +39,3 @@ metrics:
     source:
       protocol: prometheus
       port: 9100
-
-  - name: prom_nvgpu_default_metrics
-    description: Default subset of metrics from Prometheus Nvidia DCGM Exporter
-    period: 0
-    optional_period: 15000
-    source:
-      protocol: prometheus
-      port: 9400
-      id:
-        - DCGM_FI_DEV_SM_CLOCK
-        - DCGM_FI_DEV_MEM_CLOCK
-        - DCGM_FI_DEV_GPU_TEMP
-        - DCGM_FI_DEV_POWER_USAGE
-        - DCGM_FI_DEV_GPU_UTIL
-        - DCGM_FI_DEV_MEM_COPY_UTIL
-
-  - name: prom_nvgpu_all_metrics
-    description: All metrics from Prometheus Nvidia DCGM Exporter
-    period: 0
-    optional_period: 15000
-    source:
-      protocol: prometheus
-      port: 9400
-
