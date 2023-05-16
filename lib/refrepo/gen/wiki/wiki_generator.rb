@@ -34,7 +34,7 @@ class WikiGenerator
   end
 
   def remove_page_creation_date(content)
-    return content.gsub(/''<small>Last generated from the Grid'5000 Reference API on .+<\/small>''/, '')
+    return content.gsub(/''<small>Last generated from the Grid'5000.+<\/small>''/, '')
   end
 
   def generated_date_string

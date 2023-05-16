@@ -69,7 +69,7 @@ class EnvironmentsGenerator < WikiGenerator
     # Table construction
     table_options = 'class="wikitable sortable" style="text-align: center;"'
     @generated_content = MW.generate_table(table_options, table_columns, table_data)
-    @generated_content += MW.italic(MW.small(generated_date_string))
+    @generated_content += MW.italic(MW.small("Last generated from the Grid'5000 API on #{Time.now.strftime("%Y-%m-%d")}"))
     @generated_content += MW::LINE_FEED
   end
 end
