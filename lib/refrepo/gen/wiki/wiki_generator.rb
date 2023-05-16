@@ -40,7 +40,7 @@ class WikiGenerator
   def generated_date_string
     commit = `git show --oneline -s`.split(' ').first
     date = Time.now.strftime("%Y-%m-%d")
-    return "Last generated from the Grid'5000 Reference API on #{date} ([https://github.com/grid5000/reference-repository/commit/#{commit} commit #{commit}])"
+    return "Last generated from the Grid'5000 Reference API on #{date} ([https://gitlab.inria.fr/grid5000/reference-repository/commit/#{commit} commit #{commit}])"
   end
 
   #Actually edit the mediawiki page with the new generated content
