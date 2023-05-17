@@ -7,6 +7,7 @@ class StatusGenerator < WikiGenerator
   def generate_content(_options)
     @global_hash = get_global_hash
     @site_uids = G5K::SITES
+    @sites_number = @site_uids.length()
 
     @generated_content = "__NOEDITSECTION__\n"
     @generated_content += "{{Status|In production}}\n"
@@ -35,10 +36,10 @@ class StatusGenerator < WikiGenerator
     data = "= Resources reservations (OAR) status =\n"
     data += MW::LINE_FEED
     data += "{|\n"
-    data += "|bgcolor=\"#aaaaaa\" colspan=\"8\"|\n"
+    data += "|bgcolor=\"#aaaaaa\" colspan=\"#{@sites_number}\"|\n"
     data += "'''Drawgantt''' ''(past, current and future OAR jobs scheduling)''\n"
     data += "|-\n"
-    data += "|bgcolor=\"#eeeeee\" colspan=\"8\"|\n"
+    data += "|bgcolor=\"#eeeeee\" colspan=\"#{@sites_number}\"|\n"
     data += "Default view:\n"
     data += "|-\n"
 
@@ -58,7 +59,7 @@ class StatusGenerator < WikiGenerator
     end
 
     data += "|-\n"
-    data += "|bgcolor=\"#eeeeee\" colspan=\"8\"|\n"
+    data += "|bgcolor=\"#eeeeee\" colspan=\"#{@sites_number}\"|\n"
     data += "Forecast view for 1 week:\n"
     data += "|-\n"
 
@@ -78,7 +79,7 @@ class StatusGenerator < WikiGenerator
     end
 
     data += "|-\n"
-    data += "|bgcolor=\"#aaaaaa\" colspan=\"8\"|\n"
+    data += "|bgcolor=\"#aaaaaa\" colspan=\"#{@sites_number}\"|\n"
     data += "'''Monika''' ''(current placement and queued jobs status)''\n"
     data += "|-\n"
 
