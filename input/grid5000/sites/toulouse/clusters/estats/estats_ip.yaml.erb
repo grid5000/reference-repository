@@ -1,0 +1,21 @@
+nodes:
+  <% (1..12).each { |i| %>
+  estats-<%= i %>:
+    network_adapters:
+      eth0:
+        ip: 172.16.121.<%= i %>
+        mac: <%= %w(
+            48:b0:2d:3a:ba:11
+            48:b0:2d:4d:44:87
+            48:b0:2d:3a:ba:1e
+            48:b0:2d:3a:ba:17
+            48:b0:2d:3a:b9:a3
+            48:b0:2d:3a:ba:0d
+            48:b0:2d:3a:b9:ba
+            48:b0:2d:3a:ba:70
+            48:b0:2d:3a:b9:e6
+            48:b0:2d:3a:ba:1c
+            48:b0:2d:3a:ba:56
+            48:b0:2d:3a:b9:d0
+        )[i-1] %>
+  <% } %>

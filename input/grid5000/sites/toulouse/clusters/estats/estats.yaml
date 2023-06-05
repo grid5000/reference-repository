@@ -1,0 +1,80 @@
+model: Nvidia AGX A100
+created_at: 2023-03-06
+kavlan: false
+boot_type: uefi 
+exotic: false
+queues:
+  - admin
+nodes:
+  estats-[1-12]:  
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: Unknown
+      cpu_core_numbering: contiguous
+    processor:
+      microarchitecture: Zen 2
+      clock_speed: 2100000000
+      cache_l1d: 1024
+      cache_l1i: 1024
+      cache_l2: 1024
+      cache_l3: 1024
+      instruction_set: arm64
+      microcode: Unknown
+      model: Unknown
+      other_description: Unknown
+      vendor: Unknown
+      version: Unknown
+      ht_capable: true
+    bios:
+      release_date: 01/01/2000
+      vendor: Unknown
+      version: Unknown
+    bmc_version: Unknown
+    chassis:
+      manufacturer: Unknown
+      name: Unknown chassis
+      serial: Unknown
+    main_memory:
+      ram_size: 1024
+    memory_devices:
+      dimm_a0:
+        size: 1024
+        technology: Unknown
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true 
+        mountable: false
+        mounted: false 
+      eth0:
+        interface: Ethernet
+        management: false
+        enabled: true
+        mountable: true
+        mounted: true
+    operating_system:
+      cstate_driver: Unknown
+      cstate_governor: Unknown
+      ht_enabled: false
+      pstate_driver: Unknown
+      pstate_governor: Unknown
+      turboboost_enabled: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        size: 1024
+        by_path: "/dev/disk/by-path/dummy"
