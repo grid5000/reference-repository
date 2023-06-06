@@ -27,7 +27,7 @@ class EnvironmentsGenerator < WikiGenerator
     'centos8-min' => 'centos 8 minimalistic installation',
     'centos8-nfs' => 'centos 8 with support for mounting NFS home',
     'centosstream8-min' => 'centos-stream 8 minimalistic installation',
-    'centosstream8-nfs' => 'centos-stream 9 with support for mounting NFS home',
+    'centosstream8-nfs' => 'centos-stream 8 with support for mounting NFS home',
     'centosstream9-min' => 'centos-stream 9 minimalistic installation',
     'centosstream9-nfs' => 'centos-stream 9 with support for mounting NFS home',
     'rocky8-min' => 'rocky 8 minimalistic installation',
