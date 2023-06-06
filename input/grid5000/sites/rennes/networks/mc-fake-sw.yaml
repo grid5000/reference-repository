@@ -1,0 +1,18 @@
+---
+mc-fake-sw:
+  model: Unknown
+  warranty: N/A
+  kind: switch
+  snmp_community: none
+  site: rennes
+  linecards:
+    1:
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
+      rate: 10000000000
+      kind: node
+      ports:
+        25:
+          uid: abacus25-1
+        26:
+          uid: abacus25-2
