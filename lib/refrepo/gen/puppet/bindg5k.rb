@@ -219,7 +219,7 @@ def get_node_records(cluster_uid, node_uid, network_adapters)
   network_adapters.each { |net_uid, net_hash|
     next unless net_hash['ip'] || net_hash['ip6']
 
-    node_id = node_uid.to_s.split(/(\d+)/)[1].to_i # node number
+    node_id = node_uid.to_s.split(/-/)[1].to_i # node number
 
     if net_hash['ip']
       new_record = DNS::Zone::RR::A.new
