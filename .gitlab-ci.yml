@@ -34,7 +34,7 @@ wikigen:
       - GENERATOR: [cpu_parameters, disk_reservation, environments, group_storage, hardware, kwollect_metrics, oar_properties, status]
         SITE: global
       - GENERATOR: [site_hardware, site_network]
-        SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia]
+        SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia, toulouse]
   script:
     - echo "$GRID5000_API" > "${HOME}/.grid5000_api.yml"
     - bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=diff
