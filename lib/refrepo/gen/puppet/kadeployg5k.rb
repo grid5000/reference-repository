@@ -85,7 +85,8 @@ def generate_puppet_kadeployg5k(options)
 
           next if node == nil || (node['status'] && node['status'] == 'retired')
 
-          c, id = node_uid.scan(/^([^\d]*)(\d*)$/).first
+          c = node_uid.to_s.split(/-/).first
+          id = node_uid.to_s.split(/-/)[1]
           id = id.to_i
           ip = get_ip(node).split('.')
           ip[3] = ip[3].to_i
@@ -96,7 +97,7 @@ def generate_puppet_kadeployg5k(options)
           else
             if c_uid != -1
               node = {}
-              node['name']    = "#{c_uid}[#{first}-#{last}].#{site_uid}.grid5000.fr"
+              node['name']    = "#{c_uid}-[#{first}-#{last}].#{site_uid}.grid5000.fr"
               node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3]+last-first}]"
               cluster_conf['nodes'] << node
             end
@@ -110,7 +111,7 @@ def generate_puppet_kadeployg5k(options)
         # last range
         if c_uid != -1
           node = {}
-          node['name']    = "#{c_uid}[#{first}-#{last}].#{site_uid}.grid5000.fr"
+          node['name']    = "#{c_uid}-[#{first}-#{last}].#{site_uid}.grid5000.fr"
           node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3]+last-first}]"
           cluster_conf['nodes'] << node
         end
