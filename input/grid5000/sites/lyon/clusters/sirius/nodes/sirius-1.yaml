@@ -8,14 +8,79 @@ sirius-1:
     nb_threads: 256
     platform_type: x86_64
   bios:
+    release_date: 03/21/2022
     vendor: American Megatrends Inc.
     version: 1.13
-    release_date: 03/21/2022
   bmc_version: '0.18'
   chassis:
     manufacturer: NVIDIA
     name: DGXA100 920-23687-2530-000
     serial: 1574520610109
+  gpu_devices:
+    nvidia0:
+      cpu_affinity: 0
+      device: "/dev/nvidia0"
+      memory: 42505076736
+      model: A100-SXM4-40GB
+      power_default_limit: 400.00 W
+      vbios_version: 92.00.36.00.04
+      vendor: Nvidia
+    nvidia1:
+      cpu_affinity: 0
+      device: "/dev/nvidia1"
+      memory: 42505076736
+      model: A100-SXM4-40GB
+      power_default_limit: 400.00 W
+      vbios_version: 92.00.36.00.04
+      vendor: Nvidia
+    nvidia2:
+      cpu_affinity: 0
+      device: "/dev/nvidia2"
+      memory: 42505076736
+      model: A100-SXM4-40GB
+      power_default_limit: 400.00 W
+      vbios_version: 92.00.36.00.04
+      vendor: Nvidia
+    nvidia3:
+      cpu_affinity: 0
+      device: "/dev/nvidia3"
+      memory: 42505076736
+      model: A100-SXM4-40GB
+      power_default_limit: 400.00 W
+      vbios_version: 92.00.36.00.04
+      vendor: Nvidia
+    nvidia4:
+      cpu_affinity: 1
+      device: "/dev/nvidia4"
+      memory: 42505076736
+      model: A100-SXM4-40GB
+      power_default_limit: 400.00 W
+      vbios_version: 92.00.36.00.04
+      vendor: Nvidia
+    nvidia5:
+      cpu_affinity: 1
+      device: "/dev/nvidia5"
+      memory: 42505076736
+      model: A100-SXM4-40GB
+      power_default_limit: 400.00 W
+      vbios_version: 92.00.36.00.04
+      vendor: Nvidia
+    nvidia6:
+      cpu_affinity: 1
+      device: "/dev/nvidia6"
+      memory: 42505076736
+      model: A100-SXM4-40GB
+      power_default_limit: 400.00 W
+      vbios_version: 92.00.36.00.04
+      vendor: Nvidia
+    nvidia7:
+      cpu_affinity: 1
+      device: "/dev/nvidia7"
+      memory: 42505076736
+      model: A100-SXM4-40GB
+      power_default_limit: 400.00 W
+      vbios_version: 92.00.36.00.04
+      vendor: Nvidia
   main_memory:
     ram_size: 1099511627776
   memory_devices:
@@ -88,6 +153,19 @@ sirius-1:
       ip: 172.17.56.1
       mac: 5c:ff:35:fb:ba:ff
       management: true
+    eth0:
+      driver: mlx5_core
+      firmware_version: 20.31.2354 (MT_0000000225)
+      interface: Ethernet
+      ip: 172.16.56.1
+      mac: b8:ce:f6:2d:18:d6
+      management: false
+      model: MT28908 Family [ConnectX-6]
+      name: enp225s0f0np0
+      rate: 100000000000
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Mellanox Technologies
     eth1:
       driver: igb
       firmware_version: 3.25, 0x800005cc
@@ -96,124 +174,108 @@ sirius-1:
       management: false
       model: I210 Gigabit Network Connection
       name: enp226s0
-      rate: 0
       sriov: false
       sriov_totalvfs: 0
       vendor: Intel
-    eth0:
-      name: enp225s0f0np0
-      interface: Ethernet
-      driver: mlx5_core
-      ip: 172.16.56.1
-      mac: b8:ce:f6:2d:18:d6
-      rate: 100000000000
-      firmware_version: 20.31.2354 (MT_0000000225)
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
-      management: false
-      sriov: false
-      sriov_totalvfs: 0
     eth2:
-      name: enp225s0f1np1
-      interface: Ethernet
       driver: mlx5_core
-      mac: b8:ce:f6:2d:18:d7
-      rate: 0
       firmware_version: 20.31.2354 (MT_0000000225)
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
+      interface: Ethernet
+      mac: b8:ce:f6:2d:18:d7
       management: false
+      model: MT28908 Family [ConnectX-6]
+      name: enp225s0f1np1
       sriov: false
       sriov_totalvfs: 0
+      vendor: Mellanox Technologies
     ib0:
-      name: ib0
-      interface: InfiniBand
-      ip: 172.18.56.1
       driver: mlx5_core
-      mac: b8:ce:f6:03:00:63:2c:5c
+      firmware_version: 20.31.2354
       guid: '0xb8cef60300632c5c'
-      rate: 10000000000
-      firmware_version: 20.31.2354
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
+      interface: InfiniBand
+      mac: b8:ce:f6:03:00:63:2c:5c
       management: false
+      model: MT28908 Family [ConnectX-6]
+      name: ib0
+      rate: 10000000000
+      vendor: Mellanox Technologies
     ib1:
-      name: ib1
-      interface: InfiniBand
       driver: mlx5_core
-      mac: b8:ce:f6:03:00:63:2c:54
+      firmware_version: 20.31.2354
       guid: '0xb8cef60300632c54'
-      rate: 10000000000
-      firmware_version: 20.31.2354
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
+      interface: InfiniBand
+      mac: b8:ce:f6:03:00:63:2c:54
       management: false
+      model: MT28908 Family [ConnectX-6]
+      name: ib1
+      rate: 10000000000
+      vendor: Mellanox Technologies
     ib2:
-      name: ib2
-      interface: InfiniBand
       driver: mlx5_core
-      mac: b8:ce:f6:03:00:63:23:88
+      firmware_version: 20.31.2354
       guid: '0xb8cef60300632388'
-      rate: 10000000000
-      firmware_version: 20.31.2354
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
+      interface: InfiniBand
+      mac: b8:ce:f6:03:00:63:23:88
       management: false
+      model: MT28908 Family [ConnectX-6]
+      name: ib2
+      rate: 10000000000
+      vendor: Mellanox Technologies
     ib3:
-      name: ib3
-      interface: InfiniBand
       driver: mlx5_core
-      mac: b8:ce:f6:03:00:7d:85:92
+      firmware_version: 20.31.2354
       guid: '0xb8cef603007d8592'
-      rate: 10000000000
-      firmware_version: 20.31.2354
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
+      interface: InfiniBand
+      mac: b8:ce:f6:03:00:7d:85:92
       management: false
+      model: MT28908 Family [ConnectX-6]
+      name: ib3
+      rate: 10000000000
+      vendor: Mellanox Technologies
     ib4:
-      name: ib4
-      interface: InfiniBand
       driver: mlx5_core
-      mac: b8:ce:f6:03:00:63:3c:8c
+      firmware_version: 20.31.2354
       guid: '0xb8cef60300633c8c'
-      rate: 10000000000
-      firmware_version: 20.31.2354
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
+      interface: InfiniBand
+      mac: b8:ce:f6:03:00:63:3c:8c
       management: false
+      model: MT28908 Family [ConnectX-6]
+      name: ib4
+      rate: 10000000000
+      vendor: Mellanox Technologies
     ib5:
-      name: ib5
-      interface: InfiniBand
       driver: mlx5_core
-      mac: b8:ce:f6:03:00:63:3c:94
+      firmware_version: 20.31.2354
       guid: '0xb8cef60300633c94'
-      rate: 10000000000
-      firmware_version: 20.31.2354
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
+      interface: InfiniBand
+      mac: b8:ce:f6:03:00:63:3c:94
       management: false
+      model: MT28908 Family [ConnectX-6]
+      name: ib5
+      rate: 10000000000
+      vendor: Mellanox Technologies
     ib6:
-      name: ib6
-      interface: InfiniBand
       driver: mlx5_core
-      mac: b8:ce:f6:03:00:63:23:10
+      firmware_version: 20.31.2354
       guid: '0xb8cef60300632310'
-      rate: 10000000000
-      firmware_version: 20.31.2354
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
-      management: false
-    ib7:
-      name: ib7
       interface: InfiniBand
-      driver: mlx5_core
-      mac: b8:ce:f6:03:00:7d:80:02
-      guid: '0xb8cef603007d8002'
-      rate: 10000000000
-      firmware_version: 20.31.2354
-      model: MT28908 Family [ConnectX-6]
-      vendor: Mellanox Technologies
+      mac: b8:ce:f6:03:00:63:23:10
       management: false
+      model: MT28908 Family [ConnectX-6]
+      name: ib6
+      rate: 10000000000
+      vendor: Mellanox Technologies
+    ib7:
+      driver: mlx5_core
+      firmware_version: 20.31.2354
+      guid: '0xb8cef603007d8002'
+      interface: InfiniBand
+      mac: b8:ce:f6:03:00:7d:80:02
+      management: false
+      model: MT28908 Family [ConnectX-6]
+      name: ib7
+      rate: 10000000000
+      vendor: Mellanox Technologies
   operating_system:
     cstate_driver: none
     cstate_governor: menu
@@ -272,68 +334,3 @@ sirius-1:
       storage: SSD
   supported_job_types:
     virtual: amd-v
-  gpu_devices:
-    nvidia0:
-      vendor: Nvidia
-      model: A100-SXM4-40GB
-      vbios_version: 92.00.36.00.04
-      power_default_limit: 400.00 W
-      memory: 42505076736
-      device: "/dev/nvidia0"
-      cpu_affinity: 0
-    nvidia1:
-      vendor: Nvidia
-      model: A100-SXM4-40GB
-      vbios_version: 92.00.36.00.04
-      power_default_limit: 400.00 W
-      memory: 42505076736
-      device: "/dev/nvidia1"
-      cpu_affinity: 0
-    nvidia2:
-      vendor: Nvidia
-      model: A100-SXM4-40GB
-      vbios_version: 92.00.36.00.04
-      power_default_limit: 400.00 W
-      memory: 42505076736
-      device: "/dev/nvidia2"
-      cpu_affinity: 0
-    nvidia3:
-      vendor: Nvidia
-      model: A100-SXM4-40GB
-      vbios_version: 92.00.36.00.04
-      power_default_limit: 400.00 W
-      memory: 42505076736
-      device: "/dev/nvidia3"
-      cpu_affinity: 0
-    nvidia4:
-      vendor: Nvidia
-      model: A100-SXM4-40GB
-      vbios_version: 92.00.36.00.04
-      power_default_limit: 400.00 W
-      memory: 42505076736
-      device: "/dev/nvidia4"
-      cpu_affinity: 1
-    nvidia5:
-      vendor: Nvidia
-      model: A100-SXM4-40GB
-      vbios_version: 92.00.36.00.04
-      power_default_limit: 400.00 W
-      memory: 42505076736
-      device: "/dev/nvidia5"
-      cpu_affinity: 1
-    nvidia6:
-      vendor: Nvidia
-      model: A100-SXM4-40GB
-      vbios_version: 92.00.36.00.04
-      power_default_limit: 400.00 W
-      memory: 42505076736
-      device: "/dev/nvidia6"
-      cpu_affinity: 1
-    nvidia7:
-      vendor: Nvidia
-      model: A100-SXM4-40GB
-      vbios_version: 92.00.36.00.04
-      power_default_limit: 400.00 W
-      memory: 42505076736
-      device: "/dev/nvidia7"
-      cpu_affinity: 1
