@@ -1,0 +1,35 @@
+model: Connecttech/Nvidia AGX Xavier
+created_at: 2023-06-13
+kavlan: false
+boot_type: other
+exotic: true
+queues:
+  - admin
+  - testing
+nodes:
+  estats-6:
+    chassis:
+      manufacturer: Connecttech
+      name: Connecttech UAGX
+    supported_job_types:
+      deploy: false
+      besteffort: true
+      max_walltime: 0
+    processor:
+      model: Carmel
+      microarchitecture: Carmel
+      clock_speed: 2260000000
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+    storage_devices:
+      platform-14180000.pcie-pci-0000:01:00.0-nvme-1:
+        id: disk0
+        interface: NVME
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: none
+    bmc_version: xtensor-oobm-r4.1
