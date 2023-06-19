@@ -1,0 +1,40 @@
+---
+pve-1:
+  kind: physical
+  serial: CZJ2370N65
+  alias: [ntp]
+  network_adapters:
+    bmc:
+      ip: 172.17.174.1
+      mac: 5c:ed:8c:34:9c:7c
+    default:
+      ip: 172.16.175.1
+      mac: 30:3e:a7:00:75:e8
+    adm:
+      ip: 172.17.175.1
+
+pve-2:
+  kind: physical
+  serial: CZJ2370N64
+  bmc:
+      ip: 172.17.174.2
+      mac: 5c:ed:8C:34:9c:d0
+    default:
+      ip: 172.16.175.2
+      mac: 30:3e:a7:00:77:00
+    adm:
+      ip: 172.17.175.2
+
+srv-data:
+  kind: physical
+  serial: CZ223607QR
+  alias: [nfs]
+  network_adapters:
+  bmc:
+      ip: 172.17.174.3
+      mac: 5c:ed:8c:32:e2:5e
+    default:
+      ip: 172.16.175.3
+      mac: 30:3e:a7:00:77:80
+    adm:
+      ip: 172.17.175.3
