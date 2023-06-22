@@ -28,7 +28,10 @@ def generate_puppet_network_monitoring(options)
 
       fqdn_eq_name = "#{eq_name}.#{s}.grid5000.fr"
 
+      # do not apply to HPC switch
       next if eq_v['kind'] == 'hpcswitch'
+      # do not apply to fake equipment
+      next if eq_name.include? "fake"
 
       snmp_hosts << fqdn_eq_name unless
         snmp_hosts.find { |i| i == fqdn_eq_name }
