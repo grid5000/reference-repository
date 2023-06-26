@@ -167,6 +167,12 @@ gw:
         46: drac-10
         47: drac-11
         48: drac-12
+        75:
+          uid: port-channel30
+          kind: channel
+        76:
+          uid: port-channel30
+          kind: channel
         77:
           uid: troll-1
           snmp_pattern: "ethernet1/1/%PORT%"
@@ -269,6 +275,11 @@ gw:
     port-channel20:
       uid: digsed
       port: port-channel20
+      kind: server
+      rate: 20000000000
+    port-channel30:
+      uid: orichard-nixbuild
+      port: port-channel30
       kind: server
       rate: 20000000000
     port-channel100:
