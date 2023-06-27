@@ -6,7 +6,6 @@ class LicensesGenerator < WikiGenerator
 
     table_columns = ["Group", "Software", "Server", "Usage", "Allowed users"]
     table_data = []
-    envs = []
 
     grps = RefRepo::Utils::get_api("users/groups")['items']
     grps.select!{|g| g['is_license'] }.select!{|g| g['enabled']}
