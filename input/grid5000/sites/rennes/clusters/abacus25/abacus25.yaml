@@ -4,8 +4,8 @@ kavlan: false
 boot_type: uefi
 exotic: false
 queues:
+  - production
   - admin
-  - testing
 nodes:
   abacus25-[1-2]:
     supported_job_types:
@@ -43,3 +43,11 @@ nodes:
       pci-0000:64:00.0-scsi-0:2:3:0:
         id: disk2
         interface: SATA
+
+  abacus25-1:
+    supported_job_types:
+      max_walltime: 86400
+
+  abacus25-2:
+    supported_job_types:
+      max_walltime: 604800
