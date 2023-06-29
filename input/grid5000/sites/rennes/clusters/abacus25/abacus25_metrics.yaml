@@ -27,7 +27,7 @@ metrics:
       id: 4 #03-CPU 2
 
   - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "1-8"}
+    labels: {"dimm": "p1-1-8"}
     description: Temperature of Dimm 1-8 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -36,7 +36,7 @@ metrics:
       id: 5 #04-P1 DIMM 1-8
 
   - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "9-16"}
+    labels: {"dimm": "p1-9-16"}
     description: Temperature of Dimm 9-16 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -45,7 +45,7 @@ metrics:
       id: 6 #06-P1 DIMM 9-16
 
   - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "1-8"}
+    labels: {"dimm": "p2-1-8"}
     description: Temperature of Dimm 1-8 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -54,7 +54,7 @@ metrics:
       id: 7 #08-P2 DIMM 1-8
 
   - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "9-16"}
+    labels: {"dimm": "p2-9-16"}
     description: Temperature of Dimm 9-16 reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -70,15 +70,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 9 #12-HD Max
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "13-expbaydrive"}
-    description: Temperature of 13-Exp Bay Drive reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 10 #13-Exp Bay Drive
 
   - name: bmc_other_temp_celsius
     labels: {"id": "14-storbatt"}
@@ -171,8 +162,8 @@ metrics:
       id: 20 #24-BMC Zone
 
   - name: bmc_other_temp_celsius
-    labels: {"id": "25-hdcontroller"}
-    description: Temperature of 25-HD Controller reported by BMC, in celsius
+    labels: {"id": "25-hdcontroller_1"}
+    description: Temperature of 25-HD_1 Controller reported by BMC, in celsius
     period: 0
     optional_period: 5000
     source:
@@ -225,15 +216,6 @@ metrics:
       id: 26 #33-PCI 2 Zone
 
   - name: bmc_other_temp_celsius
-    labels: {"id": "34-pci3"}
-    description: Temperature of 34-PCI 3 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 27 #34-PCI 3
-
-  - name: bmc_other_temp_celsius
     labels: {"id": "35-pci3zone"}
     description: Temperature of 35-PCI 3 Zone reported by BMC, in celsius
     period: 0
@@ -261,15 +243,6 @@ metrics:
       id: 30 #39-PCI 5 Zone
 
   - name: bmc_other_temp_celsius
-    labels: {"id": "40-pci6"}
-    description: Temperature of 40-PCI 6 reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 31 #40-PCI 6
-
-  - name: bmc_other_temp_celsius
     labels: {"id": "41-pci6zone"}
     description: Temperature of 41-PCI 6 Zone reported by BMC, in celsius
     period: 0
@@ -295,24 +268,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 34 #43-PCI 7 Zone
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "48-midhdmax"}
-    description: Temperature of 48-Mid HD Max reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 35 #48-Mid HD Max
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "49-rearhdmax"}
-    description: Temperature of 49-Rear HD Max reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 36 #49-Rear HD Max
 
   - name: bmc_other_temp_celsius
     labels: {"id": "53-batteryzone"}
@@ -368,15 +323,6 @@ metrics:
       protocol: ipmisensor
       id: 42 #59-E-Fuse
 
-  - name: bmc_other_temp_celsius
-    labels: {"id": "60-ahcihdmax"}
-    description: Temperature of 60-AHCI HD Max reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 43 #60-AHCI HD Max
-
   - name: bmc_cpu_temp_celsius
     labels: {"cpu": "1pkg"}
     description: Temperature of Cpu 1 Pkg reported by BMC, in celsius
@@ -394,15 +340,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 45 #65-CPU 2 PkgTmp
-
-  - name: bmc_other_temp_celsius
-    labels: {"id": "66-expbayrear"}
-    description: Temperature of 66-Exp Bay Rear reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 46 #66-Exp Bay Rear
 
   - name: bmc_fan_usage_percent
     labels: {"fan": "1"}
@@ -601,8 +538,8 @@ metrics:
       id: 90 #42-GPU 7-GPU ASI
 
   - name: bmc_other_temp_celsius
-    labels: {"id": "25-hdcontroller"}
-    description: Temperature of 25-HD Controller reported by BMC, in celsius
+    labels: {"id": "25-hdcontroller_2"}
+    description: Temperature of 25-HD_2 Controller reported by BMC, in celsius
     period: 0
     optional_period: 5000
     source:
@@ -627,7 +564,7 @@ metrics:
       port: 9100
       id:
         - node_boot_time_seconds
-        - node_cpu_frequency_hertz
+        - node_cpu_scaling_frequency_hertz
         - node_cpu_seconds_total
         - node_filesystem_free_bytes
         - node_filesystem_size_bytes
@@ -670,7 +607,6 @@ metrics:
         - DCGM_FI_DEV_MEM_CLOCK
         - DCGM_FI_DEV_GPU_TEMP
         - DCGM_FI_DEV_POWER_USAGE
-        - DCGM_FI_DEV_GPU_UTIL
         - DCGM_FI_DEV_MEM_COPY_UTIL
 
   - name: prom_nvgpu_all_metrics

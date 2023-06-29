@@ -42,7 +42,7 @@
     {
       "description": "Temperature of Dimm 1-8 reported by BMC, in celsius",
       "labels": {
-        "dimm": "1-8"
+        "dimm": "p1-1-8"
       },
       "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
@@ -55,7 +55,7 @@
     {
       "description": "Temperature of Dimm 9-16 reported by BMC, in celsius",
       "labels": {
-        "dimm": "9-16"
+        "dimm": "p1-9-16"
       },
       "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
@@ -68,7 +68,7 @@
     {
       "description": "Temperature of Dimm 1-8 reported by BMC, in celsius",
       "labels": {
-        "dimm": "1-8"
+        "dimm": "p2-1-8"
       },
       "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
@@ -81,7 +81,7 @@
     {
       "description": "Temperature of Dimm 9-16 reported by BMC, in celsius",
       "labels": {
-        "dimm": "9-16"
+        "dimm": "p2-9-16"
       },
       "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
@@ -101,19 +101,6 @@
       "period": 0,
       "source": {
         "id": 9,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 13-Exp Bay Drive reported by BMC, in celsius",
-      "labels": {
-        "id": "13-expbaydrive"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 10,
         "protocol": "ipmisensor"
       }
     },
@@ -248,9 +235,9 @@
       }
     },
     {
-      "description": "Temperature of 25-HD Controller reported by BMC, in celsius",
+      "description": "Temperature of 25-HD_1 Controller reported by BMC, in celsius",
       "labels": {
-        "id": "25-hdcontroller"
+        "id": "25-hdcontroller_1"
       },
       "name": "bmc_other_temp_celsius",
       "optional_period": 5000,
@@ -326,19 +313,6 @@
       }
     },
     {
-      "description": "Temperature of 34-PCI 3 reported by BMC, in celsius",
-      "labels": {
-        "id": "34-pci3"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 27,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
       "description": "Temperature of 35-PCI 3 Zone reported by BMC, in celsius",
       "labels": {
         "id": "35-pci3zone"
@@ -378,19 +352,6 @@
       }
     },
     {
-      "description": "Temperature of 40-PCI 6 reported by BMC, in celsius",
-      "labels": {
-        "id": "40-pci6"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 31,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
       "description": "Temperature of 41-PCI 6 Zone reported by BMC, in celsius",
       "labels": {
         "id": "41-pci6zone"
@@ -426,32 +387,6 @@
       "period": 0,
       "source": {
         "id": 34,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 48-Mid HD Max reported by BMC, in celsius",
-      "labels": {
-        "id": "48-midhdmax"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 35,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 49-Rear HD Max reported by BMC, in celsius",
-      "labels": {
-        "id": "49-rearhdmax"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 36,
         "protocol": "ipmisensor"
       }
     },
@@ -534,19 +469,6 @@
       }
     },
     {
-      "description": "Temperature of 60-AHCI HD Max reported by BMC, in celsius",
-      "labels": {
-        "id": "60-ahcihdmax"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 43,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
       "description": "Temperature of Cpu 1 Pkg reported by BMC, in celsius",
       "labels": {
         "cpu": "1pkg"
@@ -569,19 +491,6 @@
       "period": 0,
       "source": {
         "id": 45,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 66-Exp Bay Rear reported by BMC, in celsius",
-      "labels": {
-        "id": "66-expbayrear"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 46,
         "protocol": "ipmisensor"
       }
     },
@@ -868,9 +777,9 @@
       }
     },
     {
-      "description": "Temperature of 25-HD Controller reported by BMC, in celsius",
+      "description": "Temperature of 25-HD_2 Controller reported by BMC, in celsius",
       "labels": {
-        "id": "25-hdcontroller"
+        "id": "25-hdcontroller_2"
       },
       "name": "bmc_other_temp_celsius",
       "optional_period": 5000,
@@ -901,7 +810,7 @@
       "source": {
         "id": [
           "node_boot_time_seconds",
-          "node_cpu_frequency_hertz",
+          "node_cpu_scaling_frequency_hertz",
           "node_cpu_seconds_total",
           "node_filesystem_free_bytes",
           "node_filesystem_size_bytes",
@@ -949,7 +858,6 @@
           "DCGM_FI_DEV_MEM_CLOCK",
           "DCGM_FI_DEV_GPU_TEMP",
           "DCGM_FI_DEV_POWER_USAGE",
-          "DCGM_FI_DEV_GPU_UTIL",
           "DCGM_FI_DEV_MEM_COPY_UTIL"
         ],
         "port": 9400,
