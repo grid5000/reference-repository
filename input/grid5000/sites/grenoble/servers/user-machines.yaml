@@ -1,15 +1,11 @@
-nix-datamove:
-  kind: virtual
-  expire: 2024-02
-  network_adapters: {default: {ip: 172.16.25.2}}
-
 pneyron-spack-vm:
   kind: virtual
   expire: 2024-03
   network_adapters: {default: {ip: 172.16.29.1}}
 
-orichard-nixbuild:
+orichard-nix-datamove:
   kind: physical
+  alias: [nix-datamove]
   contact: olivier.richard@imag.fr
   location:
     room: DC-IMAG-MAIN
