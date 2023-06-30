@@ -203,7 +203,7 @@ srv-data:
 
 srv-data2:
   kind: physical
-  alias: []
+  alias: [storage2]
   warranty: YYYY-MM
   serial: CZ23160DF7
   network_adapters:
@@ -211,6 +211,11 @@ srv-data2:
       ip: 172.16.111.62
     bmc:
       ip: 172.17.111.62
+  group_storage:
+    name: storage2
+    size: 115000000000000
+    rate: 10000000000
+
 
 md3260-bg-1:
   kind: storage
