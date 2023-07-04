@@ -1,7 +1,6 @@
 # coding: utf-8
 
 require 'refrepo/data_loader'
-require 'ipaddress'
 
 def generate_puppet_kavlanngg5k(options)
   gen_json("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k.json")
@@ -25,14 +24,7 @@ def gen_json(output_path)
       puts "ERROR: #{site_id} has #{routers.length} routers"
     end
     gw = routers[0]
-    if not site_h['network_equipments'][gw]['vlans'].key? 'vlan500'
-      puts "ERROR: #{site_id} has no vlan500 in vlans of gateway. Vlans = #{site_h['network_equipments'][gw]['vlans']}"
-    elsif site_h['network_equipments'][gw]['vlans']['vlan500']['addresses'].length != 1
-      puts "ERROR: #{site_id} has #{site_h['network_equipments'][gw]['vlans']['vlan500']['addresses'].length} addresses on the renater backbone"
-    else
-      site_h['network_equipments'][gw]['ospf_id'] = IPAddress(site_h['network_equipments'][gw]['vlans']['vlan500']['addresses'][0]).octet(3)
-    end
-    site_h['network_equipments'][gw].delete_if { |k| ! ['ip', 'ip6', 'kind', 'ospf_id'].include? k }
+    site_h['network_equipments'][gw].delete_if { |k| ! ['ip', 'ip6', 'kind'].include? k }
     site_h['servers'].delete_if { |k, _v| k != 'dns' }
     dns_list = site_h['servers'].keys
     if dns_list.length != 1
