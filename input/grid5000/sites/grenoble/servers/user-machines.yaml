@@ -1,0 +1,24 @@
+pneyron-spack-vm:
+  kind: virtual
+  expire: 2024-03
+  network_adapters: {default: {ip: 172.16.29.1}}
+
+orichard-nix-datamove:
+  kind: physical
+  alias: [nix-datamove]
+  contact: olivier.richard@imag.fr
+  location:
+    room: DC-IMAG-MAIN
+    rack: C5
+    space: U26+U27
+  model: Dell Precision 7920 rack
+  arrival: 2023-06-26
+  warranty: 2028-06-01
+  serial: DYTJYX3
+  network_adapters:
+    default:
+      ip: 172.16.29.101
+      mac: 78:AC:44:AA:55:1C
+    bmc:
+      ip: 172.17.30.101
+      mac: C4:CB:E1:A3:40:5A

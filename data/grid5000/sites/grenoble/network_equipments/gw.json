@@ -22,6 +22,12 @@
       "port": "port-channel20",
       "rate": 20000000000,
       "uid": "digsed"
+    },
+    "port-channel30": {
+      "kind": "server",
+      "port": "port-channel30",
+      "rate": 20000000000,
+      "uid": "orichard-nixbuild"
     }
   },
   "ip": "172.16.31.254",
@@ -375,8 +381,14 @@
         {
         },
         {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/75:1",
+          "uid": "port-channel30"
         },
         {
+          "kind": "channel",
+          "snmp_name": "ethernet1/1/76:1",
+          "uid": "port-channel30"
         },
         {
           "kavlan_pattern": "ethernet1/1/%PORT%",
