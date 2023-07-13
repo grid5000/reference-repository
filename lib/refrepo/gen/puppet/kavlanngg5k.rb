@@ -56,7 +56,7 @@ def gen_kavlanapi_g5k_desc(output_path)
   refapi['sites'].each { |site_id, site_h|
     site_h['clusters'] = site_h['clusters'].sort_by { |cluster_id, _cluster_h| cluster_id }.to_h
     site_h['clusters'].each { |_cluster_id, cluster_h|
-      cluster_h['nodes'] = cluster_h['nodes'].sort_by { |node_id, _node_h| node_id[/(\d+)/].to_i }.to_h
+      cluster_h['nodes'] = cluster_h['nodes'].sort_by { |node_id, _node_h| p node_id ;  p node_id[/[^-]+-(\d+)/, 1].to_i }.to_h
     }
     refapi['sites'][site_id] = site_h.sort_by { |key| key}.to_h
   }
