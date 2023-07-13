@@ -54,6 +54,47 @@ def generate_puppet_kadeployg5k(options)
       next unless options[:sites].include?(site_uid)
 
       #
+      # Generate <cluster_uid>-cluster.conf files
+      #
+
+      # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
+
+      conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
+      no_config_clusters_uid = []
+
+      site['clusters'].each { |cluster_uid, cluster|
+        defaults = conf['defaults']
+        overrides = conf[site_uid][cluster_uid]
+        if overrides.nil? and ! (cluster['queues'].include?('default') or cluster['queues'].include?('production'))
+            puts "Warning: #{cluster_uid} has no kadeployg5k#{suffix} config, and isn't in default or production queue."
+            puts "Warning: Skipping #{cluster_uid} configuration."
+            no_config_clusters_uid << cluster_uid
+            next
+        end
+        dupes = (defaults.to_a & overrides.to_a)
+        key_dupes = (defaults.to_a.map(&:first) & overrides.to_a.map(&:first))
+        if not dupes.empty?
+          puts "Warning: Overriding default values #{dupes} by the same value for #{cluster_uid}"
+        end
+        if not key_dupes.empty?
+          puts "Info: cluster-specific configuration for #{cluster_uid} overrides default values: #{key_dupes}"
+        end
+        data = defaults.merge(overrides)
+        if data.nil?
+          puts "Warning: configuration not found in #{options[:conf_dir]}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
+          next
+        end
+
+        output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
+
+        output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/#{cluster_uid}-cluster.conf")
+
+        output_file.dirname.mkpath()
+        File.write(output_file, output)
+
+      }
+
+      #
       # Generate site/<site_uid>/servers_conf[_dev]/clusters.conf
       #
 
@@ -61,8 +102,9 @@ def generate_puppet_kadeployg5k(options)
       prefix = cluster_prefix(site['clusters'].keys)
 
       site['clusters'].sort.each { |cluster_uid, cluster|
-
-        # clusters:
+        next if no_config_clusters_uid.include?(cluster_uid)
+ 
+        #  clusters:
         # - name: griffon
         #   prefix: gri
         #   conf_file: /etc/kadeploy3/griffon-cluster.conf
@@ -125,40 +167,6 @@ def generate_puppet_kadeployg5k(options)
       output_file.dirname.mkpath()
       write_yaml(output_file, clusters_conf)
       add_header(output_file)
-
-      #
-      # Generate <cluster_uid>-cluster.conf files
-      #
-
-      # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
-
-      conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
-
-      site['clusters'].each { |cluster_uid, cluster|
-        defaults = conf['defaults']
-        overrides = conf[site_uid][cluster_uid]
-        dupes = (defaults.to_a & overrides.to_a)
-        key_dupes = (defaults.to_a.map(&:first) & overrides.to_a.map(&:first))
-        if not dupes.empty?
-          puts "Warning: Overriding default values #{dupes} by the same value for #{cluster_uid}"
-        end
-        if not key_dupes.empty?
-          puts "Info: cluster-specific configuration for #{cluster_uid} overrides default values: #{key_dupes}"
-        end
-        data = defaults.merge(overrides)
-        if data.nil?
-          puts "Warning: configuration not found in #{options[:conf_dir]}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
-          next
-        end
-
-        output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
-
-        output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/#{cluster_uid}-cluster.conf")
-
-        output_file.dirname.mkpath()
-        File.write(output_file, output)
-
-      }
 
     }
   }
