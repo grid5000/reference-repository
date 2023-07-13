@@ -60,17 +60,20 @@ def generate_puppet_kadeployg5k(options)
       # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
 
       conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
-      no_config_clusters_uid = []
 
-      site['clusters'].each { |cluster_uid, cluster|
+      clusters_conf = { 'clusters'=> [] } # output clusters.conf
+      prefix = cluster_prefix(site['clusters'].keys)
+
+      site['clusters'].sort.each { |cluster_uid, cluster|
         defaults = conf['defaults']
         overrides = conf[site_uid][cluster_uid]
+
         if overrides.nil? and ! (cluster['queues'].include?('default') or cluster['queues'].include?('production'))
             puts "Warning: #{cluster_uid} has no kadeployg5k#{suffix} config, and isn't in default or production queue."
             puts "Warning: Skipping #{cluster_uid} configuration."
-            no_config_clusters_uid << cluster_uid
             next
         end
+
         dupes = (defaults.to_a & overrides.to_a)
         key_dupes = (defaults.to_a.map(&:first) & overrides.to_a.map(&:first))
         if not dupes.empty?
@@ -92,17 +95,9 @@ def generate_puppet_kadeployg5k(options)
         output_file.dirname.mkpath()
         File.write(output_file, output)
 
-      }
-
-      #
-      # Generate site/<site_uid>/servers_conf[_dev]/clusters.conf
-      #
-
-      clusters_conf = { 'clusters'=> [] } # output clusters.conf
-      prefix = cluster_prefix(site['clusters'].keys)
-
-      site['clusters'].sort.each { |cluster_uid, cluster|
-        next if no_config_clusters_uid.include?(cluster_uid)
+        #
+        # Generate cluster config for site/<site_uid>/servers_conf[_dev]/clusters.conf
+        #
  
         #  clusters:
         # - name: griffon
@@ -161,6 +156,10 @@ def generate_puppet_kadeployg5k(options)
         clusters_conf['clusters'] << cluster_conf
 
       } # site['clusters'].each
+
+      #
+      # Write site/<site_uid>/servers_conf[_dev]/clusters.conf
+      #
 
       output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr('-', '_')}/#{site_uid}/clusters.conf")
 
