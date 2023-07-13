@@ -17,8 +17,8 @@ def gen_kavlanapi_g5k_desc(output_path)
   refapi['sites'].each do |site_id, site_h|
     # puts "  #{site_id}"
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
-    site_h['clusters'].each do |cluster_id, cluster_h|
-      # puts "    #{cluster_id}"
+    site_h['clusters'].each do |_cluster_id, cluster_h|
+      # puts "    #{_cluster_id}"
       cluster_h.delete_if { |k| k != 'nodes' }
       cluster_h['nodes'].each do |_node_id, node_h|
         node_h.delete_if { |k| k != 'network_adapters' }
@@ -68,19 +68,19 @@ def get_port_name(port_index, port, linecard_index, linecard)
   pattern = nil
   if linecard.has_key?('kavlan_pattern')
     pattern = linecard['kavlan_pattern']
-    pattern_source = "linecard kavlan pattern"
+    #pattern_source = "linecard kavlan pattern"
   end
   if port.has_key?('kavlan_pattern')
     pattern = port['kavlan_pattern']
-    pattern_source = "port kavlan pattern"
+    #pattern_source = "port kavlan pattern"
   end
   if port.has_key?('snmp_pattern')
     pattern = port['snmp_pattern']
-    pattern_source = "port snmp pattern"
+    #pattern_source = "port snmp pattern"
   end
   if port.has_key?('snmp_name')
     pattern = port['snmp_name']
-    pattern_source = "port snmp name"
+    #pattern_source = "port snmp name"
   end
   if pattern
     port_name = pattern.sub("%LINECARD%",linecard_index.to_s).sub("%PORT%",port_index.to_s)
