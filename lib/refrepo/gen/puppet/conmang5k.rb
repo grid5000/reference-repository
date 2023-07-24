@@ -34,6 +34,11 @@ def generate_puppet_conmang5k(options)
 
     next unless options[:sites].include?(site_uid)
 
+    unless config.has_key?(site_uid)
+      RefRepo::Utils.warn_or_abort_partial_site("Warning: no information about #{site_uid} to generate conman configuration.")
+      next
+    end
+
     write_conman_file(site_uid, site_refapi, config[site_uid], credentials[site_uid], options)
   }
 end

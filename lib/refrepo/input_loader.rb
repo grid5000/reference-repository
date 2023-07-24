@@ -375,7 +375,7 @@ end
 def add_switch_port(h)
   h['sites'].each_pair do |_site_uid, site|
     used_ports = {}
-    site['clusters'].each_pair do |_cluster_uid, hc|
+    site.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         next if hn['status'] == 'retired'
         hn['network_adapters'].each_pair do |iface_uid, iface|
@@ -395,7 +395,7 @@ end
 
 def detect_dead_nodes_with_yaml_files(h)
   h['sites'].each_pair do |_site_uid, hs|
-    hs['clusters'].each_pair do |_cluster_uid, hc|
+    hs.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         if hn['status'] == 'retired'
           if (hn['processor']['model'] rescue nil)
@@ -414,7 +414,7 @@ def add_kavlan_ips(h)
   h['sites'].each_pair do |site_uid, hs|
     # forget about allocated ips for local vlans, since we are starting a new site
     allocated.delete_if { |_k, v| v[3] == 'local' }
-    hs['clusters'].each_pair do |cluster_uid, hc|
+    hs.fetch('clusters', {}).each_pair do |cluster_uid, hc|
       next if !hc['kavlan'] # skip clusters where kavlan is globally set to false (used for initial cluster installation)
       hc['nodes'].each_pair do |node_uid, hn|
         raise "Node hash for #{node_uid} is nil" if hn.nil?
@@ -448,7 +448,7 @@ def add_ipv4(h)
   sites_offsets = h['ipv4']['sites_offsets'].split("\n").map { |l| l = l.split(/\s+/) ; [ l[0], l[1..-1].inject(0) { |a, b| (a << 8) + b.to_i } ] }.to_h
   iface_offsets = h['ipv4']['iface_offsets'].split("\n").map { |l| l = l.split(/\s+/) ; [ l[0..2], l[3..-1].inject(0) { |a, b| (a << 8) + b.to_i } ] }.to_h
   h['sites'].each_pair do |site_uid, hs|
-    hs['clusters'].each_pair do |cluster_uid, hc|
+    hs.fetch('clusters', {}).each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         raise "Node hash for #{node_uid} is nil" if hn.nil?
         node_id = node_uid.split('-')[1].to_i
@@ -474,7 +474,7 @@ def add_ipv6(h)
   # for each node
   h['sites'].each_pair do |_site_uid, hs|
     site_prefix = IPAddress hs['ipv6']['prefix']
-    hs['clusters'].each_pair do |_cluster_uid, hc|
+    hs.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         ipv6_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and ['Ethernet','FPGA/Ethernet'].include?(v['interface']) }
         if ipv6_adapters.length > 0
@@ -539,7 +539,7 @@ def add_kavlan_ipv6s(h)
   end
   # Set kavlan ipv6 informations at node level
   h['sites'].each_pair do |site_uid, hs|
-    hs['clusters'].each_pair do |_cluster_uid, hc|
+    hs.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
       next if !hc['kavlan'] # skip clusters where kavlan is globally set to false (used for initial cluster installation)
       hc['nodes'].each_pair do |node_uid, hn|
         kvl_adapters = hn['network_adapters'].select { |_k,v| v['mountable'] and (v['kavlan'] or not v.has_key?('kavlan')) and ['Ethernet','FPGA/Ethernet'].include?(v['interface']) }
@@ -579,7 +579,7 @@ end
 def add_software(h)
   # for each node
   h['sites'].each_pair do |_site_uid, hs|
-    hs['clusters'].each_pair do |_cluster_uid, hc|
+    hs.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |_node_uid, hn|
         if not hn.key?('software')
           hn['software'] = {}
@@ -594,7 +594,7 @@ end
 def add_network_metrics(h)
   # for each cluster
   h['sites'].each_pair do |_site_uid, site|
-    site['clusters'].each_pair do |_cluster_uid, cluster|
+    site.fetch('clusters', {}).each_pair do |_cluster_uid, cluster|
 
       # remove any network metrics defined in cluster
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /network_iface.*/}
@@ -626,7 +626,7 @@ end
 def add_pdu_metrics(h)
   # for each cluster
   h['sites'].each_pair do |_site_uid, site|
-    site['clusters'].each_pair do |_cluster_uid, cluster|
+    site.fetch('clusters', {}).each_pair do |_cluster_uid, cluster|
 
       # remove any PDU metrics defined in cluster
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /(wattmetre_power_watt|pdu_outlet_power_watt)/ }
@@ -720,7 +720,7 @@ end
 
 def add_theorical_flops(h)
   h['sites'].each_pair do |_site_uid, site|
-    site['clusters'].each_pair do |_cluster_uid, cluster|
+    site.fetch('clusters', {}).each_pair do |_cluster_uid, cluster|
       cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         node['performance'] = {}
         node['performance']['core_flops'] =  node['processor']['clock_speed'].to_i * get_flops_per_cycle(node['processor']['microarchitecture'], node['processor']['other_description'])
@@ -732,7 +732,7 @@ end
 
 def add_management_tools(h)
   h['sites'].each_pair do |_site_uid, site|
-    site['clusters'].each_pair do |_cluster_uid, cluster|
+    site.fetch('clusters', {}).each_pair do |_cluster_uid, cluster|
       cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         node['management_tools'] = h['management_tools'] if !node.has_key?('management_tools')
         h['management_tools'].each_key do |k|
@@ -759,7 +759,7 @@ end
 
 def add_compute_capability(h)
   h['sites'].each_pair do |_site_uid, site|
-    site['clusters'].each_pair do |_cluster_uid, cluster|
+    site.fetch('clusters', {}).each_pair do |_cluster_uid, cluster|
       cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         if node['gpu_devices']
           node['gpu_devices'].select { |_, v| v['vendor'] == 'Nvidia' }.each do |_, v|

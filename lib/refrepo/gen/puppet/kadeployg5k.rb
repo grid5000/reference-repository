@@ -62,9 +62,10 @@ def generate_puppet_kadeployg5k(options)
       conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
 
       clusters_conf = { 'clusters'=> [] } # output clusters.conf
-      prefix = cluster_prefix(site['clusters'].keys)
+      clusters = site.fetch('clusters', {})
+      prefix = cluster_prefix(clusters.keys)
 
-      site['clusters'].sort.each { |cluster_uid, cluster|
+      clusters.sort.each { |cluster_uid, cluster|
         defaults = conf['defaults']
         overrides = conf[site_uid][cluster_uid]
 

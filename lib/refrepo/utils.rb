@@ -22,6 +22,18 @@ module RefRepo::Utils
   def self.get_sites
     return (Dir::entries('input/grid5000/sites') - ['.', '..']).sort
   end
+
+  IGNORE_ERROR_MESSAGE = "Aborting generation. You can ignore this error and "\
+                         "proceed with generation by setting the "\
+                         "IGNORE_PARTIAL_SITE environment variable.".freeze
+
+  def self.warn_or_abort_partial_site(message)
+    if ENV.has_key?('IGNORE_PARTIAL_SITE')
+      STDERR.puts message
+    else
+      raise([message, IGNORE_ERROR_MESSAGE].join("\n"))
+    end
+  end
 end
 
 # Various monkey patches

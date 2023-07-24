@@ -5,8 +5,6 @@ require 'refrepo/data_loader'
 
 class OarPropertiesGenerator < WikiGenerator
 
-  
-
   #Static information about properties that cannot be infered from ref-api data
   @@properties = {
     "max_walltime" => {

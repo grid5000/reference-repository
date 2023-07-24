@@ -51,7 +51,7 @@ def generate_all_sites_aliases
   site_data_hierarchy = load_data_hierarchy
   site_data_hierarchy['sites'].each_key do |site|
     aliases[site] = {}
-    site_data_hierarchy['sites'][site]['clusters'].each_key do |cluster|
+    site_data_hierarchy['sites'][site].fetch('clusters', {}).each_key do |cluster|
       aliases[site][cluster] = "cluster='#{cluster}'"
       aliases[site]["#{cluster}-%d"] = "host='#{cluster}-%d.#{site}.grid5000.fr'"
     end

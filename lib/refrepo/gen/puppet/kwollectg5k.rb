@@ -32,7 +32,7 @@ def generate_puppet_kwollectg5k(options)
     end
 
     # Metrics configuration for each node
-    site['clusters'].sort.each { |cluster_uid, cluster|
+    site.fetch('clusters', {}).sort.each { |cluster_uid, cluster|
       cluster['nodes'].each_sort_by_node_uid { |node_uid, node|
 
         ipmi_credentials = credentials.fetch(site_uid, {}).fetch(cluster_uid, "").split(" ")
