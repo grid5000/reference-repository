@@ -3,6 +3,12 @@
     "gw"
   ],
   "channels": {
+    "port-channel1": {
+      "kind": "server",
+      "port": "port-channel1",
+      "rate": 20000000000,
+      "uid": "nfs"
+    },
     "port-channel2": {
       "kind": "switch",
       "port": "port-channel1",
@@ -110,14 +116,14 @@
           "uid": "pve-2"
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "1/1/19",
-          "uid": "nfs"
+          "uid": "port-channel1"
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "1/1/20",
-          "uid": "nfs"
+          "uid": "port-channel1"
         }
       ],
       "rate": 10000000000,
