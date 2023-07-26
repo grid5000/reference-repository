@@ -80,11 +80,11 @@ gw-toulouse:
           uid: montcalm-10
           kind: server
         15:
-          uid: oobm
-          kind: server
+          uid: port-channel2
+          kind: channel
         16:
-          uid: oobm
-          kind: server
+          uid: port-channel2
+          kind: channel
         17:
           uid: pve-1
           kind: server
@@ -97,3 +97,9 @@ gw-toulouse:
         20:
           uid: nfs
           kind: server
+  channels:
+    port-channel2:
+      uid: sw-estats
+      kind: switch
+      rate: 20000000000
+      port: port-channel1

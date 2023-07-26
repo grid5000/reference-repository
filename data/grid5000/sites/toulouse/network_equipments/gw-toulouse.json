@@ -2,6 +2,14 @@
   "alias": [
     "gw"
   ],
+  "channels": {
+    "port-channel2": {
+      "kind": "switch",
+      "port": "port-channel1",
+      "rate": 20000000000,
+      "uid": "sw-estats"
+    }
+  },
   "ip": "172.17.127.254",
   "ip6": "2001:660:4406:900::ffff:ffff",
   "kind": "router",
@@ -82,14 +90,14 @@
         {
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "1/1/15",
-          "uid": "oobm"
+          "uid": "port-channel2"
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "1/1/16",
-          "uid": "oobm"
+          "uid": "port-channel2"
         },
         {
           "kind": "server",

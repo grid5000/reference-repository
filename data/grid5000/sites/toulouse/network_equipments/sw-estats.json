@@ -1,0 +1,39 @@
+{
+  "alias": [
+    "sw-uagx"
+  ],
+  "channels": {
+    "port-channel1": {
+      "kind": "router",
+      "port": "port-channel2",
+      "rate": 20000000000,
+      "uid": "gw-toulouse"
+    }
+  },
+  "ip": "172.17.127.252",
+  "kind": "switch",
+  "linecards": [
+    {
+    },
+    {
+      "ports": [
+        {
+        },
+        {
+          "kind": "channel",
+          "uid": "port-channel1"
+        },
+        {
+          "kind": "channel",
+          "uid": "port-channel1"
+        }
+      ]
+    }
+  ],
+  "model": "Connecttech XDG201",
+  "serial": "Unknown",
+  "site": "toulouse",
+  "snmp_community": "g5kadmin",
+  "type": "network_equipment",
+  "uid": "sw-estats"
+}
