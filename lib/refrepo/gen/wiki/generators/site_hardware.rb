@@ -334,7 +334,7 @@ def gpu_model_description(device_hash, long_name)
   vendor = device_hash['vendor']
   description = vendor.to_s + ' ' + model.to_s.gsub(' ', '&nbsp;') + "&nbsp;(#{memgib}&nbsp;GiB)"
   if long_name
-    cc = GPURef.get_compute_capability(model)
+    cc = device_hash['compute_capability']
     description += "<br>Compute&nbsp;capability:&nbsp;#{cc}" if cc
     description = "<s>" + description + "</s><br>''not supported by Grid'5000 default environments''" if !GPURef.is_gpu_supported?(device_hash)
   else

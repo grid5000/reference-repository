@@ -138,13 +138,13 @@ class G5KHardwareGenerator < WikiGenerator
               end
               [
                 {
-                  text: v['interface'], sort: v['interface'] 
+                  text: v['interface'], sort: v['interface']
                 },
                 {
                   text: t, sort: t
                 },
                 {
-                  text: G5K.get_size(v['size'], 'metric'), sort: v['size'] 
+                  text: G5K.get_size(v['size'], 'metric'), sort: v['size']
                 },
               ]
             }
@@ -164,10 +164,13 @@ class G5KHardwareGenerator < WikiGenerator
               vendor_type = "#{fpga['vendor']} #{fpga['type'].upcase}"
               vendor_model = "#{fpga['vendor']} #{fpga['model']}"
               fpga_families[[vendor_type]] = 1
-              fpga_details[[vendor_model]] = [fpga['count'], fpga['core']]
+              mem = RefRepo::Utils.get_as_gb(fpga['memory'])
+              mem_key = { text: "#{mem}GB", sort: mem }
+              cc_key = { text: "N/A", sort: 0 }
+              type_key = { text: vendor_type, sort: vendor_type }
+              fpga_details[[vendor_model, type_key, cc_key, mem_key]] = [fpga['count'], fpga['core']]
             end
 
-            
             m = node_hash['mic']
             mic_families = {}
             mic_details = {}
@@ -175,7 +178,11 @@ class G5KHardwareGenerator < WikiGenerator
               vendor_mic = "#{m['mic_vendor']} MIC"
               vendor_model = "#{m['mic_vendor']} #{m['mic_model']}"
               mic_families[[vendor_mic]] = m['mic_count']
-              mic_details[[vendor_model]] = [m['mic_count'], m['mic_cores']]
+              mem = RefRepo::Utils.get_as_gb(m['mic_memory'])
+              mem_key = { text: "#{mem}GB", sort: mem }
+              cc_key = { text: "N/A", sort: 0 }
+              type_key = { text: vendor_mic, sort: vendor_mic }
+              mic_details[[vendor_model, type_key, cc_key, mem_key]] = [m['mic_count'], m['mic_cores']]
             end
 
 
@@ -189,22 +196,28 @@ class G5KHardwareGenerator < WikiGenerator
                 vendor = d['vendor']
                 cmodel = d['model']
                 model = cmodel
-                nbcores = GPURef.getNumberOfCoresFor(cmodel)
+                nbcores = d['cores']
+                compute_capability = d['compute_capability']
+                cc_key = { text: compute_capability || "N/A", sort: compute_capability }
+                mem = RefRepo::Utils.get_as_gb(d['memory'])
+                mem_key = { text: "#{mem}GB", sort: mem }
 
                 family = gpu_families[[vendor_families]]
                 if family.nil?
                   gpu_families[[vendor_families]] = 1
                 else
                   gpu_families[[vendor_families]] += 1
-                end                
+                end
 
 
-                details = gpu_details[["#{vendor} #{model}"]]
+                type_key = { text: vendor_families, sort: vendor_families }
+                gpu_key = ["#{vendor} #{model}", type_key, cc_key, mem_key]
+                details = gpu_details[gpu_key]
 
                 if details.nil?
-                  gpu_details[["#{vendor} #{model}"]] = [1, nbcores]
+                  gpu_details[gpu_key] = [1, nbcores]
                 else
-                  gpu_details[["#{vendor} #{model}"]] = [details[0]+1, details[1]+nbcores]
+                  gpu_details[gpu_key] = [details[0]+1, details[1]+nbcores]
                 end
               }
             end
@@ -283,11 +296,11 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Accelerator families ==\n"
     table_columns = ['Accelerator family'] + sites + ['Accelerators total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_families'))
-    table_columns = ['Accelerator model'] + sites + ['Accelerators total']
+    table_columns = ['Accelerator model', 'Family', 'Compute capability', 'RAM size'] + sites + ['Accelerators total']
     generated_content += "\n== Accelerator models ==\n"
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_models'))
     generated_content += "\n== Accelerator cores ==\n"
-    table_columns = ['Accelerator model'] + sites + ['Cores total']
+    table_columns = ['Accelerator model', 'Family', 'Compute capability', 'RAM size'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_cores'))
 
     generated_content += "\n= Nodes models =\n"

@@ -77,8 +77,8 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with theorical flops
   add_theorical_flops(global_hash)
 
-  # add compute capability for nvidia gpus
-  add_compute_capability(global_hash)
+  # add GPU information from GPURef
+  add_gpu_information(global_hash)
 
   # populate each node with administration tools' parameters
   add_management_tools(global_hash)
@@ -760,12 +760,16 @@ def add_site_ipv6_infos(h)
   end
 end
 
-def add_compute_capability(h)
+# This adds some extra pieces of information to the generated JSON:
+#   - the compute capability for Nvidia GPUs
+#   - the number of cores for all GPUs
+def add_gpu_information(h)
   h['sites'].each_pair do |_site_uid, site|
     site.fetch('clusters', {}).each_pair do |_cluster_uid, cluster|
       cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
-        if node['gpu_devices']
-          node['gpu_devices'].select { |_, v| v['vendor'] == 'Nvidia' }.each do |_, v|
+        node['gpu_devices']&.each do |_, v|
+          v['cores'] = GPURef.getNumberOfCoresFor(v['model'])
+          if v['vendor'] == 'Nvidia'
             v['compute_capability'] = GPURef.get_compute_capability(v['model'])
           end
         end
