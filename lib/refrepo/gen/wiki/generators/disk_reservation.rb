@@ -2,8 +2,6 @@
 
 class DiskReservationGenerator < WikiGenerator
 
-  
-
   def generate_content(_options)
     table_columns = ["Site", "Cluster", "Number of nodes", "Number of reservable disks per node"]
     table_data = []
@@ -11,7 +9,7 @@ class DiskReservationGenerator < WikiGenerator
 
     # Loop over Grid'5000 sites
     global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
-      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
+      site_hash.fetch("clusters", {}).sort.to_h.each { |cluster_uid, cluster_hash|
         disk_info = {}
         cluster_hash.fetch('nodes').sort.to_h.each { |node_uid, node_hash|
           next if node_hash['status'] == 'retired'

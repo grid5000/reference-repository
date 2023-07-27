@@ -67,7 +67,7 @@ def generate_puppet_dhcpg5k(options)
     #
 
     # Relocate ip/mac info of MIC
-    site_hash.fetch("clusters").each { |_cluster_uid, cluster_hash|
+    site_hash.fetch("clusters", {}).each { |_cluster_uid, cluster_hash|
       cluster_hash.fetch('nodes').each { |_node_uid, node_hash|
         next if node_hash == nil || node_hash['status'] == 'retired'
 
@@ -83,7 +83,7 @@ def generate_puppet_dhcpg5k(options)
     }
 
     # One file for each clusters
-    site_hash.fetch("clusters").each { |cluster_uid, cluster_hash|
+    site_hash.fetch("clusters", {}).each { |cluster_uid, cluster_hash|
       # networks = ["eth", "bmc"]
       # networks << 'mic0' if cluster_hash['nodes'].values.any? {|x| x['network_adapters']['mic0'] }
       write_dhcp_files({

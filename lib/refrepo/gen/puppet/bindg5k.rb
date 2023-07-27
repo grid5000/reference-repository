@@ -571,6 +571,8 @@ end
 def write_site_local_conf(site_uid, dest_dir, zones_dir)
     conf_file = File.join(dest_dir, "#{site_uid}-localzones.conf")
     FileUtils.mkdir_p(File.dirname(conf_file))
+    # The 'local' folder is expected to exist by the bind-site-local erb template.
+    FileUtils.mkdir_p(File.join(zones_dir, "local"))
     conf_content = ERB.new(File.read(File.expand_path('templates/bind-site-local.conf.erb', File.dirname(__FILE__)))).result(binding)
     File.write(conf_file, conf_content)
 end

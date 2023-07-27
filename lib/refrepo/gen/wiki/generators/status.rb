@@ -2,8 +2,6 @@
 
 class StatusGenerator < WikiGenerator
 
-  
-
   def generate_content(_options)
     @global_hash = get_global_hash
     @site_uids = G5K::SITES
@@ -142,7 +140,7 @@ class StatusGenerator < WikiGenerator
 
   def has_reservable_disks?(site)
     site_hash = @global_hash["sites"][site]
-    site_hash["clusters"].each_value do |cluster_hash|
+    site_hash.fetch("clusters", {}).each_value do |cluster_hash|
       cluster_hash.fetch('nodes').each_value do |node_hash|
         sd = node_hash['storage_devices']
         reservable_disks = sd.select{ |v| v['reservation'] == true }.count > 0
@@ -158,7 +156,7 @@ class StatusGenerator < WikiGenerator
 
   def has_queue_production?(site)
     site_hash = @global_hash["sites"][site]
-    site_hash["clusters"].each_value do |cluster_hash|
+    site_hash.fetch("clusters", {}).each_value do |cluster_hash|
       if cluster_hash["queues"].include?("production")
         return true
       end

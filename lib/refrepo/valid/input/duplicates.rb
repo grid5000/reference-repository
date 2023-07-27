@@ -42,7 +42,7 @@ def yaml_input_find_duplicates(options)
       refapi_hash["sites"].delete(site_uid)
     end
 
-    site["clusters"].sort.each do |cluster_uid, cluster|
+    site.fetch("clusters", {}).sort.each do |cluster_uid, cluster|
       if options.key?(:clusters) && (not options[:clusters].empty?) && !options[:clusters].include?(cluster_uid)
         site["clusters"].delete(cluster_uid)
       end

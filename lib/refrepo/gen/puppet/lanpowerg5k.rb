@@ -22,6 +22,11 @@ def generate_puppet_lanpowerg5k(options)
 
     next unless options[:sites].include?(site_uid)
 
+    unless config.has_key?(site_uid)
+      RefRepo::Utils.warn_or_abort_partial_site("Warning: no information about #{site_uid} to generate lanpower configuration.")
+      next
+    end
+
     h = {'clusters' => {} } # output hash
 
     # Generate config for both cluster and server entries of the refapi

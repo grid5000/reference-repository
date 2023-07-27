@@ -318,7 +318,7 @@ end
 # See also: https://www.grid5000.fr/w/Reference_Repository
 def get_ref_default_properties(_site_uid, site)
   properties = {}
-  site['clusters'].each do |cluster_uid, cluster|
+  site.fetch('clusters', {}).each do |cluster_uid, cluster|
     cluster['nodes'].each do |node_uid, node|
       begin
         properties[node_uid] = get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
@@ -337,7 +337,7 @@ end
 
 def get_ref_disk_properties(site_uid, site)
   properties = {}
-  site['clusters'].each do |cluster_uid, cluster|
+  site.fetch('clusters', {}).each do |cluster_uid, cluster|
     cluster['nodes'].each do |node_uid, node|
       begin
         properties.merge!(get_ref_disk_properties_internal(site_uid, cluster_uid, cluster, node_uid, node))

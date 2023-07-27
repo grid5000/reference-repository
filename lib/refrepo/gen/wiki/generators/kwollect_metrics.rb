@@ -2,8 +2,6 @@
 
 class KwollectMetricsGenerator < WikiGenerator
 
-  
-
   def generate_content(_options)
     @generated_content = "__NOEDITSECTION__\n"
     @generated_content = "\nMetrics marked with * must be activated on demand, and metrics marked with ** are activated on non-deploy jobs by default. Clusters marked with ⁺ do not have metric available on all its nodes\n\n"
@@ -15,7 +13,7 @@ class KwollectMetricsGenerator < WikiGenerator
 
     sites = get_global_hash()["sites"]
 
-    all_metrics = sites.each_value.map{|s| s["clusters"].each_value.map{|c| c.fetch('metrics', [])}}.flatten
+    all_metrics = sites.each_value.map{|s| s.fetch("clusters", {}).each_value.map{|c| c.fetch('metrics', [])}}.flatten
     all_metrics += sites.each_value.map{|s| s["network_equipments"].each_value.map{|c| c.fetch('metrics', [])}}.flatten
     all_metrics += sites.each_value.map{|s| s.fetch("pdus", {}).each_value.map{|c| c.fetch('metrics', [])}}.flatten
 
@@ -38,9 +36,9 @@ class KwollectMetricsGenerator < WikiGenerator
       @generated_content += "|-\n|#{metric_name}#{optional}\n|#{description}\n|"
 
       sites.each_value.sort_by{|s| s['uid']}.each do |site|
-        devices = site["clusters"].each_value.select{|c| c.fetch('metrics', []).map{|m| m["name"]}.any?{|m| m == metric_name}}.map{|c| c["uid"]}.sort
+        devices = site.fetch("clusters", {}).each_value.select{|c| c.fetch('metrics', []).map{|m| m["name"]}.any?{|m| m == metric_name}}.map{|c| c["uid"]}.sort
         devices = []
-        site["clusters"].each_value do |c|
+        site.fetch("clusters", {}).each_value do |c|
           metric = c.fetch('metrics', []).find{|m| m['name'] == metric_name}
           if metric
             if metric.has_key?('only_for')

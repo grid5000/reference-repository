@@ -1,7 +1,4 @@
-
 class CPUParametersGenerator < WikiGenerator
-
-  
 
   def generate_content(_options)
 
@@ -11,7 +8,7 @@ class CPUParametersGenerator < WikiGenerator
 
     # Loop over Grid'5000 sites
     global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
-      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
+      site_hash.fetch("clusters", {}).sort.to_h.each { |cluster_uid, cluster_hash|
 
         node_hash = cluster_hash.fetch('nodes').first[1]
 

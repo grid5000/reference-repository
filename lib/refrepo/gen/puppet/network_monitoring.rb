@@ -17,6 +17,10 @@ def generate_puppet_network_monitoring(options)
   sites.each do |s|
     net_eqs = refapi['sites'][s]['network_equipments']
     hiera_file = "#{out}/platforms/production/hieradata/clients/supervision2.#{s}.grid5000.fr.yaml"
+    unless File.exist?(hiera_file)
+      RefRepo::Utils.warn_or_abort_partial_site("Warning: missing file in hieradata: #{hiera_file}.")
+      next
+    end
     hiera_yaml = YAML.load_file(hiera_file)
 
     snmp_hosts = hiera_yaml['grid5000::munin::snmp::hosts'] || []

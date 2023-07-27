@@ -3,8 +3,6 @@ require 'refrepo/gen/wiki/generators/site_hardware'
 
 class G5KHardwareGenerator < WikiGenerator
 
-  
-
   def generate_content(_options)
     @global_hash = get_global_hash
     @site_uids = G5K::SITES
@@ -37,7 +35,7 @@ class G5KHardwareGenerator < WikiGenerator
     }
 
     @global_hash['sites'].sort.to_h.each { |site_uid, site_hash|
-      site_hash['clusters'].sort.to_h.each { |_cluster_uid, cluster_hash|
+      site_hash.fetch('clusters', {}).sort.to_h.each { |_cluster_uid, cluster_hash|
         cluster_hash['nodes'].sort.to_h.each { |node_uid, node_hash|
           begin
             next if node_hash['status'] == 'retired'
@@ -371,7 +369,7 @@ class G5KHardwareGenerator < WikiGenerator
 
     # Loop over Grid'5000 sites
     global_hash["sites"].sort.to_h.each do |site_uid, site_hash|
-      site_hash.fetch("clusters").sort.to_h.each do |cluster_uid, cluster_hash|
+      site_hash.fetch("clusters", {}).sort.to_h.each do |cluster_uid, cluster_hash|
         nodes_data = []
         cluster_hash.fetch('nodes').sort.to_h.each do |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
@@ -433,7 +431,7 @@ class G5KHardwareGenerator < WikiGenerator
   def generate_interfaces
     table_data = []
     @global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
-      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
+      site_hash.fetch("clusters", {}).sort.to_h.each { |cluster_uid, cluster_hash|
         network_interfaces = {}
         cluster_hash.fetch('nodes').sort.to_h.each { |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
@@ -483,7 +481,7 @@ class G5KHardwareGenerator < WikiGenerator
   def generate_sriov_interfaces
     table_data = []
     @global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
-      site_hash.fetch("clusters").sort.to_h.each { |cluster_uid, cluster_hash|
+      site_hash.fetch("clusters", {}).sort.to_h.each { |cluster_uid, cluster_hash|
         network_interfaces = {}
         cluster_hash.fetch('nodes').sort.to_h.each { |node_uid, node_hash|
           next if node_hash['status'] == 'retired'

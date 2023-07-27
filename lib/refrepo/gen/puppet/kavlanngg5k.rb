@@ -17,7 +17,7 @@ def gen_kavlanapi_g5k_desc(output_path)
   refapi['sites'].each do |site_id, site_h|
     # puts "  #{site_id}"
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
-    site_h['clusters'].each do |_cluster_id, cluster_h|
+    site_h.fetch('clusters', {}).each do |_cluster_id, cluster_h|
       # puts "    #{_cluster_id}"
       cluster_h.delete_if { |k| k != 'nodes' }
       cluster_h['nodes'].each do |_node_id, node_h|
@@ -54,7 +54,7 @@ def gen_kavlanapi_g5k_desc(output_path)
   # consistent order
   refapi['sites'] = refapi['sites'].sort_by { |site_id, _site_h| site_id }.to_h
   refapi['sites'].each { |site_id, site_h|
-    site_h['clusters'] = site_h['clusters'].sort_by { |cluster_id, _cluster_h| cluster_id }.to_h
+    site_h['clusters'] = site_h.fetch('clusters', {}).sort_by { |cluster_id, _cluster_h| cluster_id }.to_h
     site_h['clusters'].each { |_cluster_id, cluster_h|
       cluster_h['nodes'] = cluster_h['nodes'].sort_by { |node_id, _node_h| p node_id ;  p node_id[/[^-]+-(\d+)/, 1].to_i }.to_h
     }

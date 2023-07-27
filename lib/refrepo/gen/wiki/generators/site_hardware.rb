@@ -28,7 +28,7 @@ class SiteHardwareGenerator < WikiGenerator
     asterisks = []
     asterisks << "''*: disk is [[Disk_reservation|reservable]]''" if has_reservable_disks
     asterisks << "''**: crossed GPUs are not supported by Grid'5000 default environments''" if has_unsupported_gpu
-    
+
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n" +
       "{{Portal|User}}\n" +
       "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
@@ -66,8 +66,9 @@ class SiteHardwareGenerator < WikiGenerator
     flops = 0
 
     sites_hash.sort.to_h.each do |_site_uid, site_hash|
-      clusters += site_hash['clusters'].length
-      site_hash['clusters'].sort.to_h.each do |_cluster_uid, cluster_hash|
+      clusters_hash = site_hash.fetch('clusters', {})
+      clusters += clusters_hash.length
+      clusters_hash.sort.to_h.each do |_cluster_uid, cluster_hash|
         cluster_hash['nodes'].sort.to_h.each do |_node_uid, node_hash|
           next if node_hash['status'] == 'retired'
           nodes += 1
@@ -322,12 +323,12 @@ def gpu_description(node_hash, long_names)
     gpu_types.each{|_model, hash|
       res << (hash[:number] == 1 ? '' : hash[:number].to_s + '&nbsp;x&nbsp;') + hash[:description]
     }
- 
+
   end
   return res.join(", ")
 end
 
-def gpu_model_description(device_hash, long_name) 
+def gpu_model_description(device_hash, long_name)
   model = long_name ? device_hash['model'] : GPURef.model2shortname(device_hash['model'])
   memgib = (device_hash['memory'].to_f/2**30).round(0)
   vendor = device_hash['vendor']
@@ -349,7 +350,7 @@ def get_hardware(sites)
   hardware = {}
   global_hash['sites'].sort.to_h.select{ |site_uid, _site_hash| sites.include?(site_uid) }.each { |site_uid, site_hash|
     hardware[site_uid] = {}
-    site_hash['clusters'].sort.to_h.each { |cluster_uid, cluster_hash|
+    site_hash.fetch('clusters', {}).sort.to_h.each { |cluster_uid, cluster_hash|
       hardware[site_uid][cluster_uid] = {}
       cluster_hash.fetch('nodes').sort.each { |node_uid, node_hash|
         next if node_hash['status'] == 'retired'
@@ -531,7 +532,7 @@ def get_hardware(sites)
         hard['accelerators'] = hard['gpu_str'] != '' ? hard['gpu_str'] + (hard['mic_str'] != '' ? ' ; ' + hard['mic_str'] : '') : hard['mic_str']
         hard['accelerators'] += hard['fpga_str'] if hard['fpga_str'] != ''
 
-        hard['accelerators_long'] = hard['gpu_str_long'] != '' ? hard['gpu_str_long'] + (hard['fpga_str'] != '' ? ' ; ' + hard['fpga_str'] : '') : hard['fpga_str'] 
+        hard['accelerators_long'] = hard['gpu_str_long'] != '' ? hard['gpu_str_long'] + (hard['fpga_str'] != '' ? ' ; ' + hard['fpga_str'] : '') : hard['fpga_str']
         hard['accelerators_long'] += ' ; ' + hard['mic_str'] if hard['mic_str'] != ''
         add(hardware[site_uid][cluster_uid], node_uid, hard)
       }
