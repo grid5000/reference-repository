@@ -16,7 +16,8 @@ pve-1:
 pve-2:
   kind: physical
   serial: CZJ2370N64
-  bmc:
+  network_adapters:
+    bmc:
       ip: 172.17.174.2
       mac: 5c:ed:8C:34:9c:d0
     default:
@@ -30,7 +31,7 @@ srv-data:
   serial: CZ223607QR
   alias: [nfs]
   network_adapters:
-  bmc:
+    bmc:
       ip: 172.17.174.3
       mac: 5c:ed:8c:32:e2:5e
     default:
