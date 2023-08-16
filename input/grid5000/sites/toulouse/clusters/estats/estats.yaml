@@ -8,15 +8,13 @@ queues:
   - testing
 nodes:
   estats-[1-12]:
-    chassis:
-      manufacturer: Connecttech
-      name: Jetson-AGX
     supported_job_types:
       deploy: false
       besteffort: true
       max_walltime: 0
+    main_memory:
+      ram_size: 32212254720
     processor:
-      model: Carmel
       microarchitecture: Carmel
       clock_speed: 2260000000
     network_adapters:
@@ -31,5 +29,5 @@ nodes:
     software:
       standard-environment: debian11-arm64-std
     management_tools:
-      bmc_vendor_tool: none
     bmc_version: ""
+      bmc_vendor_tool: "none"
