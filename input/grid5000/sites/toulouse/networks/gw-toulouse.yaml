@@ -1,14 +1,14 @@
 ---
 gw-toulouse:
-  model: Temporary-Dell-OS6
-  serial: unknown
+  model: Aruba 6300
+  serial: SG27KMX1X6
   alias:
     - gw
   ip: 172.17.127.254
   ip6: 2001:660:4406:900::ffff:ffff
   kind: router
   site: toulouse
-  snmp_community: Unknown
+  snmp_community: g5kadmin
   vlans:
     "vlan100":
       administrative: yes
@@ -63,7 +63,7 @@ gw-toulouse:
   linecards:
     1:
       rate: 10000000000
-      snmp_pattern: "tengigabitethernet1/%LINECARD%/%PORT%"
+      snmp_pattern: "1/%LINECARD%/%PORT%"
       kavlan_pattern: "%PORT%"
       kind: node
       ports:
@@ -80,11 +80,11 @@ gw-toulouse:
           uid: montcalm-10
           kind: server
         15:
-          uid: oobm
-          kind: server
+          uid: port-channel2
+          kind: channel
         16:
-          uid: oobm
-          kind: server
+          uid: port-channel2
+          kind: channel
         17:
           uid: pve-1
           kind: server
@@ -92,8 +92,19 @@ gw-toulouse:
           uid: pve-2
           kind: server
         19:
-          uid: nfs
-          kind: server
+          uid: port-channel1
+          kind: channel
         20:
-          uid: nfs
-          kind: server
+          uid: port-channel1
+          kind: channel
+  channels:
+    port-channel1:
+      uid: nfs
+      kind: server
+      rate: 20000000000
+      port: port-channel1
+    port-channel2:
+      uid: sw-estats
+      kind: switch
+      rate: 20000000000
+      port: port-channel1

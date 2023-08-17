@@ -1,0 +1,25 @@
+---
+sw-estats:
+  site: toulouse
+  snmp_community: g5kadmin
+  model: Connecttech XDG201
+  serial: Unknown
+  alias:
+    - sw-uagx
+  ip: 172.17.127.252
+  kind: switch
+  linecards:
+    1:
+      ports:
+        1:
+          uid: port-channel1
+          kind: channel
+        2:
+          uid: port-channel1
+          kind: channel
+  channels:
+    port-channel1:
+      uid: gw-toulouse
+      kind: router
+      rate: 20000000000
+      port: port-channel2
