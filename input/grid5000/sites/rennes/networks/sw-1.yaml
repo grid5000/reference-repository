@@ -1,0 +1,29 @@
+---
+sw-1:
+  model: Aruba 8325-48Y8C
+  warranty:
+  kind: switch
+  site: rennes
+  ip: 172.17.111.212
+  snmp_community: public
+  backplane_bps: 1440000000000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 25000000000
+      ports:
+        49:
+          uid: lag1
+          kind: channel
+          rate: 100000000000
+        50:
+          uid: lag1
+          kind: channel
+          rate: 100000000000
+  channels:
+    lag1:
+      kind: switch
+      rate: 200000000000
+      uid: gw
+      port: lag1
