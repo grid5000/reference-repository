@@ -7,10 +7,10 @@ queues:
   - admin
   - testing
 nodes:
-  estats-6:
+  estats-[1-12]:
     chassis:
       manufacturer: Connecttech
-      name: Connecttech UAGX
+      name: Jetson-AGX
     supported_job_types:
       deploy: false
       besteffort: true
@@ -29,7 +29,7 @@ nodes:
         id: disk0
         interface: NVME
     software:
-      standard-environment: debian11-x64-std
+      standard-environment: debian11-arm64-std
     management_tools:
       bmc_vendor_tool: none
-    bmc_version: xtensor-oobm-r4.1
+    bmc_version: ""
