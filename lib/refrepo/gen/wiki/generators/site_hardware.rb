@@ -31,7 +31,7 @@ class SiteHardwareGenerator < WikiGenerator
 
     @generated_content = "__NOTOC__\n__NOEDITSECTION__\n" +
       "{{Portal|User}}\n" +
-      "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
+      "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::get_sites_in_production.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
       "'''See also:''' [[#{@site.capitalize}:Network|Network topology for #{@site.capitalize}]]\n" +
       "#{SiteHardwareGenerator.generate_header_summary({@site => G5K::get_global_hash['sites'][@site]})}\n" +
       "= Clusters =\n" +
@@ -45,7 +45,7 @@ class SiteHardwareGenerator < WikiGenerator
   def self.generate_all_clusters
     table_columns = []
     table_data = []
-    G5K::SITES.each{ |site|
+    G5K::get_sites_in_production.each{ |site|
       table_columns = self.generate_summary_data(site, true)[0]
       table_data += self.generate_summary_data(site, true)[1]
     }
@@ -66,6 +66,7 @@ class SiteHardwareGenerator < WikiGenerator
     flops = 0
 
     sites_hash.sort.to_h.each do |_site_uid, site_hash|
+      next if site_hash['production'] == false
       clusters_hash = site_hash.fetch('clusters', {})
       clusters += clusters_hash.length
       clusters_hash.sort.to_h.each do |_cluster_uid, cluster_hash|
@@ -349,6 +350,7 @@ def get_hardware(sites)
   # Loop over each cluster of the site
   hardware = {}
   global_hash['sites'].sort.to_h.select{ |site_uid, _site_hash| sites.include?(site_uid) }.each { |site_uid, site_hash|
+    next if site_hash['production'] == false
     hardware[site_uid] = {}
     site_hash.fetch('clusters', {}).sort.to_h.each { |cluster_uid, cluster_hash|
       hardware[site_uid][cluster_uid] = {}

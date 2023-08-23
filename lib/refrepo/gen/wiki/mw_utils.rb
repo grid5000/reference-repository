@@ -129,6 +129,18 @@ module G5K
     return Marshal.load(Marshal.dump(@@global_hash))
   end
 
+  @@sites_in_production = nil
+  def self.get_sites_in_production
+    if @@sites_in_production.nil?
+      self.get_global_hash if @@global_hash.nil?
+      @@sites_in_production = @@global_hash['sites']
+        .select{|_site_uid, site_hash| site_hash['production'] == true}
+        .map{|site_uid, _site_hash| site_uid}
+        .sort()
+    end
+    return @@sites_in_production
+  end
+
   SITES = RefRepo::Utils::get_sites
 end
 

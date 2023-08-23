@@ -42,7 +42,7 @@ class EnvironmentsGenerator < WikiGenerator
     table_data = []
     envs = []
 
-    G5K::SITES.each do |site|
+    G5K::get_sites_in_production.each do |site|
       envs += RefRepo::Utils::get_api("sites/#{site}/internal/kadeployapi/environments?username=deploy&last")
     end
     envs.select!{|x| x['visibility'] == 'public'}

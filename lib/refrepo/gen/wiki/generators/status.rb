@@ -4,7 +4,7 @@ class StatusGenerator < WikiGenerator
 
   def generate_content(_options)
     @global_hash = get_global_hash
-    @site_uids = G5K::SITES
+    @site_uids = G5K::get_sites_in_production
     @sites_number = @site_uids.length()
 
     @generated_content = "__NOEDITSECTION__\n"
