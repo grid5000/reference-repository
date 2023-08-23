@@ -53,7 +53,8 @@ def check_network_description(options)
       netnodes << {
         'kind' => eq['kind'],
         'uid' => eq['uid'],
-        'nickname' => eq['uid']
+        'nickname' => eq['uid'],
+        'managed_by_us' => eq['managed_by_us']
       }
     end
 
@@ -230,7 +231,8 @@ def check_network_description(options)
 
     # find netnodes without connection
     # for routers, it's OK, because they would be connected to other G5K routers
-    netnodes.select { |n| n['found'] == 0 and not n['kind'] == 'router' and not n['uid'].include? "fake" }.each do |n|
+    # for equipment that we do not managed, it's OK, because they would be connected by the partner
+    netnodes.select { |n| n['found'] == 0 and n['kind'] != 'router' and (n.has_key?('managed_by_us') and n['managed_by_us']) }.each do |n|
       if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or n['interface'] == 'Omni-Path' or hpc_switch?(n)
         puts "WARNING: we did not find a corresponding entry on a network equipment for this InfiniBand node: #{n}"
       else
