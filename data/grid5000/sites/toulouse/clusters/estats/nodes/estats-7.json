@@ -11,17 +11,18 @@
     "vendor": "EDK II",
     "version": "2.1-32413640"
   },
-  "bmc_version": "xtensor-oobm-r4.1",
+  "bmc_version": "",
   "chassis": {
     "manufacturer": "Unknown",
     "name": "Jetson-AGX",
-    "serial": 1562621006741
+    "serial": 1562621006633
   },
   "exotic": true,
   "main_memory": {
+    "ram_size": 32212254720
   },
   "management_tools": {
-    "bmc_vendor_tool": "none",
+    "bmc_vendor_tool": "true",
     "ipmitool": {
       "retries": 5
     }
@@ -31,7 +32,7 @@
       "device": "Platform",
       "firmware": "Not Specified",
       "size": 32212254720,
-      "technology": "DRAM"
+      "technology": "dram"
     }
   ],
   "network_adapters": [
@@ -79,19 +80,19 @@
     "instruction_set": "aarch64",
     "microarchitecture": "Carmel",
     "microcode": "unknown",
-    "model": "unknown",
+    "model": "Carmel",
     "other_description": "Carmel",
     "vendor": "Nvidia",
-    "version": "unkown"
+    "version": "Unknown"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
     "postinstall-version": "1.2023061508",
-    "standard-environment": "debian11-x64-std"
+    "standard-environment": "debian11-arm64-std"
   },
   "storage_devices": [
     {
-      "by_id": "/dev/disk/by-id/nvme-eui.0025385a11b173fa",
+      "by_id": "/dev/disk/by-id/nvme-eui.0025385a11b17403",
       "by_path": "/dev/disk/by-path/platform-14180000.pcie-pci-0000:01:00.0-nvme-1",
       "id": "disk0",
       "interface": "NVME",

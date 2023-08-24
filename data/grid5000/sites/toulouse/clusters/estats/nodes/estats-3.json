@@ -11,7 +11,7 @@
     "vendor": "EDK II",
     "version": "2.1-32413640"
   },
-  "bmc_version": "xtensor-oobm-r4.1",
+  "bmc_version": "",
   "chassis": {
     "manufacturer": "Unknown",
     "name": "Jetson-AGX",
@@ -19,9 +19,10 @@
   },
   "exotic": true,
   "main_memory": {
+    "ram_size": 32212254720
   },
   "management_tools": {
-    "bmc_vendor_tool": "none",
+    "bmc_vendor_tool": "true",
     "ipmitool": {
       "retries": 5
     }
@@ -31,7 +32,7 @@
       "device": "Platform",
       "firmware": "Not Specified",
       "size": 32212254720,
-      "technology": "DRAM"
+      "technology": "dram"
     }
   ],
   "network_adapters": [
@@ -79,15 +80,15 @@
     "instruction_set": "aarch64",
     "microarchitecture": "Carmel",
     "microcode": "unknown",
-    "model": "unknown",
+    "model": "Carmel",
     "other_description": "Carmel",
     "vendor": "Nvidia",
-    "version": "unkown"
+    "version": "Unknown"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
     "postinstall-version": "1.2023061508",
-    "standard-environment": "debian11-x64-std"
+    "standard-environment": "debian11-arm64-std"
   },
   "storage_devices": [
     {
