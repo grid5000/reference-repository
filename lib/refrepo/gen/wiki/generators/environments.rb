@@ -3,17 +3,15 @@
 class EnvironmentsGenerator < WikiGenerator
 
   OSVERSION_SORT_ORDER = ['debian10','debian11','debiantesting','centos7','centos8','rocky8','rocky9','centosstream8','centosstream9','ubuntu2004', 'ubuntu2204']
-  VARIANT_SORT_ORDER = ['min','base','xen', 'nfs', 'big', 'std']
+  VARIANT_SORT_ORDER = ['min','base', 'nfs', 'big', 'std']
   # FIXME Update the description of envs to something more sensible instead of overwriting here.
   DESC = {
     'debian10-min' => 'debian 10 (buster) minimalistic installation',
     'debian10-base' => 'debian 10 (buster) with various Grid\'5000-specific tuning for performance',
-    'debian10-xen' => 'debian 10 (buster) with Xen hypervisor Dom0 + minimal DomU',
     'debian10-nfs' => 'debian 10 (buster) with support for mounting NFS home',
     'debian10-big' => 'debian 10 (buster) with packages for development, system tools, editors, shells.',
     'debian11-min' => 'debian 11 (bullseye) minimalistic installation',
     'debian11-base' => 'debian 11 (bullseye) with various Grid\'5000-specific tuning for performance',
-    'debian11-xen' => 'debian 11 (bullseye) with Xen hypervisor Dom0 + minimal DomU',
     'debian11-nfs' => 'debian 11 (bullseye) with support for mounting NFS home',
     'debian11-big' => 'debian 11 (bullseye) with packages for development, system tools, editors, shells.',
     'ubuntu2004-min' => 'ubuntu 20.04 (focal) minimalistic installation',
