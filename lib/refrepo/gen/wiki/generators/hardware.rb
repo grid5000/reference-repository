@@ -195,7 +195,7 @@ class G5KHardwareGenerator < WikiGenerator
                 vendor_families = "#{d['vendor']} GPU"
                 vendor = d['vendor']
                 cmodel = d['model']
-                model = cmodel
+                model = GPURef.model2shortname(cmodel)
                 nbcores = d['cores']
                 compute_capability = d['compute_capability']
                 cc_key = { text: compute_capability || "N/A", sort: compute_capability }
