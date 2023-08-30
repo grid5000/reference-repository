@@ -1,0 +1,116 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous-including-threads",
+    "nb_cores": 8,
+    "nb_procs": 4,
+    "nb_threads": 8,
+    "platform_type": "aarch64"
+  },
+  "bios": {
+    "release_date": "08/01/2023",
+    "vendor": "EDK II",
+    "version": "r35.3.1-5e812e4-dirty"
+  },
+  "bmc_version": "unknown",
+  "chassis": {
+    "manufacturer": "Unknown",
+    "name": "Jetson-AGX",
+    "serial": 1562621006776
+  },
+  "exotic": true,
+  "main_memory": {
+    "ram_size": 34359738368
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "none",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "Platform",
+      "firmware": "Not Specified",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "nvethernet",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.121.11",
+      "ip6": "2001:660:4406:900:a::b",
+      "kavlan": false,
+      "mac": "48:b0:2d:3a:ba:56",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "name": "eth0",
+      "network_address": "estats-11.toulouse.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "sw-estats",
+      "switch_port": "GigabitEthernet 1/19"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "tegra19x_cpuidle_driver",
+    "cstate_governor": "menu",
+    "ht_enabled": false,
+    "pstate_driver": "tegra194",
+    "pstate_governor": "performance",
+    "turboboost_enabled": false
+  },
+  "performance": {
+    "core_flops": 18080000000,
+    "node_flops": 144640000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 65536,
+    "cache_l1i": 131072,
+    "cache_l2": 2097152,
+    "cache_l3": 4194304,
+    "clock_speed": 2260000000,
+    "ht_capable": false,
+    "instruction_set": "aarch64",
+    "microarchitecture": "Carmel",
+    "microcode": "unknown",
+    "model": "Carmel",
+    "other_description": "Carmel",
+    "vendor": "Nvidia",
+    "version": "Unknown"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023081113",
+    "standard-environment": "debian11-arm64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.0025385a11b173ff",
+      "by_path": "/dev/disk/by-path/platform-14180000.pcie-pci-0000:01:00.0-nvme-1",
+      "id": "disk0",
+      "interface": "NVME",
+      "model": "Samsung SSD 970 EVO Plus 2TB",
+      "size": 2000398934016,
+      "storage": "SSD",
+      "vendor": "Samsung"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": false,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "estats-11"
+}
