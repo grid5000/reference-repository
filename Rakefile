@@ -108,7 +108,11 @@ namespace :gen do
     options[:output_dir] = PUPPET_ODIR
     options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : ['global'] + G5K_SITES )
     if ENV['NAME']
-      options[:generators] = ENV['NAME'].split(',')
+      if ENV['NAME'] == "all"
+        options[:generators] = RefRepo::Gen::Wiki::GLOBAL_GENERATORS.keys
+      else
+        options[:generators] = ENV['NAME'].split(',')
+      end
     else
       puts "You must specify a generator name using NAME="
       exit(1)

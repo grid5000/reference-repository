@@ -34,6 +34,10 @@ module RefRepo::Utils
       raise([message, IGNORE_ERROR_MESSAGE].join("\n"))
     end
   end
+
+  def self.get_as_gb(quantity)
+    (quantity.to_f/2**30).round(0)
+  end
 end
 
 # Various monkey patches

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 NVIDIA = 'Nvidia'
-MINIMAL_COMPUTE_CAPABILITY_SUPPORTED = 3.0 
+MINIMAL_COMPUTE_CAPABILITY_SUPPORTED = 3.0
 
 class GPURef
   @@gpus = {
