@@ -128,7 +128,12 @@ automata:
     - timeout: <%= data['boot.timeout.1'] %>
       type: HardReboot
       retries: 0
-<%- if data['force_tftp'] -%>
+<%- if data['force_tftp'] || data['no_module']-%>
 custom_variables:
+<%- end -%>
+<%- if data['force_tftp'] -%>
   FORCE_TFTP="1"
+<%- end -%>
+<%- if data['no_module']-%>
+  PI_NO_MODULE = "1"
 <%- end -%>
