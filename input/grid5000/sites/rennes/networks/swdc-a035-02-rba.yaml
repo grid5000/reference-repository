@@ -1,6 +1,6 @@
 ---
-mc-fake-sw:
-  model: Unknown
+swdc-a035-02-rba:
+  model: Nexus 2000 FEX
   warranty: N/A
   kind: switch
   managed_by_us: false
@@ -8,16 +8,16 @@ mc-fake-sw:
   site: rennes
   linecards:
     1:
-      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
-      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
+      snmp_pattern: "Eth%LINECARD%/%PORT%"
+      kavlan_pattern: "Eth%LINECARD%/%PORT%"
       rate: 10000000000
       kind: node
       ports:
-        25:
+        47:
           uid: abacus25-1
-        26:
+        48:
           uid: abacus25-2
         999:
-          uid: gw
-          kind: router
-          port: lag3
+          uid: vss-inria
+          kind: switch
+          port: 999

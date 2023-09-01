@@ -79,10 +79,10 @@ gw:
           uid: srv-3
           kind: server
         35:
-          uid: lag2
+          uid: port-channel2
           kind: channel
         36:
-          uid: lag2
+          uid: port-channel2
           kind: channel
         45:
           uid: parasilo-sw-1
@@ -93,34 +93,34 @@ gw:
           kind: backbone
           rate: 10000000000
         47:
-          uid: lag3
+          uid: port-channel3
           kind: channel
           rate: 10000000000
         48:
-          uid: lag3
+          uid: port-channel3
           kind: channel
           rate: 10000000000
         49:
-          uid: lag1
+          uid: port-channel1
           kind: channel
           rate: 100000000000
         50:
-          uid: lag1
+          uid: port-channel1
           kind: channel
           rate: 100000000000
   channels:
-    lag1:
+    port-channel1:
       kind: switch
       rate: 200000000000
       uid: sw-1
-      port: lag1
-    lag2:
+      port: port-channel1
+    port-channel2:
       kind: server
       rate: 50000000000
       uid: srv-data
-      port: lag2
-    lag3:
+      port: port-channel2
+    port-channel3:
       kind: switch
       rate: 20000000000
       uid: vss-inria
-      port: lag3
+      port: port-channel3
