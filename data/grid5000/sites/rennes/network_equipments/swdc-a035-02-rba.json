@@ -4,7 +4,7 @@
     {
     },
     {
-      "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+      "kavlan_pattern": "Eth%LINECARD%/%PORT%",
       "kind": "node",
       "ports": [
         {
@@ -58,15 +58,59 @@
         {
         },
         {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Ethernet1/25",
+          "snmp_name": "Eth1/47",
           "uid": "abacus25-1"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Ethernet1/26",
+          "snmp_name": "Eth1/48",
           "uid": "abacus25-2"
         },
         {
@@ -1970,65 +2014,21 @@
         {
         },
         {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-          "kind": "router",
-          "port": "lag3",
-          "snmp_name": "Ethernet1/999",
-          "uid": "gw"
+          "kind": "switch",
+          "port": 999,
+          "snmp_name": "Eth1/999",
+          "uid": "vss-inria"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+      "snmp_pattern": "Eth%LINECARD%/%PORT%"
     }
   ],
   "managed_by_us": false,
-  "model": "Unknown",
+  "model": "Nexus 2000 FEX",
   "site": "rennes",
   "snmp_community": "none",
   "type": "network_equipment",
-  "uid": "mc-fake-sw",
+  "uid": "swdc-a035-02-rba",
   "warranty": "N/A"
 }
