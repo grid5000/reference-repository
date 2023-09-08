@@ -281,3 +281,21 @@ pve2:
     bmc:
       ip: 172.17.79.34
       mac: 78:45:c4:fc:3a:36
+
+srv4:
+  kind: physical
+  serial: CZJ24220C6
+  network_adapters:
+    default:
+      mac: 30:3E:A7:00:C8:28
+      ip: 172.16.79.37
+    adm:
+      ip: 172.17.79.37
+    bmc:
+      ip: 172.17.79.38
+      mac: 5E:ED:8C:39:37:F0
+  pdu:
+    - uid: gruss-pdu1
+      port: 6
+    - uid: gruss-pdu2
+      port: 6
