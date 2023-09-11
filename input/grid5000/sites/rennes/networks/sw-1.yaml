@@ -15,16 +15,16 @@ sw-1:
       rate: 25000000000
       ports:
         49:
-          uid: port-channel1
+          uid: lag1
           kind: channel
           rate: 100000000000
         50:
-          uid: port-channel1
+          uid: lag1
           kind: channel
           rate: 100000000000
   channels:
-    port-channel1:
+    lag1:
       kind: switch
       rate: 200000000000
       uid: gw
-      port: port-channel1
+      port: lag1
