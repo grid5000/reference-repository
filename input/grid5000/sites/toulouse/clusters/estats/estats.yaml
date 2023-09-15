@@ -1,4 +1,4 @@
-model: Connecttech/Nvidia AGX Xavier
+model: Connecttech/Nvidia Jetson AGX Xavier
 created_at: 2023-06-13
 kavlan: false
 boot_type: uefi
@@ -24,6 +24,14 @@ nodes:
       platform-14180000.pcie-pci-0000:01:00.0-nvme-1:
         id: disk0
         interface: NVME
+    gpu_devices:
+      nvidia0:
+        cpu_affinity: 1
+        device: "/dev/nvgpu"
+        memory: 32518041600
+        model: "AGX Xavier"
+        vendor: Nvidia
+        reservation: false
     software:
       standard-environment: debian11-arm64-stdl4t
     management_tools:

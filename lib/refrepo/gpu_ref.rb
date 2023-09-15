@@ -94,6 +94,12 @@ class GPURef
       'short_name'         => 'MI50',
       'alias'              => 'mi50-32',
     },
+    'AGX Xavier' => {
+      'cores'              => 512,
+      'compute_capability' => '7.2',
+      'short_name'         => 'AGX Xavier',
+      'alias'              => 'agx-xavier',
+    },
   }
 
 
