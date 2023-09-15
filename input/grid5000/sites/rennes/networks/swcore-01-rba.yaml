@@ -1,0 +1,49 @@
+---
+swcore-01-rba:
+  model: Nexus 5596
+  warranty: N/A
+  kind: switch
+  managed_by_us: false
+  snmp_community: none
+  site: rennes
+  linecards:
+    1:
+      snmp_pattern: "TenGigabitEthernet%LINECARD%/1/%PORT%"
+      kavlan_pattern: "TenGigabitEthernet%LINECARD%/1/%PORT%"
+      rate: 10000000000
+      kind: switch
+      ports:
+        1:
+          uid: port-channel666
+          kind: channel
+        2:
+          uid: port-channel999
+          kind: channel
+        3:
+          uid: port-channel666
+          kind: channel
+        4:
+          uid: port-channel999
+          kind: channel
+        5:
+          uid: port-channel286
+          kind: channel
+        6:
+          uid: port-channel286
+          kind: channel
+  channels:
+    port-channel666:
+      uid: swdc-a035-01-rba
+      kind: switch
+      port: port-channel666  
+      rate: 20000000000
+    port-channel999:
+      uid: swdc-a035-02-rba
+      kind: switch
+      port: port-channel999
+      rate: 20000000000
+    port-channel286:
+      uid: gw
+      kind: router
+      port: lag3
+      rate: 20000000000
