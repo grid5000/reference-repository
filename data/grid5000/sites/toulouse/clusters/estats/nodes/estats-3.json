@@ -2,12 +2,12 @@
   "architecture": {
     "cpu_core_numbering": "contiguous-including-threads",
     "nb_cores": 8,
-    "nb_procs": 4,
+    "nb_procs": 1,
     "nb_threads": 8,
     "platform_type": "aarch64"
   },
   "bios": {
-    "release_date": "08/01/2023",
+    "release_date": "09/07/2023",
     "vendor": "EDK II",
     "version": "r35.3.1-5e812e4-dirty"
   },
@@ -18,6 +18,18 @@
     "serial": 1562621006744
   },
   "exotic": true,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.2",
+      "cores": 512,
+      "cpu_affinity": 1,
+      "device": "/dev/nvgpu",
+      "memory": 32518041600,
+      "model": "AGX Xavier",
+      "reservation": false,
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
     "ram_size": 34359738368
   },
