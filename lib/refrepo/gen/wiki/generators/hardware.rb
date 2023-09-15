@@ -298,28 +298,6 @@ class G5KHardwareGenerator < WikiGenerator
     table_columns = ['PMEM size'] + sites + ['Nodes total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'pmem_size'))
 
-    generated_content += "\n= Networking =\n"
-    generated_content += "\n== Network interconnects ==\n"
-    table_columns = ['Interconnect'] + sites + ['Cards total']
-    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_interconnects'))
-    generated_content += "\n== Nodes with several Ethernet interfaces ==\n"
-    generated_content +=  generate_interfaces
-
-    generated_content += "\n== Nodes with SR-IOV support ==\n"
-    generated_content +=  generate_sriov_interfaces
-
-    generated_content += "\n== Network interface models ==\n"
-    table_columns = ['Type', 'Driver', 'Model'] + sites + ['Cards total']
-    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
-    generated_content += "\n''*: Ethernet interfaces on FPGA cards are not directly usable by the operating system''"
-    generated_content += "\n= Storage ="
-    generated_content += "\n== SSD models ==\n"
-    table_columns = ['SSD interface', 'Model', 'Size'] + sites + ['SSDs total']
-    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'ssd_models'))
-    generated_content += "\n== Nodes with several disks ==\n"
-    generated_content +=  generate_storage
-    generated_content += "\n''*: disk is [[Disk_reservation|reservable]]''"
-
     generated_content += "\n= Accelerators (GPU, Xeon Phi, FPGA) ="
     generated_content += "\n== Accelerator families ==\n"
     table_columns = ['Accelerator family'] + sites + ['Accelerators total']
@@ -330,6 +308,27 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Accelerator cores ==\n"
     table_columns = ['Accelerator model', 'Family', 'Compute capability', 'RAM size'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_cores'))
+
+    generated_content += "\n= Networking =\n"
+    generated_content += "\n== Network interconnects ==\n"
+    table_columns = ['Interconnect'] + sites + ['Cards total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_interconnects'))
+    generated_content += "\n== Nodes with several Ethernet interfaces ==\n"
+    generated_content +=  generate_interfaces
+    generated_content += "\n== Nodes with SR-IOV support ==\n"
+    generated_content +=  generate_sriov_interfaces
+    generated_content += "\n== Network interface models ==\n"
+    table_columns = ['Type', 'Driver', 'Model'] + sites + ['Cards total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
+    generated_content += "\n''*: Ethernet interfaces on FPGA cards are not directly usable by the operating system''"
+
+    generated_content += "\n= Storage ="
+    generated_content += "\n== SSD models ==\n"
+    table_columns = ['SSD interface', 'Model', 'Size'] + sites + ['SSDs total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'ssd_models'))
+    generated_content += "\n== Nodes with several disks ==\n"
+    generated_content +=  generate_storage
+    generated_content += "\n''*: disk is [[Disk_reservation|reservable]]''"
 
     generated_content += "\n= Nodes models =\n"
     table_columns = ['Nodes model'] + sites + ['Nodes total']
