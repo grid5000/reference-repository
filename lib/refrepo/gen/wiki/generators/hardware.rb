@@ -270,24 +270,24 @@ class G5KHardwareGenerator < WikiGenerator
     # Table construction
     sites = @site_uids.map{ |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }
     table_options = 'class="wikitable sortable" style="text-align: center;"'
-    generated_content = "= Processors ="
-    generated_content += "\n== Processors counts per architecture ==\n"
-    table_columns = ['Processor arch'] + sites + ['Processors total']
+    generated_content = "= CPUs ="
+    generated_content += "\n== CPU counts per architecture ==\n"
+    table_columns = ['Arch'] + sites + ['CPU total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'proc_architectures'))
-    generated_content += "\n== Cores counts per architecture ==\n"
-    table_columns = ['Core arch'] + sites + ['Core total']
+    generated_content += "\n== Core counts per architecture ==\n"
+    table_columns = ['Arch'] + sites + ['Core total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'core_architectures'))
-    generated_content += "\n== Processors counts per family ==\n"
-    table_columns = ['Vendor', 'Processor family', 'Arch'] + sites + ['Processors total']
+    generated_content += "\n== CPU counts per family ==\n"
+    table_columns = ['Vendor', 'Family', 'Arch'] + sites + ['CPU total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'proc_families'))
-    generated_content += "\n== Cores counts per family ==\n"
-    table_columns = ['Vendor', 'Core family', 'Arch'] + sites + ['Core total']
+    generated_content += "\n== Core counts per family ==\n"
+    table_columns = ['Vendor', 'Family', 'Arch'] + sites + ['Core total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'core_families'))
-    generated_content += "\n== Processors counts per model ==\n"
-    table_columns = ['Vendor', 'Processor model', 'Microarch', 'Arch'] + sites + ['Processors total']
+    generated_content += "\n== CPU counts per model ==\n"
+    table_columns = ['Vendor', 'Model', 'Microarch', 'Arch'] + sites + ['CPU total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'proc_models'))
-    generated_content += "\n== Cores counts per model ==\n"
-    table_columns =  ['Vendor', 'Core model', 'Microarch', 'Arch'] + sites + ['Cores total']
+    generated_content += "\n== Core counts per model ==\n"
+    table_columns =  ['Vendor', 'Model', 'Microarch', 'Arch'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'core_models'))
 
     generated_content += "\n= Memory =\n"
