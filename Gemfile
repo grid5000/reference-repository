@@ -11,7 +11,4 @@ gem "rspec", :group => [:development]
 gem "webmock", :group => [:development]
 gem "simplecov", :group => [:development]
 gem "rake"
-
-group :development, :test do
-  gem 'byebug'
-end
+gem 'byebug'
