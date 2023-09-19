@@ -3,7 +3,7 @@
     "sw-uagx"
   ],
   "channels": {
-    "port-channel1": {
+    "lacp key 1": {
       "kind": "router",
       "port": "lag2",
       "rate": 20000000000,
@@ -135,13 +135,15 @@
         },
         {
           "kind": "channel",
-          "snmp_name": "GigabitEthernet 1/33",
-          "uid": "port-channel1"
+          "rate": 10000000000,
+          "snmp_name": "10GigabitEthernet 1/1",
+          "uid": "lacp key 1"
         },
         {
           "kind": "channel",
-          "snmp_name": "GigabitEthernet 1/34",
-          "uid": "port-channel1"
+          "rate": 10000000000,
+          "snmp_name": "10GigabitEthernet 1/2",
+          "uid": "lacp key 1"
         }
       ],
       "rate": 1000000000,
