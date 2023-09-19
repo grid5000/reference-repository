@@ -394,11 +394,11 @@ def add_switch_port(h)
 end
 
 def detect_dead_nodes_with_yaml_files(h)
-  h['sites'].each_pair do |_site_uid, hs|
-    hs.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
+  h['sites'].each_pair do |site_uid, hs|
+    hs.fetch('clusters', {}).each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         if hn['status'] == 'retired'
-          if (hn['processor']['model'] rescue nil)
+          if File.exist?( "input/grid5000/sites/#{site_uid}/clusters/#{cluster_uid}/nodes/#{node_uid}.yaml" )
             raise "ERROR: #{node_uid} is marked status:retired, but its yaml is still in the repository. Please remove it."
           end
         end
