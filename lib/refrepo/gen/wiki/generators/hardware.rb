@@ -20,7 +20,10 @@ class G5KHardwareGenerator < WikiGenerator
 
   def generate_totals
     data = {
+      'proc_architectures' => {},
+      'core_architectures' => {},
       'proc_families' => {},
+      'core_families' => {},
       'proc_models' => {},
       'core_models' => {},
       'ram_size' => {},
@@ -42,18 +45,34 @@ class G5KHardwareGenerator < WikiGenerator
             @node = node_uid
 
             # Processors
-            model = node_hash['processor']['model']
-            version = "#{model} #{node_hash['processor']['version']}"
+            vendor = node_hash['processor']['vendor']
+            model = node_hash['processor']['model'].gsub(/^#{vendor} /, '')
+            version = node_hash['processor']['version']
+            architecture = node_hash['architecture']['platform_type']
+            proc_desc = "#{model}"
+            if version != 'Unknown'
+              proc_desc += " #{version}"
+            end
             microarchitecture = node_hash['processor']['microarchitecture']
 
             cluster_procs = node_hash['architecture']['nb_procs']
             cluster_cores = node_hash['architecture']['nb_cores']
 
-            key = [model]
+            key = [architecture]
+            init(data, 'proc_architectures', key)
+            data['proc_architectures'][key][site_uid] += cluster_procs
+
+            init(data, 'core_architectures', key)
+            data['core_architectures'][key][site_uid] += cluster_cores
+
+            key = [vendor, model, architecture]
             init(data, 'proc_families', key)
             data['proc_families'][key][site_uid] += cluster_procs
 
-            key = [{text: microarchitecture || ' ', sort: get_date(microarchitecture) + ', ' + microarchitecture.to_s}, {text: version, sort: get_date(microarchitecture) + ', ' + version.to_s}]
+            init(data, 'core_families', key)
+            data['core_families'][key][site_uid] += cluster_cores
+
+            key = [vendor, {text: proc_desc, sort: get_date(microarchitecture) + ', ' + proc_desc.to_s}, {text: microarchitecture || ' ', sort: get_date(microarchitecture) + ', ' + microarchitecture.to_s}, architecture]
             init(data, 'proc_models', key)
             data['proc_models'][key][site_uid] += cluster_procs
 
@@ -249,17 +268,26 @@ class G5KHardwareGenerator < WikiGenerator
     }
 
     # Table construction
-    generated_content = "= Processors ="
-    generated_content += "\n== Processors counts per families ==\n"
     sites = @site_uids.map{ |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }
     table_options = 'class="wikitable sortable" style="text-align: center;"'
-    table_columns = ['Processor family'] + sites + ['Processors total']
+    generated_content = "= CPUs ="
+    generated_content += "\n== CPU counts per architecture ==\n"
+    table_columns = ['Arch'] + sites + ['CPU total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'proc_architectures'))
+    generated_content += "\n== Core counts per architecture ==\n"
+    table_columns = ['Arch'] + sites + ['Core total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'core_architectures'))
+    generated_content += "\n== CPU counts per family ==\n"
+    table_columns = ['Vendor', 'Family', 'Arch'] + sites + ['CPU total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'proc_families'))
-    generated_content += "\n== Processors counts per models ==\n"
-    table_columns = ['Microarchitecture', 'Processor model'] + sites + ['Processors total']
+    generated_content += "\n== Core counts per family ==\n"
+    table_columns = ['Vendor', 'Family', 'Arch'] + sites + ['Core total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'core_families'))
+    generated_content += "\n== CPU counts per model ==\n"
+    table_columns = ['Vendor', 'Model', 'Microarch', 'Arch'] + sites + ['CPU total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'proc_models'))
-    generated_content += "\n== Cores counts per models ==\n"
-    table_columns =  ['Microarchitecture', 'Core model'] + sites + ['Cores total']
+    generated_content += "\n== Core counts per model ==\n"
+    table_columns =  ['Vendor', 'Model', 'Microarch', 'Arch'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'core_models'))
 
     generated_content += "\n= Memory =\n"
@@ -269,28 +297,6 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== PMEM size per node ==\n"
     table_columns = ['PMEM size'] + sites + ['Nodes total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'pmem_size'))
-
-    generated_content += "\n= Networking =\n"
-    generated_content += "\n== Network interconnects ==\n"
-    table_columns = ['Interconnect'] + sites + ['Cards total']
-    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_interconnects'))
-    generated_content += "\n== Nodes with several Ethernet interfaces ==\n"
-    generated_content +=  generate_interfaces
-
-    generated_content += "\n== Nodes with SR-IOV support ==\n"
-    generated_content +=  generate_sriov_interfaces
-
-    generated_content += "\n== Network interface models ==\n"
-    table_columns = ['Type', 'Driver', 'Model'] + sites + ['Cards total']
-    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
-    generated_content += "\n''*: Ethernet interfaces on FPGA cards are not directly usable by the operating system''"
-    generated_content += "\n= Storage ="
-    generated_content += "\n== SSD models ==\n"
-    table_columns = ['SSD interface', 'Model', 'Size'] + sites + ['SSDs total']
-    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'ssd_models'))
-    generated_content += "\n== Nodes with several disks ==\n"
-    generated_content +=  generate_storage
-    generated_content += "\n''*: disk is [[Disk_reservation|reservable]]''"
 
     generated_content += "\n= Accelerators (GPU, Xeon Phi, FPGA) ="
     generated_content += "\n== Accelerator families ==\n"
@@ -302,6 +308,27 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Accelerator cores ==\n"
     table_columns = ['Accelerator model', 'Family', 'Compute capability', 'RAM size'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_cores'))
+
+    generated_content += "\n= Networking =\n"
+    generated_content += "\n== Network interconnects ==\n"
+    table_columns = ['Interconnect'] + sites + ['Cards total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_interconnects'))
+    generated_content += "\n== Nodes with several Ethernet interfaces ==\n"
+    generated_content +=  generate_interfaces
+    generated_content += "\n== Nodes with SR-IOV support ==\n"
+    generated_content +=  generate_sriov_interfaces
+    generated_content += "\n== Network interface models ==\n"
+    table_columns = ['Type', 'Driver', 'Model'] + sites + ['Cards total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'net_models'))
+    generated_content += "\n''*: Ethernet interfaces on FPGA cards are not directly usable by the operating system''"
+
+    generated_content += "\n= Storage ="
+    generated_content += "\n== SSD models ==\n"
+    table_columns = ['SSD interface', 'Model', 'Size'] + sites + ['SSDs total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'ssd_models'))
+    generated_content += "\n== Nodes with several disks ==\n"
+    generated_content +=  generate_storage
+    generated_content += "\n''*: disk is [[Disk_reservation|reservable]]''"
 
     generated_content += "\n= Nodes models =\n"
     table_columns = ['Nodes model'] + sites + ['Nodes total']

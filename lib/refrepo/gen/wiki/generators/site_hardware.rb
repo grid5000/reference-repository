@@ -362,7 +362,11 @@ def get_hardware(sites)
         hard['exotic'] = cluster_hash['exotic']
         hard['date'] = Date.parse(cluster_hash['created_at'].to_s).strftime('%Y-%m-%d')
         hard['model'] = cluster_hash['model']
-        hard['processor_model'] = [node_hash['processor']['model'], node_hash['processor']['version']].join(' ')
+        hard['processor_model'] = "#{node_hash['processor']['vendor']} "
+        hard['processor_model'] += node_hash['processor']['model'].gsub(/^#{node_hash['processor']['vendor']} /,'')
+        if node_hash['processor']['version'] != 'Unknown'
+          hard['processor_model'] += " #{node_hash['processor']['version']}"
+        end
         if node_hash['processor']['other_description'] =~ /@/
           hard['processor_freq'] = node_hash['processor']['other_description'].split('@')[1].strip
         end
@@ -374,7 +378,7 @@ def get_hardware(sites)
         hard['architecture'] = node_hash['architecture']['platform_type']
         exotic_archname = get_exotic_archname(node_hash['architecture']['platform_type'])
         hard['num_processor_model'] = (hard['cpus_per_node'] == 1 ? '' : "#{hard['cpus_per_node']}&nbsp;x&nbsp;") + (exotic_archname ? "#{exotic_archname}&nbsp;" : '') + hard['processor_model'].gsub(' ', '&nbsp;')
-        hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']})"
+        hard['processor_description'] = "#{hard['processor_model']} (#{hard['microarchitecture']}), #{hard['architecture']}#{hard['processor_freq'] ?  ', ' + hard['processor_freq'] : ''}, #{hard['cpus_per_node_str']}, #{hard['cores_per_cpu_str']}"
         hard['ram_size'] = G5K.get_size(node_hash['main_memory']['ram_size'])
         hard['pmem_size'] = G5K.get_size(node_hash['main_memory']['pmem_size']) unless node_hash['main_memory']['pmem_size'].nil?
         storage = node_hash['storage_devices'].sort_by!{ |d| d['id']}.map { |i| { 'size' => i['size'], 'tech' => i['storage'], 'reservation' => i['reservation'].nil? ? false : i['reservation'] } }
