@@ -1,5 +1,5 @@
 ---
-swdc-a035-02-rba:
+swdc-a035-01-rba:
   model: Nexus 2000 FEX
   warranty: N/A
   kind: switch
@@ -14,18 +14,23 @@ swdc-a035-02-rba:
       kind: node
       ports:
         1:
-          uid: port-channel999
+          uid: port-channel666
           kind: channel
         3:
-          uid: port-channel999
+          uid: port-channel666
           kind: channel
-        47:
-          uid: abacus25-1
-        48:
-          uid: abacus25-2
+    103:
+      snmp_pattern: "Eth%LINECARD%/1/%PORT%"
+      kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        10:
+          uid: roazhon4-1
+
   channels:
-    port-channel999:
+    port-channel666:
       uid: swcore-01-rba
       kind: switch
-      port: port-channel999
+      port: port-channel666
       rate: 20000000000
