@@ -1,9 +1,9 @@
 ---
-gw-toulouse:
+gw:
   model: Aruba 6300
   serial: SG27KMX1X6
   alias:
-    - gw
+    - gw-toulouse
   ip: 172.17.127.254
   ip6: 2001:660:4406:900::ffff:ffff
   kind: router
@@ -12,10 +12,10 @@ gw-toulouse:
   snmp_community: g5kadmin
   vlans:
     "vlan100":
-      administrative: yes
       addresses:
         - 172.16.127.254
     "vlan101":
+      administrative: yes
       addresses:
         - 172.17.127.254
     "vlan500":
@@ -81,10 +81,10 @@ gw-toulouse:
           uid: montcalm-10
           kind: server
         15:
-          uid: port-channel2
+          uid: lag2
           kind: channel
         16:
-          uid: port-channel2
+          uid: lag2
           kind: channel
         17:
           uid: pve-1
@@ -93,18 +93,18 @@ gw-toulouse:
           uid: pve-2
           kind: server
         19:
-          uid: port-channel1
+          uid: lag1
           kind: channel
         20:
-          uid: port-channel1
+          uid: lag1
           kind: channel
   channels:
-    port-channel1:
+    lag1:
       uid: nfs
       kind: server
       rate: 20000000000
       port: port-channel1
-    port-channel2:
+    lag2:
       uid: sw-estats
       kind: switch
       rate: 20000000000

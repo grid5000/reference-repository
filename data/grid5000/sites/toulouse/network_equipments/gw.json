@@ -1,15 +1,15 @@
 {
   "alias": [
-    "gw"
+    "gw-toulouse"
   ],
   "channels": {
-    "port-channel1": {
+    "lag1": {
       "kind": "server",
       "port": "port-channel1",
       "rate": 20000000000,
       "uid": "nfs"
     },
-    "port-channel2": {
+    "lag2": {
       "kind": "switch",
       "port": "port-channel1",
       "rate": 20000000000,
@@ -98,12 +98,12 @@
         {
           "kind": "channel",
           "snmp_name": "1/1/15",
-          "uid": "port-channel2"
+          "uid": "lag2"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/16",
-          "uid": "port-channel2"
+          "uid": "lag2"
         },
         {
           "kind": "server",
@@ -118,12 +118,12 @@
         {
           "kind": "channel",
           "snmp_name": "1/1/19",
-          "uid": "port-channel1"
+          "uid": "lag1"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/20",
-          "uid": "port-channel1"
+          "uid": "lag1"
         }
       ],
       "rate": 10000000000,
@@ -136,18 +136,18 @@
   "site": "toulouse",
   "snmp_community": "g5kadmin",
   "type": "network_equipment",
-  "uid": "gw-toulouse",
+  "uid": "gw",
   "vlans": {
     "vlan100": {
       "addresses": [
         "172.16.127.254"
-      ],
-      "administrative": true
+      ]
     },
     "vlan101": {
       "addresses": [
         "172.17.127.254"
-      ]
+      ],
+      "administrative": true
     },
     "vlan500": {
       "addresses": [
