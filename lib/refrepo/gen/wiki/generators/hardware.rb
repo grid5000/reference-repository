@@ -33,7 +33,7 @@ class G5KHardwareGenerator < WikiGenerator
       'ssd_models' => {},
       'acc_families' => {},
       'acc_models' => {},
-      'acc_cores' => {},
+      'gpu_cores' => {},
       'node_models' => {}
     }
 
@@ -174,88 +174,47 @@ class G5KHardwareGenerator < WikiGenerator
               data['ssd_models'][k][site_uid] += v
             }
 
-            # Accelerators
-            other_dev = node_hash['other_devices']
-            fpga_families = {}
-            fpga_details = {}
-            if other_dev and other_dev['fpga0']
-              fpga = other_dev['fpga0']
-              vendor_type = "#{fpga['vendor']} #{fpga['type'].upcase}"
-              vendor_model = "#{fpga['vendor']} #{fpga['model']}"
-              fpga_families[[vendor_type]] = 1
-              mem = RefRepo::Utils.get_as_gb(fpga['memory'])
-              mem_key = { text: "#{mem}GB", sort: mem }
-              cc_key = { text: "N/A", sort: 0 }
-              type_key = { text: vendor_type, sort: vendor_type }
-              fpga_details[[vendor_model, type_key, cc_key, mem_key]] = [fpga['count'], fpga['core']]
-            end
-
-            m = node_hash['mic']
-            mic_families = {}
-            mic_details = {}
-            if m and m['mic']
-              vendor_mic = "#{m['mic_vendor']} MIC"
-              vendor_model = "#{m['mic_vendor']} #{m['mic_model']}"
-              mic_families[[vendor_mic]] = m['mic_count']
-              mem = RefRepo::Utils.get_as_gb(m['mic_memory'])
-              mem_key = { text: "#{mem}GB", sort: mem }
-              cc_key = { text: "N/A", sort: 0 }
-              type_key = { text: vendor_mic, sort: vendor_mic }
-              mic_details[[vendor_model, type_key, cc_key, mem_key]] = [m['mic_count'], m['mic_cores']]
-            end
-
-
-            lg = node_hash['gpu_devices']
-            gpu_families = {}
-            gpu_details = {}
-            unless lg.nil?
-              lg.each { |g|
-                d = g[1]
-                vendor_families = "#{d['vendor']} GPU"
-                vendor = d['vendor']
-                cmodel = d['model']
-                model = GPURef.model2shortname(cmodel)
-                nbcores = d['cores']
-                compute_capability = d['compute_capability']
-                cc_key = { text: compute_capability || "N/A", sort: compute_capability }
-                mem = RefRepo::Utils.get_as_gb(d['memory'])
-                mem_key = { text: "#{mem}GB", sort: mem }
-
-                family = gpu_families[[vendor_families]]
-                if family.nil?
-                  gpu_families[[vendor_families]] = 1
-                else
-                  gpu_families[[vendor_families]] += 1
+           # Accelerators
+            { GPU: node_hash.has_key?('gpu_devices') ? node_hash['gpu_devices'] : {},
+              MIC: node_hash.has_key?('mic') ? {'mic0': node_hash['mic'] } : {},
+              FPGA: node_hash.has_key?('other_devices') ? node_hash['other_devices'].select{ |k,_| k =~ /^fpga\d+$/ } : {}
+            }.each do |acc_type, acc_data|
+              acc_data.each_value do |acc|
+                case acc_type
+                when :GPU
+                  vendor = acc['vendor']
+                  model = GPURef.model2shortname(acc['model'])
+                  cores = acc['cores']
+                  compute_capability = acc.has_key?('compute_capability') ? acc['compute_capability'] : "N/A"
+                  mem = RefRepo::Utils.get_as_gb(acc['memory'])
+                when :MIC
+                  vendor = acc['mic_vendor']
+                  model = acc['mic_model']
+                  compute_capability = { text: "N/A", sort: 0 }
+                  mem = RefRepo::Utils.get_as_gb(acc['mic_memory'])
+                when :FPGA
+                  vendor = acc['vendor']
+                  model = acc['model']
+                  compute_capability = { text: "N/A", sort: 0 }
+                  mem = RefRepo::Utils.get_as_gb(acc['memory'])
                 end
 
+                key = [vendor, acc_type.to_s]
+                init(data, 'acc_families', key)
+                data['acc_families'][key][site_uid] += 1
 
-                type_key = { text: vendor_families, sort: vendor_families }
-                gpu_key = ["#{vendor} #{model}", type_key, cc_key, mem_key]
-                details = gpu_details[gpu_key]
+                key = [vendor, acc_type.to_s, model, { text: "#{mem}GB", sort: mem }, compute_capability]
+                init(data, 'acc_models', key)
+                data['acc_models'][key][site_uid] += 1
 
-                if details.nil?
-                  gpu_details[gpu_key] = [1, nbcores]
-                else
-                  gpu_details[gpu_key] = [details[0]+1, details[1]+nbcores]
+                if acc_type == :GPU
+                  key = [vendor, model, { text: "#{mem}GB", sort: mem }, compute_capability]
+                  init(data, 'gpu_cores', key)
+                  data['gpu_cores'][key][site_uid] += cores
                 end
-              }
+              end
             end
 
-            gpu_families.merge(mic_families).merge(fpga_families).sort.to_h.each { |k, v|
-              init(data, 'acc_families', k)
-              data['acc_families'][k][site_uid] += v
-            }
-
-            gpu_details.merge(mic_details).merge(fpga_details).sort.to_h.each { |k, v|
-              init(data, 'acc_models', k)
-              data['acc_models'][k][site_uid] += v[0]
-            }
-            gpu_details.merge(mic_details).sort.to_h.each { |k, v|
-              init(data, 'acc_cores', k)
-              data['acc_cores'][k][site_uid] += v[1]
-            }
-
-            # Nodes
             key = [cluster_hash['model']]
             init(data, 'node_models', key)
             data['node_models'][key][site_uid] += 1
@@ -299,15 +258,15 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'pmem_size'))
 
     generated_content += "\n= Accelerators (GPU, Xeon Phi, FPGA) ="
-    generated_content += "\n== Accelerator families ==\n"
-    table_columns = ['Accelerator family'] + sites + ['Accelerators total']
+    generated_content += "\n== Accelerator counts per type ==\n"
+    table_columns = ['Vendor', 'Type'] + sites + ['Accelerators total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_families'))
-    table_columns = ['Accelerator model', 'Family', 'Compute capability', 'RAM size'] + sites + ['Accelerators total']
-    generated_content += "\n== Accelerator models ==\n"
+    table_columns = ['Vendor', 'Type', 'Model', 'Memory', 'Compute capability'] + sites + ['Accelerators total']
+    generated_content += "\n== Accelerator counts per model ==\n"
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_models'))
-    generated_content += "\n== Accelerator cores ==\n"
-    table_columns = ['Accelerator model', 'Family', 'Compute capability', 'RAM size'] + sites + ['Cores total']
-    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_cores'))
+    generated_content += "\n== GPU core counts per GPU model ==\n"
+    table_columns = ['Vendor', 'Model', 'Memory', 'Compute capability'] + sites + ['Cores total']
+    generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'gpu_cores'))
 
     generated_content += "\n= Networking =\n"
     generated_content += "\n== Network interconnects ==\n"
