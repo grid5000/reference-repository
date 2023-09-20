@@ -261,7 +261,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Accelerator counts per type ==\n"
     table_columns = ['Vendor', 'Type'] + sites + ['Accelerators total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_families'))
-    table_columns = ['Vendor', 'Type', 'Model', 'Memory', 'Compute capability'] + sites + ['Accelerators total']
+    table_columns = ['Vendor', 'Type', 'Model', 'Memory'] + sites + ['Accelerators total']
     generated_content += "\n== Accelerator counts per model ==\n"
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_models'))
     generated_content += "\n== GPU core counts per GPU model ==\n"
