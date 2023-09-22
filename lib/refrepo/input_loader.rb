@@ -768,7 +768,7 @@ def add_gpu_information(h)
     site.fetch('clusters', {}).each_pair do |_cluster_uid, cluster|
       cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         node['gpu_devices']&.each do |_, v|
-          v['cores'] = GPURef.getNumberOfCoresFor(v['model'])
+          v['cores'] = GPURef.get_cores(v['model'])
           if v['vendor'] == 'Nvidia'
             v['compute_capability'] = GPURef.get_compute_capability(v['model'])
           end

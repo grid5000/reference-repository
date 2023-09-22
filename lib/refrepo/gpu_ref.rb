@@ -199,7 +199,7 @@ class GPURef
   }
 
 
-  def self.getNumberOfCoresFor(model)
+  def self.get_cores(model)
     if @@gpus[model]
       return @@gpus[model]['cores']
     else
