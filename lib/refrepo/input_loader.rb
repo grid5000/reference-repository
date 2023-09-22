@@ -21,15 +21,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
         # Load YAML
         if /\.y.*ml\.erb$/.match(filename)
           # For files with .erb.yaml extensions, process the template before loading the YAML.
-          file_hash = YAML::load(
-            ERB.new(File.read(filename)).result(binding),
-            permitted_classes: [Date, Time]
-          )
+          file_hash = YAML::load(ERB.new(File.read(filename)).result(binding))
         else
-          file_hash = YAML::load_file(
-            filename,
-            permitted_classes: [Date, Time]
-          )
+          file_hash = YAML::load_file(filename)
         end
       if not file_hash
         raise StandardError.new("loaded hash is empty")
