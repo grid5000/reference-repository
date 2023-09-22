@@ -1174,9 +1174,6 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     # (2-b) Detect existing resource_ids and {CPU, CORE, CPUSET, GPU}'s IDs
     ############################################
 
-    # Detect if the cluster is new, or if it is already known by OAR
-    is_a_new_cluster = cluster_resources.select{|x| x["cluster"] == cluster_name}.length == 0
-
     # <phys_rsc_map> is a hash that centralises variables that will be used for managing IDs of CPUs, COREs, GPUs of
     # the cluster that is going to be updated. <phys_rsc_map> is useful to detect situations where the current number
     # of resources associated to a cluster does not correspond to the needs of the cluster.
@@ -1199,47 +1196,37 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     }
 
     # For each physical ressource, we prepare a list of IDs:
-    #   a) if the cluster is new: the IDs is a list of number in [max_resource_id, max_resource_id + cluster_resource_count]
-    #   a) if the cluster is not new: the IDs is the list of existing resources
+    #   a) we start with the IDs of the list of existing resources
+    #   b) we add more if needed
     phys_rsc_map.each do |physical_resource, variables|
-      # if it's a new cluster, or the cluster doesn't have resource ids for this kind of resources
-      if is_a_new_cluster or cluster_resources.map{|r| r[physical_resource]}.select{|x| not x.nil?}.empty?
-        variables[:current_ids] = [*next_rsc_ids[physical_resource]+1..next_rsc_ids[physical_resource]+variables[:per_cluster_count]]
+      current_ids = cluster_resources.map{|r| r[physical_resource]}.select{|x| not x.nil?}.uniq
+      if current_ids.length > variables[:per_cluster_count]
+        raise "#{physical_resource}: too many IDs in OAR compared to what we need to generate. This case needs to be fixed manually."
+      elsif current_ids.length < variables[:per_cluster_count]
+        # there are less resources currently affected to that cluster than what is needed. affect more and bump next_rsc_ids
+        needed = variables[:per_cluster_count] - current_ids.length
+        current_ids += [*next_rsc_ids[physical_resource]+1..next_rsc_ids[physical_resource]+needed]
         next_rsc_ids[physical_resource] = variables[:per_server_count] > 0 ? variables[:current_ids].max : next_rsc_ids[physical_resource]
       else
-        variables[:current_ids] = cluster_resources.map{|r| r[physical_resource]}.select{|x| not x.nil?}.uniq
+        # that's OK, nothing to do
       end
+      variables[:current_ids] = current_ids
     end
 
-    if is_a_new_cluster
-      oar_resource_ids = phys_rsc_map["core"][:current_ids].map{|_r| -1}
-    else
-      oar_resource_ids = cluster_resources.map{|r| r["id"]}.uniq
-    end
-
-    phys_rsc_map.each do |physical_resource, variables|
-      # Try to detect case where an existing cluster is misconfigured: too many or too few OAR resources
-      phys_rsc_ids = variables[:current_ids]
-      expected_phys_rsc_count = variables[:per_cluster_count]
-
-      if phys_rsc_ids.length != expected_phys_rsc_count
-        if ["cpu", "core", "gpu"].include? physical_resource
-          puts("#{physical_resource.upcase} has an unexpected number of resources (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}).")
-          if ["cpu", "core"].include? physical_resource # this problem is not fatal for GPUs
-            raise "unexpected number (current:#{phys_rsc_ids.length} vs expected:#{expected_phys_rsc_count}) of resources for cluster #{cluster_name}"
-          end
-        end
-      end
-
-      variables[:current_ids] = phys_rsc_ids
+    oar_resource_ids = cluster_resources.map{|r| r["id"]}.uniq
+    if oar_resource_ids.length < phys_rsc_map["core"][:current_ids].length
+      # the cluster has less resource ids than needed (because resources were added to it)
+      needed = phys_rsc_map["core"][:current_ids].length - oar_resource_ids.length
+      # -1 here asks to generate the resources, not add them
+      oar_resource_ids += [*1..needed].map { -1 }
     end
 
     # Some cluster (econome) have attributed resources according to the "alpha-numerical" order of nodes
     # ([1, 11, 12, ..., 3] instead of [1, 2, 3, 4, ...]). Here we preserve to order of existing nodes of the cluster
-    if is_a_new_cluster
+    nodes_names = cluster_resources.map{|r| r["host"]}.map{|fqdn| {:fqdn => fqdn, :name => fqdn.split(".")[0]}}.uniq
+    if nodes_names.length != node_count
+      # some missing nodes. we regenerate the list from scratch
       nodes_names = (1..node_count).map {|i| {:name => "#{cluster_name}-#{i}", :fqdn => "#{cluster_name}-#{i}.#{site_name}.grid5000.fr"}}
-    else
-      nodes_names = cluster_resources.map{|r| r["host"]}.map{|fqdn| {:fqdn => fqdn, :name => fqdn.split(".")[0]}}.uniq
     end
 
     ############################################
