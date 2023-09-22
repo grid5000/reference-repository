@@ -207,6 +207,22 @@ class GPURef
     end
   end
 
+  def self.get_microarch(model)
+    if @@gpus[model]
+      return @@gpus[model]['microarch']
+    else
+      raise "Fix me: #{model} is missing"
+    end
+  end
+
+  def self.get_performance(model)
+    if @@gpus[model]
+      return @@gpus[model]['performance']
+    else
+      raise "Fix me: #{model} is missing"
+    end
+  end
+
   def self.model2shortname(model)
     if @@gpus[model]
       return @@gpus[model]['short_name']
