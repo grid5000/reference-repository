@@ -65,14 +65,14 @@ class G5KHardwareGenerator < WikiGenerator
             init(data, 'core_architectures', key)
             data['core_architectures'][key][site_uid] += cluster_cores
 
-            key = [vendor, model, architecture]
+            key = [vendor, model, { text: architecture, sort: architecture }]
             init(data, 'proc_families', key)
             data['proc_families'][key][site_uid] += cluster_procs
 
             init(data, 'core_families', key)
             data['core_families'][key][site_uid] += cluster_cores
 
-            key = [vendor, {text: proc_desc, sort: get_date(microarchitecture) + ', ' + proc_desc.to_s}, {text: microarchitecture || ' ', sort: get_date(microarchitecture) + ', ' + microarchitecture.to_s}, architecture]
+            key = [vendor, {text: proc_desc, sort: get_date(microarchitecture) + ', ' + proc_desc.to_s}, {text: microarchitecture || ' ', sort: get_date(microarchitecture) + ', ' + microarchitecture.to_s}, { text: architecture, sort: architecture }]
             init(data, 'proc_models', key)
             data['proc_models'][key][site_uid] += cluster_procs
 
@@ -199,11 +199,11 @@ class G5KHardwareGenerator < WikiGenerator
                   mem = RefRepo::Utils.get_as_gb(acc['memory'])
                 end
 
-                key = [vendor, acc_type.to_s]
+                key = [vendor, { text: acc_type.to_s, sort: acc_type.to_s } ]
                 init(data, 'acc_families', key)
                 data['acc_families'][key][site_uid] += 1
 
-                key = [vendor, acc_type.to_s, model, { text: "#{mem}GB", sort: mem }, compute_capability]
+                key = [vendor, { text: acc_type.to_s, sort: acc_type.to_s }, model, { text: "#{mem}GB", sort: mem }]
                 init(data, 'acc_models', key)
                 data['acc_models'][key][site_uid] += 1
 
@@ -261,7 +261,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Accelerator counts per type ==\n"
     table_columns = ['Vendor', 'Type'] + sites + ['Accelerators total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_families'))
-    table_columns = ['Vendor', 'Type', 'Model', 'Memory', 'Compute capability'] + sites + ['Accelerators total']
+    table_columns = ['Vendor', 'Type', 'Model', 'Memory'] + sites + ['Accelerators total']
     generated_content += "\n== Accelerator counts per model ==\n"
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_models'))
     generated_content += "\n== GPU core counts per GPU model ==\n"
