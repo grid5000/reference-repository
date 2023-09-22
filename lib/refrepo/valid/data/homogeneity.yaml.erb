@@ -220,6 +220,17 @@ rennes:
   parasilo-[25-26]:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:2:0.firmware_version
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:2:0.model
+  abacus25-3:
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:2:1:0.model
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:2:1:0.firmware_version
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:2:2:0.firmware_version
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:2:3:0.firmware_version
+  abacus25-4:
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:2:2:0.model
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:2:2:0.firmware_version
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:2:3:0.model
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:2:3:0.firmware_version
+    - -gpu_devices.nvidia2
 sophia:
   uvb-13:
     - -chassis.serial
