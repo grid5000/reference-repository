@@ -209,7 +209,7 @@ class G5KHardwareGenerator < WikiGenerator
                 data['acc_models'][key][site_uid] += 1
 
                 if acc_type == :GPU
-                  key = [vendor, model, microarchitecture, { text: "#{mem}GB", sort: mem }, compute_capability]
+                  key = [vendor, model, {text: microarchitecture, sort: get_date(microarchitecture) + ', ' + microarchitecture}, { text: "#{mem}GB", sort: mem }, compute_capability]
                   init(data, 'gpu_cores', key)
                   data['gpu_cores'][key][site_uid] += cores
                 end
@@ -357,6 +357,15 @@ class G5KHardwareGenerator < WikiGenerator
       'Vulcan' => '2018',
       'Ice Lake' => '2021',
       'Carmel' => '2018',
+      'Vega20' => '2018',
+      'Ampere' => '2020',
+      'Turing' => '2018',
+      'Maxwell' => '2014',
+      'Kepler' => '2012',
+      'Pascal' => '2016',
+      'Volta' => '2017',
+      'Fermi' => '2010',
+      'Tegra' => '2018'
     }
     date = release_dates[microarchitecture]
     raise "ERROR: microarchitecture not found: '#{microarchitecture}'. Add in hardware.rb" if date.nil?
