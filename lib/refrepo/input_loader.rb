@@ -771,7 +771,7 @@ def add_gpu_information(h)
       cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         node['gpu_devices']&.each do |_, v|
           v['cores'] = GPURef.get_cores(v['model'])
-          v['microarch'] = GPURef.get_microarch(v['model'])
+          v['microarchitecture'] = GPURef.get_microarchitecture(v['model'])
           v['performance'] = GPURef.get_performance(v['model'])
           if v['vendor'] == 'Nvidia'
             v['compute_capability'] = GPURef.get_compute_capability(v['model'])
