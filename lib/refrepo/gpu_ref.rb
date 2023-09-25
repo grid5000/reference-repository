@@ -189,7 +189,7 @@ class GPURef
       'compute_capability' => '7.2',
       'short_name'         => 'AGX Xavier',
       'alias'              => 'agx-xavier',
-      'microarchitecture'  => 'Tegra',
+      'microarchitecture'  => 'Volta',
       'performance'        => {
         'fp-16' => 2820000000000,
         'fp-32' => 1410000000000,
