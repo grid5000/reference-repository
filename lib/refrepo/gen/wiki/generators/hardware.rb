@@ -186,6 +186,7 @@ class G5KHardwareGenerator < WikiGenerator
                   model = GPURef.model2shortname(acc['model'])
                   cores = acc['cores']
                   compute_capability = acc.has_key?('compute_capability') ? acc['compute_capability'] : "N/A"
+                  microarchitecture = acc['microarchitecture']
                   mem = RefRepo::Utils.get_as_gb(acc['memory'])
                 when :MIC
                   vendor = acc['mic_vendor']
@@ -208,7 +209,7 @@ class G5KHardwareGenerator < WikiGenerator
                 data['acc_models'][key][site_uid] += 1
 
                 if acc_type == :GPU
-                  key = [vendor, model, { text: "#{mem}GB", sort: mem }, compute_capability]
+                  key = [vendor, model, microarchitecture, { text: "#{mem}GB", sort: mem }, compute_capability]
                   init(data, 'gpu_cores', key)
                   data['gpu_cores'][key][site_uid] += cores
                 end
@@ -265,7 +266,7 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Accelerator counts per model ==\n"
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_models'))
     generated_content += "\n== GPU core counts per GPU model ==\n"
-    table_columns = ['Vendor', 'Model', 'Memory', 'Compute capability'] + sites + ['Cores total']
+    table_columns = ['Vendor', 'Model', 'Microarch', 'Memory', 'Compute capability'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'gpu_cores'))
 
     generated_content += "\n= Networking =\n"
