@@ -10,7 +10,7 @@ class GPURef
       'compute_capability' => '7.5',
       'short_name'         => 'RTX 2080 Ti',
       'alias'              => 'rtx2080ti',
-      'microarchitecture'          => 'Turing',
+      'microarchitecture'  => 'Turing',
       'performance'        => {
         'fp-16' => 26900000000000,
         'fp-32' => 13450000000000,
@@ -22,7 +22,7 @@ class GPURef
       'compute_capability' => '6.1',
       'short_name'         => 'GTX 1080 Ti',
       'alias'              => 'gtx1080ti',
-      'microarchitecture'          => 'Pascal',
+      'microarchitecture'  => 'Pascal',
       'performance'        => {
         'fp-16' => 177200000000,
         'fp-32' => 11340000000000,
@@ -34,7 +34,7 @@ class GPURef
       'compute_capability' => '6.0',
       'short_name'         => 'Tesla P100',
       'alias'              => 'p100-pcie-16',
-      'microarchitecture'          => 'Pascal',
+      'microarchitecture'  => 'Pascal',
       'performance'        => {
         'fp-16' => 19050000000000,
         'fp-32' => 9526000000000,
@@ -46,7 +46,7 @@ class GPURef
       'compute_capability' => '6.0',
       'short_name'         => 'Tesla P100',
       'alias'              => 'p100-sxm2-16',
-      'microarchitecture'          => 'Pascal',
+      'microarchitecture'  => 'Pascal',
       'performance'        => {
         'fp-16' => 21220000000000,
         'fp-32' => 10610000000000,
@@ -58,7 +58,7 @@ class GPURef
       'compute_capability' => '7.0',
       'short_name'         => 'Tesla V100',
       'alias'              => 'v100-pcie-32',
-      'microarchitecture'          => 'Volta',
+      'microarchitecture'  => 'Volta',
       'performance'        => {
         'fp-16' => 28260000000000,
         'fp-32' => 14130000000000,
@@ -70,7 +70,7 @@ class GPURef
       'compute_capability' => '7.0',
       'short_name'         => 'Tesla V100',
       'alias'              => 'v100-sxm2-32',
-      'microarchitecture'          => 'Volta',
+      'microarchitecture'  => 'Volta',
       'performance'        => {
         'fp-16' => 28260000000000,
         'fp-32' => 14130000000000,
@@ -82,7 +82,7 @@ class GPURef
       'compute_capability' => '2.0',
       'short_name'         => 'Tesla M2075',
       'alias'              => 'm2075',
-      'microarchitecture'          => 'Maxwell',
+      'microarchitecture'  => 'Maxwell',
       'performance'        => {
         'fp-16' => 0,
         'fp-32' => 1028000000000,
@@ -94,7 +94,7 @@ class GPURef
       'compute_capability' => '5.2',
       'short_name'         => 'GTX 980',
       'alias'              => 'gtx980',
-      'microarchitecture'          => 'Fermi',
+      'microarchitecture'  => 'Fermi',
       'performance'        => {
         'fp-16' => 0,
         'fp-32' => 4981000000000,
@@ -106,7 +106,7 @@ class GPURef
       'compute_capability' => '3.5',
       'short_name'         => 'Tesla K40M',
       'alias'              => 'k40m',
-      'microarchitecture'          => 'Kepler',
+      'microarchitecture'  => 'Kepler',
       'performance'        => {
         'fp-16' => 0,
         'fp-32' => 5046000000000,
@@ -118,7 +118,7 @@ class GPURef
       'compute_capability' => '7.5',
       'short_name'         => 'Tesla T4',
       'alias'              => 't4',
-      'microarchitecture'          => 'Turing',
+      'microarchitecture'  => 'Turing',
       'performance'        => {
         'fp-16' => 65130000000000,
         'fp-32' => 8141000000000,
@@ -130,7 +130,7 @@ class GPURef
       'compute_capability' => '8.0',
       'short_name'         => 'A100',
       'alias'              => 'a100-pcie-40',
-      'microarchitecture'          => 'Ampere',
+      'microarchitecture'  => 'Ampere',
       'performance'        => {
         'fp-16' => 77970000000000,
         'fp-32' => 19490000000000,
@@ -142,7 +142,7 @@ class GPURef
       'compute_capability' => '8.0',
       'short_name'         => 'A100',
       'alias'              => 'a100-sxm4-40',
-      'microarchitecture'          => 'Ampere',
+      'microarchitecture'  => 'Ampere',
       'performance'        => {
         'fp-16' => 77970000000000,
         'fp-32' => 19490000000000,
@@ -154,7 +154,7 @@ class GPURef
       'compute_capability' => '8.6',
       'short_name'         => 'A40',
       'alias'              => 'a40',
-      'microarchitecture'          => 'Ampere',
+      'microarchitecture'  => 'Ampere',
       'performance'        => {
         'fp-16' => 37420000000000,
         'fp-32' => 37420000000000,
@@ -166,7 +166,7 @@ class GPURef
       'compute_capability' => '7.5',
       'short_name'         => 'Quadro RTX 6000',
       'alias'              => 'rtx6000',
-      'microarchitecture'          => 'Turing',
+      'microarchitecture'  => 'Turing',
       'performance'        => {
         'fp-16' => 32620000000000,
         'fp-32' => 16310000000000,
@@ -177,7 +177,7 @@ class GPURef
       'cores'              => 5120,
       'short_name'         => 'MI50',
       'alias'              => 'mi50-32',
-      'microarchitecture'          => 'Vega20',
+      'microarchitecture'  => 'Vega20',
       'performance'        => {
         'fp-16' => 26820000000000,
         'fp-32' => 13410000000000,
@@ -189,7 +189,7 @@ class GPURef
       'compute_capability' => '7.2',
       'short_name'         => 'AGX Xavier',
       'alias'              => 'agx-xavier',
-      'microarchitecture'  => 'Tegra',
+      'microarchitecture'  => 'Volta',
       'performance'        => {
         'fp-16' => 2820000000000,
         'fp-32' => 1410000000000,

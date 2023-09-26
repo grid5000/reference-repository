@@ -186,29 +186,32 @@ class G5KHardwareGenerator < WikiGenerator
                   model = GPURef.model2shortname(acc['model'])
                   cores = acc['cores']
                   compute_capability = acc.has_key?('compute_capability') ? acc['compute_capability'] : "N/A"
+                  microarchitecture = acc['microarchitecture']
                   mem = RefRepo::Utils.get_as_gb(acc['memory'])
                 when :MIC
                   vendor = acc['mic_vendor']
                   model = acc['mic_model']
                   compute_capability = { text: "N/A", sort: 0 }
+                  microarchitecture = 'N/A'
                   mem = RefRepo::Utils.get_as_gb(acc['mic_memory'])
                 when :FPGA
                   vendor = acc['vendor']
                   model = acc['model']
                   compute_capability = { text: "N/A", sort: 0 }
+                  microarchitecture = 'N/A'
                   mem = RefRepo::Utils.get_as_gb(acc['memory'])
                 end
 
                 key = [vendor, { text: acc_type.to_s, sort: acc_type.to_s } ]
                 init(data, 'acc_families', key)
                 data['acc_families'][key][site_uid] += 1
-
-                key = [vendor, { text: acc_type.to_s, sort: acc_type.to_s }, model, { text: "#{mem}GB", sort: mem }]
+                
+                key = [vendor, { text: acc_type.to_s, sort: acc_type.to_s }, model, {text: microarchitecture, sort: get_date(microarchitecture) + ', ' + microarchitecture}, { text: "#{mem}GB", sort: mem }]
                 init(data, 'acc_models', key)
                 data['acc_models'][key][site_uid] += 1
 
                 if acc_type == :GPU
-                  key = [vendor, model, { text: "#{mem}GB", sort: mem }, compute_capability]
+                  key = [vendor, model, {text: microarchitecture, sort: get_date(microarchitecture) + ', ' + microarchitecture}, { text: "#{mem}GB", sort: mem }, compute_capability]
                   init(data, 'gpu_cores', key)
                   data['gpu_cores'][key][site_uid] += cores
                 end
@@ -261,11 +264,11 @@ class G5KHardwareGenerator < WikiGenerator
     generated_content += "\n== Accelerator counts per type ==\n"
     table_columns = ['Vendor', 'Type'] + sites + ['Accelerators total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_families'))
-    table_columns = ['Vendor', 'Type', 'Model', 'Memory'] + sites + ['Accelerators total']
+    table_columns = ['Vendor', 'Type', 'Model', 'Microarch', 'Memory'] + sites + ['Accelerators total']
     generated_content += "\n== Accelerator counts per model ==\n"
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'acc_models'))
     generated_content += "\n== GPU core counts per GPU model ==\n"
-    table_columns = ['Vendor', 'Model', 'Memory', 'Compute capability'] + sites + ['Cores total']
+    table_columns = ['Vendor', 'Model', 'Microarch', 'Memory', 'Compute capability'] + sites + ['Cores total']
     generated_content += MW.generate_table(table_options, table_columns, get_table_data(data, 'gpu_cores'))
 
     generated_content += "\n= Networking =\n"
@@ -356,6 +359,15 @@ class G5KHardwareGenerator < WikiGenerator
       'Vulcan' => '2018',
       'Ice Lake' => '2021',
       'Carmel' => '2018',
+      'Vega20' => '2018',
+      'Ampere' => '2020',
+      'Turing' => '2018',
+      'Maxwell' => '2014',
+      'Kepler' => '2012',
+      'Pascal' => '2016',
+      'Volta' => '2017',
+      'Fermi' => '2010',
+      'N/A' => '&nbsp;',
     }
     date = release_dates[microarchitecture]
     raise "ERROR: microarchitecture not found: '#{microarchitecture}'. Add in hardware.rb" if date.nil?
