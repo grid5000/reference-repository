@@ -366,7 +366,8 @@ class G5KHardwareGenerator < WikiGenerator
       'Kepler' => '2012',
       'Pascal' => '2016',
       'Volta' => '2017',
-      'Fermi' => '2010'
+      'Fermi' => '2010',
+      'N/A' => '&nbsp;',
     }
     date = release_dates[microarchitecture]
     raise "ERROR: microarchitecture not found: '#{microarchitecture}'. Add in hardware.rb" if date.nil?
