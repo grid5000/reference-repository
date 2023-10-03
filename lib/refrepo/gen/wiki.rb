@@ -12,6 +12,7 @@ require 'refrepo/gen/wiki/generators/environments'
 require 'refrepo/gen/wiki/generators/licenses'
 require 'refrepo/gen/wiki/generators/kwollect_metrics'
 require 'refrepo/gen/wiki/generators/oarsub_simplifier_aliases'
+require 'refrepo/gen/wiki/generators/modules_list'
 
 module RefRepo::Gen::Wiki
 
@@ -55,6 +56,10 @@ module RefRepo::Gen::Wiki
     'oarsub_simplifier_aliases' => {
       :gen => OarsubSimplifierAliasesGenerator,
       :page => 'Generated/OarsubSimplifierAliases'
+    },
+    'modules_list' => {
+      :gen => ModulesList,
+      :page => 'Generated/ModulesList'
     }
   }
   SITE_GENERATORS = {
