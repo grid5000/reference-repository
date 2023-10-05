@@ -16,14 +16,21 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
     # => List deepest files first as they have lowest priority when hash keys are duplicated.
     list_of_yaml_files = Dir['**/*.y*ml', '**/*.y*ml.erb'].sort_by { |x| -x.count('/') }
 
+    load_args = {}
+    if ::Gem::Version.new(RUBY_VERSION) >= ::Gem::Version.new("3.1.0")
+      # Fix compatibility with ruby 3.1
+      load_args[:permitted_classes] = [Date, Time]
+      load_args[:aliases] = true
+    end
+
     list_of_yaml_files.each { |filename|
       begin
         # Load YAML
         if /\.y.*ml\.erb$/.match(filename)
           # For files with .erb.yaml extensions, process the template before loading the YAML.
-          file_hash = YAML::load(ERB.new(File.read(filename)).result(binding))
+          file_hash = YAML::load(ERB.new(File.read(filename)).result(binding), **load_args)
         else
-          file_hash = YAML::load_file(filename)
+          file_hash = YAML::load_file(filename, **load_args)
         end
       if not file_hash
         raise StandardError.new("loaded hash is empty")
