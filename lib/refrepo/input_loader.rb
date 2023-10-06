@@ -708,7 +708,7 @@ def get_flops_per_cycle(microarch, cpu_name)
     case cpu_name
     when /Silver 4110/, /Gold 5218/, /Gold 5220/
       return 16
-    when /Gold 6126/, /Gold 6130/
+    when /Gold 6126/, /Gold 6130/, /Gold 6254/
       return 32
     end
   # 4 64-bit FPUs, x2 for Fused Multiply-Add
