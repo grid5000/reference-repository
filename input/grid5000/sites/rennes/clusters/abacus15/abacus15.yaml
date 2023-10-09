@@ -27,13 +27,18 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
+        management: true
         enabled: true
         mountable: false
         mounted: false
+        mac: f4:02:70:b3:e4:9a
+        ip: 172.17.109.15
       eth0:
         enabled: true
         mountable: true
         mounted: true
+        mac: e4:43:4b:94:95:32
+        ip: 172.16.109.15
       eth1:
         enabled: false
         mountable: false
@@ -49,10 +54,3 @@ nodes:
     supported_job_types:
       max_walltime: 345600
 
-    network_adapters:
-      bmc:
-        mac: f4:02:70:b3:e4:9a
-        ip: 172.17.109.15
-      eth0:
-        mac: e4:43:4b:94:95:32
-        ip: 172.16.109.15

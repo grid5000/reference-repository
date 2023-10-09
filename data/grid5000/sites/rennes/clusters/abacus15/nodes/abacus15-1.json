@@ -20,15 +20,32 @@
   "network_adapters": [
     {
       "device": "eth0",
+      "enabled": true,
       "ip": "172.16.109.15",
       "kavlan": false,
-      "mac": "e4:43:4b:94:95:32"
+      "mac": "e4:43:4b:94:95:32",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "abacus15-1.rennes.grid5000.fr"
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
     },
     {
       "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
       "ip": "172.17.109.15",
       "kavlan": false,
-      "mac": "f4:02:70:b3:e4:9a"
+      "mac": "f4:02:70:b3:e4:9a",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "abacus15-1-bmc.rennes.grid5000.fr"
     }
   ],
   "performance": {
