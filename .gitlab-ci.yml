@@ -23,9 +23,7 @@ include:
       - DEBIAN_VERSION: [bullseye, bookworm]
   image: debian:$DEBIAN_VERSION
   before_script:
-    # This cache is configured in '.base'
-    - export APT_CACHE_DIR=`pwd`/vendor/apt && mkdir -pv $APT_CACHE_DIR
-    - apt-get update && apt-get -o dir::cache::archives="$APT_CACHE_DIR" -y --no-install-recommends install build-essential wget git ruby ruby-dev bundler rake gpg clustershell graphviz
+    - apt-get update && apt-get -y --no-install-recommends install build-essential wget git ruby ruby-dev bundler rake gpg clustershell graphviz
     # Call the original before_script section
     - !reference [.base, before_script]
 
@@ -40,7 +38,7 @@ validate-data:
     - bundle exec rake valid:duplicates
 
 wikigen:
-  extends: .template-test
+  extends: .template-refrepo
   stage: validate
   allow_failure: true
   parallel:
