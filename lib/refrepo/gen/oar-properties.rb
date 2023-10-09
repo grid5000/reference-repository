@@ -1217,7 +1217,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
     if oar_resource_ids.length < phys_rsc_map["core"][:current_ids].length
       # the cluster has less resource ids than needed (because resources were added to it)
       needed = phys_rsc_map["core"][:current_ids].length - oar_resource_ids.length
-      # -1 here asks to generate the resources, not add them
+      # -1 here asks to generate the resources, not change them
       oar_resource_ids += [*1..needed].map { -1 }
     end
 
