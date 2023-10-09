@@ -1,0 +1,52 @@
+model: Dell R740
+created_at: 2023-10-09
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - testing
+  - admin
+nodes:
+  abacus4-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 10
+      nb_threads: 20
+      platform_type: x86_64
+    bios:
+      vendor: Dell Inc.
+    processor:
+      microarchitecture: Zen 3
+      clock_speed: 2650000000
+      other_description: Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+        mac: 50:9a:4c:b1:0e:1e
+        ip: 172.17.109.4
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
+        mac: 24:6e:96:6e:9d:31
+        ip: 172.16.109.4
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
