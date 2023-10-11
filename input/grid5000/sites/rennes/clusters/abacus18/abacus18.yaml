@@ -1,0 +1,60 @@
+model: PowerEdge R7525
+created_at: 2023-10-11
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  abacus18-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+    processor:
+      microarchitecture: Zen 2
+      clock_speed: 2300000000
+      other_description: AMD EPYC 7352 24-Core Processor
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+        mac: 70:b5:e8:de:e4:08
+        ip: 172.17.109.18
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        mac: F4:02:70:B9:60:4E
+        ip: 172.16.109.18
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SATA
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk1:
+        id: disk1
+        interface: SATA
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
