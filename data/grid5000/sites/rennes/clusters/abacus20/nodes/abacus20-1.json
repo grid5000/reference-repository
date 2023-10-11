@@ -1,15 +1,95 @@
 {
   "architecture": {
-    "nb_cores": 32,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 48,
     "nb_procs": 2,
-    "nb_threads": 64,
+    "nb_threads": 96,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "11/09/2020",
+    "vendor": "Dell Inc.",
+    "version": "2.9.4"
+  },
+  "bmc_version": "4.40",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge T640",
+    "serial": "CD0KH93"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 47768928256,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 8000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 47768928256,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 8000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 47768928256,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 8000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 47768928256,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 8000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.03",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+    "ram_size": 824633720832
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,22 +98,141 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 68719476736,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "214.4.91.1/pkg 21.65.33.33",
       "interface": "Ethernet",
       "ip": "172.16.109.20",
       "ip6": "2001:660:4406:700:e::14",
       "kavlan": false,
       "mac": "70:b5:e8:e6:cf:d0",
+      "management": false,
+      "model": "BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller",
       "mountable": true,
       "mounted": true,
+      "name": "eth0",
       "network_address": "abacus20-1.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "214.4.91.1/pkg 21.65.33.33",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "70:b5:e8:e6:cf:d1",
+      "management": false,
+      "model": "BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "eth1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth2",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "7.10 0x800075df 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "f8:f2:1e:cb:4d:90",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eth2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "7.10 0x800075df 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "f8:f2:1e:cb:4d:91",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eth3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -48,15 +247,33 @@
       "network_address": "abacus20-1-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 35200000000,
-    "node_flops": 1126400000000
+    "node_flops": 1689600000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 37486592,
     "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Cascade Lake-SP",
-    "other_description": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz"
+    "microcode": "0x5003604",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Gold 5220R"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -65,22 +282,26 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5002538e00b0e3e7",
       "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:0:0:0",
+      "firmware_version": "HG57",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
+      "interface": "SATA",
+      "model": "MZ7LH480HBHQ0D3",
+      "size": 480103981056,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Samsung"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5002538b20792ca0",
       "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:0:1:0",
+      "firmware_version": "DSA3",
       "id": "disk1",
-      "interface": "SAS",
-      "model": "unknown",
+      "interface": "SATA",
+      "model": "MZILT1T9HBJR0D3",
+      "size": 1920383410176,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Samsung"
     }
   ],
   "supported_job_types": {
@@ -90,7 +311,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "abacus20-1"
