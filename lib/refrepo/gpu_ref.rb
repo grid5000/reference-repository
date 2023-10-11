@@ -3,6 +3,9 @@
 NVIDIA = 'Nvidia'
 MINIMAL_COMPUTE_CAPABILITY_SUPPORTED = 3.0
 
+# Sources to fill this data:
+# - https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units
+# - https://www.techpowerup.com/gpu-specs/
 class GPURef
   @@gpus = {
     'GeForce RTX 2080 Ti' => {
@@ -166,6 +169,18 @@ class GPURef
       'compute_capability' => '7.5',
       'short_name'         => 'Quadro RTX 6000',
       'alias'              => 'rtx6000',
+      'microarchitecture'  => 'Turing',
+      'performance'        => {
+        'fp-16' => 32620000000000,
+        'fp-32' => 16310000000000,
+        'fp-64' => 510000000000,
+      },     
+    },
+    'Quadro RTX 8000' => {
+      'cores'              => 4608,
+      'compute_capability' => '7.5',
+      'short_name'         => 'Quadro RTX 8000',
+      'alias'              => 'rtx8000',
       'microarchitecture'  => 'Turing',
       'performance'        => {
         'fp-16' => 32620000000000,
