@@ -1,0 +1,43 @@
+model: Dell PowerEdge C6420
+created_at: 2023-10-06
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - testing
+  - admin
+nodes:
+  roazhon13-[1-8]:
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 604800
+    processor:
+      microarchitecture: Cascade Lake-SP
+      clock_speed: 3100000000
+      other_description: Gold 6254
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+    storage_devices:
+      pci-0000:00:11.5-ata-3:
+        interface: SATA
+        id: disk0
+        model: unknown

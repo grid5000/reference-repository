@@ -1,0 +1,77 @@
+{
+  "architecture": {
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "ip": "172.16.110.45",
+      "kavlan": false,
+      "mac": "3c:fd:fe:74:78:90",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "roazhon13-1.rennes.grid5000.fr"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.110.45",
+      "kavlan": false,
+      "mac": "6c:2b:59:a4:de:70",
+      "mountable": false,
+      "mounted": false
+    }
+  ],
+  "performance": {
+    "core_flops": 99200000000,
+    "node_flops": 3174400000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 3100000000,
+    "microarchitecture": "Cascade Lake-SP",
+    "other_description": "Gold 6254"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023092008",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "id": "disk0",
+      "interface": "SATA",
+      "model": "unknown",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 604800,
+    "queues": [
+      "production",
+      "admin"
+    ]
+  },
+  "type": "node",
+  "uid": "roazhon13-1"
+}
