@@ -695,7 +695,7 @@ def add_pdu_metrics(h)
   end
 end
 
-def get_flops_per_cycle(microarch, cpu_name)
+def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
   # Double precision operations each cycle, sources:
   # https://en.wikipedia.org/wiki/FLOPS
   # https://en.wikichip.org/wiki/WikiChip
@@ -713,7 +713,7 @@ def get_flops_per_cycle(microarch, cpu_name)
     return 32
   when "Cascade Lake-SP", "Skylake"
     case cpu_name
-    when /Silver 4110/, /Gold 5218/, /Gold 5220/
+    when /Silver 4110/, /Gold 5218/, /Gold 5220/, /Gold 5118/
       return 16
     when /Gold 6126/, /Gold 6130/
       return 32
@@ -725,15 +725,15 @@ def get_flops_per_cycle(microarch, cpu_name)
   when /Carmel/
     return 8
   end
-  raise "Error: Unknown CPU architecture, cannot compute flops"
+  raise "Error: Unknown CPU architecture for cluster #{cluster_uid}, cannot compute flops"
 end
 
 def add_theorical_flops(h)
   h['sites'].each_pair do |_site_uid, site|
-    site.fetch('clusters', {}).each_pair do |_cluster_uid, cluster|
+    site.fetch('clusters', {}).each_pair do |cluster_uid, cluster|
       cluster['nodes'].select { |_k, v| v['status'] != 'retired' }.each_pair do |_node_uid, node|
         node['performance'] = {}
-        node['performance']['core_flops'] =  node['processor']['clock_speed'].to_i * get_flops_per_cycle(node['processor']['microarchitecture'], node['processor']['other_description'])
+        node['performance']['core_flops'] =  node['processor']['clock_speed'].to_i * get_flops_per_cycle(node['processor']['microarchitecture'], node['processor']['other_description'], cluster_uid)
         node['performance']['node_flops'] = node['architecture']['nb_cores'].to_i * node['performance']['core_flops'].to_i
       end
     end
