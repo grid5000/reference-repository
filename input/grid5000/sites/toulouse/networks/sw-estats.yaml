@@ -29,13 +29,17 @@ sw-estats:
         19: estats-11
         20: estats-12
         33:
-          uid: port-channel1
+          uid: lacp key 1
           kind: channel
+          rate: 10000000000
+          snmp_pattern: "10GigabitEthernet 1/1"
         34:
-          uid: port-channel1
+          uid: lacp key 1
           kind: channel
+          rate: 10000000000
+          snmp_pattern: "10GigabitEthernet 1/2"
   channels:
-    port-channel1:
+    lacp key 1:
       uid: gw
       kind: router
       rate: 20000000000

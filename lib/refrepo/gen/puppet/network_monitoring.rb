@@ -58,6 +58,8 @@ def generate_puppet_network_monitoring(options)
         puts "ERROR: multiple entry for #{fqdn_eq_name} in hiera"
       end
 
+      net_hosts_eq['interfaces'] ||= []
+
       eq_v['linecards'].each do |l|
         next if l == {}
 

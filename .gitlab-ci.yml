@@ -16,8 +16,19 @@ include:
       # Import g5k default stages
       - '/g5k-default-stages.yml'
 
+.template-refrepo:
+  extends: .template-test
+  parallel:
+    matrix:
+      - DEBIAN_VERSION: [bullseye, bookworm]
+  image: debian:$DEBIAN_VERSION
+  before_script:
+    - apt-get update && apt-get -y --no-install-recommends install build-essential wget git ruby ruby-dev bundler rake gpg clustershell graphviz
+    # Call the original before_script section
+    - !reference [.base, before_script]
+
 validate-data:
-  extends: .test-for-bullseye
+  extends: .template-refrepo
   stage: validate
   script:
     # Add G5K CA certificate
@@ -27,15 +38,17 @@ validate-data:
     - bundle exec rake valid:duplicates
 
 wikigen:
-  extends: .test-for-bullseye
+  extends: .template-refrepo
   stage: validate
   allow_failure: true
   parallel:
     matrix:
       - GENERATOR: [cpu_parameters, disk_reservation, environments, group_storage, hardware, kwollect_metrics, oar_properties, status]
         SITE: global
+        DEBIAN_VERSION: [bullseye, bookworm]
       - GENERATOR: [site_hardware, site_network]
         SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia, toulouse]
+        DEBIAN_VERSION: [bullseye, bookworm]
   script:
     - echo "$GRID5000_API" > "${HOME}/.grid5000_api.yml"
     - bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=diff
@@ -44,7 +57,7 @@ wikigen:
       - master
 
 generate-reference-api:
-  extends: .test-for-bullseye
+  extends: .template-refrepo
   stage: generate
   script:
     - export TZ=Europe/Paris
@@ -63,14 +76,14 @@ deploy:
 
 rspec:
   stage: deploy  # we use 'deploy' here to avoid blocking on this when updating the ref-repo
-  extends: .test-for-bullseye
+  extends: .template-refrepo
   script:
     - export TZ=Europe/Paris
     - bundle exec rspec
 
 valid-homogeneity:
   stage: deploy
-  extends: .test-for-bullseye
+  extends: .template-refrepo
   script:
     - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
     - /usr/sbin/update-ca-certificates
