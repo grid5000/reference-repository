@@ -4,6 +4,7 @@ stages:
   - validate
   - generate
   - deploy
+  - wikigen
 
 include:
   - project: 'grid5000/grid5000-gitlab-templates'
@@ -39,7 +40,7 @@ validate-data:
 
 wikigen:
   extends: .template-refrepo
-  stage: validate
+  stage: wikigen
   allow_failure: true
   parallel:
     matrix:
