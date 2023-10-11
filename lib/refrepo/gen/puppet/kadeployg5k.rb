@@ -73,6 +73,9 @@ def generate_puppet_kadeployg5k(options)
             puts "Warning: #{cluster_uid} has no kadeployg5k#{suffix} config, and isn't in default or production queue."
             puts "Warning: Skipping #{cluster_uid} configuration."
             next
+        elsif overrides.nil?
+          puts "ERROR: #{cluster_uid} has no kadeployg5k#{suffix} config (and is not in queue testing)"
+          exit(1)
         end
 
         dupes = (defaults.to_a & overrides.to_a)
