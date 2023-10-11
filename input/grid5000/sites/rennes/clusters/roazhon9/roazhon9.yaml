@@ -1,0 +1,84 @@
+model: PowerEdge C6420
+created_at: 2023-10-09
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  roazhon9-[1-4]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+    processor:
+      microarchitecture: Skylake
+      clock_speed: 2300000000
+      other_description: Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: HDD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk1:
+        id: disk1
+        interface: SAS
+        storage: HDD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+  roazhon9-1:
+    network_adapters:
+      bmc:
+        mac: 50:9A:4C:78:E8:6B
+        ip: 172.17.110.29
+      eth0:
+        mac: 3c:fd:fe:54:e2:b8
+        ip: 172.16.110.29
+  roazhon9-2:
+    network_adapters:
+      bmc:
+        mac: 50:9A:4C:78:E5:99
+        ip: 172.17.110.30
+      eth0:
+        mac: 3c:fd:fe:54:e2:58
+        ip: 172.16.110.30
+  roazhon9-3:
+    network_adapters:
+      bmc:
+        mac: 50:9A:4C:7C:93:81
+        ip: 172.17.110.31
+      eth0:
+        mac: 3c:fd:fe:54:f0:98
+        ip: 172.16.110.31
+  roazhon9-4:
+    network_adapters:
+      bmc:
+        mac: 50:9A:4C:78:E9:4F
+        ip: 172.17.110.32
+      eth0:
+        mac: 3c:fd:fe:54:ef:d8
+        ip: 172.16.110.32
