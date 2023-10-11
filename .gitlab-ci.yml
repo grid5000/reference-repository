@@ -4,7 +4,7 @@ stages:
   - validate
   - generate
   - deploy
-  - wikigen
+  - checks
 
 include:
   - project: 'grid5000/grid5000-gitlab-templates'
@@ -40,7 +40,7 @@ validate-data:
 
 wikigen:
   extends: .template-refrepo
-  stage: wikigen
+  stage: checks
   allow_failure: true
   parallel:
     matrix:
@@ -76,14 +76,14 @@ deploy:
     - /srv/ci-runner-scripts/bin/update-api-servers
 
 rspec:
-  stage: deploy  # we use 'deploy' here to avoid blocking on this when updating the ref-repo
+  stage: checks  # we use 'checks' here to avoid blocking on this when updating the ref-repo
   extends: .template-refrepo
   script:
     - export TZ=Europe/Paris
     - bundle exec rspec
 
 valid-homogeneity:
-  stage: deploy
+  stage: checks
   extends: .template-refrepo
   script:
     - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
