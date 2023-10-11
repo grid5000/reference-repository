@@ -1,0 +1,50 @@
+model: Dell PowerEdge T640
+created_at: 2023-10-11
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  abacus20-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+    processor:
+      microarchitecture: Cascade Lake-SP
+      clock_speed: 2200000000
+      other_description: Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+        mac: 70:b5:e8:e6:cf:e0
+        ip: 172.17.109.20
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        mac: 70:b5:e8:e6:cf:d0
+        ip: 172.16.109.20
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
