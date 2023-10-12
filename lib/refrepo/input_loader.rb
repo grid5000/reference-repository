@@ -388,7 +388,7 @@ def add_switch_port(h)
         hn['network_adapters'].each_pair do |iface_uid, iface|
           if (iface['mounted'] or iface['mountable']) and not iface['management'] and iface['interface'] =~ /(fpga|Ethernet)/
             switch, swport = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)
-            if used_ports[[switch, swport]]
+            if !switch.nil? && !swport.nil? && used_ports[[switch, swport]]
               raise "Duplicate port assigned for #{node_uid} #{iface_uid}. Already assigned to #{used_ports[[switch, swport]]} Aborting."
             end
             used_ports[[switch, swport]] = [node_uid, iface_uid]
