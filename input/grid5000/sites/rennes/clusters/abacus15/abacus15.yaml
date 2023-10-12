@@ -17,6 +17,8 @@ nodes:
       nb_cores: 32
       nb_threads: 64
       platform_type: x86_64
+    bios:
+      vendor: Dell Inc.
     processor:
       microarchitecture: Zen 3
       clock_speed: 2650000000
@@ -34,15 +36,17 @@ nodes:
         mac: f4:02:70:b3:e4:9a
         ip: 172.17.109.15
       eth0:
+        interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
         mac: e4:43:4b:94:95:32
         ip: 172.16.109.15
       eth1:
-        enabled: false
-        mountable: false
-        mounted: false
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
     storage_devices:
       disk0:
         id: disk0
