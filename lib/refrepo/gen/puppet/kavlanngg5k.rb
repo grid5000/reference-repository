@@ -68,11 +68,9 @@ def get_port_name(port_index, port, linecard_index, linecard)
   pattern = nil
   if linecard.has_key?('kavlan_pattern')
     pattern = linecard['kavlan_pattern']
-    #pattern_source = "linecard kavlan pattern"
   end
-  if port.has_key?('kavlan_pattern')
-    pattern = port['kavlan_pattern']
-    #pattern_source = "port kavlan pattern"
+  if linecard.has_key?('snmp_pattern')
+    pattern = linecard['snmp_pattern']
   end
   if port.has_key?('snmp_pattern')
     pattern = port['snmp_pattern']
@@ -80,7 +78,6 @@ def get_port_name(port_index, port, linecard_index, linecard)
   end
   if port.has_key?('snmp_name')
     pattern = port['snmp_name']
-    #pattern_source = "port snmp name"
   end
   if pattern
     port_name = pattern.sub("%LINECARD%",linecard_index.to_s).sub("%PORT%",port_index.to_s)
