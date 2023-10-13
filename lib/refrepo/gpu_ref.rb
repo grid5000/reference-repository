@@ -164,6 +164,18 @@ class GPURef
         'fp-64' => 584600000000,
       },
     },
+    'RTX A5000' => {
+      'cores'              => 8192,
+      'compute_capability' => '8.6',
+      'short_name'         => 'A5000',
+      'alias'              => 'a5000',
+      'microarchitecture'  => 'Ampere',
+      'performance'        => {
+        'fp-16' => 27772650000000,
+        'fp-32' => 27772650000000,
+        'fp-64' => 867890000000,
+      },
+    },
     'Quadro RTX 6000' => {
       'cores'              => 4608,
       'compute_capability' => '7.5',
