@@ -1,0 +1,70 @@
+model: Dell PowerEdge T640
+created_at: 2023-10-13
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  abacus3-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+    bios:
+      vendor: Dell Inc.
+    processor:
+      microarchitecture: Broadwell
+      clock_speed: 2100000000
+      other_description: Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+        mac: 18:66:da:a9:d4:92
+        ip: 172.17.109.3
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
+        mac: 18:66:da:a9:d4:90
+        ip: 172.16.109.3
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk1:
+        id: disk1
+        interface: SATA
+        storage: HDD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk2:
+        id: disk2
+        interface: NVME
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
