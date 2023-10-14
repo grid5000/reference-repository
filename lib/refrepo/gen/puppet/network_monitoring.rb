@@ -67,7 +67,7 @@ def generate_puppet_network_monitoring(options)
           next if p == {}
 
           next unless %w[other switch router server channel backbone].include?(p['kind'])
-
+          next if !p['monitoring_enabled'].nil? and p['monitoring_enabled'] == false
           port_name = p['snmp_name']
           next if net_hosts_eq['interfaces'].find { |i| i['name'] == port_name }
 
@@ -83,7 +83,7 @@ def generate_puppet_network_monitoring(options)
       next unless eq_v['channels']
       eq_v['channels'].each do |c_name, c_v|
         next if net_hosts_eq['interfaces'].find { |i| i['name'] == c_name }
-
+        next if !c_v['monitoring_enabled'].nil? and c_v['monitoring_enabled'] == false
         net_hosts_eq['interfaces'] << {
           'name' => c_name,
           'description' => "LACP #{c_v['uid']}"
