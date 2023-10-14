@@ -5,6 +5,7 @@
   "channels": {
     "lacp key 1": {
       "kind": "router",
+      "monitoring_enabled": false,
       "port": "lag2",
       "rate": 20000000000,
       "uid": "gw"
@@ -135,12 +136,14 @@
         },
         {
           "kind": "channel",
+          "monitoring_enabled": false,
           "rate": 10000000000,
           "snmp_name": "10GigabitEthernet 1/1",
           "uid": "lacp key 1"
         },
         {
           "kind": "channel",
+          "monitoring_enabled": false,
           "rate": 10000000000,
           "snmp_name": "10GigabitEthernet 1/2",
           "uid": "lacp key 1"
