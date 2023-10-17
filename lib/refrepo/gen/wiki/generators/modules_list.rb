@@ -1,13 +1,17 @@
 # coding: utf-8
-
+require 'etc'
 require 'net/ssh'
+
+
 
 class ModulesList < WikiGenerator
 
     def get_modules_hash
-        user = 'g5kadmin'
+        user = Etc.getlogin == 'jenkins' ? 'ajenkins' : 'g5kadmin'
+
         # Lyon is hosting the main module repository
         host = 'lyon.grid5000.fr'
+
         cmd = "/usr/share/lmod/lmod/libexec/spider -o jsonSoftwarePage $MODULEPATH"
         Net::SSH.start(host, user) do |ssh|
             output = ssh.exec!(cmd)
@@ -21,7 +25,7 @@ class ModulesList < WikiGenerator
         table_options = 'class="wikitable sortable"'
         table_data = []
         table_columns = ["Name", "Description", "Version(s)"]
-        get_modules_hash.sort.each do |k, v|
+        get_modules_hash().sort.each do |k, v|
             table_data << ["<span style='white-space: nowrap;'>'''#{k}'''</span>", 
                 v[:help], 
                 v[:versions].sort.join('<br/>')]
