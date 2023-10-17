@@ -26,7 +26,7 @@ def gen_json(site, output_path)
       node_hash['software'].delete_if { |key| key != 'standard-environment' }
     end
 
-    cluster_hash['nodes'] = cluster_hash['nodes'].sort_by{|node_uid, _node_hash| node_uid[/(\d+)/].to_i }.to_h
+    cluster_hash['nodes'] = cluster_hash['nodes'].sort_by{|node_uid, _node_hash| node_uid[/-(\d+)/, 1].to_i }.to_h
   end
   site_data_hierarchy['sites'][site]['clusters'] = site_data_hierarchy['sites'][site].fetch('clusters', {}).sort_by{ |cluster_uid, _cluster_hash| cluster_uid }.to_h
 
