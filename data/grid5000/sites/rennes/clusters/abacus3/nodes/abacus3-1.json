@@ -7,11 +7,11 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/09/2017",
+    "release_date": "04/11/2023",
     "vendor": "Dell Inc.",
-    "version": "2.4.2"
+    "version": "2.17.0"
   },
-  "bmc_version": "2.41.40.40",
+  "bmc_version": "2.84.84.84",
   "chassis": {
     "manufacturer": "Dell Inc.",
     "name": "PowerEdge T630",
@@ -144,7 +144,7 @@
       "device": "eth0",
       "driver": "igb",
       "enabled": true,
-      "firmware_version": "1.67, 0x80000d7e, 18.0.17",
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
       "interface": "Ethernet",
       "ip": "172.16.109.3",
       "ip6": "2001:660:4406:700:e::3",
@@ -167,7 +167,7 @@
       "device": "eth1",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.67, 0x80000d7e, 18.0.17",
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "18:66:da:a9:d4:91",
@@ -184,7 +184,7 @@
       "device": "eth2",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.67, 0x80000dd0, 18.0.17",
+      "firmware_version": "1.67, 0x80000fba, 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "a0:36:9f:e9:a2:08",
@@ -201,7 +201,7 @@
       "device": "eth3",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.67, 0x80000dd0, 18.0.17",
+      "firmware_version": "1.67, 0x80000fba, 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "a0:36:9f:e9:a2:09",
@@ -264,7 +264,7 @@
     {
       "by_id": "/dev/disk/by-id/wwn-0x61866da0bc235f00217b1f3918304c10",
       "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0",
-      "firmware_version": 4.27,
+      "firmware_version": 4.3,
       "id": "disk0",
       "interface": "RAID",
       "model": "PERC H730 Adp",
@@ -275,7 +275,7 @@
     {
       "by_id": "/dev/disk/by-id/wwn-0x61866da0bc235f00217b2054290c2110",
       "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:1:0",
-      "firmware_version": 4.27,
+      "firmware_version": 4.3,
       "id": "disk1",
       "interface": "RAID",
       "model": "PERC H730 Adp",
@@ -286,7 +286,7 @@
     {
       "by_id": "/dev/disk/by-id/wwn-0x61866da0bc235f00217b211034358c74",
       "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:2:0",
-      "firmware_version": 4.27,
+      "firmware_version": 4.3,
       "id": "disk2",
       "interface": "RAID",
       "model": "PERC H730 Adp",
@@ -298,10 +298,10 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
       "admin",
-      "testing"
+      "production"
     ],
     "virtual": "ivt"
   },
