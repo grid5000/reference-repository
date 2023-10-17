@@ -1,0 +1,310 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 32,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "04/11/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.17.0"
+  },
+  "bmc_version": "2.84.84.84",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge T630",
+    "serial": "64LWMK2"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.6",
+      "cores": 8192,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 25434259456,
+      "microarchitecture": "Ampere",
+      "model": "RTX A5000",
+      "performance": {
+        "fp-16": 27772650000000,
+        "fp-32": 27772650000000,
+        "fp-64": 867890000000
+      },
+      "power_default_limit": "230.00 W",
+      "vbios_version": "94.02.6D.00.0E",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.6",
+      "cores": 8192,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 25434259456,
+      "microarchitecture": "Ampere",
+      "model": "RTX A5000",
+      "performance": {
+        "fp-16": 27772650000000,
+        "fp-32": 27772650000000,
+        "fp-64": 867890000000
+      },
+      "power_default_limit": "230.00 W",
+      "vbios_version": "94.02.6D.00.0E",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.6",
+      "cores": 8192,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 25434259456,
+      "microarchitecture": "Ampere",
+      "model": "RTX A5000",
+      "performance": {
+        "fp-16": 27772650000000,
+        "fp-32": 27772650000000,
+        "fp-64": 867890000000
+      },
+      "power_default_limit": "230.00 W",
+      "vbios_version": "94.02.6D.00.0E",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "8.6",
+      "cores": 8192,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 25434259456,
+      "microarchitecture": "Ampere",
+      "model": "RTX A5000",
+      "performance": {
+        "fp-16": 27772650000000,
+        "fp-32": 27772650000000,
+        "fp-64": 867890000000
+      },
+      "power_default_limit": "230.00 W",
+      "vbios_version": "94.02.6D.00.0E",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 137438953472
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
+      "interface": "Ethernet",
+      "ip": "172.16.109.3",
+      "ip6": "2001:660:4406:700:e::3",
+      "kavlan": false,
+      "mac": "18:66:da:a9:d4:90",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno1",
+      "network_address": "abacus3-1.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "swdc-a035-01-rba",
+      "switch_port": "Eth101/1/19",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "18:66:da:a9:d4:91",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fba, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "a0:36:9f:e9:a2:08",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp130s0f0",
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fba, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "a0:36:9f:e9:a2:09",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp130s0f1",
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.109.3",
+      "kavlan": false,
+      "mac": "18:66:da:a9:d4:92",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "abacus3-1-bmc.rennes.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 33600000000,
+    "node_flops": 537600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 20971520,
+    "clock_speed": 2100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Broadwell",
+    "microcode": "0xb000040",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz",
+    "vendor": "Intel",
+    "version": "E5-2620 v4"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023092009",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da0bc235f00217b1f3918304c10",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.3,
+      "id": "disk0",
+      "interface": "RAID",
+      "model": "PERC H730 Adp",
+      "size": 299439751168,
+      "storage": "HDD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da0bc235f00217b2054290c2110",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:1:0",
+      "firmware_version": 4.3,
+      "id": "disk1",
+      "interface": "RAID",
+      "model": "PERC H730 Adp",
+      "size": 959656755200,
+      "storage": "HDD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da0bc235f00217b211034358c74",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:2:0",
+      "firmware_version": 4.3,
+      "id": "disk2",
+      "interface": "RAID",
+      "model": "PERC H730 Adp",
+      "size": 8000450330624,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 604800,
+    "queues": [
+      "admin",
+      "production"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "abacus3-1"
+}

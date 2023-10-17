@@ -19,12 +19,22 @@ swdc-a035-01-rba:
         3:
           uid: port-channel666
           kind: channel
+    101:
+      snmp_pattern: "Eth%LINECARD%/1/%PORT%"
+      kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        19:
+          uid: abacus3-1
     103:
       snmp_pattern: "Eth%LINECARD%/1/%PORT%"
       kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
       rate: 1000000000
       kind: node
       ports:
+        8:
+          uid: abacus20-1
         10:
           uid: roazhon4-1
 
