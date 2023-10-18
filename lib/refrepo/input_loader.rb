@@ -713,7 +713,7 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
     return 32
   when "Cascade Lake-SP", "Skylake"
     case cpu_name
-    when /Silver 4110/, /Silver 4214/, /Gold 5218/, /Gold 5220/, /Gold 5118/
+    when /Silver 4110/, /Silver 4214/, /Gold 5218/, /Gold 5220/, /Gold 5118/, /Gold 5120/
       return 16
     when /Gold 6126/, /Gold 6130/, /Gold 6254/
       return 32
