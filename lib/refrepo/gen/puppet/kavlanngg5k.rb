@@ -88,11 +88,11 @@ def get_port_name(port_index, port, linecard_index, linecard)
   if linecard.has_key?('snmp_pattern')
     pattern = linecard['snmp_pattern']
   end
-  if linecard.has_key?('ssh_pattern')
-    pattern = linecard['ssh_pattern']
-  end
   if port.has_key?('snmp_name')
     pattern = port['snmp_name']
+  end
+  if linecard.has_key?('ssh_pattern')
+    pattern = linecard['ssh_pattern']
   end
   if pattern
     port_name = pattern.sub("%LINECARD%",linecard_index.to_s).sub("%PORT%",port_index.to_s)
