@@ -67,7 +67,7 @@ def gen_kavlanapi_g5k_desc(output_path)
   # save to file, but split by sites and clusters
   FileUtils.rm Dir.glob(File.join(output_path, "*"))
   refapi['sites'].each do |site_id, site_h|
-    refapi_site = { 'sites' => { site_id => site_h.select { |k, v| k != 'clusters' } } }
+    refapi_site = { 'sites' => { site_id => site_h.select { |k, _v| k != 'clusters' } } }
     File.open(File.join(output_path, "#{site_id}.json"), 'w') do |f|
       f.write(JSON.pretty_generate(refapi_site))
     end
