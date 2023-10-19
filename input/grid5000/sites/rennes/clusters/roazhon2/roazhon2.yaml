@@ -12,18 +12,9 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 24
-      nb_threads: 48
-      platform_type: x86_64
     processor:
       microarchitecture: Skylake
       clock_speed: 2200000000
-      other_description: Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz
-    bios:
-      vendor: Dell Inc.
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -34,35 +25,26 @@ nodes:
         enabled: true
         mountable: false
         mounted: false
-        mac: 4c:d9:8f:0c:ba:ec
-        ip: 172.17.110.2
       eth0:
-        interface: Ethernet
-        name: eno3
         enabled: true
         mountable: true
         mounted: true
-        mac: e4:43:4b:31:16:c8
-        ip: 172.16.110.2
       eth1:
-        name: eno4
         enabled: false
         mountable: false
         mounted: false
       eth2:
-        name: eno1
         enabled: false
         mountable: false
         mounted: false
       eth3:
-        name: eno2
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:18:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0"
+      pci-0000:00:14.0-usb-0:4:1.0-scsi-0:0:0:0:
+        id: disk1
+        interface: USB

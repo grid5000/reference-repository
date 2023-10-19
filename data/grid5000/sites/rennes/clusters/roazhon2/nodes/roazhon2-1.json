@@ -1,15 +1,25 @@
 {
   "architecture": {
-    "nb_cores": 24,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 28,
     "nb_procs": 2,
-    "nb_threads": 48,
+    "nb_threads": 56,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "08/15/2019",
+    "vendor": "Dell Inc.",
+    "version": "2.3.10"
+  },
+  "bmc_version": "5.00.10.20",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R640",
+    "serial": "94PM2S2"
   },
   "exotic": false,
   "main_memory": {
+    "ram_size": 274877906944
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,47 +28,121 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "igb",
       "enabled": true,
+      "firmware_version": "1.67, 0x80000fa8, 19.0.12",
       "interface": "Ethernet",
       "ip": "172.16.110.2",
       "ip6": "2001:660:4406:700:f::2",
       "kavlan": false,
       "mac": "e4:43:4b:31:16:c8",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
       "name": "eno3",
       "network_address": "roazhon2-1.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
+      "driver": "igb",
       "enabled": false,
+      "firmware_version": "1.67, 0x80000fa8, 19.0.12",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "e4:43:4b:31:16:c9",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
       "mountable": false,
       "mounted": false,
-      "name": "eno4"
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "eth2",
+      "driver": "i40e",
       "enabled": false,
+      "firmware_version": "7.10 0x8000519f 19.0.12",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "e4:43:4b:31:16:a8",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": false,
       "mounted": false,
-      "name": "eno1"
+      "name": "eno1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "eth3",
+      "driver": "i40e",
       "enabled": false,
+      "firmware_version": "7.10 0x8000519f 19.0.12",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "e4:43:4b:31:16:aa",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": false,
       "mounted": false,
-      "name": "eno2"
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -67,19 +151,39 @@
       "ip": "172.17.110.2",
       "kavlan": false,
       "mac": "4c:d9:8f:0c:ba:ec",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "roazhon2-1-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 35200000000,
-    "node_flops": 844800000000
+    "node_flops": 985600000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 20185088,
     "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Skylake",
-    "other_description": "Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz"
+    "microcode": "0x2007006",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Gold 5120"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -88,13 +192,26 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466082e17000238fe7d2474318e7",
       "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.3,
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "model": "PERC H730P Mini",
+      "size": 799529631744,
+      "storage": "HDD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0000:00:14.0-usb-0:4:1.0-scsi-0:0:0:0",
+      "firmware_version": 1,
+      "id": "disk1",
+      "interface": "USB",
+      "model": "IDSDM",
+      "size": 16072572928,
+      "storage": "HDD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -104,7 +221,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "roazhon2-1"
