@@ -1,0 +1,70 @@
+model: Dell PowerEdge C4140
+created_at: 2023-10-16
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  abacus16-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 24
+      nb_threads: 48
+      platform_type: x86_64
+    bios:
+      vendor: Dell Inc.
+    processor:
+      microarchitecture: Cascade Lake-SP
+      clock_speed: 2200000000
+      other_description: Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+        mac: f4:02:70:b3:e3:d4
+        ip: 172.17.109.16
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
+        mac: e4:43:4b:94:6d:10
+        ip: 172.16.109.16
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk1:
+        id: disk1
+        interface: SATA
+        storage: HDD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk2:
+        id: disk2
+        interface: NVME
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
