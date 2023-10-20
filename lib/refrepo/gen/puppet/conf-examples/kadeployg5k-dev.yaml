@@ -226,21 +226,6 @@ nancy:
     remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
     remoteops.reboot.hard.cmd: "/etc/kadeploy3/hard_reboot_grvingt.sh HOSTNAME_SHORT"
     remoteops.reboot.very_hard.cmd: "/etc/kadeploy3/reset_bootseq_grvingt.sh HOSTNAME_SHORT"
-  grcinq:
-    reboot.timeout: 200
-    reboot.kexec: 100
-    partitioning.disable_swap: false
-    user.params: console=tty0 console=ttyS1,115200
-    deploy.params: ETH_DEV=eth0 console=tty0 console=ttyS1,115200 modprobe.blacklist=igb
-      ramdisk_size=260000 rw noapic init=/linuxrc
-    dhcp.serial: 1 115200
-    deployment.timeout: 600
-    deployment.retries: 2
-    broadcast.retries: 0
-    broadcast.timeout: 1000
-    boot.timeout.0: 150
-    boot.timeout.1: 600
-    remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
 nantes:
   econome:
     reboot.timeout: 200

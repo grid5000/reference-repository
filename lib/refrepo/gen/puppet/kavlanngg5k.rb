@@ -6,7 +6,7 @@ TRUNK_KINDS = ['router', 'switch', 'backbone']
 KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ]
 
 def generate_puppet_kavlanngg5k(options)
-  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k.json")
+  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k/")
   gen_ngs_conf("#{options[:output_dir]}/platforms/production/generators/kavlanng/kavlanng.yaml", "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/ngs_devices")
 end
 
@@ -22,6 +22,10 @@ def gen_kavlanapi_g5k_desc(output_path)
       cluster_h.delete_if { |k| k != 'nodes' }
       cluster_h['nodes'].each do |_node_id, node_h|
         node_h.delete_if { |k| k != 'network_adapters' }
+        node_h['network_adapters'].delete_if { |na| na.fetch('kavlan') != true }
+        node_h['network_adapters'].each do |na|
+          na.delete_if { |k| !['interface', 'mounted', 'management', 'device', 'name', 'switch', 'switch_port', 'mac'].include? k }
+        end
       end
     end
     site_h['network_equipments'].delete_if { |_k, v| v['kind'] != 'router' }
@@ -60,19 +64,29 @@ def gen_kavlanapi_g5k_desc(output_path)
     }
     refapi['sites'][site_id] = site_h.sort_by { |key| key}.to_h
   }
-  output_file = File.new(output_path, 'w')
-  output_file.write(JSON.pretty_generate(refapi))
+  # save to file, but split by sites and clusters
+  FileUtils.rm Dir.glob(File.join(output_path, "*"))
+  refapi['sites'].each do |site_id, site_h|
+    refapi_site = { 'sites' => { site_id => site_h.select { |k, _v| k != 'clusters' } } }
+    File.open(File.join(output_path, "#{site_id}.json"), 'w') do |f|
+      f.write(JSON.pretty_generate(refapi_site))
+    end
+    site_h['clusters'].each do |cluster_id, cluster_h|
+      refapi_site_cluster = { 'sites' => { site_id => { 'clusters' => { cluster_id => cluster_h } } } }
+      File.open(File.join(output_path, "#{site_id}-#{cluster_id}.json"), 'w') do |f|
+        f.write(JSON.pretty_generate(refapi_site_cluster))
+      end
+    end
+  end
 end
 
 def get_port_name(port_index, port, linecard_index, linecard)
   pattern = nil
   if linecard.has_key?('kavlan_pattern')
     pattern = linecard['kavlan_pattern']
-    #pattern_source = "linecard kavlan pattern"
   end
-  if port.has_key?('kavlan_pattern')
-    pattern = port['kavlan_pattern']
-    #pattern_source = "port kavlan pattern"
+  if linecard.has_key?('snmp_pattern')
+    pattern = linecard['snmp_pattern']
   end
   if port.has_key?('snmp_pattern')
     pattern = port['snmp_pattern']
@@ -80,7 +94,6 @@ def get_port_name(port_index, port, linecard_index, linecard)
   end
   if port.has_key?('snmp_name')
     pattern = port['snmp_name']
-    #pattern_source = "port snmp name"
   end
   if pattern
     port_name = pattern.sub("%LINECARD%",linecard_index.to_s).sub("%PORT%",port_index.to_s)

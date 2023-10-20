@@ -58,6 +58,7 @@ class SiteHardwareGenerator < WikiGenerator
     nodes = 0
     cores = 0
     gpus = 0
+    gpus_cores = 0
     hdds = 0
     ssds = 0
     storage_space = 0
@@ -77,6 +78,7 @@ class SiteHardwareGenerator < WikiGenerator
           pmem += node_hash['main_memory']['pmem_size'] if node_hash['main_memory']['pmem_size']
           if node_hash['gpu_devices']
             gpus += node_hash['gpu_devices'].length
+            gpus_cores += node_hash['gpu_devices'].map { |_k, g| g['cores']}.sum
           end
           ssds += node_hash['storage_devices'].select { |d| d['storage'] == 'SSD' }.length
           hdds += node_hash['storage_devices'].select { |d| d['storage'] == 'HDD' }.length
@@ -95,6 +97,7 @@ class SiteHardwareGenerator < WikiGenerator
     summary += "* #{nodes} nodes\n"
     summary += "* #{cores} CPU cores\n"
     summary += gpus > 0 ? "* #{gpus} GPUs\n":''
+    summary += gpus > 0 ? "* #{gpus_cores} GPUs cores\n":''
     summary += "* #{G5K.get_size(ram)} RAM"
     summary += pmem > 0 ? " + #{G5K.get_size(pmem)} PMEM\n":"\n"
     summary += (ssds > 0 ? "* #{ssds} SSDs and ":"* ") + "#{hdds} HDDs on nodes (total: #{G5K.get_size(storage_space, 'metric')})\n"
