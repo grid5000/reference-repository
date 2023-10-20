@@ -1,0 +1,218 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 20,
+    "nb_procs": 2,
+    "nb_threads": 40,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "10/27/2022",
+    "vendor": "Dell Inc.",
+    "version": "2.16.0"
+  },
+  "bmc_version": "2.84.84.84",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge M630",
+    "serial": "9Y6W752"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 137438953472
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "1.67, 0x80000fb0, 19.5.12",
+      "interface": "Ethernet",
+      "ip": "172.16.110.11",
+      "ip6": "2001:660:4406:700:f::b",
+      "kavlan": false,
+      "mac": "44:a8:42:90:94:4f",
+      "management": false,
+      "model": "I350 Gigabit Backplane Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno1",
+      "network_address": "roazhon5-7.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fb0, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "44:a8:42:90:94:50",
+      "management": false,
+      "model": "I350 Gigabit Backplane Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fb0, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "44:a8:42:90:94:51",
+      "management": false,
+      "model": "I350 Gigabit Backplane Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fb0, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "44:a8:42:90:94:52",
+      "management": false,
+      "model": "I350 Gigabit Backplane Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.110.11",
+      "kavlan": false,
+      "mac": "44:a8:42:90:94:4e",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "roazhon5-7-bmc.rennes.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 41600000000,
+    "node_flops": 832000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 26214400,
+    "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Haswell",
+    "microcode": "0x49",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2660 v3 @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "E5-2660 v3"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023092009",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x644a842015db5d001d03249003237a65",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.3,
+      "id": "disk0",
+      "interface": "RAID-0 (2 disks)",
+      "model": "PERC H330 Mini",
+      "size": 598879502336,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "roazhon5-7"
+}
