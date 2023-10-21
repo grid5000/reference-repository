@@ -8,10 +8,10 @@ roazhon5-8:
     nb_threads: 40
     platform_type: x86_64
   bios:
-    release_date: 07/05/2022
+    release_date: 10/27/2022
     vendor: Dell Inc.
-    version: 2.15.0
-  bmc_version: 2.75.75.75
+    version: 2.16.0
+  bmc_version: 2.84.84.84
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge M630
@@ -45,15 +45,15 @@ roazhon5-8:
       technology: dram
   network_adapters:
     bmc:
-      ip: 172.17.110.11
-      mac: 44:a8:42:90:94:4e
+      ip: 172.17.110.12
+      mac: 44:a8:42:90:94:5b
       management: true
     eth0:
       driver: igb
-      firmware_version: 1.67, 0x80000fb0, 18.8.9
+      firmware_version: 1.67, 0x80000fb0, 19.5.12
       interface: Ethernet
-      ip: 172.16.110.11
-      mac: 44:a8:42:90:94:4f
+      ip: 172.16.110.12
+      mac: 44:a8:42:90:94:5c
       management: false
       model: I350 Gigabit Backplane Connection
       name: eno1
@@ -63,9 +63,9 @@ roazhon5-8:
       vendor: Intel
     eth1:
       driver: igb
-      firmware_version: 1.67, 0x80000fb0, 18.8.9
+      firmware_version: 1.67, 0x80000fb0, 19.5.12
       interface: Ethernet
-      mac: 44:a8:42:90:94:50
+      mac: 44:a8:42:90:96:50
       management: false
       model: I350 Gigabit Backplane Connection
       name: eno2
@@ -74,9 +74,9 @@ roazhon5-8:
       vendor: Intel
     eth2:
       driver: igb
-      firmware_version: 1.67, 0x80000fb0, 18.8.9
+      firmware_version: 1.67, 0x80000fb0, 19.5.12
       interface: Ethernet
-      mac: 44:a8:42:90:94:51
+      mac: 44:a8:42:90:96:51
       management: false
       model: I350 Gigabit Backplane Connection
       name: eno3
@@ -85,9 +85,9 @@ roazhon5-8:
       vendor: Intel
     eth3:
       driver: igb
-      firmware_version: 1.67, 0x80000fb0, 18.8.9
+      firmware_version: 1.67, 0x80000fb0, 19.5.12
       interface: Ethernet
-      mac: 44:a8:42:90:94:52
+      mac: 44:a8:42:90:96:52
       management: false
       model: I350 Gigabit Backplane Connection
       name: eno4
@@ -115,9 +115,9 @@ roazhon5-8:
     version: E5-2660 v3
   storage_devices:
     pci-0000:03:00.0-scsi-0:2:0:0:
-      by_id: "/dev/disk/by-id/wwn-0x644a842015db5d001d03249003237a65"
+      by_id: "/dev/disk/by-id/wwn-0x644a842015db5d001d12349003237a65"
       by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
-      firmware_version: 4.29
+      firmware_version: 4.3
       model: PERC H330 Mini
       size: 598879502336
       storage: HDD
