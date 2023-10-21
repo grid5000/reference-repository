@@ -20,12 +20,21 @@
   "network_adapters": [
     {
       "device": "eth0",
+      "enabled": false,
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false,
+      "name": "eno16"
+    },
+    {
+      "device": "eth1",
       "enabled": true,
       "ip": "172.16.110.48",
       "kavlan": false,
       "mac": "3c:fd:fe:74:ee:02",
       "mountable": true,
       "mounted": true,
+      "name": "enp24s0f0",
       "network_address": "roazhon13-4.rennes.grid5000.fr"
     },
     {
@@ -57,6 +66,7 @@
   "storage_devices": [
     {
       "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-3",
       "id": "disk0",
       "interface": "SATA",
       "model": "unknown",
