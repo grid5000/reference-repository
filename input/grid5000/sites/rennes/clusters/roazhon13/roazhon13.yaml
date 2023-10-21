@@ -8,13 +8,6 @@ queues:
   - admin
 nodes:
   roazhon13-[1-8]:
-    architecture:
-      nb_procs: 2
-      nb_cores: 32
-      nb_threads: 64
-      platform_type: x86_64
-    bios:
-      vendor: Dell Inc.
     supported_job_types:
       deploy: true
       besteffort: true
@@ -22,8 +15,6 @@ nodes:
     processor:
       microarchitecture: Cascade Lake-SP
       clock_speed: 3100000000
-      other_description: Gold 6254
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -36,20 +27,23 @@ nodes:
         mounted: false
         interface: Ethernet
       eth0:
-        interface: Ethernet
         enabled: false
         mountable: false
         mounted: false
-        name: eno16
       eth1:
-        interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
-        name: enp24s0f0
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      ib0:
+        interface: Infiniband
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
       pci-0000:00:11.5-ata-3:
         interface: SATA
         id: disk0
-        model: unknown
-        by_path: /dev/disk/by-path/pci-0000:00:11.5-ata-3
