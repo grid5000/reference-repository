@@ -1,12 +1,25 @@
 {
   "architecture": {
-    "nb_cores": 32,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 36,
     "nb_procs": 2,
-    "nb_threads": 64,
+    "nb_threads": 72,
     "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "08/28/2020",
+    "vendor": "Dell Inc.",
+    "version": "2.8.2"
+  },
+  "bmc_version": "3.36.36.36",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6420",
+    "serial": "J4LBRZ2"
   },
   "exotic": false,
   "main_memory": {
+    "ram_size": 412316860416
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -15,18 +28,143 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "enabled": true,
-      "ip": "172.16.110.47",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fb1, 19.0.12",
+      "interface": "Ethernet",
       "kavlan": false,
-      "mac": "3c:fd:fe:74:ee:01",
+      "mac": "6c:2b:59:a4:df:db",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno16",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "7.10 0x800075e7 19.5.12",
+      "interface": "Ethernet",
+      "ip": "172.16.110.47",
+      "ip6": "2001:660:4406:700:f::2f",
+      "kavlan": false,
+      "mac": "3c:fd:fe:74:6c:70",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": true,
       "mounted": true,
-      "network_address": "roazhon13-3.rennes.grid5000.fr"
+      "name": "enp24s0f0",
+      "network_address": "roazhon13-3.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "7.10 0x800075e7 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "3c:fd:fe:74:6c:71",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp24s0f1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx5_core[ib_ipoib]",
+      "enabled": false,
+      "firmware_version": "16.25.1020 (DEL0000000005)",
+      "guid": "0xb8599f0300c30b1e",
+      "interface": "Infiniband",
+      "kavlan": false,
+      "mac": "00:00:10:87:fe:80:00:00:00:00:00:00:b8:59:9f:03:00:c3:0b:1e",
+      "management": false,
+      "model": "MT27800 Family [ConnectX-5]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ibp94s0",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -35,19 +173,39 @@
       "ip": "172.17.110.47",
       "kavlan": false,
       "mac": "6c:2b:59:a4:de:0a",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "roazhon13-3-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 99200000000,
-    "node_flops": 3174400000000
+    "node_flops": 3571200000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 25952256,
     "clock_speed": 3100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Cascade Lake-SP",
-    "other_description": "Gold 6254"
+    "microcode": "0x5003604",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6254 CPU @ 3.10GHz",
+    "vendor": "Intel",
+    "version": "Gold 6254"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -56,11 +214,15 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5000c500c0953f1a",
+      "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-3",
+      "firmware_version": "NB33",
       "id": "disk0",
       "interface": "SATA",
-      "model": "unknown",
-      "vendor": "Unknown"
+      "model": "ST1000NX0443",
+      "size": 1000204886016,
+      "storage": "HDD",
+      "vendor": "Seagate"
     }
   ],
   "supported_job_types": {
@@ -70,7 +232,8 @@
     "queues": [
       "testing",
       "admin"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "roazhon13-3"
