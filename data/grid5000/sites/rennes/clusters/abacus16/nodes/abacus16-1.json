@@ -22,7 +22,7 @@
   ],
   "network_adapters": [
     {
-      "device": "eth0",
+      "device": "eth1",
       "enabled": true,
       "interface": "Ethernet",
       "ip": "172.16.109.16",
@@ -34,14 +34,6 @@
       "network_address": "abacus16-1.rennes.grid5000.fr",
       "switch": null,
       "switch_port": null
-    },
-    {
-      "device": "eth1",
-      "enabled": false,
-      "interface": "Ethernet",
-      "kavlan": false,
-      "mountable": false,
-      "mounted": false
     },
     {
       "device": "bmc",
@@ -74,27 +66,9 @@
   "storage_devices": [
     {
       "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_path": "/dev/disk/by-path/pci-0000:04:00.0-ata-1",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "SSD",
-      "vendor": "Unknown"
-    },
-    {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
-      "id": "disk1",
-      "interface": "SATA",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
-    },
-    {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
-      "id": "disk2",
-      "interface": "NVME",
+      "interface": "RAID",
       "model": "unknown",
       "storage": "SSD",
       "vendor": "Unknown"

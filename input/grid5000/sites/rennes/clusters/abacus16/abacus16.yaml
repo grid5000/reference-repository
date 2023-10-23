@@ -37,34 +37,17 @@ nodes:
         mounted: false
         mac: f4:02:70:b3:e3:d4
         ip: 172.17.109.16
-      eth0:
+      eth1:
         interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
         mac: e4:43:4b:94:6d:10
         ip: 172.16.109.16
-      eth1:
-        interface: Ethernet
-        enabled: false
-        mountable: false
-        mounted: false
     storage_devices:
       disk0:
         id: disk0
-        interface: SAS
+        interface: RAID
         storage: SSD
         model: unknown
-        by_path: "/dev/disk/by-path/dummy"
-      disk1:
-        id: disk1
-        interface: SATA
-        storage: HDD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"
-      disk2:
-        id: disk2
-        interface: NVME
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"
+        by_path: "/dev/disk/by-path/pci-0000:04:00.0-ata-1"
