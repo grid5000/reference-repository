@@ -4,14 +4,14 @@ kavlan: false
 boot_type: bios
 exotic: false
 queues:
+  - production
   - admin
-  - testing
 nodes:
   roazhon2-1:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Skylake
       clock_speed: 2200000000
