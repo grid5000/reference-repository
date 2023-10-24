@@ -1,0 +1,86 @@
+model: Dell PowerEdge MX740c
+created_at: 2023-10-24
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  roazhon10-[1-4]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 36
+      nb_threads: 72
+      platform_type: x86_64
+    bios:
+      vendor: Dell Inc.
+    processor:
+      microarchitecture: Cascade Lake-SP
+      clock_speed: 2200000000
+      other_description: Intel(R) Xeon(R) Gold 5220 CPU @ 2.20GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+  roazhon10-1:
+    network_adapters:
+      bmc:
+        mac: 4c:d9:8f:89:b4:e4
+        ip: 172.17.110.33
+      eth0:
+        mac: e4:43:4b:47:ae:a8
+        ip: 172.16.110.33
+  roazhon10-2:
+    network_adapters:
+      bmc:
+        mac: 4c:d9:8f:89:b9:2b
+        ip: 172.17.110.34
+      eth0:
+        mac: e4:43:4b:47:ae:c4
+        ip: 172.16.110.34
+  roazhon10-3:
+    network_adapters:
+      bmc:
+        mac: 4c:d9:8f:89:b4:3e
+        ip: 172.17.110.35
+      eth0:
+        mac: e4:43:4b:47:b2:62
+        ip: 172.16.110.35
+  roazhon10-4:
+    network_adapters:
+      bmc:
+        mac: 4c:d9:8f:89:c9:69
+        ip: 172.17.110.36
+      eth0:
+        mac: e4:43:4b:47:b1:d0
+        ip: 172.16.110.36
