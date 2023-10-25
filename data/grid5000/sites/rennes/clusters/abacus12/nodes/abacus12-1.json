@@ -1,0 +1,96 @@
+{
+  "architecture": {
+    "nb_cores": 40,
+    "nb_procs": 2,
+    "nb_threads": 80,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "vendor": "Dell Inc."
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.109.12",
+      "ip6": "2001:660:4406:700:e::c",
+      "kavlan": false,
+      "mac": "e4:43:4b:9f:32:ec",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "abacus12-1.rennes.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.109.12",
+      "kavlan": false,
+      "mac": "f4:02:70:c7:67:38",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "abacus12-1-bmc.rennes.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 80000000000,
+    "node_flops": 3200000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2500000000,
+    "microarchitecture": "Cascade Lake-SP",
+    "other_description": "Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023092009",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "abacus12-1"
+}
