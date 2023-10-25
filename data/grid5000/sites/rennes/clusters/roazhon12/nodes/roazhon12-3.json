@@ -1,0 +1,96 @@
+{
+  "architecture": {
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 32,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "vendor": "Dell Inc."
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.110.42",
+      "ip6": "2001:660:4406:700:f::2a",
+      "kavlan": false,
+      "mac": "84:8f:69:ff:92:b0",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "roazhon12-3.rennes.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.110.42",
+      "kavlan": false,
+      "mac": "84:8f:69:ff:92:b2",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "roazhon12-3-bmc.rennes.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 17600000000,
+    "node_flops": 281600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2200000000,
+    "microarchitecture": "Sandy Bridge",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023092009",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "roazhon12-3"
+}

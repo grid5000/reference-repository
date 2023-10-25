@@ -1,0 +1,86 @@
+model: Dell PowerEdge C6220
+created_at: 2023-10-24
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  roazhon12-[1-4]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 16
+      nb_threads: 32
+      platform_type: x86_64
+    bios:
+      vendor: Dell Inc.
+    processor:
+      microarchitecture: Sandy Bridge
+      clock_speed: 2200000000
+      other_description: Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+  roazhon12-1:
+    network_adapters:
+      bmc:
+        mac: 84:8f:69:ff:92:f4
+        ip: 172.17.110.40
+      eth0:
+        mac: 84:8f:69:ff:92:f2
+        ip: 172.16.110.40
+  roazhon12-2:
+    network_adapters:
+      bmc:
+        mac: 84:8f:69:ff:92:49
+        ip: 172.17.110.41
+      eth0:
+        mac: 84:8f:69:ff:92:47
+        ip: 172.16.110.41
+  roazhon12-3:
+    network_adapters:
+      bmc:
+        mac: 84:8f:69:ff:92:b2
+        ip: 172.17.110.42
+      eth0:
+        mac: 84:8f:69:ff:92:b0
+        ip: 172.16.110.42
+  roazhon12-4:
+    network_adapters:
+      bmc:
+        mac: 84:8f:69:ff:5b:b4
+        ip: 172.17.110.43
+      eth0:
+        mac: 84:8f:69:ff:5b:b2
+        ip: 172.16.110.43
