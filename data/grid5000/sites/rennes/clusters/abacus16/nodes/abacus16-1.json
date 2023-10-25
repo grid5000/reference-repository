@@ -1,15 +1,95 @@
 {
   "architecture": {
+    "cpu_core_numbering": "round-robin",
     "nb_cores": 24,
     "nb_procs": 2,
     "nb_threads": 48,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "09/17/2020",
+    "vendor": "Dell Inc.",
+    "version": "2.9.3"
+  },
+  "bmc_version": "5.00.10.20",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C4140",
+    "serial": "3VXBRZ2"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 34089205760,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-PCIE-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "88.00.7E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 34089205760,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-PCIE-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "88.00.7E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia2",
+      "memory": 34089205760,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-PCIE-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "88.00.7E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia3",
+      "memory": 34089205760,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-PCIE-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "88.00.7E.00.03",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+    "ram_size": 412316860416
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -23,17 +103,40 @@
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "7.10 0x800075da 19.5.12",
       "interface": "Ethernet",
       "ip": "172.16.109.16",
       "ip6": "2001:660:4406:700:e::10",
       "kavlan": false,
       "mac": "e4:43:4b:94:6d:10",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": true,
       "mounted": true,
+      "name": "eno1",
       "network_address": "abacus16-1.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "firmware_version": "7.10 0x800075da 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:94:6d:12",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -48,15 +151,33 @@
       "network_address": "abacus16-1-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 35200000000,
     "node_flops": 844800000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 17301504,
     "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Cascade Lake-SP",
-    "other_description": "Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz"
+    "microcode": "0x5003604",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4214 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Silver 4214"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -67,11 +188,12 @@
     {
       "by_id": "",
       "by_path": "/dev/disk/by-path/pci-0000:04:00.0-ata-1",
+      "firmware_version": "MV.R00-0",
       "id": "disk0",
-      "interface": "RAID",
-      "model": "unknown",
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "model": "DELLBOSS VD",
+      "size": 239990276096,
+      "storage": "HDD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -81,7 +203,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "abacus16-1"
