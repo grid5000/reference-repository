@@ -1,0 +1,96 @@
+{
+  "architecture": {
+    "nb_cores": 40,
+    "nb_procs": 2,
+    "nb_threads": 80,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "vendor": "Dell Inc."
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.109.5",
+      "ip6": "2001:660:4406:700:e::5",
+      "kavlan": false,
+      "mac": "24:6e:96:c7:b1:2e",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "abacus5-1.rennes.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.109.5",
+      "kavlan": false,
+      "mac": "58:8a:5a:f6:08:9e",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "abacus5-1-bmc.rennes.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 38400000000,
+    "node_flops": 1536000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2400000000,
+    "microarchitecture": "Skylake",
+    "other_description": "Intel(R) Xeon(R) Gold 5115 CPU @ 2.40GHz"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023092009",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "abacus5-1"
+}
