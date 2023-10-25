@@ -1,0 +1,86 @@
+model: Dell PowerEdge M630
+created_at: 2023-10-24
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  roazhon6-[1-4]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 20
+      nb_threads: 40
+      platform_type: x86_64
+    bios:
+      vendor: Dell Inc.
+    processor:
+      microarchitecture: Haswell
+      clock_speed: 2200000000
+      other_description: Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.20GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+  roazhon6-1:
+    network_adapters:
+      bmc:
+        mac: 44:a8:42:90:94:9c
+        ip: 172.17.110.17
+      eth0:
+        mac: 44:a8:42:90:94:9d
+        ip: 172.17.110.17
+  roazhon6-2:
+    network_adapters:
+      bmc:
+        mac: 44:a8:42:90:94:a9
+        ip: 172.17.110.18
+      eth0:
+        mac: 44:a8:42:90:94:aa
+        ip: 172.17.110.18
+  roazhon6-3:
+    network_adapters:
+      bmc:
+        mac: 44:a8:42:90:94:b6
+        ip: 172.17.110.19
+      eth0:
+        mac: 44:a8:42:90:94:b7
+        ip: 172.17.110.19
+  roazhon6-4:
+    network_adapters:
+      bmc:
+        mac: 44:a8:42:90:94:c3
+        ip: 172.17.110.20
+      eth0:
+        mac: 44:a8:42:90:94:c4
+        ip: 172.17.110.20
