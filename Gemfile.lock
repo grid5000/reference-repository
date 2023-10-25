@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bcrypt_pbkdf (1.1.0)
     byebug (11.1.3)
     crack (0.4.5)
       rexml
@@ -12,6 +13,7 @@ GEM
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    ed25519 (1.3.0)
     faraday (0.17.5)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.7)
@@ -85,9 +87,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt_pbkdf
   byebug
   diffy
   dns-zone
+  ed25519
   hash_validator
   hashdiff
   mediawiki_api
