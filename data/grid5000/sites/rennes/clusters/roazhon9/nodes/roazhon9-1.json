@@ -1,0 +1,224 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 24,
+    "nb_procs": 2,
+    "nb_threads": 48,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "05/30/2018",
+    "vendor": "Dell Inc.",
+    "version": "1.4.9"
+  },
+  "bmc_version": "4.20.20.20",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6420",
+    "serial": "DL3QSM2"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 549755813888
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "6.00 0x80003753 18.5.17",
+      "interface": "Ethernet",
+      "ip": "172.16.110.29",
+      "ip6": "2001:660:4406:700:f::1d",
+      "kavlan": false,
+      "mac": "3c:fd:fe:54:e2:b8",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp24s0f0",
+      "network_address": "roazhon9-1.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "6.00 0x80003753 18.5.17",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "3c:fd:fe:54:e2:ba",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp24s0f1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.110.29",
+      "kavlan": false,
+      "mac": "50:9a:4c:78:e8:6b",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "roazhon9-1-bmc.rennes.grid5000.fr"
+    }
+  ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 36800000000,
+    "node_flops": 883200000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 17301504,
+    "clock_speed": 2300000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake",
+    "microcode": "0x2007006",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz",
+    "vendor": "Intel",
+    "version": "Gold 5118"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023092008",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d0946602c0acb00220d90a70c9a87aa",
+      "by_path": "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.29,
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "PERC H330 Mini",
+      "size": 1199101181952,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "roazhon9-1"
+}
