@@ -98,7 +98,66 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
@@ -127,12 +186,15 @@
     {
       "device": "eth1",
       "driver": "i40e",
+      "enabled": false,
       "firmware_version": "7.10 0x800075da 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "e4:43:4b:94:6d:12",
       "management": false,
       "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
       "name": "eno2",
       "sriov": false,
       "sriov_totalvfs": 0,
@@ -190,6 +252,7 @@
       "by_path": "/dev/disk/by-path/pci-0000:04:00.0-ata-1",
       "firmware_version": "MV.R00-0",
       "id": "disk0",
+      "interface": "RAID",
       "model": "DELLBOSS VD",
       "size": 239990276096,
       "storage": "HDD",
