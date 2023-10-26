@@ -42,18 +42,25 @@ nodes:
         mounted: true
         mac: e4:43:4b:94:95:32
         ip: 172.16.109.15
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
       disk0:
         id: disk0
         interface: SAS
         storage: SSD
         model: unknown
+        by_id: "/dev/disk/by-id/ata-MTFDDAV240TCB_192422839C30"
         by_path: "/dev/disk/by-path/pci-0000:04:00.0-ata-1"
       disk1:
         id: disk1
         interface: SAS
         storage: SSD
         model: unknown
+        by_id: "/dev/dick/by_path/ata-MTFDDAV240TCB_192422839C36"
         by_path: "/dev/disk/by-path/pci-0000:04:00.0-ata-2"
 
     supported_job_types:
