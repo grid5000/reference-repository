@@ -12,3 +12,5 @@ gem "webmock", :group => [:development]
 gem "simplecov", :group => [:development]
 gem "rake"
 gem 'byebug'
+gem "ed25519"
+gem "bcrypt_pbkdf"
