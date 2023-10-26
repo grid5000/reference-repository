@@ -13,8 +13,9 @@ def cluster_prefix(cluster_list)
   loop do
     prefix_hash.clone.each { |k, v|
       next if v.size == 1
-      prefix_hash.merge!(v.group_by { |x| x[0, k.length+1] })
+      r = v.group_by { |x| x[0, k.length+1] }
       prefix_hash.delete(k)
+      prefix_hash.merge!(r)
     }
     break if prefix_hash.keys.size == cluster_list.size # no prefix duplicates
   end
