@@ -51,7 +51,13 @@ nodes:
         interface: SAS
         storage: SSD
         model: unknown
-        by_path: "/dev/disk/by-path/dummy"
+        by_path: "pci-0000:d8:00.0-scsi-0:2:0:0"
+      disk1:
+        id: disk1
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "pci-0000:01:00.0-ata-1"
   roazhon10-1:
     network_adapters:
       bmc:
