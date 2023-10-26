@@ -1,14 +1,5 @@
 {
   "architecture": {
-<<<<<<< HEAD
-    "nb_cores": 32,
-    "nb_procs": 2,
-    "nb_threads": 64,
-    "platform_type": "x86_64"
-  },
-  "exotic": false,
-  "main_memory": {
-=======
     "cpu_core_numbering": "round-robin",
     "nb_cores": 24,
     "nb_procs": 2,
@@ -29,7 +20,6 @@
   "exotic": false,
   "main_memory": {
     "ram_size": 549755813888
->>>>>>> master
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -38,9 +28,6 @@
     }
   },
   "memory_devices": [
-<<<<<<< HEAD
-
-=======
     {
       "device": "dimm_a1",
       "size": 34359738368,
@@ -121,20 +108,10 @@
       "size": 34359738368,
       "technology": "dram"
     }
->>>>>>> master
   ],
   "network_adapters": [
     {
       "device": "eth0",
-<<<<<<< HEAD
-      "enabled": true,
-      "ip": "172.16.110.31",
-      "kavlan": false,
-      "mac": "3c:fd:fe:54:f0:98",
-      "mountable": true,
-      "mounted": true,
-      "network_address": "roazhon9-3.rennes.grid5000.fr"
-=======
       "driver": "i40e",
       "enabled": true,
       "firmware_version": "9.20 0x8000d956 22.0.9",
@@ -172,7 +149,6 @@
       "sriov": false,
       "sriov_totalvfs": 0,
       "vendor": "Intel"
->>>>>>> master
     },
     {
       "device": "bmc",
@@ -187,17 +163,6 @@
       "network_address": "roazhon9-3-bmc.rennes.grid5000.fr"
     }
   ],
-<<<<<<< HEAD
-  "performance": {
-    "core_flops": 36800000000,
-    "node_flops": 1177600000000
-  },
-  "processor": {
-    "cache_l1": null,
-    "clock_speed": 2300000000,
-    "microarchitecture": "Skylake",
-    "other_description": "Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz"
-=======
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
@@ -225,7 +190,6 @@
     "other_description": "Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz",
     "vendor": "Intel",
     "version": "Gold 5118"
->>>>>>> master
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -234,24 +198,6 @@
   },
   "storage_devices": [
     {
-<<<<<<< HEAD
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:2:0:0",
-      "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
-    },
-    {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
-      "id": "disk1",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
-=======
       "by_id": "/dev/disk/by-id/wwn-0x6d0946602c0ad0002210d3e1c51ef862",
       "by_path": "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:2:0:0",
       "firmware_version": 4.3,
@@ -261,7 +207,6 @@
       "size": 1199101181952,
       "storage": "HDD",
       "vendor": "Dell"
->>>>>>> master
     }
   ],
   "supported_job_types": {
@@ -271,12 +216,8 @@
     "queues": [
       "admin",
       "testing"
-<<<<<<< HEAD
-    ]
-=======
     ],
     "virtual": "ivt"
->>>>>>> master
   },
   "type": "node",
   "uid": "roazhon9-3"
