@@ -16,7 +16,7 @@ class WikiGenerator
     tries = 3
     begin
       conf = RefRepo::Utils.get_api_config
-      @mw_client.log_in(conf['username'], conf['password'])
+      @mw_client.log_in(conf['username'], conf['botpassword'])
     rescue
       tries -= 1
       if tries > 0
