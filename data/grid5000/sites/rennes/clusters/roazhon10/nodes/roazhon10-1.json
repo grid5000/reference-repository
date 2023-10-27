@@ -94,7 +94,7 @@
       "device": "eth0",
       "driver": "i40e",
       "enabled": true,
-      "firmware_version": "7.10 0x800075dd 19.5.12",
+      "firmware_version": "9.20 0x8000d962 22.0.9",
       "interface": "Ethernet",
       "ip": "172.16.110.33",
       "ip6": "2001:660:4406:700:f::21",
@@ -117,7 +117,7 @@
       "device": "eth1",
       "driver": "i40e",
       "enabled": false,
-      "firmware_version": "7.10 0x800075dd 19.5.12",
+      "firmware_version": "9.20 0x8000d962 22.0.9",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "e4:43:4b:47:ae:a9",
@@ -147,9 +147,9 @@
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "none",
-    "pstate_governor": "none",
-    "turboboost_enabled": false
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 35200000000,
