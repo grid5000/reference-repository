@@ -8,10 +8,10 @@ roazhon10-2:
     nb_threads: 72
     platform_type: x86_64
   bios:
-    release_date: 04/10/2020
+    release_date: 06/13/2023
     vendor: Dell Inc.
-    version: 2.6.4
-  bmc_version: 4.20.20.20
+    version: 2.19.1
+  bmc_version: 6.10.80.00
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge MX740c
@@ -62,7 +62,7 @@ roazhon10-2:
       management: true
     eth0:
       driver: i40e
-      firmware_version: 7.10 0x800075dd 19.5.12
+      firmware_version: 9.20 0x8000d962 22.0.9
       interface: Ethernet
       ip: 172.16.110.34
       mac: e4:43:4b:47:ae:c4
@@ -75,7 +75,7 @@ roazhon10-2:
       vendor: Intel
     eth1:
       driver: i40e
-      firmware_version: 7.10 0x800075dd 19.5.12
+      firmware_version: 9.20 0x8000d962 22.0.9
       interface: Ethernet
       mac: e4:43:4b:47:ae:c5
       management: false
@@ -88,7 +88,7 @@ roazhon10-2:
     cstate_driver: intel_idle
     cstate_governor: menu
     ht_enabled: true
-    pstate_driver: intel_cpufreq
+    pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
   processor:
@@ -113,7 +113,7 @@ roazhon10-2:
     pci-0000:d8:00.0-scsi-0:2:0:0:
       by_id: "/dev/disk/by-id/wwn-0x64cd98f03c1a7800251fb489f5dd82c0"
       by_path: "/dev/disk/by-path/pci-0000:d8:00.0-scsi-0:2:0:0"
-      firmware_version: 5.09
+      firmware_version: 5.16
       model: PERC H745P MX
       size: 1919716163584
       storage: HDD

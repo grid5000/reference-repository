@@ -8,10 +8,10 @@ roazhon10-3:
     nb_threads: 72
     platform_type: x86_64
   bios:
-    release_date: '08/19/2022'
+    release_date: 06/13/2023
     vendor: Dell Inc.
-    version: 2.16.1
-  bmc_version: 6.10.00.00
+    version: 2.19.1
+  bmc_version: 6.10.80.00
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge MX740c
@@ -62,7 +62,7 @@ roazhon10-3:
       management: true
     eth0:
       driver: i40e
-      firmware_version: 9.00 0x8000cad6 21.5.9
+      firmware_version: 9.20 0x8000d962 22.0.9
       interface: Ethernet
       ip: 172.16.110.35
       mac: e4:43:4b:47:b2:62
@@ -75,7 +75,7 @@ roazhon10-3:
       vendor: Intel
     eth1:
       driver: i40e
-      firmware_version: 9.00 0x8000cad6 21.5.9
+      firmware_version: 9.20 0x8000d962 22.0.9
       interface: Ethernet
       mac: e4:43:4b:47:b2:63
       management: false
@@ -88,9 +88,9 @@ roazhon10-3:
     cstate_driver: intel_idle
     cstate_governor: menu
     ht_enabled: true
-    pstate_driver: none
-    pstate_governor: none
-    turboboost_enabled: false
+    pstate_driver: intel_pstate
+    pstate_governor: performance
+    turboboost_enabled: true
   processor:
     cache_l1d: 32768
     cache_l1i: 32768
