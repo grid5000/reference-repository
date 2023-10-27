@@ -12,18 +12,9 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 36
-      nb_threads: 72
-      platform_type: x86_64
-    bios:
-      vendor: Dell Inc.
     processor:
       microarchitecture: Cascade Lake-SP
       clock_speed: 2200000000
-      other_description: Intel(R) Xeon(R) Gold 5220 CPU @ 2.20GHz
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -31,17 +22,14 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true
         mountable: false
         mounted: false
       eth0:
-        interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
       eth1:
-        interface: Ethernet
         enabled: false
         mountable: false
         mounted: false
@@ -52,35 +40,3 @@ nodes:
       pci-0000:d8:00.0-scsi-0:2:0:0:
         id: disk1
         interface: HDD
-  roazhon10-1:
-    network_adapters:
-      bmc:
-        mac: 4c:d9:8f:89:b4:e4
-        ip: 172.17.110.33
-      eth0:
-        mac: e4:43:4b:47:ae:a8
-        ip: 172.16.110.33
-  roazhon10-2:
-    network_adapters:
-      bmc:
-        mac: 4c:d9:8f:89:b9:2b
-        ip: 172.17.110.34
-      eth0:
-        mac: e4:43:4b:47:ae:c4
-        ip: 172.16.110.34
-  roazhon10-3:
-    network_adapters:
-      bmc:
-        mac: 4c:d9:8f:89:b4:3e
-        ip: 172.17.110.35
-      eth0:
-        mac: e4:43:4b:47:b2:62
-        ip: 172.16.110.35
-  roazhon10-4:
-    network_adapters:
-      bmc:
-        mac: 4c:d9:8f:89:c9:69
-        ip: 172.17.110.36
-      eth0:
-        mac: e4:43:4b:47:b1:d0
-        ip: 172.16.110.36
