@@ -1,9 +1,9 @@
 {
   "architecture": {
     "cpu_core_numbering": "round-robin",
-    "nb_cores": 16,
+    "nb_cores": 24,
     "nb_procs": 2,
-    "nb_threads": 32,
+    "nb_threads": 48,
     "platform_type": "x86_64"
   },
   "bios": {
@@ -81,7 +81,46 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
@@ -127,12 +166,15 @@
     {
       "device": "eth2",
       "driver": "ixgbe",
+      "enabled": false,
       "firmware_version": "0x8000095c, 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "24:6e:96:1b:b7:78",
       "management": false,
       "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": false,
+      "mounted": false,
       "name": "eno1",
       "sriov": true,
       "sriov_totalvfs": 63,
@@ -141,12 +183,15 @@
     {
       "device": "eth3",
       "driver": "ixgbe",
+      "enabled": false,
       "firmware_version": "0x8000095c, 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "24:6e:96:1b:b7:7a",
       "management": false,
       "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": false,
+      "mounted": false,
       "name": "eno2",
       "sriov": true,
       "sriov_totalvfs": 63,
@@ -175,7 +220,7 @@
   },
   "performance": {
     "core_flops": 17600000000,
-    "node_flops": 281600000000
+    "node_flops": 422400000000
   },
   "processor": {
     "cache_l1": null,
@@ -204,11 +249,11 @@
       "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0",
       "firmware_version": 4.3,
       "id": "disk0",
-      "interface": "RAID",
-      "model": "unknown",
+      "interface": "RAID-1 (2 disks)",
+      "model": "PERC H730 Mini",
       "size": 299439751168,
       "storage": "HDD",
-      "vendor": "Unknown"
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
