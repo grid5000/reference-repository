@@ -5,13 +5,13 @@ boot_type: bios
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   roazhon9-[1-4]:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Skylake
       clock_speed: 2300000000
