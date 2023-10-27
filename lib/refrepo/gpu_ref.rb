@@ -116,6 +116,30 @@ class GPURef
         'fp-64' => 1682000000000,
       },
     },
+    'Tesla K80' => {
+      'cores'              => 2496,
+      'compute_capability' => '3.7',
+      'short_name'         => 'Tesla K80',
+      'alias'              => 'k80',
+      'microarchitecture'  => 'Kepler',
+      'performance'        => {
+        'fp-16' => 0,
+        'fp-32' => 4113000000000,
+        'fp-64' => 1371000000000,
+      },
+    },
+    'Tesla M40' => {
+      'cores'              => 3072,
+      'compute_capability' => '5.2',
+      'short_name'         => 'Tesla M40',
+      'alias'              => 'm40',
+      'microarchitecture'  => 'Maxwell',
+      'performance'        => {
+        'fp-16' => 0,
+        'fp-32' => 6832000000000,
+        'fp-64' => 213000000000,
+      },
+    },
     'Tesla T4' => {
       'cores'              => 2560,
       'compute_capability' => '7.5',
