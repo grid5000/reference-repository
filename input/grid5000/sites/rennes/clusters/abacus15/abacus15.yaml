@@ -8,17 +8,9 @@ queues:
   - admin
 nodes:
   abacus15-1:
-    memory_devices: []
     supported_job_types:
       deploy: true
       besteffort: true
-    architecture:
-      nb_procs: 2
-      nb_cores: 32
-      nb_threads: 64
-      platform_type: x86_64
-    bios:
-      vendor: Dell Inc.
     processor:
       microarchitecture: Zen 3
       clock_speed: 2650000000
@@ -29,42 +21,21 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true
         mountable: false
         mounted: false
-        mac: f4:02:70:b3:e4:9a
-        ip: 172.17.109.15
       eth0:
-        interface: Ethernet
-        name: eno1
         enabled: true
         mountable: true
         mounted: true
-        mac: e4:43:4b:94:95:32
-        ip: 172.16.109.15
       eth1:
-        interface: Ethernet
-        name: eno2
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
       pci-0000:04:00.0-ata-1:
         id: disk0
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_id: "/dev/disk/by-id/ata-MTFDDAV240TCB_192422839C30"
-        by_path: "/dev/disk/by-path/pci-0000:04:00.0-ata-1"
+        interface: SATA
       pci-0000:04:00.0-ata-2:
         id: disk1
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_id: "/dev/dick/by_path/ata-MTFDDAV240TCB_192422839C36"
-        by_path: "/dev/disk/by-path/pci-0000:04:00.0-ata-2"
-
-    supported_job_types:
-      max_walltime: 345600
-
+        interface: SATA
