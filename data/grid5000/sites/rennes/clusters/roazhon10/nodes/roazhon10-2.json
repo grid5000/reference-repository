@@ -1,15 +1,25 @@
 {
   "architecture": {
+    "cpu_core_numbering": "round-robin",
     "nb_cores": 36,
     "nb_procs": 2,
     "nb_threads": 72,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "06/13/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.19.1"
+  },
+  "bmc_version": "6.10.80.00",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge MX740c",
+    "serial": "6QYBRZ2"
   },
   "exotic": false,
   "main_memory": {
+    "ram_size": 412316860416
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,30 +28,107 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "9.20 0x8000d962 22.0.9",
       "interface": "Ethernet",
       "ip": "172.16.110.34",
       "ip6": "2001:660:4406:700:f::22",
       "kavlan": false,
       "mac": "e4:43:4b:47:ae:c4",
+      "management": false,
+      "model": "Ethernet Controller XXV710 for 25GbE backplane",
       "mountable": true,
       "mounted": true,
+      "name": "enp59s0f0",
       "network_address": "roazhon10-2.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
+      "driver": "i40e",
       "enabled": false,
+      "firmware_version": "9.20 0x8000d962 22.0.9",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "e4:43:4b:47:ae:c5",
+      "management": false,
+      "model": "Ethernet Controller XXV710 for 25GbE backplane",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "enp59s0f1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -56,15 +143,33 @@
       "network_address": "roazhon10-2-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 35200000000,
     "node_flops": 1267200000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 25952256,
     "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Cascade Lake-SP",
-    "other_description": "Intel(R) Xeon(R) Gold 5220 CPU @ 2.20GHz"
+    "microcode": "0x5003604",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5220 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Gold 5220"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -75,20 +180,24 @@
     {
       "by_id": "",
       "by_path": "/dev/disk/by-path/pci-0000:01:00.0-ata-1",
+      "firmware_version": "MV.R00-0",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "interface": "HDD",
+      "model": "DELLBOSS VD",
+      "size": 239990276096,
+      "storage": "HDD",
+      "vendor": "Dell"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x64cd98f03c1a7800251fb489f5dd82c0",
       "by_path": "/dev/disk/by-path/pci-0000:d8:00.0-scsi-0:2:0:0",
+      "firmware_version": 5.16,
       "id": "disk1",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "interface": "HDD",
+      "model": "PERC H745P MX",
+      "size": 1919716163584,
+      "storage": "HDD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -98,7 +207,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "roazhon10-2"
