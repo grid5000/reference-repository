@@ -164,6 +164,7 @@
   ],
   "network_adapters": [
     {
+<<<<<<< HEAD
       "device": "eth0",
       "enabled": true,
 <<<<<<< HEAD
@@ -201,6 +202,8 @@
       "mounted": false
     },
     {
+=======
+>>>>>>> 56ce45a5d4 ([rennes][abacus15] Fix error on interfaces)
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
@@ -215,28 +218,38 @@
     {
       "device": "eno1",
       "driver": "i40e",
+      "enabled": true,
       "firmware_version": "7.10 0x800075da 19.5.12",
       "interface": "Ethernet",
       "ip": "172.16.109.15",
+      "ip6": "2001:660:4406:700:e::f",
       "kavlan": false,
       "mac": "e4:43:4b:94:95:32",
       "management": false,
       "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": true,
+      "mounted": true,
       "name": "eno1",
+      "network_address": "abacus15-1-eno1.rennes.grid5000.fr",
       "rate": 10000000000,
       "sriov": false,
       "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
       "vendor": "Intel"
     },
     {
       "device": "eno2",
       "driver": "i40e",
+      "enabled": false,
       "firmware_version": "7.10 0x800075da 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "e4:43:4b:94:95:34",
       "management": false,
       "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
       "name": "eno2",
       "sriov": false,
       "sriov_totalvfs": 0,
