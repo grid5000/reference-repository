@@ -1,12 +1,61 @@
 {
   "architecture": {
-    "nb_cores": 10,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 20,
     "nb_procs": 2,
-    "nb_threads": 20,
+    "nb_threads": 40,
     "platform_type": "x86_64"
   },
+  "bios": {
+    "release_date": "06/04/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.19.1"
+  },
+  "bmc_version": "6.10.80.00",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R740",
+    "serial": "CD8TCM2"
+  },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.6",
+      "cores": 10752,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia0",
+      "memory": 47850717184,
+      "microarchitecture": "Ampere",
+      "model": "A40",
+      "performance": {
+        "fp-16": 37420000000000,
+        "fp-32": 37420000000000,
+        "fp-64": 584600000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "94.02.5C.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.6",
+      "cores": 10752,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 47850717184,
+      "microarchitecture": "Ampere",
+      "model": "A40",
+      "performance": {
+        "fp-16": 37420000000000,
+        "fp-32": 37420000000000,
+        "fp-64": 584600000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "94.02.5C.00.03",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+    "ram_size": 137438953472
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -15,18 +64,121 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fa8, 18.8.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:6e:9d:30",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "6.80 0x80003d71 18.8.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:6e:9d:10",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
       "enabled": true,
+      "firmware_version": "1.67, 0x80000fa8, 18.8.9",
+      "interface": "Ethernet",
       "ip": "172.16.109.4",
+      "ip6": "2001:660:4406:700:e::4",
       "kavlan": false,
       "mac": "24:6e:96:6e:9d:31",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
-      "network_address": "abacus4-1.rennes.grid5000.fr"
+      "name": "eno4",
+      "network_address": "abacus4-1.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "6.80 0x80003d71 18.8.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:6e:9d:12",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -35,34 +187,56 @@
       "ip": "172.17.109.4",
       "kavlan": false,
       "mac": "50:9a:4c:b1:0e:1e",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "abacus4-1-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 42400000000,
-    "node_flops": 424000000000
+    "node_flops": 848000000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 14417920,
     "clock_speed": 2650000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Zen 3",
-    "other_description": "Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz"
+    "microcode": "0x2007006",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Silver 4114"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2023092008",
+    "postinstall-version": "1.2023092009",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x6509a4c0b18e2900220af3240a3b840f",
       "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.29,
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "model": "PERC H330 Adp",
+      "size": 959119884288,
+      "storage": "HDD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -72,7 +246,8 @@
     "queues": [
       "testing",
       "admin"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "abacus4-1"
