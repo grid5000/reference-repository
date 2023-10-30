@@ -21,15 +21,25 @@ nodes:
       bmc_vendor_tool: racadm
     network_adapters:
       bmc:
+        ip: 172.17.109.15
+        mac: f4:02:70:b3:e4:9a
         interface: Ethernet
+        management: true
         enabled: true
         mountable: false
         mounted: false
       eth0:
+        ip: 172.16.109.15
+        mac: e4:43:4b:94:95:32
+        interface: Ethernet
+        management: false
         enabled: true
         mountable: true
         mounted: true
       eth1:
+        mac: e4:43:4b:94:95:34
+        interface: Ethernet
+        management: false
         enabled: false
         mountable: false
         mounted: false
