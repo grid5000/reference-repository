@@ -2,7 +2,7 @@
 pve-1:
   kind: physical
   serial: CZJ2370N65
-  alias: [ntp]
+  alias: [ntp, adminfront]
   network_adapters:
     bmc:
       ip: 172.17.174.1
@@ -29,7 +29,7 @@ pve-2:
 srv-data:
   kind: physical
   serial: CZ223607QR
-  alias: [nfs]
+  alias: [nfs, home-g5k, modules, public]
   network_adapters:
     bmc:
       ip: 172.17.174.3
