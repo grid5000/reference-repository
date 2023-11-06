@@ -121,7 +121,7 @@ class SiteHardwareGenerator < WikiGenerator
       site_accelerators += cluster_hash.select { |_k, v| v['accelerators'] != '' }.count
     }
 
-    hardware[site].sort.to_h.each { |cluster_uid, cluster_hash|
+    hardware[site].sort_by{|cluster_uid, _cluster_hash| [cluster_uid[/(\D+)/, 1], cluster_uid[/(\d+)/, 1].to_i]}.to_h.each { |cluster_uid, cluster_hash|
       cluster_nodes = cluster_hash.keys.flatten.count
       queue = cluster_hash.map { |_k, v| v['queue']}.first
       access_conditions = []
@@ -185,7 +185,7 @@ class SiteHardwareGenerator < WikiGenerator
       else
         text_data << "\n= Clusters in the #{queue} queue ="
       end
-      clusters.sort.to_h.each { |cluster_uid, cluster_hash|
+      clusters.sort_by{|cluster_uid, _cluster_hash| [cluster_uid[/(\D+)/, 1], cluster_uid[/(\d+)/, 1].to_i]}.to_h.each { |cluster_uid, cluster_hash|
         subclusters = cluster_hash.keys.count != 1
         cluster_nodes = cluster_hash.keys.flatten.count
         cluster_cpus = cluster_hash.map { |k, v| k.count * v['cpus_per_node'] }.reduce(:+)
