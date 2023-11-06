@@ -7,10 +7,7 @@ require 'net/ssh'
 class ModulesList < WikiGenerator
 
     def get_modules_hash
-        user = Etc.getlogin == 'jenkins' ? 'ajenkins' : 'g5kadmin'
-
-        # Lyon is hosting the main module repository
-        host = 'lyon.grid5000.fr'
+        user, host = Etc.getpwuid[:name] == 'jenkins' ? ['ajenkins', 'lyon'] : ['g5kadmin', 'lyon.g5k']
 
         cmd = "/usr/share/lmod/lmod/libexec/spider -o jsonSoftwarePage $MODULEPATH"
         Net::SSH.start(host, user) do |ssh|
