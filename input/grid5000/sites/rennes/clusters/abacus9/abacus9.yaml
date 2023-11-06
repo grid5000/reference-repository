@@ -1,0 +1,39 @@
+model: Dell PowerEdge C4140
+created_at: 2023-11-06
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  abacus9-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Skylake
+      clock_speed: 2200000000
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      pci-0000:04:00.0-ata-1:
+        id: disk0
+        interface: SATA
