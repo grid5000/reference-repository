@@ -111,19 +111,7 @@
   ],
   "network_adapters": [
     {
-      "device": "bmc",
-      "enabled": true,
-      "interface": "Ethernet",
-      "ip": "172.17.110.37",
-      "kavlan": false,
-      "mac": "84:8f:69:ff:92:a6",
-      "management": true,
-      "mountable": false,
-      "mounted": false,
-      "network_address": "roazhon11-1-bmc.rennes.grid5000.fr"
-    },
-    {
-      "device": "eno1",
+      "device": "eth0",
       "driver": "igb",
       "enabled": true,
       "firmware_version": "1.57.0",
@@ -137,7 +125,7 @@
       "mountable": true,
       "mounted": true,
       "name": "eno1",
-      "network_address": "roazhon11-1-eno1.rennes.grid5000.fr",
+      "network_address": "roazhon11-1.rennes.grid5000.fr",
       "rate": 1000000000,
       "sriov": true,
       "sriov_totalvfs": 7,
@@ -146,7 +134,7 @@
       "vendor": "Intel"
     },
     {
-      "device": "eno2",
+      "device": "eth1",
       "driver": "igb",
       "enabled": false,
       "firmware_version": "1.57.0",
@@ -161,6 +149,18 @@
       "sriov": true,
       "sriov_totalvfs": 7,
       "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.110.37",
+      "kavlan": false,
+      "mac": "84:8f:69:ff:92:a6",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "roazhon11-1-bmc.rennes.grid5000.fr"
     }
   ],
   "operating_system": {
