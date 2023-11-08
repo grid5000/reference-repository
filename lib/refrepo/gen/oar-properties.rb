@@ -1329,7 +1329,10 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
                   raise "Could not find a GPU on CPU #{cpu_num} for core #{row[:cpuset]}"
                 end
               else
-                gpu_idx = core_num / (cpu_core_count / numa_gpus.length)
+                # The parenthesis order is important: we want to keep the
+                # integer division to generate an integer index, so we want to
+                # do the multiplication first.
+                gpu_idx = (core_num * numa_gpus.length) / cpu_core_count
                 selected_gpu = numa_gpus[gpu_idx]
               end
               # id of the selected GPU in the node
