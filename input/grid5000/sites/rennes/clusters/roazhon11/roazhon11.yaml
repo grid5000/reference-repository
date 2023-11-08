@@ -12,18 +12,9 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 16
-      nb_threads: 32
-      platform_type: x86_64
-    bios:
-      vendor: Dell Inc.
     processor:
       microarchitecture: Sandy Bridge
       clock_speed: 2200000000
-      other_description: Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -31,48 +22,18 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true
         mountable: false
         mounted: false
-      eth0:
-        interface: Ethernet
+      eno1:
         enabled: true
         mountable: true
         mounted: true
-      eth1:
-        interface: Ethernet
+      eno2:
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:82:00.0-scsi-0:1:0:0:
         id: disk0
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:82:00.0-scsi-0:1:0:0"
-  roazhon11-1:
-    network_adapters:
-      bmc:
-        mac: 84:8f:69:ff:92:a6
-        ip: 172.17.110.37
-      eth0:
-        mac: 84:8f:69:ff:92:a4
-        ip: 172.16.110.37
-  roazhon11-2:
-    network_adapters:
-      bmc:
-        mac: 84:8f:69:ff:93:00
-        ip: 172.17.110.38
-      eth0:
-        mac: 84:8f:69:ff:92:fe
-        ip: 172.16.110.38
-  roazhon11-3:
-    network_adapters:
-      bmc:
-        mac: 78:45:c4:f8:f9:02
-        ip: 172.17.110.39
-      eth0:
-        mac: 78:45:c4:f8:f9:00
-        ip: 172.16.110.39
+        interface: RAID
