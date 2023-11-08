@@ -92,7 +92,7 @@ module RefRepo::Valid::OarProperties
         nbcores = nbcores.first
 
         if host_resources.length != nbcores
-          puts "ERROR: invalid number of resources for #{host}. should be nbcores."
+          puts "ERROR: invalid number of resources for #{host}. should be nbcores. (host_resources.length=#{host_resources.length} ; nbcores=#{nbcores})"
           ret = false
         end
 
