@@ -4,14 +4,14 @@ kavlan: false
 boot_type: bios
 exotic: false
 queues:
-  - default
   - admin
+  - production
 nodes:
   roazhon10-[1-4]:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Cascade Lake-SP
       clock_speed: 2200000000
