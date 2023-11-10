@@ -4,14 +4,14 @@ kavlan: false
 boot_type: bios
 exotic: false
 queues:
-  - testing
+  - production
   - admin
 nodes:
   abacus14-1:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 86400
     processor:
       microarchitecture: Zen 3
       clock_speed: 2650000000
