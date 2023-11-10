@@ -121,6 +121,21 @@ module RefRepo::Valid::OarProperties
           puts "id   cpu   core   cpuset"
           pp(host_resources.map { |e| [e['id'], e['cpu'], e['core'], e['cpuset'] ] })
         end
+
+        # if a node has GPUs, then all resources must be affected to a GPU
+        host_resources = default_resources.select { |e| e['host'] == host }
+        if host_resources.find { |r| r['gpu'] }
+          if host_resources.find { |r| r['gpu'].nil? }
+            puts "ERROR: #{host} has GPU(s), but some resources have no GPUs affected. Reserving all GPUs should reserve the whole node, and reserving 1/N GPUs should reserve 1/N of the node."
+            host_resources.group_by { |r| r['gpu'] }.each_pair do |gpu, prop|
+              cpus = prop.map { |e| e['cpu'] }.uniq.sort.join(',')
+              cores = prop.map { |e| e['core'] }.uniq.sort.join(',')
+              rids = prop.map { |e| e['resource_id'] }.uniq.sort.join(',')
+              puts "gpu=#{gpu ? gpu : 'NULL'} for resources with: cpu=#{cpus} core=#{cores} resource_id=#{rids}"
+            end
+            ret = false
+          end
+        end
       end
     end
     return ret
