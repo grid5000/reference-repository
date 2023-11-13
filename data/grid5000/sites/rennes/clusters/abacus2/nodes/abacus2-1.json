@@ -1,17 +1,5 @@
 {
   "architecture": {
-<<<<<<< HEAD
-    "nb_cores": 8,
-    "nb_procs": 2,
-    "nb_threads": 8,
-    "platform_type": "x86_64"
-  },
-  "bios": {
-    "vendor": "Dell Inc."
-  },
-  "exotic": false,
-  "main_memory": {
-=======
     "cpu_core_numbering": "round-robin",
     "nb_cores": 16,
     "nb_procs": 2,
@@ -68,7 +56,6 @@
   },
   "main_memory": {
     "ram_size": 68719476736
->>>>>>> master
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -77,9 +64,6 @@
     }
   },
   "memory_devices": [
-<<<<<<< HEAD
-
-=======
     {
       "device": "dimm_a1",
       "size": 8589934592,
@@ -120,54 +104,18 @@
       "size": 8589934592,
       "technology": "dram"
     }
->>>>>>> master
   ],
   "network_adapters": [
     {
       "device": "eth0",
-<<<<<<< HEAD
-      "enabled": true,
-=======
       "driver": "igb",
       "enabled": true,
       "firmware_version": "1.67, 0x80000faa, 19.5.12",
->>>>>>> master
       "interface": "Ethernet",
       "ip": "172.16.109.2",
       "ip6": "2001:660:4406:700:e::2",
       "kavlan": false,
       "mac": "24:6e:96:69:48:54",
-<<<<<<< HEAD
-      "mountable": true,
-      "mounted": true,
-      "network_address": "abacus2-1.rennes.grid5000.fr",
-      "switch": null,
-      "switch_port": null
-    },
-    {
-      "device": "eth1",
-      "enabled": false,
-      "interface": "Ethernet",
-      "kavlan": false,
-      "mountable": false,
-      "mounted": false
-    },
-    {
-      "device": "eth2",
-      "enabled": false,
-      "interface": "Ethernet",
-      "kavlan": false,
-      "mountable": false,
-      "mounted": false
-    },
-    {
-      "device": "eth3",
-      "enabled": false,
-      "interface": "Ethernet",
-      "kavlan": false,
-      "mountable": false,
-      "mounted": false
-=======
       "management": false,
       "model": "I350 Gigabit Network Connection",
       "mountable": true,
@@ -231,7 +179,6 @@
       "sriov": true,
       "sriov_totalvfs": 7,
       "vendor": "Intel"
->>>>>>> master
     },
     {
       "device": "bmc",
@@ -246,17 +193,6 @@
       "network_address": "abacus2-1-bmc.rennes.grid5000.fr"
     }
   ],
-<<<<<<< HEAD
-  "performance": {
-    "core_flops": 13600000000,
-    "node_flops": 108800000000
-  },
-  "processor": {
-    "cache_l1": null,
-    "clock_speed": 1700000000,
-    "microarchitecture": "Sandy Bridge",
-    "other_description": "Intel(R) Xeon(R) CPU E5-2609 v4 @ 1.70GHz"
-=======
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
@@ -284,7 +220,6 @@
     "other_description": "Intel(R) Xeon(R) CPU E5-2609 v4 @ 1.70GHz",
     "vendor": "Intel",
     "version": "E5-2609 v4"
->>>>>>> master
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -293,15 +228,6 @@
   },
   "storage_devices": [
     {
-<<<<<<< HEAD
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0",
-      "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
-=======
       "by_id": "/dev/disk/by-id/wwn-0x6107d1a0ff26b8002126d6f512642ace",
       "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0",
       "firmware_version": 4.3,
@@ -311,7 +237,6 @@
       "size": 299439751168,
       "storage": "HDD",
       "vendor": "Dell"
->>>>>>> master
     }
   ],
   "supported_job_types": {
@@ -321,12 +246,8 @@
     "queues": [
       "admin",
       "testing"
-<<<<<<< HEAD
-    ]
-=======
     ],
     "virtual": "ivt"
->>>>>>> master
   },
   "type": "node",
   "uid": "abacus2-1"
