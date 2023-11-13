@@ -8,6 +8,11 @@ queues:
   - admin
 nodes:
   abacus14-1:
+    gpu_devices:
+      nvidia2:
+        cpu_affinity_override: 1
+      nvidia3:
+        cpu_affinity_override: 1
     supported_job_types:
       deploy: true
       besteffort: true
