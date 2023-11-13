@@ -1,15 +1,25 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
     "nb_cores": 16,
     "nb_procs": 2,
     "nb_threads": 32,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "07/18/2012",
+    "vendor": "Dell Inc.",
+    "version": "1.0.28"
+  },
+  "bmc_version": "2.53",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6220",
+    "serial": "8CSYF5J"
   },
   "exotic": false,
   "main_memory": {
+    "ram_size": 137438953472
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -18,31 +28,87 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "igb",
       "enabled": true,
+      "firmware_version": "1.57.0",
       "interface": "Ethernet",
       "ip": "172.16.110.43",
       "ip6": "2001:660:4406:700:f::2b",
       "kavlan": false,
       "mac": "84:8f:69:ff:5b:b2",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
       "name": "eno1",
       "network_address": "roazhon12-4.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": true,
+      "sriov_totalvfs": 7,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
+      "driver": "igb",
       "enabled": false,
+      "firmware_version": "1.57.0",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "84:8f:69:ff:5b:b3",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno2",
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -57,15 +123,33 @@
       "network_address": "roazhon12-4-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 17600000000,
     "node_flops": 281600000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 20971520,
     "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Sandy Bridge",
-    "other_description": "Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz"
+    "microcode": "0x71a",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "E5-2660"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -74,12 +158,14 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x600508e0000000001709ba40499da60b",
       "by_path": "/dev/disk/by-path/pci-0000:82:00.0-scsi-0:1:0:0",
+      "firmware_version": 3000,
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
-      "storage": "SSD",
+      "model": "Logical Volume",
+      "size": 597998698496,
+      "storage": "HDD",
       "vendor": "Unknown"
     }
   ],
@@ -90,7 +176,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "roazhon12-4"
