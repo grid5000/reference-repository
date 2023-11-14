@@ -1,0 +1,114 @@
+{
+  "architecture": {
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": null
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "ip": "172.16.160.5",
+      "kavlan": false,
+      "mac": "30:3e:a7:00:7e:ec",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "fleckenstein-5.strasbourg.grid5000.fr"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.160.5",
+      "kavlan": false,
+      "mac": "5c:ed:8c:3b:20:44",
+      "mountable": false,
+      "mounted": false
+    }
+  ],
+  "performance": {
+    "core_flops": 108800000000,
+    "node_flops": 3481600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 3400000000,
+    "microarchitecture": "Ice Lake"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023092009",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk2",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk3",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk4",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "fleckenstein-5"
+}
