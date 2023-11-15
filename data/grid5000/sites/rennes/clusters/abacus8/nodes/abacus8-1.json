@@ -1,9 +1,13 @@
 {
   "architecture": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "cpu_core_numbering": "round-robin",
 =======
 >>>>>>> 21b3c0dd12 ([rennes][abacus8] minimal configuration)
+=======
+    "cpu_core_numbering": "round-robin",
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
     "nb_cores": 28,
     "nb_procs": 2,
     "nb_threads": 56,
@@ -11,6 +15,9 @@
   },
   "bios": {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
     "release_date": "08/27/2020",
     "vendor": "Dell Inc.",
     "version": "2.8.2"
@@ -20,6 +27,7 @@
     "manufacturer": "Dell Inc.",
     "name": "Precision 7920 Rack",
     "serial": "DX0T2S2"
+<<<<<<< HEAD
   },
   "exotic": false,
   "gpu_devices": {
@@ -62,10 +70,52 @@
     "ram_size": 206158430208
 =======
     "vendor": "Dell Inc."
+=======
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "6.1",
+      "cores": 3840,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 25636634624,
+      "microarchitecture": "Pascal",
+      "model": "Quadro P6000",
+      "performance": {
+        "fp-16": 197400000000,
+        "fp-32": 12630000000000,
+        "fp-64": 394800000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.2D.00.05",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "6.1",
+      "cores": 3840,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 25636634624,
+      "microarchitecture": "Pascal",
+      "model": "Quadro P6000",
+      "performance": {
+        "fp-16": 197400000000,
+        "fp-32": 12630000000000,
+        "fp-64": 394800000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.2D.00.05",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+<<<<<<< HEAD
 >>>>>>> 21b3c0dd12 ([rennes][abacus8] minimal configuration)
+=======
+    "ram_size": 206158430208
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -80,17 +130,24 @@
     {
       "device": "eth0",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "driver": "igb",
       "enabled": true,
       "firmware_version": "1.67, 0x80000eb9, 18.3.6",
 =======
       "enabled": true,
 >>>>>>> 21b3c0dd12 ([rennes][abacus8] minimal configuration)
+=======
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "1.67, 0x80000eb9, 18.3.6",
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
       "interface": "Ethernet",
       "ip": "172.16.109.8",
       "ip6": "2001:660:4406:700:e::8",
       "kavlan": false,
       "mac": "e4:43:4b:2a:8d:8a",
+<<<<<<< HEAD
 <<<<<<< HEAD
       "management": false,
       "model": "I350 Gigabit Network Connection",
@@ -150,20 +207,70 @@
       "sriov_totalvfs": 0,
       "vendor": "Intel"
 =======
+=======
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
       "mountable": true,
       "mounted": true,
+      "name": "eno3",
       "network_address": "abacus8-1.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
+      "driver": "igb",
       "enabled": false,
+      "firmware_version": "1.67, 0x80000eb9, 18.3.6",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "e4:43:4b:2a:8d:8b",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
       "mountable": false,
+<<<<<<< HEAD
       "mounted": false
 >>>>>>> 21b3c0dd12 ([rennes][abacus8] minimal configuration)
+=======
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "ixgbe",
+      "firmware_version": "0x80000925, 18.3.6",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:2a:8d:88",
+      "management": false,
+      "model": "Ethernet Controller 10G X550T",
+      "name": "eno1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "ixgbe",
+      "firmware_version": "0x80000925, 18.3.6",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:2a:8d:89",
+      "management": false,
+      "model": "Ethernet Controller 10G X550T",
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
     },
     {
       "device": "bmc",
@@ -179,6 +286,9 @@
     }
   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
@@ -187,8 +297,11 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+<<<<<<< HEAD
 =======
 >>>>>>> 21b3c0dd12 ([rennes][abacus8] minimal configuration)
+=======
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
   "performance": {
     "core_flops": 35200000000,
     "node_flops": 985600000000
@@ -196,10 +309,14 @@
   "processor": {
     "cache_l1": null,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
     "cache_l1d": 32768,
     "cache_l1i": 32768,
     "cache_l2": 1048576,
     "cache_l3": 20185088,
+<<<<<<< HEAD
     "clock_speed": 2200000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
@@ -210,10 +327,22 @@
     "vendor": "Intel",
     "version": "Gold 5120"
 =======
+=======
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
     "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Skylake",
+<<<<<<< HEAD
     "other_description": "Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz"
 >>>>>>> 21b3c0dd12 ([rennes][abacus8] minimal configuration)
+=======
+    "microcode": "0x2007006",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Gold 5120"
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -222,6 +351,7 @@
   },
   "storage_devices": [
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
       "by_id": "/dev/disk/by-id/wwn-0x5ace42e0202e1a2f",
       "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-3",
@@ -245,10 +375,26 @@
       "vendor": "Sk Hynix"
 =======
       "by_id": "",
+=======
+      "by_id": "/dev/disk/by-id/wwn-0x5ace42e0202e1a2f",
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
       "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-3",
+      "firmware_version": "70000P10",
       "id": "disk0",
       "interface": "SAS",
       "model": "unknown",
+      "size": 512110190592,
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5ace42e0202da923",
+      "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-4",
+      "firmware_version": "70000P10",
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "unknown",
+      "size": 512110190592,
       "storage": "SSD",
       "vendor": "Unknown"
 >>>>>>> 21b3c0dd12 ([rennes][abacus8] minimal configuration)
@@ -262,11 +408,16 @@
       "admin",
       "testing"
 <<<<<<< HEAD
+<<<<<<< HEAD
     ],
     "virtual": "ivt"
 =======
     ]
 >>>>>>> 21b3c0dd12 ([rennes][abacus8] minimal configuration)
+=======
+    ],
+    "virtual": "ivt"
+>>>>>>> de507fb6fe ([rennes][abacus8] add first import g5k-cheks)
   },
   "type": "node",
   "uid": "abacus8-1"
