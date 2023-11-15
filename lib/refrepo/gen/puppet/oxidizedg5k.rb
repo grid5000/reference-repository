@@ -29,14 +29,14 @@ end
 def generate_config_lines(conf)
   lines = []
   conf.each do |site, groups|
-    groups.each do |g,devices|
-      devices.each do |d,v|
-        missing_info = ["driver","user","password"] - v.keys
+    groups.each do |group,devices|
+      devices.each do |device,values|
+        missing_info = ["driver","user","password"] - values.keys
         if missing_info.length != 0
-          puts "Skipping #{d}.#{site}, missing #{missing_info}"
+          puts "Skipping #{device}.#{site}, missing #{missing_info}"
           next
         else
-          lines << build_line(site, g, d, v)
+          lines << build_line(site, group, device, values)
         end
       end
     end
