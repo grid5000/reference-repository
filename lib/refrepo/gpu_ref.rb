@@ -200,6 +200,18 @@ class GPURef
         'fp-64' => 867890000000,
       },
     },
+    'Quadro P6000' => {
+      'cores'              => 3840,
+      'compute_capability' => '6.1',
+      'short_name'         => 'Quadro P6000',
+      'alias'              => 'p6000',
+      'microarchitecture'  => 'Pascal',
+      'performance'        => {
+        'fp-16' => 197400000000,
+        'fp-32' => 12630000000000,
+        'fp-64' => 394800000000,
+      },     
+    },
     'Quadro RTX 6000' => {
       'cores'              => 4608,
       'compute_capability' => '7.5',
