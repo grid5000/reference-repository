@@ -16,9 +16,9 @@ class WikiGenerator
     tries = 3
     begin
       conf = RefRepo::Utils.get_api_config
-      @mw_client.log_in(conf[:username], conf[:botpassword])
+      @mw_client.log_in(conf["username"], conf["botpassword"])
     rescue
-      if !conf.has_key?(:botpassword)
+      if !conf.has_key?("botpassword")
         raise "botpassword is not defined, see https://www.grid5000.fr/w/TechTeam:Reference_Repository#Credentials"
       end
       tries -= 1
