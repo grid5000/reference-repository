@@ -14,9 +14,14 @@ conf.each do |site, groups|
         puts "Skipping #{d}.#{site}, missing #{missing_info.to_s}"
         next
       else
-      enable = v.has_key?('enable') ? v['enable'] : false
+        enable = v.has_key?('enable') ? v['enable'] : false
+        config = [d+'.'+site,site+"-"+g,v['driver'],v['user'],v['password'],enable]
+        if v.has_key?('ssh_kex')
+          config << v['ssh_kex']
+        end
+        config_line = config.join(':')
 -%>
-<%=[d+'.'+site,site+"-"+g,v['driver'],v['user'],v['password'],enable].join(':') %>
+<%=config_line%>
       <%- end -%>
     <%- end -%>
   <%- end -%>
