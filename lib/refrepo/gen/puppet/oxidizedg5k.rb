@@ -18,10 +18,39 @@ def generate_puppet_oxidizedg5k(options)
   if not conf
     warn "No generator configuration for oxidized found in #{options[:conf_dir]}/oxidizedg5k.yaml, skipping oxidized"
   else
+    config_lines = generate_config_lines(conf)
     output = ERB.new(File.read(File.expand_path('templates/oxidized.db.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
     output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/oxidized/oxidized.db")
     output_file.dirname.mkpath()
     File.write(output_file, output)
   end
+end
 
+def generate_config_lines(conf)
+  lines = []
+  conf.each do |site, groups|
+    groups.each do |g,devices|
+      devices.each do |d,v|
+        missing_info = ["driver","user","password"] - v.keys
+        if missing_info.length != 0
+          puts "Skipping #{d}.#{site}, missing #{missing_info}"
+          next
+        else
+          lines << build_line(site, g, d, v)
+        end
+      end
+    end
+  end
+  return lines
+end
+
+def build_line(site, group, device, hash)
+  name = device + '.' + site
+  group_name = site + '-' + group
+  enable = hash.has_key?('enable') ? hash['enable'] : false
+  config = [name, group_name, hash['driver'], hash['user'], hash['password'], enable]
+  if hash.has_key?('ssh_kex')
+    config << hash['ssh_kex']
+  end
+  return config.join(':')
 end

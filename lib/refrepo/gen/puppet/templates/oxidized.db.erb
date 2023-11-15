@@ -5,24 +5,6 @@
 ### false = already in exec mode
 ### true = need the "enable" cmd without password
 ### p4ssword : the enable password
-<%-
-conf.each do |site, groups|
-  groups.each do |g,devices|
-    devices.each do |d,v|
-      missing_info = ["driver","user","password"] - v.keys
-      if missing_info.length != 0
-        puts "Skipping #{d}.#{site}, missing #{missing_info.to_s}"
-        next
-      else
-        enable = v.has_key?('enable') ? v['enable'] : false
-        config = [d+'.'+site,site+"-"+g,v['driver'],v['user'],v['password'],enable]
-        if v.has_key?('ssh_kex')
-          config << v['ssh_kex']
-        end
-        config_line = config.join(':')
--%>
-<%=config_line%>
-      <%- end -%>
-    <%- end -%>
-  <%- end -%>
+<%- config_lines.each do |line| -%>
+<%= line %>
 <%- end -%>
