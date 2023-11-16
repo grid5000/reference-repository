@@ -12,47 +12,34 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 20
-      nb_threads: 40
-      platform_type: x86_64
-    bios:
-      vendor: Dell Inc.
     processor:
       microarchitecture: Skylake
       clock_speed: 2200000000
-      other_description: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
       bmc_vendor_tool: racadm
     network_adapters:
       bmc:
-        mac: 4c:d9:8f:13:7e:ba 
-        ip: 172.17.109.11
         interface: Ethernet
-        management: true
         enabled: true
         mountable: false
         mounted: false
       eth0:
-        mac: b4:96:91:42:2c:80
-        ip: 172.16.109.11
-        interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
       eth1:
-        interface: Ethernet
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:19:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"
+      pci-0000:19:00.0-scsi-0:2:1:0:
+        id: disk0
+        interface: SAS
+      pci-0000:19:00.0-scsi-0:2:2:0:
+        id: disk0
+        interface: SAS
