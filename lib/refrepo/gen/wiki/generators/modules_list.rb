@@ -12,8 +12,12 @@ class ModulesList < WikiGenerator
         cmd = "/usr/share/lmod/lmod/libexec/spider -o jsonSoftwarePage $MODULEPATH"
         Net::SSH.start(host, user) do |ssh|
             output = ssh.exec!(cmd)
-            return Hash[JSON.parse(output).map {|m| [m["package"], {"help": m["versions"][0]["help"], 
-            "versions": m["versions"].map { |v| v["full"].split('/')[1]}}]}]
+            return Hash[JSON.parse(output).map do |m|
+                [m["package"], {
+                  "help": m["versions"][0]["help"], 
+                  "versions": m["versions"].map { |v| v["full"].split('/')[1] }
+                }]
+              end]
         end
     end
 
