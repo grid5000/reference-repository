@@ -1,15 +1,78 @@
 {
   "architecture": {
+    "cpu_core_numbering": "round-robin",
     "nb_cores": 40,
     "nb_procs": 2,
     "nb_threads": 80,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "06/04/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.19.1"
+  },
+  "bmc_version": "6.10.80.00",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R740",
+    "serial": "5Y5XJ03"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 34089205760,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-PCIE-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "88.00.7E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 34089205760,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-PCIE-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "88.00.7E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 34089205760,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-PCIE-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "88.00.7E.00.03",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+    "ram_size": 412316860416
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,30 +81,107 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "9.20 0x8000d969 22.0.9",
       "interface": "Ethernet",
       "ip": "172.16.109.12",
       "ip6": "2001:660:4406:700:e::c",
       "kavlan": false,
       "mac": "e4:43:4b:9f:32:ec",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": true,
       "mounted": true,
+      "name": "eno1",
       "network_address": "abacus12-1.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
+      "driver": "i40e",
       "enabled": false,
+      "firmware_version": "9.20 0x8000d969 22.0.9",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "e4:43:4b:9f:32:ee",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -56,15 +196,33 @@
       "network_address": "abacus12-1-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 80000000000,
     "node_flops": 3200000000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 28835840,
     "clock_speed": 2500000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Cascade Lake-SP",
-    "other_description": "Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz"
+    "microcode": "0x5003604",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz",
+    "vendor": "Intel",
+    "version": "Gold 6248"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -73,13 +231,15 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x64cd98f09f0acb002549f35b1222d492",
       "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.3,
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "model": "PERC H730P Adp",
+      "size": 299439751168,
+      "storage": "HDD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -89,7 +249,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "abacus12-1"
