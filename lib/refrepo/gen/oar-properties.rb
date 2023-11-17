@@ -1319,8 +1319,14 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
           if node_description.key? "gpu_devices"
             # numa_gpus is the list of gpus for the current CPU
-            numa_gpus = node_description["gpu_devices"].values.select {|v| v['cpu_affinity'] == cpu_num and v.fetch("reservation", true)}
-
+            numa_gpus = node_description["gpu_devices"].values.select do |v|
+              field = if v.key? 'cpu_affinity_override'
+                        'cpu_affinity_override'
+                      else
+                        'cpu_affinity'
+                      end
+              v[field] == cpu_num and v.fetch("reservation", true)
+            end
             if not numa_gpus.empty? # this can happen if GPUs are not reservable
               if numa_gpus.first.key? 'cores_affinity'
                 # this cluster uses cores_affinity, not arbitrary allocation

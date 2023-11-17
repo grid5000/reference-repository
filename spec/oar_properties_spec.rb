@@ -141,4 +141,10 @@ describe 'OarProperties' do
       check_oar_properties({ :oar => 'oar_but_chassis_unset', :data => 'data', :case => 'chassis_unset' })
     end
   end
+
+  context 'generating with an overriden CPU affinity for the GPUs' do
+    it 'should work correctly' do
+      check_oar_properties({ :oar => 'oar_empty', :data => 'data_grue_overridden_cpu_affinity', :case => 'grue_overridden_affinity' })
+    end
+  end
 end
