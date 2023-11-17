@@ -44,6 +44,22 @@
       "mounted": false
     },
     {
+      "device": "eth2",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "eth3",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
@@ -74,9 +90,18 @@
   "storage_devices": [
     {
       "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_path": "/dev/disk/by-path/pci-0000:41:00.0-ata-1",
       "id": "disk0",
-      "interface": "SAS",
+      "interface": "SATA",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:0:0:0",
+      "id": "disk1",
+      "interface": "SATA",
       "model": "unknown",
       "storage": "SSD",
       "vendor": "Unknown"
