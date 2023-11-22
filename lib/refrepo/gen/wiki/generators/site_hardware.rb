@@ -165,7 +165,6 @@ class SiteHardwareGenerator < WikiGenerator
   end
 
   def self.generate_description(site)
-    table_columns = []
     text_data = []
 
     hardware = get_hardware([site])
@@ -194,7 +193,6 @@ class SiteHardwareGenerator < WikiGenerator
         access_conditions = []
         access_conditions << queue_str if queue_str != ''
         access_conditions << "exotic job type" if cluster_hash.map { |_k, v| v['exotic']}.first
-        table_columns = ['Cluster',  'Queue', 'Date of arrival', { attributes: 'data-sort-type="number"', text: 'Nodes' }, 'CPU', { attributes: 'data-sort-type="number"', text: 'Cores' }, { attributes: 'data-sort-type="number"', text: 'Memory' }, { attributes: 'data-sort-type="number"', text: 'Storage' }, { attributes: 'data-sort-type="number"', text: 'Network' }] + (site_accelerators.zero? ? [] : ['Accelerators'])
 
         cluster_drawgantt_url = get_queue_drawgantt_url(site, queue)+"?filter=#{cluster_uid}%20only"
         text_data <<  ["\n== [#{cluster_drawgantt_url} #{cluster_uid}] ==\n"]
@@ -225,21 +223,13 @@ class SiteHardwareGenerator < WikiGenerator
             end
           }
           # https://stackoverflow.com/questions/20847212/how-to-convert-an-array-of-number-into-ranges
-          walltime_breakout.each { |walltime,allnodes|
-            prev_node =  allnodes[0]
-            walltime_breakout[walltime] = allnodes.sort.slice_before { |node|
-              prev_node, node2 = node, prev_node
-              node2 + 1 != node
-            }.map{|b,*,c| c ? [b,c] : b }.flatten
-          }
-          walltime_breakout.sort.each { |hours_range|
-            (hours, range) = hours_range
-            if range.length == 1
-              range_text = "#{range[0]}"
-            else
-              range_text = "[#{range[0]}-#{range[1]}]"
-            end
-            walltime_breakout_text << "* #{cluster_uid}-#{range_text}: #{hours}h\n"
+          walltime_breakout.sort.each { |hours, allnodes|
+            prev = allnodes[0]
+            range = allnodes.sort.slice_before { |node|
+              prev, prev2 = node, prev
+              prev2 + 1 != node}.map{|b,*,c| c ? "#{b}-#{c}" : b.to_s }
+              range_text = (range.length>1 or range[0].include? '-' ) ? "[#{range.join(',')}]" : range[0]
+              walltime_breakout_text << "* #{cluster_uid}-#{range_text}: #{hours}h\n"
           }
           text_data << walltime_breakout_text
         end

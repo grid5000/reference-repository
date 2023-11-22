@@ -1,15 +1,61 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
     "nb_cores": 32,
     "nb_procs": 2,
     "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "09/12/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.13.3"
+  },
+  "bmc_version": "7.00.30.00",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R7525",
+    "serial": "6B7PL83"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 23800578048,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 6000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 23800578048,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 6000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.04",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+    "ram_size": 274877906944
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,30 +64,161 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 17179869184,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "tg3",
       "enabled": true,
+      "firmware_version": "FFV22.61.8 bc 5720-v1.39",
       "interface": "Ethernet",
       "ip": "172.16.109.17",
       "ip6": "2001:660:4406:700:e::11",
       "kavlan": false,
       "mac": "70:b5:e8:d0:92:58",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
       "mountable": true,
       "mounted": true,
+      "name": "eno1",
       "network_address": "abacus17-1.rennes.grid5000.fr",
-      "switch": null,
-      "switch_port": null
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "swdc-a035-01-rba",
+      "switch_port": "Eth103/1/5",
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "eth1",
+      "driver": "tg3",
       "enabled": false,
+      "firmware_version": "FFV22.61.8 bc 5720-v1.39",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "70:b5:e8:d0:92:59",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth2",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "9.20 0x8000d95a 22.0.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "68:05:ca:ce:a7:0c",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno33",
+      "sriov": true,
+      "sriov_totalvfs": 64,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "9.20 0x8000d95a 22.0.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "68:05:ca:ce:a7:0d",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno34",
+      "sriov": true,
+      "sriov_totalvfs": 64,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -56,15 +233,33 @@
       "network_address": "abacus17-1-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 44800000000,
     "node_flops": 1433600000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 16777216,
     "clock_speed": 2800000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Zen 2",
-    "other_description": "AMD EPYC 7282 16-Core Processor"
+    "microcode": "0x830107a",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7282 16-Core Processor",
+    "vendor": "AMD",
+    "version": 7282
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -73,13 +268,26 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/wwn-0x500a075129512787",
+      "by_path": "/dev/disk/by-path/pci-0000:41:00.0-ata-1",
+      "firmware_version": "D3DJ008",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
+      "interface": "SATA",
+      "model": "MTFDDAV240TDU",
+      "size": 240057409536,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Micron"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x55cd2e4152567818",
+      "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:0:0:0",
+      "firmware_version": "XCV1DL69",
+      "id": "disk1",
+      "interface": "SATA",
+      "model": "SSDSC2KB960G8R",
+      "size": 960197124096,
+      "storage": "SSD",
+      "vendor": "Intel"
     }
   ],
   "supported_job_types": {
@@ -89,7 +297,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "abacus17-1"
