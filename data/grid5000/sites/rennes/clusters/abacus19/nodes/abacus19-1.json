@@ -1,15 +1,71 @@
 {
   "architecture": {
+<<<<<<< HEAD
+=======
+    "cpu_core_numbering": "round-robin",
+>>>>>>> master
     "nb_cores": 48,
     "nb_procs": 2,
     "nb_threads": 96,
     "platform_type": "x86_64"
   },
   "bios": {
+<<<<<<< HEAD
     "vendor": "Dell Inc."
   },
   "exotic": false,
   "main_memory": {
+=======
+    "release_date": "06/04/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.19.1"
+  },
+  "bmc_version": "6.10.80.00",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R740",
+    "serial": "9BK6T73"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 47768928256,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 8000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 47768928256,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 8000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.03",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 412316860416
+>>>>>>> master
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,17 +74,87 @@
     }
   },
   "memory_devices": [
+<<<<<<< HEAD
 
+=======
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+>>>>>>> master
   ],
   "network_adapters": [
     {
       "device": "eth0",
+<<<<<<< HEAD
       "enabled": true,
+=======
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "1.67, 0x800010dd, 22.0.9",
+>>>>>>> master
       "interface": "Ethernet",
       "ip": "172.16.109.19",
       "ip6": "2001:660:4406:700:e::13",
       "kavlan": false,
       "mac": "78:ac:44:11:4e:40",
+<<<<<<< HEAD
       "mountable": true,
       "mounted": true,
       "network_address": "abacus19-1.rennes.grid5000.fr",
@@ -42,6 +168,37 @@
       "kavlan": false,
       "mountable": false,
       "mounted": false
+=======
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno3",
+      "network_address": "abacus19-1.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x800010dd, 22.0.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "78:ac:44:11:4e:41",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+>>>>>>> master
     },
     {
       "device": "bmc",
@@ -56,15 +213,42 @@
       "network_address": "abacus19-1-bmc.rennes.grid5000.fr"
     }
   ],
+<<<<<<< HEAD
+=======
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+>>>>>>> master
   "performance": {
     "core_flops": 35200000000,
     "node_flops": 1689600000000
   },
   "processor": {
     "cache_l1": null,
+<<<<<<< HEAD
     "clock_speed": 2200000000,
     "microarchitecture": "Cascade Lake-SP",
     "other_description": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz"
+=======
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 37486592,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Cascade Lake-SP",
+    "microcode": "0x5003604",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Gold 5220R"
+>>>>>>> master
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -73,13 +257,26 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/wwn-0x500a0751298bd6f6",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
+      "firmware_version": "D1DF005",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
+      "interface": "SATA",
+      "model": "MTFDDAK960TDD",
+      "size": 960197124096,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Micron"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x500a0751261de7d8",
+      "by_path": "/dev/disk/by-path/pci-0000:86:00.0-ata-1",
+      "firmware_version": "D0DE013",
+      "id": "disk1",
+      "interface": "SATA",
+      "model": "MTFDDAV240TCB",
+      "size": 240057409536,
+      "storage": "SSD",
+      "vendor": "Micron"
     }
   ],
   "supported_job_types": {
@@ -89,7 +286,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "abacus19-1"
