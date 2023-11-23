@@ -16,8 +16,19 @@ def generate_puppet_stitcherg5k(options)
   refapi = load_data_hierarchy
 
   base_config = YAML.load_file("#{$options[:output_dir]}/#{HIERA_STITCHER_TEMPLATE}")
-  global_kavlans_hash = build_stitcher_kavlans_hash(refapi)
-  output_hash = merge_config(base_config, global_kavlans_hash)
+  sorted_kavlans = Hash.new
+
+  # Ruby sorting dark magic happening below:
+  #   The goal is to order the vlans entries by vlan id to have an easy to read conf file.
+  #   Since ruby hashes enumerate their values in the order
+  #   that the corresponding keys were inserted, we sort the
+  #   vlan keys and reinsert them back with their values in a
+  #   new hash that is de facto sorted.
+  build_stitcher_kavlans_hash(refapi)
+    .sort_by {|key, _value| key}
+    .each {|a| sorted_kavlans[a[0]] = a[1]}
+
+  output_hash = merge_config(base_config, sorted_kavlans)
   output.write(output_hash.to_yaml)
 end
 
