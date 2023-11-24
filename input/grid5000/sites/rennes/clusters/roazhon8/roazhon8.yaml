@@ -12,18 +12,9 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 24
-      nb_threads: 48
-      platform_type: x86_64
-    bios:
-      vendor: Dell Inc.
     processor:
       microarchitecture: Broadwell
       clock_speed: 2200000000
-      other_description: Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -31,17 +22,14 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true
         mountable: false
         mounted: false
       eth0:
-        interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
       eth1:
-        interface: Ethernet
         enabled: false
         mountable: false
         mounted: false
@@ -49,38 +37,3 @@ nodes:
       pci-0000:00:1f.2-ata-1:
         id: disk0
         interface: SATA
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
-  roazhon8-1:
-    network_adapters:
-      bmc:
-        mac: 7c:d3:0a:d5:59:06
-        ip: 172.17.110.25
-      eth0:
-        mac: 7c:d3:0a:d5:59:02
-        ip: 172.16.110.25
-  roazhon8-2:
-    network_adapters:
-      bmc:
-        mac: 7c:d3:0a:d0:9E:54
-        ip: 172.17.110.26
-      eth0:
-        mac: 7c:d3:0a:d0:9e:50
-        ip: 172.16.110.26
-  roazhon8-3:
-    network_adapters:
-      bmc:
-        mac: 7c:d3:0a:d5:5b:ac
-        ip: 172.17.110.27
-      eth0:
-        mac: 7c:d3:0a:d5:5b:a8
-        ip: 172.16.110.27
-  roazhon8-4:
-    network_adapters:
-      bmc:
-        mac: 7c:d3:0a:d5:59:72
-        ip: 172.17.110.28
-      eth0:
-        mac: 7c:d3:0a:d5:59:6e
-        ip: 172.16.110.28
