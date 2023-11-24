@@ -1,15 +1,25 @@
 {
   "architecture": {
+    "cpu_core_numbering": "round-robin",
     "nb_cores": 24,
     "nb_procs": 2,
     "nb_threads": 48,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "04/13/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.17.0"
+  },
+  "bmc_version": "2.85.85.85",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6320",
+    "serial": "2T41NK2"
   },
   "exotic": false,
   "main_memory": {
+    "ram_size": 274877906944
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,30 +28,87 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "ixgbe",
       "enabled": true,
+      "firmware_version": "0x8000095e, 19.5.12",
       "interface": "Ethernet",
       "ip": "172.16.110.28",
       "ip6": "2001:660:4406:700:f::1c",
       "kavlan": false,
       "mac": "7c:d3:0a:d5:59:6e",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
       "mountable": true,
       "mounted": true,
+      "name": "eno1",
       "network_address": "roazhon8-4.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": true,
+      "sriov_totalvfs": 63,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
+      "driver": "ixgbe",
       "enabled": false,
+      "firmware_version": "0x8000095e, 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "7c:d3:0a:d5:59:70",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno2",
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -56,15 +123,33 @@
       "network_address": "roazhon8-4-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 35200000000,
     "node_flops": 844800000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 31457280,
     "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Broadwell",
-    "other_description": "Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz"
+    "microcode": "0xb000040",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "E5-2650 v4"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -73,13 +158,15 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5000c500a9cefaa1",
       "by_path": "/dev/disk/by-path/pci-0000:00:1f.2-ata-1",
+      "firmware_version": "NA07",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "interface": "SATA",
+      "model": "ST1000NX0423",
+      "size": 1000204886016,
+      "storage": "HDD",
+      "vendor": "Seagate"
     }
   ],
   "supported_job_types": {
@@ -89,7 +176,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "roazhon8-4"
