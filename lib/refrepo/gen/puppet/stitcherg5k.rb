@@ -29,6 +29,7 @@ def generate_puppet_stitcherg5k(options)
     .each {|a| sorted_kavlans[a[0]] = a[1]}
 
   output_hash = merge_config(base_config, sorted_kavlans)
+  output.write("# MANAGED BY PUPPET\n")
   output.write(output_hash.to_yaml)
 end
 
