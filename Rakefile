@@ -207,11 +207,20 @@ namespace :gen do
 
   namespace :puppet do
 
-    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :oxidizedg5k, :'oarsub-simplifier-aliases', :kavlanngg5k]
+    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :oxidizedg5k, :'oarsub-simplifier-aliases', :kavlanngg5k, :stitcherg5k]
 
     all_puppet_tasks.each { |t|
       generated_desc = (t == :'refapi-subset') ? 'description' : 'configuration'
-      desc "Generate #{t} #{generated_desc} -- parameters: [SITE={grenoble,...}] [OUTPUTDIR=(default: #{PUPPET_ODIR})] [CONFDIR=...] [VERBOSE=1]"
+
+      # tasks oxidizedg5k, kavlanng5k and stitcherg5K doesn't use the parameters
+      # SITE, CLUSTER and VERBOSE. So we don't print them in the 'rake -T' for
+      # theses tasks.
+      parameters = "[OUTPUTDIR=(default: #{PUPPET_ODIR})] [CONFDIR=...]"
+      if not [:oxidizedg5k, :kavlanngg5k, :stitcherg5k].include? t
+        parameters = "[SITE={grenoble,...}] #{parameters} [VERBOSE=1]"
+      end
+      desc "Generate #{t} #{generated_desc} -- parameters: #{parameters}"
+
       task t do
         require "refrepo/gen/puppet/#{t}"
         options = {}
