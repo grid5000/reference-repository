@@ -6,13 +6,13 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "vendor": "HPE"
   },
   "exotic": false,
   "main_memory": {
   },
   "management_tools": {
-    "bmc_vendor_tool": "racadm",
+    "bmc_vendor_tool": "ipmitool",
     "ipmitool": {
       "retries": 5
     }
@@ -28,7 +28,7 @@
       "ip": "172.16.109.22",
       "ip6": "2001:660:4406:700:e::16",
       "kavlan": false,
-      "mac": "b4:96:91:c6:40:e8",
+      "mac": "b4:96:91:c6:40:a8",
       "mountable": true,
       "mounted": true,
       "network_address": "abacus22-1.rennes.grid5000.fr",
@@ -68,13 +68,13 @@
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2023092009",
+    "postinstall-version": "1.2023112409",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
       "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:1:0:0",
       "id": "disk0",
       "interface": "SAS",
       "model": "unknown",
