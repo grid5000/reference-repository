@@ -1,5 +1,5 @@
 model: Dell PowerEdge C6320
-created_at: 2023-10-24
+created_at: 2023-12-04
 kavlan: false
 boot_type: bios
 exotic: false
@@ -18,7 +18,7 @@ nodes:
       nb_threads: 96
       platform_type: x86_64
     bios:
-      vendor: Dell Inc.
+      vendor: HPE
     processor:
       microarchitecture: Zen 3
       clock_speed: 2650000000
@@ -27,7 +27,7 @@ nodes:
     software:
       standard-environment: debian11-x64-std
     management_tools:
-      bmc_vendor_tool: racadm
+      bmc_vendor_tool: ipmitool
     network_adapters:
       bmc:
         interface: Ethernet
@@ -51,14 +51,14 @@ nodes:
         interface: SAS
         storage: SSD
         model: unknown
-        by_path: "/dev/disk/by-path/dummy"
+        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:1:0:0"
   abacus22-1:
     network_adapters:
       bmc:
         mac: 5c:ba:2c:38:d1:46 
         ip: 172.17.109.22 
       eth0:
-        mac: b4:96:91:c6:40:e8
+        mac: b4:96:91:c6:40:a8
         ip: 172.16.109.22
   abacus22-2:
     network_adapters:
