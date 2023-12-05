@@ -1,15 +1,78 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
     "nb_cores": 48,
     "nb_procs": 2,
     "nb_threads": 96,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "Dell Inc."
+    "release_date": "09/12/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.13.3"
+  },
+  "bmc_version": "7.00.30.00",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R7525",
+    "serial": "3YZ15G3"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 42505076736,
+      "microarchitecture": "Ampere",
+      "model": "A100-PCIE-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "92.00.25.00.08",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 42505076736,
+      "microarchitecture": "Ampere",
+      "model": "A100-PCIE-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "92.00.25.00.08",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 42505076736,
+      "microarchitecture": "Ampere",
+      "model": "A100-PCIE-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "92.00.25.00.08",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+    "ram_size": 549755813888
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,30 +81,127 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "tg3",
       "enabled": true,
+      "firmware_version": "FFV22.61.8 bc 5720-v1.39",
       "interface": "Ethernet",
       "ip": "172.16.109.21",
       "ip6": "2001:660:4406:700:e::15",
       "kavlan": false,
       "mac": "b0:7b:25:d4:a7:a8",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
       "mountable": true,
       "mounted": true,
+      "name": "eno1",
       "network_address": "abacus21-1.rennes.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "eth1",
+      "driver": "tg3",
       "enabled": false,
+      "firmware_version": "FFV22.61.8 bc 5720-v1.39",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "b0:7b:25:d4:a7:a9",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "bmc",
@@ -56,15 +216,33 @@
       "network_address": "abacus21-1-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 51200000000,
     "node_flops": 2457600000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 16777216,
     "clock_speed": 3200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Zen 2",
-    "other_description": "AMD EPYC 7F72 24-Core Processor"
+    "microcode": "0x830107a",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7F72 24-Core Processor",
+    "vendor": "AMD",
+    "version": "7F72"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -73,13 +251,37 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/wwn-0x58ce38ee21504489",
+      "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:0:1:0",
+      "firmware_version": "B322",
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
+      "model": "KPM5WRUG3T84",
+      "size": 3840755982336,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Toshiba"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x62cea7f0c078b5002cfb58246cfdb38e",
+      "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0",
+      "firmware_version": 5.16,
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "PERC H345 Front",
+      "size": 479559942144,
+      "storage": "SSD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x62cea7f0c078b5002cfb58256ea2a4e0",
+      "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:1:0",
+      "firmware_version": 5.16,
+      "id": "disk2",
+      "interface": "SAS",
+      "model": "PERC H345 Front",
+      "size": 479559942144,
+      "storage": "SSD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -89,7 +291,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "abacus21-1"
