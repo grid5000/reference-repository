@@ -1,0 +1,100 @@
+model: Proliant DL560 Gen10
+created_at: 2023-12-05
+kavlan: false
+boot_type: uefi 
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  grosminet-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 4
+      nb_cores: 72
+      nb_threads: 144
+      platform_type: x86_64
+    bios:
+      vendor: HPE
+    processor:
+      microarchitecture: Zen 3
+      clock_speed: 2100000000
+      other_description: Intel(R) Xeon(R) Gold 6240L CPU @ 2.60GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        mac: 25:6B:96:7D:97:D0
+        ip: 172.17.69.12
+        management: true
+        enabled: true 
+        mountable: false 
+        mounted: false 
+      eth0:
+        interface: Ethernet
+        mac: 30:3E:A7:02:BF:54
+        ip: 172.16.69.12
+        enabled: true
+        mountable: true
+        mounted: true 
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk1:
+        id: disk1
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk2:
+        id: disk2
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy" 
+      disk3:
+        id: disk3
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy" 
+      disk4:
+        id: disk4
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy" 
+      disk5:
+        id: disk5
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy" 
+      disk6:
+        id: disk6
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy" 
+      disk7:
+        id: disk7
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy" 

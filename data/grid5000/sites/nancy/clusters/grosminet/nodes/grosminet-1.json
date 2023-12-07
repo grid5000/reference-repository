@@ -1,0 +1,159 @@
+{
+  "architecture": {
+    "nb_cores": 72,
+    "nb_procs": 4,
+    "nb_threads": 144,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "vendor": "HPE"
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.69.13",
+      "ip6": "2001:660:4406:500:6::c",
+      "kavlan": false,
+      "mac": "30:3e:a7:02:bf:54",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "grosminet-1.nancy.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.69.12",
+      "kavlan": false,
+      "mac": "25:6b:96:7d:97:d0",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "grosminet-1-bmc.nancy.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 33600000000,
+    "node_flops": 2419200000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2100000000,
+    "microarchitecture": "Zen 3",
+    "other_description": "Intel(R) Xeon(R) Gold 6240L CPU @ 2.60GHz"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023112409",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk2",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk3",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk4",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk5",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk6",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk7",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "grosminet-1"
+}
