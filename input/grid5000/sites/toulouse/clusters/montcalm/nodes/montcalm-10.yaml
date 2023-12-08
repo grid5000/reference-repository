@@ -8,14 +8,14 @@ montcalm-10:
     nb_threads: 64
     platform_type: x86_64
   bios:
-    release_date: 02/02/2023
+    release_date: '08/11/2022'
     vendor: HPE
     version: U46
-  bmc_version: '2.81'
+  bmc_version: '2.72'
   chassis:
     manufacturer: HPE
     name: ProLiant DL360 Gen10 Plus
-    serial: CZJ2440650
+    serial: CZJ2440653
   main_memory:
     ram_size: 274877906944
   memory_devices:
@@ -49,11 +49,11 @@ montcalm-10:
       mac: 5c:ed:8c:3b:14:92
       management: true
     eth0:
-      ip: 172.16.120.10
-      mac: 84:16:0c:4b:3d:c4
       driver: bnxt_en
       firmware_version: 218.0.152.0/pkg 218.0.166.0
       interface: Ethernet
+      ip: 172.16.120.10
+      mac: 84:16:0c:4b:3d:c4
       management: false
       model: BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller
       name: ens10f0np0
@@ -65,7 +65,7 @@ montcalm-10:
       driver: bnxt_en
       firmware_version: 218.0.152.0/pkg 218.0.166.0
       interface: Ethernet
-      mac: 84:16:0c:4b:2e:29
+      mac: 84:16:0c:4b:3d:c5
       management: false
       model: BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller
       name: ens10f1np1
@@ -93,7 +93,7 @@ montcalm-10:
     version: Silver 4314
   storage_devices:
     pci-0000:00:17.0-ata-1:
-      by_id: "/dev/disk/by-id/ata-VK000960GXAWL_22373C09F7C9"
+      by_id: "/dev/disk/by-id/wwn-0x500a07513c09f7c9"
       by_path: "/dev/disk/by-path/pci-0000:00:17.0-ata-1"
       firmware_version: HPG1
       model: VK000960GXAWL
