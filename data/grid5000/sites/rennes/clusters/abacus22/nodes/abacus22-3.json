@@ -1,15 +1,44 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
     "nb_cores": 48,
     "nb_procs": 2,
     "nb_threads": 96,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "HPE"
+    "release_date": "12/03/2021",
+    "vendor": "HPE",
+    "version": "A42"
+  },
+  "bmc_version": "2.55",
+  "chassis": {
+    "manufacturer": "HPE",
+    "name": "ProLiant DL385 Gen10 Plus v2",
+    "serial": "CZ22030467"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.6",
+      "cores": 10752,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 47850717184,
+      "microarchitecture": "Ampere",
+      "model": "A40",
+      "performance": {
+        "fp-16": 37420000000000,
+        "fp-32": 37420000000000,
+        "fp-64": 584600000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "94.02.5C.00.03",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+    "ram_size": 549755813888
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -18,30 +47,127 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "ice",
       "enabled": true,
+      "firmware_version": "2.50 0x800077bd 1.2960.0",
       "interface": "Ethernet",
       "ip": "172.16.109.24",
       "ip6": "2001:660:4406:700:e::18",
       "kavlan": false,
       "mac": "b4:96:91:c7:ef:da",
+      "management": false,
+      "model": "Ethernet Controller E810-XXV for SFP",
       "mountable": true,
       "mounted": true,
+      "name": "ens10f0",
       "network_address": "abacus22-3.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": true,
+      "sriov_totalvfs": 128,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
     },
     {
       "device": "eth1",
+      "driver": "ice",
       "enabled": false,
+      "firmware_version": "2.50 0x800077bd 1.2960.0",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "b4:96:91:c7:ef:db",
+      "management": false,
+      "model": "Ethernet Controller E810-XXV for SFP",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "ens10f1",
+      "sriov": true,
+      "sriov_totalvfs": 128,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -56,15 +182,33 @@
       "network_address": "abacus22-3-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 42400000000,
     "node_flops": 2035200000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 33554432,
     "clock_speed": 2650000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Zen 3",
-    "other_description": "AMD EPYC 7413 24-Core Processor"
+    "microcode": "0xa0011d1",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7413 24-Core Processor",
+    "vendor": "AMD",
+    "version": 7413
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -73,23 +217,37 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x600508b1001c3dcd1560a3eb98151d9e",
       "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:1:0:0",
+      "firmware_version": 4.11,
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
+      "model": "LOGICAL VOLUME",
+      "size": 1920326787072,
       "storage": "SSD",
       "vendor": "Unknown"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x50000f0b01938440",
+      "by_path": "/dev/disk/by-path/pci-0000:64:00.0-sas-0x50000f0b01938442-lun-0",
+      "firmware_version": "HPD4",
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "VO000960JWZJF",
+      "size": 960197124096,
+      "storage": "SSD",
+      "vendor": "HPE"
     }
   ],
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "abacus22-3"
