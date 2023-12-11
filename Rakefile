@@ -277,6 +277,11 @@ task "sort-vlans-offsets" do
   sorted_vlan_offsets
 end
 
+desc "Retrieve Dell warranty and information using TechDirect API"
+task "gen:dell-product-data" do
+  require 'refrepo/gen/dell-product-data'
+  dell_product_data
+end
 
 #Hack rake: call only the first task and consider the rest as arguments to this task
 currentTask = Rake.application.top_level_tasks.first
