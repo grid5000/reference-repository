@@ -277,6 +277,11 @@ task "sort-vlans-offsets" do
   sorted_vlan_offsets
 end
 
+desc "Retrieve Dell warranty using TechDirect API"
+task "dell-warranty-check" do
+  require 'refrepo/gen/dell-warranty'
+  dell_warranty_check
+end
 
 #Hack rake: call only the first task and consider the rest as arguments to this task
 currentTask = Rake.application.top_level_tasks.first
