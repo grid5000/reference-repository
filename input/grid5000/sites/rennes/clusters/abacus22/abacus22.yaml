@@ -11,6 +11,7 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+<<<<<<< HEAD
       max_walltime: 0
     architecture:
       nb_procs: 2
@@ -24,6 +25,12 @@ nodes:
       clock_speed: 2650000000
       other_description: AMD EPYC 7413 24-Core Processor 
     memory_devices: []
+=======
+      max_walltime: 604800
+    processor:
+      microarchitecture: Zen 3
+      clock_speed: 2650000000
+>>>>>>> master
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -31,21 +38,31 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
+<<<<<<< HEAD
         management: true
+=======
+>>>>>>> master
         enabled: true
         mountable: false
         mounted: false
       eth0:
+<<<<<<< HEAD
         interface: Ethernet
+=======
+>>>>>>> master
         enabled: true
         mountable: true
         mounted: true
       eth1:
+<<<<<<< HEAD
         interface: Ethernet
+=======
+>>>>>>> master
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
+<<<<<<< HEAD
       disk0:
         id: disk0
         interface: SAS
@@ -76,3 +93,23 @@ nodes:
       eth0:
         mac: b4:96:91:c7:ef:da
         ip: 172.16.109.24
+=======
+      pci-0000:64:00.0-scsi-0:1:0:0:
+        id: disk0
+        interface: SAS
+  abacus22-1:
+    storage_devices:
+      pci-0000:64:00.0-sas-0x50000f0b019454a2-lun-0:
+        id: disk1
+        interface: SAS
+  abacus22-2:
+    storage_devices:
+      pci-0000:64:00.0-sas-0x50000f0b01945482-lun-0:
+        id: disk1
+        interface: SAS
+  abacus22-3:
+    storage_devices:
+      pci-0000:64:00.0-sas-0x50000f0b01938442-lun-0:
+        id: disk1
+        interface: SAS
+>>>>>>> master
