@@ -5,10 +5,42 @@
   "kavlan": true,
   "metrics": [
     {
+      "description": "Power consumption reported by BMC, in watt",
+      "name": "bmc_node_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 71,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of Psu 1 reported by BMC, in watt",
+      "labels": {
+        "psu": "1"
+      },
+      "name": "bmc_psu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 68,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of Psu 2 reported by BMC, in watt",
+      "labels": {
+        "psu": "2"
+      },
+      "name": "bmc_psu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 70,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
       "description": "Temperature reported by BMC, in celsius",
       "name": "bmc_ambient_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
+      "period": 5000,
       "source": {
         "id": 2,
         "protocol": "ipmisensor"
@@ -665,42 +697,6 @@
       }
     },
     {
-      "description": "Power consumption of Psu 1 reported by BMC, in watt",
-      "labels": {
-        "psu": "1"
-      },
-      "name": "bmc_psu_power_watt",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 68,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Power consumption of Psu 2 reported by BMC, in watt",
-      "labels": {
-        "psu": "2"
-      },
-      "name": "bmc_psu_power_watt",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 70,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Power consumption reported by BMC, in watt",
-      "name": "bmc_node_power_watt",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 71,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
       "description": "Power consumption of PS 1 Output reported by BMC, in watt",
       "labels": {
         "id": "ps1output"
@@ -846,8 +842,7 @@
     {
       "description": "Default subset of metrics from Prometheus Node Exporter",
       "name": "prom_default_metrics",
-      "optional_period": 15000,
-      "period": 0,
+      "period": 15000,
       "source": {
         "id": [
           "node_boot_time_seconds",
