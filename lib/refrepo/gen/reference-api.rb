@@ -116,6 +116,12 @@ def generate_reference_api
       cluster_path = Pathname.new(refapi_path).join("sites", site_uid, "clusters", cluster_uid)
       cluster_path.mkpath()
 
+      #
+      # Add the manufacturing_at and warranty_end at cluster level using the manufactured_at of the oldest node
+      #
+      cluster["manufactured_at"] = cluster['nodes'].filter{|_n_uid, n_hash| n_hash.key? 'chassis'}.map{|_n_uid, n_hash| n_hash['chassis']['manufactured_at']}.min
+      cluster["warranty_end"] = cluster['nodes'].filter{|_n_uid, n_hash| n_hash.key? 'chassis'}.map{|_n_uid, n_hash| n_hash['chassis']['warranty_end']}.min
+      
       # Write cluster info w/o nodes entries
       write_json(cluster_path.join("#{cluster_uid}.json"),
                  cluster.reject {|k, _v| k == "nodes"})
