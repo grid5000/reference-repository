@@ -1004,30 +1004,14 @@ end
 
 def sanity_check(cluster_resources, site_resources)
 
-  sanity_result = true
-
   # Detect cluster resources
-  cluster_cpus =
-    cluster_resources
-      .map{|r| r["cpu"]}
-      .uniq
-  cluster_gpus =
-    cluster_resources
-      .map{|r| r["gpu"]}
-      .select{|gpu| not gpu.nil?}
-      .uniq
-  cluster_cores =
-    cluster_resources
-      .map{|r| r["core"]}
-      .uniq
+  cluster_cpus = cluster_resources.map{|r| r["cpu"]}.uniq
+  cluster_gpus = cluster_resources.map{|r| r["gpu"]}.select{|gpu| not gpu.nil?}.uniq
+  cluster_cores = cluster_resources.map{|r| r["core"]}.uniq
 
   # Check CPUs
   cluster_cpus.each do |cluster_cpu|
-    hosts_with_same_cpu =
-      site_resources
-        .select{|r| r["cpu"] == cluster_cpu}
-        .map{|r| r["host"]}
-        .uniq
+    hosts_with_same_cpu = site_resources.select{|r| r["cpu"] == cluster_cpu}.map{|r| r["host"]}.uniq
 
     if hosts_with_same_cpu.length > 1
       puts("################################")
@@ -1037,17 +1021,13 @@ def sanity_check(cluster_resources, site_resources)
       puts("oarnodes -Y --sql \"cpu=#{cluster_cpu}\"")
       puts("")
 
-      sanity_result = false
+      return false
     end
   end
 
   # Checks GPUs
   cluster_gpus.each do |cluster_gpu|
-    hosts_with_same_gpu =
-      site_resources
-        .select{|r| r["gpu"] == cluster_gpu}
-        .map{|r| r["host"]}
-        .uniq
+    hosts_with_same_gpu = site_resources.select{|r| r["gpu"] == cluster_gpu}.map{|r| r["host"]}.uniq
 
     if hosts_with_same_gpu.length > 1
       puts("################################")
@@ -1057,19 +1037,16 @@ def sanity_check(cluster_resources, site_resources)
       puts("oarnodes -Y --sql \"gpu=#{cluster_gpu}\"")
       puts("")
 
-      sanity_result = false
+      return false
     end
   end
 
   # Check Cores
   cluster_cores.each do |cluster_core|
-    resources_id_with_same_core =
-      site_resources
-        .select{|r| r["core"] == cluster_core}
-        .map{|r| r["id"]}
+    resources_id_with_same_core = site_resources.select{|r| r["core"] == cluster_core}.map{|r| r["id"]}
 
     if resources_id_with_same_core.length > 1
-      oar_sql_clause = resources_id_with_same_core .map{|rid| "resource_id='#{rid}'"}.join(" OR ")
+      oar_sql_clause = resources_id_with_same_core.map{|rid| "resource_id='#{rid}'"}.join(" OR ")
 
       puts("################################")
       puts("# Error: resources with ids #{resources_id_with_same_core} have the same value for core (core is equal to #{cluster_core})\n")
@@ -1078,11 +1055,11 @@ def sanity_check(cluster_resources, site_resources)
       puts("oarnodes -Y --sql \"#{oar_sql_clause}\"")
       puts("")
 
-      sanity_result = false
+      return false
     end
   end
 
-  return sanity_result
+  return true
 end
 
 
@@ -1143,8 +1120,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       raise 'Sanity check failed'
     end
 
-    cluster_desc_from_data_files = data_hierarchy['sites'][site_name]['clusters'][cluster_name]
-    cluster_nodes = cluster_desc_from_data_files['nodes']
+    cluster_nodes = data_hierarchy['sites'][site_name]['clusters'][cluster_name]['nodes']
 
     node_count = cluster_nodes.length
 
@@ -1159,13 +1135,13 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       raise 'Sanity check failed'
     end
 
-    first_node = cluster_desc_from_data_files['nodes'].first[1]
+    first_node = cluster_nodes.first[1]
 
     cpu_count = first_node['architecture']['nb_procs']
     cpu_core_count = first_node['architecture']['nb_cores'] / cpu_count
     cpu_thread_count = first_node['architecture']['nb_threads'] / cpu_count
     core_thread_count = first_node['architecture']['nb_threads'] / first_node['architecture']['nb_cores']
-    gpu_count = cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.max
+    gpu_count = cluster_nodes.values.map { |e| (e['gpu_devices'] || {} ).length }.max
 
     cpu_model = "#{first_node['processor']['model']} #{first_node['processor']['version']}"
     core_numbering = first_node['architecture']['cpu_core_numbering']
@@ -1191,7 +1167,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         "gpu" => {
           :current_ids => [],
           :per_server_count => gpu_count,
-          :per_cluster_count =>  cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.inject(0) { |a, b| a+b } # sum
+          :per_cluster_count => cluster_nodes.values.map { |e| (e['gpu_devices'] || {} ).length }.inject(0) { |a, b| a+b } # sum
         },
     }
 
@@ -1241,7 +1217,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       name = nodes_names[node_index0][:name]
       fqdn = nodes_names[node_index0][:fqdn]
 
-      node_description = cluster_desc_from_data_files["nodes"][name]
+      node_description = cluster_nodes[name]
 
       node_description_default_properties = site_properties["default"][name]
 
