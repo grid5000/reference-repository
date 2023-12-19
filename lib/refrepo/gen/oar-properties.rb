@@ -1,48 +1,181 @@
 # coding: utf-8
 
 require 'hashdiff'
-require 'refrepo/data_loader'
 require 'net/ssh'
+require 'refrepo/data_loader'
 require 'refrepo/gpu_ref'
+
+# Define constant elements
+MiB = 1024**2
+IGNORE_DEFAULT_KEYS = [
+  "slash_16",
+  "slash_17",
+  "slash_18",
+  "slash_19",
+  "slash_20",
+  "slash_21",
+  "slash_22",
+  "available_upto",
+  "chunks",
+  "comment", # TODO
+  "core", # This property was created by 'oar_resources_add'
+  "cpu", # This property was created by 'oar_resources_add'
+  "host", # This property was created by 'oar_resources_add'
+  "gpudevice", # New property taken into account by the new generator
+  "gpu", # New property taken into account by the new generator
+  "cpuset",
+  "desktop_computing",
+  "drain",
+  "expiry_date",
+  "finaud_decision",
+  "grub",
+  "jobs", # This property exists when a job is running
+  "last_available_upto",
+  "last_job_date",
+  "network_address", # TODO
+  "next_finaud_decision",
+  "next_state",
+  "rconsole", # TODO
+  "resource_id",
+  "scheduler_priority",
+  "state",
+  "state_num",
+  "subnet_address",
+  "subnet_prefix",
+  "suspended_jobs",
+  "thread",
+  "type", # TODO
+  "vlan",
+  "pdu",
+  "id", # id from API (= resource_id from oarnodes)
+  "api_timestamp", # from API
+  "links", # from API
+]
+IGNORE_DISK_KEYS = ["disk", "diskpath"]
+IGNORE_KEYS = IGNORE_DEFAULT_KEYS + IGNORE_DISK_KEYS
+OAR_SYSTEM_KEYS = ['deploy', 'besteffort']
 
 # TODO for gpu_model (and others?) use NULL instead of empty string
 
 class MissingProperty < StandardError; end
 
-MiB = 1024**2
+module RefRepo::Gen::OarProperties
 
-############################################
+  # OAR API data cache
+  @@oar_data = {}
+
+  def self.generate_oar_properties(options)
+    # MAIN FUNCTION
+    # This function is called from RAKE and is in charge of
+    #   - printing OAR commands to
+    #      > add a new cluster
+    #      > update and existing cluster
+    #   - execute these commands on an OAR server
+
+    # Reset the OAR API cache, because the rspec tests change the data in our back
+    # while calling multiple times this function.
+    @@oar_data = {}
+
+    options[:api] ||= {}
+    conf = RefRepo::Utils.get_api_config
+    options[:api][:user] = conf['username']
+    options[:api][:pwd] = conf['password']
+    options[:api][:uri] = conf['uri']
+    options[:ssh] ||= {}
+    options[:ssh][:user] ||= 'g5kadmin'
+    options[:ssh][:host] ||= 'oar.%s.g5kadmin'
+
+    ############################################
+    # Fetch:
+    # 1) generated data from load_data_hierarchy
+    # 2) oar properties from the reference repository
+    ############################################
+
+    # Load the description from the ref-api (data/ dir)
+    data = load_data_hierarchy
+
+    # loop over the sites
+    options[:sites].each do |site|
+      site_data = data['sites'][site]
+      # Replace the site placeholder of ssh hosts by the site
+      options[:ssh][:host] = options[:ssh][:host].gsub('%s', site)
+      # If no cluster is given, retrieve the site clusters, 
+      site_clusters = site_data['clusters'].keys
+      clusters = options[:clusters].length == 0 ? site_clusters : options[:clusters].select{|c| site_clusters.include? c}
+      if clusters.length == 0
+        p "no cluster found for site #{site}"
+        next
+      end
+      # Generate OAR properties for refrepo
+      refrepo_properties = {}
+
+    exit
+  end
+
+  exit
+  # convert to OAR properties
+  #  = get_oar_properties_from_the_ref_repo(data_hierarchy, {
+  #     :sites => [site_name]
+  # })
+
+  # also fetch the resources hierarchy inside nodes (cores, gpus, etc.)
+  generated_hierarchy = extract_clusters_description(clusters,
+                                                       site_name,
+                                                       options,
+                                                       data_hierarchy,
+                                                       refrepo_properties[site_name])
+
+  ############################################
+  # Output generated information
+  ############################################
+
+  ret = 0
+
+  # DO=table
+  if options.key? :table and options[:table]
+    display_table(generated_hierarchy)
+  end
+
+  # Do=Diff
+  if options.key? :diff and options[:diff]
+    ret = do_diff(options, generated_hierarchy, refrepo_properties)
+  end
+
+  # DO=print
+  if options.key? :print and options[:print]
+    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
+
+    puts(cmds)
+  end
+
+
+  # Do=update
+  if options[:update]
+    printf 'Apply changes to the OAR server ' + options[:ssh][:host].gsub('%s', site_name) + ' ? (y/N) '
+    prompt = STDIN.gets.chomp
+    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
+    run_commands_via_ssh(cmds, options) if prompt.downcase == 'y'
+  end
+
+  return ret
+end
+
+end # Module
+
+
 # Functions related to the "TABLE" operation
-############################################
-
-module OarProperties
-
-# OAR API data cache
-@@oar_data = {}
-
-def export_rows_as_formated_line(generated_hierarchy)
+def display_table(generated_hierarchy)
   # Display header
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
-  puts "|#{'cluster'.rjust(10)} | #{'host'.ljust(20)} | #{'cpu'.ljust(5)} | #{'core'.ljust(5)} | #{'cpuset'.ljust(8)} | #{'gpu'.ljust(4)} | #{'gpudevice'.ljust(20)} | #{'cpumodel'.ljust(30)} | #{'gpumodel'.ljust(30)}|"
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
+  cols = {cluster: 10, host: 20, cpu: 5, core: 5, cpuset: 8, gpu: 4, gpudevice: 20, cpumodel: 30, gpumodel: 30}
+  puts "+ #{cols.map{|_k, v| '-' * v }.join(' + ')} +"
+  puts "| #{cols.map{|k, v| k.to_s.ljust(v)}.join(' | ')} |"
+  puts "+ #{cols.map{|_k, v| '-' * v }.join(' + ')} +"
 
-  oar_rows = generated_hierarchy[:nodes].map{|node| node[:oar_rows]}.flatten
-
-  # Display rows
-  oar_rows.each do |row|
-    cluster = row[:cluster].to_s
-    host = row[:host].to_s
-    cpu = row[:cpu].to_s
-    core = row[:core].to_s
-    cpuset = row[:cpuset].to_s
-    gpu = row[:gpu].to_s
-    gpudevice = row[:gpudevice].to_s
-    cpumodel = row[:cpumodel].to_s
-    gpumodel = row[:gpumodel].to_s
-    puts "|#{cluster.rjust(10)} | #{host.ljust(20)} | #{cpu.ljust(5)} | #{core.ljust(5)} | #{cpuset.ljust(8)} | #{gpu.ljust(4)} | #{gpudevice.ljust(20)} | #{cpumodel.ljust(30)} | #{gpumodel.ljust(30)}|"
+  generated_hierarchy[:nodes].map{|node| node[:oar_rows]}.flatten.each do |row|
+    puts "| #{cols.map{|k, v| row[k].to_s.ljust(v)}} |"
   end
   # Display footer
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
+  puts "+ #{cols.map{|_k, v| '-' * v }.join(' + ')} +"
 end
 
 ############################################
@@ -85,9 +218,8 @@ end
 
 def generate_create_oar_property_cmd(properties_keys)
   command = ''
-  ignore_keys_list = ignore_default_keys()
   properties_keys.each do |key, key_type|
-    if ignore_keys_list.include?(key)
+    if IGNORE_DEFAULT_KEYS.include?(key)
       next
     end
     # keys such as deploy or besteffort are default OAR keys that should not be created
@@ -375,6 +507,11 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['disktype'] = [node['storage_devices'].first['interface'], node['storage_devices'].first['storage']].join('/')
   h['chassis'] = [node['chassis']['manufacturer'], node['chassis']['name'], node['chassis']['serial']].join(' ')
 
+  # memory by node/cpu/core
+  h['memnode'] = node['main_memory']['ram_size'] / MiB
+  h['memcpu'] = node['main_memory']['ram_size'] / node['architecture']['nb_procs']/MiB
+  h['memcore'] = node['main_memory']['ram_size'] / node['architecture']['nb_cores']/MiB
+  
   # ETH
   ni_mountable = node['network_adapters'].select { |na| /^eth[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
@@ -407,7 +544,6 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   puts "#{node_uid}: Warning - no rate info for the opa interface" if h['opa_count'] > 0 && h['opa_rate'] == 0
 
-
   # MYRINET
   ni_mountable = node['network_adapters'].select { |na| /^myri[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)) }
   ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
@@ -419,11 +555,9 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   puts "#{node_uid}: Warning - no rate info for the myri interface" if h['myri_count'] > 0 && h['myri_rate'] == 0
 
-  h['memcore'] = node['main_memory']['ram_size'] / node['architecture']['nb_cores']/MiB
-  h['memcpu'] = node['main_memory']['ram_size'] / node['architecture']['nb_procs']/MiB
-  h['memnode'] = node['main_memory']['ram_size'] / MiB
-
+  # GPU
   h['gpu_model'] = ''
+  h['gpu_mem'] = 0
   h['gpu_count'] = 0
 
   if node.key?('gpu_devices')
@@ -434,61 +568,33 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     device = node['gpu_devices'].first[1]
     if GPURef.is_gpu_supported?(device)
       h['gpu_model'] = device['model']
+      h['gpu_mem'] = device['memory'] / MiB
       h['gpu_count'] = node['gpu_devices'].length
     end
   end
 
-  if node.key?('exotic')
-    h['exotic'] = node['exotic']
-  else
-    h['exotic'] = false
-  end
+  # MIC
+  h['mic'] = node['mic']
 
-  h['mic'] = if node['mic']
-               'YES'
-             else
-               'NO'
-             end
-
+  # power monitoring
   h['wattmeter'] = cluster.fetch('metrics', []).any?{|metric| metric['name'].match(/wattmetre_power_watt|pdu_outlet_power_watt/)} ? "YES" : "NO"
 
   h['cluster_priority'] = (cluster['priority'] || Time.parse(cluster['created_at'].to_s).strftime('%Y%m')).to_i
 
-  h['max_walltime'] = 0 # default
-  h['max_walltime'] = node['supported_job_types']['max_walltime'] if node['supported_job_types'] && node['supported_job_types'].has_key?('max_walltime')
-
-  h['production'] = get_production_property(node)
-  h['maintenance'] = get_maintenance_property(node)
+  # Exotic, Queue, maintenance,  walltime
+  h['exotic'] = node['exotic']
+  h['production'] = node['supported_job_types']['queues'].include?('production')
+  h['maintenance'] = node['supported_job_types']['queues'].include?('testing')
+  h['max_walltime'] = node['supported_job_types']['max_walltime']
 
   # Disk reservation
   h['disk_reservation_count'] = node['storage_devices'].select { |v| v['reservation'] }.length
 
   # convert booleans to YES/NO string
-  h.each do |k, v|
-    if v == true
-      h[k] = 'YES'
-    elsif v == false
-      h[k] = 'NO'
-    elsif v.is_a? Float
-      h[k] = v.to_s
-    end
-  end
-
+  h.select{|_k, v| [true, false].include? v}.map{|k, v| v ? 'YES' : 'NO' }
+  h.select{|_k, v| v.is_a? Float}.map{|k, v| v.to_s }
+  
   return h
-end
-
-def get_production_property(node)
-  production = false # default
-  production = node['supported_job_types']['queues'].include?('production') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
-  production = production == true ? 'YES' : 'NO'
-  return production
-end
-
-def get_maintenance_property(node)
-  maintenance = false # default
-  maintenance = node['supported_job_types']['queues'].include?('testing') if node['supported_job_types'] && node['supported_job_types'].has_key?('queues')
-  maintenance = maintenance == true ? 'YES' : 'NO'
-  return maintenance
 end
 
 # Return a list of properties as a hash: { property1 => String, property2 => Integer, ... }
@@ -504,7 +610,7 @@ end
 def properties_internal(properties)
   str = properties
             .to_a
-            .select{|k, _v| not ignore_default_keys.include? k}
+            .select{|k, _v| not IGNORE_DEFAULT_KEYS.include? k}
             .map do |(k, v)|
                 v = "YES" if v == true
                 v = "NO"  if v == false
@@ -652,102 +758,15 @@ def diff_properties(type, properties_oar, properties_ref)
   properties_ref ||= {}
 
   if type == 'default'
-    ignore_keys = ignore_keys()
+    ignore_keys = IGNORE_KEYS
   elsif type == 'disk'
     check_keys = %w(cluster host network_address available_upto deploy production maintenance disk diskpath cpuset)
-    ignore_keys = ignore_keys() - check_keys #Some key must be ignored for default but not for disks, ex: available_upto
+    ignore_keys = IGNORE_KEYS - check_keys #Some key must be ignored for default but not for disks, ex: available_upto
   end
   ignore_keys.each { |key| properties_oar.delete(key) }
   ignore_keys.each { |key| properties_ref.delete(key) }
 
   return Hashdiff.diff(properties_oar, properties_ref)
-end
-
-# These keys will not be created neither compared with the -d option
-# ignore_default_keys is only applied to resources of type 'default'
-def ignore_default_keys()
-  # default OAR at resource creation:
-  #  available_upto: '2147483647'
-  #  besteffort: 'YES'
-  #  core: ~
-  #  cpu: ~
-  #  cpuset: 0
-  #  deploy: 'NO'
-  #  desktop_computing: 'NO'
-  #  drain: 'NO'
-  #  expiry_date: 0
-  #  finaud_decision: 'YES'
-  #  host: ~
-  #  last_available_upto: 0
-  #  last_job_date: 0
-  #  network_address: server
-  #  next_finaud_decision: 'NO'
-  #  next_state: UnChanged
-  #  resource_id: 9
-  #  scheduler_priority: 0
-  #  state: Suspected
-  #  state_num: 3
-  #  suspended_jobs: 'NO'
-  #  type: default
-  ignore_default_keys = [
-    "slash_16",
-    "slash_17",
-    "slash_18",
-    "slash_19",
-    "slash_20",
-    "slash_21",
-    "slash_22",
-    "available_upto",
-    "chunks",
-    "comment", # TODO
-    "core", # This property was created by 'oar_resources_add'
-    "cpu", # This property was created by 'oar_resources_add'
-    "host", # This property was created by 'oar_resources_add'
-    "gpudevice", # New property taken into account by the new generator
-    "gpu", # New property taken into account by the new generator
-    "cpuset",
-    "desktop_computing",
-    "drain",
-    "expiry_date",
-    "finaud_decision",
-    "grub",
-    "jobs", # This property exists when a job is running
-    "last_available_upto",
-    "last_job_date",
-    "network_address", # TODO
-    "next_finaud_decision",
-    "next_state",
-    "rconsole", # TODO
-    "resource_id",
-    "scheduler_priority",
-    "state",
-    "state_num",
-    "subnet_address",
-    "subnet_prefix",
-    "suspended_jobs",
-    "thread",
-    "type", # TODO
-    "vlan",
-    "pdu",
-    "id", # id from API (= resource_id from oarnodes)
-    "api_timestamp", # from API
-    "links", # from API
-  ]
-  return ignore_default_keys
-end
-
-# Properties of resources of type 'disk' to ignore (for example, when
-# comparing resources of type 'default' with the -d option)
-def ignore_disk_keys()
-  ignore_disk_keys = [
-    "disk",
-    "diskpath"
-  ]
-  return ignore_disk_keys
-end
-
-def ignore_keys()
-  return ignore_default_keys() + ignore_disk_keys()
 end
 
 # Properties such as deploy and besteffort, that should not be created
@@ -1084,6 +1103,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
   ############################################
 
   oar_resources = get_oar_resources_from_oar(options)
+  p 
 
   generated_hierarchy = {
       :nodes => []
@@ -1100,7 +1120,9 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       "core" => site_resources.length > 0 ? site_resources.map{|r| r["core"]}.max : 0,
       "gpu" => site_resources.length > 0 ? site_resources.map{|r| r["gpu"]}.select{|x| not x.nil?}.max : 0
   }
+  p next_rsc_ids["gpu"]
 
+  exit
   # Some existing cluster have GPUs, but no GPU ID has been allocated to them
   if next_rsc_ids["gpu"].nil?
     next_rsc_ids["gpu"] = 0
@@ -1124,10 +1146,11 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
     node_count = cluster_nodes.length
 
-    cluster_resources = site_resources
-                            .select{|r| r["cluster"] == cluster_name}
-                            .select{|r| cluster_nodes.include?(r["host"].split(".")[0])}
-                            .sort_by{|r| [r["cpu"], r["core"]]}
+    pp site_resources
+    exit
+    cluster_resources = site_resources.select{|r| r["cluster"] == cluster_name}.select{|r| cluster_nodes.include?(r["host"].split(".")[0])}.sort_by{|r| [r["cpu"], r["core"]]}
+    pp cluster_resources
+    exit
 
     sanity_check_result = sanity_check(cluster_resources, site_resources)
     unless sanity_check_result
@@ -1137,6 +1160,8 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
 
     first_node = cluster_nodes.first[1]
 
+    pp first_node
+    exit
     cpu_count = first_node['architecture']['nb_procs']
     cpu_core_count = first_node['architecture']['nb_cores'] / cpu_count
     cpu_thread_count = first_node['architecture']['nb_threads'] / cpu_count
@@ -1346,105 +1371,3 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
   return generated_hierarchy
 end
 
-############################################
-# MAIN function
-############################################
-
-# This function is called from RAKE and is in charge of
-#   - printing OAR commands to
-#      > add a new cluster
-#      > update and existing cluster
-#   - execute these commands on an OAR server
-
-def generate_oar_properties(options)
-
-  # Reset the OAR API cache, because the rpec tests change the data in our back
-  # while calling multiple times this function.
-  @@oar_data = {}
-
-  options[:api] ||= {}
-  conf = RefRepo::Utils.get_api_config
-  options[:api][:user] = conf['username']
-  options[:api][:pwd] = conf['password']
-  options[:api][:uri] = conf['uri']
-  options[:ssh] ||= {}
-  options[:ssh][:user] ||= 'g5kadmin'
-  options[:ssh][:host] ||= 'oar.%s.g5kadmin'
-  options[:sites] = [options[:site]] # for compatibility with other generators
-
-  ############################################
-  # Fetch:
-  # 1) generated data from load_data_hierarchy
-  # 2) oar properties from the reference repository
-  ############################################
-
-  # Load the description from the ref-api (data/ dir)
-  data_hierarchy = load_data_hierarchy
-
-  # filter based on site/cluster
-  site_name = options[:site]
-
-  # Replace the site placeholder of ssh hosts by the site
-  options[:ssh][:host] = options[:ssh][:host].gsub('%s', site_name)
-
-  # If no cluster is given, then the clusters are the cluster of the given site
-  if not options.key? :clusters or options[:clusters].length == 0
-    if data_hierarchy['sites'].key? site_name
-      clusters = data_hierarchy['sites'][site_name]['clusters'].keys
-      options[:clusters] = clusters
-    else
-      raise("The provided site does not exist : I can't detect clusters")
-    end
-  else
-    clusters = options[:clusters]
-  end
-
-  # convert to OAR properties
-  refrepo_properties = get_oar_properties_from_the_ref_repo(data_hierarchy, {
-      :sites => [site_name]
-  })
-
-  # also fetch the resources hierarchy inside nodes (cores, gpus, etc.)
-  generated_hierarchy = extract_clusters_description(clusters,
-                                                       site_name,
-                                                       options,
-                                                       data_hierarchy,
-                                                       refrepo_properties[site_name])
-
-  ############################################
-  # Output generated information
-  ############################################
-
-  ret = 0
-
-  # DO=table
-  if options.key? :table and options[:table]
-    export_rows_as_formated_line(generated_hierarchy)
-  end
-
-  # Do=Diff
-  if options.key? :diff and options[:diff]
-    ret = do_diff(options, generated_hierarchy, refrepo_properties)
-  end
-
-  # DO=print
-  if options.key? :print and options[:print]
-    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
-
-    puts(cmds)
-  end
-
-
-  # Do=update
-  if options[:update]
-    printf 'Apply changes to the OAR server ' + options[:ssh][:host].gsub('%s', site_name) + ' ? (y/N) '
-    prompt = STDIN.gets.chomp
-    cmds = export_rows_as_oar_command(generated_hierarchy, site_name, refrepo_properties[site_name], data_hierarchy)
-    run_commands_via_ssh(cmds, options) if prompt.downcase == 'y'
-  end
-
-  return ret
-end
-
-end # Module
-include OarProperties
