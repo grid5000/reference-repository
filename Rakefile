@@ -136,11 +136,11 @@ namespace :gen do
 
   desc "Generate OAR properties -- parameters: SITE=grenoble CLUSTER={yeti,...} DO={print,table,update,diff} [OAR_SERVER=192.168.37.10] [OAR_SERVER_USER=g5kadmin]"
   task "oar-properties" do
-    # Manage oar-properties for a given set of Grid'5000 cluster. The task takes the following parameters
+    # Manage oar-properties for a given set of Grid'5000 sites/cluster. The task takes the following parameters
     # Params:
-    # +SITE+:: Grid'5000 site (Nantes, Nancy, ...).
+    # +SITE+:: Grid'5000 site (Nantes, Nancy, ...) default: all G5K sites
     # +CLUSTERS+:: a comma separated list of Grid'5000 clusters (econome, ecotype, ...). This argument is optional:
-    #     if no clusters is provided, the script will be run on each cluster of the specified site.
+    #     if no clusters is provided, the script will be run on each cluster of the specified sites.
     # +Do+:: specify the action to execute:
     #       - print: computes a mapping (server, cpu, core, gpu) for the given clusters, and shows OAR shell commands
     #         that would be run on an OAR server to converge to this mapping. This action try to reuse existing OAR
@@ -162,18 +162,12 @@ namespace :gen do
     require 'refrepo/gen/oar-properties'
     options = {}
 
-    if ENV['CLUSTER']
-      options[:clusters] = ENV['CLUSTER'].split(',')
-    end
-    if ENV['SITE']
-      options[:site] = ENV['SITE']
-    else
-      puts "You must specify a site."
-      exit(1)
-    end
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+    options[:clusters] = ( ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [] )
+    options[:verbose] = true if ENV['VERBOSE']    
 
-    if not G5K_SITES.include?(options[:site])
-      puts "Invalid site: #{options[:site]}"
+    if not (options[:sites] - G5K_SITES).empty?
+      puts "Invalid site: #{options[:sites]}"
       exit(1)
     end
 
@@ -185,23 +179,18 @@ namespace :gen do
       options[:ssh] ||= {}
       options[:ssh][:user] = ENV['OAR_SERVER_USER']
     end
-    options[:print] = false
-    options[:diff] = false
-    options[:update] = false
-    options[:table] = false
+
+    actions =[:print, :diff, :update, :table]
     if ENV['DO']
       ENV['DO'].split(',').each do |t|
-        options[:table] = true if t == 'table'
-        options[:print] = true if t == 'print'
-        options[:update] = true if t == 'update'
-        options[:diff] = true if t == 'diff'
+        actions.each{ |act| options[act] = act.to_s == t }# = t == act.to_s}
       end
     else
       puts "You must specify something to do using DO="
       exit(1)
     end
 
-    ret = generate_oar_properties(options)
+    ret = RefRepo::Gen::OarProperties::generate_oar_properties(options)
     exit(ret)
   end
 
