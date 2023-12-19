@@ -20,29 +20,24 @@ module OarProperties
 # OAR API data cache
 @@oar_data = {}
 
-def export_rows_as_formated_line(generated_hierarchy)
-  # Display header
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
-  puts "|#{'cluster'.rjust(10)} | #{'host'.ljust(20)} | #{'cpu'.ljust(5)} | #{'core'.ljust(5)} | #{'cpuset'.ljust(8)} | #{'gpu'.ljust(4)} | #{'gpudevice'.ljust(20)} | #{'cpumodel'.ljust(30)} | #{'gpumodel'.ljust(30)}|"
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
-
-  oar_rows = generated_hierarchy[:nodes].map{|node| node[:oar_rows]}.flatten
-
-  # Display rows
-  oar_rows.each do |row|
-    cluster = row[:cluster].to_s
-    host = row[:host].to_s
-    cpu = row[:cpu].to_s
-    core = row[:core].to_s
-    cpuset = row[:cpuset].to_s
-    gpu = row[:gpu].to_s
-    gpudevice = row[:gpudevice].to_s
-    cpumodel = row[:cpumodel].to_s
-    gpumodel = row[:gpumodel].to_s
-    puts "|#{cluster.rjust(10)} | #{host.ljust(20)} | #{cpu.ljust(5)} | #{core.ljust(5)} | #{cpuset.ljust(8)} | #{gpu.ljust(4)} | #{gpudevice.ljust(20)} | #{cpumodel.ljust(30)} | #{gpumodel.ljust(30)}|"
+def table_separator(cols)
+  return "+-#{cols.map{|_k, v| '-' * v }.join('-+-')}-+"
+end 
+def display_resources_table(generated_hierarchy)
+  cols = {cluster: 11, host: 20, cpu: 5, core: 5, cpuset: 6, cpumodel: 25, gpu: 4, gpudevice: 10, gpumodel: 30}
+  puts table_separator(cols)
+  puts "| #{cols.map{|k, v| k.to_s.ljust(v) }.join(' | ')} |"
+  
+  host_prev = ""
+  generated_hierarchy[:nodes].map{|node| node[:oar_rows]}.flatten.each do |row|
+    if row[:host] != host_prev
+      puts table_separator(cols)
+      host_prev = row[:host]
+    end
+    puts "| #{cols.map{|k, v| row[k].to_s.ljust(v)}.join(' | ')} |"
+    
   end
-  # Display footer
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
+  puts table_separator(cols)
 end
 
 ############################################
@@ -1421,7 +1416,7 @@ def generate_oar_properties(options)
 
   # DO=table
   if options.key? :table and options[:table]
-    export_rows_as_formated_line(generated_hierarchy)
+    display_resources_table(generated_hierarchy)
   end
 
   # Do=Diff

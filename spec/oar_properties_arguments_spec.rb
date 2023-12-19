@@ -10,7 +10,7 @@ describe 'OarProperties' do
       prepare_stubs("dump_oar_api_empty_server.json", "load_data_hierarchy_stubbed_data.json")
     end
 
-    it 'should should accept case where only the site is specified' do
+    it 'should accept case where only the site is specified' do
 
       uri = URI(conf["uri"])
 
@@ -27,9 +27,9 @@ describe 'OarProperties' do
       }
 
       expected_header = <<-TXT
-+---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
-|   cluster | host                 | cpu   | core  | cpuset   | gpu  | gpudevice            | cpumodel                       | gpumodel                      |
-+---------- + -------------------- + ----- + ----- + -------- + ---- + -------------------- + ------------------------------ + ------------------------------+
++-------------+----------------------+-------+-------+--------+---------------------------+------+------------+--------------------------------+
+| cluster     | host                 | cpu   | core  | cpuset | cpumodel                  | gpu  | gpudevice  | gpumodel                       |
++-------------+----------------------+-------+-------+--------+---------------------------+------+------------+--------------------------------+
 TXT
 
       generator_output = capture do
