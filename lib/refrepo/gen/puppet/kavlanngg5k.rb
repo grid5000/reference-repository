@@ -140,7 +140,7 @@ def gen_ngs_conf(input_path, output_path)
             end
           end
           ngs_conf.puts("ngs_zone = #{site}")
-          ngs_conf.puts("ngs_network_name_format = kavlan-{network_id}")
+          ngs_conf.puts("ngs_network_name_format = kvl-{network_id:.10}")
           ngs_conf.puts("ngs_ssh_disabled_algorithms = kex:diffie-hellman-group-exchange-sha1")
           ngs_conf.puts("ngs_port_default_vlan = 100")
           ngs_conf.puts("ngs_save_configuration = False")
