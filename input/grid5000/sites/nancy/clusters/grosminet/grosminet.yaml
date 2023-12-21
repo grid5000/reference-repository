@@ -12,18 +12,9 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 4
-      nb_cores: 72
-      nb_threads: 144
-      platform_type: x86_64
-    bios:
-      vendor: HPE
     processor:
       microarchitecture: Zen 3
       clock_speed: 2100000000
-      other_description: Intel(R) Xeon(R) Gold 6240L CPU @ 2.60GHz
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -31,70 +22,40 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
-        mac: 5C:ED:8C:3C:81:BE
-        ip: 172.17.69.12
         management: true
         enabled: true 
         mountable: false 
         mounted: false 
       eth0:
-        interface: Ethernet
-        mac: 30:3E:A7:02:BF:54
-        ip: 172.16.69.12
         enabled: true
         mountable: true
         mounted: true 
       eth1:
-        interface: Ethernet
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0:
         id: disk0
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0"
-      disk1:
+      pci-0000:28:00.0-sas-0x50000f0b02a4b0e2-lun-0:
         id: disk1
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0"
-      disk2:
+      pci-0000:28:00.0-sas-0x50000f0b02a4b0f2-lun-0:
         id: disk2
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0" 
-      disk3:
+      pci-0000:28:00.0-sas-0x50000f0b02a4b102-lun-0:
         id: disk3
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0" 
-      disk4:
+      pci-0000:28:00.0-sas-0x50000f0b02a4b112-lun-0:
         id: disk4
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0"
-      disk5:
+      pci-0000:28:00.0-sas-0x50000f0b02a4b122-lun-0:
         id: disk5
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0" 
-      disk6:
+      pci-0000:28:00.0-sas-0x50000f0b02a4b132-lun-0:
         id: disk6
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0" 
-      disk7:
+      pci-0000:28:00.0-sas-0x50000f0b02a4b182-lun-0:
         id: disk7
         interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:28:00.0-sas-0x50000f0b02a4b0c2-lun-0" 
