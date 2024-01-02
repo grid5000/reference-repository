@@ -1,0 +1,83 @@
+---
+sw-adm-1:
+  model: Aruba 6300M
+  warranty: 2048-05
+  kind: switch
+  managed_by_us: true
+  site: rennes
+  ip: 172.17.111.213
+  snmp_community: g5kadmin
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        1:
+          uid: paradoxe-bmc-1
+        2:
+          uid: paradoxe-bmc-2
+        3:
+          uid: paradoxe-bmc-3
+        4:
+          uid: paradoxe-bmc-4
+        5:
+          uid: paradoxe-bmc-5
+        6:
+          uid: paradoxe-bmc-6
+        7:
+          uid: paradoxe-bmc-7
+        8:
+          uid: paradoxe-bmc-8
+        9:
+          uid: paradoxe-bmc-9
+        10:
+          uid: paradoxe-bmc-10
+        11:
+          uid: paradoxe-bmc-11
+        12:
+          uid: paradoxe-bmc-12
+        13:
+          uid: paradoxe-bmc-13
+        14:
+          uid: paradoxe-bmc-14
+        15:
+          uid: paradoxe-bmc-15
+        16:
+          uid: paradoxe-bmc-16
+        17:
+          uid: paradoxe-bmc-17
+        18:
+          uid: paradoxe-bmc-18
+        19:
+          uid: paradoxe-bmc-19
+        20:
+          uid: paradoxe-bmc-20
+        21:
+          uid: paradoxe-bmc-21
+        22:
+          uid: paradoxe-bmc-22
+        23:
+          uid: paradoxe-bmc-23
+        24:
+          uid: paradoxe-bmc-24
+        25:
+          uid: paradoxe-bmc-25
+        26:
+          uid: paradoxe-bmc-26
+        27:
+          uid: paradoxe-bmc-27
+        28:
+          uid: paradoxe-bmc-28
+        29:
+          uid: paradoxe-bmc-29
+        30:
+          uid: paradoxe-bmc-30
+        31:
+          uid: paradoxe-bmc-31
+        32:
+          uid: paradoxe-bmc-32
+        33:
+          uid: paradoxe-pdu-1
+          kind: pdu
