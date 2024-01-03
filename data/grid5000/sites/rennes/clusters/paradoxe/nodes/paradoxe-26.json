@@ -1,0 +1,105 @@
+{
+  "architecture": {
+    "nb_cores": 26,
+    "nb_procs": 2,
+    "nb_threads": 52,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "vendor": "HPE"
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.101.26",
+      "ip6": "2001:660:4406:700:6::1a",
+      "kavlan": false,
+      "mac": "5c:ed:96:2c:97:d0",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "paradoxe-26.rennes.grid5000.fr",
+      "switch": "sw-1",
+      "switch_port": "1/1/26"
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.101.26",
+      "kavlan": false,
+      "mac": "5c:ed:8c:ab:ea:d4",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "paradoxe-26-bmc.rennes.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 70400000000,
+    "node_flops": 1830400000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2200000000,
+    "microarchitecture": "Ice Lake-SP",
+    "other_description": "Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023121409",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk1",
+      "interface": "NVME",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "paradoxe-26"
+}

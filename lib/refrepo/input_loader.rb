@@ -707,7 +707,7 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
     return 8
   when "Haswell", "Broadwell", "Zen 2", "Zen 3"
     return 16
-  when "Ice Lake"
+  when "Ice Lake", "Ice Lake-SP"
     return 32
   when "Cascade Lake-SP", "Skylake"
     case cpu_name

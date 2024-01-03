@@ -1,0 +1,316 @@
+model: HPE Proliant DL360 Gen10+
+created_at: 2024-01-02
+kavlan: false
+boot_type: uefi
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  paradoxe-[1-32]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 26
+      nb_threads: 52
+      platform_type: x86_64
+    bios:
+      vendor: HPE
+    processor:
+      microarchitecture: Ice Lake-SP
+      clock_speed: 2200000000
+      other_description: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk1:
+        id: disk1
+        interface: NVME
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+  paradoxe-1:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.1
+        mac: 5c:ed:8c:ab:1c:1c
+      eth0:
+        ip: 172.16.101.1
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-2:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.2
+        mac: 5c:ed:8c:ab:fa:26
+      eth0:
+        ip: 172.16.101.2
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-3:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.3
+        mac: 5c:ed:8c:ab:1c:1a
+      eth0:
+        ip: 172.16.101.3
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-4:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.4
+        mac: 5c:ed:8c:ab:7a:42
+      eth0:
+        ip: 172.16.101.4
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-5:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.5
+        mac: 5c:ed:8c:ab:fa:00
+      eth0:
+        ip: 172.16.101.5
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-6:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.6
+        mac: 5c:ed:8c:ab:ea:c8
+      eth0:
+        ip: 172.16.101.6
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-7:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.7
+        mac: 5c:ed:8c:ab:7a:66
+      eth0:
+        ip: 172.16.101.7
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-8:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.8
+        mac: 5c:ed:8c:ab:7a:54
+      eth0:
+        ip: 172.16.101.8
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-9:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.9
+        mac: 5c:ed:8c:ab:7a:38
+      eth0:
+        ip: 172.16.101.9
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-10:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.10
+        mac: 5c:ed:8c:ab:4a:2a
+      eth0:
+        ip: 172.16.101.10
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-11:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.11
+        mac: 5c:ed:8c:ab:ea:de
+      eth0:
+        ip: 172.16.101.11
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-12:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.12
+        mac: 5c:ed:8c:ab:1c:32
+      eth0:
+        ip: 172.16.101.12
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-13:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.13
+        mac: 5c:ed:8c:ab:fa:1e
+      eth0:
+        ip: 172.16.101.13
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-14:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.14
+        mac: 5c:ed:8c:ab:fa:20
+      eth0:
+        ip: 172.16.101.14
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-15:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.15
+        mac: 5c:ed:8c:ab:5a:d6
+      eth0:
+        ip: 172.16.101.15
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-16:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.16
+        mac: 5c:ed:8c:ab:7a:36
+      eth0:
+        ip: 172.16.101.16
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-17:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.17
+        mac: 5c:ed:8c:ab:fa:0c
+      eth0:
+        ip: 172.16.101.17
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-18:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.18
+        mac: 5c:ed:8c:ab:7a:d8
+      eth0:
+        ip: 172.16.101.18
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-19:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.19
+        mac: 5c:ed:8c:ab:7a:da
+      eth0:
+        ip: 172.16.101.19
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-20:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.20
+        mac: 5c:ed:8c:ab:ea:fc
+      eth0:
+        ip: 172.16.101.20
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-21:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.21
+        mac: 5c:ed:8c:ab:db:90
+      eth0:
+        ip: 172.16.101.21
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-22:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.22
+        mac: 5c:ed:8c:ab:fa:1c
+      eth0:
+        ip: 172.16.101.22
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-23:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.23
+        mac: 5c:ed:8c:ab:6a:f6
+      eth0:
+        ip: 172.16.101.23
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-24:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.24
+        mac: 5c:ed:8c:ab:ea:d8
+      eth0:
+        ip: 172.16.101.24
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-25:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.25
+        mac: 5c:ed:8c:ab:fa:12
+      eth0:
+        ip: 172.16.101.25
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-26:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.26
+        mac: 5c:ed:8c:ab:ea:d4
+      eth0:
+        ip: 172.16.101.26
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-27:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.27
+        mac: 5c:ed:8c:ab:ea:3e
+      eth0:
+        ip: 172.16.101.27
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-28:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.28
+        mac: 5c:ed:8c:ab:ea:e4
+      eth0:
+        ip: 172.16.101.28
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-29:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.29
+        mac: 5c:ed:8c:ab:7a:28
+      eth0:
+        ip: 172.16.101.29
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-30:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.30
+        mac: 5c:ed:8c:ab:7a:68
+      eth0:
+        ip: 172.16.101.30
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-31:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.31
+        mac: 5c:ed:8c:ab:7a:2c
+      eth0:
+        ip: 172.16.101.31
+        mac: 5C:ED:96:2C:97:D0
+  paradoxe-32:
+    network_adapters:
+      bmc:
+        ip: 172.17.101.32
+        mac: 5c:ed:8c:ab:fa:0e
+      eth0:
+        ip: 172.16.101.32
+        mac: 5C:ED:96:2C:97:D0
