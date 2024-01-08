@@ -2,7 +2,7 @@ class CPUParametersGenerator < WikiGenerator
 
   def generate_content(_options)
 
-    table_columns = ["Installation date", "Site", "Cluster", "CPU Family", "CPU Version", "Microarchitecture", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
+    table_columns = ["Installation date", "Manufacturing date", "Site", "Cluster", "CPU Family", "CPU Version", "Microarchitecture", "Frequency", "Server type", "HT enabled", "Turboboost enabled", "P-State driver", "C-State driver"]
     table_data = []
     global_hash = get_global_hash
 
@@ -24,6 +24,7 @@ class CPUParametersGenerator < WikiGenerator
         #One line per cluster
         table_data << [
           DateTime.parse(*cluster_hash["created_at"]).strftime("%Y-%m-%d"),
+          DateTime.parse(*cluster_hash["manufactured_at"]).strftime("%Y-%m-%d"),
           site_uid,
           cluster_uid,
           cpu_family,

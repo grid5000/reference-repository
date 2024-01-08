@@ -55,8 +55,6 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
   }
 
-#  pp global_hash
-
   detect_dead_nodes_with_yaml_files(global_hash)
 
   # add switch and port to nodes
