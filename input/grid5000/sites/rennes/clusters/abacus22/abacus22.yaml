@@ -8,9 +8,6 @@ queues:
   - production
 nodes:
   abacus22-[1-3]:
-    chassis:
-      manufactured_at: 2022-01-14
-      warranty_end: 2027-01-20
     supported_job_types:
       deploy: true
       besteffort: true
@@ -40,6 +37,10 @@ nodes:
       pci-0000:64:00.0-scsi-0:1:0:0:
         id: disk0
         interface: SATA
+  abacus22-[1-2]:
+    chassis:
+      manufactured_at: 2022-01-14
+      warranty_end: 2027-01-20
   abacus22-1:
     storage_devices:
       pci-0000:64:00.0-sas-0x50000f0b019454a2-lun-0:
@@ -51,6 +52,9 @@ nodes:
         id: disk1
         interface: SAS
   abacus22-3:
+    chassis:
+      manufactured_at: 2022-01-19
+      warranty_end: 2027-01-25
     storage_devices:
       pci-0000:64:00.0-sas-0x50000f0b01938442-lun-0:
         id: disk1
