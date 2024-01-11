@@ -5,12 +5,6 @@
   ],
   "backplane_bps": 1280000000000,
   "channels": {
-    "port-channel2": {
-      "kind": "switch",
-      "port": "port-channel1",
-      "rate": 800000000000,
-      "uid": "sgros1"
-    },
     "port-channel3": {
       "kind": "switch",
       "port": "port-channel1",
@@ -1953,16 +1947,10 @@
         {
         },
         {
-          "kind": "channel",
+          "kind": "switch",
           "rate": 40000000000,
           "snmp_name": "Ethernet7/51",
-          "uid": "port-channel2"
-        },
-        {
-          "kind": "channel",
-          "rate": 40000000000,
-          "snmp_name": "Ethernet7/52",
-          "uid": "port-channel2"
+          "uid": "sgros1"
         }
       ],
       "rate": 10000000000,
