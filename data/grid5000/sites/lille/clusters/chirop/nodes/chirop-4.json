@@ -1,0 +1,114 @@
+{
+  "architecture": {
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "vendor": "HPE"
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.33.4",
+      "ip6": "2001:660:4406:200:2::4",
+      "kavlan": false,
+      "mac": "88:e9:a4:a4:8d:04",
+      "mountable": true,
+      "mounted": true,
+      "network_address": "chirop-4.lille.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "eth1",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.33.4",
+      "kavlan": false,
+      "mac": "5c:ed:8c:3b:be:5e",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "chirop-4-bmc.lille.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 83200000000,
+    "node_flops": 2662400000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2600000000,
+    "microarchitecture": "Ice Lake",
+    "other_description": "Intel(R) Xeon(R) Platinum 8358 Processor"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023121409",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SATA",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk1",
+      "interface": "SATA",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk2",
+      "interface": "SATA",
+      "model": "unknown",
+      "storage": "HDD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "chirop-4"
+}
