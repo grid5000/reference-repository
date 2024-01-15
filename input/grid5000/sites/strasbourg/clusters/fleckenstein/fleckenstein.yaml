@@ -17,20 +17,59 @@ nodes:
       nb_cores: 32
       nb_threads: 64
       platform_type: x86_64
+      cpu_core_numbering: contiguous
+    bios:
+      vendor: HPE
+      version: 1
+    bmc_version: v1
+    chassis: 
+      manufacturer: HPE
+      name: ProLiant DL360 Gen10 Plus
+      serial: blablabla
     processor:
       microarchitecture: Ice Lake
       clock_speed: 3400000000
-    memory_devices: []
+      cache_l1d: 8
+      cache_l1i: 8
+      cache_l2: 8
+      cache_l3: 8
+      ht_capable: true
+      instruction_set: x86-64
+      microcode: '0xd0003a5'
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz
+      vendor: Intel
+      version: Silver 4314
+    main_memory:
+      ram_size: 8
+    memory_devices:
+      dimm_proc 1 dimm 1:
+        size: 8
+        technology: dram
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
     network_adapters:
       bmc:
         interface: Ethernet
+        management: true
         enabled: true
         mountable: false
         mounted: false
       eth0:
+        interface: Ethernet
+        management: false
         enabled: true
         mountable: true
         mounted: true
+    operating_system:
+      cstate_driver: intel_idle
+      cstate_governor: menu
+      ht_enabled: true
+      pstate_driver: intel_pstate
+      pstate_governor: performance
+      turboboost_enabled: true
     storage_devices:
       disk0:
         id: disk0
@@ -38,41 +77,13 @@ nodes:
         storage: SSD
         model: unknown
         by_path: "/dev/disk/by-path/dummy"
-      disk1:
-        id: disk1
-        interface: SAS
-        storage: HDD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"
-      disk2:
-        id: disk2
-        interface: SAS
-        storage: HDD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"
-      disk3:
-        id: disk3
-        interface: SAS
-        storage: HDD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"
-      disk4:
-        id: disk4
-        interface: SAS
-        storage: HDD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"
-    software:
-      standard-environment: debian11-x64-std
-    management_tools:
-      bmc_vendor_tool: ipmitool
+        size: 8
   fleckenstein-1:
     network_adapters:
       bmc:
         mac: 5c:ed:8c:3b:14:70
         ip: 172.17.160.1
       eth0:
-        mounted: true
         mac: 30:3e:a7:00:7e:00
         ip: 172.16.160.1
   fleckenstein-2:

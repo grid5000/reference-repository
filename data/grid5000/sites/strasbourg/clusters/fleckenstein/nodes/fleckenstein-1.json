@@ -1,12 +1,24 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
     "nb_cores": 32,
     "nb_procs": 2,
     "nb_threads": 64,
     "platform_type": "x86_64"
   },
+  "bios": {
+    "vendor": "HPE",
+    "version": 1
+  },
+  "bmc_version": "v1",
+  "chassis": {
+    "manufacturer": "HPE",
+    "name": "ProLiant DL360 Gen10 Plus",
+    "serial": "blablabla"
+  },
   "exotic": false,
   "main_memory": {
+    "ram_size": 8
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -15,18 +27,27 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 8,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
       "enabled": true,
+      "interface": "Ethernet",
       "ip": "172.16.160.1",
+      "ip6": "2001:660:4406:a00:1::1",
       "kavlan": false,
       "mac": "30:3e:a7:00:7e:00",
+      "management": false,
       "mountable": true,
       "mounted": true,
-      "network_address": "fleckenstein-1.strasbourg.grid5000.fr"
+      "network_address": "fleckenstein-1.strasbourg.grid5000.fr",
+      "switch": "gw-strasbourg",
+      "switch_port": "Ethernet6"
     },
     {
       "device": "bmc",
@@ -35,18 +56,39 @@
       "ip": "172.17.160.1",
       "kavlan": false,
       "mac": "5c:ed:8c:3b:14:70",
+      "management": true,
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "network_address": "fleckenstein-1-bmc.strasbourg.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 108800000000,
     "node_flops": 3481600000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 8,
+    "cache_l1i": 8,
+    "cache_l2": 8,
+    "cache_l3": 8,
     "clock_speed": 3400000000,
-    "microarchitecture": "Ice Lake"
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Ice Lake",
+    "microcode": "0xd0003a5",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz",
+    "vendor": "Intel",
+    "version": "Silver 4314"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -60,43 +102,8 @@
       "id": "disk0",
       "interface": "SAS",
       "model": "unknown",
+      "size": 8,
       "storage": "SSD",
-      "vendor": "Unknown"
-    },
-    {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
-      "id": "disk1",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
-    },
-    {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
-      "id": "disk2",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
-    },
-    {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
-      "id": "disk3",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
-    },
-    {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
-      "id": "disk4",
-      "interface": "SAS",
-      "model": "unknown",
-      "storage": "HDD",
       "vendor": "Unknown"
     }
   ],
