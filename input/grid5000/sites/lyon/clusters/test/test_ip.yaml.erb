@@ -1,0 +1,17 @@
+nodes:
+  <% (1..2).each { |i| %>
+  test-<%= i %>:
+    network_adapters:
+      eth0:
+        ip: 172.16.63.<%= i %>
+        mac: <%= %w(
+          aa:bb:cc:dd:ee:ff
+          aa:bb:cc:dd:ee:fe
+        )[i-1] %>
+      bmc:
+        ip: 172.17.63.<%= i %>
+        mac: <%= %w(
+          aa:bb:cc:dd:ee:af
+          aa:bb:cc:dd:ee:ae
+        )[i-1] %>
+    <% } %>

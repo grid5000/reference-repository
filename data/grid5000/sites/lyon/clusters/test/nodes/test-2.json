@@ -1,0 +1,89 @@
+{
+  "architecture": {
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "vendor": "Dell Inc."
+  },
+  "exotic": false,
+  "main_memory": {
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.57.2",
+      "ip6": "2001:660:4406:400:10::2",
+      "kavlan": false,
+      "mac": "aa:bb:cc:dd:ee:fe",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "network_address": "test-2.lyon.grid5000.fr",
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.63.2",
+      "kavlan": false,
+      "mac": "aa:bb:cc:dd:ee:ae",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "test-2-bmc.lyon.grid5000.fr"
+    }
+  ],
+  "performance": {
+    "core_flops": 67200000000,
+    "node_flops": 2150400000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "clock_speed": 2100000000,
+    "microarchitecture": "Ice Lake",
+    "other_description": "Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023121409",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "test-2"
+}

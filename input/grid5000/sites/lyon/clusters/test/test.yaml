@@ -1,0 +1,54 @@
+model: test #TODO: change me !
+created_at: 2024-01-15 #TODO: change me !
+kavlan: false
+boot_type: bios #TODO: change me ! ('bios' / 'uefi')
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  test-[1-2]: #TODO: change me !  
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2 # TODO: change me !
+      nb_cores: 32 # TODO: change me !
+      nb_threads: 64 # TODO: change me !
+      platform_type: x86_64 #TODO: change me !
+    bios:
+      vendor: Dell Inc. # This value will be updated by g5k-checks
+    processor:
+      # TODO: change microarchitecture and remove the comments below once
+      #       it's done.
+      # see https://en.wikipedia.org/wiki/List_of_Intel_Xeon_microprocessors View Xeon processor list
+      # or see https://en.wikipedia.org/wiki/List_of_AMD_CPU_microarchitectures AMD processor list
+      microarchitecture: Ice Lake
+      clock_speed: 2100000000 # This value will be updated by g5k_checks
+      other_description: Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz # This value will be updated by g5k-checks
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool # TODO: change me !
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true 
+        mountable: false 
+        mounted: false 
+      eth0:
+        interface: Ethernet
+        management: false
+        enabled: true
+        mountable: true
+        mounted: true
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
