@@ -10,11 +10,8 @@ def dell_product_data
     data = get_dell_hardware
     token = get_api_token
     url = "https://apigtwb2c.us.dell.com/PROD/sbil/eapi/v5/asset-entitlements"
-    services_tags = data["sites"].map{ |_s_uid, s_hash| s_hash["clusters"].map{|_c_uid, c_hash| c_hash["nodes"].map{|_n_uid, n_hash| n_hash["chassis"]["serial"] }}}.flatten
+    services_tags = data["sites"].map{ |_s_uid, s_hash| s_hash["clusters"].map{|_c_uid, c_hash| c_hash["nodes"].map{|_n_uid, n_hash| n_hash["chassis"]["serial"] }}}.flatten.uniq
     
-    # We cannot retrieve service tag for roazhon11-3 #15114
-    services_tags.delete("N/A")
-
     # API is limited to 100 services tags
     services_tags.each_slice(100).each{ |d| 
         response = Faraday.get(url, {"servicetags" => d.join(',')}) do |q|
@@ -29,10 +26,6 @@ def dell_product_data
         end
     }
     
-    # Manual hack for roazhon11-3 #15114
-    data["sites"]["rennes"]["clusters"]["roazhon11"]["nodes"]["roazhon11-3"]["chassis"] = Hash("manufactured_at" => DateTime.new(2012,9,14).to_date,
-                                                                                               "warranty_end" => DateTime.new(2017,9,14).to_date)
-
     outfile = File.open("input/grid5000/dell-product-data.yaml", "w")
     outfile.write(data.to_yaml)
 end
@@ -49,7 +42,12 @@ def get_dell_hardware
         s_hash["clusters"].each do |_c_uid, c_hash| 
             # We keep only nodes
             c_hash.delete_if{ |key| key != 'nodes'}
-            c_hash["nodes"].each do |_n_uid, n_hash| 
+            c_hash["nodes"].each do |n_uid, n_hash|
+                if n_hash['chassis']['serial'] == 'N/A' 
+                    puts "Removing node #{n_uid}, because no serial #15114"
+                    c_hash["nodes"].delete(n_uid)
+                    next
+                end
                 # We keep only chassis
                 n_hash.delete_if{|key| key != 'chassis'}
                 n_hash['chassis'].delete_if{|key| key != 'serial'}
