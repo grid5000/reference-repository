@@ -1,0 +1,91 @@
+<%
+  # MAC addresses declaration
+  MAC_ETH0_LIST = %w(
+    30:3e:a7:00:7e:00
+    30:3e:a7:00:5d:c4
+    30:3e:a7:00:74:ac
+    30:3e:a7:00:7f:b4
+    30:3e:a7:00:7e:ec
+    30:3e:a7:00:80:9c
+    30:3e:a7:00:59:be
+    30:3e:a7:00:5d:5c
+    30:3e:a7:00:62:94
+    30:3e:a7:00:5d:e4
+    )
+
+  MAC_BMC_LIST = %w(
+    5c:ed:8c:3b:14:70
+    5c:ed:8c:3b:24:1c
+    5c:ed:8c:3b:e1:1a
+    5c:ed:8c:3b:73:4e
+    5c:ed:8c:3b:20:44
+    5c:ed:8c:3b:24:1e
+    5c:ed:8c:3b:14:f4
+    5c:ed:8c:3b:14:4e
+    5c:ed:8c:3b:14:9c
+    5c:ed:8c:3b:14:56
+    )
+%>
+
+nodes:
+<% (1..10).each { |i| %>
+  fleckenstein-<%= i %>:
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+      cpu_core_numbering: contiguous
+    bios:
+      release_date: 16/01/2024
+      vendor: HPE
+      version: 1 
+    bmc_version: "v1"
+    chassis:
+      manufacturer: HPE
+      name: ProLiant DL360 Gen10 Plus
+    main_memory:
+      ram_size: 8
+    memory_devices:
+      dimm:
+        size: 8
+        technology: dram
+    processor:
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz
+      vendor: Intel
+      version: Silver 4314
+      cache_l1d: 8
+      cache_l1i: 8
+      cache_l2: 8
+      cache_l3: 8
+      instruction_set: x86-64
+      microcode: '0xd0003a5'
+      ht_capable: true
+    main_memory:
+      ram_size: 8
+    memory_devices:
+      dimm_proc 1 dimm 1:
+        size: 8
+        technology: dram
+    operating_system:
+      cstate_driver: intel_idle
+      cstate_governor: menu
+      ht_enabled: true
+      pstate_driver: intel_pstate
+      pstate_governor: performance
+      turboboost_enabled: true
+    network_adapters:
+      bmc:
+        mac: <%= MAC_BMC_LIST[i - 1] %>
+        ip: 172.17.160.<%= i %>
+      eth0:
+        mac: <%= MAC_ETH0_LIST[i - 1] %>
+        ip: 172.16.160.<%= i %>
+    storage_devices:
+      disk0:
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+        size: 8
+<% } %>
