@@ -77,11 +77,32 @@ nodes:
       turboboost_enabled: true
     network_adapters:
       bmc:
+        management: true
         mac: <%= MAC_BMC_LIST[i - 1] %>
         ip: 172.17.160.<%= i %>
       eth0:
+        interface: Ethernet
+        management: false
+        driver: ice
+        name: ens10f0
+        rate: 25000000000
         mac: <%= MAC_ETH0_LIST[i - 1] %>
         ip: 172.16.160.<%= i %>
+      eth1:
+        interface: Ethernet
+        management: false
+      eth2:
+        interface: Ethernet
+        management: false
+      eth3:
+        interface: Ethernet
+        management: false
+      eth4:
+        interface: Ethernet
+        management: false
+      eth5:
+        interface: Ethernet
+        management: false
     storage_devices:
       disk0:
         storage: SSD
