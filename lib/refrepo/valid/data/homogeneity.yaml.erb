@@ -242,6 +242,18 @@ rennes:
   parasilo-[25-26]:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:2:0.firmware_version
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:2:0.model
+  abacus22-2:
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - -storage_devices.pci-0000:64:00.0-sas-0x50000f0b019454a2-lun-0
+    - +storage_devices.pci-0000:64:00.0-sas-0x50000f0b01945482-lun-0
+  abacus22-3:
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - -gpu_devices.nvidia1
+    - -gpu_devices.nvidia2
+    - -storage_devices.pci-0000:64:00.0-sas-0x50000f0b01945482-lun-0
+    - +storage_devices.pci-0000:64:00.0-sas-0x50000f0b01938442-lun-0
   abacus25-3:
     - ~storage_devices.pci-0000:64:00.0-scsi-0:2:1:0.model
     - ~storage_devices.pci-0000:64:00.0-scsi-0:2:1:0.firmware_version
@@ -256,3 +268,7 @@ sophia:
   uvb-13:
     - -chassis.serial
     - ~chassis.manufacturer
+toulouse:
+  montcalm-10:
+    - ~bios.release_date
+    - ~bmc_version

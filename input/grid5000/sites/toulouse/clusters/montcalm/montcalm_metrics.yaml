@@ -1,10 +1,38 @@
 ---
 metrics:
 
+  - name: bmc_node_power_watt
+    description: Power consumption reported by BMC, in watt
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 71 #Power Meter
+
+# Theses two metrics are not consistently returned by the BMC.
+# Sometimes, the BMC returns nothing for theses metrics when queried.
+# It causes the test_metrics to fail for montcalm.
+# As long we can't find a way to properly retrieve them, they will
+# stay commented.
+#
+#  - name: bmc_psu_power_watt
+#    labels: {"psu": "1"}
+#    description: Power consumption of Psu 1 reported by BMC, in watt
+#    period: 5000
+#    source:
+#      protocol: ipmisensor
+#      id: 68 #PS 1 Input
+#
+#  - name: bmc_psu_power_watt
+#    labels: {"psu": "2"}
+#    description: Power consumption of Psu 2 reported by BMC, in watt
+#    period: 5000
+#    source:
+#      protocol: ipmisensor
+#      id: 70 #PS 2 Input
+
   - name: bmc_ambient_temp_celsius
     description: Temperature reported by BMC, in celsius
-    period: 0
-    optional_period: 5000
+    period: 5000
     source:
       protocol: ipmisensor
       id: 2 #01-Inlet Ambient
@@ -458,32 +486,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 65 #Fan 7 DutyCycle
-
-  - name: bmc_psu_power_watt
-    labels: {"psu": "1"}
-    description: Power consumption of Psu 1 reported by BMC, in watt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 68 #PS 1 Input
-
-  - name: bmc_psu_power_watt
-    labels: {"psu": "2"}
-    description: Power consumption of Psu 2 reported by BMC, in watt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 70 #PS 2 Input
-
-  - name: bmc_node_power_watt
-    description: Power consumption reported by BMC, in watt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 71 #Power Meter
 
   - name: bmc_other_power_watt
     labels: {"id": "ps1output"}

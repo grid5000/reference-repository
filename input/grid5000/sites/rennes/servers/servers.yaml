@@ -16,8 +16,6 @@ srv-bigdata:
   kind: physical
   alias:
     - storage
-    - storage1
-    - modules
   warranty: 2018-10
   serial: 6V9FGZ1
   network_adapters:
@@ -25,10 +23,6 @@ srv-bigdata:
       ip: 172.16.111.7
     bmc:
       ip: 172.17.111.7
-  group_storage:
-    name: storage1
-    size: 100000000000000
-    rate: 10000000000
 
 rook-storage0:
   kind: physical
@@ -203,7 +197,9 @@ srv-data:
 
 srv-data2:
   kind: physical
-  alias: [storage2]
+  alias:
+    - storage2
+    - modules
   warranty: 2008-05
   serial: CZ23160DF7
   network_adapters:

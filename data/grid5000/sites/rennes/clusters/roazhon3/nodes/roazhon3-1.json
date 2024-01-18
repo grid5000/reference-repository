@@ -1,15 +1,35 @@
 {
   "architecture": {
+<<<<<<< HEAD
+=======
+    "cpu_core_numbering": "round-robin",
+>>>>>>> master
     "nb_cores": 32,
     "nb_procs": 2,
     "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
+<<<<<<< HEAD
     "vendor": "Dell Inc."
   },
   "exotic": false,
   "main_memory": {
+=======
+    "release_date": "07/09/2021",
+    "vendor": "Dell Inc.",
+    "version": "2.12.2"
+  },
+  "bmc_version": "5.00.20.00",
+  "chassis": {
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R640",
+    "serial": "FPBM2S2"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 1099511627776
+>>>>>>> master
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -18,16 +38,106 @@
     }
   },
   "memory_devices": [
+<<<<<<< HEAD
 
+=======
+    {
+      "device": "dimm_a1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b11",
+      "size": 68719476736,
+      "technology": "dram"
+    }
+>>>>>>> master
   ],
   "network_adapters": [
     {
       "device": "eth0",
+<<<<<<< HEAD
       "enabled": true,
+=======
+      "driver": "i40e",
+      "enabled": true,
+      "firmware_version": "8.40 0x8000af80 20.5.13",
+>>>>>>> master
       "interface": "Ethernet",
       "ip": "172.16.110.3",
       "ip6": "2001:660:4406:700:f::3",
       "kavlan": false,
+<<<<<<< HEAD
       "mountable": true,
       "mounted": true,
       "network_address": "roazhon3-1.rennes.grid5000.fr",
@@ -41,6 +151,38 @@
       "kavlan": false,
       "mountable": false,
       "mounted": false
+=======
+      "mac": "e4:43:4b:33:15:fe",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno1",
+      "network_address": "roazhon3-1.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "8.40 0x8000af80 20.5.13",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "e4:43:4b:33:16:00",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+>>>>>>> master
     },
     {
       "device": "bmc",
@@ -48,18 +190,34 @@
       "interface": "Ethernet",
       "ip": "172.17.110.3",
       "kavlan": false,
+<<<<<<< HEAD
+=======
+      "mac": "4c:d9:8f:13:ef:98",
+>>>>>>> master
       "management": true,
       "mountable": false,
       "mounted": false,
       "network_address": "roazhon3-1-bmc.rennes.grid5000.fr"
     }
   ],
+<<<<<<< HEAD
+=======
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "none",
+    "pstate_governor": "none",
+    "turboboost_enabled": false
+  },
+>>>>>>> master
   "performance": {
     "core_flops": 83200000000,
     "node_flops": 2662400000000
   },
   "processor": {
     "cache_l1": null,
+<<<<<<< HEAD
     "clock_speed": 2600000000,
     "microarchitecture": "Skylake",
     "other_description": "Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz"
@@ -67,10 +225,30 @@
   "software": {
     "forced-deployment-timestamp": 202007300948,
     "postinstall-version": "1.2023092009",
+=======
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 23068672,
+    "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake",
+    "microcode": "0x2007006",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "Gold 6142"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2023121409",
+>>>>>>> master
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
+<<<<<<< HEAD
       "by_id": "",
       "by_path": "/dev/disk/by-path/dummy",
       "id": "disk0",
@@ -78,6 +256,28 @@
       "model": "unknown",
       "storage": "SSD",
       "vendor": "Unknown"
+=======
+      "by_id": "/dev/disk/by-id/wwn-0x6d0946608a970b002d32bf6ac4144886",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0",
+      "firmware_version": 5.16,
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "PERC H740P Mini",
+      "size": 1599741100032,
+      "storage": "SSD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d0946608a970b002d32bf6cc6b12227",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:1:0",
+      "firmware_version": 5.16,
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "PERC H740P Mini",
+      "size": 1599741100032,
+      "storage": "SSD",
+      "vendor": "Dell"
+>>>>>>> master
     }
   ],
   "supported_job_types": {
@@ -87,7 +287,12 @@
     "queues": [
       "admin",
       "testing"
+<<<<<<< HEAD
     ]
+=======
+    ],
+    "virtual": "ivt"
+>>>>>>> master
   },
   "type": "node",
   "uid": "roazhon3-1"
