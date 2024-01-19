@@ -207,7 +207,7 @@ namespace :gen do
 
   namespace :puppet do
 
-    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :oxidizedg5k, :'oarsub-simplifier-aliases', :kavlanngg5k, :stitcherg5k]
+    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :oxidizedg5k, :'oarsub-simplifier-aliases', :kavlanngg5k, :stitcherg5k, :clusters]
 
     all_puppet_tasks.each { |t|
       generated_desc = (t == :'refapi-subset') ? 'description' : 'configuration'
@@ -277,6 +277,11 @@ task "sort-vlans-offsets" do
   sorted_vlan_offsets
 end
 
+desc "Retrieve Dell warranty and information using TechDirect API"
+task "gen:dell-product-data" do
+  require 'refrepo/gen/dell-product-data'
+  dell_product_data
+end
 
 #Hack rake: call only the first task and consider the rest as arguments to this task
 currentTask = Rake.application.top_level_tasks.first
