@@ -1,15 +1,25 @@
 {
   "architecture": {
-    "nb_cores": 32,
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 64,
     "nb_procs": 2,
-    "nb_threads": 64,
+    "nb_threads": 128,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "HPE"
+    "release_date": "07/05/2023",
+    "vendor": "HPE",
+    "version": "U46"
+  },
+  "bmc_version": "2.96",
+  "chassis": {
+    "manufacturer": "HPE",
+    "name": "ProLiant DL360 Gen10 Plus",
+    "serial": "CZJ3070S25"
   },
   "exotic": false,
   "main_memory": {
+    "ram_size": 549755813888
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -18,30 +28,128 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "226.0.145.0/pkg 226.1.107.0",
       "interface": "Ethernet",
       "ip": "172.16.33.5",
       "ip6": "2001:660:4406:200:2::5",
       "kavlan": false,
       "mac": "00:62:0b:a8:83:bc",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": true,
       "mounted": true,
+      "name": "ens10f0np0",
       "network_address": "chirop-5.lille.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "eth1",
+      "driver": "bnxt_en",
       "enabled": false,
+      "firmware_version": "226.0.145.0/pkg 226.1.107.0",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "00:62:0b:a8:83:bd",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "ens10f1np1",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "bmc",
@@ -56,15 +164,33 @@
       "network_address": "chirop-5-bmc.lille.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "performance": {
     "core_flops": 83200000000,
-    "node_flops": 2662400000000
+    "node_flops": 5324800000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 1310720,
+    "cache_l3": 50331648,
     "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Ice Lake",
-    "other_description": "Intel(R) Xeon(R) Platinum 8358 Processor"
+    "microcode": "0xd0003a5",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Platinum 8358 CPU @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "Platinum 8358"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -75,29 +201,35 @@
     {
       "by_id": "",
       "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:1:0",
+      "firmware_version": "GPK6",
       "id": "disk0",
-      "interface": "SATA",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
+      "interface": "NVME",
+      "model": "KCD6XLUL1T92",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "Kioxia"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5002538e02c0ac87",
       "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:2:0",
+      "firmware_version": "HPG4",
       "id": "disk1",
       "interface": "SATA",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
+      "model": "VK003840GWSRV",
+      "size": 3840755982336,
+      "storage": "SSD",
+      "vendor": "HP"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5002538e02c0ac7c",
       "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:3:0",
+      "firmware_version": "HPG4",
       "id": "disk2",
       "interface": "SATA",
-      "model": "unknown",
-      "storage": "HDD",
-      "vendor": "Unknown"
+      "model": "VK003840GWSRV",
+      "size": 3840755982336,
+      "storage": "SSD",
+      "vendor": "HP"
     }
   ],
   "supported_job_types": {
@@ -107,7 +239,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "chirop-5"
