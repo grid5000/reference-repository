@@ -1,15 +1,25 @@
 {
   "architecture": {
-    "nb_cores": 26,
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 52,
     "nb_procs": 2,
-    "nb_threads": 52,
+    "nb_threads": 104,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "HPE"
+    "release_date": "10/27/2022",
+    "vendor": "HPE",
+    "version": "U46"
+  },
+  "bmc_version": "2.72",
+  "chassis": {
+    "manufacturer": "HPE",
+    "name": "ProLiant DL360 Gen10 Plus",
+    "serial": "CZJ3140RSQ"
   },
   "exotic": false,
   "main_memory": {
+    "ram_size": 412316860416
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -18,30 +28,107 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "218.0.152.0/pkg 218.0.166.0",
       "interface": "Ethernet",
       "ip": "172.16.101.25",
       "ip6": "2001:660:4406:700:6::19",
       "kavlan": false,
       "mac": "00:62:0b:a8:b3:44",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": true,
       "mounted": true,
+      "name": "ens10f0np0",
       "network_address": "paradoxe-25.rennes.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "sw-1",
-      "switch_port": "1/1/25"
+      "switch_port": "1/1/25",
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "eth1",
+      "driver": "bnxt_en",
       "enabled": false,
+      "firmware_version": "218.0.152.0/pkg 218.0.166.0",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "00:62:0b:a8:b3:45",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "ens10f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "bmc",
@@ -56,6 +143,14 @@
       "network_address": "paradoxe-25-bmc.rennes.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
   "pdu": [
     {
       "port": 5,
@@ -64,37 +159,51 @@
   ],
   "performance": {
     "core_flops": 70400000000,
-    "node_flops": 1830400000000
+    "node_flops": 3660800000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 1310720,
+    "cache_l3": 40894464,
     "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Ice Lake-SP",
-    "other_description": "Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz"
+    "microcode": "0xd0003a5",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Gold 5320"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2023121409",
+    "postinstall-version": "1.2024011908",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5002538f033032bb",
       "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:1:0",
+      "firmware_version": "HPG0",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
+      "interface": "SATA",
+      "model": "MK001920GZXRC",
+      "size": 1920383410176,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "HP"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5002538f033032ad",
       "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:2:0",
+      "firmware_version": "HPG0",
       "id": "disk1",
-      "interface": "NVME",
-      "model": "unknown",
+      "interface": "SATA",
+      "model": "MK001920GZXRC",
+      "size": 1920383410176,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "HP"
     }
   ],
   "supported_job_types": {
@@ -104,7 +213,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "paradoxe-25"
