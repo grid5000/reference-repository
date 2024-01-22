@@ -10,6 +10,8 @@ def global_ignore_keys
 
   ignore_keys = %w(
     ~chassis.serial
+    ~chassis.manufactured_at
+    ~chassis.warranty_end
 
     ~network_adapters.bmc.ip
     ~network_adapters.bmc.mac

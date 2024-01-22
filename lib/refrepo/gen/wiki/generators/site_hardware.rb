@@ -132,13 +132,14 @@ class SiteHardwareGenerator < WikiGenerator
       end
       access_conditions << '<b>[[Getting_Started#Selecting_specific_resources|exotic]]</b>&nbsp;job&nbsp;type' if cluster_hash.map { |_k, v| v['exotic']}.first
       table_columns = []
-      table_columns << (with_sites == true ? [{attributes: 'rowspan=2', text: 'Site'}] : []) + [{attributes: 'rowspan=2', text: 'Cluster'},  {attributes: 'rowspan=2', text: 'Access Condition'}, {attributes: 'rowspan=2', text: 'Date of arrival'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Nodes' }, {attributes: 'colspan=4', text:  'CPU'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Memory' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Storage' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : [{attributes: 'rowspan=2', text: 'Accelerators'}])
+      table_columns << (with_sites == true ? [{attributes: 'rowspan=2', text: 'Site'}] : []) + [{attributes: 'rowspan=2', text: 'Cluster'},  {attributes: 'rowspan=2', text: 'Access Condition'}, {attributes: 'rowspan=2', text: 'Date of arrival'}, {attributes: 'rowspan=2', text: 'Manufacturing date'},{ attributes: 'data-sort-type="number" rowspan=2', text: 'Nodes' }, {attributes: 'colspan=4', text:  'CPU'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Memory' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Storage' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : [{attributes: 'rowspan=2', text: 'Accelerators'}])
       table_columns << [{ attributes: 'data-sort-type="number"', text: '#' }, 'Name', { attributes: 'data-sort-type="number"', text: 'Cores' }, 'Architecture' ]
       data = partition(cluster_hash)
       table_data <<  (with_sites == true ? ["[[#{site.capitalize}:Hardware|#{site.capitalize}]]"] : []) + [
         (with_sites == true ? "[[#{site.capitalize}:Hardware##{cluster_uid}" + "|#{cluster_uid}]]" : "[[##{cluster_uid}" + "|#{cluster_uid}]]"),
         access_conditions.join(",<br/>"),
         cell_data(data, 'date'),
+        cell_data(data, 'manufacturing_date'),
         cluster_nodes,
         cell_data(data, 'cpus_per_node'),
         cell_data(data, 'processor_model'),
@@ -257,6 +258,7 @@ class SiteHardwareGenerator < WikiGenerator
           hash['Access condition'] = access_conditions.join(", ") if not access_conditions.empty?
           hash.merge!({
             'Model' => h['model'],
+            'Manufacturing date' => h['manufacturing_date'],
             'Date of arrival' => h['date'],
             'CPU' => h['processor_description'],
             'Memory' => h['ram_size'] + (!h['pmem_size'].nil? ? " + #{h['pmem_size']} [[PMEM]]" : ''),
@@ -354,6 +356,7 @@ def get_hardware(sites)
         hard['queue_str'] = (queue.nil? || queue.empty?) ? '' : queue[0] + G5K.pluralize(queue.count, ' queue')
         hard['exotic'] = cluster_hash['exotic']
         hard['date'] = Date.parse(cluster_hash['created_at'].to_s).strftime('%Y-%m-%d')
+        hard['manufacturing_date'] = cluster_hash['manufactured_at']
         hard['model'] = cluster_hash['model']
         hard['processor_model'] = "#{node_hash['processor']['vendor']} "
         hard['processor_model'] += node_hash['processor']['model'].gsub(/^#{node_hash['processor']['vendor']} /,'')
