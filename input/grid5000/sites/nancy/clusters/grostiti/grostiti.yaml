@@ -49,13 +49,29 @@ nodes:
         enabled: false
         mountable: false
         mounted: false
+      eth2:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
       eth3:
         interface: Ethernet
         enabled: false
         mountable: false
         mounted: false
-      eth4:
-        interface: Ethernet
+      ib0:
+        interface: Omni-Path
+        enabled: true
+        mountable: true
+        mounted: true
+        netmask: 255.255.240.0
+      ib1:
+        interface: InfiniBand
+        enabled: false
+        mountable: false
+        mounted: false
+      ib2:
+        interface: InfiniBand
         enabled: false
         mountable: false
         mounted: false
