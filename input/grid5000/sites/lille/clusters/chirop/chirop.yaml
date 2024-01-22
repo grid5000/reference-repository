@@ -12,18 +12,9 @@ nodes:
       deploy: true
       besteffort: true
       max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 32
-      nb_threads: 64
-      platform_type: x86_64
-    bios:
-      vendor: HPE
     processor:
       microarchitecture: Ice Lake
       clock_speed: 2600000000
-      other_description: Intel(R) Xeon(R) Platinum 8358 Processor 
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -31,77 +22,25 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true 
         mountable: false 
         mounted: false 
       eth0:
-        interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
       eth1:
-        interface: Ethernet
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:47:00.0-scsi-0:2:1:0:
         id: disk0
-        interface: SATA
-        storage: HDD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:1:0"
-      disk1:
+        interface: NVME
+      pci-0000:47:00.0-scsi-0:2:2:0:
         id: disk1
         interface: SATA
-        storage: HDD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:2:0"
-      disk2:
+      pci-0000:47:00.0-scsi-0:2:3:0:
         id: disk2
         interface: SATA
-        storage: HDD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:3:0"
-  chirop-1:
-    network_adapters:
-      bmc:
-         mac: 5c:ed:8c:3c:b0:c2 
-         ip: 172.17.33.1
-      eth0:
-         mac: 00:62:0b:a7:58:b2
-         ip: 172.16.33.1
-  chirop-2:
-    network_adapters:
-      bmc:
-         mac: 5c:ed:8c:3b:ce:a6
-         ip: 172.17.33.2
-      eth0:
-         mac: 00:62:0b:a7:58:6a
-         ip: 172.16.33.2
-  chirop-3:
-    network_adapters:
-      bmc:
-         mac: 5c:ed:8c:a7:4e:a2
-         ip: 172.17.33.3
-      eth0:
-         mac: 00:62:0b:a7:53:7e
-         ip: 172.16.33.3
-  chirop-4:
-    network_adapters:
-      bmc:
-         mac: 5c:ed:8c:3b:be:5e 
-         ip: 172.17.33.4
-      eth0:
-         mac: 00:62:0b:a8:83:74
-         ip: 172.16.33.4
-  chirop-5:
-    network_adapters:
-      bmc:
-         mac: 5c:ed:8c:3b:ce:b2
-         ip: 172.17.33.5
-      eth0:
-         mac: 00:62:0b:a8:83:bc
-         ip: 172.16.33.5                           
          
