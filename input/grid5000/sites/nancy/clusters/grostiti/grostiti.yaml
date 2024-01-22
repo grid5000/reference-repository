@@ -32,9 +32,9 @@ nodes:
       bmc:
         interface: Ethernet
         management: true
-        enabled: true # true = if there is any cable connected to this interface
-        mountable: false # true = if it is usable by any user
-        mounted: false # true = if the environment mounts, configures this interface
+        enabled: true
+        mountable: false
+        mounted: false
         mac: 64:00:6A:C2:E7:8C
         ip: 172.17.69.13
       eth0:
@@ -65,10 +65,10 @@ nodes:
         interface: SAS
         storage: HDD
         model: unknown
-        by_path: "/dev/disk/by-path/dummy"
+        by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
       disk1:
         id: disk1
         interface: SATA
         storage: HDD
         model: unknown
-        by_path: "/dev/disk/by-path/dummy"
+        by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:1:0"
