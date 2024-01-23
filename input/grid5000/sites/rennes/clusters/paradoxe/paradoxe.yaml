@@ -1,0 +1,42 @@
+model: HPE Proliant DL360 Gen10+
+created_at: 2024-01-02
+kavlan: false
+boot_type: uefi
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  paradoxe-[1-32]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Ice Lake-SP
+      clock_speed: 2200000000
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      pci-0000:47:00.0-scsi-0:2:1:0:
+        id: disk0
+        interface: SATA
+      pci-0000:47:00.0-scsi-0:2:2:0:
+        id: disk1
+        interface: SATA
