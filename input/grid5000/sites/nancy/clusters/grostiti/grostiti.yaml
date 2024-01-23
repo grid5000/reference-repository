@@ -23,7 +23,6 @@ nodes:
       microarchitecture: Nehalem
       clock_speed: 2200000000
       other_description: Intel(R) Xeon(R) CPU E7-4850 v3 @ 2.20GHz
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -35,15 +34,11 @@ nodes:
         enabled: true
         mountable: false
         mounted: false
-        mac: 64:00:6A:C2:E7:8C
-        ip: 172.17.69.13
       eth0:
         interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
-        mac: 24:6E:96:02:8A:E0
-        ip: 172.16.69.13
       eth1:
         interface: Ethernet
         enabled: false
@@ -60,32 +55,26 @@ nodes:
         mountable: false
         mounted: false
       ib0:
-        interface: Omni-Path
-        mac: 00:11:75:01:01:0d:ba:35
         enabled: true
         mountable: true
         mounted: true
         netmask: 255.255.240.0
       ib1:
-        interface: InfiniBand
-        mac: e4:1d:2d:03:00:bc:18:91
         enabled: false
         mountable: false
         mounted: false
       ib2:
-        interface: InfiniBand
-        mac: e4:1d:2d:03:00:bc:18:92
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:04:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
         storage: HDD
         model: unknown
         by_path: "/dev/disk/by-path/pci-0000:04:00.0-scsi-0:2:0:0"
-      disk1:
+      pci-0000:04:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SATA
         storage: HDD
