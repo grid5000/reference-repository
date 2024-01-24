@@ -1,0 +1,130 @@
+model: Apollo 6500 Gen10 Plus
+created_at: 2024-1-22
+kavlan: false
+boot_type: uefi
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  chuc-[1-8]:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    architecture:
+      nb_procs: 2
+      nb_cores: 32
+      nb_threads: 64
+      platform_type: x86_64
+    bios:
+      vendor: HPE
+    processor:
+      microarchitecture: Zen 3
+      clock_speed: 2600000000
+      other_description: AMD EPYC 7513
+    memory_devices: []
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        interface: Ethernet
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk1:
+        id: disk1
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+      disk2:
+        id: disk2
+        interface: SAS
+        storage: SSD
+        model: unknown
+        by_path: "/dev/disk/by-path/dummy"
+  chuc-1:
+    network_adapters:
+       bmc:
+         mac: b4:7a:f1:c5:62:b3
+         ip: 172.17.32.1
+       eth0:
+         mac: 88:e9:a4:a4:8d:a4
+         ip: 172.16.32.1
+  chuc-2:
+    network_adapters:
+       bmc:
+         mac: b4:7a:f1:c5:62:3b
+         ip: 172.17.32.2
+       eth0:
+         mac: 88:e9:a4:a4:8d:3e
+         ip: 172.16.32.2
+  chuc-3:
+    network_adapters:
+       bmc:
+         mac: b4:7a:f1:c5:62:0d
+         ip: 172.17.32.3
+       eth0:
+         mac: 88:e9:a4:a4:1b:14
+         ip: 172.16.32.3
+  chuc-4:
+    network_adapters:
+       bmc:
+         mac: b4:7a:f1:c5:62:1d
+         ip: 172.17.32.4
+       eth0:
+         mac: 88:e9:a4:a4:c9:2c
+         ip: 172.16.32.4
+  chuc-5:
+    network_adapters:
+       bmc:
+         mac: b4:7a:f1:be:90:d3
+         ip: 172.17.32.5
+       eth0:
+         mac: 88:e9:a4:a4:cd:64
+         ip: 172.16.32.5
+  chuc-6:
+    network_adapters:
+       bmc:
+         mac: b4:7a:f1:c5:62:59 
+         ip: 172.17.32.6
+       eth0:
+         mac: 88:e9:a4:a4:cd:88
+         ip: 172.16.32.6
+  chuc-7:
+    network_adapters:
+       bmc:
+         mac: b4:7a:f1:c5:62:6b 
+         ip: 172.17.32.7
+       eth0:
+         mac: 88:e9:a4:a4:bc:e4
+         ip: 172.16.32.7
+  chuc-8:
+    network_adapters:
+       bmc:
+         mac: b4:7a:f1:c0:2b:a1
+         ip: 172.17.32.8
+       eth0:
+         mac: b4:7a:f1:c1:42:08
+         ip: 172.16.32.8
