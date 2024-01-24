@@ -6,19 +6,23 @@ TRUNK_KINDS = ['router', 'switch', 'backbone']
 KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ]
 
 def generate_puppet_kavlanngg5k(options)
-  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k/")
-  gen_ngs_conf("#{options[:output_dir]}/platforms/production/generators/kavlanng/kavlanng.yaml", "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/ngs_devices")
+  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k/", verbose=options[:verbose])
+  gen_ngs_conf("#{options[:output_dir]}/platforms/production/generators/kavlanng/kavlanng.yaml", "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/ngs_devices", verbose=options[:verbose])
 end
 
-def gen_kavlanapi_g5k_desc(output_path)
+def gen_kavlanapi_g5k_desc(output_path, verbose)
   puts "KavlanNG: generate g5k network description for kavlan-api in #{output_path}"
   refapi = load_data_hierarchy
   refapi.delete_if { |k| k != 'sites' }
   refapi['sites'].each do |site_id, site_h|
-    # puts "  #{site_id}"
+    if verbose
+      puts "  #{site_id}"
+    end
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
     site_h.fetch('clusters', {}).each do |_cluster_id, cluster_h|
-      # puts "    #{_cluster_id}"
+      if verbose
+        puts "    #{_cluster_id}"
+      end
       cluster_h.delete_if { |k| k != 'nodes' }
       cluster_h['nodes'].each do |_node_id, node_h|
         node_h.delete_if { |k| k != 'network_adapters' }
@@ -102,13 +106,15 @@ def get_port_name(port_index, port, linecard_index, linecard)
   end
 end
 
-def gen_ngs_conf(input_path, output_path)
+def gen_ngs_conf(input_path, output_path, verbose)
   puts "KavlanNG: generate NGS device configurations in #{output_path} based on reference repository and kavlanng configuration in #{input_path}"
   refapi = load_data_hierarchy
   network_devices_data = YAML::load(File.read(input_path))
   File.open(output_path, 'w') do |ngs_conf|
     network_devices_data.each do |site, site_data|
-      #puts "  #{site}"
+      if verbose
+        puts "  #{site}"
+      end
       site_data['devices'].each do |device, device_data|
         refapi_device = nil
         if refapi['sites'][site]['network_equipments'].has_key? device
@@ -128,10 +134,12 @@ def gen_ngs_conf(input_path, output_path)
         if ! refapi_device
           puts "ERROR #{site}/#{device} is not in refapi. refapi['sites'][#{site}]['network_equipments'] contains #{refapi['sites'][site]['network_equipments'].keys}"
         else
-          if device == refapi_device
-            # puts "    #{device}"
-          else
-            # puts "    #{device} (alias of #{refapi_device})"
+          if verbose
+            if device == refapi_device
+              puts "    #{device}"
+            else
+              puts "    #{device} (alias of #{refapi_device})"
+            end
           end
           ngs_conf.puts("[genericswitch:#{device}.#{site}.grid5000.fr]")
           device_data.each do |k, v|
@@ -158,7 +166,9 @@ def gen_ngs_conf(input_path, output_path)
                       if not portname
                         puts "ERROR #{site}/#{refapi_device}/linecard-#{lc_index}/port-#{port_index}: unable to guess portname"
                       else
-                        #puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
+                        if verbose
+                          puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
+                        end
                         ngs_trunk_ports.push portname
                       end
                     end
@@ -171,7 +181,9 @@ def gen_ngs_conf(input_path, output_path)
             refapi['sites'][site]['network_equipments'][refapi_device]['channels'].each do |channelname, channel|
               if channel.has_key? 'kind'
                 if TRUNK_KINDS.include? channel['kind']
-                  # puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{channelname}"
+                  if verbose
+                    puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{channelname}"
+                  end
                   ngs_trunk_ports.push channelname
                 end
               end
@@ -179,7 +191,9 @@ def gen_ngs_conf(input_path, output_path)
           end
           if device_data.has_key? 'additional_trunk_ports'
             device_data['additional_trunk_ports'].each do |additional_trunk_port|
-              # puts "      additional trunk port on #{site}/#{device}: #{additional_trunk_port}"
+              if verbose
+                puts "      additional trunk port on #{site}/#{device}: #{additional_trunk_port}"
+              end
               ngs_trunk_ports.push additional_trunk_port
             end
           end
