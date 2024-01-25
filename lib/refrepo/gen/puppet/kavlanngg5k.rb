@@ -6,8 +6,8 @@ TRUNK_KINDS = ['router', 'switch', 'backbone'] # how to detect trunk ports in ne
 KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, not for neutron/NGS
 
 def generate_puppet_kavlanngg5k(options)
-  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k/", options=options)
-  gen_ngs_conf("#{options[:output_dir]}/platforms/production/generators/kavlanng/kavlanng.yaml", "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/", options=options)
+  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k/", options)
+  gen_ngs_conf("#{options[:output_dir]}/platforms/production/generators/kavlanng/kavlanng.yaml", "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/", options)
 end
 
 def gen_kavlanapi_g5k_desc(output_path, options)
@@ -22,9 +22,9 @@ def gen_kavlanapi_g5k_desc(output_path, options)
       puts "  #{site_id}"
     end
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
-    site_h.fetch('clusters', {}).each do |_cluster_id, cluster_h|
+    site_h.fetch('clusters', {}).each do |cluster_id, cluster_h|
       if options[:verbose]
-        puts "    #{_cluster_id}"
+        puts "    #{cluster_id}"
       end
       cluster_h.delete_if { |k| k != 'nodes' }
       cluster_h['nodes'].each do |_node_id, node_h|
