@@ -2,25 +2,28 @@
 
 require 'refrepo/data_loader'
 
-TRUNK_KINDS = ['router', 'switch', 'backbone']
-KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ]
+TRUNK_KINDS = ['router', 'switch', 'backbone'] # how to detect trunk ports in network refapi
+KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, not for neutron/NGS
 
 def generate_puppet_kavlanngg5k(options)
-  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k/", verbose=options[:verbose])
-  gen_ngs_conf("#{options[:output_dir]}/platforms/production/generators/kavlanng/kavlanng.yaml", "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/ngs_devices", verbose=options[:verbose])
+  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k/", options=options)
+  gen_ngs_conf("#{options[:output_dir]}/platforms/production/generators/kavlanng/kavlanng.yaml", "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/", options=options)
 end
 
-def gen_kavlanapi_g5k_desc(output_path, verbose)
-  puts "KavlanNG: generate g5k network description for kavlan-api in #{output_path}"
+def gen_kavlanapi_g5k_desc(output_path, options)
+  puts "KavlanNG: generate g5k network description for kavlan-api"
+  puts "  to #{output_path}"
+  puts "  for sites #{options[:sites]}"
   refapi = load_data_hierarchy
   refapi.delete_if { |k| k != 'sites' }
+  refapi['sites'].delete_if { |s| !options[:sites].include? s }
   refapi['sites'].each do |site_id, site_h|
-    if verbose
+    if options[:verbose]
       puts "  #{site_id}"
     end
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
     site_h.fetch('clusters', {}).each do |_cluster_id, cluster_h|
-      if verbose
+      if options[:verbose]
         puts "    #{_cluster_id}"
       end
       cluster_h.delete_if { |k| k != 'nodes' }
@@ -68,8 +71,17 @@ def gen_kavlanapi_g5k_desc(output_path, verbose)
     }
     refapi['sites'][site_id] = site_h.sort_by { |key| key}.to_h
   }
-  # save to file, but split by sites and clusters
-  FileUtils.rm Dir.glob(File.join(output_path, "*"))
+  # save to file, splitted by sites and clusters
+  # first clean the site(s) we are generating
+  # (only issue: when removing a g5k site, this code cannot guess that
+  # a site is not there because it was removed or because generation
+  # was not asked for this site, so in this case, it will not remove
+  # the generated files for the site, these files need to be removed
+  # manually)
+  refapi['sites'].each { |site_id, _site_h|
+    FileUtils.rm Dir.glob(File.join(output_path, "#{site_id}.json"))
+    FileUtils.rm Dir.glob(File.join(output_path, "#{site_id}-*"))
+  }
   refapi['sites'].each do |site_id, site_h|
     refapi_site = { 'sites' => { site_id => site_h.select { |k, _v| k != 'clusters' } } }
     File.open(File.join(output_path, "#{site_id}.json"), 'w') do |f|
@@ -106,15 +118,19 @@ def get_port_name(port_index, port, linecard_index, linecard)
   end
 end
 
-def gen_ngs_conf(input_path, output_path, verbose)
-  puts "KavlanNG: generate NGS device configurations in #{output_path} based on reference repository and kavlanng configuration in #{input_path}"
+def gen_ngs_conf(input_path, output_path, options)
+  puts "KavlanNG: generate NGS device configurations"
+  puts "  to #{output_path}"
+  puts "  based on reference repository and kavlanng configuration in #{input_path}"
+  puts "  for sites #{options[:sites]}"
   refapi = load_data_hierarchy
   network_devices_data = YAML::load(File.read(input_path))
-  File.open(output_path, 'w') do |ngs_conf|
-    network_devices_data.each do |site, site_data|
-      if verbose
-        puts "  #{site}"
-      end
+  network_devices_data.delete_if { |s| !options[:sites].include? s }
+  network_devices_data.each do |site, site_data|
+    if options[:verbose]
+      puts "  #{site}"
+    end
+    File.open(File.join(output_path, "#{site}-ngs-devices"), 'w') do |site_ngs_conf|
       site_data['devices'].each do |device, device_data|
         refapi_device = nil
         if refapi['sites'][site]['network_equipments'].has_key? device
@@ -134,27 +150,27 @@ def gen_ngs_conf(input_path, output_path, verbose)
         if ! refapi_device
           puts "ERROR #{site}/#{device} is not in refapi. refapi['sites'][#{site}]['network_equipments'] contains #{refapi['sites'][site]['network_equipments'].keys}"
         else
-          if verbose
+          if options[:verbose]
             if device == refapi_device
               puts "    #{device}"
             else
               puts "    #{device} (alias of #{refapi_device})"
             end
           end
-          ngs_conf.puts("[genericswitch:#{device}.#{site}.grid5000.fr]")
+          site_ngs_conf.puts("[genericswitch:#{device}.#{site}.grid5000.fr]")
           device_data.each do |k, v|
             if ! KAVLANNGG5K_OPTIONS.include? k
-              ngs_conf.puts("#{k} = #{v}")
+              site_ngs_conf.puts("#{k} = #{v}")
             end
           end
-          ngs_conf.puts("ngs_zone = #{site}")
-          ngs_conf.puts("ngs_network_name_format = kvl-{network_id:.10}")
-          ngs_conf.puts("ngs_ssh_disabled_algorithms = kex:diffie-hellman-group-exchange-sha1")
-          ngs_conf.puts("ngs_port_default_vlan = 100")
-          ngs_conf.puts("ngs_save_configuration = False")
-          ngs_conf.puts("#ngs_max_connections = 4")
-          ngs_conf.puts("#ngs_batch_requests = True")
-          ngs_conf.puts("ngs_manage_vlans = True")
+          site_ngs_conf.puts("ngs_zone = #{site}")
+          site_ngs_conf.puts("ngs_network_name_format = kvl-{network_id:.10}")
+          site_ngs_conf.puts("ngs_ssh_disabled_algorithms = kex:diffie-hellman-group-exchange-sha1")
+          site_ngs_conf.puts("ngs_port_default_vlan = 100")
+          site_ngs_conf.puts("ngs_save_configuration = False")
+          site_ngs_conf.puts("#ngs_max_connections = 4")
+          site_ngs_conf.puts("#ngs_batch_requests = True")
+          site_ngs_conf.puts("ngs_manage_vlans = True")
           ngs_trunk_ports = []
           if refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'linecards'
             refapi['sites'][site]['network_equipments'][refapi_device]['linecards'].each_with_index do |lc, lc_index|
@@ -166,7 +182,7 @@ def gen_ngs_conf(input_path, output_path, verbose)
                       if not portname
                         puts "ERROR #{site}/#{refapi_device}/linecard-#{lc_index}/port-#{port_index}: unable to guess portname"
                       else
-                        if verbose
+                        if options[:verbose]
                           puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
                         end
                         ngs_trunk_ports.push portname
@@ -181,7 +197,7 @@ def gen_ngs_conf(input_path, output_path, verbose)
             refapi['sites'][site]['network_equipments'][refapi_device]['channels'].each do |channelname, channel|
               if channel.has_key? 'kind'
                 if TRUNK_KINDS.include? channel['kind']
-                  if verbose
+                  if options[:verbose]
                     puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{channelname}"
                   end
                   ngs_trunk_ports.push channelname
@@ -191,14 +207,14 @@ def gen_ngs_conf(input_path, output_path, verbose)
           end
           if device_data.has_key? 'additional_trunk_ports'
             device_data['additional_trunk_ports'].each do |additional_trunk_port|
-              if verbose
+              if options[:verbose]
                 puts "      additional trunk port on #{site}/#{device}: #{additional_trunk_port}"
               end
               ngs_trunk_ports.push additional_trunk_port
             end
           end
-          ngs_conf.puts("ngs_trunk_ports = #{ngs_trunk_ports.join(', ')}")
-          ngs_conf.puts("")
+          site_ngs_conf.puts("ngs_trunk_ports = #{ngs_trunk_ports.join(', ')}")
+          site_ngs_conf.puts("")
         end
       end
     end
