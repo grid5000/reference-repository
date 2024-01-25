@@ -358,6 +358,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Cascade Lake-SP' => '2019',
       'Vulcan' => '2018',
       'Ice Lake' => '2021',
+      'Ice Lake-SP' => '2021',
       'Carmel' => '2018',
       'Vega20' => '2018',
       'Ampere' => '2020',
