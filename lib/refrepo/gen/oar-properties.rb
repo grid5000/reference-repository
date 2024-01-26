@@ -421,6 +421,8 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['gpu_model'] = ''
   h['gpu_count'] = 0
   h['gpu_mem'] = 0
+  h['gpu_compute_capability'] = ''
+  h['gpu_compute_capability_major'] = nil
 
   if node.key?('gpu_devices')
     models = node['gpu_devices'].map { |_, g| g['model'] }.uniq
@@ -432,6 +434,8 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
       h['gpu_model'] = device['model']
       h['gpu_count'] = node['gpu_devices'].length
       h['gpu_mem'] = device['memory'] / MiB
+      h['gpu_compute_capability'] = device['compute_capability']
+      h['gpu_compute_capability_major'] = device['compute_capability'].split('.').first.to_i
     end
   end
 
