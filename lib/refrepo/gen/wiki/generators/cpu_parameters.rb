@@ -20,11 +20,13 @@ class CPUParametersGenerator < WikiGenerator
         turboboost_enabled = node_hash["operating_system"]["turboboost_enabled"]
         pstate_driver = node_hash["operating_system"]["pstate_driver"]
         cstate_driver = node_hash["operating_system"]["cstate_driver"]
+        created_at = DateTime.parse(*cluster_hash["created_at"]).strftime("%Y-%m-%d")
+        manufactured_at = DateTime.parse(*cluster_hash["manufactured_at"]).strftime("%Y-%m-%d")
 
         #One line per cluster
         table_data << [
-          DateTime.parse(*cluster_hash["created_at"]).strftime("%Y-%m-%d"),
-          DateTime.parse(*cluster_hash["manufactured_at"]).strftime("%Y-%m-%d"),
+          created_at,
+          manufactured_at,
           site_uid,
           cluster_uid,
           cpu_family,
