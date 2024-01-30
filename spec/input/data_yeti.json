@@ -4,304 +4,6 @@
       "clusters": {
         "clustera": {
           "nodes": {
-            "clustera-4": {
-              "architecture": {
-                "cpu_core_numbering": "round-robin",
-                "nb_cores": 64,
-                "nb_procs": 4,
-                "nb_threads": 128,
-                "platform_type": "x86_64"
-              },
-              "bios": {
-                "release_date": "11/26/2019",
-                "vendor": "Dell Inc.",
-                "version": "2.4.8"
-              },
-              "bmc_version": "4.00.00.00",
-              "chassis": {
-                "manufacturer": "Dell Inc.",
-                "name": "PowerEdge R940",
-                "serial": "6FGMSM2"
-              },
-              "exotic": true,
-              "kavlan": {
-                "eth0": {
-                  "kavlan-1": "192.168.192.4",
-                  "kavlan-11": "10.7.192.4",
-                  "kavlan-12": "10.11.192.4",
-                  "kavlan-13": "10.15.192.4",
-                  "kavlan-14": "10.19.192.4",
-                  "kavlan-16": "10.27.192.4",
-                  "kavlan-18": "10.35.192.4",
-                  "kavlan-2": "192.168.208.4",
-                  "kavlan-20": "10.43.192.4",
-                  "kavlan-21": "10.47.192.4",
-                  "kavlan-3": "192.168.224.4",
-                  "kavlan-4": "10.4.0.4",
-                  "kavlan-5": "10.4.64.4",
-                  "kavlan-6": "10.4.128.4",
-                  "kavlan-7": "10.4.192.4",
-                  "kavlan-8": "10.5.0.4",
-                  "kavlan-9": "10.5.64.4"
-                }
-              },
-              "kavlan6": {
-                "eth0": {
-                  "kavlan-1": "2001:660:4406:180:4::4",
-                  "kavlan-11": "2001:660:4406:1a0:104::4",
-                  "kavlan-12": "2001:660:4406:2a0:104::4",
-                  "kavlan-13": "2001:660:4406:4a0:104::4",
-                  "kavlan-14": "2001:660:4406:5a0:104::4",
-                  "kavlan-16": "2001:660:4406:7a0:104::4",
-                  "kavlan-18": "2001:660:4406:8a0:104::4",
-                  "kavlan-2": "2001:660:4406:181:4::4",
-                  "kavlan-20": "2001:660:4406:3a0:104::4",
-                  "kavlan-21": "2001:660:4406:6a0:104::4",
-                  "kavlan-3": "2001:660:4406:182:4::4",
-                  "kavlan-4": "2001:660:4406:190:4::4",
-                  "kavlan-5": "2001:660:4406:191:4::4",
-                  "kavlan-6": "2001:660:4406:192:4::4",
-                  "kavlan-7": "2001:660:4406:193:4::4",
-                  "kavlan-8": "2001:660:4406:194:4::4",
-                  "kavlan-9": "2001:660:4406:195:4::4"
-                }
-              },
-              "main_memory": {
-                "ram_size": 824633720832
-              },
-              "network_adapters": [
-                {
-                  "device": "eth0",
-                  "driver": "i40e",
-                  "enabled": true,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
-                  "interface": "Ethernet",
-                  "ip": "172.16.19.4",
-                  "ip6": "2001:660:4406:100:4::4",
-                  "kavlan": true,
-                  "mac": "24:6e:96:91:1d:b0",
-                  "management": false,
-                  "model": "Ethernet Controller X710 for 10GbE SFP+",
-                  "mountable": true,
-                  "mounted": true,
-                  "name": "eno1",
-                  "network_address": "yeti-4.grenoble.grid5000.fr",
-                  "rate": 10000000000,
-                  "sriov": false,
-                  "sriov_totalvfs": 0,
-                  "switch": "gw",
-                  "switch_port": "ethernet1/1/36:1",
-                  "vendor": "Intel"
-                },
-                {
-                  "device": "eth1",
-                  "driver": "i40e",
-                  "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
-                  "interface": "Ethernet",
-                  "kavlan": false,
-                  "mac": "24:6e:96:91:1d:b2",
-                  "management": false,
-                  "model": "Ethernet Controller X710 for 10GbE SFP+",
-                  "mountable": false,
-                  "mounted": false,
-                  "name": "eno2",
-                  "sriov": false,
-                  "sriov_totalvfs": 0,
-                  "vendor": "Intel"
-                },
-                {
-                  "device": "eth2",
-                  "driver": "i40e",
-                  "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
-                  "interface": "Ethernet",
-                  "kavlan": false,
-                  "mac": "24:6e:96:91:1d:b4",
-                  "management": false,
-                  "model": "Ethernet Controller X710 for 10GbE SFP+",
-                  "mountable": false,
-                  "mounted": false,
-                  "name": "eno3",
-                  "sriov": false,
-                  "sriov_totalvfs": 0,
-                  "vendor": "Intel"
-                },
-                {
-                  "device": "eth3",
-                  "driver": "i40e",
-                  "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
-                  "interface": "Ethernet",
-                  "kavlan": false,
-                  "mac": "24:6e:96:91:1d:b6",
-                  "management": false,
-                  "model": "Ethernet Controller X710 for 10GbE SFP+",
-                  "mountable": false,
-                  "mounted": false,
-                  "name": "eno4",
-                  "sriov": false,
-                  "sriov_totalvfs": 0,
-                  "vendor": "Intel"
-                },
-                {
-                  "device": "ib0",
-                  "driver": "hfi1",
-                  "enabled": true,
-                  "firmware_version": "1.27.0",
-                  "guid": "0x001175010178447b",
-                  "interface": "Omni-Path",
-                  "ip": "172.18.19.4",
-                  "kavlan": false,
-                  "mac": "00:11:75:01:01:78:44:7b",
-                  "management": false,
-                  "model": "Omni-Path HFI Silicon 100 Series [discrete]",
-                  "mountable": true,
-                  "mounted": true,
-                  "name": "ib0",
-                  "netmask": "255.255.240.0",
-                  "network_address": "yeti-4-ib0.grenoble.grid5000.fr",
-                  "rate": 100000000000,
-                  "vendor": "Intel"
-                },
-                {
-                  "device": "bmc",
-                  "enabled": true,
-                  "interface": "Ethernet",
-                  "ip": "172.17.19.4",
-                  "kavlan": false,
-                  "mac": "50:9a:4c:74:5e:c4",
-                  "management": true,
-                  "mountable": false,
-                  "mounted": false,
-                  "network_address": "yeti-4-bmc.grenoble.grid5000.fr"
-                }
-              ],
-              "operating_system": {
-                "cstate_driver": "intel_idle",
-                "cstate_governor": "menu",
-                "ht_enabled": true,
-                "pstate_driver": "intel_pstate",
-                "pstate_governor": "performance",
-                "turboboost_enabled": true
-              },
-              "pdu": [
-                {
-                  "port": 6,
-                  "uid": "wattmetre1"
-                },
-                {
-                  "port": 7,
-                  "uid": "wattmetre1"
-                }
-              ],
-              "performance": {
-                "core_flops": 67200000000,
-                "node_flops": 4300800000000
-              },
-              "processor": {
-                "cache_l1": null,
-                "cache_l1d": 32768,
-                "cache_l1i": 32768,
-                "cache_l2": 1048576,
-                "cache_l3": 23068672,
-                "clock_speed": 2100000000,
-                "ht_capable": true,
-                "instruction_set": "x86-64",
-                "microarchitecture": "Skylake",
-                "microcode": "0x2006b06",
-                "model": "Intel Xeon",
-                "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
-                "vendor": "Intel",
-                "version": "Gold 6130"
-              },
-              "software": {
-                "forced-deployment-timestamp": 202007300948,
-                "postinstall-version": "1.2021090800",
-                "standard-environment": "debian11-x64-std"
-              },
-              "storage_devices": [
-                {
-                  "by_id": "/dev/disk/by-id/wwn-0x55cd2e414de0fa6e",
-                  "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
-                  "firmware_version": "SCV1DL5A",
-                  "id": "disk0",
-                  "interface": "SATA",
-                  "model": "SSDSC2KG480G7R",
-                  "size": 480103981056,
-                  "storage": "SSD",
-                  "vendor": "Intel"
-                },
-                {
-                  "by_id": "/dev/disk/by-id/wwn-0x5000c500a08a9c6b",
-                  "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:1:0",
-                  "firmware_version": "NT32",
-                  "id": "disk1",
-                  "interface": "SAS",
-                  "model": "ST2000NX0463",
-                  "reservation": true,
-                  "size": 2000398934016,
-                  "storage": "HDD",
-                  "vendor": "Seagate"
-                },
-                {
-                  "by_id": "/dev/disk/by-id/wwn-0x5000c500a08a7bb3",
-                  "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:2:0",
-                  "firmware_version": "NT32",
-                  "id": "disk2",
-                  "interface": "SAS",
-                  "model": "ST2000NX0463",
-                  "reservation": true,
-                  "size": 2000398934016,
-                  "storage": "HDD",
-                  "vendor": "Seagate"
-                },
-                {
-                  "by_id": "/dev/disk/by-id/wwn-0x5000c500a0ae58b3",
-                  "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:3:0",
-                  "firmware_version": "NT32",
-                  "id": "disk3",
-                  "interface": "SAS",
-                  "model": "ST2000NX0463",
-                  "reservation": true,
-                  "size": 2000398934016,
-                  "storage": "HDD",
-                  "vendor": "Seagate"
-                },
-                {
-                  "by_id": "/dev/disk/by-id/nvme-eui.002538957100101b",
-                  "by_path": "/dev/disk/by-path/pci-0000:59:00.0-nvme-1",
-                  "id": "disk4",
-                  "interface": "NVME",
-                  "model": "Dell Express Flash NVMe PM1725 1.6TB AIC",
-                  "size": 1600321314816,
-                  "storage": "SSD",
-                  "vendor": "Dell"
-                },
-                {
-                  "by_id": "/dev/disk/by-id/nvme-eui.0025389671000bb5",
-                  "by_path": "/dev/disk/by-path/pci-0000:6d:00.0-nvme-1",
-                  "id": "disk5",
-                  "interface": "NVME",
-                  "model": "Dell Express Flash NVMe PM1725 1.6TB AIC",
-                  "size": 1600321314816,
-                  "storage": "SSD",
-                  "vendor": "Dell"
-                }
-              ],
-              "supported_job_types": {
-                "besteffort": true,
-                "deploy": true,
-                "max_walltime": 0,
-                "queues": [
-                  "admin",
-                  "default"
-                ],
-                "virtual": "ivt"
-              },
-              "type": "node",
-              "uid": "yeti-4"
-            },
             "clustera-1": {
               "architecture": {
                 "cpu_core_numbering": "round-robin",
@@ -311,15 +13,17 @@
                 "platform_type": "x86_64"
               },
               "bios": {
-                "release_date": "11/26/2019",
+                "release_date": "06/04/2023",
                 "vendor": "Dell Inc.",
-                "version": "2.4.8"
+                "version": "2.19.1"
               },
-              "bmc_version": "4.00.00.00",
+              "bmc_version": "7.00.00.00",
               "chassis": {
+                "manufactured_at": "2017-12-26",
                 "manufacturer": "Dell Inc.",
                 "name": "PowerEdge R940",
-                "serial": "6FGQSM2"
+                "serial": "6FGQSM2",
+                "warranty_end": "2024-12-26"
               },
               "exotic": true,
               "kavlan": {
@@ -330,6 +34,7 @@
                   "kavlan-13": "10.15.192.1",
                   "kavlan-14": "10.19.192.1",
                   "kavlan-16": "10.27.192.1",
+                  "kavlan-17": "10.31.192.1",
                   "kavlan-18": "10.35.192.1",
                   "kavlan-2": "192.168.208.1",
                   "kavlan-20": "10.43.192.1",
@@ -351,6 +56,7 @@
                   "kavlan-13": "2001:660:4406:4a0:104::1",
                   "kavlan-14": "2001:660:4406:5a0:104::1",
                   "kavlan-16": "2001:660:4406:7a0:104::1",
+                  "kavlan-17": "2001:660:4406:9a0:104::1",
                   "kavlan-18": "2001:660:4406:8a0:104::1",
                   "kavlan-2": "2001:660:4406:181:4::1",
                   "kavlan-20": "2001:660:4406:3a0:104::1",
@@ -367,12 +73,140 @@
               "main_memory": {
                 "ram_size": 824633720832
               },
+              "management_tools": {
+                "bmc_vendor_tool": "racadm",
+                "ipmitool": {
+                  "retries": 5
+                }
+              },
+              "memory_devices": [
+                {
+                  "device": "dimm_a1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                }
+              ],
               "network_adapters": [
                 {
                   "device": "eth0",
                   "driver": "i40e",
                   "enabled": true,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "ip": "172.16.19.1",
                   "ip6": "2001:660:4406:100:4::1",
@@ -395,7 +229,7 @@
                   "device": "eth1",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:1e:b2",
@@ -412,7 +246,7 @@
                   "device": "eth2",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:1e:b4",
@@ -429,7 +263,7 @@
                   "device": "eth3",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:1e:b6",
@@ -507,7 +341,7 @@
                 "ht_capable": true,
                 "instruction_set": "x86-64",
                 "microarchitecture": "Skylake",
-                "microcode": "0x2006b06",
+                "microcode": "0x2007006",
                 "model": "Intel Xeon",
                 "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
                 "vendor": "Intel",
@@ -515,14 +349,14 @@
               },
               "software": {
                 "forced-deployment-timestamp": 202007300948,
-                "postinstall-version": "1.2021090800",
+                "postinstall-version": "1.2024011908",
                 "standard-environment": "debian11-x64-std"
               },
               "storage_devices": [
                 {
                   "by_id": "/dev/disk/by-id/wwn-0x55cd2e414de1d705",
                   "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
-                  "firmware_version": "SCV1DL5A",
+                  "firmware_version": "SCV1DL5C",
                   "id": "disk0",
                   "interface": "SATA",
                   "model": "SSDSC2KG480G7R",
@@ -567,11 +401,11 @@
                   "vendor": "Seagate"
                 },
                 {
-                  "by_id": "/dev/disk/by-id/nvme-eui.0025389671000bad",
+                  "by_id": "/dev/disk/by-id/nvme-eui.343741304d6028050025384500000004",
                   "by_path": "/dev/disk/by-path/pci-0000:59:00.0-nvme-1",
                   "id": "disk4",
                   "interface": "NVME",
-                  "model": "Dell Express Flash NVMe PM1725 1.6TB AIC",
+                  "model": "Dell Express Flash PM1725b 1.6TB AIC",
                   "size": 1600321314816,
                   "storage": "SSD",
                   "vendor": "Dell"
@@ -609,15 +443,17 @@
                 "platform_type": "x86_64"
               },
               "bios": {
-                "release_date": "11/26/2019",
+                "release_date": "06/04/2023",
                 "vendor": "Dell Inc.",
-                "version": "2.4.8"
+                "version": "2.19.1"
               },
-              "bmc_version": "4.00.00.00",
+              "bmc_version": "7.00.00.00",
               "chassis": {
+                "manufactured_at": "2017-12-26",
                 "manufacturer": "Dell Inc.",
                 "name": "PowerEdge R940",
-                "serial": "6FGRSM2"
+                "serial": "6FGRSM2",
+                "warranty_end": "2024-12-26"
               },
               "exotic": true,
               "kavlan": {
@@ -628,6 +464,7 @@
                   "kavlan-13": "10.15.192.2",
                   "kavlan-14": "10.19.192.2",
                   "kavlan-16": "10.27.192.2",
+                  "kavlan-17": "10.31.192.2",
                   "kavlan-18": "10.35.192.2",
                   "kavlan-2": "192.168.208.2",
                   "kavlan-20": "10.43.192.2",
@@ -649,6 +486,7 @@
                   "kavlan-13": "2001:660:4406:4a0:104::2",
                   "kavlan-14": "2001:660:4406:5a0:104::2",
                   "kavlan-16": "2001:660:4406:7a0:104::2",
+                  "kavlan-17": "2001:660:4406:9a0:104::2",
                   "kavlan-18": "2001:660:4406:8a0:104::2",
                   "kavlan-2": "2001:660:4406:181:4::2",
                   "kavlan-20": "2001:660:4406:3a0:104::2",
@@ -665,12 +503,140 @@
               "main_memory": {
                 "ram_size": 824633720832
               },
+              "management_tools": {
+                "bmc_vendor_tool": "racadm",
+                "ipmitool": {
+                  "retries": 5
+                }
+              },
+              "memory_devices": [
+                {
+                  "device": "dimm_a1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                }
+              ],
               "network_adapters": [
                 {
                   "device": "eth0",
                   "driver": "i40e",
                   "enabled": true,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "ip": "172.16.19.2",
                   "ip6": "2001:660:4406:100:4::2",
@@ -693,7 +659,7 @@
                   "device": "eth1",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:2b:52",
@@ -710,7 +676,7 @@
                   "device": "eth2",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:2b:54",
@@ -727,7 +693,7 @@
                   "device": "eth3",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:2b:56",
@@ -805,7 +771,7 @@
                 "ht_capable": true,
                 "instruction_set": "x86-64",
                 "microarchitecture": "Skylake",
-                "microcode": "0x2006b06",
+                "microcode": "0x2007006",
                 "model": "Intel Xeon",
                 "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
                 "vendor": "Intel",
@@ -813,14 +779,14 @@
               },
               "software": {
                 "forced-deployment-timestamp": 202007300948,
-                "postinstall-version": "1.2021090800",
+                "postinstall-version": "1.2024011908",
                 "standard-environment": "debian11-x64-std"
               },
               "storage_devices": [
                 {
                   "by_id": "/dev/disk/by-id/wwn-0x55cd2e414de16d7a",
                   "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
-                  "firmware_version": "SCV1DL5A",
+                  "firmware_version": "SCV1DL5C",
                   "id": "disk0",
                   "interface": "SATA",
                   "model": "SSDSC2KG480G7R",
@@ -907,15 +873,17 @@
                 "platform_type": "x86_64"
               },
               "bios": {
-                "release_date": "11/26/2019",
+                "release_date": "06/04/2023",
                 "vendor": "Dell Inc.",
-                "version": "2.4.8"
+                "version": "2.19.1"
               },
-              "bmc_version": "4.00.00.00",
+              "bmc_version": "7.00.00.00",
               "chassis": {
+                "manufactured_at": "2017-12-26",
                 "manufacturer": "Dell Inc.",
                 "name": "PowerEdge R940",
-                "serial": "6FGPSM2"
+                "serial": "6FGPSM2",
+                "warranty_end": "2024-12-26"
               },
               "exotic": true,
               "kavlan": {
@@ -926,6 +894,7 @@
                   "kavlan-13": "10.15.192.3",
                   "kavlan-14": "10.19.192.3",
                   "kavlan-16": "10.27.192.3",
+                  "kavlan-17": "10.31.192.3",
                   "kavlan-18": "10.35.192.3",
                   "kavlan-2": "192.168.208.3",
                   "kavlan-20": "10.43.192.3",
@@ -947,6 +916,7 @@
                   "kavlan-13": "2001:660:4406:4a0:104::3",
                   "kavlan-14": "2001:660:4406:5a0:104::3",
                   "kavlan-16": "2001:660:4406:7a0:104::3",
+                  "kavlan-17": "2001:660:4406:9a0:104::3",
                   "kavlan-18": "2001:660:4406:8a0:104::3",
                   "kavlan-2": "2001:660:4406:181:4::3",
                   "kavlan-20": "2001:660:4406:3a0:104::3",
@@ -963,12 +933,140 @@
               "main_memory": {
                 "ram_size": 824633720832
               },
+              "management_tools": {
+                "bmc_vendor_tool": "racadm",
+                "ipmitool": {
+                  "retries": 5
+                }
+              },
+              "memory_devices": [
+                {
+                  "device": "dimm_a1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                }
+              ],
               "network_adapters": [
                 {
                   "device": "eth0",
                   "driver": "i40e",
                   "enabled": true,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "ip": "172.16.19.3",
                   "ip6": "2001:660:4406:100:4::3",
@@ -991,7 +1089,7 @@
                   "device": "eth1",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:4c:92",
@@ -1008,7 +1106,7 @@
                   "device": "eth2",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:4c:94",
@@ -1025,7 +1123,7 @@
                   "device": "eth3",
                   "driver": "i40e",
                   "enabled": false,
-                  "firmware_version": "7.10 0x800051ab 19.0.12",
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
                   "interface": "Ethernet",
                   "kavlan": false,
                   "mac": "24:6e:96:91:4c:96",
@@ -1103,7 +1201,7 @@
                 "ht_capable": true,
                 "instruction_set": "x86-64",
                 "microarchitecture": "Skylake",
-                "microcode": "0x2006b06",
+                "microcode": "0x2007006",
                 "model": "Intel Xeon",
                 "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
                 "vendor": "Intel",
@@ -1111,14 +1209,14 @@
               },
               "software": {
                 "forced-deployment-timestamp": 202007300948,
-                "postinstall-version": "1.2021090800",
+                "postinstall-version": "1.2024011908",
                 "standard-environment": "debian11-x64-std"
               },
               "storage_devices": [
                 {
                   "by_id": "/dev/disk/by-id/wwn-0x55cd2e4150a22f9b",
                   "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
-                  "firmware_version": "XCV1DL65",
+                  "firmware_version": "XCV1DL69",
                   "id": "disk0",
                   "interface": "SATA",
                   "model": "SSDSC2KG480G8R",
@@ -1195,11 +1293,443 @@
               },
               "type": "node",
               "uid": "yeti-3"
+            },
+            "clustera-4": {
+              "architecture": {
+                "cpu_core_numbering": "round-robin",
+                "nb_cores": 64,
+                "nb_procs": 4,
+                "nb_threads": 128,
+                "platform_type": "x86_64"
+              },
+              "bios": {
+                "release_date": "06/04/2023",
+                "vendor": "Dell Inc.",
+                "version": "2.19.1"
+              },
+              "bmc_version": "7.00.00.00",
+              "chassis": {
+                "manufactured_at": "2017-12-26",
+                "manufacturer": "Dell Inc.",
+                "name": "PowerEdge R940",
+                "serial": "6FGMSM2",
+                "warranty_end": "2024-12-26"
+              },
+              "exotic": true,
+              "kavlan": {
+                "eth0": {
+                  "kavlan-1": "192.168.192.4",
+                  "kavlan-11": "10.7.192.4",
+                  "kavlan-12": "10.11.192.4",
+                  "kavlan-13": "10.15.192.4",
+                  "kavlan-14": "10.19.192.4",
+                  "kavlan-16": "10.27.192.4",
+                  "kavlan-17": "10.31.192.4",
+                  "kavlan-18": "10.35.192.4",
+                  "kavlan-2": "192.168.208.4",
+                  "kavlan-20": "10.43.192.4",
+                  "kavlan-21": "10.47.192.4",
+                  "kavlan-3": "192.168.224.4",
+                  "kavlan-4": "10.4.0.4",
+                  "kavlan-5": "10.4.64.4",
+                  "kavlan-6": "10.4.128.4",
+                  "kavlan-7": "10.4.192.4",
+                  "kavlan-8": "10.5.0.4",
+                  "kavlan-9": "10.5.64.4"
+                }
+              },
+              "kavlan6": {
+                "eth0": {
+                  "kavlan-1": "2001:660:4406:180:4::4",
+                  "kavlan-11": "2001:660:4406:1a0:104::4",
+                  "kavlan-12": "2001:660:4406:2a0:104::4",
+                  "kavlan-13": "2001:660:4406:4a0:104::4",
+                  "kavlan-14": "2001:660:4406:5a0:104::4",
+                  "kavlan-16": "2001:660:4406:7a0:104::4",
+                  "kavlan-17": "2001:660:4406:9a0:104::4",
+                  "kavlan-18": "2001:660:4406:8a0:104::4",
+                  "kavlan-2": "2001:660:4406:181:4::4",
+                  "kavlan-20": "2001:660:4406:3a0:104::4",
+                  "kavlan-21": "2001:660:4406:6a0:104::4",
+                  "kavlan-3": "2001:660:4406:182:4::4",
+                  "kavlan-4": "2001:660:4406:190:4::4",
+                  "kavlan-5": "2001:660:4406:191:4::4",
+                  "kavlan-6": "2001:660:4406:192:4::4",
+                  "kavlan-7": "2001:660:4406:193:4::4",
+                  "kavlan-8": "2001:660:4406:194:4::4",
+                  "kavlan-9": "2001:660:4406:195:4::4"
+                }
+              },
+              "main_memory": {
+                "ram_size": 824633720832
+              },
+              "management_tools": {
+                "bmc_vendor_tool": "racadm",
+                "ipmitool": {
+                  "retries": 5
+                }
+              },
+              "memory_devices": [
+                {
+                  "device": "dimm_a1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_a6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_b6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_c6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d2",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d4",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_d6",
+                  "size": 34359738368,
+                  "technology": "dram"
+                }
+              ],
+              "network_adapters": [
+                {
+                  "device": "eth0",
+                  "driver": "i40e",
+                  "enabled": true,
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
+                  "interface": "Ethernet",
+                  "ip": "172.16.19.4",
+                  "ip6": "2001:660:4406:100:4::4",
+                  "kavlan": true,
+                  "mac": "24:6e:96:91:1d:b0",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "eno1",
+                  "network_address": "yeti-4.grenoble.grid5000.fr",
+                  "rate": 10000000000,
+                  "sriov": false,
+                  "sriov_totalvfs": 0,
+                  "switch": "gw",
+                  "switch_port": "ethernet1/1/36:1",
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "eth1",
+                  "driver": "i40e",
+                  "enabled": false,
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
+                  "interface": "Ethernet",
+                  "kavlan": false,
+                  "mac": "24:6e:96:91:1d:b2",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno2",
+                  "sriov": false,
+                  "sriov_totalvfs": 0,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "eth2",
+                  "driver": "i40e",
+                  "enabled": false,
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
+                  "interface": "Ethernet",
+                  "kavlan": false,
+                  "mac": "24:6e:96:91:1d:b4",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno3",
+                  "sriov": false,
+                  "sriov_totalvfs": 0,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "eth3",
+                  "driver": "i40e",
+                  "enabled": false,
+                  "firmware_version": "9.20 0x8000d958 22.0.9",
+                  "interface": "Ethernet",
+                  "kavlan": false,
+                  "mac": "24:6e:96:91:1d:b6",
+                  "management": false,
+                  "model": "Ethernet Controller X710 for 10GbE SFP+",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "eno4",
+                  "sriov": false,
+                  "sriov_totalvfs": 0,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "ib0",
+                  "driver": "hfi1",
+                  "enabled": true,
+                  "firmware_version": "1.27.0",
+                  "guid": "0x001175010178447b",
+                  "interface": "Omni-Path",
+                  "ip": "172.18.19.4",
+                  "kavlan": false,
+                  "mac": "00:11:75:01:01:78:44:7b",
+                  "management": false,
+                  "model": "Omni-Path HFI Silicon 100 Series [discrete]",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "ib0",
+                  "netmask": "255.255.240.0",
+                  "network_address": "yeti-4-ib0.grenoble.grid5000.fr",
+                  "rate": 100000000000,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "bmc",
+                  "enabled": true,
+                  "interface": "Ethernet",
+                  "ip": "172.17.19.4",
+                  "kavlan": false,
+                  "mac": "50:9a:4c:74:5e:c4",
+                  "management": true,
+                  "mountable": false,
+                  "mounted": false,
+                  "network_address": "yeti-4-bmc.grenoble.grid5000.fr"
+                }
+              ],
+              "operating_system": {
+                "cstate_driver": "intel_idle",
+                "cstate_governor": "menu",
+                "ht_enabled": true,
+                "pstate_driver": "intel_pstate",
+                "pstate_governor": "performance",
+                "turboboost_enabled": true
+              },
+              "pdu": [
+                {
+                  "port": 6,
+                  "uid": "wattmetre1"
+                },
+                {
+                  "port": 7,
+                  "uid": "wattmetre1"
+                }
+              ],
+              "performance": {
+                "core_flops": 67200000000,
+                "node_flops": 4300800000000
+              },
+              "processor": {
+                "cache_l1": null,
+                "cache_l1d": 32768,
+                "cache_l1i": 32768,
+                "cache_l2": 1048576,
+                "cache_l3": 23068672,
+                "clock_speed": 2100000000,
+                "ht_capable": true,
+                "instruction_set": "x86-64",
+                "microarchitecture": "Skylake",
+                "microcode": "0x2007006",
+                "model": "Intel Xeon",
+                "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
+                "vendor": "Intel",
+                "version": "Gold 6130"
+              },
+              "software": {
+                "forced-deployment-timestamp": 202007300948,
+                "postinstall-version": "1.2024011908",
+                "standard-environment": "debian11-x64-std"
+              },
+              "storage_devices": [
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x55cd2e414de0fa6e",
+                  "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
+                  "firmware_version": "SCV1DL5C",
+                  "id": "disk0",
+                  "interface": "SATA",
+                  "model": "SSDSC2KG480G7R",
+                  "size": 480103981056,
+                  "storage": "SSD",
+                  "vendor": "Intel"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x5000c500a08a9c6b",
+                  "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:1:0",
+                  "firmware_version": "NT32",
+                  "id": "disk1",
+                  "interface": "SAS",
+                  "model": "ST2000NX0463",
+                  "reservation": true,
+                  "size": 2000398934016,
+                  "storage": "HDD",
+                  "vendor": "Seagate"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x5000c500a08a7bb3",
+                  "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:2:0",
+                  "firmware_version": "NT32",
+                  "id": "disk2",
+                  "interface": "SAS",
+                  "model": "ST2000NX0463",
+                  "reservation": true,
+                  "size": 2000398934016,
+                  "storage": "HDD",
+                  "vendor": "Seagate"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x5000c500a0ae58b3",
+                  "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:3:0",
+                  "firmware_version": "NT32",
+                  "id": "disk3",
+                  "interface": "SAS",
+                  "model": "ST2000NX0463",
+                  "reservation": true,
+                  "size": 2000398934016,
+                  "storage": "HDD",
+                  "vendor": "Seagate"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/nvme-eui.00253896710013eb",
+                  "by_path": "/dev/disk/by-path/pci-0000:59:00.0-nvme-1",
+                  "id": "disk4",
+                  "interface": "NVME",
+                  "model": "Dell Express Flash NVMe PM1725 1.6TB AIC",
+                  "size": 1600321314816,
+                  "storage": "SSD",
+                  "vendor": "Dell"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/nvme-eui.002538957100101b",
+                  "by_path": "/dev/disk/by-path/pci-0000:6d:00.0-nvme-1",
+                  "id": "disk5",
+                  "interface": "NVME",
+                  "model": "Dell Express Flash NVMe PM1725 1.6TB AIC",
+                  "size": 1600321314816,
+                  "storage": "SSD",
+                  "vendor": "Dell"
+                }
+              ],
+              "supported_job_types": {
+                "besteffort": true,
+                "deploy": true,
+                "max_walltime": 0,
+                "queues": [
+                  "admin",
+                  "default"
+                ],
+                "virtual": "ivt"
+              },
+              "type": "node",
+              "uid": "yeti-4"
             }
           },
+          "boot_type": "bios",
           "created_at": "Tue, 16 Jan 2018 00:00:00 GMT",
           "exotic": true,
           "kavlan": true,
+          "manufactured_at": "2017-12-26",
           "metrics": [
             {
               "description": "Power consumption of node reported by wattmetre, in watt",
@@ -1472,7 +2002,7 @@
               "source": {
                 "id": [
                   "node_boot_time_seconds",
-                  "node_cpu_frequency_hertz",
+                  "node_cpu_scaling_frequency_hertz",
                   "node_cpu_seconds_total",
                   "node_filesystem_free_bytes",
                   "node_filesystem_size_bytes",
@@ -1604,509 +2134,8 @@
             "default"
           ],
           "type": "cluster",
-          "uid": "clustera"
-        }
-      },
-      "pdus": {
-        "wattmetre1": {
-          "ip": "172.16.31.9",
-          "metrics": [
-            {
-              "description": "Power consumption per outlet reported by wattmetre, in watt",
-              "name": "wattmetre_power_watt",
-              "optional_period": 20,
-              "period": 1000,
-              "source": {
-                "protocol": "wattmetre"
-              }
-            }
-          ],
-          "model": "",
-          "ports": {
-            "0": "yeti-1",
-            "1": "yeti-1",
-            "10": "troll-3",
-            "11": "troll-4",
-            "2": "yeti-2",
-            "3": "yeti-2",
-            "4": "yeti-3",
-            "5": "yeti-3",
-            "6": "yeti-4",
-            "7": "yeti-4",
-            "8": "troll-1",
-            "9": "troll-2"
-          },
-          "type": "pdu",
-          "uid": "wattmetre1",
-          "vendor": "OmegaWatt"
-        }
-      },
-      "servers": {
-        "guix": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.128"
-            }
-          },
-          "type": "server",
-          "uid": "guix"
-        },
-        "dns": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.110"
-            }
-          },
-          "type": "server",
-          "uid": "dns"
-        },
-        "mu2": {
-          "alias": [
-            "digitalis"
-          ],
-          "kind": "virtual",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.152"
-            },
-            "default": {
-              "ip": "172.16.31.152"
-            }
-          },
-          "type": "server",
-          "uid": "mu2"
-        },
-        "kadeploy-devel": {
-          "alias": [
-            "kadeploy-server-devel",
-            "deploy-devel"
-          ],
-          "kind": "virtual",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.124"
-            },
-            "default": {
-              "ip": "172.16.31.124"
-            }
-          },
-          "type": "server",
-          "uid": "kadeploy-devel"
-        },
-        "digsed": {
-          "alias": [
-
-          ],
-          "kind": "physical",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.4"
-            },
-            "bmc": {
-              "ip": "172.17.30.4"
-            },
-            "default": {
-              "ip": "172.16.31.4"
-            }
-          },
-          "serial": "8GPPJ32",
-          "type": "server",
-          "uid": "digsed",
-          "warranty": "2021-12-06"
-        },
-        "kavlan-3": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.121"
-            }
-          },
-          "type": "server",
-          "uid": "kavlan-3"
-        },
-        "dignfs": {
-          "alias": [
-            "nfs",
-            "public",
-            "home-g5k",
-            "ntp",
-            "modules",
-            "storage1"
-          ],
-          "group_storage": {
-            "name": "storage1",
-            "rate": 50000000000,
-            "size": 55000000000000
-          },
-          "kind": "physical",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.12"
-            },
-            "bmc": {
-              "ip": "172.17.30.12",
-              "mac": "2C:EA:7F:42:45:35"
-            },
-            "default": {
-              "ip": "172.16.31.12"
-            }
-          },
-          "serial": "57JV173",
-          "type": "server",
-          "uid": "dignfs",
-          "warranty": "2025-10-06"
-        },
-        "mail": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.125"
-            }
-          },
-          "type": "server",
-          "uid": "mail"
-        },
-        "nat": {
-          "alias": [
-            "access"
-          ],
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.100"
-            }
-          },
-          "type": "server",
-          "uid": "nat"
-        },
-        "api-server-devel": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.108"
-            }
-          },
-          "type": "server",
-          "uid": "api-server-devel"
-        },
-        "kavlan-2": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.120"
-            }
-          },
-          "type": "server",
-          "uid": "kavlan-2"
-        },
-        "puppet6": {
-          "alias": [
-            "puppet"
-          ],
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.116"
-            }
-          },
-          "type": "server",
-          "uid": "puppet6"
-        },
-        "digarm": {
-          "alias": null,
-          "kind": "physical",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.11"
-            }
-          },
-          "serial": "n/a",
-          "type": "server",
-          "uid": "digarm",
-          "warranty": "n/a"
-        },
-        "kavlan": {
-          "alias": [
-            "kavlan-dhcp"
-          ],
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.118"
-            }
-          },
-          "type": "server",
-          "uid": "kavlan"
-        },
-        "backupg5k": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.144"
-            }
-          },
-          "type": "server",
-          "uid": "backupg5k"
-        },
-        "kavlan-1": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.119"
-            }
-          },
-          "type": "server",
-          "uid": "kavlan-1"
-        },
-        "api-proxy": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.106"
-            }
-          },
-          "type": "server",
-          "uid": "api-proxy"
-        },
-        "oar": {
-          "alias": [
-            "oar-server",
-            "oardb"
-          ],
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.104"
-            }
-          },
-          "type": "server",
-          "uid": "oar"
-        },
-        "dhcp": {
-          "kind": "virtual",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.109"
-            },
-            "default": {
-              "ip": "172.16.31.109",
-              "ip6": "2001:660:4406:100:0:2:0:9"
-            }
-          },
-          "type": "server",
-          "uid": "dhcp"
-        },
-        "syslog": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.115"
-            }
-          },
-          "type": "server",
-          "uid": "syslog"
-        },
-        "fgrenoble": {
-          "alias": [
-            "frontend",
-            "oar-api"
-          ],
-          "kind": "virtual",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.101"
-            },
-            "default": {
-              "ip": "172.16.31.101"
-            }
-          },
-          "type": "server",
-          "uid": "fgrenoble"
-        },
-        "supervision2": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.156"
-            }
-          },
-          "type": "server",
-          "uid": "supervision2"
-        },
-        "dighyp1": {
-          "alias": [
-            "adminfront",
-            "af"
-          ],
-          "kind": "physical",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.7"
-            },
-            "bmc": {
-              "ip": "172.17.30.7",
-              "mac": "D0:94:66:1E:38:4C"
-            },
-            "default": {
-              "ip": "172.16.31.7",
-              "mac": "D0:94:66:1E:38:48"
-            }
-          },
-          "serial": "5SS15M2",
-          "type": "server",
-          "uid": "dighyp1",
-          "warranty": "2024-10-19"
-        },
-        "api-server-v3": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.122"
-            }
-          },
-          "type": "server",
-          "uid": "api-server-v3"
-        },
-        "mysql": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.103"
-            }
-          },
-          "type": "server",
-          "uid": "mysql"
-        },
-        "ganglia": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.111"
-            }
-          },
-          "type": "server",
-          "uid": "ganglia"
-        },
-        "kadeploy": {
-          "alias": [
-            "kadeploy-server"
-          ],
-          "kind": "virtual",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.102"
-            },
-            "default": {
-              "ip": "172.16.31.102"
-            }
-          },
-          "type": "server",
-          "uid": "kadeploy"
-        },
-        "digwatt": {
-          "alias": [
-            "wattmetre"
-          ],
-          "kind": "physical",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.9"
-            },
-            "bmc": {
-              "ip": "172.17.30.9"
-            },
-            "default": {
-              "ip": "172.16.31.9"
-            }
-          },
-          "serial": "72NMNR2",
-          "type": "server",
-          "uid": "digwatt",
-          "warranty": "2023-08-28"
-        },
-        "kwollect": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.127"
-            }
-          },
-          "type": "server",
-          "uid": "kwollect"
-        },
-        "digxp": {
-          "alias": null,
-          "kind": "physical",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.10"
-            },
-            "bmc": {
-              "ip": "172.17.30.10"
-            },
-            "default": {
-              "ip": "172.16.31.10"
-            }
-          },
-          "serial": "n/a",
-          "type": "server",
-          "uid": "digxp",
-          "warranty": "n/a"
-        },
-        "conman": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.123"
-            }
-          },
-          "type": "server",
-          "uid": "conman"
-        },
-        "www": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.105"
-            }
-          },
-          "type": "server",
-          "uid": "www"
-        },
-        "dighyp2": {
-          "alias": [
-
-          ],
-          "kind": "physical",
-          "network_adapters": {
-            "adm": {
-              "ip": "172.17.31.8"
-            },
-            "bmc": {
-              "ip": "172.17.30.8",
-              "mac": "D0:94:66:1E:32:47"
-            },
-            "default": {
-              "ip": "172.16.31.8",
-              "mac": "D0:94:66:1E:32:43"
-            }
-          },
-          "serial": "5SQY4M2",
-          "type": "server",
-          "uid": "dighyp2",
-          "warranty": "2024-10-19"
-        },
-        "ldap": {
-          "kind": "virtual",
-          "network_adapters": {
-            "default": {
-              "ip": "172.16.31.112"
-            }
-          },
-          "type": "server",
-          "uid": "ldap"
+          "uid": "clustera",
+          "warranty_end": "2024-12-26"
         }
       },
       "network_equipments": {
@@ -2134,6 +2163,12 @@
               "port": "port-channel20",
               "rate": 20000000000,
               "uid": "digsed"
+            },
+            "port-channel30": {
+              "kind": "server",
+              "port": "port-channel30",
+              "rate": 20000000000,
+              "uid": "orichard-nixbuild"
             }
           },
           "ip": "172.16.31.254",
@@ -2487,8 +2522,14 @@
                 {
                 },
                 {
+                  "kind": "channel",
+                  "snmp_name": "ethernet1/1/75:1",
+                  "uid": "port-channel30"
                 },
                 {
+                  "kind": "channel",
+                  "snmp_name": "ethernet1/1/76:1",
+                  "uid": "port-channel30"
                 },
                 {
                   "kavlan_pattern": "ethernet1/1/%PORT%",
@@ -2523,8 +2564,20 @@
                   "uid": "troll-4"
                 },
                 {
+                  "kavlan_pattern": "ethernet1/1/%PORT%",
+                  "kind": "node",
+                  "port": "eth0",
+                  "rate": 25000000000,
+                  "snmp_name": "ethernet1/1/81",
+                  "uid": "servan-1"
                 },
                 {
+                  "kavlan_pattern": "ethernet1/1/%PORT%",
+                  "kind": "node",
+                  "port": "eth0",
+                  "rate": 25000000000,
+                  "snmp_name": "ethernet1/1/82",
+                  "uid": "servan-2"
                 },
                 {
                   "kind": "channel",
@@ -2594,19 +2647,52 @@
                   "kind": "backbone",
                   "snmp_name": "ethernet1/1/96:1",
                   "uid": "renater-grenoble"
+                },
+                {
+                  "kavlan_pattern": "ethernet1/1/%PORT%",
+                  "kind": "node",
+                  "port": "fpga0",
+                  "rate": 100000000000,
+                  "snmp_name": "ethernet1/1/97",
+                  "uid": "servan-1"
+                },
+                {
+                  "kavlan_pattern": "ethernet1/1/%PORT%",
+                  "kind": "node",
+                  "port": "fpga1",
+                  "rate": 100000000000,
+                  "snmp_name": "ethernet1/1/98",
+                  "uid": "servan-1"
+                },
+                {
+                  "kavlan_pattern": "ethernet1/1/%PORT%",
+                  "kind": "node",
+                  "port": "fpga0",
+                  "rate": 100000000000,
+                  "snmp_name": "ethernet1/1/99",
+                  "uid": "servan-2"
+                },
+                {
+                  "kavlan_pattern": "ethernet1/1/%PORT%",
+                  "kind": "node",
+                  "port": "fpga1",
+                  "rate": 100000000000,
+                  "snmp_name": "ethernet1/1/100",
+                  "uid": "servan-2"
                 }
               ],
               "rate": 10000000000,
               "snmp_pattern": "ethernet1/1/%PORT%:1"
             }
           ],
+          "managed_by_us": true,
           "metrics": [
             {
               "description": "Input byte counter for the network device port",
               "name": "network_ifacein_bytes_total",
               "period": 15000,
               "source": {
-                "id": "1.3.6.1.2.1.2.2.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "id": "1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
                 "protocol": "snmp"
               }
             },
@@ -2615,7 +2701,7 @@
               "name": "network_ifaceout_bytes_total",
               "period": 15000,
               "source": {
-                "id": "1.3.6.1.2.1.2.2.1.16.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "id": "1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
                 "protocol": "snmp"
               }
             },
@@ -2759,6 +2845,571 @@
             }
           },
           "warranty": "2027-11-03"
+        }
+      },
+      "pdus": {
+        "wattmetre1": {
+          "ip": "172.16.31.9",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by wattmetre, in watt",
+              "name": "wattmetre_power_watt",
+              "optional_period": 20,
+              "period": 1000,
+              "source": {
+                "protocol": "wattmetre"
+              }
+            }
+          ],
+          "model": "",
+          "ports": {
+            "0": "yeti-1",
+            "1": "yeti-1",
+            "10": "troll-3",
+            "11": "troll-4",
+            "2": "yeti-2",
+            "3": "yeti-2",
+            "4": "yeti-3",
+            "5": "yeti-3",
+            "6": "yeti-4",
+            "7": "yeti-4",
+            "8": "troll-1",
+            "9": "troll-2"
+          },
+          "type": "pdu",
+          "uid": "wattmetre1",
+          "vendor": "OmegaWatt"
+        },
+        "wattmetre2": {
+          "ip": "172.16.31.9",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by wattmetre, in watt",
+              "name": "wattmetre_power_watt",
+              "optional_period": 20,
+              "period": 1000,
+              "source": {
+                "protocol": "wattmetre"
+              }
+            }
+          ],
+          "model": "",
+          "ports": {
+            "0": "servan-1",
+            "1": "servan-1",
+            "2": "servan-2",
+            "3": "servan-2"
+          },
+          "type": "pdu",
+          "uid": "wattmetre2",
+          "vendor": "OmegaWatt"
+        }
+      },
+      "servers": {
+        "api-proxy": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.106"
+            }
+          },
+          "type": "server",
+          "uid": "api-proxy"
+        },
+        "api-server-devel": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.108"
+            }
+          },
+          "type": "server",
+          "uid": "api-server-devel"
+        },
+        "api-server-v3": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.122"
+            }
+          },
+          "type": "server",
+          "uid": "api-server-v3"
+        },
+        "backupg5k": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.144"
+            }
+          },
+          "type": "server",
+          "uid": "backupg5k"
+        },
+        "conman": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.123"
+            }
+          },
+          "type": "server",
+          "uid": "conman"
+        },
+        "dhcp": {
+          "kind": "virtual",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.109"
+            },
+            "default": {
+              "ip": "172.16.31.109",
+              "ip6": "2001:660:4406:100:0:2:0:9"
+            }
+          },
+          "type": "server",
+          "uid": "dhcp"
+        },
+        "digarm": {
+          "alias": null,
+          "kind": "physical",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.11"
+            }
+          },
+          "serial": "n/a",
+          "type": "server",
+          "uid": "digarm",
+          "warranty": "n/a"
+        },
+        "dighyp1": {
+          "alias": [
+            "adminfront",
+            "af"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.7"
+            },
+            "bmc": {
+              "ip": "172.17.30.7",
+              "mac": "D0:94:66:1E:38:4C"
+            },
+            "default": {
+              "ip": "172.16.31.7",
+              "mac": "D0:94:66:1E:38:48"
+            }
+          },
+          "serial": "5SS15M2",
+          "type": "server",
+          "uid": "dighyp1",
+          "warranty": "2024-10-19"
+        },
+        "dighyp2": {
+          "alias": [
+
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.8"
+            },
+            "bmc": {
+              "ip": "172.17.30.8",
+              "mac": "D0:94:66:1E:32:47"
+            },
+            "default": {
+              "ip": "172.16.31.8",
+              "mac": "D0:94:66:1E:32:43"
+            }
+          },
+          "serial": "5SQY4M2",
+          "type": "server",
+          "uid": "dighyp2",
+          "warranty": "2024-10-19"
+        },
+        "dignfs": {
+          "alias": [
+            "nfs",
+            "public",
+            "home-g5k",
+            "ntp",
+            "modules",
+            "storage1"
+          ],
+          "group_storage": {
+            "name": "storage1",
+            "rate": 50000000000,
+            "size": 55000000000000
+          },
+          "kind": "physical",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.12"
+            },
+            "bmc": {
+              "ip": "172.17.30.12",
+              "mac": "2C:EA:7F:42:45:35"
+            },
+            "default": {
+              "ip": "172.16.31.12"
+            }
+          },
+          "serial": "57JV173",
+          "type": "server",
+          "uid": "dignfs",
+          "warranty": "2025-10-06"
+        },
+        "digsed": {
+          "alias": [
+
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.4"
+            },
+            "bmc": {
+              "ip": "172.17.30.4"
+            },
+            "default": {
+              "ip": "172.16.31.4"
+            }
+          },
+          "serial": "8GPPJ32",
+          "type": "server",
+          "uid": "digsed",
+          "warranty": "2021-12-06"
+        },
+        "digwatt": {
+          "alias": [
+            "wattmetre"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.9"
+            },
+            "bmc": {
+              "ip": "172.17.30.9"
+            },
+            "default": {
+              "ip": "172.16.31.9"
+            }
+          },
+          "serial": "72NMNR2",
+          "type": "server",
+          "uid": "digwatt",
+          "warranty": "2023-08-28"
+        },
+        "digxp": {
+          "alias": null,
+          "kind": "physical",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.10"
+            },
+            "bmc": {
+              "ip": "172.17.30.10"
+            },
+            "default": {
+              "ip": "172.16.31.10"
+            }
+          },
+          "serial": "n/a",
+          "type": "server",
+          "uid": "digxp",
+          "warranty": "n/a"
+        },
+        "dns": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.110"
+            }
+          },
+          "type": "server",
+          "uid": "dns"
+        },
+        "fgrenoble": {
+          "alias": [
+            "frontend",
+            "oar-api"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.101"
+            },
+            "default": {
+              "ip": "172.16.31.101"
+            }
+          },
+          "type": "server",
+          "uid": "fgrenoble"
+        },
+        "guix": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.128"
+            }
+          },
+          "type": "server",
+          "uid": "guix"
+        },
+        "kadeploy-devel": {
+          "alias": [
+            "kadeploy-server-devel",
+            "deploy-devel"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.124"
+            },
+            "default": {
+              "ip": "172.16.31.124"
+            }
+          },
+          "type": "server",
+          "uid": "kadeploy-devel"
+        },
+        "kadeploy": {
+          "alias": [
+            "kadeploy-server"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.102"
+            },
+            "default": {
+              "ip": "172.16.31.102"
+            }
+          },
+          "type": "server",
+          "uid": "kadeploy"
+        },
+        "kavlan-1": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.119"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan-1"
+        },
+        "kavlan-2": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.120"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan-2"
+        },
+        "kavlan-3": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.121"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan-3"
+        },
+        "kavlan-agent-devel": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.129"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan-agent-devel"
+        },
+        "kavlan": {
+          "alias": [
+            "kavlan-dhcp"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.118"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan"
+        },
+        "kwollect": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.127"
+            }
+          },
+          "type": "server",
+          "uid": "kwollect"
+        },
+        "ldap": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.112"
+            }
+          },
+          "type": "server",
+          "uid": "ldap"
+        },
+        "mail": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.125"
+            }
+          },
+          "type": "server",
+          "uid": "mail"
+        },
+        "mu2": {
+          "alias": [
+            "digitalis"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.31.152"
+            },
+            "default": {
+              "ip": "172.16.31.152"
+            }
+          },
+          "type": "server",
+          "uid": "mu2"
+        },
+        "mysql": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.103"
+            }
+          },
+          "type": "server",
+          "uid": "mysql"
+        },
+        "nat": {
+          "alias": [
+            "access"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.100"
+            }
+          },
+          "type": "server",
+          "uid": "nat"
+        },
+        "oar": {
+          "alias": [
+            "oar-server",
+            "oardb"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.104"
+            }
+          },
+          "type": "server",
+          "uid": "oar"
+        },
+        "orichard-nix-datamove": {
+          "alias": [
+            "nix-datamove"
+          ],
+          "arrival": "2023-06-26",
+          "contact": "olivier.richard@imag.fr",
+          "kind": "physical",
+          "location": {
+            "rack": "C5",
+            "room": "DC-IMAG-MAIN",
+            "space": "U26+U27"
+          },
+          "model": "Dell Precision 7920 rack",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.30.101",
+              "mac": "C4:CB:E1:A3:40:5A"
+            },
+            "default": {
+              "ip": "172.16.29.101",
+              "mac": "78:AC:44:AA:55:1C"
+            }
+          },
+          "serial": "DYTJYX3",
+          "type": "server",
+          "uid": "orichard-nix-datamove",
+          "warranty": "2028-06-01"
+        },
+        "pneyron-spack-vm": {
+          "expire": "2024-03",
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.29.1"
+            }
+          },
+          "type": "server",
+          "uid": "pneyron-spack-vm"
+        },
+        "puppet6": {
+          "alias": [
+            "puppet"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.116"
+            }
+          },
+          "type": "server",
+          "uid": "puppet6"
+        },
+        "supervision2": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.156"
+            }
+          },
+          "type": "server",
+          "uid": "supervision2"
+        },
+        "syslog": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.115"
+            }
+          },
+          "type": "server",
+          "uid": "syslog"
+        },
+        "www": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.31.105"
+            }
+          },
+          "type": "server",
+          "uid": "www"
         }
       },
       "compilation_server": false,
