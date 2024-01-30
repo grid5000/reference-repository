@@ -1,6 +1,6 @@
 require 'json'
 
-Dir::glob('data_*.json').each do |f|
+Dir::glob('data*.json').each do |f|
   puts f
   d = JSON::load(IO::read(f))
   File::open(f, 'w') do |fd|
@@ -8,8 +8,7 @@ Dir::glob('data_*.json').each do |f|
   end
 end
 
-=begin
-Dir::glob('data_*.json').each do |f|
+Dir::glob('data*.json').each do |f|
   puts f
   d = JSON::load(IO::read(f))
   d.each_pair do |k1, v1|
@@ -32,6 +31,7 @@ Dir::glob('data_*.json').each do |f|
       end
     end
   end
-  File.write(f, JSON::pretty_generate(d))
+  File::open(f, 'w') do |fd|
+    fd.puts JSON::pretty_generate(d)
+  end
 end
-=end
