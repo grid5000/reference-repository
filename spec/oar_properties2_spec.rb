@@ -9,6 +9,7 @@ gen_stub('data_graphite', 'nancy', 'graphite')
 gen_stub('data_yeti', 'grenoble', 'yeti')
 gen_stub('data_dahu', 'grenoble', 'dahu', 8)
 gen_stub('data_grue', 'nancy', 'grue')
+gen_stub('data_abacus22_2cpu1gpu', 'rennes', 'abacus22')
 =end
 
 describe 'OarProperties2' do
@@ -39,6 +40,11 @@ describe 'OarProperties2' do
   it 'works on a cluster with GPUs and cores_affinity, on configured OAR server without GPUs' do
     check_oar_properties({ :oar => 'oar_grue-without-gpus', :data => 'data_grue', :case => 'grue_nogpus' })
   end
+
+  it 'works on a cluster with more CPUs than GPUs (2 CPU, 1 GPU) such as abacus22' do
+    check_oar_properties({ :oar => 'oar_empty', :data => 'data_abacus22_2cpu1gpu', :case => 'abacus22_2cpu1gpu' })
+  end
+
 
   it 'generates an identical output for graffiti when all GPUs are there' do
     check_oar_properties({ :oar => 'oar_graffiti-with-all-gpus', :data => 'data_graffiti2', :case => 'graffiti-all-gpus' })

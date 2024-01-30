@@ -1290,7 +1290,9 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           # (2-e) [if cluster with GPU] Associate a gpuset to each core
           ############################################
 
-          if node_description.key? "gpu_devices"
+          if node_description.key? "gpu_devices" and node_description["gpu_devices"].values.select { |v| v.fetch("reservation", true) }.length > 0
+            # The node has reservable GPUs
+
             # numa_gpus is the list of gpus for the current CPU
             numa_gpus = node_description["gpu_devices"].values.select do |v|
               field = if v.key? 'cpu_affinity_override'
@@ -1300,34 +1302,40 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
                       end
               v[field] == cpu_num and v.fetch("reservation", true)
             end
-            if not numa_gpus.empty? # this can happen if GPUs are not reservable
-              if numa_gpus.first.key? 'cores_affinity'
-                # this cluster uses cores_affinity, not arbitrary allocation
-                selected_gpu = numa_gpus.find { |g| g['cores_affinity'].split.map { |e| e.to_i }.include?(row[:cpuset]) }
-                if selected_gpu.nil?
-                  raise "Could not find a GPU on CPU #{cpu_num} for core #{row[:cpuset]}"
-                end
+            if numa_gpus.empty?
+              # This core is not associated to any GPU
+              if node_description["gpu_devices"].values.select { |v| v.fetch("reservation", true) }.length == 1
+                # The node has only one reservable GPU, we affect it to all cores
+                selected_gpu = node_description["gpu_devices"].values.first
               else
-                # The parenthesis order is important: we want to keep the
-                # integer division to generate an integer index, so we want to
-                # do the multiplication first.
-                gpu_idx = (core_num * numa_gpus.length) / cpu_core_count
-                selected_gpu = numa_gpus[gpu_idx]
+                raise "#{fqdn}: No GPU to associate to CPU #{cpu_num}, core #{row[:cpuset]}. You probably want to use cpu_affinity_override to affect a GPU to this CPU."
               end
-              # id of the selected GPU in the node
-              local_id = node_description["gpu_devices"].values.index(selected_gpu)
-
-              # to assign the gpu number, just use the number of nodes and the number of GPUs per node
-              # sanity check: we must fall into the correct range
-              gpu = phys_rsc_map["gpu"][:current_ids].min + node_index0 * gpu_count + local_id
-              if gpu > phys_rsc_map["gpu"][:current_ids].max
-                raise "Invalid GPU number for cluster #{cluster_name}"
+            elsif numa_gpus.first.key? 'cores_affinity'
+              # this cluster uses cores_affinity, not arbitrary allocation
+              selected_gpu = numa_gpus.find { |g| g['cores_affinity'].split.map { |e| e.to_i }.include?(row[:cpuset]) }
+              if selected_gpu.nil?
+                raise "Could not find a GPU on CPU #{cpu_num} for core #{row[:cpuset]}"
               end
-              row[:gpu] = gpu
-              row[:gpudevice] = local_id
-              row[:gpudevicepath] = selected_gpu['device']
-              row[:gpumodel] = selected_gpu['model']
+            else
+              # The parenthesis order is important: we want to keep the
+              # integer division to generate an integer index, so we want to
+              # do the multiplication first.
+              gpu_idx = (core_num * numa_gpus.length) / cpu_core_count
+              selected_gpu = numa_gpus[gpu_idx]
             end
+            # id of the selected GPU in the node
+            local_id = node_description["gpu_devices"].values.index(selected_gpu)
+
+            # to assign the gpu number, just use the number of nodes and the number of GPUs per node
+            # sanity check: we must fall into the correct range
+            gpu = phys_rsc_map["gpu"][:current_ids].min + node_index0 * gpu_count + local_id
+            if gpu > phys_rsc_map["gpu"][:current_ids].max
+              raise "Invalid GPU number for cluster #{cluster_name}"
+            end
+            row[:gpu] = gpu
+            row[:gpudevice] = local_id
+            row[:gpudevicepath] = selected_gpu['device']
+            row[:gpumodel] = selected_gpu['model']
           end
 
           core_idx += 1
