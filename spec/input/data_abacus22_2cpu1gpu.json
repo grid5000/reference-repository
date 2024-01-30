@@ -19,9 +19,11 @@
               },
               "bmc_version": "2.99",
               "chassis": {
+                "manufactured_at": "2022-01-14",
                 "manufacturer": "HPE",
                 "name": "ProLiant DL385 Gen10 Plus v2",
-                "serial": "CZ21510FPF"
+                "serial": "CZ21510FPF",
+                "warranty_end": "2027-01-20"
               },
               "exotic": false,
               "gpu_devices": {
@@ -30,7 +32,7 @@
                   "cores": 10752,
                   "cpu_affinity": 0,
                   "device": "/dev/nvidia0",
-                  "memory": 47850717184,
+                  "memory": 48305799168,
                   "microarchitecture": "Ampere",
                   "model": "A40",
                   "performance": {
@@ -47,7 +49,7 @@
                   "cores": 10752,
                   "cpu_affinity": 1,
                   "device": "/dev/nvidia1",
-                  "memory": 47850717184,
+                  "memory": 48305799168,
                   "microarchitecture": "Ampere",
                   "model": "A40",
                   "performance": {
@@ -64,7 +66,7 @@
                   "cores": 10752,
                   "cpu_affinity": 1,
                   "device": "/dev/nvidia2",
-                  "memory": 47850717184,
+                  "memory": 48305799168,
                   "microarchitecture": "Ampere",
                   "model": "A40",
                   "performance": {
@@ -252,7 +254,7 @@
               },
               "software": {
                 "forced-deployment-timestamp": 202007300948,
-                "postinstall-version": "1.2023121409",
+                "postinstall-version": "1.2024011908",
                 "standard-environment": "debian11-x64-std"
               },
               "storage_devices": [
@@ -307,9 +309,11 @@
               },
               "bmc_version": "2.99",
               "chassis": {
+                "manufactured_at": "2022-01-14",
                 "manufacturer": "HPE",
                 "name": "ProLiant DL385 Gen10 Plus v2",
-                "serial": "CZ21510FPG"
+                "serial": "CZ21510FPG",
+                "warranty_end": "2027-01-20"
               },
               "exotic": false,
               "gpu_devices": {
@@ -318,7 +322,7 @@
                   "cores": 10752,
                   "cpu_affinity": 0,
                   "device": "/dev/nvidia0",
-                  "memory": 47850717184,
+                  "memory": 48305799168,
                   "microarchitecture": "Ampere",
                   "model": "A40",
                   "performance": {
@@ -335,7 +339,7 @@
                   "cores": 10752,
                   "cpu_affinity": 1,
                   "device": "/dev/nvidia1",
-                  "memory": 47850717184,
+                  "memory": 48305799168,
                   "microarchitecture": "Ampere",
                   "model": "A40",
                   "performance": {
@@ -352,7 +356,7 @@
                   "cores": 10752,
                   "cpu_affinity": 1,
                   "device": "/dev/nvidia2",
-                  "memory": 47850717184,
+                  "memory": 48305799168,
                   "microarchitecture": "Ampere",
                   "model": "A40",
                   "performance": {
@@ -540,7 +544,7 @@
               },
               "software": {
                 "forced-deployment-timestamp": 202007300948,
-                "postinstall-version": "1.2023121409",
+                "postinstall-version": "1.2024011908",
                 "standard-environment": "debian11-x64-std"
               },
               "storage_devices": [
@@ -595,9 +599,11 @@
               },
               "bmc_version": "2.99",
               "chassis": {
+                "manufactured_at": "2022-01-19",
                 "manufacturer": "HPE",
                 "name": "ProLiant DL385 Gen10 Plus v2",
-                "serial": "CZ22030467"
+                "serial": "CZ22030467",
+                "warranty_end": "2027-01-25"
               },
               "exotic": false,
               "gpu_devices": {
@@ -606,7 +612,7 @@
                   "cores": 10752,
                   "cpu_affinity": 0,
                   "device": "/dev/nvidia0",
-                  "memory": 47850717184,
+                  "memory": 48305799168,
                   "microarchitecture": "Ampere",
                   "model": "A40",
                   "performance": {
@@ -794,7 +800,7 @@
               },
               "software": {
                 "forced-deployment-timestamp": 202007300948,
-                "postinstall-version": "1.2023121409",
+                "postinstall-version": "1.2024011908",
                 "standard-environment": "debian11-x64-std"
               },
               "storage_devices": [
@@ -839,6 +845,7 @@
           "created_at": "Mon, 04 Dec 2023 00:00:00 GMT",
           "exotic": false,
           "kavlan": false,
+          "manufactured_at": "2022-01-14",
           "metrics": [
             {
               "description": "Default subset of metrics from Prometheus Node Exporter",
@@ -892,7 +899,8 @@
             "production"
           ],
           "type": "cluster",
-          "uid": "clustera"
+          "uid": "clustera",
+          "warranty_end": "2027-01-20"
         }
       },
       "network_equipments": {
@@ -1574,6 +1582,10 @@
                 {
                 },
                 {
+                  "kind": "switch",
+                  "rate": 1000000000,
+                  "snmp_name": "1/1/44",
+                  "uid": "sw-admin-1"
                 },
                 {
                   "kind": "switch",
@@ -3362,72 +3374,201 @@
             },
             {
               "kavlan_pattern": "%LINECARD%/1/%PORT%",
+              "kind": "node",
               "ports": [
                 {
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/1",
+                  "uid": "paradoxe-1"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/2",
+                  "uid": "paradoxe-2"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/3",
+                  "uid": "paradoxe-3"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/4",
+                  "uid": "paradoxe-4"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/5",
+                  "uid": "paradoxe-5"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/6",
+                  "uid": "paradoxe-6"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/7",
+                  "uid": "paradoxe-7"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/8",
+                  "uid": "paradoxe-8"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/9",
+                  "uid": "paradoxe-9"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/10",
+                  "uid": "paradoxe-10"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/11",
+                  "uid": "paradoxe-11"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/12",
+                  "uid": "paradoxe-12"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/13",
+                  "uid": "paradoxe-13"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/14",
+                  "uid": "paradoxe-14"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/15",
+                  "uid": "paradoxe-15"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/16",
+                  "uid": "paradoxe-16"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/17",
+                  "uid": "paradoxe-17"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/18",
+                  "uid": "paradoxe-18"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/19",
+                  "uid": "paradoxe-19"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/20",
+                  "uid": "paradoxe-20"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/21",
+                  "uid": "paradoxe-21"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/22",
+                  "uid": "paradoxe-22"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/23",
+                  "uid": "paradoxe-23"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/24",
+                  "uid": "paradoxe-24"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/25",
+                  "uid": "paradoxe-25"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/26",
+                  "uid": "paradoxe-26"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/27",
+                  "uid": "paradoxe-27"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/28",
+                  "uid": "paradoxe-28"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/29",
+                  "uid": "paradoxe-29"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/30",
+                  "uid": "paradoxe-30"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/31",
+                  "uid": "paradoxe-31"
                 },
                 {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/32",
+                  "uid": "paradoxe-32"
                 },
                 {
                 },
@@ -3484,6 +3625,270 @@
           "snmp_community": "public",
           "type": "network_equipment",
           "uid": "sw-1",
+          "warranty": "2048-05"
+        },
+        "sw-adm-1": {
+          "ip": "172.17.111.215",
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "%LINECARD%/1/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/1",
+                  "uid": "paradoxe-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/2",
+                  "uid": "paradoxe-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/3",
+                  "uid": "paradoxe-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/4",
+                  "uid": "paradoxe-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/5",
+                  "uid": "paradoxe-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/6",
+                  "uid": "paradoxe-6"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/7",
+                  "uid": "paradoxe-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/8",
+                  "uid": "paradoxe-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/9",
+                  "uid": "paradoxe-9"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/10",
+                  "uid": "paradoxe-10"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/11",
+                  "uid": "paradoxe-11"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/12",
+                  "uid": "paradoxe-12"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/13",
+                  "uid": "paradoxe-13"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/14",
+                  "uid": "paradoxe-14"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/15",
+                  "uid": "paradoxe-15"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/16",
+                  "uid": "paradoxe-16"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/17",
+                  "uid": "paradoxe-17"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/18",
+                  "uid": "paradoxe-18"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/19",
+                  "uid": "paradoxe-19"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/20",
+                  "uid": "paradoxe-20"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/21",
+                  "uid": "paradoxe-21"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/22",
+                  "uid": "paradoxe-22"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/23",
+                  "uid": "paradoxe-23"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/24",
+                  "uid": "paradoxe-24"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/25",
+                  "uid": "paradoxe-25"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/26",
+                  "uid": "paradoxe-26"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/27",
+                  "uid": "paradoxe-27"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/28",
+                  "uid": "paradoxe-28"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/29",
+                  "uid": "paradoxe-29"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/30",
+                  "uid": "paradoxe-30"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/31",
+                  "uid": "paradoxe-31"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/32",
+                  "uid": "paradoxe-32"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "switch",
+                  "snmp_name": "1/1/44",
+                  "uid": "gw"
+                },
+                {
+                  "kind": "pdu",
+                  "snmp_name": "1/1/45",
+                  "uid": "paradoxe-pdu1"
+                },
+                {
+                  "kind": "pdu",
+                  "snmp_name": "1/1/46",
+                  "uid": "paradoxe-pdu2"
+                },
+                {
+                  "kind": "pdu",
+                  "snmp_name": "1/1/47",
+                  "uid": "paradoxe-pdu3"
+                },
+                {
+                  "kind": "pdu",
+                  "snmp_name": "1/1/48",
+                  "uid": "paradoxe-pdu4"
+                }
+              ],
+              "rate": 1000000000,
+              "snmp_pattern": "%LINECARD%/1/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "model": "Aruba 6300M",
+          "site": "rennes",
+          "snmp_community": "g5kadmin",
+          "type": "network_equipment",
+          "uid": "sw-adm-1",
           "warranty": "2048-05"
         },
         "swcore-01-rba": {
@@ -4277,6 +4682,78 @@
         }
       },
       "pdus": {
+        "paradoxe-pdu1": {
+          "ip": "172.17.101.201",
+          "mac": "00:0D:5D:2B:75:A4",
+          "model": "PX3-5488V",
+          "ports": {
+            "18": "paradoxe-6",
+            "20": "paradoxe-5",
+            "21": "paradoxe-4",
+            "22": "paradoxe-3",
+            "23": "paradoxe-2",
+            "24": "paradoxe-1",
+            "4": "paradoxe-26",
+            "5": "paradoxe-25"
+          },
+          "type": "pdu",
+          "uid": "paradoxe-pdu1",
+          "vendor": "Raritan"
+        },
+        "paradoxe-pdu2": {
+          "ip": "172.17.101.202",
+          "mac": "00:0D:5D:2C:DA:F2",
+          "model": "PX3-5488V",
+          "ports": {
+            "18": "paradoxe-12",
+            "20": "paradoxe-11",
+            "21": "paradoxe-10",
+            "22": "paradoxe-9",
+            "23": "paradoxe-8",
+            "24": "paradoxe-7",
+            "4": "paradoxe-28",
+            "5": "paradoxe-27"
+          },
+          "type": "pdu",
+          "uid": "paradoxe-pdu2",
+          "vendor": "Raritan"
+        },
+        "paradoxe-pdu3": {
+          "ip": "172.17.101.203",
+          "mac": "00:0D:5D:2B:75:AC",
+          "model": "PX3-5488V",
+          "ports": {
+            "12": "paradoxe-18",
+            "14": "paradoxe-17",
+            "15": "paradoxe-16",
+            "16": "paradoxe-15",
+            "17": "paradoxe-14",
+            "18": "paradoxe-13",
+            "4": "paradoxe-30",
+            "5": "paradoxe-29"
+          },
+          "type": "pdu",
+          "uid": "paradoxe-pdu3",
+          "vendor": "Raritan"
+        },
+        "paradoxe-pdu4": {
+          "ip": "172.17.101.204",
+          "mac": "00:0D:5D:2C:DA:F0",
+          "model": "PX3-5488V",
+          "ports": {
+            "10": "paradoxe-21",
+            "11": "paradoxe-20",
+            "12": "paradoxe-19",
+            "4": "paradoxe-32",
+            "5": "paradoxe-31",
+            "6": "paradoxe-24",
+            "8": "paradoxe-23",
+            "9": "paradoxe-22"
+          },
+          "type": "pdu",
+          "uid": "paradoxe-pdu4",
+          "vendor": "Raritan"
+        },
         "parasilo-pdu-1": {
           "ip": "172.17.97.201",
           "ports": {
@@ -5258,8 +5735,7 @@
         },
         "srv-bigdata": {
           "alias": [
-            "storage",
-            "modules"
+            "storage"
           ],
           "kind": "physical",
           "network_adapters": {
@@ -5295,7 +5771,8 @@
         },
         "srv-data2": {
           "alias": [
-            "storage2"
+            "storage2",
+            "modules"
           ],
           "group_storage": {
             "name": "storage2",
