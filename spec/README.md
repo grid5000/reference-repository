@@ -20,7 +20,10 @@ How to update input files:
 
 data_* files:
 -------------
-Uncomment the corresponding `gen_stub()` line in ../oar_properties2_spec.rb and re-run rspec.
+Execute spec/regen_input_data.rb
+
+Some files are directly copied from the current state of the ref-repo. Others were forged manually, which means that it is painful when
+new fields are added.
 
 oar_* files:
 ------------
