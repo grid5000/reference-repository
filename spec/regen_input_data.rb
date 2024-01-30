@@ -3,7 +3,6 @@ require 'spec_helper'
 
 gen_stub('data_graffiti', 'nancy', 'graffiti')
 gen_stub('data_grimoire', 'nancy', 'grimoire')
-gen_stub('data_graphite', 'nancy', 'graphite')
 gen_stub('data_yeti', 'grenoble', 'yeti')
 gen_stub('data_dahu', 'grenoble', 'dahu', 8)
 gen_stub('data_grue', 'nancy', 'grue')
