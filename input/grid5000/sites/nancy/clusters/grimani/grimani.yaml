@@ -19,8 +19,22 @@ nodes:
       clock_speed: 1600000000
     gpu_devices:
       nvidia0:
+        cpu_affinity: 0
+        device: "/dev/nvidia0"
+        memory: 11996758016
+        model: Tesla K40m
+        power_default_limit: 235.00 W
+        vbios_version: 80.80.3E.00.01
+        vendor: Nvidia
         reservation: false
       nvidia1:
+        cpu_affinity: 1
+        device: "/dev/nvidia1"
+        memory: 11996758016
+        model: Tesla K40m
+        power_default_limit: 235.00 W
+        vbios_version: 80.80.3E.00.01
+        vendor: Nvidia
         reservation: false
     software:
       standard-environment: debian11-x64-std
