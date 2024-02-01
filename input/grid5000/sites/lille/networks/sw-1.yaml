@@ -1,0 +1,74 @@
+---
+sw-1:
+  model: Aruba 8325-48Y8C JL635A
+  serial: TW2AKM009B
+  kind: switch
+  managed_by_us: true
+  site: lille
+  ip: 172.17.47.224
+  alias:
+    - name: sw-1-adm
+      ip: 172.17.47.253
+  snmp_community: public
+  backplane_bps: 1440000000000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 25000000000
+      kind: node
+      ports:
+        #        7:
+        #          uid: chuc-1
+        #        8:
+        #          uid: chuc-1-eth1
+        #        9:
+        #          uid: chuc-2
+        #        10:
+        #          uid: chuc-2-eth1
+        #        11:
+        #          uid: chuc-3
+        #        12:
+        #          uid: chuc-3-eth1
+        #        13:
+        #          uid: chuc-4
+        #        14:
+        #          uid: chuc-4-eth1
+        #        15:
+        #          uid: chuc-5
+        #        16:
+        #          uid: chuc-5-eth1
+        #        17:
+        #          uid: chuc-6
+        #        18:
+        #          uid: chuc-6-eth1
+        #        19:
+        #          uid: chuc-7
+        #        20:
+        #          uid: chuc-7-eth1
+        23:
+          uid: chirop-1
+        24:
+          uid: chirop-1-eth1
+        25:
+          uid: chirop-2
+        26:
+          uid: chirop-2-eth1
+        27:
+          uid: chirop-3
+        28:
+          uid: chirop-3-eth1
+        29:
+          uid: chirop-4
+        30:
+          uid: chirop-4-eth1
+        31:
+          uid: chirop-5
+        32:
+          uid: chirop-5-eth1
+        47:
+          uid: sw-admin6
+          kind: switch
+        48:
+          uid: sw-chiclet-2
+          kind: router
