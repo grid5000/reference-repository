@@ -421,7 +421,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   h['gpu_model'] = ''
   h['gpu_count'] = 0
   h['gpu_mem'] = 0
-  h['gpu_compute_capability'] = ''
+  h['gpu_compute_capability'] = 'N/A'
   h['gpu_compute_capability_major'] = 0
 
   if node.key?('gpu_devices')
