@@ -1,0 +1,58 @@
+---
+sw-admin6:
+  model: Aruba 2930F-24G-4SFP+ JL253A
+  serial: CN2BHKTOPJ
+  kind: switch
+  managed_by_us: true
+  site: lille
+  ip: 172.17.47.206
+  snmp_community: g5kadmin
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        4:
+          uid: chuc-1-bmc
+          kind: other
+        5:
+          uid: chuc-2-bmc
+          kind: other
+        6:
+          uid: chuc-3-bmc
+          kind: other
+        7:
+          uid: chuc-4-bmc
+          kind: other
+        8:
+          uid: chuc-5-bmc
+          kind: other
+        9:
+          uid: chuc-6-bmc
+          kind: other
+        10:
+          uid: chuc-7-bmc
+          kind: other
+        11:
+          uid: chuc-8-bmc
+          kind: other
+        12:
+          uid: chirop-1-bmc
+          kind: other
+        13:
+          uid: chirop-2-bmc
+          kind: other
+        14:
+          uid: chirop-3-bmc
+          kind: other
+        15:
+          uid: chirop-4-bmc
+          kind: other
+        16:
+          uid: chirop-5-bmc
+          kind: other
+        24:
+          uid: sw-1
+          kind: switch
