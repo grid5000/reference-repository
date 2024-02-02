@@ -200,6 +200,9 @@ class OarPropertiesGenerator < WikiGenerator
     "gpu_model" => {
       "description" => "The type of GPU available"
     },
+    "gpu_mem" => {
+      "description" => "The amount of memory in MB for the GPU"
+    },
     "gpu_count" => {
       "description" => "The number of GPU cards available"
     },
