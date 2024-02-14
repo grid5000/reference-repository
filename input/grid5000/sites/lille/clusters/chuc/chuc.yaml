@@ -48,31 +48,6 @@ nodes:
         enabled: false
         mountable: false
         mounted: false
-    storage_devices:
-      disk0:
-        id: disk0
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:c8:00.0-scsi-0:1:0:0"
-      disk1:
-        id: disk1
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:c8:00.0-scsi-0:1:0:1"
-      disk2:
-        id: disk2
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:c8:00.0-scsi-0:1:0:2"
-      disk3:
-        id: disk3
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/pci-0000:c8:00.0-scsi-0:1:0:3"
   chuc-1:
     network_adapters:
        bmc:
@@ -84,6 +59,13 @@ nodes:
        eth1:
          mac: 88:e9:a4:a4:8d:a5
          ip: 172.16.32.101
+    storage_devices:
+       disk0:
+         id: disk0
+         interface: SAS
+         storage: SSD
+         model: unknown
+         by_path: "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281df66-lun-0" 
   chuc-2:
     network_adapters:
        bmc:
@@ -95,6 +77,13 @@ nodes:
        eth1:
          mac: 88:e9:a4:a4:8d:3f
          ip: 172.16.32.102
+    storage_devices:
+       disk0:
+         id: disk0
+         interface: SAS
+         storage: SSD
+         model: unknown
+         by_path: "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281df46-lun-0"
   chuc-3:
     network_adapters:
        bmc:
@@ -106,6 +95,13 @@ nodes:
        eth1:
          mac: 88:e9:a4:a4:1b:15
          ip: 172.16.32.103
+    storage_devices:
+       disk0:
+         id: disk0
+         interface: SAS
+         storage: SSD
+         model: unknown
+         by_path: "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281df2e-lun-0"           
   chuc-4:
     network_adapters:
        bmc:
@@ -117,6 +113,13 @@ nodes:
        eth1:
          mac: 88:e9:a4:a4:c9:2d
          ip: 172.16.32.104
+    storage_devices:
+       disk0:
+         id: disk0
+         interface: SAS
+         storage: SSD
+         model: unknown
+         by_path: "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281df4a-lun-0"           
   chuc-5:
     network_adapters:
        bmc:
@@ -128,6 +131,13 @@ nodes:
        eth1:
          mac: 88:e9:a4:a4:cd:65
          ip: 172.16.32.105
+    storage_devices:
+       disk0:
+         id: disk0
+         interface: SAS
+         storage: SSD
+         model: unknown
+         by_path: "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281df5e-lun-0"
   chuc-6:
     network_adapters:
        bmc:
@@ -139,6 +149,13 @@ nodes:
        eth1:
          mac: 88:e9:a4:a4:cd:89
          ip: 172.16.32.106
+    storage_devices:
+       disk0:
+         id: disk0
+         interface: SAS
+         storage: SSD
+         model: unknown
+         by_path: "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281dfaa-lun-0"
   chuc-7:
     network_adapters:
        bmc:
@@ -150,6 +167,13 @@ nodes:
        eth1:
          mac: 88:e9:a4:a4:bc:e5
          ip: 172.16.32.107
+    storage_devices:
+       disk0:
+         id: disk0
+         interface: SAS
+         storage: SSD
+         model: unknown
+         by_path: "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x5000c500ec8d70f5-lun-0"
   chuc-8:
     network_adapters:
        bmc:
@@ -161,3 +185,10 @@ nodes:
        eth1:
          mac: 88:e9:a4:a4:6c:2d
          ip: 172.16.32.108
+    storage_devices:
+       disk0:
+         id: disk0
+         interface: SAS
+         storage: SSD
+         model: unknown
+         by_path: "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281df76-lun-0"
