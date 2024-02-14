@@ -220,6 +220,7 @@ rennes:
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model
   paradoxe-12:
+    - ~bmc_version
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.model
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
@@ -233,11 +234,15 @@ rennes:
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model
   paradoxe-14:
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+  paradoxe-16:
+    - ~bmc_version
+  paradoxe-17:
     - ~bmc_version
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
   paradoxe-[17-18]:
-    - ~bmc_version
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
   paradoxe-21:
@@ -263,7 +268,6 @@ rennes:
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
   paradoxe-[28-29]:
-    - ~bmc_version
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
   paranoia-3:
