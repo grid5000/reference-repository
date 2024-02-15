@@ -1,5 +1,5 @@
 model: Dell PowerEdge C6320
-created_at: 2023-10-24
+created_at: 2023-12-20
 kavlan: false
 boot_type: bios
 exotic: false
@@ -11,19 +11,10 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
-    architecture:
-      nb_procs: 2
-      nb_cores: 24
-      nb_threads: 48
-      platform_type: x86_64
-    bios:
-      vendor: Dell Inc.
+      max_walltime: 604800
     processor:
       microarchitecture: Broadwell
       clock_speed: 2200000000
-      other_description: Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz
-    memory_devices: []
     software:
       standard-environment: debian11-x64-std
     management_tools:
@@ -31,55 +22,18 @@ nodes:
     network_adapters:
       bmc:
         interface: Ethernet
-        management: true
         enabled: true
         mountable: false
         mounted: false
       eth0:
-        interface: Ethernet
         enabled: true
         mountable: true
         mounted: true
       eth1:
-        interface: Ethernet
         enabled: false
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:00:1f.2-ata-1:
         id: disk0
-        interface: SAS
-        storage: SSD
-        model: unknown
-        by_path: "/dev/disk/by-path/dummy"
-  roazhon7-1:
-    network_adapters:
-      bmc:
-        mac: 7c:d3:0a:d5:5d:62
-        ip: 172.17.110.21
-      eth0:
-        mac: 7c:d3:0a:d5:5d:5e
-        ip: 172.16.110.21
-  roazhon7-2:
-    network_adapters:
-      bmc:
-        mac: 7c:d3:0a:d5:63:6e
-        ip: 172.17.110.22
-      eth0:
-        mac: 7c:d3:0a:d5:63:6a
-        ip: 172.16.110.22
-  roazhon7-3:
-    network_adapters:
-      bmc:
-        mac: 7c:d3:0a:d5:65:ba
-        ip: 172.17.110.23
-      eth0:
-        mac: 7c:d3:0a:d5:65:b6
-        ip: 172.16.110.23
-  roazhon7-4:
-    network_adapters:
-      bmc:
-        ip: 172.17.110.24
-      eth0:
-        mac: 7c:d3:0a:d5:67:fc
-        ip: 172.16.110.24
+        interface: SATA
