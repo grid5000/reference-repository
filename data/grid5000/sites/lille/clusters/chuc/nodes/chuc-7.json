@@ -1,19 +1,97 @@
 {
   "architecture": {
+    "cpu_core_numbering": "contiguous",
     "nb_cores": 32,
-    "nb_procs": 2,
+    "nb_procs": 1,
     "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
-    "vendor": "HPE"
+    "release_date": "07/31/2023",
+    "vendor": "HPE",
+    "version": "A48"
   },
+  "bmc_version": "2.96",
   "chassis": {
     "manufactured_at": "2023-05-02",
+    "manufacturer": "HPE",
+    "name": "ProLiant XL645d Gen10 Plus",
+    "serial": "CZ231406CD",
     "warranty_end": "2028-05-01"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 42949672960,
+      "microarchitecture": "Ampere",
+      "model": "A100-SXM4-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 42949672960,
+      "microarchitecture": "Ampere",
+      "model": "A100-SXM4-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia2",
+      "memory": 42949672960,
+      "microarchitecture": "Ampere",
+      "model": "A100-SXM4-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia3",
+      "memory": 42949672960,
+      "microarchitecture": "Ampere",
+      "model": "A100-SXM4-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "400.00 W",
+      "vbios_version": "92.00.36.00.04",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
+    "ram_size": 549755813888
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -22,32 +100,89 @@
     }
   },
   "memory_devices": [
-
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 8",
+      "size": 68719476736,
+      "technology": "dram"
+    }
   ],
   "network_adapters": [
     {
       "device": "eth0",
+      "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "16.35.3006 (MT_0000000241)",
       "interface": "Ethernet",
       "ip": "172.16.32.7",
       "ip6": "2001:660:4406:200:1::7",
       "kavlan": false,
       "mac": "88:e9:a4:a4:bc:e4",
+      "management": false,
+      "model": "MT27800 Family [ConnectX-5]",
       "mountable": true,
       "mounted": true,
+      "name": "ens15f0np0",
       "network_address": "chuc-7.lille.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": true,
+      "sriov_totalvfs": 8,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "eth1",
+      "driver": "mlx5_core",
       "enabled": false,
+      "firmware_version": "16.35.3006 (MT_0000000241)",
       "interface": "Ethernet",
       "ip": "172.16.32.107",
       "kavlan": false,
       "mac": "88:e9:a4:a4:bc:e5",
+      "management": false,
+      "model": "MT27800 Family [ConnectX-5]",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "ens15f1np1",
+      "rate": 25000000000,
+      "sriov": true,
+      "sriov_totalvfs": 8,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -62,15 +197,33 @@
       "network_address": "chuc-7-bmc.lille.grid5000.fr"
     }
   ],
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "none",
+    "pstate_governor": "none",
+    "turboboost_enabled": false
+  },
   "performance": {
     "core_flops": 41600000000,
     "node_flops": 1331200000000
   },
   "processor": {
     "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 33554432,
     "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
     "microarchitecture": "Zen 3",
-    "other_description": "AMD EPYC 7513"
+    "microcode": "0xa0011d1",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7513 32-Core Processor",
+    "vendor": "AMD",
+    "version": 7513
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -79,13 +232,48 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5000c500ec8d70f7",
       "by_path": "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x5000c500ec8d70f5-lun-0",
+      "firmware_version": "HPD2",
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
+      "model": "MO001920RXRRH",
+      "size": 1920383410176,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x58ce38ee2281df91",
+      "by_path": "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281df92-lun-0",
+      "firmware_version": "HPD0",
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "VO001920RZWUV",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x58ce38ee2281df99",
+      "by_path": "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281df9a-lun-0",
+      "firmware_version": "HPD0",
+      "id": "disk2",
+      "interface": "SAS",
+      "model": "VO001920RZWUV",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x58ce38ee2281dfa1",
+      "by_path": "/dev/disk/by-path/pci-0000:c8:00.0-sas-0x58ce38ee2281dfa2-lun-0",
+      "firmware_version": "HPD0",
+      "id": "disk3",
+      "interface": "SAS",
+      "model": "VO001920RZWUV",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "HPE"
     }
   ],
   "supported_job_types": {
@@ -95,7 +283,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "chuc-7"
