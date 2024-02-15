@@ -8,13 +8,16 @@ queues:
   - testing
 nodes:
   grosminet-1:
+    chassis:
+      manufactured_at: 2023-11-30
+      warranty_end: 2030-11-29
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Zen 3
-      clock_speed: 2100000000
+      microarchitecture: Cascade Lake-SP
+      clock_speed: 2600000000
     software:
       standard-environment: debian11-x64-std
     management_tools:

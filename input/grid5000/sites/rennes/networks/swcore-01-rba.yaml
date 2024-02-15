@@ -1,6 +1,6 @@
 ---
 swcore-01-rba:
-  model: Nexus 5596
+  model: WS-C6509-E
   warranty: N/A
   kind: switch
   managed_by_us: false
@@ -13,34 +13,34 @@ swcore-01-rba:
       rate: 10000000000
       kind: switch
       ports:
-        1:
-          uid: port-channel666
-          kind: channel
-        2:
-          uid: port-channel999
-          kind: channel
-        3:
-          uid: port-channel666
-          kind: channel
-        4:
-          uid: port-channel999
-          kind: channel
         5:
-          uid: port-channel286
+          uid: port-channel50
+          kind: channel
+        7:
+          uid: port-channel51
           kind: channel
         6:
+          uid: port-channel50
+          kind: channel
+        8:
+          uid: port-channel51
+          kind: channel
+        12:
+          uid: port-channel286
+          kind: channel
+        13:
           uid: port-channel286
           kind: channel
   channels:
-    port-channel666:
-      uid: swdc-a035-01-rba
+    port-channel50:
+      uid: swdc-a035-01-02-rba
       kind: switch
-      port: port-channel666  
+      port: port-channel50
       rate: 20000000000
-    port-channel999:
-      uid: swdc-a035-02-rba
+    port-channel51:
+      uid: swdc-c003-01-02-rba
       kind: switch
-      port: port-channel999
+      port: port-channel51
       rate: 20000000000
     port-channel286:
       uid: gw

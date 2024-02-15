@@ -41,10 +41,15 @@ def get_dell_hardware
         s_hash["clusters"].delete_if {|_c_uid, c_hash| !c_hash["model"].downcase.start_with?("dell")}
         s_hash["clusters"].each do |_c_uid, c_hash| 
             # We keep only nodes
-            c_hash.delete_if{ |key| key != 'nodes'}
+            c_hash.delete_if{ |key| key != 'nodes' }
             c_hash["nodes"].each do |n_uid, n_hash|
+                if !n_hash.key?('chassis')
+                    puts "Removing node #{n_uid}, because it has no chassis information"
+                    c_hash["nodes"].delete(n_uid)
+                    next
+                end
                 if n_hash['chassis']['serial'] == 'N/A' 
-                    puts "Removing node #{n_uid}, because no serial #15114"
+                    puts "Removing node #{n_uid}, because no serial #15114" 
                     c_hash["nodes"].delete(n_uid)
                     next
                 end

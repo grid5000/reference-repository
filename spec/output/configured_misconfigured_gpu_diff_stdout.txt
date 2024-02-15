@@ -7,6 +7,9 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "cpu_count", 2]
     ["+", "eth_kavlan_count", 0]
     ["+", "exotic", "NO"]
+    ["+", "gpu_compute_capability", "7.9"]
+    ["+", "gpu_compute_capability_major", 7]
+    ["+", "gpu_mem", 10479]
     ["+", "thread_count", 32]
   clustera-2:
     ["~", "deploy", "NO", "YES"]
@@ -16,6 +19,9 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "cpu_count", 2]
     ["+", "eth_kavlan_count", 0]
     ["+", "exotic", "NO"]
+    ["+", "gpu_compute_capability", "7.9"]
+    ["+", "gpu_compute_capability_major", 7]
+    ["+", "gpu_mem", 10479]
     ["+", "thread_count", 32]
-Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count, chassis, eth_kavlan_count, exotic
+Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count, chassis, eth_kavlan_count, gpu_mem, gpu_compute_capability, gpu_compute_capability_major, exotic
 # Error: Resource 9 (host=clustera-1.fakesite.grid5000.fr cpu=2 core=9 cpuset=8 gpu=2 gpudevice=2) has a mismatch for ressource GPU: OAR API gives 2, generator wants 3.

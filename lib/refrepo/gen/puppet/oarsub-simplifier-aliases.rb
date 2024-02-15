@@ -17,8 +17,14 @@ def get_sub_simplifier_default_aliases(options)
           'desc' => "Select node(s) with #{model} GPU",
           'category' => 'GPUs'}]
   end.to_h
-
   default_aliases.merge!(gpu_aliases)
+
+  gpu_mem_aliases = [6, 12, 16, 24, 32, 40, 60].map{|m| ["gpu-#{m}GB", 
+    {'value' => "gpu_mem>=#{m*1000}", 
+      'desc' => "Select node(s) with GPU having more than #{m}GB of memory",
+      'category' => 'GPUs'}]}.to_h
+  default_aliases.merge!(gpu_mem_aliases)
+
   mem_aliases = {}
   mem_multipliers = [24, 32]
   mem_multipliers.each do |i|

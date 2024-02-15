@@ -1,0 +1,5952 @@
+{
+  "sites": {
+    "fakesite": {
+      "clusters": {
+        "clustera": {
+          "nodes": {
+            "clustera-1": {
+              "architecture": {
+                "cpu_core_numbering": "contiguous",
+                "nb_cores": 48,
+                "nb_procs": 2,
+                "nb_threads": 96,
+                "platform_type": "x86_64"
+              },
+              "bios": {
+                "release_date": "10/27/2023",
+                "vendor": "HPE",
+                "version": "A42"
+              },
+              "bmc_version": "2.99",
+              "chassis": {
+                "manufactured_at": "2022-01-14",
+                "manufacturer": "HPE",
+                "name": "ProLiant DL385 Gen10 Plus v2",
+                "serial": "CZ21510FPF",
+                "warranty_end": "2027-01-20"
+              },
+              "exotic": false,
+              "gpu_devices": {
+                "nvidia0": {
+                  "compute_capability": "8.6",
+                  "cores": 10752,
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia0",
+                  "memory": 48305799168,
+                  "microarchitecture": "Ampere",
+                  "model": "A40",
+                  "performance": {
+                    "fp-16": 37420000000000,
+                    "fp-32": 37420000000000,
+                    "fp-64": 584600000000
+                  },
+                  "power_default_limit": "300.00 W",
+                  "vbios_version": "94.02.5C.00.03",
+                  "vendor": "Nvidia"
+                },
+                "nvidia1": {
+                  "compute_capability": "8.6",
+                  "cores": 10752,
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia1",
+                  "memory": 48305799168,
+                  "microarchitecture": "Ampere",
+                  "model": "A40",
+                  "performance": {
+                    "fp-16": 37420000000000,
+                    "fp-32": 37420000000000,
+                    "fp-64": 584600000000
+                  },
+                  "power_default_limit": "300.00 W",
+                  "vbios_version": "94.02.5C.00.03",
+                  "vendor": "Nvidia"
+                },
+                "nvidia2": {
+                  "compute_capability": "8.6",
+                  "cores": 10752,
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia2",
+                  "memory": 48305799168,
+                  "microarchitecture": "Ampere",
+                  "model": "A40",
+                  "performance": {
+                    "fp-16": 37420000000000,
+                    "fp-32": 37420000000000,
+                    "fp-64": 584600000000
+                  },
+                  "power_default_limit": "300.00 W",
+                  "vbios_version": "94.02.5C.00.03",
+                  "vendor": "Nvidia"
+                }
+              },
+              "main_memory": {
+                "ram_size": 549755813888
+              },
+              "management_tools": {
+                "bmc_vendor_tool": "ipmitool",
+                "ipmitool": {
+                  "retries": 5
+                }
+              },
+              "memory_devices": [
+                {
+                  "device": "dimm_proc 1 dimm 1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 10",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 12",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 14",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 16",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 7",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 10",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 12",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 14",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 16",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 7",
+                  "size": 34359738368,
+                  "technology": "dram"
+                }
+              ],
+              "network_adapters": [
+                {
+                  "device": "eth0",
+                  "driver": "ice",
+                  "enabled": true,
+                  "firmware_version": "4.30 0x8001af23 1.3429.0",
+                  "interface": "Ethernet",
+                  "ip": "172.16.109.22",
+                  "ip6": "2001:660:4406:700:e::16",
+                  "kavlan": false,
+                  "mac": "b4:96:91:c6:40:a8",
+                  "management": false,
+                  "model": "Ethernet Controller E810-XXV for SFP",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "ens10f0",
+                  "network_address": "abacus22-1.rennes.grid5000.fr",
+                  "rate": 10000000000,
+                  "sriov": true,
+                  "sriov_totalvfs": 128,
+                  "switch": null,
+                  "switch_port": null,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "eth1",
+                  "driver": "ice",
+                  "enabled": false,
+                  "firmware_version": "4.30 0x8001af23 1.3429.0",
+                  "interface": "Ethernet",
+                  "kavlan": false,
+                  "mac": "b4:96:91:c6:40:a9",
+                  "management": false,
+                  "model": "Ethernet Controller E810-XXV for SFP",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "ens10f1",
+                  "sriov": true,
+                  "sriov_totalvfs": 128,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "bmc",
+                  "enabled": true,
+                  "interface": "Ethernet",
+                  "ip": "172.17.109.22",
+                  "kavlan": false,
+                  "mac": "5c:ba:2c:38:d1:46",
+                  "management": true,
+                  "mountable": false,
+                  "mounted": false,
+                  "network_address": "abacus22-1-bmc.rennes.grid5000.fr"
+                }
+              ],
+              "operating_system": {
+                "cstate_driver": "acpi_idle",
+                "cstate_governor": "menu",
+                "ht_enabled": true,
+                "pstate_driver": "acpi-cpufreq",
+                "pstate_governor": "performance",
+                "turboboost_enabled": true
+              },
+              "performance": {
+                "core_flops": 42400000000,
+                "node_flops": 2035200000000
+              },
+              "processor": {
+                "cache_l1": null,
+                "cache_l1d": 32768,
+                "cache_l1i": 32768,
+                "cache_l2": 524288,
+                "cache_l3": 33554432,
+                "clock_speed": 2650000000,
+                "ht_capable": true,
+                "instruction_set": "x86-64",
+                "microarchitecture": "Zen 3",
+                "microcode": "0xa0011d1",
+                "model": "AMD EPYC",
+                "other_description": "AMD EPYC 7413 24-Core Processor",
+                "vendor": "AMD",
+                "version": 7413
+              },
+              "software": {
+                "forced-deployment-timestamp": 202007300948,
+                "postinstall-version": "1.2024011908",
+                "standard-environment": "debian11-x64-std"
+              },
+              "storage_devices": [
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x600508b1001c91e33c5321dcae73a9a1",
+                  "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:1:0:0",
+                  "firmware_version": 4.11,
+                  "id": "disk0",
+                  "interface": "SATA",
+                  "model": "LOGICAL VOLUME",
+                  "size": 1920326787072,
+                  "storage": "SSD",
+                  "vendor": "Unknown"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x50000f0b019454a0",
+                  "by_path": "/dev/disk/by-path/pci-0000:64:00.0-sas-0x50000f0b019454a2-lun-0",
+                  "firmware_version": "HPD4",
+                  "id": "disk1",
+                  "interface": "SAS",
+                  "model": "VO000960JWZJF",
+                  "size": 960197124096,
+                  "storage": "SSD",
+                  "vendor": "HPE"
+                }
+              ],
+              "supported_job_types": {
+                "besteffort": true,
+                "deploy": true,
+                "max_walltime": 604800,
+                "queues": [
+                  "admin",
+                  "production"
+                ],
+                "virtual": "amd-v"
+              },
+              "type": "node",
+              "uid": "abacus22-1"
+            },
+            "clustera-2": {
+              "architecture": {
+                "cpu_core_numbering": "contiguous",
+                "nb_cores": 48,
+                "nb_procs": 2,
+                "nb_threads": 96,
+                "platform_type": "x86_64"
+              },
+              "bios": {
+                "release_date": "10/27/2023",
+                "vendor": "HPE",
+                "version": "A42"
+              },
+              "bmc_version": "2.99",
+              "chassis": {
+                "manufactured_at": "2022-01-14",
+                "manufacturer": "HPE",
+                "name": "ProLiant DL385 Gen10 Plus v2",
+                "serial": "CZ21510FPG",
+                "warranty_end": "2027-01-20"
+              },
+              "exotic": false,
+              "gpu_devices": {
+                "nvidia0": {
+                  "compute_capability": "8.6",
+                  "cores": 10752,
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia0",
+                  "memory": 48305799168,
+                  "microarchitecture": "Ampere",
+                  "model": "A40",
+                  "performance": {
+                    "fp-16": 37420000000000,
+                    "fp-32": 37420000000000,
+                    "fp-64": 584600000000
+                  },
+                  "power_default_limit": "300.00 W",
+                  "vbios_version": "94.02.5C.00.03",
+                  "vendor": "Nvidia"
+                },
+                "nvidia1": {
+                  "compute_capability": "8.6",
+                  "cores": 10752,
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia1",
+                  "memory": 48305799168,
+                  "microarchitecture": "Ampere",
+                  "model": "A40",
+                  "performance": {
+                    "fp-16": 37420000000000,
+                    "fp-32": 37420000000000,
+                    "fp-64": 584600000000
+                  },
+                  "power_default_limit": "300.00 W",
+                  "vbios_version": "94.02.5C.00.03",
+                  "vendor": "Nvidia"
+                },
+                "nvidia2": {
+                  "compute_capability": "8.6",
+                  "cores": 10752,
+                  "cpu_affinity": 1,
+                  "device": "/dev/nvidia2",
+                  "memory": 48305799168,
+                  "microarchitecture": "Ampere",
+                  "model": "A40",
+                  "performance": {
+                    "fp-16": 37420000000000,
+                    "fp-32": 37420000000000,
+                    "fp-64": 584600000000
+                  },
+                  "power_default_limit": "300.00 W",
+                  "vbios_version": "94.02.5C.00.03",
+                  "vendor": "Nvidia"
+                }
+              },
+              "main_memory": {
+                "ram_size": 549755813888
+              },
+              "management_tools": {
+                "bmc_vendor_tool": "ipmitool",
+                "ipmitool": {
+                  "retries": 5
+                }
+              },
+              "memory_devices": [
+                {
+                  "device": "dimm_proc 1 dimm 1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 10",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 12",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 14",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 16",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 7",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 10",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 12",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 14",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 16",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 7",
+                  "size": 34359738368,
+                  "technology": "dram"
+                }
+              ],
+              "network_adapters": [
+                {
+                  "device": "eth0",
+                  "driver": "ice",
+                  "enabled": true,
+                  "firmware_version": "2.50 0x800077bd 1.2960.0",
+                  "interface": "Ethernet",
+                  "ip": "172.16.109.23",
+                  "ip6": "2001:660:4406:700:e::17",
+                  "kavlan": false,
+                  "mac": "b4:96:91:c6:40:e8",
+                  "management": false,
+                  "model": "Ethernet Controller E810-XXV for SFP",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "ens10f0",
+                  "network_address": "abacus22-2.rennes.grid5000.fr",
+                  "rate": 10000000000,
+                  "sriov": true,
+                  "sriov_totalvfs": 128,
+                  "switch": null,
+                  "switch_port": null,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "eth1",
+                  "driver": "ice",
+                  "enabled": false,
+                  "firmware_version": "2.50 0x800077bd 1.2960.0",
+                  "interface": "Ethernet",
+                  "kavlan": false,
+                  "mac": "b4:96:91:c6:40:e9",
+                  "management": false,
+                  "model": "Ethernet Controller E810-XXV for SFP",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "ens10f1",
+                  "sriov": true,
+                  "sriov_totalvfs": 128,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "bmc",
+                  "enabled": true,
+                  "interface": "Ethernet",
+                  "ip": "172.17.109.23",
+                  "kavlan": false,
+                  "mac": "5c:ba:2c:38:12:2a",
+                  "management": true,
+                  "mountable": false,
+                  "mounted": false,
+                  "network_address": "abacus22-2-bmc.rennes.grid5000.fr"
+                }
+              ],
+              "operating_system": {
+                "cstate_driver": "acpi_idle",
+                "cstate_governor": "menu",
+                "ht_enabled": true,
+                "pstate_driver": "acpi-cpufreq",
+                "pstate_governor": "performance",
+                "turboboost_enabled": true
+              },
+              "performance": {
+                "core_flops": 42400000000,
+                "node_flops": 2035200000000
+              },
+              "processor": {
+                "cache_l1": null,
+                "cache_l1d": 32768,
+                "cache_l1i": 32768,
+                "cache_l2": 524288,
+                "cache_l3": 33554432,
+                "clock_speed": 2650000000,
+                "ht_capable": true,
+                "instruction_set": "x86-64",
+                "microarchitecture": "Zen 3",
+                "microcode": "0xa0011d1",
+                "model": "AMD EPYC",
+                "other_description": "AMD EPYC 7413 24-Core Processor",
+                "vendor": "AMD",
+                "version": 7413
+              },
+              "software": {
+                "forced-deployment-timestamp": 202007300948,
+                "postinstall-version": "1.2024011908",
+                "standard-environment": "debian11-x64-std"
+              },
+              "storage_devices": [
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x600508b1001cbc98c65814c3ef0caeac",
+                  "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:1:0:0",
+                  "firmware_version": 4.11,
+                  "id": "disk0",
+                  "interface": "SATA",
+                  "model": "LOGICAL VOLUME",
+                  "size": 1920326787072,
+                  "storage": "SSD",
+                  "vendor": "Unknown"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x50000f0b01945480",
+                  "by_path": "/dev/disk/by-path/pci-0000:64:00.0-sas-0x50000f0b01945482-lun-0",
+                  "firmware_version": "HPD4",
+                  "id": "disk1",
+                  "interface": "SAS",
+                  "model": "VO000960JWZJF",
+                  "size": 960197124096,
+                  "storage": "SSD",
+                  "vendor": "HPE"
+                }
+              ],
+              "supported_job_types": {
+                "besteffort": true,
+                "deploy": true,
+                "max_walltime": 604800,
+                "queues": [
+                  "admin",
+                  "production"
+                ],
+                "virtual": "amd-v"
+              },
+              "type": "node",
+              "uid": "abacus22-2"
+            },
+            "clustera-3": {
+              "architecture": {
+                "cpu_core_numbering": "contiguous",
+                "nb_cores": 48,
+                "nb_procs": 2,
+                "nb_threads": 96,
+                "platform_type": "x86_64"
+              },
+              "bios": {
+                "release_date": "10/27/2023",
+                "vendor": "HPE",
+                "version": "A42"
+              },
+              "bmc_version": "2.99",
+              "chassis": {
+                "manufactured_at": "2022-01-19",
+                "manufacturer": "HPE",
+                "name": "ProLiant DL385 Gen10 Plus v2",
+                "serial": "CZ22030467",
+                "warranty_end": "2027-01-25"
+              },
+              "exotic": false,
+              "gpu_devices": {
+                "nvidia0": {
+                  "compute_capability": "8.6",
+                  "cores": 10752,
+                  "cpu_affinity": 0,
+                  "device": "/dev/nvidia0",
+                  "memory": 48305799168,
+                  "microarchitecture": "Ampere",
+                  "model": "A40",
+                  "performance": {
+                    "fp-16": 37420000000000,
+                    "fp-32": 37420000000000,
+                    "fp-64": 584600000000
+                  },
+                  "power_default_limit": "300.00 W",
+                  "vbios_version": "94.02.5C.00.03",
+                  "vendor": "Nvidia"
+                }
+              },
+              "main_memory": {
+                "ram_size": 549755813888
+              },
+              "management_tools": {
+                "bmc_vendor_tool": "ipmitool",
+                "ipmitool": {
+                  "retries": 5
+                }
+              },
+              "memory_devices": [
+                {
+                  "device": "dimm_proc 1 dimm 1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 10",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 12",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 14",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 16",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 1 dimm 7",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 1",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 10",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 12",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 14",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 16",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 3",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 5",
+                  "size": 34359738368,
+                  "technology": "dram"
+                },
+                {
+                  "device": "dimm_proc 2 dimm 7",
+                  "size": 34359738368,
+                  "technology": "dram"
+                }
+              ],
+              "network_adapters": [
+                {
+                  "device": "eth0",
+                  "driver": "ice",
+                  "enabled": true,
+                  "firmware_version": "4.30 0x8001af23 1.3429.0",
+                  "interface": "Ethernet",
+                  "ip": "172.16.109.24",
+                  "ip6": "2001:660:4406:700:e::18",
+                  "kavlan": false,
+                  "mac": "b4:96:91:c7:ef:da",
+                  "management": false,
+                  "model": "Ethernet Controller E810-XXV for SFP",
+                  "mountable": true,
+                  "mounted": true,
+                  "name": "ens10f0",
+                  "network_address": "abacus22-3.rennes.grid5000.fr",
+                  "rate": 10000000000,
+                  "sriov": true,
+                  "sriov_totalvfs": 128,
+                  "switch": null,
+                  "switch_port": null,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "eth1",
+                  "driver": "ice",
+                  "enabled": false,
+                  "firmware_version": "4.30 0x8001af23 1.3429.0",
+                  "interface": "Ethernet",
+                  "kavlan": false,
+                  "mac": "b4:96:91:c7:ef:db",
+                  "management": false,
+                  "model": "Ethernet Controller E810-XXV for SFP",
+                  "mountable": false,
+                  "mounted": false,
+                  "name": "ens10f1",
+                  "sriov": true,
+                  "sriov_totalvfs": 128,
+                  "vendor": "Intel"
+                },
+                {
+                  "device": "bmc",
+                  "enabled": true,
+                  "interface": "Ethernet",
+                  "ip": "172.17.109.24",
+                  "kavlan": false,
+                  "mac": "5c:ba:2c:3c:79:30",
+                  "management": true,
+                  "mountable": false,
+                  "mounted": false,
+                  "network_address": "abacus22-3-bmc.rennes.grid5000.fr"
+                }
+              ],
+              "operating_system": {
+                "cstate_driver": "acpi_idle",
+                "cstate_governor": "menu",
+                "ht_enabled": true,
+                "pstate_driver": "acpi-cpufreq",
+                "pstate_governor": "performance",
+                "turboboost_enabled": true
+              },
+              "performance": {
+                "core_flops": 42400000000,
+                "node_flops": 2035200000000
+              },
+              "processor": {
+                "cache_l1": null,
+                "cache_l1d": 32768,
+                "cache_l1i": 32768,
+                "cache_l2": 524288,
+                "cache_l3": 33554432,
+                "clock_speed": 2650000000,
+                "ht_capable": true,
+                "instruction_set": "x86-64",
+                "microarchitecture": "Zen 3",
+                "microcode": "0xa0011d1",
+                "model": "AMD EPYC",
+                "other_description": "AMD EPYC 7413 24-Core Processor",
+                "vendor": "AMD",
+                "version": 7413
+              },
+              "software": {
+                "forced-deployment-timestamp": 202007300948,
+                "postinstall-version": "1.2024011908",
+                "standard-environment": "debian11-x64-std"
+              },
+              "storage_devices": [
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x600508b1001c3dcd1560a3eb98151d9e",
+                  "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:1:0:0",
+                  "firmware_version": 4.11,
+                  "id": "disk0",
+                  "interface": "SATA",
+                  "model": "LOGICAL VOLUME",
+                  "size": 1920326787072,
+                  "storage": "SSD",
+                  "vendor": "Unknown"
+                },
+                {
+                  "by_id": "/dev/disk/by-id/wwn-0x50000f0b01938440",
+                  "by_path": "/dev/disk/by-path/pci-0000:64:00.0-sas-0x50000f0b01938442-lun-0",
+                  "firmware_version": "HPD4",
+                  "id": "disk1",
+                  "interface": "SAS",
+                  "model": "VO000960JWZJF",
+                  "size": 960197124096,
+                  "storage": "SSD",
+                  "vendor": "HPE"
+                }
+              ],
+              "supported_job_types": {
+                "besteffort": true,
+                "deploy": true,
+                "max_walltime": 604800,
+                "queues": [
+                  "admin",
+                  "production"
+                ],
+                "virtual": "amd-v"
+              },
+              "type": "node",
+              "uid": "abacus22-3"
+            }
+          },
+          "boot_type": "uefi",
+          "created_at": "Mon, 04 Dec 2023 00:00:00 GMT",
+          "exotic": false,
+          "kavlan": false,
+          "manufactured_at": "2022-01-14",
+          "metrics": [
+            {
+              "description": "Default subset of metrics from Prometheus Node Exporter",
+              "name": "prom_default_metrics",
+              "optional_period": 15000,
+              "period": 0,
+              "source": {
+                "id": [
+                  "node_boot_time_seconds",
+                  "node_cpu_scaling_frequency_hertz",
+                  "node_cpu_seconds_total",
+                  "node_filesystem_free_bytes",
+                  "node_filesystem_size_bytes",
+                  "node_load1",
+                  "node_load15",
+                  "node_load5",
+                  "node_memory_Buffers_bytes",
+                  "node_memory_Cached_bytes",
+                  "node_memory_MemAvailable_bytes",
+                  "node_memory_MemFree_bytes",
+                  "node_memory_MemTotal_bytes",
+                  "node_memory_Shmem_bytes",
+                  "node_memory_SwapFree_bytes",
+                  "node_memory_SwapTotal_bytes",
+                  "node_network_receive_bytes_total",
+                  "node_network_receive_packets_total",
+                  "node_network_transmit_bytes_total",
+                  "node_network_transmit_packets_total",
+                  "node_procs_blocked",
+                  "node_procs_running",
+                  "kwollect_custom"
+                ],
+                "port": 9100,
+                "protocol": "prometheus"
+              }
+            },
+            {
+              "description": "All metrics from Prometheus Node Exporter",
+              "name": "prom_all_metrics",
+              "optional_period": 15000,
+              "period": 0,
+              "source": {
+                "port": 9100,
+                "protocol": "prometheus"
+              }
+            }
+          ],
+          "model": "ProLiant DL385 Gen10 Plus v2",
+          "queues": [
+            "admin",
+            "production"
+          ],
+          "type": "cluster",
+          "uid": "clustera",
+          "warranty_end": "2027-01-20"
+        }
+      },
+      "network_equipments": {
+        "bigdata-sw": {
+          "backplane_bps": 1280000000000,
+          "ip": "172.17.111.203",
+          "kind": "switch",
+          "linecards": [
+            {
+              "kavlan_pattern": "%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                  "kind": "switch",
+                  "port": "1:3",
+                  "snmp_name": "TenGigabitEthernet 0/0",
+                  "uid": "c6509"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "server",
+                  "snmp_name": "TenGigabitEthernet 0/11",
+                  "uid": "srv-bigdata"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "server",
+                  "snmp_name": "TenGigabitEthernet 0/18",
+                  "uid": "ceph3"
+                },
+                {
+                  "kind": "server",
+                  "snmp_name": "TenGigabitEthernet 0/19",
+                  "uid": "ceph2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "TenGigabitEthernet 0/20",
+                  "uid": "paranoia-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "TenGigabitEthernet 0/21",
+                  "uid": "paranoia-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "TenGigabitEthernet 0/22",
+                  "uid": "paranoia-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "TenGigabitEthernet 0/23",
+                  "uid": "paranoia-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "TenGigabitEthernet 0/24",
+                  "uid": "paranoia-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "TenGigabitEthernet 0/25",
+                  "uid": "paranoia-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "TenGigabitEthernet 0/26",
+                  "uid": "paranoia-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "TenGigabitEthernet 0/27",
+                  "uid": "paranoia-7"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "TenGigabitEthernet 0/33",
+                  "uid": "paranoia-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "TenGigabitEthernet 0/34",
+                  "uid": "paranoia-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "TenGigabitEthernet 0/35",
+                  "uid": "paranoia-1"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "server",
+                  "snmp_name": "TenGigabitEthernet 0/42",
+                  "uid": "ceph1"
+                },
+                {
+                  "kind": "server",
+                  "snmp_name": "TenGigabitEthernet 0/43",
+                  "uid": "ceph0"
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "TenGigabitEthernet 0/45",
+                  "uid": "paranoia-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "TenGigabitEthernet 0/46",
+                  "uid": "paranoia-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "TenGigabitEthernet 0/47",
+                  "uid": "paranoia-1"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "TenGigabitEthernet %LINECARD%/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "metrics": [
+            {
+              "description": "Input byte counter for the network device port",
+              "name": "network_ifacein_bytes_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output byte counter for the network device port",
+              "name": "network_ifaceout_bytes_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input packet counter for the network device port",
+              "name": "network_ifacein_packets_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output packet counter for the network device port",
+              "name": "network_ifaceout_packets_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of discarded packets for the network device port",
+              "name": "network_ifacein_packets_discard_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of discarded packets for the network device port",
+              "name": "network_ifaceout_packets_discard_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of packet errors for the network device port",
+              "name": "network_ifacein_packets_error_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of packet errors for the network device port",
+              "name": "network_ifaceout_packets_error_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "Force10 S4810",
+          "site": "rennes",
+          "snmp_community": "public",
+          "type": "network_equipment",
+          "uid": "bigdata-sw",
+          "warranty": "2018-10-01"
+        },
+        "c6509": {
+          "backplane_bps": 720000000000,
+          "ip": "172.17.111.207",
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "backplane_bps": 40000000000,
+              "kavlan_pattern": "TenGigabitEthernet%LINECARD%/%PORT%",
+              "kind": "virtual",
+              "model": "WS-X6704-10GE",
+              "ports": [
+                {
+                },
+                {
+                },
+                {
+                  "kind": "switch",
+                  "port": "Ethernet2/23",
+                  "snmp_name": "TenGigabitEthernet1/2",
+                  "uid": "parasilo-sw-1"
+                },
+                {
+                  "kind": "switch",
+                  "snmp_name": "TenGigabitEthernet1/3",
+                  "uid": "bigdata-sw"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "TenGigabitEthernet%LINECARD%/%PORT%"
+            },
+            {
+              "backplane_bps": 40000000000,
+              "kavlan_pattern": "Gi%LINECARD%/%PORT%",
+              "kind": "node",
+              "model": "WS-X6748-GE-TX",
+              "ports": [
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "snmp_name": "GigabitEthernet2/41",
+                  "uid": "paranoia-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "snmp_name": "GigabitEthernet2/42",
+                  "uid": "paranoia-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "snmp_name": "GigabitEthernet2/43",
+                  "uid": "paranoia-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "snmp_name": "GigabitEthernet2/44",
+                  "uid": "paranoia-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "snmp_name": "GigabitEthernet2/45",
+                  "uid": "paranoia-5"
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "snmp_name": "GigabitEthernet2/47",
+                  "uid": "paranoia-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth2",
+                  "snmp_name": "GigabitEthernet2/48",
+                  "uid": "paranoia-8"
+                }
+              ],
+              "rate": 1000000000,
+              "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
+            },
+            {
+              "backplane_bps": 40000000000,
+              "kavlan_pattern": "Gi%LINECARD%/%PORT%",
+              "kind": "node",
+              "model": "WS-X6748-GE-TX",
+              "ports": [
+
+              ],
+              "rate": 1000000000,
+              "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
+            },
+            {
+              "backplane_bps": 40000000000,
+              "kavlan_pattern": "Gi%LINECARD%/%PORT%",
+              "kind": "node",
+              "model": "WS-X6748-GE-TX",
+              "ports": [
+
+              ],
+              "rate": 1000000000,
+              "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "metrics": [
+            {
+              "description": "Input byte counter for the network device port",
+              "name": "network_ifacein_bytes_total",
+              "period": 10000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output byte counter for the network device port",
+              "name": "network_ifaceout_bytes_total",
+              "period": 10000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input packet counter for the network device port",
+              "name": "network_ifacein_packets_total",
+              "period": 10000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output packet counter for the network device port",
+              "name": "network_ifaceout_packets_total",
+              "period": 10000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of discarded packets for the network device port",
+              "name": "network_ifacein_packets_discard_total",
+              "period": 10000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of discarded packets for the network device port",
+              "name": "network_ifaceout_packets_discard_total",
+              "period": 10000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of packet errors for the network device port",
+              "name": "network_ifacein_packets_error_total",
+              "period": 10000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of packet errors for the network device port",
+              "name": "network_ifaceout_packets_error_total",
+              "period": 10000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "Cisco WS-C6509-E",
+          "site": "rennes",
+          "snmp_community": "privkavlan",
+          "type": "network_equipment",
+          "uid": "c6509",
+          "warranty": "expired"
+        },
+        "gw": {
+          "alias": [
+            "gw-rennes"
+          ],
+          "backplane_bps": 1440000000000,
+          "channels": {
+            "lag1": {
+              "kind": "switch",
+              "port": "lag1",
+              "rate": 200000000000,
+              "uid": "sw-1"
+            },
+            "lag2": {
+              "kind": "server",
+              "port": "lag2",
+              "rate": 50000000000,
+              "uid": "srv-data"
+            },
+            "lag3": {
+              "kind": "switch",
+              "port": "port-channel286",
+              "rate": 20000000000,
+              "uid": "swcore-01-rba"
+            }
+          },
+          "ip": "172.16.111.254",
+          "ip6": "2001:660:4406:700::ffff:ffff",
+          "kind": "router",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "%LINECARD%/1/%PORT%",
+              "ports": [
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "server",
+                  "snmp_name": "1/1/31",
+                  "uid": "srv-1"
+                },
+                {
+                  "kind": "server",
+                  "snmp_name": "1/1/32",
+                  "uid": "srv-2"
+                },
+                {
+                  "kind": "server",
+                  "snmp_name": "1/1/33",
+                  "uid": "srv-3"
+                },
+                {
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "1/1/35",
+                  "uid": "lag2"
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "1/1/36",
+                  "uid": "lag2"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "switch",
+                  "rate": 1000000000,
+                  "snmp_name": "1/1/44",
+                  "uid": "sw-admin-1"
+                },
+                {
+                  "kind": "switch",
+                  "rate": 10000000000,
+                  "snmp_name": "1/1/45",
+                  "uid": "parasilo-sw-1"
+                },
+                {
+                  "kind": "backbone",
+                  "rate": 10000000000,
+                  "snmp_name": "1/1/46",
+                  "uid": "renater-rennes"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 10000000000,
+                  "snmp_name": "1/1/47",
+                  "uid": "lag3"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 10000000000,
+                  "snmp_name": "1/1/48",
+                  "uid": "lag3"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 100000000000,
+                  "snmp_name": "1/1/49",
+                  "uid": "lag1"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 100000000000,
+                  "snmp_name": "1/1/50",
+                  "uid": "lag1"
+                }
+              ],
+              "rate": 25000000000,
+              "snmp_pattern": "%LINECARD%/1/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "model": "Aruba 8325-48Y8C",
+          "site": "rennes",
+          "snmp_community": "public",
+          "type": "network_equipment",
+          "uid": "gw",
+          "vlans": {
+            "vlan100": {
+              "addresses": [
+                "172.16.111.254"
+              ],
+              "administrative": true
+            },
+            "vlan101": {
+              "addresses": [
+                "172.17.111.254"
+              ],
+              "administrative": true
+            },
+            "vlan500": {
+              "addresses": [
+                "192.168.4.19"
+              ]
+            },
+            "vlan701": {
+              "addresses": [
+                "192.168.192.0/20"
+              ],
+              "name": "kavlan-1"
+            },
+            "vlan702": {
+              "addresses": [
+                "192.168.208.0/20"
+              ],
+              "name": "kavlan-2"
+            },
+            "vlan703": {
+              "addresses": [
+                "192.168.224.0/20"
+              ],
+              "name": "kavlan-3"
+            },
+            "vlan704": {
+              "addresses": [
+                "10.24.0.0/18"
+              ],
+              "name": "kavlan-4"
+            },
+            "vlan705": {
+              "addresses": [
+                "10.24.64.0/18"
+              ],
+              "name": "kavlan-5"
+            },
+            "vlan706": {
+              "addresses": [
+                "10.24.128.0/18"
+              ],
+              "name": "kavlan-6"
+            },
+            "vlan707": {
+              "addresses": [
+                "10.24.192.0/18"
+              ],
+              "name": "kavlan-7"
+            },
+            "vlan708": {
+              "addresses": [
+                "10.25.0.0/18"
+              ],
+              "name": "kavlan-8"
+            },
+            "vlan709": {
+              "addresses": [
+                "10.25.64.0/18"
+              ],
+              "name": "kavlan-9"
+            },
+            "vlan716": {
+              "addresses": [
+                "10.27.192.0/18"
+              ],
+              "name": "kavlan-16"
+            }
+          },
+          "warranty": "2048-05"
+        },
+        "parasilo-sw-1": {
+          "backplane_bps": 1440000000000,
+          "channels": {
+            "port-channel2": {
+              "kind": "switch",
+              "port": "port-channel1",
+              "rate": 80000000000,
+              "uid": "paravance-sw-1"
+            },
+            "port-channel3": {
+              "kind": "switch",
+              "port": "port-channel4",
+              "rate": 80000000000,
+              "uid": "paravance-sw-2"
+            }
+          },
+          "ip": "172.17.111.204",
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/1",
+                  "uid": "parasilo-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/2",
+                  "uid": "parasilo-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/3",
+                  "uid": "parasilo-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/4",
+                  "uid": "parasilo-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/5",
+                  "uid": "parasilo-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/6",
+                  "uid": "parasilo-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/7",
+                  "uid": "parasilo-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/8",
+                  "uid": "parasilo-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/9",
+                  "uid": "parasilo-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/10",
+                  "uid": "parasilo-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/11",
+                  "uid": "parasilo-6"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/12",
+                  "uid": "parasilo-6"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/13",
+                  "uid": "parasilo-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/14",
+                  "uid": "parasilo-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/15",
+                  "uid": "parasilo-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/16",
+                  "uid": "parasilo-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/17",
+                  "uid": "parasilo-9"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/18",
+                  "uid": "parasilo-9"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/19",
+                  "uid": "parasilo-10"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/20",
+                  "uid": "parasilo-10"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/21",
+                  "uid": "parasilo-11"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/22",
+                  "uid": "parasilo-11"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/23",
+                  "uid": "parasilo-12"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/24",
+                  "uid": "parasilo-12"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/25",
+                  "uid": "parasilo-13"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/26",
+                  "uid": "parasilo-13"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/27",
+                  "uid": "parasilo-14"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/28",
+                  "uid": "parasilo-14"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/29",
+                  "uid": "parasilo-15"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/30",
+                  "uid": "parasilo-15"
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/33",
+                  "uid": "parasilo-17"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/34",
+                  "uid": "parasilo-17"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/35",
+                  "uid": "parasilo-18"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/36",
+                  "uid": "parasilo-18"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/37",
+                  "uid": "parasilo-19"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/38",
+                  "uid": "parasilo-19"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/39",
+                  "uid": "parasilo-20"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/40",
+                  "uid": "parasilo-20"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/41",
+                  "uid": "parasilo-21"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/42",
+                  "uid": "parasilo-21"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/43",
+                  "uid": "parasilo-22"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/44",
+                  "uid": "parasilo-22"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/45",
+                  "uid": "parasilo-23"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/46",
+                  "uid": "parasilo-23"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/47",
+                  "uid": "parasilo-24"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/48",
+                  "uid": "parasilo-24"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 40000000000,
+                  "snmp_name": "Ethernet1/49",
+                  "uid": "port-channel3"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 40000000000,
+                  "snmp_name": "Ethernet1/50",
+                  "uid": "port-channel3"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 40000000000,
+                  "snmp_name": "Ethernet1/51",
+                  "uid": "port-channel2"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 40000000000,
+                  "snmp_name": "Ethernet1/52",
+                  "uid": "port-channel2"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+            },
+            {
+              "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/1",
+                  "uid": "parasilo-25"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/2",
+                  "uid": "parasilo-25"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/3",
+                  "uid": "parasilo-26"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/4",
+                  "uid": "parasilo-26"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/5",
+                  "uid": "parasilo-27"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/6",
+                  "uid": "parasilo-27"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/7",
+                  "uid": "parasilo-28"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/8",
+                  "uid": "parasilo-28"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "router",
+                  "port": "1/1/45",
+                  "snmp_name": "Ethernet2/21",
+                  "uid": "gw"
+                },
+                {
+                },
+                {
+                  "kind": "switch",
+                  "port": "TenGigabitEthernet1/2",
+                  "snmp_name": "Ethernet2/23",
+                  "uid": "c6509"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "metrics": [
+            {
+              "description": "Input byte counter for the network device port",
+              "name": "network_ifacein_bytes_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output byte counter for the network device port",
+              "name": "network_ifaceout_bytes_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input packet counter for the network device port",
+              "name": "network_ifacein_packets_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output packet counter for the network device port",
+              "name": "network_ifaceout_packets_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of discarded packets for the network device port",
+              "name": "network_ifacein_packets_discard_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of discarded packets for the network device port",
+              "name": "network_ifaceout_packets_discard_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of packet errors for the network device port",
+              "name": "network_ifacein_packets_error_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of packet errors for the network device port",
+              "name": "network_ifaceout_packets_error_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "Nexus 56128P",
+          "site": "rennes",
+          "snmp_community": "public",
+          "type": "network_equipment",
+          "uid": "parasilo-sw-1",
+          "warranty": "2018-04-01"
+        },
+        "paravance-sw-1": {
+          "backplane_bps": 1440000000000,
+          "channels": {
+            "port-channel1": {
+              "kind": "switch",
+              "port": "port-channel2",
+              "rate": 80000000000,
+              "uid": "parasilo-sw-1"
+            }
+          },
+          "ip": "172.17.111.206",
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/1",
+                  "uid": "paravance-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/2",
+                  "uid": "paravance-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/3",
+                  "uid": "paravance-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/4",
+                  "uid": "paravance-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/5",
+                  "uid": "paravance-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/6",
+                  "uid": "paravance-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/7",
+                  "uid": "paravance-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/8",
+                  "uid": "paravance-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/9",
+                  "uid": "paravance-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/10",
+                  "uid": "paravance-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/11",
+                  "uid": "paravance-6"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/12",
+                  "uid": "paravance-6"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/13",
+                  "uid": "paravance-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/14",
+                  "uid": "paravance-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/15",
+                  "uid": "paravance-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/16",
+                  "uid": "paravance-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/17",
+                  "uid": "paravance-9"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/18",
+                  "uid": "paravance-9"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/19",
+                  "uid": "paravance-10"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/20",
+                  "uid": "paravance-10"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/21",
+                  "uid": "paravance-11"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/22",
+                  "uid": "paravance-11"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/23",
+                  "uid": "paravance-12"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/24",
+                  "uid": "paravance-12"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/25",
+                  "uid": "paravance-13"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/26",
+                  "uid": "paravance-13"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/27",
+                  "uid": "paravance-14"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/28",
+                  "uid": "paravance-14"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/29",
+                  "uid": "paravance-15"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/30",
+                  "uid": "paravance-15"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/31",
+                  "uid": "paravance-16"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/32",
+                  "uid": "paravance-16"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/33",
+                  "uid": "paravance-17"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/34",
+                  "uid": "paravance-17"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/35",
+                  "uid": "paravance-18"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/36",
+                  "uid": "paravance-18"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/37",
+                  "uid": "paravance-19"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/38",
+                  "uid": "paravance-19"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/39",
+                  "uid": "paravance-20"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/40",
+                  "uid": "paravance-20"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/41",
+                  "uid": "paravance-21"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/42",
+                  "uid": "paravance-21"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/43",
+                  "uid": "paravance-22"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/44",
+                  "uid": "paravance-22"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/45",
+                  "uid": "paravance-23"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/46",
+                  "uid": "paravance-23"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/47",
+                  "uid": "paravance-24"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/48",
+                  "uid": "paravance-24"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 40000000000,
+                  "snmp_name": "Ethernet1/49",
+                  "uid": "port-channel1"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 40000000000,
+                  "snmp_name": "Ethernet1/50",
+                  "uid": "port-channel1"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+            },
+            {
+              "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/1",
+                  "uid": "paravance-25"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/2",
+                  "uid": "paravance-25"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/3",
+                  "uid": "paravance-26"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/4",
+                  "uid": "paravance-26"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/5",
+                  "uid": "paravance-27"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/6",
+                  "uid": "paravance-27"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/7",
+                  "uid": "paravance-28"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/8",
+                  "uid": "paravance-28"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/9",
+                  "uid": "paravance-29"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/10",
+                  "uid": "paravance-29"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/11",
+                  "uid": "paravance-30"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/12",
+                  "uid": "paravance-30"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/13",
+                  "uid": "paravance-31"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/14",
+                  "uid": "paravance-31"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/15",
+                  "uid": "paravance-32"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/16",
+                  "uid": "paravance-32"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/17",
+                  "uid": "paravance-33"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/18",
+                  "uid": "paravance-33"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/19",
+                  "uid": "paravance-34"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/20",
+                  "uid": "paravance-34"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/21",
+                  "uid": "paravance-35"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/22",
+                  "uid": "paravance-35"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/23",
+                  "uid": "paravance-36"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/24",
+                  "uid": "paravance-36"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "metrics": [
+            {
+              "description": "Input byte counter for the network device port",
+              "name": "network_ifacein_bytes_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output byte counter for the network device port",
+              "name": "network_ifaceout_bytes_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input packet counter for the network device port",
+              "name": "network_ifacein_packets_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output packet counter for the network device port",
+              "name": "network_ifaceout_packets_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of discarded packets for the network device port",
+              "name": "network_ifacein_packets_discard_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of discarded packets for the network device port",
+              "name": "network_ifaceout_packets_discard_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of packet errors for the network device port",
+              "name": "network_ifacein_packets_error_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of packet errors for the network device port",
+              "name": "network_ifaceout_packets_error_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "Nexus 56128P",
+          "site": "rennes",
+          "snmp_community": "public",
+          "type": "network_equipment",
+          "uid": "paravance-sw-1",
+          "warranty": "2018-04-01"
+        },
+        "paravance-sw-2": {
+          "backplane_bps": 1440000000000,
+          "channels": {
+            "port-channel4": {
+              "kind": "switch",
+              "port": "port-channel3",
+              "rate": 80000000000,
+              "uid": "parasilo-sw-1"
+            }
+          },
+          "ip": "172.17.111.205",
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/1",
+                  "uid": "paravance-37"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/2",
+                  "uid": "paravance-37"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/3",
+                  "uid": "paravance-38"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/4",
+                  "uid": "paravance-38"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/5",
+                  "uid": "paravance-39"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/6",
+                  "uid": "paravance-39"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/7",
+                  "uid": "paravance-40"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/8",
+                  "uid": "paravance-40"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/9",
+                  "uid": "paravance-41"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/10",
+                  "uid": "paravance-41"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/11",
+                  "uid": "paravance-42"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/12",
+                  "uid": "paravance-42"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/13",
+                  "uid": "paravance-43"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/14",
+                  "uid": "paravance-43"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/15",
+                  "uid": "paravance-44"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/16",
+                  "uid": "paravance-44"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/17",
+                  "uid": "paravance-45"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/18",
+                  "uid": "paravance-45"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/19",
+                  "uid": "paravance-46"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/20",
+                  "uid": "paravance-46"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/21",
+                  "uid": "paravance-47"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/22",
+                  "uid": "paravance-47"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/23",
+                  "uid": "paravance-48"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/24",
+                  "uid": "paravance-48"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/25",
+                  "uid": "paravance-49"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/26",
+                  "uid": "paravance-49"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/27",
+                  "uid": "paravance-50"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/28",
+                  "uid": "paravance-50"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/29",
+                  "uid": "paravance-51"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/30",
+                  "uid": "paravance-51"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/31",
+                  "uid": "paravance-52"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/32",
+                  "uid": "paravance-52"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/33",
+                  "uid": "paravance-53"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/34",
+                  "uid": "paravance-53"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/35",
+                  "uid": "paravance-54"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/36",
+                  "uid": "paravance-54"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/37",
+                  "uid": "paravance-55"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/38",
+                  "uid": "paravance-55"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/39",
+                  "uid": "paravance-56"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/40",
+                  "uid": "paravance-56"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/41",
+                  "uid": "paravance-57"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/42",
+                  "uid": "paravance-57"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/43",
+                  "uid": "paravance-58"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/44",
+                  "uid": "paravance-58"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/45",
+                  "uid": "paravance-59"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/46",
+                  "uid": "paravance-59"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet1/47",
+                  "uid": "paravance-60"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet1/48",
+                  "uid": "paravance-60"
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "channel",
+                  "rate": 40000000000,
+                  "snmp_name": "Ethernet1/51",
+                  "uid": "port-channel4"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 40000000000,
+                  "snmp_name": "Ethernet1/52",
+                  "uid": "port-channel4"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+            },
+            {
+              "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/1",
+                  "uid": "paravance-61"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/2",
+                  "uid": "paravance-61"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/3",
+                  "uid": "paravance-62"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/4",
+                  "uid": "paravance-62"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/5",
+                  "uid": "paravance-63"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/6",
+                  "uid": "paravance-63"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/7",
+                  "uid": "paravance-64"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/8",
+                  "uid": "paravance-64"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/9",
+                  "uid": "paravance-65"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/10",
+                  "uid": "paravance-65"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/11",
+                  "uid": "paravance-66"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/12",
+                  "uid": "paravance-66"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/13",
+                  "uid": "paravance-67"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/14",
+                  "uid": "paravance-67"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/15",
+                  "uid": "paravance-68"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/16",
+                  "uid": "paravance-68"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/17",
+                  "uid": "paravance-69"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/18",
+                  "uid": "paravance-69"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/19",
+                  "uid": "paravance-70"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/20",
+                  "uid": "paravance-70"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/21",
+                  "uid": "paravance-71"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/22",
+                  "uid": "paravance-71"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth1",
+                  "snmp_name": "Ethernet2/23",
+                  "uid": "paravance-72"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Ethernet2/24",
+                  "uid": "paravance-72"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "metrics": [
+            {
+              "description": "Input byte counter for the network device port",
+              "name": "network_ifacein_bytes_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output byte counter for the network device port",
+              "name": "network_ifaceout_bytes_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input packet counter for the network device port",
+              "name": "network_ifacein_packets_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output packet counter for the network device port",
+              "name": "network_ifaceout_packets_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of discarded packets for the network device port",
+              "name": "network_ifacein_packets_discard_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of discarded packets for the network device port",
+              "name": "network_ifaceout_packets_discard_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Input counter of packet errors for the network device port",
+              "name": "network_ifacein_packets_error_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            },
+            {
+              "description": "Output counter of packet errors for the network device port",
+              "name": "network_ifaceout_packets_error_total",
+              "period": 15000,
+              "source": {
+                "id": "1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "Nexus 56128P",
+          "site": "rennes",
+          "snmp_community": "public",
+          "type": "network_equipment",
+          "uid": "paravance-sw-2",
+          "warranty": "2018-04-01"
+        },
+        "sw-1": {
+          "backplane_bps": 1440000000000,
+          "channels": {
+            "lag1": {
+              "kind": "switch",
+              "port": "lag1",
+              "rate": 200000000000,
+              "uid": "gw"
+            }
+          },
+          "ip": "172.17.111.212",
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "%LINECARD%/1/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/1",
+                  "uid": "paradoxe-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/2",
+                  "uid": "paradoxe-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/3",
+                  "uid": "paradoxe-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/4",
+                  "uid": "paradoxe-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/5",
+                  "uid": "paradoxe-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/6",
+                  "uid": "paradoxe-6"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/7",
+                  "uid": "paradoxe-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/8",
+                  "uid": "paradoxe-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/9",
+                  "uid": "paradoxe-9"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/10",
+                  "uid": "paradoxe-10"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/11",
+                  "uid": "paradoxe-11"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/12",
+                  "uid": "paradoxe-12"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/13",
+                  "uid": "paradoxe-13"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/14",
+                  "uid": "paradoxe-14"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/15",
+                  "uid": "paradoxe-15"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/16",
+                  "uid": "paradoxe-16"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/17",
+                  "uid": "paradoxe-17"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/18",
+                  "uid": "paradoxe-18"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/19",
+                  "uid": "paradoxe-19"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/20",
+                  "uid": "paradoxe-20"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/21",
+                  "uid": "paradoxe-21"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/22",
+                  "uid": "paradoxe-22"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/23",
+                  "uid": "paradoxe-23"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/24",
+                  "uid": "paradoxe-24"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/25",
+                  "uid": "paradoxe-25"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/26",
+                  "uid": "paradoxe-26"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/27",
+                  "uid": "paradoxe-27"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/28",
+                  "uid": "paradoxe-28"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/29",
+                  "uid": "paradoxe-29"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/30",
+                  "uid": "paradoxe-30"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/31",
+                  "uid": "paradoxe-31"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "1/1/32",
+                  "uid": "paradoxe-32"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "channel",
+                  "rate": 100000000000,
+                  "snmp_name": "1/1/49",
+                  "uid": "lag1"
+                },
+                {
+                  "kind": "channel",
+                  "rate": 100000000000,
+                  "snmp_name": "1/1/50",
+                  "uid": "lag1"
+                }
+              ],
+              "rate": 25000000000,
+              "snmp_pattern": "%LINECARD%/1/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "model": "Aruba 8325-48Y8C",
+          "site": "rennes",
+          "snmp_community": "public",
+          "type": "network_equipment",
+          "uid": "sw-1",
+          "warranty": "2048-05"
+        },
+        "sw-adm-1": {
+          "ip": "172.17.111.215",
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "%LINECARD%/1/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/1",
+                  "uid": "paradoxe-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/2",
+                  "uid": "paradoxe-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/3",
+                  "uid": "paradoxe-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/4",
+                  "uid": "paradoxe-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/5",
+                  "uid": "paradoxe-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/6",
+                  "uid": "paradoxe-6"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/7",
+                  "uid": "paradoxe-7"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/8",
+                  "uid": "paradoxe-8"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/9",
+                  "uid": "paradoxe-9"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/10",
+                  "uid": "paradoxe-10"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/11",
+                  "uid": "paradoxe-11"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/12",
+                  "uid": "paradoxe-12"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/13",
+                  "uid": "paradoxe-13"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/14",
+                  "uid": "paradoxe-14"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/15",
+                  "uid": "paradoxe-15"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/16",
+                  "uid": "paradoxe-16"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/17",
+                  "uid": "paradoxe-17"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/18",
+                  "uid": "paradoxe-18"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/19",
+                  "uid": "paradoxe-19"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/20",
+                  "uid": "paradoxe-20"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/21",
+                  "uid": "paradoxe-21"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/22",
+                  "uid": "paradoxe-22"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/23",
+                  "uid": "paradoxe-23"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/24",
+                  "uid": "paradoxe-24"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/25",
+                  "uid": "paradoxe-25"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/26",
+                  "uid": "paradoxe-26"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/27",
+                  "uid": "paradoxe-27"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/28",
+                  "uid": "paradoxe-28"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/29",
+                  "uid": "paradoxe-29"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/30",
+                  "uid": "paradoxe-30"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/31",
+                  "uid": "paradoxe-31"
+                },
+                {
+                  "kind": "node",
+                  "port": "bmc",
+                  "snmp_name": "1/1/32",
+                  "uid": "paradoxe-32"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "switch",
+                  "snmp_name": "1/1/44",
+                  "uid": "gw"
+                },
+                {
+                  "kind": "pdu",
+                  "snmp_name": "1/1/45",
+                  "uid": "paradoxe-pdu1"
+                },
+                {
+                  "kind": "pdu",
+                  "snmp_name": "1/1/46",
+                  "uid": "paradoxe-pdu2"
+                },
+                {
+                  "kind": "pdu",
+                  "snmp_name": "1/1/47",
+                  "uid": "paradoxe-pdu3"
+                },
+                {
+                  "kind": "pdu",
+                  "snmp_name": "1/1/48",
+                  "uid": "paradoxe-pdu4"
+                }
+              ],
+              "rate": 1000000000,
+              "snmp_pattern": "%LINECARD%/1/%PORT%"
+            }
+          ],
+          "managed_by_us": true,
+          "model": "Aruba 6300M",
+          "site": "rennes",
+          "snmp_community": "g5kadmin",
+          "type": "network_equipment",
+          "uid": "sw-adm-1",
+          "warranty": "2048-05"
+        },
+        "swcore-01-rba": {
+          "channels": {
+            "port-channel286": {
+              "kind": "router",
+              "port": "lag3",
+              "rate": 20000000000,
+              "uid": "gw"
+            },
+            "port-channel666": {
+              "kind": "switch",
+              "port": "port-channel666",
+              "rate": 20000000000,
+              "uid": "swdc-a035-01-rba"
+            },
+            "port-channel999": {
+              "kind": "switch",
+              "port": "port-channel999",
+              "rate": 20000000000,
+              "uid": "swdc-a035-02-rba"
+            }
+          },
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "TenGigabitEthernet%LINECARD%/1/%PORT%",
+              "kind": "switch",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "TenGigabitEthernet1/1/1",
+                  "uid": "port-channel666"
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "TenGigabitEthernet1/1/2",
+                  "uid": "port-channel999"
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "TenGigabitEthernet1/1/3",
+                  "uid": "port-channel666"
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "TenGigabitEthernet1/1/4",
+                  "uid": "port-channel999"
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "TenGigabitEthernet1/1/5",
+                  "uid": "port-channel286"
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "TenGigabitEthernet1/1/6",
+                  "uid": "port-channel286"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "TenGigabitEthernet%LINECARD%/1/%PORT%"
+            }
+          ],
+          "managed_by_us": false,
+          "model": "Nexus 5596",
+          "site": "rennes",
+          "snmp_community": "none",
+          "type": "network_equipment",
+          "uid": "swcore-01-rba",
+          "warranty": "N/A"
+        },
+        "swdc-a035-01-rba": {
+          "channels": {
+            "port-channel666": {
+              "kind": "switch",
+              "port": "port-channel666",
+              "rate": 20000000000,
+              "uid": "swcore-01-rba"
+            }
+          },
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "Eth%LINECARD%/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "Eth1/1",
+                  "uid": "port-channel666"
+                },
+                {
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "Eth1/3",
+                  "uid": "port-channel666"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Eth%LINECARD%/%PORT%"
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+              "kavlan_pattern": "Eth%LINECARD%/1/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth101/1/19",
+                  "uid": "abacus3-1"
+                }
+              ],
+              "rate": 1000000000,
+              "snmp_pattern": "Eth%LINECARD%/1/%PORT%"
+            },
+            {
+            },
+            {
+              "kavlan_pattern": "Eth%LINECARD%/1/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/5",
+                  "uid": "abacus17-1"
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/8",
+                  "uid": "abacus20-1"
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/10",
+                  "uid": "roazhon4-1"
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/13",
+                  "uid": "roazhon1-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/14",
+                  "uid": "roazhon2-1"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/21",
+                  "uid": "roazhon5-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/22",
+                  "uid": "roazhon5-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/23",
+                  "uid": "roazhon5-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/24",
+                  "uid": "roazhon5-4"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/25",
+                  "uid": "roazhon5-5"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/26",
+                  "uid": "roazhon5-6"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/27",
+                  "uid": "roazhon5-7"
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/29",
+                  "uid": "roazhon5-9"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/30",
+                  "uid": "roazhon5-10"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/31",
+                  "uid": "roazhon5-11"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth103/1/32",
+                  "uid": "roazhon5-12"
+                }
+              ],
+              "rate": 1000000000,
+              "snmp_pattern": "Eth%LINECARD%/1/%PORT%"
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+              "kavlan_pattern": "Eth%LINECARD%/1/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth142/1/9",
+                  "uid": "abacus8-1"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth142/1/14",
+                  "uid": "abacus5-1"
+                }
+              ],
+              "rate": 1000000000,
+              "snmp_pattern": "Eth%LINECARD%/1/%PORT%"
+            }
+          ],
+          "managed_by_us": false,
+          "model": "Nexus 2000 FEX",
+          "site": "rennes",
+          "snmp_community": "none",
+          "type": "network_equipment",
+          "uid": "swdc-a035-01-rba",
+          "warranty": "N/A"
+        },
+        "swdc-a035-02-rba": {
+          "channels": {
+            "port-channel999": {
+              "kind": "switch",
+              "port": "port-channel999",
+              "rate": 20000000000,
+              "uid": "swcore-01-rba"
+            }
+          },
+          "kind": "switch",
+          "linecards": [
+            {
+            },
+            {
+              "kavlan_pattern": "Eth%LINECARD%/%PORT%",
+              "kind": "node",
+              "ports": [
+                {
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "Eth1/1",
+                  "uid": "port-channel999"
+                },
+                {
+                },
+                {
+                  "kind": "channel",
+                  "snmp_name": "Eth1/3",
+                  "uid": "port-channel999"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "rate": 1000000000,
+                  "snmp_name": "Eth1/17",
+                  "uid": "abacus18-1"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth1/47",
+                  "uid": "abacus25-1"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth1/48",
+                  "uid": "abacus25-2"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth1/49",
+                  "uid": "abacus25-3"
+                },
+                {
+                  "kind": "node",
+                  "port": "eth0",
+                  "snmp_name": "Eth1/50",
+                  "uid": "abacus25-4"
+                }
+              ],
+              "rate": 10000000000,
+              "snmp_pattern": "Eth%LINECARD%/%PORT%"
+            }
+          ],
+          "managed_by_us": false,
+          "model": "Nexus 2000 FEX",
+          "site": "rennes",
+          "snmp_community": "none",
+          "type": "network_equipment",
+          "uid": "swdc-a035-02-rba",
+          "warranty": "N/A"
+        }
+      },
+      "pdus": {
+        "paradoxe-pdu1": {
+          "ip": "172.17.101.201",
+          "mac": "00:0D:5D:2B:75:A4",
+          "model": "PX3-5488V",
+          "ports": {
+            "18": "paradoxe-6",
+            "20": "paradoxe-5",
+            "21": "paradoxe-4",
+            "22": "paradoxe-3",
+            "23": "paradoxe-2",
+            "24": "paradoxe-1",
+            "4": "paradoxe-26",
+            "5": "paradoxe-25"
+          },
+          "type": "pdu",
+          "uid": "paradoxe-pdu1",
+          "vendor": "Raritan"
+        },
+        "paradoxe-pdu2": {
+          "ip": "172.17.101.202",
+          "mac": "00:0D:5D:2C:DA:F2",
+          "model": "PX3-5488V",
+          "ports": {
+            "18": "paradoxe-12",
+            "20": "paradoxe-11",
+            "21": "paradoxe-10",
+            "22": "paradoxe-9",
+            "23": "paradoxe-8",
+            "24": "paradoxe-7",
+            "4": "paradoxe-28",
+            "5": "paradoxe-27"
+          },
+          "type": "pdu",
+          "uid": "paradoxe-pdu2",
+          "vendor": "Raritan"
+        },
+        "paradoxe-pdu3": {
+          "ip": "172.17.101.203",
+          "mac": "00:0D:5D:2B:75:AC",
+          "model": "PX3-5488V",
+          "ports": {
+            "12": "paradoxe-18",
+            "14": "paradoxe-17",
+            "15": "paradoxe-16",
+            "16": "paradoxe-15",
+            "17": "paradoxe-14",
+            "18": "paradoxe-13",
+            "4": "paradoxe-30",
+            "5": "paradoxe-29"
+          },
+          "type": "pdu",
+          "uid": "paradoxe-pdu3",
+          "vendor": "Raritan"
+        },
+        "paradoxe-pdu4": {
+          "ip": "172.17.101.204",
+          "mac": "00:0D:5D:2C:DA:F0",
+          "model": "PX3-5488V",
+          "ports": {
+            "10": "paradoxe-21",
+            "11": "paradoxe-20",
+            "12": "paradoxe-19",
+            "4": "paradoxe-32",
+            "5": "paradoxe-31",
+            "6": "paradoxe-24",
+            "8": "paradoxe-23",
+            "9": "paradoxe-22"
+          },
+          "type": "pdu",
+          "uid": "paradoxe-pdu4",
+          "vendor": "Raritan"
+        },
+        "parasilo-pdu-1": {
+          "ip": "172.17.97.201",
+          "ports": {
+            "1": "parasilo-9",
+            "2": "parasilo-8",
+            "3": "parasilo-20",
+            "4": "parasilo-18",
+            "6": "paravance-1",
+            "7": "paravance-2"
+          },
+          "type": "pdu",
+          "uid": "parasilo-pdu-1"
+        },
+        "parasilo-pdu-2": {
+          "ip": "172.17.97.202",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "1": "parasilo-7",
+            "2": "parasilo-6",
+            "3": "parasilo-10",
+            "4": "parasilo-19",
+            "5": "parasilo-17",
+            "6": "paravance-4",
+            "7": "paravance-6"
+          },
+          "type": "pdu",
+          "uid": "parasilo-pdu-2",
+          "vendor": "APC"
+        },
+        "parasilo-pdu-3": {
+          "ip": "172.17.97.203",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "1": "parasilo-1",
+            "10": "parasilo-22",
+            "17": "parasilo-26",
+            "18": "parasilo-25",
+            "2": "parasilo-3",
+            "3": "parasilo-5",
+            "4": "parasilo-14",
+            "5": "parasilo-12",
+            "9": "parasilo-23"
+          },
+          "type": "pdu",
+          "uid": "parasilo-pdu-3",
+          "vendor": "APC"
+        },
+        "parasilo-pdu-4": {
+          "ip": "172.17.97.204",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "1": "parasilo-2",
+            "10": "parasilo-21",
+            "17": "parasilo-28",
+            "18": "parasilo-27",
+            "2": "parasilo-4",
+            "3": "parasilo-15",
+            "4": "parasilo-13",
+            "5": "parasilo-11",
+            "9": "parasilo-24"
+          },
+          "type": "pdu",
+          "uid": "parasilo-pdu-4",
+          "vendor": "APC"
+        },
+        "paravance-pdu-2": {
+          "ip": "172.17.96.202",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "10": "paravance-35",
+            "11": "paravance-33",
+            "12": "paravance-34",
+            "13": "paravance-31",
+            "14": "paravance-32",
+            "15": "paravance-30",
+            "17": "paravance-28",
+            "18": "paravance-29",
+            "19": "paravance-27",
+            "21": "paravance-26",
+            "22": "paravance-25",
+            "4": "paravance-5",
+            "5": "paravance-3",
+            "9": "paravance-36"
+          },
+          "type": "pdu",
+          "uid": "paravance-pdu-2",
+          "vendor": "APC"
+        },
+        "paravance-pdu-3": {
+          "ip": "172.17.96.203",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "1": "paravance-23",
+            "10": "paravance-7",
+            "2": "paravance-22",
+            "3": "paravance-20",
+            "4": "paravance-18",
+            "5": "paravance-16",
+            "6": "paravance-14",
+            "7": "paravance-12",
+            "9": "paravance-9"
+          },
+          "type": "pdu",
+          "uid": "paravance-pdu-3",
+          "vendor": "APC"
+        },
+        "paravance-pdu-4": {
+          "ip": "172.17.96.204",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "1": "paravance-24",
+            "10": "paravance-8",
+            "2": "paravance-21",
+            "3": "paravance-19",
+            "4": "paravance-17",
+            "5": "paravance-15",
+            "6": "paravance-13",
+            "7": "paravance-11",
+            "9": "paravance-10"
+          },
+          "type": "pdu",
+          "uid": "paravance-pdu-4",
+          "vendor": "APC"
+        },
+        "paravance-pdu-5": {
+          "ip": "172.17.96.205",
+          "ports": {
+            "1": "paravance-45",
+            "10": "paravance-70",
+            "12": "paravance-68",
+            "15": "paravance-66",
+            "17": "paravance-65",
+            "19": "paravance-63",
+            "2": "paravance-44",
+            "21": "paravance-61",
+            "9": "paravance-72"
+          },
+          "type": "pdu",
+          "uid": "paravance-pdu-5"
+        },
+        "paravance-pdu-6": {
+          "ip": "172.17.96.206",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "1": "paravance-46",
+            "10": "paravance-69",
+            "14": "paravance-67",
+            "17": "paravance-64",
+            "19": "paravance-62",
+            "2": "paravance-43",
+            "21": "paravance-60",
+            "3": "paravance-42",
+            "9": "paravance-71"
+          },
+          "type": "pdu",
+          "uid": "paravance-pdu-6",
+          "vendor": "APC"
+        },
+        "paravance-pdu-7": {
+          "ip": "172.17.96.207",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "1": "paravance-58",
+            "17": "paravance-37",
+            "18": "paravance-39",
+            "2": "paravance-56",
+            "3": "paravance-54",
+            "4": "paravance-53",
+            "5": "paravance-50",
+            "6": "paravance-49",
+            "7": "paravance-47"
+          },
+          "type": "pdu",
+          "uid": "paravance-pdu-7",
+          "vendor": "APC"
+        },
+        "paravance-pdu-8": {
+          "ip": "172.17.96.208",
+          "metrics": [
+            {
+              "description": "Power consumption per outlet reported by PDU, in watt",
+              "name": "pdu_outlet_power_watt",
+              "period": 1000,
+              "source": {
+                "id": "1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%",
+                "protocol": "snmp"
+              }
+            }
+          ],
+          "model": "AP8659",
+          "ports": {
+            "1": "paravance-59",
+            "10": "paravance-40",
+            "11": "paravance-41",
+            "2": "paravance-57",
+            "3": "paravance-52",
+            "4": "paravance-55",
+            "5": "paravance-51",
+            "7": "paravance-48",
+            "9": "paravance-38"
+          },
+          "type": "pdu",
+          "uid": "paravance-pdu-8",
+          "vendor": "APC"
+        }
+      },
+      "servers": {
+        "api-proxy-devel": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.149"
+            }
+          },
+          "type": "server",
+          "uid": "api-proxy-devel"
+        },
+        "api-proxy": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.126"
+            }
+          },
+          "type": "server",
+          "uid": "api-proxy"
+        },
+        "api-server-devel": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.115"
+            }
+          },
+          "type": "server",
+          "uid": "api-server-devel"
+        },
+        "api-server-v3": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.128"
+            }
+          },
+          "type": "server",
+          "uid": "api-server-v3"
+        },
+        "bigdata-disc": {
+          "alias": [
+
+          ],
+          "kind": "storage",
+          "network_adapters": {
+          },
+          "serial": "D12LGZ1",
+          "type": "server",
+          "uid": "bigdata-disc",
+          "warranty": "2018-10"
+        },
+        "ca": {
+          "alias": [
+            "ca-global"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.152"
+            }
+          },
+          "type": "server",
+          "uid": "ca"
+        },
+        "cargo0": {
+          "alias": [
+
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.40"
+            },
+            "default": {
+              "ip": "172.16.111.40"
+            }
+          },
+          "type": "server",
+          "uid": "cargo0"
+        },
+        "cargo1": {
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.41"
+            },
+            "default": {
+              "ip": "172.16.111.41"
+            }
+          },
+          "type": "server",
+          "uid": "cargo1"
+        },
+        "cargo2": {
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.42"
+            },
+            "default": {
+              "ip": "172.16.111.42"
+            }
+          },
+          "type": "server",
+          "uid": "cargo2"
+        },
+        "cargo3": {
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.43"
+            },
+            "default": {
+              "ip": "172.16.111.43"
+            }
+          },
+          "type": "server",
+          "uid": "cargo3"
+        },
+        "ceph-mon0": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.158"
+            }
+          },
+          "type": "server",
+          "uid": "ceph-mon0"
+        },
+        "ceph-mon1": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.159"
+            }
+          },
+          "type": "server",
+          "uid": "ceph-mon1"
+        },
+        "ceph-mon2": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.160"
+            }
+          },
+          "type": "server",
+          "uid": "ceph-mon2"
+        },
+        "conman": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.108"
+            }
+          },
+          "type": "server",
+          "uid": "conman"
+        },
+        "dhcp": {
+          "kind": "virtual",
+          "network_adapters": {
+            "adm": {
+              "ip": "172.17.111.117"
+            },
+            "default": {
+              "ip": "172.16.111.117",
+              "ip6": "2001:660:4406:700:0:2:0:11"
+            }
+          },
+          "type": "server",
+          "uid": "dhcp"
+        },
+        "dns": {
+          "alias": [
+            "ns"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.118"
+            }
+          },
+          "type": "server",
+          "uid": "dns"
+        },
+        "frennes": {
+          "alias": [
+            "frontale",
+            "frontend",
+            "oar-api"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.106"
+            }
+          },
+          "type": "server",
+          "uid": "frennes"
+        },
+        "guix": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.121"
+            }
+          },
+          "type": "server",
+          "uid": "guix"
+        },
+        "icinga": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.151"
+            }
+          },
+          "type": "server",
+          "uid": "icinga"
+        },
+        "infra-k8s-master0": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.204"
+            }
+          },
+          "type": "server",
+          "uid": "infra-k8s-master0"
+        },
+        "infra-k8s-master1": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.205"
+            }
+          },
+          "type": "server",
+          "uid": "infra-k8s-master1"
+        },
+        "k8s-lb0": {
+          "alias": [
+            "docker-mirror",
+            "oar-es"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.240"
+            }
+          },
+          "type": "server",
+          "uid": "k8s-lb0"
+        },
+        "k8s-lb1": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.241"
+            }
+          },
+          "type": "server",
+          "uid": "k8s-lb1"
+        },
+        "k8s-lb2": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.242"
+            }
+          },
+          "type": "server",
+          "uid": "k8s-lb2"
+        },
+        "k8s-lb3": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.243"
+            }
+          },
+          "type": "server",
+          "uid": "k8s-lb3"
+        },
+        "k8s-lb4": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.244"
+            }
+          },
+          "type": "server",
+          "uid": "k8s-lb4"
+        },
+        "k8s-lb5": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.245"
+            }
+          },
+          "type": "server",
+          "uid": "k8s-lb5"
+        },
+        "kadeploy-devel": {
+          "alias": [
+            "kadeploy-server-devel"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.136"
+            }
+          },
+          "type": "server",
+          "uid": "kadeploy-devel"
+        },
+        "kadeploy": {
+          "alias": [
+            "kadeploy-server"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.111"
+            }
+          },
+          "type": "server",
+          "uid": "kadeploy"
+        },
+        "kavlan-1": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.101"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan-1"
+        },
+        "kavlan-2": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.102"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan-2"
+        },
+        "kavlan-3": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.103"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan-3"
+        },
+        "kavlan": {
+          "alias": [
+            "kavlan-server",
+            "kavlan-dhcp"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.100"
+            }
+          },
+          "type": "server",
+          "uid": "kavlan"
+        },
+        "kwollect": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.112"
+            }
+          },
+          "type": "server",
+          "uid": "kwollect"
+        },
+        "ldap": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.120"
+            }
+          },
+          "type": "server",
+          "uid": "ldap"
+        },
+        "logstash": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.169"
+            }
+          },
+          "type": "server",
+          "uid": "logstash"
+        },
+        "mail": {
+          "alias": [
+            "mail2",
+            "smtp"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.164"
+            }
+          },
+          "type": "server",
+          "uid": "mail"
+        },
+        "md3260-bg-1": {
+          "kind": "storage",
+          "network_adapters": {
+            "default": {
+              "ip": "172.17.111.221"
+            }
+          },
+          "type": "server",
+          "uid": "md3260-bg-1"
+        },
+        "md3260-bg-2": {
+          "kind": "storage",
+          "network_adapters": {
+            "default": {
+              "ip": "172.17.111.222"
+            }
+          },
+          "type": "server",
+          "uid": "md3260-bg-2"
+        },
+        "mysql": {
+          "alias": [
+            "mysql2"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.113"
+            }
+          },
+          "type": "server",
+          "uid": "mysql"
+        },
+        "nat": {
+          "alias": [
+            "access"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.200"
+            }
+          },
+          "type": "server",
+          "uid": "nat"
+        },
+        "oar": {
+          "alias": [
+            "oar-server",
+            "oardb"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.110"
+            }
+          },
+          "type": "server",
+          "uid": "oar"
+        },
+        "parasilo-srv-1": {
+          "alias": [
+            "ntp"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.22"
+            },
+            "default": {
+              "ip": "172.16.111.22"
+            }
+          },
+          "serial": "H8RGG42",
+          "type": "server",
+          "uid": "parasilo-srv-1",
+          "warranty": "2022-01"
+        },
+        "parasilo-srv-2": {
+          "alias": [
+
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.23"
+            },
+            "default": {
+              "ip": "172.16.111.23"
+            }
+          },
+          "serial": "H3H6152",
+          "type": "server",
+          "uid": "parasilo-srv-2",
+          "warranty": "2022-03"
+        },
+        "parasilo-srv-3": {
+          "alias": [
+            "nfs",
+            "nfs-grid5000",
+            "nfs-home",
+            "home-g5k",
+            "public"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.24"
+            },
+            "default": {
+              "ip": "172.16.111.24"
+            }
+          },
+          "serial": "BDZGG42",
+          "type": "server",
+          "uid": "parasilo-srv-3",
+          "warranty": "2022-01"
+        },
+        "puppet6": {
+          "alias": [
+            "puppet"
+          ],
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.105"
+            }
+          },
+          "type": "server",
+          "uid": "puppet6"
+        },
+        "rook-storage0": {
+          "alias": [
+            "ceph1",
+            "csod",
+            "infra-k8s-prometheus",
+            "infra-k8s-alertmanager",
+            "infra-k8s-grafana"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.30"
+            },
+            "default": {
+              "ip": "172.16.111.30"
+            }
+          },
+          "serial": "GQHZKZ1",
+          "type": "server",
+          "uid": "rook-storage0",
+          "warranty": "2018-11"
+        },
+        "rook-storage1": {
+          "alias": [
+            "ceph2",
+            "harbor",
+            "harbor-notary"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.31"
+            },
+            "default": {
+              "ip": "172.16.111.31"
+            }
+          },
+          "serial": "GMG6LZ1",
+          "type": "server",
+          "uid": "rook-storage1",
+          "warranty": "2018-11"
+        },
+        "rook-storage2": {
+          "alias": [
+            "argocd",
+            "netbox"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.32"
+            },
+            "default": {
+              "ip": "172.16.111.32"
+            }
+          },
+          "serial": "DQHZKZ1",
+          "type": "server",
+          "uid": "rook-storage2",
+          "warranty": "2018-11"
+        },
+        "rook-storage3": {
+          "alias": [
+            "ceph0"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.33"
+            },
+            "default": {
+              "ip": "172.16.111.33"
+            }
+          },
+          "serial": "FQJ4LZ1",
+          "type": "server",
+          "uid": "rook-storage3",
+          "warranty": "2018-11"
+        },
+        "srv-1": {
+          "alias": [
+
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.51"
+            },
+            "default": {
+              "ip": "172.16.111.51"
+            }
+          },
+          "serial": "CZJ3151FJV",
+          "type": "server",
+          "uid": "srv-1",
+          "warranty": "2030-15"
+        },
+        "srv-2": {
+          "alias": [
+
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.52"
+            },
+            "default": {
+              "ip": "172.16.111.52"
+            }
+          },
+          "serial": "CZJ3151FJT",
+          "type": "server",
+          "uid": "srv-2",
+          "warranty": "2030-15"
+        },
+        "srv-3": {
+          "alias": [
+
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.53"
+            },
+            "default": {
+              "ip": "172.16.111.53"
+            }
+          },
+          "serial": "CZJ3151FJS",
+          "type": "server",
+          "uid": "srv-3",
+          "warranty": "2030-15"
+        },
+        "srv-bigdata": {
+          "alias": [
+            "storage"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.7"
+            },
+            "default": {
+              "ip": "172.16.111.7"
+            }
+          },
+          "serial": "6V9FGZ1",
+          "type": "server",
+          "uid": "srv-bigdata",
+          "warranty": "2018-10"
+        },
+        "srv-data": {
+          "alias": [
+
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.61"
+            },
+            "default": {
+              "ip": "172.16.111.61"
+            }
+          },
+          "serial": "CZ231508CW",
+          "type": "server",
+          "uid": "srv-data",
+          "warranty": null
+        },
+        "srv-data2": {
+          "alias": [
+            "storage2",
+            "modules"
+          ],
+          "group_storage": {
+            "name": "storage2",
+            "rate": 10000000000,
+            "size": 115000000000000
+          },
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.62"
+            },
+            "default": {
+              "ip": "172.16.111.62"
+            }
+          },
+          "serial": "CZ23160DF7",
+          "type": "server",
+          "uid": "srv-data2",
+          "warranty": "2008-05"
+        },
+        "srv": {
+          "alias": [
+            "adminfront",
+            "af"
+          ],
+          "kind": "physical",
+          "network_adapters": {
+            "bmc": {
+              "ip": "172.17.111.6"
+            },
+            "default": {
+              "ip": "172.16.111.6"
+            }
+          },
+          "serial": "CLXJZY1",
+          "type": "server",
+          "uid": "srv",
+          "warranty": "2018-09"
+        },
+        "stats": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.131"
+            }
+          },
+          "type": "server",
+          "uid": "stats"
+        },
+        "supervision2": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.145"
+            }
+          },
+          "type": "server",
+          "uid": "supervision2"
+        },
+        "syslog": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.109"
+            }
+          },
+          "type": "server",
+          "uid": "syslog"
+        },
+        "www": {
+          "kind": "virtual",
+          "network_adapters": {
+            "default": {
+              "ip": "172.16.111.112"
+            }
+          },
+          "type": "server",
+          "uid": "www"
+        }
+      },
+      "compilation_server": false,
+      "description": "Grid5000 Rennes site",
+      "email_contact": "support-staff@lists.grid5000.fr",
+      "frontend_ip": "172.16.111.106",
+      "g5ksubnet": {
+        "gateway": "10.159.255.254",
+        "network": "10.156.0.0/14"
+      },
+      "ipv6": {
+        "prefix": "2001:660:4406:700::/56",
+        "site_global_kavlan": 16,
+        "site_index": 7
+      },
+      "kavlan_ip_range": "10.24.0.0/14",
+      "kavlans": {
+        "1": {
+          "gateway": "192.168.207.254",
+          "network": "192.168.192.0/20",
+          "network_ipv6": "2001:660:4406:780::/64"
+        },
+        "16": {
+          "gateway": "10.27.255.254",
+          "gateway_ipv6": "2001:660:4406:7a0:700:0:ffff:ffff",
+          "network": "10.27.192.0/18",
+          "network_ipv6": "2001:660:4406:7a0::/64"
+        },
+        "2": {
+          "gateway": "192.168.223.254",
+          "network": "192.168.208.0/20",
+          "network_ipv6": "2001:660:4406:781::/64"
+        },
+        "3": {
+          "gateway": "192.168.239.254",
+          "network": "192.168.224.0/20",
+          "network_ipv6": "2001:660:4406:782::/64"
+        },
+        "4": {
+          "gateway": "10.24.63.254",
+          "gateway_ipv6": "2001:660:4406:790::ffff:ffff",
+          "network": "10.24.0.0/18",
+          "network_ipv6": "2001:660:4406:790::/64"
+        },
+        "5": {
+          "gateway": "10.24.127.254",
+          "gateway_ipv6": "2001:660:4406:791::ffff:ffff",
+          "network": "10.24.64.0/18",
+          "network_ipv6": "2001:660:4406:791::/64"
+        },
+        "6": {
+          "gateway": "10.24.191.254",
+          "gateway_ipv6": "2001:660:4406:792::ffff:ffff",
+          "network": "10.24.128.0/18",
+          "network_ipv6": "2001:660:4406:792::/64"
+        },
+        "7": {
+          "gateway": "10.24.255.254",
+          "gateway_ipv6": "2001:660:4406:793::ffff:ffff",
+          "network": "10.24.192.0/18",
+          "network_ipv6": "2001:660:4406:793::/64"
+        },
+        "8": {
+          "gateway": "10.25.63.254",
+          "gateway_ipv6": "2001:660:4406:794::ffff:ffff",
+          "network": "10.25.0.0/18",
+          "network_ipv6": "2001:660:4406:794::/64"
+        },
+        "9": {
+          "gateway": "10.25.127.254",
+          "gateway_ipv6": "2001:660:4406:795::ffff:ffff",
+          "network": "10.25.64.0/18",
+          "network_ipv6": "2001:660:4406:795::/64"
+        },
+        "default": {
+          "gateway": "172.16.111.254",
+          "gateway_ipv6": "2001:660:4406:700::ffff:ffff",
+          "network": "172.16.96.0/20",
+          "network_ipv6": "2001:660:4406:700::/64"
+        }
+      },
+      "latitude": 48.1,
+      "location": "Rennes, France",
+      "longitude": -1.6667,
+      "name": "Rennes",
+      "production": true,
+      "renater_ip": "192.168.4.19",
+      "security_contact": "support-staff@lists.grid5000.fr",
+      "sys_admin_contact": "support-staff@lists.grid5000.fr",
+      "type": "site",
+      "uid": "rennes",
+      "user_support_contact": "support-staff@lists.grid5000.fr",
+      "virt_ip_range": "10.156.0.0/14",
+      "web": "http://www.irisa.fr"
+    }
+  },
+  "type": "grid",
+  "uid": "grid5000"
+}

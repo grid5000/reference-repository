@@ -1,0 +1,98 @@
+---
+swdc-c003-01-02-rba:
+  model: Nexus 5596
+  warranty: N/A
+  kind: switch
+  managed_by_us: false
+  snmp_community: none
+  site: rennes
+  linecards:
+    1:
+      snmp_pattern: "Eth%LINECARD%/%PORT%"
+      kavlan_pattern: "Eth%LINECARD%/%PORT%"
+      rate: 10000000000
+      kind: node
+      ports:
+        1:
+          uid: port-channel51
+          kind: channel
+        3:
+          uid: port-channel51
+          kind: channel
+        16_01: # physically on interface 1/16 of swdc-c003-01-rba only
+          uid: port-channel1242
+          kind: channel
+        16_02: # physically on interface 1/16 of swdc-c003-02-rba only
+          uid: port-channel1242
+          kind: channel
+        25_01: # physically on interface 1/25 of swdc-c003-01-rba only
+          uid: roazhon10-2
+        25_02: # physically on interface 1/25 of swdc-c003-02-rba only
+          uid: roazhon10-1
+        26_01: # physically on interface 1/26 of swdc-c003-01-rba only
+          uid: roazhon10-4
+        26_02: # physically on interface 1/26 of swdc-c003-02-rba only
+          uid: roazhon10-3
+        29_01: # physically on interface 1/29 of swdc-c003-01-rba only
+          uid: roazhon13-3
+        29_02: # physically on interface 1/29 of swdc-c003-02-rba only
+          uid: roazhon13-4
+    141:
+      snmp_pattern: "Eth%LINECARD%/1/%PORT%"
+      kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        4:
+          uid: roazhon12-3
+        6:
+          uid: roazhon11-1
+        8:
+          uid: roazhon11-2
+        26:
+          uid: roazhon12-2
+    142:
+      snmp_pattern: "Eth%LINECARD%/1/%PORT%"
+      kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        2:
+          uid: roazhon12-4
+        5:
+          uid: abacus1-1
+        6:
+          uid: roazhon11-3
+        8:
+          uid: roazhon12-1
+        9:
+          uid: abacus8-1
+        14:
+          uid: abacus5-1
+    144:
+      snmp_pattern: "Eth%LINECARD%/1/%PORT%"
+      kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        1:
+          uid: abacus2-1
+        21:
+          uid: abacus4-1
+          port: eth1
+        22:
+          uid: abacus11-1
+        23:
+          uid: abacus10-1
+
+  channels:
+    port-channel51:
+      uid: swcore-01-rba
+      kind: switch
+      port: port-channel51
+      rate: 20000000000
+    port-channel1242:
+      uid: sw-dell-c003-01-rba
+      kind: switch
+      port: port-channel1242
+      rate: 10000000000

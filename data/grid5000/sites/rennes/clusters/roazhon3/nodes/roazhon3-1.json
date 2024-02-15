@@ -131,8 +131,8 @@
       "rate": 10000000000,
       "sriov": false,
       "sriov_totalvfs": 0,
-      "switch": null,
-      "switch_port": null,
+      "switch": "sw-dell-c003-01-rba",
+      "switch_port": "Eth1/1/2",
       "vendor": "Intel"
     },
     {
@@ -169,9 +169,9 @@
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "none",
-    "pstate_governor": "none",
-    "turboboost_enabled": false
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 83200000000,

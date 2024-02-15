@@ -7,6 +7,9 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "cpu_count", 2]
     ["+", "eth_kavlan_count", 0]
     ["+", "exotic", "NO"]
+    ["+", "gpu_compute_capability", "7.9"]
+    ["+", "gpu_compute_capability_major", 7]
+    ["+", "gpu_mem", 10479]
     ["+", "thread_count", 32]
   clustera-2:
     ["~", "eth_rate", "10", 10]
@@ -16,6 +19,9 @@ Output format: [ '-', 'key', 'value'] for missing, [ '+', 'key', 'value'] for ad
     ["+", "cpu_count", 2]
     ["+", "eth_kavlan_count", 0]
     ["+", "exotic", "NO"]
+    ["+", "gpu_compute_capability", "7.9"]
+    ["+", "gpu_compute_capability_major", 7]
+    ["+", "gpu_mem", 10479]
     ["+", "thread_count", 32]
 Error: the OAR property 'eth_rate' is a 'String' on the fakesite server and this script uses 'Integer' for this property.
-Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count, chassis, eth_kavlan_count, exotic
+Properties that need to be created on the fakesite server: cpu_count, core_count, thread_count, chassis, eth_kavlan_count, gpu_mem, gpu_compute_capability, gpu_compute_capability_major, exotic

@@ -72,18 +72,18 @@ sgruss:
           uid: gruss-3-eth2
         4:
           uid: gruss-4-eth2
+        6:
+          uid: grosminet-1-eth0
         16:
           uid: grat-1-eth0
         25:
            snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
-           kind: node
-           rate: 25000000000
+           rate: 40_000_000_000
            uid: port-channel1
            kind: channel
         26:
            snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
-           kind: node
-           rate: 25000000000
+           rate: 40_000_000_000
            uid: port-channel1
            kind: channel
   channels:
@@ -91,4 +91,4 @@ sgruss:
       port: port-channel5
       uid: gw
       kind: router
-      rate: 800000000000
+      rate: 80_000_000_000

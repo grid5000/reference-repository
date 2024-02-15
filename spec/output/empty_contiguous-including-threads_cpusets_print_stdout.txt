@@ -80,6 +80,9 @@ property_exist 'memcpu' || oarproperty -a memcpu
 property_exist 'memnode' || oarproperty -a memnode
 property_exist 'gpu_model' || oarproperty -a gpu_model --varchar
 property_exist 'gpu_count' || oarproperty -a gpu_count
+property_exist 'gpu_mem' || oarproperty -a gpu_mem
+property_exist 'gpu_compute_capability' || oarproperty -a gpu_compute_capability --varchar
+property_exist 'gpu_compute_capability_major' || oarproperty -a gpu_compute_capability_major
 property_exist 'exotic' || oarproperty -a exotic --varchar
 property_exist 'mic' || oarproperty -a mic --varchar
 property_exist 'wattmeter' || oarproperty -a wattmeter --varchar
@@ -158,7 +161,7 @@ oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='cluste
 oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=63 -p cpuset=158
 oarnodesetting -a -h 'clustera-1.fakesite.grid5000.fr' -s Absent -p host='clustera-1.fakesite.grid5000.fr' -p cpu=2 -p core=64 -p cpuset=159
 echo; echo 'Setting properties for clustera-1.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.54.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='arm64' -p cpuarch='aarch64' -p cpucore=32 -p cpu_count=2 -p core_count=64 -p thread_count=256 -p cputype='ThunderX2 99xx' -p cpufreq='2.2' -p disktype='SAS/SSD' -p chassis='GIGABYTE R181-T92-00 GJG5N9812A0001' -p eth_count=1 -p eth_kavlan_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=131072 -p memnode=262144 -p gpu_model='' -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='NO' -p cluster_priority=201906 -p max_walltime=0 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-1.fakesite.grid5000.fr' and type='default'" -p ip='172.16.54.1' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='arm64' -p cpuarch='aarch64' -p cpucore=32 -p cpu_count=2 -p core_count=64 -p thread_count=256 -p cputype='ThunderX2 99xx' -p cpufreq='2.2' -p disktype='SAS/SSD' -p chassis='GIGABYTE R181-T92-00 GJG5N9812A0001' -p eth_count=1 -p eth_kavlan_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=131072 -p memnode=262144 -p gpu_model='' -p gpu_count=0 -p gpu_mem=0 -p gpu_compute_capability='N/A' -p gpu_compute_capability_major=0 -p exotic='NO' -p mic='NO' -p wattmeter='NO' -p cluster_priority=201906 -p max_walltime=0 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
 
 echo '================================================================================'
 
@@ -231,6 +234,6 @@ oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='cluste
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=127 -p cpuset=158
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=128 -p cpuset=159
 echo; echo 'Setting properties for clustera-2.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.54.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='arm64' -p cpuarch='aarch64' -p cpucore=32 -p cpu_count=2 -p core_count=64 -p thread_count=256 -p cputype='ThunderX2 99xx' -p cpufreq='2.2' -p disktype='SAS/SSD' -p chassis='GIGABYTE R181-T92-00 GJG5N9812A0004' -p eth_count=1 -p eth_kavlan_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=131072 -p memnode=262144 -p gpu_model='' -p gpu_count=0 -p exotic='NO' -p mic='NO' -p wattmeter='NO' -p cluster_priority=201906 -p max_walltime=0 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.54.2' -p cluster='clustera' -p nodemodel='Dell PowerEdge T640' -p switch='gw' -p besteffort='YES' -p deploy='YES' -p virtual='arm64' -p cpuarch='aarch64' -p cpucore=32 -p cpu_count=2 -p core_count=64 -p thread_count=256 -p cputype='ThunderX2 99xx' -p cpufreq='2.2' -p disktype='SAS/SSD' -p chassis='GIGABYTE R181-T92-00 GJG5N9812A0004' -p eth_count=1 -p eth_kavlan_count=1 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=4096 -p memcpu=131072 -p memnode=262144 -p gpu_model='' -p gpu_count=0 -p gpu_mem=0 -p gpu_compute_capability='N/A' -p gpu_compute_capability_major=0 -p exotic='NO' -p mic='NO' -p wattmeter='NO' -p cluster_priority=201906 -p max_walltime=0 -p production='NO' -p maintenance='YES' -p disk_reservation_count=0
 
 echo '================================================================================'

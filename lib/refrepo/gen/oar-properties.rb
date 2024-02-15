@@ -20,29 +20,24 @@ module OarProperties
 # OAR API data cache
 @@oar_data = {}
 
-def export_rows_as_formated_line(generated_hierarchy)
-  # Display header
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
-  puts "|#{'cluster'.rjust(10)} | #{'host'.ljust(20)} | #{'cpu'.ljust(5)} | #{'core'.ljust(5)} | #{'cpuset'.ljust(8)} | #{'gpu'.ljust(4)} | #{'gpudevice'.ljust(20)} | #{'cpumodel'.ljust(30)} | #{'gpumodel'.ljust(30)}|"
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
-
-  oar_rows = generated_hierarchy[:nodes].map{|node| node[:oar_rows]}.flatten
-
-  # Display rows
-  oar_rows.each do |row|
-    cluster = row[:cluster].to_s
-    host = row[:host].to_s
-    cpu = row[:cpu].to_s
-    core = row[:core].to_s
-    cpuset = row[:cpuset].to_s
-    gpu = row[:gpu].to_s
-    gpudevice = row[:gpudevice].to_s
-    cpumodel = row[:cpumodel].to_s
-    gpumodel = row[:gpumodel].to_s
-    puts "|#{cluster.rjust(10)} | #{host.ljust(20)} | #{cpu.ljust(5)} | #{core.ljust(5)} | #{cpuset.ljust(8)} | #{gpu.ljust(4)} | #{gpudevice.ljust(20)} | #{cpumodel.ljust(30)} | #{gpumodel.ljust(30)}|"
+def table_separator(cols)
+  return "+-#{cols.map{|_k, v| '-' * v }.join('-+-')}-+"
+end 
+def display_resources_table(generated_hierarchy)
+  cols = {cluster: 11, host: 20, cpu: 5, core: 5, cpuset: 6, cpumodel: 25, gpu: 4, gpudevice: 10, gpumodel: 30}
+  puts table_separator(cols)
+  puts "| #{cols.map{|k, v| k.to_s.ljust(v) }.join(' | ')} |"
+  
+  host_prev = ""
+  generated_hierarchy[:nodes].map{|node| node[:oar_rows]}.flatten.each do |row|
+    if row[:host] != host_prev
+      puts table_separator(cols)
+      host_prev = row[:host]
+    end
+    puts "| #{cols.map{|k, v| row[k].to_s.ljust(v)}.join(' | ')} |"
+    
   end
-  # Display footer
-  puts "+#{'-' * 10} + #{'-' * 20} + #{'-' * 5} + #{'-' * 5} + #{'-' * 8} + #{'-' * 4} + #{'-' * 20} + #{'-' * 30} + #{'-' * 30}+"
+  puts table_separator(cols)
 end
 
 ############################################
@@ -425,6 +420,9 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
 
   h['gpu_model'] = ''
   h['gpu_count'] = 0
+  h['gpu_mem'] = 0
+  h['gpu_compute_capability'] = 'N/A'
+  h['gpu_compute_capability_major'] = 0
 
   if node.key?('gpu_devices')
     models = node['gpu_devices'].map { |_, g| g['model'] }.uniq
@@ -435,6 +433,11 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
     if GPURef.is_gpu_supported?(device)
       h['gpu_model'] = device['model']
       h['gpu_count'] = node['gpu_devices'].length
+      h['gpu_mem'] = device['memory'] / MiB
+      if not ['AMD'].include?(device['vendor']) # not supported on AMD GPUs
+        h['gpu_compute_capability'] = device['compute_capability']
+        h['gpu_compute_capability_major'] = device['compute_capability'].split('.').first.to_i
+      end
     end
   end
 
@@ -1004,30 +1007,14 @@ end
 
 def sanity_check(cluster_resources, site_resources)
 
-  sanity_result = true
-
   # Detect cluster resources
-  cluster_cpus =
-    cluster_resources
-      .map{|r| r["cpu"]}
-      .uniq
-  cluster_gpus =
-    cluster_resources
-      .map{|r| r["gpu"]}
-      .select{|gpu| not gpu.nil?}
-      .uniq
-  cluster_cores =
-    cluster_resources
-      .map{|r| r["core"]}
-      .uniq
+  cluster_cpus = cluster_resources.map{|r| r["cpu"]}.uniq
+  cluster_gpus = cluster_resources.map{|r| r["gpu"]}.select{|gpu| not gpu.nil?}.uniq
+  cluster_cores = cluster_resources.map{|r| r["core"]}.uniq
 
   # Check CPUs
   cluster_cpus.each do |cluster_cpu|
-    hosts_with_same_cpu =
-      site_resources
-        .select{|r| r["cpu"] == cluster_cpu}
-        .map{|r| r["host"]}
-        .uniq
+    hosts_with_same_cpu = site_resources.select{|r| r["cpu"] == cluster_cpu}.map{|r| r["host"]}.uniq
 
     if hosts_with_same_cpu.length > 1
       puts("################################")
@@ -1037,17 +1024,13 @@ def sanity_check(cluster_resources, site_resources)
       puts("oarnodes -Y --sql \"cpu=#{cluster_cpu}\"")
       puts("")
 
-      sanity_result = false
+      return false
     end
   end
 
   # Checks GPUs
   cluster_gpus.each do |cluster_gpu|
-    hosts_with_same_gpu =
-      site_resources
-        .select{|r| r["gpu"] == cluster_gpu}
-        .map{|r| r["host"]}
-        .uniq
+    hosts_with_same_gpu = site_resources.select{|r| r["gpu"] == cluster_gpu}.map{|r| r["host"]}.uniq
 
     if hosts_with_same_gpu.length > 1
       puts("################################")
@@ -1057,19 +1040,16 @@ def sanity_check(cluster_resources, site_resources)
       puts("oarnodes -Y --sql \"gpu=#{cluster_gpu}\"")
       puts("")
 
-      sanity_result = false
+      return false
     end
   end
 
   # Check Cores
   cluster_cores.each do |cluster_core|
-    resources_id_with_same_core =
-      site_resources
-        .select{|r| r["core"] == cluster_core}
-        .map{|r| r["id"]}
+    resources_id_with_same_core = site_resources.select{|r| r["core"] == cluster_core}.map{|r| r["id"]}
 
     if resources_id_with_same_core.length > 1
-      oar_sql_clause = resources_id_with_same_core .map{|rid| "resource_id='#{rid}'"}.join(" OR ")
+      oar_sql_clause = resources_id_with_same_core.map{|rid| "resource_id='#{rid}'"}.join(" OR ")
 
       puts("################################")
       puts("# Error: resources with ids #{resources_id_with_same_core} have the same value for core (core is equal to #{cluster_core})\n")
@@ -1078,11 +1058,11 @@ def sanity_check(cluster_resources, site_resources)
       puts("oarnodes -Y --sql \"#{oar_sql_clause}\"")
       puts("")
 
-      sanity_result = false
+      return false
     end
   end
 
-  return sanity_result
+  return true
 end
 
 
@@ -1143,8 +1123,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       raise 'Sanity check failed'
     end
 
-    cluster_desc_from_data_files = data_hierarchy['sites'][site_name]['clusters'][cluster_name]
-    cluster_nodes = cluster_desc_from_data_files['nodes']
+    cluster_nodes = data_hierarchy['sites'][site_name]['clusters'][cluster_name]['nodes']
 
     node_count = cluster_nodes.length
 
@@ -1159,13 +1138,13 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       raise 'Sanity check failed'
     end
 
-    first_node = cluster_desc_from_data_files['nodes'].first[1]
+    first_node = cluster_nodes.first[1]
 
     cpu_count = first_node['architecture']['nb_procs']
     cpu_core_count = first_node['architecture']['nb_cores'] / cpu_count
     cpu_thread_count = first_node['architecture']['nb_threads'] / cpu_count
     core_thread_count = first_node['architecture']['nb_threads'] / first_node['architecture']['nb_cores']
-    gpu_count = cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.max
+    gpu_count = cluster_nodes.values.map { |e| (e['gpu_devices'] || {} ).length }.max
 
     cpu_model = "#{first_node['processor']['model']} #{first_node['processor']['version']}"
     core_numbering = first_node['architecture']['cpu_core_numbering']
@@ -1191,7 +1170,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
         "gpu" => {
           :current_ids => [],
           :per_server_count => gpu_count,
-          :per_cluster_count =>  cluster_desc_from_data_files['nodes'].values.map { |e| (e['gpu_devices'] || {} ).length }.inject(0) { |a, b| a+b } # sum
+          :per_cluster_count => cluster_nodes.values.map { |e| (e['gpu_devices'] || {} ).length }.inject(0) { |a, b| a+b } # sum
         },
     }
 
@@ -1241,7 +1220,7 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
       name = nodes_names[node_index0][:name]
       fqdn = nodes_names[node_index0][:fqdn]
 
-      node_description = cluster_desc_from_data_files["nodes"][name]
+      node_description = cluster_nodes[name]
 
       node_description_default_properties = site_properties["default"][name]
 
@@ -1317,7 +1296,9 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
           # (2-e) [if cluster with GPU] Associate a gpuset to each core
           ############################################
 
-          if node_description.key? "gpu_devices"
+          if node_description.key? "gpu_devices" and node_description["gpu_devices"].values.select { |v| v.fetch("reservation", true) }.length > 0
+            # The node has reservable GPUs
+
             # numa_gpus is the list of gpus for the current CPU
             numa_gpus = node_description["gpu_devices"].values.select do |v|
               field = if v.key? 'cpu_affinity_override'
@@ -1327,34 +1308,40 @@ def extract_clusters_description(clusters, site_name, options, data_hierarchy, s
                       end
               v[field] == cpu_num and v.fetch("reservation", true)
             end
-            if not numa_gpus.empty? # this can happen if GPUs are not reservable
-              if numa_gpus.first.key? 'cores_affinity'
-                # this cluster uses cores_affinity, not arbitrary allocation
-                selected_gpu = numa_gpus.find { |g| g['cores_affinity'].split.map { |e| e.to_i }.include?(row[:cpuset]) }
-                if selected_gpu.nil?
-                  raise "Could not find a GPU on CPU #{cpu_num} for core #{row[:cpuset]}"
-                end
+            if numa_gpus.empty?
+              # This core is not associated to any GPU
+              if node_description["gpu_devices"].values.select { |v| v.fetch("reservation", true) }.length == 1
+                # The node has only one reservable GPU, we affect it to all cores
+                selected_gpu = node_description["gpu_devices"].values.first
               else
-                # The parenthesis order is important: we want to keep the
-                # integer division to generate an integer index, so we want to
-                # do the multiplication first.
-                gpu_idx = (core_num * numa_gpus.length) / cpu_core_count
-                selected_gpu = numa_gpus[gpu_idx]
+                raise "#{fqdn}: No GPU to associate to CPU #{cpu_num}, core #{row[:cpuset]}. You probably want to use cpu_affinity_override to affect a GPU to this CPU."
               end
-              # id of the selected GPU in the node
-              local_id = node_description["gpu_devices"].values.index(selected_gpu)
-
-              # to assign the gpu number, just use the number of nodes and the number of GPUs per node
-              # sanity check: we must fall into the correct range
-              gpu = phys_rsc_map["gpu"][:current_ids].min + node_index0 * gpu_count + local_id
-              if gpu > phys_rsc_map["gpu"][:current_ids].max
-                raise "Invalid GPU number for cluster #{cluster_name}"
+            elsif numa_gpus.first.key? 'cores_affinity'
+              # this cluster uses cores_affinity, not arbitrary allocation
+              selected_gpu = numa_gpus.find { |g| g['cores_affinity'].split.map { |e| e.to_i }.include?(row[:cpuset]) }
+              if selected_gpu.nil?
+                raise "Could not find a GPU on CPU #{cpu_num} for core #{row[:cpuset]}"
               end
-              row[:gpu] = gpu
-              row[:gpudevice] = local_id
-              row[:gpudevicepath] = selected_gpu['device']
-              row[:gpumodel] = selected_gpu['model']
+            else
+              # The parenthesis order is important: we want to keep the
+              # integer division to generate an integer index, so we want to
+              # do the multiplication first.
+              gpu_idx = (core_num * numa_gpus.length) / cpu_core_count
+              selected_gpu = numa_gpus[gpu_idx]
             end
+            # id of the selected GPU in the node
+            local_id = node_description["gpu_devices"].values.index(selected_gpu)
+
+            # to assign the gpu number, just use the number of nodes and the number of GPUs per node
+            # sanity check: we must fall into the correct range
+            gpu = phys_rsc_map["gpu"][:current_ids].min + node_index0 * gpu_count + local_id
+            if gpu > phys_rsc_map["gpu"][:current_ids].max
+              raise "Invalid GPU number for cluster #{cluster_name}"
+            end
+            row[:gpu] = gpu
+            row[:gpudevice] = local_id
+            row[:gpudevicepath] = selected_gpu['device']
+            row[:gpumodel] = selected_gpu['model']
           end
 
           core_idx += 1
@@ -1443,7 +1430,7 @@ def generate_oar_properties(options)
 
   # DO=table
   if options.key? :table and options[:table]
-    export_rows_as_formated_line(generated_hierarchy)
+    display_resources_table(generated_hierarchy)
   end
 
   # Do=Diff

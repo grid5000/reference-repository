@@ -9,8 +9,25 @@ queues:
 nodes:
   abacus1-1:
     gpu_devices:
+      nvidia0:
+        cpu_affinity: 0
+        device: "/dev/nvidia0"
+        memory: 11996758016
+        model: Tesla K80
+        power_default_limit: 149.00 W
+        vbios_version: 80.21.1B.00.01
+        vendor: Nvidia
+        reservation: false
       nvidia1:
-        cpu_affinity_override: 1
+        cpu_affinity: 0
+        device: "/dev/nvidia1"
+        memory: 11996758016
+        model: Tesla K80
+        power_default_limit: 149.00 W
+        vbios_version: 80.21.1B.00.02
+        vendor: Nvidia
+        reservation: false
+        cpu_affinity_override: 1    
     supported_job_types:
       deploy: true
       besteffort: true

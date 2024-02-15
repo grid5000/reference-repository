@@ -200,8 +200,17 @@ class OarPropertiesGenerator < WikiGenerator
     "gpu_model" => {
       "description" => "The type of GPU available"
     },
+    "gpu_mem" => {
+      "description" => "The amount of memory in MB for the GPU"
+    },
     "gpu_count" => {
       "description" => "The number of GPU cards available"
+    },
+    "gpu_compute_capability" => {
+      "description" => "The NVidia compute capability of GPU cards available"
+    },
+    "gpu_compute_capability_major" => {
+      "description" => "The major version of the NVidia compute capability of GPU cards available (useful for filtering on recent GPUs)"
     },
     "wattmeter" => {
       "description" => "The type of wattmeter available",

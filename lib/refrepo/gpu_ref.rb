@@ -1,7 +1,7 @@
 # coding: utf-8
 
 NVIDIA = 'Nvidia'
-MINIMAL_COMPUTE_CAPABILITY_SUPPORTED = 3.0
+MINIMAL_COMPUTE_CAPABILITY_SUPPORTED = 5.2
 
 # Sources to fill this data:
 # - https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units
@@ -210,7 +210,7 @@ class GPURef
         'fp-16' => 197400000000,
         'fp-32' => 12630000000000,
         'fp-64' => 394800000000,
-      },     
+      },
     },
     'Quadro RTX 6000' => {
       'cores'              => 4608,

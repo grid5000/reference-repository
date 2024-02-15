@@ -212,11 +212,11 @@ namespace :gen do
     all_puppet_tasks.each { |t|
       generated_desc = (t == :'refapi-subset') ? 'description' : 'configuration'
 
-      # tasks oxidizedg5k, kavlanng5k and stitcherg5K doesn't use the parameters
-      # SITE, CLUSTER and VERBOSE. So we don't print them in the 'rake -T' for
+      # tasks oxidizedg5k and stitcherg5K doesn't use the parameters
+      # SITE and VERBOSE. So we don't print them in the 'rake -T' for
       # theses tasks.
       parameters = "[OUTPUTDIR=(default: #{PUPPET_ODIR})] [CONFDIR=...]"
-      if not [:oxidizedg5k, :kavlanngg5k, :stitcherg5k].include? t
+      if not [:oxidizedg5k, :stitcherg5k].include? t
         parameters = "[SITE={grenoble,...}] #{parameters} [VERBOSE=1]"
       end
       desc "Generate #{t} #{generated_desc} -- parameters: #{parameters}"

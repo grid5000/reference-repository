@@ -4,7 +4,7 @@
     "port-channel1": {
       "kind": "router",
       "port": "port-channel5",
-      "rate": 800000000000,
+      "rate": 80000000000,
       "uid": "gw"
     }
   },
@@ -46,6 +46,10 @@
         {
         },
         {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "ethernet1/1/6",
+          "uid": "grosminet-1"
         },
         {
         },
@@ -89,13 +93,13 @@
         },
         {
           "kind": "channel",
-          "rate": 25000000000,
+          "rate": 40000000000,
           "snmp_name": "ethernet1/1/25:1",
           "uid": "port-channel1"
         },
         {
           "kind": "channel",
-          "rate": 25000000000,
+          "rate": 40000000000,
           "snmp_name": "ethernet1/1/26:1",
           "uid": "port-channel1"
         }

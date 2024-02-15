@@ -96,20 +96,18 @@ sgrappe:
            uid: grappe-15
         16:
            uid: grappe-16
-        17: 
+        17:
            uid: grouille-1-eth2
         18:
            uid: grouille-2-eth2
         25:
            snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
-           kind: node
-           rate: 25000000000
+           rate: 40_000_000_000
            uid: port-channel1
            kind: channel
         26:
            snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
-           kind: node
-           rate: 25000000000
+           rate: 40_000_000_000
            uid: port-channel1
            kind: channel
   channels:
@@ -117,4 +115,4 @@ sgrappe:
       port: port-channel4
       uid: gw
       kind: router
-      rate: 800000000000
+      rate: 80_000_000_000
