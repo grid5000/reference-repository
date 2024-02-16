@@ -1,0 +1,41 @@
+---
+model: NVIDIA Grace Hopper
+created_at: 2024-02-15
+kavlan: false
+boot_type: uefi
+exotic: true
+queues:
+  - admin
+  - testing
+nodes:
+  hydra-[1-4]:
+    chassis:
+      manufactured_at: 2024-02-15 # TODO: retrieve info from manufacturer
+      warranty_end: 2027-02-15 # TODO: retrieve info from manufacturer
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Haswell # TODO: replace with 'Grace'
+      clock_speed: 2000000000 # TODO: replace with Proc speed
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        interface: Ethernet
+        enabled: true
+        mountabled: true
+        mounted: true
+    storage_devices:
+      disk0: # Replace with PCI path
+        id: disk0
+        interface: SAS
+        by_path: "/dev/disk/by-path/dummy" # Replace with symbolic link
+    software:
+      standard-environment: debian11-arm64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
