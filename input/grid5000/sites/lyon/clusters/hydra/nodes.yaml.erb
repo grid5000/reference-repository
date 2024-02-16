@@ -1,0 +1,93 @@
+<%
+  SITE_IPV4_INDEX = 57
+  NODES_NUMBER = 4
+  # MAC addresses declaration
+  #  TODO: Add primary interfaces MAC addresses in this list
+  #        and uncomment this section
+  MAC_ETH0_LIST = %w(
+    a0:88:c2:98:fc:82
+    a0:88:c2:98:6c:a0
+    a0:88:c2:99:18:42
+    a0:88:c2:99:19:02
+  )
+
+  MAC_BMC_LIST = %w(
+    74:d4:dd:47:1e:21
+    74:d4:dd:47:1e:cd
+    74:d4:dd:47:e4:7f
+    74:d4:dd:47:e4:67
+  )
+%>
+---
+nodes:
+<% (1..NODES_NUMBER).each { |i| %>
+  hydra-<%= i %>:
+    architecture:
+      nb_procs: 1 
+      nb_cores: 72 
+      nb_threads: 72
+      platform_type: aarch64 
+      cpu_core_numbering: contiguous 
+    bios:
+      release_date: 01/01/2000 # Fake date, will be replaced by g5k-checks
+      vendor: Unknown # Fake vendor, will be replaced by g5k-checks
+      version: 1 # Fake version, will be replaced by g5k-checks
+    bmc_version: v1 # Fake version, will be replaced by g5k-checks
+    chassis:
+      manufacturer: Unknown # Fake manufacturer, will be replaced by g5k-checks
+      name: Unknown # Fake name, will be replaced by g5k-checks
+    main_memory:
+      ram_size: 8 # Fake size, will be replaced by g5k-checks
+    memory_devices:
+      dimm:
+        size: 8 # Fake size, will be replaced by g5k-checks
+        technology: dram # Common memory technology, will be replaced by g5k-checks
+    processor:
+      model: Unknown # Fake model name, will be replaced by g5k-checks
+      other_description: description # Fake description, will be replaced by g5k-checks
+      vendor: vendor # Fake vendor, will be replaced by g5k-checks
+      version: vendor # Fake version, will be replaced by g5k-checks
+      cache_l1d: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l1i: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l2: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l3: 8 # Fake cache, will be replaced by g5k-checks
+      instruction_set: x86-64 # Common instruction set, will be replaced by g5k-checks
+      microcode: '0xd000001' # Fake microcode, will be replaced by g5k-checks
+      ht_capable: true # Default ht capable value, will be replaced by g5k-checks 
+    main_memory:
+      ram_size: 8 # Fake ram size, will be replaced by g5k-checks
+    memory_devices:
+      dimm_proc 1 dimm 1: # Fake dimm name, will be replaced by g5k-checks
+        size: 8 # Fake dimm size, will be replaced by g5k-checks
+        technology: dram # Default dimm technology, will be replaced by g5k-checks
+    operating_system:
+      cstate_driver: unknown # Fake driver, will be replaced by g5k-checks
+      cstate_governor: unknown # Fake governor, will be replaced by g5k-checks
+      ht_enabled: true # common value for hyper threading, will be replaced by g5k-checks
+      pstate_driver: unknwon # Fake driver, will be replaced by g5k-checks
+      pstate_governor: unknown # Fake driver, will be replaced by g5k-checks
+      turboboost_enabled: true # Default value for turboboost, will be replaced by g5k-checks 
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        mac: <%= MAC_BMC_LIST[i - 1] %>
+        ip: 172.17.<%= SITE_IPV4_INDEX %>.<%= i %>
+      eth0:
+        interface: Ethernet
+        management: false
+        driver: mlx5_core
+        name: enp1s0f0np0
+        rate: 10000000000
+        mac: <%= MAC_ETH0_LIST[i - 1] %>
+        ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
+    storage_devices:
+      pci-0004:01:00.0-nvme-1:
+        storage: SSD # Common value, will be replaced by g5k-checks
+        model: unknown # fake value,  
+        size: 8 # Fake value, will be replaced by g5k-checks
+      pci-0006:01:00.0-scsi-0:2:0:0:
+        storage: SSD # Common value, will be replaced by g5k-checks
+        model: unknown # fake value,  
+        size: 8 # Fake value, will be replaced by g5k-checks
+<% } %>
