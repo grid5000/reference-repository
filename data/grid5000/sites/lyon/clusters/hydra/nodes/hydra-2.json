@@ -1,0 +1,137 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 72,
+    "nb_procs": 1,
+    "nb_threads": 72,
+    "platform_type": "aarch64"
+  },
+  "bios": {
+    "release_date": "01/01/2000",
+    "vendor": "Unknown",
+    "version": 1
+  },
+  "bmc_version": "v1",
+  "chassis": {
+    "manufactured_at": "2024-02-15",
+    "manufacturer": "Unknown",
+    "name": "Unknown",
+    "warranty_end": "2027-02-15"
+  },
+  "exotic": true,
+  "main_memory": {
+    "ram_size": 8
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 8,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.57.2",
+      "ip6": "2001:660:4406:400:a::2",
+      "kavlan": false,
+      "mac": "a0:88:c2:98:6c:a0",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "hydra-2.lyon.grid5000.fr",
+      "rate": 10000000000,
+      "switch": "sneowise",
+      "switch_port": "1/12"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.57.2",
+      "kavlan": false,
+      "mac": "74:d4:dd:47:1e:cd",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "hydra-2-bmc.lyon.grid5000.fr"
+    }
+  ],
+  "nodeset": "hydra",
+  "operating_system": {
+    "cstate_driver": "unknown",
+    "cstate_governor": "unknown",
+    "ht_enabled": true,
+    "pstate_driver": "unknwon",
+    "pstate_governor": "unknown",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 55152000000,
+    "node_flops": 3970944000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 8,
+    "cache_l1i": 8,
+    "cache_l2": 8,
+    "cache_l3": 8,
+    "clock_speed": 3447000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Haswell",
+    "microcode": "0xd000001",
+    "model": "Unknown",
+    "other_description": "description",
+    "vendor": "vendor",
+    "version": "vendor"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2024052820",
+    "standard-environment": "debiangh11-arm64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0004:01:00.0-nvme-1",
+      "id": "disk0",
+      "interface": "NVME",
+      "model": "unknown",
+      "size": 8,
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0006:01:00.0-scsi-0:2:0:0",
+      "id": "disk1",
+      "interface": "SCSI",
+      "model": "unknown",
+      "size": 8,
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "hydra-2"
+}
