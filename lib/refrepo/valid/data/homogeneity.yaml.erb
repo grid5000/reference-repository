@@ -216,13 +216,6 @@ nancy:
     - ~gpu_devices.nvidia3.performance.fp-32
     - ~gpu_devices.nvidia3.performance.fp-64
 
-  graphique-4:
-    - ~gpu_devices.nvidia1.vbios_version
-  graphique-[4-5]:
-    - ~gpu_devices.nvidia0.vbios_version
-    - ~gpu_devices.nvidia1.vbios_version
-  graphique-[5-6]:
-    - ~gpu_devices.nvidia0.vbios_version
   grele-13:
     - ~gpu_devices.nvidia0.vbios_version
     - ~gpu_devices.nvidia1.vbios_version
@@ -238,30 +231,6 @@ nancy:
     - +pdu[1]
   gros-77:
     - -pdu[1]
-  grcinq-2:
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
-  grcinq-[5-6]:
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
-  grcinq-[8-9]:
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
-  grcinq-[18-19]:
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
-  grcinq-[30-31]:
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
-  grcinq-[46-47]:
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
-    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
   gruss-[1-2]:
     - +storage_devices.pci-0000:01:00.0-scsi-0:0:0:0
     - -storage_devices.pci-0000:01:00.0-scsi-0:0:1:0
