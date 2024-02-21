@@ -25,11 +25,11 @@ nodes:
 <% (1..NODES_NUMBER).each { |i| %>
   hydra-<%= i %>:
     architecture:
-      nb_procs: 1 # TODO: replace with number of CPUs
-      nb_cores: 72 # TODO: replace with total cores number
-      nb_threads: 144 # TODO: replace with total threads number (by including hyper threading)
-      platform_type: aarch64 # TODO: replace with CPU architecture: [x86_64|aarch64|ppc64le]
-      cpu_core_numbering: contiguous # TODO: replace with [contiguous|round-robin]
+      nb_procs: 1 
+      nb_cores: 72 
+      nb_threads: 72
+      platform_type: aarch64 
+      cpu_core_numbering: contiguous 
     bios:
       release_date: 01/01/2000 # Fake date, will be replaced by g5k-checks
       vendor: Unknown # Fake vendor, will be replaced by g5k-checks
