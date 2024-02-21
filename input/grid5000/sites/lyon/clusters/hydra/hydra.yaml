@@ -34,7 +34,11 @@ nodes:
       disk0: # Replace with PCI path
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # Replace with symbolic link
+        by_path: "/dev/disk/by-path/pci-0004:01:00.0-nvme-1"
+      disk1: # Replace with PCI path
+        id: disk1
+        interface: SAS
+        by_path: "/dev/disk/by-path/pci-0006:01:00.0-scsi-0:2:0:0"
     software:
       standard-environment: debian11-arm64-std
     management_tools:
