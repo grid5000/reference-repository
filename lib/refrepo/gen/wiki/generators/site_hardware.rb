@@ -130,7 +130,7 @@ class SiteHardwareGenerator < WikiGenerator
       elsif queue != ''
         access_conditions << "<b>#{queue}</b>&nbsp;queue"
       end
-      access_conditions << '<b>[[Getting_Started#Selecting_specific_resources|exotic]]</b>&nbsp;job&nbsp;type' if cluster_hash.map { |_k, v| v['exotic']}.first
+      access_conditions << "<b>[[Exotic##{site.capitalize}:_#{cluster_uid}|exotic]]</b>&nbsp;job&nbsp;type" if cluster_hash.map { |_k, v| v['exotic']}.first
       table_columns = []
       table_columns << (with_sites == true ? [{attributes: 'rowspan=2', text: 'Site'}] : []) + [{attributes: 'rowspan=2', text: 'Cluster'},  {attributes: 'rowspan=2', text: 'Access Condition'}, {attributes: 'rowspan=2', text: 'Date of arrival'}, {attributes: 'rowspan=2', text: 'Manufacturing date'},{ attributes: 'data-sort-type="number" rowspan=2', text: 'Nodes' }, {attributes: 'colspan=4', text:  'CPU'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Memory' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Storage' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : [{attributes: 'rowspan=2', text: 'Accelerators'}])
       table_columns << [{ attributes: 'data-sort-type="number"', text: '#' }, 'Name', { attributes: 'data-sort-type="number"', text: 'Cores' }, 'Architecture' ]
