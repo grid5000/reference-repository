@@ -193,7 +193,7 @@ class SiteHardwareGenerator < WikiGenerator
         queue_str = cluster_hash.map { |_k, v| v['queue_str']}.first
         access_conditions = []
         access_conditions << queue_str if queue_str != ''
-        access_conditions << "exotic job type" if cluster_hash.map { |_k, v| v['exotic']}.first
+        access_conditions << "[[Exotic##{site.capitalize}:_#{cluster_uid}|exotic]] job type" if cluster_hash.map { |_k, v| v['exotic']}.first
 
         cluster_drawgantt_url = get_queue_drawgantt_url(site, queue)+"?filter=#{cluster_uid}%20only"
         text_data <<  ["\n== [#{cluster_drawgantt_url} #{cluster_uid}] ==\n"]
@@ -268,6 +268,7 @@ class SiteHardwareGenerator < WikiGenerator
           hash[accelerators] = h['accelerators_long'] if accelerators
           text_data << MW::generate_hash_table(hash)
         }
+        text_data << "\n'''Note:''' This cluster is defined as exotic. Please read the '''[[Exotic##{site.capitalize}:_#{cluster_uid}|exotic]]''' page for more information.<br/>" if cluster_hash.map { |_k, v| v['exotic']}.first
       }
     }
 
