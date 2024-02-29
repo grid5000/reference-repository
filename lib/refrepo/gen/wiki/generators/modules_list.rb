@@ -14,7 +14,7 @@ class ModulesList < WikiGenerator
             output = ssh.exec!(cmd)
             return Hash[JSON.parse(output).map do |m|
                 [m["package"], {
-                  "help": m["versions"][0]["help"], 
+                  "help": m["versions"].sort_by{|v| v["versionName"]}.reverse[0]["help"],
                   "versions": m["versions"].map { |v| v["full"].split('/')[1] }
                 }]
               end]
@@ -22,7 +22,7 @@ class ModulesList < WikiGenerator
     end
 
     def generate_content(_options)
-        @generated_content = "{{Note|text=If you need additional software to be installed, feel free to contact [mailto:support-starff@lists.grid5000.fr Grid5000 support team] and we can look into it.}}\n\n"
+        @generated_content = "{{Note|text=If you need additional software to be installed, feel free to contact [mailto:support-staff@lists.grid5000.fr Grid5000 support team] and we can look into it.}}\n\n"
         table_options = 'class="wikitable sortable"'
         table_data = []
         table_columns = ["Name", "Description", "Version(s)"]
