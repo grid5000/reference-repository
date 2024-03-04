@@ -130,7 +130,7 @@ class SiteHardwareGenerator < WikiGenerator
       elsif queue != ''
         access_conditions << "<b>#{queue}</b>&nbsp;queue"
       end
-      access_conditions << '<b>[[Getting_Started#Selecting_specific_resources|exotic]]</b>&nbsp;job&nbsp;type' if cluster_hash.map { |_k, v| v['exotic']}.first
+      access_conditions << "<b>[[Exotic##{site.capitalize}:_#{cluster_uid}|exotic]]</b>&nbsp;job&nbsp;type" if cluster_hash.map { |_k, v| v['exotic']}.first
       table_columns = []
       table_columns << (with_sites == true ? [{attributes: 'rowspan=2', text: 'Site'}] : []) + [{attributes: 'rowspan=2', text: 'Cluster'},  {attributes: 'rowspan=2', text: 'Access Condition'}, {attributes: 'rowspan=2', text: 'Date of arrival'}, {attributes: 'rowspan=2', text: 'Manufacturing date'},{ attributes: 'data-sort-type="number" rowspan=2', text: 'Nodes' }, {attributes: 'colspan=4', text:  'CPU'}, { attributes: 'data-sort-type="number" rowspan=2', text: 'Memory' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Storage' }, { attributes: 'data-sort-type="number" rowspan=2', text: 'Network' }] + ((site_accelerators.zero? && with_sites == false) ? [] : [{attributes: 'rowspan=2', text: 'Accelerators'}])
       table_columns << [{ attributes: 'data-sort-type="number"', text: '#' }, 'Name', { attributes: 'data-sort-type="number"', text: 'Cores' }, 'Architecture' ]
@@ -193,7 +193,7 @@ class SiteHardwareGenerator < WikiGenerator
         queue_str = cluster_hash.map { |_k, v| v['queue_str']}.first
         access_conditions = []
         access_conditions << queue_str if queue_str != ''
-        access_conditions << "exotic job type" if cluster_hash.map { |_k, v| v['exotic']}.first
+        access_conditions << "[[Exotic##{site.capitalize}:_#{cluster_uid}|exotic]] job type" if cluster_hash.map { |_k, v| v['exotic']}.first
 
         cluster_drawgantt_url = get_queue_drawgantt_url(site, queue)+"?filter=#{cluster_uid}%20only"
         text_data <<  ["\n== [#{cluster_drawgantt_url} #{cluster_uid}] ==\n"]
@@ -268,6 +268,7 @@ class SiteHardwareGenerator < WikiGenerator
           hash[accelerators] = h['accelerators_long'] if accelerators
           text_data << MW::generate_hash_table(hash)
         }
+        text_data << "\n'''Note:''' This cluster is defined as exotic. Please read the '''[[Exotic##{site.capitalize}:_#{cluster_uid}|exotic]]''' page for more information.<br/>" if cluster_hash.map { |_k, v| v['exotic']}.first
       }
     }
 
