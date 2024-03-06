@@ -5,14 +5,19 @@
   #  TODO: Add primary interfaces MAC addresses in this list
   #        and uncomment this section
   MAC_ETH0_LIST = %w(
+    a0:88:c2:98:fc:83
+    a0:88:c2:98:6c:a0
+    aa:bb:cc:dd:ee:f2
+    aa:bb:cc:dd:ee:f3
+  )
+
+  MAC_ETH_USB_LIST = %w(
     0c:37:96:99:79:57
     aa:bb:cc:dd:ee:f1
     aa:bb:cc:dd:ee:f2
     aa:bb:cc:dd:ee:f3
   )
 
-  #  TODO: Add BMCs MAC address in this list
-  #        and uncomment this section
   MAC_BMC_LIST = %w(
     74:d4:dd:47:1e:21
     74:d4:dd:47:1e:cd
@@ -75,13 +80,21 @@ nodes:
         mac: <%= MAC_BMC_LIST[i - 1] %>
         ip: 172.17.<%= SITE_IPV4_INDEX %>.<%= i %>
       eth0:
+        interface: Ethernet
+        management: false
+        drive: mlx_core
+        name: enp1s0f1np1
+        rate: 1000
+        mac: <%= MAC_ETH0_LIST[i - 1] %>
+        ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
+      eth1:
         interface: Ethernet # Default value for network interface,
         management: false
         driver: ice # TODO: Replace with network interface driver
         name: eno1 # TODO: replace with predictible interface
         rate: 1000 # TODO: replace with interface max rate
-        mac: <%= MAC_ETH0_LIST[i - 1] %>
-        ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
+        mac: <%= MAC_ETH_USB_LIST[i - 1] %>
+        ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i + 4 %>
       # TODO: if your cluster has other network interfaces, add them below.
     storage_devices:
       disk0: # TODO: rename with the PCI PATH of disk.

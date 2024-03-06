@@ -28,8 +28,13 @@ nodes:
       eth0:
         interface: Ethernet
         enabled: true
-        mountabled: true
+        mountable: true
         mounted: true
+      eth1:
+        interface: Ethernet
+        enabled: false 
+        mountable: true
+        mounted: false
     storage_devices:
       disk0: # Replace with PCI path
         id: disk0
