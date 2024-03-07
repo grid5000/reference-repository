@@ -5,7 +5,7 @@
   #  TODO: Add primary interfaces MAC addresses in this list
   #        and uncomment this section
   MAC_ETH0_LIST = %w(
-    a0:88:c2:98:fc:83
+    a0:88:c2:98:fc:82
     a0:88:c2:98:6c:a0
     aa:bb:cc:dd:ee:f2
     aa:bb:cc:dd:ee:f3
@@ -83,7 +83,7 @@ nodes:
         interface: Ethernet
         management: false
         drive: mlx_core
-        name: enp1s0f1np1
+        name: enp1s0f0np0
         rate: 1000
         mac: <%= MAC_ETH0_LIST[i - 1] %>
         ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
