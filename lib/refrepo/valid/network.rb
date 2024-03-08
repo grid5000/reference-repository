@@ -15,11 +15,15 @@ def check_network_description(options)
   options[:sites].each do |site|
     puts "Checking #{site}..."
 
-    # get list of network equipments and nodes
+    # get list of network equipments, nodes and server
     neteqs = []
+    servers = []
     nodes = []
     Dir::glob("data/grid5000/sites/#{site}/network_equipments/*.json").each do |f|
       neteqs << JSON::parse(IO::read(f))
+    end
+    Dir::glob("data/grid5000/sites/#{site}/servers/*.json").each do |f|
+      servers << JSON::parse(IO::read(f))
     end
     Dir::glob("data/grid5000/sites/#{site}/clusters/*/nodes/*.json").each do |f|
       nodes << JSON::parse(IO::read(f))
@@ -47,6 +51,16 @@ def check_network_description(options)
           'nickname' => nic['network_address'].split('.')[0]
         }
       end
+    end
+
+    # we select NFS and group_storage servers
+    servers.select{|s| s.has_key?('group_storage') || (s.has_key?('alias')  && s['alias'].is_a?(Array) && s['alias'].include?('nfs'))}.each do |s|
+      p s['alias']
+      netnodes << {
+        'kind' => 'storage',
+        'uid' => s['uid'],
+        'nickname' => s['alias'].select{|v| v == "nfs" or v.include?('storage')}.join(' ')
+      }
     end
 
     neteqs.each do |eq|
@@ -335,7 +349,7 @@ def generate_dot(netnodes, links, site)
     "100G" => 2.5,
     "2x100G" => 3}
 
-  colors = {"router" => "indianred",
+  colors = {"router" => "lightpink",
     "switch" => "gold",
     "cluster" => "aquamarine1"}
 
