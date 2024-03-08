@@ -389,7 +389,7 @@ def generate_dot(netnodes, links, site)
   data = [header, content.sort, trailer].flatten.join("\n")
   IO.write("#{name}.dot", data)
   sh("dot -Tpdf #{name}.dot -o#{name}.pdf")
-  sh("dot -Tpng #{name}.dot -o#{name}.png")
+  sh("dot -Tsvg #{name}.dot -o#{name}.svg")
 end
 
 def sh(cmd)
