@@ -333,7 +333,7 @@ def generate_dot(netnodes, links, site)
   header << "root=\"#{router}\";"
   header << "layout=twopi;"
   header << "overlap=vpsc;"
-  header << "outputorder=edgesfirst;"
+  #header << "outputorder=edgesfirst;"
   header << "splines=true;"
   header << "ranksep=2.0;"
   # output graph nodes, equipment first
@@ -346,14 +346,14 @@ def generate_dot(netnodes, links, site)
   end
 
   # define line thickness
-  thickness = {"1G" => 0.05,
-    "10G" => 0.2,
-    "2x10G" => 0.4,
-    "25G" => 0.5,
-    "40G" => 1,
-    "2x40G" => 1.5, 
-    "100G" => 2, 
-    "2x100G" => 4}
+  thickness = {"1G" => 0.1,
+    "10G" => 0.4,
+    "2x10G" => 0.8,
+    "25G" => 1,
+    "40G" => 1.5,
+    "2x40G" => 2.0,
+    "100G" => 2.5,
+    "2x100G" => 3}
   # finally output links
   # between network equipments
   eqlinks.each do |l|
