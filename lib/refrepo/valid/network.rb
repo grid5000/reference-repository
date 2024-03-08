@@ -324,6 +324,25 @@ def generate_dot(netnodes, links, site)
 
   nodeslinks.map! { |e| e[1] = sh("echo #{e[1].uniq.join(' ')}|nodeset -f"); e }
 
+  # define line thickness, node color and shape
+  thickness = {"1G" => 0.1,
+    "10G" => 0.4,
+    "2x10G" => 0.8,
+    "4x10G" => 1.5,
+    "25G" => 1,
+    "40G" => 1.5,
+    "2x40G" => 2.0,
+    "100G" => 2.5,
+    "2x100G" => 3}
+
+  colors = {"router" => "lightpink",
+    "switch" => "gold",
+    "cluster" => "aquamarine1"}
+
+  shapes = {"router" => "hexagon",
+    "switch" => "box3d",
+    "cluster" => "oval"}
+
   header = []
   content = []
   trailer = []
@@ -332,20 +351,16 @@ def generate_dot(netnodes, links, site)
   router = mynetnodes.select { |n| n['kind'] == 'router' }.first['nickname']
   header << "root=\"#{router}\";"
   header << "layout=twopi;"
-  header << "overlap=scale;"
-  if %w{sophia}.include?(site)
-    header << "splines=false;"
-  else
-    header << "splines=true;"
-  end
+  header << "overlap=vpsc;"
+  header << "splines=true;"
   header << "ranksep=2.0;"
   # output graph nodes, equipment first
-  mynetnodes.select { |n| n['kind'] == 'router' or n['kind'] == 'switch' }.map { |e| e['uid'] }.sort.each do |eq|
-    content << "\"#{eq}\" [shape=box color=\"gold\" style=\"filled\"];"
+  mynetnodes.select { |n| n['kind'] == 'router' or n['kind'] == 'switch' }.sort_by{|e| e['uid']}.each do |eq|
+    content << "\"#{eq['uid']}\" [shape=#{shapes[eq['kind']]} color=\"#{colors[eq['kind']]}\" style=\"filled\"];"
   end
   # then nodes groups
   nodeslinks.each do |e|
-    content << "\"#{e[1]}\" [color=\"chartreuse2\" style=\"filled\"];"
+    content << "\"#{e[1]}\" [shape=#{shapes['cluster']} color=\"#{colors['cluster']}\" style=\"filled\"];"
   end
 
   # finally output links
@@ -356,7 +371,7 @@ def generate_dot(netnodes, links, site)
     else
       r = "#{l['count']}x#{l['rate'] / 10**9}G"
     end
-    content << "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\"];"
+    content << "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\" penwidth=#{thickness[r]}];"
   end
   # between network equipments and nodes
   nodeslinks.each do |l|
@@ -366,13 +381,13 @@ def generate_dot(netnodes, links, site)
         iface, target = e
         iface = iface.gsub('eth', '')
         r = "#{target['rate'] / 10**9}G"
-        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",headlabel=\"#{iface}\"];"
+        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",headlabel=\"#{iface}\",penwidth=#{thickness[r]}];"
       end
     else
       # only one interface
       l[0][1].each_pair do |_iface, target|
         r = "#{target['rate'] / 10**9}G"
-        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",len=2.0];"
+        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",len=2.0,penwidth=#{thickness[r]}];"
       end
     end
   end
