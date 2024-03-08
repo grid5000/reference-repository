@@ -332,12 +332,9 @@ def generate_dot(netnodes, links, site)
   router = mynetnodes.select { |n| n['kind'] == 'router' }.first['nickname']
   header << "root=\"#{router}\";"
   header << "layout=twopi;"
-  header << "overlap=scale;"
-  if %w{sophia}.include?(site)
-    header << "splines=false;"
-  else
-    header << "splines=true;"
-  end
+  header << "overlap=vpsc;"
+  header << "outputorder=edgesfirst;"
+  header << "splines=true;"
   header << "ranksep=2.0;"
   # output graph nodes, equipment first
   mynetnodes.select { |n| n['kind'] == 'router' or n['kind'] == 'switch' }.map { |e| e['uid'] }.sort.each do |eq|
@@ -348,6 +345,15 @@ def generate_dot(netnodes, links, site)
     content << "\"#{e[1]}\" [color=\"chartreuse2\" style=\"filled\"];"
   end
 
+  # define line thickness
+  thickness = {"1G" => 0.05,
+    "10G" => 0.2,
+    "2x10G" => 0.4,
+    "25G" => 0.5,
+    "40G" => 1,
+    "2x40G" => 1.5, 
+    "100G" => 2, 
+    "2x100G" => 4}
   # finally output links
   # between network equipments
   eqlinks.each do |l|
@@ -356,8 +362,9 @@ def generate_dot(netnodes, links, site)
     else
       r = "#{l['count']}x#{l['rate'] / 10**9}G"
     end
-    content << "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\"];"
+    content << "\"#{l['switch']}\" -- \"#{l['target']}\" [label=\"#{r}\",penwidth=#{thickness[r]}];"
   end
+  
   # between network equipments and nodes
   nodeslinks.each do |l|
     if l[0][1].length > 1
@@ -366,13 +373,13 @@ def generate_dot(netnodes, links, site)
         iface, target = e
         iface = iface.gsub('eth', '')
         r = "#{target['rate'] / 10**9}G"
-        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",headlabel=\"#{iface}\"];"
+        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",headlabel=\"#{iface}\",penwidth=#{thickness[r]}];"
       end
     else
       # only one interface
       l[0][1].each_pair do |_iface, target|
         r = "#{target['rate'] / 10**9}G"
-        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",len=2.0];"
+        content << "\"#{target['switch']}\" -- \"#{l[1]}\" [label=\"#{r}\",len=2.0,penwidth=#{thickness[r]}];"
       end
     end
   end
