@@ -41,6 +41,16 @@ nodes:
         enabled: false
         mountable: false
         mounted: false
+  grouille-1:
+    storage_devices:
+      pci-0000:01:00.0-scsi-0:0:1:0:
+        interface: SAS
+        id: disk0
+      pci-0000:01:00.0-scsi-0:0:0:0:
+        interface: SATA
+        id: disk1
+        reservation: true
+  grouille-2:
     storage_devices:
       pci-0000:01:00.0-scsi-0:0:1:0:
         interface: SAS
