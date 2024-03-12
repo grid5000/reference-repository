@@ -14,9 +14,9 @@ class SiteNetworkGenerator < WikiGenerator
         'filename' => "#{name}.dot",
         'path' => "./#{name}.dot",
         'comment' => "#{site.capitalize} network description" },
-      { 'content-type' => 'image/png',
-        'filename' => "#{name}.png",
-        'path' => "./#{name}.png",
+      { 'content-type' => 'image/svg',
+        'filename' => "#{name}.svg",
+        'path' => "./#{name}.svg",
         'comment' => "#{site.capitalize} network description" }
     ]
   end
