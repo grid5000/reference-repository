@@ -142,32 +142,6 @@ lyon:
     boot.timeout.1: 600
     remoteops.power_status.soft.cmd: "/usr/bin/lanpower -s -m HOSTNAME_SHORT"
 nancy:
-  graoully:
-    reboot.timeout: 300
-    reboot.kexec: 120
-    user.params: console=tty0 console=ttyS0,115200
-    deploy.params: igb.blacklist=yes ETH_DEV=eth0 console=tty0 console=ttyS0,115200
-      ramdisk_size=260000 rw noapic init=/linuxrc
-    dhcp.serial: 1 115200
-    deployment.timeout: 900
-    broadcast.retries: 0
-    broadcast.timeout: 900
-    boot.timeout.0: 180
-    boot.timeout.1: 900
-    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
-  grisou:
-    reboot.timeout: 300
-    reboot.kexec: 120
-    user.params: console=tty0 console=ttyS0,115200
-    deploy.params: igb.blacklist=yes ETH_DEV=eth0 console=tty0 console=ttyS0,115200
-      ramdisk_size=260000 rw noapic init=/linuxrc
-    dhcp.serial: 1 115200
-    deployment.timeout: 900
-    broadcast.retries: 0
-    broadcast.timeout: 900
-    boot.timeout.0: 180
-    boot.timeout.1: 900
-    remoteops.reboot.very_hard.cmd: "/usr/bin/lanpower -c safety_cycle -m HOSTNAME_SHORT"
   grvingt:
     reboot.timeout: 400
     reboot.kexec: 120
