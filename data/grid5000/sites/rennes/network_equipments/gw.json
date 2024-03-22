@@ -21,6 +21,12 @@
       "port": "port-channel286",
       "rate": 20000000000,
       "uid": "swcore-01-rba"
+    },
+    "lag4": {
+      "kind": "server",
+      "port": "lag4",
+      "rate": 50000000000,
+      "uid": "srv-data2"
     }
   },
   "ip": "172.16.111.254",
@@ -91,8 +97,14 @@
         {
         },
         {
+          "kind": "channel",
+          "snmp_name": "1/1/29",
+          "uid": "lag4"
         },
         {
+          "kind": "channel",
+          "snmp_name": "1/1/30",
+          "uid": "lag4"
         },
         {
           "kind": "server",

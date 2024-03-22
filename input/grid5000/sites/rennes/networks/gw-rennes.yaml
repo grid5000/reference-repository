@@ -69,6 +69,12 @@ gw:
       kavlan_pattern: "%LINECARD%/1/%PORT%"
       rate: 25000000000
       ports:
+        29:
+          uid: lag4
+          kind: channel
+        30:
+          uid: lag4
+          kind: channel
         31:
           uid: srv-1
           kind: server
@@ -128,3 +134,8 @@ gw:
       rate: 20000000000
       uid: swcore-01-rba
       port: port-channel286
+    lag4:
+      kind: server
+      rate: 50000000000
+      uid: srv-data2
+      port: lag4
