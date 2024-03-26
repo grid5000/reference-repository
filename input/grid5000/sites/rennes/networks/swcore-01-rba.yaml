@@ -19,16 +19,22 @@ swcore-01-rba:
         7:
           uid: port-channel51
           kind: channel
-        6:
-          uid: port-channel50
-          kind: channel
-        8:
-          uid: port-channel51
-          kind: channel
         12:
           uid: port-channel286
           kind: channel
-        13:
+    2:
+      snmp_pattern: "TenGigabitEthernet%LINECARD%/1/%PORT%"
+      kavlan_pattern: "TenGigabitEthernet%LINECARD%/1/%PORT%"
+      rate: 10000000000
+      kind: switch
+      ports:
+        5:
+          uid: port-channel51
+          kind: channel
+        7:
+          uid: port-channel50
+          kind: channel
+        12:
           uid: port-channel286
           kind: channel
   channels:

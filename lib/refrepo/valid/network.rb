@@ -156,10 +156,13 @@ def check_network_description(options)
               puts "INFO: skipping channel for #{channel['kind']} #{port['uid']}"
             elsif channel && ['switch','router'].include?(channel['kind'])
 
-              channel_ports = eq['linecards'].reject { |i| i == {} }.map do |i|
-                i['ports'].reject { |j| j == {} }
-                  .select { |k| k['uid'] == port['uid'] }
-              end.reject { |i| i == [] }.first
+              select_ports = -> (linecards, uid) do
+                linecards.map do |l|
+                  l['ports']&.select { |p| p['uid'] == uid }
+                end.flatten.compact
+              end
+
+              channel_ports = select_ports.call(eq['linecards'], port['uid'])
 
               # Check that port of kind channel is referencing a port of type channel
               # only if the channel is connected to router/switch
@@ -171,10 +174,7 @@ def check_network_description(options)
                 next
               end
 
-              connected_to = connected_to['linecards'].reject { |i| i == {} }.map do |i|
-                i['ports'].reject { |j| j == {} }
-                  .select { |k| k['uid'] == channel['port'] }
-              end.reject { |i| i == [] }.first
+              connected_to = select_ports.call(connected_to['linecards'], channel['port'])
 
               if connected_to.length == 0
                 puts "ERROR: port #{port_to_lookup} on #{eq['uid']} is not connected to an endpoint"
