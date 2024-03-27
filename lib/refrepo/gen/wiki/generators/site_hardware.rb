@@ -66,57 +66,97 @@ class SiteHardwareGenerator < WikiGenerator
   end
 
   def self.generate_header_summary(sites_hash)
-    sites = sites_hash.length
-    clusters = 0
-    nodes = 0
-    cores = 0
-    gpus = 0
-    gpus_cores = 0
-    hdds = 0
-    ssds = 0
-    storage_space = 0
-    ram = 0
-    pmem = 0
-    flops = 0
+    store = Hash.new { |h,k| h[k] = Hash.new(0) }
+    store[''][:sites] = Set.new()
 
     sites_hash.sort.to_h.each do |_site_uid, site_hash|
+      store[''][:sites].add(site_hash['uid'])
       clusters_hash = site_hash.fetch('clusters', {})
-      clusters += clusters_hash.length
+      store[''][:clusters] += clusters_hash.length
       clusters_hash.sort.to_h.each do |_cluster_uid, cluster_hash|
+        cluster_hash['queues'].each do |queue|
+          store[queue][:sites] = Set.new() unless store[queue][:sites].is_a?(Set)
+          store[queue][:sites].add(site_hash['uid'])
+          store[queue][:clusters] += 1
+        end
         cluster_hash['nodes'].sort.to_h.each do |_node_uid, node_hash|
-          next if node_hash['status'] == 'retired'
-          nodes += 1
-          cores += node_hash['architecture']['nb_cores']
-          ram += node_hash['main_memory']['ram_size']
-          pmem += node_hash['main_memory']['pmem_size'] if node_hash['main_memory']['pmem_size']
-          if node_hash['gpu_devices']
-            gpus += node_hash['gpu_devices'].length
-            gpus_cores += node_hash['gpu_devices'].map { |_k, g| g['cores']}.sum
-          end
-          ssds += node_hash['storage_devices'].select { |d| d['storage'] == 'SSD' }.length
-          hdds += node_hash['storage_devices'].select { |d| d['storage'] == 'HDD' }.length
-          node_hash['storage_devices'].each do |i|
-            storage_space += i['size']
-          end
-          flops += node_hash['performance']['node_flops']
+          store_fill(cluster_hash['queues'], node_hash, store)
         end
       end
     end
-    tflops = sprintf("%.1f", flops.to_f / (10**12))
 
-    summary  = "= Summary =\n"
-    summary += sites > 1 ? "* #{sites} sites\n":''
-    summary += "* #{clusters} cluster" + (clusters > 1 ? "s":'') + "\n"
-    summary += "* #{nodes} nodes\n"
-    summary += "* #{cores} CPU cores\n"
-    summary += gpus > 0 ? "* #{gpus} GPUs\n":''
-    summary += gpus > 0 ? "* #{gpus_cores} GPUs cores\n":''
-    summary += "* #{G5K.get_size(ram)} RAM"
-    summary += pmem > 0 ? " + #{G5K.get_size(pmem)} PMEM\n":"\n"
-    summary += (ssds > 0 ? "* #{ssds} SSDs and ":"* ") + "#{hdds} HDDs on nodes (total: #{G5K.get_size(storage_space, 'metric')})\n"
-    summary += "* #{tflops} TFLOPS (excluding GPUs)\n"
+    summary = print_header_summary('= Summary =', '', store)
+
+    if store.key?('default') && store.key?('production')
+      # Split column setup
+      ## Full width outer-table
+      summary += MW::TABLE_START + 'width="100%" border="0"'+ MW::LINE_FEED
+      summary += MW::TABLE_ROW + MW::LINE_FEED
+
+      ## Half-width first cell
+      summary += MW::TABLE_CELL + ' width="50%" valign="top" ' + MW::TABLE_CELL + MW::LINE_FEED
+      ## 1st inner table
+      summary += MW::TABLE_START + ' width="100%"' + MW::LINE_FEED
+      summary += print_header_summary('=== Default queue ressources ===', 'default', store)
+      summary += MW::TABLE_END + MW::LINE_FEED
+
+      ## Half-width second cell
+      summary += MW::TABLE_CELL + ' width="50%" valign="top" ' + MW::TABLE_CELL + MW::LINE_FEED
+      ## 2st inner table
+      summary += MW::TABLE_START + ' width="100%"' + MW::LINE_FEED
+      summary += print_header_summary('=== Production queue ressources ===', 'production', store)
+      summary += MW::TABLE_END + MW::LINE_FEED
+
+      ## End outer-tablie
+      summary += MW::TABLE_END + MW::LINE_FEED
+    end
     summary
   end
+
+  def self.store_fill(queues, node_hash, store)
+    ([''] + queues).each do |queue|
+      store[queue][:nodes] += 1
+      store[queue][:cores] += node_hash['architecture']['nb_cores']
+      store[queue][:ram] += node_hash['main_memory']['ram_size']
+      store[queue][:pmem] += node_hash['main_memory']['pmem_size'] if node_hash['main_memory']['pmem_size']
+      if node_hash['gpu_devices']
+       store[queue][:gpus] += node_hash['gpu_devices'].length
+       store[queue][:gpus_cores] += node_hash['gpu_devices'].map { |_k, g| g['cores']}.sum
+      end
+      store[queue][:ssds] += node_hash['storage_devices'].select { |d| d['storage'] == 'SSD' }.length
+      store[queue][:hdds] += node_hash['storage_devices'].select { |d| d['storage'] == 'HDD' }.length
+      node_hash['storage_devices'].each do |i|
+        store[queue][:storage_space] += i['size']
+      end
+      store[queue][:flops] += node_hash['performance']['node_flops']
+    end
+  end
+
+  def self.print_header_summary(title, queue, store)
+    output = "#{title}\n"
+    output += "* #{store[queue][:sites].size} sites\n" if store[queue][:sites].size > 1
+    output += "* #{store[queue][:clusters]} cluster" + (store[queue][:clusters] > 1 ? "s":'') + "\n"
+    output += "* #{store[queue][:nodes]} nodes\n"
+    output += "* #{store[queue][:cores]} CPU cores\n"
+    # GPU?
+    if store[queue][:gpus] > 0
+      output += "* #{store[queue][:gpus]} GPUs\n"
+      output += "* #{store[queue][:gpus_cores]} GPUs cores\n"
+    end
+    # RAM and PMEM?
+    output += "* #{G5K.get_size(store[queue][:ram])} RAM"
+    output += " + #{G5K.get_size(store[queue][:pmem])} PMEM" if store[queue][:pmem] > 0
+    output += "\n"
+    # SDD? and HDD
+    output += "* "
+    output += "#{store[queue][:ssds]} SSDs and " if store[queue][:ssds] > 0
+    output += "#{store[queue][:hdds]} HDDs on nodes (total: #{G5K.get_size(store[queue][:storage_space], 'metric')})\n"
+    #tflops
+    tflops = sprintf("%.1f", store[queue][:flops].to_f / (10**12))
+    output += "* #{tflops} TFLOPS (excluding GPUs)\n"
+    output
+  end
+
 
   def self.generate_summary(site, with_sites)
     table_columns, table_data = self.generate_summary_data(site, with_sites)
