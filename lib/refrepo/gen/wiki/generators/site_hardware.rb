@@ -49,7 +49,20 @@ class SiteHardwareGenerator < WikiGenerator
       table_columns = self.generate_summary_data(site, true)[0]
       table_data += self.generate_summary_data(site, true)[1]
     }
-    MW.generate_table('class="wikitable sortable"', table_columns, table_data) + "\n"
+    generate_split_tables(table_columns, table_data)
+  end
+
+  def self.generate_split_tables(table_columns, table_data)
+    output = ''
+    [
+      [ '== Default queue ressources ==', /(^$|exotic)/ ],
+      [ '== Production queue ressources ==', /production/],
+      [ '== Testing queue ressources ==', /testing/]
+    ].each do |title,regexp|
+      output += "#{title}\n"
+      output += MW.generate_table('class="wikitable sortable"', table_columns, table_data.select{ |row| row[2] =~ regexp }) + "\n"
+    end
+    output
   end
 
   def self.generate_header_summary(sites_hash)
