@@ -52,6 +52,25 @@ class SiteHardwareGenerator < WikiGenerator
     MW.generate_table('class="wikitable sortable"', table_columns, table_data) + "\n"
   end
 
+  def self.generate_all_clusters_split
+    table_columns = []
+    table_data = []
+    G5K::SITES.each{ |site|
+      table_columns = self.generate_summary_data(site, true)[0]
+      table_data += self.generate_summary_data(site, true)[1]
+    }
+    mw_tables = ""
+    [
+      [ '== Experiementation ressources ==', /(^$|exotic)/ ],
+      [ '== Computation ressources ==', /production/],
+      [ '== Testing queue ==', /testing/]
+    ].each do |title,regexp|
+      mw_tables += "#{title}\n"
+      mw_tables += MW.generate_table('class="wikitable sortable"', table_columns, table_data.select{ |row| row[2] =~ regexp }) + "\n"
+    end
+    mw_tables
+  end
+
   def self.generate_header_summary(sites_hash)
     sites = sites_hash.length
     clusters = 0

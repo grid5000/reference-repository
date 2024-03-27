@@ -12,7 +12,7 @@ class G5KHardwareGenerator < WikiGenerator
     @generated_content += "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n"
     @generated_content += SiteHardwareGenerator.generate_header_summary(@global_hash['sites'])
     @generated_content += "\n= Clusters =\n"
-    @generated_content += SiteHardwareGenerator.generate_all_clusters
+    @generated_content += SiteHardwareGenerator.generate_all_clusters_split
     @generated_content += generate_totals
     @generated_content += MW.italic(MW.small(generated_date_string))
     @generated_content += MW::LINE_FEED
