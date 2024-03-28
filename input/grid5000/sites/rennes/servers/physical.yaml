@@ -137,12 +137,7 @@ parasilo-srv-2:
 
 parasilo-srv-3:
   kind: physical
-  alias:
-    - nfs
-    - nfs-grid5000
-    - nfs-home
-    - home-g5k
-    - public
+  alias: []
   warranty: 2022-01
   serial: BDZGG42
   network_adapters:
@@ -186,7 +181,12 @@ pve-3:
 
 srv-data:
   kind: physical
-  alias: []
+  alias:
+    - nfs
+    - nfs-grid5000
+    - nfs-home
+    - home-g5k
+    - public
   warranty:
   serial: CZ231508CW
   network_adapters:
