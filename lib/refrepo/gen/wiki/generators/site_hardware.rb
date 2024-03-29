@@ -29,14 +29,13 @@ class SiteHardwareGenerator < WikiGenerator
     asterisks << "''*: disk is [[Disk_reservation|reservable]]''" if has_reservable_disks
     asterisks << "''**: crossed GPUs are not supported by Grid'5000 default environments''" if has_unsupported_gpu
 
-    @generated_content = "__NOTOC__\n__NOEDITSECTION__\n" +
+    @generated_content = "__NOEDITSECTION__\n" +
       "{{Portal|User}}\n" +
       "<div class=\"sitelink\">Hardware: [[Hardware|Global]] | " + G5K::SITES.map { |e| "[[#{e.capitalize}:Hardware|#{e.capitalize}]]" }.join(" | ") + "</div>\n" +
       "'''See also:''' [[#{@site.capitalize}:Network|Network topology for #{@site.capitalize}]]\n" +
       "#{SiteHardwareGenerator.generate_header_summary({@site => G5K::get_global_hash['sites'][@site]})}\n" +
-      "= Clusters =\n" +
-      self.class.generate_summary(@site, false) +
-      asterisks.join("\n\n") +
+      "= Clusters summary =\n" +
+      self.class.generate_summary(@site, false, asterisks) +
       self.class.generate_description(@site) +
       MW.italic(MW.small(generated_date_string)) +
       MW::LINE_FEED
@@ -49,18 +48,24 @@ class SiteHardwareGenerator < WikiGenerator
       table_columns = self.generate_summary_data(site, true)[0]
       table_data += self.generate_summary_data(site, true)[1]
     }
-    generate_split_tables(table_columns, table_data)
+    generate_split_tables(table_columns, table_data, true, [])
   end
 
-  def self.generate_split_tables(table_columns, table_data)
+  def self.generate_split_tables(table_columns, table_data, with_site, asterisks)
+    column = with_site ? 2 : 1
     output = ''
     [
       [ '== Default queue ressources ==', /(^$|exotic)/ ],
       [ '== Production queue ressources ==', /production/],
       [ '== Testing queue ressources ==', /testing/]
     ].each do |title,regexp|
-      output += "#{title}\n"
-      output += MW.generate_table('class="wikitable sortable"', table_columns, table_data.select{ |row| row[2] =~ regexp }) + "\n"
+      if table_data.select{ |row| row[column] =~ regexp}.length > 0
+        output += "#{title}\n"
+        output += MW.generate_table('class="wikitable sortable"', table_columns, table_data.select{ |row| row[column] =~ regexp }) + "\n"
+        if asterisks.length >0
+          output += asterisks.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") + "\n"
+        end
+      end
     end
     output
   end
@@ -158,9 +163,13 @@ class SiteHardwareGenerator < WikiGenerator
   end
 
 
-  def self.generate_summary(site, with_sites)
+  def self.generate_summary(site, with_sites, asterisks)
     table_columns, table_data = self.generate_summary_data(site, with_sites)
-    MW.generate_table('class="wikitable sortable"', table_columns, table_data) + "\n"
+    if table_data.flatten.any?(/(production|testing)/)
+      generate_split_tables(table_columns, table_data, with_sites, asterisks)
+    else
+      MW.generate_table('class="wikitable sortable"', table_columns, table_data) + "\n" + asterisks.join("\n\n")
+    end
   end
 
   def self.generate_summary_data(site, with_sites)
