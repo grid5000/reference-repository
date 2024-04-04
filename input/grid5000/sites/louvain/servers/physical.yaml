@@ -1,0 +1,41 @@
+---
+pve-1:
+  kind: physical
+  serial: J30AF4B7
+  alias: [ntp, adminfront]
+  network_adapters:
+    bmc:
+      ip: 172.17.222.1
+      mac: 38:68:dd:8c:70:e9
+    default:
+      ip: 172.16.223.1
+      mac: e8:eb:d3:fd:ce:b9
+    adm:
+      ip: 172.17.223.1
+
+pve-2:
+  kind: physical
+  serial: J30AF4B8
+  network_adapters:
+    bmc:
+      ip: 172.17.222.2
+      mac: 38:68:dd:8c:71:31
+    default:
+      ip: 172.16.223.2
+      mac: e8:eb:d3:fd:c7:1d
+    adm:
+      ip: 172.17.223.2
+
+srv-data:
+  kind: physical
+  serial: J30ACZ04
+  alias: [nfs, home-g5k, modules, public]
+  network_adapters:
+    bmc:
+      ip: 172.17.222.3
+      mac: 38:68:dd:85:a0:b5
+    default:
+      ip: 172.16.223.3
+      mac: e8:eb:d3:30:2c:3e
+    adm:
+      ip: 172.17.223.3
