@@ -1,9 +1,7 @@
 ---
 srv:
   kind: physical
-  alias:
-    - adminfront
-    - af
+  alias: []
   warranty: 2018-09
   serial: CLXJZY1
   network_adapters:
@@ -114,8 +112,7 @@ cargo3:
 
 parasilo-srv-1:
   kind: physical
-  alias:
-    - ntp
+  alias: []
   warranty: 2022-01
   serial: H8RGG42
   network_adapters:
@@ -148,7 +145,10 @@ parasilo-srv-3:
 
 pve-1:
   kind: physical
-  alias: []
+  alias:
+    - adminfront
+    - af
+    - ntp
   warranty: 2030-15
   serial: CZJ3151FJV
   network_adapters:
