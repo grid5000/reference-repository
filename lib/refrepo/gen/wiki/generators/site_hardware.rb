@@ -12,6 +12,7 @@ class SiteHardwareGenerator < WikiGenerator
   def generate_content(_options)
     has_reservable_disks = false
     has_unsupported_gpu = false
+    has_omni_path = false
     G5K::get_global_hash['sites'][@site]['clusters'].each do |_,c|
       c['nodes'].each do |_,n|
         n['storage_devices'].each do |d|
@@ -22,12 +23,17 @@ class SiteHardwareGenerator < WikiGenerator
           has_unsupported_gpu ||= n['gpu_devices'].map { |_, g| g['model'] }.uniq
             .map{|gpu_model| GPURef.is_gpu_supported?(gpu_model)}.reduce(:&)
         end
+
+        n['network_adapters'].each do |net|
+          has_omni_path ||= true if net['interface'] == "Omni-Path"
+        end
       end
     end
 
     asterisks = []
     asterisks << "''*: disk is [[Disk_reservation|reservable]]''" if has_reservable_disks
     asterisks << "''**: crossed GPUs are not supported by Grid'5000 default environments''" if has_unsupported_gpu
+    asterisks << "''***: OPA (Omni-Path Architecture) is currently not supported on Debian 12 environment''" if has_omni_path
 
     @generated_content = "__NOEDITSECTION__\n" +
       "{{Portal|User}}\n" +
