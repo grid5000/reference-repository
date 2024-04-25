@@ -90,6 +90,7 @@ property_exist 'max_walltime' || oarproperty -a max_walltime
 property_exist 'production' || oarproperty -a production --varchar
 property_exist 'maintenance' || oarproperty -a maintenance --varchar
 property_exist 'disk_reservation_count' || oarproperty -a disk_reservation_count
+property_exist 'nodeset' || oarproperty -a nodeset --varchar
 
 
 ###################################
@@ -201,7 +202,7 @@ oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='cluste
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=95 -p cpuset=46 -p gpu=6 -p gpu_model='A40' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
 oarnodesetting -a -h 'clustera-2.fakesite.grid5000.fr' -s Absent -p host='clustera-2.fakesite.grid5000.fr' -p cpu=4 -p core=96 -p cpuset=47 -p gpu=6 -p gpu_model='A40' -p gpudevice=2 # This GPU is mapped on /dev/nvidia2
 echo; echo 'Setting properties for clustera-2.fakesite.grid5000.fr:'; echo
-oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.109.23' -p cluster='clustera' -p nodemodel='ProLiant DL385 Gen10 Plus v2' -p besteffort='YES' -p deploy='YES' -p virtual='amd-v' -p cpuarch='x86_64' -p cpucore=24 -p cpu_count=2 -p core_count=48 -p thread_count=96 -p cputype='AMD EPYC 7413' -p cpufreq='2.65' -p disktype='SATA/SSD' -p chassis='HPE ProLiant DL385 Gen10 Plus v2 CZ21510FPG' -p eth_count=1 -p eth_kavlan_count=0 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=10922 -p memcpu=262144 -p memnode=524288 -p gpu_model='A40' -p gpu_count=3 -p gpu_mem=46068 -p gpu_compute_capability='8.6' -p gpu_compute_capability_major=8 -p exotic='NO' -p mic='NO' -p wattmeter='NO' -p cluster_priority=202312 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
+oarnodesetting --sql "host='clustera-2.fakesite.grid5000.fr' and type='default'" -p ip='172.16.109.23' -p cluster='clustera' -p nodemodel='ProLiant DL385 Gen10 Plus v2' -p nodeset='sirocco' -p besteffort='YES' -p deploy='YES' -p virtual='amd-v' -p cpuarch='x86_64' -p cpucore=24 -p cpu_count=2 -p core_count=48 -p thread_count=96 -p cputype='AMD EPYC 7413' -p cpufreq='2.65' -p disktype='SATA/SSD' -p chassis='HPE ProLiant DL385 Gen10 Plus v2 CZ21510FPG' -p eth_count=1 -p eth_kavlan_count=0 -p eth_rate=10 -p ib_count=0 -p ib_rate=0 -p ib='NO' -p opa_count=0 -p opa_rate=0 -p myri_count=0 -p myri_rate=0 -p myri='NO' -p memcore=10922 -p memcpu=262144 -p memnode=524288 -p gpu_model='A40' -p gpu_count=3 -p gpu_mem=46068 -p gpu_compute_capability='8.6' -p gpu_compute_capability_major=8 -p exotic='NO' -p mic='NO' -p wattmeter='NO' -p cluster_priority=202312 -p max_walltime=604800 -p production='YES' -p maintenance='NO' -p disk_reservation_count=0
 
 echo '================================================================================'
 
