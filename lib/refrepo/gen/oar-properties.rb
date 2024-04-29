@@ -356,6 +356,7 @@ def get_ref_node_properties_internal(cluster_uid, cluster, node_uid, node)
   raise MissingProperty, "Node #{node_uid} has no IP" unless h['ip']
   h['cluster'] = cluster_uid
   h['nodemodel'] = cluster['model']
+  h['nodeset'] = node['nodeset']
   h['switch'] = main_network_adapter['switch']
   h['besteffort'] = node['supported_job_types']['besteffort']
   h['deploy'] = node['supported_job_types']['deploy']

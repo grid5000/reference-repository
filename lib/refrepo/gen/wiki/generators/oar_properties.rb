@@ -122,6 +122,9 @@ class OarPropertiesGenerator < WikiGenerator
       "description" => "Used for kavlan-topo resources.",
       "possible_values" => "1, 1523, 1560, 1597, ..."
     },
+    "nodeset" => {
+      "description" => "name of the set for the node",
+    },
     "nodemodel" => {
       "description" => "The type of the chassis"
     },
@@ -242,7 +245,7 @@ class OarPropertiesGenerator < WikiGenerator
   #Group properties by categories
   @@categories = {
     "Job-related properties" => ["besteffort", "deploy", "production", "cluster_priority", "max_walltime"],
-    "Hierarchy" => ["chassis", "cluster", "cpu", "cpuset", "core", "disk", "diskpath", "gpu", "gpudevice", "host", "slash_16", "slash_17", "slash_18", "slash_19", "slash_20", "slash_21", "slash_22", "switch", "subnet_address", "subnet_prefix", "vlan"],
+    "Hierarchy" => ["chassis", "cluster", "cpu", "cpuset", "core", "disk", "diskpath", "gpu", "gpudevice", "host", "slash_16", "slash_17", "slash_18", "slash_19", "slash_20", "slash_21", "slash_22", "switch", "subnet_address", "subnet_prefix", "vlan", "nodeset"],
     "Hardware" => ["gpu_model", "gpu_count", "gpu_mem", "gpu_compute_capability", "memnode", "memcore", "memcpu", "disktype", "disk_reservation_count", "ib_rate", "ib_count", "ib", "opa_rate", "opa_count", "eth_rate", "eth_count", "eth_kavlan_count", "cpufreq", "cputype", "cpucore", "cpuarch", "core_count", "cpu_count", "thread_count", "virtual", "mic"],
     "Miscellaneous" => ["wattmeter", "nodemodel", "network_address", "ip", "type", "expiry_date", "comment", "maintenance", "exotic"]
   }

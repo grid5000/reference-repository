@@ -41,6 +41,8 @@ def global_ignore_keys
     ~pdu[6]
     ~pdu[7]
 
+    ~nodeset
+
     ~supported_job_types.max_walltime
 
     ~mic.ip
