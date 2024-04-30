@@ -209,8 +209,11 @@ def generate_access_level(options)
   end
   unspecified_nodesets = all_nodesets - nodesets.keys
   abort "Some nodeset are not configure: #{unspecified_nodesets.join(', ')}" unless unspecified_nodesets.empty?
-  nodesets.each_with_object({}) do |(nodeset, prio), acc|
-    acc[nodeset] = create_access(prio, nodeset)
+  nodesets.each_with_object({}) do |(nodeset, prio_input), acc|
+    create_access(prio_input, nodeset).each do |gga, prio|
+      acc[gga] = {} unless acc.key?(gga)
+      acc[gga][nodeset] = prio
+    end
   end
 end
 
