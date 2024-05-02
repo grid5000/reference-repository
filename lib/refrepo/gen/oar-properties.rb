@@ -198,7 +198,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
 end
 
 
-# Exports a description of OAR ressources as a bunch of "self contained" OAR
+# Exports a description of OAR resources as a bunch of "self contained" OAR
 # commands. Basically it does the following:
 #   (0) * It adds an header containing helper functions and detects the next
 #         CPU and CORE IDs that could be used by new OAR resources

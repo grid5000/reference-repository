@@ -61,9 +61,9 @@ class SiteHardwareGenerator < WikiGenerator
     column = with_site ? 2 : 1
     output = ''
     [
-      [ '== Default queue ressources ==', /(^$|exotic)/ ],
-      [ '== Production queue ressources ==', /production/],
-      [ '== Testing queue ressources ==', /testing/]
+      [ '== Default queue resources ==', /(^$|exotic)/ ],
+      [ '== Production queue resources ==', /production/],
+      [ '== Testing queue resources ==', /testing/]
     ].each do |title,regexp|
       if table_data.select{ |row| row[column] =~ regexp}.length > 0
         output += "#{title}\n"
@@ -108,14 +108,14 @@ class SiteHardwareGenerator < WikiGenerator
       summary += MW::TABLE_CELL + ' width="50%" valign="top" ' + MW::TABLE_CELL + MW::LINE_FEED
       ## 1st inner table
       summary += MW::TABLE_START + ' width="100%"' + MW::LINE_FEED
-      summary += print_header_summary('=== Default queue ressources ===', 'default', store)
+      summary += print_header_summary('=== Default queue resources ===', 'default', store)
       summary += MW::TABLE_END + MW::LINE_FEED
 
       ## Half-width second cell
       summary += MW::TABLE_CELL + ' width="50%" valign="top" ' + MW::TABLE_CELL + MW::LINE_FEED
       ## 2st inner table
       summary += MW::TABLE_START + ' width="100%"' + MW::LINE_FEED
-      summary += print_header_summary('=== Production queue ressources ===', 'production', store)
+      summary += print_header_summary('=== Production queue resources ===', 'production', store)
       summary += MW::TABLE_END + MW::LINE_FEED
 
       ## End outer-tablie
