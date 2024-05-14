@@ -56,54 +56,6 @@ metrics:
       protocol: ipmisensor
       id: 9 #08-P1 DIMM 7-12
 
-  - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "1-6"}
-    description: Temperature of Dimm 1-6 reported by BMC, in celsius
-    period: 5000
-    source:
-      protocol: ipmisensor
-      id: 11 #10-P2 DIMM 1-6
-
-  - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "7-12"}
-    description: Temperature of Dimm 7-12 reported by BMC, in celsius
-    period: 5000
-    source:
-      protocol: ipmisensor
-      id: 13 #12-P2 DIMM 7-12
-
-  - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "1-6"}
-    description: Temperature of Dimm 1-6 reported by BMC, in celsius
-    period: 5000
-    source:
-      protocol: ipmisensor
-      id: 15 #14-P3 DIMM 1-6
-
-  - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "7-12"}
-    description: Temperature of Dimm 7-12 reported by BMC, in celsius
-    period: 5000
-    source:
-      protocol: ipmisensor
-      id: 17 #16-P3 DIMM 7-12
-
-  - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "1-6"}
-    description: Temperature of Dimm 1-6 reported by BMC, in celsius
-    period: 5000
-    source:
-      protocol: ipmisensor
-      id: 19 #18-P4 DIMM 1-6
-
-  - name: bmc_dimm_temp_celsius
-    labels: {"dimm": "7-12"}
-    description: Temperature of Dimm 7-12 reported by BMC, in celsius
-    period: 5000
-    source:
-      protocol: ipmisensor
-      id: 21 #20-P4 DIMM 7-12
-
   - name: bmc_other_temp_celsius
     labels: {"id": "22-hdmax"}
     description: Temperature of 22-HD Max reported by BMC, in celsius
