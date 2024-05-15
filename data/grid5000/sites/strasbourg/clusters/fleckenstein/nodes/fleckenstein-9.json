@@ -1,0 +1,341 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "08/11/2022",
+    "vendor": "HPE",
+    "version": "U46"
+  },
+  "bmc_version": "2.72",
+  "chassis": {
+    "manufactured_at": "2022-12-14",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL360 Gen10 Plus",
+    "serial": "CZJ2440659",
+    "warranty_end": "2029-12-14"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 549755813888
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "ice",
+      "enabled": true,
+      "firmware_version": "2.50 0x800077bd 1.2960.0",
+      "interface": "Ethernet",
+      "ip": "172.16.160.9",
+      "ip6": "2001:660:4406:a00:1::9",
+      "kavlan": false,
+      "mac": "30:3e:a7:00:62:94",
+      "management": false,
+      "model": "Ethernet Controller E810-XXV for SFP",
+      "mountable": true,
+      "mounted": true,
+      "name": "ens10f0",
+      "network_address": "fleckenstein-9.strasbourg.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": true,
+      "sriov_totalvfs": 128,
+      "switch": "gw-strasbourg",
+      "switch_port": "Ethernet30",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "ice",
+      "enabled": false,
+      "firmware_version": "2.50 0x800077bd 1.2960.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "30:3e:a7:00:62:95",
+      "management": false,
+      "model": "Ethernet Controller E810-XXV for SFP",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens10f1",
+      "sriov": true,
+      "sriov_totalvfs": 128,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "ice",
+      "enabled": false,
+      "firmware_version": "3.20 0x80012765 1.3189.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "6c:fe:54:47:22:34",
+      "management": false,
+      "model": "Ethernet Controller E810-C for SFP",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens1f0",
+      "rate": 25000000000,
+      "sriov": true,
+      "sriov_totalvfs": 64,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "ice",
+      "enabled": false,
+      "firmware_version": "3.20 0x80012765 1.3189.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "6c:fe:54:47:22:35",
+      "management": false,
+      "model": "Ethernet Controller E810-C for SFP",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens1f1",
+      "rate": 25000000000,
+      "sriov": true,
+      "sriov_totalvfs": 64,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth4",
+      "driver": "ice",
+      "enabled": false,
+      "firmware_version": "3.20 0x80012765 1.3189.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "6c:fe:54:47:22:36",
+      "management": false,
+      "model": "Ethernet Controller E810-C for SFP",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens1f2",
+      "sriov": true,
+      "sriov_totalvfs": 64,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth5",
+      "driver": "ice",
+      "enabled": false,
+      "firmware_version": "3.20 0x80012765 1.3189.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "6c:fe:54:47:22:37",
+      "management": false,
+      "model": "Ethernet Controller E810-C for SFP",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens1f3",
+      "sriov": true,
+      "sriov_totalvfs": 64,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.160.9",
+      "kavlan": false,
+      "mac": "5c:ed:8c:3b:14:9c",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "fleckenstein-9-bmc.strasbourg.grid5000.fr"
+    }
+  ],
+  "nodeset": "fleckenstein",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 108800000000,
+    "node_flops": 3481600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 1310720,
+    "cache_l3": 25165824,
+    "clock_speed": 3400000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Ice Lake",
+    "microcode": "0xd0003a5",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz",
+    "vendor": "Intel",
+    "version": "Silver 4314"
+  },
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2024040411",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x58ce38ee22081665",
+      "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:1:0",
+      "firmware_version": "HPD0",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "VO000960RZWUQ",
+      "size": 960197124096,
+      "storage": "SSD",
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000039c084abe5d",
+      "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:2:0",
+      "firmware_version": "HPD5",
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "EG002400JWJNN",
+      "size": 2400476553216,
+      "storage": "HDD",
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000039c084ac04d",
+      "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:3:0",
+      "firmware_version": "HPD5",
+      "id": "disk2",
+      "interface": "SAS",
+      "model": "EG002400JWJNN",
+      "size": 2400476553216,
+      "storage": "HDD",
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000039c084ac141",
+      "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:4:0",
+      "firmware_version": "HPD5",
+      "id": "disk3",
+      "interface": "SAS",
+      "model": "EG002400JWJNN",
+      "size": 2400476553216,
+      "storage": "HDD",
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000039c084ac0b9",
+      "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:5:0",
+      "firmware_version": "HPD5",
+      "id": "disk4",
+      "interface": "SAS",
+      "model": "EG002400JWJNN",
+      "size": 2400476553216,
+      "storage": "HDD",
+      "vendor": "HPE"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "fleckenstein-9"
+}
