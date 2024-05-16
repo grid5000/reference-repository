@@ -1,4 +1,12 @@
 {
+  "channels": {
+    "port-channel1": {
+      "kind": "server",
+      "port": "port-channel1",
+      "rate": 50000000000,
+      "uid": "srv-data"
+    }
+  },
   "ip": "172.17.175.254",
   "ip6": "2001:660:4406:a00::ffff:ffff",
   "kind": "router",
@@ -10,12 +18,14 @@
       "kind": "node",
       "ports": [
         {
-          "kind": "node",
-          "port": "data",
+          "kind": "channel",
           "snmp_name": "Ethernet0",
-          "uid": "srv"
+          "uid": "port-channel1"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1",
+          "uid": "port-channel1"
         },
         {
           "kind": "node",
