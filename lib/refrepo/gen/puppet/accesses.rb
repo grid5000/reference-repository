@@ -8,6 +8,12 @@ $group_of_gga = {}
 ALL_GGAS = RefRepo::Utils.get_api('users/groups?is_gga=true')['items']
 ALL_SITE = RefRepo::Utils.get_api('users/groups?is_site=true')['items'].map { |x| x['name'] }
 
+$yaml_load_args = {}
+#FIXME We cannot drop ruby 2.7 support until jenkins is on debian 11
+$yaml_load_args[:aliases] = true if ::Gem::Version.new(RUBY_VERSION) >= ::Gem::Version.new('3.0.0')
+
+
+
 # generate nodeset mode history and access level
 def generate_puppet_accesses(options)
   options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/access" unless options[:conf_dir]
@@ -73,7 +79,7 @@ end
 
 def load_yaml_from_git(git_repo, sha, yaml_path)
   relative_path = yaml_path.sub(git_repo.repo.path.gsub(/\.git$/, ''), '')
-  YAML.load(git_repo.show("#{sha}:#{relative_path}"), aliases: true)
+  YAML.load(git_repo.show("#{sha}:#{relative_path}"), **$yaml_load_args)
 end
 
 # Update history only if the mode changed, if so we terminate the last entry and
@@ -202,13 +208,15 @@ def generate_access_level(options)
   site_data_hierarchy['sites'].each_key do |site|
     site_config_path = File.join(options[:conf_dir], "#{site}.yaml")
     if File.exist?(site_config_path)
-      nodesets.update(YAML.load_file(site_config_path, aliases: true))
+      nodesets.update(YAML.load_file(site_config_path, **$yaml_load_args))
     else
       puts "Warning: Skipping #{site} configuration since there is no file"
     end
   end
   unspecified_nodesets = all_nodesets - nodesets.keys
+  overspecified_nodesets = nodesets.keys - all_nodesets
   abort "Some nodeset are not configure: #{unspecified_nodesets.join(', ')}" unless unspecified_nodesets.empty?
+  puts "Warning: Some unkown (or not production) nodeset ARE configured : #{overspecified_nodesets.join(', ')}" unless overspecified_nodesets.empty?
   nodesets.each_with_object({}) do |(nodeset, prio_input), acc|
     create_access(prio_input, nodeset).each do |gga, prio|
       acc[gga] = {} unless acc.key?(gga)
@@ -220,9 +228,10 @@ end
 def all_nodesets
   site_data_hierarchy = load_data_hierarchy
   nodesets = []
-
   site_data_hierarchy['sites'].each do |_site, site_details|
     site_details.fetch('clusters', {}).each do |_cluster, cluster_details|
+      next unless cluster_details['queues'].include?('production')
+
       nodesets.concat(cluster_details['nodes'].map { |_, node_details| node_details['nodeset'] })
     end
   end
