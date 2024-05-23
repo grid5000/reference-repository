@@ -96,13 +96,14 @@ def add_credentials(credentials, allBmc)
                 next
             end 
             # bmc password is global for cluster nodes
-            nodeName = uid ? uid.slice(/\w*/) : uid
+            nodeName = n['node'] ? uid.slice(/\w*/) : uid
             begin
                 n['login'], n['password'] = credentials[s_site][nodeName].split() 
             rescue NoMethodError
+                p(uid + " has no password in list " + s_site)
                 n['error'] = "no password defined in console-password.yaml"
             rescue => error
-                p "infra :uid #{uid}, url #{n['url']} mon potentiel password : #{credentials[s_site][uid]}, site #{s_site}, error : #{error.class} error  message: #{error}, nodeName : #{nodeName}"
+                #p "infra :uid #{uid}, url #{n['url']} mon potentiel password : #{credentials[s_site][uid]}, site #{s_site}, error : #{error.class} error  message: #{error}, nodeName : #{nodeName}"
                 n['error'] = error.class
             end
         end
@@ -112,17 +113,21 @@ end
 
 def gen_json_files(allBmc, options)
 
+    pretty_dict = {}
+
+    dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/webfish" 
+
+    if !Dir.exist?(dir)
+        Dir.mkdir(dir)
+    end
+    actualFile = dir + "/webfish.json"
+
     allBmc.each do |s_site, _d_array|
-        dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/webfish/" + s_site
+        pretty_dict[s_site] = allBmc[s_site].sort_by{|k, _| [k[/(\D+)/, 1], k[/(\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]}.to_h
+    end
 
-        if !Dir.exist?(dir)
-            Dir.mkdir(dir)
-        end
-        actualFile = dir+"/webfish.json"
-
-        File.open(actualFile, "w") do |f|  
-            f.write(JSON.pretty_generate(allBmc[s_site]))   
-        end
+    File.open(actualFile, "w") do |f|  
+        f.write(JSON.pretty_generate(pretty_dict))
     end
     
 end
