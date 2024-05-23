@@ -24,24 +24,6 @@ srv-data2:
     size: 90000000000000
     rate: 10000000000
 
-srv2:
-  kind: physical
-  alias: []
-  warranty: 2022-10
-  serial: 37H1J82
-  network_adapters:
-    default:
-      ip: 172.16.79.22
-    adm:
-      ip: 172.17.79.22
-    bmc:
-      ip: 172.17.79.23
-  pdu:
-    - uid: grimoire-pdu1
-      port: 23
-    - uid: grimoire-pdu2
-      port: 23
-
 talc-data:
   kind: physical
   alias:
@@ -169,3 +151,22 @@ pve-1:
       port: 6
     - uid: gruss-pdu2
       port: 6
+
+pve-99:
+  kind: physical
+  alias: []
+  warranty: 2022-10
+  serial: 37H1J82
+  network_adapters:
+    default:
+      ip: 172.16.79.22
+      mac: 24:6E:96:02:A7:B8
+    adm:
+      ip: 172.17.79.22
+    bmc:
+      ip: 172.17.79.23
+  pdu:
+    - uid: grimoire-pdu1
+      port: 23
+    - uid: grimoire-pdu2
+      port: 23
