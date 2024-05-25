@@ -70,10 +70,21 @@ generate-reference-api:
 
 deploy:
   stage: deploy
+  parallel:
+    matrix:
+      - SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia, strasbourg, toulouse]
   tags:
     - grid5000-shell
   script:
-    - /srv/ci-runner-scripts/bin/update-api-servers
+    - export SSH_KEY="/home/gitlab-runner/.ssh/id_rsa_ci-runner"
+    - export LOGIN="git-updater"
+    - export SCRIPT="/usr/local/sbin/g5k-update-git-clone"
+    - export SCRIPT_ARGS="--directory /var/db/g5k-api/reference-repository --pull-origin"
+# For testing purpose, we do NOT deploy on production APIs (^.^")
+#   - echo "Deploying reference-repository on api-server-v3.${SITE}:"
+#   - ssh -i $SSH_KEY $LOGIN@$api-server-v3.${SITE} "$SCRIPT $SCRIPT_ARGS"
+    - echo "Deploying reference-repository on api-server-devel.${SITE}:"
+    - ssh -i $SSH_KEY $LOGIN@api-server-devel.${SITE} "$SCRIPT $SCRIPT_ARGS"
 
 rspec:
   stage: checks  # we use 'checks' here to avoid blocking on this when updating the ref-repo
