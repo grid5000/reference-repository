@@ -79,7 +79,7 @@ end
 
 def load_yaml_from_git(git_repo, sha, yaml_path)
   relative_path = yaml_path.sub(git_repo.repo.path.gsub(/\.git$/, ''), '')
-  YAML.load(git_repo.show("#{sha}:#{relative_path}"), **$yaml_load_args)
+  YAML.load(git_repo.show("#{sha}:#{relative_path}"), **$yaml_load_args) || {}
 end
 
 # Update history only if the mode changed, if so we terminate the last entry and
@@ -208,7 +208,8 @@ def generate_access_level(options)
   site_data_hierarchy['sites'].each_key do |site|
     site_config_path = File.join(options[:conf_dir], "#{site}.yaml")
     if File.exist?(site_config_path)
-      nodesets.update(YAML.load_file(site_config_path, **$yaml_load_args))
+      yaml_access_file = YAML.load_file(site_config_path, **$yaml_load_args)
+      nodesets.update(yaml_access_file) unless yaml_access_file.nil?
     else
       puts "Warning: Skipping #{site} configuration since there is no file"
     end
