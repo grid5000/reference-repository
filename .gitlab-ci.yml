@@ -22,7 +22,7 @@ include:
   parallel:
     matrix:
       - DEBIAN_VERSION: [bookworm]
-  image: debian:$DEBIAN_VERSION
+  image: ${CI_REGISTRY}/grid5000/docker/g5k-debian:$DEBIAN_VERSION
   before_script:
     - apt-get update && apt-get -y --no-install-recommends install build-essential wget git ruby ruby-dev bundler rake gpg clustershell graphviz
     # Call the original before_script section
