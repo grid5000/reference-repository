@@ -13,6 +13,16 @@ $yaml_load_args = {}
 $yaml_load_args[:aliases] = true if ::Gem::Version.new(RUBY_VERSION) >= ::Gem::Version.new('3.0.0')
 
 
+# Ulgy function to order hash since order is different on ruby 2.7 and 3.x
+def deep_sort_hash(hash)
+  sorted_hash = hash.sort.to_h
+  sorted_hash.each do |key, value|
+    sorted_hash[key] = deep_sort_hash(value) if value.is_a?(Hash)
+  end
+  sorted_hash
+end
+
+
 
 # generate nodeset mode history and access level
 def generate_puppet_accesses(options)
@@ -33,12 +43,12 @@ end
 
 def generate_accesses_yaml(output_path, data)
   output_file = File.new(output_path, 'w')
-  output_file.write(data.to_yaml)
+  output_file.write(deep_sort_hash(data).to_yaml)
 end
 
 def generate_accesses_json(output_path, data)
   output_file = File.new(output_path, 'w')
-  output_file.write(JSON.dump(data))
+  output_file.write(JSON.dump(deep_sort_hash(data)))
 end
 
 ##########################################
@@ -86,10 +96,10 @@ end
 # add a new one
 def update_history(nodeset_history, nodeset, date, mode)
   last_entry = nodeset_history[nodeset].last
-  return unless last_entry.nil? || (last_entry[1].nil? && last_entry[2] != mode)
+  return unless last_entry.nil? || (last_entry[1] == 'ACTIVE' && last_entry[2] != mode)
 
   last_entry[1] = date.dup if last_entry
-  nodeset_history[nodeset] << [date.dup, nil, mode]
+  nodeset_history[nodeset] << [date.dup, 'ACTIVE', mode]
 end
 
 def generate_nodeset_mode_history(options)
