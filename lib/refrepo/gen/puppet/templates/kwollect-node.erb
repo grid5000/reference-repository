@@ -12,7 +12,9 @@ cluster.fetch('metrics', []).each {|metric|
   next if metric.has_key?('only_for') and not metric['only_for'].include?(node_uid)
 
 
-  if metric['source']['protocol'] == "ipmisensor"
+  if metric['source']['protocol'] == "ipmisensor" \
+  or metric['source']['protocol'] == "http" \
+  or metric['source']['protocol'] == "https"
     host = ipmi_credentials+"@"+node_uid+"-bmc."+site_uid+".grid5000.fr"
     label = {'_device_alias' => node_uid+'-bmc'}
   elsif metric['source']['protocol'] == "snmp"
