@@ -6,25 +6,43 @@
   "manufactured_at": "2022-11-06",
   "metrics": [
     {
-      "description": "Power consumption reported by BMC, in watt",
-      "name": "bmc_node_power_watt",
-      "period": 5000,
-      "source": {
-        "id": 71,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
       "description": "Temperature reported by BMC, in celsius",
       "name": "bmc_ambient_temp_celsius",
       "period": 5000,
       "source": {
-        "id": 2,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[0].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Temperature of Cpu 1 reported by BMC, in celsius",
+      "description": "Power of CPU reported by BMC, in watt",
+      "name": "bmc_cpu_power_watt",
+      "period": 5000,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Power/FastPowerMeter#PowerDetail[-1].CpuWatts",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Power of DIMM reported by BMC, in watt",
+      "name": "bmc_dimm_power_watt",
+      "period": 5000,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Power/FastPowerMeter#PowerDetail[-1].DimmWatts",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Power of node reported by BMC, in watt",
+      "name": "bmc_node_power_watt",
+      "period": 5000,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Power/FastPowerMeter#PowerDetail[-1].Average",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of CPU 1 reported by BMC, in celsius",
       "labels": {
         "cpu": "1"
       },
@@ -32,12 +50,12 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 3,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[1].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Temperature of Cpu 2 reported by BMC, in celsius",
+      "description": "Temperature of CPU 2 reported by BMC, in celsius",
       "labels": {
         "cpu": "2"
       },
@@ -45,513 +63,681 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 4,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[2].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Temperature of Dimm 1-8 reported by BMC, in celsius",
+      "description": "Temperature of CPU 1 reported by BMC, in celsius",
       "labels": {
-        "dimm": "1-8-p1"
-      },
-      "name": "bmc_dimm_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 5,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of Dimm 9-16 reported by BMC, in celsius",
-      "labels": {
-        "dimm": "9-16-p1"
-      },
-      "name": "bmc_dimm_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 7,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of Dimm 1-8 reported by BMC, in celsius",
-      "labels": {
-        "dimm": "1-8-p2"
-      },
-      "name": "bmc_dimm_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 9,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of Dimm 9-16 reported by BMC, in celsius",
-      "labels": {
-        "dimm": "9-16-p2"
-      },
-      "name": "bmc_dimm_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 11,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 12-VR P1 reported by BMC, in celsius",
-      "labels": {
-        "id": "12-vrp1"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 13,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 13-VR P2 reported by BMC, in celsius",
-      "labels": {
-        "id": "13-vrp2"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 14,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 14-VR P1 Mem 1 reported by BMC, in celsius",
-      "labels": {
-        "id": "14-vrp1mem1"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 15,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 15-VR P1 Mem 2 reported by BMC, in celsius",
-      "labels": {
-        "id": "15-vrp1mem2"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 16,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 16-VR P2 Mem 1 reported by BMC, in celsius",
-      "labels": {
-        "id": "16-vrp2mem1"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 17,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 17-VR P2 Mem 2 reported by BMC, in celsius",
-      "labels": {
-        "id": "17-vrp2mem2"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 18,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 18-Chipset reported by BMC, in celsius",
-      "labels": {
-        "id": "18-chipset"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 19,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 19-BMC reported by BMC, in celsius",
-      "labels": {
-        "id": "19-bmc"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 20,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 23-E-Fuse reported by BMC, in celsius",
-      "labels": {
-        "id": "23-e-fuse"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 24,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 24-P/S 1 reported by BMC, in celsius",
-      "labels": {
-        "id": "24-p/s1"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 25,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 25-P/S 1 Inlet reported by BMC, in celsius",
-      "labels": {
-        "id": "25-p/s1inlet"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 26,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 26-P/S 2 reported by BMC, in celsius",
-      "labels": {
-        "id": "26-p/s2"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 27,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 27-P/S 2 Inlet reported by BMC, in celsius",
-      "labels": {
-        "id": "27-p/s2inlet"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 28,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 32-Board Inlet reported by BMC, in celsius",
-      "labels": {
-        "id": "32-boardinlet"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 31,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 33-BMC Zone reported by BMC, in celsius",
-      "labels": {
-        "id": "33-bmczone"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 32,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 34-P/S 2 Zone reported by BMC, in celsius",
-      "labels": {
-        "id": "34-p/s2zone"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 33,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 35-I/O Zone reported by BMC, in celsius",
-      "labels": {
-        "id": "35-i/ozone"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 34,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 36-Battery Zone reported by BMC, in celsius",
-      "labels": {
-        "id": "36-batteryzone"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 35,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 38-PCI 1 Zone reported by BMC, in celsius",
-      "labels": {
-        "id": "38-pci1zone"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 37,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of 40-PCI 2 Zone reported by BMC, in celsius",
-      "labels": {
-        "id": "40-pci2zone"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": 39,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Temperature of Cpu 1 Pkg reported by BMC, in celsius",
-      "labels": {
-        "cpu": "1pkg"
+        "cpu": "1"
       },
       "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 44,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[42].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Temperature of Cpu 2 Pkg reported by BMC, in celsius",
+      "description": "Temperature of CPU 2 reported by BMC, in celsius",
       "labels": {
-        "cpu": "2pkg"
+        "cpu": "2"
       },
       "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 45,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[43].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Power consumption of Psu 1 reported by BMC, in watt",
-      "labels": {
-        "psu": "1"
-      },
-      "name": "bmc_psu_power_watt",
-      "period": 5000,
-      "source": {
-        "id": 68,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Power consumption of Psu 2 reported by BMC, in watt",
-      "labels": {
-        "psu": "2"
-      },
-      "name": "bmc_psu_power_watt",
-      "period": 5000,
-      "source": {
-        "id": 70,
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Power consumption of PS 1 Output reported by BMC, in watt",
-      "labels": {
-        "id": "ps1output"
-      },
-      "name": "bmc_other_power_watt",
+      "description": "Usage of CPU reported by BMC, in percent",
+      "name": "bmc_cpu_usage_percent",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 80,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Power/FastPowerMeter#PowerDetail[-1].CpuUtil",
+        "protocol": "https"
       }
     },
     {
-      "description": "Voltage of PS_Volt_Out_01 reported by BMC, in volt",
+      "description": "Temperature of DIMM P1 DIMM 1-8 reported by BMC, in celsius",
       "labels": {
-        "id": "ps_volt_out_01"
+        "dimm": "P1 DIMM 1-8"
       },
-      "name": "bmc_other_voltage_volt",
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 81,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[3].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Voltage of PS_Volt_In_01 reported by BMC, in volt",
+      "description": "Temperature of DIMM P1 DIMM 9-16 reported by BMC, in celsius",
       "labels": {
-        "id": "ps_volt_in_01"
+        "dimm": "P1 DIMM 9-16"
       },
-      "name": "bmc_other_voltage_volt",
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 82,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[5].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Current of PS_Curr_Out_01 reported by BMC, in amp",
+      "description": "Temperature of DIMM P2 DIMM 1-8 reported by BMC, in celsius",
       "labels": {
-        "id": "ps_curr_out_01"
+        "dimm": "P2 DIMM 1-8"
       },
-      "name": "bmc_other_current_amp",
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 83,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[7].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Current of PS_Curr_In_01 reported by BMC, in amp",
+      "description": "Temperature of DIMM P2 DIMM 9-16 reported by BMC, in celsius",
       "labels": {
-        "id": "ps_curr_in_01"
+        "dimm": "P2 DIMM 9-16"
       },
-      "name": "bmc_other_current_amp",
+      "name": "bmc_dimm_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 84,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[9].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
-      "description": "Power consumption of PS 2 Output reported by BMC, in watt",
+      "description": "Usage of Fan 1 reported by BMC, in percent",
       "labels": {
-        "id": "ps2output"
+        "fan": "1"
       },
-      "name": "bmc_other_power_watt",
+      "name": "bmc_fan_usage_percent",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 85,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Fans[0].Reading",
+        "protocol": "https"
       }
     },
     {
-      "description": "Voltage of PS_Volt_Out_02 reported by BMC, in volt",
+      "description": "Usage of Fan 2 reported by BMC, in percent",
       "labels": {
-        "id": "ps_volt_out_02"
+        "fan": "2"
       },
-      "name": "bmc_other_voltage_volt",
+      "name": "bmc_fan_usage_percent",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 86,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Fans[1].Reading",
+        "protocol": "https"
       }
     },
     {
-      "description": "Voltage of PS_Volt_In_02 reported by BMC, in volt",
+      "description": "Usage of Fan 3 reported by BMC, in percent",
       "labels": {
-        "id": "ps_volt_in_02"
+        "fan": "3"
       },
-      "name": "bmc_other_voltage_volt",
+      "name": "bmc_fan_usage_percent",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 87,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Fans[2].Reading",
+        "protocol": "https"
       }
     },
     {
-      "description": "Current of PS_Curr_Out_02 reported by BMC, in amp",
+      "description": "Usage of Fan 4 reported by BMC, in percent",
       "labels": {
-        "id": "ps_curr_out_02"
+        "fan": "4"
       },
-      "name": "bmc_other_current_amp",
+      "name": "bmc_fan_usage_percent",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 88,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Fans[3].Reading",
+        "protocol": "https"
       }
     },
     {
-      "description": "Current of PS_Curr_In_02 reported by BMC, in amp",
+      "description": "Usage of Fan 5 reported by BMC, in percent",
       "labels": {
-        "id": "ps_curr_in_02"
+        "fan": "5"
       },
-      "name": "bmc_other_current_amp",
+      "name": "bmc_fan_usage_percent",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 89,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Fans[4].Reading",
+        "protocol": "https"
       }
     },
     {
-      "description": "Temperature of 29.1-LOM Card-Ne reported by BMC, in celsius",
+      "description": "Usage of Fan 6 reported by BMC, in percent",
       "labels": {
-        "id": "29.1-lomcard-ne"
+        "fan": "6"
+      },
+      "name": "bmc_fan_usage_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Fans[5].Reading",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Usage of Fan 7 reported by BMC, in percent",
+      "labels": {
+        "fan": "7"
+      },
+      "name": "bmc_fan_usage_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Fans[6].Reading",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of P1 PMM 1-8 reported by BMC, in celsius",
+      "labels": {
+        "id": "p1 pmm 1-8"
       },
       "name": "bmc_other_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": 90,
-        "protocol": "ipmisensor"
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[4].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of P1 PMM 9-16 reported by BMC, in celsius",
+      "labels": {
+        "id": "p1 pmm 9-16"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[6].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of P2 PMM 1-8 reported by BMC, in celsius",
+      "labels": {
+        "id": "p2 pmm 1-8"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[8].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of P2 PMM 9-16 reported by BMC, in celsius",
+      "labels": {
+        "id": "p2 pmm 9-16"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[10].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of VR P1 reported by BMC, in celsius",
+      "labels": {
+        "id": "vr p1"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[11].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of VR P2 reported by BMC, in celsius",
+      "labels": {
+        "id": "vr p2"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[12].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of VR P1 MEM 1 reported by BMC, in celsius",
+      "labels": {
+        "id": "vr p1 mem 1"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[13].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of VR P1 MEM 2 reported by BMC, in celsius",
+      "labels": {
+        "id": "vr p1 mem 2"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[14].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of VR P2 MEM 1 reported by BMC, in celsius",
+      "labels": {
+        "id": "vr p2 mem 1"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[15].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of VR P2 MEM 2 reported by BMC, in celsius",
+      "labels": {
+        "id": "vr p2 mem 2"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[16].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of CHIPSET reported by BMC, in celsius",
+      "labels": {
+        "id": "chipset"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[17].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of BMC reported by BMC, in celsius",
+      "labels": {
+        "id": "bmc"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[18].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of HD MAX reported by BMC, in celsius",
+      "labels": {
+        "id": "hd max"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[19].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of EXP BAY DRIVE reported by BMC, in celsius",
+      "labels": {
+        "id": "exp bay drive"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[20].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of STOR BATT reported by BMC, in celsius",
+      "labels": {
+        "id": "stor batt"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[21].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of E-FUSE reported by BMC, in celsius",
+      "labels": {
+        "id": "e-fuse"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[22].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of HD CONTROLLER reported by BMC, in celsius",
+      "labels": {
+        "id": "hd controller"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[27].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of HD CNTLR ZONE reported by BMC, in celsius",
+      "labels": {
+        "id": "hd cntlr zone"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[28].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of BOARD INLET reported by BMC, in celsius",
+      "labels": {
+        "id": "board inlet"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[29].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of BMC ZONE reported by BMC, in celsius",
+      "labels": {
+        "id": "bmc zone"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[30].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of I/O ZONE reported by BMC, in celsius",
+      "labels": {
+        "id": "i/o zone"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[32].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of BATTERY ZONE reported by BMC, in celsius",
+      "labels": {
+        "id": "battery zone"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[33].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PCI 1 reported by BMC, in celsius",
+      "labels": {
+        "id": "pci 1"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[34].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PCI 1 ZONE reported by BMC, in celsius",
+      "labels": {
+        "id": "pci 1 zone"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[35].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PCI 2 reported by BMC, in celsius",
+      "labels": {
+        "id": "pci 2"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[36].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PCI 2 ZONE reported by BMC, in celsius",
+      "labels": {
+        "id": "pci 2 zone"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[37].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PCI 3 reported by BMC, in celsius",
+      "labels": {
+        "id": "pci 3"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[38].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PCI 3 ZONE reported by BMC, in celsius",
+      "labels": {
+        "id": "pci 3 zone"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[39].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of EXPBAYBOOT reported by BMC, in celsius",
+      "labels": {
+        "id": "expbayboot"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[40].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of AHCI HD MAX reported by BMC, in celsius",
+      "labels": {
+        "id": "ahci hd max"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[41].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of LOM CARD-NETWORK CONTROLLER reported by BMC, in celsius",
+      "labels": {
+        "id": "lom card-network controller"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[44].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Power of ID 0 reported by BMC, in watt",
+      "labels": {
+        "id": "0"
+      },
+      "name": "bmc_psu_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Power#PowerSupplies[0].LastPowerOutputWatts",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Power of ID 1 reported by BMC, in watt",
+      "labels": {
+        "id": "1"
+      },
+      "name": "bmc_psu_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Power#PowerSupplies[1].LastPowerOutputWatts",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PSU P/S 1 reported by BMC, in celsius",
+      "labels": {
+        "psu": "P/S 1"
+      },
+      "name": "bmc_psu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[23].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PSU P/S 1 INLET reported by BMC, in celsius",
+      "labels": {
+        "psu": "P/S 1 Inlet"
+      },
+      "name": "bmc_psu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[24].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PSU P/S 2 reported by BMC, in celsius",
+      "labels": {
+        "psu": "P/S 2"
+      },
+      "name": "bmc_psu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[25].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PSU P/S 2 INLET reported by BMC, in celsius",
+      "labels": {
+        "psu": "P/S 2 Inlet"
+      },
+      "name": "bmc_psu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[26].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of PSU P/S 2 ZONE reported by BMC, in celsius",
+      "labels": {
+        "psu": "P/S 2 Zone"
+      },
+      "name": "bmc_psu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[31].ReadingCelsius",
+        "protocol": "https"
       }
     },
     {
