@@ -5,28 +5,28 @@ metrics:
     description: Temperature reported by BMC, in celsius
     period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[0].ReadingCelsius
 
   - name: bmc_cpu_power_watt
     description: Power of CPU reported by BMC, in watt
     period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Power/FastPowerMeter#PowerDetail[-1].CpuWatts
 
   - name: bmc_dimm_power_watt
     description: Power of DIMM reported by BMC, in watt
     period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Power/FastPowerMeter#PowerDetail[-1].DimmWatts
 
   - name: bmc_node_power_watt
     description: Power of node reported by BMC, in watt
     period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Power/FastPowerMeter#PowerDetail[-1].Average
 
   - name: bmc_cpu_temp_celsius
@@ -35,7 +35,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[1].ReadingCelsius
 
   - name: bmc_cpu_temp_celsius
@@ -44,7 +44,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[2].ReadingCelsius
 
   - name: bmc_cpu_temp_celsius
@@ -53,7 +53,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[43].ReadingCelsius
 
   - name: bmc_cpu_temp_celsius
@@ -62,7 +62,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[44].ReadingCelsius
 
   - name: bmc_cpu_usage_percent
@@ -70,7 +70,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Power/FastPowerMeter#PowerDetail[-1].CpuUtil
 
   - name: bmc_dimm_temp_celsius
@@ -79,7 +79,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[3].ReadingCelsius
 
   - name: bmc_dimm_temp_celsius
@@ -88,7 +88,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[5].ReadingCelsius
 
   - name: bmc_dimm_temp_celsius
@@ -97,7 +97,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[7].ReadingCelsius
 
   - name: bmc_dimm_temp_celsius
@@ -106,7 +106,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[9].ReadingCelsius
 
   - name: bmc_fan_usage_percent
@@ -115,7 +115,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Fans[0].Reading
 
   - name: bmc_fan_usage_percent
@@ -124,7 +124,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Fans[1].Reading
 
   - name: bmc_fan_usage_percent
@@ -133,7 +133,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Fans[2].Reading
 
   - name: bmc_fan_usage_percent
@@ -142,7 +142,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Fans[3].Reading
 
   - name: bmc_fan_usage_percent
@@ -151,7 +151,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Fans[4].Reading
 
   - name: bmc_fan_usage_percent
@@ -160,7 +160,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Fans[5].Reading
 
   - name: bmc_fan_usage_percent
@@ -169,7 +169,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Fans[6].Reading
 
   - name: bmc_other_temp_celsius
@@ -178,7 +178,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[4].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -187,7 +187,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[6].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -196,7 +196,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[8].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -205,7 +205,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[10].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -214,7 +214,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[11].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -223,7 +223,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[12].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -232,7 +232,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[13].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -241,7 +241,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[14].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -250,7 +250,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[15].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -259,7 +259,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[16].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -268,7 +268,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[17].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -277,7 +277,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[18].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -286,7 +286,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[19].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -295,7 +295,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[20].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -304,7 +304,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[21].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -313,7 +313,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[22].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -322,7 +322,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[27].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -331,7 +331,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[28].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -340,7 +340,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[29].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -349,7 +349,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[30].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -358,7 +358,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[31].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -367,7 +367,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[33].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -376,7 +376,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[34].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -385,7 +385,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[35].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -394,7 +394,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[36].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -403,7 +403,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[37].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -412,7 +412,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[38].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -421,7 +421,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[39].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -430,7 +430,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[40].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -439,7 +439,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[41].ReadingCelsius
 
   - name: bmc_other_temp_celsius
@@ -448,7 +448,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[42].ReadingCelsius
 
   - name: bmc_psu_power_watt
@@ -457,7 +457,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Power#PowerSupplies[0].LastPowerOutputWatts
 
   - name: bmc_psu_power_watt
@@ -466,7 +466,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Power#PowerSupplies[1].LastPowerOutputWatts
 
   - name: bmc_psu_temp_celsius
@@ -475,7 +475,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[23].ReadingCelsius
 
   - name: bmc_psu_temp_celsius
@@ -484,7 +484,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[24].ReadingCelsius
 
   - name: bmc_psu_temp_celsius
@@ -493,7 +493,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[25].ReadingCelsius
 
   - name: bmc_psu_temp_celsius
@@ -502,7 +502,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[26].ReadingCelsius
 
   - name: bmc_psu_temp_celsius
@@ -511,7 +511,7 @@ metrics:
     period: 0
     optional_period: 5000
     source:
-      protocol: http
+      protocol: https
       id: redfish/v1/Chassis/1/Thermal#Temperatures[32].ReadingCelsius
 
   - name: prom_default_metrics

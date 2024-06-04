@@ -68,28 +68,28 @@
       }
     },
     {
-      "description": "Temperature of CPU 1 reported by BMC, in celsius",
+      "description": "Temperature of CPU 1 PKGTMP reported by BMC, in celsius",
       "labels": {
-        "cpu": "1"
-      },
-      "name": "bmc_cpu_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[42].ReadingCelsius",
-        "protocol": "https"
-      }
-    },
-    {
-      "description": "Temperature of CPU 2 reported by BMC, in celsius",
-      "labels": {
-        "cpu": "2"
+        "cpu": "1 PkgTmp"
       },
       "name": "bmc_cpu_temp_celsius",
       "optional_period": 5000,
       "period": 0,
       "source": {
         "id": "redfish/v1/Chassis/1/Thermal#Temperatures[43].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
+      "description": "Temperature of CPU 2 PKGTMP reported by BMC, in celsius",
+      "labels": {
+        "cpu": "2 PkgTmp"
+      },
+      "name": "bmc_cpu_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[44].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -455,6 +455,19 @@
       }
     },
     {
+      "description": "Temperature of LOM CARD reported by BMC, in celsius",
+      "labels": {
+        "id": "lom card"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[27].ReadingCelsius",
+        "protocol": "https"
+      }
+    },
+    {
       "description": "Temperature of HD CONTROLLER reported by BMC, in celsius",
       "labels": {
         "id": "hd controller"
@@ -463,7 +476,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[27].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[28].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -476,7 +489,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[28].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[29].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -489,7 +502,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[29].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[30].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -502,7 +515,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[30].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[31].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -515,7 +528,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[32].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[33].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -528,7 +541,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[33].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[34].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -541,7 +554,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[34].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[35].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -554,7 +567,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[35].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[36].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -567,7 +580,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[36].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[37].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -580,7 +593,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[37].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[38].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -593,7 +606,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[38].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[39].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -606,7 +619,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[39].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[40].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -619,7 +632,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[40].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[41].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -632,20 +645,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[41].ReadingCelsius",
-        "protocol": "https"
-      }
-    },
-    {
-      "description": "Temperature of LOM CARD-NETWORK CONTROLLER reported by BMC, in celsius",
-      "labels": {
-        "id": "lom card-network controller"
-      },
-      "name": "bmc_other_temp_celsius",
-      "optional_period": 5000,
-      "period": 0,
-      "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[44].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[42].ReadingCelsius",
         "protocol": "https"
       }
     },
@@ -736,7 +736,7 @@
       "optional_period": 5000,
       "period": 0,
       "source": {
-        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[31].ReadingCelsius",
+        "id": "redfish/v1/Chassis/1/Thermal#Temperatures[32].ReadingCelsius",
         "protocol": "https"
       }
     },
