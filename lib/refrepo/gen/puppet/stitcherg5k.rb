@@ -36,6 +36,7 @@ end
 def build_stitcher_kavlans_hash(refapi)
   stitcher_kavlans_hash = {}
   refapi['sites'].each do |name, site_hash|
+    next if not site_hash['kavlans'] # skip sites without kavlan
     global_kavlan = site_hash['kavlans'].select { | id, _hash | id =~ /\d\d/ }.first
     global_kavlan_id = global_kavlan.first.to_i
     stitcher_kavlans_hash[global_kavlan_id] = {"vlan" => 700 + global_kavlan_id, "site" => name}

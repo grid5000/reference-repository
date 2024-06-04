@@ -507,6 +507,7 @@ def add_kavlan_ipv6s(h)
   h['ipv6']['site_global_kavlans'].each { |key, value| global_vlan_site[value] = key }
   # Set kavlan ipv6 informations at site level
   h['sites'].each_pair do |site_uid, hs|
+    next if not hs['kavlans'] # skip sites without kavlan
     site_prefix = IPAddress hs['ipv6']['prefix']
     kavlan_ids = h['vlans']['base'].map{ |k,v| k if v["type"] =~ /local|routed/ }.compact + [h['ipv6']['site_global_kavlans'][site_uid]]
     kavlan_ids.each do |kvl_id|

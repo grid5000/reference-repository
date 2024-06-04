@@ -42,6 +42,7 @@ def generate_puppet_kavlang5k(options)
 
   refapi['sites'].each { |site_uid, site_refapi|
 
+    next if not site_refapi['kavlans'] # skip sites without kavlan
     next unless options[:sites].include?(site_uid)
 
     conf = YAML::load(ERB.new(File.read("#{options[:conf_dir]}/kavlang5k.yaml"), trim_mode: '-').result(binding))[site_uid]
