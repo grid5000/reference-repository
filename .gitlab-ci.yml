@@ -21,8 +21,8 @@ include:
   extends: .template-test
   parallel:
     matrix:
-      - DEBIAN_VERSION: [bullseye, bookworm]
-  image: debian:$DEBIAN_VERSION
+      - DEBIAN_VERSION: [bookworm]
+  image: ${CI_REGISTRY}/grid5000/docker/g5k-debian:$DEBIAN_VERSION
   before_script:
     - apt-get update && apt-get -y --no-install-recommends install build-essential wget git ruby ruby-dev bundler rake gpg clustershell graphviz
     # Call the original before_script section
@@ -46,10 +46,10 @@ wikigen:
     matrix:
       - GENERATOR: [cpu_parameters, disk_reservation, environments, group_storage, hardware, kwollect_metrics, oar_properties, status]
         SITE: global
-        DEBIAN_VERSION: [bullseye, bookworm]
+        DEBIAN_VERSION: [bookworm]
       - GENERATOR: [site_hardware, site_network]
         SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia, strasbourg, toulouse]
-        DEBIAN_VERSION: [bullseye, bookworm]
+        DEBIAN_VERSION: [bookworm]
   script:
     - echo "$GRID5000_API" > "${HOME}/.grid5000_api.yml"
     - bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=diff
