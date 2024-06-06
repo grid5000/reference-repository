@@ -152,6 +152,34 @@ pve-1:
     - uid: gruss-pdu2
       port: 6
 
+pve-2:
+  kind: physical
+  alias: []
+  serial: CZJD1200CJ
+  network_adapters:
+    default:
+      mac: d4:04:e6:41:96:78
+      ip: 172.16.79.39
+    adm:
+      ip: 172.17.79.39
+    bmc:
+      ip: 172.17.79.40
+      mac: 7c:a6:2a:38:b2:da
+
+wattmetre-gros:
+  kind: physical
+  alias: []
+  serial: 2LSZH82
+  network_adapters:
+    default:
+      mac: 24:6e:96:03:11:f8
+      ip: 172.16.79.24
+    adm:
+      ip: 172.17.79.24
+    bmc:
+      ip: 172.17.79.25
+      mac: 64:00:6a:c0:dc:6a
+
 pve-99:
   kind: physical
   alias: []
