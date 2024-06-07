@@ -18,6 +18,7 @@ hydra-1:
     serial: QTWS7G0240200024
   network_adapters:
     bmc:
+      interface: Ethernet
       ip: 172.17.57.1
       mac: 74:d4:dd:47:1e:21
       management: true
@@ -64,6 +65,9 @@ hydra-1:
     instruction_set: aarch64
     microcode: unknown
     vendor: ARM
+    model: Unknown
+    other_description: Unknown
+    version: vendor
   storage_devices:
     pci-0004:01:00.0-nvme-1:
       by_id: "/dev/disk/by-id/nvme-eui.36363530574136010025384e00000001"
@@ -77,6 +81,8 @@ hydra-1:
       model: SAMSUNG MZTL21T9
       size: 1920383410176
       storage: SSD
+  main_memory:
+    ram_size: 8 # Fake size, will be replaced by g5k-checks
   memory_devices:
     dimm:
       size: 8
