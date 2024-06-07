@@ -7,20 +7,20 @@
     "platform_type": "aarch64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "10/05/2023",
+    "vendor": "American Megatrends International, LLC.",
+    "version": "3A06"
   },
-  "bmc_version": "v1",
+  "bmc_version": "3.09",
   "chassis": {
     "manufactured_at": "2024-02-15",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufacturer": "Quanta Cloud Technology Inc.",
+    "name": "QuantaGrid S74G-2U 1S7GZ9Z0000",
+    "serial": "QTWS7G0240200024",
     "warranty_end": "2027-02-15"
   },
   "exotic": true,
   "main_memory": {
-    "ram_size": 8
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -30,7 +30,7 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
+      "device": "dimm",
       "size": 8,
       "technology": "dram"
     }
@@ -40,24 +40,42 @@
       "device": "eth0",
       "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "28.40.1000 (MT_0000000834)",
       "interface": "Ethernet",
       "ip": "172.16.57.1",
       "ip6": "2001:660:4406:400:a::1",
       "kavlan": false,
       "mac": "a0:88:c2:98:fc:82",
       "management": false,
+      "model": "MT2910 Family [ConnectX-7]",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "hydra-1.lyon.grid5000.fr",
       "rate": 10000000000,
+      "sriov": true,
+      "sriov_totalvfs": 16,
       "switch": "sneowise",
-      "switch_port": "1/11"
+      "switch_port": "1/11",
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "eth1",
+      "driver": "mlx5_core",
+      "firmware_version": "28.40.1000 (MT_0000000834)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "a0:88:c2:98:fc:83",
+      "management": false,
+      "model": "MT2910 Family [ConnectX-7]",
+      "name": "enp1s0f1np1",
+      "sriov": true,
+      "sriov_totalvfs": 16,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
       "enabled": true,
-      "interface": "Ethernet",
       "ip": "172.17.57.1",
       "kavlan": false,
       "mac": "74:d4:dd:47:1e:21",
@@ -69,12 +87,12 @@
   ],
   "nodeset": "hydra",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
-    "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
-    "turboboost_enabled": true
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": false,
+    "pstate_driver": "cppc_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": false
   },
   "performance": {
     "core_flops": 55152000000,
@@ -82,19 +100,16 @@
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 65536,
+    "cache_l1i": 65536,
+    "cache_l2": 1048576,
+    "cache_l3": 119537664,
     "clock_speed": 3447000000,
-    "ht_capable": true,
-    "instruction_set": "x86-64",
+    "ht_capable": false,
+    "instruction_set": "aarch64",
     "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microcode": "unknown",
+    "vendor": "ARM"
   },
   "software": {
     "forced-deployment-timestamp": 202007300948,
@@ -103,24 +118,25 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.36363530574136010025384e00000001",
       "by_path": "/dev/disk/by-path/pci-0004:01:00.0-nvme-1",
       "id": "disk0",
       "interface": "NVME",
-      "model": "unknown",
-      "size": 8,
+      "model": "SAMSUNG MZ1L2960HCJR-00A07",
+      "size": 960197124096,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Samsung"
     },
     {
       "by_id": "",
       "by_path": "/dev/disk/by-path/pci-0006:01:00.0-scsi-0:2:0:0",
+      "firmware_version": "602Q",
       "id": "disk1",
       "interface": "SCSI",
-      "model": "unknown",
-      "size": 8,
+      "model": "SAMSUNG MZTL21T9",
+      "size": 1920383410176,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Samsung"
     }
   ],
   "supported_job_types": {
