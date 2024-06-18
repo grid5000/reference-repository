@@ -1,0 +1,24 @@
+---
+gw-next:
+  model: Aruba 8325-48Y8C JL635A
+  serial: TW32KM007R
+  kind: switch
+  managed_by_us: true
+  site: nancy
+  ip: 172.17.79.251 # interface sur le vlan101
+  alias:
+    - name: gw-next-adm # interface de management
+      ip: 172.17.79.252
+  snmp_community: public
+  backplane_bps: 1440000000000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 10_000_000_000
+      kind: node
+      ports:
+        49:
+          uid: sgros1
+          kind: switch
+          rate: 40_000_000_000
