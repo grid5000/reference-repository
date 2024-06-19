@@ -19,6 +19,11 @@ module RefRepo::Utils
     return JSON::parse(d)
   end
 
+  def self.get_public_api(path, version='stable')
+    d = URI.open("https://public-api.grid5000.fr/#{version}/#{path}").read
+    return JSON::parse(d)
+  end
+
   def self.get_sites
     return (Dir::entries('input/grid5000/sites') - ['.', '..']).sort
   end
