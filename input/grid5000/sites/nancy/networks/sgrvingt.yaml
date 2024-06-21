@@ -106,15 +106,12 @@ sgrvingt:
         40: grvingt-2
         41: grvingt-41
         42: grvingt-42
-        43:
-          uid: grvingt-srv
-          kind: server
-        44: grostiti-1
         46: grvingt-46
         47: grvingt-45
-        48:
-          uid: gw
-          kind: router
+        54:
+          uid: gw-next
+          rate: 40_000_000_000
+          kind: switch
     49:
       snmp_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
       kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
