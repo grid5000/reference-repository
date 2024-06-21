@@ -172,15 +172,26 @@ def generate_reference_api
   )
 
 
-  #
-  # Write the all-in-one json file
-  #
+  # Generate the all-in-one json with just enough information for resources-explorer.
+  all_in_one_hash = {
+    "sites" => global_hash["sites"].to_h do |site_uid, site|
+      [site_uid, {
+        "uid" => site_uid,
+        "clusters" => site["clusters"].to_h do |cluster_uid, cluster|
+          [cluster_uid, {
+            "uid" => cluster_uid,
+            "queues" => cluster["queues"],
+            "nodes" => cluster["nodes"].to_h do |node_uid, node|
+              [node_uid, node.select { |key| %w[uid nodeset gpu_devices processor architecture].include?(key) }]
+            end
+          }]
+        end
+      }]
+    end
+  }
 
-  # rename entry for the all-in-on json file
-  global_hash["sites"].each do |_site_uid, site|
-    site["network_equipments"] = site.delete("networks")
-  end
-
-  # Write global json file - Disable this for now, see https://www.grid5000.fr/w/TechTeam:CT-220
-  #write_json(grid_path.join(File.expand_path("../../#{global_hash['uid']}-all.json", File.dirname(__FILE__))), global_hash)
+  # Write the global json file.
+  # Writing the file at the root of the repository makes the full refrepo show
+  # up when GET-ing "/" in g5k-api, which we don't want; arbitrarily put it in accesses.
+  write_json(Pathname.new(refapi_path).join("accesses", "refrepo.json"), all_in_one_hash)
 end
