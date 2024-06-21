@@ -18,7 +18,16 @@ gw-next:
       rate: 10_000_000_000
       kind: node
       ports:
+        8:
+          uid: grvingt-srv
+          kind: server
+        31:
+          uid: grostiti-1
         49:
           uid: sgros1
+          kind: switch
+          rate: 40_000_000_000
+        52:
+          uid: sgrvingt
           kind: switch
           rate: 40_000_000_000
