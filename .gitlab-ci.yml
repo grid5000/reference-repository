@@ -27,14 +27,14 @@ include:
     - apt-get update && apt-get -y --no-install-recommends install build-essential wget git ruby ruby-dev bundler rake gpg clustershell graphviz
     # Call the original before_script section
     - !reference [.base, before_script]
+    # Add G5K CA certificate
+    - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
+    - /usr/sbin/update-ca-certificates
 
 validate-data:
   extends: .template-refrepo
   stage: validate
   script:
-    # Add G5K CA certificate
-    - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
-    - /usr/sbin/update-ca-certificates
     - bundle exec rake valid:schema
     - bundle exec rake valid:duplicates
 
@@ -86,6 +86,4 @@ valid-homogeneity:
   stage: checks
   extends: .template-refrepo
   script:
-    - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
-    - /usr/sbin/update-ca-certificates
     - bundle exec rake valid:homogeneity
