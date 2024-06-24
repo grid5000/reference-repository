@@ -1,0 +1,94 @@
+# This is an input file of reference-repository.git/generators/puppet/accesses.rb
+---
+
+# Cluster of a specific team
+## WIDE
+roazhon1:
+    p1: [wide, '@admin']
+    p2: ['@inria_rennes_group']
+    p3: ['@inria_group']
+    p4: ['@other_groups_with_access']
+
+## HYCOMES
+roazhon2:
+    p1: [hycomes, '@admin']
+    p2: ['@inria_rennes_group']
+    p3: ['@inria_group']
+    p4: ['@other_groups_with_access']
+
+## NEURINFO (empenn team)
+abacus19:
+    p1: [empenn, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+roazhon5:
+    p1: [empenn, '@admin']
+    p2: ['@inria_rennes_group']
+    p3: ['@inria_group']
+    p4: ['@other_groups_with_access']
+
+
+## SAIRPICO
+roazhon7: &sairpico-shared
+    p1: [sairpico, '@admin']
+    p2: ['@inria_rennes_group']
+    p3: ['@inria_group']
+    p4: ['@other_groups_with_access']
+roazhon8: *sairpico-shared
+abacus1: *sairpico-shared
+abacus2: *sairpico-shared
+
+## LINKMEDIA
+abacus3: &linkmedia-exclusive
+    p1: [linkmedia, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+abacus10: *linkmedia-exclusive
+abacus18: *linkmedia-exclusive
+abacus21: *linkmedia-exclusive
+
+## SIROCCO
+abacus5: &sirocco-exclusive
+    p1: [sirocco, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+abacus20: *sirocco-exclusive
+abacus22-A: *sirocco-exclusive
+
+## INTUIDOC
+abacus11:
+    p1: [intuidoc, '@admin']
+    p2: ['@inria_rennes_group']
+    p3: ['@inria_group']
+    p4: ['@other_groups_with_access']
+
+## LACODAM
+abacus12:
+    p1: [lacodam, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+## TARAN
+abacus17:
+    p1: [taran, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+## CIDRE
+abacus22-B:
+    p1: [cidre, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+# Common cluster of Rennes Inria Center
+roazhon3: &inria-rennes
+    p1: ['@inria_rennes_group', '@admin']
+    p3: ['@inria_group']
+    p4: ['@other_groups_with_access']
+roazhon4: *inria-rennes
+roazhon6: *inria-rennes
+roazhon9: *inria-rennes
+roazhon10: *inria-rennes
+roazhon11: *inria-rennes
+roazhon12: *inria-rennes
+roazhon13: *inria-rennes
+abacus4: *inria-rennes
+abacus8: *inria-rennes
+abacus9: *inria-rennes
+abacus14: *inria-rennes
+abacus16: *inria-rennes
+abacus25: *inria-rennes

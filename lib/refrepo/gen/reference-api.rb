@@ -1,5 +1,6 @@
 require 'refrepo/valid/input/schema'
 require 'refrepo/valid/homogeneity'
+require 'refrepo/accesses'
 
 # Creation du fichier network_equipment
 def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
@@ -38,6 +39,8 @@ def generate_reference_api
     global_hash.delete('ipv6')
     # remove management_tools info
     global_hash.delete('management_tools')
+    # remove accesses
+    global_hash.delete('access')
 
     grid_path = Pathname.new(refapi_path)
     grid_path.mkpath()
@@ -46,10 +49,14 @@ def generate_reference_api
                global_hash.reject {|k, _v| k == "sites" || k == "network_equipments" || k == "disk_vendor_model_mapping"})
   end
 
+  accesses_path = Pathname.new(refapi_path).join("accesses")
+
   puts "Generating the reference api:\n\n"
   puts "Removing data directory:\n"
+
   FileUtils.rm_rf(Pathname.new(refapi_path).join("sites"))
   FileUtils.rm_rf(Pathname.new(refapi_path).join("network_equipments"))
+  FileUtils.rm_rf(accesses_path)
   puts "Done."
 
   # Generate global network_equipments (renater links)
@@ -157,15 +164,34 @@ def generate_reference_api
 
   end
 
-  #
-  # Write the all-in-one json file
-  #
+  # Generate the json containing all accesses level.
+  accesses_path.mkpath()
+  generate_accesses_json(
+    accesses_path.join("all.json"),
+    generate_access_level
+  )
 
-  # rename entry for the all-in-on json file
-  global_hash["sites"].each do |_site_uid, site|
-    site["network_equipments"] = site.delete("networks")
-  end
 
-  # Write global json file - Disable this for now, see https://www.grid5000.fr/w/TechTeam:CT-220
-  #write_json(grid_path.join(File.expand_path("../../#{global_hash['uid']}-all.json", File.dirname(__FILE__))), global_hash)
+  # Generate the all-in-one json with just enough information for resources-explorer.
+  all_in_one_hash = {
+    "sites" => global_hash["sites"].to_h do |site_uid, site|
+      [site_uid, {
+        "uid" => site_uid,
+        "clusters" => site["clusters"].to_h do |cluster_uid, cluster|
+          [cluster_uid, {
+            "uid" => cluster_uid,
+            "queues" => cluster["queues"],
+            "nodes" => cluster["nodes"].to_h do |node_uid, node|
+              [node_uid, node.select { |key| %w[uid nodeset gpu_devices processor architecture].include?(key) }]
+            end
+          }]
+        end
+      }]
+    end
+  }
+
+  # Write the global json file.
+  # Writing the file at the root of the repository makes the full refrepo show
+  # up when GET-ing "/" in g5k-api, which we don't want; arbitrarily put it in accesses.
+  write_json(Pathname.new(refapi_path).join("accesses", "refrepo.json"), all_in_one_hash)
 end

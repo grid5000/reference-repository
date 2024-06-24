@@ -1,0 +1,46 @@
+# groups of ggas used by the access generator
+# '%blabla' means "all the groups of the site blabla"
+# '-blabla' means "remove the group blabla from the list"
+# eg: mc_nancy: ['%mc-nancy', 'other_group', '-group_to_remove']
+# This groups of gga are usable in this file and in the nodeset prio configuration
+# with an @ prefix (eg: @mc_nancy)
+# The order matter (you cannot use a group of gga before the line where it is created)
+# You can combine -@ or -% but not @%.
+
+# ADMIN GROUP WITH MAXIMUM ACCESS
+## admin groups (include jenkins)
+admin: ['%mc-staff-site','%g5k-staff-site']
+
+# GROUPS FOR A SPECIFIC INRIA CENTERS
+## mc group of inria rennes, also include some slices-fr groups
+inria_rennes_group: ['%mc-rennes', cidre, kerdata, magellan, myriads, pacap, wide]
+
+## mc group of inria nancy, also include some slices-fr groups
+inria_nancy_group: ['%mc-nancy', coast]
+
+# GROUP FOR ALL INRIA
+## economic activity group with access to mc with the same level as other inria team
+economic_activity_inria: [hive, inriastartupstudio, sonaide, feelim]
+## group of guest site that have access to inria mc with the same level as other inria team
+guest_inria: [inria-bso, inria-chile, inria-dsi, inria-paris, inria-sidf, tadaam, swh]
+
+## all inria (and friends of inria) groups
+inria_group:  ['@inria_rennes_group', '@inria_nancy_group', '@economic_activity_inria', '@guest_inria', '%mc-sophia', '%mc-lyon', '%mc-lille', '%mc-grenoble']
+
+# OTHER GROUP WITH (MINIMAL) ACCESS TO MC
+## Group still not migrated
+#FIXME as gga are migrated, this list should contains nothing in the end
+unmigrated_gga_lille: [bonus, cristal, inria-lne, lille-misc, lisic, magnet, sequel, spirals]
+unmigrated_gga_grenoble: [convecs, corse, datamove, erods, grenoble-misc, gricad, inria-gra, lig, ljk, mrim, nanosim2, polaris]
+unmigrated_gga_lyon: [chroma, emeraude, lip, liris, lyon-misc, maracas, privatics]
+unmigrated_gga_nantes: [ls2n, nantes-misc, stack]
+unmigrated_gga_sophia: [i3s, inria-sam, sophia-misc, zenith]
+unmigrated_gga_toulouse: [irit, laas, toulouse-misc]
+unmigrated_gga: ['@unmigrated_gga_lille','@unmigrated_gga_grenoble','@unmigrated_gga_lyon','@unmigrated_gga_nantes','@unmigrated_gga_sophia', '@unmigrated_gga_toulouse']
+
+
+
+slices_site_in_france: ['%slices-fr-strasbourg', '%slices-fr-rennes', '%slices-fr-nancy']
+
+## group with an access to mc
+other_groups_with_access: ['%mc-guest', '@unmigrated_gga', '@slices_site_in_france' ]
