@@ -13,7 +13,7 @@ IGNORE_SITES = %w[strasbourg]
 
 $yaml_load_args = {}
 #FIXME We cannot drop ruby 2.7 support until jenkins is on debian 11
-$yaml_load_args[:aliases] = true if ::Gem::Version.new(RUBY_VERSION) >= ::Gem::Version.new('3.0.0')
+$yaml_load_args[:aliases] = true if ::Gem::Version.new(RUBY_VERSION) >= ::Gem::Version.new('3.1.0')
 
 
 # Ulgy function to order hash since order is different on ruby 2.7 and 3.x
