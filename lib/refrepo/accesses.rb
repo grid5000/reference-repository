@@ -101,7 +101,7 @@ def generate_nodeset_mode_history
     yaml_path = File.join(INPUT_FOLDER, "#{site}.yaml")
     next unless File.exist?(yaml_path)
 
-    commits = git_repo.log.path(yaml_path).map { |commit| [commit.date, commit.sha] }.sort_by(&:first)
+    commits = git_repo.log.path(yaml_path).map { |commit| [commit.author.date, commit.sha] }.sort_by(&:first)
     process_commits(commits, git_repo, yaml_path, nodeset_history, known_nodeset)
   end
 
