@@ -1,12 +1,5 @@
 {
-  "channels": {
-    "port-channel1242": {
-      "kind": "switch",
-      "port": "port-channel1242",
-      "rate": 10000000000,
-      "uid": "swdc-c003-01-02-rba"
-    }
-  },
+  "ip": "172.17.111.230",
   "kind": "switch",
   "linecards": [
     {
@@ -162,29 +155,21 @@
         {
         },
         {
-        },
-        {
-        },
-        {
-          "kind": "channel",
-          "snmp_name": "Eth1/1/29",
-          "uid": "port-channel1242"
-        },
-        {
-          "kind": "channel",
-          "snmp_name": "Eth1/1/30",
-          "uid": "port-channel1242"
+          "kind": "router",
+          "port": "1/1/43",
+          "snmp_name": "Eth1/1/27",
+          "uid": "gw"
         }
       ],
       "rate": 10000000000,
       "snmp_pattern": "Eth%LINECARD%/1/%PORT%"
     }
   ],
-  "managed_by_us": false,
+  "managed_by_us": true,
   "model": "S4128F-ON",
   "site": "rennes",
   "snmp_community": "none",
   "type": "network_equipment",
-  "uid": "sw-dell-c003-01-rba",
+  "uid": "sw-1-c003",
   "warranty": "N/A"
 }
