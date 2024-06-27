@@ -1,9 +1,10 @@
 ---
-sw-dell-c003-01-rba:
+sw-1-c003:
   model: S4128F-ON
   warranty: N/A
   kind: switch
-  managed_by_us: false
+  managed_by_us: true
+  ip: 172.17.111.230
   snmp_community: none
   site: rennes
   linecards:
@@ -59,16 +60,7 @@ sw-dell-c003-01-rba:
           uid: roazhon13-1
         24:
           uid: roazhon13-2
-        29:
-          uid: port-channel1242
-          kind: channel
-        30:
-          uid: port-channel1242
-          kind: channel
-
-  channels:
-    port-channel1242:
-      uid: swdc-c003-01-02-rba
-      kind: switch
-      port: port-channel1242
-      rate: 10000000000
+        27:
+          uid: gw
+          kind: router
+          port: 1/1/43
