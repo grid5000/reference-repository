@@ -19,12 +19,6 @@ swdc-c003-01-02-rba:
         3:
           uid: port-channel51
           kind: channel
-        16_01: # physically on interface 1/16 of swdc-c003-01-rba only
-          uid: port-channel1242
-          kind: channel
-        16_02: # physically on interface 1/16 of swdc-c003-02-rba only
-          uid: port-channel1242
-          kind: channel
         25_01: # physically on interface 1/25 of swdc-c003-01-rba only
           uid: roazhon10-2
         25_02: # physically on interface 1/25 of swdc-c003-02-rba only
@@ -91,8 +85,3 @@ swdc-c003-01-02-rba:
       kind: switch
       port: port-channel51
       rate: 20000000000
-    port-channel1242:
-      uid: sw-dell-c003-01-rba
-      kind: switch
-      port: port-channel1242
-      rate: 10000000000
