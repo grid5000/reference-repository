@@ -39,7 +39,10 @@ def generate_puppet_kavlang5k(options)
   puts "For site(s): #{options[:sites].join(', ')}"
 
   refapi = load_data_hierarchy
-
+  eth_1_to_4_prefixes = {}
+  eth_5_to_6_prefixes = {}
+  eth_7_prefix = {}
+  
   refapi['sites'].each { |site_uid, site_refapi|
 
     next unless options[:sites].include?(site_uid)
@@ -68,13 +71,32 @@ def generate_puppet_kavlang5k(options)
       }
     end
 
+    kavlans = refapi['sites'][site_uid]['kavlans']
     # Look for site's global kavlan
     # TODO fix dirty convertion to_i below
-    kavlan_id = refapi['sites'][site_uid]['kavlans'].each_key.select {|k| k.to_i > 9}.pop().to_i
+    kavlan_id = kavlans.each_key.select {|k| k.to_i > 9}.pop().to_i
     ["dhcpd", "dhcpd6"].each { |dhcpkind|
       output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
       output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/dhcp/#{dhcpkind}-0.conf")
       File.write(output_file, output)
+      eth_7_prefix[site_uid] = get_network_prefix(kavlans["#{kavlan_id}"]['network'])
     }
+
+    eth_1_to_4_prefixes[site_uid] = get_network_prefix(kavlans['4']['network'])
+    eth_5_to_6_prefixes[site_uid] = get_network_prefix(kavlans['7']['network'])
   }
+  # FIXME: remove theses ugly print and output the hashes into a yaml file into the cdgp
+  print(eth_1_to_4_prefixes)
+  print("\n")
+  print(eth_5_to_6_prefixes)
+  print("\n")
+  print(eth_7_prefix)
+  print("\n")
+end
+
+def get_network_prefix(network)
+  address = network.split('/').first
+  bytes = address.split('.')
+  prefix = bytes[0] + '.' + bytes[1]
+  return prefix
 end
