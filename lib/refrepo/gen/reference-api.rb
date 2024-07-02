@@ -172,7 +172,7 @@ def generate_reference_api
   )
 
 
-  node_keys = %w[uid nodeset gpu_devices processor architecture storage_devices memory_devices]
+  node_keys = %w[uid nodeset gpu_devices processor architecture storage_devices memory_devices network_adapters performance]
   # Generate the all-in-one json with just enough information for resources-explorer.
   all_in_one_hash = {
     "sites" => global_hash["sites"].to_h do |site_uid, site|
@@ -182,6 +182,9 @@ def generate_reference_api
           [cluster_uid, {
             "uid" => cluster_uid,
             "queues" => cluster["queues"],
+            "created_at" => cluster["created_at"],
+            "manufactured_at" => cluster["manufactured_at"],
+            "model" => cluster["model"],
             "nodes" => cluster["nodes"].select { |_, n| n["status"] != "retired" }.to_h do |node_uid, node|
               [node_uid, node.select { |key| node_keys.include?(key) }]
             end
