@@ -70,10 +70,10 @@ gw:
       rate: 25000000000
       ports:
         29:
-          uid: lag4
+          uid: lag 4
           kind: channel
         30:
-          uid: lag4
+          uid: lag 4
           kind: channel
         31:
           uid: srv-1
@@ -85,10 +85,10 @@ gw:
           uid: srv-3
           kind: server
         35:
-          uid: lag2
+          uid: lag 2
           kind: channel
         36:
-          uid: lag2
+          uid: lag 2
           kind: channel
         43:
           uid: sw-adm-1
@@ -107,39 +107,39 @@ gw:
           kind: backbone
           rate: 10000000000
         47:
-          uid: lag3
+          uid: lag 3
           kind: channel
           rate: 10000000000
         48:
-          uid: lag3
+          uid: lag 3
           kind: channel
           rate: 10000000000
         49:
-          uid: lag1
+          uid: lag 1
           kind: channel
           rate: 100000000000
         50:
-          uid: lag1
+          uid: lag 1
           kind: channel
           rate: 100000000000
   channels:
-    lag1:
+    lag 1:
       kind: switch
       rate: 200000000000
       uid: sw-1
-      port: lag1
-    lag2:
+      port: lag 1
+    lag 2:
       kind: server
       rate: 50000000000
       uid: srv-data
-      port: lag2
-    lag3:
+      port: lag 2
+    lag 3:
       kind: switch
       rate: 20000000000
       uid: swcore-01-rba
       port: port-channel286
-    lag4:
+    lag 4:
       kind: server
       rate: 50000000000
       uid: srv-data2
-      port: lag4
+      port: lag 4
