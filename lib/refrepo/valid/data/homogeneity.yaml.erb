@@ -67,7 +67,9 @@ grenoble:
     - ~bios.release_date
     - ~bios.version
     - ~bmc_version
-
+  troll-4:
+    - ~storage_devices.pci-0000:d8:00.0-nvme-1.model
+    - -storage_devices.pci-0000:d8:00.0-nvme-1.alt_model_name
   yeti-[1-2]:
     - ~storage_devices.pci-0000:59:00.0-nvme-1.model
   yeti-3:
