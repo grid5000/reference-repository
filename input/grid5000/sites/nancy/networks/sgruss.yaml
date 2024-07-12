@@ -81,18 +81,7 @@ sgruss:
         18:
            uid: grouille-2-eth2
         25:
-           snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
-           rate: 40_000_000_000
-           uid: port-channel1
-           kind: channel
-        26:
-           snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
-           rate: 40_000_000_000
-           uid: port-channel1
-           kind: channel
-  channels:
-    port-channel1:
-      port: port-channel5
-      uid: gw
-      kind: router
-      rate: 80_000_000_000
+          snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
+          uid: gw-next
+          rate: 40_000_000_000
+          kind: switch
