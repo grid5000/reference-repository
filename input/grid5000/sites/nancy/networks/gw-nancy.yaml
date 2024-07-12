@@ -142,39 +142,6 @@ gw:
         48:
           uid: renater-nancy
           kind: backbone
-    2:
-      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
-      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
-      backplane_bps: 1280000000000
-      model: N9K-X9464PX
-      kind: node
-      rate: 10000000000
-      ports:
-        49:
-          uid: port-channel5
-          kind: channel
-          rate: 40_000_000_000
-        50:
-          uid: port-channel5
-          kind: channel
-          rate: 40_000_000_000
-    5:
-      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
-      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
-      backplane_bps: 1280000000000
-      model: N9K-X9464PX
-      kind: node
-      rate: 10000000000
-      ports:
-        51:
-          uid: port-channel4
-          kind: channel
-          rate: 40_000_000_000
-        52:
-          uid: port-channel4
-          kind: channel
-          rate: 40_000_000_000
-
     6:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
@@ -191,7 +158,6 @@ gw:
           uid: port-channel3
           kind: channel
           rate: 40_000_000_000
-
     7:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
@@ -236,15 +202,5 @@ gw:
     port-channel3:
       port: port-channel1
       uid: sgros2
-      kind: switch
-      rate: 80_000_000_000
-    port-channel4:
-      port: port-channel1
-      uid: sgrappe
-      kind: switch
-      rate: 80_000_000_000
-    port-channel5:
-      port: port-channel1
-      uid: sgruss
       kind: switch
       rate: 80_000_000_000
