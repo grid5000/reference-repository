@@ -217,6 +217,7 @@ def add_default_values_and_mappings(h)
       cluster["type"] = "cluster"
       cluster["uid"]  = cluster_uid
       cluster["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false
+      cluster["redfish"] = cluster.key?('redfish') ? cluster['redfish'] : true
 
       # On the previous version of this script, cluster["created_ad"] was generated from a Ruby Time. cluster["created_ad"] is now a Ruby Date at JSON import.
       # As Date.httpdate and Time.httpdate does not behave the same with timezone, it is converted here as a Ruby time.
@@ -239,6 +240,7 @@ def add_default_values_and_mappings(h)
         node["main_memory"] = {} unless node.key?("main_memory")
 
         node["exotic"] = cluster.key?('exotic') ? cluster['exotic'] : false unless node.key?('exotic')
+        node["redfish"] = cluster.key?('redfish') ? cluster['redfish'] : true
 
         node['supported_job_types']['queues'] = cluster['queues'] unless node['supported_job_types'].key?('queues')
 
