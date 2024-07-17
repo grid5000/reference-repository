@@ -14,5 +14,12 @@ def generate_puppet_accesses(options)
   filtered_access_level = access_level.transform_values do |v|
     v.reject { |_, v2| v2['level'] == -1 }
   end.to_h
-  generate_accesses_yaml(File.join(output_file_path, 'accesses.yaml'), filtered_access_level)
+  generate_accesses_yaml(File.join(output_file_path, 'human_readable_accesses_by_gga.yaml'), filtered_access_level)
+  by_nodeset_hash = Hash.new { |hash, key| hash[key] = {} }
+  filtered_access_level.each do |outer_key, inner_hash|
+    inner_hash.each do |inner_key, value|
+      by_nodeset_hash[inner_key][outer_key] = value
+    end
+  end
+  generate_accesses_yaml(File.join(output_file_path, 'human_readable_accesses_by_nodeset.yaml'), by_nodeset_hash)
 end
