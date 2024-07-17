@@ -34,7 +34,7 @@ end
 
 def generate_accesses_json(output_path, data)
   output_file = File.new(output_path, 'w')
-  output_file.write(JSON.dump(deep_sort_hash(data)))
+  output_file.write(JSON.pretty_generate(deep_sort_hash(data)))
 end
 
 ##########################################
