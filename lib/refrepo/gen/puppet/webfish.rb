@@ -11,7 +11,7 @@ def generate_puppet_webfish(options)
         options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/ipmitools/"
     end
 
-    allBmc = check_redfish_availability(3)
+    allBmc = check_redfish_availability(20)
     credentials = YAML::load_file(options[:conf_dir] + 'console-password.yaml')
     add_credentials(credentials, allBmc)
     gen_json_files(allBmc, options)
@@ -46,6 +46,9 @@ def check_redfish_availability(timeout)
 
         d_site['servers'].peach do |srv_uid, d_server|
             if d_server['kind'] == "physical"
+                if !d_server['redfish']
+                    next
+                end
                 if !d_server['network_adapters'].nil?
                     if !d_server['network_adapters']['bmc'].nil?
                         if !d_server['network_adapters']['bmc']['ip'].nil?

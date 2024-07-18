@@ -206,6 +206,9 @@ def add_default_values_and_mappings(h)
     site.fetch("servers", []).each do |server_uid, server|
       server["type"]  = "server"
       server["uid"]  = server_uid
+      if server["kind"] == "physical"
+        server["redfish"] = server.key?('redfish') ? server['redfish'] : true
+      end
     end
 
     site.fetch("clusters", []).sort.each do |cluster_uid, cluster|
