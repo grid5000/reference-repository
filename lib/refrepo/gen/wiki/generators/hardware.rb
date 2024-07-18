@@ -363,13 +363,14 @@ class G5KHardwareGenerator < WikiGenerator
       'Haswell' => '2013',
       'POWER8' => '2014',
       'Broadwell' => '2015',
-      'Skylake' => '2016',
+      #'Skylake' => '2015', # Note there are no client Skylake CPU in Grid5K
+      'Skylake-SP' => '2017',
       'Zen' => '2017',
       'Zen 2' => '2019',
       'Zen 3' => '2020',
       'Cascade Lake-SP' => '2019',
       'Vulcan' => '2018',
-      'Ice Lake' => '2021',
+      #'Ice Lake' => '2019', # Note there are no client Ice Lake CPU in Grid5K
       'Ice Lake-SP' => '2021',
       'Carmel' => '2018',
       'Vega20' => '2018',
