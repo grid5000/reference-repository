@@ -1,16 +1,5 @@
 ---
 pdus:
-  graoully-pdu[1-2]:
-    vendor: APC
-    model: AP8653
-    metrics:
-      - name: pdu_outlet_power_watt
-        description: Power consumption per outlet reported by PDU, in watt
-        period: 1000
-        source:
-          protocol: snmp
-          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
-
   grimoire-pdu[1-2]:
     vendor: APC
     model: AP8653
@@ -33,31 +22,6 @@ pdus:
           protocol: snmp
           id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
 
-  grisou-pdu2:
-    vendor: APC
-    model: AP8653
-    ip: 172.17.79.248
-    mac: 28:29:86:2D:DF:60
-
-  graffiti-pdu[1-4]:
-    vendor: APC
-    model: AP8653
-    metrics:
-      - name: pdu_outlet_power_watt
-        description: Power consumption per outlet reported by PDU, in watt
-        period: 1000
-        source:
-          protocol: snmp
-          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
-
-  graoully-pdu1:
-    ip: 172.17.79.243
-    mac: 00:C0:B7:ED:63:AE
-
-  graoully-pdu2:
-    ip: 172.17.79.244
-    mac: 00:C0:B7:85:13:9C
-
   grimoire-pdu1:
     ip: 172.17.79.245
     mac: 00:C0:B7:85:13:93
@@ -73,22 +37,6 @@ pdus:
   grimani-pdu2:
     ip: 172.17.79.219
     mac: 00:C0:B7:F2:27:DE
-
-  graffiti-pdu1:
-    ip: 172.17.79.226
-    mac: 28:29:86:0B:3B:06
-
-  graffiti-pdu2:
-    ip: 172.17.79.227
-    mac: 28:29:86:10:0E:8C
-
-  graffiti-pdu3:
-    ip: 172.17.79.231
-    mac: 28:29:86:12:27:FF
-
-  graffiti-pdu4:
-    ip: 172.17.79.232
-    mac: 28:29:86:10:0E:B4
 
   gros-pdu[1-8]:
     vendor: APC
@@ -125,23 +73,6 @@ pdus:
   gros-pdu8:
     ip: 172.17.79.249
     mac: 28:29:86:12:28:60
-  grappe-pdu1: 
-    ip: 172.17.79.210
-    mac: 28:29:86:2d:dd:3f
-    vendor: APC
-    model: AP8653
-    metrics:
-      - name: pdu_outlet_power_watt
-        description: Power consumption per outlet reported by PDU, in watt
-        period: 1000
-        source:
-          protocol: snmp
-          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
-  grappe-pdu2:
-    ip: 172.17.79.250
-    mac: 00:20:85:F9:12:C4
-    vendor: Eaton
-    model: eMAA13
 
   gros-wattmetre2:
     vendor: OmegaWatt
@@ -155,20 +86,3 @@ pdus:
         optional_period: 20
         source:
           protocol: wattmetre
-
-  gruss-pdu1:
-    ip: 172.17.79.213
-    mac: 28:29:86:48:77:a8
-  gruss-pdu2:
-    ip: 172.17.79.214
-    mac: 28:29:86:48:77:a1
-  gruss-pdu[1-2]:
-    vendor: APC
-    model: AP8653
-    metrics:
-      - name: pdu_outlet_power_watt
-        description: Power consumption per outlet reported by PDU, in watt
-        period: 1000
-        source:
-          protocol: snmp
-          id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
