@@ -67,19 +67,12 @@ grenoble:
     - ~bios.release_date
     - ~bios.version
     - ~bmc_version
-  troll-4:
-    - ~storage_devices.pci-0000:d8:00.0-nvme-1.model
-    - -storage_devices.pci-0000:d8:00.0-nvme-1.alt_model_name
+
   yeti-[1-2]:
     - ~storage_devices.pci-0000:59:00.0-nvme-1.model
-  yeti-3:
+  yeti-[3-4]:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.model
-  yeti-4:
-    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.firmware_version
-    - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.model
-    - -storage_devices.pci-0000:59:00.0-nvme-1
-    - +storage_devices.pci-0000:ed:00.0-nvme-1
 lille:
   chifflot-2:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:3:0.firmware_version
