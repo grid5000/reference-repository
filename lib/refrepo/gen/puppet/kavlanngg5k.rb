@@ -176,7 +176,19 @@ def gen_ngs_conf(input_path, output_path, options)
             refapi['sites'][site]['network_equipments'][refapi_device]['linecards'].each_with_index do |lc, lc_index|
               if lc.has_key?('ports')
                 lc['ports'].each_with_index do |port, port_index|
-                  if port.has_key? 'kind'
+                  if port.has_key? 'trunk'
+                    if port['trunk']
+                      portname = get_port_name(port_index, port, lc_index, lc)
+                      if not portname
+                        puts "ERROR #{site}/#{refapi_device}/linecard-#{lc_index}/port-#{port_index}: unable to guess portname"
+                      else
+                        if options[:verbose]
+                          puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
+                        end
+                        ngs_trunk_ports.push portname
+                      end
+                    end
+                  elsif port.has_key? 'kind'
                     if TRUNK_KINDS.include? port['kind']
                       portname = get_port_name(port_index, port, lc_index, lc)
                       if not portname
@@ -195,7 +207,14 @@ def gen_ngs_conf(input_path, output_path, options)
           end
           if refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'channels'
             refapi['sites'][site]['network_equipments'][refapi_device]['channels'].each do |channelname, channel|
-              if channel.has_key? 'kind'
+              if channel.has_key? 'trunk'
+                if channel['trunk']
+                  if options[:verbose]
+                    puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{channelname}"
+                  end
+                  ngs_trunk_ports.push channelname
+                end
+              elsif channel.has_key? 'kind'
                 if TRUNK_KINDS.include? channel['kind']
                   if options[:verbose]
                     puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{channelname}"
