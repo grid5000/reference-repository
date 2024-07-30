@@ -38,9 +38,7 @@ linecards:
       backplane_bps: optional_integer
       port: optional_string
       ports:
-        # custom linecard port validation (see lib/custom-validators.rb)
-        <optional_array>:
-          <multi>: linecard_port
+        <optional_array>: linecard_port
 channels:
   <optional_hash>:
     <multi>:
@@ -48,6 +46,7 @@ channels:
       uid: string
       kind: string
       rate: integer
+      trunk: optional_boolean
 metrics: optional_array
 uid: string
 type: string

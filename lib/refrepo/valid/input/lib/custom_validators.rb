@@ -1,22 +1,40 @@
-
 require "resolv" #Ip address validation
 
 class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator::Base
 
   def initialize
     super('linecard_port')
-    @port_properties = ["uid", "name", "port", "kind", "mtu", "rate", "site", "aggregation", "snmp_pattern", "kavlan_pattern"]
+    @kind_values = [ 'router', 'switch', 'backbone', 'other', 'channel', 'server', 'node' ]
+    @port_validator = {
+      'uid' => 'string',
+      'name' => HashValidator.optional('string'),
+      'port' => HashValidator.optional('string'),
+      'kind' => HashValidator.optional('string'),
+      'rate' => HashValidator.optional('integer'),
+      'snmp_pattern' => HashValidator.optional('string'),
+      'snmp_name' => HashValidator.optional('string'),
+      'kavlan_pattern' => HashValidator.optional('string'),
+    }
   end
 
   def validate(key, values, _validations, errors)
+    if key.class != Integer
+      errors[key] = "Invalid '#{key}'. Should be an Integer"
+    end
     if values.is_a?(Hash)
-      values.each do |k, _v|
-        if @port_properties.index(k) == nil
-          errors[key] = "unexpected key '#{k}'."
+      if ! values.empty?
+        validator = HashValidator.validate(values, @port_validator, true)
+        if ! validator.valid?
+          errors[key] = validator.errors
         end
-      end
-      if values["uid"].nil? || values["uid"].empty?
-        errors[key] = "port 'uid' property should be defined."
+        # defining kind as below does not work:
+        # 'kind' => HashValidator.optional(@kind_values)
+        # so we do a special case for it
+        if values.has_key?('kind')
+          if @kind_values.index(values['kind']) == nil
+            errors[key] = "kind value #{values['kind']} must be one of #{@kind_values}"
+          end
+        end
       end
     elsif values.is_a?(String) || values.is_a?(Numeric) || values == nil
       #Allow any string and nil values
