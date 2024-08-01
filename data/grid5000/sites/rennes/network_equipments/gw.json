@@ -4,27 +4,27 @@
   ],
   "backplane_bps": 1440000000000,
   "channels": {
-    "lag 1": {
+    "lag1": {
       "kind": "switch",
-      "port": "lag 1",
+      "port": "lag1",
       "rate": 200000000000,
       "uid": "sw-1"
     },
-    "lag 2": {
+    "lag2": {
       "kind": "server",
-      "port": "lag 2",
+      "port": "lag2",
       "rate": 50000000000,
       "uid": "srv-data"
     },
-    "lag 3": {
+    "lag3": {
       "kind": "switch",
       "port": "port-channel286",
       "rate": 20000000000,
       "uid": "swcore-01-rba"
     },
-    "lag 4": {
+    "lag4": {
       "kind": "server",
-      "port": "lag 4",
+      "port": "lag4",
       "rate": 50000000000,
       "uid": "srv-data2"
     }
@@ -99,12 +99,12 @@
         {
           "kind": "channel",
           "snmp_name": "1/1/29",
-          "uid": "lag 4"
+          "uid": "lag4"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/30",
-          "uid": "lag 4"
+          "uid": "lag4"
         },
         {
           "kind": "server",
@@ -126,12 +126,12 @@
         {
           "kind": "channel",
           "snmp_name": "1/1/35",
-          "uid": "lag 2"
+          "uid": "lag2"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/36",
-          "uid": "lag 2"
+          "uid": "lag2"
         },
         {
         },
@@ -174,25 +174,25 @@
           "kind": "channel",
           "rate": 10000000000,
           "snmp_name": "1/1/47",
-          "uid": "lag 3"
+          "uid": "lag3"
         },
         {
           "kind": "channel",
           "rate": 10000000000,
           "snmp_name": "1/1/48",
-          "uid": "lag 3"
+          "uid": "lag3"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "1/1/49",
-          "uid": "lag 1"
+          "uid": "lag1"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "1/1/50",
-          "uid": "lag 1"
+          "uid": "lag1"
         }
       ],
       "rate": 25000000000,
