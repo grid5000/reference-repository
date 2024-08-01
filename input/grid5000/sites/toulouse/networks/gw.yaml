@@ -96,6 +96,7 @@ gw:
         20:
           uid: lag1
           kind: channel
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
       uid: nfs

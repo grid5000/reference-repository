@@ -96,25 +96,54 @@ def gen_kavlanapi_g5k_desc(output_path, options)
   end
 end
 
-def get_port_name(port_index, port, linecard_index, linecard)
-  pattern = nil
-  if linecard.has_key?('kavlan_pattern')
-    pattern = linecard['kavlan_pattern']
-  end
-  if linecard.has_key?('snmp_pattern')
-    pattern = linecard['snmp_pattern']
-  end
-  if port.has_key?('snmp_name')
-    pattern = port['snmp_name']
-  end
+def get_port_pattern_subst(pattern, linecard_index, port_index)
+  return pattern.gsub("%LINECARD%", linecard_index.to_s).sub("%PORT%", port_index.to_s)
+end
+
+def get_port_pattern_interpolation(pattern, linecard_index, port_index)
+  # reimplement with eval the ruby string interpolation mechanism (#{})
+  # WARNING: it means that code from the input yaml will be executed (thus input yamls may be used as attack vectors)
+  #return eval('"' + get_port_pattern_subst(pattern, linecard_index, port_index).gsub(/"/, '\"') + '"')
+  return eval('"' + get_port_pattern_subst(pattern, linecard_index, port_index) + '"')
+end
+
+# compute the port name for NGS ssh commands, based on device,
+# linecard, port, using refapi ssh/kavlan/snmp patterns (with
+# %LINECARD%, %PORT% substitutions), and interpolating the string for
+# ssh_pattern
+def get_port_name(_refapi, site_name, device_name, linecard_index, linecard, port_index, port)
+  # try different possibilities, by order of precedence
   if linecard.has_key?('ssh_pattern')
-    pattern = linecard['ssh_pattern']
-  end
-  if pattern
-    port_name = pattern.sub("%LINECARD%",linecard_index.to_s).sub("%PORT%",port_index.to_s)
-    return port_name
+    return get_port_pattern_interpolation(linecard['ssh_pattern'], linecard_index, port_index)
+  elsif port.has_key?('snmp_name')
+    return port['snmp_name']
+  elsif linecard.has_key?('kavlan_pattern')
+    return get_port_pattern_subst(linecard['kavlan_pattern'], linecard_index, port_index)
   else
-    return nil
+    puts "WARNING #{site_name}/#{device_name}/linecard-#{lc_index}/port-#{port_index}: unable to guess portname, fallback to port's uid: #{port['uid']}"
+    return port['uid']
+  end
+end
+
+def get_channel_pattern_subst(pattern, channel_name)
+  return pattern.gsub("%CHANNEL%", channel_name)
+end
+
+def get_channel_pattern_interpolation(pattern, channel_name)
+  # reimplement with eval the ruby string interpolation mechanism (#{})
+  # WARNING: it means that code from the input yaml will be executed (thus input yamls may be used as attack vectors)
+  #return eval('"' + get_channel_pattern_subst(pattern, channel_name).gsub(/"/, '\"') + '"')
+  return eval('"' + get_channel_pattern_subst(pattern, channel_name) + '"')
+end
+
+# compute the channel name for NGS ssh commands, based on device,
+# using refapi channel_ssh_pattern (with %CHANNEL% substitution), and
+# interpolating the string
+def get_channel_name(refapi, site_name, device_name, _channel, channel_name)
+  if refapi['sites'][site_name]['network_equipments'][device_name].has_key?('channels_ssh_pattern')
+    return get_channel_pattern_interpolation(refapi['sites'][site_name]['network_equipments'][device_name]['channels_ssh_pattern'], channel_name)
+  else
+    return channel_name
   end
 end
 
@@ -126,6 +155,8 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
   refapi = load_data_hierarchy
   network_devices_data = YAML::load(File.read(input_path))
   network_devices_data.delete_if { |s| !options[:sites].include? s }
+
+  # match devices in kavlanng conf and in refapi
   network_devices_data.each do |site, site_data|
     if options[:verbose]
       puts "  #{site}"
@@ -170,59 +201,61 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
           site_ngs_conf.puts("ngs_save_configuration = False")
           site_ngs_conf.puts("ngs_manage_vlans = True")
           site_ngs_conf.puts("ngs_physical_networks = g5k, #{site}")
+
+          # trunk ports
           ngs_trunk_ports = []
+
+          # from ports
           if refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'linecards'
             refapi['sites'][site]['network_equipments'][refapi_device]['linecards'].each_with_index do |lc, lc_index|
               if lc.has_key?('ports')
                 lc['ports'].each_with_index do |port, port_index|
                   if port.has_key? 'trunk'
                     if port['trunk']
-                      portname = get_port_name(port_index, port, lc_index, lc)
-                      if not portname
-                        puts "ERROR #{site}/#{refapi_device}/linecard-#{lc_index}/port-#{port_index}: unable to guess portname"
-                      else
-                        if options[:verbose]
-                          puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
-                        end
-                        ngs_trunk_ports.push portname
+                      portname = get_port_name(refapi, site, refapi_device, lc_index, lc, port_index, port)
+                      if options[:verbose]
+                        puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
                       end
+                      ngs_trunk_ports.push portname
                     end
                   elsif port.has_key? 'kind'
                     if TRUNK_KINDS.include? port['kind']
-                      portname = get_port_name(port_index, port, lc_index, lc)
-                      if not portname
-                        puts "ERROR #{site}/#{refapi_device}/linecard-#{lc_index}/port-#{port_index}: unable to guess portname"
-                      else
-                        if options[:verbose]
-                          puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
-                        end
-                        ngs_trunk_ports.push portname
+                      portname = get_port_name(refapi, site, refapi_device, lc_index, lc, port_index, port)
+                      if options[:verbose]
+                        puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
                       end
+                      ngs_trunk_ports.push portname
                     end
                   end
                 end
               end
             end
           end
+
+          # from channels
           if refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'channels'
             refapi['sites'][site]['network_equipments'][refapi_device]['channels'].each do |channelname, channel|
               if channel.has_key? 'trunk'
                 if channel['trunk']
+                  actual_channel_name = get_channel_name(refapi, site, refapi_device, channel, channelname)
                   if options[:verbose]
-                    puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{channelname}"
+                    puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{actual_channel_name}"
                   end
-                  ngs_trunk_ports.push channelname
+                  ngs_trunk_ports.push actual_channel_name
                 end
               elsif channel.has_key? 'kind'
                 if TRUNK_KINDS.include? channel['kind']
+                  actual_channel_name = get_channel_name(refapi, site, refapi_device, channel, channelname)
                   if options[:verbose]
-                    puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{channelname}"
+                    puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{actual_channel_name}"
                   end
-                  ngs_trunk_ports.push channelname
+                  ngs_trunk_ports.push actual_channel_name
                 end
               end
             end
           end
+
+          # additional trunk ports
           if device_data.has_key? 'additional_trunk_ports'
             device_data['additional_trunk_ports'].each do |additional_trunk_port|
               if options[:verbose]
