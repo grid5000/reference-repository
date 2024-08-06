@@ -173,31 +173,6 @@ icinga:
   network_adapters:
     default:
       ip: 172.16.111.151
-ceph-mon0:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.158
-ceph-mon1:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.159
-ceph-mon2:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.160
-infra-k8s-master0:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.204
-infra-k8s-master1:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.205
 kwollect:
   kind: virtual
   network_adapters:
@@ -208,47 +183,8 @@ guix:
   network_adapters:
     default:
       ip: 172.16.111.121
-k8s-lb0:
-  kind: virtual
-  alias:
-  - docker-mirror
-  - oar-es
-  network_adapters:
-    default:
-      ip: 172.16.111.240
-k8s-lb1:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.241
-k8s-lb2:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.242
-k8s-lb3:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.243
-k8s-lb4:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.244
-k8s-lb5:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.245
 webfish:
   kind: virtual
   network_adapters:
     default:
       ip: 172.16.111.153
-
-demovm:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.222
