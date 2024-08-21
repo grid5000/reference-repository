@@ -11,6 +11,7 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
       'port' => HashValidator.optional('string'),
       'kind' => HashValidator.optional('string'),
       'rate' => HashValidator.optional('integer'),
+      'trunk' => HashValidator.optional('boolean'),
       'snmp_pattern' => HashValidator.optional('string'),
       'snmp_name' => HashValidator.optional('string'),
       'kavlan_pattern' => HashValidator.optional('string'),
