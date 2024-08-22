@@ -242,7 +242,7 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
   end
 end
 
-def cat_sites_ngs_device_configs(input_output_path, options)
+def cat_sites_ngs_device_configs(input_output_path, _options)
   puts "KavlanNG: concatenate sites NGS device configurations"
   all_ngs_device_configs = File.join(input_output_path, "ngs_agent.ini.part")
   sites_device_configs = Dir.glob(File.join(input_output_path, "*-ngs-devices"))
