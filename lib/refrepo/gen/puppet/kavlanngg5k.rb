@@ -8,6 +8,7 @@ KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, n
 def generate_puppet_kavlanngg5k(options)
   gen_kavlanapi_g5k_desc(File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/g5k/"), options)
   gen_sites_ngs_device_configs(File.join(options[:output_dir], "platforms/production/generators/kavlanng/kavlanng.yaml"), File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/"), options)
+  cat_sites_ngs_device_configs(File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/"), options)
 end
 
 def gen_kavlanapi_g5k_desc(output_path, options)
@@ -239,4 +240,14 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
       end
     end
   end
+end
+
+def cat_sites_ngs_device_configs(input_output_path, options)
+  puts "KavlanNG: concatenate sites NGS device configurations"
+  all_ngs_device_configs = File.join(input_output_path, "ngs_agent.ini.part")
+  sites_device_configs = Dir.glob(File.join(input_output_path, "*-ngs-devices"))
+  puts "  to #{all_ngs_device_configs}"
+  puts "  based on sites device configs in;"
+  sites_device_configs.each{ |s| puts("    #{s}") }
+  `cat #{sites_device_configs.join(' ')} > #{all_ngs_device_configs}`
 end
