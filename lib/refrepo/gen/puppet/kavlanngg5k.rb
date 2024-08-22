@@ -168,9 +168,10 @@ def gen_ngs_conf(input_path, output_path, options)
           site_ngs_conf.puts("ngs_ssh_disabled_algorithms = kex:diffie-hellman-group-exchange-sha1")
           site_ngs_conf.puts("ngs_port_default_vlan = 100")
           site_ngs_conf.puts("ngs_save_configuration = False")
-          site_ngs_conf.puts("#ngs_max_connections = 4")
-          site_ngs_conf.puts("#ngs_batch_requests = True")
+          #site_ngs_conf.puts("#ngs_max_connections = 4")
+          #site_ngs_conf.puts("#ngs_batch_requests = True")
           site_ngs_conf.puts("ngs_manage_vlans = True")
+          site_ngs_conf.puts("ngs_physical_networks = g5k, #{site}")
           ngs_trunk_ports = []
           if refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'linecards'
             refapi['sites'][site]['network_equipments'][refapi_device]['linecards'].each_with_index do |lc, lc_index|
