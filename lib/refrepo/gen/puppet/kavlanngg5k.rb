@@ -6,8 +6,8 @@ TRUNK_KINDS = ['router', 'switch', 'backbone'] # how to detect trunk ports in ne
 KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, not for neutron/NGS
 
 def generate_puppet_kavlanngg5k(options)
-  gen_kavlanapi_g5k_desc("#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/g5k/", options)
-  gen_ngs_conf("#{options[:output_dir]}/platforms/production/generators/kavlanng/kavlanng.yaml", "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlanng/", options)
+  gen_kavlanapi_g5k_desc(File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/g5k/"), options)
+  gen_sites_ngs_device_configs(File.join(options[:output_dir], "platforms/production/generators/kavlanng/kavlanng.yaml"), File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/"), options)
 end
 
 def gen_kavlanapi_g5k_desc(output_path, options)
@@ -118,8 +118,8 @@ def get_port_name(port_index, port, linecard_index, linecard)
   end
 end
 
-def gen_ngs_conf(input_path, output_path, options)
-  puts "KavlanNG: generate NGS device configurations"
+def gen_sites_ngs_device_configs(input_path, output_path, options)
+  puts "KavlanNG: generate sites NGS device configurations"
   puts "  to #{output_path}"
   puts "  based on reference repository and kavlanng configuration in #{input_path}"
   puts "  for sites #{options[:sites]}"
