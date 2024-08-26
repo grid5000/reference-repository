@@ -245,7 +245,7 @@ end
 def cat_sites_ngs_device_configs(input_output_path, _options)
   puts "KavlanNG: concatenate sites NGS device configurations"
   all_ngs_device_configs = File.join(input_output_path, "ngs_agent.ini.part")
-  sites_device_configs = Dir.glob(File.join(input_output_path, "*-ngs-devices"))
+  sites_device_configs = Dir.glob(File.join(input_output_path, "*-ngs-devices")).sort!
   puts "  to #{all_ngs_device_configs}"
   puts "  based on sites device configs in;"
   sites_device_configs.each{ |s| puts("    #{s}") }
