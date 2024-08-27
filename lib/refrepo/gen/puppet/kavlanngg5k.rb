@@ -7,8 +7,7 @@ KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, n
 
 def generate_puppet_kavlanngg5k(options)
   gen_kavlanapi_g5k_desc(File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/g5k/"), options)
-  gen_sites_ngs_device_configs(File.join(options[:output_dir], "platforms/production/generators/kavlanng/kavlanng.yaml"), File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/"), options)
-  cat_sites_ngs_device_configs(File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/"), options)
+  gen_sites_ngs_device_configs(File.join(options[:output_dir], "platforms/production/generators/kavlanng/kavlanng.yaml"), File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/ngs_agent.conf.d"), options)
 end
 
 def gen_kavlanapi_g5k_desc(output_path, options)
@@ -131,7 +130,7 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
     if options[:verbose]
       puts "  #{site}"
     end
-    File.open(File.join(output_path, "#{site}-ngs-devices"), 'w') do |site_ngs_conf|
+    File.open(File.join(output_path, "#{site}.conf"), 'w') do |site_ngs_conf|
       site_data['devices'].each do |device, device_data|
         refapi_device = nil
         if refapi['sites'][site]['network_equipments'].has_key? device
@@ -169,8 +168,6 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
           site_ngs_conf.puts("ngs_ssh_disabled_algorithms = kex:diffie-hellman-group-exchange-sha1")
           site_ngs_conf.puts("ngs_port_default_vlan = 100")
           site_ngs_conf.puts("ngs_save_configuration = False")
-          #site_ngs_conf.puts("#ngs_max_connections = 4")
-          #site_ngs_conf.puts("#ngs_batch_requests = True")
           site_ngs_conf.puts("ngs_manage_vlans = True")
           site_ngs_conf.puts("ngs_physical_networks = g5k, #{site}")
           ngs_trunk_ports = []
@@ -240,14 +237,4 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
       end
     end
   end
-end
-
-def cat_sites_ngs_device_configs(input_output_path, _options)
-  puts "KavlanNG: concatenate sites NGS device configurations"
-  all_ngs_device_configs = File.join(input_output_path, "ngs_agent.ini.part")
-  sites_device_configs = Dir.glob(File.join(input_output_path, "*-ngs-devices")).sort!
-  puts "  to #{all_ngs_device_configs}"
-  puts "  based on sites device configs in;"
-  sites_device_configs.each{ |s| puts("    #{s}") }
-  `cat #{sites_device_configs.join(' ')} > #{all_ngs_device_configs}`
 end
