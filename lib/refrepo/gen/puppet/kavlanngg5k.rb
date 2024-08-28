@@ -96,25 +96,14 @@ def gen_kavlanapi_g5k_desc(output_path, options)
   end
 end
 
-def get_port_pattern_subst(pattern, linecard_index, port_index)
-  return pattern.gsub("%LINECARD%", linecard_index.to_s).sub("%PORT%", port_index.to_s)
-end
-
-def get_port_pattern_interpolation(pattern, linecard_index, port_index)
-  # reimplement with eval the ruby string interpolation mechanism (#{})
-  # WARNING: it means that code from the input yaml will be executed (thus input yamls may be used as attack vectors)
-  #return eval('"' + get_port_pattern_subst(pattern, linecard_index, port_index).gsub(/"/, '\"') + '"')
-  return eval('"' + get_port_pattern_subst(pattern, linecard_index, port_index) + '"')
-end
-
 # compute the port name for NGS ssh commands, based on device,
 # linecard, port, using refapi ssh/kavlan/snmp patterns (with
 # %LINECARD%, %PORT% substitutions), and interpolating the string for
 # ssh_pattern
 def get_port_name(_refapi, site_name, device_name, linecard_index, linecard, port_index, port)
   # try different possibilities, by order of precedence
-  if linecard.has_key?('ssh_pattern')
-    return get_port_pattern_interpolation(linecard['ssh_pattern'], linecard_index, port_index)
+  if port.has_key?('ssh_name')
+    return port['ssh_name']
   elsif port.has_key?('snmp_name')
     return port['snmp_name']
   elsif linecard.has_key?('kavlan_pattern')
@@ -125,23 +114,12 @@ def get_port_name(_refapi, site_name, device_name, linecard_index, linecard, por
   end
 end
 
-def get_channel_pattern_subst(pattern, channel_name)
-  return pattern.gsub("%CHANNEL%", channel_name)
-end
-
-def get_channel_pattern_interpolation(pattern, channel_name)
-  # reimplement with eval the ruby string interpolation mechanism (#{})
-  # WARNING: it means that code from the input yaml will be executed (thus input yamls may be used as attack vectors)
-  #return eval('"' + get_channel_pattern_subst(pattern, channel_name).gsub(/"/, '\"') + '"')
-  return eval('"' + get_channel_pattern_subst(pattern, channel_name) + '"')
-end
-
 # compute the channel name for NGS ssh commands, based on device,
 # using refapi channel_ssh_pattern (with %CHANNEL% substitution), and
 # interpolating the string
-def get_channel_name(refapi, site_name, device_name, _channel, channel_name)
-  if refapi['sites'][site_name]['network_equipments'][device_name].has_key?('channels_ssh_pattern')
-    return get_channel_pattern_interpolation(refapi['sites'][site_name]['network_equipments'][device_name]['channels_ssh_pattern'], channel_name)
+def get_channel_name(_refapi, _site_name, _device_name, channel, channel_name)
+  if channel.has_key?('ssh_name')
+    return channel['ssh_name']
   else
     return channel_name
   end

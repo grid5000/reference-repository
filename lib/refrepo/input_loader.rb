@@ -788,6 +788,28 @@ def add_gpu_information(h)
   end
 end
 
+def get_port_pattern_subst(pattern, linecard_index, port_index)
+  return pattern.gsub("%LINECARD%", linecard_index.to_s).sub("%PORT%", port_index.to_s)
+end
+
+def get_port_pattern_interpolation(pattern, linecard_index, port_index)
+  # reimplement with eval the ruby string interpolation mechanism (#{})
+  # WARNING: it means that code from the input yaml will be executed (thus input yamls may be used as attack vectors)
+  #return eval('"' + get_port_pattern_subst(pattern, linecard_index, port_index).gsub(/"/, '\"') + '"')
+  return eval('"' + get_port_pattern_subst(pattern, linecard_index, port_index) + '"')
+end
+
+def get_channel_pattern_subst(pattern, channel_name)
+  return pattern.gsub("%CHANNEL%", channel_name)
+end
+
+def get_channel_pattern_interpolation(pattern, channel_name)
+  # reimplement with eval the ruby string interpolation mechanism (#{})
+  # WARNING: it means that code from the input yaml will be executed (thus input yamls may be used as attack vectors)
+  #return eval('"' + get_channel_pattern_subst(pattern, channel_name).gsub(/"/, '\"') + '"')
+  return eval('"' + get_channel_pattern_subst(pattern, channel_name) + '"')
+end
+
 def complete_one_network_equipment(network_uid, network)
   network["type"] = "network_equipment"
   network["uid"]  = network_uid
@@ -810,9 +832,15 @@ def complete_one_network_equipment(network_uid, network)
           port['snmp_pattern'] = linecard['snmp_pattern']
         end
         if port['snmp_pattern']
-          port['snmp_name'] = port['snmp_pattern']
-          .sub('%LINECARD%',linecard_index.to_s).sub('%PORT%',port_index.to_s)
+          port['snmp_name'] = get_port_pattern_subst(port['snmp_pattern'], linecard_index, port_index)
           port.delete('snmp_pattern')
+        end
+        if port['ssh_pattern'].nil? and linecard['ssh_pattern']
+          port['ssh_pattern'] = linecard['ssh_pattern']
+        end
+        if port['ssh_pattern']
+          port['ssh_name'] = get_port_pattern_interpolation(port['ssh_pattern'], linecard_index, port_index)
+          port.delete('ssh_pattern')
         end
         if ((!linecard['kind'].nil? &&
              port['kind'].nil? &&
@@ -830,6 +858,19 @@ def complete_one_network_equipment(network_uid, network)
     linecards_array[linecard_index] = linecard
   end
   network["linecards"] = linecards_array.map{|l| l || {}}
+
+  # Channels
+  if network.key?('channels')
+    network['channels'].each do |channel_name, channel|
+      if channel['ssh_pattern'].nil? and network['channels_ssh_pattern']
+        channel['ssh_pattern'] = network['channels_ssh_pattern']
+      end
+      if channel['ssh_pattern']
+        channel['ssh_name'] = get_channel_pattern_interpolation(channel['ssh_pattern'], channel_name)
+        channel.delete('ssh_pattern')
+      end
+    end
+  end
 end
 
 def complete_network_equipments(h)
