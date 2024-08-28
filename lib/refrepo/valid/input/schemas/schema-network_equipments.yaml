@@ -39,6 +39,7 @@ linecards:
       port: optional_string
       ports:
         <optional_array>: linecard_port
+channels_ssh_pattern: optional_string
 channels:
   <optional_hash>:
     <multi>:
@@ -47,6 +48,7 @@ channels:
       kind: string
       rate: integer
       trunk: optional_boolean
+      ssh_name: optional_string
 metrics: optional_array
 uid: string
 type: string

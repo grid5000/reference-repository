@@ -15,6 +15,7 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
       'snmp_pattern' => HashValidator.optional('string'),
       'snmp_name' => HashValidator.optional('string'),
       'kavlan_pattern' => HashValidator.optional('string'),
+      'ssh_name' => HashValidator.optional('string'),
     }
   end
 
