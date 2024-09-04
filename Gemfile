@@ -18,6 +18,3 @@ gem "git"
 # To match https://gitlab.inria.fr/grid5000/grid5000-gitlab-templates/-/blob/master/rubocop.yml
 gem "rubocop", "1.34.1", :group => [:development]
 gem "peach"
-
-
-
