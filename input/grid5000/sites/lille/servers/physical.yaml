@@ -13,27 +13,6 @@ fives:
     - uid: pdu-b2p2
       port: 4
 
-caulier:
-  kind: physical
-  alias:
-  warranty: 2017-07-28
-  serial: BQ9WD5J
-  network_adapters:
-    default:
-      mac: d4:ae:52:b1:45:b1
-      ip: 172.16.47.7
-    adm:
-      mac: d4:ae:52:b1:45:b1
-      ip: 172.17.47.7
-    bmc:
-      ip: 172.17.46.7
-      mac: d4:ae:52:af:44:00
-  pdu:
-    - uid: pdu-b2p1
-      port: 2
-    - uid: pdu-b2p2
-      port: 2
-
 carbonade:
   kind: physical
   alias:
@@ -54,27 +33,6 @@ carbonade:
       port: 5
     - uid: pdu-b2p2
       port: 5
-
-srv-data:
-  kind: physical
-  alias:
-  warranty: 2023-09-12
-  serial: 5Z4B032
-  network_adapters:
-    default:
-      mac: ec:f4:bb:c8:08:d4
-      ip: 172.16.47.11
-    adm:
-      mac: ec:f4:bb:c8:08:d5
-      ip: 172.17.47.11
-    bmc:
-      ip: 172.17.46.11
-      mac: b0:83:fe:cc:73:02
-  pdu:
-    - uid: pdu-b2p1
-      port: 7
-    - uid: pdu-b2p2
-      port: 7
 
 chimint-srv2:
   kind: physical
@@ -207,17 +165,17 @@ granche-srv2:
     size: 90000000000000
     rate: 50000000000
 
-echrv:
-  kind: physical
-  warranty: 2027-11-11
-  serial: 1CMLS73
-  network_adapters:
-    default:
-      ip: 172.16.47.16
-      mac: 0c:42:a1:e2:18:70
-    bmc:
-      ip: 172.17.47.16
-      mac: 2c:ea:7f:f6:ab:b0
+#echrv:
+  #kind: physical
+  #warranty: 2027-11-11
+  #serial: 1CMLS73
+  #network_adapters:
+    #default:
+      #ip: 172.16.47.16
+      #mac: 0c:42:a1:e2:18:70
+    #bmc:
+      #ip: 172.17.47.16
+      #mac: 2c:ea:7f:f6:ab:b0
 
 pve-1:
   kind: physical
