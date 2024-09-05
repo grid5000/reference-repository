@@ -1,16 +1,18 @@
 # coding: utf-8
 
 require 'refrepo/data_loader'
+require 'set'
 
 TRUNK_KINDS = ['router', 'switch', 'backbone'] # how to detect trunk ports in network refapi
 KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, not for neutron/NGS
 
 def generate_puppet_kavlanngg5k(options)
-  gen_kavlanapi_g5k_desc(File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/g5k/"), options)
+  available_gw_sites = get_sites_with_gw(File.join(options[:output_dir], "platforms/production/generators/kavlanng/kavlanng.yaml"), options)
+  gen_kavlanapi_g5k_desc(File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/g5k/"), options, available_gw_sites)
   gen_sites_ngs_device_configs(File.join(options[:output_dir], "platforms/production/generators/kavlanng/kavlanng.yaml"), File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/ngs_agent.conf.d"), options)
 end
 
-def gen_kavlanapi_g5k_desc(output_path, options)
+def gen_kavlanapi_g5k_desc(output_path, options, available_gw_sites)
   puts "KavlanNG: generate g5k network description for kavlan-api"
   puts "  to #{output_path}"
   puts "  for sites #{options[:sites]}"
@@ -18,8 +20,13 @@ def gen_kavlanapi_g5k_desc(output_path, options)
   refapi.delete_if { |k| k != 'sites' }
   refapi['sites'].delete_if { |s| !options[:sites].include? s }
   refapi['sites'].each do |site_id, site_h|
+    if !available_gw_sites.include?(site_id)
+      gw_msg = " (no router)"
+    else
+      gw_msg = ""
+    end
     if options[:verbose]
-      puts "  #{site_id}"
+      puts "  #{site_id}#{gw_msg}"
     end
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
     site_h.fetch('clusters', {}).each do |cluster_id, cluster_h|
@@ -35,13 +42,15 @@ def gen_kavlanapi_g5k_desc(output_path, options)
         end
       end
     end
-    site_h['network_equipments'].delete_if { |_k, v| v['kind'] != 'router' }
+    site_h['network_equipments'].delete_if { |_k, v| (v['kind'] != 'router') || (!available_gw_sites.include?(site_id)) }
     routers = site_h['network_equipments'].keys
-    if routers.length != 1
+    if routers.length > 1
       puts "ERROR: #{site_id} has #{routers.length} routers"
     end
-    gw = routers[0]
-    site_h['network_equipments'][gw].delete_if { |k| ! ['ip', 'ip6', 'kind'].include? k }
+    if routers.length == 1
+      gw = routers[0]
+      site_h['network_equipments'][gw].delete_if { |k| ! ['ip', 'ip6', 'kind'].include? k }
+    end
     site_h['servers'].delete_if { |k, _v| k != 'dns' }
     dns_list = site_h['servers'].keys
     if dns_list.length != 1
@@ -248,4 +257,27 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
       end
     end
   end
+end
+
+def get_sites_with_gw(input_path, options)
+  puts "KavlanNG: check which sites have a kavlanng usable gateway"
+  puts "  based on kavlanng configuration in #{input_path}"
+  puts "  for sites #{options[:sites]}"
+  network_devices_data = YAML::load(File.read(input_path))
+  network_devices_data.delete_if { |s| !options[:sites].include? s }
+
+  sites_with_gw = Hash.new { |h, k| h[k] = [] }
+  network_devices_data.each do |site, site_data|
+    site_data['devices'].each do |device, device_data|
+      if device_data['device_type'].end_with?('_router')
+        sites_with_gw[site].append("#{device}.#{site}")
+      end
+    end
+  end
+  if options[:verbose]
+    options[:sites].each do |site|
+      puts "  #{site}: #{sites_with_gw.fetch(site, 'No Router')}"
+    end
+  end
+  return sites_with_gw.keys()
 end
