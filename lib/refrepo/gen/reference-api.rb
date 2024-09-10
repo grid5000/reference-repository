@@ -1,6 +1,5 @@
 require 'refrepo/valid/input/schema'
 require 'refrepo/valid/homogeneity'
-require 'refrepo/accesses'
 
 # Creation du fichier network_equipment
 def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
@@ -49,14 +48,11 @@ def generate_reference_api
                global_hash.reject {|k, _v| k == "sites" || k == "network_equipments" || k == "disk_vendor_model_mapping"})
   end
 
-  accesses_path = Pathname.new(refapi_path).join("accesses")
-
   puts "Generating the reference api:\n\n"
   puts "Removing data directory:\n"
 
   FileUtils.rm_rf(Pathname.new(refapi_path).join("sites"))
   FileUtils.rm_rf(Pathname.new(refapi_path).join("network_equipments"))
-  FileUtils.rm_rf(accesses_path)
   puts "Done."
 
   # Generate global network_equipments (renater links)
@@ -163,14 +159,6 @@ def generate_reference_api
     end
 
   end
-
-  # Generate the json containing all accesses level.
-  accesses_path.mkpath()
-  generate_accesses_json(
-    accesses_path.join("all.json"),
-    generate_access_level
-  )
-
 
   node_keys = %w[uid nodeset gpu_devices processor architecture storage_devices memory_devices network_adapters performance]
   # Generate the all-in-one json with just enough information for resources-explorer.
