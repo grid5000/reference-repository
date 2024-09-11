@@ -207,7 +207,7 @@ namespace :gen do
 
   namespace :puppet do
 
-    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :oxidizedg5k, :'oarsub-simplifier-aliases', :accesses, :kavlanngg5k, :stitcherg5k, :clusters]
+    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :oxidizedg5k, :'oarsub-simplifier-aliases', :accesses, :kavlanngg5k, :stitcherg5k, :clusters, :webfish]
 
     all_puppet_tasks.each { |t|
       generated_desc = (t == :'refapi-subset') ? 'description' : 'configuration'
@@ -293,3 +293,4 @@ if (taskNames.include?(currentTask))
 else
   #Not running any task, maybe rake options, invalid, etc...
 end
+
