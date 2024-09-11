@@ -708,7 +708,7 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
     return 2
   when "Clovertown", "Nehalem", "Westmere", "K10"
     return 4
-  when "Sandy Bridge", "Zen", "Vulcan"
+  when "Sandy Bridge", "Ivy Bridge", "Zen", "Vulcan"
     return 8
   when "Haswell", "Broadwell", "Zen 2", "Zen 3"
     return 16
