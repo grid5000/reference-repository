@@ -708,13 +708,13 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
     return 2
   when "Clovertown", "Nehalem", "Westmere", "K10"
     return 4
-  when "Sandy Bridge", "Zen", "Vulcan"
+  when "Sandy Bridge", "Ivy Bridge", "Zen", "Vulcan"
     return 8
   when "Haswell", "Broadwell", "Zen 2", "Zen 3"
     return 16
   when "Ice Lake", "Ice Lake-SP"
     return 32
-  when "Cascade Lake-SP", "Skylake"
+  when "Cascade Lake-SP", "Skylake", "Skylake-SP"
     case cpu_name
     when /Silver 4110/, /Silver 4114/, /Silver 4214/, /Gold 5218/, /Gold 5220/, /Gold 5115/, /Gold 5118/, /Gold 5120/, /Gold 5220R/
       return 16
