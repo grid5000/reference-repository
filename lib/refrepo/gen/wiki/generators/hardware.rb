@@ -360,10 +360,11 @@ class G5KHardwareGenerator < WikiGenerator
       'Nehalem' => '2010',
       'Westmere' => '2011',
       'Sandy Bridge' => '2012',
+      'Ivy Bridge' => '2015',
       'Haswell' => '2013',
       'POWER8' => '2014',
       'Broadwell' => '2015',
-      #'Skylake' => '2015', # Note there are no client Skylake CPU in Grid5K
+      'Skylake' => '2015',
       'Skylake-SP' => '2017',
       'Zen' => '2017',
       'Zen 2' => '2019',
