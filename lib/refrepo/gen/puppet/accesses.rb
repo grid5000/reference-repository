@@ -29,10 +29,10 @@ def generate_puppet_accesses(options)
       filtered_access_level_list << { 'gga' => gga, 'nodeset' => nodeset }.merge(v2)
     end
   end
-  fd = File.write(File.join(output_file_path, 'accesses_by_nodeset.txt'),
+  File.write(File.join(output_file_path, 'accesses_by_nodeset.txt'),
                   filtered_access_level_list.sort_by { |e| [e['nodeset'], e['gga']] }.
                       map { |e| sprintf("%-13s %-25s %-11s %2d", *e.values_at('nodeset', 'gga', 'label', 'level')) }.join("\n"))
-  fd = File.write(File.join(output_file_path, 'accesses_by_gga.txt'),
+  File.write(File.join(output_file_path, 'accesses_by_gga.txt'),
                   filtered_access_level_list.sort_by { |e| [e['gga'], e['nodeset']] }.
                       map { |e| sprintf("%-13s %-25s %-11s %2d", *e.values_at('nodeset', 'gga', 'label', 'level')) }.join("\n"))
 
