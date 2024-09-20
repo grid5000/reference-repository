@@ -4,7 +4,6 @@
   SITE_IPV4_INDEX = 65
   # MAC addresses declaration
   MAC_ETH0_LIST = %w(
-    d4:04:e6:07:d7:7a
     d4:04:e6:08:27:12
     d4:04:e6:07:d5:3a
     d4:04:e6:08:8c:52
@@ -14,7 +13,6 @@
   )
 
   MAC_BMC_LIST = %w(
-    7c:a6:2a:4e:5d:f2
     7c:a6:2a:4e:5a:e8
     7c:a6:2a:4e:5a:e4
     7c:a6:2a:4e:5b:f4
@@ -22,10 +20,28 @@
     5c:ed:8c:01:d8:0a
     7c:a6:2a:4e:5b:36
   )
+
+  MAC_ETH1_LIST = %w(
+    d4:04:e6:08:27:13
+    d4:04:e6:07:d5:3b
+    d4:04:e6:08:8c:53
+    d4:04:e6:07:cd:fd
+    d4:04:e6:08:1b:0d
+    d4:04:e6:07:d5:ef
+  )
+
+  SERIAL_LIST = %w(
+    CZ24310FCB
+    CZ24310FC9
+    CZ24310F9Y
+    CZ24310FCF
+    CZ24310FCD
+    CZ24310FC8
+  )
 %>
 ---
 nodes:
-<% (1..NODES_NUMBER).each { |i| %>
+<% (2..NODES_NUMBER).each { |i| %>
  <%= CLUSTER_NAME %>-<%= i %>:
     architecture:
       nb_procs: 2
@@ -34,61 +50,112 @@ nodes:
       platform_type: x86_64
       cpu_core_numbering: contiguous 
     bios:
-      release_date: 01/01/2000 # Fake date, will be replaced by g5k-checks
-      vendor: Unknown # Fake vendor, will be replaced by g5k-checks
-      version: 1 # Fake version, will be replaced by g5k-checks
-    bmc_version: v1 # Fake version, will be replaced by g5k-checks
+      release_date: 12/08/2023
+      vendor: HPE
+      version: 1.56
+    bmc_version: '1.59'
     chassis:
-      manufacturer: Unknown # Fake manufacturer, will be replaced by g5k-checks
-      name: Unknown # Fake name, will be replaced by g5k-checks
+      manufacturer: HPE
+      name: ProLiant DL385 Gen11
+      serial: <%= SERIAL_LIST[i - 1] %>
+    gpu_devices:
+      nvidia0:
+        cpu_affinity: 1
+        device: "/dev/nvidia0"
+        memory: 48305799168
+        model: L40S
+        power_default_limit: 350.00 W
+        vbios_version: 95.02.66.00.02
+        vendor: Nvidia
+      nvidia1:
+        cpu_affinity: 1
+        device: "/dev/nvidia1"
+        memory: 48305799168
+        model: L40S
+        power_default_limit: 350.00 W
+        vbios_version: 95.02.66.00.02
+        vendor: Nvidia
     main_memory:
-      ram_size: 8 # Fake size, will be replaced by g5k-checks
+      ram_size: 549755813888
     memory_devices:
-      dimm:
-        size: 8 # Fake size, will be replaced by g5k-checks
-        technology: dram # Common memory technology, will be replaced by g5k-checks
+      dimm_proc 1 dimm 4:
+        size: 68719476736
+        technology: dram
+      dimm_proc 1 dimm 6:
+        size: 68719476736
+        technology: dram
+      dimm_proc 1 dimm 7:
+        size: 68719476736
+        technology: dram
+      dimm_proc 1 dimm 9:
+        size: 68719476736
+        technology: dram
+      dimm_proc 2 dimm 4:
+        size: 68719476736
+        technology: dram
+      dimm_proc 2 dimm 6:
+        size: 68719476736
+        technology: dram
+      dimm_proc 2 dimm 7:
+        size: 68719476736
+        technology: dram
+      dimm_proc 2 dimm 9:
+        size: 68719476736
+        technology: dram
     processor:
-      model: Unknown # Fake model name, will be replaced by g5k-checks
-      other_description: description # Fake description, will be replaced by g5k-checks
-      vendor: vendor # Fake vendor, will be replaced by g5k-checks
-      version: vendor # Fake version, will be replaced by g5k-checks
-      cache_l1d: 8 # Fake cache, will be replaced by g5k-checks
-      cache_l1i: 8 # Fake cache, will be replaced by g5k-checks
-      cache_l2: 8 # Fake cache, will be replaced by g5k-checks
-      cache_l3: 8 # Fake cache, will be replaced by g5k-checks
-      instruction_set: x86-64 # Common instruction set, will be replaced by g5k-checks
-      microcode: "0xd000001" # Fake microcode, will be replaced by g5k-checks
-      ht_capable: true # Default ht capable value, will be replaced by g5k-checks 
-    main_memory:
-      ram_size: 8 # Fake ram size, will be replaced by g5k-checks
-    memory_devices:
-      dimm_proc 1 dimm 1: # Fake dimm name, will be replaced by g5k-checks
-        size: 8 # Fake dimm size, will be replaced by g5k-checks
-        technology: dram # Default dimm technology, will be replaced by g5k-checks
+      model: AMD EPYC
+      other_description: AMD EPYC 9254 24-Core Processor
+      vendor: AMD
+      version: 9254
+      cache_l1d: 32768
+      cache_l1i: 32768
+      cache_l2: 1048576
+      cache_l3: 33554432
+      instruction_set: x86-64
+      microcode: '0xa101144'
+      ht_capable: true
     operating_system:
-      cstate_driver: unknown # Fake driver, will be replaced by g5k-checks
-      cstate_governor: unknown # Fake governor, will be replaced by g5k-checks
-      ht_enabled: true # common value for hyper threading, will be replaced by g5k-checks
-      pstate_driver: unknwon # Fake driver, will be replaced by g5k-checks
-      pstate_governor: unknown # Fake driver, will be replaced by g5k-checks
-      turboboost_enabled: true # Default value for turboboost, will be replaced by g5k-checks 
+      cstate_driver: acpi_idle
+      cstate_governor: menu
+      ht_enabled: true
+      pstate_driver: acpi-cpufreq
+      pstate_governor: performance
+      turboboost_enabled: true      
     network_adapters:
       bmc:
-        interface: Ethernet
         management: true
         mac: <%= MAC_BMC_LIST[i - 1] %>
         ip: 172.17.<%= SITE_IPV4_INDEX %>.<%= i %>
       eth0:
         interface: Ethernet
         management: false
-        driver: mlx_core
-        name: enp1s0f0np0
-        rate: 10000000000
+        driver: bnxt_en
+        name: ens22f0np0
+        rate: 25000000000
         mac: <%= MAC_ETH0_LIST[i - 1] %>
         ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
+        firmware_version: 228.0.116.0/pkg 228.1.111.0
+        model: BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller
+        sriov: false
+        sriov_totalvfs: 0
+        vendor: Broadcom Inc. and subsidiaries
+      eth1:
+        driver: bnxt_en
+        firmware_version: 228.0.116.0/pkg 228.1.111.0
+        interface: Ethernet
+        mac: <%= MAC_ETH1_LIST[i - 1] %>
+        management: false
+        model: BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller
+        name: ens22f1np1
+        sriov: false
+        sriov_totalvfs: 0
+        vendor: Broadcom Inc. and subsidiaries
     storage_devices:
-      disk0:
-        storage: SSD # Common value, will be replaced by g5k-checks
-        model: unknown # fake value,  
-        size: 8 # Fake value, will be replaced by g5k-checks
+      pci-0000:c5:00.0-nvme-1:
+        by_path: "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1"
+        model: MO006400KYDND
+        size: 6401252745216
+        storage: SSD
+    supported_job_types:
+      virtual: amd-v
 <% } %>
