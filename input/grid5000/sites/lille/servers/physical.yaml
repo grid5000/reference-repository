@@ -1,28 +1,4 @@
 ---
-welsh:
-  kind: physical
-  alias:
-    - ntp
-    - af
-    - adminfront
-  warranty: 2023-09-12
-  serial: 5L2DLG2
-  network_adapters:
-    default:
-      ip: 172.16.47.1
-      mac: 24:6e:96:2c:9a:40
-    adm:
-      ip: 172.17.47.1
-      mac: 24:6e:96:2c:9a:42
-    bmc:
-      ip: 172.17.46.1
-      mac: 84:7b:eb:d5:ae:46
-  pdu:
-    - uid: pdu-b2p1
-      port: 6
-    - uid: pdu-b2p2
-      port: 6
-
 chiterne:
   kind: physical
   warranty: 2024-01-25
@@ -129,6 +105,10 @@ granche-srv2:
 
 pve-1:
   kind: physical
+  alias:
+    - ntp
+    - af
+    - adminfront
   warranty: 2030-04-13
   serial: CZJ3090BP2
   network_adapters:
