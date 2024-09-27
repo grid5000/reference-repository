@@ -1,0 +1,41 @@
+---
+model: ProLiant DL385 Gen11
+created_at: 2024-09-27 # TODO: change this value
+kavlan: false
+boot_type: uefi # TODO: specify if 'bios' or 'uefi'
+exotic: false # TODO: specify if 'true' or 'false'
+queues:
+  - admin
+  - testing
+nodes:
+  grdix-[1-16]:
+    chassis:
+      manufactured_at: 1970-01-01 # TODO: Put date.
+      warranty_end: 2027-09-08
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Zen 4c
+      clock_speed: 2250000000
+    network_adapters:
+      bmc:
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      ##IB interface to do later
+    storage_devices:
+      disk0: # This field will have to be renamed later.
+        id: disk0
+        interface: SAS
+        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    nodeset: grdix
