@@ -1,0 +1,112 @@
+<%
+  CLUSTER_NAME = "grdix"
+  NODES_NUMBER = 16
+  SITE_IPV4_INDEX = 65
+  # MAC addresses declaration
+  MAC_ETH0_LIST = %w(
+    d4:e6:e6:e6:e6:a1
+    d4:e6:e6:e6:e6:a2
+    d4:e6:e6:e6:e6:a3
+    d4:e6:e6:e6:e6:a4
+    d4:e6:e6:e6:e6:a5
+    d4:e6:e6:e6:e6:a6
+    d4:e6:e6:e6:e6:a7
+    d4:e6:e6:e6:e6:a8
+    d4:e6:e6:e6:e6:a9
+    d4:e6:e6:e6:e6:b1
+    d4:e6:e6:e6:e6:b2
+    d4:e6:e6:e6:e6:b3
+    d4:e6:e6:e6:e6:b4
+    d4:e6:e6:e6:e6:b5
+    d4:e6:e6:e6:e6:b6
+    d4:e6:e6:e6:e6:b7
+  )
+
+  MAC_BMC_LIST = %w(
+    7c:a6:2a:4e:c7:98
+    7c:a6:2a:4e:c6:9a
+    7c:a6:2a:4e:c7:c4
+    7c:a6:2a:4e:c5:b4
+    7c:a6:2a:4e:c7:b2
+    7c:a6:2a:4e:c8:12
+    7c:a6:2a:4e:c8:1c
+    7c:a6:2a:4e:c7:cc
+    7c:a6:2a:4e:c7:ce
+    7c:a6:2a:4e:31:c8
+    7c:a6:2a:4e:31:ca
+    7c:a6:2a:4e:31:a2
+    7c:a6:2a:4e:30:8c
+    7c:a6:2a:4e:2b:98
+    7c:a6:2a:4e:c3:7e
+    7c:a6:2a:4e:c7:82
+  )
+%>
+---
+nodes:
+<% (1..NODES_NUMBER).each { |i| %>
+ <%= CLUSTER_NAME %>-<%= i %>:
+    architecture:
+      nb_procs: 2
+      nb_cores: 128
+      nb_threads: 256
+      platform_type: x86_64
+      cpu_core_numbering: contiguous 
+    bios:
+      release_date: 01/01/2000 # Fake date, will be replaced by g5k-checks
+      vendor: Unknown # Fake vendor, will be replaced by g5k-checks
+      version: 1 # Fake version, will be replaced by g5k-checks
+    bmc_version: v1 # Fake version, will be replaced by g5k-checks
+    chassis:
+      manufacturer: Unknown # Fake manufacturer, will be replaced by g5k-checks
+      name: Unknown # Fake name, will be replaced by g5k-checks
+    main_memory:
+      ram_size: 8 # Fake size, will be replaced by g5k-checks
+    memory_devices:
+      dimm:
+        size: 8 # Fake size, will be replaced by g5k-checks
+        technology: dram # Common memory technology, will be replaced by g5k-checks
+    processor:
+      model: Unknown # Fake model name, will be replaced by g5k-checks
+      other_description: description # Fake description, will be replaced by g5k-checks
+      vendor: vendor # Fake vendor, will be replaced by g5k-checks
+      version: vendor # Fake version, will be replaced by g5k-checks
+      cache_l1d: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l1i: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l2: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l3: 8 # Fake cache, will be replaced by g5k-checks
+      instruction_set: x86-64 # Common instruction set, will be replaced by g5k-checks
+      microcode: "0xd000001" # Fake microcode, will be replaced by g5k-checks
+      ht_capable: true # Default ht capable value, will be replaced by g5k-checks 
+    main_memory:
+      ram_size: 8 # Fake ram size, will be replaced by g5k-checks
+    memory_devices:
+      dimm_proc 1 dimm 1: # Fake dimm name, will be replaced by g5k-checks
+        size: 8 # Fake dimm size, will be replaced by g5k-checks
+        technology: dram # Default dimm technology, will be replaced by g5k-checks
+    operating_system:
+      cstate_driver: unknown # Fake driver, will be replaced by g5k-checks
+      cstate_governor: unknown # Fake governor, will be replaced by g5k-checks
+      ht_enabled: true # common value for hyper threading, will be replaced by g5k-checks
+      pstate_driver: unknwon # Fake driver, will be replaced by g5k-checks
+      pstate_governor: unknown # Fake driver, will be replaced by g5k-checks
+      turboboost_enabled: true # Default value for turboboost, will be replaced by g5k-checks 
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        mac: <%= MAC_BMC_LIST[i - 1] %>
+        ip: 172.17.<%= SITE_IPV4_INDEX %>.<%= i+9 %>
+      eth0:
+        interface: Ethernet
+        management: false
+        driver: mlx_core
+        name: enp1s0f0np0
+        rate: 10000000000
+        mac: <%= MAC_ETH0_LIST[i - 1] %>
+        ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
+    storage_devices:
+      disk0:
+        storage: SSD # Common value, will be replaced by g5k-checks
+        model: unknown # fake value,  
+        size: 8 # Fake value, will be replaced by g5k-checks
+<% } %>
