@@ -1,0 +1,99 @@
+
+<%
+  CLUSTER_NAME = "spirou"
+  NODES_NUMBER = 8
+  SITE_IPV4_INDEX = 208
+  # MAC addresses declaration
+  # TODO: Change MAC addresses.
+  MAC_ETH0_LIST = %w(
+    e4:3d:1a:62:eb:2f
+    e4:3d:1a:62:e1:3f
+    e4:3d:1a:62:da:c7
+    e4:3d:1a:62:da:f7
+    e4:3d:1a:62:d9:8f
+    e4:3d:1a:62:ea:ff
+    e4:3d:1a:62:ee:a7
+    e4:3d:1a:62:db:0f
+  )
+
+  #  TODO: Change MAC addresses.
+  MAC_BMC_LIST = %w(
+    38:68:dd:8c:71:2d
+    38:68:dd:87:1e:75
+    38:68:dd:8c:70:0d
+    38:68:dd:87:1e:69
+    38:68:dd:8c:70:19
+    38:68:dd:87:20:65
+    38:68:dd:8c:6f:f5
+    38:68:dd:8c:71:01
+  )
+%>
+---
+nodes:
+<% (1..NODES_NUMBER).each { |i| %>
+ <%= CLUSTER_NAME %>-<%= i %>:
+    architecture:
+      nb_procs: 4 
+      nb_cores: 96 
+      nb_threads: 96
+      platform_type: x86_64
+      cpu_core_numbering: contiguous 
+    bios:
+      release_date: 01/01/2000 # Fake date, will be replaced by g5k-checks
+      vendor: Unknown # Fake vendor, will be replaced by g5k-checks
+      version: 1 # Fake version, will be replaced by g5k-checks
+    bmc_version: v1 # Fake version, will be replaced by g5k-checks
+    chassis:
+      manufacturer: Unknown # Fake manufacturer, will be replaced by g5k-checks
+      name: Unknown # Fake name, will be replaced by g5k-checks
+    main_memory:
+      ram_size: 8 # Fake size, will be replaced by g5k-checks
+    memory_devices:
+      dimm:
+        size: 8 # Fake size, will be replaced by g5k-checks
+        technology: dram # Common memory technology, will be replaced by g5k-checks
+    processor:
+      model: Unknown # Fake model name, will be replaced by g5k-checks
+      other_description: description # Fake description, will be replaced by g5k-checks
+      vendor: vendor # Fake vendor, will be replaced by g5k-checks
+      version: vendor # Fake version, will be replaced by g5k-checks
+      cache_l1d: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l1i: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l2: 8 # Fake cache, will be replaced by g5k-checks
+      cache_l3: 8 # Fake cache, will be replaced by g5k-checks
+      instruction_set: x86-64 # Common instruction set, will be replaced by g5k-checks
+      microcode: "0xd000001" # Fake microcode, will be replaced by g5k-checks
+      ht_capable: true # Default ht capable value, will be replaced by g5k-checks 
+    main_memory:
+      ram_size: 8 # Fake ram size, will be replaced by g5k-checks
+    memory_devices:
+      dimm_proc 1 dimm 1: # Fake dimm name, will be replaced by g5k-checks
+        size: 8 # Fake dimm size, will be replaced by g5k-checks
+        technology: dram # Default dimm technology, will be replaced by g5k-checks
+    operating_system:
+      cstate_driver: unknown # Fake driver, will be replaced by g5k-checks
+      cstate_governor: unknown # Fake governor, will be replaced by g5k-checks
+      ht_enabled: true # common value for hyper threading, will be replaced by g5k-checks
+      pstate_driver: unknwon # Fake driver, will be replaced by g5k-checks
+      pstate_governor: unknown # Fake driver, will be replaced by g5k-checks
+      turboboost_enabled: true # Default value for turboboost, will be replaced by g5k-checks 
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        management: true
+        mac: <%= MAC_BMC_LIST[i - 1] %>
+        ip: 172.17.<%= SITE_IPV4_INDEX %>.<%= i %>
+      eth0:
+        interface: Ethernet
+        management: false
+        driver: mlx_core
+        name: enp1s0f0np0
+        rate: 10000000000
+        mac: <%= MAC_ETH0_LIST[i - 1] %>
+        ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
+    storage_devices:
+      disk0:
+        storage: SSD # Common value, will be replaced by g5k-checks
+        model: unknown # fake value,  
+        size: 8 # Fake value, will be replaced by g5k-checks
+<% } %>
