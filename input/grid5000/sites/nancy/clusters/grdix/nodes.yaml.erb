@@ -4,22 +4,22 @@
   SITE_IPV4_INDEX = 65
   # MAC addresses declaration
   MAC_ETH0_LIST = %w(
-    d4:e6:e6:e6:e6:a1
-    d4:e6:e6:e6:e6:a2
-    d4:e6:e6:e6:e6:a3
-    d4:e6:e6:e6:e6:a4
-    d4:e6:e6:e6:e6:a5
-    d4:e6:e6:e6:e6:a6
-    d4:e6:e6:e6:e6:a7
-    d4:e6:e6:e6:e6:a8
-    d4:e6:e6:e6:e6:a9
-    d4:e6:e6:e6:e6:b1
-    d4:e6:e6:e6:e6:b2
-    d4:e6:e6:e6:e6:b3
-    d4:e6:e6:e6:e6:b4
-    d4:e6:e6:e6:e6:b5
-    d4:e6:e6:e6:e6:b6
-    d4:e6:e6:e6:e6:b7
+    5c:25:73:4a:21:84
+    5c:25:73:4a:1d:70
+    5c:25:73:cc:f1:80
+    5c:25:73:4a:1e:5a
+    5c:25:73:cc:ef:be
+    5c:25:73:4a:1d:2e
+    5c:25:73:4a:1d:6a
+    5c:25:73:cc:f1:02
+    5c:25:73:4a:1d:ca
+    5c:25:73:4a:1e:78
+    5c:25:73:4a:1e:9c
+    5c:25:73:4a:1b:e4
+    5c:25:73:4a:1d:b8
+    5c:25:73:4a:1e:c6
+    5c:25:73:4a:1d:c4
+    5c:25:73:4a:1c:2c
   )
 
   MAC_BMC_LIST = %w(
@@ -95,7 +95,7 @@ nodes:
         interface: Ethernet
         management: true
         mac: <%= MAC_BMC_LIST[i - 1] %>
-        ip: 172.17.<%= SITE_IPV4_INDEX %>.<%= i+9 %>
+        ip: 172.17.<%= SITE_IPV4_INDEX %>.<%= i+10 %>
       eth0:
         interface: Ethernet
         management: false
