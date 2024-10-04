@@ -10,7 +10,7 @@ queues:
 nodes:
   grdix-[1-16]:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: Put date.
+      manufactured_at: 2024-09-02
       warranty_end: 2027-09-08
     supported_job_types:
       deploy: true
@@ -32,8 +32,8 @@ nodes:
     storage_devices:
       disk0: # This field will have to be renamed later.
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
+        interface: NVME
+        by_path: "/dev/disk/by-path/pci-0000:e4:00.0-nvme-1"
     software:
       standard-environment: debian11-x64-std
     management_tools:
