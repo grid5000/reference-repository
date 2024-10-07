@@ -8,13 +8,13 @@ def generate_puppet_webfish(options)
     if not options[:conf_dir]
         options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/redfish/"
     end
-    allBmc = check_redfish_availability(20)
+    allBmc = gen_redfish_configuration()
     credentials = YAML::load_file(options[:conf_dir] + 'console-password.yaml')
     add_credentials(credentials, allBmc)
     gen_json_files(allBmc, options)
 end
 
-def check_redfish_availability(timeout)
+def gen_redfish_configuration()
     data = load_data_hierarchy
     allBmc = {}
     # allBmc --> hash de hash de tableau de hash
@@ -34,7 +34,11 @@ def check_redfish_availability(timeout)
                     next
                 end
                 url = 'https://'+d_node['network_adapters'].select{ |na| na['device'] == 'bmc' }.first['network_address']
-                check_url(url, n_uid, allBmc, 'node', s_uid, timeout)
+                allBmc[s_uid][n_uid] = {
+                    'url' => url,
+                    'node' => true,
+                    'redfish' => true,
+                    'error' => nil}
             end
         end
         d_site['servers'].peach do |srv_uid, d_server|
@@ -45,8 +49,12 @@ def check_redfish_availability(timeout)
                 if !d_server['network_adapters'].nil?
                     if !d_server['network_adapters']['bmc'].nil?
                         if !d_server['network_adapters']['bmc']['ip'].nil?
-                            url = 'https://'+d_server['network_adapters']['bmc']['ip']
-                            check_url(url, srv_uid, allBmc, 'infra', s_uid, timeout)
+                            url = 'https://' + srv_uid + '-bmc.' + s_uid + '.grid5000.fr'
+                            allBmc[s_uid][srv_uid] = {
+                            'url' => url,
+                            'node' => false,
+                            'redfish' => true,
+                            'error' => nil}
                         end
                     end
                 end
@@ -55,32 +63,6 @@ def check_redfish_availability(timeout)
         p "site #{s_uid} done"
     end
     return allBmc
-end
-
-def check_url(url, uid, allBmc, type, site, timeout)
-    uri = URI(url+'/redfish/v1/')
-    begin
-        req = Net::HTTP::Get.new(uri.path)
-        res = Net::HTTP.start(
-                uri.host, uri.port,
-                :use_ssl => uri.scheme == 'https',
-                :verify_mode => OpenSSL::SSL::VERIFY_NONE,
-                :open_timeout => timeout,
-                :read_timeout => timeout) do |https|
-            https.request(req)
-        end
-        allBmc[site][uid] = {
-            'url' => url,
-            'node' => type == 'node',
-            'redfish' => res.code.to_i() == 200 ? true : false,
-            'error' => nil}
-    rescue => error
-        allBmc[site][uid] = {
-            'url' => url,
-            'node' => type == 'node',
-            'redfish' => false,
-            'error' => error.class}
-    end
 end
 
 def add_credentials(credentials, allBmc)
@@ -111,7 +93,8 @@ def gen_json_files(allBmc, options)
         Dir.mkdir(dir)
     end
     actualFile = dir + "/webfish.json"
-    allBmc.each do |s_site, _d_array|
+
+    allBmc.sort_by{ |s_site, _d_site| s_site}.each do |s_site, _d_array|
         pretty_dict[s_site] = allBmc[s_site].sort_by{|k, _| [k[/(\D+)/, 1], k[/(\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]}.to_h
     end
     File.open(actualFile, "w") do |f|
