@@ -18,6 +18,26 @@ sw-1:
       rate: 25000000000
       kind: node
       ports:
+        1:
+          uid: pve-1
+          kind: server
+        2:
+          uid: pve-1-eth1
+          kind: server
+        3:
+          uid: pve-2
+          kind: server
+        4:
+          uid: pve-2-eth1
+          kind: server
+        5:
+          uid: lag1
+          kind: channel
+          rate: 25000000000
+        6:
+          uid: lag1
+          kind: channel
+          rate: 25000000000
         7:
           uid: chuc-1
         8:
@@ -76,3 +96,9 @@ sw-1:
         48:
           uid: sw-chiclet-2
           kind: router
+  channels:
+    lag1:
+      uid: srv-data2
+      kind: server
+      port: lag1
+      rate: 50000000000
