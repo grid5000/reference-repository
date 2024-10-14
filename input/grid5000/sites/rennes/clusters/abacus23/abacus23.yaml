@@ -1,0 +1,47 @@
+model: ProLiant DL385 Gen10 Plus v2
+created_at: 2024-07-31
+kavlan: false
+boot_type: uefi
+exotic: false
+queues:
+  - admin
+  - production
+  - challenge
+nodes:
+  abacus23-1:
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 604800
+    processor:
+      microarchitecture: Zen 3
+      clock_speed: 2650000000
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      pci-0000:64:00.0-scsi-0:1:0:0:
+        id: disk0
+        interface: SATA
+      pci-0000:64:00.0-sas-0x50000f0b01938442-lun-0:
+        id: disk1
+        interface: SAS
+    chassis:
+      manufactured_at: 2022-01-19
+      warranty_end: 2027-01-25
+    nodeset: abacus23
