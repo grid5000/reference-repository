@@ -285,6 +285,7 @@ def generate_dot(netnodes, links, site)
   mynetnodes = []
   netnodes.each do |n|
     next if n['interface'] == 'InfiniBand' or n['interface'] == 'Myrinet' or hpc_switch?(n)
+    next if n['found'] == 1 and n['kind'] == 'switch' # we remove switches which has only on link
     mynetnodes << n
   end
   # delete nodes we don't care about (HPC networks)
