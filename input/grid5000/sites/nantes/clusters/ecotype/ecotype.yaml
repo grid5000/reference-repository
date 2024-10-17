@@ -9,6 +9,26 @@ queues:
   - default
 
 nodes:
+  ecotype-1:
+    network_adapters:
+      eth1:
+        enabled: false
+        mountable: false
+  ecotype-47:
+    network_adapters:
+      eth1:
+        enabled: false
+        mountable: false
+  ecotype-[2-46]:
+    network_adapters:
+      eth1:
+        enabled: true
+        mountable: true
+  ecotype-48:
+    network_adapters:
+      eth1:
+        enabled: true
+        mountable: true
   ecotype-[1-48]:
     processor:
       microarchitecture: Broadwell
@@ -28,8 +48,6 @@ nodes:
         mountable: true
       eth1:
         mounted: false
-        enabled: true
-        mountable: true
       eth2:
         mounted: false
         enabled: false

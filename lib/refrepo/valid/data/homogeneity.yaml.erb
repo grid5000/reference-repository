@@ -288,6 +288,43 @@ nantes:
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
+  ecotype-2:
+    - ~network_adapters.eth1.enabled
+    - ~network_adapters.eth1.mountable
+    - ~network_adapters.eth1.kavlan
+    - +network_adapters.eth1.ip
+    - +network_adapters.eth1.ip6
+    - +network_adapters.eth1.network_address
+    - +network_adapters.eth1.rate
+    - +network_adapters.eth1.switch
+    - +network_adapters.eth1.switch_port
+    - +kavlan.eth1
+    - +kavlan6.eth1
+  ecotype-47:
+    - ~network_adapters.eth1.enabled
+    - ~network_adapters.eth1.mountable
+    - ~network_adapters.eth1.kavlan
+    - -network_adapters.eth1.ip
+    - -network_adapters.eth1.ip6
+    - -network_adapters.eth1.network_address
+    - -network_adapters.eth1.rate
+    - -network_adapters.eth1.switch
+    - -network_adapters.eth1.switch_port
+    - -kavlan.eth1
+    - -kavlan6.eth1
+  ecotype-48:
+    - ~network_adapters.eth1.enabled
+    - ~network_adapters.eth1.mountable
+    - ~network_adapters.eth1.kavlan
+    - +network_adapters.eth1.ip
+    - +network_adapters.eth1.ip6
+    - +network_adapters.eth1.network_address
+    - +network_adapters.eth1.rate
+    - +network_adapters.eth1.switch
+    - +network_adapters.eth1.switch_port
+    - +kavlan.eth1
+    - +kavlan6.eth1
+
 rennes:
   paradoxe-[2-3]:
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
