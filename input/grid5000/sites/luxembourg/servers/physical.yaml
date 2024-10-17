@@ -40,6 +40,18 @@ srv-data:
     size: 40000000000000
     rate: 20000000000
 
+srv-data2:
+  kind: physical
+  alias: [srv-data-belval]
+  warranty: 2029-07
+  serial: CSQXL44
+  network_adapters:
+    default:
+      ip: 172.16.191.80
+    bmc:
+      ip: 172.17.190.80
+      mac: c4:cb:e1:cc:79:f0
+
 petitprince-cmc:
   kind: physical
   redfish: false
