@@ -1,14 +1,15 @@
 ---
 gw:
-  model: cisco WS-C6506-E
+  model: cisco Nexus9000 C93240YC-FX2
   alias:
     - gw-luxembourg
+    - gw-belval
   kind: router
   managed_by_us: true
   site: luxembourg
   snmp_community: public
-  warranty: 2018-12-01
-  backplane_bps: 720000000000
+  warranty: 2029-01-01 # Contrat site université renouvelé en continu
+  backplane_bps: 4800000000000
   ip: 172.16.191.254
   ip6: 2001:660:4406:300::ffff:ffff
   metrics:
@@ -119,60 +120,123 @@ gw:
         - 10.43.192.0/18
   linecards:
     1:
-      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
-      kavlan_pattern: Gi%LINECARD%/%PORT%
+      snmp_pattern: Ethernet%LINECARD%/%PORT%
+      kavlan_pattern: Ethernet%LINECARD%/%PORT%
       backplane_bps: 40000000000
       rate: 1000000000
       kind: node
-      ports:
-        35:
-          uid: cronos-eth1
-          kind: server
-        37:
-          uid: cronos-eth2
-          kind: server
-        46:
-#          uid: ul-grid5000-sw02
-#          port: mgmt0
-#          kind: switch
-        48:
-    2:
-      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
-      kavlan_pattern: Gi%LINECARD%/%PORT%
-      backplane_bps: 40000000000
-      rate: 1000000000
-      kind: node
-      ports:
-        44:
-          uid: cronos
-          kind: server
-        48:
-    3:
-      snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
-      kavlan_pattern: Ti%LINECARD%/%PORT%
-      rate: 10000000000
-      backplane_bps: 40000000000
-      kind: channel
       ports:
         1:
-          uid: Port-channel4
+          uid: port-channel1
           kind: channel
         2:
-          uid: Port-channel4
+          uid: port-channel1
           kind: channel
-    5:
-      snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
-      kavlan_pattern: Ti%LINECARD%/%PORT%
-      rate: 1000000000
-      backplane_bps: 40000000000
-      kind: backbone
-      ports:
+        3:
+          uid: port-channel3
+          kind: channel
         4:
+          uid: port-channel3
+          kind: channel
+        5:
+          uid: port-channel5
+          kind: channel
+        6:
+          uid: port-channel5
+          kind: channel
+        7:
+          uid: port-channel7
+          kind: channel
+        8:
+          uid: port-channel7
+          kind: channel
+        41:
+          uid: port-channel41
+          kind: channel
+        42:
+          uid: port-channel41
+          kind: channel
+        43:
+          uid: port-channel43
+          kind: channel
+        44:
+          uid: port-channel43
+          kind: channel
+        45:
+          uid: port-channel45
+          kind: channel
+        46:
+          uid: port-channel45
+          kind: channel
+        48:
           uid: renater-luxembourg
-          rate: 10000000000
+          kind: backbone
+        55:
+          uid: port-channel55
+          kind: channel
+        56:
+          uid: port-channel55
+          kind: channel
+        57:
+          uid: port-channel57
+          kind: channel
+        58:
+          uid: port-channel57
+          kind: channel
+        59:
+          uid: port-channel59
+          kind: channel
+        60:
+          uid: port-channel59
+          kind: channel
   channels:
-    Port-channel4:
-      uid: ul-grid5000-sw02
-      port: port-channel4
+    port-channel1:
+      uid: pve-1
+      port: port-channel1
+      kind: server
+      rate: 20000000000
+    port-channel3:
+      uid: pve-2
+      port: port-channel3
+      kind: server
+      rate: 20000000000
+    port-channel5:
+      uid: pve-1-backup-link
+      port: port-channel5
+      kind: server
+      rate: 20000000000
+    port-channel7:
+      uid: pve-2-backup-link
+      port: port-channel7
+      kind: server
+      rate: 20000000000
+    port-channel41:
+      uid: backup-link-to-hpc-gw
+      port: port-channel7
+      kind: server
+      rate: 20000000000
+    port-channel43:
+      uid: sw-admin-b09
+      port: port-channel43
+      kind: switch
+      rate: 20000000000
+    port-channel45:
+      uid: sw-admin-b04
+      port: port-channel45
+      kind: switch
+      rate: 20000000000
+    port-channel55:
+      uid: srv-data
+      port: port-channel55
+      kind: server
+      rate: 20000000000
+    port-channel57:
+      uid: sw-b09
+      port: port-channel57
+      kind: switch
+      rate: 20000000000
+    port-channel59:
+      uid: sw-b04
+      port: port-channel59
       kind: switch
       rate: 20000000000
