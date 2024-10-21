@@ -1,0 +1,69 @@
+---
+sgrdix:
+  model: Aruba 8325-48Y8C
+  serial: TW47KM00BX
+  warranty: 2050-01-20
+  kind: switch
+  managed_by_us: true
+  site: nancy
+  ip: 172.17.79.213
+  snmp_community: public
+  backplane_bps: 1440000000000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 25000000000
+      kind: node
+      ports:
+        1:
+          uid: gres-1-eth0
+        2:
+          uid: gres-2-eth0
+        3:
+          uid: gres-3-eth0
+        4:
+          uid: gres-4-eth0
+        5:
+          uid: gres-5-eth0
+        6:
+          uid: gres-6-eth0
+        7:
+          uid: gres-7-eth0
+        11:
+          uid: grdix-1-eth0
+        12:
+          uid: grdix-2-eth0
+        13:
+          uid: grdix-3-eth0
+        14:
+          uid: grdix-4-eth0
+        15:
+          uid: grdix-5-eth0
+        16:
+          uid: grdix-6-eth0
+        17:
+          uid: grdix-7-eth0
+        18:
+          uid: grdix-8-eth0
+        19:
+          uid: grdix-9-eth0
+        20:
+          uid: grdix-10-eth0
+        21:
+          uid: grdix-11-eth0
+        22:
+          uid: grdix-12-eth0
+        23:
+          uid: grdix-13-eth0
+        24:
+          uid: grdix-14-eth0
+        25:
+          uid: grdix-15-eth0
+        26:
+          uid: grdix-16-eth0
+        49:
+          snmp_pattern: "ethernet1/%LINECARD%/%PORT%:1"
+          uid: gw-next
+          rate: 40_000_000_000
+          kind: switch
