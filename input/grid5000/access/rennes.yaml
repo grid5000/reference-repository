@@ -42,9 +42,7 @@ abacus3: &linkmedia-exclusive
     p1: [linkmedia, '@admin']
     besteffort: ['@inria_group', '@other_groups_with_access']
 abacus10: *linkmedia-exclusive
-abacus18:
-    p1: [linkmedia, epione, '@admin']
-    besteffort: ['@inria_group', '@other_groups_with_access']
+abacus18: *linkmedia-exclusive
 abacus21: *linkmedia-exclusive
 
 ## SIROCCO
@@ -91,9 +89,6 @@ roazhon13: *inria-rennes
 abacus4: *inria-rennes
 abacus8: *inria-rennes
 abacus9: *inria-rennes
-abacus14:
-    p1: ['@inria_rennes_group', '@admin', epione]
-    p3: ['@inria_group']
-    p4: ['@other_groups_with_access']
+abacus14: *inria-rennes
 abacus16: *inria-rennes
 abacus25: *inria-rennes
