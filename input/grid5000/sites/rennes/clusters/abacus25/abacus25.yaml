@@ -19,6 +19,7 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
+      max_walltime: 604800
     processor:
       microarchitecture: Zen 3
       clock_speed: 2650000000
@@ -51,11 +52,3 @@ nodes:
         id: disk2
         interface: SATA
     nodeset: abacus25
-
-  abacus25-1:
-    supported_job_types:
-      max_walltime: 345600
-
-  abacus25-[2-4]:
-    supported_job_types:
-      max_walltime: 604800
