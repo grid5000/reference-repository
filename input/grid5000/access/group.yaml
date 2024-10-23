@@ -11,7 +11,7 @@
 ## admin groups (include jenkins)
 admin: ['%mc-staff-site','%g5k-staff-site']
 
-# GROUPS FOR A SPECIFIC INRIA CENTERS
+# GROUPS FOR A SPECIFIC INRIA CENTER
 ## mc group of inria rennes, also include some slices-fr groups
 inria_rennes_group: ['%mc-rennes', cidre, kerdata, magellan, myriads, pacap, wide]
 
@@ -33,14 +33,10 @@ inria_group:  ['@inria_rennes_group', '@inria_nancy_group', '@inria_lyon_group',
 # OTHER GROUP WITH (MINIMAL) ACCESS TO MC
 ## Group still not migrated
 #FIXME as gga are migrated, this list should contains nothing in the end
-unmigrated_gga_lille: [lille-misc, lisic]
-unmigrated_gga_grenoble: [convecs, corse, datamove, erods, grenoble-misc, gricad, inria-gra, lig, ljk, mrim, nanosim2, polaris]
 unmigrated_gga_nantes: [ls2n, nantes-misc]
 unmigrated_gga_sophia: [i3s, sophia-misc, zenith]
 unmigrated_gga_toulouse: [irit, laas, toulouse-misc]
-unmigrated_gga: ['@unmigrated_gga_lille','@unmigrated_gga_grenoble','@unmigrated_gga_nantes','@unmigrated_gga_sophia', '@unmigrated_gga_toulouse']
-
-
+unmigrated_gga: ['@unmigrated_gga_nantes','@unmigrated_gga_sophia', '@unmigrated_gga_toulouse']
 
 slices_site_in_france: ['%slices-fr-grenoble', '%slices-fr-lille', '%slices-fr-lyon', '%slices-fr-nancy', '%slices-fr-nantes', '%slices-fr-rennes', '%slices-fr-sophia', '%slices-fr-strasbourg', '%slices-fr-toulouse']
 
