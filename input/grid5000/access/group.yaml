@@ -31,14 +31,8 @@ guest_inria: [inria-chile, inria-dsi, inria-sidf, swh, tadaam]
 inria_group:  ['@inria_rennes_group', '@inria_nancy_group', '@inria_lyon_group', '@economic_activity_inria', '@guest_inria', '%mc-sophia', '%mc-lyon', '%mc-lille', '%mc-grenoble', '%mc-paris', '%mc-saclay', '%mc-bordeaux']
 
 # OTHER GROUP WITH (MINIMAL) ACCESS TO MC
-## Group still not migrated
-#FIXME as gga are migrated, this list should contains nothing in the end
-unmigrated_gga_nantes: [ls2n, nantes-misc]
-unmigrated_gga_sophia: [i3s, sophia-misc, zenith]
-unmigrated_gga_toulouse: [irit, laas, toulouse-misc]
-unmigrated_gga: ['@unmigrated_gga_nantes','@unmigrated_gga_sophia', '@unmigrated_gga_toulouse']
 
 slices_site_in_france: ['%slices-fr-grenoble', '%slices-fr-lille', '%slices-fr-lyon', '%slices-fr-nancy', '%slices-fr-nantes', '%slices-fr-rennes', '%slices-fr-sophia', '%slices-fr-strasbourg', '%slices-fr-toulouse']
 
 ## group with an access to mc
-other_groups_with_access: ['%mc-guest', '@unmigrated_gga', '@slices_site_in_france' ]
+other_groups_with_access: ['%mc-guest', '@slices_site_in_france' ]
