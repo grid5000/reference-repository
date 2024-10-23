@@ -162,8 +162,8 @@ def generate_reference_api
   # Generate the json containing all accesses level.
   accesses_path.mkpath()
   generate_accesses_json(
-    accesses_path.join("all.json"),
-    generate_access_level
+    accesses_path.join('nodesets.json'),
+    expand_nodeset_lists
   )
 
 
