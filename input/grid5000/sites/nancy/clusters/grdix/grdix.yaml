@@ -21,6 +21,7 @@ nodes:
       clock_speed: 2250000000
     network_adapters:
       bmc:
+        interface: Ethernet
         enabled: true
         mountable: false
         mounted: false
@@ -28,12 +29,23 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
-      ##IB interface to do later
+      eth1:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      ibs1: ##IB interface to do later
+        interface: InfiniBand
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:e4:00.0-nvme-1:
         id: disk0
         interface: NVME
-        by_path: "/dev/disk/by-path/pci-0000:e4:00.0-nvme-1"
     software:
       standard-environment: debian11-x64-std
     management_tools:
