@@ -1,26 +1,27 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 128,
+    "nb_cores": 256,
     "nb_procs": 2,
-    "nb_threads": 256,
+    "nb_threads": 512,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "09/05/2024",
+    "vendor": "HPE",
+    "version": 1.7
   },
-  "bmc_version": "v1",
+  "bmc_version": "1.63",
   "chassis": {
     "manufactured_at": "2024-09-02",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL365 Gen11",
+    "serial": "CZJD1J00HH",
     "warranty_end": "2027-09-08"
   },
   "exotic": false,
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 1099511627776
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -30,29 +31,144 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_proc 1 dimm 11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 9",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 9",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "mlx5_core",
       "enabled": true,
+      "firmware_version": "26.41.1000 (MT_0000000551)",
       "interface": "Ethernet",
       "ip": "172.16.65.16",
-      "ip6": "2001:660:4406:500:2::6",
+      "ip6": "2001:660:4406:500:2::10",
       "kavlan": false,
       "mac": "5c:25:73:4a:1d:2e",
       "management": false,
+      "model": "MT2894 Family [ConnectX-6 Lx]",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "grdix-6.nancy.grid5000.fr",
-      "rate": 10000000000,
+      "rate": 25000000000,
+      "sriov": true,
+      "sriov_totalvfs": 8,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "eth1",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "26.41.1000 (MT_0000000551)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "5c:25:73:4a:1d:2f",
+      "management": false,
+      "model": "MT2894 Family [ConnectX-6 Lx]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens22f1np1",
+      "sriov": true,
+      "sriov_totalvfs": 8,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ibs1",
+      "driver": "mlx5_core[ib_ipoib]",
+      "enabled": false,
+      "firmware_version": "20.41.1000 (MT_0000000451)",
+      "guid": "0x88e9a4ffffd494e6",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "00:00:10:29:fe:80:00:00:00:00:00:00:88:e9:a4:ff:ff:d4:94:e6",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ibs1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,32 +185,32 @@
   ],
   "nodeset": "grdix",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 108000000000,
-    "node_flops": 13824000000000
+    "node_flops": 27648000000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 16777216,
     "clock_speed": 2250000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Zen 4c",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microcode": "0xaa00215",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 9754 128-Core Processor",
+    "vendor": "AMD",
+    "version": 9754
   },
   "redfish": true,
   "software": {
@@ -104,14 +220,14 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.37305430581147740025384100000002",
       "by_path": "/dev/disk/by-path/pci-0000:e4:00.0-nvme-1",
       "id": "disk0",
       "interface": "NVME",
-      "model": "unknown",
-      "size": 8,
+      "model": "MO001600KYDMU",
+      "size": 1600321314816,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Samsung"
     }
   ],
   "supported_job_types": {
@@ -121,7 +237,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "grdix-6"
