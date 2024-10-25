@@ -9,7 +9,7 @@ gw:
   site: luxembourg
   snmp_community: public
   warranty: 2029-01-01 # Contrat site université renouvelé en continu
-  backplane_bps: 4800000000000
+  backplane_bps: 4_800_000_000_000
   ip: 172.16.191.254
   ip6: 2001:660:4406:300::ffff:ffff
   metrics:
@@ -122,8 +122,8 @@ gw:
     1:
       snmp_pattern: Ethernet%LINECARD%/%PORT%
       kavlan_pattern: Ethernet%LINECARD%/%PORT%
-      backplane_bps: 40000000000
-      rate: 1000000000
+      backplane_bps: 4_800_000_000_000
+      rate: 10_000_000_000
       kind: node
       ports:
         1:
@@ -194,49 +194,49 @@ gw:
       uid: pve-1
       port: port-channel1
       kind: server
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel3:
       uid: pve-2
       port: port-channel3
       kind: server
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel5:
       uid: pve-1-backup-link
       port: port-channel5
       kind: server
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel7:
       uid: pve-2-backup-link
       port: port-channel7
       kind: server
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel41:
       uid: backup-link-to-hpc-gw
       port: port-channel7
       kind: server
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel43:
       uid: sw-admin-b09
       port: port-channel43
       kind: switch
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel45:
       uid: sw-admin-b04
       port: port-channel45
       kind: switch
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel55:
       uid: srv-data
       port: port-channel55
       kind: server
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel57:
       uid: sw-b09
       port: port-channel57
       kind: switch
-      rate: 20000000000
+      rate: 20_000_000_000
     port-channel59:
       uid: sw-b04
       port: port-channel59
       kind: switch
-      rate: 20000000000
+      rate: 20_000_000_000
