@@ -1,14 +1,69 @@
 {
   "alias": [
-    "gw-luxembourg"
+    "gw-luxembourg",
+    "gw-belval"
   ],
-  "backplane_bps": 720000000000,
+  "backplane_bps": 4800000000000,
   "channels": {
-    "Port-channel4": {
-      "kind": "switch",
-      "port": "port-channel4",
+    "port-channel1": {
+      "kind": "server",
+      "port": "port-channel1",
       "rate": 20000000000,
-      "uid": "ul-grid5000-sw02"
+      "uid": "pve-1"
+    },
+    "port-channel3": {
+      "kind": "server",
+      "port": "port-channel3",
+      "rate": 20000000000,
+      "uid": "pve-2"
+    },
+    "port-channel41": {
+      "kind": "server",
+      "port": "port-channel7",
+      "rate": 20000000000,
+      "uid": "backup-link-to-hpc-gw"
+    },
+    "port-channel43": {
+      "kind": "switch",
+      "port": "port-channel43",
+      "rate": 20000000000,
+      "uid": "sw-admin-b09"
+    },
+    "port-channel45": {
+      "kind": "switch",
+      "port": "port-channel45",
+      "rate": 20000000000,
+      "uid": "sw-admin-b04"
+    },
+    "port-channel5": {
+      "kind": "server",
+      "port": "port-channel5",
+      "rate": 20000000000,
+      "uid": "pve-1-backup-link"
+    },
+    "port-channel55": {
+      "kind": "server",
+      "port": "port-channel55",
+      "rate": 20000000000,
+      "uid": "srv-data"
+    },
+    "port-channel57": {
+      "kind": "switch",
+      "port": "port-channel57",
+      "rate": 20000000000,
+      "uid": "sw-b09"
+    },
+    "port-channel59": {
+      "kind": "switch",
+      "port": "port-channel59",
+      "rate": 20000000000,
+      "uid": "sw-b04"
+    },
+    "port-channel7": {
+      "kind": "server",
+      "port": "port-channel7",
+      "rate": 20000000000,
+      "uid": "pve-2-backup-link"
     }
   },
   "ip": "172.16.191.254",
@@ -18,27 +73,51 @@
     {
     },
     {
-      "backplane_bps": 40000000000,
-      "kavlan_pattern": "Gi%LINECARD%/%PORT%",
+      "backplane_bps": 4800000000000,
+      "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
       "kind": "node",
       "ports": [
         {
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/1",
+          "uid": "port-channel1"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/2",
+          "uid": "port-channel1"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/3",
+          "uid": "port-channel3"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/4",
+          "uid": "port-channel3"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/5",
+          "uid": "port-channel5"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/6",
+          "uid": "port-channel5"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/7",
+          "uid": "port-channel7"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/8",
+          "uid": "port-channel7"
         },
         {
         },
@@ -93,198 +172,99 @@
         {
         },
         {
-          "kind": "server",
-          "snmp_name": "GigabitEthernet1/35",
-          "uid": "cronos-eth1"
         },
         {
         },
         {
-          "kind": "server",
-          "snmp_name": "GigabitEthernet1/37",
-          "uid": "cronos-eth2"
         },
         {
         },
         {
         },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        }
-      ],
-      "rate": 1000000000,
-      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
-    },
-    {
-      "backplane_bps": 40000000000,
-      "kavlan_pattern": "Gi%LINECARD%/%PORT%",
-      "kind": "node",
-      "ports": [
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-          "kind": "server",
-          "snmp_name": "GigabitEthernet2/44",
-          "uid": "cronos"
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        }
-      ],
-      "rate": 1000000000,
-      "snmp_pattern": "GigabitEthernet%LINECARD%/%PORT%"
-    },
-    {
-      "backplane_bps": 40000000000,
-      "kavlan_pattern": "Ti%LINECARD%/%PORT%",
-      "kind": "channel",
-      "ports": [
         {
         },
         {
           "kind": "channel",
-          "snmp_name": "TenGigabitEthernet3/1",
-          "uid": "Port-channel4"
+          "snmp_name": "Ethernet1/41",
+          "uid": "port-channel41"
         },
         {
           "kind": "channel",
-          "snmp_name": "TenGigabitEthernet3/2",
-          "uid": "Port-channel4"
-        }
-      ],
-      "rate": 10000000000,
-      "snmp_pattern": "TenGigabitEthernet%LINECARD%/%PORT%"
-    },
-    {
-    },
-    {
-      "backplane_bps": 40000000000,
-      "kavlan_pattern": "Ti%LINECARD%/%PORT%",
-      "kind": "backbone",
-      "ports": [
-        {
+          "snmp_name": "Ethernet1/42",
+          "uid": "port-channel41"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/43",
+          "uid": "port-channel43"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/44",
+          "uid": "port-channel43"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/45",
+          "uid": "port-channel45"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/46",
+          "uid": "port-channel45"
         },
         {
         },
         {
           "kind": "backbone",
-          "rate": 10000000000,
-          "snmp_name": "TenGigabitEthernet5/4",
+          "snmp_name": "Ethernet1/48",
           "uid": "renater-luxembourg"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/55",
+          "uid": "port-channel55"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/56",
+          "uid": "port-channel55"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/57",
+          "uid": "port-channel57"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/58",
+          "uid": "port-channel57"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/59",
+          "uid": "port-channel59"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/60",
+          "uid": "port-channel59"
         }
       ],
-      "rate": 1000000000,
-      "snmp_pattern": "TenGigabitEthernet%LINECARD%/%PORT%"
+      "rate": 10000000000,
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
     }
   ],
   "managed_by_us": true,
@@ -362,7 +342,7 @@
       }
     }
   ],
-  "model": "cisco WS-C6506-E",
+  "model": "cisco Nexus9000 C93240YC-FX2",
   "site": "luxembourg",
   "snmp_community": "public",
   "type": "network_equipment",
@@ -455,5 +435,5 @@
       "name": "kavlan-20"
     }
   },
-  "warranty": "2018-12-01"
+  "warranty": "2029-01-01"
 }

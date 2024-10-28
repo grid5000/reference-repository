@@ -1,0 +1,223 @@
+{
+  "backplane_bps": 3600000000000,
+  "channels": {
+    "port-channel53": {
+      "kind": "router",
+      "port": "port-channel53",
+      "rate": 200000000000,
+      "uid": "gw-belval"
+    }
+  },
+  "ip": "172.17.191.248",
+  "kind": "switch",
+  "linecards": [
+    {
+    },
+    {
+      "backplane_bps": 3600000000000,
+      "kavlan_pattern": "%PORT%",
+      "kind": "node",
+      "ports": [
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/53",
+          "uid": "port-channel53"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/54",
+          "uid": "port-channel53"
+        }
+      ],
+      "rate": 25000000000,
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+    }
+  ],
+  "managed_by_us": true,
+  "metrics": [
+    {
+      "description": "Input byte counter for the network device port",
+      "name": "network_ifacein_bytes_total",
+      "period": 15000,
+      "source": {
+        "id": "1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+        "protocol": "snmp"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "name": "network_ifaceout_bytes_total",
+      "period": 15000,
+      "source": {
+        "id": "1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+        "protocol": "snmp"
+      }
+    },
+    {
+      "description": "Input packet counter for the network device port",
+      "name": "network_ifacein_packets_total",
+      "period": 15000,
+      "source": {
+        "id": "1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+        "protocol": "snmp"
+      }
+    },
+    {
+      "description": "Output packet counter for the network device port",
+      "name": "network_ifaceout_packets_total",
+      "period": 15000,
+      "source": {
+        "id": "1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+        "protocol": "snmp"
+      }
+    },
+    {
+      "description": "Input counter of discarded packets for the network device port",
+      "name": "network_ifacein_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "id": "1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+        "protocol": "snmp"
+      }
+    },
+    {
+      "description": "Output counter of discarded packets for the network device port",
+      "name": "network_ifaceout_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "id": "1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+        "protocol": "snmp"
+      }
+    },
+    {
+      "description": "Input counter of packet errors for the network device port",
+      "name": "network_ifacein_packets_error_total",
+      "period": 15000,
+      "source": {
+        "id": "1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+        "protocol": "snmp"
+      }
+    },
+    {
+      "description": "Output counter of packet errors for the network device port",
+      "name": "network_ifaceout_packets_error_total",
+      "period": 15000,
+      "source": {
+        "id": "1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}",
+        "protocol": "snmp"
+      }
+    }
+  ],
+  "model": "cisco Nexus9000 C93180YC-FX3",
+  "site": "luxembourg",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "sw-b09",
+  "warranty": "2029-01-01"
+}

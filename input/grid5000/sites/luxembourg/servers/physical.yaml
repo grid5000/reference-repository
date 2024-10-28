@@ -1,29 +1,4 @@
 ---
-cronos:
-  kind: physical
-  redfish: false
-  warranty: 2017-05
-  serial: JSG625J
-  network_adapters:
-    default:
-      ip: 172.16.191.2
-    adm:
-      ip: 172.17.191.2
-    bmc:
-      ip: 172.17.190.2
-
-zeus:
-  kind: physical
-  alias: []
-  warranty: 2016-08
-  serial: 8L6033J
-  network_adapters:
-    default:
-      ip: 172.16.191.60
-    bmc:
-      ip: 172.17.190.60
-      mac: 00:1C:23:BD:F5:B2
-
 srv-data:
   kind: physical
   alias: [nfs, home-g5k, public, ntp, storage1, modules]
@@ -61,13 +36,6 @@ petitprince-cmc:
   network_adapters:
     bmc:
       ip: 172.17.177.254
-
-md1000:
-  kind: storage
-  alias: []
-  warranty: 2009-10
-  serial: 6P90J2J
-  network_adapters: {}
 
 pve-1:
   kind: physical
