@@ -37,6 +37,8 @@ nodes:
         enabled: true
         mountable: true
         mounted: false
+    nodeset: chiclet
+  chiclet-[1-7]: 
     storage_devices:
       pci-0000:61:00.0-scsi-0:0:0:0:
         interface: SAS
@@ -49,4 +51,12 @@ nodes:
         interface: SAS
         id: disk2
         reservation: true
-    nodeset: chiclet
+  chiclet-8:
+    storage_devices:
+      pci-0000:61:00.0-scsi-0:0:0:0:
+        interface: SAS
+        id: disk0
+      pci-0000:61:00.0-scsi-0:0:1:0:
+        interface: SAS
+        id: disk1
+        reservation: true
