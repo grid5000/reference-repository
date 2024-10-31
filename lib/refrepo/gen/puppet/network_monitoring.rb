@@ -65,6 +65,8 @@ def generate_puppet_network_monitoring(options)
 
         l['ports'].each do |p|
           next if p == {}
+          # bug 15513 : We don't want to monitor bmc traffic until supervision machine are dimensioned for it
+          next if p['uid'].include?('bmc')
 
           next unless %w[other switch router server channel backbone].include?(p['kind'])
 
