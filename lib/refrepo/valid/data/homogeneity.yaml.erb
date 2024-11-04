@@ -33,12 +33,35 @@ grenoble:
   drac-[8-9]:
     - ~storage_devices.pci-0009:04:00.0-ata-1.firmware_version
 
-  yeti-[1-2]:
+  yeti-1:
+    - ~storage_devices.pci-0000:59:00.0-nvme-1.model
+  yeti-2:
+    - ~bios.release_date
+    - ~bios.version
+    - ~processor.microcode
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - ~network_adapters.eth2.firmware_version
+    - ~network_adapters.eth3.firmware_version
     - ~storage_devices.pci-0000:59:00.0-nvme-1.model
   yeti-3:
+    - ~bios.release_date
+    - ~bios.version
+    - ~processor.microcode
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - ~network_adapters.eth2.firmware_version
+    - ~network_adapters.eth3.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.model
   yeti-4:
+    - ~bios.release_date
+    - ~bios.version
+    - ~processor.microcode
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - ~network_adapters.eth2.firmware_version
+    - ~network_adapters.eth3.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.model
     - -storage_devices.pci-0000:59:00.0-nvme-1
