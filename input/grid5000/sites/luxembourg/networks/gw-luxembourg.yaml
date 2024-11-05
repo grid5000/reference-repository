@@ -165,21 +165,27 @@ gw:
         55:
           uid: port-channel55
           kind: channel
+          rate: 100_000_000_000
         56:
           uid: port-channel55
           kind: channel
+          rate: 100_000_000_000
         57:
           uid: port-channel57
           kind: channel
+          rate: 100_000_000_000
         58:
           uid: port-channel57
           kind: channel
+          rate: 100_000_000_000
         59:
           uid: port-channel59
           kind: channel
+          rate: 100_000_000_000
         60:
           uid: port-channel59
           kind: channel
+          rate: 100_000_000_000
   channels:
     port-channel1:
       uid: pve-1
@@ -207,17 +213,17 @@ gw:
       kind: server
       rate: 20_000_000_000
     port-channel55:
-      uid: srv-data
+      uid: srv-data2
       port: port-channel55
       kind: server
-      rate: 20_000_000_000
+      rate: 200_000_000_000
     port-channel57:
       uid: sw-b09
       port: port-channel53
       kind: switch
-      rate: 20_000_000_000
+      rate: 200_000_000_000
     port-channel59:
       uid: sw-b04
       port: port-channel53
       kind: switch
-      rate: 20_000_000_000
+      rate: 200_000_000_000
