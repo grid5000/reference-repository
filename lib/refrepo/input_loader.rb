@@ -168,10 +168,10 @@ def add_wattmetre_mapping(h)
         # Wattmetre ports are numbered by modules serial, then by channels inside module
         wattmetre_modules.sort.each_with_index do |m, module_idx|
           channels = m[1]
-          channels.sort.sort.each_with_index do |c, chan_idx|
+          channels.sort.sort.each_with_index do |c, _chan_idx|
             node_uid = c[1]
             # Each module has 6 channels
-            port_num = module_idx*6 + chan_idx
+            port_num = module_idx*6 + c[0]-1
 
             pdu["ports"] ||= {}
             if pdu['ports'].key?(port_num)
