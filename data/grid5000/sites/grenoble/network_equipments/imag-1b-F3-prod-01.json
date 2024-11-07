@@ -1,0 +1,176 @@
+{
+  "backplane_bps": 4800000000000,
+  "channels": {
+    "lag1": {
+      "kind": "channel",
+      "port": "lag1",
+      "rate": 50000000000,
+      "ssh_name": "lag 1",
+      "uid": "gw"
+    }
+  },
+  "channels_ssh_pattern": "#{/\\D+/.match(\"%CHANNEL%\")} #{/\\d+/.match(\"%CHANNEL%\")}",
+  "ip": "172.17.31.252",
+  "kind": "switch",
+  "linecards": [
+    {
+    },
+    {
+      "backplane_bps": 4800000000000,
+      "kavlan_pattern": "%LINECARD%/1/%PORT%",
+      "ports": [
+        {
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "1/1/1",
+          "uid": "lag1"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "1/1/2",
+          "uid": "lag1"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "server",
+          "snmp_name": "1/1/14",
+          "uid": "pve-1"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "1/1/15",
+          "uid": "pve-2"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "1/1/16",
+          "uid": "nfs-1"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "1/1/17",
+          "uid": "group-storage-1"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "snmp_name": "1/1/22",
+          "uid": "nessie-1"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "switch",
+          "rate": 10000000000,
+          "snmp_name": "1/1/44",
+          "trunk": false,
+          "uid": "imag-1b-F3-admin"
+        },
+        {
+          "snmp_name": "1/1/45",
+          "uid": "chartreuse1-1"
+        },
+        {
+          "snmp_name": "1/1/46",
+          "uid": "chartreuse1-2"
+        },
+        {
+          "snmp_name": "1/1/47",
+          "uid": "chartreuse1-3"
+        },
+        {
+          "snmp_name": "1/1/48",
+          "uid": "chartreuse1-4"
+        },
+        {
+          "kind": "switch",
+          "snmp_name": "1/1/49",
+          "uid": "imag-1b-F1-prod-01"
+        },
+        {
+          "kind": "switch",
+          "snmp_name": "1/1/50",
+          "uid": "imag-1b-F2-prod-01"
+        }
+      ],
+      "rate": 25000000000,
+      "snmp_pattern": "%LINECARD%/1/%PORT%"
+    }
+  ],
+  "managed_by_us": true,
+  "model": "Aruba JL719C 8360-48Y6C v2 Switch",
+  "serial": "SG46L5L09G",
+  "site": "grenoble",
+  "snmp_community": "public",
+  "type": "network_equipment",
+  "uid": "imag-1b-F3-prod-01",
+  "warranty": "2048-05"
+}
