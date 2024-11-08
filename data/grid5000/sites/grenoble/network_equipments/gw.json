@@ -30,8 +30,8 @@
       "uid": "orichard-nixbuild"
     },
     "port-channel50": {
-      "kind": "channel",
-      "port": "port-channel50",
+      "kind": "switch",
+      "port": "lag1",
       "rate": 50000000000,
       "uid": "imag-1b-F3-prod-01"
     }
@@ -372,11 +372,13 @@
         },
         {
           "kind": "channel",
+          "rate": 25000000000,
           "snmp_name": "ethernet1/1/67:1",
           "uid": "port-channel50"
         },
         {
           "kind": "channel",
+          "rate": 25000000000,
           "snmp_name": "ethernet1/1/68:1",
           "uid": "port-channel50"
         },

@@ -171,9 +171,11 @@ gw:
         67:
           uid: port-channel50
           kind: channel
+          rate: 25_000_000_000
         68:
           uid: port-channel50
           kind: channel
+          rate: 25_000_000_000
         75:
           uid: port-channel30
           kind: channel
@@ -287,8 +289,8 @@ gw:
       rate: 20000000000
     port-channel50:
       uid: imag-1b-F3-prod-01
-      port: port-channel50
-      kind: channel
+      port: lag1
+      kind: switch
       rate: 50_000_000_000
     port-channel30:
       uid: orichard-nixbuild

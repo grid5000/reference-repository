@@ -330,6 +330,7 @@ def generate_dot(netnodes, links, site)
     "2x10G" => 0.8,
     "4x10G" => 1.5,
     "25G" => 1,
+    "2x25G" => 1.5,
     "40G" => 1.5,
     "2x40G" => 2.0,
     "100G" => 2.5,

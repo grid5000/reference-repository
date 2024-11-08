@@ -2,7 +2,7 @@
   "backplane_bps": 4800000000000,
   "channels": {
     "lag1": {
-      "kind": "channel",
+      "kind": "router",
       "port": "lag1",
       "rate": 50000000000,
       "ssh_name": "lag 1",
@@ -18,6 +18,7 @@
     {
       "backplane_bps": 4800000000000,
       "kavlan_pattern": "%LINECARD%/1/%PORT%",
+      "kind": "node",
       "ports": [
         {
         },
@@ -82,6 +83,8 @@
         {
         },
         {
+          "kind": "node",
+          "port": "eth0",
           "snmp_name": "1/1/22",
           "uid": "nessie-1"
         },
@@ -135,18 +138,26 @@
           "uid": "imag-1b-F3-admin"
         },
         {
+          "kind": "node",
+          "port": "eth0",
           "snmp_name": "1/1/45",
           "uid": "chartreuse1-1"
         },
         {
+          "kind": "node",
+          "port": "eth0",
           "snmp_name": "1/1/46",
           "uid": "chartreuse1-2"
         },
         {
+          "kind": "node",
+          "port": "eth0",
           "snmp_name": "1/1/47",
           "uid": "chartreuse1-3"
         },
         {
+          "kind": "node",
+          "port": "eth0",
           "snmp_name": "1/1/48",
           "uid": "chartreuse1-4"
         },

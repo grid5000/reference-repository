@@ -1,0 +1,48 @@
+---
+model: HPE ProLiant DL385 Gen10+ v2
+created_at: 2024-11-08
+kavlan: false
+boot_type: uefi
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  nessie-1:
+    chassis:
+      manufactured_at: 2024-08-19
+      warranty_end: 2031-08-19
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Golden Cove
+      clock_speed: 3_400_000_000
+      version: nil # TODO fix this broken version
+    network_adapters:
+      bmc:
+        enabled: true
+        mountable: false
+        mounted: false
+        interface: Ethernet
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      pci-0000:36:00.0-scsi-0:2:1:0:
+        id: disk0
+        interface: NVME
+      pci-0000:36:00.0-scsi-0:2:2:0:
+        id: disk1
+        interface: SATA
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    nodeset: nessie
