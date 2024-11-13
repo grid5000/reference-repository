@@ -74,11 +74,6 @@ def generate_reference_api
     site["type"] = "site"
     site["uid"]  = site_uid
 
-    #Move special entry "kavlan_topo"
-    if site["kavlan_topo"]
-      site["kavlans"]["topo"] = site.delete("kavlan_topo")
-    end
-
     site_path = Pathname.new(refapi_path).join("sites", site_uid)
     site_path.mkpath()
 
