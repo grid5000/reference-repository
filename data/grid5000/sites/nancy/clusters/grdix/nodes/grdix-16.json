@@ -1,0 +1,249 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 256,
+    "nb_procs": 2,
+    "nb_threads": 512,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "09/05/2024",
+    "vendor": "HPE",
+    "version": 1.7
+  },
+  "bmc_version": "1.63",
+  "chassis": {
+    "manufactured_at": "2024-09-02",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL365 Gen11",
+    "serial": "CZJD1J00H8",
+    "warranty_end": "2027-09-08"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 1099511627776
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 9",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 9",
+      "size": 68719476736,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "26.41.1000 (MT_0000000551)",
+      "interface": "Ethernet",
+      "ip": "172.16.65.26",
+      "ip6": "2001:660:4406:500:2::1a",
+      "kavlan": false,
+      "mac": "5c:25:73:4a:1c:2c",
+      "management": false,
+      "model": "MT2894 Family [ConnectX-6 Lx]",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "grdix-16.nancy.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": true,
+      "sriov_totalvfs": 8,
+      "switch": "sgrdix",
+      "switch_port": "1/1/26",
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "eth1",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "26.41.1000 (MT_0000000551)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "5c:25:73:4a:1c:2d",
+      "management": false,
+      "model": "MT2894 Family [ConnectX-6 Lx]",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens22f1np1",
+      "sriov": true,
+      "sriov_totalvfs": 8,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ibs1",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "20.41.1000",
+      "guid": "0x88e9a4ffffd23b9a",
+      "interface": "InfiniBand",
+      "ip": "172.18.77.16",
+      "kavlan": false,
+      "mac": "88:e9:a4:ff:ff:d2:3b:9a",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ibs1",
+      "netmask": "255.255.240.0",
+      "network_address": "grdix-16-ibs1.nancy.grid5000.fr",
+      "rate": 200000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.65.26",
+      "kavlan": false,
+      "mac": "7c:a6:2a:4e:c7:82",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "grdix-16-bmc.nancy.grid5000.fr"
+    }
+  ],
+  "nodeset": "grdix",
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 108000000000,
+    "node_flops": 27648000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 16777216,
+    "clock_speed": 2250000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Zen 4c",
+    "microcode": "0xaa00215",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 9754 128-Core Processor",
+    "vendor": "AMD",
+    "version": 9754
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2024101411",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.37305430581134580025384100000002",
+      "by_path": "/dev/disk/by-path/pci-0000:e4:00.0-nvme-1",
+      "id": "disk0",
+      "interface": "NVME",
+      "model": "MO001600KYDMU",
+      "size": 1600321314816,
+      "storage": "SSD",
+      "vendor": "Samsung"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "amd-v"
+  },
+  "type": "node",
+  "uid": "grdix-16"
+}

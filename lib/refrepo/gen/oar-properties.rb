@@ -384,7 +384,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
 
     # INFINIBAND
     ni_mountable = node['network_adapters'].select do |na|
-      /^ib[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'InfiniBand' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
+      /^ib[s]?[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'InfiniBand' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
     end
     ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
     # https://en.wikipedia.org/wiki/InfiniBand
@@ -401,7 +401,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
 
     # OMNIPATH
     ni_mountable = node['network_adapters'].select do |na|
-      /^ib[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'Omni-Path' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
+      /^ib[s]?[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'Omni-Path' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
     end
     ni_fastest = ni_mountable.max_by { |na| na['rate'] || 0 }
 

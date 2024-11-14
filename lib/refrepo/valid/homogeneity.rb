@@ -28,6 +28,7 @@ def global_ignore_keys
     ~network_adapters.ib1.mac
     ~network_adapters.ib2.mac
     ~network_adapters.ib3.mac
+    ~network_adapters.ibs1.mac
 
     ~pdu
     ~pdu.port
@@ -96,7 +97,8 @@ eos
     'ib1',
     'ib2',
     'ib3',
-    'ib0.8100'
+    'ib0.8100',
+    'ibs1'
   ]
 
   ib_interfaces.each { |ib_if|
