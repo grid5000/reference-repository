@@ -1,0 +1,223 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 48,
+    "nb_procs": 2,
+    "nb_threads": 96,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "10/11/2024",
+    "vendor": "HPE",
+    "version": 2.14
+  },
+  "bmc_version": "1.64",
+  "chassis": {
+    "manufactured_at": "2024-08-07",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL385 Gen11",
+    "serial": "CZ24310FCF",
+    "warranty_end": "2027-08-13"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia0",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.02",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 549755813888
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 9",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 9",
+      "size": 68719476736,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "bnxt_en",
+      "enabled": true,
+      "firmware_version": "230.0.168.0/pkg 230.1.123.0",
+      "interface": "Ethernet",
+      "ip": "172.16.65.5",
+      "ip6": "2001:660:4406:500:2::5",
+      "kavlan": false,
+      "mac": "d4:04:e6:07:cd:fc",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": true,
+      "name": "ens22f0np0",
+      "network_address": "gres-5.nancy.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "sgrdix",
+      "switch_port": "1/1/5",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "230.0.168.0/pkg 230.1.123.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "d4:04:e6:07:cd:fd",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens22f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.65.5",
+      "kavlan": false,
+      "mac": "7c:a6:2a:4e:5e:dc",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "gres-5-bmc.nancy.grid5000.fr"
+    }
+  ],
+  "nodeset": "gres",
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 139200000000,
+    "node_flops": 6681600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 33554432,
+    "clock_speed": 2900000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Zen 4",
+    "microcode": "0xa101148",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 9254 24-Core Processor",
+    "vendor": "AMD",
+    "version": 9254
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2024101411",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.37305830583018910025385400000002",
+      "by_path": "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1",
+      "id": "disk0",
+      "interface": "NVME",
+      "model": "MO006400KYDND",
+      "size": 6401252745216,
+      "storage": "SSD",
+      "vendor": "Samsung"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "amd-v"
+  },
+  "type": "node",
+  "uid": "gres-5"
+}

@@ -128,6 +128,18 @@ class GPURef
         'fp-64' => 1371000000000,
       },
     },
+    'L40S' => {
+      'cores'              => 18176,
+      'compute_capability' => '8.9',
+      'short_name'         => 'Tesla L40S',
+      'alias'              => 'l40s',
+      'microarchitecture'  => 'Ada Lovelace',
+      'performance'        => {
+        'fp-16' => 91610000000000,
+        'fp-32' => 91610000000000,
+        'fp-64' => 1431000000000,
+      },
+    },
     'Tesla M40' => {
       'cores'              => 3072,
       'compute_capability' => '5.2',
