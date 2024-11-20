@@ -9,6 +9,9 @@ queues:
   - testing
 nodes:
   gres-[1-7]:
+    gpu_devices:
+      nvidia1:
+        cpu_affinity_override: 0
     chassis:
       manufactured_at: 2024-08-07
       warranty_end: 2027-08-13
