@@ -369,6 +369,8 @@ class G5KHardwareGenerator < WikiGenerator
       'Zen' => '2017',
       'Zen 2' => '2019',
       'Zen 3' => '2020',
+      'Zen 4' => '2022',
+      'Zen 4c' => '2022',
       'Cascade Lake-SP' => '2019',
       'Vulcan' => '2018',
       #'Ice Lake' => '2019', # Note there are no client Ice Lake CPU in Grid5K
@@ -376,6 +378,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Carmel' => '2018',
       'Vega20' => '2018',
       'Ampere' => '2020',
+      'Ada Lovelace' => '2022',
       'Turing' => '2018',
       'Maxwell' => '2014',
       'Kepler' => '2012',
