@@ -1,0 +1,65 @@
+---
+imag-1b-F3-prod-01:
+  model: Aruba JL719C 8360-48Y6C v2 Switch
+  warranty: 2048-05
+  serial: SG46L5L09G
+  kind: switch
+  managed_by_us: true
+  site: grenoble
+  snmp_community: public
+  ip: 172.17.31.252
+  backplane_bps: 4_800_000_000_000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 25_000_000_000
+      backplane_bps: 4_800_000_000_000
+      kind: node
+      ports:
+        1:
+          uid: lag1
+          kind: channel
+        2:
+          uid: lag1
+          kind: channel
+        14:
+          uid: pve-1
+          kind: server
+        15:
+          uid: pve-2
+          kind: server
+        16:
+          uid: nfs-1
+          kind: server
+        17:
+          uid: group-storage-1
+          kind: server
+        22:
+          uid: nessie-1
+        44:
+          uid: imag-1b-F3-admin
+          kind: switch
+          rate: 10_000_000_000
+          trunk: false
+        45:
+          uid: chartreuse1-1
+        46:
+          uid: chartreuse1-2
+        47:
+          uid: chartreuse1-3
+        48:
+          uid: chartreuse1-4
+        49:
+          uid: imag-1b-F1-prod-01
+          kind: switch
+        50:
+          uid: imag-1b-F2-prod-01
+          kind: switch
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
+  channels:
+    lag1:
+      kind: router
+      rate: 50_000_000_000
+      uid: gw
+      port: lag1

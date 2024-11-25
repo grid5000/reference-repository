@@ -1,0 +1,169 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 64,
+    "nb_procs": 2,
+    "nb_threads": 128,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "06/19/2024",
+    "vendor": "HPE",
+    "version": 2.22
+  },
+  "bmc_version": "1.58",
+  "chassis": {
+    "manufactured_at": "2024-08-19",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL380 Gen11",
+    "serial": "CZ243200MS",
+    "warranty_end": "2031-08-19"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 68719476736
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "bnxt_en",
+      "enabled": true,
+      "firmware_version": "228.0.116.0/pkg 228.1.111.0",
+      "interface": "Ethernet",
+      "ip": "172.16.25.1",
+      "ip6": "2001:660:4406:100:a::1",
+      "kavlan": false,
+      "mac": "d4:04:e6:06:7d:66",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": true,
+      "name": "eth0",
+      "network_address": "nessie-1.grenoble.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "imag-1b-F3-prod-01",
+      "switch_port": "1/1/22",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "228.0.116.0/pkg 228.1.111.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "d4:04:e6:06:7d:67",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "eth1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.25.1",
+      "kavlan": false,
+      "mac": "5c:ed:8c:f5:1c:c8",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "nessie-1-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "nodeset": "nessie",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 108800000000,
+    "node_flops": 6963200000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 2097152,
+    "cache_l3": 62914560,
+    "clock_speed": 3400000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Golden Cove",
+    "microcode": "0x2b0005d2",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6430",
+    "vendor": "Intel",
+    "version": "nil"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2024112508",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0000:36:00.0-scsi-0:2:1:0",
+      "firmware_version": "HPK5",
+      "id": "disk0",
+      "interface": "NVME",
+      "model": "VO001920KYDMT",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "HP"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5ace42e3a5001512",
+      "by_path": "/dev/disk/by-path/pci-0000:36:00.0-scsi-0:2:2:0",
+      "firmware_version": "HPG3",
+      "id": "disk1",
+      "interface": "SATA",
+      "model": "VK000480GZCNE",
+      "size": 480103981056,
+      "storage": "SSD",
+      "vendor": "HP"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "nessie-1"
+}
