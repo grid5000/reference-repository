@@ -138,3 +138,9 @@ valid-homogeneity:
   extends: .template-refrepo
   script:
     - bundle exec rake valid:homogeneity
+
+valid-network:
+  stage: check
+  extends: .template-refrepo
+  script:
+    - bundle exec rake valid:network
