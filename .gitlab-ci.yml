@@ -87,3 +87,10 @@ valid-homogeneity:
   extends: .template-refrepo
   script:
     - bundle exec rake valid:homogeneity
+
+valid-network:
+  stage: checks
+  allow_failure: true # FIXME remove
+  extends: .template-refrepo
+  script:
+    - bundle exec rake valid:network
