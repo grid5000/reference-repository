@@ -1,0 +1,176 @@
+---
+metrics:
+
+  - name: bmc_psu_power_watt
+    labels: {"psu": "1"}
+    description: Power consumption of Psu 1 reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 51 #PS 1 Input
+
+  - name: bmc_psu_power_watt
+    labels: {"psu": "2"}
+    description: Power consumption of Psu 2 reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 53 #PS 2 Input
+
+  - name: bmc_node_power_watt
+    description: Power consumption reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 54 #Power Meter
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps1output"}
+    description: Power consumption of PS 1 Output reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 62 #PS 1 Output
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_out_01"}
+    description: Voltage of PS_Volt_Out_01 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 63 #PS_Volt_Out_01
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_in_01"}
+    description: Voltage of PS_Volt_In_01 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 64 #PS_Volt_In_01
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_out_01"}
+    description: Current of PS_Curr_Out_01 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 65 #PS_Curr_Out_01
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_in_01"}
+    description: Current of PS_Curr_In_01 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 66 #PS_Curr_In_01
+
+  - name: bmc_other_power_watt
+    labels: {"id": "ps2output"}
+    description: Power consumption of PS 2 Output reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 67 #PS 2 Output
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_out_02"}
+    description: Voltage of PS_Volt_Out_02 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 68 #PS_Volt_Out_02
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "ps_volt_in_02"}
+    description: Voltage of PS_Volt_In_02 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 69 #PS_Volt_In_02
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_out_02"}
+    description: Current of PS_Curr_Out_02 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 70 #PS_Curr_Out_02
+
+  - name: bmc_other_current_amp
+    labels: {"id": "ps_curr_in_02"}
+    description: Current of PS_Curr_In_02 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 71 #PS_Curr_In_02
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "30.1-ocp2-i/om"}
+    description: Temperature of 30.1-OCP 2-I/O m reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 72 #30.1-OCP 2-I/O m
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "32.1-pci1-i/om"}
+    description: Temperature of 32.1-PCI 1-I/O m reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 73 #32.1-PCI 1-I/O m
+
+  - name: prom_default_metrics
+    description: Default subset of metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
+      id:
+        - node_boot_time_seconds
+        - node_cpu_scaling_frequency_hertz
+        - node_cpu_seconds_total
+        - node_filesystem_free_bytes
+        - node_filesystem_size_bytes
+        - node_load1
+        - node_load15
+        - node_load5
+        - node_memory_Buffers_bytes
+        - node_memory_Cached_bytes
+        - node_memory_MemAvailable_bytes
+        - node_memory_MemFree_bytes
+        - node_memory_MemTotal_bytes
+        - node_memory_Shmem_bytes
+        - node_memory_SwapFree_bytes
+        - node_memory_SwapTotal_bytes
+        - node_network_receive_bytes_total
+        - node_network_receive_packets_total
+        - node_network_transmit_bytes_total
+        - node_network_transmit_packets_total
+        - node_procs_blocked
+        - node_procs_running
+        - kwollect_custom
+
+  - name: prom_all_metrics
+    description: All metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
