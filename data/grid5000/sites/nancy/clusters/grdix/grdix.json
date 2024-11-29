@@ -5,9 +5,333 @@
   "kavlan": true,
   "manufactured_at": "2024-09-02",
   "metrics": [
-
+    {
+      "description": "Power consumption of Psu 1 reported by BMC, in watt",
+      "labels": {
+        "psu": "1"
+      },
+      "name": "bmc_psu_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 51,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of Psu 2 reported by BMC, in watt",
+      "labels": {
+        "psu": "2"
+      },
+      "name": "bmc_psu_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 53,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption reported by BMC, in watt",
+      "name": "bmc_node_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 54,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PS 1 Output reported by BMC, in watt",
+      "labels": {
+        "id": "ps1output"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 62,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of PS_Volt_Out_01 reported by BMC, in volt",
+      "labels": {
+        "id": "ps_volt_out_01"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 63,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of PS_Volt_In_01 reported by BMC, in volt",
+      "labels": {
+        "id": "ps_volt_in_01"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 64,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of PS_Curr_Out_01 reported by BMC, in amp",
+      "labels": {
+        "id": "ps_curr_out_01"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 65,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of PS_Curr_In_01 reported by BMC, in amp",
+      "labels": {
+        "id": "ps_curr_in_01"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 66,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PS 2 Output reported by BMC, in watt",
+      "labels": {
+        "id": "ps2output"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 67,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of PS_Volt_Out_02 reported by BMC, in volt",
+      "labels": {
+        "id": "ps_volt_out_02"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 68,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of PS_Volt_In_02 reported by BMC, in volt",
+      "labels": {
+        "id": "ps_volt_in_02"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 69,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of PS_Curr_Out_02 reported by BMC, in amp",
+      "labels": {
+        "id": "ps_curr_out_02"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 70,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of PS_Curr_In_02 reported by BMC, in amp",
+      "labels": {
+        "id": "ps_curr_in_02"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 71,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of 30.1-OCP 2-I/O m reported by BMC, in celsius",
+      "labels": {
+        "id": "30.1-ocp2-i/om"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 72,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of 32.1-PCI 1-I/O m reported by BMC, in celsius",
+      "labels": {
+        "id": "32.1-pci1-i/om"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 73,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Default subset of metrics from Prometheus Node Exporter",
+      "name": "prom_default_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "id": [
+          "node_boot_time_seconds",
+          "node_cpu_scaling_frequency_hertz",
+          "node_cpu_seconds_total",
+          "node_filesystem_free_bytes",
+          "node_filesystem_size_bytes",
+          "node_load1",
+          "node_load15",
+          "node_load5",
+          "node_memory_Buffers_bytes",
+          "node_memory_Cached_bytes",
+          "node_memory_MemAvailable_bytes",
+          "node_memory_MemFree_bytes",
+          "node_memory_MemTotal_bytes",
+          "node_memory_Shmem_bytes",
+          "node_memory_SwapFree_bytes",
+          "node_memory_SwapTotal_bytes",
+          "node_network_receive_bytes_total",
+          "node_network_receive_packets_total",
+          "node_network_transmit_bytes_total",
+          "node_network_transmit_packets_total",
+          "node_procs_blocked",
+          "node_procs_running",
+          "kwollect_custom"
+        ],
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Node Exporter",
+      "name": "prom_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "Input byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_bytes_total",
+      "period": 5000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_bytes_total",
+      "period": 5000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input packet counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_total",
+      "period": 5000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output packet counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_total",
+      "period": 5000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_discard_total",
+      "period": 5000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_discard_total",
+      "period": 5000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_error_total",
+      "period": 5000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_error_total",
+      "period": 5000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    }
   ],
-  "model": "ProLiant DL385 Gen11",
+  "model": "ProLiant DL365 Gen11",
   "queues": [
     "admin",
     "testing"
