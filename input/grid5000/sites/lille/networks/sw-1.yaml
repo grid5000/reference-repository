@@ -75,4 +75,16 @@ sw-1:
           kind: switch
         48:
           uid: sw-chiclet-2
-          kind: router
+          kind: switch
+        49:
+          uid: lag2
+          kind: channel
+        50:
+          uid: lag2
+          kind: channel
+  channels:
+    lag2:
+      port: port-channel1
+      uid: sw-chiclet-3
+      kind: switch
+      rate: 200000000000
