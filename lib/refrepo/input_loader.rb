@@ -728,6 +728,9 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
   # FIXME: Find Jetson's FlopPerCycle
   when /Carmel/
     return 8
+  # FIXME: Find Grace Hopper FlopPerCycle
+  when /Grace/
+    return 8
   end
   raise "Error: Unknown CPU architecture for cluster #{cluster_uid}, cannot compute flops"
 end
