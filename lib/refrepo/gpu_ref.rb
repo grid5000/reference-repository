@@ -56,6 +56,18 @@ class GPURef
         'fp-64' => 5304000000000,
       },
     },
+    'Tesla V100-PCIE-16GB' => {
+      'cores'              => 5120,
+      'compute_capability' => '7.0',
+      'short_name'         => 'Tesla V100',
+      'alias'              => 'v100-pcie-16',
+      'microarchitecture'  => 'Volta',
+      'performance'        => {
+        'fp-16' => 28260000000000,
+        'fp-32' => 14130000000000,
+        'fp-64' => 7066000000000,
+      },
+    },
     'Tesla V100-PCIE-32GB' => {
       'cores'              => 5120,
       'compute_capability' => '7.0',
