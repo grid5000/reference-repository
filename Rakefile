@@ -295,6 +295,46 @@ task "gen:dell-product-data" do
   dell_product_data
 end
 
+namespace :add do
+  parameters = "SITE=grenoble CLUSTER=chartreuse1 FIRST_IPV4_PROD=172.16.26.18 NODES_NUMBER=4"
+  desc "Add new cluster -- parameters: #{parameters}"
+  task :cluster do
+    require 'refrepo/add/cluster'
+    options = {}
+    if ENV['CLUSTER']
+      options[:cluster] = ENV['CLUSTER']
+    else
+      puts "You must specify a cluster example CLUSTER=chartreuse1"
+      exit(1)
+    end
+    if ENV['SITE']
+      options[:site] = ENV['SITE']
+    else
+      puts "You must specify a site for example SITE=grenoble"
+      exit(1)
+    end
+    if ENV['FIRST_IPV4_PROD']
+      first_ipv4_prod = ENV['FIRST_IPV4_PROD']
+      options[:cluster_ipv4_digit3] = first_ipv4_prod.split('.')[2]
+      options[:cluster_ipv4_digit4] = first_ipv4_prod.split('.')[3]
+    else
+      puts "You must specify the PROD IPV4 of the first cluster node, for example FIRST_IPV4_PROD=172.16.26.1"
+      exit(1)
+    end
+    if ENV['NODES_NUMBER']
+      options[:nodes_number] = ENV['NODES_NUMBER']
+    else
+      puts "You must specify a number of nodes in your cluster, for example NODES_NUMBER=4"
+      exit(1)
+    end
+    if not G5K_SITES.include?(options[:site])
+      puts "Invalid site: #{options[:site]}"
+      exit(1)
+    end
+    add_new_cluster(options)
+  end
+end
+
 #Hack rake: call only the first task and consider the rest as arguments to this task
 currentTask = Rake.application.top_level_tasks.first
 taskNames = Rake.application.tasks().map { |task| task.name() }
