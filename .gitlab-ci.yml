@@ -68,6 +68,17 @@ generate-reference-api:
     - sh -c '[ "`git status -s`" = "" ]'
     - git diff --exit-code
 
+generate-access-history:
+  extends: .template-refrepo
+  stage: generate
+  script:
+    - export TZ=Europe/Paris
+    - bundle exec rake gen:accesses-history
+  artifacts:
+    paths:
+      - data/grid5000/accesses/accesses_mode_history.yaml
+    expire_in: 1 week
+
 deploy:
   stage: deploy
   tags:
