@@ -37,7 +37,7 @@ Dir["input/grid5000/sites/*/clusters/*/nodes/*.yaml"].each do |f|
   puts f
 
   ### TODO your changes go here
-  ccn = %w{ gros uvb econome parapluie paranoia gemini hercule}.include?(m[:cluster]) ? 'contiguous' : 'round-robin'
+  ccn = %w{ gros uvb econome parapluie gemini hercule}.include?(m[:cluster]) ? 'contiguous' : 'round-robin'
   node.values.first['architecture']['cpu_core_numbering'] = ccn
   node.values.first['architecture'] = node.values.first['architecture'].sort.to_h
 
