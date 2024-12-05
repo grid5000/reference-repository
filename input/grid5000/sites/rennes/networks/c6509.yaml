@@ -73,21 +73,6 @@ c6509:
         3:
           uid: bigdata-sw
           kind: switch
-    2:
-      kind: node
-      snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
-      kavlan_pattern: Gi%LINECARD%/%PORT%
-      rate: 1000000000
-      backplane_bps: 40000000000
-      model: WS-X6748-GE-TX
-      ports:
-        41: paranoia-1-eth2
-        42: paranoia-2-eth2
-        43: paranoia-3-eth2
-        44: paranoia-4-eth2
-        45: paranoia-5-eth2
-        47: paranoia-7-eth2
-        48: paranoia-8-eth2
     3:
       kind: node
       snmp_pattern: GigabitEthernet%LINECARD%/%PORT%
