@@ -85,8 +85,10 @@ pve-1:
   warranty: 2031-10-07
   serial: CZJD1N011C
   network_adapters:
+    default:
+      mac: d4:04:e6:af:8c:68
+      ip: 172.16.143.1
     bmc:
-      mounted: true
       ip: 172.17.143.1
       mac: 5C:ED:8C:F6:ED:E0
 
@@ -95,7 +97,9 @@ pve-2:
   warranty: 2031-10-07
   serial: CZJD1N011B
   network_adapters:
+    default:
+      mac: d4:04:e6:af:32:Oe
+      ip: 172.16.143.2
     bmc:
-      mounted: true
       ip: 172.17.143.2
       mac: 5C:ED:8C:F6:ED:94
