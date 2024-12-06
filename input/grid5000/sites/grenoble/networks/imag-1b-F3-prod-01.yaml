@@ -23,18 +23,14 @@ imag-1b-F3-prod-01:
         2:
           uid: lag1
           kind: channel
-        14:
-          uid: pve-1
-          kind: server
-        15:
-          uid: pve-2
-          kind: server
-        16:
-          uid: nfs-1
-          kind: server
-        17:
-          uid: group-storage-1
-          kind: server
+        5:
+          uid: chartreuse2-1
+        6:
+          uid: chartreuse2-3
+        7:
+          uid: chartreuse2-2
+        8:
+          uid: chartreuse2-4
         22:
           uid: nessie-1
         44:
@@ -43,18 +39,22 @@ imag-1b-F3-prod-01:
           rate: 10_000_000_000
           trunk: false
         45:
-          uid: chartreuse1-1
+          uid: pve-1
+          kind: server
         46:
-          uid: chartreuse1-2
+          uid: pve-2
+          kind: server
         47:
-          uid: chartreuse1-3
+          uid: srv-data
+          kind: server
         48:
-          uid: chartreuse1-4
+          uid: srv-data2
+          kind: server
         49:
-          uid: imag-1b-F1-prod-01
+          uid: imag-1b-F2-prod-01
           kind: switch
         50:
-          uid: imag-1b-F2-prod-01
+          uid: imag-1b-F1-prod-01
           kind: switch
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
