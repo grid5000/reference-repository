@@ -4,7 +4,6 @@
   NODES_NUMBER = 8
   SITE_IPV4_INDEX = 208
   # MAC addresses declaration
-  # TODO: Change MAC addresses.
   MAC_ETH0_LIST = %w(
     e8:eb:d3:fd:ce:b4
     e8:eb:d3:fd:cb:f4
@@ -93,8 +92,14 @@ nodes:
         mac: <%= MAC_ETH0_LIST[i - 1] %>
         ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
     storage_devices:
-      disk0:
+      pci-0000:00.17.0-ata-1.0:
         storage: SSD # Common value, will be replaced by g5k-checks
         model: unknown # fake value,  
         size: 8 # Fake value, will be replaced by g5k-checks
+        id: disk0
+      pci-0000:00.17.0-ata-2.0:
+        storage: SSD # Common value, will be replaced by g5k-checks
+        model: unknown # fake value,  
+        size: 8 # Fake value, will be replaced by g5k-checks
+        id: disk1
 <% } %>
