@@ -156,22 +156,6 @@ parasilo-sw-1:
           uid: parasilo-24-eth1
         48:
           uid: parasilo-24
-        49:
-          uid: port-channel3
-          rate: 40000000000
-          kind: channel
-        50:
-          uid: port-channel3
-          rate: 40000000000
-          kind: channel
-        51:
-          uid: port-channel2
-          rate: 40000000000
-          kind: channel
-        52:
-          uid: port-channel2
-          rate: 40000000000
-          kind: channel
     2:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
@@ -198,18 +182,3 @@ parasilo-sw-1:
           uid: gw
           kind: router
           port: 1/1/45
-        23:
-          uid: c6509
-          kind: switch
-          port: TenGigabitEthernet1/2
-  channels:
-    port-channel3:
-      kind: switch
-      rate: 80000000000
-      uid: paravance-sw-2
-      port: port-channel4
-    port-channel2:
-      kind: switch
-      rate: 80000000000
-      uid: paravance-sw-1
-      port: port-channel1
