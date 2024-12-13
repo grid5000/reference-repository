@@ -1,19 +1,5 @@
 {
   "backplane_bps": 1440000000000,
-  "channels": {
-    "port-channel2": {
-      "kind": "switch",
-      "port": "port-channel1",
-      "rate": 80000000000,
-      "uid": "paravance-sw-1"
-    },
-    "port-channel3": {
-      "kind": "switch",
-      "port": "port-channel4",
-      "rate": 80000000000,
-      "uid": "paravance-sw-2"
-    }
-  },
   "ip": "172.17.111.204",
   "kind": "switch",
   "linecards": [
@@ -304,30 +290,6 @@
           "port": "eth0",
           "snmp_name": "Ethernet1/48",
           "uid": "parasilo-24"
-        },
-        {
-          "kind": "channel",
-          "rate": 40000000000,
-          "snmp_name": "Ethernet1/49",
-          "uid": "port-channel3"
-        },
-        {
-          "kind": "channel",
-          "rate": 40000000000,
-          "snmp_name": "Ethernet1/50",
-          "uid": "port-channel3"
-        },
-        {
-          "kind": "channel",
-          "rate": 40000000000,
-          "snmp_name": "Ethernet1/51",
-          "uid": "port-channel2"
-        },
-        {
-          "kind": "channel",
-          "rate": 40000000000,
-          "snmp_name": "Ethernet1/52",
-          "uid": "port-channel2"
         }
       ],
       "rate": 10000000000,
@@ -416,14 +378,6 @@
           "port": "1/1/45",
           "snmp_name": "Ethernet2/21",
           "uid": "gw"
-        },
-        {
-        },
-        {
-          "kind": "switch",
-          "port": "TenGigabitEthernet1/2",
-          "snmp_name": "Ethernet2/23",
-          "uid": "c6509"
         }
       ],
       "rate": 10000000000,
