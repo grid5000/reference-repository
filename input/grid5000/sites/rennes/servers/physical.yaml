@@ -1,16 +1,4 @@
 ---
-srv-bigdata:
-  kind: physical
-  alias:
-    - storage
-  warranty: 2018-10
-  serial: 6V9FGZ1
-  network_adapters:
-    default:
-      ip: 172.16.111.7
-    bmc:
-      ip: 172.17.111.7
-
 pve-1:
   kind: physical
   alias:
@@ -102,25 +90,6 @@ srv-data3:
     name: storage3
     size: 115000000000000
     rate: 50000000000
-
-md3260-bg-1:
-  kind: storage
-  network_adapters:
-    default:
-      ip: 172.17.111.221
-
-md3260-bg-2:
-  kind: storage
-  network_adapters:
-    default:
-      ip: 172.17.111.222
-
-bigdata-disc:
-  kind: storage
-  alias: []
-  warranty: 2018-10
-  serial: D12LGZ1
-  network_adapters: {}
 
 ceph-devel-1:
   kind: physical
