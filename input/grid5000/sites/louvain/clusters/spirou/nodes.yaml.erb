@@ -33,8 +33,8 @@ nodes:
 <% (1..NODES_NUMBER).each { |i| %>
  <%= CLUSTER_NAME %>-<%= i %>:
     architecture:
-      nb_procs: 4 
-      nb_cores: 96 
+      nb_procs: 2 
+      nb_cores: 48 
       nb_threads: 96
       platform_type: x86_64
       cpu_core_numbering: contiguous 
@@ -96,10 +96,11 @@ nodes:
         storage: SSD # Common value, will be replaced by g5k-checks
         model: unknown # fake value,  
         size: 8 # Fake value, will be replaced by g5k-checks
-        id: disk0
+        storage: SSD
+        model: SSDSC2KG480GZL
+        firmware_version: C71VRL21
       pci-0000:00.17.0-ata-2.0:
         storage: SSD # Common value, will be replaced by g5k-checks
         model: unknown # fake value,  
         size: 8 # Fake value, will be replaced by g5k-checks
-        id: disk1
 <% } %>
