@@ -33,9 +33,11 @@ nodes:
       pci-0000:00.17.0-ata-1.0:  # This field will have to be renamed later.
         id: disk0
         interface: SATA
+        by_path: "/dev/disk/by-path/pci-0000:00:17.0-ata-1"
       pci-0000:00.17.0-ata-2.0:
         id: disk1
         interface: SATA
+        by_path: "/dev/disk/by-path/pci-0000:00:17.0-ata-2"
 
     software:
       standard-environment: debian11-x64-std
