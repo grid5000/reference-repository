@@ -102,10 +102,7 @@ class StatusGenerator < WikiGenerator
     data += "[http://pasillo.renater.fr/weathermap/weathermap_g5k.html Grid'5000 Weathermap]  (courtesy of Renater)\n"
     data += MW::LINE_FEED
     data += "Shows the actual state of the opticals links between the Grid'5000 10Gb-ready sites. A link painted in black on the weathermap means that you won't be able to access this site nodes from the Grid'5000 internal network.\n"
-    data += MW::LINE_FEED
-    data += "== Sites network traffic ==\n"
-    data += MW::LINE_FEED
-    data + "A dashboard combining links and real-time data is available on the [https://intranet.grid5000.fr/net/Lille/ Grid'5000 Backbone Network Monitoring] page.\n"
+    data
   end
 
   def generate_node_monitoring
