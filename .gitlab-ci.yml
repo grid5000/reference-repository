@@ -37,6 +37,7 @@ validate-data:
   script:
     - bundle exec rake valid:schema
     - bundle exec rake valid:duplicates
+    - bundle exec rake valid:required-unwanted-files
 
 wikigen:
   extends: .template-refrepo
