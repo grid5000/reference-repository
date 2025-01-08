@@ -68,6 +68,16 @@ namespace :valid do
     exit(ret)
   end
 
+  desc "Check for required and unwanted files in input/"
+  task "required-unwanted-files" do
+    require 'refrepo/valid/input/required_unwanted_files'
+    options = {}
+    options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
+    options[:clusters] = ( ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [] )
+    ret = yaml_input_required_unwanted_files(options)
+    exit(ret)
+  end
+
   desc "Check OAR properties -- parameters: [SITE={grenoble,...}] [CLUSTER={yeti,...}] [VERBOSE=1]"
   task "oar-properties" do
     require 'refrepo/valid/oar-properties'
