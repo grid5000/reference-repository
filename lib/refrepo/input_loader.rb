@@ -60,14 +60,14 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # add switch and port to nodes
   add_switch_port(global_hash)
 
+  # populate each node with its IPv4 addresses
+  add_ipv4(global_hash)
+
   # add some ipv6 informations in sites
   add_site_ipv6_infos(global_hash)
 
   # populate each node with its IPv6
   add_ipv6(global_hash)
-
-  # populate each node with its IPv4 addresses
-  add_ipv4(global_hash)
 
   # populate each node with its kavlan IPs
   add_kavlan_ips(global_hash)
