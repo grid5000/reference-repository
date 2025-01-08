@@ -28,15 +28,6 @@ nodes:
         enabled: true
         mountable: false
         mounted: false
-      eth0:
-        enabled: true
-        mountable: true
-        mounted: true
-        bridged: true
-      eth1:
-        enabled: true
-        mountable: true
-        mounted: false
     storage_devices:
       pci-0000:18:00.0-scsi-0:0:0:0:
         interface: SATA
@@ -62,3 +53,36 @@ nodes:
         id: disk5
         reservation: true
     nodeset: chifflot
+  chifflot-[1-2]:
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        bridged: true
+      eth1:
+        enabled: true
+        mountable: true
+        mounted: false
+  chifflot-[3-4]:
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        bridged: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+  chifflot-[5-8]:
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        bridged: true
+      eth1:
+        enabled: true
+        mountable: true
+        mounted: false
