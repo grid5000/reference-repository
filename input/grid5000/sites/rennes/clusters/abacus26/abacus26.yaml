@@ -29,10 +29,9 @@ nodes:
         mountable: true
         mounted: true
     storage_devices:
-      disk0: # This field will have to be renamed later.
-        id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:e1:00.0-nvme-1"
+      pci-0000:e1:00.0-nvme-1:
+        id: disk0 
+        interface: NVME
     software:
       standard-environment: debian11-x64-std # TODO: check that architecture is OK
     management_tools:
