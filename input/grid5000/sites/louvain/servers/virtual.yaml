@@ -77,12 +77,17 @@ api-proxy:
 
 oar:
   kind: virtual
+  alias:
+  - oar-server
+  - oardb
   network_adapters:
     default:
       ip: 172.16.223.116
 
 kavlan:
   kind: virtual
+  alias:
+  - kavlan-dhcp
   network_adapters:
     default:
       ip: 172.16.223.117
