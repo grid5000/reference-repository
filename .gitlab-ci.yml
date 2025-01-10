@@ -4,7 +4,7 @@ stages:
   - lint
   - check
   - generate-access-history
-  - deploy
+  - resources-explorer
 
 include:
   - project: 'grid5000/grid5000-gitlab-templates'
@@ -86,7 +86,7 @@ deploy-to-api-servers:
     - /srv/ci-runner-scripts/bin/update-api-servers
 
 rebuild_resources_explorer:
-  stage: deploy
+  stage: resources-explorer
   # NOTE: this job triggers a rebuild of resources explorer which will be
   # automatically deployed to production if it succeeds, therefore it is only
   # ran on the main branch.
@@ -100,7 +100,7 @@ rebuild_resources_explorer:
     strategy: depend
 
 preview_resources_explorer:
-  stage: deploy
+  stage: resources-explorer
   # NOTE: this job triggers a rebuild of resources explorer which will be
   # automatically deployed to a specific environment.
   # Resources Explorer build environments are available here:
