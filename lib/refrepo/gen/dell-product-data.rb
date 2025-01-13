@@ -18,11 +18,7 @@ def dell_product_data
             q.headers["Authorization"] = "Bearer #{token}"
         end
         JSON.parse(response.body).each do |product|
-            begin
-                set_product_data(data["sites"], product)    
-            rescue
-                p "#{product["serviceTag"]} has not been found"
-            end
+            set_product_data(data["sites"], product)    
         end
     }
     
@@ -86,11 +82,18 @@ def get_api_token
 end
 
 def set_product_data(data, product)
+    
     data.each do |_s, s_hash| 
         s_hash['clusters'].each do |_c, c_hash| 
             c_hash['nodes'].each do |_n, info|
                 if info["chassis"]["serial"] == product["serviceTag"]
-                    info["chassis"]["manufactured_at"] = DateTime.strptime(product["shipDate"], '%Y-%m-%d').to_date
+                    # uvb cluster is not available on Dell API anymore 
+                    # https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=16611
+                    if product['serviceTag'] == '957XY4J'
+                        product["shipDate"] = "2011-01-04T00:00:00Z"
+                        product["entitlements"][0]= {'endDate' => '2014-01-04T00:00:00Z'}
+                    end 
+                    info["chassis"]["manufactured_at"] = DateTime.strptime(product["shipDate"] , '%Y-%m-%d').to_date
                     info["chassis"]["warranty_end"] = DateTime.strptime(product["entitlements"].map{|e| e["endDate"] }.max, '%Y-%m-%d').to_date
                     info["chassis"].delete("serial")
                 end
