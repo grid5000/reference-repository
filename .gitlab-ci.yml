@@ -1,10 +1,10 @@
 ---
 stages:
+  - deploy-to-api-servers
   - lint
-  - validate
-  - generate
+  - check
+  - generate-access-history
   - deploy
-  - checks
 
 include:
   - project: 'grid5000/grid5000-gitlab-templates'
@@ -31,16 +31,17 @@ include:
     - wget --no-check-certificate -q https://www.grid5000.fr/certs/ca2019.grid5000.fr.crt -O /usr/local/share/ca-certificates/ca2019.grid5000.fr.crt
     - /usr/sbin/update-ca-certificates
 
-validate-data:
+validate-input-data:
   extends: .template-refrepo
-  stage: validate
+  stage: check
   script:
     - bundle exec rake valid:schema
     - bundle exec rake valid:duplicates
+    - bundle exec rake valid:required-unwanted-files
 
 wikigen:
   extends: .template-refrepo
-  stage: checks
+  stage: check
   allow_failure: true
   parallel:
     matrix:
@@ -57,9 +58,9 @@ wikigen:
     refs:
       - master
 
-generate-reference-api:
+check-no-changes-in-data:
   extends: .template-refrepo
-  stage: generate
+  stage: check
   script:
     - export TZ=Europe/Paris
     - bundle exec rake reference-api
@@ -70,7 +71,7 @@ generate-reference-api:
 
 generate-access-history:
   extends: .template-refrepo
-  stage: generate
+  stage: generate-access-history
   script:
     - export TZ=Europe/Paris
     - bundle exec rake gen:accesses-history
@@ -79,22 +80,36 @@ generate-access-history:
       - data/grid5000/accesses/accesses_mode_history.yaml
     expire_in: 1 week
 
-deploy:
-  stage: deploy
+deploy-to-api-servers:
+  stage: deploy-to-api-servers
   tags:
     - grid5000-shell
   script:
     - /srv/ci-runner-scripts/bin/update-api-servers
 
+rebuild_resources_explorer:
+  stage: deploy
+  # NOTE: this job triggers a rebuild of resources explorer which will be
+  # automatically deployed to production if it succeeds, therefore it is only
+  # ran on the main branch.
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  trigger:
+    project: grid5000/resources-explorer
+    # This mirrors the status of RE's pipeline into our own.
+    # We may want to revisit this if we want to show a "green" job as soon
+    # as the pipeline is triggered, regardless of its status.
+    strategy: depend
+
 rspec:
-  stage: checks  # we use 'checks' here to avoid blocking on this when updating the ref-repo
+  stage: check  # we use 'checks' here to avoid blocking on this when updating the ref-repo
   extends: .template-refrepo
   script:
     - export TZ=Europe/Paris
     - bundle exec rspec
 
 valid-homogeneity:
-  stage: checks
+  stage: check
   extends: .template-refrepo
   script:
     - bundle exec rake valid:homogeneity
