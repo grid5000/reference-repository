@@ -99,6 +99,28 @@ rebuild_resources_explorer:
     # as the pipeline is triggered, regardless of its status.
     strategy: depend
 
+preview_resources_explorer:
+  stage: deploy
+  # NOTE: this job triggers a rebuild of resources explorer which will be
+  # automatically deployed to a specific environment.
+  # Resources Explorer build environments are available here:
+  # https://gitlab.inria.fr/grid5000/resources-explorer/-/environments
+  rules:
+    # Do not create the job on master
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: never
+    # But create a manual job on branches
+    - if: $CI_COMMIT_BRANCH
+      when: manual
+  variables:
+    NEXT_PUBLIC_REFREPO_BRANCH: $CI_COMMIT_BRANCH
+  trigger:
+    project: grid5000/resources-explorer
+    # This mirrors the status of RE's pipeline into our own.
+    # We may want to revisit this if we want to show a "green" job as soon
+    # as the pipeline is triggered, regardless of its status.
+    strategy: depend
+
 rspec:
   stage: check  # we use 'checks' here to avoid blocking on this when updating the ref-repo
   extends: .template-refrepo
