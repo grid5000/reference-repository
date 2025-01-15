@@ -1,9 +1,9 @@
 ---
-model: Cluster Model # TODO: change this value.
-created_at: 1970-01-01 # TODO: change this value
+model: ProLiant DL385 Gen11
+created_at: 2025-01-15
 kavlan: false
-boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
-exotic: false # TODO: specify if 'true' or 'false'
+boot_type: uefi
+exotic: false
 queues:
   - admin
   - testing
@@ -17,8 +17,8 @@ nodes:
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell # TODO: replace with microarch name.
-      clock_speed: 8 # TODO: Replace with clock speed.
+      microarchitecture: Zen 4
+      clock_speed: 2900000000
     network_adapters:
       bmc:
         interface: Ethernet
@@ -29,13 +29,16 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:c5:00.0-nvme-1:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1"
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
-      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: ipmitool
     nodeset: abacus27
