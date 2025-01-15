@@ -452,6 +452,8 @@ def add_kavlan_ips(h)
   end
 end
 
+BMC_OFFSET=256**2
+
 def add_ipv4(h)
   allocated = {}
   base = IPAddress::IPv4::new(h['ipv4']['base']).to_u32
@@ -463,13 +465,23 @@ def add_ipv4(h)
         raise "Node hash for #{node_uid} is nil" if hn.nil?
         node_id = node_uid.split('-')[1].to_i
         hn['network_adapters'].each_pair do |iface, v|
-          # only allocate mountable ethernet interfaces
-          next if not (v['mountable'] and ['Ethernet','FPGA/Ethernet'].include?(v['interface']))
-          k = [site_uid, cluster_uid, iface]
-          if not iface_offsets.has_key?(k)
-            raise "Missing IPv4 information for #{k}"
+          # only allocate mountable ethernet interfaces and BMC
+          next if not ((v['mountable'] or v['management']) and ['Ethernet','FPGA/Ethernet'].include?(v['interface']))
+          if iface == 'bmc'
+            # We pick up the mounted Ethernet interface and add an offset
+            prod_name = hn['network_adapters'].to_a.select { |e| e[1]['mounted'] and e[1]['interface'] == 'Ethernet' }.first[0]
+            k = [site_uid, cluster_uid, prod_name]
+            if not iface_offsets.has_key?(k)
+              raise "Missing IPv4 information for #{k}"
+            end
+            ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id + BMC_OFFSET).to_s
+          else
+            k = [site_uid, cluster_uid, iface]
+            if not iface_offsets.has_key?(k)
+              raise "Missing IPv4 information for #{k}"
+            end
+            ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id).to_s
           end
-          ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id).to_s
           a = [ site_uid, node_uid, iface ]
           raise "IP already allocated: #{ip} (trying to add it to #{a} ; allocated to #{allocated[ip]})" if allocated[ip]
           allocated[ip] = a
