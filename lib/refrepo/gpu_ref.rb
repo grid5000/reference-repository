@@ -128,6 +128,18 @@ class GPURef
         'fp-64' => 1371000000000,
       },
     },
+    'H100 NVL' => {
+      'cores'              => 14592,
+      'compute_capability' => '9.0',
+      'short_name'         => 'Tesla H100',
+      'alias'              => 'h100',
+      'microarchitecture'  => 'Hopper',
+      'performance'        => {
+        'fp-16' => 1671000000000000,
+        'fp-32' => 60000000000000,
+        'fp-64' => 30000000000000,
+      },
+    },
     'L40S' => {
       'cores'              => 18176,
       'compute_capability' => '8.9',
