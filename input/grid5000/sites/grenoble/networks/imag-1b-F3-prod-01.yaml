@@ -34,7 +34,7 @@ imag-1b-F3-prod-01:
         22:
           uid: nessie-1
         44:
-          uid: imag-1b-F3-admin
+          uid: imag-1b-F3-admin-01
           kind: switch
           rate: 10_000_000_000
           trunk: false
@@ -53,9 +53,11 @@ imag-1b-F3-prod-01:
         49:
           uid: imag-1b-F2-prod-01
           kind: switch
+          rate: 100_000_000_000
         50:
           uid: imag-1b-F1-prod-01
           kind: switch
+          rate: 100_000_000_000
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:

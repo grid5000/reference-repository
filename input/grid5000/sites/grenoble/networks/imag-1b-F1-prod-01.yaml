@@ -16,16 +16,14 @@ imag-1b-F1-prod-01:
       rate: 25_000_000_000
       backplane_bps: 4_800_000_000_000
       ports:
-        33:
-          uid: imag-1b-F1-admin
+        44:
+          uid: imag-1b-F1-admin-01
           kind: switch
           rate: 10_000_000_000
           trunk: false
         49:
           uid: imag-1b-F3-prod-01
           kind: switch
-        50:
-          uid: imag-1b-F2-prod-01
-          kind: switch
+          rate: 100_000_000_000
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
 
