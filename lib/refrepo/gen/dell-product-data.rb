@@ -63,7 +63,7 @@ def get_api_token
     url = 'https://apigtwb2c.us.dell.com/auth/oauth/v2/token'
     conf = RefRepo::Utils.get_api_config
     if !conf.key?('dell_api')
-        raise "You must add the dell_api configuration in ~/.grid5000_api.yml"
+        raise "You must add the dell_api configuration in ~/.grid5000_api.yml, pass show global/dell"
     end
     api_cred = /(.*)\((.*)\)/.match(conf['dell_api'])  
 
