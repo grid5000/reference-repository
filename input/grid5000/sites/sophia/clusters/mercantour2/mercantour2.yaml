@@ -1,9 +1,9 @@
 ---
-model: Dell PowerEdge C6220 II
-created_at: 2025-01-16
+model: Cluster Model # TODO: change this value.
+created_at: 1970-01-01 # TODO: change this value
 kavlan: false
-boot_type: bios
-exotic: false
+boot_type: bios # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
+exotic: false # TODO: specify if 'true' or 'false'
 queues:
   - admin
   - testing
@@ -17,8 +17,8 @@ nodes:
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Ivy Bridge
-      clock_speed: 2600000000
+      microarchitecture: Haswell # TODO: replace with microarch name.
+      clock_speed: 8 # TODO: Replace with clock speed.
     network_adapters:
       bmc:
         interface: Ethernet
@@ -29,16 +29,13 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
-      eth1:
-        enabled: false
-        mountable: false
-        mounted: false
     storage_devices:
-      pci-0000:00:1f.2-ata-1:
+      disk0: # This field will have to be renamed later.
         id: disk0
-        interface: SATA
+        interface: SAS
+        by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
     software:
-      standard-environment: debian11-x64-std
+      standard-environment: debian11-x64-std # TODO: check that architecture is OK
     management_tools:
-      bmc_vendor_tool: ipmitool
+      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
     nodeset: mercantour2
