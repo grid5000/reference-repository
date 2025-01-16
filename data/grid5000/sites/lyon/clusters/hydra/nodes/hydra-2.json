@@ -1,0 +1,162 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 72,
+    "nb_procs": 1,
+    "nb_threads": 72,
+    "platform_type": "aarch64"
+  },
+  "bios": {
+    "release_date": "10/05/2023",
+    "vendor": "American Megatrends International, LLC.",
+    "version": "3A06"
+  },
+  "bmc_version": "3.09",
+  "chassis": {
+    "manufactured_at": "2024-02-15",
+    "manufacturer": "Quanta Cloud Technology Inc.",
+    "name": "QuantaGrid S74G-2U 1S7GZ9Z0000",
+    "serial": "QTWS7G0240200023",
+    "warranty_end": "2027-02-15"
+  },
+  "exotic": true,
+  "main_memory": {
+    "ram_size": 515396075520
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "die_lp5x_0",
+      "size": 515396075520,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "28.40.1000 (MT_0000000834)",
+      "interface": "Ethernet",
+      "ip": "172.16.57.2",
+      "ip6": "2001:660:4406:400:a::2",
+      "kavlan": false,
+      "mac": "a0:88:c2:98:6c:a0",
+      "management": false,
+      "model": "MT2910 Family [ConnectX-7]",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "hydra-2.lyon.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": true,
+      "sriov_totalvfs": 16,
+      "switch": "sneowise",
+      "switch_port": "1/12",
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "eth1",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "28.40.1000 (MT_0000000834)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "a0:88:c2:98:6c:a1",
+      "management": false,
+      "model": "MT2910 Family [ConnectX-7]",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp1s0f1np1",
+      "sriov": true,
+      "sriov_totalvfs": 16,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.57.2",
+      "kavlan": false,
+      "mac": "74:d4:dd:47:1e:cd",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "hydra-2-bmc.lyon.grid5000.fr"
+    }
+  ],
+  "nodeset": "hydra",
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": false,
+    "pstate_driver": "cppc_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": false
+  },
+  "performance": {
+    "core_flops": 27576000000,
+    "node_flops": 1985472000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 65536,
+    "cache_l1i": 65536,
+    "cache_l2": 1048576,
+    "cache_l3": 119537664,
+    "clock_speed": 3447000000,
+    "ht_capable": false,
+    "instruction_set": "aarch64",
+    "microarchitecture": "Grace",
+    "microcode": "unknown",
+    "model": "Grace A02  CPU",
+    "other_description": "Neoverse-V2",
+    "vendor": "NVIDIA/ARM",
+    "version": "Unknown"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2024112508",
+    "standard-environment": "debiangh11-arm64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.36363530574135540025384e00000001",
+      "by_path": "/dev/disk/by-path/pci-0004:01:00.0-nvme-1",
+      "id": "disk0",
+      "interface": "NVME",
+      "model": "SAMSUNG MZ1L2960HCJR-00A07",
+      "size": 960197124096,
+      "storage": "SSD",
+      "vendor": "Samsung"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0006:01:00.0-scsi-0:2:0:0",
+      "firmware_version": "602Q",
+      "id": "disk1",
+      "interface": "SCSI",
+      "model": "SAMSUNG MZTL21T9",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "Samsung"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "hydra-2"
+}

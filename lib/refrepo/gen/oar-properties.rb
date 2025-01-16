@@ -472,8 +472,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
                      else
                        'NO'
                      end
-
-    h['cluster_priority'] = (cluster['priority'] || Time.parse(cluster['created_at'].to_s).strftime('%Y%m')).to_i
+    h['cluster_priority'] = cluster['priority'].to_i
 
     h['max_walltime'] = 0 # default
     if node['supported_job_types']&.key?('max_walltime')

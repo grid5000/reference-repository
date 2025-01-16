@@ -742,6 +742,9 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
   # FIXME: Find Jetson's FlopPerCycle
   when /Carmel/
     return 8
+  # FIXME: Find Grace Hopper FlopPerCycle
+  when /Grace/
+    return 8
   when "Sapphire Rapids"
     return 32
   end
