@@ -2,7 +2,7 @@
 model: Cluster Model # TODO: change this value.
 created_at: 1970-01-01 # TODO: change this value
 kavlan: false
-boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
+boot_type: bios # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
 exotic: false # TODO: specify if 'true' or 'false'
 queues:
   - admin
@@ -33,7 +33,7 @@ nodes:
       disk0: # This field will have to be renamed later.
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
+        by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
     software:
       standard-environment: debian11-x64-std # TODO: check that architecture is OK
     management_tools:
