@@ -124,6 +124,16 @@ def generate_reference_api
       cluster["manufactured_at"] = cluster['nodes'].filter{|_n_uid, n_hash| n_hash.key? 'chassis'}.map{|_n_uid, n_hash| n_hash['chassis']['manufactured_at']}.min
       cluster["warranty_end"] = cluster['nodes'].filter{|_n_uid, n_hash| n_hash.key? 'chassis'}.map{|_n_uid, n_hash| n_hash['chassis']['warranty_end']}.min
       
+      #
+      # If not defined, create the cluster priority from the manufactured date + a shift for GPU machines
+      #
+      if cluster['priority'].nil?
+        cluster['priority'] = Time.parse(cluster['manufactured_at'].to_s).strftime('%Y%m').to_i
+        if cluster["nodes"].first[1].key?("gpu_devices")
+          cluster['priority'] += 100
+        end
+      end
+
       # Write cluster info w/o nodes entries
       write_json(cluster_path.join("#{cluster_uid}.json"),
                  cluster.reject {|k, _v| k == "nodes"})
