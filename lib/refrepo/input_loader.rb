@@ -388,6 +388,7 @@ def add_switch_port(h)
     site.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         next if hn['status'] == 'retired'
+        raise "#{node_uid} has no network interfaces!" if hn['network_adapters'].nil?
         hn['network_adapters'].each_pair do |iface_uid, iface|
           if (iface['mounted'] or iface['mountable']) and not iface['management'] and iface['interface'] =~ /(fpga|Ethernet)/
             switch, swport = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)

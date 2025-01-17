@@ -229,7 +229,8 @@ namespace :gen do
 
   namespace :puppet do
 
-    all_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :kavlang5k, :kwollectg5k, :network_monitoring, :'refapi-subset', :oxidizedg5k, :'oarsub-simplifier-aliases', :kavlanngg5k, :stitcherg5k, :clusters, :webfish]
+    base_puppet_tasks = [:bindg5k, :conmang5k, :dhcpg5k, :kadeployg5k, :lanpowerg5k, :'refapi-subset', :'oarsub-simplifier-aliases', :clusters ]
+    all_puppet_tasks = base_puppet_tasks + [ :kavlang5k, :kwollectg5k, :network_monitoring, :oxidizedg5k, :kavlanngg5k, :stitcherg5k, :webfish]
 
     all_puppet_tasks.each { |t|
       generated_desc = (t == :'refapi-subset') ? 'description' : 'configuration'
@@ -254,6 +255,9 @@ namespace :gen do
 
       end
     }
+
+    desc "Launch base puppet generators (#{base_puppet_tasks.map { |e| e.to_s }.join(',')})"
+    task :base => base_puppet_tasks
 
     desc "Launch all puppet generators"
     task :all => all_puppet_tasks
