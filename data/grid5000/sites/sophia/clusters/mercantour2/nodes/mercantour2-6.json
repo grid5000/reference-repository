@@ -1,0 +1,265 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous-including-threads",
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 16,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "03/04/2015",
+    "vendor": "Dell Inc.",
+    "version": "2.7.1"
+  },
+  "bmc_version": "2.59",
+  "chassis": {
+    "manufactured_at": "2015-09-02",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6220 II",
+    "serial": "D2XZG62",
+    "warranty_end": "2020-09-02"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 274877906944
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "1.57.0",
+      "interface": "Ethernet",
+      "ip": "172.16.130.22",
+      "ip6": "2001:660:4406:800:3::16",
+      "kavlan": false,
+      "mac": "34:17:eb:e8:83:84",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "mercantour2-6.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.57.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "34:17:eb:e8:83:85",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": true,
+      "sriov_totalvfs": 7,
+      "vendor": "Intel"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "firmware_version": "2.10.720",
+      "guid": "0x848f699097fc4b49",
+      "interface": "InfiniBand",
+      "ip": "172.18.130.22",
+      "kavlan": false,
+      "mac": "84:8f:69:90:97:fc:4b:49",
+      "management": false,
+      "model": "MT25408A0-FCC-QI ConnectX, Dual Port 40Gb/s InfiniBand / 10GigE Adapter IC with PCIe 2.0 x8 5.0GT/s Interface",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "netmask": "255.255.240.0",
+      "network_address": "mercantour2-6-ib0.sophia.grid5000.fr",
+      "rate": 40000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx4_core",
+      "enabled": false,
+      "firmware_version": "2.10.720",
+      "guid": "0x848f699097fc4b4a",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "84:8f:69:90:97:fc:4b:4a",
+      "management": false,
+      "model": "MT25408A0-FCC-QI ConnectX, Dual Port 40Gb/s InfiniBand / 10GigE Adapter IC with PCIe 2.0 x8 5.0GT/s Interface",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib1",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.130.22",
+      "kavlan": false,
+      "mac": "34:17:eb:e8:83:86",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "mercantour2-6-bmc.sophia.grid5000.fr"
+    }
+  ],
+  "nodeset": "mercantour2",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": false,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 20800000000,
+    "node_flops": 332800000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 20971520,
+    "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Ivy Bridge",
+    "microcode": "0x42e",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "E5-2650 v2"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025011610",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000c5007b743492",
+      "by_path": "/dev/disk/by-path/pci-0000:00:1f.2-ata-1",
+      "firmware_version": "GA0D",
+      "id": "disk0",
+      "interface": "SATA",
+      "model": "ST1000NM0033-9ZM",
+      "size": 1000204886016,
+      "storage": "HDD",
+      "vendor": "Seagate"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "mercantour2-6"
+}
