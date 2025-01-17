@@ -1,0 +1,280 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 48,
+    "nb_procs": 2,
+    "nb_threads": 96,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "10/11/2024",
+    "vendor": "HPE",
+    "version": 2.14
+  },
+  "bmc_version": "1.63",
+  "chassis": {
+    "manufactured_at": "2024-11-26",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL385 Gen11",
+    "serial": "CZ2D1X0DVW",
+    "warranty_end": "2031-12-02"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.74.00.11",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.74.00.11",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 549755813888
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 11",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 9",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 11",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 9",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "bnxt_en",
+      "enabled": true,
+      "firmware_version": "228.0.116.0/pkg 228.1.111.0",
+      "interface": "Ethernet",
+      "ip": "172.16.109.30",
+      "ip6": "2001:660:4406:700:e::1e",
+      "kavlan": false,
+      "mac": "d4:04:e6:b4:b1:e0",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "abacus27-1.rennes.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "228.0.116.0/pkg 228.1.111.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "d4:04:e6:b4:b1:e1",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens22f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.109.30",
+      "kavlan": false,
+      "mac": "7c:a6:2a:94:2c:3a",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "abacus27-1-bmc.rennes.grid5000.fr"
+    }
+  ],
+  "nodeset": "abacus27",
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 139200000000,
+    "node_flops": 6681600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 33554432,
+    "clock_speed": 2900000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Zen 4",
+    "microcode": "0xa101148",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 9254 24-Core Processor",
+    "vendor": "AMD",
+    "version": 9254
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025011610",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.ace42e0035ebe819",
+      "by_path": "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "MO006400KXPTU",
+      "size": 6401252745216,
+      "storage": "SSD",
+      "vendor": "HPE"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "amd-v"
+  },
+  "type": "node",
+  "uid": "abacus27-1"
+}
