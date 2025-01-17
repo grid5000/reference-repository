@@ -386,6 +386,9 @@ class G5KHardwareGenerator < WikiGenerator
       'Volta' => '2017',
       'Fermi' => '2010',
       'Golden Cove' => '2021',
+      'Grace' => '2022',
+      'Hopper' => '2022',
+      'Sapphire Rapids' => '2023',
       'N/A' => '&nbsp;',
     }
     date = release_dates[microarchitecture]
