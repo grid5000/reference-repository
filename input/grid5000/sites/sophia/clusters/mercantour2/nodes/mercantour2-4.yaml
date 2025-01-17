@@ -2,10 +2,10 @@
 ---
 mercantour2-4:
   architecture:
-    cpu_core_numbering: contiguous-including-threads
+    cpu_core_numbering: contiguous
     nb_cores: 16
     nb_procs: 2
-    nb_threads: 16
+    nb_threads: 32
     platform_type: x86_64
   bios:
     release_date: 03/04/2015
@@ -124,7 +124,7 @@ mercantour2-4:
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    ht_enabled: false
+    ht_enabled: true
     pstate_driver: intel_cpufreq
     pstate_governor: performance
     turboboost_enabled: true
