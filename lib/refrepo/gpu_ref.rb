@@ -283,6 +283,17 @@ class GPURef
         'fp-64' => 510000000000,
       },  
     },
+    'AMD Instinct MI300X' => {
+      'cores'              => 19456,
+      'short_name'         => 'MI300X',
+      'alias'              => 'mi300x',
+      'microarchitecture'  => 'Aqua Vanjaram',
+      'performance'        => {
+        'fp-16' => 653700000000000,
+        'fp-32' => 81720000000000,
+        'fp-64' => 81720000000000,
+      },  
+    },
     'AGX Xavier' => {
       'cores'              => 512,
       'compute_capability' => '7.2',
