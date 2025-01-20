@@ -10,8 +10,8 @@ queues:
 nodes:
   musa-[1-6]:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: Put date.
-      warranty_end: 1970-01-01 # TODO: Put date.
+      manufactured_at: 2024-12-09
+      warranty_end: 2031-12-09
     supported_job_types:
       deploy: true
       besteffort: true
@@ -29,11 +29,14 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:c5:00.0-nvme-1:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1"
+        interface: NVME
     software:
       standard-environment: debian11-x64-std
     management_tools:
