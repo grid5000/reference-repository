@@ -1,26 +1,157 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 104,
+    "nb_procs": 2,
+    "nb_threads": 208,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "06/24/2024",
+    "vendor": "Dell Inc.",
+    "version": "2.0.4"
   },
-  "bmc_version": "v1",
+  "bmc_version": "unknown",
   "chassis": {
     "manufactured_at": "2024-07-14",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge XE9680",
+    "serial": "4VLJM44",
     "warranty_end": "2028-07-15"
   },
   "exotic": false,
+  "gpu_devices": {
+    "card0": {
+      "cores": 19456,
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card0",
+      "memory": 214748364800,
+      "microarchitecture": "Aqua Vanjaram",
+      "model": "AMD Instinct MI300X OAM",
+      "performance": {
+        "fp-16": 653700000000000,
+        "fp-32": 81720000000000,
+        "fp-64": 81720000000000
+      },
+      "power_default_limit": 750.0,
+      "vbios_version": "113-MI3SRIOV-001",
+      "vendor": "AMD"
+    },
+    "card1": {
+      "cores": 19456,
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card1",
+      "memory": 214748364800,
+      "microarchitecture": "Aqua Vanjaram",
+      "model": "AMD Instinct MI300X OAM",
+      "performance": {
+        "fp-16": 653700000000000,
+        "fp-32": 81720000000000,
+        "fp-64": 81720000000000
+      },
+      "power_default_limit": 750.0,
+      "vbios_version": "113-MI3SRIOV-001",
+      "vendor": "AMD"
+    },
+    "card2": {
+      "cores": 19456,
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card2",
+      "memory": 214748364800,
+      "microarchitecture": "Aqua Vanjaram",
+      "model": "AMD Instinct MI300X OAM",
+      "performance": {
+        "fp-16": 653700000000000,
+        "fp-32": 81720000000000,
+        "fp-64": 81720000000000
+      },
+      "power_default_limit": 750.0,
+      "vbios_version": "113-MI3SRIOV-001",
+      "vendor": "AMD"
+    },
+    "card3": {
+      "cores": 19456,
+      "cpu_affinity": 0,
+      "device": "/dev/dri/card3",
+      "memory": 214748364800,
+      "microarchitecture": "Aqua Vanjaram",
+      "model": "AMD Instinct MI300X OAM",
+      "performance": {
+        "fp-16": 653700000000000,
+        "fp-32": 81720000000000,
+        "fp-64": 81720000000000
+      },
+      "power_default_limit": 750.0,
+      "vbios_version": "113-MI3SRIOV-001",
+      "vendor": "AMD"
+    },
+    "card4": {
+      "cores": 19456,
+      "cpu_affinity": 1,
+      "device": "/dev/dri/card4",
+      "memory": 214748364800,
+      "microarchitecture": "Aqua Vanjaram",
+      "model": "AMD Instinct MI300X OAM",
+      "performance": {
+        "fp-16": 653700000000000,
+        "fp-32": 81720000000000,
+        "fp-64": 81720000000000
+      },
+      "power_default_limit": 750.0,
+      "vbios_version": "113-MI3SRIOV-001",
+      "vendor": "AMD"
+    },
+    "card5": {
+      "cores": 19456,
+      "cpu_affinity": 1,
+      "device": "/dev/dri/card5",
+      "memory": 214748364800,
+      "microarchitecture": "Aqua Vanjaram",
+      "model": "AMD Instinct MI300X OAM",
+      "performance": {
+        "fp-16": 653700000000000,
+        "fp-32": 81720000000000,
+        "fp-64": 81720000000000
+      },
+      "power_default_limit": 750.0,
+      "vbios_version": "113-MI3SRIOV-001",
+      "vendor": "AMD"
+    },
+    "card6": {
+      "cores": 19456,
+      "cpu_affinity": 1,
+      "device": "/dev/dri/card6",
+      "memory": 214748364800,
+      "microarchitecture": "Aqua Vanjaram",
+      "model": "AMD Instinct MI300X OAM",
+      "performance": {
+        "fp-16": 653700000000000,
+        "fp-32": 81720000000000,
+        "fp-64": 81720000000000
+      },
+      "power_default_limit": 750.0,
+      "vbios_version": "113-MI3SRIOV-001",
+      "vendor": "AMD"
+    },
+    "card7": {
+      "cores": 19456,
+      "cpu_affinity": 1,
+      "device": "/dev/dri/card7",
+      "memory": 214748364800,
+      "microarchitecture": "Aqua Vanjaram",
+      "model": "AMD Instinct MI300X OAM",
+      "performance": {
+        "fp-16": 653700000000000,
+        "fp-32": 81720000000000,
+        "fp-64": 81720000000000
+      },
+      "power_default_limit": 750.0,
+      "vbios_version": "113-MI3SRIOV-001",
+      "vendor": "AMD"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 2199023255552
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -30,29 +161,291 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a9",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a12",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a13",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a14",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a15",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a16",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b9",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b12",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b13",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b14",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b15",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b16",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "227.0.134.2/pkg 22.71.11.13",
       "interface": "Ethernet",
       "ip": "172.16.178.1",
       "ip6": "2001:660:4406:300:3::1",
       "kavlan": false,
       "mac": "d4:04:e6:c5:88:60",
       "management": false,
+      "model": "BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb Ethernet",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "vianden-1.luxembourg.grid5000.fr",
       "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "227.0.134.2/pkg 22.71.11.13",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "d4:04:e6:c5:88:61",
+      "management": false,
+      "model": "BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb Ethernet",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno12409np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth2",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "227.0.134.2/pkg 22.71.11.13",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "d4:04:e6:c5:88:62",
+      "management": false,
+      "model": "BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb Ethernet",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno12419np2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth3",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "227.0.134.2/pkg 22.71.11.13",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "d4:04:e6:c5:88:63",
+      "management": false,
+      "model": "BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb Ethernet",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno12429np3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth4",
+      "driver": "tg3",
+      "enabled": true,
+      "firmware_version": "FFV22.61.8 bc 5720-v1.39",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "c4:cb:e1:c8:54:06",
+      "management": false,
+      "model": "NetXtreme BCM5720 Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno8303",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth5",
+      "driver": "tg3",
+      "enabled": false,
+      "firmware_version": "FFV22.61.8 bc 5720-v1.39",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "c4:cb:e1:c8:54:07",
+      "management": false,
+      "model": "NetXtreme BCM5720 Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno8403",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth6",
+      "driver": "mlx5_core",
+      "enabled": false,
+      "firmware_version": "28.41.1000 (DEL0000000051)",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "9c:63:c0:69:8a:fc",
+      "management": false,
+      "model": "MT2910 Family [ConnectX-7]",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp158s0np0",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,32 +462,39 @@
   ],
   "nodeset": "vianden",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "powersave",
     "turboboost_enabled": true
+  },
+  "other_devices": {
+    "fpga0": {
+      "model": "Aqua Vanjaram [Instinct MI300X]",
+      "type": "fpga",
+      "vendor": "Advanced Micro Devices, Inc. [AMD/ATI]"
+    }
   },
   "performance": {
     "core_flops": 121600000000,
-    "node_flops": 8755200000000
+    "node_flops": 12646400000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 4096,
+    "cache_l1i": 3072,
+    "cache_l2": 212992,
+    "cache_l3": 215040,
     "clock_speed": 3800000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Sapphire Rapids",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microcode": "0x2b000603",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Platinum 8470",
+    "vendor": "Intel",
+    "version": "Platinum 8470"
   },
   "redfish": true,
   "software": {
@@ -104,14 +504,14 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.36555430584139720025384300000002",
       "by_path": "/dev/disk/by-path/pci-0000:18:00.0-nvme-1",
       "id": "disk0",
       "interface": "NVME",
-      "model": "unknown",
-      "size": 8,
+      "model": "Dell Ent NVMe PM1735a MU 3.2TB",
+      "size": 3200631791616,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -121,7 +521,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "vianden-1"
