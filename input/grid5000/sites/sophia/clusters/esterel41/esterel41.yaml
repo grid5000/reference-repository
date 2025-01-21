@@ -32,7 +32,11 @@ nodes:
       disk0: 
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/dummy" 
+        by_path: "pci-0000:3b:00.0-scsi-0:3:111:0"
+      disk1:
+        id: disk1
+        interface: SAS
+        by_path: "pci-0000:3b:00.0-scsi-0:3:110:0"          
     software:
       standard-environment: debian11-x64-std 
     management_tools:
