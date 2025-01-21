@@ -1,6 +1,6 @@
 ---
 model: HPE ProLiant DL380 Gen11
-created_at: 2025-01-17 # TODO: change this e
+created_at: 2025-01-17
 kavlan: false
 boot_type: uefi
 exotic: false
@@ -17,8 +17,8 @@ nodes:
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell # TODO: replace with microarch name.
-      clock_speed: 8 # TODO: Replace with clock speed.
+      microarchitecture: Sapphire Rapids
+      clock_speed: 2600000000 
     network_adapters:
       bmc:
         enabled: true
@@ -33,7 +33,7 @@ nodes:
         id: disk0 
         interface: NVME
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std 
     management_tools:
       bmc_vendor_tool: ipmitool 
     nodeset: abacus-26
