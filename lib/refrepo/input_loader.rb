@@ -256,7 +256,7 @@ def add_default_values_and_mappings(h)
 
         # Ensure that id (diskN) is present
         node["storage_devices"].each do |key, hash|
-          raise "Missing id for disk #{key} from cluster input" if !hash['id']
+          raise "Missing id for disk #{key} from cluster input (node=#{node_uid}, hash=#{hash})" if !hash['id']
         end
 
         # Add vendor info to storage
