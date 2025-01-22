@@ -1,0 +1,96 @@
+---
+sw-1:
+  model: Aruba 6300M
+  warranty: 2048-05
+  kind: switch
+  managed_by_us: true
+  site: sophia
+  ip: 172.17.143.247
+  snmp_community: public
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        1:
+          uid: uvb-11
+        2:
+          uid: uvb-12
+        3:
+          uid: mercantour1-15
+        4:
+          uid: mercantour1-16
+        5:
+          uid: mercantour1-11
+        6:
+          uid: mercantour1-12
+        7:
+          uid: mercantour1-7
+        8:
+          uid: mercantour1-8
+        9:
+          uid: mercantour1-3
+        10:
+          uid: mercantour1-4
+        11:
+          uid: mercantour2-7
+        12:
+          uid: mercantour2-8
+        13:
+          uid: mercantour2-3
+        14:
+          uid: mercantour2-4
+        33:
+          uid: mercantour2-2
+        34:
+          uid: mercantour2-1
+        35:
+          uid: mercantour2-6
+        36:
+          uid: mercantour2-5
+        37:
+          uid: mercantour1-2
+        38:
+          uid: mercantour1-1
+        39:
+          uid: mercantour1-6
+        40:
+          uid: mercantour1-5
+        41:
+          uid: mercantour1-10
+        42:
+          uid: mercantour1-9
+        43:
+          uid: mercantour1-14
+        44:
+          uid: mercantour1-13
+        45: 
+          uid: uvb-10
+        46:
+          uid: uvb-9
+        48:
+          uid: gw
+        
+  channels:
+    lag1:
+      kind: server
+      rate: 500000000000
+      uid: srv-data1
+      port: lag1
+    lag2:
+      kind: server
+      rate: 500000000000
+      uid: srv-data2
+      port: lag2
+    lag3:
+      kind: server
+      rate: 500000000000
+      uid: srv-data3
+      port: lag3
+    lag4:
+      kind: server
+      rate: 200000000000
+      uid: srv-data4
+      port: lag4
