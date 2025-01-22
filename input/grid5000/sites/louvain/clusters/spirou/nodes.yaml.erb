@@ -4,19 +4,18 @@
   NODES_NUMBER = 8
   SITE_IPV4_INDEX = 208
   # MAC addresses declaration
-  # TODO: Change MAC addresses.
   MAC_ETH0_LIST = %w(
-    e4:3d:1a:62:eb:2f
-    e4:3d:1a:62:e1:3f
-    e4:3d:1a:62:da:c7
-    e4:3d:1a:62:da:f7
-    e4:3d:1a:62:d9:8f
-    e4:3d:1a:62:ea:ff
-    e4:3d:1a:62:ee:a7
-    e4:3d:1a:62:db:0f
+    e8:eb:d3:fd:ce:b4
+    e8:eb:d3:fd:cb:f4
+    e8:eb:d3:fd:cf:2c
+    e8:eb:d3:fd:cf:8c
+    e8:eb:d3:fd:cf:84
+    e8:eb:d3:fd:cb:ac
+    e8:eb:d3:fd:ce:ac
+    e8:eb:d3:fd:cf:0c
+
   )
 
-  #  TODO: Change MAC addresses.
   MAC_BMC_LIST = %w(
     38:68:dd:8c:71:2d
     38:68:dd:87:1e:75
@@ -33,8 +32,8 @@ nodes:
 <% (1..NODES_NUMBER).each { |i| %>
  <%= CLUSTER_NAME %>-<%= i %>:
     architecture:
-      nb_procs: 4 
-      nb_cores: 96 
+      nb_procs: 2 
+      nb_cores: 48 
       nb_threads: 96
       platform_type: x86_64
       cpu_core_numbering: contiguous 
@@ -92,7 +91,14 @@ nodes:
         mac: <%= MAC_ETH0_LIST[i - 1] %>
         ip: 172.16.<%= SITE_IPV4_INDEX %>.<%= i %>
     storage_devices:
-      disk0:
+      pci-0000:00.17.0-ata-1.0:
+        storage: SSD # Common value, will be replaced by g5k-checks
+        model: unknown # fake value,  
+        size: 8 # Fake value, will be replaced by g5k-checks
+        storage: SSD
+        model: SSDSC2KG480GZL
+        firmware_version: C71VRL21
+      pci-0000:00.17.0-ata-2.0:
         storage: SSD # Common value, will be replaced by g5k-checks
         model: unknown # fake value,  
         size: 8 # Fake value, will be replaced by g5k-checks

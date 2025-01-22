@@ -1,8 +1,8 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 96,
-    "nb_procs": 4,
+    "nb_cores": 48,
+    "nb_procs": 2,
     "nb_threads": 96,
     "platform_type": "x86_64"
   },
@@ -44,15 +44,15 @@
       "ip": "172.16.208.5",
       "ip6": "2001:660:4406:b00:1::5",
       "kavlan": false,
-      "mac": "e4:3d:1a:62:d9:8f",
+      "mac": "e8:eb:d3:fd:cf:84",
       "management": false,
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "spirou-5.louvain.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "switch": "gw",
+      "switch_port": "swp4"
     },
     {
       "device": "bmc",
@@ -78,7 +78,7 @@
   },
   "performance": {
     "core_flops": 108800000000,
-    "node_flops": 10444800000000
+    "node_flops": 5222400000000
   },
   "processor": {
     "cache_l1": null,
@@ -99,15 +99,26 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2024052820",
+    "postinstall-version": "1.2024112508",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
       "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_path": "/dev/disk/by-path/pci-0000:00:17.0-ata-1",
+      "firmware_version": "C71VRL21",
       "id": "disk0",
-      "interface": "SAS",
+      "interface": "SATA",
+      "model": "SSDSC2KG480GZL",
+      "size": 8,
+      "storage": "SSD",
+      "vendor": "Lenovo"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0000:00:17.0-ata-2",
+      "id": "disk1",
+      "interface": "SATA",
       "model": "unknown",
       "size": 8,
       "storage": "SSD",
