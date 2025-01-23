@@ -1,0 +1,107 @@
+---
+sw-1:
+  model: Aruba 8325-48Y8C
+  warranty: 2048-05
+  kind: switch
+  managed_by_us: true
+  site: sophia
+  ip: 172.17.143.251
+  snmp_community: public
+  backplane_bps: 1440000000000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 25000000000
+      kind: node
+      ports:
+        1:
+        2:
+        3:
+          uid: lag1
+          kind: channel
+        4:
+          uid: lag1
+          kind: channel
+
+        5:
+          uid: lag2
+          kind: channel
+          rate: 25000000000
+        6:
+          uid: lag2
+          kind: channel
+
+        7:
+          uid: lag3
+          kind: channel
+        8:
+          uid: lag3
+          kind: channel
+        9:
+        10:
+        11:
+        12:
+        13:
+        14:
+        15:
+        16:
+        17:
+        18:
+        19:
+        20:
+        21:
+        22:
+        23:
+        24:
+        25:
+        26:
+        27:
+        28:
+        29:
+        30:
+        31:
+          uid: musa-1
+        32:
+          uid: musa-2
+        33:
+          uid: musa-3
+        34:
+          uid: musa-4
+        35:
+          uid: musa-5
+        36:
+          uid: musa-6
+        40:
+          uid: lag4
+          kind: channel
+          rate: 100000000000
+        41:
+          uid: lag4
+          kind: channel
+          rate: 100000000000
+        46:
+          uid: gw
+          kind: router
+          rate: 10000000000
+  channels:
+    lag1:
+      kind: server
+      rate: 500000000000
+      uid: srv-data1
+      port: lag1
+    lag2:
+      kind: server
+      rate: 500000000000
+      uid: srv-data2
+      port: lag2
+    lag3:
+      kind: server
+      rate: 500000000000
+      uid: srv-data3
+      port: lag3
+    lag4:
+      kind: server
+      rate: 200000000000
+      uid: srv-data4
+      port: lag4
