@@ -2,9 +2,7 @@
   "architecture": {
     "cpu_core_numbering": "contiguous",
     "nb_cores": 32,
-    "nb_cores": 32,
     "nb_procs": 2,
-    "nb_threads": 64,
     "nb_threads": 64,
     "platform_type": "x86_64"
   },
@@ -12,17 +10,10 @@
     "release_date": "10/04/2024",
     "vendor": "HPE",
     "version": 2.34
-    "release_date": "10/04/2024",
-    "vendor": "HPE",
-    "version": 2.34
   },
-  "bmc_version": "1.65",
   "bmc_version": "1.65",
   "chassis": {
     "manufactured_at": "2024-03-01",
-    "manufacturer": "HPE",
-    "name": "ProLiant DL380 Gen11",
-    "serial": "CZ242408XH",
     "manufacturer": "HPE",
     "name": "ProLiant DL380 Gen11",
     "serial": "CZ242408XH",
@@ -65,44 +56,7 @@
       "vendor": "Nvidia"
     }
   },
-  "gpu_devices": {
-    "nvidia0": {
-      "compute_capability": "8.9",
-      "cores": 18176,
-      "cpu_affinity": 0,
-      "device": "/dev/nvidia0",
-      "memory": 48305799168,
-      "microarchitecture": "Ada Lovelace ",
-      "model": "L40",
-      "performance": {
-        "fp-16": 18105000000000,
-        "fp-32": 9050000000000,
-        "fp-64": 0
-      },
-      "power_default_limit": "300.00 W",
-      "vbios_version": "95.02.5D.00.01",
-      "vendor": "Nvidia"
-    },
-    "nvidia1": {
-      "compute_capability": "8.9",
-      "cores": 18176,
-      "cpu_affinity": 1,
-      "device": "/dev/nvidia1",
-      "memory": 48305799168,
-      "microarchitecture": "Ada Lovelace ",
-      "model": "L40",
-      "performance": {
-        "fp-16": 18105000000000,
-        "fp-32": 9050000000000,
-        "fp-64": 0
-      },
-      "power_default_limit": "300.00 W",
-      "vbios_version": "95.02.5D.00.01",
-      "vendor": "Nvidia"
-    }
-  },
   "main_memory": {
-    "ram_size": 549755813888
     "ram_size": 549755813888
   },
   "management_tools": {
@@ -190,82 +144,6 @@
     {
       "device": "dimm_proc 2 dimm 7",
       "size": 34359738368,
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 1 dimm 10",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 1 dimm 12",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 1 dimm 14",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 1 dimm 16",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 1 dimm 3",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 1 dimm 5",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 1 dimm 7",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 2 dimm 1",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 2 dimm 10",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 2 dimm 12",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 2 dimm 14",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 2 dimm 16",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 2 dimm 3",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 2 dimm 5",
-      "size": 34359738368,
-      "technology": "dram"
-    },
-    {
-      "device": "dimm_proc 2 dimm 7",
-      "size": 34359738368,
       "technology": "dram"
     }
   ],
@@ -273,9 +151,7 @@
     {
       "device": "eth0",
       "driver": "tg3",
-      "driver": "tg3",
       "enabled": true,
-      "firmware_version": "5719-v1.55 NCSI v1.5.55.0",
       "firmware_version": "5719-v1.55 NCSI v1.5.55.0",
       "interface": "Ethernet",
       "ip": "172.16.131.56",
@@ -283,7 +159,6 @@
       "kavlan": false,
       "mac": "6c:92:cf:05:28:24",
       "management": false,
-      "model": "NetXtreme BCM5719 Gigabit Ethernet PCIe",
       "model": "NetXtreme BCM5719 Gigabit Ethernet PCIe",
       "mountable": true,
       "mounted": true,
@@ -350,7 +225,7 @@
     {
       "device": "ibs3",
       "driver": "mlx5_core",
-      "enabled": "enabled",
+      "enabled": true,
       "firmware_version": "20.42.1000",
       "guid": "0x88e9a4ffffb8e5c4",
       "interface": "InfiniBand",
@@ -359,13 +234,12 @@
       "mac": "88:e9:a4:ff:ff:b8:e5:c4",
       "management": false,
       "model": "MT28908 Family [ConnectX-6]",
-      "mountable": "enabled",
-      "mounted": "enabled",
+      "mountable": true,
+      "mounted": true,
       "name": "ibs3",
       "netmask": "255.255.240.0",
       "network_address": "esterel41-1-ibs3.sophia.grid5000.fr",
       "rate": 10000000000,
-      "vendor": "Mellanox Technologies"
       "vendor": "Mellanox Technologies"
     },
     {
@@ -385,11 +259,7 @@
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
-    "cstate_driver": "intel_idle",
-    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "intel_pstate",
-    "pstate_governor": "performance",
     "pstate_driver": "intel_pstate",
     "pstate_governor": "performance",
     "turboboost_enabled": true
