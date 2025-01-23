@@ -1,0 +1,65 @@
+---
+model: ThinkSystem SR630 V2
+created_at: 2024-10-02
+kavlan: false
+boot_type: uefi
+exotic: false
+queues:
+  - admin
+  - testing
+
+nodes:
+  spirou-[1-8]:
+    chassis:
+      manufactured_at: 2024-01-01
+      warranty_end: 2029-01-01
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Ice Lake
+      clock_speed: 3400000000
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth4:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth5:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      pci-0000:00:17.0-ata-1:
+        id: disk0
+        interface: SATA
+      pci-0000:00:17.0-ata-2:
+        id: disk1
+        interface: SATA
+
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    nodeset: spirou
