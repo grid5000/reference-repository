@@ -21,6 +21,7 @@ nodes:
       clock_speed: 2500000000
     network_adapters:
       bmc:
+        interface: Ethernet
         enabled: true
         mountable: false
         mounted: false
@@ -28,15 +29,25 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: 
+      pci-0000:3b:00.0-scsi-0:3:111:0:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:3:111:0"
-      disk1:
+        interface: SATA
+      pci-0000:3b:00.0-scsi-0:3:110:0:
         id: disk1
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:3:110:0"          
+        interface: SATA
     software:
       standard-environment: debian11-x64-std 
     management_tools:

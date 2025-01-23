@@ -1,26 +1,63 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 16,
+    "nb_cores": 32,
     "nb_procs": 2,
-    "nb_threads": 32,
+    "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "10/04/2024",
+    "vendor": "HPE",
+    "version": 2.34
   },
-  "bmc_version": "v1",
+  "bmc_version": "1.65",
   "chassis": {
     "manufactured_at": "2024-03-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL380 Gen11",
+    "serial": "CZ242408XH",
     "warranty_end": "2031-07-20"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace ",
+      "model": "L40",
+      "performance": {
+        "fp-16": 18105000000000,
+        "fp-32": 9050000000000,
+        "fp-64": 0
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "95.02.5D.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace ",
+      "model": "L40",
+      "performance": {
+        "fp-16": 18105000000000,
+        "fp-32": 9050000000000,
+        "fp-64": 0
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "95.02.5D.00.01",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 549755813888
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -31,28 +68,179 @@
   "memory_devices": [
     {
       "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "tg3",
       "enabled": true,
+      "firmware_version": "5719-v1.55 NCSI v1.5.55.0",
       "interface": "Ethernet",
       "ip": "172.16.131.56",
       "ip6": "2001:660:4406:800:4::38",
       "kavlan": false,
       "mac": "6c:92:cf:05:28:24",
       "management": false,
+      "model": "NetXtreme BCM5719 Gigabit Ethernet PCIe",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "esterel41-1.sophia.grid5000.fr",
-      "rate": 10000000000,
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "tg3",
+      "enabled": false,
+      "firmware_version": "5719-v1.55 NCSI v1.5.55.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "6c:92:cf:05:28:25",
+      "management": false,
+      "model": "NetXtreme BCM5719 Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens15f1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth2",
+      "driver": "tg3",
+      "enabled": false,
+      "firmware_version": "5719-v1.55 NCSI v1.5.55.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "6c:92:cf:05:28:26",
+      "management": false,
+      "model": "NetXtreme BCM5719 Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens15f2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth3",
+      "driver": "tg3",
+      "enabled": false,
+      "firmware_version": "5719-v1.55 NCSI v1.5.55.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "6c:92:cf:05:28:27",
+      "management": false,
+      "model": "NetXtreme BCM5719 Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens15f3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "ibs3",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "20.42.1000",
+      "guid": "0x88e9a4ffffb8e5c4",
+      "interface": "InfiniBand",
+      "ip": "172.18.131.56",
+      "kavlan": false,
+      "mac": "88:e9:a4:ff:ff:b8:e5:c4",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ibs3",
+      "netmask": "255.255.240.0",
+      "network_address": "esterel41-1-ibs3.sophia.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,32 +257,32 @@
   ],
   "nodeset": "esterel41",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 80000000000,
-    "node_flops": 1280000000000
+    "node_flops": 2560000000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 2097152,
+    "cache_l3": 39321600,
     "clock_speed": 2500000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Sapphire Rapids",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microcode": "0x2b000603",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6426Y",
+    "vendor": "Intel",
+    "version": "Gold 6426Y"
   },
   "redfish": true,
   "software": {
@@ -104,24 +292,26 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x600062b21bb919402f17a4754a47ba20",
       "by_path": "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:3:111:0",
+      "firmware_version": 5.28,
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "SATA",
+      "model": "MR416i-o Gen11",
+      "size": 479559942144,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "HPE"
     },
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x600062b21bb919402f221b494aa41676",
       "by_path": "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:3:110:0",
+      "firmware_version": 5.28,
       "id": "disk1",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "SATA",
+      "model": "MR416i-o Gen11",
+      "size": 2878970265600,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "HPE"
     }
   ],
   "supported_job_types": {
@@ -131,7 +321,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": false
   },
   "type": "node",
   "uid": "esterel41-1"

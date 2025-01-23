@@ -295,6 +295,18 @@ class GPURef
         'fp-64' => 705000000000,
       },  
     },
+    'L40' => {
+       'cores'              => 18176,
+       'compute_capability' => '8.9',
+       'short_name'         => 'L40',
+       'alias'              => 'l40',
+       'microarchitecture'  => 'Ada Lovelace ',
+       'performance'        => {
+         'fp-16' => 18105000000000,
+         'fp-32' => 9050000000000,
+         'fp-64' => 0,
+       },
+     },
   }
 
 
