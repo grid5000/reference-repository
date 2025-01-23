@@ -1,0 +1,43 @@
+---
+gw-ng:
+  model: Aruba 6300M
+  warranty: 2048-05
+  kind: switch
+  managed_by_us: true
+  site: sophia
+  ip: 172.17.143.253
+  snmp_community: public
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        47:
+          uid: sw-3
+          kind: switch
+        48:
+          uid: gw
+          kind: router
+  channels:
+    lag1:
+      kind: server
+      rate: 500000000000
+      uid: srv-data1
+      port: lag1
+    lag2:
+      kind: server
+      rate: 500000000000
+      uid: srv-data2
+      port: lag2
+    lag3:
+      kind: server
+      rate: 500000000000
+      uid: srv-data3
+      port: lag3
+    lag4:
+      kind: server
+      rate: 200000000000
+      uid: srv-data4
+      port: lag4
