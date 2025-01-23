@@ -1,0 +1,141 @@
+supervision2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.103
+syslog:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.104
+mail:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.105
+ldap:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.106
+dns:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.107
+puppet6:
+  kind: virtual
+  alias:
+    - puppet
+  network_adapters:
+    default:
+      ip: 172.16.223.108
+dhcp:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.109
+
+flouvain:
+  kind: virtual
+  alias:
+    - oar-api
+    - frontend
+  network_adapters:
+    default:
+      ip: 172.16.223.110
+
+kadeploy:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.111
+
+api-server-v3:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.112
+
+conman:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.113
+
+api-server-devel:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.114
+
+api-proxy:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.115
+
+oar:
+  kind: virtual
+  alias:
+  - oar-server
+  - oardb
+  network_adapters:
+    default:
+      ip: 172.16.223.116
+
+kavlan:
+  kind: virtual
+  alias:
+  - kavlan-dhcp
+  network_adapters:
+    default:
+      ip: 172.16.223.117
+
+kavlan-1:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.118
+
+kavlan-2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.119
+
+kavlan-3:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.120
+
+kadeploy-devel:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.121
+
+oxidized:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.122
+
+guix:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.123
+
+kwollect:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.124
+
+kavlan-agent:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.125
