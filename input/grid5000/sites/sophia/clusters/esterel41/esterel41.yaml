@@ -1,0 +1,55 @@
+---
+model: DL380 Gen11
+created_at: 2025-01-25
+kavlan: false
+boot_type: uefi 
+exotic: false 
+queues:
+  - admin
+  - testing
+nodes:
+  esterel41-1:
+    chassis:
+      manufactured_at: 2024-03-01 
+      warranty_end: 2031-07-20 
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Sapphire Rapids
+      clock_speed: 2500000000
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+    storage_devices:
+      pci-0000:3b:00.0-scsi-0:3:111:0:
+        id: disk0
+        interface: SATA
+      pci-0000:3b:00.0-scsi-0:3:110:0:
+        id: disk1
+        interface: SATA
+    software:
+      standard-environment: debian11-x64-std 
+    management_tools:
+      bmc_vendor_tool: ipmitool 
+    nodeset: esterel41
