@@ -300,11 +300,11 @@ class GPURef
        'compute_capability' => '8.9',
        'short_name'         => 'L40',
        'alias'              => 'l40',
-       'microarchitecture'  => 'Ada Lovelace ',
+       'microarchitecture'  => 'Ada Lovelace',
        'performance'        => {
-         'fp-16' => 18105000000000,
+         'fp-16' => 9050000000000,
          'fp-32' => 9050000000000,
-         'fp-64' => 0,
+         'fp-64' => 141400000000,
        },
      },
   }
