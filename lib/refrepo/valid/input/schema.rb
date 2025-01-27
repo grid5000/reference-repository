@@ -45,5 +45,10 @@ def yaml_input_schema_validator(options)
       end
     end
   end
+  if r
+    puts "OK"
+  else
+    puts "FAILED"
+  end
   return r
 end

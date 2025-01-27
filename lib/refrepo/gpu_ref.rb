@@ -56,6 +56,18 @@ class GPURef
         'fp-64' => 5304000000000,
       },
     },
+    'Tesla V100-PCIE-16GB' => {
+      'cores'              => 5120,
+      'compute_capability' => '7.0',
+      'short_name'         => 'Tesla V100',
+      'alias'              => 'v100-pcie-16',
+      'microarchitecture'  => 'Volta',
+      'performance'        => {
+        'fp-16' => 28260000000000,
+        'fp-32' => 14130000000000,
+        'fp-64' => 7066000000000,
+      },
+    },
     'Tesla V100-PCIE-32GB' => {
       'cores'              => 5120,
       'compute_capability' => '7.0',
@@ -126,6 +138,18 @@ class GPURef
         'fp-16' => 0,
         'fp-32' => 4113000000000,
         'fp-64' => 1371000000000,
+      },
+    },
+    'H100 NVL' => {
+      'cores'              => 14592,
+      'compute_capability' => '9.0',
+      'short_name'         => 'Tesla H100',
+      'alias'              => 'h100',
+      'microarchitecture'  => 'Hopper',
+      'performance'        => {
+        'fp-16' => 1671000000000000,
+        'fp-32' => 60000000000000,
+        'fp-64' => 30000000000000,
       },
     },
     'L40S' => {
@@ -271,6 +295,18 @@ class GPURef
         'fp-64' => 705000000000,
       },  
     },
+    'L40' => {
+       'cores'              => 18176,
+       'compute_capability' => '8.9',
+       'short_name'         => 'L40',
+       'alias'              => 'l40',
+       'microarchitecture'  => 'Ada Lovelace',
+       'performance'        => {
+         'fp-16' => 9050000000000,
+         'fp-32' => 9050000000000,
+         'fp-64' => 141400000000,
+       },
+     },
   }
 
 

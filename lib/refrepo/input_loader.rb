@@ -256,7 +256,7 @@ def add_default_values_and_mappings(h)
 
         # Ensure that id (diskN) is present
         node["storage_devices"].each do |key, hash|
-          raise "Missing id for disk #{key} from cluster input" if !hash['id']
+          raise "Missing id for disk #{key} from cluster input (node=#{node_uid}, hash=#{hash})" if !hash['id']
         end
 
         # Add vendor info to storage
@@ -388,6 +388,7 @@ def add_switch_port(h)
     site.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
         next if hn['status'] == 'retired'
+        raise "#{node_uid} has no network interfaces!" if hn['network_adapters'].nil?
         hn['network_adapters'].each_pair do |iface_uid, iface|
           if (iface['mounted'] or iface['mountable']) and not iface['management'] and iface['interface'] =~ /(fpga|Ethernet)/
             switch, swport = net_switch_port_lookup(site, node_uid, iface_uid) || net_switch_port_lookup(site, node_uid)

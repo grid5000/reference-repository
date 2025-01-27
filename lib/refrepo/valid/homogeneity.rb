@@ -241,14 +241,25 @@ def check_cluster_homogeneity(options = {:verbose => false})
   options[:api][:pwd] = conf['password']
 
   verbose = options[:verbose]
-  puts "Differences found between successive nodes, per cluster:\n\n"
-
   total_count, count = cluster_homogeneity(refapi_hash, options)
   puts "\n" if verbose
 
-  puts count.to_yaml unless verbose
+  unless verbose
+    count.each_pair do |site, v|
+      next if v.values.select { |c| c != 0 }.empty?
+      puts "#{site} ..."
+      v.each_pair do |cluster, c|
+        next if c == 0
+        puts "  #{cluster}: #{c}"
+      end
+    end
+  end
 
-  puts "\nUse 'VERBOSE=1' option for details." unless verbose
-
-  return total_count == 0
+  if total_count == 0
+    puts "OK"
+    return true
+  else
+    puts "Use 'VERBOSE=1' option for details." unless verbose
+    return false
+  end
 end
