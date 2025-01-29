@@ -70,11 +70,11 @@ nodes:
         management: true
         mac: <%= mac_bmc_list[i - 1] %>
         ip: 172.17.<%= site_ipv4_index %>.<%= i + nodes_index %>
-      eth0:
+      eth1:
         interface: Ethernet
         management: false
         driver: mlx_core
-        name: enp1s0f0np0
+        name: enp1s0f1
         rate: 10000000000
         mac: <%= mac_eth0_list[i - 1] %>
         ip: 172.16.<%= site_ipv4_index %>.<%= i + nodes_index %>
