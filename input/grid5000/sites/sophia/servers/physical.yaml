@@ -23,10 +23,7 @@ srv3:
 srv-data:
   kind: physical
   alias:
-    - nfs
-    - public
     - storage1
-    - modules
   warranty: 2022-11-27
   serial: 276S992
   network_adapters:
@@ -45,6 +42,8 @@ srv-data:
 
 srv-data1:
   kind: physical
+  alias:
+    - storage2
   warranty: 2031-10-08
   serial: CZ2D1N06BM
   network_adapters:
@@ -53,12 +52,14 @@ srv-data1:
     bmc:
       ip: 172.17.143.3
   group_storage:
-    name: srv-data1
+    name: storage2
     size: 198000000000000
     rate: 25000000000
 
 srv-data2:
   kind: physical
+  alias:
+    - storage3
   warranty: 2031-10-08
   serial: CZ2D1N06BL
   network_adapters:
@@ -67,12 +68,17 @@ srv-data2:
     bmc:
       ip: 172.17.143.4
   group_storage:
-    name: srv-data2
+    name: storage3
     size: 198000000000000
     rate: 25000000000
 
 srv-data4:
   kind: physical
+  alias:
+    - nfs
+    - public
+    - modules
+    - storage10
   warranty: 2026-04-26
   serial: JSPCWW2
   network_adapters:
