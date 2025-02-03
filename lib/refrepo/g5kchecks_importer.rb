@@ -1,6 +1,6 @@
 require 'refrepo/hash/hash'
 
-INTERFACE_ORDER = %w(eth0 eth1 eth2 eth3 eth4 eth5 eth6 ib0 ib1 ib2 ib3 ib4 ib5 ib6 ib7 ibs1 bmc eno1 eno2 eno1np0 eno2np1 ens4f0 ens4f1 ens5f0 ens5f1 ens10f0np0 ens10f1np1 ib0.8100)
+INTERFACE_ORDER = %w(eth0 eth1 eth2 eth3 eth4 eth5 eth6 ib0 ib1 ib2 ib3 ib4 ib5 ib6 ib7 ibs1 ibs4 ibp130s0 bmc eno1 eno2 eno1np0 eno2np1 ens4f0 ens4f1 ens5f0 ens5f1 ens10f0np0 ens10f1np1 ib0.8100)
 
 def g5kchecks_importer(sourcedir)
   puts "Importing source files from #{sourcedir} into input directory..."
