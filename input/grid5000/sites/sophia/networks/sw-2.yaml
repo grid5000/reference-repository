@@ -1,0 +1,60 @@
+---
+sw-2:
+  model: Aruba 6300M
+  warranty: 2048-05
+  kind: switch
+  managed_by_us: true
+  site: sophia
+  ip: 172.17.143.253
+  snmp_community: public
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        1:
+          uid: pve-2-bmc
+          kind: other
+        2:
+          uid: pve-1-bmc
+          kind: other
+        3:
+          uid: srv-data4-bmc
+          kind: other
+        4:
+          uid: srv-data2-bmc
+          kind: other
+        5:
+          uid: srv-data1-bmc
+          kind: other
+        6: 
+          uid: srv-scrath-1-bmc
+          kind: other
+        7: 
+          uid: srv-scrath-2-bmc
+          kind: other
+        8: 
+          uid: srv-scrath-3-bmc
+          kind: other
+        10:
+          uid: pve-dmz-south-1-bmc
+          kind: other
+        11:
+          uid: srv3-bmc
+          kind: other
+        12:
+          uid: gwol-south-bmc
+          kind: other
+        27:
+          uid: srv-data
+          kind: server
+        36:
+          uid: esterel41-1
+        40:
+          uid: swadmin-2
+          kind: switch
+        46:
+          uid: swadmin-3
+          kind: switch
