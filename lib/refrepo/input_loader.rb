@@ -454,6 +454,7 @@ def add_kavlan_ips(h)
 end
 
 BMC_OFFSET=256**2
+IB_OFFSET=(256**2)*2
 
 def add_ipv4(h)
   allocated = {}
@@ -463,26 +464,36 @@ def add_ipv4(h)
   h['sites'].each_pair do |site_uid, hs|
     hs.fetch('clusters', {}).each_pair do |cluster_uid, hc|
       hc['nodes'].each_pair do |node_uid, hn|
+        # We don't generate JSON for retired nodes
+        next if hn['status'] == 'retired'
         raise "Node hash for #{node_uid} is nil" if hn.nil?
         node_id = node_uid.split('-')[1].to_i
         hn['network_adapters'].each_pair do |iface, v|
-          # only allocate mountable ethernet interfaces and BMC
-          next if not ((v['mountable'] or v['management']) and ['Ethernet','FPGA/Ethernet'].include?(v['interface']))
+          # We only consider interfaces that are either mountable, or management (BMC)
+          next if not (v['mountable'] or v['management'])
           if iface == 'bmc'
-            # We pick up the mounted Ethernet interface and add an offset
+            # We get the iface offset for BMC by adding the BMC_OFFSET to the iface_offset of the first prod interface
             prod_name = hn['network_adapters'].to_a.select { |e| e[1]['mounted'] and e[1]['interface'] == 'Ethernet' }.first[0]
             k = [site_uid, cluster_uid, prod_name]
-            if not iface_offsets.has_key?(k)
-              raise "Missing IPv4 information for #{k}"
-            end
-            ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id + BMC_OFFSET).to_s
-          else
+            if_kind_offset = BMC_OFFSET
+          elsif ['InfiniBand', 'Omni-Path'].include?(v['interface'])
+            # HPC interface can be defined inside the node-X.yaml file or generated from ipv4.yaml
+            next if not v['netmask'] # if there's no 'netmask' entry, we assume that we don't want IPoIB, so no IP (g5k-postinstall won't configure it anyway)
             k = [site_uid, cluster_uid, iface]
             if not iface_offsets.has_key?(k)
-              raise "Missing IPv4 information for #{k}"
+              puts "Warning: #{iface} offset should be defined for cluster #{cluster_uid} in ipv4.yaml"
+              next
             end
-            ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id).to_s
+            if_kind_offset = IB_OFFSET
+          else
+            # Ethernet interfaces must have an IP defined in ipv4.yaml
+            k = [site_uid, cluster_uid, iface]
+            if_kind_offset = 0
           end
+          if not iface_offsets.has_key?(k)
+            raise "Missing IPv4 information for #{k}"
+          end
+          ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id + if_kind_offset).to_s
           a = [ site_uid, node_uid, iface ]
           raise "IP already allocated: #{ip} (trying to add it to #{a} ; allocated to #{allocated[ip]})" if allocated[ip]
           allocated[ip] = a
