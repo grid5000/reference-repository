@@ -1,0 +1,40 @@
+---
+skinovis2-prod-01:
+  model: N9K-C93360YC-FX2
+  warranty: 
+  serial: FDO264332V6
+  kind: switch
+  managed_by_us: true
+  site: grenoble
+  snmp_community: public
+  ip: 172.17.31.245
+  backplane_bps: 400_000_000_000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/%PORT%"
+      kavlan_pattern: "%LINECARD%/%PORT%"
+      rate: 25_000_000_000
+      backplane_bps: 400_000_000_000
+      kind: node
+      ports:
+        38:
+          uid: skinovis2-admin-01
+          kind: switch
+          rate: 1_000_000_000
+          trunk: false
+        39:
+          uid: Po1
+          kind: channel
+        40:
+          uid: Po1
+          kind: channel
+        107:
+          uid: srv-data3
+          kind: server
+          rate: 100_000_000_000
+  channels:
+    Po1:
+      kind: router
+      rate: 20_000_000_000
+      uid: gw
+      port: port-channel40
