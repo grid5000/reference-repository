@@ -6,7 +6,7 @@ boot_type: uefi
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   abacus26-[1-1]:
     chassis:
@@ -15,7 +15,7 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Sapphire Rapids
       clock_speed: 2600000000 
@@ -41,4 +41,4 @@ nodes:
       standard-environment: debian11-x64-std 
     management_tools:
       bmc_vendor_tool: ipmitool 
-    nodeset: abacus-26
+    nodeset: abacus26
