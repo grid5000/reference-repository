@@ -66,13 +66,31 @@ sw-chiclet-2:
       backplane_bps: 36000000000000
       rate: 10000000000
       ports:
+        13:
+          uid: chiterne
+          kind: server
+        15:
+          uid: port-channel3
+          kind: channel
+        16:
+          uid: port-channel3
+          kind: channel
+        17:
+          uid: port-channel4
+          kind: channel
+        18:
+          uid: port-channel4
+          kind: channel
+        21: 
+          uid: gwol-north
+          kind: server
         35:
           uid: labo
           kind: other
           rate: 1000000000
         46:
           uid: sw-1
-          kind: switch
+          kind: switch 
         51:
           uid: port-channel1
           kind: channel
@@ -87,3 +105,13 @@ sw-chiclet-2:
       uid: sw-chiclet-1
       kind: switch
       rate: 200000000000
+    port-channel3:
+      port: port-channel3
+      uid: granche-srv1
+      kind: server
+      rate: 20000000000
+    port-channel4:
+      port: port-channel4
+      uid: granche-srv2
+      kind: server
+      rate: 20000000000

@@ -1,14 +1,6 @@
 {
   "alias": [
-    {
-      "ip": "172.16.47.254",
-      "ip6": "2001:660:4406:200::ffff:ffff",
-      "name": "gw"
-    },
-    {
-      "ip": "172.17.47.254",
-      "name": "gw-adm"
-    }
+    "gw-lille"
   ],
   "backplane_bps": 36000000000000,
   "channels": {
@@ -19,7 +11,8 @@
       "uid": "sw-1"
     }
   },
-  "ip": "172.17.47.223",
+  "ip": "172.16.47.254",
+  "ip6": "2001:660:4406:200::ffff:ffff",
   "kind": "router",
   "linecards": [
     {
@@ -32,6 +25,9 @@
         {
         },
         {
+          "kind": "server",
+          "snmp_name": "Ethernet1/1",
+          "uid": "pve-dmz-north-2"
         },
         {
         },
@@ -235,7 +231,7 @@
   "site": "lille",
   "snmp_community": "public",
   "type": "network_equipment",
-  "uid": "sw-chiclet-3",
+  "uid": "gw",
   "vlans": {
     "vlan100": {
       "addresses": [
