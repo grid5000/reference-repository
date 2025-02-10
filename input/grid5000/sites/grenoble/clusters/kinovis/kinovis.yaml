@@ -1,24 +1,24 @@
 ---
-model: Cluster Model # TODO: change this value.
-created_at: 1970-01-01 # TODO: change this value
+model: HPE Proliant DL380 Gen11
+created_at: 2025-02-10
 kavlan: false
-boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
-exotic: false # TODO: specify if 'true' or 'false'
+boot_type: uefi
+exotic: false
 queues:
   - admin
   - testing
 nodes:
   kinovis-[1-6]:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: Put date.
-      warranty_end: 1970-01-01 # TODO: Put date.
+      manufactured_at: 2024-06-26
+      warranty_end: 2031-06-26
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell # TODO: replace with microarch name.
-      clock_speed: 8 # TODO: Replace with clock speed.
+      microarchitecture: Sapphire Rapids
+      clock_speed: 4_000_000_000
     network_adapters:
       bmc:
         interface: Ethernet
@@ -29,13 +29,21 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: true
+        mounted: false
+      ibs4:
+        mounted: true
+        enabled: true
+        mountable: true
+        netmask: 255.255.240.0
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:3b:00.0-scsi-0:3:111:0:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:3:111:0" # this path will have to change later.
+        interface: SATA
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
-      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: ipmitool
     nodeset: kinovis
