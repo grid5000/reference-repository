@@ -1,26 +1,63 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "nb_cores": 48,
+    "nb_procs": 2,
+    "nb_threads": 96,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "12/06/2024",
+    "vendor": "HPE",
+    "version": 2.42
   },
-  "bmc_version": "v1",
+  "bmc_version": "1.66",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2024-06-26",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL380 Gen11",
+    "serial": "CZ242503C9",
+    "warranty_end": "2031-06-26"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.02",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 274877906944
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -30,29 +67,112 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_proc 1 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "231.0.153.0/pkg 231.1.162.1",
       "interface": "Ethernet",
       "ip": "172.16.28.3",
       "ip6": "2001:660:4406:100:d::3",
       "kavlan": false,
       "mac": "d4:04:e6:43:ee:84",
       "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "kinovis-3.grenoble.grid5000.fr",
-      "rate": 10000000000,
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "231.0.153.0/pkg 231.1.162.1",
+      "interface": "Ethernet",
+      "ip": "172.16.28.9",
+      "ip6": "2001:660:4406:100:d:1:0:3",
+      "kavlan": false,
+      "mac": "d4:04:e6:43:ee:85",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": false,
+      "name": "ens15f1np1",
+      "network_address": "kinovis-3-eth1.grenoble.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "ibs4",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "20.42.1000",
+      "guid": "0x88e9a4ffffac3a98",
+      "interface": "InfiniBand",
+      "ip": "172.18.28.9",
+      "kavlan": false,
+      "mac": "88:e9:a4:ff:ff:ac:3a:98",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ibs4",
+      "netmask": "255.255.240.0",
+      "network_address": "kinovis-3-ibs4.grenoble.grid5000.fr",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,32 +189,32 @@
   ],
   "nodeset": "kinovis",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 128000000000,
+    "node_flops": 6144000000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
-    "clock_speed": 8,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 2097152,
+    "cache_l3": 62914560,
+    "clock_speed": 4000000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microarchitecture": "Sapphire Rapids",
+    "microcode": "0x2b000620",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6442Y",
+    "vendor": "Intel",
+    "version": "Gold 6442Y"
   },
   "redfish": true,
   "software": {
@@ -104,14 +224,15 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x600062b21bc2c4c02f3cb5584d211ce5",
       "by_path": "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:3:111:0",
+      "firmware_version": 5.28,
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "SATA",
+      "model": "MR416i-o Gen11",
+      "size": 1919816826880,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "HPE"
     }
   ],
   "supported_job_types": {
@@ -121,7 +242,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "kinovis-3"
