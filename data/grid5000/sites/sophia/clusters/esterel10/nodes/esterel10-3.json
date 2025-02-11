@@ -11,7 +11,7 @@
     "vendor": "Dell Inc.",
     "version": "2.19.0"
   },
-  "bmc_version": "2.85.85.85",
+  "bmc_version": "2.86.86.86",
   "chassis": {
     "manufactured_at": "1970-01-01",
     "manufacturer": "Dell Inc.",
@@ -128,12 +128,15 @@
     {
       "device": "eth0",
       "driver": "igb",
+      "enabled": false,
       "firmware_version": "1.67, 0x80000fae, 19.5.12",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "d0:94:66:13:b0:47",
       "management": false,
       "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
       "name": "eno1",
       "sriov": false,
       "sriov_totalvfs": 0,
@@ -164,7 +167,7 @@
     },
     {
       "device": "ibp130s0",
-      "driver": "mlx4_core",
+      "driver": "ib_ipoib",
       "enabled": true,
       "firmware_version": "2.40.5030",
       "guid": "0xec0d9a0300064b91",
@@ -187,6 +190,7 @@
     {
       "device": "bmc",
       "enabled": true,
+      "interface": "Ethernet",
       "ip": "172.17.131.14",
       "kavlan": false,
       "mac": "d0:94:66:13:b0:49",
