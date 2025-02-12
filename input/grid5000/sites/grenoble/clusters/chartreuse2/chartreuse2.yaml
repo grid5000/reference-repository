@@ -29,10 +29,11 @@ nodes:
         mountable: true
         mounted: true
     storage_devices:
-      disk0: # This field will have to be renamed later.
-        id: disk0
+      #pci-0000:02:00.0-sas-phy0-lun-0:
+      disk0:
         interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
+        id: disk0
+        by_path: "/dev/disk/by_path/pci-0000:02:00.0-sas-phy0-lun-0"
     software:
       standard-environment: debian11-x64-std
     management_tools:
