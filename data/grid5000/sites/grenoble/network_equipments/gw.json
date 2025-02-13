@@ -31,7 +31,7 @@
     },
     "port-channel40": {
       "kind": "switch",
-      "port": "Po1",
+      "port": "port-channel1",
       "rate": 20000000000,
       "uid": "skinovis2-prod-01"
     },
@@ -341,8 +341,16 @@
           "uid": "drac-12"
         },
         {
+          "kind": "channel",
+          "rate": 10000000000,
+          "snmp_name": "ethernet1/1/49:1",
+          "uid": "port-channel40"
         },
         {
+          "kind": "channel",
+          "rate": 10000000000,
+          "snmp_name": "ethernet1/1/50:1",
+          "uid": "port-channel40"
         },
         {
         },

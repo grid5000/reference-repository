@@ -168,6 +168,16 @@ gw:
         46: drac-10
         47: drac-11
         48: drac-12
+        49:
+          uid: port-channel40
+          kind: channel
+          rate: 10_000_000_000
+          snmp_pattern: "ethernet1/1/%PORT%:1"
+        50:
+          uid: port-channel40
+          kind: channel
+          rate: 10_000_000_000
+          snmp_pattern: "ethernet1/1/%PORT%:1"
         67:
           uid: port-channel50
           kind: channel
@@ -301,7 +311,7 @@ gw:
       rate: 20000000000
     port-channel40:
       uid: skinovis2-prod-01
-      port: Po1
+      port: port-channel1
       kind: switch
       rate: 20_000_000_000
     port-channel100:
