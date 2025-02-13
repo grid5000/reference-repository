@@ -1,26 +1,97 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "08/27/2020",
+    "vendor": "Dell Inc.",
+    "version": "2.8.2"
   },
-  "bmc_version": "v1",
+  "bmc_version": "4.20.20.20",
   "chassis": {
-    "manufactured_at": "2024-12-06",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufactured_at": "2020-12-05",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C4140",
+    "serial": "JYLR393",
     "warranty_end": "2027-12-06"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 34359738368,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-SXM2-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "88.00.80.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 34359738368,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-SXM2-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "88.00.80.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 34359738368,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-SXM2-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "88.00.80.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "7.0",
+      "cores": 5120,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 34359738368,
+      "microarchitecture": "Volta",
+      "model": "Tesla V100-SXM2-32GB",
+      "performance": {
+        "fp-16": 28260000000000,
+        "fp-32": 14130000000000,
+        "fp-64": 7066000000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "88.00.80.00.01",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 412316860416
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -30,29 +101,140 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "7.10 0x800075da 19.5.12",
       "interface": "Ethernet",
       "ip": "172.16.109.31",
       "ip6": "2001:660:4406:700:e::1f",
       "kavlan": false,
       "mac": "78:ac:44:15:dc:cc",
       "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": true,
       "mounted": true,
       "name": "eno1",
       "network_address": "abacus28-1.rennes.grid5000.fr",
       "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fa8, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "78:ac:44:15:dc:ec",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fa8, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "78:ac:44:15:dc:ed",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "7.10 0x800075da 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "78:ac:44:15:dc:ce",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -69,28 +251,28 @@
   ],
   "nodeset": "abacus28",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 33600000000,
-    "node_flops": 2419200000000
+    "node_flops": 1075200000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 23068672,
     "clock_speed": 2100000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Cascade Lake-SP",
-    "microcode": "0xd000001",
+    "microcode": "0x5003707",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz",
     "vendor": "Intel",
@@ -104,14 +286,15 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x500a075129665976",
       "by_path": "/dev/disk/by-path/pci-0000:04:00.0-ata-1",
+      "firmware_version": "D3DJ004",
       "id": "disk0",
       "interface": "SATA",
-      "model": "unknown",
-      "size": 8,
+      "model": "MTFDDAV480TDS",
+      "size": 480103981056,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Micron"
     }
   ],
   "supported_job_types": {
@@ -121,7 +304,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "abacus28-1"
