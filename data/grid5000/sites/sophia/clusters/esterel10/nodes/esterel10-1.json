@@ -1,0 +1,300 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 20,
+    "nb_procs": 2,
+    "nb_threads": 40,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "02/22/2024",
+    "vendor": "Dell Inc.",
+    "version": "2.19.0"
+  },
+  "bmc_version": "2.86.86.86",
+  "chassis": {
+    "manufactured_at": "2017-11-15",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge T630",
+    "serial": "HHSSCM2",
+    "warranty_end": "2024-11-15"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 11811160064,
+      "microarchitecture": "Pascal",
+      "model": "GeForce GTX 1080 Ti",
+      "performance": {
+        "fp-16": 177200000000,
+        "fp-32": 11340000000000,
+        "fp-64": 354400000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.39.40.19",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 11811160064,
+      "microarchitecture": "Pascal",
+      "model": "GeForce GTX 1080 Ti",
+      "performance": {
+        "fp-16": 177200000000,
+        "fp-32": 11340000000000,
+        "fp-64": 354400000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.39.40.19",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 11811160064,
+      "microarchitecture": "Pascal",
+      "model": "GeForce GTX 1080 Ti",
+      "performance": {
+        "fp-16": 177200000000,
+        "fp-32": 11340000000000,
+        "fp-64": 354400000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.39.40.19",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 11811160064,
+      "microarchitecture": "Pascal",
+      "model": "GeForce GTX 1080 Ti",
+      "performance": {
+        "fp-16": 177200000000,
+        "fp-32": 11340000000000,
+        "fp-64": 354400000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.39.40.19",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 137438953472
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "d0:94:66:13:b5:22",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
+      "interface": "Ethernet",
+      "ip": "172.16.131.12",
+      "ip6": "2001:660:4406:800:4::c",
+      "kavlan": false,
+      "mac": "d0:94:66:13:b5:23",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f1",
+      "network_address": "esterel10-1.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": null,
+      "switch_port": null,
+      "vendor": "Intel"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "firmware_version": "2.40.5030",
+      "guid": "0xec0d9a0300064bd1",
+      "interface": "InfiniBand",
+      "ip": "172.18.131.12",
+      "kavlan": false,
+      "mac": "ec:0d:9a:03:00:06:4b:d1",
+      "management": false,
+      "model": "MT27500 Family [ConnectX-3]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "netmask": "255.255.240.0",
+      "network_address": "esterel10-1-ib0.sophia.grid5000.fr",
+      "rate": 56000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.131.12",
+      "kavlan": false,
+      "mac": "d0:94:66:13:b5:24",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "esterel10-1-bmc.sophia.grid5000.fr"
+    }
+  ],
+  "nodeset": "esterel10",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 35200000000,
+    "node_flops": 704000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 26214400,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Broadwell",
+    "microcode": "0xb000040",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "E5-2630 v4"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025011610",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x500080d910d508dd",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:2:0",
+      "firmware_version": "DACB",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "THNSF81D60CSE",
+      "size": 1600321314816,
+      "storage": "SSD",
+      "vendor": "Toshiba"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x500003983853ce2d",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0",
+      "firmware_version": "EA05",
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "AL14SEB060NY",
+      "size": 600127266816,
+      "storage": "HDD",
+      "vendor": "Toshiba"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x500003983853dff5",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0",
+      "firmware_version": "EA05",
+      "id": "disk2",
+      "interface": "SAS",
+      "model": "AL14SEB060NY",
+      "size": 600127266816,
+      "storage": "HDD",
+      "vendor": "Toshiba"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "esterel10-1"
+}
