@@ -15,6 +15,12 @@
       "port": "Port-channel 1",
       "rate": 80000000000,
       "uid": "ecotype-prod2"
+    },
+    "Port-channel 3": {
+      "kind": "server",
+      "port": "Port-channel 3",
+      "rate": 20000000000,
+      "uid": "srv-data2"
     }
   },
   "ip": "172.16.207.254",
@@ -37,8 +43,14 @@
         {
         },
         {
+          "kind": "channel",
+          "snmp_name": "TenGigabitEthernet 0/4",
+          "uid": "Port-channel 3"
         },
         {
+          "kind": "channel",
+          "snmp_name": "TenGigabitEthernet 0/5",
+          "uid": "Port-channel 3"
         },
         {
         },
@@ -53,6 +65,7 @@
         {
           "kind": "server",
           "snmp_name": "TenGigabitEthernet 0/9",
+          "trunk": true,
           "uid": "srv-3"
         },
         {
@@ -90,10 +103,6 @@
           "uid": "econome-8"
         },
         {
-          "kind": "node",
-          "port": "eth0",
-          "snmp_name": "TenGigabitEthernet 0/17",
-          "uid": "econome-7"
         },
         {
           "kind": "node",
@@ -190,6 +199,10 @@
           "uid": "econome-13"
         },
         {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "TenGigabitEthernet 0/40",
+          "uid": "econome-7"
         },
         {
           "kind": "node",
