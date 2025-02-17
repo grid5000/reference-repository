@@ -9,9 +9,6 @@ queues:
   - testing
 nodes:
   chartreuse2-[1-4]:
-    chassis:
-      manufactured_at: 2016-11-14
-      warranty_end: 2021-11-13 
     supported_job_types:
       deploy: true
       besteffort: true
@@ -21,6 +18,7 @@ nodes:
       clock_speed: 2400000000
     network_adapters:
       bmc:
+        interface: Ethernet
         enabled: true
         mountable: false
         mounted: false
@@ -28,12 +26,14 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eno2:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      #pci-0000:02:00.0-sas-phy0-lun-0:
-      disk0:
+      pci-0000:02:00.0-sas-phy0-lun-0:
         interface: SAS
         id: disk0
-        by_path: "/dev/disk/by-path/pci-0000:02:00.0-sas-phy0-lun-0"
     software:
       standard-environment: debian11-x64-std
     management_tools:
