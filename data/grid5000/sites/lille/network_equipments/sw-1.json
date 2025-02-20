@@ -7,11 +7,17 @@
   ],
   "backplane_bps": 1440000000000,
   "channels": {
+    "lag1": {
+      "kind": "server",
+      "port": "lacp",
+      "rate": 50000000000,
+      "uid": "srv-data2"
+    },
     "lag2": {
-      "kind": "switch",
+      "kind": "router",
       "port": "port-channel1",
       "rate": 200000000000,
-      "uid": "sw-chiclet-3"
+      "uid": "gw"
     }
   },
   "ip": "172.17.47.224",
@@ -26,16 +32,34 @@
         {
         },
         {
+          "kind": "server",
+          "snmp_name": "1/1/1",
+          "uid": "pve-1"
         },
         {
+          "kind": "server",
+          "snmp_name": "1/1/2",
+          "uid": "pve-1-eth1"
         },
         {
+          "kind": "server",
+          "snmp_name": "1/1/3",
+          "uid": "pve-2"
         },
         {
+          "kind": "server",
+          "snmp_name": "1/1/4",
+          "uid": "pve-2-eth1"
         },
         {
+          "kind": "channel",
+          "snmp_name": "1/1/5",
+          "uid": "lag1"
         },
         {
+          "kind": "channel",
+          "snmp_name": "1/1/6",
+          "uid": "lag1"
         },
         {
           "kind": "node",
@@ -206,6 +230,9 @@
         {
         },
         {
+          "kind": "server",
+          "snmp_name": "1/1/39",
+          "uid": "pve-4"
         },
         {
         },
@@ -223,6 +250,7 @@
         },
         {
           "kind": "switch",
+          "rate": 1000000000,
           "snmp_name": "1/1/47",
           "uid": "sw-admin6"
         },

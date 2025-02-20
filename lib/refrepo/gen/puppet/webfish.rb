@@ -8,17 +8,21 @@ def generate_puppet_webfish(options)
     if not options[:conf_dir]
         options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/redfish/"
     end
-    allBmc = gen_redfish_configuration()
-    credentials = YAML::load_file(options[:conf_dir] + 'console-password.yaml')
+    file = options[:conf_dir] + 'console-password.yaml'
+    puts "Writing Webfish configuration files to: #{file}"
+    puts "For site(s): #{options[:sites].join(', ')}"
+    allBmc = gen_redfish_configuration(options)
+    credentials = YAML::load_file(file)
     add_credentials(credentials, allBmc)
     gen_json_files(allBmc, options)
 end
 
-def gen_redfish_configuration()
+def gen_redfish_configuration(options)
     data = load_data_hierarchy
     allBmc = {}
     # allBmc --> hash de hash de tableau de hash
     data['sites'].peach do |s_uid, d_site|
+        next unless options[:sites].include?(s_uid)
         allBmc[s_uid] = {}
         p "checking site #{s_uid}"
         d_site['clusters'].peach do |_c_uid, d_cluster|
@@ -86,18 +90,23 @@ def add_credentials(credentials, allBmc)
     end
 end
 
-def gen_json_files(allBmc, options)
-    pretty_dict = {}
-    dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/webfish"
+def checks_dir_creation(dir)
     if !Dir.exist?(dir)
         Dir.mkdir(dir)
     end
-    actualFile = dir + "/webfish.json"
+end
 
+def gen_json_files(allBmc, options)
+    actualFile = {}
+    dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/webfish"
+    checks_dir_creation(dir)
     allBmc.sort_by{ |s_site, _d_site| s_site}.each do |s_site, _d_array|
-        pretty_dict[s_site] = allBmc[s_site].sort_by{|k, _| [k[/(\D+)/, 1], k[/(\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]}.to_h
-    end
-    File.open(actualFile, "w") do |f|
-        f.write(JSON.pretty_generate(pretty_dict))
+        actualFile = allBmc[s_site].sort_by{|k, _| [k[/(\D+)/, 1], k[/(\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]}.to_h
+        siteLocation = dir + "/" + s_site
+        checks_dir_creation(siteLocation)
+        fileLocation =  siteLocation + "/webfish.json"
+        File.open(fileLocation, "w") do |f|
+            f.write(JSON.pretty_generate(actualFile))
+        end
     end
 end

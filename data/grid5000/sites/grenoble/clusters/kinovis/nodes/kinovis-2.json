@@ -1,0 +1,263 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 48,
+    "nb_procs": 2,
+    "nb_threads": 96,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "12/06/2024",
+    "vendor": "HPE",
+    "version": 2.42
+  },
+  "bmc_version": "1.66",
+  "chassis": {
+    "manufactured_at": "2024-06-26",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL380 Gen11",
+    "serial": "CZ242503C6",
+    "warranty_end": "2031-06-26"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.02",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 274877906944
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "bnxt_en",
+      "enabled": true,
+      "firmware_version": "231.0.153.0/pkg 231.1.162.1",
+      "interface": "Ethernet",
+      "ip": "172.16.28.2",
+      "ip6": "2001:660:4406:100:d::2",
+      "kavlan": false,
+      "mac": "d4:04:e6:43:90:ca",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "kinovis-2.grenoble.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "skinovis2-prod-01",
+      "switch_port": "Ethernet1/94",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": true,
+      "firmware_version": "231.0.153.0/pkg 231.1.162.1",
+      "interface": "Ethernet",
+      "ip": "172.16.28.8",
+      "ip6": "2001:660:4406:100:d:1:0:2",
+      "kavlan": false,
+      "mac": "d4:04:e6:43:90:cb",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": false,
+      "name": "ens15f1np1",
+      "network_address": "kinovis-2-eth1.grenoble.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "skinovis2-prod-01",
+      "switch_port": "Ethernet1/93",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth2",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "20.42.1000 (MT_0000000452)",
+      "interface": "Ethernet",
+      "ip": "172.16.28.14",
+      "ip6": "2001:660:4406:100:d:2:0:2",
+      "kavlan": false,
+      "mac": "88:e9:a4:ac:1a:d8",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": true,
+      "mounted": false,
+      "name": "ens4np0",
+      "network_address": "kinovis-2-eth2.grenoble.grid5000.fr",
+      "rate": 100000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "skinovis2-prod-01",
+      "switch_port": "Ethernet1/101",
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.28.2",
+      "kavlan": false,
+      "mac": "5c:ed:8c:f4:2e:50",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "kinovis-2-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "nodeset": "kinovis",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "pdu": [
+    {
+      "port": 14,
+      "uid": "pdu-kinovis2-3"
+    },
+    {
+      "port": 14,
+      "uid": "pdu-kinovis2-4"
+    }
+  ],
+  "performance": {
+    "core_flops": 128000000000,
+    "node_flops": 6144000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 2097152,
+    "cache_l3": 62914560,
+    "clock_speed": 4000000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Sapphire Rapids",
+    "microcode": "0x2b000620",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6442Y",
+    "vendor": "Intel",
+    "version": "Gold 6442Y"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025021810",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x600062b21bc2cf802f3cbf290530f39e",
+      "by_path": "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:3:111:0",
+      "firmware_version": 5.28,
+      "id": "disk0",
+      "interface": "SATA",
+      "model": "MR416i-o Gen11",
+      "size": 1919816826880,
+      "storage": "SSD",
+      "vendor": "HPE"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "kinovis-2"
+}

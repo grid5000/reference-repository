@@ -130,8 +130,8 @@ gw:
         14: econome-4
         43: econome-5
         42: econome-6
+        40: econome-7
         16: econome-8
-        17: econome-7
         41: econome-9
         10: econome-10
         19: econome-11
@@ -146,6 +146,12 @@ gw:
         28: econome-20
         31: econome-21
         32: econome-22
+        4:
+          uid: Port-channel 3
+          kind: channel
+        5:
+          uid: Port-channel 3
+          kind: channel
         8:
           uid: srv-4
           kind: server
@@ -153,9 +159,7 @@ gw:
         9:
           uid: srv-3
           kind: server
-        12:
-          uid: srv-data
-          kind: server
+          trunk: true
         26:
           uid: pve-99
           kind: server
@@ -193,3 +197,8 @@ gw:
       rate: 80000000000
       uid: ecotype-prod2
       port: Port-channel 1
+    Port-channel 3:
+      kind: server
+      rate: 20000000000
+      uid: srv-data2
+      port: Port-channel 3
