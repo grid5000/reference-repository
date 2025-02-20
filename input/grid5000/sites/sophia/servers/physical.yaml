@@ -20,7 +20,7 @@ srv3:
 srv-data:
   kind: physical
   alias:
-    - storage1
+    - storage11
   warranty: 2022-11-27
   serial: 276S992
   network_adapters:
@@ -33,14 +33,14 @@ srv-data:
       ip: 172.17.143.5
       mac: 14:18:77:45:b8:63
   group_storage:
-    name: storage1
+    name: storage11
     size: 30000000000000
     rate: 1000000000
 
 srv-data1:
   kind: physical
   alias:
-    - storage2
+    - storage1
   warranty: 2031-10-08
   serial: CZ2D1N06BM
   network_adapters:
@@ -49,14 +49,14 @@ srv-data1:
     bmc:
       ip: 172.17.142.3
   group_storage:
-    name: storage2
+    name: storage1
     size: 198000000000000
-    rate: 25000000000
+    rate: 50000000000
 
 srv-data2:
   kind: physical
   alias:
-    - storage3
+    - storage2
   warranty: 2031-10-08
   serial: CZ2D1N06BL
   network_adapters:
@@ -65,9 +65,25 @@ srv-data2:
     bmc:
       ip: 172.17.142.4
   group_storage:
-    name: storage3
+    name: storage2
     size: 198000000000000
-    rate: 25000000000
+    rate: 50000000000
+
+srv-data3:
+  kind: physical
+  alias:
+    - storage3
+  warranty: 2028-01-23
+  serial: CZ2D2507LZ
+  network_adapters:
+    default:
+      ip: 172.16.143.9
+    bmc:
+      ip: 172.17.142.9
+  group_storage:
+    name: storage3
+    size: 345000000000000
+    rate: 50000000000
 
 srv-data4:
   kind: physical
@@ -89,7 +105,7 @@ srv-data4:
   group_storage:
     name: storage10
     size: 139000000000000
-    rate: 50000000000
+    rate: 20000000000
 
 gwol-south:
   kind: physical
