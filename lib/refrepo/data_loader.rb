@@ -12,7 +12,7 @@ def load_data_hierarchy
     # Recursively list the .yaml files.
     # The order in which the results are returned depends on the system (http://ruby-doc.org/core-2.2.3/Dir.html).
     # => List deepest files first as they have lowest priority when hash keys are duplicated.
-    list_of_files = Dir['**/*.json'].sort_by { |x| -x.count('/') }
+    list_of_files = Dir['**/*.json'].sort_by { |x| [-x.count('/'), x] }
 
     list_of_files.each do |filename|
       # Load JSON
