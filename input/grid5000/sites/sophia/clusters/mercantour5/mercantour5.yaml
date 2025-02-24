@@ -1,24 +1,24 @@
 ---
-model: Cluster Model # TODO: change this value.
-created_at: 1970-01-01 # TODO: change this value
-kavlan: false
-boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
-exotic: false # TODO: specify if 'true' or 'false'
+model: Dell PowerEdge C6420
+created_at: 2025-02-24
+kavlan: false #TO DO AFTER
+boot_type: bios
+exotic: false
 queues:
   - admin
   - testing
 nodes:
   mercantour5-[1-4]:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: Put date.
-      warranty_end: 1970-01-01 # TODO: Put date.
+      manufactured_at: 2019-07-30
+      warranty_end: 2026-07-31
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell # TODO: replace with microarch name.
-      clock_speed: 8 # TODO: Replace with clock speed.
+      microarchitecture: Cascade Lake-SP
+      clock_speed: 2_600_000_000
     network_adapters:
       bmc:
         interface: Ethernet
@@ -35,7 +35,7 @@ nodes:
         interface: SAS
         by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
-      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: racadm
     nodeset: mercantour5
