@@ -1,0 +1,128 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 72,
+    "nb_procs": 1,
+    "nb_threads": 72,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "01/01/2000",
+    "vendor": "Unknown",
+    "version": 1
+  },
+  "bmc_version": "v1",
+  "chassis": {
+    "manufactured_at": "2019-07-30",
+    "manufacturer": "Unknown",
+    "name": "Unknown",
+    "warranty_end": "2026-07-31"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 8
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 8,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "mlx_core",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.130.44",
+      "ip6": "2001:660:4406:800:3::2c",
+      "kavlan": false,
+      "mac": "6c:2b:59:9c:4a:6d",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "mercantour5-3.sophia.grid5000.fr",
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.130.44",
+      "kavlan": false,
+      "mac": "6c:2b:59:9c:46:df",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "mercantour5-3-bmc.sophia.grid5000.fr"
+    }
+  ],
+  "nodeset": "mercantour5",
+  "operating_system": {
+    "cstate_driver": "unknown",
+    "cstate_governor": "unknown",
+    "ht_enabled": true,
+    "pstate_driver": "unknwon",
+    "pstate_governor": "unknown",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 83200000000,
+    "node_flops": 5990400000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 8,
+    "cache_l1i": 8,
+    "cache_l2": 8,
+    "cache_l3": 8,
+    "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Cascade Lake-SP",
+    "microcode": "0xd000001",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "Gold 6240"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025021810",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "size": 8,
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "mercantour5-3"
+}
