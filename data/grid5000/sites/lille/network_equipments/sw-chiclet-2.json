@@ -18,6 +18,12 @@
       "port": "port-channel4",
       "rate": 20000000000,
       "uid": "granche-srv2"
+    },
+    "port-channel5": {
+      "kind": "server",
+      "port": "port-channel5",
+      "rate": 10000000000,
+      "uid": "pve-3"
     }
   },
   "ip": "172.17.47.222",
@@ -84,8 +90,14 @@
           "uid": "port-channel4"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/19",
+          "uid": "port-channel5"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/20",
+          "uid": "port-channel5"
         },
         {
           "kind": "server",
