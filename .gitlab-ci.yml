@@ -53,10 +53,8 @@ wikigen:
         DEBIAN_VERSION: [bookworm]
   script:
     - echo "$GRID5000_API" > "${HOME}/.grid5000_api.yml"
-    - bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=diff
-  only:
-    refs:
-      - master
+    - if [ "$CI_COMMIT_BRANCH" = "master" ]; then export WIKI="update"; else export WIKI="diff"; fi
+    - bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=${WIKI}
 
 check-no-changes-in-data:
   extends: .template-refrepo
