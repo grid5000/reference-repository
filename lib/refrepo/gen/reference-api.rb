@@ -15,6 +15,52 @@ def create_network_equipment(network_uid, network, refapi_path, site_uid = nil)
   write_json(network_path.join("#{network_uid}.json"), network)
 end
 
+def gen_node_description(node)
+  nb_cpu        = node['architecture']['nb_procs'].to_i
+  core_per_cpu  = node['architecture']['nb_cores'].to_i / nb_cpu
+  ram           = (node['main_memory']['ram_size'].to_i.to_f / (1024**3).to_f).round
+  pmem          = (node['main_memory']['pmem_size'].to_i.to_f / (1024**3).to_f).round if node['main_memory']['pmem_size']
+  proc_model    = node['processor']['model']
+  proc_version  = node['processor']['version']
+  if node.key?('gpu_devices')
+    nb_gpu       = node['gpu_devices'].length
+    gpu_model    = node['gpu_devices'].first[1]['model']
+  end
+  na            = {}
+  net_int       = node['network_adapters']
+  net_int.select {
+    |int| int['mountable']
+  }.each { |i|
+    if na.key?((i['rate'] / 1_000_000_000).to_s + 'Gb ' + i['interface'])
+      na[(i['rate'] / 1_000_000_000).to_s + 'Gb ' + i['interface']] += 1
+    else
+      na[(i['rate'] / 1_000_000_000).to_s + 'Gb ' + i['interface']] = 1
+    end
+  }
+  storages = {}
+  node['storage_devices'].each do |device|
+    unless device['storage'].nil?
+      storages[device['storage']].nil? ? storages[device['storage']] = [(device['size'].to_i / 1024**3).round] : storages[device['storage']] += [(device['size'].to_i / 1024**3).round]
+    end
+  end # each storage
+  cluster_storages = ''
+  storages.each do |t, s|
+    sizes = Hash.new(0)
+    s.each { |v| sizes.store(v, sizes[v]+1) }
+    sizes.each do |size, nb|
+      if nb > 1
+        cluster_storages += " #{nb}x#{size}GB #{t},"
+      else
+        cluster_storages += " #{size}GB #{t},"
+      end
+    end # each size
+  end # each storage
+  cluster_storages = cluster_storages[0..-2]
+  pmem_message = pmem ? ", #{pmem}GB PMEM" : ''
+  gpu_message  = nb_gpu ? ", #{nb_gpu} GPU#{nb_gpu > 1 ? "s" : ""} #{gpu_model}" : ''
+  return "#{nb_cpu} CPU#{(nb_cpu > 1) ? "s" : ""} #{proc_model} #{proc_version}, #{core_per_cpu} core#{(core_per_cpu > 1) ? "s" : ""}/CPU#{gpu_message}, #{ram}GB RAM#{pmem_message},#{cluster_storages}, #{na.map { |k,v| "#{v} x #{k}" }.join(', ') }"
+end
+
 def generate_reference_api
   # Output directory
   output_data_dir = "../../../data/grid5000/"
@@ -134,10 +180,6 @@ def generate_reference_api
         end
       end
 
-      # Write cluster info w/o nodes entries
-      write_json(cluster_path.join("#{cluster_uid}.json"),
-                 cluster.reject {|k, _v| k == "nodes"})
-
       #
       # Write node info
       #
@@ -165,6 +207,15 @@ def generate_reference_api
 
         write_json(cluster_path.join("nodes","#{node_uid}.json"), node)
       end
+
+      # Add nodes details to cluster description
+      cluster['nodes_count'] = cluster['nodes'].length
+      cluster['nodes_description'] = gen_node_description(cluster['nodes'].values.first)
+
+      # Write cluster info w/o nodes entries
+      write_json(cluster_path.join("#{cluster_uid}.json"),
+                 cluster.reject {|k, _v| k == "nodes"})
+
     end
 
   end
