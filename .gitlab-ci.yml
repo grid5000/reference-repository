@@ -112,6 +112,7 @@ preview_resources_explorer:
     # But create a manual job on branches
     - if: $CI_COMMIT_BRANCH
       when: manual
+      allow_failure: true
   variables:
     NEXT_PUBLIC_REFREPO_BRANCH: $CI_COMMIT_BRANCH
   trigger:
