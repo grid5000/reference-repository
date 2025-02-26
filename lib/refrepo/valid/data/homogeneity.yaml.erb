@@ -420,6 +420,8 @@ rennes:
     - ~storage_devices.pci-0000:64:00.0-scsi-0:2:3:0.model
     - ~storage_devices.pci-0000:64:00.0-scsi-0:2:3:0.firmware_version
 sophia:
+  esterel5-2: # different IB firmware version
+    - ~network_adapters.ib0.firmware_version
   esterel10-3: # 3 GPUs instead of 4
     - -gpu_devices.nvidia3
     - ~gpu_devices.nvidia1.cpu_affinity
