@@ -1,58 +1,169 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "nb_cores": 64,
+    "nb_procs": 2,
+    "nb_threads": 128,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "09/12/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.13.3"
   },
-  "bmc_version": "v1",
+  "bmc_version": "7.00",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2020-10-05",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R7525",
+    "serial": "425FY63",
+    "warranty_end": "2027-10-07"
   },
   "exotic": false,
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 1099511627776
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "tg3",
       "enabled": true,
+      "firmware_version": "FFV22.71.3 bc 5720-v1.39",
       "interface": "Ethernet",
       "ip": "172.16.130.46",
       "ip6": "2001:660:4406:800:3::2e",
       "kavlan": false,
       "mac": "f4:02:70:b9:2b:b6",
       "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
       "mountable": true,
       "mounted": true,
-      "name": "enp1s0f0np0",
+      "name": "eno1",
       "network_address": "mercantour6-1.sophia.grid5000.fr",
-      "rate": 10000000000,
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": null,
-      "switch_port": null
+      "switch_port": null,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "tg3",
+      "firmware_version": "FFV22.71.3 bc 5720-v1.39",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "f4:02:70:b9:2b:b7",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "ib0",
+      "driver": "ib_ipoib",
+      "firmware_version": "2.42.5000",
+      "guid": "0x043f72030017fd91",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "80:00:02:08:fe:80:00:00:00:00:00:00:04:3f:72:03:00:17:fd:91",
+      "management": false,
+      "model": "MT27520 Family [ConnectX-3 Pro]",
+      "name": "ibp65s0",
+      "rate": 40000000000,
+      "sriov": true,
+      "sriov_totalvfs": 8,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,32 +180,32 @@
   ],
   "nodeset": "mercantour6",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "none",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
-    "turboboost_enabled": true
+    "pstate_driver": "none",
+    "pstate_governor": "none",
+    "turboboost_enabled": false
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 46400000000,
+    "node_flops": 2969600000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
-    "clock_speed": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 16777216,
+    "clock_speed": 2900000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microarchitecture": "Zen 2",
+    "microcode": "0x830107c",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7542 32-Core Processor",
+    "vendor": "AMD",
+    "version": 7542
   },
   "redfish": true,
   "software": {
@@ -104,14 +215,26 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x670b5e80d622090027c144d0ef5cacdf",
       "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0",
+      "firmware_version": 5.16,
       "id": "disk0",
       "interface": "SSD",
-      "model": "unknown",
-      "size": 8,
+      "model": "PERC H745 Frnt",
+      "size": 239444426752,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x670b5e80d622090027c149ae2f2d9cb4",
+      "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:1:0",
+      "firmware_version": 5.16,
+      "id": "disk1",
+      "interface": "SSD",
+      "model": "PERC H745 Frnt",
+      "size": 1918239768576,
+      "storage": "SSD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -121,7 +244,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "mercantour6-1"
