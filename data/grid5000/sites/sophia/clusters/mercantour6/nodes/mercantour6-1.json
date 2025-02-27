@@ -7,11 +7,11 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "09/12/2023",
+    "release_date": "02/03/2025",
     "vendor": "Dell Inc.",
-    "version": "2.13.3"
+    "version": "2.18.1"
   },
-  "bmc_version": "7.00",
+  "bmc_version": "7.20.10.05",
   "chassis": {
     "manufactured_at": "2020-10-05",
     "manufacturer": "Dell Inc.",
@@ -116,7 +116,7 @@
       "device": "eth0",
       "driver": "tg3",
       "enabled": true,
-      "firmware_version": "FFV22.71.3 bc 5720-v1.39",
+      "firmware_version": "FFV23.11.4 bc 5720-v1.39",
       "interface": "Ethernet",
       "ip": "172.16.130.46",
       "ip6": "2001:660:4406:800:3::2e",
@@ -139,7 +139,7 @@
       "device": "eth1",
       "driver": "tg3",
       "enabled": false,
-      "firmware_version": "FFV22.71.3 bc 5720-v1.39",
+      "firmware_version": "FFV23.11.4 bc 5720-v1.39",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "f4:02:70:b9:2b:b7",
@@ -154,24 +154,22 @@
     },
     {
       "device": "ib0",
-      "driver": "ib_ipoib",
+      "driver": "mlx4_core",
       "enabled": true,
       "firmware_version": "2.42.5000",
       "guid": "0x043f72030017fd91",
       "interface": "InfiniBand",
       "ip": "172.18.130.46",
       "kavlan": false,
-      "mac": "80:00:02:08:fe:80:00:00:00:00:00:00:04:3f:72:03:00:17:fd:91",
+      "mac": "04:3f:72:03:00:17:fd:91",
       "management": false,
       "model": "MT27520 Family [ConnectX-3 Pro]",
       "mountable": true,
       "mounted": true,
-      "name": "ibp65s0",
+      "name": "ib0",
       "netmask": "255.255.240.0",
       "network_address": "mercantour6-1-ib0.sophia.grid5000.fr",
       "rate": 40000000000,
-      "sriov": true,
-      "sriov_totalvfs": 8,
       "vendor": "Mellanox Technologies"
     },
     {
@@ -189,12 +187,12 @@
   ],
   "nodeset": "mercantour6",
   "operating_system": {
-    "cstate_driver": "none",
+    "cstate_driver": "acpi_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "none",
-    "pstate_governor": "none",
-    "turboboost_enabled": false
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 46400000000,
@@ -210,7 +208,7 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Zen 2",
-    "microcode": "0x830107c",
+    "microcode": "0x830107d",
     "model": "AMD EPYC",
     "other_description": "AMD EPYC 7542 32-Core Processor",
     "vendor": "AMD",
