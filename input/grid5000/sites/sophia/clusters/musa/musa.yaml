@@ -8,6 +8,15 @@ queues:
   - admin
   - production
 nodes:
+  musa-[1-2]:
+    supported_job_types:
+      max_walltime: 21600
+  musa-[3-4]:
+    supported_job_types:
+      max_walltime: 86400
+  musa-[5-6]:
+    supported_job_types:
+      max_walltime: 172800
   musa-[1-6]:
     chassis:
       manufactured_at: 2024-12-09
@@ -15,7 +24,6 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 604800
     processor:
       microarchitecture: Zen 4
       clock_speed: 2_900_000_000

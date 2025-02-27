@@ -16,11 +16,16 @@ chiterne:
     - uid: pdu-b2p2
       port: 9
 
-gardin:
+pve-3:
   kind: physical
   warranty: 2025-06-25
   serial: 2SYTKQ2
   network_adapters:
+    default:
+      ip: 172.16.47.9
+      mac: 24:6e:96:dc:f4:2c
+    adm:
+      ip: 172.17.47.9
     bmc:
       ip: 172.17.46.9
       mac: 54:48:10:f4:f9:0c
