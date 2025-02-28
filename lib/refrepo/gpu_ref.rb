@@ -20,6 +20,18 @@ class GPURef
         'fp-64' => 420000000000,
       },
     },
+    'GeForce GTX 1080' => {
+      'cores'              => 2560,
+      'compute_capability' => '6.1',
+      'short_name'         => 'GTX 1080',
+      'alias'              => 'gtx1080',
+      'microarchitecture'  => 'Pascal',
+      'performance'        => {
+        'fp-16' => 138600000000,
+        'fp-32' => 8872000000000,
+        'fp-64' => 277200000000,
+      },
+    },
     'GeForce GTX 1080 Ti' => {
       'cores'              => 3584,
       'compute_capability' => '6.1',
