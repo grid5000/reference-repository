@@ -1,0 +1,86 @@
+---
+swadmin-3:
+  model: Aruba 2930F
+  warranty: 2029-11
+  kind: switch
+  managed_by_us: true
+  site: sophia
+  ip: 172.17.143.227
+  snmp_community: public
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        1:
+           uid: uvb-11-bmc
+           kind: other
+        2:
+           uid: uvb-12-bmc
+           kind: other
+        3:
+           uid: mercantour1-15-bmc
+           kind: other
+        4:
+           uid: mercantour1-16-bmc
+           kind: other
+        5:
+           uid: mercantour1-11-bmc
+           kind: other
+        6:
+           uid: mercantour1-12-bmc
+           kind: other
+        7:
+           uid: mercantour1-7-bmc
+           kind: other
+        8:
+           uid: mercantour1-8-bmc
+           kind: other
+        9:
+           uid: mercantour1-3-bmc
+           kind: other
+        10:
+           uid: mercantour1-4-bmc
+           kind: other
+        12:
+           uid: mercantour2-5-bmc
+           kind: other
+        13:
+           uid: mercantour1-2-bmc
+           kind: other
+        14:
+           uid: mercantour1-1-bmc
+           kind: other
+        15:
+           uid: mercantour1-6-bmc
+           kind: other
+        16:
+           uid: mercantour1-5-bmc
+           kind: other
+        17:
+           uid: mercantour1-10-bmc
+           kind: other
+        18:
+           uid: mercantour1-9-bmc
+           kind: other
+        19:
+           uid: mercantour1-14-bmc
+           kind: other
+        20:
+           uid: mercantour1-13-bmc
+           kind: other
+        21:
+           uid: uvb-10-bmc
+           kind: other
+        22:
+           uid: uvb-9-bmc
+           kind: other
+        24:
+           uid: sw-2
+           kind: switch
+        26:
+          uid: swadmin-4
+          kind: switch
+          rate: 10000000000
