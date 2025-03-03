@@ -37,14 +37,18 @@ roazhon8: *sairpico-shared
 abacus1: *sairpico-shared
 abacus2: *sairpico-shared
 
-## LINKMEDIA
-abacus3: &linkmedia-exclusive
-    p1: [linkmedia, '@admin']
+## LINKMEDIA & ARTISHAU
+abacus3: &linkmedia-artishau-exclusive
+    p1: [linkmedia, artishau, '@admin']
     besteffort: ['@inria_group', '@other_groups_with_access']
-abacus10: *linkmedia-exclusive
-abacus18: *linkmedia-exclusive
-abacus21: *linkmedia-exclusive
-abacus26: *linkmedia-exclusive
+abacus10: *linkmedia-artishau-exclusive
+abacus18: *linkmedia-artishau-exclusive
+abacus21: *linkmedia-artishau-exclusive
+
+## ARTISHAU
+abacus26: &artishau-exclusive
+    p1: [artishau, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
 
 ## SIROCCO
 abacus5: &sirocco-exclusive
