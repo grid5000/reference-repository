@@ -210,7 +210,8 @@ def generate_reference_api
 
       # Add nodes details to cluster description
       cluster['nodes_count'] = cluster['nodes'].length
-      cluster['nodes_description'] = gen_node_description(cluster['nodes'].values.first)
+      first_node = cluster['nodes'].values.select { |x| not x['status'] == 'retired' }.sort_by { |x| split_cluster_node(x['uid']) }.first # use first non-retired node
+      cluster['nodes_description'] = gen_node_description(first_node)
 
       # Write cluster info w/o nodes entries
       write_json(cluster_path.join("#{cluster_uid}.json"),
