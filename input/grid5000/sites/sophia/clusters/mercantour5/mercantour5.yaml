@@ -30,14 +30,12 @@ nodes:
         mountable: true
         mounted: true
     storage_devices:
-      disk0:
+      pci-0000:3b:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:2:0:0"
-      disk1:
+      pci-0000:3b:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SSD
-        by_path: "/dev/disk/by-path/pci-0000:3b:00.0-scsi-0:2:1:0"
     software:
       standard-environment: debian11-x64-std
     management_tools:
