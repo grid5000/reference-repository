@@ -121,8 +121,7 @@ def check_network_description(options)
                 'port' => mynetnodes.first['port']
               }
             else
-              puts "ERROR: this port is connected to a node that does not exist: #{port}"
-              ok = false
+              puts "WARNING: this port is connected to a node that does not exist: #{port}"
             end
           elsif ['switch','router'].include?(port['kind'])
             mynetnodes = netnodes.select { |n| n.values_at('kind', 'uid') == port.values_at('kind', 'uid') }
