@@ -52,3 +52,7 @@ class Hash
     h2
   end
 end
+
+def split_cluster_node(k)
+  [k[/([a-z]+)/, 1], k[/[a-z](\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]
+end

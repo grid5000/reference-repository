@@ -17,7 +17,7 @@ def generate_puppet_clusters(options)
             puts "Add #{s_uid}"
             hiera[s_uid] = {}
         end
-        s_hash['clusters'].sort_by{|c_uid, _c_hash| [c_uid[/(\D+)/, 1], c_uid[/(\d+)/, 1].to_i]}.each do |c_uid, c_hash|
+        s_hash['clusters'].sort_by{|c_uid, _c_hash| split_cluster_node(c_uid) }.each do |c_uid, c_hash|
             if ! hiera[s_uid].key? c_uid
                 puts "  Add #{s_uid}"
                 hiera[s_uid][c_uid] = {}
