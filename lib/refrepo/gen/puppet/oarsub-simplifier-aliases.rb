@@ -61,7 +61,7 @@ def generate_all_sites_aliases
       aliases[site][cluster] = "cluster='#{cluster}'"
       aliases[site]["#{cluster}-%d"] = "host='#{cluster}-%d.#{site}.grid5000.fr'"
     end
-    aliases[site] = aliases[site].sort_by { |cluster, _| [cluster[/(\D+)/, 1], cluster[/(\d+)/, 1].to_i] }.to_h
+    aliases[site] = aliases[site].sort_by { |cluster, _| split_cluster_node(cluster) }.to_h
   end
 
   aliases = aliases.sort_by { |site, _| site }.to_h
