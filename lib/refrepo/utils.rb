@@ -54,5 +54,5 @@ class Hash
 end
 
 def split_cluster_node(k)
-  [k[/(\D+)/, 1], k[/(\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]
+  [k[/([a-z]+)/, 1], k[/[a-z](\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]
 end
