@@ -6,13 +6,13 @@ boot_type: bios
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   esterel10-[1-3]:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Broadwell
       clock_speed: 2200000000
