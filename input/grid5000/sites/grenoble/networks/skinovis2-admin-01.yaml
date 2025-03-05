@@ -1,0 +1,21 @@
+---
+skinovis2-admin-01:
+  model: Dell PowerConnect 6248
+  warranty: 2024-12-01
+  serial: nil
+  kind: switch
+  managed_by_us: true
+  site: grenoble
+  snmp_community: public
+  ip: 172.17.31.244
+  backplane_bps: 10_000_000_000
+  linecards:
+    1:
+      backplane_bps: 10_000_000_000
+      rate: 1_000_000_000
+      ports:
+        48:
+          uid: skinovis2-prod-01
+          kind: switch
+          trunk: false
+
