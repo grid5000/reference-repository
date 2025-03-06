@@ -744,7 +744,7 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
     case cpu_name
     when /Silver 4110/, /Silver 4114/, /Silver 4214/, /Silver 4216/, /Gold 5218/, /Gold 5220/, /Gold 5115/, /Gold 5118/, /Gold 5120/, /Gold 5220R/
       return 16
-    when /Gold 6126/, /Gold 6130/, /Gold 6142/, /Gold 6154/, /Gold 6248/, /Gold 6254/, /Gold 6240L/
+    when /Gold 6126/, /Gold 6130/, /Gold 6142/, /Gold 6154/, /Gold 6240/, /Gold 6248/, /Gold 6254/, /Gold 6240L/
       return 32
     end
     raise "Error: unknown CPU flop per cycle for #{cpu_name} (cluster #{cluster_uid}), cannot compute flops"
