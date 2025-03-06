@@ -1,9 +1,9 @@
 ---
 model: Cluster Model # TODO: change this value.
-created_at: 1970-01-01 # TODO: change this value
+created_at: 2025-03-06
 kavlan: false
-boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
-exotic: false # TODO: specify if 'true' or 'false'
+boot_type: bios
+exotic: false
 queues:
   - admin
   - testing
@@ -35,7 +35,7 @@ nodes:
         interface: SAS
         by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
-      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: racadm
     nodeset: esterel7
