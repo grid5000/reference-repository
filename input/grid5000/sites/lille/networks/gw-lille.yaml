@@ -118,14 +118,52 @@ gw:
       snmp_pattern: Ethernet%LINECARD%/%PORT%
       kavlan_pattern: Ethernet%LINECARD%/%PORT%
       backplane_bps: 36000000000000
-      rate: 10000000000
+      rate: 25000000000
       ports:
         1:
+          uid: pve-1
+          kind: server
+        2:
+          uid: pve-1
+          kind: server
+        3:
+          uid: pve-2
+          kind: server
+        4:
+          uid: pve-2
+          kind: server
+        5:
+          uid: pve-4
+          kind: server
+        6:
+          uid: pve-4
+          kind: server
+        7:
+          uid: port-channel2
+          kind: channel
+        8:
+          uid: port-channel2
+          kind: channel
+        9:
+          uid: port-channel3
+          kind: channel
+        10:
+          uid: port-channel3
+          kind: channel
+        11:
+          uid: port-channel4
+          kind: channel
+        12:
+          uid: port-channel4
+          kind: channel
+        46:
           uid: pve-dmz-north-2
           kind: server
+          rate: 10000000000
         47:
           uid: renater-lille
           kind: backbone
+          rate: 10000000000
         53:
           uid: port-channel1
           kind: channel
@@ -140,3 +178,18 @@ gw:
       port: lag2
       rate: 200000000000
       kind: switch
+    port-channel2:
+      uid: srv-data2
+      port: port-channel2
+      kind: server
+      rate: 50000000000
+    port-channel3:
+      uid: granche-srv1
+      port: port-channel3
+      kind: server
+      rate: 50000000000
+    port-channel4:
+      uid: granche-srv2
+      port: port-channel4
+      kind: server
+      rate: 50000000000
