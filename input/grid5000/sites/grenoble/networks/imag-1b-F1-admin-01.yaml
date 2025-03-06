@@ -1,0 +1,24 @@
+---
+imag-1b-F1-admin-01:
+  model: Aruba R9W97A 8100-40XT8XF4C switch
+  warranty: 2048-05
+  serial: SG44LS104S
+  kind: switch
+  managed_by_us: true
+  site: grenoble
+  snmp_community: public
+  ip: 172.17.31.246
+  backplane_bps: 1_760_000_000_000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 10_000_000_000
+      backplane_bps: 1_760_000_000_000
+      ports:
+        48:
+          uid: imag-1b-F1-prod-01
+          kind: switch
+          trunk: false
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
+
