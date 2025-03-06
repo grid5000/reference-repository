@@ -34,8 +34,8 @@ queues:
 nodes:
   #{cluster}-#{nodes_count == 1 ? '1' : "[1-#{nodes_count}]"}:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: Put date.
-      warranty_end: 1970-01-01 # TODO: Put date.
+      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
+      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
     supported_job_types:
       deploy: true
       besteffort: true
