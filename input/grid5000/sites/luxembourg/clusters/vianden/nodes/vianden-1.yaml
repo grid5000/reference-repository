@@ -8,79 +8,14 @@ vianden-1:
     nb_threads: 208
     platform_type: x86_64
   bios:
-    release_date: 06/24/2024
+    release_date: '09/27/2024'
     vendor: Dell Inc.
-    version: 2.0.4
-  bmc_version: unknown
+    version: 2.4.4
+  bmc_version: 7.20.10.05
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge XE9680
     serial: 4VLJM44
-  gpu_devices:
-    card0:
-      cpu_affinity: 0
-      device: "/dev/dri/card0"
-      memory: 214748364800
-      model: AMD Instinct MI300X OAM
-      power_default_limit: 750.0
-      vbios_version: 113-MI3SRIOV-001
-      vendor: AMD
-    card1:
-      cpu_affinity: 0
-      device: "/dev/dri/card1"
-      memory: 214748364800
-      model: AMD Instinct MI300X OAM
-      power_default_limit: 750.0
-      vbios_version: 113-MI3SRIOV-001
-      vendor: AMD
-    card2:
-      cpu_affinity: 0
-      device: "/dev/dri/card2"
-      memory: 214748364800
-      model: AMD Instinct MI300X OAM
-      power_default_limit: 750.0
-      vbios_version: 113-MI3SRIOV-001
-      vendor: AMD
-    card3:
-      cpu_affinity: 0
-      device: "/dev/dri/card3"
-      memory: 214748364800
-      model: AMD Instinct MI300X OAM
-      power_default_limit: 750.0
-      vbios_version: 113-MI3SRIOV-001
-      vendor: AMD
-    card4:
-      cpu_affinity: 1
-      device: "/dev/dri/card4"
-      memory: 214748364800
-      model: AMD Instinct MI300X OAM
-      power_default_limit: 750.0
-      vbios_version: 113-MI3SRIOV-001
-      vendor: AMD
-    card5:
-      cpu_affinity: 1
-      device: "/dev/dri/card5"
-      memory: 214748364800
-      model: AMD Instinct MI300X OAM
-      power_default_limit: 750.0
-      vbios_version: 113-MI3SRIOV-001
-      vendor: AMD
-    card6:
-      cpu_affinity: 1
-      device: "/dev/dri/card6"
-      memory: 214748364800
-      model: AMD Instinct MI300X OAM
-      power_default_limit: 750.0
-      vbios_version: 113-MI3SRIOV-001
-      vendor: AMD
-    card7:
-      cpu_affinity: 1
-      device: "/dev/dri/card7"
-      memory: 214748364800
-      model: AMD Instinct MI300X OAM
-      power_default_limit: 750.0
-      vbios_version: 113-MI3SRIOV-001
-      vendor: AMD
   main_memory:
     ram_size: 2199023255552
   memory_devices:
@@ -187,7 +122,7 @@ vianden-1:
       management: true
     eth0:
       driver: bnxt_en
-      firmware_version: 227.0.134.2/pkg 22.71.11.13
+      firmware_version: 231.0.154.0/pkg 23.11.16.22
       interface: Ethernet
       ip: 172.16.178.1
       mac: d4:04:e6:c5:88:60
@@ -200,7 +135,7 @@ vianden-1:
       vendor: Broadcom Inc. and subsidiaries
     eth1:
       driver: bnxt_en
-      firmware_version: 227.0.134.2/pkg 22.71.11.13
+      firmware_version: 231.0.154.0/pkg 23.11.16.22
       interface: Ethernet
       mac: d4:04:e6:c5:88:61
       management: false
@@ -211,7 +146,7 @@ vianden-1:
       vendor: Broadcom Inc. and subsidiaries
     eth2:
       driver: bnxt_en
-      firmware_version: 227.0.134.2/pkg 22.71.11.13
+      firmware_version: 231.0.154.0/pkg 23.11.16.22
       interface: Ethernet
       mac: d4:04:e6:c5:88:62
       management: false
@@ -222,7 +157,7 @@ vianden-1:
       vendor: Broadcom Inc. and subsidiaries
     eth3:
       driver: bnxt_en
-      firmware_version: 227.0.134.2/pkg 22.71.11.13
+      firmware_version: 231.0.154.0/pkg 23.11.16.22
       interface: Ethernet
       mac: d4:04:e6:c5:88:63
       management: false
@@ -233,7 +168,7 @@ vianden-1:
       vendor: Broadcom Inc. and subsidiaries
     eth4:
       driver: tg3
-      firmware_version: FFV22.61.8 bc 5720-v1.39
+      firmware_version: FFV23.11.4 bc 5720-v1.39
       interface: Ethernet
       mac: c4:cb:e1:c8:54:06
       management: false
@@ -244,7 +179,7 @@ vianden-1:
       vendor: Broadcom Inc. and subsidiaries
     eth5:
       driver: tg3
-      firmware_version: FFV22.61.8 bc 5720-v1.39
+      firmware_version: FFV23.11.4 bc 5720-v1.39
       interface: Ethernet
       mac: c4:cb:e1:c8:54:07
       management: false
@@ -269,7 +204,7 @@ vianden-1:
     cstate_governor: menu
     ht_enabled: true
     pstate_driver: intel_pstate
-    pstate_governor: powersave
+    pstate_governor: performance
     turboboost_enabled: true
   other_devices:
     fpga0:
@@ -277,10 +212,10 @@ vianden-1:
       type: fpga
       vendor: Advanced Micro Devices, Inc. [AMD/ATI]
   processor:
-    cache_l1d: 4096
-    cache_l1i: 3072
-    cache_l2: 212992
-    cache_l3: 215040
+    cache_l1d: 49152
+    cache_l1i: 32768
+    cache_l2: 2097152
+    cache_l3: 110100480
     ht_capable: true
     instruction_set: x86-64
     microcode: '0x2b000603'
