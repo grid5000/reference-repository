@@ -9,6 +9,24 @@
       "port": "lag2",
       "rate": 200000000000,
       "uid": "sw-1"
+    },
+    "port-channel2": {
+      "kind": "server",
+      "port": "port-channel2",
+      "rate": 50000000000,
+      "uid": "srv-data2"
+    },
+    "port-channel3": {
+      "kind": "server",
+      "port": "port-channel3",
+      "rate": 50000000000,
+      "uid": "granche-srv1"
+    },
+    "port-channel4": {
+      "kind": "server",
+      "port": "port-channel4",
+      "rate": 50000000000,
+      "uid": "granche-srv2"
     }
   },
   "ip": "172.16.47.254",
@@ -27,100 +45,138 @@
         {
           "kind": "server",
           "snmp_name": "Ethernet1/1",
+          "uid": "pve-1"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "Ethernet1/2",
+          "uid": "pve-1"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "Ethernet1/3",
+          "uid": "pve-2"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "Ethernet1/4",
+          "uid": "pve-2"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "Ethernet1/5",
+          "uid": "pve-4"
+        },
+        {
+          "kind": "server",
+          "snmp_name": "Ethernet1/6",
+          "uid": "pve-4"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/7",
+          "uid": "port-channel2"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/8",
+          "uid": "port-channel2"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/9",
+          "uid": "port-channel3"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/10",
+          "uid": "port-channel3"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/11",
+          "uid": "port-channel4"
+        },
+        {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/12",
+          "uid": "port-channel4"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "server",
+          "rate": 10000000000,
+          "snmp_name": "Ethernet1/46",
           "uid": "pve-dmz-north-2"
         },
         {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
           "kind": "backbone",
+          "rate": 10000000000,
           "snmp_name": "Ethernet1/47",
           "uid": "renater-lille"
         },
@@ -147,7 +203,7 @@
           "uid": "port-channel1"
         }
       ],
-      "rate": 10000000000,
+      "rate": 25000000000,
       "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
     }
   ],
