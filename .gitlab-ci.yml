@@ -4,7 +4,7 @@ stages:
   - lint
   - check
   - generate-access-history
-  - deploy
+  - resources-explorer
 
 include:
   - project: 'grid5000/grid5000-gitlab-templates'
@@ -53,10 +53,8 @@ wikigen:
         DEBIAN_VERSION: [bookworm]
   script:
     - echo "$GRID5000_API" > "${HOME}/.grid5000_api.yml"
-    - bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=diff
-  only:
-    refs:
-      - master
+    - if [ "$CI_COMMIT_BRANCH" = "master" ]; then export WIKI="update"; else export WIKI="diff"; fi
+    - bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=${WIKI}
 
 check-no-changes-in-data:
   extends: .template-refrepo
@@ -88,12 +86,35 @@ deploy-to-api-servers:
     - /srv/ci-runner-scripts/bin/update-api-servers
 
 rebuild_resources_explorer:
-  stage: deploy
+  stage: resources-explorer
   # NOTE: this job triggers a rebuild of resources explorer which will be
   # automatically deployed to production if it succeeds, therefore it is only
   # ran on the main branch.
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  trigger:
+    project: grid5000/resources-explorer
+    # This mirrors the status of RE's pipeline into our own.
+    # We may want to revisit this if we want to show a "green" job as soon
+    # as the pipeline is triggered, regardless of its status.
+    strategy: depend
+
+preview_resources_explorer:
+  stage: resources-explorer
+  # NOTE: this job triggers a rebuild of resources explorer which will be
+  # automatically deployed to a specific environment.
+  # Resources Explorer build environments are available here:
+  # https://gitlab.inria.fr/grid5000/resources-explorer/-/environments
+  rules:
+    # Do not create the job on master
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: never
+    # But create a manual job on branches
+    - if: $CI_COMMIT_BRANCH
+      when: manual
+      allow_failure: true
+  variables:
+    NEXT_PUBLIC_REFREPO_BRANCH: $CI_COMMIT_BRANCH
   trigger:
     project: grid5000/resources-explorer
     # This mirrors the status of RE's pipeline into our own.

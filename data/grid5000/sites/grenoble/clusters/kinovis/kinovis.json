@@ -2,12 +2,85 @@
   "boot_type": "uefi",
   "created_at": "Mon, 10 Feb 2025 00:00:00 GMT",
   "exotic": false,
-  "kavlan": false,
+  "kavlan": true,
   "manufactured_at": "2024-06-26",
   "metrics": [
-
+    {
+      "description": "Default subset of metrics from Prometheus Node Exporter",
+      "name": "prom_default_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "id": [
+          "node_boot_time_seconds",
+          "node_cpu_scaling_frequency_hertz",
+          "node_cpu_seconds_total",
+          "node_filesystem_free_bytes",
+          "node_filesystem_size_bytes",
+          "node_load1",
+          "node_load15",
+          "node_load5",
+          "node_memory_Buffers_bytes",
+          "node_memory_Cached_bytes",
+          "node_memory_MemAvailable_bytes",
+          "node_memory_MemFree_bytes",
+          "node_memory_MemTotal_bytes",
+          "node_memory_Shmem_bytes",
+          "node_memory_SwapFree_bytes",
+          "node_memory_SwapTotal_bytes",
+          "node_network_receive_bytes_total",
+          "node_network_receive_packets_total",
+          "node_network_transmit_bytes_total",
+          "node_network_transmit_packets_total",
+          "node_procs_blocked",
+          "node_procs_running",
+          "kwollect_custom"
+        ],
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Node Exporter",
+      "name": "prom_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "Default subset of metrics from Prometheus Nvidia DCGM Exporter",
+      "name": "prom_nvgpu_default_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "id": [
+          "DCGM_FI_DEV_SM_CLOCK",
+          "DCGM_FI_DEV_MEM_CLOCK",
+          "DCGM_FI_DEV_GPU_TEMP",
+          "DCGM_FI_DEV_POWER_USAGE",
+          "DCGM_FI_DEV_MEM_COPY_UTIL"
+        ],
+        "port": 9400,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Nvidia DCGM Exporter",
+      "name": "prom_nvgpu_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "port": 9400,
+        "protocol": "prometheus"
+      }
+    }
   ],
   "model": "HPE Proliant DL380 Gen11",
+  "nodes_count": 6,
+  "nodes_description": "2 CPUs Intel Xeon Gold 6442Y, 24 cores/CPU, 2 GPUs L40S, 256GB RAM, 1787GB SSD, 2 x 25Gb Ethernet, 1 x 100Gb Ethernet",
   "priority": 202506,
   "queues": [
     "admin",

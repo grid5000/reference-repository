@@ -101,7 +101,7 @@ def gen_json_files(allBmc, options)
     dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/webfish"
     checks_dir_creation(dir)
     allBmc.sort_by{ |s_site, _d_site| s_site}.each do |s_site, _d_array|
-        actualFile = allBmc[s_site].sort_by{|k, _| [k[/(\D+)/, 1], k[/(\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]}.to_h
+        actualFile = allBmc[s_site].sort_by{|k, _| split_cluster_node(k) }.to_h
         siteLocation = dir + "/" + s_site
         checks_dir_creation(siteLocation)
         fileLocation =  siteLocation + "/webfish.json"

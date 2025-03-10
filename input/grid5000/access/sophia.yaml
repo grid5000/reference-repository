@@ -8,12 +8,22 @@ musa:
     p4: ['@other_groups_with_access']
 
 # SHARED MODE
-mercantour2:
+# Common clusters of Sophia Inria Center
+mercantour2: &inria-sophia
     p1: ['@inria_sophia_group', '@admin']
     p3: ['@inria_group']
     p4: ['@other_groups_with_access']
+esterel10: *inria-sophia
 
 # DEDICATED MODE
+esterel5:
+    p1: [stars, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+mercantour6:
+    p1: [coati, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
 esterel41:
     p1: [evergreen, '@admin']
     besteffort: ['@inria_group', '@other_groups_with_access']
