@@ -72,7 +72,7 @@ eos
     ['~', /\.*fpga\.*/],
   ]
 
-  (0..5).each { |eth|
+  (0..7).each { |eth|
     keys = ignore_netkeys.gsub('.eth.', ".eth#{eth}.").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
 

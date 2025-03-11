@@ -84,7 +84,6 @@ lille:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.model
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:5:0.vendor
-    - ~network_adapters.eth0.rate
   chifflot-5:
     - +kavlan.eth1
     - +kavlan6.eth1
@@ -95,7 +94,6 @@ lille:
     - ~network_adapters.eth1.enabled
     - ~network_adapters.eth1.kavlan
     - ~network_adapters.eth1.mountable
-    - ~network_adapters.eth0.rate
     - +network_adapters.eth1.ip
     - +network_adapters.eth1.ip6
   chifflot-6:
@@ -436,6 +434,9 @@ sophia:
     - ~chassis.manufacturer
 #toulouse:
 strasbourg:
+  fleckenstein-[2-3]:
+    - ~network_adapters.eth6.firmware_version
+    - ~network_adapters.eth7.firmware_version
   fleckenstein-4:
     - ~bios.release_date
     - ~bmc_version
