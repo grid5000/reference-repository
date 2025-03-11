@@ -9,7 +9,7 @@
     dhcp_entries = []
 
     data.fetch('nodes').each_sort_by_node_uid { |node_uid, node|
-      next if node == nil || (node['status'] && node['status'] == 'retired')
+      next if node == nil || (node['status'] && node['status'] == 'retired') || node['kind'] == 'virtual'
 
       # Get ipv4, ipv6 and mac addresses
       begin

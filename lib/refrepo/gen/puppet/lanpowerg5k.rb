@@ -31,7 +31,7 @@ def generate_puppet_lanpowerg5k(options)
 
     # Generate config for both cluster and server entries of the refapi
     site_refapi['servers'] ||= {}
-    cluster_list = site_refapi['clusters'].keys | site_refapi['servers'].keys | config[site_uid].keys | credentials[site_uid].keys
+    cluster_list = site_refapi['clusters'].keys | config[site_uid].keys | credentials[site_uid].keys
 
     cluster_list.sort.each { |cluster_uid|
       cluster_refapi      = site_refapi['clusters'][cluster_uid].fetch('nodes') rescue site_refapi['servers'][cluster_uid].fetch('nodes') rescue nil
