@@ -55,9 +55,9 @@ wikigen:
     - if [ "${SITE}" = "global" ]; then export GENERATORS=$GLOBAL_GENERATORS ; else export GENERATORS=$SITE_GENERATORS; fi
     - if [ "$CI_COMMIT_BRANCH" = "master" ]; then export WIKI="update"; else export WIKI="diff"; fi
     - for GENERATOR in ${GENERATORS}; do
-        echo "Running $GENERATOR" ;
+        echo -e "\e[0Ksection_start:`date +%s`:$GENERATOR\r\e[0KRunning $GENERATOR";
         bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=${WIKI} ;
-        echo " ";
+        echo -e "\e[0Ksection_end:`date +%s`:$GENERATOR\r\e[0K";
       done
 
 check-no-changes-in-data:
