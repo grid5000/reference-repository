@@ -48,7 +48,7 @@ wikigen:
     GLOBAL_GENERATORS: cpu_parameters disk_reservation environments group_storage hardware kwollect_metrics oar_properties status
   parallel:
     matrix:
-      - SITE: [global, grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia, strasbourg, toulouse]
+      - SITE: [global, grenoble, lille, luxembourg, louvain, lyon, nancy, nantes, rennes, sophia, strasbourg, toulouse]
         DEBIAN_VERSION: [bookworm]
   script:
     - echo "$GRID5000_API" > "${HOME}/.grid5000_api.yml"
