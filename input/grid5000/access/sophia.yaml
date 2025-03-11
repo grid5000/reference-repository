@@ -16,9 +16,11 @@ mercantour2: &inria-sophia
 esterel10: *inria-sophia
 
 # DEDICATED MODE
-esterel5:
+esterel5: &dedicated-stars
     p1: [stars, '@admin']
     besteffort: ['@inria_group', '@other_groups_with_access']
+
+esterel7: *dedicated-stars
 
 mercantour6:
     p1: [coati, '@admin']
