@@ -28,12 +28,13 @@ server logfile="/var/log/conman.log"
   #
   # * from conf/console-password.yaml: passwd hash
 
-  # Generate conman config for both cluster and server entries of the refapi
+  # Generate conman config for clusters of the refapi
   site_refapi['servers'] ||= {}
-  cluster_list = site_refapi.fetch('clusters', {}).keys | site_refapi['servers'].keys | site_config.keys | site_credentials.keys
+  cluster_list = site_refapi.fetch('clusters', {}).keys | site_config.keys | site_credentials.keys
   
-  cluster_list.sort.each { |cluster_uid| 
-    cluster_refapi      = site_refapi['clusters'][cluster_uid].fetch('nodes') rescue site_refapi['servers'][cluster_uid].fetch('nodes') rescue nil
+  cluster_list.sort.each { |cluster_uid|
+
+    cluster_refapi      = site_refapi['clusters'][cluster_uid].fetch('nodes') rescue nil
     cluster_config      = site_config[cluster_uid]['conman'] rescue nil
     cluster_credentials = site_credentials.fetch(cluster_uid) rescue nil                                             
     
