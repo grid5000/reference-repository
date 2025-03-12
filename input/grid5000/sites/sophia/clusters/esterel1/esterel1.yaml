@@ -30,11 +30,11 @@ nodes:
         mountable: true
         mounted: true
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:03:00.0-scsi-0:2:0:0: # This field will have to be renamed later.
         id: disk0
         interface: SAS
         by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0" # this path will have to change later.
-      disk1:
+      pci-0000:03:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SAS
         by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:1:0"
