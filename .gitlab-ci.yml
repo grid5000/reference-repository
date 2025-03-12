@@ -43,18 +43,22 @@ wikigen:
   extends: .template-refrepo
   stage: check
   allow_failure: true
+  variables:
+    SITE_GENERATORS: site_hardware site_network
+    GLOBAL_GENERATORS: cpu_parameters disk_reservation environments group_storage hardware kwollect_metrics oar_properties status
   parallel:
     matrix:
-      - GENERATOR: [cpu_parameters, disk_reservation, environments, group_storage, hardware, kwollect_metrics, oar_properties, status]
-        SITE: global
-        DEBIAN_VERSION: [bookworm]
-      - GENERATOR: [site_hardware, site_network]
-        SITE: [grenoble, lille, luxembourg, lyon, nancy, nantes, rennes, sophia, strasbourg, toulouse]
+      - SITE: [global, grenoble, lille, luxembourg, louvain, lyon, nancy, nantes, rennes, sophia, strasbourg, toulouse]
         DEBIAN_VERSION: [bookworm]
   script:
     - echo "$GRID5000_API" > "${HOME}/.grid5000_api.yml"
+    - if [ "${SITE}" = "global" ]; then export GENERATORS=$GLOBAL_GENERATORS ; else export GENERATORS=$SITE_GENERATORS; fi
     - if [ "$CI_COMMIT_BRANCH" = "master" ]; then export WIKI="update"; else export WIKI="diff"; fi
-    - bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=${WIKI}
+    - for GENERATOR in ${GENERATORS}; do
+        echo -e "\e[0Ksection_start:`date +%s`:$GENERATOR\r\e[0KRunning $GENERATOR";
+        bundle exec rake gen:wiki NAME=${GENERATOR} SITE=${SITE} DO=${WIKI} ;
+        echo -e "\e[0Ksection_end:`date +%s`:$GENERATOR\r\e[0K";
+      done
 
 check-no-changes-in-data:
   extends: .template-refrepo
