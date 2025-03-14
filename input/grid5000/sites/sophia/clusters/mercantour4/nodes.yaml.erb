@@ -64,6 +64,7 @@ nodes:
     network_adapters:
       bmc:
         management: true
+        interface: Ethernet
         mac: <%= mac_bmc_list[i - 1] %>
       eth0:
         interface: Ethernet

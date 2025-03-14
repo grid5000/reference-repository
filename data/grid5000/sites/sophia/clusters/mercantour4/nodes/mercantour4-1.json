@@ -23,7 +23,7 @@
     "ram_size": 8
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
@@ -51,13 +51,12 @@
       "name": "enp1s0f0np0",
       "network_address": "mercantour4-1.sophia.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "switch": "sw-3",
+      "switch_port": "1/1/18"
     },
     {
       "device": "bmc",
       "enabled": true,
-      "interface": "Ethernet",
       "ip": "172.17.130.41",
       "kavlan": false,
       "mac": "50:9a:4c:65:5d:38",
@@ -77,8 +76,8 @@
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 38400000000,
+    "node_flops": 2764800000000
   },
   "processor": {
     "cache_l1": null,
@@ -86,7 +85,7 @@
     "cache_l1i": 8,
     "cache_l2": 8,
     "cache_l3": 8,
-    "clock_speed": 8,
+    "clock_speed": 2400000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Haswell",
@@ -105,7 +104,7 @@
   "storage_devices": [
     {
       "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_path": "pci-0000:18:00.0-scsi-0:2:0:0",
       "id": "disk0",
       "interface": "SAS",
       "model": "unknown",
