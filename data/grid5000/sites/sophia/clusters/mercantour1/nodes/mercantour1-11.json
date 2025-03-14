@@ -13,12 +13,56 @@
   },
   "bmc_version": "v1",
   "chassis": {
-    "manufactured_at": "1970-01-01",
+    "manufactured_at": "2014-04-25",
     "manufacturer": "Unknown",
     "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "warranty_end": "2019-04-25"
   },
   "exotic": false,
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.196.11",
+      "kavlan-11": "10.7.229.11",
+      "kavlan-12": "10.11.229.11",
+      "kavlan-13": "10.15.229.11",
+      "kavlan-14": "10.19.229.11",
+      "kavlan-16": "10.27.229.11",
+      "kavlan-17": "10.31.229.11",
+      "kavlan-18": "10.35.229.11",
+      "kavlan-2": "192.168.212.11",
+      "kavlan-20": "10.43.229.11",
+      "kavlan-21": "10.47.229.11",
+      "kavlan-3": "192.168.228.11",
+      "kavlan-4": "10.32.4.11",
+      "kavlan-5": "10.32.68.11",
+      "kavlan-6": "10.32.132.11",
+      "kavlan-7": "10.32.196.11",
+      "kavlan-8": "10.33.4.11",
+      "kavlan-9": "10.33.68.11"
+    }
+  },
+  "kavlan6": {
+    "eth0": {
+      "kavlan-1": "2001:660:4406:880:3::b",
+      "kavlan-11": "2001:660:4406:1a0:803::b",
+      "kavlan-12": "2001:660:4406:2a0:803::b",
+      "kavlan-13": "2001:660:4406:4a0:803::b",
+      "kavlan-14": "2001:660:4406:5a0:803::b",
+      "kavlan-16": "2001:660:4406:7a0:803::b",
+      "kavlan-17": "2001:660:4406:9a0:803::b",
+      "kavlan-18": "2001:660:4406:8a0:803::b",
+      "kavlan-2": "2001:660:4406:881:3::b",
+      "kavlan-20": "2001:660:4406:3a0:803::b",
+      "kavlan-21": "2001:660:4406:6a0:803::b",
+      "kavlan-3": "2001:660:4406:882:3::b",
+      "kavlan-4": "2001:660:4406:890:3::b",
+      "kavlan-5": "2001:660:4406:891:3::b",
+      "kavlan-6": "2001:660:4406:892:3::b",
+      "kavlan-7": "2001:660:4406:893:3::b",
+      "kavlan-8": "2001:660:4406:894:3::b",
+      "kavlan-9": "2001:660:4406:895:3::b"
+    }
+  },
   "main_memory": {
     "ram_size": 8
   },
@@ -43,7 +87,7 @@
       "interface": "Ethernet",
       "ip": "172.16.130.11",
       "ip6": "2001:660:4406:800:3::b",
-      "kavlan": false,
+      "kavlan": true,
       "mac": "e0:db:55:fd:38:d9",
       "management": false,
       "mountable": true,
@@ -77,8 +121,8 @@
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 22400000000,
+    "node_flops": 1612800000000
   },
   "processor": {
     "cache_l1": null,
@@ -86,10 +130,10 @@
     "cache_l1i": 8,
     "cache_l2": 8,
     "cache_l3": 8,
-    "clock_speed": 8,
+    "clock_speed": 2800000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
+    "microarchitecture": "Ivy Bridge",
     "microcode": "0xd000001",
     "model": "Unknown",
     "other_description": "description",
@@ -117,10 +161,10 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
       "admin",
-      "testing"
+      "production"
     ]
   },
   "type": "node",
