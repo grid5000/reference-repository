@@ -53,40 +53,7 @@ vercors2-2:
       ip: 172.17.27.4
       mac: 18:66:da:6e:e3:6f
       management: true
-    eno2:
-      driver: ixgbe
-      firmware_version: 0x800005a0, 17.5.10
-      interface: Ethernet
-      mac: 24:6e:96:29:5b:22
-      management: false
-      model: Ethernet Controller 10-Gigabit X540-AT2
-      name: eno2
-      sriov: true
-      sriov_totalvfs: 63
-      vendor: Intel
-    eno3:
-      driver: igb
-      firmware_version: 1.67, 0x80000d25, 17.5.10
-      interface: Ethernet
-      mac: 24:6e:96:29:5b:24
-      management: false
-      model: I350 Gigabit Network Connection
-      name: eno3
-      sriov: false
-      sriov_totalvfs: 0
-      vendor: Intel
-    eno4:
-      driver: igb
-      firmware_version: 1.67, 0x80000d25, 17.5.10
-      interface: Ethernet
-      mac: 24:6e:96:29:5b:25
-      management: false
-      model: I350 Gigabit Network Connection
-      name: eno4
-      sriov: false
-      sriov_totalvfs: 0
-      vendor: Intel
-    eno1:
+    eth0:
       driver: ixgbe
       firmware_version: 0x800005a0, 17.5.10
       interface: Ethernet
@@ -98,6 +65,39 @@ vercors2-2:
       rate: 1000000000
       sriov: true
       sriov_totalvfs: 63
+      vendor: Intel
+    eth1:
+      driver: ixgbe
+      firmware_version: 0x800005a0, 17.5.10
+      interface: Ethernet
+      mac: 24:6e:96:29:5b:22
+      management: false
+      model: Ethernet Controller 10-Gigabit X540-AT2
+      name: eno2
+      sriov: true
+      sriov_totalvfs: 63
+      vendor: Intel
+    eth2:
+      driver: igb
+      firmware_version: 1.67, 0x80000d25, 17.5.10
+      interface: Ethernet
+      mac: 24:6e:96:29:5b:24
+      management: false
+      model: I350 Gigabit Network Connection
+      name: eno3
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Intel
+    eth3:
+      driver: igb
+      firmware_version: 1.67, 0x80000d25, 17.5.10
+      interface: Ethernet
+      mac: 24:6e:96:29:5b:25
+      management: false
+      model: I350 Gigabit Network Connection
+      name: eno4
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
