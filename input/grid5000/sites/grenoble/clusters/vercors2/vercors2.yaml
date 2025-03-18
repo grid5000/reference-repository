@@ -1,9 +1,9 @@
 ---
-model: Cluster Model # TODO: change this value.
-created_at: 1970-01-01 # TODO: change this value
+model: Dell PowerEdge R730
+created_at: 2025-03-18
 kavlan: false
 boot_type: bios
-exotic: false # TODO: specify if 'true' or 'false'
+exotic: false
 queues:
   - admin
   - testing
@@ -33,9 +33,9 @@ nodes:
       disk0: # This field will have to be renamed later.
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
+        by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
-      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: racadm
     nodeset: vercors2
