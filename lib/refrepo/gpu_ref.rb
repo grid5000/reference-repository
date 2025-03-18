@@ -128,6 +128,18 @@ class GPURef
         'fp-64' => 156000000000,
       },
     },
+    'TITAN X (Pascal)' => {
+      'cores'              => 3584,
+      'compute_capability' => '6.1',
+      'short_name'         => 'TITAN X Pascal',
+      'alias'              => 'titanxpascal',
+      'microarchitecture'  => 'Pascal',
+      'performance'        => {
+        'fp-16' => 171400000000,
+        'fp-32' => 10974200000000,
+        'fp-64' => 342900000000,
+      },
+    },
     'Tesla K40m' => {
       'cores'              => 2880,
       'compute_capability' => '3.5',
