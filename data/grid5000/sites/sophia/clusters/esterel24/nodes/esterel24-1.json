@@ -1,0 +1,128 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 72,
+    "nb_procs": 1,
+    "nb_threads": 72,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "01/01/2000",
+    "vendor": "Unknown",
+    "version": 1
+  },
+  "bmc_version": "v1",
+  "chassis": {
+    "manufactured_at": "1970-01-01",
+    "manufacturer": "Unknown",
+    "name": "Unknown",
+    "warranty_end": "1970-01-01"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 8
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 8,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "mlx_core",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.16.131.30",
+      "ip6": "2001:660:4406:800:4::1e",
+      "kavlan": false,
+      "mac": "34:17:eb:e8:82:bb",
+      "management": false,
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "esterel24-1.sophia.grid5000.fr",
+      "rate": 10000000000,
+      "switch": null,
+      "switch_port": null
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.131.30",
+      "kavlan": false,
+      "mac": "f4:02:70:9d:75:a2",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "esterel24-1-bmc.sophia.grid5000.fr"
+    }
+  ],
+  "nodeset": "esterel24",
+  "operating_system": {
+    "cstate_driver": "unknown",
+    "cstate_governor": "unknown",
+    "ht_enabled": true,
+    "pstate_driver": "unknwon",
+    "pstate_governor": "unknown",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 128,
+    "node_flops": 9216
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 8,
+    "cache_l1i": 8,
+    "cache_l2": 8,
+    "cache_l3": 8,
+    "clock_speed": 8,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Haswell",
+    "microcode": "0xd000001",
+    "model": "Unknown",
+    "other_description": "description",
+    "vendor": "vendor",
+    "version": "vendor"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025021810",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/dummy",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "size": 8,
+      "storage": "SSD",
+      "vendor": "Unknown"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ]
+  },
+  "type": "node",
+  "uid": "esterel24-1"
+}
