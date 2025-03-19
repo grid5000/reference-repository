@@ -1,0 +1,66 @@
+{
+  "boot_type": "uefi",
+  "created_at": "Thu, 01 Jan 1970 00:00:00 GMT",
+  "exotic": false,
+  "kavlan": false,
+  "manufactured_at": "1970-01-01",
+  "metrics": [
+    {
+      "description": "Default subset of metrics from Prometheus Node Exporter",
+      "name": "prom_default_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "id": [
+          "node_boot_time_seconds",
+          "node_cpu_scaling_frequency_hertz",
+          "node_cpu_seconds_total",
+          "node_filesystem_free_bytes",
+          "node_filesystem_size_bytes",
+          "node_load1",
+          "node_load15",
+          "node_load5",
+          "node_memory_Buffers_bytes",
+          "node_memory_Cached_bytes",
+          "node_memory_MemAvailable_bytes",
+          "node_memory_MemFree_bytes",
+          "node_memory_MemTotal_bytes",
+          "node_memory_Shmem_bytes",
+          "node_memory_SwapFree_bytes",
+          "node_memory_SwapTotal_bytes",
+          "node_network_receive_bytes_total",
+          "node_network_receive_packets_total",
+          "node_network_transmit_bytes_total",
+          "node_network_transmit_packets_total",
+          "node_procs_blocked",
+          "node_procs_running",
+          "kwollect_custom"
+        ],
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Node Exporter",
+      "name": "prom_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    }
+  ],
+  "model": "Cluster Model",
+  "nodes_count": 1,
+  "nodes_description": "1 CPU Unknown vendor, 72 cores/CPU, 0GB RAM, 0GB SSD, 1 x 10Gb Ethernet",
+  "priority": 197001,
+  "queues": [
+    "admin",
+    "testing"
+  ],
+  "redfish": true,
+  "type": "cluster",
+  "uid": "esterel15",
+  "warranty_end": "1970-01-01"
+}
