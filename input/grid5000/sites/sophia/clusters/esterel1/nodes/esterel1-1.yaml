@@ -5,13 +5,13 @@ esterel1-1:
     cpu_core_numbering: round-robin
     nb_cores: 8
     nb_procs: 2
-    nb_threads: 8
+    nb_threads: 16
     platform_type: x86_64
   bios:
     release_date: 12/12/2023
     vendor: Dell Inc.
     version: 2.19.0
-  bmc_version: '2.86.86.86'
+  bmc_version: 2.86.86.86
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge R730
@@ -97,7 +97,7 @@ esterel1-1:
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
-    ht_enabled: false
+    ht_enabled: true
     pstate_driver: intel_cpufreq
     pstate_governor: performance
     turboboost_enabled: true
