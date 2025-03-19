@@ -10,19 +10,17 @@ queues:
 nodes:
   chartreuse2-1:
     supported_job_types:
-      deploy: true
-      besteffort: true
       max_walltime: 86400
   chartreuse2-2:
     supported_job_types:
-      deploy: true
-      besteffort: true
       max_walltime: 172800
   chartreuse2-[3-4]:
     supported_job_types:
+      max_walltime: 604800
+  chartreuse2-[1-4]:
+    supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 604800
     processor:
       microarchitecture: Broadwell 
       clock_speed: 2400000000
