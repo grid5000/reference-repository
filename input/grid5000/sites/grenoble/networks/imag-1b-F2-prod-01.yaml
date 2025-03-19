@@ -15,7 +15,14 @@ imag-1b-F2-prod-01:
       kavlan_pattern: "%LINECARD%/1/%PORT%"
       rate: 25_000_000_000
       backplane_bps: 4_800_000_000_000
+      kind: node
       ports:
+        5:
+          uid: vercors2-1
+          rate: 1_000_000_000
+        6:
+          uid: vercors2-2
+          rate: 1_000_000_000
         44:
           uid: imag-1b-F2-admin-01
           kind: switch

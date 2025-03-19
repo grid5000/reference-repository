@@ -1,0 +1,249 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 20,
+    "nb_procs": 2,
+    "nb_threads": 40,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "12/12/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.19.0"
+  },
+  "bmc_version": "2.86.86.86",
+  "chassis": {
+    "manufactured_at": "2016-10-24",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R730",
+    "serial": "J6P8LG2",
+    "warranty_end": "2021-10-23"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 12884901888,
+      "microarchitecture": "Pascal",
+      "model": "TITAN X (Pascal)",
+      "performance": {
+        "fp-16": 171400000000,
+        "fp-32": 10974200000000,
+        "fp-64": 342900000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.15.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 12884901888,
+      "microarchitecture": "Pascal",
+      "model": "TITAN X (Pascal)",
+      "performance": {
+        "fp-16": 171400000000,
+        "fp-32": 10974200000000,
+        "fp-64": 342900000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.15.00.01",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 68719476736
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "firmware_version": "0x8000063b, 19.5.12",
+      "interface": "Ethernet",
+      "ip": "172.16.27.4",
+      "ip6": "2001:660:4406:100:c::4",
+      "kavlan": false,
+      "mac": "24:6e:96:29:5b:20",
+      "management": false,
+      "model": "Ethernet Controller 10-Gigabit X540-AT2",
+      "mountable": true,
+      "mounted": true,
+      "name": "eno1",
+      "network_address": "vercors2-2.grenoble.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "switch": "imag-1b-F2-prod-01",
+      "switch_port": "1/1/6",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "firmware_version": "0x8000063b, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:29:5b:22",
+      "management": false,
+      "model": "Ethernet Controller 10-Gigabit X540-AT2",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fc9, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:29:5b:24",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fc9, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:29:5b:25",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.27.4",
+      "kavlan": false,
+      "mac": "18:66:da:6e:e3:6f",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "vercors2-2-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "nodeset": "vercors2",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 35200000000,
+    "node_flops": 704000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 26214400,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Broadwell",
+    "microcode": "0xb000040",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "E5-2630 v4"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025021810",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da07ac57b001fbcb0ab035f46b0",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.3,
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "PERC H730 Mini",
+      "size": 299439751168,
+      "storage": "HDD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da07ac57b001fbcb0c204becd83",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:1:0",
+      "firmware_version": 4.3,
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "PERC H730 Mini",
+      "size": 4000225165312,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "vercors2-2"
+}
