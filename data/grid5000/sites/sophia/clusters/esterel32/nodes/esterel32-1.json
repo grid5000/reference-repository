@@ -23,7 +23,7 @@
     "ram_size": 8
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
@@ -51,8 +51,8 @@
       "name": "enp1s0f0np0",
       "network_address": "esterel32-1.sophia.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "switch": "sw-2",
+      "switch_port": "1/1/18"
     },
     {
       "device": "bmc",
