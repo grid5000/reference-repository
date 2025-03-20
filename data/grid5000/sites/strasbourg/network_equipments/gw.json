@@ -2,14 +2,6 @@
   "alias": [
     "gw-strasbourg"
   ],
-  "channels": {
-    "port-channel1": {
-      "kind": "server",
-      "port": "port-channel1",
-      "rate": 50000000000,
-      "uid": "srv-data"
-    }
-  },
   "ip": "172.16.175.254",
   "ip6": "2001:660:4406:a00::ffff:ffff",
   "kind": "router",
@@ -21,177 +13,106 @@
       "kind": "node",
       "ports": [
         {
-          "kind": "channel",
+          "kind": "node",
+          "port": "strasbourg",
           "snmp_name": "Ethernet0",
-          "uid": "port-channel1"
+          "uid": "dev"
         },
         {
-          "kind": "channel",
+          "kind": "node",
+          "port": "apornet",
           "snmp_name": "Ethernet1",
-          "uid": "port-channel1"
+          "uid": "dev"
         },
         {
-          "kind": "server",
+          "kind": "node",
+          "port": "eth0",
           "snmp_name": "Ethernet2",
-          "uid": "pve-1"
+          "uid": "stonet-1"
         },
         {
-          "kind": "server",
+          "kind": "node",
+          "port": "eth0",
           "snmp_name": "Ethernet3",
-          "uid": "pve-2"
+          "uid": "ibat-1"
         },
         {
-        },
-        {
+          "kind": "node",
+          "port": "net",
+          "snmp_name": "Ethernet4",
+          "uid": "wiki"
         },
         {
           "kind": "node",
           "port": "eth0",
+          "snmp_name": "Ethernet5",
+          "uid": "strasbourg-1"
+        },
+        {
+          "kind": "node",
+          "port": "www",
           "snmp_name": "Ethernet6",
-          "uid": "fleckenstein-1"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet8",
-          "uid": "fleckenstein-1"
+          "uid": "dev"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Ethernet9",
-          "uid": "fleckenstein-2"
+          "snmp_name": "Ethernet7",
+          "uid": "soknet-1"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
         },
         {
         },
         {
           "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet11",
-          "uid": "fleckenstein-2"
-        },
-        {
-          "kind": "node",
-          "port": "eth0",
-          "snmp_name": "Ethernet12",
-          "uid": "fleckenstein-3"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet14",
-          "uid": "fleckenstein-3"
-        },
-        {
-          "kind": "node",
-          "port": "eth0",
-          "snmp_name": "Ethernet15",
-          "uid": "fleckenstein-4"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet17",
-          "uid": "fleckenstein-4"
+          "port": "RENATER",
+          "snmp_name": "Ethernet19",
+          "uid": "PE"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Ethernet18",
-          "uid": "fleckenstein-5"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
           "snmp_name": "Ethernet20",
-          "uid": "fleckenstein-5"
+          "uid": "p4-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet21",
-          "uid": "fleckenstein-6"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet23",
-          "uid": "fleckenstein-6"
+          "uid": "p4-1"
         },
         {
           "kind": "node",
-          "port": "eth0",
-          "snmp_name": "Ethernet24",
-          "uid": "fleckenstein-7"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet26",
-          "uid": "fleckenstein-7"
-        },
-        {
-          "kind": "node",
-          "port": "eth0",
-          "snmp_name": "Ethernet27",
-          "uid": "fleckenstein-8"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet29",
-          "uid": "fleckenstein-8"
-        },
-        {
-          "kind": "node",
-          "port": "eth0",
-          "snmp_name": "Ethernet30",
-          "uid": "fleckenstein-9"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet32",
-          "uid": "fleckenstein-9"
-        },
-        {
-          "kind": "node",
-          "port": "eth0",
-          "snmp_name": "Ethernet33",
-          "uid": "fleckenstein-10"
-        },
-        {
-        },
-        {
-          "kind": "node",
-          "port": "eth2",
-          "snmp_name": "Ethernet35",
-          "uid": "fleckenstein-10"
+          "port": "icube",
+          "snmp_name": "Ethernet22",
+          "uid": "pfsense"
         }
       ],
-      "rate": 25000000000,
+      "rate": 10000000000,
       "snmp_pattern": "Ethernet%PORT%"
     }
   ],
   "managed_by_us": true,
-  "model": "wedge100bf_32x",
-  "serial": "AM26029251",
+  "model": "Juniper EX4600-40F",
   "site": "strasbourg",
   "snmp_community": "Unknown",
   "type": "network_equipment",
