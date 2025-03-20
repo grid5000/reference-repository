@@ -1,24 +1,24 @@
 ---
-model: Cluster Model # TODO: change this value.
-created_at: 1970-01-01 # TODO: change this value
+model: Dell PowerEdge C6320
+created_at: 2025-03-20
 kavlan: false
-boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
-exotic: false # TODO: specify if 'true' or 'false'
+boot_type: bios
+exotic: false 
 queues:
   - admin
   - testing
 nodes:
   chartreuse3-[1-4]:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
-      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
+      manufactured_at: 2016-03-28
+      warranty_end: 2019-03-28
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell # TODO: replace with microarch name.
-      clock_speed: 8 # TODO: Replace with clock speed.
+      microarchitecture: Broadwell
+      clock_speed: 2400000000
     network_adapters:
       bmc:
         interface: Ethernet
@@ -35,7 +35,7 @@ nodes:
         interface: SAS
         by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std 
     management_tools:
-      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: racadm 
     nodeset: chartreuse3
