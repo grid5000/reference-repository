@@ -6,19 +6,16 @@ boot_type: uefi
 exotic: false 
 queues:
   - admin
-  - testing
+  - production
 nodes:
   esterel1-1:
-    chassis:
-      manufactured_at: 2016-11-01
-      warranty_end:  2021-11-01
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
-      microarchitecture: Sandy Bridge
-      clock_speed: 2000000000
+      microarchitecture: Broadwell
+      clock_speed: 2600000000
     network_adapters:
       bmc:
         interface: Ethernet

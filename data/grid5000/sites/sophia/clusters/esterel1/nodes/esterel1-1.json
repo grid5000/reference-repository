@@ -3,7 +3,7 @@
     "cpu_core_numbering": "round-robin",
     "nb_cores": 8,
     "nb_procs": 2,
-    "nb_threads": 8,
+    "nb_threads": 16,
     "platform_type": "x86_64"
   },
   "bios": {
@@ -13,7 +13,7 @@
   },
   "bmc_version": "2.86.86.86",
   "chassis": {
-    "manufactured_at": "2016-11-01",
+    "manufactured_at": "2016-11-02",
     "manufacturer": "Dell Inc.",
     "name": "PowerEdge R730",
     "serial": "88Y9RG2",
@@ -163,14 +163,14 @@
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
-    "ht_enabled": false,
+    "ht_enabled": true,
     "pstate_driver": "intel_cpufreq",
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 16000000000,
-    "node_flops": 128000000000
+    "core_flops": 41600000000,
+    "node_flops": 332800000000
   },
   "processor": {
     "cache_l1": null,
@@ -178,10 +178,10 @@
     "cache_l1i": 32768,
     "cache_l2": 262144,
     "cache_l3": 10485760,
-    "clock_speed": 2000000000,
+    "clock_speed": 2600000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Sandy Bridge",
+    "microarchitecture": "Broadwell",
     "microcode": "0xb000040",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU E5-2623 v4 @ 2.60GHz",
@@ -191,7 +191,7 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025032008",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
@@ -221,10 +221,10 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
       "admin",
-      "testing"
+      "production"
     ],
     "virtual": "ivt"
   },
