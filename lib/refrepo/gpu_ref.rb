@@ -128,6 +128,18 @@ class GPURef
         'fp-64' => 156000000000,
       },
     },
+    'GeForce GTX TITAN X' => {
+      'cores'              => 3072,
+      'compute_capability' => '5.2',
+      'short_name'         => 'GTX TITAN X',
+      'alias'              => 'gtxtitanx',
+      'microarchitecture'  => 'Maxwell',
+      'performance'        => {
+        'fp-16' => 0,
+        'fp-32' => 66050000000000,
+        'fp-64' => 206500000000,
+      },
+    },
     'Tesla K40m' => {
       'cores'              => 2880,
       'compute_capability' => '3.5',

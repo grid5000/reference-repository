@@ -9,9 +9,6 @@ queues:
   - testing
 nodes:
   esterel4-1:
-    chassis:
-      manufactured_at: 2016-06-08
-      warranty_end: 2021-06-08
     supported_job_types:
       deploy: true
       besteffort: true
@@ -29,15 +26,17 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0:
+      pci-0000:03:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
-      disk1:
+      pci-0000:03:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SATA
-        by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:1:0"
     software:
       standard-environment: debian11-x64-std
     management_tools:
