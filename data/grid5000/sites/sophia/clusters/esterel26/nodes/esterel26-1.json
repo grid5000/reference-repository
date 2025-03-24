@@ -24,7 +24,7 @@
     "ram_size": 412316860416
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
@@ -194,8 +194,8 @@
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 4096
+    "core_flops": 33600000000,
+    "node_flops": 1075200000000
   },
   "processor": {
     "cache_l1": null,
@@ -203,10 +203,10 @@
     "cache_l1i": 32768,
     "cache_l2": 1048576,
     "cache_l3": 23068672,
-    "clock_speed": 8,
+    "clock_speed": 2100000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
+    "microarchitecture": "Cascade Lake-SP",
     "microcode": "0x5003707",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz",
@@ -225,7 +225,7 @@
       "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0",
       "firmware_version": 4.3,
       "id": "disk0",
-      "interface": "SAS",
+      "interface": "RAID",
       "model": "PERC H730P Adp",
       "size": 599550590976,
       "storage": "HDD",
@@ -236,7 +236,7 @@
       "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:1:0",
       "firmware_version": 4.3,
       "id": "disk1",
-      "interface": "SAS",
+      "interface": "RAID",
       "model": "PERC H730P Adp",
       "size": 3838627020800,
       "storage": "HDD",
