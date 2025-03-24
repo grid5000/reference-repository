@@ -18,9 +18,13 @@ nodes:
       max_walltime: 0
     processor:
       microarchitecture: Broadwell
-      clock_speed: 1600000000 
+      clock_speed: 1600000000
+      model: Intel(R) Pentium(R)
+      version: D1517
     network_adapters:
       bmc:
+        interface: Ethernet
+        management: true
         enabled: true
         mountable: false
         mounted: false
@@ -29,10 +33,9 @@ nodes:
         mountable: true
         mounted: true
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:00:1f.2-ata-1:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
+        interface: SATA
     software:
       standard-environment: debian11-x64-std # TODO: check that architecture is OK
     management_tools:
