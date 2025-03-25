@@ -1,26 +1,97 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 20,
+    "nb_procs": 2,
+    "nb_threads": 40,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "10/18/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.18.2"
   },
-  "bmc_version": "v1",
+  "bmc_version": "2.85.85.85",
   "chassis": {
     "manufactured_at": "2016-06-06",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge T630",
+    "serial": "DPSDDD2",
     "warranty_end": "2021-06-06"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "5.2",
+      "cores": 3072,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 12884901888,
+      "microarchitecture": "Maxwell",
+      "model": "GeForce GTX TITAN X",
+      "performance": {
+        "fp-16": 0,
+        "fp-32": 66050000000000,
+        "fp-64": 206500000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "84.00.45.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "5.2",
+      "cores": 3072,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 12884901888,
+      "microarchitecture": "Maxwell",
+      "model": "GeForce GTX TITAN X",
+      "performance": {
+        "fp-16": 0,
+        "fp-32": 66050000000000,
+        "fp-64": 206500000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "84.00.45.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "5.2",
+      "cores": 3072,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 12884901888,
+      "microarchitecture": "Maxwell",
+      "model": "GeForce GTX TITAN X",
+      "performance": {
+        "fp-16": 0,
+        "fp-32": 66050000000000,
+        "fp-64": 206500000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "84.00.45.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "5.2",
+      "cores": 3072,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 12884901888,
+      "microarchitecture": "Maxwell",
+      "model": "GeForce GTX TITAN X",
+      "performance": {
+        "fp-16": 0,
+        "fp-32": 66050000000000,
+        "fp-64": 206500000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "84.00.45.00.03",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 51539607552
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -30,29 +101,89 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 8589934592,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "igb",
       "enabled": true,
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
       "interface": "Ethernet",
       "ip": "172.16.131.3",
       "ip6": "2001:660:4406:800:4::3",
       "kavlan": false,
       "mac": "14:18:77:72:09:4c",
       "management": false,
+      "model": "I350 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "esterel3-1.sophia.grid5000.fr",
       "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "sw-6",
-      "switch_port": "1/1/2"
+      "switch_port": "1/1/2",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "14:18:77:72:09:4d",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "ib0",
+      "driver": "ib_ipoib",
+      "firmware_version": "2.35.5100",
+      "guid": "0xe41d2d030050bc51",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "80:00:02:08:fe:80:00:00:00:00:00:00:e4:1d:2d:03:00:50:bc:51",
+      "management": false,
+      "model": "MT27500 Family [ConnectX-3]",
+      "name": "ibp130s0",
+      "rate": 40000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,32 +200,32 @@
   ],
   "nodeset": "esterel3",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 35200000000,
-    "node_flops": 2534400000000
+    "node_flops": 704000000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 26214400,
     "clock_speed": 2200000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Broadwell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microcode": "0xb000040",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "E5-2630 v4"
   },
   "redfish": true,
   "software": {
@@ -104,14 +235,15 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x61866da05411b8001ef5b7930c395ada",
       "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.3,
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "model": "PERC H730 Adp",
+      "size": 1999307276288,
+      "storage": "HDD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -121,7 +253,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "esterel3-1"
