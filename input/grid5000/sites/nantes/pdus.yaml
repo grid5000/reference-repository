@@ -2,7 +2,7 @@
 pdus:
   pdu-Z1.10:
     vendor: APC
-    model: ''
+    model: 'AP7940'
     metrics:
       - name: pdu_outlet_power_watt
         description: Power consumption per outlet reported by PDU, in watt
@@ -28,7 +28,7 @@ pdus:
 
   pdu-Z1.11:
     vendor: APC
-    model: ''
+    model: 'AP7940'
     metrics:
       - name: pdu_outlet_power_watt
         description: Power consumption per outlet reported by PDU, in watt
@@ -36,6 +36,12 @@ pdus:
         source:
           protocol: snmp
           id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_temperature_tenth_celsius
+        description: Sensor temperature reading in tenths of degrees Celsius
+        period: 5000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.8.1
     ip: 192.168.1.14
     mac: 00:c0:b7:fb:aa:a1
     ports:
@@ -55,7 +61,7 @@ pdus:
 
   pdu-Z1.20:
     vendor: APC
-    model: ''
+    model: 'AP7940'
     metrics:
       - name: pdu_outlet_power_watt
         description: Power consumption per outlet reported by PDU, in watt
@@ -81,7 +87,7 @@ pdus:
 
   pdu-Z1.21:
     vendor: APC
-    model: ''
+    model: 'AP7940'
     metrics:
       - name: pdu_outlet_power_watt
         description: Power consumption per outlet reported by PDU, in watt
@@ -89,6 +95,12 @@ pdus:
         source:
           protocol: snmp
           id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_temperature_tenth_celsius
+        description: Sensor temperature reading in tenths of degrees Celsius
+        period: 5000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.8.1
     ip: 192.168.1.16
     mac: 00:c0:b7:fb:aa:5b
     ports:
@@ -107,7 +119,7 @@ pdus:
       14: ecotype-36
   pdu-Z1.40:
     vendor: APC
-    model: ''
+    model: 'AP7940'
     metrics:
       - name: pdu_outlet_power_watt
         description: Power consumption per outlet reported by PDU, in watt
@@ -134,7 +146,7 @@ pdus:
 
   pdu-Z1.41:
     vendor: APC
-    model: ''
+    model: 'AP7940'
     metrics:
       - name: pdu_outlet_power_watt
         description: Power consumption per outlet reported by PDU, in watt
@@ -142,6 +154,12 @@ pdus:
         source:
           protocol: snmp
           id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_temperature_tenth_celsius
+        description: Sensor temperature reading in tenths of degrees Celsius
+        period: 5000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.8.1
     ip: 192.168.1.10
     mac: 00:c0:b7:fb:aa:8b
     ports:
@@ -160,7 +178,7 @@ pdus:
 
   pdu-Z1.50:
     vendor: APC
-    model: ''
+    model: 'AP7940'
     metrics:
       - name: pdu_outlet_power_watt
         description: Power consumption per outlet reported by PDU, in watt
@@ -186,7 +204,7 @@ pdus:
 
   pdu-Z1.51:
     vendor: APC
-    model: ''
+    model: 'AP7940'
     metrics:
       - name: pdu_outlet_power_watt
         description: Power consumption per outlet reported by PDU, in watt
@@ -194,6 +212,12 @@ pdus:
         source:
           protocol: snmp
           id: 1.3.6.1.4.1.318.1.1.26.9.4.3.1.7.%PORT%
+      - name: pdu_temperature_tenth_celsius
+        description: Sensor temperature reading in tenths of degrees Celsius
+        period: 5000
+        source:
+          protocol: snmp
+          id: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.8.1
     ip: 192.168.1.12
     mac: 00:c0:b7:fb:aa:97
     ports:
