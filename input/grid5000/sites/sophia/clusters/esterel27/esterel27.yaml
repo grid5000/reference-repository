@@ -9,6 +9,15 @@ queues:
   - testing
 nodes:
   esterel27-1:
+    gpu_devices:
+      nvidia4:
+        cpu_affinity_override: 1
+      nvidia5:
+        cpu_affinity_override: 1
+      nvidia6:
+        cpu_affinity_override: 1
+      nvidia7:
+        cpu_affinity_override: 1
     chassis:
       manufactured_at: 2019-01-01
       warranty_end: 2021-06-07
