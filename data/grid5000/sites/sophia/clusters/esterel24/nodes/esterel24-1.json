@@ -23,7 +23,7 @@
     "ram_size": 8
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
@@ -44,7 +44,7 @@
       "ip": "172.16.131.30",
       "ip6": "2001:660:4406:800:4::1e",
       "kavlan": false,
-      "mac": "f4:02:70:9d:75:92",
+      "mac": "70:b5:e8:c9:ff:d2",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -60,7 +60,7 @@
       "interface": "Ethernet",
       "ip": "172.17.131.30",
       "kavlan": false,
-      "mac": "f4:02:70:9d:75:a2",
+      "mac": "70:b5:e8:c9:ff:e2",
       "management": true,
       "mountable": false,
       "mounted": false,
@@ -77,8 +77,8 @@
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 76800000000,
+    "node_flops": 5529600000000
   },
   "processor": {
     "cache_l1": null,
@@ -86,15 +86,15 @@
     "cache_l1i": 8,
     "cache_l2": 8,
     "cache_l3": 8,
-    "clock_speed": 8,
+    "clock_speed": 2400000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
+    "microarchitecture": "Cascade Lake-SP",
     "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6240R CPU @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "Gold 6240R"
   },
   "redfish": true,
   "software": {
