@@ -1,18 +1,18 @@
 ---
 model: Dell PowerEdge R730
 created_at: 2025-03-18
-kavlan: false
+kavlan: true
 boot_type: bios
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   vercors2-[1-2]:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Broadwell
       clock_speed: 2200000000

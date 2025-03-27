@@ -1,18 +1,18 @@
 ---
 model: Dell PowerEdge T630
 created_at: 2025-03-12
-kavlan: true
+kavlan: false
 boot_type: bios
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   esterel2-1:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Haswell
       clock_speed: 2_400_000_000
