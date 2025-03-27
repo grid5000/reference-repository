@@ -269,7 +269,7 @@ class SiteHardwareGenerator < WikiGenerator
 
         reservation_cmd = "\n{{Term|location=f#{site}|cmd="
         reservation_cmd += "<code class=\"command\">oarsub</code> "
-        reservation_cmd += "<code class=\"replace\">-q #{queue}</code> " if queue != 'default'
+        reservation_cmd += "<code class=\"replace\">-q #{queue}</code> "
         reservation_cmd += "<code class=\"replace\">-t exotic</code> " if cluster_hash.map { |_k, v| v['exotic']}.first
         reservation_cmd += "<code class=\"env\">-p #{cluster_uid}</code> "
         reservation_cmd += "<code>-I</code>"
