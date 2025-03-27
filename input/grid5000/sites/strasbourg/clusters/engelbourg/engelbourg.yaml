@@ -22,12 +22,6 @@ nodes:
       model: Intel(R) Pentium(R)
       version: D1517
     network_adapters:
-      bmc:
-        interface: Ethernet
-        management: true
-        enabled: true
-        mountable: false
-        mounted: false
       eth0:
         enabled: true
         mountable: true
@@ -39,6 +33,6 @@ nodes:
     software:
       standard-environment: debian11-x64-std # TODO: check that architecture is OK
     management_tools:
-      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: "none"
     nodeset: engelbourg # TODO: rename cluster
 
