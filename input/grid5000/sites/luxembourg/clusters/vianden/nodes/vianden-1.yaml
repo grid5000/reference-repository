@@ -124,10 +124,9 @@ vianden-1:
       driver: bnxt_en
       firmware_version: 231.0.154.0/pkg 23.11.16.22
       interface: Ethernet
-      ip: 172.16.178.1
       mac: d4:04:e6:c5:88:60
       management: false
-      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb Ethernet
+      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
       name: enp1s0f0np0
       rate: 10000000000
       sriov: false
@@ -139,7 +138,7 @@ vianden-1:
       interface: Ethernet
       mac: d4:04:e6:c5:88:61
       management: false
-      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb Ethernet
+      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
       name: eno12409np1
       sriov: false
       sriov_totalvfs: 0
@@ -150,7 +149,7 @@ vianden-1:
       interface: Ethernet
       mac: d4:04:e6:c5:88:62
       management: false
-      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb Ethernet
+      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
       name: eno12419np2
       sriov: false
       sriov_totalvfs: 0
@@ -161,7 +160,7 @@ vianden-1:
       interface: Ethernet
       mac: d4:04:e6:c5:88:63
       management: false
-      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb Ethernet
+      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
       name: eno12429np3
       sriov: false
       sriov_totalvfs: 0
@@ -172,7 +171,7 @@ vianden-1:
       interface: Ethernet
       mac: c4:cb:e1:c8:54:06
       management: false
-      model: NetXtreme BCM5720 Gigabit Ethernet PCIe
+      model: NetXtreme BCM5720 2-port Gigabit Ethernet PCIe
       name: eno8303
       sriov: false
       sriov_totalvfs: 0
@@ -183,19 +182,32 @@ vianden-1:
       interface: Ethernet
       mac: c4:cb:e1:c8:54:07
       management: false
-      model: NetXtreme BCM5720 Gigabit Ethernet PCIe
+      model: NetXtreme BCM5720 2-port Gigabit Ethernet PCIe
       name: eno8403
       sriov: false
       sriov_totalvfs: 0
       vendor: Broadcom Inc. and subsidiaries
     eth6:
       driver: mlx5_core
-      firmware_version: 28.41.1000 (DEL0000000051)
+      firmware_version: 22.41.1000 (DEL0000000027)
       interface: Ethernet
-      mac: 9c:63:c0:69:8a:fc
+      ip: 172.16.178.1
+      mac: b8:e9:24:b2:58:9e
       management: false
-      model: MT2910 Family [ConnectX-7]
-      name: enp158s0np0
+      model: MT2892 Family [ConnectX-6 Dx]
+      name: enp158s0f0np0
+      rate: 100000000000
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Mellanox Technologies
+    eth7:
+      driver: mlx5_core
+      firmware_version: 22.41.1000 (DEL0000000027)
+      interface: Ethernet
+      mac: b8:e9:24:b2:58:9f
+      management: false
+      model: MT2892 Family [ConnectX-6 Dx]
+      name: enp158s0f1np1
       sriov: false
       sriov_totalvfs: 0
       vendor: Mellanox Technologies
@@ -206,11 +218,6 @@ vianden-1:
     pstate_driver: intel_pstate
     pstate_governor: performance
     turboboost_enabled: true
-  other_devices:
-    fpga0:
-      model: Aqua Vanjaram [Instinct MI300X]
-      type: fpga
-      vendor: Advanced Micro Devices, Inc. [AMD/ATI]
   processor:
     cache_l1d: 49152
     cache_l1i: 32768
