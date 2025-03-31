@@ -1,0 +1,168 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 32,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "02/21/2024",
+    "vendor": "Dell Inc.",
+    "version": "2.19.0"
+  },
+  "bmc_version": "2.86.86.86",
+  "chassis": {
+    "manufactured_at": "2016-03-28",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6320",
+    "serial": "16PFWC2",
+    "warranty_end": "2019-03-28"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 68719476736
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "firmware_version": "0x8000095e, 18.5.18",
+      "interface": "Ethernet",
+      "ip": "172.16.26.12",
+      "ip6": "2001:660:4406:100:b::c",
+      "kavlan": false,
+      "mac": "00:8c:fa:fe:9b:06",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "chartreuse3-4.grenoble.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "switch": "imag-1b-F3-prod-01",
+      "switch_port": "1/1/11",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "firmware_version": "0x8000095e, 18.5.18",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "00:8c:fa:fe:9b:08",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.26.12",
+      "kavlan": false,
+      "mac": "00:8c:fa:fe:9b:0a",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "chartreuse3-4-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "nodeset": "chartreuse3",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 41600000000,
+    "node_flops": 665600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 20971520,
+    "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Haswell",
+    "microcode": "0x49",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2640 v3 @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "E5-2640 v3"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025032008",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000c5008e80589b",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-sas-phy0-lun-0",
+      "firmware_version": "IS06",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "ST1200MM0007",
+      "size": 1200243695616,
+      "storage": "HDD",
+      "vendor": "Seagate"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "chartreuse3-4"
+}
