@@ -249,9 +249,9 @@ class SiteHardwareGenerator < WikiGenerator
       queue = (queue.nil? || queue.empty?) ? 'default' : queue
       queue_drawgantt_url = get_queue_drawgantt_url(site, queue)
       if (queue != 'testing')
-        text_data << "\n= Clusters in the [#{queue_drawgantt_url} #{queue} queue] ="
+        text_data << "\n= Clusters in the [#{queue_drawgantt_url} #{queue == 'production' ? 'abaca' : queue} queue] ="
       else
-        text_data << "\n= Clusters in the #{queue} queue ="
+        text_data << "\n= Clusters in the #{queue == 'production' ? 'abaca' : queue} queue ="
       end
       clusters.sort_by{|cluster_uid, _cluster_hash| split_cluster_node(cluster_uid) }.to_h.each { |cluster_uid, cluster_hash|
         subclusters = cluster_hash.keys.count != 1
