@@ -14,11 +14,27 @@ mercantour2: &inria-sophia
     p3: ['@inria_group']
     p4: ['@other_groups_with_access']
 esterel10: *inria-sophia
+mercantour5: *inria-sophia
 
 # DEDICATED MODE
-esterel5:
+esterel1:
+    p1: [mathneuro, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+esterel2: &dedicated-epione
+    p1: [epione, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+esterel3: &dedicated-graphdeco
+    p1: [graphdeco, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+esterel5: &dedicated-stars
     p1: [stars, '@admin']
     besteffort: ['@inria_group', '@other_groups_with_access']
+
+esterel4: *dedicated-stars
+esterel7: *dedicated-stars
 
 mercantour6:
     p1: [coati, '@admin']

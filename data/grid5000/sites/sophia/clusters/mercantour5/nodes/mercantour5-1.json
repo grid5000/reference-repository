@@ -7,11 +7,11 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "09/19/2023",
+    "release_date": "01/13/2025",
     "vendor": "Dell Inc.",
-    "version": "2.20.1"
+    "version": "2.23.0"
   },
-  "bmc_version": "7.00.00.171",
+  "bmc_version": "7.00.00.174",
   "chassis": {
     "manufactured_at": "2019-07-30",
     "manufacturer": "Dell Inc.",
@@ -20,50 +20,6 @@
     "warranty_end": "2026-07-31"
   },
   "exotic": false,
-  "kavlan": {
-    "eth0": {
-      "kavlan-1": "192.168.196.42",
-      "kavlan-11": "10.7.229.42",
-      "kavlan-12": "10.11.229.42",
-      "kavlan-13": "10.15.229.42",
-      "kavlan-14": "10.19.229.42",
-      "kavlan-16": "10.27.229.42",
-      "kavlan-17": "10.31.229.42",
-      "kavlan-18": "10.35.229.42",
-      "kavlan-2": "192.168.212.42",
-      "kavlan-20": "10.43.229.42",
-      "kavlan-21": "10.47.229.42",
-      "kavlan-3": "192.168.228.42",
-      "kavlan-4": "10.32.4.42",
-      "kavlan-5": "10.32.68.42",
-      "kavlan-6": "10.32.132.42",
-      "kavlan-7": "10.32.196.42",
-      "kavlan-8": "10.33.4.42",
-      "kavlan-9": "10.33.68.42"
-    }
-  },
-  "kavlan6": {
-    "eth0": {
-      "kavlan-1": "2001:660:4406:880:3::2a",
-      "kavlan-11": "2001:660:4406:1a0:803::2a",
-      "kavlan-12": "2001:660:4406:2a0:803::2a",
-      "kavlan-13": "2001:660:4406:4a0:803::2a",
-      "kavlan-14": "2001:660:4406:5a0:803::2a",
-      "kavlan-16": "2001:660:4406:7a0:803::2a",
-      "kavlan-17": "2001:660:4406:9a0:803::2a",
-      "kavlan-18": "2001:660:4406:8a0:803::2a",
-      "kavlan-2": "2001:660:4406:881:3::2a",
-      "kavlan-20": "2001:660:4406:3a0:803::2a",
-      "kavlan-21": "2001:660:4406:6a0:803::2a",
-      "kavlan-3": "2001:660:4406:882:3::2a",
-      "kavlan-4": "2001:660:4406:890:3::2a",
-      "kavlan-5": "2001:660:4406:891:3::2a",
-      "kavlan-6": "2001:660:4406:892:3::2a",
-      "kavlan-7": "2001:660:4406:893:3::2a",
-      "kavlan-8": "2001:660:4406:894:3::2a",
-      "kavlan-9": "2001:660:4406:895:3::2a"
-    }
-  },
   "main_memory": {
     "ram_size": 412316860416
   },
@@ -140,11 +96,11 @@
       "device": "eth0",
       "driver": "igb",
       "enabled": true,
-      "firmware_version": "1.67, 0x800010e5, 22.5.7",
+      "firmware_version": "1.67, 0x800010e5, 23.0.8",
       "interface": "Ethernet",
       "ip": "172.16.130.42",
       "ip6": "2001:660:4406:800:3::2a",
-      "kavlan": true,
+      "kavlan": false,
       "mac": "6c:2b:59:9c:4a:32",
       "management": false,
       "model": "I350 Gigabit Network Connection",
@@ -215,7 +171,7 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Cascade Lake-SP",
-    "microcode": "0x5003707",
+    "microcode": "0x5003801",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz",
     "vendor": "Intel",
@@ -224,7 +180,7 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025032008",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
@@ -254,10 +210,10 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
       "admin",
-      "testing"
+      "production"
     ],
     "virtual": "ivt"
   },

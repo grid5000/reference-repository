@@ -18,6 +18,8 @@ conman:
   network_adapters:
     default:
       ip: 172.16.207.115
+    adm:
+      ip: 172.17.207.115
 dhcp:
   kind: virtual
   network_adapters:
@@ -89,11 +91,6 @@ mail:
       ip: 172.16.207.102
     adm:
       ip: 172.17.207.102
-mysql:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.119
 oar:
   alias:
   - oardb
@@ -119,11 +116,6 @@ syslog:
   network_adapters:
     default:
       ip: 172.16.207.116
-www:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.114
 nat:
   kind: virtual
   alias:
@@ -136,16 +128,6 @@ kwollect:
   network_adapters:
     default:
       ip: 172.16.207.126
-infra-k8s-master0:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.129
-infra-k8s-master1:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.130
 guix:
   kind: virtual
   network_adapters:

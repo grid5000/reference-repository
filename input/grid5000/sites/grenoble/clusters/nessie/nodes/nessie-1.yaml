@@ -17,12 +17,18 @@ nessie-1:
     name: ProLiant DL380 Gen11
     serial: CZ243200MS
   main_memory:
-    ram_size: 68719476736
+    ram_size: 137438953472
   memory_devices:
     dimm_proc 1 dimm 10:
       size: 34359738368
       technology: dram
+    dimm_proc 1 dimm 3:
+      size: 34359738368
+      technology: dram
     dimm_proc 2 dimm 10:
+      size: 34359738368
+      technology: dram
+    dimm_proc 2 dimm 3:
       size: 34359738368
       technology: dram
   network_adapters:
@@ -72,6 +78,7 @@ nessie-1:
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) Gold 6430
     vendor: Intel
+    version: Gold 6430
   storage_devices:
     pci-0000:36:00.0-scsi-0:2:1:0:
       by_path: "/dev/disk/by-path/pci-0000:36:00.0-scsi-0:2:1:0"
