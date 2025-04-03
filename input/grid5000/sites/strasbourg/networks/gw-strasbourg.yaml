@@ -1,7 +1,6 @@
 ---
 gw:
-  model: wedge100bf_32x
-  serial: AM26029251
+  model: Juniper EX4600-40F
   ip: 172.16.175.254
   ip6: 2001:660:4406:a00::ffff:ffff
   kind: router
@@ -63,7 +62,7 @@ gw:
         - 10.39.192.0/18
   linecards:
     1:
-      rate: 25000000000
+      rate: 10000000000
       snmp_pattern: "Ethernet%PORT%"
       kavlan_pattern: "%PORT%"
       kind: node
