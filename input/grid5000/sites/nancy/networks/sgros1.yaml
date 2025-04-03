@@ -65,11 +65,11 @@ sgros1:
       rate: 40_000_000_000
       ports:
         1:
-          uid: gw-next
-          kind: switch
-        2:
           uid: gw
           kind: router
+        2:
+          uid: sgravillon2
+          kind: switch
     3:
       snmp_pattern: "ethernet1/1/%LINECARD%:%PORT%"
       kavlan_pattern: "ethernet1/1/%LINECARD%:%PORT%"

@@ -1,0 +1,199 @@
+---
+sgravillon2:
+  model: Cisco Nexus 9508
+  warranty: 2020-09-01
+  kind: switch
+  managed_by_us: true
+  site: nancy
+  snmp_community: public
+  ip: 172.16.79.250
+  pdu:
+    - uid: graoully-pdu1
+      port: 8
+    - uid: graoully-pdu2
+      port: 8
+    - uid: grimoire-pdu1
+      port: 8
+    - uid: grimoire-pdu2
+      port: 8
+  metrics:
+    - name: network_ifacein_bytes_total
+      description: Input byte counter for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_bytes_total
+      description: Output byte counter for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_packets_total
+      description: Input packet counter for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_packets_total
+      description: Output packet counter for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_packets_discard_total
+      description: Input counter of discarded packets for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_packets_discard_total
+      description: Output counter of discarded packets for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_packets_error_total
+      description: Input counter of packet errors for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_packets_error_total
+      description: Output counter of packet errors for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+  vlans:
+    "vlan100":
+      administrative: yes
+      addresses:
+        - 172.16.79.254
+    "vlan101":
+      addresses:
+        - 172.17.79.254
+    "vlan500":
+      addresses:
+        - 192.168.4.14
+    "vlan701":
+      name: kavlan-1
+      addresses:
+        - 192.168.192.0/20
+    "vlan702":
+      name: kavlan-2
+      addresses:
+        - 192.168.208.0/20
+    "vlan703":
+      name: kavlan-3
+      addresses:
+        - 192.168.224.0/20
+    "vlan704":
+      name: kavlan-4
+      addresses:
+        - 10.16.0.0/18
+    "vlan705":
+      name: kavlan-5
+      addresses:
+        - 10.16.64.0/18
+    "vlan706":
+      name: kavlan-6
+      addresses:
+        - 10.16.128.0/18
+    "vlan707":
+      name: kavlan-7
+      addresses:
+        - 10.16.192.0/18
+    "vlan708":
+      name: kavlan-8
+      addresses:
+        - 10.17.0.0/18
+    "vlan709":
+      name: kavlan-9
+      addresses:
+        - 10.17.64.0/18
+    "vlan714":
+      name: kavlan-14
+      addresses:
+        - 10.19.192.0/18
+  backplane_bps: 1280000000000
+  linecards:
+    1:
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
+      backplane_bps: 1280000000000
+      model: N9K-X9464PX
+      kind: node
+      rate: 10000000000
+      ports:
+        38:
+          uid: pve-99
+          kind: server
+        47:
+          uid: LORIA
+          kind: other
+    6:
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
+      backplane_bps: 1280000000000
+      model: N9K-X9464PX
+      kind: node
+      rate: 10000000000
+      ports:
+        51:
+          uid: port-channel3
+          kind: channel
+          rate: 40_000_000_000
+        52:
+          uid: port-channel3
+          kind: channel
+          rate: 40_000_000_000
+    7:
+      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
+      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
+      backplane_bps: 1280000000000
+      model: N9K-X9464PX
+      kind: node
+      rate: 10000000000
+      ports:
+        1:
+          uid: grele-1
+        2:
+          uid: grele-2
+        3:
+          uid: grele-3
+        4:
+          uid: grele-4
+        5:
+          uid: grele-5
+        6:
+          uid: grele-6
+        7:
+          uid: grele-7
+        8:
+          uid: grele-8
+        9:
+          uid: grele-9
+        10:
+          uid: grele-10
+        11:
+          uid: grele-11
+        12:
+          uid: grele-12
+        13:
+          uid: grele-13
+        14:
+          uid: gratouille-1
+        15:
+          uid: talc-data
+          kind: server
+        51:
+          uid: sgros1
+          kind: switch
+          rate: 40_000_000_000
+  channels:
+    port-channel3:
+      port: port-channel1
+      uid: sgros2
+      kind: switch
+      rate: 80_000_000_000
