@@ -11,11 +11,11 @@ sw-admin:
       rate: 1000000000
       snmp_pattern: "Ethernet%PORT%"
       kavlan_pattern: "%PORT%"
-      kind: node
+      kind: other
       ports:
-        0: srv-data
-        1: pve-1
-        2: pve-2
+        0: srv-data-bmc
+        1: pve-1-bmc
+        2: pve-2-bmc
         3: fleckenstein-1-bmc 
         4: fleckenstein-2-bmc
         5: fleckenstein-3-bmc
@@ -33,8 +33,8 @@ sw-admin:
         17: engelbourg-6-bmc 
         18: engelbourg-7-bmc 
         19: engelbourg-8-bmc 
-        20: ramstein-1
-        21: engelbourg-1
+        20: ramstein-1-bmc
+        21: sw-core-mgmt
         22: iotlab-devstrasbourg-bmc
         23: inetlab-devaportnet-bmc
         24: inetlab-stonet-bmc
