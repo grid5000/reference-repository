@@ -140,6 +140,18 @@ class GPURef
         'fp-64' => 342900000000,
       },
     },
+    'TITAN Xp' => {
+      'cores'              => 3840,
+      'compute_capability' => '6.1',
+      'short_name'         => 'TITAN Xp',
+      'alias'              => 'titanxp',
+      'microarchitecture'  => 'Pascal',
+      'performance'        => {
+        'fp-16' => 177600000000,
+        'fp-32' => 12149700000000,
+        'fp-64' => 355200000000,
+      },
+    },
     'GeForce GTX TITAN X' => {
       'cores'              => 3072,
       'compute_capability' => '5.2',
