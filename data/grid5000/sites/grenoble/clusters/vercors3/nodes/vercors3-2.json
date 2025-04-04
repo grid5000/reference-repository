@@ -13,11 +13,11 @@
   },
   "bmc_version": "3.15.17.15",
   "chassis": {
-    "manufactured_at": "1970-01-01",
+    "manufactured_at": "2018-03-13",
     "manufacturer": "Dell Inc.",
     "name": "PowerEdge R740",
     "serial": "GFJ4NN2",
-    "warranty_end": "1970-01-01"
+    "warranty_end": "2023-03-13"
   },
   "exotic": false,
   "gpu_devices": {
@@ -170,17 +170,37 @@
     },
     {
       "device": "eth2",
+      "driver": "tg3",
       "enabled": false,
+      "firmware_version": "FFV20.6.52 bc 5720-v1.39",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "00:0a:f7:bf:1e:44",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "eth3",
+      "driver": "tg3",
       "enabled": false,
+      "firmware_version": "FFV20.6.52 bc 5720-v1.39",
+      "interface": "Ethernet",
       "kavlan": false,
+      "mac": "00:0a:f7:bf:1e:45",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "bmc",
@@ -193,34 +213,6 @@
       "mountable": false,
       "mounted": false,
       "network_address": "vercors3-2-bmc.grenoble.grid5000.fr"
-    },
-    {
-      "device": "eno3",
-      "driver": "tg3",
-      "firmware_version": "FFV20.6.52 bc 5720-v1.39",
-      "interface": "Ethernet",
-      "kavlan": false,
-      "mac": "00:0a:f7:bf:1e:44",
-      "management": false,
-      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
-      "name": "eno3",
-      "sriov": false,
-      "sriov_totalvfs": 0,
-      "vendor": "Broadcom Inc. and subsidiaries"
-    },
-    {
-      "device": "eno4",
-      "driver": "tg3",
-      "firmware_version": "FFV20.6.52 bc 5720-v1.39",
-      "interface": "Ethernet",
-      "kavlan": false,
-      "mac": "00:0a:f7:bf:1e:45",
-      "management": false,
-      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
-      "name": "eno4",
-      "sriov": false,
-      "sriov_totalvfs": 0,
-      "vendor": "Broadcom Inc. and subsidiaries"
     }
   ],
   "nodeset": "vercors3",
