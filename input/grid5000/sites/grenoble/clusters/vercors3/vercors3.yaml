@@ -42,16 +42,14 @@ nodes:
         mountable: false
         mounted: false
     storage_devices:
-      disk0:
+      pci-0000:18:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0"
-      disk1:
+      pci-0000:18:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:1:0"
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
-      bmc_vendor_tool: racadm # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: racadm
     nodeset: vercors3
