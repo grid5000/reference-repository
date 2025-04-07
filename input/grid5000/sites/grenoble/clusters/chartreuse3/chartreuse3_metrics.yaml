@@ -1,6 +1,243 @@
 ---
 metrics:
 
+  - name: bmc_ambient_temp_celsius
+    description: Front node ambient temperature reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: FIXME #Inlet Temp
+
+  - name: bmc_node_power_watt
+    description: Power consumption of node reported by BMC, in watt
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: FIXME #Pwr Consumption
+
+  - name: bmc_other_temp_celsius
+    labels: {"id": "temp"}
+    description: Temperature of Temp reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 13 #Temp
+
+  - name: bmc_other_power_watt
+    labels: {"id": "pwrconsumption"}
+    description: Power consumption of Pwr Consumption reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 59 #Pwr Consumption
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "1"}
+    description: Speed of Fan 1 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 99 #FAN_1
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "2"}
+    description: Speed of Fan 2 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 100 #FAN_2
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "3"}
+    description: Speed of Fan 3 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 101 #FAN_3
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "4"}
+    description: Speed of Fan 4 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 102 #FAN_4
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "5"}
+    description: Speed of Fan 5 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 103 #FAN_5
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "6"}
+    description: Speed of Fan 6 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 104 #FAN_6
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "7"}
+    description: Speed of Fan 7 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 105 #FAN_7
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "8"}
+    description: Speed of Fan 8 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 106 #FAN_8
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "9"}
+    description: Speed of Fan 9 reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 107 #FAN_9
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "a"}
+    description: Speed of Fan A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 108 #FAN_A
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "b"}
+    description: Speed of Fan B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 109 #FAN_B
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "c"}
+    description: Speed of Fan C reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 110 #FAN_C
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "d"}
+    description: Speed of Fan D reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 111 #FAN_D
+
+  - name: bmc_ambient_temp_celsius
+    description: Temperature reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 112 #Inlet Temp
+
+  - name: bmc_exhaust_temp_celsius
+    description: Temperature reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 113 #Exhaust Temp
+
+  - name: bmc_other_current_amp
+    labels: {"id": "inputcurrent"}
+    description: Current of Input Current reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 114 #Input Current
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "inputvoltage"}
+    description: Voltage of Input Voltage reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 115 #Input Voltage
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "e"}
+    description: Speed of Fan E reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 136 #FAN_E
+
+  - name: bmc_fan_speed_rpm
+    labels: {"fan": "f"}
+    description: Speed of Fan F reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 137 #FAN_F
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "cpuusage"}
+    description: Usage of CPU Usage reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 167 #CPU Usage
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "iousage"}
+    description: Usage of IO Usage reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 168 #IO Usage
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "memusage"}
+    description: Usage of MEM Usage reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 169 #MEM Usage
+
+  - name: bmc_other_usage_percent
+    labels: {"id": "sysusage"}
+    description: Usage of SYS Usage reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 170 #SYS Usage
+
   - name: prom_default_metrics
     description: Default subset of metrics from Prometheus Node Exporter
     period: 0
@@ -40,3 +277,27 @@ metrics:
     source:
       protocol: prometheus
       port: 9100
+
+  # FIXME uncomment if GPU
+  # - name: prom_nvgpu_default_metrics
+  #   description: Default subset of metrics from Prometheus Nvidia DCGM Exporter
+  #   period: 0
+  #   optional_period: 15000
+  #   source:
+  #     protocol: prometheus
+  #     port: 9400
+  #     id:
+  #       - DCGM_FI_DEV_SM_CLOCK
+  #       - DCGM_FI_DEV_MEM_CLOCK
+  #       - DCGM_FI_DEV_GPU_TEMP
+  #       - DCGM_FI_DEV_POWER_USAGE
+  #       - DCGM_FI_DEV_MEM_COPY_UTIL
+
+  # - name: prom_nvgpu_all_metrics
+  #   description: All metrics from Prometheus Nvidia DCGM Exporter
+  #   period: 0
+  #   optional_period: 15000
+  #   source:
+  #     protocol: prometheus
+  #     port: 9400
+
