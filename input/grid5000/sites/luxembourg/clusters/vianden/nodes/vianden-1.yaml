@@ -121,73 +121,6 @@ vianden-1:
       mac: c4:cb:e1:c5:f2:4a
       management: true
     eth0:
-      driver: bnxt_en
-      firmware_version: 231.0.154.0/pkg 23.11.16.22
-      interface: Ethernet
-      mac: d4:04:e6:c5:88:60
-      management: false
-      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
-      name: enp1s0f0np0
-      rate: 10000000000
-      sriov: false
-      sriov_totalvfs: 0
-      vendor: Broadcom Inc. and subsidiaries
-    eth1:
-      driver: bnxt_en
-      firmware_version: 231.0.154.0/pkg 23.11.16.22
-      interface: Ethernet
-      mac: d4:04:e6:c5:88:61
-      management: false
-      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
-      name: eno12409np1
-      sriov: false
-      sriov_totalvfs: 0
-      vendor: Broadcom Inc. and subsidiaries
-    eth2:
-      driver: bnxt_en
-      firmware_version: 231.0.154.0/pkg 23.11.16.22
-      interface: Ethernet
-      mac: d4:04:e6:c5:88:62
-      management: false
-      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
-      name: eno12419np2
-      sriov: false
-      sriov_totalvfs: 0
-      vendor: Broadcom Inc. and subsidiaries
-    eth3:
-      driver: bnxt_en
-      firmware_version: 231.0.154.0/pkg 23.11.16.22
-      interface: Ethernet
-      mac: d4:04:e6:c5:88:63
-      management: false
-      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
-      name: eno12429np3
-      sriov: false
-      sriov_totalvfs: 0
-      vendor: Broadcom Inc. and subsidiaries
-    eth4:
-      driver: tg3
-      firmware_version: FFV23.11.4 bc 5720-v1.39
-      interface: Ethernet
-      mac: c4:cb:e1:c8:54:06
-      management: false
-      model: NetXtreme BCM5720 2-port Gigabit Ethernet PCIe
-      name: eno8303
-      sriov: false
-      sriov_totalvfs: 0
-      vendor: Broadcom Inc. and subsidiaries
-    eth5:
-      driver: tg3
-      firmware_version: FFV23.11.4 bc 5720-v1.39
-      interface: Ethernet
-      mac: c4:cb:e1:c8:54:07
-      management: false
-      model: NetXtreme BCM5720 2-port Gigabit Ethernet PCIe
-      name: eno8403
-      sriov: false
-      sriov_totalvfs: 0
-      vendor: Broadcom Inc. and subsidiaries
-    eth6:
       driver: mlx5_core
       firmware_version: 22.41.1000 (DEL0000000027)
       interface: Ethernet
@@ -200,7 +133,7 @@ vianden-1:
       sriov: false
       sriov_totalvfs: 0
       vendor: Mellanox Technologies
-    eth7:
+    eth1:
       driver: mlx5_core
       firmware_version: 22.41.1000 (DEL0000000027)
       interface: Ethernet
@@ -211,6 +144,74 @@ vianden-1:
       sriov: false
       sriov_totalvfs: 0
       vendor: Mellanox Technologies
+    eth2:
+      driver: bnxt_en
+      firmware_version: 231.0.154.0/pkg 23.11.16.22
+      interface: Ethernet
+      mac: d4:04:e6:c5:88:60
+      management: false
+      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
+      name: enp1s0f0np0
+      rate: 10000000000
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Broadcom Inc. and subsidiaries
+    eth3:
+      driver: bnxt_en
+      firmware_version: 231.0.154.0/pkg 23.11.16.22
+      interface: Ethernet
+      mac: d4:04:e6:c5:88:61
+      management: false
+      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
+      name: eno12409np1
+      rate: 10000000000
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Broadcom Inc. and subsidiaries
+    eth4:
+      driver: bnxt_en
+      firmware_version: 231.0.154.0/pkg 23.11.16.22
+      interface: Ethernet
+      mac: d4:04:e6:c5:88:62
+      management: false
+      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
+      name: eno12419np2
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Broadcom Inc. and subsidiaries
+    eth5:
+      driver: bnxt_en
+      firmware_version: 231.0.154.0/pkg 23.11.16.22
+      interface: Ethernet
+      mac: d4:04:e6:c5:88:63
+      management: false
+      model: BCM57504 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb/200Gb Ethernet
+      name: eno12429np3
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Broadcom Inc. and subsidiaries
+    eth6:
+      driver: tg3
+      firmware_version: FFV23.11.4 bc 5720-v1.39
+      interface: Ethernet
+      mac: c4:cb:e1:c8:54:06
+      management: false
+      model: NetXtreme BCM5720 2-port Gigabit Ethernet PCIe
+      name: eno8303
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Broadcom Inc. and subsidiaries
+    eth7:
+      driver: tg3
+      firmware_version: FFV23.11.4 bc 5720-v1.39
+      interface: Ethernet
+      mac: c4:cb:e1:c8:54:07
+      management: false
+      model: NetXtreme BCM5720 2-port Gigabit Ethernet PCIe
+      name: eno8403
+      sriov: false
+      sriov_totalvfs: 0
+      vendor: Broadcom Inc. and subsidiaries
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
