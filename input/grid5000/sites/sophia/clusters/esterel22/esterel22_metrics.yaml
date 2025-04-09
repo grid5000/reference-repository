@@ -38,3 +38,10 @@ metrics:
     source:
       protocol: prometheus
       port: 9100
+  - name: prom_nvgpu_all_metrics
+    description: All metrics from Prometheus Nvidia DCGM Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9400
