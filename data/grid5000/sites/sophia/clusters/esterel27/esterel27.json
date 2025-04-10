@@ -1,0 +1,197 @@
+{
+  "boot_type": "bios",
+  "created_at": "Mon, 17 Mar 2025 00:00:00 GMT",
+  "exotic": false,
+  "kavlan": false,
+  "manufactured_at": "2019-01-01",
+  "metrics": [
+    {
+      "description": "Temperature of CPU1 Temperature reported by BMC, in celsius",
+      "labels": {
+        "id": "cpu1temperature"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 1,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of CPU2 Temperature reported by BMC, in celsius",
+      "labels": {
+        "id": "cpu2temperature"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 2,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of TR1 Temperature reported by BMC, in celsius",
+      "labels": {
+        "id": "tr1temperature"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 6,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of TR4 Temperature reported by BMC, in celsius",
+      "labels": {
+        "id": "tr4temperature"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 7,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of TR5 Temperature reported by BMC, in celsius",
+      "labels": {
+        "id": "tr5temperature"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 8,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of TR6 Temperature reported by BMC, in celsius",
+      "labels": {
+        "id": "tr6temperature"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 9,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of TR7 Temperature reported by BMC, in celsius",
+      "labels": {
+        "id": "tr7temperature"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 10,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of +VCCIO1 reported by BMC, in volt",
+      "labels": {
+        "id": "+vccio1"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 13,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Default subset of metrics from Prometheus Node Exporter",
+      "name": "prom_default_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "id": [
+          "node_boot_time_seconds",
+          "node_cpu_scaling_frequency_hertz",
+          "node_cpu_seconds_total",
+          "node_filesystem_free_bytes",
+          "node_filesystem_size_bytes",
+          "node_load1",
+          "node_load15",
+          "node_load5",
+          "node_memory_Buffers_bytes",
+          "node_memory_Cached_bytes",
+          "node_memory_MemAvailable_bytes",
+          "node_memory_MemFree_bytes",
+          "node_memory_MemTotal_bytes",
+          "node_memory_Shmem_bytes",
+          "node_memory_SwapFree_bytes",
+          "node_memory_SwapTotal_bytes",
+          "node_network_receive_bytes_total",
+          "node_network_receive_packets_total",
+          "node_network_transmit_bytes_total",
+          "node_network_transmit_packets_total",
+          "node_procs_blocked",
+          "node_procs_running",
+          "kwollect_custom"
+        ],
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Node Exporter",
+      "name": "prom_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "port": 9100,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "Default subset of metrics from Prometheus Nvidia DCGM Exporter",
+      "name": "prom_nvgpu_default_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "id": [
+          "DCGM_FI_DEV_SM_CLOCK",
+          "DCGM_FI_DEV_MEM_CLOCK",
+          "DCGM_FI_DEV_GPU_TEMP",
+          "DCGM_FI_DEV_POWER_USAGE",
+          "DCGM_FI_DEV_MEM_COPY_UTIL"
+        ],
+        "port": 9400,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Nvidia DCGM Exporter",
+      "name": "prom_nvgpu_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
+        "port": 9400,
+        "protocol": "prometheus"
+      }
+    }
+  ],
+  "model": "Asus ESC8000G4",
+  "nodes_count": 1,
+  "nodes_description": "2 CPUs Intel Xeon Gold 5115, 10 cores/CPU, 8 GPUs GeForce GTX 1080 Ti, 256GB RAM, 476GB HDD, 3813GB HDD, 1 x 1Gb Ethernet, 1 x 40Gb InfiniBand",
+  "priority": 202001,
+  "queues": [
+    "admin",
+    "testing"
+  ],
+  "redfish": true,
+  "type": "cluster",
+  "uid": "esterel27",
+  "warranty_end": "2021-06-07"
+}

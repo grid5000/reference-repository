@@ -128,6 +128,42 @@ class GPURef
         'fp-64' => 156000000000,
       },
     },
+    'TITAN X (Pascal)' => {
+      'cores'              => 3584,
+      'compute_capability' => '6.1',
+      'short_name'         => 'TITAN X Pascal',
+      'alias'              => 'titanxpascal',
+      'microarchitecture'  => 'Pascal',
+      'performance'        => {
+        'fp-16' => 171400000000,
+        'fp-32' => 10974200000000,
+        'fp-64' => 342900000000,
+      },
+    },
+    'TITAN Xp' => {
+      'cores'              => 3840,
+      'compute_capability' => '6.1',
+      'short_name'         => 'TITAN Xp',
+      'alias'              => 'titanxp',
+      'microarchitecture'  => 'Pascal',
+      'performance'        => {
+        'fp-16' => 177600000000,
+        'fp-32' => 12149700000000,
+        'fp-64' => 355200000000,
+      },
+    },
+    'GeForce GTX TITAN X' => {
+      'cores'              => 3072,
+      'compute_capability' => '5.2',
+      'short_name'         => 'GTX TITAN X',
+      'alias'              => 'gtxtitanx',
+      'microarchitecture'  => 'Maxwell',
+      'performance'        => {
+        'fp-16' => 0,
+        'fp-32' => 66050000000000,
+        'fp-64' => 206500000000,
+      },
+    },
     'Tesla K40m' => {
       'cores'              => 2880,
       'compute_capability' => '3.5',
@@ -293,6 +329,17 @@ class GPURef
         'fp-16' => 26820000000000,
         'fp-32' => 13410000000000,
         'fp-64' => 510000000000,
+      },  
+    },
+    'AMD Instinct MI300X OAM' => {
+      'cores'              => 19456,
+      'short_name'         => 'MI300X',
+      'alias'              => 'mi300x',
+      'microarchitecture'  => 'Aqua Vanjaram',
+      'performance'        => {
+        'fp-16' => 653700000000000,
+        'fp-32' => 81720000000000,
+        'fp-64' => 81720000000000,
       },  
     },
     'AGX Xavier' => {

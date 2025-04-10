@@ -1,0 +1,289 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 20,
+    "nb_procs": 2,
+    "nb_threads": 40,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "01/07/2025",
+    "vendor": "Dell Inc.",
+    "version": "2.23.0"
+  },
+  "bmc_version": "7.00.00.181",
+  "chassis": {
+    "manufactured_at": "2018-03-13",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R740",
+    "serial": "GFHZMN2",
+    "warranty_end": "2023-03-13"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "6.1",
+      "cores": 3840,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 12884901888,
+      "microarchitecture": "Pascal",
+      "model": "TITAN Xp",
+      "performance": {
+        "fp-16": 177600000000,
+        "fp-32": 12149700000000,
+        "fp-64": 355200000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.3D.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "6.1",
+      "cores": 3840,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 12884901888,
+      "microarchitecture": "Pascal",
+      "model": "TITAN Xp",
+      "performance": {
+        "fp-16": 177600000000,
+        "fp-32": 12149700000000,
+        "fp-64": 355200000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.3D.00.01",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 103079215104
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 8589934592,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "bnxt_en",
+      "enabled": true,
+      "firmware_version": "214.0.166.0/pkg 21.40.16.60",
+      "interface": "Ethernet",
+      "ip": "172.16.27.5",
+      "ip6": "2001:660:4406:100:c::5",
+      "kavlan": false,
+      "mac": "00:0a:f7:bf:4d:bc",
+      "management": false,
+      "model": "BCM57412 NetXtreme-E 10Gb RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "vercors3-1.grenoble.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "imag-1b-F2-prod-01",
+      "switch_port": "1/1/7",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "214.0.166.0/pkg 21.40.16.60",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "00:0a:f7:bf:4d:bd",
+      "management": false,
+      "model": "BCM57412 NetXtreme-E 10Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth2",
+      "driver": "tg3",
+      "enabled": false,
+      "firmware_version": "FFV20.6.52 bc 5720-v1.39",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "00:0a:f7:bf:4d:ba",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth3",
+      "driver": "tg3",
+      "enabled": false,
+      "firmware_version": "FFV20.6.52 bc 5720-v1.39",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "00:0a:f7:bf:4d:bb",
+      "management": false,
+      "model": "NetXtreme BCM5720 2-port Gigabit Ethernet PCIe",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.27.5",
+      "kavlan": false,
+      "mac": "58:8a:5a:ee:70:2c",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "vercors3-1-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "nodeset": "vercors3",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 35200000000,
+    "node_flops": 704000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 14417920,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake-SP",
+    "microcode": "0x2007006",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Silver 4114"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025040409",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466045928a00226a1f510f4dd264",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.27,
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "PERC H730P Adp",
+      "size": 999653638144,
+      "storage": "HDD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d09466045928a00226a1f5c0ff46d69",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:1:0",
+      "firmware_version": 4.27,
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "PERC H730P Adp",
+      "size": 4000225165312,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "vercors3-1"
+}

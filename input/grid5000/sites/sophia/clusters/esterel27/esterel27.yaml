@@ -1,0 +1,62 @@
+---
+model: Asus ESC8000G4
+created_at: 2025-03-17
+kavlan: false
+boot_type: bios
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  esterel27-1:
+    gpu_devices:
+      nvidia4:
+        cpu_affinity_override: 1
+      nvidia5:
+        cpu_affinity_override: 1
+      nvidia6:
+        cpu_affinity_override: 1
+      nvidia7:
+        cpu_affinity_override: 1
+    chassis:
+      manufactured_at: 2019-01-01
+      warranty_end: 2021-06-07
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Skylake-SP
+      clock_speed: 2400000000
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      ib0:
+        mounted: true
+        enabled: true
+        mountable: true
+        netmask: 255.255.240.0
+
+    storage_devices:
+      pci-0000:d8:00.0-scsi-0:2:0:0:
+        id: disk0
+        interface: SAS
+      pci-0000:d8:00.0-scsi-0:2:1:0:
+        id: disk1
+        interface: SAS
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    nodeset: esterel27

@@ -1,0 +1,258 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 24,
+    "nb_procs": 2,
+    "nb_threads": 48,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "02/22/2024",
+    "vendor": "Dell Inc.",
+    "version": "2.19.0"
+  },
+  "bmc_version": "2.86.86.86",
+  "chassis": {
+    "manufactured_at": "2017-04-18",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge T630",
+    "serial": "9M2TYJ2",
+    "warranty_end": "2022-04-18"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 11811160064,
+      "microarchitecture": "Pascal",
+      "model": "GeForce GTX 1080 Ti",
+      "performance": {
+        "fp-16": 177200000000,
+        "fp-32": 11340000000000,
+        "fp-64": 354400000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.39.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 11811160064,
+      "microarchitecture": "Pascal",
+      "model": "GeForce GTX 1080 Ti",
+      "performance": {
+        "fp-16": 177200000000,
+        "fp-32": 11340000000000,
+        "fp-64": 354400000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.39.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 11811160064,
+      "microarchitecture": "Pascal",
+      "model": "GeForce GTX 1080 Ti",
+      "performance": {
+        "fp-16": 177200000000,
+        "fp-32": 11340000000000,
+        "fp-64": 354400000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.39.40.6B",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "6.1",
+      "cores": 3584,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 11811160064,
+      "microarchitecture": "Pascal",
+      "model": "GeForce GTX 1080 Ti",
+      "performance": {
+        "fp-16": 177200000000,
+        "fp-32": 11340000000000,
+        "fp-64": 354400000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "86.02.39.40.6B",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 68719476736
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
+      "interface": "Ethernet",
+      "ip": "172.16.131.7",
+      "ip6": "2001:660:4406:800:4::7",
+      "kavlan": false,
+      "mac": "18:66:da:a6:f0:f1",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "esterel6-1.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "sw-6",
+      "switch_port": "1/1/16",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80000fae, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "18:66:da:a6:f0:f2",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "firmware_version": "2.40.5000",
+      "guid": "0x248a070300ffd1c1",
+      "interface": "InfiniBand",
+      "ip": "172.18.131.7",
+      "kavlan": false,
+      "mac": "24:8a:07:03:00:ff:d1:c1",
+      "management": false,
+      "model": "MT27500 Family [ConnectX-3]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "netmask": "255.255.240.0",
+      "network_address": "esterel6-1-ib0.sophia.grid5000.fr",
+      "rate": 40000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.131.7",
+      "kavlan": false,
+      "mac": "18:66:da:a6:f0:f3",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "esterel6-1-bmc.sophia.grid5000.fr"
+    }
+  ],
+  "nodeset": "esterel6",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 35200000000,
+    "node_flops": 844800000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 31457280,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Broadwell",
+    "microcode": "0xb000040",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "E5-2650 v4"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025040409",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da0a594e5002f66bf5e14ffcf3a",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.3,
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "PERC H730 Adp",
+      "size": 1999307276288,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "production"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "esterel6-1"
+}
