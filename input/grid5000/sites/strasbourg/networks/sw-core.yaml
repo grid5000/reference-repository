@@ -30,7 +30,9 @@ sw-core:
           uid: pve-2
           kind: server
 #       4: inetlab-sw1-eth0
-#       5: inetlab-sw1-eth1
+        5: 
+          uid: gw
+          kind: router
         6: fleckenstein-1-eth0
 #       7: fleckenstein-1-eth1
         8: fleckenstein-1-eth2
@@ -66,40 +68,27 @@ sw-core:
           kind: switch
 #       40: ramstein-1
         44: 
-          uid: engelbourg-2-eth0
-          rate: 1000000000
         48: 
         52: 
         56: 
-          uid: engelbourg-3-eth0
-          rate: 1000000000
         60: 
         64: 
         68: 
-          uid: engelbourg-4-eth0
-          rate: 1000000000
         72: 
         76: 
         80: 
-          uid: engelbourg-5-eth0
-          rate: 1000000000
         84: 
         88:
         92: 
-          uid: engelbourg-6-eth0
-          rate: 1000000000
         96: 
         100: 
         104: 
-          uid: engelbourg-7-eth0
-          rate: 1000000000
         108: 
         112: 
         116:
-          uid: engelbourg-8-eth0
-          rate: 1000000000
         120: 
         124: 
+
   channels:
     port-channel1:
       port: port-channel1
