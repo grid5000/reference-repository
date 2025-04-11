@@ -24,7 +24,7 @@
     "ram_size": 8589934592
   },
   "management_tools": {
-    "bmc_vendor_tool": "none",
+    "bmc_vendor_tool": "wedge",
     "ipmitool": {
       "retries": 5
     }
@@ -59,6 +59,18 @@
       "switch": "sw-admin",
       "switch_port": "Ethernet18",
       "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.161.7",
+      "kavlan": false,
+      "mac": "e0:01:a6:a4:49:28",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "engelbourg-7-bmc.strasbourg.grid5000.fr"
     }
   ],
   "nodeset": "engelbourg",
