@@ -9,13 +9,10 @@ queues:
   - testing
 nodes:
   mercantour1-[1-16]:
-    chassis:
-      manufactured_at: 2014-04-25
-      warranty_end: 2019-04-25
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 604800
+      max_walltime: 0
     processor:
       microarchitecture: Ivy Bridge
       clock_speed: 2800000000
@@ -29,11 +26,14 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:00:1f.2-ata-1:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
+        interface: SATA
     software:
       standard-environment: debian11-x64-std
     management_tools:
