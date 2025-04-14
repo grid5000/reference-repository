@@ -39,3 +39,15 @@ srv-data:
       mac: e8:eb:d3:30:2c:3e
     adm:
       ip: 172.17.223.3
+
+# This machine is used to access Louvain G5K Site
+# through UCL's network, in case of network outage.
+# It will be replaced by the network backup when site
+# installation is over.
+g5k-gw:
+  kind: physical
+  redfish: false
+  network_adapters:
+    default:
+      ip: 172.17.223.250
+      mac: d8:eb:97:b3:aa:27
