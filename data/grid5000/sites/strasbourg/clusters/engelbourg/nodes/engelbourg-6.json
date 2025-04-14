@@ -1,0 +1,136 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 4,
+    "nb_procs": 1,
+    "nb_threads": 8,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "02/08/2021",
+    "vendor": "American Megatrends Inc.",
+    "version": "R1.00.E4"
+  },
+  "bmc_version": "unknown",
+  "chassis": {
+    "manufactured_at": "1970-01-01",
+    "manufacturer": "Default string",
+    "name": "Default string",
+    "serial": "Default string",
+    "warranty_end": "1970-01-01"
+  },
+  "exotic": true,
+  "main_memory": {
+    "ram_size": 8589934592
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "wedge",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "sodimm_a1",
+      "size": 8589934592,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "3.16.0",
+      "interface": "Ethernet",
+      "ip": "172.16.161.6",
+      "ip6": "2001:660:4406:a00:2::6",
+      "kavlan": false,
+      "mac": "00:90:fb:76:cd:89",
+      "management": false,
+      "model": "I210 Gigabit Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp2s0",
+      "network_address": "engelbourg-6.strasbourg.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "sw-admin",
+      "switch_port": "Ethernet17",
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.161.6",
+      "kavlan": false,
+      "mac": "e0:01:a6:a4:4b:e4",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "engelbourg-6-bmc.strasbourg.grid5000.fr"
+    }
+  ],
+  "nodeset": "engelbourg",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": false
+  },
+  "performance": {
+    "core_flops": 25600000000,
+    "node_flops": 102400000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 6291456,
+    "clock_speed": 1600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Broadwell",
+    "microcode": "0x700001c",
+    "model": "Intel(R) Pentium(R)",
+    "other_description": "Intel(R) Pentium(R) CPU D1517 @ 1.60GHz",
+    "vendor": "Intel",
+    "version": "D1517"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025040409",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x502b2a201d1c1b1a",
+      "by_path": "/dev/disk/by-path/pci-0000:00:1f.2-ata-1",
+      "firmware_version": "L17606",
+      "id": "disk0",
+      "interface": "SATA",
+      "model": "M.2 (S80) 3ME4",
+      "size": 128035676160,
+      "storage": "SSD",
+      "vendor": "Innodisk"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "engelbourg-6"
+}

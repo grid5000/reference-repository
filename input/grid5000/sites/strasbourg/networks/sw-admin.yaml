@@ -1,0 +1,68 @@
+---
+sw-admin:
+  model: unknown
+  ip: 172.16.175.253
+  kind: switch
+  managed_by_us: true
+  snmp_community: Unknown
+  site: strasbourg
+  linecards:
+    1:
+      rate: 1000000000
+      snmp_pattern: "Ethernet%PORT%"
+      kavlan_pattern: "%PORT%"
+      kind: other
+      ports:
+        0: srv-data-bmc
+        1: pve-1-bmc
+        2: pve-2-bmc
+        3: fleckenstein-1-bmc 
+        4: fleckenstein-2-bmc
+        5: fleckenstein-3-bmc
+        6: fleckenstein-4-bmc
+        7: fleckenstein-5-bmc
+        8: fleckenstein-6-bmc
+        9: fleckenstein-7-bmc 
+        10: fleckenstein-8-bmc 
+        11: fleckenstein-9-bmc 
+        12: fleckenstein-10-bmc 
+        13: 
+          uid: engelbourg-2
+          kind: node
+        14: 
+          uid: engelbourg-3 
+          kind: node
+        15: 
+          uid: engelbourg-4
+          kind: node 
+        16: 
+          uid: engelbourg-5
+          kind: node 
+        17: 
+          uid: engelbourg-6
+          kind: node 
+        18: 
+          uid: engelbourg-7
+          kind: node 
+        19: 
+          uid: engelbourg-8
+          kind: node 
+        # 20: 
+          # uid: ramstein-1
+          # kind: node
+        21: sw-core-mgmt
+        22: iotlab-devstrasbourg-bmc
+        23: inetlab-devaportnet-bmc
+        24: inetlab-stonet-bmc
+        25: inetlab-ibat-bmc
+        26: inetlab-wikinet-bmc
+        27: inetlab-soknet-bmc
+        28: iotlab-strasbourg-bmc
+        29: iotlab-devwww-bmc
+        30: iotlab-www-bmc
+        31: 
+          uid: engelbourg-1 # Fake entry
+          kind: node
+        48: 
+          uid: sw-core
+          kind: switch
