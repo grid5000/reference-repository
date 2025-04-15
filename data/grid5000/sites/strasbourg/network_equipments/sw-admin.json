@@ -1,10 +1,12 @@
 {
+  "backplane_bps": 1080000000000,
   "ip": "172.16.175.253",
   "kind": "switch",
   "linecards": [
     {
     },
     {
+      "backplane_bps": 1080000000000,
       "kavlan_pattern": "%PORT%",
       "kind": "other",
       "ports": [
@@ -207,6 +209,7 @@
         },
         {
           "kind": "switch",
+          "rate": 100000000000,
           "snmp_name": "Ethernet48",
           "uid": "sw-core"
         }
@@ -216,7 +219,7 @@
     }
   ],
   "managed_by_us": true,
-  "model": "unknown",
+  "model": "EdgeCore AS5835-54T",
   "site": "strasbourg",
   "snmp_community": "Unknown",
   "type": "network_equipment",

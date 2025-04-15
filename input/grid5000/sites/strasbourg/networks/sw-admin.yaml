@@ -1,14 +1,16 @@
 ---
 sw-admin:
-  model: unknown
+  model: EdgeCore AS5835-54T
   ip: 172.16.175.253
   kind: switch
   managed_by_us: true
   snmp_community: Unknown
   site: strasbourg
+  backplane_bps: 1_080_000_000_000
   linecards:
     1:
-      rate: 1000000000
+      backplane_bps: 1_080_000_000_000
+      rate: 1_000_000_000
       snmp_pattern: "Ethernet%PORT%"
       kavlan_pattern: "%PORT%"
       kind: other
@@ -27,25 +29,25 @@ sw-admin:
         11: fleckenstein-9-bmc 
         12: fleckenstein-10-bmc 
         13: 
-          uid: engelbourg-2
+          uid: engelbourg-2-eth0
           kind: node
         14: 
-          uid: engelbourg-3 
+          uid: engelbourg-3-eth0
           kind: node
         15: 
-          uid: engelbourg-4
+          uid: engelbourg-4-eth0
           kind: node 
         16: 
-          uid: engelbourg-5
+          uid: engelbourg-5-eth0
           kind: node 
         17: 
-          uid: engelbourg-6
+          uid: engelbourg-6-eth0
           kind: node 
         18: 
-          uid: engelbourg-7
+          uid: engelbourg-7-eth0
           kind: node 
         19: 
-          uid: engelbourg-8
+          uid: engelbourg-8-eth0
           kind: node 
         # 20: 
           # uid: ramstein-1
@@ -61,8 +63,9 @@ sw-admin:
         29: iotlab-devwww-bmc
         30: iotlab-www-bmc
         31: 
-          uid: engelbourg-1 # Fake entry
+          uid: engelbourg-1-eth0 # Fake entry
           kind: node
         48: 
           uid: sw-core
           kind: switch
+          rate: 100_000_000_000

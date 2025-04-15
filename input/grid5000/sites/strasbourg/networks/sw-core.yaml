@@ -1,6 +1,6 @@
 ---
 sw-core:
-  model: wedge100bf_32x
+  model: EdgeCore wedge100bf_32x
   ip: 172.16.175.252
   #TODO
   #ip6: 2001:660:4406:a00::ffff:ffff
@@ -10,9 +10,11 @@ sw-core:
   alias:
     - engelbourg-1
   site: strasbourg
+  backplane_bps: 6_400_000_000_000
   linecards: 
     1:
-      rate: 25000000000
+      backplane_bps: 6_400_000_000_000
+      rate: 100_000_000_000
       snmp_pattern: "Ethernet%PORT%"
       kavlan_pattern: "%PORT%"
       kind: node
@@ -20,79 +22,89 @@ sw-core:
         0:
           uid: port-channel1
           kind: channel
+          rate: 25_000_000_000
         1:
           uid: port-channel1
           kind: channel 
+          rate: 25_000_000_000
         2:
           uid: pve-1
           kind: server
+          rate: 25_000_000_000
         3:
           uid: pve-2
           kind: server
+          rate: 25_000_000_000
 #       4: inetlab-sw1-eth0
         5: 
           uid: gw
           kind: router
-        6: fleckenstein-1-eth0
-#       7: fleckenstein-1-eth1
-        8: fleckenstein-1-eth2
-        9: fleckenstein-2-eth0
-#       10: fleckenstein-2-eth1
-        11: fleckenstein-2-eth2
-        12: fleckenstein-3-eth0
-#       13: fleckenstein-3-eth1
-        14: fleckenstein-3-eth2
-        15: fleckenstein-4-eth0
-#       16: fleckenstein-4-eth1
-        17: fleckenstein-4-eth2
-        18: fleckenstein-5-eth0
-#       19: fleckenstein-5-eth1
-        20: fleckenstein-5-eth2
-        21: fleckenstein-6-eth0
-#       22: fleckenstein-6-eth1
-        23: fleckenstein-6-eth2
-        24: fleckenstein-7-eth0
-#       25: fleckenstein-7-eth1
-        26: fleckenstein-7-eth2
-        27: fleckenstein-8-eth0
-#       28: fleckenstein-8-eth1
-        29: fleckenstein-8-eth2
-        30: fleckenstein-9-eth0
-#       31: fleckenstein-9-eth1
-        32: fleckenstein-9-eth2
-        33: fleckenstein-10-eth0
-#       34: fleckenstein-10-eth1
-        35: fleckenstein-10-eth2
-        36: 
-          uid: sw-admin
-          kind: switch
-#       40: ramstein-1
-        44: 
-        48: 
-        52: 
-        56: 
-        60: 
-        64: 
-        68: 
-        72: 
-        76: 
-        80: 
-        84: 
-        88:
-        92: 
-        96: 
-        100: 
-        104: 
-        108: 
+          rate: 10_000_000_000
+        6:
+          uid: fleckenstein-1-eth0
+          rate: 25_000_000_000
+        7:
+          uid: fleckenstein-2-eth0
+          rate: 25_000_000_000
+        8:
+          uid: fleckenstein-3-eth0
+          rate: 25_000_000_000
+        9:
+          uid: fleckenstein-4-eth0
+          rate: 25_000_000_000
+        10:
+          uid: fleckenstein-5-eth0
+          rate: 25_000_000_000
+        11:
+          uid: fleckenstein-6-eth0
+          rate: 25_000_000_000
+        12:
+          uid: fleckenstein-7-eth0
+          rate: 25_000_000_000
+        13:
+          uid: fleckenstein-8-eth0
+          rate: 25_000_000_000
+        14:
+          uid: fleckenstein-9-eth0
+          rate: 25_000_000_000
+        15:
+          uid: fleckenstein-10-eth0
+          rate: 25_000_000_000
+        16: fleckenstein-1-eth6
+        20: fleckenstein-2-eth6
+        24: fleckenstein-3-eth6
+        28: fleckenstein-4-eth6
+        32: fleckenstein-5-eth6
+        36: fleckenstein-6-eth6
+        40: fleckenstein-7-eth6
+        44: fleckenstein-8-eth6
+        48: fleckenstein-9-eth6
+        52: fleckenstein-10-eth6
+        56: engelbourg-2-eth1
+        60: engelbourg-2-eth2
+        64: engelbourg-3-eth1
+        68: engelbourg-3-eth2
+        72: engelbourg-4-eth1
+        76: engelbourg-4-eth2
+        80: engelbourg-5-eth1
+        84: engelbourg-5-eth2
+        88: engelbourg-6-eth1
+        92: engelbourg-6-eth2 
+        96: engelbourg-7-eth1
+        100: engelbourg-7-eth2 
+        104: engelbourg-8-eth1
+        108: engelbourg-8-eth2
         112: 
         116:
         120: 
         124: 
+          uid: sw-admin
+          kind: switch
 
   channels:
     port-channel1:
       port: port-channel1
       uid: srv-data
-      rate: 50000000000
+      rate: 50_000_000_000
       kind: server
 
