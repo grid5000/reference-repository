@@ -8,11 +8,19 @@ queues:
   - admin
   - production
 nodes:
+  chartreuse3-1:
+    supported_job_types:
+      max_walltime: 86400
+  chartreuse3-2:
+    supported_job_types:
+      max_walltime: 172800
+  chartreuse3-[3-4]:
+    supported_job_types:
+      max_walltime: 604800
   chartreuse3-[1-4]:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
     processor:
       microarchitecture: Haswell
       clock_speed: 2_600_000_000
