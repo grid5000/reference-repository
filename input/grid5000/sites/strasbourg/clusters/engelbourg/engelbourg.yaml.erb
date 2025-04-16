@@ -37,11 +37,6 @@ queues:
 nodes: 
   <% (1..nodes_number).each { |i| %>
   <%= cluster_name %>-<%= i %>:
-    bmc:   
-      ip: <%= ip_bmc_list[i - 1] %>
-      mac: <%= mac_bmc_list[i - 1] %>
-  <% } %>
-  engelbourg-[1-8]:
     chassis:
       manufactured_at: 1970-01-01 # TODO: Put date.
       warranty_end: 1970-01-01 # TODO: Put date.
@@ -52,8 +47,6 @@ nodes:
     processor:
       microarchitecture: Broadwell
       clock_speed: 1600000000
-      model: Intel Pentium
-      version: D1517
     network_adapters:
       bmc:
         interface: Ethernet
@@ -61,6 +54,8 @@ nodes:
         mountable: false
         mounted: false
         management: true
+        ip: <%= ip_bmc_list[i - 1] %>
+        mac: <%= mac_bmc_list[i - 1] %>
       eth0:
         enabled: true
         mountable: true
@@ -74,4 +69,4 @@ nodes:
     management_tools:
       bmc_vendor_tool: none
     nodeset: engelbourg # TODO: rename cluster
-
+  <% } %>
