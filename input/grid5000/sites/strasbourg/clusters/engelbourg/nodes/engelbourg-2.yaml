@@ -11,7 +11,7 @@ engelbourg-2:
     release_date: 02/08/2021
     vendor: American Megatrends Inc.
     version: R1.00.E4
-  bmc_version: unknown
+  bmc_version: '15.00'
   chassis:
     manufacturer: Default string
     name: Default string
@@ -23,16 +23,12 @@ engelbourg-2:
       size: 8589934592
       technology: dram
   network_adapters:
-    bmc:
-      ip: 172.17.161.2
-      mac: E0:01:A6:A4:4C:FC
-      management: true
     eth0:
       driver: igb
       firmware_version: 3.16.0
       interface: Ethernet
       ip: 172.16.161.2
-      mac: 00:90:fb:78:0f:12
+      mac: 00:90:FB:78:0F:12
       management: false
       model: I210 Gigabit Network Connection
       name: enp2s0
@@ -55,8 +51,10 @@ engelbourg-2:
     ht_capable: true
     instruction_set: x86-64
     microcode: '0x700001c'
+    model: Intel Pentium
     other_description: Intel(R) Pentium(R) CPU D1517 @ 1.60GHz
     vendor: Intel
+    version: D1517
   storage_devices:
     pci-0000:00:1f.2-ata-1:
       by_id: "/dev/disk/by-id/wwn-0x502b2a201d1c1b1a"

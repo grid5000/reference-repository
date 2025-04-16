@@ -14,7 +14,7 @@
   )
 
   mac_bmc_list = %w(
-    01:01:01:01:01:01 #Fake value
+    01:01:01:01:01:01
     E0:01:A6:A4:4C:FC
     E0:01:A6:A4:3A:F0
     E0:01:A6:A4:36:04
@@ -34,7 +34,13 @@ exotic: true
 queues:
   - admin
   - testing
-nodes:
+nodes: 
+  <% (1..nodes_number).each { |i| %>
+  <%= cluster_name %>-<%= i %>:
+    bmc:   
+      ip: <%= ip_bmc_list[i - 1] %>
+      mac: <%= mac_bmc_list[i - 1] %>
+  <% } %>
   engelbourg-[1-8]:
     chassis:
       manufactured_at: 1970-01-01 # TODO: Put date.
@@ -49,17 +55,12 @@ nodes:
       model: Intel Pentium
       version: D1517
     network_adapters:
-      <% (1..nodes_number).each { |i| %>
-      <%= cluster_name %>-<%= i %>:
-        bmc:
-          interface: Ethernet
-          enabled: true
-          mountable: false
-          mounted: false
-          ip: <%= ip_bmc_list[i - 1] %>
-          mac: <%= mac_bmc_list[i - 1] %>
-          management: true
-      <% } %>
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+        management: true
       eth0:
         enabled: true
         mountable: true
