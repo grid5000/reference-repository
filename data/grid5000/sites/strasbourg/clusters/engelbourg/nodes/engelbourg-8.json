@@ -24,7 +24,7 @@
     "ram_size": 8589934592
   },
   "management_tools": {
-    "bmc_vendor_tool": "wedge",
+    "bmc_vendor_tool": "none",
     "ipmitool": {
       "retries": 5
     }
@@ -59,6 +59,58 @@
       "switch": "sw-admin",
       "switch_port": "Ethernet19",
       "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "firmware_version": "0x800008bc, 1.1937.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "00:90:fb:78:0b:4e",
+      "management": false,
+      "model": "Ethernet Connection X552 10 GbE Backplane",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp4s0f0",
+      "rate": 0,
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "ixgbe",
+      "enabled": false,
+      "firmware_version": "0x800008bc, 1.1937.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "00:90:fb:78:0b:4f",
+      "management": false,
+      "model": "Ethernet Connection X552 10 GbE Backplane",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp4s0f1",
+      "rate": 0,
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "cdc_ether",
+      "enabled": false,
+      "firmware_version": "CDC Ethernet Device",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "02:00:00:00:00:02",
+      "management": false,
+      "mountable": false,
+      "mounted": false,
+      "name": "enx020000000002",
+      "rate": 0,
+      "sriov": false,
+      "sriov_totalvfs": 0
     },
     {
       "device": "bmc",
@@ -97,7 +149,7 @@
     "instruction_set": "x86-64",
     "microarchitecture": "Broadwell",
     "microcode": "0x700001c",
-    "model": "Intel(R) Pentium(R)",
+    "model": "Intel Pentium",
     "other_description": "Intel(R) Pentium(R) CPU D1517 @ 1.60GHz",
     "vendor": "Intel",
     "version": "D1517"
