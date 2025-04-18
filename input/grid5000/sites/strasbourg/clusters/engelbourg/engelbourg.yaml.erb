@@ -47,6 +47,7 @@ nodes:
     processor:
       microarchitecture: Broadwell
       clock_speed: 1600000000
+    bmc_version: "unknown"
     network_adapters:
       bmc:
         interface: Ethernet
@@ -60,6 +61,18 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
       pci-0000:00:1f.2-ata-1:
         id: disk0

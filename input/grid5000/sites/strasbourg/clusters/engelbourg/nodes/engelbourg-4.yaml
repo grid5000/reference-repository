@@ -11,7 +11,6 @@ engelbourg-4:
     release_date: 02/08/2021
     vendor: American Megatrends Inc.
     version: R1.00.E4
-  bmc_version: '15.00'
   chassis:
     manufacturer: Default string
     name: Default string
@@ -28,7 +27,7 @@ engelbourg-4:
       firmware_version: 3.16.0
       interface: Ethernet
       ip: 172.16.161.4
-      mac: 00:90:FB:78:0E:D7
+      mac: 00:90:fb:78:0e:d7
       management: false
       model: I210 Gigabit Network Connection
       name: enp2s0
@@ -36,6 +35,40 @@ engelbourg-4:
       sriov: false
       sriov_totalvfs: 0
       vendor: Intel
+    eth1:
+      driver: ixgbe
+      firmware_version: 0x800008bc, 1.1937.0
+      interface: Ethernet
+      mac: 00:90:fb:78:0a:8c
+      management: false
+      model: Ethernet Connection X552 10 GbE Backplane
+      name: enp4s0f0
+      rate: 0
+      sriov: true
+      sriov_totalvfs: 63
+      vendor: Intel
+    eth2:
+      driver: ixgbe
+      firmware_version: 0x800008bc, 1.1937.0
+      interface: Ethernet
+      mac: 00:90:fb:78:0a:8d
+      management: false
+      model: Ethernet Connection X552 10 GbE Backplane
+      name: enp4s0f1
+      rate: 0
+      sriov: true
+      sriov_totalvfs: 63
+      vendor: Intel
+    eth3:
+      driver: cdc_ether
+      firmware_version: CDC Ethernet Device
+      interface: Ethernet
+      mac: 02:00:00:00:00:02
+      management: false
+      name: enx020000000002
+      rate: 0
+      sriov: false
+      sriov_totalvfs: 0
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
