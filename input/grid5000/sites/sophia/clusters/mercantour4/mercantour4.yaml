@@ -9,38 +9,50 @@ queues:
   - testing
 nodes:
   mercantour4-1:
-    chassis:
-      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
-      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell
+      microarchitecture: Skylake-SP
       clock_speed: 2400000000
     network_adapters:
       bmc:
         enabled: true
         mountable: false
         mounted: false
+        interface: Ethernet
       eth0:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+      ib0:
+        mounted: true
+        enabled: true
+        mountable: true
+        netmask: 255.255.240.0
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:18:00.0-scsi-0:2:2:0:
         id: disk0
         interface: SAS
-        by_path: "pci-0000:18:00.0-scsi-0:2:0:0"
-      #disk1: # This field will have to be renamed later.
-      #  id: disk1
-      #  interface: SAS
-      #  by_path: "pci-0000:18:00.0-scsi-0:2:1:0"
-      #disk2: # This field will have to be renamed later.
-      #  id: disk2
-      #  interface: SAS
-      #  by_path: "pci-0000:18:00.0-scsi-0:2:2:0"
+      pci-0000:18:00.0-scsi-0:2:0:0:
+        id: disk1
+        interface: SAS
+      pci-0000:18:00.0-scsi-0:2:1:0:
+        id: disk2
+        interface: SAS
     software:
       standard-environment: debian11-x64-std
     management_tools:

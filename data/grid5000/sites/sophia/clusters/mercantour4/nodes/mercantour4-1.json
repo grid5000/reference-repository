@@ -1,26 +1,27 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 80,
+    "nb_procs": 4,
+    "nb_threads": 160,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "01/07/2025",
+    "vendor": "Dell Inc.",
+    "version": "2.23.0"
   },
-  "bmc_version": "v1",
+  "bmc_version": "7.00.00.174",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2017-11-29",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R940",
+    "serial": "HW1QCM2",
+    "warranty_end": "2024-11-29"
   },
   "exotic": false,
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 1099511627776
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -30,29 +31,260 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_c1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_c2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_c3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_c4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_c5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_c6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_c7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_c8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_d1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_d2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_d3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_d4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_d5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_d6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_d7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_d8",
+      "size": 34359738368,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "igb",
       "enabled": true,
+      "firmware_version": "1.67, 0x80001103, 22.5.7",
       "interface": "Ethernet",
       "ip": "172.16.130.41",
       "ip6": "2001:660:4406:800:3::29",
       "kavlan": false,
       "mac": "24:6e:96:81:28:dc",
       "management": false,
+      "model": "I350 Gigabit Network Connection",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "mercantour4-1.sophia.grid5000.fr",
-      "rate": 10000000000,
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "sw-3",
-      "switch_port": "1/1/18"
+      "switch_port": "1/1/18",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80001103, 22.5.7",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:81:28:dd",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80001103, 22.5.7",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:81:28:de",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x80001103, 22.5.7",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:81:28:df",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "12.17.2052",
+      "guid": "0x248a070300aef2ae",
+      "interface": "InfiniBand",
+      "ip": "172.18.130.41",
+      "kavlan": false,
+      "mac": "24:8a:07:03:00:ae:f2:ae",
+      "management": false,
+      "model": "MT27700 Family [ConnectX-4]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "netmask": "255.255.240.0",
+      "network_address": "mercantour4-1-ib0.sophia.grid5000.fr",
+      "rate": 20000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,49 +301,72 @@
   ],
   "nodeset": "mercantour4",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 38400000000,
-    "node_flops": 2764800000000
+    "core_flops": 76800000000,
+    "node_flops": 6144000000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 28835840,
     "clock_speed": 2400000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microarchitecture": "Skylake-SP",
+    "microcode": "0x2007006",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz",
+    "vendor": "Intel",
+    "version": "Gold 6148"
   },
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025040409",
+    "postinstall-version": "1.2025042314",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "pci-0000:18:00.0-scsi-0:2:0:0",
+      "by_id": "/dev/disk/by-id/wwn-0x6d094660227449002f9250fd3955e403",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:2:0",
+      "firmware_version": 5.16,
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "model": "PERC H740P Adp",
+      "size": 1919716163584,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d094660227449002f9250f8325e0137",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0",
+      "firmware_version": 5.16,
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "PERC H740P Adp",
+      "size": 599550590976,
+      "storage": "HDD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x6d094660227449002f9250fa35bc3bcc",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:1:0",
+      "firmware_version": 5.16,
+      "id": "disk2",
+      "interface": "SAS",
+      "model": "PERC H740P Adp",
+      "size": 599550590976,
+      "storage": "HDD",
+      "vendor": "Dell"
     }
   ],
   "supported_job_types": {
@@ -121,7 +376,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "mercantour4-1"
