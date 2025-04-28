@@ -70,10 +70,14 @@ nodes:
         management: false
         driver: mlx_core # Fake data, will be replaced by g5k-checks
         name: enp1s0f0np0 # Fake data, will be replaced by g5k-checks
-        rate: 10000000000 # Fake data, will be replaced by g5k-checks
+        rate: 1000000000 # Fake data, will be replaced by g5k-checks
         mac: <%= mac_eth0_list[i - 1] %>
     storage_devices:
       disk0:
+        storage: SSD # Fake data, will be replaced by g5k-checks
+        model: unknown # Fake data, will be replaced by g5k-checks
+        size: 8 # Fake data, will be replaced by g5k-checks
+      disk1:
         storage: SSD # Fake data, will be replaced by g5k-checks
         model: unknown # Fake data, will be replaced by g5k-checks
         size: 8 # Fake data, will be replaced by g5k-checks
