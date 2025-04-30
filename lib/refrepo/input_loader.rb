@@ -364,8 +364,8 @@ def net_switch_port_lookup(site, node_uid, interface='')
           switch_remote_port = lc["port"] || ""
           switch_remote_uid = port
         end
-        if switch_remote_uid =~ /([a-z]*-[0-9]*)-(.*)/
-          n, p = switch_remote_uid.match(/([a-z]*-[0-9]*)-(.*)/).captures
+        if switch_remote_uid =~ /([a-z]+[0-9]*-[0-9]*)-(.*)/
+          n, p = switch_remote_uid.match(/([a-z]+[0-9]*-[0-9]*)-(.*)/).captures
           switch_remote_uid = n
           switch_remote_port = p
         end
