@@ -423,6 +423,9 @@ sophia:
   esterel10-3: # 3 GPUs instead of 4
     - -gpu_devices.nvidia3
     - ~gpu_devices.nvidia1.cpu_affinity
+  esterel11-2: # 3 GPUs instead of 4
+    - -gpu_devices.nvidia3
+    - ~gpu_devices.nvidia1.cpu_affinity
   mercantour1-[6-7]:
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.model
