@@ -2,17 +2,18 @@
 model: Dell PowerEdge C6220 II
 created_at: 2014-04-25
 kavlan: true
+redfish: false
 boot_type: bios
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   mercantour1-[1-16]:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Ivy Bridge
       clock_speed: 2800000000
