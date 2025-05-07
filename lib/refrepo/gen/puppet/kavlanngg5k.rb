@@ -3,7 +3,7 @@
 require 'refrepo/data_loader'
 require 'set'
 
-TRUNK_KINDS = ['router', 'switch', 'backbone'] # how to detect trunk ports in network refapi
+TRUNK_KINDS = [ 'router', 'switch' ] # how to detect trunk ports in network refapi
 KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, not for neutron/NGS
 
 # entry point
