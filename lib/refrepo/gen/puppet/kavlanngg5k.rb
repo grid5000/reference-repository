@@ -114,17 +114,17 @@ def gen_kavlanapi_g5k_desc(output_path, options, available_gw_sites)
   # the generated files for the site, these files need to be removed
   # manually)
   refapi['sites'].each { |site_id, _site_h|
-    FileUtils.rm Dir.glob(File.join(output_path, "#{site_id}.json"))
-    FileUtils.rm Dir.glob(File.join(output_path, "#{site_id}-*"))
+    FileUtils.remove_dir(File.join(output_path, site_id), true)
   }
   refapi['sites'].each do |site_id, site_h|
+    Dir.mkdir(File.join(output_path, site_id))
     refapi_site = { 'sites' => { site_id => site_h.select { |k, _v| k != 'clusters' } } }
-    File.open(File.join(output_path, "#{site_id}.json"), 'w') do |f|
+    File.open(File.join(output_path, site_id, "#{site_id}.json"), 'w') do |f|
       f.write(JSON.pretty_generate(refapi_site))
     end
     site_h['clusters'].each do |cluster_id, cluster_h|
       refapi_site_cluster = { 'sites' => { site_id => { 'clusters' => { cluster_id => cluster_h } } } }
-      File.open(File.join(output_path, "#{site_id}-#{cluster_id}.json"), 'w') do |f|
+      File.open(File.join(output_path, site_id, "#{site_id}-#{cluster_id}.json"), 'w') do |f|
         f.write(JSON.pretty_generate(refapi_site_cluster))
       end
     end
