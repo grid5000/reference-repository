@@ -2,11 +2,12 @@
 model: Asus ESC8000G4
 created_at: 2025-03-17
 kavlan: false
+redfish: false
 boot_type: bios
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   esterel27-1:
     gpu_devices:
@@ -24,7 +25,7 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Skylake-SP
       clock_speed: 2400000000
