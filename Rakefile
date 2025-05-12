@@ -40,6 +40,7 @@ namespace :valid do
     require 'refrepo/valid/homogeneity'
     require 'refrepo/valid/input/duplicates'
     require 'refrepo/valid/input/schema'
+    require 'refrepo/valid/duplicate_values'
     options = {}
     options[:sites] = ( ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES )
     options[:clusters] = ( ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [] )
@@ -51,7 +52,9 @@ namespace :valid do
     ret2 = yaml_input_find_duplicates(options)
     puts "# Checking schema ..."
     ret3 = yaml_input_schema_validator(options)
-    exit(ret1 && ret2 && ret3)
+    puts "# Checking duplicate values ..."
+    ret4 = check_duplicate_values()
+    exit(ret1 && ret2 && ret3 && ret4)
   end
 
   desc "Check homogeneity of clusters -- parameters: [SITE={grenoble,..}] [CLUSTER={yeti,..}] [VERBOSE=1]"
@@ -74,6 +77,13 @@ namespace :valid do
     options[:clusters] = ( ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [] )
     options[:verbose] = ENV['VERBOSE'].to_i if ENV['VERBOSE']
     ret = yaml_input_find_duplicates(options)
+    exit(ret)
+  end
+
+  desc "Check for duplicates values in some fields that should be globally unique"
+  task "duplicate-values" do
+    require 'refrepo/valid/duplicate_values'
+    ret = check_duplicate_values()
     exit(ret)
   end
 
