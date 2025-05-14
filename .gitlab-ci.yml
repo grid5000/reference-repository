@@ -38,6 +38,7 @@ validate-input-data:
     - bundle exec rake valid:schema
     - bundle exec rake valid:duplicates
     - bundle exec rake valid:required-unwanted-files
+    - bundle exec rake valid:duplicate-values
 
 wikigen:
   extends: .template-refrepo
