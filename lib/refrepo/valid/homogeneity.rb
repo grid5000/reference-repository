@@ -76,7 +76,7 @@ eos
     keys = ignore_netkeys.gsub('.eth.', ".eth#{eth}.").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
 
-    (1..21).each { |kavlan|
+    (1..22).each { |kavlan|
       ignore_keys << "~kavlan.eth#{eth}.kavlan-#{kavlan}"
       ignore_keys << "~kavlan6.eth#{eth}.kavlan-#{kavlan}"
     }
