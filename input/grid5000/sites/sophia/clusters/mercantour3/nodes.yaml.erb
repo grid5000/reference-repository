@@ -67,10 +67,10 @@ nodes:
         size: 8 # Fake size, will be replaced by g5k-checks
         technology: dram # Common memory technology, will be replaced by g5k-checks
     processor:
-      model: Unknown # Fake model name, will be replaced by g5k-checks
-      other_description: description # Fake description, will be replaced by g5k-checks
-      vendor: vendor # Fake vendor, will be replaced by g5k-checks
-      version: vendor # Fake version, will be replaced by g5k-checks
+      model: Intel Xeon # Fake model name, will be replaced by g5k-checks
+      other_description: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz # Fake description, will be replaced by g5k-checks
+      vendor: Intel # Fake vendor, will be replaced by g5k-checks
+      version: Silver 4114 # Fake version, will be replaced by g5k-checks
       cache_l1d: 8 # Fake cache, will be replaced by g5k-checks
       cache_l1i: 8 # Fake cache, will be replaced by g5k-checks
       cache_l2: 8 # Fake cache, will be replaced by g5k-checks
@@ -100,7 +100,7 @@ nodes:
         management: false
         driver: mlx_core # Fake data, will be replaced by g5k-checks
         name: enp1s0f0np0 # Fake data, will be replaced by g5k-checks
-        rate: 10000000000 # Fake data, will be replaced by g5k-checks
+        rate: 1000000000 # Fake data, will be replaced by g5k-checks
         mac: <%= mac_eth0_list[i - 1] %>
     storage_devices:
       disk0:
