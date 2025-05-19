@@ -23,7 +23,7 @@
     "ram_size": 8
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
@@ -50,7 +50,7 @@
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "mercantour3-12.sophia.grid5000.fr",
-      "rate": 10000000000,
+      "rate": 1000000000,
       "switch": null,
       "switch_port": null
     },
@@ -77,8 +77,8 @@
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 35200000000,
+    "node_flops": 2534400000000
   },
   "processor": {
     "cache_l1": null,
@@ -86,15 +86,15 @@
     "cache_l1i": 8,
     "cache_l2": 8,
     "cache_l3": 8,
-    "clock_speed": 8,
+    "clock_speed": 2200000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
+    "microarchitecture": "Skylake-SP",
     "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Silver 4114"
   },
   "redfish": true,
   "software": {
