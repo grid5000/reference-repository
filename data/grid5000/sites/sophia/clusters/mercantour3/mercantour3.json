@@ -3,7 +3,7 @@
   "created_at": "Mon, 19 May 2025 00:00:00 GMT",
   "exotic": false,
   "kavlan": false,
-  "manufactured_at": "1970-01-01",
+  "manufactured_at": "2017-11-13",
   "metrics": [
     {
       "description": "Default subset of metrics from Prometheus Node Exporter",
@@ -49,12 +49,100 @@
         "port": 9100,
         "protocol": "prometheus"
       }
+    },
+    {
+      "description": "Input byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input packet counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output packet counter for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifacein_packets_error_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth0"
+      },
+      "name": "network_ifaceout_packets_error_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
     }
   ],
   "model": "Dell PowerEdge C6420",
   "nodes_count": 16,
-  "nodes_description": "1 CPU Intel Xeon Silver 4114, 72 cores/CPU, 0GB RAM, 0GB SSD, 1 x 1Gb Ethernet",
-  "priority": 197001,
+  "nodes_description": "2 CPUs Intel Xeon Silver 4114, 10 cores/CPU, 192GB RAM, 558GB HDD, 1 x 1Gb Ethernet, 1 x 40Gb InfiniBand",
+  "priority": 201711,
   "queues": [
     "admin",
     "testing"
@@ -62,5 +150,5 @@
   "redfish": true,
   "type": "cluster",
   "uid": "mercantour3",
-  "warranty_end": "1970-01-01"
+  "warranty_end": "2024-11-13"
 }
