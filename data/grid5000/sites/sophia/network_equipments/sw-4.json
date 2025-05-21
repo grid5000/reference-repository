@@ -12,49 +12,49 @@
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/1",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 1 Gigabit - Level",
           "uid": "mercantour3-3"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/2",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 2 Gigabit - Level",
           "uid": "mercantour3-4"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/3",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 3 Gigabit - Level",
           "uid": "mercantour3-7"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/4",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 4 Gigabit - Level",
           "uid": "mercantour3-8"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/5",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 5 Gigabit - Level",
           "uid": "mercantour3-11"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/6",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 6 Gigabit - Level",
           "uid": "mercantour3-12"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/7",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 7 Gigabit - Level",
           "uid": "mercantour3-15"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/8",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 8 Gigabit - Level",
           "uid": "mercantour3-16"
         },
         {
@@ -92,54 +92,54 @@
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/25",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 25 Gigabit - Level",
           "uid": "mercantour3-1"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/26",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 26 Gigabit - Level",
           "uid": "mercantour3-2"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/27",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 27 Gigabit - Level",
           "uid": "mercantour3-5"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/28",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 28 Gigabit - Level",
           "uid": "mercantour3-6"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/29",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 29 Gigabit - Level",
           "uid": "mercantour3-9"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/30",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 30 Gigabit - Level",
           "uid": "mercantour3-10"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/31",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 31 Gigabit - Level",
           "uid": "mercantour3-13"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Gigabitethernet 1/0/32",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 32 Gigabit - Level",
           "uid": "mercantour3-14"
         }
       ],
       "rate": 1000000000,
-      "snmp_pattern": "Gigabitethernet 1/%LINECARD%/%PORT%"
+      "snmp_pattern": "Unit: 1 Slot: %LINECARD% Port: %PORT% Gigabit - Level"
     },
     {
       "kavlan_pattern": "%PORT%",
@@ -149,12 +149,12 @@
         },
         {
           "kind": "router",
-          "snmp_name": "TenGigabitEthernet 1/0/1",
+          "snmp_name": "Unit: 1 Slot: 0 Port: 1 10G - Level",
           "uid": "gw"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "TenGigabitEthernet %LINECARD%/0/%PORT%"
+      "snmp_pattern": "Unit: 1 Slot: 0 Port: %PORT% 10G - Level"
     }
   ],
   "managed_by_us": true,
