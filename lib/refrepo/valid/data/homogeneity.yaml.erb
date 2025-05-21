@@ -441,6 +441,11 @@ sophia:
     - ~bios.version
     - ~bmc_version
     - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.ib0.rate
+  mercantour3-9:
+    - ~network_adapters.ib0.rate
+  mercantour3-[11-13]:
+    - ~network_adapters.ib0.rate
   uvb-13:
     - -chassis.serial
     - ~chassis.manufacturer
