@@ -1,0 +1,211 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 20,
+    "nb_procs": 2,
+    "nb_threads": 40,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "09/19/2023",
+    "vendor": "Dell Inc.",
+    "version": "2.20.1"
+  },
+  "bmc_version": "7.00.00.171",
+  "chassis": {
+    "manufactured_at": "2017-11-13",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6420",
+    "serial": "F2YPCM2",
+    "warranty_end": "2024-11-13"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 206158430208
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "igb",
+      "enabled": true,
+      "firmware_version": "1.67, 0x800010e5, 22.5.7",
+      "interface": "Ethernet",
+      "ip": "172.16.130.38",
+      "ip6": "2001:660:4406:800:3::26",
+      "kavlan": false,
+      "mac": "50:9a:4c:6c:38:6b",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "mercantour3-14.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "sw-4",
+      "switch_port": "Unit: 1 Slot: 0 Port: 32 Gigabit - Level",
+      "vendor": "Intel"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "firmware_version": "2.40.5048",
+      "guid": "0xec0d9a03001d2ec1",
+      "interface": "InfiniBand",
+      "ip": "172.18.130.38",
+      "kavlan": false,
+      "mac": "ec:0d:9a:03:00:1d:2e:c1",
+      "management": false,
+      "model": "MT27500 Family [ConnectX-3]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "netmask": "255.255.240.0",
+      "network_address": "mercantour3-14-ib0.sophia.grid5000.fr",
+      "rate": 56000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.130.38",
+      "kavlan": false,
+      "mac": "50:9a:4c:6c:30:eb",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "mercantour3-14-bmc.sophia.grid5000.fr"
+    }
+  ],
+  "nodeset": "mercantour3",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 35200000000,
+    "node_flops": 704000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 14417920,
+    "clock_speed": 2200000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake-SP",
+    "microcode": "0x2007006",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Silver 4114"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025042314",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000cca02f3be804",
+      "by_path": "/dev/disk/by-path/pci-0000:3b:00.0-sas-phy4-lun-0",
+      "firmware_version": "FU45",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "HUC101860CSS200",
+      "size": 600127266816,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "mercantour3-14"
+}
