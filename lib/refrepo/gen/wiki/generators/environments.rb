@@ -14,10 +14,17 @@ class EnvironmentsGenerator < WikiGenerator
     'debian11-base' => 'debian 11 (bullseye) with various Grid\'5000-specific tuning for performance',
     'debian11-nfs' => 'debian 11 (bullseye) with support for mounting NFS home',
     'debian11-big' => 'debian 11 (bullseye) with packages for development, system tools, editors, shells.',
+    'debiab12-min' => 'debian 12 (bookworm) minimalistic installation',
+    'debian12-nfs' => 'debian 12 (bookworm) with support for mounting NFS home',
+    'debian12-big' => 'debian 12 (bookworm) with packages for development, system tools, editors, shells.',
+    'debiantesting-min' => 'debian testing minimalistic installation',
+    'debiantesting-nfs' => 'debian testing with support for mounting NFS home',
     'ubuntu2004-min' => 'ubuntu 20.04 (focal) minimalistic installation',
     'ubuntu2004-nfs' => 'ubuntu 20.04 (focal) with support for mounting NFS home',
     'ubuntu2204-min' => 'ubuntu 22.04 (jellyfish) minimalistic installation',
     'ubuntu2204-nfs' => 'ubuntu 22.04 (jellyfish) with support for mounting NFS home',
+    'ubuntu2404-min' => 'ubuntu 22.04 (noble) minimalistic installation',
+    'ubuntu2404-nfs' => 'ubuntu 24.04 (noble) with support for mounting NFS home',
     'centos7-min' => 'centos 7 minimalistic installation',
     'centos7-nfs' => 'centos 7 with support for mounting NFS home',
     'centos8-min' => 'centos 8 minimalistic installation',
@@ -30,8 +37,8 @@ class EnvironmentsGenerator < WikiGenerator
     'rocky8-nfs' => 'rocky 8 with support for mounting NFS home',
     'rocky9-min' => 'rocky 9 minimalistic installation',
     'rocky9-nfs' => 'rocky 9 with support for mounting NFS home',
-    'debiantesting-min' => 'debian testing minimalistic installation',
-    'debiantesting-nfs' => 'debian testing with support for mounting NFS home',
+    'almalinux9-min' => 'almalinux 9 minimalistic installation',
+    'almalinux9-nfs' => 'almalinux 9 with support for mounting NFS home',
   }
 
   def generate_content(_options)
