@@ -33,7 +33,7 @@
          end
        end
        # TODO Fix dirty conversion
-       (10..21).each.reject{ |kavlan_id| site_refapi['kavlans'].keys.map(&:to_i).include?(kavlan_id) }.each do |kavlan_id|
+       (10..22).each.reject{ |kavlan_id| site_refapi['kavlans'].keys.map(&:to_i).include?(kavlan_id) }.each do |kavlan_id|
 -%>
        {"value": 7<%= kavlan_id %>, "name": "KAVLAN-<%= kavlan_id %>", "type": "kavlan-remote"},
 <%
