@@ -21,7 +21,7 @@ def yaml_input_required_unwanted_files(options)
 
       Dir::entries(cluster_input_dir).each do |f|
         next if %w{. .. nodes pdus.yaml}.include?(f)
-        next if f =~ /^#{cluster_uid}(|_metrics|_pdus|_pdu|_retired|_ib|_extra).yaml(.erb)?$/
+        next if f =~ /^#{cluster_uid}(|_metrics|_pdus|_pdu|_retired|_ib|_extra|_disks).yaml(.erb)?$/
         puts "ERROR: Unwanted file #{f} in #{cluster_input_dir}"
         r = false
       end
