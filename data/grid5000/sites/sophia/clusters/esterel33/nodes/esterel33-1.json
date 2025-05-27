@@ -24,7 +24,7 @@
     "nvidia0": {
       "compute_capability": "8.6",
       "cores": 10752,
-      "cpu_affinity": 1,
+      "cpu_affinity": 0,
       "device": "/dev/nvidia0",
       "memory": 48305799168,
       "microarchitecture": "Ampere",
@@ -43,6 +43,23 @@
       "cores": 10752,
       "cpu_affinity": 1,
       "device": "/dev/nvidia1",
+      "memory": 48305799168,
+      "microarchitecture": "Ampere",
+      "model": "A40",
+      "performance": {
+        "fp-16": 37420000000000,
+        "fp-32": 37420000000000,
+        "fp-64": 584600000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "94.02.5C.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.6",
+      "cores": 10752,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
       "memory": 48305799168,
       "microarchitecture": "Ampere",
       "model": "A40",
@@ -205,7 +222,7 @@
       "name": "ib0",
       "netmask": "255.255.240.0",
       "network_address": "esterel33-1-ib0.sophia.grid5000.fr",
-      "rate": 40000000000,
+      "rate": 20000000000,
       "vendor": "Mellanox Technologies"
     },
     {
