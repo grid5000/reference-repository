@@ -178,6 +178,26 @@ gw:
           kind: channel
           rate: 10_000_000_000
           snmp_pattern: "ethernet1/1/%PORT%:1"
+        61:
+          uid: troll-1-eth1
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%" # Pattern pour les noeuds en 25Gb/s
+          rate: 25000000000
+        62:
+          uid: troll-2-eth1
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
+        63:
+          uid: troll-3-eth1
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
+        64:
+          uid: troll-4-eth1
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%"
+          rate: 25000000000
         67:
           uid: port-channel50
           kind: channel
