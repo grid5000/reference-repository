@@ -491,7 +491,7 @@ def add_ipv4(h)
             if_kind_offset = 0
           end
           if not iface_offsets.has_key?(k)
-            raise "Missing IPv4 information for #{k}"
+            raise "Missing IPv4 information for #{k} (is IP defined in ipv4.yaml?)"
           end
           ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id + if_kind_offset).to_s
           a = [ site_uid, node_uid, iface ]
