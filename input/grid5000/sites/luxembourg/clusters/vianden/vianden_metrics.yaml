@@ -1,5 +1,593 @@
 ---
 metrics:
+  - name: bmc_ambient_temp_celsius
+    description: Front node ambient temperature reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 3 #Inlet Temp
+
+  - name: bmc_node_power_watt
+    description: Power consumption of node reported by BMC, in watt
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 95 #Pwr Consumption
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "temp" }
+    description: Temperature of Temp reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 1 #Temp
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "temp2" }
+    description: Temperature of Temp reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 2 #Temp
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan1a" }
+    description: Speed of Fan1A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 4 #Fan1A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan2a" }
+    description: Speed of Fan2A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 5 #Fan2A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan3a" }
+    description: Speed of Fan3A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 6 #Fan3A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan4a" }
+    description: Speed of Fan4A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 7 #Fan4A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan5a" }
+    description: Speed of Fan5A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 8 #Fan5A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan6a" }
+    description: Speed of Fan6A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 9 #Fan6A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan7a" }
+    description: Speed of Fan7A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 10 #Fan7A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan8a" }
+    description: Speed of Fan8A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 11 #Fan8A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan1b" }
+    description: Speed of Fan1B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 12 #Fan1B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan2b" }
+    description: Speed of Fan2B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 13 #Fan2B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan3b" }
+    description: Speed of Fan3B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 14 #Fan3B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan4b" }
+    description: Speed of Fan4B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 15 #Fan4B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan5b" }
+    description: Speed of Fan5B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 16 #Fan5B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan6b" }
+    description: Speed of Fan6B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 17 #Fan6B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan7b" }
+    description: Speed of Fan7B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 18 #Fan7B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan8b" }
+    description: Speed of Fan8B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 19 #Fan8B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan9a" }
+    description: Speed of Fan9A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 20 #Fan9A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan9b" }
+    description: Speed of Fan9B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 21 #Fan9B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan10a" }
+    description: Speed of Fan10A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 22 #Fan10A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan10b" }
+    description: Speed of Fan10B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 23 #Fan10B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan11a" }
+    description: Speed of Fan11A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 24 #Fan11A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan11b" }
+    description: Speed of Fan11B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 25 #Fan11B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan12a" }
+    description: Speed of Fan12A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 26 #Fan12A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan12b" }
+    description: Speed of Fan12B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 27 #Fan12B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan13a" }
+    description: Speed of Fan13A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 28 #Fan13A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan13b" }
+    description: Speed of Fan13B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 29 #Fan13B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan14a" }
+    description: Speed of Fan14A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 30 #Fan14A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan14b" }
+    description: Speed of Fan14B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 31 #Fan14B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan15a" }
+    description: Speed of Fan15A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 32 #Fan15A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan15b" }
+    description: Speed of Fan15B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 33 #Fan15B
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan16a" }
+    description: Speed of Fan16A reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 34 #Fan16A
+
+  - name: bmc_other_speed_rpm
+    labels: { "id": "fan16b" }
+    description: Speed of Fan16B reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 35 #Fan16B
+
+  - name: bmc_other_current_amp
+    labels: { "id": "current1" }
+    description: Current of Current 1 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 73 #Current 1
+
+  - name: bmc_other_current_amp
+    labels: { "id": "current2" }
+    description: Current of Current 2 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 74 #Current 2
+
+  - name: bmc_other_current_amp
+    labels: { "id": "current3" }
+    description: Current of Current 3 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 75 #Current 3
+
+  - name: bmc_other_current_amp
+    labels: { "id": "current4" }
+    description: Current of Current 4 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 76 #Current 4
+
+  - name: bmc_other_current_amp
+    labels: { "id": "current5" }
+    description: Current of Current 5 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 77 #Current 5
+
+  - name: bmc_other_current_amp
+    labels: { "id": "current6" }
+    description: Current of Current 6 reported by BMC, in amp
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 78 #Current 6
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "voltage1" }
+    description: Voltage of Voltage 1 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 79 #Voltage 1
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "voltage2" }
+    description: Voltage of Voltage 2 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 80 #Voltage 2
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "voltage3" }
+    description: Voltage of Voltage 3 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 81 #Voltage 3
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "voltage4" }
+    description: Voltage of Voltage 4 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 82 #Voltage 4
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "voltage5" }
+    description: Voltage of Voltage 5 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 83 #Voltage 5
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "voltage6" }
+    description: Voltage of Voltage 6 reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 84 #Voltage 6
+
+  - name: bmc_other_usage_percent
+    labels: { "id": "iousage" }
+    description: Usage of IO Usage reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 98 #IO Usage
+
+  - name: bmc_other_usage_percent
+    labels: { "id": "memusage" }
+    description: Usage of MEM Usage reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 99 #MEM Usage
+
+  - name: bmc_other_usage_percent
+    labels: { "id": "sysusage" }
+    description: Usage of SYS Usage reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 100 #SYS Usage
+
+  - name: bmc_other_usage_percent
+    labels: { "id": "cpuusage" }
+    description: Usage of CPU Usage reported by BMC, in percent
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 101 #CPU Usage
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "procacceltemp1" }
+    description: Temperature of Proc Accel Temp1 reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 219 #Proc Accel Temp1
+
+  - name: bmc_exhaust_temp_celsius
+    description: Temperature reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 222 #Exhaust Temp
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "vccinvr" }
+    description: Voltage of VCCIN VR reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 248 #VCCIN VR
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "vccinvr" }
+    description: Voltage of VCCIN VR reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 282 #VCCIN VR
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "vccfavr" }
+    description: Voltage of VCCFA VR reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 283 #VCCFA VR
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "vccfavr" }
+    description: Voltage of VCCFA VR reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 284 #VCCFA VR
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "vccdvr" }
+    description: Voltage of VCCD VR reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 285 #VCCD VR
+
+  - name: bmc_other_voltage_volt
+    labels: { "id": "vccdvr" }
+    description: Voltage of VCCD VR reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 286 #VCCD VR
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "procacceltemp2" }
+    description: Temperature of Proc Accel Temp2 reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 323 #Proc Accel Temp2
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "procacceltemp3" }
+    description: Temperature of Proc Accel Temp3 reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 324 #Proc Accel Temp3
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "procacceltemp4" }
+    description: Temperature of Proc Accel Temp4 reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 325 #Proc Accel Temp4
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "procacceltemp5" }
+    description: Temperature of Proc Accel Temp5 reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 326 #Proc Accel Temp5
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "procacceltemp6" }
+    description: Temperature of Proc Accel Temp6 reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 327 #Proc Accel Temp6
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "procacceltemp7" }
+    description: Temperature of Proc Accel Temp7 reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 328 #Proc Accel Temp7
+
+  - name: bmc_other_temp_celsius
+    labels: { "id": "procacceltemp8" }
+    description: Temperature of Proc Accel Temp8 reported by BMC, in celsius
+    period: 5000
+    source:
+      protocol: ipmisensor
+      id: 329 #Proc Accel Temp8
 
   - name: prom_default_metrics
     description: Default subset of metrics from Prometheus Node Exporter
