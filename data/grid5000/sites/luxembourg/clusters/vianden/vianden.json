@@ -6,6 +6,857 @@
   "manufactured_at": "2024-07-14",
   "metrics": [
     {
+      "description": "Front node ambient temperature reported by BMC, in celsius",
+      "name": "bmc_ambient_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 3,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of node reported by BMC, in watt",
+      "name": "bmc_node_power_watt",
+      "period": 5000,
+      "source": {
+        "id": 95,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Temp reported by BMC, in celsius",
+      "labels": {
+        "id": "temp"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 1,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Temp reported by BMC, in celsius",
+      "labels": {
+        "id": "temp2"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 2,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan1A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan1a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 4,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan2A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan2a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 5,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan3A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan3a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 6,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan4A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan4a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 7,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan5A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan5a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 8,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan6A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan6a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 9,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan7A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan7a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 10,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan8A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan8a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 11,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan1B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan1b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 12,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan2B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan2b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 13,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan3B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan3b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 14,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan4B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan4b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 15,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan5B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan5b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 16,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan6B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan6b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 17,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan7B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan7b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 18,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan8B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan8b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 19,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan9A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan9a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 20,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan9B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan9b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 21,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan10A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan10a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 22,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan10B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan10b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 23,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan11A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan11a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 24,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan11B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan11b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 25,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan12A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan12a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 26,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan12B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan12b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 27,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan13A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan13a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 28,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan13B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan13b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 29,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan14A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan14a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 30,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan14B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan14b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 31,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan15A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan15a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 32,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan15B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan15b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 33,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan16A reported by BMC, in rpm",
+      "labels": {
+        "id": "fan16a"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 34,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan16B reported by BMC, in rpm",
+      "labels": {
+        "id": "fan16b"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 35,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of Current 1 reported by BMC, in amp",
+      "labels": {
+        "id": "current1"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 73,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of Current 2 reported by BMC, in amp",
+      "labels": {
+        "id": "current2"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 74,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of Current 3 reported by BMC, in amp",
+      "labels": {
+        "id": "current3"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 75,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of Current 4 reported by BMC, in amp",
+      "labels": {
+        "id": "current4"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 76,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of Current 5 reported by BMC, in amp",
+      "labels": {
+        "id": "current5"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 77,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Current of Current 6 reported by BMC, in amp",
+      "labels": {
+        "id": "current6"
+      },
+      "name": "bmc_other_current_amp",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 78,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of Voltage 1 reported by BMC, in volt",
+      "labels": {
+        "id": "voltage1"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 79,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of Voltage 2 reported by BMC, in volt",
+      "labels": {
+        "id": "voltage2"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 80,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of Voltage 3 reported by BMC, in volt",
+      "labels": {
+        "id": "voltage3"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 81,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of Voltage 4 reported by BMC, in volt",
+      "labels": {
+        "id": "voltage4"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 82,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of Voltage 5 reported by BMC, in volt",
+      "labels": {
+        "id": "voltage5"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 83,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of Voltage 6 reported by BMC, in volt",
+      "labels": {
+        "id": "voltage6"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 84,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Usage of IO Usage reported by BMC, in percent",
+      "labels": {
+        "id": "iousage"
+      },
+      "name": "bmc_other_usage_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 98,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Usage of MEM Usage reported by BMC, in percent",
+      "labels": {
+        "id": "memusage"
+      },
+      "name": "bmc_other_usage_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 99,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Usage of SYS Usage reported by BMC, in percent",
+      "labels": {
+        "id": "sysusage"
+      },
+      "name": "bmc_other_usage_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 100,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Usage of CPU Usage reported by BMC, in percent",
+      "labels": {
+        "id": "cpuusage"
+      },
+      "name": "bmc_other_usage_percent",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 101,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Proc Accel Temp1 reported by BMC, in celsius",
+      "labels": {
+        "id": "procacceltemp1"
+      },
+      "name": "bmc_other_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 219,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature reported by BMC, in celsius",
+      "name": "bmc_exhaust_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 222,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VCCIN VR reported by BMC, in volt",
+      "labels": {
+        "id": "vccinvr"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 248,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VCCIN VR reported by BMC, in volt",
+      "labels": {
+        "id": "vccinvr"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 282,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VCCFA VR reported by BMC, in volt",
+      "labels": {
+        "id": "vccfavr"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 283,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VCCFA VR reported by BMC, in volt",
+      "labels": {
+        "id": "vccfavr"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 284,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VCCD VR reported by BMC, in volt",
+      "labels": {
+        "id": "vccdvr"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 285,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of VCCD VR reported by BMC, in volt",
+      "labels": {
+        "id": "vccdvr"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 286,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Proc Accel Temp2 reported by BMC, in celsius",
+      "labels": {
+        "id": "procacceltemp2"
+      },
+      "name": "bmc_other_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 323,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Proc Accel Temp3 reported by BMC, in celsius",
+      "labels": {
+        "id": "procacceltemp3"
+      },
+      "name": "bmc_other_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 324,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Proc Accel Temp4 reported by BMC, in celsius",
+      "labels": {
+        "id": "procacceltemp4"
+      },
+      "name": "bmc_other_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 325,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Proc Accel Temp5 reported by BMC, in celsius",
+      "labels": {
+        "id": "procacceltemp5"
+      },
+      "name": "bmc_other_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 326,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Proc Accel Temp6 reported by BMC, in celsius",
+      "labels": {
+        "id": "procacceltemp6"
+      },
+      "name": "bmc_other_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 327,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Proc Accel Temp7 reported by BMC, in celsius",
+      "labels": {
+        "id": "procacceltemp7"
+      },
+      "name": "bmc_other_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 328,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Temperature of Proc Accel Temp8 reported by BMC, in celsius",
+      "labels": {
+        "id": "procacceltemp8"
+      },
+      "name": "bmc_other_temp_celsius",
+      "period": 5000,
+      "source": {
+        "id": 329,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
       "description": "Default subset of metrics from Prometheus Node Exporter",
       "name": "prom_default_metrics",
       "optional_period": 15000,
