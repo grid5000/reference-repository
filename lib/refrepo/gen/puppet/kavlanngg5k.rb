@@ -30,7 +30,7 @@ end
 
 # Generate a subset of the refapi with only the informations needed
 # for kavlan-api to be able to map network interfaces on nodes to
-# ports on network interfaces, in order to set the correct
+# ports on network devices, in order to set the correct
 # binding:profile of neutron ports, that NGS will use to configure the
 # network devices.
 #
