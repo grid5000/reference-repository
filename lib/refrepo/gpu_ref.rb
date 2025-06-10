@@ -20,6 +20,18 @@ class GPURef
         'fp-64' => 420000000000,
       },
     },
+    'TITAN RTX' => {
+      'cores'              => 4352,
+      'compute_capability' => '7.5',
+      'short_name'         => 'RTX 2080 Ti',
+      'alias'              => 'rtx2080ti',
+      'microarchitecture'  => 'Turing',
+      'performance'        => {
+        'fp-16' => 32620000000000,
+        'fp-32' => 16310000000000,
+        'fp-64' => 510000000000,
+      },
+    },
     'GeForce GTX 1080' => {
       'cores'              => 2560,
       'compute_capability' => '6.1',
