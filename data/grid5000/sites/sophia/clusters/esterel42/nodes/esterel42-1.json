@@ -1,26 +1,165 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "nb_cores": 128,
+    "nb_procs": 2,
+    "nb_threads": 128,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "05/22/2025",
+    "vendor": "HPE",
+    "version": 1.4
   },
-  "bmc_version": "v1",
+  "bmc_version": "1.68",
   "chassis": {
     "manufactured_at": "2025-05-30",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufacturer": "HPE",
+    "name": "HPE ProLiant Compute DL380a Gen12",
+    "serial": "2M2D2L004L",
     "warranty_end": "2032-05-08"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia2",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia3",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia4": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia4",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia5": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia5",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia6": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia6",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    },
+    "nvidia7": {
+      "compute_capability": "9.0",
+      "cores": 14592,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia7",
+      "memory": 100485038080,
+      "microarchitecture": "Hopper",
+      "model": "H100 NVL",
+      "performance": {
+        "fp-16": 1671000000000000,
+        "fp-32": 60000000000000,
+        "fp-64": 30000000000000
+      },
+      "power_default_limit": "310.00 W",
+      "vbios_version": "96.00.AF.00.02",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 2199023255552
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -31,28 +170,225 @@
   "memory_devices": [
     {
       "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 12",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 13",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 15",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 9",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 11",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 12",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 13",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 15",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 8",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 9",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
       "interface": "Ethernet",
       "ip": "172.16.131.57",
       "ip6": "2001:660:4406:800:4::39",
       "kavlan": false,
       "mac": "8c:84:74:9c:8c:76",
       "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "esterel42-1.sophia.grid5000.fr",
-      "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "gw",
+      "switch_port": "1/1/9",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "8c:84:74:9c:8c:77",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens28f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "16.25.4062",
+      "guid": "0x1c34da03005ec8ec",
+      "interface": "InfiniBand",
+      "ip": "172.18.131.57",
+      "kavlan": false,
+      "mac": "1c:34:da:03:00:5e:c8:ec",
+      "management": false,
+      "model": "MT27800 Family [ConnectX-5]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "netmask": "255.255.240.0",
+      "network_address": "esterel42-1-ib0.sophia.grid5000.fr",
+      "rate": 40000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,32 +405,32 @@
   ],
   "nodeset": "esterel42",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
-    "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": false,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 38400000000,
-    "node_flops": 2764800000000
+    "node_flops": 4915200000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 65536,
+    "cache_l2": 4194304,
+    "cache_l3": 100663296,
     "clock_speed": 2400000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Sierra Forest",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microcode": "0x3000362",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) 6710E",
+    "vendor": "Intel",
+    "version": "6710E"
   },
   "redfish": true,
   "software": {
@@ -104,14 +440,44 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/nvme-eui.37304e3058c079380025384e00000002",
+      "by_path": "/dev/disk/by-path/pci-0001:15:00.0-nvme-1",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "NVME",
+      "model": "MO003200KYDNC",
+      "size": 3200631791616,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "HP"
+    },
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.37304e3058c079400025384e00000002",
+      "by_path": "/dev/disk/by-path/pci-0001:16:00.0-nvme-1",
+      "id": "disk1",
+      "interface": "NVME",
+      "model": "MO003200KYDNC",
+      "size": 3200631791616,
+      "storage": "SSD",
+      "vendor": "HP"
+    },
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.37305230591005540025384e00000002",
+      "by_path": "/dev/disk/by-path/pci-0000:17:00.0-nvme-1",
+      "id": "disk2",
+      "interface": "NVME",
+      "model": "VO001920KYDMT",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "HP"
+    },
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.37304e3058c079390025384e00000002",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-nvme-1",
+      "id": "disk3",
+      "interface": "NVME",
+      "model": "MO003200KYDNC",
+      "size": 3200631791616,
+      "storage": "SSD",
+      "vendor": "HP"
     }
   ],
   "supported_job_types": {
@@ -121,7 +487,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "esterel42-1"
