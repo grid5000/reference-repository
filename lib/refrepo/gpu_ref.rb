@@ -21,10 +21,10 @@ class GPURef
       },
     },
     'TITAN RTX' => {
-      'cores'              => 4352,
+      'cores'              => 4608,
       'compute_capability' => '7.5',
-      'short_name'         => 'RTX 2080 Ti',
-      'alias'              => 'rtx2080ti',
+      'short_name'         => 'TITAN RTX',
+      'alias'              => 'titanrtx',
       'microarchitecture'  => 'Turing',
       'performance'        => {
         'fp-16' => 32620000000000,
