@@ -11,8 +11,8 @@ nodes:
   hydra-[1-4]:
     nodeset: hydra
     chassis:
-      manufactured_at: 2024-02-15 # TODO: retrieve info from manufacturer
-      warranty_end: 2027-02-15 # TODO: retrieve info from manufacturer
+      manufactured_at: 2024-02-15
+      warranty_end: 2027-02-01
     supported_job_types:
       deploy: true
       besteffort: true
@@ -41,6 +41,13 @@ nodes:
       pci-0006:01:00.0-scsi-0:2:0:0:
         id: disk1
         interface: SCSI
+    gpu_devices:
+      nvidia0:
+        cpu_affinity: 1
+        device: "/dev/nvidia0"
+        memory: 102_625_181_696
+        model: GH200
+        vendor: Nvidia
     software:
       standard-environment: debiangh11-arm64-std
     management_tools:

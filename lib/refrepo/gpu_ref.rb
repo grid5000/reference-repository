@@ -378,8 +378,21 @@ class GPURef
          'fp-64' => 141400000000,
        },
      },
+	'GH200' => {
+       'cores'              => 18176,
+       'compute_capability' => '9.0',
+       'short_name'         => 'H200',
+       'alias'              => 'H200',
+       'microarchitecture'  => 'Hopper',
+       'performance'        => {
+         # Performance informations comes from:
+         #   https://www.nvidia.com/en-us/data-center/h200/
+         'fp-16' => 19790000000000, # FP-16 Tensor Core value, no flops available for FP-16.
+         'fp-32' => 670000000000000,
+         'fp-64' => 340000000000000,
+      },
+    }
   }
-
 
   def self.get_cores(model)
     if @@gpus[model]
