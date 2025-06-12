@@ -21,10 +21,10 @@ class GPURef
       },
     },
     'TITAN RTX' => {
-      'cores'              => 4352,
+      'cores'              => 4608,
       'compute_capability' => '7.5',
-      'short_name'         => 'RTX 2080 Ti',
-      'alias'              => 'rtx2080ti',
+      'short_name'         => 'TITAN RTX',
+      'alias'              => 'titanrtx',
       'microarchitecture'  => 'Turing',
       'performance'        => {
         'fp-16' => 32620000000000,
@@ -318,7 +318,7 @@ class GPURef
         'fp-16' => 32620000000000,
         'fp-32' => 16310000000000,
         'fp-64' => 510000000000,
-      },     
+      },
     },
     'Quadro RTX 8000' => {
       'cores'              => 4608,
@@ -330,7 +330,7 @@ class GPURef
         'fp-16' => 32620000000000,
         'fp-32' => 16310000000000,
         'fp-64' => 510000000000,
-      },     
+      },
     },
     'Radeon Instinct MI50 32GB' => {
       'cores'              => 5120,
@@ -341,9 +341,9 @@ class GPURef
         'fp-16' => 26820000000000,
         'fp-32' => 13410000000000,
         'fp-64' => 510000000000,
-      },  
+      },
     },
-    'AMD Instinct MI300X OAM' => {
+    'AMD Instinct MI300X' => {
       'cores'              => 19456,
       'short_name'         => 'MI300X',
       'alias'              => 'mi300x',
@@ -352,7 +352,7 @@ class GPURef
         'fp-16' => 653700000000000,
         'fp-32' => 81720000000000,
         'fp-64' => 81720000000000,
-      },  
+      },
     },
     'AGX Xavier' => {
       'cores'              => 512,
@@ -364,7 +364,7 @@ class GPURef
         'fp-16' => 2820000000000,
         'fp-32' => 1410000000000,
         'fp-64' => 705000000000,
-      },  
+      },
     },
     'L40' => {
        'cores'              => 18176,
