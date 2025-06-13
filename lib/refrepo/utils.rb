@@ -45,13 +45,6 @@ module RefRepo::Utils
   end
 end
 
-# Various monkey patches
-class Hash
-  def slice(*extract)
-    h2 = self.select{|key, _value| extract.include?(key) }
-    h2
-  end
-end
 
 def split_cluster_node(k)
   [k[/([a-z]+)/, 1], k[/[a-z](\d+)/, 1].to_i, k[/-(\d+)/, 1].to_i]

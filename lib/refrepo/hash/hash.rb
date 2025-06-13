@@ -54,6 +54,11 @@ end
 # Extend Hash with helper methods needed to convert input data files to ruby Hash
 class ::Hash
 
+  def slice(*extract)
+    h2 = self.select{|key, _value| extract.include?(key) }
+    h2
+  end
+
   # Recursively merge this Hash with another (ie. merge nested hash)
   # Returns a new hash containing the contents of other_hash and the contents of hash. The value for entries with duplicate keys will be that of other_hash:
   # a = {"key": "value_a"}
