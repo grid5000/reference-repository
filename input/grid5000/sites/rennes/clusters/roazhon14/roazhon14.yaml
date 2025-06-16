@@ -9,16 +9,13 @@ queues:
   - testing
 nodes:
   roazhon14-[1-4]:
-    chassis:
-      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
-      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell # TODO: replace with microarch name.
-      clock_speed: 8 # TODO: Replace with clock speed.
+      microarchitecture: Cascade Lake-SP
+      clock_speed: 3100000000
     network_adapters:
       bmc:
         interface: Ethernet
@@ -33,11 +30,17 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      ib0:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:86:00.0-ata-1:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:86:00.0-ata-1.0"
+      pci-0000:00:11.5-ata-3:
+        id: disk1
+        interface: SATA
     software:
       standard-environment: debian11-x64-std
     management_tools:
