@@ -43,6 +43,11 @@
        {"value": <%= site_refapi['kavlan_nef'] %>, "name": "NEF", "type": "NULL"},
 <%
        end
+
+       if site_refapi.has_key?('kavlan_kinovis') -%>
+       {"value": <%= site_refapi['kavlan_kinovis'] %>, "name": "KAVLAN-<%= site_refapi['kavlan_kinovis'] %>", "type": "NULL"},
+<%
+       end
 -%>
      ],
      "switch": [
