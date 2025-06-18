@@ -7,11 +7,11 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "10/27/2022",
+    "release_date": "02/25/2024",
     "vendor": "Dell Inc.",
-    "version": "2.16.0"
+    "version": "2.19.0"
   },
-  "bmc_version": "2.84.84.84",
+  "bmc_version": "2.86.86.86",
   "chassis": {
     "manufactured_at": "2015-04-06",
     "manufacturer": "Dell Inc.",
@@ -76,7 +76,7 @@
       "device": "eth0",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.67, 0x80000fb0, 19.5.12",
+      "firmware_version": "1.67, 0x80001104, 22.5.7",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "44:a8:42:90:94:4f",
@@ -85,15 +85,15 @@
       "mountable": false,
       "mounted": false,
       "name": "eno1",
-      "sriov": true,
-      "sriov_totalvfs": 7,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "vendor": "Intel"
     },
     {
       "device": "eth1",
       "driver": "igb",
       "enabled": true,
-      "firmware_version": "1.67, 0x80000fb0, 19.5.12",
+      "firmware_version": "1.67, 0x80001104, 22.5.7",
       "interface": "Ethernet",
       "ip": "172.16.110.11",
       "ip6": "2001:660:4406:700:f::b",
@@ -106,8 +106,8 @@
       "name": "eno2",
       "network_address": "roazhon5-7.rennes.grid5000.fr",
       "rate": 1000000000,
-      "sriov": true,
-      "sriov_totalvfs": 7,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "swdc-a035-01-02-rba",
       "switch_port": "Eth103/1/27",
       "vendor": "Intel"
@@ -116,7 +116,7 @@
       "device": "eth2",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.67, 0x80000fb0, 19.5.12",
+      "firmware_version": "1.67, 0x80001104, 22.5.7",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "44:a8:42:90:94:51",
@@ -125,15 +125,15 @@
       "mountable": false,
       "mounted": false,
       "name": "eno3",
-      "sriov": true,
-      "sriov_totalvfs": 7,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "vendor": "Intel"
     },
     {
       "device": "eth3",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.67, 0x80000fb0, 19.5.12",
+      "firmware_version": "1.67, 0x80001104, 22.5.7",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "44:a8:42:90:94:52",
@@ -142,8 +142,8 @@
       "mountable": false,
       "mounted": false,
       "name": "eno4",
-      "sriov": true,
-      "sriov_totalvfs": 7,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "vendor": "Intel"
     },
     {
@@ -197,7 +197,7 @@
   "storage_devices": [
     {
       "by_id": "/dev/disk/by-id/wwn-0x644a842015db5d001d03249003237a65",
-      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0",
       "firmware_version": 4.3,
       "id": "disk0",
       "interface": "RAID-0 (2 disks)",
