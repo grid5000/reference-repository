@@ -10,8 +10,8 @@ queues:
 nodes:
   esterel43-1:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
-      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
+      manufactured_at: 2025-06-13
+      warranty_end: 2032-06-13
     supported_job_types:
       deploy: true
       besteffort: true
@@ -34,10 +34,9 @@ nodes:
         mountable: false
         mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:c5:00.0-nvme-1:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1" # this path will have to change later.
+        interface: NVME
     software:
       standard-environment: debian11-x64-std
     management_tools:
