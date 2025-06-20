@@ -30,9 +30,10 @@ nodes:
         mountable: true
         mounted: true
     storage_devices:
-      pci-0000:00:11.5-ata-3:
-        interface: SATA
+      disk0:
         id: disk0
+        interface: SAS
+        by_path: "dev/disk/by-path/pci-0000:00:11.5-ata-3"
     software:
       standard-environment: debian11-x64-std
     management_tools:
