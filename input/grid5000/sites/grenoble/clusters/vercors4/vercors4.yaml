@@ -19,6 +19,10 @@ nodes:
     processor:
       microarchitecture: Skylake-SP
       clock_speed: 2_200_000_000
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: racadm
     network_adapters:
       bmc:
         interface: Ethernet
@@ -29,27 +33,32 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+    nodeset: vercors4
+  vercors4-[1-2]:
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:18:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:0:0" # this path will have to change later.
-      disk1: # This field will have to be renamed later.
+      pci-0000:18:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:2:1:0" # this path will have to change later.
-    software:
-      standard-environment: debian11-x64-std
-    management_tools:
-      bmc_vendor_tool: racadm
-    nodeset: vercors4
   vercors4-3:
     storage_devices:
-      disk0:
+      pci-0000:3c:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:3c:00.0-scsi-0:2:0:0" # this path will have to change later.
-      disk1:
+      pci-0000:3c:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:3c:00.0-scsi-0:2:1:0" # this path will have to change later.
