@@ -43,3 +43,13 @@ nodes:
     management_tools:
       bmc_vendor_tool: racadm
     nodeset: vercors4
+  vercors4-3:
+    storage_devices:
+      disk0:
+        id: disk0
+        interface: SAS
+        by_path: "/dev/disk/by-path/pci-0000:3c:00.0-scsi-0:2:0:0" # this path will have to change later.
+      disk1:
+        id: disk1
+        interface: SAS
+        by_path: "/dev/disk/by-path/pci-0000:3c:00.0-scsi-0:2:1:0" # this path will have to change later.
