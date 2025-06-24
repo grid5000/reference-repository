@@ -6,6 +6,149 @@
   "manufactured_at": "2024-01-01",
   "metrics": [
     {
+      "description": "Temperature of Ambient Temp reported by BMC, in celsius",
+      "labels": {
+        "id": "ambienttemp"
+      },
+      "name": "bmc_other_temp_celsius",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 98,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Voltage of CMOS Battery reported by BMC, in volt",
+      "labels": {
+        "id": "cmosbattery"
+      },
+      "name": "bmc_other_voltage_volt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 214,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan 1 Front Tach reported by BMC, in rpm",
+      "labels": {
+        "id": "fan1fronttach"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 226,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan 2 Front Tach reported by BMC, in rpm",
+      "labels": {
+        "id": "fan2fronttach"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 227,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan 1 Rear Tach reported by BMC, in rpm",
+      "labels": {
+        "id": "fan1reartach"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 234,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Speed of Fan 2 Rear Tach reported by BMC, in rpm",
+      "labels": {
+        "id": "fan2reartach"
+      },
+      "name": "bmc_other_speed_rpm",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 235,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of Sys Power reported by BMC, in watt",
+      "labels": {
+        "id": "syspower"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 250,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PSU 1 AC In Pwr reported by BMC, in watt",
+      "labels": {
+        "id": "psu1acinpwr"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 267,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PSU 1 DC Out Pwr reported by BMC, in watt",
+      "labels": {
+        "id": "psu1dcoutpwr"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 268,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PSU 2 AC In Pwr reported by BMC, in watt",
+      "labels": {
+        "id": "psu2acinpwr"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 274,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
+      "description": "Power consumption of PSU 2 DC Out Pwr reported by BMC, in watt",
+      "labels": {
+        "id": "psu2dcoutpwr"
+      },
+      "name": "bmc_other_power_watt",
+      "optional_period": 5000,
+      "period": 0,
+      "source": {
+        "id": 275,
+        "protocol": "ipmisensor"
+      }
+    },
+    {
       "description": "Default subset of metrics from Prometheus Node Exporter",
       "name": "prom_default_metrics",
       "optional_period": 15000,
