@@ -388,6 +388,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Hopper' => '2022',
       'Sapphire Rapids' => '2023',
       'Aqua Vanjaram' => '2023',
+      'Sierra Forest' => '2024',
       'N/A' => '&nbsp;',
     }
     date = release_dates[microarchitecture]
