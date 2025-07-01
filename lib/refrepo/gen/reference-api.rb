@@ -169,7 +169,12 @@ def generate_reference_api
       #
       cluster["manufactured_at"] = cluster['nodes'].filter{|_n_uid, n_hash| n_hash.key? 'chassis'}.map{|_n_uid, n_hash| n_hash['chassis']['manufactured_at']}.min
       cluster["warranty_end"] = cluster['nodes'].filter{|_n_uid, n_hash| n_hash.key? 'chassis'}.map{|_n_uid, n_hash| n_hash['chassis']['warranty_end']}.min
-      
+
+      if cluster['queues'] && !(cluster['queues'] & %w[abaca production]).empty?
+        cluster['queues'] |= %w[abaca production]
+        cluster['queues'].sort!
+      end
+
       #
       # If not defined, create the cluster priority from the manufactured date + a shift for GPU machines
       #
