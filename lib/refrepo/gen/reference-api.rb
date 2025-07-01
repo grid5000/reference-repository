@@ -191,6 +191,10 @@ def generate_reference_api
         next if node['status'] == "retired"
 
         node.delete("status")
+        queues = node.fetch('supported_job_types', {}).fetch('queues', [])
+        # if abaca is here, add production, if producition is here, add abaca
+        queues |= %w[abaca production] unless (queues & %w[abaca production]).empty?
+        node['supported_job_types']['queues'] = queues.sort unless node['supported_job_types'].nil?
 
         # Convert hashes to arrays
         node["storage_devices"] = node["storage_devices"].sort_by{ |_sd, v| v['id'] }.map { |a| a[1] }
