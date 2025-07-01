@@ -502,11 +502,11 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
   end
 
   def get_production_property(node)
-    production = false # default
-    if node['supported_job_types']&.key?('queues')
-      production = node['supported_job_types']['queues'].include?('production')
+    if ['abaca','production'].any? {|n| node.fetch('supported_job_types',{}).fetch('queues',[]).include?(n)}
+      'YES'
+    else
+      'NO'
     end
-    production == true ? 'YES' : 'NO'
   end
 
   def get_maintenance_property(node)

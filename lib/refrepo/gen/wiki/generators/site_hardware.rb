@@ -193,7 +193,7 @@ class SiteHardwareGenerator < WikiGenerator
       cluster_nodes = cluster_hash.keys.flatten.count
       queue = cluster_hash.map { |_k, v| v['queue']}.first
       access_conditions = []
-      if queue == 'production'
+      if queue == 'production' || queue == 'abaca'
         access_conditions << "<b>[[Grid5000:UsagePolicy#Rules_for_the_production_queue|abaca]]</b>&nbsp;queue"
       elsif queue != ''
         access_conditions << "<b>#{queue}</b>&nbsp;queue"
@@ -223,7 +223,7 @@ class SiteHardwareGenerator < WikiGenerator
 
   def self.get_queue_drawgantt_url(site, queue)
     url = "https://intranet.grid5000.fr/oar/#{site.capitalize}/"
-    if (queue == 'production')
+    if (queue == 'production' || queue == 'abaca')
       url += "drawgantt-svg-prod/"
     #elsif (queue == 'testing')
     #  url += "drawgantt-svg/?filter=with%20testing" # Here we miss a filter "only testing"
@@ -277,7 +277,7 @@ class SiteHardwareGenerator < WikiGenerator
         text_data << "\n'''Reservation example:'''"
         text_data << reservation_cmd
 
-        if queue == 'production'
+        if queue == 'production' || queue == 'abaca'
           walltime_breakout_text = "'''Max walltime per nodes:'''\n"
           nodes = G5K::get_global_hash['sites'][site]['clusters'][cluster_uid]['nodes']
           max_walltime_per_node = nodes.map { |node_name,node|
