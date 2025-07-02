@@ -41,6 +41,10 @@ def global_ignore_keys
     ~pdu[5]
     ~pdu[6]
     ~pdu[7]
+    ~pdu[8]
+    ~pdu[9]
+    ~pdu[10]
+    ~pdu[11]
 
     ~nodeset
 

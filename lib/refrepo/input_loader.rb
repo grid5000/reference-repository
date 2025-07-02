@@ -120,15 +120,18 @@ def add_node_pdu_mapping(h)
       end
 
       # Merge pdu information from pdus/ hierachy into node information
-      pdu.fetch("ports", {}).each do |port_uid, node_uid|
-        node_uid = node_uid["uid"] if node_uid.is_a?(Hash)
-        node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
-        next if not node
-        node["pdu"] ||= []
-        if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_uid}
-          raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_uid} description defined both in clusters/ and pdus/ hierarchy"
+      pdu.fetch("ports", {}).each do |port_uid, nodes_uid|
+        nodes_uid = nodes_uid["uid"] if nodes_uid.is_a?(Hash)
+        nodes_uid = [nodes_uid] if nodes_uid.is_a?(String)
+        nodes_uid.each do |node_uid|
+          node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
+          next if not node
+          node["pdu"] ||= []
+          if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_uid}
+            raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_uid} description defined both in clusters/ and pdus/ hierarchy"
+          end
+          node["pdu"].append({"uid" => pdu_uid, "port" => port_uid})
         end
-        node["pdu"].append({"uid" => pdu_uid, "port" => port_uid})
       end
 
       # Merge pdu information from node description in pdus/ hierachy
@@ -137,7 +140,13 @@ def add_node_pdu_mapping(h)
           raise "ERROR: Port #{port_uid} of #{pdu_uid}.#{site_uid} is defined both in PDU description and in node #{node_uid} description"
         end
         pdu["ports"] ||= {}
-        pdu["ports"][port_uid] = node_uid
+        if not pdu["ports"].key?(port_uid)
+          pdu["ports"][port_uid] = node_uid
+        elsif pdu["ports"].key?(port_uid) and pdu["ports"]["port_uid"].is_a?(String)
+          pdu["ports"][port_uid] = [pdu["ports"][port_uid], node_uid]
+        else
+          pdu["ports"][port_uid].append(node_uid)
+        end
       end
     end
   end
@@ -182,12 +191,15 @@ def add_wattmetre_mapping(h)
             pdu["ports"][port_num] = node_uid
 
             # Add mapping to node description under clusters/ hierarchy
-            node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
-            node["pdu"] ||= []
-            if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_num}
-              raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_num} description defined both in clusters/ and pdus/ hierarchy"
+            nodes_uid = node_uid.is_a?(String) ? [node_uid] : node_uid
+            nodes_uid.each do |nnode_uid|
+              node = site["clusters"].fetch(nnode_uid.split("-")[0], {}).fetch("nodes", {}).fetch(nnode_uid, nil)
+              node["pdu"] ||= []
+              if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_num}
+                raise "ERROR: Node #{nnode_uid}.#{site_uid} has PDU #{pdu_num} description defined both in clusters/ and pdus/ hierarchy"
+              end
+              node["pdu"].append({"uid" => pdu_uid, "port" => port_num, "kind" => "wattmetre-only"})
             end
-            node["pdu"].append({"uid" => pdu_uid, "port" => port_num, "kind" => "wattmetre-only"})
           end
         end
       end
@@ -664,6 +676,10 @@ def add_pdu_metrics(h)
 
       # remove any PDU metrics defined in cluster
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /(wattmetre_power_watt|pdu_outlet_power_watt)/ }
+
+      # Do not add metric to cluster if PDU/wattmetre port is connected to several nodes at a time (shared PSU case)
+      nodes_pdu_ports = cluster['nodes'].select{|_, v| v['status'] != 'retired'}.each_value.map{|node| node["pdu"]}.flatten
+      next if nodes_pdu_ports.uniq.length != nodes_pdu_ports.length # nodes pdu_ports has duplicate, meaning the a port is shared by several nodes
 
       # get the list of "wattmetre-only" used by the cluster
       cluster_wm = cluster['nodes'].each_value.map{|node| node.fetch('pdu', [])}.flatten.select{|p| p.fetch('kind', '') == 'wattmetre-only'}.map{|p| p['uid']}.uniq
