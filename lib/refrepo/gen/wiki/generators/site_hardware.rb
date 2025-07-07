@@ -61,13 +61,13 @@ class SiteHardwareGenerator < WikiGenerator
     column = with_site ? 2 : 1
     output = ''
     [
-      [ '== Default queue resources ==', /(^$|exotic)/ ],
-      [ '== Abaca queue resources ==', /production/],
-      [ '== Testing queue resources ==', /testing/]
-    ].each do |title,regexp|
-      if table_data.select{ |row| row[column] =~ regexp}.length > 0
+      [ '== Default queue resources ==', //, /production|testing/ ],
+      [ '== Abaca queue resources ==', /production/, /^$/],
+      [ '== Testing queue resources ==', /testing/ , /^$/]
+    ].each do |title,regexp_select,regexp_reject|
+      if table_data.select{ |row| row[column] =~ regexp_select and row[column] !~ regexp_reject}.length > 0
         output += "#{title}\n"
-        output += MW.generate_table('class="wikitable sortable"', table_columns, table_data.select{ |row| row[column] =~ regexp }) + "\n"
+        output += MW.generate_table('class="wikitable sortable"', table_columns, table_data.select{ |row| row[column] =~ regexp_select and row[column] !~ regexp_reject }) + "\n"
         if asterisks.length >0
           output += asterisks.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") + "\n"
         end
