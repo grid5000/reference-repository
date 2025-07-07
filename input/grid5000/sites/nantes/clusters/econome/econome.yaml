@@ -9,7 +9,7 @@ queues:
   - admin
 
 nodes:
-  econome-[1-24]:
+  econome-[1-23]:
     processor:
       microarchitecture: Sandy Bridge
       clock_speed: 2200000000
@@ -40,6 +40,38 @@ nodes:
         mounted: false
         bridged: false
       eth3:
+        enabled: false
+        mountable: false
+        mounted: false
+        bridged: false
+      bmc:
+        interface: Ethernet
+        rate: 1.0e+9
+        enabled: true
+        mounted: false
+        mountable: false
+    nodeset: econome
+  econome-24:
+    processor:
+      microarchitecture: Sandy Bridge
+      clock_speed: 2200000000
+    software:
+      standard-environment: debian11-x64-std
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    storage_devices:
+      pci-0000:00:1f.2-ata-1:
+        interface: SATA
+        id: disk0
+    network_adapters:
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        bridged: true
+      eth1:
         enabled: false
         mountable: false
         mounted: false
