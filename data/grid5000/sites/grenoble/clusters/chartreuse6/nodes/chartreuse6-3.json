@@ -1,26 +1,27 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "04/08/2025",
+    "vendor": "Dell Inc.",
+    "version": "2.24.0"
   },
-  "bmc_version": "v1",
+  "bmc_version": "7.00.00.181",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2018-07-05",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6420",
+    "serial": "GHTRKQ2",
+    "warranty_end": "2023-07-05"
   },
   "exotic": false,
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 137438953472
   },
   "management_tools": {
     "bmc_vendor_tool": "racadm",
@@ -30,29 +31,86 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 17179869184,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "9.50 0x8000f262 23.0.8",
       "interface": "Ethernet",
       "ip": "172.16.26.27",
       "ip6": "2001:660:4406:100:b::1b",
       "kavlan": false,
       "mac": "3c:fd:fe:59:bf:88",
       "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "chartreuse6-3.grenoble.grid5000.fr",
       "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "imag-1b-F3-prod-01",
-      "switch_port": "1/1/20"
+      "switch_port": "1/1/20",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "9.50 0x8000f262 23.0.8",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "3c:fd:fe:59:bf:8a",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp24s0f1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -69,28 +127,27 @@
   ],
   "nodeset": "chartreuse6",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 67200000000,
-    "node_flops": 4838400000000
+    "node_flops": 2150400000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 23068672,
     "clock_speed": 2100000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Skylake-SP",
-    "microcode": "0xd000001",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz",
     "vendor": "Intel",
@@ -104,14 +161,26 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/wwn-0x5000c500ba4c8e7a",
       "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-3",
+      "firmware_version": "NB33",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "interface": "SATA",
+      "model": "ST1000NX0443",
+      "size": 1000204886016,
+      "storage": "HDD",
+      "vendor": "Seagate"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000c500ba4c962c",
+      "by_path": "/dev/disk/by-path/pci-0000:00:11.5-ata-4",
+      "firmware_version": "NB33",
+      "id": "disk1",
+      "interface": "SATA",
+      "model": "ST1000NX0443",
+      "size": 1000204886016,
+      "storage": "HDD",
+      "vendor": "Seagate"
     }
   ],
   "supported_job_types": {
@@ -121,7 +190,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "chartreuse6-3"
