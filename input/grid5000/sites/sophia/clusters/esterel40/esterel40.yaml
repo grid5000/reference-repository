@@ -29,13 +29,28 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
-    storage_devices:
-      disk0: # This field will have to be renamed later.
-        id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
     software:
       standard-environment: debian11-x64-std
     management_tools:
       bmc_vendor_tool: ipmitool
     nodeset: esterel40
+  esterel40-1:
+    storage_devices:
+      disk0: # This field will have to be renamed later.
+        id: disk0
+        interface: RAID
+        by_path: "/dev/disk/by-path/pci-0000:03:00.0-nvme-1" # this path will have to change later.
+      disk1: # This field will have to be renamed later.
+        id: disk1
+        interface: RAID
+        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:110:0" # this path will have to change later.
+  esterel40-2:
+    storage_devices:
+      disk0: # This field will have to be renamed later.
+        id: disk0
+        interface: RAID
+        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:111:0" # this path will have to change later.
+      disk1: # This field will have to be renamed later.
+        id: disk1
+        interface: RAID
+        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:110:0" # this path will have to change later.
