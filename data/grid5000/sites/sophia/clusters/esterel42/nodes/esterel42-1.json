@@ -11,7 +11,7 @@
     "vendor": "HPE",
     "version": 1.4
   },
-  "bmc_version": "1.68",
+  "bmc_version": "1.69",
   "chassis": {
     "manufactured_at": "2025-05-30",
     "manufacturer": "HPE",
@@ -528,10 +528,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
+      "abaca",
       "admin",
-      "testing"
+      "production"
     ],
     "virtual": "ivt"
   },
