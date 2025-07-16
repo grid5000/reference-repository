@@ -8,15 +8,23 @@ esterel40-2:
     nb_threads: 64
     platform_type: x86_64
   bios:
-    release_date: '08/17/2023'
+    release_date: 05/16/2025
     vendor: HPE
     version: A42
-  bmc_version: '2.98'
+  bmc_version: '3.13'
   chassis:
     manufacturer: HPE
     name: ProLiant DL385 Gen10 Plus v2
     serial: CZ2406004G
   gpu_devices:
+    nvidia0:
+      cpu_affinity: 1
+      device: "/dev/nvidia0"
+      memory: 48305799168
+      model: A40
+      power_default_limit: 300.00 W
+      vbios_version: 94.02.5C.00.0F
+      vendor: Nvidia
     nvidia1:
       cpu_affinity: 1
       device: "/dev/nvidia1"
@@ -59,7 +67,7 @@ esterel40-2:
       management: true
     eth0:
       driver: igb
-      firmware_version: 1.63, 0x80001199, 1.3310.0
+      firmware_version: 1.63, 0x80001234, 1.3755.0
       interface: Ethernet
       ip: 172.16.131.55
       mac: 50:7c:6f:64:6e:6a
@@ -72,7 +80,7 @@ esterel40-2:
       vendor: Intel
     eth1:
       driver: igb
-      firmware_version: 1.63, 0x80001199, 1.3310.0
+      firmware_version: 1.63, 0x80001234, 1.3755.0
       interface: Ethernet
       mac: 50:7c:6f:64:6e:6b
       management: false
@@ -83,7 +91,7 @@ esterel40-2:
       vendor: Intel
     eth2:
       driver: igb
-      firmware_version: 1.63, 0x80001199, 1.3310.0
+      firmware_version: 1.63, 0x80001234, 1.3755.0
       interface: Ethernet
       mac: 50:7c:6f:64:6e:6c
       management: false
@@ -94,7 +102,7 @@ esterel40-2:
       vendor: Intel
     eth3:
       driver: igb
-      firmware_version: 1.63, 0x80001199, 1.3310.0
+      firmware_version: 1.63, 0x80001234, 1.3755.0
       interface: Ethernet
       mac: 50:7c:6f:64:6e:6d
       management: false
@@ -103,24 +111,24 @@ esterel40-2:
       sriov: true
       sriov_totalvfs: 7
       vendor: Intel
-    ibs1:
+    ib0:
       driver: mlx5_core
-      firmware_version: 20.37.1700
+      firmware_version: 20.43.2026
       guid: '0x88e9a4ffff8d4d76'
       interface: InfiniBand
       mac: 88:e9:a4:ff:ff:8d:4d:76
       management: false
       model: MT28908 Family [ConnectX-6]
-      name: ibs1
-      rate: 40000000000
+      name: ib0
+      rate: 10000000000
       vendor: Mellanox Technologies
   operating_system:
     cstate_driver: acpi_idle
     cstate_governor: menu
     ht_enabled: true
-    pstate_driver: none
-    pstate_governor: none
-    turboboost_enabled: false
+    pstate_driver: acpi-cpufreq
+    pstate_governor: performance
+    turboboost_enabled: true
   processor:
     cache_l1d: 32768
     cache_l1i: 32768

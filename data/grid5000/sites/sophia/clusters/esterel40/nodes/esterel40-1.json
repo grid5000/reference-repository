@@ -7,11 +7,11 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "07/31/2023",
+    "release_date": "05/16/2025",
     "vendor": "HPE",
     "version": "A42"
   },
-  "bmc_version": "2.81",
+  "bmc_version": "3.13",
   "chassis": {
     "manufactured_at": "2023-10-24",
     "manufacturer": "HPE",
@@ -21,6 +21,23 @@
   },
   "exotic": false,
   "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.6",
+      "cores": 10752,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia0",
+      "memory": 48305799168,
+      "microarchitecture": "Ampere",
+      "model": "A40",
+      "performance": {
+        "fp-16": 37420000000000,
+        "fp-32": 37420000000000,
+        "fp-64": 584600000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "94.02.5C.00.0F",
+      "vendor": "Nvidia"
+    },
     "nvidia1": {
       "compute_capability": "8.6",
       "cores": 10752,
@@ -95,7 +112,7 @@
       "device": "eth0",
       "driver": "igb",
       "enabled": true,
-      "firmware_version": "1.63, 0x80001199, 1.3310.0",
+      "firmware_version": "1.63, 0x80001234, 1.3755.0",
       "interface": "Ethernet",
       "ip": "172.16.131.54",
       "ip6": "2001:660:4406:800:4::36",
@@ -118,7 +135,7 @@
       "device": "eth1",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.63, 0x80001199, 1.3310.0",
+      "firmware_version": "1.63, 0x80001234, 1.3755.0",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "50:7c:6f:4f:43:07",
@@ -135,7 +152,7 @@
       "device": "eth2",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.63, 0x80001199, 1.3310.0",
+      "firmware_version": "1.63, 0x80001234, 1.3755.0",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "50:7c:6f:4f:43:08",
@@ -152,7 +169,7 @@
       "device": "eth3",
       "driver": "igb",
       "enabled": false,
-      "firmware_version": "1.63, 0x80001199, 1.3310.0",
+      "firmware_version": "1.63, 0x80001234, 1.3755.0",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "50:7c:6f:4f:43:09",
@@ -169,7 +186,7 @@
       "device": "ib0",
       "driver": "mlx5_core",
       "enabled": true,
-      "firmware_version": "20.36.1010",
+      "firmware_version": "20.43.2026",
       "guid": "0x88e9a4ffff8e9626",
       "interface": "InfiniBand",
       "ip": "172.18.131.54",
@@ -179,7 +196,7 @@
       "model": "MT28908 Family [ConnectX-6]",
       "mountable": true,
       "mounted": true,
-      "name": "ibs2",
+      "name": "ib0",
       "netmask": "255.255.240.0",
       "network_address": "esterel40-1-ib0.sophia.grid5000.fr",
       "rate": 10000000000,
@@ -203,9 +220,9 @@
     "cstate_driver": "acpi_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "none",
-    "pstate_governor": "none",
-    "turboboost_enabled": false
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 48000000000,
