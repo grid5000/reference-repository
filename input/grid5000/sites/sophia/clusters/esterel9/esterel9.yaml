@@ -9,9 +9,6 @@ queues:
   - testing
 nodes:
   esterel9-1:
-    chassis:
-      manufactured_at: 2017-11-05
-      warranty_end: 2024-11-05
     supported_job_types:
       deploy: true
       besteffort: true
@@ -29,19 +26,20 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:03:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0" # this path will have to change later.
-      disk1: # This field will have to be renamed later.
+      pci-0000:03:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SATA
-        by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:1:0" # this path will have to change later.
-      disk2: # This field will have to be renamed later.
+      pci-0000:03:00.0-scsi-0:2:2:0:
         id: disk2
         interface: SATA
-        by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:2:0" # this path will have to change later.
     software:
       standard-environment: debian11-x64-std
     management_tools:
