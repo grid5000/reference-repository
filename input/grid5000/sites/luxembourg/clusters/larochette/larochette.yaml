@@ -30,10 +30,9 @@ nodes:
         mountable: true
         mounted: true
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:8a:00.0-scsi-0:0:275:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:8a:00.0-scsi-0:0:275:0"
     software:
       standard-environment: debian11-x64-std # TODO: check that architecture is OK
     management_tools:
