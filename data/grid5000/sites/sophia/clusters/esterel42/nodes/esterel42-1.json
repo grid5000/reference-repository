@@ -11,7 +11,7 @@
     "vendor": "HPE",
     "version": 1.4
   },
-  "bmc_version": "1.68",
+  "bmc_version": "1.69",
   "chassis": {
     "manufactured_at": "2025-05-30",
     "manufacturer": "HPE",
@@ -156,6 +156,52 @@
       "power_default_limit": "310.00 W",
       "vbios_version": "96.00.AF.00.02",
       "vendor": "Nvidia"
+    }
+  },
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.195.57",
+      "kavlan-11": "10.7.230.57",
+      "kavlan-12": "10.11.230.57",
+      "kavlan-13": "10.15.230.57",
+      "kavlan-14": "10.19.230.57",
+      "kavlan-16": "10.27.230.57",
+      "kavlan-17": "10.31.230.57",
+      "kavlan-18": "10.35.230.57",
+      "kavlan-2": "192.168.211.57",
+      "kavlan-20": "10.43.230.57",
+      "kavlan-21": "10.47.230.57",
+      "kavlan-22": "10.51.230.57",
+      "kavlan-3": "192.168.227.57",
+      "kavlan-4": "10.32.3.57",
+      "kavlan-5": "10.32.67.57",
+      "kavlan-6": "10.32.131.57",
+      "kavlan-7": "10.32.195.57",
+      "kavlan-8": "10.33.3.57",
+      "kavlan-9": "10.33.67.57"
+    }
+  },
+  "kavlan6": {
+    "eth0": {
+      "kavlan-1": "2001:660:4406:880:4::39",
+      "kavlan-11": "2001:660:4406:1a0:804::39",
+      "kavlan-12": "2001:660:4406:2a0:804::39",
+      "kavlan-13": "2001:660:4406:4a0:804::39",
+      "kavlan-14": "2001:660:4406:5a0:804::39",
+      "kavlan-16": "2001:660:4406:7a0:804::39",
+      "kavlan-17": "2001:660:4406:9a0:804::39",
+      "kavlan-18": "2001:660:4406:8a0:804::39",
+      "kavlan-2": "2001:660:4406:881:4::39",
+      "kavlan-20": "2001:660:4406:3a0:804::39",
+      "kavlan-21": "2001:660:4406:6a0:804::39",
+      "kavlan-22": "2001:660:4406:ba0:804::39",
+      "kavlan-3": "2001:660:4406:882:4::39",
+      "kavlan-4": "2001:660:4406:890:4::39",
+      "kavlan-5": "2001:660:4406:891:4::39",
+      "kavlan-6": "2001:660:4406:892:4::39",
+      "kavlan-7": "2001:660:4406:893:4::39",
+      "kavlan-8": "2001:660:4406:894:4::39",
+      "kavlan-9": "2001:660:4406:895:4::39"
     }
   },
   "main_memory": {
@@ -338,7 +384,7 @@
       "interface": "Ethernet",
       "ip": "172.16.131.57",
       "ip6": "2001:660:4406:800:4::39",
-      "kavlan": false,
+      "kavlan": true,
       "mac": "8c:84:74:9c:8c:76",
       "management": false,
       "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
@@ -426,7 +472,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Sierra Forest",
-    "microcode": "0x3000362",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) 6710E",
     "vendor": "Intel",
@@ -483,10 +528,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
+      "abaca",
       "admin",
-      "testing"
+      "production"
     ],
     "virtual": "ivt"
   },

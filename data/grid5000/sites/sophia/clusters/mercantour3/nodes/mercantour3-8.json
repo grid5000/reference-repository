@@ -171,7 +171,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Skylake-SP",
-    "microcode": "0x2007006",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz",
     "vendor": "Intel",
@@ -199,10 +198,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
+      "abaca",
       "admin",
-      "testing"
+      "production"
     ],
     "virtual": "ivt"
   },

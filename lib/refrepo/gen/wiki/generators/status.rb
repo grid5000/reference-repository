@@ -154,7 +154,7 @@ class StatusGenerator < WikiGenerator
   def has_queue_production?(site)
     site_hash = @global_hash["sites"][site]
     site_hash.fetch("clusters", {}).each_value do |cluster_hash|
-      if cluster_hash["queues"].include?("production")
+      if cluster_hash["queues"].include?("abaca") || cluster_hash["queues"].include?("production")
         return true
       end
     end

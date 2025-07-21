@@ -118,7 +118,6 @@ nodes:
       cache_l2: 8 # Fake cache, will be replaced by g5k-checks
       cache_l3: 8 # Fake cache, will be replaced by g5k-checks
       instruction_set: x86-64 # Common instruction set, will be replaced by g5k-checks
-      microcode: "0xd000001" # Fake microcode, will be replaced by g5k-checks
       ht_capable: true # Default ht capable value, will be replaced by g5k-checks 
     main_memory:
       ram_size: 8 # Fake ram size, will be replaced by g5k-checks

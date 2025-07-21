@@ -70,8 +70,8 @@ def generate_puppet_kadeployg5k(options)
         defaults = conf['defaults']
         overrides = conf[site_uid][cluster_uid]
 
-        if overrides.nil? and ! (cluster['queues'].include?('default') or cluster['queues'].include?('production'))
-            puts "Warning: #{cluster_uid} has no kadeployg5k#{suffix} config, and isn't in default or production queue."
+        if overrides.nil? and ! (%w[defaut abaca production].any? {|q| cluster['queues'].include?(q)})
+            puts "Warning: #{cluster_uid} has no kadeployg5k#{suffix} config, and isn't in default or abaca queue."
             puts "Warning: Skipping #{cluster_uid} configuration."
             next
         elsif overrides.nil?

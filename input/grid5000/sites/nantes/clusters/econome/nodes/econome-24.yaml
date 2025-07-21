@@ -50,12 +50,12 @@ econome-24:
       management: true
     eth0:
       driver: ixgbe
-      firmware_version: '0x000161b2'
+      firmware_version: '0x800002fc'
       interface: Ethernet
       ip: 172.16.192.24
       mac: a0:36:9f:0e:a1:f0
       management: false
-      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      model: Ethernet 10G 2P X520 Adapter
       name: enp3s0f0
       rate: 10000000000
       sriov: true
@@ -63,36 +63,14 @@ econome-24:
       vendor: Intel
     eth1:
       driver: ixgbe
-      firmware_version: '0x000161b2'
+      firmware_version: '0x800002fc'
       interface: Ethernet
       mac: a0:36:9f:0e:a1:f2
       management: false
-      model: 82599ES 10-Gigabit SFI/SFP+ Network Connection
+      model: Ethernet 10G 2P X520 Adapter
       name: enp3s0f1
       sriov: true
       sriov_totalvfs: 63
-      vendor: Intel
-    eth2:
-      driver: igb
-      firmware_version: 1.57.0
-      interface: Ethernet
-      mac: 78:45:c4:f9:2f:51
-      management: false
-      model: I350 Gigabit Network Connection
-      name: eno1
-      sriov: true
-      sriov_totalvfs: 7
-      vendor: Intel
-    eth3:
-      driver: igb
-      firmware_version: 1.57.0
-      interface: Ethernet
-      mac: 78:45:c4:f9:2f:52
-      management: false
-      model: I350 Gigabit Network Connection
-      name: eno2
-      sriov: true
-      sriov_totalvfs: 7
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
@@ -108,7 +86,6 @@ econome-24:
     cache_l3: 20971520
     ht_capable: true
     instruction_set: x86-64
-    microcode: '0x71a'
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz
     vendor: Intel
@@ -117,7 +94,7 @@ econome-24:
     pci-0000:00:1f.2-ata-1:
       by_id: "/dev/disk/by-id/wwn-0x50014ee25c658114"
       by_path: "/dev/disk/by-path/pci-0000:00:1f.2-ata-1"
-      firmware_version: 01.01D06
+      firmware_version: 01.01D05
       model: WDC WD2003FYYS-1
       size: 2000398934016
       storage: HDD
