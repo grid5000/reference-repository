@@ -9,6 +9,9 @@ queues:
   - testing
 nodes:
   esterel40-[1-2]:
+    gpu_devices:
+      nvidia1:
+        cpu_affinity_override: 0
     chassis:
       manufactured_at: 2023-10-24
       warranty_end: 2030-10-24
