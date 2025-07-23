@@ -9,9 +9,6 @@ queues:
   - testing
 nodes:
   esterel34-1:
-    chassis:
-      manufactured_at: 2021-07-19
-      warranty_end: 2028-07-21
     supported_job_types:
       deploy: true
       besteffort: true
@@ -29,13 +26,24 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      ib0:
+         mounted: true
+         enabled: true
+         mountable: true
+         netmask: 255.255.240.0
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:01:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
+      pci-0000:01:00.0-scsi-0:2:1:0:
+        id: disk1
+        interface: SAS
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
       bmc_vendor_tool: racadm
     nodeset: esterel34
