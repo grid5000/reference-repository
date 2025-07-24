@@ -366,6 +366,17 @@ class GPURef
         'fp-64' => 81720000000000,
       },
     },
+    'Instinct MI210' => {
+      'cores'              => 6656,
+      'short_name'         => 'MI210',
+      'alias'              => 'mi210',
+      'microarchitecture'  => 'Aldebaran',
+      'performance'        => {
+        'fp-16' => 181000000000000,
+        'fp-32' => 22600000000000,
+        'fp-64' => 22600000000000,
+      },
+    },
     'AGX Xavier' => {
       'cores'              => 512,
       'compute_capability' => '7.2',
