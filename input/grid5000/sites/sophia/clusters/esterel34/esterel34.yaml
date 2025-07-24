@@ -14,8 +14,8 @@ nodes:
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Zen 3
-      clock_speed: 2650000000
+      microarchitecture: Zen 2
+      clock_speed: 2800000000
     network_adapters:
       bmc:
         interface: Ethernet
@@ -38,10 +38,10 @@ nodes:
     storage_devices:
       pci-0000:01:00.0-scsi-0:2:0:0:
         id: disk0
-        interface: SAS
+        interface: RAID
       pci-0000:01:00.0-scsi-0:2:1:0:
         id: disk1
-        interface: SAS
+        interface: RAID
     software:
       standard-environment: debian11-x64-std
     management_tools:
