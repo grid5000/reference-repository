@@ -272,6 +272,18 @@ class GPURef
         'fp-64' => 9746000000000,
       },
     },
+    'A100 80GB PCIe' => {
+      'cores'              => 6912,
+      'compute_capability' => '8.0',
+      'short_name'         => 'A100',
+      'alias'              => 'a100-pcie-80',
+      'microarchitecture'  => 'Ampere',
+      'performance'        => {
+        'fp-16' => 77970000000000,
+        'fp-32' => 19490000000000,
+        'fp-64' => 9746000000000,
+      },
+    },
     'A40' => {
       'cores'              => 10752,
       'compute_capability' => '8.6',
