@@ -25,7 +25,7 @@ metrics:
       id: 1 #Temp
 
   - name: bmc_other_temp_celsius
-    labels: {"id": "temp"}
+    labels: {"id": "temp2"}
     description: Temperature of Temp reported by BMC, in celsius
     period: 0
     optional_period: 5000
@@ -248,15 +248,6 @@ metrics:
       id: 224 #VCCIN VR
 
   - name: bmc_other_voltage_volt
-    labels: {"id": "vccinvr"}
-    description: Voltage of VCCIN VR reported by BMC, in volt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 225 #VCCIN VR
-
-  - name: bmc_other_voltage_volt
     labels: {"id": "vccfavr"}
     description: Voltage of VCCFA VR reported by BMC, in volt
     period: 0
@@ -266,15 +257,6 @@ metrics:
       id: 226 #VCCFA VR
 
   - name: bmc_other_voltage_volt
-    labels: {"id": "vccfavr"}
-    description: Voltage of VCCFA VR reported by BMC, in volt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 227 #VCCFA VR
-
-  - name: bmc_other_voltage_volt
     labels: {"id": "vccdvr"}
     description: Voltage of VCCD VR reported by BMC, in volt
     period: 0
@@ -282,15 +264,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 228 #VCCD VR
-
-  - name: bmc_other_voltage_volt
-    labels: {"id": "vccdvr"}
-    description: Voltage of VCCD VR reported by BMC, in volt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 229 #VCCD VR
 
   - name: bmc_other_temp_celsius
     labels: {"id": "temp36"}
