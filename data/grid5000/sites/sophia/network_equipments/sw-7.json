@@ -14,13 +14,13 @@
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Unit: 1 Slot: 0 Port: 2 10G - Level",
+          "snmp_name": "Te1/0/2",
           "uid": "esterel31-1"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Unit: 1 Slot: 0 Port: 3 10G - Level",
+          "snmp_name": "Te1/0/3",
           "uid": "esterel31-2"
         },
         {
@@ -28,19 +28,19 @@
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Unit: 1 Slot: 0 Port: 5 10G - Level",
+          "snmp_name": "Te1/0/5",
           "uid": "esterel31-3"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Unit: 1 Slot: 0 Port: 6 10G - Level",
+          "snmp_name": "Te1/0/6",
           "uid": "esterel31-4"
         },
         {
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "Unit: 1 Slot: 0 Port: 7 10G - Level",
+          "snmp_name": "Te1/0/7",
           "uid": "esterel38-1"
         },
         {
@@ -76,18 +76,18 @@
         {
           "kind": "router",
           "rate": 1000000000,
-          "snmp_name": "Unit: 1 Slot: 0 Port: 23 10G - Level",
+          "snmp_name": "Te1/0/23",
           "uid": "gw"
         },
         {
           "kind": "switch",
           "rate": 1000000000,
-          "snmp_name": "Unit: 1 Slot: 0 Port: 24 10G - Level",
+          "snmp_name": "Te1/0/24",
           "uid": "swadmin-7"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "Unit: 1 Slot: %LINECARD% Port: %PORT% 10G - Level"
+      "snmp_pattern": "Te1/%LINECARD%/%PORT%"
     }
   ],
   "managed_by_us": true,
