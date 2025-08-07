@@ -489,15 +489,6 @@ metrics:
       id: 248 #VCCIN VR
 
   - name: bmc_other_voltage_volt
-    labels: { "id": "vccinvr" }
-    description: Voltage of VCCIN VR reported by BMC, in volt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 282 #VCCIN VR
-
-  - name: bmc_other_voltage_volt
     labels: { "id": "vccfavr" }
     description: Voltage of VCCFA VR reported by BMC, in volt
     period: 0
@@ -507,15 +498,6 @@ metrics:
       id: 283 #VCCFA VR
 
   - name: bmc_other_voltage_volt
-    labels: { "id": "vccfavr" }
-    description: Voltage of VCCFA VR reported by BMC, in volt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 284 #VCCFA VR
-
-  - name: bmc_other_voltage_volt
     labels: { "id": "vccdvr" }
     description: Voltage of VCCD VR reported by BMC, in volt
     period: 0
@@ -523,15 +505,6 @@ metrics:
     source:
       protocol: ipmisensor
       id: 285 #VCCD VR
-
-  - name: bmc_other_voltage_volt
-    labels: { "id": "vccdvr" }
-    description: Voltage of VCCD VR reported by BMC, in volt
-    period: 0
-    optional_period: 5000
-    source:
-      protocol: ipmisensor
-      id: 286 #VCCD VR
 
   - name: bmc_other_temp_celsius
     labels: { "id": "procacceltemp2" }
