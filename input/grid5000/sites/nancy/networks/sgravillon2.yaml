@@ -118,17 +118,6 @@ sgravillon2:
         - 10.19.192.0/18
   backplane_bps: 1280000000000
   linecards:
-    1:
-      snmp_pattern: "Ethernet%LINECARD%/%PORT%"
-      kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
-      backplane_bps: 1280000000000
-      model: N9K-X9464PX
-      kind: node
-      rate: 10000000000
-      ports:
-        38:
-          uid: pve-99
-          kind: server
     6:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
@@ -183,6 +172,9 @@ sgravillon2:
           uid: gratouille-1
         15:
           uid: talc-data
+          kind: server
+        16:
+          uid: pve-99
           kind: server
         51:
           uid: sgros1
