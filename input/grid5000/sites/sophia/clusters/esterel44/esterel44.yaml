@@ -1,24 +1,24 @@
 ---
-model: Cluster Model # TODO: change this value.
-created_at: 1970-01-01 # TODO: change this value
+model: ProLiant DL385 Gen11
+created_at: 2025-08-08
 kavlan: false
-boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
-exotic: false # TODO: specify if 'true' or 'false'
+boot_type: uefi
+exotic: false
 queues:
   - admin
   - testing
 nodes:
   esterel44-1:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
-      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
+      manufactured_at: 2025-07-25
+      warranty_end: 2032-06-03
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell # TODO: replace with microarch name.
-      clock_speed: 8 # TODO: Replace with clock speed.
+      microarchitecture: Zen 4
+      clock_speed: 3_000_000_000
     network_adapters:
       bmc:
         interface: Ethernet
@@ -29,13 +29,16 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:c5:00.0-nvme-1:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
+        interface: NVME
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
-      bmc_vendor_tool: ipmitool # TODO: replace with bmc_vendor_tool (ipmitool, racadm)
+      bmc_vendor_tool: ipmitool
     nodeset: esterel44
