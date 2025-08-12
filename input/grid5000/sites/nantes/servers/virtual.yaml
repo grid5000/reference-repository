@@ -1,8 +1,77 @@
+fnantes:
+  alias:
+  - oar-api
+  - frontend
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.100
+dns:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.101
+mail:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.102
+    adm:
+      ip: 172.17.207.102
+dhcp:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.103
+      ip6: 2001:660:4406:600:0:2:0:3
+    adm:
+      ip: 172.17.207.103
+puppet6:
+  kind: virtual
+  alias:
+  - puppet
+  network_adapters:
+    default:
+      ip: 172.16.207.105
 api-proxy:
   kind: virtual
   network_adapters:
     default:
       ip: 172.16.207.106
+kadeploy:
+  alias:
+  - kadeploy-server
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.108
+    adm:
+      ip: 172.17.207.108
+ldap:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.109
+oar:
+  alias:
+  - oardb
+  - oar-server
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.111
+conman:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.115
+    adm:
+      ip: 172.17.207.115
+syslog:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.116
 api-server-devel:
   kind: virtual
   network_adapters:
@@ -13,43 +82,6 @@ api-server-v3:
   network_adapters:
     default:
       ip: 172.16.207.118
-conman:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.115
-    adm:
-      ip: 172.17.207.115
-dhcp:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.103
-      ip6: 2001:660:4406:600:0:2:0:3
-    adm:
-      ip: 172.17.207.103
-dns:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.101
-fnantes:
-  alias:
-  - oar-api
-  - frontend
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.100
-kadeploy:
-  alias:
-  - kadeploy-server
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.108
-    adm:
-      ip: 172.17.207.108
 kadeploy-devel:
   alias:
   - kadeploy-server-devel
@@ -79,55 +111,16 @@ kavlan-3:
   network_adapters:
     default:
       ip: 172.16.207.124
-ldap:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.109
-mail:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.102
-    adm:
-      ip: 172.17.207.102
-oar:
-  alias:
-  - oardb
-  - oar-server
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.111
-puppet6:
-  kind: virtual
-  alias:
-  - puppet
-  network_adapters:
-    default:
-      ip: 172.16.207.105
-supervision2:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.127
-syslog:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.207.116
-nat:
-  kind: virtual
-  alias:
-  - access
-  network_adapters:
-    default:
-      ip: 172.16.207.200
 kwollect:
   kind: virtual
   network_adapters:
     default:
       ip: 172.16.207.126
+supervision2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.207.127
 guix:
   kind: virtual
   network_adapters:
@@ -138,3 +131,10 @@ kavlan-agent-devel:
   network_adapters:
     default:
       ip: 172.16.207.132
+nat:
+  kind: virtual
+  alias:
+  - access
+  network_adapters:
+    default:
+      ip: 172.16.207.200
