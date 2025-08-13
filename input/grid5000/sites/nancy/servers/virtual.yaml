@@ -131,28 +131,6 @@ api-server-devel:
   network_adapters:
     default:
       ip: 172.16.79.133
-supervision2:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.145
-icinga:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.147
-nat:
-  kind: virtual
-  alias:
-  - access
-  network_adapters:
-    default:
-      ip: 172.16.79.200
-frontend-dev:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.161
 kwollect:
   kind: virtual
   network_adapters:
@@ -173,4 +151,25 @@ ood-devel:
   network_adapters:
     default:
       ip: 172.16.79.137
-
+supervision2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.79.145
+icinga:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.79.147
+frontend-dev:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.79.161
+nat:
+  kind: virtual
+  alias:
+  - access
+  network_adapters:
+    default:
+      ip: 172.16.79.200

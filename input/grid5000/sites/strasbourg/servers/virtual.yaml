@@ -138,16 +138,16 @@ kavlan-agent:
     default:
       ip: 172.16.175.125
 
-nat:
-  kind: virtual
-  alias: [access]
-  network_adapters:
-    default:
-      ip: 172.16.175.200
-
 kavlan-devel:
   kind: virtual
   alias: []
   network_adapters:
     default:
       ip: 172.16.175.199
+
+nat:
+  kind: virtual
+  alias: [access]
+  network_adapters:
+    default:
+      ip: 172.16.175.200
