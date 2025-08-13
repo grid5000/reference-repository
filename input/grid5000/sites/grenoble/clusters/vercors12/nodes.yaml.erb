@@ -3,13 +3,17 @@
   # If changes are needed, it might be better to edit the source data and regenerate using 'rake mass:create'
  
   cluster_name = "vercors12"
-  nodes_number = 1 # Size of the cluster (number of nodes)
+  nodes_number = 3 # Size of the cluster (number of nodes)
   # MAC addresses declaration
   mac_eth0_list = %w(
-ec:f4:bb:d5:b8:20
+24:6e:96:de:38:fc
+24:6e:96:de:15:a8
+24:6e:96:de:3f:7e
   )
   mac_bmc_list = %w(
-00:11:22:33:44:12
+00:00:00:00:12:01
+00:00:00:00:12:02
+00:00:00:00:12:03
   )
 %>
 ---
