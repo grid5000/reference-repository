@@ -34,6 +34,11 @@ talc-data:
       ip: 172.16.79.21
     bmc:
       ip: 172.17.79.21
+  pdu:
+    - uid: gros-pdu7
+      port: 6
+    - uid: gros-pdu8
+      port: 6
 
 talc-data-baie2:
   kind: storage
@@ -41,6 +46,11 @@ talc-data-baie2:
   warranty: 2021-10
   serial: 3WT6RG2
   network_adapters: {}
+  pdu:
+    - uid: gros-pdu7
+      port: 10
+    - uid: gros-pdu8
+      port: 10
 
 talc-data-baie3:
   kind: storage
@@ -48,6 +58,11 @@ talc-data-baie3:
   warranty: 2022-06
   serial: 3DV6DK2
   network_adapters: {}
+  pdu:
+    - uid: gros-pdu7
+      port: 9
+    - uid: gros-pdu8
+      port: 9
 
 grvingt-srv:
   kind: physical
@@ -143,11 +158,6 @@ pve-3:
     bmc:
       ip: 172.17.79.15
       mac: 54:bf:64:fc:97:42
-  pdu:
-    - uid: gros-pdu7
-      port: 14
-    - uid: gros-pdu8
-      port: 14
 
 pve-1:
   kind: physical
@@ -163,11 +173,6 @@ pve-1:
     bmc:
       ip: 172.17.79.38
       mac: 5c:ed:8c:39:37:f0
-  pdu:
-    - uid: gruss-pdu1
-      port: 6
-    - uid: gruss-pdu2
-      port: 6
 
 pve-2:
   kind: physical
@@ -197,6 +202,9 @@ wattmetre-gros:
     bmc:
       ip: 172.17.79.25
       mac: 64:00:6a:c0:dc:6a
+  pdu:
+    - uid: gros-pdu8
+      port: 7
 
 pve-99:
   kind: physical
@@ -212,7 +220,7 @@ pve-99:
     bmc:
       ip: 172.17.79.23
   pdu:
-    - uid: grimoire-pdu1
-      port: 23
-    - uid: grimoire-pdu2
-      port: 23
+    - uid: gros-pdu7
+      port: 11
+    - uid: gros-pdu8
+      port: 11
