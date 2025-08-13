@@ -15,11 +15,6 @@ kadeploy:
       ip: 172.16.79.102
     adm:
       ip: 172.17.79.102
-mysql:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.103
 mail:
   kind: virtual
   network_adapters:
@@ -45,11 +40,6 @@ dhcp:
       ip6: 2001:660:4406:500:0:2:0:7
     adm:
       ip: 172.17.79.107
-apt-global:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.109
 puppet6:
   kind: virtual
   alias:
@@ -57,11 +47,6 @@ puppet6:
   network_adapters:
     default:
       ip: 172.16.79.110
-www:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.112
 oar:
   kind: virtual
   alias:
@@ -75,11 +60,6 @@ ldap:
   network_adapters:
     default:
       ip: 172.16.79.115
-gitolite-global:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.116
 api-proxy:
   kind: virtual
   network_adapters:
@@ -161,11 +141,6 @@ icinga:
   network_adapters:
     default:
       ip: 172.16.79.147
-frontend-dev:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.161
 nat:
   kind: virtual
   alias:

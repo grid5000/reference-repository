@@ -27,11 +27,6 @@ ldap:
   network_adapters:
     default:
       ip: 172.16.191.104
-mysql:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.191.105
 oar:
   kind: virtual
   alias:
@@ -49,11 +44,6 @@ kadeploy:
       ip: 172.16.191.107
     adm:
       ip: 172.17.191.107
-www:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.191.108
 fluxembourg:
   kind: virtual
   alias:
@@ -90,13 +80,6 @@ mail:
   network_adapters:
     default:
       ip: 172.16.191.116
-weathermap:
-  kind: virtual
-  alias:
-  - cacti
-  network_adapters:
-    default:
-      ip: 172.16.191.119
 kavlan:
   kind: virtual
   alias:

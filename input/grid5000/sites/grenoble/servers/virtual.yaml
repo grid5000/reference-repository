@@ -24,11 +24,6 @@ kadeploy:
       ip: 172.16.31.102
     adm:
       ip: 172.17.31.102
-mysql:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.31.103
 oar:
   kind: virtual
   alias:
@@ -37,11 +32,6 @@ oar:
   network_adapters:
     default:
       ip: 172.16.31.104
-www:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.31.105
 api-proxy:
   kind: virtual
   network_adapters:
@@ -149,15 +139,6 @@ backupg5k:
   network_adapters:
     default:
       ip: 172.16.31.144
-mu2:
-  kind: virtual
-  alias:
-  - digitalis
-  network_adapters:
-    default:
-      ip: 172.16.31.152
-    adm:
-      ip: 172.17.31.152
 supervision2:
   kind: virtual
   network_adapters:
