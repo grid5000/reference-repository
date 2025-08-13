@@ -3,13 +3,15 @@
   # If changes are needed, it might be better to edit the source data and regenerate using 'rake mass:create'
  
   cluster_name = "esterel19"
-  nodes_number = 1 # Size of the cluster (number of nodes)
+  nodes_number = 2 # Size of the cluster (number of nodes)
   # MAC addresses declaration
   mac_eth0_list = %w(
 4c:d9:8f:2c:d6:14
+4c:d9:8f:2c:da:34
   )
   mac_bmc_list = %w(
 4c:d9:8f:2c:d6:24
+4c:d9:8f:2c:da:44
   )
 %>
 ---
@@ -38,7 +40,7 @@ nodes:
         technology: dram # Common memory technology, will be replaced by g5k-checks
     processor:
       model: Unknown # Fake model name, will be replaced by g5k-checks
-      other_description: description # Fake description, will be replaced by g5k-checks
+      other_description: Intel® Xeon® Silver 4110 Processor # Fake description, will be replaced by g5k-checks
       vendor: vendor # Fake vendor, will be replaced by g5k-checks
       version: vendor # Fake version, will be replaced by g5k-checks
       cache_l1d: 8 # Fake cache, will be replaced by g5k-checks
