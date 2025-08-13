@@ -116,12 +116,6 @@ kadeploy-devel:
     default:
       ip: 172.16.223.121
 
-oxidized:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.223.122
-
 guix:
   kind: virtual
   network_adapters:
@@ -139,6 +133,18 @@ kavlan-agent:
   network_adapters:
     default:
       ip: 172.16.223.125
+
+kavlan-control:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.126
+
+kavlan-agent-devel:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.223.127
 
 nat:
   kind: virtual
