@@ -1,65 +1,3 @@
-mail:
-  kind: virtual
-  alias:
-  - mail2
-  - smtp
-  network_adapters:
-    default:
-      ip: 172.16.111.164
-www:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.112
-dhcp:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.117
-      ip6: 2001:660:4406:700:0:2:0:11
-    adm:
-      ip: 172.17.111.117
-ldap:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.120
-nat:
-  kind: virtual
-  alias:
-  - access
-  network_adapters:
-    default:
-      ip: 172.16.111.200
-puppet6:
-  kind: virtual
-  alias:
-  - puppet
-  network_adapters:
-    default:
-      ip: 172.16.111.105
-api-proxy:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.126
-api-proxy-devel:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.149
-syslog:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.109
-mysql:
-  kind: virtual
-  alias:
-  - mysql2
-  network_adapters:
-    default:
-      ip: 172.16.111.113
 kavlan:
   kind: virtual
   alias:
@@ -83,11 +21,131 @@ kavlan-3:
   network_adapters:
     default:
       ip: 172.16.111.103
+puppet6:
+  kind: virtual
+  alias:
+  - puppet
+  network_adapters:
+    default:
+      ip: 172.16.111.105
+frennes:
+  kind: virtual
+  alias:
+  - frontale
+  - frontend
+  - oar-api
+  network_adapters:
+    default:
+      ip: 172.16.111.106
+conman:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.108
+syslog:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.109
+oar:
+  kind: virtual
+  alias:
+  - oar-server
+  - oardb
+  network_adapters:
+    default:
+      ip: 172.16.111.110
+kadeploy:
+  kind: virtual
+  alias:
+  - kadeploy-server
+  network_adapters:
+    default:
+      ip: 172.16.111.111
+www:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.112
+kwollect:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.112
+mysql:
+  kind: virtual
+  alias:
+  - mysql2
+  network_adapters:
+    default:
+      ip: 172.16.111.113
+api-server-devel:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.115
+dhcp:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.117
+      ip6: 2001:660:4406:700:0:2:0:11
+    adm:
+      ip: 172.17.111.117
+dns:
+  kind: virtual
+  alias:
+  - ns
+  network_adapters:
+    default:
+      ip: 172.16.111.118
+ldap:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.120
+guix:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.121
+api-proxy:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.126
 api-server-v3:
   kind: virtual
   network_adapters:
     default:
       ip: 172.16.111.128
+stats:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.131
+kadeploy-devel:
+  kind: virtual
+  alias:
+  - kadeploy-server-devel
+  network_adapters:
+    default:
+      ip: 172.16.111.136
+supervision2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.145
+api-proxy-devel:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.149
+icinga:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.151
 ca:
   kind: virtual
   alias:
@@ -95,6 +153,11 @@ ca:
   network_adapters:
     default:
       ip: 172.16.111.152
+webfish:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.111.153
 jenkins-dev:
   kind: virtual
   network_adapters:
@@ -110,81 +173,18 @@ ci-runner:
   network_adapters:
     default:
       ip: 172.16.111.157
-dns:
+mail:
   kind: virtual
   alias:
-  - ns
+  - mail2
+  - smtp
   network_adapters:
     default:
-      ip: 172.16.111.118
-conman:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.108
-kadeploy:
+      ip: 172.16.111.164
+nat:
   kind: virtual
   alias:
-  - kadeploy-server
+  - access
   network_adapters:
     default:
-      ip: 172.16.111.111
-kadeploy-devel:
-  kind: virtual
-  alias:
-  - kadeploy-server-devel
-  network_adapters:
-    default:
-      ip: 172.16.111.136
-oar:
-  kind: virtual
-  alias:
-  - oar-server
-  - oardb
-  network_adapters:
-    default:
-      ip: 172.16.111.110
-frennes:
-  kind: virtual
-  alias:
-  - frontale
-  - frontend
-  - oar-api
-  network_adapters:
-    default:
-      ip: 172.16.111.106
-api-server-devel:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.115
-stats:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.131
-supervision2:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.145
-icinga:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.151
-kwollect:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.112
-guix:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.121
-webfish:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.111.153
+      ip: 172.16.111.200
