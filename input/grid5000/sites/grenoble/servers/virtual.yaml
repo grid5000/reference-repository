@@ -5,11 +5,6 @@ nat:
   network_adapters:
     default:
       ip: 172.16.31.100
-mail:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.31.125
 fgrenoble:
   kind: virtual
   alias:
@@ -129,20 +124,11 @@ kadeploy-devel:
       ip: 172.16.31.124
     adm:
       ip: 172.17.31.124
-mu2:
-  kind: virtual
-  alias:
-  - digitalis
-  network_adapters:
-    default:
-      ip: 172.16.31.152
-    adm:
-      ip: 172.17.31.152
-supervision2:
+mail:
   kind: virtual
   network_adapters:
     default:
-      ip: 172.16.31.156
+      ip: 172.16.31.125
 kwollect:
   kind: virtual
   network_adapters:
@@ -163,3 +149,17 @@ backupg5k:
   network_adapters:
     default:
       ip: 172.16.31.144
+mu2:
+  kind: virtual
+  alias:
+  - digitalis
+  network_adapters:
+    default:
+      ip: 172.16.31.152
+    adm:
+      ip: 172.17.31.152
+supervision2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.31.156
