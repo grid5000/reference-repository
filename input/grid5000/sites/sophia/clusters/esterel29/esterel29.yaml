@@ -9,9 +9,6 @@ queues:
   - testing
 nodes:
   esterel29-[1-4]:
-    chassis:
-      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
-      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
     supported_job_types:
       deploy: true
       besteffort: true
@@ -26,18 +23,28 @@ nodes:
         mountable: false
         mounted: false
       eth0:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
         enabled: true
         mountable: true
         mounted: true
+      eth3:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:86:00.0-scsi-0:2:0:0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:86:00.0-scsi-0:2:0:0" # this path will have to change later.
-      disk1: # This field will have to be renamed later.
+      pci-0000:86:00.0-scsi-0:2:1:0:
         id: disk1
         interface: SSD
-        by_path: "/dev/disk/by-path/pci-0000:86:00.0-scsi-0:2:1:0" # this path will have to change later.
     software:
       standard-environment: debian11-x64-std
     management_tools:
