@@ -50,6 +50,11 @@ flille:
       ip: 172.16.47.106
     adm:
       ip: 172.17.47.106
+users-api-devel:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.47.107
 mail:
   kind: virtual
   network_adapters:
@@ -65,6 +70,16 @@ dhcp:
       ip6: 2001:660:4406:200:0:2:0:b
     adm:
       ip: 172.17.47.111
+usagepolicycheck:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.47.112
+git-archive:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.47.114
 nat:
   kind: virtual
   alias:
@@ -81,13 +96,11 @@ api-proxy:
       ip: 172.16.47.121
     adm:
       ip: 172.17.47.121
-www:
+mailbox:
   kind: virtual
   network_adapters:
     default:
-      ip: 172.16.47.123
-    adm:
-      ip: 172.17.47.123
+      ip: 172.16.47.125
 conman:
   kind: virtual
   network_adapters:
@@ -146,6 +159,11 @@ api-server-v3:
       ip: 172.16.47.134
     adm:
       ip: 172.17.47.134
+misc:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.47.136
 kadeploy-devel:
   kind: virtual
   alias:
@@ -166,6 +184,11 @@ backupg5k:
   network_adapters:
     default:
       ip: 172.16.47.144
+guix:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.47.147
 users-api:
   kind: virtual
   alias:
@@ -173,11 +196,6 @@ users-api:
   network_adapters:
     default:
       ip: 172.16.47.149
-users-api-devel:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.107
 ldap-master:
   kind: virtual
   alias:
@@ -193,16 +211,6 @@ packages:
   network_adapters:
     default:
       ip: 172.16.47.152
-usagepolicycheck:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.112
-git-archive:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.114
 mysql-archive:
   kind: virtual
   network_adapters:
@@ -213,26 +221,6 @@ oardb-archive:
   network_adapters:
     default:
       ip: 172.16.47.154
-misc:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.136
-guix:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.147
-frontend-dev:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.156
-mailbox:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.47.125
 kwollect:
   kind: virtual
   network_adapters:
@@ -273,3 +261,13 @@ kavlan-agent-devel:
   network_adapters:
     default:
       ip: 172.16.47.164
+kavlan-control:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.47.165
+kavlan-agent:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.47.166

@@ -15,11 +15,6 @@ kadeploy:
       ip: 172.16.79.102
     adm:
       ip: 172.17.79.102
-mysql:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.103
 mail:
   kind: virtual
   network_adapters:
@@ -45,11 +40,6 @@ dhcp:
       ip6: 2001:660:4406:500:0:2:0:7
     adm:
       ip: 172.17.79.107
-apt-global:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.109
 puppet6:
   kind: virtual
   alias:
@@ -57,11 +47,6 @@ puppet6:
   network_adapters:
     default:
       ip: 172.16.79.110
-www:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.112
 oar:
   kind: virtual
   alias:
@@ -75,11 +60,6 @@ ldap:
   network_adapters:
     default:
       ip: 172.16.79.115
-gitolite-global:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.116
 api-proxy:
   kind: virtual
   network_adapters:
@@ -131,28 +111,6 @@ api-server-devel:
   network_adapters:
     default:
       ip: 172.16.79.133
-supervision2:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.145
-icinga:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.147
-nat:
-  kind: virtual
-  alias:
-  - access
-  network_adapters:
-    default:
-      ip: 172.16.79.200
-frontend-dev:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.79.161
 kwollect:
   kind: virtual
   network_adapters:
@@ -173,4 +131,35 @@ ood-devel:
   network_adapters:
     default:
       ip: 172.16.79.137
-
+supervision2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.79.145
+icinga:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.79.147
+kavlan-control:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.79.148
+kavlan-agent:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.79.149
+kavlan-agent-devel:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.79.150
+nat:
+  kind: virtual
+  alias:
+  - access
+  network_adapters:
+    default:
+      ip: 172.16.79.200
