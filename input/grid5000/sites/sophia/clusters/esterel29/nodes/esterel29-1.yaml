@@ -8,10 +8,10 @@ esterel29-1:
     nb_threads: 32
     platform_type: x86_64
   bios:
-    release_date: '09/13/2023'
+    release_date: 03/27/2025
     vendor: Dell Inc.
-    version: 2.20.1
-  bmc_version: 7.00.00.171
+    version: 2.24.0
+  bmc_version: 7.00.00.181
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge R740
@@ -87,7 +87,7 @@ esterel29-1:
       management: true
     eth0:
       driver: bnxt_en
-      firmware_version: 218.0.219.13/pkg 21.85.21.92
+      firmware_version: 233.0.195.0/pkg 23.31.18.10
       interface: Ethernet
       mac: b0:26:28:b4:b5:2e
       management: false
@@ -98,7 +98,7 @@ esterel29-1:
       vendor: Broadcom Inc. and subsidiaries
     eth1:
       driver: bnxt_en
-      firmware_version: 218.0.219.13/pkg 21.85.21.92
+      firmware_version: 233.0.195.0/pkg 23.31.18.10
       interface: Ethernet
       mac: b0:26:28:b4:b5:2f
       management: false
@@ -109,7 +109,7 @@ esterel29-1:
       vendor: Broadcom Inc. and subsidiaries
     eth2:
       driver: tg3
-      firmware_version: FFV22.71.3 bc 5720-v1.39
+      firmware_version: FFV23.31.0 bc 5720-v1.39
       interface: Ethernet
       ip: 172.16.131.36
       mac: b0:26:28:b4:b5:2c
@@ -122,7 +122,7 @@ esterel29-1:
       vendor: Broadcom Inc. and subsidiaries
     eth3:
       driver: tg3
-      firmware_version: FFV22.71.3 bc 5720-v1.39
+      firmware_version: FFV23.31.0 bc 5720-v1.39
       interface: Ethernet
       mac: b0:26:28:b4:b5:2d
       management: false
@@ -132,17 +132,16 @@ esterel29-1:
       sriov_totalvfs: 0
       vendor: Broadcom Inc. and subsidiaries
     ib0:
-      driver: ib_ipoib
+      driver: mlx4_core
       firmware_version: 2.42.5000
       guid: '0x98039b0300e455b1'
       interface: InfiniBand
-      mac: 80:00:02:08:fe:80:00:00:00:00:00:00:98:03:9b:03:00:e4:55:b1
+      ip: 172.18.131.36
+      mac: 98:03:9b:03:00:e4:55:b1
       management: false
       model: MT27500 Family [ConnectX-3]
-      name: ibp24s0
+      name: ib0
       rate: 40000000000
-      sriov: false
-      sriov_totalvfs: 0
       vendor: Mellanox Technologies
   operating_system:
     cstate_driver: intel_idle
@@ -166,14 +165,14 @@ esterel29-1:
     pci-0000:86:00.0-scsi-0:2:0:0:
       by_id: "/dev/disk/by-id/wwn-0x64cd98f07fefd30024e5a8e1089798a2"
       by_path: "/dev/disk/by-path/pci-0000:86:00.0-scsi-0:2:0:0"
-      firmware_version: 4.29
+      firmware_version: 4.3
       model: PERC H730P Adp
       size: 599550590976
       storage: HDD
     pci-0000:86:00.0-scsi-0:2:1:0:
       by_id: "/dev/disk/by-id/wwn-0x64cd98f07fefd30024e5aa0519ff85d1"
       by_path: "/dev/disk/by-path/pci-0000:86:00.0-scsi-0:2:1:0"
-      firmware_version: 4.29
+      firmware_version: 4.3
       model: PERC H730P Adp
       size: 959119884288
       storage: HDD
