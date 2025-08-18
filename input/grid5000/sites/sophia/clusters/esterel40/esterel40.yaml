@@ -6,7 +6,7 @@ boot_type: uefi
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   esterel40-[1-2]:
     gpu_devices:
@@ -18,7 +18,7 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Zen 3
       clock_speed: 3_000_000_000
