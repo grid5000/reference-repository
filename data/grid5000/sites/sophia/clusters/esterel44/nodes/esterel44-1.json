@@ -1,26 +1,97 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "nb_cores": 32,
+    "nb_procs": 2,
+    "nb_threads": 64,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "07/11/2025",
+    "vendor": "HPE",
+    "version": 2.6
   },
-  "bmc_version": "v1",
+  "bmc_version": "1.69",
   "chassis": {
     "manufactured_at": "2025-07-25",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL385 Gen11",
+    "serial": "CZ2D300GNJ",
     "warranty_end": "2032-06-03"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.15",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.15",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.15",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.15",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 549755813888
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -30,29 +101,123 @@
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_proc 1 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 9",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 4",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 6",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 9",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
       "interface": "Ethernet",
       "ip": "172.16.131.59",
       "ip6": "2001:660:4406:800:4::3b",
       "kavlan": false,
       "mac": "40:5b:7f:d4:72:2e",
       "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "esterel44-1.sophia.grid5000.fr",
-      "rate": 10000000000,
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "gw",
-      "switch_port": "1/1/10"
+      "switch_port": "1/1/10",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "40:5b:7f:d4:72:2f",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens22f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "20.43.2566",
+      "guid": "0x88e9a4ffff331808",
+      "interface": "InfiniBand",
+      "ip": "172.18.131.59",
+      "kavlan": false,
+      "mac": "88:e9:a4:ff:ff:33:18:08",
+      "management": false,
+      "model": "MT28908 Family [ConnectX-6]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "netmask": "255.255.240.0",
+      "network_address": "esterel44-1-ib0.sophia.grid5000.fr",
+      "rate": 200000000000,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "ib1",
+      "driver": "mlx4_core",
+      "enabled": false,
+      "firmware_version": "2.7.626",
+      "guid": "0x0002c903000d8099",
+      "interface": "InfiniBand",
+      "kavlan": false,
+      "mac": "00:02:c9:03:00:0d:80:99",
+      "management": false,
+      "model": "MT25408A0-FCC-QI ConnectX, Dual Port 40Gb/s InfiniBand / 10GigE Adapter IC with PCIe 2.0 x8 5.0GT/s Interface",
+      "mountable": false,
+      "mounted": false,
+      "name": "ib1",
+      "rate": 10000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,31 +234,31 @@
   ],
   "nodeset": "esterel44",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 144000000000,
-    "node_flops": 10368000000000
+    "node_flops": 4608000000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 16777216,
     "clock_speed": 3000000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Zen 4",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 9124 16-Core Processor",
+    "vendor": "AMD",
+    "version": 9124
   },
   "redfish": true,
   "software": {
@@ -103,14 +268,14 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.000000000000000100a075244c309e3b",
       "by_path": "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "NVME",
+      "model": "MO006400KYDZU",
+      "size": 6401252745216,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Micron"
     }
   ],
   "supported_job_types": {
@@ -120,7 +285,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "esterel44-1"
