@@ -29,11 +29,14 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:c5:00.0-nvme-1:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1" # this path will have to change later.
+        interface: NVME
     software:
       standard-environment: debian11-x64-std
     management_tools:
