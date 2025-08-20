@@ -81,6 +81,7 @@ sw-1:
         50:
           uid: lag2
           kind: channel
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag2:
       port: port-channel1

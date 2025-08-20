@@ -178,6 +178,7 @@ gw:
         48:
           uid: renater-sophia
           kind: backbone
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
       kind: server
