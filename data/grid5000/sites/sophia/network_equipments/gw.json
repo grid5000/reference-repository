@@ -8,45 +8,53 @@
       "kind": "server",
       "port": "lag1",
       "rate": 500000000000,
+      "ssh_name": "lag 1",
       "uid": "srv-data1"
     },
     "lag2": {
       "kind": "server",
       "port": "lag2",
       "rate": 500000000000,
+      "ssh_name": "lag 2",
       "uid": "srv-data2"
     },
     "lag3": {
       "kind": "server",
       "port": "lag3",
       "rate": 500000000000,
+      "ssh_name": "lag 3",
       "uid": "srv-data3"
     },
     "lag4": {
       "kind": "server",
       "port": "lag4",
       "rate": 200000000000,
+      "ssh_name": "lag 4",
       "uid": "srv-data4"
     },
     "lag5": {
       "kind": "server",
       "port": "lag5",
       "rate": 200000000000,
+      "ssh_name": "lag 5",
       "uid": "srv-scratch1"
     },
     "lag6": {
       "kind": "server",
       "port": "lag6",
       "rate": 200000000000,
+      "ssh_name": "lag 6",
       "uid": "srv-scratch2"
     },
     "lag7": {
       "kind": "server",
       "port": "lag7",
       "rate": 200000000000,
+      "ssh_name": "lag 7",
       "uid": "srv-scratch3"
     }
   },
+  "channels_ssh_pattern": "#{/\\D+/.match(\"%CHANNEL%\")} #{/\\d+/.match(\"%CHANNEL%\")}",
   "ip": "172.16.143.254",
   "ip6": "2001:660:4406:800::ffff:ffff",
   "kind": "router",
