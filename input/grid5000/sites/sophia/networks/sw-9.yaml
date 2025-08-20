@@ -1,0 +1,24 @@
+---
+sw-9:
+  model: Aruba 6300M
+  warranty: 2032-05
+  kind: switch
+  managed_by_us: true
+  site: sophia
+  ip: 172.17.143.235
+  snmp_community: public
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        51:
+          uid: sw-1 
+          kind: switch
+          rate: 10000000000
+        52:
+          uid: swadmin-9
+          kind: switch
+          rate: 10000000000
