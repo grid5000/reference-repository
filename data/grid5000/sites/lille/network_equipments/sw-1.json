@@ -11,9 +11,11 @@
       "kind": "router",
       "port": "port-channel1",
       "rate": 200000000000,
+      "ssh_name": "lag 2",
       "uid": "gw"
     }
   },
+  "channels_ssh_pattern": "#{/\\D+/.match(\"%CHANNEL%\")} #{/\\d+/.match(\"%CHANNEL%\")}",
   "ip": "172.17.47.224",
   "kind": "switch",
   "linecards": [
