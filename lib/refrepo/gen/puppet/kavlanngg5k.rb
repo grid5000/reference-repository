@@ -212,7 +212,6 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
               site_ngs_conf.puts("#{k} = #{v}")
             end
           end
-          site_ngs_conf.puts("ngs_zone = #{site}")
           site_ngs_conf.puts("ngs_network_name_format = kvl-{network_id:.10}")
           site_ngs_conf.puts("ngs_ssh_disabled_algorithms = kex:diffie-hellman-group-exchange-sha1")
           site_ngs_conf.puts("ngs_port_default_vlan = 100")
