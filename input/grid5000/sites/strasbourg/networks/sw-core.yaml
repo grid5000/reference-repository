@@ -30,10 +30,12 @@ sw-core:
         2:
           uid: pve-1
           kind: server
+          trunk: true
           rate: 25_000_000_000
         3:
           uid: pve-2
           kind: server
+          trunk: true
           rate: 25_000_000_000
 #       4: inetlab-sw1-eth0
         5: 
@@ -100,6 +102,7 @@ sw-core:
         124: 
           uid: sw-admin
           kind: switch
+          trunk: true
 
   channels:
     port-channel1:
