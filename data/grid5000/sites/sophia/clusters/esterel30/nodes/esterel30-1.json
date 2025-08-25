@@ -303,7 +303,7 @@
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "intel_cpufreq",
+    "pstate_driver": "intel_pstate",
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
@@ -359,10 +359,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 604800,
     "queues": [
+      "abaca",
       "admin",
-      "testing"
+      "production"
     ],
     "virtual": "ivt"
   },
