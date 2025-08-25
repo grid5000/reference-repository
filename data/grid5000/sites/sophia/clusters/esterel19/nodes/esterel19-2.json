@@ -1,0 +1,240 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 32,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "04/01/2025",
+    "vendor": "Dell Inc.",
+    "version": "2.24.0"
+  },
+  "bmc_version": "7.00.00.181",
+  "chassis": {
+    "manufactured_at": "2019-04-23",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge T640",
+    "serial": "CNQCWW2",
+    "warranty_end": "2026-04-23"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 103079215104
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 8589934592,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "bnxt_en",
+      "enabled": true,
+      "firmware_version": "218.0.219.13/pkg 21.85.21.92",
+      "interface": "Ethernet",
+      "ip": "172.16.131.25",
+      "ip6": "2001:660:4406:800:4::19",
+      "kavlan": false,
+      "mac": "4c:d9:8f:2c:da:34",
+      "management": false,
+      "model": "BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "esterel19-2.sophia.grid5000.fr",
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "sw-1",
+      "switch_port": "1/1/22",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "218.0.219.13/pkg 21.85.21.92",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "4c:d9:8f:2c:da:35",
+      "management": false,
+      "model": "BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx4_core",
+      "enabled": true,
+      "firmware_version": "2.42.5000",
+      "guid": "0x98039b0300d5b5e1",
+      "interface": "InfiniBand",
+      "ip": "172.18.131.25",
+      "kavlan": false,
+      "mac": "98:03:9b:03:00:d5:b5:e1",
+      "management": false,
+      "model": "MT27500 Family [ConnectX-3]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ibp137s0",
+      "netmask": "255.255.240.0",
+      "network_address": "esterel19-2-ib0.sophia.grid5000.fr",
+      "rate": 40000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Mellanox Technologies"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.131.25",
+      "kavlan": false,
+      "mac": "4c:d9:8f:2c:da:44",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "esterel19-2-bmc.sophia.grid5000.fr"
+    }
+  ],
+  "nodeset": "esterel19",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 33600000000,
+    "node_flops": 537600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 11534336,
+    "clock_speed": 2100000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Skylake-SP",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4110 CPU @ 2.10GHz",
+    "vendor": "Intel",
+    "version": "Silver 4110"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025081410",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da06192eb0024b0f8930a191383",
+      "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:0:0",
+      "firmware_version": 4.3,
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "PERC H730P Adp",
+      "size": 599550590976,
+      "storage": "HDD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x61866da06192eb0024b0f8b20bf1fd52",
+      "by_path": "/dev/disk/by-path/pci-0000:19:00.0-scsi-0:2:1:0",
+      "firmware_version": 4.3,
+      "id": "disk1",
+      "interface": "SSD",
+      "model": "PERC H730P Adp",
+      "size": 1918239768576,
+      "storage": "HDD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "esterel19-2"
+}
