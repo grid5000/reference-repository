@@ -16,6 +16,39 @@ esterel19-2:
     manufacturer: Dell Inc.
     name: PowerEdge T640
     serial: CNQCWW2
+  gpu_devices:
+    nvidia0:
+      cpu_affinity: 0
+      device: "/dev/nvidia0"
+      memory: 11811160064
+      model: GeForce RTX 2080 Ti
+      power_default_limit: 250.00 W
+      vbios_version: 90.02.17.00.B2
+      vendor: Nvidia
+    nvidia1:
+      cpu_affinity: 0
+      device: "/dev/nvidia1"
+      memory: 11811160064
+      model: GeForce RTX 2080 Ti
+      power_default_limit: 250.00 W
+      vbios_version: 90.02.17.00.B2
+      vendor: Nvidia
+    nvidia2:
+      cpu_affinity: 1
+      device: "/dev/nvidia2"
+      memory: 11811160064
+      model: GeForce RTX 2080 Ti
+      power_default_limit: 250.00 W
+      vbios_version: 90.02.17.00.B2
+      vendor: Nvidia
+    nvidia3:
+      cpu_affinity: 1
+      device: "/dev/nvidia3"
+      memory: 11811160064
+      model: GeForce RTX 2080 Ti
+      power_default_limit: 250.00 W
+      vbios_version: 90.02.17.00.B2
+      vendor: Nvidia
   main_memory:
     ram_size: 103079215104
   memory_devices:
@@ -89,13 +122,12 @@ esterel19-2:
       firmware_version: 2.42.5000
       guid: '0x98039b0300d5b5e1'
       interface: InfiniBand
+      ip: 172.18.131.25
       mac: 98:03:9b:03:00:d5:b5:e1
       management: false
       model: MT27500 Family [ConnectX-3]
-      name: ibp137s0
+      name: ib0
       rate: 40000000000
-      sriov: false
-      sriov_totalvfs: 0
       vendor: Mellanox Technologies
   operating_system:
     cstate_driver: intel_idle
