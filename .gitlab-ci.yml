@@ -10,8 +10,6 @@ include:
   - project: 'grid5000/grid5000-gitlab-templates'
     ref: master
     file:
-      # Execute sonarqube
-      - '/sonarqube.yml'
       # Execute rubocop
       - '/rubocop.yml'
       # Import g5k default stages
@@ -38,6 +36,7 @@ validate-input-data:
     - bundle exec rake valid:schema
     - bundle exec rake valid:duplicates
     - bundle exec rake valid:required-unwanted-files
+    - bundle exec rake valid:duplicate-values
 
 wikigen:
   extends: .template-refrepo

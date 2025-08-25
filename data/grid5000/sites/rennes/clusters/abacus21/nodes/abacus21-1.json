@@ -7,11 +7,11 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "12/17/2023",
+    "release_date": "03/07/2025",
     "vendor": "Dell Inc.",
-    "version": "2.14.1"
+    "version": "2.19.0"
   },
-  "bmc_version": "7.00.60.00",
+  "bmc_version": "7.20.30.50",
   "chassis": {
     "manufactured_at": "2021-08-02",
     "manufacturer": "Dell Inc.",
@@ -169,7 +169,7 @@
       "device": "eth0",
       "driver": "tg3",
       "enabled": true,
-      "firmware_version": "FFV22.71.3 bc 5720-v1.39",
+      "firmware_version": "FFV23.22.4 bc 5720-v1.39",
       "interface": "Ethernet",
       "ip": "172.16.109.21",
       "ip6": "2001:660:4406:700:e::15",
@@ -192,7 +192,7 @@
       "device": "eth1",
       "driver": "tg3",
       "enabled": false,
-      "firmware_version": "FFV22.71.3 bc 5720-v1.39",
+      "firmware_version": "FFV23.22.4 bc 5720-v1.39",
       "interface": "Ethernet",
       "kavlan": false,
       "mac": "b0:7b:25:d4:a7:a9",
@@ -241,7 +241,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Zen 2",
-    "microcode": "0x830107c",
     "model": "AMD EPYC",
     "other_description": "AMD EPYC 7F72 24-Core Processor",
     "vendor": "AMD",
@@ -250,14 +249,14 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025081410",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
       "by_id": "/dev/disk/by-id/wwn-0x58ce38ee21504489",
       "by_path": "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:0:1:0",
-      "firmware_version": "B322",
+      "firmware_version": "B326",
       "id": "disk0",
       "interface": "SAS",
       "model": "KPM5WRUG3T84",
@@ -293,6 +292,7 @@
     "deploy": true,
     "max_walltime": 604800,
     "queues": [
+      "abaca",
       "admin",
       "production"
     ],

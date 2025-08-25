@@ -32,7 +32,28 @@ grenoble:
     - ~storage_devices.pci-0000:00:11.5-ata-5.firmware_version
   drac-[8-9]:
     - ~storage_devices.pci-0009:04:00.0-ata-1.firmware_version
-
+  kinovis-[1-2]:
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:104:0.size
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:111:0.size
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:104:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:105:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:106:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:107:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:108:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:109:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:110:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:111:0.id
+  kinovis-[2-3]:
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:104:0.size
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:111:0.size
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:104:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:105:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:106:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:107:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:108:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:109:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:110:0.id
+    - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:111:0.id
   yeti-1:
     - ~storage_devices.pci-0000:59:00.0-nvme-1.model
   yeti-2:
@@ -40,11 +61,22 @@ grenoble:
   yeti-3:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.model
+    - -storage_devices.pci-0000:6d:00.0-nvme-1
   yeti-4:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.model
     - -storage_devices.pci-0000:59:00.0-nvme-1
     - +storage_devices.pci-0000:ed:00.0-nvme-1
+    - +storage_devices.pci-0000:6d:00.0-nvme-1
+  vercors4-3:
+    - -storage_devices.pci-0000:18:00.0-scsi-0:2:0:0
+    - -storage_devices.pci-0000:18:00.0-scsi-0:2:1:0
+    - +storage_devices.pci-0000:3c:00.0-scsi-0:2:0:0
+    - +storage_devices.pci-0000:3c:00.0-scsi-0:2:1:0
+    - ~network_adapters.eth2.firmware_version
+    - ~network_adapters.eth3.firmware_version
+  vercors7-[1-2]:
+    - ~gpu_devices.nvidia0.vbios_version
 lille:
   chiclet-8:
     - -storage_devices.pci-0000:61:00.0-scsi-0:0:2:0
@@ -206,9 +238,6 @@ lyon:
     - ~storage_devices.pci-0000:02:04.0-scsi-0:0:1:0.size
     - ~storage_devices.pci-0000:02:04.0-scsi-0:0:1:0.vendor
     - ~storage_devices.pci-0000:02:04.0-scsi-0:0:1:0.firmware_version
-  hydra-[2-4]:
-    - ~network_adapters.eth0.firmware_version
-    - ~network_adapters.eth1.firmware_version
   neowise-[8-9]:
     - ~network_adapters.ib0.firmware_version
     - ~network_adapters.ib1.firmware_version
@@ -278,6 +307,15 @@ nantes:
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
+  econome-23:
+    - ~network_adapters.eth0.model
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.model
+    - ~network_adapters.eth1.firmware_version
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
+  econome-24:
+    - -network_adapters.eth2
+    - -network_adapters.eth3
   ecotype-2:
     - ~network_adapters.eth1.enabled
     - ~network_adapters.eth1.mountable
@@ -316,44 +354,16 @@ nantes:
     - +kavlan6.eth1
 
 rennes:
-  paradoxe-[2-3]:
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.model
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model
-  paradoxe-5:
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.model
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model
-  paradoxe-12:
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.model
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model
   paradoxe-13:
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.model
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model
   paradoxe-14:
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
   paradoxe-[17-18]:
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
-  paradoxe-21:
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.model
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model
   paradoxe-22:
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.model
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
-    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model
     - ~network_adapters.eth0.firmware_version
     - ~network_adapters.eth1.firmware_version
   paradoxe-23:
@@ -423,15 +433,39 @@ sophia:
   esterel10-3: # 3 GPUs instead of 4
     - -gpu_devices.nvidia3
     - ~gpu_devices.nvidia1.cpu_affinity
+  esterel11-2: # 3 GPUs instead of 4
+    - +gpu_devices.nvidia0
+    - -gpu_devices.nvidia3
+    - ~gpu_devices.nvidia1.cpu_affinity
+  esterel40-2:
+    - -storage_devices.pci-0000:03:00.0-nvme-1
+    - ~storage_devices.pci-0000:64:00.0-scsi-0:3:110:0.size
+    - +storage_devices.pci-0000:64:00.0-scsi-0:3:111:0
+  mercantour1-[6-7]:
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
   mercantour2-[4-5]: # different disk firmware version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
+  mercantour2-6: # difference in rate since electric incident on Sophia
+    - ~network_adapters.ib0.rate
+  mercantour2-7:
+    - ~network_adapters.ib0.rate
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
   mercantour2-[7-8]: # different disk
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.model
     - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
-  uvb-13:
-    - -chassis.serial
-    - ~chassis.manufacturer
+  mercantour3-[1-2]:
+    - ~network_adapters.ib0.rate
+  mercantour3-9:
+    - ~network_adapters.ib0.rate
+  mercantour3-[11-13]:
+    - ~network_adapters.ib0.rate
+  uvb-[9-10]:
+    - ~network_adapters.ib0.rate
 #toulouse:
 strasbourg:
   fleckenstein-[2-3]:
@@ -446,7 +480,6 @@ strasbourg:
     - ~network_adapters.eth3.firmware_version
     - ~network_adapters.eth4.firmware_version
     - ~network_adapters.eth5.firmware_version
-    - ~processor.microcode
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:3:0.firmware_version
   fleckenstein-5:
@@ -458,7 +491,6 @@ strasbourg:
     - ~network_adapters.eth3.firmware_version
     - ~network_adapters.eth4.firmware_version
     - ~network_adapters.eth5.firmware_version
-    - ~processor.microcode
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.firmware_version
     - ~storage_devices.pci-0000:47:00.0-scsi-0:2:3:0.firmware_version
   fleckenstein-6:

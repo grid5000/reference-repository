@@ -33,6 +33,7 @@
       "kavlan-2": "192.168.217.1",
       "kavlan-20": "10.43.228.1",
       "kavlan-21": "10.47.228.1",
+      "kavlan-22": "10.51.228.1",
       "kavlan-3": "192.168.233.1",
       "kavlan-4": "10.24.9.1",
       "kavlan-5": "10.24.73.1",
@@ -55,6 +56,7 @@
       "kavlan-2": "2001:660:4406:781:6::1",
       "kavlan-20": "2001:660:4406:3a0:706::1",
       "kavlan-21": "2001:660:4406:6a0:706::1",
+      "kavlan-22": "2001:660:4406:ba0:706::1",
       "kavlan-3": "2001:660:4406:782:6::1",
       "kavlan-4": "2001:660:4406:790:6::1",
       "kavlan-5": "2001:660:4406:791:6::1",
@@ -223,7 +225,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Ice Lake-SP",
-    "microcode": "0xd0003e7",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz",
     "vendor": "Intel",
@@ -232,28 +233,28 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025081410",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
-      "by_id": "/dev/disk/by-id/wwn-0x55cd2e4155ff6040",
+      "by_id": "/dev/disk/by-id/wwn-0x5002538f04521557",
       "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:1:0",
-      "firmware_version": "4IYYHPG3",
+      "firmware_version": "HPG1",
       "id": "disk0",
       "interface": "SATA",
-      "model": "MK001920GYCNF",
+      "model": "MK001920GZXRC",
       "size": 1920383410176,
       "storage": "SSD",
       "vendor": "HP"
     },
     {
-      "by_id": "/dev/disk/by-id/wwn-0x55cd2e4155ff52a0",
+      "by_id": "/dev/disk/by-id/wwn-0x5002538f0452154d",
       "by_path": "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:2:0",
-      "firmware_version": "4IYYHPG3",
+      "firmware_version": "HPG1",
       "id": "disk1",
       "interface": "SATA",
-      "model": "MK001920GYCNF",
+      "model": "MK001920GZXRC",
       "size": 1920383410176,
       "storage": "SSD",
       "vendor": "HP"
@@ -264,8 +265,8 @@
     "deploy": true,
     "max_walltime": 0,
     "queues": [
-      "default",
-      "admin"
+      "admin",
+      "default"
     ],
     "virtual": "ivt"
   },

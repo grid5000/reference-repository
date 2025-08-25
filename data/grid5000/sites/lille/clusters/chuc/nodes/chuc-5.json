@@ -7,11 +7,11 @@
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "08/07/2024",
+    "release_date": "05/16/2025",
     "vendor": "HPE",
     "version": "A48"
   },
-  "bmc_version": "3.07",
+  "bmc_version": "3.13",
   "chassis": {
     "manufactured_at": "2023-05-02",
     "manufacturer": "HPE",
@@ -103,6 +103,7 @@
       "kavlan-2": "192.168.217.5",
       "kavlan-20": "10.43.197.105",
       "kavlan-21": "10.47.197.105",
+      "kavlan-22": "10.51.197.105",
       "kavlan-3": "192.168.233.5",
       "kavlan-4": "10.8.9.5",
       "kavlan-5": "10.8.73.5",
@@ -123,6 +124,7 @@
       "kavlan-2": "192.168.217.105",
       "kavlan-20": "10.43.197.155",
       "kavlan-21": "10.47.197.155",
+      "kavlan-22": "10.51.197.155",
       "kavlan-3": "192.168.233.105",
       "kavlan-4": "10.8.9.105",
       "kavlan-5": "10.8.73.105",
@@ -145,6 +147,7 @@
       "kavlan-2": "2001:660:4406:281:1::5",
       "kavlan-20": "2001:660:4406:3a0:201::5",
       "kavlan-21": "2001:660:4406:6a0:201::5",
+      "kavlan-22": "2001:660:4406:ba0:201::5",
       "kavlan-3": "2001:660:4406:282:1::5",
       "kavlan-4": "2001:660:4406:290:1::5",
       "kavlan-5": "2001:660:4406:291:1::5",
@@ -165,6 +168,7 @@
       "kavlan-2": "2001:660:4406:281:1:1:0:5",
       "kavlan-20": "2001:660:4406:3a0:201:1:0:5",
       "kavlan-21": "2001:660:4406:6a0:201:1:0:5",
+      "kavlan-22": "2001:660:4406:ba0:201:1:0:5",
       "kavlan-3": "2001:660:4406:282:1:1:0:5",
       "kavlan-4": "2001:660:4406:290:1:1:0:5",
       "kavlan-5": "2001:660:4406:291:1:1:0:5",
@@ -230,7 +234,7 @@
       "device": "eth0",
       "driver": "mlx5_core",
       "enabled": true,
-      "firmware_version": "16.35.3006 (MT_0000000241)",
+      "firmware_version": "16.35.4030 (MT_0000000241)",
       "interface": "Ethernet",
       "ip": "172.16.32.5",
       "ip6": "2001:660:4406:200:1::5",
@@ -253,7 +257,7 @@
       "device": "eth1",
       "driver": "mlx5_core",
       "enabled": true,
-      "firmware_version": "16.35.3006 (MT_0000000241)",
+      "firmware_version": "16.35.4030 (MT_0000000241)",
       "interface": "Ethernet",
       "ip": "172.16.32.105",
       "ip6": "2001:660:4406:200:1:1:0:5",
@@ -294,6 +298,62 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 28,
+      "uid": "pdu-c4-1"
+    },
+    {
+      "port": 30,
+      "uid": "pdu-c4-1"
+    },
+    {
+      "port": 42,
+      "uid": "pdu-c4-1"
+    },
+    {
+      "port": 28,
+      "uid": "pdu-c4-2"
+    },
+    {
+      "port": 30,
+      "uid": "pdu-c4-2"
+    },
+    {
+      "port": 42,
+      "uid": "pdu-c4-2"
+    },
+    {
+      "kind": "wattmetre-only",
+      "port": 24,
+      "uid": "wattmetrev3-1"
+    },
+    {
+      "kind": "wattmetre-only",
+      "port": 25,
+      "uid": "wattmetrev3-1"
+    },
+    {
+      "kind": "wattmetre-only",
+      "port": 26,
+      "uid": "wattmetrev3-1"
+    },
+    {
+      "kind": "wattmetre-only",
+      "port": 27,
+      "uid": "wattmetrev3-1"
+    },
+    {
+      "kind": "wattmetre-only",
+      "port": 28,
+      "uid": "wattmetrev3-1"
+    },
+    {
+      "kind": "wattmetre-only",
+      "port": 29,
+      "uid": "wattmetrev3-1"
+    }
+  ],
   "performance": {
     "core_flops": 41600000000,
     "node_flops": 1331200000000
@@ -308,7 +368,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Zen 3",
-    "microcode": "0xa0011d5",
     "model": "AMD EPYC",
     "other_description": "AMD EPYC 7513 32-Core Processor",
     "vendor": "AMD",
@@ -317,7 +376,7 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025081410",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [

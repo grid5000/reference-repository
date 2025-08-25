@@ -57,6 +57,9 @@ vlans:
         21:
             address: 10.47.192.0
             type: global
+        22:
+            address: 10.51.192.0
+            type: global
     # Allocation of VLAN offsets (relative to VLAN IPs above)
     # Please keep this sorted. After modification, use: rake sort-vlans-offsets
     # Max addresses are:
@@ -67,14 +70,45 @@ vlans:
       local grenoble yeti eth0 0 0 0 0
       local grenoble dahu eth0 0 0 1 0
       local grenoble troll eth0 0 0 2 0
+      local grenoble troll eth1 0 0 2 4
       local grenoble drac eth0 0 0 3 0
       local grenoble servan eth0 0 0 4 0
+      local grenoble servan eth1 0 0 4 2
+      local grenoble servan eth2 0 0 4 4
       local grenoble servan fpga0 0 0 4 10
       local grenoble servan fpga1 0 0 4 20
-      local grenoble kinovis eth0 0 0 5 0
-      local grenoble kinovis eth1 0 0 5 10
-      local grenoble kinovis eth2 0 0 5 20
-      local grenoble chartreuse2 eth0 0 0 6 0
+      local grenoble nessie eth0 0 0 5 0
+      local grenoble chartreuse1 eth0 0 0 6 0
+      local grenoble chartreuse2 eth0 0 0 6 4
+      local grenoble chartreuse3 eth0 0 0 6 8
+      local grenoble chartreuse4 eth0 0 0 6 12
+      local grenoble chartreuse5 eth0 0 0 6 16
+      local grenoble chartreuse6 eth0 0 0 6 24
+      local grenoble chartreuse7 eth0 0 0 6 28
+      local grenoble vercors1 eth0 0 0 7 0
+      local grenoble vercors2 eth0 0 0 7 2
+      local grenoble vercors3 eth0 0 0 7 4
+      local grenoble vercors4 eth0 0 0 7 6
+      local grenoble vercors5 eth0 0 0 7 9
+      local grenoble vercors6 eth0 0 0 7 10
+      local grenoble vercors7 eth0 0 0 7 12
+      local grenoble vercors8 eth0 0 0 7 14
+      local grenoble vercors9 eth0 0 0 7 16
+      local grenoble vercors10 eth0 0 0 7 17
+      local grenoble vercors11 eth0 0 0 7 19
+      local grenoble vercors12 eth0 0 0 7 21
+      local grenoble vercors13 eth0 0 0 7 22
+      local grenoble vercors14 eth0 0 0 7 23
+      local grenoble vercors15 eth0 0 0 7 28
+      local grenoble vercors16 eth0 0 0 7 32
+      local grenoble vercors17 eth0 0 0 7 34
+      local grenoble vercors18 eth0 0 0 7 37
+      local grenoble vercors19 eth0 0 0 7 39
+      local grenoble vercors20 eth0 0 0 7 40
+      local grenoble vercors21 eth0 0 0 7 43
+      local grenoble kinovis eth0 0 0 8 0
+      local grenoble kinovis eth1 0 0 8 6
+      local grenoble kinovis eth2 0 0 8 12
       local lille chifflot eth0 0 0 4 0
       local lille chifflot eth1 0 0 5 0
       local lille chiclet eth0 0 0 6 0
@@ -83,8 +117,13 @@ vlans:
       local lille chirop eth1 0 0 8 100
       local lille chuc eth0 0 0 9 0
       local lille chuc eth1 0 0 9 100
+      local louvain spirou eth0 0 0 0 0
       local luxembourg petitprince eth0 0 0 2 0
       local luxembourg petitprince eth1 0 0 3 0
+      local luxembourg vianden eth0 0 0 4 0
+      local luxembourg vianden eth2 0 0 4 1
+      local luxembourg vianden eth3 0 0 4 2
+      local luxembourg larochette eth0 0 0 5 0
       local lyon sagittaire eth1 0 0 0 0
       local lyon taurus eth0 0 0 1 0
       local lyon orion eth0 0 0 2 0
@@ -147,7 +186,7 @@ vlans:
       local sophia esterel17 eth0 0 0 3 21
       local sophia esterel18 eth0 0 0 3 22
       local sophia esterel19 eth0 0 0 3 23
-      local sophia esterel20 eth0 0 0 3 24
+      local sophia esterel20 eth0 0 0 3 25
       local sophia esterel21 eth0 0 0 3 26
       local sophia esterel22 eth0 0 0 3 27
       local sophia esterel23 eth0 0 0 3 28
@@ -156,7 +195,7 @@ vlans:
       local sophia esterel26 eth0 0 0 3 32
       local sophia esterel27 eth0 0 0 3 33
       local sophia esterel28 eth0 0 0 3 34
-      local sophia esterel29 eth0 0 0 3 35
+      local sophia esterel29 eth2 0 0 3 35
       local sophia esterel30 eth0 0 0 3 39
       local sophia esterel31 eth0 0 0 3 40
       local sophia esterel32 eth0 0 0 3 44
@@ -169,6 +208,9 @@ vlans:
       local sophia esterel39 eth0 0 0 3 52
       local sophia esterel40 eth0 0 0 3 53
       local sophia esterel41 eth0 0 0 3 55
+      local sophia esterel42 eth0 0 0 3 56
+      local sophia esterel43 eth0 0 0 3 57
+      local sophia esterel44 eth0 0 0 3 58
       local sophia mercantour1 eth0 0 0 4 0
       local sophia mercantour2 eth0 0 0 4 16
       local sophia mercantour3 eth0 0 0 4 24
@@ -189,6 +231,7 @@ vlans:
       global lille chuc eth0 0 0 5 100
       global lille chuc eth1 0 0 5 150
       global grenoble troll eth0 0 0 6 0
+      global grenoble troll eth1 0 0 6 4
       global grenoble drac eth0 0 0 7 0
       global lyon sagittaire eth1 0 0 8 0
       global lyon taurus eth0 0 0 9 0
@@ -217,6 +260,8 @@ vlans:
       global rennes parasilo eth0 0 0 33 0
       global rennes parasilo eth1 0 0 33 100
       global grenoble servan eth0 0 0 35 0
+      global grenoble servan eth1 0 0 35 2
+      global grenoble servan eth2 0 0 35 4
       global grenoble servan fpga0 0 0 35 10
       global grenoble servan fpga1 0 0 35 20
       global rennes paradoxe eth0 0 0 36 0
@@ -246,7 +291,7 @@ vlans:
       global sophia esterel17 eth0 0 0 38 21
       global sophia esterel18 eth0 0 0 38 22
       global sophia esterel19 eth0 0 0 38 23
-      global sophia esterel20 eth0 0 0 38 24
+      global sophia esterel20 eth0 0 0 38 25
       global sophia esterel21 eth0 0 0 38 26
       global sophia esterel22 eth0 0 0 38 27
       global sophia esterel23 eth0 0 0 38 28
@@ -255,7 +300,7 @@ vlans:
       global sophia esterel26 eth0 0 0 38 32
       global sophia esterel27 eth0 0 0 38 33
       global sophia esterel28 eth0 0 0 38 34
-      global sophia esterel29 eth0 0 0 38 35
+      global sophia esterel29 eth2 0 0 38 35
       global sophia esterel30 eth0 0 0 38 39
       global sophia esterel31 eth0 0 0 38 40
       global sophia esterel32 eth0 0 0 38 44
@@ -268,11 +313,17 @@ vlans:
       global sophia esterel39 eth0 0 0 38 52
       global sophia esterel40 eth0 0 0 38 53
       global sophia esterel41 eth0 0 0 38 55
+      global sophia esterel42 eth0 0 0 38 56
+      global sophia esterel43 eth0 0 0 38 57
+      global sophia esterel44 eth0 0 0 38 58
       global sophia musa eth0 0 0 39 0
       global sophia uvb eth0 0 0 40 0
       global nancy gruss eth2 0 0 41 0
       global luxembourg petitprince eth0 0 0 46 0
       global luxembourg petitprince eth1 0 0 46 100
+      global luxembourg vianden eth0 0 0 47 0
+      global luxembourg vianden eth2 0 0 47 1
+      global luxembourg vianden eth3 0 0 47 2
       global nantes econome eth0 0 0 48 0
       global nantes ecotype eth0 0 0 49 0
       global nantes ecotype eth1 0 0 49 100
@@ -288,21 +339,85 @@ vlans:
       global rennes roazhon7 eth0 0 0 53 10
       global rennes roazhon8 eth0 0 0 53 20
       global rennes roazhon9 eth0 0 0 53 30
-      global grenoble kinovis eth0 0 0 54 0
-      global grenoble kinovis eth1 0 0 54 10
-      global grenoble kinovis eth2 0 0 54 20
-      global grenoble chartreuse2 eth0 0 0 55 0
+      global grenoble nessie eth0 0 0 54 0
+      global grenoble chartreuse1 eth0 0 0 55 0
+      global grenoble chartreuse2 eth0 0 0 55 4
+      global grenoble chartreuse3 eth0 0 0 55 8
+      global grenoble chartreuse4 eth0 0 0 55 12
+      global grenoble chartreuse5 eth0 0 0 55 16
+      global grenoble chartreuse6 eth0 0 0 55 24
+      global grenoble chartreuse7 eth0 0 0 55 28
+      global grenoble vercors1 eth0 0 0 56 0
+      global grenoble vercors2 eth0 0 0 56 2
+      global grenoble vercors3 eth0 0 0 56 4
+      global grenoble vercors4 eth0 0 0 56 6
+      global grenoble vercors5 eth0 0 0 56 9
+      global grenoble vercors6 eth0 0 0 56 10
+      global grenoble vercors7 eth0 0 0 56 12
+      global grenoble vercors8 eth0 0 0 56 14
+      global grenoble vercors9 eth0 0 0 56 16
+      global grenoble vercors10 eth0 0 0 56 17
+      global grenoble vercors11 eth0 0 0 56 19
+      global grenoble vercors12 eth0 0 0 56 21
+      global grenoble vercors13 eth0 0 0 56 22
+      global grenoble vercors14 eth0 0 0 56 23
+      global grenoble vercors15 eth0 0 0 56 28
+      global grenoble vercors16 eth0 0 0 56 32
+      global grenoble vercors17 eth0 0 0 56 34
+      global grenoble vercors18 eth0 0 0 56 37
+      global grenoble vercors19 eth0 0 0 56 39
+      global grenoble vercors20 eth0 0 0 56 40
+      global grenoble vercors21 eth0 0 0 56 43
+      global grenoble kinovis eth0 0 0 57 0
+      global grenoble kinovis eth1 0 0 57 6
+      global grenoble kinovis eth2 0 0 57 12
+      global louvain spirou eth0 0 0 58 0
+      global luxembourg larochette eth0 0 0 59 0
       routed grenoble yeti eth0 0 4 0 0
       routed grenoble dahu eth0 0 4 1 0
       routed grenoble troll eth0 0 4 2 0
+      routed grenoble troll eth1 0 4 2 4
       routed grenoble drac eth0 0 4 3 0
       routed grenoble servan eth0 0 4 4 0
+      routed grenoble servan eth1 0 4 4 2
+      routed grenoble servan eth2 0 4 4 4
       routed grenoble servan fpga0 0 4 4 10
       routed grenoble servan fpga1 0 4 4 20
       routed grenoble kinovis eth0 0 4 5 0
       routed grenoble kinovis eth1 0 4 5 10
       routed grenoble kinovis eth2 0 4 5 20
-      routed grenoble chartreuse2 eth0 0 4 6 0
+      routed grenoble nessie eth0 0 4 6 0
+      routed grenoble chartreuse1 eth0 0 4 7 0
+      routed grenoble chartreuse2 eth0 0 4 7 4
+      routed grenoble chartreuse3 eth0 0 4 7 8
+      routed grenoble chartreuse4 eth0 0 4 7 12
+      routed grenoble chartreuse5 eth0 0 4 7 16
+      routed grenoble chartreuse6 eth0 0 4 7 24
+      routed grenoble chartreuse7 eth0 0 4 7 28
+      routed grenoble vercors1 eth0 0 4 8 0
+      routed grenoble vercors2 eth0 0 4 8 2
+      routed grenoble vercors3 eth0 0 4 8 4
+      routed grenoble vercors4 eth0 0 4 8 6
+      routed grenoble vercors5 eth0 0 4 8 9
+      routed grenoble vercors6 eth0 0 4 8 10
+      routed grenoble vercors7 eth0 0 4 8 12
+      routed grenoble vercors8 eth0 0 4 8 14
+      routed grenoble vercors9 eth0 0 4 8 16
+      routed grenoble vercors10 eth0 0 4 8 17
+      routed grenoble vercors11 eth0 0 4 8 19
+      routed grenoble vercors12 eth0 0 4 8 21
+      routed grenoble vercors13 eth0 0 4 8 22
+      routed grenoble vercors14 eth0 0 4 8 23
+      routed grenoble vercors15 eth0 0 4 8 28
+      routed grenoble vercors16 eth0 0 4 8 32
+      routed grenoble vercors17 eth0 0 4 8 34
+      routed grenoble vercors18 eth0 0 4 8 37
+      routed grenoble vercors19 eth0 0 4 8 39
+      routed grenoble vercors20 eth0 0 4 8 40
+      routed grenoble vercors21 eth0 0 4 8 43
+      routed grenoble kinovis eth0 0 4 9 0
+      routed grenoble kinovis eth1 0 4 9 6
+      routed grenoble kinovis eth2 0 4 9 12
       routed lille chifflot eth0 0 8 4 0
       routed lille chifflot eth1 0 8 5 0
       routed lille chiclet eth0 0 8 6 0
@@ -372,7 +487,7 @@ vlans:
       routed sophia esterel17 eth0 0 32 3 21
       routed sophia esterel18 eth0 0 32 3 22
       routed sophia esterel19 eth0 0 32 3 23
-      routed sophia esterel20 eth0 0 32 3 24
+      routed sophia esterel20 eth0 0 32 3 25
       routed sophia esterel21 eth0 0 32 3 26
       routed sophia esterel22 eth0 0 32 3 27
       routed sophia esterel23 eth0 0 32 3 28
@@ -381,7 +496,7 @@ vlans:
       routed sophia esterel26 eth0 0 32 3 32
       routed sophia esterel27 eth0 0 32 3 33
       routed sophia esterel28 eth0 0 32 3 34
-      routed sophia esterel29 eth0 0 32 3 35
+      routed sophia esterel29 eth2 0 32 3 35
       routed sophia esterel30 eth0 0 32 3 39
       routed sophia esterel31 eth0 0 32 3 40
       routed sophia esterel32 eth0 0 32 3 44
@@ -394,6 +509,9 @@ vlans:
       routed sophia esterel39 eth0 0 32 3 52
       routed sophia esterel40 eth0 0 32 3 53
       routed sophia esterel41 eth0 0 32 3 55
+      routed sophia esterel42 eth0 0 32 3 56
+      routed sophia esterel43 eth0 0 32 3 57
+      routed sophia esterel44 eth0 0 32 3 58
       routed sophia mercantour1 eth0 0 32 4 0
       routed sophia mercantour2 eth0 0 32 4 16
       routed sophia mercantour3 eth0 0 32 4 24
@@ -403,6 +521,11 @@ vlans:
       routed sophia mercantour7 eth0 0 32 4 46
       routed luxembourg petitprince eth0 0 40 2 0
       routed luxembourg petitprince eth1 0 40 3 0
+      routed luxembourg vianden eth0 0 40 4 0
+      routed luxembourg vianden eth2 0 40 4 1
+      routed luxembourg vianden eth3 0 40 4 2
+      routed luxembourg larochette eth0 0 40 5 0
       routed nantes econome eth0 0 44 0 0
       routed nantes ecotype eth0 0 44 1 0
       routed nantes ecotype eth1 0 44 2 0
+      routed louvain spirou eth0 0 48 0 0

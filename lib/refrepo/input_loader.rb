@@ -120,15 +120,18 @@ def add_node_pdu_mapping(h)
       end
 
       # Merge pdu information from pdus/ hierachy into node information
-      pdu.fetch("ports", {}).each do |port_uid, node_uid|
-        node_uid = node_uid["uid"] if node_uid.is_a?(Hash)
-        node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
-        next if not node
-        node["pdu"] ||= []
-        if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_uid}
-          raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_uid} description defined both in clusters/ and pdus/ hierarchy"
+      pdu.fetch("ports", {}).each do |port_uid, nodes_uid|
+        nodes_uid = nodes_uid["uid"] if nodes_uid.is_a?(Hash)
+        nodes_uid = [nodes_uid] if nodes_uid.is_a?(String)
+        nodes_uid.each do |node_uid|
+          node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
+          next if not node
+          node["pdu"] ||= []
+          if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_uid}
+            raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_uid} description defined both in clusters/ and pdus/ hierarchy"
+          end
+          node["pdu"].append({"uid" => pdu_uid, "port" => port_uid})
         end
-        node["pdu"].append({"uid" => pdu_uid, "port" => port_uid})
       end
 
       # Merge pdu information from node description in pdus/ hierachy
@@ -137,7 +140,13 @@ def add_node_pdu_mapping(h)
           raise "ERROR: Port #{port_uid} of #{pdu_uid}.#{site_uid} is defined both in PDU description and in node #{node_uid} description"
         end
         pdu["ports"] ||= {}
-        pdu["ports"][port_uid] = node_uid
+        if not pdu["ports"].key?(port_uid)
+          pdu["ports"][port_uid] = node_uid
+        elsif pdu["ports"].key?(port_uid) and pdu["ports"]["port_uid"].is_a?(String)
+          pdu["ports"][port_uid] = [pdu["ports"][port_uid], node_uid]
+        else
+          pdu["ports"][port_uid].append(node_uid)
+        end
       end
     end
   end
@@ -182,12 +191,15 @@ def add_wattmetre_mapping(h)
             pdu["ports"][port_num] = node_uid
 
             # Add mapping to node description under clusters/ hierarchy
-            node = site["clusters"].fetch(node_uid.split("-")[0], {}).fetch("nodes", {}).fetch(node_uid, nil)
-            node["pdu"] ||= []
-            if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_num}
-              raise "ERROR: Node #{node_uid}.#{site_uid} has PDU #{pdu_num} description defined both in clusters/ and pdus/ hierarchy"
+            nodes_uid = node_uid.is_a?(String) ? [node_uid] : node_uid
+            nodes_uid.each do |nnode_uid|
+              node = site["clusters"].fetch(nnode_uid.split("-")[0], {}).fetch("nodes", {}).fetch(nnode_uid, nil)
+              node["pdu"] ||= []
+              if node["pdu"].any?{|p| p["uid"] == pdu_uid && p["port"] == port_num}
+                raise "ERROR: Node #{nnode_uid}.#{site_uid} has PDU #{pdu_num} description defined both in clusters/ and pdus/ hierarchy"
+              end
+              node["pdu"].append({"uid" => pdu_uid, "port" => port_num, "kind" => "wattmetre-only"})
             end
-            node["pdu"].append({"uid" => pdu_uid, "port" => port_num, "kind" => "wattmetre-only"})
           end
         end
       end
@@ -364,8 +376,8 @@ def net_switch_port_lookup(site, node_uid, interface='')
           switch_remote_port = lc["port"] || ""
           switch_remote_uid = port
         end
-        if switch_remote_uid =~ /([a-z]*-[0-9]*)-(.*)/
-          n, p = switch_remote_uid.match(/([a-z]*-[0-9]*)-(.*)/).captures
+        if switch_remote_uid =~ /([a-z]+[0-9]*-[0-9]*)-(.*)/
+          n, p = switch_remote_uid.match(/([a-z]+[0-9]*-[0-9]*)-(.*)/).captures
           switch_remote_uid = n
           switch_remote_port = p
         end
@@ -491,7 +503,7 @@ def add_ipv4(h)
             if_kind_offset = 0
           end
           if not iface_offsets.has_key?(k)
-            raise "Missing IPv4 information for #{k}"
+            raise "Missing IPv4 information for #{k} (is IP defined in ipv4.yaml?)"
           end
           ip = IPAddress::IPv4::parse_u32(base + sites_offsets[site_uid] + iface_offsets[k] + node_id + if_kind_offset).to_s
           a = [ site_uid, node_uid, iface ]
@@ -665,6 +677,10 @@ def add_pdu_metrics(h)
       # remove any PDU metrics defined in cluster
       cluster['metrics'] = cluster.fetch('metrics', []).reject {|m| m['name'] =~ /(wattmetre_power_watt|pdu_outlet_power_watt)/ }
 
+      # Do not add metric to cluster if PDU/wattmetre port is connected to several nodes at a time (shared PSU case)
+      nodes_pdu_ports = cluster['nodes'].select{|_, v| v['status'] != 'retired'}.each_value.map{|node| node["pdu"]}.flatten
+      next if nodes_pdu_ports.uniq.length != nodes_pdu_ports.length # nodes pdu_ports has duplicate, meaning the a port is shared by several nodes
+
       # get the list of "wattmetre-only" used by the cluster
       cluster_wm = cluster['nodes'].each_value.map{|node| node.fetch('pdu', [])}.flatten.select{|p| p.fetch('kind', '') == 'wattmetre-only'}.map{|p| p['uid']}.uniq
 
@@ -734,7 +750,7 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
     return 4
   when "Sandy Bridge", "Ivy Bridge", "Zen", "Vulcan"
     return 8
-  when "Haswell", "Broadwell", "Zen 2", "Zen 3"
+  when "Haswell", "Broadwell", "Zen 2", "Zen 3", "Sierra Forest"
     return 16
   when "Ice Lake-SP"
     return 32
@@ -742,9 +758,9 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
     return 48
   when "Cascade Lake-SP", "Skylake-SP"
     case cpu_name
-    when /Silver 4110/, /Silver 4114/, /Silver 4214/, /Silver 4216/, /Gold 5218/, /Gold 5220/, /Gold 5115/, /Gold 5118/, /Gold 5120/, /Gold 5220R/
+    when /Silver 4110/, /Silver 4114/, /Silver 4214/, /Silver 4215/, /Silver 4216/, /Gold 5218/, /Gold 5220/, /Gold 5115/, /Gold 5118/, /Gold 5120/, /Gold 5220R/
       return 16
-    when /Gold 6126/, /Gold 6130/, /Gold 6142/, /Gold 6154/, /Gold 6240/, /Gold 6248/, /Gold 6254/, /Gold 6240L/
+    when /Gold 6126/, /Gold 6130/, /Gold 6142/, /Gold 6148/, /Gold 6154/, /Gold 6240/, /Gold 6248/, /Gold 6254/, /Gold 6240L/, /Gold 6230R/, /Gold 6238R/
       return 32
     end
     raise "Error: unknown CPU flop per cycle for #{cpu_name} (cluster #{cluster_uid}), cannot compute flops"
@@ -757,6 +773,8 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
   # FIXME: Find Grace Hopper FlopPerCycle
   when /Grace/
     return 8
+  when "Emerald Rapids"
+    return 32
   when "Sapphire Rapids"
     return 32
   end

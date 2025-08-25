@@ -232,7 +232,7 @@ def all_nodesets
   nodesets = []
   site_data_hierarchy['sites'].each do |_site, site_details|
     site_details.fetch('clusters', {}).each do |_cluster, cluster_details|
-      next unless cluster_details['queues'].include?('production')
+      next unless cluster_details['queues'].include?('abaca') ||  cluster_details['queues'].include?('production')
 
       nodesets.concat(cluster_details['nodes'].map { |_, node_details| node_details['nodeset'] })
     end

@@ -1,0 +1,214 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 16,
+    "nb_procs": 2,
+    "nb_threads": 32,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "02/21/2024",
+    "vendor": "Dell Inc.",
+    "version": "2.19.0"
+  },
+  "bmc_version": "2.86.86.86",
+  "chassis": {
+    "manufactured_at": "2016-03-28",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6320",
+    "serial": "16PFWC2",
+    "warranty_end": "2019-03-28"
+  },
+  "exotic": false,
+  "kavlan": {
+    "eth0": {
+      "kavlan-1": "192.168.198.12",
+      "kavlan-11": "10.7.247.12",
+      "kavlan-12": "10.11.247.12",
+      "kavlan-13": "10.15.247.12",
+      "kavlan-14": "10.19.247.12",
+      "kavlan-16": "10.27.247.12",
+      "kavlan-17": "10.31.247.12",
+      "kavlan-18": "10.35.247.12",
+      "kavlan-2": "192.168.214.12",
+      "kavlan-20": "10.43.247.12",
+      "kavlan-21": "10.47.247.12",
+      "kavlan-22": "10.51.247.12",
+      "kavlan-3": "192.168.230.12",
+      "kavlan-4": "10.4.7.12",
+      "kavlan-5": "10.4.71.12",
+      "kavlan-6": "10.4.135.12",
+      "kavlan-7": "10.4.199.12",
+      "kavlan-8": "10.5.7.12",
+      "kavlan-9": "10.5.71.12"
+    }
+  },
+  "kavlan6": {
+    "eth0": {
+      "kavlan-1": "2001:660:4406:180:b::c",
+      "kavlan-11": "2001:660:4406:1a0:10b::c",
+      "kavlan-12": "2001:660:4406:2a0:10b::c",
+      "kavlan-13": "2001:660:4406:4a0:10b::c",
+      "kavlan-14": "2001:660:4406:5a0:10b::c",
+      "kavlan-16": "2001:660:4406:7a0:10b::c",
+      "kavlan-17": "2001:660:4406:9a0:10b::c",
+      "kavlan-18": "2001:660:4406:8a0:10b::c",
+      "kavlan-2": "2001:660:4406:181:b::c",
+      "kavlan-20": "2001:660:4406:3a0:10b::c",
+      "kavlan-21": "2001:660:4406:6a0:10b::c",
+      "kavlan-22": "2001:660:4406:ba0:10b::c",
+      "kavlan-3": "2001:660:4406:182:b::c",
+      "kavlan-4": "2001:660:4406:190:b::c",
+      "kavlan-5": "2001:660:4406:191:b::c",
+      "kavlan-6": "2001:660:4406:192:b::c",
+      "kavlan-7": "2001:660:4406:193:b::c",
+      "kavlan-8": "2001:660:4406:194:b::c",
+      "kavlan-9": "2001:660:4406:195:b::c"
+    }
+  },
+  "main_memory": {
+    "ram_size": 68719476736
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "firmware_version": "0x8000095e, 18.5.18",
+      "interface": "Ethernet",
+      "ip": "172.16.26.12",
+      "ip6": "2001:660:4406:100:b::c",
+      "kavlan": true,
+      "mac": "00:8c:fa:fe:9b:06",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "chartreuse3-4.grenoble.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "switch": "imag-1b-F3-prod-01",
+      "switch_port": "1/1/11",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "firmware_version": "0x8000095e, 18.5.18",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "00:8c:fa:fe:9b:08",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.26.12",
+      "kavlan": false,
+      "mac": "00:8c:fa:fe:9b:0a",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "chartreuse3-4-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "nodeset": "chartreuse3",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 41600000000,
+    "node_flops": 665600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 20971520,
+    "clock_speed": 2600000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Haswell",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2640 v3 @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "E5-2640 v3"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202007300948,
+    "postinstall-version": "1.2025081410",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x5000c5008e80589b",
+      "by_path": "/dev/disk/by-path/pci-0000:02:00.0-sas-phy0-lun-0",
+      "firmware_version": "IS06",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "ST1200MM0007",
+      "size": 1200243695616,
+      "storage": "HDD",
+      "vendor": "Seagate"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 604800,
+    "queues": [
+      "abaca",
+      "admin",
+      "production"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "chartreuse3-4"
+}

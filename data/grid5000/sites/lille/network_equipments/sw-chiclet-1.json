@@ -1,11 +1,11 @@
 {
   "backplane_bps": 36000000000000,
   "channels": {
-    "port-channel1": {
-      "kind": "switch",
-      "port": "port-channel1",
-      "rate": 200000000000,
-      "uid": "sw-chiclet-2"
+    "port-channel2": {
+      "kind": "server",
+      "port": "port-channel2",
+      "rate": 50000000000,
+      "uid": "pve-3"
     }
   },
   "ip": "172.17.47.221",
@@ -227,34 +227,26 @@
         {
         },
         {
+          "kind": "router",
+          "rate": 10000000000,
+          "snmp_name": "Ethernet1/44",
+          "uid": "gw"
         },
         {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
+          "kind": "other",
+          "rate": 1000000000,
+          "snmp_name": "Ethernet1/45",
+          "uid": "labo"
         },
         {
           "kind": "channel",
-          "rate": 100000000000,
-          "snmp_name": "Ethernet1/53",
-          "uid": "port-channel1"
+          "snmp_name": "Ethernet1/46",
+          "uid": "port-channel2"
         },
         {
           "kind": "channel",
-          "rate": 100000000000,
-          "snmp_name": "Ethernet1/54",
-          "uid": "port-channel1"
+          "snmp_name": "Ethernet1/47",
+          "uid": "port-channel2"
         }
       ],
       "rate": 25000000000,

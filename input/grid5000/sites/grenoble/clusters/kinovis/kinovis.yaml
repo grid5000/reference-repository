@@ -6,7 +6,7 @@ boot_type: uefi
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   kinovis-[1-6]:
     chassis:
@@ -38,11 +38,25 @@ nodes:
         mountable: true
         mounted: false
     storage_devices:
+      pci-0000:3b:00.0-scsi-0:3:104:0:
+        interface: RAID
+      pci-0000:3b:00.0-scsi-0:3:105:0:
+        interface: RAID
+      pci-0000:3b:00.0-scsi-0:3:106:0:
+        interface: RAID
+      pci-0000:3b:00.0-scsi-0:3:107:0:
+        interface: RAID
+      pci-0000:3b:00.0-scsi-0:3:108:0:
+        interface: RAID
+      pci-0000:3b:00.0-scsi-0:3:109:0:
+        interface: RAID
+      pci-0000:3b:00.0-scsi-0:3:110:0:
+        interface: RAID
       pci-0000:3b:00.0-scsi-0:3:111:0:
-        id: disk0
-        interface: SATA
+        interface: RAID
     software:
       standard-environment: debian11-x64-std
     management_tools:
       bmc_vendor_tool: ipmitool
     nodeset: kinovis
+

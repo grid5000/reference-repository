@@ -74,15 +74,14 @@ sw-1:
           uid: sw-admin6
           kind: switch
           rate: 1000000000
-        48:
-          uid: sw-chiclet-2
-          kind: switch
+          trunk: false
         49:
           uid: lag2
           kind: channel
         50:
           uid: lag2
           kind: channel
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag2:
       port: port-channel1

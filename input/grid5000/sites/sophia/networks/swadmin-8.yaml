@@ -1,0 +1,42 @@
+---
+swadmin-8:
+  model: Aruba 2930F
+  warranty: 2029-11
+  kind: switch
+  managed_by_us: true
+  site: sophia
+  ip: 172.17.143.217
+  snmp_community: public
+  linecards:
+    1:
+      snmp_pattern: "%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        1:
+          uid: esterel19-1-bmc
+          kind: other
+        2:
+          uid: esterel19-2-bmc
+          kind: other
+        4:
+          uid: esterel21-1-bmc
+          kind: other
+        5:
+          uid: esterel29-1-bmc
+          kind: other
+        6:
+          uid: esterel29-2-bmc
+          kind: other
+        7:
+          uid: esterel29-3-bmc
+          kind: other
+        8:
+          uid: esterel29-4-bmc
+          kind: other
+        25:
+          uid: sw-1
+          kind: switch
+          rate: 10000000000
+          trunk: false

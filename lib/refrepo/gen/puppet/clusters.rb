@@ -23,7 +23,16 @@ def generate_puppet_clusters(options)
                 hiera[s_uid][c_uid] = {}
             end
             _, f_node = c_hash["nodes"].first
-            queue = f_node['supported_job_types']['queues'].select{|q| q != 'admin'}[0]
+            queues = f_node['supported_job_types']['queues'].reject{|q| q == 'admin'}
+            queue = if queues.include?('abaca') && queues.include?('default')
+              raise "abaca and default queue are exclusive for #{c_uid}"
+            elsif queues.include?('abaca')
+              'production'
+            elsif queues.size == 1
+              queues.first
+            else
+              raise "Cannot find queue for #{c_uid}. Queues: #{queues.inspect}"
+            end
             disk_reservation = f_node['storage_devices'].filter{|d| d.key?('reservation')}.length > 0
             gpu = f_node.key?('gpu_devices')
             if ! f_node.key?('chassis')

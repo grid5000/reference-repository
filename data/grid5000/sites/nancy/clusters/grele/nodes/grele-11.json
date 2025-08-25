@@ -69,6 +69,7 @@
       "kavlan-2": "192.168.219.11",
       "kavlan-20": "10.43.211.11",
       "kavlan-21": "10.47.211.11",
+      "kavlan-22": "10.51.211.11",
       "kavlan-3": "192.168.235.11",
       "kavlan-4": "10.16.11.11",
       "kavlan-5": "10.16.75.11",
@@ -91,6 +92,7 @@
       "kavlan-2": "2001:660:4406:581:b::b",
       "kavlan-20": "2001:660:4406:3a0:50b::b",
       "kavlan-21": "2001:660:4406:6a0:50b::b",
+      "kavlan-22": "2001:660:4406:ba0:50b::b",
       "kavlan-3": "2001:660:4406:582:b::b",
       "kavlan-4": "2001:660:4406:590:b::b",
       "kavlan-5": "2001:660:4406:591:b::b",
@@ -171,7 +173,7 @@
       "rate": 10000000000,
       "sriov": true,
       "sriov_totalvfs": 63,
-      "switch": "gw",
+      "switch": "sgravillon2",
       "switch_port": "Ethernet7/11",
       "vendor": "Intel"
     },
@@ -229,20 +231,17 @@
     {
       "device": "ib0",
       "driver": "hfi1",
-      "enabled": true,
+      "enabled": false,
       "firmware_version": "1.27.0",
       "guid": "0x00117501010dd478",
       "interface": "Omni-Path",
-      "ip": "172.18.74.11",
       "kavlan": false,
       "mac": "00:11:75:01:01:0d:d4:78",
       "management": false,
       "model": "Omni-Path HFI Silicon 100 Series [discrete]",
-      "mountable": true,
-      "mounted": true,
+      "mountable": false,
+      "mounted": false,
       "name": "ib0",
-      "netmask": "255.255.255.0",
-      "network_address": "grele-11-ib0.nancy.grid5000.fr",
       "rate": 100000000000,
       "vendor": "Intel"
     },
@@ -271,11 +270,11 @@
   "pdu": [
     {
       "port": 21,
-      "uid": "grimani-pdu1"
+      "uid": "gruss-pdu1"
     },
     {
       "port": 21,
-      "uid": "grimani-pdu2"
+      "uid": "gruss-pdu2"
     }
   ],
   "performance": {
@@ -292,7 +291,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Broadwell",
-    "microcode": "0xb000040",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz",
     "vendor": "Intel",
@@ -301,7 +299,7 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025081410",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
@@ -333,6 +331,7 @@
     "deploy": true,
     "max_walltime": 604800,
     "queues": [
+      "abaca",
       "admin",
       "production"
     ],

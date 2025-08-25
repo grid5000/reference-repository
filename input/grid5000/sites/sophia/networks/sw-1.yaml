@@ -1,0 +1,55 @@
+---
+sw-1:
+  model: Aruba 6300M
+  warranty: 2032-06
+  kind: switch
+  managed_by_us: true
+  site: sophia
+  ip: 172.17.143.249
+  snmp_community: public
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        21:
+          uid: esterel19-1
+        22:
+          uid: esterel19-2
+        24:
+          uid: esterel21-1
+        25:
+          uid: esterel29-1-eth2
+        26:
+          uid: esterel29-2-eth2
+        27:
+          uid: esterel29-3-eth2
+        28:
+          uid: esterel29-4-eth2
+        29:
+          uid: esterel15-1
+        30:
+          uid: esterel34-1
+        31:
+          uid: esterel35-1
+        32:
+          uid: esterel35-2
+        33:
+          uid: esterel8-1
+        34:
+          uid: esterel9-1
+        50:
+          uid: sw-9
+          kind: switch
+          rate: 10000000000
+        51:
+          uid: gw
+          kind: router
+          rate: 10000000000
+        52:
+          uid: swadmin-8
+          kind: switch
+          rate: 10000000000
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'

@@ -34,8 +34,8 @@ def yaml_input_schema_validator(options)
     end
 
     site.fetch("clusters", {}).each do |cluster_uid, cluster|
-      next if clusters and not clusters.empty? and not clusters.include?(cluster_uid)      
-      
+      next if clusters and not clusters.empty? and not clusters.include?(cluster_uid)
+
       r &= run_validator(cluster_uid, cluster, schema_cluster) #
 
       cluster["nodes"].each do |node_uid, node|

@@ -22,24 +22,25 @@
   "exotic": false,
   "kavlan": {
     "eth0": {
-      "kavlan-1": "192.168.198.2",
-      "kavlan-11": "10.7.247.2",
-      "kavlan-12": "10.11.247.2",
-      "kavlan-13": "10.15.247.2",
-      "kavlan-14": "10.19.247.2",
-      "kavlan-16": "10.27.247.2",
-      "kavlan-17": "10.31.247.2",
-      "kavlan-18": "10.35.247.2",
-      "kavlan-2": "192.168.214.2",
-      "kavlan-20": "10.43.247.2",
-      "kavlan-21": "10.47.247.2",
-      "kavlan-3": "192.168.230.2",
-      "kavlan-4": "10.4.6.2",
-      "kavlan-5": "10.4.70.2",
-      "kavlan-6": "10.4.134.2",
-      "kavlan-7": "10.4.198.2",
-      "kavlan-8": "10.5.6.2",
-      "kavlan-9": "10.5.70.2"
+      "kavlan-1": "192.168.198.6",
+      "kavlan-11": "10.7.247.6",
+      "kavlan-12": "10.11.247.6",
+      "kavlan-13": "10.15.247.6",
+      "kavlan-14": "10.19.247.6",
+      "kavlan-16": "10.27.247.6",
+      "kavlan-17": "10.31.247.6",
+      "kavlan-18": "10.35.247.6",
+      "kavlan-2": "192.168.214.6",
+      "kavlan-20": "10.43.247.6",
+      "kavlan-21": "10.47.247.6",
+      "kavlan-22": "10.51.247.6",
+      "kavlan-3": "192.168.230.6",
+      "kavlan-4": "10.4.7.6",
+      "kavlan-5": "10.4.71.6",
+      "kavlan-6": "10.4.135.6",
+      "kavlan-7": "10.4.199.6",
+      "kavlan-8": "10.5.7.6",
+      "kavlan-9": "10.5.71.6"
     }
   },
   "kavlan6": {
@@ -55,6 +56,7 @@
       "kavlan-2": "2001:660:4406:181:b::6",
       "kavlan-20": "2001:660:4406:3a0:10b::6",
       "kavlan-21": "2001:660:4406:6a0:10b::6",
+      "kavlan-22": "2001:660:4406:ba0:10b::6",
       "kavlan-3": "2001:660:4406:182:b::6",
       "kavlan-4": "2001:660:4406:190:b::6",
       "kavlan-5": "2001:660:4406:191:b::6",
@@ -172,7 +174,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Broadwell",
-    "microcode": "0xb000040",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz",
     "vendor": "Intel",
@@ -181,7 +182,7 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025081410",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
@@ -200,10 +201,11 @@
   "supported_job_types": {
     "besteffort": true,
     "deploy": true,
-    "max_walltime": 0,
+    "max_walltime": 172800,
     "queues": [
+      "abaca",
       "admin",
-      "testing"
+      "production"
     ],
     "virtual": "ivt"
   },

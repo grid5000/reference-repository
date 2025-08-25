@@ -41,6 +41,10 @@ def global_ignore_keys
     ~pdu[5]
     ~pdu[6]
     ~pdu[7]
+    ~pdu[8]
+    ~pdu[9]
+    ~pdu[10]
+    ~pdu[11]
 
     ~nodeset
 
@@ -75,7 +79,7 @@ eos
     keys = ignore_netkeys.gsub('.eth.', ".eth#{eth}.").gsub("\n", " ").split(" ")
     ignore_keys.push(* keys)
 
-    (1..21).each { |kavlan|
+    (1..22).each { |kavlan|
       ignore_keys << "~kavlan.eth#{eth}.kavlan-#{kavlan}"
       ignore_keys << "~kavlan6.eth#{eth}.kavlan-#{kavlan}"
     }

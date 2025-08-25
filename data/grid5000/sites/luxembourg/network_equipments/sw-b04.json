@@ -15,12 +15,66 @@
     },
     {
       "backplane_bps": 3600000000000,
-      "kavlan_pattern": "%PORT%",
+      "kavlan_pattern": "Ethernet%LINECARD%/%PORT%",
       "kind": "node",
       "ports": [
         {
         },
         {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "Ethernet1/1",
+          "uid": "larochette-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "Ethernet1/2",
+          "uid": "larochette-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "Ethernet1/3",
+          "uid": "larochette-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "Ethernet1/4",
+          "uid": "larochette-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "Ethernet1/5",
+          "uid": "larochette-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "Ethernet1/6",
+          "uid": "larochette-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "snmp_name": "Ethernet1/7",
+          "uid": "larochette-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "rate": 10000000000,
+          "snmp_name": "Ethernet1/8",
+          "uid": "vianden-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth3",
+          "rate": 10000000000,
+          "snmp_name": "Ethernet1/9",
+          "uid": "vianden-1"
         },
         {
         },
@@ -107,22 +161,11 @@
         {
         },
         {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 100000000000,
+          "snmp_name": "Ethernet1/52",
+          "uid": "vianden-1"
         },
         {
           "kind": "channel",

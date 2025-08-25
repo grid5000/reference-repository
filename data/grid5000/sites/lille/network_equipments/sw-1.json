@@ -11,9 +11,11 @@
       "kind": "router",
       "port": "port-channel1",
       "rate": 200000000000,
+      "ssh_name": "lag 2",
       "uid": "gw"
     }
   },
+  "channels_ssh_pattern": "#{/\\D+/.match(\"%CHANNEL%\")} #{/\\d+/.match(\"%CHANNEL%\")}",
   "ip": "172.17.47.224",
   "kind": "switch",
   "linecards": [
@@ -225,12 +227,10 @@
           "kind": "switch",
           "rate": 1000000000,
           "snmp_name": "1/1/47",
+          "trunk": false,
           "uid": "sw-admin6"
         },
         {
-          "kind": "switch",
-          "snmp_name": "1/1/48",
-          "uid": "sw-chiclet-2"
         },
         {
           "kind": "channel",

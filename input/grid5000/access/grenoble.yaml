@@ -1,0 +1,33 @@
+# This is an input file of reference-repository.git/generators/puppet/accesses.rb
+---
+
+chartreuse2: &inria-grenoble
+    p1: ['@inria_grenoble_group', '@admin']
+    p3: ['@inria_group']
+    p4: ['@other_groups_with_access']
+
+chartreuse3:
+  p1: [beagle, '@admin']
+  besteffort: ['@inria_group', '@other_groups_with_access']
+
+chartreuse6:
+  p1: [thoth, '@admin']
+  besteffort: ['@inria_group', '@other_groups_with_access']
+
+vercors2: &robotlearn-exclusive # ROBOTLEARN was formerly named PERCEPTION
+    p1: [robotlearn, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+vercors3: *robotlearn-exclusive
+vercors4: *robotlearn-exclusive
+
+kinovis:
+  p1: [kinovis, '@admin']
+  p2: [morpheo]
+  besteffort: ['@inria_group', '@other_groups_with_access']
+
+vercors8: &morpheo
+  p1: [morpheo, '@admin']
+  besteffort: ['@inria_group', '@other_groups_with_access']
+
+vercors7: *morpheo

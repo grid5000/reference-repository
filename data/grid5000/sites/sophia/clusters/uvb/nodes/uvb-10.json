@@ -33,6 +33,7 @@
       "kavlan-2": "192.168.209.10",
       "kavlan-20": "10.43.232.10",
       "kavlan-21": "10.47.232.10",
+      "kavlan-22": "10.51.232.10",
       "kavlan-3": "192.168.225.10",
       "kavlan-4": "10.32.1.10",
       "kavlan-5": "10.32.65.10",
@@ -55,6 +56,7 @@
       "kavlan-2": "2001:660:4406:881:5::a",
       "kavlan-20": "2001:660:4406:3a0:805::a",
       "kavlan-21": "2001:660:4406:6a0:805::a",
+      "kavlan-22": "2001:660:4406:ba0:805::a",
       "kavlan-3": "2001:660:4406:882:5::a",
       "kavlan-4": "2001:660:4406:890:5::a",
       "kavlan-5": "2001:660:4406:891:5::a",
@@ -194,7 +196,7 @@
       "name": "ib0",
       "netmask": "255.255.240.0",
       "network_address": "uvb-10-ib0.sophia.grid5000.fr",
-      "rate": 40000000000,
+      "rate": 10000000000,
       "vendor": "Mellanox Technologies"
     },
     {
@@ -250,7 +252,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Westmere",
-    "microcode": "0x1f",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
     "vendor": "Intel",
@@ -259,7 +260,7 @@
   "redfish": false,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025081410",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
@@ -280,8 +281,8 @@
     "deploy": true,
     "max_walltime": 0,
     "queues": [
-      "default",
-      "admin"
+      "admin",
+      "default"
     ],
     "virtual": "ivt"
   },

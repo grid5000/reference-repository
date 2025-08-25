@@ -5,11 +5,6 @@ nat:
   network_adapters:
     default:
       ip: 172.16.31.100
-mail:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.31.125
 fgrenoble:
   kind: virtual
   alias:
@@ -29,11 +24,6 @@ kadeploy:
       ip: 172.16.31.102
     adm:
       ip: 172.17.31.102
-mysql:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.31.103
 oar:
   kind: virtual
   alias:
@@ -42,11 +32,6 @@ oar:
   network_adapters:
     default:
       ip: 172.16.31.104
-www:
-  kind: virtual
-  network_adapters:
-    default:
-      ip: 172.16.31.105
 api-proxy:
   kind: virtual
   network_adapters:
@@ -129,20 +114,11 @@ kadeploy-devel:
       ip: 172.16.31.124
     adm:
       ip: 172.17.31.124
-mu2:
-  kind: virtual
-  alias:
-  - digitalis
-  network_adapters:
-    default:
-      ip: 172.16.31.152
-    adm:
-      ip: 172.17.31.152
-supervision2:
+mail:
   kind: virtual
   network_adapters:
     default:
-      ip: 172.16.31.156
+      ip: 172.16.31.125
 kwollect:
   kind: virtual
   network_adapters:
@@ -158,8 +134,23 @@ kavlan-agent-devel:
   network_adapters:
     default:
       ip: 172.16.31.129
+kavlan-agent:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.31.130
+kavlan-control:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.31.131
 backupg5k:
   kind: virtual
   network_adapters:
     default:
       ip: 172.16.31.144
+supervision2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.31.156

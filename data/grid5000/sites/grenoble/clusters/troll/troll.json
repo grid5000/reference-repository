@@ -449,11 +449,99 @@
       "source": {
         "protocol": "network_equipment"
       }
+    },
+    {
+      "description": "Input byte counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input packet counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_packets_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output packet counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_packets_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_packets_error_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_packets_error_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
     }
   ],
   "model": "Dell PowerEdge R640",
   "nodes_count": 4,
-  "nodes_description": "2 CPUs Intel Xeon Gold 5218, 16 cores/CPU, 384GB RAM, 1536GB PMEM, 447GB SSD, 1490GB SSD, 1 x 25Gb Ethernet, 1 x 100Gb Omni-Path",
+  "nodes_description": "2 CPUs Intel Xeon Gold 5218, 16 cores/CPU, 384GB RAM, 1536GB PMEM, 447GB SSD, 1490GB SSD, 2 x 25Gb Ethernet, 1 x 100Gb Omni-Path",
   "priority": 201911,
   "queues": [
     "admin",

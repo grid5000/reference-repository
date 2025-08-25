@@ -131,8 +131,8 @@
       "rate": 25000000000,
       "sriov": true,
       "sriov_totalvfs": 128,
-      "switch": "gw",
-      "switch_port": "Ethernet9",
+      "switch": "sw-core",
+      "switch_port": "Ethernet7",
       "vendor": "Intel"
     },
     {
@@ -155,24 +155,18 @@
     {
       "device": "eth2",
       "driver": "ice",
-      "enabled": true,
+      "enabled": false,
       "firmware_version": "4.30 0x8001af35 1.3429.0",
       "interface": "Ethernet",
-      "ip": "172.16.160.22",
-      "ip6": "2001:660:4406:a00:1:1:0:2",
       "kavlan": false,
       "mac": "6c:fe:54:47:2f:48",
       "management": false,
       "model": "Ethernet Controller E810-C for SFP",
-      "mountable": true,
+      "mountable": false,
       "mounted": false,
       "name": "ens1f0",
-      "network_address": "fleckenstein-2-eth2.strasbourg.grid5000.fr",
-      "rate": 25000000000,
       "sriov": true,
       "sriov_totalvfs": 64,
-      "switch": "gw",
-      "switch_port": "Ethernet11",
       "vendor": "Intel"
     },
     {
@@ -188,7 +182,6 @@
       "mountable": false,
       "mounted": false,
       "name": "ens1f1",
-      "rate": 25000000000,
       "sriov": true,
       "sriov_totalvfs": 64,
       "vendor": "Intel"
@@ -230,18 +223,24 @@
     {
       "device": "eth6",
       "driver": "mlx5_core",
-      "enabled": false,
+      "enabled": true,
       "firmware_version": "22.32.2004 (MT_0000000437)",
       "interface": "Ethernet",
+      "ip": "172.16.160.62",
+      "ip6": "2001:660:4406:a00:1:1:0:2",
       "kavlan": false,
       "mac": "88:e9:a4:71:19:48",
       "management": false,
       "model": "MT2892 Family [ConnectX-6 Dx]",
-      "mountable": false,
+      "mountable": true,
       "mounted": false,
       "name": "ens2f0np0",
+      "network_address": "fleckenstein-2-eth6.strasbourg.grid5000.fr",
+      "rate": 100000000000,
       "sriov": true,
       "sriov_totalvfs": 8,
+      "switch": "sw-core",
+      "switch_port": "Ethernet20",
       "vendor": "Mellanox Technologies"
     },
     {
@@ -297,7 +296,6 @@
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Ice Lake-SP",
-    "microcode": "0xd0003e7",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz",
     "vendor": "Intel",
@@ -306,7 +304,7 @@
   "redfish": true,
   "software": {
     "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025021810",
+    "postinstall-version": "1.2025081410",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [

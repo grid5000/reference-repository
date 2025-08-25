@@ -13,36 +13,6 @@ digsed:
     bmc:
       ip: 172.17.30.4
 
-dighyp1:
-  kind: physical
-  alias: []
-  warranty: 2024-10-19
-  serial: 5SS15M2
-  network_adapters:
-    default:
-      ip: 172.16.31.7
-      mac: D0:94:66:1E:38:48
-    adm:
-      ip: 172.17.31.7
-    bmc:
-      ip: 172.17.30.7
-      mac: D0:94:66:1E:38:4C
-
-dighyp2:
-  kind: physical
-  alias: []
-  warranty: 2024-10-19
-  serial: 5SQY4M2
-  network_adapters:
-    default:
-      ip: 172.16.31.8
-      mac: D0:94:66:1E:32:43
-    adm:
-      ip: 172.17.31.8
-    bmc:
-      ip: 172.17.30.8
-      mac: D0:94:66:1E:32:47
-
 digwatt:
   kind: physical
   warranty: 2023-08-28
@@ -54,22 +24,9 @@ digwatt:
       mac: F8:F2:1E:23:EF:20
     bmc:
       ip: 172.17.30.9
+      mac: 50:9A:4C:99:C4:55
     adm:
       ip: 172.17.31.9
-
-dignfs:
-  kind: physical
-  alias: [storage1-old]
-  warranty: 2025-10-06
-  serial: 57JV173
-  network_adapters:
-    default:
-      ip: 172.16.31.12
-    bmc:
-      ip: 172.17.30.12
-      mac: 2C:EA:7F:42:45:35
-    adm:
-      ip: 172.17.31.12
 
 pve-1:
   kind: physical
@@ -157,3 +114,24 @@ srv-data3:
     name: storage3
     size: 360_003_477_176_320
     rate: 100_000_000_000
+    comment: Reserved
+
+srv-data4:
+  kind: physical
+  warranty: 2031-11-14
+  serial: CZJD1V00H9
+  alias: [storage4]
+  network_adapters:
+    default:
+      ip: 172.16.31.22
+      mac: 6C:92:CF:B9:32:0C
+    bmc:
+      ip: 172.17.30.22
+      mac: 7C:A6:2A:63:5D:B4
+    adm:
+      ip: 172.17.31.22
+  group_storage:
+    name: storage4
+    size: 92_165_497_683_968
+    rate: 10_000_000_000
+    comment: Reserved

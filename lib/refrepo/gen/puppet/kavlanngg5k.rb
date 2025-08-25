@@ -3,15 +3,41 @@
 require 'refrepo/data_loader'
 require 'set'
 
-TRUNK_KINDS = ['router', 'switch', 'backbone'] # how to detect trunk ports in network refapi
+TRUNK_KINDS = [ 'router', 'switch' ] # how to detect trunk ports in network refapi
 KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, not for neutron/NGS
 
+# entry point
 def generate_puppet_kavlanngg5k(options)
-  available_gw_sites = get_sites_with_gw(File.join(options[:output_dir], "platforms/production/generators/kavlanng/kavlanng.yaml"), options)
-  gen_kavlanapi_g5k_desc(File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/g5k/"), options, available_gw_sites)
-  gen_sites_ngs_device_configs(File.join(options[:output_dir], "platforms/production/generators/kavlanng/kavlanng.yaml"), File.join(options[:output_dir], "platforms/production/modules/generated/files/grid5000/kavlanng/ngs_agent.conf.d"), options)
+  # Filter out sites without gateways.
+  available_gw_sites = get_sites_with_gw(File.join(options[:output_dir],
+                                                   "platforms/production/generators/kavlanng/kavlanng.yaml"),
+                                         options)
+
+  # Generate a subset of the refapi with only the informations needed
+  # for kavlan-api.
+  gen_kavlanapi_g5k_desc(File.join(options[:output_dir],
+                                   "platforms/production/modules/generated/files/grid5000/kavlanng/g5k/"),
+                         options,
+                         available_gw_sites)
+
+  # Generate NGS configurations
+  gen_sites_ngs_device_configs(File.join(options[:output_dir],
+                                         "platforms/production/generators/kavlanng/kavlanng.yaml"),
+                               File.join(options[:output_dir],
+                                         "platforms/production/modules/generated/files/grid5000/kavlanng/ngs_agent.conf.d"),
+                               options)
 end
 
+# Generate a subset of the refapi with only the informations needed
+# for kavlan-api to be able to map network interfaces on nodes to
+# ports on network devices, in order to set the correct
+# binding:profile of neutron ports, that NGS will use to configure the
+# network devices.
+#
+# The generated data is splitted by site and by cluster for two
+# reasons: 1/ allow independant modifications to sites/clusters to not
+# pollute each others and 2/ to allow distribution between separate
+# kavlan-api instances.
 def gen_kavlanapi_g5k_desc(output_path, options, available_gw_sites)
   puts "KavlanNG: generate g5k network description for kavlan-api"
   puts "  to #{output_path}"
@@ -45,7 +71,7 @@ def gen_kavlanapi_g5k_desc(output_path, options, available_gw_sites)
     site_h['network_equipments'].delete_if { |_k, v| (v['kind'] != 'router') || (!available_gw_sites.include?(site_id)) }
     routers = site_h['network_equipments'].keys
     if routers.length > 1
-      puts "ERROR: #{site_id} has #{routers.length} routers"
+      puts "WARNING: #{site_id} has #{routers.length} routers"
     end
     if routers.length == 1
       gw = routers[0]
@@ -54,21 +80,21 @@ def gen_kavlanapi_g5k_desc(output_path, options, available_gw_sites)
     site_h['servers'].delete_if { |k, _v| k != 'dns' }
     dns_list = site_h['servers'].keys
     if dns_list.length != 1
-      puts "ERROR: #{site_id} has #{dns_list.length} DNS"
+      puts "WARNING: #{site_id} has #{dns_list.length} DNS"
     end
     begin
       site_h['servers']['dns'].delete_if { |k, _v| k != 'network_adapters' }
       site_h['servers']['dns']['network_adapters'].delete_if { |k, _v| k != 'default' }
     rescue
-      puts "ERROR: #{site_id} unable to properly clean DNS server entry"
+      puts "WARNING: #{site_id} unable to properly clean DNS server entry"
     end
     begin
       dns_ip = site_h['servers']['dns']['network_adapters']['default']['ip']
       if !dns_ip
-        puts "ERROR: #{site_id} unable to get DNS IP address"
+        puts "WARNING: #{site_id} unable to get DNS IP address"
       end
     rescue StandardError
-      puts "ERROR: #{site_id} unable to get DNS IP address"
+      puts "WARNING: #{site_id} unable to get DNS IP address"
     end
   end
   # consistent order
@@ -88,17 +114,17 @@ def gen_kavlanapi_g5k_desc(output_path, options, available_gw_sites)
   # the generated files for the site, these files need to be removed
   # manually)
   refapi['sites'].each { |site_id, _site_h|
-    FileUtils.rm Dir.glob(File.join(output_path, "#{site_id}.json"))
-    FileUtils.rm Dir.glob(File.join(output_path, "#{site_id}-*"))
+    FileUtils.remove_dir(File.join(output_path, site_id), true)
   }
   refapi['sites'].each do |site_id, site_h|
+    Dir.mkdir(File.join(output_path, site_id))
     refapi_site = { 'sites' => { site_id => site_h.select { |k, _v| k != 'clusters' } } }
-    File.open(File.join(output_path, "#{site_id}.json"), 'w') do |f|
+    File.open(File.join(output_path, site_id, "#{site_id}.json"), 'w') do |f|
       f.write(JSON.pretty_generate(refapi_site))
     end
     site_h['clusters'].each do |cluster_id, cluster_h|
       refapi_site_cluster = { 'sites' => { site_id => { 'clusters' => { cluster_id => cluster_h } } } }
-      File.open(File.join(output_path, "#{site_id}-#{cluster_id}.json"), 'w') do |f|
+      File.open(File.join(output_path, site_id, "#{site_id}-#{cluster_id}.json"), 'w') do |f|
         f.write(JSON.pretty_generate(refapi_site_cluster))
       end
     end
@@ -134,6 +160,11 @@ def get_channel_name(_refapi, _site_name, _device_name, channel, channel_name)
   end
 end
 
+# Generate the NGS configuration for all network devices (device name,
+# device type, ip address, trunk ports, auth credentials, routing
+# config, etc.)
+#
+# The generated configurations are splitted by site.
 def gen_sites_ngs_device_configs(input_path, output_path, options)
   puts "KavlanNG: generate sites NGS device configurations"
   puts "  to #{output_path}"
@@ -166,7 +197,7 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
           end
         end
         if ! refapi_device
-          puts "ERROR #{site}/#{device} is not in refapi. refapi['sites'][#{site}]['network_equipments'] contains #{refapi['sites'][site]['network_equipments'].keys}"
+          puts "WARNING: #{site}/#{device} is not in refapi. refapi['sites'][#{site}]['network_equipments'] contains #{refapi['sites'][site]['network_equipments'].keys}"
         else
           if options[:verbose]
             if device == refapi_device
@@ -181,7 +212,6 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
               site_ngs_conf.puts("#{k} = #{v}")
             end
           end
-          site_ngs_conf.puts("ngs_zone = #{site}")
           site_ngs_conf.puts("ngs_network_name_format = kvl-{network_id:.10}")
           site_ngs_conf.puts("ngs_ssh_disabled_algorithms = kex:diffie-hellman-group-exchange-sha1")
           site_ngs_conf.puts("ngs_port_default_vlan = 100")
@@ -259,6 +289,8 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
   end
 end
 
+# Take the list of sites passed in options, and filter out those
+# without gateways.
 def get_sites_with_gw(input_path, options)
   puts "KavlanNG: check which sites have a kavlanng usable gateway"
   puts "  based on kavlanng configuration in #{input_path}"

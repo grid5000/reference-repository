@@ -126,17 +126,23 @@ sw-chiclet-1:
           uid: chiclet-7-eth1
         32:
           uid: chiclet-8-eth1
-        53:
-          uid: port-channel1
+        44:
+          uid: gw
+          kind: router
+          rate: 10000000000
+        45:
+          uid: labo
+          kind: other
+          rate: 1000000000
+        46:
+          uid: port-channel2
           kind: channel
-          rate: 100000000000
-        54:
-          uid: port-channel1
+        47:
+          uid: port-channel2
           kind: channel
-          rate: 100000000000
   channels:
-    port-channel1:
-      port: port-channel1
-      uid: sw-chiclet-2
-      kind: switch
-      rate: 200000000000
+    port-channel2:
+      port: port-channel2
+      uid: pve-3
+      kind: server
+      rate: 50000000000

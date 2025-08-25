@@ -1,0 +1,113 @@
+---
+sw-core:
+  model: EdgeCore wedge100bf_32x
+  ip: 172.17.175.252
+  #TODO
+  #ip6: 2001:660:4406:a00::ffff:ffff
+  kind: switch
+  managed_by_us: true
+  snmp_community: Unknown
+  site: strasbourg
+  alias:
+    - sw-core-adm
+  backplane_bps: 6_400_000_000_000
+  linecards: 
+    1:
+      backplane_bps: 6_400_000_000_000
+      rate: 100_000_000_000
+      snmp_pattern: "Ethernet%PORT%"
+      kavlan_pattern: "%PORT%"
+      kind: node
+      ports:
+        0:
+          uid: port-channel1
+          kind: channel
+          rate: 25_000_000_000
+        1:
+          uid: port-channel1
+          kind: channel 
+          rate: 25_000_000_000
+        2:
+          uid: pve-1
+          kind: server
+          trunk: true
+          rate: 25_000_000_000
+        3:
+          uid: pve-2
+          kind: server
+          trunk: true
+          rate: 25_000_000_000
+#       4: inetlab-sw1-eth0
+        5: 
+          uid: gw
+          kind: router
+          rate: 10_000_000_000
+        6:
+          uid: fleckenstein-1-eth0
+          rate: 25_000_000_000
+        7:
+          uid: fleckenstein-2-eth0
+          rate: 25_000_000_000
+        8:
+          uid: fleckenstein-3-eth0
+          rate: 25_000_000_000
+        9:
+          uid: fleckenstein-4-eth0
+          rate: 25_000_000_000
+        10:
+          uid: fleckenstein-5-eth0
+          rate: 25_000_000_000
+        11:
+          uid: fleckenstein-6-eth0
+          rate: 25_000_000_000
+        12:
+          uid: fleckenstein-7-eth0
+          rate: 25_000_000_000
+        13:
+          uid: fleckenstein-8-eth0
+          rate: 25_000_000_000
+        14:
+          uid: fleckenstein-9-eth0
+          rate: 25_000_000_000
+        15:
+          uid: fleckenstein-10-eth0
+          rate: 25_000_000_000
+        16: fleckenstein-1-eth6
+        20: fleckenstein-2-eth6
+        24: fleckenstein-3-eth6
+        28: fleckenstein-4-eth6
+        32: fleckenstein-5-eth6
+        36: fleckenstein-6-eth6
+        40: fleckenstein-7-eth6
+        44: fleckenstein-8-eth6
+        48: fleckenstein-9-eth6
+        52: fleckenstein-10-eth6
+        56: engelbourg-2-eth1
+        60: engelbourg-2-eth2
+        64: engelbourg-3-eth1
+        68: engelbourg-3-eth2
+        72: engelbourg-4-eth1
+        76: engelbourg-4-eth2
+        80: engelbourg-5-eth1
+        84: engelbourg-5-eth2
+        88: engelbourg-6-eth1
+        92: engelbourg-6-eth2 
+        96: engelbourg-7-eth1
+        100: engelbourg-7-eth2 
+        104: engelbourg-8-eth1
+        108: engelbourg-8-eth2
+        112: 
+        116:
+        120: 
+        124: 
+          uid: sw-admin
+          kind: switch
+          trunk: true
+
+  channels:
+    port-channel1:
+      port: port-channel1
+      uid: srv-data
+      rate: 50_000_000_000
+      kind: server
+

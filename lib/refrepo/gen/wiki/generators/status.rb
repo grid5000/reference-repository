@@ -99,7 +99,7 @@ class StatusGenerator < WikiGenerator
   def generate_network_monitoring
     data = "= Network Monitoring =\n"
     data += "== Backbone network status and load ==\n"
-    data += "[http://pasillo.renater.fr/weathermap/weathermap_g5k.html Grid'5000 Weathermap]  (courtesy of Renater)\n"
+    data += "[https://www.renater.fr/documentation/ressources-multimedia/weathermap/g5k/ Grid'5000 Weathermap]  (courtesy of Renater)\n"
     data += MW::LINE_FEED
     data += "Shows the actual state of the opticals links between the Grid'5000 10Gb-ready sites. A link painted in black on the weathermap means that you won't be able to access this site nodes from the Grid'5000 internal network.\n"
     data
@@ -154,7 +154,7 @@ class StatusGenerator < WikiGenerator
   def has_queue_production?(site)
     site_hash = @global_hash["sites"][site]
     site_hash.fetch("clusters", {}).each_value do |cluster_hash|
-      if cluster_hash["queues"].include?("production")
+      if cluster_hash["queues"].include?("abaca") || cluster_hash["queues"].include?("production")
         return true
       end
     end

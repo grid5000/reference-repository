@@ -169,7 +169,12 @@ def generate_reference_api
       #
       cluster["manufactured_at"] = cluster['nodes'].filter{|_n_uid, n_hash| n_hash.key? 'chassis'}.map{|_n_uid, n_hash| n_hash['chassis']['manufactured_at']}.min
       cluster["warranty_end"] = cluster['nodes'].filter{|_n_uid, n_hash| n_hash.key? 'chassis'}.map{|_n_uid, n_hash| n_hash['chassis']['warranty_end']}.min
-      
+
+      if cluster['queues'] && !(cluster['queues'] & %w[abaca production]).empty?
+        cluster['queues'] |= %w[abaca production]
+        cluster['queues'].sort!
+      end
+
       #
       # If not defined, create the cluster priority from the manufactured date + a shift for GPU machines
       #
@@ -191,12 +196,16 @@ def generate_reference_api
         next if node['status'] == "retired"
 
         node.delete("status")
+        queues = node.fetch('supported_job_types', {}).fetch('queues', [])
+        # if abaca is here, add production, if producition is here, add abaca
+        queues |= %w[abaca production] unless (queues & %w[abaca production]).empty?
+        node['supported_job_types']['queues'] = queues.sort unless node['supported_job_types'].nil?
 
         # Convert hashes to arrays
         node["storage_devices"] = node["storage_devices"].sort_by{ |_sd, v| v['id'] }.map { |a| a[1] }
 
         node["network_adapters"].each { |key, _hash| node["network_adapters"][key]["device"] = key; } # Add "device: ethX" within the hash
-        node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6","eth7", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "ib4", "ib5", "ib6", "ib7", "ibs1", "ibs3", "ibs4", "ibp130s0", "bmc", "eno1", "eno2", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1", "ens10f0np0", "ens10f1np1", "fpga0", "fpga1"]).values
+        node["network_adapters"] = node["network_adapters"].sort_by_array(["eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6","eth7", "ib0.8100", "ib0", "ib1", "ib2", "ib3", "ib4", "ib5", "ib6", "ib7", "ibs1", "ibs3", "ibs4", "ibp130s0", "bmc", "eno1", "eno2", "eno3", "eno4", "eno1np0", "eno2np1", "ens4f0", "ens4f1", "ens5f0", "ens5f1", "ens10f0np0", "ens10f1np1", "fpga0", "fpga1"]).values
         node["memory_devices"].each { |key, _hash| node["memory_devices"][key]["device"] = key; } # Add "device: dimm_a1" within the hash
         node["memory_devices"] = node["memory_devices"].sort_by { |d, _|
           [d.gsub(/dimm_(\d+)/, '\1').to_i,

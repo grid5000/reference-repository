@@ -14,6 +14,12 @@ sw-5:
       rate: 1000000000
       kind: node
       ports:
+        1:
+          uid: esterel24-1
+        2:
+          uid: esterel11-1
+        3:
+          uid: esterel11-2
         25:
           uid: gw
           kind: router
@@ -22,4 +28,4 @@ sw-5:
           uid: swadmin-5
           kind: switch
           rate: 10000000000
-
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'

@@ -61,13 +61,13 @@ class SiteHardwareGenerator < WikiGenerator
     column = with_site ? 2 : 1
     output = ''
     [
-      [ '== Default queue resources ==', /(^$|exotic)/ ],
-      [ '== Production queue resources ==', /production/],
-      [ '== Testing queue resources ==', /testing/]
-    ].each do |title,regexp|
-      if table_data.select{ |row| row[column] =~ regexp}.length > 0
+      [ '== Default queue resources ==', //, /production|testing/ ],
+      [ '== Abaca queue resources ==', /production/, /^$/],
+      [ '== Testing queue resources ==', /testing/ , /^$/]
+    ].each do |title,regexp_select,regexp_reject|
+      if table_data.select{ |row| row[column] =~ regexp_select and row[column] !~ regexp_reject}.length > 0
         output += "#{title}\n"
-        output += MW.generate_table('class="wikitable sortable"', table_columns, table_data.select{ |row| row[column] =~ regexp }) + "\n"
+        output += MW.generate_table('class="wikitable sortable"', table_columns, table_data.select{ |row| row[column] =~ regexp_select and row[column] !~ regexp_reject }) + "\n"
         if asterisks.length >0
           output += asterisks.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") + "\n"
         end
@@ -115,7 +115,7 @@ class SiteHardwareGenerator < WikiGenerator
       summary += MW::TABLE_CELL + ' width="50%" valign="top" ' + MW::TABLE_CELL + MW::LINE_FEED
       ## 2st inner table
       summary += MW::TABLE_START + ' width="100%"' + MW::LINE_FEED
-      summary += print_header_summary('=== Production queue resources ===', 'production', store)
+      summary += print_header_summary('=== Abaca queue resources ===', 'production', store)
       summary += MW::TABLE_END + MW::LINE_FEED
 
       ## End outer-tablie
@@ -193,8 +193,8 @@ class SiteHardwareGenerator < WikiGenerator
       cluster_nodes = cluster_hash.keys.flatten.count
       queue = cluster_hash.map { |_k, v| v['queue']}.first
       access_conditions = []
-      if queue == 'production'
-        access_conditions << "<b>[[Grid5000:UsagePolicy#Rules_for_the_production_queue|#{queue}]]</b>&nbsp;queue"
+      if queue == 'production' || queue == 'abaca'
+        access_conditions << "<b>[[Grid5000:UsagePolicy#Rules_for_the_production_queue|abaca]]</b>&nbsp;queue"
       elsif queue != ''
         access_conditions << "<b>#{queue}</b>&nbsp;queue"
       end
@@ -223,7 +223,7 @@ class SiteHardwareGenerator < WikiGenerator
 
   def self.get_queue_drawgantt_url(site, queue)
     url = "https://intranet.grid5000.fr/oar/#{site.capitalize}/"
-    if (queue == 'production')
+    if (queue == 'production' || queue == 'abaca')
       url += "drawgantt-svg-prod/"
     #elsif (queue == 'testing')
     #  url += "drawgantt-svg/?filter=with%20testing" # Here we miss a filter "only testing"
@@ -249,9 +249,9 @@ class SiteHardwareGenerator < WikiGenerator
       queue = (queue.nil? || queue.empty?) ? 'default' : queue
       queue_drawgantt_url = get_queue_drawgantt_url(site, queue)
       if (queue != 'testing')
-        text_data << "\n= Clusters in the [#{queue_drawgantt_url} #{queue} queue] ="
+        text_data << "\n= Clusters in the [#{queue_drawgantt_url} #{queue == 'production' ? 'abaca' : queue} queue] ="
       else
-        text_data << "\n= Clusters in the #{queue} queue ="
+        text_data << "\n= Clusters in the #{queue == 'production' ? 'abaca' : queue} queue ="
       end
       clusters.sort_by{|cluster_uid, _cluster_hash| split_cluster_node(cluster_uid) }.to_h.each { |cluster_uid, cluster_hash|
         subclusters = cluster_hash.keys.count != 1
@@ -269,7 +269,7 @@ class SiteHardwareGenerator < WikiGenerator
 
         reservation_cmd = "\n{{Term|location=f#{site}|cmd="
         reservation_cmd += "<code class=\"command\">oarsub</code> "
-        reservation_cmd += "<code class=\"replace\">-q #{queue}</code> " if queue != 'default'
+        reservation_cmd += "<code class=\"replace\">-q #{queue == 'production' ? 'abaca' : queue}</code> "
         reservation_cmd += "<code class=\"replace\">-t exotic</code> " if cluster_hash.map { |_k, v| v['exotic']}.first
         reservation_cmd += "<code class=\"env\">-p #{cluster_uid}</code> "
         reservation_cmd += "<code>-I</code>"
@@ -277,7 +277,7 @@ class SiteHardwareGenerator < WikiGenerator
         text_data << "\n'''Reservation example:'''"
         text_data << reservation_cmd
 
-        if queue == 'production'
+        if queue == 'production' || queue == 'abaca'
           walltime_breakout_text = "'''Max walltime per nodes:'''\n"
           nodes = G5K::get_global_hash['sites'][site]['clusters'][cluster_uid]['nodes']
           max_walltime_per_node = nodes.map { |node_name,node|

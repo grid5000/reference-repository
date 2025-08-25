@@ -20,6 +20,18 @@ class GPURef
         'fp-64' => 420000000000,
       },
     },
+    'TITAN RTX' => {
+      'cores'              => 4608,
+      'compute_capability' => '7.5',
+      'short_name'         => 'TITAN RTX',
+      'alias'              => 'titanrtx',
+      'microarchitecture'  => 'Turing',
+      'performance'        => {
+        'fp-16' => 32620000000000,
+        'fp-32' => 16310000000000,
+        'fp-64' => 510000000000,
+      },
+    },
     'GeForce GTX 1080' => {
       'cores'              => 2560,
       'compute_capability' => '6.1',
@@ -128,6 +140,42 @@ class GPURef
         'fp-64' => 156000000000,
       },
     },
+    'TITAN X (Pascal)' => {
+      'cores'              => 3584,
+      'compute_capability' => '6.1',
+      'short_name'         => 'TITAN X Pascal',
+      'alias'              => 'titanxpascal',
+      'microarchitecture'  => 'Pascal',
+      'performance'        => {
+        'fp-16' => 171400000000,
+        'fp-32' => 10974200000000,
+        'fp-64' => 342900000000,
+      },
+    },
+    'TITAN Xp' => {
+      'cores'              => 3840,
+      'compute_capability' => '6.1',
+      'short_name'         => 'TITAN Xp',
+      'alias'              => 'titanxp',
+      'microarchitecture'  => 'Pascal',
+      'performance'        => {
+        'fp-16' => 177600000000,
+        'fp-32' => 12149700000000,
+        'fp-64' => 355200000000,
+      },
+    },
+    'GeForce GTX TITAN X' => {
+      'cores'              => 3072,
+      'compute_capability' => '5.2',
+      'short_name'         => 'GTX TITAN X',
+      'alias'              => 'gtxtitanx',
+      'microarchitecture'  => 'Maxwell',
+      'performance'        => {
+        'fp-16' => 0,
+        'fp-32' => 66050000000000,
+        'fp-64' => 206500000000,
+      },
+    },
     'Tesla K40m' => {
       'cores'              => 2880,
       'compute_capability' => '3.5',
@@ -224,6 +272,18 @@ class GPURef
         'fp-64' => 9746000000000,
       },
     },
+    'A100 80GB PCIe' => {
+      'cores'              => 6912,
+      'compute_capability' => '8.0',
+      'short_name'         => 'A100',
+      'alias'              => 'a100-pcie-80',
+      'microarchitecture'  => 'Ampere',
+      'performance'        => {
+        'fp-16' => 77970000000000,
+        'fp-32' => 19490000000000,
+        'fp-64' => 9746000000000,
+      },
+    },
     'A40' => {
       'cores'              => 10752,
       'compute_capability' => '8.6',
@@ -270,7 +330,7 @@ class GPURef
         'fp-16' => 32620000000000,
         'fp-32' => 16310000000000,
         'fp-64' => 510000000000,
-      },     
+      },
     },
     'Quadro RTX 8000' => {
       'cores'              => 4608,
@@ -282,7 +342,7 @@ class GPURef
         'fp-16' => 32620000000000,
         'fp-32' => 16310000000000,
         'fp-64' => 510000000000,
-      },     
+      },
     },
     'Radeon Instinct MI50 32GB' => {
       'cores'              => 5120,
@@ -293,7 +353,29 @@ class GPURef
         'fp-16' => 26820000000000,
         'fp-32' => 13410000000000,
         'fp-64' => 510000000000,
-      },  
+      },
+    },
+    'AMD Instinct MI300X' => {
+      'cores'              => 19456,
+      'short_name'         => 'MI300X',
+      'alias'              => 'mi300x',
+      'microarchitecture'  => 'Aqua Vanjaram',
+      'performance'        => {
+        'fp-16' => 653700000000000,
+        'fp-32' => 81720000000000,
+        'fp-64' => 81720000000000,
+      },
+    },
+    'Instinct MI210' => {
+      'cores'              => 6656,
+      'short_name'         => 'MI210',
+      'alias'              => 'mi210',
+      'microarchitecture'  => 'Aldebaran',
+      'performance'        => {
+        'fp-16' => 181000000000000,
+        'fp-32' => 22600000000000,
+        'fp-64' => 22600000000000,
+      },
     },
     'AGX Xavier' => {
       'cores'              => 512,
@@ -305,7 +387,7 @@ class GPURef
         'fp-16' => 2820000000000,
         'fp-32' => 1410000000000,
         'fp-64' => 705000000000,
-      },  
+      },
     },
     'L40' => {
        'cores'              => 18176,
@@ -319,8 +401,21 @@ class GPURef
          'fp-64' => 141400000000,
        },
      },
+	'GH200' => {
+       'cores'              => 18176,
+       'compute_capability' => '9.0',
+       'short_name'         => 'H200',
+       'alias'              => 'H200',
+       'microarchitecture'  => 'Hopper',
+       'performance'        => {
+         # Performance informations comes from:
+         #   https://www.nvidia.com/en-us/data-center/h200/
+         'fp-16' => 19790000000000, # FP-16 Tensor Core value, no flops available for FP-16.
+         'fp-32' => 670000000000000,
+         'fp-64' => 340000000000000,
+      },
+    }
   }
-
 
   def self.get_cores(model)
     if @@gpus[model]

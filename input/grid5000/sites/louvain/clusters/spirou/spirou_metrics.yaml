@@ -1,0 +1,140 @@
+---
+metrics:
+  - name: bmc_other_temp_celsius
+    labels: {"id": "ambienttemp"}
+    description: Temperature of Ambient Temp reported by BMC, in celsius
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 98 #Ambient Temp
+
+  - name: bmc_other_voltage_volt
+    labels: {"id": "cmosbattery"}
+    description: Voltage of CMOS Battery reported by BMC, in volt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 214 #CMOS Battery
+
+  - name: bmc_other_speed_rpm
+    labels: {"id": "fan1fronttach"}
+    description: Speed of Fan 1 Front Tach reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 226 #Fan 1 Front Tach
+
+  - name: bmc_other_speed_rpm
+    labels: {"id": "fan2fronttach"}
+    description: Speed of Fan 2 Front Tach reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 227 #Fan 2 Front Tach
+
+  - name: bmc_other_speed_rpm
+    labels: {"id": "fan1reartach"}
+    description: Speed of Fan 1 Rear Tach reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 234 #Fan 1 Rear Tach
+
+  - name: bmc_other_speed_rpm
+    labels: {"id": "fan2reartach"}
+    description: Speed of Fan 2 Rear Tach reported by BMC, in rpm
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 235 #Fan 2 Rear Tach
+
+  - name: bmc_other_power_watt
+    labels: {"id": "syspower"}
+    description: Power consumption of Sys Power reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 250 #Sys Power
+
+  - name: bmc_other_power_watt
+    labels: {"id": "psu1acinpwr"}
+    description: Power consumption of PSU 1 AC In Pwr reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 267 #PSU 1 AC In Pwr
+
+  - name: bmc_other_power_watt
+    labels: {"id": "psu1dcoutpwr"}
+    description: Power consumption of PSU 1 DC Out Pwr reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 268 #PSU 1 DC Out Pwr
+
+  - name: bmc_other_power_watt
+    labels: {"id": "psu2acinpwr"}
+    description: Power consumption of PSU 2 AC In Pwr reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 274 #PSU 2 AC In Pwr
+
+  - name: bmc_other_power_watt
+    labels: {"id": "psu2dcoutpwr"}
+    description: Power consumption of PSU 2 DC Out Pwr reported by BMC, in watt
+    period: 0
+    optional_period: 5000
+    source:
+      protocol: ipmisensor
+      id: 275 #PSU 2 DC Out Pwr
+
+  - name: prom_default_metrics
+    description: Default subset of metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100
+      id:
+        - node_boot_time_seconds
+        - node_cpu_scaling_frequency_hertz
+        - node_cpu_seconds_total
+        - node_filesystem_free_bytes
+        - node_filesystem_size_bytes
+        - node_load1
+        - node_load15
+        - node_load5
+        - node_memory_Buffers_bytes
+        - node_memory_Cached_bytes
+        - node_memory_MemAvailable_bytes
+        - node_memory_MemFree_bytes
+        - node_memory_MemTotal_bytes
+        - node_memory_Shmem_bytes
+        - node_memory_SwapFree_bytes
+        - node_memory_SwapTotal_bytes
+        - node_network_receive_bytes_total
+        - node_network_receive_packets_total
+        - node_network_transmit_bytes_total
+        - node_network_transmit_packets_total
+        - node_procs_blocked
+        - node_procs_running
+        - kwollect_custom
+
+  - name: prom_all_metrics
+    description: All metrics from Prometheus Node Exporter
+    period: 0
+    optional_period: 15000
+    source:
+      protocol: prometheus
+      port: 9100

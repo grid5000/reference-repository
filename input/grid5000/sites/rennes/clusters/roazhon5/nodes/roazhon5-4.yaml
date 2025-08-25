@@ -8,10 +8,10 @@ roazhon5-4:
     nb_threads: 40
     platform_type: x86_64
   bios:
-    release_date: 10/27/2022
+    release_date: 02/25/2024
     vendor: Dell Inc.
-    version: 2.16.0
-  bmc_version: 2.84.84.84
+    version: 2.19.0
+  bmc_version: 2.86.86.86
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge M630
@@ -50,49 +50,49 @@ roazhon5-4:
       management: true
     eth0:
       driver: igb
-      firmware_version: 1.67, 0x80000fb0, 19.5.12
+      firmware_version: 1.67, 0x80001104, 22.5.7
       interface: Ethernet
-      ip: 172.16.110.8
       mac: 44:a8:42:90:94:28
       management: false
       model: I350 Gigabit Backplane Connection
       name: eno1
-      rate: 1000000000
-      sriov: true
-      sriov_totalvfs: 7
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth1:
       driver: igb
-      firmware_version: 1.67, 0x80000fb0, 19.5.12
+      firmware_version: 1.67, 0x80001104, 22.5.7
       interface: Ethernet
+      ip: 172.16.110.8
       mac: 44:a8:42:90:94:29
       management: false
       model: I350 Gigabit Backplane Connection
       name: eno2
-      sriov: true
-      sriov_totalvfs: 7
+      rate: 1000000000
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth2:
       driver: igb
-      firmware_version: 1.67, 0x80000fb0, 19.5.12
+      firmware_version: 1.67, 0x80001104, 22.5.7
       interface: Ethernet
       mac: 44:a8:42:90:94:2a
       management: false
       model: I350 Gigabit Backplane Connection
       name: eno3
-      sriov: true
-      sriov_totalvfs: 7
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
     eth3:
       driver: igb
-      firmware_version: 1.67, 0x80000fb0, 19.5.12
+      firmware_version: 1.67, 0x80001104, 22.5.7
       interface: Ethernet
       mac: 44:a8:42:90:94:2b
       management: false
       model: I350 Gigabit Backplane Connection
       name: eno4
-      sriov: true
-      sriov_totalvfs: 7
+      sriov: false
+      sriov_totalvfs: 0
       vendor: Intel
   operating_system:
     cstate_driver: intel_idle
@@ -108,15 +108,14 @@ roazhon5-4:
     cache_l3: 26214400
     ht_capable: true
     instruction_set: x86-64
-    microcode: '0x49'
     model: Intel Xeon
     other_description: Intel(R) Xeon(R) CPU E5-2660 v3 @ 2.60GHz
     vendor: Intel
     version: E5-2660 v3
   storage_devices:
-    pci-0000:03:00.0-scsi-0:2:0:0:
+    pci-0000:02:00.0-scsi-0:2:0:0:
       by_id: "/dev/disk/by-id/wwn-0x644a842015db5e001d03243d03245f43"
-      by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:2:0:0"
+      by_path: "/dev/disk/by-path/pci-0000:02:00.0-scsi-0:2:0:0"
       firmware_version: 4.3
       model: PERC H330 Mini
       size: 598879502336

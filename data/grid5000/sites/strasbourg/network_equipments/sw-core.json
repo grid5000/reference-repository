@@ -1,0 +1,457 @@
+{
+  "alias": [
+    "sw-core-adm"
+  ],
+  "backplane_bps": 6400000000000,
+  "channels": {
+    "port-channel1": {
+      "kind": "server",
+      "port": "port-channel1",
+      "rate": 50000000000,
+      "uid": "srv-data"
+    }
+  },
+  "ip": "172.17.175.252",
+  "kind": "switch",
+  "linecards": [
+    {
+    },
+    {
+      "backplane_bps": 6400000000000,
+      "kavlan_pattern": "%PORT%",
+      "kind": "node",
+      "ports": [
+        {
+          "kind": "channel",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet0",
+          "uid": "port-channel1"
+        },
+        {
+          "kind": "channel",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet1",
+          "uid": "port-channel1"
+        },
+        {
+          "kind": "server",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet2",
+          "trunk": true,
+          "uid": "pve-1"
+        },
+        {
+          "kind": "server",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet3",
+          "trunk": true,
+          "uid": "pve-2"
+        },
+        {
+        },
+        {
+          "kind": "router",
+          "rate": 10000000000,
+          "snmp_name": "Ethernet5",
+          "uid": "gw"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet6",
+          "uid": "fleckenstein-1"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet7",
+          "uid": "fleckenstein-2"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet8",
+          "uid": "fleckenstein-3"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet9",
+          "uid": "fleckenstein-4"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet10",
+          "uid": "fleckenstein-5"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet11",
+          "uid": "fleckenstein-6"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet12",
+          "uid": "fleckenstein-7"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet13",
+          "uid": "fleckenstein-8"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet14",
+          "uid": "fleckenstein-9"
+        },
+        {
+          "kind": "node",
+          "port": "eth0",
+          "rate": 25000000000,
+          "snmp_name": "Ethernet15",
+          "uid": "fleckenstein-10"
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet16",
+          "uid": "fleckenstein-1"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet20",
+          "uid": "fleckenstein-2"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet24",
+          "uid": "fleckenstein-3"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet28",
+          "uid": "fleckenstein-4"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet32",
+          "uid": "fleckenstein-5"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet36",
+          "uid": "fleckenstein-6"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet40",
+          "uid": "fleckenstein-7"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet44",
+          "uid": "fleckenstein-8"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet48",
+          "uid": "fleckenstein-9"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth6",
+          "snmp_name": "Ethernet52",
+          "uid": "fleckenstein-10"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "Ethernet56",
+          "uid": "engelbourg-2"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "snmp_name": "Ethernet60",
+          "uid": "engelbourg-2"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "Ethernet64",
+          "uid": "engelbourg-3"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "snmp_name": "Ethernet68",
+          "uid": "engelbourg-3"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "Ethernet72",
+          "uid": "engelbourg-4"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "snmp_name": "Ethernet76",
+          "uid": "engelbourg-4"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "Ethernet80",
+          "uid": "engelbourg-5"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "snmp_name": "Ethernet84",
+          "uid": "engelbourg-5"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "Ethernet88",
+          "uid": "engelbourg-6"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "snmp_name": "Ethernet92",
+          "uid": "engelbourg-6"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "Ethernet96",
+          "uid": "engelbourg-7"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "snmp_name": "Ethernet100",
+          "uid": "engelbourg-7"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "Ethernet104",
+          "uid": "engelbourg-8"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "node",
+          "port": "eth2",
+          "snmp_name": "Ethernet108",
+          "uid": "engelbourg-8"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          "kind": "switch",
+          "snmp_name": "Ethernet124",
+          "trunk": true,
+          "uid": "sw-admin"
+        }
+      ],
+      "rate": 100000000000,
+      "snmp_pattern": "Ethernet%PORT%"
+    }
+  ],
+  "managed_by_us": true,
+  "model": "EdgeCore wedge100bf_32x",
+  "site": "strasbourg",
+  "snmp_community": "Unknown",
+  "type": "network_equipment",
+  "uid": "sw-core"
+}

@@ -205,7 +205,7 @@ class G5KHardwareGenerator < WikiGenerator
                 key = [vendor, { text: acc_type.to_s, sort: acc_type.to_s } ]
                 init(data, 'acc_families', key)
                 data['acc_families'][key][site_uid] += 1
-                
+
                 key = [vendor,
                        { text: acc_type.to_s, sort: acc_type.to_s },
                        model,
@@ -385,8 +385,12 @@ class G5KHardwareGenerator < WikiGenerator
       'Fermi' => '2010',
       'Golden Cove' => '2021',
       'Grace' => '2022',
+      'Aldebaran' => '2022',
       'Hopper' => '2022',
       'Sapphire Rapids' => '2023',
+      'Emerald Rapids' => '2023',
+      'Aqua Vanjaram' => '2023',
+      'Sierra Forest' => '2024',
       'N/A' => '&nbsp;',
     }
     date = release_dates[microarchitecture]

@@ -1,7 +1,6 @@
 ---
 gw:
-  model: wedge100bf_32x
-  serial: AM26029251
+  model: Juniper EX4600-40F
   ip: 172.16.175.254
   ip6: 2001:660:4406:a00::ffff:ffff
   kind: router
@@ -63,56 +62,44 @@ gw:
         - 10.39.192.0/18
   linecards:
     1:
-      rate: 25000000000
+      rate: 10000000000
       snmp_pattern: "Ethernet%PORT%"
       kavlan_pattern: "%PORT%"
       kind: node
       ports:
-        0:
-          uid: port-channel1
-          kind: channel
-        1:
-          uid: port-channel1
-          kind: channel
-        2:
-          uid: pve-1
-          kind: server
+        0: 
+          uid: dev-strasbourg
+          kind: other
+        1: 
+          uid: dev-apornet
+          kind: other
+        2: 
+          uid: stonet-1
+          kind: other
         3:
-          uid: pve-2
-          kind: server
-        6: fleckenstein-1-eth0
-        7:
-        8: fleckenstein-1-eth2
-        9: fleckenstein-2-eth0
-        10:
-        11: fleckenstein-2-eth2
-        12: fleckenstein-3-eth0
-        13:
-        14: fleckenstein-3-eth2
-        15: fleckenstein-4-eth0
-        16:
-        17: fleckenstein-4-eth2
-        18: fleckenstein-5-eth0
-        19:
-        20: fleckenstein-5-eth2
-        21: fleckenstein-6-eth0
+          uid: ibat-1
+          kind: other
+        4: 
+          uid: wiki-net
+          kind: other
+        5:
+          uid: strasbourg
+          kind: other
+        6: 
+          uid: dev-www
+          kind: other
+        7: 
+          uid: soknet-1
+          kind: other
+        19: 
+          uid: PE-RENATER
+          kind: other
+        20:
+          uid: sw-core-oob
+          kind: other
+        21:
+          uid: sw-core
+          kind: switch
         22:
-        23: fleckenstein-6-eth2
-        24: fleckenstein-7-eth0
-        25:
-        26: fleckenstein-7-eth2
-        27: fleckenstein-8-eth0
-        28:
-        29: fleckenstein-8-eth2
-        30: fleckenstein-9-eth0
-        31:
-        32: fleckenstein-9-eth2
-        33: fleckenstein-10-eth0
-        34:
-        35: fleckenstein-10-eth2
-  channels:
-    port-channel1:
-      port: port-channel1
-      uid: srv-data
-      rate: 50000000000
-      kind: server
+          uid: pfsense-icube
+          kind: other

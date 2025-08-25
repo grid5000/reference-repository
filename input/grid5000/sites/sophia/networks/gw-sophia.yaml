@@ -96,6 +96,10 @@ gw:
         8:
           uid: lag3
           kind: channel
+        9:
+          uid: esterel42-1
+        10:
+          uid: esterel44-1
         11:
           uid: lag5
           kind: channel
@@ -114,9 +118,8 @@ gw:
         16:
           uid: lag7
           kind: channel
-        37:
-          uid: gwol-south
-          kind: server
+        17:
+          uid: esterel43-1
         31:
           uid: musa-1
         32:
@@ -129,6 +132,17 @@ gw:
           uid: musa-5
         36:
           uid: musa-6
+        37:
+          uid: gwol-south
+          kind: server
+        38:
+          uid: sw-4
+          kind: switch
+          rate: 10000000000
+        39:
+          uid: sw-1
+          kind: switch
+          rate: 10000000000
         40:
           uid: lag4
           kind: channel
@@ -153,6 +167,10 @@ gw:
           uid: sw-3
           kind: switch
           rate: 10000000000
+        46:
+          uid: sw-7
+          kind: switch
+          rate: 1000000000
         47:
           uid: sw-2
           kind: switch
@@ -160,6 +178,7 @@ gw:
         48:
           uid: renater-sophia
           kind: backbone
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
       kind: server
