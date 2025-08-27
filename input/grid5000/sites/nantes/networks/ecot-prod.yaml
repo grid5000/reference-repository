@@ -124,7 +124,11 @@ ecot-prod:
           kind: channel
           rate: 40000000000
           switchport_mode: trunk
+<<<<<<< HEAD:input/grid5000/sites/nantes/networks/ecot-prod.yaml
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
+=======
+      switchport_mode: access
+>>>>>>> 9238e23994 ([refrepo schema] trunk becomes switchport_mode):input/grid5000/sites/nantes/networks/ecotype-prod1.yaml
   channels:
     lag1:
       kind: router
