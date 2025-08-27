@@ -4,6 +4,7 @@
       "kind": "switch",
       "port": "port-channel51",
       "rate": 20000000000,
+      "switchport_mode": "trunk",
       "uid": "swcore-01-rba"
     }
   },
@@ -20,6 +21,7 @@
         {
           "kind": "channel",
           "snmp_name": "Eth1/1",
+          "switchport_mode": "trunk",
           "uid": "port-channel51"
         },
         {
@@ -27,6 +29,7 @@
         {
           "kind": "channel",
           "snmp_name": "Eth1/3",
+          "switchport_mode": "trunk",
           "uid": "port-channel51"
         },
         {
@@ -59,6 +62,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth1/17",
+          "switchport_mode": "access",
           "uid": "abacus26-1"
         },
         {
@@ -5031,12 +5035,14 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth1/2501",
+          "switchport_mode": "access",
           "uid": "roazhon10-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth1/2502",
+          "switchport_mode": "access",
           "uid": "roazhon10-1"
         },
         {
@@ -5239,12 +5245,14 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth1/2601",
+          "switchport_mode": "access",
           "uid": "roazhon10-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth1/2602",
+          "switchport_mode": "access",
           "uid": "roazhon10-3"
         },
         {
@@ -5847,12 +5855,14 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth1/2901",
+          "switchport_mode": "access",
           "uid": "roazhon13-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth1/2902",
+          "switchport_mode": "access",
           "uid": "roazhon13-4"
         },
         {
@@ -9455,12 +9465,14 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Eth1/4701",
+          "switchport_mode": "access",
           "uid": "roazhon14-1"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Eth1/4702",
+          "switchport_mode": "access",
           "uid": "roazhon14-3"
         },
         {
@@ -9663,17 +9675,20 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Eth1/4801",
+          "switchport_mode": "access",
           "uid": "roazhon14-2"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Eth1/4802",
+          "switchport_mode": "access",
           "uid": "roazhon14-4"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "Eth%LINECARD%/%PORT%"
+      "snmp_pattern": "Eth%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     },
     {
     },
@@ -9969,6 +9984,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth141/1/4",
+          "switchport_mode": "access",
           "uid": "roazhon12-3"
         },
         {
@@ -9977,6 +9993,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth141/1/6",
+          "switchport_mode": "access",
           "uid": "roazhon11-1"
         },
         {
@@ -9985,6 +10002,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth141/1/8",
+          "switchport_mode": "access",
           "uid": "roazhon11-2"
         },
         {
@@ -10025,11 +10043,13 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth141/1/26",
+          "switchport_mode": "access",
           "uid": "roazhon12-2"
         }
       ],
       "rate": 1000000000,
-      "snmp_pattern": "Eth%LINECARD%/1/%PORT%"
+      "snmp_pattern": "Eth%LINECARD%/1/%PORT%",
+      "switchport_mode": "access"
     },
     {
       "kavlan_pattern": "Eth%LINECARD%/1/%PORT%",
@@ -10043,6 +10063,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth142/1/2",
+          "switchport_mode": "access",
           "uid": "roazhon12-4"
         },
         {
@@ -10053,12 +10074,14 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth142/1/5",
+          "switchport_mode": "access",
           "uid": "abacus1-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth142/1/6",
+          "switchport_mode": "access",
           "uid": "roazhon11-3"
         },
         {
@@ -10067,12 +10090,14 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth142/1/8",
+          "switchport_mode": "access",
           "uid": "roazhon12-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth142/1/9",
+          "switchport_mode": "access",
           "uid": "abacus8-1"
         },
         {
@@ -10087,11 +10112,13 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth142/1/14",
+          "switchport_mode": "access",
           "uid": "abacus5-1"
         }
       ],
       "rate": 1000000000,
-      "snmp_pattern": "Eth%LINECARD%/1/%PORT%"
+      "snmp_pattern": "Eth%LINECARD%/1/%PORT%",
+      "switchport_mode": "access"
     },
     {
     },
@@ -10105,6 +10132,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth144/1/1",
+          "switchport_mode": "access",
           "uid": "abacus2-1"
         },
         {
@@ -10149,23 +10177,27 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Eth144/1/21",
+          "switchport_mode": "access",
           "uid": "abacus4-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth144/1/22",
+          "switchport_mode": "access",
           "uid": "abacus11-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Eth144/1/23",
+          "switchport_mode": "access",
           "uid": "abacus10-1"
         }
       ],
       "rate": 1000000000,
-      "snmp_pattern": "Eth%LINECARD%/1/%PORT%"
+      "snmp_pattern": "Eth%LINECARD%/1/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": false,

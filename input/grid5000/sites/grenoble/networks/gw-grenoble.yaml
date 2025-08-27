@@ -172,11 +172,13 @@ gw:
           kind: channel
           rate: 10_000_000_000
           snmp_pattern: "ethernet1/1/%PORT%:1"
+          switchport_mode: trunk
         50:
           uid: port-channel40
           kind: channel
           rate: 10_000_000_000
           snmp_pattern: "ethernet1/1/%PORT%:1"
+          switchport_mode: trunk
         61:
           uid: troll-1-eth1
           snmp_pattern: "ethernet1/1/%PORT%"
@@ -202,11 +204,13 @@ gw:
           kind: channel
           rate: 25_000_000_000
           snmp_pattern: "ethernet1/1/%PORT%"
+          switchport_mode: trunk
         68:
           uid: port-channel50
           kind: channel
           rate: 25_000_000_000
           snmp_pattern: "ethernet1/1/%PORT%"
+          switchport_mode: trunk
         69: servan-1-eth1  # 10G DAC cable
         70: servan-1-eth2  # 10G DAC cable
         71: servan-2-eth1  # 10G DAC cable
@@ -214,9 +218,11 @@ gw:
         75:
           uid: port-channel30
           kind: channel
+          switchport_mode: access
         76:
           uid: port-channel30
           kind: channel
+          switchport_mode: access
         77:
           uid: troll-1
           snmp_pattern: "ethernet1/1/%PORT%"
@@ -250,9 +256,11 @@ gw:
         85:
           uid: port-channel20
           kind: channel
+          switchport_mode: access
         86:
           uid: port-channel20
           kind: channel
+          switchport_mode: access
         89:
           uid: digwatt
           kind: server
@@ -262,18 +270,23 @@ gw:
         92:
           uid: port-channel100
           kind: channel
+          switchport_mode: access
         93:
           uid: port-channel100
           kind: channel
+          switchport_mode: access
         94:
           uid: port-channel100
           kind: channel
+          switchport_mode: access
         95:
           uid: port-channel100
           kind: channel
+          switchport_mode: access
         96:
           uid: renater-grenoble
           kind: backbone
+          switchport_mode: trunk
         97:
           uid: servan-1-fpga0
           snmp_pattern: "ethernet1/1/%PORT%"
@@ -294,29 +307,35 @@ gw:
           snmp_pattern: "ethernet1/1/%PORT%"
           kavlan_pattern: "ethernet1/1/%PORT%"
           rate: 100000000000
+      switchport_mode: access
   channels:
     port-channel20:
       uid: digsed
       port: port-channel20
       kind: server
       rate: 20000000000
+      switchport_mode: access
     port-channel50:
       uid: imag-1b-F3-prod-01
       port: lag1
       kind: switch
       rate: 50_000_000_000
+      switchport_mode: trunk
     port-channel30:
       uid: orichard-nixbuild
       port: port-channel30
       kind: server
       rate: 20000000000
+      switchport_mode: access
     port-channel40:
       uid: skinovis2-prod-01
       port: port-channel1
       kind: switch
       rate: 20_000_000_000
+      switchport_mode: trunk
     port-channel100:
       uid: ACI-G5K-EXT
       port: port-channel100
       kind: other
       rate: 40000000000
+      switchport_mode: access

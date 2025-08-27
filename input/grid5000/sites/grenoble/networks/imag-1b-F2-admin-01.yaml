@@ -49,6 +49,7 @@ imag-1b-F2-admin-01:
         48:
           uid: imag-1b-F2-prod-01
           kind: switch
-          trunk: false
+          switchport_mode: access
+      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
 

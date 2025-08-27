@@ -16,9 +16,11 @@ swdc-c003-01-02-rba:
         1:
           uid: port-channel51
           kind: channel
+          switchport_mode: trunk
         3:
           uid: port-channel51
           kind: channel
+          switchport_mode: trunk
         17:
           uid: abacus26-1
         25_01: # physically on interface 1/25 of swdc-c003-01-rba only
@@ -45,6 +47,7 @@ swdc-c003-01-02-rba:
         48_02: # physically on interface 1/48 of swdc-c003-02-rba only
           uid: roazhon14-4
           port: eth1
+      switchport_mode: access
     141:
       snmp_pattern: "Eth%LINECARD%/1/%PORT%"
       kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
@@ -59,6 +62,7 @@ swdc-c003-01-02-rba:
           uid: roazhon11-2
         26:
           uid: roazhon12-2
+      switchport_mode: access
     142:
       snmp_pattern: "Eth%LINECARD%/1/%PORT%"
       kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
@@ -77,6 +81,7 @@ swdc-c003-01-02-rba:
           uid: abacus8-1
         14:
           uid: abacus5-1
+      switchport_mode: access
     144:
       snmp_pattern: "Eth%LINECARD%/1/%PORT%"
       kavlan_pattern: "Eth%LINECARD%/1/%PORT%"
@@ -92,9 +97,11 @@ swdc-c003-01-02-rba:
           uid: abacus11-1
         23:
           uid: abacus10-1
+      switchport_mode: access
   channels:
     port-channel51:
       uid: swcore-01-rba
       kind: switch
       port: port-channel51
       rate: 20000000000
+      switchport_mode: trunk

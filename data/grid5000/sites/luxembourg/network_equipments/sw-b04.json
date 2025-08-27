@@ -5,6 +5,7 @@
       "kind": "router",
       "port": "port-channel59",
       "rate": 200000000000,
+      "switchport_mode": "trunk",
       "uid": "gw"
     }
   },
@@ -24,42 +25,49 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/1",
+          "switchport_mode": "access",
           "uid": "larochette-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/2",
+          "switchport_mode": "access",
           "uid": "larochette-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/3",
+          "switchport_mode": "access",
           "uid": "larochette-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/4",
+          "switchport_mode": "access",
           "uid": "larochette-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/5",
+          "switchport_mode": "access",
           "uid": "larochette-5"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/6",
+          "switchport_mode": "access",
           "uid": "larochette-6"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/7",
+          "switchport_mode": "access",
           "uid": "larochette-7"
         },
         {
@@ -67,6 +75,7 @@
           "port": "eth2",
           "rate": 10000000000,
           "snmp_name": "Ethernet1/8",
+          "switchport_mode": "access",
           "uid": "vianden-1"
         },
         {
@@ -74,6 +83,7 @@
           "port": "eth3",
           "rate": 10000000000,
           "snmp_name": "Ethernet1/9",
+          "switchport_mode": "access",
           "uid": "vianden-1"
         },
         {
@@ -165,23 +175,27 @@
           "port": "eth0",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/52",
+          "switchport_mode": "access",
           "uid": "vianden-1"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/53",
+          "switchport_mode": "trunk",
           "uid": "port-channel53"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/54",
+          "switchport_mode": "trunk",
           "uid": "port-channel53"
         }
       ],
       "rate": 25000000000,
-      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

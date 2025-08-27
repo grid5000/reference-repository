@@ -116,6 +116,8 @@ sgrvingt:
           snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
           rate: 40_000_000_000
           kind: router
+          switchport_mode: trunk
+      switchport_mode: access
     49:
       snmp_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
       kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
@@ -126,6 +128,7 @@ sgrvingt:
         2: grvingt-43
         3: grvingt-48
         4: grvingt-47
+      switchport_mode: access
     50:
       snmp_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
       kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
@@ -136,6 +139,7 @@ sgrvingt:
         2: grvingt-57
         3: grvingt-62
         4: grvingt-61
+      switchport_mode: access
     51:
       snmp_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
       kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
@@ -146,6 +150,7 @@ sgrvingt:
         2: grvingt-51
         3: grvingt-56
         4: grvingt-55
+      switchport_mode: access
     52:
       snmp_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
       kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
@@ -156,6 +161,7 @@ sgrvingt:
         2: grvingt-49
         3: grvingt-54
         4: grvingt-53
+      switchport_mode: access
     53:
       snmp_pattern: "TenGigabitEthernet 1/%LINECARD%/%PORT%"
       kavlan_pattern: "TenGigabitEthernet1/%LINECARD%/%PORT%"
@@ -166,3 +172,4 @@ sgrvingt:
         2: grvingt-59
         3: grvingt-64
         4: grvingt-63
+      switchport_mode: access

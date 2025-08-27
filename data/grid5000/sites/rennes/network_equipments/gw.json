@@ -9,7 +9,7 @@
       "port": "lag1",
       "rate": 200000000000,
       "ssh_name": "lag 1",
-      "trunk": true,
+      "switchport_mode": "trunk",
       "uid": "sw-1"
     },
     "lag2": {
@@ -17,7 +17,7 @@
       "port": "lag2",
       "rate": 50000000000,
       "ssh_name": "lag 2",
-      "trunk": false,
+      "switchport_mode": "access",
       "uid": "srv-data"
     },
     "lag3": {
@@ -25,7 +25,7 @@
       "port": "port-channel286",
       "rate": 20000000000,
       "ssh_name": "lag 3",
-      "trunk": false,
+      "switchport_mode": "access",
       "uid": "swcore-01-rba"
     },
     "lag4": {
@@ -33,7 +33,7 @@
       "port": "lag4",
       "rate": 50000000000,
       "ssh_name": "lag 4",
-      "trunk": false,
+      "switchport_mode": "access",
       "uid": "srv-data2"
     },
     "lag5": {
@@ -41,7 +41,7 @@
       "port": "lag5",
       "rate": 50000000000,
       "ssh_name": "lag 5",
-      "trunk": false,
+      "switchport_mode": "access",
       "uid": "srv-data3"
     }
   },
@@ -112,39 +112,43 @@
         {
           "kind": "channel",
           "snmp_name": "1/1/27",
+          "switchport_mode": "access",
           "uid": "lag5"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/28",
+          "switchport_mode": "access",
           "uid": "lag5"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/29",
+          "switchport_mode": "access",
           "uid": "lag4"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/30",
+          "switchport_mode": "access",
           "uid": "lag4"
         },
         {
           "kind": "server",
           "snmp_name": "1/1/31",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "pve-1"
         },
         {
           "kind": "server",
           "snmp_name": "1/1/32",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "pve-2"
         },
         {
           "kind": "server",
           "snmp_name": "1/1/33",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "pve-3"
         },
         {
@@ -152,11 +156,13 @@
         {
           "kind": "channel",
           "snmp_name": "1/1/35",
+          "switchport_mode": "access",
           "uid": "lag2"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/36",
+          "switchport_mode": "access",
           "uid": "lag2"
         },
         {
@@ -175,56 +181,62 @@
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/43",
-          "trunk": false,
+          "switchport_mode": "access",
           "uid": "sw-1-c003"
         },
         {
           "kind": "switch",
           "rate": 1000000000,
           "snmp_name": "1/1/44",
-          "trunk": false,
+          "switchport_mode": "access",
           "uid": "sw-adm-1"
         },
         {
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/45",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "parasilo-sw-1"
         },
         {
           "kind": "backbone",
           "rate": 10000000000,
           "snmp_name": "1/1/46",
+          "switchport_mode": "trunk",
           "uid": "renater-rennes"
         },
         {
           "kind": "channel",
           "rate": 10000000000,
           "snmp_name": "1/1/47",
+          "switchport_mode": "access",
           "uid": "lag3"
         },
         {
           "kind": "channel",
           "rate": 10000000000,
           "snmp_name": "1/1/48",
+          "switchport_mode": "access",
           "uid": "lag3"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "1/1/49",
+          "switchport_mode": "trunk",
           "uid": "lag1"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "1/1/50",
+          "switchport_mode": "trunk",
           "uid": "lag1"
         }
       ],
       "rate": 25000000000,
-      "snmp_pattern": "%LINECARD%/1/%PORT%"
+      "snmp_pattern": "%LINECARD%/1/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

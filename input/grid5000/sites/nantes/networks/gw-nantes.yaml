@@ -124,6 +124,7 @@ gw:
         0:
           uid: renater-nantes
           kind: backbone
+          switchport_mode: trunk
         45: econome-1
         44: econome-2
         15: econome-3
@@ -151,17 +152,19 @@ gw:
         4:
           uid: Port-channel 3
           kind: channel
+          switchport_mode: access
         5:
           uid: Port-channel 3
           kind: channel
+          switchport_mode: access
         8:
           uid: srv-4
           kind: server
-          trunk: true
+          switchport_mode: trunk
         9:
           uid: srv-3
           kind: server
-          trunk: true
+          switchport_mode: trunk
         26:
           uid: pve-99
           kind: server
@@ -173,34 +176,42 @@ gw:
           snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
           rate: 40000000000
           kind: channel
+          switchport_mode: trunk
         52:
           uid: Port-channel 1
           snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
           rate: 40000000000
           kind: channel
+          switchport_mode: trunk
         60:
           uid: Port-channel 2
           snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
           rate: 40000000000
           kind: channel
+          switchport_mode: trunk
         56:
           uid: Port-channel 2
           snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
           rate: 40000000000
           kind: channel
+          switchport_mode: trunk
+      switchport_mode: access
   channels:
     Port-channel 1:
       uid: ecotype-prod1
       port: Port-channel 1
       rate: 80000000000
       kind: switch
+      switchport_mode: trunk
     Port-channel 2:
       kind: switch
       rate: 80000000000
       uid: ecotype-prod2
       port: Port-channel 1
+      switchport_mode: trunk
     Port-channel 3:
       kind: server
       rate: 20000000000
       uid: srv-data2
       port: Port-channel 3
+      switchport_mode: access

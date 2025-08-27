@@ -91,18 +91,24 @@ mxl2:
         33:
           uid: Port-channel 6
           kind: channel
+          switchport_mode: trunk
         34:
           uid: Port-channel 6
           kind: channel
+          switchport_mode: trunk
         35:
           uid: Port-channel 6
           kind: channel
+          switchport_mode: trunk
         36:
           uid: Port-channel 6
           kind: channel
+          switchport_mode: trunk
+      switchport_mode: access
   channels:
     Port-channel 6:
       uid: ul-grid5000-sw02
       port: port-channel6
       kind: switch
       rate: 4000000000
+      switchport_mode: trunk

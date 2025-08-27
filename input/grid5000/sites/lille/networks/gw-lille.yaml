@@ -141,21 +141,27 @@ gw:
         7:
           uid: port-channel2
           kind: channel
+          switchport_mode: access
         8:
           uid: port-channel2
           kind: channel
+          switchport_mode: access
         9:
           uid: port-channel3
           kind: channel
+          switchport_mode: access
         10:
           uid: port-channel3
           kind: channel
+          switchport_mode: access
         11:
           uid: port-channel4
           kind: channel
+          switchport_mode: access
         12:
           uid: port-channel4
           kind: channel
+          switchport_mode: access
         45:
           uid: gwol-north
           kind: server
@@ -163,36 +169,45 @@ gw:
           uid: sw-chiclet-1
           kind: switch
           rate: 10000000000
+          switchport_mode: trunk
         47:
           uid: renater-lille
           kind: backbone
           rate: 10000000000
+          switchport_mode: trunk
         53:
           uid: port-channel1
           kind: channel
           rate: 100000000000
+          switchport_mode: trunk
         54:
           uid: port-channel1
           kind: channel
           rate: 100000000000
+          switchport_mode: trunk
+      switchport_mode: access
   channels:
     port-channel1:
       uid: sw-1
       port: lag2
       rate: 200000000000
       kind: switch
+      switchport_mode: trunk
     port-channel2:
       uid: srv-data2
       port: port-channel2
       kind: server
       rate: 50000000000
+      switchport_mode: access
     port-channel3:
       uid: granche-srv1
       port: port-channel3
       kind: server
       rate: 50000000000
+      switchport_mode: access
     port-channel4:
       uid: granche-srv2
       port: port-channel4
       kind: server
       rate: 50000000000
+      switchport_mode: access

@@ -8,18 +8,21 @@
       "kind": "switch",
       "port": "Port-channel 1",
       "rate": 80000000000,
+      "switchport_mode": "trunk",
       "uid": "ecotype-prod1"
     },
     "Port-channel 2": {
       "kind": "switch",
       "port": "Port-channel 1",
       "rate": 80000000000,
+      "switchport_mode": "trunk",
       "uid": "ecotype-prod2"
     },
     "Port-channel 3": {
       "kind": "server",
       "port": "Port-channel 3",
       "rate": 20000000000,
+      "switchport_mode": "access",
       "uid": "srv-data2"
     }
   },
@@ -34,6 +37,7 @@
         {
           "kind": "backbone",
           "snmp_name": "TenGigabitEthernet 0/0",
+          "switchport_mode": "trunk",
           "uid": "renater-nantes"
         },
         {
@@ -45,11 +49,13 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet 0/4",
+          "switchport_mode": "access",
           "uid": "Port-channel 3"
         },
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet 0/5",
+          "switchport_mode": "access",
           "uid": "Port-channel 3"
         },
         {
@@ -59,19 +65,20 @@
         {
           "kind": "server",
           "snmp_name": "TenGigabitEthernet 0/8",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "srv-4"
         },
         {
           "kind": "server",
           "snmp_name": "TenGigabitEthernet 0/9",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "srv-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/10",
+          "switchport_mode": "access",
           "uid": "econome-10"
         },
         {
@@ -82,24 +89,28 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/13",
+          "switchport_mode": "access",
           "uid": "econome-17"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/14",
+          "switchport_mode": "access",
           "uid": "econome-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/15",
+          "switchport_mode": "access",
           "uid": "econome-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/16",
+          "switchport_mode": "access",
           "uid": "econome-8"
         },
         {
@@ -108,30 +119,35 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/18",
+          "switchport_mode": "access",
           "uid": "econome-12"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/19",
+          "switchport_mode": "access",
           "uid": "econome-11"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/20",
+          "switchport_mode": "access",
           "uid": "econome-16"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/21",
+          "switchport_mode": "access",
           "uid": "econome-15"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/22",
+          "switchport_mode": "access",
           "uid": "econome-18"
         },
         {
@@ -143,23 +159,27 @@
         {
           "kind": "server",
           "snmp_name": "TenGigabitEthernet 0/26",
+          "switchport_mode": "access",
           "uid": "pve-99"
         },
         {
           "kind": "server",
           "snmp_name": "TenGigabitEthernet 0/27",
+          "switchport_mode": "access",
           "uid": "pve-99"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/28",
+          "switchport_mode": "access",
           "uid": "econome-20"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/29",
+          "switchport_mode": "access",
           "uid": "econome-19"
         },
         {
@@ -168,12 +188,14 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/31",
+          "switchport_mode": "access",
           "uid": "econome-21"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/32",
+          "switchport_mode": "access",
           "uid": "econome-22"
         },
         {
@@ -184,6 +206,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/35",
+          "switchport_mode": "access",
           "uid": "econome-24"
         },
         {
@@ -194,54 +217,63 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/38",
+          "switchport_mode": "access",
           "uid": "econome-14"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/39",
+          "switchport_mode": "access",
           "uid": "econome-13"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/40",
+          "switchport_mode": "access",
           "uid": "econome-7"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/41",
+          "switchport_mode": "access",
           "uid": "econome-9"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/42",
+          "switchport_mode": "access",
           "uid": "econome-6"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/43",
+          "switchport_mode": "access",
           "uid": "econome-5"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/44",
+          "switchport_mode": "access",
           "uid": "econome-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/45",
+          "switchport_mode": "access",
           "uid": "econome-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "TenGigabitEthernet 0/46",
+          "switchport_mode": "access",
           "uid": "econome-23"
         },
         {
@@ -250,6 +282,7 @@
           "kind": "channel",
           "rate": 40000000000,
           "snmp_name": "fortyGigE 0/48",
+          "switchport_mode": "trunk",
           "uid": "Port-channel 1"
         },
         {
@@ -262,6 +295,7 @@
           "kind": "channel",
           "rate": 40000000000,
           "snmp_name": "fortyGigE 0/52",
+          "switchport_mode": "trunk",
           "uid": "Port-channel 1"
         },
         {
@@ -274,6 +308,7 @@
           "kind": "channel",
           "rate": 40000000000,
           "snmp_name": "fortyGigE 0/56",
+          "switchport_mode": "trunk",
           "uid": "Port-channel 2"
         },
         {
@@ -286,11 +321,13 @@
           "kind": "channel",
           "rate": 40000000000,
           "snmp_name": "fortyGigE 0/60",
+          "switchport_mode": "trunk",
           "uid": "Port-channel 2"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "TenGigabitEthernet %LINECARD%/%PORT%"
+      "snmp_pattern": "TenGigabitEthernet %LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

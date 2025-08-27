@@ -9,48 +9,56 @@
       "kind": "server",
       "port": "port-channel1",
       "rate": 20000000000,
+      "switchport_mode": "access",
       "uid": "pve-1"
     },
     "port-channel3": {
       "kind": "server",
       "port": "port-channel3",
       "rate": 20000000000,
+      "switchport_mode": "access",
       "uid": "pve-2"
     },
     "port-channel41": {
       "kind": "server",
       "port": "port-channel7",
       "rate": 20000000000,
+      "switchport_mode": "access",
       "uid": "backup-link-to-hpc-gw"
     },
     "port-channel5": {
       "kind": "server",
       "port": "port-channel5",
       "rate": 20000000000,
+      "switchport_mode": "access",
       "uid": "pve-1-backup-link"
     },
     "port-channel55": {
       "kind": "server",
       "port": "port-channel55",
       "rate": 200000000000,
+      "switchport_mode": "access",
       "uid": "srv-data2"
     },
     "port-channel57": {
       "kind": "switch",
       "port": "port-channel53",
       "rate": 200000000000,
+      "switchport_mode": "trunk",
       "uid": "sw-b09"
     },
     "port-channel59": {
       "kind": "switch",
       "port": "port-channel53",
       "rate": 200000000000,
+      "switchport_mode": "trunk",
       "uid": "sw-b04"
     },
     "port-channel7": {
       "kind": "server",
       "port": "port-channel7",
       "rate": 20000000000,
+      "switchport_mode": "access",
       "uid": "pve-2-backup-link"
     }
   },
@@ -70,41 +78,49 @@
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/1",
+          "switchport_mode": "access",
           "uid": "port-channel1"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/2",
+          "switchport_mode": "access",
           "uid": "port-channel1"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/3",
+          "switchport_mode": "access",
           "uid": "port-channel3"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/4",
+          "switchport_mode": "access",
           "uid": "port-channel3"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/5",
+          "switchport_mode": "access",
           "uid": "port-channel5"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/6",
+          "switchport_mode": "access",
           "uid": "port-channel5"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/7",
+          "switchport_mode": "access",
           "uid": "port-channel7"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/8",
+          "switchport_mode": "access",
           "uid": "port-channel7"
         },
         {
@@ -174,11 +190,13 @@
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/41",
+          "switchport_mode": "access",
           "uid": "port-channel41"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/42",
+          "switchport_mode": "access",
           "uid": "port-channel41"
         },
         {
@@ -192,11 +210,13 @@
         {
           "kind": "switch",
           "snmp_name": "Ethernet1/47",
+          "switchport_mode": "trunk",
           "uid": "gw-kirchberg"
         },
         {
           "kind": "backbone",
           "snmp_name": "Ethernet1/48",
+          "switchport_mode": "trunk",
           "uid": "renater-luxembourg"
         },
         {
@@ -215,41 +235,48 @@
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/55",
+          "switchport_mode": "access",
           "uid": "port-channel55"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/56",
+          "switchport_mode": "access",
           "uid": "port-channel55"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/57",
+          "switchport_mode": "trunk",
           "uid": "port-channel57"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/58",
+          "switchport_mode": "trunk",
           "uid": "port-channel57"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/59",
+          "switchport_mode": "trunk",
           "uid": "port-channel59"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/60",
+          "switchport_mode": "trunk",
           "uid": "port-channel59"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

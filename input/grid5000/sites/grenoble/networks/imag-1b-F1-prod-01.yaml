@@ -20,10 +20,12 @@ imag-1b-F1-prod-01:
           uid: imag-1b-F1-admin-01
           kind: switch
           rate: 10_000_000_000
-          trunk: false
+          switchport_mode: access
         49:
           uid: imag-1b-F3-prod-01
           kind: switch
           rate: 100_000_000_000
+          switchport_mode: trunk
+      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
 

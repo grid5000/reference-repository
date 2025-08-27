@@ -37,6 +37,7 @@ linecards:
       model: optional_string
       backplane_bps: optional_integer
       port: optional_string
+      switchport_mode: optional_switchport_mode
       ports:
         <optional_array>: linecard_port
 channels_ssh_pattern: optional_string
@@ -47,7 +48,7 @@ channels:
       uid: string
       kind: string
       rate: integer
-      trunk: optional_boolean
+      switchport_mode: optional_switchport_mode
       ssh_name: optional_string
 metrics: optional_array
 uid: string

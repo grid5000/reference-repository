@@ -68,9 +68,11 @@ gw-kirchberg:
         1:
           uid: Port-channel4
           kind: channel
+          switchport_mode: trunk
         2:
           uid: Port-channel4
           kind: channel
+          switchport_mode: trunk
     5:
       snmp_pattern: TenGigabitEthernet%LINECARD%/%PORT%
       kavlan_pattern: Ti%LINECARD%/%PORT%
@@ -81,6 +83,7 @@ gw-kirchberg:
         4:
           uid: gw
           rate: 10000000000
+      switchport_mode: access
   channels:
     Port-channel4:
       uid: ul-grid5000-sw02
@@ -88,3 +91,4 @@ gw-kirchberg:
       kind: switch
       rate: 20000000000
 
+      switchport_mode: trunk

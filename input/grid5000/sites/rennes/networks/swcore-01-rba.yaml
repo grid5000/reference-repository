@@ -16,12 +16,15 @@ swcore-01-rba:
         5:
           uid: port-channel50
           kind: channel
+          switchport_mode: trunk
         7:
           uid: port-channel51
           kind: channel
+          switchport_mode: trunk
         12:
           uid: port-channel286
           kind: channel
+          switchport_mode: trunk
     2:
       snmp_pattern: "TenGigabitEthernet%LINECARD%/1/%PORT%"
       kavlan_pattern: "TenGigabitEthernet%LINECARD%/1/%PORT%"
@@ -31,25 +34,31 @@ swcore-01-rba:
         5:
           uid: port-channel51
           kind: channel
+          switchport_mode: trunk
         7:
           uid: port-channel50
           kind: channel
+          switchport_mode: trunk
         12:
           uid: port-channel286
           kind: channel
+          switchport_mode: trunk
   channels:
     port-channel50:
       uid: swdc-a035-01-02-rba
       kind: switch
       port: port-channel50
       rate: 20000000000
+      switchport_mode: trunk
     port-channel51:
       uid: swdc-c003-01-02-rba
       kind: switch
       port: port-channel51
       rate: 20000000000
+      switchport_mode: trunk
     port-channel286:
       uid: gw
       kind: router
       port: lag3
       rate: 20000000000
+      switchport_mode: trunk

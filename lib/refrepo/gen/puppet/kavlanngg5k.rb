@@ -3,8 +3,8 @@
 require 'refrepo/data_loader'
 require 'set'
 
-TRUNK_KINDS = [ 'router', 'switch' ] # how to detect trunk ports in network refapi
 KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, not for neutron/NGS
+TRUNK_IGNORE_KINDS = [ 'backbone', 'channel' ] # the kinds of ports that we ignore for trunks even if they are in trunk mode
 
 # entry point
 def generate_puppet_kavlanngg5k(options)
@@ -227,21 +227,19 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
             refapi['sites'][site]['network_equipments'][refapi_device]['linecards'].each_with_index do |lc, lc_index|
               if lc.has_key?('ports')
                 lc['ports'].each_with_index do |port, port_index|
-                  if port.has_key? 'trunk'
-                    if port['trunk']
+                  if port.has_key? 'switchport_mode'
+                    if port['switchport_mode'] == 'trunk'
                       portname = get_port_name(refapi, site, refapi_device, lc_index, lc, port_index, port)
-                      if options[:verbose]
-                        puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
+                      if not TRUNK_IGNORE_KINDS.include?(port['kind'])
+                        if options[:verbose]
+                          puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
+                        end
+                        ngs_trunk_ports.push portname
+                      else
+                        if options[:verbose]
+                          puts "      ignore trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
+                        end
                       end
-                      ngs_trunk_ports.push portname
-                    end
-                  elsif port.has_key? 'kind'
-                    if TRUNK_KINDS.include? port['kind']
-                      portname = get_port_name(refapi, site, refapi_device, lc_index, lc, port_index, port)
-                      if options[:verbose]
-                        puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
-                      end
-                      ngs_trunk_ports.push portname
                     end
                   end
                 end
@@ -252,21 +250,19 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
           # from channels
           if refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'channels'
             refapi['sites'][site]['network_equipments'][refapi_device]['channels'].each do |channelname, channel|
-              if channel.has_key? 'trunk'
-                if channel['trunk']
+              if channel.has_key? 'switchport_mode'
+                if channel['switchport_mode'] == 'trunk'
                   actual_channel_name = get_channel_name(refapi, site, refapi_device, channel, channelname)
-                  if options[:verbose]
-                    puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{actual_channel_name}"
+                  if (not channel.has_key? 'kind') or (not TRUNK_IGNORE_KINDS.include?(channel['kind']))
+                    if options[:verbose]
+                      puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{actual_channel_name}"
+                    end
+                    ngs_trunk_ports.push actual_channel_name
+                  else
+                    if options[:verbose]
+                      puts "      ignore trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{actual_channel_name}"
+                    end
                   end
-                  ngs_trunk_ports.push actual_channel_name
-                end
-              elsif channel.has_key? 'kind'
-                if TRUNK_KINDS.include? channel['kind']
-                  actual_channel_name = get_channel_name(refapi, site, refapi_device, channel, channelname)
-                  if options[:verbose]
-                    puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{actual_channel_name}"
-                  end
-                  ngs_trunk_ports.push actual_channel_name
                 end
               end
             end

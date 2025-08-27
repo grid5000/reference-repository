@@ -5,6 +5,7 @@
       "kind": "switch",
       "port": "port-channel4",
       "rate": 20000000000,
+      "switchport_mode": "trunk",
       "uid": "ul-grid5000-sw02"
     }
   },
@@ -27,11 +28,13 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet3/1",
+          "switchport_mode": "trunk",
           "uid": "Port-channel4"
         },
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet3/2",
+          "switchport_mode": "trunk",
           "uid": "Port-channel4"
         }
       ],
@@ -57,11 +60,13 @@
           "kind": "router",
           "rate": 10000000000,
           "snmp_name": "TenGigabitEthernet5/4",
+          "switchport_mode": "access",
           "uid": "gw"
         }
       ],
       "rate": 1000000000,
-      "snmp_pattern": "TenGigabitEthernet%LINECARD%/%PORT%"
+      "snmp_pattern": "TenGigabitEthernet%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

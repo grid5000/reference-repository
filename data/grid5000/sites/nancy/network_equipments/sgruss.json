@@ -15,24 +15,28 @@
           "kind": "node",
           "port": "eth2",
           "snmp_name": "ethernet1/1/1",
+          "switchport_mode": "access",
           "uid": "gruss-1"
         },
         {
           "kind": "node",
           "port": "eth2",
           "snmp_name": "ethernet1/1/2",
+          "switchport_mode": "access",
           "uid": "gruss-2"
         },
         {
           "kind": "node",
           "port": "eth2",
           "snmp_name": "ethernet1/1/3",
+          "switchport_mode": "access",
           "uid": "gruss-3"
         },
         {
           "kind": "node",
           "port": "eth2",
           "snmp_name": "ethernet1/1/4",
+          "switchport_mode": "access",
           "uid": "gruss-4"
         },
         {
@@ -41,6 +45,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "ethernet1/1/6",
+          "switchport_mode": "access",
           "uid": "grosminet-1"
         },
         {
@@ -65,18 +70,21 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "ethernet1/1/16",
+          "switchport_mode": "access",
           "uid": "grat-1"
         },
         {
           "kind": "node",
           "port": "eth2",
           "snmp_name": "ethernet1/1/17",
+          "switchport_mode": "access",
           "uid": "grouille-2"
         },
         {
           "kind": "node",
           "port": "eth2",
           "snmp_name": "ethernet1/1/18",
+          "switchport_mode": "access",
           "uid": "grouille-1"
         },
         {
@@ -95,11 +103,13 @@
           "kind": "router",
           "rate": 40000000000,
           "snmp_name": "ethernet1/1/25:1",
+          "switchport_mode": "trunk",
           "uid": "gw"
         }
       ],
       "rate": 25000000000,
-      "snmp_pattern": "ethernet1/%LINECARD%/%PORT%"
+      "snmp_pattern": "ethernet1/%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,
