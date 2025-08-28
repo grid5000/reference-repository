@@ -147,15 +147,6 @@ gw:
           switchport_mode: trunk
         51:
           uid: sw-2
-<<<<<<< HEAD
-          rate: 100000000000
-          switchport_mode: trunk
-        53:
-          kind: switch
-          uid: sw-3
-          rate: 100000000000
-          switchport_mode: trunk
-=======
           kind: switch
           rate: 100000000000
           switchport_mode: trunk
@@ -164,19 +155,11 @@ gw:
           kind: switch
           rate: 100000000000
           switchport_mode: trunk
->>>>>>> 9238e23994 ([refrepo schema] trunk becomes switchport_mode)
       switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
       kind: switch
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      trunk: true
->>>>>>> e2ebd93628 (Fix network description)
-=======
->>>>>>> 9238e23994 ([refrepo schema] trunk becomes switchport_mode)
       rate: 200000000000
       uid: sw-1
       port: lag1
