@@ -2,9 +2,39 @@
   cluster_name = "paradoxe" # Replace with cluster name
   nodes_number = 64 # Size of the cluster (number of nodes)
   # MAC addresses declaration
-  #  TODO: Change MAC addresses.
   mac_eth0_list = %w(
-  
+    14:23:f2:8e:25:6a
+    14:23:f2:8e:4a:d2
+    14:23:f2:8f:4e:10
+    14:23:f2:8e:32:6c
+    14:23:f2:8e:ec:ae
+    14:23:f2:8d:c0:96
+    14:23:f2:8e:dd:fc
+    14:23:f2:8f:08:86
+    14:23:f2:8d:dd:46
+    14:23:f2:8e:8e:f4
+    14:23:f2:8e:19:1c
+    14:23:f2:8d:c2:b2
+    14:23:f2:8d:cc:c0
+    14:23:f2:8f:30:2e
+    14:23:f2:8e:0b:54
+    14:23:f2:8d:ca:fe
+    14:23:f2:8e:26:c0
+    14:23:f2:8e:3d:1c
+    14:23:f2:8d:c3:42
+    14:23:f2:8e:3f:80
+    14:23:f2:8d:c3:e4
+    14:23:f2:8f:07:9c
+    14:23:f2:8d:c0:2a
+    14:23:f2:8e:30:3e
+    14:23:f2:8e:51:02
+    14:23:f2:8e:44:ea
+    14:23:f2:8f:1e:2e
+    14:23:f2:8e:ec:8a
+    14:23:f2:8d:cf:12
+    14:23:f2:8d:ca:a4
+    14:23:f2:8e:c1:82
+    14:23:f2:8f:7c:8a
 )
 
   mac_bmc_list = %w(
@@ -46,66 +76,132 @@
 nodes:
 <% (33..nodes_number).each { |i| %>
   <%= cluster_name %>-<%= i %>:
-    architecture:
-      nb_procs: 2 
-      nb_cores: 52 
-      nb_threads: 104
-      platform_type: x86_64 
-      cpu_core_numbering: contiguous 
-    bios:
-      release_date: 01/01/2000 # Fake date, will be replaced by g5k-checks
-      vendor: Unknown # Fake vendor, will be replaced by g5k-checks
-      version: 1 # Fake version, will be replaced by g5k-checks
-    bmc_version: v1 # Fake version, will be replaced by g5k-checks
     chassis:
-      manufacturer: Unknown # Fake manufacturer, will be replaced by g5k-checks
-      name: Unknown # Fake name, will be replaced by g5k-checks
-    main_memory:
-      ram_size: 8 # Fake size, will be replaced by g5k-checks
-    memory_devices:
-      dimm:
-        size: 8 # Fake size, will be replaced by g5k-checks
-        technology: dram # Common memory technology, will be replaced by g5k-checks
+      manufactured_at: 2023-05-27
+      warranty_end: 2030-05-30
+      manufacturer: HPE
+      name: ProLiant DL360 Gen10 Plus
+      serial: FAKE
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
     processor:
-      model: Unknown # Fake model name, will be replaced by g5k-checks
-      other_description: description # Fake description, will be replaced by g5k-checks
-      vendor: vendor # Fake vendor, will be replaced by g5k-checks
-      version: vendor # Fake version, will be replaced by g5k-checks
-      cache_l1d: 8 # Fake cache, will be replaced by g5k-checks
-      cache_l1i: 8 # Fake cache, will be replaced by g5k-checks
-      cache_l2: 8 # Fake cache, will be replaced by g5k-checks
-      cache_l3: 8 # Fake cache, will be replaced by g5k-checks
-      instruction_set: x86-64 # Common instruction set, will be replaced by g5k-checks
-      microcode: "0xd000001" # Fake microcode, will be replaced by g5k-checks
-      ht_capable: true # Default ht capable value, will be replaced by g5k-checks 
+      microarchitecture: Ice Lake-SP
+      clock_speed: 2200000000
+      cache_l1d: 49152
+      cache_l1i: 32768
+      cache_l2: 1310720
+      cache_l3: 40894464
+      ht_capable: true
+      instruction_set: x86-64
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz
+      vendor: Intel
+      version: Gold 5320
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    architecture:
+      cpu_core_numbering: contiguous
+      nb_cores: 52
+      nb_procs: 2
+      nb_threads: 104
+      platform_type: x86_64
+    bios:
+      release_date: 03/06/2024
+      vendor: HPE
+      version: U46
+    bmc_version: '3.03'
     main_memory:
-      ram_size: 8 # Fake ram size, will be replaced by g5k-checks
+      ram_size: 412316860416
     memory_devices:
-      dimm_proc 1 dimm 1: # Fake dimm name, will be replaced by g5k-checks
-        size: 8 # Fake dimm size, will be replaced by g5k-checks
-        technology: dram # Default dimm technology, will be replaced by g5k-checks
-    operating_system:
-      cstate_driver: unknown # Fake driver, will be replaced by g5k-checks
-      cstate_governor: unknown # Fake governor, will be replaced by g5k-checks
-      ht_enabled: true # common value for hyper threading, will be replaced by g5k-checks
-      pstate_driver: unknwon # Fake driver, will be replaced by g5k-checks
-      pstate_governor: unknown # Fake driver, will be replaced by g5k-checks
-      turboboost_enabled: true # Default value for turboboost, will be replaced by g5k-checks 
+      dimm_proc 1 dimm 1:
+        size: 34359738368
+        technology: dram
+      dimm_proc 1 dimm 10:
+        size: 34359738368
+        technology: dram
+      dimm_proc 1 dimm 14:
+        size: 34359738368
+        technology: dram
+      dimm_proc 1 dimm 16:
+        size: 34359738368
+        technology: dram
+      dimm_proc 1 dimm 3:
+        size: 34359738368
+        technology: dram
+      dimm_proc 1 dimm 7:
+        size: 34359738368
+        technology: dram
+      dimm_proc 2 dimm 1:
+        size: 34359738368
+        technology: dram
+      dimm_proc 2 dimm 10:
+        size: 34359738368
+        technology: dram
+      dimm_proc 2 dimm 14:
+        size: 34359738368
+        technology: dram
+      dimm_proc 2 dimm 16:
+        size: 34359738368
+        technology: dram
+      dimm_proc 2 dimm 3:
+        size: 34359738368
+        technology: dram
+      dimm_proc 2 dimm 7:
+        size: 34359738368
+        technology: dram
     network_adapters:
       bmc:
         interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
         management: true
         mac: <%= mac_bmc_list[i - 33] %>
       eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+        driver: bnxt_en
+        firmware_version: 228.0.116.0/pkg 228.1.111.0
         interface: Ethernet
-        management: false
-        driver: mlx_core
-        name: enp1s0f0np0 # Replace with primary interface name
-        rate: 10000000000
         mac: <%= mac_eth0_list[i - 33] %>
+        management: false
+        model: BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller
+        name: ens10f0np0
+        rate: 25000000000
+        sriov: false
+        sriov_totalvfs: 0
+        vendor: Broadcom Inc. and subsidiaries
+    operating_system:
+      cstate_driver: intel_idle
+      cstate_governor: menu
+      ht_enabled: true
+      pstate_driver: intel_pstate
+      pstate_governor: performance
+      turboboost_enabled: true
     storage_devices:
-      disk0:
-        storage: SSD # Common value, will be replaced by g5k-checks
-        model: unknown # fake value,  
-        size: 8 # Fake value, will be replaced by g5k-checks
+      pci-0000:47:00.0-scsi-0:2:1:0:
+        id: disk0
+        interface: SATA
+        by_id: "/dev/disk/by-id/wwn-0x5002538f04521557"
+        by_path: "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:1:0"
+        firmware_version: HPG1
+        model: MK001920GZXRC
+        size: 1920383410176
+        storage: SSD
+      pci-0000:47:00.0-scsi-0:2:2:0:
+        id: disk1
+        interface: SATA
+        by_id: "/dev/disk/by-id/wwn-0x5002538f0452154d"
+        by_path: "/dev/disk/by-path/pci-0000:47:00.0-scsi-0:2:2:0"
+        firmware_version: HPG1
+        model: MK001920GZXRC
+        size: 1920383410176
+        storage: SSD
+    supported_job_types:
+      virtual: ivt
 <% } %>
