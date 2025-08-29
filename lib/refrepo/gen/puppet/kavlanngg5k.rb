@@ -3,8 +3,8 @@
 require 'refrepo/data_loader'
 require 'set'
 
-KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports' ] # these options are for us, not for neutron/NGS
 TRUNK_IGNORE_KINDS = [ 'backbone', 'channel' ] # the kinds of ports that we ignore for trunks even if they are in trunk mode
+KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports', 'blacklist_trunk_ports' ] # these options are for us, not for neutron/NGS
 
 # entry point
 def generate_puppet_kavlanngg5k(options)
@@ -268,7 +268,7 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
             end
           end
 
-          # additional trunk ports
+          # custom trunk ports from kavlanng config
           if device_data.has_key? 'additional_trunk_ports'
             device_data['additional_trunk_ports'].each do |additional_trunk_port|
               if options[:verbose]
@@ -277,6 +277,15 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
               ngs_trunk_ports.push additional_trunk_port
             end
           end
+          if device_data.has_key? 'blacklist_trunk_ports'
+            device_data['blacklist_trunk_ports'].each do |blacklist_trunk_port|
+              if options[:verbose]
+                puts "      blacklist trunk port on #{site}/#{device}: #{blacklist_trunk_port}"
+              end
+              ngs_trunk_ports.delete_if { |p| p == blacklist_trunk_port }
+            end
+          end
+
           site_ngs_conf.puts("ngs_trunk_ports = #{ngs_trunk_ports.join(', ')}")
           site_ngs_conf.puts("")
         end
