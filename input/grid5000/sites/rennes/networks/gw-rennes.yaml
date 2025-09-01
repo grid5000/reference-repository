@@ -69,6 +69,12 @@ gw:
       kavlan_pattern: "%LINECARD%/1/%PORT%"
       rate: 25000000000
       ports:
+        27:
+          uid: lag5
+          kind: channel
+        28:
+          uid: lag5
+          kind: channel
         29:
           uid: lag4
           kind: channel
@@ -76,14 +82,17 @@ gw:
           uid: lag4
           kind: channel
         31:
-          uid: srv-1
+          uid: pve-1
           kind: server
+          trunk: true
         32:
-          uid: srv-2
+          uid: pve-2
           kind: server
+          trunk: true
         33:
-          uid: srv-3
+          uid: pve-3
           kind: server
+          trunk: true
         35:
           uid: lag2
           kind: channel
@@ -91,17 +100,19 @@ gw:
           uid: lag2
           kind: channel
         43:
-          uid: sw-adm-1
-          kind: switch
-          rate: 1000000000
-        44:
           uid: sw-1-c003
           kind: switch
+          trunk: false  # temporaire pour kavlan-ng
           rate: 10000000000
+        44:
+          uid: sw-adm-1
+          kind: switch
           trunk: false
+          rate: 1000000000
         45:
           uid: parasilo-sw-1
           kind: switch
+          trunk: true
           rate: 10000000000
         46:
           uid: renater-rennes
@@ -127,21 +138,31 @@ gw:
   channels:
     lag1:
       kind: switch
+      trunk: true
       rate: 200000000000
       uid: sw-1
       port: lag1
     lag2:
       kind: server
+      trunk: false
       rate: 50000000000
       uid: srv-data
       port: lag2
     lag3:
       kind: switch
+      trunk: false  # temporaire pour kavlan-ng
       rate: 20000000000
       uid: swcore-01-rba
       port: port-channel286
     lag4:
       kind: server
+      trunk: false
       rate: 50000000000
       uid: srv-data2
       port: lag4
+    lag5:
+      kind: server
+      trunk: false
+      rate: 50000000000
+      uid: srv-data3
+      port: lag5
