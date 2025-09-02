@@ -1,0 +1,187 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 28,
+    "nb_procs": 2,
+    "nb_threads": 56,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "02/21/2024",
+    "vendor": "Dell Inc.",
+    "version": "2.19.0"
+  },
+  "bmc_version": "2.86.86.86",
+  "chassis": {
+    "manufactured_at": "2016-12-31",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge C6320",
+    "serial": "8S1V1H2",
+    "warranty_end": "2022-12-31"
+  },
+  "exotic": false,
+  "main_memory": {
+    "ram_size": 137438953472
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "ixgbe",
+      "enabled": true,
+      "firmware_version": "0x8000095e, 19.5.12",
+      "interface": "Ethernet",
+      "ip": "172.16.180.29",
+      "ip6": "2001:660:4406:300:5::1d",
+      "kavlan": false,
+      "mac": "7c:d3:0a:c1:7b:88",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "clervaux-29.luxembourg.grid5000.fr",
+      "rate": 10000000000,
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "switch": "sw-b09",
+      "switch_port": "Ethernet1/29",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "ixgbe",
+      "enabled": false,
+      "firmware_version": "0x8000095e, 19.5.12",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "7c:d3:0a:c1:7b:8a",
+      "management": false,
+      "model": "82599ES 10-Gigabit SFI/SFP+ Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": true,
+      "sriov_totalvfs": 63,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.180.29",
+      "kavlan": false,
+      "mac": "7c:d3:0a:c1:7b:8c",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "clervaux-29-bmc.luxembourg.grid5000.fr"
+    }
+  ],
+  "nodeset": "clervaux",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 38400000000,
+    "node_flops": 1075200000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 262144,
+    "cache_l3": 36700160,
+    "clock_speed": 2400000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Broadwell",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "vendor": "Intel",
+    "version": "E5-2680 v4"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202508281353,
+    "postinstall-version": "1.2025081410",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x55cd2e414d92f0cf",
+      "by_path": "/dev/disk/by-path/pci-0000:00:1f.2-ata-1",
+      "firmware_version": "G201DL2E",
+      "id": "disk0",
+      "interface": "SATA",
+      "model": "INTEL SSDSC2BB12",
+      "size": 120034123776,
+      "storage": "SSD",
+      "vendor": "Intel"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "clervaux-29"
+}
