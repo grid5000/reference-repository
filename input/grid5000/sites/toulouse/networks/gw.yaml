@@ -81,22 +81,27 @@ gw:
         15:
           uid: lag2
           kind: channel
+          switchport_mode: trunk
         16:
           uid: lag2
           kind: channel
+          switchport_mode: trunk
         17:
           uid: pve-1
           kind: server
         18:
           uid: pve-2
           kind: server
-          trunk: true
+          switchport_mode: trunk
         19:
           uid: lag1
           kind: channel
+          switchport_mode: access
         20:
           uid: lag1
           kind: channel
+          switchport_mode: access
+      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
@@ -104,8 +109,10 @@ gw:
       kind: server
       rate: 20000000000
       port: port-channel1
+      switchport_mode: access
     lag2:
       uid: sw-estats
       kind: switch
       rate: 20000000000
       port: lacp key 1
+      switchport_mode: trunk

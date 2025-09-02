@@ -81,21 +81,27 @@ gw:
         3:
           uid: lag1
           kind: channel
+          switchport_mode: access
         4:
           uid: lag1
           kind: channel
+          switchport_mode: access
         5:
           uid: lag2
           kind: channel
+          switchport_mode: access
         6:
           uid: lag2
           kind: channel
+          switchport_mode: access
         7:
           uid: lag3
           kind: channel
+          switchport_mode: access
         8:
           uid: lag3
           kind: channel
+          switchport_mode: access
         9:
           uid: esterel42-1
         10:
@@ -103,21 +109,27 @@ gw:
         11:
           uid: lag5
           kind: channel
+          switchport_mode: access
         12:
           uid: lag5
           kind: channel
+          switchport_mode: access
         13:
           uid: lag6
           kind: channel
+          switchport_mode: access
         14:
           uid: lag6
           kind: channel
+          switchport_mode: access
         15:
           uid: lag7
           kind: channel
+          switchport_mode: access
         16:
           uid: lag7
           kind: channel
+          switchport_mode: access
         17:
           uid: esterel43-1
         31:
@@ -139,22 +151,27 @@ gw:
           uid: sw-4
           kind: switch
           rate: 10000000000
+          switchport_mode: trunk
         39:
           uid: sw-1
           kind: switch
           rate: 10000000000
+          switchport_mode: trunk
         40:
           uid: lag4
           kind: channel
           rate: 100000000000
+          switchport_mode: access
         41:
           uid: lag4
           kind: channel
           rate: 100000000000
+          switchport_mode: access
         42:
           uid: sw-6
           kind: switch
           rate: 10000000000
+          switchport_mode: trunk
         43:
           uid: LABO
           kind: other
@@ -163,21 +180,27 @@ gw:
           uid: sw-5
           kind: switch
           rate: 10000000000
+          switchport_mode: trunk
         45:
           uid: sw-3
           kind: switch
           rate: 10000000000
+          switchport_mode: trunk
         46:
           uid: sw-7
           kind: switch
           rate: 1000000000
+          switchport_mode: trunk
         47:
           uid: sw-2
           kind: switch
           rate: 10000000000
+          switchport_mode: trunk
         48:
           uid: renater-sophia
           kind: backbone
+          switchport_mode: trunk
+      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
@@ -185,33 +208,40 @@ gw:
       rate: 500000000000
       uid: srv-data1
       port: lag1
+      switchport_mode: access
     lag2:
       kind: server
       rate: 500000000000
       uid: srv-data2
       port: lag2
+      switchport_mode: access
     lag3:
       kind: server
       rate: 500000000000
       uid: srv-data3
       port: lag3
+      switchport_mode: access
     lag4:
       kind: server
       rate: 200000000000
       uid: srv-data4
       port: lag4
+      switchport_mode: access
     lag5:
       kind: server
       rate: 200000000000
       uid: srv-scratch1
       port: lag5
+      switchport_mode: access
     lag6:
       kind: server
       rate: 200000000000
       uid: srv-scratch2
       port: lag6
+      switchport_mode: access
     lag7:
       kind: server
       rate: 200000000000
       uid: srv-scratch3
       port: lag7
+      switchport_mode: access

@@ -6,6 +6,7 @@
       "port": "port-channel50",
       "rate": 50000000000,
       "ssh_name": "lag 1",
+      "switchport_mode": "trunk",
       "uid": "gw"
     }
   },
@@ -25,11 +26,13 @@
         {
           "kind": "channel",
           "snmp_name": "1/1/1",
+          "switchport_mode": "trunk",
           "uid": "lag1"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/2",
+          "switchport_mode": "trunk",
           "uid": "lag1"
         },
         {
@@ -41,6 +44,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/5",
+          "switchport_mode": "access",
           "uid": "chartreuse2-1"
         },
         {
@@ -48,6 +52,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/6",
+          "switchport_mode": "access",
           "uid": "chartreuse2-3"
         },
         {
@@ -55,6 +60,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/7",
+          "switchport_mode": "access",
           "uid": "chartreuse2-2"
         },
         {
@@ -62,6 +68,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/8",
+          "switchport_mode": "access",
           "uid": "chartreuse2-4"
         },
         {
@@ -69,6 +76,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/9",
+          "switchport_mode": "access",
           "uid": "chartreuse3-2"
         },
         {
@@ -76,6 +84,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/10",
+          "switchport_mode": "access",
           "uid": "chartreuse3-3"
         },
         {
@@ -83,6 +92,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/11",
+          "switchport_mode": "access",
           "uid": "chartreuse3-4"
         },
         {
@@ -90,6 +100,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/12",
+          "switchport_mode": "access",
           "uid": "chartreuse3-1"
         },
         {
@@ -103,6 +114,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/16",
+          "switchport_mode": "access",
           "uid": "chartreuse4-1"
         },
         {
@@ -110,6 +122,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/17",
+          "switchport_mode": "access",
           "uid": "chartreuse6-4"
         },
         {
@@ -117,6 +130,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/18",
+          "switchport_mode": "access",
           "uid": "chartreuse6-2"
         },
         {
@@ -124,6 +138,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/19",
+          "switchport_mode": "access",
           "uid": "chartreuse6-1"
         },
         {
@@ -131,6 +146,7 @@
           "port": "eth0",
           "rate": 10000000000,
           "snmp_name": "1/1/20",
+          "switchport_mode": "access",
           "uid": "chartreuse6-3"
         },
         {
@@ -139,6 +155,7 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/22",
+          "switchport_mode": "access",
           "uid": "nessie-1"
         },
         {
@@ -176,11 +193,13 @@
         {
           "kind": "server",
           "snmp_name": "1/1/39",
+          "switchport_mode": "access",
           "uid": "srv-data2"
         },
         {
           "kind": "server",
           "snmp_name": "1/1/40",
+          "switchport_mode": "access",
           "uid": "srv-data"
         },
         {
@@ -193,17 +212,19 @@
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/44",
-          "trunk": false,
+          "switchport_mode": "access",
           "uid": "imag-1b-F3-admin-01"
         },
         {
           "kind": "server",
           "snmp_name": "1/1/45",
+          "switchport_mode": "access",
           "uid": "pve-1"
         },
         {
           "kind": "server",
           "snmp_name": "1/1/46",
+          "switchport_mode": "access",
           "uid": "pve-2"
         },
         {
@@ -214,17 +235,20 @@
           "kind": "switch",
           "rate": 100000000000,
           "snmp_name": "1/1/49",
+          "switchport_mode": "trunk",
           "uid": "imag-1b-F2-prod-01"
         },
         {
           "kind": "switch",
           "rate": 100000000000,
           "snmp_name": "1/1/50",
+          "switchport_mode": "trunk",
           "uid": "imag-1b-F1-prod-01"
         }
       ],
       "rate": 25000000000,
-      "snmp_pattern": "%LINECARD%/1/%PORT%"
+      "snmp_pattern": "%LINECARD%/1/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

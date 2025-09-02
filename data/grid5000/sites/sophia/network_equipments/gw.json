@@ -9,6 +9,7 @@
       "port": "lag1",
       "rate": 500000000000,
       "ssh_name": "lag 1",
+      "switchport_mode": "access",
       "uid": "srv-data1"
     },
     "lag2": {
@@ -16,6 +17,7 @@
       "port": "lag2",
       "rate": 500000000000,
       "ssh_name": "lag 2",
+      "switchport_mode": "access",
       "uid": "srv-data2"
     },
     "lag3": {
@@ -23,6 +25,7 @@
       "port": "lag3",
       "rate": 500000000000,
       "ssh_name": "lag 3",
+      "switchport_mode": "access",
       "uid": "srv-data3"
     },
     "lag4": {
@@ -30,6 +33,7 @@
       "port": "lag4",
       "rate": 200000000000,
       "ssh_name": "lag 4",
+      "switchport_mode": "access",
       "uid": "srv-data4"
     },
     "lag5": {
@@ -37,6 +41,7 @@
       "port": "lag5",
       "rate": 200000000000,
       "ssh_name": "lag 5",
+      "switchport_mode": "access",
       "uid": "srv-scratch1"
     },
     "lag6": {
@@ -44,6 +49,7 @@
       "port": "lag6",
       "rate": 200000000000,
       "ssh_name": "lag 6",
+      "switchport_mode": "access",
       "uid": "srv-scratch2"
     },
     "lag7": {
@@ -51,6 +57,7 @@
       "port": "lag7",
       "rate": 200000000000,
       "ssh_name": "lag 7",
+      "switchport_mode": "access",
       "uid": "srv-scratch3"
     }
   },
@@ -70,89 +77,106 @@
         {
           "kind": "server",
           "snmp_name": "1/1/1",
+          "switchport_mode": "access",
           "uid": "pve-2"
         },
         {
           "kind": "server",
           "snmp_name": "1/1/2",
+          "switchport_mode": "access",
           "uid": "pve-1"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/3",
+          "switchport_mode": "access",
           "uid": "lag1"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/4",
+          "switchport_mode": "access",
           "uid": "lag1"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/5",
+          "switchport_mode": "access",
           "uid": "lag2"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/6",
+          "switchport_mode": "access",
           "uid": "lag2"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/7",
+          "switchport_mode": "access",
           "uid": "lag3"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/8",
+          "switchport_mode": "access",
           "uid": "lag3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/9",
+          "switchport_mode": "access",
           "uid": "esterel42-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/10",
+          "switchport_mode": "access",
           "uid": "esterel44-1"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/11",
+          "switchport_mode": "access",
           "uid": "lag5"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/12",
+          "switchport_mode": "access",
           "uid": "lag5"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/13",
+          "switchport_mode": "access",
           "uid": "lag6"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/14",
+          "switchport_mode": "access",
           "uid": "lag6"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/15",
+          "switchport_mode": "access",
           "uid": "lag7"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/16",
+          "switchport_mode": "access",
           "uid": "lag7"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/17",
+          "switchport_mode": "access",
           "uid": "esterel43-1"
         },
         {
@@ -185,111 +209,130 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/31",
+          "switchport_mode": "access",
           "uid": "musa-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/32",
+          "switchport_mode": "access",
           "uid": "musa-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/33",
+          "switchport_mode": "access",
           "uid": "musa-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/34",
+          "switchport_mode": "access",
           "uid": "musa-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/35",
+          "switchport_mode": "access",
           "uid": "musa-5"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/36",
+          "switchport_mode": "access",
           "uid": "musa-6"
         },
         {
           "kind": "server",
           "snmp_name": "1/1/37",
+          "switchport_mode": "access",
           "uid": "gwol-south"
         },
         {
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/38",
+          "switchport_mode": "trunk",
           "uid": "sw-4"
         },
         {
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/39",
+          "switchport_mode": "trunk",
           "uid": "sw-1"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "1/1/40",
+          "switchport_mode": "access",
           "uid": "lag4"
         },
         {
           "kind": "channel",
           "rate": 100000000000,
           "snmp_name": "1/1/41",
+          "switchport_mode": "access",
           "uid": "lag4"
         },
         {
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/42",
+          "switchport_mode": "trunk",
           "uid": "sw-6"
         },
         {
           "kind": "other",
           "rate": 10000000000,
           "snmp_name": "1/1/43",
+          "switchport_mode": "access",
           "uid": "LABO"
         },
         {
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/44",
+          "switchport_mode": "trunk",
           "uid": "sw-5"
         },
         {
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/45",
+          "switchport_mode": "trunk",
           "uid": "sw-3"
         },
         {
           "kind": "switch",
           "rate": 1000000000,
           "snmp_name": "1/1/46",
+          "switchport_mode": "trunk",
           "uid": "sw-7"
         },
         {
           "kind": "switch",
           "rate": 10000000000,
           "snmp_name": "1/1/47",
+          "switchport_mode": "trunk",
           "uid": "sw-2"
         },
         {
           "kind": "backbone",
           "snmp_name": "1/1/48",
+          "switchport_mode": "trunk",
           "uid": "renater-sophia"
         }
       ],
       "rate": 25000000000,
-      "snmp_pattern": "%LINECARD%/1/%PORT%"
+      "snmp_pattern": "%LINECARD%/1/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

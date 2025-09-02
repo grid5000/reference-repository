@@ -65,44 +65,47 @@ sw-4:
       rate: 1_000_000_000
       kind: node
       ports:
-       1:
-         uid: mercantour3-3
-       2:
-         uid: mercantour3-4
-       3:
-         uid: mercantour3-7
-       4:
-         uid: mercantour3-8
-       5:
-         uid: mercantour3-11
-       6:
-         uid: mercantour3-12
-       7:
-         uid: mercantour3-15
-       8:
-         uid: mercantour3-16
-       25:
-         uid: mercantour3-1
-       26:
-         uid: mercantour3-2
-       27:
-         uid: mercantour3-5
-       28:
-         uid: mercantour3-6
-       29:
-         uid: mercantour3-9
-       30:
-         uid: mercantour3-10
-       31:
-         uid: mercantour3-13
-       32:
-         uid: mercantour3-14
+        1:
+          uid: mercantour3-3
+        2:
+          uid: mercantour3-4
+        3:
+          uid: mercantour3-7
+        4:
+          uid: mercantour3-8
+        5:
+          uid: mercantour3-11
+        6:
+          uid: mercantour3-12
+        7:
+          uid: mercantour3-15
+        8:
+          uid: mercantour3-16
+        25:
+          uid: mercantour3-1
+        26:
+          uid: mercantour3-2
+        27:
+          uid: mercantour3-5
+        28:
+          uid: mercantour3-6
+        29:
+          uid: mercantour3-9
+        30:
+          uid: mercantour3-10
+        31:
+          uid: mercantour3-13
+        32:
+          uid: mercantour3-14
+      switchport_mode: access
     1:
       snmp_pattern: "Gi1/%LINECARD%/%PORT%"
       kavlan_pattern: "Gi1/%LINECARD%/%PORT%"
       rate: 10_000_000_000
       kind: node
       ports:
-       1:
+        1:
           uid: gw
           kind: router
+          switchport_mode: trunk
+      switchport_mode: access

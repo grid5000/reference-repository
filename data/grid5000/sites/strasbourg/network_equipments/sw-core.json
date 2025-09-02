@@ -8,6 +8,7 @@
       "kind": "server",
       "port": "port-channel1",
       "rate": 50000000000,
+      "switchport_mode": "access",
       "uid": "srv-data"
     }
   },
@@ -25,26 +26,28 @@
           "kind": "channel",
           "rate": 25000000000,
           "snmp_name": "Ethernet0",
+          "switchport_mode": "access",
           "uid": "port-channel1"
         },
         {
           "kind": "channel",
           "rate": 25000000000,
           "snmp_name": "Ethernet1",
+          "switchport_mode": "access",
           "uid": "port-channel1"
         },
         {
           "kind": "server",
           "rate": 25000000000,
           "snmp_name": "Ethernet2",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "pve-1"
         },
         {
           "kind": "server",
           "rate": 25000000000,
           "snmp_name": "Ethernet3",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "pve-2"
         },
         {
@@ -53,6 +56,7 @@
           "kind": "router",
           "rate": 10000000000,
           "snmp_name": "Ethernet5",
+          "switchport_mode": "trunk",
           "uid": "gw"
         },
         {
@@ -60,6 +64,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet6",
+          "switchport_mode": "access",
           "uid": "fleckenstein-1"
         },
         {
@@ -67,6 +72,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet7",
+          "switchport_mode": "access",
           "uid": "fleckenstein-2"
         },
         {
@@ -74,6 +80,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet8",
+          "switchport_mode": "access",
           "uid": "fleckenstein-3"
         },
         {
@@ -81,6 +88,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet9",
+          "switchport_mode": "access",
           "uid": "fleckenstein-4"
         },
         {
@@ -88,6 +96,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet10",
+          "switchport_mode": "access",
           "uid": "fleckenstein-5"
         },
         {
@@ -95,6 +104,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet11",
+          "switchport_mode": "access",
           "uid": "fleckenstein-6"
         },
         {
@@ -102,6 +112,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet12",
+          "switchport_mode": "access",
           "uid": "fleckenstein-7"
         },
         {
@@ -109,6 +120,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet13",
+          "switchport_mode": "access",
           "uid": "fleckenstein-8"
         },
         {
@@ -116,6 +128,7 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet14",
+          "switchport_mode": "access",
           "uid": "fleckenstein-9"
         },
         {
@@ -123,12 +136,14 @@
           "port": "eth0",
           "rate": 25000000000,
           "snmp_name": "Ethernet15",
+          "switchport_mode": "access",
           "uid": "fleckenstein-10"
         },
         {
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet16",
+          "switchport_mode": "access",
           "uid": "fleckenstein-1"
         },
         {
@@ -141,6 +156,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet20",
+          "switchport_mode": "access",
           "uid": "fleckenstein-2"
         },
         {
@@ -153,6 +169,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet24",
+          "switchport_mode": "access",
           "uid": "fleckenstein-3"
         },
         {
@@ -165,6 +182,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet28",
+          "switchport_mode": "access",
           "uid": "fleckenstein-4"
         },
         {
@@ -177,6 +195,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet32",
+          "switchport_mode": "access",
           "uid": "fleckenstein-5"
         },
         {
@@ -189,6 +208,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet36",
+          "switchport_mode": "access",
           "uid": "fleckenstein-6"
         },
         {
@@ -201,6 +221,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet40",
+          "switchport_mode": "access",
           "uid": "fleckenstein-7"
         },
         {
@@ -213,6 +234,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet44",
+          "switchport_mode": "access",
           "uid": "fleckenstein-8"
         },
         {
@@ -225,6 +247,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet48",
+          "switchport_mode": "access",
           "uid": "fleckenstein-9"
         },
         {
@@ -237,6 +260,7 @@
           "kind": "node",
           "port": "eth6",
           "snmp_name": "Ethernet52",
+          "switchport_mode": "access",
           "uid": "fleckenstein-10"
         },
         {
@@ -249,6 +273,7 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet56",
+          "switchport_mode": "access",
           "uid": "engelbourg-2"
         },
         {
@@ -261,6 +286,7 @@
           "kind": "node",
           "port": "eth2",
           "snmp_name": "Ethernet60",
+          "switchport_mode": "access",
           "uid": "engelbourg-2"
         },
         {
@@ -273,6 +299,7 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet64",
+          "switchport_mode": "access",
           "uid": "engelbourg-3"
         },
         {
@@ -285,6 +312,7 @@
           "kind": "node",
           "port": "eth2",
           "snmp_name": "Ethernet68",
+          "switchport_mode": "access",
           "uid": "engelbourg-3"
         },
         {
@@ -297,6 +325,7 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet72",
+          "switchport_mode": "access",
           "uid": "engelbourg-4"
         },
         {
@@ -309,6 +338,7 @@
           "kind": "node",
           "port": "eth2",
           "snmp_name": "Ethernet76",
+          "switchport_mode": "access",
           "uid": "engelbourg-4"
         },
         {
@@ -321,6 +351,7 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet80",
+          "switchport_mode": "access",
           "uid": "engelbourg-5"
         },
         {
@@ -333,6 +364,7 @@
           "kind": "node",
           "port": "eth2",
           "snmp_name": "Ethernet84",
+          "switchport_mode": "access",
           "uid": "engelbourg-5"
         },
         {
@@ -345,6 +377,7 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet88",
+          "switchport_mode": "access",
           "uid": "engelbourg-6"
         },
         {
@@ -357,6 +390,7 @@
           "kind": "node",
           "port": "eth2",
           "snmp_name": "Ethernet92",
+          "switchport_mode": "access",
           "uid": "engelbourg-6"
         },
         {
@@ -369,6 +403,7 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet96",
+          "switchport_mode": "access",
           "uid": "engelbourg-7"
         },
         {
@@ -381,6 +416,7 @@
           "kind": "node",
           "port": "eth2",
           "snmp_name": "Ethernet100",
+          "switchport_mode": "access",
           "uid": "engelbourg-7"
         },
         {
@@ -393,6 +429,7 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet104",
+          "switchport_mode": "access",
           "uid": "engelbourg-8"
         },
         {
@@ -405,6 +442,7 @@
           "kind": "node",
           "port": "eth2",
           "snmp_name": "Ethernet108",
+          "switchport_mode": "access",
           "uid": "engelbourg-8"
         },
         {
@@ -440,12 +478,13 @@
         {
           "kind": "switch",
           "snmp_name": "Ethernet124",
-          "trunk": true,
+          "switchport_mode": "trunk",
           "uid": "sw-admin"
         }
       ],
       "rate": 100000000000,
-      "snmp_pattern": "Ethernet%PORT%"
+      "snmp_pattern": "Ethernet%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

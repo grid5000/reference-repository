@@ -117,14 +117,18 @@ ecotype-prod1:
           snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
           kind: channel
           rate: 40000000000
+          switchport_mode: trunk
         50:
           uid: Port-channel 1
           snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
           kind: channel
           rate: 40000000000
+          switchport_mode: trunk
+      switchport_mode: access
   channels:
     Port-channel 1:
       kind: router
       uid: gw
       port: Port-channel 1
       rate: 80000000000
+      switchport_mode: trunk

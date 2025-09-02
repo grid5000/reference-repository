@@ -46,8 +46,11 @@ sw-6:
           uid: gw
           kind: router
           rate: 10000000000
+          switchport_mode: trunk
         26:
           uid: swadmin-6
           kind: switch
           rate: 10000000000
+          switchport_mode: access
+      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'

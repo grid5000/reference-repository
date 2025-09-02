@@ -5,6 +5,7 @@
       "kind": "switch",
       "port": "port-channel1",
       "rate": 80000000000,
+      "switchport_mode": "trunk",
       "uid": "sgros2"
     }
   },
@@ -135,12 +136,14 @@
           "kind": "channel",
           "rate": 40000000000,
           "snmp_name": "Ethernet6/51",
+          "switchport_mode": "trunk",
           "uid": "port-channel3"
         },
         {
           "kind": "channel",
           "rate": 40000000000,
           "snmp_name": "Ethernet6/52",
+          "switchport_mode": "trunk",
           "uid": "port-channel3"
         }
       ],
@@ -159,94 +162,110 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/1",
+          "switchport_mode": "access",
           "uid": "grele-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/2",
+          "switchport_mode": "access",
           "uid": "grele-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/3",
+          "switchport_mode": "access",
           "uid": "grele-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/4",
+          "switchport_mode": "access",
           "uid": "grele-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/5",
+          "switchport_mode": "access",
           "uid": "grele-5"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/6",
+          "switchport_mode": "access",
           "uid": "grele-6"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/7",
+          "switchport_mode": "access",
           "uid": "grele-7"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/8",
+          "switchport_mode": "access",
           "uid": "grele-8"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/9",
+          "switchport_mode": "access",
           "uid": "grele-9"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/10",
+          "switchport_mode": "access",
           "uid": "grele-10"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/11",
+          "switchport_mode": "access",
           "uid": "grele-11"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/12",
+          "switchport_mode": "access",
           "uid": "grele-12"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/13",
+          "switchport_mode": "access",
           "uid": "grele-13"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet7/14",
+          "switchport_mode": "access",
           "uid": "gratouille-1"
         },
         {
           "kind": "server",
           "snmp_name": "Ethernet7/15",
+          "switchport_mode": "access",
           "uid": "talc-data"
         },
         {
           "kind": "server",
           "snmp_name": "Ethernet7/16",
+          "switchport_mode": "access",
           "uid": "pve-99"
         },
         {
@@ -321,11 +340,13 @@
           "kind": "switch",
           "rate": 40000000000,
           "snmp_name": "Ethernet7/51",
+          "switchport_mode": "trunk",
           "uid": "sgros1"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

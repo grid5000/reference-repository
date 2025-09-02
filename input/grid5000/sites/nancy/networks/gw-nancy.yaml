@@ -73,6 +73,7 @@ gw:
         3:
           uid: renater-nancy
           kind: backbone
+          switchport_mode: trunk
         13:
           uid: grue-1
         14:
@@ -113,20 +114,26 @@ gw:
           uid: sgros1
           kind: switch
           rate: 40_000_000_000
+          switchport_mode: trunk
         50:
           uid: sgruss
           kind: switch
           rate: 40_000_000_000
+          switchport_mode: trunk
         51:
           uid: sgrappe
           kind: switch
           rate: 40_000_000_000
+          switchport_mode: trunk
         52:
           uid: sgrdix
           kind: switch
           rate: 40_000_000_000
+          switchport_mode: trunk
         53:
           uid: sgrvingt
           kind: switch
           rate: 40_000_000_000
+          switchport_mode: trunk
+      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
