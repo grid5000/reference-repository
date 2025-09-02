@@ -130,10 +130,12 @@ sgravillon2:
           uid: port-channel3
           kind: channel
           rate: 40_000_000_000
+          switchport_mode: trunk
         52:
           uid: port-channel3
           kind: channel
           rate: 40_000_000_000
+          switchport_mode: trunk
     7:
       snmp_pattern: "Ethernet%LINECARD%/%PORT%"
       kavlan_pattern: "Ethernet%LINECARD%/%PORT%"
@@ -180,9 +182,12 @@ sgravillon2:
           uid: sgros1
           kind: switch
           rate: 40_000_000_000
+          switchport_mode: trunk
+      switchport_mode: access
   channels:
     port-channel3:
       port: port-channel1
       uid: sgros2
       kind: switch
       rate: 80_000_000_000
+      switchport_mode: trunk

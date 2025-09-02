@@ -13,48 +13,56 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/1",
+          "switchport_mode": "access",
           "uid": "mercantour3-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/2",
+          "switchport_mode": "access",
           "uid": "mercantour3-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/3",
+          "switchport_mode": "access",
           "uid": "mercantour3-7"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/4",
+          "switchport_mode": "access",
           "uid": "mercantour3-8"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/5",
+          "switchport_mode": "access",
           "uid": "mercantour3-11"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/6",
+          "switchport_mode": "access",
           "uid": "mercantour3-12"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/7",
+          "switchport_mode": "access",
           "uid": "mercantour3-15"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/8",
+          "switchport_mode": "access",
           "uid": "mercantour3-16"
         },
         {
@@ -93,53 +101,62 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/25",
+          "switchport_mode": "access",
           "uid": "mercantour3-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/26",
+          "switchport_mode": "access",
           "uid": "mercantour3-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/27",
+          "switchport_mode": "access",
           "uid": "mercantour3-5"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/28",
+          "switchport_mode": "access",
           "uid": "mercantour3-6"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/29",
+          "switchport_mode": "access",
           "uid": "mercantour3-9"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/30",
+          "switchport_mode": "access",
           "uid": "mercantour3-10"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/31",
+          "switchport_mode": "access",
           "uid": "mercantour3-13"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Gi1/0/32",
+          "switchport_mode": "access",
           "uid": "mercantour3-14"
         }
       ],
       "rate": 1000000000,
-      "snmp_pattern": "Gi1/%LINECARD%/%PORT%"
+      "snmp_pattern": "Gi1/%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     },
     {
       "kavlan_pattern": "Gi1/%LINECARD%/%PORT%",
@@ -150,11 +167,13 @@
         {
           "kind": "router",
           "snmp_name": "Gi1/1/1",
+          "switchport_mode": "trunk",
           "uid": "gw"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "Gi1/%LINECARD%/%PORT%"
+      "snmp_pattern": "Gi1/%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

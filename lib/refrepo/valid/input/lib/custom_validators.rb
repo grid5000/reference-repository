@@ -11,7 +11,7 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
       'port' => HashValidator.optional('string'),
       'kind' => HashValidator.optional('string'),
       'rate' => HashValidator.optional('integer'),
-      'trunk' => HashValidator.optional('boolean'),
+      'switchport_mode' => HashValidator.optional('switchport_mode'),
       'snmp_pattern' => HashValidator.optional('string'),
       'snmp_name' => HashValidator.optional('string'),
       'kavlan_pattern' => HashValidator.optional('string'),
@@ -42,6 +42,20 @@ class HashValidator::Validator::LinecardPortValidator < HashValidator::Validator
       #Allow any string and nil values
     else
       errors[key] = "port definition should be either empty, a String, a Numeric or a Hash (with required 'uid' and #{@port_properties} allowed properties)."
+    end
+  end
+end
+
+class HashValidator::Validator::SwitchportModeValidator < HashValidator::Validator::Base
+
+  def initialize
+    super('switchport_mode')
+    @switchport_mode_values = [ 'access', 'trunk' ]
+  end
+
+  def validate(key, values, _validations, errors)
+    if not @switchport_mode_values.include?(values)
+      errors[key] = "Invalid switchport_mode value. Must be one of #{@switchport_mode_values}"
     end
   end
 end
@@ -127,6 +141,7 @@ class HashValidator::Validator::Ipv6NetworkValidator < HashValidator::Validator:
 end
 
 HashValidator.append_validator(HashValidator::Validator::LinecardPortValidator.new)
+HashValidator.append_validator(HashValidator::Validator::SwitchportModeValidator.new)
 HashValidator.append_validator(HashValidator::Validator::Ipv4AddressValidator.new)
 HashValidator.append_validator(HashValidator::Validator::Ipv4NetworkValidator.new)
 HashValidator.append_validator(HashValidator::Validator::Ipv6AddressValidator.new)

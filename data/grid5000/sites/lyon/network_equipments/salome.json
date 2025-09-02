@@ -18,6 +18,7 @@
           "port": "0:24",
           "snmp_name": "GigabitEthernet1",
           "ssh_name": "1",
+          "switchport_mode": "trunk",
           "uid": "gw"
         },
         {
@@ -67,6 +68,7 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet23",
           "ssh_name": "23",
+          "switchport_mode": "access",
           "uid": "sagittaire-3"
         },
         {
@@ -74,6 +76,7 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet24",
           "ssh_name": "24",
+          "switchport_mode": "access",
           "uid": "sagittaire-4"
         },
         {
@@ -81,6 +84,7 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet25",
           "ssh_name": "25",
+          "switchport_mode": "access",
           "uid": "sagittaire-5"
         },
         {
@@ -92,6 +96,7 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet28",
           "ssh_name": "28",
+          "switchport_mode": "access",
           "uid": "sagittaire-11"
         },
         {
@@ -99,6 +104,7 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet29",
           "ssh_name": "29",
+          "switchport_mode": "access",
           "uid": "sagittaire-12"
         },
         {
@@ -106,6 +112,7 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet30",
           "ssh_name": "30",
+          "switchport_mode": "access",
           "uid": "sagittaire-13"
         },
         {
@@ -113,6 +120,7 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet31",
           "ssh_name": "31",
+          "switchport_mode": "access",
           "uid": "sagittaire-14"
         },
         {
@@ -120,6 +128,7 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet32",
           "ssh_name": "32",
+          "switchport_mode": "access",
           "uid": "sagittaire-15"
         },
         {
@@ -127,12 +136,14 @@
           "port": "eth1",
           "snmp_name": "GigabitEthernet33",
           "ssh_name": "33",
+          "switchport_mode": "access",
           "uid": "sagittaire-16"
         }
       ],
       "rate": 1000000000,
       "snmp_pattern": "GigabitEthernet%PORT%",
-      "ssh_pattern": "%PORT%"
+      "ssh_pattern": "%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

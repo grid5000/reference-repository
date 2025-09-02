@@ -23,25 +23,28 @@ sw-core:
           uid: port-channel1
           kind: channel
           rate: 25_000_000_000
+          switchport_mode: access
         1:
           uid: port-channel1
-          kind: channel 
+          kind: channel
           rate: 25_000_000_000
+          switchport_mode: access
         2:
           uid: pve-1
           kind: server
-          trunk: true
           rate: 25_000_000_000
+          switchport_mode: trunk
         3:
           uid: pve-2
           kind: server
-          trunk: true
           rate: 25_000_000_000
 #       4: inetlab-sw1-eth0
-        5: 
+          switchport_mode: trunk
+        5:
           uid: gw
           kind: router
           rate: 10_000_000_000
+          switchport_mode: trunk
         6:
           uid: fleckenstein-1-eth0
           rate: 25_000_000_000
@@ -102,8 +105,8 @@ sw-core:
         124: 
           uid: sw-admin
           kind: switch
-          trunk: true
-
+          switchport_mode: trunk
+      switchport_mode: access
   channels:
     port-channel1:
       port: port-channel1
@@ -111,3 +114,4 @@ sw-core:
       rate: 50_000_000_000
       kind: server
 
+      switchport_mode: access

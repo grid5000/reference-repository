@@ -7,6 +7,7 @@
       "kind": "router",
       "port": "lag2",
       "rate": 20000000000,
+      "switchport_mode": "trunk",
       "uid": "gw"
     }
   },
@@ -25,24 +26,28 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/1",
+          "switchport_mode": "access",
           "uid": "estats-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/2",
+          "switchport_mode": "access",
           "uid": "estats-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/3",
+          "switchport_mode": "access",
           "uid": "estats-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/4",
+          "switchport_mode": "access",
           "uid": "estats-4"
         },
         {
@@ -57,24 +62,28 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/9",
+          "switchport_mode": "access",
           "uid": "estats-5"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/10",
+          "switchport_mode": "access",
           "uid": "estats-6"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/11",
+          "switchport_mode": "access",
           "uid": "estats-7"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/12",
+          "switchport_mode": "access",
           "uid": "estats-8"
         },
         {
@@ -89,24 +98,28 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/17",
+          "switchport_mode": "access",
           "uid": "estats-9"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/18",
+          "switchport_mode": "access",
           "uid": "estats-10"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/19",
+          "switchport_mode": "access",
           "uid": "estats-11"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "GigabitEthernet 1/20",
+          "switchport_mode": "access",
           "uid": "estats-12"
         },
         {
@@ -137,17 +150,20 @@
           "kind": "channel",
           "rate": 10000000000,
           "snmp_name": "10GigabitEthernet 1/1",
+          "switchport_mode": "trunk",
           "uid": "lacp key 1"
         },
         {
           "kind": "channel",
           "rate": 10000000000,
           "snmp_name": "10GigabitEthernet 1/2",
+          "switchport_mode": "trunk",
           "uid": "lacp key 1"
         }
       ],
       "rate": 1000000000,
-      "snmp_pattern": "GigabitEthernet %LINECARD%/%PORT%"
+      "snmp_pattern": "GigabitEthernet %LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

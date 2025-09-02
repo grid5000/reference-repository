@@ -4,18 +4,21 @@
       "kind": "router",
       "port": "lag3",
       "rate": 20000000000,
+      "switchport_mode": "trunk",
       "uid": "gw"
     },
     "port-channel50": {
       "kind": "switch",
       "port": "port-channel50",
       "rate": 20000000000,
+      "switchport_mode": "trunk",
       "uid": "swdc-a035-01-02-rba"
     },
     "port-channel51": {
       "kind": "switch",
       "port": "port-channel51",
       "rate": 20000000000,
+      "switchport_mode": "trunk",
       "uid": "swdc-c003-01-02-rba"
     }
   },
@@ -40,6 +43,7 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet1/1/5",
+          "switchport_mode": "trunk",
           "uid": "port-channel50"
         },
         {
@@ -47,6 +51,7 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet1/1/7",
+          "switchport_mode": "trunk",
           "uid": "port-channel51"
         },
         {
@@ -60,6 +65,7 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet1/1/12",
+          "switchport_mode": "trunk",
           "uid": "port-channel286"
         }
       ],
@@ -83,6 +89,7 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet2/1/5",
+          "switchport_mode": "trunk",
           "uid": "port-channel51"
         },
         {
@@ -90,6 +97,7 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet2/1/7",
+          "switchport_mode": "trunk",
           "uid": "port-channel50"
         },
         {
@@ -103,6 +111,7 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet2/1/12",
+          "switchport_mode": "trunk",
           "uid": "port-channel286"
         }
       ],

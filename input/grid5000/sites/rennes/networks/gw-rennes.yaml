@@ -72,97 +72,109 @@ gw:
         27:
           uid: lag5
           kind: channel
+          switchport_mode: access
         28:
           uid: lag5
           kind: channel
+          switchport_mode: access
         29:
           uid: lag4
           kind: channel
+          switchport_mode: access
         30:
           uid: lag4
           kind: channel
+          switchport_mode: access
         31:
           uid: pve-1
           kind: server
-          trunk: true
+          switchport_mode: trunk
         32:
           uid: pve-2
           kind: server
-          trunk: true
+          switchport_mode: trunk
         33:
           uid: pve-3
           kind: server
-          trunk: true
+          switchport_mode: trunk
         35:
           uid: lag2
           kind: channel
+          switchport_mode: access
         36:
           uid: lag2
           kind: channel
+          switchport_mode: access
         43:
           uid: sw-1-c003
           kind: switch
-          trunk: false  # temporaire pour kavlan-ng
           rate: 10000000000
+          switchport_mode: access # temporaire pour kavlan-ng
         44:
           uid: sw-adm-1
           kind: switch
-          trunk: false
           rate: 1000000000
+          switchport_mode: access
         45:
           uid: parasilo-sw-1
           kind: switch
-          trunk: true
           rate: 10000000000
+          switchport_mode: trunk
         46:
           uid: renater-rennes
           kind: backbone
           rate: 10000000000
+          switchport_mode: trunk
         47:
           uid: lag3
           kind: channel
           rate: 10000000000
+          switchport_mode: access
         48:
           uid: lag3
           kind: channel
           rate: 10000000000
+          switchport_mode: access
         49:
           uid: lag1
           kind: channel
           rate: 100000000000
+          switchport_mode: trunk
         50:
           uid: lag1
           kind: channel
           rate: 100000000000
+          switchport_mode: trunk
+      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
       kind: switch
-      trunk: true
       rate: 200000000000
       uid: sw-1
       port: lag1
+      switchport_mode: trunk
     lag2:
       kind: server
-      trunk: false
       rate: 50000000000
       uid: srv-data
       port: lag2
+      switchport_mode: access
     lag3:
       kind: switch
-      trunk: false  # temporaire pour kavlan-ng
       rate: 20000000000
       uid: swcore-01-rba
       port: port-channel286
+      switchport_mode: access # temporaire pour kavlan-ng
     lag4:
       kind: server
-      trunk: false
       rate: 50000000000
       uid: srv-data2
       port: lag4
+      switchport_mode: access
     lag5:
       kind: server
-      trunk: false
       rate: 50000000000
       uid: srv-data3
       port: lag5
+      switchport_mode: access

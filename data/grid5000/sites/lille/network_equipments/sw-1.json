@@ -12,6 +12,7 @@
       "port": "port-channel1",
       "rate": 200000000000,
       "ssh_name": "lag 2",
+      "switchport_mode": "trunk",
       "uid": "gw"
     }
   },
@@ -43,156 +44,182 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/7",
+          "switchport_mode": "access",
           "uid": "chuc-1"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/8",
+          "switchport_mode": "access",
           "uid": "chuc-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/9",
+          "switchport_mode": "access",
           "uid": "chuc-2"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/10",
+          "switchport_mode": "access",
           "uid": "chuc-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/11",
+          "switchport_mode": "access",
           "uid": "chuc-3"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/12",
+          "switchport_mode": "access",
           "uid": "chuc-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/13",
+          "switchport_mode": "access",
           "uid": "chuc-4"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/14",
+          "switchport_mode": "access",
           "uid": "chuc-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/15",
+          "switchport_mode": "access",
           "uid": "chuc-5"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/16",
+          "switchport_mode": "access",
           "uid": "chuc-5"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/17",
+          "switchport_mode": "access",
           "uid": "chuc-6"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/18",
+          "switchport_mode": "access",
           "uid": "chuc-6"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/19",
+          "switchport_mode": "access",
           "uid": "chuc-7"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/20",
+          "switchport_mode": "access",
           "uid": "chuc-7"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/21",
+          "switchport_mode": "access",
           "uid": "chuc-8"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/22",
+          "switchport_mode": "access",
           "uid": "chuc-8"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/23",
+          "switchport_mode": "access",
           "uid": "chirop-1"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/24",
+          "switchport_mode": "access",
           "uid": "chirop-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/25",
+          "switchport_mode": "access",
           "uid": "chirop-2"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/26",
+          "switchport_mode": "access",
           "uid": "chirop-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/27",
+          "switchport_mode": "access",
           "uid": "chirop-3"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/28",
+          "switchport_mode": "access",
           "uid": "chirop-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/29",
+          "switchport_mode": "access",
           "uid": "chirop-4"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/30",
+          "switchport_mode": "access",
           "uid": "chirop-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "1/1/31",
+          "switchport_mode": "access",
           "uid": "chirop-5"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "1/1/32",
+          "switchport_mode": "access",
           "uid": "chirop-5"
         },
         {
@@ -227,7 +254,7 @@
           "kind": "switch",
           "rate": 1000000000,
           "snmp_name": "1/1/47",
-          "trunk": false,
+          "switchport_mode": "access",
           "uid": "sw-admin6"
         },
         {
@@ -235,16 +262,19 @@
         {
           "kind": "channel",
           "snmp_name": "1/1/49",
+          "switchport_mode": "trunk",
           "uid": "lag2"
         },
         {
           "kind": "channel",
           "snmp_name": "1/1/50",
+          "switchport_mode": "trunk",
           "uid": "lag2"
         }
       ],
       "rate": 25000000000,
-      "snmp_pattern": "%LINECARD%/1/%PORT%"
+      "snmp_pattern": "%LINECARD%/1/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

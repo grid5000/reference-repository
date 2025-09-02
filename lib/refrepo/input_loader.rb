@@ -882,6 +882,10 @@ def complete_one_network_equipment(network_uid, network)
         if port['kind'].nil? and linecard['kind']
           port['kind'] = linecard['kind']
         end
+        if port['switchport_mode'].nil? and linecard['switchport_mode'] and (port['kind'].nil? or port['kind'] != 'channel')
+          # set switchport_mode of linecard if undefined, except if the port is part of a channel
+          port['switchport_mode'] = linecard['switchport_mode']
+        end
         if port['snmp_pattern'].nil? and linecard['snmp_pattern']
           port['snmp_pattern'] = linecard['snmp_pattern']
         end

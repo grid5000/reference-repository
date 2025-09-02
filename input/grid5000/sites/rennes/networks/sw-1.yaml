@@ -83,10 +83,13 @@ sw-1:
           uid: lag1
           kind: channel
           rate: 100000000000
+          switchport_mode: trunk
         50:
           uid: lag1
           kind: channel
           rate: 100000000000
+          switchport_mode: trunk
+      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
@@ -94,3 +97,4 @@ sw-1:
       rate: 200000000000
       uid: gw
       port: lag1
+      switchport_mode: trunk

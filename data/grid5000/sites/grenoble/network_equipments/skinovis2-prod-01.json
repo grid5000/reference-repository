@@ -5,6 +5,7 @@
       "kind": "router",
       "port": "port-channel40",
       "rate": 20000000000,
+      "switchport_mode": "trunk",
       "uid": "gw"
     }
   },
@@ -186,89 +187,103 @@
           "kind": "switch",
           "rate": 1000000000,
           "snmp_name": "Ethernet1/82",
-          "trunk": false,
+          "switchport_mode": "access",
           "uid": "skinovis2-admin-01"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/83",
+          "switchport_mode": "trunk",
           "uid": "port-channel1"
         },
         {
           "kind": "channel",
           "snmp_name": "Ethernet1/84",
+          "switchport_mode": "trunk",
           "uid": "port-channel1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/85",
+          "switchport_mode": "access",
           "uid": "kinovis-6"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet1/86",
+          "switchport_mode": "access",
           "uid": "kinovis-6"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/87",
+          "switchport_mode": "access",
           "uid": "kinovis-5"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet1/88",
+          "switchport_mode": "access",
           "uid": "kinovis-5"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/89",
+          "switchport_mode": "access",
           "uid": "kinovis-4"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet1/90",
+          "switchport_mode": "access",
           "uid": "kinovis-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/91",
+          "switchport_mode": "access",
           "uid": "kinovis-3"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet1/92",
+          "switchport_mode": "access",
           "uid": "kinovis-3"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet1/93",
+          "switchport_mode": "access",
           "uid": "kinovis-2"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/94",
+          "switchport_mode": "access",
           "uid": "kinovis-2"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "Ethernet1/95",
+          "switchport_mode": "access",
           "uid": "kinovis-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Ethernet1/96",
+          "switchport_mode": "access",
           "uid": "kinovis-1"
         },
         {
@@ -280,6 +295,7 @@
           "port": "eth2",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/99",
+          "switchport_mode": "access",
           "uid": "kinovis-6"
         },
         {
@@ -287,6 +303,7 @@
           "port": "eth2",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/100",
+          "switchport_mode": "access",
           "uid": "kinovis-3"
         },
         {
@@ -294,6 +311,7 @@
           "port": "eth2",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/101",
+          "switchport_mode": "access",
           "uid": "kinovis-2"
         },
         {
@@ -307,6 +325,7 @@
           "port": "eth2",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/105",
+          "switchport_mode": "access",
           "uid": "kinovis-4"
         },
         {
@@ -314,12 +333,14 @@
           "port": "eth2",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/106",
+          "switchport_mode": "access",
           "uid": "kinovis-5"
         },
         {
           "kind": "server",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/107",
+          "switchport_mode": "access",
           "uid": "srv-data3"
         },
         {
@@ -327,11 +348,13 @@
           "port": "eth2",
           "rate": 100000000000,
           "snmp_name": "Ethernet1/108",
+          "switchport_mode": "access",
           "uid": "kinovis-1"
         }
       ],
       "rate": 25000000000,
-      "snmp_pattern": "Ethernet%LINECARD%/%PORT%"
+      "snmp_pattern": "Ethernet%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

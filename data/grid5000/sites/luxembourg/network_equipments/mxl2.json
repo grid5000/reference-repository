@@ -8,6 +8,7 @@
       "kind": "switch",
       "port": "port-channel6",
       "rate": 4000000000,
+      "switchport_mode": "trunk",
       "uid": "ul-grid5000-sw02"
     }
   },
@@ -24,18 +25,21 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/1",
+          "switchport_mode": "access",
           "uid": "petitprince-1"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/2",
+          "switchport_mode": "access",
           "uid": "petitprince-2"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/3",
+          "switchport_mode": "access",
           "uid": "petitprince-3"
         },
         {
@@ -44,6 +48,7 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/5",
+          "switchport_mode": "access",
           "uid": "petitprince-5"
         },
         {
@@ -56,18 +61,21 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/9",
+          "switchport_mode": "access",
           "uid": "petitprince-9"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/10",
+          "switchport_mode": "access",
           "uid": "petitprince-10"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/11",
+          "switchport_mode": "access",
           "uid": "petitprince-11"
         },
         {
@@ -76,24 +84,28 @@
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/13",
+          "switchport_mode": "access",
           "uid": "petitprince-13"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/14",
+          "switchport_mode": "access",
           "uid": "petitprince-14"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/15",
+          "switchport_mode": "access",
           "uid": "petitprince-15"
         },
         {
           "kind": "node",
           "port": "eth1",
           "snmp_name": "TenGigabitEthernet 0/16",
+          "switchport_mode": "access",
           "uid": "petitprince-16"
         },
         {
@@ -131,26 +143,31 @@
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet 0/33",
+          "switchport_mode": "trunk",
           "uid": "Port-channel 6"
         },
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet 0/34",
+          "switchport_mode": "trunk",
           "uid": "Port-channel 6"
         },
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet 0/35",
+          "switchport_mode": "trunk",
           "uid": "Port-channel 6"
         },
         {
           "kind": "channel",
           "snmp_name": "TenGigabitEthernet 0/36",
+          "switchport_mode": "trunk",
           "uid": "Port-channel 6"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "TenGigabitEthernet %LINECARD%/%PORT%"
+      "snmp_pattern": "TenGigabitEthernet %LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,

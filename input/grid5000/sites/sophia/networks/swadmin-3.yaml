@@ -13,6 +13,7 @@ swadmin-3:
       kavlan_pattern: "%LINECARD%/1/%PORT%"
       rate: 1000000000
       kind: node
+      switchport_mode: access
       ports:
         1:
            uid: uvb-11-bmc
@@ -81,9 +82,9 @@ swadmin-3:
            uid: sw-3
            kind: switch
            rate: 10000000000
-           trunk: false
+           switchport_mode: access
         26:
            uid: swadmin-4
            kind: switch
            rate: 10000000000
-           trunk: false
+           switchport_mode: access

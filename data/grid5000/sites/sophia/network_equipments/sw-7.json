@@ -15,12 +15,14 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Te1/0/2",
+          "switchport_mode": "access",
           "uid": "esterel31-1"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Te1/0/3",
+          "switchport_mode": "access",
           "uid": "esterel31-2"
         },
         {
@@ -29,18 +31,21 @@
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Te1/0/5",
+          "switchport_mode": "access",
           "uid": "esterel31-3"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Te1/0/6",
+          "switchport_mode": "access",
           "uid": "esterel31-4"
         },
         {
           "kind": "node",
           "port": "eth0",
           "snmp_name": "Te1/0/7",
+          "switchport_mode": "access",
           "uid": "esterel38-1"
         },
         {
@@ -77,18 +82,20 @@
           "kind": "router",
           "rate": 1000000000,
           "snmp_name": "Te1/0/23",
+          "switchport_mode": "trunk",
           "uid": "gw"
         },
         {
           "kind": "switch",
           "rate": 1000000000,
           "snmp_name": "Te1/0/24",
-          "trunk": false,
+          "switchport_mode": "access",
           "uid": "swadmin-7"
         }
       ],
       "rate": 10000000000,
-      "snmp_pattern": "Te1/%LINECARD%/%PORT%"
+      "snmp_pattern": "Te1/%LINECARD%/%PORT%",
+      "switchport_mode": "access"
     }
   ],
   "managed_by_us": true,
