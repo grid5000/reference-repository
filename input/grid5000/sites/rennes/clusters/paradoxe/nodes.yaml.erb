@@ -176,13 +176,16 @@ nodes:
         sriov: false
         sriov_totalvfs: 0
         vendor: Broadcom Inc. and subsidiaries
+      eth1:
+        interface: Ethernet
+        management: false
     operating_system:
-      cstate_driver: intel_idle
-      cstate_governor: menu
-      ht_enabled: true
-      pstate_driver: intel_pstate
-      pstate_governor: performance
-      turboboost_enabled: true
+        cstate_driver: intel_idle
+        cstate_governor: menu
+        ht_enabled: true
+        pstate_driver: intel_pstate
+        pstate_governor: performance
+        turboboost_enabled: true
     storage_devices:
       pci-0000:47:00.0-scsi-0:2:1:0:
         id: disk0

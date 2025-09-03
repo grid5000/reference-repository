@@ -162,6 +162,15 @@
       "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
+      "device": "eth1",
+      "enabled": false,
+      "interface": "Ethernet",
+      "kavlan": false,
+      "management": false,
+      "mountable": false,
+      "mounted": false
+    },
+    {
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
@@ -174,6 +183,7 @@
       "network_address": "paradoxe-52-bmc.rennes.grid5000.fr"
     }
   ],
+  "nodeset": "paradoxe",
   "operating_system": {
     "cstate_driver": "intel_idle",
     "cstate_governor": "menu",
@@ -232,6 +242,9 @@
     }
   ],
   "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
     "queues": [
       "admin",
       "default"
