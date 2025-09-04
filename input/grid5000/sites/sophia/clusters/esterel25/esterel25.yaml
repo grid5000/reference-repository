@@ -9,6 +9,9 @@ queues:
   - testing
 nodes:
   esterel25-1:
+    gpu_devices:
+      nvidia1:
+        cpu_affinity_override: 1
     supported_job_types:
       deploy: true
       besteffort: true
