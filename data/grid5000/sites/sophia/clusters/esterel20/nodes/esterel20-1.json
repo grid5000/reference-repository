@@ -20,6 +20,76 @@
     "warranty_end": "2026-04-23"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 25769803776,
+      "microarchitecture": "Turing",
+      "model": "TITAN RTX",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "280.00 W",
+      "vbios_version": "90.02.23.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 25769803776,
+      "microarchitecture": "Turing",
+      "model": "TITAN RTX",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "280.00 W",
+      "vbios_version": "90.02.23.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 25769803776,
+      "microarchitecture": "Turing",
+      "model": "TITAN RTX",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "280.00 W",
+      "vbios_version": "90.02.23.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 25769803776,
+      "microarchitecture": "Turing",
+      "model": "TITAN RTX",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "280.00 W",
+      "vbios_version": "90.02.23.00.01",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
     "ram_size": 206158430208
   },
@@ -134,24 +204,22 @@
     },
     {
       "device": "ib0",
-      "driver": "ib_ipoib",
+      "driver": "mlx4_core",
       "enabled": true,
       "firmware_version": "2.42.5000",
       "guid": "0x98039b0300d5b5c1",
       "interface": "InfiniBand",
       "ip": "172.18.131.26",
       "kavlan": false,
-      "mac": "80:00:02:08:fe:80:00:00:00:00:00:00:98:03:9b:03:00:d5:b5:c1",
+      "mac": "98:03:9b:03:00:d5:b5:c1",
       "management": false,
       "model": "MT27500 Family [ConnectX-3]",
       "mountable": true,
       "mounted": true,
-      "name": "ibp137s0",
+      "name": "ib0",
       "netmask": "255.255.240.0",
       "network_address": "esterel20-1-ib0.sophia.grid5000.fr",
       "rate": 40000000000,
-      "sriov": false,
-      "sriov_totalvfs": 0,
       "vendor": "Mellanox Technologies"
     },
     {

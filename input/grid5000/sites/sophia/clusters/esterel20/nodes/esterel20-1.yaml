@@ -16,6 +16,39 @@ esterel20-1:
     manufacturer: Dell Inc.
     name: PowerEdge T640
     serial: FNQCWW2
+  gpu_devices:
+    nvidia0:
+      cpu_affinity: 0
+      device: "/dev/nvidia0"
+      memory: 25769803776
+      model: TITAN RTX
+      power_default_limit: 280.00 W
+      vbios_version: 90.02.23.00.01
+      vendor: Nvidia
+    nvidia1:
+      cpu_affinity: 0
+      device: "/dev/nvidia1"
+      memory: 25769803776
+      model: TITAN RTX
+      power_default_limit: 280.00 W
+      vbios_version: 90.02.23.00.01
+      vendor: Nvidia
+    nvidia2:
+      cpu_affinity: 1
+      device: "/dev/nvidia2"
+      memory: 25769803776
+      model: TITAN RTX
+      power_default_limit: 280.00 W
+      vbios_version: 90.02.23.00.01
+      vendor: Nvidia
+    nvidia3:
+      cpu_affinity: 1
+      device: "/dev/nvidia3"
+      memory: 25769803776
+      model: TITAN RTX
+      power_default_limit: 280.00 W
+      vbios_version: 90.02.23.00.01
+      vendor: Nvidia
   main_memory:
     ram_size: 206158430208
   memory_devices:
@@ -85,17 +118,16 @@ esterel20-1:
       sriov_totalvfs: 0
       vendor: Broadcom Inc. and subsidiaries
     ib0:
-      driver: ib_ipoib
+      driver: mlx4_core
       firmware_version: 2.42.5000
       guid: '0x98039b0300d5b5c1'
       interface: InfiniBand
-      mac: 80:00:02:08:fe:80:00:00:00:00:00:00:98:03:9b:03:00:d5:b5:c1
+      ip: 172.18.131.26
+      mac: 98:03:9b:03:00:d5:b5:c1
       management: false
       model: MT27500 Family [ConnectX-3]
-      name: ibp137s0
+      name: ib0
       rate: 40000000000
-      sriov: false
-      sriov_totalvfs: 0
       vendor: Mellanox Technologies
   operating_system:
     cstate_driver: intel_idle
