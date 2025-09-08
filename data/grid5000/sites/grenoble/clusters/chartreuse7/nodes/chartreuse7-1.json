@@ -1,26 +1,27 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "nb_cores": 88,
+    "nb_procs": 2,
+    "nb_threads": 176,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "04/22/2025",
+    "vendor": "HPE",
+    "version": 2.5
   },
-  "bmc_version": "v1",
+  "bmc_version": "1.69",
   "chassis": {
     "manufactured_at": "2025-08-06",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL360 Gen11",
+    "serial": "CZUD2Z02GN",
     "warranty_end": "2032-08-05"
   },
   "exotic": false,
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 1099511627776
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -31,28 +32,125 @@
   "memory_devices": [
     {
       "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 12",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 12",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
       "interface": "Ethernet",
       "ip": "172.16.26.29",
       "ip6": "2001:660:4406:100:b::1d",
       "kavlan": false,
       "mac": "40:5b:7f:be:4c:3e",
       "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "chartreuse7-1.grenoble.grid5000.fr",
       "rate": 10000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
       "switch": "imag-1b-F3-prod-01",
-      "switch_port": "1/1/24"
+      "switch_port": "1/1/24",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "40:5b:7f:be:4c:3f",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens14f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "bmc",
@@ -69,28 +167,27 @@
   ],
   "nodeset": "chartreuse7",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
     "core_flops": 86400000000,
-    "node_flops": 6220800000000
+    "node_flops": 7603200000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 2097152,
+    "cache_l3": 86507520,
     "clock_speed": 2700000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
     "microarchitecture": "Sapphire Rapids",
-    "microcode": "0xd000001",
     "model": "Intel Xeon",
     "other_description": "Intel(R) Xeon(R) Platinum 8458P",
     "vendor": "Intel",
@@ -104,14 +201,14 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
+      "by_id": "/dev/disk/by-id/nvme-eui.000000000000000100a075244c31f33d",
       "by_path": "/dev/disk/by-path/pci-0000:c5:00.0-nvme-1",
       "id": "disk0",
       "interface": "NVME",
-      "model": "unknown",
-      "size": 8,
+      "model": "MO006400KYDZU",
+      "size": 6401252745216,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Micron"
     }
   ],
   "supported_job_types": {
@@ -121,7 +218,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "chartreuse7-1"
