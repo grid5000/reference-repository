@@ -1,24 +1,24 @@
 ---
-model: Cluster Model # TODO: change this value.
-created_at: 1970-01-01 # TODO: change this value
+model: ProLiant DL360 Gen11
+created_at: 2025-09-08
 kavlan: false
-boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
-exotic: false # TODO: specify if 'true' or 'false'
+boot_type: uefi
+exotic: false
 queues:
   - admin
   - testing
 nodes:
   chartreuse7-1:
     chassis:
-      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
-      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
+      manufactured_at: 2025-08-06
+      warranty_end: 2032-08-05
     supported_job_types:
       deploy: true
       besteffort: true
       max_walltime: 0
     processor:
-      microarchitecture: Haswell # TODO: replace with microarch name.
-      clock_speed: 8 # TODO: Replace with clock speed.
+      microarchitecture: Sapphire Rapids
+      clock_speed: 2700000000
     network_adapters:
       bmc:
         interface: Ethernet
