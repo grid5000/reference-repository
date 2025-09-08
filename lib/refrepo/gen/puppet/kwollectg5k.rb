@@ -83,6 +83,14 @@ def generate_puppet_kwollectg5k(options)
       File.write(output_file, output)
     }
 
+    # Metrics from others devices (sensors, cooling, global wattmetre, ...)
+    site.fetch('sensors', {}).each { |sensor_uid, sensor|
+      output = ERB.new(File.read(File.expand_path('templates/kwollect-sensors.erb', File.dirname(__FILE__))), trim_mode: '-').result(binding)
+      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{sensor_uid}.conf")
+      output_file.dirname.mkpath()
+      File.write(output_file, output)
+    }
+
     # Wattmetre mapping configuration
     wattmetre_port_per_node = {}
     site.fetch('pdus', {}).each { |pdu_uid, pdu|

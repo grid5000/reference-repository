@@ -215,6 +215,11 @@ def add_default_values_and_mappings(h)
       pdu["uid"]  = pdu_uid
     end
 
+    site.fetch("sensors", []).each do |sensor_uid, sensor|
+      sensor["type"] = "sensor"
+      sensor["uid"]  = sensor_uid
+    end
+
     site.fetch("servers", []).each do |server_uid, server|
       server["type"]  = "server"
       server["uid"]  = server_uid
