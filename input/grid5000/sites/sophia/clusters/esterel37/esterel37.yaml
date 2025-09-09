@@ -29,11 +29,28 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
+      ib0:
+        enabled: true
+        mountable: true
+        mounted: true
+        netmask: 255.255.240.0
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      disk0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/dummy" # this path will have to change later.
+        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:110:0"
+      disk1:
+        id: disk1
+        interface: SAS
+        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:111:0"
     software:
       standard-environment: debian11-x64-std
     management_tools:
