@@ -43,14 +43,12 @@ nodes:
         mounted: true
         netmask: 255.255.240.0
     storage_devices:
-      disk0:
+      pci-0000:64:00.0-scsi-0:3:110:0:
         id: disk0
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:110:0"
-      disk1:
+        interface: SSD
+      pci-0000:64:00.0-scsi-0:3:111:0:
         id: disk1
-        interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:111:0"
+        interface: SSD
     software:
       standard-environment: debian11-x64-std
     management_tools:
