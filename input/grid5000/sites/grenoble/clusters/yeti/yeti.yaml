@@ -66,14 +66,22 @@ nodes:
         id: disk3
         reservation: true
     nodeset: yeti
-  yeti-[1-3]:
+  yeti-1:
+    storage_devices:
+      pci-0000:6d:00.0-nvme-1:
+        interface: NVME
+        id: disk4
+  yeti-2:
     storage_devices:
       pci-0000:6d:00.0-nvme-1:
         interface: NVME
         id: disk5
-  yeti-2:
-    storage_devices:
       pci-0000:59:00.0-nvme-1:
+        interface: NVME
+        id: disk4
+  yeti-3:
+    storage_devices:
+      pci-0000:6d:00.0-nvme-1:
         interface: NVME
         id: disk4
   yeti-4:
