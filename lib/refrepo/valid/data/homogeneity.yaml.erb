@@ -436,10 +436,23 @@ sophia:
     - -storage_devices.pci-0000:03:00.0-nvme-1
     - ~storage_devices.pci-0000:64:00.0-scsi-0:3:110:0.size
     - +storage_devices.pci-0000:64:00.0-scsi-0:3:111:0
+  mercantour1-3:
+    - ~network_adapters.ib0.rate
+  mercantour1-5:
+    - ~network_adapters.ib0.rate
   mercantour1-[6-7]:
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.model
     - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
+  mercantour1-7:
+    - ~network_adapters.ib0.rate
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
+  mercantour1-8:
+    - ~network_adapters.ib0.rate
+  mercantour1-11:
+    - ~network_adapters.ib0.rate
   mercantour2-[4-5]: # different disk firmware version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
   mercantour2-6: # difference in rate since electric incident on Sophia
