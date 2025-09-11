@@ -54,20 +54,19 @@ grenoble:
     - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:109:0.id
     - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:110:0.id
     - ~storage_devices.pci-0000:3b:00.0-scsi-0:3:111:0.id
-  yeti-1:
-    - ~storage_devices.pci-0000:59:00.0-nvme-1.model
+
   yeti-2:
-    - ~storage_devices.pci-0000:59:00.0-nvme-1.model
+    - +storage_devices.pci-0000:59:00.0-nvme-1
   yeti-3:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.model
-    - -storage_devices.pci-0000:6d:00.0-nvme-1
+    - ~storage_devices.pci-0000:6d:00.0-nvme-1.model
+    - -storage_devices.pci-0000:59:00.0-nvme-1
   yeti-4:
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.firmware_version
     - ~storage_devices.pci-0000:18:00.0-scsi-0:0:0:0.model
-    - -storage_devices.pci-0000:59:00.0-nvme-1
+    - ~storage_devices.pci-0000:6d:00.0-nvme-1.model
     - +storage_devices.pci-0000:ed:00.0-nvme-1
-    - +storage_devices.pci-0000:6d:00.0-nvme-1
   vercors4-3:
     - -storage_devices.pci-0000:18:00.0-scsi-0:2:0:0
     - -storage_devices.pci-0000:18:00.0-scsi-0:2:1:0
@@ -437,10 +436,23 @@ sophia:
     - -storage_devices.pci-0000:03:00.0-nvme-1
     - ~storage_devices.pci-0000:64:00.0-scsi-0:3:110:0.size
     - +storage_devices.pci-0000:64:00.0-scsi-0:3:111:0
+  mercantour1-3:
+    - ~network_adapters.ib0.rate
+  mercantour1-5:
+    - ~network_adapters.ib0.rate
   mercantour1-[6-7]:
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.model
     - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
+  mercantour1-7:
+    - ~network_adapters.ib0.rate
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.model
+    - ~storage_devices.pci-0000:00:1f.2-ata-1.vendor
+  mercantour1-8:
+    - ~network_adapters.ib0.rate
+  mercantour1-11:
+    - ~network_adapters.ib0.rate
   mercantour2-[4-5]: # different disk firmware version
     - ~storage_devices.pci-0000:00:1f.2-ata-1.firmware_version
   mercantour2-6: # difference in rate since electric incident on Sophia
@@ -459,8 +471,6 @@ sophia:
   mercantour3-9:
     - ~network_adapters.ib0.rate
   mercantour3-[11-13]:
-    - ~network_adapters.ib0.rate
-  uvb-[9-10]:
     - ~network_adapters.ib0.rate
 #toulouse:
 strasbourg:

@@ -1,58 +1,206 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 8,
+    "nb_procs": 2,
+    "nb_threads": 16,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "03/27/2025",
+    "vendor": "Dell Inc.",
+    "version": "2.24.0"
   },
-  "bmc_version": "v1",
+  "bmc_version": "7.00.00.181",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2018-07-02",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R740",
+    "serial": "8K8TKQ2",
+    "warranty_end": "2023-07-02"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 48318382080,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 8000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.03",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "7.5",
+      "cores": 4608,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 48318382080,
+      "microarchitecture": "Turing",
+      "model": "Quadro RTX 8000",
+      "performance": {
+        "fp-16": 32620000000000,
+        "fp-32": 16310000000000,
+        "fp-64": 510000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "90.02.4E.00.03",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 103079215104
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 8589934592,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 8589934592,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "9.54 0x8000fb2c 24.0.5",
       "interface": "Ethernet",
       "ip": "172.16.27.28",
       "ip6": "2001:660:4406:100:c::1c",
       "kavlan": false,
       "mac": "24:6e:96:de:36:54",
       "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "vercors11-1.grenoble.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "imag-1b-F1-prod-01",
+      "switch_port": "1/1/9",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "9.54 0x8000fb2c 24.0.5",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:de:36:56",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x8000121e, 24.0.5",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:de:36:74",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x8000121e, 24.0.5",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "24:6e:96:de:36:75",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
@@ -69,32 +217,31 @@
   ],
   "nodeset": "vercors11",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 41600000000,
+    "node_flops": 332800000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
-    "clock_speed": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 8650752,
+    "clock_speed": 2600000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microarchitecture": "Skylake-SP",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Silver 4112 CPU @ 2.60GHz",
+    "vendor": "Intel",
+    "version": "Silver 4112"
   },
   "redfish": true,
   "software": {
@@ -104,14 +251,15 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/wwn-0x5000c50041d0b81f",
+      "by_path": "/dev/disk/by-path/pci-0000:18:00.0-scsi-0:0:0:0",
+      "firmware_version": 4,
       "id": "disk0",
       "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
-      "storage": "SSD",
-      "vendor": "Unknown"
+      "model": "ST32000645SS",
+      "size": 2000398934016,
+      "storage": "HDD",
+      "vendor": "Seagate"
     }
   ],
   "supported_job_types": {
@@ -121,7 +269,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "vercors11-1"

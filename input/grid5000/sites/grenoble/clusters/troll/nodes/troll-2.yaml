@@ -135,17 +135,28 @@ troll-2:
       sriov_totalvfs: 63
       vendor: Mellanox Technologies
     ib0:
-      driver: hfi1
-      firmware_version: 1.27.0
-      guid: '0x0011750901c7879e'
-      interface: Omni-Path
+      driver: mlx5_core
+      firmware_version: 12.17.2010
+      guid: '0x7cfe900300814c40'
+      interface: InfiniBand
       ip: 172.18.21.2
-      mac: 00:11:75:09:01:c7:87:9e
+      mac: 7c:fe:90:03:00:81:4c:40
       management: false
-      model: Omni-Path HFI Silicon 100 Series [discrete]
+      model: MT27700 Family [ConnectX-4]
       name: ib0
       rate: 100000000000
-      vendor: Intel
+      vendor: Mellanox Technologies
+    ib1:
+      driver: mlx5_core
+      firmware_version: 12.17.2010
+      guid: '0x7cfe900300814c41'
+      interface: InfiniBand
+      mac: 7c:fe:90:03:00:81:4c:41
+      management: false
+      model: MT27700 Family [ConnectX-4]
+      name: ib1
+      rate: 10000000000
+      vendor: Mellanox Technologies
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
