@@ -70,6 +70,7 @@ def generate_puppet_kwollectg5k(options)
               ports_by_node[node_uid] = []
             end
             ports_by_node[node_uid] << "#{pdu_uid}-port-#{port_uid}"
+            ports_by_node[node_uid].uniq!
           }
         end
       }
