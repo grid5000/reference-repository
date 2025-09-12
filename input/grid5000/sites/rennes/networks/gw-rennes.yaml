@@ -112,7 +112,7 @@ gw:
           uid: sw-1-c003
           kind: switch
           rate: 10000000000
-          switchport_mode: access # temporaire pour kavlan-ng
+          switchport_mode: trunk
         44:
           uid: sw-adm-1
           kind: switch
@@ -168,7 +168,7 @@ gw:
       rate: 20000000000
       uid: swcore-01-rba
       port: port-channel286
-      switchport_mode: access # temporaire pour kavlan-ng
+      switchport_mode: trunk
     lag4:
       kind: server
       rate: 50000000000
