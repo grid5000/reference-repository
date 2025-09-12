@@ -10,7 +10,7 @@ def yaml_input_required_unwanted_files(options)
     next if sites and not sites.include?(site_uid)
     site_input_dir = File.expand_path("grid5000/sites/#{site_uid}", input_dir)
 
-    (Dir::entries(site_input_dir) - %w{. .. clusters networks servers pdus.yaml} - ["#{site_uid}.yaml"]).each do |f|
+    (Dir::entries(site_input_dir) - %w{. .. clusters networks servers pdus.yaml sensors.yaml} - ["#{site_uid}.yaml"]).each do |f|
       puts "ERROR: Unwanted file #{f} in #{site_input_dir}"
       r = false
     end
