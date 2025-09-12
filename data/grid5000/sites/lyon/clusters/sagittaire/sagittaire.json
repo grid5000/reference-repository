@@ -15,6 +15,90 @@
       }
     },
     {
+      "description": "Reactive power consumption of node reported by PDU, in volt-ampere reactive",
+      "name": "pdu_outlet_power_var",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
+      "description": "Power factor of node reported by PDU, as a ratio",
+      "name": "pdu_outlet_powerfactor",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
+      "description": "Last reset time of energy consumption counter of node reported by PDU, in unix timestamp",
+      "name": "pdu_outlet_energyreset_timestamp",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
+      "description": "Apparent power of node reported by PDU, in volt-ampere",
+      "name": "pdu_outlet_power_voltamp",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
+      "description": "Current load percent of node reported by PDU, as a percentage",
+      "name": "pdu_outlet_currentload_percentage",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
+      "description": "Current crest factor of node reported by PDU, as a ratio",
+      "name": "pdu_outlet_currentcrestfactor",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
+      "description": "Current of node reported by PDU, in ampere",
+      "name": "pdu_outlet_current_amp",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
+      "description": "Energy consumption of node reported by PDU, in watt.hours",
+      "name": "pdu_outlet_energy_watthours_total",
+      "optional_period": 0,
+      "period": 1000,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
+      "description": "Power consumption of node reported by PDU, in watt",
+      "name": "pdu_outlet_power_watt",
+      "optional_period": 0,
+      "period": 1000,
+      "source": {
+        "protocol": "pdu"
+      }
+    },
+    {
       "description": "Default subset of metrics from Prometheus Node Exporter",
       "name": "prom_default_metrics",
       "optional_period": 15000,
