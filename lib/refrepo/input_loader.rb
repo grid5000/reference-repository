@@ -111,6 +111,8 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
 
   add_wattmetre_mapping(global_hash)
 
+  add_generic_metrics(global_hash)
+
   # populate each cluster with metrics PDU information
   add_pdu_metrics(global_hash)
 
@@ -1008,6 +1010,18 @@ def complete_network_equipments(h)
   h['sites'].each do |_site_uid, site|
     site.fetch('networks', []).each do |network_uid, network|
       complete_one_network_equipment(network_uid, network)
+    end
+  end
+end
+
+def add_generic_metrics(h)
+  generic_metrics = YAML::load_file(File.dirname(__FILE__) + "/generic_metrics.yaml")
+  h['sites'].each_pair do |_site_uid, site|
+    site.fetch('pdus', {}).each_pair do |_pdu_uid, pdu|
+      if pdu["vendor"] == "Eaton" and pdu["model"] == "EMAB20"
+        pdu["metrics"] = pdu.fetch("metrics", []) + generic_metrics["eaton-emab20"]
+        pdu["metrics"].uniq!
+      end
     end
   end
 end
