@@ -124,7 +124,7 @@ def generate_reference_api
     site_path.mkpath()
 
     write_json(site_path.join("#{site_uid}.json"),
-               site.reject {|k, _v| k == "clusters" || k == "networks" || k == "pdus" || k == "dom0" || k == "laptops" || k == "servers" })
+               site.reject {|k, _v| k == "clusters" || k == "networks" || k == "pdus" || k == "dom0" || k == "laptops" || k == "servers" || k == "sensors"})
 
     #
     # Write pdu info
@@ -134,6 +134,16 @@ def generate_reference_api
     pdu_path.mkpath()
     site.fetch("pdus", []).each do |pdu_uid, pdu|
       write_json(pdu_path.join("#{pdu_uid}.json"), pdu)
+    end
+
+    #
+    # Write sensors info
+    #
+
+    sensors_path = site_path.join("sensors")
+    sensors_path.mkpath()
+    site.fetch("sensors", []).each do |sensor_uid, sensor|
+      write_json(sensors_path.join("#{sensor_uid}.json"), sensor)
     end
 
     #
