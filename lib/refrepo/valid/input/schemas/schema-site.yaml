@@ -87,3 +87,16 @@ ipv6:
   prefix: ipv6_network
   site_global_kavlan: integer
   site_index: integer
+sensors:
+  <optional_hash>:
+    <multi>:
+      type: string
+      uid: string
+      ports: optional_hash
+      ip: optional_ipv4_address
+      mac: optional_string
+      vendor: optional_string
+      model: optional_string
+      metrics: optional_array
+      kind: optional_string
+      serial: optional_string
