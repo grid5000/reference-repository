@@ -6,9 +6,9 @@
   nodes_number = 3 # Size of the cluster (number of nodes)
   # MAC addresses declaration
   mac_eth0_list = %w(
-24:6e:96:de:38:fc
-24:6e:96:de:15:a8
-24:6e:96:de:3f:7e
+24:6e:96:de:39:1c
+24:6e:96:de:15:c8
+24:6e:96:de:3f:9e
   )
   mac_bmc_list = %w(
 54:48:10:f6:4d:34
@@ -41,10 +41,10 @@ nodes:
         size: 8 # Fake size, will be replaced by g5k-checks
         technology: dram # Common memory technology, will be replaced by g5k-checks
     processor:
-      model: Unknown # Fake model name, will be replaced by g5k-checks
-      other_description: description # Fake description, will be replaced by g5k-checks
-      vendor: vendor # Fake vendor, will be replaced by g5k-checks
-      version: vendor # Fake version, will be replaced by g5k-checks
+      model: Intel Xeon
+      other_description: Intel(R) Xeon(R) Silver 4112 CPU @ 2.60GHz
+      vendor: Intel
+      version: Silver 4112
       cache_l1d: 8 # Fake cache, will be replaced by g5k-checks
       cache_l1i: 8 # Fake cache, will be replaced by g5k-checks
       cache_l2: 8 # Fake cache, will be replaced by g5k-checks
