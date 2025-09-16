@@ -145,6 +145,16 @@ gw:
           kind: channel
           rate: 100000000000
           switchport_mode: trunk
+        51:
+          uid: sw-2
+          kind: switch
+          rate: 100000000000
+          switchport_mode: trunk
+        53:
+          uid: sw-3
+          kind: switch
+          rate: 100000000000
+          switchport_mode: trunk
       switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:

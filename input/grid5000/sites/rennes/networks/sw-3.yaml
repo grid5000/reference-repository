@@ -1,0 +1,86 @@
+---
+sw-3:
+  model: Aruba 8325-48Y8C
+  warranty: 2048-05
+  kind: switch
+  managed_by_us: true
+  site: rennes
+  ip: 172.17.111.216
+  snmp_community: public
+  backplane_bps: 1440000000000
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 25000000000
+      kind: node
+      ports:
+        1:
+          uid: paradoxe-49
+        2:
+          uid: paradoxe-49-eth1
+        3:
+          uid: paradoxe-50
+        4:
+          uid: paradoxe-50-eth1
+        5:
+          uid: paradoxe-51
+        6:
+          uid: paradoxe-51-eth1
+        7:
+          uid: paradoxe-52
+        8:
+          uid: paradoxe-52-eth1
+        9:
+          uid: paradoxe-53
+        10:
+          uid: paradoxe-53-eth1
+        11:
+          uid: paradoxe-54
+        12:
+          uid: paradoxe-54-eth1
+        13:
+          uid: paradoxe-55
+        14:
+          uid: paradoxe-55-eth1
+        15:
+          uid: paradoxe-56
+        16:
+          uid: paradoxe-56-eth1
+        17:
+          uid: paradoxe-57
+        18:
+          uid: paradoxe-57-eth1
+        19:
+          uid: paradoxe-58
+        20:
+          uid: paradoxe-58-eth1
+        21:
+          uid: paradoxe-59
+        22:
+          uid: paradoxe-59-eth1
+        23:
+          uid: paradoxe-60
+        24:
+          uid: paradoxe-60-eth1
+        25:
+          uid: paradoxe-61
+        26:
+          uid: paradoxe-61-eth1
+        27:
+          uid: paradoxe-62
+        28:
+          uid: paradoxe-62-eth1
+        29:
+          uid: paradoxe-63
+        30:
+          uid: paradoxe-63-eth1
+        31:
+          uid: paradoxe-64
+        32:
+          uid: paradoxe-64-eth1
+        49:
+          uid: gw
+          kind: switch
+          rate: 100000000000
+  channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
