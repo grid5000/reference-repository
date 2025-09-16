@@ -1,0 +1,580 @@
+{
+  "ip": "192.168.1.2",
+  "mac": "32:34:36:81:a7:3f",
+  "metrics": [
+    {
+      "description": "Temperature measure from weather station",
+      "name": "weather_temp_celsius",
+      "period": 15000,
+      "source": {
+        "id": "1/1032/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "Luminosity measure from weather station",
+      "name": "weather_luminosity_lux",
+      "period": 15000,
+      "source": {
+        "id": "1/1034/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "humidity measure from weather station",
+      "name": "weather_humidity_meter_percent",
+      "period": 15000,
+      "source": {
+        "id": "1/1036/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "atmospheric pressure measure from weather station",
+      "name": "weather_pressure_bar",
+      "period": 15000,
+      "source": {
+        "id": "1/1038/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "wind speed measure from weather station in meter per second",
+      "name": "weather_wind_speed_mps",
+      "period": 15000,
+      "source": {
+        "id": "1/1040/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "wind direction in degree from weather station (North 360° or 0°, Est 90°, South 180°, West 270°)",
+      "name": "weather_wind_direction_deg",
+      "period": 15000,
+      "source": {
+        "id": "1/1042/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "active power output from PV panels",
+      "labels": {
+        "id": "net1"
+      },
+      "name": "pvpanel_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1106/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "reactive power output from PV panels",
+      "labels": {
+        "id": "net1"
+      },
+      "name": "pvpanel_output_power_var",
+      "period": 15000,
+      "source": {
+        "id": "1/1108/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "apparent power output from PV panels",
+      "labels": {
+        "id": "net1"
+      },
+      "name": "pvpanel_output_power_va",
+      "period": 15000,
+      "source": {
+        "id": "1/1110/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "active power output from PV panels",
+      "labels": {
+        "id": "net2"
+      },
+      "name": "pvpanel_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1136/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "reactive power output from PV panels",
+      "labels": {
+        "id": "net2"
+      },
+      "name": "pvpanel_output_power_var",
+      "period": 15000,
+      "source": {
+        "id": "1/1138/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "apparent power output from PV panels",
+      "labels": {
+        "id": "net2"
+      },
+      "name": "pvpanel_output_power_va",
+      "period": 15000,
+      "source": {
+        "id": "1/1140/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "active power output from PV panels",
+      "labels": {
+        "id": "net3"
+      },
+      "name": "pvpanel_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1166/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "reactive power output from PV panels",
+      "labels": {
+        "id": "net3"
+      },
+      "name": "pvpanel_output_power_var",
+      "period": 15000,
+      "source": {
+        "id": "1/1168/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "no description",
+      "labels": {
+        "id": "net3"
+      },
+      "name": "pvpanel_output_power_va",
+      "period": 15000,
+      "source": {
+        "id": "1/1170/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "active power output from PV panels",
+      "labels": {
+        "id": "net4"
+      },
+      "name": "pvpanel_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1196/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "reactive power output from PV panels",
+      "labels": {
+        "id": "net4"
+      },
+      "name": "pvpanel_output_power_var",
+      "period": 15000,
+      "source": {
+        "id": "1/1198/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "apparent power output from PV panels",
+      "labels": {
+        "id": "net4"
+      },
+      "name": "pvpanel_output_power_va",
+      "period": 15000,
+      "source": {
+        "id": "1/1200/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "active power output from PV panels",
+      "labels": {
+        "id": "netaux"
+      },
+      "name": "pvpanel_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1346/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "reactive power output from PV panels",
+      "labels": {
+        "id": "netaux"
+      },
+      "name": "pvpanel_output_power_var",
+      "period": 15000,
+      "source": {
+        "id": "1/1348/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "apparent power output from PV panels",
+      "labels": {
+        "id": "netaux"
+      },
+      "name": "pvpanel_output_power_va",
+      "period": 15000,
+      "source": {
+        "id": "1/1350/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp1"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1406/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp2"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1426/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp3"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1446/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp4"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1466/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp5"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1486/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp6"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1506/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp7"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1526/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp8"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1546/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp9"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1566/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp10"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1586/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp11"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1606/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp12"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1626/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp13"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1646/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in watt",
+      "labels": {
+        "id": "pvp14"
+      },
+      "name": "inverter_output_power_watt",
+      "period": 15000,
+      "source": {
+        "id": "1/1666/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp1"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1404/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp2"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1424/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp3"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1444/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp4"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1464/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp5"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1484/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp6"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1504/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp7"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1524/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp8"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1544/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp9"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1564/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp10"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1584/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp11"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1604/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp12"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1624/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp13"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1644/le_le_f32",
+        "protocol": "modbus"
+      }
+    },
+    {
+      "description": "electricity produced by PV panel in Ampere",
+      "labels": {
+        "id": "pvp14"
+      },
+      "name": "inverter_output_current_amp",
+      "period": 15000,
+      "source": {
+        "id": "1/1664/le_le_f32",
+        "protocol": "modbus"
+      }
+    }
+  ],
+  "model": "unknown",
+  "type": "sensor",
+  "uid": "entech",
+  "vendor": "Entech"
+}

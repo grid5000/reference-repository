@@ -4,7 +4,7 @@
   "metrics": [
     {
       "description": "fan speed of cooling system, in percent",
-      "name": "cooling_fan_speed_percent",
+      "name": "inrow_fan_speed_percent",
       "period": 5000,
       "scale_factor": 0.1,
       "source": {
@@ -14,7 +14,7 @@
     },
     {
       "description": "Temperature in output of cooling system, in degrees Celsius",
-      "name": "cooling_supply_temperature_celsius",
+      "name": "inrow_supply_temp_celsius",
       "period": 5000,
       "scale_factor": 0.1,
       "source": {
@@ -24,7 +24,7 @@
     },
     {
       "description": "Temperature in input of cooling system, in degrees Celsius",
-      "name": "cooling_return_temperature_celsius",
+      "name": "inrow_return_temp_celsius",
       "period": 5000,
       "scale_factor": 0.1,
       "source": {
@@ -33,10 +33,9 @@
       }
     },
     {
-      "description": "Power consumption of cooling system, in kilowatt",
-      "name": "cooling_power_kilowatt",
+      "description": "Power consumption of cooling system, in watt",
+      "name": "inrow_power_watt",
       "period": 5000,
-      "scale_factor": 0.01,
       "source": {
         "id": "1.3.6.1.4.1.318.1.1.27.1.6.1.2.1.3.1.2",
         "protocol": "snmp"
@@ -44,7 +43,7 @@
     },
     {
       "description": "Sensor temperature reading, in degrees Celsius",
-      "name": "pdu_temperature_celsius",
+      "name": "inrow_ambient_temp_celsius",
       "period": 5000,
       "scale_factor": 0.1,
       "source": {
@@ -59,7 +58,7 @@
     "33": "pdu-Z1.40",
     "35": "pdu-Z1.50"
   },
-  "type": "pdu",
-  "uid": "cooling-Z1",
+  "type": "sensor",
+  "uid": "inrow-Z1",
   "vendor": "APC"
 }

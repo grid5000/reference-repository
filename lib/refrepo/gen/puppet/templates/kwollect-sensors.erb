@@ -5,7 +5,7 @@
 
 <%-
 sensor.fetch('metrics', []).each {|metric|
-  if metric['source']['protocol'] == 'snmp'
+  if metric['source']['protocol'].start_with?('snmp')
     if metric['source']['id'].include?('%PORT%')
       sensor.fetch('ports', {}).each {|port_uid, node_uid|
 -%>

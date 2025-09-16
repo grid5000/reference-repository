@@ -17,7 +17,7 @@ cluster.fetch('metrics', []).each {|metric|
   or metric['source']['protocol'] == "https"
     host = ipmi_credentials+"@"+node_uid+"-bmc."+site_uid+".grid5000.fr"
     label = {'_device_alias' => node_uid+'-bmc'}
-  elsif metric['source']['protocol'] == "snmp"
+  elsif metric['source']['protocol'].start_with?("snmp")
     host = "public@"+node_uid+"-bmc."+site_uid+".grid5000.fr"
     label = {'_device_alias' => node_uid+'-bmc'}
   else
