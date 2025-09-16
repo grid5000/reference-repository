@@ -88,7 +88,24 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with administration tools' parameters
   add_management_tools(global_hash)
 
+  # surround call to add_default_values_and_mappings() with
+  # add_tmp_kavlanng_adapters() and
+  # clean_tmp_kavlanng_adapters(). These functions create a temporary
+  # kavlanng hash in nodes, mapping each network interface to a
+  # boolean, meaning which network interfaces has kalvanng enabled. It
+  # is then used in add_default_values_and_mappings() to set the
+  # boolean kavlanng property of the interface, only if needed (only
+  # if is different from the kavlan property). This code is temporary
+  # (September 15, 2025), only needed for the time period where we
+  # have both kavlan and kavlanng running in parallel, and we want
+  # some specific clusers to be enabled for kavlanng, and not for
+  # kavlan (or the opposite).
+  add_tmp_kavlanng_adapters(global_hash)
+
   add_default_values_and_mappings(global_hash)
+
+  # see 5 lines above
+  clean_tmp_kavlanng_adapters(global_hash)
 
   add_node_pdu_mapping(global_hash)
 
@@ -334,6 +351,24 @@ def add_default_values_and_mappings(h)
             end
           end
 
+          # compute if kavlanng has to be enabled or disabled on the
+          # interface. Only if different from kavlan, explicitely set
+          # it
+          if network_adapter.key?('kavlanng')
+            enable_kavlanng = network_adapter['kavlanng']
+          else
+            if cluster.key?('kavlanng') && node.key?('kavlanng')
+              enable_kavlanng = (cluster['kavlanng'] && node['kavlanng'].keys.include?(device))
+            else
+              enable_kavlanng = network_adapter['kavlan']
+            end
+          end
+          if enable_kavlanng != network_adapter['kavlan']
+            network_adapter['kavlanng'] = enable_kavlanng
+          else
+            network_adapter.delete('kavlanng')
+          end
+
           network_adapter.delete("network_address") if network_adapter["network_address"] == 'none'
         }
 
@@ -465,6 +500,29 @@ def add_kavlan_ips(h)
             hn['kavlan'][iface]["kavlan-#{vlan}"] = ip
           end
         end
+      end
+    end
+  end
+end
+
+def add_tmp_kavlanng_adapters(h)
+  h['sites'].each_pair do |_site_uid, hs|
+    hs.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
+      hc['nodes'].each_pair do |_node_uid, hn|
+        hn['kavlanng'] = {}
+        hn['network_adapters'].to_a.select { |i| i[1]['mountable'] and (i[1]['kavlanng'] or not i[1].has_key?('kavlanng')) and i[1]['interface'] =~ /(FPGA\/)?Ethernet/ }.map { |e| e[0] }.each do |iface|
+          hn['kavlanng'][iface] = true
+        end
+      end
+    end
+  end
+end
+
+def clean_tmp_kavlanng_adapters(h)
+  h['sites'].each_pair do |_site_uid, hs|
+    hs.fetch('clusters', {}).each_pair do |_cluster_uid, hc|
+      hc['nodes'].each_pair do |_node_uid, hn|
+        hn.delete('kavlanng')
       end
     end
   end

@@ -3,22 +3,33 @@
 require 'refrepo/data_loader'
 require 'set'
 
-TRUNK_IGNORE_KINDS = [ 'backbone', 'channel' ] # the kinds of ports that we ignore for trunks even if they are in trunk mode
-KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports', 'blacklist_trunk_ports' ] # these options are for us, not for neutron/NGS
+TRUNK_IGNORE_KINDS = [ 'backbone', 'channel' ]
+    # the kinds of ports that we ignore for trunks even if they are in
+    # trunk mode
+
+TRUNK_CHECK_OTHER_SIDE = [ 'router', 'switch', 'hpcswitch' ]
+    # the kind of ports for which we check if 1/ the other side is
+    # part of kavlanng config and 2/ if the other side is
+    # managed_by_us == true
+
+KAVLANNGG5K_OPTIONS = [ 'additional_trunk_ports', 'blacklist_trunk_ports' ]
+    # these options are for us, not for neutron/NGS
+
+def warn(msg)
+  puts "WARNING: #{msg}"
+end
+
+def error(msg)
+  abort "ERROR: #{msg}"
+end
 
 # entry point
 def generate_puppet_kavlanngg5k(options)
-  # Filter out sites without gateways.
-  available_gw_sites = get_sites_with_gw(File.join(options[:output_dir],
-                                                   "platforms/production/generators/kavlanng/kavlanng.yaml"),
-                                         options)
-
   # Generate a subset of the refapi with only the informations needed
   # for kavlan-api.
   gen_kavlanapi_g5k_desc(File.join(options[:output_dir],
                                    "platforms/production/modules/generated/files/grid5000/kavlanng/g5k/"),
-                         options,
-                         available_gw_sites)
+                         options)
 
   # Generate NGS configurations
   gen_sites_ngs_device_configs(File.join(options[:output_dir],
@@ -38,7 +49,7 @@ end
 # reasons: 1/ allow independant modifications to sites/clusters to not
 # pollute each others and 2/ to allow distribution between separate
 # kavlan-api instances.
-def gen_kavlanapi_g5k_desc(output_path, options, available_gw_sites)
+def gen_kavlanapi_g5k_desc(output_path, options)
   puts "KavlanNG: generate g5k network description for kavlan-api"
   puts "  to #{output_path}"
   puts "  for sites #{options[:sites]}"
@@ -46,55 +57,82 @@ def gen_kavlanapi_g5k_desc(output_path, options, available_gw_sites)
   refapi.delete_if { |k| k != 'sites' }
   refapi['sites'].delete_if { |s| !options[:sites].include? s }
   refapi['sites'].each do |site_id, site_h|
-    if !available_gw_sites.include?(site_id)
-      gw_msg = " (no router)"
-    else
-      gw_msg = ""
-    end
     if options[:verbose]
-      puts "  #{site_id}#{gw_msg}"
+      puts "  #{site_id}"
     end
     site_h.delete_if { |k| !['clusters', 'network_equipments', 'servers'].include? k }
+    if options[:verbose]
+      puts "    clusters"
+    end
     site_h.fetch('clusters', {}).each do |cluster_id, cluster_h|
       if options[:verbose]
-        puts "    #{cluster_id}"
+        puts "      #{cluster_id}"
       end
       cluster_h.delete_if { |k| k != 'nodes' }
-      cluster_h['nodes'].each do |_node_id, node_h|
-        node_h.delete_if { |k| k != 'network_adapters' }
-        node_h['network_adapters'].delete_if { |na| na.fetch('kavlan') != true }
-        node_h['network_adapters'].each do |na|
-          na.delete_if { |k| !['interface', 'mounted', 'management', 'device', 'name', 'switch', 'switch_port', 'mac'].include? k }
+      cluster_h['nodes'].each do |node_id, node_h|
+        node_h.delete_if { |k, _v| k != 'network_adapters' }
+        node_h['network_adapters'].delete_if do |na_h|
+          if na_h.has_key? 'kavlanng'
+            if options[:verbose]
+              if not na_h['kavlanng']
+                puts "        #{node_id}: remove network_adapter #{na_h['device']} because property kavlanng = #{na_h['kavlanng']}"
+              else
+                puts "        #{node_id}: keep network_adapter #{na_h['device']} because property kavlanng = #{na_h['kavlanng']}"
+              end
+            end
+            (not na_h['kavlanng'])
+          elsif na_h.has_key? 'kavlan'
+            # if options[:verbose]
+            #   if not na_h['kavlan']
+            #     puts "        #{node_id}: remove network_adapter #{na_h['device']} because property kavlan = #{na_h['kavlan']}"
+            #   else
+            #     puts "        #{node_id}: keep network_adapter #{na_h['device']} because property kavlan = #{na_h['kavlan']}"
+            #   end
+            # end
+            (not na_h['kavlan'])
+          else
+            if options[:verbose]
+              puts "        #{node_id}: remove network_adapter #{na_h['device']} because neither properties kavlanng or kalvan are defined"
+            end
+            true
+          end
+        end
+        node_h['network_adapters'].each do |na_h|
+          na_h.delete_if { |k, _v| !['interface', 'mounted', 'management', 'device', 'name', 'switch', 'switch_port', 'mac'].include? k }
         end
       end
     end
-    site_h['network_equipments'].delete_if { |_k, v| (v['kind'] != 'router') || (!available_gw_sites.include?(site_id)) }
-    routers = site_h['network_equipments'].keys
-    if routers.length > 1
-      puts "WARNING: #{site_id} has #{routers.length} routers"
+    if options[:verbose]
+      puts "    network equipments"
     end
-    if routers.length == 1
-      gw = routers[0]
-      site_h['network_equipments'][gw].delete_if { |k| ! ['ip', 'ip6', 'kind'].include? k }
+    site_h['network_equipments'].each do |ne_id, ne_h|
+      if options[:verbose]
+        puts "      #{ne_id}"
+      end
+      ne_h.delete_if { |k| ! ['ip', 'ip6', 'kind'].include? k }
+    end
+    routers = site_h['network_equipments'].select { |_ne_id, ne_h| ne_h['kind'] == 'router' }
+    if routers.length != 1
+      warn "#{site_id} has #{routers.length} routers"
     end
     site_h['servers'].delete_if { |k, _v| k != 'dns' }
     dns_list = site_h['servers'].keys
     if dns_list.length != 1
-      puts "WARNING: #{site_id} has #{dns_list.length} DNS"
+      warn "#{site_id} has #{dns_list.length} DNS"
     end
     begin
       site_h['servers']['dns'].delete_if { |k, _v| k != 'network_adapters' }
       site_h['servers']['dns']['network_adapters'].delete_if { |k, _v| k != 'default' }
     rescue
-      puts "WARNING: #{site_id} unable to properly clean DNS server entry"
+      warn "#{site_id} unable to properly clean DNS server entry"
     end
     begin
       dns_ip = site_h['servers']['dns']['network_adapters']['default']['ip']
       if !dns_ip
-        puts "WARNING: #{site_id} unable to get DNS IP address"
+        warn "#{site_id} unable to get DNS IP address"
       end
     rescue StandardError
-      puts "WARNING: #{site_id} unable to get DNS IP address"
+      warn "#{site_id} unable to get DNS IP address"
     end
   end
   # consistent order
@@ -144,7 +182,7 @@ def get_port_name(_refapi, site_name, device_name, linecard_index, linecard, por
   elsif linecard.has_key?('kavlan_pattern')
     return get_port_pattern_subst(linecard['kavlan_pattern'], linecard_index, port_index)
   else
-    puts "WARNING #{site_name}/#{device_name}/linecard-#{lc_index}/port-#{port_index}: unable to guess portname, fallback to port's uid: #{port['uid']}"
+    warn "#{site_name}/#{device_name}/linecard-#{lc_index}/port-#{port_index}: unable to guess portname, fallback to port's uid: #{port['uid']}"
     return port['uid']
   end
 end
@@ -160,27 +198,33 @@ def get_channel_name(_refapi, _site_name, _device_name, channel, channel_name)
   end
 end
 
+def get_kavlanng_managed_devices(site, kavlanng_config)
+  return kavlanng_config[site].keys
+end
+
 # Generate the NGS configuration for all network devices (device name,
 # device type, ip address, trunk ports, auth credentials, routing
 # config, etc.)
 #
 # The generated configurations are splitted by site.
-def gen_sites_ngs_device_configs(input_path, output_path, options)
+def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
   puts "KavlanNG: generate sites NGS device configurations"
   puts "  to #{output_path}"
-  puts "  based on reference repository and kavlanng configuration in #{input_path}"
+  puts "  based on reference repository and kavlanng configuration in #{kavlanng_config_path}"
   puts "  for sites #{options[:sites]}"
   refapi = load_data_hierarchy
-  network_devices_data = YAML::load(File.read(input_path))
-  network_devices_data.delete_if { |s| !options[:sites].include? s }
+  kavlanng_config = YAML::load(File.read(kavlanng_config_path))
+  generic_config = kavlanng_config['global']
+  kavlanng_config.delete('global')
+  kavlanng_config.delete_if { |s| !options[:sites].include? s }
 
   # match devices in kavlanng conf and in refapi
-  network_devices_data.each do |site, site_data|
+  kavlanng_config.each do |site, site_data|
     if options[:verbose]
       puts "  #{site}"
     end
     File.open(File.join(output_path, "#{site}.conf"), 'w') do |site_ngs_conf|
-      site_data['devices'].each do |device, device_data|
+      site_data.each do |device, device_data|
         refapi_device = nil
         if refapi['sites'][site]['network_equipments'].has_key? device
           refapi_device = device
@@ -197,7 +241,7 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
           end
         end
         if ! refapi_device
-          puts "WARNING: #{site}/#{device} is not in refapi. refapi['sites'][#{site}]['network_equipments'] contains #{refapi['sites'][site]['network_equipments'].keys}"
+          error "#{site}/#{device} is not in refapi. refapi['sites'][#{site}]['network_equipments'] contains #{refapi['sites'][site]['network_equipments'].keys}"
         else
           if options[:verbose]
             if device == refapi_device
@@ -207,17 +251,35 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
             end
           end
           site_ngs_conf.puts("[genericswitch:#{device}.#{site}.grid5000.fr]")
+
+          if ! refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'ngs_device_type'
+            error "#{site}/#{device} does not have ngs_device_type set in refapi"
+          end
+          if refapi['sites'][site]['network_equipments'][refapi_device]['kind'] == 'router' && ! refapi['sites'][site]['network_equipments'][refapi_device]['ngs_device_type'].end_with?('_router')
+            error "#{site}/#{device} is a router, but its ngs_device_type does not end with '_router'"
+          end
+          if refapi['sites'][site]['network_equipments'][refapi_device]['kind'] == 'router' && (! refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'ospf_instance_ipv4' or ! refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'ospf_instance_ipv6')
+            error "#{site}/#{device} ospf_instance_ipv4 and ospf_instance_ipv6 must be set in refapi for routers"
+          end
+
+          site_ngs_conf.puts("ip = #{refapi['sites'][site]['network_equipments'][refapi_device]['ip']}")
+          site_ngs_conf.puts("device_type = #{refapi['sites'][site]['network_equipments'][refapi_device]['ngs_device_type']}")
+          if refapi['sites'][site]['network_equipments'][refapi_device]['kind'] == 'router'
+            site_ngs_conf.puts("ospf_instance_ipv4 = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospf_instance_ipv4']}")
+            site_ngs_conf.puts("ospf_instance_ipv6 = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospf_instance_ipv6']}")
+          end
+
           device_data.each do |k, v|
             if ! KAVLANNGG5K_OPTIONS.include? k
               site_ngs_conf.puts("#{k} = #{v}")
             end
           end
-          site_ngs_conf.puts("ngs_network_name_format = kvl-{network_id:.10}")
-          site_ngs_conf.puts("ngs_ssh_disabled_algorithms = kex:diffie-hellman-group-exchange-sha1")
-          site_ngs_conf.puts("ngs_port_default_vlan = 100")
-          site_ngs_conf.puts("ngs_save_configuration = False")
-          site_ngs_conf.puts("ngs_manage_vlans = True")
-          site_ngs_conf.puts("ngs_physical_networks = g5k, #{site}")
+
+          generic_config.each do |k, v|
+            site_ngs_conf.puts("#{k} = #{v}")
+          end
+
+          site_ngs_conf.puts("ngs_physical_networks = #{site}")
 
           # trunk ports
           ngs_trunk_ports = []
@@ -230,14 +292,28 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
                   if port.has_key? 'switchport_mode'
                     if port['switchport_mode'] == 'trunk'
                       portname = get_port_name(refapi, site, refapi_device, lc_index, lc, port_index, port)
+                      other_side = port['uid']
                       if not TRUNK_IGNORE_KINDS.include?(port['kind'])
-                        if options[:verbose]
-                          puts "      trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
+                        if TRUNK_CHECK_OTHER_SIDE.include?(port['kind'])
+                          if not refapi['sites'][site]['network_equipments'][other_side]['managed_by_us']
+                            puts "      ignore trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']}), reason: the other side is not managed_by_us"
+                          elsif not get_kavlanng_managed_devices(site, kavlanng_config).include? other_side
+                            puts "      ignore trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']}), reason: the other side is not configured in kavlanng"
+                          else
+                            if options[:verbose]
+                              puts "      trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']})"
+                            end
+                            ngs_trunk_ports.push portname
+                          end
+                        else
+                          if options[:verbose]
+                            puts "      trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']})"
+                          end
+                          ngs_trunk_ports.push portname
                         end
-                        ngs_trunk_ports.push portname
                       else
                         if options[:verbose]
-                          puts "      ignore trunk port on #{site}/#{refapi_device}, kind: #{port['kind']}, name: #{portname}"
+                          puts "      ignore trunk port #{site} - #{refapi_device} - #{portname} to #{other_side}, reason: we ignore ports with kind: #{port['kind']}"
                         end
                       end
                     end
@@ -253,14 +329,28 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
               if channel.has_key? 'switchport_mode'
                 if channel['switchport_mode'] == 'trunk'
                   actual_channel_name = get_channel_name(refapi, site, refapi_device, channel, channelname)
+                  other_side = channel['uid']
                   if (not channel.has_key? 'kind') or (not TRUNK_IGNORE_KINDS.include?(channel['kind']))
-                    if options[:verbose]
-                      puts "      trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{actual_channel_name}"
+                    if channel.has_key? 'kind' and TRUNK_CHECK_OTHER_SIDE.include?(channel['kind'])
+                      if not refapi['sites'][site]['network_equipments'][other_side]['managed_by_us']
+                        puts "      ignore trunk channel #{site} - #{refapi_device} - #{channelname} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not managed_by_us"
+                      elsif not get_kavlanng_managed_devices(site, kavlanng_config).include? other_side
+                        puts "      ignore trunk channel #{site} - #{refapi_device} - #{channelname} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not configured in kavlanng"
+                      else
+                        if options[:verbose]
+                          puts "      trunk channel #{site} - #{refapi_device} - #{channelname} to #{other_side} (kind: #{channel['kind']})"
+                        end
+                        ngs_trunk_ports.push actual_channel_name
+                      end
+                    else
+                      if options[:verbose]
+                        puts "      trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']})"
+                      end
+                      ngs_trunk_ports.push actual_channel_name
                     end
-                    ngs_trunk_ports.push actual_channel_name
                   else
                     if options[:verbose]
-                      puts "      ignore trunk channel on #{site}/#{refapi_device}, kind: #{channel['kind']}, name: #{actual_channel_name}"
+                      puts "      ignore trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side}, reason: we ignore channels with kind: #{channel['kind']}"
                     end
                   end
                 end
@@ -292,29 +382,4 @@ def gen_sites_ngs_device_configs(input_path, output_path, options)
       end
     end
   end
-end
-
-# Take the list of sites passed in options, and filter out those
-# without gateways.
-def get_sites_with_gw(input_path, options)
-  puts "KavlanNG: check which sites have a kavlanng usable gateway"
-  puts "  based on kavlanng configuration in #{input_path}"
-  puts "  for sites #{options[:sites]}"
-  network_devices_data = YAML::load(File.read(input_path))
-  network_devices_data.delete_if { |s| !options[:sites].include? s }
-
-  sites_with_gw = Hash.new { |h, k| h[k] = [] }
-  network_devices_data.each do |site, site_data|
-    site_data['devices'].each do |device, device_data|
-      if device_data['device_type'].end_with?('_router')
-        sites_with_gw[site].append("#{device}.#{site}")
-      end
-    end
-  end
-  if options[:verbose]
-    options[:sites].each do |site|
-      puts "  #{site}: #{sites_with_gw.fetch(site, 'No Router')}"
-    end
-  end
-  return sites_with_gw.keys()
 end
