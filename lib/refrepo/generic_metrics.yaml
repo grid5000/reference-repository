@@ -1,0 +1,445 @@
+eaton-emab20:
+  - name: pdu_outlet_power_watt
+    description: Power consumption per outlet reported by PDU, in watt
+    optional_period: 0
+    period: 1000
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.5.1.3.0.%PORT% #outletWatts.0.1
+
+  - name: pdu_outlet_energy_watthours_total
+    description: Energy consumption per outlet reported by PDU, in watt.hours
+    optional_period: 0
+    period: 1000
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.5.1.4.0.%PORT% #outletWh.0.1
+
+  - name: pdu_total_power_watt
+    description: Power consumption in total reported by PDU, in watt
+    optional_period: 0
+    period: 1000
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.5.1.4.0.1 #inputTotalWatts.0.1
+
+  - name: pdu_total_energy_watthours_total
+    description: Energy consumption in total reported by PDU, in watt.hours
+    optional_period: 0
+    period: 1000
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.5.1.5.0.1 #inputTotalWh.0.1
+
+  - name: pdu_phase_voltage_volt
+    description: Voltage per phase reported by PDU, in volt
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.2.1.3.0.1.1 #inputVoltage.0.1.1
+
+  - name: pdu_phase_voltage_volt
+    description: Voltage per phase reported by PDU, in volt
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.2.1.3.0.1.2 #inputVoltage.0.1.2
+
+  - name: pdu_phase_voltage_volt
+    description: Voltage per phase reported by PDU, in volt
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.2.1.3.0.1.3 #inputVoltage.0.1.3
+
+  - name: pdu_phase_current_amp
+    description: Current per phase reported by PDU, in ampere
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.4.0.1.1 #inputCurrent.0.1.1
+
+  - name: pdu_phase_current_amp
+    description: Current per phase reported by PDU, in ampere
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.4.0.1.2 #inputCurrent.0.1.2
+
+  - name: pdu_phase_current_amp
+    description: Current per phase reported by PDU, in ampere
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.4.0.1.3 #inputCurrent.0.1.3
+
+  - name: pdu_phase_currentcrestfactor
+    description: Current crest factor per phase reported by PDU, as a ratio
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.10.0.1.1 #inputCurrentCrestFactor.0.1.1
+
+  - name: pdu_phase_currentcrestfactor
+    description: Current crest factor per phase reported by PDU, as a ratio
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.10.0.1.2 #inputCurrentCrestFactor.0.1.2
+
+  - name: pdu_phase_currentcrestfactor
+    description: Current crest factor per phase reported by PDU, as a ratio
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.10.0.1.3 #inputCurrentCrestFactor.0.1.3
+
+  - name: pdu_phase_currentload_percentage
+    description: Current load percent per phase reported by PDU, as a percentage
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.11.0.1.1 #inputCurrentPercentLoad.0.1.1
+
+  - name: pdu_phase_currentload_percentage
+    description: Current load percent per phase reported by PDU, as a percentage
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.11.0.1.2 #inputCurrentPercentLoad.0.1.2
+
+  - name: pdu_phase_currentload_percentage
+    description: Current load percent per phase reported by PDU, as a percentage
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.3.1.11.0.1.3 #inputCurrentPercentLoad.0.1.3
+
+  - name: pdu_phase_power_voltamp
+    description: Apparent power per phase reported by PDU, in volt-ampere
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.3.0.1.1 #inputVA.0.1.1
+
+  - name: pdu_phase_power_voltamp
+    description: Apparent power per phase reported by PDU, in volt-ampere
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.3.0.1.2 #inputVA.0.1.2
+
+  - name: pdu_phase_power_voltamp
+    description: Apparent power per phase reported by PDU, in volt-ampere
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.3.0.1.3 #inputVA.0.1.3
+
+  - name: pdu_phase_power_watt
+    description: Power consumption per phase reported by PDU, in watt
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.4.0.1.1 #inputWatts.0.1.1
+
+  - name: pdu_phase_power_watt
+    description: Power consumption per phase reported by PDU, in watt
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.4.0.1.2 #inputWatts.0.1.2
+
+  - name: pdu_phase_power_watt
+    description: Power consumption per phase reported by PDU, in watt
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.4.0.1.3 #inputWatts.0.1.3
+
+  - name: pdu_phase_energy_watthours_total
+    description: Energy consumption per phase reported by PDU, in watt.hours
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.5.0.1.1 #inputWh.0.1.1
+
+  - name: pdu_phase_energy_watthours_total
+    description: Energy consumption per phase reported by PDU, in watt.hours
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.5.0.1.2 #inputWh.0.1.2
+
+  - name: pdu_phase_energy_watthours_total
+    description: Energy consumption per phase reported by PDU, in watt.hours
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.5.0.1.3 #inputWh.0.1.3
+
+  - name: pdu_phase_energyreset_timestamp
+    description: Last reset time of energy consumption counter per phase reported by PDU, in unix timestamp
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.6.0.1.1 #inputWhTimer.0.1.1
+
+  - name: pdu_phase_energyreset_timestamp
+    description: Last reset time of energy consumption counter per phase reported by PDU, in unix timestamp
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.6.0.1.2 #inputWhTimer.0.1.2
+
+  - name: pdu_phase_energyreset_timestamp
+    description: Last reset time of energy consumption counter per phase reported by PDU, in unix timestamp
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.6.0.1.3 #inputWhTimer.0.1.3
+
+  - name: pdu_phase_powerfactor
+    description: Power factor per phase reported by PDU, as a ratio
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.7.0.1.1 #inputPowerFactor.0.1.1
+
+  - name: pdu_phase_powerfactor
+    description: Power factor per phase reported by PDU, as a ratio
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.7.0.1.2 #inputPowerFactor.0.1.2
+
+  - name: pdu_phase_powerfactor
+    description: Power factor per phase reported by PDU, as a ratio
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.7.0.1.3 #inputPowerFactor.0.1.3
+
+  - name: pdu_phase_power_var
+    description: Reactive power consumption per phase reported by PDU, in volt-ampere reactive
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.8.0.1.1 #inputVAR.0.1.1
+
+  - name: pdu_phase_power_var
+    description: Reactive power consumption per phase reported by PDU, in volt-ampere reactive
+    labels: {'phase': 2}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.8.0.1.2 #inputVAR.0.1.2
+
+  - name: pdu_phase_power_var
+    description: Reactive power consumption per phase reported by PDU, in volt-ampere reactive
+    labels: {'phase': 3}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.4.1.8.0.1.3 #inputVAR.0.1.3
+
+  - name: pdu_total_power_voltamp
+    description: Apparent power in total reported by PDU, in volt-ampere
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.5.1.3.0.1 #inputTotalVA.0.1
+
+  - name: pdu_total_energyreset_timestamp
+    description: Last reset time of energy consumption counter in total reported by PDU, in unix timestamp
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.5.1.6.0.1 #inputTotalWhTimer.0.1
+
+  - name: pdu_total_powerfactor
+    description: Power factor in total reported by PDU, as a ratio
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.5.1.7.0.1 #inputTotalPowerFactor.0.1
+
+  - name: pdu_total_power_var
+    description: Reactive power consumption in total reported by PDU, in volt-ampere reactive
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.5.1.8.0.1 #inputTotalVAR.0.1
+
+  - name: pdu_phase_PowerCapacity
+    description: Powercapacity reported by PDU
+    labels: {'phase': 1}
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.3.5.1.9.0.1 #inputPowerCapacity.0.1
+
+  - name: pdu_group_voltage_volt
+    description: Voltage per group reported by PDU, in volt
+    labels: {'group': 1}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.5.3.1.3.0.1 #groupVoltage.0.1
+
+  - name: pdu_group_voltage_volt
+    description: Voltage per group reported by PDU, in volt
+    labels: {'group': 2}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.5.3.1.3.0.2 #groupVoltage.0.2
+
+  - name: pdu_group_voltage_volt
+    description: Voltage per group reported by PDU, in volt
+    labels: {'group': 3}
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.5.3.1.3.0.3 #groupVoltage.0.3
+
+  - name: pdu_outlet_current_amp
+    description: Current per outlet reported by PDU, in ampere
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.4.1.3.0.%PORT% #outletCurrent.0.1
+
+  - name: pdu_outlet_currentcrestfactor
+    description: Current crest factor per outlet reported by PDU, as a ratio
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.4.1.9.0.%PORT% #outletCurrentCrestFactor.0.1
+
+  - name: pdu_outlet_currentload_percentage
+    description: Current load percent per outlet reported by PDU, as a percentage
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.4.1.10.0.%PORT% #outletCurrentPercentLoad.0.1
+
+  - name: pdu_outlet_power_voltamp
+    description: Apparent power per outlet reported by PDU, in volt-ampere
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.5.1.2.0.%PORT% #outletVA.0.1
+
+  - name: pdu_outlet_energyreset_timestamp
+    description: Last reset time of energy consumption counter per outlet reported by PDU, in unix timestamp
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.5.1.5.0.%PORT% #outletWhTimer.0.1
+
+  - name: pdu_outlet_powerfactor
+    description: Power factor per outlet reported by PDU, as a ratio
+    optional_period: 1000
+    period: 0
+    scale_factor: 0.001
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.5.1.6.0.%PORT% #outletPowerFactor.0.1
+
+  - name: pdu_outlet_power_var
+    description: Reactive power consumption per outlet reported by PDU, in volt-ampere reactive
+    optional_period: 1000
+    period: 0
+    source:
+      protocol: snmpv1
+      id: 1.3.6.1.4.1.534.6.6.7.6.5.1.7.0.%PORT% #outletVAR.0.1

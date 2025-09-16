@@ -5,7 +5,7 @@
 
 <%-
 neteq.fetch('metrics', []).each {|metric|
-  next if metric['source']['protocol'] != 'snmp'
+  next if not metric['source']['protocol'].start_with?('snmp')
   if metric['source']['id'].include?('%SNMP_IFACE%')
     neteq['linecards'].each_with_index {|linecard, linecard_uid|
       linecard.fetch('ports', []).each_with_index {|lport, lport_uid|
