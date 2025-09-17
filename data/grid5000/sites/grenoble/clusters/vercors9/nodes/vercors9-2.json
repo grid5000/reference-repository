@@ -51,8 +51,8 @@
       "name": "enp1s0f0np0",
       "network_address": "vercors9-2.grenoble.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "switch": "imag-1b-F1-prod-01",
+      "switch_port": "1/1/2"
     },
     {
       "device": "bmc",
@@ -105,8 +105,18 @@
   "storage_devices": [
     {
       "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_path": "/dev/disk/by-path/pci-0000:00:1f.2-ata-6.0",
       "id": "disk0",
+      "interface": "SAS",
+      "model": "unknown",
+      "size": 8,
+      "storage": "SSD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "",
+      "by_path": "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0",
+      "id": "disk1",
       "interface": "SAS",
       "model": "unknown",
       "size": 8,
