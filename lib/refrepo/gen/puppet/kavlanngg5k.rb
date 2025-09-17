@@ -296,9 +296,13 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
                       if not TRUNK_IGNORE_KINDS.include?(port['kind'])
                         if TRUNK_CHECK_OTHER_SIDE.include?(port['kind'])
                           if not refapi['sites'][site]['network_equipments'][other_side]['managed_by_us']
-                            puts "      ignore trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']}), reason: the other side is not managed_by_us"
+                            if options[:verbose]
+                              puts "      ignore trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']}), reason: the other side is not managed_by_us"
+                            end
                           elsif not get_kavlanng_managed_devices(site, kavlanng_config).include? other_side
-                            puts "      ignore trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']}), reason: the other side is not configured in kavlanng"
+                            if options[:verbose]
+                              puts "      ignore trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']}), reason: the other side is not configured in kavlanng"
+                            end
                           else
                             if options[:verbose]
                               puts "      trunk port #{site} - #{refapi_device} - #{portname} to #{other_side} (kind: #{port['kind']})"
@@ -333,9 +337,13 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
                   if (not channel.has_key? 'kind') or (not TRUNK_IGNORE_KINDS.include?(channel['kind']))
                     if channel.has_key? 'kind' and TRUNK_CHECK_OTHER_SIDE.include?(channel['kind'])
                       if not refapi['sites'][site]['network_equipments'][other_side]['managed_by_us']
-                        puts "      ignore trunk channel #{site} - #{refapi_device} - #{channelname} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not managed_by_us"
+                        if options[:verbose]
+                          puts "      ignore trunk channel #{site} - #{refapi_device} - #{channelname} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not managed_by_us"
+                        end
                       elsif not get_kavlanng_managed_devices(site, kavlanng_config).include? other_side
-                        puts "      ignore trunk channel #{site} - #{refapi_device} - #{channelname} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not configured in kavlanng"
+                        if options[:verbose]
+                          puts "      ignore trunk channel #{site} - #{refapi_device} - #{channelname} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not configured in kavlanng"
+                        end
                       else
                         if options[:verbose]
                           puts "      trunk channel #{site} - #{refapi_device} - #{channelname} to #{other_side} (kind: #{channel['kind']})"
