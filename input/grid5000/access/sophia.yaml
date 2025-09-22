@@ -20,6 +20,7 @@ mercantour3: *inria-sophia
 mercantour4: *inria-sophia
 mercantour5: *inria-sophia
 esterel19: *inria-sophia
+esterel20: *inria-sophia
 esterel29: *inria-sophia
 
 # DEDICATED MODE
@@ -47,6 +48,7 @@ esterel5: &dedicated-stars
 esterel4: *dedicated-stars
 esterel7: *dedicated-stars
 esterel11: *dedicated-stars
+esterel23: *dedicated-stars
 esterel26: *dedicated-stars
 esterel30: *dedicated-stars
 
@@ -83,6 +85,10 @@ esterel35: &dedicated-3ia
 
 esterel12: &dedicated-titane
     p1: [titane, '@admin']
+    besteffort: ['@inria_group', '@other_groups_with_access']
+
+esterel25: &dedicated-ayana
+    p1: [ayana, '@admin']
     besteffort: ['@inria_group', '@other_groups_with_access']
 
 esterel40: &dedicated-acumes
