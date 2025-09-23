@@ -9,9 +9,6 @@ queues:
   - testing
 nodes:
   chartreuse4-[1-4]:
-    chassis:
-      manufactured_at: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
-      warranty_end: 1970-01-01 # TODO: if not Dell vendor, put date. if Dell, use rake gen:dell-product-data after g5k-checks import, and remove this line.
     supported_job_types:
       deploy: true
       besteffort: true
@@ -29,13 +26,16 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # TODO: later
+      pci-0000:3b:00.0-sas-phy4-lun-0:
         id: disk0
         interface: SAS
-        by_path: "/dev/disk/by-path/pci-0000:3b:00.0-sas-phy4-lun-0" # this path will have to change later.
     software:
-      standard-environment: debian11-x64-std # TODO: check that architecture is OK
+      standard-environment: debian11-x64-std
     management_tools:
       bmc_vendor_tool: racadm
     nodeset: chartreuse4
