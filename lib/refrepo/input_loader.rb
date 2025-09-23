@@ -76,9 +76,6 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   # populate each node with software informations
   add_software(global_hash)
 
-  # populate each cluster with metrics network information
-  add_network_metrics(global_hash)
-
   # populate each node with theorical flops
   add_theorical_flops(global_hash)
 
@@ -112,6 +109,9 @@ def load_yaml_file_hierarchy(directory = File.expand_path("../../input/grid5000/
   add_wattmetre_mapping(global_hash)
 
   add_generic_metrics(global_hash)
+
+  # populate each cluster with metrics network information
+  add_network_metrics(global_hash)
 
   # populate each cluster with metrics PDU information
   add_pdu_metrics(global_hash)
@@ -1016,7 +1016,28 @@ end
 
 def add_generic_metrics(h)
   generic_metrics = YAML::load_file(File.dirname(__FILE__) + "/generic_metrics.yaml")
+
   h['sites'].each_pair do |_site_uid, site|
+    site.fetch('clusters', {}).each_pair do |cluster_uid, cluster|
+      cluster["metrics"] = [] if not cluster["metrics"]
+      generic_metrics["prometheus"].each do |m|
+        if not cluster["metrics"].map{|cm| cm["name"]}.include?(m["name"])
+          cluster["metrics"].append(m)
+        end
+      end
+      gpu = cluster["nodes"].values.first.fetch("gpu_devices", {"nil": nil}).values.first
+      if gpu \
+      and gpu.fetch("device").start_with?("/dev/nvidia") \
+      and GPURef.is_gpu_supported?(gpu) \
+      and cluster_uid != "hydra" # FIXME: to remove when hydra GPU is supported in std
+        generic_metrics["prometheus-nvidia"].each do |m|
+          if not cluster["metrics"].map{|cm| cm["name"]}.include?(m["name"])
+            cluster["metrics"].append(m)
+          end
+        end
+      end
+    end
+
     site.fetch('pdus', {}).each_pair do |_pdu_uid, pdu|
       if pdu["vendor"] == "Eaton" and pdu["model"] == "EMAB20"
         pdu["metrics"] = pdu.fetch("metrics", []) + generic_metrics["eaton-emab20"]
