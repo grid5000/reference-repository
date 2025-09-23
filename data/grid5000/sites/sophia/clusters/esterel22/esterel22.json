@@ -51,16 +51,6 @@
       }
     },
     {
-      "description": "All metrics from Prometheus Nvidia DCGM Exporter",
-      "name": "prom_nvgpu_all_metrics",
-      "optional_period": 15000,
-      "period": 0,
-      "source": {
-        "port": 9400,
-        "protocol": "prometheus"
-      }
-    },
-    {
       "description": "Default subset of metrics from Prometheus Nvidia DCGM Exporter",
       "name": "prom_nvgpu_default_metrics",
       "optional_period": 15000,
@@ -73,6 +63,16 @@
           "DCGM_FI_DEV_POWER_USAGE",
           "DCGM_FI_DEV_MEM_COPY_UTIL"
         ],
+        "port": 9400,
+        "protocol": "prometheus"
+      }
+    },
+    {
+      "description": "All metrics from Prometheus Nvidia DCGM Exporter",
+      "name": "prom_nvgpu_all_metrics",
+      "optional_period": 15000,
+      "period": 0,
+      "source": {
         "port": 9400,
         "protocol": "prometheus"
       }
