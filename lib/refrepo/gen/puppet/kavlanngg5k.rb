@@ -258,15 +258,15 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
           if refapi['sites'][site]['network_equipments'][refapi_device]['kind'] == 'router' && ! refapi['sites'][site]['network_equipments'][refapi_device]['ngs_device_type'].end_with?('_router')
             error "#{site}/#{device} is a router, but its ngs_device_type does not end with '_router'"
           end
-          if refapi['sites'][site]['network_equipments'][refapi_device]['kind'] == 'router' && (! refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'ospf_instance_ipv4' or ! refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'ospf_instance_ipv6')
-            error "#{site}/#{device} ospf_instance_ipv4 and ospf_instance_ipv6 must be set in refapi for routers"
+          if refapi['sites'][site]['network_equipments'][refapi_device]['kind'] == 'router' && (! refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'ospfv2_instance_id' or ! refapi['sites'][site]['network_equipments'][refapi_device].has_key? 'ospfv3_instance_id')
+            error "#{site}/#{device} ospfv2_instance_id and ospfv3_instance_id must be set in refapi for routers"
           end
 
           site_ngs_conf.puts("ip = #{refapi['sites'][site]['network_equipments'][refapi_device]['ip']}")
           site_ngs_conf.puts("device_type = #{refapi['sites'][site]['network_equipments'][refapi_device]['ngs_device_type']}")
           if refapi['sites'][site]['network_equipments'][refapi_device]['kind'] == 'router'
-            site_ngs_conf.puts("ospf_instance_ipv4 = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospf_instance_ipv4']}")
-            site_ngs_conf.puts("ospf_instance_ipv6 = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospf_instance_ipv6']}")
+            site_ngs_conf.puts("ospfv2_instance_id = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospfv2_instance_id']}")
+            site_ngs_conf.puts("ospfv3_instance_id = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospfv3_instance_id']}")
           end
 
           device_data.each do |k, v|
