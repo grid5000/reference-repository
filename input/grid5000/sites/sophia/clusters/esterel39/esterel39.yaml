@@ -29,15 +29,23 @@ nodes:
         enabled: true
         mountable: true
         mounted: true
+      eth1:
+        enabled: false
+        mountable: false
+        mounted: false
+      eth2:
+        enabled: false
+        mountable: false
+        mounted: false
     storage_devices:
-      disk0: # This field will have to be renamed later.
+      pci-0000:64:00.0-scsi-0:3:111:0:
         id: disk0
         interface: SSD
-        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:111:0" # this path will have to change later.
-      disk1: # This field will have to be renamed later.
+        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:111:0"
+      pci-0000:64:00.0-scsi-0:3:110:0:
         id: disk1
         interface: SATA
-        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:110:0" # this path will have to change later.
+        by_path: "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:3:110:0"
     software:
       standard-environment: debian11-x64-std
     management_tools:
