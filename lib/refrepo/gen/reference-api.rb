@@ -196,6 +196,11 @@ def generate_reference_api
       end
 
       #
+      # if not defined, create the energy_keep_alive value to 0, that means that no nodes will be kept up
+      #
+      cluster['keep_alive_nodes_count'] = 0 if cluster['keep_alive_nodes_count'].nil?
+
+      #
       # Write node info
       #
 
