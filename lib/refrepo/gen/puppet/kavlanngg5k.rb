@@ -384,7 +384,11 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
             end
           end
 
-          site_ngs_conf.puts("ngs_trunk_ports = #{ngs_trunk_ports.join(', ')}")
+          if not ngs_trunk_ports.empty?
+            site_ngs_conf.puts("ngs_trunk_ports = #{ngs_trunk_ports.join(', ')}")
+          end
+
+          # End of device config
           site_ngs_conf.puts("")
         end
       end
