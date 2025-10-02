@@ -71,6 +71,7 @@ gw:
       snmp_pattern: "%LINECARD%/1/%PORT%"
       kavlan_pattern: "%LINECARD%/1/%PORT%"
       rate: 25000000000
+      switchport_mode: access
       ports:
         27:
           uid: lag5
@@ -158,7 +159,6 @@ gw:
           kind: switch
           rate: 100000000000
           switchport_mode: trunk
-      switchport_mode: access
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
