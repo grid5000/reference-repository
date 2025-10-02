@@ -85,7 +85,9 @@ def generate_puppet_kadeployg5k(options)
           puts "Warning: Overriding default values #{dupes} by the same value for #{cluster_uid}"
         end
         if not key_dupes.empty?
-          puts "Info: cluster-specific configuration for #{cluster_uid} overrides default values: #{key_dupes}"
+          if options.key?(:verbose) && options[:verbose]
+            puts "Info: cluster-specific configuration for #{cluster_uid} overrides default values: #{key_dupes}"
+          end
         end
         data = defaults.merge(overrides)
         if data.nil?
