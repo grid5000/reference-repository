@@ -74,3 +74,15 @@ pdus:
     ip: 172.17.79.249
     mac: 28:29:86:12:28:60
 
+  gros-wattmetre2:
+    vendor: OmegaWatt
+    model: ''
+    ip: 172.16.79.24
+    kind: wattmetre-only
+    metrics:
+      - name: wattmetre_power_watt
+        description: Power consumption per outlet reported by wattmetre, in watt
+        period: 1000
+        optional_period: 20
+        source:
+          protocol: wattmetre
