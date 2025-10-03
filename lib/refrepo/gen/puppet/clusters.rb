@@ -35,6 +35,7 @@ def generate_puppet_clusters(options)
             end
             disk_reservation = f_node['storage_devices'].filter{|d| d.key?('reservation')}.length > 0
             gpu = f_node.key?('gpu_devices')
+            keep_alive_nodes_count = c_hash['keep_alive_nodes_count']
             if ! f_node.key?('chassis')
                 puts "no chassis field for #{f_node['uid']}, has g5k-checks data been imported ?" 
                 warrantied = false
@@ -44,6 +45,7 @@ def generate_puppet_clusters(options)
             c_data = {"queue" => queue, 
                 "disk_reservation" => disk_reservation,
                 "gpu" => gpu,
+                "keep_alive_nodes_count" => keep_alive_nodes_count,
                 "warrantied" => warrantied}
             if hiera[s_uid][c_uid] != c_data
                 diff = hiera[s_uid][c_uid].dup.delete_if { |k, v| c_data[k] == v }.merge!(c_data.dup.delete_if { |k, _v| hiera[s_uid][c_uid].has_key?(k) })
