@@ -308,6 +308,19 @@ class GPURef
         'fp-64' => 867890000000,
       },
     },
+    'RTX A6000' => {
+      'cores'              => 10752,
+      'compute_capability' => '8.6',
+      'short_name'         => 'A6000',
+      'alias'              => 'a6000',
+      'microarchitecture'  => 'Ampere',
+      'performance'        => {
+        'fp-16' => 38710000000000,
+        'fp-32' => 38710000000000,
+        'fp-64' => 604800000000,
+      },
+    },
+
     'Quadro P6000' => {
       'cores'              => 3840,
       'compute_capability' => '6.1',
