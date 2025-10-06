@@ -265,8 +265,8 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
           site_ngs_conf.puts("ip = #{refapi['sites'][site]['network_equipments'][refapi_device]['ip']}")
           site_ngs_conf.puts("device_type = #{refapi['sites'][site]['network_equipments'][refapi_device]['ngs_device_type']}")
           if refapi['sites'][site]['network_equipments'][refapi_device]['kind'] == 'router'
-            site_ngs_conf.puts("ospfv2_instance_id = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospfv2_instance_id']}")
-            site_ngs_conf.puts("ospfv3_instance_id = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospfv3_instance_id']}")
+            site_ngs_conf.puts("ngs_ospfv2_instance_id = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospfv2_instance_id']}")
+            site_ngs_conf.puts("ngs_ospfv3_instance_id = #{refapi['sites'][site]['network_equipments'][refapi_device]['ospfv3_instance_id']}")
           end
 
           device_data.each do |k, v|
