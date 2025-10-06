@@ -1,26 +1,80 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "nb_cores": 96,
+    "nb_procs": 2,
+    "nb_threads": 192,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "05/16/2025",
+    "vendor": "HPE",
+    "version": "A42"
   },
-  "bmc_version": "v1",
+  "bmc_version": "3.15",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2022-03-12",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL385 Gen10 Plus",
+    "serial": "CZ221004TW",
+    "warranty_end": "2028-12-31"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 42949672960,
+      "microarchitecture": "Ampere",
+      "model": "A100-PCIE-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "92.00.25.00.08",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 42949672960,
+      "microarchitecture": "Ampere",
+      "model": "A100-PCIE-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "92.00.25.00.08",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 42949672960,
+      "microarchitecture": "Ampere",
+      "model": "A100-PCIE-40GB",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "250.00 W",
+      "vbios_version": "92.00.25.00.08",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 1099511627776
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -31,28 +85,179 @@
   "memory_devices": [
     {
       "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 12",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 7",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 10",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 12",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 7",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "qede",
       "enabled": true,
+      "firmware_version": "mbi 8.65.21 [mfw 8.65.7.0]",
       "interface": "Ethernet",
       "ip": "172.16.131.50",
       "ip6": "2001:660:4406:800:4::32",
       "kavlan": false,
       "mac": "14:02:ec:de:6b:10",
       "management": false,
+      "model": "FastLinQ QL41000 Series 10/25/40/50GbE Controller",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "esterel36-1.sophia.grid5000.fr",
-      "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "rate": 1000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "sw-1",
+      "switch_port": "1/1/3",
+      "vendor": "QLogic Corp."
+    },
+    {
+      "device": "eth1",
+      "driver": "qede",
+      "enabled": false,
+      "firmware_version": "mbi 8.65.21 [mfw 8.65.7.0]",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "14:02:ec:de:6b:11",
+      "management": false,
+      "model": "FastLinQ QL41000 Series 10/25/40/50GbE Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens10f1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "QLogic Corp."
+    },
+    {
+      "device": "eth2",
+      "driver": "qede",
+      "enabled": false,
+      "firmware_version": "mbi 8.65.21 [mfw 8.65.7.0]",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "5c:ba:2c:bf:76:c6",
+      "management": false,
+      "model": "FastLinQ QL41000 Series 10/25/40/50GbE Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens3f0",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "QLogic Corp."
+    },
+    {
+      "device": "eth3",
+      "driver": "qede",
+      "enabled": false,
+      "firmware_version": "mbi 8.65.21 [mfw 8.65.7.0]",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "5c:ba:2c:bf:76:c7",
+      "management": false,
+      "model": "FastLinQ QL41000 Series 10/25/40/50GbE Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens3f1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "QLogic Corp."
+    },
+    {
+      "device": "ib0",
+      "driver": "mlx5_core",
+      "enabled": true,
+      "firmware_version": "16.31.1014",
+      "guid": "0x08c0eb0300971f86",
+      "interface": "InfiniBand",
+      "ip": "172.18.131.50",
+      "kavlan": false,
+      "mac": "08:c0:eb:03:00:97:1f:86",
+      "management": false,
+      "model": "MT27800 Family [ConnectX-5]",
+      "mountable": true,
+      "mounted": true,
+      "name": "ib0",
+      "netmask": "255.255.240.0",
+      "network_address": "esterel36-1-ib0.sophia.grid5000.fr",
+      "rate": 40000000000,
+      "vendor": "Mellanox Technologies"
     },
     {
       "device": "bmc",
@@ -69,47 +274,58 @@
   ],
   "nodeset": "esterel36",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 32000000000,
+    "node_flops": 3072000000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
-    "clock_speed": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 16777216,
+    "clock_speed": 2000000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microarchitecture": "Zen 2",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7662 64-Core Processor",
+    "vendor": "AMD",
+    "version": 7662
   },
   "redfish": true,
   "software": {
-    "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025032008",
+    "forced-deployment-timestamp": 202508281353,
+    "postinstall-version": "1.2025100114",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/wwn-0x600508b1001cc00976956648805acb19",
+      "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:1:0:0",
+      "firmware_version": 5.61,
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "SSD",
+      "model": "LOGICAL VOLUME",
+      "size": 1199369617408,
+      "storage": "HDD",
+      "vendor": "Unknown"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x600508b1001c5b296b7f654ce86bfdd5",
+      "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:1:0:1",
+      "firmware_version": 5.61,
+      "id": "disk1",
+      "interface": "SSD",
+      "model": "LOGICAL VOLUME",
+      "size": 6400575012864,
       "storage": "SSD",
       "vendor": "Unknown"
     }
@@ -121,7 +337,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "amd-v"
   },
   "type": "node",
   "uid": "esterel36-1"
