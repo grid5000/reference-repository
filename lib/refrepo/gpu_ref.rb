@@ -203,7 +203,7 @@ class GPURef
     'H100 NVL' => {
       'cores'              => 14592,
       'compute_capability' => '9.0',
-      'short_name'         => 'Tesla H100',
+      'short_name'         => 'H100',
       'alias'              => 'h100',
       'microarchitecture'  => 'Hopper',
       'performance'        => {
@@ -227,13 +227,13 @@ class GPURef
     'L40S' => {
       'cores'              => 18176,
       'compute_capability' => '8.9',
-      'short_name'         => 'Tesla L40S',
+      'short_name'         => 'L40S',
       'alias'              => 'l40s',
       'microarchitecture'  => 'Ada Lovelace',
       'performance'        => {
         'fp-16' => 91610000000000,
         'fp-32' => 91610000000000,
-        'fp-64' => 1431000000000,
+        'fp-64' =>  1431000000000,
       },
     },
     'Tesla M40' => {
@@ -421,9 +421,9 @@ class GPURef
        'alias'              => 'l40',
        'microarchitecture'  => 'Ada Lovelace',
        'performance'        => {
-         'fp-16' => 9050000000000,
-         'fp-32' => 9050000000000,
-         'fp-64' => 141400000000,
+         'fp-16' => 90520000000000,
+         'fp-32' => 90520000000000,
+         'fp-64' =>  1414300000000,
        },
      },
 	'GH200' => {
