@@ -1,26 +1,97 @@
 {
   "architecture": {
     "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "nb_cores": 88,
+    "nb_procs": 2,
+    "nb_threads": 176,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "08/07/2025",
+    "vendor": "HPE",
+    "version": 2.6
   },
-  "bmc_version": "v1",
+  "bmc_version": "1.70",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2025-07-17",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL380a Gen11",
+    "serial": "CZ2D2Z06LC",
+    "warranty_end": "2032-07-17"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.15",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia1",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.15",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.15",
+      "vendor": "Nvidia"
+    },
+    "nvidia3": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia3",
+      "memory": 48305799168,
+      "microarchitecture": "Ada Lovelace",
+      "model": "L40S",
+      "performance": {
+        "fp-16": 91610000000000,
+        "fp-32": 91610000000000,
+        "fp-64": 1431000000000
+      },
+      "power_default_limit": "350.00 W",
+      "vbios_version": "95.02.66.00.15",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 549755813888
   },
   "management_tools": {
     "bmc_vendor_tool": "ipmitool",
@@ -31,28 +102,125 @@
   "memory_devices": [
     {
       "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 11",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 9",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 11",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 12",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 9",
+      "size": 34359738368,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "bnxt_en",
       "enabled": true,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
       "interface": "Ethernet",
       "ip": "172.16.27.38",
       "ip6": "2001:660:4406:100:c::26",
       "kavlan": false,
       "mac": "40:5b:7f:be:ad:d6",
       "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "vercors17-1.grenoble.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "imag-1b-F2-prod-01",
+      "switch_port": "1/1/16",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "40:5b:7f:be:ad:d7",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "ens17f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "bmc",
@@ -69,32 +237,31 @@
   ],
   "nodeset": "vercors17",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 86400000000,
+    "node_flops": 7603200000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
-    "clock_speed": 8,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 2097152,
+    "cache_l3": 86507520,
+    "clock_speed": 2700000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microarchitecture": "Sapphire Rapids",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Platinum 8458P",
+    "vendor": "Intel",
+    "version": "Platinum 8458P"
   },
   "redfish": true,
   "software": {
@@ -104,14 +271,14 @@
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/nvme-eui.000000000000000100a075244ad316ba",
+      "by_path": "/dev/disk/by-path/pci-0000:9c:00.0-nvme-1",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "NVME",
+      "model": "MO006400KYDZU",
+      "size": 6401252745216,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Micron"
     }
   ],
   "supported_job_types": {
@@ -121,7 +288,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "vercors17-1"
