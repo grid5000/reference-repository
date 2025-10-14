@@ -43,6 +43,34 @@ pdus:
         channel: 5
         phase: 1
         phase_inverted: false
+      35:  #bank 6
+        uid: hydra-1
+        wattmetre: wattmetrev3-hydra
+        module: "04001461"
+        channel: 1
+        phase: 1
+        phase_inverted: false
+      36:  #bank 6
+        uid: hydra-2
+        wattmetre: wattmetrev3-hydra
+        module: "04001461"
+        channel: 2
+        phase: 1
+        phase_inverted: false
+      37:  #bank 6
+        uid: hydra-3
+        wattmetre: wattmetrev3-hydra
+        module: "04001461"
+        channel: 3
+        phase: 1
+        phase_inverted: false
+      38:  #bank 6
+        uid: hydra-4
+        wattmetre: wattmetrev3-hydra
+        module: "04001461"
+        channel: 4
+        phase: 1
+        phase_inverted: false
 
   pdu1b:
     # Rangée 9, 1ere armoire, PDU droite
@@ -86,6 +114,34 @@ pdus:
         module: "04000014"
         channel: 5
         phase: 2
+        phase_inverted: false
+      35:  #bank 6
+        uid: hydra-1
+        wattmetre: wattmetrev3-hydra
+        module: "04001460"
+        channel: 1
+        phase: 3
+        phase_inverted: false
+      36:  #bank 6
+        uid: hydra-2
+        wattmetre: wattmetrev3-hydra
+        module: "04001460"
+        channel: 2
+        phase: 3
+        phase_inverted: false
+      37:  #bank 6
+        uid: hydra-3
+        wattmetre: wattmetrev3-hydra
+        module: "04001460"
+        channel: 3
+        phase: 3
+        phase_inverted: false
+      38:  #bank 6
+        uid: hydra-4
+        wattmetre: wattmetrev3-hydra
+        module: "04001460"
+        channel: 4
+        phase: 3
         phase_inverted: false
 
   pdu3a:
@@ -467,6 +523,20 @@ pdus:
     model: v3
     kind: wattmetre-only
     serial: '02000011'
+    ip: 172.16.63.8
+    metrics:
+      - name: wattmetre_power_watt
+        description: Power consumption per outlet reported by wattmetre, in watt
+        period: 1000
+        optional_period: 10
+        source:
+          protocol: wattmetre
+
+  wattmetrev3-hydra:
+    vendor: OmegaWatt
+    model: v3
+    kind: wattmetre-only
+    serial: '02001217'
     ip: 172.16.63.8
     metrics:
       - name: wattmetre_power_watt
