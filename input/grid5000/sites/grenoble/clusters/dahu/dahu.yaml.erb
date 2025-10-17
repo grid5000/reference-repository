@@ -17,11 +17,10 @@ queues:
 
 nodes:
   <% (1..nodes_number).each { |i| %>
+  <%= cluster_name %>-<%= i %>:
   <% if i > 32%>
-  <%= cluster_name %>-<%= i %>:
     status: retired
-  <%else%>
-  <%= cluster_name %>-<%= i %>:
+  <% end %>
     processor:
       microarchitecture: Skylake-SP
       clock_speed: 2100000000
@@ -65,7 +64,6 @@ nodes:
         interface: SATA
         id: disk2
     nodeset: dahu
-  <% end %>
   <% } %>
   <%# dahu-[33-72]:
     status: retired %>
