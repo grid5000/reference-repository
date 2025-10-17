@@ -1,3 +1,9 @@
+<% 
+  nodes_number = 72
+  cluster_name = "dahu"
+  no_ib_nodes = %w(18 27 30)
+%>
+
 ---
 model: Dell PowerEdge C6420
 created_at: 2018-03-22 11:00:00 GMT
@@ -10,9 +16,12 @@ queues:
   - default
 
 nodes:
-  dahu-[33-72]:
+  <% (1..nodes_number).each { |i| %>
+  <% if i > 32%>
+  <%= cluster_name %>-<%= i %>:
     status: retired
-  dahu-[1-72]:
+  <%else%>
+  <%= cluster_name %>-<%= i %>:
     processor:
       microarchitecture: Skylake-SP
       clock_speed: 2100000000
@@ -38,11 +47,13 @@ nodes:
         mounted: false
         enabled: false
         mountable: false
+      <%unless no_ib_nodes.include?(i.to_s) %>
       ib0:
         mounted: true
         enabled: true
         mountable: true
         netmask: 255.255.240.0
+      <% end %>
     storage_devices:
       pci-0000:00:11.5-ata-3:
         interface: SATA
@@ -54,3 +65,7 @@ nodes:
         interface: SATA
         id: disk2
     nodeset: dahu
+  <% end %>
+  <% } %>
+  <%# dahu-[33-72]:
+    status: retired %>
