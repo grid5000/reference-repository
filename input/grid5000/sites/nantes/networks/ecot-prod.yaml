@@ -125,6 +125,12 @@ ecot-prod:
           kind: channel
           rate: 40000000000
           switchport_mode: trunk
+        51:
+          uid: ecotaxe-2
+          rate: 100000000000
+        52:
+          uid: ecotaxe-1
+          rate: 100000000000
   channels_ssh_pattern: '#{/\D+/.match("%CHANNEL%")} #{/\d+/.match("%CHANNEL%")}'
   channels:
     lag1:
