@@ -1,0 +1,272 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "contiguous",
+    "nb_cores": 56,
+    "nb_procs": 2,
+    "nb_threads": 112,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "12/06/2024",
+    "vendor": "HPE",
+    "version": "A42"
+  },
+  "bmc_version": "3.13",
+  "chassis": {
+    "manufactured_at": "2023-06-28",
+    "manufacturer": "HPE",
+    "name": "ProLiant DL385 Gen10 Plus v2",
+    "serial": "CZ232602Z5",
+    "warranty_end": "2030-07-14"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 85899345920,
+      "microarchitecture": "Ampere",
+      "model": "A100 80GB PCIe",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "92.00.A0.00.05",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 85899345920,
+      "microarchitecture": "Ampere",
+      "model": "A100 80GB PCIe",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "92.00.A0.00.05",
+      "vendor": "Nvidia"
+    },
+    "nvidia2": {
+      "compute_capability": "8.0",
+      "cores": 6912,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia2",
+      "memory": 85899345920,
+      "microarchitecture": "Ampere",
+      "model": "A100 80GB PCIe",
+      "performance": {
+        "fp-16": 77970000000000,
+        "fp-32": 19490000000000,
+        "fp-64": 9746000000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "92.00.A0.00.05",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 274877906944
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "ipmitool",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_proc 1 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 1 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 14",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 16",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_proc 2 dimm 3",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "ice",
+      "enabled": true,
+      "firmware_version": "4.60 0x8001e8b5 1.3682.0",
+      "interface": "Ethernet",
+      "ip": "172.16.196.2",
+      "ip6": "2001:660:4406:600:5::2",
+      "kavlan": false,
+      "mac": "6c:fe:54:51:bd:c0",
+      "management": false,
+      "model": "Ethernet Controller E810-C for QSFP",
+      "mountable": true,
+      "mounted": true,
+      "name": "eth0",
+      "network_address": "ecotaxe-2.nantes.grid5000.fr",
+      "rate": 100000000000,
+      "sriov": true,
+      "sriov_totalvfs": 128,
+      "switch": "ecot-prod",
+      "switch_port": "1/1/51",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "ice",
+      "enabled": false,
+      "firmware_version": "4.60 0x8001e8b5 1.3682.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "6c:fe:54:51:bd:c1",
+      "management": false,
+      "model": "Ethernet Controller E810-C for QSFP",
+      "mountable": false,
+      "mounted": false,
+      "name": "eth1",
+      "sriov": true,
+      "sriov_totalvfs": 128,
+      "vendor": "Intel"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.196.2",
+      "kavlan": false,
+      "mac": "5c:ed:8c:3e:4a:de",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "ecotaxe-2-bmc.nantes.grid5000.fr"
+    }
+  ],
+  "nodeset": "ecotaxe",
+  "operating_system": {
+    "cstate_driver": "acpi_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "acpi-cpufreq",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "pdu": [
+    {
+      "port": 17,
+      "uid": "pdu-Z1-50"
+    },
+    {
+      "port": 17,
+      "uid": "pdu-Z1-51"
+    }
+  ],
+  "performance": {
+    "core_flops": 44000000000,
+    "node_flops": 2464000000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 524288,
+    "cache_l3": 16777216,
+    "clock_speed": 2750000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Zen 3",
+    "model": "AMD EPYC",
+    "other_description": "AMD EPYC 7453 28-Core Processor",
+    "vendor": "AMD",
+    "version": 7453
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202508281353,
+    "postinstall-version": "1.2025102818",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x58ce38ee2290b321",
+      "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:2:1:0",
+      "firmware_version": "HPD1",
+      "id": "disk0",
+      "interface": "SAS",
+      "model": "VO001920RZWUV",
+      "size": 1920383410176,
+      "storage": "SSD",
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x58ce38ee229e4981",
+      "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:2:2:0",
+      "firmware_version": "HPD1",
+      "id": "disk1",
+      "interface": "SAS",
+      "model": "VO007680RZWUU",
+      "size": 7681501126656,
+      "storage": "SSD",
+      "vendor": "HPE"
+    },
+    {
+      "by_id": "/dev/disk/by-id/wwn-0x58ce38ee229e4a51",
+      "by_path": "/dev/disk/by-path/pci-0000:64:00.0-scsi-0:2:3:0",
+      "firmware_version": "HPD1",
+      "id": "disk2",
+      "interface": "SAS",
+      "model": "VO007680RZWUU",
+      "size": 7681501126656,
+      "storage": "SSD",
+      "vendor": "HPE"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "amd-v"
+  },
+  "type": "node",
+  "uid": "ecotaxe-2"
+}

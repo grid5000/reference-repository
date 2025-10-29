@@ -12,8 +12,8 @@ sneowise:
   backplane_bps: 
   linecards:
     1:
-      snmp_pattern: "%LINECARD%/%PORT%"
-      kavlan_pattern: "%LINECARD%/%PORT%"
+      snmp_pattern: "swp%PORT%"
+      kavlan_pattern: "swp%PORT%"
       kind: node
       rate: 10000000000
       ports:
