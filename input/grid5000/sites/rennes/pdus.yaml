@@ -284,47 +284,248 @@ pdus:
         phase: 1
         phase_inverted: false
 
-  # The goal of this PDU is only to trick rake reference-api so that
-  # it will generate the wattmetre-mapping "only_for" paradoxe-[1-32]
-  # and then rake gen:oar-properties will generate wattmetre=YES for
-  # paradoxe-[1-32] instead of wattmetre=NO for the whole cluster...
-  # FIXME: Find the real pdu mapping of paradoxe-[33-64]
-  paradoxe-pdu-tmp:
-    vendor: Unknown
-    model: Unknown
+  paradoxe-pdu5:
+    mac: 00:0d:5d:2f:d7:96
     ports:
-      1: paradoxe-33
-      2: paradoxe-34
-      3: paradoxe-35
-      4: paradoxe-36
-      5: paradoxe-37
-      6: paradoxe-38
-      7: paradoxe-39
-      8: paradoxe-40
-      9: paradoxe-41
-      10: paradoxe-42
-      11: paradoxe-43
-      12: paradoxe-44
-      13: paradoxe-45
-      14: paradoxe-46
-      15: paradoxe-47
-      16: paradoxe-48
-      17: paradoxe-49
-      18: paradoxe-50
-      19: paradoxe-51
-      20: paradoxe-52
-      21: paradoxe-53
-      22: paradoxe-54
-      23: paradoxe-55
-      24: paradoxe-56
-      25: paradoxe-57
-      26: paradoxe-58
-      27: paradoxe-59
-      28: paradoxe-60
-      29: paradoxe-61
-      30: paradoxe-62
-      31: paradoxe-63
-      32: paradoxe-64
+      2:
+        uid: paradoxe-60
+        wattmetre: wattmetrev3-1
+        module: '04000607'
+        channel: 4
+        phase: 1
+        phase_inverted: false
+      3:
+        uid: paradoxe-59
+        wattmetre: wattmetrev3-1
+        module: '04000607'
+        channel: 3
+        phase: 1
+        phase_inverted: false
+      4:
+        uid: paradoxe-58
+        wattmetre: wattmetrev3-1
+        module: '04000607'
+        channel: 2
+        phase: 1
+        phase_inverted: false
+      5:
+        uid: paradoxe-57
+        wattmetre: wattmetrev3-1
+        module: '04000607'
+        channel: 1
+        phase: 1
+        phase_inverted: false
+      6:
+        uid: paradoxe-56
+        wattmetre: wattmetrev3-1
+        module: '04000596'
+        channel: 6
+        phase: 1
+        phase_inverted: false
+      8:
+        uid: paradoxe-55
+        wattmetre: wattmetrev3-1
+        module: '04000596'
+        channel: 5
+        phase: 1
+        phase_inverted: false
+  paradoxe-pdu6:
+    mac: 00:0d:5d:32:ea:74
+    ports:
+      6:
+        uid: paradoxe-54
+        wattmetre: wattmetrev3-1
+        module: '04000596'
+        channel: 4
+        phase: 1
+        phase_inverted: false
+      8:
+        uid: paradoxe-53
+        wattmetre: wattmetrev3-1
+        module: '04000596'
+        channel: 3
+        phase: 1
+        phase_inverted: false
+      9:
+        uid: paradoxe-52
+        wattmetre: wattmetrev3-1
+        module: '04000596'
+        channel: 2
+        phase: 1
+        phase_inverted: false
+      10:
+        uid: paradoxe-51
+        wattmetre: wattmetrev3-1
+        module: '04000596'
+        channel: 1
+        phase: 1
+        phase_inverted: false
+      11:
+        uid: paradoxe-50
+        wattmetre: wattmetrev3-1
+        module: '04000595'
+        channel: 6
+        phase: 1
+        phase_inverted: false
+      12:
+        uid: paradoxe-49
+        wattmetre: wattmetrev3-1
+        module: '04000595'
+        channel: 5
+        phase: 1
+        phase_inverted: false
+  paradoxe-pdu7:
+    mac: 00:0d:5d:32:ea:68
+    ports:
+      14:
+        uid: paradoxe-48
+        wattmetre: wattmetrev3-1
+        module: '04000595'
+        channel: 4
+        phase: 1
+        phase_inverted: false
+      15:
+        uid: paradoxe-47
+        wattmetre: wattmetrev3-1
+        module: '04000595'
+        channel: 3
+        phase: 1
+        phase_inverted: false
+      16:
+        uid: paradoxe-46
+        wattmetre: wattmetrev3-1
+        module: '04000595'
+        channel: 2
+        phase: 1
+        phase_inverted: false
+      17:
+        uid: paradoxe-45
+        wattmetre: wattmetrev3-1
+        module: '04000595'
+        channel: 1
+        phase: 1
+        phase_inverted: false
+      18:
+        uid: paradoxe-44
+        wattmetre: wattmetrev3-1
+        module: '04000602'
+        channel: 6
+        phase: 1
+        phase_inverted: false
+      20:
+        uid: paradoxe-43
+        wattmetre: wattmetrev3-1
+        module: '04000602'
+        channel: 5
+        phase: 1
+        phase_inverted: false
+  paradoxe-pdu8:
+    mac: 00:0d:5d:32:ea:62
+    ports:
+      18:
+        uid: paradoxe-42
+        wattmetre: wattmetrev3-1
+        module: '04000602'
+        channel: 4
+        phase: 1
+        phase_inverted: false
+      20:
+        uid: paradoxe-41
+        wattmetre: wattmetrev3-1
+        module: '04000602'
+        channel: 3
+        phase: 1
+        phase_inverted: false
+      21:
+        uid: paradoxe-40
+        wattmetre: wattmetrev3-1
+        module: '04000602'
+        channel: 2
+        phase: 1
+        phase_inverted: false
+      22:
+        uid: paradoxe-39
+        wattmetre: wattmetrev3-1
+        module: '04000602'
+        channel: 1
+        phase: 1
+        phase_inverted: false
+      23:
+        uid: paradoxe-38
+        wattmetre: wattmetrev3-1
+        module: '04000605'
+        channel: 6
+        phase: 1
+        phase_inverted: false
+      24:
+        uid: paradoxe-37
+        wattmetre: wattmetrev3-1
+        module: '04000605'
+        channel: 5
+        phase: 1
+        phase_inverted: false
+  paradoxe-pdu11:
+    mac: 00:20:85:c5:5e:d7
+    ports:
+      5:
+        uid: paradoxe-33
+        wattmetre: wattmetrev3-1
+        module: '04000605'
+        channel: 1
+        phase: 1
+        phase_inverted: false
+      6:
+        uid: paradoxe-34
+        wattmetre: wattmetrev3-1
+        module: '04000605'
+        channel: 2
+        phase: 1
+        phase_inverted: false
+      7:
+        uid: paradoxe-35
+        wattmetre: wattmetrev3-1
+        module: '04000605'
+        channel: 3
+        phase: 1
+        phase_inverted: false
+      8:
+        uid: paradoxe-36
+        wattmetre: wattmetrev3-1
+        module: '04000605'
+        channel: 4
+        phase: 1
+        phase_inverted: false
+  paradoxe-pdu12:
+    mac: 00:20:85:c5:5f:23
+    ports:
+      5:
+        uid: paradoxe-61
+        wattmetre: wattmetrev3-1
+        module: '04000607'
+        channel: 5 
+        phase: 1
+        phase_inverted: false
+      6:
+        uid: paradoxe-62
+        wattmetre: wattmetrev3-1
+        module: '04000607'
+        channel: 6
+        phase: 1
+        phase_inverted: false
+      7:
+        uid: paradoxe-63
+        wattmetre: wattmetrev3-1
+        module: '04000601'
+        channel: 1
+        phase: 1
+        phase_inverted: false
+      8:
+        uid: paradoxe-64
+        wattmetre: wattmetrev3-1
+        module: '04000601'
+        channel: 2
+        phase: 1
+        phase_inverted: false
 
   wattmetrev3-1:
     vendor: OmegaWatt
