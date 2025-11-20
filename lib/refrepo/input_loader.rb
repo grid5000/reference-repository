@@ -177,6 +177,9 @@ def add_wattmetre_mapping(h)
       # Process wattmetre v3 information from pdus/ hierachy
       if pdu_uid.include?("wattmetrev3") # TODO: better way of identifying a V3 wattmetre
         wattmetre_modules = {}
+        if pdu.fetch("master_monitoring", false)
+          wattmetre_modules[pdu["serial"].to_i] = {}
+        end
         # Look for other PDUs where this wattmetre is used
         site.fetch("pdus", []).each do |_other_pdu_uid, other_pdu|
           other_pdu.fetch("ports", {}).each do |other_port_uid, other_port_data|
