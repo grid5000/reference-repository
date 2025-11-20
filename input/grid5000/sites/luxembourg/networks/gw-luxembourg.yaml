@@ -132,43 +132,33 @@ gw:
         1:
           uid: port-channel1
           kind: channel
-          switchport_mode: access
         2:
           uid: port-channel1
           kind: channel
-          switchport_mode: access
         3:
           uid: port-channel3
           kind: channel
-          switchport_mode: access
         4:
           uid: port-channel3
           kind: channel
-          switchport_mode: access
         5:
           uid: port-channel5
           kind: channel
-          switchport_mode: access
         6:
           uid: port-channel5
           kind: channel
-          switchport_mode: access
         7:
           uid: port-channel7
           kind: channel
-          switchport_mode: access
         8:
           uid: port-channel7
           kind: channel
-          switchport_mode: access
         41:
           uid: port-channel41
           kind: channel
-          switchport_mode: access
         42:
           uid: port-channel41
           kind: channel
-          switchport_mode: access
         48:
           uid: renater-luxembourg
           kind: backbone
@@ -177,32 +167,26 @@ gw:
           uid: port-channel55
           kind: channel
           rate: 100_000_000_000
-          switchport_mode: access
         56:
           uid: port-channel55
           kind: channel
           rate: 100_000_000_000
-          switchport_mode: access
         57:
           uid: port-channel57
           kind: channel
           rate: 100_000_000_000
-          switchport_mode: trunk
         58:
           uid: port-channel57
           kind: channel
           rate: 100_000_000_000
-          switchport_mode: trunk
         59:
           uid: port-channel59
           kind: channel
           rate: 100_000_000_000
-          switchport_mode: trunk
         60:
           uid: port-channel59
           kind: channel
           rate: 100_000_000_000
-          switchport_mode: trunk
       switchport_mode: access
   channels:
     port-channel1:
@@ -210,13 +194,13 @@ gw:
       port: port-channel1
       kind: server
       rate: 20_000_000_000
-      switchport_mode: access
+      switchport_mode: trunk
     port-channel3:
       uid: pve-2
       port: port-channel3
       kind: server
       rate: 20_000_000_000
-      switchport_mode: access
+      switchport_mode: trunk
     port-channel5:
       uid: pve-1-backup-link
       port: port-channel5
