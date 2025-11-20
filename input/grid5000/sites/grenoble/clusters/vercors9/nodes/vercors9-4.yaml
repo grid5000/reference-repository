@@ -15,7 +15,7 @@ vercors9-4:
   chassis:
     manufacturer: Dell Inc.
     name: PowerEdge R730
-    serial: D0VJQ52
+    serial: H1VJQ52
   gpu_devices:
     nvidia0:
       cpu_affinity: 0
@@ -51,13 +51,13 @@ vercors9-4:
   network_adapters:
     bmc:
       ip: 172.17.27.20
-      mac: 18:fb:7b:9d:f9:5s
+      mac: 18:fb:7b:9d:f9:85
       management: true
     eth0:
       driver: igb
       firmware_version: 1.67, 0x80000d25, 16.5.20
       interface: Ethernet
-      mac: ec:f4:bb:d5:a7:ds
+      mac: ec:f4:bb:d5:b5:9c
       management: false
       model: I350 Gigabit Network Connection
       name: eno3
@@ -68,7 +68,7 @@ vercors9-4:
       driver: igb
       firmware_version: 1.67, 0x80000d25, 16.5.20
       interface: Ethernet
-      mac: ec:f4:bb:d5:a7:ds
+      mac: ec:f4:bb:d5:b5:9d
       management: false
       model: I350 Gigabit Network Connection
       name: eno4
@@ -80,10 +80,10 @@ vercors9-4:
       firmware_version: 0x800005a0, 16.5.20
       interface: Ethernet
       ip: 172.16.27.20
-      mac: ec:f4:bb:d5:a7:ds
+      mac: ec:f4:bb:d5:b5:98
       management: false
       model: Ethernet Controller 10-Gigabit X540-AT2
-      name: enp1s0f0np0
+      name: eno1
       rate: 1000000000
       sriov: true
       sriov_totalvfs: 63
@@ -92,7 +92,7 @@ vercors9-4:
       driver: ixgbe
       firmware_version: 0x800005a0, 16.5.20
       interface: Ethernet
-      mac: ec:f4:bb:d5:a7:ds
+      mac: ec:f4:bb:d5:b5:9a
       management: false
       model: Ethernet Controller 10-Gigabit X540-AT2
       name: eno2
@@ -119,11 +119,11 @@ vercors9-4:
     version: E5-2623 v3
   storage_devices:
     pci-0000:03:00.0-scsi-0:0:0:0:
-      by_id: "/dev/disk/by-id/wwn-0x5000cca216e01475"
+      by_id: "/dev/disk/by-id/wwn-0x5000c5002d35da77"
       by_path: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0"
-      firmware_version: GKAOA74A
-      model: Hitachi HUA72101
-      size: 1000204886016
+      firmware_version: CC46
+      model: ST3500418AS
+      size: 500107862016
       storage: HDD
   supported_job_types:
     virtual: ivt
