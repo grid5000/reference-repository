@@ -153,6 +153,12 @@ gw:
         8:
           uid: port-channel7
           kind: channel
+        39:
+          uid: port-channel39
+          kind: channel
+        40:
+          uid: port-channel39
+          kind: channel
         41:
           uid: port-channel41
           kind: channel
@@ -210,6 +216,12 @@ gw:
     port-channel7:
       uid: pve-2-backup-link
       port: port-channel7
+      kind: server
+      rate: 20_000_000_000
+      switchport_mode: access
+    port-channel39:
+      uid: srv-data
+      port: port-channel39
       kind: server
       rate: 20_000_000_000
       switchport_mode: access

@@ -19,6 +19,13 @@
       "switchport_mode": "trunk",
       "uid": "pve-2"
     },
+    "port-channel39": {
+      "kind": "server",
+      "port": "port-channel39",
+      "rate": 20000000000,
+      "switchport_mode": "access",
+      "uid": "srv-data"
+    },
     "port-channel41": {
       "kind": "server",
       "port": "port-channel7",
@@ -176,8 +183,14 @@
         {
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/39",
+          "uid": "port-channel39"
         },
         {
+          "kind": "channel",
+          "snmp_name": "Ethernet1/40",
+          "uid": "port-channel39"
         },
         {
           "kind": "channel",
