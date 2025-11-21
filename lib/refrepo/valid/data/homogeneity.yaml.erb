@@ -30,6 +30,18 @@ grenoble:
     - ~storage_devices.pci-0000:00:11.5-ata-5.firmware_version
   dahu-[7-8]:
     - ~storage_devices.pci-0000:00:11.5-ata-5.firmware_version
+  dahu-18:
+    - -network_adapters.ib0
+  dahu-19:
+    - +network_adapters.ib0
+  dahu-26:
+    - -network_adapters.ib0
+  dahu-27:
+    - +network_adapters.ib0
+  dahu-30:
+    - -network_adapters.ib0
+  dahu-31:
+    - +network_adapters.ib0
   drac-[8-9]:
     - ~storage_devices.pci-0009:04:00.0-ata-1.firmware_version
   kinovis-[1-2]:
@@ -76,14 +88,38 @@ grenoble:
     - ~network_adapters.eth3.firmware_version
   vercors7-[1-2]:
     - ~gpu_devices.nvidia0.vbios_version
-  vercors9-2:
+  vercors9-[1-6]:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.model
-    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.vendor
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.vendor
   vercors9-3:
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.size
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.model
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.vendor
+    - ~network_adapters.eth2.name
+  vercors9-5:
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - ~network_adapters.eth2.firmware_version
+    - ~network_adapters.eth3.firmware_version
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.model
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.size
+  vercors9-6:
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.size
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.model
+  vercors9-7:
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.vendor
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.size
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.model
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version
+    - ~network_adapters.eth3.firmware_version
+    - ~network_adapters.eth2.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth2.name
   vercors10-[1-2]:
     - -pdu[1]
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version
@@ -383,8 +419,6 @@ sophia:
     - +gpu_devices.nvidia0
     - -gpu_devices.nvidia3
     - ~gpu_devices.nvidia1.cpu_affinity
-  esterel35-2:
-    - ~network_adapters.ib0.rate
   esterel40-2:
     - -storage_devices.pci-0000:03:00.0-nvme-1
     - ~storage_devices.pci-0000:64:00.0-scsi-0:3:110:0.size

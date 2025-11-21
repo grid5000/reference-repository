@@ -19,17 +19,16 @@ sw-core:
       snmp_pattern: "Ethernet%PORT%"
       kavlan_pattern: "%PORT%"
       kind: node
+      switchport_mode: access
       ports:
         0:
           uid: port-channel1
           kind: channel
           rate: 25_000_000_000
-          switchport_mode: access
         1:
           uid: port-channel1
           kind: channel
           rate: 25_000_000_000
-          switchport_mode: access
         2:
           uid: pve-1
           kind: server
@@ -39,8 +38,8 @@ sw-core:
           uid: pve-2
           kind: server
           rate: 25_000_000_000
-#       4: inetlab-sw1-eth0
           switchport_mode: trunk
+#       4: inetlab-sw1-eth0
         5:
           uid: gw
           kind: router
@@ -107,12 +106,10 @@ sw-core:
           uid: sw-admin
           kind: switch
           switchport_mode: trunk
-      switchport_mode: access
   channels:
     port-channel1:
       port: port-channel1
       uid: srv-data
       rate: 50_000_000_000
       kind: server
-
-      switchport_mode: access
+      switchport_mode: trunk
