@@ -14,8 +14,8 @@ pdu.fetch('metrics', []).each {|metric|
       port_uid_num = port_uid
       # Super fragile code to parse non numeric port id for Eaton PDU
       if not Integer(port_uid_num, exception: false)
-        bank = port_uid_num.ord - "a".ord
-        sock = port_uid_num[1].to_i
+        bank = port_uid_num[0].ord - "a".ord
+        sock = port_uid_num[1..].to_i
         port_uid_num = 8*bank+sock
       end
 -%>

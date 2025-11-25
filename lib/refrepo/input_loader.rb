@@ -1043,7 +1043,13 @@ def add_generic_metrics(h)
 
     site.fetch('pdus', {}).each_pair do |_pdu_uid, pdu|
       if pdu["vendor"] == "Eaton" and pdu["model"] == "EMAB20"
-        pdu["metrics"] = pdu.fetch("metrics", []) + generic_metrics["eaton-emab20"]
+        pdu["metrics"] = pdu.fetch("metrics", []) + generic_metrics["eaton-emab-3p"]
+      elsif pdu["vendor"] == "Eaton" and pdu["model"] == "EMAB04"
+        pdu["metrics"] = pdu.fetch("metrics", []) + generic_metrics["eaton-emab-3p"]
+        # Remove 2nd and 3rd phases metrics
+        pdu["metrics"] = pdu["metrics"].select{|m| not m.has_key?("labels") or not m["labels"].has_key?("phase") or m["labels"]["phase"] == 1}
+      end
+      if pdu["metrics"]
         pdu["metrics"].uniq!
       end
     end
