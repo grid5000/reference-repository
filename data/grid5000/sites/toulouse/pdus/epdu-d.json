@@ -1,8 +1,386 @@
 {
   "ip": "172.17.127.4",
   "mac": "00:20:85:d7:9f:ea",
-  "model": "unknown",
+  "metrics": [
+    {
+      "description": "Power consumption per outlet reported by PDU, in watt",
+      "name": "pdu_outlet_power_watt",
+      "optional_period": 0,
+      "period": 1000,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.5.1.3.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Energy consumption per outlet reported by PDU, in watt.hours",
+      "name": "pdu_outlet_energy_watthours_total",
+      "optional_period": 0,
+      "period": 1000,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.5.1.4.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Power consumption in total reported by PDU, in watt",
+      "name": "pdu_total_power_watt",
+      "optional_period": 0,
+      "period": 1000,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.5.1.4.0.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Energy consumption in total reported by PDU, in watt.hours",
+      "name": "pdu_total_energy_watthours_total",
+      "optional_period": 0,
+      "period": 1000,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.5.1.5.0.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Voltage per phase reported by PDU, in volt",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_voltage_volt",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.2.1.3.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Current per phase reported by PDU, in ampere",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_current_amp",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.3.1.4.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Current crest factor per phase reported by PDU, as a ratio",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_currentcrestfactor",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.3.1.10.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Current load percent per phase reported by PDU, as a percentage",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_currentload_percentage",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.3.1.11.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Apparent power per phase reported by PDU, in volt-ampere",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_power_voltamp",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.4.1.3.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Power consumption per phase reported by PDU, in watt",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_power_watt",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.4.1.4.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Energy consumption per phase reported by PDU, in watt.hours",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_energy_watthours_total",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.4.1.5.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Last reset time of energy consumption counter per phase reported by PDU, in unix timestamp",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_energyreset_timestamp",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.4.1.6.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Power factor per phase reported by PDU, as a ratio",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_powerfactor",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.4.1.7.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Reactive power consumption per phase reported by PDU, in volt-ampere reactive",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_power_var",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.4.1.8.0.1.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Apparent power in total reported by PDU, in volt-ampere",
+      "name": "pdu_total_power_voltamp",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.5.1.3.0.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Last reset time of energy consumption counter in total reported by PDU, in unix timestamp",
+      "name": "pdu_total_energyreset_timestamp",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.5.1.6.0.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Power factor in total reported by PDU, as a ratio",
+      "name": "pdu_total_powerfactor",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.5.1.7.0.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Reactive power consumption in total reported by PDU, in volt-ampere reactive",
+      "name": "pdu_total_power_var",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.5.1.8.0.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Powercapacity reported by PDU",
+      "labels": {
+        "phase": 1
+      },
+      "name": "pdu_phase_PowerCapacity",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.3.5.1.9.0.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Voltage per group reported by PDU, in volt",
+      "labels": {
+        "group": 1
+      },
+      "name": "pdu_group_voltage_volt",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.5.3.1.3.0.1",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Voltage per group reported by PDU, in volt",
+      "labels": {
+        "group": 2
+      },
+      "name": "pdu_group_voltage_volt",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.5.3.1.3.0.2",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Voltage per group reported by PDU, in volt",
+      "labels": {
+        "group": 3
+      },
+      "name": "pdu_group_voltage_volt",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.5.3.1.3.0.3",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Current per outlet reported by PDU, in ampere",
+      "name": "pdu_outlet_current_amp",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.4.1.3.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Current crest factor per outlet reported by PDU, as a ratio",
+      "name": "pdu_outlet_currentcrestfactor",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.4.1.9.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Current load percent per outlet reported by PDU, as a percentage",
+      "name": "pdu_outlet_currentload_percentage",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.4.1.10.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Apparent power per outlet reported by PDU, in volt-ampere",
+      "name": "pdu_outlet_power_voltamp",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.5.1.2.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Last reset time of energy consumption counter per outlet reported by PDU, in unix timestamp",
+      "name": "pdu_outlet_energyreset_timestamp",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.5.1.5.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Power factor per outlet reported by PDU, as a ratio",
+      "name": "pdu_outlet_powerfactor",
+      "optional_period": 1000,
+      "period": 0,
+      "scale_factor": 0.001,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.5.1.6.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    },
+    {
+      "description": "Reactive power consumption per outlet reported by PDU, in volt-ampere reactive",
+      "name": "pdu_outlet_power_var",
+      "optional_period": 1000,
+      "period": 0,
+      "source": {
+        "id": "1.3.6.1.4.1.534.6.6.7.6.5.1.7.0.%PORT%",
+        "protocol": "snmpv1"
+      }
+    }
+  ],
+  "model": "EMAB04",
+  "ports": {
+    "a11": {
+      "uid": [
+        "estats-1",
+        "estats-2",
+        "estats-3",
+        "estats-4",
+        "estats-5",
+        "estats-6",
+        "estats-7",
+        "estats-8",
+        "estats-9",
+        "estats-10",
+        "estats-11",
+        "estats-12",
+        "sw-estats"
+      ]
+    },
+    "a13": "montcalm-1",
+    "a14": "montcalm-2",
+    "a15": "montcalm-3",
+    "a16": "montcalm-4",
+    "a17": "montcalm-5",
+    "a18": "montcalm-6",
+    "a19": "montcalm-7",
+    "a21": "montcalm-8",
+    "a22": "montcalm-9",
+    "a23": "montcalm-10",
+    "a4": "gw",
+    "a5": "srv-data",
+    "a6": "pve-1",
+    "a7": "pve-2"
+  },
   "type": "pdu",
   "uid": "epdu-d",
-  "vendor": "eaton"
+  "vendor": "Eaton"
 }

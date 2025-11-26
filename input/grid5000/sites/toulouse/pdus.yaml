@@ -1,12 +1,75 @@
 ---
 pdus:
-  epdu-d:
-    vendor: eaton
-    model: unknown
-    ip: 172.17.127.4
-    mac: 00:20:85:d7:9f:ea
   epdu-g:
-    vendor: eaton
-    model: unknown
+    vendor: Eaton
+    model: EMAB04
     ip: 172.17.127.5
     mac: 00:20:85:d7:9f:ef
+    ports:
+      # a3: sw-admin
+      a4: gw
+      a5: srv-data
+      a6: pve-1
+      a7: pve-2
+      a11:
+        uid:
+          - estats-1
+          - estats-2
+          - estats-3
+          - estats-4
+          - estats-5
+          - estats-6
+          - estats-7
+          - estats-8
+          - estats-9
+          - estats-10
+          - estats-11
+          - estats-12
+          - sw-estats
+      a13: montcalm-1 #OK
+      a14: montcalm-2
+      a15: montcalm-3 #OK
+      a16: montcalm-4
+      a17: montcalm-5
+      a18: montcalm-6
+      a19: montcalm-7 #OK
+      a21: montcalm-8
+      a22: montcalm-9 #OK
+      a23: montcalm-10
+
+  epdu-d:
+    vendor: Eaton
+    model: EMAB04
+    ip: 172.17.127.4
+    mac: 00:20:85:d7:9f:ea
+    ports:
+      # a3: sw-admin
+      a4: gw
+      a5: srv-data
+      a6: pve-1
+      a7: pve-2
+      a11:
+        uid:
+          - estats-1
+          - estats-2
+          - estats-3
+          - estats-4
+          - estats-5
+          - estats-6
+          - estats-7
+          - estats-8
+          - estats-9
+          - estats-10
+          - estats-11
+          - estats-12
+          - sw-estats
+      a13: montcalm-1
+      a14: montcalm-2
+      a15: montcalm-3
+      a16: montcalm-4
+      a17: montcalm-5
+      a18: montcalm-6
+      a19: montcalm-7
+      a21: montcalm-8
+      a22: montcalm-9
+      a23: montcalm-10
