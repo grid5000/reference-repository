@@ -83,6 +83,8 @@ generate-access-history:
 
 deploy-to-api-servers:
   stage: deploy-to-api-servers
+  # temporary : due to Nantes site down
+  allow_failure: true
   tags:
     - grid5000-shell
   script:
