@@ -1,137 +1,108 @@
 ---
-ecotype-prod2:
-  model: S4048-ON
+econome-prod:
+  model: DELL Force10 S4810
   kind: switch
   managed_by_us: true
   ngs_device_type: netmiko_dell_force10
   site: nantes
-  ip: 172.16.207.251
+  ip: 172.16.207.248
+  alias:
+    - name: econome-prod-adm
+      ip: 172.17.207.248
   snmp_community: public
-  warranty: 2022-06-01
-  backplane_bps: 1280000000000
+  warranty: 2017-10-01
   metrics:
     - name: network_ifacein_bytes_total
       description: Input byte counter for the network device port
-      period: 1000
+      period: 15000
       source:
         protocol: snmp
         id: 1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
     - name: network_ifaceout_bytes_total
       description: Output byte counter for the network device port
-      period: 1000
+      period: 15000
       source:
         protocol: snmp
         id: 1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
     - name: network_ifacein_packets_total
       description: Input packet counter for the network device port
-      period: 1000
+      period: 15000
       source:
         protocol: snmp
         id: 1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
     - name: network_ifaceout_packets_total
       description: Output packet counter for the network device port
-      period: 1000
+      period: 15000
       source:
         protocol: snmp
         id: 1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
     - name: network_ifacein_packets_discard_total
       description: Input counter of discarded packets for the network device port
-      period: 1000
+      period: 15000
       source:
         protocol: snmp
         id: 1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
     - name: network_ifaceout_packets_discard_total
       description: Output counter of discarded packets for the network device port
-      period: 1000
+      period: 15000
       source:
         protocol: snmp
         id: 1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
     - name: network_ifacein_packets_error_total
       description: Input counter of packet errors for the network device port
-      period: 1000
+      period: 15000
       source:
         protocol: snmp
         id: 1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
     - name: network_ifaceout_packets_error_total
       description: Output counter of packet errors for the network device port
-      period: 1000
+      period: 15000
       source:
         protocol: snmp
         id: 1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+  backplane_bps: 1280000000000
   linecards:
-    1:
+    0:
       snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
-      kavlan_pattern: "%LINECARD%/%PORT%"
+      kavlan_pattern: "%PORT%"
       kind: node
       rate: 10000000000
-      ports:
-        1: ecotype-1-eth1
-        2: ecotype-2-eth1
-        3: ecotype-3-eth1
-        4: ecotype-4-eth1
-        5: ecotype-5-eth1
-        6: ecotype-6-eth1
-        8: ecotype-8-eth1
-        7: ecotype-7-eth1
-        9: ecotype-9-eth1
-        10: ecotype-10-eth1
-        11: ecotype-11-eth1
-        12: ecotype-12-eth1
-        13: ecotype-13-eth1
-        14: ecotype-14-eth1
-        15: ecotype-15-eth1
-        16: ecotype-16-eth1
-        17: ecotype-17-eth1
-        18: ecotype-18-eth1
-        19: ecotype-19-eth1
-        20: ecotype-20-eth1
-        21: ecotype-21-eth1
-        22: ecotype-22-eth1
-        23: ecotype-23-eth1
-        24: ecotype-24-eth1
-        25: ecotype-25-eth1
-        26: ecotype-26-eth1
-        27: ecotype-27-eth1
-        28: ecotype-28-eth1
-        29: ecotype-29-eth1
-        30: ecotype-30-eth1
-        31: ecotype-31-eth1
-        32: ecotype-32-eth1
-        33: ecotype-33-eth1
-        34: ecotype-34-eth1
-        35: ecotype-35-eth1
-        36: ecotype-36-eth1
-        37: ecotype-37-eth1
-        38: ecotype-38-eth1
-        39: ecotype-39-eth1
-        40: ecotype-40-eth1
-        41: ecotype-41-eth1
-        42: ecotype-42-eth1
-        43: ecotype-43-eth1
-        44: ecotype-44-eth1
-        45: ecotype-45-eth1
-        46: ecotype-46-eth1
-        47: ecotype-47-eth1
-        48: ecotype-48-eth1
-        49:
-          uid: Port-channel 1
-          snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
-          port: fortyGigE 0/60
-          rate: 40000000000
-          kind: channel
-          switchport_mode: trunk
-        50:
-          uid: Port-channel 1
-          snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
-          port: fortyGigE 0/56
-          rate: 40000000000
-          kind: channel
-          switchport_mode: trunk
       switchport_mode: access
+      ports:
+        45: econome-1
+        44: econome-2
+        15: econome-3
+        14: econome-4
+        43: econome-5
+        42: econome-6
+        40: econome-7
+        16: econome-8
+        41: econome-9
+        10: econome-10
+        19: econome-11
+        18: econome-12
+        39: econome-13
+        38: econome-14
+        21: econome-15
+        20: econome-16
+        13: econome-17
+        22: econome-18
+        29: econome-19
+        28: econome-20
+        31: econome-21
+        32: econome-22
+        46: econome-23
+        35: econome-24
+        4:
+          uid: Port-channel 3
+          kind: channel
+        5:
+          uid: Port-channel 3
+          kind: channel
   channels:
-    Port-channel 1:
-      kind: router
-      rate: 80000000000
+    Port-channel 3:
       uid: gw
-      port: bond_ecotype2
+      port: bond_econome
+      rate: 20000000000
+      kind: router
       switchport_mode: trunk
