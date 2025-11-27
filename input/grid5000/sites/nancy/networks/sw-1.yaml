@@ -1,0 +1,27 @@
+---
+sw-1:
+  model: S4128F-ON
+  serial: DZ94BV3
+  warranty: 2030-11-03
+  kind: switch
+  managed_by_us: true
+  ngs_device_type: netmiko_dell_force10
+  ip: 172.17.79.214
+  snmp_community: none
+  site: nancy
+  linecards:
+    1:
+      snmp_pattern: "ethernet%LINECARD%/1/%PORT%"
+      kavlan_pattern: "ethernet%LINECARD%/1/%PORT%"
+      rate: 10000000000
+      kind: node
+      ports:
+        25:
+          uid: gw
+          kind: router
+          port: 1/1/54
+          rate: 40_000_000_000
+          switchport_mode: trunk
+          snmp_pattern: "ethernet%LINECARD%/1/%PORT%:1"
+          kavlan_pattern: "ethernet%LINECARD%/1/%PORT%:1"
+      switchport_mode: access
