@@ -1,9 +1,9 @@
 ---
 gw:
-  model: Force10 S4810
+  model: HPE SN2010M
   kind: router
   managed_by_us: true
-  ngs_device_type: netmiko_aruba_aoscx_router
+  ngs_device_type: netmiko_cumulus_router
   ospfv2_instance_id: 1
   ospfv3_instance_id: 1
   site: nantes
@@ -119,102 +119,78 @@ gw:
   backplane_bps: 1280000000000
   linecards:
     0:
-      snmp_pattern: "TenGigabitEthernet %LINECARD%/%PORT%"
-      kavlan_pattern: "%PORT%"
+      snmp_pattern: "swp%PORT%"
+      kavlan_pattern: "swp%PORT%"
       kind: node
       rate: 10000000000
+      switchport_mode: access
       ports:
-        0:
+        1:
           uid: renater-nantes
           kind: backbone
           switchport_mode: trunk
-        45: econome-1
-        44: econome-2
-        15: econome-3
-        14: econome-4
-        43: econome-5
-        42: econome-6
-        40: econome-7
-        16: econome-8
-        41: econome-9
-        10: econome-10
-        19: econome-11
-        18: econome-12
-        39: econome-13
-        38: econome-14
-        21: econome-15
-        20: econome-16
-        13: econome-17
-        22: econome-18
-        29: econome-19
-        28: econome-20
-        31: econome-21
-        32: econome-22
-        46: econome-23
-        35: econome-24
-        4:
-          uid: Port-channel 3
-          kind: channel
-          switchport_mode: access
-        5:
-          uid: Port-channel 3
-          kind: channel
-          switchport_mode: access
-        8:
-          uid: srv-4
-          kind: server
-          switchport_mode: trunk
-        9:
+        3:
           uid: srv-3
           kind: server
           switchport_mode: trunk
-        26:
+        4:
+          uid: srv-4
+          kind: server
+          switchport_mode: trunk
+        5:
+          uid: bond_storage
+          kind: channel
+        6:
+          uid: bond_storage
+          kind: channel
+        7:
+          uid: bond_econome
+          kind: channel
+        8:
+          uid: bond_econome
+          kind: channel
+        9:
           uid: pve-99
           kind: server
-        27:
-          uid: pve-99
-          kind: server
-        48:
-          uid: Port-channel 1
-          snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
+          switchport_mode: trunk
+        19:
+          uid: bond_ecotype1
           rate: 40000000000
           kind: channel
-          switchport_mode: trunk
-        52:
-          uid: Port-channel 1
-          snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
+        20:
+          uid: bond_ecotype1
           rate: 40000000000
           kind: channel
-          switchport_mode: trunk
-        60:
-          uid: Port-channel 2
-          snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
+        21:
+          uid: bond_ecotype2
           rate: 40000000000
           kind: channel
-          switchport_mode: trunk
-        56:
-          uid: Port-channel 2
-          snmp_pattern: "fortyGigE %LINECARD%/%PORT%"
+        22:
+          uid: bond_ecotype2
           rate: 40000000000
           kind: channel
-          switchport_mode: trunk
-      switchport_mode: access
   channels:
-    Port-channel 1:
+    bond_ecotype1:
       uid: ecot-prod
       port: lag1
       rate: 80000000000
       kind: switch
       switchport_mode: trunk
-    Port-channel 2:
+    bond_ecotype2:
       kind: switch
       rate: 80000000000
       uid: ecotype-prod2
       port: Port-channel 1
       switchport_mode: trunk
-    Port-channel 3:
+    bond_storage:
       kind: server
       rate: 20000000000
       uid: srv-data2
-      port: Port-channel 3
+      port: bond_storage
       switchport_mode: access
+    bond_econome:
+      kind: switch
+      rate: 20000000000
+      uid: econome-prod
+      port: Port-channel 3
+      switchport_mode: trunk

@@ -1,29 +1,11 @@
 {
   "boot_type": "uefi",
   "created_at": "Wed, 15 Oct 2025 00:00:00 GMT",
-  "exotic": false,
-  "kavlan": false,
+  "exotic": true,
+  "kavlan": true,
   "keep_alive_nodes_count": 0,
   "manufactured_at": "2023-06-28",
   "metrics": [
-    {
-      "description": "Front node ambient temperature reported by BMC, in celsius",
-      "name": "bmc_ambient_temp_celsius",
-      "period": 5000,
-      "source": {
-        "id": "FIXME",
-        "protocol": "ipmisensor"
-      }
-    },
-    {
-      "description": "Power consumption of node reported by BMC, in watt",
-      "name": "bmc_node_power_watt",
-      "period": 5000,
-      "source": {
-        "id": "FIXME",
-        "protocol": "ipmisensor"
-      }
-    },
     {
       "description": "Temperature reported by BMC, in celsius",
       "name": "bmc_ambient_temp_celsius",
@@ -968,10 +950,12 @@
       "source": {
         "id": [
           "DCGM_FI_DEV_SM_CLOCK",
-          "DCGM_FI_DEV_MEM_CLOCK",
           "DCGM_FI_DEV_GPU_TEMP",
           "DCGM_FI_DEV_POWER_USAGE",
-          "DCGM_FI_DEV_MEM_COPY_UTIL"
+          "DCGM_FI_DEV_MEM_COPY_UTIL",
+          "DCGM_FI_DEV_GPU_UTIL",
+          "DCGM_FI_DEV_FB_USED",
+          "DCGM_FI_PROF_PIPE_TENSOR_ACTIVE"
         ],
         "port": 9400,
         "protocol": "prometheus"
@@ -1082,7 +1066,7 @@
   "priority": 202406,
   "queues": [
     "admin",
-    "testing"
+    "default"
   ],
   "redfish": true,
   "type": "cluster",
