@@ -380,6 +380,10 @@ nantes:
     - -network_adapters.eth3
 
 rennes:
+  paradoxe-33:
+    - +network_adapters.eth1.rate
+    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:1:0.model
+    - ~storage_devices.pci-0000:47:00.0-scsi-0:2:2:0.model  
   parasilo-[6-7]:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:5:0.firmware_version
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:5:0.model

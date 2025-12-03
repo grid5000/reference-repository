@@ -163,12 +163,21 @@
     },
     {
       "device": "eth1",
+      "driver": "bnxt_en",
       "enabled": false,
+      "firmware_version": "233.0.151.0/pkg 233.1.135.7",
       "interface": "Ethernet",
       "kavlan": false,
+      "mac": "14:23:f2:8f:08:87",
       "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
       "mountable": false,
-      "mounted": false
+      "mounted": false,
+      "name": "ens10f1np1",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
     },
     {
       "device": "bmc",
@@ -192,6 +201,17 @@
     "pstate_governor": "performance",
     "turboboost_enabled": true
   },
+  "pdu": [
+    {
+      "port": 21,
+      "uid": "paradoxe-pdu8"
+    },
+    {
+      "kind": "wattmetre-only",
+      "port": 19,
+      "uid": "wattmetrev3-2"
+    }
+  ],
   "performance": {
     "core_flops": 70400000000,
     "node_flops": 3660800000000
