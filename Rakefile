@@ -1,3 +1,5 @@
+# frozen_string_literal:true
+
 require 'bundler/setup'
 
 if ENV['COV']
@@ -13,8 +15,9 @@ end
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
 require 'refrepo'
 
-PUPPET_ODIR = if Dir.exist?(ENV['HOME'] + '/.gpuppet/repo')
-                ENV['HOME'] + '/.gpuppet/repo'
+G5K_PUPPET_DIR = "#{ENV['HOME']}/.gpuppet/repo".freeze
+PUPPET_ODIR = if Dir.exist?(G5K_PUPPET_DIR)
+                G5K_PUPPET_DIR
               else
                 '/tmp/puppet'
               end
@@ -279,7 +282,7 @@ namespace :gen do
       end
     end
 
-    desc "Launch base puppet generators (#{base_puppet_tasks.map { |e| e.to_s }.join(',')})"
+    desc "Launch base puppet generators (#{base_puppet_tasks.map(&:to_s)})"
     task base: base_puppet_tasks
 
     desc 'Launch all puppet generators'
@@ -337,22 +340,18 @@ namespace :mass do
     options = {}
     options[:clusters] = ENV['CLUSTER'].split(',') if ENV['CLUSTER']
     options[:site] = ENV['SITE'] if ENV['SITE']
-    if ENV['CSV']
-      options[:csv] = ENV['CSV']
-    else
-      raise 'ERROR: CSV file is required'
-    end
+    raise 'ERROR: CSV file is required' unless ENV['CSV']
+
+    options[:csv] = ENV['CSV']
     csv_create_input_files(options)
   end
 end
 
 # Hack rake: call only the first task and consider the rest as arguments to this task
-currentTask = Rake.application.top_level_tasks.first
-taskNames = Rake.application.tasks.map { |task| task.name }
-if taskNames.include?(currentTask)
-  Rake.application.instance_variable_set(:@top_level_tasks, [currentTask])
-  ARGV.shift(ARGV.index(currentTask) + 1)
+current_task = Rake.application.top_level_tasks.first
+task_names = Rake.application.tasks.map(&:name)
+if task_names.include?(current_task)
+  Rake.application.instance_variable_set(:@top_level_tasks, [current_task])
+  ARGV.shift(ARGV.index(current_task) + 1)
   $CMD_ARGS = ARGV.map { |arg| "'#{arg}'" }.join(' ')
-else
-  # Not running any task, maybe rake options, invalid, etc...
 end
