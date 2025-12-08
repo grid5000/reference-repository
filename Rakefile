@@ -260,7 +260,7 @@ namespace :gen do
 
   namespace :puppet do
     base_puppet_tasks = %i[bindg5k conmang5k dhcpg5k kadeployg5k lanpowerg5k refapi-subset
-                           oarsub-simplifier-aliases clusters]
+                           oarsub-simplifier-aliases clusters hieradata]
     all_puppet_tasks = base_puppet_tasks + %i[kavlang5k kwollectg5k network_monitoring oxidizedg5k kavlanngg5k
                                               stitcherg5k webfish]
 
