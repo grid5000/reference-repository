@@ -1,11 +1,7 @@
-# coding: utf-8
-
 require 'refrepo/data_loader'
 
 def generate_puppet_refapi_subset(options)
-  if not options[:conf_dir]
-    options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/refapi"
-  end
+  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/refapi" unless options[:conf_dir]
 
   options[:sites].each do |site|
     output_file = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/refapi/#{site}.json"
@@ -26,9 +22,11 @@ def gen_json(site, output_path)
       node_hash['software'].delete_if { |key| key != 'standard-environment' }
     end
 
-    cluster_hash['nodes'] = cluster_hash['nodes'].sort_by{|node_uid, _node_hash| node_uid[/-(\d+)/, 1].to_i }.to_h
+    cluster_hash['nodes'] = cluster_hash['nodes'].sort_by { |node_uid, _node_hash| node_uid[/-(\d+)/, 1].to_i }.to_h
   end
-  site_data_hierarchy['sites'][site]['clusters'] = site_data_hierarchy['sites'][site].fetch('clusters', {}).sort_by{ |cluster_uid, _cluster_hash| cluster_uid }.to_h
+  site_data_hierarchy['sites'][site]['clusters'] = site_data_hierarchy['sites'][site].fetch('clusters', {}).sort_by do |cluster_uid, _cluster_hash|
+    cluster_uid
+  end.to_h
 
   output_file = File.new(output_path, 'w')
   output_file.write(JSON.pretty_generate(site_data_hierarchy))

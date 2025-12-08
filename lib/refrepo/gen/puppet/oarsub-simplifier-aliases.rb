@@ -1,36 +1,38 @@
-# coding: utf-8
-
 require 'refrepo/data_loader'
 require 'refrepo/gpu_ref'
 
 def get_sub_simplifier_default_aliases(options)
-  if not options[:conf_dir]
+  unless options[:conf_dir]
     options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/sub-simplifier"
   end
 
-  raise("Error: file #{options[:conf_dir]}/aliases.yaml does not exist. The given configuration path is incorrect") unless Pathname("#{options[:conf_dir]}/aliases.yaml").exist?
+  unless Pathname("#{options[:conf_dir]}/aliases.yaml").exist?
+    raise("Error: file #{options[:conf_dir]}/aliases.yaml does not exist. The given configuration path is incorrect")
+  end
 
   default_aliases = YAML.load(File.read("#{options[:conf_dir]}/aliases.yaml"))
 
   gpu_aliases = GPURef.get_all_aliases.map do |al, model|
-    [al, {'value' => "gpu_model='#{model}'",
-          'desc' => "Select node(s) with #{model} GPU",
-          'category' => 'GPUs'}]
+    [al, { 'value' => "gpu_model='#{model}'",
+           'desc' => "Select node(s) with #{model} GPU",
+           'category' => 'GPUs' }]
   end.to_h
   default_aliases.merge!(gpu_aliases)
 
-  gpu_mem_aliases = [6, 12, 16, 24, 32, 40, 60].map{|m| ["gpu-#{m}GB", 
-    {'value' => "gpu_mem>=#{m*1000}", 
-      'desc' => "Select node(s) with GPU having more than #{m}GB of memory",
-      'category' => 'GPUs'}]}.to_h
+  gpu_mem_aliases = [6, 12, 16, 24, 32, 40, 60].map do |m|
+    ["gpu-#{m}GB",
+     { 'value' => "gpu_mem>=#{m * 1000}",
+       'desc' => "Select node(s) with GPU having more than #{m}GB of memory",
+       'category' => 'GPUs' }]
+  end.to_h
   default_aliases.merge!(gpu_mem_aliases)
 
   mem_aliases = {}
   mem_multipliers = [24, 32]
   mem_multipliers.each do |i|
-    while i <= 1024 do
+    while i <= 1024
       mem_aliases["#{i}GB"] = {}
-      mem_aliases["#{i}GB"]['value'] = "memnode>=#{i*1024}"
+      mem_aliases["#{i}GB"]['value'] = "memnode>=#{i * 1024}"
       mem_aliases["#{i}GB"]['category'] = 'Memory'
       mem_aliases["#{i}GB"]['desc'] = "Select node(s) with #{i}GB RAM or more"
       i *= 2
@@ -64,8 +66,7 @@ def generate_all_sites_aliases
     aliases[site] = aliases[site].sort_by { |cluster, _| split_cluster_node(cluster) }.to_h
   end
 
-  aliases = aliases.sort_by { |site, _| site }.to_h
-  aliases
+  aliases.sort_by { |site, _| site }.to_h
 end
 
 def generate_site_aliases_yaml(output_path, default_aliases, site_aliases)

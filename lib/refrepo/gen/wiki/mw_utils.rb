@@ -1,12 +1,9 @@
 require 'mediawiki_api'
 
-#Adding method to mediawiki_api client
+# Adding method to mediawiki_api client
 module MediawikiApi
-
   class Client
-
     def get_page_content(page_name)
-
       get_conn = Faraday.new(url: MW::API_URL) do |faraday|
         faraday.request :multipart
         faraday.request :url_encoded
@@ -14,15 +11,15 @@ module MediawikiApi
         faraday.use FaradayMiddleware::FollowRedirects
         faraday.adapter Faraday.default_adapter
       end
-      params = { 
-        :action => 'parse',
-        :page => page_name,
-        :prop => 'wikitext',
-        :formatversion => '2',
-        :format => 'json'
+      params = {
+        action: 'parse',
+        page: page_name,
+        prop: 'wikitext',
+        formatversion: '2',
+        format: 'json'
       }
       res = get_conn.send(:get, '', params)
-      JSON::parse(res.body)["parse"]["wikitext"]
+      JSON.parse(res.body)['parse']['wikitext']
     end
 
     def get_file_content(file_name)
@@ -34,8 +31,8 @@ module MediawikiApi
         faraday.adapter Faraday.default_adapter
       end
       params = {
-        :token_type => false,
-        :action => 'raw'
+        token_type: false,
+        action: 'raw'
       }
       params[:token] = get_token(:csrf)
       res = get_conn.send(:get, '', params)
@@ -49,12 +46,10 @@ module MediawikiApi
              ignorewarnings: ignorewarnings)
     end
   end
-
 end
 
-#Defines global Grid5000 helpers (TODO move to its own file once it is big enough)
+# Defines global Grid5000 helpers (TODO move to its own file once it is big enough)
 module G5K
-
   # This method compacts an array of integers as follows
   # nodeset([2,3,4,7,9,10,12]) returns the string '[2-4,<wbr>7,<wbr>9-10,<wbr>12]'
   # where <wbr> is a hidden tag that enables carriage return in wikimedia
@@ -62,55 +57,56 @@ module G5K
     l = a.length
     return '' if l == 0
     return a.first.to_s if l == 1
+
     a = a.compact.uniq.sort
     a0 = a[0]
     s = "[#{a0}"
     i = 1
     while i < l
       fast_forward = (i < l and a[i] - a0 == 1) ? true : false
-      (a0 = a[i] and i+=1 ) while (i < l and a[i] - a0 == 1) # fast forward
-      if fast_forward
-        s += (i != l) ? "-#{a0},<wbr>#{a[i]}" : "-#{a0}"
-      else
-        s += ",<wbr>#{a[i]}"
-      end
+      (a0 = a[i] and i += 1) while i < l and a[i] - a0 == 1 # fast forward
+      s += if fast_forward
+             i != l ? "-#{a0},<wbr>#{a[i]}" : "-#{a0}"
+           else
+             ",<wbr>#{a[i]}"
+           end
       a0 = a[i]
       i += 1
     end
     s += ']'
-    return s
+    s
   end
 
-  def self.get_size(x, unit='IEC')
+  def self.get_size(x, unit = 'IEC')
     if unit == 'metric'
       if x < 10**9
-        return "#{(x.to_f / 10**6).floor}&nbsp;MB"
+        "#{(x.to_f / 10**6).floor}&nbsp;MB"
       elsif x < 10**12
-        return "#{(x.to_f / 10**9).floor}&nbsp;GB"
+        "#{(x.to_f / 10**9).floor}&nbsp;GB"
       elsif x < 10**15
-        return "#{(x.to_f / 10**12).round(2)}&nbsp;TB"
+        "#{(x.to_f / 10**12).round(2)}&nbsp;TB"
       else
-        return "#{(x.to_f / 10**15).round(2)}&nbsp;PB"
+        "#{(x.to_f / 10**15).round(2)}&nbsp;PB"
       end
+    elsif x < 2**30
+      "#{(x.to_f / 2**20).floor}&nbsp;MiB"
+    elsif x < 2**40
+      "#{(x.to_f / 2**30).floor}&nbsp;GiB"
+    elsif x < 2**50
+      "#{(x.to_f / 2**40).round(2)}&nbsp;TiB"
     else
-      if x < 2**30
-        return "#{(x.to_f / 2**20).floor}&nbsp;MiB"
-      elsif x < 2**40
-        return "#{(x.to_f / 2**30).floor}&nbsp;GiB"
-      elsif x < 2**50
-        return "#{(x.to_f / 2**40).round(2)}&nbsp;TiB"
-      else
-        return "#{(x.to_f / 2**50).round(2)}&nbsp;PiB"
-      end
+      "#{(x.to_f / 2**50).round(2)}&nbsp;PiB"
     end
   end
 
-  def self.get_rate(x, unit=:auto)
+  def self.get_rate(x, unit = :auto)
     if unit == :sortable
       return '000000' if x.nil?
+
       return (x.to_f / 10**6).floor.to_s.rjust(6, '0')
     end
-    return '' if (x == 0 || x.nil?)
+    return '' if x == 0 || x.nil?
+
     mbps = (x.to_f / 10**6).floor
     if mbps < 1000
       mbps.to_s + '&nbsp;Mbps'
@@ -120,74 +116,71 @@ module G5K
   end
 
   def self.pluralize(count, word)
-    return (count == 1 || word[-1] == 's') ? word : word + 's'
+    count == 1 || word[-1] == 's' ? word : word + 's'
   end
 
   @@global_hash = nil
   def self.get_global_hash
-    if @@global_hash.nil?
-      @@global_hash = load_data_hierarchy
-    end
+    @@global_hash = load_data_hierarchy if @@global_hash.nil?
     # return a deep copy of global_hash
-    return Marshal.load(Marshal.dump(@@global_hash))
+    Marshal.load(Marshal.dump(@@global_hash))
   end
 
-  SITES = RefRepo::Utils::get_sites
+  SITES = RefRepo::Utils.get_sites
 end
 
-#Defines MediaWiki helpers
+# Defines MediaWiki helpers
 module MW
+  BASE_URL = 'https://www.grid5000.fr/mediawiki/'
 
-  BASE_URL = "https://www.grid5000.fr/mediawiki/"
+  API_URL = BASE_URL + 'api.php'
 
-  API_URL = BASE_URL + "api.php"
+  TABLE_START = '{|'
 
-  TABLE_START = "{|"
+  TABLE_END = '|}'
 
-  TABLE_END = "|}"
+  TABLE_ROW = '|-'
 
-  TABLE_ROW = "|-"
+  TABLE_HEADER = '!'
 
-  TABLE_HEADER = "!"
+  INLINE_CELL = '||'
 
-  INLINE_CELL = "||"
+  TABLE_CELL = '|'
 
-  TABLE_CELL = "|"
+  UNSORTED_INLINE_CELL = '!!'
 
-  UNSORTED_INLINE_CELL = "!!"
-
-  UNSORTED_TABLE_CELL = "!"
+  UNSORTED_TABLE_CELL = '!'
 
   LINE_FEED = "\n"
 
-  LIST_ITEM = "*"
+  LIST_ITEM = '*'
 
-  NUMBERED_LIST_ITEM = "#"
+  NUMBERED_LIST_ITEM = '#'
 
-  HTML_LINE_FEED = "<br />"
+  HTML_LINE_FEED = '<br />'
 
   def self.generate_table(table_options, columns, rows)
     table_text = MW::TABLE_START + table_options
 
     table_text += MW::LINE_FEED + MW::TABLE_ROW + MW::LINE_FEED
 
-    # A bit hacky, we want generate_table to work with an array or with an 
+    # A bit hacky, we want generate_table to work with an array or with an
     # array of array for mulitline header
-    columns = [columns] unless columns.first.kind_of?(Array)
+    columns = [columns] unless columns.first.is_a?(Array)
 
     columns.each do |headers_row|
       headers_row.each do |col|
-        if col.kind_of?(Hash)
-          table_text += MW::TABLE_HEADER + col[:attributes] + MW::TABLE_CELL + col[:text] + MW::LINE_FEED
-        else
-          table_text += MW::TABLE_HEADER + MW::TABLE_CELL + col + MW::LINE_FEED
-        end
+        table_text += if col.is_a?(Hash)
+                        MW::TABLE_HEADER + col[:attributes] + MW::TABLE_CELL + col[:text] + MW::LINE_FEED
+                      else
+                        MW::TABLE_HEADER + MW::TABLE_CELL + col + MW::LINE_FEED
+                      end
       end
       table_text += MW::TABLE_ROW + MW::LINE_FEED
     end
 
-    rows.each { |row|
-      if row.kind_of?(Hash) and row[:sort] == false
+    rows.each do |row|
+      if row.is_a?(Hash) and row[:sort] == false
         row = row[:columns]
         table_cell = MW::UNSORTED_TABLE_CELL
         inline_cell = MW::UNSORTED_INLINE_CELL
@@ -196,37 +189,37 @@ module MW
         inline_cell = MW::INLINE_CELL
       end
       table_text += MW::LINE_FEED
-      row.each_with_index{ |cell, i|
-        if (i == 0)
-          table_text += table_cell
-        else
-          table_text += inline_cell
-        end
+      row.each_with_index  do |cell, i|
+        table_text += if i == 0
+                        table_cell
+                      else
+                        inline_cell
+                      end
         table_text += cell.to_s
-      }
+      end
       table_text += MW::LINE_FEED + MW::TABLE_ROW
-    }
+    end
     table_text += MW::LINE_FEED + MW::TABLE_END
-    return table_text
+    table_text
   end
 
   def self.generate_hash_table(hash)
-    format = " valign=\"top\" style=\"background-color: #f9f9f9; padding: 0px 10px 0px 3px;\" "
+    format = ' valign="top" style="background-color: #f9f9f9; padding: 0px 10px 0px 3px;" '
     table = [MW::TABLE_START, MW::TABLE_ROW]
-    hash.each { |k, v|
+    hash.each do |k, v|
       table << MW::TABLE_CELL + format + MW::TABLE_CELL + "'''#{k}:'''"
       table << MW::TABLE_CELL + " #{v}<br/>"
       table << MW::TABLE_ROW
-    }
+    end
     (table << MW::TABLE_END).join(MW::LINE_FEED)
   end
 
   def self.small(text)
-    "<small>" + text + "</small>"
+    '<small>' + text + '</small>'
   end
 
   def self.big(text)
-    "<big>" + text + "</big>"
+    '<big>' + text + '</big>'
   end
 
   def self.italic(text)
@@ -242,7 +235,6 @@ module MW
   end
 
   def self.code(text)
-    "<code>" + text + "</code>"
+    '<code>' + text + '</code>'
   end
-
 end

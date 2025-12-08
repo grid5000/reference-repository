@@ -1,7 +1,4 @@
-# coding: utf-8
-
 class KwollectMetricsGenerator < WikiGenerator
-
   def generate_content(_options)
     @generated_content = "__NOEDITSECTION__\n"
     @generated_content = "\nMetrics marked with * must be activated on demand, and metrics marked with ** are activated on non-deploy jobs by default. Clusters marked with ⁺ do not have metric available on all its nodes\n\n"
@@ -11,67 +8,93 @@ class KwollectMetricsGenerator < WikiGenerator
     @generated_content += "! style=\"width: 55%\" | Available on\n"
     @generated_content += "|-\n"
 
-    sites = get_global_hash()["sites"]
+    sites = get_global_hash['sites']
 
-    all_metrics = sites.each_value.map{|s| s.fetch("clusters", {}).each_value.map{|c| c.fetch('metrics', [])}}.flatten
-    all_metrics += sites.each_value.map{|s| s["network_equipments"].each_value.map{|c| c.fetch('metrics', [])}}.flatten
-    all_metrics += sites.each_value.map{|s| s.fetch("pdus", {}).each_value.map{|c| c.fetch('metrics', [])}}.flatten
+    all_metrics = sites.each_value.map do |s|
+      s.fetch('clusters', {}).each_value.map do |c|
+        c.fetch('metrics', [])
+      end
+    end.flatten
+    all_metrics += sites.each_value.map do |s|
+      s['network_equipments'].each_value.map do |c|
+        c.fetch('metrics', [])
+      end
+    end.flatten
+    all_metrics += sites.each_value.map do |s|
+      s.fetch('pdus', {}).each_value.map do |c|
+        c.fetch('metrics', [])
+      end
+    end.flatten
 
-    metric_names = all_metrics.map{|metric| metric["name"]}.uniq
+    metric_names = all_metrics.map { |metric| metric['name'] }.uniq
 
     metric_names.sort.each do |metric_name|
-
-      optional = all_metrics.select{|m| m["name"] == metric_name}.any?{|metric| metric["period"] == 0} ? "*" : ""
-      descriptions = all_metrics.select{|m| m["name"] == metric_name}.map{|metric| metric["description"]}.uniq
-      if descriptions.length != 1
-        description = longest_common_prefix(descriptions) + "XXX" + longest_common_suffix(descriptions)
-      else
-        description = descriptions.first
-      end
+      optional = all_metrics.select { |m| m['name'] == metric_name }.any? { |metric| metric['period'] == 0 } ? '*' : ''
+      descriptions = all_metrics.select { |m| m['name'] == metric_name }.map { |metric| metric['description'] }.uniq
+      description = if descriptions.length != 1
+                      longest_common_prefix(descriptions) + 'XXX' + longest_common_suffix(descriptions)
+                    else
+                      descriptions.first
+                    end
       if metric_name =~ /prom_.*default_metrics/
-        prom_metric_ids = all_metrics.select{|m| m["name"] == metric_name}.map{|metric| metric["source"]["id"]}.flatten.uniq.sort
-        description += ":<br/>''#{prom_metric_ids.join(", ")}''"
-        optional = "**"
+        prom_metric_ids = all_metrics.select do |m|
+          m['name'] == metric_name
+        end.map { |metric| metric['source']['id'] }.flatten.uniq.sort
+        description += ":<br/>''#{prom_metric_ids.join(', ')}''"
+        optional = '**'
       end
       @generated_content += "|-\n|#{metric_name}#{optional}\n|#{description}\n|"
 
-      sites.each_value.sort_by{|s| s['uid']}.each do |site|
-        devices = site.fetch("clusters", {}).each_value.select{|c| c.fetch('metrics', []).map{|m| m["name"]}.any?{|m| m == metric_name}}.map{|c| c["uid"]}.sort
+      sites.each_value.sort_by { |s| s['uid'] }.each do |site|
+        site.fetch('clusters', {}).each_value.select do |c|
+          c.fetch('metrics', []).map do |m|
+            m['name']
+          end.any? { |m| m == metric_name }
+        end.map { |c| c['uid'] }.sort
         devices = []
-        site.fetch("clusters", {}).each_value do |c|
-          metric = c.fetch('metrics', []).find{|m| m['name'] == metric_name}
+        site.fetch('clusters', {}).each_value do |c|
+          metric = c.fetch('metrics', []).find { |m| m['name'] == metric_name }
           if metric
             if metric.has_key?('only_for')
-              devices.append(c['uid']+'⁺')
+              devices.append(c['uid'] + '⁺')
             else
               devices.append(c['uid'])
             end
           end
         end
         devices = devices.sort
-        devices += site["network_equipments"].each_value.select{|c| c.fetch('metrics', []).map{|m| m["name"]}.any?{|m| m == metric_name}}.map{|c| "''#{c['uid']}''"}.sort
-        devices += site.fetch('pdus', {}).each_value.select{|c| c.fetch('metrics', []).map{|m| m["name"]}.any?{|m| m == metric_name}}.map{|c| "''#{c['uid']}''"}.sort
-        if not devices.empty?
-          @generated_content += "'''#{site['uid']}''':"
-          @generated_content += " #{devices.join(', ')}"
-          @generated_content += "<br/>"
-        end
+        devices += site['network_equipments'].each_value.select do |c|
+          c.fetch('metrics', []).map do |m|
+            m['name']
+          end.any? { |m| m == metric_name }
+        end.map { |c| "''#{c['uid']}''" }.sort
+        devices += site.fetch('pdus', {}).each_value.select do |c|
+          c.fetch('metrics', []).map do |m|
+            m['name']
+          end.any? { |m| m == metric_name }
+        end.map { |c| "''#{c['uid']}''" }.sort
+        next if devices.empty?
+
+        @generated_content += "'''#{site['uid']}''':"
+        @generated_content += " #{devices.join(', ')}"
+        @generated_content += '<br/>'
       end
-      #@generated_content += "\n<!-- #{descriptions} -->"
+      # @generated_content += "\n<!-- #{descriptions} -->"
       @generated_content += "\n"
     end
 
     @generated_content += "|}\n"
-
   end
 
   def longest_common_prefix(strs)
     return '' if strs.empty?
+
     min, max = strs.minmax
-    idx = min.size.times{ |i| break i if min[i] != max[i] }
+    idx = min.size.times { |i| break i if min[i] != max[i] }
     min[0...idx]
   end
+
   def longest_common_suffix(strs)
-    return longest_common_prefix(strs.map{|s| s.reverse}).reverse
+    longest_common_prefix(strs.map { |s| s.reverse }).reverse
   end
 end

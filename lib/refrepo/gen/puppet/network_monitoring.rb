@@ -1,14 +1,13 @@
 # add network_monitoring on supervision.site.grid5000.fr.yaml on hiera
 #
 
-NETWORK_EQUIPMENTS_BLACKLIST = [
-  'swx1nef',
-  'swy1nef',
-  'sw-aci-333',
+NETWORK_EQUIPMENTS_BLACKLIST = %w[
+  swx1nef
+  swy1nef
+  sw-aci-333
 ]
 
 def generate_puppet_network_monitoring(options)
-
   refapi = load_data_hierarchy
 
   sites = options[:sites]
@@ -35,7 +34,7 @@ def generate_puppet_network_monitoring(options)
       # do not apply to HPC switch
       next if eq_v['kind'] == 'hpcswitch'
       # do not apply to equipment we do not manage
-      next if !eq_v['managed_by_us']
+      next unless eq_v['managed_by_us']
 
       snmp_hosts << fqdn_eq_name unless
         snmp_hosts.find { |i| i == fqdn_eq_name }
@@ -83,6 +82,7 @@ def generate_puppet_network_monitoring(options)
       end
 
       next unless eq_v['channels']
+
       eq_v['channels'].each do |c_name, c_v|
         next if net_hosts_eq['interfaces'].find { |i| i['name'] == c_name }
 

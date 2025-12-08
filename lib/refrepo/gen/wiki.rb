@@ -15,61 +15,60 @@ require 'refrepo/gen/wiki/generators/oarsub_simplifier_aliases'
 require 'refrepo/gen/wiki/generators/modules_list'
 
 module RefRepo::Gen::Wiki
-
   GLOBAL_GENERATORS = {
     'cpu_parameters' => {
-      :gen => CPUParametersGenerator,
-      :page => "Generated/CPUParameters"
+      gen: CPUParametersGenerator,
+      page: 'Generated/CPUParameters'
     },
     'disk_reservation' => {
-      :gen => DiskReservationGenerator,
-      :page => 'Generated/DiskReservation'
+      gen: DiskReservationGenerator,
+      page: 'Generated/DiskReservation'
     },
     'hardware' => {
-      :gen => G5KHardwareGenerator,
-      :page => 'Hardware'
+      gen: G5KHardwareGenerator,
+      page: 'Hardware'
     },
     'status' => {
-      :gen => StatusGenerator,
-      :page => 'Status'
+      gen: StatusGenerator,
+      page: 'Status'
     },
     'oar_properties' => {
-      :gen => OarPropertiesGenerator,
-      :page => 'OAR_Properties'
+      gen: OarPropertiesGenerator,
+      page: 'OAR_Properties'
     },
     'group_storage' => {
-      :gen => GroupStorageGenerator,
-      :page => 'Generated/GroupStorage'
+      gen: GroupStorageGenerator,
+      page: 'Generated/GroupStorage'
     },
     'environments' => {
-      :gen => EnvironmentsGenerator,
-      :page => 'Generated/Environments'
+      gen: EnvironmentsGenerator,
+      page: 'Generated/Environments'
     },
     'licenses' => {
-      :gen => LicensesGenerator,
-      :page => 'Generated/Licenses'
+      gen: LicensesGenerator,
+      page: 'Generated/Licenses'
     },
     'kwollect_metrics' => {
-      :gen => KwollectMetricsGenerator,
-      :page => 'Generated/KwollectMetrics'
+      gen: KwollectMetricsGenerator,
+      page: 'Generated/KwollectMetrics'
     },
     'oarsub_simplifier_aliases' => {
-      :gen => OarsubSimplifierAliasesGenerator,
-      :page => 'Generated/OarsubSimplifierAliases'
+      gen: OarsubSimplifierAliasesGenerator,
+      page: 'Generated/OarsubSimplifierAliases'
     },
     'modules_list' => {
-      :gen => ModulesList,
-      :page => 'Generated/ModulesList'
+      gen: ModulesList,
+      page: 'Generated/ModulesList'
     }
   }
   SITE_GENERATORS = {
     'site_hardware' => {
-      :gen => SiteHardwareGenerator,
-      :page_suffix => ':Hardware'
+      gen: SiteHardwareGenerator,
+      page_suffix: ':Hardware'
     },
     'site_network' => {
-      :gen => SiteNetworkGenerator,
-      :page_suffix => ':GeneratedNetwork'
+      gen: SiteNetworkGenerator,
+      page_suffix: ':GeneratedNetwork'
     }
   }
   GENERATORS = GLOBAL_GENERATORS.merge(SITE_GENERATORS)
@@ -90,6 +89,6 @@ module RefRepo::Gen::Wiki
         end
       end
     end
-    return ret
+    ret
   end
 end

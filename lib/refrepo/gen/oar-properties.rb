@@ -370,7 +370,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
 
     # ETH
     ni_mountable = node['network_adapters'].select do |na|
-      /^eth[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
+      /^eth[0-9]*$/.match(na['device']) && na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)
     end
     ni_fastest = ni_mountable.max_by { |na| na['rate'] || 0 }
 
@@ -378,13 +378,11 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
     h['eth_kavlan_count'] = ni_mountable.select { |na| na['kavlan'] == true }.length
     h['eth_rate'] = ni_fastest['rate'] / 1_000_000_000
 
-    if (h['eth_count']).positive? && (h['eth_rate']).zero?
-      puts "#{node_uid}: Warning - no rate info for the eth interface"
-    end
+    puts "#{node_uid}: Warning - no rate info for the eth interface" if h['eth_count'].positive? && h['eth_rate'].zero?
 
     # INFINIBAND
     ni_mountable = node['network_adapters'].select do |na|
-      /^ib[s]?[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'InfiniBand' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
+      /^ibs?[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'InfiniBand' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
     end
     ni_fastest   = ni_mountable.max_by { |na| na['rate'] || 0 }
     # https://en.wikipedia.org/wiki/InfiniBand
@@ -397,24 +395,22 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
     unless ib_map.key?(h['ib_rate'])
       puts "#{node_uid}: Warning - unkwnon ib kind for rate #{h['ib_rate']}, update ib_map variable"
     end
-    puts "#{node_uid}: Warning - no rate info for the ib interface" if (h['ib_count']).positive? && (h['ib_rate']).zero?
+    puts "#{node_uid}: Warning - no rate info for the ib interface" if h['ib_count'].positive? && h['ib_rate'].zero?
 
     # OMNIPATH
     ni_mountable = node['network_adapters'].select do |na|
-      /^ib[s]?[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'Omni-Path' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
+      /^ibs?[0-9]*(\.[0-9]*)?$/.match(na['device']) && (na['interface'] == 'Omni-Path' and na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
     end
     ni_fastest = ni_mountable.max_by { |na| na['rate'] || 0 }
 
     h['opa_count'] = ni_mountable.length
     h['opa_rate']  = !ni_mountable.empty? ? ni_fastest['rate'] / 1_000_000_000 : 0
 
-    if (h['opa_count']).positive? && (h['opa_rate']).zero?
-      puts "#{node_uid}: Warning - no rate info for the opa interface"
-    end
+    puts "#{node_uid}: Warning - no rate info for the opa interface" if h['opa_count'].positive? && h['opa_rate'].zero?
 
     # MYRINET
     ni_mountable = node['network_adapters'].select do |na|
-      /^myri[0-9]*$/.match(na['device']) && (na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true))
+      /^myri[0-9]*$/.match(na['device']) && na['enabled'] == true && (na['mounted'] == true || na['mountable'] == true)
     end
     ni_fastest = ni_mountable.max_by { |na| na['rate'] || 0 }
     myri_map = { 0 => 'NO', 2 => 'Myrinet-2000', 10 => 'Myri-10G' }
@@ -423,7 +419,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
     h['myri_rate']  = !ni_mountable.empty? ? ni_fastest['rate'] / 1_000_000_000 : 0
     h['myri'] = myri_map[h['myri_rate']]
 
-    if (h['myri_count']).positive? && (h['myri_rate']).zero?
+    if h['myri_count'].positive? && h['myri_rate'].zero?
       puts "#{node_uid}: Warning - no rate info for the myri interface"
     end
 
@@ -502,7 +498,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
   end
 
   def get_production_property(node)
-    if ['abaca','production'].any? {|n| node.fetch('supported_job_types',{}).fetch('queues',[]).include?(n)}
+    if %w[abaca production].any? { |n| node.fetch('supported_job_types', {}).fetch('queues', []).include?(n) }
       'YES'
     else
       'NO'
@@ -987,7 +983,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
 
             { cpu: 'cpu', core: 'core', cpuset: 'cpuset', gpu: 'gpu',
               gpudevice: 'gpudevice' }.each do |key, value|
-              unless (row[key].to_s != corresponding_resource[0][value].to_s) && !((key == :gpu) && row[key].nil? && (corresponding_resource[0][value]).zero?)
+              unless (row[key].to_s != corresponding_resource[0][value].to_s) && !((key == :gpu) && row[key].nil? && corresponding_resource[0][value].zero?)
                 next
               end
 
@@ -1006,7 +1002,7 @@ property_exist 'diskpath' || oarproperty -a diskpath --varchar
         end
       end
 
-      if !(options[:print]) && !error_msgs.empty?
+      if !options[:print] && !error_msgs.empty?
         puts error_msgs
         ret = false
       end
@@ -1192,7 +1188,7 @@ end.inject(0) { |a, b| a + b }
           needed = variables[:per_cluster_count] - current_ids.length
           current_ids += [*next_rsc_ids[physical_resource] + 1..next_rsc_ids[physical_resource] + needed]
           next_rsc_ids[physical_resource] =
-            (variables[:per_server_count]).positive? ? variables[:current_ids].max : next_rsc_ids[physical_resource]
+            variables[:per_server_count].positive? ? variables[:current_ids].max : next_rsc_ids[physical_resource]
         end
 
         variables[:current_ids] = current_ids
@@ -1321,12 +1317,13 @@ end.inject(0) { |a, b| a + b }
               end
               if numa_gpus.empty?
                 # This core is not associated to any GPU
-                if node_description['gpu_devices'].values.select { |v| v.fetch('reservation', true) }.length == 1
-                  # The node has only one reservable GPU, we affect it to all cores
-                  selected_gpu = node_description['gpu_devices'].values.first
-                else
+                unless node_description['gpu_devices'].values.select { |v| v.fetch('reservation', true) }.length == 1
                   raise "#{fqdn}: No GPU to associate to CPU #{cpu_num}, core #{row[:cpuset]}. You probably want to use cpu_affinity_override to affect a GPU to this CPU."
                 end
+
+                # The node has only one reservable GPU, we affect it to all cores
+                selected_gpu = node_description['gpu_devices'].values.first
+
               elsif numa_gpus.first.key? 'cores_affinity'
                 # this cluster uses cores_affinity, not arbitrary allocation
                 selected_gpu = numa_gpus.find do |g|
@@ -1409,12 +1406,11 @@ end.inject(0) { |a, b| a + b }
 
     # If no cluster is given, then the clusters are the cluster of the given site
     if !options.key?(:clusters) || options[:clusters].empty?
-      if data_hierarchy['sites'].key? site_name
-        clusters = data_hierarchy['sites'][site_name]['clusters'].keys
-        options[:clusters] = clusters
-      else
-        raise("The provided site does not exist : I can't detect clusters")
-      end
+      raise("The provided site does not exist : I can't detect clusters") unless data_hierarchy['sites'].key? site_name
+
+      clusters = data_hierarchy['sites'][site_name]['clusters'].keys
+      options[:clusters] = clusters
+
     else
       clusters = options[:clusters]
     end

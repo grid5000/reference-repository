@@ -1,10 +1,6 @@
-# coding: utf-8
-
 require 'refrepo/gen/puppet/oarsub-simplifier-aliases'
 
 class OarsubSimplifierAliasesGenerator < WikiGenerator
-  
-
   def generate_content(options)
     default_aliases = get_sub_simplifier_default_aliases(options)
     sites_aliases = generate_all_sites_aliases
@@ -27,8 +23,8 @@ class OarsubSimplifierAliasesGenerator < WikiGenerator
       @generated_content += "! style=\"width: 30%\" | Description\n"
       @generated_content += "! style=\"width: 30%\" | Translate to\n"
       aliases.each do |al, value|
-        desc = if al.match(/([a-zA-Z]+)-\%d/)
-                 "Select a node from cluster #{$1.capitalize}"
+        desc = if al.match(/([a-zA-Z]+)-%d/)
+                 "Select a node from cluster #{::Regexp.last_match(1).capitalize}"
                else
                  "Select node(s) from cluster #{al.capitalize}"
                end

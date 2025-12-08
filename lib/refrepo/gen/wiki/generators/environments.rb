@@ -1,10 +1,8 @@
-# coding: utf-8
-
 class EnvironmentsGenerator < WikiGenerator
-
-  OSVERSION_SORT_ORDER = ['debian10','debian11','debiantesting','centos7','centos8','rocky8','rocky9','centosstream8','centosstream9','ubuntu2004', 'ubuntu2204']
-  VARIANT_SORT_ORDER = ['min','base', 'nfs', 'big', 'std']
-  # FIXME Update the description of envs to something more sensible instead of overwriting here.
+  OSVERSION_SORT_ORDER = %w[debian10 debian11 debiantesting centos7 centos8 rocky8 rocky9 centosstream8
+                            centosstream9 ubuntu2004 ubuntu2204]
+  VARIANT_SORT_ORDER = %w[min base nfs big std]
+  # FIXME: Update the description of envs to something more sensible instead of overwriting here.
   DESC = {
     'debian10-min' => 'debian 10 (buster) minimalistic installation',
     'debian10-base' => 'debian 10 (buster) with various Grid\'5000-specific tuning for performance',
@@ -38,41 +36,40 @@ class EnvironmentsGenerator < WikiGenerator
     'rocky9-min' => 'rocky 9 minimalistic installation',
     'rocky9-nfs' => 'rocky 9 with support for mounting NFS home',
     'almalinux9-min' => 'almalinux 9 minimalistic installation',
-    'almalinux9-nfs' => 'almalinux 9 with support for mounting NFS home',
+    'almalinux9-nfs' => 'almalinux 9 with support for mounting NFS home'
   }
 
   def generate_content(_options)
-
-    table_columns = ["Name"]
+    table_columns = ['Name']
     table_data = []
     envs = []
 
     G5K::SITES.each do |site|
-      envs += RefRepo::Utils::get_api("sites/#{site}/internal/kadeployapi/environments?username=deploy&last")
+      envs += RefRepo::Utils.get_api("sites/#{site}/internal/kadeployapi/environments?username=deploy&last")
     end
-    envs.select!{|x| x['visibility'] == 'public'}
+    envs.select! { |x| x['visibility'] == 'public' }
     # The creation date can be a little different on each site, we remove it from hash before removing dupplicate
-    envs.each{|x| x.delete('created_at')}
+    envs.each { |x| x.delete('created_at') }
     envs.uniq!
-    # FIXME We reject debian11-std here until #13183 is fixed
-    envs.reject!{|x| x['name'] == 'debian11-std'}
-    table_columns += envs.map{|x| x['arch']}.uniq.sort.reverse
+    # FIXME: We reject debian11-std here until #13183 is fixed
+    envs.reject! { |x| x['name'] == 'debian11-std' }
+    table_columns += envs.map { |x| x['arch'] }.uniq.sort.reverse
     table_columns << 'Description'
-    envs = envs.group_by{|x| x['name']}.map{|k,v| [k,v.map{|x| x['arch']}, v.first['description']]}
+    envs = envs.group_by { |x| x['name'] }.map { |k, v| [k, v.map { |x| x['arch'] }, v.first['description']] }
     envs.each do |env|
-      tarch = table_columns[1..3].map{|l| env[1].include?(l) ? '[[Image:Check.png]]' : '[[Image:NoStarted.png]]' }
+      tarch = table_columns[1..3].map { |l| env[1].include?(l) ? '[[Image:Check.png]]' : '[[Image:NoStarted.png]]' }
       table_data << [env[0]] + tarch + [DESC[env[0]] || env[2]]
     end
 
     # Sort by OS version and variant
-    table_data.sort_by! { |row|
+    table_data.sort_by! do |row|
       [OSVERSION_SORT_ORDER.index(row[0].split('-')[0]) || 100, VARIANT_SORT_ORDER.index(row[0].split('-')[1]) || 100]
-    }
+    end
 
     # Table construction
     table_options = 'class="wikitable sortable" style="text-align: center;"'
     @generated_content = MW.generate_table(table_options, table_columns, table_data)
-    @generated_content += MW.italic(MW.small("Last generated from the Grid'5000 API on #{Time.now.strftime("%Y-%m-%d")}"))
+    @generated_content += MW.italic(MW.small("Last generated from the Grid'5000 API on #{Time.now.strftime('%Y-%m-%d')}"))
     @generated_content += MW::LINE_FEED
   end
 end
