@@ -1,17 +1,20 @@
+# frozen_string_literal: true
+
 require 'refrepo/hash/hash'
 require 'erb'
 
 def generate_puppet_kwollectg5k(options)
+  conf_dir = "#{options[:conf_dir]}/ipmitools".freeze
   puts "Writing kwollect configuration files to: #{options[:output_dir]}"
-  puts "Using configuration directory: #{options[:conf_dir]}"
+  puts "Using configuration directory: #{conf_dir}"
   puts "For site(s): #{options[:sites].join(', ')}"
 
-  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/ipmitools/" unless options[:conf_dir]
-  if !Pathname("#{options[:conf_dir]}/console-password.yaml").exist?
-    puts "Warning: No #{options[:conf_dir]}/console-password.yaml file found"
+  console_pwd_path = "#{conf_dir}/console-password.yaml".freeze
+  if !Pathname(console_pwd_path).exist?
+    puts "Warning: No #{console_pwd_path} file found"
     credentials = {}
   else
-    credentials = YAML.load_file("#{options[:conf_dir]}/console-password.yaml")
+    credentials = YAML.load_file(console_pwd_path)
   end
 
   refapi = load_data_hierarchy

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'refrepo/hash/hash'
 
 def kavlan_switch_port_lookup(switch, node_uid, interface = '')
@@ -28,14 +30,14 @@ def kavlan_switch_port_lookup(switch, node_uid, interface = '')
 end
 
 def generate_puppet_kavlang5k(options)
-  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/kavlan" unless options[:conf_dir]
+  conf_dir = "#{options[:conf_dir]}/kavlan".freeze
 
-  unless Pathname(options[:conf_dir].to_s).exist?
-    raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect")
+  unless Pathname(conf_dir.to_s).exist?
+    raise("Error: #{conf_dir} does not exist. The given configuration path is incorrect")
   end
 
   puts "Writing kavlan configuration files to: #{options[:output_dir]}"
-  puts "Using configuration directory: #{options[:conf_dir]}"
+  puts "Using configuration directory: #{conf_dir}"
   puts "For site(s): #{options[:sites].join(', ')}"
 
   refapi = load_data_hierarchy
@@ -43,10 +45,10 @@ def generate_puppet_kavlang5k(options)
   refapi['sites'].each do |site_uid, site_refapi|
     next unless options[:sites].include?(site_uid)
 
-    conf = YAML.load(ERB.new(File.read("#{options[:conf_dir]}/kavlang5k.yaml"),
+    conf = YAML.load(ERB.new(File.read("#{conf_dir}/kavlang5k.yaml"),
                              trim_mode: '-').result(binding))[site_uid]
     if !conf
-      warn "No generator configuration for site #{site_uid} found in #{options[:conf_dir]}/kavlang5k.yaml, skipping kavlan.conf"
+      warn "No generator configuration for site #{site_uid} found in #{conf_dir}/kavlang5k.yaml, skipping kavlan.conf"
     else
       output = ERB.new(File.read(File.expand_path('templates/kavlan.conf.erb', File.dirname(__FILE__))),
                        trim_mode: '-').result(binding)

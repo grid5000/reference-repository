@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 # This script generates lanpowerg5k/files/<site_uid>/lanpower.conf from conf/console.yaml and conf/console-password.conf
 
 require 'refrepo/hash/hash'
 
 def generate_puppet_lanpowerg5k(options)
-  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/ipmitools" unless options[:conf_dir]
+  conf_dir = "#{options[:conf_dir]}/ipmitools".freeze
 
-  unless Pathname(options[:conf_dir].to_s).exist?
-    raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect")
+  unless Pathname(conf_dir.to_s).exist?
+    raise("Error: #{conf_dir} does not exist. The given configuration path is incorrect")
   end
 
+  puts "Using configuration directory: #{conf_dir}"
   puts "Writing lanpower configuration files to: #{options[:output_dir]}"
-  puts "Using configuration directory: #{options[:conf_dir]}"
   puts "For site(s): #{options[:sites].join(', ')}"
 
-  config      = YAML.load_file("#{options[:conf_dir]}/console.yaml")
-  credentials = YAML.load_file("#{options[:conf_dir]}/console-password.yaml")
+  config      = YAML.load_file("#{conf_dir}/console.yaml")
+  credentials = YAML.load_file("#{conf_dir}/console-password.yaml")
 
   refapi = load_data_hierarchy
 

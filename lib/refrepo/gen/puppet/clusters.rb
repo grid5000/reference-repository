@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'refrepo/data_loader'
 
 def generate_puppet_clusters(options)
-  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/hieradata/" unless options[:conf_dir]
+  clusters_filepath = "#{options[:output_dir]}/platforms/production/hieradata/clusters.yaml".freeze
   # Loading current data from hiera
-  hiera = YAML.load_file("#{options[:conf_dir]}clusters.yaml")['grid5000::clusters']
+  hiera = YAML.load_file(clusters_filepath)['grid5000::clusters']
 
   # Updating data from refrepo
   refrepo = load_data_hierarchy
@@ -54,6 +56,6 @@ def generate_puppet_clusters(options)
     end
   end
 
-  outfile = File.open("#{options[:conf_dir]}clusters.yaml", 'w')
+  outfile = File.open(clusters_filepath, 'w')
   outfile.write({ 'grid5000::clusters' => hiera }.to_yaml)
 end

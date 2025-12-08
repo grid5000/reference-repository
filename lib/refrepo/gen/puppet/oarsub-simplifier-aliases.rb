@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 require 'refrepo/data_loader'
 require 'refrepo/gpu_ref'
 
 def get_sub_simplifier_default_aliases(options)
-  unless options[:conf_dir]
-    options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/sub-simplifier"
+  conf_dir = "#{options[:conf_dir]}/sub-simplifier".freeze
+  output_filepath = "#{conf_dir}/aliases.yaml".freeze
+
+  unless Pathname(output_filepath).exist?
+    raise("Error: file #{output_filepath} does not exist. The given configuration path is incorrect")
   end
 
-  unless Pathname("#{options[:conf_dir]}/aliases.yaml").exist?
-    raise("Error: file #{options[:conf_dir]}/aliases.yaml does not exist. The given configuration path is incorrect")
-  end
-
-  default_aliases = YAML.load(File.read("#{options[:conf_dir]}/aliases.yaml"))
+  default_aliases = YAML.load(File.read(output_filepath))
 
   gpu_aliases = GPURef.get_all_aliases.map do |al, model|
     [al, { 'value' => "gpu_model='#{model}'",

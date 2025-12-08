@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'refrepo/hash/hash'
 
 # Compute cluster prefix
@@ -34,14 +36,12 @@ end
 def generate_puppet_kadeployg5k(options)
   global_hash = load_data_hierarchy
 
-  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/kadeploy" unless options[:conf_dir]
+  conf_dir = "#{options[:conf_dir]}/kadeploy".freeze
 
-  unless Pathname(options[:conf_dir].to_s).exist?
-    raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect")
-  end
+  raise("Error: #{conf_dir} does not exist. The given configuration path is incorrect") unless Pathname(conf_dir).exist?
 
   puts "Writing Kadeploy configuration files to: #{options[:output_dir]}"
-  puts "Using configuration directory: #{options[:conf_dir]}"
+  puts "Using configuration directory: #{conf_dir}"
   puts "For site(s): #{options[:sites].join(', ')}"
 
   # There is two kadeploy servers : kadeploy and kadeploy-dev
@@ -57,7 +57,7 @@ def generate_puppet_kadeployg5k(options)
 
       # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
 
-      conf = YAML.load(ERB.new(File.read("#{options[:conf_dir]}/kadeployg5k#{suffix}.yaml")).result(binding))
+      conf = YAML.load(ERB.new(File.read("#{conf_dir}/kadeployg5k#{suffix}.yaml")).result(binding))
 
       clusters_conf = { 'clusters' => [] } # output clusters.conf
       clusters = site.fetch('clusters', {})
@@ -85,7 +85,7 @@ def generate_puppet_kadeployg5k(options)
         end
         data = defaults.merge(overrides)
         if data.nil?
-          puts "Warning: configuration not found in #{options[:conf_dir]}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
+          puts "Warning: configuration not found in #{conf_dir}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
           next
         end
 

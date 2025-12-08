@@ -1,27 +1,26 @@
+# frozen_string_literal: true
+
 require 'refrepo'
 
 def generate_puppet_oxidizedg5k(options)
-  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/oxidized" unless options[:conf_dir]
+  conf_file = "#{options[:conf_dir]}/oxidized/oxidizedg5k.yaml".freeze
+  output_dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/oxidized".freeze
+  output_file = "#{output_dir}/oxidized.db".freeze
 
-  unless Pathname(options[:conf_dir].to_s).exist?
-    raise("Error: #{options[:conf_dir]} does not exist. The given configuration path is incorrect")
-  end
-
-  puts "Writing oxidized database to: #{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/oxidized/oxidized.db"
-  puts "Using configuration directory: #{options[:conf_dir]}"
+  puts "Using configuration file: #{conf_file}"
+  puts "Writing oxidized database to: #{output_file}"
   if options[:sites] != RefRepo::Utils.get_sites
     puts 'WARNING : Sites options is specified but has no impact on generated files (one file generated for all sites)'
   end
 
-  conf = YAML.load(File.read("#{options[:conf_dir]}/oxidizedg5k.yaml"))
+  conf = YAML.load(File.read(conf_file))
   if !conf
-    warn "No generator configuration for oxidized found in #{options[:conf_dir]}/oxidizedg5k.yaml, skipping oxidized"
+    warn "No generator configuration for oxidized found in #{conf_file}, skipping oxidized"
   else
     config_lines = generate_config_lines(conf)
     output = ERB.new(File.read(File.expand_path('templates/oxidized.db.erb', File.dirname(__FILE__))),
                      trim_mode: '-').result(binding)
-    output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/oxidized/oxidized.db")
-    output_file.dirname.mkpath
+    mkdir_p(output_dir, verbose: false)
     File.write(output_file, output)
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'refrepo/data_loader'
 require 'net/http'
 require 'peach'
@@ -5,8 +7,8 @@ require 'json'
 require 'yaml'
 
 def generate_puppet_webfish(options)
-  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/redfish/" unless options[:conf_dir]
-  file = options[:conf_dir] + 'console-password.yaml'
+  conf_dir = "#{options[:output_dir]}/platforms/production/generators/redfish/".freeze
+  file = "#{conf_dir}/console-password.yaml".freeze
   puts "Writing Webfish configuration files to: #{file}"
   puts "For site(s): #{options[:sites].join(', ')}"
   allBmc = gen_redfish_configuration(options)
