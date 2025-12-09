@@ -122,25 +122,32 @@ gw:
       kavlan_pattern: Ethernet%LINECARD%/%PORT%
       backplane_bps: 36000000000000
       rate: 25000000000
+      switchport_mode: access
       ports:
         1:
           uid: pve-1
           kind: server
+          switchport_mode: trunk
         2:
           uid: pve-1
           kind: server
+          switchport_mode: trunk
         3:
           uid: pve-2
           kind: server
+          switchport_mode: trunk
         4:
           uid: pve-2
           kind: server
+          switchport_mode: trunk
         5:
           uid: pve-4
           kind: server
+          switchport_mode: trunk
         6:
           uid: pve-4
           kind: server
+          switchport_mode: trunk
         7:
           uid: port-channel2
           kind: channel
@@ -188,7 +195,6 @@ gw:
           kind: channel
           rate: 100000000000
           switchport_mode: trunk
-      switchport_mode: access
   channels:
     port-channel1:
       uid: sw-1
