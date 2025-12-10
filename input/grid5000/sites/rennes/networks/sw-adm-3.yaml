@@ -1,0 +1,21 @@
+---
+sw-adm-3:
+  model: Aruba 6300M
+  warranty: 2051-01
+  kind: switch
+  managed_by_us: true
+  site: rennes
+  ip: 172.17.111.218
+  snmp_community: g5kadmin
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        44:
+          uid: gw
+          kind: router
+          switchport_mode: access
+      switchport_mode: access
