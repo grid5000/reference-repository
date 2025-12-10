@@ -1,0 +1,21 @@
+---
+sw-adm-2:
+  model: Aruba 6300M
+  warranty: 2049-07
+  kind: switch
+  managed_by_us: true
+  site: rennes
+  ip: 172.17.111.217
+  snmp_community: g5kadmin
+  linecards:
+    1:
+      snmp_pattern: "%LINECARD%/1/%PORT%"
+      kavlan_pattern: "%LINECARD%/1/%PORT%"
+      rate: 1000000000
+      kind: node
+      ports:
+        44:
+          uid: parasilo-admsw-1
+          kind: switch
+          switchport_mode: access
+      switchport_mode: access
