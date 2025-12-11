@@ -14,8 +14,28 @@ parasilo-admsw-1:
       rate: 1000000000
       kind: node
       ports:
+        #39:
+        #  uid: sw-2
+        #  kind: switch
+        #  switchport_mode: access
         42:
           uid: sw-adm-2
+          kind: switch
+          switchport_mode: access
+        #43:
+        #  uid: sw-1
+        #  kind: switch
+        #  switchport_mode: access
+        #46:
+        #  uid: parasilo-sw-1
+        #  kind: switch
+        #  switchport_mode: access
+        #47:
+        #  uid: sw-3
+        #  kind: switch
+        #  switchport_mode: access
+        48:
+          uid: sw-adm-1
           kind: switch
           switchport_mode: access
       switchport_mode: access
