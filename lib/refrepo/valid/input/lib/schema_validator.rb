@@ -2,7 +2,7 @@
 
 # Inspired from XML DTD
 # It uses https://github.com/jamesbrooks/hash_validator
-# See also related tool: 
+# See also related tool:
 # * http://rx.codesimply.com/
 # * http://www.kuwata-lab.com/kwalify/ruby/users-guide.html
 
@@ -14,20 +14,22 @@ require "#{dir}/array_validator" # custom validator for <array> support
 require "#{dir}/custom_validators" # other custom validators
 
 # Simple required_hash validator
-HashValidator.append_validator(HashValidator::Validator::SimpleValidator.new('required_hash', lambda { |v| v.is_a?(Hash) }))
+HashValidator.append_validator(HashValidator::Validator::SimpleValidator.new('required_hash', lambda { |v|
+  v.is_a?(Hash)
+}))
 
 # Date validator
-HashValidator.append_validator(HashValidator::Validator::SimpleValidator.new('date', lambda { |v| v.is_a?(Date) }))
+HashValidator.append_validator(HashValidator::Validator::SimpleValidator.new('date', ->(v) { v.is_a?(Date) }))
 
 # Recursively replace 'optional_' values of the validation hash by HashValidator::Optional objects
 def add_optional_validator(h)
-  h.each_with_object({}) { |(k,v),g|
-    g[k] = if (Hash === v) 
+  h.each_with_object({}) do |(k, v), g|
+    g[k] = if v.is_a?(Hash)
              add_optional_validator(v)
-           elsif String === v
-             if v == 'optional_hash' || v == 'optional'
+           elsif v.is_a?(String)
+             if %w[optional_hash optional].include?(v)
                HashValidator.optional('required')
-             elsif v.start_with?('optional_') 
+             elsif v.start_with?('optional_')
                HashValidator.optional(v.gsub('optional_', ''))
              else
                v
@@ -35,14 +37,14 @@ def add_optional_validator(h)
            else
              v
            end
-  }
+  end
 end
 
 # Recursively replace custom validation keys (<multi>, <array>, <nested_array>, <optional_Type>) by their custom validators counterparts
 def replace_validators_keys(h)
-  h.each_with_object({}) { |(k,v),g|
-    v = replace_validators_keys(v) if (Hash === v)
-    g[k] = if (Hash === v)
+  h.each_with_object({}) do |(k, v), g|
+    v = replace_validators_keys(v) if v.is_a?(Hash)
+    g[k] = if v.is_a?(Hash)
              if v.key?('<multi>')
                HashValidator::Validations::Multi.new(v['<multi>'])
              elsif v.key?('<array>')
@@ -61,22 +63,21 @@ def replace_validators_keys(h)
            else
              v
            end
-  }
+  end
 end
 
 # Monkey patching of the SimpleValidator to get more useful error messages
 class HashValidator::Validator::SimpleValidator < HashValidator::Validator::Base
   def validate(key, value, _validations, errors)
-    unless lambda.call(value)
-      errors[key] = "#{self.name} required (current value: #{value.class}:#{value})"
-    end
+    return if lambda.call(value)
+
+    errors[key] = "#{name} required (current value: #{value.class}:#{value})"
   end
 end
 
 # Load validation schema from a YAML file
 def load_yaml_schema(filename)
-  schema = YAML::load_file(filename)
+  schema = YAML.load_file(filename)
   schema = add_optional_validator(schema)
-  schema = replace_validators_keys(schema)
-  return schema
+  replace_validators_keys(schema)
 end

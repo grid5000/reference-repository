@@ -111,15 +111,20 @@ grenoble:
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.size
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.model
   vercors9-7:
-    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.vendor
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.size
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.model
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version
-    - ~network_adapters.eth3.firmware_version
-    - ~network_adapters.eth2.firmware_version
-    - ~network_adapters.eth1.firmware_version
-    - ~network_adapters.eth0.firmware_version
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.storage
     - ~network_adapters.eth2.name
+  vercors9-8:
+    - ~network_adapters.eth0.firmware_version
+    - ~network_adapters.eth1.firmware_version
+    - ~network_adapters.eth2.firmware_version
+    - ~network_adapters.eth3.firmware_version
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.model
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.storage
+    - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.vendor
   vercors10-[1-2]:
     - -pdu[1]
     - ~storage_devices.pci-0000:03:00.0-scsi-0:0:0:0.firmware_version

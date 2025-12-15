@@ -195,13 +195,11 @@ def expand_nodeset_lists
     puts "Warning: Some unkown (or not production) nodeset ARE configured : #{overspecified_nodesets.join(', ')}"
   end
 
-  outputs = inputs.each_with_object({}) do |(nodeset, access_hash), output|
+  inputs.each_with_object({}) do |(nodeset, access_hash), output|
     output[nodeset] = expands_acces_hashes(access_hash, groups)
   rescue RuntimeError => e
     raise e.exception "#{e.message} when processing input nodeset #{nodeset}"
   end
-
-  outputs
 end
 
 # Eats a {p1 => [@group,%site,gga], p2=> ... } hash of lists
@@ -232,7 +230,7 @@ def all_nodesets
   nodesets = []
   site_data_hierarchy['sites'].each do |_site, site_details|
     site_details.fetch('clusters', {}).each do |_cluster, cluster_details|
-      next unless cluster_details['queues'].include?('abaca') ||  cluster_details['queues'].include?('production')
+      next unless cluster_details['queues'].include?('abaca') || cluster_details['queues'].include?('production')
 
       nodesets.concat(cluster_details['nodes'].map { |_, node_details| node_details['nodeset'] })
     end

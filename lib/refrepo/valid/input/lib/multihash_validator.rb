@@ -1,11 +1,12 @@
 module HashValidator::Validations
   class Multi
     attr_reader :validation
+
     def initialize(validation)
       @validation = validation
     end
-    
-    def get_validation()
+
+    def get_validation
       @validation
     end
   end
@@ -32,11 +33,11 @@ class HashValidator::Validator::MultiHashValidator < HashValidator::Validator::B
     errors = (errors[key] = {})
 
     values.each do |k, v|
-      HashValidator.validator_for(validations.get_validation()).validate(k, v, validations.get_validation(), errors)
+      HashValidator.validator_for(validations.get_validation).validate(k, v, validations.get_validation, errors)
     end
 
     # Cleanup errors (remove any empty nested errors)
-    errors.delete_if { |_k,v| v.empty? }
+    errors.delete_if { |_k, v| v.empty? }
   end
 end
 

@@ -3,7 +3,6 @@
 require 'hashdiff'
 
 def global_ignore_keys
-
   #
   # Global ignore keys
   #
@@ -60,7 +59,7 @@ def global_ignore_keys
     -status
   )
 
-  ignore_netkeys = <<-eos
+  ignore_netkeys = <<-EOS
     ~network_adapters.eth.ip
     -network_adapters.eth.ip
     ~network_adapters.eth.ip6
@@ -69,24 +68,24 @@ def global_ignore_keys
     ~network_adapters.eth.network_address
     ~network_adapters.eth.switch
     ~network_adapters.eth.switch_port
-eos
+  EOS
 
   ignore_regex = [
     ['~', /storage_devices\..*\.by_id/],
-    ['~', /\.*fpga\.*/],
+    ['~', /\.*fpga\.*/]
   ]
 
-  (0..7).each { |eth|
-    keys = ignore_netkeys.gsub('.eth.', ".eth#{eth}.").gsub("\n", " ").split(" ")
+  (0..7).each do |eth|
+    keys = ignore_netkeys.gsub('.eth.', ".eth#{eth}.").gsub("\n", ' ').split(' ')
     ignore_keys.push(* keys)
 
-    (1..22).each { |kavlan|
+    (1..22).each do |kavlan|
       ignore_keys << "~kavlan.eth#{eth}.kavlan-#{kavlan}"
       ignore_keys << "~kavlan6.eth#{eth}.kavlan-#{kavlan}"
-    }
-  }
+    end
+  end
 
-  ignore_ibkeys = <<-eos
+  ignore_ibkeys = <<-EOS
     ~network_adapters.IB_IF.guid
     ~network_adapters.IB_IF.hwid
     ~network_adapters.IB_IF.ip
@@ -95,7 +94,7 @@ eos
     ~network_adapters.IB_IF.position
     ~network_adapters.IB_IF.network_address
     +network_adapters.IB_IF.version
-eos
+  EOS
 
   ib_interfaces = [
     'ib0',
@@ -107,53 +106,54 @@ eos
     'ibs4'
   ]
 
-  ib_interfaces.each { |ib_if|
-    keys = ignore_ibkeys.gsub('IB_IF', "#{ib_if}").gsub("\n", " ").split(" ")
+  ib_interfaces.each do |ib_if|
+    keys = ignore_ibkeys.gsub('IB_IF', "#{ib_if}").gsub("\n", ' ').split(' ')
     ignore_keys.push(* keys)
-  }
-  return [ignore_keys, ignore_regex]
+  end
+  [ignore_keys, ignore_regex]
 end
 
 def cluster_ignore_keys(filename)
-  file_hash = YAML::load(ERB.new(File.read(filename)).result(binding))
-  file_hash.expand_square_brackets() if file_hash
-  return file_hash
+  file_hash = YAML.load(ERB.new(File.read(filename)).result(binding))
+  file_hash.expand_square_brackets if file_hash
+  file_hash
 end
 
-def cluster_homogeneity(refapi_hash, options = {:verbose => false})
+def cluster_homogeneity(refapi_hash, options = { verbose: false })
   verbose = options[:verbose]
 
   if verbose
-    puts "The change set is represented using the following syntax:"
+    puts 'The change set is represented using the following syntax:'
     puts '  [["+", "path.to.key1", value],          # new key'
     puts '   ["-", "path.to.key2", value],          # missing key'
     puts '   ["~", "path.to.key3", value1, value2]] # modified value'
     puts ''
   end
 
-  ignore_keys, ignore_regex  = global_ignore_keys()
-  cignore_keys = cluster_ignore_keys(File.expand_path("data/homogeneity.yaml.erb", File.dirname(__FILE__)))
+  ignore_keys, ignore_regex = global_ignore_keys
+  cignore_keys = cluster_ignore_keys(File.expand_path('data/homogeneity.yaml.erb', File.dirname(__FILE__)))
 
   count = {}
   total_count = 0
 
-  refapi_hash["sites"].sort.each do |site_uid, site|
+  refapi_hash['sites'].sort.each do |site_uid, site|
     next if options.key?(:sites) && !options[:sites].include?(site_uid)
 
     count[site_uid] = {}
 
-    site.fetch("clusters", {}).sort.each do |cluster_uid, cluster|
+    site.fetch('clusters', {}).sort.each do |cluster_uid, cluster|
       next if options.key?(:clusters) &&
-        !(options[:clusters].include?(cluster_uid) || options[:clusters].empty?)
+              !(options[:clusters].include?(cluster_uid) || options[:clusters].empty?)
+
       count[site_uid][cluster_uid] = 0
 
       refnode_uid = nil
       refnode = nil
 
-      cluster["nodes"].each_sort_by_node_uid do |node_uid, node|
+      cluster['nodes'].each_sort_by_node_uid do |node_uid, node|
         next if node['status'] == 'retired'
 
-        if !refnode
+        unless refnode
           refnode = node
           refnode_uid = node_uid
           next
@@ -162,35 +162,39 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
         diffs = Hashdiff.diff(refnode, node)
 
         # Hack HashDiff output for arrays:
-        #[["-", "pdu[1]", {"uid"=>"graphene-pdu9", "port"=>24}],
+        # [["-", "pdu[1]", {"uid"=>"graphene-pdu9", "port"=>24}],
         # ["-", "pdu[0]", {"uid"=>"graphene-pdu9", "port"=>23}],
         # ["+", "pdu[0]", {"uid"=>"graphene-pdu9", "port"=>21}],
         # ["+", "pdu[1]", {"uid"=>"graphene-pdu9", "port"=>22}]]
         # => should be something like this:
         # [["~", "pdu[0]", {"uid"=>"graphene-pdu9", "port"=>23}, {"uid"=>"graphene-pdu9", "port"=>22},
         #  ["~", "pdu[1]", {"uid"=>"graphene-pdu9", "port"=>24}, {"uid"=>"graphene-pdu9", "port"=>23}}
-        d = diffs.select{|x| x[0] != '~' }.group_by{ |x| x[1] }
-        d.each { |k, v|
-          d[k] = v.group_by{ |x| x[0] }
-        }
-        d.each { |k,v|
-          if v.key?('-') && v.key?('+')
-            #puts "Warning: #{node_uid}: convert +/- -> ~ for #{k}"
-            diffs.delete(["-", k, v['-'][0][2]])
-            diffs.delete(["+", k, v['+'][0][2]])
-            diffs << ["~", k, v['-'][0][2], v['+'][0][2] ]
-          end
-        }
+        d = diffs.select { |x| x[0] != '~' }.group_by { |x| x[1] }
+        d.each do |k, v|
+          d[k] = v.group_by { |x| x[0] }
+        end
+        d.each do |k, v|
+          next unless v.key?('-') && v.key?('+')
+
+          # puts "Warning: #{node_uid}: convert +/- -> ~ for #{k}"
+          diffs.delete(['-', k, v['-'][0][2]])
+          diffs.delete(['+', k, v['+'][0][2]])
+          diffs << ['~', k, v['-'][0][2], v['+'][0][2]]
+        end
         # end of hack
 
         # Remove keys that are specific to each nodes (ip, mac etc.)
-        ikeys = cignore_keys[site_uid][node_uid] rescue nil
+        ikeys = begin
+          cignore_keys[site_uid][node_uid]
+        rescue StandardError
+          nil
+        end
 
         not_found_keys = []
-        if !ikeys.nil?
+        unless ikeys.nil?
           ikeys.each do |key|
-            diff = diffs.select {|entry| entry[0] + entry[1] == key}.first
-            if diff.nil? 
+            diff = diffs.select { |entry| entry[0] + entry[1] == key }.first
+            if diff.nil?
               not_found_keys << key
               total_count += 1
               count[site_uid][cluster_uid] += 1
@@ -236,10 +240,10 @@ def cluster_homogeneity(refapi_hash, options = {:verbose => false})
     end
   end
 
-  return [total_count, count]
+  [total_count, count]
 end
 
-def check_cluster_homogeneity(options = {:verbose => false})
+def check_cluster_homogeneity(options = { verbose: false })
   refapi_hash = load_yaml_file_hierarchy
   options[:api] = {}
   conf = RefRepo::Utils.get_api_config
@@ -253,19 +257,21 @@ def check_cluster_homogeneity(options = {:verbose => false})
   unless verbose
     count.each_pair do |site, v|
       next if v.values.select { |c| c != 0 }.empty?
+
       puts "#{site} ..."
       v.each_pair do |cluster, c|
         next if c == 0
+
         puts "  #{cluster}: #{c}"
       end
     end
   end
 
   if total_count == 0
-    puts "OK"
-    return true
+    puts 'OK'
+    true
   else
     puts "Use 'VERBOSE=1' option for details." unless verbose
-    return false
+    false
   end
 end

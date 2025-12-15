@@ -1,11 +1,8 @@
-# coding: utf-8
-
 class StatusGenerator < WikiGenerator
-
   def generate_content(_options)
     @global_hash = get_global_hash
     @site_uids = G5K::SITES
-    @sites_number = @site_uids.length()
+    @sites_number = @site_uids.length
 
     @generated_content = "__NOEDITSECTION__\n"
     @generated_content += "{{Status|In production}}\n"
@@ -110,8 +107,8 @@ class StatusGenerator < WikiGenerator
     data += MW::LINE_FEED
     data += "{|\n"
     @site_uids.sort.each do |site_uid|
-        data += "|bgcolor=\"#ffffff\" valign=\"top\" style=\"border:1px solid #cccccc;padding:1em;padding-top:0.5em;\"|\n"
-        data += "[https://api.grid5000.fr/stable/sites/#{site_uid}/metrics/dashboard '''#{site_uid.capitalize}''']\n"
+      data += "|bgcolor=\"#ffffff\" valign=\"top\" style=\"border:1px solid #cccccc;padding:1em;padding-top:0.5em;\"|\n"
+      data += "[https://api.grid5000.fr/stable/sites/#{site_uid}/metrics/dashboard '''#{site_uid.capitalize}''']\n"
     end
     data += "|}\n\n"
   end
@@ -136,15 +133,13 @@ class StatusGenerator < WikiGenerator
   end
 
   def has_reservable_disks?(site)
-    site_hash = @global_hash["sites"][site]
-    site_hash.fetch("clusters", {}).each_value do |cluster_hash|
+    site_hash = @global_hash['sites'][site]
+    site_hash.fetch('clusters', {}).each_value do |cluster_hash|
       cluster_hash.fetch('nodes').each_value do |node_hash|
         sd = node_hash['storage_devices']
-        reservable_disks = sd.select{ |v| v['reservation'] == true }.count > 0
+        reservable_disks = sd.select { |v| v['reservation'] == true }.count > 0
 
-        if reservable_disks
-          return true
-        end
+        return true if reservable_disks
       end
     end
 
@@ -152,11 +147,9 @@ class StatusGenerator < WikiGenerator
   end
 
   def has_queue_production?(site)
-    site_hash = @global_hash["sites"][site]
-    site_hash.fetch("clusters", {}).each_value do |cluster_hash|
-      if cluster_hash["queues"].include?("abaca") || cluster_hash["queues"].include?("production")
-        return true
-      end
+    site_hash = @global_hash['sites'][site]
+    site_hash.fetch('clusters', {}).each_value do |cluster_hash|
+      return true if cluster_hash['queues'].include?('abaca') || cluster_hash['queues'].include?('production')
     end
 
     false
