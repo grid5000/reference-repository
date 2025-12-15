@@ -1,37 +1,37 @@
-# coding: utf-8
-
 class DiskReservationGenerator < WikiGenerator
-
   def generate_content(_options)
-    table_columns = ["Site", "Cluster", "Number of nodes", "Number of reservable disks per node"]
+    table_columns = ['Site', 'Cluster', 'Number of nodes', 'Number of reservable disks per node']
     table_data = []
     global_hash = get_global_hash
 
     # Loop over Grid'5000 sites
-    global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
-      site_hash.fetch("clusters", {}).sort.to_h.each { |cluster_uid, cluster_hash|
+    global_hash['sites'].sort.to_h.each do |site_uid, site_hash|
+      site_hash.fetch('clusters', {}).sort.to_h.each do |cluster_uid, cluster_hash|
         disk_info = {}
-        cluster_hash.fetch('nodes').sort.to_h.each { |node_uid, node_hash|
+        cluster_hash.fetch('nodes').sort.to_h.each do |node_uid, node_hash|
           next if node_hash['status'] == 'retired'
-           reservable_disks = node_hash['storage_devices'].select{ |v| v['reservation'] == true }.count
+
+          reservable_disks = node_hash['storage_devices'].select { |v| v['reservation'] == true }.count
           add(disk_info, node_uid, reservable_disks)
-        }
+        end
 
         # One line for each group of nodes with the same number of reservable disks
-        disk_info.sort.to_h.each { |num, reservable_disks|
-        table_data << [
-          "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
-          "[https://public-api.grid5000.fr/stable/sites/#{site_uid}/clusters/#{cluster_uid}/nodes.json?pretty=1 #{cluster_uid}" + (disk_info.size== 1 ? '' : '-' + G5K.nodeset(num)) + "]",
-          num.count,
-          reservable_disks
-          ] if reservable_disks > 0
-        }
-      }
-    }
+        disk_info.sort.to_h.each do |num, reservable_disks|
+          next unless reservable_disks > 0
+
+          table_data << [
+            "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
+            "[https://public-api.grid5000.fr/stable/sites/#{site_uid}/clusters/#{cluster_uid}/nodes.json?pretty=1 #{cluster_uid}" + (disk_info.size == 1 ? '' : '-' + G5K.nodeset(num)) + ']',
+            num.count,
+            reservable_disks
+          ]
+        end
+      end
+    end
     # Sort by site and cluster name
-    table_data.sort_by! { |row|
+    table_data.sort_by! do |row|
       [row[0], row[1]]
-    }
+    end
 
     # Table construction
     table_options = 'class="wikitable sortable" style="text-align: center;"'

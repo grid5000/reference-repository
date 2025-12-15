@@ -1,21 +1,24 @@
 module HashValidator::Validations
   class Array
     attr_reader :validation
-    def initialize(validation)
-      @validation = validation
-    end
-    
-    def get_validation()
-      @validation
-    end
-  end
-  class NestedArray
-    attr_reader :validation
+
     def initialize(validation)
       @validation = validation
     end
 
-    def get_validation()
+    def get_validation
+      @validation
+    end
+  end
+
+  class NestedArray
+    attr_reader :validation
+
+    def initialize(validation)
+      @validation = validation
+    end
+
+    def get_validation
       @validation
     end
   end
@@ -40,11 +43,12 @@ class HashValidator::Validator::ArrayValidator < HashValidator::Validator::Base
     errors = (errors[key] = {})
 
     values.each_index do |i|
-      HashValidator.validator_for(validations.get_validation()).validate(i, values[i], validations.get_validation(), errors)
+      HashValidator.validator_for(validations.get_validation).validate(i, values[i], validations.get_validation,
+                                                                       errors)
     end
 
     # Cleanup errors (remove any empty nested errors)
-    errors.delete_if { |_k,v| v.empty? }
+    errors.delete_if { |_k, v| v.empty? }
   end
 end
 
@@ -64,17 +68,18 @@ class HashValidator::Validator::NestedArrayValidator < HashValidator::Validator:
       return
     end
 
-    #Never alter original values, just make a copy
+    # Never alter original values, just make a copy
     validation_values = Marshal.load(Marshal.dump(values.flatten))
 
     errors = (errors[key] = {})
 
     validation_values.each_index do |i|
-      HashValidator.validator_for(validations.get_validation()).validate(i, validation_values[i], validations.get_validation(), errors)
+      HashValidator.validator_for(validations.get_validation).validate(i, validation_values[i],
+                                                                       validations.get_validation, errors)
     end
 
     # Cleanup errors (remove any empty nested errors)
-    errors.delete_if { |_k,v| v.empty? }
+    errors.delete_if { |_k, v| v.empty? }
   end
 end
 

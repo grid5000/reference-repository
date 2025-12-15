@@ -1,32 +1,28 @@
-# coding: utf-8
-
 class GroupStorageGenerator < WikiGenerator
-
-  
-
   def generate_content(_options)
-    table_columns = ["Site", "Server Name", "Size", "Link Speed", "Notes"]
+    table_columns = ['Site', 'Server Name', 'Size', 'Link Speed', 'Notes']
     table_data = []
     global_hash = get_global_hash
 
     # Loop over Grid'5000 sites
-    global_hash["sites"].sort.to_h.each { |site_uid, site_hash|
-      site_hash.fetch("servers").sort.to_h.each_value { |server_hash|
+    global_hash['sites'].sort.to_h.each do |site_uid, site_hash|
+      site_hash.fetch('servers').sort.to_h.each_value do |server_hash|
         next unless server_hash['group_storage']
+
         group_storage = server_hash['group_storage']
         table_data << [
           "[[#{site_uid.capitalize}:Hardware|#{site_uid.capitalize}]]",
           "#{group_storage['name']}.#{site_uid}.grid5000.fr",
           G5K.get_size(group_storage['size'], 'metric'),
           G5K.get_rate(group_storage['rate']),
-          group_storage["comment"] || ""
+          group_storage['comment'] || ''
         ]
-      }
-    }
+      end
+    end
     # Sort by site and server name
-    table_data.sort_by! { |row|
+    table_data.sort_by! do |row|
       [row[0], row[1]]
-    }
+    end
 
     # Table construction
     table_options = 'class="wikitable sortable" style="text-align: center;"'

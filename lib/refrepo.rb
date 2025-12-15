@@ -15,12 +15,13 @@ require 'uri'
 require 'yaml'
 require 'ipaddress'
 
-
 # pre-declare those modules here
 module RefRepo
 end
+
 module RefRepo::Gen
 end
+
 module RefRepo::Valid
 end
 # load sub-parts that are used by many scripts anyway
