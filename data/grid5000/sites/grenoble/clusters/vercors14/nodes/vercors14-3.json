@@ -1,66 +1,174 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 64,
+    "nb_procs": 2,
+    "nb_threads": 128,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "07/31/2025",
+    "vendor": "Dell Inc.",
+    "version": "2.7.5"
   },
-  "bmc_version": "v1",
+  "bmc_version": "7.20.70.50",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2024-01-16",
+    "manufacturer": "Dell Inc.",
+    "name": "Precision 7960 Rack",
+    "serial": "7M0H514",
+    "warranty_end": "2031-01-16"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 51527024640,
+      "microarchitecture": "Ada Lovelace",
+      "model": "RTX 6000 Ada Generation",
+      "performance": {
+        "fp-16": 91060000000000,
+        "fp-32": 91060000000000,
+        "fp-64": 142280000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "95.02.59.00.08",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.9",
+      "cores": 18176,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 51527024640,
+      "microarchitecture": "Ada Lovelace",
+      "model": "RTX 6000 Ada Generation",
+      "performance": {
+        "fp-16": 91060000000000,
+        "fp-32": 91060000000000,
+        "fp-64": 142280000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "95.02.59.00.08",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 274877906944
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 68719476736,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 68719476736,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "8.15 0x8000a101 20.0.16",
       "interface": "Ethernet",
-      "ip": "172.16.27.26",
-      "ip6": "2001:660:4406:100:c::1a",
+      "ip": "172.16.27.35",
+      "ip6": "2001:660:4406:100:c::23",
       "kavlan": false,
-      "mac": "24:6e:96:07:fb:10",
+      "mac": "aa:00:00:00:14:03",
       "management": false,
+      "model": "Ethernet Controller X710 for 10GBASE-T",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "vercors14-3.grenoble.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "imag-1b-F1-prod-01",
+      "switch_port": "1/1/24",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "8.15 0x8000a101 20.0.16",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "aa:00:00:00:14:03",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GBASE-T",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno12409",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "8.15 0x8000a101 20.0.16",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "aa:00:00:00:14:03",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GBASE-T",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno12419",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "8.15 0x8000a101 20.0.16",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "aa:00:00:00:14:03",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GBASE-T",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno12429",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.17.27.26",
+      "ip": "172.17.27.35",
       "kavlan": false,
-      "mac": "00:11:22:33:44:17",
+      "mac": "00:00:00:00:14:03",
       "management": true,
       "mountable": false,
       "mounted": false,
@@ -69,49 +177,58 @@
   ],
   "nodeset": "vercors14",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 67200000000,
+    "node_flops": 4300800000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
-    "clock_speed": 8,
+    "cache_l1d": 49152,
+    "cache_l1i": 32768,
+    "cache_l2": 2097152,
+    "cache_l3": 62914560,
+    "clock_speed": 2100000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microarchitecture": "Sapphire Rapids",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 6430",
+    "vendor": "Intel",
+    "version": "Gold 6430"
   },
   "redfish": true,
   "software": {
-    "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025032008",
+    "forced-deployment-timestamp": 202508281353,
+    "postinstall-version": "1.2025102818",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/nvme-eui.3648323057c107460025384600000001",
+      "by_path": "/dev/disk/by-path/pci-0000:89:00.5-pci-10000:0a:00.0-nvme-1",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "NVME",
+      "model": "PM9A1 NVMe Samsung 1024GB",
+      "size": 1024209543168,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Samsung"
+    },
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.3648323057c107680025384600000001",
+      "by_path": "/dev/disk/by-path/pci-0000:89:00.5-pci-10000:0b:00.0-nvme-1",
+      "id": "disk1",
+      "interface": "NVME",
+      "model": "PM9A1 NVMe Samsung 1024GB",
+      "size": 1024209543168,
+      "storage": "SSD",
+      "vendor": "Samsung"
     }
   ],
   "supported_job_types": {
@@ -121,7 +238,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "vercors14-3"
