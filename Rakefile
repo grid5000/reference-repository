@@ -336,20 +336,6 @@ task 'gen:dell-product-data' do
   dell_product_data
 end
 
-namespace :mass do
-  desc 'Create basic input files from CSV -- parameters: CSV=path-to-csvfile [SITE=grenoble,...] [CLUSTER=vercors1,...]'
-  task :create do
-    require 'refrepo/csv_importer'
-    options = {}
-    options[:clusters] = ENV['CLUSTER'].split(',') if ENV['CLUSTER']
-    options[:site] = ENV['SITE'] if ENV['SITE']
-    raise 'ERROR: CSV file is required' unless ENV['CSV']
-
-    options[:csv] = ENV['CSV']
-    csv_create_input_files(options)
-  end
-end
-
 # Hack rake: call only the first task and consider the rest as arguments to this task
 current_task = Rake.application.top_level_tasks.first
 task_names = Rake.application.tasks.map(&:name)
