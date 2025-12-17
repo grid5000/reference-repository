@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 require 'refrepo/data_loader'
 require 'set'
 
-TRUNK_IGNORE_KINDS = %w[backbone channel]
+TRUNK_IGNORE_KINDS = %w[backbone channel].freeze
 # the kinds of ports that we ignore for trunks even if they are in
 # trunk mode
 
-TRUNK_CHECK_IN_REFAPI = %w[router switch hpcswitch other]
+TRUNK_CHECK_IN_REFAPI = %w[router switch hpcswitch other].freeze
 # the kind of ports for which we check if the other side is in the
 # refapi
 
-TRUNK_CHECK_OTHER_SIDE = %w[router switch hpcswitch]
+TRUNK_CHECK_OTHER_SIDE = %w[router switch hpcswitch].freeze
 # the kind of ports for which we check if 1/ the other side is
 # part of kavlanng config and 2/ if the other side is
 # managed_by_us == true
 
-KAVLANNGG5K_OPTIONS = %w[additional_trunk_ports blacklist_trunk_ports]
+KAVLANNGG5K_OPTIONS = %w[additional_trunk_ports blacklist_trunk_ports].freeze
 # these options are for us, not for neutron/NGS
 
 def warn(msg)
@@ -44,16 +46,15 @@ def generate_puppet_kavlanngg5k(options)
   # Generate a subset of the refapi with only the informations needed
   # for kavlan-api.
   logger = Logger.new(options)
-  gen_kavlanapi_g5k_desc(File.join(options[:output_dir],
-                                   'platforms/production/modules/generated/files/grid5000/kavlanng/g5k/'),
-                         options, logger)
+
+  output_dir = "#{options[:output_dir]}/platforms/production".freeze
+  kavlan_api_path = "#{output_dir}/modules/generated/files/grid5000/kavlanng/g5k/".freeze
+  gen_kavlanapi_g5k_desc(kavlan_api_path, options, logger)
 
   # Generate NGS configurations
-  gen_sites_ngs_device_configs(File.join(options[:output_dir],
-                                         'platforms/production/generators/kavlanng/kavlanng.yaml'),
-                               File.join(options[:output_dir],
-                                         'platforms/production/modules/generated/files/grid5000/kavlanng/ngs_agent.conf.d'),
-                               options, logger)
+  kavlanng_generator_path = "#{options[:conf_dir]}/kavlanng/kavlanng.yaml".freeze
+  ngs_output_conf_path = "#{output_dir}/modules/generated/files/grid5000/kavlanng/ngs_agent.conf.d".freeze
+  gen_sites_ngs_device_configs(kavlanng_generator_path, ngs_output_conf_path, options, logger)
 end
 
 # Generate a subset of the refapi with only the informations needed
