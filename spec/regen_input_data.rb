@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__)))
+$LOAD_PATH.unshift(__dir__)
 require 'spec_helper'
 
 gen_stub('data_graffiti', 'nancy', 'graffiti')

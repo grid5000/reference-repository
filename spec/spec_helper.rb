@@ -16,15 +16,16 @@ $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
 require 'refrepo'
 require 'refrepo/gen/oar-properties'
 
-STUBDIR = File.expand_path(File.dirname(__FILE__))
+STUBDIR = __dir__
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
 def load_stub_file_content(stub_filename)
-  if not File.exist?("#{STUBDIR}/stub_oar_properties/#{stub_filename}")
+  unless File.exist?("#{STUBDIR}/stub_oar_properties/#{stub_filename}")
     raise("Cannot find #{stub_filename} in '#{STUBDIR}/stub_oar_properties/'")
   end
-  return IO.read("#{STUBDIR}/stub_oar_properties/#{stub_filename}")
+
+  IO.read("#{STUBDIR}/stub_oar_properties/#{stub_filename}")
 end
 
 # This code comes from https://gist.github.com/herrphon/2d2ebbf23c86a10aa955
@@ -44,32 +45,32 @@ def capture(&_block)
   result
 end
 
-
 def str_block_to_regexp(str)
-  str1 = str.gsub("|", "\\\\|")
-  str2 = str1.gsub("+", "\\\\+")
-  return Regexp.new str2
+  str1 = str.gsub('|', '\\\\|')
+  str2 = str1.gsub('+', '\\\\+')
+  Regexp.new str2
 end
 
 def prepare_stubs(oar_api, data_hierarchy)
   conf = RefRepo::Utils.get_api_config
   stubbed_addresses = [
-    "#{conf["uri"]}",
-    "#{conf["uri"]}/oarapi/resources/details.json?limit=999999",
-    "#{conf["uri"]}stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999",
+    "#{conf['uri']}",
+    "#{conf['uri']}/oarapi/resources/details.json?limit=999999",
+    "#{conf['uri']}stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999"
   ]
   stubbed_api_response = load_stub_file_content(oar_api)
   stubbed_addresses.each do |stubbed_address|
-    stub_request(:get, stubbed_address).
-      with(
+    stub_request(:get, stubbed_address)
+      .with(
         headers: {
-          'Accept'=>'*/*',
-        }).
-        to_return(status: 200, body: stubbed_api_response, headers: {})
+          'Accept' => '*/*'
+        }
+      )
+      .to_return(status: 200, body: stubbed_api_response, headers: {})
   end
 
   # Overload the 'load_data_hierarchy' to simulate the addition of a fake site in the input files
-  expect_any_instance_of(Object).to receive(:load_data_hierarchy).and_return(JSON::parse(load_stub_file_content(data_hierarchy)))
+  expect_any_instance_of(Object).to receive(:load_data_hierarchy).and_return(JSON.parse(load_stub_file_content(data_hierarchy)))
 end
 
 def gen_stub(file, site, cluster, node_count = 9999)
@@ -92,68 +93,68 @@ def gen_stub(file, site, cluster, node_count = 9999)
     nodes.delete(k)
   end
 
-  File::open("spec/input/#{file}.json", "w") do |fd|
-    fd.puts JSON::pretty_generate(data)
+  File.open("spec/input/#{file}.json", 'w') do |fd|
+    fd.puts JSON.pretty_generate(data)
   end
 end
 
 def check_oar_properties(o)
   conf = RefRepo::Utils.get_api_config
-  specdir = File.expand_path(File.dirname(__FILE__))
+  specdir = __dir__
   stubbed_addresses = [
-    "#{conf["uri"]}",
-    "#{conf["uri"]}/oarapi/resources/details.json?limit=999999",
-    "#{conf["uri"]}stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999",
+    "#{conf['uri']}",
+    "#{conf['uri']}/oarapi/resources/details.json?limit=999999",
+    "#{conf['uri']}stable/sites/fakesite/internal/oarapi/resources/details.json?limit=999999"
   ]
   stubbed_api_response = IO.read("#{specdir}/input/#{o[:oar]}.json")
   stubbed_addresses.each do |stubbed_address|
-    stub_request(:get, stubbed_address).
-      with(
+    stub_request(:get, stubbed_address)
+      .with(
         headers: {
-          'Accept'=>'*/*',
-        }).
-        to_return(status: 200, body: stubbed_api_response, headers: {})
+          'Accept' => '*/*'
+        }
+      )
+      .to_return(status: 200, body: stubbed_api_response, headers: {})
   end
 
   # Overload the 'load_data_hierarchy' to simulate the addition of a fake site in the input files
-  expect_any_instance_of(Object).to receive(:load_data_hierarchy).exactly(3).and_return(JSON::parse(IO.read("#{specdir}/input/#{o[:data]}.json")))
+  expect_any_instance_of(Object).to receive(:load_data_hierarchy).exactly(3).and_return(JSON.parse(IO.read("#{specdir}/input/#{o[:data]}.json")))
 
-  uri = URI(conf["uri"])
+  uri = URI(conf['uri'])
   response = Net::HTTP.get(uri)
   expect(response).to be_an_instance_of(String)
   {
-    'table' => { :table => true, :print => false, :update => false, :diff => false, :sites => ["fakesite"], :clusters => ["clustera"] },
-    'print' => { :table => false, :print => true, :update => false, :diff => false, :sites => ["fakesite"], :clusters => ["clustera"] },
-    'diff'  => { :table => false, :print => false, :update => false, :diff => true, :sites => ["fakesite"], :clusters => ["clustera"] }
+    'table' => { table: true, print: false, update: false, diff: false, sites: ['fakesite'],
+                 clusters: ['clustera'] },
+    'print' => { table: false, print: true, update: false, diff: false, sites: ['fakesite'],
+                 clusters: ['clustera'] },
+    'diff' => { table: false, print: false, update: false, diff: true, sites: ['fakesite'],
+                clusters: ['clustera'] }
   }.each_pair do |type, options|
     output = capture do
-      begin
-        generate_oar_properties(options)
-      rescue
-        puts $!.message
-      end
+      generate_oar_properties(options)
+    rescue StandardError
+      puts $!.message
     end
     # stdout
     ofile = "#{specdir}/output/#{o[:case]}_#{type}_stdout.txt"
-    if not File::exist?(ofile)
+    if !File.exist?(ofile)
       puts "Output file #{ofile} did not exist, created."
-      File::open(ofile, "w") { |fd| fd.print output[:stdout] }
+      File.open(ofile, 'w') { |fd| fd.print output[:stdout] }
       ofile_data = output[:stdout]
     else
-      ofile_data = IO::read(ofile)
+      ofile_data = IO.read(ofile)
     end
     expect(output[:stdout]).to eq(ofile_data)
     # stderr
     ofile = "#{specdir}/output/#{o[:case]}_#{type}_stderr.txt"
-    if not File::exist?(ofile)
+    if !File.exist?(ofile)
       puts "Output file #{ofile} did not exist, created."
-      File::open(ofile, "w") { |fd| fd.print output[:stderr] }
+      File.open(ofile, 'w') { |fd| fd.print output[:stderr] }
       ofile_data = output[:stderr]
     else
-      ofile_data = IO::read(ofile)
+      ofile_data = IO.read(ofile)
     end
     expect(output[:stderr]).to eq(ofile_data)
-
   end
 end
-
