@@ -207,14 +207,9 @@ namespace :gen do
 
     options[:clusters] = ENV['CLUSTER'].split(',') if ENV['CLUSTER']
     if ENV['SITE']
-      options[:site] = ENV['SITE']
+      options[:sites] = ENV['SITE']
     else
       puts 'You must specify a site.'
-      exit(1)
-    end
-
-    unless G5K_SITES.include?(options[:site])
-      puts "Invalid site: #{options[:site]}"
       exit(1)
     end
 

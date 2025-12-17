@@ -122,9 +122,9 @@ def check_oar_properties(o)
   response = Net::HTTP.get(uri)
   expect(response).to be_an_instance_of(String)
   {
-    'table' => { :table => true, :print => false, :update => false, :diff => false, :site => "fakesite", :clusters => ["clustera"] },
-    'print' => { :table => false, :print => true, :update => false, :diff => false, :site => "fakesite", :clusters => ["clustera"] },
-    'diff'  => { :table => false, :print => false, :update => false, :diff => true, :site => "fakesite", :clusters => ["clustera"] }
+    'table' => { :table => true, :print => false, :update => false, :diff => false, :sites => ["fakesite"], :clusters => ["clustera"] },
+    'print' => { :table => false, :print => true, :update => false, :diff => false, :sites => ["fakesite"], :clusters => ["clustera"] },
+    'diff'  => { :table => false, :print => false, :update => false, :diff => true, :sites => ["fakesite"], :clusters => ["clustera"] }
   }.each_pair do |type, options|
     output = capture do
       begin

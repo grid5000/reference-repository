@@ -23,7 +23,7 @@ describe 'OarProperties' do
           :print => false,
           :update => false,
           :diff => false,
-          :site => "fakesite",
+          :sites => ["fakesite"],
       }
 
       expected_header = <<-TXT
@@ -52,7 +52,7 @@ TXT
           :print => false,
           :update => false,
           :diff => false,
-          :site => "fakesite2",
+          :sites => ["fakesite2"],
       }
 
       expect { generate_oar_properties(options) }.to raise_error("The provided site does not exist : I can't detect clusters")
