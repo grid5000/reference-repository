@@ -46,17 +46,17 @@ def generate_puppet_kadeployg5k(options)
   puts "Using configuration directory: #{conf_dir}"
   puts "For site(s): #{options[:sites].join(', ')}"
 
-  kadeploy_generator = "#{conf_dir}/kadeployg5k.yaml".freeze
-  kadeploy_output_dir = "#{output_dir}/server".freeze
+  prod_generator = "#{conf_dir}/kadeployg5k.yaml".freeze
+  prod_output_dir = "#{output_dir}/server".freeze
   prod_instance = 'kadeploy3'
-  generate_clusters_conf(options[:sites], global_hash, kadeploy_generator, kadeploy_output_dir, prod_instance, verbose)
-  generate_global_config(options[:sites], global_hash, kadeploy_output_dir, prod_instance)
+  generate_clusters_conf(options[:sites], global_hash, prod_generator, prod_output_dir, prod_instance, verbose)
+  generate_global_config(options[:sites], global_hash, prod_output_dir, prod_instance)
 
-  kadeploy_dev_generator = "#{conf_dir}/kadeployg5k-dev.yaml".freeze
-  kadeploy_dev_output_dir = "#{output_dir}/server_dev/".freeze
+  dev_generator = "#{conf_dir}/kadeployg5k-dev.yaml".freeze
+  dev_output_dir = "#{output_dir}/server_dev/".freeze
   dev_instance = 'kadeploy3-dev'
-  generate_clusters_conf(options[:sites], global_hash, kadeploy_dev_generator, kadeploy_dev_output_dir, dev_instance, verbose)
-  generate_global_config(options[:sites], global_hash, kadeploy_dev_output_dir, dev_instance)
+  generate_clusters_conf(options[:sites], global_hash, dev_generator, dev_output_dir, dev_instance, verbose)
+  generate_global_config(options[:sites], global_hash, dev_output_dir, dev_instance)
 end
 
 def generate_clusters_conf(sites, global_hash, generator_path, output_dir, instance, verbose)
