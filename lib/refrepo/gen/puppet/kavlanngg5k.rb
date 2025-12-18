@@ -25,20 +25,35 @@ def error(msg)
   abort "ERROR: #{msg}"
 end
 
+class Logger
+
+  def initialize(options)
+    @options = options
+  end
+
+  def log(msg)
+    if @options[:verbose]
+      puts msg
+    end
+  end
+
+end
+
 # entry point
 def generate_puppet_kavlanngg5k(options)
   # Generate a subset of the refapi with only the informations needed
   # for kavlan-api.
+  logger = Logger.new(options)
   gen_kavlanapi_g5k_desc(File.join(options[:output_dir],
                                    'platforms/production/modules/generated/files/grid5000/kavlanng/g5k/'),
-                         options)
+                         options, logger)
 
   # Generate NGS configurations
   gen_sites_ngs_device_configs(File.join(options[:output_dir],
                                          'platforms/production/generators/kavlanng/kavlanng.yaml'),
                                File.join(options[:output_dir],
                                          'platforms/production/modules/generated/files/grid5000/kavlanng/ngs_agent.conf.d'),
-                               options)
+                               options, logger)
 end
 
 # Generate a subset of the refapi with only the informations needed
@@ -51,7 +66,7 @@ end
 # reasons: 1/ allow independant modifications to sites/clusters to not
 # pollute each others and 2/ to allow distribution between separate
 # kavlan-api instances.
-def gen_kavlanapi_g5k_desc(output_path, options)
+def gen_kavlanapi_g5k_desc(output_path, options, logger)
   puts 'KavlanNG: generate g5k network description for kavlan-api'
   puts "  to #{output_path}"
   puts "  for sites #{options[:sites]}"
@@ -59,37 +74,31 @@ def gen_kavlanapi_g5k_desc(output_path, options)
   refapi.delete_if { |k| k != 'sites' }
   refapi['sites'].delete_if { |s| !options[:sites].include? s }
   refapi['sites'].each do |site_id, site_h|
-    puts "  #{site_id}" if options[:verbose]
+    logger.log "  #{site_id}"
     site_h.delete_if { |k| !%w[clusters network_equipments servers].include? k }
-    puts '    clusters' if options[:verbose]
+    logger.log '    clusters'
     site_h.fetch('clusters', {}).each do |cluster_id, cluster_h|
-      puts "      #{cluster_id}" if options[:verbose]
+      logger.log "      #{cluster_id}"
       cluster_h.delete_if { |k| k != 'nodes' }
       cluster_h['nodes'].each do |node_id, node_h|
         node_h.delete_if { |k, _v| k != 'network_adapters' }
         node_h['network_adapters'].delete_if do |na_h|
           if na_h.key? 'kavlanng'
-            if options[:verbose]
-              if !na_h['kavlanng']
-                puts "        #{node_id}: remove network_adapter #{na_h['device']} because property kavlanng = #{na_h['kavlanng']}"
-              else
-                puts "        #{node_id}: keep network_adapter #{na_h['device']} because property kavlanng = #{na_h['kavlanng']}"
-              end
+            if !na_h['kavlanng']
+              logger.log "        #{node_id}: remove network_adapter #{na_h['device']} because property kavlanng = #{na_h['kavlanng']}"
+            else
+              logger.log "        #{node_id}: keep network_adapter #{na_h['device']} because property kavlanng = #{na_h['kavlanng']}"
             end
             !na_h['kavlanng']
           elsif na_h.key? 'kavlan'
-            # if options[:verbose]
-            #   if not na_h['kavlan']
-            #     puts "        #{node_id}: remove network_adapter #{na_h['device']} because property kavlan = #{na_h['kavlan']}"
-            #   else
-            #     puts "        #{node_id}: keep network_adapter #{na_h['device']} because property kavlan = #{na_h['kavlan']}"
-            #   end
+            # if not na_h['kavlan']
+            #   logger.log "        #{node_id}: remove network_adapter #{na_h['device']} because property kavlan = #{na_h['kavlan']}"
+            # else
+            #   logger.log "        #{node_id}: keep network_adapter #{na_h['device']} because property kavlan = #{na_h['kavlan']}"
             # end
             !na_h['kavlan']
           else
-            if options[:verbose]
-              puts "        #{node_id}: remove network_adapter #{na_h['device']} because neither properties kavlanng or kalvan are defined"
-            end
+            logger.log "        #{node_id}: remove network_adapter #{na_h['device']} because neither properties kavlanng or kalvan are defined"
             true
           end
         end
@@ -100,9 +109,9 @@ def gen_kavlanapi_g5k_desc(output_path, options)
         end
       end
     end
-    puts '    network equipments' if options[:verbose]
+    logger.log '    network equipments'
     site_h['network_equipments'].each do |ne_id, ne_h|
-      puts "      #{ne_id}" if options[:verbose]
+      logger.log "      #{ne_id}"
       ne_h.delete_if { |k| !%w[ip ip6 kind].include? k }
     end
     routers = site_h['network_equipments'].select { |_ne_id, ne_h| ne_h['kind'] == 'router' }
@@ -195,7 +204,7 @@ end
 # config, etc.)
 #
 # The generated configurations are splitted by site.
-def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
+def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options, logger)
   puts 'KavlanNG: generate sites NGS device configurations'
   puts "  to #{output_path}"
   puts "  based on reference repository and kavlanng configuration in #{kavlanng_config_path}"
@@ -208,7 +217,7 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
 
   # match devices in kavlanng conf and in refapi
   kavlanng_config.each do |site, site_data|
-    puts "  #{site}" if options[:verbose]
+    logger.log "  #{site}"
     File.open(File.join(output_path, "#{site}.conf"), 'w') do |site_ngs_conf|
       site_data.each do |device, device_data|
         refapi_device = nil
@@ -227,12 +236,10 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
         if !refapi_device
           error "#{site}/#{device} is not in refapi. refapi['sites'][#{site}]['network_equipments'] contains #{refapi['sites'][site]['network_equipments'].keys}"
         else
-          if options[:verbose]
-            if device == refapi_device
-              puts "    #{device}"
-            else
-              puts "    #{device} (alias of #{refapi_device})"
-            end
+          if device == refapi_device
+            logger.log "    #{device}"
+          else
+            logger.log "    #{device} (alias of #{refapi_device})"
           end
           site_ngs_conf.puts("[genericswitch:#{device}.#{site}.grid5000.fr]")
 
@@ -279,34 +286,24 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
                 port_name = get_port_name(refapi, site, refapi_device, lc_index, lc, port_index, port)
                 other_side = port['uid']
                 if TRUNK_IGNORE_KINDS.include?(port['kind'])
-                  if options[:verbose]
-                    puts "      ignore trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side}, reason: we ignore ports with kind: #{port['kind']}"
-                  end
+                  logger.log "      ignore trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side}, reason: we ignore ports with kind: #{port['kind']}"
                   next
                 end
                 if TRUNK_CHECK_IN_REFAPI.include?(port['kind']) && !refapi['sites'][site]['network_equipments'].key?(other_side)
-                  if options[:verbose]
-                    puts "      ignore trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side} (kind: #{port['kind']}), reason: the other side does not exist in the refapi"
-                  end
+                  logger.log "      ignore trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side} (kind: #{port['kind']}), reason: the other side does not exist in the refapi"
                   next
                 end
                 if TRUNK_CHECK_OTHER_SIDE.include?(port['kind'])
                   unless refapi['sites'][site]['network_equipments'][other_side]['managed_by_us']
-                    if options[:verbose]
-                      puts "      ignore trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side} (kind: #{port['kind']}), reason: the other side is not managed_by_us"
-                    end
+                    logger.log "      ignore trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side} (kind: #{port['kind']}), reason: the other side is not managed_by_us"
                     next
                   end
                   unless get_kavlanng_managed_devices(site, kavlanng_config).include? other_side
-                    if options[:verbose]
-                      puts "      ignore trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side} (kind: #{port['kind']}), reason: the other side is not configured in kavlanng"
-                    end
+                    logger.log "      ignore trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side} (kind: #{port['kind']}), reason: the other side is not configured in kavlanng"
                     next
                   end
                 end
-                if options[:verbose]
-                  puts "      trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side} (kind: #{port['kind']})"
-                end
+                logger.log "      trunk port #{site} - #{refapi_device} - #{port_name} to #{other_side} (kind: #{port['kind']})"
                 ngs_trunk_ports.push port_name
               end
             end
@@ -322,34 +319,24 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
               actual_channel_name = get_channel_name(refapi, site, refapi_device, channel, channel_name)
               other_side = channel['uid']
               if channel.key? 'kind' and TRUNK_IGNORE_KINDS.include?(channel['kind'])
-                if options[:verbose]
-                  puts "      ignore trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side}, reason: we ignore channels with kind: #{channel['kind']}"
-                end
+                logger.log "      ignore trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side}, reason: we ignore channels with kind: #{channel['kind']}"
                 next
               end
               if channel.key? 'kind' and TRUNK_CHECK_IN_REFAPI.include?(channel['kind']) && !refapi['sites'][site]['network_equipments'].key?(other_side)
-                if options[:verbose]
-                  puts "      ignore trunk channel  #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']}), reason: the other side does not exist in the refapi"
-                end
+                logger.log "      ignore trunk channel  #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']}), reason: the other side does not exist in the refapi"
                 next
               end
               if channel.key? 'kind' and TRUNK_CHECK_OTHER_SIDE.include?(channel['kind'])
                 unless refapi['sites'][site]['network_equipments'][other_side]['managed_by_us']
-                  if options[:verbose]
-                    puts "      ignore trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not managed_by_us"
-                  end
+                  logger.log "      ignore trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not managed_by_us"
                   next
                 end
                 unless get_kavlanng_managed_devices(site, kavlanng_config).include? other_side
-                  if options[:verbose]
-                    puts "      ignore trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not configured in kavlanng"
-                  end
+                  logger.log "      ignore trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']}), reason: the other side is not configured in kavlanng"
                   next
                 end
               end
-              if options[:verbose]
-                puts "      trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']})"
-              end
+              logger.log "      trunk channel #{site} - #{refapi_device} - #{channel_name} to #{other_side} (kind: #{channel['kind']})"
               ngs_trunk_ports.push actual_channel_name
             end
           end
@@ -357,13 +344,13 @@ def gen_sites_ngs_device_configs(kavlanng_config_path, output_path, options)
           # custom trunk ports from kavlanng config
           if device_data.key? 'additional_trunk_ports'
             device_data['additional_trunk_ports'].each do |additional_trunk_port|
-              puts "      additional trunk port on #{site}/#{device}: #{additional_trunk_port}" if options[:verbose]
+              logger.log "      additional trunk port on #{site}/#{device}: #{additional_trunk_port}"
               ngs_trunk_ports.push additional_trunk_port
             end
           end
           if device_data.key? 'blacklist_trunk_ports'
             device_data['blacklist_trunk_ports'].each do |blacklist_trunk_port|
-              puts "      blacklist trunk port on #{site}/#{device}: #{blacklist_trunk_port}" if options[:verbose]
+              logger.log "      blacklist trunk port on #{site}/#{device}: #{blacklist_trunk_port}"
               ngs_trunk_ports.delete_if { |p| p == blacklist_trunk_port }
             end
           end
