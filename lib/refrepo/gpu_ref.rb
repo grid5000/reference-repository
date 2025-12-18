@@ -355,6 +355,18 @@ class GPURef
         'fp-64' => 510_000_000_000
       }
     },
+    'RTX 6000 Ada Generation' => {
+      'cores' => 18_176,
+      'compute_capability' => '8.9',
+      'short_name' => 'RTX 6000 Ada',
+      'alias' => 'rtx6000Ada',
+      'microarchitecture' => 'Ada Lovelace',
+      'performance' => {
+        'fp-16' => 91_060_000_000_000,
+        'fp-32' => 91_060_000_000_000,
+        'fp-64' => 142_280_000_000
+      }
+    },
     'Quadro RTX 8000' => {
       'cores' => 4608,
       'compute_capability' => '7.5',
