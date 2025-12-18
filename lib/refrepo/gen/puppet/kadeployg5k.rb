@@ -37,6 +37,8 @@ def generate_puppet_kadeployg5k(options)
   global_hash = load_data_hierarchy
 
   conf_dir = "#{options[:conf_dir]}/kadeploy".freeze
+  output_dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kadeploy/".freeze
+  verbose = options.fetch('verbose', false)
 
   raise("Error: #{conf_dir} does not exist. The given configuration path is incorrect") unless Pathname(conf_dir).exist?
 
@@ -44,20 +46,21 @@ def generate_puppet_kadeployg5k(options)
   puts "Using configuration directory: #{conf_dir}"
   puts "For site(s): #{options[:sites].join(', ')}"
 
+  kadeploy_generator = "#{conf_dir}/kadeployg5k.yaml".freeze
+  kadeploy_output_dir = "#{output_dir}/server".freeze
+  generate_clusters_conf(options[:sites], global_hash, kadeploy_generator, kadeploy_output_dir, 'kadeploy3', verbose)
+
+  kadeploy_dev_generator = "#{conf_dir}/kadeployg5k-dev.yaml".freeze
+  kadeploy_dev_output_dir = "#{output_dir}/server_dev/".freeze
+  generate_clusters_conf(options[:sites], global_hash, kadeploy_dev_generator, kadeploy_dev_output_dir, 'kadeploy3-dev', verbose)
+
   # There is two kadeploy servers : kadeploy and kadeploy-dev
   ['', '-dev'].each do |suffix|
     puts "Info: Working with kadeployg5k#{suffix}.yaml"
 
+
     global_hash['sites'].each do |site_uid, site|
       next unless options[:sites].include?(site_uid)
-
-      #
-      # Generate <cluster_uid>-cluster.conf files
-      #
-
-      # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
-
-      conf = YAML.load(ERB.new(File.read("#{conf_dir}/kadeployg5k#{suffix}.yaml")).result(binding))
 
       clusters_conf = { 'clusters' => [] } # output clusters.conf
       clusters = site.fetch('clusters', {})
@@ -65,40 +68,6 @@ def generate_puppet_kadeployg5k(options)
 
       # site['clusters'].each
       clusters.sort.each do |cluster_uid, cluster|
-        defaults = conf['defaults']
-        overrides = conf[site_uid][cluster_uid]
-
-        if overrides.nil? and !%w[defaut abaca production].any? { |q| cluster['queues'].include?(q) }
-          puts "Warning: #{cluster_uid} has no kadeployg5k#{suffix} config, and isn't in default or abaca queue."
-          puts "Warning: Skipping #{cluster_uid} configuration."
-          next
-        elsif overrides.nil?
-          puts "ERROR: #{cluster_uid} has no kadeployg5k#{suffix} config (and is not in queue testing)"
-          exit(1)
-        end
-
-        dupes = (defaults.to_a & overrides.to_a)
-        key_dupes = (defaults.to_a.map(&:first) & overrides.to_a.map(&:first))
-        puts "Warning: Overriding default values #{dupes} by the same value for #{cluster_uid}" unless dupes.empty?
-        if !key_dupes.empty? && options.key?(:verbose) && options[:verbose]
-          puts "Info: cluster-specific configuration for #{cluster_uid} overrides default values: #{key_dupes}"
-        end
-        data = defaults.merge(overrides)
-        if data.nil?
-          puts "Warning: configuration not found in #{conf_dir}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
-          next
-        end
-
-        output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__))),
-                         trim_mode: '-').result(binding)
-
-        output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr(
-          '-', '_'
-        )}/#{site_uid}/#{cluster_uid}-cluster.conf")
-
-        output_file.dirname.mkpath
-        File.write(output_file, output)
-
         #
         # Generate cluster config for site/<site_uid>/servers_conf[_dev]/clusters.conf
         #
@@ -169,6 +138,59 @@ def generate_puppet_kadeployg5k(options)
       output_file.dirname.mkpath
       write_yaml(output_file, clusters_conf)
       add_header(output_file)
+    end
+  end
+end
+
+def generate_clusters_conf(sites, global_hash, generator_path, output_dir, instance, verbose)
+  sites.each do |site_uid|
+    site = global_hash['sites'][site_uid]
+
+    #
+    # Generate <cluster_uid>-cluster.conf files
+    #
+
+    # Load 'conf/kadeployg5k.yaml' data and fill up the kadeployg5k.conf.erb template for each cluster
+
+    conf = YAML.load(ERB.new(File.read(generator_path)).result(binding))
+
+    clusters_conf = { 'clusters' => [] } # output clusters.conf
+    clusters = site.fetch('clusters', {})
+    prefix = cluster_prefix(clusters.keys)
+
+    # site['clusters'].each
+    clusters.sort.each do |cluster_uid, cluster|
+      defaults = conf['defaults']
+      overrides = conf[site_uid][cluster_uid]
+
+      if overrides.nil? && %w[defaut abaca production].none? { |q| cluster['queues'].include?(q) }
+        puts "Warning: #{cluster_uid} has no kadeployg5k#{suffix} config, and isn't in default or abaca queue."
+        puts "Warning: Skipping #{cluster_uid} configuration."
+        next
+      elsif overrides.nil?
+        puts "ERROR: #{cluster_uid} has no kadeployg5k#{suffix} config (and is not in queue testing)"
+        exit(1)
+      end
+
+      dupes = (defaults.to_a & overrides.to_a)
+      key_dupes = (defaults.to_a.map(&:first) & overrides.to_a.map(&:first))
+      puts "Warning: Overriding default values #{dupes} by the same value for #{cluster_uid}" unless dupes.empty?
+      if !key_dupes.empty? && verbose
+        puts "Info: cluster-specific configuration for #{cluster_uid} overrides default values: #{key_dupes}"
+      end
+      data = defaults.merge(overrides)
+      if data.nil?
+        puts "Warning: configuration not found in #{conf_dir}/kadeployg5k#{suffix}.yaml for #{cluster_uid}. Skipped"
+        next
+      end
+
+      output = ERB.new(File.read(File.expand_path('templates/kadeployg5k.conf.erb', File.dirname(__FILE__))),
+                       trim_mode: '-').result(binding)
+
+      output_file = Pathname("#{output_dir}/#{site_uid}/#{cluster_uid}-cluster.conf")
+
+      output_file.dirname.mkpath
+      File.write(output_file, output)
     end
   end
 end
