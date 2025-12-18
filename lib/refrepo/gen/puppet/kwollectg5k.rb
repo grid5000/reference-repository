@@ -5,6 +5,8 @@ require 'erb'
 
 def generate_puppet_kwollectg5k(options)
   conf_dir = "#{options[:conf_dir]}/ipmitools".freeze
+  kwollect_output_dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kwollect".freeze
+  wattmetre_output_dir = "#{kwollect_output_dir}-wattmetre".freeze
   puts "Writing kwollect configuration files to: #{options[:output_dir]}"
   puts "Using configuration directory: #{conf_dir}"
   puts "For site(s): #{options[:sites].join(', ')}"
@@ -26,10 +28,8 @@ def generate_puppet_kwollectg5k(options)
   refapi['sites'].each do |site_uid, site|
     next unless options[:sites].include?(site_uid)
 
-    if File.directory?("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}")
-      FileUtils.mv(
-        "#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}", "#{backup_dir}/"
-      )
+    if File.directory?("#{kwollect_output_dir}/#{site_uid}")
+      FileUtils.mv("#{kwollect_output_dir}/#{site_uid}", "#{backup_dir}/")
     end
 
     # Metrics configuration for each node
@@ -41,7 +41,7 @@ def generate_puppet_kwollectg5k(options)
 
         output = ERB.new(File.read(File.expand_path('templates/kwollect-node.erb', File.dirname(__FILE__))),
                          trim_mode: '-').result(binding)
-        output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{node_uid}.conf")
+        output_file = Pathname("#{kwollect_output_dir}/#{site_uid}/#{node_uid}.conf")
         output_file.dirname.mkpath
         File.write(output_file, output)
       end
@@ -54,7 +54,7 @@ def generate_puppet_kwollectg5k(options)
 
       output = ERB.new(File.read(File.expand_path('templates/kwollect-network.erb', File.dirname(__FILE__))),
                        trim_mode: '-').result(binding)
-      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{neteq_uid}.conf")
+      output_file = Pathname("#{kwollect_output_dir}/#{site_uid}/#{neteq_uid}.conf")
       output_file.dirname.mkpath
       File.write(output_file, output)
     end
@@ -79,7 +79,7 @@ def generate_puppet_kwollectg5k(options)
     site.fetch('pdus', {}).each do |pdu_uid, pdu|
       output = ERB.new(File.read(File.expand_path('templates/kwollect-pdu.erb', File.dirname(__FILE__))),
                        trim_mode: '-').result(binding)
-      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{pdu_uid}.conf")
+      output_file = Pathname("#{kwollect_output_dir}/#{site_uid}/#{pdu_uid}.conf")
       output_file.dirname.mkpath
       File.write(output_file, output)
     end
@@ -88,7 +88,7 @@ def generate_puppet_kwollectg5k(options)
     site.fetch('sensors', {}).each do |sensor_uid, sensor|
       output = ERB.new(File.read(File.expand_path('templates/kwollect-sensors.erb', File.dirname(__FILE__))),
                        trim_mode: '-').result(binding)
-      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect/#{site_uid}/#{sensor_uid}.conf")
+      output_file = Pathname("#{kwollect_output_dir}/#{site_uid}/#{sensor_uid}.conf")
       output_file.dirname.mkpath
       File.write(output_file, output)
     end
@@ -107,7 +107,7 @@ def generate_puppet_kwollectg5k(options)
 
     output = ERB.new(File.read(File.expand_path('templates/kwollect-wattmetre-mapping.erb', File.dirname(__FILE__))),
                      trim_mode: '-').result(binding)
-    output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kwollect-wattmetre/#{site_uid}/wattmetre-mapping.conf")
+    output_file = Pathname("#{wattmetre_output_dir}/#{site_uid}/wattmetre-mapping.conf")
     output_file.dirname.mkpath
     File.write(output_file, output)
   end
