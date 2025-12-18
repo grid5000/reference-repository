@@ -31,7 +31,7 @@ end
 
 def generate_puppet_kavlang5k(options)
   conf_dir = "#{options[:conf_dir]}/kavlan".freeze
-  output_dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kavlan".freeze
+  output_dir = "#{options[:modules_dir]}/grid5000/kavlan".freeze
 
   unless Pathname(conf_dir.to_s).exist?
     raise("Error: #{conf_dir} does not exist. The given configuration path is incorrect")

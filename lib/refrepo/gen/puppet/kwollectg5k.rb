@@ -5,7 +5,7 @@ require 'erb'
 
 def generate_puppet_kwollectg5k(options)
   conf_dir = "#{options[:conf_dir]}/ipmitools".freeze
-  kwollect_output_dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kwollect".freeze
+  kwollect_output_dir = "#{options[:modules_dir]}/grid5000/kwollect".freeze
   wattmetre_output_dir = "#{kwollect_output_dir}-wattmetre".freeze
   puts "Writing kwollect configuration files to: #{options[:output_dir]}"
   puts "Using configuration directory: #{conf_dir}"

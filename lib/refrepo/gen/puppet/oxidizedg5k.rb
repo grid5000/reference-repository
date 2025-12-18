@@ -4,7 +4,7 @@ require 'refrepo'
 
 def generate_puppet_oxidizedg5k(options)
   conf_file = "#{options[:conf_dir]}/oxidized/oxidizedg5k.yaml".freeze
-  output_dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/oxidized".freeze
+  output_dir = "#{options[:modules_dir]}/grid5000/oxidized".freeze
   output_file = "#{output_dir}/oxidized.db".freeze
 
   puts "Using configuration file: #{conf_file}"

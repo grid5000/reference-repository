@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # See also: https://www.grid5000.fr/w/DNS_server
 
 require 'dns/zone'
@@ -855,11 +857,11 @@ def generate_puppet_bindg5k(options)
   refapi['sites'].each do |site_uid, site|
     next unless $options[:sites].include?(site_uid)
 
-    internal_dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind/"
+    internal_dest_dir = "#{$options[:modules_dir]}/bind/".freeze
     internal_zones_dir = File.join(internal_dest_dir, "zones/#{site_uid}")
     generate_internal_site_data(site_uid, site, internal_dest_dir, internal_zones_dir)
 
-    external_dest_dir = "#{$options[:output_dir]}/platforms/production/modules/generated/files/bind_external/"
+    external_dest_dir = "#{$options[:modules_dir]}/bind_external/".freeze
     external_zones_dir = File.join(external_dest_dir, "zones/#{site_uid}")
     generate_external_site_data(site_uid, site, external_dest_dir, external_zones_dir)
   end

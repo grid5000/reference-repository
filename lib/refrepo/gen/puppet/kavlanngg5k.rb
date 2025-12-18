@@ -43,17 +43,16 @@ end
 
 # entry point
 def generate_puppet_kavlanngg5k(options)
-  # Generate a subset of the refapi with only the informations needed
-  # for kavlan-api.
   logger = Logger.new(options)
 
-  output_dir = "#{options[:output_dir]}/platforms/production".freeze
-  kavlan_api_path = "#{output_dir}/modules/generated/files/grid5000/kavlanng/g5k/".freeze
+  # Generate a subset of the refapi with only the informations needed
+  # for kavlan-api.
+  kavlan_api_path = "#{options[:modules_dir]}/grid5000/kavlanng/g5k/".freeze
   gen_kavlanapi_g5k_desc(kavlan_api_path, options, logger)
 
   # Generate NGS configurations
   kavlanng_generator_path = "#{options[:conf_dir]}/kavlanng/kavlanng.yaml".freeze
-  ngs_output_conf_path = "#{output_dir}/modules/generated/files/grid5000/kavlanng/ngs_agent.conf.d".freeze
+  ngs_output_conf_path = "#{options[:modules_dir]}/grid5000/kavlanng/ngs_agent.conf.d".freeze
   gen_sites_ngs_device_configs(kavlanng_generator_path, ngs_output_conf_path, options, logger)
 end
 

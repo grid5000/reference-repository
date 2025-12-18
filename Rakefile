@@ -21,6 +21,8 @@ PUPPET_ODIR = Dir.exist?(G5K_PUPPET_DIR) ? G5K_PUPPET_DIR : '/tmp/puppet'
 DEFAULT_CONF_DIR = "#{G5K_PUPPET_DIR}/platforms/production/generators".freeze
 CONF_DIR = ENV['CONFDIR'] || DEFAULT_CONF_DIR
 
+GENERATED_MODULES_DIR = "#{PUPPET_ODIR}/platforms/production/modules/generated/files".freeze
+
 G5K_SITES = RefRepo::Utils.get_sites
 SITES = (ENV['SITE'] ? ENV['SITE'].split(',') : G5K_SITES)
 CLUSTERS = (ENV['CLUSTER'] ? ENV['CLUSTER'].split(',') : [])
@@ -32,6 +34,7 @@ options = {
   'clusters': CLUSTERS,
   'conf_dir': CONF_DIR,
   'output_dir': PUPPET_ODIR,
+  'modules_dir': GENERATED_MODULES_DIR,
   'verbose': VERBOSE
 }
 

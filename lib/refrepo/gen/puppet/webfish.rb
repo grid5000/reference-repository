@@ -7,7 +7,7 @@ require 'json'
 require 'yaml'
 
 def generate_puppet_webfish(options)
-  conf_dir = "#{options[:output_dir]}/platforms/production/generators/redfish/".freeze
+  conf_dir = "#{options[:conf_dir]}/redfish/".freeze
   file = "#{conf_dir}/console-password.yaml".freeze
   puts "Writing Webfish configuration files to: #{file}"
   puts "For site(s): #{options[:sites].join(', ')}"
@@ -93,7 +93,7 @@ end
 
 def gen_json_files(allBmc, options)
   actualFile = {}
-  dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/webfish"
+  dir = "#{options[:modules_dir]}/grid5000/webfish"
   checks_dir_creation(dir)
   allBmc.sort_by { |s_site, _d_site| s_site }.each do |s_site, _d_array|
     actualFile = allBmc[s_site].sort_by { |k, _| split_cluster_node(k) }.to_h

@@ -37,7 +37,7 @@ def generate_puppet_kadeployg5k(options)
   global_hash = load_data_hierarchy
 
   conf_dir = "#{options[:conf_dir]}/kadeploy".freeze
-  output_dir = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/kadeploy/".freeze
+  output_dir = "#{options[:modules_dir]}/grid5000/kadeploy/".freeze
   verbose = options.fetch('verbose', false)
 
   raise("Error: #{conf_dir} does not exist. The given configuration path is incorrect") unless Pathname(conf_dir).exist?
