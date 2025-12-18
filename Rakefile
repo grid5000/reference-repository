@@ -147,7 +147,7 @@ namespace :gen do
   task 'wiki' do
     require 'refrepo/gen/wiki'
     options = {}
-    options[:conf_dir] = ENV['CONFDIR'] if ENV['CONFDIR']
+    options[:conf_dir] = CONF_DIR
     options[:output_dir] = PUPPET_ODIR
     options[:sites] = (ENV['SITE'] ? ENV['SITE'].split(',') : ['global'] + G5K_SITES)
     if ENV['NAME']
