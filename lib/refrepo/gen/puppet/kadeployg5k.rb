@@ -48,98 +48,15 @@ def generate_puppet_kadeployg5k(options)
 
   kadeploy_generator = "#{conf_dir}/kadeployg5k.yaml".freeze
   kadeploy_output_dir = "#{output_dir}/server".freeze
-  generate_clusters_conf(options[:sites], global_hash, kadeploy_generator, kadeploy_output_dir, 'kadeploy3', verbose)
+  prod_instance = 'kadeploy3'
+  generate_clusters_conf(options[:sites], global_hash, kadeploy_generator, kadeploy_output_dir, prod_instance, verbose)
+  generate_global_config(options[:sites], global_hash, kadeploy_output_dir, prod_instance)
 
   kadeploy_dev_generator = "#{conf_dir}/kadeployg5k-dev.yaml".freeze
   kadeploy_dev_output_dir = "#{output_dir}/server_dev/".freeze
-  generate_clusters_conf(options[:sites], global_hash, kadeploy_dev_generator, kadeploy_dev_output_dir, 'kadeploy3-dev', verbose)
-
-  # There is two kadeploy servers : kadeploy and kadeploy-dev
-  ['', '-dev'].each do |suffix|
-    puts "Info: Working with kadeployg5k#{suffix}.yaml"
-
-
-    global_hash['sites'].each do |site_uid, site|
-      next unless options[:sites].include?(site_uid)
-
-      clusters_conf = { 'clusters' => [] } # output clusters.conf
-      clusters = site.fetch('clusters', {})
-      prefix = cluster_prefix(clusters.keys)
-
-      # site['clusters'].each
-      clusters.sort.each do |cluster_uid, cluster|
-        #
-        # Generate cluster config for site/<site_uid>/servers_conf[_dev]/clusters.conf
-        #
-
-        #  clusters:
-        # - name: griffon
-        #   prefix: gri
-        #   conf_file: /etc/kadeploy3/griffon-cluster.conf
-        #   nodes:
-        #   - name: griffon-[1-92].nancy.grid5000.fr
-        #     address: 172.16.65.[1-92]
-
-        cluster_conf = {}
-        cluster_conf['name']      = cluster_uid
-        cluster_conf['prefix']    = prefix[cluster_uid]
-        cluster_conf['conf_file'] = "/etc/kadeploy3#{suffix}/#{cluster_uid}-cluster.conf"
-        cluster_conf['nodes']     = []
-
-        # init
-        first = last = c_uid = -1
-        first_ip = ['0', '0', '0', 0]
-
-        # group nodes by range (griffon-[1-92] -> 172.16.65.[1-92])
-        cluster['nodes'].each_sort_by_node_uid do |node_uid, node|
-          next if node.nil? || (node['status'] && node['status'] == 'retired')
-
-          c = node_uid.to_s.split(/-/).first
-          id = node_uid.to_s.split(/-/)[1]
-          id = id.to_i
-          ip = get_ip(node).split('.')
-          ip[3] = ip[3].to_i
-
-          if c == c_uid && id == last + 1 && ip[0..2] == first_ip[0..2] && ip[3] == first_ip[3] + id - first
-            # extend range
-            last = id
-          else
-            if c_uid != -1
-              node = {}
-              node['name']    = "#{c_uid}-[#{first}-#{last}].#{site_uid}.grid5000.fr"
-              node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3] + last - first}]"
-              cluster_conf['nodes'] << node
-            end
-
-            # new range
-            first = last = id
-            first_ip = ip
-            c_uid = c
-          end
-        end
-        # last range
-        if c_uid != -1
-          node = {}
-          node['name']    = "#{c_uid}-[#{first}-#{last}].#{site_uid}.grid5000.fr"
-          node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3] + last - first}]"
-          cluster_conf['nodes'] << node
-        end
-
-        clusters_conf['clusters'] << cluster_conf
-      end
-      #
-      # Write site/<site_uid>/servers_conf[_dev]/clusters.conf
-      #
-
-      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kadeploy/server#{suffix.tr(
-        '-', '_'
-      )}/#{site_uid}/clusters.conf")
-
-      output_file.dirname.mkpath
-      write_yaml(output_file, clusters_conf)
-      add_header(output_file)
-    end
-  end
+  dev_instance = 'kadeploy3-dev'
+  generate_clusters_conf(options[:sites], global_hash, kadeploy_dev_generator, kadeploy_dev_output_dir, dev_instance, verbose)
+  generate_global_config(options[:sites], global_hash, kadeploy_dev_output_dir, dev_instance)
 end
 
 def generate_clusters_conf(sites, global_hash, generator_path, output_dir, instance, verbose)
@@ -192,5 +109,70 @@ def generate_clusters_conf(sites, global_hash, generator_path, output_dir, insta
       output_file.dirname.mkpath
       File.write(output_file, output)
     end
+  end
+end
+
+def generate_global_config(sites, global_hash, output_dir, instance)
+  sites.each do |site_uid|
+    site = global_hash['sites'][site_uid]
+
+    clusters_conf = { 'clusters' => [] } # output clusters.conf
+    clusters = site.fetch('clusters', {})
+    prefix = cluster_prefix(clusters.keys)
+
+    clusters.sort.each do |cluster_uid, cluster|
+      cluster_conf = {}
+      cluster_conf['name']      = cluster_uid
+      cluster_conf['prefix']    = prefix[cluster_uid]
+      cluster_conf['conf_file'] = "/etc/#{instance}/#{cluster_uid}-cluster.conf"
+      cluster_conf['nodes']     = []
+
+      # init
+      first = last = c_uid = -1
+      first_ip = ['0', '0', '0', 0]
+
+      # group nodes by range (griffon-[1-92] -> 172.16.65.[1-92])
+      cluster['nodes'].each_sort_by_node_uid do |node_uid, node|
+        next if node.nil? || (node['status'] && node['status'] == 'retired')
+
+        c = node_uid.to_s.split(/-/).first
+        id = node_uid.to_s.split(/-/)[1]
+        id = id.to_i
+        ip = get_ip(node).split('.')
+        ip[3] = ip[3].to_i
+
+        if c == c_uid && id == last + 1 && ip[0..2] == first_ip[0..2] && ip[3] == first_ip[3] + id - first
+          # extend range
+          last = id
+        else
+          if c_uid != -1
+            node = {}
+            node['name']    = "#{c_uid}-[#{first}-#{last}].#{site_uid}.grid5000.fr"
+            node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3] + last - first}]"
+            cluster_conf['nodes'] << node
+          end
+
+          # new range
+          first = last = id
+          first_ip = ip
+          c_uid = c
+        end
+      end
+      # last range
+      if c_uid != -1
+        node = {}
+        node['name']    = "#{c_uid}-[#{first}-#{last}].#{site_uid}.grid5000.fr"
+        node['address'] = "#{first_ip[0..2].join('.')}.[#{first_ip[3]}-#{first_ip[3] + last - first}]"
+        cluster_conf['nodes'] << node
+      end
+
+      clusters_conf['clusters'] << cluster_conf
+    end
+
+    output_file = Pathname("#{output_dir}/#{site_uid}/clusters.conf")
+
+    output_file.dirname.mkpath
+    write_yaml(output_file, clusters_conf)
+    add_header(output_file)
   end
 end
