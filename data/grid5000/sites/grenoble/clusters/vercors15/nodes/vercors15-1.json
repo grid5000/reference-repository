@@ -23,7 +23,7 @@
     "ram_size": 8
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
@@ -44,7 +44,7 @@
       "ip": "172.16.27.29",
       "ip6": "2001:660:4406:100:c::1d",
       "kavlan": false,
-      "mac": "ec:f4:bb:f0:12:18",
+      "mac": "b4:83:51:11:ea:28",
       "management": false,
       "mountable": true,
       "mounted": true,
@@ -60,7 +60,7 @@
       "interface": "Ethernet",
       "ip": "172.17.27.29",
       "kavlan": false,
-      "mac": "00:11:22:33:44:15",
+      "mac": "c4:cb:e1:b6:21:fc",
       "management": true,
       "mountable": false,
       "mounted": false,
@@ -105,9 +105,9 @@
   "storage_devices": [
     {
       "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_path": "/dev/disk/by-path/pci-0000:89:00.5-pci-10000:0a:00.0-nvme-1",
       "id": "disk0",
-      "interface": "SAS",
+      "interface": "NVME",
       "model": "unknown",
       "size": 8,
       "storage": "SSD",
