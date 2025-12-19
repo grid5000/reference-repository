@@ -4,7 +4,7 @@
   "exotic": false,
   "kavlan": false,
   "keep_alive_nodes_count": 0,
-  "manufactured_at": "1970-01-01",
+  "manufactured_at": "2024-01-16",
   "metrics": [
     {
       "description": "Default subset of metrics from Prometheus Node Exporter",
@@ -59,10 +59,12 @@
       "source": {
         "id": [
           "DCGM_FI_DEV_SM_CLOCK",
-          "DCGM_FI_DEV_MEM_CLOCK",
           "DCGM_FI_DEV_GPU_TEMP",
           "DCGM_FI_DEV_POWER_USAGE",
-          "DCGM_FI_DEV_MEM_COPY_UTIL"
+          "DCGM_FI_DEV_MEM_COPY_UTIL",
+          "DCGM_FI_DEV_GPU_UTIL",
+          "DCGM_FI_DEV_FB_USED",
+          "DCGM_FI_PROF_PIPE_TENSOR_ACTIVE"
         ],
         "port": 9400,
         "protocol": "prometheus"
@@ -81,8 +83,8 @@
   ],
   "model": "Dell Precision 7960 Rack",
   "nodes_count": 1,
-  "nodes_description": "1 CPU Unknown vendor, 72 cores/CPU, 0GB RAM, 0GB SSD, 1 x 10Gb Ethernet",
-  "priority": 197001,
+  "nodes_description": "2 CPUs Intel Xeon Gold 6430, 32 cores/CPU, 2 GPUs RTX 6000 Ada Generation, 256GB RAM, 2x953GB SSD, 1 x 10Gb Ethernet",
+  "priority": 202501,
   "queues": [
     "admin",
     "testing"
@@ -90,5 +92,5 @@
   "redfish": true,
   "type": "cluster",
   "uid": "vercors15",
-  "warranty_end": "1970-01-01"
+  "warranty_end": "2031-01-16"
 }
