@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 require 'refrepo/data_loader'
 
 def generate_puppet_refapi_subset(options)
-  options[:conf_dir] = "#{options[:output_dir]}/platforms/production/generators/refapi" unless options[:conf_dir]
-
   options[:sites].each do |site|
-    output_file = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/refapi/#{site}.json"
+    output_file = "#{options[:modules_dir]}/grid5000/refapi/#{site}.json".freeze
     gen_json(site, output_file)
   end
 end

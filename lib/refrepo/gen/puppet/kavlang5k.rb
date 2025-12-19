@@ -31,6 +31,7 @@ end
 
 def generate_puppet_kavlang5k(options)
   conf_dir = "#{options[:conf_dir]}/kavlan".freeze
+  output_dir = "#{options[:modules_dir]}/grid5000/kavlan".freeze
 
   unless Pathname(conf_dir.to_s).exist?
     raise("Error: #{conf_dir} does not exist. The given configuration path is incorrect")
@@ -52,14 +53,14 @@ def generate_puppet_kavlang5k(options)
     else
       output = ERB.new(File.read(File.expand_path('templates/kavlan.conf.erb', File.dirname(__FILE__))),
                        trim_mode: '-').result(binding)
-      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/kavlan.conf")
+      output_file = Pathname("#{output_dir}/#{site_uid}/kavlan.conf")
       output_file.dirname.mkpath
       File.write(output_file, output)
     end
 
     output = ERB.new(File.read(File.expand_path('templates/kavlan-cluster.conf.erb', File.dirname(__FILE__))),
                      trim_mode: '-').result(binding)
-    output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/#{site_uid}.conf")
+    output_file = Pathname("#{output_dir}/#{site_uid}/#{site_uid}.conf")
     output_file.dirname.mkpath
     File.write(output_file, output)
 
@@ -67,7 +68,7 @@ def generate_puppet_kavlang5k(options)
       %w[dhcpd dhcpd6].each do |dhcpkind|
         output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))),
                          trim_mode: '-').result(binding)
-        output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/dhcp/#{dhcpkind}-#{kavlan_id}.conf")
+        output_file = Pathname("#{output_dir}/#{site_uid}/dhcp/#{dhcpkind}-#{kavlan_id}.conf")
         output_file.dirname.mkpath
         File.write(output_file, output)
       end
@@ -79,7 +80,7 @@ def generate_puppet_kavlang5k(options)
     %w[dhcpd dhcpd6].each do |dhcpkind|
       output = ERB.new(File.read(File.expand_path('templates/kavlan-dhcp.conf.erb', File.dirname(__FILE__))),
                        trim_mode: '-').result(binding)
-      output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/kavlan/#{site_uid}/dhcp/#{dhcpkind}-0.conf")
+      output_file = Pathname("#{output_dir}/#{site_uid}/dhcp/#{dhcpkind}-0.conf")
       File.write(output_file, output)
     end
   end

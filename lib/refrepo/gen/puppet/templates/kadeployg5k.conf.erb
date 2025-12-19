@@ -6,9 +6,9 @@
 partitioning:
   deploy_label: DEPLOY
   block_device: disk0
-  script: /etc/kadeploy3<%= suffix %>/<%= ! data['partitioning.script'].nil? ? data['partitioning.script'] : "partitioning.sh" %>
+  script: /etc/<%= instance %>/<%= ! data['partitioning.script'].nil? ? data['partitioning.script'] : "partitioning.sh" %>
   <%- if !data['formating.script'].nil? && !data['formating.script'].empty? -%>
-  formating_script: /etc/kadeploy3<%= suffix %>/<%= data['formating.script'] %>
+  formating_script: /etc/<%= instance %>/<%= data['formating.script'] %>
   <%- end -%>
   # Not used by Grid'5000 since we take the disk by_path from the API but Kadeploy needs it
 <%# We transform cluster['nodes'] into an array and sort it by nodename in order to be sure to obtain the same result all the times -%>
@@ -26,7 +26,7 @@ trusted_deployment:
 <% end %>
 kexec:
   server_precmd: "true"
-  script: /etc/kadeploy3<%= suffix %>/<%= data.fetch('kexec_script', 'kexec.sh') %>
+  script: /etc/<%= instance %>/<%= data.fetch('kexec_script', 'kexec.sh') %>
   <% if ! data['partitioning.disable_swap'].nil? %>disable_swap: <%= data['partitioning.disable_swap'] %><% end %>
 arch:
   default: <%= cluster['nodes'].values.first['architecture']['platform_type'] %>
@@ -48,35 +48,31 @@ remoteops:
     cmd: <%= data['remoteops.power_on.very_hard.cmd'] %><%end %>
   reboot:
   - name: soft
-    cmd: <%= data['remoteops.reboot.soft.cmd'] ? data['remoteops.reboot.soft.cmd'] : 'ssh -q -F /etc/kadeploy3'+suffix+'/keys/ssh_config root@HOSTNAME_FQDN "[ -d /etc/grid5000  ] && if [ -f /bin/systemctl ]; then nohup /bin/systemctl reboot >/dev/null & else nohup /sbin/reboot >/dev/null & fi"' %>
+    cmd: <%= data['remoteops.reboot.soft.cmd'] ? data['remoteops.reboot.soft.cmd'] : 'ssh -q -F /etc/'+instance+'/keys/ssh_config root@HOSTNAME_FQDN "[ -d /etc/grid5000  ] && if [ -f /bin/systemctl ]; then nohup /bin/systemctl reboot >/dev/null & else nohup /sbin/reboot >/dev/null & fi"' %>
   - name: hard
     cmd: <%= data['remoteops.reboot.hard.cmd'] ? data['remoteops.reboot.hard.cmd'] : '/usr/bin/lanpower -c cycle -m HOSTNAME_SHORT' %><% if data['remoteops.reboot.very_hard.cmd'] %>
   - name: very_hard
     cmd: <%= data['remoteops.reboot.very_hard.cmd'] %><% end %>
   power_off:
   - name: soft
-    cmd: ssh -q -F /etc/kadeploy3<%= suffix %>/keys/ssh_config root@HOSTNAME_FQDN "nohup /sbin/poweroff &>/dev/null &"
+    cmd: ssh -q -F /etc/<%= instance %>/keys/ssh_config root@HOSTNAME_FQDN "nohup /sbin/poweroff &>/dev/null &"
   - name: hard
     cmd: <%= data['remoteops.power_off.hard.cmd'] ? data['remoteops.power_off.hard.cmd'] : '/usr/bin/lanpower -c off -m HOSTNAME_SHORT' %><% if data['remoteops.power_off.very_hard.cmd'] %>
   - name: very_hard
     cmd: <%= data['remoteops.power_off.very_hard.cmd'] %><%end %>
 boot:
-  install_bootloader: /etc/kadeploy3<%= suffix %>/<%= data['deploy.install_bootloader'] %>
+  install_bootloader: /etc/<%= instance %>/<%= data['deploy.install_bootloader'] %>
 <%- if data['startup_script'] -%>
-  startup_script: /etc/kadeploy3<%= suffix %>/<%= data['startup_script'] %>
+  startup_script: /etc/<%= instance %>/<%= data['startup_script'] %>
 <%- end -%>
   kernels:<%
-kernel_prod = 'kernels/kadeploy3-deploy-kernel-buster.vmlinuz'
-initrd_prod = 'kernels/kadeploy3-deploy-kernel-buster.initrd.img'
-kernel_dev  = 'kernels/kadeploy3-deploy-kernel-buster.vmlinuz'
-initrd_dev  = 'kernels/kadeploy3-deploy-kernel-buster.initrd.img'%>
+kernel = 'kernels/kadeploy3-deploy-kernel-buster.vmlinuz'
+initrd = 'kernels/kadeploy3-deploy-kernel-buster.initrd.img'%>
     deploy:<%
     if !data['deploy.drivers'].nil? %>
       drivers: <%= data['deploy.drivers'] %><% end %>
-      vmlinuz: <%= data['deploy.vmlinuz'] ? data['deploy.vmlinuz'] :
-        suffix == '' ? kernel_prod : kernel_dev %>
-      initrd: <%= data['deploy.initrd'] ? data['deploy.initrd'] :
-        suffix == '' ? initrd_prod : initrd_dev %>
+      vmlinuz: <%= data['deploy.vmlinuz'] ? data['deploy.vmlinuz'] : kernel %>
+      initrd: <%= data['deploy.initrd'] ? data['deploy.initrd'] : initrd %>
       params: <%= data['deploy.params'] %><%= data['deploy.default_params'] ? ' ' + data['deploy.default_params'] : '' %>
       supported_fs: ext2, ext3, ext4<%
    if !data['nfsroot.params'].nil? %>
@@ -94,9 +90,9 @@ postinstall:
 <%- end -%>
 pxe:
   <%- if cluster['boot_type'] == 'bios' -%>
-  script: /etc/kadeploy3<%= suffix %>/<%= data.fetch('pxe_script', 'set_pxe.rb') %>
+  script: /etc/<%= instance %>/<%= data.fetch('pxe_script', 'set_pxe.rb') %>
   <%- elsif cluster['boot_type'] == 'uefi' -%>
-  script: /etc/kadeploy3<%= suffix %>/<%= data.fetch('pxe_uefi_script', 'set_uefi_pxe.rb') %>
+  script: /etc/<%= instance %>/<%= data.fetch('pxe_uefi_script', 'set_uefi_pxe.rb') %>
   <%- else -%>
   # unable to select a pxe script for "<%= cluster['boot_type'] %>" boot type.
   <%- end -%>

@@ -6,6 +6,7 @@ require 'refrepo/hash/hash'
 
 def generate_puppet_lanpowerg5k(options)
   conf_dir = "#{options[:conf_dir]}/ipmitools".freeze
+  output_dir = "#{options[:modules_dir]}/grid5000/lanpower".freeze
 
   unless Pathname(conf_dir.to_s).exist?
     raise("Error: #{conf_dir} does not exist. The given configuration path is incorrect")
@@ -93,7 +94,7 @@ def generate_puppet_lanpowerg5k(options)
       h['clusters'][cluster_uid] = cluster_hash
     end
     # Write output file
-    output_file = Pathname("#{options[:output_dir]}//platforms/production/modules/generated/files/grid5000/lanpower/#{site_uid}/lanpower.yaml")
+    output_file = Pathname("#{output_dir}/#{site_uid}/lanpower.yaml")
     output_file.dirname.mkpath
     write_yaml(output_file, h)
     add_header(output_file)

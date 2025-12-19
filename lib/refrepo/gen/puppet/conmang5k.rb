@@ -8,7 +8,7 @@ require 'refrepo/hash/hash'
 def write_conman_file(site_uid, site_refapi, site_config, site_credentials, options)
   output = ERB.new(File.read(File.expand_path('templates/conman.erb', File.dirname(__FILE__)))).result(binding)
 
-  output_file = Pathname("#{options[:output_dir]}/platforms/production/modules/generated/files/conman/server/#{site_uid}.conf")
+  output_file = Pathname("#{options[:modules_dir]}/conman/server/#{site_uid}.conf")
 
   output_file.dirname.mkpath
   File.write(output_file, output)

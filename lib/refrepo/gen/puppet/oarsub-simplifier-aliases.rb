@@ -5,13 +5,13 @@ require 'refrepo/gpu_ref'
 
 def get_sub_simplifier_default_aliases(options)
   conf_dir = "#{options[:conf_dir]}/sub-simplifier".freeze
-  output_filepath = "#{conf_dir}/aliases.yaml".freeze
+  generator_filepath = "#{conf_dir}/aliases.yaml".freeze
 
-  unless Pathname(output_filepath).exist?
-    raise("Error: file #{output_filepath} does not exist. The given configuration path is incorrect")
+  unless Pathname(generator_filepath).exist?
+    raise("Error: file #{generator_filepath} does not exist. The given configuration path is incorrect")
   end
 
-  default_aliases = YAML.load(File.read(output_filepath))
+  default_aliases = YAML.load(File.read(generator_filepath))
 
   gpu_aliases = GPURef.get_all_aliases.map do |al, model|
     [al, { 'value' => "gpu_model='#{model}'",
@@ -50,7 +50,7 @@ def generate_puppet_oarsub_simplifier_aliases(options)
   sites_aliases = generate_all_sites_aliases
 
   options[:sites].each do |site|
-    output_file = "#{options[:output_dir]}/platforms/production/modules/generated/files/grid5000/oar-sub-simplifier/#{site}-aliases.yaml"
+    output_file = "#{options[:modules_dir]}/grid5000/oar-sub-simplifier/#{site}-aliases.yaml".freeze
     generate_site_aliases_yaml(output_file, default_aliases, sites_aliases[site])
   end
 end
