@@ -1,20 +1,18 @@
+# frozen_string_literal: true
+
 VLANS_FILE = 'input/grid5000/vlans.yaml'
 
-PLATFORM = 'platforms/production'
-HIERA_STITCHER_TEMPLATE = "#{PLATFORM}/generators/stitcher/stitcher.yaml"
-HIERA_STITCHER_OUTPUT_PATH = "#{PLATFORM}/modules/generated/files/grid5000/stitcher/stitcher.yml"
-
-STITCHER_MODES = %w[production development test]
+STITCHER_MODES = %w[production development test].freeze
 
 # main method
 def generate_puppet_stitcherg5k(options)
-  $options = options
-  output_file_path = "#{$options[:output_dir]}/#{HIERA_STITCHER_OUTPUT_PATH}"
+  output_file_path = "#{options[:modules_dir]}/grid5000/stitcher/stitcher.yml".freeze
   puts "Writing stitcher configuration in #{output_file_path}"
   output = File.new(output_file_path, 'w+')
   refapi = load_data_hierarchy
 
-  base_config = YAML.load_file("#{$options[:output_dir]}/#{HIERA_STITCHER_TEMPLATE}")
+  hiera_stitcher_template = "#{options[:conf_dir]}/stitcher/stitcher.yaml".freeze
+  base_config = YAML.load_file(hiera_stitcher_template)
   sorted_kavlans = {}
 
   # Ruby sorting dark magic happening below:

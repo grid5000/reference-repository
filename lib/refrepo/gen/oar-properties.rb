@@ -1387,7 +1387,6 @@ end.inject(0) { |a, b| a + b }
     options[:ssh] ||= {}
     options[:ssh][:user] ||= 'g5kadmin'
     options[:ssh][:host] ||= 'oar.%s.g5kadmin'
-    options[:sites] = [options[:site]] # for compatibility with other generators
 
     ############################################
     # Fetch:
@@ -1399,7 +1398,11 @@ end.inject(0) { |a, b| a + b }
     data_hierarchy = load_data_hierarchy
 
     # filter based on site/cluster
-    site_name = options[:site]
+    if options[:sites].length != 1
+      raise 'This task is supposed to run for one 1 and only 1 site given with SITE= option'
+    end
+
+    site_name = options[:sites].first
 
     # Replace the site placeholder of ssh hosts by the site
     options[:ssh][:host] = options[:ssh][:host].gsub('%s', site_name)
