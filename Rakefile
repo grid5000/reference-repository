@@ -33,7 +33,7 @@ options = {
   'sites': SITES,
   'clusters': CLUSTERS,
   'conf_dir': CONF_DIR,
-  'output_dir': PUPPET_ODIR,
+  'output_dir': ENV['OUTPUTDIR'] || PUPPET_ODIR,
   'modules_dir': GENERATED_MODULES_DIR,
   'verbose': VERBOSE
 }
