@@ -15,7 +15,7 @@ end
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), 'lib')))
 require 'refrepo'
 
-G5K_PUPPET_DIR = "#{ENV['HOME']}/.gpuppet/repo".freeze
+G5K_PUPPET_DIR = (ENV['OUTPUTDIR'] ? ENV['OUTPUTDIR'] : "#{ENV['HOME']}/.gpuppet/repo".freeze)
 PUPPET_ODIR = Dir.exist?(G5K_PUPPET_DIR) ? G5K_PUPPET_DIR : '/tmp/puppet'
 
 DEFAULT_CONF_DIR = "#{G5K_PUPPET_DIR}/platforms/production/generators".freeze
