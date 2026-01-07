@@ -332,7 +332,7 @@ def get_reverse_record(record, site_uid)
     if /.*-kavlan-[1-3]-ipv6$/.match(record.label)
       # A filter in bind-global-site.conf.erb prevents entries in 'local' directory to be included in global configuration
       # TODO later, also add DMZ IPs check here
-      file_name.prepend('local/')
+      file_name = 'local/' + file_name
     end
     reverse_record = DNS::Zone::RR::PTR.new
     reverse_record.label = nibble_array[0..(nibble_split - 1)].join('.')
@@ -345,7 +345,7 @@ def get_reverse_record(record, site_uid)
     if /.*-kavlan-[1-3]$/.match(record.label)
       # A filter in bind-global-site.conf.erb prevents entries in 'local' directory to be included in global configuration
       # TODO later, also add DMZ IPs check here
-      file_name.prepend('local/')
+      file_name = 'local/' + file_name
     end
 
     reverse_record = DNS::Zone::RR::PTR.new
