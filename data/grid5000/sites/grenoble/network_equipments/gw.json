@@ -413,8 +413,18 @@
         {
         },
         {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "ethernet1/1/59:1",
+          "switchport_mode": "access",
+          "uid": "sasquatch-1"
         },
         {
+          "kind": "node",
+          "port": "eth1",
+          "snmp_name": "ethernet1/1/60:1",
+          "switchport_mode": "access",
+          "uid": "sasquatch-2"
         },
         {
           "kavlan_pattern": "ethernet1/1/%PORT%",
@@ -453,16 +463,20 @@
           "uid": "troll-4"
         },
         {
+          "kavlan_pattern": "ethernet1/1/%PORT%",
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "ethernet1/1/65:1",
+          "rate": 25000000000,
+          "snmp_name": "ethernet1/1/65",
           "switchport_mode": "access",
           "uid": "sasquatch-1"
         },
         {
+          "kavlan_pattern": "ethernet1/1/%PORT%",
           "kind": "node",
           "port": "eth0",
-          "snmp_name": "ethernet1/1/66:1",
+          "rate": 25000000000,
+          "snmp_name": "ethernet1/1/66",
           "switchport_mode": "access",
           "uid": "sasquatch-2"
         },
