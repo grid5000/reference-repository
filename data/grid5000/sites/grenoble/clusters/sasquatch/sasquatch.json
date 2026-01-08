@@ -138,11 +138,99 @@
       "source": {
         "protocol": "network_equipment"
       }
+    },
+    {
+      "description": "Input byte counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output byte counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_bytes_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input packet counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_packets_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output packet counter for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_packets_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of discarded packets for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_packets_discard_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Input counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifacein_packets_error_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
+    },
+    {
+      "description": "Output counter of packet errors for the network device port",
+      "labels": {
+        "interface": "eth1"
+      },
+      "name": "network_ifaceout_packets_error_total",
+      "period": 15000,
+      "source": {
+        "protocol": "network_equipment"
+      }
     }
   ],
   "model": "HPE RL300",
   "nodes_count": 2,
-  "nodes_description": "1 CPU Unknown Unknown, 80 cores/CPU, 1024GB RAM, 1490GB SSD, 1 x 10Gb Ethernet",
+  "nodes_description": "1 CPU Unknown Unknown, 80 cores/CPU, 1024GB RAM, 1490GB SSD, 1 x 25Gb Ethernet, 1 x 10Gb Ethernet",
   "priority": 197001,
   "queues": [
     "admin",
