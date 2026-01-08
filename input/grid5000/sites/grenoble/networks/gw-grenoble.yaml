@@ -182,6 +182,8 @@ gw:
           rate: 10_000_000_000
           snmp_pattern: "ethernet1/1/%PORT%:1"
           switchport_mode: trunk
+        59: sasquatch-1-eth1
+        60: sasquatch-2-eth1
         61:
           uid: troll-1-eth1
           snmp_pattern: "ethernet1/1/%PORT%"
@@ -199,11 +201,19 @@ gw:
           rate: 25000000000
         64:
           uid: troll-4-eth1
-          snmp_pattern: "ethernet1/1/%PORT%"
-          kavlan_pattern: "ethernet1/1/%PORT%"
+          snmp_pattern: "ethernet1/1/%port%"
+          kavlan_pattern: "ethernet1/1/%port%"
           rate: 25000000000
-        65: sasquatch-1
-        66: sasquatch-2
+        65: 
+          uid: sasquatch-1-eth0
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%" # Pattern pour les noeuds en 25Gb/s
+          rate: 25000000000
+        66:  
+          uid: sasquatch-2-eth0
+          snmp_pattern: "ethernet1/1/%PORT%"
+          kavlan_pattern: "ethernet1/1/%PORT%" # Pattern pour les noeuds en 25Gb/s
+          rate: 25000000000
         67:
           uid: port-channel50
           kind: channel
