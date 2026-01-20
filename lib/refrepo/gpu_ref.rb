@@ -367,6 +367,18 @@ class GPURef
         'fp-64' => 142_280_000_000
       }
     },
+    'RTX PRO 6000 Blackwell Server Edition' => {
+      'cores' => 24_064,
+      'compute_capability' => '11.6',
+      'short_name' => 'RTX PRO 6000',
+      'alias' => 'rtxpro6000',
+      'microarchitecture' => 'Blackwell',
+      'performance' => {
+        'fp-16' => 126_000_000_000_000,
+        'fp-32' => 126_000_000_000_000,
+        'fp-64' => 1_968_000_000_000
+      }
+    },
     'Quadro RTX 8000' => {
       'cores' => 4608,
       'compute_capability' => '7.5',
