@@ -1,66 +1,214 @@
 {
   "architecture": {
-    "cpu_core_numbering": "contiguous",
-    "nb_cores": 72,
-    "nb_procs": 1,
-    "nb_threads": 72,
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 48,
+    "nb_procs": 2,
+    "nb_threads": 96,
     "platform_type": "x86_64"
   },
   "bios": {
-    "release_date": "01/01/2000",
-    "vendor": "Unknown",
-    "version": 1
+    "release_date": "03/27/2025",
+    "vendor": "Dell Inc.",
+    "version": "2.24.0"
   },
-  "bmc_version": "v1",
+  "bmc_version": "7.00.00.183",
   "chassis": {
-    "manufactured_at": "1970-01-01",
-    "manufacturer": "Unknown",
-    "name": "Unknown",
-    "warranty_end": "1970-01-01"
+    "manufactured_at": "2022-05-09",
+    "manufacturer": "Dell Inc.",
+    "name": "Precision 7920 Rack",
+    "serial": "H8MN3Q3",
+    "warranty_end": "2029-05-10"
   },
   "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "8.6",
+      "cores": 10752,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 51527024640,
+      "microarchitecture": "Ampere",
+      "model": "RTX A6000",
+      "performance": {
+        "fp-16": 38710000000000,
+        "fp-32": 38710000000000,
+        "fp-64": 604800000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "94.02.5C.00.07",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "8.6",
+      "cores": 10752,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 51527024640,
+      "microarchitecture": "Ampere",
+      "model": "RTX A6000",
+      "performance": {
+        "fp-16": 38710000000000,
+        "fp-32": 38710000000000,
+        "fp-64": 604800000000
+      },
+      "power_default_limit": "300.00 W",
+      "vbios_version": "94.02.5C.00.07",
+      "vendor": "Nvidia"
+    }
+  },
   "main_memory": {
-    "ram_size": 8
+    "ram_size": 206158430208
   },
   "management_tools": {
-    "bmc_vendor_tool": "ipmitool",
+    "bmc_vendor_tool": "racadm",
     "ipmitool": {
       "retries": 5
     }
   },
   "memory_devices": [
     {
-      "device": "dimm_proc 1 dimm 1",
-      "size": 8,
+      "device": "dimm_a1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 17179869184,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 17179869184,
       "technology": "dram"
     }
   ],
   "network_adapters": [
     {
       "device": "eth0",
-      "driver": "mlx_core",
+      "driver": "i40e",
       "enabled": true,
+      "firmware_version": "9.00 0x8000cfec 21.5.9",
       "interface": "Ethernet",
-      "ip": "172.16.27.23",
-      "ip6": "2001:660:4406:100:c::17",
+      "ip": "172.16.27.32",
+      "ip6": "2001:660:4406:100:c::20",
       "kavlan": false,
-      "mac": "ec:f4:bb:ec:94:18",
+      "mac": "78:ac:44:74:cf:74",
       "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
       "mountable": true,
       "mounted": true,
       "name": "enp1s0f0np0",
       "network_address": "vercors13-1.grenoble.grid5000.fr",
       "rate": 10000000000,
-      "switch": null,
-      "switch_port": null
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "imag-1b-F1-prod-01",
+      "switch_port": "1/1/23",
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth1",
+      "driver": "i40e",
+      "enabled": false,
+      "firmware_version": "9.00 0x8000cfec 21.5.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "78:ac:44:74:cf:76",
+      "management": false,
+      "model": "Ethernet Controller X710 for 10GbE SFP+",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno2",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth2",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x800010dd, 21.5.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "78:ac:44:74:cf:94",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno3",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
+    },
+    {
+      "device": "eth3",
+      "driver": "igb",
+      "enabled": false,
+      "firmware_version": "1.67, 0x800010dd, 21.5.9",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "78:ac:44:74:cf:95",
+      "management": false,
+      "model": "I350 Gigabit Network Connection",
+      "mountable": false,
+      "mounted": false,
+      "name": "eno4",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Intel"
     },
     {
       "device": "bmc",
       "enabled": true,
       "interface": "Ethernet",
-      "ip": "172.17.27.23",
+      "ip": "172.17.27.32",
       "kavlan": false,
-      "mac": "00:11:22:33:44:13",
+      "mac": "f4:ee:08:29:67:02",
       "management": true,
       "mountable": false,
       "mounted": false,
@@ -69,49 +217,58 @@
   ],
   "nodeset": "vercors13",
   "operating_system": {
-    "cstate_driver": "unknown",
-    "cstate_governor": "unknown",
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
     "ht_enabled": true,
-    "pstate_driver": "unknwon",
-    "pstate_governor": "unknown",
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
     "turboboost_enabled": true
   },
   "performance": {
-    "core_flops": 128,
-    "node_flops": 9216
+    "core_flops": 35200000000,
+    "node_flops": 1689600000000
   },
   "processor": {
     "cache_l1": null,
-    "cache_l1d": 8,
-    "cache_l1i": 8,
-    "cache_l2": 8,
-    "cache_l3": 8,
-    "clock_speed": 8,
+    "cache_l1d": 32768,
+    "cache_l1i": 32768,
+    "cache_l2": 1048576,
+    "cache_l3": 37486592,
+    "clock_speed": 2200000000,
     "ht_capable": true,
     "instruction_set": "x86-64",
-    "microarchitecture": "Haswell",
-    "microcode": "0xd000001",
-    "model": "Unknown",
-    "other_description": "description",
-    "vendor": "vendor",
-    "version": "vendor"
+    "microarchitecture": "Cascade Lake-SP",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz",
+    "vendor": "Intel",
+    "version": "Gold 5220R"
   },
   "redfish": true,
   "software": {
-    "forced-deployment-timestamp": 202007300948,
-    "postinstall-version": "1.2025032008",
+    "forced-deployment-timestamp": 202508281353,
+    "postinstall-version": "1.2026012214",
     "standard-environment": "debian11-x64-std"
   },
   "storage_devices": [
     {
-      "by_id": "",
-      "by_path": "/dev/disk/by-path/dummy",
+      "by_id": "/dev/disk/by-id/nvme-eui.36483230542215510025385800000001",
+      "by_path": "/dev/disk/by-path/pci-0000:86:00.0-nvme-1",
       "id": "disk0",
-      "interface": "SAS",
-      "model": "unknown",
-      "size": 8,
+      "interface": "NVME",
+      "model": "PM9A1 NVMe Samsung 1024GB",
+      "size": 1024209543168,
       "storage": "SSD",
-      "vendor": "Unknown"
+      "vendor": "Samsung"
+    },
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.36483230542796830025385800000001",
+      "by_path": "/dev/disk/by-path/pci-0000:87:00.0-nvme-1",
+      "id": "disk1",
+      "interface": "NVME",
+      "model": "PM9A1 NVMe Samsung 1024GB",
+      "size": 1024209543168,
+      "storage": "SSD",
+      "vendor": "Samsung"
     }
   ],
   "supported_job_types": {
@@ -121,7 +278,8 @@
     "queues": [
       "admin",
       "testing"
-    ]
+    ],
+    "virtual": "ivt"
   },
   "type": "node",
   "uid": "vercors13-1"
