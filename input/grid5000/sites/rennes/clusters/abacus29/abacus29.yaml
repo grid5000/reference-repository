@@ -10,6 +10,9 @@ queues:
   - testing
 nodes:
   abacus29-1:
+    gpu_devices:
+      nvidia1:
+        cpu_affinity_override: 0
     chassis:
       manufactured_at: 2025-10-01
       warranty_end: 2030-10-07
