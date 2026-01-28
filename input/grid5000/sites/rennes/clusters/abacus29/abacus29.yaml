@@ -1,0 +1,45 @@
+---
+model: ProLiant DL385 Gen11
+created_at: 2026-01-20
+kavlan: false
+keep_alive_nodes_count: 1
+boot_type: uefi
+exotic: false
+queues:
+  - admin
+  - testing
+nodes:
+  abacus29-1:
+    chassis:
+      manufactured_at: 2025-10-01
+      warranty_end: 2030-10-07
+    supported_job_types:
+      deploy: true
+      besteffort: true
+      max_walltime: 0
+    processor:
+      microarchitecture: Zen 5
+      clock_speed: 3650000000
+    network_adapters:
+      bmc:
+        interface: Ethernet
+        enabled: true
+        mountable: false
+        mounted: false
+      eth0:
+        enabled: true
+        mountable: true
+        mounted: true
+      eth1:
+        enabled: true
+        mountable: true
+        mounted: false
+    storage_devices:
+      pci-0000:c3:00.0-nvme-1:
+        id: disk0
+        interface: NVME
+    software:
+      standard-environment: debian11-x64-std
+    management_tools:
+      bmc_vendor_tool: ipmitool
+    nodeset: abacus29

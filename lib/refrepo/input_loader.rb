@@ -960,7 +960,8 @@ def get_flops_per_cycle(microarch, cpu_name, cluster_uid)
     return 16
   when 'Ice Lake-SP'
     return 32
-  when 'Zen 4', 'Zen 4c'
+  when 'Zen 4', 'Zen 4c', 'Zen 5'
+    # FIXME: Zen 5 value is uncertain
     return 48
   when 'Cascade Lake-SP', 'Skylake-SP'
     case cpu_name
