@@ -383,6 +383,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Zen 3' => '2020',
       'Zen 4' => '2022',
       'Zen 4c' => '2022',
+      'Zen 5' => '2024',
       'Cascade Lake-SP' => '2019',
       'Vulcan' => '2018',
       'Ice Lake-SP' => '2021',
