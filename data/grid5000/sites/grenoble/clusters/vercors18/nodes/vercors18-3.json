@@ -1,0 +1,272 @@
+{
+  "architecture": {
+    "cpu_core_numbering": "round-robin",
+    "nb_cores": 48,
+    "nb_procs": 2,
+    "nb_threads": 96,
+    "platform_type": "x86_64"
+  },
+  "bios": {
+    "release_date": "11/02/2025",
+    "vendor": "Dell Inc.",
+    "version": "1.6.4"
+  },
+  "bmc_version": "1.20.70.50",
+  "chassis": {
+    "manufactured_at": "2025-12-01",
+    "manufacturer": "Dell Inc.",
+    "name": "PowerEdge R770",
+    "serial": "9X03GG4",
+    "warranty_end": "2032-12-01"
+  },
+  "exotic": false,
+  "gpu_devices": {
+    "nvidia0": {
+      "compute_capability": "11.6",
+      "cores": 24064,
+      "cpu_affinity": 0,
+      "device": "/dev/nvidia0",
+      "memory": 102641958912,
+      "microarchitecture": "Blackwell",
+      "model": "RTX PRO 6000 Blackwell Server Edition",
+      "performance": {
+        "fp-16": 126000000000000,
+        "fp-32": 126000000000000,
+        "fp-64": 1968000000000
+      },
+      "power_default_limit": "600.00 W",
+      "vbios_version": "98.02.74.00.01",
+      "vendor": "Nvidia"
+    },
+    "nvidia1": {
+      "compute_capability": "11.6",
+      "cores": 24064,
+      "cpu_affinity": 1,
+      "device": "/dev/nvidia1",
+      "memory": 102641958912,
+      "microarchitecture": "Blackwell",
+      "model": "RTX PRO 6000 Blackwell Server Edition",
+      "performance": {
+        "fp-16": 126000000000000,
+        "fp-32": 126000000000000,
+        "fp-64": 1968000000000
+      },
+      "power_default_limit": "600.00 W",
+      "vbios_version": "98.02.74.00.01",
+      "vendor": "Nvidia"
+    }
+  },
+  "main_memory": {
+    "ram_size": 549755813888
+  },
+  "management_tools": {
+    "bmc_vendor_tool": "racadm",
+    "ipmitool": {
+      "retries": 5
+    }
+  },
+  "memory_devices": [
+    {
+      "device": "dimm_a1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_a8",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b1",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b2",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b3",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b4",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b5",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b6",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b7",
+      "size": 34359738368,
+      "technology": "dram"
+    },
+    {
+      "device": "dimm_b8",
+      "size": 34359738368,
+      "technology": "dram"
+    }
+  ],
+  "network_adapters": [
+    {
+      "device": "eth0",
+      "driver": "bnxt_en",
+      "enabled": true,
+      "firmware_version": "233.0.195.0/pkg 233.1.181.0",
+      "interface": "Ethernet",
+      "ip": "172.16.27.41",
+      "ip6": "2001:660:4406:100:c::29",
+      "kavlan": false,
+      "mac": "40:5b:7f:dd:d8:f6",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": true,
+      "mounted": true,
+      "name": "enp1s0f0np0",
+      "network_address": "vercors18-3.grenoble.grid5000.fr",
+      "rate": 25000000000,
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "switch": "imag-1b-F2-prod-01",
+      "switch_port": "1/1/19",
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "eth1",
+      "driver": "bnxt_en",
+      "enabled": false,
+      "firmware_version": "233.0.195.0/pkg 233.1.181.0",
+      "interface": "Ethernet",
+      "kavlan": false,
+      "mac": "40:5b:7f:dd:d8:f7",
+      "management": false,
+      "model": "BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller",
+      "mountable": false,
+      "mounted": false,
+      "name": "enp132s0f1np1",
+      "sriov": false,
+      "sriov_totalvfs": 0,
+      "vendor": "Broadcom Inc. and subsidiaries"
+    },
+    {
+      "device": "bmc",
+      "enabled": true,
+      "interface": "Ethernet",
+      "ip": "172.17.27.41",
+      "kavlan": false,
+      "mac": "6c:3c:8c:99:67:c7",
+      "management": true,
+      "mountable": false,
+      "mounted": false,
+      "network_address": "vercors18-3-bmc.grenoble.grid5000.fr"
+    }
+  ],
+  "nodeset": "vercors18",
+  "operating_system": {
+    "cstate_driver": "intel_idle",
+    "cstate_governor": "menu",
+    "ht_enabled": true,
+    "pstate_driver": "intel_pstate",
+    "pstate_governor": "performance",
+    "turboboost_enabled": true
+  },
+  "performance": {
+    "core_flops": 19200000000,
+    "node_flops": 921600000000
+  },
+  "processor": {
+    "cache_l1": null,
+    "cache_l1d": 49152,
+    "cache_l1i": 65536,
+    "cache_l2": 2097152,
+    "cache_l3": 150994944,
+    "clock_speed": 2400000000,
+    "ht_capable": true,
+    "instruction_set": "x86-64",
+    "microarchitecture": "Granite Rapids",
+    "model": "Intel Xeon",
+    "other_description": "Intel(R) Xeon(R) 6520P",
+    "vendor": "Intel",
+    "version": "6520P"
+  },
+  "redfish": true,
+  "software": {
+    "forced-deployment-timestamp": 202508281353,
+    "postinstall-version": "1.2026012214",
+    "standard-environment": "debian11-x64-std"
+  },
+  "storage_devices": [
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.0050436805000001",
+      "by_path": "/dev/disk/by-path/pci-0000:37:00.0-nvme-1",
+      "id": "disk0",
+      "interface": "NVME",
+      "model": "Dell BOSS-N1",
+      "size": 480036519936,
+      "storage": "SSD",
+      "vendor": "Dell"
+    },
+    {
+      "by_id": "/dev/disk/by-id/nvme-eui.00000000000000008ce38ee22dacab01",
+      "by_path": "/dev/disk/by-path/pci-0000:af:00.0-nvme-1",
+      "id": "disk1",
+      "interface": "NVME",
+      "model": "Dell Ent NVMe FIPS CM6 MU 1.6TB",
+      "size": 1600321314816,
+      "storage": "SSD",
+      "vendor": "Dell"
+    }
+  ],
+  "supported_job_types": {
+    "besteffort": true,
+    "deploy": true,
+    "max_walltime": 0,
+    "queues": [
+      "admin",
+      "testing"
+    ],
+    "virtual": "ivt"
+  },
+  "type": "node",
+  "uid": "vercors18-3"
+}
