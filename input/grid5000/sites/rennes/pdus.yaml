@@ -27,11 +27,11 @@ pdus:
   parasilo-pdu-4:
     ip: 172.17.97.204
 
-  paradoxe-pdu[1-4]:
+  paradoxe-pdu[1-8]:
     vendor: Raritan
     model: PX3-5488V
   
-  paradoxe-pdu[9-10]:
+  paradoxe-pdu[9-12]:
     vendor: EATON
     model: EMAH28
 
@@ -81,6 +81,7 @@ pdus:
         channel: 2
         phase: 1
         phase_inverted: false
+
   paradoxe-pdu2:
     ip: 172.17.101.202
     mac: 00:0D:5D:2C:DA:F2
@@ -127,6 +128,7 @@ pdus:
         channel: 3
         phase: 1
         phase_inverted: true
+
   paradoxe-pdu3:
     ip: 172.17.101.203
     mac: 00:0D:5D:2B:75:AC
@@ -173,6 +175,7 @@ pdus:
         channel: 6
         phase: 3
         phase_inverted: true
+
   paradoxe-pdu4:
     ip: 172.17.101.204
     mac: 00:0D:5D:2C:DA:F0
@@ -219,73 +222,10 @@ pdus:
         channel: 6
         phase: 1
         phase_inverted: false
-  paradoxe-pdu9:
-    ip: 172.17.101.209
-    mac: 00:20:85:C5:60:65
-    ports:
-      8:
-        uid: paradoxe-1
-        wattmetre: wattmetrev3-1
-        module: '04000599'
-        channel: 1
-        phase: 3
-        phase_inverted: false
-      7:
-        uid: paradoxe-3
-        wattmetre: wattmetrev3-1
-        module: '04000599'
-        channel: 3
-        phase: 3
-        phase_inverted: false
-      6:
-        uid: paradoxe-12
-        wattmetre: wattmetrev3-1
-        module: '04000603'
-        channel: 6
-        phase: 1
-        phase_inverted: false
-  paradoxe-pdu10:
-    ip: 172.17.101.210
-    mac: 00:20:85:C5:5E:F6
-    ports:
-      2:
-        uid: paradoxe-21
-        wattmetre: wattmetrev3-1
-        module: '04000604'
-        channel: 3
-        phase: 1
-        phase_inverted: false
-      5:
-        uid: paradoxe-28
-        wattmetre: wattmetrev3-1
-        module: '04000600'
-        channel: 4
-        phase: 1
-        phase_inverted: false
-      6:
-        uid: paradoxe-29
-        wattmetre: wattmetrev3-1
-        module: '04000600'
-        channel: 5
-        phase: 1
-        phase_inverted: false
-      7:
-        uid: paradoxe-30
-        wattmetre: wattmetrev3-1
-        module: '04000600'
-        channel: 6
-        phase: 1
-        phase_inverted: false
-      8:
-        uid: paradoxe-31
-        wattmetre: wattmetrev3-1
-        module: '04000598'
-        channel: 5
-        phase: 1
-        phase_inverted: false
 
   paradoxe-pdu5:
-    mac: 00:0d:5d:2f:d7:96
+    ip: 172.17.101.205
+    mac: 00:0D:5D:2F:D7:96
     ports:
       2:
         uid: paradoxe-60
@@ -329,8 +269,10 @@ pdus:
         channel: 5
         phase: 1
         phase_inverted: false
+
   paradoxe-pdu6:
-    mac: 00:0d:5d:32:ea:74
+    ip: 172.17.101.206
+    mac: 00:0D:5D:32:EA:74
     ports:
       6:
         uid: paradoxe-54
@@ -374,8 +316,10 @@ pdus:
         channel: 5
         phase: 1
         phase_inverted: false
+
   paradoxe-pdu7:
-    mac: 00:0d:5d:32:ea:68
+    ip: 172.17.101.207
+    mac: 00:0D:5D:32:EA:68
     ports:
       14:
         uid: paradoxe-48
@@ -419,8 +363,10 @@ pdus:
         channel: 5
         phase: 1
         phase_inverted: false
+
   paradoxe-pdu8:
-    mac: 00:0d:5d:32:ea:62
+    ip: 172.17.101.208
+    mac: 00:0D:5D:32:EA:62
     ports:
       18:
         uid: paradoxe-42
@@ -464,8 +410,76 @@ pdus:
         channel: 5
         phase: 1
         phase_inverted: false
+
+  paradoxe-pdu9:
+    ip: 172.17.101.209
+    mac: 00:20:85:C5:60:65
+    ports:
+      8:
+        uid: paradoxe-1
+        wattmetre: wattmetrev3-1
+        module: '04000599'
+        channel: 1
+        phase: 3
+        phase_inverted: false
+      7:
+        uid: paradoxe-3
+        wattmetre: wattmetrev3-1
+        module: '04000599'
+        channel: 3
+        phase: 3
+        phase_inverted: false
+      6:
+        uid: paradoxe-12
+        wattmetre: wattmetrev3-1
+        module: '04000603'
+        channel: 6
+        phase: 1
+        phase_inverted: false
+
+  paradoxe-pdu10:
+    ip: 172.17.101.210
+    mac: 00:20:85:C5:5E:F6
+    ports:
+      2:
+        uid: paradoxe-21
+        wattmetre: wattmetrev3-1
+        module: '04000604'
+        channel: 3
+        phase: 1
+        phase_inverted: false
+      5:
+        uid: paradoxe-28
+        wattmetre: wattmetrev3-1
+        module: '04000600'
+        channel: 4
+        phase: 1
+        phase_inverted: false
+      6:
+        uid: paradoxe-29
+        wattmetre: wattmetrev3-1
+        module: '04000600'
+        channel: 5
+        phase: 1
+        phase_inverted: false
+      7:
+        uid: paradoxe-30
+        wattmetre: wattmetrev3-1
+        module: '04000600'
+        channel: 6
+        phase: 1
+        phase_inverted: false
+      8:
+        uid: paradoxe-31
+        wattmetre: wattmetrev3-1
+        module: '04000598'
+        channel: 5
+        phase: 1
+        phase_inverted: false
+
   paradoxe-pdu11:
-    mac: 00:20:85:c5:5e:d7
+    ip: 172.17.101.211
+    mac: 00:20:85:C5:5E:D7
     ports:
       5:
         uid: paradoxe-33
@@ -495,8 +509,10 @@ pdus:
         channel: 4
         phase: 1
         phase_inverted: false
+
   paradoxe-pdu12:
-    mac: 00:20:85:c5:5f:23
+    ip: 172.17.101.212
+    mac: 00:20:85:C5:5F:23
     ports:
       5:
         uid: paradoxe-61
