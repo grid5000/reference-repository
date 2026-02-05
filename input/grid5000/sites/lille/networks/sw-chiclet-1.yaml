@@ -139,11 +139,11 @@ sw-chiclet-1:
         46:
           uid: port-channel2
           kind: channel
-          switchport_mode: access
+          switchport_mode: trunk
         47:
           uid: port-channel2
           kind: channel
-          switchport_mode: access
+          switchport_mode: trunk
       switchport_mode: access
   channels:
     port-channel2:
@@ -151,4 +151,4 @@ sw-chiclet-1:
       uid: pve-3
       kind: server
       rate: 50000000000
-      switchport_mode: access
+      switchport_mode: trunk
