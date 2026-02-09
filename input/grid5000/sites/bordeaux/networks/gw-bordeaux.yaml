@@ -1,0 +1,153 @@
+---
+gw:
+  model: cisco N9K-C93180YC-FX3
+  serial: FDO29030M4H
+  warranty: 2025-10-24
+  alias:
+    - gw-bordeaux
+  ip: 172.16.15.254
+#  ip6: 2001:660:4406:0000::ffff:ffff
+  kind: router
+  managed_by_us: true
+  ngs_device_type: netmiko_cisco_nxos_router
+  ospfv2_instance_id: 100
+  ospfv3_instance_id: 101
+  site: bordeaux
+  snmp_community: public
+  backplane_bps: 36000000000000
+  metrics:
+    - name: network_ifacein_bytes_total
+      description: Input byte counter for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.31.1.1.1.6.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_bytes_total
+      description: Output byte counter for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.31.1.1.1.10.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_packets_total
+      description: Input packet counter for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.11.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_packets_total
+      description: Output packet counter for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.17.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_packets_discard_total
+      description: Input counter of discarded packets for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.13.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_packets_discard_total
+      description: Output counter of discarded packets for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.19.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifacein_packets_error_total
+      description: Input counter of packet errors for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.14.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+    - name: network_ifaceout_packets_error_total
+      description: Output counter of packet errors for the network device port
+      period: 10000
+      source:
+        protocol: snmp
+        id: 1.3.6.1.2.1.2.2.1.20.{{ 1.3.6.1.2.1.2.2.1.2 == %SNMP_IFACE% }}
+  vlans:
+    "vlan100":
+      administrative: yes
+      addresses:
+        - 172.16.15.254
+    "vlan101":
+      addresses:
+        - 172.17.15.254
+    "vlan500":
+      addresses:
+        - 192.168.4.17
+  linecards:
+    1:
+      kind: other
+      snmp_pattern: Ethernet%LINECARD%/%PORT%
+      kavlan_pattern: Ethernet%LINECARD%/%PORT%
+      backplane_bps: 36000000000000
+      rate: 25000000000
+      switchport_mode: access
+      ports:
+        1:
+          uid: port-channel1
+          kind: channel
+          switchport_mode: access
+        2:
+          uid: port-channel1
+          kind: channel
+          switchport_mode: access
+        3:
+          uid: port-channel2
+          kind: channel
+          switchport_mode: access
+        4:
+          uid: port-channel2
+          kind: channel
+          switchport_mode: access
+        5:
+          uid: port-channel3
+          kind: channel
+          switchport_mode: access
+        6:
+          uid: port-channel3
+          kind: channel
+          switchport_mode: access
+        7:
+          uid: port-channel4
+          kind: channel
+          switchport_mode: access
+        8:
+          uid: port-channel4
+          kind: channel
+          switchport_mode: access
+        47:
+          uid: sw-adm-1
+          kind: switch
+          rate: 1000000000
+          switchport_mode: access
+        48:
+          uid: renater-bordeaux
+          kind: backbone
+          rate: 10000000000
+          switchport_mode: trunk
+  channels:
+    port-channel1:
+      uid: pve-1
+      port: port-channel1
+      kind: server
+      rate: 50000000000
+      switchport_mode: access
+    port-channel2:
+      uid: pve-2
+      port: port-channel2
+      kind: server
+      rate: 50000000000
+      switchport_mode: access
+    port-channel3:
+      uid: srv-data
+      port: port-channel3
+      kind: server
+      rate: 50000000000
+      switchport_mode: access
+    port-channel4:
+      uid: srv-data2
+      port: port-channel4
+      kind: server
+      rate: 50000000000
+      switchport_mode: access
