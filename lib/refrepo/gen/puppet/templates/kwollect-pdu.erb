@@ -18,12 +18,22 @@ pdu.fetch('metrics', []).each {|metric|
         sock = port_uid_num[1..].to_i
         port_uid_num = 8*bank+sock
       end
+
+      labels = {}
+      # Do not add _device_alias for shared PSU among
+      if node_uid.kind_of?(String)
+        labels.merge!({'_device_alias' => node_uid })
+        # Also warn if node has several PSU
+        if not single_port
+          labels.merge!({'_info' => "from single PSU on #{pdu_uid}"})
+        end
+      end
 -%>
 - name: <%= metric['name'] %>
   device_id: <%= pdu_uid %>-port-<%= port_uid %>
-<%- if single_port -%>
-  labels: <%= {'_device_alias' => node_uid}.to_json %>
-<%- end -%>
+  <%- if not labels.empty? -%>
+  labels: <%= labels.to_json %>
+  <%- end -%>
   url: <%= metric["source"]["protocol"] %>://<%= pdu.fetch('snmp_community', 'public')%>@<%= pdu_uid %>.<%= site_uid %>.grid5000.fr/<%= metric['source']['id'].sub('%PORT%',  "#{port_uid_num}") %>
   update_every: <%= metric['period'] > 0 ? metric['period'] : metric['optional_period'] %>
 <%- if metric['period'] == 0 -%>
