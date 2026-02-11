@@ -6,8 +6,8 @@ keep_alive_nodes_count: 1 # Define the number of nodes to be maintained up, 1 is
 boot_type: uefi # TODO: specify if 'uefi' (ideally) or 'bios' (legacy, if no other choice)
 exotic: true # TODO: specify if 'true' or 'false'
 queues:
+  - default
   - admin
-  - testing
 nodes:
   sasquatch-[1-2]:
     chassis:
