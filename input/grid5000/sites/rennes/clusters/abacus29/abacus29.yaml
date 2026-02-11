@@ -7,7 +7,7 @@ boot_type: uefi
 exotic: false
 queues:
   - admin
-  - testing
+  - production
 nodes:
   abacus29-1:
     gpu_devices:
@@ -19,7 +19,7 @@ nodes:
     supported_job_types:
       deploy: true
       besteffort: true
-      max_walltime: 0
+      max_walltime: 604800
     processor:
       microarchitecture: Zen 5
       clock_speed: 3650000000

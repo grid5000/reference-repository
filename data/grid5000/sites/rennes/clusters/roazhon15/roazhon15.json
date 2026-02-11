@@ -1,10 +1,10 @@
 {
   "boot_type": "uefi",
-  "created_at": "Tue, 20 Jan 2026 00:00:00 GMT",
+  "created_at": "Mon, 02 Feb 2026 00:00:00 GMT",
   "exotic": false,
   "kavlan": true,
   "keep_alive_nodes_count": 1,
-  "manufactured_at": "2025-10-01",
+  "manufactured_at": "2025-10-08",
   "metrics": [
     {
       "description": "Default subset of metrics from Prometheus Node Exporter",
@@ -52,35 +52,6 @@
       }
     },
     {
-      "description": "Default subset of metrics from Prometheus Nvidia DCGM Exporter",
-      "name": "prom_nvgpu_default_metrics",
-      "optional_period": 15000,
-      "period": 0,
-      "source": {
-        "id": [
-          "DCGM_FI_DEV_SM_CLOCK",
-          "DCGM_FI_DEV_GPU_TEMP",
-          "DCGM_FI_DEV_POWER_USAGE",
-          "DCGM_FI_DEV_MEM_COPY_UTIL",
-          "DCGM_FI_DEV_GPU_UTIL",
-          "DCGM_FI_DEV_FB_USED",
-          "DCGM_FI_PROF_PIPE_TENSOR_ACTIVE"
-        ],
-        "port": 9400,
-        "protocol": "prometheus"
-      }
-    },
-    {
-      "description": "All metrics from Prometheus Nvidia DCGM Exporter",
-      "name": "prom_nvgpu_all_metrics",
-      "optional_period": 15000,
-      "period": 0,
-      "source": {
-        "port": 9400,
-        "protocol": "prometheus"
-      }
-    },
-    {
       "description": "Input byte counter for the network device port",
       "labels": {
         "interface": "eth0"
@@ -161,94 +132,6 @@
       "description": "Output counter of packet errors for the network device port",
       "labels": {
         "interface": "eth0"
-      },
-      "name": "network_ifaceout_packets_error_total",
-      "period": 15000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Input byte counter for the network device port",
-      "labels": {
-        "interface": "eth1"
-      },
-      "name": "network_ifacein_bytes_total",
-      "period": 15000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Output byte counter for the network device port",
-      "labels": {
-        "interface": "eth1"
-      },
-      "name": "network_ifaceout_bytes_total",
-      "period": 15000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Input packet counter for the network device port",
-      "labels": {
-        "interface": "eth1"
-      },
-      "name": "network_ifacein_packets_total",
-      "period": 15000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Output packet counter for the network device port",
-      "labels": {
-        "interface": "eth1"
-      },
-      "name": "network_ifaceout_packets_total",
-      "period": 15000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Input counter of discarded packets for the network device port",
-      "labels": {
-        "interface": "eth1"
-      },
-      "name": "network_ifacein_packets_discard_total",
-      "period": 15000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Output counter of discarded packets for the network device port",
-      "labels": {
-        "interface": "eth1"
-      },
-      "name": "network_ifaceout_packets_discard_total",
-      "period": 15000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Input counter of packet errors for the network device port",
-      "labels": {
-        "interface": "eth1"
-      },
-      "name": "network_ifacein_packets_error_total",
-      "period": 15000,
-      "source": {
-        "protocol": "network_equipment"
-      }
-    },
-    {
-      "description": "Output counter of packet errors for the network device port",
-      "labels": {
-        "interface": "eth1"
       },
       "name": "network_ifaceout_packets_error_total",
       "period": 15000,
@@ -259,8 +142,8 @@
   ],
   "model": "ProLiant DL385 Gen11",
   "nodes_count": 1,
-  "nodes_description": "2 CPUs AMD EPYC 9135, 16 cores/CPU, 2 GPUs L40S, 256GB RAM, 745GB SSD, 2 x 10Gb Ethernet",
-  "priority": 202610,
+  "nodes_description": "2 CPUs AMD EPYC 9555, 64 cores/CPU, 1536GB RAM, 5961GB SSD, 1 x 10Gb Ethernet",
+  "priority": 202510,
   "queues": [
     "abaca",
     "admin",
@@ -268,6 +151,6 @@
   ],
   "redfish": true,
   "type": "cluster",
-  "uid": "abacus29",
-  "warranty_end": "2030-10-07"
+  "uid": "roazhon15",
+  "warranty_end": "2032-10-14"
 }
