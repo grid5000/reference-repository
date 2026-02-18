@@ -96,12 +96,22 @@ def gen_json_files(allBmc, options)
   dir = "#{options[:modules_dir]}/grid5000/webfish"
   checks_dir_creation(dir)
   allBmc.sort_by { |s_site, _d_site| s_site }.each do |s_site, _d_array|
-    actualFile = allBmc[s_site].sort_by { |k, _| split_cluster_node(k) }.to_h
+    actualFile = allBmc[s_site].sort_by { |k, _| uid_sort_key(k) }.to_h
     siteLocation = dir + '/' + s_site
     checks_dir_creation(siteLocation)
     fileLocation = siteLocation + '/webfish.json'
     File.open(fileLocation, 'w') do |f|
       f.write(JSON.pretty_generate(actualFile))
+    end
+  end
+end
+
+def uid_sort_key(str)
+  str.scan(/\d+|[a-zA-Z]+|[^a-zA-Z\d]/).map do |part|
+    if part =~ /^\d+$/
+      [0, part.to_i]
+    else
+      [1, part.downcase]
     end
   end
 end
