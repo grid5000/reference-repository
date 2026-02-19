@@ -8,9 +8,9 @@ spirou-8:
     nb_threads: 96
     platform_type: x86_64
   bios:
-    release_date: '08/26/2024'
+    release_date: '08/07/2025'
     vendor: Lenovo
-    version: AFE130D-3.31
+    version: AFE136D-3.60
   bmc_version: '5.70'
   chassis:
     manufacturer: Lenovo
@@ -141,6 +141,17 @@ spirou-8:
       sriov: false
       sriov_totalvfs: 0
       vendor: Broadcom Inc. and subsidiaries
+    eth6:
+      name: enx3a68dd8c7103
+      interface: Ethernet
+      driver: cdc_ether
+      mac: 3a:68:dd:8c:71:03
+      rate: 0
+      firmware_version: CDC Ethernet Device
+      mounted: false
+      management: false
+      sriov: false
+      sriov_totalvfs: 0
   operating_system:
     cstate_driver: intel_idle
     cstate_governor: menu
