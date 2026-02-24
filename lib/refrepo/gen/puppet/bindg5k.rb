@@ -456,7 +456,9 @@ end
 def set_internal_zone_header_records(zone, site)
   if zone.soa.nil?
     soa = DNS::Zone::RR::SOA.new
-    soa.serial = Time.now.utc.strftime('%Y%m%d00')
+    # No need to maintain a serial, we don't have any DNS slaves internally.
+    # Let's use the approximate birth date of Grid'5000 :-)
+    soa.serial = '2003010100'
     soa.refresh_ttl = '4h'
     soa.retry_ttl = '1h'
     soa.expiry_ttl = '4w'
@@ -729,7 +731,6 @@ def generate_internal_site_data(site_uid, site, dest_dir, zones_dir)
 
     reverse_file_path = File.join(zones_dir, file_name)
     zone = load_zone(reverse_file_path, site_uid, site, :internal, true)
-    zone.soa.serial = update_serial(zone.soa.serial) if diff_zone_file(zone, records)
     zone.records = records
     internal_zones << zone
   end
@@ -755,7 +756,6 @@ def generate_internal_site_data(site_uid, site, dest_dir, zones_dir)
     internal_zones << zone
   end
 
-  site_zone.soa.serial = update_serial(site_zone.soa.serial) if site_zone_changed
 
   internal_zones << site_zone
 
