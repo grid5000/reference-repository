@@ -498,7 +498,6 @@ def add_kavlan_ips(h)
     end]
   end.to_h
   h['sites'].each_pair do |site_uid, hs|
-    next if hs['scheduler'] == 'slurm'
     # forget about allocated ips for local vlans, since we are starting a new site
     allocated.delete_if { |_k, v| v[3] == 'local' }
     hs.fetch('clusters', {}).each_pair do |cluster_uid, hc|
@@ -664,7 +663,6 @@ def add_kavlan_ipv6s(h)
   h['ipv6']['site_global_kavlans'].each { |key, value| global_vlan_site[value] = key }
   # Set kavlan ipv6 informations at site level
   h['sites'].each_pair do |site_uid, hs|
-    next if hs['scheduler'] == 'slurm'
     site_prefix = IPAddress hs['ipv6']['prefix']
     kavlan_ids = h['vlans']['base'].map do |k, v|
       k if v['type'] =~ /local|routed/
