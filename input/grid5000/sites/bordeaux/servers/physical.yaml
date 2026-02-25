@@ -1,0 +1,62 @@
+---
+pve-1:
+  kind: physical
+  alias:
+    - adminfront
+    - af
+    - ntp
+  warranty: 2032-04
+  serial: CZUD2L02VJ
+  network_adapters:
+    default:
+      ip: 172.16.15.1
+    bmc:
+      ip: 172.17.15.1
+    adm:
+      ip: 172.17.15.101
+
+pve-2:
+  kind: physical
+  alias: []
+  warranty: 2032-04
+  serial: CZUD2L02VH
+  network_adapters:
+    default:
+      ip: 172.16.15.2
+    bmc:
+      ip: 172.17.15.2
+    adm:
+      ip: 172.17.15.102
+
+srv-data:
+  kind: physical
+  alias:
+    - nfs
+    - nfs-grid5000
+    - nfs-home
+    - home-g5k
+    - public
+    - modules
+  warranty: 2028-04
+  serial: CZ2D2N008T
+  network_adapters:
+    default:
+      ip: 172.16.15.3
+    bmc:
+      ip: 172.17.15.3
+
+srv-data2:
+  kind: physical
+  alias:
+    - storage2
+  warranty: 2028-04
+  serial: CZ2D2N008S
+  network_adapters:
+    default:
+      ip: 172.16.15.4
+    bmc:
+      ip: 172.17.15.4
+  group_storage:
+    name: storage2
+    size: 260000000000000
+    rate: 50000000000

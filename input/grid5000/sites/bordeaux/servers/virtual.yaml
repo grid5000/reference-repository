@@ -1,0 +1,64 @@
+supervision2:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.103
+syslog:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.104
+mail:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.105
+ldap:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.106
+dns:
+  kind: virtual
+  alias:
+  - ns
+  network_adapters:
+    default:
+      ip: 172.16.15.107
+puppet6:
+  kind: virtual
+  alias:
+  - puppet
+  network_adapters:
+    default:
+      ip: 172.16.15.108
+dhcp:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.109
+#      ip6: 2001:660:4406:0:0:2:0:9
+    adm:
+      ip: 172.17.15.109
+fbordeaux:
+  kind: virtual
+  alias:
+  - frontend
+  network_adapters:
+    default:
+      ip: 172.16.15.110
+conman:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.113
+guix:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.123
+kwollect:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.124
