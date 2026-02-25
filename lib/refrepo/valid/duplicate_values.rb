@@ -3,7 +3,6 @@ def check_duplicate_values
   netifs = []
   refapi = load_data_hierarchy
   refapi['sites'].each_pair do |site_uid, site|
-    next if ! site.has_key?('clusters')
     site['clusters'].each_pair do |cluster_uid, cluster|
       cluster['nodes'].to_h.each do |node_uid, node|
         node['network_adapters'].each do |na|
