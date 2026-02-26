@@ -131,6 +131,7 @@ def generate_reference_api
 
     site['type'] = 'site'
     site['uid']  = site_uid
+    site['scheduler'] = 'oar' if site['scheduler'].nil?
 
     site_path = Pathname.new(refapi_path).join('sites', site_uid)
     site_path.mkpath
