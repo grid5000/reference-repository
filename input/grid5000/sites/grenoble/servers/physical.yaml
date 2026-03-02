@@ -176,12 +176,18 @@ srv-scratch3:
 
 digthor:
   kind: physical
+  alias: [thor-1-bmc]
   network_adapters:
     default:
-      ip: 172.16.31.10
+      ip: 172.16.31.8
       mac: B8:AC:6F:14:2F:2B
     bmc:
-      ip: 172.17.30.10
+      ip: 172.17.31.8
       mac: B8:AC:6F:14:2F:2F
-    adm:
-      ip: 172.17.31.10
+
+thor-1:
+  kind: physical
+  network_adapters:
+    default:
+      ip: 172.16.30.1
+      mac: 4C:BB:47:14:19:93
