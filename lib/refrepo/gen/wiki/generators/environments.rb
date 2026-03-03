@@ -4,17 +4,15 @@ class EnvironmentsGenerator < WikiGenerator
   VARIANT_SORT_ORDER = %w[min base nfs big std]
   # FIXME: Update the description of envs to something more sensible instead of overwriting here.
   DESC = {
-    'debian10-min' => 'debian 10 (buster) minimalistic installation',
-    'debian10-base' => 'debian 10 (buster) with various Grid\'5000-specific tuning for performance',
-    'debian10-nfs' => 'debian 10 (buster) with support for mounting NFS home',
-    'debian10-big' => 'debian 10 (buster) with packages for development, system tools, editors, shells.',
     'debian11-min' => 'debian 11 (bullseye) minimalistic installation',
     'debian11-base' => 'debian 11 (bullseye) with various Grid\'5000-specific tuning for performance',
     'debian11-nfs' => 'debian 11 (bullseye) with support for mounting NFS home',
     'debian11-big' => 'debian 11 (bullseye) with packages for development, system tools, editors, shells.',
-    'debiab12-min' => 'debian 12 (bookworm) minimalistic installation',
+    'debian12-min' => 'debian 12 (bookworm) minimalistic installation',
     'debian12-nfs' => 'debian 12 (bookworm) with support for mounting NFS home',
     'debian12-big' => 'debian 12 (bookworm) with packages for development, system tools, editors, shells.',
+    'debiab13-min' => 'debian 13 (trixie) minimalistic installation',
+    'debian13-nfs' => 'debian 13 (trixie) with support for mounting NFS home',
     'debiantesting-min' => 'debian testing minimalistic installation',
     'debiantesting-nfs' => 'debian testing with support for mounting NFS home',
     'ubuntu2004-min' => 'ubuntu 20.04 (focal) minimalistic installation',
@@ -23,12 +21,6 @@ class EnvironmentsGenerator < WikiGenerator
     'ubuntu2204-nfs' => 'ubuntu 22.04 (jellyfish) with support for mounting NFS home',
     'ubuntu2404-min' => 'ubuntu 22.04 (noble) minimalistic installation',
     'ubuntu2404-nfs' => 'ubuntu 24.04 (noble) with support for mounting NFS home',
-    'centos7-min' => 'centos 7 minimalistic installation',
-    'centos7-nfs' => 'centos 7 with support for mounting NFS home',
-    'centos8-min' => 'centos 8 minimalistic installation',
-    'centos8-nfs' => 'centos 8 with support for mounting NFS home',
-    'centosstream8-min' => 'centos-stream 8 minimalistic installation',
-    'centosstream8-nfs' => 'centos-stream 8 with support for mounting NFS home',
     'centosstream9-min' => 'centos-stream 9 minimalistic installation',
     'centosstream9-nfs' => 'centos-stream 9 with support for mounting NFS home',
     'rocky8-min' => 'rocky 8 minimalistic installation',
@@ -45,14 +37,12 @@ class EnvironmentsGenerator < WikiGenerator
     envs = []
 
     G5K::SITES.each do |site|
-      envs += RefRepo::Utils.get_api("sites/#{site}/internal/kadeployapi/environments?username=deploy&last")
+      envs += RefRepo::Utils.get_api("sites/#{site}/environments")['items']
     end
     envs.select! { |x| x['visibility'] == 'public' }
     # The creation date can be a little different on each site, we remove it from hash before removing dupplicate
     envs.each { |x| x.delete('created_at') }
     envs.uniq!
-    # FIXME: We reject debian11-std here until #13183 is fixed
-    envs.reject! { |x| x['name'] == 'debian11-std' }
     table_columns += envs.map { |x| x['arch'] }.uniq.sort.reverse
     table_columns << 'Description'
     envs = envs.group_by { |x| x['name'] }.map { |k, v| [k, v.map { |x| x['arch'] }, v.first['description']] }
