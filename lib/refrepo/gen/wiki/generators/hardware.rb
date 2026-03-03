@@ -405,6 +405,7 @@ class G5KHardwareGenerator < WikiGenerator
       'Emerald Rapids' => '2023',
       'Aqua Vanjaram' => '2023',
       'Sierra Forest' => '2024',
+      'Granite Rapids' => '2024',
       'Ares' => '2019',
       'N/A' => '&nbsp;'
     }
