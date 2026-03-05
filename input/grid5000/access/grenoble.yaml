@@ -6,11 +6,13 @@ chartreuse2: &inria-grenoble
     p3: ['@inria_group']
     p4: ['@other_groups_with_access']
 
-chartreuse3:  &beagle-exclusive
+chartreuse3:  &biotic-shared
   p1: [beagle, biotic, '@admin']
-  besteffort: ['@inria_group', '@other_groups_with_access']
+  p2: ['@inria_lyon_group', '@inria_grenoble_group']
+  p3: ['@inria_group']
+  p4: ['@other_groups_with_access']
 
-chartreuse4: *beagle-exclusive
+chartreuse4: *biotic-shared
 
 chartreuse6: &thoth-exclusive
   p1: [thoth, '@admin']
