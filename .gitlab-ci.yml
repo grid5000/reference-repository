@@ -1,7 +1,6 @@
 ---
 stages:
   - deploy-to-api-servers
-  - lint
   - check
   - generate-access-history
   - resources-explorer
@@ -19,8 +18,7 @@ include:
   extends: .template-test
   parallel:
     matrix:
-      - DEBIAN_VERSION: [bookworm]
-  image: ${CI_REGISTRY}/grid5000/docker/g5k-debian:$DEBIAN_VERSION
+      - TARGET_DEBIAN_VERSION: [bookworm]
   before_script:
     - apt-get update && apt-get -y --no-install-recommends install build-essential wget git ruby ruby-dev bundler rake gpg clustershell graphviz
     # Call the original before_script section
@@ -48,7 +46,7 @@ wikigen:
   parallel:
     matrix:
       - SITE: [global, grenoble, lille, luxembourg, louvain, lyon, nancy, nantes, rennes, sophia, strasbourg, toulouse]
-        DEBIAN_VERSION: [bookworm]
+        TARGET_DEBIAN_VERSION: [bookworm]
   script:
     - echo "$GRID5000_API" > "${HOME}/.grid5000_api.yml"
     - if [ "${SITE}" = "global" ]; then export GENERATORS=$GLOBAL_GENERATORS ; else export GENERATORS=$SITE_GENERATORS; fi
@@ -87,6 +85,10 @@ deploy-to-api-servers:
     - grid5000-shell
   script:
     - /srv/ci-runner-scripts/bin/update-api-servers
+  rules:
+    - if: '$CI_COMMIT_TAG'
+      when: never
+    - when: on_success
 
 rebuild_resources_explorer:
   stage: resources-explorer
@@ -95,6 +97,7 @@ rebuild_resources_explorer:
   # ran on the main branch.
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: on_success
   trigger:
     project: grid5000/resources-explorer
     # This mirrors the status of RE's pipeline into our own.
@@ -113,8 +116,7 @@ preview_resources_explorer:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: never
     # But create a manual job on branches
-    - if: $CI_COMMIT_BRANCH
-      when: manual
+    - when: manual
       allow_failure: true
   variables:
     NEXT_PUBLIC_REFREPO_BRANCH: $CI_COMMIT_BRANCH
