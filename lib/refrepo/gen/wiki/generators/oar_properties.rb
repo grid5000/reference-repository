@@ -277,13 +277,13 @@ class OarPropertiesGenerator < WikiGenerator
     props = {}
     oarapi_properties = []
 
-    G5K::SITES.each_with_index do |site_uid, _index|
+    G5K::SITES.each do |site_uid|
       props[site_uid] = {}
       props[site_uid]['default'] = get_ref_default_properties(site_uid, refapi['sites'][site_uid])
       props[site_uid]['disk'] = get_ref_disk_properties(site_uid, refapi['sites'][site_uid])
     end
 
-    RefRepo::Utils.get_api("sites/#{G5K::SITES.first}/internal/oarapi/resources/details.json?limit=999999")['items'].each do |oarapi_details|
+    RefRepo::Utils.get_api("sites/#{G5K::SITES.reject { |s| refapi['sites'][s]["scheduler"] != "oar" }.first}/internal/oarapi/resources/details.json?limit=999999")['items'].each do |oarapi_details|
       oarapi_details.keys.each do |property|
         oarapi_properties << property unless oarapi_properties.include? property
       end
