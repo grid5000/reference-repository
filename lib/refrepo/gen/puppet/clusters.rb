@@ -12,6 +12,7 @@ def generate_puppet_clusters(options)
   refrepo.delete_if { |key| key != 'sites' }
 
   refrepo['sites'].select { |k, _v| options[:sites].include? k }.sort.each do |s_uid, s_hash|
+    next if s_hash['scheduler'] != 'oar'
     unless hiera.key? s_uid
       puts "Add #{s_uid}"
       hiera[s_uid] = {}
