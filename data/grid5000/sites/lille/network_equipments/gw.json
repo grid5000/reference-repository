@@ -31,6 +31,27 @@
       "rate": 50000000000,
       "switchport_mode": "access",
       "uid": "granche-srv2"
+    },
+    "port-channel5": {
+      "kind": "server",
+      "port": "port-channel5",
+      "rate": 50000000000,
+      "switchport_mode": "trunk",
+      "uid": "pve-4"
+    },
+    "port-channel6": {
+      "kind": "server",
+      "port": "port-channel6",
+      "rate": 50000000000,
+      "switchport_mode": "trunk",
+      "uid": "pve-2"
+    },
+    "port-channel7": {
+      "kind": "server",
+      "port": "port-channel7",
+      "rate": 50000000000,
+      "switchport_mode": "trunk",
+      "uid": "pve-1"
     }
   },
   "ip": "172.16.47.254",
@@ -47,40 +68,40 @@
         {
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "Ethernet1/1",
           "switchport_mode": "trunk",
-          "uid": "pve-1"
+          "uid": "port-channel7"
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "Ethernet1/2",
           "switchport_mode": "trunk",
-          "uid": "pve-1"
+          "uid": "port-channel7"
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "Ethernet1/3",
           "switchport_mode": "trunk",
-          "uid": "pve-2"
+          "uid": "port-channel6"
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "Ethernet1/4",
           "switchport_mode": "trunk",
-          "uid": "pve-2"
+          "uid": "port-channel6"
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "Ethernet1/5",
           "switchport_mode": "trunk",
-          "uid": "pve-4"
+          "uid": "port-channel5"
         },
         {
-          "kind": "server",
+          "kind": "channel",
           "snmp_name": "Ethernet1/6",
           "switchport_mode": "trunk",
-          "uid": "pve-4"
+          "uid": "port-channel5"
         },
         {
           "kind": "channel",
