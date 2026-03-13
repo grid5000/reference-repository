@@ -26,6 +26,14 @@ pdus:
   pdu-kinovis2-[1-4]:
     vendor: Raritan
     model: PX3-5488V
+    metrics:
+      - name: pdu_outlet_power_watt
+        description: Power consumption per outlet reported by PDU, in watt
+        period: 1000
+        source:
+          protocol: snmp
+          # PDU2-MIB::measurementsOutletSensorValue.1.%PORT%.activePower
+          id: .1.3.6.1.4.1.13742.6.5.4.3.1.4.1.%PORT%.5
 
   pdu-kinovis2-1:
     ip: 172.17.31.18
