@@ -70,73 +70,57 @@ gw:
     1:
       snmp_pattern: "%LINECARD%/1/%PORT%"
       kavlan_pattern: "%LINECARD%/1/%PORT%"
-      rate: 25000000000
+      rate: 25_000_000_000
       switchport_mode: access
       ports:
         1:
-          uid: srv-scratch1-prod-1
-          kind: server
-          switchport_mode: access
+          uid: lag6
+          kind: channel
         2:
-          uid: srv-scratch1-prod-2
-          kind: server
-          switchport_mode: access
+          uid: lag6
+          kind: channel
         3:
-          uid: srv-scratch1-ceph-1
-          kind: server
-          switchport_mode: access
+          uid: lag9
+          kind: channel
         4:
-          uid: srv-scratch1-ceph-2
-          kind: server
-          switchport_mode: access
+          uid: lag9
+          kind: channel
         5:
-          uid: srv-scratch2-prod-1
-          kind: server
-          switchport_mode: access
+          uid: lag7
+          kind: channel
         6:
-          uid: srv-scratch2-prod-2
-          kind: server
-          switchport_mode: access
+          uid: lag7
+          kind: channel
         7:
-          uid: srv-scratch2-ceph-1
-          kind: server
-          switchport_mode: access
+          uid: lag10
+          kind: channel
         8:
-          uid: srv-scratch2-ceph-2
-          kind: server
-          switchport_mode: access
+          uid: lag10
+          kind: channel
         9:
-          uid: srv-scratch3-prod-1
-          kind: server
-          switchport_mode: access
+          uid: lag8
+          kind: channel
         10:
-          uid: srv-scratch3-prod-2
-          kind: server
-          switchport_mode: access
+          uid: lag8
+          kind: channel
         11:
-          uid: srv-scratch3-ceph-1
-          kind: server
-          switchport_mode: access
+          uid: lag11
+          kind: channel
         12:
-          uid: srv-scratch3-ceph-2
-          kind: server
-          switchport_mode: access
+          uid: lag11
+          kind: channel
         27:
           uid: lag5
           kind: channel
-          switchport_mode: access
         28:
           uid: lag5
           kind: channel
-          switchport_mode: access
         29:
           uid: lag4
           kind: channel
-          switchport_mode: access
         30:
           uid: lag4
           kind: channel
-          switchport_mode: access
         31:
           uid: pve-1
           kind: server
@@ -152,65 +136,59 @@ gw:
         35:
           uid: lag2
           kind: channel
-          switchport_mode: access
         36:
           uid: lag2
           kind: channel
-          switchport_mode: access
         42:
           uid: sw-adm-3
           kind: switch
-          rate: 1000000000
+          rate: 1_000_000_000
           switchport_mode: access
         43:
           uid: sw-1-c003
           kind: switch
-          rate: 10000000000
+          rate: 10_000_000_000
           switchport_mode: trunk
         44:
           uid: sw-adm-1
           kind: switch
-          rate: 1000000000
+          rate: 1_000_000_000
           switchport_mode: access
         45:
           uid: parasilo-sw-1
           kind: switch
-          rate: 10000000000
+          rate: 10_000_000_000
           switchport_mode: trunk
         46:
           uid: renater-rennes
           kind: backbone
-          rate: 10000000000
+          rate: 10_000_000_000
           switchport_mode: trunk
         47:
           uid: lag3
           kind: channel
-          rate: 10000000000
-          switchport_mode: access
+          rate: 10_000_000_000
         48:
           uid: lag3
           kind: channel
-          rate: 10000000000
-          switchport_mode: access
+          rate: 10_000_000_000
         49:
           uid: lag1
           kind: channel
-          rate: 100000000000
-          switchport_mode: trunk
+          rate: 100_000_000_000
         50:
           uid: lag1
           kind: channel
-          rate: 100000000000
-          switchport_mode: trunk
+          rate: 100_000_000_000
         51:
           uid: sw-2
           kind: switch
-          rate: 100000000000
+          rate: 100_000_000_000
           switchport_mode: trunk
         53:
           uid: sw-3
           kind: switch
-          rate: 100000000000
+          rate: 100_000_000_000
           switchport_mode: trunk
         #mgmt:
         #  uid: parasilo-admsw-1
@@ -221,31 +199,67 @@ gw:
   channels:
     lag1:
       kind: switch
-      rate: 200000000000
+      rate: 200_000_000_000
       uid: sw-1
       port: lag1
       switchport_mode: trunk
     lag2:
       kind: server
-      rate: 50000000000
+      rate: 50_000_000_000
       uid: srv-data
-      port: lag2
+      port: bond0
       switchport_mode: access
     lag3:
       kind: switch
-      rate: 20000000000
+      rate: 20_000_000_000
       uid: swcore-01-rba
       port: port-channel286
       switchport_mode: trunk
     lag4:
       kind: server
-      rate: 50000000000
+      rate: 50_000_000_000
       uid: srv-data2
-      port: lag4
+      port: bond0
       switchport_mode: access
     lag5:
       kind: server
-      rate: 50000000000
+      rate: 50_000_000_000
       uid: srv-data3
-      port: lag5
+      port: bond0
+      switchport_mode: access
+    lag6:
+      kind: server
+      rate: 50_000_000_000
+      uid: srv-scratch1-prod
+      port: bond0
+      switchport_mode: access
+    lag7:
+      kind: server
+      rate: 50_000_000_000
+      uid: srv-scratch2-prod
+      port: bond0
+      switchport_mode: access
+    lag8:
+      kind: server
+      rate: 50_000_000_000
+      uid: srv-scratch3-prod
+      port: bond0
+      switchport_mode: access
+    lag9:
+      kind: server
+      rate: 50_000_000_000
+      uid: srv-scratch1-ceph
+      port: bond1
+      switchport_mode: access
+    lag10:
+      kind: server
+      rate: 50_000_000_000
+      uid: srv-scratch2-ceph
+      port: bond1
+      switchport_mode: access
+    lag11:
+      kind: server
+      rate: 50_000_000_000
+      uid: srv-scratch3-ceph
+      port: bond1
       switchport_mode: access
