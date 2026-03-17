@@ -10,6 +10,7 @@ def dell_product_data
   token = get_api_token
   url = 'https://apigtwb2c.us.dell.com/PROD/sbil/eapi/v5/asset-entitlements'
   services_tags = data['sites'].map do |_s_uid, s_hash|
+    next if s_hash['clusters'].nil?
     s_hash['clusters'].map do |_c_uid, c_hash|
       c_hash['nodes'].map do |_n_uid, n_hash|
         n_hash['chassis']['serial']
@@ -39,6 +40,7 @@ def get_dell_hardware
     # We treat clusters only
     s_hash.delete_if { |key| !['clusters'].include?(key) }
     # We filter on Dell cluster
+    next if s_hash['clusters'].nil?
     s_hash['clusters'].delete_if { |_c_uid, c_hash| !c_hash['model'].downcase.start_with?('dell') }
     s_hash['clusters'].each do |_c_uid, c_hash|
       # We keep only nodes
@@ -89,6 +91,7 @@ end
 
 def set_product_data(data, product)
   data.each do |_s, s_hash|
+    next if s_hash['clusters'].nil?
     s_hash['clusters'].each do |_c, c_hash|
       c_hash['nodes'].each do |_n, info|
         next unless info['chassis']['serial'] == product['serviceTag']
