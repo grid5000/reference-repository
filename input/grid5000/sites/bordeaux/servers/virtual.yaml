@@ -47,11 +47,26 @@ fbordeaux:
   network_adapters:
     default:
       ip: 172.16.15.110
+api-server-v3:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.112
 conman:
   kind: virtual
   network_adapters:
     default:
       ip: 172.16.15.113
+api-server-devel:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.114
+api-proxy:
+  kind: virtual
+  network_adapters:
+    default:
+      ip: 172.16.15.115
 guix:
   kind: virtual
   network_adapters:
